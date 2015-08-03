@@ -1,0 +1,58 @@
+PODS:
+  - ASIHTTPRequest (1.8.2):
+    - ASIHTTPRequest/ASIWebPageRequest (= 1.8.2)
+    - ASIHTTPRequest/CloudFiles (= 1.8.2)
+    - ASIHTTPRequest/Core (= 1.8.2)
+    - ASIHTTPRequest/S3 (= 1.8.2)
+  - ASIHTTPRequest/ASIWebPageRequest (1.8.2):
+    - ASIHTTPRequest/Core
+  - ASIHTTPRequest/CloudFiles (1.8.2):
+    - ASIHTTPRequest/Core
+  - ASIHTTPRequest/Core (1.8.2):
+    - Reachability
+  - ASIHTTPRequest/S3 (1.8.2):
+    - ASIHTTPRequest/Core
+  - CocoaLumberjack (2.0.1):
+    - CocoaLumberjack/Default (= 2.0.1)
+    - CocoaLumberjack/Extensions (= 2.0.1)
+  - CocoaLumberjack/Core (2.0.1)
+  - CocoaLumberjack/Default (2.0.1):
+    - CocoaLumberjack/Core
+  - CocoaLumberjack/Extensions (2.0.1):
+    - CocoaLumberjack/Default
+  - FMDB (2.5):
+    - FMDB/standard (= 2.5)
+  - FMDB/common (2.5)
+  - FMDB/standard (2.5):
+    - FMDB/common
+  - KLCircleViewController (1.0)
+  - MJExtension (2.4.4)
+  - Reachability (3.2)
+  - RegExCategories (1.0)
+  - SDWebImage (3.7.2):
+    - SDWebImage/Core (= 3.7.2)
+  - SDWebImage/Core (3.7.2)
+  - UMengAnalytics-NO-IDFA (3.5.9)
+
+DEPENDENCIES:
+  - ASIHTTPRequest (~> 1.8.2)
+  - CocoaLumberjack
+  - FMDB
+  - KLCircleViewController
+  - MJExtension
+  - RegExCategories
+  - SDWebImage
+  - UMengAnalytics-NO-IDFA
+
+SPEC CHECKSUMS:
+  ASIHTTPRequest: ec013992946676b7978dcbde6396d57312d21db4
+  CocoaLumberjack: 019d1361244274a6138c788c6cb80baabc13fb8f
+  FMDB: 96e8f1bcc1329e269330f99770ad4285d9003e52
+  KLCircleViewController: e204eeb583d6a879f9144b78f12236122088d689
+  MJExtension: fabc9e6084f14363ed6828490a98ee516c9cbbfe
+  Reachability: 33e18b67625424e47b6cde6d202dce689ad7af96
+  RegExCategories: e68befacacd5bda853c88f70ec745cb2d0cfb89c
+  SDWebImage: 71b7cdc1d1721d6a82ed62889030225f2c249e29
+  UMengAnalytics-NO-IDFA: c5302a2246061c356641bb3056e89dfbdeb37424
+
+COCOAPODS: 0.37.2

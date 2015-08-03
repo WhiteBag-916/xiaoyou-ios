@@ -1,0 +1,13 @@
+//
+//  YDevice.m
+//  YFramework
+//
+//  Created by liufz on 15/7/2.
+//  Copyright (c) 2015年 YCPai. All rights reserved.
+//
+
+#import "YDevice.h"
+
+@implementation YDevice
+
+@end
