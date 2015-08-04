@@ -11,6 +11,7 @@
 		20859AA31B64CB7E00580ED3 /* LoginResp.m in Sources */ = {isa = PBXBuildFile; fileRef = 20859AA01B64CB7E00580ED3 /* LoginResp.m */; };
 		20859AB31B64E2F600580ED3 /* YModel+ActionMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 20859AB21B64E2F600580ED3 /* YModel+ActionMessage.m */; };
 		20DBFD271B4FA0E5009134D0 /* libModel.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 20DBFD1B1B4FA0E5009134D0 /* libModel.a */; };
+		333E95CD1B70B2770001059D /* LinkManModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 333E95CC1B70B2770001059D /* LinkManModel.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,6 +46,8 @@
 		20DBFD1B1B4FA0E5009134D0 /* libModel.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libModel.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		20DBFD261B4FA0E5009134D0 /* ModelTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ModelTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		20DBFD2C1B4FA0E5009134D0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		333E95CB1B70B2770001059D /* LinkManModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LinkManModel.h; sourceTree = "<group>"; };
+		333E95CC1B70B2770001059D /* LinkManModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LinkManModel.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -150,6 +153,8 @@
 		20DBFD661B4FA8F0009134D0 /* Contact */ = {
 			isa = PBXGroup;
 			children = (
+				333E95CB1B70B2770001059D /* LinkManModel.h */,
+				333E95CC1B70B2770001059D /* LinkManModel.m */,
 			);
 			path = Contact;
 			sourceTree = "<group>";
@@ -249,6 +254,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				333E95CD1B70B2770001059D /* LinkManModel.m in Sources */,
 				20859A991B64C0BC00580ED3 /* ResultCommon.m in Sources */,
 				20859AB31B64E2F600580ED3 /* YModel+ActionMessage.m in Sources */,
 				20859AA31B64CB7E00580ED3 /* LoginResp.m in Sources */,
