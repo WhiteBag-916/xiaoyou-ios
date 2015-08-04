@@ -136,25 +136,16 @@
 				20859AB01B64E2EE00580ED3 /* Utils */,
 				20859A961B64C0BC00580ED3 /* Common */,
 				20859A9E1B64CB7600580ED3 /* Provision */,
-				20DBFD651B4FA8F0009134D0 /* Assistant */,
+				20E122191B705D6400F90BD3 /* Feed */,
 				20DBFD661B4FA8F0009134D0 /* Contact */,
 				20DBFD671B4FA8F0009134D0 /* Message */,
 			);
 			path = Model;
 			sourceTree = "<group>";
 		};
-		20DBFD651B4FA8F0009134D0 /* Assistant */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Assistant;
-			sourceTree = "<group>";
-		};
 		20DBFD661B4FA8F0009134D0 /* Contact */ = {
 			isa = PBXGroup;
 			children = (
-				333E95CB1B70B2770001059D /* LinkManModel.h */,
-				333E95CC1B70B2770001059D /* LinkManModel.m */,
 			);
 			path = Contact;
 			sourceTree = "<group>";
@@ -162,8 +153,17 @@
 		20DBFD671B4FA8F0009134D0 /* Message */ = {
 			isa = PBXGroup;
 			children = (
+				333E95CB1B70B2770001059D /* LinkManModel.h */,
+				333E95CC1B70B2770001059D /* LinkManModel.m */,
 			);
 			path = Message;
+			sourceTree = "<group>";
+		};
+		20E122191B705D6400F90BD3 /* Feed */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Feed;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

@@ -6,8 +6,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "YFoundation.h"
-#import "YModel+ActionMessage.h"
+#import "YModel.h"
 
 @interface LoginResp : YModel <NSCoding, NSCopying>
 

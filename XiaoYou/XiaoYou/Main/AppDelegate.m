@@ -7,11 +7,9 @@
 //
 
 #import "AppDelegate.h"
-#import "ChooseSchoolViewController.h"
-#import "ProvisionManager.h"
-#import "AssistantManager.h"
-#import "ContactManager.h"
-#import "MessageManager.h"
+#import "AppDelegate+Manager.h"
+#import "AppDelegate+RootVC.h"
+#import "AppDelegate+Notification.h"
 
 @interface AppDelegate ()
 
@@ -23,35 +21,13 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     
-    //注册log
-    [YLog setLevel:YLogLevelAll];
+    [self initManager];
     
-    //注册组件
-    [ProvisionManager sharedInstance];
-    [AssistantManager sharedInstance];
-    [MessageManager sharedInstance];
-    [ContactManager sharedInstance];
+    [self initNotification];
     
-    self.window = [[UIWindow alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)];
-    //初始化登陆控制器
-    UIStoryboard * chooseSchool = [UIStoryboard storyboardWithName:@"Login" bundle:[NSBundle mainBundle]];
-    UINavigationController * home = [chooseSchool instantiateInitialViewController];
-    self.window.rootViewController = home;
-    
-    [self.window makeKeyAndVisible];
-    
-    //测试-----------------
-    [self testHttp];
-    //---------------------
+    [self initRootVC];
     
     return YES;
-}
-
-- (void)testHttp
-{
-    [[ProvisionManager sharedInstance] goLogin:^(YActionMessage *message) {
-        
-    }];
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {

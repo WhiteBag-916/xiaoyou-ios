@@ -47,10 +47,10 @@
 {
     [super viewDidLoad];
     
-    if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0)
-    {
-        self.edgesForExtendedLayout = UIRectEdgeNone;
-    }
+//    if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0)
+//    {
+//        self.edgesForExtendedLayout = UIRectEdgeNone;
+//    }
     
     if (nil == _lbTitle)
     {
@@ -60,7 +60,7 @@
     //title 白色
 //    self.navigationController.navigationBar.barTintColor = [UIColor whiteColor];
     
-    self.view.backgroundColor = [UIColor hexChangeFloat:@"eff0f4"];
+//    self.view.backgroundColor = [UIColor whiteColor];
 }
 
 - (void)viewWillAppear:(BOOL)animated navigationBarHidden:(BOOL)navigationBarHidden tabBarHidden:(BOOL)tabBarHidden

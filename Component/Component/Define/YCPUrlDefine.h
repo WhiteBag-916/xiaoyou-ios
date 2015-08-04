@@ -14,12 +14,12 @@
  Url Define: Common
  **********************************************************/
 /** https接口*/
-#if 1
-#define api_server_base_url @"http://101.200.188.100:8080"
+#if 0
+#define api_server_base_url @"http://api.xiaoyou.com"
 #else
-#define api_server_base_url @"https://101.200.188.100:18443"
+#define api_server_base_url @"http://beta.xiaoyou.com"
 #endif
-/** 图像接口*/
+/** 获取图像接口*/
 #define api_icon_base_url @"http://101.200.188.100:8080"
 
 /**********************************************************
