@@ -23,7 +23,7 @@
     
     SlideNavigationController *slideNC = [[SlideNavigationController alloc] initWithRootViewController:[[XYTabBarViewController alloc]init]];
     slideNC.enableSwipeGesture = NO;
-    slideNC.leftBarButtonItem = [[UIBarButtonItem alloc] init];
+    slideNC.leftBarButtonItem = [UIBarButtonItem new];
     self.window.rootViewController = slideNC;
     
     [self.window makeKeyAndVisible];
