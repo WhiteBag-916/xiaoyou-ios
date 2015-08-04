@@ -25,6 +25,7 @@ PODS:
   - FMDB/common (2.5)
   - FMDB/standard (2.5):
     - FMDB/common
+  - iOS-Slide-Menu (1.4.6)
   - KLCircleViewController (1.0)
   - MJExtension (2.4.4)
   - Reachability (3.2)
@@ -38,6 +39,7 @@ DEPENDENCIES:
   - ASIHTTPRequest (~> 1.8.2)
   - CocoaLumberjack
   - FMDB
+  - iOS-Slide-Menu
   - KLCircleViewController
   - MJExtension
   - RegExCategories
@@ -48,6 +50,7 @@ SPEC CHECKSUMS:
   ASIHTTPRequest: ec013992946676b7978dcbde6396d57312d21db4
   CocoaLumberjack: 019d1361244274a6138c788c6cb80baabc13fb8f
   FMDB: 96e8f1bcc1329e269330f99770ad4285d9003e52
+  iOS-Slide-Menu: 3a8b157f87694fce888899f169e05b433575ff90
   KLCircleViewController: e204eeb583d6a879f9144b78f12236122088d689
   MJExtension: fabc9e6084f14363ed6828490a98ee516c9cbbfe
   Reachability: 33e18b67625424e47b6cde6d202dce689ad7af96

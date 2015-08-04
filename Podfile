@@ -12,6 +12,7 @@ pod 'CocoaLumberjack'
 pod 'UMengAnalytics-NO-IDFA'
 pod 'KLCircleViewController'
 pod 'RegExCategories'
+pod 'iOS-Slide-Menu'
 
 xcodeproj 'XiaoYou/XiaoYou.xcodeproj'
 end

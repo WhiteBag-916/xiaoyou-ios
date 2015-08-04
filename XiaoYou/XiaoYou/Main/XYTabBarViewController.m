@@ -7,6 +7,7 @@
 //
 
 #import "XYTabBarViewController.h"
+#import "SlideNavigationController.h"
 
 #define kTag_TabBar_Base 0
 #define kTag_TabBar_Message kTag_TabBar_Base + 1
@@ -14,6 +15,7 @@
 #define kTag_TabBar_Profile kTag_TabBar_Base + 3
 
 @interface XYTabBarViewController ()
+<SlideNavigationControllerDelegate>
 
 @end
 
@@ -63,6 +65,12 @@
     
     self.tabBar.tintColor = [UIColor redColor];
     self.viewControllers = @[messageViewCotroller, feedListViewCotroller, profileViewCotroller];
+}
+
+#pragma mark - SlideNavigationControllerDelegate
+- (BOOL)slideNavigationControllerShouldDisplayLeftMenu
+{
+    return YES;
 }
 
 /*

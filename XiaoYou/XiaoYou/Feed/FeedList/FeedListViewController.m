@@ -7,6 +7,7 @@
 //
 
 #import "FeedListViewController.h"
+#import "SlideNavigationController.h"
 
 @interface FeedListViewController ()
 
@@ -17,11 +18,31 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    self.title = @"人脉";
+    
+    [self initTagList];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated navigationBarHidden:NO tabBarHidden:NO];
+    
+    [SlideNavigationController sharedInstance].enableSwipeGesture = YES;
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [SlideNavigationController sharedInstance].enableSwipeGesture = NO;
+}
+
+//初始化侧拉
+- (void)initTagList
+{
+    UIStoryboard *tagListStoryboard = [UIStoryboard storyboardWithName:@"TagList" bundle:[NSBundle mainBundle]];
+    
+    UIViewController *tagListViewCotroller = [tagListStoryboard instantiateInitialViewController];
+    [SlideNavigationController sharedInstance].leftMenu = tagListViewCotroller;
 }
 
 /*
