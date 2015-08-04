@@ -11,7 +11,17 @@
 		20859AA31B64CB7E00580ED3 /* LoginResp.m in Sources */ = {isa = PBXBuildFile; fileRef = 20859AA01B64CB7E00580ED3 /* LoginResp.m */; };
 		20859AB31B64E2F600580ED3 /* YModel+ActionMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 20859AB21B64E2F600580ED3 /* YModel+ActionMessage.m */; };
 		20DBFD271B4FA0E5009134D0 /* libModel.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 20DBFD1B1B4FA0E5009134D0 /* libModel.a */; };
-		333E95CD1B70B2770001059D /* LinkManModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 333E95CC1B70B2770001059D /* LinkManModel.m */; };
+		333E95D01B70B6DF0001059D /* CheckAccountModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 333E95CF1B70B6DF0001059D /* CheckAccountModel.m */; };
+		333E95D31B70B7050001059D /* SenderListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 333E95D21B70B7050001059D /* SenderListModel.m */; };
+		333E95D61B70B7250001059D /* LinkManModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 333E95D51B70B7250001059D /* LinkManModel.m */; };
+		333E95D91B70B7400001059D /* addFriendPushInfoListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 333E95D81B70B7400001059D /* addFriendPushInfoListModel.m */; };
+		333E95DC1B70B75E0001059D /* PushInfoListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 333E95DB1B70B75E0001059D /* PushInfoListModel.m */; };
+		333E95DF1B70B7650001059D /* SystemPushInfoListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 333E95DE1B70B7650001059D /* SystemPushInfoListModel.m */; };
+		333E95E21B70B7820001059D /* UpdateAvatarModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 333E95E11B70B7820001059D /* UpdateAvatarModel.m */; };
+		333E95E51B70B78C0001059D /* LastSystemPushInfoListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 333E95E41B70B78C0001059D /* LastSystemPushInfoListModel.m */; };
+		333E95EA1B70B7AB0001059D /* SchoolDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 333E95E71B70B7AB0001059D /* SchoolDetailModel.m */; };
+		333E95EB1B70B7AB0001059D /* SchoolListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 333E95E91B70B7AB0001059D /* SchoolListModel.m */; };
+		333E95EE1B70B8F80001059D /* ReceiveAuthCodeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 333E95ED1B70B8F80001059D /* ReceiveAuthCodeModel.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,8 +56,28 @@
 		20DBFD1B1B4FA0E5009134D0 /* libModel.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libModel.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		20DBFD261B4FA0E5009134D0 /* ModelTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ModelTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		20DBFD2C1B4FA0E5009134D0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		333E95CB1B70B2770001059D /* LinkManModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LinkManModel.h; sourceTree = "<group>"; };
-		333E95CC1B70B2770001059D /* LinkManModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LinkManModel.m; sourceTree = "<group>"; };
+		333E95CE1B70B6DF0001059D /* CheckAccountModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheckAccountModel.h; sourceTree = "<group>"; };
+		333E95CF1B70B6DF0001059D /* CheckAccountModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckAccountModel.m; sourceTree = "<group>"; };
+		333E95D11B70B7050001059D /* SenderListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SenderListModel.h; sourceTree = "<group>"; };
+		333E95D21B70B7050001059D /* SenderListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SenderListModel.m; sourceTree = "<group>"; };
+		333E95D41B70B7250001059D /* LinkManModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LinkManModel.h; sourceTree = "<group>"; };
+		333E95D51B70B7250001059D /* LinkManModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LinkManModel.m; sourceTree = "<group>"; };
+		333E95D71B70B7400001059D /* addFriendPushInfoListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = addFriendPushInfoListModel.h; sourceTree = "<group>"; };
+		333E95D81B70B7400001059D /* addFriendPushInfoListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = addFriendPushInfoListModel.m; sourceTree = "<group>"; };
+		333E95DA1B70B75E0001059D /* PushInfoListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PushInfoListModel.h; sourceTree = "<group>"; };
+		333E95DB1B70B75E0001059D /* PushInfoListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PushInfoListModel.m; sourceTree = "<group>"; };
+		333E95DD1B70B7650001059D /* SystemPushInfoListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SystemPushInfoListModel.h; sourceTree = "<group>"; };
+		333E95DE1B70B7650001059D /* SystemPushInfoListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SystemPushInfoListModel.m; sourceTree = "<group>"; };
+		333E95E01B70B7820001059D /* UpdateAvatarModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UpdateAvatarModel.h; sourceTree = "<group>"; };
+		333E95E11B70B7820001059D /* UpdateAvatarModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UpdateAvatarModel.m; sourceTree = "<group>"; };
+		333E95E31B70B78C0001059D /* LastSystemPushInfoListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LastSystemPushInfoListModel.h; sourceTree = "<group>"; };
+		333E95E41B70B78C0001059D /* LastSystemPushInfoListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LastSystemPushInfoListModel.m; sourceTree = "<group>"; };
+		333E95E61B70B7AB0001059D /* SchoolDetailModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SchoolDetailModel.h; sourceTree = "<group>"; };
+		333E95E71B70B7AB0001059D /* SchoolDetailModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SchoolDetailModel.m; sourceTree = "<group>"; };
+		333E95E81B70B7AB0001059D /* SchoolListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SchoolListModel.h; sourceTree = "<group>"; };
+		333E95E91B70B7AB0001059D /* SchoolListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SchoolListModel.m; sourceTree = "<group>"; };
+		333E95EC1B70B8F80001059D /* ReceiveAuthCodeModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReceiveAuthCodeModel.h; sourceTree = "<group>"; };
+		333E95ED1B70B8F80001059D /* ReceiveAuthCodeModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReceiveAuthCodeModel.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,8 +111,18 @@
 		20859A9E1B64CB7600580ED3 /* Provision */ = {
 			isa = PBXGroup;
 			children = (
+				333E95EC1B70B8F80001059D /* ReceiveAuthCodeModel.h */,
+				333E95ED1B70B8F80001059D /* ReceiveAuthCodeModel.m */,
+				333E95CE1B70B6DF0001059D /* CheckAccountModel.h */,
+				333E95CF1B70B6DF0001059D /* CheckAccountModel.m */,
 				20859A9F1B64CB7E00580ED3 /* LoginResp.h */,
 				20859AA01B64CB7E00580ED3 /* LoginResp.m */,
+				333E95E01B70B7820001059D /* UpdateAvatarModel.h */,
+				333E95E11B70B7820001059D /* UpdateAvatarModel.m */,
+				333E95E61B70B7AB0001059D /* SchoolDetailModel.h */,
+				333E95E71B70B7AB0001059D /* SchoolDetailModel.m */,
+				333E95E81B70B7AB0001059D /* SchoolListModel.h */,
+				333E95E91B70B7AB0001059D /* SchoolListModel.m */,
 			);
 			path = Provision;
 			sourceTree = "<group>";
@@ -146,6 +186,18 @@
 		20DBFD661B4FA8F0009134D0 /* Contact */ = {
 			isa = PBXGroup;
 			children = (
+				333E95D11B70B7050001059D /* SenderListModel.h */,
+				333E95D41B70B7250001059D /* LinkManModel.h */,
+				333E95D51B70B7250001059D /* LinkManModel.m */,
+				333E95D21B70B7050001059D /* SenderListModel.m */,
+				333E95D71B70B7400001059D /* addFriendPushInfoListModel.h */,
+				333E95D81B70B7400001059D /* addFriendPushInfoListModel.m */,
+				333E95DA1B70B75E0001059D /* PushInfoListModel.h */,
+				333E95DB1B70B75E0001059D /* PushInfoListModel.m */,
+				333E95DD1B70B7650001059D /* SystemPushInfoListModel.h */,
+				333E95DE1B70B7650001059D /* SystemPushInfoListModel.m */,
+				333E95E31B70B78C0001059D /* LastSystemPushInfoListModel.h */,
+				333E95E41B70B78C0001059D /* LastSystemPushInfoListModel.m */,
 			);
 			path = Contact;
 			sourceTree = "<group>";
@@ -153,8 +205,6 @@
 		20DBFD671B4FA8F0009134D0 /* Message */ = {
 			isa = PBXGroup;
 			children = (
-				333E95CB1B70B2770001059D /* LinkManModel.h */,
-				333E95CC1B70B2770001059D /* LinkManModel.m */,
 			);
 			path = Message;
 			sourceTree = "<group>";
@@ -254,10 +304,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				333E95CD1B70B2770001059D /* LinkManModel.m in Sources */,
+				333E95D31B70B7050001059D /* SenderListModel.m in Sources */,
 				20859A991B64C0BC00580ED3 /* ResultCommon.m in Sources */,
+				333E95DF1B70B7650001059D /* SystemPushInfoListModel.m in Sources */,
+				333E95D91B70B7400001059D /* addFriendPushInfoListModel.m in Sources */,
 				20859AB31B64E2F600580ED3 /* YModel+ActionMessage.m in Sources */,
 				20859AA31B64CB7E00580ED3 /* LoginResp.m in Sources */,
+				333E95EA1B70B7AB0001059D /* SchoolDetailModel.m in Sources */,
+				333E95D61B70B7250001059D /* LinkManModel.m in Sources */,
+				333E95E21B70B7820001059D /* UpdateAvatarModel.m in Sources */,
+				333E95E51B70B78C0001059D /* LastSystemPushInfoListModel.m in Sources */,
+				333E95EE1B70B8F80001059D /* ReceiveAuthCodeModel.m in Sources */,
+				333E95D01B70B6DF0001059D /* CheckAccountModel.m in Sources */,
+				333E95EB1B70B7AB0001059D /* SchoolListModel.m in Sources */,
+				333E95DC1B70B75E0001059D /* PushInfoListModel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
