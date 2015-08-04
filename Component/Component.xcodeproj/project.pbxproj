@@ -8,12 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		20859A7C1B64BD5B00580ED3 /* ProvisionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 20859A7B1B64BD5B00580ED3 /* ProvisionManager.m */; };
-		20859A7F1B64BD7200580ED3 /* AssistantManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 20859A7E1B64BD7200580ED3 /* AssistantManager.m */; };
 		20859A821B64BD8500580ED3 /* ContactManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 20859A811B64BD8500580ED3 /* ContactManager.m */; };
 		20859A851B64BD9000580ED3 /* MessageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 20859A841B64BD9000580ED3 /* MessageManager.m */; };
 		20859A941B64C06A00580ED3 /* LoginAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 20859A931B64C06A00580ED3 /* LoginAction.m */; };
 		20DBFD4A1B4FA0F5009134D0 /* libComponent.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 20DBFD3E1B4FA0F5009134D0 /* libComponent.a */; };
 		20DBFD861B4FD3F5009134D0 /* YUtils+Component.m in Sources */ = {isa = PBXBuildFile; fileRef = 20DBFD851B4FD3F5009134D0 /* YUtils+Component.m */; };
+		20E122171B705D3C00F90BD3 /* FeedManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 20E122161B705D3C00F90BD3 /* FeedManager.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,8 +41,6 @@
 /* Begin PBXFileReference section */
 		20859A7A1B64BD5B00580ED3 /* ProvisionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProvisionManager.h; sourceTree = "<group>"; };
 		20859A7B1B64BD5B00580ED3 /* ProvisionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProvisionManager.m; sourceTree = "<group>"; };
-		20859A7D1B64BD7200580ED3 /* AssistantManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AssistantManager.h; sourceTree = "<group>"; };
-		20859A7E1B64BD7200580ED3 /* AssistantManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AssistantManager.m; sourceTree = "<group>"; };
 		20859A801B64BD8500580ED3 /* ContactManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactManager.h; sourceTree = "<group>"; };
 		20859A811B64BD8500580ED3 /* ContactManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactManager.m; sourceTree = "<group>"; };
 		20859A831B64BD9000580ED3 /* MessageManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageManager.h; sourceTree = "<group>"; };
@@ -58,6 +56,8 @@
 		20DBFD7C1B4FD3F5009134D0 /* YCPSystemDefine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YCPSystemDefine.h; sourceTree = "<group>"; };
 		20DBFD841B4FD3F5009134D0 /* YUtils+Component.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "YUtils+Component.h"; sourceTree = "<group>"; };
 		20DBFD851B4FD3F5009134D0 /* YUtils+Component.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "YUtils+Component.m"; sourceTree = "<group>"; };
+		20E122151B705D3C00F90BD3 /* FeedManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedManager.h; sourceTree = "<group>"; };
+		20E122161B705D3C00F90BD3 /* FeedManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedManager.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,13 +95,6 @@
 				20859A931B64C06A00580ED3 /* LoginAction.m */,
 			);
 			path = Provision;
-			sourceTree = "<group>";
-		};
-		20859AAB1B64DE3500580ED3 /* Assistant */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Assistant;
 			sourceTree = "<group>";
 		};
 		20859AAC1B64DE3500580ED3 /* Contact */ = {
@@ -176,17 +169,18 @@
 			isa = PBXGroup;
 			children = (
 				20859A8D1B64C03C00580ED3 /* Provision */,
-				20DBFD751B4FD3F5009134D0 /* Assistant */,
+				20DBFD751B4FD3F5009134D0 /* Feed */,
 				20DBFD761B4FD3F5009134D0 /* Contact */,
 				20DBFD771B4FD3F5009134D0 /* Message */,
 			);
 			path = Action;
 			sourceTree = "<group>";
 		};
-		20DBFD751B4FD3F5009134D0 /* Assistant */ = {
+		20DBFD751B4FD3F5009134D0 /* Feed */ = {
 			isa = PBXGroup;
 			children = (
 			);
+			name = Feed;
 			path = Assistant;
 			sourceTree = "<group>";
 		};
@@ -207,7 +201,7 @@
 		20DBFD791B4FD3F5009134D0 /* Dao */ = {
 			isa = PBXGroup;
 			children = (
-				20859AAB1B64DE3500580ED3 /* Assistant */,
+				20E1221A1B705D8300F90BD3 /* Feed */,
 				20859AAC1B64DE3500580ED3 /* Contact */,
 				20859AAD1B64DE3500580ED3 /* Message */,
 				20859AAE1B64DE3500580ED3 /* Provision */,
@@ -229,21 +223,12 @@
 		20DBFD7D1B4FD3F5009134D0 /* Manager */ = {
 			isa = PBXGroup;
 			children = (
+				20E122141B705D3C00F90BD3 /* Feed */,
 				20859A791B64BD4C00580ED3 /* Provision */,
-				20DBFD7E1B4FD3F5009134D0 /* Assistant */,
 				20DBFD7F1B4FD3F5009134D0 /* Contact */,
 				20DBFD801B4FD3F5009134D0 /* Message */,
 			);
 			path = Manager;
-			sourceTree = "<group>";
-		};
-		20DBFD7E1B4FD3F5009134D0 /* Assistant */ = {
-			isa = PBXGroup;
-			children = (
-				20859A7D1B64BD7200580ED3 /* AssistantManager.h */,
-				20859A7E1B64BD7200580ED3 /* AssistantManager.m */,
-			);
-			path = Assistant;
 			sourceTree = "<group>";
 		};
 		20DBFD7F1B4FD3F5009134D0 /* Contact */ = {
@@ -278,6 +263,22 @@
 				20DBFD851B4FD3F5009134D0 /* YUtils+Component.m */,
 			);
 			path = Utils;
+			sourceTree = "<group>";
+		};
+		20E122141B705D3C00F90BD3 /* Feed */ = {
+			isa = PBXGroup;
+			children = (
+				20E122151B705D3C00F90BD3 /* FeedManager.h */,
+				20E122161B705D3C00F90BD3 /* FeedManager.m */,
+			);
+			path = Feed;
+			sourceTree = "<group>";
+		};
+		20E1221A1B705D8300F90BD3 /* Feed */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Feed;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -369,9 +370,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				20859A851B64BD9000580ED3 /* MessageManager.m in Sources */,
-				20859A7F1B64BD7200580ED3 /* AssistantManager.m in Sources */,
 				20859A7C1B64BD5B00580ED3 /* ProvisionManager.m in Sources */,
 				20DBFD861B4FD3F5009134D0 /* YUtils+Component.m in Sources */,
+				20E122171B705D3C00F90BD3 /* FeedManager.m in Sources */,
 				20859A821B64BD8500580ED3 /* ContactManager.m in Sources */,
 				20859A941B64C06A00580ED3 /* LoginAction.m in Sources */,
 			);

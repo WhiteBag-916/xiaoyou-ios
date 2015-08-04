@@ -16,6 +16,11 @@
 		20DBFD631B4FA7E1009134D0 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 20DBFD621B4FA7E1009134D0 /* AppDelegate.m */; };
 		20DC87F21B5F3DC70019DC7F /* ChooseSchoolViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20DC87F11B5F3DC70019DC7F /* ChooseSchoolViewController.m */; };
 		20DC87F71B5F3F4C0019DC7F /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 20DC87F61B5F3F4C0019DC7F /* Login.storyboard */; };
+		20E122131B705C2100F90BD3 /* XYTabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20E122121B705C2100F90BD3 /* XYTabBarViewController.m */; };
+		20E122211B705ED200F90BD3 /* FeedListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20E122201B705ED200F90BD3 /* FeedListViewController.m */; };
+		20E122231B705EDE00F90BD3 /* FeedList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 20E122221B705EDE00F90BD3 /* FeedList.storyboard */; };
+		20E122251B705F5800F90BD3 /* Message.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 20E122241B705F5800F90BD3 /* Message.storyboard */; };
+		20E122271B705F7300F90BD3 /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 20E122261B705F7300F90BD3 /* Profile.storyboard */; };
 		34AF80435283028D453BFBFC /* libPods-XiaoYou.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 77B574BED9D4FF3F4BFAA9FE /* libPods-XiaoYou.a */; };
 /* End PBXBuildFile section */
 
@@ -49,6 +54,13 @@
 		20DC87F01B5F3DC70019DC7F /* ChooseSchoolViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChooseSchoolViewController.h; sourceTree = "<group>"; };
 		20DC87F11B5F3DC70019DC7F /* ChooseSchoolViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChooseSchoolViewController.m; sourceTree = "<group>"; };
 		20DC87F61B5F3F4C0019DC7F /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
+		20E122111B705C2100F90BD3 /* XYTabBarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYTabBarViewController.h; sourceTree = "<group>"; };
+		20E122121B705C2100F90BD3 /* XYTabBarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYTabBarViewController.m; sourceTree = "<group>"; };
+		20E1221F1B705ED200F90BD3 /* FeedListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedListViewController.h; sourceTree = "<group>"; };
+		20E122201B705ED200F90BD3 /* FeedListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedListViewController.m; sourceTree = "<group>"; };
+		20E122221B705EDE00F90BD3 /* FeedList.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = FeedList.storyboard; sourceTree = "<group>"; };
+		20E122241B705F5800F90BD3 /* Message.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Message.storyboard; sourceTree = "<group>"; };
+		20E122261B705F7300F90BD3 /* Profile.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
 		234A25BD9458AE14C70CE430 /* Pods-XiaoYou.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XiaoYou.debug.xcconfig"; path = "../Pods/Target Support Files/Pods-XiaoYou/Pods-XiaoYou.debug.xcconfig"; sourceTree = "<group>"; };
 		77B574BED9D4FF3F4BFAA9FE /* libPods-XiaoYou.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-XiaoYou.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F531E541C4347E287F02139F /* Pods-XiaoYou.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XiaoYou.release.xcconfig"; path = "../Pods/Target Support Files/Pods-XiaoYou/Pods-XiaoYou.release.xcconfig"; sourceTree = "<group>"; };
@@ -101,7 +113,7 @@
 			children = (
 				20DBFD601B4FA7E1009134D0 /* Main */,
 				20DC87EF1B5F3D570019DC7F /* Login */,
-				20DBFD6E1B4FA90B009134D0 /* Assistant */,
+				20E122181B705D4E00F90BD3 /* Feed */,
 				20DBFD6F1B4FA90B009134D0 /* Contact */,
 				20DBFD701B4FA90B009134D0 /* Message */,
 				20DBFD711B4FA90B009134D0 /* Profile */,
@@ -159,15 +171,10 @@
 			children = (
 				20DBFD611B4FA7E1009134D0 /* AppDelegate.h */,
 				20DBFD621B4FA7E1009134D0 /* AppDelegate.m */,
+				20E122111B705C2100F90BD3 /* XYTabBarViewController.h */,
+				20E122121B705C2100F90BD3 /* XYTabBarViewController.m */,
 			);
 			path = Main;
-			sourceTree = "<group>";
-		};
-		20DBFD6E1B4FA90B009134D0 /* Assistant */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Assistant;
 			sourceTree = "<group>";
 		};
 		20DBFD6F1B4FA90B009134D0 /* Contact */ = {
@@ -180,6 +187,7 @@
 		20DBFD701B4FA90B009134D0 /* Message */ = {
 			isa = PBXGroup;
 			children = (
+				20E122241B705F5800F90BD3 /* Message.storyboard */,
 			);
 			path = Message;
 			sourceTree = "<group>";
@@ -187,6 +195,7 @@
 		20DBFD711B4FA90B009134D0 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
+				20E122261B705F7300F90BD3 /* Profile.storyboard */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -213,6 +222,40 @@
 			children = (
 			);
 			path = CommonView;
+			sourceTree = "<group>";
+		};
+		20E122181B705D4E00F90BD3 /* Feed */ = {
+			isa = PBXGroup;
+			children = (
+				20E1221C1B705EBD00F90BD3 /* FeedDetail */,
+				20E1221D1B705EBD00F90BD3 /* FeedList */,
+				20E1221E1B705EBD00F90BD3 /* NewFeed */,
+			);
+			path = Feed;
+			sourceTree = "<group>";
+		};
+		20E1221C1B705EBD00F90BD3 /* FeedDetail */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = FeedDetail;
+			sourceTree = "<group>";
+		};
+		20E1221D1B705EBD00F90BD3 /* FeedList */ = {
+			isa = PBXGroup;
+			children = (
+				20E1221F1B705ED200F90BD3 /* FeedListViewController.h */,
+				20E122201B705ED200F90BD3 /* FeedListViewController.m */,
+				20E122221B705EDE00F90BD3 /* FeedList.storyboard */,
+			);
+			path = FeedList;
+			sourceTree = "<group>";
+		};
+		20E1221E1B705EBD00F90BD3 /* NewFeed */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = NewFeed;
 			sourceTree = "<group>";
 		};
 		888C5F0F224BB9F4ECBAEB96 /* Pods */ = {
@@ -307,6 +350,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				20DC87F71B5F3F4C0019DC7F /* Login.storyboard in Resources */,
+				20E122231B705EDE00F90BD3 /* FeedList.storyboard in Resources */,
+				20E122271B705F7300F90BD3 /* Profile.storyboard in Resources */,
+				20E122251B705F5800F90BD3 /* Message.storyboard in Resources */,
 				200E39871B4E818B000B587B /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -361,6 +407,8 @@
 				20DC87F21B5F3DC70019DC7F /* ChooseSchoolViewController.m in Sources */,
 				20DBFD631B4FA7E1009134D0 /* AppDelegate.m in Sources */,
 				200E397C1B4E818B000B587B /* main.m in Sources */,
+				20E122211B705ED200F90BD3 /* FeedListViewController.m in Sources */,
+				20E122131B705C2100F90BD3 /* XYTabBarViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

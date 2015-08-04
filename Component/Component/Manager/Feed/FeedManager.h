@@ -1,5 +1,5 @@
 //
-//  AssistantManager.h
+//  FeedManager.h
 //  Component
 //
 //  Created by 熊宸 on 15/7/26.
@@ -9,7 +9,7 @@
 #import "YManager.h"
 #import "YAction.h"
 
-@interface AssistantManager : YManager<YManager>
-AS_SINGLETON(AssistantManager);
+@interface FeedManager : YManager<YManager>
+AS_SINGLETON(FeedManager);
 
 @end

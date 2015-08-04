@@ -9,9 +9,10 @@
 #import "AppDelegate.h"
 #import "ChooseSchoolViewController.h"
 #import "ProvisionManager.h"
-#import "AssistantManager.h"
+#import "FeedManager.h"
 #import "ContactManager.h"
 #import "MessageManager.h"
+#import "XYTabBarViewController.h"
 
 @interface AppDelegate ()
 
@@ -28,15 +29,17 @@
     
     //注册组件
     [ProvisionManager sharedInstance];
-    [AssistantManager sharedInstance];
+    [FeedManager sharedInstance];
     [MessageManager sharedInstance];
     [ContactManager sharedInstance];
     
     self.window = [[UIWindow alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)];
     //初始化登陆控制器
-    UIStoryboard * chooseSchool = [UIStoryboard storyboardWithName:@"Login" bundle:[NSBundle mainBundle]];
-    UINavigationController * home = [chooseSchool instantiateInitialViewController];
-    self.window.rootViewController = home;
+//    UIStoryboard * chooseSchool = [UIStoryboard storyboardWithName:@"Login" bundle:[NSBundle mainBundle]];
+//    UINavigationController * home = [chooseSchool instantiateInitialViewController];
+//    self.window.rootViewController = home;
+    
+    self.window.rootViewController = [[XYTabBarViewController alloc]init];
     
     [self.window makeKeyAndVisible];
     
