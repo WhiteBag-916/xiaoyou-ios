@@ -11,6 +11,7 @@
 		20859AA31B64CB7E00580ED3 /* LoginResp.m in Sources */ = {isa = PBXBuildFile; fileRef = 20859AA01B64CB7E00580ED3 /* LoginResp.m */; };
 		20859AB31B64E2F600580ED3 /* YModel+ActionMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 20859AB21B64E2F600580ED3 /* YModel+ActionMessage.m */; };
 		20DBFD271B4FA0E5009134D0 /* libModel.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 20DBFD1B1B4FA0E5009134D0 /* libModel.a */; };
+		332D32681B71E9B400B69E96 /* PushInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 332D32671B71E9B400B69E96 /* PushInfo.m */; };
 		333E95D01B70B6DF0001059D /* CheckAccountModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 333E95CF1B70B6DF0001059D /* CheckAccountModel.m */; };
 		333E95D31B70B7050001059D /* SenderListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 333E95D21B70B7050001059D /* SenderListModel.m */; };
 		333E95D61B70B7250001059D /* LinkManModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 333E95D51B70B7250001059D /* LinkManModel.m */; };
@@ -56,6 +57,8 @@
 		20DBFD1B1B4FA0E5009134D0 /* libModel.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libModel.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		20DBFD261B4FA0E5009134D0 /* ModelTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ModelTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		20DBFD2C1B4FA0E5009134D0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		332D32661B71E9B400B69E96 /* PushInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PushInfo.h; sourceTree = "<group>"; };
+		332D32671B71E9B400B69E96 /* PushInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PushInfo.m; sourceTree = "<group>"; };
 		333E95CE1B70B6DF0001059D /* CheckAccountModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheckAccountModel.h; sourceTree = "<group>"; };
 		333E95CF1B70B6DF0001059D /* CheckAccountModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckAccountModel.m; sourceTree = "<group>"; };
 		333E95D11B70B7050001059D /* SenderListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SenderListModel.h; sourceTree = "<group>"; };
@@ -198,6 +201,8 @@
 				333E95DE1B70B7650001059D /* SystemPushInfoListModel.m */,
 				333E95E31B70B78C0001059D /* LastSystemPushInfoListModel.h */,
 				333E95E41B70B78C0001059D /* LastSystemPushInfoListModel.m */,
+				332D32661B71E9B400B69E96 /* PushInfo.h */,
+				332D32671B71E9B400B69E96 /* PushInfo.m */,
 			);
 			path = Contact;
 			sourceTree = "<group>";
@@ -310,6 +315,7 @@
 				333E95D91B70B7400001059D /* addFriendPushInfoListModel.m in Sources */,
 				20859AB31B64E2F600580ED3 /* YModel+ActionMessage.m in Sources */,
 				20859AA31B64CB7E00580ED3 /* LoginResp.m in Sources */,
+				332D32681B71E9B400B69E96 /* PushInfo.m in Sources */,
 				333E95EA1B70B7AB0001059D /* SchoolDetailModel.m in Sources */,
 				333E95D61B70B7250001059D /* LinkManModel.m in Sources */,
 				333E95E21B70B7820001059D /* UpdateAvatarModel.m in Sources */,
