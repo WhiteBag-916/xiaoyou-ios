@@ -6,10 +6,10 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "YModel.h"
 
 
-
-@interface SchoolListModel : NSObject <NSCoding, NSCopying>
+@interface SchoolListModel : YModel <NSCoding, NSCopying>
 
 @property (nonatomic, assign) id introduce;
 @property (nonatomic, assign) id history;

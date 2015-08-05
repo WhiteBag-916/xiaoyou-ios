@@ -6,10 +6,10 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "YModel.h"
 
 
-
-@interface UpdateAvatarModel : NSObject <NSCoding, NSCopying>
+@interface UpdateAvatarModel : YModel <NSCoding, NSCopying>
 
 @property (nonatomic, strong) NSString *result;
 @property (nonatomic, strong) NSString *url;

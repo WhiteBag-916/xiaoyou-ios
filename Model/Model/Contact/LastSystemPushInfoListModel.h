@@ -6,10 +6,11 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "YModel.h"
 
 @class PushInfo;
 
-@interface LastSystemPushInfoListModel : NSObject <NSCoding, NSCopying>
+@interface LastSystemPushInfoListModel : YModel <NSCoding, NSCopying>
 
 @property (nonatomic, strong) PushInfo *pushInfo;
 @property (nonatomic, assign) double count;

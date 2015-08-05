@@ -6,10 +6,10 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "YModel.h"
 
 
-
-@interface SenderListModel : NSObject <NSCoding, NSCopying>
+@interface SenderListModel : YModel <NSCoding, NSCopying>
 
 @property (nonatomic, strong) NSString *flag;
 @property (nonatomic, assign) double badgeValue;

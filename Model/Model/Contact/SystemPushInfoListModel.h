@@ -6,10 +6,10 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "YModel.h"
 
 
-
-@interface SystemPushInfoListModel : NSObject <NSCoding, NSCopying>
+@interface SystemPushInfoListModel : YModel <NSCoding, NSCopying>
 
 @property (nonatomic, assign) double internalBaseClassIdentifier;
 @property (nonatomic, assign) id tablename;

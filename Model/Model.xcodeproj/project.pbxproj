@@ -187,9 +187,9 @@
 			isa = PBXGroup;
 			children = (
 				333E95D11B70B7050001059D /* SenderListModel.h */,
+				333E95D21B70B7050001059D /* SenderListModel.m */,
 				333E95D41B70B7250001059D /* LinkManModel.h */,
 				333E95D51B70B7250001059D /* LinkManModel.m */,
-				333E95D21B70B7050001059D /* SenderListModel.m */,
 				333E95D71B70B7400001059D /* addFriendPushInfoListModel.h */,
 				333E95D81B70B7400001059D /* addFriendPushInfoListModel.m */,
 				333E95DA1B70B75E0001059D /* PushInfoListModel.h */,

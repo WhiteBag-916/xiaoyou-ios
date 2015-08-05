@@ -6,10 +6,10 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "YModel.h"
 
 
-
-@interface ReceiveAuthCodeModel : NSObject <NSCoding, NSCopying>
+@interface ReceiveAuthCodeModel : YModel <NSCoding, NSCopying>
 
 @property (nonatomic, strong) NSString *time;
 

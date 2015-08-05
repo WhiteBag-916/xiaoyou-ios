@@ -6,10 +6,10 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "YModel.h"
 
 
-
-@interface LinkManModel : NSObject <NSCoding, NSCopying>
+@interface LinkManModel : YModel <NSCoding, NSCopying>
 
 @property (nonatomic, assign) double internalBaseClassIdentifier;
 @property (nonatomic, strong) NSString *faculty;

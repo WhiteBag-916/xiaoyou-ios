@@ -6,10 +6,10 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "YModel.h"
 
 
-
-@interface CheckAccountModel : NSObject <NSCoding, NSCopying>
+@interface CheckAccountModel : YModel <NSCoding, NSCopying>
 
 @property (nonatomic, strong) NSString *mobileBindMessage;
 @property (nonatomic, assign) BOOL mobileBindFlg;

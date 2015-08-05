@@ -6,10 +6,10 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "YModel.h"
 
 
-
-@interface addFriendPushInfoListModel : NSObject <NSCoding, NSCopying>
+@interface addFriendPushInfoListModel : YModel <NSCoding, NSCopying>
 
 @property (nonatomic, assign) double idRead;
 @property (nonatomic, assign) id content;
