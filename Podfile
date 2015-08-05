@@ -13,6 +13,7 @@ pod 'UMengAnalytics-NO-IDFA'
 pod 'KLCircleViewController'
 pod 'RegExCategories'
 pod 'iOS-Slide-Menu'
+pod 'EaseMobSDK'
 
 xcodeproj 'XiaoYou/XiaoYou.xcodeproj'
 end
