@@ -58,6 +58,8 @@
 		20DBFD851B4FD3F5009134D0 /* YUtils+Component.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "YUtils+Component.m"; sourceTree = "<group>"; };
 		20E122151B705D3C00F90BD3 /* FeedManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedManager.h; sourceTree = "<group>"; };
 		20E122161B705D3C00F90BD3 /* FeedManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedManager.m; sourceTree = "<group>"; };
+		20E3417C1B71FF6F008CADC3 /* YCPEnumDefine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YCPEnumDefine.h; sourceTree = "<group>"; };
+		20E3417D1B71FF97008CADC3 /* YCPFontDefine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YCPFontDefine.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -212,6 +214,8 @@
 		20DBFD7A1B4FD3F5009134D0 /* Define */ = {
 			isa = PBXGroup;
 			children = (
+				20E3417D1B71FF97008CADC3 /* YCPFontDefine.h */,
+				20E3417C1B71FF6F008CADC3 /* YCPEnumDefine.h */,
 				20859A871B64BF3200580ED3 /* YCPUrlDefine.h */,
 				20859A861B64BF0A00580ED3 /* YCPShareDataDefine.h */,
 				20DBFD7B1B4FD3F5009134D0 /* YCPDefine.h */,

@@ -12,5 +12,7 @@
 #import "YCPSystemDefine.h"
 #import "YCPShareDataDefine.h"
 #import "YCPUrlDefine.h"
+#import "YCPFontDefine.h"
+#import "YCPEnumDefine.h"
 
 #endif
