@@ -14,6 +14,7 @@
 		20DBFD4A1B4FA0F5009134D0 /* libComponent.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 20DBFD3E1B4FA0F5009134D0 /* libComponent.a */; };
 		20DBFD861B4FD3F5009134D0 /* YUtils+Component.m in Sources */ = {isa = PBXBuildFile; fileRef = 20DBFD851B4FD3F5009134D0 /* YUtils+Component.m */; };
 		20E122171B705D3C00F90BD3 /* FeedManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 20E122161B705D3C00F90BD3 /* FeedManager.m */; };
+		20E341801B720A54008CADC3 /* ProfileDao.m in Sources */ = {isa = PBXBuildFile; fileRef = 20E3417F1B720A54008CADC3 /* ProfileDao.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,6 +61,9 @@
 		20E122161B705D3C00F90BD3 /* FeedManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedManager.m; sourceTree = "<group>"; };
 		20E3417C1B71FF6F008CADC3 /* YCPEnumDefine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YCPEnumDefine.h; sourceTree = "<group>"; };
 		20E3417D1B71FF97008CADC3 /* YCPFontDefine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YCPFontDefine.h; sourceTree = "<group>"; };
+		20E3417E1B720A54008CADC3 /* ProfileDao.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileDao.h; sourceTree = "<group>"; };
+		20E3417F1B720A54008CADC3 /* ProfileDao.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileDao.m; sourceTree = "<group>"; };
+		20E341811B720A80008CADC3 /* ProfileSQL.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProfileSQL.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,6 +120,8 @@
 		20859AAE1B64DE3500580ED3 /* Provision */ = {
 			isa = PBXGroup;
 			children = (
+				20E3417E1B720A54008CADC3 /* ProfileDao.h */,
+				20E3417F1B720A54008CADC3 /* ProfileDao.m */,
 			);
 			path = Provision;
 			sourceTree = "<group>";
@@ -256,6 +262,7 @@
 		20DBFD821B4FD3F5009134D0 /* SQL */ = {
 			isa = PBXGroup;
 			children = (
+				20E341811B720A80008CADC3 /* ProfileSQL.h */,
 			);
 			path = SQL;
 			sourceTree = "<group>";
@@ -379,6 +386,7 @@
 				20E122171B705D3C00F90BD3 /* FeedManager.m in Sources */,
 				20859A821B64BD8500580ED3 /* ContactManager.m in Sources */,
 				20859A941B64C06A00580ED3 /* LoginAction.m in Sources */,
+				20E341801B720A54008CADC3 /* ProfileDao.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -10,6 +10,7 @@
 		045F09261AF1CE2E00804EC7 /* YTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 045F09251AF1CE2E00804EC7 /* YTextView.m */; };
 		048F69141AF2363900F67C67 /* YAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 048F69131AF2363900F67C67 /* YAlertView.m */; };
 		20AEFE521B40FBA600975B84 /* NSDictionary+CLLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 20AEFE511B40FBA600975B84 /* NSDictionary+CLLocation.m */; };
+		20DD4B281B73039B007C352C /* YTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 20DD4B271B73039B007C352C /* YTableView.m */; };
 		2803C92C1AE3BA60002303B6 /* YManagerCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 2803C92B1AE3BA60002303B6 /* YManagerCenter.m */; };
 		2803C9301AE3BD42002303B6 /* YUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 2803C92E1AE3BD42002303B6 /* YUtils.m */; };
 		2803C9331AE406E5002303B6 /* YModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2803C9321AE406E5002303B6 /* YModel.m */; };
@@ -77,6 +78,8 @@
 		048F69131AF2363900F67C67 /* YAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YAlertView.m; sourceTree = "<group>"; };
 		20AEFE501B40FBA600975B84 /* NSDictionary+CLLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+CLLocation.h"; sourceTree = "<group>"; };
 		20AEFE511B40FBA600975B84 /* NSDictionary+CLLocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+CLLocation.m"; sourceTree = "<group>"; };
+		20DD4B261B73039B007C352C /* YTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YTableView.h; sourceTree = "<group>"; };
+		20DD4B271B73039B007C352C /* YTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YTableView.m; sourceTree = "<group>"; };
 		2803C92A1AE3BA60002303B6 /* YManagerCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YManagerCenter.h; sourceTree = "<group>"; };
 		2803C92B1AE3BA60002303B6 /* YManagerCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YManagerCenter.m; sourceTree = "<group>"; };
 		2803C92D1AE3BD42002303B6 /* YUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YUtils.h; sourceTree = "<group>"; };
@@ -357,6 +360,8 @@
 				048F69131AF2363900F67C67 /* YAlertView.m */,
 				28DB2C871B2BD553000FB76B /* YNavigationController.h */,
 				28DB2C881B2BD553000FB76B /* YNavigationController.m */,
+				20DD4B261B73039B007C352C /* YTableView.h */,
+				20DD4B271B73039B007C352C /* YTableView.m */,
 			);
 			path = YUI;
 			sourceTree = "<group>";
@@ -478,6 +483,7 @@
 				2848A13B1ADED603007E2682 /* YLog.m in Sources */,
 				28CBB0DC1ADAE3C300D69527 /* YQueue.m in Sources */,
 				2873DBD61AE00E7800F5FD3E /* YFMDatabase.m in Sources */,
+				20DD4B281B73039B007C352C /* YTableView.m in Sources */,
 				2803C9331AE406E5002303B6 /* YModel.m in Sources */,
 				2862E3701AE0480300AD0257 /* YHTTPRequestAction.m in Sources */,
 				20AEFE521B40FBA600975B84 /* NSDictionary+CLLocation.m in Sources */,
