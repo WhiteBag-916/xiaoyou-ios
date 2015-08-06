@@ -24,8 +24,6 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    self.title = @"人脉";
-    
     [self initView];
 }
 
