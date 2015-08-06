@@ -9,6 +9,7 @@
 #ifndef Component_YCPSystemDefine_h
 #define Component_YCPSystemDefine_h
 
+//#define 
 
 #define isScreen3_5Inch ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(640, 960), [[UIScreen mainScreen] currentMode].size) : NO)
 

@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="AcQ-jW-zD3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7531" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="AcQ-jW-zD3">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7520"/>
     </dependencies>
     <scenes>
         <!--Navigation Controller-->
@@ -13,17 +14,17 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="Djy-Zf-jZc" kind="relationship" relationship="rootViewController" id="mTB-SA-srI"/>
+                        <segue destination="Djy-Zf-jZc" kind="relationship" relationship="rootViewController" id="8sx-RO-8yw"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vS0-oS-vXx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-186" y="448"/>
+            <point key="canvasLocation" x="-191" y="425"/>
         </scene>
-        <!--View Controller-->
+        <!--Message And Contacts View Controller-->
         <scene sceneID="cpc-WN-o0R">
             <objects>
-                <viewController id="Djy-Zf-jZc" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="XYMessageAndContactsViewController" id="Djy-Zf-jZc" customClass="XYMessageAndContactsViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="GMz-OL-bq4"/>
                         <viewControllerLayoutGuide type="bottom" id="VlE-86-nrX"/>
@@ -33,11 +34,57 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="VPC-53-cam"/>
+                    <navigationItem key="navigationItem" id="VPC-53-cam">
+                        <nil key="title"/>
+                        <view key="titleView" contentMode="scaleToFill" id="D2r-C6-wit">
+                            <rect key="frame" x="74" y="6" width="172" height="33"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6p4-cO-ezo">
+                                    <rect key="frame" x="86" y="0.0" width="86" height="33"/>
+                                    <color key="backgroundColor" red="0.98721857165207882" green="0.97947696439154175" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <state key="normal" title="好友">
+                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="tapContactsButton:" destination="Djy-Zf-jZc" eventType="touchUpInside" id="Ug5-eQ-jrv"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W4G-x9-8dD">
+                                    <rect key="frame" x="0.0" y="0.0" width="86" height="33"/>
+                                    <color key="backgroundColor" red="0.030039556056877026" green="0.31760955220572562" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <state key="normal" title="聊天">
+                                        <color key="titleColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
+                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="tapChatButton:" destination="Djy-Zf-jZc" eventType="touchUpInside" id="cdh-PK-qCb"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                            <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <constraints>
+                                <constraint firstAttribute="bottom" secondItem="W4G-x9-8dD" secondAttribute="bottom" id="Bn4-E6-H0N"/>
+                                <constraint firstItem="6p4-cO-ezo" firstAttribute="leading" secondItem="W4G-x9-8dD" secondAttribute="trailing" id="SA9-QJ-WOY"/>
+                                <constraint firstItem="6p4-cO-ezo" firstAttribute="leading" secondItem="W4G-x9-8dD" secondAttribute="trailing" id="XGe-ih-aj0"/>
+                                <constraint firstAttribute="trailing" secondItem="6p4-cO-ezo" secondAttribute="trailing" id="Yns-BH-HWJ"/>
+                                <constraint firstItem="6p4-cO-ezo" firstAttribute="top" secondItem="D2r-C6-wit" secondAttribute="top" id="eEZ-ew-ggY"/>
+                                <constraint firstItem="W4G-x9-8dD" firstAttribute="top" secondItem="D2r-C6-wit" secondAttribute="top" id="ig8-g1-d2q"/>
+                                <constraint firstItem="W4G-x9-8dD" firstAttribute="leading" secondItem="D2r-C6-wit" secondAttribute="leading" id="nc5-fi-hqU"/>
+                                <constraint firstAttribute="bottom" secondItem="6p4-cO-ezo" secondAttribute="bottom" id="re9-Pa-Dus"/>
+                                <constraint firstItem="6p4-cO-ezo" firstAttribute="width" secondItem="W4G-x9-8dD" secondAttribute="width" id="sUv-s8-g6k"/>
+                            </constraints>
+                        </view>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="chatButton" destination="W4G-x9-8dD" id="HSp-Hw-Bqr"/>
+                        <outlet property="contactsButton" destination="6p4-cO-ezo" id="Sv1-ih-PdA"/>
+                        <outlet property="navigationView" destination="D2r-C6-wit" id="ReJ-Qp-8LH"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dF9-wn-OyA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="190" y="448"/>
+            <point key="canvasLocation" x="218" y="425"/>
         </scene>
     </scenes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
