@@ -8,8 +8,13 @@
 
 #import "FeedListViewController.h"
 #import "SlideNavigationController.h"
+#import "CommonSwitchView.h"
+#import "TagListViewController.h"
 
 @interface FeedListViewController ()
+
+@property (strong, nonatomic) CommonSwitchView *commonSwitchView;
+@property (strong, nonatomic) TagListViewController *tagListVC;
 
 @end
 
@@ -21,7 +26,7 @@
     
     self.title = @"人脉";
     
-    [self initTagList];
+    [self initView];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -36,13 +41,27 @@
     [SlideNavigationController sharedInstance].enableSwipeGesture = NO;
 }
 
-//初始化侧拉
-- (void)initTagList
+- (void)initView
 {
-    UIStoryboard *tagListStoryboard = [UIStoryboard storyboardWithName:@"TagList" bundle:[NSBundle mainBundle]];
+    //侧拉
+    if (nil == _tagListVC)
+    {
+        _tagListVC = [[TagListViewController alloc] init];
+        [SlideNavigationController sharedInstance].leftMenu = _tagListVC;
+    }
     
-    UIViewController *tagListViewCotroller = [tagListStoryboard instantiateInitialViewController];
-    [SlideNavigationController sharedInstance].leftMenu = tagListViewCotroller;
+    //switch
+    _commonSwitchView = [[CommonSwitchView alloc] initWithFrame:CGRectMake(0, 0, 127, 27) textArray:@[@"feed", @"contact"]];
+    //改变
+    [_commonSwitchView changedType:^(CommonSwitchType type) {
+        [self changeSwitchView:type];
+    }];
+    self.navigationItem.titleView = _commonSwitchView;
+}
+
+- (void)changeSwitchView:(CommonSwitchType)type;
+{
+    
 }
 
 /*
