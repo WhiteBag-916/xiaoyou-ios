@@ -52,13 +52,13 @@
     
     //switch
     _commonSwitchView = [[CommonSwitchView alloc] initWithFrame:CGRectMake(0, 0, 127, 27) textArray:@[@"feed", @"contact"]];
-    //改变
     [_commonSwitchView changedType:^(CommonSwitchType type) {
         [self changeSwitchView:type];
     }];
     self.navigationItem.titleView = _commonSwitchView;
 }
 
+//改变switch
 - (void)changeSwitchView:(CommonSwitchType)type;
 {
     
