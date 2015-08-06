@@ -15,6 +15,6 @@ pod 'RegExCategories'
 pod 'iOS-Slide-Menu'
 pod 'EaseMobSDK'
 pod 'MJRefresh'
-
+pod 'Masonry'
 xcodeproj 'XiaoYou/XiaoYou.xcodeproj'
 end

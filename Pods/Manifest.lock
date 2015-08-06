@@ -28,6 +28,7 @@ PODS:
     - FMDB/common
   - iOS-Slide-Menu (1.4.6)
   - KLCircleViewController (1.0)
+  - Masonry (0.6.2)
   - MJExtension (2.4.4)
   - MJRefresh (2.3.2)
   - Reachability (3.2)
@@ -44,6 +45,7 @@ DEPENDENCIES:
   - FMDB
   - iOS-Slide-Menu
   - KLCircleViewController
+  - Masonry
   - MJExtension
   - MJRefresh
   - RegExCategories
@@ -57,6 +59,7 @@ SPEC CHECKSUMS:
   FMDB: 96e8f1bcc1329e269330f99770ad4285d9003e52
   iOS-Slide-Menu: 3a8b157f87694fce888899f169e05b433575ff90
   KLCircleViewController: e204eeb583d6a879f9144b78f12236122088d689
+  Masonry: 362e8a1cc0beada4a4c4832d5e863da2a51533be
   MJExtension: fabc9e6084f14363ed6828490a98ee516c9cbbfe
   MJRefresh: 0f6f5e8387970607c26080b44058b229a23065d7
   Reachability: 33e18b67625424e47b6cde6d202dce689ad7af96

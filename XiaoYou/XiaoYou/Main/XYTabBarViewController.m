@@ -8,6 +8,9 @@
 
 #import "XYTabBarViewController.h"
 #import "SlideNavigationController.h"
+#import "ProfileViewController.h"
+#import "FeedListViewController.h"
+#import "XYMessageAndContactsViewController.h"
 
 #define kTag_TabBar_Base 0
 #define kTag_TabBar_Message kTag_TabBar_Base + 1
@@ -32,13 +35,9 @@
 
 - (void)initControllers
 {
-    UIStoryboard *messageStoryBoard = [UIStoryboard storyboardWithName:@"Message" bundle:[NSBundle mainBundle]];
-    UIStoryboard *feedListStoryBoard = [UIStoryboard storyboardWithName:@"FeedList" bundle:[NSBundle mainBundle]];
-    UIStoryboard *profileStoryBoard = [UIStoryboard storyboardWithName:@"Profile" bundle:[NSBundle mainBundle]];
-    
-    UINavigationController *messageViewCotroller = [messageStoryBoard instantiateInitialViewController];
-    UINavigationController *feedListViewCotroller = [feedListStoryBoard instantiateInitialViewController];
-    UINavigationController *profileViewCotroller = [profileStoryBoard instantiateInitialViewController];
+    UINavigationController *messageViewCotroller = [[UINavigationController alloc] initWithRootViewController:[[XYMessageAndContactsViewController alloc] init]];
+    UINavigationController *feedListViewCotroller = [[UINavigationController alloc] initWithRootViewController:[[FeedListViewController alloc] init]];
+    UINavigationController *profileViewCotroller = [[UINavigationController alloc] initWithRootViewController:[[ProfileViewController alloc] init]];
     
     //消息
     UITabBarItem *messageItem = [[UITabBarItem alloc] initWithTitle:@"消息"
