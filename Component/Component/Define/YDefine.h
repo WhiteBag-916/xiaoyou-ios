@@ -12,7 +12,6 @@
 #import "YSystemDefine.h"
 #import "YShareDataDefine.h"
 #import "YUrlDefine.h"
-#import "YFontDefine.h"
-#import "YEnumDefine.h"
+#import "YControlsDefine.h"
 
 #endif

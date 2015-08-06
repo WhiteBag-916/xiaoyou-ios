@@ -7,7 +7,7 @@
 //
 
 #import "YUtils.h"
-#import "YCPDefine.h"
+#import "YDefine.h"
 #import "YFoundation.h"
 #import "YModel+ActionMessage.h"
 

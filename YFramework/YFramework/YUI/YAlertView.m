@@ -1,9 +1,9 @@
 //
 //  Alert.m
-//  YCPai
+//  Xiaoyou
 //
 //  Created by mac on 15/4/30.
-//  Copyright (c) 2015年 YCPai. All rights reserved.
+//  Copyright (c) 2015年 xc. All rights reserved.
 //
 
 #import "YAlertView.h"

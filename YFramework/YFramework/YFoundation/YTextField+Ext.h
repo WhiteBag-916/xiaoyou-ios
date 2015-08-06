@@ -3,7 +3,7 @@
 //  YFramework
 //
 //  Created by 石岳 on 15/5/25.
-//  Copyright (c) 2015年 YCPai. All rights reserved.
+//  Copyright (c) 2015年 xc. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>

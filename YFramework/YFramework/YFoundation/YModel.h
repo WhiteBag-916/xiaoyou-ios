@@ -33,7 +33,7 @@
 + (NSArray *)modelObjectArrayWithKeyValuesArray:(NSArray *)keyValuesArray;
 
 /**
- *  @author YCPai
+ *  @author Abc
  *
  *  序列化反序列化方法
  *
