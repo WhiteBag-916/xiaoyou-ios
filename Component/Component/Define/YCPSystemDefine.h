@@ -9,8 +9,6 @@
 #ifndef Component_YCPSystemDefine_h
 #define Component_YCPSystemDefine_h
 
-//#define 
-
 #define isScreen3_5Inch ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(640, 960), [[UIScreen mainScreen] currentMode].size) : NO)
 
 #define isScreen4Inch ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(640, 1136), [[UIScreen mainScreen] currentMode].size) : NO)
@@ -24,6 +22,9 @@
 
 static const NSInteger kLayoutPriorityDefaultVeryHigh = 999;
 
+#define SCREEN_WIDTH [UIScreen mainScreen].bounds.size.width
+#define SCREEN_HEIGHT [UIScreen mainScreen].bounds.size.height
+
 #define ADDIPHONE5HEIGHT  (isScreen4Inch?88:0)
 #define KNavigationBarheight  64.0
 #define KTabBarheight  50.0
@@ -36,5 +37,6 @@ static const NSInteger kLayoutPriorityDefaultVeryHigh = 999;
 #define kNotificationListNum    10
 #define kConversationListNum    5
 #define kPersonPageNum           9
+
 
 #endif
