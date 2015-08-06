@@ -21,6 +21,8 @@
 {
     if (self = [super initWithFrame:frame])
     {
+        self.sectionIndexBackgroundColor = [UIColor whiteColor];
+        self.sectionIndexColor = [UIColor blackColor];
         self.delegate = self;
         self.dataSource = self;
         [self registerClass:[ContactsTableViewCell class] forCellReuseIdentifier:kContactsTableViewCell];
@@ -32,7 +34,7 @@
 
 - (BOOL)showHeaderRefresh
 {
-    return YES;
+    return NO;
 }
 
 - (BOOL)showFooterRefresh
@@ -49,7 +51,7 @@
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 10;
+    return 20;
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -66,7 +68,7 @@
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 85;
+    return 60;
 }
 
 -(BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath

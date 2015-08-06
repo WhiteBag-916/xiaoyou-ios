@@ -12,6 +12,7 @@
 #import "ContactsTableView.h"
 #import "MessageTableView.h"
 #import "Masonry.h"
+#import "CommonSwitchView.h"
 
 @interface XYMessageAndContactsViewController ()
 @property (weak, nonatomic) UIView * navigationView;
@@ -19,6 +20,7 @@
 @property (weak, nonatomic) UIButton *contactsButton;
 @property (strong, nonatomic) MessageTableView *messageTableView;
 @property (strong, nonatomic) ContactsTableView *contactsTableView;
+@property (strong, nonatomic) CommonSwitchView *commonSwitchView;
 
 @property (nonatomic,strong) NSMutableArray *messageDataSource;
 
@@ -43,21 +45,22 @@
 
 -(void)setUpUI
 {
-    
-    _navigationView.layer.cornerRadius = 10;
-    _navigationView.clipsToBounds = YES;
-    _navigationView.layer.borderWidth = 1;
-    _navigationView.layer.borderColor = [UIColor blueColor].CGColor;
-    
+    //switch
+    _commonSwitchView = [[CommonSwitchView alloc] initWithFrame:CGRectMake(0, 0, 127, 27) textArray:@[@"聊天", @"联系人"]];
+    [_commonSwitchView changedType:^(CommonSwitchType type) {
+        [self changeSwitchView:type];
+    }];
+    self.navigationItem.titleView = _commonSwitchView;
+    //聊天
     _messageTableView = [[MessageTableView alloc] init];
     [self.view addSubview:_messageTableView];
     [_messageTableView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.mas_equalTo(0);
         make.left.mas_equalTo(0);
         make.right.mas_equalTo(0);
-        make.bottom.mas_equalTo(0);
+        make.bottom.mas_equalTo(50);
     }];
-    
+    //联系人
     _contactsTableView = [[ContactsTableView alloc]init];
     _contactsTableView.hidden = YES;
     [self.view addSubview:_contactsTableView];
@@ -65,33 +68,28 @@
         make.top.mas_equalTo(0);
         make.left.mas_equalTo(0);
         make.right.mas_equalTo(0);
-        make.bottom.mas_equalTo(0);
+        make.bottom.mas_equalTo(50);
     }];
 }
 
 #pragma mark - NavigationBar点击方法
 
-- (IBAction)tapChatButton:(id)sender
+//改变switch
+- (void)changeSwitchView:(CommonSwitchType)type;
 {
-    _messageTableView.hidden = NO;
-    _contactsTableView.hidden = YES;
-    self.chatButton.backgroundColor = [UIColor blueColor];
-    [self.chatButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    self.contactsButton.backgroundColor = [UIColor whiteColor];
-    [self.contactsButton setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
-    
+    if (type == CommonSwitchTypeFir)
+    {
+        _messageTableView.hidden = NO;
+        _contactsTableView.hidden = YES;
+    }
+    else
+    {
+        _contactsTableView.hidden = NO;
+        _messageTableView.hidden = YES;
+    }
 }
-- (IBAction)tapContactsButton:(id)sender
-{
-    _contactsTableView.hidden = NO;
-    _messageTableView.hidden = YES;
-    self.chatButton.backgroundColor = [UIColor whiteColor];
-    [_chatButton setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
-    self.contactsButton.backgroundColor = [UIColor blueColor];
-    [self.contactsButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    
-    
-}
+
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

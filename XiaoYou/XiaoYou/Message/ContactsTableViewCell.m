@@ -38,20 +38,20 @@ NSString *const kContactsTableViewCell = @"ContactsTableViewCell";
         }];
         //姓名
         _nameLabel = [[UILabel alloc] init];
-        _nameLabel.backgroundColor = [UIColor grayColor];
+        _nameLabel.backgroundColor = [UIColor magentaColor];
         [self.contentView addSubview:_nameLabel];
         [_nameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
             make.top.mas_equalTo(10);
-            make.left.equalTo(_headImageView.mas_right).offset(10);
+            make.left.mas_equalTo(60);
             make.width.mas_equalTo(60);
             make.height.mas_equalTo(20);
         }];
         //标签
         _flagLabel = [[UILabel alloc] init];
-        _flagLabel.backgroundColor = [UIColor grayColor];
+        _flagLabel.backgroundColor = [UIColor yellowColor];
         [self.contentView addSubview:_flagLabel];
         [_flagLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.bottom.mas_equalTo(10);
+            make.bottom.mas_equalTo(-10);
             make.left.equalTo(_headImageView.mas_right).offset(10);
             make.width.mas_equalTo(200);
             make.height.mas_equalTo(20);
