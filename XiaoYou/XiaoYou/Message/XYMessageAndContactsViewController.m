@@ -19,6 +19,8 @@
 @property (strong, nonatomic) YTableView *messageTableView;
 @property (strong, nonatomic) YTableView *contactsTableView;
 
+@property (nonatomic,strong) NSMutableArray *messageDataSource;
+
 @end
 
 @implementation XYMessageAndContactsViewController
@@ -115,19 +117,43 @@
     return 85;
 }
 
+-(BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return YES;
+}
+
+-(UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return UITableViewCellEditingStyleDelete;
+}
+
+-(NSString *)tableView:(UITableView *)tableView titleForDeleteConfirmationButtonForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return @"删除";
+}
+-(void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (editingStyle == UITableViewCellEditingStyleDelete)
+    {
+        NSLog(@"delete");
+    }
+}
+
+-(NSArray *)sectionIndexTitlesForTableView:(UITableView *)tableView
+{
+    if ([tableView isEqual:_contactsTableView])
+    {
+        return @[@"A",@"B",@"C"];
+    }
+    else
+    {
+        return nil;
+    }
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end
