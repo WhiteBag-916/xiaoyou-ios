@@ -14,6 +14,10 @@
 - (void)beginLoadNewData;
 //拉取更多数据
 - (void)beginLoadMoreData;
+//停止拉取新数据
+- (void)stopLoadNewData;
+//停止拉取更多数据
+- (void)stopLoadMoreData;
 //隐藏头
 - (void)hiddenHeader;
 //隐藏尾
