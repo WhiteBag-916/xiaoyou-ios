@@ -34,6 +34,10 @@
     return YES;
 }
 
+- (BOOL)showFooterRefresh
+{
+    return YES;
+}
 
 #pragma mark - UITableViewDataSource和UITableViewDelegate
 

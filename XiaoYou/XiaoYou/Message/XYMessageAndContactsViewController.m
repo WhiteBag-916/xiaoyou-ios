@@ -12,7 +12,7 @@
 #import "ContactsTableView.h"
 #import "MessageTableView.h"
 
-@interface XYMessageAndContactsViewController ()<UITableViewDataSource,UITableViewDelegate>
+@interface XYMessageAndContactsViewController ()
 @property (weak, nonatomic) IBOutlet UIView * navigationView;
 @property (weak, nonatomic) IBOutlet UIButton *chatButton;
 @property (weak, nonatomic) IBOutlet UIButton *contactsButton;
