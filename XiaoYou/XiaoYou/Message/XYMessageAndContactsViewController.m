@@ -11,11 +11,12 @@
 #import "YSystemDefine.h"
 #import "ContactsTableView.h"
 #import "MessageTableView.h"
+#import "Masonry.h"
 
 @interface XYMessageAndContactsViewController ()
-@property (weak, nonatomic) IBOutlet UIView * navigationView;
-@property (weak, nonatomic) IBOutlet UIButton *chatButton;
-@property (weak, nonatomic) IBOutlet UIButton *contactsButton;
+@property (weak, nonatomic) UIView * navigationView;
+@property (weak, nonatomic) UIButton *chatButton;
+@property (weak, nonatomic) UIButton *contactsButton;
 @property (strong, nonatomic) MessageTableView *messageTableView;
 @property (strong, nonatomic) ContactsTableView *contactsTableView;
 
@@ -48,12 +49,24 @@
     _navigationView.layer.borderWidth = 1;
     _navigationView.layer.borderColor = [UIColor blueColor].CGColor;
     
-    _messageTableView = [[MessageTableView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT-KTabBarheight)];
+    _messageTableView = [[MessageTableView alloc] init];
     [self.view addSubview:_messageTableView];
+    [_messageTableView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.mas_equalTo(0);
+        make.left.mas_equalTo(0);
+        make.right.mas_equalTo(0);
+        make.bottom.mas_equalTo(0);
+    }];
     
-    _contactsTableView = [[ContactsTableView alloc] initWithFrame:CGRectMake(0, KNavigationBarheight, SCREEN_WIDTH, SCREEN_HEIGHT-KNavigationBarheight-KTabBarheight)];
+    _contactsTableView = [[ContactsTableView alloc]init];
     _contactsTableView.hidden = YES;
     [self.view addSubview:_contactsTableView];
+    [_contactsTableView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.mas_equalTo(0);
+        make.left.mas_equalTo(0);
+        make.right.mas_equalTo(0);
+        make.bottom.mas_equalTo(0);
+    }];
 }
 
 #pragma mark - NavigationBar点击方法

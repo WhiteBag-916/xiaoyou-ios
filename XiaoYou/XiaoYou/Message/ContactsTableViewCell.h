@@ -12,4 +12,6 @@ extern NSString *const kContactsTableViewCell;
 
 @interface ContactsTableViewCell : UITableViewCell
 
+-(void)setCellInfo;
+
 @end

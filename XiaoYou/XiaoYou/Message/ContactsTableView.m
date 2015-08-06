@@ -23,7 +23,8 @@
     {
         self.delegate = self;
         self.dataSource = self;
-        [self registerNib:[UINib nibWithNibName:@"ContactsTableViewCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:kContactsTableViewCell];
+        [self registerClass:[ContactsTableViewCell class] forCellReuseIdentifier:kContactsTableViewCell];
+    
     }
     
     return self;
@@ -55,6 +56,9 @@
 {
    
     ContactsTableViewCell * cell = [self dequeueReusableCellWithIdentifier:kContactsTableViewCell];
+    
+    [cell setCellInfo];
+    
     return cell;
     
     

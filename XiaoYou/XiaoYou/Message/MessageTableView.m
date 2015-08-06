@@ -24,7 +24,7 @@
     {
         self.delegate = self;
         self.dataSource = self;
-        [self registerNib:[UINib nibWithNibName:@"MessageTableViewCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:kMessageTableViewCell];
+        [self registerClass:[MessageTableViewCell class] forCellReuseIdentifier:kMessageTableViewCell];
     }
     
     return self;
@@ -55,13 +55,16 @@
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     MessageTableViewCell *cell = [self dequeueReusableCellWithIdentifier:kMessageTableViewCell];
+    
+    [cell setCellInfo];
+    
     return cell;
     
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 85;
+    return 60;
 }
 
 -(BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath

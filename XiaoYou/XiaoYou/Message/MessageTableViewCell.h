@@ -12,4 +12,6 @@ extern NSString *const kMessageTableViewCell;
 
 @interface MessageTableViewCell : UITableViewCell
 
+-(void)setCellInfo;
+
 @end
