@@ -45,6 +45,18 @@
     [self.footer beginRefreshing];
 }
 
+//停止拉取新数据
+- (void)stopLoadNewData
+{
+    [self.header endRefreshing];
+}
+
+//停止拉取更多数据
+- (void)stopLoadMoreData
+{
+    [self.footer endRefreshing];
+}
+
 //隐藏头
 - (void)hiddenHeader
 {
