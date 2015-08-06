@@ -7,7 +7,7 @@
 //
 
 #import "LoginAction.h"
-#import "YCPDefine.h"
+#import "YDefine.h"
 #import "ResultCommon.h"
 #import "YUtils+Component.h"
 

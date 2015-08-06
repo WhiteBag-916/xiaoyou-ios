@@ -10,7 +10,7 @@
 #import "MessageTableViewCell.h"
 #import "ContactsTableViewCell.h"
 #import "YTableView.h"
-#import "YCPSystemDefine.h"
+#import "YSystemDefine.h"
 
 @interface XYMessageAndContactsViewController ()<UITableViewDataSource,UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UIView * navigationView;

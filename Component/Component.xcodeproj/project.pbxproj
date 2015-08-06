@@ -46,21 +46,20 @@
 		20859A811B64BD8500580ED3 /* ContactManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactManager.m; sourceTree = "<group>"; };
 		20859A831B64BD9000580ED3 /* MessageManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageManager.h; sourceTree = "<group>"; };
 		20859A841B64BD9000580ED3 /* MessageManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageManager.m; sourceTree = "<group>"; };
-		20859A861B64BF0A00580ED3 /* YCPShareDataDefine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YCPShareDataDefine.h; sourceTree = "<group>"; };
-		20859A871B64BF3200580ED3 /* YCPUrlDefine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YCPUrlDefine.h; sourceTree = "<group>"; };
+		20859A861B64BF0A00580ED3 /* YShareDataDefine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YShareDataDefine.h; sourceTree = "<group>"; };
+		20859A871B64BF3200580ED3 /* YUrlDefine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YUrlDefine.h; sourceTree = "<group>"; };
 		20859A921B64C06A00580ED3 /* LoginAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginAction.h; sourceTree = "<group>"; };
 		20859A931B64C06A00580ED3 /* LoginAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginAction.m; sourceTree = "<group>"; };
 		20DBFD3E1B4FA0F5009134D0 /* libComponent.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libComponent.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		20DBFD491B4FA0F5009134D0 /* ComponentTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ComponentTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		20DBFD4F1B4FA0F5009134D0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		20DBFD7B1B4FD3F5009134D0 /* YCPDefine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YCPDefine.h; sourceTree = "<group>"; };
-		20DBFD7C1B4FD3F5009134D0 /* YCPSystemDefine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YCPSystemDefine.h; sourceTree = "<group>"; };
+		20DBFD7C1B4FD3F5009134D0 /* YSystemDefine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YSystemDefine.h; sourceTree = "<group>"; };
 		20DBFD841B4FD3F5009134D0 /* YUtils+Component.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "YUtils+Component.h"; sourceTree = "<group>"; };
 		20DBFD851B4FD3F5009134D0 /* YUtils+Component.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "YUtils+Component.m"; sourceTree = "<group>"; };
+		20DD4B2B1B7338D8007C352C /* YDefine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YDefine.h; sourceTree = "<group>"; };
+		20DD4B2C1B73390C007C352C /* YControlsDefine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YControlsDefine.h; sourceTree = "<group>"; };
 		20E122151B705D3C00F90BD3 /* FeedManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedManager.h; sourceTree = "<group>"; };
 		20E122161B705D3C00F90BD3 /* FeedManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedManager.m; sourceTree = "<group>"; };
-		20E3417C1B71FF6F008CADC3 /* YCPEnumDefine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YCPEnumDefine.h; sourceTree = "<group>"; };
-		20E3417D1B71FF97008CADC3 /* YCPFontDefine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YCPFontDefine.h; sourceTree = "<group>"; };
 		20E3417E1B720A54008CADC3 /* ProfileDao.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileDao.h; sourceTree = "<group>"; };
 		20E3417F1B720A54008CADC3 /* ProfileDao.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileDao.m; sourceTree = "<group>"; };
 		20E341811B720A80008CADC3 /* ProfileSQL.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProfileSQL.h; sourceTree = "<group>"; };
@@ -220,12 +219,11 @@
 		20DBFD7A1B4FD3F5009134D0 /* Define */ = {
 			isa = PBXGroup;
 			children = (
-				20E3417D1B71FF97008CADC3 /* YCPFontDefine.h */,
-				20E3417C1B71FF6F008CADC3 /* YCPEnumDefine.h */,
-				20859A871B64BF3200580ED3 /* YCPUrlDefine.h */,
-				20859A861B64BF0A00580ED3 /* YCPShareDataDefine.h */,
-				20DBFD7B1B4FD3F5009134D0 /* YCPDefine.h */,
-				20DBFD7C1B4FD3F5009134D0 /* YCPSystemDefine.h */,
+				20859A871B64BF3200580ED3 /* YUrlDefine.h */,
+				20859A861B64BF0A00580ED3 /* YShareDataDefine.h */,
+				20DBFD7C1B4FD3F5009134D0 /* YSystemDefine.h */,
+				20DD4B2B1B7338D8007C352C /* YDefine.h */,
+				20DD4B2C1B73390C007C352C /* YControlsDefine.h */,
 			);
 			path = Define;
 			sourceTree = "<group>";

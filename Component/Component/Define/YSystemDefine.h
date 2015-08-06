@@ -1,13 +1,13 @@
 //
-//  YCPSystemDefine.h
+//  YSystemDefine.h
 //  Component
 //
 //  Created by 熊宸 on 15/4/24.
-//  Copyright (c) 2015年 YCPai. All rights reserved.
+//  Copyright (c) 2015年 xc. All rights reserved.
 //
 
-#ifndef Component_YCPSystemDefine_h
-#define Component_YCPSystemDefine_h
+#ifndef Component_YSystemDefine_h
+#define Component_YSystemDefine_h
 
 #define isScreen3_5Inch ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(640, 960), [[UIScreen mainScreen] currentMode].size) : NO)
 

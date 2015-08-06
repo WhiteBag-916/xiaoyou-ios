@@ -3,7 +3,7 @@
 //  YFramework
 //
 //  Created by liufz on 15/6/26.
-//  Copyright (c) 2015年 YCPai. All rights reserved.
+//  Copyright (c) 2015年 xc. All rights reserved.
 //
 
 #import "NSArray+Additions.h"

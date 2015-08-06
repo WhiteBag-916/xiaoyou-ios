@@ -3,7 +3,7 @@
 //  YFramework
 //
 //  Created by 熊宸 on 15/4/22.
-//  Copyright (c) 2015年 YCPai. All rights reserved.
+//  Copyright (c) 2015年 xc. All rights reserved.
 //
 
 #import "YVIew+Ext.h"
