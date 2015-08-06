@@ -59,11 +59,13 @@ install_resource()
 }
 if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_resource "EaseMobSDK/EaseMobSDK/resources/EaseMob.bundle"
+  install_resource "MJRefresh/MJRefresh/MJRefresh.bundle"
   install_resource "iOS-Slide-Menu/SlideMenu/Source/Assets/menu-button.png"
   install_resource "iOS-Slide-Menu/SlideMenu/Source/Assets/menu-button@2x.png"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_resource "EaseMobSDK/EaseMobSDK/resources/EaseMob.bundle"
+  install_resource "MJRefresh/MJRefresh/MJRefresh.bundle"
   install_resource "iOS-Slide-Menu/SlideMenu/Source/Assets/menu-button.png"
   install_resource "iOS-Slide-Menu/SlideMenu/Source/Assets/menu-button@2x.png"
 fi

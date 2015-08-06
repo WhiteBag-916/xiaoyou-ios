@@ -29,6 +29,7 @@ PODS:
   - iOS-Slide-Menu (1.4.6)
   - KLCircleViewController (1.0)
   - MJExtension (2.4.4)
+  - MJRefresh (2.3.2)
   - Reachability (3.2)
   - RegExCategories (1.0)
   - SDWebImage (3.7.2):
@@ -44,6 +45,7 @@ DEPENDENCIES:
   - iOS-Slide-Menu
   - KLCircleViewController
   - MJExtension
+  - MJRefresh
   - RegExCategories
   - SDWebImage
   - UMengAnalytics-NO-IDFA
@@ -56,6 +58,7 @@ SPEC CHECKSUMS:
   iOS-Slide-Menu: 3a8b157f87694fce888899f169e05b433575ff90
   KLCircleViewController: e204eeb583d6a879f9144b78f12236122088d689
   MJExtension: fabc9e6084f14363ed6828490a98ee516c9cbbfe
+  MJRefresh: 0f6f5e8387970607c26080b44058b229a23065d7
   Reachability: 33e18b67625424e47b6cde6d202dce689ad7af96
   RegExCategories: e68befacacd5bda853c88f70ec745cb2d0cfb89c
   SDWebImage: 71b7cdc1d1721d6a82ed62889030225f2c249e29

@@ -14,6 +14,7 @@ pod 'KLCircleViewController'
 pod 'RegExCategories'
 pod 'iOS-Slide-Menu'
 pod 'EaseMobSDK'
+pod 'MJRefresh'
 
 xcodeproj 'XiaoYou/XiaoYou.xcodeproj'
 end

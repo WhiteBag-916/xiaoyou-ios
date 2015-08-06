@@ -21,6 +21,17 @@
     
     self.title = @"人脉";
     
+    CGRect rect_screen = [[UIScreen mainScreen]bounds];
+    CGSize size_screen = rect_screen.size;
+    
+    CGFloat scale_screen = [UIScreen mainScreen].scale;
+    
+    CGFloat width = size_screen.width*scale_screen;
+    CGFloat height = size_screen.height*scale_screen;
+    
+    NSLog(@"width:%f",width);
+    NSLog(@"height:%f",height);
+    
     [self initTagList];
 }
 
