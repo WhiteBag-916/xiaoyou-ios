@@ -53,6 +53,7 @@ DEF_SINGLETON(ProvisionManager);
     [YShareData defaultData][kShareData_StudentNo] = loginResp.studentNo;
     [YShareData defaultData][kShareData_Token] = loginResp.token;
     [YShareData defaultData][kShareData_SchoolCode] = loginResp.schoolCode;
+    [YShareData defaultData][kShareData_SchoolIcon] = loginResp.icon;
 }
 
 - (void)goLogin:(ActionCompleteBlock)block
