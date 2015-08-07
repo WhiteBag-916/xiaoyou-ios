@@ -15,6 +15,7 @@
 		20DBFD861B4FD3F5009134D0 /* YUtils+Component.m in Sources */ = {isa = PBXBuildFile; fileRef = 20DBFD851B4FD3F5009134D0 /* YUtils+Component.m */; };
 		20E122171B705D3C00F90BD3 /* FeedManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 20E122161B705D3C00F90BD3 /* FeedManager.m */; };
 		20E341801B720A54008CADC3 /* ProfileDao.m in Sources */ = {isa = PBXBuildFile; fileRef = 20E3417F1B720A54008CADC3 /* ProfileDao.m */; };
+		3320A64D1B747DDA00E018E1 /* MessageListAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 3320A64C1B747DDA00E018E1 /* MessageListAction.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +64,8 @@
 		20E3417E1B720A54008CADC3 /* ProfileDao.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileDao.h; sourceTree = "<group>"; };
 		20E3417F1B720A54008CADC3 /* ProfileDao.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileDao.m; sourceTree = "<group>"; };
 		20E341811B720A80008CADC3 /* ProfileSQL.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProfileSQL.h; sourceTree = "<group>"; };
+		3320A64B1B747DDA00E018E1 /* MessageListAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageListAction.h; sourceTree = "<group>"; };
+		3320A64C1B747DDA00E018E1 /* MessageListAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageListAction.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,6 +101,8 @@
 			children = (
 				20859A921B64C06A00580ED3 /* LoginAction.h */,
 				20859A931B64C06A00580ED3 /* LoginAction.m */,
+				3320A64B1B747DDA00E018E1 /* MessageListAction.h */,
+				3320A64C1B747DDA00E018E1 /* MessageListAction.m */,
 			);
 			path = Provision;
 			sourceTree = "<group>";
@@ -383,6 +388,7 @@
 				20DBFD861B4FD3F5009134D0 /* YUtils+Component.m in Sources */,
 				20E122171B705D3C00F90BD3 /* FeedManager.m in Sources */,
 				20859A821B64BD8500580ED3 /* ContactManager.m in Sources */,
+				3320A64D1B747DDA00E018E1 /* MessageListAction.m in Sources */,
 				20859A941B64C06A00580ED3 /* LoginAction.m in Sources */,
 				20E341801B720A54008CADC3 /* ProfileDao.m in Sources */,
 			);

@@ -15,6 +15,8 @@
 #import "CommonSwitchView.h"
 #import "EaseMob.h"
 
+#import "MessageManager.h"
+
 @interface XYMessageAndContactsViewController ()
 @property (weak, nonatomic) UIView * navigationView;
 @property (weak, nonatomic) UIButton *chatButton;
@@ -41,6 +43,9 @@
     
     [self setUpUI];
     
+    [[MessageManager sharedInstance] getMessageListData:^(YActionMessage *message) {
+        YLogD(@"%@",message);
+    }];
     
 }
 

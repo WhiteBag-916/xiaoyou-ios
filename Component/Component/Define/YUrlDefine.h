@@ -39,6 +39,7 @@
 /**********************************************************
  Url Define: MessageManager
  **********************************************************/
-
+//聊天列表
+#define api_message_list  @"/mobile/user/getsenderlist"
 #endif
 
