@@ -12,4 +12,6 @@
 @interface ContactManager : YManager<YManager>
 AS_SINGLETON(ContactManager);
 
+- (void)getContactsListData:(ActionCompleteBlock)block;
+
 @end

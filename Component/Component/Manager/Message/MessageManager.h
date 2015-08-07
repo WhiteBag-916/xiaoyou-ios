@@ -15,4 +15,6 @@ AS_SINGLETON(MessageManager);
 
 - (void)getMessageListData:(ActionCompleteBlock)block;
 
+
+
 @end

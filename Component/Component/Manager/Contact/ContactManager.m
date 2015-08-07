@@ -8,6 +8,11 @@
 
 #import "ContactManager.h"
 #import "YFoundation.h"
+#import "MessageListAction.h"
+#import "YShareDataDefine.h"
+#import "YManagerCenter.h"
+
+#define kContactsManagerSyncQueue @"kContactsManagerSyncQueue"
 
 @implementation ContactManager
 
@@ -20,11 +25,35 @@ DEF_SINGLETON(ContactManager);
     return self;
 }
 
+-(void)getContactsListData:(ActionCompleteBlock)block
+{
+    MessageListAction * action = [[MessageListAction alloc] init];
+    //    action.schoolCode = @"4";
+    //    action.studentNo = @"2008202018";
+    [YAction startAction:action completionBlock:^(YActionMessage* message) {
+        //子线程处理数据
+        [YQueue dispatchInSyncQueueWithQueueType:kContactsManagerSyncQueue block:^{
+            if (message.isSuccess)
+            {
+                
+            }
+            
+            //主线程处理界面
+            [YQueue dispatchInMainQueueWithBlock:^{
+                block(message);
+            }];
+        }];
+    }];
+}
+
 - (void)initSource
 {
+    [YQueue registerSyncQueueWithType:kContactsManagerSyncQueue];
 }
 - (void)clearSource
 {
+    [YQueue unregisterSyncQueueWithType:kContactsManagerSyncQueue];
+
 }
 
 - (void)appDidLogin:(NSDictionary *)loginInfo

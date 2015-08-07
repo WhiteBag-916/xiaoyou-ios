@@ -14,6 +14,7 @@
 
 #define kMessageManagerSyncQueue @"kMessageManagerSyncQueue"
 
+
 @interface MessageManager ()
 
 
@@ -31,6 +32,8 @@ DEF_SINGLETON(MessageManager);
     return self;
 }
 
+
+
 - (void)getMessageListData:(ActionCompleteBlock)block
 {
     MessageListAction * action = [[MessageListAction alloc] init];
@@ -41,16 +44,12 @@ DEF_SINGLETON(MessageManager);
         [YQueue dispatchInSyncQueueWithQueueType:kMessageManagerSyncQueue block:^{
             if (message.isSuccess)
             {
-                [YShareData defaultData][kShareData_LoginInfo] = message.object;
                 
-                [[YManagerCenter defaultCenter] notifyAppLogined:nil];
             }
             
             //主线程处理界面
             [YQueue dispatchInMainQueueWithBlock:^{
                 block(message);
-                
-                YLogD(@"%@", [YShareData defaultData][kShareData_LoginInfo]);
             }];
         }];
     }];

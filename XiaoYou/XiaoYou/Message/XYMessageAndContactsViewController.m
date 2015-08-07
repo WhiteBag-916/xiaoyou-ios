@@ -16,6 +16,7 @@
 #import "EaseMob.h"
 
 #import "MessageManager.h"
+#import "ContactManager.h"
 
 @interface XYMessageAndContactsViewController ()
 @property (weak, nonatomic) UIView * navigationView;
@@ -43,7 +44,12 @@
     
     [self setUpUI];
     
+    //聊天列表请求
     [[MessageManager sharedInstance] getMessageListData:^(YActionMessage *message) {
+        YLogD(@"%@",message);
+    }];
+    //联系人列表请求
+    [[ContactManager sharedInstance] getContactsListData:^(YActionMessage *message) {
         YLogD(@"%@",message);
     }];
     
