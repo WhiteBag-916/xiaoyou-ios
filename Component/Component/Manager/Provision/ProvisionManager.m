@@ -10,6 +10,7 @@
 #import "YFoundation.h"
 #import "LoginAction.h"
 #import "YShareDataDefine.h"
+#import "YManagerCenter.h"
 
 #define kProvisionManagerSyncQueue @"kProvisionManagerSyncQueue"
 
@@ -59,6 +60,8 @@ DEF_SINGLETON(ProvisionManager);
             if (message.isSuccess)
             {
                 [YShareData defaultData][kShareData_LoginInfo] = message.object;
+                
+                [[YManagerCenter defaultCenter] notifyAppLogined:nil];
             }
             
             //主线程处理界面
