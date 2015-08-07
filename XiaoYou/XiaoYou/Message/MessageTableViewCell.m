@@ -77,7 +77,7 @@ NSString *const kMessageTableViewCell = @"MessageTableViewCellId";
         [_messageLabel mas_makeConstraints:^(MASConstraintMaker *make) {
             make.bottom.mas_equalTo(-10);
             make.left.mas_equalTo(60);
-            make.width.mas_equalTo(SCREEN_WIDTH - 100);
+            make.right.equalTo(self.contentView).offset(-100);
             make.height.mas_equalTo(20);
         }];
     }

@@ -11,6 +11,7 @@
 #import "MessageListAction.h"
 #import "YShareDataDefine.h"
 #import "YManagerCenter.h"
+#import "MessageListAction.h"
 
 #define kContactsManagerSyncQueue @"kContactsManagerSyncQueue"
 
