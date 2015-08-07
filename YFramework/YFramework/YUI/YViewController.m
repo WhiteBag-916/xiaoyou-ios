@@ -66,7 +66,7 @@
 //    }
     self.navigationController.navigationBarHidden = navigationBarHidden;
     self.tabBarController.tabBar.hidden = tabBarHidden;
-    [MobClick beginLogPageView:NSStringFromClass([self class])];
+//    [MobClick beginLogPageView:NSStringFromClass([self class])];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -77,7 +77,7 @@
 //    }
     self.navigationController.navigationBarHidden = NO;
     self.tabBarController.tabBar.hidden = YES;
-    [MobClick beginLogPageView:NSStringFromClass([self class])];
+//    [MobClick beginLogPageView:NSStringFromClass([self class])];
 }
 
 - (void)viewDidAppear:(BOOL)animated
