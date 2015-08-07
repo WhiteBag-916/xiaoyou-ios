@@ -11,4 +11,6 @@
 
 #import "YShareData.h"
 
+#define kShareData_LoginInfo                @"kShareData_LoginInfo"
+
 #endif
