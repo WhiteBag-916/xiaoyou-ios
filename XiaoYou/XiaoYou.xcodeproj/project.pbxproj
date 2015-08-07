@@ -13,6 +13,7 @@
 		207F80871B7098E3005E8F6A /* AppDelegate+RootVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 207F80861B7098E3005E8F6A /* AppDelegate+RootVC.m */; };
 		207F808A1B7099C2005E8F6A /* AppDelegate+Manager.m in Sources */ = {isa = PBXBuildFile; fileRef = 207F80891B7099C2005E8F6A /* AppDelegate+Manager.m */; };
 		207F808D1B709A1E005E8F6A /* AppDelegate+Notification.m in Sources */ = {isa = PBXBuildFile; fileRef = 207F808C1B709A1E005E8F6A /* AppDelegate+Notification.m */; };
+		20DA63761B7482DE007D22AC /* FeedListTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 20DA63751B7482DE007D22AC /* FeedListTableView.m */; };
 		20DBFD591B4FA122009134D0 /* libYFramework.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 20DBFD581B4FA122009134D0 /* libYFramework.a */; };
 		20DBFD5B1B4FA125009134D0 /* libModel.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 20DBFD5A1B4FA125009134D0 /* libModel.a */; };
 		20DBFD5D1B4FA127009134D0 /* libComponent.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 20DBFD5C1B4FA127009134D0 /* libComponent.a */; };
@@ -60,6 +61,8 @@
 		207F80891B7099C2005E8F6A /* AppDelegate+Manager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AppDelegate+Manager.m"; sourceTree = "<group>"; };
 		207F808B1B709A1E005E8F6A /* AppDelegate+Notification.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AppDelegate+Notification.h"; sourceTree = "<group>"; };
 		207F808C1B709A1E005E8F6A /* AppDelegate+Notification.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AppDelegate+Notification.m"; sourceTree = "<group>"; };
+		20DA63741B7482DE007D22AC /* FeedListTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedListTableView.h; sourceTree = "<group>"; };
+		20DA63751B7482DE007D22AC /* FeedListTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedListTableView.m; sourceTree = "<group>"; };
 		20DBFB581B4F9CE3009134D0 /* libXModel.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libXModel.a; path = "../XModel/build/Debug-iphoneos/libXModel.a"; sourceTree = "<group>"; };
 		20DBFB5A1B4F9CE6009134D0 /* libPods-XiaoYou-SDWebImage.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-XiaoYou-SDWebImage.a"; path = "/Users/xiongchen/Documents/校友网/code/xiaoyou_ios/Pods/../build/Debug-iphoneos/libPods-XiaoYou-SDWebImage.a"; sourceTree = "<absolute>"; };
 		20DBFB5C1B4F9CEC009134D0 /* libXComponent.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libXComponent.a; path = "../XComponent/build/Debug-iphoneos/libXComponent.a"; sourceTree = "<group>"; };
@@ -341,6 +344,8 @@
 			children = (
 				20E1221F1B705ED200F90BD3 /* FeedListViewController.h */,
 				20E122201B705ED200F90BD3 /* FeedListViewController.m */,
+				20DA63741B7482DE007D22AC /* FeedListTableView.h */,
+				20DA63751B7482DE007D22AC /* FeedListTableView.m */,
 			);
 			path = FeedList;
 			sourceTree = "<group>";
@@ -455,11 +460,8 @@
 			files = (
 				20DD4B411B734B49007C352C /* message_tab_red@2x.png in Resources */,
 				20DD4B421B734B49007C352C /* message_tab_red@3x.png in Resources */,
-				3320C8C21B73004700FBF8A2 /* ContactsTableViewCell.xib in Resources */,
-				20E122251B705F5800F90BD3 /* Message.storyboard in Resources */,
 				20DD4B3F1B734B49007C352C /* message_tab_background@2x.png in Resources */,
 				20DD4B401B734B49007C352C /* message_tab_background@3x.png in Resources */,
-				332D32701B7208E700B69E96 /* MessageTableViewCell.xib in Resources */,
 				200E39871B4E818B000B587B /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -522,6 +524,7 @@
 				207F808A1B7099C2005E8F6A /* AppDelegate+Manager.m in Sources */,
 				200E397C1B4E818B000B587B /* main.m in Sources */,
 				20E1222D1B708CDC00F90BD3 /* TagListViewController.m in Sources */,
+				20DA63761B7482DE007D22AC /* FeedListTableView.m in Sources */,
 				207F808D1B709A1E005E8F6A /* AppDelegate+Notification.m in Sources */,
 				20E122211B705ED200F90BD3 /* FeedListViewController.m in Sources */,
 				20E122131B705C2100F90BD3 /* XYTabBarViewController.m in Sources */,

@@ -11,6 +11,7 @@
 #import "LoginAction.h"
 #import "YShareDataDefine.h"
 #import "YManagerCenter.h"
+#import "LoginResp.h"
 
 #define kProvisionManagerSyncQueue @"kProvisionManagerSyncQueue"
 
@@ -45,6 +46,16 @@ DEF_SINGLETON(ProvisionManager);
 
 }
 
+//更新个人常用信息
+- (void)updateLoginInfo:(LoginResp *)loginResp
+{
+    [YShareData defaultData][kShareData_LoginInfo] = loginResp;
+    [YShareData defaultData][kShareData_StudentNo] = loginResp.studentNo;
+    [YShareData defaultData][kShareData_Token] = loginResp.token;
+    [YShareData defaultData][kShareData_SchoolCode] = loginResp.schoolCode;
+    [YShareData defaultData][kShareData_SchoolIcon] = loginResp.icon;
+}
+
 - (void)goLogin:(ActionCompleteBlock)block
 {
     LoginAction* action = [[LoginAction alloc] init];
@@ -59,8 +70,10 @@ DEF_SINGLETON(ProvisionManager);
         [YQueue dispatchInSyncQueueWithQueueType:kProvisionManagerSyncQueue block:^{
             if (message.isSuccess)
             {
-                [YShareData defaultData][kShareData_LoginInfo] = message.object;
+                [self updateLoginInfo:message.object];
                 
+                
+                //抛登录成功
                 [[YManagerCenter defaultCenter] notifyAppLogined:nil];
             }
             
@@ -72,8 +85,6 @@ DEF_SINGLETON(ProvisionManager);
             }];
         }];
     }];
-    
-    
 }
 
 @end

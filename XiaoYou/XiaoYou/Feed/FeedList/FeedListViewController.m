@@ -10,11 +10,13 @@
 #import "SlideNavigationController.h"
 #import "CommonSwitchView.h"
 #import "TagListViewController.h"
+#import "FeedListTableView.h"
 
 @interface FeedListViewController ()
 
-@property (strong, nonatomic) CommonSwitchView *commonSwitchView;
-@property (strong, nonatomic) TagListViewController *tagListVC;
+@property (strong, nonatomic) CommonSwitchView          *commonSwitchView;      //切换
+@property (strong, nonatomic) TagListViewController     *tagListVC;             //侧拉
+@property (strong, nonatomic) FeedListTableView         *feedListTableView;     //feed列表
 
 @end
 
