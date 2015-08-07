@@ -10,6 +10,7 @@
 #import "ChooseSchoolViewController.h"
 #import "XYTabBarViewController.h"
 #import "SlideNavigationController.h"
+#import "ChooseSchoolViewController.h"
 
 @implementation AppDelegate(RootVC)
 
@@ -17,17 +18,25 @@
 {
     self.window = [[UIWindow alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)];
     //初始化登陆控制器
-    //    UIStoryboard * chooseSchool = [UIStoryboard storyboardWithName:@"Login" bundle:[NSBundle mainBundle]];
-    //    UINavigationController * home = [chooseSchool instantiateInitialViewController];
-    //    self.window.rootViewController = home;
-    
+    [self initLoginNC];
+
+    [self.window makeKeyAndVisible];
+}
+
+- (void)initLoginNC
+{
+    UINavigationController * home = [[UINavigationController alloc] initWithRootViewController:[[ChooseSchoolViewController alloc] init]];
+    self.window.rootViewController = home;
+}
+
+- (void)initTabBarNC
+{
     SlideNavigationController *slideNC = [[SlideNavigationController alloc] initWithRootViewController:[[XYTabBarViewController alloc]init]];
     slideNC.enableSwipeGesture = NO;
     slideNC.leftBarButtonItem = [UIBarButtonItem new];
     slideNC.navigationBarHidden = YES;
     self.window.rootViewController = slideNC;
-    
-    [self.window makeKeyAndVisible];
+
 }
 
 @end

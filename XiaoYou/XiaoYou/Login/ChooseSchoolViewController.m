@@ -7,6 +7,11 @@
 //
 
 #import "ChooseSchoolViewController.h"
+#import "Masonry.h"
+#import "ProvisionManager.h"
+#import "SlideNavigationController.h"
+#import "XYTabBarViewController.h"
+#import "YDefine.h"
 
 @interface ChooseSchoolViewController ()
 
@@ -19,6 +24,32 @@
     // Do any additional setup after loading the view.
     
     self.title = @"登录";
+    
+    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+    [button setTitle:@"登录" forState:UIControlStateNormal];
+    [button setBackgroundColor:[UIColor redColor]];
+    [button addTarget:self action:@selector(goLogin) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:button];
+    
+    [button mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.mas_equalTo(self.view).insets(UIEdgeInsetsMake(100, 100, 100, 100));
+    }];
+}
+
+- (void)goLogin
+{
+    //login
+    [[ProvisionManager sharedInstance] goLogin:^(YActionMessage *message) {
+        if (message.isSuccess)
+        {
+            //成功
+            SlideNavigationController *slideNC = [[SlideNavigationController alloc] initWithRootViewController:[[XYTabBarViewController alloc]init]];
+            slideNC.enableSwipeGesture = NO;
+            slideNC.leftBarButtonItem = [UIBarButtonItem new];
+            slideNC.navigationBarHidden = YES;
+            kApplicationKeyWindow.rootViewController = slideNC;
+        }
+    }];
 }
 
 - (void)didReceiveMemoryWarning {

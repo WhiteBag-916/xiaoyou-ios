@@ -35,11 +35,6 @@
     
     [self initRootVC];
     
-    //login
-    [[ProvisionManager sharedInstance] goLogin:^(YActionMessage *message) {
-        
-    }];
-    
     return YES;
 }
 
