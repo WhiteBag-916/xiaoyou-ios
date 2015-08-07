@@ -11,6 +11,8 @@
 #import "AppDelegate+RootVC.h"
 #import "AppDelegate+Notification.h"
 
+#import "ProvisionManager.h"
+
 @interface AppDelegate ()
 
 @end
@@ -26,6 +28,11 @@
     [self initNotification];
     
     [self initRootVC];
+    
+    //login
+    [[ProvisionManager sharedInstance] goLogin:^(YActionMessage *message) {
+        
+    }];
     
     return YES;
 }

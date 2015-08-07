@@ -64,11 +64,11 @@
     {
         if ([self instancesRespondToSelector:@selector(initWithDictionary:)])
         {
-            return [[self alloc] initWithDictionary:dataDic];
+            return [[self alloc] initWithDictionary:dataDicByKey];
         }
         else
         {
-            return [self objectWithKeyValues:dataDic];
+            return [self objectWithKeyValues:dataDicByKey];
         }
     }
     else

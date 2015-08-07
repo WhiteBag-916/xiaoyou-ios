@@ -9,6 +9,9 @@
 #import "ProvisionManager.h"
 #import "YFoundation.h"
 #import "LoginAction.h"
+#import "YShareDataDefine.h"
+
+#define kProvisionManagerSyncQueue @"kProvisionManagerSyncQueue"
 
 @implementation ProvisionManager
 
@@ -23,9 +26,12 @@ DEF_SINGLETON(ProvisionManager);
 
 - (void)initSource
 {
+    //注册一个同步队列,用于同步执行流程或者维护缓存数据(sqlite缓存或者内存缓存)
+    [YQueue registerSyncQueueWithType:kProvisionManagerSyncQueue];
 }
 - (void)clearSource
 {
+    [YQueue unregisterSyncQueueWithType:kProvisionManagerSyncQueue];
 }
 
 - (void)appDidLogin:(NSDictionary *)loginInfo
@@ -48,11 +54,23 @@ DEF_SINGLETON(ProvisionManager);
     action.platform = @"2";
     
     [YAction startAction:action completionBlock:^(YActionMessage* message) {
-        block(message);
-        if (message.isSuccess)
-        {
-        }
+        //子线程处理数据
+        [YQueue dispatchInSyncQueueWithQueueType:kProvisionManagerSyncQueue block:^{
+            if (message.isSuccess)
+            {
+                [YShareData defaultData][kShareData_LoginInfo] = message.object;
+            }
+            
+            //主线程处理界面
+            [YQueue dispatchInMainQueueWithBlock:^{
+                block(message);
+                
+                YLogD(@"%@", [YShareData defaultData][kShareData_LoginInfo]);
+            }];
+        }];
     }];
+    
+    
 }
 
 @end

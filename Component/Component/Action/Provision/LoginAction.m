@@ -8,7 +8,7 @@
 
 #import "LoginAction.h"
 #import "YDefine.h"
-#import "ResultCommon.h"
+#import "LoginResp.h"
 #import "YUtils+Component.h"
 
 @implementation LoginAction
@@ -22,7 +22,7 @@
                                                      @"platform": _platform}];
     NSString *url = [YUtils getUrl:api_user_login];
     [self POST:url parameters:parameter completion:^(YHttpRequest *request) {
-        YActionMessage *message = [ResultCommon actionMessageWithHttpRequest:request];
+        YActionMessage *message = [LoginResp actionMessageWithHttpRequest:request];
         self.completionBlock(message);
     }];
 }

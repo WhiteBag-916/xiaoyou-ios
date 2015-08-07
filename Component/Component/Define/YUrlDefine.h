@@ -26,7 +26,7 @@
  Url Define: ProvisionManager
  **********************************************************/
 //登录
-#define api_user_login  @"/alumnus/mobile/user/login"
+#define api_user_login  @"/mobile/user/login"
 
 /**********************************************************
  Url Define: AssistantManager
