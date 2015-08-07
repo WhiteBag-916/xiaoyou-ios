@@ -61,6 +61,7 @@ DEF_SINGLETON(ProvisionManager);
             {
                 [YShareData defaultData][kShareData_LoginInfo] = message.object;
                 
+                //抛登录成功
                 [[YManagerCenter defaultCenter] notifyAppLogined:nil];
             }
             
