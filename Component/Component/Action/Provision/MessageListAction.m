@@ -16,8 +16,8 @@
 - (void)execute
 {
     NSDictionary *parameter = [YUtils getParameter:@{
-                                                    @"schoolCode": [YShareData defaultData],
-                                                     @"studentNo": [YShareData defaultData]
+                                                    @"schoolCode": [YShareData defaultData][kShareData_SchoolCode],
+                                                     @"studentNo": [YShareData defaultData][kShareData_StudentNo]
                                                     }];
     NSString *url = [YUtils getUrl:api_message_list];
     [self POST:url parameters:parameter completion:^(YHttpRequest *request) {
