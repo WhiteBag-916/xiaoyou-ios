@@ -9,6 +9,7 @@
 
 NSString *const kResultCommonStatus = @"code";
 NSString *const kResultCommonMsg = @"message";
+NSString *const kProjectListObj = @"obj";
 
 @interface ResultCommon ()
 
@@ -20,6 +21,7 @@ NSString *const kResultCommonMsg = @"message";
 
 @synthesize code = _code;
 @synthesize message = _message;
+@synthesize obj = _obj;
 
 + (instancetype)modelObjectWithDictionary:(NSDictionary *)dict
 {

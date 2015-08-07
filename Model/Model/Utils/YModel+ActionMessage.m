@@ -17,7 +17,7 @@ NSString *const kCommonObj = @"obj";
 + (YActionMessage *)actionMessageWithHttpRequest:(YHttpRequest *)request
 {
     YLogI(@"YHttpRequest:%@", request);
-    YModel<YModelActionMessage> *aObject = nil;
+    id aObject = nil;
     NSInteger errorCode = kYActionMessage_Rustlt_Success;
     NSString *errorDescription = @"";
     if (0 == request.errorCode)
@@ -26,9 +26,10 @@ NSString *const kCommonObj = @"obj";
 //        aObject = [self modelObjectWithJSONData:request.responseData];
         if ([aObject respondsToSelector:@selector(code)])
         {
-            if (!(((NSInteger)[aObject code]) == kYActionMessage_Server_Success))
+            NSInteger code = (NSInteger)[(ResultCommon*)aObject code];
+            if (!(code == kYActionMessage_Server_Success))
             {
-                errorCode = kYYServerErrorBase + labs((NSInteger)[aObject code]);
+                errorCode = kYYServerErrorBase + labs(code);
             }
             	
             if (kYActionMessage_Rustlt_Success == errorCode)
@@ -38,7 +39,18 @@ NSString *const kCommonObj = @"obj";
                 //取出obj
                 if (self != [ResultCommon class])
                 {
-                    aObject = [self modelObjectWithJSONDataByKey:request.responseData key:kCommonObj];
+                    NSDictionary *dataDic = [NSJSONSerialization JSONObjectWithData:request.responseData options:kNilOptions error:nil];
+                    NSDictionary *dataDicByKey = [dataDic objectForKey:kCommonObj];
+                    if ([dataDicByKey isKindOfClass:[NSArray class]])
+                    {
+                        NSArray *array = [self modelObjectArrayWithKeyValuesArray:(NSArray *)dataDicByKey];
+                        aObject = array;
+                    }
+                    else
+                    {
+                        aObject = [self modelObjectWithKeyValues:dataDicByKey];
+                    }
+                    
                 }
             }
         }
