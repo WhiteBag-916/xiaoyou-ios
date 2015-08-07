@@ -13,6 +13,7 @@
 #import "MessageTableView.h"
 #import "Masonry.h"
 #import "CommonSwitchView.h"
+#import "EaseMob.h"
 
 @interface XYMessageAndContactsViewController ()
 @property (weak, nonatomic) UIView * navigationView;
@@ -31,6 +32,13 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    [[EaseMob sharedInstance].chatManager asyncLoginWithUsername:@"yinhui" password:@"123123" completion:^(NSDictionary *loginInfo, EMError *error) {
+        if (!error && loginInfo) {
+            NSLog(@"登陆成功");
+        }
+    } onQueue:nil];
+    
     [self setUpUI];
     
     

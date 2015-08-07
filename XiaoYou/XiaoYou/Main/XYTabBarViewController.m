@@ -11,6 +11,7 @@
 #import "ProfileViewController.h"
 #import "FeedListViewController.h"
 #import "XYMessageAndContactsViewController.h"
+#import "EaseMob.h"
 
 #define kTag_TabBar_Base 0
 #define kTag_TabBar_Message kTag_TabBar_Base + 1
@@ -27,6 +28,15 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    [[EaseMob sharedInstance].chatManager asyncRegisterNewAccount:@"yinhui" password:@"123123" withCompletion:^(NSString *username, NSString *password, EMError *error) {
+        if (!error) {
+            NSLog(@"注册成功");
+        }
+    } onQueue:nil];
+    
+    
+    
     
     [self initControllers];
     
