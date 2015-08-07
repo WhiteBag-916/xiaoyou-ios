@@ -25,6 +25,9 @@ static const NSInteger kLayoutPriorityDefaultVeryHigh = 999;
 #define SCREEN_WIDTH [UIScreen mainScreen].bounds.size.width
 #define SCREEN_HEIGHT [UIScreen mainScreen].bounds.size.height
 
+#define kApplicationKeyWindow [UIApplication sharedApplication].keyWindow
+#define kAppDelegateAccessor ((AppDelegate *)[[UIApplication sharedApplication] delegate])
+
 #define ADDIPHONE5HEIGHT  (isScreen4Inch?88:0)
 #define KNavigationBarheight  64.0
 #define KTabBarheight  50.0

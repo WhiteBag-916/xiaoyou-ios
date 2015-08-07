@@ -72,7 +72,6 @@ DEF_SINGLETON(ProvisionManager);
             {
                 [self updateLoginInfo:message.object];
                 
-                
                 //抛登录成功
                 [[YManagerCenter defaultCenter] notifyAppLogined:nil];
             }
