@@ -11,7 +11,7 @@
 
 @interface LinkManModel : YModel <NSCoding, NSCopying>
 
-@property (nonatomic, assign) double internalBaseClassIdentifier;
+@property (nonatomic, strong) NSString *internalBaseClassIdentifier;
 @property (nonatomic, strong) NSString *faculty;
 @property (nonatomic, strong) NSString *schoolCode;
 @property (nonatomic, strong) NSString *time;

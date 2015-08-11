@@ -10,4 +10,6 @@
 
 @interface ContactsTableView : YTableView
 
+-(void)refreshTableView:(NSMutableArray *) dataSouceArr;
+
 @end

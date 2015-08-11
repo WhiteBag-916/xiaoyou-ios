@@ -1,32 +1,31 @@
 //
-//  ContactsTableView.m
+//  MessageTableView.m
 //  XiaoYou
 //
 //  Created by HuiYin on 15/8/6.
 //  Copyright (c) 2015年 xc. All rights reserved.
 //
 
-#import "ContactsTableView.h"
-#import "ContactsTableViewCell.h"
+#import "MessageTableView.h"
+#import "MessageTableViewCell.h"
 
-@interface ContactsTableView ()<UITableViewDataSource,UITableViewDelegate>
+#define kRowHeight          60
 
-@property (nonatomic,strong) NSMutableArray *contactsDataSource;
+@interface MessageTableView ()<UITableViewDataSource,UITableViewDelegate>
+
+@property (nonatomic,strong) NSMutableArray *messageDataSource;
 
 @end
 
-@implementation ContactsTableView
+@implementation MessageTableView
 
 - (instancetype)initWithFrame:(CGRect)frame
 {
     if (self = [super initWithFrame:frame])
     {
-        self.sectionIndexBackgroundColor = [UIColor whiteColor];
-        self.sectionIndexColor = [UIColor blackColor];
         self.delegate = self;
         self.dataSource = self;
-        [self registerClass:[ContactsTableViewCell class] forCellReuseIdentifier:kContactsTableViewCell];
-    
+        [self registerClass:[MessageTableViewCell class] forCellReuseIdentifier:kMessageTableViewCell];
     }
     
     return self;
@@ -40,6 +39,12 @@
 - (BOOL)showFooterRefresh
 {
     return YES;
+}
+
+
+-(void)refreshTableView:(NSMutableArray *) dataSouceArr
+{
+    [self reloadData];
 }
 
 #pragma mark - UITableViewDataSource和UITableViewDelegate
@@ -56,19 +61,17 @@
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-   
-    ContactsTableViewCell * cell = [self dequeueReusableCellWithIdentifier:kContactsTableViewCell];
+    MessageTableViewCell *cell = [self dequeueReusableCellWithIdentifier:kMessageTableViewCell];
     
     [cell setCellInfo];
     
     return cell;
     
-    
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 60;
+    return kRowHeight;
 }
 
 -(BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
@@ -91,13 +94,6 @@
     {
         NSLog(@"delete");
     }
-}
-
--(NSArray *)sectionIndexTitlesForTableView:(UITableView *)tableView
-{
-   
-    return @[@"A",@"B",@"C"];
-    
 }
 
 

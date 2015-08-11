@@ -12,6 +12,11 @@
 		20859AB31B64E2F600580ED3 /* YModel+ActionMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 20859AB21B64E2F600580ED3 /* YModel+ActionMessage.m */; };
 		20DBFD271B4FA0E5009134D0 /* libModel.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 20DBFD1B1B4FA0E5009134D0 /* libModel.a */; };
 		3320A6591B7498D200E018E1 /* SenderListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3320A6581B7498D200E018E1 /* SenderListModel.m */; };
+		3321B1531B79996A0020AD80 /* FriendListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3321B1501B79996A0020AD80 /* FriendListModel.m */; };
+		3321B1541B79996A0020AD80 /* GroupListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3321B1521B79996A0020AD80 /* GroupListModel.m */; };
+		3321B15B1B7999D20020AD80 /* Groups.m in Sources */ = {isa = PBXBuildFile; fileRef = 3321B1561B7999D20020AD80 /* Groups.m */; };
+		3321B15C1B7999D20020AD80 /* Relationship.m in Sources */ = {isa = PBXBuildFile; fileRef = 3321B1581B7999D20020AD80 /* Relationship.m */; };
+		3321B15D1B7999D20020AD80 /* Tags.m in Sources */ = {isa = PBXBuildFile; fileRef = 3321B15A1B7999D20020AD80 /* Tags.m */; };
 		332D32681B71E9B400B69E96 /* PushInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 332D32671B71E9B400B69E96 /* PushInfo.m */; };
 		333E95D01B70B6DF0001059D /* CheckAccountModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 333E95CF1B70B6DF0001059D /* CheckAccountModel.m */; };
 		333E95D61B70B7250001059D /* LinkManModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 333E95D51B70B7250001059D /* LinkManModel.m */; };
@@ -59,6 +64,16 @@
 		20DBFD2C1B4FA0E5009134D0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3320A6571B7498D200E018E1 /* SenderListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SenderListModel.h; path = Model/Contact/SenderListModel.h; sourceTree = SOURCE_ROOT; };
 		3320A6581B7498D200E018E1 /* SenderListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SenderListModel.m; path = Model/Contact/SenderListModel.m; sourceTree = SOURCE_ROOT; };
+		3321B14F1B79996A0020AD80 /* FriendListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendListModel.h; sourceTree = "<group>"; };
+		3321B1501B79996A0020AD80 /* FriendListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendListModel.m; sourceTree = "<group>"; };
+		3321B1511B79996A0020AD80 /* GroupListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroupListModel.h; sourceTree = "<group>"; };
+		3321B1521B79996A0020AD80 /* GroupListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroupListModel.m; sourceTree = "<group>"; };
+		3321B1551B7999D20020AD80 /* Groups.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Groups.h; sourceTree = "<group>"; };
+		3321B1561B7999D20020AD80 /* Groups.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Groups.m; sourceTree = "<group>"; };
+		3321B1571B7999D20020AD80 /* Relationship.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Relationship.h; sourceTree = "<group>"; };
+		3321B1581B7999D20020AD80 /* Relationship.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Relationship.m; sourceTree = "<group>"; };
+		3321B1591B7999D20020AD80 /* Tags.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tags.h; sourceTree = "<group>"; };
+		3321B15A1B7999D20020AD80 /* Tags.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Tags.m; sourceTree = "<group>"; };
 		332D32661B71E9B400B69E96 /* PushInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PushInfo.h; sourceTree = "<group>"; };
 		332D32671B71E9B400B69E96 /* PushInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PushInfo.m; sourceTree = "<group>"; };
 		333E95CE1B70B6DF0001059D /* CheckAccountModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheckAccountModel.h; sourceTree = "<group>"; };
@@ -189,6 +204,16 @@
 		20DBFD661B4FA8F0009134D0 /* Contact */ = {
 			isa = PBXGroup;
 			children = (
+				3321B14F1B79996A0020AD80 /* FriendListModel.h */,
+				3321B1501B79996A0020AD80 /* FriendListModel.m */,
+				3321B1511B79996A0020AD80 /* GroupListModel.h */,
+				3321B1521B79996A0020AD80 /* GroupListModel.m */,
+				3321B1551B7999D20020AD80 /* Groups.h */,
+				3321B1561B7999D20020AD80 /* Groups.m */,
+				3321B1571B7999D20020AD80 /* Relationship.h */,
+				3321B1581B7999D20020AD80 /* Relationship.m */,
+				3321B1591B7999D20020AD80 /* Tags.h */,
+				3321B15A1B7999D20020AD80 /* Tags.m */,
 				333E95D41B70B7250001059D /* LinkManModel.h */,
 				333E95D51B70B7250001059D /* LinkManModel.m */,
 				333E95D71B70B7400001059D /* addFriendPushInfoListModel.h */,
@@ -309,12 +334,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3321B15D1B7999D20020AD80 /* Tags.m in Sources */,
 				20859A991B64C0BC00580ED3 /* ResultCommon.m in Sources */,
+				3321B1531B79996A0020AD80 /* FriendListModel.m in Sources */,
 				333E95DF1B70B7650001059D /* SystemPushInfoListModel.m in Sources */,
 				333E95D91B70B7400001059D /* addFriendPushInfoListModel.m in Sources */,
+				3321B15C1B7999D20020AD80 /* Relationship.m in Sources */,
 				3320A6591B7498D200E018E1 /* SenderListModel.m in Sources */,
+				3321B15B1B7999D20020AD80 /* Groups.m in Sources */,
 				20859AB31B64E2F600580ED3 /* YModel+ActionMessage.m in Sources */,
 				20859AA31B64CB7E00580ED3 /* LoginResp.m in Sources */,
+				3321B1541B79996A0020AD80 /* GroupListModel.m in Sources */,
 				332D32681B71E9B400B69E96 /* PushInfo.m in Sources */,
 				333E95EA1B70B7AB0001059D /* SchoolDetailModel.m in Sources */,
 				333E95D61B70B7250001059D /* LinkManModel.m in Sources */,

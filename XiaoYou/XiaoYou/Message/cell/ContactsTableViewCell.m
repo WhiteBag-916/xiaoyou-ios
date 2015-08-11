@@ -8,6 +8,11 @@
 
 #import "ContactsTableViewCell.h"
 #import "Masonry.h"
+#import "YSystemDefine.h"
+
+#define kHeadWidthAndHeight            40
+#define kNameLabelWidth                80
+#define kHeadCornerRadius              20
 
 NSString *const kContactsTableViewCell = @"ContactsTableViewCell";
 @interface ContactsTableViewCell ()
@@ -27,34 +32,32 @@ NSString *const kContactsTableViewCell = @"ContactsTableViewCell";
     if (self) {
         //头像
         _headImageView = [[UIImageView alloc] init];
-        _headImageView.layer.cornerRadius = 20;
+        _headImageView.layer.cornerRadius = kHeadCornerRadius;
         _headImageView.backgroundColor = [UIColor orangeColor];
         [self.contentView addSubview:_headImageView];
         [_headImageView mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.top.mas_equalTo(10);
-            make.left.mas_equalTo(10);
-            make.width.mas_equalTo(40);
-            make.height.mas_equalTo(40);
+            make.top.left.mas_equalTo(kPaddingDistance);
+            make.width.height.mas_equalTo(kHeadWidthAndHeight);
         }];
         //姓名
         _nameLabel = [[UILabel alloc] init];
         _nameLabel.backgroundColor = [UIColor magentaColor];
         [self.contentView addSubview:_nameLabel];
         [_nameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.top.mas_equalTo(10);
-            make.left.mas_equalTo(60);
-            make.width.mas_equalTo(60);
-            make.height.mas_equalTo(20);
+            make.top.mas_equalTo(kPaddingDistance);
+            make.left.equalTo(_headImageView.mas_right).offset(kPaddingDistance);
+            make.width.mas_equalTo(kNameLabelWidth);
+            make.height.mas_equalTo(kLabelHeightDistacnce);
         }];
         //标签
         _flagLabel = [[UILabel alloc] init];
         _flagLabel.backgroundColor = [UIColor yellowColor];
         [self.contentView addSubview:_flagLabel];
         [_flagLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.bottom.mas_equalTo(-10);
-            make.left.equalTo(_headImageView.mas_right).offset(10);
-            make.width.mas_equalTo(200);
-            make.height.mas_equalTo(20);
+            make.bottom.mas_equalTo(-kPaddingDistance);
+            make.left.equalTo(_headImageView.mas_right).offset(kPaddingDistance);
+            make.right.mas_equalTo(-kPaddingDistance);
+            make.height.mas_equalTo(kLabelHeightDistacnce);
         }];
     }
     return self;

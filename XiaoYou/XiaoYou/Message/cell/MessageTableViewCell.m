@@ -10,6 +10,11 @@
 #import "Masonry.h"
 #import "YSystemDefine.h"
 
+#define kHeadWidthAndHeight            40
+#define kNameLabelWidth                80
+#define kTimeLabelWidth                60
+#define kHeadCornerRadius              20
+
 NSString *const kMessageTableViewCell = @"MessageTableViewCellId";
 
 @interface MessageTableViewCell ()
@@ -31,54 +36,51 @@ NSString *const kMessageTableViewCell = @"MessageTableViewCellId";
     if (self) {
         //头像
         _headImageView = [[UIImageView alloc] init];
-        _headImageView.layer.cornerRadius = 20;
+        _headImageView.layer.cornerRadius = kHeadCornerRadius;
         _headImageView.backgroundColor = [UIColor orangeColor];
         [self.contentView addSubview:_headImageView];
         [_headImageView mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.top.mas_equalTo(10);
-            make.left.mas_equalTo(10);
-            make.width.mas_equalTo(40);
-            make.height.mas_equalTo(40);
+            make.top.left.mas_equalTo(kPaddingDistance);
+            make.width.height.mas_equalTo(kHeadWidthAndHeight);
         }];
         //姓名
         _nameLabel = [[UILabel alloc] init];
         _nameLabel.backgroundColor = [UIColor magentaColor];
         [self.contentView addSubview:_nameLabel];
         [_nameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.top.mas_equalTo(10);
-            make.left.mas_equalTo(60);
-            make.width.mas_equalTo(80);
-            make.height.mas_equalTo(20);
+            make.top.mas_equalTo(kPaddingDistance);
+            make.left.equalTo(_headImageView.mas_right).offset(kPaddingDistance);
+            make.width.mas_equalTo(kNameLabelWidth);
+            make.height.mas_equalTo(kLabelHeightDistacnce);
         }];
         //消息数
         _badgeNumberLabel = [[UILabel alloc] init];
         _badgeNumberLabel.backgroundColor = [UIColor redColor];
         [self.contentView addSubview:_badgeNumberLabel];
         [_badgeNumberLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.top.mas_equalTo(10);
-            make.left.mas_equalTo(150);
-            make.width.mas_equalTo(20);
-            make.height.mas_equalTo(20);
+            make.top.mas_equalTo(kPaddingDistance);
+            make.left.equalTo(_nameLabel.mas_right).offset(kPaddingDistance);
+            make.width.height.mas_equalTo(kLabelHeightDistacnce);
         }];
         //时间
         _timeLabel = [[UILabel alloc] init];
         _timeLabel.backgroundColor = [UIColor greenColor];
         [self.contentView addSubview:_timeLabel];
         [_timeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.top.mas_equalTo(10);
-            make.right.mas_equalTo(-10);
-            make.width.mas_equalTo(60);
-            make.height.mas_equalTo(20);
+            make.top.mas_equalTo(kPaddingDistance);
+            make.right.mas_equalTo(-kPaddingDistance);
+            make.width.mas_equalTo(kTimeLabelWidth);
+            make.height.mas_equalTo(kLabelHeightDistacnce);
         }];
         //消息
         _messageLabel = [[UILabel alloc] init];
         _messageLabel.backgroundColor = [UIColor grayColor];
         [self.contentView addSubview:_messageLabel];
         [_messageLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.bottom.mas_equalTo(-10);
-            make.left.mas_equalTo(60);
-            make.right.equalTo(self.contentView).offset(-100);
-            make.height.mas_equalTo(20);
+            make.bottom.mas_equalTo(-kPaddingDistance);
+            make.left.equalTo(_headImageView.mas_right).offset(kPaddingDistance);
+            make.right.equalTo(self.contentView).offset(-kPaddingDistance);
+            make.height.mas_equalTo(kLabelHeightDistacnce);
         }];
     }
     return self;

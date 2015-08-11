@@ -90,7 +90,7 @@ NSString *const kLinkManModelCityCode = @"cityCode";
     // This check serves to make sure that a non-NSDictionary object
     // passed into the model class doesn't break the parsing.
     if(self && [dict isKindOfClass:[NSDictionary class]]) {
-            self.internalBaseClassIdentifier = [[self objectOrNilForKey:kLinkManModelId fromDictionary:dict] doubleValue];
+            self.internalBaseClassIdentifier = [self objectOrNilForKey:kLinkManModelId fromDictionary:dict];
             self.faculty = [self objectOrNilForKey:kLinkManModelFaculty fromDictionary:dict];
             self.schoolCode = [self objectOrNilForKey:kLinkManModelSchoolCode fromDictionary:dict];
             self.time = [self objectOrNilForKey:kLinkManModelTime fromDictionary:dict];
@@ -129,7 +129,7 @@ NSString *const kLinkManModelCityCode = @"cityCode";
 - (NSDictionary *)dictionaryRepresentation
 {
     NSMutableDictionary *mutableDict = [NSMutableDictionary dictionary];
-    [mutableDict setValue:[NSNumber numberWithDouble:self.internalBaseClassIdentifier] forKey:kLinkManModelId];
+    [mutableDict setValue:self.internalBaseClassIdentifier forKey:kLinkManModelId];
     [mutableDict setValue:self.faculty forKey:kLinkManModelFaculty];
     [mutableDict setValue:self.schoolCode forKey:kLinkManModelSchoolCode];
     [mutableDict setValue:self.time forKey:kLinkManModelTime];
@@ -182,7 +182,7 @@ NSString *const kLinkManModelCityCode = @"cityCode";
 {
     self = [super init];
 
-    self.internalBaseClassIdentifier = [aDecoder decodeDoubleForKey:kLinkManModelId];
+    self.internalBaseClassIdentifier = [aDecoder decodeObjectForKey:kLinkManModelId];
     self.faculty = [aDecoder decodeObjectForKey:kLinkManModelFaculty];
     self.schoolCode = [aDecoder decodeObjectForKey:kLinkManModelSchoolCode];
     self.time = [aDecoder decodeObjectForKey:kLinkManModelTime];
@@ -219,7 +219,7 @@ NSString *const kLinkManModelCityCode = @"cityCode";
 - (void)encodeWithCoder:(NSCoder *)aCoder
 {
 
-    [aCoder encodeDouble:_internalBaseClassIdentifier forKey:kLinkManModelId];
+    [aCoder encodeObject:_internalBaseClassIdentifier forKey:kLinkManModelId];
     [aCoder encodeObject:_faculty forKey:kLinkManModelFaculty];
     [aCoder encodeObject:_schoolCode forKey:kLinkManModelSchoolCode];
     [aCoder encodeObject:_time forKey:kLinkManModelTime];

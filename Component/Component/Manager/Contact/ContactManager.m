@@ -8,7 +8,7 @@
 
 #import "ContactManager.h"
 #import "YFoundation.h"
-#import "MessageListAction.h"
+#import "ContactsListAction.h"
 #import "YShareDataDefine.h"
 #import "YManagerCenter.h"
 #import "MessageListAction.h"
@@ -28,7 +28,7 @@ DEF_SINGLETON(ContactManager);
 
 -(void)getContactsListData:(ActionCompleteBlock)block
 {
-    MessageListAction * action = [[MessageListAction alloc] init];
+    ContactsListAction * action = [[ContactsListAction alloc] init];
     //    action.schoolCode = @"4";
     //    action.studentNo = @"2008202018";
     [YAction startAction:action completionBlock:^(YActionMessage* message) {

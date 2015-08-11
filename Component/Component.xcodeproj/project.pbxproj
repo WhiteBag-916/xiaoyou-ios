@@ -17,6 +17,7 @@
 		20E341801B720A54008CADC3 /* ProfileDao.m in Sources */ = {isa = PBXBuildFile; fileRef = 20E3417F1B720A54008CADC3 /* ProfileDao.m */; };
 		3320A6531B7498A100E018E1 /* MessageListAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 3320A6521B7498A100E018E1 /* MessageListAction.m */; };
 		3320A6561B7498B200E018E1 /* ContactsListAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 3320A6551B7498B200E018E1 /* ContactsListAction.m */; };
+		3321B1601B79CC4A0020AD80 /* SQLiteManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3321B15F1B79CC4A0020AD80 /* SQLiteManager.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,6 +70,8 @@
 		3320A6521B7498A100E018E1 /* MessageListAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MessageListAction.m; path = Component/Action/Provision/MessageListAction.m; sourceTree = SOURCE_ROOT; };
 		3320A6541B7498B200E018E1 /* ContactsListAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ContactsListAction.h; path = Component/Action/Provision/ContactsListAction.h; sourceTree = SOURCE_ROOT; };
 		3320A6551B7498B200E018E1 /* ContactsListAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ContactsListAction.m; path = Component/Action/Provision/ContactsListAction.m; sourceTree = SOURCE_ROOT; };
+		3321B15E1B79CC4A0020AD80 /* SQLiteManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SQLiteManager.h; sourceTree = "<group>"; };
+		3321B15F1B79CC4A0020AD80 /* SQLiteManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SQLiteManager.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -271,6 +274,8 @@
 			isa = PBXGroup;
 			children = (
 				20E341811B720A80008CADC3 /* ProfileSQL.h */,
+				3321B15E1B79CC4A0020AD80 /* SQLiteManager.h */,
+				3321B15F1B79CC4A0020AD80 /* SQLiteManager.m */,
 			);
 			path = SQL;
 			sourceTree = "<group>";
@@ -392,6 +397,7 @@
 				3320A6561B7498B200E018E1 /* ContactsListAction.m in Sources */,
 				20859A7C1B64BD5B00580ED3 /* ProvisionManager.m in Sources */,
 				20DBFD861B4FD3F5009134D0 /* YUtils+Component.m in Sources */,
+				3321B1601B79CC4A0020AD80 /* SQLiteManager.m in Sources */,
 				3320A6531B7498A100E018E1 /* MessageListAction.m in Sources */,
 				20E122171B705D3C00F90BD3 /* FeedManager.m in Sources */,
 				20859A821B64BD8500580ED3 /* ContactManager.m in Sources */,
