@@ -10,6 +10,7 @@
 #import "ContactsTableViewCell.h"
 #import "LinkManModel.h"
 #import "Pinyin.h"
+#import "YLog.h"
 
 #define kRowHeight          60
 
@@ -36,7 +37,6 @@
         self.delegate = self;
         self.dataSource = self;
         [self registerClass:[ContactsTableViewCell class] forCellReuseIdentifier:kContactsTableViewCell];
-    
     }
     
     return self;
@@ -220,20 +220,21 @@
 {
     if (buttonIndex == 1)
     {
-        NSLog(@"contactDelete");
-        NSLog(@"%@",self.deleteIndexPathOfCell);
+        YLogD(@"contactDelete");
+        YLogD(@"%@",self.deleteIndexPathOfCell);
         ContactsTableViewCell * cell = (ContactsTableViewCell *)[self cellForRowAtIndexPath:self.deleteIndexPathOfCell];
-        NSLog(@"%@",cell.linkStudentNo);
+        YLogD(@"%@",cell.linkStudentNo);
         
         [self.originalContactsDataSource enumerateObjectsUsingBlock:^(LinkManModel * obj, NSUInteger idx, BOOL *stop) {
             if ([obj.linkStudentNo isEqualToString:cell.linkStudentNo])
             {
                 [self.originalContactsDataSource removeObject:obj];
                 [self refreshTableView:self.originalContactsDataSource];
+                
 //                [self deleteContactListRequest:cell.linkStudentNo];
             }
         }];
-        
+      
     }
 }
 

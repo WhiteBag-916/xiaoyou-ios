@@ -1,7 +1,7 @@
 //
-//  GroupListModel.h
+//  GroupList.h
 //
-//  Created by HuiYin  on 15/8/11
+//  Created by HuiYin  on 15/8/12
 //  Copyright (c) 2015 __MyCompanyName__. All rights reserved.
 //
 
@@ -9,7 +9,8 @@
 #import "YModel.h"
 
 
-@interface GroupListModel : YModel <NSCoding, NSCopying>
+
+@interface GroupList : YModel <NSCoding, NSCopying>
 
 @property (nonatomic, strong) NSString *groupId;
 @property (nonatomic, strong) NSString *groupName;

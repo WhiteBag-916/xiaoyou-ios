@@ -31,7 +31,7 @@
     
     [[EaseMob sharedInstance].chatManager asyncRegisterNewAccount:@"yinhui" password:@"123123" withCompletion:^(NSString *username, NSString *password, EMError *error) {
         if (!error) {
-            NSLog(@"注册成功");
+            YLogD(@"注册成功");
         }
     } onQueue:nil];
     

@@ -8,6 +8,7 @@
 
 #import "MessageTableView.h"
 #import "MessageTableViewCell.h"
+#import "YLog.h"
 
 #define kRowHeight          60
 
@@ -92,7 +93,7 @@
 {
     if (editingStyle == UITableViewCellEditingStyleDelete)
     {
-        NSLog(@"delete");
+        YLogD(@"delete");
     }
 }
 

@@ -1,31 +1,31 @@
 //
-//  FriendListModel.m
+//  FriendList.m
 //
-//  Created by HuiYin  on 15/8/11
+//  Created by HuiYin  on 15/8/12
 //  Copyright (c) 2015 __MyCompanyName__. All rights reserved.
 //
 
-#import "FriendListModel.h"
+#import "FriendList.h"
 #import "Tags.h"
 #import "Relationship.h"
 #import "Groups.h"
 
 
-NSString *const kFriendListModelUserIcon = @"userIcon";
-NSString *const kFriendListModelTags = @"tags";
-NSString *const kFriendListModelRelationship = @"relationship";
-NSString *const kFriendListModelGroups = @"groups";
-NSString *const kFriendListModelUserId = @"userId";
-NSString *const kFriendListModelUserName = @"userName";
+NSString *const kFriendListUserIcon = @"userIcon";
+NSString *const kFriendListTags = @"tags";
+NSString *const kFriendListRelationship = @"relationship";
+NSString *const kFriendListGroups = @"groups";
+NSString *const kFriendListUserId = @"userId";
+NSString *const kFriendListUserName = @"userName";
 
 
-@interface FriendListModel ()
+@interface FriendList ()
 
 - (id)objectOrNilForKey:(id)aKey fromDictionary:(NSDictionary *)dict;
 
 @end
 
-@implementation FriendListModel
+@implementation FriendList
 
 @synthesize userIcon = _userIcon;
 @synthesize tags = _tags;
@@ -47,8 +47,8 @@ NSString *const kFriendListModelUserName = @"userName";
     // This check serves to make sure that a non-NSDictionary object
     // passed into the model class doesn't break the parsing.
     if(self && [dict isKindOfClass:[NSDictionary class]]) {
-            self.userIcon = [self objectOrNilForKey:kFriendListModelUserIcon fromDictionary:dict];
-    NSObject *receivedTags = [dict objectForKey:kFriendListModelTags];
+            self.userIcon = [self objectOrNilForKey:kFriendListUserIcon fromDictionary:dict];
+    NSObject *receivedTags = [dict objectForKey:kFriendListTags];
     NSMutableArray *parsedTags = [NSMutableArray array];
     if ([receivedTags isKindOfClass:[NSArray class]]) {
         for (NSDictionary *item in (NSArray *)receivedTags) {
@@ -61,7 +61,7 @@ NSString *const kFriendListModelUserName = @"userName";
     }
 
     self.tags = [NSArray arrayWithArray:parsedTags];
-    NSObject *receivedRelationship = [dict objectForKey:kFriendListModelRelationship];
+    NSObject *receivedRelationship = [dict objectForKey:kFriendListRelationship];
     NSMutableArray *parsedRelationship = [NSMutableArray array];
     if ([receivedRelationship isKindOfClass:[NSArray class]]) {
         for (NSDictionary *item in (NSArray *)receivedRelationship) {
@@ -74,7 +74,7 @@ NSString *const kFriendListModelUserName = @"userName";
     }
 
     self.relationship = [NSArray arrayWithArray:parsedRelationship];
-    NSObject *receivedGroups = [dict objectForKey:kFriendListModelGroups];
+    NSObject *receivedGroups = [dict objectForKey:kFriendListGroups];
     NSMutableArray *parsedGroups = [NSMutableArray array];
     if ([receivedGroups isKindOfClass:[NSArray class]]) {
         for (NSDictionary *item in (NSArray *)receivedGroups) {
@@ -87,8 +87,8 @@ NSString *const kFriendListModelUserName = @"userName";
     }
 
     self.groups = [NSArray arrayWithArray:parsedGroups];
-            self.userId = [self objectOrNilForKey:kFriendListModelUserId fromDictionary:dict];
-            self.userName = [self objectOrNilForKey:kFriendListModelUserName fromDictionary:dict];
+            self.userId = [self objectOrNilForKey:kFriendListUserId fromDictionary:dict];
+            self.userName = [self objectOrNilForKey:kFriendListUserName fromDictionary:dict];
 
     }
     
@@ -99,7 +99,7 @@ NSString *const kFriendListModelUserName = @"userName";
 - (NSDictionary *)dictionaryRepresentation
 {
     NSMutableDictionary *mutableDict = [NSMutableDictionary dictionary];
-    [mutableDict setValue:self.userIcon forKey:kFriendListModelUserIcon];
+    [mutableDict setValue:self.userIcon forKey:kFriendListUserIcon];
     NSMutableArray *tempArrayForTags = [NSMutableArray array];
     for (NSObject *subArrayObject in self.tags) {
         if([subArrayObject respondsToSelector:@selector(dictionaryRepresentation)]) {
@@ -110,7 +110,7 @@ NSString *const kFriendListModelUserName = @"userName";
             [tempArrayForTags addObject:subArrayObject];
         }
     }
-    [mutableDict setValue:[NSArray arrayWithArray:tempArrayForTags] forKey:kFriendListModelTags];
+    [mutableDict setValue:[NSArray arrayWithArray:tempArrayForTags] forKey:kFriendListTags];
     NSMutableArray *tempArrayForRelationship = [NSMutableArray array];
     for (NSObject *subArrayObject in self.relationship) {
         if([subArrayObject respondsToSelector:@selector(dictionaryRepresentation)]) {
@@ -121,7 +121,7 @@ NSString *const kFriendListModelUserName = @"userName";
             [tempArrayForRelationship addObject:subArrayObject];
         }
     }
-    [mutableDict setValue:[NSArray arrayWithArray:tempArrayForRelationship] forKey:kFriendListModelRelationship];
+    [mutableDict setValue:[NSArray arrayWithArray:tempArrayForRelationship] forKey:kFriendListRelationship];
     NSMutableArray *tempArrayForGroups = [NSMutableArray array];
     for (NSObject *subArrayObject in self.groups) {
         if([subArrayObject respondsToSelector:@selector(dictionaryRepresentation)]) {
@@ -132,9 +132,9 @@ NSString *const kFriendListModelUserName = @"userName";
             [tempArrayForGroups addObject:subArrayObject];
         }
     }
-    [mutableDict setValue:[NSArray arrayWithArray:tempArrayForGroups] forKey:kFriendListModelGroups];
-    [mutableDict setValue:self.userId forKey:kFriendListModelUserId];
-    [mutableDict setValue:self.userName forKey:kFriendListModelUserName];
+    [mutableDict setValue:[NSArray arrayWithArray:tempArrayForGroups] forKey:kFriendListGroups];
+    [mutableDict setValue:self.userId forKey:kFriendListUserId];
+    [mutableDict setValue:self.userName forKey:kFriendListUserName];
 
     return [NSDictionary dictionaryWithDictionary:mutableDict];
 }
@@ -158,29 +158,29 @@ NSString *const kFriendListModelUserName = @"userName";
 {
     self = [super init];
 
-    self.userIcon = [aDecoder decodeObjectForKey:kFriendListModelUserIcon];
-    self.tags = [aDecoder decodeObjectForKey:kFriendListModelTags];
-    self.relationship = [aDecoder decodeObjectForKey:kFriendListModelRelationship];
-    self.groups = [aDecoder decodeObjectForKey:kFriendListModelGroups];
-    self.userId = [aDecoder decodeObjectForKey:kFriendListModelUserId];
-    self.userName = [aDecoder decodeObjectForKey:kFriendListModelUserName];
+    self.userIcon = [aDecoder decodeObjectForKey:kFriendListUserIcon];
+    self.tags = [aDecoder decodeObjectForKey:kFriendListTags];
+    self.relationship = [aDecoder decodeObjectForKey:kFriendListRelationship];
+    self.groups = [aDecoder decodeObjectForKey:kFriendListGroups];
+    self.userId = [aDecoder decodeObjectForKey:kFriendListUserId];
+    self.userName = [aDecoder decodeObjectForKey:kFriendListUserName];
     return self;
 }
 
 - (void)encodeWithCoder:(NSCoder *)aCoder
 {
 
-    [aCoder encodeObject:_userIcon forKey:kFriendListModelUserIcon];
-    [aCoder encodeObject:_tags forKey:kFriendListModelTags];
-    [aCoder encodeObject:_relationship forKey:kFriendListModelRelationship];
-    [aCoder encodeObject:_groups forKey:kFriendListModelGroups];
-    [aCoder encodeObject:_userId forKey:kFriendListModelUserId];
-    [aCoder encodeObject:_userName forKey:kFriendListModelUserName];
+    [aCoder encodeObject:_userIcon forKey:kFriendListUserIcon];
+    [aCoder encodeObject:_tags forKey:kFriendListTags];
+    [aCoder encodeObject:_relationship forKey:kFriendListRelationship];
+    [aCoder encodeObject:_groups forKey:kFriendListGroups];
+    [aCoder encodeObject:_userId forKey:kFriendListUserId];
+    [aCoder encodeObject:_userName forKey:kFriendListUserName];
 }
 
 - (id)copyWithZone:(NSZone *)zone
 {
-    FriendListModel *copy = [[FriendListModel alloc] init];
+    FriendList *copy = [[FriendList alloc] init];
     
     if (copy) {
 

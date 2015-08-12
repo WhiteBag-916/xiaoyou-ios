@@ -17,7 +17,6 @@
 
 #import "MessageManager.h"
 #import "ContactManager.h"
-#import "SQLiteManager.h"
 #import "LinkManModel.h"
 
 #define WeakSelf(weakSelf)  __weak __typeof(&*self)weakSelf = self;
@@ -33,8 +32,6 @@
 @property (nonatomic,strong) NSMutableArray *messageDataSource;
 @property (nonatomic,strong) NSMutableArray *contactsDataSource;
 
-//@property (nonatomic,strong) SQLiteManager * sqliteManager;
-
 @end
 
 @implementation XYMessageAndContactsViewController
@@ -45,13 +42,11 @@
     
     [[EaseMob sharedInstance].chatManager asyncLoginWithUsername:@"yinhui" password:@"123123" completion:^(NSDictionary *loginInfo, EMError *error) {
         if (!error && loginInfo) {
-            NSLog(@"登陆成功");
+            YLogD(@"登陆成功");
         }
     } onQueue:nil];
     
     [self setUpUI];
-    
-//    self.sqliteManager = [SQLiteManager shareSQLiteManager];
     
     WeakSelf(weakSelf)
     
@@ -64,81 +59,15 @@
     //联系人列表请求
     [[ContactManager sharedInstance] getContactsListData:^(YActionMessage *message) {
         YLogD(@"%@",message);
-//        [message.object enumerateObjectsUsingBlock:^(LinkManModel * obj, NSUInteger idx, BOOL *stop) {
-//            NSString * sql = [self creatSQLStr:obj];
-//            NSLog(@"%@",sql);
-//            [self.sqliteManager runSQL:sql];
-//        }];
-      
-        weakSelf.contactsDataSource = [NSMutableArray arrayWithArray:message.object];
-        [weakSelf.contactsTableView refreshTableView:self.contactsDataSource];
+        [message.object enumerateObjectsUsingBlock:^(LinkManModel * obj, NSUInteger idx, BOOL *stop) {
+
+        }];
+        
+//        weakSelf.contactsDataSource = [NSMutableArray arrayWithArray:message.object];
+//        [weakSelf.contactsTableView refreshTableView:self.contactsDataSource];
     }];
     
 }
-
-//-(NSString *)creatSQLStr:(LinkManModel *) model
-//{
-//    
-//    if (model.internalBaseClassIdentifier == nil)
-//    {
-//        model.internalBaseClassIdentifier = @"";
-//    }
-//    if (model.faculty == nil)
-//    {
-//        model.faculty = @"";
-//    }
-//    if (model.myStudentNo == nil)
-//    {
-//        model.myStudentNo = @"";
-//    }
-//    if (model.gender == nil)
-//    {
-//        model.gender = @"";
-//    }
-//    if (model.schoolName == nil)
-//    {
-//        model.schoolName = @"";
-//    }
-//    if (model.isRemind == nil)
-//    {
-//        model.isRemind = @"";
-//    }
-//    if (model.linkStudentNo == nil)
-//    {
-//        model.linkStudentNo = @"";
-//    }
-//    if (model.isShield == nil)
-//    {
-//        model.isShield = @"";
-//    }if (model.studentClass == nil)
-//    {
-//        model.studentClass = @"";
-//    }if (model.icon == nil)
-//    {
-//        model.icon = @"";
-//    }
-//    if (model.grad == nil)
-//    {
-//        model.grad = @"";
-//    }if (model.linkStudentName == nil)
-//    {
-//        model.linkStudentName = @"";
-//    }if (model.tag == nil)
-//    {
-//        model.tag = @"";
-//    }if (model.college == nil)
-//    {
-//        model.college = @"";
-//    }if (model.time == nil)
-//    {
-//        model.time = @"";
-//    }if (model.schoolCode == nil)
-//    {
-//        model.schoolCode = @"";
-//    }
-//    NSString * sql = [NSString stringWithFormat:@"insert into contacts values('%@','%@','%@','%@','%@','%@','%@','%@','%@','%@','%@','%@','%@','%@','%@','%@')",model.internalBaseClassIdentifier,model.faculty,model.schoolCode,model.time,model.college,model.tag,model.linkStudentName,model.grad,model.icon,model.studentClass,model.isShield,model.linkStudentNo,model.isRemind,model.schoolName,model.gender,model.myStudentNo];
-//    return sql;
-//}
 
 - (void)viewWillAppear:(BOOL)animated
 {

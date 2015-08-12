@@ -1,7 +1,7 @@
 //
-//  FriendListModel.h
+//  FriendList.h
 //
-//  Created by HuiYin  on 15/8/11
+//  Created by HuiYin  on 15/8/12
 //  Copyright (c) 2015 __MyCompanyName__. All rights reserved.
 //
 
@@ -9,7 +9,8 @@
 #import "YModel.h"
 
 
-@interface FriendListModel : YModel <NSCoding, NSCopying>
+
+@interface FriendList : YModel <NSCoding, NSCopying>
 
 @property (nonatomic, strong) NSString *userIcon;
 @property (nonatomic, strong) NSArray *tags;
