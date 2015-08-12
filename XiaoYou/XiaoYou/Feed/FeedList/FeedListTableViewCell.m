@@ -8,6 +8,14 @@
 
 #import "FeedListTableViewCell.h"
 
+@interface FeedListTableViewCell ()
+
+@property (nonatomic, strong) UIImageView *contactHeadImageView;
+@property (nonatomic, strong) UILabel *contactNameLabel;
+@property (nonatomic, strong) UILabel *timeLabel;
+
+@end
+
 @implementation FeedListTableViewCell
 
 - (void)awakeFromNib {
