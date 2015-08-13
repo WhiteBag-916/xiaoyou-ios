@@ -7,8 +7,11 @@
 //
 
 #import "YTableView.h"
+#import "XYMessageAndContactsViewController.h"
 
 @interface MessageTableView : YTableView
+
+@property(nonatomic,strong)XYMessageAndContactsViewController * myController;
 
 -(void)refreshTableView:(NSMutableArray *) dataSouceArr;
 

@@ -36,15 +36,22 @@
 
 @implementation XYMessageAndContactsViewController
 
+
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    BOOL isAutoLogin = [[EaseMob sharedInstance].chatManager isAutoLoginEnabled];
+    if (!isAutoLogin)
+    {
+        [[EaseMob sharedInstance].chatManager asyncLoginWithUsername:@"yinhui" password:@"123123" completion:^(NSDictionary *loginInfo, EMError *error) {
+            if (!error && loginInfo) {
+                YLogD(@"登陆成功");
+                [[EaseMob sharedInstance].chatManager setIsAutoLoginEnabled:YES];
+            }
+        } onQueue:nil];
+    }
     
-    [[EaseMob sharedInstance].chatManager asyncLoginWithUsername:@"yinhui" password:@"123123" completion:^(NSDictionary *loginInfo, EMError *error) {
-        if (!error && loginInfo) {
-            YLogD(@"登陆成功");
-        }
-    } onQueue:nil];
     
     [self setUpUI];
     
@@ -63,8 +70,8 @@
 
         }];
         
-//        weakSelf.contactsDataSource = [NSMutableArray arrayWithArray:message.object];
-//        [weakSelf.contactsTableView refreshTableView:self.contactsDataSource];
+        weakSelf.contactsDataSource = [NSMutableArray arrayWithArray:message.object];
+        [weakSelf.contactsTableView refreshTableView:self.contactsDataSource];
     }];
     
 }
@@ -72,6 +79,7 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated navigationBarHidden:NO tabBarHidden:NO];
+    self.hidesBottomBarWhenPushed = NO;
 }
 
 #pragma mark - setUpUI方法
@@ -86,6 +94,7 @@
     self.navigationItem.titleView = _commonSwitchView;
     //聊天
     _messageTableView = [[MessageTableView alloc] init];
+    _messageTableView.myController = self;
     [self.view addSubview:_messageTableView];
     [_messageTableView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.left.right.mas_equalTo(0);
