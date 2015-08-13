@@ -1,0 +1,1 @@
+PODS_XIAOYOU_DWTAGLIST_OTHER_LDFLAGS = -framework "QuartzCore"

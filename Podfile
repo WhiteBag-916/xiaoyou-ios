@@ -16,5 +16,6 @@ pod 'iOS-Slide-Menu'
 pod 'EaseMobSDK'
 pod 'MJRefresh'
 pod 'Masonry'
+pod 'DWTagList'
 xcodeproj 'XiaoYou/XiaoYou.xcodeproj'
 end

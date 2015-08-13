@@ -18,6 +18,7 @@
 		20DBFD5B1B4FA125009134D0 /* libModel.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 20DBFD5A1B4FA125009134D0 /* libModel.a */; };
 		20DBFD5D1B4FA127009134D0 /* libComponent.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 20DBFD5C1B4FA127009134D0 /* libComponent.a */; };
 		20DBFD631B4FA7E1009134D0 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 20DBFD621B4FA7E1009134D0 /* AppDelegate.m */; };
+		20DC5CD01B7B4FA00059B6E6 /* FeedListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 20DC5CCF1B7B4FA00059B6E6 /* FeedListTableViewCell.m */; };
 		20DC87F21B5F3DC70019DC7F /* ChooseSchoolViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20DC87F11B5F3DC70019DC7F /* ChooseSchoolViewController.m */; };
 		20DD4B311B7345EF007C352C /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20DD4B301B7345EF007C352C /* ProfileViewController.m */; };
 		20DD4B351B734781007C352C /* CommonSwitchView.m in Sources */ = {isa = PBXBuildFile; fileRef = 20DD4B341B734781007C352C /* CommonSwitchView.m */; };
@@ -75,6 +76,8 @@
 		20DBFD5C1B4FA127009134D0 /* libComponent.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libComponent.a; path = "../Component/build/Debug-iphoneos/libComponent.a"; sourceTree = "<group>"; };
 		20DBFD611B4FA7E1009134D0 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		20DBFD621B4FA7E1009134D0 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		20DC5CCE1B7B4FA00059B6E6 /* FeedListTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedListTableViewCell.h; sourceTree = "<group>"; };
+		20DC5CCF1B7B4FA00059B6E6 /* FeedListTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedListTableViewCell.m; sourceTree = "<group>"; };
 		20DC87F01B5F3DC70019DC7F /* ChooseSchoolViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChooseSchoolViewController.h; sourceTree = "<group>"; };
 		20DC87F11B5F3DC70019DC7F /* ChooseSchoolViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChooseSchoolViewController.m; sourceTree = "<group>"; };
 		20DD4B2F1B7345EF007C352C /* ProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileViewController.h; sourceTree = "<group>"; };
@@ -352,6 +355,8 @@
 				20E122201B705ED200F90BD3 /* FeedListViewController.m */,
 				20DA63741B7482DE007D22AC /* FeedListTableView.h */,
 				20DA63751B7482DE007D22AC /* FeedListTableView.m */,
+				20DC5CCE1B7B4FA00059B6E6 /* FeedListTableViewCell.h */,
+				20DC5CCF1B7B4FA00059B6E6 /* FeedListTableViewCell.m */,
 			);
 			path = FeedList;
 			sourceTree = "<group>";
@@ -578,6 +583,7 @@
 				33E796C71B786D2100930E73 /* MessageTableViewCell.m in Sources */,
 				207F808D1B709A1E005E8F6A /* AppDelegate+Notification.m in Sources */,
 				33E796B81B786CDE00930E73 /* XYMessageAndContactsViewController.m in Sources */,
+				20DC5CD01B7B4FA00059B6E6 /* FeedListTableViewCell.m in Sources */,
 				33E796C01B786D1300930E73 /* MessageTableView.m in Sources */,
 				20E122211B705ED200F90BD3 /* FeedListViewController.m in Sources */,
 				20E122131B705C2100F90BD3 /* XYTabBarViewController.m in Sources */,
