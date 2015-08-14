@@ -56,6 +56,14 @@
         [self changeSwitchView:type];
     }];
     self.navigationItem.titleView = _commonSwitchView;
+    
+    //tableview
+    _feedListTableView = [[FeedListTableView alloc] init];
+    [self.view addSubview:_feedListTableView];
+    
+    [_feedListTableView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.mas_equalTo(self.view);
+    }];
 }
 
 //改变switch

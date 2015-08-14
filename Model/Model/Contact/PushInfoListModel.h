@@ -12,15 +12,15 @@
 @interface PushInfoListModel : YModel <NSCoding, NSCopying>
 
 @property (nonatomic, assign) double internalBaseClassIdentifier;
-@property (nonatomic, assign) id tablename;
+@property (nonatomic, strong) NSString *tablename;
 @property (nonatomic, strong) NSString *schoolCode;
 @property (nonatomic, strong) NSString *sendStudentNo;
-@property (nonatomic, assign) id realtion;
+@property (nonatomic, strong) NSString *realtion;
 @property (nonatomic, strong) NSString *time;
 @property (nonatomic, strong) NSString *isRead;
 @property (nonatomic, strong) NSString *flag;
 @property (nonatomic, strong) NSString *reciveStudentNo;
-@property (nonatomic, assign) id icon;
+@property (nonatomic, strong) NSString *icon;
 @property (nonatomic, strong) NSString *reciveIsDel;
 @property (nonatomic, strong) NSString *isShield;
 @property (nonatomic, strong) NSString *sendIsDel;

@@ -21,7 +21,6 @@
 #import "YImage+Ext.h"
 #import "YColor+Ext.h"
 #import "YDate+Ext.h"
-#import "YAlertView+Ext.h"
 #import "YString+Ext.h"
 #import "YDate+Ext.h"
 #import "NSArray+Additions.h"
