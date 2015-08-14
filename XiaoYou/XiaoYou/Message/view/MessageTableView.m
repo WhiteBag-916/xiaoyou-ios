@@ -9,6 +9,7 @@
 #import "MessageTableView.h"
 #import "MessageTableViewCell.h"
 #import "YLog.h"
+#import "XYMessageDetailViewController.h"
 
 #define kRowHeight          60
 
@@ -97,5 +98,11 @@
     }
 }
 
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    XYMessageDetailViewController * messageDetailViewController = [[XYMessageDetailViewController alloc] init];
+    self.myController.hidesBottomBarWhenPushed = YES;
+    [self.myController.navigationController pushViewController:messageDetailViewController animated:YES];
+}
 
 @end

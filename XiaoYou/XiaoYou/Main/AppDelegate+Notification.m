@@ -9,6 +9,8 @@
 #import <UIKit/UIKit.h>
 #import "AppDelegate+Notification.h"
 #import "YLog.h"
+#import "EaseMob.h"
+
 
 @implementation AppDelegate (Notification)
 
@@ -30,11 +32,14 @@
 #pragma mark - notification
 - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken
 {
+     [[EaseMob sharedInstance] application:application didRegisterForRemoteNotificationsWithDeviceToken:deviceToken];
+//     EMPushNotificationOptions *options = [[EaseMob sharedInstance].chatManager pushNotificationOptions];
     YLogI(@"didRegisterForRemoteNotificationsWithDeviceToken : %@", deviceToken);
 }
 
 - (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error
 {
+    [[EaseMob sharedInstance] application:application didFailToRegisterForRemoteNotificationsWithError:error];
     YLogE(@"didFailToRegisterForRemoteNotificationsWithError : %@", error);
 }
 
