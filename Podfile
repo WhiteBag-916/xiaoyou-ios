@@ -4,6 +4,7 @@ xcodeproj 'XiaoYou/XiaoYou.xcodeproj'
 
 target :XiaoYou do
 platform :ios, '7.0'
+pod 'SIAlertView'
 pod 'SDWebImage'
 pod 'ASIHTTPRequest', '~>1.8.2'
 pod 'FMDB'
@@ -16,6 +17,7 @@ pod 'iOS-Slide-Menu'
 pod 'EaseMobSDK'
 pod 'MJRefresh'
 pod 'Masonry'
+pod 'UITableView+FDTemplateLayoutCell'
 pod 'DWTagList'
 xcodeproj 'XiaoYou/XiaoYou.xcodeproj'
 end

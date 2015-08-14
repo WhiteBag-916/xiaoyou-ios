@@ -28,6 +28,9 @@
                 [self loadMoreData];
             }];
         }
+        
+        //日志
+        self.fd_debugLogEnabled = YES;
     }
     
     return self;

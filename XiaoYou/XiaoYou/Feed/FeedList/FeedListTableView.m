@@ -7,8 +7,64 @@
 //
 
 #import "FeedListTableView.h"
+#import "FeedListTableViewCell.h"
+
+@interface FeedListTableView ()
+<UITableViewDataSource
+,UITableViewDelegate>
+
+@property (nonatomic, strong) NSArray *feedListArray;
+
+@end
 
 @implementation FeedListTableView
+
+- (instancetype)initWithFrame:(CGRect)frame
+{
+    self = [super initWithFrame:frame];
+    if (self) {
+        self.delegate = self;
+        self.dataSource = self;
+        
+        [self registerClass:[FeedListTableViewCell class] forCellReuseIdentifier:kFeedListTableViewCell];
+    }
+    return self;
+}
+
+#pragma mark - UITableViewDataSource
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return 1;
+}
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 10;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    FeedListTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kFeedListTableViewCell];
+    
+    [cell setData];
+    
+    return cell;
+}
+
+#pragma mark - UITableViewDelegate
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    //计算高度
+    CGFloat height = [tableView fd_heightForCellWithIdentifier:kFeedListTableViewCell cacheByIndexPath:indexPath configuration:^(FeedListTableViewCell *cell) {
+        [cell setData];
+    }];
+    return height;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+}
 
 /*
 // Only override drawRect: if you perform custom drawing.

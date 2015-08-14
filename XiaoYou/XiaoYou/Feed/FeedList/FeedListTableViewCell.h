@@ -8,6 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
+extern NSString *const kFeedListTableViewCell;
+
 @interface FeedListTableViewCell : UITableViewCell
+
+- (void)setData;
 
 @end

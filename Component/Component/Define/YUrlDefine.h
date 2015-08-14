@@ -20,7 +20,6 @@
 #define api_server_base_url @"http://beta.xiaoyou.com"
 #endif
 /** 获取图像接口*/
-//#define api_icon_base_url @"http://101.200.188.100:8080"
 #define api_icon_base_url @"http://img.xiaoyou.com"
 /**********************************************************
  Url Define: ProvisionManager
@@ -29,7 +28,7 @@
 #define api_user_login  @"/mobile/user/login"
 
 /**********************************************************
- Url Define: AssistantManager
+ Url Define: FeedManager
  **********************************************************/
 
 /**********************************************************
