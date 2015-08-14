@@ -17,7 +17,7 @@
 
 #import "MessageManager.h"
 #import "ContactManager.h"
-#import "LinkManModel.h"
+#import "ContactsListModel.h"
 
 #define WeakSelf(weakSelf)  __weak __typeof(&*self)weakSelf = self;
 
@@ -66,12 +66,12 @@
     //联系人列表请求
     [[ContactManager sharedInstance] getContactsListData:^(YActionMessage *message) {
         YLogD(@"%@",message);
-        [message.object enumerateObjectsUsingBlock:^(LinkManModel * obj, NSUInteger idx, BOOL *stop) {
+        [message.object enumerateObjectsUsingBlock:^(ContactsListModel * obj, NSUInteger idx, BOOL *stop) {
 
         }];
         
-        weakSelf.contactsDataSource = [NSMutableArray arrayWithArray:message.object];
-        [weakSelf.contactsTableView refreshTableView:self.contactsDataSource];
+//        weakSelf.contactsDataSource = [NSMutableArray arrayWithArray:message.object];
+//        [weakSelf.contactsTableView refreshTableView:self.contactsDataSource];
     }];
     
 }
