@@ -11,14 +11,14 @@
 
 @interface SchoolListModel : YModel <NSCoding, NSCopying>
 
-@property (nonatomic, assign) id introduce;
-@property (nonatomic, assign) id history;
+@property (nonatomic, strong) NSString *introduce;
+@property (nonatomic, strong) NSString *history;
 @property (nonatomic, strong) NSString *schoolCode;
 @property (nonatomic, assign) double internalBaseClassIdentifier;
-@property (nonatomic, assign) id introduceImagePath;
-@property (nonatomic, assign) id departmentImagePath;
+@property (nonatomic, strong) NSString *introduceImagePath;
+@property (nonatomic, strong) NSString *departmentImagePath;
 @property (nonatomic, strong) NSString *schoolName;
-@property (nonatomic, assign) id historyImagePath;
+@property (nonatomic, strong) NSString *historyImagePath;
 @property (nonatomic, strong) NSString *schoolLogoPath;
 @property (nonatomic, strong) NSString *schoolLocation;
 

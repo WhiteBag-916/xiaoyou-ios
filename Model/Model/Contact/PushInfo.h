@@ -19,7 +19,7 @@
 @property (nonatomic, strong) NSString *time;
 @property (nonatomic, strong) NSString *flag;
 @property (nonatomic, strong) NSString *sendStudentNo;
-@property (nonatomic, assign) id realtion;
+@property (nonatomic, strong) NSString *realtion;
 @property (nonatomic, strong) NSString *reciveStudentNo;
 @property (nonatomic, strong) NSString *isDel;
 

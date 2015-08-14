@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		045F09261AF1CE2E00804EC7 /* YTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 045F09251AF1CE2E00804EC7 /* YTextView.m */; };
-		048F69141AF2363900F67C67 /* YAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 048F69131AF2363900F67C67 /* YAlertView.m */; };
 		20AEFE521B40FBA600975B84 /* NSDictionary+CLLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 20AEFE511B40FBA600975B84 /* NSDictionary+CLLocation.m */; };
 		20DD4B281B73039B007C352C /* YTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 20DD4B271B73039B007C352C /* YTableView.m */; };
 		2803C92C1AE3BA60002303B6 /* YManagerCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 2803C92B1AE3BA60002303B6 /* YManagerCenter.m */; };
@@ -44,7 +43,6 @@
 		57CFE0DA1AE7A3AF00D4C4E9 /* YImage+Ext.m in Sources */ = {isa = PBXBuildFile; fileRef = 57CFE0D91AE7A3AF00D4C4E9 /* YImage+Ext.m */; };
 		57CFE0F61AE7B13400D4C4E9 /* YColor+Ext.m in Sources */ = {isa = PBXBuildFile; fileRef = 57CFE0F51AE7B13400D4C4E9 /* YColor+Ext.m */; };
 		57CFE0F91AE7B14600D4C4E9 /* YDate+Ext.m in Sources */ = {isa = PBXBuildFile; fileRef = 57CFE0F81AE7B14600D4C4E9 /* YDate+Ext.m */; };
-		57CFE0FC1AE7B1AF00D4C4E9 /* YAlertView+Ext.m in Sources */ = {isa = PBXBuildFile; fileRef = 57CFE0FB1AE7B1AF00D4C4E9 /* YAlertView+Ext.m */; };
 		57EF11D31AF713C3009F49DD /* YShareData.m in Sources */ = {isa = PBXBuildFile; fileRef = 57EF11D21AF713C3009F49DD /* YShareData.m */; };
 		971758891B132D7D00CCEEE4 /* YTextField+Ext.m in Sources */ = {isa = PBXBuildFile; fileRef = 971758881B132D7D00CCEEE4 /* YTextField+Ext.m */; };
 /* End PBXBuildFile section */
@@ -74,8 +72,6 @@
 /* Begin PBXFileReference section */
 		045F09241AF1CE2E00804EC7 /* YTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YTextView.h; sourceTree = "<group>"; };
 		045F09251AF1CE2E00804EC7 /* YTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YTextView.m; sourceTree = "<group>"; };
-		048F69121AF2363900F67C67 /* YAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YAlertView.h; sourceTree = "<group>"; };
-		048F69131AF2363900F67C67 /* YAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YAlertView.m; sourceTree = "<group>"; };
 		20AEFE501B40FBA600975B84 /* NSDictionary+CLLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+CLLocation.h"; sourceTree = "<group>"; };
 		20AEFE511B40FBA600975B84 /* NSDictionary+CLLocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+CLLocation.m"; sourceTree = "<group>"; };
 		20DD4B261B73039B007C352C /* YTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YTableView.h; sourceTree = "<group>"; };
@@ -153,8 +149,6 @@
 		57CFE0F51AE7B13400D4C4E9 /* YColor+Ext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "YColor+Ext.m"; sourceTree = "<group>"; };
 		57CFE0F71AE7B14600D4C4E9 /* YDate+Ext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "YDate+Ext.h"; sourceTree = "<group>"; };
 		57CFE0F81AE7B14600D4C4E9 /* YDate+Ext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "YDate+Ext.m"; sourceTree = "<group>"; };
-		57CFE0FA1AE7B1AF00D4C4E9 /* YAlertView+Ext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "YAlertView+Ext.h"; sourceTree = "<group>"; };
-		57CFE0FB1AE7B1AF00D4C4E9 /* YAlertView+Ext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "YAlertView+Ext.m"; sourceTree = "<group>"; };
 		57EF11D11AF713C3009F49DD /* YShareData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YShareData.h; sourceTree = "<group>"; };
 		57EF11D21AF713C3009F49DD /* YShareData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YShareData.m; sourceTree = "<group>"; };
 		971758881B132D7D00CCEEE4 /* YTextField+Ext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "YTextField+Ext.m"; sourceTree = "<group>"; };
@@ -304,8 +298,6 @@
 				57CFE0F51AE7B13400D4C4E9 /* YColor+Ext.m */,
 				57CFE0F71AE7B14600D4C4E9 /* YDate+Ext.h */,
 				57CFE0F81AE7B14600D4C4E9 /* YDate+Ext.m */,
-				57CFE0FA1AE7B1AF00D4C4E9 /* YAlertView+Ext.h */,
-				57CFE0FB1AE7B1AF00D4C4E9 /* YAlertView+Ext.m */,
 				57C6053D1AE8C45900A92A54 /* YString+Ext.h */,
 				57C6053E1AE8C45900A92A54 /* YString+Ext.m */,
 				9717588A1B132D9A00CCEEE4 /* YTextField+Ext.h */,
@@ -356,8 +348,6 @@
 				2867CF2F1AE2C3F8001DC2FD /* YUI.h */,
 				045F09241AF1CE2E00804EC7 /* YTextView.h */,
 				045F09251AF1CE2E00804EC7 /* YTextView.m */,
-				048F69121AF2363900F67C67 /* YAlertView.h */,
-				048F69131AF2363900F67C67 /* YAlertView.m */,
 				28DB2C871B2BD553000FB76B /* YNavigationController.h */,
 				28DB2C881B2BD553000FB76B /* YNavigationController.m */,
 				20DD4B261B73039B007C352C /* YTableView.h */,
@@ -477,7 +467,6 @@
 				2862E36C1AE03BF500AD0257 /* YDao.m in Sources */,
 				2885DB3C1ADD2C84002D4F23 /* YOperationQueue.m in Sources */,
 				2862E38D1AE05EA600AD0257 /* YViewController.m in Sources */,
-				57CFE0FC1AE7B1AF00D4C4E9 /* YAlertView+Ext.m in Sources */,
 				2873DBD01ADFF66E00F5FD3E /* YFMDatabaseQueue.m in Sources */,
 				2862E35F1AE03AAE00AD0257 /* YObject.m in Sources */,
 				2848A13B1ADED603007E2682 /* YLog.m in Sources */,
@@ -503,7 +492,6 @@
 				2817D9C11ADA1EA500FDB4F6 /* YHttp.m in Sources */,
 				2862E4201AE0FA5900AD0257 /* YActionMessage.m in Sources */,
 				28DB2C891B2BD553000FB76B /* YNavigationController.m in Sources */,
-				048F69141AF2363900F67C67 /* YAlertView.m in Sources */,
 				57CFE0D41AE7A25A00D4C4E9 /* YVIew+Ext.m in Sources */,
 				045F09261AF1CE2E00804EC7 /* YTextView.m in Sources */,
 			);

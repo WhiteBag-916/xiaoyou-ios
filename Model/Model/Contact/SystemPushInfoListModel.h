@@ -12,7 +12,7 @@
 @interface SystemPushInfoListModel : YModel <NSCoding, NSCopying>
 
 @property (nonatomic, assign) double internalBaseClassIdentifier;
-@property (nonatomic, assign) id tablename;
+@property (nonatomic, strong) NSString *tablename;
 @property (nonatomic, strong) NSString *schoolCode;
 @property (nonatomic, strong) NSString *sendStudentNo;
 @property (nonatomic, strong) NSString *realtion;
