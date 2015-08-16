@@ -39,6 +39,9 @@
 		33E796C71B786D2100930E73 /* MessageTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 33E796C51B786D2100930E73 /* MessageTableViewCell.m */; };
 		33E796CA1B786E2400930E73 /* Pinyin.m in Sources */ = {isa = PBXBuildFile; fileRef = 33E796C91B786E2400930E73 /* Pinyin.m */; };
 		34AF80435283028D453BFBFC /* libPods-XiaoYou.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 77B574BED9D4FF3F4BFAA9FE /* libPods-XiaoYou.a */; };
+		6518A2481B80429300AEB79D /* TagListTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6518A2471B80429300AEB79D /* TagListTableView.m */; };
+		6518A24B1B80583600AEB79D /* TagListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6518A24A1B80583600AEB79D /* TagListTableViewCell.m */; };
+		654602171B7F2FF00039F622 /* FeedImageGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 654602161B7F2FF00039F622 /* FeedImageGroup.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -111,6 +114,12 @@
 		33E796C51B786D2100930E73 /* MessageTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageTableViewCell.m; sourceTree = "<group>"; };
 		33E796C81B786E2400930E73 /* Pinyin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Pinyin.h; sourceTree = "<group>"; };
 		33E796C91B786E2400930E73 /* Pinyin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Pinyin.m; sourceTree = "<group>"; };
+		6518A2461B80429300AEB79D /* TagListTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TagListTableView.h; sourceTree = "<group>"; };
+		6518A2471B80429300AEB79D /* TagListTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TagListTableView.m; sourceTree = "<group>"; };
+		6518A2491B80583600AEB79D /* TagListTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TagListTableViewCell.h; sourceTree = "<group>"; };
+		6518A24A1B80583600AEB79D /* TagListTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TagListTableViewCell.m; sourceTree = "<group>"; };
+		654602151B7F2FF00039F622 /* FeedImageGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedImageGroup.h; sourceTree = "<group>"; };
+		654602161B7F2FF00039F622 /* FeedImageGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedImageGroup.m; sourceTree = "<group>"; };
 		77B574BED9D4FF3F4BFAA9FE /* libPods-XiaoYou.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-XiaoYou.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F531E541C4347E287F02139F /* Pods-XiaoYou.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XiaoYou.release.xcconfig"; path = "../Pods/Target Support Files/Pods-XiaoYou/Pods-XiaoYou.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -357,6 +366,8 @@
 				20DA63751B7482DE007D22AC /* FeedListTableView.m */,
 				20DC5CCE1B7B4FA00059B6E6 /* FeedListTableViewCell.h */,
 				20DC5CCF1B7B4FA00059B6E6 /* FeedListTableViewCell.m */,
+				654602151B7F2FF00039F622 /* FeedImageGroup.h */,
+				654602161B7F2FF00039F622 /* FeedImageGroup.m */,
 			);
 			path = FeedList;
 			sourceTree = "<group>";
@@ -373,6 +384,10 @@
 			children = (
 				20E1222B1B708CDC00F90BD3 /* TagListViewController.h */,
 				20E1222C1B708CDC00F90BD3 /* TagListViewController.m */,
+				6518A2461B80429300AEB79D /* TagListTableView.h */,
+				6518A2471B80429300AEB79D /* TagListTableView.m */,
+				6518A2491B80583600AEB79D /* TagListTableViewCell.h */,
+				6518A24A1B80583600AEB79D /* TagListTableViewCell.m */,
 			);
 			path = TagList;
 			sourceTree = "<group>";
@@ -574,15 +589,18 @@
 				33DCA7611B7B28A400133519 /* XYMessageDetailViewController.m in Sources */,
 				20DBFD631B4FA7E1009134D0 /* AppDelegate.m in Sources */,
 				20DD4B351B734781007C352C /* CommonSwitchView.m in Sources */,
+				6518A24B1B80583600AEB79D /* TagListTableViewCell.m in Sources */,
 				20DD4B311B7345EF007C352C /* ProfileViewController.m in Sources */,
 				33E796C61B786D2100930E73 /* ContactsTableViewCell.m in Sources */,
 				207F808A1B7099C2005E8F6A /* AppDelegate+Manager.m in Sources */,
+				6518A2481B80429300AEB79D /* TagListTableView.m in Sources */,
 				200E397C1B4E818B000B587B /* main.m in Sources */,
 				20E1222D1B708CDC00F90BD3 /* TagListViewController.m in Sources */,
 				20DA63761B7482DE007D22AC /* FeedListTableView.m in Sources */,
 				33E796C71B786D2100930E73 /* MessageTableViewCell.m in Sources */,
 				207F808D1B709A1E005E8F6A /* AppDelegate+Notification.m in Sources */,
 				33E796B81B786CDE00930E73 /* XYMessageAndContactsViewController.m in Sources */,
+				654602171B7F2FF00039F622 /* FeedImageGroup.m in Sources */,
 				20DC5CD01B7B4FA00059B6E6 /* FeedListTableViewCell.m in Sources */,
 				33E796C01B786D1300930E73 /* MessageTableView.m in Sources */,
 				20E122211B705ED200F90BD3 /* FeedListViewController.m in Sources */,

@@ -22,8 +22,7 @@
 
 static const NSInteger kLayoutPriorityDefaultVeryHigh = 999;
 
-#define SCREEN_WIDTH [UIScreen mainScreen].bounds.size.width
-#define SCREEN_HEIGHT [UIScreen mainScreen].bounds.size.height
+
 
 #define kApplicationKeyWindow [UIApplication sharedApplication].keyWindow
 #define kAppDelegateAccessor ((AppDelegate *)[[UIApplication sharedApplication] delegate])
