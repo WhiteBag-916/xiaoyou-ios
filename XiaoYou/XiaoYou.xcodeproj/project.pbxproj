@@ -211,6 +211,8 @@
 		6518A24B1B80583600AEB79D /* TagListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6518A24A1B80583600AEB79D /* TagListTableViewCell.m */; };
 		653CB2EE1B806BFD006ECBB2 /* ChineseString.m in Sources */ = {isa = PBXBuildFile; fileRef = 653CB2EB1B806BFD006ECBB2 /* ChineseString.m */; };
 		653CB2EF1B806BFD006ECBB2 /* pinyin.c in Sources */ = {isa = PBXBuildFile; fileRef = 653CB2EC1B806BFD006ECBB2 /* pinyin.c */; };
+		653CB2FB1B807FFB006ECBB2 /* search@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 653CB2F91B807FFB006ECBB2 /* search@2x.png */; };
+		653CB2FC1B807FFB006ECBB2 /* search@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 653CB2FA1B807FFB006ECBB2 /* search@3x.png */; };
 		654602171B7F2FF00039F622 /* FeedImageGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 654602161B7F2FF00039F622 /* FeedImageGroup.m */; };
 		6592DCD21B806A9B004CD118 /* XYChoicePersonViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6592DCB01B806A9B004CD118 /* XYChoicePersonViewController.m */; };
 		6592DCD31B806A9B004CD118 /* XYContactsInfoDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6592DCB31B806A9B004CD118 /* XYContactsInfoDetailViewController.m */; };
@@ -577,6 +579,8 @@
 		653CB2EB1B806BFD006ECBB2 /* ChineseString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChineseString.m; sourceTree = "<group>"; };
 		653CB2EC1B806BFD006ECBB2 /* pinyin.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = pinyin.c; sourceTree = "<group>"; };
 		653CB2ED1B806BFD006ECBB2 /* pinyin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = pinyin.h; sourceTree = "<group>"; };
+		653CB2F91B807FFB006ECBB2 /* search@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "search@2x.png"; sourceTree = "<group>"; };
+		653CB2FA1B807FFB006ECBB2 /* search@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "search@3x.png"; sourceTree = "<group>"; };
 		654602151B7F2FF00039F622 /* FeedImageGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedImageGroup.h; sourceTree = "<group>"; };
 		654602161B7F2FF00039F622 /* FeedImageGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedImageGroup.m; sourceTree = "<group>"; };
 		6592DCAF1B806A9B004CD118 /* XYChoicePersonViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYChoicePersonViewController.h; sourceTree = "<group>"; };
@@ -746,13 +750,13 @@
 		20DBFD701B4FA90B009134D0 /* Message */ = {
 			isa = PBXGroup;
 			children = (
+				6592DCC41B806A9B004CD118 /* MessageAndContacts */,
 				333120E51B806EDA00D3D032 /* ChatView */,
 				3331211A1B806EDB00D3D032 /* ChatViewNeeds */,
 				6592DCAE1B806A9B004CD118 /* ChoicePerson */,
 				6592DCB11B806A9B004CD118 /* ContactsInfoDetail */,
 				6592DCB61B806A9B004CD118 /* FriendApply */,
 				6592DCBD1B806A9B004CD118 /* GroupApply */,
-				6592DCC41B806A9B004CD118 /* MessageAndContacts */,
 				6592DCCF1B806A9B004CD118 /* SendMessage */,
 			);
 			path = Message;
@@ -761,12 +765,9 @@
 		20DBFD721B4FA90B009134D0 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				653CB2F81B807FEE006ECBB2 /* Feed */,
 				3321B14A1B7993650020AD80 /* contacts */,
 				20DD4B361B734B49007C352C /* Common */,
-				20DD4B3B1B734B49007C352C /* Feed */,
-				20DD4B3C1B734B49007C352C /* Login */,
-				20DD4B3D1B734B49007C352C /* Message */,
-				20DD4B3E1B734B49007C352C /* Profile */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -807,34 +808,6 @@
 				20DD4B3A1B734B49007C352C /* message_tab_red@3x.png */,
 			);
 			path = Common;
-			sourceTree = "<group>";
-		};
-		20DD4B3B1B734B49007C352C /* Feed */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Feed;
-			sourceTree = "<group>";
-		};
-		20DD4B3C1B734B49007C352C /* Login */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Login;
-			sourceTree = "<group>";
-		};
-		20DD4B3D1B734B49007C352C /* Message */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Message;
-			sourceTree = "<group>";
-		};
-		20DD4B3E1B734B49007C352C /* Profile */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Profile;
 			sourceTree = "<group>";
 		};
 		20E122181B705D4E00F90BD3 /* Feed */ = {
@@ -1405,22 +1378,11 @@
 		333121CB1B806EDB00D3D032 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				333121CC1B806EDB00D3D032 /* appicon */,
 				333121CD1B806EDB00D3D032 /* chatListCell */,
 				333121D01B806EDB00D3D032 /* ChatView */,
-				333122241B806EDB00D3D032 /* Login */,
 				333122251B806EDB00D3D032 /* NavigationBar */,
-				333122281B806EDB00D3D032 /* other */,
-				333122291B806EDB00D3D032 /* tabbar */,
 			);
 			path = Resources;
-			sourceTree = "<group>";
-		};
-		333121CC1B806EDB00D3D032 /* appicon */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = appicon;
 			sourceTree = "<group>";
 		};
 		333121CD1B806EDB00D3D032 /* chatListCell */ = {
@@ -1435,7 +1397,6 @@
 		333121D01B806EDB00D3D032 /* ChatView */ = {
 			isa = PBXGroup;
 			children = (
-				333121D11B806EDB00D3D032 /* audio */,
 				333121D21B806EDB00D3D032 /* chatLocation */,
 				333121DB1B806EDB00D3D032 /* emoji */,
 				333121DE1B806EDB00D3D032 /* imageDownloadFail@2x.png */,
@@ -1445,13 +1406,6 @@
 				333122171B806EDB00D3D032 /* sender_bubble */,
 			);
 			path = ChatView;
-			sourceTree = "<group>";
-		};
-		333121D11B806EDB00D3D032 /* audio */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = audio;
 			sourceTree = "<group>";
 		};
 		333121D21B806EDB00D3D032 /* chatLocation */ = {
@@ -1578,13 +1532,6 @@
 			path = sender_bubble;
 			sourceTree = "<group>";
 		};
-		333122241B806EDB00D3D032 /* Login */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Login;
-			sourceTree = "<group>";
-		};
 		333122251B806EDB00D3D032 /* NavigationBar */ = {
 			isa = PBXGroup;
 			children = (
@@ -1592,20 +1539,6 @@
 				333122271B806EDB00D3D032 /* delete@2x.png */,
 			);
 			path = NavigationBar;
-			sourceTree = "<group>";
-		};
-		333122281B806EDB00D3D032 /* other */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = other;
-			sourceTree = "<group>";
-		};
-		333122291B806EDB00D3D032 /* tabbar */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = tabbar;
 			sourceTree = "<group>";
 		};
 		653CB2E81B806BFD006ECBB2 /* Utils */ = {
@@ -1628,6 +1561,15 @@
 				653CB2ED1B806BFD006ECBB2 /* pinyin.h */,
 			);
 			path = ChineseSorting;
+			sourceTree = "<group>";
+		};
+		653CB2F81B807FEE006ECBB2 /* Feed */ = {
+			isa = PBXGroup;
+			children = (
+				653CB2F91B807FFB006ECBB2 /* search@2x.png */,
+				653CB2FA1B807FFB006ECBB2 /* search@3x.png */,
+			);
+			name = Feed;
 			sourceTree = "<group>";
 		};
 		6592DCAE1B806A9B004CD118 /* ChoicePerson */ = {
@@ -1679,16 +1621,16 @@
 		6592DCC41B806A9B004CD118 /* MessageAndContacts */ = {
 			isa = PBXGroup;
 			children = (
+				6592DCCD1B806A9B004CD118 /* XYMessageAndContactsViewController.h */,
+				6592DCCE1B806A9B004CD118 /* XYMessageAndContactsViewController.m */,
+				6592DCC91B806A9B004CD118 /* MessageTableView.h */,
+				6592DCCA1B806A9B004CD118 /* MessageTableView.m */,
 				6592DCC51B806A9B004CD118 /* ContactsTableView.h */,
 				6592DCC61B806A9B004CD118 /* ContactsTableView.m */,
 				6592DCC71B806A9B004CD118 /* ContactsTableViewCell.h */,
 				6592DCC81B806A9B004CD118 /* ContactsTableViewCell.m */,
-				6592DCC91B806A9B004CD118 /* MessageTableView.h */,
-				6592DCCA1B806A9B004CD118 /* MessageTableView.m */,
 				6592DCCB1B806A9B004CD118 /* MessageTableViewCell.h */,
 				6592DCCC1B806A9B004CD118 /* MessageTableViewCell.m */,
-				6592DCCD1B806A9B004CD118 /* XYMessageAndContactsViewController.h */,
-				6592DCCE1B806A9B004CD118 /* XYMessageAndContactsViewController.m */,
 			);
 			path = MessageAndContacts;
 			sourceTree = "<group>";
@@ -1811,6 +1753,7 @@
 				333122B41B806EDC00D3D032 /* chatBar_more_locationSelected.png in Resources */,
 				333122931B806EDC00D3D032 /* messageSendFail@2x.png in Resources */,
 				3331228E1B806EDC00D3D032 /* chat_location_preview.png in Resources */,
+				653CB2FB1B807FFB006ECBB2 /* search@2x.png in Resources */,
 				333122CE1B806EDC00D3D032 /* chat_sender_audio_playing_003@2x.png in Resources */,
 				333122A21B806EDC00D3D032 /* chatBar_recordBg.png in Resources */,
 				333122CF1B806EDC00D3D032 /* chat_sender_audio_playing_full.png in Resources */,
@@ -1870,6 +1813,7 @@
 				333122A71B806EDC00D3D032 /* chatBar_recordSelectedBg@2x.png in Resources */,
 				333122881B806EDC00D3D032 /* chat_location_annotation_someone.png in Resources */,
 				3321B14D1B7993650020AD80 /* icon_default_mine@2x.png in Resources */,
+				653CB2FC1B807FFB006ECBB2 /* search@3x.png in Resources */,
 				3321B14E1B7993650020AD80 /* icon_default_mine@3x.png in Resources */,
 				200E39871B4E818B000B587B /* Images.xcassets in Resources */,
 				333122971B806EDC00D3D032 /* chatBar_faceSelected@2x.png in Resources */,

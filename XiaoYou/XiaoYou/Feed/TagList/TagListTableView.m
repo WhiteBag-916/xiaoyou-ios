@@ -23,7 +23,8 @@
         self.dataSource = self;
         [self registerClass:[TagListTableViewCell class] forCellReuseIdentifier:KTagListTableViewCell];
         self.separatorStyle = UITableViewCellSeparatorStyleNone;
-        
+        self.backgroundColor = [UIColor clearColor];
+        _data = @[@"23",@""];
     }
     return self;
 }
@@ -34,14 +35,9 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return _data.count + 1;
 }
-- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-    return SCALE_NUM(40);
-}
-- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
-    return SCALE_NUM(40);
-}
+
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return SCALE_NUM(40);
+    return SCALE_NUM(45);
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {

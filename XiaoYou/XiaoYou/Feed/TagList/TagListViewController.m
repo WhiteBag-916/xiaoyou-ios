@@ -12,10 +12,12 @@
 #import "SlideNavigationController.h"
 #import "YNotificationDefine.h"
 
-#define KNOTIFYCOUNTHEIGHT 20
+#define KNOTIFYCOUNTHEIGHT 25
 #define KNOTIFYCOUNTMARGIN_LEFT SCALE_NUM(15)
+#define KNOTIFYCOUNTMARGIN_RIGHT SCALE_NUM(10)
 #define KSEARCHHEIGHT SCALE_NUM(30)
 #define KBOTTOMHEIGHT SCALE_NUM(80)
+#define KTABLEMARGIN  SCALE_NUM(30)
 @interface TagListViewController ()
 
 @property (nonatomic, strong) UIView *notifyView;
@@ -30,7 +32,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.view.backgroundColor = [UIColor blueColor];
+    self.view.backgroundColor = KCOLORGREEN_455A64;
     [self initHeaderView];
     [self initSearchBtn];
     [self initBottomView];
@@ -52,22 +54,24 @@
         make.left.right.bottom.equalTo(_notifyView);
         make.height.mas_equalTo(0.5);
     }];
-    line.backgroundColor = [UIColor whiteColor];
+    line.backgroundColor = KCOLORWHITE_C5CACF;
     
     
     _notifyCount = [YUtils initLabel:CONTENT_FONT(12) color:[UIColor whiteColor] text:@"99" frame:CGRectZero alignment:NSTextAlignmentCenter];
     [_notifyView addSubview:_notifyCount];
     [_notifyCount mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.centerY.equalTo(_notifyView);
+        make.bottom.equalTo(_notifyView).offset(-KNOTIFYCOUNTMARGIN_LEFT);
         make.width.height.mas_equalTo(KNOTIFYCOUNTHEIGHT);
         make.left.mas_equalTo(KNOTIFYCOUNTMARGIN_LEFT);
     }];
-    _notifyCount.backgroundColor = [UIColor greenColor];
+    _notifyCount.backgroundColor = KCOLORGREEN_179587;
+    _notifyCount.layer.cornerRadius = 3;
+    _notifyCount.clipsToBounds = true;
     
-    UILabel *infoLabel = [YUtils initLabel:CONTENT_FONT(12) color:[UIColor whiteColor] text:@"人脉新提醒" frame:CGRectZero alignment:NSTextAlignmentLeft];
+    UILabel *infoLabel = [YUtils initLabel:CONTENT_FONT(15) color:[UIColor whiteColor] text:@"人脉新提醒" frame:CGRectZero alignment:NSTextAlignmentLeft];
     [_notifyView addSubview:infoLabel];
     [infoLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(_notifyCount.mas_right).offset(KNOTIFYCOUNTMARGIN_LEFT);
+        make.left.equalTo(_notifyCount.mas_right).offset(KNOTIFYCOUNTMARGIN_RIGHT);
         make.top.bottom.equalTo(_notifyCount);
     }];
     
@@ -76,7 +80,7 @@
 }
 
 - (void)initSearchBtn {
-    _searchLabel = [YUtils initLabel:CONTENT_FONT(12) color:[UIColor whiteColor] text:@"找人" frame:CGRectZero alignment:NSTextAlignmentCenter];
+    _searchLabel = [YUtils initLabel:CONTENT_FONT(12) color:KCOLORWHITE_C5CACF text:@"在这儿可以找到所有人" frame:CGRectZero alignment:NSTextAlignmentCenter];
     [self.view addSubview:_searchLabel];
     [_searchLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.right.equalTo(_notifyView);
@@ -109,7 +113,7 @@
         make.left.right.top.equalTo(_bottomView);
         make.height.mas_equalTo(0.5);
     }];
-    line.backgroundColor = [UIColor whiteColor];
+    line.backgroundColor = KCOLORWHITE_C5CACF;
     
     //增加点击跳转到动态列表
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(toAssociationsList)];
@@ -120,9 +124,9 @@
     TagListTableView *listView = [[TagListTableView alloc] init];
     [self.view addSubview:listView];
     [listView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(_searchLabel.mas_bottom);
+        make.top.equalTo(_searchLabel.mas_bottom).offset(KTABLEMARGIN);
         make.left.right.equalTo(_notifyView);
-        make.bottom.equalTo(_bottomView.mas_top);
+        make.bottom.equalTo(_bottomView.mas_top).offset(-KTABLEMARGIN);
     }];
 }
 

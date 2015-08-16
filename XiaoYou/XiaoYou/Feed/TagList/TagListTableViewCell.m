@@ -13,6 +13,9 @@
 #import "Masonry.h"
 
 NSString *const KTagListTableViewCell = @"TagListTableViewCellId";
+#define KLABELHEIGHT SCALE_NUM(40)
+#define kLABELWIDTH SCALE_NUM(120)
+#define KLABELRADIUS SCALE_NUM(5)
 
 @interface TagListTableViewCell()
 @property (nonatomic, strong) UILabel *tagLabel;
@@ -24,12 +27,18 @@ NSString *const KTagListTableViewCell = @"TagListTableViewCellId";
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
         self.selectionStyle = UITableViewCellSelectionStyleNone;
-        _tagLabel = [YUtils initLabel:CONTENT_FONT(15) color:[UIColor whiteColor] text:@"测试" frame:CGRectZero alignment:NSTextAlignmentCenter];
-        [self.contentView addSubview:_tagLabel];
+        _tagLabel = [YUtils initLabel:CONTENT_FONT(15) color:KCOLORWHITE text:@"测试" frame:CGRectZero alignment:NSTextAlignmentCenter];
+        [self addSubview:_tagLabel];
         [_tagLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.top.centerX.equalTo(self.contentView);
+            make.top.centerX.equalTo(self);
+            make.width.mas_equalTo(kLABELWIDTH);
+            make.height.mas_equalTo(KLABELHEIGHT);
         }];
-        self.backgroundColor = [UIColor redColor];
+        self.backgroundColor = [UIColor clearColor];
+        _tagLabel.backgroundColor = KCOLORGREEN_179587;
+        _tagLabel.layer.cornerRadius = KLABELRADIUS;
+        _tagLabel.clipsToBounds = true;
+        
     }
     return self;
 }
