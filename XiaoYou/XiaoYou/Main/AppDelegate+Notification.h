@@ -10,6 +10,6 @@
 
 @interface AppDelegate (Notification)
 
-- (void)initNotification;
+- (void)initNotification:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions;
 
 @end

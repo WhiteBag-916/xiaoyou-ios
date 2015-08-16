@@ -8,7 +8,7 @@
 
 #import "ContactsListAction.h"
 #import "YDefine.h"
-#import "LinkManModel.h"
+#import "ContactsListModel.h"
 #import "YUtils+Component.h"
 
 @implementation ContactsListAction
@@ -21,7 +21,7 @@
                                                      }];
     NSString *url = [YUtils getUrl:api_contacts_list];
     [self POST:url parameters:parameter completion:^(YHttpRequest *request) {
-        YActionMessage *message = [LinkManModel actionMessageWithHttpRequest:request];
+        YActionMessage *message = [ContactsListModel actionMessageWithHttpRequest:request];
         self.completionBlock(message);
     }];
 }

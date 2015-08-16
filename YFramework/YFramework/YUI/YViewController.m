@@ -52,8 +52,8 @@
         self.edgesForExtendedLayout = UIRectEdgeNone;
     }
     
-    //title 白色
-    self.navigationController.navigationBar.barTintColor = [UIColor whiteColor];
+    //title
+    self.navigationController.navigationBar.barTintColor = [UIColor hexChangeFloat:@"455a64"];
     
     self.view.backgroundColor = [UIColor whiteColor];
 }

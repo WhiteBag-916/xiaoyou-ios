@@ -231,6 +231,6 @@ char pinyinFirstLetter(unsigned short hanzi)
 	}
 	else
 	{
-		return hanzi;
+		return '#';
 	}
 }
