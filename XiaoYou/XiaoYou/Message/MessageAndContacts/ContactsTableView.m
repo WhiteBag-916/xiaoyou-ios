@@ -78,6 +78,8 @@
 -(void)setUpHeaderView
 {
     UIView * backView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, kRowHeight)];
+    UITapGestureRecognizer * tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapGestureRecognizerAction)];
+    [backView addGestureRecognizer:tapGestureRecognizer];
     //头像
     _headImageView = [[UIImageView alloc] init];
     _headImageView.layer.cornerRadius = kHeadCornerRadius;
@@ -112,6 +114,12 @@
     }];
     self.tableHeaderView = backView;
 }
+
+-(void)tapGestureRecognizerAction
+{
+    
+}
+
 
 -(NSMutableArray *)transformDataSouceArr:(NSMutableArray *) dataSouceArr
 {

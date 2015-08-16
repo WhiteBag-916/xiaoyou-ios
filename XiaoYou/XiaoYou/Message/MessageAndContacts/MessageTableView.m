@@ -10,12 +10,26 @@
 #import "MessageTableViewCell.h"
 #import "YLog.h"
 #import "ChatViewController.h"
+#import "Masonry.h"
 
-#define kRowHeight          60
+#define kRowHeight                     60
+#define kHeadWidthAndHeight            40
+#define kNameLabelWidth                80
+#define kTimeLabelWidth                60
+#define kHeadCornerRadius              20
+#define kPaddingDistance               10
+#define kLabelHeightDistacnce          14
+#define kBadgeWidthDistance            30
 
 @interface MessageTableView ()<UITableViewDataSource,UITableViewDelegate>
 
 @property (nonatomic,strong) NSMutableArray *messageDataSource;
+
+@property (strong, nonatomic)  UIImageView *headImageView;
+@property (strong, nonatomic)  UILabel *nameLabel;
+@property (strong, nonatomic)  UILabel *badgeNumberLabel;
+@property (strong, nonatomic)  UILabel *timeLabel;
+@property (strong, nonatomic)  UILabel *messageLabel;
 
 @end
 
@@ -46,7 +60,74 @@
 
 -(void)refreshTableView:(NSMutableArray *) dataSouceArr
 {
+    [self setUpHeaderView];
     [self reloadData];
+}
+
+-(void)setUpHeaderView
+{
+    UIView * backView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 60)];
+    UITapGestureRecognizer * tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapGestureRecognizerAction)];
+    [backView addGestureRecognizer:tapGestureRecognizer];
+    //头像
+    _headImageView = [[UIImageView alloc] init];
+    _headImageView.layer.cornerRadius = kHeadCornerRadius;
+    _headImageView.clipsToBounds = YES;
+    _headImageView.backgroundColor = [UIColor orangeColor];
+    [backView addSubview:_headImageView];
+    [_headImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.left.mas_equalTo(kPaddingDistance);
+        make.width.height.mas_equalTo(kHeadWidthAndHeight);
+    }];
+    //姓名
+    _nameLabel = [[UILabel alloc] init];
+    _nameLabel.text = @"系统消息";
+    _nameLabel.backgroundColor = [UIColor magentaColor];
+    [backView addSubview:_nameLabel];
+    [_nameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.mas_equalTo(kPaddingDistance);
+        make.left.equalTo(_headImageView.mas_right).offset(kPaddingDistance);
+        make.width.mas_equalTo(kNameLabelWidth);
+        make.height.mas_equalTo(kLabelHeightDistacnce);
+    }];
+    //消息数
+    _badgeNumberLabel = [[UILabel alloc] init];
+    _badgeNumberLabel.textAlignment = NSTextAlignmentRight;
+    _badgeNumberLabel.backgroundColor = [UIColor redColor];
+    [backView addSubview:_badgeNumberLabel];
+    [_badgeNumberLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.bottom.mas_equalTo(-kPaddingDistance);
+        make.right.equalTo(backView).offset(-kPaddingDistance);
+        make.height.mas_equalTo(kLabelHeightDistacnce);
+        make.width.mas_equalTo(kBadgeWidthDistance);
+    }];
+    //时间
+    _timeLabel = [[UILabel alloc] init];
+    _timeLabel.textAlignment = NSTextAlignmentRight;
+    _timeLabel.backgroundColor = [UIColor greenColor];
+    [backView addSubview:_timeLabel];
+    [_timeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.mas_equalTo(kPaddingDistance);
+        make.right.mas_equalTo(-kPaddingDistance);
+        make.width.mas_equalTo(kTimeLabelWidth);
+        make.height.mas_equalTo(kLabelHeightDistacnce);
+    }];
+    //消息
+    _messageLabel = [[UILabel alloc] init];
+    _messageLabel.backgroundColor = [UIColor grayColor];
+    [backView addSubview:_messageLabel];
+    [_messageLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.bottom.mas_equalTo(-kPaddingDistance);
+        make.left.equalTo(_headImageView.mas_right).offset(kPaddingDistance);
+        make.right.equalTo(_badgeNumberLabel.mas_left).offset(-kPaddingDistance);
+        make.height.mas_equalTo(kLabelHeightDistacnce);
+    }];
+    self.tableHeaderView = backView;
+}
+
+-(void)tapGestureRecognizerAction
+{
+    
 }
 
 #pragma mark - UITableViewDataSource和UITableViewDelegate

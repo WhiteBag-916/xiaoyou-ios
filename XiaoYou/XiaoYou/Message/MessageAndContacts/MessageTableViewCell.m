@@ -95,7 +95,7 @@ NSString *const kMessageTableViewCell = @"MessageTableViewCellId";
 
 -(void)setCellInfo
 {
-    self.nameLabel.text = @"系统消息";
+    self.nameLabel.text = @"山本伊朗";
     self.badgeNumberLabel.text = @"99";
     self.timeLabel.text = @"10:29";
     self.messageLabel.text = @"新生报到通知";
