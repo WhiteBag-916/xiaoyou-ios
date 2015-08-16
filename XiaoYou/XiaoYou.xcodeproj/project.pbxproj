@@ -40,6 +40,8 @@
 		20E122131B705C2100F90BD3 /* XYTabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20E122121B705C2100F90BD3 /* XYTabBarViewController.m */; };
 		20E122211B705ED200F90BD3 /* FeedListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20E122201B705ED200F90BD3 /* FeedListViewController.m */; };
 		20E1222D1B708CDC00F90BD3 /* TagListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20E1222C1B708CDC00F90BD3 /* TagListViewController.m */; };
+		20E18D3D1B805D9C005B75EE /* common_back@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 20E18D3B1B805D9C005B75EE /* common_back@2x.png */; };
+		20E18D3E1B805D9C005B75EE /* common_back@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 20E18D3C1B805D9C005B75EE /* common_back@3x.png */; };
 		3321B14D1B7993650020AD80 /* icon_default_mine@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3321B14B1B7993650020AD80 /* icon_default_mine@2x.png */; };
 		3321B14E1B7993650020AD80 /* icon_default_mine@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3321B14C1B7993650020AD80 /* icon_default_mine@3x.png */; };
 		334DF9501B7DD96D00C061AA /* XYMessageAndContactsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 334DF9491B7DD96D00C061AA /* XYMessageAndContactsViewController.m */; };
@@ -129,6 +131,8 @@
 		20E122201B705ED200F90BD3 /* FeedListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedListViewController.m; sourceTree = "<group>"; };
 		20E1222B1B708CDC00F90BD3 /* TagListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TagListViewController.h; sourceTree = "<group>"; };
 		20E1222C1B708CDC00F90BD3 /* TagListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TagListViewController.m; sourceTree = "<group>"; };
+		20E18D3B1B805D9C005B75EE /* common_back@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "common_back@2x.png"; sourceTree = "<group>"; };
+		20E18D3C1B805D9C005B75EE /* common_back@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "common_back@3x.png"; sourceTree = "<group>"; };
 		234A25BD9458AE14C70CE430 /* Pods-XiaoYou.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XiaoYou.debug.xcconfig"; path = "../Pods/Target Support Files/Pods-XiaoYou/Pods-XiaoYou.debug.xcconfig"; sourceTree = "<group>"; };
 		3321B14B1B7993650020AD80 /* icon_default_mine@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_default_mine@2x.png"; sourceTree = "<group>"; };
 		3321B14C1B7993650020AD80 /* icon_default_mine@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_default_mine@3x.png"; sourceTree = "<group>"; };
@@ -383,6 +387,8 @@
 		20DD4B361B734B49007C352C /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				20E18D3B1B805D9C005B75EE /* common_back@2x.png */,
+				20E18D3C1B805D9C005B75EE /* common_back@3x.png */,
 				20DAD3BF1B803B710026C97C /* common_filter@2x.png */,
 				20DAD3C01B803B710026C97C /* common_filter@3x.png */,
 				20DAD3C11B803B710026C97C /* common_search@2x.png */,
@@ -683,11 +689,13 @@
 				20DAD3CD1B803B710026C97C /* common_tag@2x.png in Resources */,
 				20DD4B411B734B49007C352C /* message_tab_red@2x.png in Resources */,
 				20DD4B421B734B49007C352C /* message_tab_red@3x.png in Resources */,
+				20E18D3E1B805D9C005B75EE /* common_back@3x.png in Resources */,
 				20DAD3C81B803B710026C97C /* common_filter@3x.png in Resources */,
 				20DAD3C91B803B710026C97C /* common_search@2x.png in Resources */,
 				20DD4B3F1B734B49007C352C /* message_tab_background@2x.png in Resources */,
 				20DD4B401B734B49007C352C /* message_tab_background@3x.png in Resources */,
 				20DAD3CC1B803B710026C97C /* common_star@3x.png in Resources */,
+				20E18D3D1B805D9C005B75EE /* common_back@2x.png in Resources */,
 				3321B14D1B7993650020AD80 /* icon_default_mine@2x.png in Resources */,
 				20DAD3CA1B803B710026C97C /* common_search@3x.png in Resources */,
 				3321B14E1B7993650020AD80 /* icon_default_mine@3x.png in Resources */,
