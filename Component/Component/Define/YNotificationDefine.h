@@ -9,5 +9,6 @@
 #ifndef Component_YNotificationDefine_h
 #define Component_YNotificationDefine_h
 
+#define kNotification_Push_AssociationsList             @"kNotification_Push_AssociationsList"
 
 #endif
