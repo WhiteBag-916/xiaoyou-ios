@@ -29,6 +29,9 @@
 		20E122131B705C2100F90BD3 /* XYTabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20E122121B705C2100F90BD3 /* XYTabBarViewController.m */; };
 		20E122211B705ED200F90BD3 /* FeedListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20E122201B705ED200F90BD3 /* FeedListViewController.m */; };
 		20E1222D1B708CDC00F90BD3 /* TagListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20E1222C1B708CDC00F90BD3 /* TagListViewController.m */; };
+		20E18D541B807752005B75EE /* AssociationsListTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 20E18D4F1B807752005B75EE /* AssociationsListTableView.m */; };
+		20E18D551B807752005B75EE /* AssociationsListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 20E18D511B807752005B75EE /* AssociationsListTableViewCell.m */; };
+		20E18D561B807752005B75EE /* AssociationsListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20E18D531B807752005B75EE /* AssociationsListViewController.m */; };
 		3321B14D1B7993650020AD80 /* icon_default_mine@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3321B14B1B7993650020AD80 /* icon_default_mine@2x.png */; };
 		3321B14E1B7993650020AD80 /* icon_default_mine@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3321B14C1B7993650020AD80 /* icon_default_mine@3x.png */; };
 		3331222A1B806EDB00D3D032 /* ChatSendHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 333120E71B806EDA00D3D032 /* ChatSendHelper.m */; };
@@ -279,6 +282,12 @@
 		20E122201B705ED200F90BD3 /* FeedListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedListViewController.m; sourceTree = "<group>"; };
 		20E1222B1B708CDC00F90BD3 /* TagListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TagListViewController.h; sourceTree = "<group>"; };
 		20E1222C1B708CDC00F90BD3 /* TagListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TagListViewController.m; sourceTree = "<group>"; };
+		20E18D4E1B807752005B75EE /* AssociationsListTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AssociationsListTableView.h; sourceTree = "<group>"; };
+		20E18D4F1B807752005B75EE /* AssociationsListTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AssociationsListTableView.m; sourceTree = "<group>"; };
+		20E18D501B807752005B75EE /* AssociationsListTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AssociationsListTableViewCell.h; sourceTree = "<group>"; };
+		20E18D511B807752005B75EE /* AssociationsListTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AssociationsListTableViewCell.m; sourceTree = "<group>"; };
+		20E18D521B807752005B75EE /* AssociationsListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AssociationsListViewController.h; sourceTree = "<group>"; };
+		20E18D531B807752005B75EE /* AssociationsListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AssociationsListViewController.m; sourceTree = "<group>"; };
 		234A25BD9458AE14C70CE430 /* Pods-XiaoYou.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XiaoYou.debug.xcconfig"; path = "../Pods/Target Support Files/Pods-XiaoYou/Pods-XiaoYou.debug.xcconfig"; sourceTree = "<group>"; };
 		3321B14B1B7993650020AD80 /* icon_default_mine@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_default_mine@2x.png"; sourceTree = "<group>"; };
 		3321B14C1B7993650020AD80 /* icon_default_mine@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_default_mine@3x.png"; sourceTree = "<group>"; };
@@ -655,6 +664,7 @@
 				20DBFD601B4FA7E1009134D0 /* Main */,
 				20DC87EF1B5F3D570019DC7F /* Login */,
 				20E122181B705D4E00F90BD3 /* Feed */,
+				20E18D4B1B807752005B75EE /* Associations */,
 				20DBFD6F1B4FA90B009134D0 /* Contact */,
 				20DBFD701B4FA90B009134D0 /* Message */,
 				20DD4B2E1B7345E6007C352C /* Profile */,
@@ -878,6 +888,35 @@
 				6518A24A1B80583600AEB79D /* TagListTableViewCell.m */,
 			);
 			path = TagList;
+			sourceTree = "<group>";
+		};
+		20E18D4B1B807752005B75EE /* Associations */ = {
+			isa = PBXGroup;
+			children = (
+				20E18D4C1B807752005B75EE /* AssociationsDetail */,
+				20E18D4D1B807752005B75EE /* AssociationsList */,
+			);
+			path = Associations;
+			sourceTree = "<group>";
+		};
+		20E18D4C1B807752005B75EE /* AssociationsDetail */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = AssociationsDetail;
+			sourceTree = "<group>";
+		};
+		20E18D4D1B807752005B75EE /* AssociationsList */ = {
+			isa = PBXGroup;
+			children = (
+				20E18D4E1B807752005B75EE /* AssociationsListTableView.h */,
+				20E18D4F1B807752005B75EE /* AssociationsListTableView.m */,
+				20E18D501B807752005B75EE /* AssociationsListTableViewCell.h */,
+				20E18D511B807752005B75EE /* AssociationsListTableViewCell.m */,
+				20E18D521B807752005B75EE /* AssociationsListViewController.h */,
+				20E18D531B807752005B75EE /* AssociationsListViewController.m */,
+			);
+			path = AssociationsList;
 			sourceTree = "<group>";
 		};
 		3321B14A1B7993650020AD80 /* contacts */ = {
@@ -1978,6 +2017,7 @@
 				333122631B806EDB00D3D032 /* UIImageView+EMWebCache.m in Sources */,
 				333122421B806EDB00D3D032 /* EMCDDeviceManager+Media.m in Sources */,
 				654602171B7F2FF00039F622 /* FeedImageGroup.m in Sources */,
+				20E18D551B807752005B75EE /* AssociationsListTableViewCell.m in Sources */,
 				333122851B806EDC00D3D032 /* XHMessageTextView.m in Sources */,
 				333122611B806EDB00D3D032 /* UIImage+EMWebP.m in Sources */,
 				6592DCE01B806A9B004CD118 /* XYSendMessageViewController.m in Sources */,
@@ -1989,6 +2029,7 @@
 				6592DCDF1B806A9B004CD118 /* XYMessageAndContactsViewController.m in Sources */,
 				3331226E1B806EDB00D3D032 /* PSTGridLayoutInfo.m in Sources */,
 				20DC5CD01B7B4FA00059B6E6 /* FeedListTableViewCell.m in Sources */,
+				20E18D561B807752005B75EE /* AssociationsListViewController.m in Sources */,
 				333122541B806EDB00D3D032 /* DACircularProgressView.m in Sources */,
 				333122801B806EDC00D3D032 /* NSDateFormatter+Category.m in Sources */,
 				3331227C1B806EDB00D3D032 /* EMVoiceConverter.mm in Sources */,
@@ -2006,6 +2047,7 @@
 				3331224A1B806EDB00D3D032 /* MBProgressHUD+Add.m in Sources */,
 				3331226D1B806EDB00D3D032 /* PSTCollectionViewUpdateItem.m in Sources */,
 				333122561B806EDB00D3D032 /* EMSDWebImageCompat.m in Sources */,
+				20E18D541B807752005B75EE /* AssociationsListTableView.m in Sources */,
 				333122341B806EDB00D3D032 /* EMChatAudioBubbleView.m in Sources */,
 				333122581B806EDB00D3D032 /* EMSDWebImageDownloader.m in Sources */,
 				3331223F1B806EDB00D3D032 /* MessageReadManager.m in Sources */,
