@@ -13,5 +13,6 @@
 #import "YShareDataDefine.h"
 #import "YUrlDefine.h"
 #import "YControlsDefine.h"
+#import "YNotificationDefine.h"
 
 #endif

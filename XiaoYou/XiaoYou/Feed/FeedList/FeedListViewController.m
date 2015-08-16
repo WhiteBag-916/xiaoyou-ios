@@ -11,6 +11,8 @@
 #import "CommonSwitchView.h"
 #import "TagListViewController.h"
 #import "FeedListTableView.h"
+#import "AssociationsListViewController.h"
+#import "YNotificationDefine.h"
 
 @interface FeedListViewController ()
 
@@ -36,12 +38,15 @@
     [SlideNavigationController sharedInstance].enableSwipeGesture = YES;
     [SlideNavigationController sharedInstance].enableShadow = false;
     [SlideNavigationController sharedInstance].portraitSlideOffset = SCREEN_WIDTH * 0.3;
-
+    
+    [self initNotification];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
 {
     [SlideNavigationController sharedInstance].enableSwipeGesture = NO;
+    
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 - (void)initView
@@ -72,6 +77,10 @@
     self.navigationItem.leftBarButtonItem = leftMenu;
 }
 
+- (void)initNotification {
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(toAssociationsList) name:kNotification_Push_AssociationsList object:nil];
+}
+
 - (void)changeMenu {
     [[SlideNavigationController sharedInstance] toggleLeftMenu];
 }
@@ -80,6 +89,11 @@
 - (void)changeSwitchView:(CommonSwitchType)type;
 {
     
+}
+
+- (void)toAssociationsList {
+    AssociationsListViewController *associationsListViewController = [[AssociationsListViewController alloc] init];
+    [self.navigationController pushViewController:associationsListViewController animated:YES];
 }
 
 /*

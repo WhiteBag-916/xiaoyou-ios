@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
+extern NSString *const kAssociationsListTableViewCell;
+
 @interface AssociationsListTableViewCell : UITableViewCell
 
 @end
