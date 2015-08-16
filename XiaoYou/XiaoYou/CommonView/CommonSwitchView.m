@@ -30,7 +30,7 @@
         [self addSubview:bgImageView];
         
         //红色背景
-        _redBgImageView = [YUtils initImageView:[UIImage imageNamed:@"message_tab_red"] frame:CGRectMake(0, 0, 63, frame.size.height)];
+        _redBgImageView = [YUtils initImageView:[UIImage imageNamed:@"message_tab_green"] frame:CGRectMake(0, 0, 63, frame.size.height)];
         [self addSubview:_redBgImageView];
         
         //label
