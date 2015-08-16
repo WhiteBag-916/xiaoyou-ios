@@ -90,8 +90,8 @@
 - (void)initTitle
 {
     _lbTitle = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 100, 40)];
-    _lbTitle.font = [UIFont fontWithName:@"Helvetica" size:18.0f];
-    _lbTitle.textColor = [UIColor hexChangeFloat:@"494949"];
+    _lbTitle.font = [UIFont fontWithName:@"Helvetica" size:16.0f];
+    _lbTitle.textColor = [UIColor whiteColor];
     _lbTitle.textAlignment = NSTextAlignmentCenter;
     _lbTitle.backgroundColor = [UIColor clearColor];
     
@@ -141,11 +141,10 @@
 - (void)showCustomNavigationBackButton
 {
     //导航栏的左边按钮
-    _navigationLeftButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 27, 12)];
-    [_navigationLeftButton setImage:[UIImage imageNamed:@"titlebar_icon_backR"] forState:UIControlStateNormal];
-    [_navigationLeftButton setImage:[UIImage imageNamed:@"titlebar_icon_backR"] forState:UIControlStateHighlighted];
+    _navigationLeftButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 17, 26)];
+    [_navigationLeftButton setImage:[UIImage imageNamed:@"common_back"] forState:UIControlStateNormal];
+    [_navigationLeftButton setImage:[UIImage imageNamed:@"common_back"] forState:UIControlStateHighlighted];
     [_navigationLeftButton addTarget:self action:@selector(onNavigationLeftButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
-    _navigationLeftButton.imageEdgeInsets = UIEdgeInsetsMake(0, -20, 0, 0);
     
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:_navigationLeftButton];
 }
@@ -153,9 +152,9 @@
 - (void)showCustomNavigationBackButtonNoPop
 {
     //导航栏的左边按钮
-    _navigationLeftButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 27, 12)];
-    [_navigationLeftButton setImage:[UIImage imageNamed:@"titlebar_icon_backR"] forState:UIControlStateNormal];
-    [_navigationLeftButton setImage:[UIImage imageNamed:@"titlebar_icon_backR"] forState:UIControlStateHighlighted];
+    _navigationLeftButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 17, 26)];
+    [_navigationLeftButton setImage:[UIImage imageNamed:@"common_back"] forState:UIControlStateNormal];
+    [_navigationLeftButton setImage:[UIImage imageNamed:@"common_back"] forState:UIControlStateHighlighted];
     [_navigationLeftButton addTarget:self action:@selector(backControllerButton) forControlEvents:UIControlEventTouchUpInside];
     _navigationLeftButton.imageEdgeInsets = UIEdgeInsetsMake(0, -20, 0, 0);
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:_navigationLeftButton];

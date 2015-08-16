@@ -80,6 +80,10 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated navigationBarHidden:NO tabBarHidden:NO];
+}
+
+-(void)viewWillLayoutSubviews
+{
     self.hidesBottomBarWhenPushed = NO;
 }
 

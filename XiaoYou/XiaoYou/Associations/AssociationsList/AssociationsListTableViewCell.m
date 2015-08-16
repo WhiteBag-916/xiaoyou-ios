@@ -8,6 +8,12 @@
 
 #import "AssociationsListTableViewCell.h"
 
+NSString *const kAssociationsListTableViewCell = @"AssociationsListTableViewCellId";
+
+@interface AssociationsListTableViewCell ()
+
+@end
+
 @implementation AssociationsListTableViewCell
 
 - (void)awakeFromNib {

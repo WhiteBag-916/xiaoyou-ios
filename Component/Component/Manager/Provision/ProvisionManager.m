@@ -59,10 +59,10 @@ DEF_SINGLETON(ProvisionManager);
 - (void)goLogin:(ActionCompleteBlock)block
 {
     LoginAction* action = [[LoginAction alloc] init];
-    action.password = @"480155";
+    action.password = @"123456";
     action.schoolCode = @"4";
-    action.deviceId = @"20082020184";
-    action.studentNo = @"15140220000";
+    action.deviceId = @"212025118700004";
+    action.studentNo = @"21202511870000";
     action.platform = @"2";
     
     [YAction startAction:action completionBlock:^(YActionMessage* message) {

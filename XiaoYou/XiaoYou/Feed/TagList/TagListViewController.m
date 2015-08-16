@@ -9,7 +9,8 @@
 #import "TagListViewController.h"
 #import "YUtils+Component.h"
 #import "TagListTableView.h"
-
+#import "SlideNavigationController.h"
+#import "YNotificationDefine.h"
 
 #define KNOTIFYCOUNTHEIGHT 25
 #define KNOTIFYCOUNTMARGIN_LEFT SCALE_NUM(15)
@@ -144,6 +145,11 @@
         make.top.centerY.equalTo(icon);
         
     }];
+
+    
+    //增加点击跳转到动态列表
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(toAssociationsList)];
+    [_bottomView addGestureRecognizer:tap];
 }
 
 - (void)initTableView {
@@ -161,5 +167,10 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)toAssociationsList {
+    [[SlideNavigationController sharedInstance] closeMenuWithCompletion:^{
+        [[NSNotificationCenter defaultCenter] postNotificationName:kNotification_Push_AssociationsList object:nil];
+    }];
+}
 
 @end

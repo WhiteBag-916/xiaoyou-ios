@@ -45,9 +45,17 @@
 
 - (void)initControllers
 {
-    UINavigationController *messageViewCotroller = [[UINavigationController alloc] initWithRootViewController:[[XYMessageAndContactsViewController alloc] init]];
-    UINavigationController *feedListViewCotroller = [[UINavigationController alloc] initWithRootViewController:[[FeedListViewController alloc] init]];
-    UINavigationController *profileViewCotroller = [[UINavigationController alloc] initWithRootViewController:[[ProfileViewController alloc] init]];
+    XYMessageAndContactsViewController *messageVC = [[XYMessageAndContactsViewController alloc] init];
+    FeedListViewController *feedVC = [[FeedListViewController alloc] init];
+    ProfileViewController *profileVC = [[ProfileViewController alloc] init];
+    
+    messageVC.hidesBottomBarWhenPushed = YES;
+    feedVC.hidesBottomBarWhenPushed = YES;
+    profileVC.hidesBottomBarWhenPushed = YES;
+    
+    UINavigationController *messageViewCotroller = [[UINavigationController alloc] initWithRootViewController:messageVC];
+    UINavigationController *feedListViewCotroller = [[UINavigationController alloc] initWithRootViewController:feedVC];
+    UINavigationController *profileViewCotroller = [[UINavigationController alloc] initWithRootViewController:profileVC];
     
     //消息
     UITabBarItem *messageItem = [[UITabBarItem alloc] initWithTitle:@"消息"

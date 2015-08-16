@@ -224,9 +224,9 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     self.myController.hidesBottomBarWhenPushed = YES;
-    
     ChatViewController * chatVC = [[ChatViewController alloc] initWithChatter:@"123123" isGroup:NO];
     [self.myController.navigationController pushViewController:chatVC animated:YES];
+    
 }
 
 #pragma mark - UIAlterViewDelegate

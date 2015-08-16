@@ -7,8 +7,11 @@
 //
 
 #import "AssociationsListViewController.h"
+#import "AssociationsListTableView.h"
 
 @interface AssociationsListViewController ()
+
+@property (nonatomic, strong) AssociationsListTableView *associationsListTableView;
 
 @end
 
@@ -17,7 +20,15 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    [self showCustomNavigationBackButton];
+    self.title = @"社团总汇";
 }
+
+//- (void)viewWillAppear:(BOOL)animated
+//{
+//    [super viewWillAppear:animated navigationBarHidden:NO tabBarHidden:YES];
+//}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
