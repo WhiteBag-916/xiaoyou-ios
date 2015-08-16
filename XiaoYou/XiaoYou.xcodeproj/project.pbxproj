@@ -1611,10 +1611,10 @@
 		653CB2E81B806BFD006ECBB2 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				653CB2E91B806BFD006ECBB2 /* ChineseSorting */,
 				333122D61B806F7E00D3D032 /* ChatDemoUIDefine.h */,
 				333122D71B806F7E00D3D032 /* RobotManager.h */,
 				333122D81B806F7E00D3D032 /* RobotManager.m */,
-				653CB2E91B806BFD006ECBB2 /* ChineseSorting */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
