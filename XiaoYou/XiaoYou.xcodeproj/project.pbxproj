@@ -909,12 +909,12 @@
 		20E18D4D1B807752005B75EE /* AssociationsList */ = {
 			isa = PBXGroup;
 			children = (
+				20E18D521B807752005B75EE /* AssociationsListViewController.h */,
+				20E18D531B807752005B75EE /* AssociationsListViewController.m */,
 				20E18D4E1B807752005B75EE /* AssociationsListTableView.h */,
 				20E18D4F1B807752005B75EE /* AssociationsListTableView.m */,
 				20E18D501B807752005B75EE /* AssociationsListTableViewCell.h */,
 				20E18D511B807752005B75EE /* AssociationsListTableViewCell.m */,
-				20E18D521B807752005B75EE /* AssociationsListViewController.h */,
-				20E18D531B807752005B75EE /* AssociationsListViewController.m */,
 			);
 			path = AssociationsList;
 			sourceTree = "<group>";
