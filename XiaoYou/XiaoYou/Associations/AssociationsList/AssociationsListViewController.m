@@ -23,6 +23,14 @@
     
     [self showCustomNavigationBackButton];
     self.title = @"社团总汇";
+    
+    //tableview
+    _associationsListTableView = [[AssociationsListTableView alloc] init];
+    [self.view addSubview:_associationsListTableView];
+    
+    [_associationsListTableView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.mas_equalTo(self.view);
+    }];
 }
 
 //- (void)viewWillAppear:(BOOL)animated

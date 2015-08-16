@@ -44,14 +44,6 @@ return __singleton__;                                                    \
 #define SStr(str) (nil == str? @"":str)
 #define D2IStr(ddata) ([NSString stringWithFormat:@"%ld",(NSInteger)(ddata)])
 
-#define COLOR_494949                [UIColor colorWithRed:73.0/255.0 green:73.0/255.0 blue:73.0/255.0 alpha:1.0]
-#define COLOR_acacac                [UIColor colorWithRed:172.0/255.0 green:172.0/255.0 blue:172.0/255.0 alpha:1.0]
-#define COLOR_f4453c                [UIColor colorWithRed:244.0/255.0 green:69.0/255.0 blue:60.0/255.0 alpha:1.0]
-#define COLOR_f0f1f3                [UIColor colorWithRed:240.0/255.0 green:241.0/255.0 blue:243.0/255.0 alpha:1.0]
-#define COLOR_c7c8c9                [UIColor colorWithRed:199.0/255.0 green:200.0/255.0 blue:201.0/255.0 alpha:1.0]
-#define COLOR_1d96d7                [UIColor colorWithRed:29.0/255.0 green:150.0/255.0 blue:215.0/255.0 alpha:1.0]
-#define COLOR_eeeeee                [UIColor colorWithRed:238.0/255.0 green:238.0/255.0 blue:238.0/255.0 alpha:1.0]
-
 #define SCREEN_WIDTH  [UIScreen mainScreen].bounds.size.width
 
 #define SCREEN_HEIGHT [UIScreen mainScreen].bounds.size.height

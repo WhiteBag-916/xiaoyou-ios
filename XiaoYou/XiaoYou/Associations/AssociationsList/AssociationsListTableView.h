@@ -10,4 +10,5 @@
 
 @interface AssociationsListTableView : YTableView
 
+
 @end
