@@ -94,16 +94,8 @@
         //去除两端空格和回车
         chineseString.string  = [chineseString.string stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
         
-        
-        //此方法存在一些问题 有些字符过滤不了
-        //NSCharacterSet *set = [NSCharacterSet characterSetWithCharactersInString:@"@／：；（）¥「」＂、[]{}#%-*+=_\\|~＜＞$€^•'@#$%^&*()_+'\""];
-        //chineseString.string = [chineseString.string stringByTrimmingCharactersInSet:set];
-        
-        
         //这里我自己写了一个递归过滤指定字符串   RemoveSpecialCharacter
-        chineseString.string =[ChineseString RemoveSpecialCharacter:chineseString.string];
-        // NSLog(@"string====%@",chineseString.string);
-        
+        chineseString.string =[ChineseString RemoveSpecialCharacter:chineseString.string];        
         
         //判断首字符是否为字母
         NSString *regex = @"[A-Za-z]+";
@@ -152,11 +144,24 @@
     NSMutableArray *tempArray = [self ReturnSortChineseArrar:stringArr];
     
     //把排序好的内容从ChineseString类中提取出来
-    NSMutableArray *result=[NSMutableArray array];
-    for(int i=0;i<[stringArr count];i++){
-        [result addObject:((ChineseString*)[tempArray objectAtIndex:i]).string];
+    NSMutableArray *resultStringArr=[NSMutableArray array];
+    NSMutableArray *resultArr=[NSMutableArray array];
+    for(int i=0;i<[stringArr count];i++)
+    {
+        
+        [resultStringArr addObject:((ChineseString*)[tempArray objectAtIndex:i]).string];
         NSLog(@"SortArray----->%@",((ChineseString*)[tempArray objectAtIndex:i]).string);
     }
-    return result;
+    for(int j=0;j<[resultStringArr count];j++)
+    {
+        for (int k=0; k<[stringArr count]; k++)
+        {
+            if ([resultStringArr[j] isEqualToString:stringArr[k][@"name"]])
+            {
+                [resultArr addObject:stringArr[k]];
+            }
+        }
+    }
+    return resultArr;
 }
 @end

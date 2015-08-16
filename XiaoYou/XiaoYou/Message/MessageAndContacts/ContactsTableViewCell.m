@@ -71,8 +71,8 @@ NSString *const kContactsTableViewCell = @"ContactsTableViewCell";
 {
     self.linkStudentNo = dic[@"linkStudentNo"];
     
-    _nameLabel.text = dic[@"linkStudentName"];
-    NSString * flagString = [dic[@"tag"] stringByReplacingOccurrencesOfString:@"," withString:@" "];
+    _nameLabel.text = dic[@"name"];
+    NSString * flagString = [dic[@"flag"] stringByReplacingOccurrencesOfString:@"," withString:@" "];
     _flagLabel.text = flagString;
     [self.headImageView sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",api_icon_base_url,dic[@"icon"]]] placeholderImage:[UIImage imageNamed:@"icon_default_mine"]];
 }

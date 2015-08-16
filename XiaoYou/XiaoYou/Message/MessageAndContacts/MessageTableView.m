@@ -9,6 +9,7 @@
 #import "MessageTableView.h"
 #import "MessageTableViewCell.h"
 #import "YLog.h"
+#import "ChatViewController.h"
 
 #define kRowHeight          60
 
@@ -99,9 +100,12 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-//    XYMessageDetailViewController * messageDetailViewController = [[XYMessageDetailViewController alloc] init];
-//    self.myController.hidesBottomBarWhenPushed = YES;
-//    [self.myController.navigationController pushViewController:messageDetailViewController animated:YES];
+
+    self.myController.hidesBottomBarWhenPushed = YES;
+
+    ChatViewController * chatVC = [[ChatViewController alloc] initWithChatter:@"123123" isGroup:NO];
+    [self.myController.navigationController pushViewController:chatVC animated:YES];
+    
 }
 
 @end

@@ -71,7 +71,8 @@
         }];
         
 //        weakSelf.contactsDataSource = [NSMutableArray arrayWithArray:message.object];
-//        [weakSelf.contactsTableView refreshTableView:self.contactsDataSource];
+        weakSelf.contactsDataSource = [NSMutableArray arrayWithArray:@[@{@"flag":@"同学",@"name":@"啊"},@{@"flag":@"同班",@"name":@"把"},@{@"flag":@"同系",@"name":@"大"},@{@"flag":@"老乡",@"name":@"才"},@{@"flag":@"同社团",@"name":@"鹅"},@{@"flag":@"同学4143",@"name":@"啊312"},@{@"flag":@"同班3123",@"name":@"把3213"},@{@"flag":@"同系1232",@"name":@"大324"},@{@"flag":@"老24乡",@"name":@"才4214"},@{@"flag":@"同社团1241",@"name":@"鹅4214"},@{@"flag":@"同学111",@"name":@"啊222"},@{@"flag":@"同班444",@"name":@"把555"},@{@"flag":@"同系666",@"name":@"大333"},@{@"flag":@"老乡999",@"name":@"才999"},@{@"flag":@"同社团666",@"name":@"老666"},@{@"flag":@"同社团666",@"name":@"鹅666"},@{@"flag":@"同社团666",@"name":@"钱666"},@{@"flag":@"同社团666",@"name":@"我666"},@{@"flag":@"同社团666",@"name":@"月666"},@{@"flag":@"同社团666",@"name":@"攒666"},@{@"flag":@"同社团666",@"name":@"喷666"}]];
+        [weakSelf.contactsTableView refreshTableView:self.contactsDataSource];
     }];
     
 }
@@ -102,6 +103,7 @@
     }];
     //联系人
     _contactsTableView = [[ContactsTableView alloc]init];
+    _contactsTableView.myController = self;
     _contactsTableView.hidden = YES;
     [self.view addSubview:_contactsTableView];
     [_contactsTableView mas_makeConstraints:^(MASConstraintMaker *make) {

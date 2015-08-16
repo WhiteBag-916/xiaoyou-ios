@@ -12,6 +12,7 @@
 #import "Pinyin.h"
 #import "ChineseString.h"
 #import "YLog.h"
+#import "ChatViewController.h"
 
 #define kRowHeight          60
 
@@ -65,61 +66,63 @@
 -(NSMutableArray *)transformDataSouceArr:(NSMutableArray *) dataSouceArr
 {
     NSMutableArray * receiveDataSouceArr = [[NSMutableArray alloc] initWithArray:dataSouceArr];
-    NSMutableArray * resultDataSouceArr = [ChineseString SortArray:receiveDataSouceArr];
+    NSMutableArray * sortDataSouceArr = [ChineseString SortArray:receiveDataSouceArr];
     
     
-//    NSMutableArray * tempTransitonArr = [[NSMutableArray alloc] init];
-//    NSMutableArray * transitonArr = [[NSMutableArray alloc] init];
-//    ContactsListModel * lastModel = dataSouceArr.lastObject;
-//    NSString * lastName = lastModel.friendList.userId;
-//    //取出所有模型，将数据拆分成section（firstIndexTitleArr）数组和sectionRows(transitonArr)数组
-//    [dataSouceArr enumerateObjectsUsingBlock:^(ContactsListModel * model, NSUInteger idx1, BOOL *stop2) {
-//        
-//        char temp =  pinyinFirstLetter([model.linkStudentName characterAtIndex:0]);
-//        
-//        NSString * firstStr = [NSString stringWithFormat:@"%c",temp].uppercaseString;
-//        
-//        if([self.indexTitleArr containsObject:firstStr.uppercaseString] == NO)
-//        {
-//            if (tempTransitonArr.count > 0) {
-//                [transitonArr addObject:[NSArray arrayWithArray: tempTransitonArr]];
-//            }
-//            [tempTransitonArr removeAllObjects];
-//            
-//            [self.indexTitleArr addObject:firstStr];
-//            
+    NSMutableArray * tempTransitonArr = [[NSMutableArray alloc] init];
+    NSMutableArray * transitonArr = [[NSMutableArray alloc] init];
+    //model
+    NSDictionary * lastModel = sortDataSouceArr.lastObject;
+    NSString * lastName = lastModel[@"name"];
+    //取出所有模型，将数据拆分成section（firstIndexTitleArr）数组和sectionRows(transitonArr)数组
+    [sortDataSouceArr enumerateObjectsUsingBlock:^(NSDictionary * model, NSUInteger idx1, BOOL *stop2) {
+        
+        char temp =  pinyinFirstLetter([model[@"name"] characterAtIndex:0]);
+        
+        NSString * firstStr = [NSString stringWithFormat:@"%c",temp].uppercaseString;
+        
+        if([self.indexTitleArr containsObject:firstStr.uppercaseString] == NO)
+        {
+            if (tempTransitonArr.count > 0) {
+                [transitonArr addObject:[NSArray arrayWithArray: tempTransitonArr]];
+            }
+            [tempTransitonArr removeAllObjects];
+            
+            [self.indexTitleArr addObject:firstStr];
+            
 //            NSDictionary * dic = [self transformModelToDictionary:model];
-//
-//            [tempTransitonArr addObject:dic];
-//            
-//            if ([lastName isEqualToString:model.linkStudentName])
-//            {
-//                [transitonArr addObject:[NSArray arrayWithArray: tempTransitonArr]];
-//            }
-//        }
-//        else
-//        {
+
+            [tempTransitonArr addObject:model];
+            
+            if ([lastName isEqualToString:model[@"name"]])
+            {
+                [transitonArr addObject:[NSArray arrayWithArray: tempTransitonArr]];
+            }
+        }
+        else
+        {
 //            NSDictionary * dic = [self transformModelToDictionary:model];
-//            [tempTransitonArr addObject:dic];
-//            
-//            if ([lastName isEqualToString:model.linkStudentName])
-//            {
-//                [transitonArr addObject:[NSArray arrayWithArray: tempTransitonArr]];
-//            }
-//        }
-//        
-//    }];
-//    
-//    //将section（firstIndexTitleArr）数组和sectionRows(transitonArr)数组合并成一个数组（finishdataSouceArr）
-//    
-//    [self.indexTitleArr enumerateObjectsUsingBlock:^(NSString * obj, NSUInteger idx, BOOL *stop2) {
-//        NSMutableDictionary * dic = [[NSMutableDictionary alloc] init];
-//        [dic setObject:obj forKey:@"index_title"];
-//        
-//        [dic setObject:transitonArr[idx] forKey:@"user_info"];
-//        
-//        [resultDataSouceArr addObject:dic];
-//    }];
+            [tempTransitonArr addObject:model];
+            
+            if ([lastName isEqualToString:model[@"name"]])
+            {
+                [transitonArr addObject:[NSArray arrayWithArray: tempTransitonArr]];
+            }
+        }
+        
+    }];
+    
+    //将section（firstIndexTitleArr）数组和sectionRows(transitonArr)数组合并成一个数组（finishdataSouceArr）
+    NSMutableArray *resultDataSouceArr = [[NSMutableArray alloc] init];
+    
+    [self.indexTitleArr enumerateObjectsUsingBlock:^(NSString * obj, NSUInteger idx, BOOL *stop2) {
+        NSMutableDictionary * dic = [[NSMutableDictionary alloc] init];
+        [dic setObject:obj forKey:@"index_title"];
+        
+        [dic setObject:transitonArr[idx] forKey:@"user_info"];
+        
+        [resultDataSouceArr addObject:dic];
+    }];
 
     return resultDataSouceArr;
 }
@@ -216,6 +219,14 @@
    
     return self.indexTitleArr;
     
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    self.myController.hidesBottomBarWhenPushed = YES;
+    
+    ChatViewController * chatVC = [[ChatViewController alloc] initWithChatter:@"123123" isGroup:NO];
+    [self.myController.navigationController pushViewController:chatVC animated:YES];
 }
 
 #pragma mark - UIAlterViewDelegate
