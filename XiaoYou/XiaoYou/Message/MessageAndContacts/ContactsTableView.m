@@ -13,10 +13,21 @@
 #import "ChineseString.h"
 #import "YLog.h"
 #import "ChatViewController.h"
+#import "Masonry.h"
+#import "YSystemDefine.h"
 
-#define kRowHeight          60
+#define kRowHeight                     60
+#define kHeadWidthAndHeight            40
+#define kNameLabelWidth                200
+#define kHeadCornerRadius              20
+#define kPaddingDistance               10
+#define kLabelHeightDistacnce          14
 
 @interface ContactsTableView ()<UITableViewDataSource,UITableViewDelegate>
+
+@property (strong, nonatomic)  UIImageView *headImageView;
+@property (strong, nonatomic)  UILabel *nameLabel;
+@property (strong, nonatomic)  UILabel *flagLabel;
 
 //原始数据源
 @property (nonatomic,strong) NSMutableArray *originalContactsDataSource;
@@ -60,8 +71,55 @@
     self.originalContactsDataSource = [NSMutableArray arrayWithArray:dataSouceArr];
     self.indexTitleArr = [[NSMutableArray alloc] init];
     self.contactsDataSource = [NSMutableArray arrayWithArray:[self transformDataSouceArr:dataSouceArr]];
+    [self setUpHeaderView];
     [self reloadData];
 }
+
+-(void)setUpHeaderView
+{
+    UIView * backView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, kRowHeight)];
+    UITapGestureRecognizer * tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapGestureRecognizerAction)];
+    [backView addGestureRecognizer:tapGestureRecognizer];
+    //头像
+    _headImageView = [[UIImageView alloc] init];
+    _headImageView.layer.cornerRadius = kHeadCornerRadius;
+    _headImageView.clipsToBounds = YES;
+    _headImageView.backgroundColor = [UIColor orangeColor];
+    [backView addSubview:_headImageView];
+    [_headImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.left.mas_equalTo(kPaddingDistance);
+        make.width.height.mas_equalTo(kHeadWidthAndHeight);
+    }];
+    //姓名
+    _nameLabel = [[UILabel alloc] init];
+    _nameLabel.text = @"西班牙语系15级A班";
+    _nameLabel.backgroundColor = [UIColor magentaColor];
+    [backView addSubview:_nameLabel];
+    [_nameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.mas_equalTo(kPaddingDistance);
+        make.left.equalTo(_headImageView.mas_right).offset(kPaddingDistance);
+        make.width.mas_equalTo(kNameLabelWidth);
+        make.height.mas_equalTo(kLabelHeightDistacnce);
+    }];
+    //标签
+    _flagLabel = [[UILabel alloc] init];
+    _flagLabel.text = @"班级群聊";
+    _flagLabel.backgroundColor = [UIColor yellowColor];
+    [backView addSubview:_flagLabel];
+    [_flagLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.bottom.mas_equalTo(-kPaddingDistance);
+        make.left.equalTo(_headImageView.mas_right).offset(kPaddingDistance);
+        make.right.mas_equalTo(-kPaddingDistance);
+        make.height.mas_equalTo(kLabelHeightDistacnce);
+    }];
+    self.tableHeaderView = backView;
+}
+
+-(void)tapGestureRecognizerAction
+{
+    
+}
+
 
 -(NSMutableArray *)transformDataSouceArr:(NSMutableArray *) dataSouceArr
 {

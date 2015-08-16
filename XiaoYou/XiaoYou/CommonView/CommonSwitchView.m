@@ -37,7 +37,7 @@
         _messageLabel = [YUtils initLabel:CONTENT_FONT(14) color:[UIColor whiteColor] text:[textArray objectAtIndex:CommonSwitchTypeFir] frame:CGRectMake(0, 0, frame.size.width/2, frame.size.height) alignment:NSTextAlignmentCenter];
         [self addSubview:_messageLabel];
         
-        _notificationLabel = [YUtils initLabel:CONTENT_FONT(14) color:COLOR_494949 text:[textArray objectAtIndex:CommonSwitchTypeSec] frame:CGRectMake(frame.size.width/2, 0, frame.size.width/2, frame.size.height) alignment:NSTextAlignmentCenter];
+        _notificationLabel = [YUtils initLabel:CONTENT_FONT(14) color:KCOLORGREEN_009788 text:[textArray objectAtIndex:CommonSwitchTypeSec] frame:CGRectMake(frame.size.width/2, 0, frame.size.width/2, frame.size.height) alignment:NSTextAlignmentCenter];
         [self addSubview:_notificationLabel];
         
         _switchType = CommonSwitchTypeFir;
@@ -87,13 +87,13 @@
                 _redBgImageView.originX = 0;
                 
                 _messageLabel.textColor = [UIColor whiteColor];
-                _notificationLabel.textColor = COLOR_494949;
+                _notificationLabel.textColor = KCOLORGREEN_009788;
             }
             else
             {
                 _redBgImageView.rightX = self.width;
                 
-                _messageLabel.textColor = COLOR_494949;
+                _messageLabel.textColor = KCOLORGREEN_009788;
                 _notificationLabel.textColor = [UIColor whiteColor];
             }
         }];

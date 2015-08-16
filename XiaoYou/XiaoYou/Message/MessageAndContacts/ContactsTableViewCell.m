@@ -15,11 +15,16 @@
 #define kHeadWidthAndHeight            40
 #define kNameLabelWidth                80
 #define kHeadCornerRadius              20
+#define kFlagImageViewWidth            11
+#define kFlagImageViewHeight           14
+#define kPaddingDistance               10
+#define kLabelHeightDistacnce          14
 
 NSString *const kContactsTableViewCell = @"ContactsTableViewCell";
 @interface ContactsTableViewCell ()
 
 @property (strong, nonatomic)  UIImageView *headImageView;
+@property (strong, nonatomic)  UIImageView *flagImageView;
 @property (strong, nonatomic)  UILabel *nameLabel;
 @property (strong, nonatomic)  UILabel *flagLabel;
 
@@ -52,13 +57,23 @@ NSString *const kContactsTableViewCell = @"ContactsTableViewCell";
             make.width.mas_equalTo(kNameLabelWidth);
             make.height.mas_equalTo(kLabelHeightDistacnce);
         }];
+        //标签图
+        _flagImageView = [[UIImageView alloc] init];
+        _flagImageView.backgroundColor = [UIColor clearColor];
+        [self.contentView addSubview:_flagImageView];
+        [_flagImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.bottom.mas_equalTo(-kPaddingDistance);
+            make.left.equalTo(_headImageView.mas_right).offset(kPaddingDistance);
+            make.width.mas_equalTo(kFlagImageViewWidth);
+            make.height.mas_equalTo(kFlagImageViewHeight);
+        }];
         //标签
         _flagLabel = [[UILabel alloc] init];
         _flagLabel.backgroundColor = [UIColor yellowColor];
         [self.contentView addSubview:_flagLabel];
         [_flagLabel mas_makeConstraints:^(MASConstraintMaker *make) {
             make.bottom.mas_equalTo(-kPaddingDistance);
-            make.left.equalTo(_headImageView.mas_right).offset(kPaddingDistance);
+            make.left.equalTo(_flagImageView.mas_right).offset(kPaddingDistance);
             make.right.mas_equalTo(-kPaddingDistance);
             make.height.mas_equalTo(kLabelHeightDistacnce);
         }];
@@ -74,6 +89,7 @@ NSString *const kContactsTableViewCell = @"ContactsTableViewCell";
     _nameLabel.text = dic[@"name"];
     NSString * flagString = [dic[@"flag"] stringByReplacingOccurrencesOfString:@"," withString:@" "];
     _flagLabel.text = flagString;
+    self.flagImageView.image = [UIImage imageNamed:@"tag-green"];
     [self.headImageView sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",api_icon_base_url,dic[@"icon"]]] placeholderImage:[UIImage imageNamed:@"icon_default_mine"]];
 }
 

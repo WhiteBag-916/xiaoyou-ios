@@ -40,7 +40,6 @@ static const NSInteger kLayoutPriorityDefaultVeryHigh = 999;
 #define kConversationListNum    5
 #define kPersonPageNum           9
 
-#define kPaddingDistance        10
-#define kLabelHeightDistacnce    20
+
 
 #endif

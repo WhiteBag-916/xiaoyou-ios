@@ -14,6 +14,9 @@
 #define kNameLabelWidth                80
 #define kTimeLabelWidth                60
 #define kHeadCornerRadius              20
+#define kPaddingDistance               10
+#define kLabelHeightDistacnce          14
+#define kBadgeWidthDistance            30
 
 NSString *const kMessageTableViewCell = @"MessageTableViewCellId";
 
@@ -56,15 +59,18 @@ NSString *const kMessageTableViewCell = @"MessageTableViewCellId";
         }];
         //消息数
         _badgeNumberLabel = [[UILabel alloc] init];
+        _badgeNumberLabel.textAlignment = NSTextAlignmentRight;
         _badgeNumberLabel.backgroundColor = [UIColor redColor];
         [self.contentView addSubview:_badgeNumberLabel];
         [_badgeNumberLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.top.mas_equalTo(kPaddingDistance);
-            make.left.equalTo(_nameLabel.mas_right).offset(kPaddingDistance);
-            make.width.height.mas_equalTo(kLabelHeightDistacnce);
+            make.bottom.mas_equalTo(-kPaddingDistance);
+            make.right.equalTo(self.contentView).offset(-kPaddingDistance);
+            make.height.mas_equalTo(kLabelHeightDistacnce);
+            make.width.mas_equalTo(kBadgeWidthDistance);
         }];
         //时间
         _timeLabel = [[UILabel alloc] init];
+        _timeLabel.textAlignment = NSTextAlignmentRight;
         _timeLabel.backgroundColor = [UIColor greenColor];
         [self.contentView addSubview:_timeLabel];
         [_timeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -80,7 +86,7 @@ NSString *const kMessageTableViewCell = @"MessageTableViewCellId";
         [_messageLabel mas_makeConstraints:^(MASConstraintMaker *make) {
             make.bottom.mas_equalTo(-kPaddingDistance);
             make.left.equalTo(_headImageView.mas_right).offset(kPaddingDistance);
-            make.right.equalTo(self.contentView).offset(-kPaddingDistance);
+            make.right.equalTo(_badgeNumberLabel.mas_left).offset(-kPaddingDistance);
             make.height.mas_equalTo(kLabelHeightDistacnce);
         }];
     }
@@ -89,7 +95,7 @@ NSString *const kMessageTableViewCell = @"MessageTableViewCellId";
 
 -(void)setCellInfo
 {
-    self.nameLabel.text = @"系统消息";
+    self.nameLabel.text = @"山本伊朗";
     self.badgeNumberLabel.text = @"99";
     self.timeLabel.text = @"10:29";
     self.messageLabel.text = @"新生报到通知";
