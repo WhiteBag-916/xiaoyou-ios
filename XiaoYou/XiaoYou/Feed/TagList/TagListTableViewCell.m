@@ -28,9 +28,9 @@ NSString *const KTagListTableViewCell = @"TagListTableViewCellId";
     if (self) {
         self.selectionStyle = UITableViewCellSelectionStyleNone;
         _tagLabel = [YUtils initLabel:CONTENT_FONT(15) color:KCOLORWHITE text:@"测试" frame:CGRectZero alignment:NSTextAlignmentCenter];
-        [self addSubview:_tagLabel];
+        [self.contentView addSubview:_tagLabel];
         [_tagLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.top.centerX.equalTo(self);
+            make.top.centerX.equalTo(self.contentView);
             make.width.mas_equalTo(kLABELWIDTH);
             make.height.mas_equalTo(KLABELHEIGHT);
         }];
@@ -39,10 +39,24 @@ NSString *const KTagListTableViewCell = @"TagListTableViewCellId";
         _tagLabel.layer.cornerRadius = KLABELRADIUS;
         _tagLabel.clipsToBounds = true;
         
+        _addIcon = [[UIImageView alloc] init];
+        [self.contentView addSubview:_addIcon];
+        [_addIcon mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.width.height.mas_equalTo(KLABELHEIGHT/2);
+            make.center.equalTo(_tagLabel);
+        }];
+        _addIcon.image = [UIImage imageNamed:@"add-02"];
     }
     return self;
 }
 - (void)setData:(NSString *)text {
-    
+    _tagLabel.text = text;
+    if (text == nil) {
+        _addIcon.hidden = false;
+        _tagLabel.hidden = true;
+    } else {
+        _addIcon.hidden= true;
+        _tagLabel.height = false;
+    }
 }
 @end
