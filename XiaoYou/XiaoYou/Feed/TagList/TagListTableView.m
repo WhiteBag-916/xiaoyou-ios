@@ -31,7 +31,7 @@
 - (NSInteger)numberOfSections {
     return 1;
 }
-- (NSInteger)numberOfRowsInSection:(NSInteger)section {
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return _data.count + 1;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {

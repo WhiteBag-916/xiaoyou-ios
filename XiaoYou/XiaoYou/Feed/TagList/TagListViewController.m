@@ -115,7 +115,7 @@
     TagListTableView *listView = [[TagListTableView alloc] init];
     [self.view addSubview:listView];
     [listView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(_notifyView.mas_bottom);
+        make.top.equalTo(_searchLabel.mas_bottom);
         make.left.right.equalTo(_notifyView);
         make.bottom.equalTo(_bottomView.mas_top);
     }];

@@ -29,8 +29,11 @@ NSString *const KTagListTableViewCell = @"TagListTableViewCellId";
         [_tagLabel mas_makeConstraints:^(MASConstraintMaker *make) {
             make.top.centerX.equalTo(self.contentView);
         }];
+        self.backgroundColor = [UIColor redColor];
     }
     return self;
 }
-
+- (void)setData:(NSString *)text {
+    
+}
 @end
