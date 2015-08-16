@@ -16,6 +16,8 @@
 
 - (void)initRootVC
 {
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
+    
     self.window = [[UIWindow alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)];
     //初始化登陆控制器
     [self initLoginNC];
