@@ -37,6 +37,7 @@
     
     _contentView = [[UIView alloc] init];
     [self addSubview:_contentView];
+    _contentView.clipsToBounds = true;
     [_contentView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.equalTo(self);
         make.height.equalTo(_contentView.mas_width);
@@ -78,8 +79,9 @@
 - (void)updateWithImgs:(NSArray *)smallPics bigPics:(NSArray *)bigPics {
     _smallImgs = [NSArray arrayWithArray:smallPics];
     _bigImgs = [NSArray arrayWithArray:bigPics];
-    
-    if (smallPics.count == 1) {
+    if (smallPics.count == 0) {
+        [self moveToLine:-1];
+    } else if (smallPics.count == 1) {
         [self specialForOneImage:[smallPics objectAtIndex:0]];
     } else {
         [self normalForImages:smallPics];
@@ -133,7 +135,9 @@
     }
     [_contentView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.equalTo(self);
-        if (index == 0) {
+        if (index == -1) {
+            make.height.mas_equalTo(0);
+        } else if (index == 0) {
             make.height.mas_equalTo(KIMGSIZE);
         } else if (index == 1) {
             make.height.equalTo(_contentView.mas_width).multipliedBy(0.5).offset(KIMGSIZE/2);

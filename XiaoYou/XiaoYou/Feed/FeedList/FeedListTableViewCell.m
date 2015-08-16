@@ -7,27 +7,30 @@
 //
 
 #import "FeedListTableViewCell.h"
-#import "DWTagList.h"
 #import "YUtils+Component.h"
 #import "Masonry.h"
 #import "FeedImageGroup.h"
+#import "ConnectTag.h"
 
 NSString *const kFeedListTableViewCell = @"FeedListTableViewCellId";
-#define KHEADIMGWIDTH SCALE_NUM(30)//头像宽度
-#define KLEFTMARGIN SCALE_NUM(15)//内容的左间距
-#define KHEADIMGTOP SCALE_NUM(20)//头像距顶高度
-#define KNAMEMARGIN_LEFT SCALE_NUM(15)//名字左间距
+#define KHEADIMGWIDTH SCALE_NUM(40)//头像宽度
+#define KLEFTMARGIN SCALE_NUM(15)//头像的左间距
+#define KHEADIMGTOP SCALE_NUM(12)//头像距顶高度
+#define KNAMEMARGIN_LEFT SCALE_NUM(12)//名字左间距
+#define KTIMEMARGIN_LEFT SCALE_NUM(12)//时间左间距
 
 #define KTAGHEIGHT SCALE_NUM(20)
 #define KTAGMARGIN SCALE_NUM(6)
 #define KTAGMARGIN_TOP SCALE_NUM(15)
 
-#define KCONTENTMARGIN_TOP SCALE_NUM(20)
+#define KCONTENTMARGIN_TOP SCALE_NUM(0)
+
+#define KTAGMICONARGIN_TOP SCALE_NUM(18)
 
 #define KBOTTOMHEIGHT SCALE_NUM(25)
 #define KSHAREWIDTH SCALE_NUM(25)
 #define KCOMMENTWIDTH SCALE_NUM(25)
-#define KBUTTONTEXTMARGIN SCALE_NUM(8)
+#define KBUTTONTEXTMARGIN SCALE_NUM(2)
 
 @interface FeedListTableViewCell ()
 
@@ -35,7 +38,7 @@ NSString *const kFeedListTableViewCell = @"FeedListTableViewCellId";
 @property (nonatomic, strong) UIImageView *contactHeadImageView;    //头像
 @property (nonatomic, strong) UILabel *contactNameLabel;            //名字
 @property (nonatomic, strong) UILabel *timeLabel;                   //时间
-@property (nonatomic, strong) DWTagList *tagList;                   //人标签
+@property (nonatomic, strong) ConnectTag *tagList;                  //人脉标签
 
 
 @property (nonatomic, strong) UILabel *contentLabel;                //内容
@@ -43,7 +46,7 @@ NSString *const kFeedListTableViewCell = @"FeedListTableViewCellId";
 @property (nonatomic, strong) UILabel *tagLabel;                    //feed标签
 @property (nonatomic, strong) FeedImageGroup *imgGroup;             //图片
 
-@property (nonatomic, strong) UIButton *shareButton;                //分享按钮
+@property (nonatomic, strong) UIImageView *shareButton;                //分享按钮
 @property (nonatomic, strong) UILabel *commentNum;                  //评论按钮
 @property (nonatomic, strong) UILabel *respectNum;                  //敬酒按钮
 
@@ -84,7 +87,7 @@ NSString *const kFeedListTableViewCell = @"FeedListTableViewCellId";
     _contactHeadImageView.clipsToBounds = true;
     _contactHeadImageView.backgroundColor = [UIColor redColor];
     
-    _contactNameLabel = [YUtils initLabel:CONTENT_FONT(18)
+    _contactNameLabel = [YUtils initLabel:CONTENT_FONT(15)
                                                     color:[UIColor blackColor]
                                                      text:@"人名"
                                                     frame:CGRectZero
@@ -92,14 +95,21 @@ NSString *const kFeedListTableViewCell = @"FeedListTableViewCellId";
     [_topView addSubview:_contactNameLabel];
     [_contactNameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(_contactHeadImageView.mas_right).offset(KNAMEMARGIN_LEFT);
-        make.centerY.top.equalTo(_contactHeadImageView);
+        make.centerY.equalTo(_contactHeadImageView);
     }];
     
-    _timeLabel = [YUtils initLabel:CONTENT_FONT(18) color:[UIColor blackColor] text:@"刚刚" frame:CGRectZero alignment:NSTextAlignmentLeft];
+    _timeLabel = [YUtils initLabel:CONTENT_FONT(10) color:[UIColor blackColor] text:@"刚刚" frame:CGRectZero alignment:NSTextAlignmentLeft];
     [_topView addSubview:_timeLabel];
     [_timeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(_contactNameLabel.mas_right).offset(KLEFTMARGIN);
-        make.top.centerY.equalTo(_contactNameLabel);
+        make.left.equalTo(_contactNameLabel.mas_right).offset(KTIMEMARGIN_LEFT);
+        make.top.equalTo(_contactNameLabel);
+    }];
+    
+    _tagList = [[ConnectTag alloc] init];
+    [_topView addSubview:_tagList];
+    [_tagList mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.right.equalTo(_topView);
+        make.top.equalTo(_contactNameLabel);
     }];
     
     [_topView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -111,7 +121,7 @@ NSString *const kFeedListTableViewCell = @"FeedListTableViewCellId";
 }
 
 - (void)initMiddleView {
-    _contentLabel = [YUtils initLabel:CONTENT_FONT(18)
+    _contentLabel = [YUtils initLabel:CONTENT_FONT(13)
                                 color:[UIColor blackColor]
                                  text:@"o be, or not to be —that is the question, Whether'tis nobler in the mind to suffer. The slings and arrows of outrageous fortune Or to take arms against a sea of troubles, And by opposing end them. To die —to sleep"
                                 frame:CGRectZero
@@ -119,7 +129,8 @@ NSString *const kFeedListTableViewCell = @"FeedListTableViewCellId";
     _contentLabel.numberOfLines = 0;
     [self.contentView addSubview:_contentLabel];
     [_contentLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.right.equalTo(_topView);
+        make.left.equalTo(_contactNameLabel);
+        make.right.equalTo(_topView);
         make.top.equalTo(_topView.mas_bottom).offset(KCONTENTMARGIN_TOP);
     }];
     
@@ -130,13 +141,23 @@ NSString *const kFeedListTableViewCell = @"FeedListTableViewCellId";
         make.top.equalTo(_contentLabel.mas_bottom).offset(KTAGMARGIN_TOP);
     }];
     
-    _tagLabel = [YUtils initLabel:CONTENT_FONT(18) color:[UIColor blackColor] text:@"# 互联网 #" frame:CGRectZero alignment:NSTextAlignmentLeft];
-    [self.contentView addSubview:_tagLabel];
-    [_tagLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.centerX.equalTo(_contentLabel);
-        make.top.equalTo(_imgGroup.mas_bottom).offset(KTAGMARGIN_TOP);
+    _tagIcon = [[UIImageView alloc] init];
+    [self.contentView addSubview:_tagIcon];
+    [_tagIcon mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.width.mas_equalTo(SCALE_NUM(11));
+        make.height.mas_equalTo(SCALE_NUM(14));
+        make.top.equalTo(_imgGroup.mas_bottom).offset(KTAGMICONARGIN_TOP);
+        make.centerX.equalTo(_contactHeadImageView);
     }];
     
+    _tagLabel = [YUtils initLabel:CONTENT_FONT(10) color:[UIColor blackColor] text:@"留学" frame:CGRectZero alignment:NSTextAlignmentLeft];
+    [self.contentView addSubview:_tagLabel];
+    [_tagLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(_contentLabel);
+        make.centerY.equalTo(_tagIcon);
+    }];
+    
+    [self setIsRelated:false];
     
 }
 
@@ -150,14 +171,17 @@ NSString *const kFeedListTableViewCell = @"FeedListTableViewCellId";
         make.height.mas_equalTo(KBOTTOMHEIGHT);
     }];
     
-    _shareButton = [[UIButton alloc] init];
+    _shareButton = [[UIImageView alloc] init];
     [bottomView addSubview:_shareButton];
     [_shareButton mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(_contentLabel);
+        make.centerX.equalTo(_contactHeadImageView);
         make.top.centerY.equalTo(bottomView);
         make.width.mas_equalTo(KSHAREWIDTH);
     }];
-    _shareButton.backgroundColor = [UIColor redColor];
+    _shareButton.contentMode = UIViewContentModeCenter;
+    _shareButton.image = [UIImage imageNamed:@"more"];
+    _shareButton.userInteractionEnabled = true;
+    [_shareButton addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(openShare)]];
     
     UIView *commentView = [[UIView alloc] init];
     [bottomView addSubview:commentView];
@@ -171,30 +195,34 @@ NSString *const kFeedListTableViewCell = @"FeedListTableViewCellId";
         make.left.top.bottom.equalTo(commentView);
         make.width.mas_equalTo(KCOMMENTWIDTH);
     }];
-    commentImg.backgroundColor = [UIColor redColor];
+    commentImg.contentMode = UIViewContentModeCenter;
+    commentImg.image = [UIImage imageNamed:@"comment"];
     
-    _commentNum = [YUtils initLabel:CONTENT_FONT(18) color:[UIColor blackColor] text:@"50000" frame:CGRectZero alignment:NSTextAlignmentLeft];
+    _commentNum = [YUtils initLabel:CONTENT_FONT(10) color:[UIColor blackColor] text:@"50000" frame:CGRectZero alignment:NSTextAlignmentLeft];
     [commentView addSubview:_commentNum];
     [_commentNum mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(commentImg.mas_right).offset(KBUTTONTEXTMARGIN);
         make.top.bottom.right.equalTo(commentView);
     }];
     
+    _respectNum = [YUtils initLabel:CONTENT_FONT(10) color:[UIColor blackColor] text:@"99" frame:CGRectZero alignment:NSTextAlignmentLeft];
+    [bottomView addSubview:_respectNum];
+    [_respectNum mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.bottom.right.equalTo(bottomView);
+        make.width.mas_equalTo(SCALE_NUM(50));
+    }];
+    
     UIImageView *respectImg = [[UIImageView alloc] init];
     [bottomView addSubview:respectImg];
     [respectImg mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(bottomView.mas_centerX).multipliedBy(1.3);
+        make.right.equalTo(_respectNum.mas_left).offset(-KBUTTONTEXTMARGIN);
         make.top.bottom.equalTo(bottomView);
         make.width.equalTo(commentImg);
     }];
-    respectImg.backgroundColor = [UIColor redColor];
+    respectImg.contentMode = UIViewContentModeCenter;
+    respectImg.image = [UIImage imageNamed:@"cup"];
     
-    _respectNum = [YUtils initLabel:CONTENT_FONT(18) color:[UIColor blackColor] text:@"999" frame:CGRectZero alignment:NSTextAlignmentLeft];
-    [bottomView addSubview:_respectNum];
-    [_respectNum mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(respectImg.mas_right).offset(KBUTTONTEXTMARGIN);
-        make.top.bottom.equalTo(bottomView);
-    }];
+    
 }
 
 
@@ -202,6 +230,18 @@ NSString *const kFeedListTableViewCell = @"FeedListTableViewCellId";
 {
     _contentLabel.text = @"To be, or not to be —that is the question, Whether'tis nobler in the mind to suffer. The slings and arrows of outrageous fortune Or to take arms against a sea of troubles, And by opposing end them. To die —to sleep";
     [_imgGroup updateWithImgs:@[@"http://cdn.duitang.com/uploads/item/201411/22/20141122111634_RBCXS.jpeg",@"http://cdn.duitang.com/uploads/item/201505/03/20150503184743_Q4EVW.thumb.700_0.jpeg",@"http://cdn.duitang.com/uploads/item/201411/22/20141122111634_RBCXS.jpeg",@"http://cdn.duitang.com/uploads/item/201505/03/20150503184743_Q4EVW.thumb.700_0.jpeg",@"http://cdn.duitang.com/uploads/item/201411/22/20141122111634_RBCXS.jpeg",@"http://cdn.duitang.com/uploads/item/201505/03/20150503184743_Q4EVW.thumb.700_0.jpeg",@"http://cdn.duitang.com/uploads/item/201411/22/20141122111634_RBCXS.jpeg",@"http://cdn.duitang.com/uploads/item/201505/03/20150503184743_Q4EVW.thumb.700_0.jpeg"] bigPics:@[@"http://cdn.duitang.com/uploads/item/201411/22/20141122111634_RBCXS.jpeg",@"http://cdn.duitang.com/uploads/item/201505/03/20150503184743_Q4EVW.thumb.700_0.jpeg",@"http://cdn.duitang.com/uploads/item/201411/22/20141122111634_RBCXS.jpeg",@"http://cdn.duitang.com/uploads/item/201505/03/20150503184743_Q4EVW.thumb.700_0.jpeg",@"http://cdn.duitang.com/uploads/item/201411/22/20141122111634_RBCXS.jpeg",@"http://cdn.duitang.com/uploads/item/201505/03/20150503184743_Q4EVW.thumb.700_0.jpeg",@"http://cdn.duitang.com/uploads/item/201411/22/20141122111634_RBCXS.jpeg",@"http://cdn.duitang.com/uploads/item/201505/03/20150503184743_Q4EVW.thumb.700_0.jpeg"]];
+    
+    [_tagList updateTag:@[@"系",@"乡",@"班"]];
+}
+
+- (void)setIsRelated:(BOOL)isRelated {
+    if (isRelated) {
+        _tagIcon.image = [UIImage imageNamed:@"tag-green"];
+        _tagLabel.textColor = KCOLORGREEN_179587;
+    } else {
+        _tagIcon.image = [UIImage imageNamed:@"tag-grey"];
+        _tagLabel.textColor = [UIColor blackColor];
+    }
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
@@ -210,5 +250,8 @@ NSString *const kFeedListTableViewCell = @"FeedListTableViewCellId";
     // Configure the view for the selected state
 }
 
+- (void)openShare {
+    [[NSNotificationCenter defaultCenter] postNotificationName:kNotification_Push_FeedDetail object:@{@"id":@"233"}];
+}
 
 @end

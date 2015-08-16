@@ -73,7 +73,8 @@
     [self.view addSubview:_feedListTableView];
     
     [_feedListTableView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.edges.mas_equalTo(self.view);
+        make.top.left.right.mas_equalTo(self.view);
+        make.bottom.equalTo(self.view).offset(-KTabBarheight);
     }];
     
     UIBarButtonItem *leftMenu = [[UIBarButtonItem alloc] initWithTitle:@"菜单" style:UIBarButtonItemStylePlain target:self action:@selector(changeMenu)];
@@ -82,6 +83,7 @@
 
 - (void)initNotification {
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(toAssociationsList) name:kNotification_Push_AssociationsList object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(openShare:) name:kNotification_Push_FeedDetail object:nil];
 }
 
 - (void)changeMenu {
@@ -98,15 +100,9 @@
     AssociationsListViewController *associationsListViewController = [[AssociationsListViewController alloc] init];
     [self.navigationController pushViewController:associationsListViewController animated:YES];
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (void)openShare:(NSNotification *) notification{
+    NSDictionary *dic = [notification object];
 }
-*/
+
 
 @end
