@@ -34,6 +34,9 @@
     [super viewWillAppear:animated navigationBarHidden:NO tabBarHidden:NO];
     
     [SlideNavigationController sharedInstance].enableSwipeGesture = YES;
+    [SlideNavigationController sharedInstance].enableShadow = false;
+    [SlideNavigationController sharedInstance].portraitSlideOffset = SCREEN_WIDTH * 0.3;
+
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -64,6 +67,13 @@
     [_feedListTableView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.mas_equalTo(self.view);
     }];
+    
+    UIBarButtonItem *leftMenu = [[UIBarButtonItem alloc] initWithTitle:@"菜单" style:UIBarButtonItemStylePlain target:self action:@selector(changeMenu)];
+    self.navigationItem.leftBarButtonItem = leftMenu;
+}
+
+- (void)changeMenu {
+    [[SlideNavigationController sharedInstance] toggleLeftMenu];
 }
 
 //改变switch

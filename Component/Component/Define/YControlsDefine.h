@@ -11,4 +11,6 @@
 
 #define CONTENT_FONT(font) [UIFont systemFontOfSize:font]
 
+#define SCALE_NUM(number)   number * SCREEN_WIDTH / 320
+
 #endif
