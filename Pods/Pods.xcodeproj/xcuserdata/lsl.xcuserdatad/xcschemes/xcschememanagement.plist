@@ -6,153 +6,173 @@
 	<dict>
 		<key>Pods-XiaoYou-ASIHTTPRequest.xcscheme</key>
 		<dict>
-			<key>orderHint</key>
-			<integer>5</integer>
+			<key>isShown</key>
+			<false/>
 		</dict>
 		<key>Pods-XiaoYou-CocoaLumberjack.xcscheme</key>
 		<dict>
-			<key>orderHint</key>
-			<integer>6</integer>
+			<key>isShown</key>
+			<false/>
 		</dict>
 		<key>Pods-XiaoYou-DWTagList.xcscheme</key>
 		<dict>
-			<key>orderHint</key>
-			<integer>7</integer>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods-XiaoYou-EaseMobSDK.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
 		</dict>
 		<key>Pods-XiaoYou-FMDB.xcscheme</key>
 		<dict>
-			<key>orderHint</key>
-			<integer>8</integer>
+			<key>isShown</key>
+			<false/>
 		</dict>
 		<key>Pods-XiaoYou-KLCircleViewController.xcscheme</key>
 		<dict>
-			<key>orderHint</key>
-			<integer>9</integer>
+			<key>isShown</key>
+			<false/>
 		</dict>
 		<key>Pods-XiaoYou-MJExtension.xcscheme</key>
 		<dict>
-			<key>orderHint</key>
-			<integer>10</integer>
+			<key>isShown</key>
+			<false/>
 		</dict>
 		<key>Pods-XiaoYou-MJRefresh.xcscheme</key>
 		<dict>
-			<key>orderHint</key>
-			<integer>11</integer>
+			<key>isShown</key>
+			<false/>
 		</dict>
 		<key>Pods-XiaoYou-Masonry.xcscheme</key>
 		<dict>
-			<key>orderHint</key>
-			<integer>12</integer>
+			<key>isShown</key>
+			<false/>
 		</dict>
 		<key>Pods-XiaoYou-Reachability.xcscheme</key>
 		<dict>
-			<key>orderHint</key>
-			<integer>13</integer>
+			<key>isShown</key>
+			<false/>
 		</dict>
 		<key>Pods-XiaoYou-RegExCategories.xcscheme</key>
 		<dict>
-			<key>orderHint</key>
-			<integer>14</integer>
+			<key>isShown</key>
+			<false/>
 		</dict>
 		<key>Pods-XiaoYou-SDWebImage.xcscheme</key>
 		<dict>
-			<key>orderHint</key>
-			<integer>15</integer>
+			<key>isShown</key>
+			<false/>
 		</dict>
 		<key>Pods-XiaoYou-SIAlertView.xcscheme</key>
 		<dict>
-			<key>orderHint</key>
-			<integer>16</integer>
+			<key>isShown</key>
+			<false/>
 		</dict>
 		<key>Pods-XiaoYou-UITableView+FDTemplateLayoutCell.xcscheme</key>
 		<dict>
-			<key>orderHint</key>
-			<integer>17</integer>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods-XiaoYou-UMengAnalytics-NO-IDFA.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
 		</dict>
 		<key>Pods-XiaoYou-iOS-Slide-Menu.xcscheme</key>
 		<dict>
-			<key>orderHint</key>
-			<integer>18</integer>
+			<key>isShown</key>
+			<false/>
 		</dict>
 		<key>Pods-XiaoYou.xcscheme</key>
 		<dict>
-			<key>orderHint</key>
-			<integer>4</integer>
+			<key>isShown</key>
+			<false/>
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>0E221319D18C936023FFA1CF</key>
+		<key>03DBC3E6879BBAA1B9B82146</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>1BDDFC28928D38128236D952</key>
+		<key>0BF67D5D04DF159B0A607D17</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>227292147828B03815D31C85</key>
+		<key>19C7FBF320BC44133C9637C0</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>4D6981421B7BDAC2DFFBD02E</key>
+		<key>28F41DD6DEBFF3E983781870</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>69D42710FDC6B188C0CA3BF0</key>
+		<key>3525451F00AAE15DF26BBECC</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>6B40C25EA47006789BF3D30A</key>
+		<key>3B744CEFF0E877FEEE23DC99</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>7D79DB78EADFAF9A03C8D7B8</key>
+		<key>409A3669ABC8A75DB3DFFF85</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>7E6A6407E635ED3E386D7370</key>
+		<key>7639DC167EF265E8DD9A00D7</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>D2F1AE8B637E25AA78AC12BA</key>
+		<key>7F6AD6D00AD82B7D2F233A8F</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>D54EC026A17A51238626908E</key>
+		<key>96901E521B7290709C04DF85</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>DD6638AFDBEEDCEC93B30884</key>
+		<key>972DCB5C6AA566F54C6DF924</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>E0247D19744D99CC6FAC41A6</key>
+		<key>A11CD20E1DB9C86519D4982E</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>E98B68D7E470C2498A494F42</key>
+		<key>B5D3B50822F1FD8173D2831D</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>ED8847085E2FC4443761AFAD</key>
+		<key>B6FAB80072A8C46EF7AA71EC</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>F8FE5942197E13E5C2058E77</key>
+		<key>B9C0F62A67B8C7B7066E4B3D</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>DC8D09234A9EE961795415AD</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>F26CD7DFDFABC953D00E50D1</key>
 		<dict>
 			<key>primary</key>
 			<true/>

@@ -27,8 +27,15 @@
         self.dataSource = self;
         
         [self registerClass:[FeedListTableViewCell class] forCellReuseIdentifier:kFeedListTableViewCell];
+        _feedListArray = [NSArray array];
+        self.fd_debugLogEnabled = false;
     }
     return self;
+}
+
+- (void)loadData:(NSArray *)data {
+    _feedListArray = [NSArray arrayWithArray:data];
+    [self reloadData];
 }
 
 #pragma mark - UITableViewDataSource
@@ -39,7 +46,7 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 10;
+    return _feedListArray.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath

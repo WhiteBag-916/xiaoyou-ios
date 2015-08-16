@@ -13,7 +13,7 @@
 #import "SDPhotoBrowser/SDPhotoBrowser.h"
 
 #define KIMGTAG 10000
-#define KIMGSIZE SCALE_NUM(100)
+#define KIMGSIZE SCALE_NUM(64)
 @interface FeedImageGroup()<SDPhotoBrowserDelegate>
 
 @property (nonatomic, strong) NSArray *smallImgs;

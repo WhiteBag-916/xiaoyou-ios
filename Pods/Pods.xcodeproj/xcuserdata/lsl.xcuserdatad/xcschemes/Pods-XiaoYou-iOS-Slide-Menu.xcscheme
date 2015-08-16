@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0640"
+   LastUpgradeVersion = "0510"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "D2F1AE8B637E25AA78AC12BA"
+               BlueprintIdentifier = "7639DC167EF265E8DD9A00D7"
                BuildableName = "libPods-XiaoYou-iOS-Slide-Menu.a"
                BlueprintName = "Pods-XiaoYou-iOS-Slide-Menu"
                ReferencedContainer = "container:Pods.xcodeproj">
@@ -39,15 +39,6 @@
       ignoresPersistentStateOnLaunch = "NO"
       debugDocumentVersioning = "YES"
       allowLocationSimulation = "YES">
-      <MacroExpansion>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "D2F1AE8B637E25AA78AC12BA"
-            BuildableName = "libPods-XiaoYou-iOS-Slide-Menu.a"
-            BlueprintName = "Pods-XiaoYou-iOS-Slide-Menu"
-            ReferencedContainer = "container:Pods.xcodeproj">
-         </BuildableReference>
-      </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
    </LaunchAction>
@@ -57,15 +48,6 @@
       useCustomWorkingDirectory = "NO"
       buildConfiguration = "Release"
       debugDocumentVersioning = "YES">
-      <MacroExpansion>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "D2F1AE8B637E25AA78AC12BA"
-            BuildableName = "libPods-XiaoYou-iOS-Slide-Menu.a"
-            BlueprintName = "Pods-XiaoYou-iOS-Slide-Menu"
-            ReferencedContainer = "container:Pods.xcodeproj">
-         </BuildableReference>
-      </MacroExpansion>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">

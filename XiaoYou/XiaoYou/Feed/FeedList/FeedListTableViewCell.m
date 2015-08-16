@@ -55,20 +55,6 @@ NSString *const kFeedListTableViewCell = @"FeedListTableViewCellId";
 {
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier])
     {
-//        self.contentView.bounds = [UIScreen mainScreen].bounds;
-        
-        //name
-        //
-//        //buttonView
-//        _bottomButtonView = [[UIView alloc] init];
-//        _bottomButtonView.backgroundColor = [UIColor redColor];
-//        
-//        //add
-//        [self.contentView addSubview:_contentLabel];
-//        [self.contentView addSubview:_bottomButtonView];
-//        
-//        //initMas
-//        [self initMas];
         [self initTopView];
         [self initMiddleView];
         [self initBottomView];
@@ -82,8 +68,9 @@ NSString *const kFeedListTableViewCell = @"FeedListTableViewCellId";
     _topView = [[UIView alloc] init];
     [self.contentView addSubview:_topView];
     [_topView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.mas_equalTo(KLEFTMARGIN);
-        make.top.centerX.equalTo(self.contentView);
+        make.left.equalTo(self.contentView).offset(KLEFTMARGIN);
+        make.right.equalTo(self.contentView).offset(-KLEFTMARGIN);
+        make.top.equalTo(self.contentView);
     }];
     
     _contactHeadImageView = [[UIImageView alloc] init];

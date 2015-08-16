@@ -10,4 +10,6 @@
 
 @interface FeedListTableView : YTableView
 
+- (void)loadData:(NSArray *)data;
+
 @end

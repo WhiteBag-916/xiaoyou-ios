@@ -42,6 +42,9 @@
     [self initNotification];
 }
 
+- (void)viewDidAppear:(BOOL)animated {
+    [_feedListTableView loadData:@[@"",@""]];
+}
 - (void)viewWillDisappear:(BOOL)animated
 {
     [SlideNavigationController sharedInstance].enableSwipeGesture = NO;
