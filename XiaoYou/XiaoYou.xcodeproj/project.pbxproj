@@ -736,13 +736,13 @@
 		20DBFD701B4FA90B009134D0 /* Message */ = {
 			isa = PBXGroup;
 			children = (
+				6592DCC41B806A9B004CD118 /* MessageAndContacts */,
 				333120E51B806EDA00D3D032 /* ChatView */,
 				3331211A1B806EDB00D3D032 /* ChatViewNeeds */,
 				6592DCAE1B806A9B004CD118 /* ChoicePerson */,
 				6592DCB11B806A9B004CD118 /* ContactsInfoDetail */,
 				6592DCB61B806A9B004CD118 /* FriendApply */,
 				6592DCBD1B806A9B004CD118 /* GroupApply */,
-				6592DCC41B806A9B004CD118 /* MessageAndContacts */,
 				6592DCCF1B806A9B004CD118 /* SendMessage */,
 			);
 			path = Message;
@@ -1366,22 +1366,11 @@
 		333121CB1B806EDB00D3D032 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				333121CC1B806EDB00D3D032 /* appicon */,
 				333121CD1B806EDB00D3D032 /* chatListCell */,
 				333121D01B806EDB00D3D032 /* ChatView */,
-				333122241B806EDB00D3D032 /* Login */,
 				333122251B806EDB00D3D032 /* NavigationBar */,
-				333122281B806EDB00D3D032 /* other */,
-				333122291B806EDB00D3D032 /* tabbar */,
 			);
 			path = Resources;
-			sourceTree = "<group>";
-		};
-		333121CC1B806EDB00D3D032 /* appicon */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = appicon;
 			sourceTree = "<group>";
 		};
 		333121CD1B806EDB00D3D032 /* chatListCell */ = {
@@ -1396,7 +1385,6 @@
 		333121D01B806EDB00D3D032 /* ChatView */ = {
 			isa = PBXGroup;
 			children = (
-				333121D11B806EDB00D3D032 /* audio */,
 				333121D21B806EDB00D3D032 /* chatLocation */,
 				333121DB1B806EDB00D3D032 /* emoji */,
 				333121DE1B806EDB00D3D032 /* imageDownloadFail@2x.png */,
@@ -1406,13 +1394,6 @@
 				333122171B806EDB00D3D032 /* sender_bubble */,
 			);
 			path = ChatView;
-			sourceTree = "<group>";
-		};
-		333121D11B806EDB00D3D032 /* audio */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = audio;
 			sourceTree = "<group>";
 		};
 		333121D21B806EDB00D3D032 /* chatLocation */ = {
@@ -1539,13 +1520,6 @@
 			path = sender_bubble;
 			sourceTree = "<group>";
 		};
-		333122241B806EDB00D3D032 /* Login */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Login;
-			sourceTree = "<group>";
-		};
 		333122251B806EDB00D3D032 /* NavigationBar */ = {
 			isa = PBXGroup;
 			children = (
@@ -1553,20 +1527,6 @@
 				333122271B806EDB00D3D032 /* delete@2x.png */,
 			);
 			path = NavigationBar;
-			sourceTree = "<group>";
-		};
-		333122281B806EDB00D3D032 /* other */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = other;
-			sourceTree = "<group>";
-		};
-		333122291B806EDB00D3D032 /* tabbar */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = tabbar;
 			sourceTree = "<group>";
 		};
 		653CB2E81B806BFD006ECBB2 /* Utils */ = {
@@ -1640,16 +1600,16 @@
 		6592DCC41B806A9B004CD118 /* MessageAndContacts */ = {
 			isa = PBXGroup;
 			children = (
+				6592DCCD1B806A9B004CD118 /* XYMessageAndContactsViewController.h */,
+				6592DCCE1B806A9B004CD118 /* XYMessageAndContactsViewController.m */,
+				6592DCC91B806A9B004CD118 /* MessageTableView.h */,
+				6592DCCA1B806A9B004CD118 /* MessageTableView.m */,
 				6592DCC51B806A9B004CD118 /* ContactsTableView.h */,
 				6592DCC61B806A9B004CD118 /* ContactsTableView.m */,
 				6592DCC71B806A9B004CD118 /* ContactsTableViewCell.h */,
 				6592DCC81B806A9B004CD118 /* ContactsTableViewCell.m */,
-				6592DCC91B806A9B004CD118 /* MessageTableView.h */,
-				6592DCCA1B806A9B004CD118 /* MessageTableView.m */,
 				6592DCCB1B806A9B004CD118 /* MessageTableViewCell.h */,
 				6592DCCC1B806A9B004CD118 /* MessageTableViewCell.m */,
-				6592DCCD1B806A9B004CD118 /* XYMessageAndContactsViewController.h */,
-				6592DCCE1B806A9B004CD118 /* XYMessageAndContactsViewController.m */,
 			);
 			path = MessageAndContacts;
 			sourceTree = "<group>";
