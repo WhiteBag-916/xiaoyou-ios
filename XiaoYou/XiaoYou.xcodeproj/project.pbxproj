@@ -31,13 +31,23 @@
 		20E1222D1B708CDC00F90BD3 /* TagListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20E1222C1B708CDC00F90BD3 /* TagListViewController.m */; };
 		3321B14D1B7993650020AD80 /* icon_default_mine@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3321B14B1B7993650020AD80 /* icon_default_mine@2x.png */; };
 		3321B14E1B7993650020AD80 /* icon_default_mine@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3321B14C1B7993650020AD80 /* icon_default_mine@3x.png */; };
-		33DCA7611B7B28A400133519 /* XYMessageDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 33DCA7601B7B28A400133519 /* XYMessageDetailViewController.m */; };
-		33E796B81B786CDE00930E73 /* XYMessageAndContactsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 33E796B71B786CDE00930E73 /* XYMessageAndContactsViewController.m */; };
-		33E796BF1B786D1300930E73 /* ContactsTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 33E796BC1B786D1300930E73 /* ContactsTableView.m */; };
-		33E796C01B786D1300930E73 /* MessageTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 33E796BE1B786D1300930E73 /* MessageTableView.m */; };
-		33E796C61B786D2100930E73 /* ContactsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 33E796C31B786D2100930E73 /* ContactsTableViewCell.m */; };
-		33E796C71B786D2100930E73 /* MessageTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 33E796C51B786D2100930E73 /* MessageTableViewCell.m */; };
-		33E796CA1B786E2400930E73 /* Pinyin.m in Sources */ = {isa = PBXBuildFile; fileRef = 33E796C91B786E2400930E73 /* Pinyin.m */; };
+		334DF9501B7DD96D00C061AA /* XYMessageAndContactsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 334DF9491B7DD96D00C061AA /* XYMessageAndContactsViewController.m */; };
+		334DF9591B7DDA3E00C061AA /* ContactsTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 334DF9521B7DDA3E00C061AA /* ContactsTableView.m */; };
+		334DF95A1B7DDA3E00C061AA /* ContactsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 334DF9541B7DDA3E00C061AA /* ContactsTableViewCell.m */; };
+		334DF95B1B7DDA3E00C061AA /* MessageTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 334DF9561B7DDA3E00C061AA /* MessageTableView.m */; };
+		334DF95C1B7DDA3E00C061AA /* MessageTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 334DF9581B7DDA3E00C061AA /* MessageTableViewCell.m */; };
+		334DF9681B7DDE8600C061AA /* XYGroupInfoDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 334DF9671B7DDE8600C061AA /* XYGroupInfoDetailViewController.m */; };
+		334DF96B1B7DDEA800C061AA /* XYContactsInfoDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 334DF96A1B7DDEA700C061AA /* XYContactsInfoDetailViewController.m */; };
+		334DF9721B7DE1C600C061AA /* XYFriendApplyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 334DF9711B7DE1C600C061AA /* XYFriendApplyViewController.m */; };
+		334DF9751B7DE1D600C061AA /* XYGroupApplyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 334DF9741B7DE1D600C061AA /* XYGroupApplyViewController.m */; };
+		334DF9781B7DE1EB00C061AA /* XYChoicePersonViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 334DF9771B7DE1EB00C061AA /* XYChoicePersonViewController.m */; };
+		334DF97B1B7DE1F900C061AA /* XYSendMessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 334DF97A1B7DE1F900C061AA /* XYSendMessageViewController.m */; };
+		334DF9891B7DEEFD00C061AA /* ChineseString.m in Sources */ = {isa = PBXBuildFile; fileRef = 334DF9861B7DEEFD00C061AA /* ChineseString.m */; };
+		334DF98A1B7DEEFD00C061AA /* pinyin.c in Sources */ = {isa = PBXBuildFile; fileRef = 334DF9871B7DEEFD00C061AA /* pinyin.c */; };
+		334DF98D1B7DF8DB00C061AA /* FriendApplyTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 334DF98C1B7DF8DB00C061AA /* FriendApplyTableViewCell.m */; };
+		334DF9901B7DF90000C061AA /* GroupApplyTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 334DF98F1B7DF90000C061AA /* GroupApplyTableViewCell.m */; };
+		334DF9931B7DF95A00C061AA /* FriendApplyTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 334DF9921B7DF95A00C061AA /* FriendApplyTableView.m */; };
+		334DF9961B7DF96E00C061AA /* GroupApplyTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 334DF9951B7DF96E00C061AA /* GroupApplyTableView.m */; };
 		34AF80435283028D453BFBFC /* libPods-XiaoYou.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 77B574BED9D4FF3F4BFAA9FE /* libPods-XiaoYou.a */; };
 /* End PBXBuildFile section */
 
@@ -97,20 +107,40 @@
 		234A25BD9458AE14C70CE430 /* Pods-XiaoYou.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XiaoYou.debug.xcconfig"; path = "../Pods/Target Support Files/Pods-XiaoYou/Pods-XiaoYou.debug.xcconfig"; sourceTree = "<group>"; };
 		3321B14B1B7993650020AD80 /* icon_default_mine@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_default_mine@2x.png"; sourceTree = "<group>"; };
 		3321B14C1B7993650020AD80 /* icon_default_mine@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_default_mine@3x.png"; sourceTree = "<group>"; };
-		33DCA75F1B7B28A400133519 /* XYMessageDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYMessageDetailViewController.h; sourceTree = "<group>"; };
-		33DCA7601B7B28A400133519 /* XYMessageDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYMessageDetailViewController.m; sourceTree = "<group>"; };
-		33E796B61B786CDE00930E73 /* XYMessageAndContactsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYMessageAndContactsViewController.h; sourceTree = "<group>"; };
-		33E796B71B786CDE00930E73 /* XYMessageAndContactsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYMessageAndContactsViewController.m; sourceTree = "<group>"; };
-		33E796BB1B786D1300930E73 /* ContactsTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactsTableView.h; sourceTree = "<group>"; };
-		33E796BC1B786D1300930E73 /* ContactsTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactsTableView.m; sourceTree = "<group>"; };
-		33E796BD1B786D1300930E73 /* MessageTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageTableView.h; sourceTree = "<group>"; };
-		33E796BE1B786D1300930E73 /* MessageTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageTableView.m; sourceTree = "<group>"; };
-		33E796C21B786D2100930E73 /* ContactsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactsTableViewCell.h; sourceTree = "<group>"; };
-		33E796C31B786D2100930E73 /* ContactsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactsTableViewCell.m; sourceTree = "<group>"; };
-		33E796C41B786D2100930E73 /* MessageTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageTableViewCell.h; sourceTree = "<group>"; };
-		33E796C51B786D2100930E73 /* MessageTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageTableViewCell.m; sourceTree = "<group>"; };
-		33E796C81B786E2400930E73 /* Pinyin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Pinyin.h; sourceTree = "<group>"; };
-		33E796C91B786E2400930E73 /* Pinyin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Pinyin.m; sourceTree = "<group>"; };
+		334DF9481B7DD96D00C061AA /* XYMessageAndContactsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYMessageAndContactsViewController.h; sourceTree = "<group>"; };
+		334DF9491B7DD96D00C061AA /* XYMessageAndContactsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYMessageAndContactsViewController.m; sourceTree = "<group>"; };
+		334DF9511B7DDA3E00C061AA /* ContactsTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactsTableView.h; sourceTree = "<group>"; };
+		334DF9521B7DDA3E00C061AA /* ContactsTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactsTableView.m; sourceTree = "<group>"; };
+		334DF9531B7DDA3E00C061AA /* ContactsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactsTableViewCell.h; sourceTree = "<group>"; };
+		334DF9541B7DDA3E00C061AA /* ContactsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactsTableViewCell.m; sourceTree = "<group>"; };
+		334DF9551B7DDA3E00C061AA /* MessageTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageTableView.h; sourceTree = "<group>"; };
+		334DF9561B7DDA3E00C061AA /* MessageTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageTableView.m; sourceTree = "<group>"; };
+		334DF9571B7DDA3E00C061AA /* MessageTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageTableViewCell.h; sourceTree = "<group>"; };
+		334DF9581B7DDA3E00C061AA /* MessageTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageTableViewCell.m; sourceTree = "<group>"; };
+		334DF9661B7DDE8600C061AA /* XYGroupInfoDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XYGroupInfoDetailViewController.h; path = ../ContactsInfoDetail/XYGroupInfoDetailViewController.h; sourceTree = "<group>"; };
+		334DF9671B7DDE8600C061AA /* XYGroupInfoDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XYGroupInfoDetailViewController.m; path = ../ContactsInfoDetail/XYGroupInfoDetailViewController.m; sourceTree = "<group>"; };
+		334DF9691B7DDEA700C061AA /* XYContactsInfoDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYContactsInfoDetailViewController.h; sourceTree = "<group>"; };
+		334DF96A1B7DDEA700C061AA /* XYContactsInfoDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYContactsInfoDetailViewController.m; sourceTree = "<group>"; };
+		334DF9701B7DE1C600C061AA /* XYFriendApplyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYFriendApplyViewController.h; sourceTree = "<group>"; };
+		334DF9711B7DE1C600C061AA /* XYFriendApplyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYFriendApplyViewController.m; sourceTree = "<group>"; };
+		334DF9731B7DE1D600C061AA /* XYGroupApplyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYGroupApplyViewController.h; sourceTree = "<group>"; };
+		334DF9741B7DE1D600C061AA /* XYGroupApplyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYGroupApplyViewController.m; sourceTree = "<group>"; };
+		334DF9761B7DE1EB00C061AA /* XYChoicePersonViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYChoicePersonViewController.h; sourceTree = "<group>"; };
+		334DF9771B7DE1EB00C061AA /* XYChoicePersonViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYChoicePersonViewController.m; sourceTree = "<group>"; };
+		334DF9791B7DE1F900C061AA /* XYSendMessageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYSendMessageViewController.h; sourceTree = "<group>"; };
+		334DF97A1B7DE1F900C061AA /* XYSendMessageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYSendMessageViewController.m; sourceTree = "<group>"; };
+		334DF9851B7DEEFD00C061AA /* ChineseString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChineseString.h; sourceTree = "<group>"; };
+		334DF9861B7DEEFD00C061AA /* ChineseString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChineseString.m; sourceTree = "<group>"; };
+		334DF9871B7DEEFD00C061AA /* pinyin.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = pinyin.c; sourceTree = "<group>"; };
+		334DF9881B7DEEFD00C061AA /* pinyin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = pinyin.h; sourceTree = "<group>"; };
+		334DF98B1B7DF8DB00C061AA /* FriendApplyTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendApplyTableViewCell.h; sourceTree = "<group>"; };
+		334DF98C1B7DF8DB00C061AA /* FriendApplyTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendApplyTableViewCell.m; sourceTree = "<group>"; };
+		334DF98E1B7DF90000C061AA /* GroupApplyTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroupApplyTableViewCell.h; sourceTree = "<group>"; };
+		334DF98F1B7DF90000C061AA /* GroupApplyTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroupApplyTableViewCell.m; sourceTree = "<group>"; };
+		334DF9911B7DF95A00C061AA /* FriendApplyTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendApplyTableView.h; sourceTree = "<group>"; };
+		334DF9921B7DF95A00C061AA /* FriendApplyTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendApplyTableView.m; sourceTree = "<group>"; };
+		334DF9941B7DF96E00C061AA /* GroupApplyTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroupApplyTableView.h; sourceTree = "<group>"; };
+		334DF9951B7DF96E00C061AA /* GroupApplyTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroupApplyTableView.m; sourceTree = "<group>"; };
 		77B574BED9D4FF3F4BFAA9FE /* libPods-XiaoYou.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-XiaoYou.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F531E541C4347E287F02139F /* Pods-XiaoYou.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XiaoYou.release.xcconfig"; path = "../Pods/Target Support Files/Pods-XiaoYou/Pods-XiaoYou.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -167,6 +197,7 @@
 				20DBFD701B4FA90B009134D0 /* Message */,
 				20DD4B2E1B7345E6007C352C /* Profile */,
 				20DC87F81B5F683F0019DC7F /* CommonView */,
+				334DF9831B7DEEE800C061AA /* Utils */,
 				20DBFD721B4FA90B009134D0 /* Resources */,
 				200E39861B4E818B000B587B /* Images.xcassets */,
 				200E39791B4E818B000B587B /* Supporting Files */,
@@ -242,9 +273,14 @@
 		20DBFD701B4FA90B009134D0 /* Message */ = {
 			isa = PBXGroup;
 			children = (
-				33E796B51B786CDE00930E73 /* controller */,
-				33E796BA1B786D1300930E73 /* view */,
-				33E796C11B786D2100930E73 /* cell */,
+				334DF9471B7DD96D00C061AA /* MessageAndContacts */,
+				334DF9631B7DDE4900C061AA /* ChatDetail */,
+				334DF9651B7DDE4900C061AA /* GroupInfoDetail */,
+				334DF9641B7DDE4900C061AA /* ContactsInfoDetail */,
+				334DF96D1B7DE17200C061AA /* FriendApply */,
+				334DF96E1B7DE17200C061AA /* GroupApply */,
+				334DF96C1B7DE17200C061AA /* ChoicePerson */,
+				334DF96F1B7DE17200C061AA /* SendMessage */,
 			);
 			path = Message;
 			sourceTree = "<group>";
@@ -276,8 +312,6 @@
 			children = (
 				20DD4B331B734781007C352C /* CommonSwitchView.h */,
 				20DD4B341B734781007C352C /* CommonSwitchView.m */,
-				33E796C81B786E2400930E73 /* Pinyin.h */,
-				33E796C91B786E2400930E73 /* Pinyin.m */,
 			);
 			path = CommonView;
 			sourceTree = "<group>";
@@ -386,38 +420,109 @@
 			path = contacts;
 			sourceTree = "<group>";
 		};
-		33E796B51B786CDE00930E73 /* controller */ = {
+		334DF9471B7DD96D00C061AA /* MessageAndContacts */ = {
 			isa = PBXGroup;
 			children = (
-				33E796B61B786CDE00930E73 /* XYMessageAndContactsViewController.h */,
-				33E796B71B786CDE00930E73 /* XYMessageAndContactsViewController.m */,
-				33DCA75F1B7B28A400133519 /* XYMessageDetailViewController.h */,
-				33DCA7601B7B28A400133519 /* XYMessageDetailViewController.m */,
+				334DF9481B7DD96D00C061AA /* XYMessageAndContactsViewController.h */,
+				334DF9491B7DD96D00C061AA /* XYMessageAndContactsViewController.m */,
+				334DF9511B7DDA3E00C061AA /* ContactsTableView.h */,
+				334DF9521B7DDA3E00C061AA /* ContactsTableView.m */,
+				334DF9551B7DDA3E00C061AA /* MessageTableView.h */,
+				334DF9561B7DDA3E00C061AA /* MessageTableView.m */,
+				334DF9531B7DDA3E00C061AA /* ContactsTableViewCell.h */,
+				334DF9541B7DDA3E00C061AA /* ContactsTableViewCell.m */,
+				334DF9571B7DDA3E00C061AA /* MessageTableViewCell.h */,
+				334DF9581B7DDA3E00C061AA /* MessageTableViewCell.m */,
 			);
-			path = controller;
+			path = MessageAndContacts;
 			sourceTree = "<group>";
 		};
-		33E796BA1B786D1300930E73 /* view */ = {
+		334DF9631B7DDE4900C061AA /* ChatDetail */ = {
 			isa = PBXGroup;
 			children = (
-				33E796BB1B786D1300930E73 /* ContactsTableView.h */,
-				33E796BC1B786D1300930E73 /* ContactsTableView.m */,
-				33E796BD1B786D1300930E73 /* MessageTableView.h */,
-				33E796BE1B786D1300930E73 /* MessageTableView.m */,
 			);
-			path = view;
+			path = ChatDetail;
 			sourceTree = "<group>";
 		};
-		33E796C11B786D2100930E73 /* cell */ = {
+		334DF9641B7DDE4900C061AA /* ContactsInfoDetail */ = {
 			isa = PBXGroup;
 			children = (
-				33E796C21B786D2100930E73 /* ContactsTableViewCell.h */,
-				33E796C31B786D2100930E73 /* ContactsTableViewCell.m */,
-				33E796C41B786D2100930E73 /* MessageTableViewCell.h */,
-				33E796C51B786D2100930E73 /* MessageTableViewCell.m */,
+				334DF9691B7DDEA700C061AA /* XYContactsInfoDetailViewController.h */,
+				334DF96A1B7DDEA700C061AA /* XYContactsInfoDetailViewController.m */,
 			);
-			name = cell;
-			path = view/cell;
+			path = ContactsInfoDetail;
+			sourceTree = "<group>";
+		};
+		334DF9651B7DDE4900C061AA /* GroupInfoDetail */ = {
+			isa = PBXGroup;
+			children = (
+				334DF9661B7DDE8600C061AA /* XYGroupInfoDetailViewController.h */,
+				334DF9671B7DDE8600C061AA /* XYGroupInfoDetailViewController.m */,
+			);
+			path = GroupInfoDetail;
+			sourceTree = "<group>";
+		};
+		334DF96C1B7DE17200C061AA /* ChoicePerson */ = {
+			isa = PBXGroup;
+			children = (
+				334DF9761B7DE1EB00C061AA /* XYChoicePersonViewController.h */,
+				334DF9771B7DE1EB00C061AA /* XYChoicePersonViewController.m */,
+			);
+			path = ChoicePerson;
+			sourceTree = "<group>";
+		};
+		334DF96D1B7DE17200C061AA /* FriendApply */ = {
+			isa = PBXGroup;
+			children = (
+				334DF9701B7DE1C600C061AA /* XYFriendApplyViewController.h */,
+				334DF9711B7DE1C600C061AA /* XYFriendApplyViewController.m */,
+				334DF9911B7DF95A00C061AA /* FriendApplyTableView.h */,
+				334DF9921B7DF95A00C061AA /* FriendApplyTableView.m */,
+				334DF98B1B7DF8DB00C061AA /* FriendApplyTableViewCell.h */,
+				334DF98C1B7DF8DB00C061AA /* FriendApplyTableViewCell.m */,
+			);
+			path = FriendApply;
+			sourceTree = "<group>";
+		};
+		334DF96E1B7DE17200C061AA /* GroupApply */ = {
+			isa = PBXGroup;
+			children = (
+				334DF9731B7DE1D600C061AA /* XYGroupApplyViewController.h */,
+				334DF9741B7DE1D600C061AA /* XYGroupApplyViewController.m */,
+				334DF9941B7DF96E00C061AA /* GroupApplyTableView.h */,
+				334DF9951B7DF96E00C061AA /* GroupApplyTableView.m */,
+				334DF98E1B7DF90000C061AA /* GroupApplyTableViewCell.h */,
+				334DF98F1B7DF90000C061AA /* GroupApplyTableViewCell.m */,
+			);
+			path = GroupApply;
+			sourceTree = "<group>";
+		};
+		334DF96F1B7DE17200C061AA /* SendMessage */ = {
+			isa = PBXGroup;
+			children = (
+				334DF9791B7DE1F900C061AA /* XYSendMessageViewController.h */,
+				334DF97A1B7DE1F900C061AA /* XYSendMessageViewController.m */,
+			);
+			path = SendMessage;
+			sourceTree = "<group>";
+		};
+		334DF9831B7DEEE800C061AA /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				334DF9841B7DEEFD00C061AA /* ChineseSorting */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		334DF9841B7DEEFD00C061AA /* ChineseSorting */ = {
+			isa = PBXGroup;
+			children = (
+				334DF9851B7DEEFD00C061AA /* ChineseString.h */,
+				334DF9861B7DEEFD00C061AA /* ChineseString.m */,
+				334DF9871B7DEEFD00C061AA /* pinyin.c */,
+				334DF9881B7DEEFD00C061AA /* pinyin.h */,
+			);
+			path = ChineseSorting;
 			sourceTree = "<group>";
 		};
 		888C5F0F224BB9F4ECBAEB96 /* Pods */ = {
@@ -569,25 +674,35 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				33E796CA1B786E2400930E73 /* Pinyin.m in Sources */,
+				334DF9591B7DDA3E00C061AA /* ContactsTableView.m in Sources */,
+				334DF95C1B7DDA3E00C061AA /* MessageTableViewCell.m in Sources */,
+				334DF95B1B7DDA3E00C061AA /* MessageTableView.m in Sources */,
+				334DF96B1B7DDEA800C061AA /* XYContactsInfoDetailViewController.m in Sources */,
+				334DF9721B7DE1C600C061AA /* XYFriendApplyViewController.m in Sources */,
+				334DF9681B7DDE8600C061AA /* XYGroupInfoDetailViewController.m in Sources */,
+				334DF9961B7DF96E00C061AA /* GroupApplyTableView.m in Sources */,
+				334DF9901B7DF90000C061AA /* GroupApplyTableViewCell.m in Sources */,
+				334DF98D1B7DF8DB00C061AA /* FriendApplyTableViewCell.m in Sources */,
+				334DF9891B7DEEFD00C061AA /* ChineseString.m in Sources */,
 				20DC87F21B5F3DC70019DC7F /* ChooseSchoolViewController.m in Sources */,
-				33DCA7611B7B28A400133519 /* XYMessageDetailViewController.m in Sources */,
 				20DBFD631B4FA7E1009134D0 /* AppDelegate.m in Sources */,
+				334DF95A1B7DDA3E00C061AA /* ContactsTableViewCell.m in Sources */,
+				334DF9931B7DF95A00C061AA /* FriendApplyTableView.m in Sources */,
 				20DD4B351B734781007C352C /* CommonSwitchView.m in Sources */,
 				20DD4B311B7345EF007C352C /* ProfileViewController.m in Sources */,
-				33E796C61B786D2100930E73 /* ContactsTableViewCell.m in Sources */,
 				207F808A1B7099C2005E8F6A /* AppDelegate+Manager.m in Sources */,
 				200E397C1B4E818B000B587B /* main.m in Sources */,
 				20E1222D1B708CDC00F90BD3 /* TagListViewController.m in Sources */,
+				334DF9751B7DE1D600C061AA /* XYGroupApplyViewController.m in Sources */,
 				20DA63761B7482DE007D22AC /* FeedListTableView.m in Sources */,
-				33E796C71B786D2100930E73 /* MessageTableViewCell.m in Sources */,
+				334DF97B1B7DE1F900C061AA /* XYSendMessageViewController.m in Sources */,
 				207F808D1B709A1E005E8F6A /* AppDelegate+Notification.m in Sources */,
-				33E796B81B786CDE00930E73 /* XYMessageAndContactsViewController.m in Sources */,
+				334DF9501B7DD96D00C061AA /* XYMessageAndContactsViewController.m in Sources */,
+				334DF9781B7DE1EB00C061AA /* XYChoicePersonViewController.m in Sources */,
 				20DC5CD01B7B4FA00059B6E6 /* FeedListTableViewCell.m in Sources */,
-				33E796C01B786D1300930E73 /* MessageTableView.m in Sources */,
 				20E122211B705ED200F90BD3 /* FeedListViewController.m in Sources */,
 				20E122131B705C2100F90BD3 /* XYTabBarViewController.m in Sources */,
-				33E796BF1B786D1300930E73 /* ContactsTableView.m in Sources */,
+				334DF98A1B7DEEFD00C061AA /* pinyin.c in Sources */,
 				207F80871B7098E3005E8F6A /* AppDelegate+RootVC.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

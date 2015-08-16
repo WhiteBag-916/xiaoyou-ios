@@ -14,8 +14,12 @@
 
 @implementation AppDelegate (Notification)
 
-- (void)initNotification
+- (void)initNotification:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    //环信初始化
+    [[EaseMob sharedInstance] registerSDKWithAppKey:@"jiankun#xiaoyou" apnsCertName:@"xiaoyou_development"];
+    [[EaseMob sharedInstance] application:application didFinishLaunchingWithOptions:launchOptions];
+    
     if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0) {
         
         UIUserNotificationSettings *uns = [UIUserNotificationSettings settingsForTypes:(UIUserNotificationTypeAlert|UIUserNotificationTypeBadge|UIUserNotificationTypeSound) categories:nil];
