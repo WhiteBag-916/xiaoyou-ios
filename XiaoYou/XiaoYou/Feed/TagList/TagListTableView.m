@@ -24,7 +24,7 @@
         [self registerClass:[TagListTableViewCell class] forCellReuseIdentifier:KTagListTableViewCell];
         self.separatorStyle = UITableViewCellSeparatorStyleNone;
         self.backgroundColor = [UIColor clearColor];
-        _data = @[@"23",@""];
+        _data = @[@"互联网",@"同班"];
     }
     return self;
 }

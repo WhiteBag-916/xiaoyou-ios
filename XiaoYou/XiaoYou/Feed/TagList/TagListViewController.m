@@ -14,10 +14,13 @@
 
 #define KNOTIFYCOUNTHEIGHT 25
 #define KNOTIFYCOUNTMARGIN_LEFT SCALE_NUM(15)
+#define KNOTIFYCOUNTMARGIN_DOWN SCALE_NUM(12)
 #define KNOTIFYCOUNTMARGIN_RIGHT SCALE_NUM(10)
-#define KSEARCHHEIGHT SCALE_NUM(30)
+#define KSEARCHHEIGHT SCALE_NUM(43)
 #define KBOTTOMHEIGHT SCALE_NUM(80)
 #define KTABLEMARGIN  SCALE_NUM(30)
+
+
 @interface TagListViewController ()
 
 @property (nonatomic, strong) UIView *notifyView;
@@ -60,7 +63,7 @@
     _notifyCount = [YUtils initLabel:CONTENT_FONT(12) color:[UIColor whiteColor] text:@"99" frame:CGRectZero alignment:NSTextAlignmentCenter];
     [_notifyView addSubview:_notifyCount];
     [_notifyCount mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.bottom.equalTo(_notifyView).offset(-KNOTIFYCOUNTMARGIN_LEFT);
+        make.bottom.equalTo(_notifyView).offset(-KNOTIFYCOUNTMARGIN_DOWN);
         make.width.height.mas_equalTo(KNOTIFYCOUNTHEIGHT);
         make.left.mas_equalTo(KNOTIFYCOUNTMARGIN_LEFT);
     }];
@@ -80,22 +83,33 @@
 }
 
 - (void)initSearchBtn {
-    _searchLabel = [YUtils initLabel:CONTENT_FONT(12) color:KCOLORWHITE_C5CACF text:@"在这儿可以找到所有人" frame:CGRectZero alignment:NSTextAlignmentCenter];
+    _searchLabel = [YUtils initLabel:CONTENT_FONT(13) color:KCOLORWHITE_C5CACF text:@"在这儿可以找到所有人" frame:CGRectZero alignment:NSTextAlignmentCenter];
     [self.view addSubview:_searchLabel];
     [_searchLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.right.equalTo(_notifyView);
         make.top.equalTo(_notifyView.mas_bottom);
         make.height.mas_equalTo(KSEARCHHEIGHT);
     }];
-    _searchLabel.backgroundColor = [UIColor darkGrayColor];
+    _searchLabel.backgroundColor = KCOLORGREEN_32424A;
     
     UIImageView *icon = [[UIImageView alloc] init];
-    [_searchLabel addSubview:icon];
+    [self.view addSubview:icon];
     [icon mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.mas_equalTo(KNOTIFYCOUNTMARGIN_LEFT);
+        make.left.mas_equalTo(_notifyCount);
         make.centerY.equalTo(_searchLabel);
+        make.width.mas_equalTo(SCALE_NUM(19));
+        make.height.mas_equalTo(SCALE_NUM(21));
         
     }];
+    icon.image = [UIImage imageNamed:@"search"];
+    
+    UIView *line = [[UIView alloc] init];
+    [self.view addSubview:line];
+    [line mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.right.bottom.equalTo(_searchLabel);
+        make.height.mas_equalTo(0.5);
+    }];
+    line.backgroundColor = KCOLORWHITE_C5CACF;
 }
 
 - (void)initBottomView {
@@ -114,6 +128,24 @@
         make.height.mas_equalTo(0.5);
     }];
     line.backgroundColor = KCOLORWHITE_C5CACF;
+    
+    UIImageView *icon = [[UIImageView alloc] init];
+    [_bottomView addSubview:icon];
+    [icon mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.width.height.mas_equalTo(SCALE_NUM(20));
+        make.left.equalTo(_notifyCount);
+        make.top.mas_equalTo(SCALE_NUM(20));
+    }];
+    icon.image = [UIImage imageNamed:@"society"];
+    
+    UILabel *hint = [YUtils initLabel:CONTENT_FONT(15) color:KCOLORWHITE text:@"社团总汇（一键加入）" frame:CGRectZero alignment:NSTextAlignmentCenter];
+    [_bottomView addSubview:hint];
+    [hint mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.right.equalTo(_bottomView);
+        make.top.centerY.equalTo(icon);
+        
+    }];
+
     
     //增加点击跳转到动态列表
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(toAssociationsList)];
