@@ -62,6 +62,7 @@
 		20DD4B2C1B73390C007C352C /* YControlsDefine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YControlsDefine.h; sourceTree = "<group>"; };
 		20E122151B705D3C00F90BD3 /* FeedManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedManager.h; sourceTree = "<group>"; };
 		20E122161B705D3C00F90BD3 /* FeedManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedManager.m; sourceTree = "<group>"; };
+		20E18D5E1B807F4F005B75EE /* YNotificationDefine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YNotificationDefine.h; sourceTree = "<group>"; };
 		20E3417E1B720A54008CADC3 /* ProfileDao.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileDao.h; sourceTree = "<group>"; };
 		20E3417F1B720A54008CADC3 /* ProfileDao.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileDao.m; sourceTree = "<group>"; };
 		20E341811B720A80008CADC3 /* ProfileSQL.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProfileSQL.h; sourceTree = "<group>"; };
@@ -234,6 +235,7 @@
 				20DBFD7C1B4FD3F5009134D0 /* YSystemDefine.h */,
 				20DD4B2B1B7338D8007C352C /* YDefine.h */,
 				20DD4B2C1B73390C007C352C /* YControlsDefine.h */,
+				20E18D5E1B807F4F005B75EE /* YNotificationDefine.h */,
 			);
 			path = Define;
 			sourceTree = "<group>";
