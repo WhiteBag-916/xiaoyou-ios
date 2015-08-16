@@ -753,10 +753,6 @@
 			children = (
 				3321B14A1B7993650020AD80 /* contacts */,
 				20DD4B361B734B49007C352C /* Common */,
-				20DD4B3B1B734B49007C352C /* Feed */,
-				20DD4B3C1B734B49007C352C /* Login */,
-				20DD4B3D1B734B49007C352C /* Message */,
-				20DD4B3E1B734B49007C352C /* Profile */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -797,34 +793,6 @@
 				20DD4B3A1B734B49007C352C /* message_tab_red@3x.png */,
 			);
 			path = Common;
-			sourceTree = "<group>";
-		};
-		20DD4B3B1B734B49007C352C /* Feed */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Feed;
-			sourceTree = "<group>";
-		};
-		20DD4B3C1B734B49007C352C /* Login */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Login;
-			sourceTree = "<group>";
-		};
-		20DD4B3D1B734B49007C352C /* Message */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Message;
-			sourceTree = "<group>";
-		};
-		20DD4B3E1B734B49007C352C /* Profile */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Profile;
 			sourceTree = "<group>";
 		};
 		20E122181B705D4E00F90BD3 /* Feed */ = {
