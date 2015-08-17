@@ -11,6 +11,7 @@
 #import "YLog.h"
 #import "ChatViewController.h"
 #import "Masonry.h"
+#import "YColor+Ext.h"
 
 #define kRowHeight                     60
 #define kHeadWidthAndHeight            40
@@ -19,7 +20,7 @@
 #define kHeadCornerRadius              20
 #define kPaddingDistance               10
 #define kLabelHeightDistacnce          14
-#define kBadgeWidthDistance            30
+#define kBadgeWidthDistance            21
 
 @interface MessageTableView ()<UITableViewDataSource,UITableViewDelegate>
 
@@ -92,8 +93,9 @@
     }];
     //消息数
     _badgeNumberLabel = [[UILabel alloc] init];
-    _badgeNumberLabel.textAlignment = NSTextAlignmentRight;
-    _badgeNumberLabel.backgroundColor = [UIColor redColor];
+    _badgeNumberLabel.text = @"8";
+    _badgeNumberLabel.textAlignment = NSTextAlignmentCenter;
+    _badgeNumberLabel.backgroundColor = [UIColor hexChangeFloat:@"258f74"];
     [backView addSubview:_badgeNumberLabel];
     [_badgeNumberLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.bottom.mas_equalTo(-kPaddingDistance);

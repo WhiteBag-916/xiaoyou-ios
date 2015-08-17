@@ -44,7 +44,7 @@
     BOOL isAutoLogin = [[EaseMob sharedInstance].chatManager isAutoLoginEnabled];
     if (!isAutoLogin)
     {
-        [[EaseMob sharedInstance].chatManager asyncLoginWithUsername:@"yinhui" password:@"123123" completion:^(NSDictionary *loginInfo, EMError *error) {
+        [[EaseMob sharedInstance].chatManager asyncLoginWithUsername:@"123321" password:@"123123" completion:^(NSDictionary *loginInfo, EMError *error) {
             if (!error && loginInfo) {
                 YLogD(@"登陆成功");
                 [[EaseMob sharedInstance].chatManager setIsAutoLoginEnabled:YES];
