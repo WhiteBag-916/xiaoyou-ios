@@ -8,7 +8,7 @@
 
 #import "FeedListTableView.h"
 #import "FeedListTableViewCell.h"
-
+#import "FeedListViewController.h"
 @interface FeedListTableView ()
 <UITableViewDataSource
 ,UITableViewDelegate>
@@ -56,8 +56,6 @@
     
     return cell;
 }
-
-#pragma mark - UITableViewDelegate
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     //计算高度
@@ -66,17 +64,12 @@
     }];
     return height;
 }
+#pragma mark - UITableViewDelegate
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    [_parent goToDetail:@"233"];
 }
 
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect {
-    // Drawing code
-}
-*/
 
 @end

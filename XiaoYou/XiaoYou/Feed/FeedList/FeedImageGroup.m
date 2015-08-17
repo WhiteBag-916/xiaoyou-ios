@@ -79,9 +79,9 @@
 - (void)updateWithImgs:(NSArray *)smallPics bigPics:(NSArray *)bigPics {
     _smallImgs = [NSArray arrayWithArray:smallPics];
     _bigImgs = [NSArray arrayWithArray:bigPics];
-    if (smallPics.count == 0) {
+    if (_smallImgs.count == 0) {
         [self moveToLine:-1];
-    } else if (smallPics.count == 1) {
+    } else if (_smallImgs.count == 1) {
         [self specialForOneImage:[smallPics objectAtIndex:0]];
     } else {
         [self normalForImages:smallPics];
@@ -115,22 +115,23 @@
     }];
     img.contentMode = UIViewContentModeScaleAspectFill;
     
-    for (int i = 0; i < 3; i++) {
-        [_contentView.subviews[i] setHidden:false];
-    }
-    for (int i = 3; i < 9; i++) {
+    for (int i = 0; i < 9; i++) {
         [_contentView.subviews[i] setHidden:true];
-        [_contentView.subviews[i] setTag:KIMGTAG - i];
+        [_contentView.subviews[i] setTag:KIMGTAG - i-1];
     }
-    if (index == 1) {
-        for (int i = 6; i < 9; i++) {
-            [_contentView.subviews[i] setHidden:false];
-            [_contentView.subviews[i] setTag:KIMGTAG + i-3];
-        }
-    } else {
-        for (int i = 3; i < 9; i++) {
+    if (index != 1) {
+        for (int i = 0; i < _smallImgs.count; i++) {
             [_contentView.subviews[i] setHidden:false];
             [_contentView.subviews[i] setTag:KIMGTAG + i];
+        }
+    } else {
+        for (int i = 0; i < 3; i++) {
+            [_contentView.subviews[i] setHidden:false];
+            [_contentView.subviews[i] setTag:KIMGTAG + i];
+        }
+        for (int i = 6; i < _smallImgs.count + 3; i++) {
+            [_contentView.subviews[i] setHidden:false];
+            [_contentView.subviews[i] setTag:KIMGTAG + i-3];
         }
     }
     [_contentView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -150,6 +151,9 @@
 
 - (void)choosePic:(UITapGestureRecognizer *)tap {
     int index = (int)tap.view.tag - KIMGTAG;
+    if (index < 0 || index >= _smallImgs.count) {
+        return;
+    }
     SDPhotoBrowser *browser = [[SDPhotoBrowser alloc] init];
     
     browser.sourceImagesContainerView = _contentView;

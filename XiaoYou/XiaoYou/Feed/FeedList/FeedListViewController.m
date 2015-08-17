@@ -14,6 +14,7 @@
 #import "AssociationsListViewController.h"
 #import "YNotificationDefine.h"
 #import "BBBadgeBarButtonItem.h"
+#import "FeedDetailViewController.h"
 
 @interface FeedListViewController ()
 
@@ -46,10 +47,7 @@
 - (void)viewDidAppear:(BOOL)animated {
     [_feedListTableView loadData:@[@"",@""]];
 }
--(void)viewWillLayoutSubviews
-{
-    self.hidesBottomBarWhenPushed = NO;
-}
+
 - (void)viewWillDisappear:(BOOL)animated
 {
     [SlideNavigationController sharedInstance].enableSwipeGesture = NO;
@@ -76,10 +74,10 @@
     //tableview
     _feedListTableView = [[FeedListTableView alloc] init];
     [self.view addSubview:_feedListTableView];
+    _feedListTableView.parent = self;
     
     [_feedListTableView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.left.right.mas_equalTo(self.view);
-        make.bottom.equalTo(self.view).offset(-KTabBarheight);
+        make.edges.mas_equalTo(self.view);
     }];
     UIButton *btn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 15, 15)];
     [btn setBackgroundImage:[UIImage imageNamed:@"menu"] forState:UIControlStateNormal];
@@ -106,6 +104,11 @@
     
 }
 
+- (void)goToDetail:(NSString *)feedId {
+    FeedDetailViewController *feedDetailViewController = [[FeedDetailViewController alloc] initWithFeedId:feedId];
+    self.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:feedDetailViewController animated:YES];
+}
 
 - (void)toAssociationsList {
     AssociationsListViewController *associationsListViewController = [[AssociationsListViewController alloc] init];

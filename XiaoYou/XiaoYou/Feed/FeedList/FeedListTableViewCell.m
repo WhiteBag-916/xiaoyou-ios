@@ -100,7 +100,7 @@ NSString *const kOrganizationFeedListTableViewCell = @"OrganizationFeedListTable
     _contactHeadImageView.clipsToBounds = true;
     _contactHeadImageView.backgroundColor = [UIColor redColor];
     
-    _contactNameLabel = [YUtils initLabel:CONTENT_FONT(15)
+    _contactNameLabel = [YUtils initLabel:CONTENT_FONT(14)
                                                     color:[UIColor blackColor]
                                                      text:@"人名"
                                                     frame:CGRectZero
@@ -111,7 +111,7 @@ NSString *const kOrganizationFeedListTableViewCell = @"OrganizationFeedListTable
         make.centerY.equalTo(_contactHeadImageView);
     }];
     
-    _timeLabel = [YUtils initLabel:CONTENT_FONT(10) color:[UIColor blackColor] text:@"刚刚" frame:CGRectZero alignment:NSTextAlignmentLeft];
+    _timeLabel = [YUtils initLabel:CONTENT_FONT(11) color:[UIColor blackColor] text:@"刚刚" frame:CGRectZero alignment:NSTextAlignmentLeft];
     [_topView addSubview:_timeLabel];
     [_timeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(_contactNameLabel.mas_right).offset(KTIMEMARGIN_LEFT);
@@ -133,7 +133,7 @@ NSString *const kOrganizationFeedListTableViewCell = @"OrganizationFeedListTable
 
 
 - (void)initMiddleView {
-    _contentLabel = [YUtils initLabel:CONTENT_FONT(13)
+    _contentLabel = [YUtils initLabel:CONTENT_FONT(12)
                                 color:[UIColor blackColor]
                                  text:@"o be, or not to be —that is the question, Whether'tis nobler in the mind to suffer. The slings and arrows of outrageous fortune Or to take arms against a sea of troubles, And by opposing end them. To die —to sleep"
                                 frame:CGRectZero
@@ -168,7 +168,7 @@ NSString *const kOrganizationFeedListTableViewCell = @"OrganizationFeedListTable
             make.centerX.equalTo(_contactHeadImageView);
         }];
         
-        _tagLabel = [YUtils initLabel:CONTENT_FONT(10) color:[UIColor blackColor] text:@"留学" frame:CGRectZero alignment:NSTextAlignmentLeft];
+        _tagLabel = [YUtils initLabel:CONTENT_FONT(11) color:[UIColor blackColor] text:@"留学" frame:CGRectZero alignment:NSTextAlignmentLeft];
         [self.contentView addSubview:_tagLabel];
         [_tagLabel mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.equalTo(_contentLabel);
