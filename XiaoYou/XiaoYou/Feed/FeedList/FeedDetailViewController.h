@@ -10,4 +10,6 @@
 
 @interface FeedDetailViewController : YViewController
 
+- (id)initWithFeedId:(NSString *)feedId;
+
 @end

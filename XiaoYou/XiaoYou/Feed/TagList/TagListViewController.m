@@ -60,7 +60,7 @@
     line.backgroundColor = KCOLORWHITE_C5CACF;
     
     
-    _notifyCount = [YUtils initLabel:CONTENT_FONT(12) color:[UIColor whiteColor] text:@"99" frame:CGRectZero alignment:NSTextAlignmentCenter];
+    _notifyCount = [YUtils initLabel:CONTENT_FONT(11) color:[UIColor whiteColor] text:@"99" frame:CGRectZero alignment:NSTextAlignmentCenter];
     [_notifyView addSubview:_notifyCount];
     [_notifyCount mas_makeConstraints:^(MASConstraintMaker *make) {
         make.bottom.equalTo(_notifyView).offset(-KNOTIFYCOUNTMARGIN_DOWN);
@@ -71,7 +71,7 @@
     _notifyCount.layer.cornerRadius = 3;
     _notifyCount.clipsToBounds = true;
     
-    UILabel *infoLabel = [YUtils initLabel:CONTENT_FONT(15) color:[UIColor whiteColor] text:@"人脉新提醒" frame:CGRectZero alignment:NSTextAlignmentLeft];
+    UILabel *infoLabel = [YUtils initLabel:CONTENT_FONT(13) color:[UIColor whiteColor] text:@"人脉新提醒" frame:CGRectZero alignment:NSTextAlignmentLeft];
     [_notifyView addSubview:infoLabel];
     [infoLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(_notifyCount.mas_right).offset(KNOTIFYCOUNTMARGIN_RIGHT);
@@ -138,7 +138,7 @@
     }];
     icon.image = [UIImage imageNamed:@"society"];
     
-    UILabel *hint = [YUtils initLabel:CONTENT_FONT(15) color:KCOLORWHITE text:@"社团总汇（一键加入）" frame:CGRectZero alignment:NSTextAlignmentCenter];
+    UILabel *hint = [YUtils initLabel:CONTENT_FONT(12) color:KCOLORWHITE text:@"社团总汇（一键加入）" frame:CGRectZero alignment:NSTextAlignmentCenter];
     [_bottomView addSubview:hint];
     [hint mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.right.equalTo(_bottomView);

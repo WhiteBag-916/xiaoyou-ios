@@ -10,4 +10,6 @@
 
 @interface FeedListViewController : YViewController
 
+- (void)goToDetail:(NSString *)feedId;
+
 @end
