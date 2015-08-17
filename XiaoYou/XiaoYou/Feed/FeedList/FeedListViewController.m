@@ -66,7 +66,7 @@
     }
     
     //switch
-    _commonSwitchView = [[CommonSwitchView alloc] initWithFrame:CGRectMake(0, 0, SCALE_NUM(119), 25) textArray:@[@"feed", @"contact"]];
+    _commonSwitchView = [[CommonSwitchView alloc] initWithFrame:CGRectMake(0, 0, 119, 24) textArray:@[@"feed", @"contact"]];
     [_commonSwitchView changedType:^(CommonSwitchType type) {
         [self changeSwitchView:type];
     }];

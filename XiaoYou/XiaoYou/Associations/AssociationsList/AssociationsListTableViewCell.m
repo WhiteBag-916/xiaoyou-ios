@@ -19,8 +19,8 @@ NSString *const kAssociationsListTableViewCell = @"AssociationsListTableViewCell
 #define K_CONTENT_R     SCALE_NUM(-6)    //右间距
 #define K_CONTENT_M     SCALE_NUM(16)   //中间间距
 
-#define K_TAG_IMG_W     SCALE_NUM(12)   //tag图片宽度
-#define K_TAG_IMG_H     SCALE_NUM(15)   //tag图片高度
+#define K_TAG_IMG_W     SCALE_NUM(11)   //tag图片宽度
+#define K_TAG_IMG_H     SCALE_NUM(14)   //tag图片高度
 #define K_TAG_TXT_L     SCALE_NUM(10)   //tag文字左间距
 
 #define K_STAR_L        SCALE_NUM(251)  //星级左间距
@@ -92,7 +92,7 @@ NSString *const kAssociationsListTableViewCell = @"AssociationsListTableViewCell
     }];
     
     //4
-    UIImageView *tagImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"common_tag"]];
+    UIImageView *tagImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"tag-green"]];
     [self.contentView addSubview:tagImageView];
     [tagImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(_nameLabel.mas_left);

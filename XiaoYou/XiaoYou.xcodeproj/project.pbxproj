@@ -37,8 +37,6 @@
 		20E18DB91B808E42005B75EE /* common_search@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 20E18D8F1B808E42005B75EE /* common_search@3x.png */; };
 		20E18DBA1B808E42005B75EE /* common_star@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 20E18D901B808E42005B75EE /* common_star@2x.png */; };
 		20E18DBB1B808E42005B75EE /* common_star@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 20E18D911B808E42005B75EE /* common_star@3x.png */; };
-		20E18DBC1B808E42005B75EE /* common_tag@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 20E18D921B808E42005B75EE /* common_tag@2x.png */; };
-		20E18DBD1B808E42005B75EE /* common_tag@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 20E18D931B808E42005B75EE /* common_tag@3x.png */; };
 		20E18DBE1B808E42005B75EE /* message_tab_background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 20E18D941B808E42005B75EE /* message_tab_background@2x.png */; };
 		20E18DBF1B808E42005B75EE /* message_tab_background@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 20E18D951B808E42005B75EE /* message_tab_background@3x.png */; };
 		20E18DC01B808E42005B75EE /* message_tab_green@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 20E18D961B808E42005B75EE /* message_tab_green@2x.png */; };
@@ -379,8 +377,6 @@
 		20E18D8F1B808E42005B75EE /* common_search@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "common_search@3x.png"; sourceTree = "<group>"; };
 		20E18D901B808E42005B75EE /* common_star@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "common_star@2x.png"; sourceTree = "<group>"; };
 		20E18D911B808E42005B75EE /* common_star@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "common_star@3x.png"; sourceTree = "<group>"; };
-		20E18D921B808E42005B75EE /* common_tag@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "common_tag@2x.png"; sourceTree = "<group>"; };
-		20E18D931B808E42005B75EE /* common_tag@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "common_tag@3x.png"; sourceTree = "<group>"; };
 		20E18D941B808E42005B75EE /* message_tab_background@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "message_tab_background@2x.png"; sourceTree = "<group>"; };
 		20E18D951B808E42005B75EE /* message_tab_background@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "message_tab_background@3x.png"; sourceTree = "<group>"; };
 		20E18D961B808E42005B75EE /* message_tab_green@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "message_tab_green@2x.png"; sourceTree = "<group>"; };
@@ -1097,8 +1093,6 @@
 				20E18D8F1B808E42005B75EE /* common_search@3x.png */,
 				20E18D901B808E42005B75EE /* common_star@2x.png */,
 				20E18D911B808E42005B75EE /* common_star@3x.png */,
-				20E18D921B808E42005B75EE /* common_tag@2x.png */,
-				20E18D931B808E42005B75EE /* common_tag@3x.png */,
 				20E18D941B808E42005B75EE /* message_tab_background@2x.png */,
 				20E18D951B808E42005B75EE /* message_tab_background@3x.png */,
 				20E18D961B808E42005B75EE /* message_tab_green@2x.png */,
@@ -2053,7 +2047,6 @@
 				3335C3821B8178E8007DEFD4 /* VoiceSearchFeedback012@2x.png in Resources */,
 				3335C3711B8178E8007DEFD4 /* VoiceSearchFeedback004.png in Resources */,
 				20E18DC41B808E42005B75EE /* comment@2x.png in Resources */,
-				20E18DBC1B808E42005B75EE /* common_tag@2x.png in Resources */,
 				333122921B806EDC00D3D032 /* imageDownloadFail@2x.png in Resources */,
 				20E18DD71B808E42005B75EE /* society@3x.png in Resources */,
 				3335C3721B8178E8007DEFD4 /* VoiceSearchFeedback004@2x.png in Resources */,
@@ -2202,7 +2195,6 @@
 				20E18DBA1B808E42005B75EE /* common_star@2x.png in Resources */,
 				333122CC1B806EDC00D3D032 /* chat_sender_audio_playing_002@2x.png in Resources */,
 				333122A61B806EDC00D3D032 /* chatBar_recordSelectedBg.png in Resources */,
-				20E18DBD1B808E42005B75EE /* common_tag@3x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
