@@ -16,11 +16,18 @@ NSString *const kAssociationsListTableViewCell = @"AssociationsListTableViewCell
 #define K_HEADIMG_WH    SCALE_NUM(30)   //头像宽高
 
 #define K_CONTENT_L     SCALE_NUM(22)   //内容左间距
-#define K_CONTENT_R     SCALE_NUM(6)    //右间距
+#define K_CONTENT_R     SCALE_NUM(-6)    //右间距
+#define K_CONTENT_M     SCALE_NUM(16)   //中间间距
+
+#define K_TAG_IMG_W     SCALE_NUM(12)   //tag图片宽度
+#define K_TAG_IMG_H     SCALE_NUM(15)   //tag图片高度
+#define K_TAG_TXT_L     SCALE_NUM(10)   //tag文字左间距
 
 #define K_STAR_L        SCALE_NUM(251)  //星级左间距
 #define K_STAR_H        SCALE_NUM(13)   //星级高度
 #define K_STAR_W        SCALE_NUM(12)   //星级宽度
+
+#define K_KEY_B         SCALE_NUM(-8)    //关键字距底下
 
 @interface AssociationsListTableViewCell ()
 
@@ -63,7 +70,7 @@ NSString *const kAssociationsListTableViewCell = @"AssociationsListTableViewCell
     [self.contentView addSubview:_starView];
     [_starView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.mas_equalTo(K_STAR_L);
-        make.right.mas_equalTo(-K_CONTENT_R);
+        make.right.mas_equalTo(K_CONTENT_R);
         make.top.equalTo(_headImageView.mas_top);
         make.height.mas_equalTo(K_STAR_H);
     }];
@@ -79,23 +86,46 @@ NSString *const kAssociationsListTableViewCell = @"AssociationsListTableViewCell
     [_nameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(_headImageView.mas_right).offset(K_CONTENT_L);
         make.top.equalTo(_headImageView.mas_top);
-        make.right.equalTo(_starView.mas_left).offset(-K_CONTENT_R);
+        make.right.equalTo(_starView.mas_left).offset(K_CONTENT_R);
         make.height.equalTo(_starView.mas_height);
     }];
     
     //4
-//    UIImageView *tagImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"common_tag"]];
-//    [self.contentView addSubview:tagImageView];
-//    [tagImageView mas_makeConstraints:^(MASConstraintMaker *make) {
-//        make.left.equalTo(_nameLabel.mas_left);
-//        make.top.equalTo(_headImageView.mas_top);
-//        make.right.equalTo(_starView.mas_left).offset(-K_CONTENT_R);
-//        make.height.equalTo(_starView.mas_height);
-//    }];
-//    
+    UIImageView *tagImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"common_tag"]];
+    [self.contentView addSubview:tagImageView];
+    [tagImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(_nameLabel.mas_left);
+        make.top.equalTo(_nameLabel.mas_bottom).offset(K_CONTENT_M);
+        make.height.mas_equalTo(K_TAG_IMG_H);
+        make.width.mas_equalTo(K_TAG_IMG_W);
+    }];
+    
     //5
+    _typeLabel = [YUtils initLabel:CONTENT_FONT(10)
+                             color:[UIColor blackColor]
+                              text:@"体育体育体育体育体育体育体育体育体育体育体育体育体育体育体育体育"
+                             frame:CGRectZero
+                         alignment:NSTextAlignmentLeft];
+    [self.contentView addSubview:_typeLabel];
+    [_typeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(tagImageView.mas_right).offset(K_TAG_TXT_L);
+        make.right.mas_equalTo(K_CONTENT_R);
+        make.centerY.equalTo(tagImageView.mas_centerY);
+    }];
     
     //6
+    _keywordsLabel = [YUtils initLabel:CONTENT_FONT(10)
+                             color:KCOLORGREEN_455A64
+                              text:@"keyword：零基础也没事、球场门票优惠keyword：零基础也没事、球场门票优惠keyword：零基础也没事、球场门票优惠keyword：零基础也没事、球场门票优惠"
+                             frame:CGRectZero
+                         alignment:NSTextAlignmentLeft];
+    [self.contentView addSubview:_keywordsLabel];
+    [_keywordsLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(_nameLabel.mas_left);
+        make.top.equalTo(tagImageView.mas_bottom).offset(K_CONTENT_M);
+        make.right.mas_equalTo(K_CONTENT_R);
+        make.bottom.mas_equalTo(K_KEY_B);
+    }];
 }
 
 - (void)initStarView

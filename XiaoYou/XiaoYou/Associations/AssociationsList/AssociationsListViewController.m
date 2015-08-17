@@ -22,6 +22,7 @@
     // Do any additional setup after loading the view.
     
     [self showCustomNavigationBackButton];
+    [self initRightBar];
     self.title = @"社团总汇";
     
     //tableview
@@ -33,14 +34,41 @@
     }];
 }
 
-//- (void)viewWillAppear:(BOOL)animated
-//{
-//    [super viewWillAppear:animated navigationBarHidden:NO tabBarHidden:YES];
-//}
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated navigationBarHidden:NO tabBarHidden:YES];
+}
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (void)initRightBar {
+    //right barbutton view
+    UIView * view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 60, 50)];
+    
+    UIButton *filterButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 5, 25, 40)];
+    [filterButton setImage:[UIImage imageNamed:@"common_filter"] forState:UIControlStateNormal];
+    [filterButton setImage:[UIImage imageNamed:@"common_filter"] forState:UIControlStateHighlighted];
+    [filterButton addTarget:self
+                  action:@selector(filterBtnAction)
+        forControlEvents:UIControlEventTouchUpInside];
+    [view addSubview:filterButton];
+    
+    UIButton * searchBtn = [[UIButton alloc] initWithFrame:CGRectMake(35, 5, 25, 40)];
+    [searchBtn setImage:[UIImage imageNamed:@"common_search"] forState:UIControlStateNormal];
+    [searchBtn setImage:[UIImage imageNamed:@"common_search"] forState:UIControlStateHighlighted];
+    [searchBtn addTarget:self
+                  action:@selector(searchAction)
+        forControlEvents:UIControlEventTouchUpInside];
+    [view addSubview:searchBtn];
+    
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:view];
+}
+
+//删选
+- (void)filterBtnAction {
+    
+}
+
+//搜索
+- (void)searchAction {
+    
 }
 
 /*

@@ -50,6 +50,7 @@
     if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0)
     {
         self.edgesForExtendedLayout = UIRectEdgeNone;
+        self.navigationController.navigationBar.translucent = NO;
     }
     
     //title
@@ -141,7 +142,7 @@
 - (void)showCustomNavigationBackButton
 {
     //导航栏的左边按钮
-    _navigationLeftButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 17, 26)];
+    _navigationLeftButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 9, 14)];
     [_navigationLeftButton setImage:[UIImage imageNamed:@"common_back"] forState:UIControlStateNormal];
     [_navigationLeftButton setImage:[UIImage imageNamed:@"common_back"] forState:UIControlStateHighlighted];
     [_navigationLeftButton addTarget:self action:@selector(onNavigationLeftButtonClicked:) forControlEvents:UIControlEventTouchUpInside];

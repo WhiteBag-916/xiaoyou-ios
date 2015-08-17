@@ -109,6 +109,7 @@
 
 - (void)toAssociationsList {
     AssociationsListViewController *associationsListViewController = [[AssociationsListViewController alloc] init];
+    self.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:associationsListViewController animated:YES];
 }
 - (void)openShare:(NSNotification *) notification{
