@@ -55,26 +55,26 @@
     
     //消息
     UITabBarItem *messageItem = [[UITabBarItem alloc] initWithTitle:@"消息"
-                                                              image:[UIImage imageNamed:@"chat"]
+                                                              image:[UIImage imageNamed:@"toolbar-chat"]
                                                                 tag:kTag_TabBar_Message];
-    messageItem.selectedImage = [[UIImage imageNamed:@"chat-chosen"]
+    messageItem.selectedImage = [[UIImage imageNamed:@"toolbar-chat-chosen"]
                                  imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     messageViewCotroller.tabBarItem = messageItem;
     
     //Feed
     UITabBarItem *feedListItem = [[UITabBarItem alloc] initWithTitle:@"人脉"
-                                                               image:[UIImage imageNamed:@"contact"]
+                                                               image:[UIImage imageNamed:@"toolbar-contact"]
                                                                  tag:kTag_TabBar_FeedList];
-    feedListItem.selectedImage = [[UIImage imageNamed:@"contact-chosen"]
+    feedListItem.selectedImage = [[UIImage imageNamed:@"toolbar-contact-chosen"]
                                   imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     feedListViewCotroller.tabBarItem = feedListItem;
     
     
     //我
     UITabBarItem *profileItem = [[UITabBarItem alloc] initWithTitle:@"我的"
-                                                         image:[UIImage imageNamed:@"mine"]
+                                                         image:[UIImage imageNamed:@"toolbar-mine"]
                                                            tag:kTag_TabBar_Profile];
-    profileItem.selectedImage = [[UIImage imageNamed:@"mine-chosen"]
+    profileItem.selectedImage = [[UIImage imageNamed:@"toolbar-mine-chosen"]
                             imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     profileViewCotroller.tabBarItem = profileItem;
     
