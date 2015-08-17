@@ -7,7 +7,6 @@
 //
 
 #import "FeedDetailTableView.h"
-#import "CommentTableViewCell.h"
 #import "FeedListTableViewCell.h"
 @interface FeedDetailTableView()<UITableViewDataSource, UITableViewDelegate>
 
@@ -21,7 +20,7 @@
 - (id)init {
     self = [super init];
     if (self) {
-        [self registerClass:[CommentTableViewCell class] forCellReuseIdentifier:KCommentTableViewCell];
+        [self registerClass:[FeedListTableViewCell class] forCellReuseIdentifier:KCommentTableViewCell];
         [self registerClass:[FeedListTableViewCell class] forCellReuseIdentifier:kFeedDetailTableViewCell];
         self.dataSource = self;
         self.delegate = self;
@@ -53,16 +52,15 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    FeedListTableViewCell *cell;
     if (indexPath.row == 0) {
-        FeedListTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kFeedDetailTableViewCell];
+        cell = [tableView dequeueReusableCellWithIdentifier:kFeedDetailTableViewCell];
         [cell setData];
-        return cell;
     } else {
-        CommentTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:KCommentTableViewCell];
+        cell = [tableView dequeueReusableCellWithIdentifier:KCommentTableViewCell];
         [cell setData];
-        return cell;
     }
-    
+    return cell;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -73,7 +71,7 @@
             [cell setData];
         }];
     } else {
-        height = [tableView fd_heightForCellWithIdentifier:KCommentTableViewCell cacheByIndexPath:indexPath configuration:^(CommentTableViewCell *cell) {
+        height = [tableView fd_heightForCellWithIdentifier:KCommentTableViewCell cacheByIndexPath:indexPath configuration:^(FeedListTableViewCell *cell) {
             [cell setData];
         }];
     }

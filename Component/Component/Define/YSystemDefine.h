@@ -40,6 +40,11 @@ static const NSInteger kLayoutPriorityDefaultVeryHigh = 999;
 #define kConversationListNum    5
 #define kPersonPageNum           9
 
-
+typedef NS_ENUM(int, FeedCellType) {
+    FeedListType            = 1,
+    FeedDetailType          = 2,
+    FeedCommentType         = 3,
+    FeedOrganizationType    = 4,
+};
 
 #endif

@@ -9,7 +9,6 @@
 #import "FeedDetailViewController.h"
 #import "FeedDetailTableView.h"
 #import "Masonry.h"
-#import "CommentTableViewCell.h"
 
 #define KBOTTOMHEIGHT SCALE_NUM(30)
 @interface FeedDetailViewController()

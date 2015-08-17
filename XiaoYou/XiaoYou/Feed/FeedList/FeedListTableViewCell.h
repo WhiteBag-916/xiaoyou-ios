@@ -10,6 +10,7 @@
 
 extern NSString *const kFeedListTableViewCell;
 extern NSString *const kFeedDetailTableViewCell;
+extern NSString *const KCommentTableViewCell;
 extern NSString *const kOrganizationFeedListTableViewCell;
 
 @interface FeedListTableViewCell : UITableViewCell
