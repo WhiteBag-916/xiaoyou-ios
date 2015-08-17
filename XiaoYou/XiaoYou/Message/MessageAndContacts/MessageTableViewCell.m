@@ -16,7 +16,7 @@
 #define kHeadCornerRadius              20
 #define kPaddingDistance               10
 #define kLabelHeightDistacnce          14
-#define kBadgeWidthDistance            30
+#define kBadgeWidthDistance            21
 
 NSString *const kMessageTableViewCell = @"MessageTableViewCellId";
 
@@ -59,8 +59,8 @@ NSString *const kMessageTableViewCell = @"MessageTableViewCellId";
         }];
         //消息数
         _badgeNumberLabel = [[UILabel alloc] init];
-        _badgeNumberLabel.textAlignment = NSTextAlignmentRight;
-        _badgeNumberLabel.backgroundColor = [UIColor redColor];
+        _badgeNumberLabel.textAlignment = NSTextAlignmentCenter;
+        _badgeNumberLabel.backgroundColor = [UIColor hexChangeFloat:@"258f74"];
         [self.contentView addSubview:_badgeNumberLabel];
         [_badgeNumberLabel mas_makeConstraints:^(MASConstraintMaker *make) {
             make.bottom.mas_equalTo(-kPaddingDistance);
@@ -75,7 +75,7 @@ NSString *const kMessageTableViewCell = @"MessageTableViewCellId";
         [self.contentView addSubview:_timeLabel];
         [_timeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
             make.top.mas_equalTo(kPaddingDistance);
-            make.right.mas_equalTo(-kPaddingDistance);
+            make.right.mas_equalTo(-kPaddingDistance); 
             make.width.mas_equalTo(kTimeLabelWidth);
             make.height.mas_equalTo(kLabelHeightDistacnce);
         }];
