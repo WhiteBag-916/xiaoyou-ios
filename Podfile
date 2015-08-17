@@ -6,7 +6,6 @@ target :XiaoYou do
 platform :ios, '7.0'
 pod 'BBBadgeBarButtonItem'
 pod 'iOS-Slide-Menu', '1.4.5'
-pod 'SIAlertView'
 pod 'SDWebImage'
 pod 'ASIHTTPRequest', '~>1.8.2'
 pod 'FMDB'
