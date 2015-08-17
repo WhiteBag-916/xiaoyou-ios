@@ -1205,7 +1205,7 @@
             voice.duration = aDuration;
             [weakSelf sendAudioMessage:voice];
         }else {
-            [weakSelf showHudInView:self.view hint:NSLocalizedString(@"media.timeShort", @"The recording time is too short")];
+            [weakSelf showHudInView:self.view hint:NSLocalizedString(@"录音时间过短", @"The recording time is too short")];
             weakSelf.chatToolBar.recordButton.enabled = NO;
             dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
                 [weakSelf hideHud];

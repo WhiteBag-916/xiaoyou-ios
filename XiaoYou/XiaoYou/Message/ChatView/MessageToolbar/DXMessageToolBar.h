@@ -23,8 +23,8 @@
 #define kHorizontalPadding 8
 #define kVerticalPadding 5
 
-#define kTouchToRecord NSLocalizedString(@"message.toolBar.record.touch", @"hold down to talk")
-#define kTouchToFinish NSLocalizedString(@"message.toolBar.record.send", @"loosen to send")
+#define kTouchToRecord NSLocalizedString(@"按住|说话", @"hold down to talk")
+#define kTouchToFinish NSLocalizedString(@"松开|结束", @"loosen to send")
 
 
 /**

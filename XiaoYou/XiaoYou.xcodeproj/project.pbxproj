@@ -297,6 +297,8 @@
 		6592DCDE1B806A9B004CD118 /* MessageTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6592DCCC1B806A9B004CD118 /* MessageTableViewCell.m */; };
 		6592DCDF1B806A9B004CD118 /* XYMessageAndContactsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6592DCCE1B806A9B004CD118 /* XYMessageAndContactsViewController.m */; };
 		6592DCE01B806A9B004CD118 /* XYSendMessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6592DCD11B806A9B004CD118 /* XYSendMessageViewController.m */; };
+		65BCCAEB1B81A72500266A18 /* FeedDetailTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 65BCCAEA1B81A72500266A18 /* FeedDetailTableView.m */; };
+		65BCCAEE1B81A75900266A18 /* CommentTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 65BCCAED1B81A75900266A18 /* CommentTableViewCell.m */; };
 		65BCF1E11B818441003457F4 /* FeedDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 65BCF1E01B818441003457F4 /* FeedDetailViewController.m */; };
 /* End PBXBuildFile section */
 
@@ -752,6 +754,10 @@
 		6592DCCE1B806A9B004CD118 /* XYMessageAndContactsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYMessageAndContactsViewController.m; sourceTree = "<group>"; };
 		6592DCD01B806A9B004CD118 /* XYSendMessageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYSendMessageViewController.h; sourceTree = "<group>"; };
 		6592DCD11B806A9B004CD118 /* XYSendMessageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYSendMessageViewController.m; sourceTree = "<group>"; };
+		65BCCAE91B81A72500266A18 /* FeedDetailTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FeedDetailTableView.h; path = XiaoYou/Feed/FeedList/FeedDetailTableView.h; sourceTree = SOURCE_ROOT; };
+		65BCCAEA1B81A72500266A18 /* FeedDetailTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FeedDetailTableView.m; path = XiaoYou/Feed/FeedList/FeedDetailTableView.m; sourceTree = SOURCE_ROOT; };
+		65BCCAEC1B81A75900266A18 /* CommentTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CommentTableViewCell.h; path = XiaoYou/Feed/FeedList/CommentTableViewCell.h; sourceTree = SOURCE_ROOT; };
+		65BCCAED1B81A75900266A18 /* CommentTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CommentTableViewCell.m; path = XiaoYou/Feed/FeedList/CommentTableViewCell.m; sourceTree = SOURCE_ROOT; };
 		65BCF1DF1B818441003457F4 /* FeedDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FeedDetailViewController.h; path = XiaoYou/Feed/FeedList/FeedDetailViewController.h; sourceTree = SOURCE_ROOT; };
 		65BCF1E01B818441003457F4 /* FeedDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FeedDetailViewController.m; path = XiaoYou/Feed/FeedList/FeedDetailViewController.m; sourceTree = SOURCE_ROOT; };
 		77B574BED9D4FF3F4BFAA9FE /* libPods-XiaoYou.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-XiaoYou.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -970,6 +976,10 @@
 			children = (
 				65BCF1DF1B818441003457F4 /* FeedDetailViewController.h */,
 				65BCF1E01B818441003457F4 /* FeedDetailViewController.m */,
+				65BCCAE91B81A72500266A18 /* FeedDetailTableView.h */,
+				65BCCAEA1B81A72500266A18 /* FeedDetailTableView.m */,
+				65BCCAEC1B81A75900266A18 /* CommentTableViewCell.h */,
+				65BCCAED1B81A75900266A18 /* CommentTableViewCell.m */,
 			);
 			path = FeedDetail;
 			sourceTree = "<group>";
@@ -2202,6 +2212,7 @@
 				6592DCD61B806A9B004CD118 /* FriendApplyTableViewCell.m in Sources */,
 				6592DCD21B806A9B004CD118 /* XYChoicePersonViewController.m in Sources */,
 				3331223E1B806EDB00D3D032 /* MessageModelManager.m in Sources */,
+				65BCCAEE1B81A75900266A18 /* CommentTableViewCell.m in Sources */,
 				3331225C1B806EDB00D3D032 /* MKAnnotationView+EMWebCache.m in Sources */,
 				3331223B1B806EDB00D3D032 /* EMChatViewBaseCell.m in Sources */,
 				333122401B806EDB00D3D032 /* EMAudioPlayerUtil.m in Sources */,
@@ -2300,6 +2311,7 @@
 				3331227C1B806EDB00D3D032 /* EMVoiceConverter.mm in Sources */,
 				333122361B806EDB00D3D032 /* EMChatImageBubbleView.m in Sources */,
 				6592DCDD1B806A9B004CD118 /* MessageTableView.m in Sources */,
+				65BCCAEB1B81A72500266A18 /* FeedDetailTableView.m in Sources */,
 				333122771B806EDB00D3D032 /* THProgressView.m in Sources */,
 				65BCF1E11B818441003457F4 /* FeedDetailViewController.m in Sources */,
 				333122691B806EDB00D3D032 /* PSTCollectionViewData.m in Sources */,

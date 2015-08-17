@@ -11,6 +11,7 @@
 #import "YSystemDefine.h"
 #import "UIImageView+WebCache.h"
 #import "YUrlDefine.h"
+#import "ConnectTag.h"
 
 #define kHeadWidthAndHeight            40
 #define kNameLabelWidth                80
@@ -27,7 +28,7 @@ NSString *const kContactsTableViewCell = @"ContactsTableViewCell";
 @property (strong, nonatomic)  UIImageView *flagImageView;
 @property (strong, nonatomic)  UILabel *nameLabel;
 @property (strong, nonatomic)  UILabel *flagLabel;
-
+@property (strong, nonatomic)  ConnectTag * connectTag;
 
 @end
 
@@ -77,6 +78,14 @@ NSString *const kContactsTableViewCell = @"ContactsTableViewCell";
             make.right.mas_equalTo(-kPaddingDistance);
             make.height.mas_equalTo(kLabelHeightDistacnce);
         }];
+        
+        _connectTag = [[ConnectTag alloc] init];
+        [self.contentView addSubview:_connectTag];
+        [_connectTag mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.right.mas_equalTo(-kPaddingDistance);
+            make.top.mas_equalTo(kPaddingDistance);
+        }];
+        
     }
     return self;
 }
@@ -91,6 +100,8 @@ NSString *const kContactsTableViewCell = @"ContactsTableViewCell";
     _flagLabel.text = flagString;
     self.flagImageView.image = [UIImage imageNamed:@"tag-green"];
     [self.headImageView sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",api_icon_base_url,dic[@"icon"]]] placeholderImage:[UIImage imageNamed:@"icon_default_mine"]];
+    
+    [_connectTag updateTag:@[@"班",@"社",@"系",@"团",@"啊"]];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
