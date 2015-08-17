@@ -7,10 +7,15 @@
 //
 
 #import "FeedDetailViewController.h"
+#import "FeedDetailTableView.h"
+#import "Masonry.h"
+#import "CommentTableViewCell.h"
 
+#define KBOTTOMHEIGHT SCALE_NUM(30)
 @interface FeedDetailViewController()
 
 @property (nonatomic, strong) NSString *feedId;
+@property (nonatomic, strong) FeedDetailTableView *feedDetailTable;
 
 @end
 
@@ -29,8 +34,31 @@
     
     [self showCustomNavigationBackButton];
     self.title = @"详情";
-    
+    [self initRightBarButton];
+    [self initTable];
     
 }
 
+- (void)viewDidAppear:(BOOL)animated {
+    [_feedDetailTable loadData:@[@"",@""]];
+}
+
+- (void)initRightBarButton {
+    UIBarButtonItem  *btn = [[UIBarButtonItem alloc] initWithImage:[[UIImage imageNamed:@"more"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] style:UIBarButtonItemStylePlain target:self action:@selector(openShare)];
+    btn.tintColor = [UIColor clearColor];
+    self.navigationItem.rightBarButtonItem = btn;
+}
+
+- (void)initTable {
+    _feedDetailTable  = [[FeedDetailTableView alloc] init];
+    [self.view addSubview:_feedDetailTable];
+    [_feedDetailTable mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.right.top.equalTo(self.view);
+        make.bottom.equalTo(self.view).offset(-KBOTTOMHEIGHT);
+    }];
+}
+
+- (void)openShare {
+    
+}
 @end
