@@ -78,7 +78,7 @@
                             imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     profileViewCotroller.tabBarItem = profileItem;
     
-    self.tabBar.tintColor = [UIColor redColor];
+    self.tabBar.tintColor = KCOLORGREEN_009688;
     self.viewControllers = @[messageViewCotroller, feedListViewCotroller, profileViewCotroller];
 }
 
