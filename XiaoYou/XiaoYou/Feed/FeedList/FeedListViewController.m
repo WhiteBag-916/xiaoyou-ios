@@ -58,6 +58,10 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
+-(void)viewWillLayoutSubviews {
+    self.hidesBottomBarWhenPushed = NO;
+}
+
 - (void)initView
 {
     //侧拉
