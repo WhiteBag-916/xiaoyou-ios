@@ -28,7 +28,7 @@
     // Do any additional setup after loading the view.
     
     [self showCustomNavigationBackButton];
-    self.title = @"社团总汇";
+    self.title = @"详情";
     
     
 }
