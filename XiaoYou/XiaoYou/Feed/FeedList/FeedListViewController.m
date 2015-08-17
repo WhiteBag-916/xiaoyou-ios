@@ -17,6 +17,7 @@
 #import "SearchPersonViewController.h"
 #import "FeedDetailViewController.h"
 #import "NotifyListViewController.h"
+#import "AddTagViewController.h"
 
 @interface FeedListViewController ()
 
@@ -95,6 +96,7 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(toAssociationsList) name:kNotification_Push_AssociationsList object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(toSearchPerson) name:kNotification_Push_SearchPerson object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(toNotifyView) name:kNotification_Push_Notify object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(toAddTag) name:kNotification_Push_AddTag object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(openShare:) name:kNotification_Push_FeedDetail object:nil];
 }
 
@@ -127,6 +129,11 @@
 - (void)toNotifyView {
     NotifyListViewController *notifyListViewController = [[NotifyListViewController alloc] init];
     [self.navigationController pushViewController:notifyListViewController animated:YES from:self];
+}
+
+- (void)toAddTag {
+    AddTagViewController *addTagViewController = [[AddTagViewController alloc] init];
+    [self.navigationController pushViewController:addTagViewController animated:YES from:self];
 }
 
 - (void)openShare:(NSNotification *) notification{

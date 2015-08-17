@@ -10,4 +10,12 @@
 
 @implementation AddTagViewController
 
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    // Do any additional setup after loading the view.
+    
+    [self showCustomNavigationBackButton];
+    self.title = @"添加标签";
+}
+
 @end

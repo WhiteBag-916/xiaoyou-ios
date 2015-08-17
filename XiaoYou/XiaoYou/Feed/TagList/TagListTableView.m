@@ -9,6 +9,7 @@
 #import "TagListTableView.h"
 #import "YUtils+Component.h"
 #import "TagListTableViewCell.h"
+#import "SlideNavigationController.h"
 
 @interface TagListTableView()<UITableViewDataSource, UITableViewDelegate>
 @property (nonatomic, strong) NSArray *data;
@@ -48,5 +49,20 @@
         [cell setData:nil];
     }
     return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (_data.count == indexPath.row)
+    {
+        [self toAddTag];
+    }
+}
+
+//跳转到添加标签
+- (void)toAddTag {
+    [[SlideNavigationController sharedInstance] closeMenuWithCompletion:^{
+        [[NSNotificationCenter defaultCenter] postNotificationName:kNotification_Push_AddTag object:nil];
+    }];
 }
 @end
