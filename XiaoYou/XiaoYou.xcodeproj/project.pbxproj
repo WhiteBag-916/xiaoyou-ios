@@ -311,6 +311,9 @@
 		6592DCDE1B806A9B004CD118 /* MessageTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6592DCCC1B806A9B004CD118 /* MessageTableViewCell.m */; };
 		6592DCDF1B806A9B004CD118 /* XYMessageAndContactsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6592DCCE1B806A9B004CD118 /* XYMessageAndContactsViewController.m */; };
 		6592DCE01B806A9B004CD118 /* XYSendMessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6592DCD11B806A9B004CD118 /* XYSendMessageViewController.m */; };
+		65A846FF1B81C9C300933815 /* FeedCellTopView.m in Sources */ = {isa = PBXBuildFile; fileRef = 65A846FE1B81C9C300933815 /* FeedCellTopView.m */; };
+		65A847021B81C9D300933815 /* FeedCellMiddleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 65A847011B81C9D300933815 /* FeedCellMiddleView.m */; };
+		65A847051B81CA1900933815 /* FeedCellBottomView.m in Sources */ = {isa = PBXBuildFile; fileRef = 65A847041B81CA1900933815 /* FeedCellBottomView.m */; };
 		65BCCAEB1B81A72500266A18 /* FeedDetailTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 65BCCAEA1B81A72500266A18 /* FeedDetailTableView.m */; };
 		65BCCAEE1B81A75900266A18 /* CommentTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 65BCCAED1B81A75900266A18 /* CommentTableViewCell.m */; };
 		65BCF1E11B818441003457F4 /* FeedDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 65BCF1E01B818441003457F4 /* FeedDetailViewController.m */; };
@@ -786,6 +789,12 @@
 		6592DCCE1B806A9B004CD118 /* XYMessageAndContactsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYMessageAndContactsViewController.m; sourceTree = "<group>"; };
 		6592DCD01B806A9B004CD118 /* XYSendMessageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYSendMessageViewController.h; sourceTree = "<group>"; };
 		6592DCD11B806A9B004CD118 /* XYSendMessageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYSendMessageViewController.m; sourceTree = "<group>"; };
+		65A846FD1B81C9C300933815 /* FeedCellTopView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedCellTopView.h; sourceTree = "<group>"; };
+		65A846FE1B81C9C300933815 /* FeedCellTopView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedCellTopView.m; sourceTree = "<group>"; };
+		65A847001B81C9D300933815 /* FeedCellMiddleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedCellMiddleView.h; sourceTree = "<group>"; };
+		65A847011B81C9D300933815 /* FeedCellMiddleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedCellMiddleView.m; sourceTree = "<group>"; };
+		65A847031B81CA1900933815 /* FeedCellBottomView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedCellBottomView.h; sourceTree = "<group>"; };
+		65A847041B81CA1900933815 /* FeedCellBottomView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedCellBottomView.m; sourceTree = "<group>"; };
 		65BCCAE91B81A72500266A18 /* FeedDetailTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FeedDetailTableView.h; path = XiaoYou/Feed/FeedList/FeedDetailTableView.h; sourceTree = SOURCE_ROOT; };
 		65BCCAEA1B81A72500266A18 /* FeedDetailTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FeedDetailTableView.m; path = XiaoYou/Feed/FeedList/FeedDetailTableView.m; sourceTree = SOURCE_ROOT; };
 		65BCCAEC1B81A75900266A18 /* CommentTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CommentTableViewCell.h; path = XiaoYou/Feed/FeedList/CommentTableViewCell.h; sourceTree = SOURCE_ROOT; };
@@ -1017,6 +1026,7 @@
 		20E122181B705D4E00F90BD3 /* Feed */ = {
 			isa = PBXGroup;
 			children = (
+				65A846FC1B81C9A400933815 /* FeedCell */,
 				2076A2F81B81B8FC001FFBAC /* AddTag */,
 				2076A2F41B81B8F1001FFBAC /* NotifyList */,
 				20E1222A1B708CB400F90BD3 /* TagList */,
@@ -1973,6 +1983,19 @@
 			path = SendMessage;
 			sourceTree = "<group>";
 		};
+		65A846FC1B81C9A400933815 /* FeedCell */ = {
+			isa = PBXGroup;
+			children = (
+				65A846FD1B81C9C300933815 /* FeedCellTopView.h */,
+				65A846FE1B81C9C300933815 /* FeedCellTopView.m */,
+				65A847001B81C9D300933815 /* FeedCellMiddleView.h */,
+				65A847011B81C9D300933815 /* FeedCellMiddleView.m */,
+				65A847031B81CA1900933815 /* FeedCellBottomView.h */,
+				65A847041B81CA1900933815 /* FeedCellBottomView.m */,
+			);
+			name = FeedCell;
+			sourceTree = "<group>";
+		};
 		888C5F0F224BB9F4ECBAEB96 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -2333,6 +2356,7 @@
 				6592DCD51B806A9B004CD118 /* FriendApplyTableView.m in Sources */,
 				333122551B806EDB00D3D032 /* EMSDImageCache.m in Sources */,
 				333122511B806EDB00D3D032 /* MWTapDetectingImageView.m in Sources */,
+				65A846FF1B81C9C300933815 /* FeedCellTopView.m in Sources */,
 				653CB2EF1B806BFD006ECBB2 /* pinyin.c in Sources */,
 				333122471B806EDB00D3D032 /* EMAlertView.m in Sources */,
 				333122431B806EDB00D3D032 /* EMCDDeviceManager+Microphone.m in Sources */,
@@ -2385,6 +2409,7 @@
 				20DC5CD01B7B4FA00059B6E6 /* FeedListTableViewCell.m in Sources */,
 				20E18D561B807752005B75EE /* AssociationsListViewController.m in Sources */,
 				333122541B806EDB00D3D032 /* DACircularProgressView.m in Sources */,
+				65A847021B81C9D300933815 /* FeedCellMiddleView.m in Sources */,
 				2076A2FB1B81B909001FFBAC /* AddTagViewController.m in Sources */,
 				333122801B806EDC00D3D032 /* NSDateFormatter+Category.m in Sources */,
 				3331227C1B806EDB00D3D032 /* EMVoiceConverter.mm in Sources */,
@@ -2394,6 +2419,7 @@
 				333122771B806EDB00D3D032 /* THProgressView.m in Sources */,
 				65BCF1E11B818441003457F4 /* FeedDetailViewController.m in Sources */,
 				333122691B806EDB00D3D032 /* PSTCollectionViewData.m in Sources */,
+				65A847051B81CA1900933815 /* FeedCellBottomView.m in Sources */,
 				20E122211B705ED200F90BD3 /* FeedListViewController.m in Sources */,
 				20E122131B705C2100F90BD3 /* XYTabBarViewController.m in Sources */,
 				207F80871B7098E3005E8F6A /* AppDelegate+RootVC.m in Sources */,
