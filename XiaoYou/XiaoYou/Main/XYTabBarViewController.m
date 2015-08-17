@@ -49,10 +49,6 @@
     FeedListViewController *feedVC = [[FeedListViewController alloc] init];
     ProfileViewController *profileVC = [[ProfileViewController alloc] init];
     
-    messageVC.hidesBottomBarWhenPushed = YES;
-    feedVC.hidesBottomBarWhenPushed = YES;
-    profileVC.hidesBottomBarWhenPushed = YES;
-    
     UINavigationController *messageViewCotroller = [[UINavigationController alloc] initWithRootViewController:messageVC];
     UINavigationController *feedListViewCotroller = [[UINavigationController alloc] initWithRootViewController:feedVC];
     UINavigationController *profileViewCotroller = [[UINavigationController alloc] initWithRootViewController:profileVC];
