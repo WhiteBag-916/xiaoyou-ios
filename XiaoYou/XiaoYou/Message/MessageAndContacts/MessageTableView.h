@@ -11,7 +11,7 @@
 
 @interface MessageTableView : YTableView
 
-@property(nonatomic,strong)XYMessageAndContactsViewController * myController;
+@property(nonatomic,weak)XYMessageAndContactsViewController * myController;
 
 -(void)refreshTableView:(NSMutableArray *) dataSouceArr;
 
