@@ -8,7 +8,7 @@
 
 #import "YCommonActionSheet.h"
 #import "YFoundation.h"
-#import "YCPFontDefine.h"
+#import "YControlsDefine.h"
 
 static const NSUInteger kYActionSheetButtonHeight = 44;
 static const NSUInteger kYActionSheetTitleHeight = 37;
