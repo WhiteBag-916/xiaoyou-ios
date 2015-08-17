@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 
 extern NSString *const kFeedListTableViewCell;
+extern NSString *const kOrganizationFeedListTableViewCell;
 
 @interface FeedListTableViewCell : UITableViewCell
 

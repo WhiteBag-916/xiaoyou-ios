@@ -13,13 +13,14 @@
 #import "FeedListTableView.h"
 #import "AssociationsListViewController.h"
 #import "YNotificationDefine.h"
+#import "BBBadgeBarButtonItem.h"
 
 @interface FeedListViewController ()
 
 @property (strong, nonatomic) CommonSwitchView          *commonSwitchView;      //切换
 @property (strong, nonatomic) TagListViewController     *tagListVC;             //侧拉
 @property (strong, nonatomic) FeedListTableView         *feedListTableView;     //feed列表
-
+@property (strong, nonatomic) BBBadgeBarButtonItem      *menuButton;            //菜单按钮
 @end
 
 @implementation FeedListViewController
@@ -44,6 +45,10 @@
 
 - (void)viewDidAppear:(BOOL)animated {
     [_feedListTableView loadData:@[@"",@""]];
+}
+-(void)viewWillLayoutSubviews
+{
+    self.hidesBottomBarWhenPushed = NO;
 }
 - (void)viewWillDisappear:(BOOL)animated
 {
@@ -76,9 +81,14 @@
         make.top.left.right.mas_equalTo(self.view);
         make.bottom.equalTo(self.view).offset(-KTabBarheight);
     }];
-    
-    UIBarButtonItem *leftMenu = [[UIBarButtonItem alloc] initWithTitle:@"菜单" style:UIBarButtonItemStylePlain target:self action:@selector(changeMenu)];
-    self.navigationItem.leftBarButtonItem = leftMenu;
+    UIButton *btn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 15, 15)];
+    [btn setBackgroundImage:[UIImage imageNamed:@"menu"] forState:UIControlStateNormal];
+    [btn addTarget:self action:@selector(changeMenu) forControlEvents:UIControlEventTouchUpInside];
+    _menuButton = [[BBBadgeBarButtonItem alloc] initWithCustomUIButton:btn];
+    _menuButton.badgeValue = @"0";
+    _menuButton.badgeFont = CONTENT_FONT(10);
+    _menuButton.badgeMinSize = 5;
+    self.navigationItem.leftBarButtonItem = _menuButton;
 }
 
 - (void)initNotification {
@@ -95,6 +105,7 @@
 {
     
 }
+
 
 - (void)toAssociationsList {
     AssociationsListViewController *associationsListViewController = [[AssociationsListViewController alloc] init];

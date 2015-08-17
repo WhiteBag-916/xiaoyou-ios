@@ -13,6 +13,7 @@
 #import "ConnectTag.h"
 
 NSString *const kFeedListTableViewCell = @"FeedListTableViewCellId";
+NSString *const kOrganizationFeedListTableViewCell = @"OrganizationFeedListTableViewCell";
 #define KHEADIMGWIDTH SCALE_NUM(40)//头像宽度
 #define KLEFTMARGIN SCALE_NUM(15)//头像的左间距
 #define KHEADIMGTOP SCALE_NUM(12)//头像距顶高度
@@ -23,7 +24,7 @@ NSString *const kFeedListTableViewCell = @"FeedListTableViewCellId";
 #define KTAGMARGIN SCALE_NUM(6)
 #define KTAGMARGIN_TOP SCALE_NUM(15)
 
-#define KCONTENTMARGIN_TOP SCALE_NUM(0)
+#define KCONTENTMARGIN_TOP _isOrganization?SCALE_NUM(10):SCALE_NUM(0)
 
 #define KTAGMICONARGIN_TOP SCALE_NUM(18)
 
@@ -31,6 +32,7 @@ NSString *const kFeedListTableViewCell = @"FeedListTableViewCellId";
 #define KSHAREWIDTH SCALE_NUM(25)
 #define KCOMMENTWIDTH SCALE_NUM(25)
 #define KBUTTONTEXTMARGIN SCALE_NUM(2)
+
 
 @interface FeedListTableViewCell ()
 
@@ -50,6 +52,8 @@ NSString *const kFeedListTableViewCell = @"FeedListTableViewCellId";
 @property (nonatomic, strong) UILabel *commentNum;                  //评论按钮
 @property (nonatomic, strong) UILabel *respectNum;                  //敬酒按钮
 
+@property (nonatomic, assign) BOOL isOrganization;                  //是否是社团feed
+
 @end
 
 @implementation FeedListTableViewCell
@@ -58,7 +62,12 @@ NSString *const kFeedListTableViewCell = @"FeedListTableViewCellId";
 {
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier])
     {
-        [self initTopView];
+        if ([reuseIdentifier isEqualToString:kFeedListTableViewCell]) {
+            _isOrganization = false;
+            [self initTopView];
+        } else {
+            _isOrganization = true;
+        }
         [self initMiddleView];
         [self initBottomView];
         self.selectionStyle = UITableViewCellSelectionStyleNone;
@@ -67,13 +76,13 @@ NSString *const kFeedListTableViewCell = @"FeedListTableViewCellId";
     return self;
 }
 
+
 - (void)initTopView {
     _topView = [[UIView alloc] init];
     [self.contentView addSubview:_topView];
     [_topView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.contentView).offset(KLEFTMARGIN);
-        make.right.equalTo(self.contentView).offset(-KLEFTMARGIN);
-        make.top.equalTo(self.contentView);
+        make.top.centerX.equalTo(self.contentView);
     }];
     
     _contactHeadImageView = [[UIImageView alloc] init];
@@ -116,9 +125,8 @@ NSString *const kFeedListTableViewCell = @"FeedListTableViewCellId";
         make.bottom.equalTo(_contactHeadImageView);
     }];
     
-    
-    
 }
+
 
 - (void)initMiddleView {
     _contentLabel = [YUtils initLabel:CONTENT_FONT(13)
@@ -129,9 +137,15 @@ NSString *const kFeedListTableViewCell = @"FeedListTableViewCellId";
     _contentLabel.numberOfLines = 0;
     [self.contentView addSubview:_contentLabel];
     [_contentLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(_contactNameLabel);
-        make.right.equalTo(_topView);
-        make.top.equalTo(_topView.mas_bottom).offset(KCONTENTMARGIN_TOP);
+        if (_isOrganization) {
+            make.left.equalTo(self.contentView).offset(KLEFTMARGIN);
+            make.centerX.equalTo(self.contentView);
+            make.top.mas_equalTo(KCONTENTMARGIN_TOP);
+        } else {
+            make.left.equalTo(_contactNameLabel);
+            make.right.equalTo(_topView);
+            make.top.equalTo(_topView.mas_bottom).offset(KCONTENTMARGIN_TOP);
+        }
     }];
     
     _imgGroup = [[FeedImageGroup alloc] init];
@@ -140,24 +154,25 @@ NSString *const kFeedListTableViewCell = @"FeedListTableViewCellId";
         make.left.right.equalTo(_contentLabel);
         make.top.equalTo(_contentLabel.mas_bottom).offset(KTAGMARGIN_TOP);
     }];
-    
-    _tagIcon = [[UIImageView alloc] init];
-    [self.contentView addSubview:_tagIcon];
-    [_tagIcon mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.width.mas_equalTo(SCALE_NUM(11));
-        make.height.mas_equalTo(SCALE_NUM(14));
-        make.top.equalTo(_imgGroup.mas_bottom).offset(KTAGMICONARGIN_TOP);
-        make.centerX.equalTo(_contactHeadImageView);
-    }];
-    
-    _tagLabel = [YUtils initLabel:CONTENT_FONT(10) color:[UIColor blackColor] text:@"留学" frame:CGRectZero alignment:NSTextAlignmentLeft];
-    [self.contentView addSubview:_tagLabel];
-    [_tagLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(_contentLabel);
-        make.centerY.equalTo(_tagIcon);
-    }];
-    
-    [self setIsRelated:false];
+    if (!_isOrganization) {
+        _tagIcon = [[UIImageView alloc] init];
+        [self.contentView addSubview:_tagIcon];
+        [_tagIcon mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.width.mas_equalTo(SCALE_NUM(11));
+            make.height.mas_equalTo(SCALE_NUM(14));
+            make.top.equalTo(_imgGroup.mas_bottom).offset(KTAGMICONARGIN_TOP);
+            make.centerX.equalTo(_contactHeadImageView);
+        }];
+        
+        _tagLabel = [YUtils initLabel:CONTENT_FONT(10) color:[UIColor blackColor] text:@"留学" frame:CGRectZero alignment:NSTextAlignmentLeft];
+        [self.contentView addSubview:_tagLabel];
+        [_tagLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.equalTo(_contentLabel);
+            make.centerY.equalTo(_tagIcon);
+        }];
+        
+        [self setIsRelated:false];
+    }
     
 }
 
@@ -165,16 +180,25 @@ NSString *const kFeedListTableViewCell = @"FeedListTableViewCellId";
     UIView *bottomView = [[UIView alloc] init];
     [self.contentView addSubview:bottomView];
     [bottomView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(_tagLabel.mas_bottom).offset(50);
+        if (_isOrganization) {
+            make.top.equalTo(_imgGroup.mas_bottom).offset(15);
+            make.left.centerX.equalTo(_contentLabel);
+        } else {
+            make.top.equalTo(_tagLabel.mas_bottom).offset(15);
+            make.left.centerX.equalTo(_topView);
+        }
         make.bottom.equalTo(self.contentView).offset(-10);
-        make.left.centerX.equalTo(_topView);
         make.height.mas_equalTo(KBOTTOMHEIGHT);
     }];
     
     _shareButton = [[UIImageView alloc] init];
     [bottomView addSubview:_shareButton];
     [_shareButton mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.centerX.equalTo(_contactHeadImageView);
+        if (_isOrganization) {
+            make.left.equalTo(_contentLabel);
+        } else {
+            make.centerX.equalTo(_contactHeadImageView);
+        }
         make.top.centerY.equalTo(bottomView);
         make.width.mas_equalTo(KSHAREWIDTH);
     }];

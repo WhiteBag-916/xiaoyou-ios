@@ -9,6 +9,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Pods-XiaoYou-BBBadgeBarButtonItem.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-XiaoYou-CocoaLumberjack.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -92,87 +97,92 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>03DBC3E6879BBAA1B9B82146</key>
+		<key>0825F06FE35069D7BF583FD2</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>0BF67D5D04DF159B0A607D17</key>
+		<key>0A6EBD124CE37668BEE7BCD1</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>19C7FBF320BC44133C9637C0</key>
+		<key>0D7B2F9B102000AC9866E1B1</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>28F41DD6DEBFF3E983781870</key>
+		<key>1B4BCE187CECB76348A50537</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>3525451F00AAE15DF26BBECC</key>
+		<key>3B02C0B46F71CA481D72DE34</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>3B744CEFF0E877FEEE23DC99</key>
+		<key>6A25FBBCDE56BCB3A84483CB</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>409A3669ABC8A75DB3DFFF85</key>
+		<key>7A97186DD4954E9AF45FA09C</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>7639DC167EF265E8DD9A00D7</key>
+		<key>98058B0067C1ADB998CC6E91</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>7F6AD6D00AD82B7D2F233A8F</key>
+		<key>9D00594EE26A70320F4261F6</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>96901E521B7290709C04DF85</key>
+		<key>B66DF45284EA21A88B2CCFFD</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>972DCB5C6AA566F54C6DF924</key>
+		<key>BC7B52387CB31BC777570029</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>A11CD20E1DB9C86519D4982E</key>
+		<key>C22519C1611E94FB4BD60A1B</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>B5D3B50822F1FD8173D2831D</key>
+		<key>CC4CFD08DAEF7A3248877109</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>B6FAB80072A8C46EF7AA71EC</key>
+		<key>D31CBE0DEA0BCE62C92D6068</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>B9C0F62A67B8C7B7066E4B3D</key>
+		<key>E203209A12DA8529177A8640</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>DC8D09234A9EE961795415AD</key>
+		<key>E5A388E6D2E21B17EDD1C1CA</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>F26CD7DFDFABC953D00E50D1</key>
+		<key>E964D903A337819769ECAC8D</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>FA055CCD1101A7693D8A4BF0</key>
 		<dict>
 			<key>primary</key>
 			<true/>

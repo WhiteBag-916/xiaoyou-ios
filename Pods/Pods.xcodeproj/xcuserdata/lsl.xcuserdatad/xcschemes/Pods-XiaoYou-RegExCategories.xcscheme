@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "409A3669ABC8A75DB3DFFF85"
+               BlueprintIdentifier = "BC7B52387CB31BC777570029"
                BuildableName = "libPods-XiaoYou-RegExCategories.a"
                BlueprintName = "Pods-XiaoYou-RegExCategories"
                ReferencedContainer = "container:Pods.xcodeproj">

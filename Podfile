@@ -4,6 +4,7 @@ xcodeproj 'XiaoYou/XiaoYou.xcodeproj'
 
 target :XiaoYou do
 platform :ios, '7.0'
+pod 'BBBadgeBarButtonItem'
 pod 'iOS-Slide-Menu', '1.4.5'
 pod 'SIAlertView'
 pod 'SDWebImage'
