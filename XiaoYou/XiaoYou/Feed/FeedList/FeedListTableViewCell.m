@@ -13,7 +13,9 @@
 #import "ConnectTag.h"
 
 NSString *const kFeedListTableViewCell = @"FeedListTableViewCellId";
+NSString *const kFeedDetailTableViewCell = @"kFeedDetailTableViewCell";
 NSString *const kOrganizationFeedListTableViewCell = @"OrganizationFeedListTableViewCell";
+
 #define KHEADIMGWIDTH SCALE_NUM(40)//头像宽度
 #define KLEFTMARGIN SCALE_NUM(15)//头像的左间距
 #define KHEADIMGTOP SCALE_NUM(12)//头像距顶高度
@@ -48,11 +50,13 @@ NSString *const kOrganizationFeedListTableViewCell = @"OrganizationFeedListTable
 @property (nonatomic, strong) UILabel *tagLabel;                    //feed标签
 @property (nonatomic, strong) FeedImageGroup *imgGroup;             //图片
 
-@property (nonatomic, strong) UIImageView *shareButton;                //分享按钮
-@property (nonatomic, strong) UILabel *commentNum;                  //评论按钮
-@property (nonatomic, strong) UILabel *respectNum;                  //敬酒按钮
+@property (nonatomic, strong) UIImageView *shareButton;             //分享按钮
+@property (nonatomic, strong) UILabel *commentNum;                  //评论数
+@property (nonatomic, strong) UILabel *respectNum;                  //敬酒数
+@property (nonatomic, strong) UIImageView *respectImg;              //敬酒按钮
 
 @property (nonatomic, assign) BOOL isOrganization;                  //是否是社团feed
+@property (nonatomic, assign) BOOL isFeedDetail;                    //是否是feed详情
 
 @end
 
@@ -236,19 +240,22 @@ NSString *const kOrganizationFeedListTableViewCell = @"OrganizationFeedListTable
         make.width.mas_equalTo(SCALE_NUM(50));
     }];
     
-    UIImageView *respectImg = [[UIImageView alloc] init];
-    [bottomView addSubview:respectImg];
-    [respectImg mas_makeConstraints:^(MASConstraintMaker *make) {
+    _respectImg = [[UIImageView alloc] init];
+    [bottomView addSubview:_respectImg];
+    [_respectImg mas_makeConstraints:^(MASConstraintMaker *make) {
         make.right.equalTo(_respectNum.mas_left).offset(-KBUTTONTEXTMARGIN);
         make.top.bottom.equalTo(bottomView);
         make.width.equalTo(commentImg);
     }];
-    respectImg.contentMode = UIViewContentModeCenter;
-    respectImg.image = [UIImage imageNamed:@"cup"];
+    _respectImg.contentMode = UIViewContentModeCenter;
+    _respectImg.image = [UIImage imageNamed:@"cup"];
     
     
 }
 
+- (void)initDetailBottomView {
+    
+}
 
 - (void)setData
 {
