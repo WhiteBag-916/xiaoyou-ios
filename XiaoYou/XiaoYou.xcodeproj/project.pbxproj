@@ -10,7 +10,8 @@
 		200E397C1B4E818B000B587B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 200E397B1B4E818B000B587B /* main.m */; };
 		200E39871B4E818B000B587B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 200E39861B4E818B000B587B /* Images.xcassets */; };
 		200E39961B4E818B000B587B /* XiaoYouTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 200E39951B4E818B000B587B /* XiaoYouTests.m */; };
-		2076A2F31B81B099001FFBAC /* NotifyListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2076A2F21B81B099001FFBAC /* NotifyListViewController.m */; };
+		2076A2F71B81B8F1001FFBAC /* NotifyListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2076A2F61B81B8F1001FFBAC /* NotifyListViewController.m */; };
+		2076A2FB1B81B909001FFBAC /* AddTagViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2076A2FA1B81B909001FFBAC /* AddTagViewController.m */; };
 		207F80871B7098E3005E8F6A /* AppDelegate+RootVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 207F80861B7098E3005E8F6A /* AppDelegate+RootVC.m */; };
 		207F808A1B7099C2005E8F6A /* AppDelegate+Manager.m in Sources */ = {isa = PBXBuildFile; fileRef = 207F80891B7099C2005E8F6A /* AppDelegate+Manager.m */; };
 		207F808D1B709A1E005E8F6A /* AppDelegate+Notification.m in Sources */ = {isa = PBXBuildFile; fileRef = 207F808C1B709A1E005E8F6A /* AppDelegate+Notification.m */; };
@@ -332,8 +333,10 @@
 		200E39941B4E818B000B587B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		200E39951B4E818B000B587B /* XiaoYouTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XiaoYouTests.m; sourceTree = "<group>"; };
 		200E39DE1B4E867D000B587B /* libXFramework.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libXFramework.a; path = "../XFramework/build/Debug-iphoneos/libXFramework.a"; sourceTree = "<group>"; };
-		2076A2F11B81B099001FFBAC /* NotifyListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotifyListViewController.h; sourceTree = "<group>"; };
-		2076A2F21B81B099001FFBAC /* NotifyListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotifyListViewController.m; sourceTree = "<group>"; };
+		2076A2F51B81B8F1001FFBAC /* NotifyListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotifyListViewController.h; sourceTree = "<group>"; };
+		2076A2F61B81B8F1001FFBAC /* NotifyListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotifyListViewController.m; sourceTree = "<group>"; };
+		2076A2F91B81B909001FFBAC /* AddTagViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddTagViewController.h; sourceTree = "<group>"; };
+		2076A2FA1B81B909001FFBAC /* AddTagViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddTagViewController.m; sourceTree = "<group>"; };
 		207F80851B7098E3005E8F6A /* AppDelegate+RootVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AppDelegate+RootVC.h"; sourceTree = "<group>"; };
 		207F80861B7098E3005E8F6A /* AppDelegate+RootVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AppDelegate+RootVC.m"; sourceTree = "<group>"; };
 		207F80881B7099C2005E8F6A /* AppDelegate+Manager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AppDelegate+Manager.h"; sourceTree = "<group>"; };
@@ -893,13 +896,22 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		2076A2F01B81B084001FFBAC /* notifyList */ = {
+		2076A2F41B81B8F1001FFBAC /* NotifyList */ = {
 			isa = PBXGroup;
 			children = (
-				2076A2F11B81B099001FFBAC /* NotifyListViewController.h */,
-				2076A2F21B81B099001FFBAC /* NotifyListViewController.m */,
+				2076A2F51B81B8F1001FFBAC /* NotifyListViewController.h */,
+				2076A2F61B81B8F1001FFBAC /* NotifyListViewController.m */,
 			);
-			path = notifyList;
+			path = NotifyList;
+			sourceTree = "<group>";
+		};
+		2076A2F81B81B8FC001FFBAC /* AddTag */ = {
+			isa = PBXGroup;
+			children = (
+				2076A2F91B81B909001FFBAC /* AddTagViewController.h */,
+				2076A2FA1B81B909001FFBAC /* AddTagViewController.m */,
+			);
+			path = AddTag;
 			sourceTree = "<group>";
 		};
 		20DA35F31B81E89F002E5A96 /* Contact */ = {
@@ -995,7 +1007,8 @@
 		20E122181B705D4E00F90BD3 /* Feed */ = {
 			isa = PBXGroup;
 			children = (
-				2076A2F01B81B084001FFBAC /* notifyList */,
+				2076A2F81B81B8FC001FFBAC /* AddTag */,
+				2076A2F41B81B8F1001FFBAC /* NotifyList */,
 				20E1222A1B708CB400F90BD3 /* TagList */,
 				20E1221C1B705EBD00F90BD3 /* FeedDetail */,
 				20E1221D1B705EBD00F90BD3 /* FeedList */,
@@ -2271,7 +2284,7 @@
 				333122401B806EDB00D3D032 /* EMAudioPlayerUtil.m in Sources */,
 				3331222B1B806EDB00D3D032 /* ChatViewController+Category.m in Sources */,
 				3331226A1B806EDB00D3D032 /* PSTCollectionViewFlowLayout.m in Sources */,
-				2076A2F31B81B099001FFBAC /* NotifyListViewController.m in Sources */,
+				2076A2F71B81B8F1001FFBAC /* NotifyListViewController.m in Sources */,
 				333122371B806EDB00D3D032 /* EMChatLocationBubbleView.m in Sources */,
 				333122331B806EDB00D3D032 /* DXRecordView.m in Sources */,
 				333122671B806EDB00D3D032 /* PSTCollectionViewCell.m in Sources */,
@@ -2361,6 +2374,7 @@
 				20DC5CD01B7B4FA00059B6E6 /* FeedListTableViewCell.m in Sources */,
 				20E18D561B807752005B75EE /* AssociationsListViewController.m in Sources */,
 				333122541B806EDB00D3D032 /* DACircularProgressView.m in Sources */,
+				2076A2FB1B81B909001FFBAC /* AddTagViewController.m in Sources */,
 				333122801B806EDC00D3D032 /* NSDateFormatter+Category.m in Sources */,
 				3331227C1B806EDB00D3D032 /* EMVoiceConverter.mm in Sources */,
 				333122361B806EDB00D3D032 /* EMChatImageBubbleView.m in Sources */,
