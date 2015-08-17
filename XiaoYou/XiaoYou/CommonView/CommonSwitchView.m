@@ -30,14 +30,14 @@
         [self addSubview:bgImageView];
         
         //红色背景
-        _redBgImageView = [YUtils initImageView:[UIImage imageNamed:@"message_tab_green"] frame:CGRectMake(0, 0, 63, frame.size.height)];
+        _redBgImageView = [YUtils initImageView:[UIImage imageNamed:@"message_tab_green"] frame:CGRectMake(0, 0, SCALE_NUM(63), frame.size.height)];
         [self addSubview:_redBgImageView];
         
         //label
         _messageLabel = [YUtils initLabel:CONTENT_FONT(14) color:[UIColor whiteColor] text:[textArray objectAtIndex:CommonSwitchTypeFir] frame:CGRectMake(0, 0, frame.size.width/2, frame.size.height) alignment:NSTextAlignmentCenter];
         [self addSubview:_messageLabel];
         
-        _notificationLabel = [YUtils initLabel:CONTENT_FONT(14) color:KCOLORGREEN_009788 text:[textArray objectAtIndex:CommonSwitchTypeSec] frame:CGRectMake(frame.size.width/2, 0, frame.size.width/2, frame.size.height) alignment:NSTextAlignmentCenter];
+        _notificationLabel = [YUtils initLabel:CONTENT_FONT(14) color:KCOLORGREEN_009688 text:[textArray objectAtIndex:CommonSwitchTypeSec] frame:CGRectMake(frame.size.width/2, 0, frame.size.width/2, frame.size.height) alignment:NSTextAlignmentCenter];
         [self addSubview:_notificationLabel];
         
         _switchType = CommonSwitchTypeFir;
@@ -87,13 +87,13 @@
                 _redBgImageView.originX = 0;
                 
                 _messageLabel.textColor = [UIColor whiteColor];
-                _notificationLabel.textColor = KCOLORGREEN_009788;
+                _notificationLabel.textColor = KCOLORGREEN_009688;
             }
             else
             {
                 _redBgImageView.rightX = self.width;
                 
-                _messageLabel.textColor = KCOLORGREEN_009788;
+                _messageLabel.textColor = KCOLORGREEN_009688;
                 _notificationLabel.textColor = [UIColor whiteColor];
             }
         }];

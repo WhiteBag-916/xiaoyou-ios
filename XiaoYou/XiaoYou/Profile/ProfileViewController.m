@@ -17,10 +17,15 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    self.title = @"我的";
 }
 
-- (void)viewWillAppear:(BOOL)animated
-{
+-(void)viewWillLayoutSubviews {
+    self.hidesBottomBarWhenPushed = NO;
+}
+
+- (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated navigationBarHidden:NO tabBarHidden:NO];
 }
 

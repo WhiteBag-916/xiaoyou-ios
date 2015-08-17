@@ -92,7 +92,7 @@
 -(void)setUpUI
 {
     //switch
-    _commonSwitchView = [[CommonSwitchView alloc] initWithFrame:CGRectMake(0, 0, 127, 27) textArray:@[@"聊天", @"联系人"]];
+    _commonSwitchView = [[CommonSwitchView alloc] initWithFrame:CGRectMake(0, 0, SCALE_NUM(119), SCALE_NUM(24)) textArray:@[@"聊天", @"联系人"]];
     [_commonSwitchView changedType:^(CommonSwitchType type) {
         [self changeSwitchView:type];
     }];

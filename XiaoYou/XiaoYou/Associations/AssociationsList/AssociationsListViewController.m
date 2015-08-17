@@ -40,9 +40,9 @@
 
 - (void)initRightBar {
     //right barbutton view
-    UIView * view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 60, 50)];
+    UIView * view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 60, KNavigationBarheight)];
     
-    UIButton *filterButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 5, 25, 40)];
+    UIButton *filterButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 25, KNavigationBarheight)];
     [filterButton setImage:[UIImage imageNamed:@"common_filter"] forState:UIControlStateNormal];
     [filterButton setImage:[UIImage imageNamed:@"common_filter"] forState:UIControlStateHighlighted];
     [filterButton addTarget:self
@@ -50,7 +50,7 @@
         forControlEvents:UIControlEventTouchUpInside];
     [view addSubview:filterButton];
     
-    UIButton * searchBtn = [[UIButton alloc] initWithFrame:CGRectMake(35, 5, 25, 40)];
+    UIButton * searchBtn = [[UIButton alloc] initWithFrame:CGRectMake(35, 0, 25, KNavigationBarheight)];
     [searchBtn setImage:[UIImage imageNamed:@"common_search"] forState:UIControlStateNormal];
     [searchBtn setImage:[UIImage imageNamed:@"common_search"] forState:UIControlStateHighlighted];
     [searchBtn addTarget:self

@@ -139,6 +139,14 @@
     
 }
 
+- (void)searchBarAction {
+    
+}
+
+- (void)moreBarAction {
+    
+}
+
 - (void)showCustomNavigationBackButton
 {
     //导航栏的左边按钮
@@ -147,17 +155,6 @@
     [_navigationLeftButton setImage:[UIImage imageNamed:@"common_back"] forState:UIControlStateHighlighted];
     [_navigationLeftButton addTarget:self action:@selector(onNavigationLeftButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
     
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:_navigationLeftButton];
-}
-
-- (void)showCustomNavigationBackButtonNoPop
-{
-    //导航栏的左边按钮
-    _navigationLeftButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 17, 26)];
-    [_navigationLeftButton setImage:[UIImage imageNamed:@"common_back"] forState:UIControlStateNormal];
-    [_navigationLeftButton setImage:[UIImage imageNamed:@"common_back"] forState:UIControlStateHighlighted];
-    [_navigationLeftButton addTarget:self action:@selector(backControllerButton) forControlEvents:UIControlEventTouchUpInside];
-    _navigationLeftButton.imageEdgeInsets = UIEdgeInsetsMake(0, -20, 0, 0);
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:_navigationLeftButton];
 }
 
@@ -190,7 +187,7 @@
     [_navigationRightButton setTitle:title forState:UIControlStateNormal];
     [_navigationRightButton setTitleColor:[UIColor hexChangeFloat:@"F4453C"] forState:UIControlStateNormal];
     [_navigationRightButton setTitleColor:[UIColor hexChangeFloat:@"494949"] forState:UIControlStateDisabled];
-    _navigationRightButton.frame = CGRectMake(0, 0, 30, 60);
+    _navigationRightButton.frame = CGRectMake(0, 0, 30, 64);
     _navigationRightButton.titleLabel.font = [UIFont fontWithName:@"Helvetica" size:15.0f];
     [_navigationRightButton sizeToFit];
     [_navigationRightButton addTarget:self action:selector forControlEvents:UIControlEventTouchUpInside];
@@ -206,9 +203,30 @@
     [_navigationRightButton setTitle:@"下一步" forState:UIControlStateNormal];
     [_navigationRightButton setTitleColor:[UIColor hexChangeFloat:@"F4453C"] forState:UIControlStateNormal];
     [_navigationRightButton setTitleColor:[UIColor hexChangeFloat:@"494949"] forState:UIControlStateDisabled];
-    _navigationRightButton.frame = CGRectMake(0, 0, 50, 60);
+    _navigationRightButton.frame = CGRectMake(0, 0, 50, 64);
     _navigationRightButton.titleLabel.font = [UIFont fontWithName:@"Helvetica" size:15.0f];
     [_navigationRightButton addTarget:self action:@selector(nextController) forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem *btnNavRightItem = [[UIBarButtonItem alloc] initWithCustomView:_navigationRightButton];
+    self.navigationItem.rightBarButtonItem = btnNavRightItem;
+}
+
+//导航栏右侧，搜索按钮
+- (void)showCustomNavigationSearchButton {
+    [self showNomalNavigationRightButtonWithImage:@"common_search" action:@selector(searchBarAction)];
+}
+
+//导航栏右侧，更多按钮
+- (void)showCustomNavigationMoreButton {
+    [self showNomalNavigationRightButtonWithImage:@"menu" action:@selector(moreBarAction)];
+}
+
+- (void)showNomalNavigationRightButtonWithImage:(NSString *)image action:(SEL)selector {
+    //right barbutton view
+    _navigationRightButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [_navigationRightButton setImage:[UIImage imageNamed:image] forState:UIControlStateNormal];
+    [_navigationRightButton setImage:[UIImage imageNamed:image] forState:UIControlStateHighlighted];
+    _navigationRightButton.frame = CGRectMake(0, 0, 30, 64);
+    [_navigationRightButton addTarget:self action:selector forControlEvents:UIControlEventTouchUpInside];
     UIBarButtonItem *btnNavRightItem = [[UIBarButtonItem alloc] initWithCustomView:_navigationRightButton];
     self.navigationItem.rightBarButtonItem = btnNavRightItem;
 }

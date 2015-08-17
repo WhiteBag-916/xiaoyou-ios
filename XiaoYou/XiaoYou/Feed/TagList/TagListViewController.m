@@ -78,8 +78,8 @@
         make.top.bottom.equalTo(_notifyCount);
     }];
     
-    
-    
+    //增加点击跳转到新提醒
+    [self addTap:_notifyView action:@selector(toNotifyView)];
 }
 
 - (void)initSearchBtn {
@@ -110,6 +110,9 @@
         make.height.mas_equalTo(0.5);
     }];
     line.backgroundColor = KCOLORWHITE_C5CACF;
+    
+    //增加点击跳转到找人
+    [self addTap:_searchLabel action:@selector(toSearchPerson)];
 }
 
 - (void)initBottomView {
@@ -148,8 +151,7 @@
 
     
     //增加点击跳转到动态列表
-    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(toAssociationsList)];
-    [_bottomView addGestureRecognizer:tap];
+    [self addTap:_bottomView action:@selector(toAssociationsList)];
 }
 
 - (void)initTableView {
@@ -162,14 +164,36 @@
     }];
 }
 
+- (void)addTap:(UIView *)view action:(SEL)selector {
+    //增加点击跳转
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:selector];
+    view.userInteractionEnabled = YES;
+    [view addGestureRecognizer:tap];
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
+//跳转社团
 - (void)toAssociationsList {
     [[SlideNavigationController sharedInstance] closeMenuWithCompletion:^{
         [[NSNotificationCenter defaultCenter] postNotificationName:kNotification_Push_AssociationsList object:nil];
+    }];
+}
+
+//跳转找人
+- (void)toSearchPerson {
+    [[SlideNavigationController sharedInstance] closeMenuWithCompletion:^{
+        [[NSNotificationCenter defaultCenter] postNotificationName:kNotification_Push_SearchPerson object:nil];
+    }];
+}
+
+//跳转到新提醒
+- (void)toNotifyView {
+    [[SlideNavigationController sharedInstance] closeMenuWithCompletion:^{
+        [[NSNotificationCenter defaultCenter] postNotificationName:kNotification_Push_Notify object:nil];
     }];
 }
 
