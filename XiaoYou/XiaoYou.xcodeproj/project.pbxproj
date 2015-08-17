@@ -12,6 +12,8 @@
 		200E39961B4E818B000B587B /* XiaoYouTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 200E39951B4E818B000B587B /* XiaoYouTests.m */; };
 		2076A2F71B81B8F1001FFBAC /* NotifyListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2076A2F61B81B8F1001FFBAC /* NotifyListViewController.m */; };
 		2076A2FB1B81B909001FFBAC /* AddTagViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2076A2FA1B81B909001FFBAC /* AddTagViewController.m */; };
+		2076A3001B81C590001FFBAC /* YCommonActionSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = 2076A2FD1B81C590001FFBAC /* YCommonActionSheet.m */; };
+		2076A3011B81C590001FFBAC /* YCommonAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2076A2FF1B81C590001FFBAC /* YCommonAlertView.m */; };
 		207F80871B7098E3005E8F6A /* AppDelegate+RootVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 207F80861B7098E3005E8F6A /* AppDelegate+RootVC.m */; };
 		207F808A1B7099C2005E8F6A /* AppDelegate+Manager.m in Sources */ = {isa = PBXBuildFile; fileRef = 207F80891B7099C2005E8F6A /* AppDelegate+Manager.m */; };
 		207F808D1B709A1E005E8F6A /* AppDelegate+Notification.m in Sources */ = {isa = PBXBuildFile; fileRef = 207F808C1B709A1E005E8F6A /* AppDelegate+Notification.m */; };
@@ -337,6 +339,10 @@
 		2076A2F61B81B8F1001FFBAC /* NotifyListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotifyListViewController.m; sourceTree = "<group>"; };
 		2076A2F91B81B909001FFBAC /* AddTagViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddTagViewController.h; sourceTree = "<group>"; };
 		2076A2FA1B81B909001FFBAC /* AddTagViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddTagViewController.m; sourceTree = "<group>"; };
+		2076A2FC1B81C590001FFBAC /* YCommonActionSheet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YCommonActionSheet.h; sourceTree = "<group>"; };
+		2076A2FD1B81C590001FFBAC /* YCommonActionSheet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YCommonActionSheet.m; sourceTree = "<group>"; };
+		2076A2FE1B81C590001FFBAC /* YCommonAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YCommonAlertView.h; sourceTree = "<group>"; };
+		2076A2FF1B81C590001FFBAC /* YCommonAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YCommonAlertView.m; sourceTree = "<group>"; };
 		207F80851B7098E3005E8F6A /* AppDelegate+RootVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AppDelegate+RootVC.h"; sourceTree = "<group>"; };
 		207F80861B7098E3005E8F6A /* AppDelegate+RootVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AppDelegate+RootVC.m"; sourceTree = "<group>"; };
 		207F80881B7099C2005E8F6A /* AppDelegate+Manager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AppDelegate+Manager.h"; sourceTree = "<group>"; };
@@ -989,6 +995,10 @@
 		20DC87F81B5F683F0019DC7F /* CommonView */ = {
 			isa = PBXGroup;
 			children = (
+				2076A2FC1B81C590001FFBAC /* YCommonActionSheet.h */,
+				2076A2FD1B81C590001FFBAC /* YCommonActionSheet.m */,
+				2076A2FE1B81C590001FFBAC /* YCommonAlertView.h */,
+				2076A2FF1B81C590001FFBAC /* YCommonAlertView.m */,
 				20DD4B331B734781007C352C /* CommonSwitchView.h */,
 				20DD4B341B734781007C352C /* CommonSwitchView.m */,
 			);
@@ -2331,6 +2341,7 @@
 				6518A2481B80429300AEB79D /* TagListTableView.m in Sources */,
 				6592DCD91B806A9B004CD118 /* GroupApplyTableViewCell.m in Sources */,
 				333122571B806EDB00D3D032 /* EMSDWebImageDecoder.m in Sources */,
+				2076A3001B81C590001FFBAC /* YCommonActionSheet.m in Sources */,
 				3331226B1B806EDB00D3D032 /* PSTCollectionViewItemKey.m in Sources */,
 				6592DCDB1B806A9B004CD118 /* ContactsTableView.m in Sources */,
 				333122521B806EDB00D3D032 /* MWTapDetectingView.m in Sources */,
@@ -2400,6 +2411,7 @@
 				3331227F1B806EDC00D3D032 /* NSDate+Category.m in Sources */,
 				3331222E1B806EDB00D3D032 /* LocationViewController.m in Sources */,
 				3331222F1B806EDB00D3D032 /* DXMessageToolBar.m in Sources */,
+				2076A3011B81C590001FFBAC /* YCommonAlertView.m in Sources */,
 				3331227A1B806EDB00D3D032 /* amrFileCodec.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
