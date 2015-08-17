@@ -275,6 +275,11 @@
 		3335C3901B8178E8007DEFD4 /* VoiceSearchFeedback019@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3335C3601B8178E8007DEFD4 /* VoiceSearchFeedback019@2x.png */; };
 		3335C3911B8178E8007DEFD4 /* VoiceSearchFeedback020.png in Resources */ = {isa = PBXBuildFile; fileRef = 3335C3611B8178E8007DEFD4 /* VoiceSearchFeedback020.png */; };
 		3335C3921B8178E8007DEFD4 /* VoiceSearchFeedback020@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3335C3621B8178E8007DEFD4 /* VoiceSearchFeedback020@2x.png */; };
+		339549831B81BD6700F9ECB1 /* XYGroupInfoDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 339549821B81BD6700F9ECB1 /* XYGroupInfoDetailViewController.m */; };
+		339549861B81BDD500F9ECB1 /* GroupInfoCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 339549851B81BDD500F9ECB1 /* GroupInfoCollectionViewCell.m */; };
+		339549891B81BDFF00F9ECB1 /* GroupInfoDetailCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 339549881B81BDFF00F9ECB1 /* GroupInfoDetailCollectionView.m */; };
+		3395498F1B81C67000F9ECB1 /* GroupInfoDetailHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3395498E1B81C67000F9ECB1 /* GroupInfoDetailHeaderView.m */; };
+		339549921B81C68600F9ECB1 /* GroupInfoDetailFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 339549911B81C68600F9ECB1 /* GroupInfoDetailFooterView.m */; };
 		34AF80435283028D453BFBFC /* libPods-XiaoYou.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 77B574BED9D4FF3F4BFAA9FE /* libPods-XiaoYou.a */; };
 		6518A2481B80429300AEB79D /* TagListTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6518A2471B80429300AEB79D /* TagListTableView.m */; };
 		6518A24B1B80583600AEB79D /* TagListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6518A24A1B80583600AEB79D /* TagListTableViewCell.m */; };
@@ -284,7 +289,6 @@
 		654602171B7F2FF00039F622 /* FeedImageGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 654602161B7F2FF00039F622 /* FeedImageGroup.m */; };
 		6592DCD21B806A9B004CD118 /* XYChoicePersonViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6592DCB01B806A9B004CD118 /* XYChoicePersonViewController.m */; };
 		6592DCD31B806A9B004CD118 /* XYContactsInfoDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6592DCB31B806A9B004CD118 /* XYContactsInfoDetailViewController.m */; };
-		6592DCD41B806A9B004CD118 /* XYGroupInfoDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6592DCB51B806A9B004CD118 /* XYGroupInfoDetailViewController.m */; };
 		6592DCD51B806A9B004CD118 /* FriendApplyTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6592DCB81B806A9B004CD118 /* FriendApplyTableView.m */; };
 		6592DCD61B806A9B004CD118 /* FriendApplyTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6592DCBA1B806A9B004CD118 /* FriendApplyTableViewCell.m */; };
 		6592DCD71B806A9B004CD118 /* XYFriendApplyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6592DCBC1B806A9B004CD118 /* XYFriendApplyViewController.m */; };
@@ -712,6 +716,22 @@
 		3335C3601B8178E8007DEFD4 /* VoiceSearchFeedback019@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "VoiceSearchFeedback019@2x.png"; sourceTree = "<group>"; };
 		3335C3611B8178E8007DEFD4 /* VoiceSearchFeedback020.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = VoiceSearchFeedback020.png; sourceTree = "<group>"; };
 		3335C3621B8178E8007DEFD4 /* VoiceSearchFeedback020@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "VoiceSearchFeedback020@2x.png"; sourceTree = "<group>"; };
+		3335C3931B81AFC6007DEFD4 /* libstdc++.6.0.9.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.6.0.9.dylib"; path = "usr/lib/libstdc++.6.0.9.dylib"; sourceTree = SDKROOT; };
+		3335C3951B81AFFC007DEFD4 /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
+		3335C3971B81B008007DEFD4 /* libresolv.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libresolv.dylib; path = usr/lib/libresolv.dylib; sourceTree = SDKROOT; };
+		3335C3991B81B010007DEFD4 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		3335C39B1B81B01B007DEFD4 /* libiconv.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libiconv.dylib; path = usr/lib/libiconv.dylib; sourceTree = SDKROOT; };
+		3335C39E1B81B030007DEFD4 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
+		339549811B81BD6700F9ECB1 /* XYGroupInfoDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYGroupInfoDetailViewController.h; sourceTree = "<group>"; };
+		339549821B81BD6700F9ECB1 /* XYGroupInfoDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYGroupInfoDetailViewController.m; sourceTree = "<group>"; };
+		339549841B81BDD500F9ECB1 /* GroupInfoCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroupInfoCollectionViewCell.h; sourceTree = "<group>"; };
+		339549851B81BDD500F9ECB1 /* GroupInfoCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroupInfoCollectionViewCell.m; sourceTree = "<group>"; };
+		339549871B81BDFF00F9ECB1 /* GroupInfoDetailCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroupInfoDetailCollectionView.h; sourceTree = "<group>"; };
+		339549881B81BDFF00F9ECB1 /* GroupInfoDetailCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroupInfoDetailCollectionView.m; sourceTree = "<group>"; };
+		3395498D1B81C67000F9ECB1 /* GroupInfoDetailHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroupInfoDetailHeaderView.h; sourceTree = "<group>"; };
+		3395498E1B81C67000F9ECB1 /* GroupInfoDetailHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroupInfoDetailHeaderView.m; sourceTree = "<group>"; };
+		339549901B81C68600F9ECB1 /* GroupInfoDetailFooterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroupInfoDetailFooterView.h; sourceTree = "<group>"; };
+		339549911B81C68600F9ECB1 /* GroupInfoDetailFooterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroupInfoDetailFooterView.m; sourceTree = "<group>"; };
 		6518A2461B80429300AEB79D /* TagListTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TagListTableView.h; sourceTree = "<group>"; };
 		6518A2471B80429300AEB79D /* TagListTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TagListTableView.m; sourceTree = "<group>"; };
 		6518A2491B80583600AEB79D /* TagListTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TagListTableViewCell.h; sourceTree = "<group>"; };
@@ -728,8 +748,6 @@
 		6592DCB01B806A9B004CD118 /* XYChoicePersonViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYChoicePersonViewController.m; sourceTree = "<group>"; };
 		6592DCB21B806A9B004CD118 /* XYContactsInfoDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYContactsInfoDetailViewController.h; sourceTree = "<group>"; };
 		6592DCB31B806A9B004CD118 /* XYContactsInfoDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYContactsInfoDetailViewController.m; sourceTree = "<group>"; };
-		6592DCB41B806A9B004CD118 /* XYGroupInfoDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYGroupInfoDetailViewController.h; sourceTree = "<group>"; };
-		6592DCB51B806A9B004CD118 /* XYGroupInfoDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYGroupInfoDetailViewController.m; sourceTree = "<group>"; };
 		6592DCB71B806A9B004CD118 /* FriendApplyTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendApplyTableView.h; sourceTree = "<group>"; };
 		6592DCB81B806A9B004CD118 /* FriendApplyTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendApplyTableView.m; sourceTree = "<group>"; };
 		6592DCB91B806A9B004CD118 /* FriendApplyTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendApplyTableViewCell.h; sourceTree = "<group>"; };
@@ -858,6 +876,12 @@
 		200E39E01B4E8696000B587B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				3335C39E1B81B030007DEFD4 /* libsqlite3.dylib */,
+				3335C39B1B81B01B007DEFD4 /* libiconv.dylib */,
+				3335C3991B81B010007DEFD4 /* libz.dylib */,
+				3335C3971B81B008007DEFD4 /* libresolv.dylib */,
+				3335C3951B81AFFC007DEFD4 /* libxml2.dylib */,
+				3335C3931B81AFC6007DEFD4 /* libstdc++.6.0.9.dylib */,
 				20DBFD5C1B4FA127009134D0 /* libComponent.a */,
 				20DBFD5A1B4FA125009134D0 /* libModel.a */,
 				20DBFD581B4FA122009134D0 /* libYFramework.a */,
@@ -911,6 +935,7 @@
 				333120E51B806EDA00D3D032 /* ChatView */,
 				3331211A1B806EDB00D3D032 /* ChatViewNeeds */,
 				6592DCAE1B806A9B004CD118 /* ChoicePerson */,
+				339549801B81BD5600F9ECB1 /* GroupInfoDetail */,
 				6592DCB11B806A9B004CD118 /* ContactsInfoDetail */,
 				6592DCB61B806A9B004CD118 /* FriendApply */,
 				6592DCBD1B806A9B004CD118 /* GroupApply */,
@@ -1813,6 +1838,23 @@
 			path = audio;
 			sourceTree = "<group>";
 		};
+		339549801B81BD5600F9ECB1 /* GroupInfoDetail */ = {
+			isa = PBXGroup;
+			children = (
+				339549811B81BD6700F9ECB1 /* XYGroupInfoDetailViewController.h */,
+				339549821B81BD6700F9ECB1 /* XYGroupInfoDetailViewController.m */,
+				339549871B81BDFF00F9ECB1 /* GroupInfoDetailCollectionView.h */,
+				339549881B81BDFF00F9ECB1 /* GroupInfoDetailCollectionView.m */,
+				3395498D1B81C67000F9ECB1 /* GroupInfoDetailHeaderView.h */,
+				3395498E1B81C67000F9ECB1 /* GroupInfoDetailHeaderView.m */,
+				339549901B81C68600F9ECB1 /* GroupInfoDetailFooterView.h */,
+				339549911B81C68600F9ECB1 /* GroupInfoDetailFooterView.m */,
+				339549841B81BDD500F9ECB1 /* GroupInfoCollectionViewCell.h */,
+				339549851B81BDD500F9ECB1 /* GroupInfoCollectionViewCell.m */,
+			);
+			path = GroupInfoDetail;
+			sourceTree = "<group>";
+		};
 		653CB2E81B806BFD006ECBB2 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
@@ -1849,8 +1891,6 @@
 			children = (
 				6592DCB21B806A9B004CD118 /* XYContactsInfoDetailViewController.h */,
 				6592DCB31B806A9B004CD118 /* XYContactsInfoDetailViewController.m */,
-				6592DCB41B806A9B004CD118 /* XYGroupInfoDetailViewController.h */,
-				6592DCB51B806A9B004CD118 /* XYGroupInfoDetailViewController.m */,
 			);
 			path = ContactsInfoDetail;
 			sourceTree = "<group>";
@@ -2209,6 +2249,7 @@
 				333122641B806EDB00D3D032 /* UIView+EMWebCacheOperation.m in Sources */,
 				3331224F1B806EDB00D3D032 /* MWPhoto.m in Sources */,
 				653CB2EE1B806BFD006ECBB2 /* ChineseString.m in Sources */,
+				339549921B81C68600F9ECB1 /* GroupInfoDetailFooterView.m in Sources */,
 				6592DCD61B806A9B004CD118 /* FriendApplyTableViewCell.m in Sources */,
 				6592DCD21B806A9B004CD118 /* XYChoicePersonViewController.m in Sources */,
 				3331223E1B806EDB00D3D032 /* MessageModelManager.m in Sources */,
@@ -2232,7 +2273,6 @@
 				3331227B1B806EDB00D3D032 /* wav.mm in Sources */,
 				3331225B1B806EDB00D3D032 /* EMSDWebImagePrefetcher.m in Sources */,
 				3331222D1B806EDB00D3D032 /* ConvertToCommonEmoticonsHelper.m in Sources */,
-				6592DCD41B806A9B004CD118 /* XYGroupInfoDetailViewController.m in Sources */,
 				333122831B806EDC00D3D032 /* UIViewController+DismissKeyboard.m in Sources */,
 				333122841B806EDC00D3D032 /* UIViewController+HUD.m in Sources */,
 				333122821B806EDC00D3D032 /* UIResponder+Router.m in Sources */,
@@ -2269,6 +2309,7 @@
 				333122521B806EDB00D3D032 /* MWTapDetectingView.m in Sources */,
 				653199DE1B80B41C00405B72 /* ConnectTag.m in Sources */,
 				3331223C1B806EDB00D3D032 /* EMChatViewCell.m in Sources */,
+				339549891B81BDFF00F9ECB1 /* GroupInfoDetailCollectionView.m in Sources */,
 				6592DCDA1B806A9B004CD118 /* XYGroupApplyViewController.m in Sources */,
 				3331224E1B806EDB00D3D032 /* MWGridViewController.m in Sources */,
 				3331224C1B806EDB00D3D032 /* MWCaptionView.m in Sources */,
@@ -2278,6 +2319,7 @@
 				6592DCDE1B806A9B004CD118 /* MessageTableViewCell.m in Sources */,
 				20E1222D1B708CDC00F90BD3 /* TagListViewController.m in Sources */,
 				333122681B806EDB00D3D032 /* PSTCollectionViewController.m in Sources */,
+				339549831B81BD6700F9ECB1 /* XYGroupInfoDetailViewController.m in Sources */,
 				333122311B806EDB00D3D032 /* FacialView.m in Sources */,
 				3331226F1B806EDB00D3D032 /* PSTGridLayoutItem.m in Sources */,
 				333122701B806EDB00D3D032 /* PSTGridLayoutRow.m in Sources */,
@@ -2301,12 +2343,14 @@
 				3331222C1B806EDB00D3D032 /* ChatViewController.m in Sources */,
 				333122661B806EDB00D3D032 /* PSTCollectionView.m in Sources */,
 				333122491B806EDB00D3D032 /* EmojiEmoticons.m in Sources */,
+				339549861B81BDD500F9ECB1 /* GroupInfoCollectionViewCell.m in Sources */,
 				333122601B806EDB00D3D032 /* UIImage+EMMultiFormat.m in Sources */,
 				6592DCDF1B806A9B004CD118 /* XYMessageAndContactsViewController.m in Sources */,
 				3331226E1B806EDB00D3D032 /* PSTGridLayoutInfo.m in Sources */,
 				20DC5CD01B7B4FA00059B6E6 /* FeedListTableViewCell.m in Sources */,
 				20E18D561B807752005B75EE /* AssociationsListViewController.m in Sources */,
 				333122541B806EDB00D3D032 /* DACircularProgressView.m in Sources */,
+				3395498F1B81C67000F9ECB1 /* GroupInfoDetailHeaderView.m in Sources */,
 				333122801B806EDC00D3D032 /* NSDateFormatter+Category.m in Sources */,
 				3331227C1B806EDB00D3D032 /* EMVoiceConverter.mm in Sources */,
 				333122361B806EDB00D3D032 /* EMChatImageBubbleView.m in Sources */,
