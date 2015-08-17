@@ -29,13 +29,22 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    [[EaseMob sharedInstance].chatManager asyncRegisterNewAccount:@"yinhui" password:@"123123" withCompletion:^(NSString *username, NSString *password, EMError *error) {
-        if (!error) {
-            YLogD(@"注册成功");
-        }
-    } onQueue:nil];
+//    [[EaseMob sharedInstance].chatManager asyncRegisterNewAccount:@"yinhui" password:@"123123" withCompletion:^(NSString *username, NSString *password, EMError *error) {
+//        if (!error) {
+//            YLogD(@"注册成功");
+//        }
+//    } onQueue:nil];
     
-    
+    BOOL isAutoLogin = [[EaseMob sharedInstance].chatManager isAutoLoginEnabled];
+    if (!isAutoLogin)
+    {
+        [[EaseMob sharedInstance].chatManager asyncLoginWithUsername:@"yinhui" password:@"123123" completion:^(NSDictionary *loginInfo, EMError *error) {
+            if (!error && loginInfo) {
+                YLogD(@"登陆成功");
+                [[EaseMob sharedInstance].chatManager setIsAutoLoginEnabled:YES];
+            }
+        } onQueue:nil];
+    }
     
     
     [self initControllers];

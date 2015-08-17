@@ -293,7 +293,6 @@
 		339549861B81BDD500F9ECB1 /* GroupInfoCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 339549851B81BDD500F9ECB1 /* GroupInfoCollectionViewCell.m */; };
 		339549891B81BDFF00F9ECB1 /* GroupInfoDetailCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 339549881B81BDFF00F9ECB1 /* GroupInfoDetailCollectionView.m */; };
 		3395498F1B81C67000F9ECB1 /* GroupInfoDetailHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3395498E1B81C67000F9ECB1 /* GroupInfoDetailHeaderView.m */; };
-		339549921B81C68600F9ECB1 /* GroupInfoDetailFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 339549911B81C68600F9ECB1 /* GroupInfoDetailFooterView.m */; };
 		34AF80435283028D453BFBFC /* libPods-XiaoYou.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 77B574BED9D4FF3F4BFAA9FE /* libPods-XiaoYou.a */; };
 		6518A2481B80429300AEB79D /* TagListTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6518A2471B80429300AEB79D /* TagListTableView.m */; };
 		6518A24B1B80583600AEB79D /* TagListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6518A24A1B80583600AEB79D /* TagListTableViewCell.m */; };
@@ -765,8 +764,6 @@
 		339549881B81BDFF00F9ECB1 /* GroupInfoDetailCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroupInfoDetailCollectionView.m; sourceTree = "<group>"; };
 		3395498D1B81C67000F9ECB1 /* GroupInfoDetailHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroupInfoDetailHeaderView.h; sourceTree = "<group>"; };
 		3395498E1B81C67000F9ECB1 /* GroupInfoDetailHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroupInfoDetailHeaderView.m; sourceTree = "<group>"; };
-		339549901B81C68600F9ECB1 /* GroupInfoDetailFooterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroupInfoDetailFooterView.h; sourceTree = "<group>"; };
-		339549911B81C68600F9ECB1 /* GroupInfoDetailFooterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroupInfoDetailFooterView.m; sourceTree = "<group>"; };
 		6518A2461B80429300AEB79D /* TagListTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TagListTableView.h; sourceTree = "<group>"; };
 		6518A2471B80429300AEB79D /* TagListTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TagListTableView.m; sourceTree = "<group>"; };
 		6518A2491B80583600AEB79D /* TagListTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TagListTableViewCell.h; sourceTree = "<group>"; };
@@ -1923,8 +1920,6 @@
 				339549881B81BDFF00F9ECB1 /* GroupInfoDetailCollectionView.m */,
 				3395498D1B81C67000F9ECB1 /* GroupInfoDetailHeaderView.h */,
 				3395498E1B81C67000F9ECB1 /* GroupInfoDetailHeaderView.m */,
-				339549901B81C68600F9ECB1 /* GroupInfoDetailFooterView.h */,
-				339549911B81C68600F9ECB1 /* GroupInfoDetailFooterView.m */,
 				339549841B81BDD500F9ECB1 /* GroupInfoCollectionViewCell.h */,
 				339549851B81BDD500F9ECB1 /* GroupInfoCollectionViewCell.m */,
 			);
@@ -2348,7 +2343,6 @@
 				333122641B806EDB00D3D032 /* UIView+EMWebCacheOperation.m in Sources */,
 				3331224F1B806EDB00D3D032 /* MWPhoto.m in Sources */,
 				653CB2EE1B806BFD006ECBB2 /* ChineseString.m in Sources */,
-				339549921B81C68600F9ECB1 /* GroupInfoDetailFooterView.m in Sources */,
 				6592DCD61B806A9B004CD118 /* FriendApplyTableViewCell.m in Sources */,
 				6592DCD21B806A9B004CD118 /* XYChoicePersonViewController.m in Sources */,
 				3331223E1B806EDB00D3D032 /* MessageModelManager.m in Sources */,

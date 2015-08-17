@@ -8,6 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
+extern NSString *const kGroupInfoCollectionViewCell;
+
 @interface GroupInfoCollectionViewCell : UICollectionViewCell
+
+-(void)setCellInfo:(NSDictionary *) groupDic;
 
 @end

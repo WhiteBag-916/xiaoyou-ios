@@ -12,6 +12,7 @@
 #import "ChatViewController.h"
 #import "Masonry.h"
 #import "YColor+Ext.h"
+#import "XYGroupInfoDetailViewController.h"
 
 #define kRowHeight                     60
 #define kHeadWidthAndHeight            40
@@ -129,7 +130,8 @@
 
 -(void)tapGestureRecognizerAction
 {
-    
+    XYGroupInfoDetailViewController * groupVC = [[XYGroupInfoDetailViewController alloc] init];
+    [self.myController.navigationController pushViewController:groupVC animated:YES];
 }
 
 #pragma mark - UITableViewDataSource和UITableViewDelegate
@@ -186,7 +188,7 @@
 
     self.myController.hidesBottomBarWhenPushed = YES;
 
-    ChatViewController * chatVC = [[ChatViewController alloc] initWithChatter:@"123123" isGroup:NO];
+    ChatViewController * chatVC = [[ChatViewController alloc] initWithChatter:@"xiaoaliu" isGroup:NO];
     [self.myController.navigationController pushViewController:chatVC animated:YES];
     
 }

@@ -7,8 +7,11 @@
 //
 
 #import "XYGroupInfoDetailViewController.h"
+#import "GroupInfoDetailCollectionView.h"
 
 @interface XYGroupInfoDetailViewController ()
+
+@property (nonatomic,strong) GroupInfoDetailCollectionView * groupInfoDetailCollectionView;
 
 @end
 
@@ -17,6 +20,18 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    self.title = @"详情";
+    [self setUpUI];
+    
+}
+
+-(void)setUpUI
+{
+    UICollectionViewFlowLayout * flowLayout = [[UICollectionViewFlowLayout alloc] init];
+    flowLayout.scrollDirection = UICollectionViewScrollDirectionVertical;
+    flowLayout.itemSize = CGSizeMake(70, 70);
+    _groupInfoDetailCollectionView = [[GroupInfoDetailCollectionView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT-KTabBarheight-KNavigationBarheight) collectionViewLayout:flowLayout];
+    [self.view addSubview:_groupInfoDetailCollectionView];
 }
 
 - (void)didReceiveMemoryWarning {

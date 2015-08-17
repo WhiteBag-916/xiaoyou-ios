@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface GroupInfoDetailHeaderView : UIView
+extern NSString *const kGroupInfoDetailHeaderView;
+
+@interface GroupInfoDetailHeaderView : UICollectionReusableView
 
 @end
