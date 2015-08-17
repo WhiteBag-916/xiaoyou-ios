@@ -22,5 +22,6 @@
 #define KCOLORWHITE_C5CACF [UIColor colorWithRed:0.773f green:0.792f blue:0.812f alpha:1.00f]
 #define KCOLORGREEN_32424A [UIColor colorWithRed:0.196f green:0.259f blue:0.290f alpha:1.00f]
 #define KCOLORGREEN_009788 [UIColor hexChangeFloat:@"009788"]
+#define KCOLORGREEN_f2f2f2 [UIColor hexChangeFloat:@"f2f2f2"]
 
 #endif

@@ -110,6 +110,11 @@
         make.height.mas_equalTo(0.5);
     }];
     line.backgroundColor = KCOLORWHITE_C5CACF;
+    
+    //增加点击跳转到动态列表
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(toSearchPerson)];
+    _searchLabel.userInteractionEnabled = YES;
+    [_searchLabel addGestureRecognizer:tap];
 }
 
 - (void)initBottomView {
@@ -167,9 +172,17 @@
     // Dispose of any resources that can be recreated.
 }
 
+//跳转社团
 - (void)toAssociationsList {
     [[SlideNavigationController sharedInstance] closeMenuWithCompletion:^{
         [[NSNotificationCenter defaultCenter] postNotificationName:kNotification_Push_AssociationsList object:nil];
+    }];
+}
+
+//跳转找人
+- (void)toSearchPerson {
+    [[SlideNavigationController sharedInstance] closeMenuWithCompletion:^{
+        [[NSNotificationCenter defaultCenter] postNotificationName:kNotification_Push_SearchPerson object:nil];
     }];
 }
 

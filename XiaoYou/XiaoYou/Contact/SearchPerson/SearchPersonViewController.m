@@ -8,6 +8,19 @@
 
 #import "SearchPersonViewController.h"
 
+@interface SearchPersonViewController ()
+
+@end
+
 @implementation SearchPersonViewController
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    // Do any additional setup after loading the view.
+    
+    [self showCustomNavigationBackButton];
+    [self showCustomNavigationSearchButton];
+    self.title = @"找人";
+}
 
 @end

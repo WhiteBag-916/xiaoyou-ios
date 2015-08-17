@@ -14,6 +14,7 @@
 #import "AssociationsListViewController.h"
 #import "YNotificationDefine.h"
 #import "BBBadgeBarButtonItem.h"
+#import "SearchPersonViewController.h"
 
 @interface FeedListViewController ()
 
@@ -93,6 +94,7 @@
 
 - (void)initNotification {
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(toAssociationsList) name:kNotification_Push_AssociationsList object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(toSearchPerson) name:kNotification_Push_SearchPerson object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(openShare:) name:kNotification_Push_FeedDetail object:nil];
 }
 
@@ -112,6 +114,13 @@
     self.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:associationsListViewController animated:YES];
 }
+
+- (void)toSearchPerson {
+    SearchPersonViewController *searchPersonViewController = [[SearchPersonViewController alloc] init];
+    self.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:searchPersonViewController animated:YES];
+}
+
 - (void)openShare:(NSNotification *) notification{
     NSDictionary *dic = [notification object];
 }

@@ -37,9 +37,6 @@
 //导航栏左侧显示返回按钮
 - (void)showCustomNavigationBackButton;
 
-//导航栏左侧显示返回按钮
-- (void)showCustomNavigationBackButtonNoPop;
-
 //导航栏左侧显示取消按钮
 - (void)showCustomNavigationCancelButton;
 
@@ -54,6 +51,9 @@
 
 //导航栏右侧下一步按钮
 - (void)showCustomNavigationNextButton;
+
+//导航栏右侧，搜索按钮
+- (void)showCustomNavigationSearchButton;
 
 
 @end

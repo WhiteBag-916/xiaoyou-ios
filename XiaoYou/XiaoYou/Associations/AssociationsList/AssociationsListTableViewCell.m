@@ -50,6 +50,7 @@ NSString *const kAssociationsListTableViewCell = @"AssociationsListTableViewCell
         [self initView];
         
         self.selectionStyle = UITableViewCellSelectionStyleNone;
+        self.contentView.backgroundColor = KCOLORGREEN_f2f2f2;
     }
     
     return self;
@@ -126,6 +127,15 @@ NSString *const kAssociationsListTableViewCell = @"AssociationsListTableViewCell
         make.right.mas_equalTo(K_CONTENT_R);
         make.bottom.mas_equalTo(K_KEY_B);
     }];
+    
+    //7
+    UIView *line = [[UIView alloc] init];
+    [self.contentView addSubview:line];
+    [line mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.bottom.right.equalTo(self.contentView);
+        make.height.mas_equalTo(0.5);
+    }];
+    line.backgroundColor = KCOLORWHITE;
 }
 
 - (void)initStarView

@@ -10,6 +10,7 @@
 #define Component_YNotificationDefine_h
 
 #define kNotification_Push_AssociationsList             @"kNotification_Push_AssociationsList"
+#define kNotification_Push_SearchPerson                 @"kNotification_Push_SearchPerson"
 #define kNotification_Push_FeedDetail                   @"kNotification_Push_FeedDetail"
 
 #endif
