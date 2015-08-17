@@ -11,6 +11,7 @@
 
 #define kNotification_Push_AssociationsList             @"kNotification_Push_AssociationsList"
 #define kNotification_Push_SearchPerson                 @"kNotification_Push_SearchPerson"
+#define kNotification_Push_Notify                       @"kNotification_Push_Notify"
 #define kNotification_Push_FeedDetail                   @"kNotification_Push_FeedDetail"
 
 #endif

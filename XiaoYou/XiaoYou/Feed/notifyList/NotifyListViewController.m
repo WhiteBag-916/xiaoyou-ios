@@ -10,4 +10,17 @@
 
 @implementation NotifyListViewController
 
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    // Do any additional setup after loading the view.
+    
+    [self showCustomNavigationBackButton];
+    [self showCustomNavigationMoreButton];
+    self.title = @"新提醒";
+}
+
+- (void)moreBarAction {
+    
+}
+
 @end

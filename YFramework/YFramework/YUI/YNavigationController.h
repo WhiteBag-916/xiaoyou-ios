@@ -9,4 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface UINavigationController (MethodSwizzling)<UIGestureRecognizerDelegate>
+
+- (void)pushViewController:(UIViewController *)viewController animated:(BOOL)animated from:(UIViewController *)fromViewController;
+
 @end

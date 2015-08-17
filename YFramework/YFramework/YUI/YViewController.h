@@ -55,5 +55,8 @@
 //导航栏右侧，搜索按钮
 - (void)showCustomNavigationSearchButton;
 
+//导航栏右侧，更多按钮
+- (void)showCustomNavigationMoreButton;
+
 
 @end

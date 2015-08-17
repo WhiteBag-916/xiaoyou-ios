@@ -143,6 +143,10 @@
     
 }
 
+- (void)moreBarAction {
+    
+}
+
 - (void)showCustomNavigationBackButton
 {
     //导航栏的左边按钮
@@ -207,14 +211,22 @@
 }
 
 //导航栏右侧，搜索按钮
-- (void)showCustomNavigationSearchButton
-{
+- (void)showCustomNavigationSearchButton {
+    [self showNomalNavigationRightButtonWithImage:@"common_search" action:@selector(searchBarAction)];
+}
+
+//导航栏右侧，更多按钮
+- (void)showCustomNavigationMoreButton {
+    [self showNomalNavigationRightButtonWithImage:@"menu" action:@selector(moreBarAction)];
+}
+
+- (void)showNomalNavigationRightButtonWithImage:(NSString *)image action:(SEL)selector {
     //right barbutton view
     _navigationRightButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [_navigationRightButton setImage:[UIImage imageNamed:@"common_search"] forState:UIControlStateNormal];
-    [_navigationRightButton setImage:[UIImage imageNamed:@"common_search"] forState:UIControlStateHighlighted];
+    [_navigationRightButton setImage:[UIImage imageNamed:image] forState:UIControlStateNormal];
+    [_navigationRightButton setImage:[UIImage imageNamed:image] forState:UIControlStateHighlighted];
     _navigationRightButton.frame = CGRectMake(0, 0, 30, 64);
-    [_navigationRightButton addTarget:self action:@selector(searchBarAction) forControlEvents:UIControlEventTouchUpInside];
+    [_navigationRightButton addTarget:self action:selector forControlEvents:UIControlEventTouchUpInside];
     UIBarButtonItem *btnNavRightItem = [[UIBarButtonItem alloc] initWithCustomView:_navigationRightButton];
     self.navigationItem.rightBarButtonItem = btnNavRightItem;
 }
