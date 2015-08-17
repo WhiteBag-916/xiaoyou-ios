@@ -66,11 +66,11 @@ NSString *const kOrganizationFeedListTableViewCell = @"OrganizationFeedListTable
 {
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier])
     {
-        if ([reuseIdentifier isEqualToString:kFeedListTableViewCell]) {
+        if ([reuseIdentifier isEqualToString:kOrganizationFeedListTableViewCell]) {
+            _isOrganization = true;
+        } else {
             _isOrganization = false;
             [self initTopView];
-        } else {
-            _isOrganization = true;
         }
         [self initMiddleView];
         [self initBottomView];
@@ -189,7 +189,8 @@ NSString *const kOrganizationFeedListTableViewCell = @"OrganizationFeedListTable
             make.left.centerX.equalTo(_contentLabel);
         } else {
             make.top.equalTo(_tagLabel.mas_bottom).offset(15);
-            make.left.centerX.equalTo(_topView);
+            make.centerX.equalTo(_topView);
+            make.left.equalTo(_tagIcon);
         }
         make.bottom.equalTo(self.contentView).offset(-10);
         make.height.mas_equalTo(KBOTTOMHEIGHT);
@@ -237,7 +238,6 @@ NSString *const kOrganizationFeedListTableViewCell = @"OrganizationFeedListTable
     [bottomView addSubview:_respectNum];
     [_respectNum mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.bottom.right.equalTo(bottomView);
-        make.width.mas_equalTo(SCALE_NUM(50));
     }];
     
     _respectImg = [[UIImageView alloc] init];

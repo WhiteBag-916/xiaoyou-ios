@@ -5,13 +5,13 @@
 	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
-	<string>80D9DC72-1534-40BF-9773-DCB470B0FA74</string>
+	<string>FFA9AA4A-8420-4856-8155-5F6B1F257CC8</string>
 	<key>IDESourceControlProjectName</key>
 	<string>XiaoYou</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
 		<key>A716B9EAC4333E6D582A4535B63BDA9DA8E4A2C5</key>
-		<string>gitlab.azqian.com:xiongchen/xiaoyou_ios.git</string>
+		<string>gitlab.xiaoyou.com:xiongchen/xiaoyou_ios.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>XiaoYou.xcworkspace</string>
@@ -21,7 +21,7 @@
 		<string>..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>gitlab.azqian.com:xiongchen/xiaoyou_ios.git</string>
+	<string>gitlab.xiaoyou.com:xiongchen/xiaoyou_ios.git</string>
 	<key>IDESourceControlProjectVersion</key>
 	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>

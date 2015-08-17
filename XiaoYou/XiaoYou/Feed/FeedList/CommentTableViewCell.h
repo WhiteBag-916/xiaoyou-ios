@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
+extern NSString *const KCommentTableViewCell;
 @interface CommentTableViewCell : UITableViewCell
-
+- (void)setData;
 @end

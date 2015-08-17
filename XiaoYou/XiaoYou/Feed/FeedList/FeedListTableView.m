@@ -27,6 +27,7 @@
         self.dataSource = self;
         
         [self registerClass:[FeedListTableViewCell class] forCellReuseIdentifier:kFeedListTableViewCell];
+        self.tableFooterView = [[UIView alloc] init];
         _feedListArray = [NSArray array];
         self.fd_debugLogEnabled = false;
     }
@@ -41,12 +42,12 @@
 #pragma mark - UITableViewDataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 1;
+    return _feedListArray.count;
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return _feedListArray.count;
+    return 1;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
