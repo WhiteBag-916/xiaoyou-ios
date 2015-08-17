@@ -13,6 +13,7 @@
 		207F80871B7098E3005E8F6A /* AppDelegate+RootVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 207F80861B7098E3005E8F6A /* AppDelegate+RootVC.m */; };
 		207F808A1B7099C2005E8F6A /* AppDelegate+Manager.m in Sources */ = {isa = PBXBuildFile; fileRef = 207F80891B7099C2005E8F6A /* AppDelegate+Manager.m */; };
 		207F808D1B709A1E005E8F6A /* AppDelegate+Notification.m in Sources */ = {isa = PBXBuildFile; fileRef = 207F808C1B709A1E005E8F6A /* AppDelegate+Notification.m */; };
+		20DA35F71B81E89F002E5A96 /* SearchPersonViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20DA35F61B81E89F002E5A96 /* SearchPersonViewController.m */; };
 		20DA63761B7482DE007D22AC /* FeedListTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 20DA63751B7482DE007D22AC /* FeedListTableView.m */; };
 		20DBFD591B4FA122009134D0 /* libYFramework.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 20DBFD581B4FA122009134D0 /* libYFramework.a */; };
 		20DBFD5B1B4FA125009134D0 /* libModel.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 20DBFD5A1B4FA125009134D0 /* libModel.a */; };
@@ -284,6 +285,8 @@
 		207F80891B7099C2005E8F6A /* AppDelegate+Manager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AppDelegate+Manager.m"; sourceTree = "<group>"; };
 		207F808B1B709A1E005E8F6A /* AppDelegate+Notification.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AppDelegate+Notification.h"; sourceTree = "<group>"; };
 		207F808C1B709A1E005E8F6A /* AppDelegate+Notification.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AppDelegate+Notification.m"; sourceTree = "<group>"; };
+		20DA35F51B81E89F002E5A96 /* SearchPersonViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchPersonViewController.h; sourceTree = "<group>"; };
+		20DA35F61B81E89F002E5A96 /* SearchPersonViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchPersonViewController.m; sourceTree = "<group>"; };
 		20DA63741B7482DE007D22AC /* FeedListTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedListTableView.h; sourceTree = "<group>"; };
 		20DA63751B7482DE007D22AC /* FeedListTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedListTableView.m; sourceTree = "<group>"; };
 		20DBFB581B4F9CE3009134D0 /* libXModel.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libXModel.a; path = "../XModel/build/Debug-iphoneos/libXModel.a"; sourceTree = "<group>"; };
@@ -727,7 +730,7 @@
 				20DC87EF1B5F3D570019DC7F /* Login */,
 				20E122181B705D4E00F90BD3 /* Feed */,
 				20E18D4B1B807752005B75EE /* Associations */,
-				20DBFD6F1B4FA90B009134D0 /* Contact */,
+				20DA35F31B81E89F002E5A96 /* Contact */,
 				20DBFD701B4FA90B009134D0 /* Message */,
 				20DD4B2E1B7345E6007C352C /* Profile */,
 				20DC87F81B5F683F0019DC7F /* CommonView */,
@@ -781,6 +784,23 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		20DA35F31B81E89F002E5A96 /* Contact */ = {
+			isa = PBXGroup;
+			children = (
+				20DA35F41B81E89F002E5A96 /* SearchPerson */,
+			);
+			path = Contact;
+			sourceTree = "<group>";
+		};
+		20DA35F41B81E89F002E5A96 /* SearchPerson */ = {
+			isa = PBXGroup;
+			children = (
+				20DA35F51B81E89F002E5A96 /* SearchPersonViewController.h */,
+				20DA35F61B81E89F002E5A96 /* SearchPersonViewController.m */,
+			);
+			path = SearchPerson;
+			sourceTree = "<group>";
+		};
 		20DBFD601B4FA7E1009134D0 /* Main */ = {
 			isa = PBXGroup;
 			children = (
@@ -796,13 +816,6 @@
 				20E122121B705C2100F90BD3 /* XYTabBarViewController.m */,
 			);
 			path = Main;
-			sourceTree = "<group>";
-		};
-		20DBFD6F1B4FA90B009134D0 /* Contact */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Contact;
 			sourceTree = "<group>";
 		};
 		20DBFD701B4FA90B009134D0 /* Message */ = {
@@ -2111,6 +2124,7 @@
 				20E18D551B807752005B75EE /* AssociationsListTableViewCell.m in Sources */,
 				333122851B806EDC00D3D032 /* XHMessageTextView.m in Sources */,
 				333122611B806EDB00D3D032 /* UIImage+EMWebP.m in Sources */,
+				20DA35F71B81E89F002E5A96 /* SearchPersonViewController.m in Sources */,
 				6592DCE01B806A9B004CD118 /* XYSendMessageViewController.m in Sources */,
 				333122461B806EDB00D3D032 /* EMCDDeviceManagerBase.m in Sources */,
 				3331222C1B806EDB00D3D032 /* ChatViewController.m in Sources */,
