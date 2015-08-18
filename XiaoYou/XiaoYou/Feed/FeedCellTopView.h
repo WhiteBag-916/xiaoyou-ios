@@ -9,6 +9,14 @@
 #import <UIKit/UIKit.h>
 @class ConnectTag;
 
+@interface FeedCellTopModel : NSObject
+@property (nonatomic, strong) NSString  *userId;
+@property (nonatomic, strong) NSString  *imgUrl;
+@property (nonatomic, strong) NSString  *userName;
+@property (nonatomic, strong) NSDate    *publishDate;
+@property (nonatomic, strong) NSArray   *tagList;
+@end
+
 @interface FeedCellTopView : UIView
 
 @property (nonatomic, strong, readonly) UIImageView *contactHeadImageView;    //头像
@@ -19,6 +27,6 @@
 
 - (id)initWithType:(int)type;
 
-- (void)setData;
+- (void)setData:(FeedCellTopModel *)data;
 
 @end

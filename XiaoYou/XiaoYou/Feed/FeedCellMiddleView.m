@@ -36,16 +36,22 @@
         [_contentLabel mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.right.top.equalTo(self);
         }];
+        if (type != FeedCommentType) {
+            _imgGroup = [[FeedImageGroup alloc] init];
+            [self addSubview:_imgGroup];
+            [_imgGroup mas_makeConstraints:^(MASConstraintMaker *make) {
+                make.left.right.equalTo(_contentLabel);
+                make.top.equalTo(_contentLabel.mas_bottom).offset(KTAGMARGIN_TOP);
+            }];
+            [self mas_makeConstraints:^(MASConstraintMaker *make) {
+                make.bottom.mas_equalTo(_imgGroup);
+            }];
+        } else {
+            [self mas_makeConstraints:^(MASConstraintMaker *make) {
+                make.bottom.mas_equalTo(_contentLabel);
+            }];
+        }
         
-        _imgGroup = [[FeedImageGroup alloc] init];
-        [self addSubview:_imgGroup];
-        [_imgGroup mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.left.right.equalTo(_contentLabel);
-            make.top.equalTo(_contentLabel.mas_bottom).offset(KTAGMARGIN_TOP);
-        }];
-        [self mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.bottom.mas_equalTo(_imgGroup);
-        }];
 
     }
     return self;

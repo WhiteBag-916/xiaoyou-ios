@@ -25,12 +25,13 @@
         self.dataSource = self;
         self.delegate = self;
         self.tableFooterView = [[UIView alloc] init];
+        self.separatorStyle = UITableViewCellSeparatorStyleNone;
     }
     return self;
 }
 
 - (void)loadData:(NSArray *)data {
-    _commentListArray = [NSArray arrayWithArray:@[]];
+    _commentListArray = [NSArray arrayWithArray:@[@"2"]];
     _data = [NSDictionary dictionary];
     [self reloadData];
 }
@@ -38,16 +39,16 @@
 #pragma mark - UITableViewDataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 1;
-}
-
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
     if (_data == nil) {
         return 0;
     } else {
         return _commentListArray.count + 1;
     }
+}
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 1;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath

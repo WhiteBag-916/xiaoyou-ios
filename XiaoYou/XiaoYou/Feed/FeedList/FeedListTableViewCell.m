@@ -88,12 +88,16 @@ NSString *const KCommentTableViewCell = @"CommentTableViewCell";
     _middleView = [[FeedCellMiddleView alloc] initWithType:_feedType];
     [self.contentView addSubview:_middleView];
     [_middleView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.right.equalTo(self.contentView);
-        make.top.equalTo(_topView.mas_bottom);
-        if (_feedType == FeedListType || _feedType == FeedDetailType) {
-           make.left.equalTo(_topView.contactNameLabel);
-        } else if (_feedType == FeedOrganizationType) {
+        make.right.equalTo(_topView.tagList);
+        if (_feedType != FeedCommentType) {
+            make.top.equalTo(_topView.mas_bottom);
+        } else {
+            make.top.equalTo(_topView.mas_bottom).offset(KTAGMICONARGIN_TOP);
+        }
+        if (_feedType == FeedOrganizationType) {
             make.left.equalTo(_topView);
+        } else {
+            make.left.equalTo(_topView.contactNameLabel);
         }
     }];
 }
@@ -118,15 +122,18 @@ NSString *const KCommentTableViewCell = @"CommentTableViewCell";
     _bottomView = [[FeedCellBottomView alloc] initWithType:_feedType];
     [self.contentView addSubview:_bottomView];
     [_bottomView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.centerX.equalTo(_topView);
-        if (_feedType == FeedListType || _feedType == FeedDetailType) {
-            make.left.equalTo(_tagView.tagIcon);
-            make.top.equalTo(_tagView.mas_bottom).offset(KBOTTOMMARGIN_TOP);
+        if (_feedType == FeedCommentType) {
+            make.top.equalTo(_middleView);
+            make.right.equalTo(_middleView.mas_left);
         } else {
-            make.top.equalTo(_middleView.mas_bottom).offset(KBOTTOMMARGIN_TOP);
-            make.left.equalTo(_middleView.contentLabel);
+            make.right.equalTo(_topView);
+            if (_feedType == FeedOrganizationType) {
+                make.top.equalTo(_middleView.mas_bottom).offset(KBOTTOMMARGIN_TOP);
+            } else {
+                make.top.equalTo(_tagView.mas_bottom).offset(KBOTTOMMARGIN_TOP);
+            }
+            make.bottom.equalTo(self.contentView).offset(-10);
         }
-        make.bottom.equalTo(self.contentView).offset(-10);
     }];
     if (_feedType == FeedListType) {
         [_bottomView.shareButton mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -138,16 +145,28 @@ NSString *const KCommentTableViewCell = @"CommentTableViewCell";
             make.left.equalTo(_middleView);
         }];
     }
-    
-}
-
-- (void)initDetailBottomView {
+    if (_feedType == FeedDetailType || _feedType == FeedCommentType) {
+        [_bottomView.respectImg mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.centerX.equalTo(_topView.contactHeadImageView);
+        }];
+    }
+    if (_feedType == FeedCommentType) {
+        [_middleView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.bottom.equalTo(self.contentView).offset(-10);
+        }];
+    }
     
 }
 
 - (void)setData
 {
-    [_topView setData];
+    FeedCellTopModel *topData = [[FeedCellTopModel alloc] init];
+    topData.userId = @"233";
+    topData.userName = @"用户";
+    topData.imgUrl = @"http://cdn.duitang.com/uploads/item/201411/22/20141122111634_RBCXS.jpeg";
+    topData.publishDate = [NSDate dateWithTimeIntervalSince1970:[[NSDate dateWithTimeIntervalSinceNow:-1000] timeIntervalSince1970]];
+    topData.tagList = @[@"班",@"系",@"社"];
+    [_topView setData:topData];
     [_middleView setData];
     [_bottomView setData];
     [_tagView setData];
