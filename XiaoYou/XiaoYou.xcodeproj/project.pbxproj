@@ -77,6 +77,10 @@
 		20E18DD51B808E42005B75EE /* search@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 20E18DAE1B808E42005B75EE /* search@3x.png */; };
 		20E18DD61B808E42005B75EE /* society@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 20E18DAF1B808E42005B75EE /* society@2x.png */; };
 		20E18DD71B808E42005B75EE /* society@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 20E18DB01B808E42005B75EE /* society@3x.png */; };
+		20E942181B833D10009C2DC6 /* wechat@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 20E942161B833D10009C2DC6 /* wechat@2x.png */; };
+		20E942191B833D10009C2DC6 /* wechat@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 20E942171B833D10009C2DC6 /* wechat@3x.png */; };
+		20E9421C1B833D10009C2DC6 /* wechat_friends@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 20E9421A1B833D10009C2DC6 /* wechat_friends@2x.png */; };
+		20E9421D1B833D10009C2DC6 /* wechat_friends@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 20E9421B1B833D10009C2DC6 /* wechat_friends@3x.png */; };
 		3331222A1B806EDB00D3D032 /* ChatSendHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 333120E71B806EDA00D3D032 /* ChatSendHelper.m */; };
 		3331222B1B806EDB00D3D032 /* ChatViewController+Category.m in Sources */ = {isa = PBXBuildFile; fileRef = 333120E91B806EDA00D3D032 /* ChatViewController+Category.m */; };
 		3331222C1B806EDB00D3D032 /* ChatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 333120EB1B806EDA00D3D032 /* ChatViewController.m */; };
@@ -417,6 +421,10 @@
 		20E18DAE1B808E42005B75EE /* search@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "search@3x.png"; sourceTree = "<group>"; };
 		20E18DAF1B808E42005B75EE /* society@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "society@2x.png"; sourceTree = "<group>"; };
 		20E18DB01B808E42005B75EE /* society@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "society@3x.png"; sourceTree = "<group>"; };
+		20E942161B833D10009C2DC6 /* wechat@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "wechat@2x.png"; sourceTree = "<group>"; };
+		20E942171B833D10009C2DC6 /* wechat@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "wechat@3x.png"; sourceTree = "<group>"; };
+		20E9421A1B833D10009C2DC6 /* wechat_friends@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "wechat_friends@2x.png"; sourceTree = "<group>"; };
+		20E9421B1B833D10009C2DC6 /* wechat_friends@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "wechat_friends@3x.png"; sourceTree = "<group>"; };
 		234A25BD9458AE14C70CE430 /* Pods-XiaoYou.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XiaoYou.debug.xcconfig"; path = "../Pods/Target Support Files/Pods-XiaoYou/Pods-XiaoYou.debug.xcconfig"; sourceTree = "<group>"; };
 		333120E61B806EDA00D3D032 /* ChatSendHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatSendHelper.h; sourceTree = "<group>"; };
 		333120E71B806EDA00D3D032 /* ChatSendHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatSendHelper.m; sourceTree = "<group>"; };
@@ -1111,6 +1119,10 @@
 		20E18D891B808E42005B75EE /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				20E9421A1B833D10009C2DC6 /* wechat_friends@2x.png */,
+				20E9421B1B833D10009C2DC6 /* wechat_friends@3x.png */,
+				20E942161B833D10009C2DC6 /* wechat@2x.png */,
+				20E942171B833D10009C2DC6 /* wechat@3x.png */,
 				2076A3021B81DA3E001FFBAC /* toolbar-chat-chosen@2x.png */,
 				2076A3031B81DA3E001FFBAC /* toolbar-chat-chosen@3x.png */,
 				2076A3041B81DA3E001FFBAC /* toolbar-chat@2x.png */,
@@ -2120,6 +2132,7 @@
 				333122BE1B806EDC00D3D032 /* chat_receiver_audio_playing001@2x.png in Resources */,
 				2076A3191B81DA3E001FFBAC /* toolbar-mine@3x.png in Resources */,
 				3335C3641B8178E8007DEFD4 /* chatFire_audioPlaying0@2x.png in Resources */,
+				20E9421D1B833D10009C2DC6 /* wechat_friends@3x.png in Resources */,
 				20E18DD11B808E42005B75EE /* tag-grey@3x.png in Resources */,
 				3335C37A1B8178E8007DEFD4 /* VoiceSearchFeedback008@2x.png in Resources */,
 				3335C3891B8178E8007DEFD4 /* VoiceSearchFeedback016.png in Resources */,
@@ -2131,6 +2144,7 @@
 				20E18DC51B808E42005B75EE /* comment@3x.png in Resources */,
 				333122C81B806EDC00D3D032 /* chat_sender_audio_playing_000@2x.png in Resources */,
 				333122C21B806EDC00D3D032 /* chat_receiver_audio_playing003@2x.png in Resources */,
+				20E942191B833D10009C2DC6 /* wechat@3x.png in Resources */,
 				3335C3791B8178E8007DEFD4 /* VoiceSearchFeedback008.png in Resources */,
 				3334ABE31B82C50200FDDCCB /* chatBar_face.png in Resources */,
 				333122D21B806EDC00D3D032 /* chat_sender_bg@2x.png in Resources */,
@@ -2167,6 +2181,7 @@
 				20E18DB51B808E42005B75EE /* common_back@3x.png in Resources */,
 				333122871B806EDC00D3D032 /* chatListCellHead@2x.png in Resources */,
 				333122C41B806EDC00D3D032 /* chat_receiver_audio_playing_full@2x.png in Resources */,
+				20E9421C1B833D10009C2DC6 /* wechat_friends@2x.png in Resources */,
 				3335C37F1B8178E8007DEFD4 /* VoiceSearchFeedback011.png in Resources */,
 				3335C3691B8178E8007DEFD4 /* chatFire_audioPlaying3.png in Resources */,
 				2076A3141B81DA3E001FFBAC /* toolbar-contact@2x.png in Resources */,
@@ -2214,6 +2229,7 @@
 				3335C3751B8178E8007DEFD4 /* VoiceSearchFeedback006.png in Resources */,
 				3335C3831B8178E8007DEFD4 /* VoiceSearchFeedback013.png in Resources */,
 				3334ABED1B82C58600FDDCCB /* chatBar_keyboardSelected.png in Resources */,
+				20E942181B833D10009C2DC6 /* wechat@2x.png in Resources */,
 				333122721B806EDB00D3D032 /* MWPhotoBrowser.bundle in Resources */,
 				20E18DCC1B808E42005B75EE /* more@2x.png in Resources */,
 				20E18DC11B808E42005B75EE /* message_tab_green@3x.png in Resources */,
