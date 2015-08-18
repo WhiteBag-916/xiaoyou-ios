@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SKTagView.h"
 /**
  *  @author 李思良, 15-08-18
  *
@@ -25,7 +26,7 @@
  *
  *  @brief 内容与view的right对齐，由外部调用者来安排left位置
  */
-@property (nonatomic, strong, readonly) UIView *tagContent;                      //tag标签内容
+@property (nonatomic, strong, readonly) SKTagView *tagContent;                      //tag标签内容
 
 /**
  *  @author 李思良, 15-08-18

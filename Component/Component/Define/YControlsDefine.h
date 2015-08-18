@@ -19,6 +19,7 @@
 #define KCOLORGREEN_455A64 [UIColor colorWithRed:0.271f green:0.353f blue:0.392f alpha:1.00f]
 #define KCOLORWHITE [UIColor whiteColor]
 #define KCOLORWHITE_b8b7b7 [UIColor hexChangeFloat:@"b8b7b7"]
+#define KCOLORWHITE_696969 [UIColor hexChangeFloat:@"696969"]
 #define KCOLORGREEN_32424A [UIColor colorWithRed:0.196f green:0.259f blue:0.290f alpha:1.00f]
 #define KCOLORGREEN_009688 [UIColor hexChangeFloat:@"009688"]
 #define KCOLORGREEN_f2f2f2 [UIColor hexChangeFloat:@"f2f2f2"]
