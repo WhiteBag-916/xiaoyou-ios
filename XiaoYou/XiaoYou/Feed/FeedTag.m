@@ -46,6 +46,7 @@
 
 
 - (void)setData {
+    [_tagContent removeAllTags];
     NSArray *labelName = @[@"金融", @"留学咨询", @"学校生活", @"工作", @"互联网信息"];
     for (int i = 0; i < labelName.count; i++) {
         SKTag *tag = [SKTag tagWithText:labelName[i]];
