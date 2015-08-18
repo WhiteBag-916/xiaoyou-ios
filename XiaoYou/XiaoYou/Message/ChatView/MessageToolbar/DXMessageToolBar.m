@@ -357,7 +357,7 @@
     }
     
     if (!self.recordView) {
-        self.recordView = [[DXRecordView alloc] initWithFrame:CGRectMake(90, 130, 140, 140)];
+        self.recordView = [[DXRecordView alloc] initWithFrame:CGRectMake(90, 130, 160, 160)];
     }
     
     [self.toolbarView addSubview:self.styleChangeButton];

@@ -39,17 +39,18 @@
     
     UIButton *deleteButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [deleteButton setBackgroundColor:[UIColor clearColor]];
-    [deleteButton setFrame:CGRectMake((maxCol - 1) * itemWidth, (maxRow - 1) * itemHeight, itemWidth, itemHeight)];
+    [deleteButton setFrame:CGRectMake((maxCol - 2) * itemWidth - 10, (maxRow - 1) * itemHeight + 5, itemWidth + 10, itemHeight - 10)];
     [deleteButton setImage:[UIImage imageNamed:@"faceDelete"] forState:UIControlStateNormal];
     deleteButton.tag = 10000;
     [deleteButton addTarget:self action:@selector(selected:) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:deleteButton];
     
     UIButton *sendButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [sendButton setTitle:NSLocalizedString(@"send", @"Send") forState:UIControlStateNormal];
-    [sendButton setFrame:CGRectMake((maxCol - 2) * itemWidth - 10, (maxRow - 1) * itemHeight + 5, itemWidth + 10, itemHeight - 10)];
+//    [sendButton setTitle:NSLocalizedString(@"send", @"Send") forState:UIControlStateNormal];
+    [sendButton setImage:[UIImage imageNamed:@"send-click"] forState:UIControlStateNormal];
+    [sendButton setFrame:CGRectMake((maxCol - 1) * itemWidth, (maxRow - 1) * itemHeight, itemWidth, itemHeight)];
     [sendButton addTarget:self action:@selector(sendAction:) forControlEvents:UIControlEventTouchUpInside];
-    [sendButton setBackgroundColor:[UIColor colorWithRed:10 / 255.0 green:82 / 255.0 blue:104 / 255.0 alpha:1.0]];
+//    [sendButton setBackgroundColor:[UIColor colorWithRed:10 / 255.0 green:82 / 255.0 blue:104 / 255.0 alpha:1.0]];
     [self addSubview:sendButton];
     
     for (int row = 0; row < maxRow; row++) {
