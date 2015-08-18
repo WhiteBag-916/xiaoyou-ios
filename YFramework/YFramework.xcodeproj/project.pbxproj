@@ -44,6 +44,8 @@
 		57CFE0F61AE7B13400D4C4E9 /* YColor+Ext.m in Sources */ = {isa = PBXBuildFile; fileRef = 57CFE0F51AE7B13400D4C4E9 /* YColor+Ext.m */; };
 		57CFE0F91AE7B14600D4C4E9 /* YDate+Ext.m in Sources */ = {isa = PBXBuildFile; fileRef = 57CFE0F81AE7B14600D4C4E9 /* YDate+Ext.m */; };
 		57EF11D31AF713C3009F49DD /* YShareData.m in Sources */ = {isa = PBXBuildFile; fileRef = 57EF11D21AF713C3009F49DD /* YShareData.m */; };
+		65024C151B82D2CE007DE404 /* EYTagView.m in Sources */ = {isa = PBXBuildFile; fileRef = 65024C121B82D2CE007DE404 /* EYTagView.m */; };
+		65024C161B82D2CE007DE404 /* EYTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 65024C141B82D2CE007DE404 /* EYTextField.m */; };
 		654602201B7F8C1D0039F622 /* SDBrowserImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6546021A1B7F8C1D0039F622 /* SDBrowserImageView.m */; };
 		654602211B7F8C1D0039F622 /* SDBrowserImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6546021A1B7F8C1D0039F622 /* SDBrowserImageView.m */; };
 		654602221B7F8C1D0039F622 /* SDPhotoBrowser.m in Sources */ = {isa = PBXBuildFile; fileRef = 6546021C1B7F8C1D0039F622 /* SDPhotoBrowser.m */; };
@@ -157,6 +159,10 @@
 		57CFE0F81AE7B14600D4C4E9 /* YDate+Ext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "YDate+Ext.m"; sourceTree = "<group>"; };
 		57EF11D11AF713C3009F49DD /* YShareData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YShareData.h; sourceTree = "<group>"; };
 		57EF11D21AF713C3009F49DD /* YShareData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YShareData.m; sourceTree = "<group>"; };
+		65024C111B82D2CE007DE404 /* EYTagView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EYTagView.h; sourceTree = "<group>"; };
+		65024C121B82D2CE007DE404 /* EYTagView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EYTagView.m; sourceTree = "<group>"; };
+		65024C131B82D2CE007DE404 /* EYTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EYTextField.h; sourceTree = "<group>"; };
+		65024C141B82D2CE007DE404 /* EYTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EYTextField.m; sourceTree = "<group>"; };
 		654602191B7F8C1D0039F622 /* SDBrowserImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDBrowserImageView.h; sourceTree = "<group>"; };
 		6546021A1B7F8C1D0039F622 /* SDBrowserImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDBrowserImageView.m; sourceTree = "<group>"; };
 		6546021B1B7F8C1D0039F622 /* SDPhotoBrowser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDPhotoBrowser.h; sourceTree = "<group>"; };
@@ -241,6 +247,7 @@
 		2817D9B81ADA1EA500FDB4F6 /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
+				65024C101B82D2CE007DE404 /* EYTagView */,
 				654602181B7F8C1D0039F622 /* SDPhotoBrowser */,
 				28A1EBFA1AE1FC3200F7F93B /* Readme.txt */,
 			);
@@ -379,6 +386,17 @@
 				2803C92B1AE3BA60002303B6 /* YManagerCenter.m */,
 			);
 			path = YManager;
+			sourceTree = "<group>";
+		};
+		65024C101B82D2CE007DE404 /* EYTagView */ = {
+			isa = PBXGroup;
+			children = (
+				65024C111B82D2CE007DE404 /* EYTagView.h */,
+				65024C121B82D2CE007DE404 /* EYTagView.m */,
+				65024C131B82D2CE007DE404 /* EYTextField.h */,
+				65024C141B82D2CE007DE404 /* EYTextField.m */,
+			);
+			path = EYTagView;
 			sourceTree = "<group>";
 		};
 		654602181B7F8C1D0039F622 /* SDPhotoBrowser */ = {
@@ -533,9 +551,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				65024C161B82D2CE007DE404 /* EYTextField.m in Sources */,
 				654602231B7F8C1D0039F622 /* SDPhotoBrowser.m in Sources */,
 				654602211B7F8C1D0039F622 /* SDBrowserImageView.m in Sources */,
 				654602251B7F8C1D0039F622 /* SDWaitingView.m in Sources */,
+				65024C151B82D2CE007DE404 /* EYTagView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
