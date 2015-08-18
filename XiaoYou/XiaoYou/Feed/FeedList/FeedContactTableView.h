@@ -10,4 +10,6 @@
 
 @interface FeedContactTableView : YTableView
 
+- (void)loadData:(NSArray *)data;
+
 @end
