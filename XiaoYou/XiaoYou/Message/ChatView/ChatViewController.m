@@ -163,9 +163,9 @@
     [self registerBecomeActive];
     // Do any additional setup after loading the view.
     self.view.backgroundColor = RGBACOLOR(248, 248, 248, 1);
-    if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0) {
-        self.edgesForExtendedLayout =  UIRectEdgeNone;
-    }
+//    if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0) {
+//        self.edgesForExtendedLayout =  UIRectEdgeNone;
+//    }
     
 #warning 以下三行代码必须写，注册为SDK的ChatManager的delegate
     [EMCDDeviceManager sharedInstance].delegate = self;
@@ -259,7 +259,9 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
-    [super viewWillAppear:animated];
+//    [super viewWillAppear:animated];
+    
+    [super viewWillAppear:animated navigationBarHidden:NO tabBarHidden:YES];
     
     [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:NO] forKey:@"isShowPicker"];
     if (_isScrollToBottom) {
@@ -271,6 +273,10 @@
     self.isInvisible = NO;
 }
 
+-(void)viewWillLayoutSubviews
+{
+    self.hidesBottomBarWhenPushed = YES;
+}
 
 - (void)viewWillDisappear:(BOOL)animated
 {
@@ -1550,8 +1556,9 @@
 //联系人详情
 -(void)pushToDetailPage:(id)sender
 {
-    XYContactsInfoDetailViewController * ContactsInfoDetailViewController = [[XYContactsInfoDetailViewController alloc] init];
-    [self.navigationController pushViewController:ContactsInfoDetailViewController animated:YES];
+    XYContactsInfoDetailViewController * contactsInfoDetailViewController = [[XYContactsInfoDetailViewController alloc] init];
+    contactsInfoDetailViewController.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:contactsInfoDetailViewController animated:YES];
 }
 
 - (void)removeAllMessages:(id)sender
