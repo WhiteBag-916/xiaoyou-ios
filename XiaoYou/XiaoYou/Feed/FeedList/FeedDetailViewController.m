@@ -33,19 +33,13 @@
     
     [self showCustomNavigationBackButton];
     self.title = @"详情";
-    [self initRightBarButton];
+    [self showCustomNavigationMoreButton];
     [self initTable];
     
 }
 
 - (void)viewDidAppear:(BOOL)animated {
     [_feedDetailTable loadData:@[@"",@""]];
-}
-
-- (void)initRightBarButton {
-    UIBarButtonItem  *btn = [[UIBarButtonItem alloc] initWithImage:[[UIImage imageNamed:@"more"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] style:UIBarButtonItemStylePlain target:self action:@selector(openShare)];
-    btn.tintColor = [UIColor clearColor];
-    self.navigationItem.rightBarButtonItem = btn;
 }
 
 - (void)initTable {
@@ -57,7 +51,7 @@
     }];
 }
 
-- (void)openShare {
+- (void)moreBarAction {
     
 }
 @end

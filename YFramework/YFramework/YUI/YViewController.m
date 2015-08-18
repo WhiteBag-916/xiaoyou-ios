@@ -217,7 +217,7 @@
 
 //导航栏右侧，更多按钮
 - (void)showCustomNavigationMoreButton {
-    [self showNomalNavigationRightButtonWithImage:@"menu" action:@selector(moreBarAction)];
+    [self showNomalNavigationRightButtonWithImage:@"more" action:@selector(moreBarAction)];
 }
 
 - (void)showNomalNavigationRightButtonWithImage:(NSString *)image action:(SEL)selector {
