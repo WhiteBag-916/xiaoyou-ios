@@ -13,12 +13,12 @@
 #import "YNotificationDefine.h"
 
 #define KNOTIFYCOUNTHEIGHT 25
-#define KNOTIFYCOUNTMARGIN_LEFT SCALE_NUM(15)
+#define KNOTIFYCOUNTMARGIN_LEFT SCALE_NUM(17)
 #define KNOTIFYCOUNTMARGIN_DOWN SCALE_NUM(12)
 #define KNOTIFYCOUNTMARGIN_RIGHT SCALE_NUM(10)
 #define KSEARCHHEIGHT SCALE_NUM(43)
 #define KBOTTOMHEIGHT SCALE_NUM(80)
-#define KTABLEMARGIN  SCALE_NUM(30)
+#define KTABLEMARGIN  SCALE_NUM(40)
 
 
 @interface TagListViewController ()
@@ -57,21 +57,21 @@
         make.left.right.bottom.equalTo(_notifyView);
         make.height.mas_equalTo(0.5);
     }];
-    line.backgroundColor = KCOLORWHITE_C5CACF;
+    line.backgroundColor = KCOLORWHITE_b8b7b7;
     
     
-    _notifyCount = [YUtils initLabel:CONTENT_FONT(11) color:[UIColor whiteColor] text:@"99" frame:CGRectZero alignment:NSTextAlignmentCenter];
+    _notifyCount = [YUtils initLabel:CONTENT_FONT(12) color:[UIColor whiteColor] text:@"99" frame:CGRectZero alignment:NSTextAlignmentCenter];
     [_notifyView addSubview:_notifyCount];
     [_notifyCount mas_makeConstraints:^(MASConstraintMaker *make) {
         make.bottom.equalTo(_notifyView).offset(-KNOTIFYCOUNTMARGIN_DOWN);
         make.width.height.mas_equalTo(KNOTIFYCOUNTHEIGHT);
         make.left.mas_equalTo(KNOTIFYCOUNTMARGIN_LEFT);
     }];
-    _notifyCount.backgroundColor = KCOLORGREEN_179587;
+    _notifyCount.backgroundColor = KCOLORGREEN_009688;
     _notifyCount.layer.cornerRadius = 3;
     _notifyCount.clipsToBounds = true;
     
-    UILabel *infoLabel = [YUtils initLabel:CONTENT_FONT(13) color:[UIColor whiteColor] text:@"人脉新提醒" frame:CGRectZero alignment:NSTextAlignmentLeft];
+    UILabel *infoLabel = [YUtils initLabel:CONTENT_FONT(14) color:[UIColor whiteColor] text:@"人脉新提醒" frame:CGRectZero alignment:NSTextAlignmentLeft];
     [_notifyView addSubview:infoLabel];
     [infoLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(_notifyCount.mas_right).offset(KNOTIFYCOUNTMARGIN_RIGHT);
@@ -83,7 +83,7 @@
 }
 
 - (void)initSearchBtn {
-    _searchLabel = [YUtils initLabel:CONTENT_FONT(13) color:KCOLORWHITE_C5CACF text:@"在这儿可以找到所有人" frame:CGRectZero alignment:NSTextAlignmentCenter];
+    _searchLabel = [YUtils initLabel:CONTENT_FONT(12) color:KCOLORWHITE_b8b7b7 text:@"在这儿可以找到所有人" frame:CGRectZero alignment:NSTextAlignmentCenter];
     [self.view addSubview:_searchLabel];
     [_searchLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.right.equalTo(_notifyView);
@@ -109,7 +109,7 @@
         make.left.right.bottom.equalTo(_searchLabel);
         make.height.mas_equalTo(0.5);
     }];
-    line.backgroundColor = KCOLORWHITE_C5CACF;
+    line.backgroundColor = KCOLORWHITE_b8b7b7;
     
     //增加点击跳转到找人
     [self addTap:_searchLabel action:@selector(toSearchPerson)];
@@ -130,7 +130,7 @@
         make.left.right.top.equalTo(_bottomView);
         make.height.mas_equalTo(0.5);
     }];
-    line.backgroundColor = KCOLORWHITE_C5CACF;
+    line.backgroundColor = KCOLORWHITE_b8b7b7;
     
     UIImageView *icon = [[UIImageView alloc] init];
     [_bottomView addSubview:icon];
@@ -141,10 +141,11 @@
     }];
     icon.image = [UIImage imageNamed:@"society"];
     
-    UILabel *hint = [YUtils initLabel:CONTENT_FONT(12) color:KCOLORWHITE text:@"社团总汇（一键加入）" frame:CGRectZero alignment:NSTextAlignmentCenter];
+    UILabel *hint = [YUtils initLabel:CONTENT_FONT(14) color:KCOLORWHITE text:@"社团总汇（一键加入）" frame:CGRectZero alignment:NSTextAlignmentLeft];
     [_bottomView addSubview:hint];
     [hint mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.right.equalTo(_bottomView);
+        make.right.equalTo(_bottomView);
+        make.left.equalTo(_notifyCount.mas_right).offset(KNOTIFYCOUNTMARGIN_RIGHT);
         make.top.centerY.equalTo(icon);
         
     }];

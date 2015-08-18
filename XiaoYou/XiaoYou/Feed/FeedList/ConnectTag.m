@@ -24,7 +24,7 @@
         for (int i = 0; i < 5; i++) {
             UILabel *label = [YUtils initLabel:CONTENT_FONT(10) color:KCOLORWHITE text:@"" frame:CGRectZero alignment:NSTextAlignmentCenter];
             [self addSubview:label];
-            label.backgroundColor = KCOLORGREEN_179587;
+            label.backgroundColor = KCOLORGREEN_009688;
             [label mas_makeConstraints:^(MASConstraintMaker *make) {
                 make.top.bottom.equalTo(self);
                 make.width.height.mas_equalTo(KTAGSIZE);

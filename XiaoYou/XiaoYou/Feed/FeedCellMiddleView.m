@@ -77,7 +77,7 @@
 - (void)setIsRelated:(BOOL)isRelated {
     if (isRelated) {
         _tagIcon.image = [UIImage imageNamed:@"tag-green"];
-        _tagLabel.textColor = KCOLORGREEN_179587;
+        _tagLabel.textColor = KCOLORGREEN_009688;
     } else {
         _tagIcon.image = [UIImage imageNamed:@"tag-grey"];
         _tagLabel.textColor = [UIColor blackColor];

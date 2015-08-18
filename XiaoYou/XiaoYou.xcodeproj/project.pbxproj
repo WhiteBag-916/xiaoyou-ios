@@ -280,6 +280,7 @@
 		339549891B81BDFF00F9ECB1 /* GroupInfoDetailCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 339549881B81BDFF00F9ECB1 /* GroupInfoDetailCollectionView.m */; };
 		3395498F1B81C67000F9ECB1 /* GroupInfoDetailHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3395498E1B81C67000F9ECB1 /* GroupInfoDetailHeaderView.m */; };
 		34AF80435283028D453BFBFC /* libPods-XiaoYou.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 77B574BED9D4FF3F4BFAA9FE /* libPods-XiaoYou.a */; };
+		65024C0F1B82C423007DE404 /* FeedTag.m in Sources */ = {isa = PBXBuildFile; fileRef = 65024C0E1B82C423007DE404 /* FeedTag.m */; };
 		6518A2481B80429300AEB79D /* TagListTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6518A2471B80429300AEB79D /* TagListTableView.m */; };
 		6518A24B1B80583600AEB79D /* TagListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6518A24A1B80583600AEB79D /* TagListTableViewCell.m */; };
 		653199DE1B80B41C00405B72 /* ConnectTag.m in Sources */ = {isa = PBXBuildFile; fileRef = 653199DD1B80B41C00405B72 /* ConnectTag.m */; };
@@ -735,6 +736,8 @@
 		339549881B81BDFF00F9ECB1 /* GroupInfoDetailCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroupInfoDetailCollectionView.m; sourceTree = "<group>"; };
 		3395498D1B81C67000F9ECB1 /* GroupInfoDetailHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroupInfoDetailHeaderView.h; sourceTree = "<group>"; };
 		3395498E1B81C67000F9ECB1 /* GroupInfoDetailHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroupInfoDetailHeaderView.m; sourceTree = "<group>"; };
+		65024C0D1B82C423007DE404 /* FeedTag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedTag.h; sourceTree = "<group>"; };
+		65024C0E1B82C423007DE404 /* FeedTag.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedTag.m; sourceTree = "<group>"; };
 		6518A2461B80429300AEB79D /* TagListTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TagListTableView.h; sourceTree = "<group>"; };
 		6518A2471B80429300AEB79D /* TagListTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TagListTableView.m; sourceTree = "<group>"; };
 		6518A2491B80583600AEB79D /* TagListTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TagListTableViewCell.h; sourceTree = "<group>"; };
@@ -1972,6 +1975,8 @@
 				65A847011B81C9D300933815 /* FeedCellMiddleView.m */,
 				65A847031B81CA1900933815 /* FeedCellBottomView.h */,
 				65A847041B81CA1900933815 /* FeedCellBottomView.m */,
+				65024C0D1B82C423007DE404 /* FeedTag.h */,
+				65024C0E1B82C423007DE404 /* FeedTag.m */,
 			);
 			name = FeedCell;
 			sourceTree = "<group>";
@@ -2352,6 +2357,7 @@
 				333122501B806EDB00D3D032 /* MWPhotoBrowser.m in Sources */,
 				333122761B806EDB00D3D032 /* SRSlimeView.m in Sources */,
 				333122531B806EDB00D3D032 /* MWZoomingScrollView.m in Sources */,
+				65024C0F1B82C423007DE404 /* FeedTag.m in Sources */,
 				20DA63761B7482DE007D22AC /* FeedListTableView.m in Sources */,
 				207F808D1B709A1E005E8F6A /* AppDelegate+Notification.m in Sources */,
 				6592DCDC1B806A9B004CD118 /* ContactsTableViewCell.m in Sources */,
