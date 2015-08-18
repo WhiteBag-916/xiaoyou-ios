@@ -66,12 +66,6 @@
 #define COCOAPODS_VERSION_MINOR_CocoaLumberjack_Extensions 0
 #define COCOAPODS_VERSION_PATCH_CocoaLumberjack_Extensions 1
 
-// DWTagList
-#define COCOAPODS_POD_AVAILABLE_DWTagList
-#define COCOAPODS_VERSION_MAJOR_DWTagList 0
-#define COCOAPODS_VERSION_MINOR_DWTagList 0
-#define COCOAPODS_VERSION_PATCH_DWTagList 7
-
 // EaseMobSDK
 #define COCOAPODS_POD_AVAILABLE_EaseMobSDK
 #define COCOAPODS_VERSION_MAJOR_EaseMobSDK 2
@@ -143,6 +137,12 @@
 #define COCOAPODS_VERSION_MAJOR_SDWebImage_Core 3
 #define COCOAPODS_VERSION_MINOR_SDWebImage_Core 7
 #define COCOAPODS_VERSION_PATCH_SDWebImage_Core 3
+
+// SKTagView
+#define COCOAPODS_POD_AVAILABLE_SKTagView
+#define COCOAPODS_VERSION_MAJOR_SKTagView 0
+#define COCOAPODS_VERSION_MINOR_SKTagView 7
+#define COCOAPODS_VERSION_PATCH_SKTagView 0
 
 // UITableView+FDTemplateLayoutCell
 #define COCOAPODS_POD_AVAILABLE_UITableView_FDTemplateLayoutCell

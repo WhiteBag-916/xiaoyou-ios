@@ -18,6 +18,7 @@
 #import "FeedDetailViewController.h"
 #import "NotifyListViewController.h"
 #import "AddTagViewController.h"
+#import "FeedContactTableView.h"
 
 @interface FeedListViewController ()
 
@@ -25,6 +26,8 @@
 @property (strong, nonatomic) TagListViewController     *tagListVC;             //侧拉
 @property (strong, nonatomic) FeedListTableView         *feedListTableView;     //feed列表
 @property (strong, nonatomic) BBBadgeBarButtonItem      *menuButton;            //菜单按钮
+@property (nonatomic, strong) FeedContactTableView      *feedContactTableView;  //人
+
 @end
 
 @implementation FeedListViewController
@@ -72,7 +75,7 @@
     }
     
     //switch
-    _commonSwitchView = [[CommonSwitchView alloc] initWithFrame:CGRectMake(0, 0, SCALE_NUM(119), SCALE_NUM(24)) textArray:@[@"feed", @"contact"]];
+    _commonSwitchView = [[CommonSwitchView alloc] initWithFrame:CGRectMake(0, 0, SCALE_NUM(119), SCALE_NUM(24)) textArray:@[@"事", @"人"]];
     [_commonSwitchView changedType:^(CommonSwitchType type) {
         [self changeSwitchView:type];
     }];
@@ -86,6 +89,17 @@
     [_feedListTableView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.mas_equalTo(self.view);
     }];
+    
+    //person
+    _feedContactTableView = [[FeedContactTableView alloc] init];
+    _feedContactTableView.hidden = YES;
+    [self.view addSubview:_feedContactTableView];
+    
+    [_feedContactTableView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.mas_equalTo(self.view);
+    }];
+    
+    //left nav
     UIButton *btn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 15, 15)];
     [btn setBackgroundImage:[UIImage imageNamed:@"menu"] forState:UIControlStateNormal];
     [btn addTarget:self action:@selector(changeMenu) forControlEvents:UIControlEventTouchUpInside];
@@ -111,7 +125,7 @@
 //改变switch
 - (void)changeSwitchView:(CommonSwitchType)type;
 {
-    
+    _feedContactTableView.hidden = (type == CommonSwitchTypeFir);
 }
 
 - (void)goToDetail:(NSString *)feedId {
@@ -143,6 +157,5 @@
 - (void)openShare:(NSNotification *) notification{
     NSDictionary *dic = [notification object];
 }
-
 
 @end

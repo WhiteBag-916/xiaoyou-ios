@@ -85,6 +85,12 @@
 		20E942231B833D10009C2DC6 /* toggle-off@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 20E9421F1B833D10009C2DC6 /* toggle-off@3x.png */; };
 		20E942241B833D10009C2DC6 /* toggle-on@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 20E942201B833D10009C2DC6 /* toggle-on@2x.png */; };
 		20E942251B833D10009C2DC6 /* toggle-on@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 20E942211B833D10009C2DC6 /* toggle-on@3x.png */; };
+		20E942361B833D10009C2DC6 /* sheet_delete@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 20E942341B833D10009C2DC6 /* sheet_delete@2x.png */; };
+		20E942371B833D10009C2DC6 /* sheet_delete@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 20E942351B833D10009C2DC6 /* sheet_delete@3x.png */; };
+		20E9423A1B833D10009C2DC6 /* FeedContactTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 20E942391B833D10009C2DC6 /* FeedContactTableView.m */; };
+		20E9423D1B833D10009C2DC6 /* FeedContactTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 20E9423C1B833D10009C2DC6 /* FeedContactTableViewCell.m */; };
+		20E942441B833D10009C2DC6 /* add-03@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 20E942421B833D10009C2DC6 /* add-03@2x.png */; };
+		20E942451B833D10009C2DC6 /* add-03@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 20E942431B833D10009C2DC6 /* add-03@3x.png */; };
 		3331222A1B806EDB00D3D032 /* ChatSendHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 333120E71B806EDA00D3D032 /* ChatSendHelper.m */; };
 		3331222B1B806EDB00D3D032 /* ChatViewController+Category.m in Sources */ = {isa = PBXBuildFile; fileRef = 333120E91B806EDA00D3D032 /* ChatViewController+Category.m */; };
 		3331222C1B806EDB00D3D032 /* ChatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 333120EB1B806EDA00D3D032 /* ChatViewController.m */; };
@@ -413,6 +419,14 @@
 		20E9421F1B833D10009C2DC6 /* toggle-off@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "toggle-off@3x.png"; sourceTree = "<group>"; };
 		20E942201B833D10009C2DC6 /* toggle-on@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "toggle-on@2x.png"; sourceTree = "<group>"; };
 		20E942211B833D10009C2DC6 /* toggle-on@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "toggle-on@3x.png"; sourceTree = "<group>"; };
+		20E942341B833D10009C2DC6 /* sheet_delete@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sheet_delete@2x.png"; sourceTree = "<group>"; };
+		20E942351B833D10009C2DC6 /* sheet_delete@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sheet_delete@3x.png"; sourceTree = "<group>"; };
+		20E942381B833D10009C2DC6 /* FeedContactTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedContactTableView.h; sourceTree = "<group>"; };
+		20E942391B833D10009C2DC6 /* FeedContactTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedContactTableView.m; sourceTree = "<group>"; };
+		20E9423B1B833D10009C2DC6 /* FeedContactTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedContactTableViewCell.h; sourceTree = "<group>"; };
+		20E9423C1B833D10009C2DC6 /* FeedContactTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedContactTableViewCell.m; sourceTree = "<group>"; };
+		20E942421B833D10009C2DC6 /* add-03@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "add-03@2x.png"; sourceTree = "<group>"; };
+		20E942431B833D10009C2DC6 /* add-03@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "add-03@3x.png"; sourceTree = "<group>"; };
 		234A25BD9458AE14C70CE430 /* Pods-XiaoYou.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XiaoYou.debug.xcconfig"; path = "../Pods/Target Support Files/Pods-XiaoYou/Pods-XiaoYou.debug.xcconfig"; sourceTree = "<group>"; };
 		333120E61B806EDA00D3D032 /* ChatSendHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatSendHelper.h; sourceTree = "<group>"; };
 		333120E71B806EDA00D3D032 /* ChatSendHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatSendHelper.m; sourceTree = "<group>"; };
@@ -952,7 +966,6 @@
 			isa = PBXGroup;
 			children = (
 				20E18D891B808E42005B75EE /* Common */,
-				20E18D981B808E42005B75EE /* contacts */,
 				20E18D9B1B808E42005B75EE /* Feed */,
 				20E18DAA1B808E42005B75EE /* FeedMenu */,
 				20E18DB11B808E42005B75EE /* Login */,
@@ -1031,6 +1044,10 @@
 				654602161B7F2FF00039F622 /* FeedImageGroup.m */,
 				653199DC1B80B41C00405B72 /* ConnectTag.h */,
 				653199DD1B80B41C00405B72 /* ConnectTag.m */,
+				20E942381B833D10009C2DC6 /* FeedContactTableView.h */,
+				20E942391B833D10009C2DC6 /* FeedContactTableView.m */,
+				20E9423B1B833D10009C2DC6 /* FeedContactTableViewCell.h */,
+				20E9423C1B833D10009C2DC6 /* FeedContactTableViewCell.m */,
 			);
 			path = FeedList;
 			sourceTree = "<group>";
@@ -1089,6 +1106,10 @@
 			children = (
 				3334AC3C1B83075800FDDCCB /* default_head@2x.png */,
 				3334AC3D1B83075800FDDCCB /* default_head@3x.png */,
+				20E942421B833D10009C2DC6 /* add-03@2x.png */,
+				20E942431B833D10009C2DC6 /* add-03@3x.png */,
+				20E942341B833D10009C2DC6 /* sheet_delete@2x.png */,
+				20E942351B833D10009C2DC6 /* sheet_delete@3x.png */,
 				20E9421E1B833D10009C2DC6 /* toggle-off@2x.png */,
 				20E9421F1B833D10009C2DC6 /* toggle-off@3x.png */,
 				20E942201B833D10009C2DC6 /* toggle-on@2x.png */,
@@ -1123,13 +1144,6 @@
 				20E18D971B808E42005B75EE /* message_tab_green@3x.png */,
 			);
 			path = Common;
-			sourceTree = "<group>";
-		};
-		20E18D981B808E42005B75EE /* contacts */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = contacts;
 			sourceTree = "<group>";
 		};
 		20E18D9B1B808E42005B75EE /* Feed */ = {
@@ -2062,6 +2076,7 @@
 				3334AC261B82D7C400FDDCCB /* VoiceSearchFeedback004@2x.png in Resources */,
 				3334ABEC1B82C58600FDDCCB /* chatBar_keyboard@2x.png in Resources */,
 				3334ABEB1B82C58600FDDCCB /* chatBar_keyboard.png in Resources */,
+				20E942371B833D10009C2DC6 /* sheet_delete@3x.png in Resources */,
 				333122731B806EDB00D3D032 /* sr_refresh.png in Resources */,
 				20E18DCD1B808E42005B75EE /* more@3x.png in Resources */,
 				20E18DB81B808E42005B75EE /* common_search@2x.png in Resources */,
@@ -2076,6 +2091,7 @@
 				3335C3641B8178E8007DEFD4 /* chatFire_audioPlaying0@2x.png in Resources */,
 				20E9421D1B833D10009C2DC6 /* wechat_friends@3x.png in Resources */,
 				20E18DD11B808E42005B75EE /* tag-grey@3x.png in Resources */,
+				20E942361B833D10009C2DC6 /* sheet_delete@2x.png in Resources */,
 				3335C36A1B8178E8007DEFD4 /* chatFire_audioPlaying3@2x.png in Resources */,
 				3334AC0C1B82C89500FDDCCB /* chatBar_colorMore_cameraSelected@2x.png in Resources */,
 				3334AC311B82DE5500FDDCCB /* send-click@3x.png in Resources */,
@@ -2136,6 +2152,7 @@
 				20E18DB61B808E42005B75EE /* common_filter@2x.png in Resources */,
 				2076A3151B81DA3E001FFBAC /* toolbar-contact@3x.png in Resources */,
 				333122C01B806EDC00D3D032 /* chat_receiver_audio_playing002@2x.png in Resources */,
+				20E942441B833D10009C2DC6 /* add-03@2x.png in Resources */,
 				333122741B806EDB00D3D032 /* sr_refresh@2X.png in Resources */,
 				20E18DC71B808E42005B75EE /* cup@3x.png in Resources */,
 				333122CB1B806EDC00D3D032 /* chat_sender_audio_playing_002.png in Resources */,
@@ -2160,6 +2177,7 @@
 				20E18DBF1B808E42005B75EE /* message_tab_background@3x.png in Resources */,
 				20E18DCE1B808E42005B75EE /* tag-green@2x.png in Resources */,
 				3334ABF51B82C5D200FDDCCB /* chatBar_moreSelected.png in Resources */,
+				20E942451B833D10009C2DC6 /* add-03@3x.png in Resources */,
 				3335C3671B8178E8007DEFD4 /* chatFire_audioPlaying2.png in Resources */,
 				3334ABF31B82C5D200FDDCCB /* chatBar_more.png in Resources */,
 				3334ABED1B82C58600FDDCCB /* chatBar_keyboardSelected.png in Resources */,
@@ -2262,6 +2280,7 @@
 				333122411B806EDB00D3D032 /* EMAudioRecorderUtil.m in Sources */,
 				6592DCD81B806A9B004CD118 /* GroupApplyTableView.m in Sources */,
 				20DD4B351B734781007C352C /* CommonSwitchView.m in Sources */,
+				20E9423A1B833D10009C2DC6 /* FeedContactTableView.m in Sources */,
 				3331225F1B806EDB00D3D032 /* UIImage+EMGIF.m in Sources */,
 				333122651B806EDB00D3D032 /* NSIndexPath+PSTCollectionViewAdditions.m in Sources */,
 				3331225A1B806EDB00D3D032 /* EMSDWebImageManager.m in Sources */,
@@ -2278,6 +2297,7 @@
 				333122551B806EDB00D3D032 /* EMSDImageCache.m in Sources */,
 				333122511B806EDB00D3D032 /* MWTapDetectingImageView.m in Sources */,
 				65A846FF1B81C9C300933815 /* FeedCellTopView.m in Sources */,
+				20E9423D1B833D10009C2DC6 /* FeedContactTableViewCell.m in Sources */,
 				653CB2EF1B806BFD006ECBB2 /* pinyin.c in Sources */,
 				333122471B806EDB00D3D032 /* EMAlertView.m in Sources */,
 				333122431B806EDB00D3D032 /* EMCDDeviceManager+Microphone.m in Sources */,

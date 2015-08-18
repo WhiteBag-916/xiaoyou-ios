@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "E5A388E6D2E21B17EDD1C1CA"
+               BlueprintIdentifier = "56C0CC06282CC183F37C73F3"
                BuildableName = "libPods-XiaoYou-DWTagList.a"
                BlueprintName = "Pods-XiaoYou-DWTagList"
                ReferencedContainer = "container:Pods.xcodeproj">

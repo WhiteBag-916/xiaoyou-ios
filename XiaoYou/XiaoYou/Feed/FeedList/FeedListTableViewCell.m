@@ -14,6 +14,7 @@
 #import "FeedCellTopView.h"
 #import "FeedCellMiddleView.h"
 #import "FeedCellBottomView.h"
+#import "FeedTag.h"
 
 NSString *const kFeedListTableViewCell = @"FeedListTableViewCellId";
 NSString *const kFeedDetailTableViewCell = @"kFeedDetailTableViewCell";
@@ -22,6 +23,8 @@ NSString *const KCommentTableViewCell = @"CommentTableViewCell";
 
 #define KLEFTMARGIN SCALE_NUM(15)//头像的左间距
 
+#define KTAGMICONARGIN_TOP SCALE_NUM(18)
+#define KBOTTOMMARGIN_TOP SCALE_NUM(12)
 
 
 
@@ -29,6 +32,7 @@ NSString *const KCommentTableViewCell = @"CommentTableViewCell";
 
 @property (nonatomic, strong) FeedCellTopView *topView;             //内容以上UI
 @property (nonatomic, strong) FeedCellMiddleView *middleView;       //中间部分UI
+@property (nonatomic, strong) FeedTag           *tagView;           //tag的view
 @property (nonatomic, strong) FeedCellBottomView *bottomView;       //底下部分UI
 
 
@@ -57,6 +61,9 @@ NSString *const KCommentTableViewCell = @"CommentTableViewCell";
         }
         [self initTopView];
         [self initMiddleView];
+        if (_feedType == FeedListType || _feedType == FeedDetailType) {
+            [self initTagView];
+        }
         [self initBottomView];
         self.selectionStyle = UITableViewCellSelectionStyleNone;
     }
@@ -81,39 +88,49 @@ NSString *const KCommentTableViewCell = @"CommentTableViewCell";
     _middleView = [[FeedCellMiddleView alloc] initWithType:_feedType];
     [self.contentView addSubview:_middleView];
     [_middleView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.right.equalTo(self.contentView);
+        make.right.equalTo(self.contentView);
         make.top.equalTo(_topView.mas_bottom);
-    }];
-    if (_feedType == FeedListType || _feedType == FeedDetailType) {
-        [_middleView.tagIcon mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.centerX.equalTo(_topView.contactHeadImageView);
-        }];
-        [_middleView.contentLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.left.equalTo(_topView.contactNameLabel);
-        }];
-    } else if(_feedType == FeedOrganizationType){
-        [_middleView.contentLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        if (_feedType == FeedListType || _feedType == FeedDetailType) {
+           make.left.equalTo(_topView.contactNameLabel);
+        } else if (_feedType == FeedOrganizationType) {
             make.left.equalTo(_topView);
-        }];
-    }
+        }
+    }];
+}
+
+- (void)initTagView {
+    _tagView = [[FeedTag alloc] init];
+    [self.contentView addSubview:_tagView];
+    [_tagView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.right.equalTo(_middleView);
+        make.top.equalTo(_middleView.mas_bottom).offset(KTAGMICONARGIN_TOP);
+    }];
+    [_tagView.tagIcon mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerX.equalTo(_topView.contactHeadImageView);
+    }];
+    [_tagView.tagContent mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(_middleView.contentLabel);
+    }];
+    
 }
 
 - (void)initBottomView {
     _bottomView = [[FeedCellBottomView alloc] initWithType:_feedType];
     [self.contentView addSubview:_bottomView];
     [_bottomView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(_middleView.mas_bottom).offset(15);
         make.centerX.equalTo(_topView);
         if (_feedType == FeedListType || _feedType == FeedDetailType) {
-            make.left.equalTo(_middleView.tagIcon);
+            make.left.equalTo(_tagView.tagIcon);
+            make.top.equalTo(_tagView.mas_bottom).offset(KBOTTOMMARGIN_TOP);
         } else {
+            make.top.equalTo(_middleView.mas_bottom).offset(KBOTTOMMARGIN_TOP);
             make.left.equalTo(_middleView.contentLabel);
         }
         make.bottom.equalTo(self.contentView).offset(-10);
     }];
     if (_feedType == FeedListType) {
         [_bottomView.shareButton mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.centerX.equalTo(_middleView.tagIcon);
+            make.centerX.equalTo(_tagView.tagIcon);
         }];
     }
     if (_feedType == FeedOrganizationType) {
@@ -133,7 +150,7 @@ NSString *const KCommentTableViewCell = @"CommentTableViewCell";
     [_topView setData];
     [_middleView setData];
     [_bottomView setData];
-    
+    [_tagView setData];
 }
 
 
