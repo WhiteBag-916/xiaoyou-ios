@@ -69,7 +69,7 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>Pods-XiaoYou-SIAlertView.xcscheme</key>
+		<key>Pods-XiaoYou-SKTagView.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -97,167 +97,92 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>0825F06FE35069D7BF583FD2</key>
+		<key>04A63C7FCD02A87C1BE89C51</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>094A2F5562C56DDA9A9D0CE1</key>
+		<key>07BB7AA59B43391B66F13E7E</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>0A6EBD124CE37668BEE7BCD1</key>
+		<key>347CCDE6EF3070DF7EB1741A</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>0D7B2F9B102000AC9866E1B1</key>
+		<key>53C7B0C7527782055F6085E1</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>13B886C225FC1EDDF300D07F</key>
+		<key>543A88F10665DF7C933082EC</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>1B4BCE187CECB76348A50537</key>
+		<key>56C0CC06282CC183F37C73F3</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>1E74677CC280BAE6A26EA96E</key>
+		<key>733C461606A315C589140596</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>267F643D7AFCEDBE67B0DEAC</key>
+		<key>8EA72D78DC0C7C3C3B86AA20</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>2F60A25859DF55BE0B7B0C0B</key>
+		<key>9085F243BBEF9DE2DEE902E4</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>3B02C0B46F71CA481D72DE34</key>
+		<key>A0BCBD5023390E2E8EEDFAF1</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>3E455F6610E1242756A262D0</key>
+		<key>A5B5FE225FD55FD7941B3B32</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>47D712F604D5146DA1B76EEF</key>
+		<key>A6E7D9375A4603444DBC5667</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>5DCD9AE0E0119E2D3C3E0A0D</key>
+		<key>B0CCD5073DDA3F91236E94AB</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>6A25FBBCDE56BCB3A84483CB</key>
+		<key>BB5275E24AC5CDC80B910D7E</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>7301486E266B238844642500</key>
+		<key>C06562915A5250C0CFE97B48</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>7A97186DD4954E9AF45FA09C</key>
+		<key>D15DFDAB06598379E3226CA5</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>94334C325602C13449F56AEB</key>
+		<key>ED45AAC08C7851D2347E4A5D</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>98058B0067C1ADB998CC6E91</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>9D00594EE26A70320F4261F6</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>B4D5A2025892627901F2B1E3</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>B66DF45284EA21A88B2CCFFD</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>B9AE7EC028EABF0024C36A83</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>BC7B52387CB31BC777570029</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>C22519C1611E94FB4BD60A1B</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>CC4CFD08DAEF7A3248877109</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>D31CBE0DEA0BCE62C92D6068</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>E1205F3F9F1B3FDB6182FB0D</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>E203209A12DA8529177A8640</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>E5A388E6D2E21B17EDD1C1CA</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>E964D903A337819769ECAC8D</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>EEE5C957381500FA43DA8391</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>F78A1B4B914CFC1EAAEE1B38</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>FA055CCD1101A7693D8A4BF0</key>
+		<key>F94BB84163DB14372091369B</key>
 		<dict>
 			<key>primary</key>
 			<true/>

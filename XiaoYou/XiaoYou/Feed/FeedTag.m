@@ -7,14 +7,13 @@
 //
 
 #import "FeedTag.h"
-
 #define KLABELHEIGHT SCALE_NUM(10)
 
 @interface FeedTag()
 
 @property (nonatomic, strong, readwrite) UIImageView *tagIcon;                 //tag图标
 
-@property (nonatomic, strong, readwrite) UIView *tagContent;                   //tag标签
+@property (nonatomic, strong, readwrite) SKTagView *tagContent;                   //tag标签
 
 @end
 
@@ -31,23 +30,40 @@
             make.left.top.equalTo(self);
         }];
         
-        _tagContent = [[UIView alloc] init];
+        _tagContent = [[SKTagView alloc] init];
         [self addSubview:_tagContent];
         [_tagContent mas_makeConstraints:^(MASConstraintMaker *make) {
             make.top.equalTo(_tagIcon.mas_centerY).offset(-KLABELHEIGHT/2);
             make.right.bottom.equalTo(self);
+            make.height.mas_equalTo(50);
         }];
+        
+        [self setIsRelated:true];
     }
+    
     return self;
 }
 
 
 - (void)setData {
-    for (int i = 0; i < _tagContent.subviews.count; i++) {
-        [_tagContent.subviews[i] removeFromSuperview];
+    NSArray *labelName = @[@"金融", @"留学咨询", @"学校生活", @"工作", @"互联网信息"];
+    for (int i = 0; i < labelName.count; i++) {
+        SKTag *tag = [SKTag tagWithText:labelName[i]];
+        tag.font = CONTENT_FONT(10);
+        tag.textColor = KCOLORWHITE_696969;
+        tag.textColor = KCOLORGREEN_009688;
+        tag.padding = UIEdgeInsetsMake(0, 0, 5, 21);
+        [_tagContent addTag:tag];
     }
     
-    NSArray *labelName = @[@"金融", @"留学咨询", @"学校生活", @"工作", @"互联网信息"];
     
+}
+
+- (void)setIsRelated:(BOOL)isRelated {
+    if (isRelated) {
+        _tagIcon.image = [UIImage imageNamed:@"tag-green"];
+    } else {
+        _tagIcon.image = [UIImage imageNamed:@"tag-grey"];
+    }
 }
 @end
