@@ -1092,7 +1092,7 @@
     [self keyBoardHidden];
     
 #if TARGET_IPHONE_SIMULATOR
-    [self showHint:NSLocalizedString(@"message.simulatorNotSupportCamera", @"simulator does not support taking picture")];
+    [self showHint:NSLocalizedString(@"相机不可用", @"simulator does not support taking picture")];
 #elif TARGET_OS_IPHONE
     self.imagePicker.sourceType = UIImagePickerControllerSourceTypeCamera;
     self.imagePicker.mediaTypes = @[(NSString *)kUTTypeImage,(NSString *)kUTTypeMovie];
