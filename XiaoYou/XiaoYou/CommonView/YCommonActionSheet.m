@@ -105,11 +105,13 @@ static const NSUInteger kYActionSheetCancelHeight = 49;
     UIButton *switchButton = (UIButton *)[self viewWithTag:10001];
     if (_item.isOpen)
     {
-        [switchButton setImage:[UIImage imageNamed:@"wechat"] forState:UIControlStateNormal];
+        [switchButton setImage:[UIImage imageNamed:@"toggle-on"] forState:UIControlStateNormal];
+        [switchButton setImage:[UIImage imageNamed:@"toggle-on"] forState:UIControlStateHighlighted];
     }
     else
     {
-        [switchButton setImage:[UIImage imageNamed:@"wechat_friends"] forState:UIControlStateNormal];
+        [switchButton setImage:[UIImage imageNamed:@"toggle-off"] forState:UIControlStateNormal];
+        [switchButton setImage:[UIImage imageNamed:@"toggle-off"] forState:UIControlStateHighlighted];
     }
 }
 
@@ -127,6 +129,7 @@ static const NSUInteger kYActionSheetCancelHeight = 49;
     if (nil != imageName)
     {
         [button setImage:[UIImage imageNamed:imageName] forState:UIControlStateNormal];
+        [button setImage:[UIImage imageNamed:imageName] forState:UIControlStateHighlighted];
     }
     
     button.tag = tag;
@@ -220,6 +223,7 @@ static const NSUInteger kYActionSheetCancelHeight = 49;
         UIButton *cancelButton = [[UIButton alloc] initWithFrame:CGRectMake(0, sheetViewBackgroundViewHeight - kYActionSheetCancelHeight, self.width, kYActionSheetCancelHeight)];
         [cancelButton addTarget:self action:@selector(dismiss) forControlEvents:UIControlEventTouchUpInside];
         [cancelButton setImage:[UIImage imageNamed:@"sheet_delete"] forState:UIControlStateNormal];
+        [cancelButton setImage:[UIImage imageNamed:@"sheet_delete"] forState:UIControlStateHighlighted];
         [_sheetViewBackgroundView addSubview:cancelButton];
         [self addSubview:_sheetViewBackgroundView];
         

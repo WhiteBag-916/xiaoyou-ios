@@ -21,13 +21,36 @@
 }
 
 - (void)moreBarAction {
-    YActionSheetItem *item1 = [YActionSheetItem itemWithTitle:@"清空所有提醒"
+//    YActionSheetItem *item1 = [YActionSheetItem itemWithTitle:@"清空所有提醒"
+//                                                         type:YCommonActionSheetItemTypeCommon
+//                                                        block:^(NSInteger checkNum) {
+//                                                            
+//                                                        }];
+//    
+//    YCommonActionSheet *sheet = [[YCommonActionSheet alloc] initWithType:@[item1] title:nil];
+//    [sheet show];
+    
+    //test
+    YActionSheetItem *item1 = [YActionSheetItem itemWithTitle:@"分享这社团名片至"
+                                                         type:YCommonActionSheetItemTypeShare
+                                                        block:^(NSInteger checkNum) {
+                                                            
+                                                        }];
+    
+    YActionSheetItem *item2 = [YActionSheetItem itemWithTitle:@"消息不提醒"
+                                                         type:YCommonActionSheetItemTypeSwitch
+                                                         open:YES
+                                                        block:^(NSInteger checkNum) {
+                                                            
+                                                        }];
+    
+    YActionSheetItem *item3 = [YActionSheetItem itemWithTitle:@"举报"
                                                          type:YCommonActionSheetItemTypeCommon
                                                         block:^(NSInteger checkNum) {
                                                             
                                                         }];
     
-    YCommonActionSheet *sheet = [[YCommonActionSheet alloc] initWithType:@[item1] title:nil];
+    YCommonActionSheet *sheet = [[YCommonActionSheet alloc] initWithType:@[item1, item2, item3] title:nil];
     [sheet show];
 }
 
