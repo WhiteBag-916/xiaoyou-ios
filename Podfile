@@ -19,6 +19,5 @@ pod 'EaseMobSDK'
 pod 'MJRefresh'
 pod 'Masonry'
 pod 'UITableView+FDTemplateLayoutCell'
-pod 'DWTagList'
 xcodeproj 'XiaoYou/XiaoYou.xcodeproj'
 end

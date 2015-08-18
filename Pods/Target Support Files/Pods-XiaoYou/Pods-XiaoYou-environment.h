@@ -66,12 +66,6 @@
 #define COCOAPODS_VERSION_MINOR_CocoaLumberjack_Extensions 0
 #define COCOAPODS_VERSION_PATCH_CocoaLumberjack_Extensions 1
 
-// DWTagList
-#define COCOAPODS_POD_AVAILABLE_DWTagList
-#define COCOAPODS_VERSION_MAJOR_DWTagList 0
-#define COCOAPODS_VERSION_MINOR_DWTagList 0
-#define COCOAPODS_VERSION_PATCH_DWTagList 7
-
 // EaseMobSDK
 #define COCOAPODS_POD_AVAILABLE_EaseMobSDK
 #define COCOAPODS_VERSION_MAJOR_EaseMobSDK 2
