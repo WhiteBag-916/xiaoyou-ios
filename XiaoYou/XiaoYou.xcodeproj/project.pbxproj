@@ -85,6 +85,8 @@
 		20E942231B833D10009C2DC6 /* toggle-off@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 20E9421F1B833D10009C2DC6 /* toggle-off@3x.png */; };
 		20E942241B833D10009C2DC6 /* toggle-on@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 20E942201B833D10009C2DC6 /* toggle-on@2x.png */; };
 		20E942251B833D10009C2DC6 /* toggle-on@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 20E942211B833D10009C2DC6 /* toggle-on@3x.png */; };
+		20E942361B833D10009C2DC6 /* sheet_delete@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 20E942341B833D10009C2DC6 /* sheet_delete@2x.png */; };
+		20E942371B833D10009C2DC6 /* sheet_delete@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 20E942351B833D10009C2DC6 /* sheet_delete@3x.png */; };
 		3331222A1B806EDB00D3D032 /* ChatSendHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 333120E71B806EDA00D3D032 /* ChatSendHelper.m */; };
 		3331222B1B806EDB00D3D032 /* ChatViewController+Category.m in Sources */ = {isa = PBXBuildFile; fileRef = 333120E91B806EDA00D3D032 /* ChatViewController+Category.m */; };
 		3331222C1B806EDB00D3D032 /* ChatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 333120EB1B806EDA00D3D032 /* ChatViewController.m */; };
@@ -433,6 +435,8 @@
 		20E9421F1B833D10009C2DC6 /* toggle-off@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "toggle-off@3x.png"; sourceTree = "<group>"; };
 		20E942201B833D10009C2DC6 /* toggle-on@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "toggle-on@2x.png"; sourceTree = "<group>"; };
 		20E942211B833D10009C2DC6 /* toggle-on@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "toggle-on@3x.png"; sourceTree = "<group>"; };
+		20E942341B833D10009C2DC6 /* sheet_delete@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sheet_delete@2x.png"; sourceTree = "<group>"; };
+		20E942351B833D10009C2DC6 /* sheet_delete@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sheet_delete@3x.png"; sourceTree = "<group>"; };
 		234A25BD9458AE14C70CE430 /* Pods-XiaoYou.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XiaoYou.debug.xcconfig"; path = "../Pods/Target Support Files/Pods-XiaoYou/Pods-XiaoYou.debug.xcconfig"; sourceTree = "<group>"; };
 		333120E61B806EDA00D3D032 /* ChatSendHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatSendHelper.h; sourceTree = "<group>"; };
 		333120E71B806EDA00D3D032 /* ChatSendHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatSendHelper.m; sourceTree = "<group>"; };
@@ -1127,6 +1131,8 @@
 		20E18D891B808E42005B75EE /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				20E942341B833D10009C2DC6 /* sheet_delete@2x.png */,
+				20E942351B833D10009C2DC6 /* sheet_delete@3x.png */,
 				20E9421E1B833D10009C2DC6 /* toggle-off@2x.png */,
 				20E9421F1B833D10009C2DC6 /* toggle-off@3x.png */,
 				20E942201B833D10009C2DC6 /* toggle-on@2x.png */,
@@ -2131,6 +2137,7 @@
 				3334ABEC1B82C58600FDDCCB /* chatBar_keyboard@2x.png in Resources */,
 				3334ABEB1B82C58600FDDCCB /* chatBar_keyboard.png in Resources */,
 				3335C38E1B8178E8007DEFD4 /* VoiceSearchFeedback018@2x.png in Resources */,
+				20E942371B833D10009C2DC6 /* sheet_delete@3x.png in Resources */,
 				333122731B806EDB00D3D032 /* sr_refresh.png in Resources */,
 				20E18DCD1B808E42005B75EE /* more@3x.png in Resources */,
 				20E18DB81B808E42005B75EE /* common_search@2x.png in Resources */,
@@ -2149,6 +2156,7 @@
 				20E18DD11B808E42005B75EE /* tag-grey@3x.png in Resources */,
 				3335C37A1B8178E8007DEFD4 /* VoiceSearchFeedback008@2x.png in Resources */,
 				3335C3891B8178E8007DEFD4 /* VoiceSearchFeedback016.png in Resources */,
+				20E942361B833D10009C2DC6 /* sheet_delete@2x.png in Resources */,
 				3335C36A1B8178E8007DEFD4 /* chatFire_audioPlaying3@2x.png in Resources */,
 				3335C3761B8178E8007DEFD4 /* VoiceSearchFeedback006@2x.png in Resources */,
 				3334AC0C1B82C89500FDDCCB /* chatBar_colorMore_cameraSelected@2x.png in Resources */,
