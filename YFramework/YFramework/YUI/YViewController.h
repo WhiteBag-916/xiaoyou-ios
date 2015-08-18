@@ -37,11 +37,18 @@
 //导航栏左侧显示返回按钮
 - (void)showCustomNavigationBackButton;
 
+//导航栏左侧显示取消按钮
+- (void)showCustomNavigationCancelButton;
+
 //导航栏右侧，搜索按钮
 - (void)showCustomNavigationSearchButton;
 
 //导航栏右侧，更多按钮
 - (void)showCustomNavigationMoreButton;
+
+//导航栏右侧，确认按钮
+- (void)showCustomNavigationSureButton;
+
 
 
 @end

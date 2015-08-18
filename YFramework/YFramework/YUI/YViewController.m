@@ -153,6 +153,11 @@
     [self showNomalNavigationLeftButton:@"" action:@selector(onNavigationLeftButtonClicked:) imgName:@"common_back"];
 }
 
+//导航栏左侧显示取消按钮
+- (void)showCustomNavigationCancelButton {
+    [self showNomalNavigationLeftButton:@"" action:@selector(onNavigationLeftButtonClicked:) imgName:@"complete-cancel"];
+}
+
 - (void)showNomalNavigationLeftButton:(NSString *)title action:(SEL)selector imgName:(NSString *)imgName
 {
     //right barbutton view
@@ -177,7 +182,6 @@
 }
 
 #pragma mark - 右导航栏
-
 //导航栏右侧，搜索按钮
 - (void)showCustomNavigationSearchButton {
     [self showNomalNavigationRightButtonWithImage:@"common_search" action:@selector(searchBarAction)];
@@ -186,6 +190,11 @@
 //导航栏右侧，更多按钮
 - (void)showCustomNavigationMoreButton {
     [self showNomalNavigationRightButtonWithImage:@"more" action:@selector(moreBarAction)];
+}
+
+//导航栏右侧，确认按钮
+- (void)showCustomNavigationSureButton {
+    [self showNomalNavigationRightButtonWithImage:@"complete-grey" action:@selector(moreBarAction)];
 }
 
 - (void)showNomalNavigationRightButtonWithImage:(NSString *)image action:(SEL)selector {
