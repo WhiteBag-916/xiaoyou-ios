@@ -16,7 +16,7 @@
 #import "Masonry.h"
 #import "YSystemDefine.h"
 
-#define kRowHeight                     60
+#define kRowHeight                     68
 #define kHeadWidthAndHeight            40
 #define kNameLabelWidth                200
 #define kHeadCornerRadius              20
@@ -282,7 +282,7 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     self.myController.hidesBottomBarWhenPushed = YES;
-    ChatViewController * chatVC = [[ChatViewController alloc] initWithChatter:@"xiaoaliu" isGroup:NO];
+    ChatViewController * chatVC = [[ChatViewController alloc] initWithChatter:@"yinhui" isGroup:NO];
     [self.myController.navigationController pushViewController:chatVC animated:YES];
     
 }

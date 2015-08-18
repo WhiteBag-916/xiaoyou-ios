@@ -31,13 +31,19 @@
     if (self) {
         // Initialization code
         
-        UIView *bgView = [[UIView alloc] initWithFrame:self.bounds];
-        bgView.backgroundColor = [UIColor grayColor];
-        bgView.layer.cornerRadius = 80;
-        bgView.layer.masksToBounds = YES;
-        bgView.clipsToBounds = YES;
-        bgView.alpha = 0.6;
-        [self addSubview:bgView];
+//        UIView *bgView = [[UIView alloc] initWithFrame:self.bounds];
+//        bgView.backgroundColor = [UIColor grayColor];
+//        bgView.layer.cornerRadius = 80;
+//        bgView.layer.masksToBounds = YES;
+//        bgView.clipsToBounds = YES;
+//        bgView.alpha = 0.6;
+        UIImageView * bgImageView = [[UIImageView alloc] initWithFrame:self.bounds];
+        bgImageView.layer.cornerRadius = 80;
+        bgImageView.layer.masksToBounds = YES;
+        bgImageView.clipsToBounds = YES;
+        bgImageView.alpha = 0.8;
+        bgImageView.image = [UIImage imageNamed:@"chat_voice_bg"];
+        [self addSubview:bgImageView];
         
         _recordAnimationView = [[UIImageView alloc] initWithFrame:CGRectMake(65, 47, 30, 66)];
         _recordAnimationView.image = [UIImage imageNamed:@"VoiceSearchFeedback000"];

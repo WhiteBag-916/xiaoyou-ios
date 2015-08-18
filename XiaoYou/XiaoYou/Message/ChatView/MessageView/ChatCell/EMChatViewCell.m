@@ -181,7 +181,17 @@ NSString *const kShouldResendCell = @"kShouldResendCell";
     switch (messageModel.type) {
         case eMessageBodyType_Text:
         {
-            return [[EMChatTextBubbleView alloc] init];
+            
+            if (messageModel.isSender)
+            {
+                EMChatTextBubbleView * chatTextBubbleView = [[EMChatTextBubbleView alloc] init];
+                chatTextBubbleView.textLabel.textColor = [UIColor whiteColor];
+                return chatTextBubbleView;
+            }
+            else
+            {
+                return [[EMChatTextBubbleView alloc] init];
+            }
         }
             break;
         case eMessageBodyType_Image:
@@ -191,7 +201,18 @@ NSString *const kShouldResendCell = @"kShouldResendCell";
             break;
         case eMessageBodyType_Voice:
         {
-            return [[EMChatAudioBubbleView alloc] init];
+            if (messageModel.isSender)
+            {
+                EMChatAudioBubbleView * chatAudioBubbleView = [[EMChatAudioBubbleView alloc] init];
+                chatAudioBubbleView.timeLabel.textColor = [UIColor whiteColor];
+                return chatAudioBubbleView;
+            }
+            else
+            {
+                EMChatAudioBubbleView * chatAudioBubbleView = [[EMChatAudioBubbleView alloc] init];
+                chatAudioBubbleView.timeLabel.textColor = [UIColor blackColor];
+                return chatAudioBubbleView;
+            }
         }
             break;
         case eMessageBodyType_Location:

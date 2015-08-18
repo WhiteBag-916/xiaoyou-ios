@@ -45,8 +45,9 @@ extern NSString *const kRouterEventAudioBubbleTapEventName;
 @interface EMChatAudioBubbleView : EMChatBaseBubbleView
 {
     UIImageView *_animationImageView; // 动画的ImageView
-    UILabel *_timeLabel; // 时间label
+//    UILabel *_timeLabel; // 时间label
 }
+@property(nonatomic,strong)UILabel * timeLabel;
 
 -(void)startAudioAnimation;
 -(void)stopAudioAnimation;
