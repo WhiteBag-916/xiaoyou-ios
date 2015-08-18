@@ -37,21 +37,6 @@
 //导航栏左侧显示返回按钮
 - (void)showCustomNavigationBackButton;
 
-//导航栏左侧显示取消按钮
-- (void)showCustomNavigationCancelButton;
-
-//定制导航按钮
-- (void)showNomalNavigationRightButtonWithTitle:(NSString *)title action:(SEL)selector;
-
-//导航栏右侧保存按钮
-- (void)showCustomNavigationSaveButton;
-
-//导航栏右侧发布按钮
-- (void)showCustomNavigationSendButton;
-
-//导航栏右侧下一步按钮
-- (void)showCustomNavigationNextButton;
-
 //导航栏右侧，搜索按钮
 - (void)showCustomNavigationSearchButton;
 
