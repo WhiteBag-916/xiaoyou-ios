@@ -189,7 +189,7 @@
     self.myController.hidesBottomBarWhenPushed = YES;
 
     ChatViewController * chatVC = [[ChatViewController alloc] initWithChatter:@"yinhui" isGroup:NO];
-    [self.myController.navigationController pushViewController:chatVC animated:YES];
+    [self.myController.navigationController pushViewController:chatVC animated:YES from:self.myController];
     
 }
 

@@ -7,8 +7,11 @@
 //
 
 #import "XYContactsInfoDetailViewController.h"
+#import "ContactsInfoDetailTableView.h"
 
 @interface XYContactsInfoDetailViewController ()
+
+@property(nonatomic,strong)ContactsInfoDetailTableView * contactsInfoDetailTableView;
 
 @end
 
@@ -17,6 +20,31 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    [self showCustomNavigationBackButton];
+    
+    [self setUpUI];
+}
+
+//- (void)viewWillAppear:(BOOL)animated
+//{
+//    [super viewWillAppear:animated navigationBarHidden:NO tabBarHidden:YES];
+//}
+
+//-(void)viewDidLayoutSubviews
+//{
+//    self.hidesBottomBarWhenPushed = NO;
+//}
+
+-(void)setUpUI
+{
+    _contactsInfoDetailTableView = [[ContactsInfoDetailTableView alloc] init];
+    _contactsInfoDetailTableView.backgroundColor = [UIColor clearColor];
+    [self.view addSubview:_contactsInfoDetailTableView];
+    
+    [_contactsInfoDetailTableView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.left.right.bottom.mas_equalTo(0);
+    }];
 }
 
 - (void)didReceiveMemoryWarning {
