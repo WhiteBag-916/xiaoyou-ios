@@ -7,6 +7,7 @@
 //
 
 #import "NotifyListViewController.h"
+#import "YCommonActionSheet.h"
 
 @implementation NotifyListViewController
 
@@ -20,7 +21,14 @@
 }
 
 - (void)moreBarAction {
+    YActionSheetItem *item1 = [YActionSheetItem itemWithTitle:@"清空所有提醒"
+                                                         type:YCommonActionSheetItemTypeCommon
+                                                        block:^(NSInteger checkNum) {
+                                                            
+                                                        }];
     
+    YCommonActionSheet *sheet = [[YCommonActionSheet alloc] initWithType:@[item1] title:nil];
+    [sheet show];
 }
 
 @end

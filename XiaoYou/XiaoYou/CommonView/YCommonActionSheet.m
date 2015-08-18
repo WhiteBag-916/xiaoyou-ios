@@ -10,87 +10,152 @@
 #import "YFoundation.h"
 #import "YControlsDefine.h"
 
-static const NSUInteger kYActionSheetButtonHeight = 44;
+static const NSUInteger kYActionSheetButtonHeight = 50;
 static const NSUInteger kYActionSheetTitleHeight = 37;
-static const NSUInteger kYActionSheetCancelSpace = 5;
-static const NSUInteger kYActionSheetShareHeight = 15 + 46 + 5 + 14 + 15;
+static const NSUInteger kYActionSheetCancelHeight = 49;
 
 
 @interface YActionSheetItem()
 @property (nonatomic,copy) NSString *title;
-@property (nonatomic,strong) UIImage *image;
-@property (nonatomic,copy) void (^block)();
+@property (nonatomic,assign) YCommonActionItemSheetType type;
+@property (nonatomic, assign) BOOL isOpen;
+@property (nonatomic,copy) ActionSheetItemBlock block;
 @end
 
 
 @implementation YActionSheetItem
-+(instancetype)itemWithTitle:(NSString *)title block:(void(^)(void))block
++(instancetype)itemWithTitle:(NSString *)title type:(YCommonActionItemSheetType)type block:(ActionSheetItemBlock)block
 {
     YActionSheetItem *item = [[self alloc] init];
     item.title = title;
     item.block = block;
+    item.type = type;
     return item;
 }
 
-
-+(instancetype)itemWithTitle:(NSString *)title image:(UIImage *)image block:(void(^)(void))block
++(instancetype)itemWithTitle:(NSString *)title type:(YCommonActionItemSheetType)type open:(BOOL)isOpen block:(ActionSheetItemBlock)block
 {
-    YActionSheetItem *item = [self itemWithTitle:title block:block];
-    item.image = image;
+    YActionSheetItem *item = [YActionSheetItem itemWithTitle:title
+                                                        type:type
+                                                       block:block];
+    item.isOpen = isOpen;
     return item;
 }
 
 @end
 
-
-@interface YActionSheetButton : UIButton
+@interface YActionSheetView : UIView
 @property (nonatomic,strong) YActionSheetItem *item;
 @property (nonatomic,copy)  void(^clickedBlock)(void);
 @end
 
-@implementation YActionSheetButton
-
-- (instancetype)initWithFrame:(CGRect)frame;
-{
-    if (self = [super initWithFrame:frame]) {
-        self.backgroundColor = [UIColor whiteColor];
-        [self setTitle:@"" forState:UIControlStateNormal];
-        [self setTitleColor:[UIColor colorWithRed:73/255.0 green:73/255.0 blue:73/255.0 alpha:1.0] forState:UIControlStateNormal];
-        self.titleLabel.font = CONTENT_FONT(15);
-    }
-    return self;
-}
-
+@implementation YActionSheetView
 - (void)setItem:(YActionSheetItem *)item
 {
     _item = item;
-    [self setTitle:item.title forState:UIControlStateNormal];
-    if ([item.title isEqualToString:@"广告"]) {
-        [self setTitleColor:[UIColor hexChangeFloat:@"f4453C"] forState:UIControlStateNormal];
-    }
-    [self addTarget:self action:@selector(actionClicked:) forControlEvents:UIControlEventTouchUpInside];
-    if (item.image) {
-        [self setImage:item.image forState:UIControlStateNormal];
-        self.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
-        self.contentVerticalAlignment = UIControlContentVerticalAlignmentTop;
-        self.imageEdgeInsets = UIEdgeInsetsMake(0,16,0,0);
-        CGSize textSize = [self.titleLabel.text sizeWithAttributes:@{NSFontAttributeName:self.titleLabel.font}];
-        self.titleEdgeInsets = UIEdgeInsetsMake(46 + 4,(self.width - textSize.width)/2 - 46, 0, 0);
+    if (YCommonActionSheetItemTypeCommon == item.type) {
+        [self initCommon];
+    } else if (YCommonActionSheetItemTypeShare == item.type) {
+        [self initShare];
+    } else if (YCommonActionSheetItemTypeSwitch == item.type) {
+        [self initSwitch];
     }
 }
 
-- (void)actionClicked:(YActionSheetButton *)sender
+- (void)initCommon {
+    //1
+    UILabel *label = [self addLabel:_item.title];
+    [self addSubview:label];
+    
+    //2
+    UIButton *button = [self addButton:0 frame:self.bounds image:nil];
+    [self addSubview:button];
+}
+
+- (void)initShare {
+    //1
+    UILabel *label = [self addLabel:_item.title];
+    [self addSubview:label];
+    
+    //2
+    UIButton *button = [self addButton:0 frame:CGRectMake(self.width-85, 0, 27, self.height) image:@"wechat"];
+    [self addSubview:button];
+    
+    //3
+    UIButton *button2 = [self addButton:1 frame:CGRectMake(self.width-41, 0, 27, self.height) image:@"wechat_friends"];
+    [self addSubview:button2];
+}
+
+- (void)initSwitch {
+    //1
+    UILabel *label = [self addLabel:_item.title];
+    [self addSubview:label];
+    
+    //2
+    UIButton *switchButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    switchButton.frame = CGRectMake(self.width-43, 0, 27, self.height);
+    switchButton.tag = 10001;
+    [switchButton addTarget:self action:@selector(switchAction) forControlEvents:UIControlEventTouchUpInside];
+    [self addSubview:switchButton];
+    
+    [self updateSwitchButton];
+}
+
+- (void)updateSwitchButton {
+    UIButton *switchButton = (UIButton *)[self viewWithTag:10001];
+    if (_item.isOpen)
+    {
+        [switchButton setImage:[UIImage imageNamed:@"wechat"] forState:UIControlStateNormal];
+    }
+    else
+    {
+        [switchButton setImage:[UIImage imageNamed:@"wechat_friends"] forState:UIControlStateNormal];
+    }
+}
+
+- (UILabel *)addLabel:(NSString *)text {
+    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(23, 0, self.width-23*2, self.height)];
+    label.text = text;
+    label.textColor = KCOLORWHITE;
+    label.font = CONTENT_FONT(12);
+    return label;
+}
+
+- (UIButton *)addButton:(NSInteger)tag frame:(CGRect)frame image:(NSString *)imageName {
+    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+    button.frame = frame;
+    if (nil != imageName)
+    {
+        [button setImage:[UIImage imageNamed:imageName] forState:UIControlStateNormal];
+    }
+    
+    button.tag = tag;
+    [button addTarget:self action:@selector(actionClicked:) forControlEvents:UIControlEventTouchUpInside];
+    return button;
+}
+
+- (void)actionClicked:(UIButton *)sender
 {
     if (_clickedBlock) {
         _clickedBlock();
     }
-    if (sender.item.block) {
-        sender.item.block();
+    if (_item.block) {
+        _item.block(sender.tag);
+    }
+}
+
+-(void)switchAction
+{
+    _item.isOpen = !_item.isOpen;
+    
+    [self updateSwitchButton];
+    
+    if (_item.block) {
+        _item.block(0);
     }
 }
 
 @end
-
 
 @interface YCommonActionSheet()
 @property (nonatomic,strong) UIView *sheetViewBackgroundView;
@@ -99,7 +164,7 @@ static const NSUInteger kYActionSheetShareHeight = 15 + 46 + 5 + 14 + 15;
 
 @implementation YCommonActionSheet
 
-- (instancetype)initWithType:(YCommonActionSheetType)type items:(NSArray *)items title:(NSString *)title {
+- (instancetype)initWithType:(NSArray *)items title:(NSString *)title {
     
     if (self = [super initWithFrame:[[UIScreen mainScreen] bounds]]) {
         self.backgroundColor = [UIColor clearColor];
@@ -111,9 +176,10 @@ static const NSUInteger kYActionSheetShareHeight = 15 + 46 + 5 + 14 + 15;
         UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismiss)];
         tap.numberOfTapsRequired = 1;
         [self addGestureRecognizer:tap];
-        CGFloat sheetViewBackgroundViewHeight = (title.length > 0? kYActionSheetTitleHeight:0) + (YCommonActionSheetTypeShare == type ? kYActionSheetShareHeight:items.count * 44) + kYActionSheetCancelSpace + kYActionSheetButtonHeight;
+        CGFloat sheetViewBackgroundViewHeight = (title.length > 0? kYActionSheetTitleHeight:0) + items.count * kYActionSheetButtonHeight + kYActionSheetCancelHeight;
         
         _sheetViewBackgroundView = [[UIView alloc] initWithFrame:CGRectMake(0, self.height, self.width, sheetViewBackgroundViewHeight)];
+        _sheetViewBackgroundView.backgroundColor = KCOLORGREEN_455A64;
         
         CGFloat height = 0;
         
@@ -121,65 +187,39 @@ static const NSUInteger kYActionSheetShareHeight = 15 + 46 + 5 + 14 + 15;
             UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, height, self.width, kYActionSheetTitleHeight)];
             titleLabel.text = title;
             titleLabel.textColor = [UIColor hexChangeFloat:@"acacac"];
-            titleLabel.backgroundColor = [UIColor whiteColor];
             titleLabel.textAlignment = NSTextAlignmentCenter;
             titleLabel.font = CONTENT_FONT(13);
             
             [_sheetViewBackgroundView addSubview:titleLabel];
             
-            UIImageView *lineImageHView = [[UIImageView alloc] initWithFrame:CGRectMake(8, kYActionSheetTitleHeight - 1, self.width - (8 * 2) , 1)];
-            lineImageHView.image = [UIImage imageNamed:@"Public_px_line"];
+            UIView *lineView = [[UIView alloc] initWithFrame:CGRectMake(0, kYActionSheetButtonHeight - 1, self.width, 1)];
+            lineView.backgroundColor = [UIColor whiteColor];
             
-            [_sheetViewBackgroundView addSubview:lineImageHView];
+            [_sheetViewBackgroundView addSubview:lineView];
             
             height += kYActionSheetTitleHeight;
         }
         
-        if (YCommonActionSheetTypeShare == type)
-        {
-            UIView *buttonContentView = [[UIView alloc] initWithFrame:CGRectMake(0, height, self.width, kYActionSheetShareHeight)];
-            buttonContentView.backgroundColor = [UIColor whiteColor];
-            [_sheetViewBackgroundView addSubview:buttonContentView];
-        }
-        
         for (int i = 0; i < items.count; i++) {
             YActionSheetItem *item = items[i];
-            if (YCommonActionSheetTypeCommon == type) {
-                YActionSheetButton *actionButton = [[YActionSheetButton alloc] initWithFrame:CGRectMake(0,height + kYActionSheetButtonHeight * i, self.width, kYActionSheetButtonHeight)];
-                actionButton.item = item;
-                WS(weakSelf);
-                actionButton.clickedBlock = ^{
-                    [weakSelf dismiss];
-                };
-                
-                [_sheetViewBackgroundView addSubview:actionButton];
-                if (i < items.count - 1) {
-                    UIImageView *lineImageHView = [[UIImageView alloc] initWithFrame:CGRectMake(8, kYActionSheetButtonHeight - 1, self.width - (8 * 2) , 1)];
-                    lineImageHView.image = [UIImage imageNamed:@"Public_lpx_line"];
-                    [actionButton addSubview:lineImageHView];
-                }
-            }
-            else if (YCommonActionSheetTypeShare == type)
-            {
-                NSUInteger with = self.width - 4;
-                NSUInteger buttonWith = 46 + 16*2;
-                NSUInteger splitWith = (with/items.count - buttonWith)/2;
-                
-                YActionSheetButton *actionButton = [[YActionSheetButton alloc] initWithFrame:CGRectMake(4 + (with/items.count) * i + splitWith,height + 15, buttonWith, 46 + 5 + 13)];
-                actionButton.item = item;
-                WS(weakSelf);
-                actionButton.clickedBlock = ^{
-                    [weakSelf dismiss];
-                };
-                [_sheetViewBackgroundView addSubview:actionButton];
-            }
+            YActionSheetView *actionView = [[YActionSheetView alloc] initWithFrame:CGRectMake(0,height + kYActionSheetButtonHeight * i, self.width, kYActionSheetButtonHeight)];
+            actionView.item = item;
+            WS(weakSelf);
+            actionView.clickedBlock = ^{
+                [weakSelf dismiss];
+            };
+            
+            [_sheetViewBackgroundView addSubview:actionView];
+//            if (i < items.count - 1) {
+                UIView *lineView = [[UIView alloc] initWithFrame:CGRectMake(0, kYActionSheetButtonHeight - 1, self.width, 1)];
+                lineView.backgroundColor = [UIColor whiteColor];
+                [actionView addSubview:lineView];
+//            }
         }
         
-        _sheetViewBackgroundView.backgroundColor = [UIColor clearColor];
-        YActionSheetButton *cancelButton = [[YActionSheetButton alloc] initWithFrame:CGRectMake(0, sheetViewBackgroundViewHeight - kYActionSheetButtonHeight, self.width, kYActionSheetButtonHeight)];
+        UIButton *cancelButton = [[UIButton alloc] initWithFrame:CGRectMake(0, sheetViewBackgroundViewHeight - kYActionSheetCancelHeight, self.width, kYActionSheetCancelHeight)];
         [cancelButton addTarget:self action:@selector(dismiss) forControlEvents:UIControlEventTouchUpInside];
-        [cancelButton setTitle:@"取消" forState:UIControlStateNormal];
-        [cancelButton setTitleColor:[UIColor hexChangeFloat:@"494949"] forState:UIControlStateNormal];
+        [cancelButton setImage:[UIImage imageNamed:@"sheet_delete"] forState:UIControlStateNormal];
         [_sheetViewBackgroundView addSubview:cancelButton];
         [self addSubview:_sheetViewBackgroundView];
         
@@ -193,7 +233,7 @@ static const NSUInteger kYActionSheetShareHeight = 15 + 46 + 5 + 14 + 15;
     [[UIApplication sharedApplication] beginIgnoringInteractionEvents];
     [[UIApplication sharedApplication].keyWindow addSubview:self];
     [UIView animateWithDuration:0.25 animations:^{
-        _backgroundView.alpha = .4f;
+//        _backgroundView.alpha = .4f;
         _sheetViewBackgroundView.originY = self.height - _sheetViewBackgroundView.height;
     } completion:^(BOOL finished) {
         [[UIApplication sharedApplication] endIgnoringInteractionEvents];
@@ -204,7 +244,7 @@ static const NSUInteger kYActionSheetShareHeight = 15 + 46 + 5 + 14 + 15;
 {
     [[UIApplication sharedApplication] beginIgnoringInteractionEvents];
     [UIView animateWithDuration:0.25 animations:^{
-        _backgroundView.alpha = 0;
+//        _backgroundView.alpha = 0;
         _sheetViewBackgroundView.originY = self.height;
     } completion:^(BOOL finished) {
         [self removeFromSuperview];

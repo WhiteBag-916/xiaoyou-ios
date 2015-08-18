@@ -8,17 +8,21 @@
 
 #import "YView.h"
 
-typedef NS_ENUM(NSInteger, YCommonActionSheetType) {
-    YCommonActionSheetTypeCommon,
-    YCommonActionSheetTypeShare,
+typedef NS_ENUM(NSInteger, YCommonActionItemSheetType) {
+    YCommonActionSheetItemTypeCommon,
+    YCommonActionSheetItemTypeShare,
+    YCommonActionSheetItemTypeSwitch,
 };
 
+typedef void(^ActionSheetItemBlock)(NSInteger checkNum);
+
 @interface YActionSheetItem : NSObject
-+(instancetype)itemWithTitle:(NSString *)title block:(void(^)(void))block;
-+(instancetype)itemWithTitle:(NSString *)title image:(UIImage *)image block:(void(^)(void))block;
++(instancetype)itemWithTitle:(NSString *)title type:(YCommonActionItemSheetType)type block:(ActionSheetItemBlock)block;
+//传开关
++(instancetype)itemWithTitle:(NSString *)title type:(YCommonActionItemSheetType)type open:(BOOL)isOpen block:(ActionSheetItemBlock)block;
 @end
 
 @interface YCommonActionSheet : YView
-- (instancetype)initWithType:(YCommonActionSheetType)type items:(NSArray *)items title:(NSString *)title;
+- (instancetype)initWithType:(NSArray *)items title:(NSString *)title;
 - (void)show;
 @end
