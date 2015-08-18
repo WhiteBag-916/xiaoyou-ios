@@ -35,6 +35,8 @@
 #import "EMCDDeviceManager.h"
 #import "EMCDDeviceManagerDelegate.h"
 #import "RobotManager.h"
+#import "XYContactsInfoDetailViewController.h"
+
 #define KPageCount 20
 #define KHintAdjustY    50
 
@@ -243,7 +245,8 @@
     else{
         UIButton *clearButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 44, 44)];
         [clearButton setImage:[UIImage imageNamed:@"delete"] forState:UIControlStateNormal];
-        [clearButton addTarget:self action:@selector(removeAllMessages:) forControlEvents:UIControlEventTouchUpInside];
+//        [clearButton addTarget:self action:@selector(removeAllMessages:) forControlEvents:UIControlEventTouchUpInside];
+        [clearButton addTarget:self action:@selector(pushToDetailPage:) forControlEvents:UIControlEventTouchUpInside];
         self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:clearButton];
     }
 }
@@ -1542,6 +1545,13 @@
 //        ChatroomDetailViewController *detailController = [[ChatroomDetailViewController alloc] initWithChatroomId:_chatter];
 //        [self.navigationController pushViewController:detailController animated:YES];
 //    }
+}
+
+//联系人详情
+-(void)pushToDetailPage:(id)sender
+{
+    XYContactsInfoDetailViewController * ContactsInfoDetailViewController = [[XYContactsInfoDetailViewController alloc] init];
+    [self.navigationController pushViewController:ContactsInfoDetailViewController animated:YES];
 }
 
 - (void)removeAllMessages:(id)sender

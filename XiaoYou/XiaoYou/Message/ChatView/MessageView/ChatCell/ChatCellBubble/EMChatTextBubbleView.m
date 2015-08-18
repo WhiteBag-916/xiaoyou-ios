@@ -32,6 +32,7 @@ NSString *const kRouterEventTextURLTapEventName = @"kRouterEventTextURLTapEventN
     if (self = [super initWithFrame:frame]) {
         _textLabel = [[UILabel alloc] initWithFrame:CGRectZero];
         _textLabel.numberOfLines = 0;
+//        _textLabel.textColor = [UIColor whiteColor];
         _textLabel.lineBreakMode = NSLineBreakByCharWrapping;
         _textLabel.font = [UIFont systemFontOfSize:LABEL_FONT_SIZE];
         _textLabel.backgroundColor = [UIColor clearColor];

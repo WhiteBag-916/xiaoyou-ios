@@ -89,6 +89,7 @@
     //聊天
     _messageTableView = [[MessageTableView alloc] init];
     _messageTableView.myController = self;
+    _messageTableView.separatorStyle = NO;
     [self.view addSubview:_messageTableView];
     [_messageTableView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.left.right.mas_equalTo(0);
@@ -96,6 +97,7 @@
     }];
     //联系人
     _contactsTableView = [[ContactsTableView alloc]init];
+    _contactsTableView.separatorStyle = NO;
     _contactsTableView.myController = self;
     _contactsTableView.hidden = YES;
     [self.view addSubview:_contactsTableView];

@@ -14,7 +14,7 @@
 #import "YColor+Ext.h"
 #import "XYGroupInfoDetailViewController.h"
 
-#define kRowHeight                     60
+#define kRowHeight                     68
 #define kHeadWidthAndHeight            40
 #define kNameLabelWidth                80
 #define kTimeLabelWidth                60
@@ -68,7 +68,7 @@
 
 -(void)setUpHeaderView
 {
-    UIView * backView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 60)];
+    UIView * backView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, kRowHeight)];
     UITapGestureRecognizer * tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapGestureRecognizerAction)];
     [backView addGestureRecognizer:tapGestureRecognizer];
     //头像
@@ -188,7 +188,7 @@
 
     self.myController.hidesBottomBarWhenPushed = YES;
 
-    ChatViewController * chatVC = [[ChatViewController alloc] initWithChatter:@"xiaoaliu" isGroup:NO];
+    ChatViewController * chatVC = [[ChatViewController alloc] initWithChatter:@"yinhui" isGroup:NO];
     [self.myController.navigationController pushViewController:chatVC animated:YES];
     
 }

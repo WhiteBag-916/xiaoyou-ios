@@ -35,6 +35,8 @@ NSString *const kRouterEventChatHeadImageTapEventName = @"kRouterEventChatHeadIm
         [_headImageView addGestureRecognizer:tap];
         _headImageView.userInteractionEnabled = YES;
         _headImageView.multipleTouchEnabled = YES;
+        _headImageView.layer.cornerRadius = 20;
+        _headImageView.clipsToBounds = YES;
         _headImageView.backgroundColor = [UIColor clearColor];
         [self.contentView addSubview:_headImageView];
         
@@ -81,7 +83,7 @@ NSString *const kRouterEventChatHeadImageTapEventName = @"kRouterEventChatHeadIm
     
     _nameLabel.hidden = (messageModel.messageType == eMessageTypeChat);
     
-    UIImage *placeholderImage = [UIImage imageNamed:@"chatListCellHead"];
+    UIImage *placeholderImage = [UIImage imageNamed:@"default_head"];
     [self.headImageView sd_setImageWithURL:_messageModel.headImageURL placeholderImage:placeholderImage];
 }
 
