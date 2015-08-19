@@ -26,6 +26,20 @@
     return dic;
 }
 
++ getParameter:(NSDictionary *)parameters needUserToken:(BOOL)needUserToken
+{
+    if (needUserToken)
+    {
+        NSMutableDictionary *dic = [[NSMutableDictionary alloc] initWithDictionary:parameters];
+        [dic setValue:@{@"schoolCode": [YShareData defaultData][kShareData_SchoolCode],
+                        @"studentNo": [YShareData defaultData][kShareData_StudentNo],
+                        @"token": [YShareData defaultData][kShareData_Token]}
+               forKey:@"userToken"];
+        return [self getParameter:dic];
+    }
+    
+    return [self getParameter:parameters];
+}
 
 + (NSString *)distanceTimeToday:(NSDate *)date
 {

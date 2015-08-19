@@ -11,6 +11,7 @@
 #import "FeedManager.h"
 #import "ContactManager.h"
 #import "MessageManager.h"
+#import "YCommonShare.h"
 
 @implementation AppDelegate (Manager)
 
@@ -24,6 +25,9 @@
     [FeedManager sharedInstance];
     [MessageManager sharedInstance];
     [ContactManager sharedInstance];
+    
+    //注册umeng
+    [[YCommonShare sharedInstance] registUmengSDK];
 }
 
 @end

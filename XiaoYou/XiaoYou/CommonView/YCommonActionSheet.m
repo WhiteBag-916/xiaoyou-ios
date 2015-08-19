@@ -78,11 +78,11 @@ static const NSUInteger kYActionSheetCancelHeight = 49;
     [self addSubview:label];
     
     //2
-    UIButton *button = [self addButton:0 frame:CGRectMake(self.width-85, 0, 27, self.height) image:@"wechat"];
+    UIButton *button = [self addButton:YShareTypeToWechatSession frame:CGRectMake(self.width-85, 0, 27, self.height) image:@"wechat"];
     [self addSubview:button];
     
     //3
-    UIButton *button2 = [self addButton:1 frame:CGRectMake(self.width-41, 0, 27, self.height) image:@"wechat_friends"];
+    UIButton *button2 = [self addButton:YShareTypeToWechatTimeline frame:CGRectMake(self.width-41, 0, 27, self.height) image:@"wechat_friends"];
     [self addSubview:button2];
 }
 
