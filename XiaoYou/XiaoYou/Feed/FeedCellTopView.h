@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 @class ConnectTag;
-
+@class YFaceImageView;
 @interface FeedCellTopModel : NSObject
 @property (nonatomic, strong) NSString  *userId;
 @property (nonatomic, strong) NSString  *imgUrl;
@@ -19,7 +19,7 @@
 
 @interface FeedCellTopView : UIView
 
-@property (nonatomic, strong, readonly) UIImageView *contactHeadImageView;    //头像
+@property (nonatomic, strong, readonly) YFaceImageView *contactHeadImageView;    //头像
 @property (nonatomic, strong, readonly) UILabel *contactNameLabel;            //名字
 @property (nonatomic, strong, readonly) UILabel *timeLabel;                   //时间
 @property (nonatomic, strong, readonly) ConnectTag *tagList;                  //人脉标签

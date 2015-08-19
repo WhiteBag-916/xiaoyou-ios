@@ -9,7 +9,7 @@
 #import "FeedCellTopView.h"
 #import "YUtils+Component.h"
 #import "ConnectTag.h"
-#import "UIImageView+WebCache.h"
+#import "YFaceImageView.h"
 
 #define KHEADIMGWIDTH SCALE_NUM(40)//标准头像宽度
 #define KHEADIMGWIDTHS SCALE_NUM(34)//评论头像宽度
@@ -28,7 +28,7 @@
 
 @interface FeedCellTopView()
 
-@property (nonatomic, strong, readwrite) UIImageView *contactHeadImageView;    //头像
+@property (nonatomic, strong, readwrite) YFaceImageView *contactHeadImageView;    //头像
 @property (nonatomic, strong, readwrite) UILabel *contactNameLabel;            //名字
 @property (nonatomic, strong, readwrite) UILabel *timeLabel;                   //时间
 @property (nonatomic, strong, readwrite) ConnectTag *tagList;                  //人脉标签
@@ -45,7 +45,7 @@
                 make.height.mas_equalTo(KEMPTYHEIGHT);
             }];
         } else {
-            _contactHeadImageView = [[UIImageView alloc] init];
+            _contactHeadImageView = [[YFaceImageView alloc] init];
             [self addSubview:_contactHeadImageView];
             [_contactHeadImageView mas_makeConstraints:^(MASConstraintMaker *make) {
                 if (type == FeedCommentType) {
@@ -96,7 +96,7 @@
 
 - (void)setData:(FeedCellTopModel *)data {
     _data = data;
-    [_contactHeadImageView sd_setImageWithURL:[NSURL URLWithString:_data.imgUrl]];
+    [_contactHeadImageView setData:_data.userId imageUrl:_data.imgUrl];
     _contactNameLabel.text = _data.userName;
     _timeLabel.text = [YUtils distanceTimeToday:_data.publishDate];
     [_tagList updateTag:_data.tagList];
