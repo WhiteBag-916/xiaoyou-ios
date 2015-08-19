@@ -8,6 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
+extern NSString *const kGroupApplyTableViewCell;
+
 @interface GroupApplyTableViewCell : UITableViewCell
+
+-(void)setCellInfo:(NSDictionary *) dic;
 
 @end

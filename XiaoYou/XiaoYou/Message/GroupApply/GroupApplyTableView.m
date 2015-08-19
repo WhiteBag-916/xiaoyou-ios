@@ -7,15 +7,58 @@
 //
 
 #import "GroupApplyTableView.h"
+#import "GroupApplyTableViewCell.h"
+
+@interface GroupApplyTableView ()<UITableViewDataSource,UITableViewDelegate>
+
+@end
 
 @implementation GroupApplyTableView
 
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect {
-    // Drawing code
+- (instancetype)initWithFrame:(CGRect)frame
+{
+    self = [super initWithFrame:frame];
+    if (self) {
+        self.dataSource = self;
+        self.delegate = self;
+        
+        [self registerClass:[GroupApplyTableViewCell class] forCellReuseIdentifier:kGroupApplyTableViewCell];
+    }
+    return self;
 }
-*/
+
+-(void)refreshTableView:(NSMutableArray *) dataSouceArr
+{
+    [self reloadData];
+}
+
+
+-(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 1;
+}
+
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return 5;
+}
+
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    
+    GroupApplyTableViewCell * cell = [self dequeueReusableCellWithIdentifier:kGroupApplyTableViewCell forIndexPath:indexPath];
+    
+    [cell setCellInfo:nil];
+    
+    return cell;
+    
+    
+}
+
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 167;
+}
+
 
 @end
