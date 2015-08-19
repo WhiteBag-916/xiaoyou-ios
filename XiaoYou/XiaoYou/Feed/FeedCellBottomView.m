@@ -9,6 +9,7 @@
 #import "FeedCellBottomView.h"
 #import "YUtils+Component.h"
 #import "YFaceImageView.h"
+#import "YCommonActionSheet.h"
 
 #define KBOTTOMHEIGHT SCALE_NUM(25)                 //社团和feed列表中bottom的高度
 #define KSHAREWIDTH SCALE_NUM(25)                   //分享按钮点击区域的大小
@@ -165,7 +166,7 @@
 }
 
 - (void)openShare {
-    [[NSNotificationCenter defaultCenter] postNotificationName:kNotification_Push_FeedDetail object:@{@"id":@"233"}];
+    
 }
 - (void)openDetail {
     

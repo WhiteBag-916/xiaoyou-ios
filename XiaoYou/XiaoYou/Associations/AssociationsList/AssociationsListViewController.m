@@ -17,6 +17,7 @@
 
 @implementation AssociationsListViewController
 
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
@@ -24,7 +25,7 @@
     [self showCustomNavigationBackButton];
     [self initRightBar];
     self.title = @"社团总汇";
-    
+    self.hidesBottomBarWhenPushed = NO;
     //tableview
     _associationsListTableView = [[AssociationsListTableView alloc] init];
     [self.view addSubview:_associationsListTableView];
@@ -32,10 +33,6 @@
     [_associationsListTableView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.mas_equalTo(self.view);
     }];
-}
-
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated navigationBarHidden:NO tabBarHidden:YES];
 }
 
 - (void)initRightBar {

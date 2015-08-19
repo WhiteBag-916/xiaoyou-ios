@@ -76,8 +76,8 @@
 //    if (self.navigationController.navigationBarHidden) {
 //        [self.navigationController setNavigationBarHidden:NO animated:animated];
 //    }
-    self.navigationController.navigationBarHidden = NO;
-    self.tabBarController.tabBar.hidden = YES;
+//    self.navigationController.navigationBarHidden = NO;
+//    self.tabBarController.tabBar.hidden = NO;
 //    [MobClick beginLogPageView:NSStringFromClass([self class])];
 }
 
