@@ -47,4 +47,9 @@ typedef NS_ENUM(int, FeedCellType) {
     FeedOrganizationType    = 4,
 };
 
+typedef NS_ENUM(int, TagListType) {
+    TagMenuType            = 1,
+    TagSearchType          = 2,
+};
+
 #endif

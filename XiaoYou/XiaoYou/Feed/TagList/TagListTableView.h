@@ -11,4 +11,6 @@
 
 @interface TagListTableView : YTableView
 
+- (id)initWithType:(int)type;
+
 @end

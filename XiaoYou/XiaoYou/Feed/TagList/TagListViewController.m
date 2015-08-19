@@ -156,7 +156,7 @@
 }
 
 - (void)initTableView {
-    TagListTableView *listView = [[TagListTableView alloc] init];
+    TagListTableView *listView = [[TagListTableView alloc] initWithType:TagMenuType];
     [self.view addSubview:listView];
     [listView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(_searchLabel.mas_bottom).offset(KTABLEMARGIN);
