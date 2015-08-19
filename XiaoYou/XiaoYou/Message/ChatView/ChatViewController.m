@@ -230,8 +230,8 @@
     
     self.title = @"某某某";
     
-    UIButton *backButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 44, 44)];
-    [backButton setImage:[UIImage imageNamed:@"back.png"] forState:UIControlStateNormal];
+    UIButton *backButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 9, 14)];
+    [backButton setImage:[UIImage imageNamed:@"common_back"] forState:UIControlStateNormal];
     [backButton addTarget:self action:@selector(back) forControlEvents:UIControlEventTouchUpInside];
     UIBarButtonItem *backItem = [[UIBarButtonItem alloc] initWithCustomView:backButton];
     [self.navigationItem setLeftBarButtonItem:backItem];
@@ -243,11 +243,11 @@
         self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:detailButton];
     }
     else{
-        UIButton *clearButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 44, 44)];
-        [clearButton setImage:[UIImage imageNamed:@"delete"] forState:UIControlStateNormal];
+        UIButton *detailButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 40, 40)];
+        [detailButton setImage:[UIImage imageNamed:@"default_head"] forState:UIControlStateNormal];
 //        [clearButton addTarget:self action:@selector(removeAllMessages:) forControlEvents:UIControlEventTouchUpInside];
-        [clearButton addTarget:self action:@selector(pushToDetailPage:) forControlEvents:UIControlEventTouchUpInside];
-        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:clearButton];
+        [detailButton addTarget:self action:@selector(pushToDetailPage:) forControlEvents:UIControlEventTouchUpInside];
+        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:detailButton];
     }
 }
 

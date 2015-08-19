@@ -10,4 +10,7 @@
 
 @interface FriendApplyTableView : YTableView
 
+
+-(void)refreshTableView:(NSMutableArray *) dataSouceArr;
+
 @end

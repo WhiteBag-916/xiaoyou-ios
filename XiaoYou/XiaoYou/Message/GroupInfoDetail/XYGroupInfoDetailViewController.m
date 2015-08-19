@@ -8,10 +8,18 @@
 
 #import "XYGroupInfoDetailViewController.h"
 #import "GroupInfoDetailCollectionView.h"
+#import "YCommonActionSheet.h"
+
+#define kNavigationgLeftWidth                   9
+#define kNavigationgLeftHeight                  14
+#define kNavigationgRightWidthAndHeight         40
 
 @interface XYGroupInfoDetailViewController ()
 
 @property (nonatomic,strong) GroupInfoDetailCollectionView * groupInfoDetailCollectionView;
+
+@property(nonatomic,strong)UIButton * bottomButton;
+
 
 @end
 
@@ -25,13 +33,75 @@
     
 }
 
+-(void)viewWillLayoutSubviews
+{
+    self.hidesBottomBarWhenPushed = NO;
+}
+
 -(void)setUpUI
 {
+    UIButton *backButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, kNavigationgLeftWidth, kNavigationgLeftHeight)];
+    [backButton setImage:[UIImage imageNamed:@"common_back"] forState:UIControlStateNormal];
+    [backButton addTarget:self action:@selector(back) forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem *backItem = [[UIBarButtonItem alloc] initWithCustomView:backButton];
+    [self.navigationItem setLeftBarButtonItem:backItem];
+    
+    UIButton *shareButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, kNavigationgRightWidthAndHeight, kNavigationgRightWidthAndHeight)];
+    [shareButton setImage:[UIImage imageNamed:@"more"] forState:UIControlStateNormal];
+    [shareButton addTarget:self action:@selector(showShareActionSheet) forControlEvents:UIControlEventTouchUpInside];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:shareButton];
+    
     UICollectionViewFlowLayout * flowLayout = [[UICollectionViewFlowLayout alloc] init];
     flowLayout.scrollDirection = UICollectionViewScrollDirectionVertical;
     flowLayout.itemSize = CGSizeMake(70, 70);
     _groupInfoDetailCollectionView = [[GroupInfoDetailCollectionView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT-KTabBarheight-KNavigationBarheight) collectionViewLayout:flowLayout];
     [self.view addSubview:_groupInfoDetailCollectionView];
+    
+    _bottomButton = [[UIButton alloc] init];
+    [_bottomButton setBackgroundImage:[UIImage imageNamed:@"contacts_bottom"] forState:UIControlStateNormal];
+    [_bottomButton setTitle:@"进图群聊" forState:UIControlStateNormal];
+    [_bottomButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [_bottomButton addTarget:self action:@selector(clickBottomButton) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:_bottomButton];
+    [_bottomButton mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.bottom.left.right.mas_equalTo(0);
+        make.height.mas_equalTo(KTabBarheight);
+    }];
+}
+
+-(void)clickBottomButton
+{
+    
+}
+
+-(void)showShareActionSheet
+{
+    YActionSheetItem *item1 = [YActionSheetItem itemWithTitle:@"分享这社团名片至"
+                                                         type:YCommonActionSheetItemTypeShare
+                                                        block:^(NSInteger checkNum) {
+                                                            
+                                                        }];
+    
+    YActionSheetItem *item2 = [YActionSheetItem itemWithTitle:@"消息不提醒"
+                                                         type:YCommonActionSheetItemTypeSwitch
+                                                         open:YES
+                                                        block:^(NSInteger checkNum) {
+                                                            
+                                                        }];
+    
+    YActionSheetItem *item3 = [YActionSheetItem itemWithTitle:@"举报"
+                                                         type:YCommonActionSheetItemTypeCommon
+                                                        block:^(NSInteger checkNum) {
+                                                            
+                                                        }];
+    
+    YCommonActionSheet *sheet = [[YCommonActionSheet alloc] initWithType:@[item1, item2, item3] title:nil];
+    [sheet show];
+}
+
+-(void)back
+{
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void)didReceiveMemoryWarning {

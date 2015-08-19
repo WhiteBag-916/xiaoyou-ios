@@ -17,6 +17,8 @@
 #define kPaddingDistance               10
 #define kLabelHeightDistacnce          14
 #define kBadgeWidthDistance            21
+#define kClassLabelDistance            5
+#define kClassLabelWidthAndHeight      30
 
 NSString *const kMessageTableViewCell = @"MessageTableViewCellId";
 
@@ -27,6 +29,7 @@ NSString *const kMessageTableViewCell = @"MessageTableViewCellId";
 @property (strong, nonatomic)  UILabel *badgeNumberLabel;
 @property (strong, nonatomic)  UILabel *timeLabel;
 @property (strong, nonatomic)  UILabel *messageLabel;
+@property (nonatomic,strong)  UILabel * defaultLabel;
 
 
 @end
@@ -41,15 +44,25 @@ NSString *const kMessageTableViewCell = @"MessageTableViewCellId";
         _headImageView = [[UIImageView alloc] init];
         _headImageView.layer.cornerRadius = kHeadCornerRadius;
         _headImageView.clipsToBounds = YES;
-        _headImageView.backgroundColor = [UIColor orangeColor];
+        _headImageView.backgroundColor = [UIColor clearColor];
         [self.contentView addSubview:_headImageView];
         [_headImageView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.top.left.mas_equalTo(kPaddingDistance);
             make.width.height.mas_equalTo(kHeadWidthAndHeight);
         }];
+        //班
+        _defaultLabel = [[UILabel alloc] init];
+        _defaultLabel.textAlignment = NSTextAlignmentCenter;
+        _defaultLabel.textColor = [UIColor whiteColor];
+        [self.contentView addSubview:_defaultLabel];
+        [_defaultLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.top.mas_equalTo(_headImageView.mas_top).offset(kClassLabelDistance);
+            make.left.mas_equalTo(_headImageView.mas_left).offset(kClassLabelDistance);
+            make.width.height.mas_equalTo(kClassLabelWidthAndHeight);
+        }];
         //姓名
         _nameLabel = [[UILabel alloc] init];
-        _nameLabel.backgroundColor = [UIColor magentaColor];
+        _nameLabel.backgroundColor = [UIColor clearColor];
         [self.contentView addSubview:_nameLabel];
         [_nameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
             make.top.mas_equalTo(kPaddingDistance);
@@ -71,7 +84,7 @@ NSString *const kMessageTableViewCell = @"MessageTableViewCellId";
         //时间
         _timeLabel = [[UILabel alloc] init];
         _timeLabel.textAlignment = NSTextAlignmentRight;
-        _timeLabel.backgroundColor = [UIColor greenColor];
+        _timeLabel.backgroundColor = [UIColor clearColor];
         [self.contentView addSubview:_timeLabel];
         [_timeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
             make.top.mas_equalTo(kPaddingDistance);
@@ -81,7 +94,7 @@ NSString *const kMessageTableViewCell = @"MessageTableViewCellId";
         }];
         //消息
         _messageLabel = [[UILabel alloc] init];
-        _messageLabel.backgroundColor = [UIColor grayColor];
+        _messageLabel.backgroundColor = [UIColor clearColor];
         [self.contentView addSubview:_messageLabel];
         [_messageLabel mas_makeConstraints:^(MASConstraintMaker *make) {
             make.bottom.mas_equalTo(-kPaddingDistance);
@@ -93,12 +106,36 @@ NSString *const kMessageTableViewCell = @"MessageTableViewCellId";
     return self;
 }
 
--(void)setCellInfo
+-(void)setCellInfo:(NSDictionary *) dic
 {
-    self.nameLabel.text = @"山本伊朗";
-    self.badgeNumberLabel.text = @"99";
-    self.timeLabel.text = @"10:29";
-    self.messageLabel.text = @"新生报到通知";
+    if ([dic[@"type"] isEqualToString:@"1"])
+    {
+        self.headImageView.image = [UIImage imageNamed:@"friend-requests"];
+        self.headImageView.clipsToBounds = NO;
+        self.nameLabel.text = @"好友申请";
+        self.badgeNumberLabel.text = @"";
+        self.timeLabel.text = @"10:29";
+        self.messageLabel.text = @"小红想添加你为好友";
+    }
+    else if ([dic[@"type"] isEqualToString:@"2"])
+    {
+        self.nameLabel.text = @"网球社";
+        self.badgeNumberLabel.text = @"";
+        self.timeLabel.text = @"10:29";
+        self.messageLabel.text = @"动次打次";
+        self.headImageView.image = nil;
+        self.headImageView.backgroundColor = [UIColor hexChangeFloat:@"258f74"];
+        self.defaultLabel.text = @"社";
+    }
+    else
+    {
+        self.headImageView.image = [UIImage imageNamed:@"default_head"];
+        self.nameLabel.text = @"山本伊朗";
+        self.badgeNumberLabel.text = @"99";
+        self.timeLabel.text = @"10:29";
+        self.messageLabel.text = @"新生报到通知";
+    }
+    
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

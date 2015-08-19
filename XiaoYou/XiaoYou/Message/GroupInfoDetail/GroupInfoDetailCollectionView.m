@@ -43,16 +43,27 @@
 
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    return 100;
+    return 16;
 }
 
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    GroupInfoCollectionViewCell * cell = (GroupInfoCollectionViewCell *) [collectionView dequeueReusableCellWithReuseIdentifier:kGroupInfoCollectionViewCell forIndexPath:indexPath];
+    if (indexPath.row < 15) {
+        GroupInfoCollectionViewCell * cell = (GroupInfoCollectionViewCell *) [collectionView dequeueReusableCellWithReuseIdentifier:kGroupInfoCollectionViewCell forIndexPath:indexPath];
+        
+        [cell setCellInfo:@{@"name":@"李宝顺吖"}];
+        
+        return cell;
+    }
+    else
+    {
+        GroupInfoCollectionViewCell * cell = (GroupInfoCollectionViewCell *) [collectionView dequeueReusableCellWithReuseIdentifier:kGroupInfoCollectionViewCell forIndexPath:indexPath];
+        
+        [cell setCellInfo:@{@"add":@"add"}];
+        
+        return cell;
+    }
     
-    [cell setCellInfo:@{@"name":@"李宝顺"}];
-    
-    return cell;
 }
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
