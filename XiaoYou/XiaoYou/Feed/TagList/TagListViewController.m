@@ -28,6 +28,7 @@
 @property (nonatomic, strong) UILabel *searchLabel;
 @property (nonatomic, strong) UIView *bottomView;
 
+@property (nonatomic, strong) TagListTableView *listView;
 @end
 
 @implementation TagListViewController
@@ -156,13 +157,14 @@
 }
 
 - (void)initTableView {
-    TagListTableView *listView = [[TagListTableView alloc] init];
-    [self.view addSubview:listView];
-    [listView mas_makeConstraints:^(MASConstraintMaker *make) {
+    _listView = [[TagListTableView alloc] initWithType:TagMenuType];
+    [self.view addSubview:_listView];
+    [_listView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(_searchLabel.mas_bottom).offset(KTABLEMARGIN);
         make.left.right.equalTo(_notifyView);
         make.bottom.equalTo(_bottomView.mas_top).offset(-KTABLEMARGIN);
     }];
+    [_listView setData:@[@"互联网",@"同班"]];
 }
 
 - (void)addTap:(UIView *)view action:(SEL)selector {

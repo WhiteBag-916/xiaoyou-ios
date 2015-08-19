@@ -11,4 +11,8 @@
 
 @interface TagListTableView : YTableView
 
+- (id)initWithType:(int)type;
+
+- (void)setData:(NSArray *)tagNames;
+
 @end

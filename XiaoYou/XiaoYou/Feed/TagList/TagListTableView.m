@@ -13,28 +13,36 @@
 
 @interface TagListTableView()<UITableViewDataSource, UITableViewDelegate>
 @property (nonatomic, strong) NSArray *data;
+@property (nonatomic, assign) int type;
 @end
 
 @implementation TagListTableView
 
-- (id)init {
+
+- (id)initWithType:(int)type {
     self = [super init];
     if (self) {
+        _type = type;
         self.delegate = self;
         self.dataSource = self;
         [self registerClass:[TagListTableViewCell class] forCellReuseIdentifier:KTagListTableViewCell];
         self.separatorStyle = UITableViewCellSeparatorStyleNone;
         self.backgroundColor = [UIColor clearColor];
-        _data = @[@"互联网",@"同班"];
     }
     return self;
 }
-
+- (void)setData:(NSArray *)tagNames {
+    _data = [NSArray arrayWithArray:tagNames];
+    [self reloadData];
+}
 - (NSInteger)numberOfSections {
     return 1;
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return _data.count + 1;
+    if (_type == TagMenuType) {
+        return _data.count + 1;
+    }
+    return _data.count;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {

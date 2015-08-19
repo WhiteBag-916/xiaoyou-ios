@@ -12,6 +12,12 @@ typedef NS_ENUM(NSInteger, YCommonActionItemSheetType) {
     YCommonActionSheetItemTypeCommon,
     YCommonActionSheetItemTypeShare,
     YCommonActionSheetItemTypeSwitch,
+    YCommonActionSheetItemTypeCenterCommon
+};
+
+typedef NS_ENUM(NSInteger, YShareType) {
+    YShareTypeToWechatSession=10,   //微信好友
+    YShareTypeToWechatTimeline,     //微信朋友圈
 };
 
 typedef void(^ActionSheetItemBlock)(NSInteger checkNum);

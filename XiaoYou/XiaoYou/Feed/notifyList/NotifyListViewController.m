@@ -20,7 +20,7 @@
     self.title = @"新提醒";
 }
 
-- (void)moreBarAction {
+- (void)onNavigationRightButtonClicked {
 //    YActionSheetItem *item1 = [YActionSheetItem itemWithTitle:@"清空所有提醒"
 //                                                         type:YCommonActionSheetItemTypeCommon
 //                                                        block:^(NSInteger checkNum) {
