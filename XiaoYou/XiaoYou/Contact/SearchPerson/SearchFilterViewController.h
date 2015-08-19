@@ -8,6 +8,12 @@
 
 #import "YViewController.h"
 
+typedef void(^SearchFilterSelectedBlock)(NSArray *select);
+
 @interface SearchFilterViewController : YViewController
+
+@property (nonatomic, strong) NSArray *isSelectArray;
+
+- (void)endSelected:(SearchFilterSelectedBlock)block;
 
 @end

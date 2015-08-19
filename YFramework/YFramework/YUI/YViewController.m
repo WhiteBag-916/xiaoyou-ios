@@ -116,36 +116,32 @@
     _lbTitle.text = title;
 }
 
-- (void)onNavigationLeftButtonClicked:(UIButton *)sender
+- (void)onNavigationLeftButtonClicked
 {
     [self.view endEditing:YES];
     [self.navigationController popViewControllerAnimated:YES];
 }
 
-- (void)searchBarAction {
-    
-}
-
-- (void)moreBarAction {
+- (void)onNavigationRightButtonClicked {
     
 }
 
 #pragma mark - 左导航栏
 - (void)showCustomNavigationBackButton
 {
-    [self showNomalNavigationLeftButton:@"" action:@selector(onNavigationLeftButtonClicked:) imgName:@"common_back"];
+    [self showNomalNavigationLeftButton:@"" action:@selector(onNavigationLeftButtonClicked) imgName:@"common_back" frame:CGRectMake(0, 0, 9, 14)];
 }
 
 //导航栏左侧显示取消按钮
 - (void)showCustomNavigationCancelButton {
-    [self showNomalNavigationLeftButton:@"" action:@selector(onNavigationLeftButtonClicked:) imgName:@"complete-cancel"];
+    [self showNomalNavigationLeftButton:@"" action:@selector(onNavigationLeftButtonClicked) imgName:@"complete-cancel" frame:CGRectMake(0, 0, 16, 16)];
 }
 
-- (void)showNomalNavigationLeftButton:(NSString *)title action:(SEL)selector imgName:(NSString *)imgName
+- (void)showNomalNavigationLeftButton:(NSString *)title action:(SEL)selector imgName:(NSString *)imgName frame:(CGRect)frame
 {
     //right barbutton view
     _navigationLeftButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    _navigationLeftButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 9, 14)];
+    _navigationLeftButton = [[UIButton alloc] initWithFrame:frame];
     if (nil != imgName)
     {
         [_navigationLeftButton setImage:[UIImage imageNamed:imgName] forState:UIControlStateNormal];
@@ -167,17 +163,17 @@
 #pragma mark - 右导航栏
 //导航栏右侧，搜索按钮
 - (void)showCustomNavigationSearchButton {
-    [self showNomalNavigationRightButtonWithImage:@"feed-find-someone-search" action:@selector(searchBarAction) frame:CGRectMake(0, 0, 42, 64)];
+    [self showNomalNavigationRightButtonWithImage:@"feed-find-someone-search" action:@selector(onNavigationRightButtonClicked) frame:CGRectMake(0, 0, 42, 64)];
 }
 
 //导航栏右侧，更多按钮
 - (void)showCustomNavigationMoreButton {
-    [self showNomalNavigationRightButtonWithImage:@"more" action:@selector(moreBarAction) frame:CGRectMake(0, 0, 30, 64)];
+    [self showNomalNavigationRightButtonWithImage:@"more" action:@selector(onNavigationRightButtonClicked) frame:CGRectMake(0, 0, 30, 64)];
 }
 
 //导航栏右侧，确认按钮
 - (void)showCustomNavigationSureButton {
-    [self showNomalNavigationRightButtonWithImage:@"complete-grey" action:@selector(moreBarAction) frame:CGRectMake(0, 0, 30, 64)];
+    [self showNomalNavigationRightButtonWithImage:@"complete-grey" action:@selector(onNavigationRightButtonClicked) frame:CGRectMake(0, 0, 20, 64)];
 }
 
 - (void)showNomalNavigationRightButtonWithImage:(NSString *)image action:(SEL)selector frame:(CGRect)frame {

@@ -24,5 +24,7 @@
 #define KCOLORGREEN_009688 [UIColor hexChangeFloat:@"009688"]
 #define KCOLORGREEN_f2f2f2 [UIColor hexChangeFloat:@"f2f2f2"]
 #define KCOLORGREEN_e5e5e5 [UIColor hexChangeFloat:@"e5e5e5"]
+#define KCOLORGREEN_79909e [UIColor hexChangeFloat:@"79909e"]
+#define KCOLORGREEN_e6eae9 [UIColor hexChangeFloat:@"e6eae9"]
 
 #endif

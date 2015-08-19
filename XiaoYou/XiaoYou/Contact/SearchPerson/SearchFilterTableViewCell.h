@@ -8,6 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
+extern NSString *const kSearchFilterTableViewCell;
+
 @interface SearchFilterTableViewCell : UITableViewCell
+
+- (void)initData:(NSString *)name select:(BOOL)isSelect;
 
 @end

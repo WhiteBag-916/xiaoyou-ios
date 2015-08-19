@@ -51,7 +51,7 @@
     }];
 }
 
-- (void)moreBarAction {
+- (void)onNavigationRightButtonClicked {
     
 }
 @end

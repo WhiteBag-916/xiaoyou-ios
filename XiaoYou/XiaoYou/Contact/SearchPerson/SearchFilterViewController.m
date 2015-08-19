@@ -7,8 +7,19 @@
 //
 
 #import "SearchFilterViewController.h"
+#import "YTableView.h"
+#import "SearchFilterTableViewCell.h"
+
+NSString *const filterName = @"filterName";
+NSString *const filterIsSelected = @"filterIsSelected";
 
 @interface SearchFilterViewController ()
+<UITableViewDataSource
+,UITableViewDelegate>
+
+@property (nonatomic, strong) NSArray *filterAllArray;
+@property (nonatomic, strong) YTableView *searchFilterTableView;
+@property (nonatomic, copy) SearchFilterSelectedBlock searchFilterSelectedBlock;
 
 @end
 
@@ -17,11 +28,134 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    self.title = @"筛选条件";
+    [self showCustomNavigationCancelButton];
+    [self showCustomNavigationSureButton];
+    
+    [self initData];
+    [self initView];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (void)viewWillAppear:(BOOL)animated {
+    [self resetRightButton];
+}
+
+- (void)onNavigationLeftButtonClicked {
+    [self.navigationController dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void)onNavigationRightButtonClicked {
+    NSMutableArray *selectArray = [@[] mutableCopy];
+    
+    //重新排序
+    [_filterAllArray enumerateObjectsUsingBlock:^(NSDictionary *obj, NSUInteger idx, BOOL *stop) {
+        if ([obj[filterIsSelected] boolValue])
+        {
+            [selectArray addObject:obj[filterName]];
+        }
+    }];
+    
+    _searchFilterSelectedBlock(selectArray);
+    
+    [self.navigationController dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void)initData {
+    //构造
+    self.filterAllArray = @[[@{filterName:@"同系",filterIsSelected:@NO} mutableCopy]
+                            ,[@{filterName:@"同年级",filterIsSelected:@NO} mutableCopy]
+                            ,[@{filterName:@"老乡",filterIsSelected:@NO} mutableCopy]
+                            ,[@{filterName:@"同社团",filterIsSelected:@NO} mutableCopy]
+                            ,[@{filterName:@"篮球社",filterIsSelected:@NO} mutableCopy]
+                            ,[@{filterName:@"互联网创业",filterIsSelected:@NO} mutableCopy]
+                            ,[@{filterName:@"男",filterIsSelected:@NO} mutableCopy]
+                            ,[@{filterName:@"女",filterIsSelected:@NO} mutableCopy]];
+    
+    //设置哪些已经选中
+    [_filterAllArray enumerateObjectsUsingBlock:^(NSDictionary *obj, NSUInteger idx, BOOL *stop) {
+        [_isSelectArray enumerateObjectsUsingBlock:^(NSString *obj2, NSUInteger idx, BOOL *stop) {
+            if ([obj2 isEqualToString:obj[filterName]]) {
+                [obj setValue:@YES forKey:filterIsSelected];
+            }
+        }];
+    }];
+}
+
+- (void)initView {
+    _searchFilterTableView = [[YTableView alloc] init];
+    _searchFilterTableView.delegate = self;
+    _searchFilterTableView.dataSource = self;
+    _searchFilterTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    [_searchFilterTableView registerClass:[SearchFilterTableViewCell class] forCellReuseIdentifier:kSearchFilterTableViewCell];
+    [self.view addSubview:_searchFilterTableView];
+    [_searchFilterTableView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.mas_equalTo(self.view);
+    }];
+}
+
+- (void)endSelected:(SearchFilterSelectedBlock)block {
+    _searchFilterSelectedBlock = block;
+}
+
+//重置右上角按钮是否可点
+- (void)resetRightButton
+{
+    //判断
+    if ([self isSelectedArray])
+    {
+        self.navigationRightButton.userInteractionEnabled = YES;
+        [self.navigationRightButton setImage:[UIImage imageNamed:@"complete"] forState:UIControlStateNormal];
+    }
+    else
+    {
+        self.navigationRightButton.userInteractionEnabled = NO;
+        [self.navigationRightButton setImage:[UIImage imageNamed:@"complete-grey"] forState:UIControlStateNormal];
+    }
+}
+
+//是否有选中
+- (BOOL)isSelectedArray {
+    __block BOOL isSelect = NO;
+    
+    [_filterAllArray enumerateObjectsUsingBlock:^(NSDictionary *obj, NSUInteger idx, BOOL *stop) {
+        if ([obj[filterIsSelected] boolValue])
+        {
+            isSelect = YES;
+            *stop = YES;
+        }
+    }];
+    
+    return isSelect;
+}
+
+#pragma mark - UITableViewDataSource
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return [_filterAllArray count];
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    SearchFilterTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kSearchFilterTableViewCell];
+    
+    [cell initData:_filterAllArray[indexPath.row][filterName] select:[_filterAllArray[indexPath.row][filterIsSelected] boolValue]];
+    
+    return cell;
+}
+
+#pragma mark - UITableViewDelegate
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return SCALE_NUM(45);
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    _filterAllArray[indexPath.row][filterIsSelected] = @(![_filterAllArray[indexPath.row][filterIsSelected] boolValue]);
+    [_searchFilterTableView reloadData];
+    
+    [self resetRightButton];
 }
 
 /*

@@ -8,11 +8,15 @@
 
 #import "SearchPersonViewController.h"
 #import "YTextField.h"
+#import "TagListTableView.h"
+#import "SearchFilterViewController.h"
 
 @interface SearchPersonViewController ()
 <UITextFieldDelegate>
 
 @property (nonatomic, strong) YTextField *textField;
+@property (nonatomic, strong) TagListTableView *tagListTableView;
+@property (nonatomic, strong) NSArray *chooseFiterArray;
 
 @end
 
@@ -73,12 +77,28 @@
         make.left.mas_equalTo(SCALE_NUM(14));
         make.right.equalTo(filterButton.mas_left).offset(SCALE_NUM(-14));
     }];
+    
+    //tagListTableView
+    _tagListTableView = [[TagListTableView alloc] initWithType:TagSearchType];
+    [self.view addSubview:_tagListTableView];
+    [_tagListTableView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.right.bottom.equalTo(self.view);
+        make.top.equalTo(textFieldBgView.mas_bottom).offset(SCALE_NUM(15));
+    }];
 }
 
-//删选
+//筛选
 - (void)pressFilterButton
 {
-    
+    SearchFilterViewController *searchFilterViewController = [[SearchFilterViewController alloc] init];
+    [searchFilterViewController endSelected:^(NSArray *select) {
+        self.chooseFiterArray = [NSArray arrayWithArray:select];
+        [_tagListTableView setData:_chooseFiterArray];
+    }];
+    searchFilterViewController.isSelectArray = [NSArray arrayWithArray:_chooseFiterArray];
+    UINavigationController *navigationController =
+    [[UINavigationController alloc] initWithRootViewController:searchFilterViewController];
+    [self.navigationController presentViewController:navigationController animated:YES completion:nil];
 }
 
 //重置右上角按钮是否可点
@@ -95,6 +115,10 @@
         self.navigationRightButton.userInteractionEnabled = NO;
         [self.navigationRightButton setImage:[UIImage imageNamed:@"feed-find-someone-search-grey"] forState:UIControlStateNormal];
     }
+}
+
+- (void)onNavigationRightButtonClicked {
+    
 }
 
 #pragma mark - UITextFieldDelegate
