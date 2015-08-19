@@ -14,6 +14,7 @@
 @interface YUtils(Component)
 + getUrl:(NSString *)bussinessPath;
 + getParameter:(NSDictionary *)parameters;
++ getParameter:(NSDictionary *)parameters needUserToken:(BOOL)needUserToken;
 
 /**
  *  @author xiongchen
