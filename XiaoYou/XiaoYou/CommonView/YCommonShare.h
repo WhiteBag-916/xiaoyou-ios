@@ -10,9 +10,6 @@
 #import <UIKit/UIKit.h>
 #import "YCommonActionSheet.h"
 
-@class UMSocialAccountEntity;
-@class UMSocialResponseEntity;
-
 typedef NS_ENUM(NSInteger, YCommonShareDetailType) {
     YCommonShareDetailTypeFeed,
     YCommonShareDetailTypePerson,
@@ -25,6 +22,6 @@ typedef NS_ENUM(NSInteger, YCommonShareDetailType) {
 - (void)registUmengSDK;
 
 //分享
-- (void)shareForViewControllerWithType:(UIViewController *)viewController dataModel:(NSObject *)obj type:(YCommonShareDetailType)type shareType:(YShareType)shareType;
+- (void)shareForViewControllerWithType:(UIViewController *)viewController dataModel:(NSObject *)obj type:(YCommonShareDetailType)type shareType:(NSInteger)shareType;
 
 @end

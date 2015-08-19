@@ -56,7 +56,7 @@
 
 }
 
-- (void)shareForViewControllerWithType:(UIViewController *)viewController dataModel:(NSObject *)obj type:(YCommonShareDetailType)type shareType:(YShareType)shareType;
+- (void)shareForViewControllerWithType:(UIViewController *)viewController dataModel:(NSObject *)obj type:(YCommonShareDetailType)type shareType:(NSInteger)shareType;
 {
     NSString *url;
     switch (type) {
