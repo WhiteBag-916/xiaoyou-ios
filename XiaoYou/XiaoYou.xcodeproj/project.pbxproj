@@ -54,6 +54,7 @@
 		20E033F11B842727002E4583 /* libWeChatSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 20E033E11B842727002E4583 /* libWeChatSDK.a */; };
 		20E033F31B842759002E4583 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20E033F21B842759002E4583 /* SystemConfiguration.framework */; };
 		20E033F61B8427AF002E4583 /* YCommonShare.m in Sources */ = {isa = PBXBuildFile; fileRef = 20E033F51B8427AF002E4583 /* YCommonShare.m */; };
+		20E033FD1B846114002E4583 /* SearchFilterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20E033FC1B846114002E4583 /* SearchFilterViewController.m */; };
 		20E122131B705C2100F90BD3 /* XYTabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20E122121B705C2100F90BD3 /* XYTabBarViewController.m */; };
 		20E122211B705ED200F90BD3 /* FeedListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20E122201B705ED200F90BD3 /* FeedListViewController.m */; };
 		20E1222D1B708CDC00F90BD3 /* TagListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20E1222C1B708CDC00F90BD3 /* TagListViewController.m */; };
@@ -426,6 +427,8 @@
 		20E033F21B842759002E4583 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		20E033F41B8427AF002E4583 /* YCommonShare.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YCommonShare.h; sourceTree = "<group>"; };
 		20E033F51B8427AF002E4583 /* YCommonShare.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YCommonShare.m; sourceTree = "<group>"; };
+		20E033FB1B846114002E4583 /* SearchFilterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchFilterViewController.h; sourceTree = "<group>"; };
+		20E033FC1B846114002E4583 /* SearchFilterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchFilterViewController.m; sourceTree = "<group>"; };
 		20E122111B705C2100F90BD3 /* XYTabBarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYTabBarViewController.h; sourceTree = "<group>"; };
 		20E122121B705C2100F90BD3 /* XYTabBarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYTabBarViewController.m; sourceTree = "<group>"; };
 		20E1221F1B705ED200F90BD3 /* FeedListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedListViewController.h; sourceTree = "<group>"; };
@@ -1005,6 +1008,8 @@
 			children = (
 				20DA35F51B81E89F002E5A96 /* SearchPersonViewController.h */,
 				20DA35F61B81E89F002E5A96 /* SearchPersonViewController.m */,
+				20E033FB1B846114002E4583 /* SearchFilterViewController.h */,
+				20E033FC1B846114002E4583 /* SearchFilterViewController.m */,
 			);
 			path = SearchPerson;
 			sourceTree = "<group>";
@@ -2543,6 +2548,7 @@
 				333122631B806EDB00D3D032 /* UIImageView+EMWebCache.m in Sources */,
 				333122421B806EDB00D3D032 /* EMCDDeviceManager+Media.m in Sources */,
 				654602171B7F2FF00039F622 /* FeedImageGroup.m in Sources */,
+				20E033FD1B846114002E4583 /* SearchFilterViewController.m in Sources */,
 				20E18D551B807752005B75EE /* AssociationsListTableViewCell.m in Sources */,
 				333122851B806EDC00D3D032 /* XHMessageTextView.m in Sources */,
 				333122611B806EDB00D3D032 /* UIImage+EMWebP.m in Sources */,
