@@ -16,8 +16,10 @@
 /** https接口*/
 #if 0
 #define api_server_base_url @"http://api.xiaoyou.com"
+#define UMENG_APPKEY @"55cda497e0f55ad43d00204c"
 #else
 #define api_server_base_url @"http://beta.xiaoyou.com"
+#define UMENG_APPKEY @"55cda7c3e0f55a0de40018c7"
 #endif
 /** 获取图像接口*/
 #define api_icon_base_url @"http://img.xiaoyou.com"
