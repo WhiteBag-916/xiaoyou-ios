@@ -28,11 +28,13 @@
         [self registerClass:[TagListTableViewCell class] forCellReuseIdentifier:KTagListTableViewCell];
         self.separatorStyle = UITableViewCellSeparatorStyleNone;
         self.backgroundColor = [UIColor clearColor];
-        _data = @[@"互联网",@"同班"];
     }
     return self;
 }
-
+- (void)setData:(NSArray *)tagNames {
+    _data = [NSArray arrayWithArray:tagNames];
+    [self reloadData];
+}
 - (NSInteger)numberOfSections {
     return 1;
 }
