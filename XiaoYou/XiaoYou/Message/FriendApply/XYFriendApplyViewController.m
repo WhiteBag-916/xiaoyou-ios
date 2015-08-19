@@ -7,8 +7,11 @@
 //
 
 #import "XYFriendApplyViewController.h"
+#import "FriendApplyTableView.h"
 
 @interface XYFriendApplyViewController ()
+
+@property(nonatomic,strong) FriendApplyTableView * friendApplyTableView;
 
 @end
 
@@ -17,6 +20,22 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    [self setUpUI];
+}
+
+-(void)setUpUI
+{
+    self.title = @"好友申请";
+    
+    _friendApplyTableView = [[FriendApplyTableView alloc] init];
+    _friendApplyTableView.backgroundColor = [UIColor clearColor];
+    [self.view addSubview:_friendApplyTableView];
+    
+    [_friendApplyTableView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.left.right.bottom.mas_equalTo(0);
+    }];
+    
 }
 
 - (void)didReceiveMemoryWarning {

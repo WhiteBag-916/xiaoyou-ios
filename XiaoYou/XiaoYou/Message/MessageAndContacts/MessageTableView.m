@@ -13,6 +13,8 @@
 #import "Masonry.h"
 #import "YColor+Ext.h"
 #import "XYGroupInfoDetailViewController.h"
+#import "XYFriendApplyViewController.h"
+#import "XYGroupApplyViewController.h"
 
 #define kRowHeight                     68
 #define kHeadWidthAndHeight            40
@@ -23,6 +25,8 @@
 #define kLabelHeightDistacnce          14
 #define kBadgeWidthDistance            21
 
+
+
 @interface MessageTableView ()<UITableViewDataSource,UITableViewDelegate>
 
 @property (nonatomic,strong) NSMutableArray *messageDataSource;
@@ -32,6 +36,7 @@
 @property (strong, nonatomic)  UILabel *badgeNumberLabel;
 @property (strong, nonatomic)  UILabel *timeLabel;
 @property (strong, nonatomic)  UILabel *messageLabel;
+
 
 @end
 
@@ -75,16 +80,18 @@
     _headImageView = [[UIImageView alloc] init];
     _headImageView.layer.cornerRadius = kHeadCornerRadius;
     _headImageView.clipsToBounds = YES;
-    _headImageView.backgroundColor = [UIColor orangeColor];
+    _headImageView.backgroundColor = [UIColor hexChangeFloat:@"258f74"];
     [backView addSubview:_headImageView];
     [_headImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.left.mas_equalTo(kPaddingDistance);
         make.width.height.mas_equalTo(kHeadWidthAndHeight);
     }];
+    
+    
     //姓名
     _nameLabel = [[UILabel alloc] init];
     _nameLabel.text = @"系统消息";
-    _nameLabel.backgroundColor = [UIColor magentaColor];
+    _nameLabel.backgroundColor = [UIColor clearColor];
     [backView addSubview:_nameLabel];
     [_nameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.mas_equalTo(kPaddingDistance);
@@ -107,7 +114,7 @@
     //时间
     _timeLabel = [[UILabel alloc] init];
     _timeLabel.textAlignment = NSTextAlignmentRight;
-    _timeLabel.backgroundColor = [UIColor greenColor];
+    _timeLabel.backgroundColor = [UIColor clearColor];
     [backView addSubview:_timeLabel];
     [_timeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.mas_equalTo(kPaddingDistance);
@@ -117,7 +124,8 @@
     }];
     //消息
     _messageLabel = [[UILabel alloc] init];
-    _messageLabel.backgroundColor = [UIColor grayColor];
+    _messageLabel.backgroundColor = [UIColor clearColor];
+    _messageLabel.text = @"暂时没有新的消息";
     [backView addSubview:_messageLabel];
     [_messageLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.bottom.mas_equalTo(-kPaddingDistance);
@@ -130,6 +138,7 @@
 
 -(void)tapGestureRecognizerAction
 {
+    self.myController.hidesBottomBarWhenPushed = YES;
     XYGroupInfoDetailViewController * groupVC = [[XYGroupInfoDetailViewController alloc] init];
     [self.myController.navigationController pushViewController:groupVC animated:YES];
 }
@@ -148,11 +157,30 @@
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    MessageTableViewCell *cell = [self dequeueReusableCellWithIdentifier:kMessageTableViewCell];
+    if (indexPath.row == 3)
+    {
+        MessageTableViewCell *cell = [self dequeueReusableCellWithIdentifier:kMessageTableViewCell];
+        
+        [cell setCellInfo:@{@"type":@"1"}];
+        
+        return cell;
+    }
+    if (indexPath.row == 5) {
+        MessageTableViewCell *cell = [self dequeueReusableCellWithIdentifier:kMessageTableViewCell];
+        
+        [cell setCellInfo:@{@"type":@"2"}];
+        
+        return cell;
+    }
+    else
+    {
+        MessageTableViewCell *cell = [self dequeueReusableCellWithIdentifier:kMessageTableViewCell];
+        
+        [cell setCellInfo:nil];
+        
+        return cell;
+    }
     
-    [cell setCellInfo];
-    
-    return cell;
     
 }
 
@@ -186,10 +214,26 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
 
-    self.myController.hidesBottomBarWhenPushed = YES;
-
-    ChatViewController * chatVC = [[ChatViewController alloc] initWithChatter:@"yinhui" isGroup:NO];
-    [self.myController.navigationController pushViewController:chatVC animated:YES from:self.myController];
+    if (indexPath.row == 3)
+    {
+        self.myController.hidesBottomBarWhenPushed = YES;
+        XYFriendApplyViewController * friendApplyVC = [[XYFriendApplyViewController alloc] init];
+        [self.myController.navigationController pushViewController:friendApplyVC animated:YES from:self.myController];
+        
+    }
+    else if (indexPath.row == 5)
+    {
+        self.myController.hidesBottomBarWhenPushed = YES;
+        XYGroupApplyViewController * groupApplyVC = [[XYGroupApplyViewController alloc] init];
+        [self.myController.navigationController pushViewController:groupApplyVC animated:YES from:self.myController];
+    }
+    else
+    {
+        self.myController.hidesBottomBarWhenPushed = YES;
+        
+        ChatViewController * chatVC = [[ChatViewController alloc] initWithChatter:@"yinhui" isGroup:NO];
+        [self.myController.navigationController pushViewController:chatVC animated:YES from:self.myController];
+    }
     
 }
 

@@ -22,12 +22,15 @@
 #define kHeadCornerRadius              20
 #define kPaddingDistance               10
 #define kLabelHeightDistacnce          14
+#define kClassLabelDistance            5
+#define kClassLabelWidthAndHeight      30
 
 @interface ContactsTableView ()<UITableViewDataSource,UITableViewDelegate>
 
 @property (strong, nonatomic)  UIImageView *headImageView;
 @property (strong, nonatomic)  UILabel *nameLabel;
 @property (strong, nonatomic)  UILabel *flagLabel;
+@property (nonatomic,strong)  UILabel * defaultLabel;
 
 //原始数据源
 @property (nonatomic,strong) NSMutableArray *originalContactsDataSource;
@@ -84,11 +87,22 @@
     _headImageView = [[UIImageView alloc] init];
     _headImageView.layer.cornerRadius = kHeadCornerRadius;
     _headImageView.clipsToBounds = YES;
-    _headImageView.backgroundColor = [UIColor orangeColor];
+    _headImageView.backgroundColor = [UIColor hexChangeFloat:@"258f74"];
     [backView addSubview:_headImageView];
     [_headImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.left.mas_equalTo(kPaddingDistance);
         make.width.height.mas_equalTo(kHeadWidthAndHeight);
+    }];
+    //班
+    _defaultLabel = [[UILabel alloc] init];
+    _defaultLabel.text = @"班";
+    _defaultLabel.textAlignment = NSTextAlignmentCenter;
+    _defaultLabel.textColor = [UIColor whiteColor];
+    [backView addSubview:_defaultLabel];
+    [_defaultLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.mas_equalTo(_headImageView.mas_top).offset(kClassLabelDistance);
+        make.left.mas_equalTo(_headImageView.mas_left).offset(kClassLabelDistance);
+        make.width.height.mas_equalTo(kClassLabelWidthAndHeight);
     }];
     //姓名
     _nameLabel = [[UILabel alloc] init];

@@ -8,10 +8,14 @@
 
 #import "XYContactsInfoDetailViewController.h"
 #import "ContactsInfoDetailTableView.h"
+#import "YCommonActionSheet.h"
+
+#define kNavigationgRightWidthAndHeight         40
 
 @interface XYContactsInfoDetailViewController ()
 
 @property(nonatomic,strong)ContactsInfoDetailTableView * contactsInfoDetailTableView;
+@property(nonatomic,strong)UIButton * bottomButton;
 
 @end
 
@@ -31,13 +35,20 @@
 //    [super viewWillAppear:animated navigationBarHidden:NO tabBarHidden:YES];
 //}
 
-//-(void)viewDidLayoutSubviews
-//{
-//    self.hidesBottomBarWhenPushed = NO;
-//}
+-(void)viewWillLayoutSubviews
+{
+    self.hidesBottomBarWhenPushed = NO;
+}
 
 -(void)setUpUI
 {
+    self.title = @"详情";
+    
+    UIButton *shareButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, kNavigationgRightWidthAndHeight, kNavigationgRightWidthAndHeight)];
+    [shareButton setImage:[UIImage imageNamed:@"more"] forState:UIControlStateNormal];
+    [shareButton addTarget:self action:@selector(showShareActionSheet) forControlEvents:UIControlEventTouchUpInside];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:shareButton];
+    
     _contactsInfoDetailTableView = [[ContactsInfoDetailTableView alloc] init];
     _contactsInfoDetailTableView.backgroundColor = [UIColor clearColor];
     [self.view addSubview:_contactsInfoDetailTableView];
@@ -45,6 +56,46 @@
     [_contactsInfoDetailTableView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.left.right.bottom.mas_equalTo(0);
     }];
+    
+    _bottomButton = [[UIButton alloc] init];
+    [_bottomButton setBackgroundImage:[UIImage imageNamed:@"contacts_bottom"] forState:UIControlStateNormal];    [_bottomButton setTitle:@"聊聊呗" forState:UIControlStateNormal];
+    [_bottomButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [_bottomButton addTarget:self action:@selector(clickBottomButton) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:_bottomButton];
+    [_bottomButton mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.bottom.left.right.mas_equalTo(0);
+        make.height.mas_equalTo(KTabBarheight);
+    }];
+}
+
+-(void)clickBottomButton
+{
+
+}
+
+-(void)showShareActionSheet
+{
+    YActionSheetItem *item1 = [YActionSheetItem itemWithTitle:@"分享这社团名片至"
+                                                         type:YCommonActionSheetItemTypeShare
+                                                        block:^(NSInteger checkNum) {
+                                                            
+                                                        }];
+    
+    YActionSheetItem *item2 = [YActionSheetItem itemWithTitle:@"消息不提醒"
+                                                         type:YCommonActionSheetItemTypeSwitch
+                                                         open:YES
+                                                        block:^(NSInteger checkNum) {
+                                                            
+                                                        }];
+    
+    YActionSheetItem *item3 = [YActionSheetItem itemWithTitle:@"举报"
+                                                         type:YCommonActionSheetItemTypeCommon
+                                                        block:^(NSInteger checkNum) {
+                                                            
+                                                        }];
+    
+    YCommonActionSheet *sheet = [[YCommonActionSheet alloc] initWithType:@[item1, item2, item3] title:nil];
+    [sheet show];
 }
 
 - (void)didReceiveMemoryWarning {
