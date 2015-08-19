@@ -9,21 +9,30 @@
 #import "FeedCellTopView.h"
 #import "YUtils+Component.h"
 #import "ConnectTag.h"
+#import "YFaceImageView.h"
 
-#define KHEADIMGWIDTH SCALE_NUM(40)//头像宽度
-#define KHEADIMGTOP SCALE_NUM(12)//头像距顶高度
+#define KHEADIMGWIDTH SCALE_NUM(40)//标准头像宽度
+#define KHEADIMGWIDTHS SCALE_NUM(34)//评论头像宽度
+#define KHEADIMGTOP SCALE_NUM(35)//头像中心距顶高度
+
 #define KNAMEMARGIN_LEFT SCALE_NUM(12)//名字左间距
 #define KTIMEMARGIN_LEFT SCALE_NUM(20)//时间左间距
 
 #define KEMPTYHEIGHT SCALE_NUM(10)//空的占位高度
 
+
+@implementation FeedCellTopModel
+
+
+@end
+
 @interface FeedCellTopView()
 
-@property (nonatomic, strong, readwrite) UIImageView *contactHeadImageView;    //头像
+@property (nonatomic, strong, readwrite) YFaceImageView *contactHeadImageView;    //头像
 @property (nonatomic, strong, readwrite) UILabel *contactNameLabel;            //名字
 @property (nonatomic, strong, readwrite) UILabel *timeLabel;                   //时间
 @property (nonatomic, strong, readwrite) ConnectTag *tagList;                  //人脉标签
-
+@property (nonatomic, strong           ) FeedCellTopModel *data;
 @end
 
 @implementation FeedCellTopView
@@ -36,12 +45,16 @@
                 make.height.mas_equalTo(KEMPTYHEIGHT);
             }];
         } else {
-            _contactHeadImageView = [[UIImageView alloc] init];
+            _contactHeadImageView = [[YFaceImageView alloc] init];
             [self addSubview:_contactHeadImageView];
             [_contactHeadImageView mas_makeConstraints:^(MASConstraintMaker *make) {
-                make.width.height.mas_equalTo(KHEADIMGWIDTH);
-                make.left.equalTo(self);
-                make.top.equalTo(self).offset(KHEADIMGTOP);
+                if (type == FeedCommentType) {
+                     make.width.height.mas_equalTo(KHEADIMGWIDTHS);
+                } else {
+                    make.width.height.mas_equalTo(KHEADIMGWIDTH);
+                }
+                make.centerX.equalTo(self.mas_left).offset(KHEADIMGWIDTH/2);
+                make.centerY.equalTo(self.mas_top).offset(KHEADIMGTOP);
             }];
             _contactHeadImageView.layer.cornerRadius = KHEADIMGWIDTH / 2;
             _contactHeadImageView.clipsToBounds = true;
@@ -81,8 +94,12 @@
     return self;
 }
 
-- (void)setData {
-    [_tagList updateTag:@[@"系",@"乡",@"班"]];
+- (void)setData:(FeedCellTopModel *)data {
+    _data = data;
+    [_contactHeadImageView setData:_data.userId imageUrl:_data.imgUrl];
+    _contactNameLabel.text = _data.userName;
+    _timeLabel.text = [YUtils distanceTimeToday:_data.publishDate];
+    [_tagList updateTag:_data.tagList];
 }
 
 @end
