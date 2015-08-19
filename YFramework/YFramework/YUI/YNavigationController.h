@@ -10,6 +10,6 @@
 
 @interface UINavigationController (MethodSwizzling)<UIGestureRecognizerDelegate>
 
-- (void)pushViewController:(UIViewController *)viewController animated:(BOOL)animated from:(UIViewController *)fromViewController;
+- (void)pushViewController:(UIViewController *)viewController animated:(BOOL)animated needHiddenBottomBar:(BOOL)needHiddenBottomBar;
 
 @end

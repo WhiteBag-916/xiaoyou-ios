@@ -10,6 +10,7 @@
 #import "YTextField.h"
 #import "TagListTableView.h"
 #import "SearchFilterViewController.h"
+#import "SearchResultViewController.h"
 
 @interface SearchPersonViewController ()
 <UITextFieldDelegate>
@@ -85,6 +86,13 @@
         make.left.right.bottom.equalTo(self.view);
         make.top.equalTo(textFieldBgView.mas_bottom).offset(SCALE_NUM(15));
     }];
+    
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(endEdit)];
+    [_tagListTableView addGestureRecognizer:tap];
+}
+
+- (void)endEdit {
+    [self.view endEditing:YES];
 }
 
 //筛选
@@ -118,7 +126,14 @@
 }
 
 - (void)onNavigationRightButtonClicked {
-    
+    [self toSearchResult];
+}
+
+- (void)toSearchResult {
+    SearchResultViewController *searchResultViewController = [[SearchResultViewController alloc] init];
+    searchResultViewController.searchCondition = [[NSMutableArray alloc] initWithArray:_chooseFiterArray];
+    searchResultViewController.searchName = _textField.text;
+    [self.navigationController pushViewController:searchResultViewController animated:YES needHiddenBottomBar:YES];
 }
 
 #pragma mark - UITextFieldDelegate
@@ -130,6 +145,9 @@
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
     [textField resignFirstResponder];
+    
+    [self toSearchResult];
+    
     return YES;
 }
 

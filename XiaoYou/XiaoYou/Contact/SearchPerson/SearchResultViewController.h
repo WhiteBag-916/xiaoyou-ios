@@ -10,4 +10,7 @@
 
 @interface SearchResultViewController : YViewController
 
+@property (nonatomic, strong) NSMutableArray *searchCondition; //搜索条件,如果有名字，加上姓名
+@property (nonatomic, strong) NSString *searchName;     //搜索名字
+
 @end

@@ -12,4 +12,6 @@
 
 - (void)initRootVC;
 
+- (void)initTabBarNC;
+
 @end

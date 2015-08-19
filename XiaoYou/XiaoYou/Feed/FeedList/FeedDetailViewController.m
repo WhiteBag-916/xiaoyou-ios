@@ -26,6 +26,7 @@
     self = [super init];
     if (self) {
         _feedId = feedId;
+        self.hidesBottomBarWhenPushed = YES;
     }
     return self;
 }

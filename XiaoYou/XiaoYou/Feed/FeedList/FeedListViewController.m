@@ -32,22 +32,21 @@
 
 @implementation FeedListViewController
 
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
     [self initView];
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
-    [super viewWillAppear:animated navigationBarHidden:NO tabBarHidden:NO];
-    
+    [super viewWillAppear:animated];
     [SlideNavigationController sharedInstance].enableSwipeGesture = YES;
     [SlideNavigationController sharedInstance].enableShadow = false;
     [SlideNavigationController sharedInstance].portraitSlideOffset = SCREEN_WIDTH * 0.3;
-    
     [self initNotification];
+    
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -56,17 +55,17 @@
 
 - (void)viewWillDisappear:(BOOL)animated
 {
-    [SlideNavigationController sharedInstance].enableSwipeGesture = NO;
+    self.hidesBottomBarWhenPushed = NO;
     
+    [super viewWillDisappear:animated];
+    [SlideNavigationController sharedInstance].enableSwipeGesture = NO;
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
--(void)viewWillLayoutSubviews {
-    self.hidesBottomBarWhenPushed = NO;
-}
 
 - (void)initView
 {
+    self.hidesBottomBarWhenPushed = NO;
     //侧拉
     if (nil == _tagListVC)
     {
@@ -130,28 +129,28 @@
 
 - (void)goToDetail:(NSString *)feedId {
     FeedDetailViewController *feedDetailViewController = [[FeedDetailViewController alloc] initWithFeedId:feedId];
-    self.hidesBottomBarWhenPushed = YES;
+//    self.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:feedDetailViewController animated:YES];
 }
 
 - (void)toAssociationsList {
     AssociationsListViewController *associationsListViewController = [[AssociationsListViewController alloc] init];
-    [self.navigationController pushViewController:associationsListViewController animated:YES from:self];
+    [self.navigationController pushViewController:associationsListViewController animated:YES needHiddenBottomBar:YES];
 }
 
 - (void)toSearchPerson {
     SearchPersonViewController *searchPersonViewController = [[SearchPersonViewController alloc] init];
-    [self.navigationController pushViewController:searchPersonViewController animated:YES from:self];
+    [self.navigationController pushViewController:searchPersonViewController animated:YES needHiddenBottomBar:YES];
 }
 
 - (void)toNotifyView {
     NotifyListViewController *notifyListViewController = [[NotifyListViewController alloc] init];
-    [self.navigationController pushViewController:notifyListViewController animated:YES from:self];
+    [self.navigationController pushViewController:notifyListViewController animated:YES needHiddenBottomBar:YES];
 }
 
 - (void)toAddTag {
     AddTagViewController *addTagViewController = [[AddTagViewController alloc] init];
-    [self.navigationController pushViewController:addTagViewController animated:YES from:self];
+    [self.navigationController pushViewController:addTagViewController animated:YES needHiddenBottomBar:YES];
 }
 
 - (void)openShare:(NSNotification *) notification{

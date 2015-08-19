@@ -62,22 +62,12 @@
 - (void)viewWillAppear:(BOOL)animated navigationBarHidden:(BOOL)navigationBarHidden tabBarHidden:(BOOL)tabBarHidden
 {
     [super viewWillAppear:animated];
-//    if (self.navigationController.navigationBarHidden != navigationBarHidden) {
-//        [self.navigationController setNavigationBarHidden:navigationBarHidden animated:animated];
-//    }
-    self.navigationController.navigationBarHidden = navigationBarHidden;
-    self.tabBarController.tabBar.hidden = tabBarHidden;
 //    [MobClick beginLogPageView:NSStringFromClass([self class])];
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-//    if (self.navigationController.navigationBarHidden) {
-//        [self.navigationController setNavigationBarHidden:NO animated:animated];
-//    }
-    self.navigationController.navigationBarHidden = NO;
-    self.tabBarController.tabBar.hidden = YES;
 //    [MobClick beginLogPageView:NSStringFromClass([self class])];
 }
 

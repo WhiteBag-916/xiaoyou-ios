@@ -12,6 +12,7 @@
 #import "SlideNavigationController.h"
 #import "XYTabBarViewController.h"
 #import "YDefine.h"
+#import "AppDelegate+RootVC.h"
 
 @interface ChooseSchoolViewController ()
 
@@ -43,11 +44,7 @@
         if (message.isSuccess)
         {
             //成功
-            SlideNavigationController *slideNC = [[SlideNavigationController alloc] initWithRootViewController:[[XYTabBarViewController alloc]init]];
-            slideNC.enableSwipeGesture = NO;
-            slideNC.leftBarButtonItem = [UIBarButtonItem new];
-            slideNC.navigationBarHidden = YES;
-            kApplicationKeyWindow.rootViewController = slideNC;
+            [kAppDelegateAccessor initTabBarNC];
         }
     }];
 }
