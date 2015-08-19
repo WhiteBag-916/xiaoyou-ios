@@ -59,6 +59,7 @@
 		20E034031B846398002E4583 /* feed-find-someone-search-grey@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 20E033FF1B846398002E4583 /* feed-find-someone-search-grey@3x.png */; };
 		20E034041B846398002E4583 /* feed-find-someone-search@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 20E034001B846398002E4583 /* feed-find-someone-search@2x.png */; };
 		20E034051B846398002E4583 /* feed-find-someone-search@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 20E034011B846398002E4583 /* feed-find-someone-search@3x.png */; };
+		20E034091B8471E5002E4583 /* SearchFilterTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 20E034081B8471E5002E4583 /* SearchFilterTableViewCell.m */; };
 		20E122131B705C2100F90BD3 /* XYTabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20E122121B705C2100F90BD3 /* XYTabBarViewController.m */; };
 		20E122211B705ED200F90BD3 /* FeedListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20E122201B705ED200F90BD3 /* FeedListViewController.m */; };
 		20E1222D1B708CDC00F90BD3 /* TagListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20E1222C1B708CDC00F90BD3 /* TagListViewController.m */; };
@@ -437,6 +438,8 @@
 		20E033FF1B846398002E4583 /* feed-find-someone-search-grey@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "feed-find-someone-search-grey@3x.png"; sourceTree = "<group>"; };
 		20E034001B846398002E4583 /* feed-find-someone-search@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "feed-find-someone-search@2x.png"; sourceTree = "<group>"; };
 		20E034011B846398002E4583 /* feed-find-someone-search@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "feed-find-someone-search@3x.png"; sourceTree = "<group>"; };
+		20E034071B8471E4002E4583 /* SearchFilterTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchFilterTableViewCell.h; sourceTree = "<group>"; };
+		20E034081B8471E5002E4583 /* SearchFilterTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchFilterTableViewCell.m; sourceTree = "<group>"; };
 		20E122111B705C2100F90BD3 /* XYTabBarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYTabBarViewController.h; sourceTree = "<group>"; };
 		20E122121B705C2100F90BD3 /* XYTabBarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYTabBarViewController.m; sourceTree = "<group>"; };
 		20E1221F1B705ED200F90BD3 /* FeedListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedListViewController.h; sourceTree = "<group>"; };
@@ -1018,6 +1021,8 @@
 				20DA35F61B81E89F002E5A96 /* SearchPersonViewController.m */,
 				20E033FB1B846114002E4583 /* SearchFilterViewController.h */,
 				20E033FC1B846114002E4583 /* SearchFilterViewController.m */,
+				20E034071B8471E4002E4583 /* SearchFilterTableViewCell.h */,
+				20E034081B8471E5002E4583 /* SearchFilterTableViewCell.m */,
 			);
 			path = SearchPerson;
 			sourceTree = "<group>";
@@ -2601,6 +2606,7 @@
 				333122321B806EDB00D3D032 /* DXChatBarMoreView.m in Sources */,
 				6592DCD31B806A9B004CD118 /* XYContactsInfoDetailViewController.m in Sources */,
 				3331222A1B806EDB00D3D032 /* ChatSendHelper.m in Sources */,
+				20E034091B8471E5002E4583 /* SearchFilterTableViewCell.m in Sources */,
 				3331224A1B806EDB00D3D032 /* MBProgressHUD+Add.m in Sources */,
 				3331226D1B806EDB00D3D032 /* PSTCollectionViewUpdateItem.m in Sources */,
 				333122561B806EDB00D3D032 /* EMSDWebImageCompat.m in Sources */,
