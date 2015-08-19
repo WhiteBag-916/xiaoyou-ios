@@ -42,6 +42,12 @@
 
 @property (strong, nonatomic) UIButton *recordButton;
 
+@property (strong, nonatomic) UIButton *moreButton;
+
+@property (strong, nonatomic) UIButton *styleChangeButton;
+
+@property (strong, nonatomic) UIButton *faceButton;
+
 /**
  *  操作栏背景图片
  */
