@@ -8,6 +8,7 @@
 
 #import "XYGroupApplyViewController.h"
 #import "GroupApplyTableView.h"
+#import "YCommonActionSheet.h"
 
 @interface XYGroupApplyViewController ()
 
@@ -25,6 +26,8 @@
 -(void)setUpUI
 {
     self.title = @"社团申请";
+    [self showCustomNavigationBackButton];
+    [self showCustomNavigationMoreButton];
     
     _groupApplyTableView = [[GroupApplyTableView alloc] init];
     _groupApplyTableView.backgroundColor = [UIColor clearColor];
@@ -35,6 +38,23 @@
     }];
     
 }
+
+- (void)onNavigationRightButtonClicked
+{
+    YActionSheetItem *item1 = [YActionSheetItem itemWithTitle:@"清空社团申请者列表"
+                                                         type:YCommonActionSheetItemTypeCenterCommon
+                                                        block:^(NSInteger checkNum) {
+                                                            NSLog(@"清空社团申请者列表");
+                                                        }];
+    YActionSheetItem *item2 = [YActionSheetItem itemWithTitle:@"集体发信"
+                                                         type:YCommonActionSheetItemTypeCenterCommon
+                                                        block:^(NSInteger checkNum) {
+                                                            NSLog(@"集体发信");
+                                                        }];
+    YCommonActionSheet *sheet = [[YCommonActionSheet alloc] initWithType:@[item1,item2] title:nil];
+    [sheet show];
+}
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
