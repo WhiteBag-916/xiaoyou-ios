@@ -133,7 +133,7 @@
     SearchResultViewController *searchResultViewController = [[SearchResultViewController alloc] init];
     searchResultViewController.searchCondition = [[NSMutableArray alloc] initWithArray:_chooseFiterArray];
     searchResultViewController.searchName = _textField.text;
-    [self.navigationController pushViewController:searchResultViewController animated:YES];
+    [self.navigationController pushViewController:searchResultViewController animated:YES needHiddenBottomBar:YES];
 }
 
 #pragma mark - UITextFieldDelegate

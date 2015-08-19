@@ -28,10 +28,6 @@
     [self initView];
 }
 
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated navigationBarHidden:NO tabBarHidden:YES];
-}
-
 - (void)initView {
     self.view.backgroundColor = KCOLORGREEN_e6eae9;
     //结果

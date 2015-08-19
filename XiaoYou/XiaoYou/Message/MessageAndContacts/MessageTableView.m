@@ -218,21 +218,21 @@
     {
         self.myController.hidesBottomBarWhenPushed = YES;
         XYFriendApplyViewController * friendApplyVC = [[XYFriendApplyViewController alloc] init];
-        [self.myController.navigationController pushViewController:friendApplyVC animated:YES from:self.myController];
+        [self.myController.navigationController pushViewController:friendApplyVC animated:YES needHiddenBottomBar:YES];
         
     }
     else if (indexPath.row == 5)
     {
         self.myController.hidesBottomBarWhenPushed = YES;
         XYGroupApplyViewController * groupApplyVC = [[XYGroupApplyViewController alloc] init];
-        [self.myController.navigationController pushViewController:groupApplyVC animated:YES from:self.myController];
+        [self.myController.navigationController pushViewController:groupApplyVC animated:YES needHiddenBottomBar:YES];
     }
     else
     {
         self.myController.hidesBottomBarWhenPushed = YES;
         
         ChatViewController * chatVC = [[ChatViewController alloc] initWithChatter:@"yinhui" isGroup:NO];
-        [self.myController.navigationController pushViewController:chatVC animated:YES from:self.myController];
+        [self.myController.navigationController pushViewController:chatVC animated:YES needHiddenBottomBar:YES];
     }
     
 }

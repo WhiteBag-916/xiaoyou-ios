@@ -135,22 +135,22 @@
 
 - (void)toAssociationsList {
     AssociationsListViewController *associationsListViewController = [[AssociationsListViewController alloc] init];
-    [self.navigationController pushViewController:associationsListViewController animated:YES from:self];
+    [self.navigationController pushViewController:associationsListViewController animated:YES needHiddenBottomBar:YES];
 }
 
 - (void)toSearchPerson {
     SearchPersonViewController *searchPersonViewController = [[SearchPersonViewController alloc] init];
-    [self.navigationController pushViewController:searchPersonViewController animated:YES from:self];
+    [self.navigationController pushViewController:searchPersonViewController animated:YES needHiddenBottomBar:YES];
 }
 
 - (void)toNotifyView {
     NotifyListViewController *notifyListViewController = [[NotifyListViewController alloc] init];
-    [self.navigationController pushViewController:notifyListViewController animated:YES from:self];
+    [self.navigationController pushViewController:notifyListViewController animated:YES needHiddenBottomBar:YES];
 }
 
 - (void)toAddTag {
     AddTagViewController *addTagViewController = [[AddTagViewController alloc] init];
-    [self.navigationController pushViewController:addTagViewController animated:YES from:self];
+    [self.navigationController pushViewController:addTagViewController animated:YES needHiddenBottomBar:YES];
 }
 
 - (void)openShare:(NSNotification *) notification{
