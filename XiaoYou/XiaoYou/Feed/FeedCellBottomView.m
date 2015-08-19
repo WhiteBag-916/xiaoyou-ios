@@ -45,6 +45,7 @@
     self = [super init];
     if (self) {
         _type = type;
+        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(respect)];
         if (type == FeedOrganizationType || type == FeedListType) {
             [self mas_makeConstraints:^(MASConstraintMaker *make) {
                make.height.mas_equalTo(KBOTTOMHEIGHT); 
@@ -86,18 +87,21 @@
             _respectNum = [YUtils initLabel:CONTENT_FONT(10) color:[UIColor blackColor] text:@"99" frame:CGRectZero alignment:NSTextAlignmentLeft];
             [self addSubview:_respectNum];
             [_respectNum mas_makeConstraints:^(MASConstraintMaker *make) {
-                make.top.bottom.right.equalTo(self);
+                make.top.bottom.equalTo(self);
+                make.right.equalTo(self).offset(-SCALE_NUM(5));
             }];
             
             _respectImg = [[UIImageView alloc] init];
             [self addSubview:_respectImg];
             [_respectImg mas_makeConstraints:^(MASConstraintMaker *make) {
-                make.right.equalTo(_respectNum.mas_left).offset(-KBUTTONTEXTMARGIN);
+                make.right.equalTo(_respectNum);
+                make.left.equalTo(_respectNum).offset(-KBUTTONTEXTMARGIN-KRESPECTWIDTH);
                 make.top.bottom.equalTo(self);
-                make.width.mas_equalTo(KRESPECTWIDTH);
             }];
-            _respectImg.contentMode = UIViewContentModeCenter;
+            _respectImg.contentMode = UIViewContentModeLeft;
             _respectImg.image = [UIImage imageNamed:@"cup"];
+            _respectImg.userInteractionEnabled = true;
+            [_respectImg addGestureRecognizer:tap];
         } else {
             [self mas_makeConstraints:^(MASConstraintMaker *make) {
                 make.height.mas_equalTo(KHEADWIDTH);
@@ -112,11 +116,13 @@
             }];
             _respectImg.contentMode = UIViewContentModeTop;
             _respectImg.image = [UIImage imageNamed:@"cup"];
+            _respectImg.userInteractionEnabled = true;
+            [_respectImg addGestureRecognizer:tap];
             
             _respectNum = [YUtils initLabel:CONTENT_FONT(8) color:KCOLORGREEN_009688 text:@"999" frame:CGRectZero alignment:NSTextAlignmentCenter];
             [self addSubview:_respectNum];
             [_respectNum mas_makeConstraints:^(MASConstraintMaker *make) {
-                make.left.right.equalTo(_respectImg);
+                make.centerX.equalTo(_respectImg);
                 make.bottom.equalTo(_respectImg).offset(-KRESPECTLABELMARGIN_BOTTOM);
             }];
             if (type == FeedDetailType) {
@@ -165,8 +171,19 @@
     }
 }
 
+- (void)respect {
+    _data.hasRespected = !_data.hasRespected;
+    if (_data.hasRespected) {
+        _data.respectNum++;
+        _respectNum.text = [NSString stringWithFormat:@"%d", _data.respectNum];
+    } else {
+        _data.respectNum--;
+        _respectNum.text = [NSString stringWithFormat:@"%d", _data.respectNum];
+    }
+}
+
 - (void)openShare {
-    
+    [[NSNotificationCenter defaultCenter] postNotificationName:KNotification_Share object:@{@"id":_data.feedId}];
 }
 - (void)openDetail {
     

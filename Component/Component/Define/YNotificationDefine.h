@@ -14,5 +14,6 @@
 #define kNotification_Push_Notify                       @"kNotification_Push_Notify"
 #define kNotification_Push_AddTag                       @"kNotification_Push_AddTag"
 #define kNotification_Push_FeedDetail                   @"kNotification_Push_FeedDetail"
-
+#define kNotification_Push_Report                       @"kNotification_Push_Report"
+#define KNotification_Share                             @"KNotification_Share"
 #endif

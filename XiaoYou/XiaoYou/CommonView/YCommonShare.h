@@ -21,7 +21,15 @@ typedef NS_ENUM(NSInteger, YCommonShareDetailType) {
 //注册
 - (void)registUmengSDK;
 
-//分享
-- (void)shareForViewControllerWithType:(UIViewController *)viewController dataModel:(NSObject *)obj type:(YCommonShareDetailType)type shareType:(NSInteger)shareType;
+/**
+ *  @author 李思良, 15-08-19
+ *
+ *  @brief  分享
+ *
+ *  @param obj            字典，img键（可以为UIImage或NSData），url键（图片url），content键（分享内容）,title键（分享标题）
+ *  @param type           feed或人的名片
+ *  @param shareType      微信或朋友圈
+ */
+- (void)shareForViewControllerWithType:(YCommonShareDetailType)type dataModel:(NSDictionary *)obj shareType:(NSInteger)shareType;
 
 @end

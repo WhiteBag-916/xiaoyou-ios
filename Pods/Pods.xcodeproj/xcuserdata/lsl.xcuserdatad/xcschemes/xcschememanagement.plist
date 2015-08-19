@@ -19,11 +19,6 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>Pods-XiaoYou-DWTagList.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
 		<key>Pods-XiaoYou-EaseMobSDK.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -97,167 +92,87 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>046C1FB3661319FF5C65DAC0</key>
+		<key>15EAAAA323DAA402A438490E</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>04A63C7FCD02A87C1BE89C51</key>
+		<key>208F1741A66D1A130B1EB952</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>0605099DE987BA558BE7067E</key>
+		<key>3152381F7AF2A1C08DE8C33F</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>07BB7AA59B43391B66F13E7E</key>
+		<key>37624CAA9C21C43F811CB4BA</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>1159D6D28AD1B36846B0401F</key>
+		<key>4085486E5B0FBBD823937D46</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>2EE57F635ED9E23E1F9A6DEC</key>
+		<key>4CA8054035A728C55FC8E33F</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>347CCDE6EF3070DF7EB1741A</key>
+		<key>51874A0C835FC678CBBA466C</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>35D8635E58F24B7927FE6A83</key>
+		<key>5B985C83FB71F2FDD88D8BA9</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>39243D49A7F191B851AB2E20</key>
+		<key>642078F8DDDC30FDF2B19A70</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>3924969434C362DAFE8B0DF1</key>
+		<key>752FC9048E364CF9EAA7BC3E</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>43BBB2A9E86C2AB0495E0D66</key>
+		<key>768B5DC7C252B6C03A90AB2C</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>53C7B0C7527782055F6085E1</key>
+		<key>7BE1410E34DD96899FB4E57A</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>543A88F10665DF7C933082EC</key>
+		<key>838FB3769EB4C9671C0AAA04</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>56C0CC06282CC183F37C73F3</key>
+		<key>8EE76D0C00518B4D16759F02</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>61F124A93CB1A40E40D04202</key>
+		<key>916A259C866386C4BAE36C80</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>6D113401EF5476C987FED6E6</key>
+		<key>A535078ED8DF56FCBBC4A6A3</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>733C461606A315C589140596</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>745723FE165E2D162B3CEC92</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>833CAB411FD97F311B8CFCEE</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>8EA72D78DC0C7C3C3B86AA20</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>9085F243BBEF9DE2DEE902E4</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>967DE9482B5EA45553A7B17A</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>A0BCBD5023390E2E8EEDFAF1</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>A5B5FE225FD55FD7941B3B32</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>A6E7D9375A4603444DBC5667</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>B0CCD5073DDA3F91236E94AB</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>BB5275E24AC5CDC80B910D7E</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>BD393C82C1D241F4F699EA04</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>C06562915A5250C0CFE97B48</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>D15DFDAB06598379E3226CA5</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>E53093B5383C1ED688DE1582</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>ED45AAC08C7851D2347E4A5D</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>F94BB84163DB14372091369B</key>
+		<key>A84C3157BC56A01C69D8AFFA</key>
 		<dict>
 			<key>primary</key>
 			<true/>

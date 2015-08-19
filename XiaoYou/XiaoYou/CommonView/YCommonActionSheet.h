@@ -12,11 +12,12 @@ typedef NS_ENUM(NSInteger, YCommonActionItemSheetType) {
     YCommonActionSheetItemTypeCommon,
     YCommonActionSheetItemTypeShare,
     YCommonActionSheetItemTypeSwitch,
-    YCommonActionSheetItemTypeCenterCommon
+    YCommonActionSheetItemTypeCenterCommon,
+    YCommonActionSheetItemTypeReport,
 };
 
 typedef NS_ENUM(NSInteger, YShareType) {
-    YShareTypeToWechatSession=10,   //微信好友
+    YShareTypeToWechatSession=100,   //微信好友
     YShareTypeToWechatTimeline,     //微信朋友圈
 };
 
@@ -24,6 +25,18 @@ typedef void(^ActionSheetItemBlock)(NSInteger checkNum);
 
 @interface YActionSheetItem : NSObject
 +(instancetype)itemWithTitle:(NSString *)title type:(YCommonActionItemSheetType)type block:(ActionSheetItemBlock)block;
+/**
+ *  @author 李思良, 15-08-19
+ *
+ *  @brief  特定类型的item调用，不需要block回调，由自身发出通知执行
+ *
+ *  @param type      目前支持分享，举报待定
+ *  @param title     item标题
+ *  @param extraData 需要的参数字典,share类型需要提供content键
+ *
+ *  @return item
+ */
++ (instancetype)itemWithType:(YCommonActionItemSheetType)type title:(NSString *)title extraData:(NSDictionary *)extraData;
 //传开关
 +(instancetype)itemWithTitle:(NSString *)title type:(YCommonActionItemSheetType)type open:(BOOL)isOpen block:(ActionSheetItemBlock)block;
 @end

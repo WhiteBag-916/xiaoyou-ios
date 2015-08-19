@@ -9,6 +9,7 @@
 #import "YCommonActionSheet.h"
 #import "YFoundation.h"
 #import "YControlsDefine.h"
+#import "YCommonShare.h"
 
 static const NSUInteger kYActionSheetButtonHeight = 50;
 static const NSUInteger kYActionSheetTitleHeight = 37;
@@ -20,6 +21,7 @@ static const NSUInteger kYActionSheetCancelHeight = 49;
 @property (nonatomic,assign) YCommonActionItemSheetType type;
 @property (nonatomic, assign) BOOL isOpen;
 @property (nonatomic,copy) ActionSheetItemBlock block;
+@property (nonatomic,copy) NSDictionary *extraData;
 @end
 
 
@@ -41,7 +43,13 @@ static const NSUInteger kYActionSheetCancelHeight = 49;
     item.isOpen = isOpen;
     return item;
 }
-
++ (instancetype)itemWithTitle:(NSString *)title type:(YCommonActionItemSheetType)type extraData:(NSDictionary *)extraData block:(ActionSheetItemBlock)block {
+    YActionSheetItem *item = [YActionSheetItem itemWithTitle:title
+                                                        type:type
+                                                       block:block];
+    item.extraData = extraData;
+    return item;
+}
 @end
 
 @interface YActionSheetView : UIView
@@ -157,6 +165,9 @@ static const NSUInteger kYActionSheetCancelHeight = 49;
     }
     if (_item.block) {
         _item.block(sender.tag);
+    }
+    if (_item.type == YCommonActionSheetItemTypeShare) {
+        [[YCommonShare sharedInstance] shareForViewControllerWithType:YCommonShareDetailTypeFeed dataModel:@{} shareType:YShareTypeToWechatSession];
     }
 }
 

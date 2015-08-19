@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "07BB7AA59B43391B66F13E7E"
+               BlueprintIdentifier = "A84C3157BC56A01C69D8AFFA"
                BuildableName = "libPods-XiaoYou-KLCircleViewController.a"
                BlueprintName = "Pods-XiaoYou-KLCircleViewController"
                ReferencedContainer = "container:Pods.xcodeproj">

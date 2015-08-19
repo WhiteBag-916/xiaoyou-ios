@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "A6E7D9375A4603444DBC5667"
+               BlueprintIdentifier = "768B5DC7C252B6C03A90AB2C"
                BuildableName = "libPods-XiaoYou-ASIHTTPRequest.a"
                BlueprintName = "Pods-XiaoYou-ASIHTTPRequest"
                ReferencedContainer = "container:Pods.xcodeproj">

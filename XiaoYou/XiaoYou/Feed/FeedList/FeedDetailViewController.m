@@ -10,9 +10,10 @@
 #import "FeedDetailTableView.h"
 #import "Masonry.h"
 #import "DXMessageToolBar.h"
+#import "YCommonActionSheet.h"
 
 #define KBOTTOMHEIGHT [DXMessageToolBar defaultHeight]
-@interface FeedDetailViewController() <DXMessageToolBarDelegate>
+@interface FeedDetailViewController() <DXMessageToolBarDelegate, UIGestureRecognizerDelegate>
 
 @property (nonatomic, strong) NSString *feedId;
 @property (nonatomic, strong) FeedDetailTableView *feedDetailTable;
@@ -33,8 +34,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    [self initController];
     [self initTable];
+    [self initController];
     [self initToolBar];
     
 }
@@ -44,6 +45,7 @@
     self.title = @"详情";
     [self showCustomNavigationMoreButton];
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(keyBoardHidden)];
+    tap.delegate = self;
     [self.view addGestureRecognizer:tap];
     
 }
@@ -80,6 +82,25 @@
 }
 
 - (void)onNavigationRightButtonClicked {
+    YActionSheetItem *item1 = [YActionSheetItem itemWithTitle:@"分享这社团名片至"
+                                                         type:YCommonActionSheetItemTypeShare
+                                                        block:^(NSInteger checkNum) {
+                                                            
+                                                        }];
     
+    YActionSheetItem *item2 = [YActionSheetItem itemWithTitle:@"举报"
+                                                         type:YCommonActionSheetItemTypeCommon
+                                                        block:^(NSInteger checkNum) {
+                                                            
+                                                        }];
+    
+    YCommonActionSheet *sheet = [[YCommonActionSheet alloc] initWithType:@[item1, item2] title:nil];
+    [sheet show];
+}
+- (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer {
+    if ([self.chatToolBar isFirstResponder]) {
+        return true;
+    }
+    return false;
 }
 @end
