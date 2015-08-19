@@ -315,6 +315,9 @@
 		334670751B842DC900A8628A /* group_add@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 334670731B842DC900A8628A /* group_add@3x.png */; };
 		334670781B84337E00A8628A /* friend-requests@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 334670761B84337E00A8628A /* friend-requests@2x.png */; };
 		334670791B84337E00A8628A /* friend-requests@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 334670771B84337E00A8628A /* friend-requests@3x.png */; };
+		3346707C1B8496E700A8628A /* XYChoicePersonViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3346707B1B8496E700A8628A /* XYChoicePersonViewController.m */; };
+		3346707F1B84972900A8628A /* ChoicePersonTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3346707E1B84972900A8628A /* ChoicePersonTableView.m */; };
+		334670821B84974900A8628A /* ChoicePersonTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 334670811B84974900A8628A /* ChoicePersonTableViewCell.m */; };
 		339549831B81BD6700F9ECB1 /* XYGroupInfoDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 339549821B81BD6700F9ECB1 /* XYGroupInfoDetailViewController.m */; };
 		339549861B81BDD500F9ECB1 /* GroupInfoCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 339549851B81BDD500F9ECB1 /* GroupInfoCollectionViewCell.m */; };
 		339549891B81BDFF00F9ECB1 /* GroupInfoDetailCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 339549881B81BDFF00F9ECB1 /* GroupInfoDetailCollectionView.m */; };
@@ -330,7 +333,6 @@
 		653CB2EF1B806BFD006ECBB2 /* pinyin.c in Sources */ = {isa = PBXBuildFile; fileRef = 653CB2EC1B806BFD006ECBB2 /* pinyin.c */; };
 		654602171B7F2FF00039F622 /* FeedImageGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 654602161B7F2FF00039F622 /* FeedImageGroup.m */; };
 		656234771B837FDC00651C88 /* YFaceImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 656234761B837FDC00651C88 /* YFaceImageView.m */; };
-		6592DCD21B806A9B004CD118 /* XYChoicePersonViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6592DCB01B806A9B004CD118 /* XYChoicePersonViewController.m */; };
 		6592DCD31B806A9B004CD118 /* XYContactsInfoDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6592DCB31B806A9B004CD118 /* XYContactsInfoDetailViewController.m */; };
 		6592DCD51B806A9B004CD118 /* FriendApplyTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6592DCB81B806A9B004CD118 /* FriendApplyTableView.m */; };
 		6592DCD61B806A9B004CD118 /* FriendApplyTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6592DCBA1B806A9B004CD118 /* FriendApplyTableViewCell.m */; };
@@ -836,6 +838,12 @@
 		334670731B842DC900A8628A /* group_add@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "group_add@3x.png"; sourceTree = "<group>"; };
 		334670761B84337E00A8628A /* friend-requests@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "friend-requests@2x.png"; sourceTree = "<group>"; };
 		334670771B84337E00A8628A /* friend-requests@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "friend-requests@3x.png"; sourceTree = "<group>"; };
+		3346707A1B8496E700A8628A /* XYChoicePersonViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XYChoicePersonViewController.h; path = ../SendMessage/XYChoicePersonViewController.h; sourceTree = "<group>"; };
+		3346707B1B8496E700A8628A /* XYChoicePersonViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XYChoicePersonViewController.m; path = ../SendMessage/XYChoicePersonViewController.m; sourceTree = "<group>"; };
+		3346707D1B84972900A8628A /* ChoicePersonTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ChoicePersonTableView.h; path = ../SendMessage/ChoicePersonTableView.h; sourceTree = "<group>"; };
+		3346707E1B84972900A8628A /* ChoicePersonTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ChoicePersonTableView.m; path = ../SendMessage/ChoicePersonTableView.m; sourceTree = "<group>"; };
+		334670801B84974900A8628A /* ChoicePersonTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ChoicePersonTableViewCell.h; path = ../SendMessage/ChoicePersonTableViewCell.h; sourceTree = "<group>"; };
+		334670811B84974900A8628A /* ChoicePersonTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ChoicePersonTableViewCell.m; path = ../SendMessage/ChoicePersonTableViewCell.m; sourceTree = "<group>"; };
 		339549811B81BD6700F9ECB1 /* XYGroupInfoDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYGroupInfoDetailViewController.h; sourceTree = "<group>"; };
 		339549821B81BD6700F9ECB1 /* XYGroupInfoDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYGroupInfoDetailViewController.m; sourceTree = "<group>"; };
 		339549841B81BDD500F9ECB1 /* GroupInfoCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroupInfoCollectionViewCell.h; sourceTree = "<group>"; };
@@ -862,8 +870,6 @@
 		654602161B7F2FF00039F622 /* FeedImageGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedImageGroup.m; sourceTree = "<group>"; };
 		656234751B837FDC00651C88 /* YFaceImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YFaceImageView.h; sourceTree = "<group>"; };
 		656234761B837FDC00651C88 /* YFaceImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YFaceImageView.m; sourceTree = "<group>"; };
-		6592DCAF1B806A9B004CD118 /* XYChoicePersonViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYChoicePersonViewController.h; sourceTree = "<group>"; };
-		6592DCB01B806A9B004CD118 /* XYChoicePersonViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYChoicePersonViewController.m; sourceTree = "<group>"; };
 		6592DCB21B806A9B004CD118 /* XYContactsInfoDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYContactsInfoDetailViewController.h; sourceTree = "<group>"; };
 		6592DCB31B806A9B004CD118 /* XYContactsInfoDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYContactsInfoDetailViewController.m; sourceTree = "<group>"; };
 		6592DCB71B806A9B004CD118 /* FriendApplyTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendApplyTableView.h; sourceTree = "<group>"; };
@@ -1089,11 +1095,11 @@
 				6592DCC41B806A9B004CD118 /* MessageAndContacts */,
 				333120E51B806EDA00D3D032 /* ChatView */,
 				3331211A1B806EDB00D3D032 /* ChatViewNeeds */,
-				6592DCAE1B806A9B004CD118 /* ChoicePerson */,
 				339549801B81BD5600F9ECB1 /* GroupInfoDetail */,
 				6592DCB11B806A9B004CD118 /* ContactsInfoDetail */,
 				6592DCB61B806A9B004CD118 /* FriendApply */,
 				6592DCBD1B806A9B004CD118 /* GroupApply */,
+				6592DCAE1B806A9B004CD118 /* ChoicePerson */,
 				6592DCCF1B806A9B004CD118 /* SendMessage */,
 			);
 			path = Message;
@@ -2127,8 +2133,12 @@
 		6592DCAE1B806A9B004CD118 /* ChoicePerson */ = {
 			isa = PBXGroup;
 			children = (
-				6592DCAF1B806A9B004CD118 /* XYChoicePersonViewController.h */,
-				6592DCB01B806A9B004CD118 /* XYChoicePersonViewController.m */,
+				3346707A1B8496E700A8628A /* XYChoicePersonViewController.h */,
+				3346707B1B8496E700A8628A /* XYChoicePersonViewController.m */,
+				3346707D1B84972900A8628A /* ChoicePersonTableView.h */,
+				3346707E1B84972900A8628A /* ChoicePersonTableView.m */,
+				334670801B84974900A8628A /* ChoicePersonTableViewCell.h */,
+				334670811B84974900A8628A /* ChoicePersonTableViewCell.m */,
 			);
 			path = ChoicePerson;
 			sourceTree = "<group>";
@@ -2149,12 +2159,12 @@
 		6592DCB61B806A9B004CD118 /* FriendApply */ = {
 			isa = PBXGroup;
 			children = (
+				6592DCBB1B806A9B004CD118 /* XYFriendApplyViewController.h */,
+				6592DCBC1B806A9B004CD118 /* XYFriendApplyViewController.m */,
 				6592DCB71B806A9B004CD118 /* FriendApplyTableView.h */,
 				6592DCB81B806A9B004CD118 /* FriendApplyTableView.m */,
 				6592DCB91B806A9B004CD118 /* FriendApplyTableViewCell.h */,
 				6592DCBA1B806A9B004CD118 /* FriendApplyTableViewCell.m */,
-				6592DCBB1B806A9B004CD118 /* XYFriendApplyViewController.h */,
-				6592DCBC1B806A9B004CD118 /* XYFriendApplyViewController.m */,
 			);
 			path = FriendApply;
 			sourceTree = "<group>";
@@ -2162,12 +2172,12 @@
 		6592DCBD1B806A9B004CD118 /* GroupApply */ = {
 			isa = PBXGroup;
 			children = (
+				6592DCC21B806A9B004CD118 /* XYGroupApplyViewController.h */,
+				6592DCC31B806A9B004CD118 /* XYGroupApplyViewController.m */,
 				6592DCBE1B806A9B004CD118 /* GroupApplyTableView.h */,
 				6592DCBF1B806A9B004CD118 /* GroupApplyTableView.m */,
 				6592DCC01B806A9B004CD118 /* GroupApplyTableViewCell.h */,
 				6592DCC11B806A9B004CD118 /* GroupApplyTableViewCell.m */,
-				6592DCC21B806A9B004CD118 /* XYGroupApplyViewController.h */,
-				6592DCC31B806A9B004CD118 /* XYGroupApplyViewController.m */,
 			);
 			path = GroupApply;
 			sourceTree = "<group>";
@@ -2542,7 +2552,6 @@
 				653CB2EE1B806BFD006ECBB2 /* ChineseString.m in Sources */,
 				6592DCD61B806A9B004CD118 /* FriendApplyTableViewCell.m in Sources */,
 				3334AC491B831DE500FDDCCB /* ContactsInfoDetailTableViewCell.m in Sources */,
-				6592DCD21B806A9B004CD118 /* XYChoicePersonViewController.m in Sources */,
 				3331223E1B806EDB00D3D032 /* MessageModelManager.m in Sources */,
 				3331225C1B806EDB00D3D032 /* MKAnnotationView+EMWebCache.m in Sources */,
 				3331223B1B806EDB00D3D032 /* EMChatViewBaseCell.m in Sources */,
@@ -2635,6 +2644,7 @@
 				654602171B7F2FF00039F622 /* FeedImageGroup.m in Sources */,
 				20E033FD1B846114002E4583 /* SearchFilterViewController.m in Sources */,
 				20E18D551B807752005B75EE /* AssociationsListTableViewCell.m in Sources */,
+				334670821B84974900A8628A /* ChoicePersonTableViewCell.m in Sources */,
 				333122851B806EDC00D3D032 /* XHMessageTextView.m in Sources */,
 				333122611B806EDB00D3D032 /* UIImage+EMWebP.m in Sources */,
 				20DA35F71B81E89F002E5A96 /* SearchPersonViewController.m in Sources */,
@@ -2649,6 +2659,7 @@
 				6592DCDF1B806A9B004CD118 /* XYMessageAndContactsViewController.m in Sources */,
 				3331226E1B806EDB00D3D032 /* PSTGridLayoutInfo.m in Sources */,
 				20DC5CD01B7B4FA00059B6E6 /* FeedListTableViewCell.m in Sources */,
+				3346707F1B84972900A8628A /* ChoicePersonTableView.m in Sources */,
 				3334AC461B831B2200FDDCCB /* ContactsInfoDetailTableView.m in Sources */,
 				20E18D561B807752005B75EE /* AssociationsListViewController.m in Sources */,
 				333122541B806EDB00D3D032 /* DACircularProgressView.m in Sources */,
@@ -2681,6 +2692,7 @@
 				333122581B806EDB00D3D032 /* EMSDWebImageDownloader.m in Sources */,
 				3331223F1B806EDB00D3D032 /* MessageReadManager.m in Sources */,
 				3331227F1B806EDC00D3D032 /* NSDate+Category.m in Sources */,
+				3346707C1B8496E700A8628A /* XYChoicePersonViewController.m in Sources */,
 				3331222E1B806EDB00D3D032 /* LocationViewController.m in Sources */,
 				3331222F1B806EDB00D3D032 /* DXMessageToolBar.m in Sources */,
 				2076A3011B81C590001FFBAC /* YCommonAlertView.m in Sources */,
