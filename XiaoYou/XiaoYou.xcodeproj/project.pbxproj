@@ -55,6 +55,10 @@
 		20E033F31B842759002E4583 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20E033F21B842759002E4583 /* SystemConfiguration.framework */; };
 		20E033F61B8427AF002E4583 /* YCommonShare.m in Sources */ = {isa = PBXBuildFile; fileRef = 20E033F51B8427AF002E4583 /* YCommonShare.m */; };
 		20E033FD1B846114002E4583 /* SearchFilterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20E033FC1B846114002E4583 /* SearchFilterViewController.m */; };
+		20E034021B846398002E4583 /* feed-find-someone-search-grey@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 20E033FE1B846398002E4583 /* feed-find-someone-search-grey@2x.png */; };
+		20E034031B846398002E4583 /* feed-find-someone-search-grey@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 20E033FF1B846398002E4583 /* feed-find-someone-search-grey@3x.png */; };
+		20E034041B846398002E4583 /* feed-find-someone-search@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 20E034001B846398002E4583 /* feed-find-someone-search@2x.png */; };
+		20E034051B846398002E4583 /* feed-find-someone-search@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 20E034011B846398002E4583 /* feed-find-someone-search@3x.png */; };
 		20E122131B705C2100F90BD3 /* XYTabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20E122121B705C2100F90BD3 /* XYTabBarViewController.m */; };
 		20E122211B705ED200F90BD3 /* FeedListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20E122201B705ED200F90BD3 /* FeedListViewController.m */; };
 		20E1222D1B708CDC00F90BD3 /* TagListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20E1222C1B708CDC00F90BD3 /* TagListViewController.m */; };
@@ -429,6 +433,10 @@
 		20E033F51B8427AF002E4583 /* YCommonShare.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YCommonShare.m; sourceTree = "<group>"; };
 		20E033FB1B846114002E4583 /* SearchFilterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchFilterViewController.h; sourceTree = "<group>"; };
 		20E033FC1B846114002E4583 /* SearchFilterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchFilterViewController.m; sourceTree = "<group>"; };
+		20E033FE1B846398002E4583 /* feed-find-someone-search-grey@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "feed-find-someone-search-grey@2x.png"; sourceTree = "<group>"; };
+		20E033FF1B846398002E4583 /* feed-find-someone-search-grey@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "feed-find-someone-search-grey@3x.png"; sourceTree = "<group>"; };
+		20E034001B846398002E4583 /* feed-find-someone-search@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "feed-find-someone-search@2x.png"; sourceTree = "<group>"; };
+		20E034011B846398002E4583 /* feed-find-someone-search@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "feed-find-someone-search@3x.png"; sourceTree = "<group>"; };
 		20E122111B705C2100F90BD3 /* XYTabBarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYTabBarViewController.h; sourceTree = "<group>"; };
 		20E122121B705C2100F90BD3 /* XYTabBarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYTabBarViewController.m; sourceTree = "<group>"; };
 		20E1221F1B705ED200F90BD3 /* FeedListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedListViewController.h; sourceTree = "<group>"; };
@@ -1983,6 +1991,10 @@
 		3334AC4A1B83319500FDDCCB /* contacts */ = {
 			isa = PBXGroup;
 			children = (
+				20E033FE1B846398002E4583 /* feed-find-someone-search-grey@2x.png */,
+				20E033FF1B846398002E4583 /* feed-find-someone-search-grey@3x.png */,
+				20E034001B846398002E4583 /* feed-find-someone-search@2x.png */,
+				20E034011B846398002E4583 /* feed-find-someone-search@3x.png */,
 				3334AC4B1B8331A100FDDCCB /* toast_cup@2x.png */,
 				3334AC4C1B8331A100FDDCCB /* toast_cup@3x.png */,
 			);
@@ -2250,6 +2262,7 @@
 				20E18DD31B808E42005B75EE /* add-02@3x.png in Resources */,
 				20E18DD21B808E42005B75EE /* add-02@2x.png in Resources */,
 				3334ABE61B82C50200FDDCCB /* chatBar_faceSelected@2x.png in Resources */,
+				20E034021B846398002E4583 /* feed-find-someone-search-grey@2x.png in Resources */,
 				20E18DC41B808E42005B75EE /* comment@2x.png in Resources */,
 				333122921B806EDC00D3D032 /* imageDownloadFail@2x.png in Resources */,
 				20E18DD71B808E42005B75EE /* society@3x.png in Resources */,
@@ -2287,6 +2300,7 @@
 				20E942361B833D10009C2DC6 /* sheet_delete@2x.png in Resources */,
 				3335C36A1B8178E8007DEFD4 /* chatFire_audioPlaying3@2x.png in Resources */,
 				3334AC0C1B82C89500FDDCCB /* chatBar_colorMore_cameraSelected@2x.png in Resources */,
+				20E034031B846398002E4583 /* feed-find-someone-search-grey@3x.png in Resources */,
 				3334AC311B82DE5500FDDCCB /* send-click@3x.png in Resources */,
 				2076A3121B81DA3E001FFBAC /* toolbar-contact-click@2x.png in Resources */,
 				20E033EC1B842727002E4583 /* UMSLoginViewController.xib in Resources */,
@@ -2314,6 +2328,7 @@
 				3334ABFC1B82C66F00FDDCCB /* chatBar_record@2x.png in Resources */,
 				3334AC371B82E32100FDDCCB /* chat_receiver_bg@2x.png in Resources */,
 				333122BF1B806EDC00D3D032 /* chat_receiver_audio_playing002.png in Resources */,
+				20E034051B846398002E4583 /* feed-find-someone-search@3x.png in Resources */,
 				2076A3111B81DA3E001FFBAC /* toolbar-chat@3x.png in Resources */,
 				3334AC251B82D7C400FDDCCB /* VoiceSearchFeedback004.png in Resources */,
 				20E18DCF1B808E42005B75EE /* tag-green@3x.png in Resources */,
@@ -2359,6 +2374,7 @@
 				3334AC061B82C7D500FDDCCB /* chatBar_recordSelectedBg@2x.png in Resources */,
 				20E18DC81B808E42005B75EE /* menu-remind@2x.png in Resources */,
 				333122BC1B806EDC00D3D032 /* chat_receiver_audio_playing000@2x.png in Resources */,
+				20E034041B846398002E4583 /* feed-find-someone-search@2x.png in Resources */,
 				65024C1D1B833565007DE404 /* feedmore@3x.png in Resources */,
 				3334AC0D1B82C89500FDDCCB /* chatBar_colorMore_photo@2x.png in Resources */,
 				20E942241B833D10009C2DC6 /* toggle-on@2x.png in Resources */,
