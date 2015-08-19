@@ -29,12 +29,9 @@
 //    self.interactivePopGestureRecognizer.enabled = NO;
 //}
 
-- (void)pushViewController:(UIViewController *)viewController animated:(BOOL)animated from:(UIViewController *)fromViewController
+- (void)pushViewController:(UIViewController *)viewController animated:(BOOL)animated needHiddenBottomBar:(BOOL)needHiddenBottomBar
 {
-    if ([fromViewController isEqual:self.viewControllers[0]])
-    {
-        fromViewController.hidesBottomBarWhenPushed = YES;
-    }
+    self.visibleViewController.hidesBottomBarWhenPushed = needHiddenBottomBar;
     
     [self pushViewController:viewController animated:animated];
 }
