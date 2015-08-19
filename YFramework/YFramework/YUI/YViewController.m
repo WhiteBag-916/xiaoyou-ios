@@ -99,6 +99,10 @@
     self.navigationItem.titleView = _lbTitle;
 }
 
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    [self.view endEditing:YES];
+}
 
 - (void)setTitle:(NSString *)title
 {
@@ -116,27 +120,6 @@
 {
     [self.view endEditing:YES];
     [self.navigationController popViewControllerAnimated:YES];
-}
-
-- (void)popViewController
-{
-    [self.view endEditing:YES];
-    [self.navigationController popViewControllerAnimated:YES];
-}
-
-- (void)saveControllerData
-{
-    
-}
-
-- (void)backControllerButton
-{
-    
-}
-
-- (void)nextController
-{
-    
 }
 
 - (void)searchBarAction {
@@ -184,25 +167,25 @@
 #pragma mark - 右导航栏
 //导航栏右侧，搜索按钮
 - (void)showCustomNavigationSearchButton {
-    [self showNomalNavigationRightButtonWithImage:@"common_search" action:@selector(searchBarAction)];
+    [self showNomalNavigationRightButtonWithImage:@"feed-find-someone-search" action:@selector(searchBarAction) frame:CGRectMake(0, 0, 42, 64)];
 }
 
 //导航栏右侧，更多按钮
 - (void)showCustomNavigationMoreButton {
-    [self showNomalNavigationRightButtonWithImage:@"more" action:@selector(moreBarAction)];
+    [self showNomalNavigationRightButtonWithImage:@"more" action:@selector(moreBarAction) frame:CGRectMake(0, 0, 30, 64)];
 }
 
 //导航栏右侧，确认按钮
 - (void)showCustomNavigationSureButton {
-    [self showNomalNavigationRightButtonWithImage:@"complete-grey" action:@selector(moreBarAction)];
+    [self showNomalNavigationRightButtonWithImage:@"complete-grey" action:@selector(moreBarAction) frame:CGRectMake(0, 0, 30, 64)];
 }
 
-- (void)showNomalNavigationRightButtonWithImage:(NSString *)image action:(SEL)selector {
+- (void)showNomalNavigationRightButtonWithImage:(NSString *)image action:(SEL)selector frame:(CGRect)frame {
     //right barbutton view
     _navigationRightButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [_navigationRightButton setImage:[UIImage imageNamed:image] forState:UIControlStateNormal];
     [_navigationRightButton setImage:[UIImage imageNamed:image] forState:UIControlStateHighlighted];
-    _navigationRightButton.frame = CGRectMake(0, 0, 30, 64);
+    _navigationRightButton.frame = frame;
     [_navigationRightButton addTarget:self action:selector forControlEvents:UIControlEventTouchUpInside];
     UIBarButtonItem *btnNavRightItem = [[UIBarButtonItem alloc] initWithCustomView:_navigationRightButton];
     self.navigationItem.rightBarButtonItem = btnNavRightItem;

@@ -10,4 +10,6 @@
 
 @interface YTextField : UITextField
 
+- (void)registerChanged:(id)target action:(SEL)action;
+
 @end

@@ -10,12 +10,9 @@
 
 @implementation YTextField
 
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect {
-    // Drawing code
+- (void)registerChanged:(id)target action:(SEL)action
+{
+    [self addTarget:target action:action forControlEvents:UIControlEventEditingChanged];
 }
-*/
 
 @end
