@@ -8,15 +8,24 @@
 
 #import "FeedCellBottomView.h"
 #import "YUtils+Component.h"
+#import "YFaceImageView.h"
 
 #define KBOTTOMHEIGHT SCALE_NUM(25)                 //社团和feed列表中bottom的高度
-#define KBOTTOMHEIGHTH SCALE_NUM(34)                //其余的bottom的高度
 #define KSHAREWIDTH SCALE_NUM(25)                   //分享按钮点击区域的大小
 #define KCOMMENTWIDTH SCALE_NUM(15)                 //评论图标大小
 #define KRESPECTWIDTH SCALE_NUM(16)                 //敬酒图标大小
 #define KBUTTONTEXTMARGIN SCALE_NUM(2)              //图标和文字间距
 
-#define KRESPECTLABELMARGIN_BOTTOM SCALE_NUM(4)     //敬酒文字与下边间距
+#define KRESPECTLABELMARGIN_BOTTOM SCALE_NUM(0)     //敬酒文字与下边间距
+
+#define KHEADWIDTH SCALE_NUM(34)                    //头像宽度
+#define KHEADMARGIN SCALE_NUM(15)                   //头像间距
+
+#define KRESPECTDETAILHEIGHT SCALE_NUM(30)          //敬酒detail中整体高度
+@implementation FeedCellBottomModel
+
+
+@end
 
 @interface FeedCellBottomView()
 
@@ -25,6 +34,8 @@
 @property (nonatomic, strong, readwrite) UILabel *respectNum;                  //敬酒数
 @property (nonatomic, strong, readwrite) UIImageView *respectImg;              //敬酒按钮
 @property (nonatomic, strong, readwrite) UIView *personList;                   //敬酒人
+@property (nonatomic, strong, readwrite) FeedCellBottomModel *data;            //数据
+@property (nonatomic, assign)            int type;                             //类型
 @end
 
 @implementation FeedCellBottomView
@@ -32,6 +43,7 @@
 - (id)initWithType:(int)type {
     self = [super init];
     if (self) {
+        _type = type;
         if (type == FeedOrganizationType || type == FeedListType) {
             [self mas_makeConstraints:^(MASConstraintMaker *make) {
                make.height.mas_equalTo(KBOTTOMHEIGHT); 
@@ -87,12 +99,14 @@
             _respectImg.image = [UIImage imageNamed:@"cup"];
         } else {
             [self mas_makeConstraints:^(MASConstraintMaker *make) {
-                make.height.mas_equalTo(KBOTTOMHEIGHTH);
+                make.height.mas_equalTo(KHEADWIDTH);
             }];
             _respectImg = [[UIImageView alloc] init];
             [self addSubview:_respectImg];
             [_respectImg mas_makeConstraints:^(MASConstraintMaker *make) {
-                make.top.bottom.left.equalTo(self);
+                make.left.equalTo(self);
+                make.centerY.equalTo(self);
+                make.height.mas_equalTo(KRESPECTDETAILHEIGHT);
                 make.width.mas_equalTo(KRESPECTWIDTH);
             }];
             _respectImg.contentMode = UIViewContentModeTop;
@@ -105,7 +119,11 @@
                 make.bottom.equalTo(_respectImg).offset(-KRESPECTLABELMARGIN_BOTTOM);
             }];
             if (type == FeedDetailType) {
-                [self initPersonList];
+                _personList = [[UIView alloc] init];
+                [self addSubview:_personList];
+                [_personList mas_makeConstraints:^(MASConstraintMaker *make) {
+                    make.top.bottom.right.equalTo(self);
+                }];
             }
         }
         
@@ -114,15 +132,52 @@
 }
 
 - (void)initPersonList {
-    
+    [[_personList subviews] makeObjectsPerformSelector:@selector(removeFromSuperview)];
+    UIView *tmp = nil;
+    int max = (_data.people.count > 4) ? 4:(int)_data.people.count;
+    for (int i = 0; i < max; i++) {
+        YFaceImageView *face = [[YFaceImageView alloc] init];
+        [_personList addSubview:face];
+        [face mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.top.bottom.equalTo(self);
+            make.width.mas_equalTo(KHEADWIDTH);
+            if (tmp == nil) {
+                make.left.equalTo(_personList);
+            } else {
+                make.left.equalTo(tmp.mas_right).offset(KHEADMARGIN);
+            }
+        }];
+        NSDictionary *dic = _data.people[i];
+        [face setData:dic[@"uid"] imageUrl:dic[@"pic"]];
+        tmp = face;
+    }
+    if (_data.people.count > 4) {
+        UIImageView *open = [[UIImageView alloc] init];
+        open.backgroundColor = [UIColor redColor];
+        [_personList addSubview:open];
+        open.userInteractionEnabled = true;
+        [open mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.equalTo(tmp.mas_right).offset(KHEADMARGIN);
+            make.top.bottom.width.equalTo(tmp);
+        }];
+        [open addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(openDetail)]];
+    }
 }
 
 - (void)openShare {
     [[NSNotificationCenter defaultCenter] postNotificationName:kNotification_Push_FeedDetail object:@{@"id":@"233"}];
 }
-
-- (void)setData {
+- (void)openDetail {
     
 }
-
+- (void)setData:(FeedCellBottomModel *)data {
+    _data = data;
+    if (_type == FeedDetailType) {
+        [self initPersonList];
+    }
+    _respectNum.text = [NSString stringWithFormat:@"%d", _data.respectNum];
+    if (_type == FeedListType || _type == FeedOrganizationType) {
+        _commentNum.text = [NSString stringWithFormat:@"%d", _data.commentNum];
+    }
+}
 @end
