@@ -61,8 +61,6 @@
 		20E034051B846398002E4583 /* feed-find-someone-search@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 20E034011B846398002E4583 /* feed-find-someone-search@3x.png */; };
 		20E034091B8471E5002E4583 /* SearchFilterTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 20E034081B8471E5002E4583 /* SearchFilterTableViewCell.m */; };
 		20E0340E1B847F9F002E4583 /* SearchResultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20E0340D1B847F9F002E4583 /* SearchResultViewController.m */; };
-		20E034111B847FB5002E4583 /* SearchResultTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 20E034101B847FB5002E4583 /* SearchResultTableView.m */; };
-		20E034141B847FC0002E4583 /* SearchResultTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 20E034131B847FC0002E4583 /* SearchResultTableViewCell.m */; };
 		20E122131B705C2100F90BD3 /* XYTabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20E122121B705C2100F90BD3 /* XYTabBarViewController.m */; };
 		20E122211B705ED200F90BD3 /* FeedListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20E122201B705ED200F90BD3 /* FeedListViewController.m */; };
 		20E1222D1B708CDC00F90BD3 /* TagListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20E1222C1B708CDC00F90BD3 /* TagListViewController.m */; };
@@ -457,10 +455,6 @@
 		20E034081B8471E5002E4583 /* SearchFilterTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchFilterTableViewCell.m; sourceTree = "<group>"; };
 		20E0340C1B847F9F002E4583 /* SearchResultViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchResultViewController.h; sourceTree = "<group>"; };
 		20E0340D1B847F9F002E4583 /* SearchResultViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchResultViewController.m; sourceTree = "<group>"; };
-		20E0340F1B847FB5002E4583 /* SearchResultTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchResultTableView.h; sourceTree = "<group>"; };
-		20E034101B847FB5002E4583 /* SearchResultTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchResultTableView.m; sourceTree = "<group>"; };
-		20E034121B847FC0002E4583 /* SearchResultTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchResultTableViewCell.h; sourceTree = "<group>"; };
-		20E034131B847FC0002E4583 /* SearchResultTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchResultTableViewCell.m; sourceTree = "<group>"; };
 		20E122111B705C2100F90BD3 /* XYTabBarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYTabBarViewController.h; sourceTree = "<group>"; };
 		20E122121B705C2100F90BD3 /* XYTabBarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYTabBarViewController.m; sourceTree = "<group>"; };
 		20E1221F1B705ED200F90BD3 /* FeedListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedListViewController.h; sourceTree = "<group>"; };
@@ -1058,10 +1052,6 @@
 				20E034081B8471E5002E4583 /* SearchFilterTableViewCell.m */,
 				20E0340C1B847F9F002E4583 /* SearchResultViewController.h */,
 				20E0340D1B847F9F002E4583 /* SearchResultViewController.m */,
-				20E0340F1B847FB5002E4583 /* SearchResultTableView.h */,
-				20E034101B847FB5002E4583 /* SearchResultTableView.m */,
-				20E034121B847FC0002E4583 /* SearchResultTableViewCell.h */,
-				20E034131B847FC0002E4583 /* SearchResultTableViewCell.m */,
 			);
 			path = SearchPerson;
 			sourceTree = "<group>";
@@ -2613,7 +2603,6 @@
 				3331223D1B806EDB00D3D032 /* MessageModel.m in Sources */,
 				200E397C1B4E818B000B587B /* main.m in Sources */,
 				333122351B806EDB00D3D032 /* EMChatBaseBubbleView.m in Sources */,
-				20E034141B847FC0002E4583 /* SearchResultTableViewCell.m in Sources */,
 				6592DCDE1B806A9B004CD118 /* MessageTableViewCell.m in Sources */,
 				20E1222D1B708CDC00F90BD3 /* TagListViewController.m in Sources */,
 				333122681B806EDB00D3D032 /* PSTCollectionViewController.m in Sources */,
@@ -2643,7 +2632,6 @@
 				3331222C1B806EDB00D3D032 /* ChatViewController.m in Sources */,
 				333122661B806EDB00D3D032 /* PSTCollectionView.m in Sources */,
 				333122491B806EDB00D3D032 /* EmojiEmoticons.m in Sources */,
-				20E034111B847FB5002E4583 /* SearchResultTableView.m in Sources */,
 				339549861B81BDD500F9ECB1 /* GroupInfoCollectionViewCell.m in Sources */,
 				333122601B806EDB00D3D032 /* UIImage+EMMultiFormat.m in Sources */,
 				6592DCDF1B806A9B004CD118 /* XYMessageAndContactsViewController.m in Sources */,

@@ -8,6 +8,7 @@
 
 #import "XYFriendApplyViewController.h"
 #import "FriendApplyTableView.h"
+#import "YCommonActionSheet.h"
 
 @interface XYFriendApplyViewController ()
 
@@ -27,6 +28,8 @@
 -(void)setUpUI
 {
     self.title = @"好友申请";
+    [self showCustomNavigationBackButton];
+    [self showCustomNavigationMoreButton];
     
     _friendApplyTableView = [[FriendApplyTableView alloc] init];
     _friendApplyTableView.backgroundColor = [UIColor clearColor];
@@ -36,6 +39,17 @@
         make.top.left.right.bottom.mas_equalTo(0);
     }];
     
+}
+
+- (void)onNavigationRightButtonClicked
+{
+    YActionSheetItem *item1 = [YActionSheetItem itemWithTitle:@"清空好友列表"
+                                                         type:YCommonActionSheetItemTypeCenterCommon
+                                                        block:^(NSInteger checkNum) {
+                                                            NSLog(@"清空好友列表");
+                                                        }];
+    YCommonActionSheet *sheet = [[YCommonActionSheet alloc] initWithType:@[item1] title:nil];
+    [sheet show];
 }
 
 - (void)didReceiveMemoryWarning {
