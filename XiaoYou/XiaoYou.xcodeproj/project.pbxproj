@@ -53,6 +53,7 @@
 		20E033F01B842727002E4583 /* libSocialWechat.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 20E033E01B842727002E4583 /* libSocialWechat.a */; };
 		20E033F11B842727002E4583 /* libWeChatSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 20E033E11B842727002E4583 /* libWeChatSDK.a */; };
 		20E033F31B842759002E4583 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20E033F21B842759002E4583 /* SystemConfiguration.framework */; };
+		20E033F61B8427AF002E4583 /* YCommonShare.m in Sources */ = {isa = PBXBuildFile; fileRef = 20E033F51B8427AF002E4583 /* YCommonShare.m */; };
 		20E122131B705C2100F90BD3 /* XYTabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20E122121B705C2100F90BD3 /* XYTabBarViewController.m */; };
 		20E122211B705ED200F90BD3 /* FeedListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20E122201B705ED200F90BD3 /* FeedListViewController.m */; };
 		20E1222D1B708CDC00F90BD3 /* TagListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20E1222C1B708CDC00F90BD3 /* TagListViewController.m */; };
@@ -423,6 +424,8 @@
 		20E033E31B842727002E4583 /* WXApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApi.h; sourceTree = "<group>"; };
 		20E033E41B842727002E4583 /* WXApiObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApiObject.h; sourceTree = "<group>"; };
 		20E033F21B842759002E4583 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		20E033F41B8427AF002E4583 /* YCommonShare.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YCommonShare.h; sourceTree = "<group>"; };
+		20E033F51B8427AF002E4583 /* YCommonShare.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YCommonShare.m; sourceTree = "<group>"; };
 		20E122111B705C2100F90BD3 /* XYTabBarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYTabBarViewController.h; sourceTree = "<group>"; };
 		20E122121B705C2100F90BD3 /* XYTabBarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYTabBarViewController.m; sourceTree = "<group>"; };
 		20E1221F1B705ED200F90BD3 /* FeedListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedListViewController.h; sourceTree = "<group>"; };
@@ -1073,6 +1076,8 @@
 				20DD4B341B734781007C352C /* CommonSwitchView.m */,
 				656234751B837FDC00651C88 /* YFaceImageView.h */,
 				656234761B837FDC00651C88 /* YFaceImageView.m */,
+				20E033F41B8427AF002E4583 /* YCommonShare.h */,
+				20E033F51B8427AF002E4583 /* YCommonShare.m */,
 			);
 			path = CommonView;
 			sourceTree = "<group>";
@@ -2488,6 +2493,7 @@
 				333122381B806EDB00D3D032 /* EMChatTextBubbleView.m in Sources */,
 				333122D91B806F7E00D3D032 /* RobotManager.m in Sources */,
 				333122481B806EDB00D3D032 /* Emoji.m in Sources */,
+				20E033F61B8427AF002E4583 /* YCommonShare.m in Sources */,
 				3331224D1B806EDB00D3D032 /* MWGridCell.m in Sources */,
 				333122621B806EDB00D3D032 /* UIImageView+EMHighlightedWebCache.m in Sources */,
 				207F808A1B7099C2005E8F6A /* AppDelegate+Manager.m in Sources */,
