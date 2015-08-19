@@ -29,9 +29,7 @@
  *  按钮、输入框、toolbarView
  */
 @property (strong, nonatomic) UIView *toolbarView;
-@property (strong, nonatomic) UIButton *styleChangeButton;
-@property (strong, nonatomic) UIButton *moreButton;
-@property (strong, nonatomic) UIButton *faceButton;
+
 
 /**
  *  底部扩展页面
