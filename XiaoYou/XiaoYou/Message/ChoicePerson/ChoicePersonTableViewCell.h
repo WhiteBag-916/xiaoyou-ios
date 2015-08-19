@@ -8,6 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
+extern NSString *const kChoicePersonTableViewCell;
+
 @interface ChoicePersonTableViewCell : UITableViewCell
+
+@property(nonatomic,strong)UIView * backView;
+
+-(void)setCellInfo:(NSDictionary *) dic;
 
 @end
