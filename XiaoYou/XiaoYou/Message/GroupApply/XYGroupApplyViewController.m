@@ -9,6 +9,7 @@
 #import "XYGroupApplyViewController.h"
 #import "GroupApplyTableView.h"
 #import "YCommonActionSheet.h"
+#import "XYChoicePersonViewController.h"
 
 @interface XYGroupApplyViewController ()
 
@@ -50,6 +51,10 @@
                                                          type:YCommonActionSheetItemTypeCenterCommon
                                                         block:^(NSInteger checkNum) {
                                                             NSLog(@"集体发信");
+                                                            
+                                                            XYChoicePersonViewController * choicePersonViewController = [[XYChoicePersonViewController alloc] init];
+                                                            [self.navigationController pushViewController:choicePersonViewController animated:YES needHiddenBottomBar:YES];
+                                                            
                                                         }];
     YCommonActionSheet *sheet = [[YCommonActionSheet alloc] initWithType:@[item1,item2] title:nil];
     [sheet show];
