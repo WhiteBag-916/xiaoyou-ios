@@ -113,7 +113,7 @@
 - (void)resetRightButton
 {
     //判断
-    if (_textField.text.length > 0)
+    if (_textField.text.length > 0 || _chooseFiterArray.count > 0)
     {
         self.navigationRightButton.userInteractionEnabled = YES;
         [self.navigationRightButton setImage:[UIImage imageNamed:@"feed-find-someone-search"] forState:UIControlStateNormal];
