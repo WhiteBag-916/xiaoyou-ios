@@ -48,7 +48,6 @@
 {
     
     FriendApplyTableViewCell * cell = [self dequeueReusableCellWithIdentifier:kFriendApplyTableViewCell forIndexPath:indexPath];
-    
     [cell setCellInfo:nil];
     
     return cell;

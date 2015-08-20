@@ -46,7 +46,7 @@ NSString *const kContactsTableViewCell = @"ContactsTableViewCell";
         _headImageView = [[UIImageView alloc] init];
         _headImageView.layer.cornerRadius = kHeadCornerRadius;
         _headImageView.clipsToBounds = YES;
-        _headImageView.backgroundColor = [UIColor orangeColor];
+        _headImageView.backgroundColor = [UIColor clearColor];
         [self.contentView addSubview:_headImageView];
         [_headImageView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.top.left.mas_equalTo(kPaddingDistance);
@@ -55,7 +55,7 @@ NSString *const kContactsTableViewCell = @"ContactsTableViewCell";
         //班
         _defaultLabel = [[UILabel alloc] init];
         _defaultLabel.textAlignment = NSTextAlignmentCenter;
-        _defaultLabel.textColor = [UIColor whiteColor];
+        _defaultLabel.textColor = [UIColor clearColor];
         [self.contentView addSubview:_defaultLabel];
         [_defaultLabel mas_makeConstraints:^(MASConstraintMaker *make) {
             make.top.mas_equalTo(_headImageView.mas_top).offset(kClassLabelDistance);
@@ -64,7 +64,7 @@ NSString *const kContactsTableViewCell = @"ContactsTableViewCell";
         }];
         //姓名
         _nameLabel = [[UILabel alloc] init];
-        _nameLabel.backgroundColor = [UIColor magentaColor];
+        _nameLabel.backgroundColor = [UIColor clearColor];
         [self.contentView addSubview:_nameLabel];
         [_nameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
             make.top.mas_equalTo(kPaddingDistance);
@@ -84,7 +84,7 @@ NSString *const kContactsTableViewCell = @"ContactsTableViewCell";
         }];
         //标签
         _flagLabel = [[UILabel alloc] init];
-        _flagLabel.backgroundColor = [UIColor yellowColor];
+        _flagLabel.backgroundColor = [UIColor clearColor];
         [self.contentView addSubview:_flagLabel];
         [_flagLabel mas_makeConstraints:^(MASConstraintMaker *make) {
             make.bottom.mas_equalTo(-kPaddingDistance);
@@ -113,7 +113,8 @@ NSString *const kContactsTableViewCell = @"ContactsTableViewCell";
     NSString * flagString = [dic[@"flag"] stringByReplacingOccurrencesOfString:@"," withString:@" "];
     _flagLabel.text = flagString;
     self.flagImageView.image = [UIImage imageNamed:@"tag-green"];
-    [self.headImageView sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",api_icon_base_url,dic[@"icon"]]] placeholderImage:[UIImage imageNamed:@"icon_default_mine"]];
+    self.headImageView.image = [UIImage imageNamed:@"default_head"];
+//    [self.headImageView sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",api_icon_base_url,dic[@"icon"]]] placeholderImage:[UIImage imageNamed:@"icon_default_mine"]];
     
     [_connectTag updateTag:@[@"班",@"社",@"系",@"团",@"啊"]];
 }

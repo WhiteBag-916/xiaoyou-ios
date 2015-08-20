@@ -7,7 +7,11 @@
 //
 
 #import "YViewController.h"
+#import "DXMessageToolBar.h"
+
 
 @interface XYSendMessageViewController : YViewController
+
+@property (strong, nonatomic) DXMessageToolBar *chatToolBar;
 
 @end

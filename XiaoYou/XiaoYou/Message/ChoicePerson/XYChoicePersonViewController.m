@@ -8,6 +8,7 @@
 
 #import "XYChoicePersonViewController.h"
 #import "ChoicePersonTableView.h"
+#import "XYSendMessageViewController.h"
 
 #define kButtonItemHeightAndWidth           44
 #define kCancleButtonItemWidth              55
@@ -65,6 +66,8 @@
 -(void)finishChoice
 {
     NSLog(@"finish");
+    XYSendMessageViewController * sendMessageViewController = [[XYSendMessageViewController alloc] init];
+    [self.navigationController pushViewController:sendMessageViewController animated:YES];
 }
 
 -(void)cancelChoice

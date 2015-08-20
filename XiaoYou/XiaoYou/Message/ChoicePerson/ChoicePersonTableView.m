@@ -11,6 +11,8 @@
 
 @interface ChoicePersonTableView ()<UITableViewDataSource,UITableViewDelegate>
 
+@property(nonatomic,strong)NSMutableArray * dataSouceArr;
+
 @end
 
 @implementation ChoicePersonTableView
@@ -23,6 +25,17 @@
         self.delegate = self;
         
         [self registerClass:[ChoicePersonTableViewCell class] forCellReuseIdentifier:kChoicePersonTableViewCell];
+        
+        _dataSouceArr = [@[[@{@"name":@"张三",@"isSelected":@NO} mutableCopy],
+                           [@{@"name":@"张三",@"isSelected":@NO} mutableCopy],
+                           [@{@"name":@"张三",@"isSelected":@NO} mutableCopy],
+                           [@{@"name":@"张三",@"isSelected":@NO} mutableCopy],
+                           [@{@"name":@"张三",@"isSelected":@NO} mutableCopy],
+                           [@{@"name":@"张三",@"isSelected":@NO} mutableCopy],
+                           [@{@"name":@"张三",@"isSelected":@NO} mutableCopy],
+                           [@{@"name":@"张三",@"isSelected":@NO} mutableCopy],
+                           [@{@"name":@"张三",@"isSelected":@NO} mutableCopy]
+                           ] mutableCopy];
     }
     return self;
 }
@@ -48,7 +61,7 @@
     
     ChoicePersonTableViewCell * cell = [self dequeueReusableCellWithIdentifier:kChoicePersonTableViewCell forIndexPath:indexPath];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    [cell setCellInfo:nil];
+    [cell setCellInfo:_dataSouceArr[indexPath.row]];
     
     return cell;
     
@@ -62,9 +75,16 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-//    [self reloadData];
-    ChoicePersonTableViewCell * cell = (ChoicePersonTableViewCell *)[self cellForRowAtIndexPath:indexPath];
-    cell.backgroundColor = [UIColor magentaColor];
+    if ([_dataSouceArr[indexPath.row][@"isSelected"] boolValue] == YES)
+    {
+        [_dataSouceArr[indexPath.row] setObject:@NO forKey:@"isSelected"];
+    }
+    else
+    {
+        [_dataSouceArr[indexPath.row] setObject:@YES forKey:@"isSelected"];
+    }
+    
+    [self reloadData];
 }
 
 @end

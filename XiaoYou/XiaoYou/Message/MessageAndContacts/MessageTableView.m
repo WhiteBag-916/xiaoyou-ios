@@ -12,7 +12,6 @@
 #import "ChatViewController.h"
 #import "Masonry.h"
 #import "YColor+Ext.h"
-#import "XYGroupInfoDetailViewController.h"
 #import "XYFriendApplyViewController.h"
 #import "XYGroupApplyViewController.h"
 
@@ -138,9 +137,7 @@
 
 -(void)tapGestureRecognizerAction
 {
-    self.myController.hidesBottomBarWhenPushed = YES;
-    XYGroupInfoDetailViewController * groupVC = [[XYGroupInfoDetailViewController alloc] init];
-    [self.myController.navigationController pushViewController:groupVC animated:YES];
+    
 }
 
 #pragma mark - UITableViewDataSource和UITableViewDelegate
@@ -157,25 +154,21 @@
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    MessageTableViewCell *cell = [self dequeueReusableCellWithIdentifier:kMessageTableViewCell];
+//    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     if (indexPath.row == 3)
     {
-        MessageTableViewCell *cell = [self dequeueReusableCellWithIdentifier:kMessageTableViewCell];
-        
         [cell setCellInfo:@{@"type":@"1"}];
         
         return cell;
     }
     if (indexPath.row == 5) {
-        MessageTableViewCell *cell = [self dequeueReusableCellWithIdentifier:kMessageTableViewCell];
-        
         [cell setCellInfo:@{@"type":@"2"}];
         
         return cell;
     }
     else
     {
-        MessageTableViewCell *cell = [self dequeueReusableCellWithIdentifier:kMessageTableViewCell];
-        
         [cell setCellInfo:nil];
         
         return cell;

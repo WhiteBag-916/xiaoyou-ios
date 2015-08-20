@@ -50,7 +50,7 @@ NSString *const kMessageTableViewCell = @"MessageTableViewCellId";
             make.top.left.mas_equalTo(kPaddingDistance);
             make.width.height.mas_equalTo(kHeadWidthAndHeight);
         }];
-        //班
+        //defaultLabel
         _defaultLabel = [[UILabel alloc] init];
         _defaultLabel.textAlignment = NSTextAlignmentCenter;
         _defaultLabel.textColor = [UIColor whiteColor];
@@ -124,7 +124,8 @@ NSString *const kMessageTableViewCell = @"MessageTableViewCellId";
         self.timeLabel.text = @"10:29";
         self.messageLabel.text = @"动次打次";
         self.headImageView.image = nil;
-        self.headImageView.backgroundColor = [UIColor hexChangeFloat:@"258f74"];
+//        self.headImageView.backgroundColor = [UIColor hexChangeFloat:@"258f74"];
+        self.headImageView.image = [UIImage imageNamed:@"new-remind-number@2x"];
         self.defaultLabel.text = @"社";
     }
     else

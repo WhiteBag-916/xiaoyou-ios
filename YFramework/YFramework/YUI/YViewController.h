@@ -32,8 +32,6 @@
 
 - (void)viewWillAppear:(BOOL)animated navigationBarHidden:(BOOL)navigationBarHidden tabBarHidden:(BOOL)tabBarHidden;
 
-- (void)popViewController;
-
 //导航栏左侧显示返回按钮
 - (void)showCustomNavigationBackButton;
 
