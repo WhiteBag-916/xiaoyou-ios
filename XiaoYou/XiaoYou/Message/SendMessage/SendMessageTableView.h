@@ -8,6 +8,14 @@
 
 #import "YTableView.h"
 
+@protocol SendMessageTableViewDelegate <NSObject>
+
+-(void)didSelectCell:(NSString *) text;
+
+@end
+
 @interface SendMessageTableView : YTableView
+
+@property(nonatomic,weak)id<SendMessageTableViewDelegate>myDelegate;
 
 @end

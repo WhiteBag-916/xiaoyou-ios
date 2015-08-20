@@ -50,14 +50,13 @@ NSString *const kSendMessageTableViewCell = @"SendMessageTableViewCellId";
     return self;
 }
 
--(void)setCellInfo:(NSString *) str
+-(void)setCellInfo:(NSString *) text
 {
-    _infoLabel.text = str;
+    _infoLabel.text = text;
+    
 }
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
-
-    // Configure the view for the selected state
 }
 
 @end

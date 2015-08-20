@@ -23,6 +23,7 @@
     if (self) {
         self.dataSource = self;
         self.delegate = self;
+
         _dataSouceArr = @[@"自我介绍一下呗",@"请发送简历至",@"面试通知",@"你的兴趣爱好",@"你喜欢男生还是女生",@"你是单身吗",@"你可以向我问个问题"];
         self.separatorStyle = UITableViewCellSelectionStyleNone;
         [self registerClass:[SendMessageTableViewCell class] forCellReuseIdentifier:kSendMessageTableViewCell];
@@ -43,14 +44,14 @@
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 7;
+    return _dataSouceArr.count;
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
     SendMessageTableViewCell * cell = [self dequeueReusableCellWithIdentifier:kSendMessageTableViewCell forIndexPath:indexPath];
-    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    cell.selectionStyle = UITableViewCellSelectionStyleDefault;
     [cell setCellInfo:_dataSouceArr[indexPath.row]];
     
     return cell;
@@ -65,10 +66,11 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    SendMessageTableViewCell * cell = (SendMessageTableViewCell *)[self cellForRowAtIndexPath:indexPath];
-    cell.infoLabel.backgroundColor = [UIColor hexChangeFloat:@"465a65"];
-    cell.infoLabel.textColor = [UIColor whiteColor];
+    
+    if ([self.myDelegate respondsToSelector:@selector(didSelectCell:)])
+    {
+        [self.myDelegate didSelectCell:_dataSouceArr[indexPath.row]];
+    }
 }
-
 
 @end

@@ -8,7 +8,6 @@
 
 #import "XYSendMessageViewController.h"
 #import "SendMessageTableView.h"
-#import "DXMessageToolBar.h"
 
 #define KBOTTOMHEIGHT [DXMessageToolBar defaultHeight]
 #define kBackViewHeight                 118
@@ -16,14 +15,12 @@
 #define kLabelHeight                    20
 #define kTableViewHeight                290
 
-@interface XYSendMessageViewController ()<DXMessageToolBarDelegate>
+@interface XYSendMessageViewController ()<DXMessageToolBarDelegate,SendMessageTableViewDelegate>
 
 @property(nonatomic,strong)SendMessageTableView * sendMessageTableView;
 
 @property(nonatomic,strong) UILabel * sendPersonLabel;
 @property(nonatomic,strong) UILabel * remindLabel;
-
-@property (strong, nonatomic) DXMessageToolBar *chatToolBar;
 
 
 @end
@@ -41,6 +38,7 @@
 -(void)setUpUI
 {
     self.title = @"发信";
+    [self showCustomNavigationBackButton];
     
     self.view.backgroundColor = [UIColor whiteColor];
     
@@ -78,6 +76,7 @@
     //模板tableView
     _sendMessageTableView = [[SendMessageTableView alloc] init];
     _sendMessageTableView.backgroundColor = [UIColor whiteColor];
+    _sendMessageTableView.myDelegate = self;
     [self.view addSubview:_sendMessageTableView];
     [_sendMessageTableView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.mas_equalTo(backView.mas_bottom);
@@ -101,6 +100,11 @@
 }
 
 
+-(void)didSelectCell:(NSString *)text
+{
+    _chatToolBar.inputTextView.text = [_chatToolBar.inputTextView.text stringByAppendingString:text];
+}
+
 -(void)keyBoardHidden
 {
     [self.chatToolBar endEditing:YES];
@@ -110,15 +114,5 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

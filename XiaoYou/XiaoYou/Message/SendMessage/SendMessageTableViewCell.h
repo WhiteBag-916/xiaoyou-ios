@@ -14,6 +14,6 @@ extern NSString *const kSendMessageTableViewCell;
 
 @property(nonatomic,strong)UILabel * infoLabel;
 
--(void)setCellInfo:(NSString *) str;
+-(void)setCellInfo:(NSString *) text;
 
 @end
