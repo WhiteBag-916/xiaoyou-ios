@@ -303,6 +303,8 @@
 		3335C36A1B8178E8007DEFD4 /* chatFire_audioPlaying3@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3335C33A1B8178E8007DEFD4 /* chatFire_audioPlaying3@2x.png */; };
 		33380D941B8577E8008B51EB /* SendMessageTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 33380D931B8577E8008B51EB /* SendMessageTableView.m */; };
 		33380D971B857826008B51EB /* SendMessageTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 33380D961B857826008B51EB /* SendMessageTableViewCell.m */; };
+		33380D9A1B85D57C008B51EB /* chat_remindnot@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 33380D981B85D57C008B51EB /* chat_remindnot@2x.png */; };
+		33380D9B1B85D57C008B51EB /* chat_remindnot@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 33380D991B85D57C008B51EB /* chat_remindnot@3x.png */; };
 		334670641B841F2800A8628A /* new-remind-number@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 334670621B841F2800A8628A /* new-remind-number@2x.png */; };
 		334670651B841F2800A8628A /* new-remind-number@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 334670631B841F2800A8628A /* new-remind-number@3x.png */; };
 		334670681B84228000A8628A /* contacts_bottom@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 334670661B84228000A8628A /* contacts_bottom@3x.png */; };
@@ -826,6 +828,8 @@
 		33380D931B8577E8008B51EB /* SendMessageTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SendMessageTableView.m; sourceTree = "<group>"; };
 		33380D951B857826008B51EB /* SendMessageTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SendMessageTableViewCell.h; sourceTree = "<group>"; };
 		33380D961B857826008B51EB /* SendMessageTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SendMessageTableViewCell.m; sourceTree = "<group>"; };
+		33380D981B85D57C008B51EB /* chat_remindnot@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "chat_remindnot@2x.png"; sourceTree = "<group>"; };
+		33380D991B85D57C008B51EB /* chat_remindnot@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "chat_remindnot@3x.png"; sourceTree = "<group>"; };
 		334670621B841F2800A8628A /* new-remind-number@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "new-remind-number@2x.png"; sourceTree = "<group>"; };
 		334670631B841F2800A8628A /* new-remind-number@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "new-remind-number@3x.png"; sourceTree = "<group>"; };
 		334670661B84228000A8628A /* contacts_bottom@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "contacts_bottom@3x.png"; sourceTree = "<group>"; };
@@ -1096,6 +1100,7 @@
 				6592DCB61B806A9B004CD118 /* FriendApply */,
 				6592DCBD1B806A9B004CD118 /* GroupApply */,
 				334670831B84AA3700A8628A /* ChoicePerson */,
+				33380D9C1B85DA38008B51EB /* SystemMessage */,
 				6592DCCF1B806A9B004CD118 /* SendMessage */,
 			);
 			path = Message;
@@ -2030,6 +2035,8 @@
 		3334AC4A1B83319500FDDCCB /* contacts */ = {
 			isa = PBXGroup;
 			children = (
+				33380D981B85D57C008B51EB /* chat_remindnot@2x.png */,
+				33380D991B85D57C008B51EB /* chat_remindnot@3x.png */,
 				20E033FE1B846398002E4583 /* feed-find-someone-search-grey@2x.png */,
 				20E033FF1B846398002E4583 /* feed-find-someone-search-grey@3x.png */,
 				20E034001B846398002E4583 /* feed-find-someone-search@2x.png */,
@@ -2075,6 +2082,13 @@
 				3334AC1C1B82D7C400FDDCCB /* VoiceSearchFeedback006@2x.png */,
 			);
 			path = audio;
+			sourceTree = "<group>";
+		};
+		33380D9C1B85DA38008B51EB /* SystemMessage */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = SystemMessage;
 			sourceTree = "<group>";
 		};
 		334670611B841F1E00A8628A /* message */ = {
@@ -2334,6 +2348,7 @@
 				333122921B806EDC00D3D032 /* imageDownloadFail@2x.png in Resources */,
 				20E18DD71B808E42005B75EE /* society@3x.png in Resources */,
 				20E18DD41B808E42005B75EE /* search@2x.png in Resources */,
+				33380D9A1B85D57C008B51EB /* chat_remindnot@2x.png in Resources */,
 				333122911B806EDC00D3D032 /* faceDelete@2x.png in Resources */,
 				20E033E71B842727002E4583 /* UMSCommentDetailController.xib in Resources */,
 				20E033ED1B842727002E4583 /* UMSnsAccountViewController.xib in Resources */,
@@ -2464,6 +2479,7 @@
 				20E18DCA1B808E42005B75EE /* menu@2x.png in Resources */,
 				20E9424D1B833D10009C2DC6 /* complete-grey@3x.png in Resources */,
 				20E033EA1B842727002E4583 /* UMShareEditViewController.xib in Resources */,
+				33380D9B1B85D57C008B51EB /* chat_remindnot@3x.png in Resources */,
 				3334AC281B82D7C400FDDCCB /* VoiceSearchFeedback005@2x.png in Resources */,
 				3334ABE41B82C50200FDDCCB /* chatBar_face@2x.png in Resources */,
 				334670681B84228000A8628A /* contacts_bottom@3x.png in Resources */,

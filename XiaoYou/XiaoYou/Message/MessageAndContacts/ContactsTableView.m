@@ -25,6 +25,9 @@
 #define kLabelHeightDistacnce          14
 #define kClassLabelDistance            5
 #define kClassLabelWidthAndHeight      30
+#define kRemindImageViewWidth          13
+#define kRemindImageViewHeight         15
+#define kRemindImageViewToRight        25
 
 @interface ContactsTableView ()<UITableViewDataSource,UITableViewDelegate>
 
@@ -32,6 +35,7 @@
 @property (strong, nonatomic)  UILabel *nameLabel;
 @property (strong, nonatomic)  UILabel *flagLabel;
 @property (nonatomic,strong)  UILabel * defaultLabel;
+@property (nonatomic,strong) UIImageView * remindImageView;
 
 //原始数据源
 @property (nonatomic,strong) NSMutableArray *originalContactsDataSource;
@@ -104,6 +108,16 @@
         make.top.mas_equalTo(_headImageView.mas_top).offset(kClassLabelDistance);
         make.left.mas_equalTo(_headImageView.mas_left).offset(kClassLabelDistance);
         make.width.height.mas_equalTo(kClassLabelWidthAndHeight);
+    }];
+    //提醒
+    _remindImageView = [[UIImageView alloc] init];
+    _remindImageView.image = [UIImage imageNamed:@"chat_remindnot"];
+    [backView addSubview:_remindImageView];
+    [_remindImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.bottom.mas_equalTo(-kPaddingDistance);
+        make.right.mas_equalTo(-kRemindImageViewToRight);
+        make.height.mas_equalTo(kRemindImageViewHeight);
+        make.height.mas_equalTo(kRemindImageViewWidth);
     }];
     //姓名
     _nameLabel = [[UILabel alloc] init];

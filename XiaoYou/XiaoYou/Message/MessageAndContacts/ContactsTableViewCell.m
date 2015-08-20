@@ -22,6 +22,8 @@
 #define kLabelHeightDistacnce          14
 #define kClassLabelDistance            5
 #define kClassLabelWidthAndHeight      30
+#define kRemindImageViewWidth          13
+#define kRemindImageViewHeight         15
 
 NSString *const kContactsTableViewCell = @"ContactsTableViewCell";
 @interface ContactsTableViewCell ()
@@ -32,6 +34,7 @@ NSString *const kContactsTableViewCell = @"ContactsTableViewCell";
 @property (strong, nonatomic)  UILabel *flagLabel;
 @property (strong, nonatomic)  ConnectTag * connectTag;
 @property (nonatomic,strong)  UILabel * defaultLabel;
+@property (nonatomic,strong) UIImageView * remindImageView;
 
 
 @end
@@ -93,6 +96,16 @@ NSString *const kContactsTableViewCell = @"ContactsTableViewCell";
             make.left.equalTo(_flagImageView.mas_right).offset(kPaddingDistance);
             make.right.mas_equalTo(-kPaddingDistance);
             make.height.mas_equalTo(kLabelHeightDistacnce);
+        }];
+        //提醒
+        _remindImageView = [[UIImageView alloc] init];
+        _remindImageView.image = [UIImage imageNamed:@"chat_remindnot"];
+        [self.contentView addSubview:_remindImageView];
+        [_remindImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.bottom.mas_equalTo(-kPaddingDistance);
+            make.right.mas_equalTo(-kPaddingDistance);
+            make.height.mas_equalTo(kRemindImageViewHeight);
+            make.height.mas_equalTo(kRemindImageViewWidth);
         }];
         
         _connectTag = [[ConnectTag alloc] init];
