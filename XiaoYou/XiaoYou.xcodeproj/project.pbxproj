@@ -301,6 +301,8 @@
 		3335C3681B8178E8007DEFD4 /* chatFire_audioPlaying2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3335C3381B8178E8007DEFD4 /* chatFire_audioPlaying2@2x.png */; };
 		3335C3691B8178E8007DEFD4 /* chatFire_audioPlaying3.png in Resources */ = {isa = PBXBuildFile; fileRef = 3335C3391B8178E8007DEFD4 /* chatFire_audioPlaying3.png */; };
 		3335C36A1B8178E8007DEFD4 /* chatFire_audioPlaying3@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3335C33A1B8178E8007DEFD4 /* chatFire_audioPlaying3@2x.png */; };
+		33380D941B8577E8008B51EB /* SendMessageTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 33380D931B8577E8008B51EB /* SendMessageTableView.m */; };
+		33380D971B857826008B51EB /* SendMessageTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 33380D961B857826008B51EB /* SendMessageTableViewCell.m */; };
 		334670641B841F2800A8628A /* new-remind-number@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 334670621B841F2800A8628A /* new-remind-number@2x.png */; };
 		334670651B841F2800A8628A /* new-remind-number@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 334670631B841F2800A8628A /* new-remind-number@3x.png */; };
 		334670681B84228000A8628A /* contacts_bottom@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 334670661B84228000A8628A /* contacts_bottom@3x.png */; };
@@ -820,6 +822,10 @@
 		3335C3991B81B010007DEFD4 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		3335C39B1B81B01B007DEFD4 /* libiconv.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libiconv.dylib; path = usr/lib/libiconv.dylib; sourceTree = SDKROOT; };
 		3335C39E1B81B030007DEFD4 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
+		33380D921B8577E8008B51EB /* SendMessageTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SendMessageTableView.h; sourceTree = "<group>"; };
+		33380D931B8577E8008B51EB /* SendMessageTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SendMessageTableView.m; sourceTree = "<group>"; };
+		33380D951B857826008B51EB /* SendMessageTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SendMessageTableViewCell.h; sourceTree = "<group>"; };
+		33380D961B857826008B51EB /* SendMessageTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SendMessageTableViewCell.m; sourceTree = "<group>"; };
 		334670621B841F2800A8628A /* new-remind-number@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "new-remind-number@2x.png"; sourceTree = "<group>"; };
 		334670631B841F2800A8628A /* new-remind-number@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "new-remind-number@3x.png"; sourceTree = "<group>"; };
 		334670661B84228000A8628A /* contacts_bottom@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "contacts_bottom@3x.png"; sourceTree = "<group>"; };
@@ -2085,12 +2091,12 @@
 		334670831B84AA3700A8628A /* ChoicePerson */ = {
 			isa = PBXGroup;
 			children = (
+				334670881B84AA3700A8628A /* XYChoicePersonViewController.h */,
+				334670891B84AA3700A8628A /* XYChoicePersonViewController.m */,
 				334670841B84AA3700A8628A /* ChoicePersonTableView.h */,
 				334670851B84AA3700A8628A /* ChoicePersonTableView.m */,
 				334670861B84AA3700A8628A /* ChoicePersonTableViewCell.h */,
 				334670871B84AA3700A8628A /* ChoicePersonTableViewCell.m */,
-				334670881B84AA3700A8628A /* XYChoicePersonViewController.h */,
-				334670891B84AA3700A8628A /* XYChoicePersonViewController.m */,
 			);
 			path = ChoicePerson;
 			sourceTree = "<group>";
@@ -2194,6 +2200,10 @@
 			children = (
 				6592DCD01B806A9B004CD118 /* XYSendMessageViewController.h */,
 				6592DCD11B806A9B004CD118 /* XYSendMessageViewController.m */,
+				33380D921B8577E8008B51EB /* SendMessageTableView.h */,
+				33380D931B8577E8008B51EB /* SendMessageTableView.m */,
+				33380D951B857826008B51EB /* SendMessageTableViewCell.h */,
+				33380D961B857826008B51EB /* SendMessageTableViewCell.m */,
 			);
 			path = SendMessage;
 			sourceTree = "<group>";
@@ -2593,12 +2603,14 @@
 				65A846FF1B81C9C300933815 /* FeedCellTopView.m in Sources */,
 				20E9423D1B833D10009C2DC6 /* FeedContactTableViewCell.m in Sources */,
 				653CB2EF1B806BFD006ECBB2 /* pinyin.c in Sources */,
+				33380D941B8577E8008B51EB /* SendMessageTableView.m in Sources */,
 				333122471B806EDB00D3D032 /* EMAlertView.m in Sources */,
 				333122431B806EDB00D3D032 /* EMCDDeviceManager+Microphone.m in Sources */,
 				333122391B806EDB00D3D032 /* EMChatVideoBubbleView.m in Sources */,
 				333122711B806EDB00D3D032 /* PSTGridLayoutSection.m in Sources */,
 				6518A2481B80429300AEB79D /* TagListTableView.m in Sources */,
 				656234771B837FDC00651C88 /* YFaceImageView.m in Sources */,
+				33380D971B857826008B51EB /* SendMessageTableViewCell.m in Sources */,
 				6592DCD91B806A9B004CD118 /* GroupApplyTableViewCell.m in Sources */,
 				333122571B806EDB00D3D032 /* EMSDWebImageDecoder.m in Sources */,
 				2076A3001B81C590001FFBAC /* YCommonActionSheet.m in Sources */,

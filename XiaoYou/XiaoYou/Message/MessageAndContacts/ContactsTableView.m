@@ -15,6 +15,7 @@
 #import "ChatViewController.h"
 #import "Masonry.h"
 #import "YSystemDefine.h"
+#import "XYGroupInfoDetailViewController.h"
 
 #define kRowHeight                     68
 #define kHeadWidthAndHeight            40
@@ -107,7 +108,7 @@
     //姓名
     _nameLabel = [[UILabel alloc] init];
     _nameLabel.text = @"西班牙语系15级A班";
-    _nameLabel.backgroundColor = [UIColor magentaColor];
+    _nameLabel.backgroundColor = [UIColor clearColor];
     [backView addSubview:_nameLabel];
     [_nameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.mas_equalTo(kPaddingDistance);
@@ -118,7 +119,7 @@
     //标签
     _flagLabel = [[UILabel alloc] init];
     _flagLabel.text = @"班级群聊";
-    _flagLabel.backgroundColor = [UIColor yellowColor];
+    _flagLabel.backgroundColor = [UIColor clearColor];
     [backView addSubview:_flagLabel];
     [_flagLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.bottom.mas_equalTo(-kPaddingDistance);
@@ -131,7 +132,9 @@
 
 -(void)tapGestureRecognizerAction
 {
-    
+    self.myController.hidesBottomBarWhenPushed = YES;
+    XYGroupInfoDetailViewController * groupVC = [[XYGroupInfoDetailViewController alloc] init];
+    [self.myController.navigationController pushViewController:groupVC animated:YES];
 }
 
 
@@ -249,7 +252,7 @@
 {
    
     ContactsTableViewCell * cell = [self dequeueReusableCellWithIdentifier:kContactsTableViewCell];
-    
+//    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     [cell setCellInfo:self.contactsDataSource[indexPath.section][@"user_info"][indexPath.row]];
     
     return cell;

@@ -19,7 +19,9 @@
 #define kInfoLabelToNameLabel          20
 #define kFlagImageViewWidth            11
 #define kFlagImageViewHeight           14
-#define kFlagImageViewToHead           23
+#define kFlagImageViewToHead           33
+#define kFlagLabelToHead               23
+
 
 NSString *const kGroupApplyTableViewCell = @"GroupApplyTableViewCellId";
 
@@ -118,10 +120,10 @@ typedef enum : NSUInteger {
         _flagLabel.backgroundColor = [UIColor whiteColor];
         _flagLabel.font = [UIFont systemFontOfSize:14];
         _flagLabel.numberOfLines = 0;
-        _flagLabel.text = @"互联网就业 留学陶瓷 网球社 ";
+        _flagLabel.text = @"互联网就业 留学陶瓷 网球社 互联网就业 留学陶瓷 网球社 互联网就业 留学陶瓷 网球社 互联网就业 留学陶瓷 网球社 ";
         [self.contentView addSubview:_flagLabel];
         [_flagLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.top.equalTo(_headImageView.mas_bottom).offset(kFlagImageViewToHead);
+            make.top.equalTo(_headImageView.mas_bottom).offset(kFlagLabelToHead);
             make.left.equalTo(_nameLabel.mas_left);
             make.right.equalTo(self.contentView.mas_right).offset(-kPaddingDistance);
             make.bottom.equalTo(self.contentView.mas_bottom).offset(-53);
