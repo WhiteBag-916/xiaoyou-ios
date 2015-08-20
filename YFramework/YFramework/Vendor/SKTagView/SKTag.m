@@ -4,7 +4,7 @@
 //
 
 #import "SKTag.h"
-
+#import "YColor+Ext.h"
 @implementation SKTag
 
 - (instancetype)initWithText:(NSString *)text
@@ -25,6 +25,33 @@
 + (instancetype)tagWithText:(NSString *)text
 {
     return [[self alloc] initWithText:text];
+}
+- (void)updateWithPublishSelectType:(BOOL)select {
+    if (select) {
+        [self updateWithPublishSelectedType];
+    } else {
+        [self updateWithPublishUnselectType];
+    }
+}
+- (void)updateWithPublishSelectedType {
+    _fontSize = 12;
+    _textColor = [UIColor whiteColor];
+    _borderWidth = 1;
+    _borderColor = [UIColor hexChangeFloat:@"455A64"];
+    _bgColor = [UIColor hexChangeFloat:@"455A64"];
+    _cornerRadius = 2;
+    
+    _preferSize = CGSizeMake((_text.length < 5?5:_text.length) * _fontSize + 30, 32);
+}
+
+- (void)updateWithPublishUnselectType {
+    _fontSize = 12;
+    _textColor = [UIColor hexChangeFloat:@"455A64"];
+    _borderWidth = 1;
+    _borderColor = [UIColor hexChangeFloat:@"455A64"];
+    _bgColor = [UIColor whiteColor];
+    _cornerRadius = 2;
+    _preferSize = CGSizeMake((_text.length < 5?5:_text.length) * _fontSize + 30, 32);
 }
 
 @end

@@ -296,7 +296,10 @@
         [self invalidateIntrinsicContentSize];
     }
 }
-
+- (void)updateTag:(BOOL)isSelect atIndex:(NSUInteger)index {
+    [self.tags[index] updateWithPublishSelectType:isSelect];
+    [self.subviews[index] updateWithTag:self.tags[index]];
+}
 - (void)removeTag:(SKTag *)tag
 {
     NSUInteger index = [self.tags indexOfObject:tag];

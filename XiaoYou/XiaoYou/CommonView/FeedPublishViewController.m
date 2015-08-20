@@ -9,6 +9,7 @@
 #import "FeedPublishViewController.h"
 #import "YTextView.h"
 #import "FeedImageGroup.h"
+#import "SKTagView.h"
 
 #define KTEXTVIEWMARGIN_LEFT SCALE_NUM(5)
 #define KTEXTVIEWMARGIN_TOP SCALE_NUM(15)
@@ -18,11 +19,16 @@
 #define KIMGGROUPMARGIN_TOP SCALE_NUM(10)
 #define KIMGGROUPMARGIN_LEFT SCALE_NUM(10)
 
+#define KLINEMARGIN SCALE_NUM(15)
+
 @interface FeedPublishViewController()
 
 @property (nonatomic, strong) UIView *contentView;
 @property (nonatomic, strong) YTextView *textView;
 @property (nonatomic, strong) FeedImageGroup *imgGroup;
+@property (nonatomic, strong) SKTagView *tagView;
+@property (nonatomic, strong) NSMutableArray *isChecked;
+
 @end
 
 @implementation FeedPublishViewController
@@ -30,6 +36,7 @@
     self = [super init];
     if (self) {
         self.hidesBottomBarWhenPushed = YES;
+        _isChecked = [NSMutableArray array];
     }
     return self;
 }
@@ -43,6 +50,8 @@
     [self showCustomNavigationCancelButton];
     [self showCustomNavigationSureButton];
     
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self.view action:@selector(endEditing:)];
+    [self.view addGestureRecognizer:tap];
     UIScrollView *scroll = [[UIScrollView alloc] init];
     [self.view addSubview:scroll];
     [scroll mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -55,6 +64,7 @@
     }];
     [self initTextView];
     [self initImgView];
+    [self initBottom];
 }
 
 - (void)initTextView {
@@ -80,9 +90,60 @@
         make.width.mas_equalTo(KIMGGROUPSIZE);
     }];
     [_imgGroup updateWithPhotos:@[[UIImage imageNamed:@"toolbar-mine-click"],[UIImage imageNamed:@"toolbar-mine-click"],[UIImage imageNamed:@"toolbar-mine-click"]] bigPics:@[@"http://cdn.duitang.com/uploads/item/201505/03/20150503184743_Q4EVW.thumb.700_0.jpeg",@"http://cdn.duitang.com/uploads/item/201505/03/20150503184743_Q4EVW.thumb.700_0.jpeg",@"http://cdn.duitang.com/uploads/item/201505/03/20150503184743_Q4EVW.thumb.700_0.jpeg"]];
+    
+    
 }
 
+- (void)initBottom {
+    UIImageView *line = [[UIImageView alloc] init];
+    [_contentView addSubview:line];
+    [line mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(_imgGroup);
+        make.centerX.equalTo(_contentView);
+        make.height.mas_equalTo(1);
+        make.top.equalTo(_imgGroup.mas_bottom).offset(KLINEMARGIN);
+    }];
+    line.backgroundColor = [UIColor blackColor];
+    
+    UILabel *info = [[UILabel alloc] init];
+    [_contentView addSubview:info];
+    [info mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.right.equalTo(line);
+        make.top.equalTo(line.mas_bottom).offset(KLINEMARGIN);
+        make.height.mas_equalTo(SCALE_NUM(10));
+    }];
+    info.font = CONTENT_FONT(10);
+    info.text = @"选择以下标签，动态将会同步进入选中标签的列表中";
+    
+    _tagView = [[SKTagView alloc] init];
+    [_contentView addSubview:_tagView];
+    [_tagView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.right.equalTo(info);
+        make.top.equalTo(info.mas_bottom).offset(KLINEMARGIN);
+        make.bottom.lessThanOrEqualTo(_contentView);
+    }];
+    _tagView.insets = 5;
+    _tagView.lineSpace = 5;
+    __weak FeedPublishViewController *weakSelf = self;
+    [_tagView setDidClickTagAtIndex:^(NSUInteger index) {
+        BOOL isCheck = [weakSelf.isChecked[index] boolValue];
+        isCheck = !isCheck;
+        weakSelf.isChecked[index] = [NSNumber numberWithBool:isCheck];
+        [weakSelf.tagView updateTag:isCheck atIndex:index];
+    }];
+    [self loadTag];
+}
 
+- (void)loadTag {
+    NSArray *labelName = @[@"金融", @"留学咨询", @"学校生活", @"工作", @"互联网信息"];
+    for (int i = 0; i < labelName.count; i++) {
+        [_isChecked addObject:[NSNumber numberWithBool:false]];
+        SKTag *tag = [SKTag tagWithText:labelName[i]];
+        [tag updateWithPublishSelectType:false];
+        [_tagView addTag:tag];
+    }
+
+}
 
 - (void)onNavigationLeftButtonClicked {
     CATransition* transition = [CATransition animation];

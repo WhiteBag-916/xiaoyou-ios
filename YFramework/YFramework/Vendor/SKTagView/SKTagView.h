@@ -22,6 +22,7 @@
 - (void)removeTagAtIndex:(NSUInteger)index;
 - (void)removeAllTags;
 
+- (void)updateTag:(BOOL)isSelect atIndex:(NSUInteger)index;
 @property (nonatomic, copy) void (^didClickTagAtIndex)(NSUInteger index);
 
 @end

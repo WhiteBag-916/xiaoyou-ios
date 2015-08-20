@@ -26,7 +26,15 @@
 ///default:YES
 @property (nonatomic) BOOL enable;
 
+@property (nonatomic) CGSize preferSize;
+
 - (instancetype)initWithText:(NSString *)text;
 + (instancetype)tagWithText:(NSString *)text;
+/**
+ *  @author 李思良, 15-08-20
+ *
+ *  @brief  feed发布的标签类型
+ */
+- (void)updateWithPublishSelectType:(BOOL)select;
 
 @end

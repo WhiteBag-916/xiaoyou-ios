@@ -5,6 +5,12 @@
 
 #import "SKTagButton.h"
 #import "SKTag.h"
+#import "YVIew+Ext.h"
+
+@interface SKTagButton()
+@property (nonatomic) CGSize preferSize;
+
+@end
 
 @implementation SKTagButton
 
@@ -12,39 +18,53 @@
 {
 	SKTagButton *btn = [super buttonWithType:UIButtonTypeCustom];
 	
-	if (tag.attributedText) {
-		[btn setAttributedTitle:tag.attributedText forState:UIControlStateNormal];
-	} else {
-		[btn setTitle:tag.text forState:UIControlStateNormal];
-		[btn setTitleColor:tag.textColor forState:UIControlStateNormal];
-		btn.titleLabel.font = tag.font ?: [UIFont systemFontOfSize:tag.fontSize];
-	}
-	
-	btn.backgroundColor = tag.bgColor;
-	btn.contentEdgeInsets = tag.padding;
-	btn.titleLabel.lineBreakMode = NSLineBreakByTruncatingTail;
-	
+    [btn updateWithTag:tag];
+    
+    return btn;
+}
+- (void)updateWithTag:(SKTag *)tag {
+    if (tag.attributedText) {
+        [self setAttributedTitle:tag.attributedText forState:UIControlStateNormal];
+    } else {
+        [self setTitle:tag.text forState:UIControlStateNormal];
+        [self setTitleColor:tag.textColor forState:UIControlStateNormal];
+        self.titleLabel.font = tag.font ?: [UIFont systemFontOfSize:tag.fontSize];
+    }
+    self.titleLabel.textAlignment = NSTextAlignmentCenter;
+    self.backgroundColor = tag.bgColor;
+    self.contentEdgeInsets = tag.padding;
+    self.titleLabel.lineBreakMode = NSLineBreakByTruncatingTail;
+    
     if (tag.bgImg)
     {
-        [btn setBackgroundImage:tag.bgImg forState:UIControlStateNormal];
+        [self setBackgroundImage:tag.bgImg forState:UIControlStateNormal];
     }
     
     if (tag.borderColor)
     {
-        btn.layer.borderColor = tag.borderColor.CGColor;
+        self.layer.borderColor = tag.borderColor.CGColor;
     }
     
     if (tag.borderWidth)
     {
-        btn.layer.borderWidth = tag.borderWidth;
+        self.layer.borderWidth = tag.borderWidth;
     }
     
-    btn.userInteractionEnabled = tag.enable;
+    self.userInteractionEnabled = tag.enable;
     
-    btn.layer.cornerRadius = tag.cornerRadius;
-    btn.layer.masksToBounds = YES;
+    self.layer.cornerRadius = tag.cornerRadius;
+    self.layer.masksToBounds = YES;
     
-    return btn;
+    if (tag.preferSize.width > 0) {
+        _preferSize = tag.preferSize;
+    }
+}
+
+- (CGSize)intrinsicContentSize {
+    if (_preferSize.width > 0) {
+        return _preferSize;
+    }
+    return [super intrinsicContentSize];
 }
 
 @end
