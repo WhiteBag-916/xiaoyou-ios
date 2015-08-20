@@ -13,8 +13,8 @@
 #import "UMSocialWechatHandler.h"
 #import "YUrlDefine.h"
 
-#define kWeChatSDKAppID @""
-#define kWeChatSDKSecret @""
+#define kWeChatSDKAppID @"wxd4a2f488921f9365"
+#define kWeChatSDKSecret @"30da765d457715737d26de47057179d3"
 
 @interface YCommonShare ()<UMSocialUIDelegate>
 
