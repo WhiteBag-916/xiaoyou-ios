@@ -14,7 +14,7 @@
 #import "YColor+Ext.h"
 #import "XYFriendApplyViewController.h"
 #import "XYGroupApplyViewController.h"
-
+#import "XYSystemMessageViewController.h"
 #define kRowHeight                     68
 #define kHeadWidthAndHeight            40
 #define kNameLabelWidth                80
@@ -141,7 +141,8 @@
 
 -(void)tapGestureRecognizerAction
 {
-    
+    XYSystemMessageViewController * systemMessageViewController = [[XYSystemMessageViewController alloc] init];
+    [self.myController.navigationController pushViewController:systemMessageViewController animated:YES needHiddenBottomBar:YES];
 }
 
 #pragma mark - UITableViewDataSource和UITableViewDelegate

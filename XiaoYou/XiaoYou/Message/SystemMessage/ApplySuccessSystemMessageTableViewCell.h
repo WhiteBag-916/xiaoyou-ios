@@ -8,6 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
+extern NSString *const kApplySuccessSystemMessageTableViewCell;
+
 @interface ApplySuccessSystemMessageTableViewCell : UITableViewCell
+
+-(void)setCellInfo:(NSDictionary *) dic;
+
 
 @end
