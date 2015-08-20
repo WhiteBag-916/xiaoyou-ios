@@ -63,7 +63,15 @@ NSString *const kChoicePersonTableViewCell = @"ChoicePersonTableViewCellId";
 
 -(void)setCellInfo:(NSDictionary *) dic
 {
-    
+    _nameLabel.text = dic[@"name"];
+    if ([dic[@"isSelected"] boolValue] == YES)
+    {
+        self.backgroundColor = [UIColor hexChangeFloat:@"b8dcda"];
+    }
+    else
+    {
+        self.backgroundColor = [UIColor clearColor];
+    }
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
