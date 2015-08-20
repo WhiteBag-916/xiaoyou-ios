@@ -10,5 +10,6 @@
 
 @interface FeedImageGroup : UIView
 
+- (id)initWithCamera;
 - (void)updateWithImgs:(NSArray *)smallPics bigPics:(NSArray *)bigPics;
 @end

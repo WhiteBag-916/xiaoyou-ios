@@ -19,6 +19,7 @@
 #import "NotifyListViewController.h"
 #import "AddTagViewController.h"
 #import "FeedContactTableView.h"
+#import "FeedPublishViewController.h"
 
 
 @interface FeedListViewController ()
@@ -46,6 +47,7 @@
     [SlideNavigationController sharedInstance].enableSwipeGesture = YES;
     [SlideNavigationController sharedInstance].enableShadow = false;
     [SlideNavigationController sharedInstance].portraitSlideOffset = SCREEN_WIDTH * 0.3;
+    [self showCustomNavigationPublishButton];
     [self initNotification];
     
 }
@@ -125,6 +127,11 @@
 - (void)changeSwitchView:(CommonSwitchType)type;
 {
     _feedContactTableView.hidden = (type == CommonSwitchTypeFir);
+    if (type == CommonSwitchTypeFir) {
+        [self showCustomNavigationPublishButton];
+    } else {
+        self.navigationItem.rightBarButtonItem = nil;
+    }
 }
 
 - (void)goToDetail:(NSString *)feedId {
@@ -153,5 +160,14 @@
     [self.navigationController pushViewController:addTagViewController animated:YES needHiddenBottomBar:YES];
 }
 
+- (void)onNavigationRightButtonClicked {
+    CATransition* transition = [CATransition animation];
+    transition.type = kCATransitionPush;
+    transition.subtype = kCATransitionFromTop;
+    [self.navigationController.view.layer addAnimation:transition forKey:kCATransition];
+    
+    [self.navigationController pushViewController:[[FeedPublishViewController alloc] init] animated:NO];
+    
+}
 
 @end

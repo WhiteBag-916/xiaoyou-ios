@@ -21,6 +21,7 @@
 
 @property (nonatomic, strong) UIView *contentView;
 
+@property (nonatomic, strong) UIImageView *camera;
 @end
 
 @implementation FeedImageGroup
@@ -32,7 +33,22 @@
     }
     return self;
 }
-
+- (id)initWithCamera {
+    self = [self init];
+    if (self) {
+        _camera = [[UIImageView alloc] init];
+        [self addSubview:_camera];
+        _camera.backgroundColor = [UIColor redColor];
+        [_camera mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.edges.equalTo(_contentView.subviews[0]);
+        }];
+        [self moveToLine:0];
+        for (int i = 1; i < 9; i++) {
+            [_contentView.subviews[i] setHidden:true];
+        }
+    }
+    return self;
+}
 - (void)initImgs {
     
     _contentView = [[UIView alloc] init];
