@@ -7,8 +7,10 @@
 //
 
 #import "YTableView.h"
-
+@class FeedDetailViewController;
 @interface FeedDetailTableView : YTableView
+
+@property (nonatomic, weak) FeedDetailViewController *parent;
 
 - (void)loadData:(NSArray *)data;
 

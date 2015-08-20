@@ -9,6 +9,7 @@
 #import "FeedDetailTableView.h"
 #import "FeedListTableViewCell.h"
 #import "YCommonActionSheet.h"
+#import "FeedDetailViewController.h"
 @interface FeedDetailTableView()<UITableViewDataSource, UITableViewDelegate>
 
 @property (nonatomic, strong) NSDictionary *data;
@@ -85,10 +86,15 @@
 {
     if (indexPath.row > 0) {
         int index = (int)indexPath.row - 1;
-        if ([_commentListArray[index] isEqualToString:@"2"]) {
+        if ([_commentListArray[index] isEqualToString:@"3"]) {
             [self openTool];
+        } else {
+            [self openReply:index];
         }
     }
+}
+- (void)openReply:(int)index {
+    [self.parent openInputWithId:_commentListArray[index] name:_commentListArray[index]];
 }
 - (void)openTool {
     

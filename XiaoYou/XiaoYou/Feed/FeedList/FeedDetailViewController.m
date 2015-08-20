@@ -17,7 +17,8 @@
 
 @property (nonatomic, strong) NSString *feedId;
 @property (nonatomic, strong) FeedDetailTableView *feedDetailTable;
-@property (strong, nonatomic) DXMessageToolBar *chatToolBar;
+@property (nonatomic, strong) DXMessageToolBar *chatToolBar;
+@property (nonatomic, strong) NSString *replyId;
 
 @end
 
@@ -57,6 +58,7 @@
 - (void)initTable {
     _feedDetailTable  = [[FeedDetailTableView alloc] init];
     [self.view addSubview:_feedDetailTable];
+    _feedDetailTable.parent = self;
     [_feedDetailTable mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.right.top.equalTo(self.view);
         make.bottom.equalTo(self.view).offset(-KBOTTOMHEIGHT);
@@ -69,7 +71,6 @@
     [self.view addSubview:_chatToolBar];
     _chatToolBar.moreButton.hidden = true;
     _chatToolBar.styleChangeButton.hidden = true;
-    _chatToolBar.inputTextView.placeHolder = @"您老人家说两句呗";
     _chatToolBar.inputTextView.width += _chatToolBar.inputTextView.originX - _chatToolBar.styleChangeButton.originX + _chatToolBar.faceButton.rightX - _chatToolBar.inputTextView.rightX;
     _chatToolBar.inputTextView.originX = _chatToolBar.styleChangeButton.originX;
     _chatToolBar.faceButton.originX = _chatToolBar.moreButton.originX;
@@ -78,7 +79,9 @@
 
 -(void)keyBoardHidden
 {
-    [self.chatToolBar endEditing:YES];
+    _replyId = nil;
+    _chatToolBar.inputTextView.placeHolder = @"您老人家说两句呗";
+    [_chatToolBar endEditing:YES];
 }
 
 - (void)onNavigationRightButtonClicked {
@@ -97,8 +100,18 @@
     YCommonActionSheet *sheet = [[YCommonActionSheet alloc] initWithType:@[item1, item2] title:nil];
     [sheet show];
 }
+- (void)didSendText:(NSString *)text {
+    _replyId = nil;
+    _chatToolBar.inputTextView.placeHolder = @"您老人家说两句呗";
+    [_chatToolBar endEditing:YES];
+}
+- (void)openInputWithId:(NSString *)userId name:(NSString *)userName {
+    _replyId = userId;
+    _chatToolBar.inputTextView.placeHolder =[NSString stringWithFormat:@"回复：%@", _replyId];
+    [_chatToolBar.inputTextView becomeFirstResponder];
+}
 - (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer {
-    if ([self.chatToolBar isFirstResponder]) {
+    if ([self.chatToolBar.inputTextView isFirstResponder]) {
         return true;
     }
     return false;

@@ -12,4 +12,6 @@
 
 - (id)initWithFeedId:(NSString *)feedId;
 
+- (void)openInputWithId:(NSString *)userId name:(NSString *)userName;
+
 @end
