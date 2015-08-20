@@ -31,8 +31,11 @@ NSString *const kChoicePersonTableViewCell = @"ChoicePersonTableViewCellId";
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
         
-        _backView = [[UIView alloc] initWithFrame:self.contentView.bounds];
+        _backView = [[UIView alloc] init];
         [self.contentView addSubview:_backView];
+        [_backView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.top.left.right.bottom.mas_equalTo(0);
+        }];
         
         //头像
         _headImageView = [[UIImageView alloc] init];
@@ -48,6 +51,7 @@ NSString *const kChoicePersonTableViewCell = @"ChoicePersonTableViewCellId";
         
         //昵称
         _nameLabel = [[UILabel alloc] init];
+        _nameLabel.font = CONTENT_FONT(14);
         _nameLabel.backgroundColor = [UIColor clearColor];
         _nameLabel.text = @"斯提尔伯格";
         [_backView addSubview:_nameLabel];
@@ -66,11 +70,11 @@ NSString *const kChoicePersonTableViewCell = @"ChoicePersonTableViewCellId";
     _nameLabel.text = dic[@"name"];
     if ([dic[@"isSelected"] boolValue] == YES)
     {
-        self.backgroundColor = [UIColor hexChangeFloat:@"b8dcda"];
+        _backView.backgroundColor = [UIColor hexChangeFloat:@"b8dcda"];
     }
     else
     {
-        self.backgroundColor = [UIColor clearColor];
+        _backView.backgroundColor = [UIColor clearColor];
     }
 }
 

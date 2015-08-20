@@ -41,6 +41,7 @@ NSString *const kContactsInfoDetailTableViewCell = @"ContactsInfoDetailTableView
         }];
         
         _contentLabel = [[UILabel alloc] init];
+        _contentLabel.font = CONTENT_FONT(12);
         _contentLabel.backgroundColor = [UIColor grayColor];
         [self.contentView addSubview:_contentLabel];
         [_contentLabel mas_makeConstraints:^(MASConstraintMaker *make) {

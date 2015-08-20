@@ -55,6 +55,7 @@ NSString *const kGroupInfoCollectionViewCell = @"GroupInfoCollectionViewCellId";
         _deleteButton.hidden = YES;
         
         _nameLabel = [[UILabel alloc] init];
+        _nameLabel.font = CONTENT_FONT(12);
         _nameLabel.textAlignment = NSTextAlignmentCenter;
         _nameLabel.backgroundColor = [UIColor clearColor];
         [self.contentView addSubview:_nameLabel];

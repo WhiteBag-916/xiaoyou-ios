@@ -62,6 +62,7 @@ NSString *const kMessageTableViewCell = @"MessageTableViewCellId";
         }];
         //姓名
         _nameLabel = [[UILabel alloc] init];
+        _nameLabel.font = CONTENT_FONT(14);
         _nameLabel.backgroundColor = [UIColor clearColor];
         [self.contentView addSubview:_nameLabel];
         [_nameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -72,6 +73,7 @@ NSString *const kMessageTableViewCell = @"MessageTableViewCellId";
         }];
         //消息数
         _badgeNumberLabel = [[UILabel alloc] init];
+        _badgeNumberLabel.font = CONTENT_FONT(10);
         _badgeNumberLabel.textAlignment = NSTextAlignmentCenter;
         _badgeNumberLabel.backgroundColor = [UIColor hexChangeFloat:@"258f74"];
         [self.contentView addSubview:_badgeNumberLabel];
@@ -83,6 +85,7 @@ NSString *const kMessageTableViewCell = @"MessageTableViewCellId";
         }];
         //时间
         _timeLabel = [[UILabel alloc] init];
+        _timeLabel.font = CONTENT_FONT(9);
         _timeLabel.textAlignment = NSTextAlignmentRight;
         _timeLabel.backgroundColor = [UIColor clearColor];
         [self.contentView addSubview:_timeLabel];
@@ -94,6 +97,7 @@ NSString *const kMessageTableViewCell = @"MessageTableViewCellId";
         }];
         //消息
         _messageLabel = [[UILabel alloc] init];
+        _messageLabel.font = CONTENT_FONT(12);
         _messageLabel.backgroundColor = [UIColor clearColor];
         [self.contentView addSubview:_messageLabel];
         [_messageLabel mas_makeConstraints:^(MASConstraintMaker *make) {

@@ -64,6 +64,7 @@ NSString *const kContactsTableViewCell = @"ContactsTableViewCell";
         }];
         //姓名
         _nameLabel = [[UILabel alloc] init];
+        _nameLabel.font = CONTENT_FONT(14);
         _nameLabel.backgroundColor = [UIColor clearColor];
         [self.contentView addSubview:_nameLabel];
         [_nameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -84,6 +85,7 @@ NSString *const kContactsTableViewCell = @"ContactsTableViewCell";
         }];
         //标签
         _flagLabel = [[UILabel alloc] init];
+        _flagLabel.font = CONTENT_FONT(11);
         _flagLabel.backgroundColor = [UIColor clearColor];
         [self.contentView addSubview:_flagLabel];
         [_flagLabel mas_makeConstraints:^(MASConstraintMaker *make) {

@@ -107,6 +107,7 @@
     }];
     //姓名
     _nameLabel = [[UILabel alloc] init];
+    _nameLabel.font = CONTENT_FONT(14);
     _nameLabel.text = @"西班牙语系15级A班";
     _nameLabel.backgroundColor = [UIColor clearColor];
     [backView addSubview:_nameLabel];
@@ -118,6 +119,7 @@
     }];
     //标签
     _flagLabel = [[UILabel alloc] init];
+    _flagLabel.font = CONTENT_FONT(11);
     _flagLabel.text = @"班级群聊";
     _flagLabel.backgroundColor = [UIColor clearColor];
     [backView addSubview:_flagLabel];

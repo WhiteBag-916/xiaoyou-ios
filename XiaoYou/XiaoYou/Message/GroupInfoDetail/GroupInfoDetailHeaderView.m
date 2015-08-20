@@ -41,6 +41,8 @@ NSString *const kGroupInfoDetailHeaderView = @"GroupInfoDetailHeaderViewId";
         }];
         
         _groupNameLabel = [[UILabel alloc] init];
+        _groupNameLabel.font = CONTENT_FONT(14);
+        _groupNameLabel.text = @"西班牙班";
         _groupNameLabel.backgroundColor = [UIColor orangeColor];
         [self addSubview:_groupNameLabel];
         [_groupNameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
