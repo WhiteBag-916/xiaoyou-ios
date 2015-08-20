@@ -90,6 +90,7 @@
     //姓名
     _nameLabel = [[UILabel alloc] init];
     _nameLabel.text = @"系统消息";
+    _nameLabel.font = CONTENT_FONT(14);
     _nameLabel.backgroundColor = [UIColor clearColor];
     [backView addSubview:_nameLabel];
     [_nameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -101,6 +102,7 @@
     //消息数
     _badgeNumberLabel = [[UILabel alloc] init];
     _badgeNumberLabel.text = @"8";
+    _badgeNumberLabel.font = CONTENT_FONT(10);
     _badgeNumberLabel.textAlignment = NSTextAlignmentCenter;
     _badgeNumberLabel.backgroundColor = [UIColor hexChangeFloat:@"258f74"];
     [backView addSubview:_badgeNumberLabel];
@@ -112,6 +114,7 @@
     }];
     //时间
     _timeLabel = [[UILabel alloc] init];
+    _timeLabel.font = CONTENT_FONT(9);
     _timeLabel.textAlignment = NSTextAlignmentRight;
     _timeLabel.backgroundColor = [UIColor clearColor];
     [backView addSubview:_timeLabel];
@@ -123,6 +126,7 @@
     }];
     //消息
     _messageLabel = [[UILabel alloc] init];
+    _messageLabel.font = CONTENT_FONT(12);
     _messageLabel.backgroundColor = [UIColor clearColor];
     _messageLabel.text = @"暂时没有新的消息";
     [backView addSubview:_messageLabel];

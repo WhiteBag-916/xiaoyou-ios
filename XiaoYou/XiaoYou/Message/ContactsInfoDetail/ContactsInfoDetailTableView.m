@@ -69,6 +69,7 @@
     }];
     //姓名
     _nameLabel = [[UILabel alloc] init];
+    _nameLabel.font = CONTENT_FONT(14);
     _nameLabel.text = @"哈士奇";
     _nameLabel.backgroundColor = [UIColor magentaColor];
     [backView addSubview:_nameLabel];
@@ -89,6 +90,7 @@
     
     //消息
     _statesLabel = [[UILabel alloc] init];
+    _statesLabel.font = CONTENT_FONT(12);
     _statesLabel.numberOfLines = 0;
     _statesLabel.text = @"sahifhasignasopgnagsagaisngoasknmgoiasngoinasoignoiasnoginasoignoi";
     _statesLabel.backgroundColor = [UIColor grayColor];

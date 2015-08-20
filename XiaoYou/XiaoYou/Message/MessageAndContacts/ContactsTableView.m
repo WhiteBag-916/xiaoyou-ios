@@ -25,6 +25,9 @@
 #define kLabelHeightDistacnce          14
 #define kClassLabelDistance            5
 #define kClassLabelWidthAndHeight      30
+#define kRemindImageViewWidth          13
+#define kRemindImageViewHeight         15
+#define kRemindImageViewToRight        25
 
 @interface ContactsTableView ()<UITableViewDataSource,UITableViewDelegate>
 
@@ -32,6 +35,7 @@
 @property (strong, nonatomic)  UILabel *nameLabel;
 @property (strong, nonatomic)  UILabel *flagLabel;
 @property (nonatomic,strong)  UILabel * defaultLabel;
+@property (nonatomic,strong) UIImageView * remindImageView;
 
 //原始数据源
 @property (nonatomic,strong) NSMutableArray *originalContactsDataSource;
@@ -105,8 +109,19 @@
         make.left.mas_equalTo(_headImageView.mas_left).offset(kClassLabelDistance);
         make.width.height.mas_equalTo(kClassLabelWidthAndHeight);
     }];
+    //提醒
+    _remindImageView = [[UIImageView alloc] init];
+    _remindImageView.image = [UIImage imageNamed:@"chat_remindnot"];
+    [backView addSubview:_remindImageView];
+    [_remindImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.bottom.mas_equalTo(-kPaddingDistance);
+        make.right.mas_equalTo(-kRemindImageViewToRight);
+        make.height.mas_equalTo(kRemindImageViewHeight);
+        make.height.mas_equalTo(kRemindImageViewWidth);
+    }];
     //姓名
     _nameLabel = [[UILabel alloc] init];
+    _nameLabel.font = CONTENT_FONT(14);
     _nameLabel.text = @"西班牙语系15级A班";
     _nameLabel.backgroundColor = [UIColor clearColor];
     [backView addSubview:_nameLabel];
@@ -118,6 +133,7 @@
     }];
     //标签
     _flagLabel = [[UILabel alloc] init];
+    _flagLabel.font = CONTENT_FONT(11);
     _flagLabel.text = @"班级群聊";
     _flagLabel.backgroundColor = [UIColor clearColor];
     [backView addSubview:_flagLabel];

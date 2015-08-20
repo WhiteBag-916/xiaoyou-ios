@@ -70,6 +70,7 @@ typedef enum : NSUInteger {
         
         //昵称
         _nameLabel = [[UILabel alloc] init];
+        _nameLabel.font = CONTENT_FONT(14);
         _nameLabel.backgroundColor = [UIColor whiteColor];
         _nameLabel.text = @"斯提尔伯格";
         [self.contentView addSubview:_nameLabel];
@@ -82,6 +83,7 @@ typedef enum : NSUInteger {
         
         //性别
         _sexLabel = [[UILabel alloc] init];
+        _sexLabel.font = CONTENT_FONT(14);
         _sexLabel.backgroundColor = [UIColor whiteColor];
         _sexLabel.text = @"男";
         [self.contentView addSubview:_sexLabel];
@@ -93,7 +95,7 @@ typedef enum : NSUInteger {
         
         //院系信息
         _infoLabel = [[UILabel alloc] init];
-        _infoLabel.font = [UIFont systemFontOfSize:14];
+        _infoLabel.font = CONTENT_FONT(12);
         _infoLabel.backgroundColor = [UIColor whiteColor];
         _infoLabel.text = @"计算机与控制工程学院     15级";
         [self.contentView addSubview:_infoLabel];
@@ -117,8 +119,8 @@ typedef enum : NSUInteger {
         
         //标签内容
         _flagLabel = [[UILabel alloc] init];
+        _flagLabel.font = CONTENT_FONT(11);
         _flagLabel.backgroundColor = [UIColor whiteColor];
-        _flagLabel.font = [UIFont systemFontOfSize:14];
         _flagLabel.numberOfLines = 0;
         _flagLabel.text = @"互联网就业 留学陶瓷 网球社 互联网就业 留学陶瓷 网球社 互联网就业 留学陶瓷 网球社 互联网就业 留学陶瓷 网球社 ";
         [self.contentView addSubview:_flagLabel];
@@ -131,6 +133,7 @@ typedef enum : NSUInteger {
         
         //大Button
         _afterDealButton = [[UIButton alloc] init];
+        _afterDealButton.titleLabel.font = CONTENT_FONT(14);
         _afterDealButton.tag = BIG_BUTTON;
         [_afterDealButton setBackgroundImage:[UIImage imageNamed:@"contacts_bottom"] forState:UIControlStateNormal];
         [_afterDealButton setTitle:@"聊聊呗" forState:UIControlStateNormal];
@@ -146,6 +149,7 @@ typedef enum : NSUInteger {
         
         //拒绝
         _refuseButton = [[UIButton alloc] init];
+        _refuseButton.titleLabel.font = CONTENT_FONT(14);
         _refuseButton.tag = REFUSE_BUTTON;
         [_refuseButton setBackgroundImage:[UIImage imageNamed:@"contacts_bottom"] forState:UIControlStateNormal];
         [_refuseButton setTitle:@"拒绝" forState:UIControlStateNormal];
@@ -159,6 +163,7 @@ typedef enum : NSUInteger {
         }];
         //通过
         _passButton = [[UIButton alloc] init];
+        _passButton.titleLabel.font = CONTENT_FONT(14);
         _passButton.tag = PASS_BUTTON;
         [_passButton setBackgroundImage:[UIImage imageNamed:@"contacts_bottom"] forState:UIControlStateNormal];
         [_passButton setTitle:@"通过" forState:UIControlStateNormal];
@@ -171,13 +176,14 @@ typedef enum : NSUInteger {
             make.bottom.mas_equalTo(-kPaddingDistance);
         }];
         //发信
-        _passButton = [[UIButton alloc] init];
-        _passButton.tag = SEND_BUTTON;
-        [_passButton setBackgroundImage:[UIImage imageNamed:@"contacts_bottom"] forState:UIControlStateNormal];
-        [_passButton setTitle:@"发信" forState:UIControlStateNormal];
-        [_passButton addTarget:self action:@selector(clickDealButton:) forControlEvents:UIControlEventTouchUpInside];
-        [self.contentView addSubview:_passButton];
-        [_passButton mas_makeConstraints:^(MASConstraintMaker *make) {
+        _sendButton = [[UIButton alloc] init];
+        _sendButton.titleLabel.font = CONTENT_FONT(14);
+        _sendButton.tag = SEND_BUTTON;
+        [_sendButton setBackgroundImage:[UIImage imageNamed:@"contacts_bottom"] forState:UIControlStateNormal];
+        [_sendButton setTitle:@"发信" forState:UIControlStateNormal];
+        [_sendButton addTarget:self action:@selector(clickDealButton:) forControlEvents:UIControlEventTouchUpInside];
+        [self.contentView addSubview:_sendButton];
+        [_sendButton mas_makeConstraints:^(MASConstraintMaker *make) {
             make.right.mas_equalTo(-kPaddingDistance);
             make.width.mas_equalTo((SCREEN_WIDTH - kPaddingDistance*4)/3);
             make.top.equalTo(_flagLabel.mas_bottom).offset(kPaddingDistance);

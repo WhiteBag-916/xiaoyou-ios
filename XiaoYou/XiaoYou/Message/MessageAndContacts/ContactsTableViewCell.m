@@ -22,6 +22,8 @@
 #define kLabelHeightDistacnce          14
 #define kClassLabelDistance            5
 #define kClassLabelWidthAndHeight      30
+#define kRemindImageViewWidth          13
+#define kRemindImageViewHeight         15
 
 NSString *const kContactsTableViewCell = @"ContactsTableViewCell";
 @interface ContactsTableViewCell ()
@@ -32,6 +34,7 @@ NSString *const kContactsTableViewCell = @"ContactsTableViewCell";
 @property (strong, nonatomic)  UILabel *flagLabel;
 @property (strong, nonatomic)  ConnectTag * connectTag;
 @property (nonatomic,strong)  UILabel * defaultLabel;
+@property (nonatomic,strong) UIImageView * remindImageView;
 
 
 @end
@@ -64,6 +67,7 @@ NSString *const kContactsTableViewCell = @"ContactsTableViewCell";
         }];
         //姓名
         _nameLabel = [[UILabel alloc] init];
+        _nameLabel.font = CONTENT_FONT(14);
         _nameLabel.backgroundColor = [UIColor clearColor];
         [self.contentView addSubview:_nameLabel];
         [_nameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -84,6 +88,7 @@ NSString *const kContactsTableViewCell = @"ContactsTableViewCell";
         }];
         //标签
         _flagLabel = [[UILabel alloc] init];
+        _flagLabel.font = CONTENT_FONT(11);
         _flagLabel.backgroundColor = [UIColor clearColor];
         [self.contentView addSubview:_flagLabel];
         [_flagLabel mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -91,6 +96,16 @@ NSString *const kContactsTableViewCell = @"ContactsTableViewCell";
             make.left.equalTo(_flagImageView.mas_right).offset(kPaddingDistance);
             make.right.mas_equalTo(-kPaddingDistance);
             make.height.mas_equalTo(kLabelHeightDistacnce);
+        }];
+        //提醒
+        _remindImageView = [[UIImageView alloc] init];
+        _remindImageView.image = [UIImage imageNamed:@"chat_remindnot"];
+        [self.contentView addSubview:_remindImageView];
+        [_remindImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.bottom.mas_equalTo(-kPaddingDistance);
+            make.right.mas_equalTo(-kPaddingDistance);
+            make.height.mas_equalTo(kRemindImageViewHeight);
+            make.height.mas_equalTo(kRemindImageViewWidth);
         }];
         
         _connectTag = [[ConnectTag alloc] init];

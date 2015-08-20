@@ -68,6 +68,7 @@ typedef enum : NSUInteger {
         
         //昵称
         _nameLabel = [[UILabel alloc] init];
+        _nameLabel.font = CONTENT_FONT(14);
         _nameLabel.backgroundColor = [UIColor whiteColor];
         _nameLabel.text = @"斯提尔伯格";
         [self.contentView addSubview:_nameLabel];
@@ -80,6 +81,7 @@ typedef enum : NSUInteger {
         
         //性别
         _sexLabel = [[UILabel alloc] init];
+        _sexLabel.font = CONTENT_FONT(14);
         _sexLabel.backgroundColor = [UIColor whiteColor];
         _sexLabel.text = @"男";
         [self.contentView addSubview:_sexLabel];
@@ -103,7 +105,7 @@ typedef enum : NSUInteger {
         
         //院系信息
         _infoLabel = [[UILabel alloc] init];
-        _infoLabel.font = [UIFont systemFontOfSize:14];
+        _infoLabel.font = CONTENT_FONT(12);
         _infoLabel.backgroundColor = [UIColor whiteColor];
         _infoLabel.text = @"计算机与控制工程学院     15级";
         [self.contentView addSubview:_infoLabel];
@@ -127,10 +129,10 @@ typedef enum : NSUInteger {
         
         //标签内容
         _flagLabel = [[UILabel alloc] init];
+        _flagLabel.font = CONTENT_FONT(11);
         _flagLabel.backgroundColor = [UIColor whiteColor];
-        _flagLabel.font = [UIFont systemFontOfSize:14];
         _flagLabel.numberOfLines = 0;
-        _flagLabel.text = @"互联网就业 留学陶瓷 网球社 ";
+        _flagLabel.text = @"互联网就业 留学陶瓷 网球社 互联网就业 留学陶瓷 网球社 互联网就业 留学陶瓷 网球社 ";
         [self.contentView addSubview:_flagLabel];
         [_flagLabel mas_makeConstraints:^(MASConstraintMaker *make) {
             make.top.equalTo(_headImageView.mas_bottom).offset(kFlagLabelToHead);
@@ -141,6 +143,7 @@ typedef enum : NSUInteger {
         
         //大Button
         _afterDealButton = [[UIButton alloc] init];
+        _afterDealButton.titleLabel.font = CONTENT_FONT(14);
         _afterDealButton.tag = BIG_BUTTON;
         [_afterDealButton setBackgroundImage:[UIImage imageNamed:@"contacts_bottom"] forState:UIControlStateNormal];
         [_afterDealButton setTitle:@"聊聊呗" forState:UIControlStateNormal];
@@ -156,6 +159,7 @@ typedef enum : NSUInteger {
         
         //忽略
         _ignoreButton = [[UIButton alloc] init];
+        _ignoreButton.titleLabel.font = CONTENT_FONT(14);
         _ignoreButton.tag = IGNORE_BUTTON;
         [_ignoreButton setBackgroundImage:[UIImage imageNamed:@"contacts_bottom"] forState:UIControlStateNormal];
         [_ignoreButton setTitle:@"忽略" forState:UIControlStateNormal];
@@ -169,6 +173,7 @@ typedef enum : NSUInteger {
         }];
         //好啊
         _confirmButton = [[UIButton alloc] init];
+        _confirmButton.titleLabel.font = CONTENT_FONT(14);
         _confirmButton.tag = OK_BUTTON;
         [_confirmButton setBackgroundImage:[UIImage imageNamed:@"contacts_bottom"] forState:UIControlStateNormal];
         [_confirmButton setTitle:@"好啊" forState:UIControlStateNormal];
