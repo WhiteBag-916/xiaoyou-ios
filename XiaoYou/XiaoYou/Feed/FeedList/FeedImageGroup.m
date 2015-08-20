@@ -13,7 +13,6 @@
 #import "SDPhotoBrowser/SDPhotoBrowser.h"
 
 #define KIMGTAG 10000
-#define KIMGSIZE SCALE_NUM(64)
 @interface FeedImageGroup()<SDPhotoBrowserDelegate>
 
 @property (nonatomic, strong) NSArray *smallImgs;
@@ -22,6 +21,9 @@
 @property (nonatomic, strong) UIView *contentView;
 
 @property (nonatomic, strong) UIImageView *camera;
+
+@property (nonatomic, assign) float imgSize;
+
 @end
 
 @implementation FeedImageGroup
@@ -29,13 +31,16 @@
 - (id)init {
     self = [super init];
     if (self) {
+        _imgSize = SCALE_NUM(70);
         [self initImgs];
     }
     return self;
 }
 - (id)initWithCamera {
-    self = [self init];
+    self = [super init];
     if (self) {
+        _imgSize = SCALE_NUM(75);
+        [self initImgs];
         _camera = [[UIImageView alloc] init];
         [self addSubview:_camera];
         _camera.backgroundColor = [UIColor redColor];
@@ -49,6 +54,7 @@
     }
     return self;
 }
+
 - (void)initImgs {
     
     _contentView = [[UIView alloc] init];
@@ -72,7 +78,7 @@
             [img addGestureRecognizer:tap];
             
             [img mas_makeConstraints:^(MASConstraintMaker *make) {
-                make.width.height.mas_equalTo(KIMGSIZE);
+                make.width.height.mas_equalTo(_imgSize);
                 if (i == 0) {
                     make.top.equalTo(_contentView);
                 } else if (i == 1)
@@ -117,6 +123,27 @@
     img.contentMode = UIViewContentModeScaleAspectFit;
     [img sd_setImageWithURL:[NSURL URLWithString:url]];
 }
+
+- (void)updateWithPhotos:(NSArray *)pics bigPics:(NSArray *)bigPics {
+    _bigImgs = [NSArray arrayWithArray:bigPics];
+    int index = (int)(_bigImgs.count + 1) / 3;
+    [self moveToLine:index];
+    for (int i = 0; i < pics.count; i ++) {
+        [(UIImageView *)[_contentView viewWithTag:KIMGTAG+i] setImage:pics[i]];
+    }
+    if (pics.count < 9) {
+        int ct = 0;
+        if (index != 1) {
+            ct = (int)_bigImgs.count;
+        } else {
+            ct = (int)_bigImgs.count + 3;
+        }
+        [_camera mas_remakeConstraints:^(MASConstraintMaker *make) {
+            make.edges.equalTo(_contentView.subviews[ct]);
+        }];
+    }
+}
+
 - (void)normalForImages:(NSArray *)urls {
     [self moveToLine:(int)(urls.count / 3)];
     for (int i = 0; i < urls.count; i ++) {
@@ -127,7 +154,7 @@
     UIImageView *img = (UIImageView *)[_contentView viewWithTag:KIMGTAG];
     [img mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.top.equalTo(_contentView);
-        make.width.height.mas_equalTo(KIMGSIZE);
+        make.width.height.mas_equalTo(_imgSize);
     }];
     img.contentMode = UIViewContentModeScaleAspectFill;
     
@@ -136,7 +163,7 @@
         [_contentView.subviews[i] setTag:KIMGTAG - i-1];
     }
     if (index != 1) {
-        for (int i = 0; i < _smallImgs.count; i++) {
+        for (int i = 0; i < _bigImgs.count; i++) {
             [_contentView.subviews[i] setHidden:false];
             [_contentView.subviews[i] setTag:KIMGTAG + i];
         }
@@ -145,19 +172,19 @@
             [_contentView.subviews[i] setHidden:false];
             [_contentView.subviews[i] setTag:KIMGTAG + i];
         }
-        for (int i = 6; i < _smallImgs.count + 3; i++) {
+        for (int i = 6; i < _bigImgs.count + 3; i++) {
             [_contentView.subviews[i] setHidden:false];
             [_contentView.subviews[i] setTag:KIMGTAG + i-3];
         }
     }
-    [_contentView mas_makeConstraints:^(MASConstraintMaker *make) {
+    [_contentView mas_remakeConstraints:^(MASConstraintMaker *make) {
         make.edges.equalTo(self);
         if (index == -1) {
             make.height.mas_equalTo(0);
         } else if (index == 0) {
-            make.height.mas_equalTo(KIMGSIZE);
+            make.height.mas_equalTo(_imgSize);
         } else if (index == 1) {
-            make.height.equalTo(_contentView.mas_width).multipliedBy(0.5).offset(KIMGSIZE/2);
+            make.height.equalTo(_contentView.mas_width).multipliedBy(0.5).offset(_imgSize/2);
         } else {
             make.height.equalTo(_contentView.mas_width);
         }
@@ -167,7 +194,7 @@
 
 - (void)choosePic:(UITapGestureRecognizer *)tap {
     int index = (int)tap.view.tag - KIMGTAG;
-    if (index < 0 || index >= _smallImgs.count) {
+    if (index < 0 || index >= _bigImgs.count) {
         return;
     }
     SDPhotoBrowser *browser = [[SDPhotoBrowser alloc] init];

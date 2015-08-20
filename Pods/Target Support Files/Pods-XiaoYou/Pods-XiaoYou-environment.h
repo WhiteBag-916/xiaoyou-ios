@@ -138,12 +138,6 @@
 #define COCOAPODS_VERSION_MINOR_SDWebImage_Core 7
 #define COCOAPODS_VERSION_PATCH_SDWebImage_Core 3
 
-// SKTagView
-#define COCOAPODS_POD_AVAILABLE_SKTagView
-#define COCOAPODS_VERSION_MAJOR_SKTagView 0
-#define COCOAPODS_VERSION_MINOR_SKTagView 7
-#define COCOAPODS_VERSION_PATCH_SKTagView 0
-
 // UITableView+FDTemplateLayoutCell
 #define COCOAPODS_POD_AVAILABLE_UITableView_FDTemplateLayoutCell
 #define COCOAPODS_VERSION_MAJOR_UITableView_FDTemplateLayoutCell 1
