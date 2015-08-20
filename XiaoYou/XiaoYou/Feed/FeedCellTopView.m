@@ -100,6 +100,14 @@
     _contactNameLabel.text = _data.userName;
     _timeLabel.text = [YUtils distanceTimeToday:_data.publishDate];
     [_tagList updateTag:_data.tagList];
+    
+    UIViewController *appRootVC = [UIApplication sharedApplication].keyWindow.rootViewController;
+    UIViewController *topVC = appRootVC;
+    while (topVC.presentedViewController) {
+        topVC = topVC.presentedViewController;
+        NSString *className = [NSString stringWithUTF8String:object_getClassName(topVC)];
+        NSLog(@"className:%@", className);
+    }
 }
 
 @end

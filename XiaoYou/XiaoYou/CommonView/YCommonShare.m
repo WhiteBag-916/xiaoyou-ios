@@ -56,7 +56,7 @@
 
 }
 
-- (void)shareForViewControllerWithType:(UIViewController *)viewController dataModel:(NSObject *)obj type:(YCommonShareDetailType)type shareType:(NSInteger)shareType;
+- (void)shareForViewControllerWithType:(YCommonShareDetailType)type dataModel:(NSDictionary *)obj shareType:(NSInteger)shareType
 {
     NSString *url;
     switch (type) {
@@ -91,7 +91,8 @@
              *  好友
              */
             typeStr = UMShareToWechatSession;
-            
+            [UMSocialData defaultData].extConfig.wechatSessionData.title = @"标题";
+            [UMSocialData defaultData].extConfig.wechatSessionData.shareText = @"描述";
             break;
         }
         case YShareTypeToWechatTimeline:{
@@ -106,10 +107,10 @@
     }
     
     //share
-    [UMSocialData defaultData].extConfig.wechatSessionData.shareText = @"描述";
-    UMSocialUrlResource *urlResource = [[UMSocialUrlResource alloc] initWithSnsResourceType:UMSocialUrlResourceTypeImage url:@"图片"];
     
-    [[UMSocialDataService defaultDataService]  postSNSWithTypes:@[typeStr] content:nil image:nil location:nil urlResource:urlResource presentedController:viewController completion:^(UMSocialResponseEntity *response){
+    [UMSocialData defaultData].extConfig.wechatSessionData.shareText = @"描述";
+    UMSocialUrlResource *urlResource = [[UMSocialUrlResource alloc] initWithSnsResourceType:UMSocialUrlResourceTypeImage url:@"http://cdn.duitang.com/uploads/item/201411/22/20141122111634_RBCXS.jpeg"];
+    [[UMSocialDataService defaultDataService]  postSNSWithTypes:@[typeStr] content:nil image:nil location:nil urlResource:urlResource presentedController:nil completion:^(UMSocialResponseEntity *response){
         if (response.responseCode == UMSResponseCodeSuccess) {
             NSLog(@"分享成功！");
         }

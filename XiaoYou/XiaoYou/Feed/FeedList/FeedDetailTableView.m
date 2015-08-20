@@ -8,6 +8,8 @@
 
 #import "FeedDetailTableView.h"
 #import "FeedListTableViewCell.h"
+#import "YCommonActionSheet.h"
+#import "FeedDetailViewController.h"
 @interface FeedDetailTableView()<UITableViewDataSource, UITableViewDelegate>
 
 @property (nonatomic, strong) NSDictionary *data;
@@ -82,7 +84,27 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
+    if (indexPath.row > 0) {
+        int index = (int)indexPath.row - 1;
+        if ([_commentListArray[index] isEqualToString:@"3"]) {
+            [self openTool];
+        } else {
+            [self openReply:index];
+        }
+    }
 }
-
+- (void)openReply:(int)index {
+    [self.parent openInputWithId:_commentListArray[index] name:_commentListArray[index]];
+}
+- (void)openTool {
+    
+    YActionSheetItem *item = [YActionSheetItem itemWithTitle:@"删除我的评论"
+                                                         type:YCommonActionSheetItemTypeCommon
+                                                        block:^(NSInteger checkNum) {
+                                                            
+                                                        }];
+    
+    YCommonActionSheet *sheet = [[YCommonActionSheet alloc] initWithType:@[item] title:nil];
+    [sheet show];
+}
 @end
