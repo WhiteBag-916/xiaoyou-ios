@@ -165,6 +165,10 @@
 - (void)showCustomNavigationSureButton {
     [self showNomalNavigationRightButtonWithImage:@"complete-grey" action:@selector(onNavigationRightButtonClicked) frame:CGRectMake(0, 0, 20, 64)];
 }
+//导航栏右侧，确认按钮
+- (void)showCustomNavigationPublishButton {
+    [self showNomalNavigationRightButtonWithImage:@"complete-grey" action:@selector(onNavigationRightButtonClicked) frame:CGRectMake(0, 0, 20, 64)];
+}
 
 - (void)showNomalNavigationRightButtonWithImage:(NSString *)image action:(SEL)selector frame:(CGRect)frame {
     //right barbutton view
