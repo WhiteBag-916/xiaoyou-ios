@@ -8,6 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
+extern NSString *const kNormalSystemMessageTableViewCell;
+
 @interface NormalSystemMessageTableViewCell : UITableViewCell
+
+-(void)setCellInfo:(NSDictionary *) dic;
 
 @end

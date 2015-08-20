@@ -7,8 +7,11 @@
 //
 
 #import "XYSystemMessageViewController.h"
+#import "SystemMessageTableView.h"
 
 @interface XYSystemMessageViewController ()
+
+@property(nonatomic,strong)SystemMessageTableView * systemMessageTableView;
 
 @end
 
@@ -17,7 +20,21 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    [self setUpUI];
 }
+
+-(void)setUpUI
+{
+    self.title = @"系统消息";
+    
+    _systemMessageTableView = [[SystemMessageTableView alloc] init];
+    [self.view addSubview:_systemMessageTableView];
+    [_systemMessageTableView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.left.right.bottom.mas_equalTo(0);
+    }];
+}
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
