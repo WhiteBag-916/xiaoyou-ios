@@ -48,6 +48,8 @@
     if (nil != vc) {
         [vc.view endEditing:YES];
     }
+    
+    [self endEditing:YES];
 }
 
 //拉取新数据
