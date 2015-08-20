@@ -27,6 +27,7 @@
 -(void)setUpUI
 {
     self.title = @"系统消息";
+    [self showCustomNavigationBackButton];
     
     _systemMessageTableView = [[SystemMessageTableView alloc] init];
     [self.view addSubview:_systemMessageTableView];
