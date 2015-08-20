@@ -58,41 +58,39 @@
 
 - (void)shareForViewControllerWithType:(YCommonShareDetailType)type dataModel:(NSDictionary *)obj shareType:(NSInteger)shareType
 {
-    NSString *url;
-    switch (type) {
-        case YCommonShareDetailTypeFeed:{
-            /**
-             *  feed
-             */
-            [UMSocialWechatHandler setWXAppId:kWeChatSDKAppID
-                                    appSecret:kWeChatSDKSecret
-                                          url:url];
-            
-            break;
-        }
-        case YCommonShareDetailTypePerson:{
-            /**
-             *  contact
-             */
-            [UMSocialWechatHandler setWXAppId:kWeChatSDKAppID
-                                    appSecret:kWeChatSDKSecret
-                                          url:url];
-            
-            break;
-        }
-        default:
-            break;
-    }
+    [UMSocialData defaultData].extConfig.wxMessageType = UMSocialWXMessageTypeApp;
     
     NSString *typeStr;
+    UMSocialUrlResource *urlResource ;
     switch (shareType) {
         case YShareTypeToWechatSession:{
             /**
              *  好友
              */
             typeStr = UMShareToWechatSession;
-            [UMSocialData defaultData].extConfig.wechatSessionData.title = @"标题";
-            [UMSocialData defaultData].extConfig.wechatSessionData.shareText = @"描述";
+            switch (type) {
+                case YCommonShareDetailTypeFeed:
+                    [UMSocialData defaultData].extConfig.wechatSessionData.title = [NSString stringWithFormat:@"关于%@，Ta说", obj[@"tag"]];
+                    if ([obj[@"content"] length] == 0) {
+                        [UMSocialData defaultData].extConfig.wechatSessionData.shareText = @"字不重要，看图。";
+                    } else {
+                        [UMSocialData defaultData].extConfig.wechatSessionData.shareText = obj[@"content"];
+                    }
+                    urlResource = [[UMSocialUrlResource alloc] initWithSnsResourceType:UMSocialUrlResourceTypeImage url:obj[@"pic"]];
+                    break;
+                case YCommonShareDetailTypePerson:
+                    [UMSocialData defaultData].extConfig.wechatSessionData.title = @"分享校友名片给你！";
+                    [UMSocialData defaultData].extConfig.wechatSessionData.shareText = [NSString stringWithFormat:@"校友人脉：%@-%@", obj[@"school"], obj[@"pic"]];
+                    urlResource = [[UMSocialUrlResource alloc] initWithSnsResourceType:UMSocialUrlResourceTypeImage url:obj[@"pic"]];
+                    break;
+                case YCommonShareDetailTypeAssociation:
+                    [UMSocialData defaultData].extConfig.wechatSessionData.title = [NSString stringWithFormat:@"一键申请加入%@", obj[@"name"]];
+                    [UMSocialData defaultData].extConfig.wechatSessionData.shareText = obj[@"content"];
+                    urlResource = [[UMSocialUrlResource alloc] initWithSnsResourceType:UMSocialUrlResourceTypeImage url:obj[@"pic"]];
+                    break;
+                default:
+                    break;
+            }
             break;
         }
         case YShareTypeToWechatTimeline:{
@@ -100,6 +98,22 @@
              *  朋友圈
              */
             typeStr = UMShareToWechatTimeline;
+            switch (type) {
+                case YCommonShareDetailTypeFeed:
+                    [UMSocialData defaultData].extConfig.wechatTimelineData.title = [NSString stringWithFormat:@"关于%@，Ta说", obj[@"tag"]];
+                    urlResource = [[UMSocialUrlResource alloc] initWithSnsResourceType:UMSocialUrlResourceTypeImage url:obj[@"pic"]];
+                    break;
+                case YCommonShareDetailTypePerson:
+                    [UMSocialData defaultData].extConfig.wechatTimelineData.shareText = [NSString stringWithFormat:@"校友人脉：%@-%@", obj[@"school"], obj[@"pic"]];
+                    urlResource = [[UMSocialUrlResource alloc] initWithSnsResourceType:UMSocialUrlResourceTypeImage url:obj[@"pic"]];
+                    break;
+                case YCommonShareDetailTypeAssociation:
+                    [UMSocialData defaultData].extConfig.wechatTimelineData.shareText = [NSString stringWithFormat:@"一键申请加入%@", obj[@"name"]];
+                    urlResource = [[UMSocialUrlResource alloc] initWithSnsResourceType:UMSocialUrlResourceTypeImage url:obj[@"pic"]];
+                    break;
+                default:
+                    break;
+            }
             break;
         }
         default:
@@ -108,8 +122,7 @@
     
     //share
     
-    [UMSocialData defaultData].extConfig.wechatSessionData.shareText = @"描述";
-    UMSocialUrlResource *urlResource = [[UMSocialUrlResource alloc] initWithSnsResourceType:UMSocialUrlResourceTypeImage url:@"http://cdn.duitang.com/uploads/item/201411/22/20141122111634_RBCXS.jpeg"];
+    
     [[UMSocialDataService defaultDataService]  postSNSWithTypes:@[typeStr] content:nil image:nil location:nil urlResource:urlResource presentedController:nil completion:^(UMSocialResponseEntity *response){
         if (response.responseCode == UMSResponseCodeSuccess) {
             NSLog(@"分享成功！");

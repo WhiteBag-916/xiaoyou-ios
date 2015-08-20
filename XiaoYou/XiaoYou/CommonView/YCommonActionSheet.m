@@ -43,10 +43,10 @@ static const NSUInteger kYActionSheetCancelHeight = 49;
     item.isOpen = isOpen;
     return item;
 }
-+ (instancetype)itemWithTitle:(NSString *)title type:(YCommonActionItemSheetType)type extraData:(NSDictionary *)extraData block:(ActionSheetItemBlock)block {
++ (instancetype)itemWithType:(YCommonActionItemSheetType)type title:(NSString *)title extraData:(NSDictionary *)extraData {
     YActionSheetItem *item = [YActionSheetItem itemWithTitle:title
                                                         type:type
-                                                       block:block];
+                                                       block:nil];
     item.extraData = extraData;
     return item;
 }
@@ -167,7 +167,7 @@ static const NSUInteger kYActionSheetCancelHeight = 49;
         _item.block(sender.tag);
     }
     if (_item.type == YCommonActionSheetItemTypeShare) {
-        [[YCommonShare sharedInstance] shareForViewControllerWithType:YCommonShareDetailTypeFeed dataModel:@{} shareType:YShareTypeToWechatSession];
+        [[YCommonShare sharedInstance] shareForViewControllerWithType:YCommonShareDetailTypeFeed dataModel:_item.extraData shareType:sender.tag];
     }
 }
 

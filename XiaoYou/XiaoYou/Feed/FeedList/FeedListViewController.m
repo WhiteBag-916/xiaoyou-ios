@@ -19,7 +19,7 @@
 #import "NotifyListViewController.h"
 #import "AddTagViewController.h"
 #import "FeedContactTableView.h"
-#import "YCommonActionSheet.h"
+
 
 @interface FeedListViewController ()
 
@@ -115,7 +115,6 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(toSearchPerson) name:kNotification_Push_SearchPerson object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(toNotifyView) name:kNotification_Push_Notify object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(toAddTag) name:kNotification_Push_AddTag object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(openShare:) name:KNotification_Share object:nil];
 }
 
 - (void)changeMenu {
@@ -154,22 +153,5 @@
     [self.navigationController pushViewController:addTagViewController animated:YES needHiddenBottomBar:YES];
 }
 
-- (void)openShare:(NSNotification *) notification{
-    NSDictionary *dic = [notification object];
-    YActionSheetItem *item1 = [YActionSheetItem itemWithTitle:@"分享这社团名片至"
-                                                         type:YCommonActionSheetItemTypeShare
-                                                        block:^(NSInteger checkNum) {
-                                                            
-                                                        }];
-    
-    YActionSheetItem *item2 = [YActionSheetItem itemWithTitle:@"举报"
-                                                         type:YCommonActionSheetItemTypeCommon
-                                                        block:^(NSInteger checkNum) {
-                                                            
-                                                        }];
-    
-    YCommonActionSheet *sheet = [[YCommonActionSheet alloc] initWithType:@[item1, item2] title:nil];
-    [sheet show];
-}
 
 @end

@@ -183,7 +183,7 @@
 }
 
 - (void)openShare {
-    [[NSNotificationCenter defaultCenter] postNotificationName:KNotification_Share object:@{@"id":_data.feedId}];
+    [_delegate didClickShare];
 }
 - (void)openDetail {
     

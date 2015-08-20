@@ -11,8 +11,24 @@
 #import "YCommonActionSheet.h"
 
 typedef NS_ENUM(NSInteger, YCommonShareDetailType) {
+    /**
+     *  @author 李思良, 15-08-20
+     *
+     *  @brief  分享feed，需要提供tag键（feed一个标签），content键（分享内容），pic键（发布者头像url string）
+     */
     YCommonShareDetailTypeFeed,
+    /**
+     *  @author 李思良, 15-08-20
+     *
+     *  @brief  分享人名片，需要提供name键（人名），pic键（人头像url string），school键（学校名称）
+     */
     YCommonShareDetailTypePerson,
+    /**
+     *  @author 李思良, 15-08-20
+     *
+     *  @brief  分享社团，需要提供name键（社团名称），content键（社团简介），pic键（社团头像url string）
+     */
+    YCommonShareDetailTypeAssociation,
 };
 
 @interface YCommonShare : NSObject
@@ -26,9 +42,9 @@ typedef NS_ENUM(NSInteger, YCommonShareDetailType) {
  *
  *  @brief  分享
  *
- *  @param obj            字典，img键（可以为UIImage或NSData），url键（图片url），content键（分享内容）,title键（分享标题）
- *  @param type           feed或人的名片
- *  @param shareType      微信或朋友圈
+ *  @param obj            数据字典，要求参见YCommonShareDetailType具体说明
+ *  @param type           YCommonShareDetailType
+ *  @param shareType      YShareType
  */
 - (void)shareForViewControllerWithType:(YCommonShareDetailType)type dataModel:(NSDictionary *)obj shareType:(NSInteger)shareType;
 
