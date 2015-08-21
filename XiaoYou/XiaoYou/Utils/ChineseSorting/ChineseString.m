@@ -7,6 +7,7 @@
 //
 
 #import "ChineseString.h"
+#import "PinyinHelper.h"
 
 @implementation ChineseString
 @synthesize string;

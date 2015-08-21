@@ -12,7 +12,6 @@
 
 @property (strong, nonatomic) NSString *password;
 @property (strong, nonatomic) NSString *schoolCode;
-@property (strong, nonatomic) NSString *deviceId;
 @property (strong, nonatomic) NSString *studentNo;
 @property (strong, nonatomic) NSString *platform;
 

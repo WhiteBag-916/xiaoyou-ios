@@ -10,7 +10,7 @@
 #import "ChooseSchoolViewController.h"
 #import "XYTabBarViewController.h"
 #import "SlideNavigationController.h"
-#import "ChooseSchoolViewController.h"
+#import "LoginViewController.h"
 
 @implementation AppDelegate(RootVC)
 
@@ -21,14 +21,20 @@
     self.window = [[UIWindow alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)];
     //初始化登陆控制器
     self.window.backgroundColor = [UIColor whiteColor];
-    [self initLoginNC];
+    [self initChooseSchoolNC];
 
     [self.window makeKeyAndVisible];
 }
 
-- (void)initLoginNC
+- (void)initChooseSchoolNC
 {
     UINavigationController * home = [[UINavigationController alloc] initWithRootViewController:[[ChooseSchoolViewController alloc] init]];
+    self.window.rootViewController = home;
+}
+
+- (void)initLoginNC
+{
+    UINavigationController * home = [[UINavigationController alloc] initWithRootViewController:[[LoginViewController alloc] init]];
     self.window.rootViewController = home;
 }
 

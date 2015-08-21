@@ -27,13 +27,15 @@
  Url Define: ProvisionManager
  **********************************************************/
 //登录
-#define api_user_login  @"/mobile/user/login"
+#define api_user_login  @"/mobile/user/v2/login"
 //学校列表
 #define api_login_schoolList  @"/mobile/school/schoolList"
 //获取验证码
 #define api_login_receiveAuthCode  @"/mobile/user/receiveAuthCode"
 //验证
 #define api_login_phoneVerify @"/mobile/user/verify"
+//忘记密码
+#define api_login_forgetPwd @"/mobile/user/v2/forgetPwd"
 
 /**********************************************************
  Url Define: FeedManager
