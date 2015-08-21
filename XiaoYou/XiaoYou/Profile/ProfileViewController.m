@@ -8,6 +8,7 @@
 
 #import "ProfileViewController.h"
 #import "YUtils+Component.h"
+#import "ProfilePersonListController.h"
 #define KTOPHEIGHT SCALE_NUM(90)
 #define KHEADIMG_SIZE SCALE_NUM(45)
 #define KHEADIMGMARIN_LEFT SCALE_NUM(10)
@@ -17,6 +18,8 @@
 #define KSCHOOLNOMARGIN_TOP SCALE_NUM(10)
 
 #define KMIDDELITEMHEIGHT SCALE_NUM(50)
+#define KBOTTOMITEMMARGIN_TOP SCALE_NUM(20)
+#define KBOTTOMLABELSIZE SCALE_NUM(35)
 
 @interface ProfileViewController ()
 @property (nonatomic, strong) UIImageView *headImg;
@@ -25,6 +28,9 @@
 @property (nonatomic, strong) UIView *contenView;
 @property (nonatomic, strong) UILabel *respectNum;
 @property (nonatomic, strong) UILabel *coolNum;
+@property (nonatomic, strong) UILabel *attitudeLabel;
+@property (nonatomic, strong) UILabel *tagLabel;
+@property (nonatomic, strong) UILabel *tagCountLabel;
 
 
 @property (nonatomic, strong) UIView *topView;
@@ -46,17 +52,19 @@
     [self initScroll];
     [self initTop];
     [self initMiddle];
+    [self initBottom];
 }
 - (void)initScroll {
     UIScrollView *scroll = [[UIScrollView alloc] init];
     [self.view addSubview:scroll];
     [scroll mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.top.right.bottom.equalTo(self.view);
+        make.edges.equalTo(self.view);
     }];
     _contenView = [[UIView alloc] init];
     [scroll addSubview:_contenView];
     [_contenView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.equalTo(scroll);
+        make.width.equalTo(self.view);
     }];
 }
 - (void)initTop {
@@ -130,7 +138,35 @@
     [item2 mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(item1.mas_bottom);
         make.left.right.height.equalTo(item1);
+        make.bottom.equalTo(_middleView);
     }];
+}
+
+- (void)initBottom {
+    _bottomView = [[UIView alloc] init];
+    [_contenView addSubview:_bottomView];
+    [_bottomView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.right.equalTo(_middleView);
+        make.top.equalTo(_middleView.mas_bottom);
+        make.bottom.equalTo(_contenView);
+    }];
+    UIView *tmp = nil;
+    for (int i = 0; i < 3; i ++) {
+        UIView *item = [self greenItem:i];
+        [item mas_makeConstraints:^(MASConstraintMaker *make) {
+            if (tmp == nil) {
+                make.top.equalTo(_bottomView);
+            } else {
+                make.top.equalTo(tmp.mas_bottom);
+            }
+            make.left.right.equalTo(_bottomView);
+        }];
+        tmp = item;
+    }
+    [_bottomView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.bottom.equalTo(tmp);
+    }];
+    _bottomView.backgroundColor = [UIColor yellowColor];
 }
 
 - (UIView *)whiteItem:(BOOL)isRespect {
@@ -140,6 +176,7 @@
     [item addSubview:icon];
     [self rightArray:1 inView:item];
     if (isRespect) {
+        [item addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(openRespect)]];
         [icon mas_makeConstraints:^(MASConstraintMaker *make) {
             make.width.height.mas_equalTo(SCALE_NUM(17));
             make.centerX.equalTo(_headImg);
@@ -153,6 +190,7 @@
             make.top.bottom.right.equalTo(item);
         }];
     } else {
+        [item addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(openCool)]];
         [icon mas_makeConstraints:^(MASConstraintMaker *make) {
             make.width.height.mas_equalTo(SCALE_NUM(17));
             make.centerX.equalTo(_headImg);
@@ -170,6 +208,22 @@
     
     return item;
 }
+
+- (UIView *)greenItem:(int)index {
+    UIView *item = [[UIView alloc] init];
+    [_bottomView addSubview:item];
+    NSArray *names = @[@"态度", @"关注", @"观点"];
+    UILabel *icon = [YUtils initLabel:CONTENT_FONT(10) color:KCOLORWHITE text:names[index] frame:CGRectZero alignment:NSTextAlignmentCenter];
+    [item addSubview:icon];
+    [icon mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.width.height.mas_equalTo(KBOTTOMLABELSIZE);
+        make.centerX.equalTo(_headImg);
+        make.top.equalTo(item);
+        make.bottom.lessThanOrEqualTo(item);
+    }];
+    return item;
+}
+
 - (UIImageView *)rightArray:(int)type inView:(UIView *)view{
     UIImageView *right = [[UIImageView alloc] init];
     [view addSubview:right];
@@ -195,11 +249,12 @@
     return right;
 }
 
+
 - (void)openRespect {
-    
+    [self.navigationController pushViewController:[[ProfilePersonListController alloc] initWithType:true] animated:true];
 }
 - (void)openCool {
-    
+    [self.navigationController pushViewController:[[ProfilePersonListController alloc] initWithType:false] animated:true];
 }
 
 - (void)didReceiveMemoryWarning {

@@ -355,6 +355,7 @@
 		65969DC41B86BDE1001DD348 /* MBProgressHUD+Add.m in Sources */ = {isa = PBXBuildFile; fileRef = 65969DC31B86BDE1001DD348 /* MBProgressHUD+Add.m */; };
 		65969DCA1B86E45B001DD348 /* YTakePhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = 65969DC91B86E45B001DD348 /* YTakePhoto.m */; };
 		65969DCD1B871AA9001DD348 /* ProfilePersonListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 65969DCC1B871AA9001DD348 /* ProfilePersonListController.m */; };
+		65969DD01B8723E3001DD348 /* YUtils+HUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 65969DCF1B8723E3001DD348 /* YUtils+HUD.m */; };
 		65A846FF1B81C9C300933815 /* FeedCellTopView.m in Sources */ = {isa = PBXBuildFile; fileRef = 65A846FE1B81C9C300933815 /* FeedCellTopView.m */; };
 		65A847021B81C9D300933815 /* FeedCellMiddleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 65A847011B81C9D300933815 /* FeedCellMiddleView.m */; };
 		65A847051B81CA1900933815 /* FeedCellBottomView.m in Sources */ = {isa = PBXBuildFile; fileRef = 65A847041B81CA1900933815 /* FeedCellBottomView.m */; };
@@ -920,6 +921,8 @@
 		65969DC91B86E45B001DD348 /* YTakePhoto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YTakePhoto.m; sourceTree = "<group>"; };
 		65969DCB1B871AA9001DD348 /* ProfilePersonListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfilePersonListController.h; sourceTree = "<group>"; };
 		65969DCC1B871AA9001DD348 /* ProfilePersonListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfilePersonListController.m; sourceTree = "<group>"; };
+		65969DCE1B8723E3001DD348 /* YUtils+HUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "YUtils+HUD.h"; sourceTree = "<group>"; };
+		65969DCF1B8723E3001DD348 /* YUtils+HUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "YUtils+HUD.m"; sourceTree = "<group>"; };
 		65A846FD1B81C9C300933815 /* FeedCellTopView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedCellTopView.h; sourceTree = "<group>"; };
 		65A846FE1B81C9C300933815 /* FeedCellTopView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedCellTopView.m; sourceTree = "<group>"; };
 		65A847001B81C9D300933815 /* FeedCellMiddleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedCellMiddleView.h; sourceTree = "<group>"; };
@@ -2160,6 +2163,8 @@
 		653CB2E81B806BFD006ECBB2 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				65969DCE1B8723E3001DD348 /* YUtils+HUD.h */,
+				65969DCF1B8723E3001DD348 /* YUtils+HUD.m */,
 				20E033C21B842727002E4583 /* UMengSDK */,
 				653CB2E91B806BFD006ECBB2 /* ChineseSorting */,
 				333122D61B806F7E00D3D032 /* ChatDemoUIDefine.h */,
@@ -2660,6 +2665,7 @@
 				20E9423D1B833D10009C2DC6 /* FeedContactTableViewCell.m in Sources */,
 				33380DA51B85DB89008B51EB /* NormalSystemMessageTableViewCell.m in Sources */,
 				653CB2EF1B806BFD006ECBB2 /* pinyin.c in Sources */,
+				65969DD01B8723E3001DD348 /* YUtils+HUD.m in Sources */,
 				33380D941B8577E8008B51EB /* SendMessageTableView.m in Sources */,
 				333122471B806EDB00D3D032 /* EMAlertView.m in Sources */,
 				333122431B806EDB00D3D032 /* EMCDDeviceManager+Microphone.m in Sources */,

@@ -59,7 +59,6 @@
 		654602231B7F8C1D0039F622 /* SDPhotoBrowser.m in Sources */ = {isa = PBXBuildFile; fileRef = 6546021C1B7F8C1D0039F622 /* SDPhotoBrowser.m */; };
 		654602241B7F8C1D0039F622 /* SDWaitingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6546021F1B7F8C1D0039F622 /* SDWaitingView.m */; };
 		654602251B7F8C1D0039F622 /* SDWaitingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6546021F1B7F8C1D0039F622 /* SDWaitingView.m */; };
-		65969DC01B86BAF8001DD348 /* YProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 65969DBF1B86BAF8001DD348 /* YProgressHUD.m */; };
 		65F82F8C1B8601EB00FF6E2D /* SKTag.m in Sources */ = {isa = PBXBuildFile; fileRef = 65F82F871B8601EB00FF6E2D /* SKTag.m */; };
 		65F82F8D1B8601EB00FF6E2D /* SKTagButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 65F82F891B8601EB00FF6E2D /* SKTagButton.m */; };
 		65F82F8E1B8601EB00FF6E2D /* SKTagView.m in Sources */ = {isa = PBXBuildFile; fileRef = 65F82F8B1B8601EB00FF6E2D /* SKTagView.m */; };
@@ -196,8 +195,6 @@
 		6546021D1B7F8C1D0039F622 /* SDPhotoBrowserConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDPhotoBrowserConfig.h; sourceTree = "<group>"; };
 		6546021E1B7F8C1D0039F622 /* SDWaitingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDWaitingView.h; sourceTree = "<group>"; };
 		6546021F1B7F8C1D0039F622 /* SDWaitingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDWaitingView.m; sourceTree = "<group>"; };
-		65969DBE1B86BAF8001DD348 /* YProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YProgressHUD.h; sourceTree = "<group>"; };
-		65969DBF1B86BAF8001DD348 /* YProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YProgressHUD.m; sourceTree = "<group>"; };
 		65F82F861B8601EB00FF6E2D /* SKTag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKTag.h; sourceTree = "<group>"; };
 		65F82F871B8601EB00FF6E2D /* SKTag.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKTag.m; sourceTree = "<group>"; };
 		65F82F881B8601EB00FF6E2D /* SKTagButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKTagButton.h; sourceTree = "<group>"; };
@@ -432,8 +429,6 @@
 				20DD4B271B73039B007C352C /* YTableView.m */,
 				20E033F71B845706002E4583 /* YTextField.h */,
 				20E033F81B845706002E4583 /* YTextField.m */,
-				65969DBE1B86BAF8001DD348 /* YProgressHUD.h */,
-				65969DBF1B86BAF8001DD348 /* YProgressHUD.m */,
 				20DAF9651B870A3B005B7932 /* YTableViewCell.h */,
 				20DAF9661B870A3B005B7932 /* YTableViewCell.m */,
 			);
@@ -579,7 +574,6 @@
 				2873DBDA1AE02BDD00F5FD3E /* YManager.m in Sources */,
 				28CBB0E61ADAFAF400D69527 /* YHttpRequest.m in Sources */,
 				2862E36C1AE03BF500AD0257 /* YDao.m in Sources */,
-				65969DC01B86BAF8001DD348 /* YProgressHUD.m in Sources */,
 				2885DB3C1ADD2C84002D4F23 /* YOperationQueue.m in Sources */,
 				2862E38D1AE05EA600AD0257 /* YViewController.m in Sources */,
 				2873DBD01ADFF66E00F5FD3E /* YFMDatabaseQueue.m in Sources */,

@@ -10,4 +10,12 @@
 
 @implementation ProfilePersonListController
 
+- (id)initWithType:(BOOL)isRespect {
+    self = [super init];
+    if (self) {
+        
+    }
+    return self;
+}
+
 @end
