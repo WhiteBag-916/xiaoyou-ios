@@ -14,4 +14,6 @@
 
 - (void)initTabBarNC;
 
+- (void)initLoginNC;
+
 @end

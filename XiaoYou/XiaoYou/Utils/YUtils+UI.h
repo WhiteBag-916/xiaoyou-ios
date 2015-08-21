@@ -7,7 +7,37 @@
 //
 
 #import "YUtils.h"
+#import "YFoundation.h"
 
-@interface YUtils_UI : YUtils
+extern NSInteger const kLoginCommonTextFieldTag;
+
+@interface YUtils(UI)
+
+/*********************************************************************
+ 函数名称 : initLoginCommonView
+ 函数描述 : 你懂的
+ 参数 : 你懂的
+ 返回值 : 你懂的
+ 作者 : XiongChen
+ *********************************************************************/
++ (UIView *)initLoginCommonView:(NSString *)leftImage;
+
+/*********************************************************************
+ 函数名称 : initLabel
+ 函数描述 : 构造label
+ 参数 : 你懂的
+ 返回值 : 你懂的
+ 作者 : XiongChen
+ *********************************************************************/
++ (UILabel *)initLabel:(UIFont *)font color:(UIColor *)color text:(NSString *)text frame:(CGRect)frame alignment:(NSTextAlignment)alignment;
+
+/*********************************************************************
+ 函数名称 : initImageView
+ 函数描述 : 构造imageView
+ 参数 : 你懂的
+ 返回值 : 你懂的
+ 作者 : XiongChen
+ *********************************************************************/
++ (UIImageView *)initImageView:(UIImage *)image frame:(CGRect)frame;
 
 @end

@@ -30,5 +30,7 @@
 #import "YDefine.h"
 #import "YShareData.h"
 #import "YCommonAlertView.h"
+#import "YUtils+UI.h"
+#import "YUtils+HUD.h"
 
 #endif

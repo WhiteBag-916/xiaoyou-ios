@@ -16,6 +16,7 @@
 #import "YTableView.h"
 #import "YTableViewCell.h"
 #import "ChooseSchoolTableViewCell.h"
+#import "LoginViewController.h"
 
 @interface ChooseSchoolViewController ()
 <UITextFieldDelegate
@@ -46,16 +47,6 @@
     
     _schoolTextField.text = [YShareData defaultData][kShareData_SchoolName];
     [self searchSchoolByKey:YES];
-    
-//    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-//    [button setTitle:@"登录" forState:UIControlStateNormal];
-//    [button setBackgroundColor:[UIColor redColor]];
-//    [button addTarget:self action:@selector(goLogin) forControlEvents:UIControlEventTouchUpInside];
-//    [self.view addSubview:button];
-//    
-//    [button mas_makeConstraints:^(MASConstraintMaker *make) {
-//        make.edges.mas_equalTo(self.view).insets(UIEdgeInsetsMake(100, 100, 100, 100));
-//    }];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -100,6 +91,7 @@
     
     //textField
     _schoolTextField = [[YTextField alloc] init];
+    _schoolTextField.placeholder = @"找到你的学校";
     _schoolTextField.delegate = self;
     [_schoolTextField registerChanged:self action:@selector(textFieldValueChanged:)];
     [schoolView addSubview:_schoolTextField];
@@ -250,17 +242,21 @@
     {
         NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@",api_icon_base_url,logoImageStr]];
         [_schoolLogoImageView sd_setImageWithURL:url placeholderImage:nil];
+        [_schoolLogoImageView mas_updateConstraints:^(MASConstraintMaker *make) {
+            make.width.mas_equalTo(SCALE_NUM(24));
+            make.height.mas_equalTo(SCALE_NUM(24));
+        }];
     }
     else
     {
         [_schoolLogoImageView setImage:[UIImage imageNamed:@"login_school"]];
+        [_schoolLogoImageView mas_updateConstraints:^(MASConstraintMaker *make) {
+            make.width.mas_equalTo(SCALE_NUM(24));
+            make.height.mas_equalTo(SCALE_NUM(27));
+        }];
     }
 }
 
-- (void)showAlertViewWithMessage:(NSString *)message{
-    YCommonAlertView *alertView = [[YCommonAlertView alloc] initWithTitle:@"" message:message buttonTitles:@"OK", nil];
-    [alertView show];
-}
 #pragma mark - API
 //获取学校列表
 - (void)schoolListRequest{
@@ -292,7 +288,10 @@
                 }
             }];
             
-            [self pushToNext:schoolModel];
+            if (nil != schoolModel) {
+                [self pushToNext:schoolModel];
+            }
+            
         } else {
             YLogE(@"checkSchoolRequest: %@",message);
         }
@@ -302,9 +301,6 @@
 #pragma mark - Action
 //下一步
 - (void)onNavigationRightButtonClicked {
-    
-    [self goLogin];
-    
     //判断输入文字是否是数组中得文字全匹配
     __block BOOL isExist = NO;
     [_schoolList enumerateObjectsUsingBlock:^(SchoolListModel *school, NSUInteger idx, BOOL *stop) {
@@ -317,7 +313,7 @@
     }];
     
     if (!isExist) {
-        [self showAlertViewWithMessage:@"学校输入错误"];
+        [YUtils showTitle:@"学校输入错误"];
         return;
     }
     
@@ -344,11 +340,9 @@
 //跳转
 - (void)pushToNext:(SchoolListModel *)schoolModel
 {
-//    [CNUserData sharedUserData].schoolInfo = schoolModel;
-//    
-//    CNLoginInformationViewController *informationVC = [[CNLoginInformationViewController alloc] init];
-//    
-//    [self.navigationController pushViewController:informationVC animated:YES];
+    [YShareData defaultData][kShareData_SchoolCode] = schoolModel.schoolCode;
+
+    [kAppDelegateAccessor initLoginNC];
 }
 
 #pragma mark - UITableViewDataSource,UITableViewDelegate
@@ -392,23 +386,6 @@
     [self searchSchoolByKey:NO];
     
     [self checkTextChangeLogoImage];
-}
-
-- (void)goLogin
-{
-    //login
-    [[ProvisionManager sharedInstance] goLogin:^(YActionMessage *message) {
-        if (message.isSuccess)
-        {
-            //成功
-            [kAppDelegateAccessor initTabBarNC];
-        }
-    }];
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 @end

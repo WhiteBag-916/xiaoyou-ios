@@ -13,6 +13,7 @@
 #import "YManagerCenter.h"
 #import "LoginResp.h"
 #import "SchoolListAction.h"
+#import "ForgotPasswordAction.h"
 
 #define kProvisionManagerSyncQueue @"kProvisionManagerSyncQueue"
 
@@ -53,17 +54,15 @@ DEF_SINGLETON(ProvisionManager);
     [YShareData defaultData][kShareData_LoginInfo] = loginResp;
     [YShareData defaultData][kShareData_StudentNo] = loginResp.studentNo;
     [YShareData defaultData][kShareData_Token] = loginResp.token;
-    [YShareData defaultData][kShareData_SchoolCode] = loginResp.schoolCode;
     [YShareData defaultData][kShareData_SchoolIcon] = loginResp.icon;
 }
 
-- (void)goLogin:(ActionCompleteBlock)block
+- (void)goLogin:(NSString *)account password:(NSString *)password block:(ActionCompleteBlock)block
 {
     LoginAction* action = [[LoginAction alloc] init];
-    action.password = @"123456";
-    action.schoolCode = @"4";
-    action.deviceId = @"212025118700004";
-    action.studentNo = @"15140040000";
+    action.password = password;
+    action.schoolCode = [YShareData defaultData][kShareData_SchoolCode];
+    action.studentNo = account;
     action.platform = @"2";
     
     [YAction startAction:action completionBlock:^(YActionMessage* message) {
@@ -72,6 +71,8 @@ DEF_SINGLETON(ProvisionManager);
             if (message.isSuccess)
             {
                 [self updateLoginInfo:message.object];
+                
+                [YShareData defaultData][kShareData_LoginAccount] = action.studentNo;
                 
                 //抛登录成功
                 [[YManagerCenter defaultCenter] notifyAppLogined:nil];
@@ -91,6 +92,17 @@ DEF_SINGLETON(ProvisionManager);
 - (void)schoolListReq:(NSString *)schoolName block:(ActionCompleteBlock)block {
     SchoolListAction* action = [[SchoolListAction alloc] init];
     action.schoolName = schoolName;
+    
+    [YAction startAction:action completionBlock:^(YActionMessage* message) {
+        //主线程处理界面
+        block(message);
+    }];
+}
+
+//忘记密码
+- (void)forgotPasswordReq:(NSString *)studentNo block:(ActionCompleteBlock)block {
+    ForgotPasswordAction* action = [[ForgotPasswordAction alloc] init];
+    action.studentNo = studentNo;
     
     [YAction startAction:action completionBlock:^(YActionMessage* message) {
         //主线程处理界面
