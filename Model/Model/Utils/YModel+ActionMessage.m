@@ -27,7 +27,7 @@ NSString *const kCommonObj = @"obj";
         if ([aObject respondsToSelector:@selector(code)])
         {
             NSInteger code = (NSInteger)[(ResultCommon*)aObject code];
-            if (!(code == kYActionMessage_Server_Success))
+            if (!(code == kYActionMessage_Server_Success || code == 0))
             {
                 errorCode = kYYServerErrorBase + labs(code);
             }
