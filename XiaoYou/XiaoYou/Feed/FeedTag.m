@@ -39,7 +39,7 @@
         _tagContent.insets = 21;
         _tagContent.lineSpace = 5;
         _tagContent.singleLine = false;
-        
+        _tagContent.preferredMaxLayoutWidth = SCALE_NUM(230);
         [self setIsRelated:true];
         
     }
@@ -49,8 +49,8 @@
 
 
 - (void)setData {
-    _tagContent.preferredMaxLayoutWidth = self.frame.size.width;
     [_tagContent removeAllTags];
+
     NSArray *labelName = @[@"金融", @"留学咨询", @"学校生活", @"工作", @"互联网信息"];
     for (int i = 0; i < labelName.count; i++) {
         SKTag *tag = [SKTag tagWithText:labelName[i]];
@@ -63,6 +63,10 @@
     
 }
 
+- (void)layoutSubviews {
+    [super layoutSubviews];
+    _tagContent.preferredMaxLayoutWidth = _tagContent.width;
+}
 - (void)setIsRelated:(BOOL)isRelated {
     if (isRelated) {
         _tagIcon.image = [UIImage imageNamed:@"tag-green"];

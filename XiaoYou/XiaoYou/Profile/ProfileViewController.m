@@ -9,6 +9,7 @@
 #import "ProfileViewController.h"
 #import "YUtils+Component.h"
 #import "ProfilePersonListController.h"
+#import "ProfileFeedContentView.h"
 #define KTOPHEIGHT SCALE_NUM(90)
 #define KHEADIMG_SIZE SCALE_NUM(45)
 #define KHEADIMGMARIN_LEFT SCALE_NUM(10)
@@ -21,6 +22,8 @@
 #define KBOTTOMITEMMARGIN_TOP SCALE_NUM(20)
 #define KBOTTOMLABELSIZE SCALE_NUM(35)
 
+#define KFEEDMARGIN_TOP SCALE_NUM(20)
+
 @interface ProfileViewController ()
 @property (nonatomic, strong) UIImageView *headImg;
 @property (nonatomic, strong) UILabel *userName;
@@ -31,6 +34,7 @@
 @property (nonatomic, strong) UILabel *attitudeLabel;
 @property (nonatomic, strong) UILabel *tagLabel;
 @property (nonatomic, strong) UILabel *tagCountLabel;
+@property (nonatomic, strong) ProfileFeedContentView *feed;
 
 
 @property (nonatomic, strong) UIView *topView;
@@ -48,6 +52,7 @@
     [self initView];
 }
 - (void)initView {
+    self.view.backgroundColor = [UIColor whiteColor];
     [self initScroll];
     [self initTop];
     [self initMiddle];
@@ -204,7 +209,7 @@
             make.left.equalTo(_userName);
             make.top.bottom.right.equalTo(item);
         }];
-
+        
     }
     
     return item;
@@ -251,6 +256,24 @@
             make.centerY.equalTo(_tagLabel);
         }];
         [self rightArray:2 inView:item];
+    }
+    if (index == 2) {
+        UILabel *label = [YUtils initLabel:CONTENT_FONT(12) color:[UIColor blackColor] text:@"查看全部" frame:CGRectZero alignment:NSTextAlignmentLeft];
+        [item addSubview:label];
+        [label mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.equalTo(_userName);
+            make.right.equalTo(item);
+            make.centerY.equalTo(icon);
+        }];
+        [self rightArray:2 inView:label];
+        _feed = [[ProfileFeedContentView alloc] init];
+        [item addSubview:_feed];
+        [_feed mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.equalTo(_userName);
+            make.right.equalTo(item).offset(-SCALE_NUM(12));
+            make.top.equalTo(label.mas_bottom).offset(KFEEDMARGIN_TOP);
+            make.bottom.lessThanOrEqualTo(item);
+        }];
     }
     
     return item;

@@ -26,12 +26,15 @@ NSString *const kProfilePersonListTableViewCell = @"kProfilePersonListTableViewC
 #define KTAGTEXTMARGIN SCALE_NUM(15)
 
 #define KTAGMARGIN_RIGHT SCALE_NUM(58)
+
+#define KADDFRIENDWIDTH SCALE_NUM(28)
 @interface ProfilePersonListTableViewCell()
 
 @property (nonatomic, strong) YFaceImageView *face;
 @property (nonatomic, strong) UILabel *userName;
 @property (nonatomic, strong) ConnectTag *connect;
 @property (nonatomic, strong) FeedTag *tagView;
+@property (nonatomic, strong) UIButton *addFriend;
 
 @end
 
@@ -69,11 +72,23 @@ NSString *const kProfilePersonListTableViewCell = @"kProfilePersonListTableViewC
             make.left.equalTo(_userName);
             make.top.equalTo(_userName.mas_bottom).offset(KTAGMARGIN_TOP);
             make.right.equalTo(self.contentView).offset(-KTAGMARGIN_RIGHT);
-            make.height.mas_equalTo(KTAGHEIGHT).priorityHigh();
         }];
         [_tagView.tagContent mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.equalTo(_tagView.tagIcon.mas_right).offset(KTAGTEXTMARGIN);
         }];
+        _tagView.tagContent.lineSpace = -7;
+        self.clipsToBounds = true;
+        
+        _addFriend = [[UIButton alloc] init];
+        [self.contentView addSubview:_addFriend];
+        [_addFriend mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.width.height.mas_equalTo(KADDFRIENDWIDTH);
+            make.centerY.equalTo(self.contentView);
+            make.right.equalTo(self.contentView).offset(-KFACEMARGIN);
+        }];
+        _addFriend.layer.cornerRadius = KADDFRIENDWIDTH/2;
+        _addFriend.clipsToBounds = true;
+        _addFriend.backgroundColor = [UIColor redColor];
     }
     return self;
 }
