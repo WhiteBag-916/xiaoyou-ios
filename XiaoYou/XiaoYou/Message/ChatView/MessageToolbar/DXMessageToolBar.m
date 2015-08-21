@@ -330,6 +330,9 @@
     self.recordButton.titleLabel.font = [UIFont systemFontOfSize:15.0];
     [self.recordButton setTitleColor:[UIColor darkGrayColor] forState:UIControlStateNormal];
     [self.recordButton setBackgroundImage:[[UIImage imageNamed:@"chatBar_recordBg"] stretchableImageWithLeftCapWidth:10 topCapHeight:10] forState:UIControlStateNormal];
+    [self.recordButton setTitle:@"按住|说话" forState:UIControlStateNormal];
+    [self.recordButton setTitle:@"松开|结束" forState:UIControlStateHighlighted];
+    [self.recordButton setTintColor:[UIColor hexChangeFloat:@"5b5959"]];
     [self.recordButton setBackgroundImage:[[UIImage imageNamed:@"chatBar_recordSelectedBg"] stretchableImageWithLeftCapWidth:10 topCapHeight:10] forState:UIControlStateHighlighted];
 //    [self.recordButton setTitle:kTouchToRecord forState:UIControlStateNormal];
 //    [self.recordButton setTitle:kTouchToFinish forState:UIControlStateHighlighted];

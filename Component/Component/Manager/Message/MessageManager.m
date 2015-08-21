@@ -15,6 +15,12 @@
 
 #define kMessageManagerSyncQueue @"kMessageManagerSyncQueue"
 
+typedef enum : NSUInteger {
+    SYSTEM_MESSAGE,
+    FRIEND_APPLY,
+    GROUP_APPLY,
+} PUSH_Message_TYPE;
+
 
 @interface MessageManager ()<EMChatManagerDelegate>
 
@@ -88,7 +94,27 @@ DEF_SINGLETON(MessageManager);
 
 -(void)didReceiveMessage:(EMMessage *)message
 {
-
+    [message updateMessageExtToDB];
+    
+    if ([message.messageBodies[0][@"ext"][@"server_flag"] isEqualToString:@"true"])
+    {
+        switch ([message.messageBodies[0][@"msg"][@"msg"][@"type"] integerValue])
+        {
+            case SYSTEM_MESSAGE:
+                NSLog(@"系统消息推送");
+                break;
+            case FRIEND_APPLY:
+                NSLog(@"好友申请推送");
+                break;
+            case GROUP_APPLY:
+                NSLog(@"入社申请推送");
+                break;
+                
+            default:
+                break;
+        }
+    }
+    
 }
 
 
