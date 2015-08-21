@@ -110,36 +110,38 @@ NSString *const kMessageTableViewCell = @"MessageTableViewCellId";
     return self;
 }
 
--(void)setCellInfo:(NSDictionary *) dic
+-(void)setCellInfo:(id) dic
 {
-    if ([dic[@"type"] isEqualToString:@"1"])
-    {
-        self.headImageView.image = [UIImage imageNamed:@"friend-requests"];
-        self.headImageView.clipsToBounds = NO;
-        self.nameLabel.text = @"好友申请";
-        self.badgeNumberLabel.text = @"";
-        self.timeLabel.text = @"10:29";
-        self.messageLabel.text = @"小红想添加你为好友";
-    }
-    else if ([dic[@"type"] isEqualToString:@"2"])
-    {
-        self.nameLabel.text = @"网球社";
-        self.badgeNumberLabel.text = @"";
-        self.timeLabel.text = @"10:29";
-        self.messageLabel.text = @"动次打次";
-        self.headImageView.image = nil;
-//        self.headImageView.backgroundColor = [UIColor hexChangeFloat:@"258f74"];
-        self.headImageView.image = [UIImage imageNamed:@"new-remind-number@2x"];
-        self.defaultLabel.text = @"社";
-    }
-    else
-    {
-        self.headImageView.image = [UIImage imageNamed:@"default_head"];
-        self.nameLabel.text = @"山本伊朗";
-        self.badgeNumberLabel.text = @"99";
-        self.timeLabel.text = @"10:29";
-        self.messageLabel.text = @"新生报到通知";
-    }
+    EMConversation * conversation = dic;
+    _messageLabel.text =  conversation.latestMessage.messageBodies[0][@"msg"];
+//    if ([dic[@"type"] isEqualToString:@"1"])
+//    {
+//        self.headImageView.image = [UIImage imageNamed:@"friend-requests"];
+//        self.headImageView.clipsToBounds = NO;
+//        self.nameLabel.text = @"好友申请";
+//        self.badgeNumberLabel.text = @"";
+//        self.timeLabel.text = @"10:29";
+//        self.messageLabel.text = @"小红想添加你为好友";
+//    }
+//    else if ([dic[@"type"] isEqualToString:@"2"])
+//    {
+//        self.nameLabel.text = @"网球社";
+//        self.badgeNumberLabel.text = @"";
+//        self.timeLabel.text = @"10:29";
+//        self.messageLabel.text = @"动次打次";
+//        self.headImageView.image = nil;
+////        self.headImageView.backgroundColor = [UIColor hexChangeFloat:@"258f74"];
+//        self.headImageView.image = [UIImage imageNamed:@"new-remind-number@2x"];
+//        self.defaultLabel.text = @"社";
+//    }
+//    else
+//    {
+//        self.headImageView.image = [UIImage imageNamed:@"default_head"];
+//        self.nameLabel.text = @"山本伊朗";
+//        self.badgeNumberLabel.text = @"99";
+//        self.timeLabel.text = @"10:29";
+//        self.messageLabel.text = @"新生报到通知";
+//    }
     
 }
 

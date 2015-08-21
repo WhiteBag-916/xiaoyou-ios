@@ -7,7 +7,7 @@
 //
 
 #import "ChooseSchoolTableViewCell.h"
-#import "YUtils+Component.h"
+#import "YUtils+UI.h"
 
 NSString *const kChooseSchoolTableViewCell = @"ChooseSchoolTableViewCellId";
 

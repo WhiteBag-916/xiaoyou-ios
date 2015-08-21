@@ -17,7 +17,6 @@
 {
     NSDictionary *parameter = [YUtils getParameter:@{@"password": _password,
                                                      @"schoolCode": _schoolCode,
-                                                     @"deviceId": _deviceId,
                                                      @"studentNo": _studentNo,
                                                      @"platform": _platform}];
     NSString *url = [YUtils getUrl:api_user_login];

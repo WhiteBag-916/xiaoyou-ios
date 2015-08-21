@@ -73,24 +73,6 @@
     return result;
 }
 
-+ (UILabel *)initLabel:(UIFont *)font color:(UIColor *)color text:(NSString *)text frame:(CGRect)frame alignment:(NSTextAlignment)alignment
-{
-    UILabel *label = [[UILabel alloc] initWithFrame:frame];
-    label.font = font;
-    label.textColor = color;
-    label.text = text;
-    label.textAlignment = alignment;
-    
-    return label;
-}
-
-+ (UIImageView *)initImageView:(UIImage *)image frame:(CGRect)frame
-{
-    UIImageView *imageView = [[UIImageView alloc] initWithFrame:frame];
-    imageView.image = image;
-    return imageView;
-}
-
 + (NSString*)dictionaryToJson:(NSDictionary *)dic
 {
     

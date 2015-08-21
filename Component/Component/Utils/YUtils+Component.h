@@ -26,24 +26,6 @@
 + (NSString *)distanceTimeToday:(NSDate *)date;
 
 /*********************************************************************
- 函数名称 : initLabel
- 函数描述 : 构造label
- 参数 : 你懂的
- 返回值 : 你懂的
- 作者 : XiongChen
- *********************************************************************/
-+ (UILabel *)initLabel:(UIFont *)font color:(UIColor *)color text:(NSString *)text frame:(CGRect)frame alignment:(NSTextAlignment)alignment;
-
-/*********************************************************************
- 函数名称 : initImageView
- 函数描述 : 构造imageView
- 参数 : 你懂的
- 返回值 : 你懂的
- 作者 : XiongChen
- *********************************************************************/
-+ (UIImageView *)initImageView:(UIImage *)image frame:(CGRect)frame;
-
-/*********************************************************************
  函数名称 : dictionaryToJson
  函数描述 : dic转json
  参数 : 你懂的
@@ -63,5 +45,6 @@
  作者 : XiongChen
  *********************************************************************/
 + (NSString*)initImageProcessingUrl:(NSString *)type width:(int)imageWidth height:(int)imageHeight;
+
 
 @end
