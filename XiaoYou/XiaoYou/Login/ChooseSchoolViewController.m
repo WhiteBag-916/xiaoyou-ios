@@ -7,14 +7,27 @@
 //
 
 #import "ChooseSchoolViewController.h"
-#import "Masonry.h"
 #import "ProvisionManager.h"
-#import "SlideNavigationController.h"
-#import "XYTabBarViewController.h"
-#import "YDefine.h"
 #import "AppDelegate+RootVC.h"
+#import "SchoolListModel.h"
+#import "PinYinForObjc.h"
+#import "UIImageView+WebCache.h"
+#import "YTextField.h"
+#import "YTableView.h"
+#import "YTableViewCell.h"
+#import "ChooseSchoolTableViewCell.h"
 
 @interface ChooseSchoolViewController ()
+<UITextFieldDelegate
+,UITableViewDataSource
+,UITableViewDelegate>
+
+@property (nonatomic, strong) YTextField *schoolTextField;
+@property (nonatomic, strong) YTableView *tableView;
+@property (nonatomic, strong) UIImageView *schoolLogoImageView;
+@property (nonatomic, strong) NSMutableArray *schoolSearchList;//服务器获取数据后才进行的搜索
+@property (nonatomic, strong) NSMutableArray *schoolList;//默认数据
+@property (nonatomic, strong) NSArray *schoolListBySeaver;//服务器的联系人列表，用于存储学校信息
 
 @end
 
@@ -24,17 +37,361 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    self.title = @"登录";
+    self.title = @"选学校";
+    [self showCustomNavigationNextButton];
+    self.view.backgroundColor = KCOLORGREEN_e6eae9;
     
-    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-    [button setTitle:@"登录" forState:UIControlStateNormal];
-    [button setBackgroundColor:[UIColor redColor]];
-    [button addTarget:self action:@selector(goLogin) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:button];
+    [self initSchoolArray];
+    [self setupUI];
     
-    [button mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.edges.mas_equalTo(self.view).insets(UIEdgeInsetsMake(100, 100, 100, 100));
+    _schoolTextField.text = [YShareData defaultData][kShareData_SchoolName];
+    [self searchSchoolByKey:YES];
+    
+//    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+//    [button setTitle:@"登录" forState:UIControlStateNormal];
+//    [button setBackgroundColor:[UIColor redColor]];
+//    [button addTarget:self action:@selector(goLogin) forControlEvents:UIControlEventTouchUpInside];
+//    [self.view addSubview:button];
+//    
+//    [button mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.edges.mas_equalTo(self.view).insets(UIEdgeInsetsMake(100, 100, 100, 100));
+//    }];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [self schoolListRequest];
+    
+    [self resetRightButton];
+}
+
+#pragma mark - private
+-(void)setupUI {
+    //schoolview
+    UIView *schoolView = [UIView new];
+    schoolView.backgroundColor = KCOLORWHITE;
+    [self.view addSubview:schoolView];
+    [schoolView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.right.equalTo(self.view);
+        make.top.mas_equalTo(SCALE_NUM(28));
+        make.height.mas_equalTo(SCALE_NUM(49));
     }];
+    
+    //logo
+    _schoolLogoImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"login_school"]];
+    [schoolView addSubview:_schoolLogoImageView];
+    [_schoolLogoImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.mas_equalTo(SCALE_NUM(12));
+        make.width.mas_equalTo(SCALE_NUM(24));
+        make.height.mas_equalTo(SCALE_NUM(27));
+        make.centerY.equalTo(schoolView);
+    }];
+    
+    //line
+    UIView *lineView = [UIView new];
+    lineView.backgroundColor = [UIColor hexChangeFloat:@"4e5659"];
+    [schoolView addSubview:lineView];
+    [lineView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(_schoolLogoImageView.mas_right).offset(SCALE_NUM(12));
+        make.width.mas_equalTo(0.5);
+        make.height.equalTo(schoolView).offset(SCALE_NUM(-13));
+        make.centerY.equalTo(schoolView);
+    }];
+    
+    //textField
+    _schoolTextField = [[YTextField alloc] init];
+    _schoolTextField.delegate = self;
+    [_schoolTextField registerChanged:self action:@selector(textFieldValueChanged:)];
+    [schoolView addSubview:_schoolTextField];
+    [_schoolTextField mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(lineView.mas_right).offset(SCALE_NUM(14));
+        make.right.mas_equalTo(SCALE_NUM(-14));
+        make.top.height.equalTo(schoolView);
+    }];
+    
+    //tableview
+    _tableView = [[YTableView alloc]init];
+    _tableView.dataSource = self;
+    _tableView.delegate = self;
+    _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    _tableView.backgroundColor = KCOLORGREEN_e6eae9;
+    [_tableView registerClass:[ChooseSchoolTableViewCell class] forCellReuseIdentifier:kChooseSchoolTableViewCell];
+    [self.view addSubview:_tableView];
+    _tableView.hidden = YES;
+    [_tableView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.right.bottom.equalTo(self.view);
+        make.top.equalTo(schoolView.mas_bottom);
+    }];
+}
+
+- (void)resetRightButton {
+    if ([_schoolTextField.text isEmpty]) {
+        self.navigationItem.rightBarButtonItem.enabled = NO;
+    }else{
+        self.navigationItem.rightBarButtonItem.enabled = YES;
+    }
+}
+
+- (void)initSchoolArray
+{
+    //读取列表
+    NSString *path = [[NSBundle mainBundle] pathForResource:@"SchollList" ofType:@"txt"];
+    NSString *schoolListStr = [NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:nil];
+    //去掉空格
+    NSString *formatStr =  [schoolListStr stringByReplacingOccurrencesOfString:@"\n" withString:@""];
+    //组成数组
+    NSArray *schoolNameArray = [formatStr componentsSeparatedByString:@","];
+    
+    //组成model
+    self.schoolList = [[NSMutableArray alloc] init];
+    [schoolNameArray enumerateObjectsUsingBlock:^(NSString *schoolName, NSUInteger idx, BOOL *stop) {
+        SchoolListModel *model = [[SchoolListModel alloc] init];
+        model.schoolName = schoolName;
+        [_schoolList addObject:model];
+    }];
+}
+
+//根据服务器的学校列表，更新总列表
+- (void)updateSchoolListArray:(NSArray *)schoolArray
+{
+    //先删除重复的
+    [_schoolList enumerateObjectsUsingBlock:^(SchoolListModel *schoolModel, NSUInteger idx1, BOOL *stop1) {
+        [schoolArray enumerateObjectsUsingBlock:^(SchoolListModel *obj, NSUInteger idx2, BOOL *stop2) {
+            if ([obj.schoolName isEqualToString:schoolModel.schoolName])
+            {
+                [_schoolList removeObjectAtIndex:idx1];
+                *stop2 = YES;
+            }
+        }];
+    }];
+    
+    //把新的加在最前面
+    [_schoolList insertObjects:schoolArray atIndexes:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0, schoolArray.count)]];
+    
+    [self searchSchoolByKey:YES];
+    [self checkTextChangeLogoImage];
+}
+
+//筛选  参数：完全匹配
+- (void)searchSchoolByKey:(BOOL)isAllCheck
+{
+    NSString *searchKey = [_schoolTextField.text lowercaseString];
+    
+    if (nil == _schoolSearchList)
+    {
+        _schoolSearchList = [[NSMutableArray alloc] init];
+    }
+    
+    [_schoolSearchList removeAllObjects];
+    
+    if (searchKey.length > 0)
+    {
+        [_schoolList enumerateObjectsUsingBlock:^(SchoolListModel *model, NSUInteger idx, BOOL *stop) {
+            NSRange range = [model.schoolName rangeOfString:searchKey];
+            if (range.location != NSNotFound)
+            {
+                //汉字
+                [_schoolSearchList addObject:model];
+            }
+            else if (!isAllCheck)
+            {
+                NSString *tempPinYinStr = [PinYinForObjc chineseConvertToPinYin:model.schoolName];
+                NSRange titleResult=[tempPinYinStr rangeOfString:searchKey options:NSCaseInsensitiveSearch];
+                if (titleResult.location != NSNotFound)
+                {
+                    //全拼
+                    [_schoolSearchList addObject:model];
+                }
+                else
+                {
+                    //首字母
+                    NSString *tempPinYinHeadStr = [PinYinForObjc chineseConvertToPinYinHead:model.schoolName];
+                    NSRange titleHeadResult=[tempPinYinHeadStr rangeOfString:searchKey options:NSCaseInsensitiveSearch];
+                    if (titleHeadResult.location != NSNotFound)
+                    {
+                        [_schoolSearchList addObject:model];
+                    }
+                }
+                
+            }
+        }];
+    }
+    else
+    {
+        [_schoolSearchList addObjectsFromArray:_schoolList];
+    }
+    
+    [_tableView reloadData];
+    _tableView.hidden = NO;
+}
+
+//完全匹配，换图标
+- (void)checkTextChangeLogoImage
+{
+    NSString *searchText = _schoolTextField.text;
+    
+    __block NSString *logoImageStr;
+    //相同
+    [_schoolList enumerateObjectsUsingBlock:^(SchoolListModel *schoolModel, NSUInteger idx, BOOL *stop) {
+        if ([searchText isEqualToString:schoolModel.schoolName])
+        {
+            logoImageStr = schoolModel.schoolLogoPath;
+            *stop = YES;
+        }
+    }];
+    
+    [self updateLogo:logoImageStr];
+}
+
+//更新logo
+- (void)updateLogo:(NSString *)logoImageStr
+{
+    if (logoImageStr.length > 0)
+    {
+        NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@",api_icon_base_url,logoImageStr]];
+        [_schoolLogoImageView sd_setImageWithURL:url placeholderImage:nil];
+    }
+    else
+    {
+        [_schoolLogoImageView setImage:[UIImage imageNamed:@"login_school"]];
+    }
+}
+
+- (void)showAlertViewWithMessage:(NSString *)message{
+    YCommonAlertView *alertView = [[YCommonAlertView alloc] initWithTitle:@"" message:message buttonTitles:@"OK", nil];
+    [alertView show];
+}
+#pragma mark - API
+//获取学校列表
+- (void)schoolListRequest{
+    [[ProvisionManager sharedInstance] schoolListReq:_schoolTextField.text block:^(YActionMessage *message) {
+        if (message.isSuccess) {
+            self.schoolListBySeaver = [NSArray arrayWithArray:message.object];
+            
+            [self updateSchoolListArray:message.object];
+            
+            _tableView.hidden = NO;
+        } else {
+            YLogE(@"schoolListRequest: %@",message);
+        }
+    }];
+}
+
+//是否是录入学校
+- (void)checkSchoolRequest
+{
+    [[ProvisionManager sharedInstance] schoolListReq:_schoolTextField.text block:^(YActionMessage *message) {
+        if (message.isSuccess) {
+            //选取学校
+            __block SchoolListModel *schoolModel=nil;
+            [message.object enumerateObjectsUsingBlock:^(SchoolListModel *model, NSUInteger idx, BOOL *stop) {
+                if ([_schoolTextField.text isEqualToString:model.schoolName])
+                {
+                    schoolModel = model;
+                    *stop = YES;
+                }
+            }];
+            
+            [self pushToNext:schoolModel];
+        } else {
+            YLogE(@"checkSchoolRequest: %@",message);
+        }
+    }];
+}
+
+#pragma mark - Action
+//下一步
+- (void)onNavigationRightButtonClicked {
+    
+    [self goLogin];
+    
+    //判断输入文字是否是数组中得文字全匹配
+    __block BOOL isExist = NO;
+    [_schoolList enumerateObjectsUsingBlock:^(SchoolListModel *school, NSUInteger idx, BOOL *stop) {
+        if ([school.schoolName isEqualToString:_schoolTextField.text])
+        {
+            isExist = YES;
+            
+            *stop = YES;
+        }
+    }];
+    
+    if (!isExist) {
+        [self showAlertViewWithMessage:@"学校输入错误"];
+        return;
+    }
+    
+    //选取学校
+    __block SchoolListModel *schoolModel=nil;
+    [self.schoolListBySeaver enumerateObjectsUsingBlock:^(SchoolListModel *model, NSUInteger idx, BOOL *stop) {
+        if ([_schoolTextField.text isEqualToString:model.schoolName])
+        {
+            schoolModel = model;
+            *stop = YES;
+        }
+    }];
+    
+    if (nil == schoolModel)
+    {
+        //去验证，是否有权限
+        [self checkSchoolRequest];
+        return;
+    }
+    
+    [self pushToNext:schoolModel];
+}
+
+//跳转
+- (void)pushToNext:(SchoolListModel *)schoolModel
+{
+//    [CNUserData sharedUserData].schoolInfo = schoolModel;
+//    
+//    CNLoginInformationViewController *informationVC = [[CNLoginInformationViewController alloc] init];
+//    
+//    [self.navigationController pushViewController:informationVC animated:YES];
+}
+
+#pragma mark - UITableViewDataSource,UITableViewDelegate
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    return _schoolSearchList.count;
+}
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    ChooseSchoolTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kChooseSchoolTableViewCell];
+    
+    SchoolListModel *school = (SchoolListModel *)_schoolSearchList[indexPath.row];
+    [cell initData:school.schoolName];
+
+    return cell;
+}
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    //    tableView.hidden = YES;
+    [self.view endEditing:YES];
+    [tableView deselectRowAtIndexPath:indexPath animated:NO];
+    SchoolListModel *school = (SchoolListModel *)_schoolSearchList[indexPath.row];
+    _schoolTextField.text = school.schoolName;
+    [self updateLogo:school.schoolLogoPath];
+    //    _tableView.hidden = YES;
+    self.navigationItem.rightBarButtonItem.enabled = YES;
+    
+    //刷新列表
+    [self searchSchoolByKey:YES];
+}
+
+#pragma mark - UITextFieldDelegate
+- (BOOL)textFieldShouldReturn:(UITextField *)textField{
+    
+    [textField resignFirstResponder];
+    
+    return YES;
+}
+
+- (void)textFieldValueChanged:(UITextField *)sender{
+    [self resetRightButton];
+    
+    [self searchSchoolByKey:NO];
+    
+    [self checkTextChangeLogoImage];
 }
 
 - (void)goLogin

@@ -28,5 +28,7 @@
 
 #import "Masonry.h"
 #import "YDefine.h"
+#import "YShareData.h"
+#import "YCommonAlertView.h"
 
 #endif

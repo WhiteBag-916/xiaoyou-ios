@@ -49,5 +49,8 @@
 
 - (void)showCustomNavigationPublishButton;
 
+//导航栏右侧下一步按钮
+- (void)showCustomNavigationNextButton;
+
 
 @end

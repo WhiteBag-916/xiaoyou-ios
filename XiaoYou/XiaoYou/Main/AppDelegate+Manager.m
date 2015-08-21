@@ -28,6 +28,9 @@
     
     //注册umeng
     [[YCommonShare sharedInstance] registUmengSDK];
+    
+    //数据
+    [YShareData defaultData][kShareData_SchoolName] = [[NSUserDefaults standardUserDefaults] objectForKey:kShareData_SchoolName];
 }
 
 @end
