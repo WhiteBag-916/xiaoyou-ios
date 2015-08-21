@@ -33,6 +33,8 @@
 		20DA63761B7482DE007D22AC /* FeedListTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 20DA63751B7482DE007D22AC /* FeedListTableView.m */; };
 		20DAF99F1B8713F6005B7932 /* login_school@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 20DAF99D1B8713F6005B7932 /* login_school@2x.png */; };
 		20DAF9A01B8713F6005B7932 /* login_school@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 20DAF99E1B8713F6005B7932 /* login_school@3x.png */; };
+		20DAF9A51B871D31005B7932 /* SchollList.txt in Resources */ = {isa = PBXBuildFile; fileRef = 20DAF9A41B871D31005B7932 /* SchollList.txt */; };
+		20DAF9A81B871E45005B7932 /* ChooseSchoolTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 20DAF9A71B871E45005B7932 /* ChooseSchoolTableViewCell.m */; };
 		20DBFD591B4FA122009134D0 /* libYFramework.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 20DBFD581B4FA122009134D0 /* libYFramework.a */; };
 		20DBFD5B1B4FA125009134D0 /* libModel.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 20DBFD5A1B4FA125009134D0 /* libModel.a */; };
 		20DBFD5D1B4FA127009134D0 /* libComponent.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 20DBFD5C1B4FA127009134D0 /* libComponent.a */; };
@@ -412,6 +414,9 @@
 		20DA63751B7482DE007D22AC /* FeedListTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedListTableView.m; sourceTree = "<group>"; };
 		20DAF99D1B8713F6005B7932 /* login_school@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "login_school@2x.png"; sourceTree = "<group>"; };
 		20DAF99E1B8713F6005B7932 /* login_school@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "login_school@3x.png"; sourceTree = "<group>"; };
+		20DAF9A41B871D31005B7932 /* SchollList.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = SchollList.txt; sourceTree = "<group>"; };
+		20DAF9A61B871E45005B7932 /* ChooseSchoolTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChooseSchoolTableViewCell.h; sourceTree = "<group>"; };
+		20DAF9A71B871E45005B7932 /* ChooseSchoolTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChooseSchoolTableViewCell.m; sourceTree = "<group>"; };
 		20DBFB581B4F9CE3009134D0 /* libXModel.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libXModel.a; path = "../XModel/build/Debug-iphoneos/libXModel.a"; sourceTree = "<group>"; };
 		20DBFB5A1B4F9CE6009134D0 /* libPods-XiaoYou-SDWebImage.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-XiaoYou-SDWebImage.a"; path = "/Users/xiongchen/Documents/校友网/code/xiaoyou_ios/Pods/../build/Debug-iphoneos/libPods-XiaoYou-SDWebImage.a"; sourceTree = "<absolute>"; };
 		20DBFB5C1B4F9CEC009134D0 /* libXComponent.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libXComponent.a; path = "../XComponent/build/Debug-iphoneos/libXComponent.a"; sourceTree = "<group>"; };
@@ -1125,6 +1130,7 @@
 		20DBFD721B4FA90B009134D0 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				20DAF9A41B871D31005B7932 /* SchollList.txt */,
 				334670611B841F1E00A8628A /* message */,
 				3334AC4A1B83319500FDDCCB /* contacts */,
 				20E18D891B808E42005B75EE /* Common */,
@@ -1141,6 +1147,8 @@
 			children = (
 				20DC87F01B5F3DC70019DC7F /* ChooseSchoolViewController.h */,
 				20DC87F11B5F3DC70019DC7F /* ChooseSchoolViewController.m */,
+				20DAF9A61B871E45005B7932 /* ChooseSchoolTableViewCell.h */,
+				20DAF9A71B871E45005B7932 /* ChooseSchoolTableViewCell.m */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -2404,6 +2412,7 @@
 				2076A3191B81DA3E001FFBAC /* toolbar-mine@3x.png in Resources */,
 				3335C3641B8178E8007DEFD4 /* chatFire_audioPlaying0@2x.png in Resources */,
 				20E9421D1B833D10009C2DC6 /* wechat_friends@3x.png in Resources */,
+				20DAF9A51B871D31005B7932 /* SchollList.txt in Resources */,
 				20E18DD11B808E42005B75EE /* tag-grey@3x.png in Resources */,
 				20E942361B833D10009C2DC6 /* sheet_delete@2x.png in Resources */,
 				3335C36A1B8178E8007DEFD4 /* chatFire_audioPlaying3@2x.png in Resources */,
@@ -2688,6 +2697,7 @@
 				20DA63761B7482DE007D22AC /* FeedListTableView.m in Sources */,
 				207F808D1B709A1E005E8F6A /* AppDelegate+Notification.m in Sources */,
 				6592DCDC1B806A9B004CD118 /* ContactsTableViewCell.m in Sources */,
+				20DAF9A81B871E45005B7932 /* ChooseSchoolTableViewCell.m in Sources */,
 				3331223A1B806EDB00D3D032 /* EMChatTimeCell.m in Sources */,
 				333122591B806EDB00D3D032 /* EMSDWebImageDownloaderOperation.m in Sources */,
 				333122631B806EDB00D3D032 /* UIImageView+EMWebCache.m in Sources */,
