@@ -35,9 +35,7 @@
                 }
             }];
         }
-        [self mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.left.mas_equalTo([self.subviews[4] mas_left]);
-        }];
+        [self updateSize:5];
     }
     return self;
 }
@@ -45,7 +43,8 @@
 
 - (void)updateTag:(NSArray *)tags {
     int index;
-    for (index = 0; index < tags.count; index ++) {
+    int count = tags.count>5?5:(int)tags.count;
+    for (index = 0; index < count; index ++) {
         UILabel *label = (UILabel *)self.subviews[index];
         label.hidden = false;
         label.text = tags[index];
@@ -54,6 +53,17 @@
         [self.subviews[index] setHidden:true];
         index ++;
     }
+    
+    [self updateSize:count];
+}
+- (void)updateSize:(int)count {
+    float width = 0;
+    if (count != 0) {
+        width = (count-1)*(KTAGSIZE+KMARGIN)+KTAGSIZE;
+    }
+    [self mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.width.mas_equalTo(width);
+    }];
 }
 
 @end

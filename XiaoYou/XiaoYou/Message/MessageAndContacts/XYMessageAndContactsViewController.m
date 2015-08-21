@@ -21,7 +21,7 @@
 
 #define WeakSelf(weakSelf)  __weak __typeof(&*self)weakSelf = self;
 
-@interface XYMessageAndContactsViewController ()
+@interface XYMessageAndContactsViewController ()<IChatManagerDelegate>
 @property (strong, nonatomic) UIView * navigationView;
 @property (strong, nonatomic) UIButton *chatButton;
 @property (strong, nonatomic) UIButton *contactsButton;
@@ -49,8 +49,8 @@
     //聊天列表请求
     [[MessageManager sharedInstance] getMessageListData:^(YActionMessage *message) {
         YLogD(@"%@",message);
-        weakSelf.messageDataSource = [NSMutableArray arrayWithArray:message.object];
-        [weakSelf.messageTableView refreshTableView:self.messageDataSource];
+//        weakSelf.messageDataSource = [NSMutableArray arrayWithArray:message.object];
+//        [weakSelf.messageTableView refreshTableView:self.messageDataSource];
     }];
     //联系人列表请求
     [[ContactManager sharedInstance] getContactsListData:^(YActionMessage *message) {
@@ -64,11 +64,93 @@
         [weakSelf.contactsTableView refreshTableView:self.contactsDataSource];
     }];
     
+    [[EaseMob sharedInstance].chatManager loadAllConversationsFromDatabaseWithAppend2Chat:NO];
+    [self removeEmptyConversationsFromDB];
+    
 }
+
+- (void)removeEmptyConversationsFromDB
+{
+    NSArray *conversations = [[EaseMob sharedInstance].chatManager conversations];
+    NSMutableArray *needRemoveConversations;
+    for (EMConversation *conversation in conversations) {
+        if (!conversation.latestMessage || (conversation.conversationType == eConversationTypeChatRoom)) {
+            if (!needRemoveConversations) {
+                needRemoveConversations = [[NSMutableArray alloc] initWithCapacity:0];
+            }
+            
+            [needRemoveConversations addObject:conversation.chatter];
+        }
+    }
+    
+    if (needRemoveConversations && needRemoveConversations.count > 0) {
+        [[EaseMob sharedInstance].chatManager removeConversationsByChatters:needRemoveConversations
+                                                             deleteMessages:YES
+                                                                append2Chat:NO];
+    }
+}
+
 
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated navigationBarHidden:NO tabBarHidden:NO];
+    
+    [self refreshDataSource];
+    [self registerNotifications];
+}
+
+//刷新数据源
+-(void)refreshDataSource
+{
+    _messageDataSource = [self loadDataSource];
+    [_messageTableView refreshTableView:_messageDataSource];
+    [self hideHud];
+}
+
+- (NSMutableArray *)loadDataSource
+{
+    NSMutableArray *ret = nil;
+    NSArray *conversations = [[EaseMob sharedInstance].chatManager conversations];
+    
+    NSArray* sorte = [conversations sortedArrayUsingComparator:
+                      ^(EMConversation *obj1, EMConversation* obj2){
+                          EMMessage *message1 = [obj1 latestMessage];
+                          EMMessage *message2 = [obj2 latestMessage];
+                          if(message1.timestamp > message2.timestamp) {
+                              return(NSComparisonResult)NSOrderedAscending;
+                          }else {
+                              return(NSComparisonResult)NSOrderedDescending;
+                          }
+                      }];
+    
+    ret = [[NSMutableArray alloc] initWithArray:sorte];
+    return ret;
+}
+
+#pragma mark - IChatMangerDelegate
+
+-(void)didUnreadMessagesCountChanged
+{
+    [self refreshDataSource];
+}
+
+- (void)didUpdateGroupList:(NSArray *)allGroups error:(EMError *)error
+{
+    [self refreshDataSource];
+}
+
+#pragma mark - registerNotifications
+-(void)registerNotifications{
+    [self unregisterNotifications];
+    [[EaseMob sharedInstance].chatManager addDelegate:self delegateQueue:nil];
+}
+
+-(void)unregisterNotifications{
+    [[EaseMob sharedInstance].chatManager removeDelegate:self];
+}
+
+- (void)dealloc{
+    [self unregisterNotifications];
 }
 
 -(void)viewWillLayoutSubviews

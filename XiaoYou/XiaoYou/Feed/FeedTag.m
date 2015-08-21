@@ -33,12 +33,13 @@
         _tagContent = [[SKTagView alloc] init];
         [self addSubview:_tagContent];
         [_tagContent mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.top.equalTo(_tagIcon.mas_centerY).offset(-KLABELHEIGHT/2);
+            make.top.equalTo(_tagIcon.mas_centerY).offset(-KLABELHEIGHT);
             make.right.bottom.equalTo(self);
-            make.height.mas_equalTo(50);
         }];
         _tagContent.insets = 21;
         _tagContent.lineSpace = 5;
+        _tagContent.singleLine = false;
+        
         [self setIsRelated:true];
         
     }
@@ -48,6 +49,7 @@
 
 
 - (void)setData {
+    _tagContent.preferredMaxLayoutWidth = self.frame.size.width;
     [_tagContent removeAllTags];
     NSArray *labelName = @[@"金融", @"留学咨询", @"学校生活", @"工作", @"互联网信息"];
     for (int i = 0; i < labelName.count; i++) {
