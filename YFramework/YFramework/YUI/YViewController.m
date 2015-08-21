@@ -158,29 +158,46 @@
 #pragma mark - 右导航栏
 //导航栏右侧，搜索按钮
 - (void)showCustomNavigationSearchButton {
-    [self showNomalNavigationRightButtonWithImage:@"feed-find-someone-search" action:@selector(onNavigationRightButtonClicked) frame:CGRectMake(0, 0, 42, 64)];
+    [self showNomalNavigationRightButtonWithImage:@"" action:@selector(onNavigationRightButtonClicked) imgName:@"feed-find-someone-search" frame:CGRectMake(0, 0, 42, 64)];
 }
 
 //导航栏右侧，更多按钮
 - (void)showCustomNavigationMoreButton {
-    [self showNomalNavigationRightButtonWithImage:@"more" action:@selector(onNavigationRightButtonClicked) frame:CGRectMake(0, 0, 30, 64)];
+    [self showNomalNavigationRightButtonWithImage:@"" action:@selector(onNavigationRightButtonClicked) imgName:@"more" frame:CGRectMake(0, 0, 30, 64)];
 }
 
 //导航栏右侧，确认按钮
 - (void)showCustomNavigationSureButton {
-    [self showNomalNavigationRightButtonWithImage:@"complete-grey" action:@selector(onNavigationRightButtonClicked) frame:CGRectMake(0, 0, 20, 15)];
+    [self showNomalNavigationRightButtonWithImage:@"" action:@selector(onNavigationRightButtonClicked) imgName:@"complete-grey" frame:CGRectMake(0, 0, 20, 15)];
 }
 //导航栏右侧，确认按钮
 - (void)showCustomNavigationPublishButton {
-    [self showNomalNavigationRightButtonWithImage:@"complete-grey" action:@selector(onNavigationRightButtonClicked) frame:CGRectMake(0, 0, 20, 15)];
+    [self showNomalNavigationRightButtonWithImage:@"" action:@selector(onNavigationRightButtonClicked) imgName:@"complete-grey" frame:CGRectMake(0, 0, 20, 15)];
 }
 
-- (void)showNomalNavigationRightButtonWithImage:(NSString *)image action:(SEL)selector frame:(CGRect)frame {
+//导航栏右侧下一步按钮
+- (void)showCustomNavigationNextButton {
+    [self showNomalNavigationRightButtonWithImage:@"下一步" action:@selector(onNavigationRightButtonClicked) imgName:nil frame:CGRectMake(0, 0, 20, 15)];
+}
+
+- (void)showNomalNavigationRightButtonWithImage:(NSString *)title action:(SEL)selector imgName:(NSString *)imgName frame:(CGRect)frame {
     //right barbutton view
     _navigationRightButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [_navigationRightButton setImage:[UIImage imageNamed:image] forState:UIControlStateNormal];
-    [_navigationRightButton setImage:[UIImage imageNamed:image] forState:UIControlStateHighlighted];
     _navigationRightButton.frame = frame;
+    if (nil != imgName)
+    {
+        [_navigationRightButton setImage:[UIImage imageNamed:imgName] forState:UIControlStateNormal];
+        [_navigationRightButton setImage:[UIImage imageNamed:imgName] forState:UIControlStateHighlighted];
+    }
+    else
+    {
+        [_navigationRightButton setTitle:title forState:UIControlStateNormal];
+        [_navigationRightButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        [_navigationRightButton setTitleColor:[UIColor hexChangeFloat:@"c3c9c9"] forState:UIControlStateDisabled];
+        _navigationRightButton.titleLabel.font = [UIFont fontWithName:@"Helvetica" size:15.0f];
+        [_navigationRightButton sizeToFit];
+    }
+
     [_navigationRightButton addTarget:self action:selector forControlEvents:UIControlEventTouchUpInside];
     UIBarButtonItem *btnNavRightItem = [[UIBarButtonItem alloc] initWithCustomView:_navigationRightButton];
     self.navigationItem.rightBarButtonItem = btnNavRightItem;

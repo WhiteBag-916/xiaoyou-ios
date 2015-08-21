@@ -12,6 +12,7 @@
 #import "YShareDataDefine.h"
 #import "YManagerCenter.h"
 #import "LoginResp.h"
+#import "SchoolListAction.h"
 
 #define kProvisionManagerSyncQueue @"kProvisionManagerSyncQueue"
 
@@ -83,6 +84,17 @@ DEF_SINGLETON(ProvisionManager);
                 YLogD(@"%@", [YShareData defaultData][kShareData_LoginInfo]);
             }];
         }];
+    }];
+}
+
+//获取学校列表
+- (void)schoolListReq:(NSString *)schoolName block:(ActionCompleteBlock)block {
+    SchoolListAction* action = [[SchoolListAction alloc] init];
+    action.schoolName = schoolName;
+    
+    [YAction startAction:action completionBlock:^(YActionMessage* message) {
+        //主线程处理界面
+        block(message);
     }];
 }
 

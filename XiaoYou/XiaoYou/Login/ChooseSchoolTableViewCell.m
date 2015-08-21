@@ -7,15 +7,46 @@
 //
 
 #import "ChooseSchoolTableViewCell.h"
+#import "YUtils+Component.h"
+
+NSString *const kChooseSchoolTableViewCell = @"ChooseSchoolTableViewCellId";
+
+@interface ChooseSchoolTableViewCell()
+
+@property (nonatomic, strong) UILabel *nameLabel;
+
+@end
 
 @implementation ChooseSchoolTableViewCell
 
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect {
-    // Drawing code
+- (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
+    
+    if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
+        _nameLabel = [YUtils initLabel:CONTENT_FONT(14)
+                                 color:[UIColor blackColor]
+                                  text:@""
+                                 frame:CGRectZero
+                             alignment:NSTextAlignmentLeft];
+        [self.contentView addSubview:_nameLabel];
+        [_nameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.edges.equalTo(self.contentView).insets(UIEdgeInsetsMake(0, 11, 0, 0));
+        }];
+        
+        UIView *line = [[UIView alloc] init];
+        [self.contentView addSubview:line];
+        [line mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.bottom.right.equalTo(self.contentView);
+            make.height.mas_equalTo(1);
+        }];
+        line.backgroundColor = [UIColor hexChangeFloat:@"c0c2c1"];
+        
+        self.contentView.backgroundColor = KCOLORGREEN_e6eae9;
+    }
+    
+    return self;
 }
-*/
 
+- (void)initData:(NSString *)name {
+    _nameLabel.text = name;
+}
 @end

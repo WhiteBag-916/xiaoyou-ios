@@ -8,6 +8,10 @@
 
 #import "YTableViewCell.h"
 
+extern NSString *const kChooseSchoolTableViewCell;
+
 @interface ChooseSchoolTableViewCell : YTableViewCell
+
+- (void)initData:(NSString *)name;
 
 @end

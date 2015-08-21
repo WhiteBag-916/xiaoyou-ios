@@ -18,5 +18,6 @@
 #define kShareData_SchoolCode               @"kShareData_SchoolCode"
 #define kShareData_SchoolIcon               @"kShareData_SchoolIcon"
 //---------------------------------------------------------------------------
+#define kShareData_SchoolName               @"kShareData_SchoolName"
 
 #endif

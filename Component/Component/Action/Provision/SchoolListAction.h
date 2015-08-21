@@ -1,5 +1,5 @@
 //
-//  schoolListAction.h
+//  SchoolListAction.h
 //  Component
 //
 //  Created by 熊宸 on 15/8/21.
@@ -8,6 +8,8 @@
 
 #import "YHTTPRequestAction.h"
 
-@interface schoolListAction : YHTTPRequestAction
+@interface SchoolListAction : YHTTPRequestAction<YAction>
+
+@property (nonatomic, strong) NSString *schoolName;
 
 @end
