@@ -14,7 +14,7 @@
 #import "YColor+Ext.h"
 #import "XYFriendApplyViewController.h"
 #import "XYGroupApplyViewController.h"
-#import "XYSystemMessageViewController.h"
+#import "ChatViewController.h"
 #define kRowHeight                     68
 #define kHeadWidthAndHeight            40
 #define kNameLabelWidth                80
@@ -141,8 +141,9 @@
 
 -(void)tapGestureRecognizerAction
 {
-    XYSystemMessageViewController * systemMessageViewController = [[XYSystemMessageViewController alloc] init];
-    [self.myController.navigationController pushViewController:systemMessageViewController animated:YES needHiddenBottomBar:YES];
+    ChatViewController * chatViewController = [[ChatViewController alloc] initWithChatter:@"yinhui" isGroup:NO];
+    chatViewController.isSystemMessage = YES;
+    [self.myController.navigationController pushViewController:chatViewController animated:YES needHiddenBottomBar:YES];
 }
 
 #pragma mark - UITableViewDataSource和UITableViewDelegate
@@ -229,6 +230,7 @@
         self.myController.hidesBottomBarWhenPushed = YES;
         
         ChatViewController * chatVC = [[ChatViewController alloc] initWithChatter:@"yinhui" isGroup:NO];
+        chatVC.isSystemMessage = NO;
         [self.myController.navigationController pushViewController:chatVC animated:YES needHiddenBottomBar:YES];
     }
     
