@@ -28,7 +28,6 @@
 //#import "ChatGroupDetailViewController.h"
 #import "UIViewController+HUD.h"
 #import "NSDate+Category.h"
-#import "DXMessageToolBar.h"
 #import "DXChatBarMoreView.h"
 #import "ChatViewController+Category.h"
 //#import "ChatroomDetailViewController.h"
@@ -62,13 +61,13 @@
 @property (strong, nonatomic) NSMutableArray *dataSource;//tableView数据源
 @property (strong, nonatomic) SRRefreshView *slimeView;
 @property (strong, nonatomic) UITableView *tableView;
-@property (strong, nonatomic) DXMessageToolBar *chatToolBar;
 
 @property (strong, nonatomic) UIImagePickerController *imagePicker;
 
 @property (strong, nonatomic) MessageReadManager *messageReadManager;//message阅读的管理者
 @property (strong, nonatomic) EMConversation *conversation;//会话管理者
 @property (strong, nonatomic) NSDate *chatTagDate;
+@property (strong, nonatomic) DXMessageToolBar *chatToolBar;
 
 @property (strong, nonatomic) NSMutableArray *messages;
 @property (nonatomic) BOOL isScrollToBottom;
@@ -188,8 +187,11 @@
     [self setupBarButtonItem];
     [self.view addSubview:self.tableView];
     [self.tableView addSubview:self.slimeView];
-    [self.view addSubview:self.chatToolBar];
-    
+    if (_isSystemMessage == NO)
+    {
+        [self.view addSubview:self.chatToolBar];
+
+    }
     //将self注册为chatToolBar的moreView的代理
     if ([self.chatToolBar.moreView isKindOfClass:[DXChatBarMoreView class]]) {
         [(DXChatBarMoreView *)self.chatToolBar.moreView setDelegate:self];
@@ -430,7 +432,14 @@
 - (UITableView *)tableView
 {
     if (_tableView == nil) {
-        _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height - self.chatToolBar.frame.size.height) style:UITableViewStylePlain];
+        if (_isSystemMessage == YES) {
+            _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height) style:UITableViewStylePlain];
+        }
+        else
+        {
+            _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height - self.chatToolBar.frame.size.height) style:UITableViewStylePlain];
+        }
+        
         _tableView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
         _tableView.delegate = self;
         _tableView.dataSource = self;
@@ -513,7 +522,6 @@
             if (timeCell == nil) {
                 timeCell = [[EMChatTimeCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"MessageCellTime"];
                 timeCell.backgroundColor = [UIColor clearColor];
-                timeCell.selectionStyle = UITableViewCellSelectionStyleNone;
             }
             
             timeCell.textLabel.text = (NSString *)obj;
@@ -527,7 +535,6 @@
             if (cell == nil) {
                 cell = [[EMChatViewCell alloc] initWithMessageModel:model reuseIdentifier:cellIdentifier];
                 cell.backgroundColor = [UIColor clearColor];
-                cell.selectionStyle = UITableViewCellSelectionStyleNone;
             }
             cell.messageModel = model;
             

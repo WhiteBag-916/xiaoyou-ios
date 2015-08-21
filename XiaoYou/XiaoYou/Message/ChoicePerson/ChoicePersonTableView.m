@@ -60,7 +60,6 @@
 {
     
     ChoicePersonTableViewCell * cell = [self dequeueReusableCellWithIdentifier:kChoicePersonTableViewCell forIndexPath:indexPath];
-    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     [cell setCellInfo:_dataSouceArr[indexPath.row]];
     
     return cell;

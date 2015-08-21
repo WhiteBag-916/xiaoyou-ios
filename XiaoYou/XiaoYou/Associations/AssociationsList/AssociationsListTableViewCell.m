@@ -49,7 +49,6 @@ NSString *const kAssociationsListTableViewCell = @"AssociationsListTableViewCell
     {
         [self initView];
         
-        self.selectionStyle = UITableViewCellSelectionStyleNone;
         self.contentView.backgroundColor = KCOLORGREEN_f2f2f2;
     }
     

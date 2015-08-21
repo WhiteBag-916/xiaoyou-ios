@@ -10,8 +10,8 @@
   * from EaseMob Technologies.
   */
 
-#import <UIKit/UIKit.h>
+#import "YTableViewCell.h"
 
-@interface EMChatTimeCell : UITableViewCell
+@interface EMChatTimeCell : YTableViewCell
 
 @end

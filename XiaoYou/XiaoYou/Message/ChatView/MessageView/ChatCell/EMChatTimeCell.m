@@ -25,7 +25,6 @@
     self.textLabel.textAlignment = NSTextAlignmentCenter;
     self.textLabel.font = [UIFont systemFontOfSize:14];
     self.textLabel.textColor = [UIColor grayColor];
-    self.selectionStyle = UITableViewCellSelectionStyleNone;
     
     return self;
 }

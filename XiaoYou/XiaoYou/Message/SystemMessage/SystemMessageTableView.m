@@ -26,7 +26,6 @@
         self.delegate = self;
         
         _dataSouceArr = [@[@"自我介绍一下呗",@"请发送简历至",@"面试通知",@"你的兴趣爱好",@"你喜欢男生还是女生",@"你是单身吗",@"你可以向我问个问题"] mutableCopy];
-        self.separatorStyle = UITableViewCellSelectionStyleNone;
         [self registerClass:[NormalSystemMessageTableViewCell class] forCellReuseIdentifier:kNormalSystemMessageTableViewCell];
         [self registerClass:[ApplySuccessSystemMessageTableViewCell class] forCellReuseIdentifier:kApplySuccessSystemMessageTableViewCell];
     }
@@ -61,10 +60,10 @@
     
 }
 
--(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    return 38;
-}
+//-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+//{
+//    return 38;
+//}
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
