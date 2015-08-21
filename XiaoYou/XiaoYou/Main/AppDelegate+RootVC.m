@@ -10,7 +10,6 @@
 #import "ChooseSchoolViewController.h"
 #import "XYTabBarViewController.h"
 #import "SlideNavigationController.h"
-#import "ChooseSchoolViewController.h"
 
 @implementation AppDelegate(RootVC)
 

@@ -44,7 +44,6 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    self.navigationController.navigationBarHidden = true;
     self.hidesBottomBarWhenPushed = NO;
     [self initView];
 }
@@ -53,6 +52,9 @@
     [self initTop];
     [self initMiddle];
     [self initBottom];
+}
+- (void)viewWillAppear:(BOOL)animated {
+    self.navigationController.navigationBarHidden = true;
 }
 - (void)initScroll {
     UIScrollView *scroll = [[UIScrollView alloc] init];
@@ -155,18 +157,17 @@
         UIView *item = [self greenItem:i];
         [item mas_makeConstraints:^(MASConstraintMaker *make) {
             if (tmp == nil) {
-                make.top.equalTo(_bottomView);
+                make.top.equalTo(_bottomView).offset(KBOTTOMITEMMARGIN_TOP);
             } else {
-                make.top.equalTo(tmp.mas_bottom);
+                make.top.equalTo(tmp.mas_bottom).offset(KBOTTOMITEMMARGIN_TOP);
             }
             make.left.right.equalTo(_bottomView);
         }];
         tmp = item;
     }
     [_bottomView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.bottom.equalTo(tmp);
+        make.bottom.equalTo(tmp).offset(KBOTTOMITEMMARGIN_TOP);
     }];
-    _bottomView.backgroundColor = [UIColor yellowColor];
 }
 
 - (UIView *)whiteItem:(BOOL)isRespect {
@@ -214,6 +215,9 @@
     [_bottomView addSubview:item];
     NSArray *names = @[@"态度", @"关注", @"观点"];
     UILabel *icon = [YUtils initLabel:CONTENT_FONT(10) color:KCOLORWHITE text:names[index] frame:CGRectZero alignment:NSTextAlignmentCenter];
+    icon.backgroundColor = KCOLORGREEN_009688;
+    icon.layer.cornerRadius = KBOTTOMLABELSIZE/2;
+    icon.clipsToBounds = true;
     [item addSubview:icon];
     [icon mas_makeConstraints:^(MASConstraintMaker *make) {
         make.width.height.mas_equalTo(KBOTTOMLABELSIZE);
@@ -221,6 +225,34 @@
         make.top.equalTo(item);
         make.bottom.lessThanOrEqualTo(item);
     }];
+    if (index == 0) {
+        _attitudeLabel = [YUtils initLabel:CONTENT_FONT(12) color:[UIColor blackColor] text:@"我的态度我的态度我的态度我的态度我的态度我的态度我的态度我的态度我的态度我的态度我的态度我的态度我的态度我的态度我的态度我的态度我的态度我的态度我的态度我的态度我的态度我的态度我的态度我的态度我的态度我的态度" frame:CGRectZero alignment:NSTextAlignmentLeft];
+        _attitudeLabel.numberOfLines = 0;
+        [item addSubview:_attitudeLabel];
+        [_attitudeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.top.greaterThanOrEqualTo(icon);
+            make.left.equalTo(_userName);
+            make.right.equalTo(item).offset(-SCALE_NUM(12));
+            make.centerY.equalTo(icon).priorityLow();
+            make.bottom.lessThanOrEqualTo(item);
+        }];
+    }
+    if (index == 1) {
+        _tagLabel = [YUtils initLabel:CONTENT_FONT(12) color:KCOLORGREEN_009688 text:@"互联网创业" frame:CGRectZero alignment:NSTextAlignmentLeft];
+        [item addSubview:_tagLabel];
+        [_tagLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.equalTo(_userName);
+            make.centerY.equalTo(icon);
+        }];
+        _tagCountLabel = [YUtils initLabel:CONTENT_FONT(12) color:[UIColor blackColor] text:@"等10个" frame:CGRectZero alignment:NSTextAlignmentLeft];
+        [item addSubview:_tagCountLabel];
+        [_tagCountLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.equalTo(_tagLabel.mas_right).offset(5);
+            make.centerY.equalTo(_tagLabel);
+        }];
+        [self rightArray:2 inView:item];
+    }
+    
     return item;
 }
 

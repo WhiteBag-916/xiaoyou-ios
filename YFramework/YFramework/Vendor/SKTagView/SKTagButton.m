@@ -30,7 +30,7 @@
         [self setTitleColor:tag.textColor forState:UIControlStateNormal];
         self.titleLabel.font = tag.font ?: [UIFont systemFontOfSize:tag.fontSize];
     }
-    self.titleLabel.textAlignment = NSTextAlignmentCenter;
+    self.titleLabel.textAlignment = NSTextAlignmentLeft;
     self.backgroundColor = tag.bgColor;
     self.contentEdgeInsets = tag.padding;
     self.titleLabel.lineBreakMode = NSLineBreakByTruncatingTail;
@@ -57,6 +57,7 @@
     
     if (tag.preferSize.width > 0) {
         _preferSize = tag.preferSize;
+        self.titleLabel.textAlignment = NSTextAlignmentCenter;
     }
 }
 
