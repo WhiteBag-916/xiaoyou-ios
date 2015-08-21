@@ -10,6 +10,7 @@
 #import "ResultCommon.h"
 
 #define kYActionMessage_Server_Success 1
+#define kYActionMessage_Server_Token_Fail 1016
 
 NSString *const kCommonObj = @"obj";
 
@@ -27,15 +28,21 @@ NSString *const kCommonObj = @"obj";
         if ([aObject respondsToSelector:@selector(code)])
         {
             NSInteger code = (NSInteger)[(ResultCommon*)aObject code];
+            
+            if (kYActionMessage_Server_Token_Fail == code) {
+                //Token失效
+                [[NSNotificationCenter defaultCenter] postNotificationName:kNotification_Server_Token_Fail object:aObject];
+            }
+            
             if (!(code == kYActionMessage_Server_Success || code == 0))
             {
                 errorCode = kYYServerErrorBase + labs(code);
             }
+            
+            errorDescription = ((ResultCommon*)aObject).message;
             	
             if (kYActionMessage_Rustlt_Success == errorCode)
             {
-                errorDescription = ((ResultCommon*)aObject).message;
-
                 //取出obj
                 if (self != [ResultCommon class])
                 {

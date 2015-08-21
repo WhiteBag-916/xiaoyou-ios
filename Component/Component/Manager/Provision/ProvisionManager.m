@@ -14,6 +14,7 @@
 #import "LoginResp.h"
 #import "SchoolListAction.h"
 #import "ForgotPasswordAction.h"
+#import "YDirectory+Data.h"
 
 #define kProvisionManagerSyncQueue @"kProvisionManagerSyncQueue"
 
@@ -48,6 +49,12 @@ DEF_SINGLETON(ProvisionManager);
 
 }
 
+- (void)initLoginData {
+    NSString *cachePath = [[YDirectory fileCache] stringByAppendingString:NSStringFromClass([LoginResp class])];
+    LoginResp* loginResp = [LoginResp instanceWithFile:cachePath];
+    [self updateLoginInfo:loginResp];
+}
+
 //更新个人常用信息
 - (void)updateLoginInfo:(LoginResp *)loginResp
 {
@@ -55,6 +62,9 @@ DEF_SINGLETON(ProvisionManager);
     [YShareData defaultData][kShareData_StudentNo] = loginResp.studentNo;
     [YShareData defaultData][kShareData_Token] = loginResp.token;
     [YShareData defaultData][kShareData_SchoolIcon] = loginResp.icon;
+    [YShareData defaultData][kShareData_LoginAccount] = loginResp.studentNo;
+    [YShareData defaultData][kShareData_SchoolName] = loginResp.schoolName;
+    [YShareData defaultData][kShareData_SchoolCode] = loginResp.schoolCode;
 }
 
 - (void)goLogin:(NSString *)account password:(NSString *)password block:(ActionCompleteBlock)block
@@ -70,9 +80,14 @@ DEF_SINGLETON(ProvisionManager);
         [YQueue dispatchInSyncQueueWithQueueType:kProvisionManagerSyncQueue block:^{
             if (message.isSuccess)
             {
-                [self updateLoginInfo:message.object];
+                //存文件
+                NSString *cachePath = [[YDirectory fileCache] stringByAppendingString:NSStringFromClass([LoginResp class])];
+                LoginResp* loginResp = ((LoginResp*)(message.object));
+                [loginResp writeToFile:cachePath];
+                //存token
+                [[NSUserDefaults standardUserDefaults] setObject:loginResp.token forKey:kShareData_Token];
                 
-                [YShareData defaultData][kShareData_LoginAccount] = action.studentNo;
+                [self updateLoginInfo:message.object];
                 
                 //抛登录成功
                 [[YManagerCenter defaultCenter] notifyAppLogined:nil];

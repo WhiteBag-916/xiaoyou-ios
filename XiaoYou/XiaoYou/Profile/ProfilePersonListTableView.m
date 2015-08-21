@@ -23,6 +23,7 @@
         self.dataSource = self;
         [self registerClass:[ProfilePersonListTableViewCell class] forCellReuseIdentifier:kProfilePersonListTableViewCell];
         self.tableFooterView = [UIView new];
+        self.backgroundColor = KCOLORGREEN_f2f2f2;
     }
     return self;
 }

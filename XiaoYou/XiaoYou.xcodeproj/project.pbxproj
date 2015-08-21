@@ -369,6 +369,7 @@
 		65969DD01B8723E3001DD348 /* YUtils+HUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 65969DCF1B8723E3001DD348 /* YUtils+HUD.m */; };
 		65969DD31B87312D001DD348 /* ProfilePersonListTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 65969DD21B87312D001DD348 /* ProfilePersonListTableView.m */; };
 		65969DD61B873168001DD348 /* ProfilePersonListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 65969DD51B873168001DD348 /* ProfilePersonListTableViewCell.m */; };
+		65969DD91B875166001DD348 /* ProfileFeedContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 65969DD81B875166001DD348 /* ProfileFeedContentView.m */; };
 		65A846FF1B81C9C300933815 /* FeedCellTopView.m in Sources */ = {isa = PBXBuildFile; fileRef = 65A846FE1B81C9C300933815 /* FeedCellTopView.m */; };
 		65A847021B81C9D300933815 /* FeedCellMiddleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 65A847011B81C9D300933815 /* FeedCellMiddleView.m */; };
 		65A847051B81CA1900933815 /* FeedCellBottomView.m in Sources */ = {isa = PBXBuildFile; fileRef = 65A847041B81CA1900933815 /* FeedCellBottomView.m */; };
@@ -960,6 +961,8 @@
 		65969DD21B87312D001DD348 /* ProfilePersonListTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfilePersonListTableView.m; sourceTree = "<group>"; };
 		65969DD41B873168001DD348 /* ProfilePersonListTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfilePersonListTableViewCell.h; sourceTree = "<group>"; };
 		65969DD51B873168001DD348 /* ProfilePersonListTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfilePersonListTableViewCell.m; sourceTree = "<group>"; };
+		65969DD71B875166001DD348 /* ProfileFeedContentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileFeedContentView.h; sourceTree = "<group>"; };
+		65969DD81B875166001DD348 /* ProfileFeedContentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileFeedContentView.m; sourceTree = "<group>"; };
 		65A846FD1B81C9C300933815 /* FeedCellTopView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedCellTopView.h; sourceTree = "<group>"; };
 		65A846FE1B81C9C300933815 /* FeedCellTopView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedCellTopView.m; sourceTree = "<group>"; };
 		65A847001B81C9D300933815 /* FeedCellMiddleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedCellMiddleView.h; sourceTree = "<group>"; };
@@ -1246,6 +1249,8 @@
 				65969DD21B87312D001DD348 /* ProfilePersonListTableView.m */,
 				65969DD41B873168001DD348 /* ProfilePersonListTableViewCell.h */,
 				65969DD51B873168001DD348 /* ProfilePersonListTableViewCell.m */,
+				65969DD71B875166001DD348 /* ProfileFeedContentView.h */,
+				65969DD81B875166001DD348 /* ProfileFeedContentView.m */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -2716,6 +2721,7 @@
 				333122411B806EDB00D3D032 /* EMAudioRecorderUtil.m in Sources */,
 				6592DCD81B806A9B004CD118 /* GroupApplyTableView.m in Sources */,
 				20DAF9DB1B873883005B7932 /* PinyinFormatter.m in Sources */,
+				65969DD91B875166001DD348 /* ProfileFeedContentView.m in Sources */,
 				20DD4B351B734781007C352C /* CommonSwitchView.m in Sources */,
 				20E9423A1B833D10009C2DC6 /* FeedContactTableView.m in Sources */,
 				3331225F1B806EDB00D3D032 /* UIImage+EMGIF.m in Sources */,

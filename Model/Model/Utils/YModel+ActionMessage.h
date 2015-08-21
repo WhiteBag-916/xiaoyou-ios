@@ -11,6 +11,8 @@
 #import "YFoundation.h"
 #import "YHttpRequest.h"
 
+#define kNotification_Server_Token_Fail  @"kNotification_Server_Token_Fail"//token失效
+
 @interface YModel (ActionMessage)
 + (YActionMessage *)actionMessageWithHttpRequest:(YHttpRequest *)request;
 @end

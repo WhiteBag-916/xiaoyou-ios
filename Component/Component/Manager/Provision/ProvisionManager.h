@@ -12,6 +12,8 @@
 @interface ProvisionManager : YManager<YManager>
 AS_SINGLETON(ProvisionManager);
 
+//初始化登录数据,自动登录
+- (void)initLoginData;
 //登录
 - (void)goLogin:(NSString *)account password:(NSString *)password block:(ActionCompleteBlock)block;
 //获取学校列表
