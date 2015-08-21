@@ -113,7 +113,7 @@ NSString *const kMessageTableViewCell = @"MessageTableViewCellId";
 -(void)setCellInfo:(id) dic
 {
     EMConversation * conversation = dic;
-    _messageLabel.text =  conversation.latestMessage.messageBodies[0][@"msg"];
+//    _messageLabel.text =  conversation.latestMessage.messageBodies[0][@"msg"];
 //    if ([dic[@"type"] isEqualToString:@"1"])
 //    {
 //        self.headImageView.image = [UIImage imageNamed:@"friend-requests"];
