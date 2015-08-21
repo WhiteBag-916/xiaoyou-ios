@@ -45,8 +45,7 @@
             }
         } onQueue:nil];
     }
-    
-    
+
     [self initControllers];
     
     self.tabBar.translucent = NO;

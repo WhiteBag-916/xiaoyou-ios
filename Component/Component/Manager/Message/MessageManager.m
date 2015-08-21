@@ -11,11 +11,12 @@
 #import "MessageListAction.h"
 #import "YShareDataDefine.h"
 #import "YManagerCenter.h"
+#import "EaseMob.h"
 
 #define kMessageManagerSyncQueue @"kMessageManagerSyncQueue"
 
 
-@interface MessageManager ()
+@interface MessageManager ()<EMChatManagerDelegate>
 
 
 
@@ -63,14 +64,32 @@ DEF_SINGLETON(MessageManager);
     [YQueue unregisterSyncQueueWithType:kMessageManagerSyncQueue];
 }
 
+-(void)registerNotifications
+{
+    [self unregisterNotifications];
+    
+    [[EaseMob sharedInstance].chatManager addDelegate:self delegateQueue:nil];
+}
+
+-(void)unregisterNotifications
+{
+    [[EaseMob sharedInstance].chatManager removeDelegate:self];
+}
+
 - (void)appDidLogin:(NSDictionary *)loginInfo
 {
-    
+    [self registerNotifications];
 }
 
 - (void)appDidLogout
 {
-    
+    [self unregisterNotifications];
 }
+
+-(void)didReceiveMessage:(EMMessage *)message
+{
+
+}
+
 
 @end

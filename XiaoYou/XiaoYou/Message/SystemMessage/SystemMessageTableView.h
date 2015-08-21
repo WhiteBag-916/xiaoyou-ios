@@ -10,4 +10,6 @@
 
 @interface SystemMessageTableView : YTableView
 
+-(void)refreshTableView:(NSMutableArray *) dataSouceArr;
+
 @end
