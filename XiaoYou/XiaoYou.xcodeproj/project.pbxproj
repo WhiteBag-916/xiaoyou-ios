@@ -37,6 +37,13 @@
 		20DAF9A81B871E45005B7932 /* ChooseSchoolTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 20DAF9A71B871E45005B7932 /* ChooseSchoolTableViewCell.m */; };
 		20DAF9AB1B87209E005B7932 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20DAF9AA1B87209E005B7932 /* LoginViewController.m */; };
 		20DAF9AE1B872528005B7932 /* YUtils+UI.m in Sources */ = {isa = PBXBuildFile; fileRef = 20DAF9AD1B872528005B7932 /* YUtils+UI.m */; };
+		20DAF9D71B873883005B7932 /* ChineseToPinyinResource.m in Sources */ = {isa = PBXBuildFile; fileRef = 20DAF9C91B873883005B7932 /* ChineseToPinyinResource.m */; };
+		20DAF9D81B873883005B7932 /* HanyuPinyinOutputFormat.m in Sources */ = {isa = PBXBuildFile; fileRef = 20DAF9CB1B873883005B7932 /* HanyuPinyinOutputFormat.m */; };
+		20DAF9D91B873883005B7932 /* NSString+PinYin4Cocoa.m in Sources */ = {isa = PBXBuildFile; fileRef = 20DAF9CD1B873883005B7932 /* NSString+PinYin4Cocoa.m */; };
+		20DAF9DB1B873883005B7932 /* PinyinFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 20DAF9D11B873883005B7932 /* PinyinFormatter.m */; };
+		20DAF9DC1B873883005B7932 /* PinYinForObjc.m in Sources */ = {isa = PBXBuildFile; fileRef = 20DAF9D31B873883005B7932 /* PinYinForObjc.m */; };
+		20DAF9DD1B873883005B7932 /* PinyinHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 20DAF9D51B873883005B7932 /* PinyinHelper.m */; };
+		20DAF9DE1B873883005B7932 /* unicode_to_hanyu_pinyin.txt in Resources */ = {isa = PBXBuildFile; fileRef = 20DAF9D61B873883005B7932 /* unicode_to_hanyu_pinyin.txt */; };
 		20DBFD591B4FA122009134D0 /* libYFramework.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 20DBFD581B4FA122009134D0 /* libYFramework.a */; };
 		20DBFD5B1B4FA125009134D0 /* libModel.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 20DBFD5A1B4FA125009134D0 /* libModel.a */; };
 		20DBFD5D1B4FA127009134D0 /* libComponent.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 20DBFD5C1B4FA127009134D0 /* libComponent.a */; };
@@ -426,6 +433,19 @@
 		20DAF9AA1B87209E005B7932 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		20DAF9AC1B872528005B7932 /* YUtils+UI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "YUtils+UI.h"; sourceTree = "<group>"; };
 		20DAF9AD1B872528005B7932 /* YUtils+UI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "YUtils+UI.m"; sourceTree = "<group>"; };
+		20DAF9C81B873883005B7932 /* ChineseToPinyinResource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChineseToPinyinResource.h; sourceTree = "<group>"; };
+		20DAF9C91B873883005B7932 /* ChineseToPinyinResource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChineseToPinyinResource.m; sourceTree = "<group>"; };
+		20DAF9CA1B873883005B7932 /* HanyuPinyinOutputFormat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HanyuPinyinOutputFormat.h; sourceTree = "<group>"; };
+		20DAF9CB1B873883005B7932 /* HanyuPinyinOutputFormat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HanyuPinyinOutputFormat.m; sourceTree = "<group>"; };
+		20DAF9CC1B873883005B7932 /* NSString+PinYin4Cocoa.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+PinYin4Cocoa.h"; sourceTree = "<group>"; };
+		20DAF9CD1B873883005B7932 /* NSString+PinYin4Cocoa.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+PinYin4Cocoa.m"; sourceTree = "<group>"; };
+		20DAF9D01B873883005B7932 /* PinyinFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PinyinFormatter.h; sourceTree = "<group>"; };
+		20DAF9D11B873883005B7932 /* PinyinFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PinyinFormatter.m; sourceTree = "<group>"; };
+		20DAF9D21B873883005B7932 /* PinYinForObjc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PinYinForObjc.h; sourceTree = "<group>"; };
+		20DAF9D31B873883005B7932 /* PinYinForObjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PinYinForObjc.m; sourceTree = "<group>"; };
+		20DAF9D41B873883005B7932 /* PinyinHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PinyinHelper.h; sourceTree = "<group>"; };
+		20DAF9D51B873883005B7932 /* PinyinHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PinyinHelper.m; sourceTree = "<group>"; };
+		20DAF9D61B873883005B7932 /* unicode_to_hanyu_pinyin.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = unicode_to_hanyu_pinyin.txt; sourceTree = "<group>"; };
 		20DBFB581B4F9CE3009134D0 /* libXModel.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libXModel.a; path = "../XModel/build/Debug-iphoneos/libXModel.a"; sourceTree = "<group>"; };
 		20DBFB5A1B4F9CE6009134D0 /* libPods-XiaoYou-SDWebImage.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-XiaoYou-SDWebImage.a"; path = "/Users/xiongchen/Documents/校友网/code/xiaoyou_ios/Pods/../build/Debug-iphoneos/libPods-XiaoYou-SDWebImage.a"; sourceTree = "<absolute>"; };
 		20DBFB5C1B4F9CEC009134D0 /* libXComponent.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libXComponent.a; path = "../XComponent/build/Debug-iphoneos/libXComponent.a"; sourceTree = "<group>"; };
@@ -1106,6 +1126,26 @@
 				20E0340D1B847F9F002E4583 /* SearchResultViewController.m */,
 			);
 			path = SearchPerson;
+			sourceTree = "<group>";
+		};
+		20DAF9C71B873883005B7932 /* pinyin */ = {
+			isa = PBXGroup;
+			children = (
+				20DAF9C81B873883005B7932 /* ChineseToPinyinResource.h */,
+				20DAF9C91B873883005B7932 /* ChineseToPinyinResource.m */,
+				20DAF9CA1B873883005B7932 /* HanyuPinyinOutputFormat.h */,
+				20DAF9CB1B873883005B7932 /* HanyuPinyinOutputFormat.m */,
+				20DAF9CC1B873883005B7932 /* NSString+PinYin4Cocoa.h */,
+				20DAF9CD1B873883005B7932 /* NSString+PinYin4Cocoa.m */,
+				20DAF9D01B873883005B7932 /* PinyinFormatter.h */,
+				20DAF9D11B873883005B7932 /* PinyinFormatter.m */,
+				20DAF9D21B873883005B7932 /* PinYinForObjc.h */,
+				20DAF9D31B873883005B7932 /* PinYinForObjc.m */,
+				20DAF9D41B873883005B7932 /* PinyinHelper.h */,
+				20DAF9D51B873883005B7932 /* PinyinHelper.m */,
+				20DAF9D61B873883005B7932 /* unicode_to_hanyu_pinyin.txt */,
+			);
+			path = pinyin;
 			sourceTree = "<group>";
 		};
 		20DBFD601B4FA7E1009134D0 /* Main */ = {
@@ -2179,13 +2219,14 @@
 		653CB2E81B806BFD006ECBB2 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				65969DCE1B8723E3001DD348 /* YUtils+HUD.h */,
-				65969DCF1B8723E3001DD348 /* YUtils+HUD.m */,
+				20DAF9C71B873883005B7932 /* pinyin */,
 				20E033C21B842727002E4583 /* UMengSDK */,
 				653CB2E91B806BFD006ECBB2 /* ChineseSorting */,
 				333122D61B806F7E00D3D032 /* ChatDemoUIDefine.h */,
 				333122D71B806F7E00D3D032 /* RobotManager.h */,
 				333122D81B806F7E00D3D032 /* RobotManager.m */,
+				65969DCE1B8723E3001DD348 /* YUtils+HUD.h */,
+				65969DCF1B8723E3001DD348 /* YUtils+HUD.m */,
 				20DAF9AC1B872528005B7932 /* YUtils+UI.h */,
 				20DAF9AD1B872528005B7932 /* YUtils+UI.m */,
 			);
@@ -2488,6 +2529,7 @@
 				2076A3161B81DA3E001FFBAC /* toolbar-mine-click@2x.png in Resources */,
 				3348CB681B87236200F97FAF /* send_normal@2x.png in Resources */,
 				334670691B84228000A8628A /* contacts_bottom@2x.png in Resources */,
+				20DAF9DE1B873883005B7932 /* unicode_to_hanyu_pinyin.txt in Resources */,
 				333122C11B806EDC00D3D032 /* chat_receiver_audio_playing003.png in Resources */,
 				333122BD1B806EDC00D3D032 /* chat_receiver_audio_playing001.png in Resources */,
 				3348CB511B87207600F97FAF /* chatBar_recordSelectedBg.png in Resources */,
@@ -2631,6 +2673,7 @@
 				6592DCD61B806A9B004CD118 /* FriendApplyTableViewCell.m in Sources */,
 				3334AC491B831DE500FDDCCB /* ContactsInfoDetailTableViewCell.m in Sources */,
 				3331223E1B806EDB00D3D032 /* MessageModelManager.m in Sources */,
+				20DAF9D81B873883005B7932 /* HanyuPinyinOutputFormat.m in Sources */,
 				3331225C1B806EDB00D3D032 /* MKAnnotationView+EMWebCache.m in Sources */,
 				3331223B1B806EDB00D3D032 /* EMChatViewBaseCell.m in Sources */,
 				333122401B806EDB00D3D032 /* EMAudioPlayerUtil.m in Sources */,
@@ -2646,6 +2689,7 @@
 				33380D9F1B85DAC5008B51EB /* XYSystemMessageViewController.m in Sources */,
 				333122811B806EDC00D3D032 /* NSString+Valid.m in Sources */,
 				333122441B806EDB00D3D032 /* EMCDDeviceManager+ProximitySensor.m in Sources */,
+				20DAF9DD1B873883005B7932 /* PinyinHelper.m in Sources */,
 				333122451B806EDB00D3D032 /* EMCDDeviceManager+Remind.m in Sources */,
 				333122751B806EDB00D3D032 /* SRRefreshView.m in Sources */,
 				3331227B1B806EDB00D3D032 /* wav.mm in Sources */,
@@ -2653,6 +2697,7 @@
 				20DAF9AB1B87209E005B7932 /* LoginViewController.m in Sources */,
 				3331222D1B806EDB00D3D032 /* ConvertToCommonEmoticonsHelper.m in Sources */,
 				65969DC41B86BDE1001DD348 /* MBProgressHUD+Add.m in Sources */,
+				20DAF9D71B873883005B7932 /* ChineseToPinyinResource.m in Sources */,
 				333122831B806EDC00D3D032 /* UIViewController+DismissKeyboard.m in Sources */,
 				333122841B806EDC00D3D032 /* UIViewController+HUD.m in Sources */,
 				333122821B806EDC00D3D032 /* UIResponder+Router.m in Sources */,
@@ -2660,6 +2705,7 @@
 				3331225D1B806EDB00D3D032 /* NSData+EMImageContentType.m in Sources */,
 				333122411B806EDB00D3D032 /* EMAudioRecorderUtil.m in Sources */,
 				6592DCD81B806A9B004CD118 /* GroupApplyTableView.m in Sources */,
+				20DAF9DB1B873883005B7932 /* PinyinFormatter.m in Sources */,
 				20DD4B351B734781007C352C /* CommonSwitchView.m in Sources */,
 				20E9423A1B833D10009C2DC6 /* FeedContactTableView.m in Sources */,
 				3331225F1B806EDB00D3D032 /* UIImage+EMGIF.m in Sources */,
@@ -2739,6 +2785,7 @@
 				333122611B806EDB00D3D032 /* UIImage+EMWebP.m in Sources */,
 				20DA35F71B81E89F002E5A96 /* SearchPersonViewController.m in Sources */,
 				6592DCE01B806A9B004CD118 /* XYSendMessageViewController.m in Sources */,
+				20DAF9D91B873883005B7932 /* NSString+PinYin4Cocoa.m in Sources */,
 				333122461B806EDB00D3D032 /* EMCDDeviceManagerBase.m in Sources */,
 				3331222C1B806EDB00D3D032 /* ChatViewController.m in Sources */,
 				333122661B806EDB00D3D032 /* PSTCollectionView.m in Sources */,
@@ -2759,6 +2806,7 @@
 				333122801B806EDC00D3D032 /* NSDateFormatter+Category.m in Sources */,
 				3331227C1B806EDB00D3D032 /* EMVoiceConverter.mm in Sources */,
 				333122361B806EDB00D3D032 /* EMChatImageBubbleView.m in Sources */,
+				20DAF9DC1B873883005B7932 /* PinYinForObjc.m in Sources */,
 				6592DCDD1B806A9B004CD118 /* MessageTableView.m in Sources */,
 				65BCCAEB1B81A72500266A18 /* FeedDetailTableView.m in Sources */,
 				333122771B806EDB00D3D032 /* THProgressView.m in Sources */,
