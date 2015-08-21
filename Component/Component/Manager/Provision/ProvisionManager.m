@@ -62,7 +62,7 @@ DEF_SINGLETON(ProvisionManager);
     action.password = @"123456";
     action.schoolCode = @"4";
     action.deviceId = @"212025118700004";
-    action.studentNo = @"21202511870000";
+    action.studentNo = @"15140040000";
     action.platform = @"2";
     
     [YAction startAction:action completionBlock:^(YActionMessage* message) {
