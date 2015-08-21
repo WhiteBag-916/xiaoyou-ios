@@ -47,6 +47,7 @@
 //导航栏右侧，确认按钮
 - (void)showCustomNavigationSureButton;
 
+- (void)showCustomNavigationPublishButton;
 
 
 @end

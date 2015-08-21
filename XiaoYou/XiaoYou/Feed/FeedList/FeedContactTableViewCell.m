@@ -44,8 +44,6 @@ NSString *const kFeedContactTableViewCell = @"FeedContactTableViewCellId";
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier])
     {
         [self initView];
-        
-        self.selectionStyle = UITableViewCellSelectionStyleNone;
     }
     
     return self;

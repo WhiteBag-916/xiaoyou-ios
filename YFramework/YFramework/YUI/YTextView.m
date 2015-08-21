@@ -46,16 +46,16 @@ CGFloat const UI_PLACEHOLDER_TEXT_CHANGED_ANIMATION_DURATION = 0.25;
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(textChanged:) name:UITextViewTextDidChangeNotification object:nil];
 }
 
-- (id)initWithFrame:(CGRect)frame
-{
-    if( (self = [super initWithFrame:frame]) )
-    {
+- (id)init {
+    self = [super init];
+    if (self) {
         [self setPlaceholder:@""];
         [self setPlaceholderColor:[UIColor lightGrayColor]];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(textChanged:) name:UITextViewTextDidChangeNotification object:nil];
     }
     return self;
 }
+
 
 - (void)textChanged:(NSNotification *)notification
 {

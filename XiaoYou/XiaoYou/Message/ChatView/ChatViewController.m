@@ -522,7 +522,6 @@
             if (timeCell == nil) {
                 timeCell = [[EMChatTimeCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"MessageCellTime"];
                 timeCell.backgroundColor = [UIColor clearColor];
-                timeCell.selectionStyle = UITableViewCellSelectionStyleNone;
             }
             
             timeCell.textLabel.text = (NSString *)obj;
@@ -536,7 +535,6 @@
             if (cell == nil) {
                 cell = [[EMChatViewCell alloc] initWithMessageModel:model reuseIdentifier:cellIdentifier];
                 cell.backgroundColor = [UIColor clearColor];
-                cell.selectionStyle = UITableViewCellSelectionStyleNone;
             }
             cell.messageModel = model;
             

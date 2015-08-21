@@ -37,8 +37,10 @@
             make.right.bottom.equalTo(self);
             make.height.mas_equalTo(50);
         }];
-        
+        _tagContent.insets = 21;
+        _tagContent.lineSpace = 5;
         [self setIsRelated:true];
+        
     }
     
     return self;
@@ -53,7 +55,6 @@
         tag.font = CONTENT_FONT(10);
         tag.textColor = KCOLORWHITE_696969;
         tag.textColor = KCOLORGREEN_009688;
-        tag.padding = UIEdgeInsetsMake(0, 0, 5, 21);
         [_tagContent addTag:tag];
     }
     

@@ -16,7 +16,7 @@
 
 #define SCALE_NUM(number)   number * SCREEN_WIDTH / 320
 
-#define KCOLORGREEN_455A64 [UIColor colorWithRed:0.271f green:0.353f blue:0.392f alpha:1.00f]
+#define KCOLORGREEN_455A64 [UIColor hexChangeFloat:@"455A64"]
 #define KCOLORWHITE [UIColor whiteColor]
 #define KCOLORWHITE_b8b7b7 [UIColor hexChangeFloat:@"b8b7b7"]
 #define KCOLORWHITE_696969 [UIColor hexChangeFloat:@"696969"]

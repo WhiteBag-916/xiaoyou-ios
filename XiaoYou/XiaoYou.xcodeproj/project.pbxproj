@@ -151,8 +151,6 @@
 		333122471B806EDB00D3D032 /* EMAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 333121331B806EDB00D3D032 /* EMAlertView.m */; };
 		333122481B806EDB00D3D032 /* Emoji.m in Sources */ = {isa = PBXBuildFile; fileRef = 333121361B806EDB00D3D032 /* Emoji.m */; };
 		333122491B806EDB00D3D032 /* EmojiEmoticons.m in Sources */ = {isa = PBXBuildFile; fileRef = 333121381B806EDB00D3D032 /* EmojiEmoticons.m */; };
-		3331224A1B806EDB00D3D032 /* MBProgressHUD+Add.m in Sources */ = {isa = PBXBuildFile; fileRef = 3331213C1B806EDB00D3D032 /* MBProgressHUD+Add.m */; };
-		3331224B1B806EDB00D3D032 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 3331213E1B806EDB00D3D032 /* MBProgressHUD.m */; };
 		3331224C1B806EDB00D3D032 /* MWCaptionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 333121421B806EDB00D3D032 /* MWCaptionView.m */; };
 		3331224D1B806EDB00D3D032 /* MWGridCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 333121451B806EDB00D3D032 /* MWGridCell.m */; };
 		3331224E1B806EDB00D3D032 /* MWGridViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 333121471B806EDB00D3D032 /* MWGridViewController.m */; };
@@ -352,11 +350,13 @@
 		6592DCDE1B806A9B004CD118 /* MessageTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6592DCCC1B806A9B004CD118 /* MessageTableViewCell.m */; };
 		6592DCDF1B806A9B004CD118 /* XYMessageAndContactsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6592DCCE1B806A9B004CD118 /* XYMessageAndContactsViewController.m */; };
 		6592DCE01B806A9B004CD118 /* XYSendMessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6592DCD11B806A9B004CD118 /* XYSendMessageViewController.m */; };
+		65969DC41B86BDE1001DD348 /* MBProgressHUD+Add.m in Sources */ = {isa = PBXBuildFile; fileRef = 65969DC31B86BDE1001DD348 /* MBProgressHUD+Add.m */; };
 		65A846FF1B81C9C300933815 /* FeedCellTopView.m in Sources */ = {isa = PBXBuildFile; fileRef = 65A846FE1B81C9C300933815 /* FeedCellTopView.m */; };
 		65A847021B81C9D300933815 /* FeedCellMiddleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 65A847011B81C9D300933815 /* FeedCellMiddleView.m */; };
 		65A847051B81CA1900933815 /* FeedCellBottomView.m in Sources */ = {isa = PBXBuildFile; fileRef = 65A847041B81CA1900933815 /* FeedCellBottomView.m */; };
 		65BCCAEB1B81A72500266A18 /* FeedDetailTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 65BCCAEA1B81A72500266A18 /* FeedDetailTableView.m */; };
 		65BCF1E11B818441003457F4 /* FeedDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 65BCF1E01B818441003457F4 /* FeedDetailViewController.m */; };
+		65F82F841B85E74A00FF6E2D /* FeedPublishViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 65F82F831B85E74A00FF6E2D /* FeedPublishViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -601,10 +601,6 @@
 		333121371B806EDB00D3D032 /* EmojiEmoticons.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EmojiEmoticons.h; sourceTree = "<group>"; };
 		333121381B806EDB00D3D032 /* EmojiEmoticons.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EmojiEmoticons.m; sourceTree = "<group>"; };
 		333121391B806EDB00D3D032 /* macros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = macros.h; sourceTree = "<group>"; };
-		3331213B1B806EDB00D3D032 /* MBProgressHUD+Add.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MBProgressHUD+Add.h"; sourceTree = "<group>"; };
-		3331213C1B806EDB00D3D032 /* MBProgressHUD+Add.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MBProgressHUD+Add.m"; sourceTree = "<group>"; };
-		3331213D1B806EDB00D3D032 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
-		3331213E1B806EDB00D3D032 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 		333121411B806EDB00D3D032 /* MWCaptionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MWCaptionView.h; sourceTree = "<group>"; };
 		333121421B806EDB00D3D032 /* MWCaptionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MWCaptionView.m; sourceTree = "<group>"; };
 		333121431B806EDB00D3D032 /* MWCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MWCommon.h; sourceTree = "<group>"; };
@@ -912,6 +908,8 @@
 		6592DCCE1B806A9B004CD118 /* XYMessageAndContactsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYMessageAndContactsViewController.m; sourceTree = "<group>"; };
 		6592DCD01B806A9B004CD118 /* XYSendMessageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYSendMessageViewController.h; sourceTree = "<group>"; };
 		6592DCD11B806A9B004CD118 /* XYSendMessageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYSendMessageViewController.m; sourceTree = "<group>"; };
+		65969DC21B86BDE1001DD348 /* MBProgressHUD+Add.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MBProgressHUD+Add.h"; sourceTree = "<group>"; };
+		65969DC31B86BDE1001DD348 /* MBProgressHUD+Add.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MBProgressHUD+Add.m"; sourceTree = "<group>"; };
 		65A846FD1B81C9C300933815 /* FeedCellTopView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedCellTopView.h; sourceTree = "<group>"; };
 		65A846FE1B81C9C300933815 /* FeedCellTopView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedCellTopView.m; sourceTree = "<group>"; };
 		65A847001B81C9D300933815 /* FeedCellMiddleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedCellMiddleView.h; sourceTree = "<group>"; };
@@ -922,6 +920,8 @@
 		65BCCAEA1B81A72500266A18 /* FeedDetailTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FeedDetailTableView.m; path = XiaoYou/Feed/FeedList/FeedDetailTableView.m; sourceTree = SOURCE_ROOT; };
 		65BCF1DF1B818441003457F4 /* FeedDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FeedDetailViewController.h; path = XiaoYou/Feed/FeedList/FeedDetailViewController.h; sourceTree = SOURCE_ROOT; };
 		65BCF1E01B818441003457F4 /* FeedDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FeedDetailViewController.m; path = XiaoYou/Feed/FeedList/FeedDetailViewController.m; sourceTree = SOURCE_ROOT; };
+		65F82F821B85E74A00FF6E2D /* FeedPublishViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FeedPublishViewController.h; path = XiaoYou/CommonView/FeedPublishViewController.h; sourceTree = SOURCE_ROOT; };
+		65F82F831B85E74A00FF6E2D /* FeedPublishViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FeedPublishViewController.m; path = XiaoYou/CommonView/FeedPublishViewController.m; sourceTree = SOURCE_ROOT; };
 		77B574BED9D4FF3F4BFAA9FE /* libPods-XiaoYou.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-XiaoYou.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F531E541C4347E287F02139F /* Pods-XiaoYou.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XiaoYou.release.xcconfig"; path = "../Pods/Target Support Files/Pods-XiaoYou/Pods-XiaoYou.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -1290,6 +1290,8 @@
 		20E1221E1B705EBD00F90BD3 /* NewFeed */ = {
 			isa = PBXGroup;
 			children = (
+				65F82F821B85E74A00FF6E2D /* FeedPublishViewController.h */,
+				65F82F831B85E74A00FF6E2D /* FeedPublishViewController.m */,
 			);
 			path = NewFeed;
 			sourceTree = "<group>";
@@ -1566,11 +1568,11 @@
 		3331211B1B806EDB00D3D032 /* 3rdparty */ = {
 			isa = PBXGroup;
 			children = (
+				65969DC11B86BDD1001DD348 /* MBprogressHud */,
 				3331211C1B806EDB00D3D032 /* DeviceUtil */,
 				333121311B806EDB00D3D032 /* EMAlertView */,
 				333121341B806EDB00D3D032 /* Emoji */,
 				333121391B806EDB00D3D032 /* macros.h */,
-				3331213A1B806EDB00D3D032 /* MBProgressHUD */,
 				3331213F1B806EDB00D3D032 /* MWPhotoBrowser */,
 				333121981B806EDB00D3D032 /* SlimeRefresh */,
 				333121A01B806EDB00D3D032 /* THProgressView */,
@@ -1640,17 +1642,6 @@
 				333121381B806EDB00D3D032 /* EmojiEmoticons.m */,
 			);
 			path = Emoji;
-			sourceTree = "<group>";
-		};
-		3331213A1B806EDB00D3D032 /* MBProgressHUD */ = {
-			isa = PBXGroup;
-			children = (
-				3331213B1B806EDB00D3D032 /* MBProgressHUD+Add.h */,
-				3331213C1B806EDB00D3D032 /* MBProgressHUD+Add.m */,
-				3331213D1B806EDB00D3D032 /* MBProgressHUD.h */,
-				3331213E1B806EDB00D3D032 /* MBProgressHUD.m */,
-			);
-			path = MBProgressHUD;
 			sourceTree = "<group>";
 		};
 		3331213F1B806EDB00D3D032 /* MWPhotoBrowser */ = {
@@ -2242,6 +2233,15 @@
 			path = SendMessage;
 			sourceTree = "<group>";
 		};
+		65969DC11B86BDD1001DD348 /* MBprogressHud */ = {
+			isa = PBXGroup;
+			children = (
+				65969DC21B86BDE1001DD348 /* MBProgressHUD+Add.h */,
+				65969DC31B86BDE1001DD348 /* MBProgressHUD+Add.m */,
+			);
+			name = MBprogressHud;
+			sourceTree = "<group>";
+		};
 		65A846FC1B81C9A400933815 /* FeedCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -2601,7 +2601,6 @@
 				20DC87F21B5F3DC70019DC7F /* ChooseSchoolViewController.m in Sources */,
 				333122301B806EDB00D3D032 /* DXFaceView.m in Sources */,
 				20DBFD631B4FA7E1009134D0 /* AppDelegate.m in Sources */,
-				3331224B1B806EDB00D3D032 /* MBProgressHUD.m in Sources */,
 				33380D9F1B85DAC5008B51EB /* XYSystemMessageViewController.m in Sources */,
 				333122811B806EDC00D3D032 /* NSString+Valid.m in Sources */,
 				333122441B806EDB00D3D032 /* EMCDDeviceManager+ProximitySensor.m in Sources */,
@@ -2610,6 +2609,7 @@
 				3331227B1B806EDB00D3D032 /* wav.mm in Sources */,
 				3331225B1B806EDB00D3D032 /* EMSDWebImagePrefetcher.m in Sources */,
 				3331222D1B806EDB00D3D032 /* ConvertToCommonEmoticonsHelper.m in Sources */,
+				65969DC41B86BDE1001DD348 /* MBProgressHUD+Add.m in Sources */,
 				333122831B806EDC00D3D032 /* UIViewController+DismissKeyboard.m in Sources */,
 				333122841B806EDC00D3D032 /* UIViewController+HUD.m in Sources */,
 				333122821B806EDC00D3D032 /* UIResponder+Router.m in Sources */,
@@ -2654,6 +2654,7 @@
 				333122571B806EDB00D3D032 /* EMSDWebImageDecoder.m in Sources */,
 				2076A3001B81C590001FFBAC /* YCommonActionSheet.m in Sources */,
 				3331226B1B806EDB00D3D032 /* PSTCollectionViewItemKey.m in Sources */,
+				65F82F841B85E74A00FF6E2D /* FeedPublishViewController.m in Sources */,
 				6592DCDB1B806A9B004CD118 /* ContactsTableView.m in Sources */,
 				333122521B806EDB00D3D032 /* MWTapDetectingView.m in Sources */,
 				653199DE1B80B41C00405B72 /* ConnectTag.m in Sources */,
@@ -2725,7 +2726,6 @@
 				6592DCD31B806A9B004CD118 /* XYContactsInfoDetailViewController.m in Sources */,
 				3331222A1B806EDB00D3D032 /* ChatSendHelper.m in Sources */,
 				20E034091B8471E5002E4583 /* SearchFilterTableViewCell.m in Sources */,
-				3331224A1B806EDB00D3D032 /* MBProgressHUD+Add.m in Sources */,
 				3331226D1B806EDB00D3D032 /* PSTCollectionViewUpdateItem.m in Sources */,
 				333122561B806EDB00D3D032 /* EMSDWebImageCompat.m in Sources */,
 				20E18D541B807752005B75EE /* AssociationsListTableView.m in Sources */,

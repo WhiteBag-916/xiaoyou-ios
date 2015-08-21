@@ -66,7 +66,6 @@ NSString *const KCommentTableViewCell = @"CommentTableViewCell";
             [self initTagView];
         }
         [self initBottomView];
-        self.selectionStyle = UITableViewCellSelectionStyleNone;
     }
     
     return self;

@@ -161,7 +161,6 @@
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     MessageTableViewCell *cell = [self dequeueReusableCellWithIdentifier:kMessageTableViewCell];
-//    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     if (indexPath.row == 3)
     {
         [cell setCellInfo:@{@"type":@"1"}];

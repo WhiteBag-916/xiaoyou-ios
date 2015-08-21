@@ -96,6 +96,18 @@
 #define COCOAPODS_VERSION_MINOR_KLCircleViewController 0
 #define COCOAPODS_VERSION_PATCH_KLCircleViewController 0
 
+// MBProgressHUD
+#define COCOAPODS_POD_AVAILABLE_MBProgressHUD
+#define COCOAPODS_VERSION_MAJOR_MBProgressHUD 0
+#define COCOAPODS_VERSION_MINOR_MBProgressHUD 9
+#define COCOAPODS_VERSION_PATCH_MBProgressHUD 1
+
+// MBProgressHUD+BWMExtension
+#define COCOAPODS_POD_AVAILABLE_MBProgressHUD_BWMExtension
+#define COCOAPODS_VERSION_MAJOR_MBProgressHUD_BWMExtension 1
+#define COCOAPODS_VERSION_MINOR_MBProgressHUD_BWMExtension 0
+#define COCOAPODS_VERSION_PATCH_MBProgressHUD_BWMExtension 0
+
 // MJExtension
 #define COCOAPODS_POD_AVAILABLE_MJExtension
 #define COCOAPODS_VERSION_MAJOR_MJExtension 2
@@ -137,12 +149,6 @@
 #define COCOAPODS_VERSION_MAJOR_SDWebImage_Core 3
 #define COCOAPODS_VERSION_MINOR_SDWebImage_Core 7
 #define COCOAPODS_VERSION_PATCH_SDWebImage_Core 3
-
-// SKTagView
-#define COCOAPODS_POD_AVAILABLE_SKTagView
-#define COCOAPODS_VERSION_MAJOR_SKTagView 0
-#define COCOAPODS_VERSION_MINOR_SKTagView 7
-#define COCOAPODS_VERSION_PATCH_SKTagView 0
 
 // UITableView+FDTemplateLayoutCell
 #define COCOAPODS_POD_AVAILABLE_UITableView_FDTemplateLayoutCell

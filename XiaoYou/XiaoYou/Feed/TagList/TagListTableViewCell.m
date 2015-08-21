@@ -26,7 +26,6 @@ NSString *const KTagListTableViewCell = @"TagListTableViewCellId";
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
-        self.selectionStyle = UITableViewCellSelectionStyleNone;
         _tagLabel = [YUtils initLabel:CONTENT_FONT(13) color:KCOLORWHITE text:@"测试" frame:CGRectZero alignment:NSTextAlignmentCenter];
         [self.contentView addSubview:_tagLabel];
         [_tagLabel mas_makeConstraints:^(MASConstraintMaker *make) {
