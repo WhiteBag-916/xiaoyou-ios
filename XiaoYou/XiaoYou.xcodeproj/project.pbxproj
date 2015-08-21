@@ -355,6 +355,8 @@
 		6592DCDF1B806A9B004CD118 /* XYMessageAndContactsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6592DCCE1B806A9B004CD118 /* XYMessageAndContactsViewController.m */; };
 		6592DCE01B806A9B004CD118 /* XYSendMessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6592DCD11B806A9B004CD118 /* XYSendMessageViewController.m */; };
 		65969DC41B86BDE1001DD348 /* MBProgressHUD+Add.m in Sources */ = {isa = PBXBuildFile; fileRef = 65969DC31B86BDE1001DD348 /* MBProgressHUD+Add.m */; };
+		65969DCA1B86E45B001DD348 /* YTakePhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = 65969DC91B86E45B001DD348 /* YTakePhoto.m */; };
+		65969DCD1B871AA9001DD348 /* ProfilePersonListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 65969DCC1B871AA9001DD348 /* ProfilePersonListController.m */; };
 		65A846FF1B81C9C300933815 /* FeedCellTopView.m in Sources */ = {isa = PBXBuildFile; fileRef = 65A846FE1B81C9C300933815 /* FeedCellTopView.m */; };
 		65A847021B81C9D300933815 /* FeedCellMiddleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 65A847011B81C9D300933815 /* FeedCellMiddleView.m */; };
 		65A847051B81CA1900933815 /* FeedCellBottomView.m in Sources */ = {isa = PBXBuildFile; fileRef = 65A847041B81CA1900933815 /* FeedCellBottomView.m */; };
@@ -919,6 +921,10 @@
 		6592DCD11B806A9B004CD118 /* XYSendMessageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYSendMessageViewController.m; sourceTree = "<group>"; };
 		65969DC21B86BDE1001DD348 /* MBProgressHUD+Add.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MBProgressHUD+Add.h"; sourceTree = "<group>"; };
 		65969DC31B86BDE1001DD348 /* MBProgressHUD+Add.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MBProgressHUD+Add.m"; sourceTree = "<group>"; };
+		65969DC81B86E45B001DD348 /* YTakePhoto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YTakePhoto.h; sourceTree = "<group>"; };
+		65969DC91B86E45B001DD348 /* YTakePhoto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YTakePhoto.m; sourceTree = "<group>"; };
+		65969DCB1B871AA9001DD348 /* ProfilePersonListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfilePersonListController.h; sourceTree = "<group>"; };
+		65969DCC1B871AA9001DD348 /* ProfilePersonListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfilePersonListController.m; sourceTree = "<group>"; };
 		65A846FD1B81C9C300933815 /* FeedCellTopView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedCellTopView.h; sourceTree = "<group>"; };
 		65A846FE1B81C9C300933815 /* FeedCellTopView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedCellTopView.m; sourceTree = "<group>"; };
 		65A847001B81C9D300933815 /* FeedCellMiddleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedCellMiddleView.h; sourceTree = "<group>"; };
@@ -1156,6 +1162,8 @@
 		20DC87F81B5F683F0019DC7F /* CommonView */ = {
 			isa = PBXGroup;
 			children = (
+				65969DC81B86E45B001DD348 /* YTakePhoto.h */,
+				65969DC91B86E45B001DD348 /* YTakePhoto.m */,
 				2076A2FC1B81C590001FFBAC /* YCommonActionSheet.h */,
 				2076A2FD1B81C590001FFBAC /* YCommonActionSheet.m */,
 				2076A2FE1B81C590001FFBAC /* YCommonAlertView.h */,
@@ -1175,6 +1183,8 @@
 			children = (
 				20DD4B2F1B7345EF007C352C /* ProfileViewController.h */,
 				20DD4B301B7345EF007C352C /* ProfileViewController.m */,
+				65969DCB1B871AA9001DD348 /* ProfilePersonListController.h */,
+				65969DCC1B871AA9001DD348 /* ProfilePersonListController.m */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -2666,6 +2676,8 @@
 				333122711B806EDB00D3D032 /* PSTGridLayoutSection.m in Sources */,
 				6518A2481B80429300AEB79D /* TagListTableView.m in Sources */,
 				656234771B837FDC00651C88 /* YFaceImageView.m in Sources */,
+				65969DCA1B86E45B001DD348 /* YTakePhoto.m in Sources */,
+				65969DCD1B871AA9001DD348 /* ProfilePersonListController.m in Sources */,
 				33380D971B857826008B51EB /* SendMessageTableViewCell.m in Sources */,
 				6592DCD91B806A9B004CD118 /* GroupApplyTableViewCell.m in Sources */,
 				333122571B806EDB00D3D032 /* EMSDWebImageDecoder.m in Sources */,
