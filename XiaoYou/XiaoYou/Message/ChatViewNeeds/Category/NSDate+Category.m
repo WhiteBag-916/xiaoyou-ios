@@ -105,7 +105,8 @@
         }
     }
     
-    ret = [dateFormatter stringFromDate:self];
+//    ret = [dateFormatter stringFromDate:self];
+    ret = [self description];
     return ret;
 }
 

@@ -524,7 +524,7 @@
                 timeCell.backgroundColor = [UIColor clearColor];
             }
             
-            timeCell.textLabel.text = (NSString *)obj;
+            timeCell.textLabel.text = [self transformDateStr:(NSString *)obj];
             
             return timeCell;
         }
@@ -543,6 +543,36 @@
     }
     
     return nil;
+}
+
+-(NSString*)transformDateStr:(NSString *) dateTempStr
+{
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+    dateFormatter.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"zh_CN"];
+    
+    NSDate * date = [dateFormatter dateFromString:dateTempStr];
+    NSLog(@"date = %@",date);
+    NSTimeInterval result = [date timeIntervalSinceNow];
+    double timeInterval = result * (-1);
+    NSLog(@"timeInterval = %g",result);
+    if (timeInterval < 300)
+    {
+        return @"刚刚";
+    }
+    else if(timeInterval < 86400)
+    {
+        return [dateTempStr substringWithRange:NSMakeRange(11, 5)];
+    }
+    else if(timeInterval < 172800)
+    {
+        return @"昨天";
+    }
+    else
+    {
+        return [dateTempStr substringWithRange:NSMakeRange(0, 10)];
+    }
+    
 }
 
 #pragma mark - Table view delegate
