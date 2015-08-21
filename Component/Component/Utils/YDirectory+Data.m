@@ -3,7 +3,7 @@
 //  Model
 //
 //  Created by 熊宸 on 15/5/7.
-//  Copyright (c) 2015年 YCPai. All rights reserved.
+//  Copyright (c) 2015年 xc. All rights reserved.
 //
 
 #import "YDirectory+Data.h"
@@ -19,7 +19,7 @@
 
 + (NSString *)newProjectCache
 {
-    NSString *path = [[self cache] stringByAppendingString:kNewProjectCache];
+    NSString *path = [[self cache] stringByAppendingString:kImgCache];
     
     return path;
 }

@@ -12,6 +12,7 @@
 #import "ContactManager.h"
 #import "MessageManager.h"
 #import "YCommonShare.h"
+#import "YDirectory+Data.h"
 
 @implementation AppDelegate (Manager)
 
@@ -19,6 +20,8 @@
 {
     //注册log
     [YLog setLevel:YLogLevelAll];
+    //创建文件夹
+    [YDirectory createFolders];
     
     //注册组件
     [ProvisionManager sharedInstance];
@@ -28,9 +31,6 @@
     
     //注册umeng
     [[YCommonShare sharedInstance] registUmengSDK];
-    
-    //数据
-    [YShareData defaultData][kShareData_SchoolName] = [[NSUserDefaults standardUserDefaults] objectForKey:kShareData_SchoolName];
 }
 
 @end

@@ -3,7 +3,7 @@
 //  Model
 //
 //  Created by 熊宸 on 15/5/7.
-//  Copyright (c) 2015年 YCPai. All rights reserved.
+//  Copyright (c) 2015年 xc. All rights reserved.
 //
 
 #import "YDirectory.h"
@@ -11,7 +11,7 @@
 //缓存文件文件夹名
 #define kFileCache             @"/FileCache/"
 //缓存图片
-#define kNewProjectCache             @"/NewProjectCache/"
+#define kImgCache             @"/ImgCache/"
 
 @interface YDirectory (Data)
 
