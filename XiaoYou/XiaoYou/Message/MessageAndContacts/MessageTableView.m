@@ -67,6 +67,7 @@
 -(void)refreshTableView:(NSMutableArray *) dataSouceArr
 {
     [self setUpHeaderView];
+    _messageDataSource = dataSouceArr;
     [self reloadData];
 }
 
@@ -155,7 +156,7 @@
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 20;
+    return _messageDataSource.count;
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -163,18 +164,18 @@
     MessageTableViewCell *cell = [self dequeueReusableCellWithIdentifier:kMessageTableViewCell];
     if (indexPath.row == 3)
     {
-        [cell setCellInfo:@{@"type":@"1"}];
+        [cell setCellInfo:_messageDataSource[indexPath.row]];
         
         return cell;
     }
     if (indexPath.row == 5) {
-        [cell setCellInfo:@{@"type":@"2"}];
+        [cell setCellInfo:_messageDataSource[indexPath.row]];
         
         return cell;
     }
     else
     {
-        [cell setCellInfo:nil];
+        [cell setCellInfo:_messageDataSource[indexPath.row]];
         
         return cell;
     }
@@ -203,9 +204,11 @@
 }
 -(void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (editingStyle == UITableViewCellEditingStyleDelete)
-    {
-        YLogD(@"delete");
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        EMConversation *converation = [_messageDataSource objectAtIndex:indexPath.row];
+        [[EaseMob sharedInstance].chatManager removeConversationByChatter:converation.chatter deleteMessages:YES append2Chat:YES];
+        [_messageDataSource removeObjectAtIndex:indexPath.row];
+        [self deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
     }
 }
 
