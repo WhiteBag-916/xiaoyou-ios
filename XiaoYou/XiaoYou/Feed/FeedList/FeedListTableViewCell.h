@@ -6,14 +6,14 @@
 //  Copyright (c) 2015年 xc. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "YTableViewCell.h"
 
 extern NSString *const kFeedListTableViewCell;
 extern NSString *const kFeedDetailTableViewCell;
 extern NSString *const KCommentTableViewCell;
 extern NSString *const kOrganizationFeedListTableViewCell;
 
-@interface FeedListTableViewCell : UITableViewCell
+@interface FeedListTableViewCell : YTableViewCell
 
 - (void)setData;
 

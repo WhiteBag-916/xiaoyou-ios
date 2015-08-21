@@ -6,11 +6,11 @@
 //  Copyright (c) 2015年 xc. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "YTableViewCell.h"
 
 extern NSString *const kGroupApplyTableViewCell;
 
-@interface GroupApplyTableViewCell : UITableViewCell
+@interface GroupApplyTableViewCell : YTableViewCell
 
 -(void)setCellInfo:(NSDictionary *) dic;
 

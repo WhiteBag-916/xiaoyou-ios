@@ -39,8 +39,6 @@ NSString *const kSearchFilterTableViewCell = @"SearchFilterTableViewCellId";
             make.height.mas_equalTo(1);
         }];
         line.backgroundColor = KCOLORGREEN_e6eae9;
-        
-        self.selectionStyle = UITableViewCellSelectionStyleNone;
     }
     
     return self;

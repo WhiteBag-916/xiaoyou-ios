@@ -6,11 +6,11 @@
 //  Copyright (c) 2015年 xc. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "YTableViewCell.h"
 
 extern NSString *const kChoicePersonTableViewCell;
 
-@interface ChoicePersonTableViewCell : UITableViewCell
+@interface ChoicePersonTableViewCell : YTableViewCell
 
 @property(nonatomic,strong)UIView * backView;
 

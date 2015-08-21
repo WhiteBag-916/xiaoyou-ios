@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		045F09261AF1CE2E00804EC7 /* YTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 045F09251AF1CE2E00804EC7 /* YTextView.m */; };
 		20AEFE521B40FBA600975B84 /* NSDictionary+CLLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 20AEFE511B40FBA600975B84 /* NSDictionary+CLLocation.m */; };
+		20DAF9671B870A3B005B7932 /* YTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 20DAF9661B870A3B005B7932 /* YTableViewCell.m */; };
 		20DD4B281B73039B007C352C /* YTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 20DD4B271B73039B007C352C /* YTableView.m */; };
 		20E033F91B845706002E4583 /* YTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 20E033F81B845706002E4583 /* YTextField.m */; };
 		2803C92C1AE3BA60002303B6 /* YManagerCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 2803C92B1AE3BA60002303B6 /* YManagerCenter.m */; };
@@ -85,6 +86,8 @@
 		045F09251AF1CE2E00804EC7 /* YTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YTextView.m; sourceTree = "<group>"; };
 		20AEFE501B40FBA600975B84 /* NSDictionary+CLLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+CLLocation.h"; sourceTree = "<group>"; };
 		20AEFE511B40FBA600975B84 /* NSDictionary+CLLocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+CLLocation.m"; sourceTree = "<group>"; };
+		20DAF9651B870A3B005B7932 /* YTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YTableViewCell.h; sourceTree = "<group>"; };
+		20DAF9661B870A3B005B7932 /* YTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YTableViewCell.m; sourceTree = "<group>"; };
 		20DD4B261B73039B007C352C /* YTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YTableView.h; sourceTree = "<group>"; };
 		20DD4B271B73039B007C352C /* YTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YTableView.m; sourceTree = "<group>"; };
 		20E033F71B845706002E4583 /* YTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YTextField.h; sourceTree = "<group>"; };
@@ -386,6 +389,8 @@
 				20E033F81B845706002E4583 /* YTextField.m */,
 				65969DBE1B86BAF8001DD348 /* YProgressHUD.h */,
 				65969DBF1B86BAF8001DD348 /* YProgressHUD.m */,
+				20DAF9651B870A3B005B7932 /* YTableViewCell.h */,
+				20DAF9661B870A3B005B7932 /* YTableViewCell.m */,
 			);
 			path = YUI;
 			sourceTree = "<group>";
@@ -524,6 +529,7 @@
 				2803C92C1AE3BA60002303B6 /* YManagerCenter.m in Sources */,
 				49DB52CC1B3D81A900B0D1EB /* NSArray+Additions.m in Sources */,
 				492FDE3A1B45152C0085C770 /* YDevice.m in Sources */,
+				20DAF9671B870A3B005B7932 /* YTableViewCell.m in Sources */,
 				2873DBDA1AE02BDD00F5FD3E /* YManager.m in Sources */,
 				28CBB0E61ADAFAF400D69527 /* YHttpRequest.m in Sources */,
 				2862E36C1AE03BF500AD0257 /* YDao.m in Sources */,

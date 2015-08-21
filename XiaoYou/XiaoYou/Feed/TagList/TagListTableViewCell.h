@@ -6,12 +6,12 @@
 //  Copyright (c) 2015年 xc. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "YTableViewCell.h"
 
 
 
 extern NSString *const KTagListTableViewCell;
-@interface TagListTableViewCell : UITableViewCell
+@interface TagListTableViewCell : YTableViewCell
 
 - (void)setData:(NSString *)text;
 
