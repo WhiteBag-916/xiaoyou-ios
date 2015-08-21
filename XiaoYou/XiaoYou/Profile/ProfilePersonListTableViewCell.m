@@ -1,0 +1,87 @@
+//
+//  ProfilePersonListTableViewCell.m
+//  XiaoYou
+//
+//  Created by 李思良 on 15/8/21.
+//  Copyright (c) 2015年 xc. All rights reserved.
+//
+
+#import "ProfilePersonListTableViewCell.h"
+#import "YFaceImageView.h"
+#import "YUtils+Component.h"
+#import "ConnectTag.h"
+#import "UIImageView+WebCache.h"
+#import "FeedTag.h"
+NSString *const kProfilePersonListTableViewCell = @"kProfilePersonListTableViewCell";
+
+
+#define KFACEIMGSIZE SCALE_NUM(45)
+#define KFACEMARGIN SCALE_NUM(10)
+
+#define KTAGMARGIN SCALE_NUM(12)
+#define KCONNECTMARGIN SCALE_NUM(30)
+
+#define KTAGMARGIN_TOP SCALE_NUM(15)
+#define KTAGHEIGHT SCALE_NUM(35)
+#define KTAGTEXTMARGIN SCALE_NUM(15)
+
+#define KTAGMARGIN_RIGHT SCALE_NUM(58)
+@interface ProfilePersonListTableViewCell()
+
+@property (nonatomic, strong) YFaceImageView *face;
+@property (nonatomic, strong) UILabel *userName;
+@property (nonatomic, strong) ConnectTag *connect;
+@property (nonatomic, strong) FeedTag *tagView;
+
+@end
+
+@implementation ProfilePersonListTableViewCell
+
+- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
+    self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
+    if (self) {
+        _face = [[YFaceImageView alloc] init];
+        [self.contentView addSubview:_face];
+        [_face mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.top.left.mas_equalTo(KFACEMARGIN);
+            make.width.height.mas_equalTo(KFACEIMGSIZE);
+        }];
+        _face.layer.cornerRadius = KFACEIMGSIZE/2;
+        _face.clipsToBounds = true;
+        
+        _userName = [YUtils initLabel:CONTENT_FONT(12) color:[UIColor blackColor] text:@"小小" frame:CGRectZero alignment:NSTextAlignmentLeft];
+        [self.contentView addSubview:_userName];
+        [_userName mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.equalTo(_face.mas_right).offset(KTAGMARGIN);
+            make.centerY.equalTo(_face);
+        }];
+        
+        _connect = [[ConnectTag alloc] init];
+        [self.contentView addSubview:_connect];
+        [_connect mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.equalTo(_userName.mas_right).offset(KCONNECTMARGIN);
+            make.centerY.equalTo(_userName);
+        }];
+        
+        _tagView = [[FeedTag alloc] init];
+        [self.contentView addSubview:_tagView];
+        [_tagView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.equalTo(_userName);
+            make.top.equalTo(_userName.mas_bottom).offset(KTAGMARGIN_TOP);
+            make.right.equalTo(self.contentView).offset(-KTAGMARGIN_RIGHT);
+            make.height.mas_equalTo(KTAGHEIGHT).priorityHigh();
+        }];
+        [_tagView.tagContent mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.equalTo(_tagView.tagIcon.mas_right).offset(KTAGTEXTMARGIN);
+        }];
+    }
+    return self;
+}
+
+- (void)setData {
+    [_connect updateTag:@[@"班"]];
+    [_face sd_setImageWithURL:[NSURL URLWithString:@"http://cdn.duitang.com/uploads/item/201411/22/20141122111634_RBCXS.jpeg"]];
+    [_tagView setData];
+}
+
+@end
