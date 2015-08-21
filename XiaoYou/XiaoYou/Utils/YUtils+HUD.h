@@ -7,8 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "YUtils.h"
 @class MBProgressHUD;
-@interface YProgressHUD : NSObject
+@interface YUtils(HUD)
 
 
 + (MBProgressHUD *)showHUDAddedTo:(UIView *)view title:(NSString *)title;

@@ -14,5 +14,7 @@ AS_SINGLETON(ProvisionManager);
 
 //登录
 - (void)goLogin:(ActionCompleteBlock)block;
+//获取学校列表
+- (void)schoolListReq:(NSString *)schoolName block:(ActionCompleteBlock)block;
 
 @end

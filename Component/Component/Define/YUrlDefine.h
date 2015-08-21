@@ -28,6 +28,12 @@
  **********************************************************/
 //登录
 #define api_user_login  @"/mobile/user/login"
+//学校列表
+#define api_login_schoolList  @"/mobile/school/schoolList"
+//获取验证码
+#define api_login_receiveAuthCode  @"/mobile/user/receiveAuthCode"
+//验证
+#define api_login_phoneVerify @"/mobile/user/verify"
 
 /**********************************************************
  Url Define: FeedManager

@@ -11,9 +11,10 @@
 #import "UIImageView+WebCache.h"
 #import "YUtils+Component.h"
 #import "SDPhotoBrowser/SDPhotoBrowser.h"
+#import "YTakePhoto.h"
 
 #define KIMGTAG 10000
-@interface FeedImageGroup()<SDPhotoBrowserDelegate>
+@interface FeedImageGroup()<SDPhotoBrowserDelegate, YTakePhotoDelegate>
 
 @property (nonatomic, strong) NSArray *smallImgs;
 @property (nonatomic, strong) NSArray *bigImgs;
@@ -24,6 +25,7 @@
 
 @property (nonatomic, assign) float imgSize;
 
+@property (nonatomic, strong) YTakePhoto *takePhoto;
 @end
 
 @implementation FeedImageGroup
@@ -39,6 +41,7 @@
 - (id)initWithCamera {
     self = [super init];
     if (self) {
+        _takePhoto = [[YTakePhoto alloc] initWithDelegate:self];
         _imgSize = SCALE_NUM(75);
         [self initImgs];
         _camera = [[UIImageView alloc] init];
@@ -47,6 +50,8 @@
         [_camera mas_makeConstraints:^(MASConstraintMaker *make) {
             make.edges.equalTo(_contentView.subviews[0]);
         }];
+        _camera.userInteractionEnabled = true;
+        [_camera addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:_takePhoto action:@selector(openPhoto)]];
         [self moveToLine:0];
         for (int i = 1; i < 9; i++) {
             [_contentView.subviews[i] setHidden:true];
@@ -219,4 +224,10 @@
 - (NSURL *)photoBrowser:(SDPhotoBrowser *)browser highQualityImageURLForIndex:(NSInteger)index {
     return [NSURL URLWithString:_bigImgs[index]];
 }
+
+#pragma YTakePhoto
+- (void)didUploadPhoto:(UIImage *)image url:(NSString *)url {
+    
+}
+
 @end

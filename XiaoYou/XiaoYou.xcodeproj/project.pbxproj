@@ -31,6 +31,12 @@
 		207F808D1B709A1E005E8F6A /* AppDelegate+Notification.m in Sources */ = {isa = PBXBuildFile; fileRef = 207F808C1B709A1E005E8F6A /* AppDelegate+Notification.m */; };
 		20DA35F71B81E89F002E5A96 /* SearchPersonViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20DA35F61B81E89F002E5A96 /* SearchPersonViewController.m */; };
 		20DA63761B7482DE007D22AC /* FeedListTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 20DA63751B7482DE007D22AC /* FeedListTableView.m */; };
+		20DAF99F1B8713F6005B7932 /* login_school@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 20DAF99D1B8713F6005B7932 /* login_school@2x.png */; };
+		20DAF9A01B8713F6005B7932 /* login_school@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 20DAF99E1B8713F6005B7932 /* login_school@3x.png */; };
+		20DAF9A51B871D31005B7932 /* SchollList.txt in Resources */ = {isa = PBXBuildFile; fileRef = 20DAF9A41B871D31005B7932 /* SchollList.txt */; };
+		20DAF9A81B871E45005B7932 /* ChooseSchoolTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 20DAF9A71B871E45005B7932 /* ChooseSchoolTableViewCell.m */; };
+		20DAF9AB1B87209E005B7932 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20DAF9AA1B87209E005B7932 /* LoginViewController.m */; };
+		20DAF9AE1B872528005B7932 /* YUtils+UI.m in Sources */ = {isa = PBXBuildFile; fileRef = 20DAF9AD1B872528005B7932 /* YUtils+UI.m */; };
 		20DBFD591B4FA122009134D0 /* libYFramework.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 20DBFD581B4FA122009134D0 /* libYFramework.a */; };
 		20DBFD5B1B4FA125009134D0 /* libModel.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 20DBFD5A1B4FA125009134D0 /* libModel.a */; };
 		20DBFD5D1B4FA127009134D0 /* libComponent.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 20DBFD5C1B4FA127009134D0 /* libComponent.a */; };
@@ -351,6 +357,9 @@
 		6592DCDF1B806A9B004CD118 /* XYMessageAndContactsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6592DCCE1B806A9B004CD118 /* XYMessageAndContactsViewController.m */; };
 		6592DCE01B806A9B004CD118 /* XYSendMessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6592DCD11B806A9B004CD118 /* XYSendMessageViewController.m */; };
 		65969DC41B86BDE1001DD348 /* MBProgressHUD+Add.m in Sources */ = {isa = PBXBuildFile; fileRef = 65969DC31B86BDE1001DD348 /* MBProgressHUD+Add.m */; };
+		65969DCA1B86E45B001DD348 /* YTakePhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = 65969DC91B86E45B001DD348 /* YTakePhoto.m */; };
+		65969DCD1B871AA9001DD348 /* ProfilePersonListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 65969DCC1B871AA9001DD348 /* ProfilePersonListController.m */; };
+		65969DD01B8723E3001DD348 /* YUtils+HUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 65969DCF1B8723E3001DD348 /* YUtils+HUD.m */; };
 		65A846FF1B81C9C300933815 /* FeedCellTopView.m in Sources */ = {isa = PBXBuildFile; fileRef = 65A846FE1B81C9C300933815 /* FeedCellTopView.m */; };
 		65A847021B81C9D300933815 /* FeedCellMiddleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 65A847011B81C9D300933815 /* FeedCellMiddleView.m */; };
 		65A847051B81CA1900933815 /* FeedCellBottomView.m in Sources */ = {isa = PBXBuildFile; fileRef = 65A847041B81CA1900933815 /* FeedCellBottomView.m */; };
@@ -408,6 +417,15 @@
 		20DA35F61B81E89F002E5A96 /* SearchPersonViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchPersonViewController.m; sourceTree = "<group>"; };
 		20DA63741B7482DE007D22AC /* FeedListTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedListTableView.h; sourceTree = "<group>"; };
 		20DA63751B7482DE007D22AC /* FeedListTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedListTableView.m; sourceTree = "<group>"; };
+		20DAF99D1B8713F6005B7932 /* login_school@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "login_school@2x.png"; sourceTree = "<group>"; };
+		20DAF99E1B8713F6005B7932 /* login_school@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "login_school@3x.png"; sourceTree = "<group>"; };
+		20DAF9A41B871D31005B7932 /* SchollList.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = SchollList.txt; sourceTree = "<group>"; };
+		20DAF9A61B871E45005B7932 /* ChooseSchoolTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChooseSchoolTableViewCell.h; sourceTree = "<group>"; };
+		20DAF9A71B871E45005B7932 /* ChooseSchoolTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChooseSchoolTableViewCell.m; sourceTree = "<group>"; };
+		20DAF9A91B87209E005B7932 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		20DAF9AA1B87209E005B7932 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		20DAF9AC1B872528005B7932 /* YUtils+UI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "YUtils+UI.h"; sourceTree = "<group>"; };
+		20DAF9AD1B872528005B7932 /* YUtils+UI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "YUtils+UI.m"; sourceTree = "<group>"; };
 		20DBFB581B4F9CE3009134D0 /* libXModel.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libXModel.a; path = "../XModel/build/Debug-iphoneos/libXModel.a"; sourceTree = "<group>"; };
 		20DBFB5A1B4F9CE6009134D0 /* libPods-XiaoYou-SDWebImage.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-XiaoYou-SDWebImage.a"; path = "/Users/xiongchen/Documents/校友网/code/xiaoyou_ios/Pods/../build/Debug-iphoneos/libPods-XiaoYou-SDWebImage.a"; sourceTree = "<absolute>"; };
 		20DBFB5C1B4F9CEC009134D0 /* libXComponent.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libXComponent.a; path = "../XComponent/build/Debug-iphoneos/libXComponent.a"; sourceTree = "<group>"; };
@@ -910,6 +928,12 @@
 		6592DCD11B806A9B004CD118 /* XYSendMessageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYSendMessageViewController.m; sourceTree = "<group>"; };
 		65969DC21B86BDE1001DD348 /* MBProgressHUD+Add.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MBProgressHUD+Add.h"; sourceTree = "<group>"; };
 		65969DC31B86BDE1001DD348 /* MBProgressHUD+Add.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MBProgressHUD+Add.m"; sourceTree = "<group>"; };
+		65969DC81B86E45B001DD348 /* YTakePhoto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YTakePhoto.h; sourceTree = "<group>"; };
+		65969DC91B86E45B001DD348 /* YTakePhoto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YTakePhoto.m; sourceTree = "<group>"; };
+		65969DCB1B871AA9001DD348 /* ProfilePersonListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfilePersonListController.h; sourceTree = "<group>"; };
+		65969DCC1B871AA9001DD348 /* ProfilePersonListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfilePersonListController.m; sourceTree = "<group>"; };
+		65969DCE1B8723E3001DD348 /* YUtils+HUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "YUtils+HUD.h"; sourceTree = "<group>"; };
+		65969DCF1B8723E3001DD348 /* YUtils+HUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "YUtils+HUD.m"; sourceTree = "<group>"; };
 		65A846FD1B81C9C300933815 /* FeedCellTopView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedCellTopView.h; sourceTree = "<group>"; };
 		65A846FE1B81C9C300933815 /* FeedCellTopView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedCellTopView.m; sourceTree = "<group>"; };
 		65A847001B81C9D300933815 /* FeedCellMiddleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedCellMiddleView.h; sourceTree = "<group>"; };
@@ -1121,6 +1145,7 @@
 		20DBFD721B4FA90B009134D0 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				20DAF9A41B871D31005B7932 /* SchollList.txt */,
 				334670611B841F1E00A8628A /* message */,
 				3334AC4A1B83319500FDDCCB /* contacts */,
 				20E18D891B808E42005B75EE /* Common */,
@@ -1137,6 +1162,10 @@
 			children = (
 				20DC87F01B5F3DC70019DC7F /* ChooseSchoolViewController.h */,
 				20DC87F11B5F3DC70019DC7F /* ChooseSchoolViewController.m */,
+				20DAF9A61B871E45005B7932 /* ChooseSchoolTableViewCell.h */,
+				20DAF9A71B871E45005B7932 /* ChooseSchoolTableViewCell.m */,
+				20DAF9A91B87209E005B7932 /* LoginViewController.h */,
+				20DAF9AA1B87209E005B7932 /* LoginViewController.m */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -1144,6 +1173,8 @@
 		20DC87F81B5F683F0019DC7F /* CommonView */ = {
 			isa = PBXGroup;
 			children = (
+				65969DC81B86E45B001DD348 /* YTakePhoto.h */,
+				65969DC91B86E45B001DD348 /* YTakePhoto.m */,
 				2076A2FC1B81C590001FFBAC /* YCommonActionSheet.h */,
 				2076A2FD1B81C590001FFBAC /* YCommonActionSheet.m */,
 				2076A2FE1B81C590001FFBAC /* YCommonAlertView.h */,
@@ -1163,6 +1194,8 @@
 			children = (
 				20DD4B2F1B7345EF007C352C /* ProfileViewController.h */,
 				20DD4B301B7345EF007C352C /* ProfileViewController.m */,
+				65969DCB1B871AA9001DD348 /* ProfilePersonListController.h */,
+				65969DCC1B871AA9001DD348 /* ProfilePersonListController.m */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -1428,6 +1461,8 @@
 		20E18DB11B808E42005B75EE /* Login */ = {
 			isa = PBXGroup;
 			children = (
+				20DAF99D1B8713F6005B7932 /* login_school@2x.png */,
+				20DAF99E1B8713F6005B7932 /* login_school@3x.png */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -2144,11 +2179,15 @@
 		653CB2E81B806BFD006ECBB2 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				65969DCE1B8723E3001DD348 /* YUtils+HUD.h */,
+				65969DCF1B8723E3001DD348 /* YUtils+HUD.m */,
 				20E033C21B842727002E4583 /* UMengSDK */,
 				653CB2E91B806BFD006ECBB2 /* ChineseSorting */,
 				333122D61B806F7E00D3D032 /* ChatDemoUIDefine.h */,
 				333122D71B806F7E00D3D032 /* RobotManager.h */,
 				333122D81B806F7E00D3D032 /* RobotManager.m */,
+				20DAF9AC1B872528005B7932 /* YUtils+UI.h */,
+				20DAF9AD1B872528005B7932 /* YUtils+UI.m */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -2398,6 +2437,7 @@
 				2076A3191B81DA3E001FFBAC /* toolbar-mine@3x.png in Resources */,
 				3335C3641B8178E8007DEFD4 /* chatFire_audioPlaying0@2x.png in Resources */,
 				20E9421D1B833D10009C2DC6 /* wechat_friends@3x.png in Resources */,
+				20DAF9A51B871D31005B7932 /* SchollList.txt in Resources */,
 				20E18DD11B808E42005B75EE /* tag-grey@3x.png in Resources */,
 				20E942361B833D10009C2DC6 /* sheet_delete@2x.png in Resources */,
 				3335C36A1B8178E8007DEFD4 /* chatFire_audioPlaying3@2x.png in Resources */,
@@ -2494,6 +2534,7 @@
 				334670651B841F2800A8628A /* new-remind-number@3x.png in Resources */,
 				2076A30F1B81DA3E001FFBAC /* toolbar-chat-chosen@3x.png in Resources */,
 				20E18DB41B808E42005B75EE /* common_back@2x.png in Resources */,
+				20DAF9A01B8713F6005B7932 /* login_school@3x.png in Resources */,
 				3334AC0B1B82C89500FDDCCB /* chatBar_colorMore_camera@2x.png in Resources */,
 				20E18DCA1B808E42005B75EE /* menu@2x.png in Resources */,
 				20E9424D1B833D10009C2DC6 /* complete-grey@3x.png in Resources */,
@@ -2516,6 +2557,7 @@
 				20E942181B833D10009C2DC6 /* wechat@2x.png in Resources */,
 				3348CB531B87207600F97FAF /* chatBar_recordBg.png in Resources */,
 				333122721B806EDB00D3D032 /* MWPhotoBrowser.bundle in Resources */,
+				20DAF99F1B8713F6005B7932 /* login_school@2x.png in Resources */,
 				20E18DCC1B808E42005B75EE /* more@2x.png in Resources */,
 				3334AC1F1B82D7C400FDDCCB /* VoiceSearchFeedback001.png in Resources */,
 				20E18DC11B808E42005B75EE /* message_tab_green@3x.png in Resources */,
@@ -2608,6 +2650,7 @@
 				333122751B806EDB00D3D032 /* SRRefreshView.m in Sources */,
 				3331227B1B806EDB00D3D032 /* wav.mm in Sources */,
 				3331225B1B806EDB00D3D032 /* EMSDWebImagePrefetcher.m in Sources */,
+				20DAF9AB1B87209E005B7932 /* LoginViewController.m in Sources */,
 				3331222D1B806EDB00D3D032 /* ConvertToCommonEmoticonsHelper.m in Sources */,
 				65969DC41B86BDE1001DD348 /* MBProgressHUD+Add.m in Sources */,
 				333122831B806EDC00D3D032 /* UIViewController+DismissKeyboard.m in Sources */,
@@ -2642,6 +2685,7 @@
 				20E9423D1B833D10009C2DC6 /* FeedContactTableViewCell.m in Sources */,
 				33380DA51B85DB89008B51EB /* NormalSystemMessageTableViewCell.m in Sources */,
 				653CB2EF1B806BFD006ECBB2 /* pinyin.c in Sources */,
+				65969DD01B8723E3001DD348 /* YUtils+HUD.m in Sources */,
 				33380D941B8577E8008B51EB /* SendMessageTableView.m in Sources */,
 				333122471B806EDB00D3D032 /* EMAlertView.m in Sources */,
 				333122431B806EDB00D3D032 /* EMCDDeviceManager+Microphone.m in Sources */,
@@ -2649,6 +2693,8 @@
 				333122711B806EDB00D3D032 /* PSTGridLayoutSection.m in Sources */,
 				6518A2481B80429300AEB79D /* TagListTableView.m in Sources */,
 				656234771B837FDC00651C88 /* YFaceImageView.m in Sources */,
+				65969DCA1B86E45B001DD348 /* YTakePhoto.m in Sources */,
+				65969DCD1B871AA9001DD348 /* ProfilePersonListController.m in Sources */,
 				33380D971B857826008B51EB /* SendMessageTableViewCell.m in Sources */,
 				6592DCD91B806A9B004CD118 /* GroupApplyTableViewCell.m in Sources */,
 				333122571B806EDB00D3D032 /* EMSDWebImageDecoder.m in Sources */,
@@ -2680,6 +2726,7 @@
 				20DA63761B7482DE007D22AC /* FeedListTableView.m in Sources */,
 				207F808D1B709A1E005E8F6A /* AppDelegate+Notification.m in Sources */,
 				6592DCDC1B806A9B004CD118 /* ContactsTableViewCell.m in Sources */,
+				20DAF9A81B871E45005B7932 /* ChooseSchoolTableViewCell.m in Sources */,
 				3331223A1B806EDB00D3D032 /* EMChatTimeCell.m in Sources */,
 				333122591B806EDB00D3D032 /* EMSDWebImageDownloaderOperation.m in Sources */,
 				333122631B806EDB00D3D032 /* UIImageView+EMWebCache.m in Sources */,
@@ -2706,6 +2753,7 @@
 				333122541B806EDB00D3D032 /* DACircularProgressView.m in Sources */,
 				3395498F1B81C67000F9ECB1 /* GroupInfoDetailHeaderView.m in Sources */,
 				65A847021B81C9D300933815 /* FeedCellMiddleView.m in Sources */,
+				20DAF9AE1B872528005B7932 /* YUtils+UI.m in Sources */,
 				20E0340E1B847F9F002E4583 /* SearchResultViewController.m in Sources */,
 				2076A2FB1B81B909001FFBAC /* AddTagViewController.m in Sources */,
 				333122801B806EDC00D3D032 /* NSDateFormatter+Category.m in Sources */,
