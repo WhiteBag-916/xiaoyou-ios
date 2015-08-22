@@ -353,6 +353,7 @@
 		65024C1D1B833565007DE404 /* feedmore@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 65024C1B1B833565007DE404 /* feedmore@3x.png */; };
 		650C6C001B881A9800A89AC9 /* ProfileMyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 650C6BFF1B881A9800A89AC9 /* ProfileMyViewController.m */; };
 		650C6C031B88529600A89AC9 /* ProfileChangePwdViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 650C6C021B88529600A89AC9 /* ProfileChangePwdViewController.m */; };
+		650C6C061B8860FF00A89AC9 /* YCommonEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 650C6C051B8860FF00A89AC9 /* YCommonEditViewController.m */; };
 		6518A2481B80429300AEB79D /* TagListTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6518A2471B80429300AEB79D /* TagListTableView.m */; };
 		6518A24B1B80583600AEB79D /* TagListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6518A24A1B80583600AEB79D /* TagListTableViewCell.m */; };
 		653199DE1B80B41C00405B72 /* ConnectTag.m in Sources */ = {isa = PBXBuildFile; fileRef = 653199DD1B80B41C00405B72 /* ConnectTag.m */; };
@@ -935,6 +936,8 @@
 		650C6BFF1B881A9800A89AC9 /* ProfileMyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileMyViewController.m; sourceTree = "<group>"; };
 		650C6C011B88529600A89AC9 /* ProfileChangePwdViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileChangePwdViewController.h; sourceTree = "<group>"; };
 		650C6C021B88529600A89AC9 /* ProfileChangePwdViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileChangePwdViewController.m; sourceTree = "<group>"; };
+		650C6C041B8860FF00A89AC9 /* YCommonEditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YCommonEditViewController.h; sourceTree = "<group>"; };
+		650C6C051B8860FF00A89AC9 /* YCommonEditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YCommonEditViewController.m; sourceTree = "<group>"; };
 		6518A2461B80429300AEB79D /* TagListTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TagListTableView.h; sourceTree = "<group>"; };
 		6518A2471B80429300AEB79D /* TagListTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TagListTableView.m; sourceTree = "<group>"; };
 		6518A2491B80583600AEB79D /* TagListTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TagListTableViewCell.h; sourceTree = "<group>"; };
@@ -1268,6 +1271,8 @@
 				656234761B837FDC00651C88 /* YFaceImageView.m */,
 				20E033F41B8427AF002E4583 /* YCommonShare.h */,
 				20E033F51B8427AF002E4583 /* YCommonShare.m */,
+				650C6C041B8860FF00A89AC9 /* YCommonEditViewController.h */,
+				650C6C051B8860FF00A89AC9 /* YCommonEditViewController.m */,
 			);
 			path = CommonView;
 			sourceTree = "<group>";
@@ -2836,6 +2841,7 @@
 				333122351B806EDB00D3D032 /* EMChatBaseBubbleView.m in Sources */,
 				6592DCDE1B806A9B004CD118 /* MessageTableViewCell.m in Sources */,
 				20E1222D1B708CDC00F90BD3 /* TagListViewController.m in Sources */,
+				650C6C061B8860FF00A89AC9 /* YCommonEditViewController.m in Sources */,
 				333122681B806EDB00D3D032 /* PSTCollectionViewController.m in Sources */,
 				339549831B81BD6700F9ECB1 /* XYGroupInfoDetailViewController.m in Sources */,
 				333122311B806EDB00D3D032 /* FacialView.m in Sources */,
