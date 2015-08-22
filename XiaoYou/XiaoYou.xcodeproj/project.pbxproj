@@ -32,6 +32,7 @@
 		20DA35F71B81E89F002E5A96 /* SearchPersonViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20DA35F61B81E89F002E5A96 /* SearchPersonViewController.m */; };
 		20DA63761B7482DE007D22AC /* FeedListTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 20DA63751B7482DE007D22AC /* FeedListTableView.m */; };
 		20DAE14A1B88195C00607996 /* login_tip.png in Resources */ = {isa = PBXBuildFile; fileRef = 20DAE1491B88195C00607996 /* login_tip.png */; };
+		20DAE14D1B8821DD00607996 /* PerfectInformationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20DAE14C1B8821DD00607996 /* PerfectInformationViewController.m */; };
 		20DAF99F1B8713F6005B7932 /* login_school@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 20DAF99D1B8713F6005B7932 /* login_school@2x.png */; };
 		20DAF9A01B8713F6005B7932 /* login_school@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 20DAF99E1B8713F6005B7932 /* login_school@3x.png */; };
 		20DAF9A51B871D31005B7932 /* SchollList.txt in Resources */ = {isa = PBXBuildFile; fileRef = 20DAF9A41B871D31005B7932 /* SchollList.txt */; };
@@ -433,6 +434,8 @@
 		20DA63741B7482DE007D22AC /* FeedListTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedListTableView.h; sourceTree = "<group>"; };
 		20DA63751B7482DE007D22AC /* FeedListTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedListTableView.m; sourceTree = "<group>"; };
 		20DAE1491B88195C00607996 /* login_tip.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = login_tip.png; sourceTree = "<group>"; };
+		20DAE14B1B8821DD00607996 /* PerfectInformationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PerfectInformationViewController.h; sourceTree = "<group>"; };
+		20DAE14C1B8821DD00607996 /* PerfectInformationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PerfectInformationViewController.m; sourceTree = "<group>"; };
 		20DAF99D1B8713F6005B7932 /* login_school@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "login_school@2x.png"; sourceTree = "<group>"; };
 		20DAF99E1B8713F6005B7932 /* login_school@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "login_school@3x.png"; sourceTree = "<group>"; };
 		20DAF9A41B871D31005B7932 /* SchollList.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = SchollList.txt; sourceTree = "<group>"; };
@@ -1229,6 +1232,8 @@
 				20DAF9A71B871E45005B7932 /* ChooseSchoolTableViewCell.m */,
 				20DAF9A91B87209E005B7932 /* LoginViewController.h */,
 				20DAF9AA1B87209E005B7932 /* LoginViewController.m */,
+				20DAE14B1B8821DD00607996 /* PerfectInformationViewController.h */,
+				20DAE14C1B8821DD00607996 /* PerfectInformationViewController.m */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -2789,6 +2794,7 @@
 				3331226B1B806EDB00D3D032 /* PSTCollectionViewItemKey.m in Sources */,
 				65F82F841B85E74A00FF6E2D /* FeedPublishViewController.m in Sources */,
 				6592DCDB1B806A9B004CD118 /* ContactsTableView.m in Sources */,
+				20DAE14D1B8821DD00607996 /* PerfectInformationViewController.m in Sources */,
 				333122521B806EDB00D3D032 /* MWTapDetectingView.m in Sources */,
 				653199DE1B80B41C00405B72 /* ConnectTag.m in Sources */,
 				3331223C1B806EDB00D3D032 /* EMChatViewCell.m in Sources */,
