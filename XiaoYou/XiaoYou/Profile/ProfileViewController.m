@@ -12,6 +12,7 @@
 #import "ProfileFeedContentView.h"
 #import "ProfilePublishViewController.h"
 #import "ProfileMyViewController.h"
+#import "YCommonEditViewController.h"
 
 #define KTOPHEIGHT SCALE_NUM(90)
 #define KHEADIMG_SIZE SCALE_NUM(45)
@@ -246,6 +247,7 @@
             make.centerY.equalTo(icon).priorityLow();
             make.bottom.lessThanOrEqualTo(item);
         }];
+        [item addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(openAttitude)]];
     }
     if (index == 1) {
         _tagLabel = [YUtils initLabel:CONTENT_FONT(12) color:KCOLORGREEN_009688 text:@"互联网创业" frame:CGRectZero alignment:NSTextAlignmentLeft];
@@ -316,7 +318,9 @@
 - (void)viewDidAppear:(BOOL)animated {
     [_feed setData];
 }
-
+- (void)openAttitude {
+    [self.navigationController pushViewController:[[YCommonEditViewController alloc] initWithType:YCommonEditAttitude preText:_attitudeLabel.text] animated:true];
+}
 - (void)openRespect {
     [self.navigationController pushViewController:[[ProfilePersonListController alloc] initWithType:true] animated:true];
 }
