@@ -34,7 +34,7 @@
 }
 - (void)initController {
     self.view.backgroundColor = KCOLORWHITE;
-    [self showCustomNavigationBackButton];
+    [self showCustomNavigationCancelButton];
     [self showCustomNavigationConfirmButton];
     if (_type == YCommonEditAttitude) {
         self.title = @"我的态度";
@@ -42,6 +42,7 @@
     if (_preText.length == 0) {
         self.navigationRightButton.enabled = false;
     }
+    
     
 }
 - (void)initView {
@@ -70,6 +71,18 @@
 }
 
 - (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
     self.navigationController.navigationBarHidden = false;
+    [self showEditMode];
+}
+- (void)onNavigationLeftButtonClicked {
+    CATransition* transition = [CATransition animation];
+    transition.type = kCATransitionPush;
+    transition.subtype = kCATransitionFromBottom;
+    [self.navigationController.view.layer addAnimation:transition forKey:kCATransition];
+    [self.navigationController popViewControllerAnimated:false];
+}
+- (void)viewWillDisappear:(BOOL)animated {
+    [self showOrignMode];
 }
 @end
