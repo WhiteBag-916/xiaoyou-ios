@@ -14,6 +14,8 @@ AS_SINGLETON(ProvisionManager);
 
 //初始化登录数据,自动登录
 - (void)initLoginData;
+//初始化个人数据,自动登录
+- (void)initProfileData;
 //登录
 - (void)goLogin:(NSString *)account password:(NSString *)password block:(ActionCompleteBlock)block;
 //获取学校列表
