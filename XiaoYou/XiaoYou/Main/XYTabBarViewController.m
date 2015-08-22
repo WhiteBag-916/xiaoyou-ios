@@ -27,24 +27,24 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
     
-//    [[EaseMob sharedInstance].chatManager asyncRegisterNewAccount:@"yinhui" password:@"123123" withCompletion:^(NSString *username, NSString *password, EMError *error) {
-//        if (!error) {
-//            YLogD(@"注册成功");
-//        }
-//    } onQueue:nil];
     
-    BOOL isAutoLogin = [[EaseMob sharedInstance].chatManager isAutoLoginEnabled];
-    if (!isAutoLogin)
-    {
-        [[EaseMob sharedInstance].chatManager asyncLoginWithUsername:@"xiaoaliu" password:@"123123" completion:^(NSDictionary *loginInfo, EMError *error) {
-            if (!error && loginInfo) {
-                YLogD(@"登陆成功");
-                [[EaseMob sharedInstance].chatManager setIsAutoLoginEnabled:YES];
-            }
-        } onQueue:nil];
-    }
+//    BOOL isAutoLogin = [[EaseMob sharedInstance].chatManager isAutoLoginEnabled];
+//    if (!isAutoLogin)
+//    {
+//        [[EaseMob sharedInstance].chatManager asyncLoginWithUsername:@"xiaoaliu" password:@"123123" completion:^(NSDictionary *loginInfo, EMError *error) {
+//            if (!error && loginInfo) {
+//                YLogD(@"登陆成功");
+//                [[EaseMob sharedInstance].chatManager setIsAutoLoginEnabled:YES];
+//            }
+//        } onQueue:nil];
+//    }
+    
+    [[EaseMob sharedInstance].chatManager asyncLoginWithUsername:@"xiaoaliu" password:@"123123" completion:^(NSDictionary *loginInfo, EMError *error) {
+                    if (!error && loginInfo) {
+                        YLogD(@"登陆成功");
+                    }
+                } onQueue:nil];
 
     [self initControllers];
     
@@ -96,14 +96,56 @@
     return YES;
 }
 
-/*
-#pragma mark - Navigation
+//自动登录
+/*!
+ @method
+ @brief 用户将要进行自动登录操作的回调
+ @discussion
+ @param loginInfo 登录的用户信息
+ @param error     错误信息
+ @result
+ */
+- (void)willAutoLoginWithInfo:(NSDictionary *)loginInfo error:(EMError *)error
+{
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
 }
-*/
+
+/*!
+ @method
+ @brief 用户自动登录完成后的回调
+ @discussion
+ @param loginInfo 登录的用户信息
+ @param error     错误信息
+ @result
+ */
+- (void)didAutoLoginWithInfo:(NSDictionary *)loginInfo error:(EMError *)error
+{
+
+}
+
+
+//重连
+/*!
+ @method
+ @brief 将要发起自动重连操作时发送该回调
+ @discussion
+ @result
+ */
+- (void)willAutoReconnect
+{
+
+}
+
+/*!
+ @method
+ @brief 自动重连操作完成后的回调（成功的话，error为nil，失败的话，查看error的错误信息）
+ @discussion
+ @result
+ */
+- (void)didAutoReconnectFinishedWithError:(NSError *)error
+{
+
+}
+
 
 @end
