@@ -16,9 +16,12 @@
 		20DAF9E61B8750A4005B7932 /* YDirectory+Data.m in Sources */ = {isa = PBXBuildFile; fileRef = 20DAF9E51B8750A4005B7932 /* YDirectory+Data.m */; };
 		20DBFD4A1B4FA0F5009134D0 /* libComponent.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 20DBFD3E1B4FA0F5009134D0 /* libComponent.a */; };
 		20DBFD861B4FD3F5009134D0 /* YUtils+Component.m in Sources */ = {isa = PBXBuildFile; fileRef = 20DBFD851B4FD3F5009134D0 /* YUtils+Component.m */; };
+		20E0BFEA1B88B0CA00EDAED4 /* TagListAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 20E0BFE91B88B0CA00EDAED4 /* TagListAction.m */; };
+		20E0BFED1B88B0CA00EDAED4 /* MessageListAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 20E0BFEC1B88B0CA00EDAED4 /* MessageListAction.m */; };
+		20E0BFF01B88B0CA00EDAED4 /* UploadHeadImageAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 20E0BFEF1B88B0CA00EDAED4 /* UploadHeadImageAction.m */; };
+		20E0BFF31B88B0CA00EDAED4 /* UploadTagCodes.m in Sources */ = {isa = PBXBuildFile; fileRef = 20E0BFF21B88B0CA00EDAED4 /* UploadTagCodes.m */; };
 		20E122171B705D3C00F90BD3 /* FeedManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 20E122161B705D3C00F90BD3 /* FeedManager.m */; };
 		20E341801B720A54008CADC3 /* ProfileDao.m in Sources */ = {isa = PBXBuildFile; fileRef = 20E3417F1B720A54008CADC3 /* ProfileDao.m */; };
-		3320A6531B7498A100E018E1 /* MessageListAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 3320A6521B7498A100E018E1 /* MessageListAction.m */; };
 		3320A6561B7498B200E018E1 /* ContactsListAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 3320A6551B7498B200E018E1 /* ContactsListAction.m */; };
 /* End PBXBuildFile section */
 
@@ -69,14 +72,20 @@
 		20DBFD851B4FD3F5009134D0 /* YUtils+Component.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "YUtils+Component.m"; sourceTree = "<group>"; };
 		20DD4B2B1B7338D8007C352C /* YDefine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YDefine.h; sourceTree = "<group>"; };
 		20DD4B2C1B73390C007C352C /* YControlsDefine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YControlsDefine.h; sourceTree = "<group>"; };
+		20E0BFE81B88B0CA00EDAED4 /* TagListAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TagListAction.h; sourceTree = "<group>"; };
+		20E0BFE91B88B0CA00EDAED4 /* TagListAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TagListAction.m; sourceTree = "<group>"; };
+		20E0BFEB1B88B0CA00EDAED4 /* MessageListAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageListAction.h; sourceTree = "<group>"; };
+		20E0BFEC1B88B0CA00EDAED4 /* MessageListAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageListAction.m; sourceTree = "<group>"; };
+		20E0BFEE1B88B0CA00EDAED4 /* UploadHeadImageAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UploadHeadImageAction.h; sourceTree = "<group>"; };
+		20E0BFEF1B88B0CA00EDAED4 /* UploadHeadImageAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UploadHeadImageAction.m; sourceTree = "<group>"; };
+		20E0BFF11B88B0CA00EDAED4 /* UploadTagCodes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UploadTagCodes.h; sourceTree = "<group>"; };
+		20E0BFF21B88B0CA00EDAED4 /* UploadTagCodes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UploadTagCodes.m; sourceTree = "<group>"; };
 		20E122151B705D3C00F90BD3 /* FeedManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedManager.h; sourceTree = "<group>"; };
 		20E122161B705D3C00F90BD3 /* FeedManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedManager.m; sourceTree = "<group>"; };
 		20E18D5E1B807F4F005B75EE /* YNotificationDefine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YNotificationDefine.h; sourceTree = "<group>"; };
 		20E3417E1B720A54008CADC3 /* ProfileDao.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileDao.h; sourceTree = "<group>"; };
 		20E3417F1B720A54008CADC3 /* ProfileDao.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileDao.m; sourceTree = "<group>"; };
 		20E341811B720A80008CADC3 /* ProfileSQL.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProfileSQL.h; sourceTree = "<group>"; };
-		3320A6511B7498A100E018E1 /* MessageListAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MessageListAction.h; path = Component/Action/Provision/MessageListAction.h; sourceTree = SOURCE_ROOT; };
-		3320A6521B7498A100E018E1 /* MessageListAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MessageListAction.m; path = Component/Action/Provision/MessageListAction.m; sourceTree = SOURCE_ROOT; };
 		3320A6541B7498B200E018E1 /* ContactsListAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ContactsListAction.h; path = Component/Action/Provision/ContactsListAction.h; sourceTree = SOURCE_ROOT; };
 		3320A6551B7498B200E018E1 /* ContactsListAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ContactsListAction.m; path = Component/Action/Provision/ContactsListAction.m; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
@@ -118,6 +127,12 @@
 				20DAF9A21B871989005B7932 /* SchoolListAction.m */,
 				20DAF9DF1B87397A005B7932 /* ForgotPasswordAction.h */,
 				20DAF9E01B87397A005B7932 /* ForgotPasswordAction.m */,
+				20E0BFE81B88B0CA00EDAED4 /* TagListAction.h */,
+				20E0BFE91B88B0CA00EDAED4 /* TagListAction.m */,
+				20E0BFEE1B88B0CA00EDAED4 /* UploadHeadImageAction.h */,
+				20E0BFEF1B88B0CA00EDAED4 /* UploadHeadImageAction.m */,
+				20E0BFF11B88B0CA00EDAED4 /* UploadTagCodes.h */,
+				20E0BFF21B88B0CA00EDAED4 /* UploadTagCodes.m */,
 			);
 			path = Provision;
 			sourceTree = "<group>";
@@ -223,8 +238,8 @@
 		20DBFD771B4FD3F5009134D0 /* Message */ = {
 			isa = PBXGroup;
 			children = (
-				3320A6511B7498A100E018E1 /* MessageListAction.h */,
-				3320A6521B7498A100E018E1 /* MessageListAction.m */,
+				20E0BFEB1B88B0CA00EDAED4 /* MessageListAction.h */,
+				20E0BFEC1B88B0CA00EDAED4 /* MessageListAction.m */,
 			);
 			path = Message;
 			sourceTree = "<group>";
@@ -410,10 +425,13 @@
 				20859A7C1B64BD5B00580ED3 /* ProvisionManager.m in Sources */,
 				20DBFD861B4FD3F5009134D0 /* YUtils+Component.m in Sources */,
 				20DAF9E11B87397A005B7932 /* ForgotPasswordAction.m in Sources */,
-				3320A6531B7498A100E018E1 /* MessageListAction.m in Sources */,
 				20DAF9A31B871989005B7932 /* SchoolListAction.m in Sources */,
+				20E0BFEA1B88B0CA00EDAED4 /* TagListAction.m in Sources */,
 				20E122171B705D3C00F90BD3 /* FeedManager.m in Sources */,
+				20E0BFF31B88B0CA00EDAED4 /* UploadTagCodes.m in Sources */,
+				20E0BFED1B88B0CA00EDAED4 /* MessageListAction.m in Sources */,
 				20859A821B64BD8500580ED3 /* ContactManager.m in Sources */,
+				20E0BFF01B88B0CA00EDAED4 /* UploadHeadImageAction.m in Sources */,
 				20859A941B64C06A00580ED3 /* LoginAction.m in Sources */,
 				20E341801B720A54008CADC3 /* ProfileDao.m in Sources */,
 				20DAF9E61B8750A4005B7932 /* YDirectory+Data.m in Sources */,

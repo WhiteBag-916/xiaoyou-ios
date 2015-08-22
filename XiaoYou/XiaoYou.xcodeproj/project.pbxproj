@@ -33,6 +33,12 @@
 		20DA63761B7482DE007D22AC /* FeedListTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 20DA63751B7482DE007D22AC /* FeedListTableView.m */; };
 		20DAE14A1B88195C00607996 /* login_tip.png in Resources */ = {isa = PBXBuildFile; fileRef = 20DAE1491B88195C00607996 /* login_tip.png */; };
 		20DAE14D1B8821DD00607996 /* PerfectInformationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20DAE14C1B8821DD00607996 /* PerfectInformationViewController.m */; };
+		20DAE1521B882CFF00607996 /* register-number@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 20DAE14E1B882CFF00607996 /* register-number@2x.png */; };
+		20DAE1531B882CFF00607996 /* register-number@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 20DAE14F1B882CFF00607996 /* register-number@3x.png */; };
+		20DAE1541B882CFF00607996 /* register-password@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 20DAE1501B882CFF00607996 /* register-password@2x.png */; };
+		20DAE1551B882CFF00607996 /* register-password@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 20DAE1511B882CFF00607996 /* register-password@3x.png */; };
+		20DAE1581B882D0500607996 /* register-photo-upload@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 20DAE1561B882D0500607996 /* register-photo-upload@2x.png */; };
+		20DAE1591B882D0500607996 /* register-photo-upload@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 20DAE1571B882D0500607996 /* register-photo-upload@3x.png */; };
 		20DAF99F1B8713F6005B7932 /* login_school@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 20DAF99D1B8713F6005B7932 /* login_school@2x.png */; };
 		20DAF9A01B8713F6005B7932 /* login_school@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 20DAF99E1B8713F6005B7932 /* login_school@3x.png */; };
 		20DAF9A51B871D31005B7932 /* SchollList.txt in Resources */ = {isa = PBXBuildFile; fileRef = 20DAF9A41B871D31005B7932 /* SchollList.txt */; };
@@ -437,6 +443,12 @@
 		20DAE1491B88195C00607996 /* login_tip.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = login_tip.png; sourceTree = "<group>"; };
 		20DAE14B1B8821DD00607996 /* PerfectInformationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PerfectInformationViewController.h; sourceTree = "<group>"; };
 		20DAE14C1B8821DD00607996 /* PerfectInformationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PerfectInformationViewController.m; sourceTree = "<group>"; };
+		20DAE14E1B882CFF00607996 /* register-number@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "register-number@2x.png"; sourceTree = "<group>"; };
+		20DAE14F1B882CFF00607996 /* register-number@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "register-number@3x.png"; sourceTree = "<group>"; };
+		20DAE1501B882CFF00607996 /* register-password@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "register-password@2x.png"; sourceTree = "<group>"; };
+		20DAE1511B882CFF00607996 /* register-password@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "register-password@3x.png"; sourceTree = "<group>"; };
+		20DAE1561B882D0500607996 /* register-photo-upload@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "register-photo-upload@2x.png"; sourceTree = "<group>"; };
+		20DAE1571B882D0500607996 /* register-photo-upload@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "register-photo-upload@3x.png"; sourceTree = "<group>"; };
 		20DAF99D1B8713F6005B7932 /* login_school@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "login_school@2x.png"; sourceTree = "<group>"; };
 		20DAF99E1B8713F6005B7932 /* login_school@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "login_school@3x.png"; sourceTree = "<group>"; };
 		20DAF9A41B871D31005B7932 /* SchollList.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = SchollList.txt; sourceTree = "<group>"; };
@@ -1548,6 +1560,12 @@
 		20E18DB11B808E42005B75EE /* Login */ = {
 			isa = PBXGroup;
 			children = (
+				20DAE1561B882D0500607996 /* register-photo-upload@2x.png */,
+				20DAE1571B882D0500607996 /* register-photo-upload@3x.png */,
+				20DAE14E1B882CFF00607996 /* register-number@2x.png */,
+				20DAE14F1B882CFF00607996 /* register-number@3x.png */,
+				20DAE1501B882CFF00607996 /* register-password@2x.png */,
+				20DAE1511B882CFF00607996 /* register-password@3x.png */,
 				20DAE1491B88195C00607996 /* login_tip.png */,
 				20DAF99D1B8713F6005B7932 /* login_school@2x.png */,
 				20DAF99E1B8713F6005B7932 /* login_school@3x.png */,
@@ -2502,6 +2520,7 @@
 				333122911B806EDC00D3D032 /* faceDelete@2x.png in Resources */,
 				20E033E71B842727002E4583 /* UMSCommentDetailController.xib in Resources */,
 				20E033ED1B842727002E4583 /* UMSnsAccountViewController.xib in Resources */,
+				20DAE1521B882CFF00607996 /* register-number@2x.png in Resources */,
 				20E18DCB1B808E42005B75EE /* menu@3x.png in Resources */,
 				333122D01B806EDC00D3D032 /* chat_sender_audio_playing_full@2x.png in Resources */,
 				3335C3681B8178E8007DEFD4 /* chatFire_audioPlaying2@2x.png in Resources */,
@@ -2550,6 +2569,7 @@
 				2076A3101B81DA3E001FFBAC /* toolbar-chat@2x.png in Resources */,
 				3334AC1E1B82D7C400FDDCCB /* VoiceSearchFeedback000@2x.png in Resources */,
 				20E942251B833D10009C2DC6 /* toggle-on@3x.png in Resources */,
+				20DAE1581B882D0500607996 /* register-photo-upload@2x.png in Resources */,
 				333122C31B806EDC00D3D032 /* chat_receiver_audio_playing_full.png in Resources */,
 				334670791B84337E00A8628A /* friend-requests@3x.png in Resources */,
 				333122D31B806EDC00D3D032 /* back@2x.png in Resources */,
@@ -2583,6 +2603,7 @@
 				3348CB511B87207600F97FAF /* chatBar_recordSelectedBg.png in Resources */,
 				20E18DC61B808E42005B75EE /* cup@2x.png in Resources */,
 				3335C3661B8178E8007DEFD4 /* chatFire_audioPlaying1@2x.png in Resources */,
+				20DAE1541B882CFF00607996 /* register-password@2x.png in Resources */,
 				20E9424E1B833D10009C2DC6 /* complete@2x.png in Resources */,
 				3334AC3B1B82E32700FDDCCB /* chat_sender_bg@2x.png in Resources */,
 				3348CB691B87236200F97FAF /* send_normal@3x.png in Resources */,
@@ -2598,15 +2619,18 @@
 				3334ABFD1B82C66F00FDDCCB /* chatBar_recordSelected.png in Resources */,
 				3335C3651B8178E8007DEFD4 /* chatFire_audioPlaying1.png in Resources */,
 				20E942221B833D10009C2DC6 /* toggle-off@2x.png in Resources */,
+				20DAE1551B882CFF00607996 /* register-password@3x.png in Resources */,
 				3334ABF61B82C5D200FDDCCB /* chatBar_moreSelected@2x.png in Resources */,
 				20E18DC01B808E42005B75EE /* message_tab_green@2x.png in Resources */,
 				20E942551B833D10009C2DC6 /* complete-cancel@3x.png in Resources */,
 				20E18DB61B808E42005B75EE /* common_filter@2x.png in Resources */,
 				2076A3151B81DA3E001FFBAC /* toolbar-contact@3x.png in Resources */,
+				20DAE1591B882D0500607996 /* register-photo-upload@3x.png in Resources */,
 				333122C01B806EDC00D3D032 /* chat_receiver_audio_playing002@2x.png in Resources */,
 				20E942441B833D10009C2DC6 /* add-03@2x.png in Resources */,
 				333122741B806EDB00D3D032 /* sr_refresh@2X.png in Resources */,
 				20E033EE1B842727002E4583 /* UMSShareListController.xib in Resources */,
+				20DAE1531B882CFF00607996 /* register-number@3x.png in Resources */,
 				20E18DC71B808E42005B75EE /* cup@3x.png in Resources */,
 				333122CB1B806EDC00D3D032 /* chat_sender_audio_playing_002.png in Resources */,
 				20E18DC81B808E42005B75EE /* menu-remind@2x.png in Resources */,
