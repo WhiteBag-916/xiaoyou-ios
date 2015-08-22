@@ -51,7 +51,7 @@
 //聊天列表
 #define api_message_list  @"/mobile/user/getsenderlist"
 //联系人列表
-#define api_contacts_list  @"/mobile/user/linkManList"
+#define api_contacts_list  @"/mobile/user/v2/listLinkMan"
 
 #endif
 

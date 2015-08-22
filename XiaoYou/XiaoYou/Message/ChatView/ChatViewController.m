@@ -230,7 +230,7 @@
 - (void)setupBarButtonItem
 {
     
-    self.title = @"某某某";
+    self.title = _studentDic[@"studentNo"];
     
     UIButton *backButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 9, 14)];
     [backButton setImage:[UIImage imageNamed:@"common_back"] forState:UIControlStateNormal];
@@ -524,7 +524,7 @@
                 timeCell.backgroundColor = [UIColor clearColor];
             }
             
-            timeCell.textLabel.text = [self transformDateStr:(NSString *)obj];
+            timeCell.textLabel.text = (NSString *)obj;
             
             return timeCell;
         }
@@ -536,6 +536,7 @@
                 cell = [[EMChatViewCell alloc] initWithMessageModel:model reuseIdentifier:cellIdentifier];
                 cell.backgroundColor = [UIColor clearColor];
             }
+            model.headImageURL = [NSURL URLWithString:_studentDic[@"icon"]];
             cell.messageModel = model;
             
             return cell;
@@ -543,37 +544,6 @@
     }
     
     return nil;
-}
-
--(NSString*)transformDateStr:(NSString *) dateTempStr
-{
-    NSString * tempDate = [dateTempStr substringWithRange:NSMakeRange(0, 19)];
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
-    dateFormatter.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"zh_CN"];
-    
-    NSDate * date = [dateFormatter dateFromString:tempDate];
-    NSLog(@"date = %@",date);
-    NSTimeInterval result = [date timeIntervalSinceNow];
-    double timeInterval = result * (-1);
-    NSLog(@"timeInterval = %g",result);
-    if (timeInterval < 300)
-    {
-        return @"刚刚";
-    }
-    else if(timeInterval < 86400)
-    {
-        return [dateTempStr substringWithRange:NSMakeRange(11, 5)];
-    }
-    else if(timeInterval < 172800)
-    {
-        return @"昨天";
-    }
-    else
-    {
-        return [dateTempStr substringWithRange:NSMakeRange(0, 10)];
-    }
-    
 }
 
 #pragma mark - Table view delegate

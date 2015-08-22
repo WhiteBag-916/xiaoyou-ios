@@ -8,6 +8,7 @@
 
 #import "ChineseString.h"
 #import "PinyinHelper.h"
+#import "LinkManList.h"
 
 @implementation ChineseString
 @synthesize string;
@@ -88,7 +89,7 @@
     for(int i=0;i<[stringArr count];i++)
     {
         ChineseString *chineseString=[[ChineseString alloc]init];
-        chineseString.string=[NSString stringWithString:[stringArr objectAtIndex:i][@"name"]];
+        chineseString.string=[NSString stringWithString:[[stringArr objectAtIndex:i] dictionaryRepresentation][@"name"]];
         if(chineseString.string==nil){
             chineseString.string=@"";
         }
@@ -157,7 +158,7 @@
     {
         for (int k=0; k<[stringArr count]; k++)
         {
-            if ([resultStringArr[j] isEqualToString:stringArr[k][@"name"]])
+            if ([resultStringArr[j] isEqualToString:[stringArr[k] dictionaryRepresentation][@"name"]])
             {
                 [resultArr addObject:stringArr[k]];
             }

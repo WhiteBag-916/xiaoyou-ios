@@ -120,18 +120,33 @@ NSString *const kContactsTableViewCell = @"ContactsTableViewCell";
 }
 
 
--(void)setCellInfo:(NSDictionary *) dic
+-(void)setCellInfo:(id) dic
 {
-    self.linkStudentNo = dic[@"linkStudentNo"];
+    NSDictionary * modelDic = [dic dictionaryRepresentation];
     
-    _nameLabel.text = dic[@"name"];
-    NSString * flagString = [dic[@"flag"] stringByReplacingOccurrencesOfString:@"," withString:@" "];
+    _studentDic = modelDic;
+    
+    _nameLabel.text = modelDic[@"name"];
+    NSString * flagString = [modelDic[@"flag"] stringByReplacingOccurrencesOfString:@"," withString:@" "];
     _flagLabel.text = flagString;
-    self.flagImageView.image = [UIImage imageNamed:@"tag-green"];
-    self.headImageView.image = [UIImage imageNamed:@"default_head"];
-//    [self.headImageView sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",api_icon_base_url,dic[@"icon"]]] placeholderImage:[UIImage imageNamed:@"icon_default_mine"]];
+    _flagImageView.image = [UIImage imageNamed:@"tag-green"];
+    if ([modelDic[@"icon"] isEqualToString:@""]) {
+        _headImageView.image = [UIImage imageNamed:@"default_head"];
+    }
+    else
+    {
+        [_headImageView sd_setImageWithURL:modelDic[@"icon"] placeholderImage:[UIImage imageNamed:@"default_head"]];
+    }
     
     [_connectTag updateTag:@[@"班",@"社",@"系",@"团",@"啊"]];
+    if ([modelDic[@"isRemind"] isEqualToString:@"y"])
+    {
+        _remindImageView.hidden = YES;
+    }
+    else
+    {
+        _remindImageView.hidden = NO;
+    }
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

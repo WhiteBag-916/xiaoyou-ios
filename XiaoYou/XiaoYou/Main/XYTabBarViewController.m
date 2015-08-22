@@ -19,7 +19,7 @@
 #define kTag_TabBar_Profile kTag_TabBar_Base + 3
 
 @interface XYTabBarViewController ()
-<SlideNavigationControllerDelegate>
+<SlideNavigationControllerDelegate,EMChatManagerDelegate>
 
 @end
 
@@ -39,13 +39,12 @@
 //            }
 //        } onQueue:nil];
 //    }
-    
-    [[EaseMob sharedInstance].chatManager asyncLoginWithUsername:@"xiaoaliu" password:@"123123" completion:^(NSDictionary *loginInfo, EMError *error) {
+    [[EaseMob sharedInstance].chatManager addDelegate:self delegateQueue:nil];
+    [[EaseMob sharedInstance].chatManager asyncLoginWithUsername:[NSString stringWithFormat:@"4_%@",[YShareData defaultData][kShareData_StudentNo]] password:[NSString stringWithFormat:@"4_%@",[YShareData defaultData][kShareData_StudentNo]] completion:^(NSDictionary *loginInfo, EMError *error) {
                     if (!error && loginInfo) {
                         YLogD(@"登陆成功");
                     }
                 } onQueue:nil];
-
     [self initControllers];
     
     self.tabBar.translucent = NO;

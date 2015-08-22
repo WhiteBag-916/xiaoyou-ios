@@ -8,21 +8,17 @@
 
 #import "ContactsListAction.h"
 #import "YDefine.h"
-#import "ContactsListModel.h"
+#import "LinkManModel.h"
 #import "YUtils+Component.h"
 
 @implementation ContactsListAction
 
 - (void)execute
 {
-    NSDictionary *parameter = [YUtils getParameter:@{
-                                                     @"schoolCode": [YShareData defaultData][kShareData_SchoolCode],
-                                                     @"myStudentNo": [YShareData defaultData][kShareData_StudentNo],
-                                                     @"token":[YShareData defaultData][kShareData_Token]
-                                                     }];
+    NSDictionary *parameter = [YUtils getParameter:nil needUserToken:YES];
     NSString *url = [YUtils getUrl:api_contacts_list];
     [self POST:url parameters:parameter completion:^(YHttpRequest *request) {
-        YActionMessage *message = [ContactsListModel actionMessageWithHttpRequest:request];
+        YActionMessage *message = [LinkManModel actionMessageWithHttpRequest:request];
         self.completionBlock(message);
     }];
 }

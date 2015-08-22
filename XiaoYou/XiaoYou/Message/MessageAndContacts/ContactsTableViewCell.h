@@ -12,8 +12,8 @@ extern NSString *const kContactsTableViewCell;
 
 @interface ContactsTableViewCell : YTableViewCell
 
-@property(nonatomic,strong)NSString * linkStudentNo;
+@property(nonatomic,strong)NSDictionary * studentDic;
 
--(void)setCellInfo:(NSDictionary *) dic;
+-(void)setCellInfo:(id) dic;
 
 @end
