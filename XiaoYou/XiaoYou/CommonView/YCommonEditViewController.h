@@ -19,6 +19,6 @@ typedef NS_ENUM(NSInteger, YCommonEditType) {
 
 @interface YCommonEditViewController : YViewController
 
-- (id)initWithType:(YCommonEditType)type;
+- (id)initWithType:(YCommonEditType)type preText:(NSString *)preText;
 
 @end
