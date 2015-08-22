@@ -82,6 +82,10 @@
 		20E034051B846398002E4583 /* feed-find-someone-search@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 20E034011B846398002E4583 /* feed-find-someone-search@3x.png */; };
 		20E034091B8471E5002E4583 /* SearchFilterTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 20E034081B8471E5002E4583 /* SearchFilterTableViewCell.m */; };
 		20E0340E1B847F9F002E4583 /* SearchResultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20E0340D1B847F9F002E4583 /* SearchResultViewController.m */; };
+		20E0BFF91B88B0CA00EDAED4 /* register-label-chosen-boundary@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 20E0BFF51B88B0CA00EDAED4 /* register-label-chosen-boundary@2x.png */; };
+		20E0BFFA1B88B0CA00EDAED4 /* register-label-chosen-boundary@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 20E0BFF61B88B0CA00EDAED4 /* register-label-chosen-boundary@3x.png */; };
+		20E0BFFB1B88B0CA00EDAED4 /* register-photo-upload-boundary@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 20E0BFF71B88B0CA00EDAED4 /* register-photo-upload-boundary@2x.png */; };
+		20E0BFFC1B88B0CA00EDAED4 /* register-photo-upload-boundary@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 20E0BFF81B88B0CA00EDAED4 /* register-photo-upload-boundary@3x.png */; };
 		20E122131B705C2100F90BD3 /* XYTabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20E122121B705C2100F90BD3 /* XYTabBarViewController.m */; };
 		20E122211B705ED200F90BD3 /* FeedListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20E122201B705ED200F90BD3 /* FeedListViewController.m */; };
 		20E1222D1B708CDC00F90BD3 /* TagListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20E1222C1B708CDC00F90BD3 /* TagListViewController.m */; };
@@ -527,6 +531,10 @@
 		20E034081B8471E5002E4583 /* SearchFilterTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchFilterTableViewCell.m; sourceTree = "<group>"; };
 		20E0340C1B847F9F002E4583 /* SearchResultViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchResultViewController.h; sourceTree = "<group>"; };
 		20E0340D1B847F9F002E4583 /* SearchResultViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchResultViewController.m; sourceTree = "<group>"; };
+		20E0BFF51B88B0CA00EDAED4 /* register-label-chosen-boundary@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "register-label-chosen-boundary@2x.png"; sourceTree = "<group>"; };
+		20E0BFF61B88B0CA00EDAED4 /* register-label-chosen-boundary@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "register-label-chosen-boundary@3x.png"; sourceTree = "<group>"; };
+		20E0BFF71B88B0CA00EDAED4 /* register-photo-upload-boundary@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "register-photo-upload-boundary@2x.png"; sourceTree = "<group>"; };
+		20E0BFF81B88B0CA00EDAED4 /* register-photo-upload-boundary@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "register-photo-upload-boundary@3x.png"; sourceTree = "<group>"; };
 		20E122111B705C2100F90BD3 /* XYTabBarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYTabBarViewController.h; sourceTree = "<group>"; };
 		20E122121B705C2100F90BD3 /* XYTabBarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYTabBarViewController.m; sourceTree = "<group>"; };
 		20E1221F1B705ED200F90BD3 /* FeedListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedListViewController.h; sourceTree = "<group>"; };
@@ -1555,6 +1563,10 @@
 		20E18DB11B808E42005B75EE /* Login */ = {
 			isa = PBXGroup;
 			children = (
+				20E0BFF51B88B0CA00EDAED4 /* register-label-chosen-boundary@2x.png */,
+				20E0BFF61B88B0CA00EDAED4 /* register-label-chosen-boundary@3x.png */,
+				20E0BFF71B88B0CA00EDAED4 /* register-photo-upload-boundary@2x.png */,
+				20E0BFF81B88B0CA00EDAED4 /* register-photo-upload-boundary@3x.png */,
 				20DAE1561B882D0500607996 /* register-photo-upload@2x.png */,
 				20DAE1571B882D0500607996 /* register-photo-upload@3x.png */,
 				20DAE14E1B882CFF00607996 /* register-number@2x.png */,
@@ -2520,6 +2532,7 @@
 				333122D01B806EDC00D3D032 /* chat_sender_audio_playing_full@2x.png in Resources */,
 				3335C3681B8178E8007DEFD4 /* chatFire_audioPlaying2@2x.png in Resources */,
 				3334AC261B82D7C400FDDCCB /* VoiceSearchFeedback004@2x.png in Resources */,
+				20E0BFF91B88B0CA00EDAED4 /* register-label-chosen-boundary@2x.png in Resources */,
 				20E9424F1B833D10009C2DC6 /* complete@3x.png in Resources */,
 				20E942541B833D10009C2DC6 /* complete-cancel@2x.png in Resources */,
 				3334ABEC1B82C58600FDDCCB /* chatBar_keyboard@2x.png in Resources */,
@@ -2544,6 +2557,7 @@
 				20E18DD11B808E42005B75EE /* tag-grey@3x.png in Resources */,
 				20E942361B833D10009C2DC6 /* sheet_delete@2x.png in Resources */,
 				3335C36A1B8178E8007DEFD4 /* chatFire_audioPlaying3@2x.png in Resources */,
+				20E0BFFB1B88B0CA00EDAED4 /* register-photo-upload-boundary@2x.png in Resources */,
 				3334AC0C1B82C89500FDDCCB /* chatBar_colorMore_cameraSelected@2x.png in Resources */,
 				20E034031B846398002E4583 /* feed-find-someone-search-grey@3x.png in Resources */,
 				2076A3121B81DA3E001FFBAC /* toolbar-contact-click@2x.png in Resources */,
@@ -2564,6 +2578,7 @@
 				2076A3101B81DA3E001FFBAC /* toolbar-chat@2x.png in Resources */,
 				3334AC1E1B82D7C400FDDCCB /* VoiceSearchFeedback000@2x.png in Resources */,
 				20E942251B833D10009C2DC6 /* toggle-on@3x.png in Resources */,
+				20E0BFFC1B88B0CA00EDAED4 /* register-photo-upload-boundary@3x.png in Resources */,
 				20DAE1581B882D0500607996 /* register-photo-upload@2x.png in Resources */,
 				333122C31B806EDC00D3D032 /* chat_receiver_audio_playing_full.png in Resources */,
 				334670791B84337E00A8628A /* friend-requests@3x.png in Resources */,
@@ -2580,6 +2595,7 @@
 				2076A3111B81DA3E001FFBAC /* toolbar-chat@3x.png in Resources */,
 				3334AC251B82D7C400FDDCCB /* VoiceSearchFeedback004.png in Resources */,
 				20E18DCF1B808E42005B75EE /* tag-green@3x.png in Resources */,
+				20E0BFFA1B88B0CA00EDAED4 /* register-label-chosen-boundary@3x.png in Resources */,
 				2076A30E1B81DA3E001FFBAC /* toolbar-chat-chosen@2x.png in Resources */,
 				20E18DC91B808E42005B75EE /* menu-remind@3x.png in Resources */,
 				3334AC211B82D7C400FDDCCB /* VoiceSearchFeedback002.png in Resources */,
