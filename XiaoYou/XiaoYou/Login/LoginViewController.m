@@ -42,7 +42,7 @@
     if (_accountTextField.text.length <= 0) {
         _accountTextField.text = @"1246";
     }
-    _passwordTextField.text = @"123456";
+    _passwordTextField.text = @"12468888";
 #endif
     
     [self resetRightButton];
