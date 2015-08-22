@@ -11,6 +11,8 @@
 #import "ProfilePersonListController.h"
 #import "ProfileFeedContentView.h"
 #import "ProfilePublishViewController.h"
+#import "ProfileMyViewController.h"
+
 #define KTOPHEIGHT SCALE_NUM(90)
 #define KHEADIMG_SIZE SCALE_NUM(45)
 #define KHEADIMGMARIN_LEFT SCALE_NUM(10)
@@ -84,6 +86,7 @@
         make.height.mas_equalTo(KTOPHEIGHT);
     }];
     _topView.backgroundColor = KCOLORGREEN_455A64;
+    [_topView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(openProfile)]];
     
     UIView *infoView = [[UIView alloc] init];
     [_topView addSubview:infoView];
@@ -323,6 +326,11 @@
 - (void)openFeed {
     [self.navigationController pushViewController:[[ProfilePublishViewController alloc] init] animated:true];
 }
+
+- (void)openProfile {
+    [self.navigationController pushViewController:[[ProfileMyViewController alloc] init] animated:true];
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

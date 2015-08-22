@@ -39,7 +39,7 @@
     _accountTextField.text = [YShareData defaultData][kShareData_LoginAccount];
 #if DEBUG    
     if (_accountTextField.text.length <= 0) {
-        _accountTextField.text = @"15140080000";
+        _accountTextField.text = @"1246";
     }
     _passwordTextField.text = @"123456";
 #endif
