@@ -10,6 +10,7 @@
 #import "YUtils+Component.h"
 #import "ProfilePersonListController.h"
 #import "ProfileFeedContentView.h"
+#import "ProfilePublishViewController.h"
 #define KTOPHEIGHT SCALE_NUM(90)
 #define KHEADIMG_SIZE SCALE_NUM(45)
 #define KHEADIMGMARIN_LEFT SCALE_NUM(10)
@@ -28,7 +29,7 @@
 @property (nonatomic, strong) UIImageView *headImg;
 @property (nonatomic, strong) UILabel *userName;
 @property (nonatomic, strong) UILabel *schoolNo;
-@property (nonatomic, strong) UIView *contenView;
+@property (nonatomic, strong) UIView *containerView;
 @property (nonatomic, strong) UILabel *respectNum;
 @property (nonatomic, strong) UILabel *coolNum;
 @property (nonatomic, strong) UILabel *attitudeLabel;
@@ -64,27 +65,28 @@
 - (void)initScroll {
     UIScrollView *scroll = [[UIScrollView alloc] init];
     [self.view addSubview:scroll];
+    scroll.showsVerticalScrollIndicator = false;
     [scroll mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.equalTo(self.view);
     }];
-    _contenView = [[UIView alloc] init];
-    [scroll addSubview:_contenView];
-    [_contenView mas_makeConstraints:^(MASConstraintMaker *make) {
+    _containerView = [[UIView alloc] init];
+    [scroll addSubview:_containerView];
+    [_containerView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.equalTo(scroll);
-        make.width.equalTo(self.view);
+        make.width.equalTo(scroll);
     }];
 }
 - (void)initTop {
     _topView = [[UIView alloc] init];
-    [_contenView addSubview:_topView];
+    [_containerView addSubview:_topView];
     [_topView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.right.top.equalTo(self.view);
+        make.left.right.top.equalTo(_containerView);
         make.height.mas_equalTo(KTOPHEIGHT);
     }];
     _topView.backgroundColor = KCOLORGREEN_455A64;
     
     UIView *infoView = [[UIView alloc] init];
-    [self.view addSubview:infoView];
+    [_topView addSubview:infoView];
     [infoView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(_topView).offset(KHEADIMGMARIN_LEFT);
         make.height.mas_equalTo(KHEADIMG_SIZE);
@@ -130,7 +132,7 @@
 
 - (void)initMiddle {
     _middleView = [[UIView alloc] init];
-    [_contenView addSubview:_middleView];
+    [_containerView addSubview:_middleView];
     [_middleView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.right.equalTo(_topView);
         make.top.equalTo(_topView.mas_bottom);
@@ -151,11 +153,11 @@
 
 - (void)initBottom {
     _bottomView = [[UIView alloc] init];
-    [_contenView addSubview:_bottomView];
+    [_containerView addSubview:_bottomView];
     [_bottomView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.right.equalTo(_middleView);
         make.top.equalTo(_middleView.mas_bottom);
-        make.bottom.equalTo(_contenView);
+        make.bottom.equalTo(_containerView);
     }];
     UIView *tmp = nil;
     for (int i = 0; i < 3; i ++) {
@@ -258,6 +260,7 @@
         [self rightArray:2 inView:item];
     }
     if (index == 2) {
+        
         UILabel *label = [YUtils initLabel:CONTENT_FONT(12) color:[UIColor blackColor] text:@"查看全部" frame:CGRectZero alignment:NSTextAlignmentLeft];
         [item addSubview:label];
         [label mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -267,6 +270,7 @@
         }];
         [self rightArray:2 inView:label];
         _feed = [[ProfileFeedContentView alloc] init];
+        _feed.userInteractionEnabled = false;
         [item addSubview:_feed];
         [_feed mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.equalTo(_userName);
@@ -274,6 +278,7 @@
             make.top.equalTo(label.mas_bottom).offset(KFEEDMARGIN_TOP);
             make.bottom.lessThanOrEqualTo(item);
         }];
+        [item addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(openFeed)]];
     }
     
     return item;
@@ -305,13 +310,19 @@
 }
 
 
+- (void)viewDidAppear:(BOOL)animated {
+    [_feed setData];
+}
+
 - (void)openRespect {
     [self.navigationController pushViewController:[[ProfilePersonListController alloc] initWithType:true] animated:true];
 }
 - (void)openCool {
     [self.navigationController pushViewController:[[ProfilePersonListController alloc] initWithType:false] animated:true];
 }
-
+- (void)openFeed {
+    [self.navigationController pushViewController:[[ProfilePublishViewController alloc] init] animated:true];
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

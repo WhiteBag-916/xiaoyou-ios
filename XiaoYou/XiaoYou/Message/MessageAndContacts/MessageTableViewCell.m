@@ -9,6 +9,10 @@
 #import "MessageTableViewCell.h"
 #import "Masonry.h"
 #import "YSystemDefine.h"
+#import "RobotManager.h"
+#import "ConvertToCommonEmoticonsHelper.h"
+#import "UIImageView+WebCache.h"
+#import "NSDate+Category.h"
 
 #define kHeadWidthAndHeight            40
 #define kNameLabelWidth                80
@@ -73,6 +77,7 @@ NSString *const kMessageTableViewCell = @"MessageTableViewCellId";
         }];
         //消息数
         _badgeNumberLabel = [[UILabel alloc] init];
+        _badgeNumberLabel.hidden = YES;
         _badgeNumberLabel.font = CONTENT_FONT(10);
         _badgeNumberLabel.textAlignment = NSTextAlignmentCenter;
         _badgeNumberLabel.backgroundColor = [UIColor hexChangeFloat:@"258f74"];
@@ -113,7 +118,28 @@ NSString *const kMessageTableViewCell = @"MessageTableViewCellId";
 -(void)setCellInfo:(id) dic
 {
     EMConversation * conversation = dic;
-//    _messageLabel.text =  conversation.latestMessage.messageBodies[0][@"msg"];
+    
+    //消息内容
+    _messageLabel.text = [self subTitleMessageByConversation:conversation];
+    
+    //昵称
+    _nameLabel.text = conversation.latestMessage.from;
+    
+    //头像
+    [_headImageView sd_setImageWithURL:nil placeholderImage:[UIImage imageNamed:@"default_head"]];
+   
+    //未读数
+    if (![[self unreadMessageCountByConversation:conversation] isEqualToString:@"0"]) {
+        _badgeNumberLabel.hidden = NO;
+        _badgeNumberLabel.text = [self unreadMessageCountByConversation:conversation];
+    }
+    else
+    {
+        _badgeNumberLabel.hidden = YES;
+    }
+    //时间
+    _timeLabel.text = [self transformDateStr:[self lastMessageTimeByConversation:conversation]];
+
 //    if ([dic[@"type"] isEqualToString:@"1"])
 //    {
 //        self.headImageView.image = [UIImage imageNamed:@"friend-requests"];
@@ -142,6 +168,97 @@ NSString *const kMessageTableViewCell = @"MessageTableViewCellId";
 //        self.timeLabel.text = @"10:29";
 //        self.messageLabel.text = @"新生报到通知";
 //    }
+    
+}
+
+// 得到最后消息文字或者类型
+-(NSString *)subTitleMessageByConversation:(EMConversation *)conversation
+{
+    NSString *ret = @"";
+    EMMessage *lastMessage = [conversation latestMessage];
+    if (lastMessage) {
+        id<IEMMessageBody> messageBody = lastMessage.messageBodies.lastObject;
+        switch (messageBody.messageBodyType) {
+            case eMessageBodyType_Image:{
+                ret = NSLocalizedString(@"message.image1", @"[image]");
+            } break;
+            case eMessageBodyType_Text:{
+                // 表情映射。
+                NSString *didReceiveText = [ConvertToCommonEmoticonsHelper
+                                            convertToSystemEmoticons:((EMTextMessageBody *)messageBody).text];
+                if ([[RobotManager sharedInstance] isRobotMenuMessage:lastMessage]) {
+                    ret = [[RobotManager sharedInstance] getRobotMenuMessageDigest:lastMessage];
+                } else {
+                    ret = didReceiveText;
+                }
+            } break;
+            case eMessageBodyType_Voice:{
+                ret = NSLocalizedString(@"message.voice1", @"[voice]");
+            } break;
+            case eMessageBodyType_Location: {
+                ret = NSLocalizedString(@"message.location1", @"[location]");
+            } break;
+            case eMessageBodyType_Video: {
+                ret = NSLocalizedString(@"message.video1", @"[video]");
+            } break;
+            default: {
+            } break;
+        }
+    }
+    
+    return ret;
+}
+
+// 得到最后消息时间
+-(NSString *)lastMessageTimeByConversation:(EMConversation *)conversation
+{
+    NSString *ret = @"";
+    EMMessage *lastMessage = [conversation latestMessage];;
+    if (lastMessage) {
+        ret = [NSDate formattedTimeFromTimeInterval:lastMessage.timestamp];
+    }
+    
+    return ret;
+}
+
+// 得到未读消息条数
+- (NSString *)unreadMessageCountByConversation:(EMConversation *)conversation
+{
+    NSInteger ret = 0;
+    ret = conversation.unreadMessagesCount;
+    
+    NSString * count = [NSString stringWithFormat:@"%ld",ret];
+    
+    return  count;
+}
+
+-(NSString*)transformDateStr:(NSString *) dateTempStr
+{
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+    dateFormatter.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"zh_CN"];
+
+    NSDate * date = [dateFormatter dateFromString:dateTempStr];
+    NSLog(@"date = %@",date);
+    NSTimeInterval result = [date timeIntervalSinceNow];
+    double timeInterval = result * (-1);
+    NSLog(@"timeInterval = %g",result);
+    if (timeInterval < 300)
+    {
+        return @"刚刚";
+    }
+    else if(timeInterval < 86400)
+    {
+        return [dateTempStr substringWithRange:NSMakeRange(11, 5)];
+    }
+    else if(timeInterval < 172800)
+    {
+        return @"昨天";
+    }
+    else
+    {
+        return [dateTempStr substringWithRange:NSMakeRange(0, 10)];
+    }
     
 }
 
