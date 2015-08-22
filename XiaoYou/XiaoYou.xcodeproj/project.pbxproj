@@ -31,6 +31,8 @@
 		207F808D1B709A1E005E8F6A /* AppDelegate+Notification.m in Sources */ = {isa = PBXBuildFile; fileRef = 207F808C1B709A1E005E8F6A /* AppDelegate+Notification.m */; };
 		20DA35F71B81E89F002E5A96 /* SearchPersonViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20DA35F61B81E89F002E5A96 /* SearchPersonViewController.m */; };
 		20DA63761B7482DE007D22AC /* FeedListTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 20DA63751B7482DE007D22AC /* FeedListTableView.m */; };
+		20DAE14A1B88195C00607996 /* login_tip.png in Resources */ = {isa = PBXBuildFile; fileRef = 20DAE1491B88195C00607996 /* login_tip.png */; };
+		20DAE14D1B8821DD00607996 /* PerfectInformationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20DAE14C1B8821DD00607996 /* PerfectInformationViewController.m */; };
 		20DAF99F1B8713F6005B7932 /* login_school@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 20DAF99D1B8713F6005B7932 /* login_school@2x.png */; };
 		20DAF9A01B8713F6005B7932 /* login_school@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 20DAF99E1B8713F6005B7932 /* login_school@3x.png */; };
 		20DAF9A51B871D31005B7932 /* SchollList.txt in Resources */ = {isa = PBXBuildFile; fileRef = 20DAF9A41B871D31005B7932 /* SchollList.txt */; };
@@ -343,6 +345,7 @@
 		65024C0F1B82C423007DE404 /* FeedTag.m in Sources */ = {isa = PBXBuildFile; fileRef = 65024C0E1B82C423007DE404 /* FeedTag.m */; };
 		65024C1C1B833565007DE404 /* feedmore@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 65024C1A1B833565007DE404 /* feedmore@2x.png */; };
 		65024C1D1B833565007DE404 /* feedmore@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 65024C1B1B833565007DE404 /* feedmore@3x.png */; };
+		650C6C001B881A9800A89AC9 /* ProfileMyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 650C6BFF1B881A9800A89AC9 /* ProfileMyViewController.m */; };
 		6518A2481B80429300AEB79D /* TagListTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6518A2471B80429300AEB79D /* TagListTableView.m */; };
 		6518A24B1B80583600AEB79D /* TagListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6518A24A1B80583600AEB79D /* TagListTableViewCell.m */; };
 		653199DE1B80B41C00405B72 /* ConnectTag.m in Sources */ = {isa = PBXBuildFile; fileRef = 653199DD1B80B41C00405B72 /* ConnectTag.m */; };
@@ -370,6 +373,9 @@
 		65969DD31B87312D001DD348 /* ProfilePersonListTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 65969DD21B87312D001DD348 /* ProfilePersonListTableView.m */; };
 		65969DD61B873168001DD348 /* ProfilePersonListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 65969DD51B873168001DD348 /* ProfilePersonListTableViewCell.m */; };
 		65969DD91B875166001DD348 /* ProfileFeedContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 65969DD81B875166001DD348 /* ProfileFeedContentView.m */; };
+		65969DDC1B875F31001DD348 /* ProfilePublishViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 65969DDB1B875F31001DD348 /* ProfilePublishViewController.m */; };
+		65969DDF1B877356001DD348 /* ProfileFeedListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 65969DDE1B877356001DD348 /* ProfileFeedListView.m */; };
+		65969DE21B877896001DD348 /* ProfileFeedCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 65969DE11B877896001DD348 /* ProfileFeedCell.m */; };
 		65A846FF1B81C9C300933815 /* FeedCellTopView.m in Sources */ = {isa = PBXBuildFile; fileRef = 65A846FE1B81C9C300933815 /* FeedCellTopView.m */; };
 		65A847021B81C9D300933815 /* FeedCellMiddleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 65A847011B81C9D300933815 /* FeedCellMiddleView.m */; };
 		65A847051B81CA1900933815 /* FeedCellBottomView.m in Sources */ = {isa = PBXBuildFile; fileRef = 65A847041B81CA1900933815 /* FeedCellBottomView.m */; };
@@ -427,6 +433,9 @@
 		20DA35F61B81E89F002E5A96 /* SearchPersonViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchPersonViewController.m; sourceTree = "<group>"; };
 		20DA63741B7482DE007D22AC /* FeedListTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedListTableView.h; sourceTree = "<group>"; };
 		20DA63751B7482DE007D22AC /* FeedListTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedListTableView.m; sourceTree = "<group>"; };
+		20DAE1491B88195C00607996 /* login_tip.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = login_tip.png; sourceTree = "<group>"; };
+		20DAE14B1B8821DD00607996 /* PerfectInformationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PerfectInformationViewController.h; sourceTree = "<group>"; };
+		20DAE14C1B8821DD00607996 /* PerfectInformationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PerfectInformationViewController.m; sourceTree = "<group>"; };
 		20DAF99D1B8713F6005B7932 /* login_school@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "login_school@2x.png"; sourceTree = "<group>"; };
 		20DAF99E1B8713F6005B7932 /* login_school@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "login_school@3x.png"; sourceTree = "<group>"; };
 		20DAF9A41B871D31005B7932 /* SchollList.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = SchollList.txt; sourceTree = "<group>"; };
@@ -909,6 +918,8 @@
 		65024C0E1B82C423007DE404 /* FeedTag.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedTag.m; sourceTree = "<group>"; };
 		65024C1A1B833565007DE404 /* feedmore@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "feedmore@2x.png"; sourceTree = "<group>"; };
 		65024C1B1B833565007DE404 /* feedmore@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "feedmore@3x.png"; sourceTree = "<group>"; };
+		650C6BFE1B881A9800A89AC9 /* ProfileMyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileMyViewController.h; sourceTree = "<group>"; };
+		650C6BFF1B881A9800A89AC9 /* ProfileMyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileMyViewController.m; sourceTree = "<group>"; };
 		6518A2461B80429300AEB79D /* TagListTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TagListTableView.h; sourceTree = "<group>"; };
 		6518A2471B80429300AEB79D /* TagListTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TagListTableView.m; sourceTree = "<group>"; };
 		6518A2491B80583600AEB79D /* TagListTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TagListTableViewCell.h; sourceTree = "<group>"; };
@@ -963,6 +974,12 @@
 		65969DD51B873168001DD348 /* ProfilePersonListTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfilePersonListTableViewCell.m; sourceTree = "<group>"; };
 		65969DD71B875166001DD348 /* ProfileFeedContentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileFeedContentView.h; sourceTree = "<group>"; };
 		65969DD81B875166001DD348 /* ProfileFeedContentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileFeedContentView.m; sourceTree = "<group>"; };
+		65969DDA1B875F31001DD348 /* ProfilePublishViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfilePublishViewController.h; sourceTree = "<group>"; };
+		65969DDB1B875F31001DD348 /* ProfilePublishViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfilePublishViewController.m; sourceTree = "<group>"; };
+		65969DDD1B877356001DD348 /* ProfileFeedListView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileFeedListView.h; sourceTree = "<group>"; };
+		65969DDE1B877356001DD348 /* ProfileFeedListView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileFeedListView.m; sourceTree = "<group>"; };
+		65969DE01B877896001DD348 /* ProfileFeedCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileFeedCell.h; sourceTree = "<group>"; };
+		65969DE11B877896001DD348 /* ProfileFeedCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileFeedCell.m; sourceTree = "<group>"; };
 		65A846FD1B81C9C300933815 /* FeedCellTopView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedCellTopView.h; sourceTree = "<group>"; };
 		65A846FE1B81C9C300933815 /* FeedCellTopView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedCellTopView.m; sourceTree = "<group>"; };
 		65A847001B81C9D300933815 /* FeedCellMiddleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedCellMiddleView.h; sourceTree = "<group>"; };
@@ -1215,6 +1232,8 @@
 				20DAF9A71B871E45005B7932 /* ChooseSchoolTableViewCell.m */,
 				20DAF9A91B87209E005B7932 /* LoginViewController.h */,
 				20DAF9AA1B87209E005B7932 /* LoginViewController.m */,
+				20DAE14B1B8821DD00607996 /* PerfectInformationViewController.h */,
+				20DAE14C1B8821DD00607996 /* PerfectInformationViewController.m */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -1251,6 +1270,14 @@
 				65969DD51B873168001DD348 /* ProfilePersonListTableViewCell.m */,
 				65969DD71B875166001DD348 /* ProfileFeedContentView.h */,
 				65969DD81B875166001DD348 /* ProfileFeedContentView.m */,
+				65969DDA1B875F31001DD348 /* ProfilePublishViewController.h */,
+				65969DDB1B875F31001DD348 /* ProfilePublishViewController.m */,
+				65969DDD1B877356001DD348 /* ProfileFeedListView.h */,
+				65969DDE1B877356001DD348 /* ProfileFeedListView.m */,
+				65969DE01B877896001DD348 /* ProfileFeedCell.h */,
+				65969DE11B877896001DD348 /* ProfileFeedCell.m */,
+				650C6BFE1B881A9800A89AC9 /* ProfileMyViewController.h */,
+				650C6BFF1B881A9800A89AC9 /* ProfileMyViewController.m */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -1516,6 +1543,7 @@
 		20E18DB11B808E42005B75EE /* Login */ = {
 			isa = PBXGroup;
 			children = (
+				20DAE1491B88195C00607996 /* login_tip.png */,
 				20DAF99D1B8713F6005B7932 /* login_school@2x.png */,
 				20DAF99E1B8713F6005B7932 /* login_school@3x.png */,
 			);
@@ -2605,6 +2633,7 @@
 				334670741B842DC900A8628A /* group_add@2x.png in Resources */,
 				200E39871B4E818B000B587B /* Images.xcassets in Resources */,
 				20E18DBF1B808E42005B75EE /* message_tab_background@3x.png in Resources */,
+				20DAE14A1B88195C00607996 /* login_tip.png in Resources */,
 				20E18DCE1B808E42005B75EE /* tag-green@2x.png in Resources */,
 				3334ABF51B82C5D200FDDCCB /* chatBar_moreSelected.png in Resources */,
 				20E942451B833D10009C2DC6 /* add-03@3x.png in Resources */,
@@ -2765,6 +2794,7 @@
 				3331226B1B806EDB00D3D032 /* PSTCollectionViewItemKey.m in Sources */,
 				65F82F841B85E74A00FF6E2D /* FeedPublishViewController.m in Sources */,
 				6592DCDB1B806A9B004CD118 /* ContactsTableView.m in Sources */,
+				20DAE14D1B8821DD00607996 /* PerfectInformationViewController.m in Sources */,
 				333122521B806EDB00D3D032 /* MWTapDetectingView.m in Sources */,
 				653199DE1B80B41C00405B72 /* ConnectTag.m in Sources */,
 				3331223C1B806EDB00D3D032 /* EMChatViewCell.m in Sources */,
@@ -2797,6 +2827,7 @@
 				654602171B7F2FF00039F622 /* FeedImageGroup.m in Sources */,
 				20E033FD1B846114002E4583 /* SearchFilterViewController.m in Sources */,
 				20E18D551B807752005B75EE /* AssociationsListTableViewCell.m in Sources */,
+				65969DDF1B877356001DD348 /* ProfileFeedListView.m in Sources */,
 				33380DA21B85DAF8008B51EB /* SystemMessageTableView.m in Sources */,
 				333122851B806EDC00D3D032 /* XHMessageTextView.m in Sources */,
 				333122611B806EDB00D3D032 /* UIImage+EMWebP.m in Sources */,
@@ -2830,6 +2861,7 @@
 				333122771B806EDB00D3D032 /* THProgressView.m in Sources */,
 				65BCF1E11B818441003457F4 /* FeedDetailViewController.m in Sources */,
 				333122691B806EDB00D3D032 /* PSTCollectionViewData.m in Sources */,
+				65969DE21B877896001DD348 /* ProfileFeedCell.m in Sources */,
 				65A847051B81CA1900933815 /* FeedCellBottomView.m in Sources */,
 				20E122211B705ED200F90BD3 /* FeedListViewController.m in Sources */,
 				3346708A1B84AA3700A8628A /* ChoicePersonTableView.m in Sources */,
@@ -2845,11 +2877,13 @@
 				20E18D541B807752005B75EE /* AssociationsListTableView.m in Sources */,
 				333122341B806EDB00D3D032 /* EMChatAudioBubbleView.m in Sources */,
 				333122581B806EDB00D3D032 /* EMSDWebImageDownloader.m in Sources */,
+				650C6C001B881A9800A89AC9 /* ProfileMyViewController.m in Sources */,
 				3331223F1B806EDB00D3D032 /* MessageReadManager.m in Sources */,
 				3331227F1B806EDC00D3D032 /* NSDate+Category.m in Sources */,
 				3331222E1B806EDB00D3D032 /* LocationViewController.m in Sources */,
 				3331222F1B806EDB00D3D032 /* DXMessageToolBar.m in Sources */,
 				2076A3011B81C590001FFBAC /* YCommonAlertView.m in Sources */,
+				65969DDC1B875F31001DD348 /* ProfilePublishViewController.m in Sources */,
 				3331227A1B806EDB00D3D032 /* amrFileCodec.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
