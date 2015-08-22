@@ -18,20 +18,14 @@
 		20E0C0751B88B0CA00EDAED4 /* ProfileInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 20E0C0741B88B0CA00EDAED4 /* ProfileInfo.m */; };
 		20E0C07A1B88B0CA00EDAED4 /* ClassCodes.m in Sources */ = {isa = PBXBuildFile; fileRef = 20E0C0771B88B0CA00EDAED4 /* ClassCodes.m */; };
 		20E0C07B1B88B0CA00EDAED4 /* GroupCodes.m in Sources */ = {isa = PBXBuildFile; fileRef = 20E0C0791B88B0CA00EDAED4 /* GroupCodes.m */; };
-		331E17D91B7AFB3A006789B0 /* ContactsListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 331E17D41B7AFB3A006789B0 /* ContactsListModel.m */; };
-		331E17DA1B7AFB3A006789B0 /* FriendList.m in Sources */ = {isa = PBXBuildFile; fileRef = 331E17D61B7AFB3A006789B0 /* FriendList.m */; };
-		331E17DB1B7AFB3A006789B0 /* GroupList.m in Sources */ = {isa = PBXBuildFile; fileRef = 331E17D81B7AFB3A006789B0 /* GroupList.m */; };
-		331E17E21B7AFBC8006789B0 /* Groups.m in Sources */ = {isa = PBXBuildFile; fileRef = 331E17DD1B7AFBC8006789B0 /* Groups.m */; };
-		331E17E31B7AFBC8006789B0 /* Relationship.m in Sources */ = {isa = PBXBuildFile; fileRef = 331E17DF1B7AFBC8006789B0 /* Relationship.m */; };
+		20E0C07F1B88B0CA00EDAED4 /* ClassList.m in Sources */ = {isa = PBXBuildFile; fileRef = 20E0C07E1B88B0CA00EDAED4 /* ClassList.m */; };
+		20E0C0821B88B0CA00EDAED4 /* LinkManList.m in Sources */ = {isa = PBXBuildFile; fileRef = 20E0C0811B88B0CA00EDAED4 /* LinkManList.m */; };
+		20E0C0851B88B0CA00EDAED4 /* UnionList.m in Sources */ = {isa = PBXBuildFile; fileRef = 20E0C0841B88B0CA00EDAED4 /* UnionList.m */; };
 		331E17E41B7AFBC8006789B0 /* Tags.m in Sources */ = {isa = PBXBuildFile; fileRef = 331E17E11B7AFBC8006789B0 /* Tags.m */; };
 		3320A6591B7498D200E018E1 /* SenderListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3320A6581B7498D200E018E1 /* SenderListModel.m */; };
 		332D32681B71E9B400B69E96 /* PushInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 332D32671B71E9B400B69E96 /* PushInfo.m */; };
-		333B62801B8849AB004452C1 /* ClassList.m in Sources */ = {isa = PBXBuildFile; fileRef = 333B62791B8849AB004452C1 /* ClassList.m */; };
-		333B62811B8849AB004452C1 /* LinkManList.m in Sources */ = {isa = PBXBuildFile; fileRef = 333B627B1B8849AB004452C1 /* LinkManList.m */; };
-		333B62821B8849AB004452C1 /* LinkManModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 333B627D1B8849AB004452C1 /* LinkManModel.m */; };
-		333B62831B8849AB004452C1 /* UnionList.m in Sources */ = {isa = PBXBuildFile; fileRef = 333B627F1B8849AB004452C1 /* UnionList.m */; };
-		333B62861B8850CA004452C1 /* Tags.m in Sources */ = {isa = PBXBuildFile; fileRef = 333B62851B8850CA004452C1 /* Tags.m */; };
 		333E95D01B70B6DF0001059D /* CheckAccountModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 333E95CF1B70B6DF0001059D /* CheckAccountModel.m */; };
+		333E95D61B70B7250001059D /* LinkManModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 333E95D51B70B7250001059D /* LinkManModel.m */; };
 		333E95D91B70B7400001059D /* addFriendPushInfoListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 333E95D81B70B7400001059D /* addFriendPushInfoListModel.m */; };
 		333E95DC1B70B75E0001059D /* PushInfoListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 333E95DB1B70B75E0001059D /* PushInfoListModel.m */; };
 		333E95DF1B70B7650001059D /* SystemPushInfoListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 333E95DE1B70B7650001059D /* SystemPushInfoListModel.m */; };
@@ -76,7 +70,6 @@
 		20DBFD2C1B4FA0E5009134D0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		20E0BFFD1B88B0CA00EDAED4 /* UploadImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UploadImage.h; sourceTree = "<group>"; };
 		20E0BFFE1B88B0CA00EDAED4 /* UploadImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UploadImage.m; sourceTree = "<group>"; };
-<<<<<<< HEAD
 		20E0C06A1B88B0CA00EDAED4 /* Feed.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Feed.h; sourceTree = "<group>"; };
 		20E0C06B1B88B0CA00EDAED4 /* Feed.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Feed.m; sourceTree = "<group>"; };
 		20E0C06C1B88B0CA00EDAED4 /* FeedInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedInfo.h; sourceTree = "<group>"; };
@@ -89,34 +82,22 @@
 		20E0C0771B88B0CA00EDAED4 /* ClassCodes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClassCodes.m; sourceTree = "<group>"; };
 		20E0C0781B88B0CA00EDAED4 /* GroupCodes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroupCodes.h; sourceTree = "<group>"; };
 		20E0C0791B88B0CA00EDAED4 /* GroupCodes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroupCodes.m; sourceTree = "<group>"; };
-		331E17D31B7AFB3A006789B0 /* ContactsListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactsListModel.h; sourceTree = "<group>"; };
-		331E17D41B7AFB3A006789B0 /* ContactsListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactsListModel.m; sourceTree = "<group>"; };
-		331E17D51B7AFB3A006789B0 /* FriendList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendList.h; sourceTree = "<group>"; };
-		331E17D61B7AFB3A006789B0 /* FriendList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendList.m; sourceTree = "<group>"; };
-		331E17D71B7AFB3A006789B0 /* GroupList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroupList.h; sourceTree = "<group>"; };
-		331E17D81B7AFB3A006789B0 /* GroupList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroupList.m; sourceTree = "<group>"; };
-		331E17DC1B7AFBC8006789B0 /* Groups.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Groups.h; sourceTree = "<group>"; };
-		331E17DD1B7AFBC8006789B0 /* Groups.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Groups.m; sourceTree = "<group>"; };
-		331E17DE1B7AFBC8006789B0 /* Relationship.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Relationship.h; sourceTree = "<group>"; };
-		331E17DF1B7AFBC8006789B0 /* Relationship.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Relationship.m; sourceTree = "<group>"; };
+		20E0C07D1B88B0CA00EDAED4 /* ClassList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClassList.h; sourceTree = "<group>"; };
+		20E0C07E1B88B0CA00EDAED4 /* ClassList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClassList.m; sourceTree = "<group>"; };
+		20E0C0801B88B0CA00EDAED4 /* LinkManList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LinkManList.h; sourceTree = "<group>"; };
+		20E0C0811B88B0CA00EDAED4 /* LinkManList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LinkManList.m; sourceTree = "<group>"; };
+		20E0C0831B88B0CA00EDAED4 /* UnionList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UnionList.h; sourceTree = "<group>"; };
+		20E0C0841B88B0CA00EDAED4 /* UnionList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UnionList.m; sourceTree = "<group>"; };
 		331E17E01B7AFBC8006789B0 /* Tags.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tags.h; sourceTree = "<group>"; };
 		331E17E11B7AFBC8006789B0 /* Tags.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Tags.m; sourceTree = "<group>"; };
 		3320A6571B7498D200E018E1 /* SenderListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SenderListModel.h; path = Model/Contact/SenderListModel.h; sourceTree = SOURCE_ROOT; };
 		3320A6581B7498D200E018E1 /* SenderListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SenderListModel.m; path = Model/Contact/SenderListModel.m; sourceTree = SOURCE_ROOT; };
 		332D32661B71E9B400B69E96 /* PushInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PushInfo.h; sourceTree = "<group>"; };
 		332D32671B71E9B400B69E96 /* PushInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PushInfo.m; sourceTree = "<group>"; };
-		333B62781B8849AB004452C1 /* ClassList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClassList.h; sourceTree = "<group>"; };
-		333B62791B8849AB004452C1 /* ClassList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClassList.m; sourceTree = "<group>"; };
-		333B627A1B8849AB004452C1 /* LinkManList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LinkManList.h; sourceTree = "<group>"; };
-		333B627B1B8849AB004452C1 /* LinkManList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LinkManList.m; sourceTree = "<group>"; };
-		333B627C1B8849AB004452C1 /* LinkManModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LinkManModel.h; sourceTree = "<group>"; };
-		333B627D1B8849AB004452C1 /* LinkManModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LinkManModel.m; sourceTree = "<group>"; };
-		333B627E1B8849AB004452C1 /* UnionList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UnionList.h; sourceTree = "<group>"; };
-		333B627F1B8849AB004452C1 /* UnionList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UnionList.m; sourceTree = "<group>"; };
-		333B62841B8850CA004452C1 /* Tags.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tags.h; sourceTree = "<group>"; };
-		333B62851B8850CA004452C1 /* Tags.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Tags.m; sourceTree = "<group>"; };
 		333E95CE1B70B6DF0001059D /* CheckAccountModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheckAccountModel.h; sourceTree = "<group>"; };
 		333E95CF1B70B6DF0001059D /* CheckAccountModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckAccountModel.m; sourceTree = "<group>"; };
+		333E95D41B70B7250001059D /* LinkManModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LinkManModel.h; sourceTree = "<group>"; };
+		333E95D51B70B7250001059D /* LinkManModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LinkManModel.m; sourceTree = "<group>"; };
 		333E95D71B70B7400001059D /* addFriendPushInfoListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = addFriendPushInfoListModel.h; sourceTree = "<group>"; };
 		333E95D81B70B7400001059D /* addFriendPushInfoListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = addFriendPushInfoListModel.m; sourceTree = "<group>"; };
 		333E95DA1B70B75E0001059D /* PushInfoListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PushInfoListModel.h; sourceTree = "<group>"; };
@@ -245,37 +226,22 @@
 		20DBFD661B4FA8F0009134D0 /* Contact */ = {
 			isa = PBXGroup;
 			children = (
-<<<<<<< HEAD
+				20E0C0831B88B0CA00EDAED4 /* UnionList.h */,
+				20E0C0841B88B0CA00EDAED4 /* UnionList.m */,
+				20E0C0801B88B0CA00EDAED4 /* LinkManList.h */,
+				20E0C0811B88B0CA00EDAED4 /* LinkManList.m */,
+				20E0C07D1B88B0CA00EDAED4 /* ClassList.h */,
+				20E0C07E1B88B0CA00EDAED4 /* ClassList.m */,
 				20E0C0761B88B0CA00EDAED4 /* ClassCodes.h */,
 				20E0C0771B88B0CA00EDAED4 /* ClassCodes.m */,
 				20E0C0781B88B0CA00EDAED4 /* GroupCodes.h */,
 				20E0C0791B88B0CA00EDAED4 /* GroupCodes.m */,
 				20E0C0701B88B0CA00EDAED4 /* Author.h */,
 				20E0C0711B88B0CA00EDAED4 /* Author.m */,
-				331E17D31B7AFB3A006789B0 /* ContactsListModel.h */,
-				331E17D41B7AFB3A006789B0 /* ContactsListModel.m */,
-				331E17D51B7AFB3A006789B0 /* FriendList.h */,
-				331E17D61B7AFB3A006789B0 /* FriendList.m */,
-				331E17D71B7AFB3A006789B0 /* GroupList.h */,
-				331E17D81B7AFB3A006789B0 /* GroupList.m */,
-				331E17DC1B7AFBC8006789B0 /* Groups.h */,
-				331E17DD1B7AFBC8006789B0 /* Groups.m */,
-				331E17DE1B7AFBC8006789B0 /* Relationship.h */,
-				331E17DF1B7AFBC8006789B0 /* Relationship.m */,
 				331E17E01B7AFBC8006789B0 /* Tags.h */,
 				331E17E11B7AFBC8006789B0 /* Tags.m */,
 				333E95D41B70B7250001059D /* LinkManModel.h */,
 				333E95D51B70B7250001059D /* LinkManModel.m */,
-				333B62841B8850CA004452C1 /* Tags.h */,
-				333B62851B8850CA004452C1 /* Tags.m */,
-				333B62781B8849AB004452C1 /* ClassList.h */,
-				333B62791B8849AB004452C1 /* ClassList.m */,
-				333B627A1B8849AB004452C1 /* LinkManList.h */,
-				333B627B1B8849AB004452C1 /* LinkManList.m */,
-				333B627C1B8849AB004452C1 /* LinkManModel.h */,
-				333B627D1B8849AB004452C1 /* LinkManModel.m */,
-				333B627E1B8849AB004452C1 /* UnionList.h */,
-				333B627F1B8849AB004452C1 /* UnionList.m */,
 				333E95D71B70B7400001059D /* addFriendPushInfoListModel.h */,
 				333E95D81B70B7400001059D /* addFriendPushInfoListModel.m */,
 				333E95DA1B70B75E0001059D /* PushInfoListModel.h */,
@@ -398,40 +364,31 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				333B62801B8849AB004452C1 /* ClassList.m in Sources */,
+				20E0C07F1B88B0CA00EDAED4 /* ClassList.m in Sources */,
 				20859A991B64C0BC00580ED3 /* ResultCommon.m in Sources */,
 				333E95DF1B70B7650001059D /* SystemPushInfoListModel.m in Sources */,
 				20E0C06E1B88B0CA00EDAED4 /* Feed.m in Sources */,
 				333E95D91B70B7400001059D /* addFriendPushInfoListModel.m in Sources */,
 				20E0C0721B88B0CA00EDAED4 /* Author.m in Sources */,
 				3320A6591B7498D200E018E1 /* SenderListModel.m in Sources */,
-				333B62861B8850CA004452C1 /* Tags.m in Sources */,
 				20859AB31B64E2F600580ED3 /* YModel+ActionMessage.m in Sources */,
 				20859AA31B64CB7E00580ED3 /* LoginResp.m in Sources */,
 				332D32681B71E9B400B69E96 /* PushInfo.m in Sources */,
 				333E95EA1B70B7AB0001059D /* SchoolDetailModel.m in Sources */,
+				333E95D61B70B7250001059D /* LinkManModel.m in Sources */,
 				20E0BFFF1B88B0CA00EDAED4 /* UploadImage.m in Sources */,
 				333E95E21B70B7820001059D /* UpdateAvatarModel.m in Sources */,
 				20E0C07B1B88B0CA00EDAED4 /* GroupCodes.m in Sources */,
+				20E0C0821B88B0CA00EDAED4 /* LinkManList.m in Sources */,
 				331E17E41B7AFBC8006789B0 /* Tags.m in Sources */,
-				331E17E31B7AFBC8006789B0 /* Relationship.m in Sources */,
-				331E17E21B7AFBC8006789B0 /* Groups.m in Sources */,
-				331E17D91B7AFB3A006789B0 /* ContactsListModel.m in Sources */,
 				333E95E51B70B78C0001059D /* LastSystemPushInfoListModel.m in Sources */,
 				20E0C0751B88B0CA00EDAED4 /* ProfileInfo.m in Sources */,
 				333E95EE1B70B8F80001059D /* ReceiveAuthCodeModel.m in Sources */,
 				333E95D01B70B6DF0001059D /* CheckAccountModel.m in Sources */,
-				331E17DA1B7AFB3A006789B0 /* FriendList.m in Sources */,
+				20E0C0851B88B0CA00EDAED4 /* UnionList.m in Sources */,
 				20E0C06F1B88B0CA00EDAED4 /* FeedInfo.m in Sources */,
 				333E95EB1B70B7AB0001059D /* SchoolListModel.m in Sources */,
 				20E0C07A1B88B0CA00EDAED4 /* ClassCodes.m in Sources */,
-				333E95E51B70B78C0001059D /* LastSystemPushInfoListModel.m in Sources */,
-				333B62831B8849AB004452C1 /* UnionList.m in Sources */,
-				333B62821B8849AB004452C1 /* LinkManModel.m in Sources */,
-				333E95EE1B70B8F80001059D /* ReceiveAuthCodeModel.m in Sources */,
-				333E95D01B70B6DF0001059D /* CheckAccountModel.m in Sources */,
-				333E95EB1B70B7AB0001059D /* SchoolListModel.m in Sources */,
-				333B62811B8849AB004452C1 /* LinkManList.m in Sources */,
 				333E95DC1B70B75E0001059D /* PushInfoListModel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
