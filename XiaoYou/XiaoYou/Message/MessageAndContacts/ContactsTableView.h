@@ -13,6 +13,6 @@
 
 @property(nonatomic,weak)XYMessageAndContactsViewController * myController;
 
--(void)refreshTableView:(NSMutableArray *) dataSouceArr;
+-(void)refreshTableView:(NSMutableArray *) dataSouceArr AndHeaderView:(NSMutableArray *) headerDataSouce;
 
 @end

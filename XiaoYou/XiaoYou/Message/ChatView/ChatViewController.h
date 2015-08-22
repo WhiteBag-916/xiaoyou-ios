@@ -25,7 +25,9 @@
 @property (strong, nonatomic, readonly) NSString *chatter;
 @property (nonatomic) BOOL isInvisible;
 @property (nonatomic, assign) id <ChatViewControllerDelegate> delelgate;
+
 @property (nonatomic,assign)BOOL isSystemMessage;
+@property (nonatomic,strong)NSDictionary * studentDic;
 
 - (instancetype)initWithChatter:(NSString *)chatter isGroup:(BOOL)isGroup;
 - (instancetype)initWithChatter:(NSString *)chatter conversationType:(EMConversationType)type;

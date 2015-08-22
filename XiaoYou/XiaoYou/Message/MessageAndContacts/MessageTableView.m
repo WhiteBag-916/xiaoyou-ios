@@ -214,28 +214,35 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    MessageTableViewCell * cell = (MessageTableViewCell *)[self cellForRowAtIndexPath:indexPath];
+    self.myController.hidesBottomBarWhenPushed = YES;
+    
+    ChatViewController * chatVC = [[ChatViewController alloc] initWithChatter:cell.studentNum isGroup:NO];
+    chatVC.isSystemMessage = NO;
+    [self.myController.navigationController pushViewController:chatVC animated:YES needHiddenBottomBar:YES];
 
-    if (indexPath.row == 3)
-    {
-        self.myController.hidesBottomBarWhenPushed = YES;
-        XYFriendApplyViewController * friendApplyVC = [[XYFriendApplyViewController alloc] init];
-        [self.myController.navigationController pushViewController:friendApplyVC animated:YES needHiddenBottomBar:YES];
-        
-    }
-    else if (indexPath.row == 5)
-    {
-        self.myController.hidesBottomBarWhenPushed = YES;
-        XYGroupApplyViewController * groupApplyVC = [[XYGroupApplyViewController alloc] init];
-        [self.myController.navigationController pushViewController:groupApplyVC animated:YES needHiddenBottomBar:YES];
-    }
-    else
-    {
-        self.myController.hidesBottomBarWhenPushed = YES;
-        
-        ChatViewController * chatVC = [[ChatViewController alloc] initWithChatter:@"yinhui" isGroup:NO];
-        chatVC.isSystemMessage = NO;
-        [self.myController.navigationController pushViewController:chatVC animated:YES needHiddenBottomBar:YES];
-    }
+//    if (indexPath.row == 3)
+//    {
+//        self.myController.hidesBottomBarWhenPushed = YES;
+//        XYFriendApplyViewController * friendApplyVC = [[XYFriendApplyViewController alloc] init];
+//        [self.myController.navigationController pushViewController:friendApplyVC animated:YES needHiddenBottomBar:YES];
+//        
+//    }
+//    else if (indexPath.row == 5)
+//    {
+//        self.myController.hidesBottomBarWhenPushed = YES;
+//        XYGroupApplyViewController * groupApplyVC = [[XYGroupApplyViewController alloc] init];
+//        [self.myController.navigationController pushViewController:groupApplyVC animated:YES needHiddenBottomBar:YES];
+//    }
+//    else
+//    {
+//        self.myController.hidesBottomBarWhenPushed = YES;
+//        
+//        ChatViewController * chatVC = [[ChatViewController alloc] initWithChatter:@"xiaoaliu" isGroup:NO];
+//        chatVC.isSystemMessage = NO;
+//        [self.myController.navigationController pushViewController:chatVC animated:YES needHiddenBottomBar:YES];
+//    }
+    
     
 }
 

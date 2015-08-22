@@ -358,6 +358,8 @@
 		650C6C001B881A9800A89AC9 /* ProfileMyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 650C6BFF1B881A9800A89AC9 /* ProfileMyViewController.m */; };
 		650C6C031B88529600A89AC9 /* ProfileChangePwdViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 650C6C021B88529600A89AC9 /* ProfileChangePwdViewController.m */; };
 		650C6C061B8860FF00A89AC9 /* YCommonEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 650C6C051B8860FF00A89AC9 /* YCommonEditViewController.m */; };
+		650C6C0E1B886D3C00A89AC9 /* mine-toast@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 650C6C0C1B886D3C00A89AC9 /* mine-toast@2x.png */; };
+		650C6C0F1B886D3C00A89AC9 /* mine-toast@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 650C6C0D1B886D3C00A89AC9 /* mine-toast@3x.png */; };
 		6518A2481B80429300AEB79D /* TagListTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6518A2471B80429300AEB79D /* TagListTableView.m */; };
 		6518A24B1B80583600AEB79D /* TagListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6518A24A1B80583600AEB79D /* TagListTableViewCell.m */; };
 		653199DE1B80B41C00405B72 /* ConnectTag.m in Sources */ = {isa = PBXBuildFile; fileRef = 653199DD1B80B41C00405B72 /* ConnectTag.m */; };
@@ -946,6 +948,8 @@
 		650C6C021B88529600A89AC9 /* ProfileChangePwdViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileChangePwdViewController.m; sourceTree = "<group>"; };
 		650C6C041B8860FF00A89AC9 /* YCommonEditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YCommonEditViewController.h; sourceTree = "<group>"; };
 		650C6C051B8860FF00A89AC9 /* YCommonEditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YCommonEditViewController.m; sourceTree = "<group>"; };
+		650C6C0C1B886D3C00A89AC9 /* mine-toast@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mine-toast@2x.png"; sourceTree = "<group>"; };
+		650C6C0D1B886D3C00A89AC9 /* mine-toast@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mine-toast@3x.png"; sourceTree = "<group>"; };
 		6518A2461B80429300AEB79D /* TagListTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TagListTableView.h; sourceTree = "<group>"; };
 		6518A2471B80429300AEB79D /* TagListTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TagListTableView.m; sourceTree = "<group>"; };
 		6518A2491B80583600AEB79D /* TagListTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TagListTableViewCell.h; sourceTree = "<group>"; };
@@ -1238,13 +1242,13 @@
 			isa = PBXGroup;
 			children = (
 				20DAF9A41B871D31005B7932 /* SchollList.txt */,
+				650C6C0B1B886D3200A89AC9 /* Profile */,
 				334670611B841F1E00A8628A /* message */,
 				3334AC4A1B83319500FDDCCB /* contacts */,
 				20E18D891B808E42005B75EE /* Common */,
 				20E18D9B1B808E42005B75EE /* Feed */,
 				20E18DAA1B808E42005B75EE /* FeedMenu */,
 				20E18DB11B808E42005B75EE /* Login */,
-				20E18DB31B808E42005B75EE /* Profile */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -1588,13 +1592,6 @@
 				20DAF99E1B8713F6005B7932 /* login_school@3x.png */,
 			);
 			path = Login;
-			sourceTree = "<group>";
-		};
-		20E18DB31B808E42005B75EE /* Profile */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Profile;
 			sourceTree = "<group>";
 		};
 		333120E51B806EDA00D3D032 /* ChatView */ = {
@@ -2299,6 +2296,15 @@
 			path = GroupInfoDetail;
 			sourceTree = "<group>";
 		};
+		650C6C0B1B886D3200A89AC9 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				650C6C0C1B886D3C00A89AC9 /* mine-toast@2x.png */,
+				650C6C0D1B886D3C00A89AC9 /* mine-toast@3x.png */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
 		653CB2E81B806BFD006ECBB2 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
@@ -2537,6 +2543,7 @@
 				333122911B806EDC00D3D032 /* faceDelete@2x.png in Resources */,
 				20E033E71B842727002E4583 /* UMSCommentDetailController.xib in Resources */,
 				20E033ED1B842727002E4583 /* UMSnsAccountViewController.xib in Resources */,
+				650C6C0E1B886D3C00A89AC9 /* mine-toast@2x.png in Resources */,
 				20DAE1521B882CFF00607996 /* register-number@2x.png in Resources */,
 				20E18DCB1B808E42005B75EE /* menu@3x.png in Resources */,
 				333122D01B806EDC00D3D032 /* chat_sender_audio_playing_full@2x.png in Resources */,
@@ -2551,6 +2558,7 @@
 				333122731B806EDB00D3D032 /* sr_refresh.png in Resources */,
 				20E18DCD1B808E42005B75EE /* more@3x.png in Resources */,
 				20E033EB1B842727002E4583 /* UMShareEditViewControlleriPad.xib in Resources */,
+				650C6C0F1B886D3C00A89AC9 /* mine-toast@3x.png in Resources */,
 				20E18DB81B808E42005B75EE /* common_search@2x.png in Resources */,
 				3334AC231B82D7C400FDDCCB /* VoiceSearchFeedback003.png in Resources */,
 				333122931B806EDC00D3D032 /* messageSendFail@2x.png in Resources */,
