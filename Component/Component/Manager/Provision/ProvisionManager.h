@@ -20,5 +20,11 @@ AS_SINGLETON(ProvisionManager);
 - (void)schoolListReq:(NSString *)schoolName block:(ActionCompleteBlock)block;
 //忘记密码
 - (void)forgotPasswordReq:(NSString *)studentNo block:(ActionCompleteBlock)block;
+//获取标签
+- (void)getTagList:(ActionCompleteBlock)block;
+//上传头像
+- (void)uploadHeadImage:(NSString *)path block:(ActionCompleteBlock)block;
+//上传标签
+- (void)uploadTagCodes:(NSString *)tagCodes block:(ActionCompleteBlock)block;
 
 @end

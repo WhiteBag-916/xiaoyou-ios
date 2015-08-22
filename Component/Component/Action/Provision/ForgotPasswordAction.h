@@ -8,7 +8,7 @@
 
 #import "YHTTPRequestAction.h"
 
-@interface ForgotPasswordAction : YHTTPRequestAction
+@interface ForgotPasswordAction : YHTTPRequestAction<YAction>
 
 @property (nonatomic, strong) NSString *studentNo;
 

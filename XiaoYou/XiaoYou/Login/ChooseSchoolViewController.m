@@ -40,7 +40,7 @@
     
     self.title = @"选学校";
     [self showCustomNavigationNextButton];
-    self.view.backgroundColor = KCOLORGREEN_e6eae9;
+    self.view.backgroundColor = KCOLORGREEN_e6ebea;
     
     [self initSchoolArray];
     [self setupUI];
@@ -106,7 +106,7 @@
     _tableView.dataSource = self;
     _tableView.delegate = self;
     _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-    _tableView.backgroundColor = KCOLORGREEN_e6eae9;
+    _tableView.backgroundColor = KCOLORGREEN_e6ebea;
     [_tableView registerClass:[ChooseSchoolTableViewCell class] forCellReuseIdentifier:kChooseSchoolTableViewCell];
     [self.view addSubview:_tableView];
     _tableView.hidden = YES;
@@ -346,6 +346,9 @@
 }
 
 #pragma mark - UITableViewDataSource,UITableViewDelegate
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return SCALE_NUM(49);
+}
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     return _schoolSearchList.count;

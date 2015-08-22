@@ -34,6 +34,7 @@
 @property (nonatomic, strong) NSString *cityCode;
 @property (nonatomic, strong) NSString *studentClass;
 @property (nonatomic, strong) NSString *faculty;
+@property (nonatomic, strong) NSString *mobilePhone;
 
 + (instancetype)modelObjectWithDictionary:(NSDictionary *)dict;
 - (instancetype)initWithDictionary:(NSDictionary *)dict;

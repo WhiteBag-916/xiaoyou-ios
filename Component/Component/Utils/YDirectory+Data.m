@@ -17,11 +17,23 @@
     return path;
 }
 
-+ (NSString *)newProjectCache
++ (NSString *)newImgCache
 {
     NSString *path = [[self cache] stringByAppendingString:kImgCache];
     
     return path;
+}
+
++ (NSString *)fileCache:(NSString *)name {
+    NSString *path = [self fileCache];
+    
+    return [path stringByAppendingString:name];
+}
+
++ (NSString *)newImgCache:(NSString *)name {
+    NSString *path = [self newImgCache];
+    
+    return [path stringByAppendingString:name];
 }
 
 + (void)createFolders
@@ -33,7 +45,7 @@
         [[NSFileManager defaultManager] createDirectoryAtPath:path withIntermediateDirectories:YES attributes:nil error:nil];
     }
     
-    path = [self newProjectCache];
+    path = [self newImgCache];
     if (![self isDirectory:path])
     {
         [[NSFileManager defaultManager] createDirectoryAtPath:path withIntermediateDirectories:YES attributes:nil error:nil];

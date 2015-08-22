@@ -31,6 +31,7 @@ NSString *const kLoginRespToken = @"token";
 NSString *const kLoginRespCityCode = @"cityCode";
 NSString *const kLoginRespStudentClass = @"studentClass";
 NSString *const kLoginRespFaculty = @"faculty";
+NSString *const kLoginRespMobilePhone = @"mobilePhone";
 
 
 @interface LoginResp ()
@@ -65,6 +66,7 @@ NSString *const kLoginRespFaculty = @"faculty";
 @synthesize cityCode = _cityCode;
 @synthesize studentClass = _studentClass;
 @synthesize faculty = _faculty;
+@synthesize mobilePhone = _mobilePhone;
 
 
 + (instancetype)modelObjectWithDictionary:(NSDictionary *)dict
@@ -103,6 +105,7 @@ NSString *const kLoginRespFaculty = @"faculty";
         self.cityCode = [self objectOrNilForKey:kLoginRespCityCode fromDictionary:dict];
         self.studentClass = [self objectOrNilForKey:kLoginRespStudentClass fromDictionary:dict];
         self.faculty = [self objectOrNilForKey:kLoginRespFaculty fromDictionary:dict];
+        self.mobilePhone = [self objectOrNilForKey:kLoginRespMobilePhone fromDictionary:dict];
         
     }
     
@@ -137,6 +140,7 @@ NSString *const kLoginRespFaculty = @"faculty";
     [mutableDict setValue:self.cityCode forKey:kLoginRespCityCode];
     [mutableDict setValue:self.studentClass forKey:kLoginRespStudentClass];
     [mutableDict setValue:self.faculty forKey:kLoginRespFaculty];
+    [mutableDict setValue:self.mobilePhone forKey:kLoginRespMobilePhone];
     
     return [NSDictionary dictionaryWithDictionary:mutableDict];
 }
@@ -184,6 +188,7 @@ NSString *const kLoginRespFaculty = @"faculty";
     self.cityCode = [aDecoder decodeObjectForKey:kLoginRespCityCode];
     self.studentClass = [aDecoder decodeObjectForKey:kLoginRespStudentClass];
     self.faculty = [aDecoder decodeObjectForKey:kLoginRespFaculty];
+    self.mobilePhone = [aDecoder decodeObjectForKey:kLoginRespMobilePhone];
     return self;
 }
 
@@ -214,6 +219,7 @@ NSString *const kLoginRespFaculty = @"faculty";
     [aCoder encodeObject:_cityCode forKey:kLoginRespCityCode];
     [aCoder encodeObject:_studentClass forKey:kLoginRespStudentClass];
     [aCoder encodeObject:_faculty forKey:kLoginRespFaculty];
+    [aCoder encodeObject:_mobilePhone forKey:kLoginRespMobilePhone];
 }
 
 - (id)copyWithZone:(NSZone *)zone
@@ -246,6 +252,7 @@ NSString *const kLoginRespFaculty = @"faculty";
         copy.cityCode = [self.cityCode copyWithZone:zone];
         copy.studentClass = [self.studentClass copyWithZone:zone];
         copy.faculty = [self.faculty copyWithZone:zone];
+        copy.mobilePhone = [self.mobilePhone copyWithZone:zone];
     }
     
     return copy;

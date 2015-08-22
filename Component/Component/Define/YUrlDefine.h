@@ -36,6 +36,12 @@
 #define api_login_phoneVerify @"/mobile/user/verify"
 //忘记密码
 #define api_login_forgetPwd @"/mobile/user/v2/forgetPwd"
+//标签
+#define api_login_listTag @"/mobile/tag/listTag"
+//上传头像
+#define api_login_updateHeadPic @"/mobile/user/updateHeadPic"
+//上传标签
+#define api_login_addTag @"/mobile/user/v2/addTag"
 
 /**********************************************************
  Url Define: FeedManager

@@ -19,6 +19,12 @@
     return url;
 }
 
++ getParameter {
+    NSMutableDictionary *dic = [@{kYHttpRequestHeader : @{@"Content-type":@"application/json"}} mutableCopy];
+    
+    return dic;
+}
+
 + getParameter:(NSDictionary *)parameters
 {
     NSMutableDictionary *dic = [@{kYHttpRequestPostData : [self dictionaryToJson:parameters], kYHttpRequestHeader : @{@"Content-type":@"application/json"}} mutableCopy];
@@ -30,7 +36,13 @@
 {
     if (needUserToken)
     {
-        NSMutableDictionary *dic = [[NSMutableDictionary alloc] initWithDictionary:parameters];
+        NSMutableDictionary *dic;
+        if (nil != parameters) {
+            dic = [[NSMutableDictionary alloc] initWithDictionary:parameters];
+        }
+        else {
+            dic = [[NSMutableDictionary alloc] init];
+        }
         [dic setValue:@{@"schoolCode": [YShareData defaultData][kShareData_SchoolCode],
                         @"studentNo": [YShareData defaultData][kShareData_StudentNo],
                         @"token": [YShareData defaultData][kShareData_Token]}
@@ -39,6 +51,17 @@
     }
     
     return [self getParameter:parameters];
+}
+
++ getUploadParameter:(NSString *)fileName {
+    NSMutableDictionary *dic = [@{kYHttpRequestPostData : @{@"schoolCode": [YShareData defaultData][kShareData_SchoolCode],
+                                                                                   @"studentNo": [YShareData defaultData][kShareData_StudentNo],
+                                                                                   @"token": [YShareData defaultData][kShareData_Token],
+                                                                                   @"imgfile": fileName}
+                                  , kYHttpRequestHeader : @{@"Accept":@"application/json",
+                                                            @"Connection":@"keep-alive"}} mutableCopy];
+    
+    return dic;
 }
 
 + (NSString *)distanceTimeToday:(NSDate *)date
