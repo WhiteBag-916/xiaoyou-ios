@@ -10,4 +10,6 @@
 
 @interface ProfileFeedContentView : UIView
 
+- (void)setData;
+
 @end

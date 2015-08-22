@@ -370,6 +370,9 @@
 		65969DD31B87312D001DD348 /* ProfilePersonListTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 65969DD21B87312D001DD348 /* ProfilePersonListTableView.m */; };
 		65969DD61B873168001DD348 /* ProfilePersonListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 65969DD51B873168001DD348 /* ProfilePersonListTableViewCell.m */; };
 		65969DD91B875166001DD348 /* ProfileFeedContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 65969DD81B875166001DD348 /* ProfileFeedContentView.m */; };
+		65969DDC1B875F31001DD348 /* ProfilePublishViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 65969DDB1B875F31001DD348 /* ProfilePublishViewController.m */; };
+		65969DDF1B877356001DD348 /* ProfileFeedListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 65969DDE1B877356001DD348 /* ProfileFeedListView.m */; };
+		65969DE21B877896001DD348 /* ProfileFeedCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 65969DE11B877896001DD348 /* ProfileFeedCell.m */; };
 		65A846FF1B81C9C300933815 /* FeedCellTopView.m in Sources */ = {isa = PBXBuildFile; fileRef = 65A846FE1B81C9C300933815 /* FeedCellTopView.m */; };
 		65A847021B81C9D300933815 /* FeedCellMiddleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 65A847011B81C9D300933815 /* FeedCellMiddleView.m */; };
 		65A847051B81CA1900933815 /* FeedCellBottomView.m in Sources */ = {isa = PBXBuildFile; fileRef = 65A847041B81CA1900933815 /* FeedCellBottomView.m */; };
@@ -963,6 +966,12 @@
 		65969DD51B873168001DD348 /* ProfilePersonListTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfilePersonListTableViewCell.m; sourceTree = "<group>"; };
 		65969DD71B875166001DD348 /* ProfileFeedContentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileFeedContentView.h; sourceTree = "<group>"; };
 		65969DD81B875166001DD348 /* ProfileFeedContentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileFeedContentView.m; sourceTree = "<group>"; };
+		65969DDA1B875F31001DD348 /* ProfilePublishViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfilePublishViewController.h; sourceTree = "<group>"; };
+		65969DDB1B875F31001DD348 /* ProfilePublishViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfilePublishViewController.m; sourceTree = "<group>"; };
+		65969DDD1B877356001DD348 /* ProfileFeedListView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileFeedListView.h; sourceTree = "<group>"; };
+		65969DDE1B877356001DD348 /* ProfileFeedListView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileFeedListView.m; sourceTree = "<group>"; };
+		65969DE01B877896001DD348 /* ProfileFeedCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileFeedCell.h; sourceTree = "<group>"; };
+		65969DE11B877896001DD348 /* ProfileFeedCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileFeedCell.m; sourceTree = "<group>"; };
 		65A846FD1B81C9C300933815 /* FeedCellTopView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedCellTopView.h; sourceTree = "<group>"; };
 		65A846FE1B81C9C300933815 /* FeedCellTopView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedCellTopView.m; sourceTree = "<group>"; };
 		65A847001B81C9D300933815 /* FeedCellMiddleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedCellMiddleView.h; sourceTree = "<group>"; };
@@ -1251,6 +1260,12 @@
 				65969DD51B873168001DD348 /* ProfilePersonListTableViewCell.m */,
 				65969DD71B875166001DD348 /* ProfileFeedContentView.h */,
 				65969DD81B875166001DD348 /* ProfileFeedContentView.m */,
+				65969DDA1B875F31001DD348 /* ProfilePublishViewController.h */,
+				65969DDB1B875F31001DD348 /* ProfilePublishViewController.m */,
+				65969DDD1B877356001DD348 /* ProfileFeedListView.h */,
+				65969DDE1B877356001DD348 /* ProfileFeedListView.m */,
+				65969DE01B877896001DD348 /* ProfileFeedCell.h */,
+				65969DE11B877896001DD348 /* ProfileFeedCell.m */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -2797,6 +2812,7 @@
 				654602171B7F2FF00039F622 /* FeedImageGroup.m in Sources */,
 				20E033FD1B846114002E4583 /* SearchFilterViewController.m in Sources */,
 				20E18D551B807752005B75EE /* AssociationsListTableViewCell.m in Sources */,
+				65969DDF1B877356001DD348 /* ProfileFeedListView.m in Sources */,
 				33380DA21B85DAF8008B51EB /* SystemMessageTableView.m in Sources */,
 				333122851B806EDC00D3D032 /* XHMessageTextView.m in Sources */,
 				333122611B806EDB00D3D032 /* UIImage+EMWebP.m in Sources */,
@@ -2830,6 +2846,7 @@
 				333122771B806EDB00D3D032 /* THProgressView.m in Sources */,
 				65BCF1E11B818441003457F4 /* FeedDetailViewController.m in Sources */,
 				333122691B806EDB00D3D032 /* PSTCollectionViewData.m in Sources */,
+				65969DE21B877896001DD348 /* ProfileFeedCell.m in Sources */,
 				65A847051B81CA1900933815 /* FeedCellBottomView.m in Sources */,
 				20E122211B705ED200F90BD3 /* FeedListViewController.m in Sources */,
 				3346708A1B84AA3700A8628A /* ChoicePersonTableView.m in Sources */,
@@ -2850,6 +2867,7 @@
 				3331222E1B806EDB00D3D032 /* LocationViewController.m in Sources */,
 				3331222F1B806EDB00D3D032 /* DXMessageToolBar.m in Sources */,
 				2076A3011B81C590001FFBAC /* YCommonAlertView.m in Sources */,
+				65969DDC1B875F31001DD348 /* ProfilePublishViewController.m in Sources */,
 				3331227A1B806EDB00D3D032 /* amrFileCodec.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
