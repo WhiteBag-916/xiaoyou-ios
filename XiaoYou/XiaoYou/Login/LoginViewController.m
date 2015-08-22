@@ -17,6 +17,7 @@
 @property (nonatomic, strong) YTextField *passwordTextField;
 @property (nonatomic, strong) UIButton *protocolCheckButton;
 @property (nonatomic, assign) BOOL isCheckButton;//是否同意协议
+@property (nonatomic, strong) UIImageView *protocolImageView;//提示蒙层
 
 @end
 
@@ -124,6 +125,18 @@
         make.height.mas_equalTo(SCALE_NUM(36));
         make.width.mas_equalTo(SCALE_NUM(118));
     }];
+    
+    //蒙层
+    _protocolImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"login_tip"]];
+    [self.view addSubview:_protocolImageView];
+    _protocolImageView.hidden = YES;
+    [_protocolImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.equalTo(self.view);
+    }];
+    
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dissmissProtocol)];
+    _protocolImageView.userInteractionEnabled = YES;
+    [_protocolImageView addGestureRecognizer:tap];
 }
 
 //选择协议条款
@@ -167,7 +180,11 @@
 
 //初始密码范例
 - (void)pressInitialPassword {
-    
+    _protocolImageView.hidden = NO;
+}
+
+- (void)dissmissProtocol {
+    _protocolImageView.hidden = YES;
 }
 
 - (void)resetRightButton {
