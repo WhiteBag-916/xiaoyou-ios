@@ -21,6 +21,7 @@
 #import "ProfileInfo.h"
 #import "ProfileAction.h"
 #import "YNotificationDefine.h"
+#import "UploadImage.h"
 
 #define kProvisionManagerSyncQueue @"kProvisionManagerSyncQueue"
 
@@ -154,6 +155,11 @@ DEF_SINGLETON(ProvisionManager);
     
     [YAction startAction:action completionBlock:^(YActionMessage* message) {
         if (message.isSuccess) {
+            //更改缓存
+            if (nil != _profileInfo) {
+                UploadImage *uploadImage = (UploadImage *)message.object;
+                _profileInfo.headPic = uploadImage.url;
+            }
         }
         //主线程处理界面
         block(message);

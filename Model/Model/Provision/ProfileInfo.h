@@ -18,6 +18,7 @@
 @property (nonatomic, assign) double praiseCount;
 @property (nonatomic, strong) NSArray *feedInfo;
 @property (nonatomic, assign) double commentCount;
+@property (nonatomic, strong) NSString *headPic;
 
 + (instancetype)modelObjectWithDictionary:(NSDictionary *)dict;
 - (instancetype)initWithDictionary:(NSDictionary *)dict;

@@ -17,6 +17,7 @@ NSString *const kProfileInfoSelfIntro = @"selfIntro";
 NSString *const kProfileInfoPraiseCount = @"praiseCount";
 NSString *const kProfileInfoFeedInfo = @"lastFeeds";
 NSString *const kProfileInfoCommentCount = @"commentCount";
+NSString *const kProfileInfoHeadPic = @"headPic";
 
 
 @interface ProfileInfo ()
@@ -61,10 +62,10 @@ NSString *const kProfileInfoCommentCount = @"commentCount";
     }
 
     self.tagModels = [NSArray arrayWithArray:parsedTagModels];
-            self.uid = [self objectOrNilForKey:kProfileInfoUid fromDictionary:dict];
-            self.userName = [self objectOrNilForKey:kProfileInfoUserName fromDictionary:dict];
-            self.selfIntro = [self objectOrNilForKey:kProfileInfoSelfIntro fromDictionary:dict];
-            self.praiseCount = [[self objectOrNilForKey:kProfileInfoPraiseCount fromDictionary:dict] doubleValue];
+    self.uid = [self objectOrNilForKey:kProfileInfoUid fromDictionary:dict];
+    self.userName = [self objectOrNilForKey:kProfileInfoUserName fromDictionary:dict];
+    self.selfIntro = [self objectOrNilForKey:kProfileInfoSelfIntro fromDictionary:dict];
+    self.praiseCount = [[self objectOrNilForKey:kProfileInfoPraiseCount fromDictionary:dict] doubleValue];
     NSObject *receivedFeedInfo = [dict objectForKey:kProfileInfoFeedInfo];
     NSMutableArray *parsedFeedInfo = [NSMutableArray array];
     if ([receivedFeedInfo isKindOfClass:[NSArray class]]) {
@@ -78,8 +79,8 @@ NSString *const kProfileInfoCommentCount = @"commentCount";
     }
 
     self.feedInfo = [NSArray arrayWithArray:parsedFeedInfo];
-            self.commentCount = [[self objectOrNilForKey:kProfileInfoCommentCount fromDictionary:dict] doubleValue];
-
+    self.commentCount = [[self objectOrNilForKey:kProfileInfoCommentCount fromDictionary:dict] doubleValue];
+        self.headPic = [self objectOrNilForKey:kProfileInfoHeadPic fromDictionary:dict];
     }
     
     return self;
