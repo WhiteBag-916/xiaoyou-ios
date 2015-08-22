@@ -14,6 +14,7 @@
 #import "ProfileMyViewController.h"
 #import "YCommonEditViewController.h"
 #import "UIImageView+WebCache.h"
+#import "ProfileInfo.h"
 
 #define KTOPHEIGHT SCALE_NUM(90)
 #define KHEADIMG_SIZE SCALE_NUM(45)
@@ -56,6 +57,7 @@
     self.hidesBottomBarWhenPushed = NO;
     [self initView];
 }
+
 - (void)initView {
     self.view.backgroundColor = [UIColor whiteColor];
     [self initScroll];
@@ -63,9 +65,15 @@
     [self initMiddle];
     [self initBottom];
 }
+- (void)loadData:(ProfileInfo *)info {
+    [_headImg sd_setImageWithURL:[NSURL URLWithString:info.headPic]];
+    _userName.text = info.userName;
+    _respectNum.text = [NSString stringWithFormat:@"敬酒%f", info.praiseCount];
+}
 - (void)viewWillAppear:(BOOL)animated {
     self.navigationController.navigationBarHidden = true;
 }
+
 - (void)initScroll {
     UIScrollView *scroll = [[UIScrollView alloc] init];
     [self.view addSubview:scroll];
