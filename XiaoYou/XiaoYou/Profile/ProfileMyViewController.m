@@ -8,8 +8,9 @@
 
 #import "ProfileMyViewController.h"
 #import "UIImageView+WebCache.h"
+#import "ProfileChangePwdViewController.h"
 
-#define KHEADHEIGHT SCALE_NUM(170)
+#define KHEADHEIGHT SCALE_NUM(150)
 
 #define KIMGSIZE SCALE_NUM(88)
 
@@ -52,6 +53,7 @@
 - (void)initScroll {
     UIScrollView *scroll = [[UIScrollView alloc] init];
     [self.view addSubview:scroll];
+    scroll.showsVerticalScrollIndicator = false;
     [scroll mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.right.bottom.equalTo(self.view);
         make.top.equalTo(self.view).offset(-20);
@@ -176,6 +178,7 @@
         make.height.mas_equalTo(SCALE_NUM(48));
     }];
     label.backgroundColor = KCOLORGREEN_f2f2f2;
+    label.userInteractionEnabled = true;
     
     UIView *line = [[UIView alloc] init];
     [label addSubview:line];
@@ -218,12 +221,12 @@
     
 }
 - (void)changePwd {
-    
+    [self.navigationController pushViewController:[[ProfileChangePwdViewController alloc] init] animated:true];
 }
 - (void)logOut {
     
 }
 - (void)viewWillAppear:(BOOL)animated {
-//    self.navigationController.navigationBarHidden = true;
+    self.navigationController.navigationBarHidden = true;
 }
 @end

@@ -179,7 +179,9 @@
 - (void)showCustomNavigationNextButton {
     [self showNomalNavigationRightButtonWithImage:@"下一步" action:@selector(onNavigationRightButtonClicked) imgName:nil frame:CGRectMake(0, 0, 20, 15)];
 }
-
+- (void)showCustomNavigationConfirmButton {
+    [self showNomalNavigationRightButtonWithImage:@"确定" action:@selector(onNavigationRightButtonClicked) imgName:nil frame:CGRectMake(0, 0, 20, 15)];
+}
 - (void)showNomalNavigationRightButtonWithImage:(NSString *)title action:(SEL)selector imgName:(NSString *)imgName frame:(CGRect)frame {
     //right barbutton view
     _navigationRightButton = [UIButton buttonWithType:UIButtonTypeCustom];
