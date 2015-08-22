@@ -13,6 +13,7 @@
 #import "ProfilePublishViewController.h"
 #import "ProfileMyViewController.h"
 #import "YCommonEditViewController.h"
+#import "UIImageView+WebCache.h"
 
 #define KTOPHEIGHT SCALE_NUM(90)
 #define KHEADIMG_SIZE SCALE_NUM(45)
@@ -106,7 +107,6 @@
     }];
     _headImg.layer.cornerRadius = KHEADIMG_SIZE/2;
     _headImg.clipsToBounds = true;
-    _headImg.backgroundColor = [UIColor redColor];
     
     UIView *titleView = [[UIView alloc] init];
     [infoView addSubview:titleView];
@@ -316,6 +316,7 @@
 
 
 - (void)viewDidAppear:(BOOL)animated {
+    [_headImg sd_setImageWithURL:[NSURL URLWithString:@"http://cdn.duitang.com/uploads/item/201411/22/20141122111634_RBCXS.jpeg"]];
     [_feed setData];
 }
 - (void)openAttitude {
