@@ -1,27 +1,23 @@
 //
-//  Groups.m
+//  GroupCodes.m
 //
-//  Created by HuiYin  on 15/8/12
+//  Created by   on 15/8/22
 //  Copyright (c) 2015 __MyCompanyName__. All rights reserved.
 //
 
-#import "Groups.h"
+#import "GroupCodes.h"
 
 
-NSString *const kGroupsGroupId = @"groupId";
-NSString *const kGroupsGroupName = @"groupName";
 
 
-@interface Groups ()
+@interface GroupCodes ()
 
 - (id)objectOrNilForKey:(id)aKey fromDictionary:(NSDictionary *)dict;
 
 @end
 
-@implementation Groups
+@implementation GroupCodes
 
-@synthesize groupId = _groupId;
-@synthesize groupName = _groupName;
 
 
 + (instancetype)modelObjectWithDictionary:(NSDictionary *)dict
@@ -36,8 +32,6 @@ NSString *const kGroupsGroupName = @"groupName";
     // This check serves to make sure that a non-NSDictionary object
     // passed into the model class doesn't break the parsing.
     if(self && [dict isKindOfClass:[NSDictionary class]]) {
-            self.groupId = [self objectOrNilForKey:kGroupsGroupId fromDictionary:dict];
-            self.groupName = [self objectOrNilForKey:kGroupsGroupName fromDictionary:dict];
 
     }
     
@@ -48,8 +42,6 @@ NSString *const kGroupsGroupName = @"groupName";
 - (NSDictionary *)dictionaryRepresentation
 {
     NSMutableDictionary *mutableDict = [NSMutableDictionary dictionary];
-    [mutableDict setValue:self.groupId forKey:kGroupsGroupId];
-    [mutableDict setValue:self.groupName forKey:kGroupsGroupName];
 
     return [NSDictionary dictionaryWithDictionary:mutableDict];
 }
@@ -73,26 +65,20 @@ NSString *const kGroupsGroupName = @"groupName";
 {
     self = [super init];
 
-    self.groupId = [aDecoder decodeObjectForKey:kGroupsGroupId];
-    self.groupName = [aDecoder decodeObjectForKey:kGroupsGroupName];
     return self;
 }
 
 - (void)encodeWithCoder:(NSCoder *)aCoder
 {
 
-    [aCoder encodeObject:_groupId forKey:kGroupsGroupId];
-    [aCoder encodeObject:_groupName forKey:kGroupsGroupName];
 }
 
 - (id)copyWithZone:(NSZone *)zone
 {
-    Groups *copy = [[Groups alloc] init];
+    GroupCodes *copy = [[GroupCodes alloc] init];
     
     if (copy) {
 
-        copy.groupId = [self.groupId copyWithZone:zone];
-        copy.groupName = [self.groupName copyWithZone:zone];
     }
     
     return copy;

@@ -26,5 +26,9 @@ AS_SINGLETON(ProvisionManager);
 - (void)uploadHeadImage:(NSString *)path block:(ActionCompleteBlock)block;
 //上传标签
 - (void)uploadTagCodes:(NSString *)tagCodes block:(ActionCompleteBlock)block;
+//获取个人Profile信息
+- (void)getProfileInfo;
+//更新缓存标签
+- (void)updateTagList:(NSArray *)tagList;
 
 @end

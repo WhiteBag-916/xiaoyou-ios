@@ -1,27 +1,23 @@
 //
-//  Relationship.m
+//  ClassCodes.m
 //
-//  Created by HuiYin  on 15/8/12
+//  Created by   on 15/8/22
 //  Copyright (c) 2015 __MyCompanyName__. All rights reserved.
 //
 
-#import "Relationship.h"
+#import "ClassCodes.h"
 
 
-NSString *const kRelationshipName = @"name";
-NSString *const kRelationshipCode = @"code";
 
 
-@interface Relationship ()
+@interface ClassCodes ()
 
 - (id)objectOrNilForKey:(id)aKey fromDictionary:(NSDictionary *)dict;
 
 @end
 
-@implementation Relationship
+@implementation ClassCodes
 
-@synthesize name = _name;
-@synthesize code = _code;
 
 
 + (instancetype)modelObjectWithDictionary:(NSDictionary *)dict
@@ -36,8 +32,6 @@ NSString *const kRelationshipCode = @"code";
     // This check serves to make sure that a non-NSDictionary object
     // passed into the model class doesn't break the parsing.
     if(self && [dict isKindOfClass:[NSDictionary class]]) {
-            self.name = [self objectOrNilForKey:kRelationshipName fromDictionary:dict];
-            self.code = [self objectOrNilForKey:kRelationshipCode fromDictionary:dict];
 
     }
     
@@ -48,8 +42,6 @@ NSString *const kRelationshipCode = @"code";
 - (NSDictionary *)dictionaryRepresentation
 {
     NSMutableDictionary *mutableDict = [NSMutableDictionary dictionary];
-    [mutableDict setValue:self.name forKey:kRelationshipName];
-    [mutableDict setValue:self.code forKey:kRelationshipCode];
 
     return [NSDictionary dictionaryWithDictionary:mutableDict];
 }
@@ -73,26 +65,20 @@ NSString *const kRelationshipCode = @"code";
 {
     self = [super init];
 
-    self.name = [aDecoder decodeObjectForKey:kRelationshipName];
-    self.code = [aDecoder decodeObjectForKey:kRelationshipCode];
     return self;
 }
 
 - (void)encodeWithCoder:(NSCoder *)aCoder
 {
 
-    [aCoder encodeObject:_name forKey:kRelationshipName];
-    [aCoder encodeObject:_code forKey:kRelationshipCode];
 }
 
 - (id)copyWithZone:(NSZone *)zone
 {
-    Relationship *copy = [[Relationship alloc] init];
+    ClassCodes *copy = [[ClassCodes alloc] init];
     
     if (copy) {
 
-        copy.name = [self.name copyWithZone:zone];
-        copy.code = [self.code copyWithZone:zone];
     }
     
     return copy;

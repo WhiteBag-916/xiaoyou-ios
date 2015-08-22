@@ -119,6 +119,7 @@ NSString *const kMessageTableViewCell = @"MessageTableViewCellId";
 {
     EMConversation * conversation = dic;
     
+    _studentNum = conversation.chatter;
     //消息内容
     _messageLabel.text = [self subTitleMessageByConversation:conversation];
     
@@ -138,7 +139,7 @@ NSString *const kMessageTableViewCell = @"MessageTableViewCellId";
         _badgeNumberLabel.hidden = YES;
     }
     //时间
-    _timeLabel.text = [self transformDateStr:[self lastMessageTimeByConversation:conversation]];
+    _timeLabel.text = [self lastMessageTimeByConversation:conversation];
 
 //    if ([dic[@"type"] isEqualToString:@"1"])
 //    {
@@ -230,44 +231,6 @@ NSString *const kMessageTableViewCell = @"MessageTableViewCellId";
     NSString * count = [NSString stringWithFormat:@"%ld",ret];
     
     return  count;
-}
-
--(NSString*)transformDateStr:(NSString *) dateTempStr
-{
-    if (dateTempStr.length > 0)
-    {
-        NSString * tempDate = [dateTempStr substringWithRange:NSMakeRange(0, 19)];
-        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-        [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
-        dateFormatter.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"zh_CN"];
-        
-        NSDate * date = [dateFormatter dateFromString:tempDate];
-        NSLog(@"date = %@",date);
-        NSTimeInterval result = [date timeIntervalSinceNow];
-        double timeInterval = result * (-1);
-        NSLog(@"timeInterval = %g",result);
-        if (timeInterval < 300)
-        {
-            return @"刚刚";
-        }
-        else if(timeInterval < 86400)
-        {
-            return [dateTempStr substringWithRange:NSMakeRange(11, 5)];
-        }
-        else if(timeInterval < 172800)
-        {
-            return @"昨天";
-        }
-        else
-        {
-            return [dateTempStr substringWithRange:NSMakeRange(0, 10)];
-        }
-    }
-    else
-    {
-        return nil;
-    }
-    
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

@@ -42,6 +42,8 @@
 #define api_login_updateHeadPic @"/mobile/user/updateHeadPic"
 //上传标签
 #define api_login_addTag @"/mobile/user/v2/addTag"
+//个人信息
+#define api_login_profile @"/mobile/user/v2/profile"
 
 /**********************************************************
  Url Define: FeedManager
@@ -57,7 +59,7 @@
 //聊天列表
 #define api_message_list  @"/mobile/user/getsenderlist"
 //联系人列表
-#define api_contacts_list  @"/mobile/user/linkManList"
+#define api_contacts_list  @"/mobile/user/v2/listLinkMan"
 
 #endif
 

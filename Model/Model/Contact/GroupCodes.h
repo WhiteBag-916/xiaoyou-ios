@@ -1,7 +1,7 @@
 //
-//  Relationship.h
+//  GroupCodes.h
 //
-//  Created by HuiYin  on 15/8/12
+//  Created by   on 15/8/22
 //  Copyright (c) 2015 __MyCompanyName__. All rights reserved.
 //
 
@@ -9,11 +9,8 @@
 #import "YModel.h"
 
 
+@interface GroupCodes : YModel <NSCoding, NSCopying>
 
-@interface Relationship : YModel <NSCoding, NSCopying>
-
-@property (nonatomic, strong) NSString *name;
-@property (nonatomic, strong) NSString *code;
 
 + (instancetype)modelObjectWithDictionary:(NSDictionary *)dict;
 - (instancetype)initWithDictionary:(NSDictionary *)dict;

@@ -29,8 +29,6 @@ DEF_SINGLETON(ContactManager);
 -(void)getContactsListData:(ActionCompleteBlock)block
 {
     ContactsListAction * action = [[ContactsListAction alloc] init];
-//        action.schoolCode = @"4";
-//        action.studentNo = @"2008202018";
     [YAction startAction:action completionBlock:^(YActionMessage* message) {
         //子线程处理数据
         [YQueue dispatchInSyncQueueWithQueueType:kContactsManagerSyncQueue block:^{

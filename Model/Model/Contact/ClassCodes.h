@@ -1,7 +1,7 @@
 //
-//  Groups.h
+//  ClassCodes.h
 //
-//  Created by HuiYin  on 15/8/12
+//  Created by   on 15/8/22
 //  Copyright (c) 2015 __MyCompanyName__. All rights reserved.
 //
 
@@ -9,11 +9,8 @@
 #import "YModel.h"
 
 
+@interface ClassCodes : YModel <NSCoding, NSCopying>
 
-@interface Groups : YModel <NSCoding, NSCopying>
-
-@property (nonatomic, strong) NSString *groupId;
-@property (nonatomic, strong) NSString *groupName;
 
 + (instancetype)modelObjectWithDictionary:(NSDictionary *)dict;
 - (instancetype)initWithDictionary:(NSDictionary *)dict;

@@ -17,7 +17,7 @@
 
 #import "MessageManager.h"
 #import "ContactManager.h"
-#import "ContactsListModel.h"
+#import "LinkManModel.h"
 
 @interface XYMessageAndContactsViewController ()<IChatManagerDelegate>
 @property (strong, nonatomic) UIView * navigationView;
@@ -29,6 +29,7 @@
 
 @property (nonatomic,strong) NSMutableArray *messageDataSource;
 @property (nonatomic,strong) NSMutableArray *contactsDataSource;
+@property (nonatomic,strong) NSMutableArray *contactsHeadDataSouce;
 
 @end
 
@@ -54,13 +55,13 @@
     [[ContactManager sharedInstance] getContactsListData:^(YActionMessage *message) {
         YLogD(@"%@",message);
         if (message.isSuccess) {
-            [message.object enumerateObjectsUsingBlock:^(ContactsListModel * obj, NSUInteger idx, BOOL *stop) {
-                
-            }];
+            LinkManModel * model = message.object;
+            weakSelf.contactsDataSource = [NSMutableArray arrayWithArray:model.linkManList];
+            [weakSelf.contactsDataSource addObjectsFromArray:model.unionList];
             
-            //        weakSelf.contactsDataSource = [NSMutableArray arrayWithArray:message.object];
-            weakSelf.contactsDataSource = [NSMutableArray arrayWithArray:@[@{@"flag":@"同学",@"name":@"啊"},@{@"flag":@"同班",@"name":@"把"},@{@"flag":@"同系",@"name":@"大"},@{@"flag":@"老乡",@"name":@"才"},@{@"flag":@"同社团",@"name":@"鹅"},@{@"flag":@"同学4143",@"name":@"啊312"},@{@"flag":@"同班3123",@"name":@"把3213"},@{@"flag":@"同系1232",@"name":@"大324"},@{@"flag":@"老24乡",@"name":@"才4214"},@{@"flag":@"同社团1241",@"name":@"鹅4214"},@{@"flag":@"同学111",@"name":@"啊222"},@{@"flag":@"同班444",@"name":@"把555"},@{@"flag":@"同系666",@"name":@"大333"},@{@"flag":@"老乡999",@"name":@"才999"},@{@"flag":@"同社团666",@"name":@"老666"},@{@"flag":@"同社团666",@"name":@"鹅666"},@{@"flag":@"同社团666",@"name":@"钱666"},@{@"flag":@"同社团666",@"name":@"我666"},@{@"flag":@"同社团666",@"name":@"月666"},@{@"flag":@"同社团666",@"name":@"攒666"},@{@"flag":@"同社团666",@"name":@"喷666"}]];
-            [weakSelf.contactsTableView refreshTableView:self.contactsDataSource];
+            weakSelf.contactsHeadDataSouce = [NSMutableArray arrayWithArray:model.classList];
+        
+            [weakSelf.contactsTableView refreshTableView:weakSelf.contactsDataSource AndHeaderView:weakSelf.contactsHeadDataSouce];
         }
     }];
     
@@ -200,6 +201,7 @@
         _messageTableView.hidden = NO;
         _contactsTableView.hidden = YES;
         [_messageTableView reloadData];
+        [self removeEmptyConversationsFromDB];
     }
     else
     {

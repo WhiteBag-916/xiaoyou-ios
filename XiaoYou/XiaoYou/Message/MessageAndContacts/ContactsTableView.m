@@ -8,7 +8,7 @@
 
 #import "ContactsTableView.h"
 #import "ContactsTableViewCell.h"
-#import "ContactsListModel.h"
+#import "LinkManModel.h"
 #import "Pinyin.h"
 #import "ChineseString.h"
 #import "YLog.h"
@@ -39,6 +39,7 @@
 
 //原始数据源
 @property (nonatomic,strong) NSMutableArray *originalContactsDataSource;
+
 //转换后数据源
 @property (nonatomic,strong) NSMutableArray *contactsDataSource;
 @property (nonatomic,strong) NSMutableArray *indexTitleArr;
@@ -74,17 +75,18 @@
 }
 
 
--(void)refreshTableView:(NSMutableArray *) dataSouceArr
+-(void)refreshTableView:(NSMutableArray *) dataSouceArr AndHeaderView:(NSMutableArray *) headerDataSouce
 {
     self.originalContactsDataSource = [NSMutableArray arrayWithArray:dataSouceArr];
     self.indexTitleArr = [[NSMutableArray alloc] init];
     self.contactsDataSource = [NSMutableArray arrayWithArray:[self transformDataSouceArr:dataSouceArr]];
-    [self setUpHeaderView];
+    [self setUpHeaderView:headerDataSouce];
     [self reloadData];
 }
 
--(void)setUpHeaderView
+-(void)setUpHeaderView:(NSArray *) headerDataSouce
 {
+    NSDictionary * modelDic = [headerDataSouce[0] dictionaryRepresentation];
     UIView * backView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, kRowHeight)];
     UITapGestureRecognizer * tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapGestureRecognizerAction)];
     [backView addGestureRecognizer:tapGestureRecognizer];
@@ -119,10 +121,18 @@
         make.height.mas_equalTo(kRemindImageViewHeight);
         make.height.mas_equalTo(kRemindImageViewWidth);
     }];
+    if ([modelDic[@"isRemind"] isEqualToString:@"y"])
+    {
+        _remindImageView.hidden = YES;
+    }
+    else
+    {
+        _remindImageView.hidden = NO;
+    }
     //姓名
     _nameLabel = [[UILabel alloc] init];
     _nameLabel.font = CONTENT_FONT(14);
-    _nameLabel.text = @"西班牙语系15级A班";
+    _nameLabel.text = modelDic[@"name"];
     _nameLabel.backgroundColor = [UIColor clearColor];
     [backView addSubview:_nameLabel];
     [_nameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -163,12 +173,12 @@
     NSMutableArray * tempTransitonArr = [[NSMutableArray alloc] init];
     NSMutableArray * transitonArr = [[NSMutableArray alloc] init];
     //model
-    NSDictionary * lastModel = sortDataSouceArr.lastObject;
+    NSDictionary * lastModel = [sortDataSouceArr.lastObject dictionaryRepresentation];
     NSString * lastName = lastModel[@"name"];
     //取出所有模型，将数据拆分成section（firstIndexTitleArr）数组和sectionRows(transitonArr)数组
-    [sortDataSouceArr enumerateObjectsUsingBlock:^(NSDictionary * model, NSUInteger idx1, BOOL *stop2) {
+    [sortDataSouceArr enumerateObjectsUsingBlock:^(id  model, NSUInteger idx1, BOOL *stop2) {
         
-        char temp =  pinyinFirstLetter([model[@"name"] characterAtIndex:0]);
+        char temp =  pinyinFirstLetter([[model dictionaryRepresentation][@"name"] characterAtIndex:0]);
         
         NSString * firstStr = [NSString stringWithFormat:@"%c",temp].uppercaseString;
         
@@ -185,7 +195,7 @@
 
             [tempTransitonArr addObject:model];
             
-            if ([lastName isEqualToString:model[@"name"]])
+            if ([lastName isEqualToString:[model dictionaryRepresentation][@"name"]])
             {
                 [transitonArr addObject:[NSArray arrayWithArray: tempTransitonArr]];
             }
@@ -195,7 +205,7 @@
 //            NSDictionary * dic = [self transformModelToDictionary:model];
             [tempTransitonArr addObject:model];
             
-            if ([lastName isEqualToString:model[@"name"]])
+            if ([lastName isEqualToString:[model dictionaryRepresentation][@"name"]])
             {
                 [transitonArr addObject:[NSArray arrayWithArray: tempTransitonArr]];
             }
@@ -314,9 +324,13 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    
+    ContactsTableViewCell * cell = (ContactsTableViewCell *)[self cellForRowAtIndexPath:indexPath];
+    
     self.myController.hidesBottomBarWhenPushed = YES;
-    ChatViewController * chatVC = [[ChatViewController alloc] initWithChatter:@"yinhui" isGroup:NO];
+    ChatViewController * chatVC = [[ChatViewController alloc] initWithChatter:cell.studentDic[@"studentNo"] isGroup:NO];
     chatVC.isSystemMessage = NO;
+    chatVC.studentDic = cell.studentDic;
     [self.myController.navigationController pushViewController:chatVC animated:YES];
     
 }
@@ -330,9 +344,8 @@
         YLogD(@"contactDelete");
         YLogD(@"%@",self.deleteIndexPathOfCell);
         ContactsTableViewCell * cell = (ContactsTableViewCell *)[self cellForRowAtIndexPath:self.deleteIndexPathOfCell];
-        YLogD(@"%@",cell.linkStudentNo);
         
-        [self.originalContactsDataSource enumerateObjectsUsingBlock:^(ContactsListModel * obj, NSUInteger idx, BOOL *stop) {
+        [self.originalContactsDataSource enumerateObjectsUsingBlock:^(LinkManModel * obj, NSUInteger idx, BOOL *stop) {
 //            if ([obj.linkStudentNo isEqualToString:cell.linkStudentNo])
 //            {
 //                [self.originalContactsDataSource removeObject:obj];

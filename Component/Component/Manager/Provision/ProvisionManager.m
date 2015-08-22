@@ -18,8 +18,18 @@
 #import "TagListAction.h"
 #import "UploadHeadImageAction.h"
 #import "UploadTagCodes.h"
+#import "ProfileInfo.h"
+#import "ProfileAction.h"
+#import "YNotificationDefine.h"
+#import "UploadImage.h"
 
 #define kProvisionManagerSyncQueue @"kProvisionManagerSyncQueue"
+
+@interface ProvisionManager ()
+
+@property (nonatomic, strong) ProfileInfo *profileInfo; //个人信息
+
+@end
 
 @implementation ProvisionManager
 
@@ -44,7 +54,7 @@ DEF_SINGLETON(ProvisionManager);
 
 - (void)appDidLogin:(NSDictionary *)loginInfo
 {
-    
+    [self getProfileInfo];
 }
 
 - (void)appDidLogout
@@ -144,6 +154,13 @@ DEF_SINGLETON(ProvisionManager);
     action.imagePath = path;
     
     [YAction startAction:action completionBlock:^(YActionMessage* message) {
+        if (message.isSuccess) {
+            //更改缓存
+            if (nil != _profileInfo) {
+                UploadImage *uploadImage = (UploadImage *)message.object;
+                _profileInfo.headPic = uploadImage.url;
+            }
+        }
         //主线程处理界面
         block(message);
     }];
@@ -158,6 +175,28 @@ DEF_SINGLETON(ProvisionManager);
         //主线程处理界面
         block(message);
     }];
+}
+
+//获取个人Profile信息
+- (void)getProfileInfo {
+    ProfileAction* action = [[ProfileAction alloc] init];
+    
+    [YAction startAction:action completionBlock:^(YActionMessage* message) {
+        if (message.isSuccess) {
+            _profileInfo = message.object;
+        }
+        //发送通知,告知界面刷新
+        [self postNotificationOnMainThreadName:kNotification_Profile_GetProfile
+                                        object:nil
+                                      userInfo:@{kNofification_Request_Message:message}];
+    }];
+}
+
+//更新缓存标签
+- (void)updateTagList:(NSArray *)tagList {
+    if (nil != _profileInfo) {
+        _profileInfo.tagModels = [NSArray arrayWithArray:tagList];
+    }
 }
 
 @end
