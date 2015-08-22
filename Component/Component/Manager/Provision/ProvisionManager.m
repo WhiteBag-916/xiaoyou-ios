@@ -54,6 +54,8 @@ DEF_SINGLETON(ProvisionManager);
 
 - (void)appDidLogin:(NSDictionary *)loginInfo
 {
+    [self initProfileData];
+    
     [self getProfileInfo];
 }
 
@@ -78,6 +80,20 @@ DEF_SINGLETON(ProvisionManager);
     [YShareData defaultData][kShareData_LoginAccount] = loginResp.studentNo;
     [YShareData defaultData][kShareData_SchoolName] = loginResp.schoolName;
     [YShareData defaultData][kShareData_SchoolCode] = loginResp.schoolCode;
+}
+
+//初始化个人数据,自动登录
+- (void)initProfileData{
+    NSString *cachePath = [[YDirectory fileCache] stringByAppendingString:NSStringFromClass([ProfileInfo class])];
+    _profileInfo = [ProfileInfo instanceWithFile:cachePath];
+}
+
+//更新个人常用信息
+- (void)saveProfileInfo
+{
+    //存文件
+    NSString *cachePath = [[YDirectory fileCache] stringByAppendingString:NSStringFromClass([ProfileInfo class])];
+    [_profileInfo writeToFile:cachePath];
 }
 
 - (void)goLogin:(NSString *)account password:(NSString *)password block:(ActionCompleteBlock)block
@@ -159,6 +175,7 @@ DEF_SINGLETON(ProvisionManager);
             if (nil != _profileInfo) {
                 UploadImage *uploadImage = (UploadImage *)message.object;
                 _profileInfo.headPic = uploadImage.url;
+                [self saveProfileInfo];
             }
         }
         //主线程处理界面
@@ -184,6 +201,7 @@ DEF_SINGLETON(ProvisionManager);
     [YAction startAction:action completionBlock:^(YActionMessage* message) {
         if (message.isSuccess) {
             _profileInfo = message.object;
+            [self saveProfileInfo];
         }
         //发送通知,告知界面刷新
         [self postNotificationOnMainThreadName:kNotification_Profile_GetProfile
@@ -196,6 +214,8 @@ DEF_SINGLETON(ProvisionManager);
 - (void)updateTagList:(NSArray *)tagList {
     if (nil != _profileInfo) {
         _profileInfo.tagModels = [NSArray arrayWithArray:tagList];
+        
+        [self saveProfileInfo];
     }
 }
 
