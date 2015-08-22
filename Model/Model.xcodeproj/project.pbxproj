@@ -12,6 +12,12 @@
 		20859AB31B64E2F600580ED3 /* YModel+ActionMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 20859AB21B64E2F600580ED3 /* YModel+ActionMessage.m */; };
 		20DBFD271B4FA0E5009134D0 /* libModel.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 20DBFD1B1B4FA0E5009134D0 /* libModel.a */; };
 		20E0BFFF1B88B0CA00EDAED4 /* UploadImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 20E0BFFE1B88B0CA00EDAED4 /* UploadImage.m */; };
+		20E0C06E1B88B0CA00EDAED4 /* Feed.m in Sources */ = {isa = PBXBuildFile; fileRef = 20E0C06B1B88B0CA00EDAED4 /* Feed.m */; };
+		20E0C06F1B88B0CA00EDAED4 /* FeedInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 20E0C06D1B88B0CA00EDAED4 /* FeedInfo.m */; };
+		20E0C0721B88B0CA00EDAED4 /* Author.m in Sources */ = {isa = PBXBuildFile; fileRef = 20E0C0711B88B0CA00EDAED4 /* Author.m */; };
+		20E0C0751B88B0CA00EDAED4 /* ProfileInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 20E0C0741B88B0CA00EDAED4 /* ProfileInfo.m */; };
+		20E0C07A1B88B0CA00EDAED4 /* ClassCodes.m in Sources */ = {isa = PBXBuildFile; fileRef = 20E0C0771B88B0CA00EDAED4 /* ClassCodes.m */; };
+		20E0C07B1B88B0CA00EDAED4 /* GroupCodes.m in Sources */ = {isa = PBXBuildFile; fileRef = 20E0C0791B88B0CA00EDAED4 /* GroupCodes.m */; };
 		331E17D91B7AFB3A006789B0 /* ContactsListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 331E17D41B7AFB3A006789B0 /* ContactsListModel.m */; };
 		331E17DA1B7AFB3A006789B0 /* FriendList.m in Sources */ = {isa = PBXBuildFile; fileRef = 331E17D61B7AFB3A006789B0 /* FriendList.m */; };
 		331E17DB1B7AFB3A006789B0 /* GroupList.m in Sources */ = {isa = PBXBuildFile; fileRef = 331E17D81B7AFB3A006789B0 /* GroupList.m */; };
@@ -66,6 +72,18 @@
 		20DBFD2C1B4FA0E5009134D0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		20E0BFFD1B88B0CA00EDAED4 /* UploadImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UploadImage.h; sourceTree = "<group>"; };
 		20E0BFFE1B88B0CA00EDAED4 /* UploadImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UploadImage.m; sourceTree = "<group>"; };
+		20E0C06A1B88B0CA00EDAED4 /* Feed.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Feed.h; sourceTree = "<group>"; };
+		20E0C06B1B88B0CA00EDAED4 /* Feed.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Feed.m; sourceTree = "<group>"; };
+		20E0C06C1B88B0CA00EDAED4 /* FeedInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedInfo.h; sourceTree = "<group>"; };
+		20E0C06D1B88B0CA00EDAED4 /* FeedInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedInfo.m; sourceTree = "<group>"; };
+		20E0C0701B88B0CA00EDAED4 /* Author.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Author.h; sourceTree = "<group>"; };
+		20E0C0711B88B0CA00EDAED4 /* Author.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Author.m; sourceTree = "<group>"; };
+		20E0C0731B88B0CA00EDAED4 /* ProfileInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileInfo.h; sourceTree = "<group>"; };
+		20E0C0741B88B0CA00EDAED4 /* ProfileInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileInfo.m; sourceTree = "<group>"; };
+		20E0C0761B88B0CA00EDAED4 /* ClassCodes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClassCodes.h; sourceTree = "<group>"; };
+		20E0C0771B88B0CA00EDAED4 /* ClassCodes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClassCodes.m; sourceTree = "<group>"; };
+		20E0C0781B88B0CA00EDAED4 /* GroupCodes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroupCodes.h; sourceTree = "<group>"; };
+		20E0C0791B88B0CA00EDAED4 /* GroupCodes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroupCodes.m; sourceTree = "<group>"; };
 		331E17D31B7AFB3A006789B0 /* ContactsListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactsListModel.h; sourceTree = "<group>"; };
 		331E17D41B7AFB3A006789B0 /* ContactsListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactsListModel.m; sourceTree = "<group>"; };
 		331E17D51B7AFB3A006789B0 /* FriendList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendList.h; sourceTree = "<group>"; };
@@ -149,6 +167,8 @@
 				333E95E71B70B7AB0001059D /* SchoolDetailModel.m */,
 				333E95E81B70B7AB0001059D /* SchoolListModel.h */,
 				333E95E91B70B7AB0001059D /* SchoolListModel.m */,
+				20E0C0731B88B0CA00EDAED4 /* ProfileInfo.h */,
+				20E0C0741B88B0CA00EDAED4 /* ProfileInfo.m */,
 			);
 			path = Provision;
 			sourceTree = "<group>";
@@ -202,7 +222,7 @@
 				20859AB01B64E2EE00580ED3 /* Utils */,
 				20859A961B64C0BC00580ED3 /* Common */,
 				20859A9E1B64CB7600580ED3 /* Provision */,
-				20E122191B705D6400F90BD3 /* Feed */,
+				20E0C0691B88B0CA00EDAED4 /* Feed */,
 				20DBFD661B4FA8F0009134D0 /* Contact */,
 				20DBFD671B4FA8F0009134D0 /* Message */,
 			);
@@ -212,6 +232,12 @@
 		20DBFD661B4FA8F0009134D0 /* Contact */ = {
 			isa = PBXGroup;
 			children = (
+				20E0C0761B88B0CA00EDAED4 /* ClassCodes.h */,
+				20E0C0771B88B0CA00EDAED4 /* ClassCodes.m */,
+				20E0C0781B88B0CA00EDAED4 /* GroupCodes.h */,
+				20E0C0791B88B0CA00EDAED4 /* GroupCodes.m */,
+				20E0C0701B88B0CA00EDAED4 /* Author.h */,
+				20E0C0711B88B0CA00EDAED4 /* Author.m */,
 				331E17D31B7AFB3A006789B0 /* ContactsListModel.h */,
 				331E17D41B7AFB3A006789B0 /* ContactsListModel.m */,
 				331E17D51B7AFB3A006789B0 /* FriendList.h */,
@@ -249,9 +275,13 @@
 			path = Message;
 			sourceTree = "<group>";
 		};
-		20E122191B705D6400F90BD3 /* Feed */ = {
+		20E0C0691B88B0CA00EDAED4 /* Feed */ = {
 			isa = PBXGroup;
 			children = (
+				20E0C06A1B88B0CA00EDAED4 /* Feed.h */,
+				20E0C06B1B88B0CA00EDAED4 /* Feed.m */,
+				20E0C06C1B88B0CA00EDAED4 /* FeedInfo.h */,
+				20E0C06D1B88B0CA00EDAED4 /* FeedInfo.m */,
 			);
 			path = Feed;
 			sourceTree = "<group>";
@@ -346,7 +376,9 @@
 			files = (
 				20859A991B64C0BC00580ED3 /* ResultCommon.m in Sources */,
 				333E95DF1B70B7650001059D /* SystemPushInfoListModel.m in Sources */,
+				20E0C06E1B88B0CA00EDAED4 /* Feed.m in Sources */,
 				333E95D91B70B7400001059D /* addFriendPushInfoListModel.m in Sources */,
+				20E0C0721B88B0CA00EDAED4 /* Author.m in Sources */,
 				3320A6591B7498D200E018E1 /* SenderListModel.m in Sources */,
 				20859AB31B64E2F600580ED3 /* YModel+ActionMessage.m in Sources */,
 				20859AA31B64CB7E00580ED3 /* LoginResp.m in Sources */,
@@ -356,15 +388,19 @@
 				331E17DB1B7AFB3A006789B0 /* GroupList.m in Sources */,
 				20E0BFFF1B88B0CA00EDAED4 /* UploadImage.m in Sources */,
 				333E95E21B70B7820001059D /* UpdateAvatarModel.m in Sources */,
+				20E0C07B1B88B0CA00EDAED4 /* GroupCodes.m in Sources */,
 				331E17E41B7AFBC8006789B0 /* Tags.m in Sources */,
 				331E17E31B7AFBC8006789B0 /* Relationship.m in Sources */,
 				331E17E21B7AFBC8006789B0 /* Groups.m in Sources */,
 				331E17D91B7AFB3A006789B0 /* ContactsListModel.m in Sources */,
 				333E95E51B70B78C0001059D /* LastSystemPushInfoListModel.m in Sources */,
+				20E0C0751B88B0CA00EDAED4 /* ProfileInfo.m in Sources */,
 				333E95EE1B70B8F80001059D /* ReceiveAuthCodeModel.m in Sources */,
 				333E95D01B70B6DF0001059D /* CheckAccountModel.m in Sources */,
 				331E17DA1B7AFB3A006789B0 /* FriendList.m in Sources */,
+				20E0C06F1B88B0CA00EDAED4 /* FeedInfo.m in Sources */,
 				333E95EB1B70B7AB0001059D /* SchoolListModel.m in Sources */,
+				20E0C07A1B88B0CA00EDAED4 /* ClassCodes.m in Sources */,
 				333E95DC1B70B75E0001059D /* PushInfoListModel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -164,7 +164,7 @@ NSString *const tagIsSelected = @"tagIsSelected";
             if (tagStr.length > 0) {
                 [tagStr appendString:@","];
             }
-            [tagStr appendString:tags.name];
+            [tagStr appendString:[NSString stringWithFormat:@"%.f", tags.internalBaseClassIdentifier]];
         }
     }];
     if (_headImagePath.length > 0) {
@@ -198,6 +198,15 @@ NSString *const tagIsSelected = @"tagIsSelected";
     
     [[ProvisionManager sharedInstance] uploadTagCodes:tagStr block:^(YActionMessage *message) {
         if (message.isSuccess) {
+            //更新缓存标签
+            NSMutableArray *tagArray = [@[] mutableCopy];
+            [_tagsArray enumerateObjectsUsingBlock:^(NSDictionary *obj, NSUInteger idx, BOOL *stop) {
+                if ([obj[tagIsSelected] boolValue]) {
+                    [tagArray addObject:obj[tagObj]];
+                }
+            }];
+            [[ProvisionManager sharedInstance] updateTagList:tagArray];
+            
             [self toTabBar];
         } else {
             [YUtils showTitle:message.desc];

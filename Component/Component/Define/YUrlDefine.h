@@ -42,6 +42,8 @@
 #define api_login_updateHeadPic @"/mobile/user/updateHeadPic"
 //上传标签
 #define api_login_addTag @"/mobile/user/v2/addTag"
+//个人信息
+#define api_login_profile @"/mobile/user/v2/profile"
 
 /**********************************************************
  Url Define: FeedManager

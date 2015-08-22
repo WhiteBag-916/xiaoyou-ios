@@ -20,6 +20,7 @@
 		20E0BFED1B88B0CA00EDAED4 /* MessageListAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 20E0BFEC1B88B0CA00EDAED4 /* MessageListAction.m */; };
 		20E0BFF01B88B0CA00EDAED4 /* UploadHeadImageAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 20E0BFEF1B88B0CA00EDAED4 /* UploadHeadImageAction.m */; };
 		20E0BFF31B88B0CA00EDAED4 /* UploadTagCodes.m in Sources */ = {isa = PBXBuildFile; fileRef = 20E0BFF21B88B0CA00EDAED4 /* UploadTagCodes.m */; };
+		20E0C00C1B88B0CA00EDAED4 /* ProfileAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 20E0C00B1B88B0CA00EDAED4 /* ProfileAction.m */; };
 		20E122171B705D3C00F90BD3 /* FeedManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 20E122161B705D3C00F90BD3 /* FeedManager.m */; };
 		20E341801B720A54008CADC3 /* ProfileDao.m in Sources */ = {isa = PBXBuildFile; fileRef = 20E3417F1B720A54008CADC3 /* ProfileDao.m */; };
 		3320A6561B7498B200E018E1 /* ContactsListAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 3320A6551B7498B200E018E1 /* ContactsListAction.m */; };
@@ -80,6 +81,8 @@
 		20E0BFEF1B88B0CA00EDAED4 /* UploadHeadImageAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UploadHeadImageAction.m; sourceTree = "<group>"; };
 		20E0BFF11B88B0CA00EDAED4 /* UploadTagCodes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UploadTagCodes.h; sourceTree = "<group>"; };
 		20E0BFF21B88B0CA00EDAED4 /* UploadTagCodes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UploadTagCodes.m; sourceTree = "<group>"; };
+		20E0C00A1B88B0CA00EDAED4 /* ProfileAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileAction.h; sourceTree = "<group>"; };
+		20E0C00B1B88B0CA00EDAED4 /* ProfileAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileAction.m; sourceTree = "<group>"; };
 		20E122151B705D3C00F90BD3 /* FeedManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedManager.h; sourceTree = "<group>"; };
 		20E122161B705D3C00F90BD3 /* FeedManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedManager.m; sourceTree = "<group>"; };
 		20E18D5E1B807F4F005B75EE /* YNotificationDefine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YNotificationDefine.h; sourceTree = "<group>"; };
@@ -133,6 +136,8 @@
 				20E0BFEF1B88B0CA00EDAED4 /* UploadHeadImageAction.m */,
 				20E0BFF11B88B0CA00EDAED4 /* UploadTagCodes.h */,
 				20E0BFF21B88B0CA00EDAED4 /* UploadTagCodes.m */,
+				20E0C00A1B88B0CA00EDAED4 /* ProfileAction.h */,
+				20E0C00B1B88B0CA00EDAED4 /* ProfileAction.m */,
 			);
 			path = Provision;
 			sourceTree = "<group>";
@@ -210,20 +215,12 @@
 		20DBFD741B4FD3F5009134D0 /* Action */ = {
 			isa = PBXGroup;
 			children = (
+				20E0C02B1B88B0CA00EDAED4 /* Feed */,
 				20859A8D1B64C03C00580ED3 /* Provision */,
-				20DBFD751B4FD3F5009134D0 /* Feed */,
 				20DBFD761B4FD3F5009134D0 /* Contact */,
 				20DBFD771B4FD3F5009134D0 /* Message */,
 			);
 			path = Action;
-			sourceTree = "<group>";
-		};
-		20DBFD751B4FD3F5009134D0 /* Feed */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Feed;
-			path = Assistant;
 			sourceTree = "<group>";
 		};
 		20DBFD761B4FD3F5009134D0 /* Contact */ = {
@@ -314,6 +311,13 @@
 				20DBFD851B4FD3F5009134D0 /* YUtils+Component.m */,
 			);
 			path = Utils;
+			sourceTree = "<group>";
+		};
+		20E0C02B1B88B0CA00EDAED4 /* Feed */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Feed;
 			sourceTree = "<group>";
 		};
 		20E122141B705D3C00F90BD3 /* Feed */ = {
@@ -429,6 +433,7 @@
 				20E0BFEA1B88B0CA00EDAED4 /* TagListAction.m in Sources */,
 				20E122171B705D3C00F90BD3 /* FeedManager.m in Sources */,
 				20E0BFF31B88B0CA00EDAED4 /* UploadTagCodes.m in Sources */,
+				20E0C00C1B88B0CA00EDAED4 /* ProfileAction.m in Sources */,
 				20E0BFED1B88B0CA00EDAED4 /* MessageListAction.m in Sources */,
 				20859A821B64BD8500580ED3 /* ContactManager.m in Sources */,
 				20E0BFF01B88B0CA00EDAED4 /* UploadHeadImageAction.m in Sources */,

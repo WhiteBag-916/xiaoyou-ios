@@ -53,17 +53,6 @@
     return [self getParameter:parameters];
 }
 
-+ getUploadParameter:(NSString *)fileName {
-    NSMutableDictionary *dic = [@{kYHttpRequestPostData : @{@"schoolCode": [YShareData defaultData][kShareData_SchoolCode],
-                                                                                   @"studentNo": [YShareData defaultData][kShareData_StudentNo],
-                                                                                   @"token": [YShareData defaultData][kShareData_Token],
-                                                                                   @"imgfile": fileName}
-                                  , kYHttpRequestHeader : @{@"Accept":@"application/json",
-                                                            @"Connection":@"keep-alive"}} mutableCopy];
-    
-    return dic;
-}
-
 + (NSString *)distanceTimeToday:(NSDate *)date
 {
     NSTimeInterval  timeInterval = [date timeIntervalSinceNow];
