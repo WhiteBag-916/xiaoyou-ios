@@ -194,7 +194,7 @@
             make.centerX.equalTo(_headImg);
             make.centerY.equalTo(item);
         }];
-        icon.backgroundColor = [UIColor redColor];
+        icon.image = [UIImage imageNamed:@"mine-toast"];
         _respectNum = [YUtils initLabel:CONTENT_FONT(12) color:[UIColor blackColor] text:@"敬酒:100" frame:CGRectZero alignment:NSTextAlignmentLeft];
         [item addSubview:_respectNum];
         [_respectNum mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -208,7 +208,7 @@
             make.centerX.equalTo(_headImg);
             make.centerY.equalTo(item);
         }];
-        icon.backgroundColor = [UIColor blueColor];
+        icon.image = [UIImage imageNamed:@"mine-heart"];
         _coolNum = [YUtils initLabel:CONTENT_FONT(12) color:[UIColor blackColor] text:@"觉得很酷:100" frame:CGRectZero alignment:NSTextAlignmentLeft];
         [item addSubview:_coolNum];
         [_coolNum mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -299,13 +299,13 @@
     }];
     switch (type) {
         case 0:
-            right.backgroundColor = KCOLORWHITE;
+            right.image = [UIImage imageNamed:@"mine-particulars"];
             break;
         case 1:
-            right.backgroundColor = KCOLORWHITE_696969;
+            right.image = [UIImage imageNamed:@"mine-toast-particulars"];
             break;
         case 2:
-            right.backgroundColor = KCOLORGREEN_009688;
+            right.image = [UIImage imageNamed:@"mine-concern-particulars"];
             break;
         default:
             break;
@@ -320,7 +320,12 @@
     [_feed setData];
 }
 - (void)openAttitude {
-    [self.navigationController pushViewController:[[YCommonEditViewController alloc] initWithType:YCommonEditAttitude preText:_attitudeLabel.text] animated:true];
+    CATransition* transition = [CATransition animation];
+    transition.type = kCATransitionPush;
+    transition.subtype = kCATransitionFromTop;
+    [self.navigationController.view.layer addAnimation:transition forKey:kCATransition];
+    
+    [self.navigationController pushViewController:[[YCommonEditViewController alloc] initWithType:YCommonEditAttitude preText:_attitudeLabel.text] animated:NO];
 }
 - (void)openRespect {
     [self.navigationController pushViewController:[[ProfilePersonListController alloc] initWithType:true] animated:true];

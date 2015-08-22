@@ -88,7 +88,7 @@ NSString *const kProfilePersonListTableViewCell = @"kProfilePersonListTableViewC
         }];
         _addFriend.layer.cornerRadius = KADDFRIENDWIDTH/2;
         _addFriend.clipsToBounds = true;
-        _addFriend.backgroundColor = [UIColor redColor];
+        [_addFriend setImage:[UIImage imageNamed:@"mine-add-friend"] forState:UIControlStateNormal];
     }
     return self;
 }

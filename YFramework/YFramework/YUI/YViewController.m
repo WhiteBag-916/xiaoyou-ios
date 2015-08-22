@@ -52,9 +52,7 @@
         self.edgesForExtendedLayout = UIRectEdgeNone;
         self.navigationController.navigationBar.translucent = NO;
     }
-    
-    //title
-    self.navigationController.navigationBar.barTintColor = [UIColor hexChangeFloat:@"455a64"];
+    [self showOrignMode];
     
     self.view.backgroundColor = [UIColor whiteColor];
 }
@@ -63,6 +61,7 @@
 {
     [super viewWillAppear:animated];
     [MobClick beginLogPageView:NSStringFromClass([self class])];
+//    [self showOrignMode];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -110,7 +109,16 @@
     
     _lbTitle.text = title;
 }
-
+- (void)showOrignMode {
+    self.navigationController.navigationBar.barTintColor = [UIColor hexChangeFloat:@"455a64"];
+    _lbTitle.textColor = [UIColor whiteColor];
+}
+- (void)showEditMode {
+    self.navigationController.navigationBar.barTintColor = [UIColor whiteColor];
+    _lbTitle.textColor = [UIColor blackColor];
+    [self showNomalNavigationLeftButton:@"" action:@selector(onNavigationLeftButtonClicked) imgName:@"mine-cancel" frame:CGRectMake(0, 0, 15, 15)];
+    [self showNomalNavigationRightButtonWithImage:@"" action:@selector(onNavigationRightButtonClicked) imgName:@"mine-complete-grey" frame:CGRectMake(0, 0, 20, 15)];
+}
 - (void)onNavigationLeftButtonClicked
 {
     [self.view endEditing:YES];
@@ -170,9 +178,9 @@
 - (void)showCustomNavigationSureButton {
     [self showNomalNavigationRightButtonWithImage:@"" action:@selector(onNavigationRightButtonClicked) imgName:@"complete-grey" frame:CGRectMake(0, 0, 20, 15)];
 }
-//导航栏右侧，确认按钮
+//导航栏右侧，发布按钮
 - (void)showCustomNavigationPublishButton {
-    [self showNomalNavigationRightButtonWithImage:@"" action:@selector(onNavigationRightButtonClicked) imgName:@"complete-grey" frame:CGRectMake(0, 0, 20, 15)];
+    [self showNomalNavigationRightButtonWithImage:@"" action:@selector(onNavigationRightButtonClicked) imgName:@"mine-publisher" frame:CGRectMake(0, 0, 15, 20)];
 }
 
 //导航栏右侧下一步按钮

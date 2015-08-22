@@ -44,11 +44,13 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     [self initView];
+    
 }
 - (void)initView {
     self.title = @"说两句";
     [self showCustomNavigationCancelButton];
     [self showCustomNavigationSureButton];
+    [self showEditMode];
     
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self.view action:@selector(endEditing:)];
     [self.view addGestureRecognizer:tap];
@@ -152,6 +154,8 @@
     [self.navigationController.view.layer addAnimation:transition forKey:kCATransition];
     [self.navigationController popViewControllerAnimated:false];
 }
-
+- (void)viewWillDisappear:(BOOL)animated {
+    [self showOrignMode];
+}
 
 @end
