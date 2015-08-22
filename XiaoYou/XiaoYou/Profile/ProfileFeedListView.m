@@ -21,6 +21,7 @@
         [self registerClass:[ProfileFeedCell class] forCellReuseIdentifier:KProfileFeedCell];
         self.tableFooterView = [UIView new];
         self.backgroundColor = KCOLORWHITE;
+        self.fd_debugLogEnabled = false;
     }
     return self;
 }
