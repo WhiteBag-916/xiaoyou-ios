@@ -547,11 +547,12 @@
 
 -(NSString*)transformDateStr:(NSString *) dateTempStr
 {
+    NSString * tempDate = [dateTempStr substringWithRange:NSMakeRange(0, 19)];
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
     dateFormatter.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"zh_CN"];
     
-    NSDate * date = [dateFormatter dateFromString:dateTempStr];
+    NSDate * date = [dateFormatter dateFromString:tempDate];
     NSLog(@"date = %@",date);
     NSTimeInterval result = [date timeIntervalSinceNow];
     double timeInterval = result * (-1);

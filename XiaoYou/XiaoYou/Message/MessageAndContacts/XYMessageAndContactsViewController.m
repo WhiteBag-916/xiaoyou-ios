@@ -65,7 +65,7 @@
     }];
     
     [[EaseMob sharedInstance].chatManager loadAllConversationsFromDatabaseWithAppend2Chat:NO];
-    [self removeEmptyConversationsFromDB];
+    
     
 }
 
@@ -97,6 +97,7 @@
     
     [self refreshDataSource];
     [self registerNotifications];
+    [self removeEmptyConversationsFromDB];
 }
 
 //刷新数据源

@@ -234,30 +234,38 @@ NSString *const kMessageTableViewCell = @"MessageTableViewCellId";
 
 -(NSString*)transformDateStr:(NSString *) dateTempStr
 {
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
-    dateFormatter.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"zh_CN"];
-
-    NSDate * date = [dateFormatter dateFromString:dateTempStr];
-    NSLog(@"date = %@",date);
-    NSTimeInterval result = [date timeIntervalSinceNow];
-    double timeInterval = result * (-1);
-    NSLog(@"timeInterval = %g",result);
-    if (timeInterval < 300)
+    if (dateTempStr.length > 0)
     {
-        return @"刚刚";
-    }
-    else if(timeInterval < 86400)
-    {
-        return [dateTempStr substringWithRange:NSMakeRange(11, 5)];
-    }
-    else if(timeInterval < 172800)
-    {
-        return @"昨天";
+        NSString * tempDate = [dateTempStr substringWithRange:NSMakeRange(0, 19)];
+        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+        [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+        dateFormatter.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"zh_CN"];
+        
+        NSDate * date = [dateFormatter dateFromString:tempDate];
+        NSLog(@"date = %@",date);
+        NSTimeInterval result = [date timeIntervalSinceNow];
+        double timeInterval = result * (-1);
+        NSLog(@"timeInterval = %g",result);
+        if (timeInterval < 300)
+        {
+            return @"刚刚";
+        }
+        else if(timeInterval < 86400)
+        {
+            return [dateTempStr substringWithRange:NSMakeRange(11, 5)];
+        }
+        else if(timeInterval < 172800)
+        {
+            return @"昨天";
+        }
+        else
+        {
+            return [dateTempStr substringWithRange:NSMakeRange(0, 10)];
+        }
     }
     else
     {
-        return [dateTempStr substringWithRange:NSMakeRange(0, 10)];
+        return nil;
     }
     
 }
