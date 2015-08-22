@@ -8,6 +8,8 @@
 
 #import "YHTTPRequestAction.h"
 
-@interface UploadTagCodes : YHTTPRequestAction
+@interface UploadTagCodes : YHTTPRequestAction<YAction>
+
+@property (nonatomic, strong) NSString *tagCodes;
 
 @end

@@ -9,7 +9,7 @@
 
 NSString *const kResultCommonStatus = @"code";
 NSString *const kResultCommonMsg = @"message";
-NSString *const kProjectListObj = @"obj";
+NSString *const kResultCommonUrl = @"url";
 
 @interface ResultCommon ()
 
@@ -21,7 +21,6 @@ NSString *const kProjectListObj = @"obj";
 
 @synthesize code = _code;
 @synthesize message = _message;
-@synthesize obj = _obj;
 
 + (instancetype)modelObjectWithDictionary:(NSDictionary *)dict
 {
@@ -38,6 +37,7 @@ NSString *const kProjectListObj = @"obj";
     {
         self.code = [[self objectOrNilForKey:kResultCommonStatus fromDictionary:dict] doubleValue];
         self.message = [self objectOrNilForKey:kResultCommonMsg fromDictionary:dict];
+        self.url = [self objectOrNilForKey:kResultCommonUrl fromDictionary:dict];
     }
 
     return self;

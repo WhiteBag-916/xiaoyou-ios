@@ -15,6 +15,9 @@
 #import "SchoolListAction.h"
 #import "ForgotPasswordAction.h"
 #import "YDirectory+Data.h"
+#import "TagListAction.h"
+#import "UploadHeadImageAction.h"
+#import "UploadTagCodes.h"
 
 #define kProvisionManagerSyncQueue @"kProvisionManagerSyncQueue"
 
@@ -118,6 +121,38 @@ DEF_SINGLETON(ProvisionManager);
 - (void)forgotPasswordReq:(NSString *)studentNo block:(ActionCompleteBlock)block {
     ForgotPasswordAction* action = [[ForgotPasswordAction alloc] init];
     action.studentNo = studentNo;
+    
+    [YAction startAction:action completionBlock:^(YActionMessage* message) {
+        //主线程处理界面
+        block(message);
+    }];
+}
+
+//获取标签
+- (void)getTagList:(ActionCompleteBlock)block {
+    TagListAction* action = [[TagListAction alloc] init];
+    
+    [YAction startAction:action completionBlock:^(YActionMessage* message) {
+        //主线程处理界面
+        block(message);
+    }];
+}
+
+//上传头像
+- (void)uploadHeadImage:(NSString *)path block:(ActionCompleteBlock)block {
+    UploadHeadImageAction* action = [[UploadHeadImageAction alloc] init];
+    action.imagePath = path;
+    
+    [YAction startAction:action completionBlock:^(YActionMessage* message) {
+        //主线程处理界面
+        block(message);
+    }];
+}
+
+//上传标签
+- (void)uploadTagCodes:(NSString *)tagCodes block:(ActionCompleteBlock)block {
+    UploadTagCodes* action = [[UploadTagCodes alloc] init];
+    action.tagCodes = tagCodes;
     
     [YAction startAction:action completionBlock:^(YActionMessage* message) {
         //主线程处理界面

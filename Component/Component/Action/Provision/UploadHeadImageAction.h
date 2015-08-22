@@ -8,6 +8,8 @@
 
 #import "YHTTPRequestAction.h"
 
-@interface UploadHeadImageAction : YHTTPRequestAction
+@interface UploadHeadImageAction : YHTTPRequestAction<YAction>
+
+@property (nonatomic, strong) NSString *imagePath;
 
 @end
