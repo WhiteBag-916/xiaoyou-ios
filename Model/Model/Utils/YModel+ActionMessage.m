@@ -34,7 +34,7 @@ NSString *const kCommonObj = @"obj";
                 [[NSNotificationCenter defaultCenter] postNotificationName:kNotification_Server_Token_Fail object:aObject];
             }
             
-            if (!(code == kYActionMessage_Server_Success || code == 0))
+            if (!(code == kYActionMessage_Server_Success))
             {
                 errorCode = kYYServerErrorBase + labs(code);
             }

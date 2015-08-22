@@ -89,8 +89,10 @@ static NSMutableArray *Requests = nil;
                     {
                         NSArray *files = parameters[kYHttpRequestUploadFile];
                         [files enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+//                            [(ASIFormDataRequest *) request setFile:obj
+//                                                             forKey:[NSString stringWithFormat:@"%lu",idx+1]];
                             [(ASIFormDataRequest *) request setFile:obj
-                                                             forKey:[NSString stringWithFormat:@"%lu",idx+1]];
+                                                             forKey:@"imgfile"];
                         }];
                     }
                 }

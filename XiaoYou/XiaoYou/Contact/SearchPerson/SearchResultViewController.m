@@ -29,7 +29,7 @@
 }
 
 - (void)initView {
-    self.view.backgroundColor = KCOLORGREEN_e6eae9;
+    self.view.backgroundColor = KCOLORGREEN_e6ebea;
     //结果
     NSString *nameStr = @"";
     if (_searchName.length > 0) {

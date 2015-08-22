@@ -38,7 +38,7 @@ NSString *const kSearchFilterTableViewCell = @"SearchFilterTableViewCellId";
             make.left.bottom.right.equalTo(self.contentView);
             make.height.mas_equalTo(1);
         }];
-        line.backgroundColor = KCOLORGREEN_e6eae9;
+        line.backgroundColor = KCOLORGREEN_e6ebea;
     }
     
     return self;

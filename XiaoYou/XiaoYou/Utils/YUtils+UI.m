@@ -19,12 +19,12 @@ NSInteger const kLoginCommonTextFieldTag = 1999;
     schoolView.backgroundColor = KCOLORWHITE;
     
     //logo
-    UIImageView *schoolLogoImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"login_school"]];
+    UIImageView *schoolLogoImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:leftImage]];
     [schoolView addSubview:schoolLogoImageView];
     [schoolLogoImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.mas_equalTo(SCALE_NUM(12));
-        make.width.mas_equalTo(SCALE_NUM(24));
-        make.height.mas_equalTo(SCALE_NUM(27));
+        make.width.mas_equalTo(SCALE_NUM(25));
+        make.height.mas_equalTo(SCALE_NUM(23));
         make.centerY.equalTo(schoolView);
     }];
     

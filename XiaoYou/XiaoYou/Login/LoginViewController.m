@@ -10,6 +10,7 @@
 #import "YTextField.h"
 #import "ProvisionManager.h"
 #import "AppDelegate+RootVC.h"
+#import "LoginResp.h"
 
 @interface LoginViewController ()
 
@@ -29,7 +30,7 @@
     
     self.title = @"登录";
     [self showCustomNavigationNextButton];
-    self.view.backgroundColor = KCOLORGREEN_e6eae9;
+    self.view.backgroundColor = KCOLORGREEN_e6ebea;
     
     _isCheckButton = YES;
     
@@ -40,9 +41,9 @@
     _accountTextField.text = [YShareData defaultData][kShareData_LoginAccount];
 #if DEBUG    
     if (_accountTextField.text.length <= 0) {
-        _accountTextField.text = @"15140080000";
+        _accountTextField.text = @"1234";
     }
-    _passwordTextField.text = @"123456";
+    _passwordTextField.text = @"12341234";
 #endif
     
     [self resetRightButton];
@@ -50,7 +51,7 @@
 
 - (void)initView {
     //accountView
-    UIView *accountView = [YUtils initLoginCommonView:@"login_school"];
+    UIView *accountView = [YUtils initLoginCommonView:@"register-number"];
     [self.view addSubview:accountView];
     [accountView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.right.equalTo(self.view);
@@ -59,7 +60,7 @@
     }];
     
     //passwordView
-    UIView *passwordView = [YUtils initLoginCommonView:@"login_school"];
+    UIView *passwordView = [YUtils initLoginCommonView:@"register-password"];
     [self.view addSubview:passwordView];
     [passwordView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.right.equalTo(self.view);
@@ -206,7 +207,14 @@
     [[ProvisionManager sharedInstance] goLogin:_accountTextField.text password:_passwordTextField.text block:^(YActionMessage *message) {
         if (message.isSuccess) {
             //成功
-            [kAppDelegateAccessor initTabBarNC];
+            //是否需要完善资料
+            LoginResp *loginResp = (LoginResp *)message.object;
+            if (loginResp.mobilePhone.length > 0) {
+                [kAppDelegateAccessor initTabBarNC];
+            } else {
+                [kAppDelegateAccessor initPerfectNC];
+            }
+            
         } else {
             [YUtils showTitle:message.desc];
         }

@@ -52,5 +52,6 @@
 //导航栏右侧下一步按钮
 - (void)showCustomNavigationNextButton;
 
-
+//导航栏右侧确定按钮
+- (void)showCustomNavigationConfirmButton;
 @end

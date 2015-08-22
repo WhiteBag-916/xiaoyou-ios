@@ -13,8 +13,10 @@
 
 @interface YUtils(Component)
 + getUrl:(NSString *)bussinessPath;
++ getParameter;
 + getParameter:(NSDictionary *)parameters;
 + getParameter:(NSDictionary *)parameters needUserToken:(BOOL)needUserToken;
++ getUploadParameter:(NSString *)fileName;
 
 /**
  *  @author xiongchen

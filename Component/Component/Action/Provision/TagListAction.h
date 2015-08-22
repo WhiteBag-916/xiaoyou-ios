@@ -8,6 +8,6 @@
 
 #import "YHTTPRequestAction.h"
 
-@interface TagListAction : YHTTPRequestAction
+@interface TagListAction : YHTTPRequestAction<YAction>
 
 @end

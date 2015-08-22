@@ -16,4 +16,6 @@
 
 - (void)initLoginNC;
 
+- (void)initPerfectNC;
+
 @end

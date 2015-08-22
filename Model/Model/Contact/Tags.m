@@ -9,7 +9,7 @@
 
 
 NSString *const kTagsName = @"name";
-NSString *const kTagsCode = @"code";
+NSString *const kTagsCode = @"id";
 
 
 @interface Tags ()

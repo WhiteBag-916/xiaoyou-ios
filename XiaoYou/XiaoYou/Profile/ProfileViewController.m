@@ -11,6 +11,10 @@
 #import "ProfilePersonListController.h"
 #import "ProfileFeedContentView.h"
 #import "ProfilePublishViewController.h"
+#import "ProfileMyViewController.h"
+#import "YCommonEditViewController.h"
+#import "UIImageView+WebCache.h"
+
 #define KTOPHEIGHT SCALE_NUM(90)
 #define KHEADIMG_SIZE SCALE_NUM(45)
 #define KHEADIMGMARIN_LEFT SCALE_NUM(10)
@@ -84,6 +88,7 @@
         make.height.mas_equalTo(KTOPHEIGHT);
     }];
     _topView.backgroundColor = KCOLORGREEN_455A64;
+    [_topView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(openProfile)]];
     
     UIView *infoView = [[UIView alloc] init];
     [_topView addSubview:infoView];
@@ -102,7 +107,6 @@
     }];
     _headImg.layer.cornerRadius = KHEADIMG_SIZE/2;
     _headImg.clipsToBounds = true;
-    _headImg.backgroundColor = [UIColor redColor];
     
     UIView *titleView = [[UIView alloc] init];
     [infoView addSubview:titleView];
@@ -243,6 +247,7 @@
             make.centerY.equalTo(icon).priorityLow();
             make.bottom.lessThanOrEqualTo(item);
         }];
+        [item addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(openAttitude)]];
     }
     if (index == 1) {
         _tagLabel = [YUtils initLabel:CONTENT_FONT(12) color:KCOLORGREEN_009688 text:@"互联网创业" frame:CGRectZero alignment:NSTextAlignmentLeft];
@@ -311,9 +316,12 @@
 
 
 - (void)viewDidAppear:(BOOL)animated {
+    [_headImg sd_setImageWithURL:[NSURL URLWithString:@"http://cdn.duitang.com/uploads/item/201411/22/20141122111634_RBCXS.jpeg"]];
     [_feed setData];
 }
-
+- (void)openAttitude {
+    [self.navigationController pushViewController:[[YCommonEditViewController alloc] initWithType:YCommonEditAttitude preText:_attitudeLabel.text] animated:true];
+}
 - (void)openRespect {
     [self.navigationController pushViewController:[[ProfilePersonListController alloc] initWithType:true] animated:true];
 }
@@ -323,6 +331,11 @@
 - (void)openFeed {
     [self.navigationController pushViewController:[[ProfilePublishViewController alloc] init] animated:true];
 }
+
+- (void)openProfile {
+    [self.navigationController pushViewController:[[ProfileMyViewController alloc] init] animated:true];
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

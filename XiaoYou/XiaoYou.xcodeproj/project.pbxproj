@@ -82,6 +82,10 @@
 		20E034051B846398002E4583 /* feed-find-someone-search@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 20E034011B846398002E4583 /* feed-find-someone-search@3x.png */; };
 		20E034091B8471E5002E4583 /* SearchFilterTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 20E034081B8471E5002E4583 /* SearchFilterTableViewCell.m */; };
 		20E0340E1B847F9F002E4583 /* SearchResultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20E0340D1B847F9F002E4583 /* SearchResultViewController.m */; };
+		20E0BFF91B88B0CA00EDAED4 /* register-label-chosen-boundary@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 20E0BFF51B88B0CA00EDAED4 /* register-label-chosen-boundary@2x.png */; };
+		20E0BFFA1B88B0CA00EDAED4 /* register-label-chosen-boundary@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 20E0BFF61B88B0CA00EDAED4 /* register-label-chosen-boundary@3x.png */; };
+		20E0BFFB1B88B0CA00EDAED4 /* register-photo-upload-boundary@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 20E0BFF71B88B0CA00EDAED4 /* register-photo-upload-boundary@2x.png */; };
+		20E0BFFC1B88B0CA00EDAED4 /* register-photo-upload-boundary@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 20E0BFF81B88B0CA00EDAED4 /* register-photo-upload-boundary@3x.png */; };
 		20E122131B705C2100F90BD3 /* XYTabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20E122121B705C2100F90BD3 /* XYTabBarViewController.m */; };
 		20E122211B705ED200F90BD3 /* FeedListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20E122201B705ED200F90BD3 /* FeedListViewController.m */; };
 		20E1222D1B708CDC00F90BD3 /* TagListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20E1222C1B708CDC00F90BD3 /* TagListViewController.m */; };
@@ -352,6 +356,10 @@
 		65024C1C1B833565007DE404 /* feedmore@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 65024C1A1B833565007DE404 /* feedmore@2x.png */; };
 		65024C1D1B833565007DE404 /* feedmore@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 65024C1B1B833565007DE404 /* feedmore@3x.png */; };
 		650C6C001B881A9800A89AC9 /* ProfileMyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 650C6BFF1B881A9800A89AC9 /* ProfileMyViewController.m */; };
+		650C6C031B88529600A89AC9 /* ProfileChangePwdViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 650C6C021B88529600A89AC9 /* ProfileChangePwdViewController.m */; };
+		650C6C061B8860FF00A89AC9 /* YCommonEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 650C6C051B8860FF00A89AC9 /* YCommonEditViewController.m */; };
+		650C6C0E1B886D3C00A89AC9 /* mine-toast@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 650C6C0C1B886D3C00A89AC9 /* mine-toast@2x.png */; };
+		650C6C0F1B886D3C00A89AC9 /* mine-toast@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 650C6C0D1B886D3C00A89AC9 /* mine-toast@3x.png */; };
 		6518A2481B80429300AEB79D /* TagListTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6518A2471B80429300AEB79D /* TagListTableView.m */; };
 		6518A24B1B80583600AEB79D /* TagListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6518A24A1B80583600AEB79D /* TagListTableViewCell.m */; };
 		653199DE1B80B41C00405B72 /* ConnectTag.m in Sources */ = {isa = PBXBuildFile; fileRef = 653199DD1B80B41C00405B72 /* ConnectTag.m */; };
@@ -527,6 +535,10 @@
 		20E034081B8471E5002E4583 /* SearchFilterTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchFilterTableViewCell.m; sourceTree = "<group>"; };
 		20E0340C1B847F9F002E4583 /* SearchResultViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchResultViewController.h; sourceTree = "<group>"; };
 		20E0340D1B847F9F002E4583 /* SearchResultViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchResultViewController.m; sourceTree = "<group>"; };
+		20E0BFF51B88B0CA00EDAED4 /* register-label-chosen-boundary@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "register-label-chosen-boundary@2x.png"; sourceTree = "<group>"; };
+		20E0BFF61B88B0CA00EDAED4 /* register-label-chosen-boundary@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "register-label-chosen-boundary@3x.png"; sourceTree = "<group>"; };
+		20E0BFF71B88B0CA00EDAED4 /* register-photo-upload-boundary@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "register-photo-upload-boundary@2x.png"; sourceTree = "<group>"; };
+		20E0BFF81B88B0CA00EDAED4 /* register-photo-upload-boundary@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "register-photo-upload-boundary@3x.png"; sourceTree = "<group>"; };
 		20E122111B705C2100F90BD3 /* XYTabBarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYTabBarViewController.h; sourceTree = "<group>"; };
 		20E122121B705C2100F90BD3 /* XYTabBarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYTabBarViewController.m; sourceTree = "<group>"; };
 		20E1221F1B705ED200F90BD3 /* FeedListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedListViewController.h; sourceTree = "<group>"; };
@@ -932,6 +944,12 @@
 		65024C1B1B833565007DE404 /* feedmore@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "feedmore@3x.png"; sourceTree = "<group>"; };
 		650C6BFE1B881A9800A89AC9 /* ProfileMyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileMyViewController.h; sourceTree = "<group>"; };
 		650C6BFF1B881A9800A89AC9 /* ProfileMyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileMyViewController.m; sourceTree = "<group>"; };
+		650C6C011B88529600A89AC9 /* ProfileChangePwdViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileChangePwdViewController.h; sourceTree = "<group>"; };
+		650C6C021B88529600A89AC9 /* ProfileChangePwdViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileChangePwdViewController.m; sourceTree = "<group>"; };
+		650C6C041B8860FF00A89AC9 /* YCommonEditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YCommonEditViewController.h; sourceTree = "<group>"; };
+		650C6C051B8860FF00A89AC9 /* YCommonEditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YCommonEditViewController.m; sourceTree = "<group>"; };
+		650C6C0C1B886D3C00A89AC9 /* mine-toast@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mine-toast@2x.png"; sourceTree = "<group>"; };
+		650C6C0D1B886D3C00A89AC9 /* mine-toast@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mine-toast@3x.png"; sourceTree = "<group>"; };
 		6518A2461B80429300AEB79D /* TagListTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TagListTableView.h; sourceTree = "<group>"; };
 		6518A2471B80429300AEB79D /* TagListTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TagListTableView.m; sourceTree = "<group>"; };
 		6518A2491B80583600AEB79D /* TagListTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TagListTableViewCell.h; sourceTree = "<group>"; };
@@ -1224,13 +1242,13 @@
 			isa = PBXGroup;
 			children = (
 				20DAF9A41B871D31005B7932 /* SchollList.txt */,
+				650C6C0B1B886D3200A89AC9 /* Profile */,
 				334670611B841F1E00A8628A /* message */,
 				3334AC4A1B83319500FDDCCB /* contacts */,
 				20E18D891B808E42005B75EE /* Common */,
 				20E18D9B1B808E42005B75EE /* Feed */,
 				20E18DAA1B808E42005B75EE /* FeedMenu */,
 				20E18DB11B808E42005B75EE /* Login */,
-				20E18DB31B808E42005B75EE /* Profile */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -1265,6 +1283,8 @@
 				656234761B837FDC00651C88 /* YFaceImageView.m */,
 				20E033F41B8427AF002E4583 /* YCommonShare.h */,
 				20E033F51B8427AF002E4583 /* YCommonShare.m */,
+				650C6C041B8860FF00A89AC9 /* YCommonEditViewController.h */,
+				650C6C051B8860FF00A89AC9 /* YCommonEditViewController.m */,
 			);
 			path = CommonView;
 			sourceTree = "<group>";
@@ -1290,6 +1310,8 @@
 				65969DE11B877896001DD348 /* ProfileFeedCell.m */,
 				650C6BFE1B881A9800A89AC9 /* ProfileMyViewController.h */,
 				650C6BFF1B881A9800A89AC9 /* ProfileMyViewController.m */,
+				650C6C011B88529600A89AC9 /* ProfileChangePwdViewController.h */,
+				650C6C021B88529600A89AC9 /* ProfileChangePwdViewController.m */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -1555,6 +1577,10 @@
 		20E18DB11B808E42005B75EE /* Login */ = {
 			isa = PBXGroup;
 			children = (
+				20E0BFF51B88B0CA00EDAED4 /* register-label-chosen-boundary@2x.png */,
+				20E0BFF61B88B0CA00EDAED4 /* register-label-chosen-boundary@3x.png */,
+				20E0BFF71B88B0CA00EDAED4 /* register-photo-upload-boundary@2x.png */,
+				20E0BFF81B88B0CA00EDAED4 /* register-photo-upload-boundary@3x.png */,
 				20DAE1561B882D0500607996 /* register-photo-upload@2x.png */,
 				20DAE1571B882D0500607996 /* register-photo-upload@3x.png */,
 				20DAE14E1B882CFF00607996 /* register-number@2x.png */,
@@ -1566,13 +1592,6 @@
 				20DAF99E1B8713F6005B7932 /* login_school@3x.png */,
 			);
 			path = Login;
-			sourceTree = "<group>";
-		};
-		20E18DB31B808E42005B75EE /* Profile */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Profile;
 			sourceTree = "<group>";
 		};
 		333120E51B806EDA00D3D032 /* ChatView */ = {
@@ -2277,6 +2296,15 @@
 			path = GroupInfoDetail;
 			sourceTree = "<group>";
 		};
+		650C6C0B1B886D3200A89AC9 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				650C6C0C1B886D3C00A89AC9 /* mine-toast@2x.png */,
+				650C6C0D1B886D3C00A89AC9 /* mine-toast@3x.png */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
 		653CB2E81B806BFD006ECBB2 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
@@ -2515,11 +2543,13 @@
 				333122911B806EDC00D3D032 /* faceDelete@2x.png in Resources */,
 				20E033E71B842727002E4583 /* UMSCommentDetailController.xib in Resources */,
 				20E033ED1B842727002E4583 /* UMSnsAccountViewController.xib in Resources */,
+				650C6C0E1B886D3C00A89AC9 /* mine-toast@2x.png in Resources */,
 				20DAE1521B882CFF00607996 /* register-number@2x.png in Resources */,
 				20E18DCB1B808E42005B75EE /* menu@3x.png in Resources */,
 				333122D01B806EDC00D3D032 /* chat_sender_audio_playing_full@2x.png in Resources */,
 				3335C3681B8178E8007DEFD4 /* chatFire_audioPlaying2@2x.png in Resources */,
 				3334AC261B82D7C400FDDCCB /* VoiceSearchFeedback004@2x.png in Resources */,
+				20E0BFF91B88B0CA00EDAED4 /* register-label-chosen-boundary@2x.png in Resources */,
 				20E9424F1B833D10009C2DC6 /* complete@3x.png in Resources */,
 				20E942541B833D10009C2DC6 /* complete-cancel@2x.png in Resources */,
 				3334ABEC1B82C58600FDDCCB /* chatBar_keyboard@2x.png in Resources */,
@@ -2528,6 +2558,7 @@
 				333122731B806EDB00D3D032 /* sr_refresh.png in Resources */,
 				20E18DCD1B808E42005B75EE /* more@3x.png in Resources */,
 				20E033EB1B842727002E4583 /* UMShareEditViewControlleriPad.xib in Resources */,
+				650C6C0F1B886D3C00A89AC9 /* mine-toast@3x.png in Resources */,
 				20E18DB81B808E42005B75EE /* common_search@2x.png in Resources */,
 				3334AC231B82D7C400FDDCCB /* VoiceSearchFeedback003.png in Resources */,
 				333122931B806EDC00D3D032 /* messageSendFail@2x.png in Resources */,
@@ -2544,6 +2575,7 @@
 				20E18DD11B808E42005B75EE /* tag-grey@3x.png in Resources */,
 				20E942361B833D10009C2DC6 /* sheet_delete@2x.png in Resources */,
 				3335C36A1B8178E8007DEFD4 /* chatFire_audioPlaying3@2x.png in Resources */,
+				20E0BFFB1B88B0CA00EDAED4 /* register-photo-upload-boundary@2x.png in Resources */,
 				3334AC0C1B82C89500FDDCCB /* chatBar_colorMore_cameraSelected@2x.png in Resources */,
 				20E034031B846398002E4583 /* feed-find-someone-search-grey@3x.png in Resources */,
 				2076A3121B81DA3E001FFBAC /* toolbar-contact-click@2x.png in Resources */,
@@ -2564,6 +2596,7 @@
 				2076A3101B81DA3E001FFBAC /* toolbar-chat@2x.png in Resources */,
 				3334AC1E1B82D7C400FDDCCB /* VoiceSearchFeedback000@2x.png in Resources */,
 				20E942251B833D10009C2DC6 /* toggle-on@3x.png in Resources */,
+				20E0BFFC1B88B0CA00EDAED4 /* register-photo-upload-boundary@3x.png in Resources */,
 				20DAE1581B882D0500607996 /* register-photo-upload@2x.png in Resources */,
 				333122C31B806EDC00D3D032 /* chat_receiver_audio_playing_full.png in Resources */,
 				334670791B84337E00A8628A /* friend-requests@3x.png in Resources */,
@@ -2580,6 +2613,7 @@
 				2076A3111B81DA3E001FFBAC /* toolbar-chat@3x.png in Resources */,
 				3334AC251B82D7C400FDDCCB /* VoiceSearchFeedback004.png in Resources */,
 				20E18DCF1B808E42005B75EE /* tag-green@3x.png in Resources */,
+				20E0BFFA1B88B0CA00EDAED4 /* register-label-chosen-boundary@3x.png in Resources */,
 				2076A30E1B81DA3E001FFBAC /* toolbar-chat-chosen@2x.png in Resources */,
 				20E18DC91B808E42005B75EE /* menu-remind@3x.png in Resources */,
 				3334AC211B82D7C400FDDCCB /* VoiceSearchFeedback002.png in Resources */,
@@ -2831,6 +2865,7 @@
 				333122351B806EDB00D3D032 /* EMChatBaseBubbleView.m in Sources */,
 				6592DCDE1B806A9B004CD118 /* MessageTableViewCell.m in Sources */,
 				20E1222D1B708CDC00F90BD3 /* TagListViewController.m in Sources */,
+				650C6C061B8860FF00A89AC9 /* YCommonEditViewController.m in Sources */,
 				333122681B806EDB00D3D032 /* PSTCollectionViewController.m in Sources */,
 				339549831B81BD6700F9ECB1 /* XYGroupInfoDetailViewController.m in Sources */,
 				333122311B806EDB00D3D032 /* FacialView.m in Sources */,
@@ -2902,6 +2937,7 @@
 				333122341B806EDB00D3D032 /* EMChatAudioBubbleView.m in Sources */,
 				333122581B806EDB00D3D032 /* EMSDWebImageDownloader.m in Sources */,
 				650C6C001B881A9800A89AC9 /* ProfileMyViewController.m in Sources */,
+				650C6C031B88529600A89AC9 /* ProfileChangePwdViewController.m in Sources */,
 				3331223F1B806EDB00D3D032 /* MessageReadManager.m in Sources */,
 				3331227F1B806EDC00D3D032 /* NSDate+Category.m in Sources */,
 				3331222E1B806EDB00D3D032 /* LocationViewController.m in Sources */,
