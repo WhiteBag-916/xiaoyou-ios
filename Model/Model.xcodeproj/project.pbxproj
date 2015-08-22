@@ -11,6 +11,7 @@
 		20859AA31B64CB7E00580ED3 /* LoginResp.m in Sources */ = {isa = PBXBuildFile; fileRef = 20859AA01B64CB7E00580ED3 /* LoginResp.m */; };
 		20859AB31B64E2F600580ED3 /* YModel+ActionMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 20859AB21B64E2F600580ED3 /* YModel+ActionMessage.m */; };
 		20DBFD271B4FA0E5009134D0 /* libModel.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 20DBFD1B1B4FA0E5009134D0 /* libModel.a */; };
+		20E0BFFF1B88B0CA00EDAED4 /* UploadImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 20E0BFFE1B88B0CA00EDAED4 /* UploadImage.m */; };
 		331E17D91B7AFB3A006789B0 /* ContactsListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 331E17D41B7AFB3A006789B0 /* ContactsListModel.m */; };
 		331E17DA1B7AFB3A006789B0 /* FriendList.m in Sources */ = {isa = PBXBuildFile; fileRef = 331E17D61B7AFB3A006789B0 /* FriendList.m */; };
 		331E17DB1B7AFB3A006789B0 /* GroupList.m in Sources */ = {isa = PBXBuildFile; fileRef = 331E17D81B7AFB3A006789B0 /* GroupList.m */; };
@@ -63,6 +64,8 @@
 		20DBFD1B1B4FA0E5009134D0 /* libModel.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libModel.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		20DBFD261B4FA0E5009134D0 /* ModelTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ModelTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		20DBFD2C1B4FA0E5009134D0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		20E0BFFD1B88B0CA00EDAED4 /* UploadImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UploadImage.h; sourceTree = "<group>"; };
+		20E0BFFE1B88B0CA00EDAED4 /* UploadImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UploadImage.m; sourceTree = "<group>"; };
 		331E17D31B7AFB3A006789B0 /* ContactsListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactsListModel.h; sourceTree = "<group>"; };
 		331E17D41B7AFB3A006789B0 /* ContactsListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactsListModel.m; sourceTree = "<group>"; };
 		331E17D51B7AFB3A006789B0 /* FriendList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendList.h; sourceTree = "<group>"; };
@@ -132,6 +135,8 @@
 		20859A9E1B64CB7600580ED3 /* Provision */ = {
 			isa = PBXGroup;
 			children = (
+				20E0BFFD1B88B0CA00EDAED4 /* UploadImage.h */,
+				20E0BFFE1B88B0CA00EDAED4 /* UploadImage.m */,
 				333E95EC1B70B8F80001059D /* ReceiveAuthCodeModel.h */,
 				333E95ED1B70B8F80001059D /* ReceiveAuthCodeModel.m */,
 				333E95CE1B70B6DF0001059D /* CheckAccountModel.h */,
@@ -349,6 +354,7 @@
 				333E95EA1B70B7AB0001059D /* SchoolDetailModel.m in Sources */,
 				333E95D61B70B7250001059D /* LinkManModel.m in Sources */,
 				331E17DB1B7AFB3A006789B0 /* GroupList.m in Sources */,
+				20E0BFFF1B88B0CA00EDAED4 /* UploadImage.m in Sources */,
 				333E95E21B70B7820001059D /* UpdateAvatarModel.m in Sources */,
 				331E17E41B7AFBC8006789B0 /* Tags.m in Sources */,
 				331E17E31B7AFBC8006789B0 /* Relationship.m in Sources */,
