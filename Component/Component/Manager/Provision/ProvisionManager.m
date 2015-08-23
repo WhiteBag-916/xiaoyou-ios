@@ -26,6 +26,7 @@
 #import "MyPraisePersonsAction.h"
 #import "EaseMob.h"
 #import "MyCoolPersonsAction.h"
+#import "UpdateSelfIntroAction.h"
 
 #define kProvisionManagerSyncQueue @"kProvisionManagerSyncQueue"
 
@@ -270,6 +271,17 @@ DEF_SINGLETON(ProvisionManager);
     MyCoolPersonsAction* action = [[MyCoolPersonsAction alloc] init];
     action.limitStart = limitStart;
     action.limitEnd = limitEnd;
+    
+    [YAction startAction:action completionBlock:^(YActionMessage* message) {
+        //主线程处理界面
+        block(message);
+    }];
+}
+
+//修改签名
+- (void)UpdateSelfIntro:(NSString *)selfIntro block:(ActionCompleteBlock)block {
+    UpdateSelfIntroAction* action = [[UpdateSelfIntroAction alloc] init];
+    action.selfIntro = selfIntro;
     
     [YAction startAction:action completionBlock:^(YActionMessage* message) {
         //主线程处理界面

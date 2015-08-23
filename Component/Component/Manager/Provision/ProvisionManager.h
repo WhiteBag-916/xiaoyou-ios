@@ -44,5 +44,7 @@ AS_SINGLETON(ProvisionManager);
 - (void)myPraisePersons:(NSInteger)limitStart limitEnd:(NSInteger)limitEnd block:(ActionCompleteBlock)block;
 //认为我很酷的人
 - (void)myCoolPersons:(NSInteger)limitStart limitEnd:(NSInteger)limitEnd block:(ActionCompleteBlock)block;
+//修改签名
+- (void)UpdateSelfIntro:(NSString *)selfIntro block:(ActionCompleteBlock)block;
 
 @end

@@ -26,6 +26,7 @@
 		20E0BFF31B88B0CA00EDAED4 /* UploadTagCodes.m in Sources */ = {isa = PBXBuildFile; fileRef = 20E0BFF21B88B0CA00EDAED4 /* UploadTagCodes.m */; };
 		20E0C00C1B88B0CA00EDAED4 /* ProfileAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 20E0C00B1B88B0CA00EDAED4 /* ProfileAction.m */; };
 		20E122171B705D3C00F90BD3 /* FeedManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 20E122161B705D3C00F90BD3 /* FeedManager.m */; };
+		20E1C6691B89E9E6008BA9D6 /* UpdateSelfIntroAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 20E1C6681B89E9E6008BA9D6 /* UpdateSelfIntroAction.m */; };
 		20E341801B720A54008CADC3 /* ProfileDao.m in Sources */ = {isa = PBXBuildFile; fileRef = 20E3417F1B720A54008CADC3 /* ProfileDao.m */; };
 		3320A6561B7498B200E018E1 /* ContactsListAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 3320A6551B7498B200E018E1 /* ContactsListAction.m */; };
 /* End PBXBuildFile section */
@@ -98,6 +99,8 @@
 		20E122151B705D3C00F90BD3 /* FeedManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedManager.h; sourceTree = "<group>"; };
 		20E122161B705D3C00F90BD3 /* FeedManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedManager.m; sourceTree = "<group>"; };
 		20E18D5E1B807F4F005B75EE /* YNotificationDefine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YNotificationDefine.h; sourceTree = "<group>"; };
+		20E1C6671B89E9E6008BA9D6 /* UpdateSelfIntroAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UpdateSelfIntroAction.h; sourceTree = "<group>"; };
+		20E1C6681B89E9E6008BA9D6 /* UpdateSelfIntroAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UpdateSelfIntroAction.m; sourceTree = "<group>"; };
 		20E3417E1B720A54008CADC3 /* ProfileDao.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileDao.h; sourceTree = "<group>"; };
 		20E3417F1B720A54008CADC3 /* ProfileDao.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileDao.m; sourceTree = "<group>"; };
 		20E341811B720A80008CADC3 /* ProfileSQL.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProfileSQL.h; sourceTree = "<group>"; };
@@ -156,6 +159,8 @@
 				20DA1A5C1B89752000DEF95C /* MyPraisePersonsAction.m */,
 				20DA1A7C1B89C44D00DEF95C /* MyCoolPersonsAction.h */,
 				20DA1A7D1B89C44D00DEF95C /* MyCoolPersonsAction.m */,
+				20E1C6671B89E9E6008BA9D6 /* UpdateSelfIntroAction.h */,
+				20E1C6681B89E9E6008BA9D6 /* UpdateSelfIntroAction.m */,
 			);
 			path = Provision;
 			sourceTree = "<group>";
@@ -454,6 +459,7 @@
 				20DA1A7E1B89C44D00DEF95C /* MyCoolPersonsAction.m in Sources */,
 				20E0BFEA1B88B0CA00EDAED4 /* TagListAction.m in Sources */,
 				20DA1A711B89B7DD00DEF95C /* MyFeedAction.m in Sources */,
+				20E1C6691B89E9E6008BA9D6 /* UpdateSelfIntroAction.m in Sources */,
 				20E122171B705D3C00F90BD3 /* FeedManager.m in Sources */,
 				20E0BFF31B88B0CA00EDAED4 /* UploadTagCodes.m in Sources */,
 				20E0C00C1B88B0CA00EDAED4 /* ProfileAction.m in Sources */,
