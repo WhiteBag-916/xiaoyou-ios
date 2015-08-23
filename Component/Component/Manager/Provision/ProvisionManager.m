@@ -84,6 +84,7 @@ DEF_SINGLETON(ProvisionManager);
     [YDirectory removeFolders:cachePath];
     cachePath = [[YDirectory fileCache] stringByAppendingString:NSStringFromClass([ProfileInfo class])];
     [YDirectory removeFolders:cachePath];
+    
     //发送通知,告知界面刷新
     [self postNotificationOnMainThreadName:kNotification_Profile_Logout
                                     object:nil
@@ -92,8 +93,7 @@ DEF_SINGLETON(ProvisionManager);
 
 - (void)initLoginData {
     NSString *cachePath = [[YDirectory fileCache] stringByAppendingString:NSStringFromClass([LoginResp class])];
-    _loginResp = [LoginResp instanceWithFile:cachePath];
-    [self updateLoginInfo];
+    self.loginResp = [LoginResp instanceWithFile:cachePath];
 }
 
 //更新个人常用信息
@@ -155,6 +155,12 @@ DEF_SINGLETON(ProvisionManager);
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:kShareData_LoginPassword];
 }
 
+- (void)setLoginResp:(LoginResp *)loginResp {
+    _loginResp = loginResp;
+    
+    [self updateLoginInfo];
+}
+
 - (void)goLogin:(NSString *)account password:(NSString *)password block:(ActionCompleteBlock)block
 {
     LoginAction* action = [[LoginAction alloc] init];
@@ -169,12 +175,11 @@ DEF_SINGLETON(ProvisionManager);
             if (message.isSuccess)
             {
                 //存文件
-                _loginResp = message.object;
+                self.loginResp = message.object;
                 [self saveLoginInfo];
                 //存token
                 [[NSUserDefaults standardUserDefaults] setObject:_loginResp.token forKey:kShareData_Token];
                 [self savePassword:action.password];
-                [self updateLoginInfo];
                 
                 //抛登录成功
                 [[YManagerCenter defaultCenter] notifyAppLogined:nil];
