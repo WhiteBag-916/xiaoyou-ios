@@ -145,9 +145,9 @@
     _isCheckButton = !_isCheckButton;
     
     if (_isCheckButton) {
-        [_protocolCheckButton setImage:[UIImage imageNamed:@"toggle-on"] forState:UIControlStateNormal];
+        [_protocolCheckButton setImage:[UIImage imageNamed:@"register-frame-agree"] forState:UIControlStateNormal];
     } else {
-        [_protocolCheckButton setImage:[UIImage imageNamed:@"toggle-off"] forState:UIControlStateNormal];
+        [_protocolCheckButton setImage:[UIImage imageNamed:@"register-frame"] forState:UIControlStateNormal];
     }
     
     [self resetRightButton];

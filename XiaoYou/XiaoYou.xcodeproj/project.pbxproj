@@ -29,6 +29,10 @@
 		207F80871B7098E3005E8F6A /* AppDelegate+RootVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 207F80861B7098E3005E8F6A /* AppDelegate+RootVC.m */; };
 		207F808A1B7099C2005E8F6A /* AppDelegate+Manager.m in Sources */ = {isa = PBXBuildFile; fileRef = 207F80891B7099C2005E8F6A /* AppDelegate+Manager.m */; };
 		207F808D1B709A1E005E8F6A /* AppDelegate+Notification.m in Sources */ = {isa = PBXBuildFile; fileRef = 207F808C1B709A1E005E8F6A /* AppDelegate+Notification.m */; };
+		20DA1A761B89BEF100DEF95C /* register-frame-agree@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 20DA1A721B89BEF100DEF95C /* register-frame-agree@2x.png */; };
+		20DA1A771B89BEF100DEF95C /* register-frame-agree@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 20DA1A731B89BEF100DEF95C /* register-frame-agree@3x.png */; };
+		20DA1A781B89BEF100DEF95C /* register-frame@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 20DA1A741B89BEF100DEF95C /* register-frame@2x.png */; };
+		20DA1A791B89BEF100DEF95C /* register-frame@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 20DA1A751B89BEF100DEF95C /* register-frame@3x.png */; };
 		20DA35F71B81E89F002E5A96 /* SearchPersonViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20DA35F61B81E89F002E5A96 /* SearchPersonViewController.m */; };
 		20DA63761B7482DE007D22AC /* FeedListTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 20DA63751B7482DE007D22AC /* FeedListTableView.m */; };
 		20DAE14A1B88195C00607996 /* login_tip.png in Resources */ = {isa = PBXBuildFile; fileRef = 20DAE1491B88195C00607996 /* login_tip.png */; };
@@ -463,6 +467,10 @@
 		207F80891B7099C2005E8F6A /* AppDelegate+Manager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AppDelegate+Manager.m"; sourceTree = "<group>"; };
 		207F808B1B709A1E005E8F6A /* AppDelegate+Notification.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AppDelegate+Notification.h"; sourceTree = "<group>"; };
 		207F808C1B709A1E005E8F6A /* AppDelegate+Notification.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AppDelegate+Notification.m"; sourceTree = "<group>"; };
+		20DA1A721B89BEF100DEF95C /* register-frame-agree@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "register-frame-agree@2x.png"; sourceTree = "<group>"; };
+		20DA1A731B89BEF100DEF95C /* register-frame-agree@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "register-frame-agree@3x.png"; sourceTree = "<group>"; };
+		20DA1A741B89BEF100DEF95C /* register-frame@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "register-frame@2x.png"; sourceTree = "<group>"; };
+		20DA1A751B89BEF100DEF95C /* register-frame@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "register-frame@3x.png"; sourceTree = "<group>"; };
 		20DA35F51B81E89F002E5A96 /* SearchPersonViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchPersonViewController.h; sourceTree = "<group>"; };
 		20DA35F61B81E89F002E5A96 /* SearchPersonViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchPersonViewController.m; sourceTree = "<group>"; };
 		20DA63741B7482DE007D22AC /* FeedListTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedListTableView.h; sourceTree = "<group>"; };
@@ -1629,6 +1637,10 @@
 		20E18DB11B808E42005B75EE /* Login */ = {
 			isa = PBXGroup;
 			children = (
+				20DA1A721B89BEF100DEF95C /* register-frame-agree@2x.png */,
+				20DA1A731B89BEF100DEF95C /* register-frame-agree@3x.png */,
+				20DA1A741B89BEF100DEF95C /* register-frame@2x.png */,
+				20DA1A751B89BEF100DEF95C /* register-frame@3x.png */,
 				20E0BFF51B88B0CA00EDAED4 /* register-label-chosen-boundary@2x.png */,
 				20E0BFF61B88B0CA00EDAED4 /* register-label-chosen-boundary@3x.png */,
 				20E0BFF71B88B0CA00EDAED4 /* register-photo-upload-boundary@2x.png */,
@@ -2671,6 +2683,7 @@
 				650C6C231B886F6500A89AC9 /* mine-add-friend@3x.png in Resources */,
 				3334AC1E1B82D7C400FDDCCB /* VoiceSearchFeedback000@2x.png in Resources */,
 				20E942251B833D10009C2DC6 /* toggle-on@3x.png in Resources */,
+				20DA1A771B89BEF100DEF95C /* register-frame-agree@3x.png in Resources */,
 				20E0BFFC1B88B0CA00EDAED4 /* register-photo-upload-boundary@3x.png in Resources */,
 				20DAE1581B882D0500607996 /* register-photo-upload@2x.png in Resources */,
 				333122C31B806EDC00D3D032 /* chat_receiver_audio_playing_full.png in Resources */,
@@ -2701,6 +2714,7 @@
 				3334ABE51B82C50200FDDCCB /* chatBar_faceSelected.png in Resources */,
 				20E033E81B842727002E4583 /* UMSCommentInputController.xib in Resources */,
 				2076A3161B81DA3E001FFBAC /* toolbar-mine-click@2x.png in Resources */,
+				20DA1A791B89BEF100DEF95C /* register-frame@3x.png in Resources */,
 				3348CB681B87236200F97FAF /* send_normal@2x.png in Resources */,
 				334670691B84228000A8628A /* contacts_bottom@2x.png in Resources */,
 				20DAF9DE1B873883005B7932 /* unicode_to_hanyu_pinyin.txt in Resources */,
@@ -2719,6 +2733,7 @@
 				650C6C2F1B88777400A89AC9 /* mine-complete-grey@3x.png in Resources */,
 				20E18DB51B808E42005B75EE /* common_back@3x.png in Resources */,
 				3334AC3E1B83075800FDDCCB /* default_head@2x.png in Resources */,
+				20DA1A761B89BEF100DEF95C /* register-frame-agree@2x.png in Resources */,
 				333122C41B806EDC00D3D032 /* chat_receiver_audio_playing_full@2x.png in Resources */,
 				20E9421C1B833D10009C2DC6 /* wechat_friends@2x.png in Resources */,
 				3335C3691B8178E8007DEFD4 /* chatFire_audioPlaying3.png in Resources */,
@@ -2766,6 +2781,7 @@
 				20E033EA1B842727002E4583 /* UMShareEditViewController.xib in Resources */,
 				33380D9B1B85D57C008B51EB /* chat_remindnot@3x.png in Resources */,
 				650C6C2A1B88776800A89AC9 /* mine-cancel@2x.png in Resources */,
+				20DA1A781B89BEF100DEF95C /* register-frame@2x.png in Resources */,
 				3334AC281B82D7C400FDDCCB /* VoiceSearchFeedback005@2x.png in Resources */,
 				3334ABE41B82C50200FDDCCB /* chatBar_face@2x.png in Resources */,
 				334670681B84228000A8628A /* contacts_bottom@3x.png in Resources */,
@@ -3153,7 +3169,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Beijing Jiankun Xiaoyou Information Technology Co., Ltd. (AVJ7F5B5B9)";
 				GCC_PREFIX_HEADER = "$(SRCROOT)/XiaoYou/PrefixHeader.pch";
 				INFOPLIST_FILE = XiaoYou/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
@@ -3167,7 +3183,7 @@
 					"$(PROJECT_DIR)/XiaoYou/Utils/UMengSDK/UMSocial_Sdk_Extra_Frameworks/Wechat",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "41ab4a28-314a-41a5-9e78-1f5ab1d16dcf";
 				TARGETED_DEVICE_FAMILY = 1;
 				USER_HEADER_SEARCH_PATHS = "../**";
 			};
@@ -3179,7 +3195,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Beijing Jiankun Xiaoyou Information Technology Co., Ltd. (AVJ7F5B5B9)";
 				GCC_PREFIX_HEADER = "$(SRCROOT)/XiaoYou/PrefixHeader.pch";
 				INFOPLIST_FILE = XiaoYou/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
@@ -3193,7 +3209,7 @@
 					"$(PROJECT_DIR)/XiaoYou/Utils/UMengSDK/UMSocial_Sdk_Extra_Frameworks/Wechat",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "41ab4a28-314a-41a5-9e78-1f5ab1d16dcf";
 				TARGETED_DEVICE_FAMILY = 1;
 				USER_HEADER_SEARCH_PATHS = "../**";
 			};
