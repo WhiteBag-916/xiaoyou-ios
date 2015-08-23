@@ -51,11 +51,11 @@
 #define api_login_UpdateSelfIntro @"/mobile/user/v2/updateSelfIntro"
 //退出登录
 #define api_user_logOut  @"/mobile/user/logout"
-//退出登录
+//绑定手机号
 #define api_login_ReceiveMobileAuthCode  @"/mobile/user/receiveMobileAuthCoder"
-//退出登录
+//修改密码
 #define api_login_ModifyPassword  @"/mobile/user/modifyPassword"
-//退出登录
+//获取验证码
 #define api_login_ReceiveAuthCode  @"/mobile/user/receiveAuthCode"
 
 /**********************************************************
