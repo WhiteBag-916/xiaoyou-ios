@@ -49,6 +49,8 @@
 #define api_login_myCommentPersons @"/mobile/user/v2/myCommentPersons"
 //点赞过我的人
 #define api_login_myPraisePersons @"/mobile/user/v2/myPraisePersons"
+//认为我很酷的人
+#define api_login_myCoolPersons @"/mobile/user/v2/myCoolPersons"
 
 /**********************************************************
  Url Define: FeedManager

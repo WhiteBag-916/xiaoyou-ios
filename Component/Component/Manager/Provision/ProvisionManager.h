@@ -42,5 +42,7 @@ AS_SINGLETON(ProvisionManager);
 - (void)myCommentPersons:(ActionCompleteBlock)block;
 //点赞过我的人
 - (void)myPraisePersons:(ActionCompleteBlock)block;
+//认为我很酷的人
+- (void)myCoolPersons:(ActionCompleteBlock)block;
 
 @end

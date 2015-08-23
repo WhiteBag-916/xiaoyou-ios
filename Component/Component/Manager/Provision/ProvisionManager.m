@@ -25,6 +25,7 @@
 #import "MyCommentPersonsAction.h"
 #import "MyPraisePersonsAction.h"
 #import "EaseMob.h"
+#import "MyCoolPersonsAction.h"
 
 #define kProvisionManagerSyncQueue @"kProvisionManagerSyncQueue"
 
@@ -255,6 +256,16 @@ DEF_SINGLETON(ProvisionManager);
 //点赞过我的人
 - (void)myPraisePersons:(ActionCompleteBlock)block {
     MyPraisePersonsAction* action = [[MyPraisePersonsAction alloc] init];
+    
+    [YAction startAction:action completionBlock:^(YActionMessage* message) {
+        //主线程处理界面
+        block(message);
+    }];
+}
+
+//认为我很酷的人
+- (void)myCoolPersons:(ActionCompleteBlock)block {
+    MyCoolPersonsAction* action = [[MyCoolPersonsAction alloc] init];
     
     [YAction startAction:action completionBlock:^(YActionMessage* message) {
         //主线程处理界面
