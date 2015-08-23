@@ -78,6 +78,7 @@ DEF_SINGLETON(ProvisionManager);
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:kShareData_Token];
     _loginResp = nil;
     _profileInfo = nil;
+    [self delPassword];
     [YDirectory removeFolders];
     //发送通知,告知界面刷新
     [self postNotificationOnMainThreadName:kNotification_Profile_Logout
@@ -139,6 +140,17 @@ DEF_SINGLETON(ProvisionManager);
     [_profileInfo writeToFile:cachePath];
 }
 
+//存密码
+- (void)savePassword:(NSString *)password {
+    [YShareData defaultData][kShareData_LoginPassword] = password;
+    [[NSUserDefaults standardUserDefaults] setObject:password forKey:kShareData_LoginPassword];
+}
+
+//清理密码
+- (void)delPassword {
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:kShareData_LoginPassword];
+}
+
 - (void)goLogin:(NSString *)account password:(NSString *)password block:(ActionCompleteBlock)block
 {
     LoginAction* action = [[LoginAction alloc] init];
@@ -157,7 +169,7 @@ DEF_SINGLETON(ProvisionManager);
                 [self saveLoginInfo];
                 //存token
                 [[NSUserDefaults standardUserDefaults] setObject:_loginResp.token forKey:kShareData_Token];
-                
+                [self savePassword:action.password];
                 [self updateLoginInfo];
                 
                 //抛登录成功
@@ -324,6 +336,9 @@ DEF_SINGLETON(ProvisionManager);
     action.oldPassWord = oldPassWord;
     
     [YAction startAction:action completionBlock:^(YActionMessage* message) {
+        if (message.isSuccess) {
+            [self savePassword:action.password];
+        }
         //主线程处理界面
         block(message);
     }];
