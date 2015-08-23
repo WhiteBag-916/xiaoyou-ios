@@ -8,16 +8,16 @@
 
 #import "ReceiveAuthCodeAction.h"
 #import "YUtils+Component.h"
-#import "ResultCommon.h"
+#import "ReceiveAuthCodeModel.h"
 
 @implementation ReceiveAuthCodeAction
 
 - (void)execute
 {
     NSDictionary *parameter = [YUtils getParameter:@{@"flag":@"1", @"mobilePhone":_mobilePhone} needUserToken:YES];
-    NSString *url = [YUtils getUrl:api_login_UpdateSelfIntro];
+    NSString *url = [YUtils getUrl:api_login_ReceiveAuthCode];
     [self POST:url parameters:parameter completion:^(YHttpRequest *request) {
-        YActionMessage *message = [ResultCommon actionMessageWithHttpRequest:request];
+        YActionMessage *message = [ReceiveAuthCodeModel actionMessageWithHttpRequest:request];
         self.completionBlock(message);
     }];
 }

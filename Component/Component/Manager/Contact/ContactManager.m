@@ -92,7 +92,9 @@ DEF_SINGLETON(ContactManager);
 
 - (void)appDidLogout
 {
-    
+    //删除文件
+    NSString *cachePath = [[YDirectory fileCache] stringByAppendingString:NSStringFromClass([LinkManModel class])];
+    [YDirectory removeFolders:cachePath];
 }
 
 @end

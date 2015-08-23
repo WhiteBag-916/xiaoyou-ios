@@ -31,12 +31,13 @@
 #import "ModifyPasswordAction.h"
 #import "ReceiveAuthCodeAction.h"
 #import "LogoutAction.h"
+#import "YDirectory+Data.h"
 
 #define kProvisionManagerSyncQueue @"kProvisionManagerSyncQueue"
 
 @interface ProvisionManager ()
 
-@property (nonatomic, strong) ProfileInfo *profileInfo; //个人信息
+@property (nonatomic, strong) ProfileInfo *profileInfo; //个人信息,尽量用profile
 @property (nonatomic, strong) LoginResp *loginResp;     //登录信息
 
 @end
@@ -73,13 +74,26 @@ DEF_SINGLETON(ProvisionManager);
 
 - (void)appDidLogout
 {
-
+    //清理数据
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:kShareData_Token];
+    _loginResp = nil;
+    _profileInfo = nil;
+    [self delPassword];
+    //删除文件
+    NSString *cachePath = [[YDirectory fileCache] stringByAppendingString:NSStringFromClass([LoginResp class])];
+    [YDirectory removeFolders:cachePath];
+    cachePath = [[YDirectory fileCache] stringByAppendingString:NSStringFromClass([ProfileInfo class])];
+    [YDirectory removeFolders:cachePath];
+    
+    //发送通知,告知界面刷新
+    [self postNotificationOnMainThreadName:kNotification_Profile_Logout
+                                    object:nil
+                                  userInfo:nil];
 }
 
 - (void)initLoginData {
     NSString *cachePath = [[YDirectory fileCache] stringByAppendingString:NSStringFromClass([LoginResp class])];
-    _loginResp = [LoginResp instanceWithFile:cachePath];
-    [self updateLoginInfo];
+    self.loginResp = [LoginResp instanceWithFile:cachePath];
 }
 
 //更新个人常用信息
@@ -130,6 +144,23 @@ DEF_SINGLETON(ProvisionManager);
     [_profileInfo writeToFile:cachePath];
 }
 
+//存密码
+- (void)savePassword:(NSString *)password {
+    [YShareData defaultData][kShareData_LoginPassword] = password;
+    [[NSUserDefaults standardUserDefaults] setObject:password forKey:kShareData_LoginPassword];
+}
+
+//清理密码
+- (void)delPassword {
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:kShareData_LoginPassword];
+}
+
+- (void)setLoginResp:(LoginResp *)loginResp {
+    _loginResp = loginResp;
+    
+    [self updateLoginInfo];
+}
+
 - (void)goLogin:(NSString *)account password:(NSString *)password block:(ActionCompleteBlock)block
 {
     LoginAction* action = [[LoginAction alloc] init];
@@ -144,12 +175,11 @@ DEF_SINGLETON(ProvisionManager);
             if (message.isSuccess)
             {
                 //存文件
-                _loginResp = message.object;
+                self.loginResp = message.object;
                 [self saveLoginInfo];
                 //存token
                 [[NSUserDefaults standardUserDefaults] setObject:_loginResp.token forKey:kShareData_Token];
-                
-                [self updateLoginInfo];
+                [self savePassword:action.password];
                 
                 //抛登录成功
                 [[YManagerCenter defaultCenter] notifyAppLogined:nil];
@@ -315,6 +345,9 @@ DEF_SINGLETON(ProvisionManager);
     action.oldPassWord = oldPassWord;
     
     [YAction startAction:action completionBlock:^(YActionMessage* message) {
+        if (message.isSuccess) {
+            [self savePassword:action.password];
+        }
         //主线程处理界面
         block(message);
     }];
@@ -349,13 +382,13 @@ DEF_SINGLETON(ProvisionManager);
 }
 
 //登出
-- (void)logout:(ActionCompleteBlock)block {
-    LoginAction* action = [[LoginAction alloc] init];
-    
-    [YAction startAction:action completionBlock:^(YActionMessage* message) {        
-        //主线程处理界面
-        block(message);
+- (void)logout {
+    LogoutAction* action = [[LogoutAction alloc] init];
+    [YAction startAction:action completionBlock:^(YActionMessage* message) {
     }];
+    
+    //抛登出
+    [[YManagerCenter defaultCenter] notifyAppLogouted];
 }
 
 @end

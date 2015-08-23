@@ -42,8 +42,10 @@
 #if DEBUG    
     if (_accountTextField.text.length <= 0) {
         _accountTextField.text = @"1234";
+        _passwordTextField.text = @"12341234";
+    } else {
+        _passwordTextField.text = [NSString stringWithFormat:@"%@%@", _accountTextField.text, _accountTextField.text];
     }
-    _passwordTextField.text = @"12341234";
 #endif
     
     [self resetRightButton];
@@ -84,7 +86,7 @@
     [_protocolCheckButton setTitle:@"同意用户条款" forState:UIControlStateNormal];
     _protocolCheckButton.titleLabel.font = CONTENT_FONT(12);
     [_protocolCheckButton setTitleColor:KCOLORGREEN_009688 forState:UIControlStateNormal];
-    [_protocolCheckButton setImage:[UIImage imageNamed:@"toggle-on"] forState:UIControlStateNormal];
+    [_protocolCheckButton setImage:[UIImage imageNamed:@"register-frame-agree"] forState:UIControlStateNormal];
     [_protocolCheckButton setImageEdgeInsets:UIEdgeInsetsMake(0, 0, 0, 0)];
     [_protocolCheckButton setTitleEdgeInsets:UIEdgeInsetsMake(0, 20, 0, 0)];
     [_protocolCheckButton addTarget:self action:@selector(checkButton) forControlEvents:UIControlEventTouchUpInside];

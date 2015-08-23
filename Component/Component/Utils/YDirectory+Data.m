@@ -52,6 +52,16 @@
     }
 }
 
+//删除文件
++ (void)removeFolders:(NSString *)path {
+    //所有进入程序需要的文件夹，都在这里创建
+    if ([self isDirectory:path])
+    {
+        [[NSFileManager defaultManager] removeItemAtPath:path error:nil];
+        
+    }
+}
+
 + (instancetype)dataByJson:(NSString *)filePath type:(NSString *)fileType
 {
     NSString *path = [[NSBundle mainBundle] pathForResource:filePath ofType:fileType];

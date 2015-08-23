@@ -31,10 +31,6 @@
 #define api_user_login  @"/mobile/user/v2/login"
 //学校列表
 #define api_login_schoolList  @"/mobile/school/schoolList"
-//获取验证码
-#define api_login_receiveAuthCode  @"/mobile/user/receiveAuthCode"
-//验证
-#define api_login_phoneVerify @"/mobile/user/verify"
 //忘记密码
 #define api_login_forgetPwd @"/mobile/user/v2/forgetPwd"
 //标签
@@ -55,6 +51,12 @@
 #define api_login_UpdateSelfIntro @"/mobile/user/v2/updateSelfIntro"
 //退出登录
 #define api_user_logOut  @"/mobile/user/logout"
+//绑定手机号
+#define api_login_ReceiveMobileAuthCode  @"/mobile/user/v2/receiveMobileAuthCode"
+//修改密码
+#define api_login_ModifyPassword  @"/mobile/user/v2/modifyPassword"
+//获取验证码
+#define api_login_ReceiveAuthCode  @"/mobile/user/v2/receiveAuthCode"
 
 /**********************************************************
  Url Define: FeedManager

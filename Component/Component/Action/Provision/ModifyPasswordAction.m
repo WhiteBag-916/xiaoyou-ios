@@ -15,7 +15,7 @@
 - (void)execute
 {
     NSDictionary *parameter = [YUtils getParameter:@{@"password":_password, @"oldPassWord":_oldPassWord} needUserToken:YES];
-    NSString *url = [YUtils getUrl:api_login_UpdateSelfIntro];
+    NSString *url = [YUtils getUrl:api_login_ModifyPassword];
     [self POST:url parameters:parameter completion:^(YHttpRequest *request) {
         YActionMessage *message = [ResultCommon actionMessageWithHttpRequest:request];
         self.completionBlock(message);

@@ -65,6 +65,17 @@
 /**
  *  @author xiongchen
  *
+ *  删除文件
+ *
+ *  @param
+ *
+ *  @return
+ */
++ (void)removeFolders:(NSString *)path;
+
+/**
+ *  @author xiongchen
+ *
  *  从json文件取数据
  *
  *  @param filePath 文件路径

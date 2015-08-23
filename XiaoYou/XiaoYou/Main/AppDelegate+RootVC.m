@@ -47,6 +47,8 @@
     }
 
     [self.window makeKeyAndVisible];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(initChooseSchoolNC) name:kNotification_Profile_Logout object:nil];
 }
 
 - (void)tokenFail:(NSNotification *)note {

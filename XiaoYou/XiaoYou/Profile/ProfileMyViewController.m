@@ -237,6 +237,7 @@
     }];
     line.backgroundColor = KCOLORGREEN_455A64;
     
+    
     switch (type) {
         case 0:
             [label addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(changePhone)]];
@@ -245,7 +246,7 @@
             [label addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(changePwd)]];
             break;
         case 2:
-            [label addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(changePwd)]];
+            [label addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(logOut)]];
             break;
         default:
             break;
@@ -383,14 +384,18 @@
 }
 
 - (void)changePhone {
-    [self.navigationController pushViewController:[[ProfilePhoneChangeViewController alloc] init] animated:true];
+    [self.navigationController pushViewController:[[ProfilePhoneChangeViewController alloc] initWithType:true] animated:true];
 }
 - (void)changePwd {
-    
-    [self.navigationController pushViewController:[[ProfileChangePwdViewController alloc] init] animated:true];
+    UILabel *label = _bottomView.subviews[0];
+    if (label.enabled) {
+        [self.navigationController pushViewController:[[ProfileChangePwdViewController alloc] init] animated:true];
+    } else {
+        [self.navigationController pushViewController:[[ProfilePhoneChangeViewController alloc] initWithType:false] animated:true];
+    }
 }
 - (void)logOut {
-    
+    [[ProvisionManager sharedInstance] logout];
 }
 
 @end

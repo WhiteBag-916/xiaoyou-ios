@@ -8,6 +8,7 @@
 
 #import "YCommonEditViewController.h"
 #import "YTextView.h"
+#import "ProvisionManager.h"
 
 @interface YCommonEditViewController()<UITextViewDelegate>
 
@@ -54,6 +55,9 @@
         make.centerX.equalTo(self.view);
         make.bottom.equalTo(self.view);
     }];
+    if ([_preText isEqualToString:@"你是一个没有态度的人"]) {
+        _preText = nil;
+    }
     _textView.text = _preText;
     if (_type == YCommonEditAttitude) {
         _textView.placeholder = @"你是一个没有态度的人";
@@ -78,7 +82,22 @@
 - (void)viewWillDisappear:(BOOL)animated {
     [self showOrignMode];
 }
+- (void)onNavigationRightButtonClicked {
+    [self.view endEditing:true];
+    if (_type == YCommonEditAttitude) {
+        MBProgressHUD *hud = [YUtils showHUDAddedTo:self.view title:@"正在保存"];
+        [[ProvisionManager sharedInstance] UpdateSelfIntro:_textView.text block:^(YActionMessage *message) {
+            [hud removeFromSuperview];
+            if (message.isSuccess) {
+                [self.navigationController dismissViewControllerAnimated:YES completion:nil];
+            } else {
+                [YUtils showTitle:message.desc];
+            }
+        }];
+    }
+}
 - (void)onNavigationLeftButtonClicked {
+    [self.view endEditing:true];
     [self.navigationController dismissViewControllerAnimated:YES completion:nil];
 }
 
