@@ -147,7 +147,6 @@
 }
 - (void)viewWillAppear:(BOOL)animated {
     self.navigationController.navigationBarHidden = true;
-    [[ProvisionManager sharedInstance] logout];
 }
 
 - (void)initScroll {
