@@ -180,7 +180,7 @@ NSString *const kMessageTableViewCell = @"MessageTableViewCellId";
         }
     }
     for (UnionList * obj in modelUnion) {
-        if ([conversation.latestMessage.to isEqualToString:obj.thirdCode])
+        if ([conversation.chatter isEqualToString:obj.thirdCode])
         {
             return [obj dictionaryRepresentation];
         }
