@@ -65,13 +65,13 @@
 /**
  *  @author xiongchen
  *
- *  删除文件夹
+ *  删除文件
  *
  *  @param
  *
  *  @return
  */
-+ (void)removeFolders;
++ (void)removeFolders:(NSString *)path;
 
 /**
  *  @author xiongchen

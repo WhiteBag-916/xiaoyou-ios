@@ -79,7 +79,11 @@ DEF_SINGLETON(ProvisionManager);
     _loginResp = nil;
     _profileInfo = nil;
     [self delPassword];
-    [YDirectory removeFolders];
+    //删除文件
+    NSString *cachePath = [[YDirectory fileCache] stringByAppendingString:NSStringFromClass([LoginResp class])];
+    [YDirectory removeFolders:cachePath];
+    cachePath = [[YDirectory fileCache] stringByAppendingString:NSStringFromClass([ProfileInfo class])];
+    [YDirectory removeFolders:cachePath];
     //发送通知,告知界面刷新
     [self postNotificationOnMainThreadName:kNotification_Profile_Logout
                                     object:nil
