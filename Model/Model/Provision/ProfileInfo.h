@@ -22,6 +22,7 @@
 @property (nonatomic, strong) NSArray *lastFeeds;
 @property (nonatomic, strong) NSString *tags;
 @property (nonatomic, assign) double commentCount;
+@property (nonatomic, assign) double coolCount;
 
 + (instancetype)modelObjectWithDictionary:(NSDictionary *)dict;
 - (instancetype)initWithDictionary:(NSDictionary *)dict;

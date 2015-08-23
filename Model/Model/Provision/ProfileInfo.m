@@ -21,6 +21,7 @@ NSString *const kProfileInfoPraiseCount = @"praiseCount";
 NSString *const kProfileInfoLastFeeds = @"lastFeeds";
 NSString *const kProfileInfoTags = @"tags";
 NSString *const kProfileInfoCommentCount = @"commentCount";
+NSString *const kProfileInfoCoolCount = @"coolCount";
 
 
 @interface ProfileInfo ()
@@ -91,6 +92,7 @@ NSString *const kProfileInfoCommentCount = @"commentCount";
     self.lastFeeds = [NSArray arrayWithArray:parsedLastFeeds];
             self.tags = [self objectOrNilForKey:kProfileInfoTags fromDictionary:dict];
             self.commentCount = [[self objectOrNilForKey:kProfileInfoCommentCount fromDictionary:dict] doubleValue];
+        self.coolCount = [[self objectOrNilForKey:kProfileInfoCoolCount fromDictionary:dict] doubleValue];
 
     }
     

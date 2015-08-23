@@ -32,6 +32,7 @@ NSString *const kLoginRespCityCode = @"cityCode";
 NSString *const kLoginRespStudentClass = @"studentClass";
 NSString *const kLoginRespFaculty = @"faculty";
 NSString *const kLoginRespMobilePhone = @"mobilePhone";
+NSString *const kLoginRespFirstLogin = @"firstLogin";
 
 
 @interface LoginResp ()
@@ -106,6 +107,7 @@ NSString *const kLoginRespMobilePhone = @"mobilePhone";
         self.studentClass = [self objectOrNilForKey:kLoginRespStudentClass fromDictionary:dict];
         self.faculty = [self objectOrNilForKey:kLoginRespFaculty fromDictionary:dict];
         self.mobilePhone = [self objectOrNilForKey:kLoginRespMobilePhone fromDictionary:dict];
+        self.firstLogin = [[self objectOrNilForKey:kLoginRespFirstLogin fromDictionary:dict] doubleValue];
         
     }
     
