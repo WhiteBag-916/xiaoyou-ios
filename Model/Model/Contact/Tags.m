@@ -10,7 +10,7 @@
 
 NSString *const kTagsName = @"name";
 NSString *const kTagsEqual = @"equal";
-NSString *const kTagsId = @"id";
+NSString *const kTagsId = @"code";
 
 
 @interface Tags ()

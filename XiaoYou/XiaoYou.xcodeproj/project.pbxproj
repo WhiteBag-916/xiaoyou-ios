@@ -414,6 +414,7 @@
 		65BCCAEB1B81A72500266A18 /* FeedDetailTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 65BCCAEA1B81A72500266A18 /* FeedDetailTableView.m */; };
 		65BCF1E11B818441003457F4 /* FeedDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 65BCF1E01B818441003457F4 /* FeedDetailViewController.m */; };
 		65F55A9E1B897C4700ED4348 /* ProfileTagViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 65F55A9D1B897C4700ED4348 /* ProfileTagViewController.m */; };
+		65F55AA11B899EBC00ED4348 /* UIImageView+Ext.m in Sources */ = {isa = PBXBuildFile; fileRef = 65F55AA01B899EBC00ED4348 /* UIImageView+Ext.m */; };
 		65F82F841B85E74A00FF6E2D /* FeedPublishViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 65F82F831B85E74A00FF6E2D /* FeedPublishViewController.m */; };
 /* End PBXBuildFile section */
 
@@ -1061,6 +1062,8 @@
 		65BCF1E01B818441003457F4 /* FeedDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FeedDetailViewController.m; path = XiaoYou/Feed/FeedList/FeedDetailViewController.m; sourceTree = SOURCE_ROOT; };
 		65F55A9C1B897C4700ED4348 /* ProfileTagViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileTagViewController.h; sourceTree = "<group>"; };
 		65F55A9D1B897C4700ED4348 /* ProfileTagViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileTagViewController.m; sourceTree = "<group>"; };
+		65F55A9F1B899EBC00ED4348 /* UIImageView+Ext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+Ext.h"; sourceTree = "<group>"; };
+		65F55AA01B899EBC00ED4348 /* UIImageView+Ext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+Ext.m"; sourceTree = "<group>"; };
 		65F82F821B85E74A00FF6E2D /* FeedPublishViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FeedPublishViewController.h; path = XiaoYou/CommonView/FeedPublishViewController.h; sourceTree = SOURCE_ROOT; };
 		65F82F831B85E74A00FF6E2D /* FeedPublishViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FeedPublishViewController.m; path = XiaoYou/CommonView/FeedPublishViewController.m; sourceTree = SOURCE_ROOT; };
 		77B574BED9D4FF3F4BFAA9FE /* libPods-XiaoYou.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-XiaoYou.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -2381,6 +2384,8 @@
 				65969DCF1B8723E3001DD348 /* YUtils+HUD.m */,
 				20DAF9AC1B872528005B7932 /* YUtils+UI.h */,
 				20DAF9AD1B872528005B7932 /* YUtils+UI.m */,
+				65F55A9F1B899EBC00ED4348 /* UIImageView+Ext.h */,
+				65F55AA01B899EBC00ED4348 /* UIImageView+Ext.m */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -2962,6 +2967,7 @@
 				6592DCDC1B806A9B004CD118 /* ContactsTableViewCell.m in Sources */,
 				20DAF9A81B871E45005B7932 /* ChooseSchoolTableViewCell.m in Sources */,
 				3331223A1B806EDB00D3D032 /* EMChatTimeCell.m in Sources */,
+				65F55AA11B899EBC00ED4348 /* UIImageView+Ext.m in Sources */,
 				333122591B806EDB00D3D032 /* EMSDWebImageDownloaderOperation.m in Sources */,
 				333122631B806EDB00D3D032 /* UIImageView+EMWebCache.m in Sources */,
 				333122421B806EDB00D3D032 /* EMCDDeviceManager+Media.m in Sources */,

@@ -96,7 +96,6 @@ NSString *const kProfilePersonListTableViewCell = @"kProfilePersonListTableViewC
 - (void)setData {
     [_connect updateTag:@[@"班"]];
     [_face sd_setImageWithURL:[NSURL URLWithString:@"http://cdn.duitang.com/uploads/item/201411/22/20141122111634_RBCXS.jpeg"]];
-    [_tagView setData];
 }
 
 @end

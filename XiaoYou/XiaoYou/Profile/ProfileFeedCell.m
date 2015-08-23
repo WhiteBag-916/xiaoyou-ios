@@ -104,7 +104,7 @@ NSString *const KProfileFeedCell = @"KProfileFeedCell";
     line.transform = CGAffineTransformMakeRotation(-M_PI/8);
 }
 - (void)setData {
-    [_content setData];
+    [_content setData:nil];
 }
 
 @end

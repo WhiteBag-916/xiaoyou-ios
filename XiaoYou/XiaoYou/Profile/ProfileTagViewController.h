@@ -9,4 +9,6 @@
 #import "YViewController.h"
 @interface ProfileTagViewController : YViewController
 
+- (id)initWithMyTags:(NSArray *)myTags;
+
 @end

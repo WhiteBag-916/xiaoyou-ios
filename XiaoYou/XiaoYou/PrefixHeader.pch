@@ -32,5 +32,6 @@
 #import "YCommonAlertView.h"
 #import "YUtils+UI.h"
 #import "YUtils+HUD.h"
+#import "UIImageView+Ext.h"
 
 #endif

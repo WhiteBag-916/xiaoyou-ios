@@ -45,6 +45,7 @@
 @property (nonatomic, strong) UILabel *attitudeLabel;
 @property (nonatomic, strong) UILabel *tagLabel;
 @property (nonatomic, strong) UILabel *tagCountLabel;
+@property (nonatomic, strong) UILabel *feedHintLabel;
 @property (nonatomic, strong) ProfileFeedContentView *feed;
 
 
@@ -52,25 +53,30 @@
 @property (nonatomic, strong) UIView *middleView;
 @property (nonatomic, strong) UIView *bottomView;
 
+@property (nonatomic, strong) UIView *loadingView;
 @property (nonatomic, strong) MBProgressHUD *hud;
+
+@property (nonatomic, strong) NSString *userId;
+@property (nonatomic, strong) NSArray *tagModels;
 @end
 
 @implementation ProfileViewController
 
 - (void)viewDidLoad {
-    [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
+    [super viewDidLoad];
     self.hidesBottomBarWhenPushed = NO;
     [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(didBecomeActive)
+                                             selector:@selector(refreshData:)
                                                  name:kNotification_Profile_GetProfile
                                                object:nil];
-    [self initView];
+    [self initMyView];
 }
-
-- (void)initView {
-    self.view.backgroundColor = [UIColor whiteColor];
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+- (void)initMyView {
+    
     [self initScroll];
     [self initTop];
     [self initMiddle];
@@ -78,21 +84,30 @@
     [self prepareLoadData];
 }
 - (void)prepareLoadData {
-    
+    _loadingView = [[UIView alloc] init];
+    [self.view addSubview:_loadingView];
+    [_loadingView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(_topView.mas_bottom);
+        make.left.right.bottom.equalTo(self.view);
+    }];
+    _loadingView.backgroundColor = [UIColor whiteColor];
+    _loadingView.hidden = true;
 }
 - (void)startLoadData {
     if ([[ProvisionManager sharedInstance] getProfile] != nil) {
         [self loadData:[[ProvisionManager sharedInstance] getProfile]];
     } else {
+        _loadingView.hidden = false;
         _hud = [YUtils showHUDAddedTo:self.view title:@"正在加载" animated:true];
     }
 }
 - (void)afterLoadData:(YActionMessage *)message {
     [_hud removeFromSuperview];
+    _loadingView.hidden = true;
     if (message.isSuccess) {
         [self loadData:message.object];
     } else {
-        
+        [YUtils showTitle:message.desc];
     }
 }
 - (void)refreshData:(NSNotification *)notification {
@@ -101,9 +116,33 @@
 - (void)loadData:(ProfileInfo *)info {
     _middleView.hidden = false;
     _bottomView.hidden = false;
-//    [_headImg sd_setImageWithURL:[NSURL URLWithString:info.headPic]];
-//    _userName.text = info.userName;
-//    _respectNum.text = [NSString stringWithFormat:@"敬酒%f", info.praiseCount];
+    [_headImg setFaceImageWithUrl:info.headPic];
+    _userName.text = info.userName;
+    _respectNum.text = [NSString stringWithFormat:@"敬酒：%d", (int)info.praiseCount];
+    _attitudeLabel.text = (info.selfIntro.length == 0? @"你是一个没有态度的人":info.selfIntro);
+    _userId = info.uid;
+    _tagModels = info.tagModels;
+    if (_tagModels.count == 0) {
+        _tagLabel.text = @"你没有任何关注";
+        _tagLabel.textColor = [UIColor blackColor];
+        _tagCountLabel.text = @"";
+    } else {
+        _tagLabel.text = [_tagModels[0] name];
+        _tagLabel.textColor = KCOLORGREEN_009688;
+        if (_tagModels.count > 1) {
+            _tagCountLabel.text = [NSString stringWithFormat:@"等%d个", (int)_tagModels.count];
+        } else {
+            _tagCountLabel.text = @"";
+        }
+    }
+    if (info.feedInfo.count == 0) {
+        _feedHintLabel.text = @"你没有任何观点";
+        [_feed setData:nil];
+    } else {
+        _feedHintLabel.text = @"查看全部";
+        [_feed setData:info.feedInfo[0]];
+    }
+    
 }
 - (void)viewWillAppear:(BOOL)animated {
     self.navigationController.navigationBarHidden = true;
@@ -239,7 +278,7 @@
             make.centerY.equalTo(item);
         }];
         icon.image = [UIImage imageNamed:@"mine-toast"];
-        _respectNum = [YUtils initLabel:CONTENT_FONT(12) color:[UIColor blackColor] text:@"敬酒:100" frame:CGRectZero alignment:NSTextAlignmentLeft];
+        _respectNum = [YUtils initLabel:CONTENT_FONT(12) color:[UIColor blackColor] text:@"敬酒：0" frame:CGRectZero alignment:NSTextAlignmentLeft];
         [item addSubview:_respectNum];
         [_respectNum mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.equalTo(_userName);
@@ -253,7 +292,7 @@
             make.centerY.equalTo(item);
         }];
         icon.image = [UIImage imageNamed:@"mine-heart"];
-        _coolNum = [YUtils initLabel:CONTENT_FONT(12) color:[UIColor blackColor] text:@"觉得很酷:100" frame:CGRectZero alignment:NSTextAlignmentLeft];
+        _coolNum = [YUtils initLabel:CONTENT_FONT(12) color:[UIColor blackColor] text:@"觉得很酷：0" frame:CGRectZero alignment:NSTextAlignmentLeft];
         [item addSubview:_coolNum];
         [_coolNum mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.equalTo(_userName);
@@ -281,7 +320,7 @@
         make.bottom.lessThanOrEqualTo(item);
     }];
     if (index == 0) {
-        _attitudeLabel = [YUtils initLabel:CONTENT_FONT(12) color:[UIColor blackColor] text:@"我的态度我的态度我的态度我的态度我的态度我的态度我的态度我的态度我的态度我的态度我的态度我的态度我的态度我的态度我的态度我的态度我的态度我的态度我的态度我的态度我的态度我的态度我的态度我的态度我的态度我的态度" frame:CGRectZero alignment:NSTextAlignmentLeft];
+        _attitudeLabel = [YUtils initLabel:CONTENT_FONT(12) color:[UIColor blackColor] text:@"" frame:CGRectZero alignment:NSTextAlignmentLeft];
         _attitudeLabel.numberOfLines = 0;
         [item addSubview:_attitudeLabel];
         [_attitudeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -294,13 +333,13 @@
         [item addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(openAttitude)]];
     }
     if (index == 1) {
-        _tagLabel = [YUtils initLabel:CONTENT_FONT(12) color:KCOLORGREEN_009688 text:@"互联网创业" frame:CGRectZero alignment:NSTextAlignmentLeft];
+        _tagLabel = [YUtils initLabel:CONTENT_FONT(12) color:KCOLORGREEN_009688 text:@"" frame:CGRectZero alignment:NSTextAlignmentLeft];
         [item addSubview:_tagLabel];
         [_tagLabel mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.equalTo(_userName);
             make.centerY.equalTo(icon);
         }];
-        _tagCountLabel = [YUtils initLabel:CONTENT_FONT(12) color:[UIColor blackColor] text:@"等10个" frame:CGRectZero alignment:NSTextAlignmentLeft];
+        _tagCountLabel = [YUtils initLabel:CONTENT_FONT(12) color:[UIColor blackColor] text:@"" frame:CGRectZero alignment:NSTextAlignmentLeft];
         [item addSubview:_tagCountLabel];
         [_tagCountLabel mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.equalTo(_tagLabel.mas_right).offset(5);
@@ -310,21 +349,21 @@
     }
     if (index == 2) {
         
-        UILabel *label = [YUtils initLabel:CONTENT_FONT(12) color:[UIColor blackColor] text:@"查看全部" frame:CGRectZero alignment:NSTextAlignmentLeft];
-        [item addSubview:label];
-        [label mas_makeConstraints:^(MASConstraintMaker *make) {
+        _feedHintLabel = [YUtils initLabel:CONTENT_FONT(12) color:[UIColor blackColor] text:@"查看全部" frame:CGRectZero alignment:NSTextAlignmentLeft];
+        [item addSubview:_feedHintLabel];
+        [_feedHintLabel mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.equalTo(_userName);
             make.right.equalTo(item);
             make.centerY.equalTo(icon);
         }];
-        [self rightArray:2 inView:label];
+        [self rightArray:2 inView:_feedHintLabel];
         _feed = [[ProfileFeedContentView alloc] init];
         _feed.userInteractionEnabled = false;
         [item addSubview:_feed];
         [_feed mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.equalTo(_userName);
             make.right.equalTo(item).offset(-SCALE_NUM(12));
-            make.top.equalTo(label.mas_bottom).offset(KFEEDMARGIN_TOP);
+            make.top.equalTo(_feedHintLabel.mas_bottom).offset(KFEEDMARGIN_TOP);
             make.bottom.lessThanOrEqualTo(item);
         }];
         [item addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(openFeed)]];
@@ -360,9 +399,7 @@
 
 
 - (void)viewDidAppear:(BOOL)animated {
-//    [self startLoadData];
-//    [self afterLoadData];
-//    [_feed setData];
+    [self startLoadData];
 }
 - (void)openAttitude {
     UINavigationController *navigationController =
