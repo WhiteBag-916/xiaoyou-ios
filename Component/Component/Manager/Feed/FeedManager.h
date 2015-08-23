@@ -18,4 +18,7 @@ AS_SINGLETON(FeedManager);
 //获取动态详情
 - (void)getFeedDetailByID:(NSString *)feedID block:(ActionCompleteBlock)block;
 
+//获取feed列表
+- (void)feedList:(NSInteger)limitStart limitEnd:(NSInteger)limitEnd block:(ActionCompleteBlock)block;
+
 @end

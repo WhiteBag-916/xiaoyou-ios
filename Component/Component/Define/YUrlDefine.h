@@ -61,6 +61,8 @@
 #define api_login_MyFeed @"/mobile/user/v2/myFeed"
 //动态详情
 #define api_login_DetailFeed @"/mobile/feed/detailFeed"
+//动态列表
+#define api_login_ListFeed @"/mobile/feed/listFeed"
 
 /**********************************************************
  Url Define: ContactManager
