@@ -246,7 +246,7 @@
             [label addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(changePwd)]];
             break;
         case 2:
-            [label addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(changePwd)]];
+            [label addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(logOut)]];
             break;
         default:
             break;
@@ -395,7 +395,7 @@
     }
 }
 - (void)logOut {
-    
+    [[ProvisionManager sharedInstance] logout];
 }
 
 @end
