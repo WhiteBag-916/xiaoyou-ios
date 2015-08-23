@@ -31,6 +31,7 @@
 #import "ModifyPasswordAction.h"
 #import "ReceiveAuthCodeAction.h"
 #import "LogoutAction.h"
+#import "YDirectory+Data.h"
 
 #define kProvisionManagerSyncQueue @"kProvisionManagerSyncQueue"
 
@@ -73,7 +74,15 @@ DEF_SINGLETON(ProvisionManager);
 
 - (void)appDidLogout
 {
-
+    //清理数据
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:kShareData_Token];
+    _loginResp = nil;
+    _profileInfo = nil;
+    [YDirectory removeFolders];
+    //发送通知,告知界面刷新
+    [self postNotificationOnMainThreadName:kNotification_Profile_Logout
+                                    object:nil
+                                  userInfo:nil];
 }
 
 - (void)initLoginData {
@@ -349,13 +358,13 @@ DEF_SINGLETON(ProvisionManager);
 }
 
 //登出
-- (void)logout:(ActionCompleteBlock)block {
-    LoginAction* action = [[LoginAction alloc] init];
-    
-    [YAction startAction:action completionBlock:^(YActionMessage* message) {        
-        //主线程处理界面
-        block(message);
+- (void)logout {
+    LogoutAction* action = [[LogoutAction alloc] init];
+    [YAction startAction:action completionBlock:^(YActionMessage* message) {
     }];
+    
+    //抛登出
+    [[YManagerCenter defaultCenter] notifyAppLogouted];
 }
 
 @end
