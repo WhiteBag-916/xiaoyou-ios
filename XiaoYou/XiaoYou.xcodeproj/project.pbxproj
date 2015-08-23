@@ -413,6 +413,7 @@
 		65A847051B81CA1900933815 /* FeedCellBottomView.m in Sources */ = {isa = PBXBuildFile; fileRef = 65A847041B81CA1900933815 /* FeedCellBottomView.m */; };
 		65BCCAEB1B81A72500266A18 /* FeedDetailTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 65BCCAEA1B81A72500266A18 /* FeedDetailTableView.m */; };
 		65BCF1E11B818441003457F4 /* FeedDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 65BCF1E01B818441003457F4 /* FeedDetailViewController.m */; };
+		65F55A9E1B897C4700ED4348 /* ProfileTagViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 65F55A9D1B897C4700ED4348 /* ProfileTagViewController.m */; };
 		65F82F841B85E74A00FF6E2D /* FeedPublishViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 65F82F831B85E74A00FF6E2D /* FeedPublishViewController.m */; };
 /* End PBXBuildFile section */
 
@@ -1058,6 +1059,8 @@
 		65BCCAEA1B81A72500266A18 /* FeedDetailTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FeedDetailTableView.m; path = XiaoYou/Feed/FeedList/FeedDetailTableView.m; sourceTree = SOURCE_ROOT; };
 		65BCF1DF1B818441003457F4 /* FeedDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FeedDetailViewController.h; path = XiaoYou/Feed/FeedList/FeedDetailViewController.h; sourceTree = SOURCE_ROOT; };
 		65BCF1E01B818441003457F4 /* FeedDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FeedDetailViewController.m; path = XiaoYou/Feed/FeedList/FeedDetailViewController.m; sourceTree = SOURCE_ROOT; };
+		65F55A9C1B897C4700ED4348 /* ProfileTagViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileTagViewController.h; sourceTree = "<group>"; };
+		65F55A9D1B897C4700ED4348 /* ProfileTagViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileTagViewController.m; sourceTree = "<group>"; };
 		65F82F821B85E74A00FF6E2D /* FeedPublishViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FeedPublishViewController.h; path = XiaoYou/CommonView/FeedPublishViewController.h; sourceTree = SOURCE_ROOT; };
 		65F82F831B85E74A00FF6E2D /* FeedPublishViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FeedPublishViewController.m; path = XiaoYou/CommonView/FeedPublishViewController.m; sourceTree = SOURCE_ROOT; };
 		77B574BED9D4FF3F4BFAA9FE /* libPods-XiaoYou.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-XiaoYou.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1354,6 +1357,8 @@
 				656F59741B8896370094B658 /* ProfilePhoneChangeViewController.m */,
 				659DC7751B88C4E700DB589F /* ProfileOthersViewController.h */,
 				659DC7761B88C4E700DB589F /* ProfileOthersViewController.m */,
+				65F55A9C1B897C4700ED4348 /* ProfileTagViewController.h */,
+				65F55A9D1B897C4700ED4348 /* ProfileTagViewController.m */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -2843,6 +2848,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3331226C1B806EDB00D3D032 /* PSTCollectionViewLayout.m in Sources */,
+				65F55A9E1B897C4700ED4348 /* ProfileTagViewController.m in Sources */,
 				333122641B806EDB00D3D032 /* UIView+EMWebCacheOperation.m in Sources */,
 				3331224F1B806EDB00D3D032 /* MWPhoto.m in Sources */,
 				653CB2EE1B806BFD006ECBB2 /* ChineseString.m in Sources */,

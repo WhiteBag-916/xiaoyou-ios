@@ -15,6 +15,10 @@
 #import "YCommonEditViewController.h"
 #import "UIImageView+WebCache.h"
 #import "ProfileInfo.h"
+#import "YUtils+HUD.h"
+#import "YActionMessage.h"
+
+#import "ProfileOthersViewController.h"
 
 #define KTOPHEIGHT SCALE_NUM(90)
 #define KHEADIMG_SIZE SCALE_NUM(45)
@@ -46,6 +50,8 @@
 @property (nonatomic, strong) UIView *topView;
 @property (nonatomic, strong) UIView *middleView;
 @property (nonatomic, strong) UIView *bottomView;
+
+@property (nonatomic, strong) MBProgressHUD *hud;
 @end
 
 @implementation ProfileViewController
@@ -64,11 +70,26 @@
     [self initTop];
     [self initMiddle];
     [self initBottom];
+    [self prepareLoadData];
+}
+- (void)prepareLoadData {
+    
+}
+- (void)startLoadData {
+    _hud = [YUtils showHUDAddedTo:self.view title:@"正在加载" animated:true];
+}
+- (void)afterLoadData:(YActionMessage *)message {
+    [_hud removeFromSuperview];
+    if (message.isSuccess) {
+        [self loadData:message.object];
+    }
 }
 - (void)loadData:(ProfileInfo *)info {
-    [_headImg sd_setImageWithURL:[NSURL URLWithString:info.headPic]];
-    _userName.text = info.userName;
-    _respectNum.text = [NSString stringWithFormat:@"敬酒%f", info.praiseCount];
+    _middleView.hidden = false;
+    _bottomView.hidden = false;
+//    [_headImg sd_setImageWithURL:[NSURL URLWithString:info.headPic]];
+//    _userName.text = info.userName;
+//    _respectNum.text = [NSString stringWithFormat:@"敬酒%f", info.praiseCount];
 }
 - (void)viewWillAppear:(BOOL)animated {
     self.navigationController.navigationBarHidden = true;
@@ -115,6 +136,7 @@
     }];
     _headImg.layer.cornerRadius = KHEADIMG_SIZE/2;
     _headImg.clipsToBounds = true;
+    _headImg.image = [UIImage imageNamed:@"default_head"];
     
     UIView *titleView = [[UIView alloc] init];
     [infoView addSubview:titleView];
@@ -123,14 +145,14 @@
         make.centerY.equalTo(_headImg);
     }];
     
-    _userName = [YUtils initLabel:CONTENT_FONT(15) color:KCOLORWHITE text:@"xxx" frame:CGRectZero alignment:NSTextAlignmentLeft];
+    _userName = [YUtils initLabel:CONTENT_FONT(15) color:KCOLORWHITE text:@"用户名" frame:CGRectZero alignment:NSTextAlignmentLeft];
     [titleView addSubview:_userName];
     [_userName mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.top.equalTo(titleView);
         make.right.lessThanOrEqualTo(titleView);
     }];
     
-    _schoolNo = [YUtils initLabel:CONTENT_FONT(9) color:KCOLORWHITE text:@"2010011111" frame:CGRectZero alignment:NSTextAlignmentLeft];
+    _schoolNo = [YUtils initLabel:CONTENT_FONT(9) color:KCOLORWHITE text:@"" frame:CGRectZero alignment:NSTextAlignmentLeft];
     [titleView addSubview:_schoolNo];
     [_schoolNo mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(_userName.mas_bottom).offset(KSCHOOLNOMARGIN_TOP);
@@ -324,16 +346,14 @@
 
 
 - (void)viewDidAppear:(BOOL)animated {
-    [_headImg sd_setImageWithURL:[NSURL URLWithString:@"http://cdn.duitang.com/uploads/item/201411/22/20141122111634_RBCXS.jpeg"]];
-    [_feed setData];
+//    [self startLoadData];
+//    [self afterLoadData];
+//    [_feed setData];
 }
 - (void)openAttitude {
-    CATransition* transition = [CATransition animation];
-    transition.type = kCATransitionPush;
-    transition.subtype = kCATransitionFromTop;
-    [self.navigationController.view.layer addAnimation:transition forKey:kCATransition];
-    
-    [self.navigationController pushViewController:[[YCommonEditViewController alloc] initWithType:YCommonEditAttitude preText:_attitudeLabel.text] animated:NO];
+    UINavigationController *navigationController =
+    [[UINavigationController alloc] initWithRootViewController:[[YCommonEditViewController alloc] initWithType:YCommonEditAttitude preText:_attitudeLabel.text]];
+    [self.navigationController presentViewController:navigationController animated:YES completion:nil];
 }
 - (void)openRespect {
     [self.navigationController pushViewController:[[ProfilePersonListController alloc] initWithType:0] animated:true];
@@ -346,13 +366,9 @@
 }
 
 - (void)openProfile {
-    [self.navigationController pushViewController:[[ProfileMyViewController alloc] init] animated:true];
+    [self.navigationController pushViewController:[[ProfileOthersViewController alloc] init] animated:true];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
 
 
 @end

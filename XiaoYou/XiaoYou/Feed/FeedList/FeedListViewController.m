@@ -161,12 +161,9 @@
 }
 
 - (void)onNavigationRightButtonClicked {
-    CATransition* transition = [CATransition animation];
-    transition.type = kCATransitionPush;
-    transition.subtype = kCATransitionFromTop;
-    [self.navigationController.view.layer addAnimation:transition forKey:kCATransition];
-    
-    [self.navigationController pushViewController:[[FeedPublishViewController alloc] init] animated:NO];
+    UINavigationController *navigationController =
+    [[UINavigationController alloc] initWithRootViewController:[[FeedPublishViewController alloc] init]];
+    [self.navigationController presentViewController:navigationController animated:YES completion:nil];
     
 }
 

@@ -7,7 +7,6 @@
 //
 
 #import "YUtils+HUD.h"
-#import "MBProgressHUD.h"
 #import "MBProgressHUD+BWMExtension.h"
 @implementation YUtils(HUD)
 

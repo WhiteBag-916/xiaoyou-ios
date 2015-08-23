@@ -10,4 +10,10 @@
 
 @interface ProfileViewController : YViewController
 
+- (void)prepareLoadData;
+
+- (void)startLoadData;
+
+- (void)afterLoadData;
+
 @end

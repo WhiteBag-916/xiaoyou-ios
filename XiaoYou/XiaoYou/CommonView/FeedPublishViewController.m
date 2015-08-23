@@ -148,11 +148,7 @@
 }
 
 - (void)onNavigationLeftButtonClicked {
-    CATransition* transition = [CATransition animation];
-    transition.type = kCATransitionPush;
-    transition.subtype = kCATransitionFromBottom;
-    [self.navigationController.view.layer addAnimation:transition forKey:kCATransition];
-    [self.navigationController popViewControllerAnimated:false];
+    [self.navigationController dismissViewControllerAnimated:YES completion:nil];
 }
 - (void)viewWillDisappear:(BOOL)animated {
     [self showOrignMode];

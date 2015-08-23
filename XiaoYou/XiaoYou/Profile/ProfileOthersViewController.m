@@ -21,8 +21,18 @@
     self = [super init];
     if (self) {
         _userId = userId;
+        self.hidesBottomBarWhenPushed = true;
     }
     return self;
 }
-
+- (void)viewDidLoad {
+    [self initController];
+}
+- (void)initController {
+    self.navigationController.navigationBarHidden = false;
+    self.title = @"详情";
+    [self showCustomNavigationBackButton];
+    [self showCustomNavigationMoreButton];
+    self.view.backgroundColor = KCOLORWHITE;
+}
 @end
