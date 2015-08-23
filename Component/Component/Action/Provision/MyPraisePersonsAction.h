@@ -8,6 +8,6 @@
 
 #import "YHTTPRequestAction.h"
 
-@interface MyPraisePersonsAction : YHTTPRequestAction
+@interface MyPraisePersonsAction : YHTTPRequestAction<YAction>
 
 @end

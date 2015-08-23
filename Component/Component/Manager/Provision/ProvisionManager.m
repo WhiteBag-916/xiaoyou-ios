@@ -22,6 +22,8 @@
 #import "ProfileAction.h"
 #import "YNotificationDefine.h"
 #import "UploadImage.h"
+#import "MyCommentPersonsAction.h"
+#import "MyPraisePersonsAction.h"
 
 #define kProvisionManagerSyncQueue @"kProvisionManagerSyncQueue"
 
@@ -86,6 +88,11 @@ DEF_SINGLETON(ProvisionManager);
 - (void)initProfileData{
     NSString *cachePath = [[YDirectory fileCache] stringByAppendingString:NSStringFromClass([ProfileInfo class])];
     _profileInfo = [ProfileInfo instanceWithFile:cachePath];
+}
+
+//获取个人信息
+- (ProfileInfo *)getProfile {
+    return _profileInfo;
 }
 
 //更新个人常用信息
@@ -217,6 +224,26 @@ DEF_SINGLETON(ProvisionManager);
         
         [self saveProfileInfo];
     }
+}
+
+//评论过我的人,Author
+- (void)myCommentPersons:(ActionCompleteBlock)block {
+    MyCommentPersonsAction* action = [[MyCommentPersonsAction alloc] init];
+    
+    [YAction startAction:action completionBlock:^(YActionMessage* message) {
+        //主线程处理界面
+        block(message);
+    }];
+}
+
+//点赞过我的人
+- (void)myPraisePersons:(ActionCompleteBlock)block {
+    MyPraisePersonsAction* action = [[MyPraisePersonsAction alloc] init];
+    
+    [YAction startAction:action completionBlock:^(YActionMessage* message) {
+        //主线程处理界面
+        block(message);
+    }];
 }
 
 @end

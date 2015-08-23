@@ -8,6 +8,6 @@
 
 #import "YHTTPRequestAction.h"
 
-@interface MyCommentPersonsAction : YHTTPRequestAction
+@interface MyCommentPersonsAction : YHTTPRequestAction<YAction>
 
 @end
