@@ -18,11 +18,11 @@
 #define api_server_base_url @"http://api.xiaoyou.com"
 #define UMENG_APPKEY @"55cda497e0f55ad43d00204c"
 #define EaseMobAppKey @"jiankun#xiaoyoubeta"
-#define ApnsCertName @"xiaoyou_development_beta"
+#define ApnsCertName @"xiaoyou_producation_beta"
 #else
 #define api_server_base_url @"http://beta.xiaoyou.com"
 #define UMENG_APPKEY @"55cda7c3e0f55a0de40018c7"
-#define EaseMobAppKey @"jiankun#xiaoyou"
+#define EaseMobAppKey @"jiankun#xiaoyoubeta"
 #define ApnsCertName @"xiaoyou_development_beta"
 #endif
 /** 获取图像接口*/

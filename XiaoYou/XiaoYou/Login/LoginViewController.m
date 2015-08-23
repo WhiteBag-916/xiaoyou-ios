@@ -209,10 +209,10 @@
             //成功
             //是否需要完善资料
             LoginResp *loginResp = (LoginResp *)message.object;
-            if (loginResp.mobilePhone.length > 0) {
-                [kAppDelegateAccessor initTabBarNC];
-            } else {
+            if (loginResp.firstLogin) {
                 [kAppDelegateAccessor initPerfectNC];
+            } else {
+                [kAppDelegateAccessor initTabBarNC];
             }
             
         } else {
