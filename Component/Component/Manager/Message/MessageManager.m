@@ -12,8 +12,6 @@
 #import "YShareDataDefine.h"
 #import "YManagerCenter.h"
 #import "EaseMob.h"
-#import "LinkManModel.h"
-#import "YDirectory+Data.h"
 
 #define kMessageManagerSyncQueue @"kMessageManagerSyncQueue"
 
@@ -26,7 +24,6 @@ typedef enum : NSUInteger {
 
 @interface MessageManager ()<EMChatManagerDelegate>
 
-@property (nonatomic, strong) LinkManModel *linkManModel; //个人信息
 
 @end
 
@@ -40,18 +37,7 @@ DEF_SINGLETON(MessageManager);
     }
     return self;
 }
-//存储联系人到本地
-- (void)saveContactsList
-{
-    //存文件
-    NSString *cachePath = [[YDirectory fileCache] stringByAppendingString:NSStringFromClass([LinkManModel class])];
-    [_linkManModel writeToFile:cachePath];
-}
-//读取联系人
-- (void)initLinkManListData{
-    NSString *cachePath = [[YDirectory fileCache] stringByAppendingString:NSStringFromClass([LinkManModel class])];
-    _linkManModel = [LinkManModel instanceWithFile:cachePath];
-}
+
 
 - (void)getMessageListData:(ActionCompleteBlock)block
 {
