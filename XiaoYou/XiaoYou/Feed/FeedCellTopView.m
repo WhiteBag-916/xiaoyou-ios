@@ -99,7 +99,7 @@
     [_contactHeadImageView setData:_data.userId imageUrl:_data.imgUrl];
     _contactNameLabel.text = _data.userName;
     _timeLabel.text = [YUtils distanceTimeToday:_data.publishDate];
-    [_tagList updateTag:_data.tagList];
+//    [_tagList updateTag:_data.tagList];
     
     UIViewController *appRootVC = [UIApplication sharedApplication].keyWindow.rootViewController;
     UIViewController *topVC = appRootVC;

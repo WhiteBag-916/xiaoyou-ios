@@ -31,14 +31,6 @@ static const NSInteger kLayoutPriorityDefaultVeryHigh = 999;
 #define KNavigationBarheight  64.0
 #define KTabBarheight  50.0
 
-#define kProjectPageNum         10
-#define kFeedPageNum            10
-#define kPartnerFateNum         10
-#define kPartnerNum             15//一页15条
-#define kMessageListNum         10
-#define kNotificationListNum    10
-#define kConversationListNum    5
-#define kPersonPageNum           9
 
 typedef NS_ENUM(int, FeedCellType) {
     FeedListType            = 1,

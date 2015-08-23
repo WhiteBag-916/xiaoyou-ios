@@ -42,7 +42,7 @@
 }
 
 
-- (void)updateTag:(NSArray *)tags {
+- (void)updateWithTag:(NSArray *)tags {
     int index;
     int count = tags.count>5?5:(int)tags.count;
     for (index = 0; index < count; index ++) {

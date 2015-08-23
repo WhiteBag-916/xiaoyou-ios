@@ -120,7 +120,7 @@ NSString *const kFeedContactTableViewCell = @"FeedContactTableViewCellId";
 }
 
 - (void)setData {
-    [_tagList updateTag:@[@"系",@"乡",@"班"]];
+//    [_tagList updateTag:@[@"系",@"乡",@"班"]];
 }
 
 @end
