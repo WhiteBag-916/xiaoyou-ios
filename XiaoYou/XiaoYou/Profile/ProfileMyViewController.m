@@ -12,14 +12,20 @@
 #import "ProfilePhoneChangeViewController.h"
 #import "ProvisionManager.h"
 #import "ProfileInfo.h"
+#import "LoginResp.h"
+#import "YCommonActionSheet.h"
+#import "YDirectory+Data.h"
+#import "SDPhotoBrowser.h"
+
 #define KHEADHEIGHT SCALE_NUM(150)
 
 #define KIMGSIZE SCALE_NUM(88)
 
-@interface ProfileMyViewController()
+@interface ProfileMyViewController()<UIImagePickerControllerDelegate,SDPhotoBrowserDelegate>
 
 @property (nonatomic, strong) UIView *containerView;
 @property (nonatomic, strong) UIView *headView;
+@property (nonatomic, strong) UIView *faceContainer;
 @property (nonatomic, strong) UIView *middelView;
 @property (nonatomic, strong) UIView *bottomView;
 
@@ -30,6 +36,8 @@
 @property (nonatomic, strong) UILabel *departmentLabel;
 @property (nonatomic, strong) UILabel *gradeLabel;
 @property (nonatomic, strong) UILabel *classLabel;
+
+@property (nonatomic, strong) NSString *headImagePath;
 
 
 @end
@@ -55,6 +63,18 @@
     [_faceImg setFaceImageWithUrl:info.headPic];
     _nameLabel.text = info.userName;
     _schoolNoLabel.text = info.studentNo;
+    LoginResp *resp = [YShareData defaultData][kShareData_LoginInfo];
+    _schoolLabel.text = resp.schoolName;
+    _departmentLabel.text = resp.college;
+    _gradeLabel.text = resp.grad;
+    _classLabel.text = resp.studentClass;
+    if (resp.mobilePhone.length == 0) {
+        [_bottomView.subviews[0] setEnabled:false];
+        [_bottomView.subviews[0] setUserInteractionEnabled:false];
+    } else {
+        [_bottomView.subviews[0] setEnabled:true];
+        [_bottomView.subviews[0] setUserInteractionEnabled:true];
+    }
     
 }
 - (void)initView {
@@ -87,15 +107,23 @@
     }];
     _headView.backgroundColor = KCOLORGREEN_455A64;
     
-    _faceImg = [[UIImageView alloc] init];
-    [_containerView addSubview:_faceImg];
-    [_faceImg mas_makeConstraints:^(MASConstraintMaker *make) {
+    _faceContainer = [[UIView alloc] init];
+    [_containerView addSubview:_faceContainer];
+    [_faceContainer mas_makeConstraints:^(MASConstraintMaker *make) {
         make.width.height.mas_equalTo(KIMGSIZE);
         make.center.equalTo(_headView);
+    }];
+    
+    _faceImg = [[UIImageView alloc] init];
+    [_faceContainer addSubview:_faceImg];
+    [_faceImg mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.equalTo(_faceContainer);
     }];
     _faceImg.layer.cornerRadius = KIMGSIZE/2;
     _faceImg.clipsToBounds = true;
     _faceImg.image = [UIImage imageNamed:@"default_head"];
+    _faceImg.userInteractionEnabled = true;
+    [_faceImg addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showAddPicList)]];
     
     UIImageView *back = [[UIImageView alloc] init];
     [_headView addSubview:back];
@@ -225,6 +253,130 @@
     
     return label;
 }
+- (void)showAddPicList {
+    YActionSheetItem *item = [YActionSheetItem itemWithTitle:@"查看大图"
+                                                         type:YCommonActionSheetItemTypeCenterCommon
+                                                        block:^(NSInteger checkNum) {
+                                                            [self choosePic];
+                                                        }];
+    YActionSheetItem *item1 = [YActionSheetItem itemWithTitle:@"拍照"
+                                                         type:YCommonActionSheetItemTypeCenterCommon
+                                                        block:^(NSInteger checkNum) {
+                                                            [self snapImage];
+                                                        }];
+    YActionSheetItem *item2 = [YActionSheetItem itemWithTitle:@"从相册中选择"
+                                                         type:YCommonActionSheetItemTypeCenterCommon
+                                                        block:^(NSInteger checkNum) {
+                                                            [self pickImage];
+                                                        }];
+    
+    YCommonActionSheet *sheet = [[YCommonActionSheet alloc] initWithType:@[item, item1, item2] title:nil];
+    [sheet show];
+}
+- (void)choosePic {
+
+    SDPhotoBrowser *browser = [[SDPhotoBrowser alloc] init];
+    
+    browser.sourceImagesContainerView = _faceContainer;
+    
+    browser.imageCount = 1;
+    
+    browser.currentImageIndex = 0;
+    
+    browser.delegate = self;
+    
+    [browser show];
+}
+
+#pragma SDPhotoBrowser
+- (UIImage *)photoBrowser:(SDPhotoBrowser *)browser placeholderImageForIndex:(NSInteger)index {
+    return _faceImg.image;
+}
+
+- (NSURL *)photoBrowser:(SDPhotoBrowser *)browser highQualityImageURLForIndex:(NSInteger)index {
+    return _faceImg.sd_imageURL;
+}
+- (void)pickImage
+{
+    UIImagePickerController *picker = [[UIImagePickerController alloc] init];
+    [picker setSourceType:UIImagePickerControllerSourceTypePhotoLibrary];
+    [picker setDelegate:self];
+    [picker setAllowsEditing:YES];
+    [self presentViewController:picker animated:YES completion:nil];
+}
+
+- (void)snapImage
+{
+    UIImagePickerController *picker = [[UIImagePickerController alloc] init];
+    [picker setSourceType:UIImagePickerControllerSourceTypeCamera];
+    picker.delegate = self;
+    [picker setAllowsEditing:YES];
+    [self presentViewController:picker animated:YES completion:nil];
+}
+- (void)savePic:(UIImage *)image
+{
+    if (nil == image)
+    {
+        return;
+    }
+    
+    dispatch_async(dispatch_get_global_queue(0, 0), ^{
+        
+        //根据时间格式确保文件名唯一性
+        NSString *keyStr = @"face.png";
+        
+        //写入文件
+        NSData *imageData = UIImageJPEGRepresentation(image, 0.5);
+        NSString *fullPath = [[YDirectory newImgCache] stringByAppendingPathComponent:keyStr];
+        
+        //保存到沙盒
+        [imageData writeToFile:fullPath atomically:NO];
+        
+        //路径添加至缓存
+        _headImagePath = keyStr;
+        
+        //界面
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self uploadHeadImage:^(NSString *url) {
+                [_faceImg setFaceImageWithUrl:url];
+            }];
+        });
+        
+    });
+}
+//更新头像
+- (void)updateAddImageButton
+{
+    if (_headImagePath.length > 0)
+    {
+        NSString *path = [YDirectory newImgCache:_headImagePath];
+        
+        if (![YDirectory isDirectory:path])
+        {
+            //存在
+            _faceImg.image = [UIImage imageWithContentsOfFile:path];
+        }
+    }
+}
+- (void)uploadHeadImage:(void(^)(NSString *url))block {
+    NSString *path = [YDirectory newImgCache:_headImagePath];
+    [[ProvisionManager sharedInstance] uploadHeadImage:path
+                                                 block:^(YActionMessage *message) {
+                                                     if (message.isSuccess) {
+                                                         block((NSString *)[message.object url]);
+                                                     } else {
+                                                         [YUtils showTitle:message.desc];
+                                                     }
+                                                 }];
+}
+
+#pragma mark - UIImagePickerControllerDelegate
+-(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
+{
+    [picker dismissViewControllerAnimated:YES completion:nil];
+    UIImage *getImage = info[@"UIImagePickerControllerEditedImage"];
+    [self savePic:getImage];
+}
 
 - (void)goBack {
     [self.navigationController popViewControllerAnimated:true];
@@ -234,6 +386,7 @@
     [self.navigationController pushViewController:[[ProfilePhoneChangeViewController alloc] init] animated:true];
 }
 - (void)changePwd {
+    
     [self.navigationController pushViewController:[[ProfileChangePwdViewController alloc] init] animated:true];
 }
 - (void)logOut {
