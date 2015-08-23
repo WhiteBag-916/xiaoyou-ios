@@ -7,6 +7,7 @@
 //
 
 #import "FeedTag.h"
+#import "Tags.h"
 #define KLABELHEIGHT SCALE_NUM(10)
 
 @interface FeedTag()
@@ -47,6 +48,21 @@
     return self;
 }
 
+- (void)setData:(NSArray *)tags {
+    [_tagContent removeAllTags];
+    if (tags.count == 0) {
+        self.hidden = true;
+    } else {
+        self.hidden = false;
+        for (int i = 0; i < tags.count; i++) {
+            SKTag *tag = [SKTag tagWithText:[tags[i] name]];
+            tag.font = CONTENT_FONT(10);
+            tag.textColor = KCOLORWHITE_696969;
+            tag.textColor = KCOLORGREEN_009688;
+            [_tagContent addTag:tag];
+        }
+    }
+}
 
 - (void)setData {
     [_tagContent removeAllTags];

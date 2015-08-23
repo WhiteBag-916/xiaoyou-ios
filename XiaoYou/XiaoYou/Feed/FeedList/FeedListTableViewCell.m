@@ -184,7 +184,6 @@ NSString *const KCommentTableViewCell = @"CommentTableViewCell";
         bottomData.people = @[@{@"uid":@"123",@"pic":@"http://cdn.duitang.com/uploads/item/201411/22/20141122111634_RBCXS.jpeg"},@{@"uid":@"123",@"pic":@"http://cdn.duitang.com/uploads/item/201411/22/20141122111634_RBCXS.jpeg"},@{@"uid":@"123",@"pic":@"http://cdn.duitang.com/uploads/item/201411/22/20141122111634_RBCXS.jpeg"},@{@"uid":@"123",@"pic":@"http://cdn.duitang.com/uploads/item/201411/22/20141122111634_RBCXS.jpeg"},@{@"uid":@"123",@"pic":@"http://cdn.duitang.com/uploads/item/201411/22/20141122111634_RBCXS.jpeg"}];
     }
     [_bottomView setData:bottomData];
-    [_tagView setData];
 }
 
 - (void)didClickShare {

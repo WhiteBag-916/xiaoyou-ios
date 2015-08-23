@@ -14,6 +14,7 @@
 
 @interface ProfileTagViewController()
 @property (nonatomic, strong) NSMutableArray *tagsArray;
+@property (nonatomic, strong) NSMutableSet *myTagName;
 @end
 
 @implementation ProfileTagViewController

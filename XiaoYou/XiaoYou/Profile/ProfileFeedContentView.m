@@ -9,6 +9,8 @@
 #import "ProfileFeedContentView.h"
 #import "FeedTag.h"
 #import "FeedImageGroup.h"
+#import "FeedInfo.h"
+#import "Feed.h"
 
 #define KTAGTEXTMARGIN SCALE_NUM(10)
 #define KCONTENTMARGIN_TOP SCALE_NUM(20)
@@ -35,7 +37,7 @@
             make.left.equalTo(_tagView.tagIcon.mas_right).offset(KTAGTEXTMARGIN);
         }];
         
-        _contentLabel = [YUtils initLabel:CONTENT_FONT(10) color:[UIColor blackColor] text:@"文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字" frame:CGRectZero alignment:NSTextAlignmentLeft];
+        _contentLabel = [YUtils initLabel:CONTENT_FONT(10) color:[UIColor blackColor] text:@"" frame:CGRectZero alignment:NSTextAlignmentLeft];
         [self addSubview:_contentLabel];
         _contentLabel.numberOfLines = 0;
         [_contentLabel mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -55,9 +57,18 @@
     return self;
 }
 
-- (void)setData {
-    [_tagView setData];
-    [_imgGroup updateWithImgs:@[@"http://cdn.duitang.com/uploads/item/201411/22/20141122111634_RBCXS.jpeg",@"http://cdn.duitang.com/uploads/item/201505/03/20150503184743_Q4EVW.thumb.700_0.jpeg",@"http://cdn.duitang.com/uploads/item/201411/22/20141122111634_RBCXS.jpeg",@"http://cdn.duitang.com/uploads/item/201505/03/20150503184743_Q4EVW.thumb.700_0.jpeg",@"http://cdn.duitang.com/uploads/item/201411/22/20141122111634_RBCXS.jpeg",@"http://cdn.duitang.com/uploads/item/201505/03/20150503184743_Q4EVW.thumb.700_0.jpeg",@"http://cdn.duitang.com/uploads/item/201411/22/20141122111634_RBCXS.jpeg",@"http://cdn.duitang.com/uploads/item/201505/03/20150503184743_Q4EVW.thumb.700_0.jpeg"] bigPics:@[@"http://cdn.duitang.com/uploads/item/201411/22/20141122111634_RBCXS.jpeg",@"http://cdn.duitang.com/uploads/item/201505/03/20150503184743_Q4EVW.thumb.700_0.jpeg",@"http://cdn.duitang.com/uploads/item/201411/22/20141122111634_RBCXS.jpeg",@"http://cdn.duitang.com/uploads/item/201505/03/20150503184743_Q4EVW.thumb.700_0.jpeg",@"http://cdn.duitang.com/uploads/item/201411/22/20141122111634_RBCXS.jpeg",@"http://cdn.duitang.com/uploads/item/201505/03/20150503184743_Q4EVW.thumb.700_0.jpeg",@"http://cdn.duitang.com/uploads/item/201411/22/20141122111634_RBCXS.jpeg",@"http://cdn.duitang.com/uploads/item/201505/03/20150503184743_Q4EVW.thumb.700_0.jpeg"]];
+- (void)setData:(FeedInfo *)info {
+    if (info == nil) {
+        [_tagView setData:nil];
+        [_imgGroup updateWithImgs:nil bigPics:nil];
+        _contentLabel.text = nil;
+    } else {
+        [_tagView setData:info.tags];
+        _contentLabel.text = info.feed.content;
+        
+        [_imgGroup updateWithImgs:[info.feed.img componentsSeparatedByString:@","] bigPics:[info.feed.img componentsSeparatedByString:@","]];
+    }
 }
+
 
 @end
