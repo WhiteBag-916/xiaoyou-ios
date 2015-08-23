@@ -15,4 +15,7 @@
     
 }
 
+- (void)setNormalImageWithUrl:(NSString *)url {
+    [self sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@", api_icon_base_url, url]]];
+}
 @end

@@ -424,7 +424,7 @@
 }
 
 - (void)openProfile {
-    [self.navigationController pushViewController:[[ProfileOthersViewController alloc] init] animated:true];
+    [self.navigationController pushViewController:[[ProfileMyViewController alloc] init] animated:true];
 }
 
 

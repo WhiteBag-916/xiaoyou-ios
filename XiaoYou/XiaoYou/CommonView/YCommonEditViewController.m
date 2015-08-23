@@ -75,6 +75,9 @@
     self.navigationController.navigationBarHidden = false;
     [self showEditMode];
 }
+- (void)viewWillDisappear:(BOOL)animated {
+    [self showOrignMode];
+}
 - (void)onNavigationLeftButtonClicked {
     [self.navigationController dismissViewControllerAnimated:YES completion:nil];
 }
