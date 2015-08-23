@@ -253,7 +253,7 @@ DEF_SINGLETON(ProvisionManager);
     }];
 }
 
-//点赞过我的人
+//点赞过我的人,Author
 - (void)myPraisePersons:(NSInteger)limitStart limitEnd:(NSInteger)limitEnd block:(ActionCompleteBlock)block {
     MyPraisePersonsAction* action = [[MyPraisePersonsAction alloc] init];
     action.limitStart = limitStart;
@@ -265,7 +265,7 @@ DEF_SINGLETON(ProvisionManager);
     }];
 }
 
-//认为我很酷的人
+//认为我很酷的人,Author
 - (void)myCoolPersons:(NSInteger)limitStart limitEnd:(NSInteger)limitEnd block:(ActionCompleteBlock)block {
     MyCoolPersonsAction* action = [[MyCoolPersonsAction alloc] init];
     action.limitStart = limitStart;
