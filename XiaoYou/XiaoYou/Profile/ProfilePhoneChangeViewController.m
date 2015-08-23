@@ -78,6 +78,7 @@
     _waitLabel.hidden = true;
     
     _codeField = [self createField:1];
+    _codeField.keyboardType = UIKeyboardTypeNumberPad;
     [_codeField mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(_phoneField.mas_bottom).offset(2);
     }];
@@ -175,7 +176,10 @@
         if (message.isSuccess) {
             [hud removeFromSuperview];
             if (_hasPhone) {
-                
+                [YUtils showTitle:@"绑定成功"];
+                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 1*NSEC_PER_SEC), dispatch_get_main_queue(), ^{
+                    [self.navigationController popViewControllerAnimated:true];
+                });
             } else {
                 [self.navigationController pushViewController:[[ProfileChangePwdViewController alloc] init] animated:true];
             }
