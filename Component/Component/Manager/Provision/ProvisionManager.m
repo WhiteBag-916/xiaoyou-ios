@@ -37,7 +37,7 @@
 
 @interface ProvisionManager ()
 
-@property (nonatomic, strong) ProfileInfo *profileInfo; //个人信息
+@property (nonatomic, strong) ProfileInfo *profileInfo; //个人信息,尽量用profile
 @property (nonatomic, strong) LoginResp *loginResp;     //登录信息
 
 @end
