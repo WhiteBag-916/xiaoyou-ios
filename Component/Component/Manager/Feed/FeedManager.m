@@ -9,6 +9,7 @@
 #import "FeedManager.h"
 #import "YFoundation.h"
 #import "YQueue.h"
+#import "MyFeedAction.h"
 
 #define KFeedManagerSyncQueue @"kFeedManagerSyncQueue"
 
@@ -44,7 +45,7 @@ DEF_SINGLETON(FeedManager);
 
 //获取我的动态
 - (void)getMyFeed:(ActionCompleteBlock)block {
-    MyCommentPersonsAction* action = [[MyCommentPersonsAction alloc] init];
+    MyFeedAction* action = [[MyFeedAction alloc] init];
     
     [YAction startAction:action completionBlock:^(YActionMessage* message) {
         //主线程处理界面
