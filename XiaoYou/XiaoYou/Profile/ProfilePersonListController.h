@@ -12,4 +12,6 @@
 
 - (id)initWithType:(int)type;
 
+- (id)initWithType:(int)type feedId:(NSString *)feedId;
+
 @end

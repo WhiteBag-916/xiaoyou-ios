@@ -86,7 +86,7 @@
         make.right.mas_equalTo(-kPaddingDistance);
         make.top.mas_equalTo(kPaddingDistance);
     }];
-    [_connectTag updateTag:@[@"班",@"社",@"系",@"团",@"啊"]];
+//    [_connectTag updateTag:@[@"班",@"社",@"系",@"团",@"啊"]];
     
     //消息
     _statesLabel = [[UILabel alloc] init];

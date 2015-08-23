@@ -65,8 +65,11 @@
     } else {
         [_tagView setData:info.tags];
         _contentLabel.text = info.feed.content;
-        
-        [_imgGroup updateWithImgs:[info.feed.img componentsSeparatedByString:@","] bigPics:[info.feed.img componentsSeparatedByString:@","]];
+        if (info.feed.img.length == 0) {
+            [_imgGroup updateWithImgs:nil bigPics:nil];
+        } else {
+            [_imgGroup updateWithImgs:[info.feed.img componentsSeparatedByString:@","] bigPics:[info.feed.img componentsSeparatedByString:@","]];
+        }
     }
 }
 

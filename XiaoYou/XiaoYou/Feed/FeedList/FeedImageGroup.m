@@ -122,11 +122,11 @@
         [_contentView.subviews[i] setHidden:true];
     }
     UIImageView *img = (UIImageView *)[_contentView viewWithTag:KIMGTAG];
-    [img mas_makeConstraints:^(MASConstraintMaker *make) {
+    [img mas_remakeConstraints:^(MASConstraintMaker *make) {
         make.edges.equalTo(_contentView);
     }];
     img.contentMode = UIViewContentModeScaleAspectFit;
-    [img sd_setImageWithURL:[NSURL URLWithString:url]];
+    [img setNormalImageWithUrl:url];
 }
 
 - (void)updateWithPhotos:(NSArray *)pics bigPics:(NSArray *)bigPics {
@@ -152,7 +152,7 @@
 - (void)normalForImages:(NSArray *)urls {
     [self moveToLine:(int)(urls.count / 3)];
     for (int i = 0; i < urls.count; i ++) {
-        [(UIImageView *)[_contentView viewWithTag:KIMGTAG+i] sd_setImageWithURL:[NSURL URLWithString:urls[i]]];
+        [(UIImageView *)[_contentView viewWithTag:KIMGTAG+i] setNormalImageWithUrl:urls[i]];
     }
 }
 - (void)moveToLine:(int)index {

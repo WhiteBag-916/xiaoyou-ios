@@ -10,6 +10,7 @@
 #import "ProfilePersonListTableView.h"
 @interface ProfilePersonListController()
 @property (nonatomic, assign) int type;
+@property (nonatomic, strong) NSString *feedId;
 @property (nonatomic, strong) ProfilePersonListTableView *tableView;
 @end
 
@@ -20,6 +21,13 @@
     if (self) {
         self.hidesBottomBarWhenPushed = true;
         _type = type;
+    }
+    return self;
+}
+- (id)initWithType:(int)type feedId:(NSString *)feedId {
+    self =  [self initWithType:type];
+    if (self) {
+        _feedId = feedId;
     }
     return self;
 }
@@ -51,6 +59,6 @@
     self.navigationController.navigationBarHidden = false;
 }
 - (void)viewDidAppear:(BOOL)animated {
-    [_tableView loadData:@[@"2"]];
+    [_tableView loadData];
 }
 @end

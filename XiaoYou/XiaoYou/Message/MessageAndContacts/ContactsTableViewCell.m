@@ -138,7 +138,7 @@ NSString *const kContactsTableViewCell = @"ContactsTableViewCell";
         [_headImageView sd_setImageWithURL:modelDic[@"icon"] placeholderImage:[UIImage imageNamed:@"default_head"]];
     }
     
-    [_connectTag updateTag:@[@"班",@"社",@"系",@"团",@"啊"]];
+//    [_connectTag updateTag:@[@"班",@"社",@"系",@"团",@"啊"]];
     if ([modelDic[@"isRemind"] isEqualToString:@"y"])
     {
         _remindImageView.hidden = YES;

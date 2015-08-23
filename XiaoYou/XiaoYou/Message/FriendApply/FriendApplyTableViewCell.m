@@ -101,7 +101,7 @@ typedef enum : NSUInteger {
 //            make.left.equalTo(_sexLabel.mas_right).offset(kPaddingDistance);
             make.height.mas_equalTo(kDetailButtonHeight);
         }];
-        [_connectTag updateTag:@[@"班",@"社",@"系",@"团",@"啊"]];
+//        [_connectTag updateTag:@[@"班",@"社",@"系",@"团",@"啊"]];
         
         //院系信息
         _infoLabel = [[UILabel alloc] init];

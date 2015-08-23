@@ -31,7 +31,7 @@
 - (void)setData:(NSString *)userId imageUrl:(NSString *)imageUrl {
     _userId = userId;
     _imgUrl = imageUrl;
-    [self sd_setImageWithURL:[NSURL URLWithString:_imgUrl]];
+    [self setFaceImageWithUrl:imageUrl];
 }
 
 - (void)didClick {

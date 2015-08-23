@@ -54,13 +54,20 @@
         self.hidden = true;
     } else {
         self.hidden = false;
+        BOOL hasRelate = false;
         for (int i = 0; i < tags.count; i++) {
+            BOOL isRelate = [tags[i] equal];
+            hasRelate |= isRelate;
             SKTag *tag = [SKTag tagWithText:[tags[i] name]];
             tag.font = CONTENT_FONT(10);
-            tag.textColor = KCOLORWHITE_696969;
-            tag.textColor = KCOLORGREEN_009688;
+            if (isRelate) {
+                tag.textColor = KCOLORGREEN_009688;
+            } else {
+                tag.textColor = KCOLORWHITE_696969;
+            }
             [_tagContent addTag:tag];
         }
+        [self setIsRelated:hasRelate];
     }
 }
 
