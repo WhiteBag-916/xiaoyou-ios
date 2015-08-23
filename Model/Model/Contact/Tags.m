@@ -1,15 +1,15 @@
 //
 //  Tags.m
 //
-//  Created by HuiYin  on 15/8/12
+//  Created by   on 15/8/22
 //  Copyright (c) 2015 __MyCompanyName__. All rights reserved.
 //
 
 #import "Tags.h"
 
 
+NSString *const kTagsId = @"id";
 NSString *const kTagsName = @"name";
-NSString *const kTagsCode = @"id";
 
 
 @interface Tags ()
@@ -20,8 +20,8 @@ NSString *const kTagsCode = @"id";
 
 @implementation Tags
 
+@synthesize internalBaseClassIdentifier = _internalBaseClassIdentifier;
 @synthesize name = _name;
-@synthesize code = _code;
 
 
 + (instancetype)modelObjectWithDictionary:(NSDictionary *)dict
@@ -36,8 +36,8 @@ NSString *const kTagsCode = @"id";
     // This check serves to make sure that a non-NSDictionary object
     // passed into the model class doesn't break the parsing.
     if(self && [dict isKindOfClass:[NSDictionary class]]) {
+            self.internalBaseClassIdentifier = [[self objectOrNilForKey:kTagsId fromDictionary:dict] doubleValue];
             self.name = [self objectOrNilForKey:kTagsName fromDictionary:dict];
-            self.code = [self objectOrNilForKey:kTagsCode fromDictionary:dict];
 
     }
     
@@ -48,8 +48,8 @@ NSString *const kTagsCode = @"id";
 - (NSDictionary *)dictionaryRepresentation
 {
     NSMutableDictionary *mutableDict = [NSMutableDictionary dictionary];
+    [mutableDict setValue:[NSNumber numberWithDouble:self.internalBaseClassIdentifier] forKey:kTagsId];
     [mutableDict setValue:self.name forKey:kTagsName];
-    [mutableDict setValue:self.code forKey:kTagsCode];
 
     return [NSDictionary dictionaryWithDictionary:mutableDict];
 }
@@ -73,16 +73,16 @@ NSString *const kTagsCode = @"id";
 {
     self = [super init];
 
+    self.internalBaseClassIdentifier = [aDecoder decodeDoubleForKey:kTagsId];
     self.name = [aDecoder decodeObjectForKey:kTagsName];
-    self.code = [aDecoder decodeObjectForKey:kTagsCode];
     return self;
 }
 
 - (void)encodeWithCoder:(NSCoder *)aCoder
 {
 
+    [aCoder encodeDouble:_internalBaseClassIdentifier forKey:kTagsId];
     [aCoder encodeObject:_name forKey:kTagsName];
-    [aCoder encodeObject:_code forKey:kTagsCode];
 }
 
 - (id)copyWithZone:(NSZone *)zone
@@ -91,8 +91,8 @@ NSString *const kTagsCode = @"id";
     
     if (copy) {
 
+        copy.internalBaseClassIdentifier = self.internalBaseClassIdentifier;
         copy.name = [self.name copyWithZone:zone];
-        copy.code = [self.code copyWithZone:zone];
     }
     
     return copy;

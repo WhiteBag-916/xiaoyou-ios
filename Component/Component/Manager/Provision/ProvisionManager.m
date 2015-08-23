@@ -18,8 +18,20 @@
 #import "TagListAction.h"
 #import "UploadHeadImageAction.h"
 #import "UploadTagCodes.h"
+#import "ProfileInfo.h"
+#import "ProfileAction.h"
+#import "YNotificationDefine.h"
+#import "UploadImage.h"
+#import "MyCommentPersonsAction.h"
+#import "MyPraisePersonsAction.h"
 
 #define kProvisionManagerSyncQueue @"kProvisionManagerSyncQueue"
+
+@interface ProvisionManager ()
+
+@property (nonatomic, strong) ProfileInfo *profileInfo; //个人信息
+
+@end
 
 @implementation ProvisionManager
 
@@ -44,7 +56,9 @@ DEF_SINGLETON(ProvisionManager);
 
 - (void)appDidLogin:(NSDictionary *)loginInfo
 {
+    [self initProfileData];
     
+    [self getProfileInfo];
 }
 
 - (void)appDidLogout
@@ -68,6 +82,25 @@ DEF_SINGLETON(ProvisionManager);
     [YShareData defaultData][kShareData_LoginAccount] = loginResp.studentNo;
     [YShareData defaultData][kShareData_SchoolName] = loginResp.schoolName;
     [YShareData defaultData][kShareData_SchoolCode] = loginResp.schoolCode;
+}
+
+//初始化个人数据,自动登录
+- (void)initProfileData{
+    NSString *cachePath = [[YDirectory fileCache] stringByAppendingString:NSStringFromClass([ProfileInfo class])];
+    _profileInfo = [ProfileInfo instanceWithFile:cachePath];
+}
+
+//获取个人信息
+- (ProfileInfo *)getProfile {
+    return _profileInfo;
+}
+
+//更新个人常用信息
+- (void)saveProfileInfo
+{
+    //存文件
+    NSString *cachePath = [[YDirectory fileCache] stringByAppendingString:NSStringFromClass([ProfileInfo class])];
+    [_profileInfo writeToFile:cachePath];
 }
 
 - (void)goLogin:(NSString *)account password:(NSString *)password block:(ActionCompleteBlock)block
@@ -144,6 +177,14 @@ DEF_SINGLETON(ProvisionManager);
     action.imagePath = path;
     
     [YAction startAction:action completionBlock:^(YActionMessage* message) {
+        if (message.isSuccess) {
+            //更改缓存
+            if (nil != _profileInfo) {
+                UploadImage *uploadImage = (UploadImage *)message.object;
+                _profileInfo.headPic = uploadImage.url;
+                [self saveProfileInfo];
+            }
+        }
         //主线程处理界面
         block(message);
     }];
@@ -153,6 +194,51 @@ DEF_SINGLETON(ProvisionManager);
 - (void)uploadTagCodes:(NSString *)tagCodes block:(ActionCompleteBlock)block {
     UploadTagCodes* action = [[UploadTagCodes alloc] init];
     action.tagCodes = tagCodes;
+    
+    [YAction startAction:action completionBlock:^(YActionMessage* message) {
+        //主线程处理界面
+        block(message);
+    }];
+}
+
+//获取个人Profile信息
+- (void)getProfileInfo {
+    ProfileAction* action = [[ProfileAction alloc] init];
+    
+    [YAction startAction:action completionBlock:^(YActionMessage* message) {
+        if (message.isSuccess) {
+            _profileInfo = message.object;
+            [self saveProfileInfo];
+        }
+        //发送通知,告知界面刷新
+        [self postNotificationOnMainThreadName:kNotification_Profile_GetProfile
+                                        object:nil
+                                      userInfo:@{kNofification_Request_Message:message}];
+    }];
+}
+
+//更新缓存标签
+- (void)updateTagList:(NSArray *)tagList {
+    if (nil != _profileInfo) {
+        _profileInfo.tagModels = [NSArray arrayWithArray:tagList];
+        
+        [self saveProfileInfo];
+    }
+}
+
+//评论过我的人,Author
+- (void)myCommentPersons:(ActionCompleteBlock)block {
+    MyCommentPersonsAction* action = [[MyCommentPersonsAction alloc] init];
+    
+    [YAction startAction:action completionBlock:^(YActionMessage* message) {
+        //主线程处理界面
+        block(message);
+    }];
+}
+
+//点赞过我的人
+- (void)myPraisePersons:(ActionCompleteBlock)block {
+    MyPraisePersonsAction* action = [[MyPraisePersonsAction alloc] init];
     
     [YAction startAction:action completionBlock:^(YActionMessage* message) {
         //主线程处理界面

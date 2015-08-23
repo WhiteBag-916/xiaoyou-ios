@@ -54,4 +54,8 @@
 
 //导航栏右侧确定按钮
 - (void)showCustomNavigationConfirmButton;
+
+- (void)showEditMode;
+
+- (void)showOrignMode;
 @end

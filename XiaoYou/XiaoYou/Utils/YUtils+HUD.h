@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "YUtils.h"
-@class MBProgressHUD;
+#import "MBProgressHUD.h"
 @interface YUtils(HUD)
 
 

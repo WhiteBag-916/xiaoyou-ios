@@ -10,15 +10,15 @@
 #import "ProfilePersonListTableView.h"
 #import "ProfilePersonListTableViewCell.h"
 @interface ProfilePersonListTableView()<UITableViewDataSource, UITableViewDelegate>
-@property (nonatomic, assign) BOOL isRespect;
+@property (nonatomic, assign) int type;
 @property (nonatomic, strong) NSArray *personListArray;
 @end
 
 @implementation ProfilePersonListTableView
-- (id)initWIthType:(BOOL)isRespect {
+- (id)initWIthType:(int)type {
     self = [super init];
     if (self) {
-        _isRespect = isRespect;
+        _type = type;
         self.delegate = self;
         self.dataSource = self;
         [self registerClass:[ProfilePersonListTableViewCell class] forCellReuseIdentifier:kProfilePersonListTableViewCell];
