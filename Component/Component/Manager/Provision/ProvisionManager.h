@@ -56,6 +56,6 @@ AS_SINGLETON(ProvisionManager);
 //绑定手机
 - (void)receiveMobileAuthCode:(NSString *)mobilePhone authCode:(NSString *)authCode block:(ActionCompleteBlock)block;
 //登出
-- (void)logout:(ActionCompleteBlock)block;
+- (void)logout;
 
 @end
