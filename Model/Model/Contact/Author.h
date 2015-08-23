@@ -17,7 +17,7 @@
 @property (nonatomic, strong) NSString *schoolCode;
 @property (nonatomic, strong) NSArray *tagsCommon;
 @property (nonatomic, strong) NSString *headPic;
-@property (nonatomic, strong) NSArray *tagCodes;
+@property (nonatomic, strong) NSString *tagCodes;
 @property (nonatomic, strong) NSString *studentNo;
 @property (nonatomic, strong) NSArray *propetiesCommon;
 @property (nonatomic, strong) NSArray *classCodes;

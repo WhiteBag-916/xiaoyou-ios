@@ -7,6 +7,8 @@
 
 #import "Author.h"
 #import "ProvinceCode.h"
+#import "Tags.h"
+#import "ClassCodes.h"
 
 
 NSString *const kAuthorProvinceCode = @"provinceCode";
@@ -58,12 +60,48 @@ NSString *const kAuthorGroupCodes = @"groupCodes";
             self.provinceCode = [ProvinceCode modelObjectWithDictionary:[dict objectForKey:kAuthorProvinceCode]];
             self.uid = [self objectOrNilForKey:kAuthorUid fromDictionary:dict];
             self.schoolCode = [self objectOrNilForKey:kAuthorSchoolCode fromDictionary:dict];
-            self.tagsCommon = [self objectOrNilForKey:kAuthorTagsCommon fromDictionary:dict];
+    NSObject *receivedTagsCommon = [dict objectForKey:kAuthorTagsCommon];
+    NSMutableArray *parsedTagsCommon = [NSMutableArray array];
+    if ([receivedTagsCommon isKindOfClass:[NSArray class]]) {
+        for (NSDictionary *item in (NSArray *)receivedTagsCommon) {
+            if ([item isKindOfClass:[NSDictionary class]]) {
+                [parsedTagsCommon addObject:[Tags modelObjectWithDictionary:item]];
+            }
+       }
+    } else if ([receivedTagsCommon isKindOfClass:[NSDictionary class]]) {
+       [parsedTagsCommon addObject:[Tags modelObjectWithDictionary:(NSDictionary *)receivedTagsCommon]];
+    }
+
+    self.tagsCommon = [NSArray arrayWithArray:parsedTagsCommon];
             self.headPic = [self objectOrNilForKey:kAuthorHeadPic fromDictionary:dict];
             self.tagCodes = [self objectOrNilForKey:kAuthorTagCodes fromDictionary:dict];
             self.studentNo = [self objectOrNilForKey:kAuthorStudentNo fromDictionary:dict];
-            self.propetiesCommon = [self objectOrNilForKey:kAuthorPropetiesCommon fromDictionary:dict];
-            self.classCodes = [self objectOrNilForKey:kAuthorClassCodes fromDictionary:dict];
+    NSObject *receivedPropetiesCommon = [dict objectForKey:kAuthorPropetiesCommon];
+    NSMutableArray *parsedPropetiesCommon = [NSMutableArray array];
+    if ([receivedPropetiesCommon isKindOfClass:[NSArray class]]) {
+        for (NSDictionary *item in (NSArray *)receivedPropetiesCommon) {
+            if ([item isKindOfClass:[NSDictionary class]]) {
+                [parsedPropetiesCommon addObject:[Tags modelObjectWithDictionary:item]];
+            }
+       }
+    } else if ([receivedPropetiesCommon isKindOfClass:[NSDictionary class]]) {
+       [parsedPropetiesCommon addObject:[Tags modelObjectWithDictionary:(NSDictionary *)receivedPropetiesCommon]];
+    }
+
+    self.propetiesCommon = [NSArray arrayWithArray:parsedPropetiesCommon];
+    NSObject *receivedClassCodes = [dict objectForKey:kAuthorClassCodes];
+    NSMutableArray *parsedClassCodes = [NSMutableArray array];
+    if ([receivedClassCodes isKindOfClass:[NSArray class]]) {
+        for (NSDictionary *item in (NSArray *)receivedClassCodes) {
+            if ([item isKindOfClass:[NSDictionary class]]) {
+                [parsedClassCodes addObject:[ClassCodes modelObjectWithDictionary:item]];
+            }
+       }
+    } else if ([receivedClassCodes isKindOfClass:[NSDictionary class]]) {
+       [parsedClassCodes addObject:[ClassCodes modelObjectWithDictionary:(NSDictionary *)receivedClassCodes]];
+    }
+
+    self.classCodes = [NSArray arrayWithArray:parsedClassCodes];
             self.name = [self objectOrNilForKey:kAuthorName fromDictionary:dict];
             self.groupCodes = [self objectOrNilForKey:kAuthorGroupCodes fromDictionary:dict];
 
@@ -91,17 +129,7 @@ NSString *const kAuthorGroupCodes = @"groupCodes";
     }
     [mutableDict setValue:[NSArray arrayWithArray:tempArrayForTagsCommon] forKey:kAuthorTagsCommon];
     [mutableDict setValue:self.headPic forKey:kAuthorHeadPic];
-    NSMutableArray *tempArrayForTagCodes = [NSMutableArray array];
-    for (NSObject *subArrayObject in self.tagCodes) {
-        if([subArrayObject respondsToSelector:@selector(dictionaryRepresentation)]) {
-            // This class is a model object
-            [tempArrayForTagCodes addObject:[subArrayObject performSelector:@selector(dictionaryRepresentation)]];
-        } else {
-            // Generic object
-            [tempArrayForTagCodes addObject:subArrayObject];
-        }
-    }
-    [mutableDict setValue:[NSArray arrayWithArray:tempArrayForTagCodes] forKey:kAuthorTagCodes];
+    [mutableDict setValue:self.tagCodes forKey:kAuthorTagCodes];
     [mutableDict setValue:self.studentNo forKey:kAuthorStudentNo];
     NSMutableArray *tempArrayForPropetiesCommon = [NSMutableArray array];
     for (NSObject *subArrayObject in self.propetiesCommon) {
