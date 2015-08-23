@@ -132,7 +132,7 @@ NSString *const kMessageTableViewCell = @"MessageTableViewCellId";
     
     NSDictionary * userInfoDic = [self getUserInfo:conversation];
     
-    _studentNum = conversation.chatter;
+    _studentDic = userInfoDic;
     //消息内容
     _messageLabel.text = [self subTitleMessageByConversation:conversation];
     

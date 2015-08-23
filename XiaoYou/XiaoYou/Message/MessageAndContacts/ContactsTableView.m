@@ -14,8 +14,9 @@
 #import "ChatViewController.h"
 #import "Masonry.h"
 #import "YSystemDefine.h"
-#import "XYGroupInfoDetailViewController.h"
 #import "ContactManager.h"
+#import "LinkManList.h"
+#import "UnionList.h"
 
 #define kRowHeight                     68
 #define kHeadWidthAndHeight            40
@@ -37,8 +38,13 @@
 @property (nonatomic,strong)  UILabel * defaultLabel;
 @property (nonatomic,strong) UIImageView * remindImageView;
 
-//原始数据源
+//原始model
+@property (nonatomic,strong)LinkManModel * linkManModel;
+
+//head数据信息
 @property (nonatomic,strong) NSMutableArray *originalContactsDataSource;
+//原始数据源
+@property (nonatomic,strong) NSMutableDictionary *headDataSourceDic;
 
 //转换后数据源
 @property (nonatomic,strong) NSMutableArray *contactsDataSource;
@@ -95,9 +101,15 @@
 
 -(void)refreshTableView:(LinkManModel *) model
 {
+    
+    _linkManModel = model;
+    //联系人model数组
     _originalContactsDataSource = [NSMutableArray arrayWithArray:model.linkManList];
+    //联系人+社团model数组
     [_originalContactsDataSource addObjectsFromArray:model.unionList];
+    //索引数组
     _indexTitleArr = [[NSMutableArray alloc] init];
+    //数据源
     _contactsDataSource = [NSMutableArray arrayWithArray:[self transformDataSouceArr:_originalContactsDataSource]];
     [self setUpHeaderView:model.classList];
     [self reloadData];
@@ -105,7 +117,7 @@
 
 -(void)setUpHeaderView:(NSArray *) headerDataSouce
 {
-    NSDictionary * modelDic = [headerDataSouce[0] dictionaryRepresentation];
+    _headDataSourceDic = (NSMutableDictionary *)[headerDataSouce[0] dictionaryRepresentation];
     UIView * backView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, kRowHeight)];
     UITapGestureRecognizer * tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapGestureRecognizerAction)];
     [backView addGestureRecognizer:tapGestureRecognizer];
@@ -140,7 +152,7 @@
         make.height.mas_equalTo(kRemindImageViewHeight);
         make.height.mas_equalTo(kRemindImageViewWidth);
     }];
-    if ([modelDic[@"isRemind"] isEqualToString:@"y"])
+    if ([_headDataSourceDic[@"isRemind"] isEqualToString:@"y"])
     {
         _remindImageView.hidden = YES;
     }
@@ -151,7 +163,7 @@
     //姓名
     _nameLabel = [[UILabel alloc] init];
     _nameLabel.font = CONTENT_FONT(14);
-    _nameLabel.text = modelDic[@"name"];
+    _nameLabel.text = _headDataSourceDic[@"name"];
     _nameLabel.backgroundColor = [UIColor clearColor];
     [backView addSubview:_nameLabel];
     [_nameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -177,9 +189,10 @@
 
 -(void)tapGestureRecognizerAction
 {
-    self.myController.hidesBottomBarWhenPushed = YES;
-    XYGroupInfoDetailViewController * groupVC = [[XYGroupInfoDetailViewController alloc] init];
-    [self.myController.navigationController pushViewController:groupVC animated:YES];
+    ChatViewController * chatVC = [[ChatViewController alloc] initWithChatter:_headDataSourceDic[@"thirdCode"] isGroup:YES];
+    chatVC.isSystemMessage = NO;
+    chatVC.studentDic = _headDataSourceDic;
+    [self.myController.navigationController pushViewController:chatVC animated:YES needHiddenBottomBar:YES];
 }
 
 
@@ -247,38 +260,6 @@
     return resultDataSouceArr;
 }
 
-//-(NSDictionary *)transformModelToDictionary:(ContactsListModel.friendList *) model
-//{
-//    NSMutableDictionary * dic = [[NSMutableDictionary alloc] init];
-//    if (model.linkStudentName != nil) {
-//        [dic setObject:model.linkStudentName forKey:@"linkStudentName"];
-//    }
-//    if (model.myStudentNo != nil) {
-//        [dic setObject:model.myStudentNo forKey:@"myStudentNo"];
-//    }
-//    if (model.linkStudentNo != nil) {
-//        [dic setObject:model.linkStudentNo forKey:@"linkStudentNo"];
-//    }
-//    if (model.tag != nil) {
-//        [dic setObject:model.tag forKey:@"tag"];
-//    }
-//    if (model.icon != nil) {
-//        [dic setObject:model.icon forKey:@"icon"];
-//    }
-//    if (model.internalBaseClassIdentifier != nil) {
-//        [dic setObject:model.internalBaseClassIdentifier forKey:@"iid"];
-//    }
-//    if (model.isShield != nil) {
-//        [dic setObject:model.isShield forKey:@"isShield"];
-//    }
-//    if (model.isRemind != nil) {
-//        [dic setObject:model.isRemind forKey:@"isRemind"];
-//    }
-//    if (model.time != nil) {
-//        [dic setObject:model.time forKey:@"time"];
-//    }
-//    return dic;
-//}
 
 #pragma mark - UITableViewDataSource和UITableViewDelegate
 
@@ -355,8 +336,6 @@
     }
     else
     {
-//        NSArray *rooms = [[EaseMob sharedInstance].chatManager groupList];
-//        EMGroup *group = [self.dataSource objectAtIndex:indexPath.row];
         ChatViewController * chatVC = [[ChatViewController alloc] initWithChatter:cell.studentDic[@"thirdCode"] isGroup:YES];
         chatVC.isSystemMessage = NO;
         chatVC.studentDic = cell.studentDic;
@@ -376,15 +355,17 @@
         YLogD(@"%@",self.deleteIndexPathOfCell);
         ContactsTableViewCell * cell = (ContactsTableViewCell *)[self cellForRowAtIndexPath:self.deleteIndexPathOfCell];
         
-        [self.originalContactsDataSource enumerateObjectsUsingBlock:^(LinkManModel * obj, NSUInteger idx, BOOL *stop) {
-//            if ([obj.linkStudentNo isEqualToString:cell.linkStudentNo])
-//            {
-//                [self.originalContactsDataSource removeObject:obj];
-//                [self refreshTableView:self.originalContactsDataSource];
-//                
-////                [self deleteContactListRequest:cell.linkStudentNo];
-//            }
-        }];
+        for (LinkManList * obj in _linkManModel.linkManList) {
+            if ([cell.studentDic[@"thirdCode"] isEqualToString:obj.thirdCode])
+            {
+                NSMutableArray * linkManArr = [[NSMutableArray alloc] initWithArray:_linkManModel.linkManList];
+                [linkManArr removeObject:obj];
+                _linkManModel.linkManList = [[NSArray alloc] initWithArray:linkManArr];
+                [self refreshTableView:_linkManModel];
+             
+                [[ContactManager sharedInstance] saveContactsList:_linkManModel];
+            }
+        }
       
     }
 }
