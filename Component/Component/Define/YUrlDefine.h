@@ -44,6 +44,10 @@
 #define api_login_addTag @"/mobile/user/v2/addTag"
 //个人信息
 #define api_login_profile @"/mobile/user/v2/profile"
+//评论过我的人
+#define api_login_myCommentPersons @"/mobile/user/v2/myCommentPersons"
+//点赞过我的人
+#define api_login_myPraisePersons @"/mobile/user/v2/myPraisePersons"
 
 /**********************************************************
  Url Define: FeedManager

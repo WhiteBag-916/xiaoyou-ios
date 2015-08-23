@@ -35,7 +35,7 @@
     //自动登录
     //判断是否有token
     NSString *token = [[NSUserDefaults standardUserDefaults] objectForKey:kShareData_Token];
-    if (token.length < 0) {
+    if (token.length > 0) {
         //初始化登录数据
         [[ProvisionManager sharedInstance] initLoginData];
         //抛登录成功通知

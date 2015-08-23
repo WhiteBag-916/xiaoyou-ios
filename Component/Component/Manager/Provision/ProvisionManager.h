@@ -9,6 +9,8 @@
 #import "YManager.h"
 #import "YAction.h"
 
+@class ProfileInfo;
+
 @interface ProvisionManager : YManager<YManager>
 AS_SINGLETON(ProvisionManager);
 
@@ -16,6 +18,8 @@ AS_SINGLETON(ProvisionManager);
 - (void)initLoginData;
 //初始化个人数据,自动登录
 - (void)initProfileData;
+//获取个人信息
+- (ProfileInfo *)getProfile;
 //登录
 - (void)goLogin:(NSString *)account password:(NSString *)password block:(ActionCompleteBlock)block;
 //获取学校列表
@@ -32,5 +36,9 @@ AS_SINGLETON(ProvisionManager);
 - (void)getProfileInfo;
 //更新缓存标签
 - (void)updateTagList:(NSArray *)tagList;
+//评论过我的人
+- (void)myCommentPersons:(ActionCompleteBlock)block;
+//点赞过我的人
+- (void)myPraisePersons:(ActionCompleteBlock)block;
 
 @end

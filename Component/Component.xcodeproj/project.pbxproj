@@ -11,6 +11,8 @@
 		20859A821B64BD8500580ED3 /* ContactManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 20859A811B64BD8500580ED3 /* ContactManager.m */; };
 		20859A851B64BD9000580ED3 /* MessageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 20859A841B64BD9000580ED3 /* MessageManager.m */; };
 		20859A941B64C06A00580ED3 /* LoginAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 20859A931B64C06A00580ED3 /* LoginAction.m */; };
+		20DA1A5A1B89751500DEF95C /* MyCommentPersonsAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 20DA1A591B89751500DEF95C /* MyCommentPersonsAction.m */; };
+		20DA1A5D1B89752000DEF95C /* MyPraisePersonsAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 20DA1A5C1B89752000DEF95C /* MyPraisePersonsAction.m */; };
 		20DAF9A31B871989005B7932 /* SchoolListAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 20DAF9A21B871989005B7932 /* SchoolListAction.m */; };
 		20DAF9E11B87397A005B7932 /* ForgotPasswordAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 20DAF9E01B87397A005B7932 /* ForgotPasswordAction.m */; };
 		20DAF9E61B8750A4005B7932 /* YDirectory+Data.m in Sources */ = {isa = PBXBuildFile; fileRef = 20DAF9E51B8750A4005B7932 /* YDirectory+Data.m */; };
@@ -59,6 +61,10 @@
 		20859A871B64BF3200580ED3 /* YUrlDefine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YUrlDefine.h; sourceTree = "<group>"; };
 		20859A921B64C06A00580ED3 /* LoginAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginAction.h; sourceTree = "<group>"; };
 		20859A931B64C06A00580ED3 /* LoginAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginAction.m; sourceTree = "<group>"; };
+		20DA1A581B89751500DEF95C /* MyCommentPersonsAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyCommentPersonsAction.h; sourceTree = "<group>"; };
+		20DA1A591B89751500DEF95C /* MyCommentPersonsAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyCommentPersonsAction.m; sourceTree = "<group>"; };
+		20DA1A5B1B89752000DEF95C /* MyPraisePersonsAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyPraisePersonsAction.h; sourceTree = "<group>"; };
+		20DA1A5C1B89752000DEF95C /* MyPraisePersonsAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyPraisePersonsAction.m; sourceTree = "<group>"; };
 		20DAF9A11B871989005B7932 /* SchoolListAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SchoolListAction.h; sourceTree = "<group>"; };
 		20DAF9A21B871989005B7932 /* SchoolListAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SchoolListAction.m; sourceTree = "<group>"; };
 		20DAF9DF1B87397A005B7932 /* ForgotPasswordAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ForgotPasswordAction.h; sourceTree = "<group>"; };
@@ -138,6 +144,10 @@
 				20E0BFF21B88B0CA00EDAED4 /* UploadTagCodes.m */,
 				20E0C00A1B88B0CA00EDAED4 /* ProfileAction.h */,
 				20E0C00B1B88B0CA00EDAED4 /* ProfileAction.m */,
+				20DA1A581B89751500DEF95C /* MyCommentPersonsAction.h */,
+				20DA1A591B89751500DEF95C /* MyCommentPersonsAction.m */,
+				20DA1A5B1B89752000DEF95C /* MyPraisePersonsAction.h */,
+				20DA1A5C1B89752000DEF95C /* MyPraisePersonsAction.m */,
 			);
 			path = Provision;
 			sourceTree = "<group>";
@@ -428,6 +438,7 @@
 				3320A6561B7498B200E018E1 /* ContactsListAction.m in Sources */,
 				20859A7C1B64BD5B00580ED3 /* ProvisionManager.m in Sources */,
 				20DBFD861B4FD3F5009134D0 /* YUtils+Component.m in Sources */,
+				20DA1A5A1B89751500DEF95C /* MyCommentPersonsAction.m in Sources */,
 				20DAF9E11B87397A005B7932 /* ForgotPasswordAction.m in Sources */,
 				20DAF9A31B871989005B7932 /* SchoolListAction.m in Sources */,
 				20E0BFEA1B88B0CA00EDAED4 /* TagListAction.m in Sources */,
@@ -437,6 +448,7 @@
 				20E0BFED1B88B0CA00EDAED4 /* MessageListAction.m in Sources */,
 				20859A821B64BD8500580ED3 /* ContactManager.m in Sources */,
 				20E0BFF01B88B0CA00EDAED4 /* UploadHeadImageAction.m in Sources */,
+				20DA1A5D1B89752000DEF95C /* MyPraisePersonsAction.m in Sources */,
 				20859A941B64C06A00580ED3 /* LoginAction.m in Sources */,
 				20E341801B720A54008CADC3 /* ProfileDao.m in Sources */,
 				20DAF9E61B8750A4005B7932 /* YDirectory+Data.m in Sources */,
