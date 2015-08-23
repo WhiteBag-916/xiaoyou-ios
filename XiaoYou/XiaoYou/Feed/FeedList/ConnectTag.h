@@ -10,6 +10,6 @@
 
 @interface ConnectTag : UIView
 
-- (void)updateTag:(NSArray *)tags;
+- (void)updateWithTag:(NSArray *)tags;
 
 @end

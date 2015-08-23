@@ -9,10 +9,15 @@
 
 #import "ProfilePersonListTableView.h"
 #import "ProfilePersonListTableViewCell.h"
+#import "ProvisionManager.h"
+
+#define KPAGENUM 10
+
 @interface ProfilePersonListTableView()<UITableViewDataSource, UITableViewDelegate>
 @property (nonatomic, assign) int type;
 @property (nonatomic, strong) NSString *feedId;
 @property (nonatomic, strong) NSArray *personListArray;
+@property (nonatomic, assign) int page;
 @end
 
 @implementation ProfilePersonListTableView
@@ -25,6 +30,7 @@
         [self registerClass:[ProfilePersonListTableViewCell class] forCellReuseIdentifier:kProfilePersonListTableViewCell];
         self.tableFooterView = [UIView new];
         self.backgroundColor = KCOLORGREEN_f2f2f2;
+        _page = 0;
     }
     return self;
 }
@@ -43,7 +49,29 @@
 }
 - (void)loadNewData
 {
+    _page = 0;
+    if (_type == 0) {
+        [[ProvisionManager sharedInstance] myPraisePersons:_page * KPAGENUM limitEnd:(_page+1) * KPAGENUM block:^(YActionMessage *message) {
+            if (message.isSuccess) {
+                message.object;
+            } else {
+                [YUtils showTitleOn:self title:message.desc];
+            }
+        }];
+    }
     
+    if (_type == 1) {
+        [[ProvisionManager sharedInstance] myCoolPersons:_page * KPAGENUM limitEnd:(_page+1) * KPAGENUM block:^(YActionMessage *message) {
+            [self stopLoadNewData];
+            if (message.isSuccess) {
+                _personListArray = [NSArray arrayWithArray:message.object];
+                [self reloadData];
+                
+            } else {
+                [YUtils showTitleOn:self title:message.desc];
+            }
+        }];
+    }
 }
 
 - (void)loadMoreData
