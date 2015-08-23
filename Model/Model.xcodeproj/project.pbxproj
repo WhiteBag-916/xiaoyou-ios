@@ -17,8 +17,6 @@
 		20E0C06F1B88B0CA00EDAED4 /* FeedInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 20E0C06D1B88B0CA00EDAED4 /* FeedInfo.m */; };
 		20E0C0721B88B0CA00EDAED4 /* Author.m in Sources */ = {isa = PBXBuildFile; fileRef = 20E0C0711B88B0CA00EDAED4 /* Author.m */; };
 		20E0C0751B88B0CA00EDAED4 /* ProfileInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 20E0C0741B88B0CA00EDAED4 /* ProfileInfo.m */; };
-		20E0C07A1B88B0CA00EDAED4 /* ClassCodes.m in Sources */ = {isa = PBXBuildFile; fileRef = 20E0C0771B88B0CA00EDAED4 /* ClassCodes.m */; };
-		20E0C07B1B88B0CA00EDAED4 /* GroupCodes.m in Sources */ = {isa = PBXBuildFile; fileRef = 20E0C0791B88B0CA00EDAED4 /* GroupCodes.m */; };
 		20E0C07F1B88B0CA00EDAED4 /* ClassList.m in Sources */ = {isa = PBXBuildFile; fileRef = 20E0C07E1B88B0CA00EDAED4 /* ClassList.m */; };
 		20E0C0821B88B0CA00EDAED4 /* LinkManList.m in Sources */ = {isa = PBXBuildFile; fileRef = 20E0C0811B88B0CA00EDAED4 /* LinkManList.m */; };
 		20E0C0851B88B0CA00EDAED4 /* UnionList.m in Sources */ = {isa = PBXBuildFile; fileRef = 20E0C0841B88B0CA00EDAED4 /* UnionList.m */; };
@@ -81,10 +79,6 @@
 		20E0C0711B88B0CA00EDAED4 /* Author.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Author.m; sourceTree = "<group>"; };
 		20E0C0731B88B0CA00EDAED4 /* ProfileInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileInfo.h; sourceTree = "<group>"; };
 		20E0C0741B88B0CA00EDAED4 /* ProfileInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileInfo.m; sourceTree = "<group>"; };
-		20E0C0761B88B0CA00EDAED4 /* ClassCodes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClassCodes.h; sourceTree = "<group>"; };
-		20E0C0771B88B0CA00EDAED4 /* ClassCodes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClassCodes.m; sourceTree = "<group>"; };
-		20E0C0781B88B0CA00EDAED4 /* GroupCodes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroupCodes.h; sourceTree = "<group>"; };
-		20E0C0791B88B0CA00EDAED4 /* GroupCodes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroupCodes.m; sourceTree = "<group>"; };
 		20E0C07D1B88B0CA00EDAED4 /* ClassList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClassList.h; sourceTree = "<group>"; };
 		20E0C07E1B88B0CA00EDAED4 /* ClassList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClassList.m; sourceTree = "<group>"; };
 		20E0C0801B88B0CA00EDAED4 /* LinkManList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LinkManList.h; sourceTree = "<group>"; };
@@ -237,10 +231,6 @@
 				20E0C0811B88B0CA00EDAED4 /* LinkManList.m */,
 				20E0C07D1B88B0CA00EDAED4 /* ClassList.h */,
 				20E0C07E1B88B0CA00EDAED4 /* ClassList.m */,
-				20E0C0761B88B0CA00EDAED4 /* ClassCodes.h */,
-				20E0C0771B88B0CA00EDAED4 /* ClassCodes.m */,
-				20E0C0781B88B0CA00EDAED4 /* GroupCodes.h */,
-				20E0C0791B88B0CA00EDAED4 /* GroupCodes.m */,
 				20E0C0701B88B0CA00EDAED4 /* Author.h */,
 				20E0C0711B88B0CA00EDAED4 /* Author.m */,
 				331E17E01B7AFBC8006789B0 /* Tags.h */,
@@ -384,7 +374,6 @@
 				20DA1A601B8995A000DEF95C /* ProvinceCode.m in Sources */,
 				20E0BFFF1B88B0CA00EDAED4 /* UploadImage.m in Sources */,
 				333E95E21B70B7820001059D /* UpdateAvatarModel.m in Sources */,
-				20E0C07B1B88B0CA00EDAED4 /* GroupCodes.m in Sources */,
 				20E0C0821B88B0CA00EDAED4 /* LinkManList.m in Sources */,
 				331E17E41B7AFBC8006789B0 /* Tags.m in Sources */,
 				333E95E51B70B78C0001059D /* LastSystemPushInfoListModel.m in Sources */,
@@ -394,7 +383,6 @@
 				20E0C0851B88B0CA00EDAED4 /* UnionList.m in Sources */,
 				20E0C06F1B88B0CA00EDAED4 /* FeedInfo.m in Sources */,
 				333E95EB1B70B7AB0001059D /* SchoolListModel.m in Sources */,
-				20E0C07A1B88B0CA00EDAED4 /* ClassCodes.m in Sources */,
 				333E95DC1B70B75E0001059D /* PushInfoListModel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

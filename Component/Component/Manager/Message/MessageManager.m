@@ -14,6 +14,11 @@
 #import "EaseMob.h"
 
 #define kMessageManagerSyncQueue @"kMessageManagerSyncQueue"
+//两次提示的默认间隔
+static const CGFloat kDefaultPlaySoundInterval = 3.0;
+static NSString *kMessageType = @"MessageType";
+static NSString *kConversationChatter = @"ConversationChatter";
+static NSString *kGroupName = @"GroupName";
 
 typedef enum : NSUInteger {
     SYSTEM_MESSAGE,
@@ -94,6 +99,13 @@ DEF_SINGLETON(MessageManager);
 {
     [message updateMessageExtToDB];
     
+#if !TARGET_IPHONE_SIMULATOR
+    BOOL isAppActivity = [[UIApplication sharedApplication] applicationState] == UIApplicationStateActive;
+    if (!isAppActivity) {
+        [self showNotificationWithMessage:message];
+    }
+#endif
+    
 //    if ([message.messageBodies[0][@"ext"][@"server_flag"] isEqualToString:@"true"])
 //    {
 //        switch ([message.messageBodies[0][@"msg"][@"msg"][@"type"] integerValue])
@@ -167,5 +179,23 @@ DEF_SINGLETON(MessageManager);
     
 }
 
+- (void)showNotificationWithMessage:(EMMessage *)message
+{
+    //发送本地推送
+    UILocalNotification *notification = [[UILocalNotification alloc] init];
+    notification.fireDate = [NSDate date]; //触发通知的时间
+    
+    notification.alertBody = @"您有一条新消息";
+//    notification.alertAction = @"查看";
+    notification.timeZone = [NSTimeZone defaultTimeZone];
+    notification.soundName = UILocalNotificationDefaultSoundName;
+    NSMutableDictionary *userInfo = [NSMutableDictionary dictionary];
+    [userInfo setObject:[NSNumber numberWithInt:message.messageType] forKey:kMessageType];
+    [userInfo setObject:message.conversationChatter forKey:kConversationChatter];
+    notification.userInfo = userInfo;
+    
+    //发送通知
+    [[UIApplication sharedApplication] scheduleLocalNotification:notification];
+}
 
 @end

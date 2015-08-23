@@ -8,7 +8,6 @@
 #import "Author.h"
 #import "ProvinceCode.h"
 #import "Tags.h"
-#import "ClassCodes.h"
 
 
 NSString *const kAuthorProvinceCode = @"provinceCode";
@@ -94,16 +93,29 @@ NSString *const kAuthorGroupCodes = @"groupCodes";
     if ([receivedClassCodes isKindOfClass:[NSArray class]]) {
         for (NSDictionary *item in (NSArray *)receivedClassCodes) {
             if ([item isKindOfClass:[NSDictionary class]]) {
-                [parsedClassCodes addObject:[ClassCodes modelObjectWithDictionary:item]];
+                [parsedClassCodes addObject:[ProvinceCode modelObjectWithDictionary:item]];
             }
        }
     } else if ([receivedClassCodes isKindOfClass:[NSDictionary class]]) {
-       [parsedClassCodes addObject:[ClassCodes modelObjectWithDictionary:(NSDictionary *)receivedClassCodes]];
+       [parsedClassCodes addObject:[ProvinceCode modelObjectWithDictionary:(NSDictionary *)receivedClassCodes]];
     }
 
     self.classCodes = [NSArray arrayWithArray:parsedClassCodes];
             self.name = [self objectOrNilForKey:kAuthorName fromDictionary:dict];
-            self.groupCodes = [self objectOrNilForKey:kAuthorGroupCodes fromDictionary:dict];
+        
+        NSObject *receivedGroupCodes = [dict objectForKey:kAuthorGroupCodes];
+        NSMutableArray *parsedGroupCodes = [NSMutableArray array];
+        if ([receivedGroupCodes isKindOfClass:[NSArray class]]) {
+            for (NSDictionary *item in (NSArray *)receivedGroupCodes) {
+                if ([item isKindOfClass:[NSDictionary class]]) {
+                    [parsedGroupCodes addObject:[ProvinceCode modelObjectWithDictionary:item]];
+                }
+            }
+        } else if ([receivedGroupCodes isKindOfClass:[NSDictionary class]]) {
+            [parsedGroupCodes addObject:[ProvinceCode modelObjectWithDictionary:(NSDictionary *)receivedGroupCodes]];
+        }
+        
+        self.groupCodes = [NSArray arrayWithArray:parsedGroupCodes];
 
     }
     

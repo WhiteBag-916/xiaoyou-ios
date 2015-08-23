@@ -10,4 +10,7 @@
 
 @interface MyPraisePersonsAction : YHTTPRequestAction<YAction>
 
+@property (nonatomic, assign) NSInteger limitStart;
+@property (nonatomic, assign) NSInteger limitEnd;
+
 @end

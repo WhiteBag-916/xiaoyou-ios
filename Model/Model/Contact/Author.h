@@ -15,14 +15,14 @@
 @property (nonatomic, strong) ProvinceCode *provinceCode;
 @property (nonatomic, strong) NSString *uid;
 @property (nonatomic, strong) NSString *schoolCode;
-@property (nonatomic, strong) NSArray *tagsCommon;
+@property (nonatomic, strong) NSArray *tagsCommon;//Tags
 @property (nonatomic, strong) NSString *headPic;
 @property (nonatomic, strong) NSString *tagCodes;
 @property (nonatomic, strong) NSString *studentNo;
-@property (nonatomic, strong) NSArray *propetiesCommon;
-@property (nonatomic, strong) NSArray *classCodes;
+@property (nonatomic, strong) NSArray *propetiesCommon;//Tags
+@property (nonatomic, strong) NSArray *classCodes;//ProvinceCode
 @property (nonatomic, strong) NSString *name;
-@property (nonatomic, strong) NSArray *groupCodes;
+@property (nonatomic, strong) NSArray *groupCodes;//ProvinceCode
 
 + (instancetype)modelObjectWithDictionary:(NSDictionary *)dict;
 - (instancetype)initWithDictionary:(NSDictionary *)dict;

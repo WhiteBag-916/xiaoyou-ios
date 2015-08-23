@@ -12,4 +12,7 @@
 @interface FeedManager : YManager<YManager>
 AS_SINGLETON(FeedManager);
 
+//获取我的动态
+- (void)getMyFeed:(ActionCompleteBlock)block;
+
 @end

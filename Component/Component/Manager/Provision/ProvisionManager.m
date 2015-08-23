@@ -25,6 +25,7 @@
 #import "MyCommentPersonsAction.h"
 #import "MyPraisePersonsAction.h"
 #import "EaseMob.h"
+#import "MyCoolPersonsAction.h"
 
 #define kProvisionManagerSyncQueue @"kProvisionManagerSyncQueue"
 
@@ -253,8 +254,22 @@ DEF_SINGLETON(ProvisionManager);
 }
 
 //点赞过我的人
-- (void)myPraisePersons:(ActionCompleteBlock)block {
+- (void)myPraisePersons:(NSInteger)limitStart limitEnd:(NSInteger)limitEnd block:(ActionCompleteBlock)block {
     MyPraisePersonsAction* action = [[MyPraisePersonsAction alloc] init];
+    action.limitStart = limitStart;
+    action.limitEnd = limitEnd;
+    
+    [YAction startAction:action completionBlock:^(YActionMessage* message) {
+        //主线程处理界面
+        block(message);
+    }];
+}
+
+//认为我很酷的人
+- (void)myCoolPersons:(NSInteger)limitStart limitEnd:(NSInteger)limitEnd block:(ActionCompleteBlock)block {
+    MyCoolPersonsAction* action = [[MyCoolPersonsAction alloc] init];
+    action.limitStart = limitStart;
+    action.limitEnd = limitEnd;
     
     [YAction startAction:action completionBlock:^(YActionMessage* message) {
         //主线程处理界面
