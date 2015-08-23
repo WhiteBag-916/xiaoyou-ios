@@ -36,7 +36,7 @@ DEF_SINGLETON(ContactManager);
 }
 
 //存储联系人到本地
-- (void)saveContactsList
+- (void)saveContactsList:(LinkManModel *) model
 {
     //存文件
     NSString *cachePath = [[YDirectory fileCache] stringByAppendingString:NSStringFromClass([LinkManModel class])];
@@ -48,6 +48,11 @@ DEF_SINGLETON(ContactManager);
     NSString *cachePath = [[YDirectory fileCache] stringByAppendingString:NSStringFromClass([LinkManModel class])];
     _linkManModel = [LinkManModel instanceWithFile:cachePath];
 
+}
+
+- (LinkManModel *)getContactsListData
+{
+    return _linkManModel;
 }
 
 -(void)getContactsListData:(ActionCompleteBlock)block
@@ -81,7 +86,7 @@ DEF_SINGLETON(ContactManager);
 
 - (void)appDidLogin:(NSDictionary *)loginInfo
 {
-    
+    [self initLinkManListData];
 }
 
 - (void)appDidLogout
