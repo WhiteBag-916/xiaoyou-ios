@@ -10,7 +10,8 @@
 #import "UIImageView+WebCache.h"
 #import "ProfileChangePwdViewController.h"
 #import "ProfilePhoneChangeViewController.h"
-
+#import "ProvisionManager.h"
+#import "ProfileInfo.h"
 #define KHEADHEIGHT SCALE_NUM(150)
 
 #define KIMGSIZE SCALE_NUM(88)
@@ -44,6 +45,17 @@
 - (void)viewDidLoad {
     self.view.backgroundColor = KCOLORWHITE;
     [self initView];
+}
+- (void)viewWillAppear:(BOOL)animated {
+    self.navigationController.navigationBarHidden = true;
+    [self loadData];
+}
+- (void)loadData {
+    ProfileInfo *info = [[ProvisionManager sharedInstance] getProfile];
+    [_faceImg setFaceImageWithUrl:info.headPic];
+    _nameLabel.text = info.userName;
+    _schoolNoLabel.text = info.studentNo;
+    
 }
 - (void)initView {
     [self initScroll];
@@ -83,7 +95,7 @@
     }];
     _faceImg.layer.cornerRadius = KIMGSIZE/2;
     _faceImg.clipsToBounds = true;
-    [_faceImg sd_setImageWithURL:[NSURL URLWithString:@"http://cdn.duitang.com/uploads/item/201411/22/20141122111634_RBCXS.jpeg"]];
+    _faceImg.image = [UIImage imageNamed:@"default_head"];
     
     UIImageView *back = [[UIImageView alloc] init];
     [_headView addSubview:back];
@@ -162,7 +174,7 @@
 }
 
 - (UILabel *)labelWithColor:(BOOL)isGreen size:(float)size{
-    UILabel *label = [YUtils initLabel:CONTENT_FONT(size) color:(isGreen?KCOLORGREEN_009688:[UIColor blackColor]) text:@"文字文字文字" frame:CGRectZero alignment:NSTextAlignmentCenter];
+    UILabel *label = [YUtils initLabel:CONTENT_FONT(size) color:(isGreen?KCOLORGREEN_009688:[UIColor blackColor]) text:@"" frame:CGRectZero alignment:NSTextAlignmentCenter];
     [_middelView addSubview:label];
     [label mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.right.equalTo(_middelView);
@@ -227,7 +239,5 @@
 - (void)logOut {
     
 }
-- (void)viewWillAppear:(BOOL)animated {
-    self.navigationController.navigationBarHidden = true;
-}
+
 @end
