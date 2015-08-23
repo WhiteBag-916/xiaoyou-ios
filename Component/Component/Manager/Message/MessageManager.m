@@ -130,4 +130,56 @@ DEF_SINGLETON(MessageManager);
 }
 
 
+//自动登录
+/*!
+ @method
+ @brief 用户将要进行自动登录操作的回调
+ @discussion
+ @param loginInfo 登录的用户信息
+ @param error     错误信息
+ @result
+ */
+- (void)willAutoLoginWithInfo:(NSDictionary *)loginInfo error:(EMError *)error
+{
+    
+}
+
+/*!
+ @method
+ @brief 用户自动登录完成后的回调
+ @discussion
+ @param loginInfo 登录的用户信息
+ @param error     错误信息
+ @result
+ */
+- (void)didAutoLoginWithInfo:(NSDictionary *)loginInfo error:(EMError *)error
+{
+    
+}
+
+
+//重连
+/*!
+ @method
+ @brief 将要发起自动重连操作时发送该回调
+ @discussion
+ @result
+ */
+- (void)willAutoReconnect
+{
+    
+}
+
+/*!
+ @method
+ @brief 自动重连操作完成后的回调（成功的话，error为nil，失败的话，查看error的错误信息）
+ @discussion
+ @result
+ */
+- (void)didAutoReconnectFinishedWithError:(NSError *)error
+{
+    
+}
+
+
 @end
