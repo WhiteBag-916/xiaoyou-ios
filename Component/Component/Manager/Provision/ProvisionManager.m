@@ -320,10 +320,9 @@ DEF_SINGLETON(ProvisionManager);
 }
 
 //绑定手机验证码获取
-- (void)receiveAuthCode:(NSString *)flag mobilePhone:(NSString *)mobilePhone block:(ActionCompleteBlock)block {
+- (void)receiveAuthCode:(NSString *)mobilePhone block:(ActionCompleteBlock)block {
     ReceiveAuthCodeAction* action = [[ReceiveAuthCodeAction alloc] init];
     action.mobilePhone = mobilePhone;
-    action.flag = flag;
     
     [YAction startAction:action completionBlock:^(YActionMessage* message) {
         //主线程处理界面

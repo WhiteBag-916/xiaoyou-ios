@@ -14,7 +14,7 @@
 
 - (void)execute
 {
-    NSDictionary *parameter = [YUtils getParameter:@{@"flag":_flag, @"mobilePhone":_mobilePhone} needUserToken:YES];
+    NSDictionary *parameter = [YUtils getParameter:@{@"flag":@"1", @"mobilePhone":_mobilePhone} needUserToken:YES];
     NSString *url = [YUtils getUrl:api_login_UpdateSelfIntro];
     [self POST:url parameters:parameter completion:^(YHttpRequest *request) {
         YActionMessage *message = [ResultCommon actionMessageWithHttpRequest:request];

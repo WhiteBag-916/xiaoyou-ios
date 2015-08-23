@@ -11,6 +11,5 @@
 @interface ReceiveAuthCodeAction : YHTTPRequestAction<YAction>
 
 @property (nonatomic, strong) NSString *mobilePhone;
-@property (nonatomic, strong) NSString *flag;
 
 @end

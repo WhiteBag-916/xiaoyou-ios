@@ -52,7 +52,7 @@ AS_SINGLETON(ProvisionManager);
 //修改密码
 - (void)ModifyPassword:(NSString *)password oldPassWord:(NSString *)oldPassWord block:(ActionCompleteBlock)block;
 //绑定手机验证码获取
-- (void)receiveAuthCode:(NSString *)flag mobilePhone:(NSString *)mobilePhone block:(ActionCompleteBlock)block;
+- (void)receiveAuthCode:(NSString *)mobilePhone block:(ActionCompleteBlock)block;
 //绑定手机
 - (void)receiveMobileAuthCode:(NSString *)mobilePhone authCode:(NSString *)authCode block:(ActionCompleteBlock)block;
 
