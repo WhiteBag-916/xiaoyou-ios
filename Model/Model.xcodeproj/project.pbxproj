@@ -10,6 +10,7 @@
 		20859A991B64C0BC00580ED3 /* ResultCommon.m in Sources */ = {isa = PBXBuildFile; fileRef = 20859A981B64C0BC00580ED3 /* ResultCommon.m */; };
 		20859AA31B64CB7E00580ED3 /* LoginResp.m in Sources */ = {isa = PBXBuildFile; fileRef = 20859AA01B64CB7E00580ED3 /* LoginResp.m */; };
 		20859AB31B64E2F600580ED3 /* YModel+ActionMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 20859AB21B64E2F600580ED3 /* YModel+ActionMessage.m */; };
+		20DA1A601B8995A000DEF95C /* ProvinceCode.m in Sources */ = {isa = PBXBuildFile; fileRef = 20DA1A5F1B8995A000DEF95C /* ProvinceCode.m */; };
 		20DBFD271B4FA0E5009134D0 /* libModel.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 20DBFD1B1B4FA0E5009134D0 /* libModel.a */; };
 		20E0BFFF1B88B0CA00EDAED4 /* UploadImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 20E0BFFE1B88B0CA00EDAED4 /* UploadImage.m */; };
 		20E0C06E1B88B0CA00EDAED4 /* Feed.m in Sources */ = {isa = PBXBuildFile; fileRef = 20E0C06B1B88B0CA00EDAED4 /* Feed.m */; };
@@ -65,6 +66,8 @@
 		20859AA01B64CB7E00580ED3 /* LoginResp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginResp.m; sourceTree = "<group>"; };
 		20859AB11B64E2F600580ED3 /* YModel+ActionMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "YModel+ActionMessage.h"; sourceTree = "<group>"; };
 		20859AB21B64E2F600580ED3 /* YModel+ActionMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "YModel+ActionMessage.m"; sourceTree = "<group>"; };
+		20DA1A5E1B8995A000DEF95C /* ProvinceCode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProvinceCode.h; sourceTree = "<group>"; };
+		20DA1A5F1B8995A000DEF95C /* ProvinceCode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProvinceCode.m; sourceTree = "<group>"; };
 		20DBFD1B1B4FA0E5009134D0 /* libModel.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libModel.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		20DBFD261B4FA0E5009134D0 /* ModelTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ModelTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		20DBFD2C1B4FA0E5009134D0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -226,6 +229,8 @@
 		20DBFD661B4FA8F0009134D0 /* Contact */ = {
 			isa = PBXGroup;
 			children = (
+				20DA1A5E1B8995A000DEF95C /* ProvinceCode.h */,
+				20DA1A5F1B8995A000DEF95C /* ProvinceCode.m */,
 				20E0C0831B88B0CA00EDAED4 /* UnionList.h */,
 				20E0C0841B88B0CA00EDAED4 /* UnionList.m */,
 				20E0C0801B88B0CA00EDAED4 /* LinkManList.h */,
@@ -376,6 +381,7 @@
 				332D32681B71E9B400B69E96 /* PushInfo.m in Sources */,
 				333E95EA1B70B7AB0001059D /* SchoolDetailModel.m in Sources */,
 				333E95D61B70B7250001059D /* LinkManModel.m in Sources */,
+				20DA1A601B8995A000DEF95C /* ProvinceCode.m in Sources */,
 				20E0BFFF1B88B0CA00EDAED4 /* UploadImage.m in Sources */,
 				333E95E21B70B7820001059D /* UpdateAvatarModel.m in Sources */,
 				20E0C07B1B88B0CA00EDAED4 /* GroupCodes.m in Sources */,
