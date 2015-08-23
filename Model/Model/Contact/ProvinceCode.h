@@ -6,10 +6,10 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "YModel.h"
 
 
-
-@interface ProvinceCode : NSObject <NSCoding, NSCopying>
+@interface ProvinceCode : YModel <NSCoding, NSCopying>
 
 @property (nonatomic, strong) NSString *value;
 @property (nonatomic, strong) NSString *code;

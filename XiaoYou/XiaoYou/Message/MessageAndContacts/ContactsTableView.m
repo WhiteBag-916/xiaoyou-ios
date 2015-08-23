@@ -328,7 +328,7 @@
     ContactsTableViewCell * cell = (ContactsTableViewCell *)[self cellForRowAtIndexPath:indexPath];
     
     self.myController.hidesBottomBarWhenPushed = YES;
-    ChatViewController * chatVC = [[ChatViewController alloc] initWithChatter:cell.studentDic[@"studentNo"] isGroup:NO];
+    ChatViewController * chatVC = [[ChatViewController alloc] initWithChatter:cell.studentDic[@"thirdCode"] isGroup:NO];
     chatVC.isSystemMessage = NO;
     chatVC.studentDic = cell.studentDic;
     [self.myController.navigationController pushViewController:chatVC animated:YES];

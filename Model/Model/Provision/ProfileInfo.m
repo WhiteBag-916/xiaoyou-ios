@@ -1,7 +1,7 @@
 //
 //  ProfileInfo.m
 //
-//  Created by   on 15/8/22
+//  Created by   on 15/8/23
 //  Copyright (c) 2015 __MyCompanyName__. All rights reserved.
 //
 
@@ -12,12 +12,16 @@
 
 NSString *const kProfileInfoTagModels = @"tagModels";
 NSString *const kProfileInfoUid = @"uid";
-NSString *const kProfileInfoUserName = @"userName";
-NSString *const kProfileInfoSelfIntro = @"selfIntro";
-NSString *const kProfileInfoPraiseCount = @"praiseCount";
-NSString *const kProfileInfoFeedInfo = @"lastFeeds";
-NSString *const kProfileInfoCommentCount = @"commentCount";
+NSString *const kProfileInfoSchoolCode = @"schoolCode";
 NSString *const kProfileInfoHeadPic = @"headPic";
+NSString *const kProfileInfoSelfIntro = @"selfIntro";
+NSString *const kProfileInfoUserName = @"userName";
+NSString *const kProfileInfoStudentNo = @"studentNo";
+NSString *const kProfileInfoPraiseCount = @"praiseCount";
+NSString *const kProfileInfoLastFeeds = @"lastFeeds";
+NSString *const kProfileInfoTags = @"tags";
+NSString *const kProfileInfoCommentCount = @"commentCount";
+NSString *const kProfileInfoCoolCount = @"coolCount";
 
 
 @interface ProfileInfo ()
@@ -30,10 +34,14 @@ NSString *const kProfileInfoHeadPic = @"headPic";
 
 @synthesize tagModels = _tagModels;
 @synthesize uid = _uid;
-@synthesize userName = _userName;
+@synthesize schoolCode = _schoolCode;
+@synthesize headPic = _headPic;
 @synthesize selfIntro = _selfIntro;
+@synthesize userName = _userName;
+@synthesize studentNo = _studentNo;
 @synthesize praiseCount = _praiseCount;
-@synthesize feedInfo = _feedInfo;
+@synthesize lastFeeds = _lastFeeds;
+@synthesize tags = _tags;
 @synthesize commentCount = _commentCount;
 
 
@@ -62,25 +70,30 @@ NSString *const kProfileInfoHeadPic = @"headPic";
     }
 
     self.tagModels = [NSArray arrayWithArray:parsedTagModels];
-    self.uid = [self objectOrNilForKey:kProfileInfoUid fromDictionary:dict];
-    self.userName = [self objectOrNilForKey:kProfileInfoUserName fromDictionary:dict];
-    self.selfIntro = [self objectOrNilForKey:kProfileInfoSelfIntro fromDictionary:dict];
-    self.praiseCount = [[self objectOrNilForKey:kProfileInfoPraiseCount fromDictionary:dict] doubleValue];
-    NSObject *receivedFeedInfo = [dict objectForKey:kProfileInfoFeedInfo];
-    NSMutableArray *parsedFeedInfo = [NSMutableArray array];
-    if ([receivedFeedInfo isKindOfClass:[NSArray class]]) {
-        for (NSDictionary *item in (NSArray *)receivedFeedInfo) {
+            self.uid = [self objectOrNilForKey:kProfileInfoUid fromDictionary:dict];
+            self.schoolCode = [self objectOrNilForKey:kProfileInfoSchoolCode fromDictionary:dict];
+            self.headPic = [self objectOrNilForKey:kProfileInfoHeadPic fromDictionary:dict];
+            self.selfIntro = [self objectOrNilForKey:kProfileInfoSelfIntro fromDictionary:dict];
+            self.userName = [self objectOrNilForKey:kProfileInfoUserName fromDictionary:dict];
+            self.studentNo = [self objectOrNilForKey:kProfileInfoStudentNo fromDictionary:dict];
+            self.praiseCount = [[self objectOrNilForKey:kProfileInfoPraiseCount fromDictionary:dict] doubleValue];
+    NSObject *receivedLastFeeds = [dict objectForKey:kProfileInfoLastFeeds];
+    NSMutableArray *parsedLastFeeds = [NSMutableArray array];
+    if ([receivedLastFeeds isKindOfClass:[NSArray class]]) {
+        for (NSDictionary *item in (NSArray *)receivedLastFeeds) {
             if ([item isKindOfClass:[NSDictionary class]]) {
-                [parsedFeedInfo addObject:[FeedInfo modelObjectWithDictionary:item]];
+                [parsedLastFeeds addObject:[FeedInfo modelObjectWithDictionary:item]];
             }
        }
-    } else if ([receivedFeedInfo isKindOfClass:[NSDictionary class]]) {
-       [parsedFeedInfo addObject:[FeedInfo modelObjectWithDictionary:(NSDictionary *)receivedFeedInfo]];
+    } else if ([receivedLastFeeds isKindOfClass:[NSDictionary class]]) {
+       [parsedLastFeeds addObject:[FeedInfo modelObjectWithDictionary:(NSDictionary *)receivedLastFeeds]];
     }
 
-    self.feedInfo = [NSArray arrayWithArray:parsedFeedInfo];
-    self.commentCount = [[self objectOrNilForKey:kProfileInfoCommentCount fromDictionary:dict] doubleValue];
-        self.headPic = [self objectOrNilForKey:kProfileInfoHeadPic fromDictionary:dict];
+    self.lastFeeds = [NSArray arrayWithArray:parsedLastFeeds];
+            self.tags = [self objectOrNilForKey:kProfileInfoTags fromDictionary:dict];
+            self.commentCount = [[self objectOrNilForKey:kProfileInfoCommentCount fromDictionary:dict] doubleValue];
+        self.coolCount = [[self objectOrNilForKey:kProfileInfoCoolCount fromDictionary:dict] doubleValue];
+
     }
     
     return self;
@@ -102,20 +115,24 @@ NSString *const kProfileInfoHeadPic = @"headPic";
     }
     [mutableDict setValue:[NSArray arrayWithArray:tempArrayForTagModels] forKey:kProfileInfoTagModels];
     [mutableDict setValue:self.uid forKey:kProfileInfoUid];
-    [mutableDict setValue:self.userName forKey:kProfileInfoUserName];
+    [mutableDict setValue:self.schoolCode forKey:kProfileInfoSchoolCode];
+    [mutableDict setValue:self.headPic forKey:kProfileInfoHeadPic];
     [mutableDict setValue:self.selfIntro forKey:kProfileInfoSelfIntro];
+    [mutableDict setValue:self.userName forKey:kProfileInfoUserName];
+    [mutableDict setValue:self.studentNo forKey:kProfileInfoStudentNo];
     [mutableDict setValue:[NSNumber numberWithDouble:self.praiseCount] forKey:kProfileInfoPraiseCount];
-    NSMutableArray *tempArrayForFeedInfo = [NSMutableArray array];
-    for (NSObject *subArrayObject in self.feedInfo) {
+    NSMutableArray *tempArrayForLastFeeds = [NSMutableArray array];
+    for (NSObject *subArrayObject in self.lastFeeds) {
         if([subArrayObject respondsToSelector:@selector(dictionaryRepresentation)]) {
             // This class is a model object
-            [tempArrayForFeedInfo addObject:[subArrayObject performSelector:@selector(dictionaryRepresentation)]];
+            [tempArrayForLastFeeds addObject:[subArrayObject performSelector:@selector(dictionaryRepresentation)]];
         } else {
             // Generic object
-            [tempArrayForFeedInfo addObject:subArrayObject];
+            [tempArrayForLastFeeds addObject:subArrayObject];
         }
     }
-    [mutableDict setValue:[NSArray arrayWithArray:tempArrayForFeedInfo] forKey:kProfileInfoFeedInfo];
+    [mutableDict setValue:[NSArray arrayWithArray:tempArrayForLastFeeds] forKey:kProfileInfoLastFeeds];
+    [mutableDict setValue:self.tags forKey:kProfileInfoTags];
     [mutableDict setValue:[NSNumber numberWithDouble:self.commentCount] forKey:kProfileInfoCommentCount];
 
     return [NSDictionary dictionaryWithDictionary:mutableDict];
@@ -142,10 +159,14 @@ NSString *const kProfileInfoHeadPic = @"headPic";
 
     self.tagModels = [aDecoder decodeObjectForKey:kProfileInfoTagModels];
     self.uid = [aDecoder decodeObjectForKey:kProfileInfoUid];
-    self.userName = [aDecoder decodeObjectForKey:kProfileInfoUserName];
+    self.schoolCode = [aDecoder decodeObjectForKey:kProfileInfoSchoolCode];
+    self.headPic = [aDecoder decodeObjectForKey:kProfileInfoHeadPic];
     self.selfIntro = [aDecoder decodeObjectForKey:kProfileInfoSelfIntro];
+    self.userName = [aDecoder decodeObjectForKey:kProfileInfoUserName];
+    self.studentNo = [aDecoder decodeObjectForKey:kProfileInfoStudentNo];
     self.praiseCount = [aDecoder decodeDoubleForKey:kProfileInfoPraiseCount];
-    self.feedInfo = [aDecoder decodeObjectForKey:kProfileInfoFeedInfo];
+    self.lastFeeds = [aDecoder decodeObjectForKey:kProfileInfoLastFeeds];
+    self.tags = [aDecoder decodeObjectForKey:kProfileInfoTags];
     self.commentCount = [aDecoder decodeDoubleForKey:kProfileInfoCommentCount];
     return self;
 }
@@ -155,10 +176,14 @@ NSString *const kProfileInfoHeadPic = @"headPic";
 
     [aCoder encodeObject:_tagModels forKey:kProfileInfoTagModels];
     [aCoder encodeObject:_uid forKey:kProfileInfoUid];
-    [aCoder encodeObject:_userName forKey:kProfileInfoUserName];
+    [aCoder encodeObject:_schoolCode forKey:kProfileInfoSchoolCode];
+    [aCoder encodeObject:_headPic forKey:kProfileInfoHeadPic];
     [aCoder encodeObject:_selfIntro forKey:kProfileInfoSelfIntro];
+    [aCoder encodeObject:_userName forKey:kProfileInfoUserName];
+    [aCoder encodeObject:_studentNo forKey:kProfileInfoStudentNo];
     [aCoder encodeDouble:_praiseCount forKey:kProfileInfoPraiseCount];
-    [aCoder encodeObject:_feedInfo forKey:kProfileInfoFeedInfo];
+    [aCoder encodeObject:_lastFeeds forKey:kProfileInfoLastFeeds];
+    [aCoder encodeObject:_tags forKey:kProfileInfoTags];
     [aCoder encodeDouble:_commentCount forKey:kProfileInfoCommentCount];
 }
 
@@ -170,10 +195,14 @@ NSString *const kProfileInfoHeadPic = @"headPic";
 
         copy.tagModels = [self.tagModels copyWithZone:zone];
         copy.uid = [self.uid copyWithZone:zone];
-        copy.userName = [self.userName copyWithZone:zone];
+        copy.schoolCode = [self.schoolCode copyWithZone:zone];
+        copy.headPic = [self.headPic copyWithZone:zone];
         copy.selfIntro = [self.selfIntro copyWithZone:zone];
+        copy.userName = [self.userName copyWithZone:zone];
+        copy.studentNo = [self.studentNo copyWithZone:zone];
         copy.praiseCount = self.praiseCount;
-        copy.feedInfo = [self.feedInfo copyWithZone:zone];
+        copy.lastFeeds = [self.lastFeeds copyWithZone:zone];
+        copy.tags = [self.tags copyWithZone:zone];
         copy.commentCount = self.commentCount;
     }
     

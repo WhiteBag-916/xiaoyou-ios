@@ -12,8 +12,17 @@
 #import "YShareDataDefine.h"
 #import "YManagerCenter.h"
 #import "MessageListAction.h"
+#import "YDirectory+Data.h"
+#import "LinkManModel.h"
 
 #define kContactsManagerSyncQueue @"kContactsManagerSyncQueue"
+
+
+@interface ContactManager ()
+
+@property (nonatomic, strong) LinkManModel *linkManModel; //个人信息
+
+@end
 
 @implementation ContactManager
 
@@ -24,6 +33,21 @@ DEF_SINGLETON(ContactManager);
     if (self == [super init]) {
     }
     return self;
+}
+
+//存储联系人到本地
+- (void)saveContactsList
+{
+    //存文件
+    NSString *cachePath = [[YDirectory fileCache] stringByAppendingString:NSStringFromClass([LinkManModel class])];
+    [_linkManModel writeToFile:cachePath];
+}
+//读取联系人
+- (void)initLinkManListData
+{
+    NSString *cachePath = [[YDirectory fileCache] stringByAppendingString:NSStringFromClass([LinkManModel class])];
+    _linkManModel = [LinkManModel instanceWithFile:cachePath];
+
 }
 
 -(void)getContactsListData:(ActionCompleteBlock)block

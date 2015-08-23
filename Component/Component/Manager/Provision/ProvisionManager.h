@@ -20,6 +20,8 @@ AS_SINGLETON(ProvisionManager);
 - (void)initProfileData;
 //获取个人信息
 - (ProfileInfo *)getProfile;
+//获取个人标签
+- (NSArray *)profileTags;
 //登录
 - (void)goLogin:(NSString *)account password:(NSString *)password block:(ActionCompleteBlock)block;
 //获取学校列表
