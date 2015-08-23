@@ -9,31 +9,39 @@
 #import "ProfilePersonListController.h"
 #import "ProfilePersonListTableView.h"
 @interface ProfilePersonListController()
-@property (nonatomic, assign) BOOL isRespect;
+@property (nonatomic, assign) int type;
 @property (nonatomic, strong) ProfilePersonListTableView *tableView;
 @end
 
 @implementation ProfilePersonListController
 
-- (id)initWithType:(BOOL)isRespect {
+- (id)initWithType:(int)type {
     self = [super init];
     if (self) {
         self.hidesBottomBarWhenPushed = true;
-        _isRespect = isRespect;
+        _type = type;
     }
     return self;
 }
 - (void)viewDidLoad {
     [self showCustomNavigationBackButton];
-    if (_isRespect) {
-        self.title = @"这些朋友给你的内容敬酒";
-    } else {
-        self.title = @"这些朋友觉得你很酷";
+    switch (_type) {
+        case 0:
+            self.title = @"这些朋友给你的内容敬酒";
+            break;
+        case 1:
+            self.title = @"这些朋友觉得你很酷";
+            break;
+        case 2:
+            self.title = @"敬酒的朋友们";
+            break;
+        default:
+            break;
     }
     [self initTableView];
 }
 - (void)initTableView {
-    _tableView = [[ProfilePersonListTableView alloc] initWIthType:_isRespect];
+    _tableView = [[ProfilePersonListTableView alloc] initWIthType:_type];
     [self.view addSubview:_tableView];
     [_tableView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.equalTo(self.view);

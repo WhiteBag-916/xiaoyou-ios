@@ -336,10 +336,10 @@
     [self.navigationController pushViewController:[[YCommonEditViewController alloc] initWithType:YCommonEditAttitude preText:_attitudeLabel.text] animated:NO];
 }
 - (void)openRespect {
-    [self.navigationController pushViewController:[[ProfilePersonListController alloc] initWithType:true] animated:true];
+    [self.navigationController pushViewController:[[ProfilePersonListController alloc] initWithType:0] animated:true];
 }
 - (void)openCool {
-    [self.navigationController pushViewController:[[ProfilePersonListController alloc] initWithType:false] animated:true];
+    [self.navigationController pushViewController:[[ProfilePersonListController alloc] initWithType:1] animated:true];
 }
 - (void)openFeed {
     [self.navigationController pushViewController:[[ProfilePublishViewController alloc] init] animated:true];

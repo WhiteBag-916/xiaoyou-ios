@@ -10,6 +10,6 @@
 
 @interface ProfilePersonListController : YViewController
 
-- (id)initWithType:(BOOL)isRespect;
+- (id)initWithType:(int)type;
 
 @end
