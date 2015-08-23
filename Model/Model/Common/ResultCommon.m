@@ -9,7 +9,6 @@
 
 NSString *const kResultCommonStatus = @"code";
 NSString *const kResultCommonMsg = @"message";
-NSString *const kResultCommonUrl = @"url";
 
 @interface ResultCommon ()
 
@@ -37,7 +36,6 @@ NSString *const kResultCommonUrl = @"url";
     {
         self.code = [[self objectOrNilForKey:kResultCommonStatus fromDictionary:dict] doubleValue];
         self.message = [self objectOrNilForKey:kResultCommonMsg fromDictionary:dict];
-        self.url = [self objectOrNilForKey:kResultCommonUrl fromDictionary:dict];
     }
 
     return self;

@@ -13,7 +13,6 @@
 
 @property (nonatomic, assign) double code;
 @property (nonatomic, strong) NSString *message;
-@property (nonatomic, strong) NSString *url;//上传头像返回的url
 
 + (instancetype)modelObjectWithDictionary:(NSDictionary *)dict;
 - (instancetype)initWithDictionary:(NSDictionary *)dict;
