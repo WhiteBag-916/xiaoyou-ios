@@ -7,7 +7,6 @@
 //
 
 #import "MyFeedAction.h"
-#import "YDefine.h"
 #import "FeedInfo.h"
 #import "YUtils+Component.h"
 
@@ -16,7 +15,7 @@
 - (void)execute
 {
     NSDictionary *parameter = [YUtils getParameter:nil needUserToken:YES];
-    NSString *url = [YUtils getUrl:api_login_myFeed];
+    NSString *url = [YUtils getUrl:api_login_MyFeed];
     [self POST:url parameters:parameter completion:^(YHttpRequest *request) {
         YActionMessage *message = [FeedInfo actionMessageWithHttpRequest:request];
         self.completionBlock(message);

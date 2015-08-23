@@ -57,8 +57,10 @@
 /**********************************************************
  Url Define: FeedManager
  **********************************************************/
-//点赞过我的人
-#define api_login_myFeed @"/mobile/user/v2/myFeed"
+//我的动态
+#define api_login_MyFeed @"/mobile/user/v2/myFeed"
+//动态详情
+#define api_login_DetailFeed @"/mobile/feed/detailFeed"
 
 /**********************************************************
  Url Define: ContactManager
