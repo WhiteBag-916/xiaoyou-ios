@@ -42,4 +42,14 @@ DEF_SINGLETON(FeedManager);
     
 }
 
+//获取我的动态
+- (void)getMyFeed:(ActionCompleteBlock)block {
+    MyCommentPersonsAction* action = [[MyCommentPersonsAction alloc] init];
+    
+    [YAction startAction:action completionBlock:^(YActionMessage* message) {
+        //主线程处理界面
+        block(message);
+    }];
+}
+
 @end
