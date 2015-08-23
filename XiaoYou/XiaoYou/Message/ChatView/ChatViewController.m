@@ -26,6 +26,7 @@
 #import "MessageModelManager.h"
 #import "LocationViewController.h"
 //#import "ChatGroupDetailViewController.h"
+#import "XYGroupInfoDetailViewController.h"
 #import "UIViewController+HUD.h"
 #import "NSDate+Category.h"
 #import "DXChatBarMoreView.h"
@@ -230,7 +231,7 @@
 - (void)setupBarButtonItem
 {
     
-    self.title = _studentDic[@"studentNo"];
+    self.title = _studentDic[@"name"];
     
     UIButton *backButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 9, 14)];
     [backButton setImage:[UIImage imageNamed:@"common_back"] forState:UIControlStateNormal];
@@ -240,7 +241,7 @@
     
     if (self.isChatGroup) {
         UIButton *detailButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 60, 44)];
-        [detailButton setImage:[UIImage imageNamed:@"group_detail"] forState:UIControlStateNormal];
+        [detailButton setImage:[UIImage imageNamed:@"default_head"] forState:UIControlStateNormal];
         [detailButton addTarget:self action:@selector(showRoomContact:) forControlEvents:UIControlEventTouchUpInside];
         self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:detailButton];
     }
@@ -536,7 +537,7 @@
                 cell = [[EMChatViewCell alloc] initWithMessageModel:model reuseIdentifier:cellIdentifier];
                 cell.backgroundColor = [UIColor clearColor];
             }
-            model.headImageURL = [NSURL URLWithString:_studentDic[@"icon"]];
+            model.headImageURL = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@",api_icon_base_url,_studentDic[@"icon"]]];
             cell.messageModel = model;
             
             return cell;
@@ -1195,7 +1196,7 @@
                                                                  completion:^(NSError *error)
          {
              if (error) {
-                 NSLog(NSLocalizedString(@"message.startRecordFail", @"failure to start recording"));
+                 NSLog(@"failure to start recording");
              }
          }];
     }
@@ -1428,7 +1429,7 @@
         }
         else
         {
-            [weakSelf showHint:NSLocalizedString(@"message.thumImageFail", @"thumbnail for failure!")];
+            [weakSelf showHint:@"thumbnail for failure!"];
         }
     };
     
@@ -1550,15 +1551,10 @@
 - (void)showRoomContact:(id)sender
 {
     [self.view endEditing:YES];
-//    if (self.conversationType == eConversationTypeGroupChat) {
-//        ChatGroupDetailViewController *detailController = [[ChatGroupDetailViewController alloc] initWithGroupId:_chatter];
-//        [self.navigationController pushViewController:detailController animated:YES];
-//    }
-//    else if (self.conversationType == eConversationTypeChatRoom)
-//    {
-//        ChatroomDetailViewController *detailController = [[ChatroomDetailViewController alloc] initWithChatroomId:_chatter];
-//        [self.navigationController pushViewController:detailController animated:YES];
-//    }
+    if (self.conversationType == eConversationTypeGroupChat) {
+        XYGroupInfoDetailViewController * groupVC = [[XYGroupInfoDetailViewController alloc] init];
+        [self.navigationController pushViewController:groupVC animated:YES];
+    }
 }
 
 //联系人详情

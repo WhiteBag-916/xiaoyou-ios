@@ -12,6 +12,7 @@
 #import "UIImageView+WebCache.h"
 #import "YUrlDefine.h"
 #import "ConnectTag.h"
+#import "Tags.h"
 
 #define kHeadWidthAndHeight            40
 #define kNameLabelWidth                80
@@ -126,10 +127,15 @@ NSString *const kContactsTableViewCell = @"ContactsTableViewCell";
     
     _studentDic = modelDic;
     
+    //昵称
     _nameLabel.text = modelDic[@"name"];
-    NSString * flagString = [modelDic[@"flag"] stringByReplacingOccurrencesOfString:@"," withString:@" "];
+    
+    //标签
+    NSString * flagString = [modelDic[@"tags"] stringByReplacingOccurrencesOfString:@"," withString:@" "];
     _flagLabel.text = flagString;
     _flagImageView.image = [UIImage imageNamed:@"tag-green"];
+    
+    //头像
     if ([modelDic[@"icon"] isEqualToString:@""]) {
         _headImageView.image = [UIImage imageNamed:@"default_head"];
     }
@@ -138,7 +144,16 @@ NSString *const kContactsTableViewCell = @"ContactsTableViewCell";
         [_headImageView sd_setImageWithURL:modelDic[@"icon"] placeholderImage:[UIImage imageNamed:@"default_head"]];
     }
     
-//    [_connectTag updateTag:@[@"班",@"社",@"系",@"团",@"啊"]];
+    //共同标签
+    NSArray * tagsArr = modelDic[@"propetiesCommon"];
+    NSMutableArray * propetiesCommonArr = [[NSMutableArray alloc] init];
+    for (int i = 0; i < tagsArr.count; i++)
+    {
+        [propetiesCommonArr addObject:[[Tags alloc]initWithDictionary:modelDic[@"propetiesCommon"][i]]];
+    }
+    [_connectTag updateWithTag:propetiesCommonArr];
+    
+    //消息提醒
     if ([modelDic[@"isRemind"] isEqualToString:@"y"])
     {
         _remindImageView.hidden = YES;
