@@ -10,5 +10,6 @@
 
 @interface ProfilePersonListTableView : YTableView
 - (id)initWIthType:(int)type;
-- (void)loadData:(NSArray *)data;
+- (void)loadData;
+- (void)loadDataWithFeedId:(NSString *)feedId;
 @end

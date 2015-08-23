@@ -12,6 +12,7 @@
 #import "ConnectTag.h"
 #import "YUtils+Component.h"
 #import "Masonry.h"
+#import "Tags.h"
 
 #define KMARGIN 6
 #define KTAGSIZE 14
@@ -47,7 +48,7 @@
     for (index = 0; index < count; index ++) {
         UILabel *label = (UILabel *)self.subviews[index];
         label.hidden = false;
-        label.text = tags[index];
+        label.text = [tags[index] name];
     }
     while (index <= 4) {
         [self.subviews[index] setHidden:true];

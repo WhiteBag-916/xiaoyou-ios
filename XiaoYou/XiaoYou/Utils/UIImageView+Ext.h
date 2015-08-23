@@ -12,4 +12,7 @@
 
 - (void)setFaceImageWithUrl:(NSString *)url;
 
+
+- (void)setNormalImageWithUrl:(NSString *)url;
+
 @end

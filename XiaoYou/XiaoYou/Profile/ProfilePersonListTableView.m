@@ -11,6 +11,7 @@
 #import "ProfilePersonListTableViewCell.h"
 @interface ProfilePersonListTableView()<UITableViewDataSource, UITableViewDelegate>
 @property (nonatomic, assign) int type;
+@property (nonatomic, strong) NSString *feedId;
 @property (nonatomic, strong) NSArray *personListArray;
 @end
 
@@ -27,8 +28,31 @@
     }
     return self;
 }
-- (void)loadData:(NSArray *)data {
-    _personListArray = [NSArray arrayWithArray:data];
+#pragma mark - 继承者
+- (BOOL)showHeaderRefresh
+{
+    return YES;
+}
+
+- (BOOL)showFooterRefresh
+{
+    return YES;
+}
+- (void)loadData {
+    [self beginLoadNewData];
+}
+- (void)loadNewData
+{
+    
+}
+
+- (void)loadMoreData
+{
+    
+}
+
+- (void)loadDataWithFeedId:(NSString *)feedId {
+    _feedId = feedId;
     [self reloadData];
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -41,7 +65,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     ProfilePersonListTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kProfilePersonListTableViewCell];
-    [cell setData];
+    [cell setData:nil];
     return cell;
 }
 

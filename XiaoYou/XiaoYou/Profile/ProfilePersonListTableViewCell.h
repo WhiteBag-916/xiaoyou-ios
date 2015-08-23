@@ -9,8 +9,10 @@
 #import "YTableViewCell.h"
 extern NSString *const kProfilePersonListTableViewCell;
 #define KCELLHEIGHT SCALE_NUM(90)
+
+@class Author;
 @interface ProfilePersonListTableViewCell : YTableViewCell
 
-- (void)setData;
+- (void)setData:(Author *)author;
 
 @end
