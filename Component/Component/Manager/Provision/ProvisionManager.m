@@ -30,6 +30,7 @@
 #import "ReceiveMobileAuthCodeAction.h"
 #import "ModifyPasswordAction.h"
 #import "ReceiveAuthCodeAction.h"
+#import "LogoutAction.h"
 
 #define kProvisionManagerSyncQueue @"kProvisionManagerSyncQueue"
 
@@ -342,6 +343,16 @@ DEF_SINGLETON(ProvisionManager);
             [self saveLoginInfo];
         }
         
+        //主线程处理界面
+        block(message);
+    }];
+}
+
+//登出
+- (void)logout:(ActionCompleteBlock)block {
+    LoginAction* action = [[LoginAction alloc] init];
+    
+    [YAction startAction:action completionBlock:^(YActionMessage* message) {        
         //主线程处理界面
         block(message);
     }];

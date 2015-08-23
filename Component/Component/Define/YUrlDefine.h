@@ -53,6 +53,8 @@
 #define api_login_myCoolPersons @"/mobile/user/v2/myCoolPersons"
 //修改签名
 #define api_login_UpdateSelfIntro @"/mobile/user/v2/updateSelfIntro"
+//退出登录
+#define api_user_logOut  @"/mobile/user/logout"
 
 /**********************************************************
  Url Define: FeedManager
