@@ -44,6 +44,6 @@
     self.navigationController.navigationBarHidden = false;
 }
 - (void)viewDidAppear:(BOOL)animated {
-    [_tableView loadData:@[@"2"]];
+    [_tableView loadData];
 }
 @end

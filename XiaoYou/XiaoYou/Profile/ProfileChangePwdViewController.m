@@ -13,6 +13,7 @@
 //
 
 #import "ProfileChangePwdViewController.h"
+#import "ProfileMyViewController.h"
 #import "YTextField.h"
 #import "YTextField+Ext.h"
 @interface ProfileChangePwdViewController()
@@ -111,6 +112,17 @@
         self.navigationRightButton.enabled = false;
     }
 }
+
+- (void)onNavigationLeftButtonClicked {
+    for (int i = 0; i < self.navigationController.viewControllers.count; i++) {
+        UIViewController *viewController = self.navigationController.viewControllers[i];
+        if ([viewController isKindOfClass:[ProfileMyViewController class]]) {
+            [self.navigationController popToViewController:viewController animated:true];
+            return;
+        }
+    }
+}
+
 - (void)onNavigationRightButtonClicked {
     NSLog(@"修改密码");
 }

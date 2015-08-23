@@ -9,6 +9,8 @@
 #import "ProfilePhoneChangeViewController.h"
 #import "YTextField.h"
 #import "YTextField+Ext.h"
+#import "ProvisionManager.h"
+#import "ProfileChangePwdViewController.h"
 
 #define KBUTTONWIDTH SCALE_NUM(80)
 #define KBUTTONHEIGHT SCALE_NUM(25)
@@ -19,14 +21,15 @@
 @property (nonatomic, strong) YTextField *codeField;
 @property (nonatomic, strong) UIButton *sendBtn;
 @property (nonatomic, strong) UILabel *waitLabel;
+@property (nonatomic, assign) BOOL hasPhone;
 @end
 
 @implementation ProfilePhoneChangeViewController
-
-- (id)init {
+- (id)initWithType:(BOOL)hasPhone {
     self = [super init];
     if (self) {
         self.hidesBottomBarWhenPushed = true;
+        _hasPhone = hasPhone;
     }
     return self;
 }
@@ -82,7 +85,7 @@
     
 }
 - (YTextField *)createField:(int)type {
-    NSArray *names = @[@"输入手机号", @"输入获取的验证码"];
+    NSArray *names = @[@"请输入新手机号", @"输入获取的验证码"];
     UIView *whiteBack = [[UIView alloc] init];
     [self.view addSubview:whiteBack];
     [whiteBack mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -146,6 +149,13 @@
     [self.view endEditing:true];
     [self changeWait:true];
     [self startCal];
+    [[ProvisionManager sharedInstance] receiveAuthCode:_phoneField.text block:^(YActionMessage *message) {
+        if (message.isSuccess) {
+            [YUtils showTitle:@"验证码发送成功"];
+        } else {
+            [YUtils showTitle:message.desc];
+        }
+    }];
 }
 - (void)checkComplete {
     if (_phoneField.text.length > 0) {
@@ -160,6 +170,18 @@
     }
 }
 - (void)onNavigationRightButtonClicked {
-    NSLog(@"改手机号");
+    MBProgressHUD *hud = [YUtils showHUDWithTitle:@"正在加载"];
+    [[ProvisionManager sharedInstance] receiveMobileAuthCode:_phoneField.text authCode:_codeField.text block:^(YActionMessage *message) {
+        if (message.isSuccess) {
+            [hud removeFromSuperview];
+            if (_hasPhone) {
+                
+            } else {
+                [self.navigationController pushViewController:[[ProfileChangePwdViewController alloc] init] animated:true];
+            }
+        } else {
+            [YUtils showTitle:message.desc];
+        }
+    }];
 }
 @end

@@ -8,8 +8,13 @@
 
 #import "ProfileFeedListView.h"
 #import "ProfileFeedCell.h"
+#import "FeedManager.h"
+
+#define KPAGENUM 15
+
 @interface ProfileFeedListView()<UITableViewDataSource, UITableViewDelegate>
-@property (nonatomic, strong) NSArray *feedArray;
+@property (nonatomic, strong) NSMutableArray *feedArray;
+@property (nonatomic, assign) int page;
 @end
 
 @implementation ProfileFeedListView
@@ -22,12 +27,65 @@
         self.tableFooterView = [UIView new];
         self.backgroundColor = KCOLORWHITE;
         self.fd_debugLogEnabled = false;
+        _page = 0;
     }
     return self;
 }
 - (void)loadData:(NSArray *)data {
     _feedArray = [NSArray arrayWithArray:data];
     [self reloadData];
+}
+#pragma mark - 继承者
+- (BOOL)showHeaderRefresh
+{
+    return YES;
+}
+
+- (BOOL)showFooterRefresh
+{
+    return YES;
+}
+- (void)loadData {
+    [self beginLoadNewData];
+}
+- (void)loadNewData
+{
+    _page = 0;
+    [self sendRequest];
+}
+
+- (void)loadMoreData
+{
+    _page ++;
+    [self sendRequest];
+}
+
+- (void)sendRequest {
+    [[FeedManager sharedInstance] getMyFeed:^(YActionMessage *message) {
+        if (_page == 0) {
+            [self stopLoadNewData];
+        } else {
+            [self stopLoadMoreData];
+        }
+        if (message.isSuccess) {
+            if (_page == 0) {
+                _feedArray = [NSMutableArray arrayWithArray:message.object];
+                _page ++;
+            } else {
+                [_feedArray addObjectsFromArray:message.object];
+                if ([message.object count] < KPAGENUM) {
+                    [self showNoticeNoMoreData];
+                }
+            }
+            [self reloadData];
+            
+        } else {
+            if (_page != 0) {
+                _page --;
+            }
+            [YUtils showTitleOn:self title:message.desc];
+        }
+    }];
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return _feedArray.count;
@@ -38,7 +96,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     ProfileFeedCell *cell = [tableView dequeueReusableCellWithIdentifier:KProfileFeedCell];
-    [cell setData];
+    [cell setData:_feedArray[indexPath.row]];
     
     return cell;
 }
@@ -46,7 +104,7 @@
 {
     //计算高度
     CGFloat height = [tableView fd_heightForCellWithIdentifier:KProfileFeedCell cacheByIndexPath:indexPath configuration:^(ProfileFeedCell *cell) {
-        [cell setData];
+        [cell setData:_feedArray[indexPath.row]];
     }];
     return height;
 }

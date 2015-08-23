@@ -9,9 +9,9 @@
 #import "YTableViewCell.h"
 
 extern NSString *const KProfileFeedCell;
-
+@class FeedInfo;
 @interface ProfileFeedCell : YTableViewCell
 
-- (void)setData;
+- (void)setData:(FeedInfo *)info;
 
 @end

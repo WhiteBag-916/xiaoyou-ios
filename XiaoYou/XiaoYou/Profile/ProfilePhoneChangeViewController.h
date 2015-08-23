@@ -10,4 +10,6 @@
 
 @interface ProfilePhoneChangeViewController : YViewController
 
+- (id)initWithType:(BOOL)hasPhone;
+
 @end

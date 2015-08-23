@@ -9,6 +9,8 @@
 
 #import "ProfileFeedCell.h"
 #import "ProfileFeedContentView.h"
+#import "FeedInfo.h"
+#import "Feed.h"
 NSString *const KProfileFeedCell = @"KProfileFeedCell";
 
 #define KCONTENTMARGIN_LEFT SCALE_NUM(65)
@@ -103,8 +105,13 @@ NSString *const KProfileFeedCell = @"KProfileFeedCell";
     line.backgroundColor = KCOLORGREEN_79909e;
     line.transform = CGAffineTransformMakeRotation(-M_PI/8);
 }
-- (void)setData {
-    [_content setData:nil];
+- (void)setData:(FeedInfo *)info {
+    NSDate *date = [NSDate dateWithTimeIntervalSince1970:info.feed.createTime];
+    _yearLabel.text = [NSString stringWithFormat:@"%d", (int)date.getYear];
+    _monthLabel.text = [NSString stringWithFormat:@"%d", (int)date.getMonth];
+    _dayLabel.text = [NSString stringWithFormat:@"%d", (int)date.getDay];
+    [_content setData:info];
 }
+
 
 @end

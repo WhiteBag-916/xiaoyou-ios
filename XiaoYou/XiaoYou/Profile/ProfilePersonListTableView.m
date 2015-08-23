@@ -61,16 +61,20 @@
 - (void)sendRequest {
     if (_type == 0) {
         [[ProvisionManager sharedInstance] myPraisePersons:_page * KPAGENUM limitEnd:(_page+1) * KPAGENUM block:^(YActionMessage *message) {
-            [self stopLoadNewData];
+            if (_page == 0) {
+                [self stopLoadNewData];
+            } else {
+                [self stopLoadMoreData];
+            }
             if (message.isSuccess) {
                 if (_page == 0) {
                     _personListArray = [NSMutableArray arrayWithArray:message.object];
                     _page ++;
                 } else {
                     [_personListArray addObjectsFromArray:message.object];
-                    if ([message.object count] < KPAGENUM) {
-                        [self showNoticeNoMoreData];
-                    }
+                }
+                if ([message.object count] < KPAGENUM) {
+                    [self showNoticeNoMoreData];
                 }
                 [self reloadData];
                 
@@ -85,16 +89,20 @@
     
     if (_type == 1) {
         [[ProvisionManager sharedInstance] myCoolPersons:_page * KPAGENUM limitEnd:(_page+1) * KPAGENUM block:^(YActionMessage *message) {
-            [self stopLoadNewData];
+            if (_page == 0) {
+                [self stopLoadNewData];
+            } else {
+                [self stopLoadMoreData];
+            }
             if (message.isSuccess) {
                 if (_page == 0) {
                     _personListArray = [NSMutableArray arrayWithArray:message.object];
                     _page ++;
                 } else {
                     [_personListArray addObjectsFromArray:message.object];
-                    if ([message.object count] < KPAGENUM) {
-                        [self showNoticeNoMoreData];
-                    }
+                }
+                if ([message.object count] < KPAGENUM) {
+                    [self showNoticeNoMoreData];
                 }
                 [self reloadData];
                 
