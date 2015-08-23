@@ -15,6 +15,7 @@ AS_SINGLETON(MessageManager);
 
 - (void)getMessageListData:(ActionCompleteBlock)block;
 
-
+- (void)saveContactsList;
+- (void)initLinkManListData;
 
 @end
