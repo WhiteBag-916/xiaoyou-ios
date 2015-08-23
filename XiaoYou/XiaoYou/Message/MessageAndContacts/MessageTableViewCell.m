@@ -13,6 +13,10 @@
 #import "ConvertToCommonEmoticonsHelper.h"
 #import "UIImageView+WebCache.h"
 #import "NSDate+Category.h"
+#import "ContactManager.h"
+#import "LinkManList.h"
+#import "ClassList.h"
+#import "UnionList.h"
 
 #define kHeadWidthAndHeight            40
 #define kNameLabelWidth                80
@@ -23,6 +27,13 @@
 #define kBadgeWidthDistance            21
 #define kClassLabelDistance            5
 #define kClassLabelWidthAndHeight      30
+
+
+typedef enum : NSUInteger {
+    LINKkMAN_TYPE,
+    CLASS_TYPE,
+    UNION_TYPE,
+} LinkManModel_TYPE;
 
 NSString *const kMessageTableViewCell = @"MessageTableViewCellId";
 
@@ -119,15 +130,17 @@ NSString *const kMessageTableViewCell = @"MessageTableViewCellId";
 {
     EMConversation * conversation = dic;
     
+    NSDictionary * userInfoDic = [self getUserInfo:conversation];
+    
     _studentNum = conversation.chatter;
     //消息内容
     _messageLabel.text = [self subTitleMessageByConversation:conversation];
     
     //昵称
-    _nameLabel.text = conversation.latestMessage.from;
+    _nameLabel.text = userInfoDic[@"name"];
     
     //头像
-    [_headImageView sd_setImageWithURL:nil placeholderImage:[UIImage imageNamed:@"default_head"]];
+    [_headImageView sd_setImageWithURL:userInfoDic[@"icon"] placeholderImage:[UIImage imageNamed:@"default_head"]];
    
     //未读数
     if (![[self unreadMessageCountByConversation:conversation] isEqualToString:@"0"]) {
@@ -141,35 +154,38 @@ NSString *const kMessageTableViewCell = @"MessageTableViewCellId";
     //时间
     _timeLabel.text = [self lastMessageTimeByConversation:conversation];
 
-//    if ([dic[@"type"] isEqualToString:@"1"])
-//    {
-//        self.headImageView.image = [UIImage imageNamed:@"friend-requests"];
-//        self.headImageView.clipsToBounds = NO;
-//        self.nameLabel.text = @"好友申请";
-//        self.badgeNumberLabel.text = @"";
-//        self.timeLabel.text = @"10:29";
-//        self.messageLabel.text = @"小红想添加你为好友";
-//    }
-//    else if ([dic[@"type"] isEqualToString:@"2"])
-//    {
-//        self.nameLabel.text = @"网球社";
-//        self.badgeNumberLabel.text = @"";
-//        self.timeLabel.text = @"10:29";
-//        self.messageLabel.text = @"动次打次";
-//        self.headImageView.image = nil;
-////        self.headImageView.backgroundColor = [UIColor hexChangeFloat:@"258f74"];
-//        self.headImageView.image = [UIImage imageNamed:@"new-remind-number@2x"];
-//        self.defaultLabel.text = @"社";
-//    }
-//    else
-//    {
-//        self.headImageView.image = [UIImage imageNamed:@"default_head"];
-//        self.nameLabel.text = @"山本伊朗";
-//        self.badgeNumberLabel.text = @"99";
-//        self.timeLabel.text = @"10:29";
-//        self.messageLabel.text = @"新生报到通知";
-//    }
+
     
+}
+
+-(NSDictionary *)getUserInfo:(EMConversation *) conversation
+{
+    LinkManModel * model = [[ContactManager sharedInstance] getContactsListData];
+    
+    NSMutableArray * modelLinkMan = [[NSMutableArray alloc] initWithArray:model.linkManList];
+    NSMutableArray * modelClass = [[NSMutableArray alloc] initWithArray:model.classList];
+    NSMutableArray * modelUnion = [[NSMutableArray alloc] initWithArray:model.unionList];
+
+    
+    for (LinkManList * obj in modelLinkMan) {
+        if ([conversation.latestMessage.to isEqualToString:obj.thirdCode])
+        {
+            return [obj dictionaryRepresentation];
+        }
+    }
+    for (ClassList * obj in modelClass) {
+        if ([conversation.latestMessage.to isEqualToString:obj.thirdCode])
+        {
+            return [obj dictionaryRepresentation];
+        }
+    }
+    for (UnionList * obj in modelUnion) {
+        if ([conversation.latestMessage.to isEqualToString:obj.thirdCode])
+        {
+            return [obj dictionaryRepresentation];
+        }
+    }
+    return nil;
 }
 
 // 得到最后消息文字或者类型

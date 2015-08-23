@@ -8,11 +8,11 @@
 
 #import "YTableView.h"
 #import "XYMessageAndContactsViewController.h"
+#import "LinkManModel.h"
 
 @interface ContactsTableView : YTableView
 
 @property(nonatomic,weak)XYMessageAndContactsViewController * myController;
 
--(void)refreshTableView:(NSMutableArray *) dataSouceArr AndHeaderView:(NSMutableArray *) headerDataSouce;
-
+-(void)refreshTableView:(LinkManModel *) model;
 @end

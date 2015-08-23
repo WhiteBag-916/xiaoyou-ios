@@ -47,7 +47,7 @@ DEF_SINGLETON(MessageManager);
         [YQueue dispatchInSyncQueueWithQueueType:kMessageManagerSyncQueue block:^{
             if (message.isSuccess)
             {
-                
+             
             }
             
             //主线程处理界面

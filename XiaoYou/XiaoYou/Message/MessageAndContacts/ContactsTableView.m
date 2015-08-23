@@ -8,7 +8,6 @@
 
 #import "ContactsTableView.h"
 #import "ContactsTableViewCell.h"
-#import "LinkManModel.h"
 #import "Pinyin.h"
 #import "ChineseString.h"
 #import "YLog.h"
@@ -16,6 +15,7 @@
 #import "Masonry.h"
 #import "YSystemDefine.h"
 #import "XYGroupInfoDetailViewController.h"
+#import "ContactManager.h"
 
 #define kRowHeight                     68
 #define kHeadWidthAndHeight            40
@@ -56,6 +56,7 @@
     {
         self.sectionIndexBackgroundColor = [UIColor whiteColor];
         self.sectionIndexColor = [UIColor blackColor];
+        
         self.delegate = self;
         self.dataSource = self;
         [self registerClass:[ContactsTableViewCell class] forCellReuseIdentifier:kContactsTableViewCell];
@@ -66,7 +67,24 @@
 
 - (BOOL)showHeaderRefresh
 {
-    return NO;
+    return YES;
+}
+
+- (void)loadNewData
+{
+    
+    //联系人列表请求
+    [[ContactManager sharedInstance] getContactsListData:^(YActionMessage *message) {
+        YLogD(@"%@",message);
+        if (message.isSuccess) {
+//            LinkManModel * model = message.object;
+            
+//            [[ContactManager sharedInstance] saveContactsList:model];
+            
+            [self refreshTableView:[[ContactManager sharedInstance] getContactsListData]];
+        }
+    }];
+    [self stopLoadNewData];
 }
 
 - (BOOL)showFooterRefresh
@@ -75,12 +93,13 @@
 }
 
 
--(void)refreshTableView:(NSMutableArray *) dataSouceArr AndHeaderView:(NSMutableArray *) headerDataSouce
+-(void)refreshTableView:(LinkManModel *) model
 {
-    self.originalContactsDataSource = [NSMutableArray arrayWithArray:dataSouceArr];
-    self.indexTitleArr = [[NSMutableArray alloc] init];
-    self.contactsDataSource = [NSMutableArray arrayWithArray:[self transformDataSouceArr:dataSouceArr]];
-    [self setUpHeaderView:headerDataSouce];
+    _originalContactsDataSource = [NSMutableArray arrayWithArray:model.linkManList];
+    [_originalContactsDataSource addObjectsFromArray:model.unionList];
+    _indexTitleArr = [[NSMutableArray alloc] init];
+    _contactsDataSource = [NSMutableArray arrayWithArray:[self transformDataSouceArr:_originalContactsDataSource]];
+    [self setUpHeaderView:model.classList];
     [self reloadData];
 }
 
@@ -328,10 +347,22 @@
     ContactsTableViewCell * cell = (ContactsTableViewCell *)[self cellForRowAtIndexPath:indexPath];
     
     self.myController.hidesBottomBarWhenPushed = YES;
-    ChatViewController * chatVC = [[ChatViewController alloc] initWithChatter:cell.studentDic[@"thirdCode"] isGroup:NO];
-    chatVC.isSystemMessage = NO;
-    chatVC.studentDic = cell.studentDic;
-    [self.myController.navigationController pushViewController:chatVC animated:YES];
+    if ([cell.studentDic[@"linkType"] doubleValue] == 0) {
+        ChatViewController * chatVC = [[ChatViewController alloc] initWithChatter:cell.studentDic[@"thirdCode"] isGroup:NO];
+        chatVC.isSystemMessage = NO;
+        chatVC.studentDic = cell.studentDic;
+        [self.myController.navigationController pushViewController:chatVC animated:YES];
+    }
+    else
+    {
+//        NSArray *rooms = [[EaseMob sharedInstance].chatManager groupList];
+//        EMGroup *group = [self.dataSource objectAtIndex:indexPath.row];
+        ChatViewController * chatVC = [[ChatViewController alloc] initWithChatter:cell.studentDic[@"thirdCode"] isGroup:YES];
+        chatVC.isSystemMessage = NO;
+        chatVC.studentDic = cell.studentDic;
+        [self.myController.navigationController pushViewController:chatVC animated:YES];
+    }
+    
     
 }
 

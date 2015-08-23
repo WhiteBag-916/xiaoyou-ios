@@ -55,16 +55,9 @@
     [[ContactManager sharedInstance] getContactsListData:^(YActionMessage *message) {
         YLogD(@"%@",message);
         if (message.isSuccess) {
-            LinkManModel * model = message.object;
+//            LinkManModel * model = message.object;
             
-            [[ContactManager sharedInstance] saveContactsList:model];
-            
-            weakSelf.contactsDataSource = [NSMutableArray arrayWithArray:model.linkManList];
-            [weakSelf.contactsDataSource addObjectsFromArray:model.unionList];
-            
-            weakSelf.contactsHeadDataSouce = [NSMutableArray arrayWithArray:model.classList];
-        
-            [weakSelf.contactsTableView refreshTableView:weakSelf.contactsDataSource AndHeaderView:weakSelf.contactsHeadDataSouce];
+            [weakSelf.contactsTableView refreshTableView:[[ContactManager sharedInstance] getContactsListData]];
         }
     }];
     
