@@ -16,7 +16,7 @@
 - (void)initNotification:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     //环信初始化
-    [[EaseMob sharedInstance] registerSDKWithAppKey:@"jiankun#xiaoyoubeta" apnsCertName:@"xiaoyou_development_beta"];
+    [[EaseMob sharedInstance] registerSDKWithAppKey:EaseMobAppKey apnsCertName:ApnsCertName];
     [[EaseMob sharedInstance] application:application didFinishLaunchingWithOptions:launchOptions];
     
     if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0) {

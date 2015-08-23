@@ -1,7 +1,7 @@
 //
 //  Tags.h
 //
-//  Created by   on 15/8/22
+//  Created by   on 15/8/23
 //  Copyright (c) 2015 __MyCompanyName__. All rights reserved.
 //
 
@@ -11,8 +11,9 @@
 
 @interface Tags : YModel <NSCoding, NSCopying>
 
-@property (nonatomic, assign) double internalBaseClassIdentifier;
 @property (nonatomic, strong) NSString *name;
+@property (nonatomic, assign) BOOL equal;
+@property (nonatomic, assign) double internalBaseClassIdentifier;
 
 + (instancetype)modelObjectWithDictionary:(NSDictionary *)dict;
 - (instancetype)initWithDictionary:(NSDictionary *)dict;

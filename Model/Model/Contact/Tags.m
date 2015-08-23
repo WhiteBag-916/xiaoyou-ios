@@ -1,15 +1,16 @@
 //
 //  Tags.m
 //
-//  Created by   on 15/8/22
+//  Created by   on 15/8/23
 //  Copyright (c) 2015 __MyCompanyName__. All rights reserved.
 //
 
 #import "Tags.h"
 
 
-NSString *const kTagsId = @"id";
 NSString *const kTagsName = @"name";
+NSString *const kTagsEqual = @"equal";
+NSString *const kTagsId = @"id";
 
 
 @interface Tags ()
@@ -20,8 +21,9 @@ NSString *const kTagsName = @"name";
 
 @implementation Tags
 
-@synthesize internalBaseClassIdentifier = _internalBaseClassIdentifier;
 @synthesize name = _name;
+@synthesize equal = _equal;
+@synthesize internalBaseClassIdentifier = _internalBaseClassIdentifier;
 
 
 + (instancetype)modelObjectWithDictionary:(NSDictionary *)dict
@@ -36,8 +38,9 @@ NSString *const kTagsName = @"name";
     // This check serves to make sure that a non-NSDictionary object
     // passed into the model class doesn't break the parsing.
     if(self && [dict isKindOfClass:[NSDictionary class]]) {
-            self.internalBaseClassIdentifier = [[self objectOrNilForKey:kTagsId fromDictionary:dict] doubleValue];
             self.name = [self objectOrNilForKey:kTagsName fromDictionary:dict];
+            self.equal = [[self objectOrNilForKey:kTagsEqual fromDictionary:dict] boolValue];
+            self.internalBaseClassIdentifier = [[self objectOrNilForKey:kTagsId fromDictionary:dict] doubleValue];
 
     }
     
@@ -48,8 +51,9 @@ NSString *const kTagsName = @"name";
 - (NSDictionary *)dictionaryRepresentation
 {
     NSMutableDictionary *mutableDict = [NSMutableDictionary dictionary];
-    [mutableDict setValue:[NSNumber numberWithDouble:self.internalBaseClassIdentifier] forKey:kTagsId];
     [mutableDict setValue:self.name forKey:kTagsName];
+    [mutableDict setValue:[NSNumber numberWithBool:self.equal] forKey:kTagsEqual];
+    [mutableDict setValue:[NSNumber numberWithDouble:self.internalBaseClassIdentifier] forKey:kTagsId];
 
     return [NSDictionary dictionaryWithDictionary:mutableDict];
 }
@@ -73,16 +77,18 @@ NSString *const kTagsName = @"name";
 {
     self = [super init];
 
-    self.internalBaseClassIdentifier = [aDecoder decodeDoubleForKey:kTagsId];
     self.name = [aDecoder decodeObjectForKey:kTagsName];
+    self.equal = [aDecoder decodeBoolForKey:kTagsEqual];
+    self.internalBaseClassIdentifier = [aDecoder decodeDoubleForKey:kTagsId];
     return self;
 }
 
 - (void)encodeWithCoder:(NSCoder *)aCoder
 {
 
-    [aCoder encodeDouble:_internalBaseClassIdentifier forKey:kTagsId];
     [aCoder encodeObject:_name forKey:kTagsName];
+    [aCoder encodeBool:_equal forKey:kTagsEqual];
+    [aCoder encodeDouble:_internalBaseClassIdentifier forKey:kTagsId];
 }
 
 - (id)copyWithZone:(NSZone *)zone
@@ -91,8 +97,9 @@ NSString *const kTagsName = @"name";
     
     if (copy) {
 
-        copy.internalBaseClassIdentifier = self.internalBaseClassIdentifier;
         copy.name = [self.name copyWithZone:zone];
+        copy.equal = self.equal;
+        copy.internalBaseClassIdentifier = self.internalBaseClassIdentifier;
     }
     
     return copy;
