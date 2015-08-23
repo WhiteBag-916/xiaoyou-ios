@@ -7,9 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-
+@class FeedInfo;
 @interface ProfileFeedContentView : UIView
 
-- (void)setData;
+- (void)setData:(FeedInfo *)info;
 
 @end

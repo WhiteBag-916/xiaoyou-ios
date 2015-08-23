@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "SKTagView.h"
+@class Tags;
 /**
  *  @author 李思良, 15-08-18
  *
@@ -33,5 +34,5 @@
  *
  *  @brief  提供数据数组，告知标签名称以及是否相关，数组需要排好序，即关联的标签排在最前面
  */
-- (void)setData;
+- (void)setData:(NSArray *)tags;
 @end
