@@ -18,6 +18,7 @@
 #import "YUtils+HUD.h"
 #import "YActionMessage.h"
 #import "ProvisionManager.h"
+#import "ProfileTagViewController.h"
 
 #import "ProfileOthersViewController.h"
 
@@ -114,11 +115,11 @@
     [self afterLoadData:[notification userInfo][kNotification_Request_Message]];
 }
 - (void)loadData:(ProfileInfo *)info {
-    _middleView.hidden = false;
-    _bottomView.hidden = false;
     [_headImg setFaceImageWithUrl:info.headPic];
     _userName.text = info.userName;
+    _schoolNo.text = info.studentNo;
     _respectNum.text = [NSString stringWithFormat:@"敬酒：%d", (int)info.praiseCount];
+    _coolNum.text = [NSString stringWithFormat:@"觉得很酷：%d", (int)info.coolCount];
     _attitudeLabel.text = (info.selfIntro.length == 0? @"你是一个没有态度的人":info.selfIntro);
     _userId = info.uid;
     _tagModels = info.tagModels;
@@ -135,12 +136,12 @@
             _tagCountLabel.text = @"";
         }
     }
-    if (info.feedInfo.count == 0) {
+    if (info.lastFeeds.count == 0) {
         _feedHintLabel.text = @"你没有任何观点";
         [_feed setData:nil];
     } else {
         _feedHintLabel.text = @"查看全部";
-        [_feed setData:info.feedInfo[0]];
+        [_feed setData:info.lastFeeds[0]];
     }
     
 }
@@ -345,6 +346,7 @@
             make.left.equalTo(_tagLabel.mas_right).offset(5);
             make.centerY.equalTo(_tagLabel);
         }];
+        [item addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(openTagList)]];
         [self rightArray:2 inView:item];
     }
     if (index == 2) {
@@ -400,6 +402,11 @@
 
 - (void)viewDidAppear:(BOOL)animated {
     [self startLoadData];
+}
+- (void)openTagList {
+    UINavigationController *navigationController =
+    [[UINavigationController alloc] initWithRootViewController:[[ProfileTagViewController alloc] initWithMyTags:_tagModels]];
+    [self.navigationController presentViewController:navigationController animated:YES completion:nil];
 }
 - (void)openAttitude {
     UINavigationController *navigationController =
