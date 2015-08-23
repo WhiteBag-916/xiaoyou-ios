@@ -16,6 +16,7 @@
 #import "ProfileMyViewController.h"
 #import "YTextField.h"
 #import "YTextField+Ext.h"
+#import "ProvisionManager.h"
 @interface ProfileChangePwdViewController()
 
 @property (nonatomic, strong) YTextField *currentPwdField;
@@ -124,7 +125,18 @@
 }
 
 - (void)onNavigationRightButtonClicked {
-    NSLog(@"修改密码");
+    MBProgressHUD *hud = [YUtils showHUDWithTitle:@"正在修改"];
+    [[ProvisionManager sharedInstance] ModifyPassword:_pwdField.text oldPassWord:_currentPwdField.text block:^(YActionMessage *message) {
+        [hud removeFromSuperview];
+        if (message.isSuccess) {
+            [YUtils showTitle:@"修改成功"];
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 1*NSEC_PER_SEC), dispatch_get_main_queue(), ^{
+                [self onNavigationLeftButtonClicked];
+            });
+        } else {
+            [YUtils showTitle:message.desc];
+        }
+    }];
 }
 - (void)viewWillAppear:(BOOL)animated {
     self.navigationController.navigationBarHidden = false;
