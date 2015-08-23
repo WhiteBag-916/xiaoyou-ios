@@ -52,11 +52,11 @@
 //退出登录
 #define api_user_logOut  @"/mobile/user/logout"
 //绑定手机号
-#define api_login_ReceiveMobileAuthCode  @"/mobile/user/receiveMobileAuthCoder"
+#define api_login_ReceiveMobileAuthCode  @"/mobile/user/v2/receiveMobileAuthCoder"
 //修改密码
-#define api_login_ModifyPassword  @"/mobile/user/modifyPassword"
+#define api_login_ModifyPassword  @"/mobile/user/v2/modifyPassword"
 //获取验证码
-#define api_login_ReceiveAuthCode  @"/mobile/user/receiveAuthCode"
+#define api_login_ReceiveAuthCode  @"/mobile/user/v2/receiveAuthCode"
 
 /**********************************************************
  Url Define: FeedManager
