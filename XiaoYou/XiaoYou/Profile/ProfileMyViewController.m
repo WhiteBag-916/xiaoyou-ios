@@ -63,7 +63,7 @@
     [_faceImg setFaceImageWithUrl:info.headPic];
     _nameLabel.text = info.userName;
     _schoolNoLabel.text = info.studentNo;
-    LoginResp *resp = [YShareData defaultData][kShareData_LoginInfo];
+    LoginResp *resp = [[ProvisionManager sharedInstance] getLoginInfo];
     _schoolLabel.text = resp.schoolName;
     _departmentLabel.text = resp.college;
     _gradeLabel.text = resp.grad;

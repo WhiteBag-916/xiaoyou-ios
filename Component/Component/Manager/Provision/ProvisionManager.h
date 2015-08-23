@@ -10,6 +10,7 @@
 #import "YAction.h"
 
 @class ProfileInfo;
+@class LoginResp;
 
 @interface ProvisionManager : YManager<YManager>
 AS_SINGLETON(ProvisionManager);
@@ -20,6 +21,8 @@ AS_SINGLETON(ProvisionManager);
 - (void)initProfileData;
 //获取个人信息
 - (ProfileInfo *)getProfile;
+//获取登录信息
+- (LoginResp *)getLoginInfo;
 //获取个人标签
 - (NSArray *)profileTags;
 //登录
