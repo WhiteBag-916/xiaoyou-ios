@@ -254,8 +254,10 @@ DEF_SINGLETON(ProvisionManager);
 }
 
 //点赞过我的人
-- (void)myPraisePersons:(ActionCompleteBlock)block {
+- (void)myPraisePersons:(NSInteger)limitStart limitEnd:(NSInteger)limitEnd block:(ActionCompleteBlock)block {
     MyPraisePersonsAction* action = [[MyPraisePersonsAction alloc] init];
+    action.limitStart = limitStart;
+    action.limitEnd = limitEnd;
     
     [YAction startAction:action completionBlock:^(YActionMessage* message) {
         //主线程处理界面
@@ -264,8 +266,10 @@ DEF_SINGLETON(ProvisionManager);
 }
 
 //认为我很酷的人
-- (void)myCoolPersons:(ActionCompleteBlock)block {
+- (void)myCoolPersons:(NSInteger)limitStart limitEnd:(NSInteger)limitEnd block:(ActionCompleteBlock)block {
     MyCoolPersonsAction* action = [[MyCoolPersonsAction alloc] init];
+    action.limitStart = limitStart;
+    action.limitEnd = limitEnd;
     
     [YAction startAction:action completionBlock:^(YActionMessage* message) {
         //主线程处理界面

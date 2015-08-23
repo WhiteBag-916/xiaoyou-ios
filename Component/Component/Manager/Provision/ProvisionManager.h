@@ -41,8 +41,8 @@ AS_SINGLETON(ProvisionManager);
 //评论过我的人
 - (void)myCommentPersons:(ActionCompleteBlock)block;
 //点赞过我的人
-- (void)myPraisePersons:(ActionCompleteBlock)block;
+- (void)myPraisePersons:(NSInteger)limitStart limitEnd:(NSInteger)limitEnd block:(ActionCompleteBlock)block;
 //认为我很酷的人
-- (void)myCoolPersons:(ActionCompleteBlock)block;
+- (void)myCoolPersons:(NSInteger)limitStart limitEnd:(NSInteger)limitEnd block:(ActionCompleteBlock)block;
 
 @end
