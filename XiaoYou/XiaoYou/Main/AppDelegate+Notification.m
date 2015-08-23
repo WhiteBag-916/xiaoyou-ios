@@ -11,13 +11,12 @@
 #import "YLog.h"
 #import "EaseMob.h"
 
-
 @implementation AppDelegate (Notification)
 
 - (void)initNotification:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     //环信初始化
-    [[EaseMob sharedInstance] registerSDKWithAppKey:@"jiankun#xiaoyoubeta" apnsCertName:@"xiaoyou_development"];
+    [[EaseMob sharedInstance] registerSDKWithAppKey:@"jiankun#xiaoyoubeta" apnsCertName:@"xiaoyou_development_beta"];
     [[EaseMob sharedInstance] application:application didFinishLaunchingWithOptions:launchOptions];
     
     if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0) {
@@ -34,22 +33,21 @@
 }
 
 #pragma mark - notification
-- (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken
-{
-     [[EaseMob sharedInstance] application:application didRegisterForRemoteNotificationsWithDeviceToken:deviceToken];
-//     EMPushNotificationOptions *options = [[EaseMob sharedInstance].chatManager pushNotificationOptions];
-    YLogI(@"didRegisterForRemoteNotificationsWithDeviceToken : %@", deviceToken);
+// 将得到的deviceToken传给SDK
+- (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken{
+    [[EaseMob sharedInstance] application:application didRegisterForRemoteNotificationsWithDeviceToken:deviceToken];
 }
 
-- (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error
-{
+// 注册deviceToken失败
+- (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error{
     [[EaseMob sharedInstance] application:application didFailToRegisterForRemoteNotificationsWithError:error];
-    YLogE(@"didFailToRegisterForRemoteNotificationsWithError : %@", error);
+    NSLog(@"error -- %@",error);
 }
 
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo
 {
     YLogI(@"didReceiveRemoteNotification : %@", userInfo);
 }
+
 
 @end

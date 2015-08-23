@@ -181,7 +181,7 @@ NSString *const kMessageTableViewCell = @"MessageTableViewCellId";
         id<IEMMessageBody> messageBody = lastMessage.messageBodies.lastObject;
         switch (messageBody.messageBodyType) {
             case eMessageBodyType_Image:{
-                ret = NSLocalizedString(@"message.image1", @"[image]");
+                ret = NSLocalizedString(@"[图片]", @"[image]");
             } break;
             case eMessageBodyType_Text:{
                 // 表情映射。
@@ -194,13 +194,13 @@ NSString *const kMessageTableViewCell = @"MessageTableViewCellId";
                 }
             } break;
             case eMessageBodyType_Voice:{
-                ret = NSLocalizedString(@"message.voice1", @"[voice]");
+                ret = NSLocalizedString(@"[语音]", @"[voice]");
             } break;
             case eMessageBodyType_Location: {
-                ret = NSLocalizedString(@"message.location1", @"[location]");
+                ret = NSLocalizedString(@"[位置]", @"[location]");
             } break;
             case eMessageBodyType_Video: {
-                ret = NSLocalizedString(@"message.video1", @"[video]");
+                ret = NSLocalizedString(@"[视频]", @"[video]");
             } break;
             default: {
             } break;
