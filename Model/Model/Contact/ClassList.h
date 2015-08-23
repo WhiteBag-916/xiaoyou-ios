@@ -6,10 +6,10 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "YModel.h"
 
 
-
-@interface ClassList : NSObject <NSCoding, NSCopying>
+@interface ClassList : YModel <NSCoding, NSCopying>
 
 @property (nonatomic, assign) double classListIdentifier;
 @property (nonatomic, strong) NSString *icon;
