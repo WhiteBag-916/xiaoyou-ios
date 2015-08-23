@@ -19,11 +19,11 @@
 @property (nonatomic, strong) NSString *tags;
 @property (nonatomic, strong) NSString *college;
 @property (nonatomic, strong) NSString *icon;
-@property (nonatomic, strong) NSArray *propetiesCommon;
+@property (nonatomic, strong) NSArray *propetiesCommon;//Tags
 @property (nonatomic, strong) NSString *isShield;
 @property (nonatomic, strong) NSString *isRemind;
 @property (nonatomic, assign) double linkType;
-@property (nonatomic, strong) NSArray *tagsCommon;
+@property (nonatomic, strong) NSArray *tagsCommon;//Tags
 @property (nonatomic, strong) NSString *name;
 @property (nonatomic, strong) NSString *gender;
 
