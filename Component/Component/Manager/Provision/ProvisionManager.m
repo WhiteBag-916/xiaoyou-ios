@@ -26,12 +26,18 @@
 #import "MyPraisePersonsAction.h"
 #import "EaseMob.h"
 #import "MyCoolPersonsAction.h"
+#import "UpdateSelfIntroAction.h"
+#import "ReceiveMobileAuthCodeAction.h"
+#import "ModifyPasswordAction.h"
+#import "ReceiveAuthCodeAction.h"
+#import "LogoutAction.h"
 
 #define kProvisionManagerSyncQueue @"kProvisionManagerSyncQueue"
 
 @interface ProvisionManager ()
 
 @property (nonatomic, strong) ProfileInfo *profileInfo; //个人信息
+@property (nonatomic, strong) LoginResp *loginResp;     //登录信息
 
 @end
 
@@ -72,26 +78,38 @@ DEF_SINGLETON(ProvisionManager);
 
 - (void)initLoginData {
     NSString *cachePath = [[YDirectory fileCache] stringByAppendingString:NSStringFromClass([LoginResp class])];
-    LoginResp* loginResp = [LoginResp instanceWithFile:cachePath];
-    [self updateLoginInfo:loginResp];
+    _loginResp = [LoginResp instanceWithFile:cachePath];
+    [self updateLoginInfo];
 }
 
 //更新个人常用信息
-- (void)updateLoginInfo:(LoginResp *)loginResp
+- (void)updateLoginInfo
 {
-    [YShareData defaultData][kShareData_LoginInfo] = loginResp;
-    [YShareData defaultData][kShareData_StudentNo] = loginResp.studentNo;
-    [YShareData defaultData][kShareData_Token] = loginResp.token;
-    [YShareData defaultData][kShareData_SchoolIcon] = loginResp.icon;
-    [YShareData defaultData][kShareData_LoginAccount] = loginResp.studentNo;
-    [YShareData defaultData][kShareData_SchoolName] = loginResp.schoolName;
-    [YShareData defaultData][kShareData_SchoolCode] = loginResp.schoolCode;
+    [YShareData defaultData][kShareData_StudentNo] = _loginResp.studentNo;
+    [YShareData defaultData][kShareData_Token] = _loginResp.token;
+    [YShareData defaultData][kShareData_SchoolIcon] = _loginResp.icon;
+    [YShareData defaultData][kShareData_LoginAccount] = _loginResp.studentNo;
+    [YShareData defaultData][kShareData_SchoolName] = _loginResp.schoolName;
+    [YShareData defaultData][kShareData_SchoolCode] = _loginResp.schoolCode;
+}
+
+//更新登录信息
+- (void)saveLoginInfo
+{
+    //存文件
+    NSString *cachePath = [[YDirectory fileCache] stringByAppendingString:NSStringFromClass([LoginResp class])];
+    [_loginResp writeToFile:cachePath];
 }
 
 //初始化个人数据,自动登录
 - (void)initProfileData{
     NSString *cachePath = [[YDirectory fileCache] stringByAppendingString:NSStringFromClass([ProfileInfo class])];
     _profileInfo = [ProfileInfo instanceWithFile:cachePath];
+}
+
+//获取登录信息
+- (LoginResp *)getLoginInfo {
+    return _loginResp;
 }
 
 //获取个人信息
@@ -126,13 +144,12 @@ DEF_SINGLETON(ProvisionManager);
             if (message.isSuccess)
             {
                 //存文件
-                NSString *cachePath = [[YDirectory fileCache] stringByAppendingString:NSStringFromClass([LoginResp class])];
-                LoginResp* loginResp = ((LoginResp*)(message.object));
-                [loginResp writeToFile:cachePath];
+                _loginResp = message.object;
+                [self saveLoginInfo];
                 //存token
-                [[NSUserDefaults standardUserDefaults] setObject:loginResp.token forKey:kShareData_Token];
+                [[NSUserDefaults standardUserDefaults] setObject:_loginResp.token forKey:kShareData_Token];
                 
-                [self updateLoginInfo:message.object];
+                [self updateLoginInfo];
                 
                 //抛登录成功
                 [[YManagerCenter defaultCenter] notifyAppLogined:nil];
@@ -141,8 +158,6 @@ DEF_SINGLETON(ProvisionManager);
             //主线程处理界面
             [YQueue dispatchInMainQueueWithBlock:^{
                 block(message);
-                
-                YLogD(@"%@", [YShareData defaultData][kShareData_LoginInfo]);
             }];
         }];
     }];
@@ -272,6 +287,72 @@ DEF_SINGLETON(ProvisionManager);
     action.limitEnd = limitEnd;
     
     [YAction startAction:action completionBlock:^(YActionMessage* message) {
+        //主线程处理界面
+        block(message);
+    }];
+}
+
+//修改签名
+- (void)UpdateSelfIntro:(NSString *)selfIntro block:(ActionCompleteBlock)block {
+    UpdateSelfIntroAction* action = [[UpdateSelfIntroAction alloc] init];
+    action.selfIntro = selfIntro;
+    
+    [YAction startAction:action completionBlock:^(YActionMessage* message) {
+        if (message.isSuccess) {
+            _profileInfo.selfIntro = action.selfIntro;
+            [self saveProfileInfo];
+        }
+        
+        //主线程处理界面
+        block(message);
+    }];
+}
+
+//修改密码
+- (void)ModifyPassword:(NSString *)password oldPassWord:(NSString *)oldPassWord block:(ActionCompleteBlock)block {
+    ModifyPasswordAction* action = [[ModifyPasswordAction alloc] init];
+    action.password = password;
+    action.oldPassWord = oldPassWord;
+    
+    [YAction startAction:action completionBlock:^(YActionMessage* message) {
+        //主线程处理界面
+        block(message);
+    }];
+}
+
+//绑定手机验证码获取
+- (void)receiveAuthCode:(NSString *)mobilePhone block:(ActionCompleteBlock)block {
+    ReceiveAuthCodeAction* action = [[ReceiveAuthCodeAction alloc] init];
+    action.mobilePhone = mobilePhone;
+    
+    [YAction startAction:action completionBlock:^(YActionMessage* message) {
+        //主线程处理界面
+        block(message);
+    }];
+}
+
+//绑定手机
+- (void)receiveMobileAuthCode:(NSString *)mobilePhone authCode:(NSString *)authCode block:(ActionCompleteBlock)block {
+    ReceiveMobileAuthCodeAction* action = [[ReceiveMobileAuthCodeAction alloc] init];
+    action.mobilePhone = mobilePhone;
+    action.authCode = authCode;
+    
+    [YAction startAction:action completionBlock:^(YActionMessage* message) {
+        if (message.isSuccess) {
+            _loginResp.mobilePhone = action.mobilePhone;
+            [self saveLoginInfo];
+        }
+        
+        //主线程处理界面
+        block(message);
+    }];
+}
+
+//登出
+- (void)logout:(ActionCompleteBlock)block {
+    LoginAction* action = [[LoginAction alloc] init];
+    
+    [YAction startAction:action completionBlock:^(YActionMessage* message) {        
         //主线程处理界面
         block(message);
     }];

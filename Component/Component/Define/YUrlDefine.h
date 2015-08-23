@@ -51,12 +51,20 @@
 #define api_login_myPraisePersons @"/mobile/user/v2/myPraisePersons"
 //认为我很酷的人
 #define api_login_myCoolPersons @"/mobile/user/v2/myCoolPersons"
+//修改签名
+#define api_login_UpdateSelfIntro @"/mobile/user/v2/updateSelfIntro"
+//退出登录
+#define api_user_logOut  @"/mobile/user/logout"
 
 /**********************************************************
  Url Define: FeedManager
  **********************************************************/
-//点赞过我的人
-#define api_login_myFeed @"/mobile/user/v2/myFeed"
+//我的动态
+#define api_login_MyFeed @"/mobile/user/v2/myFeed"
+//动态详情
+#define api_login_DetailFeed @"/mobile/feed/detailFeed"
+//动态列表
+#define api_login_ListFeed @"/mobile/feed/listFeed"
 
 /**********************************************************
  Url Define: ContactManager

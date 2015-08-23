@@ -10,6 +10,8 @@
 #import "YFoundation.h"
 #import "YQueue.h"
 #import "MyFeedAction.h"
+#import "FeedDetailAction.h"
+#import "FeedListAction.h"
 
 #define KFeedManagerSyncQueue @"kFeedManagerSyncQueue"
 
@@ -43,9 +45,32 @@ DEF_SINGLETON(FeedManager);
     
 }
 
-//获取我的动态
+//获取我的动态,FeedInfo
 - (void)getMyFeed:(ActionCompleteBlock)block {
-    MyFeedAction* action = [[MyFeedAction alloc] init];
+    MyFeedAction *action = [[MyFeedAction alloc] init];
+    
+    [YAction startAction:action completionBlock:^(YActionMessage* message) {
+        //主线程处理界面
+        block(message);
+    }];
+}
+
+//获取动态详情，FeedDetail
+- (void)getFeedDetailByID:(NSString *)feedID block:(ActionCompleteBlock)block {
+    FeedDetailAction *action = [[FeedDetailAction alloc] init];
+    action.feedId = feedID;
+    
+    [YAction startAction:action completionBlock:^(YActionMessage* message) {
+        //主线程处理界面
+        block(message);
+    }];
+}
+
+//获取feed列表,FeedInfo
+- (void)feedList:(NSInteger)limitStart limitEnd:(NSInteger)limitEnd block:(ActionCompleteBlock)block {
+    FeedListAction *action = [[FeedListAction alloc] init];
+    action.limitEnd = limitEnd;
+    action.limitStart = limitStart;
     
     [YAction startAction:action completionBlock:^(YActionMessage* message) {
         //主线程处理界面

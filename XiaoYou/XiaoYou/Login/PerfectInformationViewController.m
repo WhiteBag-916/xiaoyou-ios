@@ -262,11 +262,7 @@
     
     dispatch_async(dispatch_get_global_queue(0, 0), ^{
         
-        //根据时间格式确保文件名唯一性
-        NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-        NSDate *date = [[NSDate alloc] init];
-        [formatter setDateFormat:@"YYYY_MM_dd_HH_mm_ss"];
-        NSString *keyStr = [[formatter stringFromDate:date] stringByAppendingString:@".png"];
+        NSString *keyStr = @"face.png";
         
         //写入文件
         NSData *imageData = UIImageJPEGRepresentation(image, 0.5);

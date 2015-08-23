@@ -16,7 +16,7 @@
 @interface ProfilePersonListTableView()<UITableViewDataSource, UITableViewDelegate>
 @property (nonatomic, assign) int type;
 @property (nonatomic, strong) NSString *feedId;
-@property (nonatomic, strong) NSArray *personListArray;
+@property (nonatomic, strong) NSMutableArray *personListArray;
 @property (nonatomic, assign) int page;
 @end
 
@@ -50,11 +50,34 @@
 - (void)loadNewData
 {
     _page = 0;
+    [self sendRequest];
+}
+
+- (void)loadMoreData
+{
+    _page ++;
+    [self sendRequest];
+}
+- (void)sendRequest {
     if (_type == 0) {
         [[ProvisionManager sharedInstance] myPraisePersons:_page * KPAGENUM limitEnd:(_page+1) * KPAGENUM block:^(YActionMessage *message) {
+            [self stopLoadNewData];
             if (message.isSuccess) {
-                message.object;
+                if (_page == 0) {
+                    _personListArray = [NSMutableArray arrayWithArray:message.object];
+                    _page ++;
+                } else {
+                    [_personListArray addObjectsFromArray:message.object];
+                    if ([message.object count] < KPAGENUM) {
+                        [self showNoticeNoMoreData];
+                    }
+                }
+                [self reloadData];
+                
             } else {
+                if (_page != 0) {
+                    _page --;
+                }
                 [YUtils showTitleOn:self title:message.desc];
             }
         }];
@@ -64,21 +87,26 @@
         [[ProvisionManager sharedInstance] myCoolPersons:_page * KPAGENUM limitEnd:(_page+1) * KPAGENUM block:^(YActionMessage *message) {
             [self stopLoadNewData];
             if (message.isSuccess) {
-                _personListArray = [NSArray arrayWithArray:message.object];
+                if (_page == 0) {
+                    _personListArray = [NSMutableArray arrayWithArray:message.object];
+                    _page ++;
+                } else {
+                    [_personListArray addObjectsFromArray:message.object];
+                    if ([message.object count] < KPAGENUM) {
+                        [self showNoticeNoMoreData];
+                    }
+                }
                 [self reloadData];
                 
             } else {
+                if (_page != 0) {
+                    _page --;
+                }
                 [YUtils showTitleOn:self title:message.desc];
             }
         }];
     }
 }
-
-- (void)loadMoreData
-{
-    
-}
-
 - (void)loadDataWithFeedId:(NSString *)feedId {
     _feedId = feedId;
     [self reloadData];
@@ -93,7 +121,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     ProfilePersonListTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kProfilePersonListTableViewCell];
-    [cell setData:nil];
+    [cell setData:_personListArray[indexPath.row]];
     return cell;
 }
 

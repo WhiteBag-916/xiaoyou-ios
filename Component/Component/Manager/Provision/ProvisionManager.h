@@ -10,6 +10,7 @@
 #import "YAction.h"
 
 @class ProfileInfo;
+@class LoginResp;
 
 @interface ProvisionManager : YManager<YManager>
 AS_SINGLETON(ProvisionManager);
@@ -20,6 +21,8 @@ AS_SINGLETON(ProvisionManager);
 - (void)initProfileData;
 //获取个人信息
 - (ProfileInfo *)getProfile;
+//获取登录信息
+- (LoginResp *)getLoginInfo;
 //获取个人标签
 - (NSArray *)profileTags;
 //登录
@@ -44,5 +47,15 @@ AS_SINGLETON(ProvisionManager);
 - (void)myPraisePersons:(NSInteger)limitStart limitEnd:(NSInteger)limitEnd block:(ActionCompleteBlock)block;
 //认为我很酷的人
 - (void)myCoolPersons:(NSInteger)limitStart limitEnd:(NSInteger)limitEnd block:(ActionCompleteBlock)block;
+//修改签名
+- (void)UpdateSelfIntro:(NSString *)selfIntro block:(ActionCompleteBlock)block;
+//修改密码
+- (void)ModifyPassword:(NSString *)password oldPassWord:(NSString *)oldPassWord block:(ActionCompleteBlock)block;
+//绑定手机验证码获取
+- (void)receiveAuthCode:(NSString *)mobilePhone block:(ActionCompleteBlock)block;
+//绑定手机
+- (void)receiveMobileAuthCode:(NSString *)mobilePhone authCode:(NSString *)authCode block:(ActionCompleteBlock)block;
+//登出
+- (void)logout:(ActionCompleteBlock)block;
 
 @end

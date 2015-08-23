@@ -11,7 +11,6 @@
 
 #import "YShareData.h"
 
-#define kShareData_LoginInfo                @"kShareData_LoginInfo"
 //常用信息，跟随LoginInfo变更，可增加----------------------------------------
 #define kShareData_StudentNo                @"kShareData_StudentNo"
 #define kShareData_Token                    @"kShareData_Token"
