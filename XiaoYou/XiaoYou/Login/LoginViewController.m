@@ -41,9 +41,9 @@
     _accountTextField.text = [YShareData defaultData][kShareData_LoginAccount];
 #if DEBUG    
     if (_accountTextField.text.length <= 0) {
-        _accountTextField.text = @"1247";
+        _accountTextField.text = @"1234";
     }
-    _passwordTextField.text = @"12471234";
+    _passwordTextField.text = @"12341234";
 #endif
     
     [self resetRightButton];

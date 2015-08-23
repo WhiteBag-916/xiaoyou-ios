@@ -39,6 +39,7 @@ DEF_SINGLETON(ContactManager);
 - (void)saveContactsList:(LinkManModel *) model
 {
     //存文件
+    _linkManModel = model;
     NSString *cachePath = [[YDirectory fileCache] stringByAppendingString:NSStringFromClass([LinkManModel class])];
     [_linkManModel writeToFile:cachePath];
 }
@@ -63,7 +64,7 @@ DEF_SINGLETON(ContactManager);
         [YQueue dispatchInSyncQueueWithQueueType:kContactsManagerSyncQueue block:^{
             if (message.isSuccess)
             {
-                
+                [self saveContactsList:message.object];
             }
             
             //主线程处理界面

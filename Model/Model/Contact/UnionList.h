@@ -6,10 +6,10 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "YModel.h"
 
 
-
-@interface UnionList : NSObject <NSCoding, NSCopying>
+@interface UnionList : YModel <NSCoding, NSCopying>
 
 @property (nonatomic, assign) double unionListIdentifier;
 @property (nonatomic, strong) NSString *icon;
