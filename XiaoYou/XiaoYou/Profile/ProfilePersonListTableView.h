@@ -9,6 +9,6 @@
 #import "YTableView.h"
 
 @interface ProfilePersonListTableView : YTableView
-- (id)initWIthType:(BOOL)isRespect;
+- (id)initWIthType:(int)type;
 - (void)loadData:(NSArray *)data;
 @end

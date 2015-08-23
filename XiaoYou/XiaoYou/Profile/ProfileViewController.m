@@ -14,6 +14,7 @@
 #import "ProfileMyViewController.h"
 #import "YCommonEditViewController.h"
 #import "UIImageView+WebCache.h"
+#import "ProfileInfo.h"
 
 #define KTOPHEIGHT SCALE_NUM(90)
 #define KHEADIMG_SIZE SCALE_NUM(45)
@@ -56,6 +57,7 @@
     self.hidesBottomBarWhenPushed = NO;
     [self initView];
 }
+
 - (void)initView {
     self.view.backgroundColor = [UIColor whiteColor];
     [self initScroll];
@@ -63,9 +65,15 @@
     [self initMiddle];
     [self initBottom];
 }
+- (void)loadData:(ProfileInfo *)info {
+    [_headImg sd_setImageWithURL:[NSURL URLWithString:info.headPic]];
+    _userName.text = info.userName;
+    _respectNum.text = [NSString stringWithFormat:@"敬酒%f", info.praiseCount];
+}
 - (void)viewWillAppear:(BOOL)animated {
     self.navigationController.navigationBarHidden = true;
 }
+
 - (void)initScroll {
     UIScrollView *scroll = [[UIScrollView alloc] init];
     [self.view addSubview:scroll];
@@ -328,10 +336,10 @@
     [self.navigationController pushViewController:[[YCommonEditViewController alloc] initWithType:YCommonEditAttitude preText:_attitudeLabel.text] animated:NO];
 }
 - (void)openRespect {
-    [self.navigationController pushViewController:[[ProfilePersonListController alloc] initWithType:true] animated:true];
+    [self.navigationController pushViewController:[[ProfilePersonListController alloc] initWithType:0] animated:true];
 }
 - (void)openCool {
-    [self.navigationController pushViewController:[[ProfilePersonListController alloc] initWithType:false] animated:true];
+    [self.navigationController pushViewController:[[ProfilePersonListController alloc] initWithType:1] animated:true];
 }
 - (void)openFeed {
     [self.navigationController pushViewController:[[ProfilePublishViewController alloc] init] animated:true];

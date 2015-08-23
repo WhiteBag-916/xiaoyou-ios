@@ -383,6 +383,7 @@
 		653CB2EF1B806BFD006ECBB2 /* pinyin.c in Sources */ = {isa = PBXBuildFile; fileRef = 653CB2EC1B806BFD006ECBB2 /* pinyin.c */; };
 		654602171B7F2FF00039F622 /* FeedImageGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 654602161B7F2FF00039F622 /* FeedImageGroup.m */; };
 		656234771B837FDC00651C88 /* YFaceImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 656234761B837FDC00651C88 /* YFaceImageView.m */; };
+		656F59751B8896370094B658 /* ProfilePhoneChangeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 656F59741B8896370094B658 /* ProfilePhoneChangeViewController.m */; };
 		6592DCD31B806A9B004CD118 /* XYContactsInfoDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6592DCB31B806A9B004CD118 /* XYContactsInfoDetailViewController.m */; };
 		6592DCD51B806A9B004CD118 /* FriendApplyTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6592DCB81B806A9B004CD118 /* FriendApplyTableView.m */; };
 		6592DCD61B806A9B004CD118 /* FriendApplyTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6592DCBA1B806A9B004CD118 /* FriendApplyTableViewCell.m */; };
@@ -406,6 +407,7 @@
 		65969DDC1B875F31001DD348 /* ProfilePublishViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 65969DDB1B875F31001DD348 /* ProfilePublishViewController.m */; };
 		65969DDF1B877356001DD348 /* ProfileFeedListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 65969DDE1B877356001DD348 /* ProfileFeedListView.m */; };
 		65969DE21B877896001DD348 /* ProfileFeedCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 65969DE11B877896001DD348 /* ProfileFeedCell.m */; };
+		659DC7771B88C4E700DB589F /* ProfileOthersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 659DC7761B88C4E700DB589F /* ProfileOthersViewController.m */; };
 		65A846FF1B81C9C300933815 /* FeedCellTopView.m in Sources */ = {isa = PBXBuildFile; fileRef = 65A846FE1B81C9C300933815 /* FeedCellTopView.m */; };
 		65A847021B81C9D300933815 /* FeedCellMiddleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 65A847011B81C9D300933815 /* FeedCellMiddleView.m */; };
 		65A847051B81CA1900933815 /* FeedCellBottomView.m in Sources */ = {isa = PBXBuildFile; fileRef = 65A847041B81CA1900933815 /* FeedCellBottomView.m */; };
@@ -996,6 +998,8 @@
 		654602161B7F2FF00039F622 /* FeedImageGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedImageGroup.m; sourceTree = "<group>"; };
 		656234751B837FDC00651C88 /* YFaceImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YFaceImageView.h; sourceTree = "<group>"; };
 		656234761B837FDC00651C88 /* YFaceImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YFaceImageView.m; sourceTree = "<group>"; };
+		656F59731B8896370094B658 /* ProfilePhoneChangeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfilePhoneChangeViewController.h; sourceTree = "<group>"; };
+		656F59741B8896370094B658 /* ProfilePhoneChangeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfilePhoneChangeViewController.m; sourceTree = "<group>"; };
 		6592DCB21B806A9B004CD118 /* XYContactsInfoDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYContactsInfoDetailViewController.h; sourceTree = "<group>"; };
 		6592DCB31B806A9B004CD118 /* XYContactsInfoDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYContactsInfoDetailViewController.m; sourceTree = "<group>"; };
 		6592DCB71B806A9B004CD118 /* FriendApplyTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendApplyTableView.h; sourceTree = "<group>"; };
@@ -1042,6 +1046,8 @@
 		65969DDE1B877356001DD348 /* ProfileFeedListView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileFeedListView.m; sourceTree = "<group>"; };
 		65969DE01B877896001DD348 /* ProfileFeedCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileFeedCell.h; sourceTree = "<group>"; };
 		65969DE11B877896001DD348 /* ProfileFeedCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileFeedCell.m; sourceTree = "<group>"; };
+		659DC7751B88C4E700DB589F /* ProfileOthersViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileOthersViewController.h; sourceTree = "<group>"; };
+		659DC7761B88C4E700DB589F /* ProfileOthersViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileOthersViewController.m; sourceTree = "<group>"; };
 		65A846FD1B81C9C300933815 /* FeedCellTopView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedCellTopView.h; sourceTree = "<group>"; };
 		65A846FE1B81C9C300933815 /* FeedCellTopView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedCellTopView.m; sourceTree = "<group>"; };
 		65A847001B81C9D300933815 /* FeedCellMiddleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedCellMiddleView.h; sourceTree = "<group>"; };
@@ -1344,6 +1350,10 @@
 				650C6BFF1B881A9800A89AC9 /* ProfileMyViewController.m */,
 				650C6C011B88529600A89AC9 /* ProfileChangePwdViewController.h */,
 				650C6C021B88529600A89AC9 /* ProfileChangePwdViewController.m */,
+				656F59731B8896370094B658 /* ProfilePhoneChangeViewController.h */,
+				656F59741B8896370094B658 /* ProfilePhoneChangeViewController.m */,
+				659DC7751B88C4E700DB589F /* ProfileOthersViewController.h */,
+				659DC7761B88C4E700DB589F /* ProfileOthersViewController.m */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -2868,11 +2878,13 @@
 				333122841B806EDC00D3D032 /* UIViewController+HUD.m in Sources */,
 				333122821B806EDC00D3D032 /* UIResponder+Router.m in Sources */,
 				333122781B806EDB00D3D032 /* TTGlobalUICommon.m in Sources */,
+				659DC7771B88C4E700DB589F /* ProfileOthersViewController.m in Sources */,
 				3331225D1B806EDB00D3D032 /* NSData+EMImageContentType.m in Sources */,
 				333122411B806EDB00D3D032 /* EMAudioRecorderUtil.m in Sources */,
 				6592DCD81B806A9B004CD118 /* GroupApplyTableView.m in Sources */,
 				20DAF9DB1B873883005B7932 /* PinyinFormatter.m in Sources */,
 				65969DD91B875166001DD348 /* ProfileFeedContentView.m in Sources */,
+				656F59751B8896370094B658 /* ProfilePhoneChangeViewController.m in Sources */,
 				20DD4B351B734781007C352C /* CommonSwitchView.m in Sources */,
 				20E9423A1B833D10009C2DC6 /* FeedContactTableView.m in Sources */,
 				3331225F1B806EDB00D3D032 /* UIImage+EMGIF.m in Sources */,

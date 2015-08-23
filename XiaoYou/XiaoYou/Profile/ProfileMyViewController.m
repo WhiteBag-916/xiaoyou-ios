@@ -9,6 +9,7 @@
 #import "ProfileMyViewController.h"
 #import "UIImageView+WebCache.h"
 #import "ProfileChangePwdViewController.h"
+#import "ProfilePhoneChangeViewController.h"
 
 #define KHEADHEIGHT SCALE_NUM(150)
 
@@ -218,7 +219,7 @@
 }
 
 - (void)changePhone {
-    
+    [self.navigationController pushViewController:[[ProfilePhoneChangeViewController alloc] init] animated:true];
 }
 - (void)changePwd {
     [self.navigationController pushViewController:[[ProfileChangePwdViewController alloc] init] animated:true];
