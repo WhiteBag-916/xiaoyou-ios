@@ -1,7 +1,7 @@
 //
 //  ProfileInfo.h
 //
-//  Created by   on 15/8/22
+//  Created by   on 15/8/23
 //  Copyright (c) 2015 __MyCompanyName__. All rights reserved.
 //
 
@@ -13,12 +13,15 @@
 
 @property (nonatomic, strong) NSArray *tagModels;
 @property (nonatomic, strong) NSString *uid;
-@property (nonatomic, strong) NSString *userName;
-@property (nonatomic, strong) NSString *selfIntro;
-@property (nonatomic, assign) double praiseCount;
-@property (nonatomic, strong) NSArray *feedInfo;
-@property (nonatomic, assign) double commentCount;
+@property (nonatomic, strong) NSString *schoolCode;
 @property (nonatomic, strong) NSString *headPic;
+@property (nonatomic, strong) NSString *selfIntro;
+@property (nonatomic, strong) NSString *userName;
+@property (nonatomic, strong) NSString *studentNo;
+@property (nonatomic, assign) double praiseCount;
+@property (nonatomic, strong) NSArray *lastFeeds;
+@property (nonatomic, strong) NSString *tags;
+@property (nonatomic, assign) double commentCount;
 
 + (instancetype)modelObjectWithDictionary:(NSDictionary *)dict;
 - (instancetype)initWithDictionary:(NSDictionary *)dict;

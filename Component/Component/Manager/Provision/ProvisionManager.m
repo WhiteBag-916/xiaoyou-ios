@@ -95,6 +95,11 @@ DEF_SINGLETON(ProvisionManager);
     return _profileInfo;
 }
 
+//获取个人标签
+- (NSArray *)profileTags {
+    return _profileInfo.tagModels;
+}
+
 //更新个人常用信息
 - (void)saveProfileInfo
 {
