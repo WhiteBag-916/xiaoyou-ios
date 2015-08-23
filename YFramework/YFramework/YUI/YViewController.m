@@ -176,7 +176,7 @@
 
 //导航栏右侧，确认按钮
 - (void)showCustomNavigationSureButton {
-    [self showNomalNavigationRightButtonWithImage:@"" action:@selector(onNavigationRightButtonClicked) imgName:@"complete-grey" frame:CGRectMake(0, 0, 20, 15)];
+    [self showNomalNavigationRightButtonWithImage:@"" action:@selector(onNavigationRightButtonClicked) imgName:@"complete" frame:CGRectMake(0, 0, 20, 15)];
 }
 //导航栏右侧，发布按钮
 - (void)showCustomNavigationPublishButton {
