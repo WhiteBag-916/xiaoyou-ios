@@ -56,9 +56,7 @@
         YLogD(@"%@",message);
         if (message.isSuccess) {
             LinkManModel * model = message.object;
-            
-            [ContactManager sharedInstance] 
-            
+                        
             weakSelf.contactsDataSource = [NSMutableArray arrayWithArray:model.linkManList];
             [weakSelf.contactsDataSource addObjectsFromArray:model.unionList];
             

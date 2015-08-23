@@ -15,7 +15,6 @@
 #import "YDirectory+Data.h"
 #import "LinkManModel.h"
 
-
 #define kContactsManagerSyncQueue @"kContactsManagerSyncQueue"
 
 
@@ -44,9 +43,11 @@ DEF_SINGLETON(ContactManager);
     [_linkManModel writeToFile:cachePath];
 }
 //读取联系人
-- (void)initLinkManListData{
+- (void)initLinkManListData
+{
     NSString *cachePath = [[YDirectory fileCache] stringByAppendingString:NSStringFromClass([LinkManModel class])];
     _linkManModel = [LinkManModel instanceWithFile:cachePath];
+
 }
 
 -(void)getContactsListData:(ActionCompleteBlock)block
