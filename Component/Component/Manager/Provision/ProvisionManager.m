@@ -27,6 +27,9 @@
 #import "EaseMob.h"
 #import "MyCoolPersonsAction.h"
 #import "UpdateSelfIntroAction.h"
+#import "ReceiveMobileAuthCodeAction.h"
+#import "ModifyPasswordAction.h"
+#import "ReceiveAuthCodeAction.h"
 
 #define kProvisionManagerSyncQueue @"kProvisionManagerSyncQueue"
 
@@ -282,6 +285,42 @@ DEF_SINGLETON(ProvisionManager);
 - (void)UpdateSelfIntro:(NSString *)selfIntro block:(ActionCompleteBlock)block {
     UpdateSelfIntroAction* action = [[UpdateSelfIntroAction alloc] init];
     action.selfIntro = selfIntro;
+    
+    [YAction startAction:action completionBlock:^(YActionMessage* message) {
+        //主线程处理界面
+        block(message);
+    }];
+}
+
+//修改密码
+- (void)ModifyPassword:(NSString *)password oldPassWord:(NSString *)oldPassWord block:(ActionCompleteBlock)block {
+    ModifyPasswordAction* action = [[ModifyPasswordAction alloc] init];
+    action.password = password;
+    action.oldPassWord = oldPassWord;
+    
+    [YAction startAction:action completionBlock:^(YActionMessage* message) {
+        //主线程处理界面
+        block(message);
+    }];
+}
+
+//绑定手机验证码获取
+- (void)receiveAuthCode:(NSString *)flag mobilePhone:(NSString *)mobilePhone block:(ActionCompleteBlock)block {
+    ReceiveAuthCodeAction* action = [[ReceiveAuthCodeAction alloc] init];
+    action.mobilePhone = mobilePhone;
+    action.flag = flag;
+    
+    [YAction startAction:action completionBlock:^(YActionMessage* message) {
+        //主线程处理界面
+        block(message);
+    }];
+}
+
+//绑定手机
+- (void)receiveMobileAuthCode:(NSString *)mobilePhone authCode:(NSString *)authCode block:(ActionCompleteBlock)block {
+    ReceiveMobileAuthCodeAction* action = [[ReceiveMobileAuthCodeAction alloc] init];
+    action.mobilePhone = mobilePhone;
+    action.authCode = authCode;
     
     [YAction startAction:action completionBlock:^(YActionMessage* message) {
         //主线程处理界面

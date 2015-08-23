@@ -46,5 +46,11 @@ AS_SINGLETON(ProvisionManager);
 - (void)myCoolPersons:(NSInteger)limitStart limitEnd:(NSInteger)limitEnd block:(ActionCompleteBlock)block;
 //修改签名
 - (void)UpdateSelfIntro:(NSString *)selfIntro block:(ActionCompleteBlock)block;
+//修改密码
+- (void)ModifyPassword:(NSString *)password oldPassWord:(NSString *)oldPassWord block:(ActionCompleteBlock)block;
+//绑定手机验证码获取
+- (void)receiveAuthCode:(NSString *)flag mobilePhone:(NSString *)mobilePhone block:(ActionCompleteBlock)block;
+//绑定手机
+- (void)receiveMobileAuthCode:(NSString *)mobilePhone authCode:(NSString *)authCode block:(ActionCompleteBlock)block;
 
 @end

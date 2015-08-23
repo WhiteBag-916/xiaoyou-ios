@@ -27,6 +27,9 @@
 		20E0C00C1B88B0CA00EDAED4 /* ProfileAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 20E0C00B1B88B0CA00EDAED4 /* ProfileAction.m */; };
 		20E122171B705D3C00F90BD3 /* FeedManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 20E122161B705D3C00F90BD3 /* FeedManager.m */; };
 		20E1C6691B89E9E6008BA9D6 /* UpdateSelfIntroAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 20E1C6681B89E9E6008BA9D6 /* UpdateSelfIntroAction.m */; };
+		20E1C66C1B89EB81008BA9D6 /* ReceiveMobileAuthCodeAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 20E1C66B1B89EB81008BA9D6 /* ReceiveMobileAuthCodeAction.m */; };
+		20E1C66F1B89EB8D008BA9D6 /* ModifyPasswordAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 20E1C66E1B89EB8D008BA9D6 /* ModifyPasswordAction.m */; };
+		20E1C6721B89EB9F008BA9D6 /* ReceiveAuthCodeAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 20E1C6711B89EB9F008BA9D6 /* ReceiveAuthCodeAction.m */; };
 		20E341801B720A54008CADC3 /* ProfileDao.m in Sources */ = {isa = PBXBuildFile; fileRef = 20E3417F1B720A54008CADC3 /* ProfileDao.m */; };
 		3320A6561B7498B200E018E1 /* ContactsListAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 3320A6551B7498B200E018E1 /* ContactsListAction.m */; };
 /* End PBXBuildFile section */
@@ -101,6 +104,12 @@
 		20E18D5E1B807F4F005B75EE /* YNotificationDefine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YNotificationDefine.h; sourceTree = "<group>"; };
 		20E1C6671B89E9E6008BA9D6 /* UpdateSelfIntroAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UpdateSelfIntroAction.h; sourceTree = "<group>"; };
 		20E1C6681B89E9E6008BA9D6 /* UpdateSelfIntroAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UpdateSelfIntroAction.m; sourceTree = "<group>"; };
+		20E1C66A1B89EB81008BA9D6 /* ReceiveMobileAuthCodeAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReceiveMobileAuthCodeAction.h; sourceTree = "<group>"; };
+		20E1C66B1B89EB81008BA9D6 /* ReceiveMobileAuthCodeAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReceiveMobileAuthCodeAction.m; sourceTree = "<group>"; };
+		20E1C66D1B89EB8D008BA9D6 /* ModifyPasswordAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModifyPasswordAction.h; sourceTree = "<group>"; };
+		20E1C66E1B89EB8D008BA9D6 /* ModifyPasswordAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModifyPasswordAction.m; sourceTree = "<group>"; };
+		20E1C6701B89EB9F008BA9D6 /* ReceiveAuthCodeAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReceiveAuthCodeAction.h; sourceTree = "<group>"; };
+		20E1C6711B89EB9F008BA9D6 /* ReceiveAuthCodeAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReceiveAuthCodeAction.m; sourceTree = "<group>"; };
 		20E3417E1B720A54008CADC3 /* ProfileDao.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileDao.h; sourceTree = "<group>"; };
 		20E3417F1B720A54008CADC3 /* ProfileDao.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileDao.m; sourceTree = "<group>"; };
 		20E341811B720A80008CADC3 /* ProfileSQL.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProfileSQL.h; sourceTree = "<group>"; };
@@ -161,6 +170,12 @@
 				20DA1A7D1B89C44D00DEF95C /* MyCoolPersonsAction.m */,
 				20E1C6671B89E9E6008BA9D6 /* UpdateSelfIntroAction.h */,
 				20E1C6681B89E9E6008BA9D6 /* UpdateSelfIntroAction.m */,
+				20E1C66A1B89EB81008BA9D6 /* ReceiveMobileAuthCodeAction.h */,
+				20E1C66B1B89EB81008BA9D6 /* ReceiveMobileAuthCodeAction.m */,
+				20E1C66D1B89EB8D008BA9D6 /* ModifyPasswordAction.h */,
+				20E1C66E1B89EB8D008BA9D6 /* ModifyPasswordAction.m */,
+				20E1C6701B89EB9F008BA9D6 /* ReceiveAuthCodeAction.h */,
+				20E1C6711B89EB9F008BA9D6 /* ReceiveAuthCodeAction.m */,
 			);
 			path = Provision;
 			sourceTree = "<group>";
@@ -465,10 +480,13 @@
 				20E0C00C1B88B0CA00EDAED4 /* ProfileAction.m in Sources */,
 				20E0BFED1B88B0CA00EDAED4 /* MessageListAction.m in Sources */,
 				20859A821B64BD8500580ED3 /* ContactManager.m in Sources */,
+				20E1C6721B89EB9F008BA9D6 /* ReceiveAuthCodeAction.m in Sources */,
+				20E1C66C1B89EB81008BA9D6 /* ReceiveMobileAuthCodeAction.m in Sources */,
 				20E0BFF01B88B0CA00EDAED4 /* UploadHeadImageAction.m in Sources */,
 				20DA1A5D1B89752000DEF95C /* MyPraisePersonsAction.m in Sources */,
 				20859A941B64C06A00580ED3 /* LoginAction.m in Sources */,
 				20E341801B720A54008CADC3 /* ProfileDao.m in Sources */,
+				20E1C66F1B89EB8D008BA9D6 /* ModifyPasswordAction.m in Sources */,
 				20DAF9E61B8750A4005B7932 /* YDirectory+Data.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
