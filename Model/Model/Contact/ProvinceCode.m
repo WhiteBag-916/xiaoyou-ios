@@ -8,7 +8,7 @@
 #import "ProvinceCode.h"
 
 
-NSString *const kProvinceCodeValue = @"value";
+NSString *const kProvinceCodeValue = @"name";
 NSString *const kProvinceCodeCode = @"code";
 
 
