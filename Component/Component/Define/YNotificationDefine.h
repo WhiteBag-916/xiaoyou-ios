@@ -16,6 +16,6 @@
 #define kNotification_Push_FeedDetail                   @"kNotification_Push_FeedDetail"
 #define kNotification_Push_Report                       @"kNotification_Push_Report"
 
-#define kNofification_Request_Message                   @"kNofification_Request_Message"
+#define kNotification_Request_Message                   @"kNofification_Request_Message"
 #define kNotification_Profile_GetProfile                @"kNotification_Profile_GetProfile"
 #endif

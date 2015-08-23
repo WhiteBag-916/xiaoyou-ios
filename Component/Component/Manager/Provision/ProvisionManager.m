@@ -213,7 +213,7 @@ DEF_SINGLETON(ProvisionManager);
         //发送通知,告知界面刷新
         [self postNotificationOnMainThreadName:kNotification_Profile_GetProfile
                                         object:nil
-                                      userInfo:@{kNofification_Request_Message:message}];
+                                      userInfo:@{kNotification_Request_Message:message}];
     }];
 }
 

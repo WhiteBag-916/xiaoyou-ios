@@ -9,8 +9,8 @@
 #import "ProfileTagViewController.h"
 #import "Tags.h"
 
-NSString *const tagObj = @"tagObj";
-NSString *const tagIsSelected = @"tagIsSelected";
+#define tagObj @"tagObj"
+#define tagIsSelected @"tagIsSelected"
 
 @interface ProfileTagViewController()
 @property (nonatomic, strong) NSMutableArray *tagsArray;

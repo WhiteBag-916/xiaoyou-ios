@@ -16,8 +16,8 @@
 #import "YDirectory+Data.h"
 #import "AppDelegate+RootVC.h"
 
-NSString *const tagObj = @"tagObj";
-NSString *const tagIsSelected = @"tagIsSelected";
+#define tagObj @"tagObj"
+#define tagIsSelected @"tagIsSelected"
 
 @interface PerfectInformationViewController ()
 <UIImagePickerControllerDelegate>

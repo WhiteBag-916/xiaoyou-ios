@@ -17,6 +17,7 @@
 #import "ProfileInfo.h"
 #import "YUtils+HUD.h"
 #import "YActionMessage.h"
+#import "ProvisionManager.h"
 
 #import "ProfileOthersViewController.h"
 
@@ -61,6 +62,10 @@
     // Do any additional setup after loading the view.
     
     self.hidesBottomBarWhenPushed = NO;
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(didBecomeActive)
+                                                 name:kNotification_Profile_GetProfile
+                                               object:nil];
     [self initView];
 }
 
@@ -76,13 +81,22 @@
     
 }
 - (void)startLoadData {
-    _hud = [YUtils showHUDAddedTo:self.view title:@"正在加载" animated:true];
+    if ([[ProvisionManager sharedInstance] getProfile] != nil) {
+        [self loadData:[[ProvisionManager sharedInstance] getProfile]];
+    } else {
+        _hud = [YUtils showHUDAddedTo:self.view title:@"正在加载" animated:true];
+    }
 }
 - (void)afterLoadData:(YActionMessage *)message {
     [_hud removeFromSuperview];
     if (message.isSuccess) {
         [self loadData:message.object];
+    } else {
+        
     }
+}
+- (void)refreshData:(NSNotification *)notification {
+    [self afterLoadData:[notification userInfo][kNotification_Request_Message]];
 }
 - (void)loadData:(ProfileInfo *)info {
     _middleView.hidden = false;
