@@ -183,7 +183,11 @@
     _bottomView = [[UIView alloc] init];
     [_containerView addSubview:_bottomView];
     [_bottomView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.greaterThanOrEqualTo(_middelView.mas_bottom).offset(SCALE_NUM(24));
+        if (isScreen3_5Inch) {
+            make.top.equalTo(_middelView.mas_bottom).offset(SCALE_NUM(24));
+        } else {
+            make.top.greaterThanOrEqualTo(_middelView.mas_bottom).offset(SCALE_NUM(24));
+        }
         make.left.right.bottom.equalTo(_containerView);
         make.bottom.equalTo(self.view).priorityLow();
     }];
@@ -210,6 +214,7 @@
     [_middelView addSubview:label];
     [label mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.right.equalTo(_middelView);
+        make.height.mas_equalTo(SCALE_NUM(15));
     }];
     return label;
 }
