@@ -13,6 +13,8 @@
 #import "YUrlDefine.h"
 #import "ConnectTag.h"
 #import "Tags.h"
+#import "ProvisionManager.h"
+#import "ProfileInfo.h"
 
 #define kHeadWidthAndHeight            40
 #define kNameLabelWidth                80
@@ -141,7 +143,8 @@ NSString *const kContactsTableViewCell = @"ContactsTableViewCell";
     }
     else
     {
-        [_headImageView sd_setImageWithURL:modelDic[@"icon"] placeholderImage:[UIImage imageNamed:@"default_head"]];
+        [_headImageView setFaceImageWithUrl:modelDic[@"icon"]];
+
     }
     
     //共同标签
