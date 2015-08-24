@@ -221,9 +221,13 @@
             }
         }];
     } else {
-        self.title = @"验证手机号";
-        _pwdView.hidden = true;
-        [self checkComplete];
+        if([_pwdField.text isEqualToString:[YShareData defaultData][kShareData_LoginPassword]]) {
+            self.title = @"验证手机号";
+            _pwdView.hidden = true;
+            [self checkComplete];
+        } else {
+            [YUtils showTitle:@"密码错误"];
+        }
     }
 }
 @end
