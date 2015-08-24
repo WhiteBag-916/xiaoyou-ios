@@ -93,6 +93,11 @@ DEF_SINGLETON(MessageManager);
 - (void)appDidLogout
 {
     [self unregisterNotifications];
+    [[EaseMob sharedInstance].chatManager asyncLogoffWithUnbindDeviceToken:YES completion:^(NSDictionary *info, EMError *error) {
+        if (!error && info) {
+            NSLog(@"退出成功");
+        }
+    } onQueue:nil];
 }
 
 -(void)didReceiveMessage:(EMMessage *)message
