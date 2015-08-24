@@ -23,6 +23,7 @@
 @property (nonatomic, strong) NSArray *classCodes;//ProvinceCode
 @property (nonatomic, strong) NSString *name;
 @property (nonatomic, strong) NSArray *groupCodes;//ProvinceCode
+@property (nonatomic, strong) NSString *gender;
 
 + (instancetype)modelObjectWithDictionary:(NSDictionary *)dict;
 - (instancetype)initWithDictionary:(NSDictionary *)dict;

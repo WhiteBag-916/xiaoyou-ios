@@ -18,6 +18,7 @@
 #import "MessageManager.h"
 #import "ContactManager.h"
 #import "LinkManModel.h"
+#import "ContactManager.h"
 
 @interface XYMessageAndContactsViewController ()<IChatManagerDelegate>
 @property (strong, nonatomic) UIView * navigationView;
@@ -203,7 +204,7 @@
     {
         _contactsTableView.hidden = NO;
         _messageTableView.hidden = YES;
-        [_contactsTableView reloadData];
+        [_contactsTableView refreshTableView:[[ContactManager sharedInstance] getContactsListData]];
     }
 }
 

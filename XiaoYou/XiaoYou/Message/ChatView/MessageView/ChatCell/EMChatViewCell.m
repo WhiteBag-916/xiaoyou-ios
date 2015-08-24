@@ -113,7 +113,8 @@ NSString *const kShouldResendCell = @"kShouldResendCell";
     [super setMessageModel:model];
     
     if (model.messageType != eMessageTypeChat) {
-        _nameLabel.text = model.nickName;
+//        _nameLabel.text = model.nickName;
+        _nameLabel.text = model.message.ext[@"userName"];
         _nameLabel.hidden = model.isSender;
     }
     
