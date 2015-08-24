@@ -153,6 +153,8 @@ DEF_SINGLETON(MessageManager);
     BOOL isAppActivity = [[UIApplication sharedApplication] applicationState] == UIApplicationStateActive;
     if (!isAppActivity) {
         [self showNotificationWithMessage:message];
+    } else {
+        [self playSoundAndVibration];
     }
 #endif
     
