@@ -12,6 +12,8 @@
 
 #import "EMChatViewBaseCell.h"
 #import "UIImageView+EMWebCache.h"
+#import "ProvisionManager.h"
+#import "ProfileInfo.h"
 
 NSString *const kRouterEventChatHeadImageTapEventName = @"kRouterEventChatHeadImageTapEventName";
 
@@ -82,9 +84,18 @@ NSString *const kRouterEventChatHeadImageTapEventName = @"kRouterEventChatHeadIm
     _messageModel = messageModel;
     
     _nameLabel.hidden = (messageModel.messageType == eMessageTypeChat);
+
     
-    UIImage *placeholderImage = [UIImage imageNamed:@"default_head"];
-    [self.headImageView sd_setImageWithURL:_messageModel.headImageURL placeholderImage:placeholderImage];
+    if (messageModel.isSender == NO) {
+//        UIImage *placeholderImage = [UIImage imageNamed:@"default_head"];
+//        [self.headImageView sd_setImageWithURL:_messageModel.headImageURL placeholderImage:placeholderImage];
+        [self.headImageView setFaceImageWithUrl:_messageModel.message.ext[@"headImage"]];
+    }
+    else
+    {
+        [self.headImageView setFaceImageWithUrl:[[ProvisionManager sharedInstance] getProfile].headPic];
+    }
+    
 }
 
 #pragma mark - private

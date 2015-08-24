@@ -36,6 +36,8 @@
 #import "EMCDDeviceManagerDelegate.h"
 #import "RobotManager.h"
 #import "XYContactsInfoDetailViewController.h"
+#import "ProvisionManager.h"
+#import "ProfileInfo.h"
 
 #define KPageCount 20
 #define KHintAdjustY    50
@@ -537,6 +539,7 @@
                 cell = [[EMChatViewCell alloc] initWithMessageModel:model reuseIdentifier:cellIdentifier];
                 cell.backgroundColor = [UIColor clearColor];
             }
+//            model.headImageURL = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@",api_icon_base_url,_studentDic[@"icon"]]];
             model.headImageURL = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@",api_icon_base_url,_studentDic[@"icon"]]];
             cell.messageModel = model;
             
@@ -1711,7 +1714,7 @@
 
 -(void)sendTextMessage:(NSString *)textMessage
 {
-    NSDictionary *ext = nil;
+    NSDictionary *ext = @{@"headImage":[[ProvisionManager sharedInstance] getProfile].headPic};
     if (_isRobot) {
         ext = @{kRobot_Message_Ext:[NSNumber numberWithBool:YES]};
     }
@@ -1725,7 +1728,7 @@
 
 -(void)sendImageMessage:(UIImage *)image
 {
-    NSDictionary *ext = nil;
+    NSDictionary *ext = @{@"headImage":[[ProvisionManager sharedInstance] getProfile].headPic};
     if (_isRobot) {
         ext = @{kRobot_Message_Ext:[NSNumber numberWithBool:YES]};
     }
@@ -1739,7 +1742,7 @@
 
 -(void)sendAudioMessage:(EMChatVoice *)voice
 {
-    NSDictionary *ext = nil;
+    NSDictionary *ext = @{@"headImage":[[ProvisionManager sharedInstance] getProfile].headPic};
     if (_isRobot) {
         ext = @{kRobot_Message_Ext:[NSNumber numberWithBool:YES]};
     }
@@ -1752,7 +1755,7 @@
 
 -(void)sendVideoMessage:(EMChatVideo *)video
 {
-    NSDictionary *ext = nil;
+    NSDictionary *ext = @{@"headImage":[[ProvisionManager sharedInstance] getProfile].headPic};
     if (_isRobot) {
         ext = @{kRobot_Message_Ext:[NSNumber numberWithBool:YES]};
     }
