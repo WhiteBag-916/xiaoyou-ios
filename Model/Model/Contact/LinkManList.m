@@ -24,6 +24,7 @@ NSString *const kLinkManListLinkType = @"linkType";
 NSString *const kLinkManListTagsCommon = @"tagsCommon";
 NSString *const kLinkManListName = @"name";
 NSString *const kLinkManListGender = @"gender";
+NSString *const kLinkManListUid = @"uid";
 
 
 @interface LinkManList ()
@@ -48,6 +49,7 @@ NSString *const kLinkManListGender = @"gender";
 @synthesize linkType = _linkType;
 @synthesize tagsCommon = _tagsCommon;
 @synthesize name = _name;
+@synthesize uid = _uid;
 @synthesize gender = _gender;
 
 
@@ -102,7 +104,7 @@ NSString *const kLinkManListGender = @"gender";
     self.tagsCommon = [NSArray arrayWithArray:parsedTagsCommon];
             self.name = [self objectOrNilForKey:kLinkManListName fromDictionary:dict];
             self.gender = [self objectOrNilForKey:kLinkManListGender fromDictionary:dict];
-
+            self.uid = [self objectOrNilForKey:kLinkManListUid fromDictionary:dict];
     }
     
     return self;
@@ -146,6 +148,7 @@ NSString *const kLinkManListGender = @"gender";
     }
     [mutableDict setValue:[NSArray arrayWithArray:tempArrayForTagsCommon] forKey:kLinkManListTagsCommon];
     [mutableDict setValue:self.name forKey:kLinkManListName];
+    [mutableDict setValue:self.uid forKey:kLinkManListUid];
     [mutableDict setValue:self.gender forKey:kLinkManListGender];
 
     return [NSDictionary dictionaryWithDictionary:mutableDict];
@@ -184,6 +187,7 @@ NSString *const kLinkManListGender = @"gender";
     self.linkType = [aDecoder decodeDoubleForKey:kLinkManListLinkType];
     self.tagsCommon = [aDecoder decodeObjectForKey:kLinkManListTagsCommon];
     self.name = [aDecoder decodeObjectForKey:kLinkManListName];
+    self.uid = [aDecoder decodeObjectForKey:kLinkManListUid];
     self.gender = [aDecoder decodeObjectForKey:kLinkManListGender];
     return self;
 }
@@ -205,6 +209,7 @@ NSString *const kLinkManListGender = @"gender";
     [aCoder encodeDouble:_linkType forKey:kLinkManListLinkType];
     [aCoder encodeObject:_tagsCommon forKey:kLinkManListTagsCommon];
     [aCoder encodeObject:_name forKey:kLinkManListName];
+    [aCoder encodeObject:_uid forKey:kLinkManListUid];
     [aCoder encodeObject:_gender forKey:kLinkManListGender];
 }
 
@@ -228,6 +233,7 @@ NSString *const kLinkManListGender = @"gender";
         copy.linkType = self.linkType;
         copy.tagsCommon = [self.tagsCommon copyWithZone:zone];
         copy.name = [self.name copyWithZone:zone];
+        copy.uid = [self.uid copyWithZone:zone];
         copy.gender = [self.gender copyWithZone:zone];
     }
     

@@ -9,6 +9,8 @@
 #import "XYContactsInfoDetailViewController.h"
 #import "ContactsInfoDetailTableView.h"
 #import "YCommonActionSheet.h"
+#import "ContactManager.h"
+#import "ProfileInfo.h"
 
 #define kNavigationgRightWidthAndHeight         40
 
@@ -25,9 +27,17 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+    [self setUpUI];
+    
+    NSLog(@"%@",_studentDic);
+    [[ContactManager sharedInstance] getUserDetailInfo:_studentDic[@"uid"] block:^(YActionMessage *message) {
+        ProfileInfo * model = message.object;
+        [_contactsInfoDetailTableView refreshTableView:model];
+    }];
+    
     [self showCustomNavigationBackButton];
     
-    [self setUpUI];
+    
 }
 
 //- (void)viewWillAppear:(BOOL)animated
@@ -50,11 +60,13 @@
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:shareButton];
     
     _contactsInfoDetailTableView = [[ContactsInfoDetailTableView alloc] init];
+    _contactsInfoDetailTableView.myController = self;
     _contactsInfoDetailTableView.backgroundColor = [UIColor clearColor];
     [self.view addSubview:_contactsInfoDetailTableView];
     
     [_contactsInfoDetailTableView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.left.right.bottom.mas_equalTo(0);
+        make.top.left.right.mas_equalTo(0);
+        make.bottom.mas_equalTo(-KNavigationBarheight);
     }];
     
     _bottomButton = [[UIButton alloc] init];

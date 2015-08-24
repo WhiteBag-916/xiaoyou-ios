@@ -15,6 +15,8 @@
 #import "XYFriendApplyViewController.h"
 #import "XYGroupApplyViewController.h"
 #import "ChatViewController.h"
+#import "ConvertToCommonEmoticonsHelper.h"
+
 #define kRowHeight                     68
 #define kHeadWidthAndHeight            40
 #define kNameLabelWidth                80
@@ -66,7 +68,16 @@
 
 -(void)refreshTableView:(NSMutableArray *) dataSouceArr
 {
-    [self setUpHeaderView];
+    for (int i = 0; i < dataSouceArr.count; i++)
+    {
+        EMConversation * conversation = dataSouceArr[i];
+        if ([conversation.latestMessage.from isEqualToString:@"000001"])
+        {
+            [self setUpHeaderView];
+            [dataSouceArr removeObject:conversation];
+        }
+    }
+    
     _messageDataSource = dataSouceArr;
     [self reloadData];
 }
@@ -162,23 +173,29 @@
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     MessageTableViewCell *cell = [self dequeueReusableCellWithIdentifier:kMessageTableViewCell];
-    if (indexPath.row == 3)
-    {
-        [cell setCellInfo:_messageDataSource[indexPath.row]];
-        
-        return cell;
-    }
-    if (indexPath.row == 5) {
-        [cell setCellInfo:_messageDataSource[indexPath.row]];
-        
-        return cell;
-    }
-    else
-    {
-        [cell setCellInfo:_messageDataSource[indexPath.row]];
-        
-        return cell;
-    }
+    
+    [cell setCellInfo:_messageDataSource[indexPath.row]];
+    
+    return cell;
+    
+    
+//    if (indexPath.row == 3)
+//    {
+//        [cell setCellInfo:_messageDataSource[indexPath.row]];
+//        
+//        return cell;
+//    }
+//    if (indexPath.row == 5) {
+//        [cell setCellInfo:_messageDataSource[indexPath.row]];
+//        
+//        return cell;
+//    }
+//    else
+//    {
+//        [cell setCellInfo:_messageDataSource[indexPath.row]];
+//        
+//        return cell;
+//    }
     
     
 }

@@ -10,12 +10,11 @@
 #import "ProfileFeedCell.h"
 #import "FeedManager.h"
 
-#define KPAGENUM 1
+#define KPAGENUM 15
 
 @interface ProfileFeedListView()<UITableViewDataSource, UITableViewDelegate>
 @property (nonatomic, strong) NSMutableArray *feedArray;
 @property (nonatomic, strong) NSString *userId;
-@property (nonatomic, assign) int page;
 @end
 
 @implementation ProfileFeedListView
@@ -27,8 +26,8 @@
         [self registerClass:[ProfileFeedCell class] forCellReuseIdentifier:KProfileFeedCell];
         self.tableFooterView = [UIView new];
         self.backgroundColor = KCOLORWHITE;
+        _feedArray = [NSMutableArray array];
         self.fd_debugLogEnabled = false;
-        _page = 0;
     }
     return self;
 }
@@ -49,7 +48,7 @@
 }
 - (void)loadNewData
 {
-    _page = 0;
+    [_feedArray removeAllObjects];
     [self sendRequest];
 }
 
@@ -59,22 +58,18 @@
 }
 
 - (void)sendRequest {
-    [[FeedManager sharedInstance] getMyFeed:_userId limitStart:_page * KPAGENUM limitEnd:(_page+1) * KPAGENUM block:^(YActionMessage *message) {
-        if (_page == 0) {
+    [[FeedManager sharedInstance] getMyFeed:_userId limitStart:_feedArray.count limitEnd:_feedArray.count + KPAGENUM block:^(YActionMessage *message) {
+        if (_feedArray.count == 0) {
             [self stopLoadNewData];
         } else {
             [self stopLoadMoreData];
         }
         if (message.isSuccess) {
-            if (_page == 0) {
-                _feedArray = [NSMutableArray arrayWithArray:message.object];
-            } else {
-                [_feedArray addObjectsFromArray:message.object];
-            }
+            [self hiddenFooter:false];
+            [_feedArray addObjectsFromArray:message.object];
             if ([message.object count] < KPAGENUM) {
                 [self showNoticeNoMoreData];
             }
-            _page ++;
             [self reloadData];
             
         } else {
