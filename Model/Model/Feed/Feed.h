@@ -24,6 +24,7 @@
 @property (nonatomic, assign) double createTimeMiles;
 @property (nonatomic, strong) NSString *sendId;
 @property (nonatomic, strong) NSString *content;
+@property (nonatomic, assign) BOOL isPraise;
 
 + (instancetype)modelObjectWithDictionary:(NSDictionary *)dict;
 - (instancetype)initWithDictionary:(NSDictionary *)dict;

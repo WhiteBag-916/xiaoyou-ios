@@ -21,7 +21,7 @@ NSString *const kFeedCommentCount = @"commentCount";
 NSString *const kFeedCreateTimeMiles = @"createTimeMiles";
 NSString *const kFeedSendId = @"sendId";
 NSString *const kFeedContent = @"content";
-
+NSString *const kFeedIsPraise = @"isPraise";
 
 @interface Feed ()
 
@@ -44,7 +44,7 @@ NSString *const kFeedContent = @"content";
 @synthesize createTimeMiles = _createTimeMiles;
 @synthesize sendId = _sendId;
 @synthesize content = _content;
-
+@synthesize isPraise = _isPraise;
 
 + (instancetype)modelObjectWithDictionary:(NSDictionary *)dict
 {
@@ -71,6 +71,7 @@ NSString *const kFeedContent = @"content";
             self.createTimeMiles = [[self objectOrNilForKey:kFeedCreateTimeMiles fromDictionary:dict] doubleValue];
             self.sendId = [self objectOrNilForKey:kFeedSendId fromDictionary:dict];
             self.content = [self objectOrNilForKey:kFeedContent fromDictionary:dict];
+        self.isPraise = [[self objectOrNilForKey:kFeedIsPraise fromDictionary:dict] boolValue];
 
     }
     
@@ -94,6 +95,7 @@ NSString *const kFeedContent = @"content";
     [mutableDict setValue:[NSNumber numberWithDouble:self.createTimeMiles] forKey:kFeedCreateTimeMiles];
     [mutableDict setValue:self.sendId forKey:kFeedSendId];
     [mutableDict setValue:self.content forKey:kFeedContent];
+    [mutableDict setValue:[NSNumber numberWithBool:self.isPraise] forKey:kFeedIsPraise];
 
     return [NSDictionary dictionaryWithDictionary:mutableDict];
 }
@@ -130,6 +132,8 @@ NSString *const kFeedContent = @"content";
     self.createTimeMiles = [aDecoder decodeDoubleForKey:kFeedCreateTimeMiles];
     self.sendId = [aDecoder decodeObjectForKey:kFeedSendId];
     self.content = [aDecoder decodeObjectForKey:kFeedContent];
+    self.isPraise = [aDecoder decodeBoolForKey:kFeedIsPraise];
+    
     return self;
 }
 
@@ -149,6 +153,8 @@ NSString *const kFeedContent = @"content";
     [aCoder encodeDouble:_createTimeMiles forKey:kFeedCreateTimeMiles];
     [aCoder encodeObject:_sendId forKey:kFeedSendId];
     [aCoder encodeObject:_content forKey:kFeedContent];
+    [aCoder encodeBool:_isPraise forKey:kFeedIsPraise];
+    
 }
 
 - (id)copyWithZone:(NSZone *)zone
@@ -170,6 +176,8 @@ NSString *const kFeedContent = @"content";
         copy.createTimeMiles = self.createTimeMiles;
         copy.sendId = [self.sendId copyWithZone:zone];
         copy.content = [self.content copyWithZone:zone];
+        copy.isPraise = self.isPraise;
+        
     }
     
     return copy;
