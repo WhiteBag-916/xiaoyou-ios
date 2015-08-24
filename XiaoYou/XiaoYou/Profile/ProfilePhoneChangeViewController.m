@@ -50,6 +50,7 @@
     [self showCustomNavigationBackButton];
     [self showCustomNavigationConfirmButton];
     self.view.backgroundColor = KCOLORGREEN_f2f2f2;
+    self.title = @"验证手机号";
 }
 - (void)initPwdView {
     self.title = @"输入密码";
