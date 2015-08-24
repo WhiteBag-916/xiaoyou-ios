@@ -28,6 +28,8 @@
                 [self loadMoreData];
             }];
             self.footer.automaticallyHidden = NO;
+            
+            [self hiddenFooter:YES];
         }
         
         //日志
@@ -93,6 +95,11 @@
 - (void)showNoticeNoMoreData
 {
     [self.footer noticeNoMoreData];
+}
+
+//是否正在刷新
+- (BOOL)isRefreshing {
+    return [self.header isRefreshing] || [self.footer isRefreshing];
 }
 
 #pragma mark - 继承者
