@@ -60,7 +60,10 @@
 - (void)updateSize:(int)count {
     float width = 0;
     if (count != 0) {
+        self.hidden = false;
         width = (count-1)*(KTAGSIZE+KMARGIN)+KTAGSIZE;
+    } else {
+        self.hidden = true;
     }
     [self mas_updateConstraints:^(MASConstraintMaker *make) {
         make.width.mas_equalTo(width);

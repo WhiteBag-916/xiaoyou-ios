@@ -41,7 +41,7 @@
         _tagContent.lineSpace = 0;
         _tagContent.singleLine = false;
         _tagContent.preferredMaxLayoutWidth = SCALE_NUM(230);
-        [self setIsRelated:true];
+        [self setIsRelated:false];
         
     }
     
