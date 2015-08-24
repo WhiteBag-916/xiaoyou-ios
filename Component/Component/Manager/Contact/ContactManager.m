@@ -98,10 +98,10 @@ DEF_SINGLETON(ContactManager);
     [YDirectory removeFolders:cachePath];
 }
 
-//获取人详细信息
+//获取人详细信息,ProfileInfo
 - (void)getUserDetailInfo:(NSString *)userID block:(ActionCompleteBlock)block {
     ProfileAction* action = [[ProfileAction alloc] init];
-    action.userID = userID
+    action.userID = userID;
     
     [YAction startAction:action completionBlock:^(YActionMessage* message) {
         //主线程处理界面
