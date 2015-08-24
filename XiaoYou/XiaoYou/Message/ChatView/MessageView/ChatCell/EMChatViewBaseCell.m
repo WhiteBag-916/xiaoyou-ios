@@ -94,6 +94,7 @@ NSString *const kRouterEventChatHeadImageTapEventName = @"kRouterEventChatHeadIm
     else
     {
         [self.headImageView setFaceImageWithUrl:[[ProvisionManager sharedInstance] getProfile].headPic];
+
     }
     
 }

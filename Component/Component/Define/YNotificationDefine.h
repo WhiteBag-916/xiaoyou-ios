@@ -19,4 +19,7 @@
 #define kNotification_Request_Message                   @"kNofification_Request_Message"
 #define kNotification_Profile_GetProfile                @"kNotification_Profile_GetProfile"
 #define kNotification_Profile_Logout                    @"kNotification_Profile_Logout"
+
+#define kNotification_HeadImage_Change                  @"kNotification_HeadImage_Change"
+
 #endif
