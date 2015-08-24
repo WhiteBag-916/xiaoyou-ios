@@ -11,5 +11,7 @@
 @interface MyFeedAction : YHTTPRequestAction<YAction>
 
 @property (nonatomic, strong) NSString *userID;
+@property (nonatomic, assign) NSInteger limitStart;
+@property (nonatomic, assign) NSInteger limitEnd;
 
 @end
