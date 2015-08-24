@@ -21,4 +21,7 @@ AS_SINGLETON(ContactManager);
 
 - (LinkManModel *)getContactsListData;
 
+//获取人详细信息
+- (void)getUserDetailInfo:(NSString *)userID block:(ActionCompleteBlock)block;
+
 @end

@@ -17,10 +17,10 @@
 #define KIMGMARGIN_TOP SCALE_NUM(10)
 @interface ProfileFeedContentView()
 
-@property (nonatomic, strong) FeedTag *tagView;
-@property (nonatomic, strong) FeedImageGroup *imgGroup;
-@property (nonatomic, strong) UILabel *contentLabel;
-
+@property (nonatomic, strong, readwrite) FeedTag *tagView;
+@property (nonatomic, strong, readwrite) FeedImageGroup *imgGroup;
+@property (nonatomic, strong, readwrite) UILabel *contentLabel;
+@property (nonatomic, assign) int type;
 @end
 
 @implementation ProfileFeedContentView
@@ -33,15 +33,12 @@
         [_tagView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.right.top.equalTo(self);
         }];
-        [_tagView.tagContent mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.left.equalTo(_tagView.tagIcon.mas_right).offset(KTAGTEXTMARGIN);
-        }];
         
         _contentLabel = [YUtils initLabel:CONTENT_FONT(10) color:[UIColor blackColor] text:@"" frame:CGRectZero alignment:NSTextAlignmentLeft];
         [self addSubview:_contentLabel];
         _contentLabel.numberOfLines = 0;
         [_contentLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.left.right.equalTo(_tagView.tagContent);
+            make.right.equalTo(_tagView.tagContent);
             make.top.equalTo(_tagView.mas_bottom).offset(KCONTENTMARGIN_TOP);
         }];
         _imgGroup = [[FeedImageGroup alloc] init];
@@ -56,7 +53,27 @@
     }
     return self;
 }
-
+- (id)initWithType:(int)type {
+    self = [self init];
+    if (self) {
+        _type = type;
+        if (_type != ProfileFeedMy) {
+            [_contentLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+                make.left.equalTo(_tagView.tagContent);
+            }];
+        } else {
+            [_contentLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+                make.left.equalTo(_tagView);
+            }];
+        }
+        if (_type != ProfileFeedOthers) {
+            [_tagView.tagContent mas_makeConstraints:^(MASConstraintMaker *make) {
+                make.left.equalTo(_tagView.tagIcon.mas_right).offset(KTAGTEXTMARGIN);
+            }];
+        }
+    }
+    return self;
+}
 - (void)setData:(FeedInfo *)info {
     if (info == nil) {
         [_tagView setData:nil];

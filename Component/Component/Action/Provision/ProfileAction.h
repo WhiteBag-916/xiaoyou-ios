@@ -10,4 +10,6 @@
 
 @interface ProfileAction : YHTTPRequestAction<YAction>
 
+@property (nonatomic, strong) NSString *userID;
+
 @end

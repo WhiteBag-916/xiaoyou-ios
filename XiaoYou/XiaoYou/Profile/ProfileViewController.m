@@ -359,7 +359,7 @@
             make.centerY.equalTo(icon);
         }];
         [self rightArray:2 inView:_feedHintLabel];
-        _feed = [[ProfileFeedContentView alloc] init];
+        _feed = [[ProfileFeedContentView alloc] initWithType:ProfileFeedMy];
         _feed.userInteractionEnabled = false;
         [item addSubview:_feed];
         [_feed mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -424,7 +424,7 @@
 }
 
 - (void)openProfile {
-    [self.navigationController pushViewController:[[ProfileMyViewController alloc] init] animated:true];
+    [self.navigationController pushViewController:[[ProfileOthersViewController alloc] initWithUserId:@""] animated:true];
 }
 
 

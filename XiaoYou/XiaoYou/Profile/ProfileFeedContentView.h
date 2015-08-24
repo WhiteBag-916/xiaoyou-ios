@@ -8,7 +8,38 @@
 
 #import <UIKit/UIKit.h>
 @class FeedInfo;
+@class FeedTag;
+@class FeedImageGroup;
+
+typedef NS_ENUM(int, ProfileFeedType) {
+    /**
+     *  @author 李思良, 15-08-24
+     *
+     *  @brief  content和tag完全对齐
+     */
+    ProfileFeedMy       = 0,
+    /**
+     *  @author 李思良, 15-08-24
+     *
+     *  @brief  content和tag的content对齐
+     */
+    ProfileFeedList     = 1,
+    /**
+     *  @author 李思良, 15-08-24
+     *
+     *  @brief  content和tag的content对齐，tag的content额外指定left
+     */
+    ProfileFeedOthers   = 2,
+};
+
 @interface ProfileFeedContentView : UIView
+
+@property (nonatomic, strong, readonly) FeedTag *tagView;
+@property (nonatomic, strong, readonly) FeedImageGroup *imgGroup;
+@property (nonatomic, strong, readonly) UILabel *contentLabel;
+
+
+- (id)initWithType:(int)type;
 
 - (void)setData:(FeedInfo *)info;
 
