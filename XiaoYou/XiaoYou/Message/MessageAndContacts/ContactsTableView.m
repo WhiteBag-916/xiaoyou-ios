@@ -11,7 +11,7 @@
 #import "Pinyin.h"
 #import "ChineseString.h"
 #import "YLog.h"
-#import "ChatViewController.h"
+#import "XYContactsInfoDetailViewController.h"
 #import "Masonry.h"
 #import "YSystemDefine.h"
 #import "ContactManager.h"
@@ -189,10 +189,10 @@
 
 -(void)tapGestureRecognizerAction
 {
-    ChatViewController * chatVC = [[ChatViewController alloc] initWithChatter:_headDataSourceDic[@"thirdCode"] isGroup:YES];
-    chatVC.isSystemMessage = NO;
-    chatVC.studentDic = _headDataSourceDic;
-    [self.myController.navigationController pushViewController:chatVC animated:YES needHiddenBottomBar:YES];
+//    ChatViewController * chatVC = [[ChatViewController alloc] initWithChatter:_headDataSourceDic[@"thirdCode"] isGroup:YES];
+//    chatVC.isSystemMessage = NO;
+//    chatVC.studentDic = _headDataSourceDic;
+//    [self.myController.navigationController pushViewController:chatVC animated:YES needHiddenBottomBar:YES];
 }
 
 
@@ -327,20 +327,23 @@
     
     ContactsTableViewCell * cell = (ContactsTableViewCell *)[self cellForRowAtIndexPath:indexPath];
     
-    self.myController.hidesBottomBarWhenPushed = YES;
-    if ([cell.studentDic[@"linkType"] doubleValue] == 0) {
-        ChatViewController * chatVC = [[ChatViewController alloc] initWithChatter:cell.studentDic[@"thirdCode"] isGroup:NO];
-        chatVC.isSystemMessage = NO;
-        chatVC.studentDic = cell.studentDic;
-        [self.myController.navigationController pushViewController:chatVC animated:YES];
-    }
-    else
-    {
-        ChatViewController * chatVC = [[ChatViewController alloc] initWithChatter:cell.studentDic[@"thirdCode"] isGroup:YES];
-        chatVC.isSystemMessage = NO;
-        chatVC.studentDic = cell.studentDic;
-        [self.myController.navigationController pushViewController:chatVC animated:YES];
-    }
+    XYContactsInfoDetailViewController * contactsInfoDetailVC = [[XYContactsInfoDetailViewController alloc] init];
+    contactsInfoDetailVC.studentDic = cell.studentDic;
+    [self.myController.navigationController pushViewController:contactsInfoDetailVC animated:YES needHiddenBottomBar:YES];
+//    self.myController.hidesBottomBarWhenPushed = YES;
+//    if ([cell.studentDic[@"linkType"] doubleValue] == 0) {
+//        ChatViewController * chatVC = [[ChatViewController alloc] initWithChatter:cell.studentDic[@"thirdCode"] isGroup:NO];
+//        chatVC.isSystemMessage = NO;
+//        chatVC.studentDic = cell.studentDic;
+//        [self.myController.navigationController pushViewController:chatVC animated:YES];
+//    }
+//    else
+//    {
+//        ChatViewController * chatVC = [[ChatViewController alloc] initWithChatter:cell.studentDic[@"thirdCode"] isGroup:YES];
+//        chatVC.isSystemMessage = NO;
+//        chatVC.studentDic = cell.studentDic;
+//        [self.myController.navigationController pushViewController:chatVC animated:YES];
+//    }
     
     
 }

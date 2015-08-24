@@ -140,7 +140,7 @@ NSString *const kMessageTableViewCell = @"MessageTableViewCellId";
     _nameLabel.text = userInfoDic[@"name"];
     
     //头像
-    [_headImageView sd_setImageWithURL:userInfoDic[@"icon"] placeholderImage:[UIImage imageNamed:@"default_head"]];
+    [_headImageView setFaceImageWithUrl:userInfoDic[@"icon"]];
    
     //未读数
     if (![[self unreadMessageCountByConversation:conversation] isEqualToString:@"0"]) {

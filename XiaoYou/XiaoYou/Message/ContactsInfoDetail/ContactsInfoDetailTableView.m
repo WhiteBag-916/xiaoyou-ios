@@ -9,6 +9,8 @@
 #import "ContactsInfoDetailTableView.h"
 #import "ContactsInfoDetailTableViewCell.h"
 #import "ConnectTag.h"
+#import "UIImageView+Ext.h"
+#import "Tags.h"
 
 #define kHeaderViewHeight              90
 #define kHeadWidthAndHeight            46
@@ -16,6 +18,8 @@
 #define kHeadCornerRadius              23
 #define kPaddingDistance               12
 #define kLabelHeightDistacnce          14
+#define kFlagImageViewHeightAndWidth   20
+
 
 @interface ContactsInfoDetailTableView ()<UITableViewDataSource,UITableViewDelegate>
 
@@ -24,6 +28,12 @@
 @property (strong, nonatomic)  UILabel *flagLabel;
 @property (strong, nonatomic)  UILabel *statesLabel;
 @property (strong, nonatomic)  ConnectTag * connectTag;
+@property (nonatomic,strong) ProfileInfo * model;
+
+@property (nonatomic,strong) UIView * feedBackView;
+@property (nonatomic,strong) UILabel * feedLabel;
+@property (nonatomic,strong) UILabel * feedCountLabel;
+@property (nonatomic,strong) UIImageView * flagImageView;
 
 @property (nonatomic,strong) NSMutableArray * flagNameArr;
 
@@ -39,17 +49,22 @@
         self.dataSource = self;
         self.separatorStyle = NO;
         
-        self.flagNameArr = [[NSMutableArray alloc] initWithArray:@[@"互联网就业",@"留学陶瓷",@"网球社"]];
-        
         [self registerClass:[ContactsInfoDetailTableViewCell class] forCellReuseIdentifier:kContactsInfoDetailTableViewCell];
-        [self refreshTableView:nil];
     }
     return self;
 }
 
--(void)refreshTableView:(NSMutableArray *) dataSouceArr
+-(void)refreshTableView:(ProfileInfo *) model
 {
+    _model = model;
+    self.flagNameArr = [[NSMutableArray alloc]init];
+    for (int i = 0; i <_model.tagsCommon.count; i++)
+    {
+        [self.flagNameArr addObject:[_model.tagsCommon[i] name]];
+    }
+//    self.flagNameArr = [[NSMutableArray alloc] initWithArray:_model.tagsCommon];
     [self setUpHeaderView];
+    [self setUpFooterView];
     [self reloadData];
 }
 
@@ -60,7 +75,8 @@
     _headImageView = [[UIImageView alloc] init];
     _headImageView.layer.cornerRadius = kHeadCornerRadius;
     _headImageView.clipsToBounds = YES;
-    _headImageView.backgroundColor = [UIColor yellowColor];
+    _headImageView.backgroundColor = [UIColor clearColor];
+    [_headImageView setFaceImageWithUrl:_model.headPic];
     [backView addSubview:_headImageView];
     [_headImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.mas_equalTo(kPaddingDistance);
@@ -70,8 +86,8 @@
     //姓名
     _nameLabel = [[UILabel alloc] init];
     _nameLabel.font = CONTENT_FONT(14);
-    _nameLabel.text = @"哈士奇";
-    _nameLabel.backgroundColor = [UIColor magentaColor];
+    _nameLabel.text = _model.userName;
+    _nameLabel.backgroundColor = [UIColor clearColor];
     [backView addSubview:_nameLabel];
     [_nameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.mas_equalTo(kPaddingDistance);
@@ -86,14 +102,29 @@
         make.right.mas_equalTo(-kPaddingDistance);
         make.top.mas_equalTo(kPaddingDistance);
     }];
-//    [_connectTag updateTag:@[@"班",@"社",@"系",@"团",@"啊"]];
-    
-    //消息
+
+    //共同标签
+    NSArray * tagsArr = _myController.studentDic[@"propetiesCommon"];
+    NSMutableArray * propetiesCommonArr = [[NSMutableArray alloc] init];
+    for (int i = 0; i < tagsArr.count; i++)
+    {
+        [propetiesCommonArr addObject:[[Tags alloc]initWithDictionary:_myController.studentDic[@"propetiesCommon"][i]]];
+    }
+    [_connectTag updateWithTag:propetiesCommonArr];
+    //状态
     _statesLabel = [[UILabel alloc] init];
     _statesLabel.font = CONTENT_FONT(12);
     _statesLabel.numberOfLines = 0;
-    _statesLabel.text = @"sahifhasignasopgnagsagaisngoasknmgoiasngoinasoignoiasnoginasoignoi";
-    _statesLabel.backgroundColor = [UIColor grayColor];
+    if (![_model.selfIntro isEqualToString:@""])
+    {
+        _statesLabel.text = _model.selfIntro;
+    }
+    else
+    {
+        _statesLabel.text = @"一个没有态度的人";
+    }
+    
+    _statesLabel.backgroundColor = [UIColor clearColor];
     [backView addSubview:_statesLabel];
     [_statesLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.bottom.mas_equalTo(-kPaddingDistance);
@@ -106,6 +137,57 @@
 
 }
 
+-(void)setUpFooterView
+{
+    UIView * backView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, kHeaderViewHeight)];
+    //头像
+    _feedBackView = [[UIImageView alloc] init];
+    _feedBackView.layer.cornerRadius = kHeadCornerRadius;
+    _feedBackView.clipsToBounds = YES;
+    _feedBackView.backgroundColor = [UIColor hexChangeFloat:@"258f74"];
+    [backView addSubview:_feedBackView];
+    [_feedBackView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.mas_equalTo(kPaddingDistance);
+        make.centerY.equalTo(backView);
+        make.width.height.mas_equalTo(kHeadWidthAndHeight);
+    }];
+    _feedCountLabel = [[UILabel alloc] init];
+    _feedCountLabel.backgroundColor = [UIColor clearColor];
+    _feedCountLabel.textColor = [UIColor whiteColor];
+    _feedCountLabel.textAlignment = NSTextAlignmentCenter;
+    _feedCountLabel.text = @"观点";
+    [backView addSubview:_feedCountLabel];
+    [_feedCountLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.mas_equalTo(kPaddingDistance);
+        make.centerY.equalTo(backView);
+        make.width.height.mas_equalTo(kHeadWidthAndHeight);
+    }];
+    
+    //姓名
+    _feedLabel = [[UILabel alloc] init];
+    _feedLabel.font = CONTENT_FONT(14);
+    _feedLabel.backgroundColor = [UIColor grayColor];
+    [backView addSubview:_feedLabel];
+    [_feedLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerY.equalTo(_feedBackView);
+        make.left.equalTo(_feedBackView.mas_right).offset(kPaddingDistance);
+        make.width.mas_equalTo(kNameLabelWidth);
+        make.height.mas_equalTo(kLabelHeightDistacnce);
+    }];
+    
+    _flagImageView = [[UIImageView alloc] init];
+    _flagImageView.backgroundColor = [UIColor clearColor];
+//    _flagImageView.image = 
+    [backView addSubview:_flagImageView];
+    [_flagImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerY.equalTo(_feedBackView);
+        make.right.mas_equalTo(-kPaddingDistance);
+        make.height.width.mas_equalTo(kFlagImageViewHeightAndWidth);
+    }];
+    
+    self.tableFooterView = backView;
+}
+
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     return 1;
@@ -113,7 +195,7 @@
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 5;
+    return _flagNameArr.count + 2;
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -125,13 +207,13 @@
     
     if (indexPath.row == 0)
     {
-        NSDictionary * dic = @{@"content":@"200000给您敬酒了",@"index":indexStr};
+        NSDictionary * dic = @{@"content":[NSString stringWithFormat:@"%g人向%@撰写的内容敬酒",_model.praiseCount,_model.userName],@"index":indexStr};
         [cell setCellInfo:dic];
         return cell;
     }
     else if (indexPath.row == 1)
     {
-        NSDictionary * dic = @{@"content":@"200000觉得你很酷",@"index":indexStr};
+        NSDictionary * dic = @{@"content":[NSString stringWithFormat:@"%g人觉得%@很酷",_model.coolCount,_model.userName],@"index":indexStr};
         [cell setCellInfo:dic];
         return cell;
     }

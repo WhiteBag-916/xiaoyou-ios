@@ -26,6 +26,8 @@
 @property (nonatomic, strong) NSArray *tagsCommon;//Tags
 @property (nonatomic, strong) NSString *name;
 @property (nonatomic, strong) NSString *gender;
+@property (nonatomic, strong) NSString *uid;
+
 
 + (instancetype)modelObjectWithDictionary:(NSDictionary *)dict;
 - (instancetype)initWithDictionary:(NSDictionary *)dict;

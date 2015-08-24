@@ -42,7 +42,7 @@ NSString *const kContactsInfoDetailTableViewCell = @"ContactsInfoDetailTableView
         
         _contentLabel = [[UILabel alloc] init];
         _contentLabel.font = CONTENT_FONT(12);
-        _contentLabel.backgroundColor = [UIColor grayColor];
+        _contentLabel.backgroundColor = [UIColor clearColor];
         [self.contentView addSubview:_contentLabel];
         [_contentLabel mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.equalTo(_flagImageView.mas_right).offset(kFlagImageDistanceToLabel);
@@ -62,10 +62,10 @@ NSString *const kContactsInfoDetailTableViewCell = @"ContactsInfoDetailTableView
         _flagImageView.image = [UIImage imageNamed:@"toast_cup"];
     }
     if ([dic[@"index"] integerValue] == 1) {
-        _flagImageView.image = [UIImage imageNamed:@"toast_cup"];
+        _flagImageView.image = [UIImage imageNamed:@"mine-heart"];
     }
     if ([dic[@"index"] integerValue] == 2) {
-        _flagImageView.image = [UIImage imageNamed:@"toast_cup"];
+        _flagImageView.image = [UIImage imageNamed:@"tag-grey"];
     }
     _contentLabel.text = dic[@"content"];
 }

@@ -102,7 +102,39 @@ DEF_SINGLETON(MessageManager);
 
 -(void)didReceiveMessage:(EMMessage *)message
 {
+    if ([message.ext[@"server_flag"] boolValue])
+    {
+    
+        switch ([message.messageBodies[0][@"msg"][@"msg"][@"type"] integerValue])
+        {
+            case SYSTEM_MESSAGE: {
+                YLogD(@"系统消息推送");
+                
+                message.from = @"000001";
+                
+                break;
+            }
+                
+            case FRIEND_APPLY:
+                YLogD(@"好友申请推送");
+                
+                message.from = @"000002";
+                
+                break;
+            case GROUP_APPLY:
+                YLogD(@"社团申请推送");
+                
+                message.from = @"000003";
+                break;
+                
+            default:
+                break;
+        }
+        
+        [message updateMessageBodiesToDB];
+    }
     [message updateMessageExtToDB];
+    
     
 #if !TARGET_IPHONE_SIMULATOR
     BOOL isAppActivity = [[UIApplication sharedApplication] applicationState] == UIApplicationStateActive;
@@ -111,24 +143,6 @@ DEF_SINGLETON(MessageManager);
     }
 #endif
     
-//    if ([message.messageBodies[0][@"ext"][@"server_flag"] isEqualToString:@"true"])
-//    {
-//        switch ([message.messageBodies[0][@"msg"][@"msg"][@"type"] integerValue])
-//        {
-//            case SYSTEM_MESSAGE:
-//                NSLog(@"系统消息推送");
-//                break;
-//            case FRIEND_APPLY:
-//                NSLog(@"好友申请推送");
-//                break;
-//            case GROUP_APPLY:
-//                NSLog(@"入社申请推送");
-//                break;
-//                
-//            default:
-//                break;
-//        }
-//    }
     
 }
 
