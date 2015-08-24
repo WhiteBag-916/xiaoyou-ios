@@ -11,6 +11,7 @@
 #import "YCommonActionSheet.h"
 #import "ContactManager.h"
 #import "ProfileInfo.h"
+#import "ChatViewController.h"
 
 #define kNavigationgRightWidthAndHeight         40
 
@@ -29,8 +30,7 @@
     
     [self setUpUI];
     
-    NSLog(@"%@",_studentDic);
-    [[ContactManager sharedInstance] getUserDetailInfo:_studentDic[@"uid"] block:^(YActionMessage *message) {
+    [[ContactManager sharedInstance] getUserDetailInfo:_uid block:^(YActionMessage *message) {
         ProfileInfo * model = message.object;
         [_contactsInfoDetailTableView refreshTableView:model];
     }];
@@ -82,7 +82,19 @@
 
 -(void)clickBottomButton
 {
-
+        if ([_studentDic[@"linkType"] doubleValue] == 0) {
+            ChatViewController * chatVC = [[ChatViewController alloc] initWithChatter:_studentDic[@"thirdCode"] isGroup:NO];
+            chatVC.isSystemMessage = NO;
+            chatVC.studentDic = _studentDic;
+            [self.navigationController pushViewController:chatVC animated:YES needHiddenBottomBar:YES];
+        }
+        else
+        {
+            ChatViewController * chatVC = [[ChatViewController alloc] initWithChatter:_studentDic[@"thirdCode"] isGroup:YES];
+            chatVC.isSystemMessage = NO;
+            chatVC.studentDic = _studentDic;
+            [self.navigationController pushViewController:chatVC animated:YES needHiddenBottomBar:YES];
+        }
 }
 
 -(void)showShareActionSheet

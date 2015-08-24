@@ -59,7 +59,7 @@
     
     _bottomButton = [[UIButton alloc] init];
     [_bottomButton setBackgroundImage:[UIImage imageNamed:@"contacts_bottom"] forState:UIControlStateNormal];
-    [_bottomButton setTitle:@"进图群聊" forState:UIControlStateNormal];
+    [_bottomButton setTitle:@"进入群聊" forState:UIControlStateNormal];
     [_bottomButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [_bottomButton addTarget:self action:@selector(clickBottomButton) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:_bottomButton];

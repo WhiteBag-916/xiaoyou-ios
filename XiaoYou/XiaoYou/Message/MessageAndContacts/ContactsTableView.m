@@ -12,6 +12,7 @@
 #import "ChineseString.h"
 #import "YLog.h"
 #import "XYContactsInfoDetailViewController.h"
+#import "XYGroupInfoDetailViewController.h"
 #import "Masonry.h"
 #import "YSystemDefine.h"
 #import "ContactManager.h"
@@ -327,24 +328,18 @@
     
     ContactsTableViewCell * cell = (ContactsTableViewCell *)[self cellForRowAtIndexPath:indexPath];
     
-    XYContactsInfoDetailViewController * contactsInfoDetailVC = [[XYContactsInfoDetailViewController alloc] init];
-    contactsInfoDetailVC.studentDic = cell.studentDic;
-    [self.myController.navigationController pushViewController:contactsInfoDetailVC animated:YES needHiddenBottomBar:YES];
-//    self.myController.hidesBottomBarWhenPushed = YES;
-//    if ([cell.studentDic[@"linkType"] doubleValue] == 0) {
-//        ChatViewController * chatVC = [[ChatViewController alloc] initWithChatter:cell.studentDic[@"thirdCode"] isGroup:NO];
-//        chatVC.isSystemMessage = NO;
-//        chatVC.studentDic = cell.studentDic;
-//        [self.myController.navigationController pushViewController:chatVC animated:YES];
-//    }
-//    else
-//    {
-//        ChatViewController * chatVC = [[ChatViewController alloc] initWithChatter:cell.studentDic[@"thirdCode"] isGroup:YES];
-//        chatVC.isSystemMessage = NO;
-//        chatVC.studentDic = cell.studentDic;
-//        [self.myController.navigationController pushViewController:chatVC animated:YES];
-//    }
     
+    if ([cell.studentDic[@"linkType"] doubleValue] == 0) {
+        XYContactsInfoDetailViewController * contactsInfoDetailVC = [[XYContactsInfoDetailViewController alloc] init];
+        contactsInfoDetailVC.studentDic = cell.studentDic;
+        contactsInfoDetailVC.uid = cell.studentDic[@"uid"];
+        [self.myController.navigationController pushViewController:contactsInfoDetailVC animated:YES needHiddenBottomBar:YES];
+    }
+    else
+    {
+        XYGroupInfoDetailViewController * groupInfoDetailViewController = [[XYGroupInfoDetailViewController alloc] init];
+        [self.myController.navigationController pushViewController:groupInfoDetailViewController animated:YES needHiddenBottomBar:YES];
+    }
     
 }
 

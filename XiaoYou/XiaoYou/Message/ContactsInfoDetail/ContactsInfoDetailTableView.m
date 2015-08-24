@@ -18,7 +18,8 @@
 #define kHeadCornerRadius              23
 #define kPaddingDistance               12
 #define kLabelHeightDistacnce          14
-#define kFlagImageViewHeightAndWidth   20
+#define kFlagImageViewWidth            9
+#define kFlagImageViewHeight           13
 
 
 @interface ContactsInfoDetailTableView ()<UITableViewDataSource,UITableViewDelegate>
@@ -62,7 +63,6 @@
     {
         [self.flagNameArr addObject:[_model.tagsCommon[i] name]];
     }
-//    self.flagNameArr = [[NSMutableArray alloc] initWithArray:_model.tagsCommon];
     [self setUpHeaderView];
     [self setUpFooterView];
     [self reloadData];
@@ -104,13 +104,7 @@
     }];
 
     //共同标签
-    NSArray * tagsArr = _myController.studentDic[@"propetiesCommon"];
-    NSMutableArray * propetiesCommonArr = [[NSMutableArray alloc] init];
-    for (int i = 0; i < tagsArr.count; i++)
-    {
-        [propetiesCommonArr addObject:[[Tags alloc]initWithDictionary:_myController.studentDic[@"propetiesCommon"][i]]];
-    }
-    [_connectTag updateWithTag:propetiesCommonArr];
+    [_connectTag updateWithTag:_model.propetiesCommon];
     //状态
     _statesLabel = [[UILabel alloc] init];
     _statesLabel.font = CONTENT_FONT(12);
@@ -166,7 +160,8 @@
     //姓名
     _feedLabel = [[UILabel alloc] init];
     _feedLabel.font = CONTENT_FONT(14);
-    _feedLabel.backgroundColor = [UIColor grayColor];
+    _feedLabel.text = [NSString stringWithFormat:@"共47条"];
+    _feedLabel.backgroundColor = [UIColor clearColor];
     [backView addSubview:_feedLabel];
     [_feedLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.equalTo(_feedBackView);
@@ -177,12 +172,13 @@
     
     _flagImageView = [[UIImageView alloc] init];
     _flagImageView.backgroundColor = [UIColor clearColor];
-//    _flagImageView.image = 
+    _flagImageView.image = [UIImage imageNamed:@"mine-concern-particulars"];
     [backView addSubview:_flagImageView];
     [_flagImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.equalTo(_feedBackView);
         make.right.mas_equalTo(-kPaddingDistance);
-        make.height.width.mas_equalTo(kFlagImageViewHeightAndWidth);
+        make.width.mas_equalTo(kFlagImageViewWidth);
+        make.height.mas_equalTo(kFlagImageViewHeight);
     }];
     
     self.tableFooterView = backView;
