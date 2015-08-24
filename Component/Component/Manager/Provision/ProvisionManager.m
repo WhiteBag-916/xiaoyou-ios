@@ -240,11 +240,15 @@ DEF_SINGLETON(ProvisionManager);
     
     [YAction startAction:action completionBlock:^(YActionMessage* message) {
         if (message.isSuccess) {
+            UploadImage *uploadImage = (UploadImage *)message.object;
             //更改缓存
             if (nil != _profileInfo) {
-                UploadImage *uploadImage = (UploadImage *)message.object;
                 _profileInfo.headPic = uploadImage.url;
                 [self saveProfileInfo];
+            }
+            if (nil != _loginResp) {
+                _loginResp.icon = uploadImage.url;
+                [self saveLoginInfo];
             }
         }
         //主线程处理界面
