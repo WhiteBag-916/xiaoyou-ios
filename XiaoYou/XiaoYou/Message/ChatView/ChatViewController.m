@@ -39,6 +39,7 @@
 #import "ProvisionManager.h"
 #import "ProfileInfo.h"
 #import "ContactManager.h"
+#import "LoginResp.h"
 #import "LinkManList.h"
 #import "UnionList.h"
 #import "YNotificationDefine.h"
@@ -1756,7 +1757,8 @@
 
 -(void)sendTextMessage:(NSString *)textMessage
 {
-    NSDictionary *ext = @{@"headImage":[[ProvisionManager sharedInstance] getProfile].headPic,@"userName":[[ProvisionManager sharedInstance] getProfile].userName};
+    NSDictionary *ext = @{@"headImage":[[ProvisionManager sharedInstance] getLoginInfo].icon,@"userName":[[ProvisionManager sharedInstance] getLoginInfo].studentName};
+    
     if (_isRobot) {
         ext = @{kRobot_Message_Ext:[NSNumber numberWithBool:YES]};
     }
@@ -1771,7 +1773,7 @@
 -(void)sendImageMessage:(UIImage *)image
 {
     
-    NSDictionary *ext = @{@"headImage":[[ProvisionManager sharedInstance] getProfile].headPic,@"userName":[[ProvisionManager sharedInstance] getProfile].userName};
+    NSDictionary *ext = @{@"headImage":[[ProvisionManager sharedInstance] getLoginInfo].icon,@"userName":[[ProvisionManager sharedInstance] getLoginInfo].studentName};
     
     if (_isRobot) {
         ext = @{kRobot_Message_Ext:[NSNumber numberWithBool:YES]};
@@ -1786,7 +1788,7 @@
 
 -(void)sendAudioMessage:(EMChatVoice *)voice
 {
-    NSDictionary *ext = @{@"headImage":[[ProvisionManager sharedInstance] getProfile].headPic,@"userName":[[ProvisionManager sharedInstance] getProfile].userName};
+    NSDictionary *ext = @{@"headImage":[[ProvisionManager sharedInstance] getLoginInfo].icon,@"userName":[[ProvisionManager sharedInstance] getLoginInfo].studentName};
     if (_isRobot) {
         ext = @{kRobot_Message_Ext:[NSNumber numberWithBool:YES]};
     }
@@ -1799,7 +1801,7 @@
 
 -(void)sendVideoMessage:(EMChatVideo *)video
 {
-    NSDictionary *ext = @{@"headImage":[[ProvisionManager sharedInstance] getProfile].headPic,@"userName":[[ProvisionManager sharedInstance] getProfile].userName};
+    NSDictionary *ext = @{@"headImage":[[ProvisionManager sharedInstance] getLoginInfo].icon,@"userName":[[ProvisionManager sharedInstance] getLoginInfo].studentName};
     if (_isRobot) {
         ext = @{kRobot_Message_Ext:[NSNumber numberWithBool:YES]};
     }
