@@ -24,7 +24,7 @@
         
         if ([self showFooterRefresh])
         {
-            self.footer = [MJRefreshAutoFooter footerWithRefreshingBlock:^{
+            self.footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
                 [self loadMoreData];
             }];
         }
