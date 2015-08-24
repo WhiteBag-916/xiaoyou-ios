@@ -147,11 +147,11 @@
 - (void)updateSchoolListArray:(NSArray *)schoolArray
 {
     //先删除重复的
-    [_schoolList enumerateObjectsUsingBlock:^(SchoolListModel *schoolModel, NSUInteger idx1, BOOL *stop1) {
-        [schoolArray enumerateObjectsUsingBlock:^(SchoolListModel *obj, NSUInteger idx2, BOOL *stop2) {
+    [schoolArray enumerateObjectsUsingBlock:^(SchoolListModel *schoolModel, NSUInteger idx1, BOOL *stop1) {
+        [_schoolList enumerateObjectsUsingBlock:^(SchoolListModel *obj, NSUInteger idx2, BOOL *stop2) {
             if ([obj.schoolName isEqualToString:schoolModel.schoolName])
             {
-                [_schoolList removeObjectAtIndex:idx1];
+                [_schoolList removeObjectAtIndex:idx2];
                 *stop2 = YES;
             }
         }];
