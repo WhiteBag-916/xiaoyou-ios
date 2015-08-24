@@ -24,7 +24,6 @@
 #import "UploadImage.h"
 #import "MyCommentPersonsAction.h"
 #import "MyPraisePersonsAction.h"
-#import "EaseMob.h"
 #import "MyCoolPersonsAction.h"
 #import "UpdateSelfIntroAction.h"
 #import "ReceiveMobileAuthCodeAction.h"
@@ -65,8 +64,6 @@ DEF_SINGLETON(ProvisionManager);
 
 - (void)appDidLogin:(NSDictionary *)loginInfo
 {
-    [self loginEaseMob];
-    
     [self initProfileData];
     
     [self getProfileInfo];
@@ -191,14 +188,6 @@ DEF_SINGLETON(ProvisionManager);
             }];
         }];
     }];
-}
-
-- (void)loginEaseMob {
-    [[EaseMob sharedInstance].chatManager asyncLoginWithUsername:[NSString stringWithFormat:@"4_%@",[YShareData defaultData][kShareData_StudentNo]] password:[NSString stringWithFormat:@"4_%@",[YShareData defaultData][kShareData_StudentNo]] completion:^(NSDictionary *loginInfo, EMError *error) {
-        if (!error && loginInfo) {
-            YLogD(@"登陆成功");
-        }
-    } onQueue:nil];
 }
 
 //获取学校列表

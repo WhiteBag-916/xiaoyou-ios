@@ -12,6 +12,7 @@
 #import "YShareDataDefine.h"
 #import "YManagerCenter.h"
 #import "EaseMob.h"
+#import "YNotificationDefine.h"
 
 #define kMessageManagerSyncQueue @"kMessageManagerSyncQueue"
 //两次提示的默认间隔
@@ -88,6 +89,7 @@ DEF_SINGLETON(MessageManager);
 - (void)appDidLogin:(NSDictionary *)loginInfo
 {
     [self registerNotifications];
+    [self loginEaseMob];
 }
 
 - (void)appDidLogout
@@ -97,6 +99,15 @@ DEF_SINGLETON(MessageManager);
         if (!error && info) {
             NSLog(@"退出成功");
         }
+    } onQueue:nil];
+}
+
+- (void)loginEaseMob {
+    [[EaseMob sharedInstance].chatManager asyncLoginWithUsername:[NSString stringWithFormat:@"4_%@",[YShareData defaultData][kShareData_StudentNo]] password:[NSString stringWithFormat:@"4_%@",[YShareData defaultData][kShareData_StudentNo]] completion:^(NSDictionary *loginInfo, EMError *error) {
+        if (!error && loginInfo) {
+            YLogD(@"登陆成功");
+        }
+        [self setupUnreadMessageCount];
     } onQueue:nil];
 }
 
@@ -144,6 +155,29 @@ DEF_SINGLETON(MessageManager);
 #endif
     
     
+}
+
+// 未读消息数量变化回调
+-(void)didUnreadMessagesCountChanged
+{
+    [self setupUnreadMessageCount];
+}
+
+- (void)didFinishedReceiveOfflineMessages
+{
+    [self setupUnreadMessageCount];
+}
+
+// 统计未读消息数
+-(void)setupUnreadMessageCount
+{
+    NSArray *conversations = [[[EaseMob sharedInstance] chatManager] conversations];
+    int unreadCount = 0;
+    for (EMConversation *conversation in conversations) {
+        unreadCount += conversation.unreadMessagesCount;
+    }
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:KNotification_Message_unread object:nil userInfo:@{@"unread":@(unreadCount)}];
 }
 
 

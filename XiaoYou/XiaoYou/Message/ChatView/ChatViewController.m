@@ -43,6 +43,7 @@
 #import "LinkManList.h"
 #import "UnionList.h"
 #import "YNotificationDefine.h"
+#import "UIImageView+Ext.h"
 
 #define KPageCount 20
 #define KHintAdjustY    50
@@ -247,17 +248,27 @@
     [self.navigationItem setLeftBarButtonItem:backItem];
     
     if (self.isChatGroup) {
+        UIImageView * headImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 40, 40)];
+        headImageView.layer.cornerRadius = 20;
+        headImageView.clipsToBounds = YES;
+        headImageView.userInteractionEnabled = YES;
+        [headImageView setFaceImageWithUrl:_studentDic[@"icon"]];
         UIButton *detailButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 60, 44)];
-        [detailButton setImage:[UIImage imageNamed:@"default_head"] forState:UIControlStateNormal];
         [detailButton addTarget:self action:@selector(showRoomContact:) forControlEvents:UIControlEventTouchUpInside];
-        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:detailButton];
-    }
+        [headImageView addSubview:detailButton];
+        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:headImageView];    }
     else{
+        UIImageView * headImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 40, 40)];
+        headImageView.layer.cornerRadius = 20;
+        headImageView.clipsToBounds = YES;
+        headImageView.userInteractionEnabled = YES;
+        [headImageView setFaceImageWithUrl:_studentDic[@"icon"]];
         UIButton *detailButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 40, 40)];
-        [detailButton setImage:[UIImage imageNamed:@"default_head"] forState:UIControlStateNormal];
 //        [clearButton addTarget:self action:@selector(removeAllMessages:) forControlEvents:UIControlEventTouchUpInside];
         [detailButton addTarget:self action:@selector(pushToDetailPage:) forControlEvents:UIControlEventTouchUpInside];
-        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:detailButton];
+        [headImageView addSubview:detailButton];
+        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:headImageView];
+        
     }
 }
 
@@ -1607,6 +1618,8 @@
 -(void)pushToDetailPage:(id)sender
 {
     XYContactsInfoDetailViewController * contactsInfoDetailViewController = [[XYContactsInfoDetailViewController alloc] init];
+    contactsInfoDetailViewController.studentDic = _studentDic;
+    contactsInfoDetailViewController.uid = _studentDic[@"uid"];
     contactsInfoDetailViewController.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:contactsInfoDetailViewController animated:YES];
 }
