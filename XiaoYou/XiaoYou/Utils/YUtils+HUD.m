@@ -33,6 +33,16 @@
     return [MBProgressHUD bwm_showTitle:title toView:view hideAfter:afterSecond];
 }
 
++ (void)hiddenProgressHUD
+{
+    [self hiddenProgressHUD:[[[UIApplication sharedApplication] delegate] window]];
+}
+
++ (void)hiddenProgressHUD:(UIView *)inView
+{
+    [MBProgressHUD hideAllHUDsForView:inView animated:NO];
+}
+
 + (MBProgressHUD *)showTitleOn:(UIView *)view title:(NSString *)title {
     return [YUtils showTitleOn:view title:title hideAfter:1];
 }

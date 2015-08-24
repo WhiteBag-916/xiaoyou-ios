@@ -31,7 +31,11 @@
 
 + (MBProgressHUD *)showTitleOn:(UIView *)view title:(NSString *)title;
 
-+ (MBProgressHUD *)showTitleOn:(UIView *)view title:(NSString *)title hideAfter:(NSTimeInterval)afterSecond;;
++ (MBProgressHUD *)showTitleOn:(UIView *)view title:(NSString *)title hideAfter:(NSTimeInterval)afterSecond;
+
++ (void)hiddenProgressHUD;
+
++ (void)hiddenProgressHUD:(UIView *)inView;
 
 /**
  *  @author 李思良, 15-08-21
