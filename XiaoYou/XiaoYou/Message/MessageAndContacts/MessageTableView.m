@@ -68,16 +68,16 @@
 
 -(void)refreshTableView:(NSMutableArray *) dataSouceArr
 {
-    for (int i = 0; i < dataSouceArr.count; i++)
-    {
-        EMConversation * conversation = dataSouceArr[i];
-        if ([conversation.latestMessage.from isEqualToString:@"000001"])
-        {
-            [self setUpHeaderView];
-            [dataSouceArr removeObject:conversation];
-        }
-    }
-    
+//    for (int i = 0; i < dataSouceArr.count; i++)
+//    {
+//        EMConversation * conversation = dataSouceArr[i];
+//        if ([conversation.latestMessage.from isEqualToString:@"000001"])
+//        {
+//            [self setUpHeaderView];
+//            [dataSouceArr removeObject:conversation];
+//        }
+//    }
+//    [self setUpHeaderView];
     _messageDataSource = dataSouceArr;
     [self reloadData];
 }

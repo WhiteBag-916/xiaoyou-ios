@@ -173,8 +173,7 @@
     _messageTableView.separatorStyle = NO;
     [self.view addSubview:_messageTableView];
     [_messageTableView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.left.right.mas_equalTo(0);
-        make.bottom.mas_equalTo(KTabBarheight);
+        make.top.left.right.bottom.mas_equalTo(0);
     }];
     //联系人
     _contactsTableView = [[ContactsTableView alloc]init];
@@ -183,8 +182,7 @@
     _contactsTableView.hidden = YES;
     [self.view addSubview:_contactsTableView];
     [_contactsTableView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.left.right.mas_equalTo(0);
-        make.bottom.mas_equalTo(KTabBarheight);
+        make.top.left.right.bottom.mas_equalTo(0);
     }];
 }
 
