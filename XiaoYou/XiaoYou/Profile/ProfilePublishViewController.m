@@ -16,10 +16,15 @@
 
 @implementation ProfilePublishViewController
 
-- (id)initWithUserId:(NSString *)userId {
+- (id)initWithUserId:(NSString *)userId name:(NSString *)userName{
     self = [super init];
     if (self) {
         _userId = userId;
+        if (userName.length == 0) {
+            self.title = @"我发布的事儿";
+        } else {
+            self.title = [NSString stringWithFormat:@"%@发布的事", userName];
+        }
         self.hidesBottomBarWhenPushed = true;
         
     }
@@ -31,7 +36,6 @@
 }
 - (void)initController {
     self.view.backgroundColor = KCOLORWHITE;
-    self.title = @"我发布的事儿";
     [self showCustomNavigationBackButton];
 }
 

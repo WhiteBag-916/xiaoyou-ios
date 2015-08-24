@@ -17,7 +17,6 @@
 @property (nonatomic, assign) int type;
 @property (nonatomic, strong) NSString *feedId;
 @property (nonatomic, strong) NSMutableArray *personListArray;
-@property (nonatomic, assign) int page;
 @end
 
 @implementation ProfilePersonListTableView
@@ -30,7 +29,7 @@
         [self registerClass:[ProfilePersonListTableViewCell class] forCellReuseIdentifier:kProfilePersonListTableViewCell];
         self.tableFooterView = [UIView new];
         self.backgroundColor = KCOLORGREEN_f2f2f2;
-        _page = 0;
+        _personListArray = [NSMutableArray array];
     }
     return self;
 }
@@ -49,7 +48,7 @@
 }
 - (void)loadNewData
 {
-    _page = 0;
+    [_personListArray removeAllObjects];
     [self sendRequest];
 }
 
@@ -59,53 +58,32 @@
 }
 - (void)sendRequest {
     if (_type == 0) {
-        [[ProvisionManager sharedInstance] myPraisePersons:_page * KPAGENUM limitEnd:(_page+1) * KPAGENUM block:^(YActionMessage *message) {
-            if (_page == 0) {
-                [self stopLoadNewData];
-            } else {
-                [self stopLoadMoreData];
-            }
-            if (message.isSuccess) {
-                if (_page == 0) {
-                    _personListArray = [NSMutableArray arrayWithArray:message.object];
-                } else {
-                    [_personListArray addObjectsFromArray:message.object];
-                }
-                if ([message.object count] < KPAGENUM) {
-                    [self showNoticeNoMoreData];
-                }
-                _page ++;
-                [self reloadData];
-                
-            } else {
-                [YUtils showTitleOn:self title:message.desc];
-            }
+        [[ProvisionManager sharedInstance] myPraisePersons:_personListArray.count limitEnd:_personListArray.count + KPAGENUM block:^(YActionMessage *message) {
+            [self dealMessage:message];
         }];
     }
     
     if (_type == 1) {
-        [[ProvisionManager sharedInstance] myCoolPersons:_page * KPAGENUM limitEnd:(_page+1) * KPAGENUM block:^(YActionMessage *message) {
-            if (_page == 0) {
-                [self stopLoadNewData];
-            } else {
-                [self stopLoadMoreData];
-            }
-            if (message.isSuccess) {
-                if (_page == 0) {
-                    _personListArray = [NSMutableArray arrayWithArray:message.object];
-                } else {
-                    [_personListArray addObjectsFromArray:message.object];
-                }
-                if ([message.object count] < KPAGENUM) {
-                    [self showNoticeNoMoreData];
-                }
-                _page ++;
-                [self reloadData];
-                
-            } else {
-                [YUtils showTitleOn:self title:message.desc];
-            }
+        [[ProvisionManager sharedInstance] myCoolPersons:_personListArray.count limitEnd:_personListArray.count + KPAGENUM block:^(YActionMessage *message) {
+            [self dealMessage:message];
         }];
+    }
+}
+- (void)dealMessage:(YActionMessage *)message {
+    if (_personListArray.count == 0) {
+        [self stopLoadNewData];
+    } else {
+        [self stopLoadMoreData];
+    }
+    if (message.isSuccess) {
+        [_personListArray addObjectsFromArray:message.object];
+        if ([message.object count] < KPAGENUM) {
+            [self showNoticeNoMoreData];
+        }
+        [self reloadData];
+        
+    } else {
+        [YUtils showTitleOn:self title:message.desc];
     }
 }
 - (void)loadDataWithFeedId:(NSString *)feedId {

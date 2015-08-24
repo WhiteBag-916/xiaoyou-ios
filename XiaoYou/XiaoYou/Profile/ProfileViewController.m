@@ -421,7 +421,7 @@
     [self.navigationController pushViewController:[[ProfilePersonListController alloc] initWithType:1] animated:true];
 }
 - (void)openFeed {
-    [self.navigationController pushViewController:[[ProfilePublishViewController alloc] initWithUserId:@""] animated:true];
+    [self.navigationController pushViewController:[[ProfilePublishViewController alloc] initWithUserId:@"" name:@""] animated:true];
 }
 
 - (void)openProfile {
