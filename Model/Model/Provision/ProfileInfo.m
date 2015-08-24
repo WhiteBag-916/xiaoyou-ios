@@ -99,8 +99,33 @@ NSString *const kProfileInfoPropetiesCommon = @"propetiesCommon";
         self.coolCount = [[self objectOrNilForKey:kProfileInfoCoolCount fromDictionary:dict] doubleValue];
 
     }
-    self.tagsCommon = [self objectOrNilForKey:kProfileInfoTagsCommon fromDictionary:dict];
-    self.propetiesCommon = [self objectOrNilForKey:kProfileInfoPropetiesCommon fromDictionary:dict];
+    
+    NSObject *receivedTagsCommon = [dict objectForKey:kProfileInfoTagsCommon];
+    NSMutableArray *parsedTagsCommon = [NSMutableArray array];
+    if ([receivedTagsCommon isKindOfClass:[NSArray class]]) {
+        for (NSDictionary *item in (NSArray *)receivedTagsCommon) {
+            if ([item isKindOfClass:[NSDictionary class]]) {
+                [parsedTagsCommon addObject:[Tags modelObjectWithDictionary:item]];
+            }
+        }
+    } else if ([receivedTagsCommon isKindOfClass:[NSDictionary class]]) {
+        [parsedTagsCommon addObject:[Tags modelObjectWithDictionary:(NSDictionary *)receivedTagsCommon]];
+    }
+    
+    self.tagsCommon = [NSArray arrayWithArray:parsedTagsCommon];
+    NSObject *receivedPropetiesCommon = [dict objectForKey:kProfileInfoPropetiesCommon];
+    NSMutableArray *parsedPropetiesCommon = [NSMutableArray array];
+    if ([receivedPropetiesCommon isKindOfClass:[NSArray class]]) {
+        for (NSDictionary *item in (NSArray *)receivedPropetiesCommon) {
+            if ([item isKindOfClass:[NSDictionary class]]) {
+                [parsedPropetiesCommon addObject:[Tags modelObjectWithDictionary:item]];
+            }
+        }
+    } else if ([receivedPropetiesCommon isKindOfClass:[NSDictionary class]]) {
+        [parsedPropetiesCommon addObject:[Tags modelObjectWithDictionary:(NSDictionary *)receivedPropetiesCommon]];
+    }
+    
+    self.propetiesCommon = [NSArray arrayWithArray:parsedPropetiesCommon];
     
     return self;
     
@@ -140,8 +165,28 @@ NSString *const kProfileInfoPropetiesCommon = @"propetiesCommon";
     [mutableDict setValue:[NSArray arrayWithArray:tempArrayForLastFeeds] forKey:kProfileInfoLastFeeds];
     [mutableDict setValue:self.tags forKey:kProfileInfoTags];
     [mutableDict setValue:[NSNumber numberWithDouble:self.commentCount] forKey:kProfileInfoCommentCount];
-    [mutableDict setValue:self.tagsCommon forKey:kProfileInfoTagsCommon];
-    [mutableDict setValue:self.propetiesCommon forKey:kProfileInfoPropetiesCommon];
+    NSMutableArray *tempArrayForTagsCommon = [NSMutableArray array];
+    for (NSObject *subArrayObject in self.tagsCommon) {
+        if([subArrayObject respondsToSelector:@selector(dictionaryRepresentation)]) {
+            // This class is a model object
+            [tempArrayForTagsCommon addObject:[subArrayObject performSelector:@selector(dictionaryRepresentation)]];
+        } else {
+            // Generic object
+            [tempArrayForTagsCommon addObject:subArrayObject];
+        }
+    }
+    [mutableDict setValue:[NSArray arrayWithArray:tempArrayForTagsCommon] forKey:kProfileInfoTagsCommon];
+    NSMutableArray *tempArrayForPropetiesCommon = [NSMutableArray array];
+    for (NSObject *subArrayObject in self.propetiesCommon) {
+        if([subArrayObject respondsToSelector:@selector(dictionaryRepresentation)]) {
+            // This class is a model object
+            [tempArrayForPropetiesCommon addObject:[subArrayObject performSelector:@selector(dictionaryRepresentation)]];
+        } else {
+            // Generic object
+            [tempArrayForPropetiesCommon addObject:subArrayObject];
+        }
+    }
+    [mutableDict setValue:[NSArray arrayWithArray:tempArrayForPropetiesCommon] forKey:kProfileInfoPropetiesCommon];
 
     return [NSDictionary dictionaryWithDictionary:mutableDict];
 }
