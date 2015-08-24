@@ -9,6 +9,7 @@
 #import "XYGroupInfoDetailViewController.h"
 #import "GroupInfoDetailCollectionView.h"
 #import "YCommonActionSheet.h"
+#import "ChatViewController.h"
 
 #define kNavigationgLeftWidth                   9
 #define kNavigationgLeftHeight                  14
@@ -31,11 +32,6 @@
     self.title = @"详情";
     [self setUpUI];
     
-}
-
--(void)viewWillLayoutSubviews
-{
-    self.hidesBottomBarWhenPushed = NO;
 }
 
 -(void)setUpUI
@@ -71,7 +67,10 @@
 
 -(void)clickBottomButton
 {
-    
+    ChatViewController * chatVC = [[ChatViewController alloc] initWithChatter:_studentDic[@"thirdCode"] isGroup:YES];
+    chatVC.isSystemMessage = NO;
+    chatVC.studentDic = _studentDic;
+    [self.navigationController pushViewController:chatVC animated:YES needHiddenBottomBar:YES];
 }
 
 -(void)showShareActionSheet

@@ -11,6 +11,9 @@
 #import "ConnectTag.h"
 #import "UIImageView+Ext.h"
 #import "Tags.h"
+#import "ProfilePublishViewController.h"
+#import "ContactManager.h"
+#import "YUtils+HUD.h"
 
 #define kHeaderViewHeight              90
 #define kHeadWidthAndHeight            46
@@ -160,7 +163,7 @@
     //姓名
     _feedLabel = [[UILabel alloc] init];
     _feedLabel.font = CONTENT_FONT(14);
-    _feedLabel.text = [NSString stringWithFormat:@"共47条"];
+    _feedLabel.text = [NSString stringWithFormat:@"共%g条",_model.feedCount];
     _feedLabel.backgroundColor = [UIColor clearColor];
     [backView addSubview:_feedLabel];
     [_feedLabel mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -181,7 +184,17 @@
         make.height.mas_equalTo(kFlagImageViewHeight);
     }];
     
+    UITapGestureRecognizer * tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapFooterView)];
+    [backView addGestureRecognizer:tapGestureRecognizer];
+    
     self.tableFooterView = backView;
+}
+
+-(void)tapFooterView
+{
+    ProfilePublishViewController * profilePublish = [[ProfilePublishViewController alloc] initWithUserId:_model.uid name:_model.userName];
+    [self.myController.navigationController pushViewController:profilePublish animated:YES needHiddenBottomBar:YES];
+    
 }
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -209,7 +222,7 @@
     }
     else if (indexPath.row == 1)
     {
-        NSDictionary * dic = @{@"content":[NSString stringWithFormat:@"%g人觉得%@很酷",_model.coolCount,_model.userName],@"index":indexStr};
+        NSDictionary * dic = @{@"content":[NSString stringWithFormat:@"%g人觉得%@很酷",_model.coolCount,_model.userName],@"index":indexStr, @"isCool":@(_model.isCool)};
         [cell setCellInfo:dic];
         return cell;
     }
@@ -234,4 +247,25 @@
     }
 }
 
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (indexPath.row == 1)
+    {
+        [YUtils showHUDWithTitle:@"玩命加载中..."];
+        [[ContactManager sharedInstance] praise:_model.userName block:^(YActionMessage *message) {
+            if (message.isSuccess) {
+                _model.isCool = !_model.isCool;
+                if (_model.isCool) {
+                    ++_model.coolCount;
+                } else {
+                    --_model.coolCount;
+                }
+                
+                [self reloadData];
+            }
+            [YUtils hiddenProgressHUD];
+        }];
+    }
+}
 @end

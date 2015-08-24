@@ -25,7 +25,7 @@ NSString *const kProfileInfoCoolCount = @"coolCount";
 NSString *const kProfileInfoTagsCommon = @"tagsCommon";
 NSString *const kProfileInfoPropetiesCommon = @"propetiesCommon";
 NSString *const kProfileInfoFeedCount = @"feedCount";
-NSString *const kProfileInfoIsPraise = @"isPraise";
+NSString *const kProfileInfoIsCool = @"isCool";
 
 @interface ProfileInfo ()
 
@@ -49,7 +49,7 @@ NSString *const kProfileInfoIsPraise = @"isPraise";
 @synthesize tagsCommon = _tagsCommon;
 @synthesize propetiesCommon = _propetiesCommon;
 @synthesize feedCount = _feedCount;
-@synthesize isPraise = _isPraise;
+@synthesize isCool = _isCool;
 
 + (instancetype)modelObjectWithDictionary:(NSDictionary *)dict
 {
@@ -129,7 +129,7 @@ NSString *const kProfileInfoIsPraise = @"isPraise";
     
     self.propetiesCommon = [NSArray arrayWithArray:parsedPropetiesCommon];
     self.feedCount = [[self objectOrNilForKey:kProfileInfoFeedCount fromDictionary:dict] doubleValue];
-    self.isPraise = [[self objectOrNilForKey:kProfileInfoIsPraise fromDictionary:dict] boolValue];
+    self.isCool = [[self objectOrNilForKey:kProfileInfoIsCool fromDictionary:dict] boolValue];
     
     return self;
     
@@ -192,7 +192,7 @@ NSString *const kProfileInfoIsPraise = @"isPraise";
     }
     [mutableDict setValue:[NSArray arrayWithArray:tempArrayForPropetiesCommon] forKey:kProfileInfoPropetiesCommon];
     [mutableDict setValue:[NSNumber numberWithDouble:self.feedCount] forKey:kProfileInfoFeedCount];
-    [mutableDict setValue:[NSNumber numberWithBool:self.isPraise] forKey:kProfileInfoIsPraise];
+    [mutableDict setValue:[NSNumber numberWithBool:self.isCool] forKey:kProfileInfoIsCool];
 
     return [NSDictionary dictionaryWithDictionary:mutableDict];
 }
@@ -230,7 +230,7 @@ NSString *const kProfileInfoIsPraise = @"isPraise";
     self.tagsCommon = [aDecoder decodeObjectForKey:kProfileInfoTagsCommon];
     self.propetiesCommon = [aDecoder decodeObjectForKey:kProfileInfoPropetiesCommon];
     self.feedCount = [aDecoder decodeDoubleForKey:kProfileInfoFeedCount];
-    self.isPraise = [aDecoder decodeBoolForKey:kProfileInfoIsPraise];
+    self.isCool = [aDecoder decodeBoolForKey:kProfileInfoIsCool];
     
     return self;
 }
@@ -252,7 +252,7 @@ NSString *const kProfileInfoIsPraise = @"isPraise";
     [aCoder encodeObject:_tagsCommon forKey:kProfileInfoTagsCommon];
     [aCoder encodeObject:_propetiesCommon forKey:kProfileInfoPropetiesCommon];
     [aCoder encodeDouble:_feedCount forKey:kProfileInfoFeedCount];
-    [aCoder encodeBool:_isPraise forKey:kProfileInfoIsPraise];
+    [aCoder encodeBool:_isCool forKey:kProfileInfoIsCool];
 }
 
 - (id)copyWithZone:(NSZone *)zone
@@ -275,7 +275,7 @@ NSString *const kProfileInfoIsPraise = @"isPraise";
         copy.tagsCommon = [self.tagsCommon copyWithZone:zone];
         copy.propetiesCommon = [self.propetiesCommon copyWithZone:zone];
         copy.feedCount = self.feedCount;
-        copy.isPraise = self.isPraise;
+        copy.isCool = self.isCool;
     }
     
     return copy;

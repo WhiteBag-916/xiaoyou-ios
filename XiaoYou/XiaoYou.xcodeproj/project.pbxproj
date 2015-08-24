@@ -355,6 +355,8 @@
 		339549861B81BDD500F9ECB1 /* GroupInfoCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 339549851B81BDD500F9ECB1 /* GroupInfoCollectionViewCell.m */; };
 		339549891B81BDFF00F9ECB1 /* GroupInfoDetailCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 339549881B81BDFF00F9ECB1 /* GroupInfoDetailCollectionView.m */; };
 		3395498F1B81C67000F9ECB1 /* GroupInfoDetailHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3395498E1B81C67000F9ECB1 /* GroupInfoDetailHeaderView.m */; };
+		33F83A8C1B8B2B6D00FF5483 /* mine-heart-red@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 33F83A8A1B8B2B6D00FF5483 /* mine-heart-red@2x.png */; };
+		33F83A8D1B8B2B6D00FF5483 /* mine-heart-red@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 33F83A8B1B8B2B6D00FF5483 /* mine-heart-red@3x.png */; };
 		34AF80435283028D453BFBFC /* libPods-XiaoYou.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 77B574BED9D4FF3F4BFAA9FE /* libPods-XiaoYou.a */; };
 		65024C0F1B82C423007DE404 /* FeedTag.m in Sources */ = {isa = PBXBuildFile; fileRef = 65024C0E1B82C423007DE404 /* FeedTag.m */; };
 		65024C1C1B833565007DE404 /* feedmore@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 65024C1A1B833565007DE404 /* feedmore@2x.png */; };
@@ -966,6 +968,8 @@
 		339549881B81BDFF00F9ECB1 /* GroupInfoDetailCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroupInfoDetailCollectionView.m; sourceTree = "<group>"; };
 		3395498D1B81C67000F9ECB1 /* GroupInfoDetailHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroupInfoDetailHeaderView.h; sourceTree = "<group>"; };
 		3395498E1B81C67000F9ECB1 /* GroupInfoDetailHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroupInfoDetailHeaderView.m; sourceTree = "<group>"; };
+		33F83A8A1B8B2B6D00FF5483 /* mine-heart-red@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mine-heart-red@2x.png"; sourceTree = "<group>"; };
+		33F83A8B1B8B2B6D00FF5483 /* mine-heart-red@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mine-heart-red@3x.png"; sourceTree = "<group>"; };
 		65024C0D1B82C423007DE404 /* FeedTag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedTag.h; sourceTree = "<group>"; };
 		65024C0E1B82C423007DE404 /* FeedTag.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedTag.m; sourceTree = "<group>"; };
 		65024C1A1B833565007DE404 /* feedmore@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "feedmore@2x.png"; sourceTree = "<group>"; };
@@ -2377,6 +2381,8 @@
 				650C6C151B886E2600A89AC9 /* mine-particulars@3x.png */,
 				650C6C101B886D8200A89AC9 /* mine-heart@2x.png */,
 				650C6C111B886D8200A89AC9 /* mine-heart@3x.png */,
+				33F83A8A1B8B2B6D00FF5483 /* mine-heart-red@2x.png */,
+				33F83A8B1B8B2B6D00FF5483 /* mine-heart-red@3x.png */,
 				650C6C0C1B886D3C00A89AC9 /* mine-toast@2x.png */,
 				650C6C0D1B886D3C00A89AC9 /* mine-toast@3x.png */,
 			);
@@ -2816,6 +2822,7 @@
 				3348CB6A1B87236200F97FAF /* send-click@2x.png in Resources */,
 				3334ABFB1B82C66F00FDDCCB /* chatBar_record.png in Resources */,
 				3334AC0E1B82C89500FDDCCB /* chatBar_colorMore_photoSelected@2x.png in Resources */,
+				33F83A8C1B8B2B6D00FF5483 /* mine-heart-red@2x.png in Resources */,
 				20E033EF1B842727002E4583 /* UMSocialSDKResourcesNew.bundle in Resources */,
 				20E033E91B842727002E4583 /* UMSCommentInputControlleriPad.xib in Resources */,
 				3334ABF41B82C5D200FDDCCB /* chatBar_more@2x.png in Resources */,
@@ -2824,6 +2831,7 @@
 				20E18DBA1B808E42005B75EE /* common_star@2x.png in Resources */,
 				3334AC241B82D7C400FDDCCB /* VoiceSearchFeedback003@2x.png in Resources */,
 				333122CC1B806EDC00D3D032 /* chat_sender_audio_playing_002@2x.png in Resources */,
+				33F83A8D1B8B2B6D00FF5483 /* mine-heart-red@3x.png in Resources */,
 				3346706D1B8426D400A8628A /* delete-member@3x.png in Resources */,
 				3334ABFE1B82C66F00FDDCCB /* chatBar_recordSelected@2x.png in Resources */,
 			);

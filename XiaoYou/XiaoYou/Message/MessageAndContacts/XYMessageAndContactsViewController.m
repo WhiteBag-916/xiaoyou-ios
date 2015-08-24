@@ -91,7 +91,7 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
-    [super viewWillAppear:animated navigationBarHidden:NO tabBarHidden:NO];
+//    [super viewWillAppear:animated navigationBarHidden:NO tabBarHidden:NO];
     
     [self refreshDataSource];
     [self registerNotifications];

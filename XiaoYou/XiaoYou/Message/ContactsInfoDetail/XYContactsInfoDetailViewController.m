@@ -40,15 +40,7 @@
     
 }
 
-//- (void)viewWillAppear:(BOOL)animated
-//{
-//    [super viewWillAppear:animated navigationBarHidden:NO tabBarHidden:YES];
-//}
 
--(void)viewWillLayoutSubviews
-{
-    self.hidesBottomBarWhenPushed = NO;
-}
 
 -(void)setUpUI
 {

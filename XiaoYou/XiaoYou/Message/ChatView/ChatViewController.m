@@ -271,7 +271,7 @@
 {
 //    [super viewWillAppear:animated];
     
-    [super viewWillAppear:animated navigationBarHidden:NO tabBarHidden:YES];
+//    [super viewWillAppear:animated navigationBarHidden:NO tabBarHidden:YES];
     
     [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:NO] forKey:@"isShowPicker"];
     if (_isScrollToBottom) {
