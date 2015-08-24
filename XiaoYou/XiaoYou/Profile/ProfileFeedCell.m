@@ -41,7 +41,7 @@ NSString *const KProfileFeedCell = @"KProfileFeedCell";
     return self;
 }
 - (void)initContent {
-    _content = [[ProfileFeedContentView alloc] init];
+    _content = [[ProfileFeedContentView alloc] initWithType:ProfileFeedList];
     [self.contentView addSubview:_content];
     [_content mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.contentView).offset(KMARGIN);
