@@ -26,7 +26,7 @@
 @property (nonatomic, strong) NSArray *tagsCommon;
 @property (nonatomic, strong) NSArray *propetiesCommon;
 @property (nonatomic, assign) double feedCount;
-@property (nonatomic, assign) BOOL isPraise;
+@property (nonatomic, assign) BOOL isCool;
 
 + (instancetype)modelObjectWithDictionary:(NSDictionary *)dict;
 - (instancetype)initWithDictionary:(NSDictionary *)dict;

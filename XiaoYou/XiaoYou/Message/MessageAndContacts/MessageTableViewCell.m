@@ -168,13 +168,13 @@ NSString *const kMessageTableViewCell = @"MessageTableViewCellId";
 
     
     for (LinkManList * obj in modelLinkMan) {
-        if ([conversation.latestMessage.to isEqualToString:obj.thirdCode])
+        if ([conversation.chatter isEqualToString:obj.thirdCode])
         {
             return [obj dictionaryRepresentation];
         }
     }
     for (ClassList * obj in modelClass) {
-        if ([conversation.latestMessage.to isEqualToString:obj.thirdCode])
+        if ([conversation.chatter isEqualToString:obj.thirdCode])
         {
             return [obj dictionaryRepresentation];
         }

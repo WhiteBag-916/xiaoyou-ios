@@ -62,7 +62,11 @@ NSString *const kContactsInfoDetailTableViewCell = @"ContactsInfoDetailTableView
         _flagImageView.image = [UIImage imageNamed:@"toast_cup"];
     }
     if ([dic[@"index"] integerValue] == 1) {
-        _flagImageView.image = [UIImage imageNamed:@"mine-heart"];
+        if ([dic[@"isCool"] boolValue]) {
+            _flagImageView.image = [UIImage imageNamed:@"mine-heart-red"];
+        } else {
+            _flagImageView.image = [UIImage imageNamed:@"mine-heart"];
+        }
     }
     if ([dic[@"index"] integerValue] == 2) {
         _flagImageView.image = [UIImage imageNamed:@"tag-grey"];
