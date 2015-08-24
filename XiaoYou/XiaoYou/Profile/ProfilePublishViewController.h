@@ -10,4 +10,6 @@
 
 @interface ProfilePublishViewController : YViewController
 
+- (id)initWithUserId:(NSString *)userId;
+
 @end

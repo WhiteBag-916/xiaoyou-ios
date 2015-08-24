@@ -14,6 +14,7 @@
 
 @interface ProfileFeedListView()<UITableViewDataSource, UITableViewDelegate>
 @property (nonatomic, strong) NSMutableArray *feedArray;
+@property (nonatomic, strong) NSString *userId;
 @property (nonatomic, assign) int page;
 @end
 
@@ -31,10 +32,7 @@
     }
     return self;
 }
-- (void)loadData:(NSArray *)data {
-    _feedArray = [NSArray arrayWithArray:data];
-    [self reloadData];
-}
+
 #pragma mark - 继承者
 - (BOOL)showHeaderRefresh
 {
@@ -45,7 +43,8 @@
 {
     return YES;
 }
-- (void)loadData {
+- (void)loadData:(NSString *)userId {
+    _userId = userId;
     [self beginLoadNewData];
 }
 - (void)loadNewData
@@ -61,7 +60,7 @@
 }
 
 - (void)sendRequest {
-    [[FeedManager sharedInstance] getMyFeed:nil block:^(YActionMessage *message) {
+    [[FeedManager sharedInstance] getMyFeed:_userId block:^(YActionMessage *message) {
         if (_page == 0) {
             [self stopLoadNewData];
         } else {

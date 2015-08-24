@@ -9,5 +9,5 @@
 #import "YTableView.h"
 
 @interface ProfileFeedListView : YTableView
-- (void)loadData;
+- (void)loadData:(NSString *)userId;
 @end

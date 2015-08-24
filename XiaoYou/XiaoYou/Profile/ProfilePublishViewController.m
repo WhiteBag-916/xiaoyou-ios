@@ -10,14 +10,16 @@
 #import "ProfilePublishViewController.h"
 #import "ProfileFeedListView.h"
 @interface ProfilePublishViewController()
+@property (nonatomic, strong) NSString *userId;
 @property (nonatomic, strong) ProfileFeedListView *tableView;
 @end
 
 @implementation ProfilePublishViewController
 
-- (id)init {
+- (id)initWithUserId:(NSString *)userId {
     self = [super init];
     if (self) {
+        _userId = userId;
         self.hidesBottomBarWhenPushed = true;
         
     }
@@ -45,6 +47,6 @@
     self.navigationController.navigationBarHidden = false;
 }
 - (void)viewDidAppear:(BOOL)animated {
-    [_tableView loadData];
+    [_tableView loadData:_userId];
 }
 @end
