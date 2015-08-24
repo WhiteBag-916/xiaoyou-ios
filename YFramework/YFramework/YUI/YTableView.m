@@ -18,14 +18,22 @@
         if ([self showHeaderRefresh])
         {
             self.header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
-                [self loadNewData];
+                if (![self.footer isRefreshing]) {
+                    [self loadNewData];
+                } else {
+                    [self.header endRefreshing];
+                }
             }];
         }
         
         if ([self showFooterRefresh])
         {
             self.footer = [MJRefreshAutoStateFooter footerWithRefreshingBlock:^{
-                [self loadMoreData];
+                if (![self.header isRefreshing]) {
+                    [self loadNewData];
+                } else {
+                    [self.footer endRefreshing];
+                }
             }];
             self.footer.automaticallyHidden = NO;
             
@@ -95,11 +103,6 @@
 - (void)showNoticeNoMoreData
 {
     [self.footer noticeNoMoreData];
-}
-
-//是否正在刷新
-- (BOOL)isRefreshing {
-    return [self.header isRefreshing] || [self.footer isRefreshing];
 }
 
 #pragma mark - 继承者
