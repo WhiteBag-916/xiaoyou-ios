@@ -23,6 +23,8 @@
 @property (nonatomic, strong) NSString *tags;
 @property (nonatomic, assign) double commentCount;
 @property (nonatomic, assign) double coolCount;
+@property (nonatomic, strong) NSString *tagsCommon;
+@property (nonatomic, strong) NSString *propetiesCommon;
 
 + (instancetype)modelObjectWithDictionary:(NSDictionary *)dict;
 - (instancetype)initWithDictionary:(NSDictionary *)dict;

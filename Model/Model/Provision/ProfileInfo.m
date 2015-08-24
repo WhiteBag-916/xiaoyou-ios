@@ -22,6 +22,8 @@ NSString *const kProfileInfoLastFeeds = @"lastFeeds";
 NSString *const kProfileInfoTags = @"tags";
 NSString *const kProfileInfoCommentCount = @"commentCount";
 NSString *const kProfileInfoCoolCount = @"coolCount";
+NSString *const kProfileInfoTagsCommon = @"tagsCommon";
+NSString *const kProfileInfoPropetiesCommon = @"propetiesCommon";
 
 
 @interface ProfileInfo ()
@@ -43,6 +45,8 @@ NSString *const kProfileInfoCoolCount = @"coolCount";
 @synthesize lastFeeds = _lastFeeds;
 @synthesize tags = _tags;
 @synthesize commentCount = _commentCount;
+@synthesize tagsCommon = _tagsCommon;
+@synthesize propetiesCommon = _propetiesCommon;
 
 
 + (instancetype)modelObjectWithDictionary:(NSDictionary *)dict
@@ -95,6 +99,8 @@ NSString *const kProfileInfoCoolCount = @"coolCount";
         self.coolCount = [[self objectOrNilForKey:kProfileInfoCoolCount fromDictionary:dict] doubleValue];
 
     }
+    self.tagsCommon = [self objectOrNilForKey:kProfileInfoTagsCommon fromDictionary:dict];
+    self.propetiesCommon = [self objectOrNilForKey:kProfileInfoPropetiesCommon fromDictionary:dict];
     
     return self;
     
@@ -134,6 +140,8 @@ NSString *const kProfileInfoCoolCount = @"coolCount";
     [mutableDict setValue:[NSArray arrayWithArray:tempArrayForLastFeeds] forKey:kProfileInfoLastFeeds];
     [mutableDict setValue:self.tags forKey:kProfileInfoTags];
     [mutableDict setValue:[NSNumber numberWithDouble:self.commentCount] forKey:kProfileInfoCommentCount];
+    [mutableDict setValue:self.tagsCommon forKey:kProfileInfoTagsCommon];
+    [mutableDict setValue:self.propetiesCommon forKey:kProfileInfoPropetiesCommon];
 
     return [NSDictionary dictionaryWithDictionary:mutableDict];
 }
@@ -168,6 +176,8 @@ NSString *const kProfileInfoCoolCount = @"coolCount";
     self.lastFeeds = [aDecoder decodeObjectForKey:kProfileInfoLastFeeds];
     self.tags = [aDecoder decodeObjectForKey:kProfileInfoTags];
     self.commentCount = [aDecoder decodeDoubleForKey:kProfileInfoCommentCount];
+    self.tagsCommon = [aDecoder decodeObjectForKey:kProfileInfoTagsCommon];
+    self.propetiesCommon = [aDecoder decodeObjectForKey:kProfileInfoPropetiesCommon];
     return self;
 }
 
@@ -185,6 +195,8 @@ NSString *const kProfileInfoCoolCount = @"coolCount";
     [aCoder encodeObject:_lastFeeds forKey:kProfileInfoLastFeeds];
     [aCoder encodeObject:_tags forKey:kProfileInfoTags];
     [aCoder encodeDouble:_commentCount forKey:kProfileInfoCommentCount];
+    [aCoder encodeObject:_tagsCommon forKey:kProfileInfoTagsCommon];
+    [aCoder encodeObject:_propetiesCommon forKey:kProfileInfoPropetiesCommon];
 }
 
 - (id)copyWithZone:(NSZone *)zone
@@ -204,6 +216,8 @@ NSString *const kProfileInfoCoolCount = @"coolCount";
         copy.lastFeeds = [self.lastFeeds copyWithZone:zone];
         copy.tags = [self.tags copyWithZone:zone];
         copy.commentCount = self.commentCount;
+        copy.tagsCommon = [self.tagsCommon copyWithZone:zone];
+        copy.propetiesCommon = [self.propetiesCommon copyWithZone:zone];
     }
     
     return copy;
