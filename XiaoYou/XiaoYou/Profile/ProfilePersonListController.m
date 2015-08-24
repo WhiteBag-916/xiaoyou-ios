@@ -8,6 +8,8 @@
 
 #import "ProfilePersonListController.h"
 #import "ProfilePersonListTableView.h"
+#import "ProfileMyViewController.h"
+#import "ProfileOthersViewController.h"
 @interface ProfilePersonListController()
 @property (nonatomic, assign) int type;
 @property (nonatomic, strong) NSString *feedId;
@@ -55,7 +57,15 @@
         make.edges.equalTo(self.view);
     }];
 }
+- (void)dealProfileOpen:(NSString *)userId {
+    if (userId.length == 0) {
+        [self.navigationController pushViewController:[[ProfileMyViewController alloc] init] animated:true];
+    } else {
+        [self.navigationController pushViewController:[[ProfileOthersViewController alloc] initWithUserId:userId] animated:true];
+    }
+}
 - (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
     self.navigationController.navigationBarHidden = false;
 }
 - (void)viewDidAppear:(BOOL)animated {

@@ -1758,6 +1758,7 @@
 -(void)sendTextMessage:(NSString *)textMessage
 {
     NSDictionary *ext = @{@"headImage":[[ProvisionManager sharedInstance] getLoginInfo].icon,@"userName":[[ProvisionManager sharedInstance] getLoginInfo].studentName};
+    NSLog(@"%@",ext);
     
     if (_isRobot) {
         ext = @{kRobot_Message_Ext:[NSNumber numberWithBool:YES]};

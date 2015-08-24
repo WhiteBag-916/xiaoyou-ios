@@ -11,6 +11,9 @@
 #import "ProfileFeedContentView.h"
 #import "FeedTag.h"
 #import "ProvisionManager.h"
+#import "ProfileInfo.h"
+#import "Feed.h"
+#import "ContactManager.h"
 
 #define KHEADIMGMARGIN SCALE_NUM(12)
 #define KHEADIMGSIZE SCALE_NUM(45)
@@ -19,6 +22,7 @@
 
 @interface ProfileOthersViewController()
 @property (nonatomic, strong) NSString *userId;
+
 @property (nonatomic, strong) UIImageView *headImg;
 @property (nonatomic, strong) UILabel *nameLabel;
 @property (nonatomic, strong) UILabel *contentLabel;
@@ -27,10 +31,12 @@
 @property (nonatomic, strong) UILabel *coolLabel;
 @property (nonatomic, strong) ProfileFeedContentView *feed;
 
+
 @property (nonatomic, strong) UIView *containerView;
 @property (nonatomic, strong) UIView *topView;
 @property (nonatomic, strong) UIView *middleView;
 
+@property (nonatomic, strong) UIView *loadingView;
 
 @end
 
@@ -109,6 +115,7 @@
     }];
     
     _contentLabel = [YUtils initLabel:CONTENT_FONT(12) color:[UIColor blackColor] text:@"内容" frame:CGRectZero alignment:NSTextAlignmentLeft];
+    _contentLabel.numberOfLines = 0;
     [_topView addSubview:_contentLabel];
     [_contentLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(_nameLabel);
@@ -166,19 +173,45 @@
         make.left.equalTo(_nameLabel);
     }];
 }
-- (void)startLoadData {
-    UIView *loadingView = [[UIView alloc] init];
-    [self.view addSubview:loadingView];
-    [loadingView mas_makeConstraints:^(MASConstraintMaker *make) {
+- (void)preLoadData {
+    _loadingView = [[UIView alloc] init];
+    [self.view addSubview:_loadingView];
+    [_loadingView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.equalTo(self.view);
     }];
-    loadingView.backgroundColor = KCOLORWHITE;
-    MBProgressHUD *hud = [YUtils showHUDAddedTo:loadingView title:@"正在加载"];
-    [hud removeFromSuperview];
-    [self loadData:[[ProvisionManager sharedInstance] getProfile]];
+    _loadingView.backgroundColor = KCOLORWHITE;
+}
+- (void)startLoadData {
+    MBProgressHUD *hud = [YUtils showHUDAddedTo:_loadingView title:@"正在加载"];
+    [[ContactManager sharedInstance] getUserDetailInfo:_userId block:^(YActionMessage *message) {
+        [hud removeFromSuperview];
+        if (message.isSuccess) {
+            [_loadingView removeFromSuperview];
+            [self loadData:message.object];
+        } else {
+            [YUtils showTitle:message.desc];
+        }
+    }];
 }
 - (void)loadData:(ProfileInfo *)info {
-    
+    _userId = info.uid;
+    _nameLabel.text = info.userName;
+    [_connectTag updateWithTag:info.propetiesCommon];
+    _contentLabel.text = info.selfIntro;
+    if (_contentLabel.text.length == 0) {
+        _contentLabel.text = @"一个没有态度的人";
+    }
+    _respectLabel.text = [NSString stringWithFormat:@"%d人向%@撰写的内容敬酒", (int)info.praiseCount, info.userName];
+    _coolLabel.text = [NSString stringWithFormat:@"%d人觉得%@很酷", (int)info.coolCount, info.userName];
+    if (info.lastFeeds.count == 0) {
+        [_feed setData:nil];
+    } else {
+        [_feed setData:info.lastFeeds[0]];
+    }
+}
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [self preLoadData];
 }
 - (void)viewDidAppear:(BOOL)animated {
     [self startLoadData];

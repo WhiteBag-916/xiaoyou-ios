@@ -8,6 +8,8 @@
 
 #import "YFaceImageView.h"
 #import "UIImageView+WebCache.h"
+#import "ProvisionManager.h"
+#import "ProfileInfo.h"
 
 @interface YFaceImageView()
 
@@ -36,7 +38,12 @@
 
 - (void)didClick {
     if (_userId.length != 0) {
-        
+        NSString *selfId = [[[ProvisionManager sharedInstance] getProfile] uid];
+        if ([selfId isEqualToString:_userId]) {
+            [[NSNotificationCenter defaultCenter] postNotificationName:KNotification_Open_Profile object:nil userInfo:@{@"uid":@""}];
+        } else {
+            [[NSNotificationCenter defaultCenter] postNotificationName:KNotification_Open_Profile object:nil userInfo:@{@"uid":_userId}];
+        }
     }
 }
 - (void)layoutSubviews {
