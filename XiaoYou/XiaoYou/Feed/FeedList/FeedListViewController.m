@@ -53,7 +53,7 @@
 }
 
 - (void)viewDidAppear:(BOOL)animated {
-    [_feedListTableView loadData:@[@"",@""]];
+    [_feedListTableView loadData];
 }
 
 - (void)viewWillDisappear:(BOOL)animated

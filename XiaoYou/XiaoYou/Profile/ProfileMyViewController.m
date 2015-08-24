@@ -16,6 +16,7 @@
 #import "YCommonActionSheet.h"
 #import "YDirectory+Data.h"
 #import "SDPhotoBrowser.h"
+#import "YCommonAlertView.h"
 
 #define KHEADHEIGHT SCALE_NUM(150)
 
@@ -182,8 +183,9 @@
     _bottomView = [[UIView alloc] init];
     [_containerView addSubview:_bottomView];
     [_bottomView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(_middelView.mas_bottom).offset(88);
+        make.top.greaterThanOrEqualTo(_middelView.mas_bottom).offset(SCALE_NUM(24));
         make.left.right.bottom.equalTo(_containerView);
+        make.bottom.equalTo(self.view).priorityLow();
     }];
     UIView *tmp = nil;
     for (int i = 0; i < 3; i++) {
@@ -200,6 +202,7 @@
     [_bottomView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.bottom.equalTo(tmp);
     }];
+    
 }
 
 - (UILabel *)labelWithColor:(BOOL)isGreen size:(float)size{
@@ -396,7 +399,16 @@
     }
 }
 - (void)logOut {
-    [[ProvisionManager sharedInstance] logout];
+    YCommonAlertView *alert = [[YCommonAlertView alloc] initWithTitle:@"提示" message:@"是否登出？" buttonTitles:@"确认",@"取消", nil];
+    [alert clickedButtonHandler:^(NSInteger index) {
+        if (index == 0) {
+            [alert hide];
+            [[ProvisionManager sharedInstance] logout];
+        } else {
+            [alert hide];
+        }
+    }];
+    [alert show];
 }
 
 @end

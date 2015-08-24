@@ -12,6 +12,6 @@
 
 @property (nonatomic, weak) FeedListViewController *parent;
 
-- (void)loadData:(NSArray *)data;
+- (void)loadData;
 
 @end

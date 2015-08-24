@@ -9,13 +9,7 @@
 #import <UIKit/UIKit.h>
 @class ConnectTag;
 @class YFaceImageView;
-@interface FeedCellTopModel : NSObject
-@property (nonatomic, strong) NSString  *userId;
-@property (nonatomic, strong) NSString  *imgUrl;
-@property (nonatomic, strong) NSString  *userName;
-@property (nonatomic, strong) NSDate    *publishDate;
-@property (nonatomic, strong) NSArray   *tagList;
-@end
+@class FeedInfo;
 
 @interface FeedCellTopView : UIView
 
@@ -27,6 +21,6 @@
 
 - (id)initWithType:(int)type;
 
-- (void)setData:(FeedCellTopModel *)data;
+- (void)setData:(FeedInfo *)data;
 
 @end

@@ -9,11 +9,14 @@
 #import "FeedListTableView.h"
 #import "FeedListTableViewCell.h"
 #import "FeedListViewController.h"
+#import "FeedManager.h"
+
+#define KPAGENUM 15
 @interface FeedListTableView ()
 <UITableViewDataSource
 ,UITableViewDelegate>
 
-@property (nonatomic, strong) NSArray *feedListArray;
+@property (nonatomic, strong) NSMutableArray *feedListArray;
 
 @end
 
@@ -28,16 +31,56 @@
         
         [self registerClass:[FeedListTableViewCell class] forCellReuseIdentifier:kFeedListTableViewCell];
         self.tableFooterView = [[UIView alloc] init];
-        _feedListArray = [NSArray array];
+        _feedListArray = [NSMutableArray array];
         self.fd_debugLogEnabled = false;
     }
     return self;
 }
 
-- (void)loadData:(NSArray *)data {
-    _feedListArray = [NSArray arrayWithArray:data];
-    [self reloadData];
+#pragma mark - 继承者
+- (BOOL)showHeaderRefresh
+{
+    return YES;
 }
+
+- (BOOL)showFooterRefresh
+{
+    return YES;
+}
+- (void)loadData {
+    [self beginLoadNewData];
+}
+- (void)loadNewData
+{
+    [_feedListArray removeAllObjects];
+    [self sendRequest];
+}
+
+- (void)loadMoreData
+{
+    [self sendRequest];
+}
+- (void)sendRequest {
+    [[FeedManager sharedInstance] feedList:_feedListArray.count limitEnd:_feedListArray.count + KPAGENUM block:^(YActionMessage *message) {
+        if (_feedListArray.count == 0) {
+            [self stopLoadNewData];
+        } else {
+            [self stopLoadMoreData];
+        }
+        if (message.isSuccess) {
+            [self hiddenFooter:false];
+            [_feedListArray addObjectsFromArray:message.object];
+            if ([message.object count] < KPAGENUM) {
+                [self showNoticeNoMoreData];
+            }
+            [self reloadData];
+            
+        } else {
+            [YUtils showTitleOn:self title:message.desc];
+        }
+    }];
+}
+
 
 #pragma mark - UITableViewDataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -53,7 +96,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     FeedListTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kFeedListTableViewCell];
-    [cell setData];
+    [cell setData:_feedListArray[indexPath.row]];
     
     return cell;
 }
@@ -61,7 +104,7 @@
 {
     //计算高度
     CGFloat height = [tableView fd_heightForCellWithIdentifier:kFeedListTableViewCell cacheByIndexPath:indexPath configuration:^(FeedListTableViewCell *cell) {
-        [cell setData];
+        [cell setData:_feedListArray[indexPath.row]];
     }];
     return height;
 }
