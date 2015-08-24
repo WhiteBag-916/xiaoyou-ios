@@ -11,6 +11,8 @@
 #import "ProfileViewController.h"
 #import "FeedListViewController.h"
 #import "XYMessageAndContactsViewController.h"
+#import "ProfileMyViewController.h"
+#import "XYContactsInfoDetailViewController.h"
 
 #define kTag_TabBar_Base 0
 #define kTag_TabBar_Message kTag_TabBar_Base + 1
@@ -34,6 +36,8 @@
 
 - (void)initControllers
 {
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(openProfile:) name:KNotification_Open_Profile object:nil];
+    
     XYMessageAndContactsViewController *messageVC = [[XYMessageAndContactsViewController alloc] init];
     FeedListViewController *feedVC = [[FeedListViewController alloc] init];
     ProfileViewController *profileVC = [[ProfileViewController alloc] init];
@@ -70,7 +74,22 @@
     self.tabBar.tintColor = KCOLORGREEN_009688;
     self.viewControllers = @[messageViewCotroller, feedListViewCotroller, profileViewCotroller];
 }
-
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"KNotification_Open_Profile" object:nil];
+}
+- (void)openProfile:(NSNotification *)notification {
+    [self dealProfileOpen:[notification userInfo][@"uid"]];
+}
+- (void)dealProfileOpen:(NSString *)userId {
+    UINavigationController *controller = (UINavigationController *)self.selectedViewController;
+    if (userId.length == 0) {
+        [controller pushViewController:[[ProfileMyViewController alloc] init] animated:true];
+    } else {
+        XYContactsInfoDetailViewController *xv = [[XYContactsInfoDetailViewController alloc] init];
+        xv.uid = userId;
+        [controller pushViewController:xv animated:true];
+    }
+}
 #pragma mark - SlideNavigationControllerDelegate
 - (BOOL)slideNavigationControllerShouldDisplayLeftMenu
 {
