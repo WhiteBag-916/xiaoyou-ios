@@ -77,15 +77,15 @@
 }
 
 //隐藏头
-- (void)hiddenHeader
+- (void)hiddenHeader:(BOOL)isHidden
 {
-    self.header.hidden = YES;
+    self.header.hidden = isHidden;
 }
 
 //隐藏尾
-- (void)hiddenFooter
+- (void)hiddenFooter:(BOOL)isHidden
 {
-    self.footer.hidden = YES;
+    self.footer.hidden = isHidden;
 }
 
 //显示无更多数据

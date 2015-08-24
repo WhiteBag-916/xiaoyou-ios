@@ -20,9 +20,9 @@
 //停止拉取更多数据
 - (void)stopLoadMoreData;
 //隐藏头
-- (void)hiddenHeader;
+- (void)hiddenHeader:(BOOL)isHidden;
 //隐藏尾
-- (void)hiddenFooter;
+- (void)hiddenFooter:(BOOL)isHidden;
 //显示无更多数据
 - (void)showNoticeNoMoreData;
 
