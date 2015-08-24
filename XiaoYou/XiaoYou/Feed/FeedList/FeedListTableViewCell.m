@@ -16,6 +16,9 @@
 #import "FeedCellBottomView.h"
 #import "FeedTag.h"
 #import "YCommonActionSheet.h"
+#import "FeedInfo.h"
+#import "Author.h"
+#import "Feed.h"
 
 NSString *const kFeedListTableViewCell = @"FeedListTableViewCellId";
 NSString *const kFeedDetailTableViewCell = @"kFeedDetailTableViewCell";
@@ -164,26 +167,11 @@ NSString *const KCommentTableViewCell = @"CommentTableViewCell";
     
 }
 
-- (void)setData
+- (void)setData:(FeedInfo *)info
 {
-    FeedCellTopModel *topData = [[FeedCellTopModel alloc] init];
-    topData.userId = @"233";
-    topData.userName = @"用户";
-    topData.imgUrl = @"http://cdn.duitang.com/uploads/item/201411/22/20141122111634_RBCXS.jpeg";
-    topData.publishDate = [NSDate dateWithTimeIntervalSince1970:[[NSDate dateWithTimeIntervalSinceNow:-1000] timeIntervalSince1970]];
-    topData.tagList = @[@"班",@"系",@"社"];
-    [_topView setData:topData];
-    [_middleView setData];
-    FeedCellBottomModel *bottomData = [[FeedCellBottomModel alloc] init];
-    bottomData.feedId = @"233";
-    bottomData.respectNum = 999;
-    if (_feedType == FeedListType || _feedType == FeedOrganizationType) {
-        bottomData.commentNum = 1000;
-    }
-    if (_feedType == FeedDetailType) {
-        bottomData.people = @[@{@"uid":@"123",@"pic":@"http://cdn.duitang.com/uploads/item/201411/22/20141122111634_RBCXS.jpeg"},@{@"uid":@"123",@"pic":@"http://cdn.duitang.com/uploads/item/201411/22/20141122111634_RBCXS.jpeg"},@{@"uid":@"123",@"pic":@"http://cdn.duitang.com/uploads/item/201411/22/20141122111634_RBCXS.jpeg"},@{@"uid":@"123",@"pic":@"http://cdn.duitang.com/uploads/item/201411/22/20141122111634_RBCXS.jpeg"},@{@"uid":@"123",@"pic":@"http://cdn.duitang.com/uploads/item/201411/22/20141122111634_RBCXS.jpeg"}];
-    }
-    [_bottomView setData:bottomData];
+    [_topView setData:info];
+    [_middleView setData:info];
+    [_bottomView setData:info];
 }
 
 - (void)didClickShare {

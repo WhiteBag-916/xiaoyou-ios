@@ -75,7 +75,7 @@
     self.viewControllers = @[messageViewCotroller, feedListViewCotroller, profileViewCotroller];
 }
 - (void)dealloc {
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"KNotification_Open_Profile" object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 - (void)openProfile:(NSNotification *)notification {
     [self dealProfileOpen:[notification userInfo][@"uid"]];

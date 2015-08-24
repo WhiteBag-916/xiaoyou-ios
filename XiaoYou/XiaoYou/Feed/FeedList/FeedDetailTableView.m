@@ -58,10 +58,10 @@
     FeedListTableViewCell *cell;
     if (indexPath.row == 0) {
         cell = [tableView dequeueReusableCellWithIdentifier:kFeedDetailTableViewCell];
-        [cell setData];
+        [cell setData:nil];
     } else {
         cell = [tableView dequeueReusableCellWithIdentifier:KCommentTableViewCell];
-        [cell setData];
+        [cell setData:nil];
     }
     return cell;
 }
@@ -71,11 +71,11 @@
     CGFloat height;
     if (indexPath.row == 0) {
         height = [tableView fd_heightForCellWithIdentifier:kFeedDetailTableViewCell cacheByIndexPath:indexPath configuration:^(FeedListTableViewCell *cell) {
-            [cell setData];
+            [cell setData:nil];
         }];
     } else {
         height = [tableView fd_heightForCellWithIdentifier:KCommentTableViewCell cacheByIndexPath:indexPath configuration:^(FeedListTableViewCell *cell) {
-            [cell setData];
+            [cell setData:nil];
         }];
     }
     return height;
