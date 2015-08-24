@@ -10,7 +10,7 @@
 /**
  *  @author 李思良, 15-08-18
  *
- *  @brief  公用头像view，会自动处理点击事件，发送打开个人页面的notification
+ *  @brief  公用头像view，会自动处理点击事件，调用setData来传参数，该view所在的controller需要覆写- (void)dealProfileOpen:(NSString *)userId方法
  */
 @interface YFaceImageView : UIImageView
 /**
