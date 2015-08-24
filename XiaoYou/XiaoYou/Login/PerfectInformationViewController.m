@@ -92,7 +92,7 @@
     //label
     UILabel *tagLabel = [YUtils initLabel:CONTENT_FONT(12)
                                     color:KCOLORGREEN_455A64
-                                     text:@"点选标签有助于你认识贵族同领域的行家"
+                                     text:@"点选标签有助于你认识贵校同领域的行家"
                                     frame:CGRectZero
                                 alignment:NSTextAlignmentCenter];
     [_contentView addSubview:tagLabel];

@@ -19,13 +19,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "XiaoYou/XiaoYou/Profile/ProfileFeedListView.m"
-            timestampString = "462092993.800086"
+            filePath = "XiaoYou/XiaoYou/Feed/FeedCellBottomView.m"
+            timestampString = "462112157.80343"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "64"
-            endingLineNumber = "64"
-            landmarkName = "-sendRequest"
+            startingLineNumber = "141"
+            endingLineNumber = "141"
+            landmarkName = "-setData:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

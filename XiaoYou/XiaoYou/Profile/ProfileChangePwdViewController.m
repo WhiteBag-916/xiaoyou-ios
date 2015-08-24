@@ -17,6 +17,7 @@
 #import "YTextField.h"
 #import "YTextField+Ext.h"
 #import "ProvisionManager.h"
+#import "LoginResp.h"
 @interface ProfileChangePwdViewController()
 
 @property (nonatomic, strong) YTextField *currentPwdField;
@@ -105,7 +106,18 @@
     return field;
 }
 - (void)forgetPwd {
-    NSLog(@"忘记密码函数");
+    YCommonAlertView *alert = [[YCommonAlertView alloc] initWithTitle:@"提示" message:@"是否确认忘记密码？" buttonTitles:@"确认",@"取消", nil];
+    [alert clickedButtonHandler:^(NSInteger index) {
+        if (index == 0) {
+            [alert hide];
+            [[ProvisionManager sharedInstance] forgotPasswordReq:[[ProvisionManager sharedInstance] getLoginInfo].studentNo block:^(YActionMessage *message) {
+                [YUtils showTitle:message.desc];
+            }];
+        } else {
+            [alert hide];
+        }
+    }];
+    [alert show];
 }
 - (void)checkComplete {
     if (_currentPwdField.text.length > 0 && _pwdField.text.length >= 6 && [_pwdField.text isEqualToString:_pwdRepeatField.text]) {

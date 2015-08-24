@@ -128,6 +128,7 @@
 		20E18DD51B808E42005B75EE /* search@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 20E18DAE1B808E42005B75EE /* search@3x.png */; };
 		20E18DD61B808E42005B75EE /* society@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 20E18DAF1B808E42005B75EE /* society@2x.png */; };
 		20E18DD71B808E42005B75EE /* society@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 20E18DB01B808E42005B75EE /* society@3x.png */; };
+		20E193F81B8B516000FD7B3D /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20E193F71B8B516000FD7B3D /* AudioToolbox.framework */; };
 		20E942181B833D10009C2DC6 /* wechat@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 20E942161B833D10009C2DC6 /* wechat@2x.png */; };
 		20E942191B833D10009C2DC6 /* wechat@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 20E942171B833D10009C2DC6 /* wechat@3x.png */; };
 		20E9421C1B833D10009C2DC6 /* wechat_friends@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 20E9421A1B833D10009C2DC6 /* wechat_friends@2x.png */; };
@@ -613,6 +614,7 @@
 		20E18DAE1B808E42005B75EE /* search@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "search@3x.png"; sourceTree = "<group>"; };
 		20E18DAF1B808E42005B75EE /* society@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "society@2x.png"; sourceTree = "<group>"; };
 		20E18DB01B808E42005B75EE /* society@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "society@3x.png"; sourceTree = "<group>"; };
+		20E193F71B8B516000FD7B3D /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		20E942161B833D10009C2DC6 /* wechat@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "wechat@2x.png"; sourceTree = "<group>"; };
 		20E942171B833D10009C2DC6 /* wechat@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "wechat@3x.png"; sourceTree = "<group>"; };
 		20E9421A1B833D10009C2DC6 /* wechat_friends@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "wechat_friends@2x.png"; sourceTree = "<group>"; };
@@ -1087,6 +1089,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				20E193F81B8B516000FD7B3D /* AudioToolbox.framework in Frameworks */,
 				20E033F31B842759002E4583 /* SystemConfiguration.framework in Frameworks */,
 				20DBFD5D1B4FA127009134D0 /* libComponent.a in Frameworks */,
 				3331227D1B806EDB00D3D032 /* libopencore-amrnb.a in Frameworks */,
@@ -1118,7 +1121,6 @@
 				200E39921B4E818B000B587B /* XiaoYouTests */,
 				200E39771B4E818B000B587B /* Products */,
 				200E39E01B4E8696000B587B /* Frameworks */,
-				888C5F0F224BB9F4ECBAEB96 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -1180,6 +1182,8 @@
 		200E39E01B4E8696000B587B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				20E193F71B8B516000FD7B3D /* AudioToolbox.framework */,
+				888C5F0F224BB9F4ECBAEB96 /* Pods */,
 				20E033F21B842759002E4583 /* SystemConfiguration.framework */,
 				3335C39E1B81B030007DEFD4 /* libsqlite3.dylib */,
 				3335C39B1B81B01B007DEFD4 /* libiconv.dylib */,
@@ -3199,7 +3203,7 @@
 					"$(PROJECT_DIR)/XiaoYou/Utils/UMengSDK/UMSocial_Sdk_Extra_Frameworks/Wechat",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "56947a8e-473c-410f-a501-b6d2ec7baa1a";
 				TARGETED_DEVICE_FAMILY = 1;
 				USER_HEADER_SEARCH_PATHS = "../**";
 			};
@@ -3225,7 +3229,7 @@
 					"$(PROJECT_DIR)/XiaoYou/Utils/UMengSDK/UMSocial_Sdk_Extra_Frameworks/Wechat",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "56947a8e-473c-410f-a501-b6d2ec7baa1a";
 				TARGETED_DEVICE_FAMILY = 1;
 				USER_HEADER_SEARCH_PATHS = "../**";
 			};

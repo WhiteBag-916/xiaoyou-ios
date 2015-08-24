@@ -13,8 +13,10 @@ extern NSString *const kFeedDetailTableViewCell;
 extern NSString *const KCommentTableViewCell;
 extern NSString *const kOrganizationFeedListTableViewCell;
 
+@class FeedInfo;
+
 @interface FeedListTableViewCell : YTableViewCell
 
-- (void)setData;
+- (void)setData:(FeedInfo *)info;
 
 @end

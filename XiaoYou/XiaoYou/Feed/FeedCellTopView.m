@@ -10,6 +10,9 @@
 #import "YUtils+Component.h"
 #import "ConnectTag.h"
 #import "YFaceImageView.h"
+#import "FeedInfo.h"
+#import "Author.h"
+#import "Feed.h"
 
 #define KHEADIMGWIDTH SCALE_NUM(40)//标准头像宽度
 #define KHEADIMGWIDTHS SCALE_NUM(34)//评论头像宽度
@@ -21,18 +24,12 @@
 #define KEMPTYHEIGHT SCALE_NUM(10)//空的占位高度
 
 
-@implementation FeedCellTopModel
-
-
-@end
-
 @interface FeedCellTopView()
 
 @property (nonatomic, strong, readwrite) YFaceImageView *contactHeadImageView;    //头像
 @property (nonatomic, strong, readwrite) UILabel *contactNameLabel;            //名字
 @property (nonatomic, strong, readwrite) UILabel *timeLabel;                   //时间
 @property (nonatomic, strong, readwrite) ConnectTag *tagList;                  //人脉标签
-@property (nonatomic, strong           ) FeedCellTopModel *data;
 @end
 
 @implementation FeedCellTopView
@@ -94,12 +91,11 @@
     return self;
 }
 
-- (void)setData:(FeedCellTopModel *)data {
-    _data = data;
-    [_contactHeadImageView setData:_data.userId imageUrl:_data.imgUrl];
-    _contactNameLabel.text = _data.userName;
-    _timeLabel.text = [YUtils distanceTimeToday:_data.publishDate];
-//    [_tagList updateTag:_data.tagList];
+- (void)setData:(FeedInfo *)data {
+    [_contactHeadImageView setData:data.author.uid imageUrl:data.author.headPic];
+    _contactNameLabel.text = data.author.name;
+    _timeLabel.text = [YUtils distanceTimeToday:[NSDate dateWithTimeIntervalSince1970:data.feed.createTime/1000]];
+    [_tagList updateWithTag:data.author.propetiesCommon];
     
     UIViewController *appRootVC = [UIApplication sharedApplication].keyWindow.rootViewController;
     UIViewController *topVC = appRootVC;

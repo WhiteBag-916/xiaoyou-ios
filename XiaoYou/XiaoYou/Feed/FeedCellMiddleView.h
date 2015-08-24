@@ -8,12 +8,13 @@
 
 #import <UIKit/UIKit.h>
 @class FeedImageGroup;
+@class FeedInfo;
 @interface FeedCellMiddleView : UIView
 
 @property (nonatomic, strong, readonly) UILabel *contentLabel;                //内容
 @property (nonatomic, strong, readonly) FeedImageGroup *imgGroup;             //图片
 
 - (id)initWithType:(int)type;
-- (void)setData;
+- (void)setData:(FeedInfo *)data;
 
 @end

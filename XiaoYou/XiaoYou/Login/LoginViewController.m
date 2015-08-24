@@ -131,10 +131,10 @@
     
     //蒙层
     _protocolImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"login_tip"]];
-    [self.view addSubview:_protocolImageView];
+    [[[[UIApplication sharedApplication] delegate] window] addSubview:_protocolImageView];
     _protocolImageView.hidden = YES;
     [_protocolImageView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.edges.equalTo(self.view);
+        make.edges.equalTo([[[UIApplication sharedApplication] delegate] window]);
     }];
     
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dissmissProtocol)];
