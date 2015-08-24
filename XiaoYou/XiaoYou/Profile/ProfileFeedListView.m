@@ -10,7 +10,7 @@
 #import "ProfileFeedCell.h"
 #import "FeedManager.h"
 
-#define KPAGENUM 15
+#define KPAGENUM 1
 
 @interface ProfileFeedListView()<UITableViewDataSource, UITableViewDelegate>
 @property (nonatomic, strong) NSMutableArray *feedArray;
@@ -55,12 +55,11 @@
 
 - (void)loadMoreData
 {
-    _page ++;
     [self sendRequest];
 }
 
 - (void)sendRequest {
-    [[FeedManager sharedInstance] getMyFeed:_userId block:^(YActionMessage *message) {
+    [[FeedManager sharedInstance] getMyFeed:_userId limitStart:_page * KPAGENUM limitEnd:(_page+1) * KPAGENUM block:^(YActionMessage *message) {
         if (_page == 0) {
             [self stopLoadNewData];
         } else {
@@ -69,19 +68,16 @@
         if (message.isSuccess) {
             if (_page == 0) {
                 _feedArray = [NSMutableArray arrayWithArray:message.object];
-                _page ++;
             } else {
                 [_feedArray addObjectsFromArray:message.object];
                 if ([message.object count] < KPAGENUM) {
                     [self showNoticeNoMoreData];
                 }
             }
+            _page ++;
             [self reloadData];
             
         } else {
-            if (_page != 0) {
-                _page --;
-            }
             [YUtils showTitleOn:self title:message.desc];
         }
     }];

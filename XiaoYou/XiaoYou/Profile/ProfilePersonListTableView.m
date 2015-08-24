@@ -55,7 +55,6 @@
 
 - (void)loadMoreData
 {
-    _page ++;
     [self sendRequest];
 }
 - (void)sendRequest {
@@ -69,19 +68,16 @@
             if (message.isSuccess) {
                 if (_page == 0) {
                     _personListArray = [NSMutableArray arrayWithArray:message.object];
-                    _page ++;
                 } else {
                     [_personListArray addObjectsFromArray:message.object];
                 }
                 if ([message.object count] < KPAGENUM) {
                     [self showNoticeNoMoreData];
                 }
+                _page ++;
                 [self reloadData];
                 
             } else {
-                if (_page != 0) {
-                    _page --;
-                }
                 [YUtils showTitleOn:self title:message.desc];
             }
         }];
@@ -97,19 +93,16 @@
             if (message.isSuccess) {
                 if (_page == 0) {
                     _personListArray = [NSMutableArray arrayWithArray:message.object];
-                    _page ++;
                 } else {
                     [_personListArray addObjectsFromArray:message.object];
                 }
                 if ([message.object count] < KPAGENUM) {
                     [self showNoticeNoMoreData];
                 }
+                _page ++;
                 [self reloadData];
                 
             } else {
-                if (_page != 0) {
-                    _page --;
-                }
                 [YUtils showTitleOn:self title:message.desc];
             }
         }];
