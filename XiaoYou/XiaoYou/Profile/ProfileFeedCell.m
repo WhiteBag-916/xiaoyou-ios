@@ -63,6 +63,7 @@ NSString *const KProfileFeedCell = @"KProfileFeedCell";
         make.left.mas_equalTo(KMARGIN);
         make.width.mas_equalTo(KDATEWIDTH);
         make.height.mas_equalTo(KDATEHEIGHT);
+        make.bottom.lessThanOrEqualTo(self.contentView).offset(-KMARGIN);
     }];
     
     _yearLabel = [YUtils initLabel:CONTENT_FONT(8) color:KCOLORGREEN_455A64 text:@"2015" frame:CGRectZero alignment:NSTextAlignmentCenter];
@@ -106,7 +107,7 @@ NSString *const KProfileFeedCell = @"KProfileFeedCell";
     line.transform = CGAffineTransformMakeRotation(-M_PI/8);
 }
 - (void)setData:(FeedInfo *)info {
-    NSDate *date = [NSDate dateWithTimeIntervalSince1970:info.feed.createTime];
+    NSDate *date = [NSDate dateWithTimeIntervalSince1970:(long)info.feed.createTime/1000];
     _yearLabel.text = [NSString stringWithFormat:@"%d", (int)date.getYear];
     _monthLabel.text = [NSString stringWithFormat:@"%d", (int)date.getMonth];
     _dayLabel.text = [NSString stringWithFormat:@"%d", (int)date.getDay];

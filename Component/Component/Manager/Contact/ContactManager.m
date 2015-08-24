@@ -15,6 +15,7 @@
 #import "YDirectory+Data.h"
 #import "LinkManModel.h"
 #import "ProfileAction.h"
+#import "PraiseAction.h"
 
 #define kContactsManagerSyncQueue @"kContactsManagerSyncQueue"
 
@@ -102,6 +103,17 @@ DEF_SINGLETON(ContactManager);
 - (void)getUserDetailInfo:(NSString *)userID block:(ActionCompleteBlock)block {
     ProfileAction* action = [[ProfileAction alloc] init];
     action.userID = userID;
+    
+    [YAction startAction:action completionBlock:^(YActionMessage* message) {
+        //主线程处理界面
+        block(message);
+    }];
+}
+
+//点赞别人
+- (void)praise:(NSString *)bePraiseId block:(ActionCompleteBlock)block {
+    PraiseAction* action = [[PraiseAction alloc] init];
+    action.bePraiseId = bePraiseId;
     
     [YAction startAction:action completionBlock:^(YActionMessage* message) {
         //主线程处理界面

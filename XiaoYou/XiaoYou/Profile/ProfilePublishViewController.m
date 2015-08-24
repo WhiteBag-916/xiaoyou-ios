@@ -10,14 +10,21 @@
 #import "ProfilePublishViewController.h"
 #import "ProfileFeedListView.h"
 @interface ProfilePublishViewController()
+@property (nonatomic, strong) NSString *userId;
 @property (nonatomic, strong) ProfileFeedListView *tableView;
 @end
 
 @implementation ProfilePublishViewController
 
-- (id)init {
+- (id)initWithUserId:(NSString *)userId name:(NSString *)userName{
     self = [super init];
     if (self) {
+        _userId = userId;
+        if (userName.length == 0) {
+            self.title = @"我发布的事儿";
+        } else {
+            self.title = [NSString stringWithFormat:@"%@发布的事", userName];
+        }
         self.hidesBottomBarWhenPushed = true;
         
     }
@@ -29,7 +36,6 @@
 }
 - (void)initController {
     self.view.backgroundColor = KCOLORWHITE;
-    self.title = @"我发布的事儿";
     [self showCustomNavigationBackButton];
 }
 
@@ -45,6 +51,6 @@
     self.navigationController.navigationBarHidden = false;
 }
 - (void)viewDidAppear:(BOOL)animated {
-    [_tableView loadData];
+    [_tableView loadData:_userId];
 }
 @end

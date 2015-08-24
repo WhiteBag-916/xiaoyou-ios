@@ -24,4 +24,7 @@ AS_SINGLETON(ContactManager);
 //获取人详细信息
 - (void)getUserDetailInfo:(NSString *)userID block:(ActionCompleteBlock)block;
 
+//点赞别人
+- (void)praise:(NSString *)bePraiseId block:(ActionCompleteBlock)block;
+
 @end

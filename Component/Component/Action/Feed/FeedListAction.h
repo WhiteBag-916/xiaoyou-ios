@@ -8,7 +8,7 @@
 
 #import "YHTTPRequestAction.h"
 
-@interface FeedListAction : YHTTPRequestAction
+@interface FeedListAction : YHTTPRequestAction<YAction>
 
 @property (nonatomic, assign) NSInteger limitStart;
 @property (nonatomic, assign) NSInteger limitEnd;

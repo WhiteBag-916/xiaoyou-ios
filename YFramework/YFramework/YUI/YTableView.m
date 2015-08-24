@@ -18,15 +18,26 @@
         if ([self showHeaderRefresh])
         {
             self.header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
-                [self loadNewData];
+                if (![self.footer isRefreshing]) {
+                    [self loadNewData];
+                } else {
+                    [self.header endRefreshing];
+                }
             }];
         }
         
         if ([self showFooterRefresh])
         {
-            self.footer = [MJRefreshAutoFooter footerWithRefreshingBlock:^{
-                [self loadMoreData];
+            self.footer = [MJRefreshAutoStateFooter footerWithRefreshingBlock:^{
+                if (![self.header isRefreshing]) {
+                    [self loadNewData];
+                } else {
+                    [self.footer endRefreshing];
+                }
             }];
+            self.footer.automaticallyHidden = NO;
+            
+            [self hiddenFooter:YES];
         }
         
         //日志
@@ -77,15 +88,15 @@
 }
 
 //隐藏头
-- (void)hiddenHeader
+- (void)hiddenHeader:(BOOL)isHidden
 {
-    self.header.hidden = YES;
+    self.header.hidden = isHidden;
 }
 
 //隐藏尾
-- (void)hiddenFooter
+- (void)hiddenFooter:(BOOL)isHidden
 {
-    self.footer.hidden = YES;
+    self.footer.hidden = isHidden;
 }
 
 //显示无更多数据

@@ -12,4 +12,5 @@
 - (id)initWIthType:(int)type;
 - (void)loadData;
 - (void)loadDataWithFeedId:(NSString *)feedId;
+
 @end

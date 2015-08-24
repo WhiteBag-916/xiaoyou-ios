@@ -27,6 +27,9 @@
 }
 
 + (MBProgressHUD *)showTitleOn:(UIView *)view title:(NSString *)title hideAfter:(NSTimeInterval)afterSecond {
+    if (title.length == 0) {
+        return nil;
+    }
     return [MBProgressHUD bwm_showTitle:title toView:view hideAfter:afterSecond];
 }
 

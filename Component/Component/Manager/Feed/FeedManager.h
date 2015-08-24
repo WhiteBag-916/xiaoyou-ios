@@ -13,7 +13,7 @@
 AS_SINGLETON(FeedManager);
 
 //获取我的动态
-- (void)getMyFeed:(ActionCompleteBlock)block;
+- (void)getMyFeed:(NSString *)uid limitStart:(NSInteger)limitStart limitEnd:(NSInteger)limitEnd block:(ActionCompleteBlock)block;
 
 //获取动态详情
 - (void)getFeedDetailByID:(NSString *)feedID block:(ActionCompleteBlock)block;

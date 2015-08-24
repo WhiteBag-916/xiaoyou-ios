@@ -8,6 +8,6 @@
 
 #import "YHTTPRequestAction.h"
 
-@interface ContactsListAction : YHTTPRequestAction
+@interface ContactsListAction : YHTTPRequestAction<YAction>
 
 @end

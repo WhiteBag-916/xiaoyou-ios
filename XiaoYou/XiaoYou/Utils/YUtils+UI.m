@@ -42,7 +42,6 @@ NSInteger const kLoginCommonTextFieldTag = 1999;
     //textField
     YTextField *inTextField = [[YTextField alloc] init];
     inTextField.tag = kLoginCommonTextFieldTag;
-    inTextField.keyboardType = UIKeyboardTypeNumberPad;
     [schoolView addSubview:inTextField];
     [inTextField mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(lineView.mas_right).offset(SCALE_NUM(14));
