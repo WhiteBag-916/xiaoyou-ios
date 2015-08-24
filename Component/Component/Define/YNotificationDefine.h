@@ -20,6 +20,8 @@
 #define kNotification_Profile_GetProfile                @"kNotification_Profile_GetProfile"
 #define kNotification_Profile_Logout                    @"kNotification_Profile_Logout"
 
+#define KNotification_Open_Profile                      @"KNotification_Open_Profile"
+
 #define kNotification_HeadImage_Change                  @"kNotification_HeadImage_Change"
 
 #endif

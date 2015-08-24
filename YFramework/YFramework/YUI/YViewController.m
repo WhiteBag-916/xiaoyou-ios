@@ -10,6 +10,8 @@
 #import "YFoundation.h"
 #import "MobClick.h"
 
+
+
 #import <objc/runtime.h>
 
 @implementation UIViewController (MethodSwizzling)
@@ -61,15 +63,20 @@
 {
     [super viewWillAppear:animated];
     [MobClick beginLogPageView:NSStringFromClass([self class])];
-//    [self showOrignMode];
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(openProfile:) name:@"KNotification_Open_Profile" object:nil];
     [MobClick beginLogPageView:NSStringFromClass([self class])];
 }
-
+- (void)openProfile:(NSNotification *)notification {
+    [self dealProfileOpen:[notification userInfo][@"uid"]];
+}
+- (void)dealProfileOpen:(NSString *)userId {
+    
+}
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
@@ -79,6 +86,7 @@
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"KNotification_Open_Profile" object:nil];
     [self.view endEditing:YES];
 }
 

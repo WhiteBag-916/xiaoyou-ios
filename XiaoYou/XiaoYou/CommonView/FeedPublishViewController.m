@@ -151,6 +151,7 @@
     [self.navigationController dismissViewControllerAnimated:YES completion:nil];
 }
 - (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
     [self showOrignMode];
 }
 

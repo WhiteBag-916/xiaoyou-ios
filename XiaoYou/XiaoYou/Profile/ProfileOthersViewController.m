@@ -11,6 +11,9 @@
 #import "ProfileFeedContentView.h"
 #import "FeedTag.h"
 #import "ProvisionManager.h"
+#import "ProfileInfo.h"
+#import "Feed.h"
+#import "ContactManager.h"
 
 #define KHEADIMGMARGIN SCALE_NUM(12)
 #define KHEADIMGSIZE SCALE_NUM(45)
@@ -19,6 +22,7 @@
 
 @interface ProfileOthersViewController()
 @property (nonatomic, strong) NSString *userId;
+
 @property (nonatomic, strong) UIImageView *headImg;
 @property (nonatomic, strong) UILabel *nameLabel;
 @property (nonatomic, strong) UILabel *contentLabel;
@@ -27,10 +31,12 @@
 @property (nonatomic, strong) UILabel *coolLabel;
 @property (nonatomic, strong) ProfileFeedContentView *feed;
 
+
 @property (nonatomic, strong) UIView *containerView;
 @property (nonatomic, strong) UIView *topView;
 @property (nonatomic, strong) UIView *middleView;
 
+@property (nonatomic, strong) UIView *loadingView;
 
 @end
 
@@ -166,19 +172,35 @@
         make.left.equalTo(_nameLabel);
     }];
 }
-- (void)startLoadData {
-    UIView *loadingView = [[UIView alloc] init];
-    [self.view addSubview:loadingView];
-    [loadingView mas_makeConstraints:^(MASConstraintMaker *make) {
+- (void)preLoadData {
+    _loadingView = [[UIView alloc] init];
+    [self.view addSubview:_loadingView];
+    [_loadingView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.equalTo(self.view);
     }];
-    loadingView.backgroundColor = KCOLORWHITE;
-    MBProgressHUD *hud = [YUtils showHUDAddedTo:loadingView title:@"正在加载"];
-    [hud removeFromSuperview];
-    [self loadData:[[ProvisionManager sharedInstance] getProfile]];
+    _loadingView.backgroundColor = KCOLORWHITE;
+}
+- (void)startLoadData {
+    MBProgressHUD *hud = [YUtils showHUDAddedTo:_loadingView title:@"正在加载"];
+    [[ContactManager sharedInstance] getUserDetailInfo:_userId block:^(YActionMessage *message) {
+        [hud removeFromSuperview];
+        if (message.isSuccess) {
+            [_loadingView removeFromSuperview];
+            [self loadData:message.object];
+        } else {
+            [YUtils showTitle:message.desc];
+        }
+    }];
 }
 - (void)loadData:(ProfileInfo *)info {
-    
+    _userId = info.uid;
+    _nameLabel.text = info.userName;
+
+//    [_connectTag updateWithTag:info.lastFeeds[0]]
+}
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [self preLoadData];
 }
 - (void)viewDidAppear:(BOOL)animated {
     [self startLoadData];
