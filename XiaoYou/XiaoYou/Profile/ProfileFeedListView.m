@@ -61,7 +61,7 @@
 }
 
 - (void)sendRequest {
-    [[FeedManager sharedInstance] getMyFeed:^(YActionMessage *message) {
+    [[FeedManager sharedInstance] getMyFeed:nil block:^(YActionMessage *message) {
         if (_page == 0) {
             [self stopLoadNewData];
         } else {

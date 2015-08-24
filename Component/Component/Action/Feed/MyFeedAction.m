@@ -14,7 +14,7 @@
 
 - (void)execute
 {
-    NSDictionary *parameter = [YUtils getParameter:nil needUserToken:YES];
+    NSDictionary *parameter = [YUtils getParameter:@{@"uid":SStr(_userID)} needUserToken:YES];
     NSString *url = [YUtils getUrl:api_login_MyFeed];
     [self POST:url parameters:parameter completion:^(YHttpRequest *request) {
         YActionMessage *message = [FeedInfo actionMessageWithHttpRequest:request];

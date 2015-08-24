@@ -46,8 +46,9 @@ DEF_SINGLETON(FeedManager);
 }
 
 //获取我的动态,FeedInfo
-- (void)getMyFeed:(ActionCompleteBlock)block {
+- (void)getMyFeed:(NSString *)uid block:(ActionCompleteBlock)block {
     MyFeedAction *action = [[MyFeedAction alloc] init];
+    action.userID = uid;
     
     [YAction startAction:action completionBlock:^(YActionMessage* message) {
         //主线程处理界面

@@ -62,7 +62,7 @@
  Url Define: FeedManager
  **********************************************************/
 //我的动态
-#define api_login_MyFeed @"/mobile/user/v2/myFeed"
+#define api_login_MyFeed @"/mobile/user/v2/userFeeds"
 //动态详情
 #define api_login_DetailFeed @"/mobile/feed/detailFeed"
 //动态列表
