@@ -114,12 +114,14 @@
 - (void)showOrignMode {
     self.navigationController.navigationBar.barTintColor = [UIColor hexChangeFloat:@"455a64"];
     _lbTitle.textColor = [UIColor whiteColor];
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent animated:true];
 }
 - (void)showEditMode {
     self.navigationController.navigationBar.barTintColor = [UIColor whiteColor];
     _lbTitle.textColor = [UIColor blackColor];
     [self showNomalNavigationLeftButton:@"" action:@selector(onNavigationLeftButtonClicked) imgName:@"mine-cancel" frame:CGRectMake(0, 0, 15, 15)];
     [self showNomalNavigationRightButtonWithImage:@"" action:@selector(onNavigationRightButtonClicked) imgName:@"mine-complete-grey" frame:CGRectMake(0, 0, 20, 15)];
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault animated:true];
 }
 - (void)onNavigationLeftButtonClicked
 {
