@@ -12,6 +12,7 @@
 #import "YShareDataDefine.h"
 #import "YManagerCenter.h"
 #import "EaseMob.h"
+#import <AudioToolbox/AudioToolbox.h>
 
 #define kMessageManagerSyncQueue @"kMessageManagerSyncQueue"
 //两次提示的默认间隔
@@ -29,6 +30,7 @@ typedef enum : NSUInteger {
 
 @interface MessageManager ()<EMChatManagerDelegate>
 
+@property (strong, nonatomic) NSDate *lastPlaySoundDate;
 
 @end
 
@@ -196,6 +198,22 @@ DEF_SINGLETON(MessageManager);
 - (void)didAutoReconnectFinishedWithError:(NSError *)error
 {
     
+}
+
+- (void)playSoundAndVibration{
+    NSTimeInterval timeInterval = [[NSDate date]
+                                   timeIntervalSinceDate:self.lastPlaySoundDate];
+    if (timeInterval < kDefaultPlaySoundInterval) {
+        //如果距离上次响铃和震动时间太短, 则跳过响铃
+        NSLog(@"skip ringing & vibration %@, %@", [NSDate date], self.lastPlaySoundDate);
+        return;
+    }
+    
+    //保存最后一次响铃时间
+    self.lastPlaySoundDate = [NSDate date];
+    
+    AudioServicesPlaySystemSound(1007); //系统的通知声音
+    AudioServicesPlayAlertSound(kSystemSoundID_Vibrate);//震动
 }
 
 - (void)showNotificationWithMessage:(EMMessage *)message
