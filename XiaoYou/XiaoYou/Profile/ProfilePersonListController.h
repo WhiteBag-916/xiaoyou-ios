@@ -8,6 +8,13 @@
 
 #import "YViewController.h"
 
+typedef NS_ENUM(int, PersonListType) {
+    PersonListMyRespect     = 0,
+    PersonListMyCool        = 1,
+    PersonListFeedRespect   = 2,
+    PersonListOtherCool     = 3,
+};
+
 @interface ProfilePersonListController : YViewController
 
 - (id)initWithType:(int)type;

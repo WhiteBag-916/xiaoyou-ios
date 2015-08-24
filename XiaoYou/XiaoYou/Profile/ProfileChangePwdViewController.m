@@ -99,6 +99,7 @@
         make.left.equalTo(whiteBack).offset(SCALE_NUM(10));
     }];
     field.font = CONTENT_FONT(12);
+    field.secureTextEntry = true;
     [field registerChanged:self action:@selector(checkComplete)];
     [YTextField placeHolderColor:field normalString:names[type] fontColor:KCOLORGREEN_455A64];
     return field;

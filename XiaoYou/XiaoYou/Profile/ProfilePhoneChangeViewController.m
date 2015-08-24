@@ -22,6 +22,9 @@
 @property (nonatomic, strong) UIButton *sendBtn;
 @property (nonatomic, strong) UILabel *waitLabel;
 @property (nonatomic, assign) BOOL hasPhone;
+
+@property (nonatomic, strong) YTextField *pwdField;
+@property (nonatomic, strong) UIView *pwdView;
 @end
 
 @implementation ProfilePhoneChangeViewController
@@ -36,14 +39,31 @@
 - (void)viewDidLoad {
     [self initController];
     [self initView];
+    if (_hasPhone) {
+        [self initPwdView];
+    }
+    [self checkComplete];
+    
 }
 - (void)initController {
     self.navigationController.navigationBarHidden = false;
     [self showCustomNavigationBackButton];
     [self showCustomNavigationConfirmButton];
     self.view.backgroundColor = KCOLORGREEN_f2f2f2;
-    self.title = @"手机号验证";
-    self.navigationRightButton.enabled = false;
+}
+- (void)initPwdView {
+    self.title = @"输入密码";
+    _pwdView = [[UIView alloc] init];
+    [self.view addSubview:_pwdView];
+    _pwdView.backgroundColor = KCOLORGREEN_f2f2f2;
+    [_pwdView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.equalTo(self.view);
+    }];
+    _pwdField = [self createField:2];
+    [_pwdField mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.view).offset(SCALE_NUM(28));
+    }];
+    _pwdField.secureTextEntry = true;
 }
 - (void)initView {
     _phoneField = [self createField:0];
@@ -86,9 +106,13 @@
     
 }
 - (YTextField *)createField:(int)type {
-    NSArray *names = @[@"请输入新手机号", @"输入获取的验证码"];
+    NSArray *names = @[@"请输入新手机号", @"输入获取的验证码", @"请输入当前密码"];
     UIView *whiteBack = [[UIView alloc] init];
-    [self.view addSubview:whiteBack];
+    if (type == 2) {
+        [_pwdView addSubview:whiteBack];
+    } else {
+        [self.view addSubview:whiteBack];
+    }
     [whiteBack mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.right.equalTo(self.view);
     }];
@@ -103,7 +127,7 @@
     }];
     field.font = CONTENT_FONT(12);
     [field registerChanged:self action:@selector(checkComplete)];
-    [YTextField placeHolderColor:field normalString:names[type] fontColor:KCOLORGREEN_e5e5e5];
+    [YTextField placeHolderColor:field normalString:names[type] fontColor:KCOLORGREEN_455A64];
     return field;
 }
 - (void)changeWait:(BOOL)isWaiting {
@@ -159,33 +183,47 @@
     }];
 }
 - (void)checkComplete {
-    if (_phoneField.text.length > 0) {
-        [self changeBtn:true];
+    if (_pwdView.hidden) {
+        if (_phoneField.text.length > 0) {
+            [self changeBtn:true];
+        } else {
+            [self changeBtn:false];
+        }
+        if (_phoneField.text.length > 0 && _codeField.text.length > 0) {
+            self.navigationRightButton.enabled = true;
+        } else {
+            self.navigationRightButton.enabled = false;
+        }
     } else {
-        [self changeBtn:false];
-    }
-    if (_phoneField.text.length > 0 && _codeField.text.length > 0) {
-        self.navigationRightButton.enabled = true;
-    } else {
-        self.navigationRightButton.enabled = false;
+        if (_pwdField.text.length == 0) {
+            self.navigationRightButton.enabled = false;
+        } else {
+            self.navigationRightButton.enabled = true;
+        }
     }
 }
 - (void)onNavigationRightButtonClicked {
-    MBProgressHUD *hud = [YUtils showHUDWithTitle:@"正在加载"];
-    [[ProvisionManager sharedInstance] receiveMobileAuthCode:_phoneField.text authCode:_codeField.text block:^(YActionMessage *message) {
-        if (message.isSuccess) {
-            [hud removeFromSuperview];
-            if (_hasPhone) {
-                [YUtils showTitle:@"绑定成功"];
-                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 1*NSEC_PER_SEC), dispatch_get_main_queue(), ^{
-                    [self.navigationController popViewControllerAnimated:true];
-                });
+    if (_pwdView.hidden) {
+        MBProgressHUD *hud = [YUtils showHUDWithTitle:@"正在加载"];
+        [[ProvisionManager sharedInstance] receiveMobileAuthCode:_phoneField.text authCode:_codeField.text block:^(YActionMessage *message) {
+            if (message.isSuccess) {
+                [hud removeFromSuperview];
+                if (_hasPhone) {
+                    [YUtils showTitle:@"绑定成功"];
+                    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 1*NSEC_PER_SEC), dispatch_get_main_queue(), ^{
+                        [self.navigationController popViewControllerAnimated:true];
+                    });
+                } else {
+                    [self.navigationController pushViewController:[[ProfileChangePwdViewController alloc] init] animated:true];
+                }
             } else {
-                [self.navigationController pushViewController:[[ProfileChangePwdViewController alloc] init] animated:true];
+                [YUtils showTitle:message.desc];
             }
-        } else {
-            [YUtils showTitle:message.desc];
-        }
-    }];
+        }];
+    } else {
+        self.title = @"验证手机号";
+        _pwdView.hidden = true;
+        [self checkComplete];
+    }
 }
 @end
