@@ -21,7 +21,7 @@ NSString *const kAuthorPropetiesCommon = @"propetiesCommon";
 NSString *const kAuthorClassCodes = @"classCodes";
 NSString *const kAuthorName = @"name";
 NSString *const kAuthorGroupCodes = @"groupCodes";
-
+NSString *const kAuthorGender = @"gender";
 
 @interface Author ()
 
@@ -42,7 +42,7 @@ NSString *const kAuthorGroupCodes = @"groupCodes";
 @synthesize classCodes = _classCodes;
 @synthesize name = _name;
 @synthesize groupCodes = _groupCodes;
-
+@synthesize gender = _gender;
 
 + (instancetype)modelObjectWithDictionary:(NSDictionary *)dict
 {
@@ -116,6 +116,8 @@ NSString *const kAuthorGroupCodes = @"groupCodes";
         }
         
         self.groupCodes = [NSArray arrayWithArray:parsedGroupCodes];
+        
+        self.gender = [self objectOrNilForKey:kAuthorGender fromDictionary:dict];
 
     }
     
@@ -166,6 +168,7 @@ NSString *const kAuthorGroupCodes = @"groupCodes";
     }
     [mutableDict setValue:[NSArray arrayWithArray:tempArrayForClassCodes] forKey:kAuthorClassCodes];
     [mutableDict setValue:self.name forKey:kAuthorName];
+    [mutableDict setValue:self.gender forKey:kAuthorGender];
     NSMutableArray *tempArrayForGroupCodes = [NSMutableArray array];
     for (NSObject *subArrayObject in self.groupCodes) {
         if([subArrayObject respondsToSelector:@selector(dictionaryRepresentation)]) {
@@ -211,6 +214,7 @@ NSString *const kAuthorGroupCodes = @"groupCodes";
     self.classCodes = [aDecoder decodeObjectForKey:kAuthorClassCodes];
     self.name = [aDecoder decodeObjectForKey:kAuthorName];
     self.groupCodes = [aDecoder decodeObjectForKey:kAuthorGroupCodes];
+    self.gender = [aDecoder decodeObjectForKey:kAuthorGender];
     return self;
 }
 
@@ -227,6 +231,7 @@ NSString *const kAuthorGroupCodes = @"groupCodes";
     [aCoder encodeObject:_propetiesCommon forKey:kAuthorPropetiesCommon];
     [aCoder encodeObject:_classCodes forKey:kAuthorClassCodes];
     [aCoder encodeObject:_name forKey:kAuthorName];
+    [aCoder encodeObject:_gender forKey:kAuthorGender];
     [aCoder encodeObject:_groupCodes forKey:kAuthorGroupCodes];
 }
 
@@ -246,6 +251,7 @@ NSString *const kAuthorGroupCodes = @"groupCodes";
         copy.propetiesCommon = [self.propetiesCommon copyWithZone:zone];
         copy.classCodes = [self.classCodes copyWithZone:zone];
         copy.name = [self.name copyWithZone:zone];
+        copy.gender = [self.gender copyWithZone:zone];
         copy.groupCodes = [self.groupCodes copyWithZone:zone];
     }
     
