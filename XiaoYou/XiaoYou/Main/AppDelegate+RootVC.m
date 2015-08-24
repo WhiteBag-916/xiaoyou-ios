@@ -45,10 +45,7 @@
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(initChooseSchoolNC) name:kNotification_Profile_Logout object:nil];
     
-    WS(weakSelf)
-    [[NSNotificationCenter defaultCenter] addObserverForName:kNotification_Server_Token_Fail object:nil queue:nil usingBlock:^(NSNotification *note) {
-        [weakSelf tokenFail:note];
-    }];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(tokenFail:) name:kNotification_Server_Token_Fail object:nil];
 }
 
 - (void)tokenFail:(NSNotification *)note {
