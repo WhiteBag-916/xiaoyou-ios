@@ -14,6 +14,7 @@
 #import "MessageListAction.h"
 #import "YDirectory+Data.h"
 #import "LinkManModel.h"
+#import "ProfileAction.h"
 
 #define kContactsManagerSyncQueue @"kContactsManagerSyncQueue"
 
@@ -95,6 +96,17 @@ DEF_SINGLETON(ContactManager);
     //删除文件
     NSString *cachePath = [[YDirectory fileCache] stringByAppendingString:NSStringFromClass([LinkManModel class])];
     [YDirectory removeFolders:cachePath];
+}
+
+//获取人详细信息
+- (void)getUserDetailInfo:(NSString *)userID block:(ActionCompleteBlock)block {
+    ProfileAction* action = [[ProfileAction alloc] init];
+    action.userID = userID
+    
+    [YAction startAction:action completionBlock:^(YActionMessage* message) {
+        //主线程处理界面
+        block(message);
+    }];
 }
 
 @end
