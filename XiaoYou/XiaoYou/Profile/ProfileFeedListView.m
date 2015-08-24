@@ -70,9 +70,9 @@
                 _feedArray = [NSMutableArray arrayWithArray:message.object];
             } else {
                 [_feedArray addObjectsFromArray:message.object];
-                if ([message.object count] < KPAGENUM) {
-                    [self showNoticeNoMoreData];
-                }
+            }
+            if ([message.object count] < KPAGENUM) {
+                [self showNoticeNoMoreData];
             }
             _page ++;
             [self reloadData];
