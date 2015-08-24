@@ -27,6 +27,7 @@
             self.footer = [MJRefreshAutoStateFooter footerWithRefreshingBlock:^{
                 [self loadMoreData];
             }];
+            self.footer.automaticallyHidden = NO;
         }
         
         //日志
