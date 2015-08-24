@@ -25,6 +25,7 @@
 @property (nonatomic, assign) double coolCount;
 @property (nonatomic, strong) NSArray *tagsCommon;
 @property (nonatomic, strong) NSArray *propetiesCommon;
+@property (nonatomic, assign) double feedCount;
 
 + (instancetype)modelObjectWithDictionary:(NSDictionary *)dict;
 - (instancetype)initWithDictionary:(NSDictionary *)dict;
