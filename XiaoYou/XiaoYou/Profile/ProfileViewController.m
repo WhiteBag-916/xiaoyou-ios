@@ -207,7 +207,7 @@
         make.right.lessThanOrEqualTo(titleView);
     }];
     
-    _schoolNo = [YUtils initLabel:CONTENT_FONT(9) color:KCOLORWHITE text:@"" frame:CGRectZero alignment:NSTextAlignmentLeft];
+    _schoolNo = [YUtils initLabel:CONTENT_FONT(9) color:KCOLORWHITE text:@"学号" frame:CGRectZero alignment:NSTextAlignmentLeft];
     [titleView addSubview:_schoolNo];
     [_schoolNo mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(_userName.mas_bottom).offset(KSCHOOLNOMARGIN_TOP);
@@ -322,7 +322,7 @@
         make.bottom.lessThanOrEqualTo(item);
     }];
     if (index == 0) {
-        _attitudeLabel = [YUtils initLabel:CONTENT_FONT(12) color:[UIColor blackColor] text:@"" frame:CGRectZero alignment:NSTextAlignmentLeft];
+        _attitudeLabel = [YUtils initLabel:CONTENT_FONT(12) color:[UIColor blackColor] text:@"态度" frame:CGRectZero alignment:NSTextAlignmentLeft];
         _attitudeLabel.numberOfLines = 0;
         [item addSubview:_attitudeLabel];
         [_attitudeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -335,7 +335,7 @@
         [item addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(openAttitude)]];
     }
     if (index == 1) {
-        _tagLabel = [YUtils initLabel:CONTENT_FONT(12) color:KCOLORGREEN_009688 text:@"" frame:CGRectZero alignment:NSTextAlignmentLeft];
+        _tagLabel = [YUtils initLabel:CONTENT_FONT(12) color:KCOLORGREEN_009688 text:@"标签" frame:CGRectZero alignment:NSTextAlignmentLeft];
         [item addSubview:_tagLabel];
         [_tagLabel mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.equalTo(_userName);

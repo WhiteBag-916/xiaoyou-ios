@@ -13,6 +13,9 @@
 #import "FeedInfo.h"
 #import "Feed.h"
 #import "Tags.h"
+#import "CommentListItems.h"
+#import "Comment.h"
+
 
 #define KBOTTOMHEIGHT SCALE_NUM(25)                 //社团和feed列表中bottom的高度
 #define KSHAREWIDTH SCALE_NUM(25)                   //分享按钮点击区域的大小
@@ -36,7 +39,7 @@
 @property (nonatomic, strong, readwrite) UIView *personList;                   //敬酒人
 @property (nonatomic, assign)            int type;                             //类型
 @property (nonatomic, assign)            BOOL isRespect;
-@property (nonatomic, assign)            int feedId;
+@property (nonatomic, assign)            NSString *feedId;
 @property (nonatomic, strong)            NSMutableDictionary *shareData;
 @end
 
@@ -78,14 +81,14 @@
             commentImg.contentMode = UIViewContentModeCenter;
             commentImg.image = [UIImage imageNamed:@"comment"];
             
-            _commentNum = [YUtils initLabel:CONTENT_FONT(10) color:[UIColor blackColor] text:@"50000" frame:CGRectZero alignment:NSTextAlignmentLeft];
+            _commentNum = [YUtils initLabel:CONTENT_FONT(10) color:[UIColor blackColor] text:@"0" frame:CGRectZero alignment:NSTextAlignmentLeft];
             [commentView addSubview:_commentNum];
             [_commentNum mas_makeConstraints:^(MASConstraintMaker *make) {
                 make.left.equalTo(commentImg.mas_right).offset(KBUTTONTEXTMARGIN);
                 make.top.bottom.right.equalTo(commentView);
             }];
             
-            _respectNum = [YUtils initLabel:CONTENT_FONT(10) color:[UIColor blackColor] text:@"99" frame:CGRectZero alignment:NSTextAlignmentLeft];
+            _respectNum = [YUtils initLabel:CONTENT_FONT(10) color:[UIColor blackColor] text:@"0" frame:CGRectZero alignment:NSTextAlignmentLeft];
             [self addSubview:_respectNum];
             [_respectNum mas_makeConstraints:^(MASConstraintMaker *make) {
                 make.top.bottom.equalTo(self);
@@ -120,7 +123,7 @@
             _respectImg.userInteractionEnabled = true;
             [_respectImg addGestureRecognizer:tap];
             
-            _respectNum = [YUtils initLabel:CONTENT_FONT(8) color:KCOLORGREEN_009688 text:@"999" frame:CGRectZero alignment:NSTextAlignmentCenter];
+            _respectNum = [YUtils initLabel:CONTENT_FONT(8) color:KCOLORGREEN_009688 text:@"0" frame:CGRectZero alignment:NSTextAlignmentCenter];
             [self addSubview:_respectNum];
             [_respectNum mas_makeConstraints:^(MASConstraintMaker *make) {
                 make.centerX.equalTo(_respectImg);
@@ -138,17 +141,28 @@
     }
     return self;
 }
-- (void)setData:(FeedInfo *)data {
+- (void)setData:(id)inData {
     if (_type == FeedListType) {
-        NSString *tag = (data.tags.count == 0?@"某话题":[data.tags[0] name]);
-        NSString *content = (data.feed.content.length == 0?@"只有一些图片":data.feed.content);
+        FeedInfo *data = inData;
+        NSString *tag = (data.tags.count == 0?@"校友观点":[data.tags[0] name]);
+        NSString *content = (data.feed.content.length == 0?@"":data.feed.content);
         
         _shareData = [NSMutableDictionary dictionaryWithObjectsAndKeys:tag,@"tag",content,@"content", nil];
-        _feedId = (int)data.feed.feedIdentifier;
+        _feedId = [NSString stringWithFormat:@"%d", (int)data.feed.feedIdentifier];
         _respectNum.text = [NSString stringWithFormat:@"%d", (int)data.feed.praiseCount];
         _commentNum.text = [NSString stringWithFormat:@"%d", (int)data.feed.commentCount];
         _isRespect = data.feed.isPraise;
         [self updateRespect];
+    }
+    if (_type == FeedDetailType) {
+        FeedInfo *data = inData;
+        _respectNum.text = [NSString stringWithFormat:@"%d", (int)data.feed.praiseCount];
+        _isRespect = data.feed.isPraise;
+        [self updateRespect];
+    }
+    if (_type == FeedCommentType) {
+        CommentListItems *data = inData;
+        _respectNum.text = [NSString stringWithFormat:@"%d", (int)data.comment.praiseCount];
     }
 }
 //- (void)initPersonList {
@@ -197,8 +211,10 @@
 - (void)updateRespect {
     if (_isRespect) {
         _respectImg.image = [UIImage imageNamed:@"cup"];
+        _respectNum.textColor = KCOLORGREEN_009688;
     } else {
         _respectImg.image = [UIImage imageNamed:@"cup"];
+        _respectNum.textColor = [UIColor blackColor];
     }
 }
 - (void)openShare {
@@ -218,13 +234,4 @@
     
 }
 
-//- (void)setData:(FeedInfo *)data {
-////    if (_type == FeedDetailType) {
-////        [self initPersonList];
-////    }
-//    _respectNum.text = [NSString stringWithFormat:@"%d", _data.respectNum];
-//    if (_type == FeedListType || _type == FeedOrganizationType) {
-//        _commentNum.text = [NSString stringWithFormat:@"%d", _data.commentNum];
-//    }
-//}
 @end

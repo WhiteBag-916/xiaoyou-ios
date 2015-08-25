@@ -177,27 +177,6 @@
     [cell setCellInfo:_messageDataSource[indexPath.row]];
     
     return cell;
-    
-    
-//    if (indexPath.row == 3)
-//    {
-//        [cell setCellInfo:_messageDataSource[indexPath.row]];
-//        
-//        return cell;
-//    }
-//    if (indexPath.row == 5) {
-//        [cell setCellInfo:_messageDataSource[indexPath.row]];
-//        
-//        return cell;
-//    }
-//    else
-//    {
-//        [cell setCellInfo:_messageDataSource[indexPath.row]];
-//        
-//        return cell;
-//    }
-    
-    
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath

@@ -114,7 +114,7 @@
         make.centerY.equalTo(_nameLabel);
     }];
     
-    _contentLabel = [YUtils initLabel:CONTENT_FONT(12) color:[UIColor blackColor] text:@"内容" frame:CGRectZero alignment:NSTextAlignmentLeft];
+    _contentLabel = [YUtils initLabel:CONTENT_FONT(12) color:[UIColor blackColor] text:@"" frame:CGRectZero alignment:NSTextAlignmentLeft];
     _contentLabel.numberOfLines = 0;
     [_topView addSubview:_contentLabel];
     [_contentLabel mas_makeConstraints:^(MASConstraintMaker *make) {

@@ -14,6 +14,7 @@
 #import "Masonry.h"
 #import "CommonSwitchView.h"
 #import "EaseMob.h"
+#import "YNotificationDefine.h"
 
 #import "MessageManager.h"
 #import "ContactManager.h"
@@ -91,8 +92,7 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
-//    [super viewWillAppear:animated navigationBarHidden:NO tabBarHidden:NO];
-    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshDataSource) name:kNotification_Refresh_Message object:nil];
     [self refreshDataSource];
     [self registerNotifications];
     [self removeEmptyConversationsFromDB];
@@ -150,6 +150,7 @@
 
 - (void)dealloc{
     [self unregisterNotifications];
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 -(void)viewWillLayoutSubviews

@@ -23,6 +23,6 @@
 #define KNotification_Open_Profile                      @"KNotification_Open_Profile"
 #define KNotification_Message_unread                    @"KNotification_Message_unread"
 
-#define kNotification_HeadImage_Change                  @"kNotification_HeadImage_Change"
+#define kNotification_Refresh_Message                  @"kNotification_Refresh_Message"
 
 #endif

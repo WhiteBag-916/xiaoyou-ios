@@ -10,38 +10,72 @@
 #import "FeedListTableViewCell.h"
 #import "YCommonActionSheet.h"
 #import "FeedDetailViewController.h"
+#import "FeedManager.h"
+#import "FeedDetail.h"
+#import "FeedInfo.h"
+#import "Feed.h"
 @interface FeedDetailTableView()<UITableViewDataSource, UITableViewDelegate>
 
 @property (nonatomic, strong) NSDictionary *data;
-@property (nonatomic, strong) NSArray *commentListArray;
-
+@property (nonatomic, strong) NSMutableArray *commentListArray;
+@property (nonatomic, strong) NSString *feedId;
+@property (nonatomic, strong) FeedInfo *feedInfo;
+@property (nonatomic, strong) NSMutableDictionary *shareData;
 @end
 
 @implementation FeedDetailTableView
 
-- (id)init {
+- (id)initWithFeedId:(NSString *)feedId {
     self = [super init];
     if (self) {
+        _feedId = feedId;
         [self registerClass:[FeedListTableViewCell class] forCellReuseIdentifier:KCommentTableViewCell];
         [self registerClass:[FeedListTableViewCell class] forCellReuseIdentifier:kFeedDetailTableViewCell];
         self.dataSource = self;
         self.delegate = self;
         self.tableFooterView = [[UIView alloc] init];
         self.separatorStyle = UITableViewCellSeparatorStyleNone;
+        _commentListArray = [NSMutableArray array];
     }
     return self;
 }
 
-- (void)loadData:(NSArray *)data {
-    _commentListArray = [NSArray arrayWithArray:@[@"2"]];
-    _data = [NSDictionary dictionary];
+- (void)loadData {
+    [YUtils showHUDAddedTo:self title:@"正在加载"];
+    [[FeedManager sharedInstance] getFeedDetailByID:_feedId block:^(YActionMessage *message) {
+        [YUtils hiddenProgressHUD:self];
+        if (message.isSuccess) {
+            [self dealData:message.object];
+        } else {
+            [YUtils showTitle:message.desc];
+        }
+    }];
+}
+
+- (void)dealData:(FeedDetail *)info {
+    _feedInfo = [FeedInfo new];
+    _feedInfo.tags = info.tags;
+    _feedInfo.author = info.author;
+    _feedInfo.feed = info.feed;
+    _feedInfo.praisePeoples = info.praisePeoples;
+    NSString *tag = (_feedInfo.tags.count == 0?@"校友观点":[_feedInfo.tags[0] name]);
+    NSString *content = (_feedInfo.feed.content.length == 0?@"":_feedInfo.feed.content);
+    _shareData = [NSMutableDictionary dictionaryWithObjectsAndKeys:tag,@"tag",content,@"content", nil];
+    _commentListArray = [NSMutableArray arrayWithArray:info.commentListItems];
     [self reloadData];
 }
+
+#pragma mark - 继承者
+- (BOOL)showFooterRefresh
+{
+    return YES;
+}
+
 
 #pragma mark - UITableViewDataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    if (_data == nil) {
+    if (_feedInfo == nil) {
         return 0;
     } else {
         return _commentListArray.count + 1;
@@ -58,10 +92,10 @@
     FeedListTableViewCell *cell;
     if (indexPath.row == 0) {
         cell = [tableView dequeueReusableCellWithIdentifier:kFeedDetailTableViewCell];
-        [cell setData:nil];
+        [cell setData:_feedInfo];
     } else {
         cell = [tableView dequeueReusableCellWithIdentifier:KCommentTableViewCell];
-        [cell setData:nil];
+        [cell setData:_commentListArray[indexPath.row-1]];
     }
     return cell;
 }
@@ -71,11 +105,11 @@
     CGFloat height;
     if (indexPath.row == 0) {
         height = [tableView fd_heightForCellWithIdentifier:kFeedDetailTableViewCell cacheByIndexPath:indexPath configuration:^(FeedListTableViewCell *cell) {
-            [cell setData:nil];
+            [cell setData:_feedInfo];
         }];
     } else {
         height = [tableView fd_heightForCellWithIdentifier:KCommentTableViewCell cacheByIndexPath:indexPath configuration:^(FeedListTableViewCell *cell) {
-            [cell setData:nil];
+            [cell setData:_commentListArray[indexPath.row-1]];
         }];
     }
     return height;
