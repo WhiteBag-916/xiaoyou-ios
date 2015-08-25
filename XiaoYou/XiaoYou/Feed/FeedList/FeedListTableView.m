@@ -63,7 +63,7 @@
     [self sendRequest];
 }
 - (void)sendRequest {
-    [[FeedManager sharedInstance] feedList:_feedListArray.count limitEnd:_feedListArray.count + KPAGENUM block:^(YActionMessage *message) {
+    [[FeedManager sharedInstance] feedList:_feedListArray.count limitEnd:_feedListArray.count + KPAGENUM queryCode:@"" block:^(YActionMessage *message) {
         if (_feedListArray.count == 0) {
             [self stopLoadNewData];
         } else {
