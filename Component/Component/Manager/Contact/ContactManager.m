@@ -18,6 +18,11 @@
 #import "PraiseAction.h"
 #import "FindFriendsAction.h"
 #import "FriendsConditionAction.h"
+#import "SubmitApplyAction.h"
+#import "RejectApplyAction.h"
+#import "ApplyListAction.h"
+#import "IgnoreApplyListAction.h"
+#import "AgreeApplyAction.h"
 
 #define kContactsManagerSyncQueue @"kContactsManagerSyncQueue"
 
@@ -139,6 +144,66 @@ DEF_SINGLETON(ContactManager);
     action.condition = [NSDictionary dictionaryWithDictionary:conditionDic];
     action.limitStart = limitStart;
     action.limitEnd = limitEnd;
+    
+    [YAction startAction:action completionBlock:^(YActionMessage* message) {
+        //主线程处理界面
+        block(message);
+    }];
+}
+
+//申请进入群组
+- (void)submitApply:(NSString *)groupId applicant:(NSString *)applicant block:(ActionCompleteBlock)block {
+    SubmitApplyAction* action = [[SubmitApplyAction alloc] init];
+    action.groupId = groupId;
+    action.applicant = applicant;
+    
+    [YAction startAction:action completionBlock:^(YActionMessage* message) {
+        //主线程处理界面
+        block(message);
+    }];
+}
+
+//拒绝加入群组
+- (void)rejectApply:(NSString *)userId applyId:(NSString *)applyId block:(ActionCompleteBlock)block {
+    RejectApplyAction* action = [[RejectApplyAction alloc] init];
+    action.userId = userId;
+    action.applyId = applyId;
+    
+    [YAction startAction:action completionBlock:^(YActionMessage* message) {
+        //主线程处理界面
+        block(message);
+    }];
+}
+
+//申请记录列表
+- (void)applyListApply:(NSString *)groupId userId:(NSString *)userId block:(ActionCompleteBlock)block {
+    ApplyListAction* action = [[ApplyListAction alloc] init];
+    action.groupId = groupId;
+    action.userId = userId;
+    
+    [YAction startAction:action completionBlock:^(YActionMessage* message) {
+        //主线程处理界面
+        block(message);
+    }];
+}
+
+//忽略申请列表
+- (void)ignoreApplyList:(NSString *)userId applyIds:(NSString *)applyIds block:(ActionCompleteBlock)block {
+    IgnoreApplyListAction* action = [[IgnoreApplyListAction alloc] init];
+    action.userId = userId;
+    action.applyIds = applyIds;
+    
+    [YAction startAction:action completionBlock:^(YActionMessage* message) {
+        //主线程处理界面
+        block(message);
+    }];
+}
+
+//同意加入群组
+- (void)agreeApply:(NSString *)userId applyId:(NSString *)applyId block:(ActionCompleteBlock)block {
+    AgreeApplyAction* action = [[AgreeApplyAction alloc] init];
+    action.userId = userId;
+    action.applyId = applyId;
     
     [YAction startAction:action completionBlock:^(YActionMessage* message) {
         //主线程处理界面

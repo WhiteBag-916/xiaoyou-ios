@@ -81,6 +81,16 @@
 #define api_contact_FriendsCondition @"/mobile/user/v2/friendsCondition"
 //找朋友
 #define api_contact_FindFriends @"/mobile/user/v2/findFriends"
+//同意加入群组
+#define api_contact_AgreeApply @"/group/agreeApply"
+//申请记录列表
+#define api_contact_ApplyList @"/group/applyList"
+//拒绝加入群组
+#define api_contact_RejectApply @"/group/rejectApply"
+//申请进入群组
+#define api_contact_SubmitApply @"/group/submitApply"
+//忽略进入群组
+#define api_contact_IgnoreApplyList @"/group/ignoreApplyList"
 
 /**********************************************************
  Url Define: MessageManager
