@@ -72,7 +72,7 @@ NSString *const kProfilePersonListTableViewCell = @"kProfilePersonListTableViewC
         [self.contentView addSubview:_genderLabel];
         [_genderLabel mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.equalTo(_userName);
-            make.top.equalTo(_genderLabel.mas_bottom).offset(KTAGMARGIN_TOP);
+            make.top.equalTo(_userName.mas_bottom).offset(KTAGMARGIN_TOP);
             make.right.equalTo(self.contentView).offset(-KTAGMARGIN_RIGHT);
         }];
         
@@ -80,7 +80,7 @@ NSString *const kProfilePersonListTableViewCell = @"kProfilePersonListTableViewC
         [self.contentView addSubview:_tagView];
         [_tagView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.equalTo(_userName);
-            make.top.equalTo(_userName.mas_bottom).offset(KTAGMARGIN_TOP);
+            make.top.equalTo(_genderLabel.mas_bottom).offset(KTAGMARGIN_TOP);
             make.right.equalTo(self.contentView).offset(-KTAGMARGIN_RIGHT);
         }];
         [_tagView.tagContent mas_makeConstraints:^(MASConstraintMaker *make) {
