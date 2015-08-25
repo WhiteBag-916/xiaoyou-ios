@@ -28,6 +28,8 @@
 		207F80871B7098E3005E8F6A /* AppDelegate+RootVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 207F80861B7098E3005E8F6A /* AppDelegate+RootVC.m */; };
 		207F808A1B7099C2005E8F6A /* AppDelegate+Manager.m in Sources */ = {isa = PBXBuildFile; fileRef = 207F80891B7099C2005E8F6A /* AppDelegate+Manager.m */; };
 		207F808D1B709A1E005E8F6A /* AppDelegate+Notification.m in Sources */ = {isa = PBXBuildFile; fileRef = 207F808C1B709A1E005E8F6A /* AppDelegate+Notification.m */; };
+		209C4C731B8C662900B584DF /* AssociationsDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 209C4C721B8C662900B584DF /* AssociationsDetailViewController.m */; };
+		209C4C761B8C663B00B584DF /* AssociationsDetailHeadView.m in Sources */ = {isa = PBXBuildFile; fileRef = 209C4C751B8C663B00B584DF /* AssociationsDetailHeadView.m */; };
 		20DA1A761B89BEF100DEF95C /* register-frame-agree@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 20DA1A721B89BEF100DEF95C /* register-frame-agree@2x.png */; };
 		20DA1A771B89BEF100DEF95C /* register-frame-agree@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 20DA1A731B89BEF100DEF95C /* register-frame-agree@3x.png */; };
 		20DA1A781B89BEF100DEF95C /* register-frame@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 20DA1A741B89BEF100DEF95C /* register-frame@2x.png */; };
@@ -469,6 +471,10 @@
 		207F80891B7099C2005E8F6A /* AppDelegate+Manager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AppDelegate+Manager.m"; sourceTree = "<group>"; };
 		207F808B1B709A1E005E8F6A /* AppDelegate+Notification.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AppDelegate+Notification.h"; sourceTree = "<group>"; };
 		207F808C1B709A1E005E8F6A /* AppDelegate+Notification.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AppDelegate+Notification.m"; sourceTree = "<group>"; };
+		209C4C711B8C662900B584DF /* AssociationsDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AssociationsDetailViewController.h; sourceTree = "<group>"; };
+		209C4C721B8C662900B584DF /* AssociationsDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AssociationsDetailViewController.m; sourceTree = "<group>"; };
+		209C4C741B8C663B00B584DF /* AssociationsDetailHeadView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AssociationsDetailHeadView.h; sourceTree = "<group>"; };
+		209C4C751B8C663B00B584DF /* AssociationsDetailHeadView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AssociationsDetailHeadView.m; sourceTree = "<group>"; };
 		20DA1A721B89BEF100DEF95C /* register-frame-agree@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "register-frame-agree@2x.png"; sourceTree = "<group>"; };
 		20DA1A731B89BEF100DEF95C /* register-frame-agree@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "register-frame-agree@3x.png"; sourceTree = "<group>"; };
 		20DA1A741B89BEF100DEF95C /* register-frame@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "register-frame@2x.png"; sourceTree = "<group>"; };
@@ -1533,6 +1539,10 @@
 		20E18D4C1B807752005B75EE /* AssociationsDetail */ = {
 			isa = PBXGroup;
 			children = (
+				209C4C711B8C662900B584DF /* AssociationsDetailViewController.h */,
+				209C4C721B8C662900B584DF /* AssociationsDetailViewController.m */,
+				209C4C741B8C663B00B584DF /* AssociationsDetailHeadView.h */,
+				209C4C751B8C663B00B584DF /* AssociationsDetailHeadView.m */,
 			);
 			path = AssociationsDetail;
 			sourceTree = "<group>";
@@ -2916,6 +2926,7 @@
 				3331225B1B806EDB00D3D032 /* EMSDWebImagePrefetcher.m in Sources */,
 				20DAF9AB1B87209E005B7932 /* LoginViewController.m in Sources */,
 				3331222D1B806EDB00D3D032 /* ConvertToCommonEmoticonsHelper.m in Sources */,
+				209C4C761B8C663B00B584DF /* AssociationsDetailHeadView.m in Sources */,
 				65969DC41B86BDE1001DD348 /* MBProgressHUD+Add.m in Sources */,
 				20DAF9D71B873883005B7932 /* ChineseToPinyinResource.m in Sources */,
 				333122831B806EDC00D3D032 /* UIViewController+DismissKeyboard.m in Sources */,
@@ -3051,6 +3062,7 @@
 				333122321B806EDB00D3D032 /* DXChatBarMoreView.m in Sources */,
 				6592DCD31B806A9B004CD118 /* XYContactsInfoDetailViewController.m in Sources */,
 				3331222A1B806EDB00D3D032 /* ChatSendHelper.m in Sources */,
+				209C4C731B8C662900B584DF /* AssociationsDetailViewController.m in Sources */,
 				20E034091B8471E5002E4583 /* SearchFilterTableViewCell.m in Sources */,
 				3331226D1B806EDB00D3D032 /* PSTCollectionViewUpdateItem.m in Sources */,
 				333122561B806EDB00D3D032 /* EMSDWebImageCompat.m in Sources */,
