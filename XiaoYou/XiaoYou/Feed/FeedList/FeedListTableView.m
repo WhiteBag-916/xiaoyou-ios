@@ -24,14 +24,12 @@
 @end
 
 @implementation FeedListTableView
-
-- (instancetype)initWithFrame:(CGRect)frame
-{
-    self = [super initWithFrame:frame];
+- (id)init {
+    self = [super init];
     if (self) {
         self.delegate = self;
         self.dataSource = self;
-        
+        _filter = @"";
         [self registerClass:[FeedListTableViewCell class] forCellReuseIdentifier:kFeedListTableViewCell];
         self.tableFooterView = [[UIView alloc] init];
         _feedListArray = [NSMutableArray array];
@@ -40,10 +38,17 @@
     return self;
 }
 
+
 - (id)initWithFilter:(NSString *)filter {
     self = [super init];
     if (self) {
         _filter = filter;
+        self.delegate = self;
+        self.dataSource = self;
+        [self registerClass:[FeedListTableViewCell class] forCellReuseIdentifier:kFeedListTableViewCell];
+        self.tableFooterView = [[UIView alloc] init];
+        _feedListArray = [NSMutableArray array];
+        self.fd_debugLogEnabled = false;
     }
     return self;
 }
@@ -73,7 +78,7 @@
     [self sendRequest];
 }
 - (void)sendRequest {
-    [[FeedManager sharedInstance] feedList:_feedListArray.count limitEnd:_feedListArray.count + KPAGENUM block:^(YActionMessage *message) {
+    [[FeedManager sharedInstance] feedList:_feedListArray.count limitEnd:_feedListArray.count + KPAGENUM queryCode:_filter block:^(YActionMessage *message) {
         if (_feedListArray.count == 0) {
             [self stopLoadNewData];
         } else {
