@@ -23,6 +23,7 @@
 #import "ApplyListAction.h"
 #import "IgnoreApplyListAction.h"
 #import "AgreeApplyAction.h"
+#import "ApplicantListAction.h"
 
 #define kContactsManagerSyncQueue @"kContactsManagerSyncQueue"
 
@@ -175,7 +176,7 @@ DEF_SINGLETON(ContactManager);
     }];
 }
 
-//申请记录列表
+//申请记录列表,ApplicantList
 - (void)applyListApply:(NSString *)groupId userId:(NSString *)userId block:(ActionCompleteBlock)block {
     ApplyListAction* action = [[ApplyListAction alloc] init];
     action.groupId = groupId;
@@ -204,6 +205,18 @@ DEF_SINGLETON(ContactManager);
     AgreeApplyAction* action = [[AgreeApplyAction alloc] init];
     action.userId = userId;
     action.applyId = applyId;
+    
+    [YAction startAction:action completionBlock:^(YActionMessage* message) {
+        //主线程处理界面
+        block(message);
+    }];
+}
+
+//群组申请人员列表
+- (void)applicantList:(NSString *)userId groupId:(NSString *)groupId block:(ActionCompleteBlock)block {
+    ApplicantListAction* action = [[ApplicantListAction alloc] init];
+    action.groupId = groupId;
+    action.userId = userId;
     
     [YAction startAction:action completionBlock:^(YActionMessage* message) {
         //主线程处理界面

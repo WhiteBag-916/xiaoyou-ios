@@ -93,6 +93,8 @@
 #define api_contact_SubmitApply @"/group/submitApply"
 //忽略进入群组
 #define api_contact_IgnoreApplyList @"/group/ignoreApplyList"
+//群组申请人员列表
+#define api_contact_ApplicantList @"​/group/applicantList"
 
 /**********************************************************
  Url Define: MessageManager

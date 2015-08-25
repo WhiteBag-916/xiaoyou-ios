@@ -48,4 +48,7 @@ AS_SINGLETON(ContactManager);
 //同意加入群组
 - (void)agreeApply:(NSString *)userId applyId:(NSString *)applyId block:(ActionCompleteBlock)block;
 
+//群组申请人员列表
+- (void)applicantList:(NSString *)userId groupId:(NSString *)groupId block:(ActionCompleteBlock)block;
+
 @end
