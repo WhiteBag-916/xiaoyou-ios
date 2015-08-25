@@ -73,6 +73,10 @@
  **********************************************************/
 //给别人点赞
 #define api_contact_Praise @"/mobile/user/v2/praise"
+//找朋友筛选条件
+#define api_contact_FriendsCondition @"/mobile/user/v2/friendsCondition"
+//找朋友
+#define api_contact_FindFriends @"/mobile/user/v2/findFriends"
 
 /**********************************************************
  Url Define: MessageManager

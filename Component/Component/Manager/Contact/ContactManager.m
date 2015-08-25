@@ -16,6 +16,8 @@
 #import "LinkManModel.h"
 #import "ProfileAction.h"
 #import "PraiseAction.h"
+#import "FindFriendsAction.h"
+#import "FriendsConditionAction.h"
 
 #define kContactsManagerSyncQueue @"kContactsManagerSyncQueue"
 
@@ -114,6 +116,29 @@ DEF_SINGLETON(ContactManager);
 - (void)praise:(NSString *)bePraiseId block:(ActionCompleteBlock)block {
     PraiseAction* action = [[PraiseAction alloc] init];
     action.bePraiseId = bePraiseId;
+    
+    [YAction startAction:action completionBlock:^(YActionMessage* message) {
+        //主线程处理界面
+        block(message);
+    }];
+}
+
+//获取找人筛选条件
+- (void)friendsCondition:(ActionCompleteBlock)block {
+    FriendsConditionAction* action = [[FriendsConditionAction alloc] init];
+    
+    [YAction startAction:action completionBlock:^(YActionMessage* message) {
+        //主线程处理界面
+        block(message);
+    }];
+}
+
+//找人
+- (void)findFriends:(NSInteger)limitStart limitEnd:(NSInteger)limitEnd conditionDic:(NSDictionary *)conditionDic block:(ActionCompleteBlock)block {
+    FindFriendsAction* action = [[FindFriendsAction alloc] init];
+    action.condition = [NSDictionary dictionaryWithDictionary:conditionDic];
+    action.limitStart = limitStart;
+    action.limitEnd = limitEnd;
     
     [YAction startAction:action completionBlock:^(YActionMessage* message) {
         //主线程处理界面

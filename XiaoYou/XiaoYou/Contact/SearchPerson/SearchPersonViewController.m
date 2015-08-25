@@ -11,6 +11,7 @@
 #import "TagListTableView.h"
 #import "SearchFilterViewController.h"
 #import "SearchResultViewController.h"
+#import "FriendsCondition.h"
 
 @interface SearchPersonViewController ()
 <UITextFieldDelegate>
@@ -95,13 +96,23 @@
     [self.view endEditing:YES];
 }
 
+//更新taglist
+- (void)updateTagListTableView {
+    NSMutableArray *labelArr = [@[] mutableCopy];
+    [self.chooseFiterArray enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+        [labelArr addObject:[obj label]];
+    }];
+    [_tagListTableView setData:labelArr];
+}
+
 //筛选
 - (void)pressFilterButton
 {
     SearchFilterViewController *searchFilterViewController = [[SearchFilterViewController alloc] init];
     [searchFilterViewController endSelected:^(NSArray *select) {
         self.chooseFiterArray = [NSArray arrayWithArray:select];
-        [_tagListTableView setData:_chooseFiterArray];
+        
+        [self updateTagListTableView];
     }];
     searchFilterViewController.isSelectArray = [NSArray arrayWithArray:_chooseFiterArray];
     UINavigationController *navigationController =

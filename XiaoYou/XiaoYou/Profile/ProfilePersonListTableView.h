@@ -8,9 +8,17 @@
 
 #import "YTableView.h"
 
+typedef NS_ENUM(NSInteger, ProfilePersonListType) {
+    ProfilePersonListTypeRespect = 0,
+    ProfilePersonListTypeCool,
+    ProfilePersonListTypeFind,              //找人
+    ProfilePersonListTypeFeedPerson,        //人脉里的人
+};
+
 @interface ProfilePersonListTableView : YTableView
 - (id)initWIthType:(int)type;
 - (void)loadData;
+- (void)loadDataWithFind:(NSDictionary *)condition;
 - (void)loadDataWithFeedId:(NSString *)feedId;
 
 @end

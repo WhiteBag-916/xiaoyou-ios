@@ -66,6 +66,9 @@
 {
     UINavigationController * home = [[UINavigationController alloc] initWithRootViewController:[[ChooseSchoolViewController alloc] init]];
     self.window.rootViewController = home;
+    
+    //提示
+    [YUtils showTitle:@"asdasdasdas"];
 }
 
 - (void)initLoginNC

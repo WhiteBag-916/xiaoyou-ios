@@ -9,10 +9,11 @@
 #import "YTableViewCell.h"
 extern NSString *const kProfilePersonListTableViewCell;
 #define KCELLHEIGHT SCALE_NUM(90)
+#define KFIND_CELLHEIGHT SCALE_NUM(115)
 
 @class Author;
 @interface ProfilePersonListTableViewCell : YTableViewCell
 
-- (void)setData:(Author *)author;
+- (void)setData:(Author *)author needShowGender:(BOOL)needShowGender;
 
 @end

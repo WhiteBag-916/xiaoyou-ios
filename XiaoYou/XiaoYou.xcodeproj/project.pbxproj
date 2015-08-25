@@ -139,8 +139,6 @@
 		20E942251B833D10009C2DC6 /* toggle-on@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 20E942211B833D10009C2DC6 /* toggle-on@3x.png */; };
 		20E942361B833D10009C2DC6 /* sheet_delete@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 20E942341B833D10009C2DC6 /* sheet_delete@2x.png */; };
 		20E942371B833D10009C2DC6 /* sheet_delete@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 20E942351B833D10009C2DC6 /* sheet_delete@3x.png */; };
-		20E9423A1B833D10009C2DC6 /* FeedContactTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 20E942391B833D10009C2DC6 /* FeedContactTableView.m */; };
-		20E9423D1B833D10009C2DC6 /* FeedContactTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 20E9423C1B833D10009C2DC6 /* FeedContactTableViewCell.m */; };
 		20E942441B833D10009C2DC6 /* add-03@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 20E942421B833D10009C2DC6 /* add-03@2x.png */; };
 		20E942451B833D10009C2DC6 /* add-03@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 20E942431B833D10009C2DC6 /* add-03@3x.png */; };
 		20E9424C1B833D10009C2DC6 /* complete-grey@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 20E942461B833D10009C2DC6 /* complete-grey@2x.png */; };
@@ -625,10 +623,6 @@
 		20E942211B833D10009C2DC6 /* toggle-on@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "toggle-on@3x.png"; sourceTree = "<group>"; };
 		20E942341B833D10009C2DC6 /* sheet_delete@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sheet_delete@2x.png"; sourceTree = "<group>"; };
 		20E942351B833D10009C2DC6 /* sheet_delete@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sheet_delete@3x.png"; sourceTree = "<group>"; };
-		20E942381B833D10009C2DC6 /* FeedContactTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedContactTableView.h; sourceTree = "<group>"; };
-		20E942391B833D10009C2DC6 /* FeedContactTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedContactTableView.m; sourceTree = "<group>"; };
-		20E9423B1B833D10009C2DC6 /* FeedContactTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedContactTableViewCell.h; sourceTree = "<group>"; };
-		20E9423C1B833D10009C2DC6 /* FeedContactTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedContactTableViewCell.m; sourceTree = "<group>"; };
 		20E942421B833D10009C2DC6 /* add-03@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "add-03@2x.png"; sourceTree = "<group>"; };
 		20E942431B833D10009C2DC6 /* add-03@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "add-03@3x.png"; sourceTree = "<group>"; };
 		20E942461B833D10009C2DC6 /* complete-grey@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "complete-grey@2x.png"; sourceTree = "<group>"; };
@@ -1494,10 +1488,6 @@
 				654602161B7F2FF00039F622 /* FeedImageGroup.m */,
 				653199DC1B80B41C00405B72 /* ConnectTag.h */,
 				653199DD1B80B41C00405B72 /* ConnectTag.m */,
-				20E942381B833D10009C2DC6 /* FeedContactTableView.h */,
-				20E942391B833D10009C2DC6 /* FeedContactTableView.m */,
-				20E9423B1B833D10009C2DC6 /* FeedContactTableViewCell.h */,
-				20E9423C1B833D10009C2DC6 /* FeedContactTableViewCell.m */,
 			);
 			path = FeedList;
 			sourceTree = "<group>";
@@ -2933,7 +2923,6 @@
 				65969DD91B875166001DD348 /* ProfileFeedContentView.m in Sources */,
 				656F59751B8896370094B658 /* ProfilePhoneChangeViewController.m in Sources */,
 				20DD4B351B734781007C352C /* CommonSwitchView.m in Sources */,
-				20E9423A1B833D10009C2DC6 /* FeedContactTableView.m in Sources */,
 				3331225F1B806EDB00D3D032 /* UIImage+EMGIF.m in Sources */,
 				333122651B806EDB00D3D032 /* NSIndexPath+PSTCollectionViewAdditions.m in Sources */,
 				3331225A1B806EDB00D3D032 /* EMSDWebImageManager.m in Sources */,
@@ -2954,7 +2943,6 @@
 				333122511B806EDB00D3D032 /* MWTapDetectingImageView.m in Sources */,
 				65A846FF1B81C9C300933815 /* FeedCellTopView.m in Sources */,
 				33380DA81B85DBAB008B51EB /* ApplySuccessSystemMessageTableViewCell.m in Sources */,
-				20E9423D1B833D10009C2DC6 /* FeedContactTableViewCell.m in Sources */,
 				33380DA51B85DB89008B51EB /* NormalSystemMessageTableViewCell.m in Sources */,
 				653CB2EF1B806BFD006ECBB2 /* pinyin.c in Sources */,
 				65969DD01B8723E3001DD348 /* YUtils+HUD.m in Sources */,

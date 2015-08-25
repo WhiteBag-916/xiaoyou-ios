@@ -19,7 +19,7 @@
 #import "YActionMessage.h"
 #import "ProvisionManager.h"
 #import "ProfileTagViewController.h"
-
+#import "ProfilePersonListTableView.h"
 #import "ProfileOthersViewController.h"
 
 #define KTOPHEIGHT SCALE_NUM(90)
@@ -415,10 +415,10 @@
     [self.navigationController presentViewController:navigationController animated:YES completion:nil];
 }
 - (void)openRespect {
-    [self.navigationController pushViewController:[[ProfilePersonListController alloc] initWithType:0] animated:true];
+    [self.navigationController pushViewController:[[ProfilePersonListController alloc] initWithType:ProfilePersonListTypeRespect] animated:true];
 }
 - (void)openCool {
-    [self.navigationController pushViewController:[[ProfilePersonListController alloc] initWithType:1] animated:true];
+    [self.navigationController pushViewController:[[ProfilePersonListController alloc] initWithType:ProfilePersonListTypeCool] animated:true];
 }
 - (void)openFeed {
     [self.navigationController pushViewController:[[ProfilePublishViewController alloc] initWithUserId:@"" name:@""] animated:true];
