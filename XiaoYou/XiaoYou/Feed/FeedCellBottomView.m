@@ -15,6 +15,7 @@
 #import "Tags.h"
 #import "CommentListItems.h"
 #import "Comment.h"
+#import "Author.h"
 
 
 #define KBOTTOMHEIGHT SCALE_NUM(25)                 //社团和feed列表中bottom的高度
@@ -158,45 +159,47 @@
         FeedInfo *data = inData;
         _respectNum.text = [NSString stringWithFormat:@"%d", (int)data.feed.praiseCount];
         _isRespect = data.feed.isPraise;
+        [self initPersonList:data.praisePeoples];
         [self updateRespect];
     }
     if (_type == FeedCommentType) {
         CommentListItems *data = inData;
         _respectNum.text = [NSString stringWithFormat:@"%d", (int)data.comment.praiseCount];
+        [self updateRespect];
     }
 }
-//- (void)initPersonList {
-//    [[_personList subviews] makeObjectsPerformSelector:@selector(removeFromSuperview)];
-//    UIView *tmp = nil;
-//    int max = (_data.people.count > 4) ? 4:(int)_data.people.count;
-//    for (int i = 0; i < max; i++) {
-//        YFaceImageView *face = [[YFaceImageView alloc] init];
-//        [_personList addSubview:face];
-//        [face mas_makeConstraints:^(MASConstraintMaker *make) {
-//            make.top.bottom.equalTo(self);
-//            make.width.mas_equalTo(KHEADWIDTH);
-//            if (tmp == nil) {
-//                make.left.equalTo(_personList);
-//            } else {
-//                make.left.equalTo(tmp.mas_right).offset(KHEADMARGIN);
-//            }
-//        }];
-//        NSDictionary *dic = _data.people[i];
-//        [face setData:dic[@"uid"] imageUrl:dic[@"pic"]];
-//        tmp = face;
-//    }
-//    if (_data.people.count > 4) {
-//        UIImageView *open = [[UIImageView alloc] init];
-//        open.backgroundColor = [UIColor redColor];
-//        [_personList addSubview:open];
-//        open.userInteractionEnabled = true;
-//        [open mas_makeConstraints:^(MASConstraintMaker *make) {
-//            make.left.equalTo(tmp.mas_right).offset(KHEADMARGIN);
-//            make.top.bottom.width.equalTo(tmp);
-//        }];
-//        [open addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(openDetail)]];
-//    }
-//}
+- (void)initPersonList:(NSArray *)people {
+    [[_personList subviews] makeObjectsPerformSelector:@selector(removeFromSuperview)];
+    UIView *tmp = nil;
+    int max = (people.count > 4) ? 4:(int)people.count;
+    for (int i = 0; i < max; i++) {
+        Author *item = people[i];
+        YFaceImageView *face = [[YFaceImageView alloc] init];
+        [_personList addSubview:face];
+        [face setData:item.uid imageUrl:item.headPic];
+        [face mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.top.bottom.equalTo(self);
+            make.width.mas_equalTo(KHEADWIDTH);
+            if (tmp == nil) {
+                make.left.equalTo(_personList);
+            } else {
+                make.left.equalTo(tmp.mas_right).offset(KHEADMARGIN);
+            }
+        }];
+        tmp = face;
+    }
+    if (people.count > 4) {
+        UIImageView *open = [[UIImageView alloc] init];
+        open.backgroundColor = [UIColor redColor];
+        [_personList addSubview:open];
+        open.userInteractionEnabled = true;
+        [open mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.equalTo(tmp.mas_right).offset(KHEADMARGIN);
+            make.top.bottom.width.equalTo(tmp);
+        }];
+        [open addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(openDetail)]];
+    }
+}
 
 - (void)respect {
 //    _isRespect = !_isRespect;
