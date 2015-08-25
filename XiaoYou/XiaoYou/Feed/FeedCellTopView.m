@@ -102,7 +102,6 @@
     while (topVC.presentedViewController) {
         topVC = topVC.presentedViewController;
         NSString *className = [NSString stringWithUTF8String:object_getClassName(topVC)];
-        NSLog(@"className:%@", className);
     }
 }
 

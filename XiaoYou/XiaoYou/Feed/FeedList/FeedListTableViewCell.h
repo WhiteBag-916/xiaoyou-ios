@@ -14,9 +14,7 @@ extern NSString *const KCommentTableViewCell;
 extern NSString *const kOrganizationFeedListTableViewCell;
 
 @class FeedInfo;
-
 @interface FeedListTableViewCell : YTableViewCell
 
 - (void)setData:(FeedInfo *)info;
-
 @end

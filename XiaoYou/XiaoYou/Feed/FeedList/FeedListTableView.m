@@ -10,6 +10,8 @@
 #import "FeedListTableViewCell.h"
 #import "FeedListViewController.h"
 #import "FeedManager.h"
+#import "FeedInfo.h"
+#import "Feed.h"
 
 #define KPAGENUM 6
 @interface FeedListTableView ()
@@ -112,7 +114,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    [_parent goToDetail:@"233"];
+    [_parent goToDetail:[NSString stringWithFormat:@"%d", (int)[(FeedInfo *)_feedListArray[indexPath.row] feed].feedIdentifier]];
 }
 
 

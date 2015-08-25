@@ -36,7 +36,7 @@
 @property (nonatomic, strong, readwrite) UIView *personList;                   //敬酒人
 @property (nonatomic, assign)            int type;                             //类型
 @property (nonatomic, assign)            BOOL isRespect;
-@property (nonatomic, assign)            int feedId;
+@property (nonatomic, assign)            NSString *feedId;
 @property (nonatomic, strong)            NSMutableDictionary *shareData;
 @end
 
@@ -140,13 +140,18 @@
 }
 - (void)setData:(FeedInfo *)data {
     if (_type == FeedListType) {
-        NSString *tag = (data.tags.count == 0?@"某话题":[data.tags[0] name]);
-        NSString *content = (data.feed.content.length == 0?@"只有一些图片":data.feed.content);
+        NSString *tag = (data.tags.count == 0?@"校友观点":[data.tags[0] name]);
+        NSString *content = (data.feed.content.length == 0?@"":data.feed.content);
         
         _shareData = [NSMutableDictionary dictionaryWithObjectsAndKeys:tag,@"tag",content,@"content", nil];
-        _feedId = (int)data.feed.feedIdentifier;
+        _feedId = [NSString stringWithFormat:@"%d", (int)data.feed.feedIdentifier];
         _respectNum.text = [NSString stringWithFormat:@"%d", (int)data.feed.praiseCount];
         _commentNum.text = [NSString stringWithFormat:@"%d", (int)data.feed.commentCount];
+        _isRespect = data.feed.isPraise;
+        [self updateRespect];
+    }
+    if (_type == FeedDetailType) {
+        _respectNum.text = [NSString stringWithFormat:@"%d", (int)data.feed.praiseCount];
         _isRespect = data.feed.isPraise;
         [self updateRespect];
     }
@@ -197,8 +202,10 @@
 - (void)updateRespect {
     if (_isRespect) {
         _respectImg.image = [UIImage imageNamed:@"cup"];
+        _respectNum.textColor = KCOLORGREEN_009688;
     } else {
         _respectImg.image = [UIImage imageNamed:@"cup"];
+        _respectNum.textColor = [UIColor blackColor];
     }
 }
 - (void)openShare {
@@ -218,13 +225,4 @@
     
 }
 
-//- (void)setData:(FeedInfo *)data {
-////    if (_type == FeedDetailType) {
-////        [self initPersonList];
-////    }
-//    _respectNum.text = [NSString stringWithFormat:@"%d", _data.respectNum];
-//    if (_type == FeedListType || _type == FeedOrganizationType) {
-//        _commentNum.text = [NSString stringWithFormat:@"%d", _data.commentNum];
-//    }
-//}
 @end

@@ -52,11 +52,11 @@
 }
 
 - (void)viewDidAppear:(BOOL)animated {
-    [_feedDetailTable loadData:@[@"",@""]];
+    [_feedDetailTable loadData];
 }
 
 - (void)initTable {
-    _feedDetailTable  = [[FeedDetailTableView alloc] init];
+    _feedDetailTable  = [[FeedDetailTableView alloc] initWithFeedId:_feedId];
     [self.view addSubview:_feedDetailTable];
     _feedDetailTable.parent = self;
     [_feedDetailTable mas_makeConstraints:^(MASConstraintMaker *make) {
