@@ -8,14 +8,15 @@
 #import <Foundation/Foundation.h>
 #import "YModel.h"
 
-@class Feed;
+@class Feed, Author;
 
 @interface FeedDetail : YModel <NSCoding, NSCopying>
 
 @property (nonatomic, strong) NSArray *commentListItems;
 @property (nonatomic, strong) NSArray *tags;
 @property (nonatomic, strong) Feed *feed;
-@property (nonatomic, strong) NSArray *author;
+@property (nonatomic, strong) Author *author;
+@property (nonatomic, strong) NSArray *praisePeoples;
 
 + (instancetype)modelObjectWithDictionary:(NSDictionary *)dict;
 - (instancetype)initWithDictionary:(NSDictionary *)dict;

@@ -16,6 +16,7 @@ NSString *const kFeedDetailCommentListItems = @"commentListItems";
 NSString *const kFeedDetailTags = @"tags";
 NSString *const kFeedDetailFeed = @"feed";
 NSString *const kFeedDetailAuthor = @"author";
+NSString *const kFeedDetailPraisePeoples = @"praisePeoples";
 
 
 @interface FeedDetail ()
@@ -83,7 +84,20 @@ NSString *const kFeedDetailAuthor = @"author";
        [parsedAuthor addObject:[Author modelObjectWithDictionary:(NSDictionary *)receivedAuthor]];
     }
 
-    self.author = [NSArray arrayWithArray:parsedAuthor];
+        self.author = [Author modelObjectWithDictionary:[dict objectForKey:kFeedDetailAuthor]];
+        NSObject *receivedPraisePeoples = [dict objectForKey:kFeedDetailPraisePeoples];
+        NSMutableArray *parsedPraisePeoples = [NSMutableArray array];
+        if ([receivedPraisePeoples isKindOfClass:[NSArray class]]) {
+            for (NSDictionary *item in (NSArray *)receivedPraisePeoples) {
+                if ([item isKindOfClass:[NSDictionary class]]) {
+                    [parsedPraisePeoples addObject:[Author modelObjectWithDictionary:item]];
+                }
+            }
+        } else if ([receivedPraisePeoples isKindOfClass:[NSDictionary class]]) {
+            [parsedPraisePeoples addObject:[Author modelObjectWithDictionary:(NSDictionary *)receivedPraisePeoples]];
+        }
+        
+        self.praisePeoples = [NSArray arrayWithArray:parsedPraisePeoples];
 
     }
     
@@ -117,17 +131,18 @@ NSString *const kFeedDetailAuthor = @"author";
     }
     [mutableDict setValue:[NSArray arrayWithArray:tempArrayForTags] forKey:kFeedDetailTags];
     [mutableDict setValue:[self.feed dictionaryRepresentation] forKey:kFeedDetailFeed];
-    NSMutableArray *tempArrayForAuthor = [NSMutableArray array];
-    for (NSObject *subArrayObject in self.author) {
+    [mutableDict setValue:[self.author dictionaryRepresentation] forKey:kFeedDetailAuthor];
+    NSMutableArray *tempArrayForPraisePeoples = [NSMutableArray array];
+    for (NSObject *subArrayObject in self.praisePeoples) {
         if([subArrayObject respondsToSelector:@selector(dictionaryRepresentation)]) {
             // This class is a model object
-            [tempArrayForAuthor addObject:[subArrayObject performSelector:@selector(dictionaryRepresentation)]];
+            [tempArrayForPraisePeoples addObject:[subArrayObject performSelector:@selector(dictionaryRepresentation)]];
         } else {
             // Generic object
-            [tempArrayForAuthor addObject:subArrayObject];
+            [tempArrayForPraisePeoples addObject:subArrayObject];
         }
     }
-    [mutableDict setValue:[NSArray arrayWithArray:tempArrayForAuthor] forKey:kFeedDetailAuthor];
+    [mutableDict setValue:[NSArray arrayWithArray:tempArrayForPraisePeoples] forKey:kFeedDetailPraisePeoples];
 
     return [NSDictionary dictionaryWithDictionary:mutableDict];
 }
@@ -155,6 +170,7 @@ NSString *const kFeedDetailAuthor = @"author";
     self.tags = [aDecoder decodeObjectForKey:kFeedDetailTags];
     self.feed = [aDecoder decodeObjectForKey:kFeedDetailFeed];
     self.author = [aDecoder decodeObjectForKey:kFeedDetailAuthor];
+    self.praisePeoples = [aDecoder decodeObjectForKey:kFeedDetailPraisePeoples];
     return self;
 }
 
@@ -165,6 +181,7 @@ NSString *const kFeedDetailAuthor = @"author";
     [aCoder encodeObject:_tags forKey:kFeedDetailTags];
     [aCoder encodeObject:_feed forKey:kFeedDetailFeed];
     [aCoder encodeObject:_author forKey:kFeedDetailAuthor];
+    [aCoder encodeObject:_praisePeoples forKey:kFeedDetailPraisePeoples];
 }
 
 - (id)copyWithZone:(NSZone *)zone
@@ -177,6 +194,7 @@ NSString *const kFeedDetailAuthor = @"author";
         copy.tags = [self.tags copyWithZone:zone];
         copy.feed = [self.feed copyWithZone:zone];
         copy.author = [self.author copyWithZone:zone];
+        copy.praisePeoples = [self.praisePeoples copyWithZone:zone];
     }
     
     return copy;
