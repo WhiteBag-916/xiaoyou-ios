@@ -49,7 +49,7 @@ NSString *const kAssociationsListTableViewCell = @"AssociationsListTableViewCell
     {
         [self initView];
         
-        self.contentView.backgroundColor = KCOLORGREEN_f2f2f2;
+        self.contentView.backgroundColor = KCOLORWHITE;
     }
     
     return self;
@@ -132,9 +132,9 @@ NSString *const kAssociationsListTableViewCell = @"AssociationsListTableViewCell
     [self.contentView addSubview:line];
     [line mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.bottom.right.equalTo(self.contentView);
-        make.height.mas_equalTo(0.5);
+        make.height.mas_equalTo(1);
     }];
-    line.backgroundColor = KCOLORWHITE;
+    line.backgroundColor = KCOLORGREEN_e6ebea;
 }
 
 - (void)initStarView

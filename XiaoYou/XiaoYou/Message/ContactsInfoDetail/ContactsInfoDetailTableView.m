@@ -217,19 +217,19 @@
     if (indexPath.row == 0)
     {
         NSDictionary * dic = @{@"content":[NSString stringWithFormat:@"%g人向%@撰写的内容敬酒",_model.praiseCount,_model.userName],@"index":indexStr};
-        [cell setCellInfo:dic];
+        [cell setCellInfo:dic hiddenLine:YES];
         return cell;
     }
     else if (indexPath.row == 1)
     {
         NSDictionary * dic = @{@"content":[NSString stringWithFormat:@"%g人觉得%@很酷",_model.coolCount,_model.userName],@"index":indexStr, @"isCool":@(_model.isCool)};
-        [cell setCellInfo:dic];
+        [cell setCellInfo:dic hiddenLine:YES];
         return cell;
     }
     else
     {
         NSDictionary * dic = @{@"content":self.flagNameArr[indexPath.row - 2],@"index":indexStr};
-        [cell setCellInfo:dic];
+        [cell setCellInfo:dic hiddenLine:YES];
         return cell;
     }
     

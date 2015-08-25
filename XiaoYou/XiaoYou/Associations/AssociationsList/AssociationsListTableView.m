@@ -8,6 +8,7 @@
 
 #import "AssociationsListTableView.h"
 #import "AssociationsListTableViewCell.h"
+#import "AssociationsDetailViewController.h"
 
 @interface AssociationsListTableView ()
 <UITableViewDataSource
@@ -54,6 +55,9 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    AssociationsDetailViewController *associationsDetailViewController = [[AssociationsDetailViewController alloc] init];
+    [_superVC.navigationController pushViewController:associationsDetailViewController animated:YES needHiddenBottomBar:YES];
 }
 
 @end
