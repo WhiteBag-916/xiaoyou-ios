@@ -32,7 +32,7 @@ NSString *const KCommentTableViewCell = @"CommentTableViewCell";
 
 
 
-@interface FeedListTableViewCell () <FeedCellBottomDelegate>
+@interface FeedListTableViewCell ()
 
 @property (nonatomic, strong) FeedCellTopView *topView;             //内容以上UI
 @property (nonatomic, strong) FeedCellMiddleView *middleView;       //中间部分UI
@@ -124,7 +124,6 @@ NSString *const KCommentTableViewCell = @"CommentTableViewCell";
 - (void)initBottomView {
     _bottomView = [[FeedCellBottomView alloc] initWithType:_feedType];
     [self.contentView addSubview:_bottomView];
-    _bottomView.delegate = self;
     [_bottomView mas_makeConstraints:^(MASConstraintMaker *make) {
         if (_feedType == FeedCommentType) {
             make.top.equalTo(_middleView);
@@ -172,21 +171,10 @@ NSString *const KCommentTableViewCell = @"CommentTableViewCell";
     [_topView setData:info];
     [_middleView setData:info];
     [_bottomView setData:info];
+    [_tagView setData:info.tags];
 }
 
-- (void)didClickShare {
-    YActionSheetItem *item1 = [YActionSheetItem itemWithType:YCommonActionSheetItemTypeShare title:@"分享这条动态至" extraData:@{@"tag":@"互联网",@"content":@"balabala",@"pic":@"http://cdn.duitang.com/uploads/item/201411/22/20141122111634_RBCXS.jpeg"}];
-    
-    
-    YActionSheetItem *item2 = [YActionSheetItem itemWithTitle:@"举报"
-                                                         type:YCommonActionSheetItemTypeCommon
-                                                        block:^(NSInteger checkNum) {
-                                                            
-                                                        }];
-    
-    YCommonActionSheet *sheet = [[YCommonActionSheet alloc] initWithType:@[item1, item2] title:nil];
-    [sheet show];
-}
+
 
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

@@ -11,7 +11,7 @@
 #import "FeedListViewController.h"
 #import "FeedManager.h"
 
-#define KPAGENUM 15
+#define KPAGENUM 6
 @interface FeedListTableView ()
 <UITableViewDataSource
 ,UITableViewDelegate>
