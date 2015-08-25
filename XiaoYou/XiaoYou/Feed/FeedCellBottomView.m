@@ -82,7 +82,7 @@
             commentImg.contentMode = UIViewContentModeCenter;
             commentImg.image = [UIImage imageNamed:@"comment"];
             
-            _commentNum = [YUtils initLabel:CONTENT_FONT(10) color:[UIColor blackColor] text:@"0" frame:CGRectZero alignment:NSTextAlignmentLeft];
+            _commentNum = [YUtils initLabel:CONTENT_FONT(10) color:KCOLORWHITE_696969 text:@"0" frame:CGRectZero alignment:NSTextAlignmentLeft];
             [commentView addSubview:_commentNum];
             [_commentNum mas_makeConstraints:^(MASConstraintMaker *make) {
                 make.left.equalTo(commentImg.mas_right).offset(KBUTTONTEXTMARGIN);
@@ -217,7 +217,7 @@
         _respectNum.textColor = KCOLORGREEN_009688;
     } else {
         _respectImg.image = [UIImage imageNamed:@"cup"];
-        _respectNum.textColor = [UIColor blackColor];
+        _respectNum.textColor = KCOLORWHITE_696969;
     }
 }
 - (void)openShare {

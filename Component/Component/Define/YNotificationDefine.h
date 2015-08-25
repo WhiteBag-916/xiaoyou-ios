@@ -13,6 +13,9 @@
 #define kNotification_Push_SearchPerson                 @"kNotification_Push_SearchPerson"
 #define kNotification_Push_Notify                       @"kNotification_Push_Notify"
 #define kNotification_Push_AddTag                       @"kNotification_Push_AddTag"
+#define kNotification_Push_FeedFilter                   @"kNotification_Push_FeedFilter"
+
+
 #define kNotification_Push_FeedDetail                   @"kNotification_Push_FeedDetail"
 #define kNotification_Push_Report                       @"kNotification_Push_Report"
 

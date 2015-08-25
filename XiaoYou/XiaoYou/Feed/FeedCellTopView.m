@@ -71,7 +71,7 @@
                 make.centerY.equalTo(_contactHeadImageView);
             }];
             
-            _timeLabel = [YUtils initLabel:CONTENT_FONT(11) color:[UIColor blackColor] text:@"刚刚" frame:CGRectZero alignment:NSTextAlignmentLeft];
+            _timeLabel = [YUtils initLabel:CONTENT_FONT(11) color:KCOLORWHITE_696969 text:@"刚刚" frame:CGRectZero alignment:NSTextAlignmentLeft];
             [self addSubview:_timeLabel];
             [_timeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
                 make.left.equalTo(_contactNameLabel.mas_right).offset(KTIMEMARGIN_LEFT);
