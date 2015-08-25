@@ -27,6 +27,7 @@ NSString *const kProfileInfoPropetiesCommon = @"propetiesCommon";
 NSString *const kProfileInfoFeedCount = @"feedCount";
 NSString *const kProfileInfoIsCool = @"isCool";
 NSString *const kProfileInfoQueryCodes = @"queryCodes";
+NSString *const kProfileInfoManagerGroups = @"managerGroups";
 
 @interface ProfileInfo ()
 
@@ -52,6 +53,7 @@ NSString *const kProfileInfoQueryCodes = @"queryCodes";
 @synthesize feedCount = _feedCount;
 @synthesize isCool = _isCool;
 @synthesize queryCodes = _queryCodes;
+@synthesize managerGroups = _managerGroups;
 
 + (instancetype)modelObjectWithDictionary:(NSDictionary *)dict
 {
@@ -146,6 +148,20 @@ NSString *const kProfileInfoQueryCodes = @"queryCodes";
     
     self.queryCodes = [NSArray arrayWithArray:parsedQueryCodes];
     
+    NSObject *receivedManagerGroups = [dict objectForKey:kProfileInfoManagerGroups];
+    NSMutableArray *parsedManagerGroups = [NSMutableArray array];
+    if ([receivedManagerGroups isKindOfClass:[NSArray class]]) {
+        for (NSDictionary *item in (NSArray *)receivedManagerGroups) {
+            if ([item isKindOfClass:[NSDictionary class]]) {
+                [parsedManagerGroups addObject:[Tags modelObjectWithDictionary:item]];
+            }
+        }
+    } else if ([receivedManagerGroups isKindOfClass:[NSDictionary class]]) {
+        [parsedManagerGroups addObject:[Tags modelObjectWithDictionary:(NSDictionary *)receivedManagerGroups]];
+    }
+    
+    self.managerGroups = [NSArray arrayWithArray:parsedManagerGroups];
+    
     return self;
     
 }
@@ -220,6 +236,18 @@ NSString *const kProfileInfoQueryCodes = @"queryCodes";
         }
     }
     [mutableDict setValue:[NSArray arrayWithArray:tempArrayForQueryCodes] forKey:kProfileInfoQueryCodes];
+    
+    NSMutableArray *tempArrayForManagerGroups = [NSMutableArray array];
+    for (NSObject *subArrayObject in self.managerGroups) {
+        if([subArrayObject respondsToSelector:@selector(dictionaryRepresentation)]) {
+            // This class is a model object
+            [tempArrayForManagerGroups addObject:[subArrayObject performSelector:@selector(dictionaryRepresentation)]];
+        } else {
+            // Generic object
+            [tempArrayForManagerGroups addObject:subArrayObject];
+        }
+    }
+    [mutableDict setValue:[NSArray arrayWithArray:tempArrayForManagerGroups] forKey:kProfileInfoManagerGroups];
 
     return [NSDictionary dictionaryWithDictionary:mutableDict];
 }
@@ -259,6 +287,7 @@ NSString *const kProfileInfoQueryCodes = @"queryCodes";
     self.feedCount = [aDecoder decodeDoubleForKey:kProfileInfoFeedCount];
     self.isCool = [aDecoder decodeBoolForKey:kProfileInfoIsCool];
     self.queryCodes = [aDecoder decodeObjectForKey:kProfileInfoQueryCodes];
+    self.managerGroups = [aDecoder decodeObjectForKey:kProfileInfoManagerGroups];
     
     return self;
 }
@@ -282,6 +311,7 @@ NSString *const kProfileInfoQueryCodes = @"queryCodes";
     [aCoder encodeDouble:_feedCount forKey:kProfileInfoFeedCount];
     [aCoder encodeBool:_isCool forKey:kProfileInfoIsCool];
     [aCoder encodeObject:_queryCodes forKey:kProfileInfoQueryCodes];
+    [aCoder encodeObject:_managerGroups forKey:kProfileInfoManagerGroups];
 }
 
 - (id)copyWithZone:(NSZone *)zone
@@ -306,6 +336,7 @@ NSString *const kProfileInfoQueryCodes = @"queryCodes";
         copy.feedCount = self.feedCount;
         copy.isCool = self.isCool;
         copy.queryCodes = [self.queryCodes copyWithZone:zone];
+        copy.managerGroups = [self.managerGroups copyWithZone:zone];
     }
     
     return copy;

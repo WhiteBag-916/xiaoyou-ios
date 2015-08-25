@@ -28,6 +28,7 @@
 @property (nonatomic, assign) double feedCount;
 @property (nonatomic, assign) BOOL isCool;
 @property (nonatomic, strong) NSArray *queryCodes;
+@property (nonatomic, strong) NSArray *managerGroups;
 
 + (instancetype)modelObjectWithDictionary:(NSDictionary *)dict;
 - (instancetype)initWithDictionary:(NSDictionary *)dict;
