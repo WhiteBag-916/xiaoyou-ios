@@ -412,6 +412,7 @@
 		65969DDF1B877356001DD348 /* ProfileFeedListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 65969DDE1B877356001DD348 /* ProfileFeedListView.m */; };
 		65969DE21B877896001DD348 /* ProfileFeedCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 65969DE11B877896001DD348 /* ProfileFeedCell.m */; };
 		659DC7771B88C4E700DB589F /* ProfileOthersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 659DC7761B88C4E700DB589F /* ProfileOthersViewController.m */; };
+		65A703CB1B8C467C0094D8A2 /* FeedFilterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 65A703CA1B8C467C0094D8A2 /* FeedFilterViewController.m */; };
 		65A846FF1B81C9C300933815 /* FeedCellTopView.m in Sources */ = {isa = PBXBuildFile; fileRef = 65A846FE1B81C9C300933815 /* FeedCellTopView.m */; };
 		65A847021B81C9D300933815 /* FeedCellMiddleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 65A847011B81C9D300933815 /* FeedCellMiddleView.m */; };
 		65A847051B81CA1900933815 /* FeedCellBottomView.m in Sources */ = {isa = PBXBuildFile; fileRef = 65A847041B81CA1900933815 /* FeedCellBottomView.m */; };
@@ -1055,6 +1056,8 @@
 		65969DE11B877896001DD348 /* ProfileFeedCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileFeedCell.m; sourceTree = "<group>"; };
 		659DC7751B88C4E700DB589F /* ProfileOthersViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileOthersViewController.h; sourceTree = "<group>"; };
 		659DC7761B88C4E700DB589F /* ProfileOthersViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileOthersViewController.m; sourceTree = "<group>"; };
+		65A703C91B8C467C0094D8A2 /* FeedFilterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedFilterViewController.h; sourceTree = "<group>"; };
+		65A703CA1B8C467C0094D8A2 /* FeedFilterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedFilterViewController.m; sourceTree = "<group>"; };
 		65A846FD1B81C9C300933815 /* FeedCellTopView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedCellTopView.h; sourceTree = "<group>"; };
 		65A846FE1B81C9C300933815 /* FeedCellTopView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedCellTopView.m; sourceTree = "<group>"; };
 		65A847001B81C9D300933815 /* FeedCellMiddleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedCellMiddleView.h; sourceTree = "<group>"; };
@@ -1475,6 +1478,8 @@
 				654602161B7F2FF00039F622 /* FeedImageGroup.m */,
 				653199DC1B80B41C00405B72 /* ConnectTag.h */,
 				653199DD1B80B41C00405B72 /* ConnectTag.m */,
+				65A703C91B8C467C0094D8A2 /* FeedFilterViewController.h */,
+				65A703CA1B8C467C0094D8A2 /* FeedFilterViewController.m */,
 			);
 			path = FeedList;
 			sourceTree = "<group>";
@@ -2969,6 +2974,7 @@
 				333122311B806EDB00D3D032 /* FacialView.m in Sources */,
 				3331226F1B806EDB00D3D032 /* PSTGridLayoutItem.m in Sources */,
 				333122701B806EDB00D3D032 /* PSTGridLayoutRow.m in Sources */,
+				65A703CB1B8C467C0094D8A2 /* FeedFilterViewController.m in Sources */,
 				333122501B806EDB00D3D032 /* MWPhotoBrowser.m in Sources */,
 				333122761B806EDB00D3D032 /* SRSlimeView.m in Sources */,
 				333122531B806EDB00D3D032 /* MWZoomingScrollView.m in Sources */,
