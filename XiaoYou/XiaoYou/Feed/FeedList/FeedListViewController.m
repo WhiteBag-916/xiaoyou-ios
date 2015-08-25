@@ -17,10 +17,10 @@
 #import "SearchPersonViewController.h"
 #import "FeedDetailViewController.h"
 #import "NotifyListViewController.h"
-#import "AddTagViewController.h"
+#import "ProfileTagViewController.h"
 #import "ProfilePersonListTableView.h"
 #import "FeedPublishViewController.h"
-
+#import "ProvisionManager.h"
 
 @interface FeedListViewController ()
 
@@ -157,8 +157,8 @@
 }
 
 - (void)toAddTag {
-    AddTagViewController *addTagViewController = [[AddTagViewController alloc] init];
-    [self.navigationController pushViewController:addTagViewController animated:YES needHiddenBottomBar:YES];
+    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:[[ProfileTagViewController alloc] initWithMyTags:[[ProvisionManager sharedInstance] profileTags]]];
+    [self.navigationController presentViewController:navigationController animated:YES completion:nil];
 }
 
 - (void)onNavigationRightButtonClicked {
