@@ -20,7 +20,10 @@
 #define kTag_TabBar_Profile kTag_TabBar_Base + 3
 
 @interface XYTabBarViewController ()
-<SlideNavigationControllerDelegate>
+<SlideNavigationControllerDelegate,IChatManagerDelegate>
+
+@property(nonatomic,strong)XYMessageAndContactsViewController *messageVC;
+@property(nonatomic,strong)UINavigationController *messageViewCotroller;
 
 @end
 
@@ -37,12 +40,13 @@
 - (void)initControllers
 {
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(openProfile:) name:KNotification_Open_Profile object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(setupUnreadMessageCount:) name:KNotification_Message_unread object:nil];
     
-    XYMessageAndContactsViewController *messageVC = [[XYMessageAndContactsViewController alloc] init];
+    _messageVC = [[XYMessageAndContactsViewController alloc] init];
     FeedListViewController *feedVC = [[FeedListViewController alloc] init];
     ProfileViewController *profileVC = [[ProfileViewController alloc] init];
     
-    UINavigationController *messageViewCotroller = [[UINavigationController alloc] initWithRootViewController:messageVC];
+    _messageViewCotroller = [[UINavigationController alloc] initWithRootViewController:_messageVC];
     UINavigationController *feedListViewCotroller = [[UINavigationController alloc] initWithRootViewController:feedVC];
     UINavigationController *profileViewCotroller = [[UINavigationController alloc] initWithRootViewController:profileVC];
     
@@ -52,7 +56,7 @@
                                                                 tag:kTag_TabBar_Message];
     messageItem.selectedImage = [[UIImage imageNamed:@"toolbar-chat-chosen"]
                                  imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
-    messageViewCotroller.tabBarItem = messageItem;
+    _messageViewCotroller.tabBarItem = messageItem;
     
     //Feed
     UITabBarItem *feedListItem = [[UITabBarItem alloc] initWithTitle:@"人脉"
@@ -72,8 +76,23 @@
     profileViewCotroller.tabBarItem = profileItem;
     
     self.tabBar.tintColor = KCOLORGREEN_009688;
-    self.viewControllers = @[messageViewCotroller, feedListViewCotroller, profileViewCotroller];
+    self.viewControllers = @[_messageViewCotroller, feedListViewCotroller, profileViewCotroller];
 }
+
+// 统计未读消息数
+-(void)setupUnreadMessageCount:(NSNotification *)notification
+{
+    int unreadCount = [[notification userInfo][@"unread"] intValue];
+    if (unreadCount > 0) {
+        _messageViewCotroller.tabBarItem.badgeValue = [NSString stringWithFormat:@"%i", unreadCount];
+    }else{
+        _messageViewCotroller.tabBarItem.badgeValue = nil;
+    }
+    
+    UIApplication *application = [UIApplication sharedApplication];
+    [application setApplicationIconBadgeNumber:unreadCount];
+}
+
 - (void)dealloc {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }

@@ -46,6 +46,7 @@ NSString *const kMessageTableViewCell = @"MessageTableViewCellId";
 @property (strong, nonatomic)  UILabel *messageLabel;
 @property (nonatomic,strong)  UILabel * defaultLabel;
 
+@property (nonatomic,assign) NSInteger * badgeNum;
 
 @end
 
@@ -90,6 +91,7 @@ NSString *const kMessageTableViewCell = @"MessageTableViewCellId";
         _badgeNumberLabel = [[UILabel alloc] init];
         _badgeNumberLabel.hidden = YES;
         _badgeNumberLabel.font = CONTENT_FONT(10);
+        _badgeNumberLabel.textColor = [UIColor whiteColor];
         _badgeNumberLabel.textAlignment = NSTextAlignmentCenter;
         _badgeNumberLabel.backgroundColor = [UIColor hexChangeFloat:@"258f74"];
         [self.contentView addSubview:_badgeNumberLabel];
@@ -122,6 +124,7 @@ NSString *const kMessageTableViewCell = @"MessageTableViewCellId";
             make.right.equalTo(_badgeNumberLabel.mas_left).offset(-kPaddingDistance);
             make.height.mas_equalTo(kLabelHeightDistacnce);
         }];
+        
     }
     return self;
 }
