@@ -9,6 +9,8 @@
 #import "YManager.h"
 #import "YAction.h"
 
+@class Feed;
+
 @interface FeedManager : YManager<YManager>
 AS_SINGLETON(FeedManager);
 
@@ -20,5 +22,11 @@ AS_SINGLETON(FeedManager);
 
 //获取feed列表
 - (void)feedList:(NSInteger)limitStart limitEnd:(NSInteger)limitEnd block:(ActionCompleteBlock)block;
+
+//发送feed
+- (void)sendFeed:(Feed *)feed tagIds:(NSString *)tagIds block:(ActionCompleteBlock)block;
+
+//上传feed图片
+- (void)uploadFeedImage:(NSString *)imgPath block:(ActionCompleteBlock)block;
 
 @end

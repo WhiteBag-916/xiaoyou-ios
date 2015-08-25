@@ -67,6 +67,10 @@
 #define api_login_DetailFeed @"/mobile/feed/detailFeed"
 //动态列表
 #define api_login_ListFeed @"/mobile/feed/listFeed"
+//上传feed图片
+#define api_login_UpdateImg @"/mobile/feed/updateImg"
+//发送feed
+#define api_login_AddFeed @"/mobile/feed/addFeed"
 
 /**********************************************************
  Url Define: ContactManager

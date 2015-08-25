@@ -19,6 +19,12 @@
     return url;
 }
 
++ getUrl:(NSString *)bussinessPath needUserToken:(BOOL)needUserToken {
+    NSString *url = [self getUrl:bussinessPath];
+    url = [url stringByAppendingString:[NSString stringWithFormat:@"?token=%@&schoolCode=%@&studentNo=%@", [YShareData defaultData][kShareData_Token], [YShareData defaultData][kShareData_SchoolCode] ,[YShareData defaultData][kShareData_StudentNo]]];
+    return url;
+}
+
 + getParameter {
     NSMutableDictionary *dic = [@{kYHttpRequestHeader : @{@"Content-type":@"application/json"}} mutableCopy];
     
