@@ -97,7 +97,7 @@
         chineseString.string  = [chineseString.string stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
         
         //这里我自己写了一个递归过滤指定字符串   RemoveSpecialCharacter
-        chineseString.string =[ChineseString RemoveSpecialCharacter:chineseString.string];        
+//        chineseString.string =[ChineseString RemoveSpecialCharacter:chineseString.string];        
         
         //判断首字符是否为字母
         NSString *regex = @"[A-Za-z]+";
@@ -158,7 +158,11 @@
     {
         for (int k=0; k<[stringArr count]; k++)
         {
-            if ([resultStringArr[j] isEqualToString:[stringArr[k] dictionaryRepresentation][@"name"]])
+
+            LinkManList * model = stringArr[k];
+            NSString * name1 = model.name;
+            NSString * name2 = resultStringArr[j];
+            if ([name1 isEqual:name2])
             {
                 [resultArr addObject:stringArr[k]];
             }
