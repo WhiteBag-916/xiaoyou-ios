@@ -95,7 +95,7 @@
         [cell setData:_feedInfo];
     } else {
         cell = [tableView dequeueReusableCellWithIdentifier:KCommentTableViewCell];
-        [cell setData:nil];
+        [cell setData:_commentListArray[indexPath.row-1]];
     }
     return cell;
 }
@@ -109,7 +109,7 @@
         }];
     } else {
         height = [tableView fd_heightForCellWithIdentifier:KCommentTableViewCell cacheByIndexPath:indexPath configuration:^(FeedListTableViewCell *cell) {
-            [cell setData:nil];
+            [cell setData:_commentListArray[indexPath.row-1]];
         }];
     }
     return height;

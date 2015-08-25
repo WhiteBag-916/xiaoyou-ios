@@ -16,5 +16,5 @@ extern NSString *const kOrganizationFeedListTableViewCell;
 @class FeedInfo;
 @interface FeedListTableViewCell : YTableViewCell
 
-- (void)setData:(FeedInfo *)info;
+- (void)setData:(id)info;
 @end
