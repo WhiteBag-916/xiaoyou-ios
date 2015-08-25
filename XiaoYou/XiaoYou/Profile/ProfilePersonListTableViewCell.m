@@ -99,6 +99,8 @@ NSString *const kProfilePersonListTableViewCell = @"kProfilePersonListTableViewC
         _addFriend.layer.cornerRadius = KADDFRIENDWIDTH/2;
         _addFriend.clipsToBounds = true;
         [_addFriend setImage:[UIImage imageNamed:@"mine-add-friend"] forState:UIControlStateNormal];
+        [_addFriend addTarget:self action:@selector(clickAdd) forControlEvents:UIControlEventTouchUpInside];
+        
     }
     return self;
 }
@@ -120,6 +122,8 @@ NSString *const kProfilePersonListTableViewCell = @"kProfilePersonListTableViewC
         }];
     }
 }
-
+- (void)clickAdd {
+    [[NSNotificationCenter defaultCenter] postNotificationName:KNotification_Present_AddFriend object:nil userInfo:@{@"uid":_face.userId}];
+}
 
 @end
