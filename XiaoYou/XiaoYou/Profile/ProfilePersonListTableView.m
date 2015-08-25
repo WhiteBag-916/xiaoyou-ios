@@ -11,7 +11,7 @@
 #import "ProfilePersonListTableViewCell.h"
 #import "ProvisionManager.h"
 
-#define KPAGENUM 10
+#define KPAGENUM 15
 
 @interface ProfilePersonListTableView()<UITableViewDataSource, UITableViewDelegate>
 @property (nonatomic, assign) int type;

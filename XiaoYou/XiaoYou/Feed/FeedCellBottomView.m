@@ -12,6 +12,7 @@
 #import "YCommonActionSheet.h"
 #import "FeedInfo.h"
 #import "Feed.h"
+#import "Tags.h"
 
 #define KBOTTOMHEIGHT SCALE_NUM(25)                 //社团和feed列表中bottom的高度
 #define KSHAREWIDTH SCALE_NUM(25)                   //分享按钮点击区域的大小
@@ -35,6 +36,8 @@
 @property (nonatomic, strong, readwrite) UIView *personList;                   //敬酒人
 @property (nonatomic, assign)            int type;                             //类型
 @property (nonatomic, assign)            BOOL isRespect;
+@property (nonatomic, assign)            int feedId;
+@property (nonatomic, strong)            NSMutableDictionary *shareData;
 @end
 
 @implementation FeedCellBottomView
@@ -137,9 +140,15 @@
 }
 - (void)setData:(FeedInfo *)data {
     if (_type == FeedListType) {
+        NSString *tag = (data.tags.count == 0?@"某话题":[data.tags[0] name]);
+        NSString *content = (data.feed.content.length == 0?@"只有一些图片":data.feed.content);
+        
+        _shareData = [NSMutableDictionary dictionaryWithObjectsAndKeys:tag,@"tag",content,@"content", nil];
+        _feedId = (int)data.feed.feedIdentifier;
         _respectNum.text = [NSString stringWithFormat:@"%d", (int)data.feed.praiseCount];
         _commentNum.text = [NSString stringWithFormat:@"%d", (int)data.feed.commentCount];
         _isRespect = data.feed.isPraise;
+        [self updateRespect];
     }
 }
 //- (void)initPersonList {
@@ -193,11 +202,22 @@
     }
 }
 - (void)openShare {
-    [_delegate didClickShare];
+    YActionSheetItem *item1 = [YActionSheetItem itemWithType:YCommonActionSheetItemTypeShare title:@"分享这条动态至" extraData:@{@"tag":@"互联网",@"content":@"balabala",@"pic":@"http://cdn.duitang.com/uploads/item/201411/22/20141122111634_RBCXS.jpeg"}];
+    
+    
+    YActionSheetItem *item2 = [YActionSheetItem itemWithTitle:@"举报"
+                                                         type:YCommonActionSheetItemTypeCommon
+                                                        block:^(NSInteger checkNum) {
+                                                            
+                                                        }];
+    
+    YCommonActionSheet *sheet = [[YCommonActionSheet alloc] initWithType:@[item1, item2] title:nil];
+    [sheet show];
 }
 - (void)openDetail {
     
 }
+
 //- (void)setData:(FeedInfo *)data {
 ////    if (_type == FeedDetailType) {
 ////        [self initPersonList];

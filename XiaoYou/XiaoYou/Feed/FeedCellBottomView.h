@@ -8,14 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-
-@protocol FeedCellBottomDelegate <NSObject>
-
-- (void)didClickShare;
-
-
-@end
-
 @class FeedInfo;
 
 @interface FeedCellBottomView : UIView
@@ -25,7 +17,6 @@
 @property (nonatomic, strong, readonly) UILabel *respectNum;                  //敬酒数
 @property (nonatomic, strong, readonly) UIImageView *respectImg;              //敬酒按钮
 @property (nonatomic, strong, readonly) UIView *personList;                   //敬酒人
-@property (nonatomic, weak)             id<FeedCellBottomDelegate> delegate; //
 - (id)initWithType:(int)type;
 
 - (void)setData:(FeedInfo *)data;
