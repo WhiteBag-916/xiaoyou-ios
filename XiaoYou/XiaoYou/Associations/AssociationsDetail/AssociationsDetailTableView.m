@@ -31,7 +31,7 @@
         
         [self registerClass:[AssociationsListTableViewCell class] forCellReuseIdentifier:kAssociationsListTableViewCell];
         [self registerClass:[ContactsInfoDetailTableViewCell class] forCellReuseIdentifier:kContactsInfoDetailTableViewCell];
-        [self registerClass:[FeedListTableViewCell class] forCellReuseIdentifier:kFeedListTableViewCell];
+        [self registerClass:[FeedListTableViewCell class] forCellReuseIdentifier:kOrganizationFeedListTableViewCell];
     }
     return self;
 }
@@ -80,7 +80,7 @@
         
         return cell;
     } else if (AssociationsDetailTableViewFeedSection == section) {
-        FeedListTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kFeedListTableViewCell];
+        FeedListTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kOrganizationFeedListTableViewCell];
         
         return cell;
     }
@@ -99,7 +99,7 @@
         return SCALE_NUM(40);
     }
     //计算高度
-    CGFloat height = [tableView fd_heightForCellWithIdentifier:kFeedListTableViewCell cacheByIndexPath:indexPath configuration:^(FeedListTableViewCell *cell) {
+    CGFloat height = [tableView fd_heightForCellWithIdentifier:kOrganizationFeedListTableViewCell cacheByIndexPath:indexPath configuration:^(FeedListTableViewCell *cell) {
         [cell setData:_feedListArray[indexPath.row]];
     }];
     return height;

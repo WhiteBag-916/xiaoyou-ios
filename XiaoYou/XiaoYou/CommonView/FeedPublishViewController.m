@@ -13,8 +13,10 @@
 #import "YCommonActionSheet.h"
 #import "YDirectory+Data.h"
 #import "ProvisionManager.h"
+#import "ProfileInfo.h"
 #import "SKTag.h"
 #import "Tags.h"
+#import "CommonSwitchView.h"
 
 #define KTEXTVIEWMARGIN_LEFT SCALE_NUM(5)
 #define KTEXTVIEWMARGIN_TOP SCALE_NUM(15)
@@ -31,6 +33,8 @@
 
 @interface FeedPublishViewController()<UIImagePickerControllerDelegate>
 
+
+@property (nonatomic, strong) UIView *groupView;
 @property (nonatomic, strong) UIView *contentView;
 @property (nonatomic, strong) YTextView *textView;
 @property (nonatomic, strong) FeedImageGroup *imgGroup;
@@ -74,19 +78,55 @@
     [_contentView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.equalTo(self.view);
     }];
+    [self initGroupView];
     [self initTextView];
     [self initImgView];
     [self initBottom];
 }
-
+- (void)initGroupView {
+    _groupView = [[UIView alloc] init];
+    [_contentView addSubview:_groupView];
+    [_groupView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.mas_equalTo(KTEXTVIEWMARGIN_LEFT);
+        make.top.mas_equalTo(KTEXTVIEWMARGIN_TOP);
+        make.centerX.equalTo(_contentView);
+        make.height.mas_equalTo(100);
+    }];
+    ProfileInfo *info = [[ProvisionManager sharedInstance] getProfile];
+    if (info.managerGroups.count == 0) {
+        UILabel *infoLabel = [YUtils initLabel:CONTENT_FONT(12) color:[UIColor blackColor] text:@"选择发布身份" frame:CGRectZero alignment:NSTextAlignmentLeft];
+        [_groupView addSubview:infoLabel];
+        [infoLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.top.left.equalTo(_groupView);
+        }];
+        CommonSwitchView *switchView = [[CommonSwitchView alloc] initWithFrame:CGRectMake(0, 0, SCALE_NUM(70), SCALE_NUM(20)) textArray:@[@"个人", @"社团"]];
+        [_groupView addSubview:switchView];
+        [switchView changedType:^(CommonSwitchType type) {
+            [self changeSwitchView:type];
+        }];
+        [switchView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.centerY.equalTo(infoLabel);
+            make.right.equalTo(_groupView);
+            make.width.mas_equalTo(SCALE_NUM(70));
+            make.height.mas_equalTo(SCALE_NUM(20));
+        }];
+    } else {
+        [_groupView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.height.mas_equalTo(0);
+        }];
+        _groupView.hidden = true;
+    }
+}
+- (void)changeSwitchView:(int)type {
+    
+}
 - (void)initTextView {
     _textView = [[YTextView alloc] init];
     [_contentView addSubview:_textView];
     [_textView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.mas_equalTo(KTEXTVIEWMARGIN_LEFT);
-        make.top.mas_equalTo(KTEXTVIEWMARGIN_TOP);
+        make.left.right.equalTo(_groupView);
+        make.top.equalTo(_groupView.mas_bottom);
         make.height.mas_equalTo(KTEXTVIEWHEIGHT);
-        make.centerX.equalTo(_contentView);
     }];
     _textView.placeholder = @"发布优质内容，会有更多人给你敬酒";
     _textView.placeholderColor = KCOLORWHITE_b8b7b7;

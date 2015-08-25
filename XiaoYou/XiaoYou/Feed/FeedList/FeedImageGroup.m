@@ -74,7 +74,6 @@
         for (int j = 0; j < 3; j++) {
             UIImageView *img = [[UIImageView alloc] init];
             img.tag = KIMGTAG + i*3 + j;
-            img.backgroundColor = [UIColor blueColor];
             img.contentMode = UIViewContentModeScaleAspectFill;
             img.clipsToBounds = true;
             img.userInteractionEnabled = true;
