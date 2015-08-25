@@ -28,6 +28,7 @@
     self.hidesBottomBarWhenPushed = NO;
     //tableview
     _associationsListTableView = [[AssociationsListTableView alloc] init];
+    _associationsListTableView.superVC = self;
     [self.view addSubview:_associationsListTableView];
     
     [_associationsListTableView mas_makeConstraints:^(MASConstraintMaker *make) {

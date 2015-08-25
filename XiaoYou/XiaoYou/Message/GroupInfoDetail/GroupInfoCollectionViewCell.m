@@ -21,6 +21,7 @@ NSString *const kGroupInfoCollectionViewCell = @"GroupInfoCollectionViewCellId";
 @property (nonatomic,strong)UILabel * nameLabel;
 @property (nonatomic,strong)UIButton * deleteButton;
 @property (nonatomic,strong)UILongPressGestureRecognizer * longPressGestureRecognizer;
+@property (nonatomic,strong)UITapGestureRecognizer * tapGestureRecognizer;
 
 @end
 
@@ -31,7 +32,6 @@ NSString *const kGroupInfoCollectionViewCell = @"GroupInfoCollectionViewCellId";
     self = [super initWithFrame:frame];
     if (self) {
         _headImageView = [[UIImageView alloc] init];
-        _headImageView.image = [UIImage imageNamed:@"group_default_head"];
         _headImageView.userInteractionEnabled = YES;
         [self.contentView addSubview:_headImageView];
         [_headImageView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -43,6 +43,9 @@ NSString *const kGroupInfoCollectionViewCell = @"GroupInfoCollectionViewCellId";
         _longPressGestureRecognizer = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longPress)];
         _longPressGestureRecognizer.minimumPressDuration = 1.0;
         [_headImageView addGestureRecognizer:_longPressGestureRecognizer];
+        
+        _tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tap)];
+        [_headImageView addGestureRecognizer:_tapGestureRecognizer];
         
         _deleteButton = [[UIButton alloc] init];
         [_deleteButton setBackgroundImage:[UIImage imageNamed:@"delete-member"] forState:UIControlStateNormal];
@@ -69,14 +72,16 @@ NSString *const kGroupInfoCollectionViewCell = @"GroupInfoCollectionViewCellId";
 
 -(void)setCellInfo:(NSDictionary *) groupDic
 {
-    if (groupDic[@"name"]) {
+    if (![groupDic[@"name"] isEqualToString:@""]) {
+        _headImageView.image = [UIImage imageNamed:@"group_default_head"];
         _nameLabel.text = groupDic[@"name"];
     }
-    else
+    else if ([groupDic[@"add"] isEqualToString:@"add"])
     {
         _nameLabel.text = @"";
         _headImageView.image = [UIImage imageNamed:@"group_add"];
         [_headImageView removeGestureRecognizer:_longPressGestureRecognizer];
+        [_headImageView removeGestureRecognizer:_tapGestureRecognizer];
     }
     
 }
@@ -84,6 +89,11 @@ NSString *const kGroupInfoCollectionViewCell = @"GroupInfoCollectionViewCellId";
 -(void)longPress
 {
     _deleteButton.hidden = NO;
+}
+
+-(void)tap
+{
+    _deleteButton.hidden = YES;
 }
 
 -(void)clickdeleteButton

@@ -12,6 +12,6 @@ extern NSString *const kContactsInfoDetailTableViewCell;
 
 @interface ContactsInfoDetailTableViewCell : YTableViewCell
 
--(void)setCellInfo:(NSDictionary *) dic;
+-(void)setCellInfo:(NSDictionary *) dic hiddenLine:(BOOL)hiddenLine;
 
 @end
