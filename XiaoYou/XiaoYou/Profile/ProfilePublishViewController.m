@@ -9,6 +9,7 @@
 
 #import "ProfilePublishViewController.h"
 #import "ProfileFeedListView.h"
+#import "FeedPublishViewController.h"
 @interface ProfilePublishViewController()
 @property (nonatomic, strong) NSString *userId;
 @property (nonatomic, strong) ProfileFeedListView *tableView;
@@ -37,6 +38,9 @@
 - (void)initController {
     self.view.backgroundColor = KCOLORWHITE;
     [self showCustomNavigationBackButton];
+    if (_userId.length == 0) {
+        [self showCustomNavigationPublishButton];
+    }
 }
 
 - (void)initTableView {
@@ -52,5 +56,11 @@
 }
 - (void)viewDidAppear:(BOOL)animated {
     [_tableView loadData:_userId];
+}
+- (void)onNavigationRightButtonClicked {
+    UINavigationController *navigationController =
+    [[UINavigationController alloc] initWithRootViewController:[[FeedPublishViewController alloc] init]];
+    [self.navigationController presentViewController:navigationController animated:YES completion:nil];
+    
 }
 @end

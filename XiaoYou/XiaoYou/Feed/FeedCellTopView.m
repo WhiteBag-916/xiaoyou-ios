@@ -13,6 +13,9 @@
 #import "FeedInfo.h"
 #import "Author.h"
 #import "Feed.h"
+#import "CommentListItems.h"
+#import "Comment.h"
+
 
 #define KHEADIMGWIDTH SCALE_NUM(40)//标准头像宽度
 #define KHEADIMGWIDTHS SCALE_NUM(34)//评论头像宽度
@@ -68,7 +71,7 @@
                 make.centerY.equalTo(_contactHeadImageView);
             }];
             
-            _timeLabel = [YUtils initLabel:CONTENT_FONT(11) color:[UIColor blackColor] text:@"刚刚" frame:CGRectZero alignment:NSTextAlignmentLeft];
+            _timeLabel = [YUtils initLabel:CONTENT_FONT(11) color:KCOLORWHITE_696969 text:@"刚刚" frame:CGRectZero alignment:NSTextAlignmentLeft];
             [self addSubview:_timeLabel];
             [_timeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
                 make.left.equalTo(_contactNameLabel.mas_right).offset(KTIMEMARGIN_LEFT);
@@ -91,18 +94,20 @@
     return self;
 }
 
-- (void)setData:(FeedInfo *)data {
-    [_contactHeadImageView setData:data.author.uid imageUrl:data.author.headPic];
-    _contactNameLabel.text = data.author.name;
-    _timeLabel.text = [YUtils distanceTimeToday:[NSDate dateWithTimeIntervalSince1970:data.feed.createTime/1000]];
-    [_tagList updateWithTag:data.author.propetiesCommon];
-    
-    UIViewController *appRootVC = [UIApplication sharedApplication].keyWindow.rootViewController;
-    UIViewController *topVC = appRootVC;
-    while (topVC.presentedViewController) {
-        topVC = topVC.presentedViewController;
-        NSString *className = [NSString stringWithUTF8String:object_getClassName(topVC)];
-        NSLog(@"className:%@", className);
+- (void)setData:(id)inData {
+    if ([inData isKindOfClass:[FeedInfo class]]) {
+        FeedInfo *data = inData;
+        [_contactHeadImageView setData:data.author.uid imageUrl:data.author.headPic];
+        _contactNameLabel.text = data.author.name;
+        _timeLabel.text = [YUtils distanceTimeToday:[NSDate dateWithTimeIntervalSince1970:data.feed.createTime/1000]];
+        [_tagList updateWithTag:data.author.propetiesCommon];
+    }
+    if ([inData isKindOfClass:[CommentListItems class]]) {
+        CommentListItems *data = inData;
+        [_contactHeadImageView setData:data.author.uid imageUrl:data.author.headPic];
+        _contactNameLabel.text = data.author.name;
+        _timeLabel.text = [YUtils distanceTimeToday:[NSDate dateWithTimeIntervalSince1970:data.comment.createTime/1000]];
+        [_tagList updateWithTag:data.author.propetiesCommon];
     }
 }
 

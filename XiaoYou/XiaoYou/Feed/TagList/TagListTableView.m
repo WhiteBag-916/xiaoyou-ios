@@ -64,9 +64,15 @@
     if (_data.count == indexPath.row)
     {
         [self toAddTag];
+    } else {
+        [self toFeedFilter:@"233" name:@"互联网"];
     }
 }
-
+- (void)toFeedFilter:(NSString *)filter name:(NSString *)name {
+    [[SlideNavigationController sharedInstance] closeMenuWithCompletion:^{
+        [[NSNotificationCenter defaultCenter] postNotificationName:kNotification_Push_FeedFilter object:nil userInfo:@{@"filter":filter, @"name":name}];
+    }];
+}
 //跳转到添加标签
 - (void)toAddTag {
     [[SlideNavigationController sharedInstance] closeMenuWithCompletion:^{

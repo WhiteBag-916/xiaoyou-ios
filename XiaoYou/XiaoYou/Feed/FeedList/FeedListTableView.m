@@ -10,25 +10,26 @@
 #import "FeedListTableViewCell.h"
 #import "FeedListViewController.h"
 #import "FeedManager.h"
+#import "FeedInfo.h"
+#import "Feed.h"
 
 #define KPAGENUM 6
 @interface FeedListTableView ()
 <UITableViewDataSource
 ,UITableViewDelegate>
 
+@property (nonatomic, strong) NSString *filter;
 @property (nonatomic, strong) NSMutableArray *feedListArray;
 
 @end
 
 @implementation FeedListTableView
-
-- (instancetype)initWithFrame:(CGRect)frame
-{
-    self = [super initWithFrame:frame];
+- (id)init {
+    self = [super init];
     if (self) {
         self.delegate = self;
         self.dataSource = self;
-        
+        _filter = @"";
         [self registerClass:[FeedListTableViewCell class] forCellReuseIdentifier:kFeedListTableViewCell];
         self.tableFooterView = [[UIView alloc] init];
         _feedListArray = [NSMutableArray array];
@@ -36,6 +37,22 @@
     }
     return self;
 }
+
+
+- (id)initWithFilter:(NSString *)filter {
+    self = [super init];
+    if (self) {
+        _filter = filter;
+        self.delegate = self;
+        self.dataSource = self;
+        [self registerClass:[FeedListTableViewCell class] forCellReuseIdentifier:kFeedListTableViewCell];
+        self.tableFooterView = [[UIView alloc] init];
+        _feedListArray = [NSMutableArray array];
+        self.fd_debugLogEnabled = false;
+    }
+    return self;
+}
+
 
 #pragma mark - 继承者
 - (BOOL)showHeaderRefresh
@@ -61,7 +78,7 @@
     [self sendRequest];
 }
 - (void)sendRequest {
-    [[FeedManager sharedInstance] feedList:_feedListArray.count limitEnd:_feedListArray.count + KPAGENUM block:^(YActionMessage *message) {
+    [[FeedManager sharedInstance] feedList:_feedListArray.count limitEnd:_feedListArray.count + KPAGENUM queryCode:_filter block:^(YActionMessage *message) {
         if (_feedListArray.count == 0) {
             [self stopLoadNewData];
         } else {
@@ -112,7 +129,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    [_parent goToDetail:@"233"];
+    [_parent goToDetail:[NSString stringWithFormat:@"%d", (int)[(FeedInfo *)_feedListArray[indexPath.row] feed].feedIdentifier]];
 }
 
 

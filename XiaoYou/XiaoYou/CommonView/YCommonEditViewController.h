@@ -15,6 +15,12 @@ typedef NS_ENUM(NSInteger, YCommonEditType) {
      *  @brief  编辑态度
      */
     YCommonEditAttitude,
+    /**
+     *  @author 李思良, 15-08-25
+     *
+     *  @brief  添加好友
+     */
+    YCommonEditAddFriend,
 };
 
 @interface YCommonEditViewController : YViewController

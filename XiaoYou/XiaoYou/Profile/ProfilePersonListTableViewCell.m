@@ -36,6 +36,7 @@ NSString *const kProfilePersonListTableViewCell = @"kProfilePersonListTableViewC
 @property (nonatomic, strong) ConnectTag *connect;
 @property (nonatomic, strong) FeedTag *tagView;
 @property (nonatomic, strong) UIButton *addFriend;
+@property (nonatomic, strong) UILabel *genderLabel;
 
 @end
 
@@ -67,11 +68,19 @@ NSString *const kProfilePersonListTableViewCell = @"kProfilePersonListTableViewC
             make.centerY.equalTo(_userName);
         }];
         
+        _genderLabel = [YUtils initLabel:CONTENT_FONT(12) color:[UIColor blackColor] text:@"女" frame:CGRectZero alignment:NSTextAlignmentLeft];
+        [self.contentView addSubview:_genderLabel];
+        [_genderLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.equalTo(_userName);
+            make.top.equalTo(_userName.mas_bottom).offset(KTAGMARGIN_TOP);
+            make.right.equalTo(self.contentView).offset(-KTAGMARGIN_RIGHT);
+        }];
+        
         _tagView = [[FeedTag alloc] init];
         [self.contentView addSubview:_tagView];
         [_tagView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.equalTo(_userName);
-            make.top.equalTo(_userName.mas_bottom).offset(KTAGMARGIN_TOP);
+            make.top.equalTo(_genderLabel.mas_bottom).offset(KTAGMARGIN_TOP);
             make.right.equalTo(self.contentView).offset(-KTAGMARGIN_RIGHT);
         }];
         [_tagView.tagContent mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -90,16 +99,31 @@ NSString *const kProfilePersonListTableViewCell = @"kProfilePersonListTableViewC
         _addFriend.layer.cornerRadius = KADDFRIENDWIDTH/2;
         _addFriend.clipsToBounds = true;
         [_addFriend setImage:[UIImage imageNamed:@"mine-add-friend"] forState:UIControlStateNormal];
+        [_addFriend addTarget:self action:@selector(clickAdd) forControlEvents:UIControlEventTouchUpInside];
+        
     }
     return self;
 }
-- (void)setData:(Author *)author {
+
+- (void)setData:(Author *)author needShowGender:(BOOL)needShowGender {
     [_face setData:author.uid imageUrl:author.headPic];
     _userName.text = author.name;
     [_tagView setData:author.tagsCommon];
     [_connect updateWithTag:author.propetiesCommon];
     
+    _genderLabel.hidden = !needShowGender;
+    if (needShowGender) {
+        [_tagView mas_updateConstraints:^(MASConstraintMaker *make) {
+            make.top.equalTo(_genderLabel.mas_bottom).offset(KTAGMARGIN_TOP);
+        }];
+    } else  {
+        [_tagView mas_updateConstraints:^(MASConstraintMaker *make) {
+            make.top.equalTo(_userName.mas_bottom).offset(KTAGMARGIN_TOP);
+        }];
+    }
 }
-
+- (void)clickAdd {
+    [[NSNotificationCenter defaultCenter] postNotificationName:KNotification_Present_AddFriend object:nil userInfo:@{@"uid":_face.userId}];
+}
 
 @end

@@ -11,6 +11,9 @@
 #import "FeedImageGroup.h"
 #import "Feed.h"
 #import "FeedInfo.h"
+#import "Comment.h"
+#import "CommentListItems.h"
+#import "Author.h"
 
 #define KTAGHEIGHT SCALE_NUM(20)
 #define KTAGMARGIN SCALE_NUM(6)
@@ -46,11 +49,11 @@
                 make.top.equalTo(_contentLabel.mas_bottom).offset(KTAGMARGIN_TOP);
             }];
             [self mas_makeConstraints:^(MASConstraintMaker *make) {
-                make.bottom.mas_equalTo(_imgGroup);
+                make.bottom.equalTo(_imgGroup);
             }];
         } else {
             [self mas_makeConstraints:^(MASConstraintMaker *make) {
-                make.bottom.mas_equalTo(_contentLabel);
+                make.bottom.equalTo(_contentLabel);
             }];
         }
         
@@ -58,12 +61,22 @@
     }
     return self;
 }
-- (void)setData:(FeedInfo *)data {
-    _contentLabel.text = data.feed.content;
-    if (data.feed.img.length == 0) {
-        [_imgGroup updateWithImgs:nil bigPics:nil];
-    } else {
-        [_imgGroup updateWithImgs:[data.feed.img componentsSeparatedByString:@","] bigPics:[data.feed.img componentsSeparatedByString:@","]];
+- (void)setData:(id)inData {
+    if ([inData isKindOfClass:[FeedInfo class]]) {
+        FeedInfo *data = inData;
+        _contentLabel.text = data.feed.content;
+        if (data.feed.img.length == 0) {
+            [_imgGroup updateWithImgs:nil bigPics:nil];
+        } else {
+            [_imgGroup updateWithImgs:[data.feed.img componentsSeparatedByString:@","] bigPics:[data.feed.img componentsSeparatedByString:@","]];
+        }
+    }
+    if ([inData isKindOfClass:[CommentListItems class]]) {
+        CommentListItems *data = inData;
+        _contentLabel.text = data.comment.content;
+        if (data.replyUser.name.length != 0) {
+            _contentLabel.text = [NSString stringWithFormat:@"回复%@:%@",data.replyUser.name, _contentLabel.text];
+        }
     }
 }
 @end

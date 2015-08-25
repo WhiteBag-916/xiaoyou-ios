@@ -12,6 +12,9 @@
 #import "MyFeedAction.h"
 #import "FeedDetailAction.h"
 #import "FeedListAction.h"
+#import "NewFeedAction.h"
+#import "UploadFeedImageAction.h"
+#import "FindFriendsByTagsAction.h"
 
 #define KFeedManagerSyncQueue @"kFeedManagerSyncQueue"
 
@@ -70,10 +73,47 @@ DEF_SINGLETON(FeedManager);
 }
 
 //获取feed列表,FeedInfo
-- (void)feedList:(NSInteger)limitStart limitEnd:(NSInteger)limitEnd block:(ActionCompleteBlock)block {
+- (void)feedList:(NSInteger)limitStart limitEnd:(NSInteger)limitEnd queryCode:(NSString *)queryCode block:(ActionCompleteBlock)block {
     FeedListAction *action = [[FeedListAction alloc] init];
     action.limitEnd = limitEnd;
     action.limitStart = limitStart;
+    action.queryCode = queryCode;
+    
+    [YAction startAction:action completionBlock:^(YActionMessage* message) {
+        //主线程处理界面
+        block(message);
+    }];
+}
+
+//发送feed
+- (void)sendFeed:(Feed *)feed tagIds:(NSString *)tagIds block:(ActionCompleteBlock)block {
+    NewFeedAction *action = [[NewFeedAction alloc] init];
+    action.feed = feed;
+    action.tagIds = tagIds;
+    
+    [YAction startAction:action completionBlock:^(YActionMessage* message) {
+        //主线程处理界面
+        block(message);
+    }];
+}
+
+//上传feed图片,传图片存储的绝对路径,UploadImage
+- (void)uploadFeedImage:(NSString *)imgPath block:(ActionCompleteBlock)block {
+    UploadFeedImageAction *action = [[UploadFeedImageAction alloc] init];
+    action.imagePath = imgPath;
+    
+    [YAction startAction:action completionBlock:^(YActionMessage* message) {
+        //主线程处理界面
+        block(message);
+    }];
+}
+
+//获取feed人列表,Author
+- (void)findFriendsByTags:(NSInteger)limitStart limitEnd:(NSInteger)limitEnd queryCode:(NSString *)queryCode block:(ActionCompleteBlock)block {
+    FindFriendsByTagsAction *action = [[FindFriendsByTagsAction alloc] init];
+    action.limitEnd = limitEnd;
+    action.limitStart = limitStart;
+    action.queryCode = queryCode;
     
     [YAction startAction:action completionBlock:^(YActionMessage* message) {
         //主线程处理界面

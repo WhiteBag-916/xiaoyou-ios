@@ -8,6 +8,13 @@
 
 #import "NotifyListViewController.h"
 #import "YCommonActionSheet.h"
+#import "NotifyListTableView.h"
+
+@interface NotifyListViewController ()
+
+@property (nonatomic, strong) NotifyListTableView *notifyListTableView;
+
+@end
 
 @implementation NotifyListViewController
 
@@ -17,40 +24,29 @@
     
     [self showCustomNavigationBackButton];
     [self showCustomNavigationMoreButton];
-    self.title = @"新提醒";
+    self.title = @"人脉新提醒";
+    
+    [self initView];
+}
+
+- (void)initView {
+    _notifyListTableView = [[NotifyListTableView alloc] init];
+    _notifyListTableView.backgroundColor = KCOLORWHITE;
+    [self.view addSubview:_notifyListTableView];
+    
+    [_notifyListTableView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.mas_equalTo(self.view);
+    }];
 }
 
 - (void)onNavigationRightButtonClicked {
-//    YActionSheetItem *item1 = [YActionSheetItem itemWithTitle:@"清空所有提醒"
-//                                                         type:YCommonActionSheetItemTypeCommon
-//                                                        block:^(NSInteger checkNum) {
-//                                                            
-//                                                        }];
-//    
-//    YCommonActionSheet *sheet = [[YCommonActionSheet alloc] initWithType:@[item1] title:nil];
-//    [sheet show];
-    
-    //test
-    YActionSheetItem *item1 = [YActionSheetItem itemWithTitle:@"分享这社团名片至"
-                                                         type:YCommonActionSheetItemTypeShare
-                                                        block:^(NSInteger checkNum) {
-                                                            
-                                                        }];
-    
-    YActionSheetItem *item2 = [YActionSheetItem itemWithTitle:@"消息不提醒"
-                                                         type:YCommonActionSheetItemTypeSwitch
-                                                         open:YES
-                                                        block:^(NSInteger checkNum) {
-                                                            
-                                                        }];
-    
-    YActionSheetItem *item3 = [YActionSheetItem itemWithTitle:@"举报"
+    YActionSheetItem *item1 = [YActionSheetItem itemWithTitle:@"清空所有提醒"
                                                          type:YCommonActionSheetItemTypeCommon
                                                         block:^(NSInteger checkNum) {
                                                             
                                                         }];
     
-    YCommonActionSheet *sheet = [[YCommonActionSheet alloc] initWithType:@[item1, item2, item3] title:nil];
+    YCommonActionSheet *sheet = [[YCommonActionSheet alloc] initWithType:@[item1] title:nil];
     [sheet show];
 }
 

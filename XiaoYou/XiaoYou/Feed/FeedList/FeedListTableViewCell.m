@@ -128,6 +128,7 @@ NSString *const KCommentTableViewCell = @"CommentTableViewCell";
         if (_feedType == FeedCommentType) {
             make.top.equalTo(_middleView);
             make.right.equalTo(_middleView.mas_left);
+            
         } else {
             make.right.equalTo(_topView);
             if (_feedType == FeedOrganizationType) {
@@ -135,8 +136,8 @@ NSString *const KCommentTableViewCell = @"CommentTableViewCell";
             } else {
                 make.top.equalTo(_tagView.mas_bottom).offset(KBOTTOMMARGIN_TOP);
             }
-            make.bottom.equalTo(self.contentView).offset(-10);
         }
+        make.bottom.lessThanOrEqualTo(self.contentView).offset(-10);
     }];
     if (_feedType == FeedListType) {
         [_bottomView.shareButton mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -160,18 +161,20 @@ NSString *const KCommentTableViewCell = @"CommentTableViewCell";
     }
     if (_feedType == FeedCommentType) {
         [_middleView mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.bottom.equalTo(self.contentView).offset(-10);
+            make.bottom.lessThanOrEqualTo(self.contentView).offset(-10);
         }];
     }
     
 }
 
-- (void)setData:(FeedInfo *)info
+- (void)setData:(id)info
 {
     [_topView setData:info];
     [_middleView setData:info];
     [_bottomView setData:info];
-    [_tagView setData:info.tags];
+    if (_feedType != FeedCommentType) {
+        [_tagView setData:[(FeedInfo *)info tags]];
+    }
 }
 
 

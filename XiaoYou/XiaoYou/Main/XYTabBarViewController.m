@@ -13,6 +13,7 @@
 #import "XYMessageAndContactsViewController.h"
 #import "ProfileMyViewController.h"
 #import "XYContactsInfoDetailViewController.h"
+#import "YCommonEditViewController.h"
 
 #define kTag_TabBar_Base 0
 #define kTag_TabBar_Message kTag_TabBar_Base + 1
@@ -41,6 +42,7 @@
 {
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(openProfile:) name:KNotification_Open_Profile object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(setupUnreadMessageCount:) name:KNotification_Message_unread object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(openAddFriend:) name:KNotification_Present_AddFriend object:nil];
     
     _messageVC = [[XYMessageAndContactsViewController alloc] init];
     FeedListViewController *feedVC = [[FeedListViewController alloc] init];
@@ -108,6 +110,10 @@
         xv.uid = userId;
         [controller pushViewController:xv animated:true];
     }
+}
+- (void)openAddFriend:(NSNotification *)notification {
+    UINavigationController *controller = (UINavigationController *)self.selectedViewController;
+    [controller presentViewController:[[UINavigationController alloc] initWithRootViewController:[[YCommonEditViewController alloc] initWithType:YCommonEditAddFriend preText:[notification userInfo][@"uid"]]] animated:true completion:nil];
 }
 #pragma mark - SlideNavigationControllerDelegate
 - (BOOL)slideNavigationControllerShouldDisplayLeftMenu

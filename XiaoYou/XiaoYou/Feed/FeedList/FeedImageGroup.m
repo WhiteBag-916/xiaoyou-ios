@@ -221,9 +221,9 @@
     return image;
 }
 
-- (NSURL *)photoBrowser:(SDPhotoBrowser *)browser highQualityImageURLForIndex:(NSInteger)index {
-    return [NSURL URLWithString:_bigImgs[index]];
-}
+//- (NSURL *)photoBrowser:(SDPhotoBrowser *)browser highQualityImageURLForIndex:(NSInteger)index {
+//    return [NSURL URLWithString:_bigImgs[index]];
+//}
 
 #pragma YTakePhoto
 - (void)didUploadPhoto:(UIImage *)image url:(NSString *)url {

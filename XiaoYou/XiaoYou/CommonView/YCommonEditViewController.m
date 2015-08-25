@@ -9,6 +9,7 @@
 #import "YCommonEditViewController.h"
 #import "YTextView.h"
 #import "ProvisionManager.h"
+#import "LoginResp.h"
 
 @interface YCommonEditViewController()<UITextViewDelegate>
 
@@ -43,6 +44,10 @@
     if (_preText.length == 0) {
         self.navigationRightButton.enabled = false;
     }
+    if (_type == YCommonEditAddFriend) {
+        self.title = @"添加好友";
+        self.navigationRightButton.enabled = true;
+    }
     
     
 }
@@ -61,6 +66,11 @@
     _textView.text = _preText;
     if (_type == YCommonEditAttitude) {
         _textView.placeholder = @"你是一个没有态度的人";
+    }
+    if (_type == YCommonEditAddFriend) {
+        _textView.text = @"";
+        LoginResp *resp = [[ProvisionManager sharedInstance] getLoginInfo];
+        _textView.placeholder = [NSString stringWithFormat:@"我是%@级%@的%@", resp.grad, resp.college, resp.studentName];
     }
     _textView.placeholderColor = KCOLORGREEN_455A64;
     _textView.font = CONTENT_FONT(12);

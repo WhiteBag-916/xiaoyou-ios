@@ -13,6 +13,9 @@
 #define kNotification_Push_SearchPerson                 @"kNotification_Push_SearchPerson"
 #define kNotification_Push_Notify                       @"kNotification_Push_Notify"
 #define kNotification_Push_AddTag                       @"kNotification_Push_AddTag"
+#define kNotification_Push_FeedFilter                   @"kNotification_Push_FeedFilter"
+
+
 #define kNotification_Push_FeedDetail                   @"kNotification_Push_FeedDetail"
 #define kNotification_Push_Report                       @"kNotification_Push_Report"
 
@@ -23,6 +26,8 @@
 #define KNotification_Open_Profile                      @"KNotification_Open_Profile"
 #define KNotification_Message_unread                    @"KNotification_Message_unread"
 
-#define kNotification_Refresh_Message                  @"kNotification_Refresh_Message"
+#define kNotification_Refresh_Message                   @"kNotification_Refresh_Message"
+
+#define KNotification_Present_AddFriend                 @"KNotification_Present_AddFriend"
 
 #endif

@@ -15,6 +15,6 @@
 @property (nonatomic, strong, readonly) FeedImageGroup *imgGroup;             //图片
 
 - (id)initWithType:(int)type;
-- (void)setData:(FeedInfo *)data;
+- (void)setData:(id)inData;
 
 @end

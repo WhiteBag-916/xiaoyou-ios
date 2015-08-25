@@ -19,6 +19,6 @@
 @property (nonatomic, strong, readonly) UIView *personList;                   //敬酒人
 - (id)initWithType:(int)type;
 
-- (void)setData:(FeedInfo *)data;
+- (void)setData:(id)inData;
 
 @end

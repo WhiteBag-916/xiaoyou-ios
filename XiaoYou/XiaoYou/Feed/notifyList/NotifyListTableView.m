@@ -1,21 +1,21 @@
 //
-//  FeedContactTableView.m
+//  NotifyListTableView.m
 //  XiaoYou
 //
-//  Created by 熊宸 on 15/8/18.
+//  Created by 熊宸 on 15/8/25.
 //  Copyright (c) 2015年 xc. All rights reserved.
 //
 
-#import "FeedContactTableView.h"
-#import "FeedContactTableViewCell.h"
+#import "NotifyListTableView.h"
+#import "NotifyListTableViewCell.h"
 
-@interface FeedContactTableView ()
+@interface NotifyListTableView ()
 <UITableViewDataSource
 ,UITableViewDelegate>
 
 @end
 
-@implementation FeedContactTableView
+@implementation NotifyListTableView
 
 - (instancetype)initWithFrame:(CGRect)frame
 {
@@ -25,33 +25,20 @@
         self.dataSource = self;
         self.separatorStyle = UITableViewCellSeparatorStyleNone;
         
-        [self registerClass:[FeedContactTableViewCell class] forCellReuseIdentifier:kFeedContactTableViewCell];
-        self.tableFooterView = [[UIView alloc] init];
-        self.fd_debugLogEnabled = false;
+        [self registerClass:[NotifyListTableViewCell class] forCellReuseIdentifier:kNotifyListTableViewCell];
     }
     return self;
-}
-
-- (void)loadData:(NSArray *)data {
-    [self reloadData];
 }
 
 #pragma mark - UITableViewDataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 50;
-}
-
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
-    return 1;
+    return 10;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    FeedContactTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kFeedContactTableViewCell];
-    
-    [cell setData];
+    NotifyListTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kNotifyListTableViewCell];
     
     return cell;
 }
@@ -59,11 +46,12 @@
 #pragma mark - UITableViewDelegate
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return SCALE_NUM(111);
+    return SCALE_NUM(51);
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 @end

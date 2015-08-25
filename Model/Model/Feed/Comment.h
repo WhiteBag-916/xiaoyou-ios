@@ -17,8 +17,9 @@
 @property (nonatomic, assign) double commentIdentifier;
 @property (nonatomic, assign) double feedId;
 @property (nonatomic, assign) double praiseCount;
-@property (nonatomic, assign) id toUserId;
+@property (nonatomic, strong) NSString *toUserId;
 @property (nonatomic, assign) double createTime;
+@property (nonatomic, assign) BOOL isRespect;
 
 + (instancetype)modelObjectWithDictionary:(NSDictionary *)dict;
 - (instancetype)initWithDictionary:(NSDictionary *)dict;
