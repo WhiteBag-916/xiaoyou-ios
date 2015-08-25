@@ -60,7 +60,7 @@
     }];
 }
 - (void)initFeedList {
-    _feedListTableView = [[FeedListTableView alloc] init];
+    _feedListTableView = [[FeedListTableView alloc] initWithFilter:_filter];
     [self.view addSubview:_feedListTableView];
     _feedListTableView.parent = self;
     
