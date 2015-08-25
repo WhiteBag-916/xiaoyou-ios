@@ -19,6 +19,7 @@ NSString *const kGroupInfoDetailHeaderView = @"GroupInfoDetailHeaderViewId";
 @interface GroupInfoDetailHeaderView ()
 
 @property (nonatomic,strong)UIImageView * groupImageView;
+@property (nonatomic,strong)UILabel * grouoHeadLabel;
 @property (nonatomic,strong)UILabel * groupNameLabel;
 
 @end
@@ -32,7 +33,9 @@ NSString *const kGroupInfoDetailHeaderView = @"GroupInfoDetailHeaderViewId";
         self.backgroundColor = [UIColor yellowColor];
         
         _groupImageView = [[UIImageView alloc] init];//WithFrame:CGRectMake(0, 0, 50, 50)];
-        _groupImageView.backgroundColor = [UIColor orangeColor];
+        _groupImageView.backgroundColor = [UIColor hexChangeFloat:@"258f74"];
+        _groupImageView.layer.cornerRadius = 25;
+        _groupImageView.clipsToBounds = YES;
         [self addSubview:_groupImageView];
         [_groupImageView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.centerY.equalTo(self);
@@ -40,9 +43,20 @@ NSString *const kGroupInfoDetailHeaderView = @"GroupInfoDetailHeaderViewId";
             make.width.height.mas_equalTo(kImageViewWidthAndHeight);
         }];
         
+        _grouoHeadLabel = [[UILabel alloc] init];
+        _grouoHeadLabel.textColor = [UIColor whiteColor];
+        _grouoHeadLabel.textAlignment = NSTextAlignmentCenter;
+        _grouoHeadLabel.font = CONTENT_FONT(20);
+        _grouoHeadLabel.backgroundColor = [UIColor clearColor];
+        [self addSubview:_grouoHeadLabel];
+        [_grouoHeadLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.centerY.equalTo(self);
+            make.left.mas_equalTo(kPaddingDistance);
+            make.width.height.mas_equalTo(kImageViewWidthAndHeight);
+        }];
+        
         _groupNameLabel = [[UILabel alloc] init];
         _groupNameLabel.font = CONTENT_FONT(14);
-        _groupNameLabel.text = @"西班牙班";
         _groupNameLabel.backgroundColor = [UIColor orangeColor];
         [self addSubview:_groupNameLabel];
         [_groupNameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -55,6 +69,11 @@ NSString *const kGroupInfoDetailHeaderView = @"GroupInfoDetailHeaderViewId";
     return self;
 }
 
+-(void)setHeaderViewInfo:(id)model
+{
+    _grouoHeadLabel.text = @"足";
+    _groupNameLabel.text = @"西班牙班";
 
+}
 
 @end

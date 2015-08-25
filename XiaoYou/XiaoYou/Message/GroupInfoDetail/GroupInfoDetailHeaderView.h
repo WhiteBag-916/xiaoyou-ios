@@ -12,4 +12,6 @@ extern NSString *const kGroupInfoDetailHeaderView;
 
 @interface GroupInfoDetailHeaderView : UICollectionReusableView
 
+-(void)setHeaderViewInfo:(id) model;
+
 @end

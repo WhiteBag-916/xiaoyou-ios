@@ -11,6 +11,9 @@
 #define kHeadImageViewHeightAndWidth        40
 #define kPaddingDistance                    5
 #define kHeadCornerRadius                   20
+#define kBackTopAndBottom                   10
+#define kBackLeft                           20
+#define kBackRight                          16
 
 NSString *const kNormalSystemMessageTableViewCell = @"NormalSystemMessageTableViewCellId";
 
@@ -43,24 +46,28 @@ NSString *const kNormalSystemMessageTableViewCell = @"NormalSystemMessageTableVi
         [self.contentView addSubview:_backImageView];
         [_backImageView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.top.mas_equalTo(kPaddingDistance);
-//            make.right.mas_equalTo(-kPaddingDistance);
+            make.right.bottom.mas_equalTo(-kPaddingDistance);
             make.left.equalTo(_headImageView.mas_right).offset(kPaddingDistance);
         }];
         
         _contentLabel = [[UILabel alloc] init];
+        _contentLabel.numberOfLines = 0;
+        _contentLabel.font = CONTENT_FONT(12);
         _contentLabel.backgroundColor = [UIColor orangeColor];
-        _contentLabel.text = @"12342tgdsgs";
         [_backImageView addSubview:_contentLabel];
         [_contentLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.center.equalTo(_backImageView);
+            make.top.mas_equalTo(kBackTopAndBottom);
+            make.left.mas_equalTo(kBackLeft);
+            make.bottom.mas_equalTo(-kBackTopAndBottom);
+            make.right.mas_equalTo(-kBackRight);
         }];
     }
     return self;
 }
 
--(void)setCellInfo:(NSDictionary *) dic
+-(void)setCellInfo:(id) dic
 {
-
+    _contentLabel.text = dic;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

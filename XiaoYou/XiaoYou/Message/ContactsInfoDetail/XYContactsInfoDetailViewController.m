@@ -58,7 +58,7 @@
     
     [_contactsInfoDetailTableView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.left.right.mas_equalTo(0);
-        make.bottom.mas_equalTo(-KNavigationBarheight);
+        make.bottom.mas_equalTo(-KTabBarheight);
     }];
     
     _bottomButton = [[UIButton alloc] init];

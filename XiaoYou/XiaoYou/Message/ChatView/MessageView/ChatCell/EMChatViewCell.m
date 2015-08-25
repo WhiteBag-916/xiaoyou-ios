@@ -13,6 +13,7 @@
 #import "EMChatViewCell.h"
 #import "EMChatVideoBubbleView.h"
 #import "UIResponder+Router.h"
+#import "ContactsInfoDetailTableView.h"
 
 NSString *const kResendButtonTapEventName = @"kResendButtonTapEventName";
 NSString *const kShouldResendCell = @"kShouldResendCell";
@@ -26,9 +27,12 @@ NSString *const kShouldResendCell = @"kShouldResendCell";
         // Initialization code
         self.headImageView.clipsToBounds = YES;
         self.headImageView.layer.cornerRadius = 20;
+        
     }
     return self;
 }
+
+
 
 - (BOOL)canBecomeFirstResponder
 {

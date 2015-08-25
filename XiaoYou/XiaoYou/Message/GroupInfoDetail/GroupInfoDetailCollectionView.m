@@ -28,9 +28,7 @@
         self.dataSource = self;
         self.backgroundColor = [UIColor clearColor];
         
-        [self registerClass:[GroupInfoCollectionViewCell class] forCellWithReuseIdentifier:kGroupInfoCollectionViewCell];
-        
-        
+        [self registerClass:[GroupInfoCollectionViewCell class] forCellWithReuseIdentifier:kGroupInfoCollectionViewCell];   
         [self registerClass:[GroupInfoDetailHeaderView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:kGroupInfoDetailHeaderView];
     }
     return self;
@@ -43,12 +41,12 @@
 
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    return 16;
+    return 40;
 }
 
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.row < 15) {
+    if (indexPath.row < 39) {
         GroupInfoCollectionViewCell * cell = (GroupInfoCollectionViewCell *) [collectionView dequeueReusableCellWithReuseIdentifier:kGroupInfoCollectionViewCell forIndexPath:indexPath];
         
         [cell setCellInfo:@{@"name":@"李宝顺吖"}];
@@ -59,7 +57,7 @@
     {
         GroupInfoCollectionViewCell * cell = (GroupInfoCollectionViewCell *) [collectionView dequeueReusableCellWithReuseIdentifier:kGroupInfoCollectionViewCell forIndexPath:indexPath];
         
-        [cell setCellInfo:@{@"add":@"add"}];
+        [cell setCellInfo:@{@"name":@"",@"add":@"add"}];
         
         return cell;
     }
@@ -114,6 +112,7 @@
     GroupInfoDetailHeaderView *headView;
     
     headView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:kGroupInfoDetailHeaderView forIndexPath:indexPath];
+    [headView setHeaderViewInfo:nil];
     return headView;
 }
 

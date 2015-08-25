@@ -25,7 +25,7 @@
         self.dataSource = self;
         self.delegate = self;
         
-        _dataSouceArr = [@[@"自我介绍一下呗",@"请发送简历至",@"面试通知",@"你的兴趣爱好",@"你喜欢男生还是女生",@"你是单身吗",@"你可以向我问个问题"] mutableCopy];
+        _dataSouceArr = [@[@"12342tgdssaiajsopfhasophposahgophafsamniognsaiongoapisngoasngpoasngpoangpaognpospohgpoahgohsaopghnasogopaggs",@"请发送简历至",@"面试通知",@"你的兴趣爱好",@"撒覅那",@"你是单身吗",@"你可以向我问个问题"] mutableCopy];
         [self registerClass:[NormalSystemMessageTableViewCell class] forCellReuseIdentifier:kNormalSystemMessageTableViewCell];
         [self registerClass:[ApplySuccessSystemMessageTableViewCell class] forCellReuseIdentifier:kApplySuccessSystemMessageTableViewCell];
     }
@@ -60,10 +60,24 @@
     
 }
 
-//-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-//{
-//    return 38;
-//}
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+
+    NSString * str = _dataSouceArr[indexPath.row];
+    
+    UIFont * font = CONTENT_FONT(12);
+    CGSize titleSize = [str sizeWithFont:font
+                       constrainedToSize:CGSizeMake(SCREEN_WIDTH - 103, MAXFLOAT)];
+    if (titleSize.height < 50)
+    {
+        return 50;
+    }
+    else
+    {
+         return titleSize.height + 35;
+    }
+   
+}
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {

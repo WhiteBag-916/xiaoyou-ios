@@ -16,6 +16,7 @@
 #import "XYGroupApplyViewController.h"
 #import "ChatViewController.h"
 #import "ConvertToCommonEmoticonsHelper.h"
+#import "XYSystemMessageViewController.h"
 
 #define kRowHeight                     68
 #define kHeadWidthAndHeight            40
@@ -77,7 +78,7 @@
 //            [dataSouceArr removeObject:conversation];
 //        }
 //    }
-//    [self setUpHeaderView];
+    [self setUpHeaderView];
     _messageDataSource = dataSouceArr;
     [self reloadData];
 }
@@ -153,9 +154,11 @@
 
 -(void)tapGestureRecognizerAction
 {
-    ChatViewController * chatViewController = [[ChatViewController alloc] initWithChatter:@"yinhui" isGroup:NO];
-    chatViewController.isSystemMessage = YES;
-    [self.myController.navigationController pushViewController:chatViewController animated:YES needHiddenBottomBar:YES];
+//    ChatViewController * chatViewController = [[ChatViewController alloc] initWithChatter:@"yinhui" isGroup:NO];
+//    chatViewController.isSystemMessage = YES;
+//    [self.myController.navigationController pushViewController:chatViewController animated:YES needHiddenBottomBar:YES];
+    XYSystemMessageViewController * systemMessageViewController = [[XYSystemMessageViewController alloc] init];
+    [self.myController.navigationController pushViewController:systemMessageViewController animated:YES needHiddenBottomBar:YES];
 }
 
 #pragma mark - UITableViewDataSource和UITableViewDelegate
