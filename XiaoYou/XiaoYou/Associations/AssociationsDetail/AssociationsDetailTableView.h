@@ -1,13 +1,13 @@
 //
-//  AssociationsDetailHeadView.h
+//  AssociationsDetailTableView.h
 //  XiaoYou
 //
 //  Created by 熊宸 on 15/8/25.
 //  Copyright (c) 2015年 xc. All rights reserved.
 //
 
-#import "YView.h"
+#import "YTableView.h"
 
-@interface AssociationsDetailHeadView : YView
+@interface AssociationsDetailTableView : YTableView
 
 @end
