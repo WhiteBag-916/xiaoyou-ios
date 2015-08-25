@@ -30,7 +30,7 @@
         {
             self.footer = [MJRefreshAutoStateFooter footerWithRefreshingBlock:^{
                 if (![self.header isRefreshing]) {
-                    [self loadNewData];
+                    [self loadMoreData];
                 } else {
                     [self.footer endRefreshing];
                 }
