@@ -13,6 +13,8 @@
 
 - (id)initWithType:(int)type;
 
+- (void)loadData;
+
 - (void)setData:(NSArray *)tagNames;
 
 @end

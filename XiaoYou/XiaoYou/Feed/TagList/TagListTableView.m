@@ -10,6 +10,9 @@
 #import "YUtils+Component.h"
 #import "TagListTableViewCell.h"
 #import "SlideNavigationController.h"
+#import "ProfileInfo.h"
+#import "ProvisionManager.h"
+#import "Tags.h"
 
 @interface TagListTableView()<UITableViewDataSource, UITableViewDelegate>
 @property (nonatomic, strong) NSArray *data;
@@ -28,8 +31,14 @@
         [self registerClass:[TagListTableViewCell class] forCellReuseIdentifier:KTagListTableViewCell];
         self.separatorStyle = UITableViewCellSeparatorStyleNone;
         self.backgroundColor = [UIColor clearColor];
+        self.showsVerticalScrollIndicator = false;
     }
     return self;
+}
+- (void)loadData {
+    ProfileInfo *info = [[ProvisionManager sharedInstance] getProfile];
+    _data = [info.tagModels arrayByAddingObjectsFromArray:info.queryCodes];
+    [self reloadData];
 }
 - (void)setData:(NSArray *)tagNames {
     _data = [NSArray arrayWithArray:tagNames];
@@ -52,7 +61,11 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     TagListTableViewCell *cell = [self dequeueReusableCellWithIdentifier:KTagListTableViewCell];
     if (indexPath.row < _data.count) {
-        [cell setData:_data[indexPath.row]];
+        if (_type == TagMenuType) {
+            [cell setData:[_data[indexPath.row] name]];
+        } else {
+            [cell setData:_data[indexPath.row]];
+        }
     } else {
         [cell setData:nil];
     }
@@ -65,7 +78,11 @@
     {
         [self toAddTag];
     } else {
-        [self toFeedFilter:@"233" name:@"互联网"];
+        if (_type == TagMenuType) {
+            Tags *tag = _data[indexPath.row];
+            
+            [self toFeedFilter:[NSString stringWithFormat:@"%d", (int)tag.internalBaseClassIdentifier] name:tag.name];
+        }
     }
 }
 - (void)toFeedFilter:(NSString *)filter name:(NSString *)name {

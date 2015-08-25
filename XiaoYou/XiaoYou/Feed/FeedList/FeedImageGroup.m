@@ -11,13 +11,11 @@
 #import "UIImageView+WebCache.h"
 #import "YUtils+Component.h"
 #import "SDPhotoBrowser/SDPhotoBrowser.h"
-#import "YTakePhoto.h"
 
 #define KIMGTAG 10000
-@interface FeedImageGroup()<SDPhotoBrowserDelegate, YTakePhotoDelegate>
+@interface FeedImageGroup()<SDPhotoBrowserDelegate>
 
-@property (nonatomic, strong) NSArray *smallImgs;
-@property (nonatomic, strong) NSArray *bigImgs;
+@property (nonatomic, strong) NSMutableArray *smallImgs;
 
 @property (nonatomic, strong) UIView *contentView;
 
@@ -25,7 +23,7 @@
 
 @property (nonatomic, assign) float imgSize;
 
-@property (nonatomic, strong) YTakePhoto *takePhoto;
+
 @end
 
 @implementation FeedImageGroup
@@ -34,6 +32,7 @@
     self = [super init];
     if (self) {
         _imgSize = SCALE_NUM(70);
+        _smallImgs = [NSMutableArray array];
         [self initImgs];
     }
     return self;
@@ -41,17 +40,18 @@
 - (id)initWithCamera {
     self = [super init];
     if (self) {
-        _takePhoto = [[YTakePhoto alloc] initWithDelegate:self];
         _imgSize = SCALE_NUM(75);
-        [self initImgs];
+        _smallImgs = [NSMutableArray array];
         _camera = [[UIImageView alloc] init];
+        
+        [self initImgs];
         [self addSubview:_camera];
         _camera.backgroundColor = [UIColor redColor];
         [_camera mas_makeConstraints:^(MASConstraintMaker *make) {
             make.edges.equalTo(_contentView.subviews[0]);
         }];
         _camera.userInteractionEnabled = true;
-        [_camera addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:_takePhoto action:@selector(openPhoto)]];
+        [_camera addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(openPhoto)]];
         [self moveToLine:0];
         for (int i = 1; i < 9; i++) {
             [_contentView.subviews[i] setHidden:true];
@@ -74,6 +74,7 @@
         for (int j = 0; j < 3; j++) {
             UIImageView *img = [[UIImageView alloc] init];
             img.tag = KIMGTAG + i*3 + j;
+            img.backgroundColor = [UIColor blueColor];
             img.contentMode = UIViewContentModeScaleAspectFill;
             img.clipsToBounds = true;
             img.userInteractionEnabled = true;
@@ -81,6 +82,11 @@
             
             UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(choosePic:)];
             [img addGestureRecognizer:tap];
+            
+            if (_camera != nil) {
+                UILongPressGestureRecognizer *press = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longPress:)];
+                [img addGestureRecognizer:press];
+            }
             
             [img mas_makeConstraints:^(MASConstraintMaker *make) {
                 make.width.height.mas_equalTo(_imgSize);
@@ -103,17 +109,45 @@
     }
 }
 
-- (void)updateWithImgs:(NSArray *)smallPics bigPics:(NSArray *)bigPics {
-    _smallImgs = [NSArray arrayWithArray:smallPics];
-    _bigImgs = [NSArray arrayWithArray:bigPics];
-    if (_smallImgs.count == 0) {
-        [self moveToLine:-1];
-    } else if (_smallImgs.count == 1) {
-        [self specialForOneImage:[smallPics objectAtIndex:0]];
-    } else {
-        [self normalForImages:smallPics];
-    }
+- (void)updateWithImgs:(NSArray *)smallPics {
+    _smallImgs = [NSMutableArray arrayWithArray:smallPics];
+    [self updateAll];
     
+}
+- (void)updateAll {
+    if (_camera == nil) {
+        if (_smallImgs.count == 0) {
+            [self moveToLine:-1];
+        } else if (_smallImgs.count == 1) {
+            [self specialForOneImage:[_smallImgs objectAtIndex:0]];
+        } else {
+            [self normalForImages:_smallImgs];
+        }
+    } else {
+        int index = (int)(_smallImgs.count) / 3;
+        if (index == 3) {
+            index = 2;
+            _camera.hidden = true;
+        } else {
+            _camera.hidden = false;
+        }
+        [self moveToLine:index];
+        for (int i = 0; i < _smallImgs.count; i ++) {
+            [(UIImageView *)[_contentView viewWithTag:KIMGTAG+i] setImage:_smallImgs[i]];
+        }
+        if (_smallImgs.count < 9) {
+            int ct = 0;
+            if (index != 1) {
+                ct = (int)_smallImgs.count;
+            } else {
+                ct = (int)_smallImgs.count + 3;
+            }
+            [_camera mas_remakeConstraints:^(MASConstraintMaker *make) {
+                make.edges.equalTo(_contentView.subviews[ct]);
+            }];
+        }
+
+    }
 }
 
 - (void)specialForOneImage:(NSString *)url {
@@ -128,25 +162,9 @@
     img.contentMode = UIViewContentModeScaleAspectFit;
     [img setNormalImageWithUrl:url];
 }
-
-- (void)updateWithPhotos:(NSArray *)pics bigPics:(NSArray *)bigPics {
-    _bigImgs = [NSArray arrayWithArray:bigPics];
-    int index = (int)(_bigImgs.count + 1) / 3;
-    [self moveToLine:index];
-    for (int i = 0; i < pics.count; i ++) {
-        [(UIImageView *)[_contentView viewWithTag:KIMGTAG+i] setImage:pics[i]];
-    }
-    if (pics.count < 9) {
-        int ct = 0;
-        if (index != 1) {
-            ct = (int)_bigImgs.count;
-        } else {
-            ct = (int)_bigImgs.count + 3;
-        }
-        [_camera mas_remakeConstraints:^(MASConstraintMaker *make) {
-            make.edges.equalTo(_contentView.subviews[ct]);
-        }];
-    }
+- (void)addPhoto:(UIImage *)image {
+    [_smallImgs addObject:image];
+    [self updateAll];
 }
 
 - (void)normalForImages:(NSArray *)urls {
@@ -168,7 +186,7 @@
         [_contentView.subviews[i] setTag:KIMGTAG - i-1];
     }
     if (index != 1) {
-        for (int i = 0; i < _bigImgs.count; i++) {
+        for (int i = 0; i < _smallImgs.count; i++) {
             [_contentView.subviews[i] setHidden:false];
             [_contentView.subviews[i] setTag:KIMGTAG + i];
         }
@@ -177,7 +195,7 @@
             [_contentView.subviews[i] setHidden:false];
             [_contentView.subviews[i] setTag:KIMGTAG + i];
         }
-        for (int i = 6; i < _bigImgs.count + 3; i++) {
+        for (int i = 6; i < _smallImgs.count + 3; i++) {
             [_contentView.subviews[i] setHidden:false];
             [_contentView.subviews[i] setTag:KIMGTAG + i-3];
         }
@@ -196,17 +214,24 @@
     }];
     
 }
-
+- (void)longPress:(UILongPressGestureRecognizer *)press {
+    int index = (int)press.view.tag - KIMGTAG;
+    if (index < 0 || index >= _smallImgs.count) {
+        return;
+    }
+    [_smallImgs removeObjectAtIndex:index];
+    [self updateAll];
+}
 - (void)choosePic:(UITapGestureRecognizer *)tap {
     int index = (int)tap.view.tag - KIMGTAG;
-    if (index < 0 || index >= _bigImgs.count) {
+    if (index < 0 || index >= _smallImgs.count) {
         return;
     }
     SDPhotoBrowser *browser = [[SDPhotoBrowser alloc] init];
     
     browser.sourceImagesContainerView = _contentView;
     
-    browser.imageCount = _bigImgs.count;
+    browser.imageCount = _smallImgs.count;
     
     browser.currentImageIndex = index;
     
@@ -214,7 +239,9 @@
     
     [browser show];
 }
-
+- (int)getImgCount {
+    return (int)_smallImgs.count;
+}
 #pragma SDPhotoBrowser
 - (UIImage *)photoBrowser:(SDPhotoBrowser *)browser placeholderImageForIndex:(NSInteger)index {
     UIImage *image = [(UIImageView *)[_contentView viewWithTag:KIMGTAG+index] image];
@@ -225,9 +252,8 @@
 //    return [NSURL URLWithString:_bigImgs[index]];
 //}
 
-#pragma YTakePhoto
-- (void)didUploadPhoto:(UIImage *)image url:(NSString *)url {
-    
+- (void)openPhoto {
+    [[NSNotificationCenter defaultCenter] postNotificationName:KNotification_Present_TakePhoto object:nil];
 }
 
 @end

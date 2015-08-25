@@ -66,9 +66,9 @@
         FeedInfo *data = inData;
         _contentLabel.text = data.feed.content;
         if (data.feed.img.length == 0) {
-            [_imgGroup updateWithImgs:nil bigPics:nil];
+            [_imgGroup updateWithImgs:nil];
         } else {
-            [_imgGroup updateWithImgs:[data.feed.img componentsSeparatedByString:@","] bigPics:[data.feed.img componentsSeparatedByString:@","]];
+            [_imgGroup updateWithImgs:[data.feed.img componentsSeparatedByString:@","]];
         }
     }
     if ([inData isKindOfClass:[CommentListItems class]]) {

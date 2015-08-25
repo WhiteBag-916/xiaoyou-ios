@@ -30,4 +30,6 @@
 
 #define KNotification_Present_AddFriend                 @"KNotification_Present_AddFriend"
 
+#define KNotification_Present_TakePhoto                 @"KNotification_Present_TakePhoto"
+
 #endif

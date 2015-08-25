@@ -10,6 +10,11 @@
 #import "YTextView.h"
 #import "FeedImageGroup.h"
 #import "SKTagView.h"
+#import "YCommonActionSheet.h"
+#import "YDirectory+Data.h"
+#import "ProvisionManager.h"
+#import "SKTag.h"
+#import "Tags.h"
 
 #define KTEXTVIEWMARGIN_LEFT SCALE_NUM(5)
 #define KTEXTVIEWMARGIN_TOP SCALE_NUM(15)
@@ -21,13 +26,18 @@
 
 #define KLINEMARGIN SCALE_NUM(15)
 
-@interface FeedPublishViewController()
+#define tagObj @"tagObj"
+#define tagIsSelected @"tagIsSelected"
+
+@interface FeedPublishViewController()<UIImagePickerControllerDelegate>
 
 @property (nonatomic, strong) UIView *contentView;
 @property (nonatomic, strong) YTextView *textView;
 @property (nonatomic, strong) FeedImageGroup *imgGroup;
 @property (nonatomic, strong) SKTagView *tagView;
 @property (nonatomic, strong) NSMutableArray *isChecked;
+
+@property (nonatomic, strong) NSMutableArray *tagsArray;
 
 @end
 
@@ -44,13 +54,13 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     [self initView];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(openPhoto) name:KNotification_Present_TakePhoto object:nil];
     
 }
 - (void)initView {
     self.title = @"说两句";
     [self showCustomNavigationCancelButton];
     [self showCustomNavigationSureButton];
-    [self showEditMode];
     
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self.view action:@selector(endEditing:)];
     [self.view addGestureRecognizer:tap];
@@ -91,7 +101,6 @@
         make.top.equalTo(_textView.mas_bottom).offset(KIMGGROUPMARGIN_TOP);
         make.width.mas_equalTo(KIMGGROUPSIZE);
     }];
-    [_imgGroup updateWithPhotos:@[[UIImage imageNamed:@"toolbar-mine-click"],[UIImage imageNamed:@"toolbar-mine-click"],[UIImage imageNamed:@"toolbar-mine-click"]] bigPics:@[@"http://cdn.duitang.com/uploads/item/201505/03/20150503184743_Q4EVW.thumb.700_0.jpeg",@"http://cdn.duitang.com/uploads/item/201505/03/20150503184743_Q4EVW.thumb.700_0.jpeg",@"http://cdn.duitang.com/uploads/item/201505/03/20150503184743_Q4EVW.thumb.700_0.jpeg"]];
     
     
 }
@@ -128,31 +137,142 @@
     _tagView.lineSpace = 5;
     __weak FeedPublishViewController *weakSelf = self;
     [_tagView setDidClickTagAtIndex:^(NSUInteger index) {
-        BOOL isCheck = [weakSelf.isChecked[index] boolValue];
-        isCheck = !isCheck;
-        weakSelf.isChecked[index] = [NSNumber numberWithBool:isCheck];
-        [weakSelf.tagView updateTag:isCheck atIndex:index];
+        [weakSelf updateTagSelected:index];
     }];
-    [self loadTag];
+    [self initListTag];
+}
+- (void)initListTag {
+    [[ProvisionManager sharedInstance] getTagList:^(YActionMessage *message) {
+        if (message.isSuccess) {
+            //构造tag
+            _tagsArray = [@[] mutableCopy];
+            
+            NSArray *tagList = message.object;
+            [tagList enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+                NSMutableDictionary *dic = [@{tagObj:obj,tagIsSelected:@NO} mutableCopy];
+                [_tagsArray addObject:dic];
+            }];
+            
+            //传入控件
+            [self loadTag];
+        } else {
+            [YUtils showTitle:message.desc];
+        }
+    }];
 }
 
 - (void)loadTag {
-    NSArray *labelName = @[@"金融", @"留学咨询", @"学校生活", @"工作", @"互联网信息"];
-    for (int i = 0; i < labelName.count; i++) {
-        [_isChecked addObject:[NSNumber numberWithBool:false]];
-        SKTag *tag = [SKTag tagWithText:labelName[i]];
+    [_tagsArray enumerateObjectsUsingBlock:^(NSDictionary *obj, NSUInteger idx, BOOL *stop) {
+        Tags *tags = obj[tagObj];
+        SKTag *tag = [SKTag tagWithText:tags.name];
         [tag updateWithPublishSelectType:false];
         [_tagView addTag:tag];
-    }
-
+    }];
+}
+- (void)updateTagSelected:(NSInteger)select {
+    _tagsArray[select][tagIsSelected] = @(![_tagsArray[select][tagIsSelected] boolValue]);
+    
+    [_tagView updateTag:[_tagsArray[select][tagIsSelected] boolValue] atIndex:select];
+}
+- (void)openPhoto {
+    [self showAddPicList];
+}
+- (void)showAddPicList {
+    YActionSheetItem *item1 = [YActionSheetItem itemWithTitle:@"拍照"
+                                                         type:YCommonActionSheetItemTypeCenterCommon
+                                                        block:^(NSInteger checkNum) {
+                                                            [self snapImage];
+                                                        }];
+    YActionSheetItem *item2 = [YActionSheetItem itemWithTitle:@"从相册中选择"
+                                                         type:YCommonActionSheetItemTypeCenterCommon
+                                                        block:^(NSInteger checkNum) {
+                                                            [self pickImage];
+                                                        }];
+    
+    YCommonActionSheet *sheet = [[YCommonActionSheet alloc] initWithType:@[item1, item2] title:nil];
+    [sheet show];
 }
 
+- (void)pickImage
+{
+    UIImagePickerController *picker = [[UIImagePickerController alloc] init];
+    [picker setSourceType:UIImagePickerControllerSourceTypePhotoLibrary];
+    [picker setDelegate:self];
+    [self presentViewController:picker animated:YES completion:nil];
+}
+
+- (void)snapImage
+{
+    UIImagePickerController *picker = [[UIImagePickerController alloc] init];
+    [picker setSourceType:UIImagePickerControllerSourceTypeCamera];
+    picker.delegate = self;
+    [self presentViewController:picker animated:YES completion:nil];
+}
+
+- (void)savePic:(UIImage *)image
+{
+    if (nil == image)
+    {
+        return;
+    }
+    
+    dispatch_async(dispatch_get_global_queue(0, 0), ^{
+        
+        NSString *keyStr = [NSString stringWithFormat:@"feed%d.png", [_imgGroup getImgCount]];
+        
+        //写入文件
+        NSData *imageData = UIImageJPEGRepresentation(image, 0.5);
+        NSString *fullPath = [[YDirectory newImgCache] stringByAppendingPathComponent:keyStr];
+        
+        //保存到沙盒
+        [imageData writeToFile:fullPath atomically:NO];
+        
+        //界面
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self updateImage];
+        });
+        
+    });
+}
+- (void)updateImage {
+    NSString *path = [YDirectory newImgCache:[NSString stringWithFormat:@"feed%d.png", [_imgGroup getImgCount]]];
+    if (![YDirectory isDirectory:path])
+    {
+        [_imgGroup addPhoto:[UIImage imageWithContentsOfFile:path]];
+    }
+}
+#pragma mark - UIImagePickerControllerDelegate
+-(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
+{
+    [picker dismissViewControllerAnimated:YES completion:nil];
+    UIImage *getImage = info[@"UIImagePickerControllerOriginalImage"];
+    [self savePic:getImage];
+}
 - (void)onNavigationLeftButtonClicked {
     [self.navigationController dismissViewControllerAnimated:YES completion:nil];
+}
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [self showEditMode];
 }
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
     [self showOrignMode];
 }
-
+- (NSString *)getTagSelected {
+    NSMutableString *tagStr = [@"" mutableCopy];
+    [_tagsArray enumerateObjectsUsingBlock:^(NSDictionary *obj, NSUInteger idx, BOOL *stop) {
+        if ([obj[tagIsSelected] boolValue]) {
+            Tags *tags = obj[tagObj];
+            if (tagStr.length > 0) {
+                [tagStr appendString:@","];
+            }
+            [tagStr appendString:[NSString stringWithFormat:@"%.f", tags.internalBaseClassIdentifier]];
+        }
+    }];
+    return tagStr;
+}
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
 @end

@@ -55,7 +55,7 @@ NSString *const KTagListTableViewCell = @"TagListTableViewCellId";
         _tagLabel.hidden = true;
     } else {
         _addIcon.hidden= true;
-        _tagLabel.height = false;
+        _tagLabel.hidden = false;
     }
 }
 @end
