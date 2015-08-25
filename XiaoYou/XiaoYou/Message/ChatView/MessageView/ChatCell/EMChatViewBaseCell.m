@@ -40,6 +40,9 @@ NSString *const kRouterEventChatHeadImageTapEventName = @"kRouterEventChatHeadIm
         _headImageView.layer.cornerRadius = 20;
         _headImageView.clipsToBounds = YES;
         _headImageView.backgroundColor = [UIColor clearColor];
+//        UIGestureRecognizer * gestureRecognizer = [[UIGestureRecognizer alloc] initWithTarget:self action:@selector(tapHeadImageView:)];
+//        [_headImageView addGestureRecognizer:gestureRecognizer];
+        
         [self.contentView addSubview:_headImageView];
         
         _nameLabel = [[UILabel alloc] init];
@@ -52,6 +55,22 @@ NSString *const kRouterEventChatHeadImageTapEventName = @"kRouterEventChatHeadIm
         [self setupSubviewsForMessageModel:model];
     }
     return self;
+}
+
+-(void)tapHeadImageView:(MessageModel *)model
+{
+    //    if ([cell.studentDic[@"linkType"] doubleValue] == 0) {
+    //        XYContactsInfoDetailViewController * contactsInfoDetailVC = [[XYContactsInfoDetailViewController alloc] init];
+    //        contactsInfoDetailVC.studentDic = cell.studentDic;
+    //        contactsInfoDetailVC.uid = cell.studentDic[@"uid"];
+    //        [self.myController.navigationController pushViewController:contactsInfoDetailVC animated:YES needHiddenBottomBar:YES];
+    //    }
+    //    else
+    //    {
+    //        XYGroupInfoDetailViewController * groupInfoDetailViewController = [[XYGroupInfoDetailViewController alloc] init];
+    //        groupInfoDetailViewController.studentDic = cell.studentDic;
+    //        [self.myController.navigationController pushViewController:groupInfoDetailViewController animated:YES needHiddenBottomBar:YES];
+    //    }
 }
 
 -(void)layoutSubviews

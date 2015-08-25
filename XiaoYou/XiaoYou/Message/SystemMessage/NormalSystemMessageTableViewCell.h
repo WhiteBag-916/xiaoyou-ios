@@ -12,6 +12,6 @@ extern NSString *const kNormalSystemMessageTableViewCell;
 
 @interface NormalSystemMessageTableViewCell : YTableViewCell
 
--(void)setCellInfo:(NSDictionary *) dic;
+-(void)setCellInfo:(id) dic;
 
 @end
