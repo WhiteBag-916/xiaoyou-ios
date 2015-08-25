@@ -9,6 +9,8 @@
 #import "SearchFilterViewController.h"
 #import "YTableView.h"
 #import "SearchFilterTableViewCell.h"
+#import "ContactManager.h"
+#import "FriendsCondition.h"
 
 NSString *const filterName = @"filterName";
 NSString *const filterIsSelected = @"filterIsSelected";
@@ -17,7 +19,7 @@ NSString *const filterIsSelected = @"filterIsSelected";
 <UITableViewDataSource
 ,UITableViewDelegate>
 
-@property (nonatomic, strong) NSArray *filterAllArray;
+@property (nonatomic, strong) NSMutableArray *filterAllArray;
 @property (nonatomic, strong) YTableView *searchFilterTableView;
 @property (nonatomic, copy) SearchFilterSelectedBlock searchFilterSelectedBlock;
 
@@ -33,12 +35,16 @@ NSString *const filterIsSelected = @"filterIsSelected";
     [self showCustomNavigationCancelButton];
     [self showCustomNavigationSureButton];
     
-    [self initData];
+//    [self initData];
+    self.filterAllArray = [[NSMutableArray alloc] init];
     [self initView];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [self resetRightButton];
+    
+    //拉取筛选条件
+    [self friendsConditionRequest];
 }
 
 - (void)onNavigationLeftButtonClicked {
@@ -58,24 +64,43 @@ NSString *const filterIsSelected = @"filterIsSelected";
     
     _searchFilterSelectedBlock(selectArray);
     
-    [self.navigationController dismissViewControllerAnimated:YES completion:nil];
+    [self onNavigationLeftButtonClicked];
+}
+
+- (void)friendsConditionRequest {
+    [[ContactManager sharedInstance] friendsCondition:^(YActionMessage *message) {
+        if (message.isSuccess) {
+            [message.object enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+                //构造
+                [_filterAllArray addObject:[@{filterName:obj,filterIsSelected:@NO} mutableCopy]];
+            }];
+            
+            [self initData];
+            
+            [_searchFilterTableView reloadData];
+        } else {
+            [YUtils showTitle:message.desc];
+            
+            [self onNavigationLeftButtonClicked];
+        }
+    }];
 }
 
 - (void)initData {
-    //构造
-    self.filterAllArray = @[[@{filterName:@"同系",filterIsSelected:@NO} mutableCopy]
-                            ,[@{filterName:@"同年级",filterIsSelected:@NO} mutableCopy]
-                            ,[@{filterName:@"老乡",filterIsSelected:@NO} mutableCopy]
-                            ,[@{filterName:@"同社团",filterIsSelected:@NO} mutableCopy]
-                            ,[@{filterName:@"篮球社",filterIsSelected:@NO} mutableCopy]
-                            ,[@{filterName:@"互联网创业",filterIsSelected:@NO} mutableCopy]
-                            ,[@{filterName:@"男",filterIsSelected:@NO} mutableCopy]
-                            ,[@{filterName:@"女",filterIsSelected:@NO} mutableCopy]];
+//    //构造
+//    self.filterAllArray = @[[@{filterName:@"同系",filterIsSelected:@NO} mutableCopy]
+//                            ,[@{filterName:@"同年级",filterIsSelected:@NO} mutableCopy]
+//                            ,[@{filterName:@"老乡",filterIsSelected:@NO} mutableCopy]
+//                            ,[@{filterName:@"同社团",filterIsSelected:@NO} mutableCopy]
+//                            ,[@{filterName:@"篮球社",filterIsSelected:@NO} mutableCopy]
+//                            ,[@{filterName:@"互联网创业",filterIsSelected:@NO} mutableCopy]
+//                            ,[@{filterName:@"男",filterIsSelected:@NO} mutableCopy]
+//                            ,[@{filterName:@"女",filterIsSelected:@NO} mutableCopy]];
     
     //设置哪些已经选中
     [_filterAllArray enumerateObjectsUsingBlock:^(NSDictionary *obj, NSUInteger idx, BOOL *stop) {
         [_isSelectArray enumerateObjectsUsingBlock:^(NSString *obj2, NSUInteger idx, BOOL *stop) {
-            if ([obj2 isEqualToString:obj[filterName]]) {
+            if ([obj2 isEqualToString:[obj[filterName] label]]) {
                 [obj setValue:@YES forKey:filterIsSelected];
             }
         }];
@@ -139,7 +164,7 @@ NSString *const filterIsSelected = @"filterIsSelected";
 {
     SearchFilterTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kSearchFilterTableViewCell];
     
-    [cell initData:_filterAllArray[indexPath.row][filterName] select:[_filterAllArray[indexPath.row][filterIsSelected] boolValue]];
+    [cell initData:[_filterAllArray[indexPath.row][filterName] label] select:[_filterAllArray[indexPath.row][filterIsSelected] boolValue]];
     
     return cell;
 }

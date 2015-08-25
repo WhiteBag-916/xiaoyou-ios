@@ -28,18 +28,17 @@ NSString *const kCommonObj = @"obj";
         if ([aObject respondsToSelector:@selector(code)])
         {
             NSInteger code = (NSInteger)[(ResultCommon*)aObject code];
+            errorDescription = ((ResultCommon*)aObject).message;
             
             if (kYActionMessage_Server_Token_Fail == code) {
                 //Token失效
-                [[NSNotificationCenter defaultCenter] postNotificationName:kNotification_Server_Token_Fail object:aObject];
+                [[NSNotificationCenter defaultCenter] postNotificationName:kNotification_Server_Token_Fail object:@{@"des":errorDescription}];
             }
             
             if (!(code == kYActionMessage_Server_Success))
             {
                 errorCode = kYYServerErrorBase + labs(code);
             }
-            
-            errorDescription = ((ResultCommon*)aObject).message;
             	
             if (kYActionMessage_Rustlt_Success == errorCode)
             {

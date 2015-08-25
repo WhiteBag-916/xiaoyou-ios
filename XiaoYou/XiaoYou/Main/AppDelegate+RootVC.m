@@ -15,7 +15,6 @@
 #import "YManagerCenter.h"
 #import "YUtils+HUD.h"
 #import "YModel+ActionMessage.h"
-#import "ResultCommon.h"
 #import "PerfectInformationViewController.h"
 
 @implementation AppDelegate(RootVC)
@@ -58,8 +57,8 @@
     [self initChooseSchoolNC];
     
     //提示
-    ResultCommon *resultCommon = note.object;
-    [YUtils showTitle:resultCommon.message];
+    YLogE(@"tokenFail : %@", note.object[@"des"]);
+    [YUtils showTitle:note.object[@"des"]];
 }
 
 - (void)initChooseSchoolNC

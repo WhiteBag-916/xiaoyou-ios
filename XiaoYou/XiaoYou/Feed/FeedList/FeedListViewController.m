@@ -17,10 +17,10 @@
 #import "SearchPersonViewController.h"
 #import "FeedDetailViewController.h"
 #import "NotifyListViewController.h"
-#import "AddTagViewController.h"
-#import "FeedContactTableView.h"
+#import "ProfileTagViewController.h"
+#import "ProfilePersonListTableView.h"
 #import "FeedPublishViewController.h"
-
+#import "ProvisionManager.h"
 
 @interface FeedListViewController ()
 
@@ -28,7 +28,7 @@
 @property (strong, nonatomic) TagListViewController     *tagListVC;             //侧拉
 @property (strong, nonatomic) FeedListTableView         *feedListTableView;     //feed列表
 @property (strong, nonatomic) BBBadgeBarButtonItem      *menuButton;            //菜单按钮
-@property (nonatomic, strong) FeedContactTableView      *feedContactTableView;  //人
+@property (nonatomic, strong) ProfilePersonListTableView *profilePersonListTableView;  //人
 
 @end
 
@@ -93,11 +93,12 @@
     }];
     
     //person
-    _feedContactTableView = [[FeedContactTableView alloc] init];
-    _feedContactTableView.hidden = YES;
-    [self.view addSubview:_feedContactTableView];
+    _profilePersonListTableView = [[ProfilePersonListTableView alloc] initWIthType:ProfilePersonListTypeFeedPerson];
+    _profilePersonListTableView.backgroundColor = KCOLORWHITE;
+    _profilePersonListTableView.hidden = YES;
+    [self.view addSubview:_profilePersonListTableView];
     
-    [_feedContactTableView mas_makeConstraints:^(MASConstraintMaker *make) {
+    [_profilePersonListTableView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.mas_equalTo(self.view);
     }];
     
@@ -126,7 +127,7 @@
 //改变switch
 - (void)changeSwitchView:(CommonSwitchType)type;
 {
-    _feedContactTableView.hidden = (type == CommonSwitchTypeFir);
+    _profilePersonListTableView.hidden = (type == CommonSwitchTypeFir);
     if (type == CommonSwitchTypeFir) {
         [self showCustomNavigationPublishButton];
     } else {
@@ -156,8 +157,8 @@
 }
 
 - (void)toAddTag {
-    AddTagViewController *addTagViewController = [[AddTagViewController alloc] init];
-    [self.navigationController pushViewController:addTagViewController animated:YES needHiddenBottomBar:YES];
+    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:[[ProfileTagViewController alloc] initWithMyTags:[[ProvisionManager sharedInstance] profileTags]]];
+    [self.navigationController presentViewController:navigationController animated:YES completion:nil];
 }
 
 - (void)onNavigationRightButtonClicked {

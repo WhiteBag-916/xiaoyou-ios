@@ -7,12 +7,14 @@
 //
 
 #import "SearchResultViewController.h"
-#import "FeedContactTableView.h"
+#import "ProfilePersonListTableView.h"
 #import "YUtils+Component.h"
+#import "ContactManager.h"
+#import "FriendsCondition.h"
 
 @interface SearchResultViewController ()
 
-@property (nonatomic, strong) FeedContactTableView *feedContactTableView;
+@property (nonatomic, strong) ProfilePersonListTableView *profilePersonListTableView;
 
 @end
 
@@ -30,13 +32,18 @@
 
 - (void)initView {
     self.view.backgroundColor = KCOLORGREEN_e6ebea;
+    NSMutableArray *nameArray = [@[] mutableCopy];
+    
+    [_searchCondition enumerateObjectsUsingBlock:^(FriendsCondition *obj, NSUInteger idx, BOOL *stop) {
+        [nameArray addObject:obj.label];
+    }];
     //结果
     NSString *nameStr = @"";
     if (_searchName.length > 0) {
-        [_searchCondition addObject:@"姓名"];
+        [nameArray addObject:@"姓名"];
         nameStr = [NSString stringWithFormat:@"人名 %@", _searchName];
     }
-    NSString *searchConditionStr = [_searchCondition componentsJoinedByString:@"|"];
+    NSString *searchConditionStr = [nameArray componentsJoinedByString:@"|"];
     NSString *text = [NSString stringWithFormat:@"根据条件 %@ 搜索%@", searchConditionStr, nameStr];
     NSMutableAttributedString *contentText = [[NSMutableAttributedString alloc] initWithString:text];
     
@@ -69,12 +76,26 @@
     }];
     
     //table
-    _feedContactTableView = [[FeedContactTableView alloc] init];
-    [self.view addSubview:_feedContactTableView];
-    [_feedContactTableView mas_makeConstraints:^(MASConstraintMaker *make) {
+    _profilePersonListTableView = [[ProfilePersonListTableView alloc] initWIthType:ProfilePersonListTypeFind];
+    [_profilePersonListTableView hiddenHeader:YES];
+    _profilePersonListTableView.backgroundColor = KCOLORGREEN_e6ebea;
+    [self.view addSubview:_profilePersonListTableView];
+    [_profilePersonListTableView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.right.bottom.equalTo(self.view);
         make.top.equalTo(contentLabel.mas_bottom);
     }];
+    
+    [self searchPersonByCondition];
+}
+
+- (void)searchPersonByCondition {
+    NSMutableDictionary *conditionDic = [@{@"name":SStr(_searchName)} mutableCopy];
+    
+    [_searchCondition enumerateObjectsUsingBlock:^(FriendsCondition *obj, NSUInteger idx, BOOL *stop) {
+        [conditionDic setObject:obj.value forKey:obj.pramsName];
+    }];
+    
+    [_profilePersonListTableView loadDataWithFind:conditionDic];
 }
 
 /*

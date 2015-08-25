@@ -27,4 +27,10 @@ AS_SINGLETON(ContactManager);
 //点赞别人
 - (void)praise:(NSString *)bePraiseId block:(ActionCompleteBlock)block;
 
+//找人筛选
+- (void)friendsCondition:(ActionCompleteBlock)block;
+
+//找人
+- (void)findFriends:(NSInteger)limitStart limitEnd:(NSInteger)limitEnd conditionDic:(NSDictionary *)conditionDic block:(ActionCompleteBlock)block;
+
 @end

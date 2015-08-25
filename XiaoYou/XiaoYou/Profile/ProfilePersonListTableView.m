@@ -10,6 +10,7 @@
 #import "ProfilePersonListTableView.h"
 #import "ProfilePersonListTableViewCell.h"
 #import "ProvisionManager.h"
+#import "ContactManager.h"
 
 #define KPAGENUM 15
 
@@ -17,6 +18,7 @@
 @property (nonatomic, assign) int type;
 @property (nonatomic, strong) NSString *feedId;
 @property (nonatomic, strong) NSMutableArray *personListArray;
+@property (nonatomic, strong) NSDictionary *conditionDic;           //筛选条件
 @end
 
 @implementation ProfilePersonListTableView
@@ -46,6 +48,12 @@
 - (void)loadData {
     [self beginLoadNewData];
 }
+
+//筛选条件加载
+- (void)loadDataWithFind:(NSDictionary *)condition {
+    self.conditionDic = [NSDictionary dictionaryWithDictionary:condition];
+    [self sendRequest];
+}
 - (void)loadNewData
 {
     [_personListArray removeAllObjects];
@@ -57,14 +65,16 @@
     [self sendRequest];
 }
 - (void)sendRequest {
-    if (_type == 0) {
+    if (_type == ProfilePersonListTypeRespect) {
         [[ProvisionManager sharedInstance] myPraisePersons:_personListArray.count limitEnd:_personListArray.count + KPAGENUM block:^(YActionMessage *message) {
             [self dealMessage:message];
         }];
-    }
-    
-    if (_type == 1) {
+    }else if (_type == ProfilePersonListTypeCool) {
         [[ProvisionManager sharedInstance] myCoolPersons:_personListArray.count limitEnd:_personListArray.count + KPAGENUM block:^(YActionMessage *message) {
+            [self dealMessage:message];
+        }];
+    } else if (ProfilePersonListTypeFind == _type) {
+        [[ContactManager sharedInstance] findFriends:_personListArray.count limitEnd:_personListArray.count + KPAGENUM conditionDic:_conditionDic block:^(YActionMessage *message) {
             [self dealMessage:message];
         }];
     }
@@ -100,11 +110,15 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     ProfilePersonListTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kProfilePersonListTableViewCell];
-    [cell setData:_personListArray[indexPath.row]];
+    BOOL showGender = (ProfilePersonListTypeFind == _type);
+    [cell setData:_personListArray[indexPath.row] needShowGender:showGender];
     return cell;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (ProfilePersonListTypeFind == _type) {
+        return KFIND_CELLHEIGHT;
+    }
     return KCELLHEIGHT;
 }
 @end

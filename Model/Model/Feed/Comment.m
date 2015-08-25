@@ -16,6 +16,7 @@ NSString *const kCommentFeedId = @"feedId";
 NSString *const kCommentPraiseCount = @"praiseCount";
 NSString *const kCommentToUserId = @"toUserId";
 NSString *const kCommentCreateTime = @"createTime";
+NSString *const kCommentIsRespect = @"isRespect";
 
 
 @interface Comment ()
@@ -56,6 +57,7 @@ NSString *const kCommentCreateTime = @"createTime";
             self.praiseCount = [[self objectOrNilForKey:kCommentPraiseCount fromDictionary:dict] doubleValue];
             self.toUserId = [self objectOrNilForKey:kCommentToUserId fromDictionary:dict];
             self.createTime = [[self objectOrNilForKey:kCommentCreateTime fromDictionary:dict] doubleValue];
+        self.isRespect = [[self objectOrNilForKey:kCommentIsRespect fromDictionary:dict] boolValue];
 
     }
     
@@ -74,6 +76,7 @@ NSString *const kCommentCreateTime = @"createTime";
     [mutableDict setValue:[NSNumber numberWithDouble:self.praiseCount] forKey:kCommentPraiseCount];
     [mutableDict setValue:self.toUserId forKey:kCommentToUserId];
     [mutableDict setValue:[NSNumber numberWithDouble:self.createTime] forKey:kCommentCreateTime];
+    [mutableDict setValue:[NSNumber numberWithBool:self.isRespect] forKey:kCommentIsRespect];
 
     return [NSDictionary dictionaryWithDictionary:mutableDict];
 }
@@ -105,6 +108,7 @@ NSString *const kCommentCreateTime = @"createTime";
     self.praiseCount = [aDecoder decodeDoubleForKey:kCommentPraiseCount];
     self.toUserId = [aDecoder decodeObjectForKey:kCommentToUserId];
     self.createTime = [aDecoder decodeDoubleForKey:kCommentCreateTime];
+    self.isRespect = [aDecoder decodeBoolForKey:kCommentIsRespect];
     return self;
 }
 
@@ -119,6 +123,7 @@ NSString *const kCommentCreateTime = @"createTime";
     [aCoder encodeDouble:_praiseCount forKey:kCommentPraiseCount];
     [aCoder encodeObject:_toUserId forKey:kCommentToUserId];
     [aCoder encodeDouble:_createTime forKey:kCommentCreateTime];
+    [aCoder encodeBool:_isRespect forKey:kCommentIsRespect];
 }
 
 - (id)copyWithZone:(NSZone *)zone
@@ -135,6 +140,7 @@ NSString *const kCommentCreateTime = @"createTime";
         copy.praiseCount = self.praiseCount;
         copy.toUserId = [self.toUserId copyWithZone:zone];
         copy.createTime = self.createTime;
+        copy.isRespect = self.isRespect;
     }
     
     return copy;
