@@ -33,4 +33,22 @@ AS_SINGLETON(ContactManager);
 //找人
 - (void)findFriends:(NSInteger)limitStart limitEnd:(NSInteger)limitEnd conditionDic:(NSDictionary *)conditionDic block:(ActionCompleteBlock)block;
 
+//申请进入群组
+- (void)submitApply:(NSString *)groupId applicant:(NSString *)applicant block:(ActionCompleteBlock)block;
+
+//拒绝加入群组
+- (void)rejectApply:(NSString *)userId applyId:(NSString *)applyId block:(ActionCompleteBlock)block;
+
+//申请记录列表
+- (void)applyListApply:(NSString *)groupId userId:(NSString *)userId block:(ActionCompleteBlock)block;
+
+//忽略申请列表
+- (void)ignoreApplyList:(NSString *)userId applyIds:(NSString *)applyIds block:(ActionCompleteBlock)block;
+
+//同意加入群组
+- (void)agreeApply:(NSString *)userId applyId:(NSString *)applyId block:(ActionCompleteBlock)block;
+
+//群组申请人员列表
+- (void)applicantList:(NSString *)userId groupId:(NSString *)groupId block:(ActionCompleteBlock)block;
+
 @end
