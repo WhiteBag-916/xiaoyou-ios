@@ -415,6 +415,7 @@
 		65969DE21B877896001DD348 /* ProfileFeedCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 65969DE11B877896001DD348 /* ProfileFeedCell.m */; };
 		659DC7771B88C4E700DB589F /* ProfileOthersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 659DC7761B88C4E700DB589F /* ProfileOthersViewController.m */; };
 		65A703CB1B8C467C0094D8A2 /* FeedFilterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 65A703CA1B8C467C0094D8A2 /* FeedFilterViewController.m */; };
+		65A703CE1B8C4EE70094D8A2 /* YFlatSwitchView.m in Sources */ = {isa = PBXBuildFile; fileRef = 65A703CD1B8C4EE70094D8A2 /* YFlatSwitchView.m */; };
 		65A846FF1B81C9C300933815 /* FeedCellTopView.m in Sources */ = {isa = PBXBuildFile; fileRef = 65A846FE1B81C9C300933815 /* FeedCellTopView.m */; };
 		65A847021B81C9D300933815 /* FeedCellMiddleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 65A847011B81C9D300933815 /* FeedCellMiddleView.m */; };
 		65A847051B81CA1900933815 /* FeedCellBottomView.m in Sources */ = {isa = PBXBuildFile; fileRef = 65A847041B81CA1900933815 /* FeedCellBottomView.m */; };
@@ -1064,6 +1065,8 @@
 		659DC7761B88C4E700DB589F /* ProfileOthersViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileOthersViewController.m; sourceTree = "<group>"; };
 		65A703C91B8C467C0094D8A2 /* FeedFilterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedFilterViewController.h; sourceTree = "<group>"; };
 		65A703CA1B8C467C0094D8A2 /* FeedFilterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedFilterViewController.m; sourceTree = "<group>"; };
+		65A703CC1B8C4EE70094D8A2 /* YFlatSwitchView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YFlatSwitchView.h; sourceTree = "<group>"; };
+		65A703CD1B8C4EE70094D8A2 /* YFlatSwitchView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YFlatSwitchView.m; sourceTree = "<group>"; };
 		65A846FD1B81C9C300933815 /* FeedCellTopView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedCellTopView.h; sourceTree = "<group>"; };
 		65A846FE1B81C9C300933815 /* FeedCellTopView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedCellTopView.m; sourceTree = "<group>"; };
 		65A847001B81C9D300933815 /* FeedCellMiddleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedCellMiddleView.h; sourceTree = "<group>"; };
@@ -1340,6 +1343,8 @@
 				20E033F51B8427AF002E4583 /* YCommonShare.m */,
 				650C6C041B8860FF00A89AC9 /* YCommonEditViewController.h */,
 				650C6C051B8860FF00A89AC9 /* YCommonEditViewController.m */,
+				65A703CC1B8C4EE70094D8A2 /* YFlatSwitchView.h */,
+				65A703CD1B8C4EE70094D8A2 /* YFlatSwitchView.m */,
 			);
 			path = CommonView;
 			sourceTree = "<group>";
@@ -3051,6 +3056,7 @@
 				333122561B806EDB00D3D032 /* EMSDWebImageCompat.m in Sources */,
 				20E18D541B807752005B75EE /* AssociationsListTableView.m in Sources */,
 				333122341B806EDB00D3D032 /* EMChatAudioBubbleView.m in Sources */,
+				65A703CE1B8C4EE70094D8A2 /* YFlatSwitchView.m in Sources */,
 				333122581B806EDB00D3D032 /* EMSDWebImageDownloader.m in Sources */,
 				650C6C001B881A9800A89AC9 /* ProfileMyViewController.m in Sources */,
 				650C6C031B88529600A89AC9 /* ProfileChangePwdViewController.m in Sources */,

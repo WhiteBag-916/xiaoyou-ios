@@ -7,10 +7,12 @@
 //
 
 #import "YTableView.h"
-@class FeedListViewController;
 @interface FeedListTableView : YTableView
 
-@property (nonatomic, weak) FeedListViewController *parent;
+@property (nonatomic, weak) id parent;
+
+
+- (id)initWithFilter:(NSString *)filter;
 
 - (void)loadData;
 

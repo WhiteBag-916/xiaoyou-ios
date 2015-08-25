@@ -18,6 +18,7 @@
 <UITableViewDataSource
 ,UITableViewDelegate>
 
+@property (nonatomic, strong) NSString *filter;
 @property (nonatomic, strong) NSMutableArray *feedListArray;
 
 @end
@@ -38,6 +39,15 @@
     }
     return self;
 }
+
+- (id)initWithFilter:(NSString *)filter {
+    self = [super init];
+    if (self) {
+        _filter = filter;
+    }
+    return self;
+}
+
 
 #pragma mark - 继承者
 - (BOOL)showHeaderRefresh

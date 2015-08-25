@@ -21,6 +21,7 @@
 #import "ProfilePersonListTableView.h"
 #import "FeedPublishViewController.h"
 #import "ProvisionManager.h"
+#import "FeedFilterViewController.h"
 
 @interface FeedListViewController ()
 
@@ -118,6 +119,7 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(toSearchPerson) name:kNotification_Push_SearchPerson object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(toNotifyView) name:kNotification_Push_Notify object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(toAddTag) name:kNotification_Push_AddTag object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(toFeedFilter:) name:kNotification_Push_FeedFilter object:nil];
 }
 
 - (void)changeMenu {
@@ -160,7 +162,9 @@
     UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:[[ProfileTagViewController alloc] initWithMyTags:[[ProvisionManager sharedInstance] profileTags]]];
     [self.navigationController presentViewController:navigationController animated:YES completion:nil];
 }
-
+- (void)toFeedFilter:(NSNotification *)notification {
+    [self.navigationController pushViewController:[[FeedFilterViewController alloc] initWithFilter:[notification userInfo][@"filter"] name:[notification userInfo][@"name"]] animated:true];
+}
 - (void)onNavigationRightButtonClicked {
     UINavigationController *navigationController =
     [[UINavigationController alloc] initWithRootViewController:[[FeedPublishViewController alloc] init]];

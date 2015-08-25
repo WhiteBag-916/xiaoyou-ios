@@ -9,5 +9,7 @@
 #import "YViewController.h"
 
 @interface FeedFilterViewController : YViewController
+- (id)initWithFilter:(NSString *)filter name:(NSString *)name;
 
+- (void)goToDetail:(NSString *)feedId;
 @end
