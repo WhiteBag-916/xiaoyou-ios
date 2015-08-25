@@ -26,6 +26,8 @@
 #define KNotification_Open_Profile                      @"KNotification_Open_Profile"
 #define KNotification_Message_unread                    @"KNotification_Message_unread"
 
-#define kNotification_Refresh_Message                  @"kNotification_Refresh_Message"
+#define kNotification_Refresh_Message                   @"kNotification_Refresh_Message"
+
+#define KNotification_Present_AddFriend                 @"KNotification_Present_AddFriend"
 
 #endif
