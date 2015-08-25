@@ -8,6 +8,13 @@
 
 #import "YTableView.h"
 
+typedef NS_ENUM(NSInteger, AssociationsDetailTableViewSection) {
+    AssociationsDetailTableViewTitleSection=0,      //社团详情
+    AssociationsDetailTableViewLikeSection,         //点赞，酷
+    AssociationsDetailTableViewFeedSection,         //feed
+    AssociationsDetailTableViewSectionEnd
+};
+
 @interface AssociationsDetailTableView : YTableView
 
 @end

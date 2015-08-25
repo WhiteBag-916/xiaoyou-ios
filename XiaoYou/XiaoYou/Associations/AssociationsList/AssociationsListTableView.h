@@ -8,7 +8,10 @@
 
 #import "YTableView.h"
 
+@class YViewController;
+
 @interface AssociationsListTableView : YTableView
 
+@property (nonatomic, weak) YViewController *superVC;
 
 @end

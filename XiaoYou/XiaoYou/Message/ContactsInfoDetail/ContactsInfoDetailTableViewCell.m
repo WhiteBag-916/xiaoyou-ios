@@ -20,6 +20,7 @@ NSString *const kContactsInfoDetailTableViewCell = @"ContactsInfoDetailTableView
 
 @property (nonatomic,strong)UIImageView * flagImageView;
 @property (nonatomic,strong)UILabel * contentLabel;
+@property (nonatomic, strong) UIView *line;
 
 @end
 
@@ -51,11 +52,18 @@ NSString *const kContactsInfoDetailTableViewCell = @"ContactsInfoDetailTableView
             make.height.mas_equalTo(kLabelHeight);
         }];
         
+        _line = [[UIView alloc] init];
+        [self.contentView addSubview:_line];
+        [_line mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.bottom.right.equalTo(self.contentView);
+            make.height.mas_equalTo(1);
+        }];
+        _line.backgroundColor = KCOLORGREEN_e6ebea;
     }
     return self;
 }
 
--(void)setCellInfo:(NSDictionary *) dic
+-(void)setCellInfo:(NSDictionary *) dic hiddenLine:(BOOL)hiddenLine
 {
     if ([dic[@"index"] integerValue] == 0)
     {
@@ -72,6 +80,7 @@ NSString *const kContactsInfoDetailTableViewCell = @"ContactsInfoDetailTableView
         _flagImageView.image = [UIImage imageNamed:@"tag-grey"];
     }
     _contentLabel.text = dic[@"content"];
+    _line.hidden = hiddenLine;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
