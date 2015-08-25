@@ -27,6 +27,7 @@
 @property (nonatomic, strong) NSArray *propetiesCommon;
 @property (nonatomic, assign) double feedCount;
 @property (nonatomic, assign) BOOL isCool;
+@property (nonatomic, strong) NSArray *queryCodes;
 
 + (instancetype)modelObjectWithDictionary:(NSDictionary *)dict;
 - (instancetype)initWithDictionary:(NSDictionary *)dict;

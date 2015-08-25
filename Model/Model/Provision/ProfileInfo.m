@@ -26,6 +26,7 @@ NSString *const kProfileInfoTagsCommon = @"tagsCommon";
 NSString *const kProfileInfoPropetiesCommon = @"propetiesCommon";
 NSString *const kProfileInfoFeedCount = @"feedCount";
 NSString *const kProfileInfoIsCool = @"isCool";
+NSString *const kProfileInfoQueryCodes = @"queryCodes";
 
 @interface ProfileInfo ()
 
@@ -50,6 +51,7 @@ NSString *const kProfileInfoIsCool = @"isCool";
 @synthesize propetiesCommon = _propetiesCommon;
 @synthesize feedCount = _feedCount;
 @synthesize isCool = _isCool;
+@synthesize queryCodes = _queryCodes;
 
 + (instancetype)modelObjectWithDictionary:(NSDictionary *)dict
 {
@@ -130,6 +132,19 @@ NSString *const kProfileInfoIsCool = @"isCool";
     self.propetiesCommon = [NSArray arrayWithArray:parsedPropetiesCommon];
     self.feedCount = [[self objectOrNilForKey:kProfileInfoFeedCount fromDictionary:dict] doubleValue];
     self.isCool = [[self objectOrNilForKey:kProfileInfoIsCool fromDictionary:dict] boolValue];
+    NSObject *receivedQueryCodes = [dict objectForKey:kProfileInfoQueryCodes];
+    NSMutableArray *parsedQueryCodes = [NSMutableArray array];
+    if ([receivedQueryCodes isKindOfClass:[NSArray class]]) {
+        for (NSDictionary *item in (NSArray *)receivedQueryCodes) {
+            if ([item isKindOfClass:[NSDictionary class]]) {
+                [parsedQueryCodes addObject:[Tags modelObjectWithDictionary:item]];
+            }
+        }
+    } else if ([receivedQueryCodes isKindOfClass:[NSDictionary class]]) {
+        [parsedQueryCodes addObject:[Tags modelObjectWithDictionary:(NSDictionary *)receivedQueryCodes]];
+    }
+    
+    self.queryCodes = [NSArray arrayWithArray:parsedQueryCodes];
     
     return self;
     
@@ -193,6 +208,18 @@ NSString *const kProfileInfoIsCool = @"isCool";
     [mutableDict setValue:[NSArray arrayWithArray:tempArrayForPropetiesCommon] forKey:kProfileInfoPropetiesCommon];
     [mutableDict setValue:[NSNumber numberWithDouble:self.feedCount] forKey:kProfileInfoFeedCount];
     [mutableDict setValue:[NSNumber numberWithBool:self.isCool] forKey:kProfileInfoIsCool];
+    
+    NSMutableArray *tempArrayForQueryCodes = [NSMutableArray array];
+    for (NSObject *subArrayObject in self.queryCodes) {
+        if([subArrayObject respondsToSelector:@selector(dictionaryRepresentation)]) {
+            // This class is a model object
+            [tempArrayForQueryCodes addObject:[subArrayObject performSelector:@selector(dictionaryRepresentation)]];
+        } else {
+            // Generic object
+            [tempArrayForQueryCodes addObject:subArrayObject];
+        }
+    }
+    [mutableDict setValue:[NSArray arrayWithArray:tempArrayForQueryCodes] forKey:kProfileInfoQueryCodes];
 
     return [NSDictionary dictionaryWithDictionary:mutableDict];
 }
@@ -231,6 +258,7 @@ NSString *const kProfileInfoIsCool = @"isCool";
     self.propetiesCommon = [aDecoder decodeObjectForKey:kProfileInfoPropetiesCommon];
     self.feedCount = [aDecoder decodeDoubleForKey:kProfileInfoFeedCount];
     self.isCool = [aDecoder decodeBoolForKey:kProfileInfoIsCool];
+    self.queryCodes = [aDecoder decodeObjectForKey:kProfileInfoQueryCodes];
     
     return self;
 }
@@ -253,6 +281,7 @@ NSString *const kProfileInfoIsCool = @"isCool";
     [aCoder encodeObject:_propetiesCommon forKey:kProfileInfoPropetiesCommon];
     [aCoder encodeDouble:_feedCount forKey:kProfileInfoFeedCount];
     [aCoder encodeBool:_isCool forKey:kProfileInfoIsCool];
+    [aCoder encodeObject:_queryCodes forKey:kProfileInfoQueryCodes];
 }
 
 - (id)copyWithZone:(NSZone *)zone
@@ -276,6 +305,7 @@ NSString *const kProfileInfoIsCool = @"isCool";
         copy.propetiesCommon = [self.propetiesCommon copyWithZone:zone];
         copy.feedCount = self.feedCount;
         copy.isCool = self.isCool;
+        copy.queryCodes = [self.queryCodes copyWithZone:zone];
     }
     
     return copy;
