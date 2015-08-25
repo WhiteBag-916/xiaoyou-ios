@@ -7,15 +7,51 @@
 //
 
 #import "NotifyListTableView.h"
+#import "NotifyListTableViewCell.h"
+
+@interface NotifyListTableView ()
+<UITableViewDataSource
+,UITableViewDelegate>
+
+@end
 
 @implementation NotifyListTableView
 
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect {
-    // Drawing code
+- (instancetype)initWithFrame:(CGRect)frame
+{
+    self = [super initWithFrame:frame];
+    if (self) {
+        self.delegate = self;
+        self.dataSource = self;
+        self.separatorStyle = UITableViewCellSeparatorStyleNone;
+        
+        [self registerClass:[NotifyListTableViewCell class] forCellReuseIdentifier:kNotifyListTableViewCell];
+    }
+    return self;
 }
-*/
+
+#pragma mark - UITableViewDataSource
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return 10;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NotifyListTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kNotifyListTableViewCell];
+    
+    return cell;
+}
+
+#pragma mark - UITableViewDelegate
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return SCALE_NUM(51);
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+}
 
 @end

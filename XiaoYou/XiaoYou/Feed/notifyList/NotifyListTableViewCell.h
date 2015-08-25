@@ -8,6 +8,8 @@
 
 #import "YTableViewCell.h"
 
+extern NSString *const kNotifyListTableViewCell;
+
 @interface NotifyListTableViewCell : YTableViewCell
 
 @end
