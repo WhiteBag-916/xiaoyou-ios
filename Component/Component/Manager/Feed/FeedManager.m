@@ -15,6 +15,8 @@
 #import "NewFeedAction.h"
 #import "UploadFeedImageAction.h"
 #import "FindFriendsByTagsAction.h"
+#import "AddPraiseAction.h"
+#import "CommentAddPraiseAction.h"
 
 #define KFeedManagerSyncQueue @"kFeedManagerSyncQueue"
 
@@ -114,6 +116,28 @@ DEF_SINGLETON(FeedManager);
     action.limitEnd = limitEnd;
     action.limitStart = limitStart;
     action.queryCode = queryCode;
+    
+    [YAction startAction:action completionBlock:^(YActionMessage* message) {
+        //主线程处理界面
+        block(message);
+    }];
+}
+
+//Feed敬酒
+- (void)addPraise:(NSString *)feedId block:(ActionCompleteBlock)block {
+    AddPraiseAction *action = [[AddPraiseAction alloc] init];
+    action.feedId = feedId;
+    
+    [YAction startAction:action completionBlock:^(YActionMessage* message) {
+        //主线程处理界面
+        block(message);
+    }];
+}
+
+//Feed评论敬酒
+- (void)commentAddPraise:(NSString *)commentId block:(ActionCompleteBlock)block {
+    CommentAddPraiseAction *action = [[CommentAddPraiseAction alloc] init];
+    action.commentId = commentId;
     
     [YAction startAction:action completionBlock:^(YActionMessage* message) {
         //主线程处理界面
