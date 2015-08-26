@@ -8,6 +8,6 @@
 
 #import "YHTTPRequestAction.h"
 
-@interface ReadAllAction : YHTTPRequestAction
+@interface ReadAllAction : YHTTPRequestAction<YAction>
 
 @end

@@ -9,15 +9,24 @@
 #import "AssociationsDetailViewController.h"
 #import "AssociationsDetailTableView.h"
 #import "YCommonActionSheet.h"
+#import "ContactManager.h"
 
 @interface AssociationsDetailViewController ()
 
 @property (nonatomic, strong) AssociationsDetailTableView *associationsDetailTableView;
 @property (nonatomic, strong) UIButton *addButton; //一键入社
+@property (nonatomic, strong) NSString *uid;//社团id
 
 @end
 
 @implementation AssociationsDetailViewController
+
+- (instancetype)initWithId:(NSString *)uid {
+    if (self = [super init]) {
+        _uid = uid;
+    }
+    return self;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -60,6 +69,7 @@
     
     //tableview
     _associationsDetailTableView = [[AssociationsDetailTableView alloc] init];
+    _associationsDetailTableView.parent = self;
     [self.view addSubview:_associationsDetailTableView];
     
     [_associationsDetailTableView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -69,7 +79,10 @@
 }
 
 - (void)pressAddButton {
-    
+    //申请入社
+    [[ContactManager sharedInstance] submitApply:_uid block:^(YActionMessage *message) {
+        [YUtils showTitle:message.desc];
+    }];
 }
 
 /*

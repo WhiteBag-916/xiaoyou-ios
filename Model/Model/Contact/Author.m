@@ -22,6 +22,7 @@ NSString *const kAuthorClassCodes = @"classCodes";
 NSString *const kAuthorName = @"name";
 NSString *const kAuthorGroupCodes = @"groupCodes";
 NSString *const kAuthorGender = @"gender";
+NSString *const kAuthorFriendStatus = @"friendStatus";
 
 @interface Author ()
 
@@ -43,6 +44,7 @@ NSString *const kAuthorGender = @"gender";
 @synthesize name = _name;
 @synthesize groupCodes = _groupCodes;
 @synthesize gender = _gender;
+@synthesize friendStatus = _friendStatus;
 
 + (instancetype)modelObjectWithDictionary:(NSDictionary *)dict
 {
@@ -118,6 +120,7 @@ NSString *const kAuthorGender = @"gender";
         self.groupCodes = [NSArray arrayWithArray:parsedGroupCodes];
         
         self.gender = [self objectOrNilForKey:kAuthorGender fromDictionary:dict];
+        self.friendStatus = [self objectOrNilForKey:kAuthorFriendStatus fromDictionary:dict];
 
     }
     
@@ -180,6 +183,7 @@ NSString *const kAuthorGender = @"gender";
         }
     }
     [mutableDict setValue:[NSArray arrayWithArray:tempArrayForGroupCodes] forKey:kAuthorGroupCodes];
+    [mutableDict setValue:self.friendStatus forKey:kAuthorFriendStatus];
 
     return [NSDictionary dictionaryWithDictionary:mutableDict];
 }
@@ -215,6 +219,7 @@ NSString *const kAuthorGender = @"gender";
     self.name = [aDecoder decodeObjectForKey:kAuthorName];
     self.groupCodes = [aDecoder decodeObjectForKey:kAuthorGroupCodes];
     self.gender = [aDecoder decodeObjectForKey:kAuthorGender];
+    self.friendStatus = [aDecoder decodeObjectForKey:kAuthorFriendStatus];
     return self;
 }
 
@@ -233,6 +238,7 @@ NSString *const kAuthorGender = @"gender";
     [aCoder encodeObject:_name forKey:kAuthorName];
     [aCoder encodeObject:_gender forKey:kAuthorGender];
     [aCoder encodeObject:_groupCodes forKey:kAuthorGroupCodes];
+    [aCoder encodeObject:_friendStatus forKey:kAuthorFriendStatus];
 }
 
 - (id)copyWithZone:(NSZone *)zone
@@ -253,6 +259,7 @@ NSString *const kAuthorGender = @"gender";
         copy.name = [self.name copyWithZone:zone];
         copy.gender = [self.gender copyWithZone:zone];
         copy.groupCodes = [self.groupCodes copyWithZone:zone];
+        copy.friendStatus = [self.friendStatus copyWithZone:zone];
     }
     
     return copy;

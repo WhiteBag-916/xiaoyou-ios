@@ -14,4 +14,12 @@
 
 @property (nonatomic, weak) YViewController *superVC;
 
+- (void)loadData;
+- (void)resetArray:(NSArray *)array;
+- (NSArray *)tableViewData;
+//筛选
+- (void)resetArrayByFilter:(NSString *)filterStr;
+//搜索
+- (void)resetArrayBySearch:(NSString *)searchStr;
+
 @end

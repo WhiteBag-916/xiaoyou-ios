@@ -158,10 +158,9 @@ DEF_SINGLETON(ContactManager);
 }
 
 //申请进入群组
-- (void)submitApply:(NSString *)groupId applicant:(NSString *)applicant block:(ActionCompleteBlock)block {
+- (void)submitApply:(NSString *)groupId block:(ActionCompleteBlock)block {
     SubmitApplyAction* action = [[SubmitApplyAction alloc] init];
     action.groupId = groupId;
-    action.applicant = applicant;
     
     [YAction startAction:action completionBlock:^(YActionMessage* message) {
         //主线程处理界面

@@ -36,6 +36,7 @@
                 }
             }];
             self.footer.automaticallyHidden = NO;
+            [(MJRefreshAutoNormalFooter *)self.footer setTitle:@"没有更多数据" forState:MJRefreshStateNoMoreData];
             
             [self hiddenFooter:YES];
         }

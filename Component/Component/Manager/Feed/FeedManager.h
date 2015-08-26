@@ -53,4 +53,10 @@ AS_SINGLETON(FeedManager);
 //删除这个用户所有的提醒
 - (void)readAll:(ActionCompleteBlock)block;
 
+//社团搜索条件
+- (void)groupConditions:(ActionCompleteBlock)block;
+
+//社团列表
+- (void)groupList:(NSInteger)limitStart limitEnd:(NSInteger)limitEnd name:(NSString *)name queryCode:(NSString *)queryCode block:(ActionCompleteBlock)block;
+
 @end

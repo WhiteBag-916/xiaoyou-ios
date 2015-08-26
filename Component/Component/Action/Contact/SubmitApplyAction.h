@@ -11,6 +11,5 @@
 @interface SubmitApplyAction : YHTTPRequestAction<YAction>
 
 @property (nonatomic, strong) NSString *groupId;
-@property (nonatomic, strong) NSString *applicant;
 
 @end

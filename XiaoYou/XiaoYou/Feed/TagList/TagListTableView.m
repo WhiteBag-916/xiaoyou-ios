@@ -14,6 +14,7 @@
 #import "ProvisionManager.h"
 #import "Tags.h"
 
+
 @interface TagListTableView()<UITableViewDataSource, UITableViewDelegate>
 @property (nonatomic, strong) NSArray *data;
 @property (nonatomic, assign) int type;
@@ -62,8 +63,6 @@
     TagListTableViewCell *cell = [self dequeueReusableCellWithIdentifier:KTagListTableViewCell];
     if (cell == nil) {
         cell = [[TagListTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:KTagListTableViewCell];
-        UILongPressGestureRecognizer *press = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longPress:)];
-        [cell addGestureRecognizer:press];
     }
     if (indexPath.row < _data.count) {
         if (_type == TagMenuType) {
@@ -94,11 +93,7 @@
         [[NSNotificationCenter defaultCenter] postNotificationName:kNotification_Push_FeedFilter object:nil userInfo:@{@"filter":filter, @"name":name}];
     }];
 }
-- (void)longPress:(UILongPressGestureRecognizer *)press {
-    if (press.state == UIGestureRecognizerStateBegan) {
-        
-    }
-}
+
 //跳转到添加标签
 - (void)toAddTag {
     [[SlideNavigationController sharedInstance] closeMenuWithCompletion:^{

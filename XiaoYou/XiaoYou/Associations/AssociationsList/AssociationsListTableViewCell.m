@@ -9,6 +9,8 @@
 #import "AssociationsListTableViewCell.h"
 #import "YUtils+Component.h"
 #import "UIImageView+WebCache.h"
+#import "GroupModel.h"
+#import "UIImageView+Ext.h"
 
 NSString *const kAssociationsListTableViewCell = @"AssociationsListTableViewCellId";
 
@@ -32,6 +34,7 @@ NSString *const kAssociationsListTableViewCell = @"AssociationsListTableViewCell
 @interface AssociationsListTableViewCell ()
 
 @property (nonatomic, strong) UIImageView   *headImageView;     //头像
+@property (nonatomic, strong) UILabel       *defaultLabel;      //默认文字
 @property (nonatomic, strong) UILabel       *nameLabel;         //名字
 @property (nonatomic, strong) UIView        *starView;          //星级
 
@@ -58,11 +61,23 @@ NSString *const kAssociationsListTableViewCell = @"AssociationsListTableViewCell
 - (void)initView {
     //1
     _headImageView = [UIImageView new];
-    [_headImageView sd_setImageWithURL:[NSURL URLWithString:@"http://cdn.duitang.com/uploads/item/201505/03/20150503184743_Q4EVW.thumb.700_0.jpeg"]];
+    _headImageView.layer.cornerRadius = K_HEADIMG_WH/2;
+    _headImageView.clipsToBounds = YES;
+    _headImageView.backgroundColor = [UIColor hexChangeFloat:@"258f74"];
     [self.contentView addSubview:_headImageView];
     [_headImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.top.mas_equalTo(K_HEADIMG_LT);
         make.width.height.mas_equalTo(K_HEADIMG_WH);
+    }];
+    
+    //班
+    _defaultLabel = [[UILabel alloc] init];
+    _defaultLabel.text = @"社";
+    _defaultLabel.textAlignment = NSTextAlignmentCenter;
+    _defaultLabel.textColor = [UIColor whiteColor];
+    [_headImageView addSubview:_defaultLabel];
+    [_defaultLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.equalTo(_headImageView);
     }];
     
     //2
@@ -160,6 +175,19 @@ NSString *const kAssociationsListTableViewCell = @"AssociationsListTableViewCell
             make.width.mas_equalTo(K_STAR_W);
         }];
     }
+}
+
+- (void)resetData:(GroupModel *)model {
+    [_headImageView setNormalImageWithUrl:model.groupIcon];
+    if (model.groupIcon.length > 0) {
+        _defaultLabel.hidden = YES;
+    } else {
+        _defaultLabel.hidden = NO;
+        _defaultLabel.text = [model.groupName substringWithRange:NSMakeRange(0, 1)];
+    }
+    
+    _nameLabel.text = model.groupName;
+    _keywordsLabel.text = model.keyWords;
 }
 
 @end

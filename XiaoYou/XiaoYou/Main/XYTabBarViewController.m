@@ -42,7 +42,6 @@
 {
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(openProfile:) name:KNotification_Open_Profile object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(setupUnreadMessageCount:) name:KNotification_Message_unread object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(openAddFriend:) name:KNotification_Present_AddFriend object:nil];
     
     _messageVC = [[XYMessageAndContactsViewController alloc] init];
     FeedListViewController *feedVC = [[FeedListViewController alloc] init];
@@ -108,12 +107,8 @@
     } else {
         XYContactsInfoDetailViewController *xv = [[XYContactsInfoDetailViewController alloc] init];
         xv.uid = userId;
-        [controller pushViewController:xv animated:true];
+        [controller pushViewController:xv animated:true needHiddenBottomBar:YES];
     }
-}
-- (void)openAddFriend:(NSNotification *)notification {
-    UINavigationController *controller = (UINavigationController *)self.selectedViewController;
-    [controller presentViewController:[[UINavigationController alloc] initWithRootViewController:[[YCommonEditViewController alloc] initWithType:YCommonEditAddFriend preText:[notification userInfo][@"uid"]]] animated:true completion:nil];
 }
 #pragma mark - SlideNavigationControllerDelegate
 - (BOOL)slideNavigationControllerShouldDisplayLeftMenu

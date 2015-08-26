@@ -34,7 +34,7 @@ AS_SINGLETON(ContactManager);
 - (void)findFriends:(NSInteger)limitStart limitEnd:(NSInteger)limitEnd conditionDic:(NSDictionary *)conditionDic block:(ActionCompleteBlock)block;
 
 //申请进入群组
-- (void)submitApply:(NSString *)groupId applicant:(NSString *)applicant block:(ActionCompleteBlock)block;
+- (void)submitApply:(NSString *)groupId block:(ActionCompleteBlock)block;
 
 //拒绝加入群组
 - (void)rejectApply:(NSString *)applyId block:(ActionCompleteBlock)block;

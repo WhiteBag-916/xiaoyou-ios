@@ -8,8 +8,12 @@
 
 #import "YTableViewCell.h"
 
+@class GroupModel;
+
 extern NSString *const kAssociationsListTableViewCell;
 
 @interface AssociationsListTableViewCell : YTableViewCell
+
+- (void)resetData:(GroupModel *)model;
 
 @end

@@ -116,7 +116,9 @@ DEF_SINGLETON(ProvisionManager);
     NSString *cachePath = [[YDirectory fileCache] stringByAppendingString:NSStringFromClass([ProfileInfo class])];
     _profileInfo = [ProfileInfo instanceWithFile:cachePath];
 }
-
+- (NSString *)getUserId {
+    return _profileInfo.uid;
+}
 //获取登录信息
 - (LoginResp *)getLoginInfo {
     return _loginResp;

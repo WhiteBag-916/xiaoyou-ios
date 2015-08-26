@@ -8,8 +8,15 @@
 
 #import "YTableView.h"
 
+@class YViewController;
+
 @interface NotifyListTableView : YTableView
 
+@property (nonatomic, weak) YViewController *superVC;
+
 - (void)loadData;
+
+//清除所有数据
+- (void)readAll;
 
 @end

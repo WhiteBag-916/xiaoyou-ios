@@ -36,6 +36,7 @@
 - (void)initView {
     _notifyListTableView = [[NotifyListTableView alloc] init];
     _notifyListTableView.backgroundColor = KCOLORWHITE;
+    _notifyListTableView.superVC = self;
     [self.view addSubview:_notifyListTableView];
     
     [_notifyListTableView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -45,9 +46,9 @@
 
 - (void)onNavigationRightButtonClicked {
     YActionSheetItem *item1 = [YActionSheetItem itemWithTitle:@"清空所有提醒"
-                                                         type:YCommonActionSheetItemTypeCommon
+                                                         type:YCommonActionSheetItemTypeCenterCommon
                                                         block:^(NSInteger checkNum) {
-                                                            
+                                                            [_notifyListTableView readAll];
                                                         }];
     
     YCommonActionSheet *sheet = [[YCommonActionSheet alloc] initWithType:@[item1] title:nil];

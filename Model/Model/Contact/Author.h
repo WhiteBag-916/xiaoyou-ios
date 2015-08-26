@@ -24,6 +24,7 @@
 @property (nonatomic, strong) NSString *name;
 @property (nonatomic, strong) NSArray *groupCodes;//ProvinceCode
 @property (nonatomic, strong) NSString *gender;
+@property (nonatomic, strong) NSString *friendStatus;
 
 + (instancetype)modelObjectWithDictionary:(NSDictionary *)dict;
 - (instancetype)initWithDictionary:(NSDictionary *)dict;
