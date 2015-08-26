@@ -29,6 +29,10 @@
     [self initView];
 }
 
+- (void)viewDidAppear:(BOOL)animated {
+    [_notifyListTableView loadData];
+}
+
 - (void)initView {
     _notifyListTableView = [[NotifyListTableView alloc] init];
     _notifyListTableView.backgroundColor = KCOLORWHITE;

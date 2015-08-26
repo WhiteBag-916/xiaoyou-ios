@@ -8,10 +8,16 @@
 
 #import "NotifyListTableView.h"
 #import "NotifyListTableViewCell.h"
+#import "AlertList.h"
+#import "FeedManager.h"
+
+#define KPAGENUM 10
 
 @interface NotifyListTableView ()
 <UITableViewDataSource
 ,UITableViewDelegate>
+
+@property (nonatomic, strong) NSMutableArray *notifyListArray;
 
 @end
 
@@ -25,15 +31,68 @@
         self.dataSource = self;
         self.separatorStyle = UITableViewCellSeparatorStyleNone;
         
+        self.notifyListArray = [NSMutableArray array];
+        
         [self registerClass:[NotifyListTableViewCell class] forCellReuseIdentifier:kNotifyListTableViewCell];
     }
     return self;
 }
 
+#pragma mark - 继承者
+- (BOOL)showHeaderRefresh
+{
+    return YES;
+}
+
+- (BOOL)showFooterRefresh
+{
+    return YES;
+}
+- (void)loadData {
+    [self beginLoadNewData];
+}
+- (void)loadNewData
+{
+    [self sendRequest];
+}
+
+- (void)loadMoreData
+{
+    [self sendRequest];
+}
+- (void)sendRequest {
+    //mod by xiongchen
+    NSString *lastID;
+    if (![self isHeaderRefresh]) {
+        lastID = [NSString stringWithFormat:@"%g", [_notifyListArray.lastObject affectId]];
+    }
+    [[FeedManager sharedInstance] alertList:lastID size:KPAGENUM block:^(YActionMessage *message) {
+        if ([self isHeaderRefresh]) {
+            [_notifyListArray removeAllObjects];
+        }
+        if (message.isSuccess) {
+            [self hiddenFooter:false];
+            [_notifyListArray addObjectsFromArray:message.object];
+            if ([message.object count] < KPAGENUM) {
+                [self showNoticeNoMoreData];
+            }
+            [self reloadData];
+            
+        } else {
+            [YUtils showTitleOn:self title:message.desc];
+        }
+        if ([self isHeaderRefresh]) {
+            [self stopLoadNewData];
+        } else {
+            [self stopLoadMoreData];
+        }
+    }];
+}
+
 #pragma mark - UITableViewDataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 10;
+    return _notifyListArray.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath

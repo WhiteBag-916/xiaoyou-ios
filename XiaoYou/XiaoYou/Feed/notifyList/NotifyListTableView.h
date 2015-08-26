@@ -10,4 +10,6 @@
 
 @interface NotifyListTableView : YTableView
 
+- (void)loadData;
+
 @end
