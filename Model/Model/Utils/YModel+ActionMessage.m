@@ -72,7 +72,11 @@ NSString *const kCommonObj = @"obj";
     else
     {
         errorCode = kYYHTTPErrorBase + request.errorCode;
-        errorDescription = request.error.description;
+        if (YHTTPConnectionFailureErrorType == errorCode) {
+            errorDescription = @"无网络";
+        } else {
+            errorDescription = request.error.description;
+        }
     }
     YActionMessage *message = [[YActionMessage alloc] initWithType:NSStringFromClass([self class])
                                                          errorCode:errorCode

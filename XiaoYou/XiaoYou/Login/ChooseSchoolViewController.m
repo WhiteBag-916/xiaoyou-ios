@@ -292,7 +292,7 @@
             }
             
         } else {
-            YLogE(@"checkSchoolRequest: %@",message);
+            [YUtils showTitle:message.desc];
         }
     }];
 }
