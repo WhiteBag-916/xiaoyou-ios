@@ -264,6 +264,7 @@
     return label;
 }
 - (void)showAddPicList {
+    
     YActionSheetItem *item = [YActionSheetItem itemWithTitle:@"查看大图"
                                                          type:YCommonActionSheetItemTypeCenterCommon
                                                         block:^(NSInteger checkNum) {
@@ -303,9 +304,6 @@
     return _faceImg.image;
 }
 
-- (NSURL *)photoBrowser:(SDPhotoBrowser *)browser highQualityImageURLForIndex:(NSInteger)index {
-    return _faceImg.sd_imageURL;
-}
 - (void)pickImage
 {
     UIImagePickerController *picker = [[UIImagePickerController alloc] init];
