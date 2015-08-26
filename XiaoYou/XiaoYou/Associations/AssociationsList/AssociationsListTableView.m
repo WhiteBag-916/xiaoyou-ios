@@ -60,7 +60,7 @@
 - (void)resetArrayBySearch:(NSString *)searchStr {
     _searchStr = searchStr;
     if (_searchStr.length > 0) {
-        [self loadData];
+        [self sendRequest];
     } else {
         [_associationsListArray removeAllObjects];
         [self reloadData];
@@ -91,7 +91,7 @@
 }
 - (void)sendRequest {
     NSInteger cnt = _associationsListArray.count;
-    if ([self isHeaderRefresh]) {
+    if ([self isHeaderRefresh] || _searchStr.length > 0) {
         cnt = 0;
     }
     [[FeedManager sharedInstance] groupList:cnt limitEnd:cnt + KPAGENUM name:_searchStr queryCode:_filterStr block:^(YActionMessage *message) {
@@ -100,7 +100,7 @@
 }
 
 - (void)dealMessage:(YActionMessage *)message {
-    if ([self isHeaderRefresh]) {
+    if ([self isHeaderRefresh] || _searchStr.length > 0) {
         [_associationsListArray removeAllObjects];
     }
     if (message.isSuccess) {
