@@ -10,7 +10,6 @@
 
 @interface ApplicantListAction : YHTTPRequestAction
 
-@property (nonatomic, strong) NSString *userId;
 @property (nonatomic, strong) NSString *groupId;
 
 @end

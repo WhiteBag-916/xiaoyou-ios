@@ -10,7 +10,6 @@
 
 @interface IgnoreApplyListAction : YHTTPRequestAction
 
-@property (nonatomic, strong) NSString *userId;
 @property (nonatomic, strong) NSString *applyIds;
 
 @end

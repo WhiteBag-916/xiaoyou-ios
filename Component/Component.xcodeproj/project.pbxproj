@@ -13,6 +13,11 @@
 		20859A941B64C06A00580ED3 /* LoginAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 20859A931B64C06A00580ED3 /* LoginAction.m */; };
 		20C5B04B1B8DA93400B4A8A8 /* AddPraiseAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 20C5B04A1B8DA93400B4A8A8 /* AddPraiseAction.m */; };
 		20C5B04E1B8DA94100B4A8A8 /* CommentAddPraiseAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 20C5B04D1B8DA94100B4A8A8 /* CommentAddPraiseAction.m */; };
+		20C5B0511B8DB03900B4A8A8 /* GetFriendApplyListAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 20C5B0501B8DB03900B4A8A8 /* GetFriendApplyListAction.m */; };
+		20C5B0541B8DB04D00B4A8A8 /* AgreeFriendApplyAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 20C5B0531B8DB04D00B4A8A8 /* AgreeFriendApplyAction.m */; };
+		20C5B0571B8DB05D00B4A8A8 /* SubmitFriendApplyAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 20C5B0561B8DB05D00B4A8A8 /* SubmitFriendApplyAction.m */; };
+		20C5B05D1B8DB08900B4A8A8 /* GroupDetailAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 20C5B05C1B8DB08900B4A8A8 /* GroupDetailAction.m */; };
+		20C5B0601B8DB43B00B4A8A8 /* IgnoreFriendApplyAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 20C5B05F1B8DB43B00B4A8A8 /* IgnoreFriendApplyAction.m */; };
 		20DA1A5A1B89751500DEF95C /* MyCommentPersonsAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 20DA1A591B89751500DEF95C /* MyCommentPersonsAction.m */; };
 		20DA1A5D1B89752000DEF95C /* MyPraisePersonsAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 20DA1A5C1B89752000DEF95C /* MyPraisePersonsAction.m */; };
 		20DA1A711B89B7DD00DEF95C /* MyFeedAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 20DA1A701B89B7DD00DEF95C /* MyFeedAction.m */; };
@@ -88,6 +93,16 @@
 		20C5B04A1B8DA93400B4A8A8 /* AddPraiseAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddPraiseAction.m; sourceTree = "<group>"; };
 		20C5B04C1B8DA94100B4A8A8 /* CommentAddPraiseAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentAddPraiseAction.h; sourceTree = "<group>"; };
 		20C5B04D1B8DA94100B4A8A8 /* CommentAddPraiseAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentAddPraiseAction.m; sourceTree = "<group>"; };
+		20C5B04F1B8DB03900B4A8A8 /* GetFriendApplyListAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetFriendApplyListAction.h; sourceTree = "<group>"; };
+		20C5B0501B8DB03900B4A8A8 /* GetFriendApplyListAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetFriendApplyListAction.m; sourceTree = "<group>"; };
+		20C5B0521B8DB04D00B4A8A8 /* AgreeFriendApplyAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AgreeFriendApplyAction.h; sourceTree = "<group>"; };
+		20C5B0531B8DB04D00B4A8A8 /* AgreeFriendApplyAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AgreeFriendApplyAction.m; sourceTree = "<group>"; };
+		20C5B0551B8DB05D00B4A8A8 /* SubmitFriendApplyAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SubmitFriendApplyAction.h; sourceTree = "<group>"; };
+		20C5B0561B8DB05D00B4A8A8 /* SubmitFriendApplyAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SubmitFriendApplyAction.m; sourceTree = "<group>"; };
+		20C5B05B1B8DB08900B4A8A8 /* GroupDetailAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroupDetailAction.h; sourceTree = "<group>"; };
+		20C5B05C1B8DB08900B4A8A8 /* GroupDetailAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroupDetailAction.m; sourceTree = "<group>"; };
+		20C5B05E1B8DB43B00B4A8A8 /* IgnoreFriendApplyAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IgnoreFriendApplyAction.h; sourceTree = "<group>"; };
+		20C5B05F1B8DB43B00B4A8A8 /* IgnoreFriendApplyAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IgnoreFriendApplyAction.m; sourceTree = "<group>"; };
 		20DA1A581B89751500DEF95C /* MyCommentPersonsAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyCommentPersonsAction.h; sourceTree = "<group>"; };
 		20DA1A591B89751500DEF95C /* MyCommentPersonsAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyCommentPersonsAction.m; sourceTree = "<group>"; };
 		20DA1A5B1B89752000DEF95C /* MyPraisePersonsAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyPraisePersonsAction.h; sourceTree = "<group>"; };
@@ -337,6 +352,16 @@
 				20DCB96C1B8CA60800C758DE /* IgnoreApplyListAction.m */,
 				20DCB9711B8CA60800C758DE /* ApplicantListAction.h */,
 				20DCB9721B8CA60800C758DE /* ApplicantListAction.m */,
+				20C5B04F1B8DB03900B4A8A8 /* GetFriendApplyListAction.h */,
+				20C5B0501B8DB03900B4A8A8 /* GetFriendApplyListAction.m */,
+				20C5B0521B8DB04D00B4A8A8 /* AgreeFriendApplyAction.h */,
+				20C5B0531B8DB04D00B4A8A8 /* AgreeFriendApplyAction.m */,
+				20C5B0551B8DB05D00B4A8A8 /* SubmitFriendApplyAction.h */,
+				20C5B0561B8DB05D00B4A8A8 /* SubmitFriendApplyAction.m */,
+				20C5B05B1B8DB08900B4A8A8 /* GroupDetailAction.h */,
+				20C5B05C1B8DB08900B4A8A8 /* GroupDetailAction.m */,
+				20C5B05E1B8DB43B00B4A8A8 /* IgnoreFriendApplyAction.h */,
+				20C5B05F1B8DB43B00B4A8A8 /* IgnoreFriendApplyAction.m */,
 			);
 			path = Contact;
 			sourceTree = "<group>";
@@ -550,12 +575,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				20DCB95B1B8CA60800C758DE /* NewFeedAction.m in Sources */,
+				20C5B0511B8DB03900B4A8A8 /* GetFriendApplyListAction.m in Sources */,
 				20859A851B64BD9000580ED3 /* MessageManager.m in Sources */,
 				20859A7C1B64BD5B00580ED3 /* ProvisionManager.m in Sources */,
 				20C5B04E1B8DA94100B4A8A8 /* CommentAddPraiseAction.m in Sources */,
 				20DBFD861B4FD3F5009134D0 /* YUtils+Component.m in Sources */,
 				20DA1A5A1B89751500DEF95C /* MyCommentPersonsAction.m in Sources */,
 				20DCB9611B8CA60800C758DE /* SubmitApplyAction.m in Sources */,
+				20C5B0541B8DB04D00B4A8A8 /* AgreeFriendApplyAction.m in Sources */,
 				20DCB9701B8CA60800C758DE /* FindFriendsByTagsAction.m in Sources */,
 				20C5B04B1B8DA93400B4A8A8 /* AddPraiseAction.m in Sources */,
 				20E1C6811B89F2C8008BA9D6 /* FeedListAction.m in Sources */,
@@ -575,12 +602,15 @@
 				20E0C00C1B88B0CA00EDAED4 /* ProfileAction.m in Sources */,
 				20E0BFED1B88B0CA00EDAED4 /* MessageListAction.m in Sources */,
 				20E1C67E1B89F148008BA9D6 /* FeedDetailAction.m in Sources */,
+				20C5B0571B8DB05D00B4A8A8 /* SubmitFriendApplyAction.m in Sources */,
 				20DA74C01B8C12040002E041 /* FindFriendsAction.m in Sources */,
 				20859A821B64BD8500580ED3 /* ContactManager.m in Sources */,
 				20E1C6721B89EB9F008BA9D6 /* ReceiveAuthCodeAction.m in Sources */,
 				20DA74C31B8C120F0002E041 /* FriendsConditionAction.m in Sources */,
+				20C5B05D1B8DB08900B4A8A8 /* GroupDetailAction.m in Sources */,
 				20E1C66C1B89EB81008BA9D6 /* ReceiveMobileAuthCodeAction.m in Sources */,
 				20E0BFF01B88B0CA00EDAED4 /* UploadHeadImageAction.m in Sources */,
+				20C5B0601B8DB43B00B4A8A8 /* IgnoreFriendApplyAction.m in Sources */,
 				20DCB96D1B8CA60800C758DE /* IgnoreApplyListAction.m in Sources */,
 				20DCB9671B8CA60800C758DE /* ApplyListAction.m in Sources */,
 				20DA1A5D1B89752000DEF95C /* MyPraisePersonsAction.m in Sources */,

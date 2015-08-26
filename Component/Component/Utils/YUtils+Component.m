@@ -59,6 +59,19 @@
     return [self getParameter:parameters];
 }
 
++ getParameter:(NSDictionary *)parameters needUserToken:(BOOL)needUserToken needAddUserID:(BOOL)needAddUserID {
+    
+    NSMutableDictionary *dic;
+    if (nil != parameters) {
+        dic = [[NSMutableDictionary alloc] initWithDictionary:parameters];
+        [dic setObject:[YShareData defaultData][kShareData_UserID] forKey:@"userId"];
+    } else {
+        dic = @{@"userId":[YShareData defaultData][kShareData_UserID]};
+    }
+    
+    return [self getParameter:dic needUserToken:needUserToken];
+}
+
 + (NSString *)distanceTimeToday:(NSDate *)date
 {
     NSTimeInterval  timeInterval = [date timeIntervalSinceNow];

@@ -10,7 +10,6 @@
 
 @interface AgreeApplyAction : YHTTPRequestAction
 
-@property (nonatomic, strong) NSString *userId;
 @property (nonatomic, strong) NSString *applyId;
 
 @end

@@ -24,6 +24,11 @@
 #import "IgnoreApplyListAction.h"
 #import "AgreeApplyAction.h"
 #import "ApplicantListAction.h"
+#import "GetFriendApplyListAction.h"
+#import "AgreeFriendApplyAction.h"
+#import "SubmitFriendApplyAction.h"
+#import "GroupDetailAction.h"
+#import "IgnoreFriendApplyAction.h"
 
 #define kContactsManagerSyncQueue @"kContactsManagerSyncQueue"
 
@@ -165,9 +170,8 @@ DEF_SINGLETON(ContactManager);
 }
 
 //拒绝加入群组
-- (void)rejectApply:(NSString *)userId applyId:(NSString *)applyId block:(ActionCompleteBlock)block {
+- (void)rejectApply:(NSString *)applyId block:(ActionCompleteBlock)block {
     RejectApplyAction* action = [[RejectApplyAction alloc] init];
-    action.userId = userId;
     action.applyId = applyId;
     
     [YAction startAction:action completionBlock:^(YActionMessage* message) {
@@ -177,10 +181,9 @@ DEF_SINGLETON(ContactManager);
 }
 
 //申请记录列表,ApplicantList
-- (void)applyListApply:(NSString *)groupId userId:(NSString *)userId block:(ActionCompleteBlock)block {
+- (void)applyListApply:(NSString *)groupId block:(ActionCompleteBlock)block {
     ApplyListAction* action = [[ApplyListAction alloc] init];
     action.groupId = groupId;
-    action.userId = userId;
     
     [YAction startAction:action completionBlock:^(YActionMessage* message) {
         //主线程处理界面
@@ -189,9 +192,8 @@ DEF_SINGLETON(ContactManager);
 }
 
 //忽略申请列表
-- (void)ignoreApplyList:(NSString *)userId applyIds:(NSString *)applyIds block:(ActionCompleteBlock)block {
+- (void)ignoreApplyList:(NSString *)applyIds block:(ActionCompleteBlock)block {
     IgnoreApplyListAction* action = [[IgnoreApplyListAction alloc] init];
-    action.userId = userId;
     action.applyIds = applyIds;
     
     [YAction startAction:action completionBlock:^(YActionMessage* message) {
@@ -201,9 +203,8 @@ DEF_SINGLETON(ContactManager);
 }
 
 //同意加入群组
-- (void)agreeApply:(NSString *)userId applyId:(NSString *)applyId block:(ActionCompleteBlock)block {
+- (void)agreeApply:(NSString *)applyId block:(ActionCompleteBlock)block {
     AgreeApplyAction* action = [[AgreeApplyAction alloc] init];
-    action.userId = userId;
     action.applyId = applyId;
     
     [YAction startAction:action completionBlock:^(YActionMessage* message) {
@@ -213,10 +214,63 @@ DEF_SINGLETON(ContactManager);
 }
 
 //群组申请人员列表
-- (void)applicantList:(NSString *)userId groupId:(NSString *)groupId block:(ActionCompleteBlock)block {
+- (void)applicantList:(NSString *)groupId block:(ActionCompleteBlock)block {
     ApplicantListAction* action = [[ApplicantListAction alloc] init];
     action.groupId = groupId;
-    action.userId = userId;
+    
+    [YAction startAction:action completionBlock:^(YActionMessage* message) {
+        //主线程处理界面
+        block(message);
+    }];
+}
+
+//获取申请列表,ApplicantList
+- (void)getFriendApplyList:(ActionCompleteBlock)block {
+    GetFriendApplyListAction* action = [[GetFriendApplyListAction alloc] init];
+    
+    [YAction startAction:action completionBlock:^(YActionMessage* message) {
+        //主线程处理界面
+        block(message);
+    }];
+}
+
+//同意好友申请
+- (void)agreeFriendApply:(NSString *)applyId block:(ActionCompleteBlock)block {
+    AgreeFriendApplyAction* action = [[AgreeFriendApplyAction alloc] init];
+    action.applyId = applyId;
+    
+    [YAction startAction:action completionBlock:^(YActionMessage* message) {
+        //主线程处理界面
+        block(message);
+    }];
+}
+
+//发送好友申请
+- (void)submitFriendApply:(NSString *)targetId block:(ActionCompleteBlock)block {
+    SubmitFriendApplyAction* action = [[SubmitFriendApplyAction alloc] init];
+    action.targetId = targetId;
+    
+    [YAction startAction:action completionBlock:^(YActionMessage* message) {
+        //主线程处理界面
+        block(message);
+    }];
+}
+
+//忽略好友申请
+- (void)ignoreFriendApply:(NSString *)applyIds block:(ActionCompleteBlock)block {
+    IgnoreFriendApplyAction* action = [[IgnoreFriendApplyAction alloc] init];
+    action.applyIds = applyIds;
+    
+    [YAction startAction:action completionBlock:^(YActionMessage* message) {
+        //主线程处理界面
+        block(message);
+    }];
+}
+
+//获取群组详情
+- (void)groupDetail:(NSString *)applyIds block:(ActionCompleteBlock)block {
+    GroupDetailAction* action = [[GroupDetailAction alloc] init];
+    action.applyIds = applyIds;
     
     [YAction startAction:action completionBlock:^(YActionMessage* message) {
         //主线程处理界面
