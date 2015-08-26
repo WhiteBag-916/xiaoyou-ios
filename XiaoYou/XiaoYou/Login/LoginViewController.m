@@ -41,7 +41,7 @@
 }
 
 - (void)viewWillAppear:(BOOL)animated {
-    _accountTextField.text = [YShareData defaultData][kShareData_LoginAccount];
+    _accountTextField.text = [YShareData defaultData][kShareData_StudentNo];
 #if DEBUG    
     if (_accountTextField.text.length <= 0) {
         _accountTextField.text = @"1234";

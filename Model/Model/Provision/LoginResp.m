@@ -33,6 +33,7 @@ NSString *const kLoginRespStudentClass = @"studentClass";
 NSString *const kLoginRespFaculty = @"faculty";
 NSString *const kLoginRespMobilePhone = @"mobilePhone";
 NSString *const kLoginRespFirstLogin = @"firstLogin";
+NSString *const kLoginRespSchoolLogoPath = @"schoolLogoPath";
 
 
 @interface LoginResp ()
@@ -68,7 +69,7 @@ NSString *const kLoginRespFirstLogin = @"firstLogin";
 @synthesize studentClass = _studentClass;
 @synthesize faculty = _faculty;
 @synthesize mobilePhone = _mobilePhone;
-
+@synthesize schoolLogoPath = _schoolLogoPath;
 
 + (instancetype)modelObjectWithDictionary:(NSDictionary *)dict
 {
@@ -108,7 +109,7 @@ NSString *const kLoginRespFirstLogin = @"firstLogin";
         self.faculty = [self objectOrNilForKey:kLoginRespFaculty fromDictionary:dict];
         self.mobilePhone = [self objectOrNilForKey:kLoginRespMobilePhone fromDictionary:dict];
         self.firstLogin = [[self objectOrNilForKey:kLoginRespFirstLogin fromDictionary:dict] doubleValue];
-        
+        self.schoolLogoPath = [self objectOrNilForKey:kLoginRespSchoolLogoPath fromDictionary:dict];
     }
     
     return self;
@@ -143,6 +144,7 @@ NSString *const kLoginRespFirstLogin = @"firstLogin";
     [mutableDict setValue:self.studentClass forKey:kLoginRespStudentClass];
     [mutableDict setValue:self.faculty forKey:kLoginRespFaculty];
     [mutableDict setValue:self.mobilePhone forKey:kLoginRespMobilePhone];
+    [mutableDict setValue:self.schoolLogoPath forKey:kLoginRespSchoolLogoPath];
     
     return [NSDictionary dictionaryWithDictionary:mutableDict];
 }
@@ -191,6 +193,8 @@ NSString *const kLoginRespFirstLogin = @"firstLogin";
     self.studentClass = [aDecoder decodeObjectForKey:kLoginRespStudentClass];
     self.faculty = [aDecoder decodeObjectForKey:kLoginRespFaculty];
     self.mobilePhone = [aDecoder decodeObjectForKey:kLoginRespMobilePhone];
+    self.schoolLogoPath = [aDecoder decodeObjectForKey:kLoginRespSchoolLogoPath];
+    
     return self;
 }
 
@@ -222,6 +226,7 @@ NSString *const kLoginRespFirstLogin = @"firstLogin";
     [aCoder encodeObject:_studentClass forKey:kLoginRespStudentClass];
     [aCoder encodeObject:_faculty forKey:kLoginRespFaculty];
     [aCoder encodeObject:_mobilePhone forKey:kLoginRespMobilePhone];
+    [aCoder encodeObject:_schoolLogoPath forKey:kLoginRespSchoolLogoPath];
 }
 
 - (id)copyWithZone:(NSZone *)zone
@@ -255,6 +260,7 @@ NSString *const kLoginRespFirstLogin = @"firstLogin";
         copy.studentClass = [self.studentClass copyWithZone:zone];
         copy.faculty = [self.faculty copyWithZone:zone];
         copy.mobilePhone = [self.mobilePhone copyWithZone:zone];
+        copy.schoolLogoPath = [self.schoolLogoPath copyWithZone:zone];
     }
     
     return copy;

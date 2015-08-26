@@ -36,6 +36,7 @@
 @property (nonatomic, strong) NSString *faculty;
 @property (nonatomic, strong) NSString *mobilePhone;
 @property (nonatomic, assign) BOOL firstLogin;
+@property (nonatomic, strong) NSString *schoolLogoPath;
 
 + (instancetype)modelObjectWithDictionary:(NSDictionary *)dict;
 - (instancetype)initWithDictionary:(NSDictionary *)dict;
