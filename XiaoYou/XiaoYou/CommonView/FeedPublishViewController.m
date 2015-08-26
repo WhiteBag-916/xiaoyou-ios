@@ -41,9 +41,15 @@
 @property (nonatomic, strong) YTextView *textView;
 @property (nonatomic, strong) FeedImageGroup *imgGroup;
 @property (nonatomic, strong) SKTagView *tagView;
+@property (nonatomic, strong) SKTagView *groupTag;
+@property (nonatomic, strong) NSMutableArray *groupArray;
+
+@property (nonatomic, assign) NSInteger groupIndex;
 @property (nonatomic, strong) NSMutableArray *isChecked;
 
 @property (nonatomic, strong) NSMutableArray *tagsArray;
+@property (nonatomic, strong) CommonSwitchView *switchView;
+@property (nonatomic, assign) BOOL isGroup;
 
 @end
 
@@ -53,6 +59,8 @@
     if (self) {
         self.hidesBottomBarWhenPushed = YES;
         _isChecked = [NSMutableArray array];
+        _isGroup = false;
+        _groupIndex = 0;
     }
     return self;
 }
@@ -63,6 +71,7 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(openPhoto) name:KNotification_Present_TakePhoto object:nil];
     
 }
+
 - (void)initView {
     self.title = @"说两句";
     [self showCustomNavigationCancelButton];
@@ -92,25 +101,39 @@
         make.left.mas_equalTo(KTEXTVIEWMARGIN_LEFT);
         make.top.mas_equalTo(KTEXTVIEWMARGIN_TOP);
         make.centerX.equalTo(_contentView);
-        make.height.mas_equalTo(100);
     }];
     ProfileInfo *info = [[ProvisionManager sharedInstance] getProfile];
     if (info.managerGroups.count == 0) {
         UILabel *infoLabel = [YUtils initLabel:CONTENT_FONT(12) color:[UIColor blackColor] text:@"选择发布身份" frame:CGRectZero alignment:NSTextAlignmentLeft];
         [_groupView addSubview:infoLabel];
         [infoLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.top.left.equalTo(_groupView);
+            make.left.equalTo(_groupView);
         }];
-        CommonSwitchView *switchView = [[CommonSwitchView alloc] initWithFrame:CGRectMake(0, 0, SCALE_NUM(70), SCALE_NUM(20)) textArray:@[@"个人", @"社团"]];
-        [_groupView addSubview:switchView];
-        [switchView changedType:^(CommonSwitchType type) {
+        _switchView = [[CommonSwitchView alloc] initWithFrame:CGRectMake(0, 0, SCALE_NUM(70), SCALE_NUM(20)) textArray:@[@"个人", @"社团"]];
+        [_groupView addSubview:_switchView];
+        [_switchView changedType:^(CommonSwitchType type) {
             [self changeSwitchView:type];
         }];
-        [switchView mas_makeConstraints:^(MASConstraintMaker *make) {
+        [_switchView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.centerY.equalTo(infoLabel);
+            make.top.equalTo(_groupView);
             make.right.equalTo(_groupView);
             make.width.mas_equalTo(SCALE_NUM(70));
             make.height.mas_equalTo(SCALE_NUM(20));
+        }];
+        _groupTag = [[SKTagView alloc] init];
+        [_groupView addSubview:_groupTag];
+        [_groupTag mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.right.equalTo(_groupView);
+            make.top.equalTo(_switchView.mas_bottom).offset(SCALE_NUM(25));
+            make.bottom.equalTo(_groupView);
+        }];
+        [self changeSwitchView:0];
+        _groupTag.insets = 5;
+        _groupTag.lineSpace = 5;
+        __weak FeedPublishViewController *weakSelf = self;
+        [_groupTag setDidClickTagAtIndex:^(NSUInteger index) {
+            [weakSelf updateGroupSelected:index];
         }];
     } else {
         [_groupView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -119,15 +142,50 @@
         _groupView.hidden = true;
     }
 }
+- (void)updateGroupSelected:(NSInteger)select {
+    if (_groupIndex == select) {
+        return;
+    }
+    _groupArray[_groupIndex][tagIsSelected] = @NO;
+    _groupArray[select][tagIsSelected] = @YES;
+    [_groupTag updateTag:false atIndex:_groupIndex];
+    [_groupTag updateTag:true atIndex:select];
+    _groupIndex = select;
+}
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    _groupTag.preferredMaxLayoutWidth = _groupTag.width;
+}
 - (void)changeSwitchView:(int)type {
-    
+    if (type == 0) {
+        _isGroup = false;
+        _groupTag.hidden = true;
+        [_textView mas_remakeConstraints:^(MASConstraintMaker *make) {
+            make.left.equalTo(_groupView);
+            make.centerX.equalTo(_groupView);
+            make.top.equalTo(_switchView.mas_bottom);
+            make.height.mas_equalTo(KTEXTVIEWHEIGHT);
+        }];
+
+    } else {
+        _isGroup = true;
+        _groupTag.hidden = false;
+        [_textView mas_remakeConstraints:^(MASConstraintMaker *make) {
+            make.left.equalTo(_groupView);
+            make.centerX.equalTo(_groupView);
+            make.top.equalTo(_groupTag.mas_bottom);
+            make.height.mas_equalTo(KTEXTVIEWHEIGHT);
+        }];
+    }
 }
 - (void)initTextView {
     _textView = [[YTextView alloc] init];
     [_contentView addSubview:_textView];
     [_textView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.right.equalTo(_groupView);
-        make.top.equalTo(_groupView.mas_bottom);
+        make.left.equalTo(_groupView);
+        make.centerX.equalTo(_groupView);
+        make.top.equalTo(_groupTag.mas_bottom).priorityLow();
+        make.top.equalTo(_switchView.mas_bottom).priorityHigh();
         make.height.mas_equalTo(KTEXTVIEWHEIGHT);
     }];
     _textView.placeholder = @"发布优质内容，会有更多人给你敬酒";
@@ -188,21 +246,30 @@
         if (message.isSuccess) {
             //构造tag
             _tagsArray = [@[] mutableCopy];
-            
+            _groupArray = [@[] mutableCopy];
             NSArray *tagList = message.object;
             [tagList enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
                 NSMutableDictionary *dic = [@{tagObj:obj,tagIsSelected:@NO} mutableCopy];
                 [_tagsArray addObject:dic];
+                [_groupArray addObject:[dic mutableCopy]];
             }];
             
             //传入控件
             [self loadTag];
+            [self loadGroupTag];
         } else {
             [YUtils showTitle:message.desc];
         }
     }];
 }
-
+- (void)loadGroupTag {
+    [_groupArray enumerateObjectsUsingBlock:^(NSDictionary *obj, NSUInteger idx, BOOL *stop) {
+        Tags *tags = obj[tagObj];
+        SKTag *tag = [SKTag tagWithText:tags.name];
+        [tag updateWithPublishSelectType:false];
+        [_groupTag addTag:tag];
+    }];
+}
 - (void)loadTag {
     [_tagsArray enumerateObjectsUsingBlock:^(NSDictionary *obj, NSUInteger idx, BOOL *stop) {
         Tags *tags = obj[tagObj];
