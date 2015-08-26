@@ -20,6 +20,9 @@
 #import "CommonSwitchView.h"
 #import "YCommonAlertView.h"
 #import "UIScrollView+UITouchEvent.h"
+#import "FeedManager.h"
+#import "UploadImage.h"
+#import "Feed.h"
 
 #define KTEXTVIEWMARGIN_LEFT SCALE_NUM(5)
 #define KTEXTVIEWMARGIN_TOP SCALE_NUM(15)
@@ -39,6 +42,7 @@
 
 @property (nonatomic, strong) UIView *groupView;
 @property (nonatomic, strong) UIView *contentView;
+@property (nonatomic, strong) UIView *bottomView;
 @property (nonatomic, strong) YTextView *textView;
 @property (nonatomic, strong) FeedImageGroup *imgGroup;
 @property (nonatomic, strong) SKTagView *tagView;
@@ -52,6 +56,8 @@
 @property (nonatomic, strong) CommonSwitchView *switchView;
 @property (nonatomic, assign) BOOL isGroup;
 
+@property (nonatomic, strong) NSMutableArray *picArray;
+
 @end
 
 @implementation FeedPublishViewController
@@ -60,6 +66,7 @@
     if (self) {
         self.hidesBottomBarWhenPushed = YES;
         _isChecked = [NSMutableArray array];
+        _picArray = [NSMutableArray array];
         _isGroup = false;
         _groupIndex = 0;
     }
@@ -170,6 +177,7 @@
     if (type == 0) {
         _isGroup = false;
         _groupTag.hidden = true;
+        _bottomView.hidden = false;
         [_textView mas_remakeConstraints:^(MASConstraintMaker *make) {
             make.left.equalTo(_groupView);
             make.centerX.equalTo(_groupView);
@@ -180,6 +188,7 @@
     } else {
         _isGroup = true;
         _groupTag.hidden = false;
+        _bottomView.hidden = true;
         [_textView mas_remakeConstraints:^(MASConstraintMaker *make) {
             make.left.equalTo(_groupView);
             make.centerX.equalTo(_groupView);
@@ -216,18 +225,24 @@
 }
 
 - (void)initBottom {
-    UIImageView *line = [[UIImageView alloc] init];
-    [_contentView addSubview:line];
-    [line mas_makeConstraints:^(MASConstraintMaker *make) {
+    _bottomView = [[UIView alloc] init];
+    [_contentView addSubview:_bottomView];
+    [_bottomView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(_imgGroup);
         make.centerX.equalTo(_contentView);
-        make.height.mas_equalTo(1);
         make.top.equalTo(_imgGroup.mas_bottom).offset(KLINEMARGIN);
+        make.bottom.equalTo(_contentView);
+    }];
+    UIImageView *line = [[UIImageView alloc] init];
+    [_bottomView addSubview:line];
+    [line mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.left.centerX.equalTo(_bottomView);
+        make.height.mas_equalTo(1);
     }];
     line.backgroundColor = [UIColor blackColor];
     
     UILabel *info = [[UILabel alloc] init];
-    [_contentView addSubview:info];
+    [_bottomView addSubview:info];
     [info mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.right.equalTo(line);
         make.top.equalTo(line.mas_bottom).offset(KLINEMARGIN);
@@ -237,11 +252,11 @@
     info.text = @"选择以下标签，动态将会同步进入选中标签的列表中";
     
     _tagView = [[SKTagView alloc] init];
-    [_contentView addSubview:_tagView];
+    [_bottomView addSubview:_tagView];
     [_tagView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.right.equalTo(info);
         make.top.equalTo(info.mas_bottom).offset(KLINEMARGIN);
-        make.bottom.lessThanOrEqualTo(_contentView);
+        make.bottom.lessThanOrEqualTo(_bottomView);
     }];
     _tagView.insets = 5;
     _tagView.lineSpace = 5;
@@ -256,12 +271,10 @@
         if (message.isSuccess) {
             //构造tag
             _tagsArray = [@[] mutableCopy];
-            _groupArray = [@[] mutableCopy];
             NSArray *tagList = message.object;
             [tagList enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
                 NSMutableDictionary *dic = [@{tagObj:obj,tagIsSelected:@NO} mutableCopy];
                 [_tagsArray addObject:dic];
-                [_groupArray addObject:[dic mutableCopy]];
             }];
             
             //传入控件
@@ -380,6 +393,9 @@
 - (void)onNavigationLeftButtonClicked {
     [self.navigationController dismissViewControllerAnimated:YES completion:nil];
 }
+- (void)onNavigationRightButtonClicked {
+    [self uploadPic];
+}
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [self showEditMode];
@@ -400,6 +416,71 @@
         }
     }];
     return tagStr;
+}
+
+- (void)uploadPic {
+    [_picArray removeAllObjects];
+    [YUtils showHUDWithTitle:@"正在上传"];
+    for (int i = 0; i < [_imgGroup getImgCount]; i++) {
+        [[FeedManager sharedInstance] uploadFeedImage:[YDirectory newImgCache:[NSString stringWithFormat:@"feed%d.png", i]] block:^(YActionMessage *message) {
+            if (message.isSuccess) {
+                [_picArray addObject:[(UploadImage *)message.object url]];
+            } else {
+                [_picArray addObject:@""];
+            }
+            if (_picArray.count == [_imgGroup getImgCount]) {
+                [self uploadFeed];
+            }
+        }];
+    }
+    if ([_imgGroup getImgCount] == 0) {
+        [self uploadFeed];
+    }
+}
+
+- (void)uploadFeed {
+    NSString *imgStr = [self getImageStr];
+    if (imgStr == nil) {
+        [YUtils hiddenProgressHUD];
+        [YUtils showTitle:@"图片上传失败，请重试"];
+    } else {
+        Feed *feed = [Feed new];
+        Tags *tag = _groupArray[_groupIndex][tagObj];
+        feed.sendGroupId = _isGroup?tag.internalBaseClassIdentifier:@"";
+        feed.content = _textView.text.length == 0?@"":_textView.text;
+        feed.img = imgStr;
+        if (imgStr.length == 0) {
+            feed.type = @"TEXT";
+        } else {
+            feed.type = @"IMAGE";
+        }
+        [[FeedManager sharedInstance] sendFeed:feed tagIds:_isGroup?@"":[self getTagSelected] block:^(YActionMessage *message) {
+            [YUtils hiddenProgressHUD];
+            if (message.isSuccess) {
+                [YUtils showTitle:@"发布成功"];
+                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                    [self onNavigationLeftButtonClicked];
+                });
+            } else {
+                [YUtils showTitle:message.desc];
+            }
+        }];
+        
+    }
+}
+- (NSString *)getImageStr {
+    NSMutableString *imageStr = [@"" mutableCopy];
+    for (int i = 0; i < _picArray.count; i++) {
+        NSString *img = _picArray[i];
+        if (img.length == 0) {
+            return nil;
+        }
+        if (imageStr.length > 0) {
+            [imageStr appendString:@","];
+        }
+        [imageStr appendString:img];
+    }
+    return imageStr;
 }
 - (void)dealloc {
     [[NSNotificationCenter defaultCenter] removeObserver:self];

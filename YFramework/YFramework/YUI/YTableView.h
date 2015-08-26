@@ -26,4 +26,5 @@
 //显示无更多数据
 - (void)showNoticeNoMoreData;
 
+- (BOOL)isHeaderRefresh;
 @end

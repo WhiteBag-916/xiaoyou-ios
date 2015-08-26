@@ -41,7 +41,8 @@
         }
         
         //日志
-        self.fd_debugLogEnabled = YES;
+        self.fd_debugLogEnabled = NO;
+        
     }
     
     return self;
@@ -125,7 +126,9 @@
 {
     
 }
-
+- (BOOL)isHeaderRefresh {
+    return self.header.isRefreshing;
+}
 /*
 // Only override drawRect: if you perform custom drawing.
 // An empty implementation adversely affects performance during animation.

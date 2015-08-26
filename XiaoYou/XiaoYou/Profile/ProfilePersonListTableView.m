@@ -56,7 +56,6 @@
 }
 - (void)loadNewData
 {
-    [_personListArray removeAllObjects];
     [self sendRequest];
 }
 
@@ -80,10 +79,8 @@
     }
 }
 - (void)dealMessage:(YActionMessage *)message {
-    if (_personListArray.count == 0) {
-        [self stopLoadNewData];
-    } else {
-        [self stopLoadMoreData];
+    if ([self isHeaderRefresh]) {
+        [_personListArray removeAllObjects];
     }
     if (message.isSuccess) {
         [_personListArray addObjectsFromArray:message.object];
@@ -94,6 +91,11 @@
         
     } else {
         [YUtils showTitleOn:self title:message.desc];
+    }
+    if ([self isHeaderRefresh]) {
+        [self stopLoadNewData];
+    } else {
+        [self stopLoadMoreData];
     }
 }
 - (void)loadDataWithFeedId:(NSString *)feedId {
