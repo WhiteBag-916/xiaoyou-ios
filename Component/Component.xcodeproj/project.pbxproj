@@ -11,6 +11,8 @@
 		20859A821B64BD8500580ED3 /* ContactManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 20859A811B64BD8500580ED3 /* ContactManager.m */; };
 		20859A851B64BD9000580ED3 /* MessageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 20859A841B64BD9000580ED3 /* MessageManager.m */; };
 		20859A941B64C06A00580ED3 /* LoginAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 20859A931B64C06A00580ED3 /* LoginAction.m */; };
+		20C5B04B1B8DA93400B4A8A8 /* AddPraiseAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 20C5B04A1B8DA93400B4A8A8 /* AddPraiseAction.m */; };
+		20C5B04E1B8DA94100B4A8A8 /* CommentAddPraiseAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 20C5B04D1B8DA94100B4A8A8 /* CommentAddPraiseAction.m */; };
 		20DA1A5A1B89751500DEF95C /* MyCommentPersonsAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 20DA1A591B89751500DEF95C /* MyCommentPersonsAction.m */; };
 		20DA1A5D1B89752000DEF95C /* MyPraisePersonsAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 20DA1A5C1B89752000DEF95C /* MyPraisePersonsAction.m */; };
 		20DA1A711B89B7DD00DEF95C /* MyFeedAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 20DA1A701B89B7DD00DEF95C /* MyFeedAction.m */; };
@@ -82,6 +84,10 @@
 		20859A871B64BF3200580ED3 /* YUrlDefine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YUrlDefine.h; sourceTree = "<group>"; };
 		20859A921B64C06A00580ED3 /* LoginAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginAction.h; sourceTree = "<group>"; };
 		20859A931B64C06A00580ED3 /* LoginAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginAction.m; sourceTree = "<group>"; };
+		20C5B0491B8DA93400B4A8A8 /* AddPraiseAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddPraiseAction.h; sourceTree = "<group>"; };
+		20C5B04A1B8DA93400B4A8A8 /* AddPraiseAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddPraiseAction.m; sourceTree = "<group>"; };
+		20C5B04C1B8DA94100B4A8A8 /* CommentAddPraiseAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentAddPraiseAction.h; sourceTree = "<group>"; };
+		20C5B04D1B8DA94100B4A8A8 /* CommentAddPraiseAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentAddPraiseAction.m; sourceTree = "<group>"; };
 		20DA1A581B89751500DEF95C /* MyCommentPersonsAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyCommentPersonsAction.h; sourceTree = "<group>"; };
 		20DA1A591B89751500DEF95C /* MyCommentPersonsAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyCommentPersonsAction.m; sourceTree = "<group>"; };
 		20DA1A5B1B89752000DEF95C /* MyPraisePersonsAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyPraisePersonsAction.h; sourceTree = "<group>"; };
@@ -431,6 +437,10 @@
 				20DCB95D1B8CA60800C758DE /* UploadFeedImageAction.m */,
 				20DCB96E1B8CA60800C758DE /* FindFriendsByTagsAction.h */,
 				20DCB96F1B8CA60800C758DE /* FindFriendsByTagsAction.m */,
+				20C5B0491B8DA93400B4A8A8 /* AddPraiseAction.h */,
+				20C5B04A1B8DA93400B4A8A8 /* AddPraiseAction.m */,
+				20C5B04C1B8DA94100B4A8A8 /* CommentAddPraiseAction.h */,
+				20C5B04D1B8DA94100B4A8A8 /* CommentAddPraiseAction.m */,
 			);
 			path = Feed;
 			sourceTree = "<group>";
@@ -542,10 +552,12 @@
 				20DCB95B1B8CA60800C758DE /* NewFeedAction.m in Sources */,
 				20859A851B64BD9000580ED3 /* MessageManager.m in Sources */,
 				20859A7C1B64BD5B00580ED3 /* ProvisionManager.m in Sources */,
+				20C5B04E1B8DA94100B4A8A8 /* CommentAddPraiseAction.m in Sources */,
 				20DBFD861B4FD3F5009134D0 /* YUtils+Component.m in Sources */,
 				20DA1A5A1B89751500DEF95C /* MyCommentPersonsAction.m in Sources */,
 				20DCB9611B8CA60800C758DE /* SubmitApplyAction.m in Sources */,
 				20DCB9701B8CA60800C758DE /* FindFriendsByTagsAction.m in Sources */,
+				20C5B04B1B8DA93400B4A8A8 /* AddPraiseAction.m in Sources */,
 				20E1C6811B89F2C8008BA9D6 /* FeedListAction.m in Sources */,
 				20DAF9E11B87397A005B7932 /* ForgotPasswordAction.m in Sources */,
 				20E193F11B8AF77900FD7B3D /* PraiseAction.m in Sources */,

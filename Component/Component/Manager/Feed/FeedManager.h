@@ -32,4 +32,10 @@ AS_SINGLETON(FeedManager);
 //获取feed人列表
 - (void)findFriendsByTags:(NSInteger)limitStart limitEnd:(NSInteger)limitEnd queryCode:(NSString *)queryCode block:(ActionCompleteBlock)block;
 
+//Feed敬酒
+- (void)addPraise:(NSString *)feedId block:(ActionCompleteBlock)block;
+
+//Feed评论敬酒
+- (void)commentAddPraise:(NSString *)commentId block:(ActionCompleteBlock)block;
+
 @end
