@@ -16,6 +16,8 @@
 @property (strong, nonatomic) UILabel *messageLabel;
 @property (strong, nonatomic) UILabel *notificationLabel;
 @property (copy, nonatomic) ChangeCommonSwitchType changeTypeBlock;
+@property (nonatomic, strong) UIButton *leftButton;
+@property (nonatomic, strong) UIButton *rightButton;
 
 @end
 
@@ -40,6 +42,17 @@
         _notificationLabel = [YUtils initLabel:CONTENT_FONT(frame.size.height/2) color:KCOLORGREEN_009688 text:[textArray objectAtIndex:CommonSwitchTypeSec] frame:CGRectMake(frame.size.width/2, 0, frame.size.width/2, frame.size.height) alignment:NSTextAlignmentCenter];
         [self addSubview:_notificationLabel];
         
+        //button
+        _leftButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        _leftButton.frame = CGRectMake(0, 0, frame.size.width/2, frame.size.height);
+        [_leftButton addTarget:self action:@selector(pressLeftButton) forControlEvents:UIControlEventTouchUpInside];
+        [self addSubview:_leftButton];
+        
+        _rightButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        _rightButton.frame = CGRectMake(frame.size.width/2, 0, frame.size.width/2, frame.size.height);
+        [_rightButton addTarget:self action:@selector(pressRightButton) forControlEvents:UIControlEventTouchUpInside];
+        [self addSubview:_rightButton];
+        
         _switchType = CommonSwitchTypeFir;
     }
     
@@ -51,15 +64,19 @@
     _changeTypeBlock = type;
 }
 
-- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
-{
-    UITouch *touch = [touches anyObject];
-    CGPoint touchPoint = [touch locationInView:self];
-    
+- (void)pressLeftButton {
+    [self resetView:YES];
+}
+
+- (void)pressRightButton {
+    [self resetView:NO];
+}
+
+- (void)resetView:(BOOL)isLeft {
     BOOL needChange = NO;
     
     //一半
-    if (touchPoint.x < self.width/2)
+    if (isLeft)
     {
         //左边
         if (_switchType != CommonSwitchTypeFir)
@@ -100,7 +117,58 @@
         
         _changeTypeBlock(_switchType);
     }
-    
 }
+
+//- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
+//{
+//    UITouch *touch = [touches anyObject];
+//    CGPoint touchPoint = [touch locationInView:self];
+//    
+//    BOOL needChange = NO;
+//    
+//    //一半
+//    if (touchPoint.x < self.width/2)
+//    {
+//        //左边
+//        if (_switchType != CommonSwitchTypeFir)
+//        {
+//            _switchType = CommonSwitchTypeFir;
+//            needChange = YES;
+//        }
+//    }
+//    else
+//    {
+//        //右边
+//        if (_switchType != CommonSwitchTypeSec)
+//        {
+//            _switchType = CommonSwitchTypeSec;
+//            needChange = YES;
+//        }
+//    }
+//    
+//    if (needChange)
+//    {
+//        //移动
+//        [UIView animateWithDuration:0.25 animations:^{
+//            if (CommonSwitchTypeFir == _switchType)
+//            {
+//                _redBgImageView.originX = 0;
+//                
+//                _messageLabel.textColor = [UIColor whiteColor];
+//                _notificationLabel.textColor = KCOLORGREEN_009688;
+//            }
+//            else
+//            {
+//                _redBgImageView.rightX = self.width;
+//                
+//                _messageLabel.textColor = KCOLORGREEN_009688;
+//                _notificationLabel.textColor = [UIColor whiteColor];
+//            }
+//        }];
+//        
+//        _changeTypeBlock(_switchType);
+//    }
+//    
+//}
 
 @end
