@@ -42,13 +42,15 @@
 
 //清除所有数据
 - (void)readAll {
-    [_notifyListArray removeAllObjects];
-    [self reloadData];
-    
-    //发请求
-    [[FeedManager sharedInstance] readAll:^(YActionMessage *message) {
-        YLogD(@"readAll:%@", message.desc);
-    }];
+    if (_notifyListArray.count > 0) {
+        [_notifyListArray removeAllObjects];
+        [self reloadData];
+        
+        //发请求
+        [[FeedManager sharedInstance] readAll:^(YActionMessage *message) {
+            YLogD(@"readAll:%@", message.desc);
+        }];
+    }
 }
 
 #pragma mark - 继承者
