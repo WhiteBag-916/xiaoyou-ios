@@ -14,7 +14,7 @@
 
 - (void)execute
 {
-    NSDictionary *parameter = [YUtils getParameter:@{@"groupId":_groupId,@"userId":_userId} needUserToken:YES];
+    NSDictionary *parameter = [YUtils getParameter:@{@"groupId":_groupId} needUserToken:YES needAddUserID:YES];
     NSString *url = [YUtils getUrl:api_contact_ApplicantList];
     [self POST:url parameters:parameter completion:^(YHttpRequest *request) {
         YActionMessage *message = [Author actionMessageWithHttpRequest:request];

@@ -77,6 +77,8 @@
 #define api_feed_addPraise @"/feed/addPraise"
 //feed评论敬酒
 #define api_feed_commonAddPraise @"/feed/comment/addPraise"
+//feed提醒列表
+#define api_alert_list @"/alert/list"
 
 /**********************************************************
  Url Define: ContactManager
@@ -99,6 +101,16 @@
 #define api_contact_IgnoreApplyList @"/group/ignoreApplyList"
 //群组申请人员列表
 #define api_contact_ApplicantList @"​/group/applicantList"
+//获取申请列表
+#define api_friend_GetApplyList @"/friend/getApplyList"
+//发送好友申请
+#define api_friend_SubmitFriendApply @"/friend/submitFriendApply"
+//获取社团详情
+#define api_group_GroupDetail @"/group/groupDetail"
+//忽略申请列表
+#define api_friend_IgnoreApplyList @"/friend/ignoreApplyList"
+//同意好友申请
+#define api_friend_AgreeApply @"/friend/agreeApply"
 
 /**********************************************************
  Url Define: MessageManager

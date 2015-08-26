@@ -8,9 +8,8 @@
 
 #import "YHTTPRequestAction.h"
 
-@interface ApplyListAction : YHTTPRequestAction
+@interface ApplyListAction : YHTTPRequestAction<YAction>
 
-@property (nonatomic, strong) NSString *userId;
 @property (nonatomic, strong) NSString *groupId;
 
 @end

@@ -239,8 +239,7 @@
 {
     if (logoImageStr.length > 0)
     {
-        NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@",api_icon_base_url,logoImageStr]];
-        [_schoolLogoImageView sd_setImageWithURL:url placeholderImage:[UIImage imageNamed:@"login_school"]];
+        [_schoolLogoImageView setNormalImageWithUrl:logoImageStr];
         [_schoolLogoImageView mas_updateConstraints:^(MASConstraintMaker *make) {
             make.width.mas_equalTo(SCALE_NUM(24));
             make.height.mas_equalTo(SCALE_NUM(24));
