@@ -130,7 +130,7 @@
             if (tagStr.length > 0) {
                 [tagStr appendString:@","];
             }
-            [tagStr appendString:[NSString stringWithFormat:@"%.f", tags.internalBaseClassIdentifier]];
+            [tagStr appendString:tags.internalBaseClassIdentifier];
         }
     }];
     [self uploadTagList:tagStr];
