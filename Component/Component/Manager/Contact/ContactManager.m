@@ -268,9 +268,9 @@ DEF_SINGLETON(ContactManager);
 }
 
 //获取群组详情
-- (void)groupDetail:(NSString *)applyIds block:(ActionCompleteBlock)block {
+- (void)groupDetail:(NSString *)groupId block:(ActionCompleteBlock)block {
     GroupDetailAction* action = [[GroupDetailAction alloc] init];
-    action.applyIds = applyIds;
+    action.groupId = groupId;
     
     [YAction startAction:action completionBlock:^(YActionMessage* message) {
         //主线程处理界面

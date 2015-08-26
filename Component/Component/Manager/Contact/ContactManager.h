@@ -64,6 +64,6 @@ AS_SINGLETON(ContactManager);
 - (void)ignoreFriendApply:(NSString *)applyIds block:(ActionCompleteBlock)block;
 
 //获取群组详情
-- (void)groupDetail:(NSString *)applyIds block:(ActionCompleteBlock)block;
+- (void)groupDetail:(NSString *)groupId block:(ActionCompleteBlock)block;
 
 @end

@@ -10,6 +10,6 @@
 
 @interface GroupDetailAction : YHTTPRequestAction<YAction>
 
-@property (nonatomic, strong) NSString *applyIds;
+@property (nonatomic, strong) NSString *groupId;
 
 @end

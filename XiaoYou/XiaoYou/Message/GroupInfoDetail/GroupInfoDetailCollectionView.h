@@ -8,8 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import "GroupDetail.h"
+#import "XYGroupInfoDetailViewController.h"
 
 @interface GroupInfoDetailCollectionView : UICollectionView
+
+@property(nonatomic,weak)XYGroupInfoDetailViewController * myController;
 
 -(void)refreshTableView:(GroupDetail *) model;
 

@@ -10,4 +10,6 @@
 
 @interface XYChoicePersonViewController : YViewController
 
+@property (nonatomic,strong)NSString * uid;
+
 @end

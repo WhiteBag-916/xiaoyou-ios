@@ -8,10 +8,21 @@
 
 #import <UIKit/UIKit.h>
 #import "GroupDetail.h"
+#import "GroupInfoDetailCollectionView.h"
 
 extern NSString *const kGroupInfoCollectionViewCell;
 
+@protocol GroupInfoCollectionViewCellDelegate <NSObject>
+
+@optional
+- (void)delCell:(NSString *)uid;
+- (void)longPressCell;
+
+@end
+
 @interface GroupInfoCollectionViewCell : UICollectionViewCell
+
+@property(nonatomic,weak) id<GroupInfoCollectionViewCellDelegate> delegate;
 
 -(void)setCellInfo:(NSDictionary *) groupDic;
 

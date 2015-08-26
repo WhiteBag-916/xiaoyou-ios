@@ -11,6 +11,10 @@
 #import "YCommonActionSheet.h"
 #import "ChatViewController.h"
 #import "ContactManager.h"
+#import "ProvisionManager.h"
+#import "ProfileInfo.h"
+#import "GroupDetail.h"
+
 
 #define kNavigationgLeftWidth                   9
 #define kNavigationgLeftHeight                  14
@@ -21,6 +25,7 @@
 @property (nonatomic,strong) GroupInfoDetailCollectionView * groupInfoDetailCollectionView;
 
 @property(nonatomic,strong)UIButton * bottomButton;
+@property(nonatomic,strong)GroupDetail * model;
 
 @end
 
@@ -33,13 +38,17 @@
     
     [self setUpUI];
     
-    
+}
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
     [[ContactManager sharedInstance] groupDetail:_gid block:^(YActionMessage *message) {
         if (message.object) {
+//            _model = message.object;
             [_groupInfoDetailCollectionView refreshTableView:message.object];
         }
-    }];
-}
+    }];}
 
 -(void)setUpUI
 {
@@ -58,6 +67,7 @@
     flowLayout.scrollDirection = UICollectionViewScrollDirectionVertical;
     flowLayout.itemSize = CGSizeMake(70, 70);
     _groupInfoDetailCollectionView = [[GroupInfoDetailCollectionView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT-KTabBarheight-KNavigationBarheight) collectionViewLayout:flowLayout];
+    _groupInfoDetailCollectionView.myController = self;
     [self.view addSubview:_groupInfoDetailCollectionView];
     
     _bottomButton = [[UIButton alloc] init];

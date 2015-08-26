@@ -8,6 +8,10 @@
 
 #import "GroupInfoCollectionViewCell.h"
 #import "UIImageView+Ext.h"
+#import "ProvisionManager.h"
+#import "ProfileInfo.h"
+#import "YNotificationDefine.h"
+#import "Author.h"
 
 #define kHeadImageViewHeight            50
 #define kHeadImageViewToTop             7
@@ -23,6 +27,7 @@ NSString *const kGroupInfoCollectionViewCell = @"GroupInfoCollectionViewCellId";
 @property (nonatomic,strong)UIButton * deleteButton;
 @property (nonatomic,strong)UILongPressGestureRecognizer * longPressGestureRecognizer;
 @property (nonatomic,strong)UITapGestureRecognizer * tapGestureRecognizer;
+@property (nonatomic,strong)NSMutableDictionary * modelDic;
 
 @end
 
@@ -41,12 +46,9 @@ NSString *const kGroupInfoCollectionViewCell = @"GroupInfoCollectionViewCellId";
             make.height.width.mas_equalTo(kHeadImageViewHeight);
         }];
         
-        _longPressGestureRecognizer = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longPress)];
-        _longPressGestureRecognizer.minimumPressDuration = 1.0;
+        _longPressGestureRecognizer = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longPress:)];
+        _longPressGestureRecognizer.minimumPressDuration = .5;
         [_headImageView addGestureRecognizer:_longPressGestureRecognizer];
-        
-        _tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tap)];
-        [_headImageView addGestureRecognizer:_tapGestureRecognizer];
         
         _deleteButton = [[UIButton alloc] init];
         [_deleteButton setBackgroundImage:[UIImage imageNamed:@"delete-member"] forState:UIControlStateNormal];
@@ -73,35 +75,54 @@ NSString *const kGroupInfoCollectionViewCell = @"GroupInfoCollectionViewCellId";
 
 -(void)setCellInfo:(NSDictionary *) groupDic
 {
-    
-    if ([groupDic[@"headPic"] isEqualToString:@""]) {
+    _nameLabel.hidden = NO;
+    _modelDic = (NSMutableDictionary *)groupDic;
+    if ([[groupDic[@"model"] dictionaryRepresentation][@"headPic"] isEqualToString:@""]) {
         _headImageView.image = [UIImage imageNamed:@"group_default_head"];
-        _nameLabel.text = groupDic[@"name"];
+        _nameLabel.text = [groupDic[@"model"] dictionaryRepresentation][@"name"];
     }
     else
     {
-//        _headImageView.image = [UIImage imageNamed:@"group_add"];
-//        [_headImageView removeGestureRecognizer:_longPressGestureRecognizer];
-//        [_headImageView removeGestureRecognizer:_tapGestureRecognizer];
-        [_headImageView setFaceImageWithUrl:groupDic[@"headPic"]];
-        _nameLabel.text = groupDic[@"name"];
+        if ([[groupDic[@"model"] dictionaryRepresentation][@"name"] isEqualToString:@""])
+        {
+            _headImageView.image = [UIImage imageNamed:@"group_add"];
+            _nameLabel.hidden = YES;
+            
+        }
+        else
+        {
+            [_headImageView setFaceImageWithUrl:[groupDic[@"model"] dictionaryRepresentation][@"headPic"]];
+            _nameLabel.text = [groupDic[@"model"] dictionaryRepresentation][@"name"];
+        }
+    }
+    if ([groupDic[@"isDelete"] boolValue])
+    {
+        _deleteButton.hidden = NO;
+    }
+    else
+    {
+        _deleteButton.hidden = YES;
     }
     
 }
 
--(void)longPress
+-(void)longPress:(UILongPressGestureRecognizer *)gesture
 {
-    _deleteButton.hidden = NO;
-}
+    if(gesture.state == UIGestureRecognizerStateBegan)
+    {
+        if (nil != _delegate && [_delegate respondsToSelector:@selector(longPressCell)]) {
+            [_delegate longPressCell];
+        }
+    }
 
--(void)tap
-{
-    _deleteButton.hidden = YES;
 }
 
 -(void)clickdeleteButton
 {
     NSLog(@"delete");
+    if (nil != _delegate && [_delegate respondsToSelector:@selector(delCell:)]) {
+        [_delegate delCell:[_modelDic[@"model"] uid]];
+    }
 }
 
 @end

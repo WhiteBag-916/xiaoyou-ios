@@ -31,7 +31,7 @@ NSString *const kGroupInfoDetailHeaderView = @"GroupInfoDetailHeaderViewId";
 {
     self = [super initWithFrame:frame];
     if (self) {
-        self.backgroundColor = [UIColor yellowColor];
+        self.backgroundColor = [UIColor whiteColor];
         
         _groupImageView = [[UIImageView alloc] init];//WithFrame:CGRectMake(0, 0, 50, 50)];
         _groupImageView.backgroundColor = [UIColor hexChangeFloat:@"258f74"];
@@ -58,7 +58,7 @@ NSString *const kGroupInfoDetailHeaderView = @"GroupInfoDetailHeaderViewId";
         
         _groupNameLabel = [[UILabel alloc] init];
         _groupNameLabel.font = CONTENT_FONT(14);
-        _groupNameLabel.backgroundColor = [UIColor orangeColor];
+        _groupNameLabel.backgroundColor = [UIColor clearColor];
         [self addSubview:_groupNameLabel];
         [_groupNameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
             make.centerY.equalTo(_groupImageView);
