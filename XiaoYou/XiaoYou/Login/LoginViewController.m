@@ -31,6 +31,7 @@
     // Do any additional setup after loading the view.
     
     self.title = @"登录";
+    [self showCustomNavigationBackButton];
     [self showCustomNavigationNextButton];
     self.view.backgroundColor = KCOLORGREEN_e6ebea;
     

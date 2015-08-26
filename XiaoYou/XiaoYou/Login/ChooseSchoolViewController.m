@@ -44,14 +44,13 @@
     
     [self initSchoolArray];
     [self setupUI];
-    
-    _schoolTextField.text = [YShareData defaultData][kShareData_SchoolName];
-    [self searchSchoolByKey:YES];
+    [self schoolListRequest];
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
-    [self schoolListRequest];
+    _schoolTextField.text = [YShareData defaultData][kShareData_SchoolName];
+    [self searchSchoolByKey:YES];
     
     [self resetRightButton];
 }
@@ -341,8 +340,12 @@
 - (void)pushToNext:(SchoolListModel *)schoolModel
 {
     [YShareData defaultData][kShareData_SchoolCode] = schoolModel.schoolCode;
+    [YShareData defaultData][kShareData_SchoolName] = schoolModel.schoolName;
+    
+    LoginViewController *loginViewController = [[LoginViewController alloc] init];
+    [self.navigationController pushViewController:loginViewController animated:YES];
 
-    [kAppDelegateAccessor initLoginNC];
+//    [kAppDelegateAccessor initLoginNC];
 }
 
 #pragma mark - UITableViewDataSource,UITableViewDelegate
