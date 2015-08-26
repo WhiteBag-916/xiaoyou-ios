@@ -17,6 +17,9 @@
 
 @interface GroupInfoDetailCollectionView ()<UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout>
 
+@property (nonatomic,strong)NSMutableArray * dataSourceArr;
+@property (nonatomic,strong)GroupModel * headerModel;
+
 @end
 
 @implementation GroupInfoDetailCollectionView
@@ -35,6 +38,13 @@
     return self;
 }
 
+-(void)refreshTableView:(GroupDetail *) model
+{
+    _headerModel = model.groupModel;
+    _dataSourceArr = [[NSMutableArray alloc] initWithArray:model.groupMemebers];
+}
+
+
 -(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
 {
     return 1;
@@ -42,25 +52,20 @@
 
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    return 40;
+    return _dataSourceArr.count + 1;
 }
 
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.row < 39) {
-        GroupInfoCollectionViewCell * cell = (GroupInfoCollectionViewCell *) [collectionView dequeueReusableCellWithReuseIdentifier:kGroupInfoCollectionViewCell forIndexPath:indexPath];
+    GroupInfoCollectionViewCell * cell = (GroupInfoCollectionViewCell *) [collectionView dequeueReusableCellWithReuseIdentifier:kGroupInfoCollectionViewCell forIndexPath:indexPath];
+    if (indexPath.row < _dataSourceArr.count) {
         
-        [cell setCellInfo:@{@"name":@"李宝顺吖"}];
+        [cell setCellInfo:_dataSourceArr[indexPath.row]];
         
         return cell;
     }
     else
     {
-//        NSArray * arr = [[ProvisionManager sharedInstance] getProfile];
-//        if () {
-//            <#statements#>
-//        }
-        GroupInfoCollectionViewCell * cell = (GroupInfoCollectionViewCell *) [collectionView dequeueReusableCellWithReuseIdentifier:kGroupInfoCollectionViewCell forIndexPath:indexPath];
         
         [cell setCellInfo:@{@"name":@"",@"add":@"add"}];
         
@@ -117,7 +122,7 @@
     GroupInfoDetailHeaderView *headView;
     
     headView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:kGroupInfoDetailHeaderView forIndexPath:indexPath];
-    [headView setHeaderViewInfo:nil];
+    [headView setHeaderViewInfo:_headerModel];
     return headView;
 }
 

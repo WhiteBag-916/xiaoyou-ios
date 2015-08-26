@@ -10,6 +10,7 @@
 #import "GroupInfoDetailCollectionView.h"
 #import "YCommonActionSheet.h"
 #import "ChatViewController.h"
+#import "ContactManager.h"
 
 #define kNavigationgLeftWidth                   9
 #define kNavigationgLeftHeight                  14
@@ -21,7 +22,6 @@
 
 @property(nonatomic,strong)UIButton * bottomButton;
 
-
 @end
 
 @implementation XYGroupInfoDetailViewController
@@ -30,8 +30,15 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.title = @"详情";
+    
     [self setUpUI];
     
+    
+    [[ContactManager sharedInstance] groupDetail:_uid block:^(YActionMessage *message) {
+        if (message.object) {
+            [_groupInfoDetailCollectionView refreshTableView:message.object];
+        }
+    }];
 }
 
 -(void)setUpUI
@@ -108,14 +115,6 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

@@ -108,7 +108,7 @@ NSString *const kContactsTableViewCell = @"ContactsTableViewCell";
             make.bottom.mas_equalTo(-kPaddingDistance);
             make.right.mas_equalTo(-kPaddingDistance);
             make.height.mas_equalTo(kRemindImageViewHeight);
-            make.height.mas_equalTo(kRemindImageViewWidth);
+            make.width.mas_equalTo(kRemindImageViewWidth);
         }];
         
         _connectTag = [[ConnectTag alloc] init];

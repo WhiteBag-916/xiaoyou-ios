@@ -7,11 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "GroupDetail.h"
 
 extern NSString *const kGroupInfoDetailHeaderView;
 
 @interface GroupInfoDetailHeaderView : UICollectionReusableView
 
--(void)setHeaderViewInfo:(id) model;
+-(void)setHeaderViewInfo:(GroupModel *) model;
 
 @end
