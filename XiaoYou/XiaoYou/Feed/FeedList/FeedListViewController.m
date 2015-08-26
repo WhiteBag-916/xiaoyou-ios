@@ -135,6 +135,8 @@
         [self showCustomNavigationPublishButton];
     } else {
         self.navigationItem.rightBarButtonItem = nil;
+        
+        [_profilePersonListTableView loadDataWithQueryCode:@""];
     }
 }
 

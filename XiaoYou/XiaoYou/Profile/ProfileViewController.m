@@ -21,6 +21,7 @@
 #import "ProfileTagViewController.h"
 #import "ProfilePersonListTableView.h"
 #import "ProfileOthersViewController.h"
+#import "ConvertToCommonEmoticonsHelper.h"
 
 #define KTOPHEIGHT SCALE_NUM(90)
 #define KHEADIMG_SIZE SCALE_NUM(45)
@@ -120,7 +121,7 @@
     _schoolNo.text = info.studentNo;
     _respectNum.text = [NSString stringWithFormat:@"敬酒：%d", (int)info.praiseCount];
     _coolNum.text = [NSString stringWithFormat:@"觉得很酷：%d", (int)info.coolCount];
-    _attitudeLabel.text = (info.selfIntro.length == 0? @"你是一个没有态度的人":info.selfIntro);
+    _attitudeLabel.text = (info.selfIntro.length == 0? @"你是一个没有态度的人":[ConvertToCommonEmoticonsHelper convertToSystemEmoticons:info.selfIntro]);
     _userId = info.uid;
     _tagModels = info.tagModels;
     if (_tagModels.count == 0) {

@@ -214,12 +214,14 @@
     
 }
 - (void)longPress:(UILongPressGestureRecognizer *)press {
-    int index = (int)press.view.tag - KIMGTAG;
-    if (index < 0 || index >= _smallImgs.count) {
-        return;
+    if (press.state == UIGestureRecognizerStateBegan) {
+        int index = (int)press.view.tag - KIMGTAG;
+        if (index < 0 || index >= _smallImgs.count) {
+            return;
+        }
+        [_smallImgs removeObjectAtIndex:index];
+        [self updateAll];
     }
-    [_smallImgs removeObjectAtIndex:index];
-    [self updateAll];
 }
 - (void)choosePic:(UITapGestureRecognizer *)tap {
     int index = (int)tap.view.tag - KIMGTAG;

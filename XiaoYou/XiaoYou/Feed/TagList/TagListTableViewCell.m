@@ -45,6 +45,7 @@ NSString *const KTagListTableViewCell = @"TagListTableViewCellId";
             make.center.equalTo(_tagLabel);
         }];
         _addIcon.image = [UIImage imageNamed:@"add-02"];
+        
     }
     return self;
 }

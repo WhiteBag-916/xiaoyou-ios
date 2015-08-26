@@ -57,6 +57,10 @@
     [switchView changedState:^(int index) {
         _feedListTableView.hidden = (index != 0);
         _profilePersonListTableView.hidden = (index != 1);
+        
+        if (![_profilePersonListTableView isHidden]) {
+            [_profilePersonListTableView loadDataWithQueryCode:_filter];
+        }
     }];
 }
 - (void)initFeedList {
