@@ -78,7 +78,13 @@
     [self sendRequest];
 }
 - (void)sendRequest {
-    [[FeedManager sharedInstance] feedList:_feedListArray.count limitEnd:_feedListArray.count + KPAGENUM queryCode:_filter block:^(YActionMessage *message) {
+    //mod by xiongchen
+    NSString *lastID;
+    if (_feedListArray.count > 0) {
+        lastID = [NSString stringWithFormat:@"%g", [[_feedListArray.lastObject feed] feedIdentifier]];
+    }
+    //------------------
+    [[FeedManager sharedInstance] feedList:lastID size:KPAGENUM queryCode:_filter block:^(YActionMessage *message) {
         if (_feedListArray.count == 0) {
             [self stopLoadNewData];
         } else {

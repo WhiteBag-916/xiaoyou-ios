@@ -21,7 +21,7 @@ AS_SINGLETON(FeedManager);
 - (void)getFeedDetailByID:(NSString *)feedID block:(ActionCompleteBlock)block;
 
 //获取feed列表
-- (void)feedList:(NSInteger)limitStart limitEnd:(NSInteger)limitEnd queryCode:(NSString *)queryCode block:(ActionCompleteBlock)block;
+- (void)feedList:(NSString *)lastId size:(NSInteger)size queryCode:(NSString *)queryCode block:(ActionCompleteBlock)block;
 
 //发送feed
 - (void)sendFeed:(Feed *)feed tagIds:(NSString *)tagIds block:(ActionCompleteBlock)block;

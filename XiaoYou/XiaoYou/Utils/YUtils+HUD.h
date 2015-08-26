@@ -25,6 +25,7 @@
  *
  *  @return
  */
++ (MBProgressHUD *)showHUDWithTitle;
 + (MBProgressHUD *)showHUDWithTitle:(NSString *)title;
 
 + (MBProgressHUD *)showHUDWithTitle:(NSString *)title animated:(BOOL)animated;

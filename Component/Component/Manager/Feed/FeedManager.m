@@ -73,10 +73,10 @@ DEF_SINGLETON(FeedManager);
 }
 
 //获取feed列表,FeedInfo
-- (void)feedList:(NSInteger)limitStart limitEnd:(NSInteger)limitEnd queryCode:(NSString *)queryCode block:(ActionCompleteBlock)block {
+- (void)feedList:(NSString *)lastId size:(NSInteger)size queryCode:(NSString *)queryCode block:(ActionCompleteBlock)block {
     FeedListAction *action = [[FeedListAction alloc] init];
-    action.limitEnd = limitEnd;
-    action.limitStart = limitStart;
+    action.lastId = lastId;
+    action.size = size;
     action.queryCode = queryCode;
     
     [YAction startAction:action completionBlock:^(YActionMessage* message) {

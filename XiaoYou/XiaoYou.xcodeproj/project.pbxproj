@@ -65,6 +65,8 @@
 		20DC87F21B5F3DC70019DC7F /* ChooseSchoolViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20DC87F11B5F3DC70019DC7F /* ChooseSchoolViewController.m */; };
 		20DCB9761B8CA60800C758DE /* NotifyListTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 20DCB9751B8CA60800C758DE /* NotifyListTableView.m */; };
 		20DCB9791B8CA60800C758DE /* NotifyListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 20DCB9781B8CA60800C758DE /* NotifyListTableViewCell.m */; };
+		20DD115A1B8D698900767E62 /* ServiceTerms.html in Resources */ = {isa = PBXBuildFile; fileRef = 20DD11591B8D698900767E62 /* ServiceTerms.html */; };
+		20DD115D1B8D699C00767E62 /* CNTextController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20DD115C1B8D699C00767E62 /* CNTextController.m */; };
 		20DD4B311B7345EF007C352C /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20DD4B301B7345EF007C352C /* ProfileViewController.m */; };
 		20DD4B351B734781007C352C /* CommonSwitchView.m in Sources */ = {isa = PBXBuildFile; fileRef = 20DD4B341B734781007C352C /* CommonSwitchView.m */; };
 		20E033E51B842727002E4583 /* UMSocialLocalizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 20E033C41B842727002E4583 /* UMSocialLocalizable.strings */; };
@@ -530,6 +532,9 @@
 		20DCB9751B8CA60800C758DE /* NotifyListTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotifyListTableView.m; sourceTree = "<group>"; };
 		20DCB9771B8CA60800C758DE /* NotifyListTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotifyListTableViewCell.h; sourceTree = "<group>"; };
 		20DCB9781B8CA60800C758DE /* NotifyListTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotifyListTableViewCell.m; sourceTree = "<group>"; };
+		20DD11591B8D698900767E62 /* ServiceTerms.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = ServiceTerms.html; sourceTree = "<group>"; };
+		20DD115B1B8D699C00767E62 /* CNTextController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CNTextController.h; sourceTree = "<group>"; };
+		20DD115C1B8D699C00767E62 /* CNTextController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CNTextController.m; sourceTree = "<group>"; };
 		20DD4B2F1B7345EF007C352C /* ProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileViewController.h; sourceTree = "<group>"; };
 		20DD4B301B7345EF007C352C /* ProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileViewController.m; sourceTree = "<group>"; };
 		20DD4B331B734781007C352C /* CommonSwitchView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonSwitchView.h; sourceTree = "<group>"; };
@@ -1306,6 +1311,7 @@
 		20DBFD721B4FA90B009134D0 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				20DD11591B8D698900767E62 /* ServiceTerms.html */,
 				20DAF9A41B871D31005B7932 /* SchollList.txt */,
 				650C6C0B1B886D3200A89AC9 /* Profile */,
 				334670611B841F1E00A8628A /* message */,
@@ -1329,6 +1335,8 @@
 				20DAF9AA1B87209E005B7932 /* LoginViewController.m */,
 				20DAE14B1B8821DD00607996 /* PerfectInformationViewController.h */,
 				20DAE14C1B8821DD00607996 /* PerfectInformationViewController.m */,
+				20DD115B1B8D699C00767E62 /* CNTextController.h */,
+				20DD115C1B8D699C00767E62 /* CNTextController.m */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -2691,6 +2699,7 @@
 				20E033EC1B842727002E4583 /* UMSLoginViewController.xib in Resources */,
 				333122C71B806EDC00D3D032 /* chat_sender_audio_playing_000.png in Resources */,
 				3334AC2A1B82D7C400FDDCCB /* VoiceSearchFeedback006@2x.png in Resources */,
+				20DD115A1B8D698900767E62 /* ServiceTerms.html in Resources */,
 				3346706C1B8426D400A8628A /* delete-member@2x.png in Resources */,
 				20E033E51B842727002E4583 /* UMSocialLocalizable.strings in Resources */,
 				3334AC271B82D7C400FDDCCB /* VoiceSearchFeedback005.png in Resources */,
@@ -3053,6 +3062,7 @@
 				65969DE21B877896001DD348 /* ProfileFeedCell.m in Sources */,
 				65A847051B81CA1900933815 /* FeedCellBottomView.m in Sources */,
 				20E122211B705ED200F90BD3 /* FeedListViewController.m in Sources */,
+				20DD115D1B8D699C00767E62 /* CNTextController.m in Sources */,
 				3346708A1B84AA3700A8628A /* ChoicePersonTableView.m in Sources */,
 				20E122131B705C2100F90BD3 /* XYTabBarViewController.m in Sources */,
 				207F80871B7098E3005E8F6A /* AppDelegate+RootVC.m in Sources */,
