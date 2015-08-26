@@ -186,7 +186,7 @@
 - (void)checkComplete {
     //mod by xiongchen
     //add || nil == _pwdView
-    if (_pwdView.hidden || nil == _pwdView) {
+    if (nil == _pwdView || _pwdView.hidden) {
         if (_phoneField.text.length > 0) {
             [self changeBtn:true];
         } else {
@@ -208,7 +208,7 @@
 - (void)onNavigationRightButtonClicked {
     //mod by xiongchen
     //add || nil == _pwdView
-    if (_pwdView.hidden || nil == _pwdView) {
+    if (nil == _pwdView || _pwdView.hidden) {
         MBProgressHUD *hud = [YUtils showHUDWithTitle:@"正在加载"];
         [[ProvisionManager sharedInstance] receiveMobileAuthCode:_phoneField.text authCode:_codeField.text block:^(YActionMessage *message) {
             if (message.isSuccess) {
