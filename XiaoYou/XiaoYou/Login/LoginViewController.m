@@ -81,7 +81,7 @@
     _passwordTextField = (YTextField *)[passwordView viewWithTag:kLoginCommonTextFieldTag];
     [_passwordTextField registerChanged:self action:@selector(textFieldValueChanged:)];
     _passwordTextField.secureTextEntry = YES;
-    _passwordTextField.placeholder = @"密码 ";
+    _passwordTextField.placeholder = @"初始密码为学号后4位＋一卡通编号后4位";
     
     //protocolCheckButton
     _protocolCheckButton = [UIButton buttonWithType:UIButtonTypeCustom];
