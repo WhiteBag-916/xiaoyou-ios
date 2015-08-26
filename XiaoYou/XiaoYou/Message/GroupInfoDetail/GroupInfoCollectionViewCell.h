@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "GroupDetail.h"
 
 extern NSString *const kGroupInfoCollectionViewCell;
 

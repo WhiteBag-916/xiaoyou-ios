@@ -7,6 +7,7 @@
 //
 
 #import "GroupInfoDetailHeaderView.h"
+#import "GroupModel.h"
 
 #define kTopPaddingDistance        25
 #define kPaddingDistance           20
@@ -69,10 +70,10 @@ NSString *const kGroupInfoDetailHeaderView = @"GroupInfoDetailHeaderViewId";
     return self;
 }
 
--(void)setHeaderViewInfo:(id)model
+-(void)setHeaderViewInfo:(GroupModel *)model
 {
-    _grouoHeadLabel.text = @"足";
-    _groupNameLabel.text = @"西班牙班";
+    _grouoHeadLabel.text = [model.schoolName substringWithRange:NSMakeRange(0, 1)];
+    _groupNameLabel.text = model.schoolName;
 
 }
 
