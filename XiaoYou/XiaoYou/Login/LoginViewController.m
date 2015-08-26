@@ -253,7 +253,7 @@
             if (loginResp.firstLogin) {
                 [kAppDelegateAccessor initPerfectNC];
             } else {
-                [kAppDelegateAccessor initPerfectNC];
+                [kAppDelegateAccessor initTabBarNC];
             }
             
         } else {
