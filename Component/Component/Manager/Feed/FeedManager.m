@@ -18,6 +18,8 @@
 #import "AddPraiseAction.h"
 #import "CommentAddPraiseAction.h"
 #import "AlertListAction.h"
+#import "AddReplyAction.h"
+#import "AddCommentAction.h"
 
 #define KFeedManagerSyncQueue @"kFeedManagerSyncQueue"
 
@@ -151,6 +153,31 @@ DEF_SINGLETON(FeedManager);
     AlertListAction *action = [[AlertListAction alloc] init];
     action.lastId = lastId;
     action.size = size;
+    
+    [YAction startAction:action completionBlock:^(YActionMessage* message) {
+        //主线程处理界面
+        block(message);
+    }];
+}
+
+//动态评论
+- (void)addComment:(NSString *)feedId content:(NSString *)content block:(ActionCompleteBlock)block {
+    AddCommentAction *action = [[AddCommentAction alloc] init];
+    action.feedId = feedId;
+    action.content = content;
+    
+    [YAction startAction:action completionBlock:^(YActionMessage* message) {
+        //主线程处理界面
+        block(message);
+    }];
+}
+
+//对动态评论
+- (void)addReply:(NSString *)feedId content:(NSString *)content toUserId:(NSString *)toUserId block:(ActionCompleteBlock)block {
+    AddReplyAction *action = [[AddReplyAction alloc] init];
+    action.feedId = feedId;
+    action.content = content;
+    action.toUserId = toUserId;
     
     [YAction startAction:action completionBlock:^(YActionMessage* message) {
         //主线程处理界面
