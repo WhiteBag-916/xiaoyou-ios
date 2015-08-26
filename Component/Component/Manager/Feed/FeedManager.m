@@ -18,6 +18,10 @@
 #import "AddPraiseAction.h"
 #import "CommentAddPraiseAction.h"
 #import "AlertListAction.h"
+#import "AddReplyAction.h"
+#import "AddCommentAction.h"
+#import "ReadAllAction.h"
+#import "ReadByFeedAction.h"
 
 #define KFeedManagerSyncQueue @"kFeedManagerSyncQueue"
 
@@ -151,6 +155,52 @@ DEF_SINGLETON(FeedManager);
     AlertListAction *action = [[AlertListAction alloc] init];
     action.lastId = lastId;
     action.size = size;
+    
+    [YAction startAction:action completionBlock:^(YActionMessage* message) {
+        //主线程处理界面
+        block(message);
+    }];
+}
+
+//动态评论
+- (void)addComment:(NSString *)feedId content:(NSString *)content block:(ActionCompleteBlock)block {
+    AddCommentAction *action = [[AddCommentAction alloc] init];
+    action.feedId = feedId;
+    action.content = content;
+    
+    [YAction startAction:action completionBlock:^(YActionMessage* message) {
+        //主线程处理界面
+        block(message);
+    }];
+}
+
+//对动态评论
+- (void)addReply:(NSString *)feedId content:(NSString *)content toUserId:(NSString *)toUserId block:(ActionCompleteBlock)block {
+    AddReplyAction *action = [[AddReplyAction alloc] init];
+    action.feedId = feedId;
+    action.content = content;
+    action.toUserId = toUserId;
+    
+    [YAction startAction:action completionBlock:^(YActionMessage* message) {
+        //主线程处理界面
+        block(message);
+    }];
+}
+
+//删除关于一个feed的提醒
+- (void)readByFeed:(NSString *)affectId block:(ActionCompleteBlock)block {
+    ReadByFeedAction *action = [[ReadByFeedAction alloc] init];
+    action.affectId = affectId;
+    
+    [YAction startAction:action completionBlock:^(YActionMessage* message) {
+        //主线程处理界面
+        block(message);
+    }];
+}
+
+//删除这个用户所有的提醒
+- (void)readAll:(ActionCompleteBlock)block {
+    ReadAllAction *action = [[ReadAllAction alloc] init];
     
     [YAction startAction:action completionBlock:^(YActionMessage* message) {
         //主线程处理界面

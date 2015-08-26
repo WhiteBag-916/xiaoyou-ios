@@ -7,6 +7,7 @@
 //
 
 #import "GroupInfoCollectionViewCell.h"
+#import "UIImageView+Ext.h"
 
 #define kHeadImageViewHeight            50
 #define kHeadImageViewToTop             7
@@ -72,16 +73,18 @@ NSString *const kGroupInfoCollectionViewCell = @"GroupInfoCollectionViewCellId";
 
 -(void)setCellInfo:(NSDictionary *) groupDic
 {
-    if (![groupDic[@"name"] isEqualToString:@""]) {
+    
+    if ([groupDic[@"headPic"] isEqualToString:@""]) {
         _headImageView.image = [UIImage imageNamed:@"group_default_head"];
         _nameLabel.text = groupDic[@"name"];
     }
-    else if ([groupDic[@"add"] isEqualToString:@"add"])
+    else
     {
-        _nameLabel.text = @"";
-        _headImageView.image = [UIImage imageNamed:@"group_add"];
-        [_headImageView removeGestureRecognizer:_longPressGestureRecognizer];
-        [_headImageView removeGestureRecognizer:_tapGestureRecognizer];
+//        _headImageView.image = [UIImage imageNamed:@"group_add"];
+//        [_headImageView removeGestureRecognizer:_longPressGestureRecognizer];
+//        [_headImageView removeGestureRecognizer:_tapGestureRecognizer];
+        [_headImageView setFaceImageWithUrl:groupDic[@"headPic"]];
+        _nameLabel.text = groupDic[@"name"];
     }
     
 }

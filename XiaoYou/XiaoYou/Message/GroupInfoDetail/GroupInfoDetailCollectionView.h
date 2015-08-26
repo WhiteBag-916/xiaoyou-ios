@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "GroupDetail.h"
 
 @interface GroupInfoDetailCollectionView : UICollectionView
+
+-(void)refreshTableView:(GroupDetail *) model;
 
 @end

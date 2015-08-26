@@ -151,7 +151,7 @@
         make.bottom.mas_equalTo(-kPaddingDistance);
         make.right.mas_equalTo(-kRemindImageViewToRight);
         make.height.mas_equalTo(kRemindImageViewHeight);
-        make.height.mas_equalTo(kRemindImageViewWidth);
+        make.width.mas_equalTo(kRemindImageViewWidth);
     }];
     if ([_headDataSourceDic[@"isRemind"] isEqualToString:@"y"])
     {
@@ -339,6 +339,7 @@
     {
         XYGroupInfoDetailViewController * groupInfoDetailViewController = [[XYGroupInfoDetailViewController alloc] init];
         groupInfoDetailViewController.studentDic = cell.studentDic;
+//        groupInfoDetailViewController.uid = cell.studentDic[@"thirdCode"];
         [self.myController.navigationController pushViewController:groupInfoDetailViewController animated:YES needHiddenBottomBar:YES];
     }
     

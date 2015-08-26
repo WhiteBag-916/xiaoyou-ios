@@ -15,6 +15,7 @@
 #import "YNotificationDefine.h"
 #import "EMErrorDefs.h"
 #import <AudioToolbox/AudioToolbox.h>
+#import "EMTextMessageBody.h"
 
 #define kMessageManagerSyncQueue @"kMessageManagerSyncQueue"
 //两次提示的默认间隔
@@ -24,7 +25,7 @@ static NSString *kConversationChatter = @"ConversationChatter";
 static NSString *kGroupName = @"GroupName";
 
 typedef enum : NSUInteger {
-    SYSTEM_MESSAGE,
+    SYSTEM_MESSAGE = 1,
     FRIEND_APPLY,
     GROUP_APPLY,
 } PUSH_Message_TYPE;
@@ -123,13 +124,33 @@ DEF_SINGLETON(MessageManager);
 {
     if ([message.ext[@"server_flag"] boolValue])
     {
-    
-        switch ([message.messageBodies[0][@"msg"][@"msg"][@"type"] integerValue])
+        [[EaseMob sharedInstance].chatManager removeConversationByChatter:message.conversationChatter deleteMessages:YES append2Chat:NO];
+        
+        //解析
+//        NSDictionary *ext = message.ext;
+//        
+//        switch ([ext[@"type"] integerValue])
+        EMTextMessageBody * body = message.messageBodies[0];
+        NSString * jasonStr = body.text;
+        NSData *data = [jasonStr dataUsingEncoding:NSUTF8StringEncoding];
+        NSDictionary *dic2 = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
+        NSLog(@"dic2 = %@",dic2);
+        
+        switch ([dic2[@"type"] integerValue])
         {
             case SYSTEM_MESSAGE: {
                 YLogD(@"系统消息推送");
                 
+                message.conversationChatter = @"000001";
                 message.from = @"000001";
+                //插入message
+                [[EaseMob sharedInstance].chatManager insertMessagesToDB:@[message]];
+                
+                //插入conversation
+                EMConversation *conversation = [[EaseMob sharedInstance].chatManager conversationForChatter:@"000001"
+                                                                            conversationType:eConversationTypeChat];
+                
+                [[EaseMob sharedInstance].chatManager insertConversationToDB:conversation append2Chat:YES];
                 
                 break;
             }
@@ -137,12 +158,13 @@ DEF_SINGLETON(MessageManager);
             case FRIEND_APPLY:
                 YLogD(@"好友申请推送");
                 
+                message.conversationChatter = @"000002";
                 message.from = @"000002";
-                
                 break;
             case GROUP_APPLY:
                 YLogD(@"社团申请推送");
                 
+                message.conversationChatter = @"000003";
                 message.from = @"000003";
                 break;
                 
@@ -150,7 +172,7 @@ DEF_SINGLETON(MessageManager);
                 break;
         }
         
-        [message updateMessageBodiesToDB];
+        
     }
     [message updateMessageExtToDB];
     

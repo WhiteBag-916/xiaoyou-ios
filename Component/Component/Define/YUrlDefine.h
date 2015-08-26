@@ -15,10 +15,10 @@
  **********************************************************/
 /** https接口*/
 #if 0
-#define api_server_base_url @"http://api.xiaoyou.com/mobile/"
+#define api_server_base_url @"http://api.xiaoyou.com/mobile"
 #define UMENG_APPKEY @"55cda497e0f55ad43d00204c"
 #else
-#define api_server_base_url @"http://beta.xiaoyou.com/mobile/"
+#define api_server_base_url @"http://beta.xiaoyou.com/mobile"
 #define UMENG_APPKEY @"55cda7c3e0f55a0de40018c7"
 #endif
 
@@ -28,49 +28,49 @@
  Url Define: ProvisionManager
  **********************************************************/
 //登录
-#define api_user_login  @"user/v2/login"
+#define api_user_login  @"/user/v2/login"
 //学校列表
-#define api_login_schoolList  @"school/schoolList"
+#define api_login_schoolList  @"/school/schoolList"
 //忘记密码
-#define api_login_forgetPwd @"user/v2/forgetPwd"
+#define api_login_forgetPwd @"/user/v2/forgetPwd"
 //标签
-#define api_login_listTag @"tag/listTag"
+#define api_login_listTag @"/tag/listTag"
 //上传头像
-#define api_login_updateHeadPic @"user/updateHeadPic"
+#define api_login_updateHeadPic @"/user/updateHeadPic"
 //上传标签
-#define api_login_addTag @"user/v2/addTag"
+#define api_login_addTag @"/user/v2/addTag"
 //个人信息
-#define api_login_profile @"user/v2/profile"
+#define api_login_profile @"/user/v2/profile"
 //评论过我的人
-#define api_login_myCommentPersons @"user/v2/myCommentPersons"
+#define api_login_myCommentPersons @"/user/v2/myCommentPersons"
 //点赞过我的人
-#define api_login_myPraisePersons @"user/v2/myPraisePersons"
+#define api_login_myPraisePersons @"/user/v2/myPraisePersons"
 //认为我很酷的人
-#define api_login_myCoolPersons @"user/v2/myCoolPersons"
+#define api_login_myCoolPersons @"/user/v2/myCoolPersons"
 //修改签名
-#define api_login_UpdateSelfIntro @"user/v2/updateSelfIntro"
+#define api_login_UpdateSelfIntro @"/user/v2/updateSelfIntro"
 //退出登录
-#define api_user_logOut  @"user/logout"
+#define api_user_logOut  @"/user/logout"
 //绑定手机号
-#define api_login_ReceiveMobileAuthCode  @"user/v2/verifyAuthCode"
+#define api_login_ReceiveMobileAuthCode  @"/user/v2/verifyAuthCode"
 //修改密码
-#define api_login_ModifyPassword  @"user/v2/modifyPassword"
+#define api_login_ModifyPassword  @"/user/v2/modifyPassword"
 //获取验证码
-#define api_login_ReceiveAuthCode  @"user/v2/receiveAuthCode"
+#define api_login_ReceiveAuthCode  @"/user/v2/receiveAuthCode"
 
 /**********************************************************
  Url Define: FeedManager
  **********************************************************/
 //我的动态
-#define api_feed_MyFeed @"user/v2/userFeeds"
+#define api_feed_MyFeed @"/user/v2/userFeeds"
 //动态详情
-#define api_feed_DetailFeed @"feed/detailFeed"
+#define api_feed_DetailFeed @"/feed/detailFeed"
 //动态列表
-#define api_feed_ListFeed @"feed/listFeed"
+#define api_feed_ListFeed @"/feed/listFeed"
 //上传feed图片
-#define api_feed_UpdateImg @"feed/updateImg"
+#define api_feed_UpdateImg @"/feed/updateImg"
 //发送feed
-#define api_feed_AddFeed @"feed/addFeed"
+#define api_feed_AddFeed @"/feed/addFeed"
 //动态人列表
 #define api_feed_FindFriendsByTags @"/feed/findFriendsByTags"
 //feed敬酒
@@ -79,16 +79,24 @@
 #define api_feed_commonAddPraise @"/feed/comment/addPraise"
 //feed提醒列表
 #define api_alert_list @"/alert/list"
+//动态评论
+#define api_feed_addComment @"/feed/comment/addComment"
+//回复评论
+#define api_feed_addReply @"/feed/comment/addReply"
+//删除关于一个feed的提醒
+#define api_alert_readByFeed @"/alert/readByFeed"
+//删除这个用户所有的提醒
+#define api_alert_readAll @"/alert/readAll"
 
 /**********************************************************
  Url Define: ContactManager
  **********************************************************/
 //给别人点赞
-#define api_contact_Praise @"user/v2/praise"
+#define api_contact_Praise @"/user/v2/praise"
 //找朋友筛选条件
-#define api_contact_FriendsCondition @"user/v2/friendsCondition"
+#define api_contact_FriendsCondition @"/user/v2/friendsCondition"
 //找朋友
-#define api_contact_FindFriends @"user/v2/findFriends"
+#define api_contact_FindFriends @"/user/v2/findFriends"
 //同意加入群组
 #define api_contact_AgreeApply @"/group/agreeApply"
 //申请记录列表
@@ -116,9 +124,9 @@
  Url Define: MessageManager
  **********************************************************/
 //聊天列表
-#define api_message_list  @"user/getsenderlist"
+#define api_message_list  @"/user/getsenderlist"
 //联系人列表
-#define api_contacts_list  @"user/v2/listLinkMan"
+#define api_contacts_list  @"/user/v2/listLinkMan"
 
 #endif
 

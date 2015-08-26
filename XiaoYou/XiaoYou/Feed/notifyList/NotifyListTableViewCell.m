@@ -9,6 +9,8 @@
 #import "NotifyListTableViewCell.h"
 #import "YFaceImageView.h"
 #import "YUtils+UI.h"
+#import "AlertList.h"
+#import "YUtils+Component.h"
 
 NSString *const kNotifyListTableViewCell = @"NotifyListTableViewCellId";
 
@@ -76,6 +78,12 @@ NSString *const kNotifyListTableViewCell = @"NotifyListTableViewCellId";
     }
     
     return self;
+}
+
+- (void)initData:(AlertList *)alertList {
+    [_face setData:alertList.userId imageUrl:@""];
+    _contentLabel.text = alertList.content;
+    _timeLabel.text = [YUtils distanceTimeToday:[NSDate dateWithTimeIntervalSince1970:alertList.createTime/1000]];
 }
 
 /*

@@ -41,4 +41,16 @@ AS_SINGLETON(FeedManager);
 //获取feed提醒列表
 - (void)alertList:(NSString *)lastId size:(NSInteger)size block:(ActionCompleteBlock)block;
 
+//动态评论
+- (void)addComment:(NSString *)feedId content:(NSString *)content block:(ActionCompleteBlock)block;
+
+//对动态评论
+- (void)addReply:(NSString *)feedId content:(NSString *)content toUserId:(NSString *)toUserId block:(ActionCompleteBlock)block;
+
+//删除关于一个feed的提醒
+- (void)readByFeed:(NSString *)affectId block:(ActionCompleteBlock)block;
+
+//删除这个用户所有的提醒
+- (void)readAll:(ActionCompleteBlock)block;
+
 @end
