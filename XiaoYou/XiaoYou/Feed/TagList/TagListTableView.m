@@ -81,7 +81,7 @@
         if (_type == TagMenuType) {
             Tags *tag = _data[indexPath.row];
             
-            [self toFeedFilter:[NSString stringWithFormat:@"%d", (int)tag.internalBaseClassIdentifier] name:tag.name];
+            [self toFeedFilter:tag.internalBaseClassIdentifier name:tag.name];
         }
     }
 }
