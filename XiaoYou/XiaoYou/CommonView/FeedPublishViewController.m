@@ -19,6 +19,7 @@
 #import "Tags.h"
 #import "CommonSwitchView.h"
 #import "YCommonAlertView.h"
+#import "UIScrollView+UITouchEvent.h"
 
 #define KTEXTVIEWMARGIN_LEFT SCALE_NUM(5)
 #define KTEXTVIEWMARGIN_TOP SCALE_NUM(15)
@@ -103,7 +104,7 @@
         make.centerX.equalTo(_contentView);
     }];
     ProfileInfo *info = [[ProvisionManager sharedInstance] getProfile];
-    if (info.managerGroups.count == 0) {
+    if (info.managerGroups.count != 0) {
         UILabel *infoLabel = [YUtils initLabel:CONTENT_FONT(12) color:[UIColor blackColor] text:@"选择发布身份" frame:CGRectZero alignment:NSTextAlignmentLeft];
         [_groupView addSubview:infoLabel];
         [infoLabel mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -121,26 +122,35 @@
             make.width.mas_equalTo(SCALE_NUM(70));
             make.height.mas_equalTo(SCALE_NUM(20));
         }];
-        _groupTag = [[SKTagView alloc] init];
-        [_groupView addSubview:_groupTag];
-        [_groupTag mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.left.right.equalTo(_groupView);
-            make.top.equalTo(_switchView.mas_bottom).offset(SCALE_NUM(25));
-            make.bottom.equalTo(_groupView);
-        }];
-        [self changeSwitchView:0];
-        _groupTag.insets = 5;
-        _groupTag.lineSpace = 5;
-        __weak FeedPublishViewController *weakSelf = self;
-        [_groupTag setDidClickTagAtIndex:^(NSUInteger index) {
-            [weakSelf updateGroupSelected:index];
-        }];
+        [self initGroup:info.managerGroups];
     } else {
         [_groupView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.height.mas_equalTo(0);
         }];
         _groupView.hidden = true;
     }
+}
+- (void)initGroup:(NSArray *)groups {
+    _groupTag = [[SKTagView alloc] init];
+    [_groupView addSubview:_groupTag];
+    [_groupTag mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.right.equalTo(_groupView);
+        make.top.equalTo(_switchView.mas_bottom).offset(SCALE_NUM(25));
+        make.bottom.equalTo(_groupView);
+    }];
+    [self changeSwitchView:0];
+    _groupTag.insets = 5;
+    _groupTag.lineSpace = 5;
+    __weak FeedPublishViewController *weakSelf = self;
+    [_groupTag setDidClickTagAtIndex:^(NSUInteger index) {
+        [weakSelf updateGroupSelected:index];
+    }];
+    _groupArray = [@[] mutableCopy];
+    [groups enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+        NSMutableDictionary *dic = [@{tagObj:obj,tagIsSelected:@NO} mutableCopy];
+        [_groupArray addObject:[dic mutableCopy]];
+    }];
+    [self loadGroupTag];
 }
 - (void)updateGroupSelected:(NSInteger)select {
     if (_groupIndex == select) {
@@ -256,7 +266,6 @@
             
             //传入控件
             [self loadTag];
-            [self loadGroupTag];
         } else {
             [YUtils showTitle:message.desc];
         }
@@ -269,6 +278,7 @@
         [tag updateWithPublishSelectType:false];
         [_groupTag addTag:tag];
     }];
+    [_groupTag updateTag:true atIndex:0];
 }
 - (void)loadTag {
     [_tagsArray enumerateObjectsUsingBlock:^(NSDictionary *obj, NSUInteger idx, BOOL *stop) {
@@ -323,7 +333,6 @@
         UIImagePickerController *picker = [[UIImagePickerController alloc] init];
         [picker setSourceType:UIImagePickerControllerSourceTypeCamera];
         picker.delegate = self;
-        [picker setAllowsEditing:YES];
         [self presentViewController:picker animated:YES completion:nil];
     }
 #endif

@@ -392,6 +392,7 @@
 		653CB2EE1B806BFD006ECBB2 /* ChineseString.m in Sources */ = {isa = PBXBuildFile; fileRef = 653CB2EB1B806BFD006ECBB2 /* ChineseString.m */; };
 		653CB2EF1B806BFD006ECBB2 /* pinyin.c in Sources */ = {isa = PBXBuildFile; fileRef = 653CB2EC1B806BFD006ECBB2 /* pinyin.c */; };
 		654379A91B8D73BA007B15CA /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 654379A81B8D73BA007B15CA /* AVFoundation.framework */; };
+		654379AF1B8D8680007B15CA /* UIScrollView+UITouchEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 654379AE1B8D8680007B15CA /* UIScrollView+UITouchEvent.m */; };
 		654602171B7F2FF00039F622 /* FeedImageGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 654602161B7F2FF00039F622 /* FeedImageGroup.m */; };
 		656234771B837FDC00651C88 /* YFaceImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 656234761B837FDC00651C88 /* YFaceImageView.m */; };
 		656F59751B8896370094B658 /* ProfilePhoneChangeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 656F59741B8896370094B658 /* ProfilePhoneChangeViewController.m */; };
@@ -1021,6 +1022,8 @@
 		653CB2EC1B806BFD006ECBB2 /* pinyin.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = pinyin.c; sourceTree = "<group>"; };
 		653CB2ED1B806BFD006ECBB2 /* pinyin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = pinyin.h; sourceTree = "<group>"; };
 		654379A81B8D73BA007B15CA /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		654379AD1B8D8680007B15CA /* UIScrollView+UITouchEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+UITouchEvent.h"; sourceTree = "<group>"; };
+		654379AE1B8D8680007B15CA /* UIScrollView+UITouchEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+UITouchEvent.m"; sourceTree = "<group>"; };
 		654602151B7F2FF00039F622 /* FeedImageGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedImageGroup.h; sourceTree = "<group>"; };
 		654602161B7F2FF00039F622 /* FeedImageGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedImageGroup.m; sourceTree = "<group>"; };
 		656234751B837FDC00651C88 /* YFaceImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YFaceImageView.h; sourceTree = "<group>"; };
@@ -2422,6 +2425,8 @@
 				20DAF9AD1B872528005B7932 /* YUtils+UI.m */,
 				65F55A9F1B899EBC00ED4348 /* UIImageView+Ext.h */,
 				65F55AA01B899EBC00ED4348 /* UIImageView+Ext.m */,
+				654379AD1B8D8680007B15CA /* UIScrollView+UITouchEvent.h */,
+				654379AE1B8D8680007B15CA /* UIScrollView+UITouchEvent.m */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -3054,6 +3059,7 @@
 				3331227C1B806EDB00D3D032 /* EMVoiceConverter.mm in Sources */,
 				333122361B806EDB00D3D032 /* EMChatImageBubbleView.m in Sources */,
 				20DAF9DC1B873883005B7932 /* PinYinForObjc.m in Sources */,
+				654379AF1B8D8680007B15CA /* UIScrollView+UITouchEvent.m in Sources */,
 				6592DCDD1B806A9B004CD118 /* MessageTableView.m in Sources */,
 				65BCCAEB1B81A72500266A18 /* FeedDetailTableView.m in Sources */,
 				333122771B806EDB00D3D032 /* THProgressView.m in Sources */,
