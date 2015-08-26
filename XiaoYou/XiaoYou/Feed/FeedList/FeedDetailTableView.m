@@ -14,6 +14,10 @@
 #import "FeedDetail.h"
 #import "FeedInfo.h"
 #import "Feed.h"
+#import "Comment.h"
+#import "Author.h"
+#import "CommentListItems.h"
+#import "ProvisionManager.h"
 @interface FeedDetailTableView()<UITableViewDataSource, UITableViewDelegate>
 
 @property (nonatomic, strong) NSDictionary *data;
@@ -134,7 +138,8 @@
 {
     if (indexPath.row > 0) {
         int index = (int)indexPath.row - 1;
-        if ([_commentListArray[index] isEqualToString:@"3"]) {
+        CommentListItems *item = _commentListArray[index];
+        if ([item.author.uid isEqualToString:[[ProvisionManager sharedInstance] getUserId]]) {
             [self openTool];
         } else {
             [self openReply:index];
@@ -142,7 +147,8 @@
     }
 }
 - (void)openReply:(int)index {
-    [self.parent openInputWithId:_commentListArray[index] name:_commentListArray[index]];
+    CommentListItems *item = _commentListArray[index];
+    [self.parent openInputWithId:item.author.uid name:item.author.name];
 }
 - (void)openTool {
     

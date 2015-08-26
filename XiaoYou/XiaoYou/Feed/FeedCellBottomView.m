@@ -17,6 +17,8 @@
 #import "Comment.h"
 #import "Author.h"
 #import "FeedManager.h"
+#import "ProvisionManager.h"
+#import "ProfileInfo.h"
 
 
 #define KBOTTOMHEIGHT SCALE_NUM(25)                 //社团和feed列表中bottom的高度
@@ -42,6 +44,7 @@
 @property (nonatomic, assign)            int type;                             //类型
 @property (nonatomic, assign)            NSString *feedId;
 @property (nonatomic, strong)            id myInfo;
+@property (nonatomic, strong)            FeedInfo *info;
 @property (nonatomic, strong)            NSMutableDictionary *shareData;
 @end
 
@@ -160,9 +163,10 @@
     if (_type == FeedDetailType) {
         FeedInfo *data = inData;
         _myInfo = data.feed;
+        _info = data;
         _respectNum.text = [NSString stringWithFormat:@"%d", (int)data.feed.praiseCount];
-        [self initPersonList:data.praisePeoples];
         [self updateRespect:data.feed.isPraise];
+        [self initPersonList];
     }
     if (_type == FeedCommentType) {
         CommentListItems *data = inData;
@@ -171,12 +175,12 @@
         [self updateRespect:data.comment.isRespect];
     }
 }
-- (void)initPersonList:(NSArray *)people {
+- (void)initPersonList {
     [[_personList subviews] makeObjectsPerformSelector:@selector(removeFromSuperview)];
     UIView *tmp = nil;
-    int max = (people.count > 4) ? 4:(int)people.count;
+    int max = (_info.praisePeoples.count > 4) ? 4:(int)_info.praisePeoples.count;
     for (int i = 0; i < max; i++) {
-        Author *item = people[i];
+        Author *item = _info.praisePeoples[i];
         YFaceImageView *face = [[YFaceImageView alloc] init];
         [_personList addSubview:face];
         [face setData:item.uid imageUrl:item.headPic];
@@ -191,7 +195,7 @@
         }];
         tmp = face;
     }
-    if (people.count > 4) {
+    if (_info.praisePeoples.count > 4) {
         UIImageView *open = [[UIImageView alloc] init];
         open.backgroundColor = [UIColor redColor];
         [_personList addSubview:open];
@@ -214,6 +218,26 @@
                     fd.praiseCount ++;
                 } else {
                     fd.praiseCount --;
+                }
+                if (_type == FeedDetailType) {
+                    if (fd.isPraise) {
+                        Author *author = [Author new];
+                        author.uid = [[ProvisionManager sharedInstance] getProfile].uid;
+                        author.headPic = [[ProvisionManager sharedInstance] getProfile].headPic;
+                        _info.praisePeoples = [@[author] arrayByAddingObjectsFromArray:_info.praisePeoples];
+                    } else {
+                        NSMutableArray *personArray = [NSMutableArray arrayWithArray:_info.praisePeoples];
+                        for (int i = 0; i < personArray.count; i++) {
+                            Author *obj = personArray[i];
+                            if ([obj.uid isEqualToString:[[ProvisionManager sharedInstance] getProfile].uid]) {
+                                [personArray removeObjectAtIndex:i];
+                                break;
+                            }
+                        }
+                        _info.praisePeoples = [NSArray arrayWithArray:personArray];
+                        
+                    }
+                    [self initPersonList];
                 }
                 [self updateRespect:fd.isPraise];
             } else {

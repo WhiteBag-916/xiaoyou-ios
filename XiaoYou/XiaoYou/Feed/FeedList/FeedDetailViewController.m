@@ -11,6 +11,8 @@
 #import "Masonry.h"
 #import "DXMessageToolBar.h"
 #import "YCommonActionSheet.h"
+#import "ConvertToCommonEmoticonsHelper.h"
+#import "FeedManager.h"
 
 #define KBOTTOMHEIGHT [DXMessageToolBar defaultHeight]
 @interface FeedDetailViewController() <DXMessageToolBarDelegate, UIGestureRecognizerDelegate>
@@ -88,9 +90,32 @@
     [_feedDetailTable openShare];
 }
 - (void)didSendText:(NSString *)text {
-    _replyId = nil;
-    _chatToolBar.inputTextView.placeHolder = @"您老人家说两句呗";
-    [_chatToolBar endEditing:YES];
+    text = [ConvertToCommonEmoticonsHelper convertToCommonEmoticons:text];
+    if (_replyId.length == 0) {
+        [[FeedManager sharedInstance] addComment:_feedId content:text block:^(YActionMessage *message) {
+            if (!message.isSuccess) {
+                [YUtils showTitle:message.desc];
+            }
+            _replyId = nil;
+            _chatToolBar.inputTextView.placeHolder = @"您老人家说两句呗";
+            [_chatToolBar endEditing:YES];
+            [_feedDetailTable loadData];
+        }];
+    } else {
+        [[FeedManager sharedInstance] addReply:_feedId content:text toUserId:_replyId block:^(YActionMessage *message) {
+            if (!message.isSuccess) {
+                [YUtils showTitle:message.desc];
+            }
+            _replyId = nil;
+            _chatToolBar.inputTextView.placeHolder = @"您老人家说两句呗";
+            [_chatToolBar endEditing:YES];
+            [_feedDetailTable loadData];
+        }];
+    }
+}
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    self.navigationController.navigationBarHidden = false;
 }
 - (void)openInputWithId:(NSString *)userId name:(NSString *)userName {
     _replyId = userId;

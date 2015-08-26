@@ -14,6 +14,7 @@
 #import "Comment.h"
 #import "CommentListItems.h"
 #import "Author.h"
+#import "ConvertToCommonEmoticonsHelper.h"
 
 #define KTAGHEIGHT SCALE_NUM(20)
 #define KTAGMARGIN SCALE_NUM(6)
@@ -67,7 +68,7 @@
 - (void)setData:(id)inData {
     if ([inData isKindOfClass:[FeedInfo class]]) {
         FeedInfo *data = inData;
-        _contentLabel.text = data.feed.content;
+        _contentLabel.text = [ConvertToCommonEmoticonsHelper convertToSystemEmoticons:data.feed.content];
         if (data.feed.img.length == 0) {
             [_imgGroup updateWithImgs:nil];
         } else {
