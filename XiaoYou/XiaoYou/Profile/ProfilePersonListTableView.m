@@ -11,6 +11,7 @@
 #import "ProfilePersonListTableViewCell.h"
 #import "ProvisionManager.h"
 #import "ContactManager.h"
+#import "FeedManager.h"
 
 #define KPAGENUM 15
 
@@ -19,6 +20,8 @@
 @property (nonatomic, strong) NSString *feedId;
 @property (nonatomic, strong) NSMutableArray *personListArray;
 @property (nonatomic, strong) NSDictionary *conditionDic;           //筛选条件
+@property (nonatomic, strong) NSString *queryCode;
+
 @end
 
 @implementation ProfilePersonListTableView
@@ -54,6 +57,16 @@
     self.conditionDic = [NSDictionary dictionaryWithDictionary:condition];
     [self sendRequest];
 }
+
+//feed人
+- (void)loadDataWithQueryCode:(NSString *)queryCode {
+    if (nil == _queryCode) {
+        //第一次才刷新
+        _queryCode = queryCode;
+        [self beginLoadNewData];
+    }
+}
+
 - (void)loadNewData
 {
     [self sendRequest];
@@ -78,6 +91,10 @@
         }];
     } else if (ProfilePersonListTypeFind == _type) {
         [[ContactManager sharedInstance] findFriends:cnt limitEnd:cnt + KPAGENUM conditionDic:_conditionDic block:^(YActionMessage *message) {
+            [self dealMessage:message];
+        }];
+    } else if (ProfilePersonListTypeFeedPerson == _type) {
+        [[FeedManager sharedInstance] findFriendsByTags:cnt limitEnd:cnt + KPAGENUM queryCode:_queryCode block:^(YActionMessage *message) {
             [self dealMessage:message];
         }];
     }

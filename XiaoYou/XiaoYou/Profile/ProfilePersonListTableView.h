@@ -19,6 +19,7 @@ typedef NS_ENUM(NSInteger, ProfilePersonListType) {
 - (id)initWIthType:(int)type;
 - (void)loadData;
 - (void)loadDataWithFind:(NSDictionary *)condition;
+- (void)loadDataWithQueryCode:(NSString *)queryCode;
 - (void)loadDataWithFeedId:(NSString *)feedId;
 
 @end
