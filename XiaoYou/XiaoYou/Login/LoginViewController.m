@@ -128,18 +128,6 @@
         make.height.mas_equalTo(SCALE_NUM(36));
         make.width.mas_equalTo(SCALE_NUM(118));
     }];
-    
-    //蒙层
-    _protocolImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"login_tip"]];
-    [[[[UIApplication sharedApplication] delegate] window] addSubview:_protocolImageView];
-    _protocolImageView.hidden = YES;
-    [_protocolImageView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.edges.equalTo([[[UIApplication sharedApplication] delegate] window]);
-    }];
-    
-    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dissmissProtocol)];
-    _protocolImageView.userInteractionEnabled = YES;
-    [_protocolImageView addGestureRecognizer:tap];
 }
 
 //选择协议条款
@@ -168,26 +156,49 @@
                                                          buttonTitles:@"取消",@"确认", nil];
     [alert clickedButtonHandler:^(NSInteger index) {
         if (1 == index) {
+            [YUtils showHUDWithTitle];
             [[ProvisionManager sharedInstance] forgotPasswordReq:_accountTextField.text block:^(YActionMessage *message) {
+                [YUtils hiddenProgressHUD];
                 if (999+kYYServerErrorBase == message.errorCode) {
                     //提示默认密码
+                    [self pressInitialPassword:YES];
+                } else {
+                    [YUtils showTitle:message.desc];
                 }
-                
-                [YUtils showTitle:message.desc];
-                
             }];
         }
     }];
     [alert show];
 }
 
+//初始密码范例,需要消失
+- (void)pressInitialPassword:(BOOL)needDissmiss {
+    [self pressInitialPassword];
+    if (needDissmiss) {
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [self dissmissProtocol];
+        });
+    }
+}
+
 //初始密码范例
 - (void)pressInitialPassword {
-    _protocolImageView.hidden = NO;
+    if (nil == _protocolImageView) {
+        //蒙层
+        _protocolImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"login_tip"]];
+        
+        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dissmissProtocol)];
+        _protocolImageView.userInteractionEnabled = YES;
+        [_protocolImageView addGestureRecognizer:tap];
+    }
+    [[[[UIApplication sharedApplication] delegate] window] addSubview:_protocolImageView];
+    [_protocolImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.equalTo([[[UIApplication sharedApplication] delegate] window]);
+    }];
 }
 
 - (void)dissmissProtocol {
-    _protocolImageView.hidden = YES;
+    [_protocolImageView removeFromSuperview];
 }
 
 - (void)resetRightButton {
