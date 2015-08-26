@@ -13,6 +13,7 @@
 #import "YManagerCenter.h"
 #import "EaseMob.h"
 #import "YNotificationDefine.h"
+#import "EMErrorDefs.h"
 #import <AudioToolbox/AudioToolbox.h>
 
 #define kMessageManagerSyncQueue @"kMessageManagerSyncQueue"
@@ -109,7 +110,6 @@ DEF_SINGLETON(MessageManager);
         if (!error && loginInfo) {
             YLogD(@"登陆成功");
             [[NSNotificationCenter defaultCenter] postNotificationName:kNotification_Refresh_Message object:nil];
-            
         }
         [self setupUnreadMessageCount];
     } onQueue:nil];

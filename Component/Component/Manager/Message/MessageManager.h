@@ -15,6 +15,7 @@ AS_SINGLETON(MessageManager);
 
 - (void)getMessageListData:(ActionCompleteBlock)block;
 
-
+// 统计未读消息数
+-(void)setupUnreadMessageCount;
 
 @end

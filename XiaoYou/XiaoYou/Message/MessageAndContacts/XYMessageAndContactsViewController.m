@@ -96,6 +96,12 @@
     [self refreshDataSource];
     [self registerNotifications];
     [self removeEmptyConversationsFromDB];
+    
+    [[MessageManager sharedInstance] setupUnreadMessageCount];
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 //刷新数据源
