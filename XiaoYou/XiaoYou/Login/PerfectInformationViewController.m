@@ -170,12 +170,17 @@
         }
     }];
     if (_headImagePath.length > 0) {
-        [self uploadHeadImage:^(YActionMessage *message) {
+        [YUtils showHUDWithTitle];
+        [self uploadHeadImage:^{
             if (tagStr.length > 0) {
                 [self uploadTagList:tagStr];
+            } else {
+                [YUtils hiddenProgressHUD];
+                [self toTabBar];
             }
         }];
     } else if (tagStr.length > 0) {
+        [YUtils showHUDWithTitle];
         [self uploadTagList:tagStr];
     }else {
         [self toTabBar];
@@ -190,6 +195,7 @@
                                                      if (message.isSuccess) {
                                                          block();
                                                      } else {
+                                                         [YUtils hiddenProgressHUD];
                                                          [YUtils showTitle:message.desc];
                                                      }
                                                  }];
@@ -199,6 +205,7 @@
 - (void)uploadTagList:(NSString *)tagStr {
     
     [[ProvisionManager sharedInstance] uploadTagCodes:tagStr block:^(YActionMessage *message) {
+        [YUtils hiddenProgressHUD];
         if (message.isSuccess) {
             //更新缓存标签
             NSMutableArray *tagArray = [@[] mutableCopy];
