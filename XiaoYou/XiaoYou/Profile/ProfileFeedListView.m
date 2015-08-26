@@ -48,7 +48,6 @@
 }
 - (void)loadNewData
 {
-    [_feedArray removeAllObjects];
     [self sendRequest];
 }
 
@@ -59,10 +58,8 @@
 
 - (void)sendRequest {
     [[FeedManager sharedInstance] getMyFeed:_userId limitStart:_feedArray.count limitEnd:_feedArray.count + KPAGENUM block:^(YActionMessage *message) {
-        if (_feedArray.count == 0) {
-            [self stopLoadNewData];
-        } else {
-            [self stopLoadMoreData];
+        if ([self isHeaderRefresh]) {
+            [_feedArray removeAllObjects];
         }
         if (message.isSuccess) {
             [self hiddenFooter:false];
@@ -74,6 +71,11 @@
             
         } else {
             [YUtils showTitleOn:self title:message.desc];
+        }
+        if ([self isHeaderRefresh]) {
+            [self stopLoadNewData];
+        } else {
+            [self stopLoadMoreData];
         }
     }];
 }

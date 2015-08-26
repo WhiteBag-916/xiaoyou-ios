@@ -433,9 +433,9 @@
             }
         }];
     }
-    dispatch_barrier_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+    if ([_imgGroup getImgCount] == 0) {
         [self uploadFeed];
-    });
+    }
 }
 
 - (void)uploadFeed {
@@ -446,9 +446,14 @@
     } else {
         Feed *feed = [Feed new];
         Tags *tag = _groupArray[_groupIndex][tagObj];
-        feed.sendGroupId = _isGroup?[NSString stringWithFormat:@"%d", (int)tag.internalBaseClassIdentifier]:@"";
+        feed.sendGroupId = _isGroup?tag.internalBaseClassIdentifier:@"";
         feed.content = _textView.text.length == 0?@"":_textView.text;
         feed.img = imgStr;
+        if (imgStr.length == 0) {
+            feed.type = @"TEXT";
+        } else {
+            feed.type = @"IMAGE";
+        }
         [[FeedManager sharedInstance] sendFeed:feed tagIds:_isGroup?@"":[self getTagSelected] block:^(YActionMessage *message) {
             [YUtils hiddenProgressHUD];
             if (message.isSuccess) {

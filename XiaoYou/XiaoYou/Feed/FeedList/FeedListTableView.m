@@ -69,7 +69,6 @@
 }
 - (void)loadNewData
 {
-    [_feedListArray removeAllObjects];
     [self sendRequest];
 }
 
@@ -80,15 +79,12 @@
 - (void)sendRequest {
     //mod by xiongchen
     NSString *lastID;
-    if (_feedListArray.count > 0) {
+    if (![self isHeaderRefresh]) {
         lastID = [NSString stringWithFormat:@"%g", [[_feedListArray.lastObject feed] feedIdentifier]];
     }
-    //------------------
     [[FeedManager sharedInstance] feedList:lastID size:KPAGENUM queryCode:_filter block:^(YActionMessage *message) {
-        if (_feedListArray.count == 0) {
-            [self stopLoadNewData];
-        } else {
-            [self stopLoadMoreData];
+        if ([self isHeaderRefresh]) {
+            [_feedListArray removeAllObjects];
         }
         if (message.isSuccess) {
             [self hiddenFooter:false];
@@ -100,6 +96,11 @@
             
         } else {
             [YUtils showTitleOn:self title:message.desc];
+        }
+        if ([self isHeaderRefresh]) {
+            [self stopLoadNewData];
+        } else {
+            [self stopLoadMoreData];
         }
     }];
 }
