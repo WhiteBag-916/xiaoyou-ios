@@ -10,4 +10,6 @@
 
 @interface AssociationsSearchViewController : YViewController
 
+- (id)initWithArray:(NSArray *)array;
+
 @end

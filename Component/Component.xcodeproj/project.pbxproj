@@ -23,6 +23,8 @@
 		20C5B0721B8DBAFB00B4A8A8 /* AddCommentAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 20C5B0711B8DBAFB00B4A8A8 /* AddCommentAction.m */; };
 		20C5B0751B8DC35F00B4A8A8 /* ReadByFeedAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 20C5B0741B8DC35F00B4A8A8 /* ReadByFeedAction.m */; };
 		20C5B0781B8DC36C00B4A8A8 /* ReadAllAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 20C5B0771B8DC36C00B4A8A8 /* ReadAllAction.m */; };
+		20C5B07E1B8DF3DD00B4A8A8 /* GroupConditionsAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 20C5B07D1B8DF3DD00B4A8A8 /* GroupConditionsAction.m */; };
+		20C5B0811B8DF3E700B4A8A8 /* GroupListAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 20C5B0801B8DF3E700B4A8A8 /* GroupListAction.m */; };
 		20DA1A5A1B89751500DEF95C /* MyCommentPersonsAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 20DA1A591B89751500DEF95C /* MyCommentPersonsAction.m */; };
 		20DA1A5D1B89752000DEF95C /* MyPraisePersonsAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 20DA1A5C1B89752000DEF95C /* MyPraisePersonsAction.m */; };
 		20DA1A711B89B7DD00DEF95C /* MyFeedAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 20DA1A701B89B7DD00DEF95C /* MyFeedAction.m */; };
@@ -118,6 +120,10 @@
 		20C5B0741B8DC35F00B4A8A8 /* ReadByFeedAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReadByFeedAction.m; sourceTree = "<group>"; };
 		20C5B0761B8DC36C00B4A8A8 /* ReadAllAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReadAllAction.h; sourceTree = "<group>"; };
 		20C5B0771B8DC36C00B4A8A8 /* ReadAllAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReadAllAction.m; sourceTree = "<group>"; };
+		20C5B07C1B8DF3DD00B4A8A8 /* GroupConditionsAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroupConditionsAction.h; sourceTree = "<group>"; };
+		20C5B07D1B8DF3DD00B4A8A8 /* GroupConditionsAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroupConditionsAction.m; sourceTree = "<group>"; };
+		20C5B07F1B8DF3E700B4A8A8 /* GroupListAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroupListAction.h; sourceTree = "<group>"; };
+		20C5B0801B8DF3E700B4A8A8 /* GroupListAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroupListAction.m; sourceTree = "<group>"; };
 		20DA1A581B89751500DEF95C /* MyCommentPersonsAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyCommentPersonsAction.h; sourceTree = "<group>"; };
 		20DA1A591B89751500DEF95C /* MyCommentPersonsAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyCommentPersonsAction.m; sourceTree = "<group>"; };
 		20DA1A5B1B89752000DEF95C /* MyPraisePersonsAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyPraisePersonsAction.h; sourceTree = "<group>"; };
@@ -491,6 +497,10 @@
 				20C5B0741B8DC35F00B4A8A8 /* ReadByFeedAction.m */,
 				20C5B0761B8DC36C00B4A8A8 /* ReadAllAction.h */,
 				20C5B0771B8DC36C00B4A8A8 /* ReadAllAction.m */,
+				20C5B07C1B8DF3DD00B4A8A8 /* GroupConditionsAction.h */,
+				20C5B07D1B8DF3DD00B4A8A8 /* GroupConditionsAction.m */,
+				20C5B07F1B8DF3E700B4A8A8 /* GroupListAction.h */,
+				20C5B0801B8DF3E700B4A8A8 /* GroupListAction.m */,
 			);
 			path = Feed;
 			sourceTree = "<group>";
@@ -628,6 +638,7 @@
 				20E122171B705D3C00F90BD3 /* FeedManager.m in Sources */,
 				20DCB9641B8CA60800C758DE /* RejectApplyAction.m in Sources */,
 				20E0BFF31B88B0CA00EDAED4 /* UploadTagCodes.m in Sources */,
+				20C5B0811B8DF3E700B4A8A8 /* GroupListAction.m in Sources */,
 				20E0C00C1B88B0CA00EDAED4 /* ProfileAction.m in Sources */,
 				20E0BFED1B88B0CA00EDAED4 /* MessageListAction.m in Sources */,
 				20E1C67E1B89F148008BA9D6 /* FeedDetailAction.m in Sources */,
@@ -642,6 +653,7 @@
 				20E0BFF01B88B0CA00EDAED4 /* UploadHeadImageAction.m in Sources */,
 				20C5B0601B8DB43B00B4A8A8 /* IgnoreFriendApplyAction.m in Sources */,
 				20DCB96D1B8CA60800C758DE /* IgnoreApplyListAction.m in Sources */,
+				20C5B07E1B8DF3DD00B4A8A8 /* GroupConditionsAction.m in Sources */,
 				20DCB9671B8CA60800C758DE /* ApplyListAction.m in Sources */,
 				20DA1A5D1B89752000DEF95C /* MyPraisePersonsAction.m in Sources */,
 				20859A941B64C06A00580ED3 /* LoginAction.m in Sources */,

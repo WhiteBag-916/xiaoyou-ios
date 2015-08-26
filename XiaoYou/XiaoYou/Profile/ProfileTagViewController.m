@@ -10,6 +10,7 @@
 #import "Tags.h"
 #import "YTableView.h"
 #import "ProvisionManager.h"
+#import "FeedManager.h"
 
 #define tagObj @"tagObj"
 #define tagIsSelected @"tagIsSelected"
@@ -18,11 +19,14 @@
 @property (nonatomic, strong) NSMutableArray *tagsArray;
 @property (nonatomic, strong) NSMutableSet *myTagName;
 @property (nonatomic, strong) YTableView *tagTableView;
+
+@property (nonatomic, assign) ProfileTagType type;
+@property (nonatomic, copy) ProfileTagSelectedBlock block;
 @end
 
 @implementation ProfileTagViewController
 
-- (id)initWithMyTags:(NSArray *)myTags {
+- (id)initWithMyTags:(NSArray *)myTags type:(ProfileTagType)type {
     self = [super init];
     if (self) {
         _myTagName = [NSMutableSet set];
@@ -31,10 +35,11 @@
         }
         
         self.hidesBottomBarWhenPushed = true;
-        
+        _type = type;
     }
     return self;
 }
+
 - (void)viewDidLoad {
     [self initController];
     [self initView];
@@ -58,6 +63,9 @@
     _tagTableView.tableFooterView = [UIView new];
 }
 
+- (void)endSelected:(ProfileTagSelectedBlock)block {
+    _block = block;
+}
 
 - (void)updateCell:(UITableViewCell *)cell isChecked:(BOOL)isChecked {
     if (isChecked) {
@@ -70,8 +78,36 @@
 }
 
 - (void)viewDidAppear:(BOOL)animated {
-    [self initListTag];
+    if (ProfileTagTypeAssociations == _type) {
+        [self initGroupConditions];
+    } else if (ProfileTagTypePerson == _type) {
+        [self initListTag];
+    }
 }
+
+- (void)initGroupConditions {
+    [[FeedManager sharedInstance] groupConditions:^(YActionMessage *message) {
+        if (message.isSuccess) {
+            //构造tag
+            Tags *tag = [Tags new];
+            tag.name = @"全部";
+            _tagsArray = [@[[@{tagObj:tag,tagIsSelected:@(_myTagName.count <= 0)} mutableCopy]] mutableCopy];
+            
+            NSArray *tagList = message.object;
+            [tagList enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+                BOOL isIn = [_myTagName containsObject:[obj name]];
+                NSMutableDictionary *dic = [@{tagObj:obj,tagIsSelected:[NSNumber numberWithBool:isIn]} mutableCopy];
+                [_tagsArray addObject:dic];
+            }];
+            
+            //传入控件
+            [_tagTableView reloadData];
+        } else {
+            [YUtils showTitle:message.desc];
+        }
+    }];
+}
+
 - (void)initListTag {
     [[ProvisionManager sharedInstance] getTagList:^(YActionMessage *message) {
         if (message.isSuccess) {
@@ -112,8 +148,23 @@
     return cell;
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    _tagsArray[indexPath.row][tagIsSelected] = @(![_tagsArray[indexPath.row][tagIsSelected] boolValue]);
-    [self updateCell:[tableView cellForRowAtIndexPath:indexPath] isChecked:[_tagsArray[indexPath.row][tagIsSelected] boolValue]];
+    NSInteger row = indexPath.row;
+    _tagsArray[row][tagIsSelected] = @(![_tagsArray[row][tagIsSelected] boolValue]);
+    [self updateCell:[tableView cellForRowAtIndexPath:indexPath] isChecked:[_tagsArray[row][tagIsSelected] boolValue]];
+    if (ProfileTagTypeAssociations == _type && _tagsArray[row][tagIsSelected]) {
+        if (0 == row) {
+            //如果选择全部
+            [_tagsArray enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+                if (idx > 0) {
+                    _tagsArray[idx][tagIsSelected] = @(NO);
+                }
+            }];
+        } else {
+            _tagsArray[0][tagIsSelected] = @(NO);
+        }
+        
+        [_tagTableView reloadData];
+    }
 }
 - (void)viewWillAppear:(BOOL)animated {
     self.navigationController.navigationBarHidden = false;
@@ -123,17 +174,22 @@
     [self.navigationController dismissViewControllerAnimated:YES completion:nil];
 }
 - (void)onNavigationRightButtonClicked {
-    NSMutableString *tagStr = [@"" mutableCopy];
-    [_tagsArray enumerateObjectsUsingBlock:^(NSDictionary *obj, NSUInteger idx, BOOL *stop) {
-        if ([obj[tagIsSelected] boolValue]) {
-            Tags *tags = obj[tagObj];
-            if (tagStr.length > 0) {
-                [tagStr appendString:@","];
+    if (ProfileTagTypeAssociations == _type) {
+        [_tagsArray removeObjectAtIndex:0];
+        _block(_tagsArray);
+    } else if (ProfileTagTypePerson == _type) {
+        NSMutableString *tagStr = [@"" mutableCopy];
+        [_tagsArray enumerateObjectsUsingBlock:^(NSDictionary *obj, NSUInteger idx, BOOL *stop) {
+            if ([obj[tagIsSelected] boolValue]) {
+                Tags *tags = obj[tagObj];
+                if (tagStr.length > 0) {
+                    [tagStr appendString:@","];
+                }
+                [tagStr appendString:tags.internalBaseClassIdentifier];
             }
-            [tagStr appendString:tags.internalBaseClassIdentifier];
-        }
-    }];
-    [self uploadTagList:tagStr];
+        }];
+        [self uploadTagList:tagStr];
+    }
 }
 - (void)uploadTagList:(NSString *)tagStr {
     

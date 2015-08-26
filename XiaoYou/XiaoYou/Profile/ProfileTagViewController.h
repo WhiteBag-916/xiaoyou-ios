@@ -7,8 +7,18 @@
 //
 
 #import "YViewController.h"
+
+typedef NS_ENUM(NSInteger, ProfileTagType) {
+    ProfileTagTypePerson,           //人加tag
+    ProfileTagTypeAssociations,     //社团筛选
+};
+
+typedef void(^ProfileTagSelectedBlock)(NSArray *select);
+
 @interface ProfileTagViewController : YViewController
 
-- (id)initWithMyTags:(NSArray *)myTags;
+- (id)initWithMyTags:(NSArray *)myTags type:(ProfileTagType)type;
+
+- (void)endSelected:(ProfileTagSelectedBlock)block;
 
 @end

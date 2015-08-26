@@ -8,6 +8,8 @@
 
 #import "YTableView.h"
 
+@class YViewController;
+
 typedef NS_ENUM(NSInteger, AssociationsDetailTableViewSection) {
     AssociationsDetailTableViewTitleSection=0,      //社团详情
     AssociationsDetailTableViewLikeSection,         //点赞，酷
@@ -16,5 +18,7 @@ typedef NS_ENUM(NSInteger, AssociationsDetailTableViewSection) {
 };
 
 @interface AssociationsDetailTableView : YTableView
+
+@property (nonatomic, weak) YViewController *parent;
 
 @end

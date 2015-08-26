@@ -87,6 +87,10 @@
 #define api_alert_readByFeed @"/alert/readByFeed"
 //删除这个用户所有的提醒
 #define api_alert_readAll @"/alert/readAll"
+//社团搜索条件
+#define api_group_groupConditions @"/group/groupConditions"
+//社团列表
+#define api_group_groupList @"/group/groupList"
 
 /**********************************************************
  Url Define: ContactManager

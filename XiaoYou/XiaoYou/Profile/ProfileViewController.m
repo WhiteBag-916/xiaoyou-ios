@@ -407,7 +407,7 @@
 }
 - (void)openTagList {
     UINavigationController *navigationController =
-    [[UINavigationController alloc] initWithRootViewController:[[ProfileTagViewController alloc] initWithMyTags:_tagModels]];
+    [[UINavigationController alloc] initWithRootViewController:[[ProfileTagViewController alloc] initWithMyTags:_tagModels type:ProfileTagTypePerson]];
     [self.navigationController presentViewController:navigationController animated:YES completion:nil];
 }
 - (void)openAttitude {

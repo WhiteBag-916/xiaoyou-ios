@@ -8,7 +8,7 @@
 
 #import "YHTTPRequestAction.h"
 
-@interface ReadByFeedAction : YHTTPRequestAction
+@interface ReadByFeedAction : YHTTPRequestAction<YAction>
 
 @property (nonatomic, strong) NSString *affectId;
 

@@ -22,6 +22,8 @@
 #import "AddCommentAction.h"
 #import "ReadAllAction.h"
 #import "ReadByFeedAction.h"
+#import "GroupConditionsAction.h"
+#import "GroupListAction.h"
 
 #define KFeedManagerSyncQueue @"kFeedManagerSyncQueue"
 
@@ -201,6 +203,30 @@ DEF_SINGLETON(FeedManager);
 //删除这个用户所有的提醒
 - (void)readAll:(ActionCompleteBlock)block {
     ReadAllAction *action = [[ReadAllAction alloc] init];
+    
+    [YAction startAction:action completionBlock:^(YActionMessage* message) {
+        //主线程处理界面
+        block(message);
+    }];
+}
+
+//社团搜索条件
+- (void)groupConditions:(ActionCompleteBlock)block {
+    GroupConditionsAction *action = [[GroupConditionsAction alloc] init];
+    
+    [YAction startAction:action completionBlock:^(YActionMessage* message) {
+        //主线程处理界面
+        block(message);
+    }];
+}
+
+//社团列表
+- (void)groupList:(NSInteger)limitStart limitEnd:(NSInteger)limitEnd name:(NSString *)name queryCode:(NSString *)queryCode block:(ActionCompleteBlock)block {
+    GroupListAction *action = [[GroupListAction alloc] init];
+    action.limitStart = limitStart;
+    action.limitEnd = limitEnd;
+    action.name = name;
+    action.queryCode = queryCode;
     
     [YAction startAction:action completionBlock:^(YActionMessage* message) {
         //主线程处理界面

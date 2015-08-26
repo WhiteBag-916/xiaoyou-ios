@@ -8,10 +8,13 @@
 
 #import "AssociationsListViewController.h"
 #import "AssociationsListTableView.h"
+#import "AssociationsSearchViewController.h"
+#import "ProfileTagViewController.h"
 
 @interface AssociationsListViewController ()
 
 @property (nonatomic, strong) AssociationsListTableView *associationsListTableView;
+@property (nonatomic, strong) NSArray *filterArray;
 
 @end
 
@@ -34,6 +37,8 @@
     [_associationsListTableView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.mas_equalTo(self.view);
     }];
+    
+    [_associationsListTableView loadData];
 }
 
 - (void)initRightBar {
@@ -59,14 +64,26 @@
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:view];
 }
 
-//删选
+//筛选
 - (void)filterBtnAction {
-    
+    ProfileTagViewController *profileTagViewController = [[ProfileTagViewController alloc] initWithMyTags:_filterArray type:ProfileTagTypeAssociations];
+    [profileTagViewController endSelected:^(NSArray *select) {
+        _filterArray = [NSArray arrayWithArray:select];
+    }];
+    UINavigationController *navigationController =
+    [[UINavigationController alloc] initWithRootViewController:profileTagViewController];
+    [self.navigationController presentViewController:navigationController animated:YES completion:nil];
 }
 
 //搜索
 - (void)searchAction {
-    
+    NSArray *array = [_associationsListTableView tableViewData];
+//    if (array.count > 0) {
+        AssociationsSearchViewController *associationsSearchViewController = [[AssociationsSearchViewController alloc] initWithArray:array];
+        [self.navigationController pushViewController:associationsSearchViewController animated:YES needHiddenBottomBar:YES];
+//    } else {
+//        [YUtils showTitle:@"还未获取到社团哟"];
+//    }
 }
 
 /*

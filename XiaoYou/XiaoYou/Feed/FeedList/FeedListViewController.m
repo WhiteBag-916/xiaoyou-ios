@@ -162,7 +162,7 @@
 }
 
 - (void)toAddTag {
-    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:[[ProfileTagViewController alloc] initWithMyTags:[[ProvisionManager sharedInstance] profileTags]]];
+    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:[[ProfileTagViewController alloc] initWithMyTags:[[ProvisionManager sharedInstance] profileTags] type:ProfileTagTypePerson]];
     [self.navigationController presentViewController:navigationController animated:YES completion:nil];
 }
 - (void)toFeedFilter:(NSNotification *)notification {
