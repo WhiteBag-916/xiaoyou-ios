@@ -117,7 +117,11 @@
 
 -(void)setUpHeaderView:(NSArray *) headerDataSouce
 {
-    _headDataSourceDic = (NSMutableDictionary *)[headerDataSouce[0] dictionaryRepresentation];
+    if (headerDataSouce.count > 0)
+    {
+        _headDataSourceDic = (NSMutableDictionary *)[headerDataSouce[0] dictionaryRepresentation];
+    }
+    
     UIView * backView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, kRowHeight)];
     UITapGestureRecognizer * tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapGestureRecognizerAction)];
     [backView addGestureRecognizer:tapGestureRecognizer];
