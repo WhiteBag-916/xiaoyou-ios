@@ -164,7 +164,7 @@
 //忘记密码
 - (void)pressForgotPassword {
     if ([_accountTextField.text isEmpty]) {
-        [YUtils showTitle:@"您还没有输入学校和学号"];
+        [YUtils showTitle:@"您还没有输入学号"];
         return;
     }
     

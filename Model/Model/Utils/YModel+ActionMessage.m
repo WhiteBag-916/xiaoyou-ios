@@ -73,7 +73,7 @@ NSString *const kCommonObj = @"obj";
     {
         errorCode = kYYHTTPErrorBase + request.errorCode;
         if (YHTTPConnectionFailureErrorType == errorCode) {
-            errorDescription = @"无网络";
+            errorDescription = @"无网络连接";
         } else {
             errorDescription = request.error.description;
         }
