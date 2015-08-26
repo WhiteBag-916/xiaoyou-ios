@@ -219,7 +219,7 @@
 }
 
 - (void)resetRightButton {
-    if ([_accountTextField.text isEmpty] || [_accountTextField.text isEmpty]) {
+    if ([_accountTextField.text isEmpty]) {
         self.navigationItem.rightBarButtonItem.enabled = NO;
     }else{
         self.navigationItem.rightBarButtonItem.enabled = YES;
@@ -228,8 +228,11 @@
 
 //下一步
 - (void)onNavigationRightButtonClicked {
-    
-    if (!_isCheckButton) {
+    if ([_passwordTextField.text isEmpty]) {
+        //密码不能为空
+        [YUtils showTitle:@"密码不能为空"];
+    }
+    else if (!_isCheckButton) {
         //没有同意条款
         [YUtils showTitle:@"你必须同意用户条款才能进入下一步"];
     } else {
