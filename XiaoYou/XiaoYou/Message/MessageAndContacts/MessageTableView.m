@@ -17,6 +17,9 @@
 #import "ChatViewController.h"
 #import "ConvertToCommonEmoticonsHelper.h"
 #import "XYSystemMessageViewController.h"
+#import "ProvisionManager.h"
+#import "YFaceImageView.h"
+#import "NSDate+Category.h"
 
 #define kRowHeight                     68
 #define kHeadWidthAndHeight            40
@@ -67,23 +70,14 @@
 }
 
 
--(void)refreshTableView:(NSMutableArray *) dataSouceArr
+-(void)refreshTableView:(NSMutableArray *) dataSouceArr AndHeaderModel:(EMMessage *) model
 {
-//    for (int i = 0; i < dataSouceArr.count; i++)
-//    {
-//        EMConversation * conversation = dataSouceArr[i];
-//        if ([conversation.latestMessage.from isEqualToString:@"000001"])
-//        {
-//            [self setUpHeaderView];
-//            [dataSouceArr removeObject:conversation];
-//        }
-//    }
-    [self setUpHeaderView];
+    [self setUpHeaderView:model];
     _messageDataSource = dataSouceArr;
     [self reloadData];
 }
 
--(void)setUpHeaderView
+-(void)setUpHeaderView:(EMMessage *) model
 {
     UIView * backView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, kRowHeight)];
     UITapGestureRecognizer * tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapGestureRecognizerAction)];
@@ -93,6 +87,7 @@
     _headImageView.layer.cornerRadius = kHeadCornerRadius;
     _headImageView.clipsToBounds = YES;
     _headImageView.backgroundColor = [UIColor hexChangeFloat:@"258f74"];
+    [_headImageView setNormalImageWithUrl:[YShareData defaultData][kShareData_SchoolIcon]];
     [backView addSubview:_headImageView];
     [_headImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.left.mas_equalTo(kPaddingDistance);
@@ -125,11 +120,21 @@
         make.height.mas_equalTo(kLabelHeightDistacnce);
         make.width.mas_equalTo(kBadgeWidthDistance);
     }];
+    //未读数
+    if (![[self unreadMessageCountByConversation:model.conversation] isEqualToString:@"0"]) {
+        _badgeNumberLabel.hidden = NO;
+        _badgeNumberLabel.text = [self unreadMessageCountByConversation:model.conversation];
+    }
+    else
+    {
+        _badgeNumberLabel.hidden = YES;
+    }
     //时间
     _timeLabel = [[UILabel alloc] init];
     _timeLabel.font = CONTENT_FONT(9);
     _timeLabel.textAlignment = NSTextAlignmentRight;
     _timeLabel.backgroundColor = [UIColor clearColor];
+    _timeLabel.text = [self lastMessageTimeByConversation:model];
     [backView addSubview:_timeLabel];
     [_timeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.mas_equalTo(kPaddingDistance);
@@ -159,6 +164,26 @@
 //    [self.myController.navigationController pushViewController:chatViewController animated:YES needHiddenBottomBar:YES];
     XYSystemMessageViewController * systemMessageViewController = [[XYSystemMessageViewController alloc] init];
     [self.myController.navigationController pushViewController:systemMessageViewController animated:YES needHiddenBottomBar:YES];
+}
+
+// 得到最后消息时间
+-(NSString *)lastMessageTimeByConversation:(EMMessage *)model
+{
+    NSString *ret = @"";
+    ret = [NSDate formattedTimeFromTimeInterval:model.timestamp];
+    
+    return ret;
+}
+
+// 得到未读消息条数
+- (NSString *)unreadMessageCountByConversation:(EMConversation *)conversation
+{
+    NSInteger ret = 0;
+    ret = conversation.unreadMessagesCount;
+    
+    NSString * count = [NSString stringWithFormat:@"%ld",ret];
+    
+    return  count;
 }
 
 #pragma mark - UITableViewDataSource和UITableViewDelegate

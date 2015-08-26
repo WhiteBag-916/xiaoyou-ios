@@ -393,6 +393,8 @@
 		653CB2EF1B806BFD006ECBB2 /* pinyin.c in Sources */ = {isa = PBXBuildFile; fileRef = 653CB2EC1B806BFD006ECBB2 /* pinyin.c */; };
 		654379A91B8D73BA007B15CA /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 654379A81B8D73BA007B15CA /* AVFoundation.framework */; };
 		654379AF1B8D8680007B15CA /* UIScrollView+UITouchEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 654379AE1B8D8680007B15CA /* UIScrollView+UITouchEvent.m */; };
+		654379B21B8DB223007B15CA /* icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 654379B01B8DB223007B15CA /* icon@2x.png */; };
+		654379B31B8DB223007B15CA /* icon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 654379B11B8DB223007B15CA /* icon@3x.png */; };
 		654602171B7F2FF00039F622 /* FeedImageGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 654602161B7F2FF00039F622 /* FeedImageGroup.m */; };
 		656234771B837FDC00651C88 /* YFaceImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 656234761B837FDC00651C88 /* YFaceImageView.m */; };
 		656F59751B8896370094B658 /* ProfilePhoneChangeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 656F59741B8896370094B658 /* ProfilePhoneChangeViewController.m */; };
@@ -1024,6 +1026,8 @@
 		654379A81B8D73BA007B15CA /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		654379AD1B8D8680007B15CA /* UIScrollView+UITouchEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+UITouchEvent.h"; sourceTree = "<group>"; };
 		654379AE1B8D8680007B15CA /* UIScrollView+UITouchEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+UITouchEvent.m"; sourceTree = "<group>"; };
+		654379B01B8DB223007B15CA /* icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon@2x.png"; sourceTree = "<group>"; };
+		654379B11B8DB223007B15CA /* icon@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon@3x.png"; sourceTree = "<group>"; };
 		654602151B7F2FF00039F622 /* FeedImageGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedImageGroup.h; sourceTree = "<group>"; };
 		654602161B7F2FF00039F622 /* FeedImageGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedImageGroup.m; sourceTree = "<group>"; };
 		656234751B837FDC00651C88 /* YFaceImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YFaceImageView.h; sourceTree = "<group>"; };
@@ -1573,6 +1577,8 @@
 		20E18D891B808E42005B75EE /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				654379B01B8DB223007B15CA /* icon@2x.png */,
+				654379B11B8DB223007B15CA /* icon@3x.png */,
 				20E942521B833D10009C2DC6 /* complete-cancel@2x.png */,
 				20E942531B833D10009C2DC6 /* complete-cancel@3x.png */,
 				20E942461B833D10009C2DC6 /* complete-grey@2x.png */,
@@ -2595,6 +2601,7 @@
 				TargetAttributes = {
 					200E39751B4E818B000B587B = {
 						CreatedOnToolsVersion = 6.3.1;
+						DevelopmentTeam = FSDQ8442VG;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 0;
@@ -2637,6 +2644,7 @@
 			files = (
 				20E18DD51B808E42005B75EE /* search@3x.png in Resources */,
 				3348CB501B87207600F97FAF /* chatBar_recordSelectedBg@2x.png in Resources */,
+				654379B31B8DB223007B15CA /* icon@3x.png in Resources */,
 				333122CD1B806EDC00D3D032 /* chat_sender_audio_playing_003.png in Resources */,
 				2076A3131B81DA3E001FFBAC /* toolbar-contact-click@3x.png in Resources */,
 				650C6C2E1B88777400A89AC9 /* mine-complete-grey@2x.png in Resources */,
@@ -2854,6 +2862,7 @@
 				65024C1C1B833565007DE404 /* feedmore@2x.png in Resources */,
 				20E18DBA1B808E42005B75EE /* common_star@2x.png in Resources */,
 				3334AC241B82D7C400FDDCCB /* VoiceSearchFeedback003@2x.png in Resources */,
+				654379B21B8DB223007B15CA /* icon@2x.png in Resources */,
 				333122CC1B806EDC00D3D032 /* chat_sender_audio_playing_002@2x.png in Resources */,
 				33F83A8D1B8B2B6D00FF5483 /* mine-heart-red@3x.png in Resources */,
 				3346706D1B8426D400A8628A /* delete-member@3x.png in Resources */,
@@ -3213,7 +3222,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Peng Yu (P2LWP8G67H)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PREFIX_HEADER = "$(SRCROOT)/XiaoYou/PrefixHeader.pch";
 				INFOPLIST_FILE = XiaoYou/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
@@ -3227,7 +3236,7 @@
 					"$(PROJECT_DIR)/XiaoYou/Utils/UMengSDK/UMSocial_Sdk_Extra_Frameworks/Wechat",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "56947a8e-473c-410f-a501-b6d2ec7baa1a";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
 				USER_HEADER_SEARCH_PATHS = "../**";
 			};
@@ -3239,7 +3248,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Peng Yu (P2LWP8G67H)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PREFIX_HEADER = "$(SRCROOT)/XiaoYou/PrefixHeader.pch";
 				INFOPLIST_FILE = XiaoYou/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
@@ -3253,7 +3262,7 @@
 					"$(PROJECT_DIR)/XiaoYou/Utils/UMengSDK/UMSocial_Sdk_Extra_Frameworks/Wechat",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "56947a8e-473c-410f-a501-b6d2ec7baa1a";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
 				USER_HEADER_SEARCH_PATHS = "../**";
 			};

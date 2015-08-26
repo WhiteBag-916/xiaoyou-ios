@@ -204,11 +204,11 @@
         if (index == -1) {
             make.height.mas_equalTo(0);
         } else if (index == 0) {
-            make.height.mas_equalTo(_imgSize);
+            make.height.mas_equalTo(_imgSize).priorityLow();
         } else if (index == 1) {
-            make.height.equalTo(_contentView.mas_width).multipliedBy(0.5).offset(_imgSize/2);
+            make.height.equalTo(_contentView.mas_width).multipliedBy(0.5).offset(_imgSize/2).priorityLow();
         } else {
-            make.height.equalTo(_contentView.mas_width);
+            make.height.equalTo(_contentView.mas_width).priorityLow();
         }
     }];
     

@@ -76,17 +76,17 @@
                     } else {
                         [UMSocialData defaultData].extConfig.wechatSessionData.shareText = obj[@"content"];
                     }
-                    urlResource = [[UMSocialUrlResource alloc] initWithSnsResourceType:UMSocialUrlResourceTypeImage url:obj[@"pic"]];
+                    urlResource = [[UMSocialUrlResource alloc] initWithSnsResourceType:UMSocialUrlResourceTypeImage url:[NSString stringWithFormat:@"%@%@", api_icon_base_url, obj[@"pic"]]];
                     break;
                 case YCommonShareDetailTypePerson:
                     [UMSocialData defaultData].extConfig.wechatSessionData.title = @"分享校友名片给你！";
                     [UMSocialData defaultData].extConfig.wechatSessionData.shareText = [NSString stringWithFormat:@"校友人脉：%@-%@", obj[@"school"], obj[@"pic"]];
-                    urlResource = [[UMSocialUrlResource alloc] initWithSnsResourceType:UMSocialUrlResourceTypeImage url:obj[@"pic"]];
+                    urlResource = [[UMSocialUrlResource alloc] initWithSnsResourceType:UMSocialUrlResourceTypeImage url:[NSString stringWithFormat:@"%@%@", api_icon_base_url, obj[@"pic"]]];
                     break;
                 case YCommonShareDetailTypeAssociation:
                     [UMSocialData defaultData].extConfig.wechatSessionData.title = [NSString stringWithFormat:@"一键申请加入%@", obj[@"name"]];
                     [UMSocialData defaultData].extConfig.wechatSessionData.shareText = obj[@"content"];
-                    urlResource = [[UMSocialUrlResource alloc] initWithSnsResourceType:UMSocialUrlResourceTypeImage url:obj[@"pic"]];
+                    urlResource = [[UMSocialUrlResource alloc] initWithSnsResourceType:UMSocialUrlResourceTypeImage url:[NSString stringWithFormat:@"%@%@", api_icon_base_url, obj[@"pic"]]];
                     break;
                 default:
                     break;
@@ -101,15 +101,15 @@
             switch (type) {
                 case YCommonShareDetailTypeFeed:
                     [UMSocialData defaultData].extConfig.wechatTimelineData.title = [NSString stringWithFormat:@"关于%@，Ta说", obj[@"tag"]];
-                    urlResource = [[UMSocialUrlResource alloc] initWithSnsResourceType:UMSocialUrlResourceTypeImage url:obj[@"pic"]];
+                    urlResource = [[UMSocialUrlResource alloc] initWithSnsResourceType:UMSocialUrlResourceTypeImage url:[NSString stringWithFormat:@"%@%@", api_icon_base_url, obj[@"pic"]]];
                     break;
                 case YCommonShareDetailTypePerson:
                     [UMSocialData defaultData].extConfig.wechatTimelineData.shareText = [NSString stringWithFormat:@"校友人脉：%@-%@", obj[@"school"], obj[@"pic"]];
-                    urlResource = [[UMSocialUrlResource alloc] initWithSnsResourceType:UMSocialUrlResourceTypeImage url:obj[@"pic"]];
+                    urlResource = [[UMSocialUrlResource alloc] initWithSnsResourceType:UMSocialUrlResourceTypeImage url:[NSString stringWithFormat:@"%@%@", api_icon_base_url, obj[@"pic"]]];
                     break;
                 case YCommonShareDetailTypeAssociation:
                     [UMSocialData defaultData].extConfig.wechatTimelineData.shareText = [NSString stringWithFormat:@"一键申请加入%@", obj[@"name"]];
-                    urlResource = [[UMSocialUrlResource alloc] initWithSnsResourceType:UMSocialUrlResourceTypeImage url:obj[@"pic"]];
+                    urlResource = [[UMSocialUrlResource alloc] initWithSnsResourceType:UMSocialUrlResourceTypeImage url:[NSString stringWithFormat:@"%@%@", api_icon_base_url, obj[@"pic"]]];
                     break;
                 default:
                     break;
@@ -123,7 +123,7 @@
     //share
     
     
-    [[UMSocialDataService defaultDataService]  postSNSWithTypes:@[typeStr] content:nil image:nil location:nil urlResource:urlResource presentedController:nil completion:^(UMSocialResponseEntity *response){
+    [[UMSocialDataService defaultDataService]  postSNSWithTypes:@[typeStr] content:nil image:[UIImage imageNamed:@"icon"] location:nil urlResource:urlResource presentedController:nil completion:^(UMSocialResponseEntity *response){
         if (response.responseCode == UMSResponseCodeSuccess) {
             NSLog(@"分享成功！");
         }

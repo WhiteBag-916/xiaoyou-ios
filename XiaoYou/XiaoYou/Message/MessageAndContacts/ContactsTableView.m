@@ -151,7 +151,7 @@
         make.bottom.mas_equalTo(-kPaddingDistance);
         make.right.mas_equalTo(-kRemindImageViewToRight);
         make.height.mas_equalTo(kRemindImageViewHeight);
-        make.height.mas_equalTo(kRemindImageViewWidth);
+        make.width.mas_equalTo(kRemindImageViewWidth);
     }];
     if ([_headDataSourceDic[@"isRemind"] isEqualToString:@"y"])
     {

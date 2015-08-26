@@ -8,10 +8,14 @@
 
 #import "XYSystemMessageViewController.h"
 #import "SystemMessageTableView.h"
+#import "EMConversation.h"
 
 @interface XYSystemMessageViewController ()
 
 @property(nonatomic,strong)SystemMessageTableView * systemMessageTableView;
+
+@property (strong, nonatomic) NSMutableArray *messages;
+@property (strong, nonatomic) NSMutableArray *dataSource;//tableView数据源
 
 @end
 
@@ -22,6 +26,21 @@
     // Do any additional setup after loading the view.
     
     [self setUpUI];
+    [self getDataSource];
+    [_systemMessageTableView refreshTableView:_dataSource];
+}
+
+-(void)getDataSource
+{
+    NSArray *conversations = [[[EaseMob sharedInstance] chatManager] conversations];
+    for (EMConversation *conversation in conversations) {
+        if ([conversation.chatter isEqualToString:@"000001"])
+        {
+            _dataSource = [[NSMutableArray alloc] initWithArray:[conversation loadAllMessages]];
+            // 设置当前conversation的所有message为已读
+            [conversation markAllMessagesAsRead:YES];
+        }
+    }
 }
 
 -(void)setUpUI
@@ -37,19 +56,11 @@
 }
 
 
+
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end
