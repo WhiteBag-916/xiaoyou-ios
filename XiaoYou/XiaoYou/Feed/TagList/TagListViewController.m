@@ -164,9 +164,10 @@
         make.left.right.equalTo(_notifyView);
         make.bottom.equalTo(_bottomView.mas_top).offset(-KTABLEMARGIN);
     }];
-    [_listView setData:@[@"互联网",@"同班"]];
 }
-
+- (void)refreshData {
+    [_listView loadData];
+}
 - (void)addTap:(UIView *)view action:(SEL)selector {
     //增加点击跳转
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:selector];

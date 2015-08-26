@@ -15,7 +15,7 @@
 - (void)execute
 {
     NSDictionary *parameter = [YUtils getParameter:@{@"feedId":_feedId} needUserToken:YES];
-    NSString *url = [YUtils getUrl:api_login_DetailFeed];
+    NSString *url = [YUtils getUrl:api_feed_DetailFeed];
     [self POST:url parameters:parameter completion:^(YHttpRequest *request) {
         YActionMessage *message = [FeedDetail actionMessageWithHttpRequest:request];
         self.completionBlock(message);

@@ -15,7 +15,7 @@
 - (void)execute
 {
     NSDictionary *parameter = [YUtils getParameter:@{@"limitStart":@(_limitStart), @"limitEnd":@(_limitEnd), @"queryCode":_queryCode} needUserToken:YES];
-    NSString *url = [YUtils getUrl:api_login_FindFriendsByTags];
+    NSString *url = [YUtils getUrl:api_feed_FindFriendsByTags];
     [self POST:url parameters:parameter completion:^(YHttpRequest *request) {
         YActionMessage *message = [Author actionMessageWithHttpRequest:request];
         self.completionBlock(message);

@@ -20,5 +20,6 @@
 #define kShareData_LoginAccount             @"kShareData_LoginAccount"
 //---------------------------------------------------------------------------
 #define kShareData_LoginPassword            @"kShareData_LoginPassword"
+#define kShareData_UserID                   @"kShareData_UserID"
 
 #endif

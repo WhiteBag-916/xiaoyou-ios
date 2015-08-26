@@ -6,6 +6,7 @@
 //  Copyright (c) 2015年 xc. All rights reserved.
 //
 
+#import <AVFoundation/AVFoundation.h>
 #import "PerfectInformationViewController.h"
 #import "SKTagView.h"
 #import "YUtils+UI.h"
@@ -15,6 +16,7 @@
 #import "YCommonActionSheet.h"
 #import "YDirectory+Data.h"
 #import "AppDelegate+RootVC.h"
+#import "YCommonAlertView.h"
 
 #define tagObj @"tagObj"
 #define tagIsSelected @"tagIsSelected"
@@ -164,16 +166,21 @@
             if (tagStr.length > 0) {
                 [tagStr appendString:@","];
             }
-            [tagStr appendString:[NSString stringWithFormat:@"%.f", tags.internalBaseClassIdentifier]];
+            [tagStr appendString:tags.internalBaseClassIdentifier];
         }
     }];
     if (_headImagePath.length > 0) {
-        [self uploadHeadImage:^(YActionMessage *message) {
+        [YUtils showHUDWithTitle];
+        [self uploadHeadImage:^{
             if (tagStr.length > 0) {
                 [self uploadTagList:tagStr];
+            } else {
+                [YUtils hiddenProgressHUD];
+                [self toTabBar];
             }
         }];
     } else if (tagStr.length > 0) {
+        [YUtils showHUDWithTitle];
         [self uploadTagList:tagStr];
     }else {
         [self toTabBar];
@@ -188,6 +195,7 @@
                                                      if (message.isSuccess) {
                                                          block();
                                                      } else {
+                                                         [YUtils hiddenProgressHUD];
                                                          [YUtils showTitle:message.desc];
                                                      }
                                                  }];
@@ -197,6 +205,7 @@
 - (void)uploadTagList:(NSString *)tagStr {
     
     [[ProvisionManager sharedInstance] uploadTagCodes:tagStr block:^(YActionMessage *message) {
+        [YUtils hiddenProgressHUD];
         if (message.isSuccess) {
             //更新缓存标签
             NSMutableArray *tagArray = [@[] mutableCopy];
@@ -246,11 +255,21 @@
 
 - (void)snapImage
 {
-    UIImagePickerController *picker = [[UIImagePickerController alloc] init];
-    [picker setSourceType:UIImagePickerControllerSourceTypeCamera];
-    picker.delegate = self;
-    [picker setAllowsEditing:YES];
-    [self presentViewController:picker animated:YES completion:nil];
+#if !(TARGET_IPHONE_SIMULATOR)//真机执行的代码
+    AVAuthorizationStatus authStatus = [AVCaptureDevice authorizationStatusForMediaType:AVMediaTypeVideo];
+    if (authStatus == AVAuthorizationStatusRestricted ||authStatus ==AVAuthorizationStatusDenied){
+        YCommonAlertView *alert = [[YCommonAlertView alloc] initWithTitle:nil
+                                                                  message:@"您可以在 设置—>隐私—>相机中授权相机功能"
+                                                             buttonTitles:@"确认", nil];
+        [alert show];
+    }else{
+        UIImagePickerController *picker = [[UIImagePickerController alloc] init];
+        [picker setSourceType:UIImagePickerControllerSourceTypeCamera];
+        picker.delegate = self;
+        [picker setAllowsEditing:YES];
+        [self presentViewController:picker animated:YES completion:nil];
+    }
+#endif
 }
 
 - (void)savePic:(UIImage *)image

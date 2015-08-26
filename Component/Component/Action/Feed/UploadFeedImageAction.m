@@ -16,7 +16,7 @@
 - (void)execute
 {
     NSDictionary *parameter = [YUtils getParameter];
-    NSString *url = [YUtils getUrl:api_login_UpdateImg needUserToken:YES];
+    NSString *url = [YUtils getUrl:api_feed_UpdateImg needUserToken:YES];
     [self Upload:url files:@[_imagePath] parameters:parameter sentProgress:nil completion:^(YHttpRequest *request) {
         YActionMessage *message = [UploadImage actionMessageWithHttpRequest:request];
         self.completionBlock(message);

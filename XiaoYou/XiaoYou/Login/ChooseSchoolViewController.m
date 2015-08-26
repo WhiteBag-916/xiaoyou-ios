@@ -44,14 +44,13 @@
     
     [self initSchoolArray];
     [self setupUI];
-    
-    _schoolTextField.text = [YShareData defaultData][kShareData_SchoolName];
-    [self searchSchoolByKey:YES];
+    [self schoolListRequest];
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
-    [self schoolListRequest];
+    _schoolTextField.text = [YShareData defaultData][kShareData_SchoolName];
+    [self searchSchoolByKey:YES];
     
     [self resetRightButton];
 }
@@ -240,8 +239,7 @@
 {
     if (logoImageStr.length > 0)
     {
-        NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@",api_icon_base_url,logoImageStr]];
-        [_schoolLogoImageView sd_setImageWithURL:url placeholderImage:[UIImage imageNamed:@"login_school"]];
+        [_schoolLogoImageView setNormalImageWithUrl:logoImageStr];
         [_schoolLogoImageView mas_updateConstraints:^(MASConstraintMaker *make) {
             make.width.mas_equalTo(SCALE_NUM(24));
             make.height.mas_equalTo(SCALE_NUM(24));
@@ -293,7 +291,7 @@
             }
             
         } else {
-            YLogE(@"checkSchoolRequest: %@",message);
+            [YUtils showTitle:message.desc];
         }
     }];
 }
@@ -341,8 +339,12 @@
 - (void)pushToNext:(SchoolListModel *)schoolModel
 {
     [YShareData defaultData][kShareData_SchoolCode] = schoolModel.schoolCode;
+    [YShareData defaultData][kShareData_SchoolName] = schoolModel.schoolName;
+    
+    LoginViewController *loginViewController = [[LoginViewController alloc] init];
+    [self.navigationController pushViewController:loginViewController animated:YES];
 
-    [kAppDelegateAccessor initLoginNC];
+//    [kAppDelegateAccessor initLoginNC];
 }
 
 #pragma mark - UITableViewDataSource,UITableViewDelegate

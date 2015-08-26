@@ -235,10 +235,6 @@ DEF_SINGLETON(ProvisionManager);
                 _profileInfo.headPic = uploadImage.url;
                 [self saveProfileInfo];
             }
-            if (nil != _loginResp) {
-                _loginResp.icon = uploadImage.url;
-                [self saveLoginInfo];
-            }
         }
         //主线程处理界面
         block(message);
@@ -263,6 +259,7 @@ DEF_SINGLETON(ProvisionManager);
     [YAction startAction:action completionBlock:^(YActionMessage* message) {
         if (message.isSuccess) {
             _profileInfo = message.object;
+            [YShareData defaultData][kShareData_UserID] = _profileInfo.uid;
             [self saveProfileInfo];
         }
         //发送通知,告知界面刷新

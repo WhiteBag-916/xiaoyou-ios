@@ -184,7 +184,9 @@
     }];
 }
 - (void)checkComplete {
-    if (_pwdView.hidden) {
+    //mod by xiongchen
+    //add || nil == _pwdView
+    if (nil == _pwdView || _pwdView.hidden) {
         if (_phoneField.text.length > 0) {
             [self changeBtn:true];
         } else {
@@ -204,7 +206,9 @@
     }
 }
 - (void)onNavigationRightButtonClicked {
-    if (_pwdView.hidden) {
+    //mod by xiongchen
+    //add || nil == _pwdView
+    if (nil == _pwdView || _pwdView.hidden) {
         MBProgressHUD *hud = [YUtils showHUDWithTitle:@"正在加载"];
         [[ProvisionManager sharedInstance] receiveMobileAuthCode:_phoneField.text authCode:_codeField.text block:^(YActionMessage *message) {
             if (message.isSuccess) {

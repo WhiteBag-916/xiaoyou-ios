@@ -10,4 +10,6 @@
 
 @interface TagListViewController : YViewController
 
+- (void)refreshData;
+
 @end

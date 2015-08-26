@@ -16,6 +16,7 @@
 #import "CommentListItems.h"
 #import "Comment.h"
 #import "Author.h"
+#import "FeedManager.h"
 
 
 #define KBOTTOMHEIGHT SCALE_NUM(25)                 //社团和feed列表中bottom的高度
@@ -39,8 +40,8 @@
 @property (nonatomic, strong, readwrite) UIImageView *respectImg;              //敬酒按钮
 @property (nonatomic, strong, readwrite) UIView *personList;                   //敬酒人
 @property (nonatomic, assign)            int type;                             //类型
-@property (nonatomic, assign)            BOOL isRespect;
 @property (nonatomic, assign)            NSString *feedId;
+@property (nonatomic, strong)            id myInfo;
 @property (nonatomic, strong)            NSMutableDictionary *shareData;
 @end
 
@@ -146,26 +147,28 @@
     if (_type == FeedListType) {
         FeedInfo *data = inData;
         NSString *tag = (data.tags.count == 0?@"校友观点":[data.tags[0] name]);
+        _myInfo = data.feed;
         NSString *content = (data.feed.content.length == 0?@"":data.feed.content);
+        NSString *img = data.feed.img.length > 0?[data.feed.img componentsSeparatedByString:@","][0]:@"";
         
-        _shareData = [NSMutableDictionary dictionaryWithObjectsAndKeys:tag,@"tag",content,@"content", nil];
+        _shareData = [NSMutableDictionary dictionaryWithObjectsAndKeys:tag,@"tag",content,@"content",img, @"pic", nil];
         _feedId = [NSString stringWithFormat:@"%d", (int)data.feed.feedIdentifier];
         _respectNum.text = [NSString stringWithFormat:@"%d", (int)data.feed.praiseCount];
         _commentNum.text = [NSString stringWithFormat:@"%d", (int)data.feed.commentCount];
-        _isRespect = data.feed.isPraise;
-        [self updateRespect];
+        [self updateRespect:data.feed.isPraise];
     }
     if (_type == FeedDetailType) {
         FeedInfo *data = inData;
+        _myInfo = data.feed;
         _respectNum.text = [NSString stringWithFormat:@"%d", (int)data.feed.praiseCount];
-        _isRespect = data.feed.isPraise;
         [self initPersonList:data.praisePeoples];
-        [self updateRespect];
+        [self updateRespect:data.feed.isPraise];
     }
     if (_type == FeedCommentType) {
         CommentListItems *data = inData;
+        _myInfo = data.comment;
         _respectNum.text = [NSString stringWithFormat:@"%d", (int)data.comment.praiseCount];
-        [self updateRespect];
+        [self updateRespect:data.comment.isRespect];
     }
 }
 - (void)initPersonList:(NSArray *)people {
@@ -202,17 +205,47 @@
 }
 
 - (void)respect {
-//    _isRespect = !_isRespect;
-//    if (_isRespect) {
-//        _data.respectNum++;
-//        _respectNum.text = [NSString stringWithFormat:@"%d", _data.respectNum];
-//    } else {
-//        _data.respectNum--;
-//        _respectNum.text = [NSString stringWithFormat:@"%d", _data.respectNum];
-//    }
+    if ([_myInfo isKindOfClass:[Feed class]]) {
+        Feed *fd = _myInfo;
+        [[FeedManager sharedInstance] addPraise:[NSString stringWithFormat:@"%d", (int)fd.feedIdentifier] block:^(YActionMessage *message) {
+            if (message.isSuccess) {
+                fd.isPraise = !fd.isPraise;
+                if (fd.isPraise) {
+                    fd.praiseCount ++;
+                } else {
+                    fd.praiseCount --;
+                }
+                [self updateRespect:fd.isPraise];
+            } else {
+                [YUtils showTitle:message.desc];
+            }
+        }];
+    }
+    if ([_myInfo isKindOfClass:[Comment class]]) {
+        Comment *cd = _myInfo;
+        [[FeedManager sharedInstance] commentAddPraise:[NSString stringWithFormat:@"%d", (int)cd.commentIdentifier] block:^(YActionMessage *message) {
+            if (message.isSuccess) {
+                cd.isRespect = ! cd.isRespect;
+                if (cd.isRespect) {
+                    cd.praiseCount ++;
+                } else {
+                    cd.praiseCount --;
+                }
+                [self updateRespect:cd.isRespect];
+            } else {
+                [YUtils showTitle:message.desc];
+            }
+        }];
+    }
 }
-- (void)updateRespect {
-    if (_isRespect) {
+- (void)updateRespect:(BOOL)isRepect {
+    if ([_myInfo isKindOfClass:[Feed class]]) {
+        _respectNum.text = [NSString stringWithFormat:@"%d", (int)[(Feed *)_myInfo praiseCount]];
+    }
+    if ([_myInfo isKindOfClass:[Comment class]]) {
+        _respectNum.text = [NSString stringWithFormat:@"%d", (int)[(Comment *)_myInfo praiseCount]];
+    }
+    if (isRepect) {
         _respectImg.image = [UIImage imageNamed:@"cup"];
         _respectNum.textColor = KCOLORGREEN_009688;
     } else {
@@ -221,7 +254,7 @@
     }
 }
 - (void)openShare {
-    YActionSheetItem *item1 = [YActionSheetItem itemWithType:YCommonActionSheetItemTypeShare title:@"分享这条动态至" extraData:@{@"tag":@"互联网",@"content":@"balabala",@"pic":@"http://cdn.duitang.com/uploads/item/201411/22/20141122111634_RBCXS.jpeg"}];
+    YActionSheetItem *item1 = [YActionSheetItem itemWithType:YCommonActionSheetItemTypeShare title:@"分享这条动态至" extraData:_shareData];
     
     
     YActionSheetItem *item2 = [YActionSheetItem itemWithTitle:@"举报"

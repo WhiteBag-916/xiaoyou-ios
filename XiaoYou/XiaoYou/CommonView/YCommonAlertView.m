@@ -255,7 +255,7 @@ CGFloat contentViewHeight;
 }
 
 - (void)show {
-    UIWindow *window = [[UIApplication sharedApplication] keyWindow];
+    UIWindow *window = [[[UIApplication sharedApplication] delegate] window];
     NSArray *windowViews = [window subviews];
     if(windowViews && [windowViews count] > 0){
         UIView *subView = [windowViews objectAtIndex:[windowViews count]-1];
@@ -263,7 +263,7 @@ CGFloat contentViewHeight;
         {
             [aSubView.layer removeAllAnimations];
         }
-        [subView addSubview:self];
+        [window addSubview:self];
         [self showBackground];
         [self showAlertAnimation];
     }

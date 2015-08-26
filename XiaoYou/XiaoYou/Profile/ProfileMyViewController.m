@@ -6,6 +6,7 @@
 //  Copyright (c) 2015年 xc. All rights reserved.
 //
 
+#import <AVFoundation/AVFoundation.h>
 #import "ProfileMyViewController.h"
 #import "UIImageView+WebCache.h"
 #import "ProfileChangePwdViewController.h"
@@ -264,6 +265,7 @@
     return label;
 }
 - (void)showAddPicList {
+    
     YActionSheetItem *item = [YActionSheetItem itemWithTitle:@"查看大图"
                                                          type:YCommonActionSheetItemTypeCenterCommon
                                                         block:^(NSInteger checkNum) {
@@ -303,9 +305,6 @@
     return _faceImg.image;
 }
 
-- (NSURL *)photoBrowser:(SDPhotoBrowser *)browser highQualityImageURLForIndex:(NSInteger)index {
-    return _faceImg.sd_imageURL;
-}
 - (void)pickImage
 {
     UIImagePickerController *picker = [[UIImagePickerController alloc] init];
@@ -317,11 +316,21 @@
 
 - (void)snapImage
 {
-    UIImagePickerController *picker = [[UIImagePickerController alloc] init];
-    [picker setSourceType:UIImagePickerControllerSourceTypeCamera];
-    picker.delegate = self;
-    [picker setAllowsEditing:YES];
-    [self presentViewController:picker animated:YES completion:nil];
+#if !(TARGET_IPHONE_SIMULATOR)//真机执行的代码
+    AVAuthorizationStatus authStatus = [AVCaptureDevice authorizationStatusForMediaType:AVMediaTypeVideo];
+    if (authStatus == AVAuthorizationStatusRestricted ||authStatus ==AVAuthorizationStatusDenied){
+        YCommonAlertView *alert = [[YCommonAlertView alloc] initWithTitle:nil
+                                                                  message:@"您可以在 设置—>隐私—>相机中授权相机功能"
+                                                             buttonTitles:@"确认", nil];
+        [alert show];
+    }else{
+        UIImagePickerController *picker = [[UIImagePickerController alloc] init];
+        [picker setSourceType:UIImagePickerControllerSourceTypeCamera];
+        picker.delegate = self;
+        [picker setAllowsEditing:YES];
+        [self presentViewController:picker animated:YES completion:nil];
+    }
+#endif
 }
 - (void)savePic:(UIImage *)image
 {

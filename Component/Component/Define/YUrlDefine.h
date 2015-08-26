@@ -62,17 +62,23 @@
  Url Define: FeedManager
  **********************************************************/
 //我的动态
-#define api_login_MyFeed @"user/v2/userFeeds"
+#define api_feed_MyFeed @"user/v2/userFeeds"
 //动态详情
-#define api_login_DetailFeed @"feed/detailFeed"
+#define api_feed_DetailFeed @"feed/detailFeed"
 //动态列表
-#define api_login_ListFeed @"feed/listFeed"
+#define api_feed_ListFeed @"feed/listFeed"
 //上传feed图片
-#define api_login_UpdateImg @"feed/updateImg"
+#define api_feed_UpdateImg @"feed/updateImg"
 //发送feed
-#define api_login_AddFeed @"feed/addFeed"
+#define api_feed_AddFeed @"feed/addFeed"
 //动态人列表
-#define api_login_FindFriendsByTags @"/feed/findFriendsByTags"
+#define api_feed_FindFriendsByTags @"/feed/findFriendsByTags"
+//feed敬酒
+#define api_feed_addPraise @"/feed/addPraise"
+//feed评论敬酒
+#define api_feed_commonAddPraise @"/feed/comment/addPraise"
+//feed提醒列表
+#define api_alert_list @"/alert/list"
 
 /**********************************************************
  Url Define: ContactManager
@@ -95,6 +101,16 @@
 #define api_contact_IgnoreApplyList @"/group/ignoreApplyList"
 //群组申请人员列表
 #define api_contact_ApplicantList @"​/group/applicantList"
+//获取申请列表
+#define api_friend_GetApplyList @"/friend/getApplyList"
+//发送好友申请
+#define api_friend_SubmitFriendApply @"/friend/submitFriendApply"
+//获取社团详情
+#define api_group_GroupDetail @"/group/groupDetail"
+//忽略申请列表
+#define api_friend_IgnoreApplyList @"/friend/ignoreApplyList"
+//同意好友申请
+#define api_friend_AgreeApply @"/friend/agreeApply"
 
 /**********************************************************
  Url Define: MessageManager

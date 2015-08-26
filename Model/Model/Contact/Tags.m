@@ -40,7 +40,7 @@ NSString *const kTagsId = @"code";
     if(self && [dict isKindOfClass:[NSDictionary class]]) {
             self.name = [self objectOrNilForKey:kTagsName fromDictionary:dict];
             self.equal = [[self objectOrNilForKey:kTagsEqual fromDictionary:dict] boolValue];
-            self.internalBaseClassIdentifier = [[self objectOrNilForKey:kTagsId fromDictionary:dict] doubleValue];
+            self.internalBaseClassIdentifier = [self objectOrNilForKey:kTagsId fromDictionary:dict];
 
     }
     
@@ -53,7 +53,7 @@ NSString *const kTagsId = @"code";
     NSMutableDictionary *mutableDict = [NSMutableDictionary dictionary];
     [mutableDict setValue:self.name forKey:kTagsName];
     [mutableDict setValue:[NSNumber numberWithBool:self.equal] forKey:kTagsEqual];
-    [mutableDict setValue:[NSNumber numberWithDouble:self.internalBaseClassIdentifier] forKey:kTagsId];
+    [mutableDict setValue:self.internalBaseClassIdentifier forKey:kTagsId];
 
     return [NSDictionary dictionaryWithDictionary:mutableDict];
 }
@@ -79,7 +79,7 @@ NSString *const kTagsId = @"code";
 
     self.name = [aDecoder decodeObjectForKey:kTagsName];
     self.equal = [aDecoder decodeBoolForKey:kTagsEqual];
-    self.internalBaseClassIdentifier = [aDecoder decodeDoubleForKey:kTagsId];
+    self.internalBaseClassIdentifier = [aDecoder decodeObjectForKey:kTagsId];
     return self;
 }
 
@@ -88,7 +88,7 @@ NSString *const kTagsId = @"code";
 
     [aCoder encodeObject:_name forKey:kTagsName];
     [aCoder encodeBool:_equal forKey:kTagsEqual];
-    [aCoder encodeDouble:_internalBaseClassIdentifier forKey:kTagsId];
+    [aCoder encodeObject:_internalBaseClassIdentifier forKey:kTagsId];
 }
 
 - (id)copyWithZone:(NSZone *)zone

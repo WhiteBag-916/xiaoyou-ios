@@ -37,18 +37,33 @@ AS_SINGLETON(ContactManager);
 - (void)submitApply:(NSString *)groupId applicant:(NSString *)applicant block:(ActionCompleteBlock)block;
 
 //拒绝加入群组
-- (void)rejectApply:(NSString *)userId applyId:(NSString *)applyId block:(ActionCompleteBlock)block;
+- (void)rejectApply:(NSString *)applyId block:(ActionCompleteBlock)block;
 
 //申请记录列表
-- (void)applyListApply:(NSString *)groupId userId:(NSString *)userId block:(ActionCompleteBlock)block;
+- (void)applyListApply:(NSString *)groupId block:(ActionCompleteBlock)block;
 
 //忽略申请列表
-- (void)ignoreApplyList:(NSString *)userId applyIds:(NSString *)applyIds block:(ActionCompleteBlock)block;
+- (void)ignoreApplyList:(NSString *)applyIds block:(ActionCompleteBlock)block;
 
 //同意加入群组
-- (void)agreeApply:(NSString *)userId applyId:(NSString *)applyId block:(ActionCompleteBlock)block;
+- (void)agreeApply:(NSString *)applyId block:(ActionCompleteBlock)block;
 
 //群组申请人员列表
-- (void)applicantList:(NSString *)userId groupId:(NSString *)groupId block:(ActionCompleteBlock)block;
+- (void)applicantList:(NSString *)groupId block:(ActionCompleteBlock)block;
+
+//获取申请列表
+- (void)getFriendApplyList:(ActionCompleteBlock)block;
+
+//同意好友申请
+- (void)agreeFriendApply:(NSString *)applyId block:(ActionCompleteBlock)block;
+
+//发送好友申请
+- (void)submitFriendApply:(NSString *)targetId block:(ActionCompleteBlock)block;
+
+//忽略好友申请
+- (void)ignoreFriendApply:(NSString *)applyIds block:(ActionCompleteBlock)block;
+
+//获取群组详情
+- (void)groupDetail:(NSString *)applyIds block:(ActionCompleteBlock)block;
 
 @end

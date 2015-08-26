@@ -124,6 +124,7 @@
 
 - (void)changeMenu {
     [[SlideNavigationController sharedInstance] toggleLeftMenu];
+    [_tagListVC refreshData];
 }
 
 //改变switch

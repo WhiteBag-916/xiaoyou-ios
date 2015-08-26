@@ -15,6 +15,9 @@
 #import "NewFeedAction.h"
 #import "UploadFeedImageAction.h"
 #import "FindFriendsByTagsAction.h"
+#import "AddPraiseAction.h"
+#import "CommentAddPraiseAction.h"
+#import "AlertListAction.h"
 
 #define KFeedManagerSyncQueue @"kFeedManagerSyncQueue"
 
@@ -73,10 +76,10 @@ DEF_SINGLETON(FeedManager);
 }
 
 //获取feed列表,FeedInfo
-- (void)feedList:(NSInteger)limitStart limitEnd:(NSInteger)limitEnd queryCode:(NSString *)queryCode block:(ActionCompleteBlock)block {
+- (void)feedList:(NSString *)lastId size:(NSInteger)size queryCode:(NSString *)queryCode block:(ActionCompleteBlock)block {
     FeedListAction *action = [[FeedListAction alloc] init];
-    action.limitEnd = limitEnd;
-    action.limitStart = limitStart;
+    action.lastId = lastId;
+    action.size = size;
     action.queryCode = queryCode;
     
     [YAction startAction:action completionBlock:^(YActionMessage* message) {
@@ -114,6 +117,40 @@ DEF_SINGLETON(FeedManager);
     action.limitEnd = limitEnd;
     action.limitStart = limitStart;
     action.queryCode = queryCode;
+    
+    [YAction startAction:action completionBlock:^(YActionMessage* message) {
+        //主线程处理界面
+        block(message);
+    }];
+}
+
+//Feed敬酒
+- (void)addPraise:(NSString *)feedId block:(ActionCompleteBlock)block {
+    AddPraiseAction *action = [[AddPraiseAction alloc] init];
+    action.feedId = feedId;
+    
+    [YAction startAction:action completionBlock:^(YActionMessage* message) {
+        //主线程处理界面
+        block(message);
+    }];
+}
+
+//Feed评论敬酒
+- (void)commentAddPraise:(NSString *)commentId block:(ActionCompleteBlock)block {
+    CommentAddPraiseAction *action = [[CommentAddPraiseAction alloc] init];
+    action.commentId = commentId;
+    
+    [YAction startAction:action completionBlock:^(YActionMessage* message) {
+        //主线程处理界面
+        block(message);
+    }];
+}
+
+//获取feed提醒列表
+- (void)alertList:(NSString *)lastId size:(NSInteger)size block:(ActionCompleteBlock)block {
+    AlertListAction *action = [[AlertListAction alloc] init];
+    action.lastId = lastId;
+    action.size = size;
     
     [YAction startAction:action completionBlock:^(YActionMessage* message) {
         //主线程处理界面

@@ -22,6 +22,10 @@
     return [YUtils showHUDAddedTo:[[[UIApplication sharedApplication] delegate] window] title:title animated:animated];
 }
 
++ (MBProgressHUD *)showHUDWithTitle {
+    return [self showHUDWithTitle:@"请等待..."];
+}
+
 + (MBProgressHUD *)showHUDWithTitle:(NSString *)title {
     return [YUtils showHUDWithTitle:title animated:true];
 }

@@ -21,7 +21,7 @@ AS_SINGLETON(FeedManager);
 - (void)getFeedDetailByID:(NSString *)feedID block:(ActionCompleteBlock)block;
 
 //获取feed列表
-- (void)feedList:(NSInteger)limitStart limitEnd:(NSInteger)limitEnd queryCode:(NSString *)queryCode block:(ActionCompleteBlock)block;
+- (void)feedList:(NSString *)lastId size:(NSInteger)size queryCode:(NSString *)queryCode block:(ActionCompleteBlock)block;
 
 //发送feed
 - (void)sendFeed:(Feed *)feed tagIds:(NSString *)tagIds block:(ActionCompleteBlock)block;
@@ -31,5 +31,14 @@ AS_SINGLETON(FeedManager);
 
 //获取feed人列表
 - (void)findFriendsByTags:(NSInteger)limitStart limitEnd:(NSInteger)limitEnd queryCode:(NSString *)queryCode block:(ActionCompleteBlock)block;
+
+//Feed敬酒
+- (void)addPraise:(NSString *)feedId block:(ActionCompleteBlock)block;
+
+//Feed评论敬酒
+- (void)commentAddPraise:(NSString *)commentId block:(ActionCompleteBlock)block;
+
+//获取feed提醒列表
+- (void)alertList:(NSString *)lastId size:(NSInteger)size block:(ActionCompleteBlock)block;
 
 @end

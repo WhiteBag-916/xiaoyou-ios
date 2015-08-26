@@ -11,12 +11,14 @@
 #import "ProvisionManager.h"
 #import "AppDelegate+RootVC.h"
 #import "LoginResp.h"
+#import "CNTextController.h"
 
 @interface LoginViewController ()
 
 @property (nonatomic, strong) YTextField *accountTextField;
 @property (nonatomic, strong) YTextField *passwordTextField;
 @property (nonatomic, strong) UIButton *protocolCheckButton;
+@property (nonatomic, strong) UIButton *showProtocalButton;
 @property (nonatomic, assign) BOOL isCheckButton;//是否同意协议
 @property (nonatomic, strong) UIImageView *protocolImageView;//提示蒙层
 
@@ -29,6 +31,7 @@
     // Do any additional setup after loading the view.
     
     self.title = @"登录";
+    [self showCustomNavigationBackButton];
     [self showCustomNavigationNextButton];
     self.view.backgroundColor = KCOLORGREEN_e6ebea;
     
@@ -42,7 +45,7 @@
 #if DEBUG    
     if (_accountTextField.text.length <= 0) {
         _accountTextField.text = @"1234";
-        _passwordTextField.text = @"12341234";
+        _passwordTextField.text = @"123123";
     } else {
         _passwordTextField.text = [NSString stringWithFormat:@"%@%@", _accountTextField.text, _accountTextField.text];
     }
@@ -79,23 +82,30 @@
     _passwordTextField = (YTextField *)[passwordView viewWithTag:kLoginCommonTextFieldTag];
     [_passwordTextField registerChanged:self action:@selector(textFieldValueChanged:)];
     _passwordTextField.secureTextEntry = YES;
-    _passwordTextField.placeholder = @"密码 ";
+    _passwordTextField.placeholder = @"初始密码为学号后4位＋一卡通编号后4位";
     
     //protocolCheckButton
     _protocolCheckButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [_protocolCheckButton setTitle:@"同意用户条款" forState:UIControlStateNormal];
-    _protocolCheckButton.titleLabel.font = CONTENT_FONT(12);
-    [_protocolCheckButton setTitleColor:KCOLORGREEN_009688 forState:UIControlStateNormal];
     [_protocolCheckButton setImage:[UIImage imageNamed:@"register-frame-agree"] forState:UIControlStateNormal];
-    [_protocolCheckButton setImageEdgeInsets:UIEdgeInsetsMake(0, 0, 0, 0)];
-    [_protocolCheckButton setTitleEdgeInsets:UIEdgeInsetsMake(0, 20, 0, 0)];
     [_protocolCheckButton addTarget:self action:@selector(checkButton) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:_protocolCheckButton];
     [_protocolCheckButton mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.view);
         make.top.equalTo(_passwordTextField.mas_bottom);
         make.height.mas_equalTo(SCALE_NUM(35));
-        make.width.mas_equalTo(SCALE_NUM(119));
+        make.width.mas_equalTo(SCALE_NUM(36));
+    }];
+    
+    //显示协议条款
+    _showProtocalButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [_showProtocalButton setTitle:@"同意用户条款" forState:UIControlStateNormal];
+    _showProtocalButton.titleLabel.font = CONTENT_FONT(12);
+    [_showProtocalButton setTitleColor:KCOLORGREEN_009688 forState:UIControlStateNormal];
+    [_showProtocalButton addTarget:self action:@selector(pressShowProtocalButton) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:_showProtocalButton];
+    [_showProtocalButton mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(_protocolCheckButton.mas_right);
+        make.top.height.equalTo(_protocolCheckButton);
     }];
     
     //忘记密码
@@ -131,8 +141,8 @@
     
     //蒙层
     _protocolImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"login_tip"]];
-    [[[[UIApplication sharedApplication] delegate] window] addSubview:_protocolImageView];
     _protocolImageView.hidden = YES;
+    [[[[UIApplication sharedApplication] delegate] window] addSubview:_protocolImageView];
     [_protocolImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.equalTo([[[UIApplication sharedApplication] delegate] window]);
     }];
@@ -140,6 +150,14 @@
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dissmissProtocol)];
     _protocolImageView.userInteractionEnabled = YES;
     [_protocolImageView addGestureRecognizer:tap];
+}
+
+//弹出协议条款
+- (void)pressShowProtocalButton {
+    CNTextController *textController = [[CNTextController alloc] init];
+    textController.textType = TextTermsOfAgreementType;
+    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:textController];
+    [self.navigationController presentViewController:navigationController animated:YES completion:nil];
 }
 
 //选择协议条款
@@ -158,7 +176,7 @@
 //忘记密码
 - (void)pressForgotPassword {
     if ([_accountTextField.text isEmpty]) {
-        [YUtils showTitle:@"您还没有输入学校和学号"];
+        [YUtils showTitle:@"您还没有输入学号"];
         return;
     }
     
@@ -168,17 +186,29 @@
                                                          buttonTitles:@"取消",@"确认", nil];
     [alert clickedButtonHandler:^(NSInteger index) {
         if (1 == index) {
+            [YUtils showHUDWithTitle];
             [[ProvisionManager sharedInstance] forgotPasswordReq:_accountTextField.text block:^(YActionMessage *message) {
+                [YUtils hiddenProgressHUD];
                 if (999+kYYServerErrorBase == message.errorCode) {
                     //提示默认密码
+                    [self pressInitialPassword:YES];
+                } else {
+                    [YUtils showTitle:message.desc];
                 }
-                
-                [YUtils showTitle:message.desc];
-                
             }];
         }
     }];
     [alert show];
+}
+
+//初始密码范例,需要消失
+- (void)pressInitialPassword:(BOOL)needDissmiss {
+    [self pressInitialPassword];
+    if (needDissmiss) {
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [self dissmissProtocol];
+        });
+    }
 }
 
 //初始密码范例
@@ -191,7 +221,7 @@
 }
 
 - (void)resetRightButton {
-    if ([_accountTextField.text isEmpty] || [_accountTextField.text isEmpty] || !_isCheckButton) {
+    if ([_accountTextField.text isEmpty]) {
         self.navigationItem.rightBarButtonItem.enabled = NO;
     }else{
         self.navigationItem.rightBarButtonItem.enabled = YES;
@@ -200,7 +230,16 @@
 
 //下一步
 - (void)onNavigationRightButtonClicked {
-    [self goLogin];
+    if ([_passwordTextField.text isEmpty]) {
+        //密码不能为空
+        [YUtils showTitle:@"密码不能为空"];
+    }
+    else if (!_isCheckButton) {
+        //没有同意条款
+        [YUtils showTitle:@"你必须同意用户条款才能进入下一步"];
+    } else {
+        [self goLogin];
+    }
 }
 
 - (void)goLogin

@@ -17,7 +17,7 @@
 {
     NSDictionary *dic = @{@"sendGroupId": SStr(_feed.sendGroupId), @"type":SStr(_feed.type), @"content":SStr(_feed.content), @"img":SStr(_feed.img)};
     NSDictionary *parameter = [YUtils getParameter:@{@"feed":dic, @"tagIds" : _tagIds} needUserToken:YES];
-    NSString *url = [YUtils getUrl:api_login_AddFeed];
+    NSString *url = [YUtils getUrl:api_feed_AddFeed];
     [self POST:url parameters:parameter completion:^(YHttpRequest *request) {
         YActionMessage *message = [ResultCommon actionMessageWithHttpRequest:request];
         self.completionBlock(message);

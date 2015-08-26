@@ -13,7 +13,7 @@
 
 @property (nonatomic, strong) NSString *name;
 @property (nonatomic, assign) BOOL equal;
-@property (nonatomic, assign) double internalBaseClassIdentifier;
+@property (nonatomic, strong) NSString *internalBaseClassIdentifier;
 
 + (instancetype)modelObjectWithDictionary:(NSDictionary *)dict;
 - (instancetype)initWithDictionary:(NSDictionary *)dict;
