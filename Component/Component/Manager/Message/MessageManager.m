@@ -112,7 +112,7 @@ DEF_SINGLETON(MessageManager);
             YLogD(@"登陆成功");
             
             [[NSNotificationCenter defaultCenter] postNotificationName:kNotification_Refresh_Message object:nil userInfo:@{kNotification_Request_Message:loginInfo}];
-        } else {
+        } else if (nil != error) {
             [[NSNotificationCenter defaultCenter] postNotificationName:kNotification_Refresh_Message object:nil userInfo:@{kNotification_Request_Error:error}];
         }
         
