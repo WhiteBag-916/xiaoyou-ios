@@ -34,7 +34,7 @@
     [self setUpUI];
     
     
-    [[ContactManager sharedInstance] groupDetail:_uid block:^(YActionMessage *message) {
+    [[ContactManager sharedInstance] groupDetail:_gid block:^(YActionMessage *message) {
         if (message.object) {
             [_groupInfoDetailCollectionView refreshTableView:message.object];
         }

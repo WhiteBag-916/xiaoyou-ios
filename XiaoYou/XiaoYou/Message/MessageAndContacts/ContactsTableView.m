@@ -339,7 +339,7 @@
     {
         XYGroupInfoDetailViewController * groupInfoDetailViewController = [[XYGroupInfoDetailViewController alloc] init];
         groupInfoDetailViewController.studentDic = cell.studentDic;
-//        groupInfoDetailViewController.uid = cell.studentDic[@"thirdCode"];
+        groupInfoDetailViewController.gid = cell.studentDic[@"gid"];
         [self.myController.navigationController pushViewController:groupInfoDetailViewController animated:YES needHiddenBottomBar:YES];
     }
     

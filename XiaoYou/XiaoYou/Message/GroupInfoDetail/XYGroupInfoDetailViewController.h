@@ -12,6 +12,6 @@
 
 @property (nonatomic,strong)NSDictionary * studentDic;
 
-@property (nonatomic,strong)NSString * uid;
+@property (nonatomic,strong)NSString * gid;
 
 @end

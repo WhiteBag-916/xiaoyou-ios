@@ -17,6 +17,7 @@
 @property (nonatomic, strong) NSString *name;
 @property (nonatomic, strong) NSString *thirdCode;
 @property (nonatomic, assign) double linkType;
+@property (nonatomic,strong) NSString * gid;
 
 + (instancetype)modelObjectWithDictionary:(NSDictionary *)dict;
 - (instancetype)initWithDictionary:(NSDictionary *)dict;

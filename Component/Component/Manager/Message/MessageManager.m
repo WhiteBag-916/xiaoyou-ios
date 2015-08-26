@@ -127,16 +127,16 @@ DEF_SINGLETON(MessageManager);
         [[EaseMob sharedInstance].chatManager removeConversationByChatter:message.conversationChatter deleteMessages:YES append2Chat:NO];
         
         //解析
-//        NSDictionary *ext = message.ext;
-//        
-//        switch ([ext[@"type"] integerValue])
-        EMTextMessageBody * body = message.messageBodies[0];
-        NSString * jasonStr = body.text;
-        NSData *data = [jasonStr dataUsingEncoding:NSUTF8StringEncoding];
-        NSDictionary *dic2 = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
-        NSLog(@"dic2 = %@",dic2);
+        NSDictionary *ext = message.ext;
         
-        switch ([dic2[@"type"] integerValue])
+        
+//        EMTextMessageBody * body = message.messageBodies[0];
+//        NSString * jasonStr = body.text;
+//        NSData *data = [jasonStr dataUsingEncoding:NSUTF8StringEncoding];
+//        NSDictionary *dic2 = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
+//        NSLog(@"dic2 = %@",dic2);
+        
+        switch ([ext[@"type"] integerValue])
         {
             case SYSTEM_MESSAGE: {
                 YLogD(@"系统消息推送");
