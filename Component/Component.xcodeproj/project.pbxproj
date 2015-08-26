@@ -21,6 +21,8 @@
 		20C5B06C1B8DB77000B4A8A8 /* AlertListAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 20C5B06B1B8DB77000B4A8A8 /* AlertListAction.m */; };
 		20C5B06F1B8DBAF100B4A8A8 /* AddReplyAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 20C5B06E1B8DBAF100B4A8A8 /* AddReplyAction.m */; };
 		20C5B0721B8DBAFB00B4A8A8 /* AddCommentAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 20C5B0711B8DBAFB00B4A8A8 /* AddCommentAction.m */; };
+		20C5B0751B8DC35F00B4A8A8 /* ReadByFeedAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 20C5B0741B8DC35F00B4A8A8 /* ReadByFeedAction.m */; };
+		20C5B0781B8DC36C00B4A8A8 /* ReadAllAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 20C5B0771B8DC36C00B4A8A8 /* ReadAllAction.m */; };
 		20DA1A5A1B89751500DEF95C /* MyCommentPersonsAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 20DA1A591B89751500DEF95C /* MyCommentPersonsAction.m */; };
 		20DA1A5D1B89752000DEF95C /* MyPraisePersonsAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 20DA1A5C1B89752000DEF95C /* MyPraisePersonsAction.m */; };
 		20DA1A711B89B7DD00DEF95C /* MyFeedAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 20DA1A701B89B7DD00DEF95C /* MyFeedAction.m */; };
@@ -112,6 +114,10 @@
 		20C5B06E1B8DBAF100B4A8A8 /* AddReplyAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddReplyAction.m; sourceTree = "<group>"; };
 		20C5B0701B8DBAFB00B4A8A8 /* AddCommentAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddCommentAction.h; sourceTree = "<group>"; };
 		20C5B0711B8DBAFB00B4A8A8 /* AddCommentAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddCommentAction.m; sourceTree = "<group>"; };
+		20C5B0731B8DC35F00B4A8A8 /* ReadByFeedAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReadByFeedAction.h; sourceTree = "<group>"; };
+		20C5B0741B8DC35F00B4A8A8 /* ReadByFeedAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReadByFeedAction.m; sourceTree = "<group>"; };
+		20C5B0761B8DC36C00B4A8A8 /* ReadAllAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReadAllAction.h; sourceTree = "<group>"; };
+		20C5B0771B8DC36C00B4A8A8 /* ReadAllAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReadAllAction.m; sourceTree = "<group>"; };
 		20DA1A581B89751500DEF95C /* MyCommentPersonsAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyCommentPersonsAction.h; sourceTree = "<group>"; };
 		20DA1A591B89751500DEF95C /* MyCommentPersonsAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyCommentPersonsAction.m; sourceTree = "<group>"; };
 		20DA1A5B1B89752000DEF95C /* MyPraisePersonsAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyPraisePersonsAction.h; sourceTree = "<group>"; };
@@ -481,6 +487,10 @@
 				20C5B06E1B8DBAF100B4A8A8 /* AddReplyAction.m */,
 				20C5B0701B8DBAFB00B4A8A8 /* AddCommentAction.h */,
 				20C5B0711B8DBAFB00B4A8A8 /* AddCommentAction.m */,
+				20C5B0731B8DC35F00B4A8A8 /* ReadByFeedAction.h */,
+				20C5B0741B8DC35F00B4A8A8 /* ReadByFeedAction.m */,
+				20C5B0761B8DC36C00B4A8A8 /* ReadAllAction.h */,
+				20C5B0771B8DC36C00B4A8A8 /* ReadAllAction.m */,
 			);
 			path = Feed;
 			sourceTree = "<group>";
@@ -604,7 +614,9 @@
 				20DAF9E11B87397A005B7932 /* ForgotPasswordAction.m in Sources */,
 				20E193F11B8AF77900FD7B3D /* PraiseAction.m in Sources */,
 				20C5B06F1B8DBAF100B4A8A8 /* AddReplyAction.m in Sources */,
+				20C5B0781B8DC36C00B4A8A8 /* ReadAllAction.m in Sources */,
 				20DAF9A31B871989005B7932 /* SchoolListAction.m in Sources */,
+				20C5B0751B8DC35F00B4A8A8 /* ReadByFeedAction.m in Sources */,
 				20DCB9731B8CA60800C758DE /* ApplicantListAction.m in Sources */,
 				20DA1A7E1B89C44D00DEF95C /* MyCoolPersonsAction.m in Sources */,
 				20E0BFEA1B88B0CA00EDAED4 /* TagListAction.m in Sources */,

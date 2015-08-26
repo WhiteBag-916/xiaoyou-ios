@@ -20,6 +20,8 @@
 #import "AlertListAction.h"
 #import "AddReplyAction.h"
 #import "AddCommentAction.h"
+#import "ReadAllAction.h"
+#import "ReadByFeedAction.h"
 
 #define KFeedManagerSyncQueue @"kFeedManagerSyncQueue"
 
@@ -178,6 +180,27 @@ DEF_SINGLETON(FeedManager);
     action.feedId = feedId;
     action.content = content;
     action.toUserId = toUserId;
+    
+    [YAction startAction:action completionBlock:^(YActionMessage* message) {
+        //主线程处理界面
+        block(message);
+    }];
+}
+
+//删除关于一个feed的提醒
+- (void)readByFeed:(NSString *)affectId block:(ActionCompleteBlock)block {
+    ReadByFeedAction *action = [[ReadByFeedAction alloc] init];
+    action.affectId = affectId;
+    
+    [YAction startAction:action completionBlock:^(YActionMessage* message) {
+        //主线程处理界面
+        block(message);
+    }];
+}
+
+//删除这个用户所有的提醒
+- (void)readAll:(ActionCompleteBlock)block {
+    ReadAllAction *action = [[ReadAllAction alloc] init];
     
     [YAction startAction:action completionBlock:^(YActionMessage* message) {
         //主线程处理界面

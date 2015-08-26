@@ -66,7 +66,7 @@
         dic = [[NSMutableDictionary alloc] initWithDictionary:parameters];
         [dic setObject:[YShareData defaultData][kShareData_UserID] forKey:@"userId"];
     } else {
-        dic = @{@"userId":[YShareData defaultData][kShareData_UserID]};
+        dic = [@{@"userId":[YShareData defaultData][kShareData_UserID]} mutableCopy];
     }
     
     return [self getParameter:dic needUserToken:needUserToken];

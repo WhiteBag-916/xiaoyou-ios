@@ -98,10 +98,9 @@ DEF_SINGLETON(ProvisionManager);
 {
     [YShareData defaultData][kShareData_StudentNo] = _loginResp.studentNo;
     [YShareData defaultData][kShareData_Token] = _loginResp.token;
-    [YShareData defaultData][kShareData_SchoolIcon] = _loginResp.icon;
-    [YShareData defaultData][kShareData_LoginAccount] = _loginResp.studentNo;
     [YShareData defaultData][kShareData_SchoolName] = _loginResp.schoolName;
     [YShareData defaultData][kShareData_SchoolCode] = _loginResp.schoolCode;
+    [YShareData defaultData][kShareData_SchoolIcon] = _loginResp.schoolLogoPath;
 }
 
 //更新登录信息
@@ -234,6 +233,10 @@ DEF_SINGLETON(ProvisionManager);
             if (nil != _profileInfo) {
                 _profileInfo.headPic = uploadImage.url;
                 [self saveProfileInfo];
+            }
+            if (nil != _loginResp) {
+                _loginResp.icon = uploadImage.url;
+                [self saveLoginInfo];
             }
         }
         //主线程处理界面
