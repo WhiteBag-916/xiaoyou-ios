@@ -10,7 +10,7 @@
 
 @interface FeedListAction : YHTTPRequestAction<YAction>
 
-@property (nonatomic, assign) NSString *lastId;
+@property (nonatomic, strong) NSString *lastId;
 @property (nonatomic, assign) NSInteger size;
 @property (nonatomic, strong) NSString *queryCode;
 

@@ -14,7 +14,7 @@
 
 - (void)execute
 {
-    NSDictionary *parameter = [YUtils getParameter:@{@"lastId":_lastId, @"size":@(_size), @"queryCode":_queryCode} needUserToken:YES];
+    NSDictionary *parameter = [YUtils getParameter:@{@"lastId":SStr(_lastId), @"size":@(_size), @"queryCode":_queryCode} needUserToken:YES];
     NSString *url = [YUtils getUrl:api_login_ListFeed];
     [self POST:url parameters:parameter completion:^(YHttpRequest *request) {
         YActionMessage *message = [FeedInfo actionMessageWithHttpRequest:request];
