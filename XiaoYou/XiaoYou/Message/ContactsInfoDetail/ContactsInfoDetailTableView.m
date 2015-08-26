@@ -252,8 +252,8 @@
 {
     if (indexPath.row == 1)
     {
-        [YUtils showHUDWithTitle:@"玩命加载中..."];
-        [[ContactManager sharedInstance] praise:_model.userName block:^(YActionMessage *message) {
+        [YUtils showHUDWithTitle];
+        [[ContactManager sharedInstance] praise:_model.uid block:^(YActionMessage *message) {
             if (message.isSuccess) {
                 _model.isCool = !_model.isCool;
                 if (_model.isCool) {
