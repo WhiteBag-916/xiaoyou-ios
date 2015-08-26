@@ -64,16 +64,20 @@
     [self sendRequest];
 }
 - (void)sendRequest {
+    NSInteger cnt = _personListArray.count;
+    if ([self isHeaderRefresh]) {
+        cnt = 0;
+    }
     if (_type == ProfilePersonListTypeRespect) {
-        [[ProvisionManager sharedInstance] myPraisePersons:_personListArray.count limitEnd:_personListArray.count + KPAGENUM block:^(YActionMessage *message) {
+        [[ProvisionManager sharedInstance] myPraisePersons:cnt limitEnd:cnt + KPAGENUM block:^(YActionMessage *message) {
             [self dealMessage:message];
         }];
     }else if (_type == ProfilePersonListTypeCool) {
-        [[ProvisionManager sharedInstance] myCoolPersons:_personListArray.count limitEnd:_personListArray.count + KPAGENUM block:^(YActionMessage *message) {
+        [[ProvisionManager sharedInstance] myCoolPersons:cnt limitEnd:cnt + KPAGENUM block:^(YActionMessage *message) {
             [self dealMessage:message];
         }];
     } else if (ProfilePersonListTypeFind == _type) {
-        [[ContactManager sharedInstance] findFriends:_personListArray.count limitEnd:_personListArray.count + KPAGENUM conditionDic:_conditionDic block:^(YActionMessage *message) {
+        [[ContactManager sharedInstance] findFriends:cnt limitEnd:cnt + KPAGENUM conditionDic:_conditionDic block:^(YActionMessage *message) {
             [self dealMessage:message];
         }];
     }
