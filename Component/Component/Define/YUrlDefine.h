@@ -77,6 +77,8 @@
 #define api_feed_addPraise @"/feed/addPraise"
 //feed评论敬酒
 #define api_feed_commonAddPraise @"/feed/comment/addPraise"
+//feed提醒列表
+#define api_alert_list @"/alert/list"
 
 /**********************************************************
  Url Define: ContactManager

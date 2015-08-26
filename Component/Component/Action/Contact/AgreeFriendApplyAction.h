@@ -8,7 +8,7 @@
 
 #import "YHTTPRequestAction.h"
 
-@interface AgreeFriendApplyAction : YHTTPRequestAction
+@interface AgreeFriendApplyAction : YHTTPRequestAction<YAction>
 
 @property (nonatomic, strong) NSString *applyId;
 

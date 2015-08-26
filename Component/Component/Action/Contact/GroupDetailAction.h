@@ -8,7 +8,7 @@
 
 #import "YHTTPRequestAction.h"
 
-@interface GroupDetailAction : YHTTPRequestAction
+@interface GroupDetailAction : YHTTPRequestAction<YAction>
 
 @property (nonatomic, strong) NSString *applyIds;
 

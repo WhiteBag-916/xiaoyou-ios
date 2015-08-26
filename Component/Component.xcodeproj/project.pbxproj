@@ -18,6 +18,7 @@
 		20C5B0571B8DB05D00B4A8A8 /* SubmitFriendApplyAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 20C5B0561B8DB05D00B4A8A8 /* SubmitFriendApplyAction.m */; };
 		20C5B05D1B8DB08900B4A8A8 /* GroupDetailAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 20C5B05C1B8DB08900B4A8A8 /* GroupDetailAction.m */; };
 		20C5B0601B8DB43B00B4A8A8 /* IgnoreFriendApplyAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 20C5B05F1B8DB43B00B4A8A8 /* IgnoreFriendApplyAction.m */; };
+		20C5B06C1B8DB77000B4A8A8 /* AlertListAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 20C5B06B1B8DB77000B4A8A8 /* AlertListAction.m */; };
 		20DA1A5A1B89751500DEF95C /* MyCommentPersonsAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 20DA1A591B89751500DEF95C /* MyCommentPersonsAction.m */; };
 		20DA1A5D1B89752000DEF95C /* MyPraisePersonsAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 20DA1A5C1B89752000DEF95C /* MyPraisePersonsAction.m */; };
 		20DA1A711B89B7DD00DEF95C /* MyFeedAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 20DA1A701B89B7DD00DEF95C /* MyFeedAction.m */; };
@@ -103,6 +104,8 @@
 		20C5B05C1B8DB08900B4A8A8 /* GroupDetailAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroupDetailAction.m; sourceTree = "<group>"; };
 		20C5B05E1B8DB43B00B4A8A8 /* IgnoreFriendApplyAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IgnoreFriendApplyAction.h; sourceTree = "<group>"; };
 		20C5B05F1B8DB43B00B4A8A8 /* IgnoreFriendApplyAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IgnoreFriendApplyAction.m; sourceTree = "<group>"; };
+		20C5B06A1B8DB77000B4A8A8 /* AlertListAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlertListAction.h; sourceTree = "<group>"; };
+		20C5B06B1B8DB77000B4A8A8 /* AlertListAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlertListAction.m; sourceTree = "<group>"; };
 		20DA1A581B89751500DEF95C /* MyCommentPersonsAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyCommentPersonsAction.h; sourceTree = "<group>"; };
 		20DA1A591B89751500DEF95C /* MyCommentPersonsAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyCommentPersonsAction.m; sourceTree = "<group>"; };
 		20DA1A5B1B89752000DEF95C /* MyPraisePersonsAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyPraisePersonsAction.h; sourceTree = "<group>"; };
@@ -466,6 +469,8 @@
 				20C5B04A1B8DA93400B4A8A8 /* AddPraiseAction.m */,
 				20C5B04C1B8DA94100B4A8A8 /* CommentAddPraiseAction.h */,
 				20C5B04D1B8DA94100B4A8A8 /* CommentAddPraiseAction.m */,
+				20C5B06A1B8DB77000B4A8A8 /* AlertListAction.h */,
+				20C5B06B1B8DB77000B4A8A8 /* AlertListAction.m */,
 			);
 			path = Feed;
 			sourceTree = "<group>";
@@ -608,6 +613,7 @@
 				20E1C6721B89EB9F008BA9D6 /* ReceiveAuthCodeAction.m in Sources */,
 				20DA74C31B8C120F0002E041 /* FriendsConditionAction.m in Sources */,
 				20C5B05D1B8DB08900B4A8A8 /* GroupDetailAction.m in Sources */,
+				20C5B06C1B8DB77000B4A8A8 /* AlertListAction.m in Sources */,
 				20E1C66C1B89EB81008BA9D6 /* ReceiveMobileAuthCodeAction.m in Sources */,
 				20E0BFF01B88B0CA00EDAED4 /* UploadHeadImageAction.m in Sources */,
 				20C5B0601B8DB43B00B4A8A8 /* IgnoreFriendApplyAction.m in Sources */,

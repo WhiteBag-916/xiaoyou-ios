@@ -38,4 +38,7 @@ AS_SINGLETON(FeedManager);
 //Feed评论敬酒
 - (void)commentAddPraise:(NSString *)commentId block:(ActionCompleteBlock)block;
 
+//获取feed提醒列表
+- (void)alertList:(NSString *)lastId size:(NSInteger)size block:(ActionCompleteBlock)block;
+
 @end

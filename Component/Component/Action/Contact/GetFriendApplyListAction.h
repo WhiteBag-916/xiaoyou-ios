@@ -8,6 +8,6 @@
 
 #import "YHTTPRequestAction.h"
 
-@interface GetFriendApplyListAction : YHTTPRequestAction
+@interface GetFriendApplyListAction : YHTTPRequestAction<YAction>
 
 @end

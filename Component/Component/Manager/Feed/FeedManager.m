@@ -17,6 +17,7 @@
 #import "FindFriendsByTagsAction.h"
 #import "AddPraiseAction.h"
 #import "CommentAddPraiseAction.h"
+#import "AlertListAction.h"
 
 #define KFeedManagerSyncQueue @"kFeedManagerSyncQueue"
 
@@ -138,6 +139,18 @@ DEF_SINGLETON(FeedManager);
 - (void)commentAddPraise:(NSString *)commentId block:(ActionCompleteBlock)block {
     CommentAddPraiseAction *action = [[CommentAddPraiseAction alloc] init];
     action.commentId = commentId;
+    
+    [YAction startAction:action completionBlock:^(YActionMessage* message) {
+        //主线程处理界面
+        block(message);
+    }];
+}
+
+//获取feed提醒列表
+- (void)alertList:(NSString *)lastId size:(NSInteger)size block:(ActionCompleteBlock)block {
+    AlertListAction *action = [[AlertListAction alloc] init];
+    action.lastId = lastId;
+    action.size = size;
     
     [YAction startAction:action completionBlock:^(YActionMessage* message) {
         //主线程处理界面

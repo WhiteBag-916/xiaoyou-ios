@@ -12,6 +12,7 @@
 		20859AB31B64E2F600580ED3 /* YModel+ActionMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 20859AB21B64E2F600580ED3 /* YModel+ActionMessage.m */; };
 		20C5B0651B8DB55C00B4A8A8 /* GroupDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = 20C5B0621B8DB55C00B4A8A8 /* GroupDetail.m */; };
 		20C5B0661B8DB55C00B4A8A8 /* GroupModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 20C5B0641B8DB55C00B4A8A8 /* GroupModel.m */; };
+		20C5B0691B8DB75A00B4A8A8 /* AlertList.m in Sources */ = {isa = PBXBuildFile; fileRef = 20C5B0681B8DB75A00B4A8A8 /* AlertList.m */; };
 		20DA1A601B8995A000DEF95C /* ProvinceCode.m in Sources */ = {isa = PBXBuildFile; fileRef = 20DA1A5F1B8995A000DEF95C /* ProvinceCode.m */; };
 		20DA74BD1B8C0BFA0002E041 /* FriendsCondition.m in Sources */ = {isa = PBXBuildFile; fileRef = 20DA74BC1B8C0BFA0002E041 /* FriendsCondition.m */; };
 		20DBFD271B4FA0E5009134D0 /* libModel.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 20DBFD1B1B4FA0E5009134D0 /* libModel.a */; };
@@ -75,6 +76,8 @@
 		20C5B0621B8DB55C00B4A8A8 /* GroupDetail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroupDetail.m; sourceTree = "<group>"; };
 		20C5B0631B8DB55C00B4A8A8 /* GroupModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroupModel.h; sourceTree = "<group>"; };
 		20C5B0641B8DB55C00B4A8A8 /* GroupModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroupModel.m; sourceTree = "<group>"; };
+		20C5B0671B8DB75A00B4A8A8 /* AlertList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlertList.h; sourceTree = "<group>"; };
+		20C5B0681B8DB75A00B4A8A8 /* AlertList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlertList.m; sourceTree = "<group>"; };
 		20DA1A5E1B8995A000DEF95C /* ProvinceCode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProvinceCode.h; sourceTree = "<group>"; };
 		20DA1A5F1B8995A000DEF95C /* ProvinceCode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProvinceCode.m; sourceTree = "<group>"; };
 		20DA74BB1B8C0BFA0002E041 /* FriendsCondition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendsCondition.h; sourceTree = "<group>"; };
@@ -292,6 +295,8 @@
 		20E0C0691B88B0CA00EDAED4 /* Feed */ = {
 			isa = PBXGroup;
 			children = (
+				20C5B0671B8DB75A00B4A8A8 /* AlertList.h */,
+				20C5B0681B8DB75A00B4A8A8 /* AlertList.m */,
 				20E1C6731B89F0A7008BA9D6 /* Comment.h */,
 				20E1C6741B89F0A7008BA9D6 /* Comment.m */,
 				20E1C6751B89F0A7008BA9D6 /* CommentListItems.h */,
@@ -415,6 +420,7 @@
 				333E95E21B70B7820001059D /* UpdateAvatarModel.m in Sources */,
 				20E0C0821B88B0CA00EDAED4 /* LinkManList.m in Sources */,
 				331E17E41B7AFBC8006789B0 /* Tags.m in Sources */,
+				20C5B0691B8DB75A00B4A8A8 /* AlertList.m in Sources */,
 				20E1C67A1B89F0A7008BA9D6 /* CommentListItems.m in Sources */,
 				333E95E51B70B78C0001059D /* LastSystemPushInfoListModel.m in Sources */,
 				20E0C0751B88B0CA00EDAED4 /* ProfileInfo.m in Sources */,
