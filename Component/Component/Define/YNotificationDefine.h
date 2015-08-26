@@ -20,6 +20,7 @@
 #define kNotification_Push_Report                       @"kNotification_Push_Report"
 
 #define kNotification_Request_Message                   @"kNofification_Request_Message"
+#define kNotification_Request_Error                     @"kNotification_Request_Error"
 #define kNotification_Profile_GetProfile                @"kNotification_Profile_GetProfile"
 #define kNotification_Profile_Logout                    @"kNotification_Profile_Logout"
 

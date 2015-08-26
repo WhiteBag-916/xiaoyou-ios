@@ -92,7 +92,7 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshDataSource) name:kNotification_Refresh_Message object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshMeesageRes:) name:kNotification_Refresh_Message object:nil];
     [self refreshDataSource];
     [self registerNotifications];
     [self removeEmptyConversationsFromDB];
@@ -102,6 +102,31 @@
 
 - (void)viewWillDisappear:(BOOL)animated {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+- (void)refreshMeesageRes:(NSNotification *)notification {
+    EMError *error = [notification userInfo][kNotification_Request_Error];
+    if (nil == error) {
+        [self refreshDataSource];
+    } else {
+        switch (error.errorCode) {
+            case EMErrorServerNotReachable:
+                TTAlertNoTitle(NSLocalizedString(@"error.connectServerFail", @"Connect to the server failed!"));
+                break;
+            case EMErrorServerDuplicatedAccount:
+                TTAlertNoTitle(NSLocalizedString(@"register.repeat", @"You registered user already exists!"));
+                break;
+            case EMErrorNetworkNotConnected:
+                [YUtils showTitle:@"无网络连接"];
+                break;
+            case EMErrorServerTimeout:
+                TTAlertNoTitle(NSLocalizedString(@"error.connectServerTimeout", @"Connect to the server timed out!"));
+                break;
+            default:
+                TTAlertNoTitle(NSLocalizedString(@"register.fail", @"Registration failed"));
+                break;
+        }
+    }
 }
 
 //刷新数据源
