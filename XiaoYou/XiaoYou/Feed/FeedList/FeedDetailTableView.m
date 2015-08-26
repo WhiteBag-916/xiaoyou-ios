@@ -25,6 +25,7 @@
 @property (nonatomic, strong) NSString *feedId;
 @property (nonatomic, strong) FeedInfo *feedInfo;
 @property (nonatomic, strong) NSMutableDictionary *shareData;
+
 @end
 
 @implementation FeedDetailTableView
@@ -69,19 +70,6 @@
     
     _commentListArray = [NSMutableArray arrayWithArray:info.commentListItems];
     [self reloadData];
-}
-- (void)openShare {
-    YActionSheetItem *item1 = [YActionSheetItem itemWithType:YCommonActionSheetItemTypeShare title:@"分享这条动态至" extraData:_shareData];
-    
-    
-    YActionSheetItem *item2 = [YActionSheetItem itemWithTitle:@"举报"
-                                                         type:YCommonActionSheetItemTypeCommon
-                                                        block:^(NSInteger checkNum) {
-                                                            
-                                                        }];
-    
-    YCommonActionSheet *sheet = [[YCommonActionSheet alloc] initWithType:@[item1, item2] title:nil];
-    [sheet show];
 }
 #pragma mark - 继承者
 - (BOOL)showFooterRefresh
@@ -140,8 +128,11 @@
         int index = (int)indexPath.row - 1;
         CommentListItems *item = _commentListArray[index];
         if ([item.author.uid isEqualToString:[[ProvisionManager sharedInstance] getUserId]]) {
-            [self openTool];
+            [self openOperate:index];
         } else {
+            if ([[[ProvisionManager sharedInstance] getUserId] isEqualToString:_feedInfo.author.uid]) {
+                [self openAuthorOperate:index];
+            }
             [self openReply:index];
         }
     }
@@ -152,7 +143,7 @@
 }
 - (void)openTool {
     
-    YActionSheetItem *item1 = [YActionSheetItem itemWithType:YCommonActionSheetItemTypeShare title:@"分享这条动态至" extraData:@{@"tag":@"互联网",@"content":@"balabala",@"pic":@"http://cdn.duitang.com/uploads/item/201411/22/20141122111634_RBCXS.jpeg"}];
+    YActionSheetItem *item1 = [YActionSheetItem itemWithType:YCommonActionSheetItemTypeShare title:@"分享这条动态至" extraData:_shareData];
     
     
     YActionSheetItem *item2 = [YActionSheetItem itemWithTitle:@"举报"
@@ -160,7 +151,35 @@
                                                         block:^(NSInteger checkNum) {
                                                             
                                                         }];
+    YActionSheetItem *item3 = [YActionSheetItem itemWithTitle:@"删除"
+                                                         type:YCommonActionSheetItemTypeCommon
+                                                        block:^(NSInteger checkNum) {
+                                                            
+                                                        }];
     
+    YCommonActionSheet *sheet = [[YCommonActionSheet alloc] initWithType:[_feedInfo.author.uid isEqualToString:[[ProvisionManager sharedInstance] getUserId]]?@[item1, item3]:@[item1, item2] title:nil];
+    [sheet show];
+}
+- (void)openOperate:(int)index {
+    YActionSheetItem *item = [YActionSheetItem itemWithTitle:@"删除"
+                                                         type:YCommonActionSheetItemTypeCommon
+                                                        block:^(NSInteger checkNum) {
+                                                            
+                                                        }];
+    YCommonActionSheet *sheet = [[YCommonActionSheet alloc] initWithType:@[item] title:nil];
+    [sheet show];
+}
+- (void)openAuthorOperate:(int)index {
+    YActionSheetItem *item1 = [YActionSheetItem itemWithTitle:@"回复"
+                                                        type:YCommonActionSheetItemTypeCommon
+                                                       block:^(NSInteger checkNum) {
+                                                           
+                                                       }];
+    YActionSheetItem *item2 = [YActionSheetItem itemWithTitle:@"删除"
+                                                        type:YCommonActionSheetItemTypeCommon
+                                                       block:^(NSInteger checkNum) {
+                                                           
+                                                       }];
     YCommonActionSheet *sheet = [[YCommonActionSheet alloc] initWithType:@[item1, item2] title:nil];
     [sheet show];
 }

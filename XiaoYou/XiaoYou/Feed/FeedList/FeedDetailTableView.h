@@ -16,5 +16,5 @@
 
 - (void)loadData;
 
-- (void)openShare;
+- (void)openTool;
 @end

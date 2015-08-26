@@ -87,7 +87,7 @@
 }
 
 - (void)onNavigationRightButtonClicked {
-    [_feedDetailTable openShare];
+    [_feedDetailTable openTool];
 }
 - (void)didSendText:(NSString *)text {
     text = [ConvertToCommonEmoticonsHelper convertToCommonEmoticons:text];
@@ -119,7 +119,7 @@
 }
 - (void)openInputWithId:(NSString *)userId name:(NSString *)userName {
     _replyId = userId;
-    _chatToolBar.inputTextView.placeHolder =[NSString stringWithFormat:@"回复：%@", _replyId];
+    _chatToolBar.inputTextView.placeHolder =[NSString stringWithFormat:@"回复：%@", userName];
     [_chatToolBar.inputTextView becomeFirstResponder];
 }
 - (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer {
