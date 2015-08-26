@@ -10,8 +10,8 @@
 
 @interface FeedListAction : YHTTPRequestAction<YAction>
 
-@property (nonatomic, assign) NSInteger limitStart;
-@property (nonatomic, assign) NSInteger limitEnd;
+@property (nonatomic, assign) NSString *lastId;
+@property (nonatomic, assign) NSInteger size;
 @property (nonatomic, strong) NSString *queryCode;
 
 @end
