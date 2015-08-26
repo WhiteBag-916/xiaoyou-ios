@@ -172,6 +172,7 @@ DEF_SINGLETON(MessageManager);
                 break;
         }
         
+        [[NSNotificationCenter defaultCenter] postNotificationName:kNotification_Refresh_Message object:nil userInfo:nil];
         
     }
     [message updateMessageExtToDB];
