@@ -45,7 +45,7 @@
 #if DEBUG    
     if (_accountTextField.text.length <= 0) {
         _accountTextField.text = @"1234";
-        _passwordTextField.text = @"12341234";
+        _passwordTextField.text = @"123123";
     } else {
         _passwordTextField.text = [NSString stringWithFormat:@"%@%@", _accountTextField.text, _accountTextField.text];
     }
@@ -138,6 +138,18 @@
         make.height.mas_equalTo(SCALE_NUM(36));
         make.width.mas_equalTo(SCALE_NUM(118));
     }];
+    
+    //蒙层
+    _protocolImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"login_tip"]];
+    _protocolImageView.hidden = YES;
+    [[[[UIApplication sharedApplication] delegate] window] addSubview:_protocolImageView];
+    [_protocolImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.equalTo([[[UIApplication sharedApplication] delegate] window]);
+    }];
+    
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dissmissProtocol)];
+    _protocolImageView.userInteractionEnabled = YES;
+    [_protocolImageView addGestureRecognizer:tap];
 }
 
 //弹出协议条款
@@ -201,22 +213,11 @@
 
 //初始密码范例
 - (void)pressInitialPassword {
-    if (nil == _protocolImageView) {
-        //蒙层
-        _protocolImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"login_tip"]];
-        
-        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dissmissProtocol)];
-        _protocolImageView.userInteractionEnabled = YES;
-        [_protocolImageView addGestureRecognizer:tap];
-    }
-    [[[[UIApplication sharedApplication] delegate] window] addSubview:_protocolImageView];
-    [_protocolImageView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.edges.equalTo([[[UIApplication sharedApplication] delegate] window]);
-    }];
+    _protocolImageView.hidden = NO;
 }
 
 - (void)dissmissProtocol {
-    [_protocolImageView removeFromSuperview];
+    _protocolImageView.hidden = YES;
 }
 
 - (void)resetRightButton {
@@ -252,7 +253,7 @@
             if (loginResp.firstLogin) {
                 [kAppDelegateAccessor initPerfectNC];
             } else {
-                [kAppDelegateAccessor initTabBarNC];
+                [kAppDelegateAccessor initPerfectNC];
             }
             
         } else {
