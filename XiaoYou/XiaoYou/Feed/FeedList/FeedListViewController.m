@@ -45,6 +45,7 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    self.navigationController.navigationBarHidden = false;
     [SlideNavigationController sharedInstance].enableSwipeGesture = YES;
     [SlideNavigationController sharedInstance].enableShadow = false;
     [SlideNavigationController sharedInstance].portraitSlideOffset = SCREEN_WIDTH * 0.3;

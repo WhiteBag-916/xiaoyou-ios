@@ -107,7 +107,7 @@
     } else {
         XYContactsInfoDetailViewController *xv = [[XYContactsInfoDetailViewController alloc] init];
         xv.uid = userId;
-        [controller pushViewController:xv animated:true];
+        [controller pushViewController:xv animated:true needHiddenBottomBar:YES];
     }
 }
 #pragma mark - SlideNavigationControllerDelegate
