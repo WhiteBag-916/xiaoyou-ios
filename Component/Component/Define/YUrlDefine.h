@@ -83,6 +83,10 @@
 #define api_feed_addComment @"/feed/comment/addComment"
 //回复评论
 #define api_feed_addReply @"/feed/comment/addReply"
+//删除关于一个feed的提醒
+#define api_alert_readByFeed @"/alert/readByFeed"
+//删除这个用户所有的提醒
+#define api_alert_readAll @"/alert/readAll"
 
 /**********************************************************
  Url Define: ContactManager
