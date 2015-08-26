@@ -10,6 +10,7 @@
 #import "YTextView.h"
 #import "ProvisionManager.h"
 #import "LoginResp.h"
+#import "ConvertToCommonEmoticonsHelper.h"
 
 @interface YCommonEditViewController()<UITextViewDelegate>
 
@@ -97,7 +98,7 @@
     [self.view endEditing:true];
     if (_type == YCommonEditAttitude) {
         MBProgressHUD *hud = [YUtils showHUDAddedTo:self.view title:@"正在保存"];
-        [[ProvisionManager sharedInstance] UpdateSelfIntro:_textView.text block:^(YActionMessage *message) {
+        [[ProvisionManager sharedInstance] UpdateSelfIntro:[ConvertToCommonEmoticonsHelper convertToCommonEmoticons:_textView.text] block:^(YActionMessage *message) {
             [hud removeFromSuperview];
             if (message.isSuccess) {
                 [self.navigationController dismissViewControllerAnimated:YES completion:nil];
@@ -111,5 +112,6 @@
     [self.view endEditing:true];
     [self.navigationController dismissViewControllerAnimated:YES completion:nil];
 }
+
 
 @end

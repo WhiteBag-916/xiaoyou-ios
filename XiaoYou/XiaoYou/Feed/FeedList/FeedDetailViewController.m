@@ -85,20 +85,7 @@
 }
 
 - (void)onNavigationRightButtonClicked {
-    YActionSheetItem *item1 = [YActionSheetItem itemWithTitle:@"分享这社团名片至"
-                                                         type:YCommonActionSheetItemTypeShare
-                                                        block:^(NSInteger checkNum) {
-                                                            
-                                                        }];
-    
-    YActionSheetItem *item2 = [YActionSheetItem itemWithTitle:@"举报"
-                                                         type:YCommonActionSheetItemTypeCommon
-                                                        block:^(NSInteger checkNum) {
-                                                            
-                                                        }];
-    
-    YCommonActionSheet *sheet = [[YCommonActionSheet alloc] initWithType:@[item1, item2] title:nil];
-    [sheet show];
+    [_feedDetailTable openShare];
 }
 - (void)didSendText:(NSString *)text {
     _replyId = nil;

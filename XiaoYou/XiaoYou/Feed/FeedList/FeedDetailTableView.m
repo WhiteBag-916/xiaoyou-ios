@@ -60,11 +60,25 @@
     _feedInfo.praisePeoples = info.praisePeoples;
     NSString *tag = (_feedInfo.tags.count == 0?@"校友观点":[_feedInfo.tags[0] name]);
     NSString *content = (_feedInfo.feed.content.length == 0?@"":_feedInfo.feed.content);
-    _shareData = [NSMutableDictionary dictionaryWithObjectsAndKeys:tag,@"tag",content,@"content", nil];
+    NSString *img = _feedInfo.feed.img.length > 0?[_feedInfo.feed.img componentsSeparatedByString:@","][0]:@"";
+    _shareData = [NSMutableDictionary dictionaryWithObjectsAndKeys:tag,@"tag",content,@"content",img, @"pic", nil];
+    
     _commentListArray = [NSMutableArray arrayWithArray:info.commentListItems];
     [self reloadData];
 }
-
+- (void)openShare {
+    YActionSheetItem *item1 = [YActionSheetItem itemWithType:YCommonActionSheetItemTypeShare title:@"分享这条动态至" extraData:_shareData];
+    
+    
+    YActionSheetItem *item2 = [YActionSheetItem itemWithTitle:@"举报"
+                                                         type:YCommonActionSheetItemTypeCommon
+                                                        block:^(NSInteger checkNum) {
+                                                            
+                                                        }];
+    
+    YCommonActionSheet *sheet = [[YCommonActionSheet alloc] initWithType:@[item1, item2] title:nil];
+    [sheet show];
+}
 #pragma mark - 继承者
 - (BOOL)showFooterRefresh
 {

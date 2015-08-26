@@ -28,7 +28,7 @@
         _type = type;
         self.delegate = self;
         self.dataSource = self;
-        [self registerClass:[TagListTableViewCell class] forCellReuseIdentifier:KTagListTableViewCell];
+//        [self registerClass:[TagListTableViewCell class] forCellReuseIdentifier:KTagListTableViewCell];
         self.separatorStyle = UITableViewCellSeparatorStyleNone;
         self.backgroundColor = [UIColor clearColor];
         self.showsVerticalScrollIndicator = false;
@@ -60,6 +60,11 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     TagListTableViewCell *cell = [self dequeueReusableCellWithIdentifier:KTagListTableViewCell];
+    if (cell == nil) {
+        cell = [[TagListTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:KTagListTableViewCell];
+        UILongPressGestureRecognizer *press = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longPress:)];
+        [cell addGestureRecognizer:press];
+    }
     if (indexPath.row < _data.count) {
         if (_type == TagMenuType) {
             [cell setData:[_data[indexPath.row] name]];
@@ -80,7 +85,6 @@
     } else {
         if (_type == TagMenuType) {
             Tags *tag = _data[indexPath.row];
-            
             [self toFeedFilter:tag.internalBaseClassIdentifier name:tag.name];
         }
     }
@@ -89,6 +93,11 @@
     [[SlideNavigationController sharedInstance] closeMenuWithCompletion:^{
         [[NSNotificationCenter defaultCenter] postNotificationName:kNotification_Push_FeedFilter object:nil userInfo:@{@"filter":filter, @"name":name}];
     }];
+}
+- (void)longPress:(UILongPressGestureRecognizer *)press {
+    if (press.state == UIGestureRecognizerStateBegan) {
+        
+    }
 }
 //跳转到添加标签
 - (void)toAddTag {
