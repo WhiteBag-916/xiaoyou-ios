@@ -6,7 +6,7 @@
 //  Copyright (c) 2015年 AndLiSoft. All rights reserved.
 //
 
-#import "BaseViewController.h"
+#import "YViewController.h"
 
 typedef NS_ENUM(NSInteger, YCNTextType) {
     TextSchoolOther,                    //其他
@@ -16,7 +16,7 @@ typedef NS_ENUM(NSInteger, YCNTextType) {
 /*
  该控制器只用来显示一个简单的文本
  */
-@interface CNTextController : BaseViewController
+@interface CNTextController : YViewController
 
 @property (strong, nonatomic) NSString *strText;
 @property (assign, nonatomic) YCNTextType textType;

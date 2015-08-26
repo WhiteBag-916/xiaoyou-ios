@@ -11,12 +11,14 @@
 #import "ProvisionManager.h"
 #import "AppDelegate+RootVC.h"
 #import "LoginResp.h"
+#import "CNTextController.h"
 
 @interface LoginViewController ()
 
 @property (nonatomic, strong) YTextField *accountTextField;
 @property (nonatomic, strong) YTextField *passwordTextField;
 @property (nonatomic, strong) UIButton *protocolCheckButton;
+@property (nonatomic, strong) UIButton *showProtocalButton;
 @property (nonatomic, assign) BOOL isCheckButton;//是否同意协议
 @property (nonatomic, strong) UIImageView *protocolImageView;//提示蒙层
 
@@ -83,19 +85,26 @@
     
     //protocolCheckButton
     _protocolCheckButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [_protocolCheckButton setTitle:@"同意用户条款" forState:UIControlStateNormal];
-    _protocolCheckButton.titleLabel.font = CONTENT_FONT(12);
-    [_protocolCheckButton setTitleColor:KCOLORGREEN_009688 forState:UIControlStateNormal];
     [_protocolCheckButton setImage:[UIImage imageNamed:@"register-frame-agree"] forState:UIControlStateNormal];
-    [_protocolCheckButton setImageEdgeInsets:UIEdgeInsetsMake(0, 0, 0, 0)];
-    [_protocolCheckButton setTitleEdgeInsets:UIEdgeInsetsMake(0, 20, 0, 0)];
     [_protocolCheckButton addTarget:self action:@selector(checkButton) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:_protocolCheckButton];
     [_protocolCheckButton mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.view);
         make.top.equalTo(_passwordTextField.mas_bottom);
         make.height.mas_equalTo(SCALE_NUM(35));
-        make.width.mas_equalTo(SCALE_NUM(119));
+        make.width.mas_equalTo(SCALE_NUM(36));
+    }];
+    
+    //显示协议条款
+    _showProtocalButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [_showProtocalButton setTitle:@"同意用户条款" forState:UIControlStateNormal];
+    _showProtocalButton.titleLabel.font = CONTENT_FONT(12);
+    [_showProtocalButton setTitleColor:KCOLORGREEN_009688 forState:UIControlStateNormal];
+    [_showProtocalButton addTarget:self action:@selector(pressShowProtocalButton) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:_showProtocalButton];
+    [_showProtocalButton mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(_protocolCheckButton.mas_right);
+        make.top.height.equalTo(_protocolCheckButton);
     }];
     
     //忘记密码
@@ -128,6 +137,14 @@
         make.height.mas_equalTo(SCALE_NUM(36));
         make.width.mas_equalTo(SCALE_NUM(118));
     }];
+}
+
+//弹出协议条款
+- (void)pressShowProtocalButton {
+    CNTextController *textController = [[CNTextController alloc] init];
+    textController.textType = TextTermsOfAgreementType;
+    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:textController];
+    [self.navigationController presentViewController:navigationController animated:YES completion:nil];
 }
 
 //选择协议条款
@@ -202,7 +219,7 @@
 }
 
 - (void)resetRightButton {
-    if ([_accountTextField.text isEmpty] || [_accountTextField.text isEmpty] || !_isCheckButton) {
+    if ([_accountTextField.text isEmpty] || [_accountTextField.text isEmpty]) {
         self.navigationItem.rightBarButtonItem.enabled = NO;
     }else{
         self.navigationItem.rightBarButtonItem.enabled = YES;
@@ -211,7 +228,13 @@
 
 //下一步
 - (void)onNavigationRightButtonClicked {
-    [self goLogin];
+    
+    if (!_isCheckButton) {
+        //没有同意条款
+        [YUtils showTitle:@"你必须同意用户条款才能进入下一步"];
+    } else {
+        [self goLogin];
+    }
 }
 
 - (void)goLogin
