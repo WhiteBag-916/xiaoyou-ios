@@ -41,9 +41,9 @@
 #import "ContactManager.h"
 #import "LoginResp.h"
 #import "LinkManList.h"
-#import "UnionList.h"
 #import "YNotificationDefine.h"
 #import "UIImageView+Ext.h"
+#import "ClassList.h"
 
 #define KPageCount 20
 #define KHintAdjustY    50
@@ -1012,7 +1012,7 @@
         }
     }
     NSMutableArray * groupArr = [[NSMutableArray alloc] initWithArray:linkManModel.unionList];
-    for (UnionList * obj1 in groupArr) {
+    for (ClassList * obj1 in groupArr) {
         if ([message.from isEqualToString:obj1.thirdCode])
         {
             for (LinkManList * obj2 in contactsArr) {

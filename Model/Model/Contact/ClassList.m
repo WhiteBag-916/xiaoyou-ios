@@ -14,7 +14,7 @@ NSString *const kClassListSchoolCode = @"schoolCode";
 NSString *const kClassListName = @"name";
 NSString *const kClassListThirdCode = @"thirdCode";
 NSString *const kClassListLinkType = @"linkType";
-
+NSString *const kClassListGid = @"gid";
 
 @interface ClassList ()
 
@@ -30,6 +30,7 @@ NSString *const kClassListLinkType = @"linkType";
 @synthesize name = _name;
 @synthesize thirdCode = _thirdCode;
 @synthesize linkType = _linkType;
+@synthesize gid = _gid;
 
 
 + (instancetype)modelObjectWithDictionary:(NSDictionary *)dict
@@ -50,6 +51,7 @@ NSString *const kClassListLinkType = @"linkType";
             self.name = [self objectOrNilForKey:kClassListName fromDictionary:dict];
             self.thirdCode = [self objectOrNilForKey:kClassListThirdCode fromDictionary:dict];
             self.linkType = [[self objectOrNilForKey:kClassListLinkType fromDictionary:dict] doubleValue];
+        self.gid = [self objectOrNilForKey:kClassListGid fromDictionary:dict];
 
     }
     
@@ -66,6 +68,7 @@ NSString *const kClassListLinkType = @"linkType";
     [mutableDict setValue:self.name forKey:kClassListName];
     [mutableDict setValue:self.thirdCode forKey:kClassListThirdCode];
     [mutableDict setValue:[NSNumber numberWithDouble:self.linkType] forKey:kClassListLinkType];
+    [mutableDict setValue:self.gid forKey:kClassListGid];
 
     return [NSDictionary dictionaryWithDictionary:mutableDict];
 }
@@ -95,6 +98,8 @@ NSString *const kClassListLinkType = @"linkType";
     self.name = [aDecoder decodeObjectForKey:kClassListName];
     self.thirdCode = [aDecoder decodeObjectForKey:kClassListThirdCode];
     self.linkType = [aDecoder decodeDoubleForKey:kClassListLinkType];
+    self.gid = [aDecoder decodeObjectForKey:kClassListGid];
+    
     return self;
 }
 
@@ -107,6 +112,7 @@ NSString *const kClassListLinkType = @"linkType";
     [aCoder encodeObject:_name forKey:kClassListName];
     [aCoder encodeObject:_thirdCode forKey:kClassListThirdCode];
     [aCoder encodeDouble:_linkType forKey:kClassListLinkType];
+    [aCoder encodeObject:_gid forKey:kClassListGid];
 }
 
 - (id)copyWithZone:(NSZone *)zone
@@ -121,6 +127,7 @@ NSString *const kClassListLinkType = @"linkType";
         copy.name = [self.name copyWithZone:zone];
         copy.thirdCode = [self.thirdCode copyWithZone:zone];
         copy.linkType = self.linkType;
+        copy.gid = [self.gid copyWithZone:zone];
     }
     
     return copy;

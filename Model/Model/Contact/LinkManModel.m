@@ -8,7 +8,6 @@
 #import "LinkManModel.h"
 #import "ClassList.h"
 #import "LinkManList.h"
-#import "UnionList.h"
 
 
 NSString *const kLinkManModelClassList = @"classList";
@@ -72,11 +71,11 @@ NSString *const kLinkManModelUnionList = @"unionList";
     if ([receivedUnionList isKindOfClass:[NSArray class]]) {
         for (NSDictionary *item in (NSArray *)receivedUnionList) {
             if ([item isKindOfClass:[NSDictionary class]]) {
-                [parsedUnionList addObject:[UnionList modelObjectWithDictionary:item]];
+                [parsedUnionList addObject:[ClassList modelObjectWithDictionary:item]];
             }
        }
     } else if ([receivedUnionList isKindOfClass:[NSDictionary class]]) {
-       [parsedUnionList addObject:[UnionList modelObjectWithDictionary:(NSDictionary *)receivedUnionList]];
+       [parsedUnionList addObject:[ClassList modelObjectWithDictionary:(NSDictionary *)receivedUnionList]];
     }
 
     self.unionList = [NSArray arrayWithArray:parsedUnionList];
