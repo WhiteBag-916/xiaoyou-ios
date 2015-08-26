@@ -16,7 +16,6 @@
 #import "ContactManager.h"
 #import "LinkManList.h"
 #import "ClassList.h"
-#import "UnionList.h"
 
 #define kHeadWidthAndHeight            40
 #define kNameLabelWidth                80
@@ -182,7 +181,7 @@ NSString *const kMessageTableViewCell = @"MessageTableViewCellId";
             return [obj dictionaryRepresentation];
         }
     }
-    for (UnionList * obj in modelUnion) {
+    for (ClassList * obj in modelUnion) {
         if ([conversation.chatter isEqualToString:obj.thirdCode])
         {
             return [obj dictionaryRepresentation];
