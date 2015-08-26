@@ -10,6 +10,8 @@
 #import "NotifyListTableViewCell.h"
 #import "AlertList.h"
 #import "FeedManager.h"
+#import "FeedDetailViewController.h"
+#import "AlertList.h"
 
 #define KPAGENUM 10
 
@@ -36,6 +38,17 @@
         [self registerClass:[NotifyListTableViewCell class] forCellReuseIdentifier:kNotifyListTableViewCell];
     }
     return self;
+}
+
+//清除所有数据
+- (void)readAll {
+    [_notifyListArray removeAllObjects];
+    [self reloadData];
+    
+    //发请求
+    [[FeedManager sharedInstance] readAll:^(YActionMessage *message) {
+        YLogD(@"readAll:%@", message.desc);
+    }];
 }
 
 #pragma mark - 继承者
@@ -99,6 +112,8 @@
 {
     NotifyListTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kNotifyListTableViewCell];
     
+    [cell initData:_notifyListArray[indexPath.row]];
+    
     return cell;
 }
 
@@ -110,7 +125,8 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    FeedDetailViewController *feedDetailViewController = [[FeedDetailViewController alloc] initWithFeedId:[NSString stringWithFormat:@"%g", [_notifyListArray[indexPath.row] affectId]]];
+    [_superVC.navigationController pushViewController:feedDetailViewController animated:YES];
 }
 
 @end

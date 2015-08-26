@@ -36,6 +36,7 @@
 - (void)initView {
     _notifyListTableView = [[NotifyListTableView alloc] init];
     _notifyListTableView.backgroundColor = KCOLORWHITE;
+    _notifyListTableView.superVC = self;
     [self.view addSubview:_notifyListTableView];
     
     [_notifyListTableView mas_makeConstraints:^(MASConstraintMaker *make) {
