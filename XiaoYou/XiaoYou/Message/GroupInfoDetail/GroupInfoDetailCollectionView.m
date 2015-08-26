@@ -10,6 +10,7 @@
 #import "GroupInfoCollectionViewCell.h"
 #import "YSystemDefine.h"
 #import "GroupInfoDetailHeaderView.h"
+#import "ProvisionManager.h"
 
 #define kPaddingDistance                10
 #define kHeaderViewHeight               100
@@ -55,6 +56,10 @@
     }
     else
     {
+//        NSArray * arr = [[ProvisionManager sharedInstance] getProfile];
+//        if () {
+//            <#statements#>
+//        }
         GroupInfoCollectionViewCell * cell = (GroupInfoCollectionViewCell *) [collectionView dequeueReusableCellWithReuseIdentifier:kGroupInfoCollectionViewCell forIndexPath:indexPath];
         
         [cell setCellInfo:@{@"name":@"",@"add":@"add"}];

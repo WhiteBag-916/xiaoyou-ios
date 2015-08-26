@@ -33,6 +33,8 @@
 @property (nonatomic,strong) NSMutableArray *contactsDataSource;
 @property (nonatomic,strong) NSMutableArray *contactsHeadDataSouce;
 
+@property (nonatomic,strong) EMMessage * systemMessage;
+
 @end
 
 @implementation XYMessageAndContactsViewController
@@ -102,14 +104,24 @@
 -(void)refreshDataSource
 {
     _messageDataSource = [self loadDataSource];
-    [_messageTableView refreshTableView:_messageDataSource];
+    [_messageTableView refreshTableView:_messageDataSource AndHeaderModel:_systemMessage];
     [self hideHud];
 }
 
 - (NSMutableArray *)loadDataSource
 {
     NSMutableArray *ret = nil;
-    NSArray *conversations = [[EaseMob sharedInstance].chatManager conversations];
+    NSMutableArray *conversations = [[NSMutableArray alloc] initWithArray:[[EaseMob sharedInstance].chatManager conversations]];
+    
+    for (EMConversation *conversation in conversations) {
+        _systemMessage = [conversation latestMessage];
+        NSLog(@"arr = %@",_systemMessage);
+        if ([conversation.chatter isEqualToString:@"000001"])
+        {
+            _systemMessage = [conversation latestMessage];
+            [conversations removeObject:conversation];
+        }
+    }
     
     NSArray* sorte = [conversations sortedArrayUsingComparator:
                       ^(EMConversation *obj1, EMConversation* obj2){
