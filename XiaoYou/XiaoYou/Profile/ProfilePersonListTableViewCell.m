@@ -13,6 +13,7 @@
 #import "UIImageView+WebCache.h"
 #import "FeedTag.h"
 #import "Author.h"
+#import "ContactManager.h"
 NSString *const kProfilePersonListTableViewCell = @"kProfilePersonListTableViewCell";
 
 
@@ -37,6 +38,8 @@ NSString *const kProfilePersonListTableViewCell = @"kProfilePersonListTableViewC
 @property (nonatomic, strong) FeedTag *tagView;
 @property (nonatomic, strong) UIButton *addFriend;
 @property (nonatomic, strong) UILabel *genderLabel;
+
+@property (nonatomic, strong) Author *myAuthor;
 
 @end
 
@@ -106,6 +109,7 @@ NSString *const kProfilePersonListTableViewCell = @"kProfilePersonListTableViewC
 }
 
 - (void)setData:(Author *)author needShowGender:(BOOL)needShowGender {
+    _myAuthor = author;
     [_face setData:author.uid imageUrl:author.headPic];
     _userName.text = author.name;
     [_tagView setData:author.tagsCommon];
@@ -121,9 +125,32 @@ NSString *const kProfilePersonListTableViewCell = @"kProfilePersonListTableViewC
             make.top.equalTo(_userName.mas_bottom).offset(KTAGMARGIN_TOP);
         }];
     }
+    [self updateStatus:author.friendStatus];
+}
+- (void)updateStatus:(NSString *)status {
+    if ([status isEqualToString:@"1"]) {
+        _addFriend.hidden = false;
+        _addFriend.enabled = true;
+    }
+    if ([status isEqualToString:@"2"]) {
+        _addFriend.hidden = false;
+        _addFriend.enabled = false;
+    }
+    if ([status isEqualToString:@"3"]) {
+        _addFriend.hidden = true;
+    }
 }
 - (void)clickAdd {
-    [[NSNotificationCenter defaultCenter] postNotificationName:KNotification_Present_AddFriend object:nil userInfo:@{@"uid":_face.userId}];
+    [YUtils showHUDWithTitle:@"发送中"];
+    [[ContactManager sharedInstance] submitFriendApply:_face.userId block:^(YActionMessage *message) {
+        [YUtils hiddenProgressHUD];
+        if (message.isSuccess) {
+            _myAuthor.friendStatus = @"2";
+            [self updateStatus:_myAuthor.friendStatus];
+        } else {
+            [YUtils showTitle:message.desc];
+        }
+    }];
 }
 
 @end
