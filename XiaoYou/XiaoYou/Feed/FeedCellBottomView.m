@@ -270,7 +270,7 @@
         _respectNum.text = [NSString stringWithFormat:@"%d", (int)[(Comment *)_myInfo praiseCount]];
     }
     if (isRepect) {
-        _respectImg.image = [UIImage imageNamed:@"cup"];
+        _respectImg.image = [UIImage imageNamed:@"cupgreen"];
         _respectNum.textColor = KCOLORGREEN_009688;
     } else {
         _respectImg.image = [UIImage imageNamed:@"cup"];

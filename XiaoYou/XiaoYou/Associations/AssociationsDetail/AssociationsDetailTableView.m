@@ -140,7 +140,7 @@
         return cell;
     } else if (AssociationsDetailTableViewFeedSection == section) {
         FeedListTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kOrganizationFeedListTableViewCell];
-        
+        [cell setHintHidden:indexPath.row !=0];
         [cell setData:_feedListArray[indexPath.row]];
         
         return cell;

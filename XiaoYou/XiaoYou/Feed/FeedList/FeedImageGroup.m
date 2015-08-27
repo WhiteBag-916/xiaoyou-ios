@@ -46,7 +46,8 @@
         
         [self initImgs];
         [self addSubview:_camera];
-        _camera.backgroundColor = [UIColor redColor];
+        _camera.contentMode = UIViewContentModeCenter;
+        _camera.image = [UIImage imageNamed:@"camera"];
         [_camera mas_makeConstraints:^(MASConstraintMaker *make) {
             make.edges.equalTo(_contentView.subviews[0]);
         }];

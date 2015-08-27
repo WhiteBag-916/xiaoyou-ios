@@ -429,6 +429,10 @@
 		65A847051B81CA1900933815 /* FeedCellBottomView.m in Sources */ = {isa = PBXBuildFile; fileRef = 65A847041B81CA1900933815 /* FeedCellBottomView.m */; };
 		65BCCAEB1B81A72500266A18 /* FeedDetailTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 65BCCAEA1B81A72500266A18 /* FeedDetailTableView.m */; };
 		65BCF1E11B818441003457F4 /* FeedDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 65BCF1E01B818441003457F4 /* FeedDetailViewController.m */; };
+		65CF63831B8EA2B500ACBB70 /* camera@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 65CF63811B8EA2B500ACBB70 /* camera@2x.png */; };
+		65CF63841B8EA2B500ACBB70 /* camera@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 65CF63821B8EA2B500ACBB70 /* camera@3x.png */; };
+		65CF63871B8EA35800ACBB70 /* cupgreen@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 65CF63851B8EA35800ACBB70 /* cupgreen@2x.png */; };
+		65CF63881B8EA35800ACBB70 /* cupgreen@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 65CF63861B8EA35800ACBB70 /* cupgreen@3x.png */; };
 		65F55A9E1B897C4700ED4348 /* ProfileTagViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 65F55A9D1B897C4700ED4348 /* ProfileTagViewController.m */; };
 		65F55AA11B899EBC00ED4348 /* UIImageView+Ext.m in Sources */ = {isa = PBXBuildFile; fileRef = 65F55AA01B899EBC00ED4348 /* UIImageView+Ext.m */; };
 		65F82F841B85E74A00FF6E2D /* FeedPublishViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 65F82F831B85E74A00FF6E2D /* FeedPublishViewController.m */; };
@@ -1097,6 +1101,10 @@
 		65BCCAEA1B81A72500266A18 /* FeedDetailTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FeedDetailTableView.m; path = XiaoYou/Feed/FeedList/FeedDetailTableView.m; sourceTree = SOURCE_ROOT; };
 		65BCF1DF1B818441003457F4 /* FeedDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FeedDetailViewController.h; path = XiaoYou/Feed/FeedList/FeedDetailViewController.h; sourceTree = SOURCE_ROOT; };
 		65BCF1E01B818441003457F4 /* FeedDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FeedDetailViewController.m; path = XiaoYou/Feed/FeedList/FeedDetailViewController.m; sourceTree = SOURCE_ROOT; };
+		65CF63811B8EA2B500ACBB70 /* camera@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "camera@2x.png"; sourceTree = "<group>"; };
+		65CF63821B8EA2B500ACBB70 /* camera@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "camera@3x.png"; sourceTree = "<group>"; };
+		65CF63851B8EA35800ACBB70 /* cupgreen@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cupgreen@2x.png"; sourceTree = "<group>"; };
+		65CF63861B8EA35800ACBB70 /* cupgreen@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cupgreen@3x.png"; sourceTree = "<group>"; };
 		65F55A9C1B897C4700ED4348 /* ProfileTagViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileTagViewController.h; sourceTree = "<group>"; };
 		65F55A9D1B897C4700ED4348 /* ProfileTagViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileTagViewController.m; sourceTree = "<group>"; };
 		65F55A9F1B899EBC00ED4348 /* UIImageView+Ext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+Ext.h"; sourceTree = "<group>"; };
@@ -1653,6 +1661,10 @@
 				20E18DA71B808E42005B75EE /* tag-green@3x.png */,
 				20E18DA81B808E42005B75EE /* tag-grey@2x.png */,
 				20E18DA91B808E42005B75EE /* tag-grey@3x.png */,
+				65CF63811B8EA2B500ACBB70 /* camera@2x.png */,
+				65CF63821B8EA2B500ACBB70 /* camera@3x.png */,
+				65CF63851B8EA35800ACBB70 /* cupgreen@2x.png */,
+				65CF63861B8EA35800ACBB70 /* cupgreen@3x.png */,
 			);
 			path = Feed;
 			sourceTree = "<group>";
@@ -2783,6 +2795,7 @@
 				333122BA1B806EDC00D3D032 /* messageToolbarBg@2x.png in Resources */,
 				650C6C2F1B88777400A89AC9 /* mine-complete-grey@3x.png in Resources */,
 				20E18DB51B808E42005B75EE /* common_back@3x.png in Resources */,
+				65CF63871B8EA35800ACBB70 /* cupgreen@2x.png in Resources */,
 				3334AC3E1B83075800FDDCCB /* default_head@2x.png in Resources */,
 				20DA1A761B89BEF100DEF95C /* register-frame-agree@2x.png in Resources */,
 				333122C41B806EDC00D3D032 /* chat_receiver_audio_playing_full@2x.png in Resources */,
@@ -2810,6 +2823,7 @@
 				20DAE1531B882CFF00607996 /* register-number@3x.png in Resources */,
 				20E18DC71B808E42005B75EE /* cup@3x.png in Resources */,
 				333122CB1B806EDC00D3D032 /* chat_sender_audio_playing_002.png in Resources */,
+				65CF63831B8EA2B500ACBB70 /* camera@2x.png in Resources */,
 				20E18DC81B808E42005B75EE /* menu-remind@2x.png in Resources */,
 				333122BC1B806EDC00D3D032 /* chat_receiver_audio_playing000@2x.png in Resources */,
 				334670641B841F2800A8628A /* new-remind-number@2x.png in Resources */,
@@ -2868,9 +2882,11 @@
 				20E18DBA1B808E42005B75EE /* common_star@2x.png in Resources */,
 				3334AC241B82D7C400FDDCCB /* VoiceSearchFeedback003@2x.png in Resources */,
 				654379B21B8DB223007B15CA /* icon@2x.png in Resources */,
+				65CF63881B8EA35800ACBB70 /* cupgreen@3x.png in Resources */,
 				333122CC1B806EDC00D3D032 /* chat_sender_audio_playing_002@2x.png in Resources */,
 				33F83A8D1B8B2B6D00FF5483 /* mine-heart-red@3x.png in Resources */,
 				3346706D1B8426D400A8628A /* delete-member@3x.png in Resources */,
+				65CF63841B8EA2B500ACBB70 /* camera@3x.png in Resources */,
 				3334ABFE1B82C66F00FDDCCB /* chatBar_recordSelected@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
