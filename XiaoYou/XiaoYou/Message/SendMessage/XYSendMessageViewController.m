@@ -8,7 +8,7 @@
 
 #import "XYSendMessageViewController.h"
 #import "SendMessageTableView.h"
-#import "LinkManList.h"
+#import "Author.h"
 #import "ChatSendHelper.h"
 #import "ProvisionManager.h"
 #import "ProfileInfo.h"
@@ -58,7 +58,7 @@
     //发送Label
     _sendPersonLabel = [[UILabel alloc] init];
     _sendPersonLabel.backgroundColor = [UIColor clearColor];
-    LinkManList * model = _sendPersonsArr[0];
+    Author * model = _sendPersonsArr[0];
     _sendPersonLabel.text = [NSString stringWithFormat:@"%@等%ld人",model.name,_sendPersonsArr.count];
     _sendPersonLabel.font = CONTENT_FONT(13);
     [backView addSubview:_sendPersonLabel];
@@ -134,9 +134,9 @@
     }
     for (int i = 0 ; i < _sendPersonsArr.count; i++)
     {
-        LinkManList * model = _sendPersonsArr[i];
+        Author * model = _sendPersonsArr[i];
         EMMessage *tempMessage = [ChatSendHelper sendTextMessageWithString:textMessage
-                                                                toUsername:model.thirdCode
+                                                                toUsername:[NSString stringWithFormat:@"4_%@",model.studentNo]
                                                                messageType:eMessageTypeChat
                                                          requireEncryption:NO
                                                                        ext:ext];
