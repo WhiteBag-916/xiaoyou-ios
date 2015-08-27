@@ -49,7 +49,7 @@ NSString *const kNormalSystemMessageTableViewCell = @"NormalSystemMessageTableVi
         [self.contentView addSubview:_backImageView];
         [_backImageView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.top.mas_equalTo(3*kPaddingDistance);
-            make.bottom.mas_equalTo(-3*kPaddingDistance);
+            make.bottom.mas_equalTo(-2*kPaddingDistance);
             make.right.mas_equalTo(-4*kPaddingDistance);
             make.left.equalTo(_headImageView.mas_right).offset(kPaddingDistance);
         }];

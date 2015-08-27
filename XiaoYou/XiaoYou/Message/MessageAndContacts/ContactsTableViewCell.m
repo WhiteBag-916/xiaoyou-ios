@@ -17,7 +17,7 @@
 #import "ProfileInfo.h"
 
 #define kHeadWidthAndHeight            40
-#define kNameLabelWidth                80
+#define kNameLabelWidth                120
 #define kHeadCornerRadius              20
 #define kFlagImageViewWidth            11
 #define kFlagImageViewHeight           14

@@ -238,9 +238,7 @@
 
 - (void)setupBarButtonItem
 {
-    
-    self.title = _studentDic[@"name"];
-    
+  
     UIButton *backButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 9, 14)];
     [backButton setImage:[UIImage imageNamed:@"common_back"] forState:UIControlStateNormal];
     [backButton addTarget:self action:@selector(back) forControlEvents:UIControlEventTouchUpInside];
@@ -248,16 +246,18 @@
     [self.navigationItem setLeftBarButtonItem:backItem];
     
     if (self.isChatGroup) {
+        self.title = _studentDic[@"groupName"];
         UIImageView * headImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 40, 40)];
         headImageView.layer.cornerRadius = 20;
         headImageView.clipsToBounds = YES;
         headImageView.userInteractionEnabled = YES;
-        [headImageView setFaceImageWithUrl:_studentDic[@"icon"]];
+        [headImageView setFaceImageWithUrl:_studentDic[@"groupIcon"]];
         UIButton *detailButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 60, 44)];
         [detailButton addTarget:self action:@selector(showRoomContact:) forControlEvents:UIControlEventTouchUpInside];
         [headImageView addSubview:detailButton];
         self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:headImageView];    }
     else{
+        self.title = _studentDic[@"name"];
         UIImageView * headImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 40, 40)];
         headImageView.layer.cornerRadius = 20;
         headImageView.clipsToBounds = YES;
