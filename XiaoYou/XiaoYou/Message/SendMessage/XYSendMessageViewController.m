@@ -8,6 +8,12 @@
 
 #import "XYSendMessageViewController.h"
 #import "SendMessageTableView.h"
+#import "LinkManList.h"
+#import "ChatSendHelper.h"
+#import "ProvisionManager.h"
+#import "ProfileInfo.h"
+#import "LoginResp.h"
+#import "RobotManager.h"
 
 #define KBOTTOMHEIGHT [DXMessageToolBar defaultHeight]
 #define kBackViewHeight                 118
@@ -15,13 +21,13 @@
 #define kLabelHeight                    20
 #define kTableViewHeight                290
 
-@interface XYSendMessageViewController ()<DXMessageToolBarDelegate,SendMessageTableViewDelegate>
+@interface XYSendMessageViewController ()<DXMessageToolBarDelegate,SendMessageTableViewDelegate,DXMessageToolBarDelegate>
 
 @property(nonatomic,strong)SendMessageTableView * sendMessageTableView;
 
 @property(nonatomic,strong) UILabel * sendPersonLabel;
 @property(nonatomic,strong) UILabel * remindLabel;
-
+@property (nonatomic) BOOL isRobot;
 
 @end
 
@@ -52,7 +58,8 @@
     //发送Label
     _sendPersonLabel = [[UILabel alloc] init];
     _sendPersonLabel.backgroundColor = [UIColor clearColor];
-    _sendPersonLabel.text = @"发送对象：小明等9人";
+    LinkManList * model = _sendPersonsArr[0];
+    _sendPersonLabel.text = [NSString stringWithFormat:@"%@等%ld人",model.name,_sendPersonsArr.count];
     _sendPersonLabel.font = CONTENT_FONT(13);
     [backView addSubview:_sendPersonLabel];
     [_sendPersonLabel mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -108,6 +115,32 @@
 -(void)keyBoardHidden
 {
     [self.chatToolBar endEditing:YES];
+}
+
+- (void)didSendText:(NSString *)text
+{
+    if (text && text.length > 0) {
+        [self sendTextMessage:text];
+    }
+}
+
+-(void)sendTextMessage:(NSString *)textMessage
+{
+    NSDictionary *ext = @{@"headImage":[[ProvisionManager sharedInstance] getLoginInfo].icon,@"userName":[[ProvisionManager sharedInstance] getLoginInfo].studentName};
+    NSLog(@"%@",ext);
+    
+    if (_isRobot) {
+        ext = @{kRobot_Message_Ext:[NSNumber numberWithBool:YES]};
+    }
+    for (int i = 0 ; i < _sendPersonsArr.count; i++)
+    {
+        LinkManList * model = _sendPersonsArr[i];
+        EMMessage *tempMessage = [ChatSendHelper sendTextMessageWithString:textMessage
+                                                                toUsername:model.thirdCode
+                                                               messageType:eMessageTypeChat
+                                                         requireEncryption:NO
+                                                                       ext:ext];
+    }
 }
 
 - (void)didReceiveMemoryWarning {

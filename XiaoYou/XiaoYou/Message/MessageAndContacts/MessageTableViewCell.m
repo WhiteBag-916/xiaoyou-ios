@@ -139,7 +139,9 @@ NSString *const kMessageTableViewCell = @"MessageTableViewCellId";
     _messageLabel.text = [self subTitleMessageByConversation:conversation];
     
     //昵称
-    _nameLabel.text = userInfoDic[@"name"];
+//    _nameLabel.text = userInfoDic[@"name"];
+    _nameLabel.text = conversation.latestMessage.ext[@"userName"];
+
     
     //头像
     [_headImageView setFaceImageWithUrl:userInfoDic[@"icon"]];

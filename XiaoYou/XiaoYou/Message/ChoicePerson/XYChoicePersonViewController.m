@@ -9,6 +9,10 @@
 #import "XYChoicePersonViewController.h"
 #import "ChoicePersonTableView.h"
 #import "XYSendMessageViewController.h"
+#import "ContactManager.h"
+#import "LinkManModel.h"
+#import "LinkManList.h"
+#import "YUtils+HUD.h"
 
 #define kButtonItemHeightAndWidth           44
 #define kCancleButtonItemWidth              55
@@ -17,6 +21,8 @@
 @interface XYChoicePersonViewController ()
 
 @property(nonatomic,strong)ChoicePersonTableView * choicePersonTableView;
+
+@property (nonatomic,strong) NSMutableArray * dataSourceArr;
 
 @end
 
@@ -28,6 +34,16 @@
     
     [self setUpUI];
     
+    LinkManModel * model =[[ContactManager sharedInstance] getContactsListData];
+    _dataSourceArr = [[NSMutableArray alloc] initWithArray:model.linkManList];
+    [_choicePersonTableView refreshTableView:_dataSourceArr];
+    
+}
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [_choicePersonTableView refreshTableView:_dataSourceArr];
 }
 
 -(void)setUpUI
@@ -66,13 +82,31 @@
 -(void)finishChoice
 {
     NSLog(@"finish");
-    XYSendMessageViewController * sendMessageViewController = [[XYSendMessageViewController alloc] init];
-    [self.navigationController pushViewController:sendMessageViewController animated:YES];
+    NSMutableArray * sendPersonsArr = [[NSMutableArray alloc] init];
+    [_choicePersonTableView.dataSouceArr enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+        if ([obj[@"isSelected"] boolValue])
+        {
+            LinkManList * model = obj[@"model"];
+            [sendPersonsArr addObject:model];
+        }
+    }];
+    if (sendPersonsArr.count > 0)
+    {
+        XYSendMessageViewController * sendMessageViewController = [[XYSendMessageViewController alloc] init];
+        sendMessageViewController.sendPersonsArr = sendPersonsArr;
+        [self.navigationController pushViewController:sendMessageViewController animated:YES];
+    }
+    else
+    {
+        [YUtils showTitle:@"没有选择任何人" hideAfter:2];
+    }
+    
 }
 
 -(void)cancelChoice
 {
     NSLog(@"cancel");
+    [_choicePersonTableView refreshTableView:_dataSourceArr];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -80,14 +114,6 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

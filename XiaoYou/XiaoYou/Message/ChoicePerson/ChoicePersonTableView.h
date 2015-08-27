@@ -10,4 +10,8 @@
 
 @interface ChoicePersonTableView : YTableView
 
+@property(nonatomic,strong)NSMutableArray * dataSouceArr;
+
+-(void)refreshTableView:(NSMutableArray *) dataSouceArr;
+
 @end

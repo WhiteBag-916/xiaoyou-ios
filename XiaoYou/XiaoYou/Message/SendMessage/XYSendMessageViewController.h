@@ -14,4 +14,6 @@
 
 @property (strong, nonatomic) DXMessageToolBar *chatToolBar;
 
+@property (nonatomic,strong)NSMutableArray * sendPersonsArr;
+
 @end

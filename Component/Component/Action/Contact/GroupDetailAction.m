@@ -14,7 +14,7 @@
 
 - (void)execute
 {
-    NSDictionary *parameter = [YUtils getParameter:@{@"groupId":_groupId} needUserToken:YES needAddUserID:YES];
+    NSDictionary *parameter = [YUtils getParameter:@{@"groupId":_groupId} needUserToken:YES];
     NSString *url = [YUtils getUrl:api_group_GroupDetail];
     [self POST:url parameters:parameter completion:^(YHttpRequest *request) {
         YActionMessage *message = [GroupDetail actionMessageWithHttpRequest:request];

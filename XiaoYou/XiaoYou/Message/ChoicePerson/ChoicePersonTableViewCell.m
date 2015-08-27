@@ -7,6 +7,7 @@
 //
 
 #import "ChoicePersonTableViewCell.h"
+#import "LinkManList.h"
 
 #define kHeadCornerRadius              22.5
 #define kPaddingDistance               12
@@ -67,7 +68,9 @@ NSString *const kChoicePersonTableViewCell = @"ChoicePersonTableViewCellId";
 
 -(void)setCellInfo:(NSDictionary *) dic
 {
-    _nameLabel.text = dic[@"name"];
+    LinkManList * model = dic[@"model"];
+    _nameLabel.text = model.name;
+    [_headImageView setFaceImageWithUrl:model.icon];
     if ([dic[@"isSelected"] boolValue] == YES)
     {
         _backView.backgroundColor = [UIColor hexChangeFloat:@"b8dcda"];

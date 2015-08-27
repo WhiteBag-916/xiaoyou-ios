@@ -11,8 +11,6 @@
 
 @interface ChoicePersonTableView ()<UITableViewDataSource,UITableViewDelegate>
 
-@property(nonatomic,strong)NSMutableArray * dataSouceArr;
-
 @end
 
 @implementation ChoicePersonTableView
@@ -25,23 +23,20 @@
         self.delegate = self;
         
         [self registerClass:[ChoicePersonTableViewCell class] forCellReuseIdentifier:kChoicePersonTableViewCell];
-        
-        _dataSouceArr = [@[[@{@"name":@"张三",@"isSelected":@NO} mutableCopy],
-                           [@{@"name":@"张三",@"isSelected":@NO} mutableCopy],
-                           [@{@"name":@"张三",@"isSelected":@NO} mutableCopy],
-                           [@{@"name":@"张三",@"isSelected":@NO} mutableCopy],
-                           [@{@"name":@"张三",@"isSelected":@NO} mutableCopy],
-                           [@{@"name":@"张三",@"isSelected":@NO} mutableCopy],
-                           [@{@"name":@"张三",@"isSelected":@NO} mutableCopy],
-                           [@{@"name":@"张三",@"isSelected":@NO} mutableCopy],
-                           [@{@"name":@"张三",@"isSelected":@NO} mutableCopy]
-                           ] mutableCopy];
+        _dataSouceArr = [[NSMutableArray alloc] init];
     }
     return self;
 }
 
 -(void)refreshTableView:(NSMutableArray *) dataSouceArr
 {
+    [_dataSouceArr removeAllObjects];
+    [dataSouceArr enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+        NSMutableDictionary * dic = [[NSMutableDictionary alloc] init];
+        [dic setObject:obj forKey:@"model"];
+        [dic setObject:@NO forKey:@"isSelected"];
+        [_dataSouceArr addObject:dic];
+    }];
     [self reloadData];
 }
 
