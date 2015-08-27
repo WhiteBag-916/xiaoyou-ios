@@ -74,7 +74,9 @@ NSString *const kCommonObj = @"obj";
         errorCode = kYYHTTPErrorBase + request.errorCode;
         if (YHTTPConnectionFailureErrorType == errorCode) {
             errorDescription = @"无网络连接";
-        } else {
+        } else if (YHTTPRequestTimedOutErrorType == errorCode) {
+            errorDescription = @"请求超时";
+        }else {
             errorDescription = request.error.description;
         }
     }
