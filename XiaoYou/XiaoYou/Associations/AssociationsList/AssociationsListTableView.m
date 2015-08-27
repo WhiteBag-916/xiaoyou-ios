@@ -11,6 +11,7 @@
 #import "AssociationsDetailViewController.h"
 #import "FeedManager.h"
 #import "GroupModel.h"
+#import "GroupAllList.h"
 
 #define KPAGENUM 15
 
@@ -95,17 +96,24 @@
         cnt = 0;
     }
     [[FeedManager sharedInstance] groupList:cnt limitEnd:cnt + KPAGENUM name:_searchStr queryCode:_filterStr block:^(YActionMessage *message) {
-        [self dealMessage:message];
+        if (_searchStr.length > 0) {
+            [self searchMessage:message];
+        } else {
+            [self dealMessage:message];
+        }
+        
     }];
 }
 
 - (void)dealMessage:(YActionMessage *)message {
-    if ([self isHeaderRefresh] || _searchStr.length > 0) {
-        [_associationsListArray removeAllObjects];
-    }
+    [self stopLoad];
+    
     if (message.isSuccess) {
-        [_associationsListArray addObjectsFromArray:message.object];
-        if ([message.object count] < KPAGENUM) {
+        if ([self isHeaderRefresh]) {
+            [_associationsListArray removeAllObjects];
+        }
+        [_associationsListArray addObjectsFromArray:[message.object groupList]];
+        if ([_associationsListArray count] < KPAGENUM) {
             [self showNoticeNoMoreData];
         }
         [self reloadData];
@@ -113,10 +121,19 @@
     } else {
         [YUtils showTitleOn:self title:message.desc];
     }
-    if ([self isHeaderRefresh]) {
-        [self stopLoadNewData];
-    } else {
-        [self stopLoadMoreData];
+}
+
+- (void)searchMessage:(YActionMessage *)message {
+    [self stopLoad];
+    
+    if (message.isSuccess && [_searchStr isEqualToString:[message.object searchKey]]) {
+        [_associationsListArray removeAllObjects];
+        [_associationsListArray addObjectsFromArray:[message.object groupList]];
+        if ([_associationsListArray count] < KPAGENUM) {
+            [self showNoticeNoMoreData];
+        }
+        
+        [self reloadData];
     }
 }
 

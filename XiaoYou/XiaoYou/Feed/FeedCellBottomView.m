@@ -164,6 +164,7 @@
         FeedInfo *data = inData;
         _myInfo = data.feed;
         _info = data;
+        _feedId = [NSString stringWithFormat:@"%d", (int)data.feed.feedIdentifier];
         _respectNum.text = [NSString stringWithFormat:@"%d", (int)data.feed.praiseCount];
         [self updateRespect:data.feed.isPraise];
         [self initPersonList];
@@ -195,7 +196,7 @@
         }];
         tmp = face;
     }
-    if (_info.praisePeoples.count > 4) {
+    if (_info.praisePeoples.count < 4) {
         UIImageView *open = [[UIImageView alloc] init];
         open.backgroundColor = [UIColor redColor];
         [_personList addSubview:open];
@@ -270,7 +271,7 @@
         _respectNum.text = [NSString stringWithFormat:@"%d", (int)[(Comment *)_myInfo praiseCount]];
     }
     if (isRepect) {
-        _respectImg.image = [UIImage imageNamed:@"cup"];
+        _respectImg.image = [UIImage imageNamed:@"cupgreen"];
         _respectNum.textColor = KCOLORGREEN_009688;
     } else {
         _respectImg.image = [UIImage imageNamed:@"cup"];
@@ -291,7 +292,7 @@
     [sheet show];
 }
 - (void)openDetail {
-    
+    [[NSNotificationCenter defaultCenter] postNotificationName:KNotification_Open_PraiseDetail object:nil userInfo:@{@"feedId":_feedId}];
 }
 
 @end

@@ -14,6 +14,7 @@
 #import "ProfileMyViewController.h"
 #import "XYContactsInfoDetailViewController.h"
 #import "YCommonEditViewController.h"
+#import "ProfilePersonListController.h"
 
 #define kTag_TabBar_Base 0
 #define kTag_TabBar_Message kTag_TabBar_Base + 1
@@ -42,6 +43,7 @@
 {
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(openProfile:) name:KNotification_Open_Profile object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(setupUnreadMessageCount:) name:KNotification_Message_unread object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(openPraise:) name:KNotification_Open_PraiseDetail object:nil];
     
     _messageVC = [[XYMessageAndContactsViewController alloc] init];
     FeedListViewController *feedVC = [[FeedListViewController alloc] init];
@@ -99,6 +101,10 @@
 }
 - (void)openProfile:(NSNotification *)notification {
     [self dealProfileOpen:[notification userInfo][@"uid"]];
+}
+- (void)openPraise:(NSNotification *)notification {
+    UINavigationController *controller = (UINavigationController *)self.selectedViewController;
+    [controller pushViewController:[[ProfilePersonListController alloc] initWithType:PersonListFeedRespect feedId:[notification userInfo][@"feedId"]] animated:true];
 }
 - (void)dealProfileOpen:(NSString *)userId {
     UINavigationController *controller = (UINavigationController *)self.selectedViewController;

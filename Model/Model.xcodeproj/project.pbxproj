@@ -15,6 +15,8 @@
 		20C5B0691B8DB75A00B4A8A8 /* AlertList.m in Sources */ = {isa = PBXBuildFile; fileRef = 20C5B0681B8DB75A00B4A8A8 /* AlertList.m */; };
 		20DA1A601B8995A000DEF95C /* ProvinceCode.m in Sources */ = {isa = PBXBuildFile; fileRef = 20DA1A5F1B8995A000DEF95C /* ProvinceCode.m */; };
 		20DA74BD1B8C0BFA0002E041 /* FriendsCondition.m in Sources */ = {isa = PBXBuildFile; fileRef = 20DA74BC1B8C0BFA0002E041 /* FriendsCondition.m */; };
+		20DA8B111B8EB7C0007D0CDE /* GroupFeedList.m in Sources */ = {isa = PBXBuildFile; fileRef = 20DA8B101B8EB7C0007D0CDE /* GroupFeedList.m */; };
+		20DA8B1A1B8EBD27007D0CDE /* GroupAllList.m in Sources */ = {isa = PBXBuildFile; fileRef = 20DA8B191B8EBD27007D0CDE /* GroupAllList.m */; };
 		20DBFD271B4FA0E5009134D0 /* libModel.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 20DBFD1B1B4FA0E5009134D0 /* libModel.a */; };
 		20DCB9581B8CA60800C758DE /* ApplicantList.m in Sources */ = {isa = PBXBuildFile; fileRef = 20DCB9571B8CA60800C758DE /* ApplicantList.m */; };
 		20E0BFFF1B88B0CA00EDAED4 /* UploadImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 20E0BFFE1B88B0CA00EDAED4 /* UploadImage.m */; };
@@ -81,6 +83,10 @@
 		20DA1A5F1B8995A000DEF95C /* ProvinceCode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProvinceCode.m; sourceTree = "<group>"; };
 		20DA74BB1B8C0BFA0002E041 /* FriendsCondition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendsCondition.h; sourceTree = "<group>"; };
 		20DA74BC1B8C0BFA0002E041 /* FriendsCondition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendsCondition.m; sourceTree = "<group>"; };
+		20DA8B0F1B8EB7C0007D0CDE /* GroupFeedList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroupFeedList.h; sourceTree = "<group>"; };
+		20DA8B101B8EB7C0007D0CDE /* GroupFeedList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroupFeedList.m; sourceTree = "<group>"; };
+		20DA8B181B8EBD27007D0CDE /* GroupAllList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroupAllList.h; sourceTree = "<group>"; };
+		20DA8B191B8EBD27007D0CDE /* GroupAllList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroupAllList.m; sourceTree = "<group>"; };
 		20DBFD1B1B4FA0E5009134D0 /* libModel.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libModel.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		20DBFD261B4FA0E5009134D0 /* ModelTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ModelTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		20DBFD2C1B4FA0E5009134D0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -290,6 +296,10 @@
 		20E0C0691B88B0CA00EDAED4 /* Feed */ = {
 			isa = PBXGroup;
 			children = (
+				20DA8B181B8EBD27007D0CDE /* GroupAllList.h */,
+				20DA8B191B8EBD27007D0CDE /* GroupAllList.m */,
+				20DA8B0F1B8EB7C0007D0CDE /* GroupFeedList.h */,
+				20DA8B101B8EB7C0007D0CDE /* GroupFeedList.m */,
 				20C5B0671B8DB75A00B4A8A8 /* AlertList.h */,
 				20C5B0681B8DB75A00B4A8A8 /* AlertList.m */,
 				20E1C6731B89F0A7008BA9D6 /* Comment.h */,
@@ -407,6 +417,7 @@
 				20DA74BD1B8C0BFA0002E041 /* FriendsCondition.m in Sources */,
 				20859AA31B64CB7E00580ED3 /* LoginResp.m in Sources */,
 				332D32681B71E9B400B69E96 /* PushInfo.m in Sources */,
+				20DA8B1A1B8EBD27007D0CDE /* GroupAllList.m in Sources */,
 				333E95EA1B70B7AB0001059D /* SchoolDetailModel.m in Sources */,
 				333E95D61B70B7250001059D /* LinkManModel.m in Sources */,
 				20DA1A601B8995A000DEF95C /* ProvinceCode.m in Sources */,
@@ -424,6 +435,7 @@
 				20E1C6791B89F0A7008BA9D6 /* Comment.m in Sources */,
 				20E0C06F1B88B0CA00EDAED4 /* FeedInfo.m in Sources */,
 				20C5B0651B8DB55C00B4A8A8 /* GroupDetail.m in Sources */,
+				20DA8B111B8EB7C0007D0CDE /* GroupFeedList.m in Sources */,
 				333E95EB1B70B7AB0001059D /* SchoolListModel.m in Sources */,
 				333E95DC1B70B75E0001059D /* PushInfoListModel.m in Sources */,
 			);

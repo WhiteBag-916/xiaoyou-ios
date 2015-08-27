@@ -17,4 +17,6 @@ extern NSString *const kOrganizationFeedListTableViewCell;
 @interface FeedListTableViewCell : YTableViewCell
 
 - (void)setData:(id)info;
+
+- (void)setHintHidden:(BOOL)isHidden;
 @end

@@ -58,10 +58,10 @@
 
 - (void)sendRequest {
     [[FeedManager sharedInstance] getMyFeed:_userId limitStart:_feedArray.count limitEnd:_feedArray.count + KPAGENUM block:^(YActionMessage *message) {
-        if ([self isHeaderRefresh]) {
-            [_feedArray removeAllObjects];
-        }
         if (message.isSuccess) {
+            if ([self isHeaderRefresh]) {
+                [_feedArray removeAllObjects];
+            }
             [self hiddenFooter:false];
             [_feedArray addObjectsFromArray:message.object];
             if ([message.object count] < KPAGENUM) {

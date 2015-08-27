@@ -30,7 +30,7 @@ NSString *const KCommentTableViewCell = @"CommentTableViewCell";
 #define KTAGMICONARGIN_TOP SCALE_NUM(18)
 #define KBOTTOMMARGIN_TOP SCALE_NUM(12)
 
-
+#define KHINTSIZE SCALE_NUM(34)
 
 @interface FeedListTableViewCell ()
 
@@ -39,7 +39,7 @@ NSString *const KCommentTableViewCell = @"CommentTableViewCell";
 @property (nonatomic, strong) FeedTag           *tagView;           //tag的view
 @property (nonatomic, strong) FeedCellBottomView *bottomView;       //底下部分UI
 
-
+@property (nonatomic, strong) UILabel *hintLabel;                   //动态
 
 @property (nonatomic, assign) int feedType;                         //feed类型
 
@@ -104,9 +104,22 @@ NSString *const KCommentTableViewCell = @"CommentTableViewCell";
         } else {
             make.left.mas_equalTo(SCALE_NUM(72));
             make.right.equalTo(self.contentView).offset(-KLEFTMARGIN);
-            make.top.equalTo(self.contentView);
+            make.top.equalTo(self.contentView).offset(SCALE_NUM(20));
         }
     }];
+    
+    if (_feedType == FeedOrganizationType) {
+        _hintLabel = [YUtils initLabel:CONTENT_FONT(10) color:KCOLORWHITE text:@"动态" frame:CGRectZero alignment:NSTextAlignmentCenter];
+        [self.contentView addSubview:_hintLabel];
+        [_hintLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.equalTo(self.contentView).offset(SCALE_NUM(10));
+            make.top.equalTo(self.contentView).offset(SCALE_NUM(12));
+            make.width.height.mas_equalTo(KHINTSIZE);
+        }];
+        _hintLabel.layer.cornerRadius = KHINTSIZE/2;
+        _hintLabel.clipsToBounds = true;
+        _hintLabel.backgroundColor = KCOLORGREEN_009688;
+    }
 }
 
 - (void)initTagView {
@@ -191,7 +204,9 @@ NSString *const KCommentTableViewCell = @"CommentTableViewCell";
     }
 }
 
-
+- (void)setHintHidden:(BOOL)isHidden {
+    _hintLabel.hidden = isHidden;
+}
 
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

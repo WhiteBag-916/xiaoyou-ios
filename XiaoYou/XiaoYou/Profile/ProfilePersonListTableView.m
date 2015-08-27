@@ -100,10 +100,10 @@
     }
 }
 - (void)dealMessage:(YActionMessage *)message {
-    if ([self isHeaderRefresh]) {
-        [_personListArray removeAllObjects];
-    }
     if (message.isSuccess) {
+        if ([self isHeaderRefresh]) {
+            [_personListArray removeAllObjects];
+        }
         [_personListArray addObjectsFromArray:message.object];
         if ([message.object count] < KPAGENUM) {
             [self showNoticeNoMoreData];

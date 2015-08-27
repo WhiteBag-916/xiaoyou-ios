@@ -31,6 +31,8 @@
 		20DA1A7E1B89C44D00DEF95C /* MyCoolPersonsAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 20DA1A7D1B89C44D00DEF95C /* MyCoolPersonsAction.m */; };
 		20DA74C01B8C12040002E041 /* FindFriendsAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 20DA74BF1B8C12040002E041 /* FindFriendsAction.m */; };
 		20DA74C31B8C120F0002E041 /* FriendsConditionAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 20DA74C21B8C120F0002E041 /* FriendsConditionAction.m */; };
+		20DA8B141B8EB91D007D0CDE /* GroupDetailInfoAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 20DA8B131B8EB91D007D0CDE /* GroupDetailInfoAction.m */; };
+		20DA8B171B8EB928007D0CDE /* GroupFeedsAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 20DA8B161B8EB928007D0CDE /* GroupFeedsAction.m */; };
 		20DAF9A31B871989005B7932 /* SchoolListAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 20DAF9A21B871989005B7932 /* SchoolListAction.m */; };
 		20DAF9E11B87397A005B7932 /* ForgotPasswordAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 20DAF9E01B87397A005B7932 /* ForgotPasswordAction.m */; };
 		20DAF9E61B8750A4005B7932 /* YDirectory+Data.m in Sources */ = {isa = PBXBuildFile; fileRef = 20DAF9E51B8750A4005B7932 /* YDirectory+Data.m */; };
@@ -136,6 +138,10 @@
 		20DA74BF1B8C12040002E041 /* FindFriendsAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FindFriendsAction.m; sourceTree = "<group>"; };
 		20DA74C11B8C120F0002E041 /* FriendsConditionAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendsConditionAction.h; sourceTree = "<group>"; };
 		20DA74C21B8C120F0002E041 /* FriendsConditionAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendsConditionAction.m; sourceTree = "<group>"; };
+		20DA8B121B8EB91D007D0CDE /* GroupDetailInfoAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroupDetailInfoAction.h; sourceTree = "<group>"; };
+		20DA8B131B8EB91D007D0CDE /* GroupDetailInfoAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroupDetailInfoAction.m; sourceTree = "<group>"; };
+		20DA8B151B8EB928007D0CDE /* GroupFeedsAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroupFeedsAction.h; sourceTree = "<group>"; };
+		20DA8B161B8EB928007D0CDE /* GroupFeedsAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroupFeedsAction.m; sourceTree = "<group>"; };
 		20DAF9A11B871989005B7932 /* SchoolListAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SchoolListAction.h; sourceTree = "<group>"; };
 		20DAF9A21B871989005B7932 /* SchoolListAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SchoolListAction.m; sourceTree = "<group>"; };
 		20DAF9DF1B87397A005B7932 /* ForgotPasswordAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ForgotPasswordAction.h; sourceTree = "<group>"; };
@@ -501,6 +507,10 @@
 				20C5B07D1B8DF3DD00B4A8A8 /* GroupConditionsAction.m */,
 				20C5B07F1B8DF3E700B4A8A8 /* GroupListAction.h */,
 				20C5B0801B8DF3E700B4A8A8 /* GroupListAction.m */,
+				20DA8B121B8EB91D007D0CDE /* GroupDetailInfoAction.h */,
+				20DA8B131B8EB91D007D0CDE /* GroupDetailInfoAction.m */,
+				20DA8B151B8EB928007D0CDE /* GroupFeedsAction.h */,
+				20DA8B161B8EB928007D0CDE /* GroupFeedsAction.m */,
 			);
 			path = Feed;
 			sourceTree = "<group>";
@@ -653,6 +663,7 @@
 				20E0BFF01B88B0CA00EDAED4 /* UploadHeadImageAction.m in Sources */,
 				20C5B0601B8DB43B00B4A8A8 /* IgnoreFriendApplyAction.m in Sources */,
 				20DCB96D1B8CA60800C758DE /* IgnoreApplyListAction.m in Sources */,
+				20DA8B171B8EB928007D0CDE /* GroupFeedsAction.m in Sources */,
 				20C5B07E1B8DF3DD00B4A8A8 /* GroupConditionsAction.m in Sources */,
 				20DCB9671B8CA60800C758DE /* ApplyListAction.m in Sources */,
 				20DA1A5D1B89752000DEF95C /* MyPraisePersonsAction.m in Sources */,
@@ -661,6 +672,7 @@
 				20E341801B720A54008CADC3 /* ProfileDao.m in Sources */,
 				20DCB96A1B8CA60800C758DE /* AgreeApplyAction.m in Sources */,
 				20E1C66F1B89EB8D008BA9D6 /* ModifyPasswordAction.m in Sources */,
+				20DA8B141B8EB91D007D0CDE /* GroupDetailInfoAction.m in Sources */,
 				20DAF9E61B8750A4005B7932 /* YDirectory+Data.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

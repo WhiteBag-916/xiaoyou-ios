@@ -57,11 +57,6 @@
                 make.bottom.equalTo(_contentLabel);
             }];
         }
-        if (type == FeedListType) {
-            _imgGroup.userInteractionEnabled = false;
-        }
-        
-
     }
     return self;
 }

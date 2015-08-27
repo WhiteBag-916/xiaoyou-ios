@@ -59,4 +59,10 @@ AS_SINGLETON(FeedManager);
 //社团列表
 - (void)groupList:(NSInteger)limitStart limitEnd:(NSInteger)limitEnd name:(NSString *)name queryCode:(NSString *)queryCode block:(ActionCompleteBlock)block;
 
+//社团详情
+- (void)groupDetailInfo:(NSInteger)size groupId:(NSString *)groupId block:(ActionCompleteBlock)block;
+
+//社团feed列表
+- (void)groupFeeds:(NSString *)lastId size:(NSInteger)size groupId:(NSString *)groupId block:(ActionCompleteBlock)block;
+
 @end
