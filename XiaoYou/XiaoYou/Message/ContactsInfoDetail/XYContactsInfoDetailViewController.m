@@ -14,6 +14,7 @@
 #import "ChatViewController.h"
 #import "YCommonReport.h"
 
+
 #define kNavigationgRightWidthAndHeight         40
 
 @interface XYContactsInfoDetailViewController ()
@@ -132,7 +133,13 @@
 {
     if (buttonIndex == 1)
     {
-        [ContactManager sharedInstance];
+        
+        [[ContactManager sharedInstance] delLinkMan:_studentDic[@"uid"] block:^(YActionMessage *message) {
+            
+            
+        }];
+        
+        [self.navigationController popViewControllerAnimated:YES];
 
     }
 }

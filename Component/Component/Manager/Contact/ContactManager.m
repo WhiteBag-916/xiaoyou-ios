@@ -23,6 +23,7 @@
 #import "GroupDetailAction.h"
 #import "CommonAction.h"
 #import "YUtils+Component.h"
+#import "LinkManList.h"
 
 #define kContactsManagerSyncQueue @"kContactsManagerSyncQueue"
 
@@ -281,14 +282,33 @@ DEF_SINGLETON(ContactManager);
 
 //删除联系人
 - (void)delLinkMan:(NSString *)delUids block:(ActionCompleteBlock)block {
+    [self delLocalLinkManByUid:delUids];
     CommonAction* action = [[CommonAction alloc] init];
     action.parameter = [YUtils getParameter:@{@"delUids":delUids} needUserToken:YES];
     action.url = [YUtils getUrl:api_user_delLinkMan];
-    
+
     [YAction startAction:action completionBlock:^(YActionMessage* message) {
         //主线程处理界面
         block(message);
     }];
+}
+
+-(void)delLocalLinkManByUid:(NSString *) delUids
+{
+    LinkManModel * linkManModel = [[ContactManager sharedInstance] getContactsListData];
+    NSMutableArray * contactsArr = [[NSMutableArray alloc] initWithArray:linkManModel.linkManList];
+    for (LinkManList * obj in contactsArr)
+    {
+        if ([delUids isEqualToString:obj.uid])
+        {
+            [contactsArr removeObject:obj];
+            break;
+        }
+    }
+    
+    linkManModel.linkManList = [[NSArray alloc] initWithArray:contactsArr];
+    
+    [[ContactManager sharedInstance] saveContactsList:linkManModel];
 }
 
 //社长删除社团成员

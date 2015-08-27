@@ -98,8 +98,9 @@
     [self refreshDataSource];
     [self registerNotifications];
     [self removeEmptyConversationsFromDB];
-    
     [[MessageManager sharedInstance] setupUnreadMessageCount];
+    [_contactsTableView refreshTableView:[[ContactManager sharedInstance] getContactsListData]];
+
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
