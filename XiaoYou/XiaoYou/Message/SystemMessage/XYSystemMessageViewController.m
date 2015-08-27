@@ -38,7 +38,6 @@
         {
             _dataSource = [[NSMutableArray alloc] initWithArray:[conversation loadAllMessages]];
             // 设置当前conversation的所有message为已读
-            [conversation markAllMessagesAsRead:YES];
         }
     }
 }

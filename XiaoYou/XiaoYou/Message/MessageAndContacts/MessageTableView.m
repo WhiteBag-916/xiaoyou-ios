@@ -20,6 +20,8 @@
 #import "ProvisionManager.h"
 #import "YFaceImageView.h"
 #import "NSDate+Category.h"
+#import "RobotManager.h"
+#import "MessageManager.h"
 
 #define kRowHeight                     68
 #define kHeadWidthAndHeight            40
@@ -29,6 +31,7 @@
 #define kPaddingDistance               10
 #define kLabelHeightDistacnce          14
 #define kBadgeWidthDistance            21
+#define kBottomLineHeight              0.4
 
 
 
@@ -42,6 +45,7 @@
 @property (strong, nonatomic)  UILabel *timeLabel;
 @property (strong, nonatomic)  UILabel *messageLabel;
 
+@property (nonatomic,strong) EMMessage * message;
 
 @end
 
@@ -79,6 +83,8 @@
 
 -(void)setUpHeaderView:(EMMessage *) model
 {
+    _message = model;
+    
     UIView * backView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, kRowHeight)];
     UITapGestureRecognizer * tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapGestureRecognizerAction)];
     [backView addGestureRecognizer:tapGestureRecognizer];
@@ -86,7 +92,7 @@
     _headImageView = [[UIImageView alloc] init];
     _headImageView.layer.cornerRadius = kHeadCornerRadius;
     _headImageView.clipsToBounds = YES;
-    _headImageView.backgroundColor = [UIColor hexChangeFloat:@"258f74"];
+//    _headImageView.image = [YShareData defaultData][kShareData_SchoolIcon];
     [_headImageView setNormalImageWithUrl:[YShareData defaultData][kShareData_SchoolIcon]];
     [backView addSubview:_headImageView];
     [_headImageView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -109,7 +115,6 @@
     }];
     //消息数
     _badgeNumberLabel = [[UILabel alloc] init];
-    _badgeNumberLabel.text = @"8";
     _badgeNumberLabel.font = CONTENT_FONT(10);
     _badgeNumberLabel.textAlignment = NSTextAlignmentCenter;
     _badgeNumberLabel.backgroundColor = [UIColor hexChangeFloat:@"258f74"];
@@ -146,7 +151,7 @@
     _messageLabel = [[UILabel alloc] init];
     _messageLabel.font = CONTENT_FONT(12);
     _messageLabel.backgroundColor = [UIColor clearColor];
-    _messageLabel.text = @"暂时没有新的消息";
+    _messageLabel.text = [self subTitleMessageByConversation:model];;
     [backView addSubview:_messageLabel];
     [_messageLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.bottom.mas_equalTo(-kPaddingDistance);
@@ -154,14 +159,61 @@
         make.right.equalTo(_badgeNumberLabel.mas_left).offset(-kPaddingDistance);
         make.height.mas_equalTo(kLabelHeightDistacnce);
     }];
+    
+    UIView * bottomView = [[UIView alloc] init];
+    bottomView.backgroundColor = [UIColor grayColor];
+    bottomView.alpha = 0.6;
+    [backView addSubview:bottomView];
+    [bottomView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.right.bottom.mas_equalTo(0);
+        make.height.mas_equalTo(kBottomLineHeight);
+    }];
+    
     self.tableHeaderView = backView;
+}
+
+// 得到最后消息文字或者类型
+-(NSString *)subTitleMessageByConversation:(EMMessage *)model
+{
+    NSString *ret = @"";
+    EMMessage *lastMessage = model;
+    if (lastMessage) {
+        id<IEMMessageBody> messageBody = lastMessage.messageBodies.lastObject;
+        switch (messageBody.messageBodyType) {
+            case eMessageBodyType_Image:{
+                ret = NSLocalizedString(@"[图片]", @"[image]");
+            } break;
+            case eMessageBodyType_Text:{
+                // 表情映射。
+                NSString *didReceiveText = [ConvertToCommonEmoticonsHelper
+                                            convertToSystemEmoticons:((EMTextMessageBody *)messageBody).text];
+                if ([[RobotManager sharedInstance] isRobotMenuMessage:lastMessage]) {
+                    ret = [[RobotManager sharedInstance] getRobotMenuMessageDigest:lastMessage];
+                } else {
+                    ret = didReceiveText;
+                }
+            } break;
+            case eMessageBodyType_Voice:{
+                ret = NSLocalizedString(@"[语音]", @"[voice]");
+            } break;
+            case eMessageBodyType_Location: {
+                ret = NSLocalizedString(@"[位置]", @"[location]");
+            } break;
+            case eMessageBodyType_Video: {
+                ret = NSLocalizedString(@"[视频]", @"[video]");
+            } break;
+            default: {
+            } break;
+        }
+    }
+    
+    return ret;
 }
 
 -(void)tapGestureRecognizerAction
 {
-//    ChatViewController * chatViewController = [[ChatViewController alloc] initWithChatter:@"yinhui" isGroup:NO];
-//    chatViewController.isSystemMessage = YES;
-//    [self.myController.navigationController pushViewController:chatViewController animated:YES needHiddenBottomBar:YES];
+    [_message.conversation markAllMessagesAsRead:YES];
+    [[MessageManager sharedInstance] setupUnreadMessageCount];
     XYSystemMessageViewController * systemMessageViewController = [[XYSystemMessageViewController alloc] init];
     [self.myController.navigationController pushViewController:systemMessageViewController animated:YES needHiddenBottomBar:YES];
 }
@@ -242,14 +294,14 @@
     self.myController.hidesBottomBarWhenPushed = YES;
     
     if ([cell.studentDic[@"linkType"] doubleValue] == 0) {
-        ChatViewController * chatVC = [[ChatViewController alloc] initWithChatter:cell.studentDic[@"thirdCode"] isGroup:NO];
+        ChatViewController * chatVC = [[ChatViewController alloc] initWithChatter:cell.conversation.chatter isGroup:NO];
         chatVC.isSystemMessage = NO;
         chatVC.studentDic = cell.studentDic;
         [self.myController.navigationController pushViewController:chatVC animated:YES];
     }
     else
     {
-        ChatViewController * chatVC = [[ChatViewController alloc] initWithChatter:cell.studentDic[@"thirdCode"] isGroup:YES];
+        ChatViewController * chatVC = [[ChatViewController alloc] initWithChatter:cell.conversation.chatter isGroup:YES];
         chatVC.isSystemMessage = NO;
         chatVC.studentDic = cell.studentDic;
         [self.myController.navigationController pushViewController:chatVC animated:YES];

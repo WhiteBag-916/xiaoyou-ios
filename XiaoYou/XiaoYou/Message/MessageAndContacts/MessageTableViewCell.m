@@ -26,6 +26,7 @@
 #define kBadgeWidthDistance            21
 #define kClassLabelDistance            5
 #define kClassLabelWidthAndHeight      30
+#define kBottomLineHeight              0.4
 
 
 typedef enum : NSUInteger {
@@ -44,7 +45,6 @@ NSString *const kMessageTableViewCell = @"MessageTableViewCellId";
 @property (strong, nonatomic)  UILabel *timeLabel;
 @property (strong, nonatomic)  UILabel *messageLabel;
 @property (nonatomic,strong)  UILabel * defaultLabel;
-
 @property (nonatomic,assign) NSInteger * badgeNum;
 
 @end
@@ -124,41 +124,74 @@ NSString *const kMessageTableViewCell = @"MessageTableViewCellId";
             make.height.mas_equalTo(kLabelHeightDistacnce);
         }];
         
+        UIView * bottomView = [[UIView alloc] init];
+        bottomView.backgroundColor = [UIColor grayColor];
+        bottomView.alpha = 0.6;
+        [self.contentView addSubview:bottomView];
+        [bottomView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.right.bottom.mas_equalTo(0);
+            make.height.mas_equalTo(kBottomLineHeight);
+        }];
+        
     }
     return self;
 }
 
 -(void)setCellInfo:(id) dic
 {
-    EMConversation * conversation = dic;
+    _conversation = dic;
     
-    NSDictionary * userInfoDic = [self getUserInfo:conversation];
-    
-    _studentDic = userInfoDic;
-    //消息内容
-    _messageLabel.text = [self subTitleMessageByConversation:conversation];
-    
-    //昵称
-//    _nameLabel.text = userInfoDic[@"name"];
-    _nameLabel.text = conversation.latestMessage.ext[@"userName"];
-
-    
-    //头像
-    [_headImageView setFaceImageWithUrl:userInfoDic[@"icon"]];
-   
-    //未读数
-    if (![[self unreadMessageCountByConversation:conversation] isEqualToString:@"0"]) {
-        _badgeNumberLabel.hidden = NO;
-        _badgeNumberLabel.text = [self unreadMessageCountByConversation:conversation];
+    if ([_conversation.chatter isEqualToString:@"000002"])
+    {
+        _nameLabel.text = @"好友申请";
+        _messageLabel.text = [self subTitleMessageByConversation:_conversation];
+        _headImageView.image = [UIImage imageNamed:@"friend-requests"];
+    }
+    else if([_conversation.chatter isEqualToString:@"000003"])
+    {
+        _nameLabel.text = [NSString stringWithFormat:@"[%@]社员加入申请",_conversation.latestMessage.ext[@"group_name"]];
+        _messageLabel.text = [self subTitleMessageByConversation:_conversation];
+        if ([_conversation.latestMessage.ext[@"group_icon"] isEqualToString:@""])
+        {
+            _headImageView.backgroundColor = [UIColor hexChangeFloat:@"258f74"];
+            _defaultLabel.text = [_conversation.latestMessage.ext[@"group_name"] substringWithRange:NSMakeRange(0, 1)];
+        }
+        else
+        {
+            _headImageView.image = [UIImage imageNamed:_conversation.latestMessage.ext[@"group_icon"]];
+        }
     }
     else
     {
-        _badgeNumberLabel.hidden = YES;
+        NSDictionary * userInfoDic = [self getUserInfo:_conversation];
+        
+        _studentDic = userInfoDic;
+        //消息内容
+        _messageLabel.text = [self subTitleMessageByConversation:_conversation];
+        
+        //昵称
+        //    _nameLabel.text = userInfoDic[@"name"];
+        _nameLabel.text = _conversation.latestMessage.ext[@"userName"];
+        
+        
+        //头像
+        [_headImageView setFaceImageWithUrl:_conversation.latestMessage.ext[@"headImage"]];
+        
+        //未读数
+        if (![[self unreadMessageCountByConversation:_conversation] isEqualToString:@"0"]) {
+            _badgeNumberLabel.hidden = NO;
+            _badgeNumberLabel.text = [self unreadMessageCountByConversation:_conversation];
+        }
+        else
+        {
+            _badgeNumberLabel.hidden = YES;
+        }
+        
     }
     //时间
-    _timeLabel.text = [self lastMessageTimeByConversation:conversation];
-
-
+    _timeLabel.text = [self lastMessageTimeByConversation:_conversation];
+    
+    
     
 }
 

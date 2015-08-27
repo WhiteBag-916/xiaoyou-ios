@@ -27,6 +27,8 @@
 #define kClassLabelWidthAndHeight      30
 #define kRemindImageViewWidth          13
 #define kRemindImageViewHeight         15
+#define kBottomLineHeight              0.4
+
 
 NSString *const kContactsTableViewCell = @"ContactsTableViewCell";
 @interface ContactsTableViewCell ()
@@ -116,6 +118,15 @@ NSString *const kContactsTableViewCell = @"ContactsTableViewCell";
         [_connectTag mas_makeConstraints:^(MASConstraintMaker *make) {
             make.right.mas_equalTo(-kPaddingDistance);
             make.top.mas_equalTo(kPaddingDistance);
+        }];
+        
+        UIView * bottomView = [[UIView alloc] init];
+        bottomView.backgroundColor = [UIColor grayColor];
+        bottomView.alpha = 0.6;
+        [self.contentView addSubview:bottomView];
+        [bottomView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.right.bottom.mas_equalTo(0);
+            make.height.mas_equalTo(kBottomLineHeight);
         }];
         
     }

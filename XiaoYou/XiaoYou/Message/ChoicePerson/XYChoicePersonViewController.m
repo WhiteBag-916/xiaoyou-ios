@@ -57,6 +57,7 @@
     UIButton * cancelButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, kCancleButtonItemWidth, kButtonItemHeightAndWidth)];
     cancelButton.backgroundColor = [UIColor clearColor];
     [cancelButton setTitle:@"全不选" forState:UIControlStateNormal];
+    cancelButton.titleLabel.font = CONTENT_FONT(14);
     [cancelButton addTarget:self action:@selector(cancelChoice) forControlEvents:UIControlEventTouchUpInside];
     
     UIButton * choiceButton = [[UIButton alloc] initWithFrame:CGRectMake(kCancleButtonItemWidth, 0, kButtonItemHeightAndWidth, kButtonItemHeightAndWidth)];

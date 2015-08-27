@@ -7,6 +7,8 @@
 //
 
 #import "NormalSystemMessageTableViewCell.h"
+#import "ConvertToCommonEmoticonsHelper.h"
+#import "RobotManager.h"
 
 #define kHeadImageViewHeightAndWidth        40
 #define kPaddingDistance                    5
@@ -34,7 +36,7 @@ NSString *const kNormalSystemMessageTableViewCell = @"NormalSystemMessageTableVi
         _headImageView = [[UIImageView alloc] init];
         _headImageView.layer.cornerRadius = kHeadCornerRadius;
         _headImageView.clipsToBounds = YES;
-        _headImageView.backgroundColor = [UIColor redColor];
+        _headImageView.backgroundColor = [UIColor clearColor];
         [self.contentView addSubview:_headImageView];
         [_headImageView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.top.mas_equalTo(3*kPaddingDistance);
@@ -67,9 +69,48 @@ NSString *const kNormalSystemMessageTableViewCell = @"NormalSystemMessageTableVi
     return self;
 }
 
--(void)setCellInfo:(id) dic
+-(void)setCellInfo:(EMMessage *) message
 {
-    _contentLabel.text = dic[@"text"];
+    _contentLabel.text = [self subTitleMessageByConversation:message];
+    [_headImageView setNormalImageWithUrl:[YShareData defaultData][kShareData_SchoolIcon]];
+}
+
+// 得到最后消息文字或者类型
+-(NSString *)subTitleMessageByConversation:(EMMessage *)model
+{
+    NSString *ret = @"";
+    EMMessage *lastMessage = model;
+    if (lastMessage) {
+        id<IEMMessageBody> messageBody = lastMessage.messageBodies.lastObject;
+        switch (messageBody.messageBodyType) {
+            case eMessageBodyType_Image:{
+                ret = NSLocalizedString(@"[图片]", @"[image]");
+            } break;
+            case eMessageBodyType_Text:{
+                // 表情映射。
+                NSString *didReceiveText = [ConvertToCommonEmoticonsHelper
+                                            convertToSystemEmoticons:((EMTextMessageBody *)messageBody).text];
+                if ([[RobotManager sharedInstance] isRobotMenuMessage:lastMessage]) {
+                    ret = [[RobotManager sharedInstance] getRobotMenuMessageDigest:lastMessage];
+                } else {
+                    ret = didReceiveText;
+                }
+            } break;
+            case eMessageBodyType_Voice:{
+                ret = NSLocalizedString(@"[语音]", @"[voice]");
+            } break;
+            case eMessageBodyType_Location: {
+                ret = NSLocalizedString(@"[位置]", @"[location]");
+            } break;
+            case eMessageBodyType_Video: {
+                ret = NSLocalizedString(@"[视频]", @"[video]");
+            } break;
+            default: {
+            } break;
+        }
+    }
+    
+    return ret;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
