@@ -80,7 +80,7 @@
                     break;
                 case YCommonShareDetailTypePerson:
                     [UMSocialData defaultData].extConfig.wechatSessionData.title = @"分享校友名片给你！";
-                    [UMSocialData defaultData].extConfig.wechatSessionData.shareText = [NSString stringWithFormat:@"校友人脉：%@-%@", obj[@"school"], obj[@"pic"]];
+                    [UMSocialData defaultData].extConfig.wechatSessionData.shareText = [NSString stringWithFormat:@"校友人脉：%@-%@", obj[@"school"], obj[@"name"]];
                     urlResource = [[UMSocialUrlResource alloc] initWithSnsResourceType:UMSocialUrlResourceTypeImage url:[NSString stringWithFormat:@"%@%@", api_icon_base_url, obj[@"pic"]]];
                     break;
                 case YCommonShareDetailTypeAssociation:
@@ -104,7 +104,7 @@
                     urlResource = [[UMSocialUrlResource alloc] initWithSnsResourceType:UMSocialUrlResourceTypeImage url:[NSString stringWithFormat:@"%@%@", api_icon_base_url, obj[@"pic"]]];
                     break;
                 case YCommonShareDetailTypePerson:
-                    [UMSocialData defaultData].extConfig.wechatTimelineData.shareText = [NSString stringWithFormat:@"校友人脉：%@-%@", obj[@"school"], obj[@"pic"]];
+                    [UMSocialData defaultData].extConfig.wechatTimelineData.shareText = [NSString stringWithFormat:@"校友人脉：%@-%@", obj[@"school"], obj[@"name"]];
                     urlResource = [[UMSocialUrlResource alloc] initWithSnsResourceType:UMSocialUrlResourceTypeImage url:[NSString stringWithFormat:@"%@%@", api_icon_base_url, obj[@"pic"]]];
                     break;
                 case YCommonShareDetailTypeAssociation:

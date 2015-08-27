@@ -188,7 +188,7 @@
 }
 - (void)openTool {
     
-    YActionSheetItem *item1 = [YActionSheetItem itemWithType:YCommonActionSheetItemTypeShare title:@"分享这条动态至" extraData:_shareData];
+    YActionSheetItem *item1 = [YActionSheetItem itemWithType:YCommonActionSheetItemTypeShareFeed title:@"分享这条动态至" extraData:_shareData];
     
     
     YActionSheetItem *item2 = [YActionSheetItem itemWithTitle:@"举报"

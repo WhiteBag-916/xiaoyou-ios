@@ -21,6 +21,7 @@
 
 @property(nonatomic,strong)ContactsInfoDetailTableView * contactsInfoDetailTableView;
 @property(nonatomic,strong)UIButton * bottomButton;
+@property   (nonatomic, strong) NSDictionary *shareData;
 
 @end
 
@@ -34,6 +35,7 @@
     
     [[ContactManager sharedInstance] getUserDetailInfo:_uid block:^(YActionMessage *message) {
         ProfileInfo * model = message.object;
+        _shareData = @{@"name":model.userName, @"pic":model.headPic, @"school":model.schoolName};
         [_contactsInfoDetailTableView refreshTableView:model];
     }];
     
@@ -93,11 +95,7 @@
 
 -(void)showShareActionSheet
 {
-    YActionSheetItem *item1 = [YActionSheetItem itemWithTitle:@"分享这社团名片至"
-                                                         type:YCommonActionSheetItemTypeShare
-                                                        block:^(NSInteger checkNum) {
-                                                            
-                                                        }];
+    YActionSheetItem *item1 = [YActionSheetItem itemWithType:YCommonActionSheetItemTypeSharePerson title:@"分享该人名片至" extraData:_shareData];
     
     YActionSheetItem *item2 = [YActionSheetItem itemWithTitle:@"消息不提醒"
                                                          type:YCommonActionSheetItemTypeSwitch

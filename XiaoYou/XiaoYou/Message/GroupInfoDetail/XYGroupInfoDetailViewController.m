@@ -24,7 +24,7 @@
 @interface XYGroupInfoDetailViewController ()
 
 @property (nonatomic,strong) GroupInfoDetailCollectionView * groupInfoDetailCollectionView;
-
+@property (nonatomic, strong) NSDictionary *shareData;
 @property(nonatomic,strong)UIButton * bottomButton;
 @property(nonatomic,strong)GroupDetail * model;
 
@@ -93,11 +93,7 @@
 
 -(void)showShareActionSheet
 {
-    YActionSheetItem *item1 = [YActionSheetItem itemWithTitle:@"分享这社团名片至"
-                                                         type:YCommonActionSheetItemTypeShare
-                                                        block:^(NSInteger checkNum) {
-                                                            
-                                                        }];
+    YActionSheetItem *item1 = [YActionSheetItem itemWithType:YCommonActionSheetItemTypeShareOrganization title:@"分享社团名片至" extraData:nil];
     
     YActionSheetItem *item2 = [YActionSheetItem itemWithTitle:@"消息不提醒"
                                                          type:YCommonActionSheetItemTypeSwitch
@@ -109,7 +105,7 @@
     YActionSheetItem *item3 = [YActionSheetItem itemWithTitle:@"举报"
                                                          type:YCommonActionSheetItemTypeCommon
                                                         block:^(NSInteger checkNum) {
-                                                            [YCommonReport report];
+                                                            
                                                         }];
     
     YCommonActionSheet *sheet = [[YCommonActionSheet alloc] initWithType:@[item1, item2, item3] title:nil];
