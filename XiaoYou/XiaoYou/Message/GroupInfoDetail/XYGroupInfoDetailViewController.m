@@ -15,6 +15,7 @@
 #import "ProfileInfo.h"
 #import "GroupDetail.h"
 #import "YCommonReport.h"
+#import "GroupModel.h"
 
 
 #define kNavigationgLeftWidth                   9
@@ -48,8 +49,9 @@ NSString *const kXYGroupInfoDetailViewController = @"XYGroupInfoDetailViewContro
     [super viewWillAppear:animated];
     [[ContactManager sharedInstance] groupDetail:_gid block:^(YActionMessage *message) {
         if (message.object) {
-//            _model = message.object;
+            _model = message.object;
             [_groupInfoDetailCollectionView refreshTableView:message.object];
+             _shareData = @{@"name":_model.groupModel.groupName,@"content":_model.groupModel.schoolName,@"pic":_model.groupModel.groupIcon};
         }
     }];}
 
@@ -95,7 +97,7 @@ NSString *const kXYGroupInfoDetailViewController = @"XYGroupInfoDetailViewContro
 
 -(void)showShareActionSheet
 {
-    YActionSheetItem *item1 = [YActionSheetItem itemWithType:YCommonActionSheetItemTypeShareOrganization title:@"分享社团名片至" extraData:nil];
+    YActionSheetItem *item1 = [YActionSheetItem itemWithType:YCommonActionSheetItemTypeShareOrganization title:@"分享社团名片至" extraData:_shareData];
     
     YActionSheetItem *item2 = [YActionSheetItem itemWithTitle:@"消息不提醒"
                                                          type:YCommonActionSheetItemTypeSwitch
