@@ -19,6 +19,9 @@
 #import "CommentListItems.h"
 #import "FeedDetailViewController.h"
 #import "ProvisionManager.h"
+
+#define KPAGENUM 10
+
 @interface FeedDetailTableView()<UITableViewDataSource, UITableViewDelegate>
 
 @property (nonatomic, strong) NSDictionary *data;
@@ -72,7 +75,29 @@
     _shareData = [NSMutableDictionary dictionaryWithObjectsAndKeys:tag,@"tag",content,@"content",img, @"pic", nil];
     
     _commentListArray = [NSMutableArray arrayWithArray:info.commentListItems];
+    [self hiddenFooter:false];
     [self reloadData];
+    
+}
+- (void)loadMoreData
+{
+    [self sendRequest:false];
+}
+- (void)sendRequest:(BOOL)refresh {
+    NSString *lastId = refresh?@"":[NSString stringWithFormat:@"%d", (int)[(CommentListItems *)_commentListArray[_commentListArray.count - 1] comment].commentIdentifier];
+    [[FeedManager sharedInstance] listComment:lastId size:KPAGENUM feedId:_feedId block:^(YActionMessage *message) {
+        [self stopLoadMoreData];
+        if (message.isSuccess) {
+            if (refresh) {
+                _commentListArray = [NSMutableArray arrayWithArray:message.object];
+            } else {
+                [_commentListArray addObjectsFromArray:message.object];
+            }
+            [self reloadData];
+        } else {
+            [YUtils showTitle:message.desc];
+        }
+    }];
 }
 #pragma mark - 继承者
 - (BOOL)showFooterRefresh
