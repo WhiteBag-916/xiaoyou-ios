@@ -14,6 +14,8 @@
 #import "Feed.h"
 #import "FeedInfo.h"
 #import "FeedManager.h"
+#import "GroupFeedList.h"
+#import "GroupModel.h"
 
 #define KPAGENUM 6
 
@@ -22,19 +24,22 @@
 ,UITableViewDelegate>
 
 @property (nonatomic, strong) NSMutableArray *feedListArray;
+@property (nonatomic, strong) NSString *groupId;
+@property (nonatomic, strong) GroupModel *groupModel;
 
 @end
 
 @implementation AssociationsDetailTableView
 
-- (instancetype)initWithFrame:(CGRect)frame
+- (id)initWithGroupId:(NSString *)groupId
 {
-    self = [super initWithFrame:frame];
+    self = [super init];
     if (self) {
         self.delegate = self;
         self.dataSource = self;
         self.separatorStyle = UITableViewCellSeparatorStyleNone;
         
+        _groupId = groupId;
         _feedListArray = [NSMutableArray array];
         
         [self registerClass:[AssociationsListTableViewCell class] forCellReuseIdentifier:kAssociationsListTableViewCell];
@@ -64,35 +69,58 @@
 
 - (void)loadMoreData
 {
-    [self sendRequest];
+    [self loadMoreFeedList];
 }
 - (void)sendRequest {
-    //mod by xiongchen
-    NSString *lastID;
-    if (![self isHeaderRefresh]) {
-        lastID = [NSString stringWithFormat:@"%g", [[_feedListArray.lastObject feed] feedIdentifier]];
-    }
-    [[FeedManager sharedInstance] feedList:lastID size:KPAGENUM queryCode:@"" block:^(YActionMessage *message) {
-        if ([self isHeaderRefresh]) {
-            [_feedListArray removeAllObjects];
-        }
+    [[FeedManager sharedInstance] groupDetailInfo:KPAGENUM groupId:_groupId block:^(YActionMessage *message) {
         if (message.isSuccess) {
             [self hiddenFooter:false];
-            [_feedListArray addObjectsFromArray:message.object];
             if ([message.object count] < KPAGENUM) {
                 [self showNoticeNoMoreData];
             }
-            [self reloadData];
+            
+            _groupModel = [message.object groupModel];
+            
+            [self resetFeedArray:[message.object groupFeeds] needRemoveAll:YES];
             
         } else {
             [YUtils showTitleOn:self title:message.desc];
         }
-        if ([self isHeaderRefresh]) {
-            [self stopLoadNewData];
-        } else {
-            [self stopLoadMoreData];
-        }
+        
+        [self stopLoad];
     }];
+}
+
+- (void)loadMoreFeedList {
+    NSString *lastID;
+    if (![self isHeaderRefresh]) {
+        lastID = [NSString stringWithFormat:@"%g", [[_feedListArray.lastObject feed] feedIdentifier]];
+    }
+    
+    [[FeedManager sharedInstance] groupFeeds:lastID size:KPAGENUM groupId:_groupId block:^(YActionMessage *message) {
+        if (message.isSuccess) {
+            [self hiddenFooter:false];
+            if ([message.object count] < KPAGENUM) {
+                [self showNoticeNoMoreData];
+            }
+            
+            [self resetFeedArray:message.object needRemoveAll:NO];
+            
+        } else {
+            [YUtils showTitleOn:self title:message.desc];
+        }
+        
+        [self stopLoad];
+    }];
+}
+
+- (void)resetFeedArray:(NSArray *)array needRemoveAll:(BOOL)needRemoveAll {
+    if (needRemoveAll) {
+        [_feedListArray removeAllObjects];
+    }
+    [_feedListArray addObjectsFromArray:array];
+    
+    [self reloadData];
 }
 
 #pragma mark - UITableViewDataSource
@@ -103,9 +131,9 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     if (AssociationsDetailTableViewTitleSection == section) {
-        return 1;
+        return (nil != _groupModel)?1:0;
     } else if (AssociationsDetailTableViewLikeSection == section) {
-        return 2;
+        return (nil != _groupModel)?2:0;
     }
     return _feedListArray.count;
 }
@@ -118,6 +146,8 @@
     if (AssociationsDetailTableViewTitleSection == section) {
         AssociationsListTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kAssociationsListTableViewCell];
         
+        [cell resetData:_groupModel];
+        
         return cell;
     } else if (AssociationsDetailTableViewLikeSection == section) {
         ContactsInfoDetailTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kContactsInfoDetailTableViewCell];
@@ -126,13 +156,13 @@
         
         if (0 == row)
         {
-            NSDictionary * dic = @{@"content":[NSString stringWithFormat:@"%g人向%@撰写的内容敬酒", 200.0,@"网球社"],@"index":indexStr};
+            NSDictionary * dic = @{@"content":[NSString stringWithFormat:@"%g人向%@撰写的内容敬酒", _groupModel.praiseCount,_groupModel.groupName],@"index":indexStr};
             [cell setCellInfo:dic hiddenLine:YES];
             return cell;
         }
         else if (1 == indexPath.row)
         {
-            NSDictionary * dic = @{@"content":[NSString stringWithFormat:@"%g人觉得%@很酷", 200.0,@"网球社"],@"index":indexStr, @"isCool":@(NO)};
+            NSDictionary * dic = @{@"content":[NSString stringWithFormat:@"%g人觉得%@很酷", _groupModel.coolCount,_groupModel.groupName],@"index":indexStr, @"isCool":@(_groupModel.isCool)};
             [cell setCellInfo:dic hiddenLine:NO];
             return cell;
         }
@@ -173,10 +203,21 @@
     NSInteger row = indexPath.row;
     
     if (AssociationsDetailTableViewLikeSection == section) {
-        if (0 == row) {
-            
-        } else if (1 == row) {
-            
+        if (1 == row) {
+//            [YUtils showHUDWithTitle];
+//            [[ContactManager sharedInstance] praise:_model.uid block:^(YActionMessage *message) {
+//                if (message.isSuccess) {
+//                    _model.isCool = !_model.isCool;
+//                    if (_model.isCool) {
+//                        ++_model.coolCount;
+//                    } else {
+//                        --_model.coolCount;
+//                    }
+//                    
+//                    [self reloadData];
+//                }
+//                [YUtils hiddenProgressHUD];
+//            }];
         }
     } else if (AssociationsDetailTableViewFeedSection == section) {
         FeedDetailViewController *feedDetailViewController = [[FeedDetailViewController alloc] initWithFeedId:[NSString stringWithFormat:@"%g", [[_feedListArray[indexPath.row] feed] feedIdentifier]]];

@@ -189,6 +189,7 @@ NSString *const kAssociationsListTableViewCell = @"AssociationsListTableViewCell
     
     _nameLabel.text = model.groupName;
     _keywordsLabel.text = model.keyWords;
+    _typeLabel.text = model.category;
     NSInteger starNum = [model.star integerValue];
     
     //清除上面的view

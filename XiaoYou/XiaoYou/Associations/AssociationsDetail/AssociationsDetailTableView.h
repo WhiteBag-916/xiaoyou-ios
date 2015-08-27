@@ -21,4 +21,6 @@ typedef NS_ENUM(NSInteger, AssociationsDetailTableViewSection) {
 
 @property (nonatomic, weak) YViewController *parent;
 
+- (id)initWithGroupId:(NSString *)groupId;
+
 @end

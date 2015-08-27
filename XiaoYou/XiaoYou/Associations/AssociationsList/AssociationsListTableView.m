@@ -160,7 +160,7 @@
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-    AssociationsDetailViewController *associationsDetailViewController = [[AssociationsDetailViewController alloc] initWithId:[NSString stringWithFormat:@"%g", [_associationsListArray[indexPath.row] groupModelIdentifier]]];
+    AssociationsDetailViewController *associationsDetailViewController = [[AssociationsDetailViewController alloc] initWithId:[NSString stringWithFormat:@"%g", [_associationsListArray[indexPath.row] internalBaseClassIdentifier]]];
     [_superVC.navigationController pushViewController:associationsDetailViewController animated:YES needHiddenBottomBar:YES];
 }
 

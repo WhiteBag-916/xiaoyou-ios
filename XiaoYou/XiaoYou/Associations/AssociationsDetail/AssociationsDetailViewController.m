@@ -68,7 +68,7 @@
     }];
     
     //tableview
-    _associationsDetailTableView = [[AssociationsDetailTableView alloc] init];
+    _associationsDetailTableView = [[AssociationsDetailTableView alloc] initWithGroupId:_uid];
     _associationsDetailTableView.parent = self;
     [self.view addSubview:_associationsDetailTableView];
     
