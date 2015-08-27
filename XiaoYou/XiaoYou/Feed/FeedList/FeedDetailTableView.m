@@ -19,6 +19,7 @@
 #import "CommentListItems.h"
 #import "FeedDetailViewController.h"
 #import "ProvisionManager.h"
+#import "YCommonReport.h"
 
 #define KPAGENUM 10
 
@@ -193,7 +194,7 @@
     YActionSheetItem *item2 = [YActionSheetItem itemWithTitle:@"举报"
                                                          type:YCommonActionSheetItemTypeCommon
                                                         block:^(NSInteger checkNum) {
-                                                            
+                                                            [YCommonReport report];
                                                         }];
     YActionSheetItem *item3 = [YActionSheetItem itemWithTitle:@"删除"
                                                          type:YCommonActionSheetItemTypeCommon
