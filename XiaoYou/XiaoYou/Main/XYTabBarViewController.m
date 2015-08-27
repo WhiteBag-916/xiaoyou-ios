@@ -26,6 +26,7 @@
 
 @property(nonatomic,strong)XYMessageAndContactsViewController *messageVC;
 @property(nonatomic,strong)UINavigationController *messageViewCotroller;
+@property (nonatomic, strong) UINavigationController *feedListViewCotroller;
 
 @end
 
@@ -45,12 +46,16 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(setupUnreadMessageCount:) name:KNotification_Message_unread object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(openPraise:) name:KNotification_Open_PraiseDetail object:nil];
     
+    [[NSNotificationCenter defaultCenter] addObserverForName:KNotification_Update_UnreadAlterCount object:nil queue:nil usingBlock:^(NSNotification *note) {
+        [self setupUnreadAlterCount];
+    }];
+    
     _messageVC = [[XYMessageAndContactsViewController alloc] init];
     FeedListViewController *feedVC = [[FeedListViewController alloc] init];
     ProfileViewController *profileVC = [[ProfileViewController alloc] init];
     
     _messageViewCotroller = [[UINavigationController alloc] initWithRootViewController:_messageVC];
-    UINavigationController *feedListViewCotroller = [[UINavigationController alloc] initWithRootViewController:feedVC];
+    _feedListViewCotroller = [[UINavigationController alloc] initWithRootViewController:feedVC];
     UINavigationController *profileViewCotroller = [[UINavigationController alloc] initWithRootViewController:profileVC];
     
     //消息
@@ -67,7 +72,7 @@
                                                                  tag:kTag_TabBar_FeedList];
     feedListItem.selectedImage = [[UIImage imageNamed:@"toolbar-contact-chosen"]
                                   imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
-    feedListViewCotroller.tabBarItem = feedListItem;
+    _feedListViewCotroller.tabBarItem = feedListItem;
     
     
     //我
@@ -79,7 +84,17 @@
     profileViewCotroller.tabBarItem = profileItem;
     
     self.tabBar.tintColor = KCOLORGREEN_009688;
-    self.viewControllers = @[_messageViewCotroller, feedListViewCotroller, profileViewCotroller];
+    self.viewControllers = @[_messageViewCotroller, _feedListViewCotroller, profileViewCotroller];
+}
+
+//feed提醒未读数
+- (void)setupUnreadAlterCount {
+    int unreadCount = [[YShareData defaultData][kShareData_UnreadAlterCount] intValue];
+    if (unreadCount > 0) {
+        _feedListViewCotroller.tabBarItem.badgeValue = [NSString stringWithFormat:@"%i", unreadCount];
+    }else{
+        _feedListViewCotroller.tabBarItem.badgeValue = nil;
+    }
 }
 
 // 统计未读消息数

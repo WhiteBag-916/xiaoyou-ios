@@ -20,5 +20,6 @@
 //---------------------------------------------------------------------------
 #define kShareData_LoginPassword            @"kShareData_LoginPassword"
 #define kShareData_UserID                   @"kShareData_UserID"
+#define kShareData_UnreadAlterCount         @"kShareData_UnreadAlterCount"
 
 #endif

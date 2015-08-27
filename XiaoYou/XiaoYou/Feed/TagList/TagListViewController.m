@@ -43,6 +43,18 @@
     [self initTableView];
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    _notifyCount.text = [[YShareData defaultData][kShareData_UnreadAlterCount] stringValue];
+    
+    [[NSNotificationCenter defaultCenter] addObserverForName:KNotification_Update_UnreadAlterCount object:nil queue:nil usingBlock:^(NSNotification *note) {
+        _notifyCount.text = [[YShareData defaultData][kShareData_UnreadAlterCount] stringValue];
+    }];
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
 - (void)initHeaderView {
     _notifyView = [[UIView alloc] init];
     [self.view addSubview:_notifyView];
