@@ -11,6 +11,8 @@
 #import "YCommonActionSheet.h"
 #import "ContactManager.h"
 #import "YUtils+HUD.h"
+#import "ChatViewController.h"
+#import "GroupModel.h"
 
 @interface AssociationsDetailViewController ()
 <AssociationsDetailTableViewDelegate>
@@ -18,7 +20,7 @@
 @property (nonatomic, strong) AssociationsDetailTableView *associationsDetailTableView;
 @property (nonatomic, strong) UIButton *addButton; //一键入社
 @property (nonatomic, strong) NSString *uid;//社团id
-@property (nonatomic, strong) NSString *groupType;//自己与社团的关系:1 未入社、2 申请中、3 已加入
+@property (nonatomic, strong) GroupModel *groupModel;//详情
 
 @end
 
@@ -86,32 +88,42 @@
 }
 
 - (void)pressAddButton {
-    [YUtils showHUDWithTitle];
-    //申请入社
-    [[ContactManager sharedInstance] submitApply:_uid block:^(YActionMessage *message) {
-        [YUtils hiddenProgressHUD];
-        
-        if (message.isSuccess) {
-            [self addButtonEnabled:NO];
-        }
-        
-        [YUtils showTitle:message.desc];
-    }];
+    if ([_groupModel.groupStatus isEqualToString:@"3"]) {
+        //进入群聊
+        [self.navigationController pushViewController:[[ChatViewController alloc] initWithChatter:_groupModel.thirdId isGroup:YES] animated:YES];
+    } else {
+        [YUtils showHUDWithTitle];
+        //申请入社
+        [[ContactManager sharedInstance] submitApply:_uid block:^(YActionMessage *message) {
+            [YUtils hiddenProgressHUD];
+            
+            if (message.isSuccess) {
+                [self addButtonEnabled:NO];
+            }
+            
+            [YUtils showTitle:message.desc];
+        }];
+    }
 }
 
 - (void)addButtonEnabled:(BOOL)isEnabled {
     _addButton.enabled = isEnabled;
+    if (isEnabled) {
+        [_addButton setBackgroundColor:KCOLORGREEN_009688];
+    } else {
+        [_addButton setBackgroundColor:KCOLORGREEN_e6ebea];
+    }
 }
 
 #pragma mark - AssociationsDetailTableViewDelegate
-- (void)resetAddButtonType:(NSString *)type {
-    _groupType = type;
+- (void)resetAddButtonType:(GroupModel *)model {
+    _groupModel = model;
     //1 未入社、2 申请中、3 已加入
-    if ([type isEqualToString:@"1"]) {
+    if ([_groupModel.groupStatus isEqualToString:@"1"]) {
         [self addButtonEnabled:YES];
-    } else if ([type isEqualToString:@"2"]) {
+    } else if ([_groupModel.groupStatus isEqualToString:@"2"]) {
         [self addButtonEnabled:NO];
-    } else if ([type isEqualToString:@"3"]) {
+    } else if ([_groupModel.groupStatus isEqualToString:@"3"]) {
         [self addButtonEnabled:YES];
         
         [_addButton setTitle:@"进入群聊" forState:UIControlStateNormal];
