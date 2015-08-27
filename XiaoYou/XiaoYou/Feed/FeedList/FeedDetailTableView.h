@@ -16,4 +16,6 @@
 - (void)loadDataWithFeedId:(NSString *)feedId;
 
 - (void)openTool;
+
+- (void)refresh;
 @end

@@ -47,7 +47,9 @@
     }
     return self;
 }
-
+- (void)refresh {
+    [self sendRequest:true];
+}
 - (void)loadDataWithFeedId:(NSString *)feedId {
     if (nil == _feedId) {
         _feedId = feedId;
@@ -75,7 +77,11 @@
     _shareData = [NSMutableDictionary dictionaryWithObjectsAndKeys:tag,@"tag",content,@"content",img, @"pic", nil];
     
     _commentListArray = [NSMutableArray arrayWithArray:info.commentListItems];
-    [self hiddenFooter:false];
+    if (_commentListArray.count > KPAGENUM) {
+        [self hiddenFooter:false];
+    } else {
+        [self hiddenFooter:true];
+    }
     [self reloadData];
     
 }
@@ -92,6 +98,14 @@
                 _commentListArray = [NSMutableArray arrayWithArray:message.object];
             } else {
                 [_commentListArray addObjectsFromArray:message.object];
+            }
+            if ([message.object count] < KPAGENUM) {
+                [self showNoticeNoMoreData];
+            }
+            if (_commentListArray.count > KPAGENUM) {
+                [self hiddenFooter:false];
+            } else {
+                [self hiddenFooter:true];
             }
             [self reloadData];
         } else {
