@@ -14,9 +14,19 @@
 @interface XYGroupApplyViewController ()
 
 @property(nonatomic,strong)GroupApplyTableView * groupApplyTableView;
+@property (nonatomic, strong) NSString *groupId;
+
 @end
 
 @implementation XYGroupApplyViewController
+
+- (instancetype)initWithGroupId:(NSString *)groupId {
+    if (self = [super init]) {
+        _groupId = groupId;
+    }
+    
+    return self;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -30,13 +40,15 @@
     [self showCustomNavigationBackButton];
     [self showCustomNavigationMoreButton];
     
-    _groupApplyTableView = [[GroupApplyTableView alloc] init];
+    _groupApplyTableView = [[GroupApplyTableView alloc] initWithGroupId:_groupId];
     _groupApplyTableView.backgroundColor = [UIColor clearColor];
     [self.view addSubview:_groupApplyTableView];
     
     [_groupApplyTableView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.left.right.bottom.mas_equalTo(0);
     }];
+    
+    [_groupApplyTableView loadData];
     
 }
 

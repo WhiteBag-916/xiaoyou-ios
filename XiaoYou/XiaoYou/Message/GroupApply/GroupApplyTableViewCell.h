@@ -8,10 +8,19 @@
 
 #import "YTableViewCell.h"
 
+@class ApplicantList;
+
+typedef enum : NSUInteger {
+    BIG_BUTTON,
+    REFUSE_BUTTON,
+    PASS_BUTTON,
+    SEND_BUTTON,
+} BOTTOM_BUTTON_TYPE;
+
 extern NSString *const kGroupApplyTableViewCell;
 
 @interface GroupApplyTableViewCell : YTableViewCell
 
--(void)setCellInfo:(NSDictionary *) dic;
+-(void)setCellInfo:(ApplicantList *)applicantList;
 
 @end

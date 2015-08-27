@@ -8,6 +8,10 @@
 
 #import "GroupApplyTableViewCell.h"
 #import "ConnectTag.h"
+#import "ApplicantList.h"
+#import "Author.h"
+#import "SKTagView.h"
+#import "Tags.h"
 
 #define kHeadCornerRadius              22.5
 #define kPaddingDistance               12
@@ -15,7 +19,7 @@
 #define kNameWidth                     90
 #define kNameHeight                    20
 #define kDetailButtonHeight            14
-#define kSexHeightAndWidth             20
+#define kSexHeightAndWidth             30
 #define kInfoLabelToNameLabel          20
 #define kFlagImageViewWidth            11
 #define kFlagImageViewHeight           14
@@ -25,13 +29,6 @@
 
 NSString *const kGroupApplyTableViewCell = @"GroupApplyTableViewCellId";
 
-typedef enum : NSUInteger {
-    BIG_BUTTON,
-    REFUSE_BUTTON,
-    PASS_BUTTON,
-    SEND_BUTTON,
-} BOTTOM_BUTTON_TYPE;
-
 @interface GroupApplyTableViewCell ()
 
 @property(nonatomic,strong) UIImageView * headImageView;
@@ -39,13 +36,15 @@ typedef enum : NSUInteger {
 @property(nonatomic,strong) UILabel * sexLabel;
 @property(nonatomic,strong) UIButton * detailButton;
 @property(nonatomic,strong) UILabel * infoLabel;
-@property(nonatomic,strong) UILabel * flagLabel;
+@property (nonatomic, strong) SKTagView *tagContent;                   //tag标签
 @property(nonatomic,strong) UIImageView * flagImageView;
 
 @property(nonatomic,strong) UIButton * afterDealButton;
 @property(nonatomic,strong) UIButton * refuseButton;
 @property(nonatomic,strong) UIButton * passButton;
 @property(nonatomic,strong) UIButton * sendButton;
+
+@property (nonatomic, weak) ApplicantList *applicantList;
 
 @end
 
@@ -108,7 +107,6 @@ typedef enum : NSUInteger {
         
         //自选标签
         _flagImageView = [[UIImageView alloc] init];
-        _flagImageView.image = [UIImage imageNamed:@"tag-green"];
         [self.contentView addSubview:_flagImageView];
         [_flagImageView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.centerX.equalTo(_headImageView.mas_centerX);
@@ -117,19 +115,20 @@ typedef enum : NSUInteger {
             make.height.mas_equalTo(kFlagImageViewHeight);
         }];
         
-        //标签内容
-        _flagLabel = [[UILabel alloc] init];
-        _flagLabel.font = CONTENT_FONT(11);
-        _flagLabel.backgroundColor = [UIColor whiteColor];
-        _flagLabel.numberOfLines = 0;
-        _flagLabel.text = @"互联网就业 留学陶瓷 网球社 互联网就业 留学陶瓷 网球社 互联网就业 留学陶瓷 网球社 互联网就业 留学陶瓷 网球社 ";
-        [self.contentView addSubview:_flagLabel];
-        [_flagLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        [self setIsRelated:YES];
+        
+        _tagContent = [[SKTagView alloc] init];
+        [self addSubview:_tagContent];
+        [_tagContent mas_makeConstraints:^(MASConstraintMaker *make) {
             make.top.equalTo(_headImageView.mas_bottom).offset(kFlagLabelToHead);
             make.left.equalTo(_nameLabel.mas_left);
             make.right.equalTo(self.contentView.mas_right).offset(-kPaddingDistance);
             make.bottom.equalTo(self.contentView.mas_bottom).offset(-53);
         }];
+        _tagContent.insets = 21;
+        _tagContent.lineSpace = 0;
+        _tagContent.singleLine = false;
+        _tagContent.preferredMaxLayoutWidth = SCALE_NUM(230);
         
         //大Button
         _afterDealButton = [[UIButton alloc] init];
@@ -142,7 +141,7 @@ typedef enum : NSUInteger {
         [_afterDealButton mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.mas_equalTo(kPaddingDistance);
             make.right.mas_equalTo(-kPaddingDistance);
-            make.top.equalTo(_flagLabel.mas_bottom).offset(kPaddingDistance);
+            make.top.equalTo(_tagContent.mas_bottom).offset(kPaddingDistance);
             make.bottom.mas_equalTo(-kPaddingDistance);
         }];
         _afterDealButton.hidden = YES;
@@ -158,7 +157,7 @@ typedef enum : NSUInteger {
         [_refuseButton mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.mas_equalTo(kPaddingDistance);
             make.width.mas_equalTo((SCREEN_WIDTH - kPaddingDistance*4)/3);
-            make.top.equalTo(_flagLabel.mas_bottom).offset(kPaddingDistance);
+            make.top.equalTo(_tagContent.mas_bottom).offset(kPaddingDistance);
             make.bottom.mas_equalTo(-kPaddingDistance);
         }];
         //通过
@@ -172,7 +171,7 @@ typedef enum : NSUInteger {
         [_passButton mas_makeConstraints:^(MASConstraintMaker *make) {
             make.centerX.equalTo(self.contentView.mas_centerX);
             make.width.mas_equalTo((SCREEN_WIDTH - kPaddingDistance*4)/3);
-            make.top.equalTo(_flagLabel.mas_bottom).offset(kPaddingDistance);
+            make.top.equalTo(_tagContent.mas_bottom).offset(kPaddingDistance);
             make.bottom.mas_equalTo(-kPaddingDistance);
         }];
         //发信
@@ -186,16 +185,47 @@ typedef enum : NSUInteger {
         [_sendButton mas_makeConstraints:^(MASConstraintMaker *make) {
             make.right.mas_equalTo(-kPaddingDistance);
             make.width.mas_equalTo((SCREEN_WIDTH - kPaddingDistance*4)/3);
-            make.top.equalTo(_flagLabel.mas_bottom).offset(kPaddingDistance);
+            make.top.equalTo(_tagContent.mas_bottom).offset(kPaddingDistance);
             make.bottom.mas_equalTo(-kPaddingDistance);
         }];
     }
     return self;
 }
 
--(void)setCellInfo:(NSDictionary *) dic
+-(void)setCellInfo:(ApplicantList *)applicantList
 {
+    _applicantList = applicantList;
     
+    [_headImageView setFaceImageWithUrl:_applicantList.author.headPic];
+    _nameLabel.text = _applicantList.author.name;
+    _sexLabel.text = _applicantList.author.gender;
+    
+    BOOL hasRelate = false;
+    for (int i = 0; i < _applicantList.author.tagsCommon.count; i++) {
+        BOOL isRelate = [_applicantList.author.tagsCommon[i] equal];
+        hasRelate |= isRelate;
+        SKTag *tag = [SKTag tagWithText:[_applicantList.author.tagsCommon[i] name]];
+        tag.font = CONTENT_FONT(10);
+        if (isRelate) {
+            tag.textColor = KCOLORGREEN_009688;
+        } else {
+            tag.textColor = KCOLORWHITE_696969;
+        }
+        [_tagContent addTag:tag];
+    }
+    [self setIsRelated:hasRelate];
+    
+    
+}
+
+
+//更新buttonshow
+- (void)updateButtonShow {
+    if (0 == _applicantList.status) {
+        //未处理
+    } else if (1 == _applicantList.status) {
+        //已同意
+    }
 }
 
 -(void)clickDealButton:(UIButton *) button
@@ -217,13 +247,14 @@ typedef enum : NSUInteger {
         default:
             break;
     }
-    
 }
 
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-    [super setSelected:selected animated:animated];
-
-    // Configure the view for the selected state
+- (void)setIsRelated:(BOOL)isRelated {
+    if (isRelated) {
+        _flagImageView.image = [UIImage imageNamed:@"tag-green"];
+    } else {
+        _flagImageView.image = [UIImage imageNamed:@"tag-grey"];
+    }
 }
 
 @end

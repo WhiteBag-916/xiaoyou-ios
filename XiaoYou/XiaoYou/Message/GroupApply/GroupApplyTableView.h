@@ -10,4 +10,8 @@
 
 @interface GroupApplyTableView : YTableView
 
+- (instancetype)initWithGroupId:(NSString *)groupId;
+
+- (void)loadData;
+
 @end

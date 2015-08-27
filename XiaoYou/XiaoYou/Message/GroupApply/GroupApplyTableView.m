@@ -8,19 +8,26 @@
 
 #import "GroupApplyTableView.h"
 #import "GroupApplyTableViewCell.h"
+#import "ContactManager.h"
 
 @interface GroupApplyTableView ()<UITableViewDataSource,UITableViewDelegate>
+
+@property (nonatomic, strong) NSString *groupId;
+@property (nonatomic, strong) NSMutableArray *groupApplyArray;
 
 @end
 
 @implementation GroupApplyTableView
 
-- (instancetype)initWithFrame:(CGRect)frame
+- (instancetype)initWithGroupId:(NSString *)groupId
 {
-    self = [super initWithFrame:frame];
+    self = [super init];
     if (self) {
         self.dataSource = self;
         self.delegate = self;
+        
+        _groupId = groupId;
+        _groupApplyArray = [NSMutableArray array];
         
         [self registerClass:[GroupApplyTableViewCell class] forCellReuseIdentifier:kGroupApplyTableViewCell];
     }
@@ -32,15 +39,36 @@
     [self reloadData];
 }
 
-
--(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+#pragma mark - 继承者
+- (BOOL)showHeaderRefresh
 {
-    return 1;
+    return YES;
+}
+
+- (void)loadData {
+    [self beginLoadNewData];
+}
+- (void)loadNewData
+{
+    [self sendRequest];
+}
+
+- (void)sendRequest {
+    [[ContactManager sharedInstance] applyListApply:_groupId block:^(YActionMessage *message) {
+        if (message.isSuccess) {
+            _groupApplyArray = [NSMutableArray arrayWithArray:message.object];
+            [self reloadData];
+        } else {
+            [YUtils showTitleOn:self title:message.desc];
+        }
+        
+        [self stopLoad];
+    }];
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 5;
+    return _groupApplyArray.count;
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -48,7 +76,7 @@
     
     GroupApplyTableViewCell * cell = [self dequeueReusableCellWithIdentifier:kGroupApplyTableViewCell forIndexPath:indexPath];
     
-    [cell setCellInfo:nil];
+    [cell setCellInfo:_groupApplyArray[indexPath.row]];
     
     return cell;
     
