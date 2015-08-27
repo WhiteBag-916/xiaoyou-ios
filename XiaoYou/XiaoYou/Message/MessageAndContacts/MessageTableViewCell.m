@@ -164,6 +164,14 @@ NSString *const kMessageTableViewCell = @"MessageTableViewCellId";
             {
                 [_headImageView setNormalImageWithUrl:ext[@"group_icon"]];
             }
+        } else if (SYSTEM_MESSAGE == [ext[@"type"] integerValue]) {
+            [_headImageView setNormalImageWithUrl:[YShareData defaultData][kShareData_SchoolIcon]];
+            _nameLabel.text = @"系统消息";
+            if (_conversation.unreadMessagesCount > 0) {
+                _messageLabel.text = [self subTitleMessageByConversation:_conversation];
+            } else {
+                _messageLabel.text = @"暂时没有系统消息";
+            }
         }
     } else {
         NSDictionary * userInfoDic = [self getUserInfo:_conversation];
