@@ -61,7 +61,7 @@
     }];
 }
 
--(void)refreshTableView:(NSMutableArray *) dataSouceArr
+-(void)refreshTableView:(NSArray *) dataSouceArr
 {
     _dataSourceArr = dataSouceArr;
     [self reloadData];

@@ -35,8 +35,9 @@
     return self;
 }
 
--(void)refreshTableView:(NSMutableArray *) dataSouceArr
+-(void)refreshTableView:(NSArray *) dataSouceArr
 {
+    _groupApplyArray = [NSMutableArray arrayWithArray:dataSouceArr];
     [self reloadData];
 }
 

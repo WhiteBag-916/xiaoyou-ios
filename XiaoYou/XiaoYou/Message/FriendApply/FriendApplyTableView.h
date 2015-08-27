@@ -16,6 +16,6 @@
 
 - (void)loadData;
 
--(void)refreshTableView:(NSMutableArray *) dataSouceArr;
+-(void)refreshTableView:(NSArray *) dataSouceArr;
 
 @end

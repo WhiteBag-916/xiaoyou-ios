@@ -58,7 +58,7 @@
     YActionSheetItem *item1 = [YActionSheetItem itemWithTitle:@"清空社团申请者列表"
                                                          type:YCommonActionSheetItemTypeCenterCommon
                                                         block:^(NSInteger checkNum) {
-                                                            NSLog(@"清空社团申请者列表");
+                                                            [self removeAllData];
                                                         }];
     YActionSheetItem *item2 = [YActionSheetItem itemWithTitle:@"集体发信"
                                                          type:YCommonActionSheetItemTypeCenterCommon
@@ -71,6 +71,10 @@
                                                         }];
     YCommonActionSheet *sheet = [[YCommonActionSheet alloc] initWithType:@[item1,item2] title:nil];
     [sheet show];
+}
+
+- (void)removeAllData {
+    [_groupApplyTableView refreshTableView:[NSArray array]];
 }
 
 

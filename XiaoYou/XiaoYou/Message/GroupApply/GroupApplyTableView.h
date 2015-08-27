@@ -18,4 +18,6 @@
 
 - (void)loadData;
 
+-(void)refreshTableView:(NSArray *) dataSouceArr;
+
 @end

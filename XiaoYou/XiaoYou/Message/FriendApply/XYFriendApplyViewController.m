@@ -53,10 +53,14 @@
     YActionSheetItem *item1 = [YActionSheetItem itemWithTitle:@"清空好友列表"
                                                          type:YCommonActionSheetItemTypeCenterCommon
                                                         block:^(NSInteger checkNum) {
-                                                            NSLog(@"清空好友列表");
+                                                            [self removeAllData];
                                                         }];
     YCommonActionSheet *sheet = [[YCommonActionSheet alloc] initWithType:@[item1] title:nil];
     [sheet show];
+}
+
+- (void)removeAllData {
+    [_friendApplyTableView refreshTableView:[NSArray array]];
 }
 
 - (void)didReceiveMemoryWarning {
