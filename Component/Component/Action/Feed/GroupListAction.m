@@ -8,7 +8,7 @@
 
 #import "GroupListAction.h"
 #import "YUtils+Component.h"
-#import "GroupModel.h"
+#import "GroupAllList.h"
 
 @implementation GroupListAction
 
@@ -17,7 +17,7 @@
     NSDictionary *parameter = [YUtils getParameter:@{@"limitStart":@(_limitStart), @"limitEnd":@(_limitEnd), @"queryCode":SStr(_queryCode), @"name":SStr(_name)} needUserToken:YES];
     NSString *url = [YUtils getUrl:api_group_groupList];
     [self POST:url parameters:parameter completion:^(YHttpRequest *request) {
-        YActionMessage *message = [GroupModel actionMessageWithHttpRequest:request];
+        YActionMessage *message = [GroupAllList actionMessageWithHttpRequest:request];
         self.completionBlock(message);
     }];
 }

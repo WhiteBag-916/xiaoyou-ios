@@ -91,6 +91,10 @@
 #define api_group_groupConditions @"/group/groupConditions"
 //社团列表
 #define api_group_groupList @"/group/groupList"
+//社团详情
+#define api_group_groupDetailInfo @"/group/groupDetailInfo"
+//社团feed列表
+#define api_group_groupFeeds @"/group/groupFeeds"
 
 /**********************************************************
  Url Define: ContactManager

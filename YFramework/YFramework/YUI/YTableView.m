@@ -86,7 +86,19 @@
 //停止拉取更多数据
 - (void)stopLoadMoreData
 {
-    [self.footer endRefreshing];
+    if ([self.footer isRefreshing]) {
+        [self.footer endRefreshing];
+    }
+}
+
+//停止刷新，哪个正在刷新，停止哪个
+- (void)stopLoad {
+    if ([self.header isRefreshing]) {
+        [self.header endRefreshing];
+    }
+    if ([self.footer isRefreshing]) {
+        [self.footer endRefreshing];
+    }
 }
 
 //隐藏头

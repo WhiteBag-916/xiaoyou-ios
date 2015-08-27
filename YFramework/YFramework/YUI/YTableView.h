@@ -19,6 +19,8 @@
 - (void)stopLoadNewData;
 //停止拉取更多数据
 - (void)stopLoadMoreData;
+//停止刷新，哪个正在刷新，停止哪个
+- (void)stopLoad;
 //隐藏头
 - (void)hiddenHeader:(BOOL)isHidden;
 //隐藏尾

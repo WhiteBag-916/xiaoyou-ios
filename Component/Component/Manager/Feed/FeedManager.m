@@ -24,6 +24,8 @@
 #import "ReadByFeedAction.h"
 #import "GroupConditionsAction.h"
 #import "GroupListAction.h"
+#import "GroupDetailInfoAction.h"
+#import "GroupFeedsAction.h"
 
 #define KFeedManagerSyncQueue @"kFeedManagerSyncQueue"
 
@@ -227,6 +229,31 @@ DEF_SINGLETON(FeedManager);
     action.limitEnd = limitEnd;
     action.name = name;
     action.queryCode = queryCode;
+    
+    [YAction startAction:action completionBlock:^(YActionMessage* message) {
+        //主线程处理界面
+        block(message);
+    }];
+}
+
+//社团详情
+- (void)groupDetailInfo:(NSInteger)size groupId:(NSString *)groupId block:(ActionCompleteBlock)block {
+    GroupDetailInfoAction *action = [[GroupDetailInfoAction alloc] init];
+    action.size = size;
+    action.groupId = groupId;
+    
+    [YAction startAction:action completionBlock:^(YActionMessage* message) {
+        //主线程处理界面
+        block(message);
+    }];
+}
+
+//社团feed列表
+- (void)groupFeeds:(NSString *)lastId size:(NSInteger)size groupId:(NSString *)groupId block:(ActionCompleteBlock)block {
+    GroupFeedsAction *action = [[GroupFeedsAction alloc] init];
+    action.size = size;
+    action.groupId = groupId;
+    action.lastId = lastId;
     
     [YAction startAction:action completionBlock:^(YActionMessage* message) {
         //主线程处理界面

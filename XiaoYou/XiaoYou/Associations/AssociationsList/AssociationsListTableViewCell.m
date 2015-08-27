@@ -162,6 +162,7 @@ NSString *const kAssociationsListTableViewCell = @"AssociationsListTableViewCell
     
     for (int i = 0; i < 5; ++i) {
         UIImageView *starImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"common_star"]];
+        starImageView.hidden = YES;
         [_starView addSubview:starImageView];
         
         [starImageView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -188,6 +189,17 @@ NSString *const kAssociationsListTableViewCell = @"AssociationsListTableViewCell
     
     _nameLabel.text = model.groupName;
     _keywordsLabel.text = model.keyWords;
+    NSInteger starNum = [model.star integerValue];
+    
+    //清除上面的view
+    NSArray *viewArray = _starView.subviews;
+    [viewArray enumerateObjectsUsingBlock:^(UIView *view, NSUInteger idx, BOOL *stop) {
+        if (idx >= starNum) {
+            view.hidden = YES;
+        } else {
+            view.hidden = NO;
+        }
+    }];
 }
 
 @end
