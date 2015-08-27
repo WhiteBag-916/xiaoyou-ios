@@ -45,7 +45,7 @@
     
     [self initView];
 }
-
+//需要调用之前设定好_shareData，参考XYGroupInfoDetailViewController
 - (void)onNavigationRightButtonClicked {
     YActionSheetItem *item1 = [YActionSheetItem itemWithType:YCommonActionSheetItemTypeShareOrganization title:@"分享这社团至" extraData:_shareData];
     

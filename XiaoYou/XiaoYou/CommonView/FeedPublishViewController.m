@@ -203,8 +203,13 @@
     [_textView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(_groupView);
         make.centerX.equalTo(_groupView);
-        make.top.equalTo(_groupTag.mas_bottom).priorityLow();
-        make.top.equalTo(_switchView.mas_bottom).priorityHigh();
+        ProfileInfo *info = [[ProvisionManager sharedInstance] getProfile];
+        if (info.managerGroups.count > 0) {
+            make.top.equalTo(_groupTag.mas_bottom).priorityLow();
+            make.top.equalTo(_switchView.mas_bottom).priorityHigh();
+        } else {
+           make.top.mas_equalTo(KTEXTVIEWMARGIN_TOP);
+        }
         make.height.mas_equalTo(KTEXTVIEWHEIGHT);
     }];
     _textView.placeholder = @"发布优质内容，会有更多人给你敬酒";
