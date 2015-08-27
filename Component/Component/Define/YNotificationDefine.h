@@ -31,5 +31,6 @@
 
 
 #define KNotification_Present_TakePhoto                 @"KNotification_Present_TakePhoto"
+#define KNotification_Open_PraiseDetail                 @"KNotification_Open_PraiseDetail"
 
 #endif

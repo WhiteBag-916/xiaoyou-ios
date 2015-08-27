@@ -83,10 +83,10 @@
         lastID = [NSString stringWithFormat:@"%g", [[_feedListArray.lastObject feed] feedIdentifier]];
     }
     [[FeedManager sharedInstance] feedList:lastID size:KPAGENUM queryCode:_filter block:^(YActionMessage *message) {
-        if ([self isHeaderRefresh]) {
-            [_feedListArray removeAllObjects];
-        }
         if (message.isSuccess) {
+            if ([self isHeaderRefresh]) {
+                [_feedListArray removeAllObjects];
+            }
             [self hiddenFooter:false];
             [_feedListArray addObjectsFromArray:message.object];
             if ([message.object count] < KPAGENUM) {
