@@ -66,4 +66,10 @@ AS_SINGLETON(ContactManager);
 //获取群组详情
 - (void)groupDetail:(NSString *)groupId block:(ActionCompleteBlock)block;
 
+//删除联系人
+- (void)delLinkMan:(NSString *)delUids block:(ActionCompleteBlock)block;
+
+//社长删除社团成员
+- (void)deleteGroupUser:(NSString *)groupId deleteUserIds:(NSString *)deleteUserIds block:(ActionCompleteBlock)block;
+
 @end
