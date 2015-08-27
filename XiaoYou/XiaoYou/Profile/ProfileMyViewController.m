@@ -152,7 +152,7 @@
         make.top.equalTo(_middelView).offset(SCALE_NUM(20));
     }];
     
-    _schoolNoLabel = [self labelWithColor:false size:8];
+    _schoolNoLabel = [self labelWithColor:false size:12];
     [_schoolNoLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(_nameLabel.mas_bottom).offset(SCALE_NUM(12));
     }];
