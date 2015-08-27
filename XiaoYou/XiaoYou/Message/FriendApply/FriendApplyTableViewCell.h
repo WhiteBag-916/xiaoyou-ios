@@ -9,9 +9,13 @@
 #import "YTableViewCell.h"
 #import "ApplicantList.h"
 
+@class YViewController;
+
 extern NSString *const kFriendApplyTableViewCell;
 
 @interface FriendApplyTableViewCell : YTableViewCell
+
+@property (nonatomic, weak) YViewController *superVC;
 
 -(void)setCellInfo:(ApplicantList *) model;
 

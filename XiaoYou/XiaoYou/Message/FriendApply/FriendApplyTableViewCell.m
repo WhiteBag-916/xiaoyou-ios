@@ -14,6 +14,7 @@
 #import "ContactManager.h"
 #import "YUtils+HUD.h"
 #import "ApplicantList.h"
+#import "ChatViewController.h"
 
 #define kHeadCornerRadius              22.5
 #define kPaddingDistance               12
@@ -307,6 +308,10 @@ typedef enum : NSUInteger {
 }
 
 - (void)toChat {
+    ChatViewController * chatVC = [[ChatViewController alloc] initWithChatter:[NSString stringWithFormat:@"4_%@",_applicantList.author.studentNo] isGroup:NO];
+    chatVC.isSystemMessage = NO;
+    chatVC.studentDic = @{@"name":_applicantList.author.name, @"icon":_applicantList.author.headPic, @"uid":_applicantList.author.uid};
+    [self.superVC.navigationController pushViewController:chatVC animated:YES needHiddenBottomBar:YES];
 }
 
 - (void)setIsRelated:(BOOL)isRelated {

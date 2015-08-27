@@ -74,8 +74,9 @@
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
     FriendApplyTableViewCell * cell = [self dequeueReusableCellWithIdentifier:kFriendApplyTableViewCell forIndexPath:indexPath];
+    
+    cell.superVC = self.superVC;
     [cell setCellInfo:_dataSourceArr[indexPath.row]];
     
     return cell;
