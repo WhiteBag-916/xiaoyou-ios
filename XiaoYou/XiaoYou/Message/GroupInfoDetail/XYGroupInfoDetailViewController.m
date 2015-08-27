@@ -15,6 +15,7 @@
 #import "ProfileInfo.h"
 #import "GroupDetail.h"
 #import "YCommonReport.h"
+#import "GroupModel.h"
 
 
 #define kNavigationgLeftWidth                   9
@@ -48,8 +49,9 @@ NSString *const kXYGroupInfoDetailViewController = @"XYGroupInfoDetailViewContro
     [super viewWillAppear:animated];
     [[ContactManager sharedInstance] groupDetail:_gid block:^(YActionMessage *message) {
         if (message.object) {
-//            _model = message.object;
+            _model = message.object;
             [_groupInfoDetailCollectionView refreshTableView:message.object];
+             _shareData = @{@"name":_model.groupModel.groupName,@"content":_model.groupModel.internalBaseClassDescription,@"pic":_model.groupModel.groupIcon};
         }
     }];}
 
