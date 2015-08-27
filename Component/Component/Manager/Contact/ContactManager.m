@@ -323,4 +323,36 @@ DEF_SINGLETON(ContactManager);
     }];
 }
 
+//是否为好友
+- (BOOL)isFriendRelationShip:(NSString *) uid
+{
+    LinkManModel * linkManModel = [[ContactManager sharedInstance] getContactsListData];
+    for (int i = 0; i < linkManModel.linkManList.count; i ++)
+    {
+        LinkManList * model = linkManModel.linkManList[i];
+        if ([uid isEqualToString:model.uid])
+        {
+            return YES;
+        }
+    }
+    
+    return NO;
+}
+
+//获取好友详情
+- (LinkManList *)getFriendInfo:(NSString *) uid
+{
+    LinkManModel * linkManModel = [[ContactManager sharedInstance] getContactsListData];
+    for (int i = 0; i < linkManModel.linkManList.count; i ++)
+    {
+        LinkManList * model = linkManModel.linkManList[i];
+        if ([uid isEqualToString:model.uid])
+        {
+            return model;
+        }
+    }
+    
+    return nil;
+}
+
 @end

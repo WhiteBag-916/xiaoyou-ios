@@ -209,6 +209,10 @@
                     }
                 }];
             }
+            else
+            {
+                [YUtils showTitle:@"只有社长才有此权限" hideAfter:2];
+            }
         }
         
     }

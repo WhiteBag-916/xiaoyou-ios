@@ -7,9 +7,11 @@
 //
 
 #import "YTableView.h"
+#import "XYSystemMessageViewController.h"
 
 @interface SystemMessageTableView : YTableView
 
+@property(nonatomic,weak)XYSystemMessageViewController * myController;
 -(void)refreshTableView:(NSMutableArray *) dataSouceArr;
 
 @end

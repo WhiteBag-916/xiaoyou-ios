@@ -9,6 +9,7 @@
 #import "YManager.h"
 #import "YAction.h"
 #import "LinkManModel.h"
+#import "LinkManList.h"
 
 @interface ContactManager : YManager<YManager>
 AS_SINGLETON(ContactManager);
@@ -71,5 +72,11 @@ AS_SINGLETON(ContactManager);
 
 //社长删除社团成员
 - (void)deleteGroupUser:(NSString *)groupId deleteUserIds:(NSString *)deleteUserIds block:(ActionCompleteBlock)block;
+
+//是否为好友
+- (BOOL)isFriendRelationShip:(NSString *) uid;
+
+//获取好友详情
+- (LinkManList *)getFriendInfo:(NSString *) uid;
 
 @end

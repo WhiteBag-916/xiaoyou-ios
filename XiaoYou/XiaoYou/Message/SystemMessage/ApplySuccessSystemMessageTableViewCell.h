@@ -10,7 +10,15 @@
 
 extern NSString *const kApplySuccessSystemMessageTableViewCell;
 
+@protocol ApplySuccessSystemMessageTableViewCellDelegat <NSObject>
+
+-(void)turnToGroupChat:(NSDictionary *) groupDic;
+
+@end
+
 @interface ApplySuccessSystemMessageTableViewCell : YTableViewCell
+
+@property (nonatomic,weak)id<ApplySuccessSystemMessageTableViewCellDelegat>delegat;
 
 -(void)setCellInfo:(NSDictionary *) dic;
 

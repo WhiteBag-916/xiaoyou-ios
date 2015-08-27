@@ -49,6 +49,7 @@
     [self showCustomNavigationBackButton];
     
     _systemMessageTableView = [[SystemMessageTableView alloc] init];
+    _systemMessageTableView.myController = self;
     [self.view addSubview:_systemMessageTableView];
     [_systemMessageTableView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.left.right.bottom.mas_equalTo(0);

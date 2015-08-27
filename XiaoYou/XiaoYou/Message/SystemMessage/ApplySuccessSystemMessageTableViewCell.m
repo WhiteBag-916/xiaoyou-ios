@@ -29,6 +29,8 @@ NSString *const kApplySuccessSystemMessageTableViewCell = @"ApplySuccessSystemMe
 
 @property(nonatomic,strong)UILabel * defaultLabel;
 
+@property (nonatomic,strong)NSDictionary * groupDic;
+
 @end
 
 @implementation ApplySuccessSystemMessageTableViewCell
@@ -67,7 +69,7 @@ NSString *const kApplySuccessSystemMessageTableViewCell = @"ApplySuccessSystemMe
             make.top.mas_equalTo(3*kPaddingDistance);
             make.right.mas_equalTo(-4*kPaddingDistance);
             make.left.equalTo(_headImageView.mas_right).offset(kPaddingDistance);
-            make.height.mas_equalTo(kHeadImageViewHeightAndWidth);
+            make.height.mas_equalTo(55);
         }];
         
         _chatButton = [[UIButton alloc] init];
@@ -80,7 +82,7 @@ NSString *const kApplySuccessSystemMessageTableViewCell = @"ApplySuccessSystemMe
         [_chatButton addTarget:self action:@selector(tapChatButton) forControlEvents:UIControlEventTouchUpInside];
         [self.contentView addSubview:_chatButton];
         [_chatButton mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.bottom.mas_equalTo(-2*kPaddingDistance);
+            make.bottom.mas_equalTo(-kPaddingDistance);
             make.height.mas_equalTo(kChatButtonHeight);
             make.left.mas_equalTo(_backImageView.mas_left).offset(4*kPaddingDistance);
             make.right.mas_equalTo(-6*kPaddingDistance);
@@ -94,7 +96,7 @@ NSString *const kApplySuccessSystemMessageTableViewCell = @"ApplySuccessSystemMe
         [_contentLabel mas_makeConstraints:^(MASConstraintMaker *make) {
             make.top.mas_equalTo(kBackTopAndBottom);
             make.left.mas_equalTo(kBackLeft);
-            make.height.mas_equalTo(kPaddingDistance*4);
+            make.height.mas_equalTo(kPaddingDistance*7);
             make.right.mas_equalTo(-kBackRight);
         }];
         
@@ -106,11 +108,17 @@ NSString *const kApplySuccessSystemMessageTableViewCell = @"ApplySuccessSystemMe
 
 -(void)tapChatButton
 {
-    NSLog(@"进入群聊");
+    if (nil != _delegat && [_delegat respondsToSelector:@selector(turnToGroupChat:)]) {
+        [_delegat turnToGroupChat:_groupDic];
+    }
 }
 
 -(void)setCellInfo:(EMMessage *) message
 {
+    if (message.ext)
+    {
+        _groupDic = message.ext ;
+    }
     _contentLabel.text = [self subTitleMessageByConversation:message];
     _chatButton.backgroundColor = [UIColor clearColor];
     if ([message.ext[@"group_icon"] isEqualToString:@""])
