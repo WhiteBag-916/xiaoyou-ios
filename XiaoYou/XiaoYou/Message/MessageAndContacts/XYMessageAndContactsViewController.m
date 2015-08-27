@@ -99,7 +99,7 @@
     [self registerNotifications];
     [self removeEmptyConversationsFromDB];
     [[MessageManager sharedInstance] setupUnreadMessageCount];
-    [_contactsTableView refreshTableView:[[ContactManager sharedInstance] getContactsListData]];
+    
 
 }
 
@@ -137,6 +137,7 @@
 {
     _messageDataSource = [self loadDataSource];
     [_messageTableView refreshTableView:_messageDataSource AndHeaderModel:_systemMessage];
+    [_contactsTableView refreshTableView:[[ContactManager sharedInstance] getContactsListData]];
     [self hideHud];
 }
 

@@ -205,10 +205,10 @@
 
 -(void)tapGestureRecognizerAction
 {
-//    ChatViewController * chatVC = [[ChatViewController alloc] initWithChatter:_headDataSourceDic[@"thirdCode"] isGroup:YES];
-//    chatVC.isSystemMessage = NO;
-//    chatVC.studentDic = _headDataSourceDic;
-//    [self.myController.navigationController pushViewController:chatVC animated:YES needHiddenBottomBar:YES];
+    XYGroupInfoDetailViewController * groupInfoDetailViewController = [[XYGroupInfoDetailViewController alloc] init];
+    groupInfoDetailViewController.studentDic = _headDataSourceDic;
+    groupInfoDetailViewController.gid = [_headDataSourceDic[@"gid"] stringValue];
+    [self.myController.navigationController pushViewController:groupInfoDetailViewController animated:YES needHiddenBottomBar:YES];
 }
 
 
@@ -312,24 +312,6 @@
     return YES;
 }
 
-//-(UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath
-//{
-//    return UITableViewCellEditingStyleDelete;
-//}
-
-//-(NSString *)tableView:(UITableView *)tableView titleForDeleteConfirmationButtonForRowAtIndexPath:(NSIndexPath *)indexPath
-//{
-//    return @"删除";
-//}
-//-(void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-//{
-//    if (editingStyle == UITableViewCellEditingStyleDelete)
-//    {
-//        self.deleteIndexPathOfCell = indexPath;
-//        UIAlertView * alertView = [[UIAlertView alloc] initWithTitle:@"确定删除此人？" message:nil delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
-//        [alertView show];
-//    }
-//}
 
 -(NSArray *)sectionIndexTitlesForTableView:(UITableView *)tableView
 {
@@ -360,29 +342,6 @@
     
 }
 
-//#pragma mark - UIAlterViewDelegate
-//
-//-(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
-//{
-//    if (buttonIndex == 1)
-//    {
-//        YLogD(@"contactDelete");
-//        YLogD(@"%@",self.deleteIndexPathOfCell);
-//        ContactsTableViewCell * cell = (ContactsTableViewCell *)[self cellForRowAtIndexPath:self.deleteIndexPathOfCell];
-//        
-//        for (LinkManList * obj in _linkManModel.linkManList) {
-//            if ([cell.studentDic[@"thirdCode"] isEqualToString:obj.thirdCode])
-//            {
-//                NSMutableArray * linkManArr = [[NSMutableArray alloc] initWithArray:_linkManModel.linkManList];
-//                [linkManArr removeObject:obj];
-//                _linkManModel.linkManList = [[NSArray alloc] initWithArray:linkManArr];
-//                [self refreshTableView:_linkManModel];
-//             
-//                [[ContactManager sharedInstance] saveContactsList:_linkManModel];
-//            }
-//        }
-//      
-//    }
-//}
+
 
 @end

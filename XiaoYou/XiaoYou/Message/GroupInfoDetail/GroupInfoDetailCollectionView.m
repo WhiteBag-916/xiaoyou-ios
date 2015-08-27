@@ -16,6 +16,7 @@
 #import "GroupModel.h"
 #import "Author.h"
 #import "XYChoicePersonViewController.h"
+#import "ContactManager.h"
 
 
 #define kPaddingDistance                10
@@ -139,6 +140,7 @@
     {
         XYChoicePersonViewController * choicePersonViewController = [[XYChoicePersonViewController alloc] init];
         choicePersonViewController.uid = [[ProvisionManager sharedInstance] getProfile].uid;
+        choicePersonViewController.superType = kXYGroupInfoDetailViewController;
         [self.myController.navigationController pushViewController:choicePersonViewController animated:YES needHiddenBottomBar:YES];
     }
 }
@@ -188,13 +190,32 @@
 #pragma mark - GroupInfoCollectionViewCellDelegate
 - (void)delCell:(NSString *)uid {
     //删除
-    [_dataSourceArr enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-        if ([[obj[@"model"] uid] isEqualToString:uid])
+    NSArray * groupArr =[[ProvisionManager sharedInstance] getProfile].managerGroups;
+    if (groupArr.count > 0)
+    {
+        for (int i = 0; i < groupArr.count; i++)
         {
-            [_dataSourceArr removeObjectAtIndex:idx];
-            *stop = YES;
+            Tags * tag = groupArr[i];
+            if ([[@(_headerModel.internalBaseClassIdentifier) stringValue] isEqualToString: tag.internalBaseClassIdentifier])
+            {
+                [_dataSourceArr enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+                    if ([[obj[@"model"] uid] isEqualToString:uid])
+                    {
+                        [_dataSourceArr removeObjectAtIndex:idx];
+                        [[ContactManager sharedInstance] deleteGroupUser:[NSString stringWithFormat:@"%g",_headerModel.internalBaseClassIdentifier] deleteUserIds:uid block:^(YActionMessage *message) {
+                            
+                        }];
+                        *stop = YES;
+                    }
+                }];
+            }
         }
-    }];
+        
+    }
+    else
+    {
+        [YUtils showTitle:@"只有社长才有此权限" hideAfter:2];
+    }  
     
     [self reloadData];
 }

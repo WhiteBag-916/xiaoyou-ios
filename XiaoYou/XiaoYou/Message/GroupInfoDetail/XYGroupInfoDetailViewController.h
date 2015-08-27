@@ -8,6 +8,8 @@
 
 #import "YViewController.h"
 
+extern NSString *const kXYGroupInfoDetailViewController;
+
 @interface XYGroupInfoDetailViewController : YViewController
 
 @property (nonatomic,strong)NSDictionary * studentDic;
