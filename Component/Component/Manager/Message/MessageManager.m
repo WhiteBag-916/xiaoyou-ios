@@ -19,6 +19,7 @@
 #import "YSystemDefine.h"
 #import "EMConversation.h"
 #import "ProvisionManager.h"
+#import "YModel+ActionMessage.h"
 
 #define kMessageManagerSyncQueue @"kMessageManagerSyncQueue"
 //两次提示的默认间隔
@@ -240,6 +241,11 @@ DEF_SINGLETON(MessageManager);
 #endif
     
     
+}
+
+//环信踢出
+- (void)didLoginFromOtherDevice {
+    [[NSNotificationCenter defaultCenter] postNotificationName:kNotification_Server_Token_Fail object:@{@"des":@"您的账号已在别的地方登录"}];
 }
 
 //// 未读消息数量变化回调

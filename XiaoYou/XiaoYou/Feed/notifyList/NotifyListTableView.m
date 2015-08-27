@@ -104,6 +104,18 @@
     }];
 }
 
+//清除当前界面存在这个feedid的数据
+- (void)delArrayByAffectId:(NSInteger)affectId {
+    for (int i = 0; i < _notifyListArray.count; ++i) {
+        if ([_notifyListArray[i] affectId] == affectId) {
+            [_notifyListArray removeObjectAtIndex:i];
+            --i;
+        }
+    }
+    
+    [self reloadData];
+}
+
 #pragma mark - UITableViewDataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
@@ -128,7 +140,10 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     FeedDetailViewController *feedDetailViewController = [[FeedDetailViewController alloc] initWithFeedId:[NSString stringWithFormat:@"%g", [_notifyListArray[indexPath.row] affectId]]];
-    [_superVC.navigationController pushViewController:feedDetailViewController animated:YES];
+    [_superVC.navigationController pushViewController:feedDetailViewController animated:YES needHiddenBottomBar:YES];
+    
+    //清除当前界面存在这个feedid的数据
+    [self delArrayByAffectId:[_notifyListArray[indexPath.row] affectId]];
 }
 
 @end

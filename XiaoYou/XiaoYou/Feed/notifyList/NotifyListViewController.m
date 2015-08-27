@@ -27,9 +27,7 @@
     self.title = @"人脉新提醒";
     
     [self initView];
-}
-
-- (void)viewDidAppear:(BOOL)animated {
+    
     [_notifyListTableView loadData];
 }
 
