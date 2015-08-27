@@ -36,8 +36,9 @@ NSString *const kNotifyListTableViewCell = @"NotifyListTableViewCellId";
         _face = [[YFaceImageView alloc] init];
         [self.contentView addSubview:_face];
         [_face mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.top.left.mas_equalTo(KFACEMARGIN);
+            make.left.mas_equalTo(KFACEMARGIN);
             make.width.height.mas_equalTo(KFACEIMGSIZE);
+            make.centerY.equalTo(self.contentView);
         }];
         _face.layer.cornerRadius = KFACEIMGSIZE/2;
         _face.clipsToBounds = true;
@@ -81,7 +82,7 @@ NSString *const kNotifyListTableViewCell = @"NotifyListTableViewCellId";
 }
 
 - (void)initData:(AlertList *)alertList {
-    [_face setData:alertList.userId imageUrl:@""];
+    [_face setData:alertList.userId imageUrl:alertList.hedPic];
     _contentLabel.text = alertList.content;
     _timeLabel.text = [YUtils distanceTimeToday:[NSDate dateWithTimeIntervalSince1970:alertList.createTime/1000]];
 }

@@ -50,14 +50,13 @@
     [SlideNavigationController sharedInstance].enableShadow = false;
     [SlideNavigationController sharedInstance].portraitSlideOffset = SCREEN_WIDTH * 0.3;
     [self showCustomNavigationPublishButton];
-    
-    
-    [self checkUnreadAlterCount];
+
     [self initNotification];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
     [_feedListTableView loadData];
+    [self checkUnreadAlterCount];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
