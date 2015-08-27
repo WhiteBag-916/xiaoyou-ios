@@ -144,6 +144,7 @@ DEF_SINGLETON(MessageManager);
 {
     //解析
     NSDictionary *ext = message.ext;
+    BOOL needReload = NO;
     
     if ([ext[@"server_flag"] boolValue])
     {
@@ -156,13 +157,8 @@ DEF_SINGLETON(MessageManager);
                 
                 message.conversationChatter = KSYSTEM_MESSAGEID;
                 message.from = KSYSTEM_MESSAGEID;
-                //插入message
-                [[EaseMob sharedInstance].chatManager insertMessagesToDB:@[message]];
                 
-                //插入conversation
-                EMConversation *conversation = [[EaseMob sharedInstance].chatManager conversationForChatter:KSYSTEM_MESSAGEID
-                                                                            conversationType:eConversationTypeChat];
-                [[EaseMob sharedInstance].chatManager insertConversationToDB:conversation append2Chat:YES];
+                needReload = YES;
                 
                 break;
             }
@@ -172,13 +168,8 @@ DEF_SINGLETON(MessageManager);
                 
                 message.conversationChatter = KFRIEND_APPLYID;
                 message.from = KFRIEND_APPLYID;
-                //插入message
-                [[EaseMob sharedInstance].chatManager insertMessagesToDB:@[message]];
                 
-                //插入conversation
-                EMConversation *conversation = [[EaseMob sharedInstance].chatManager conversationForChatter:KFRIEND_APPLYID
-                                                                                           conversationType:eConversationTypeChat];
-                [[EaseMob sharedInstance].chatManager insertConversationToDB:conversation append2Chat:YES];
+                needReload = YES;
                 break;
             }
             case GROUP_APPLY: {
@@ -199,13 +190,8 @@ DEF_SINGLETON(MessageManager);
                 
                 message.conversationChatter = chatter;
                 message.from = chatter;
-                //插入message
-                [[EaseMob sharedInstance].chatManager insertMessagesToDB:@[message]];
                 
-                //插入conversation
-                EMConversation *conversation = [[EaseMob sharedInstance].chatManager conversationForChatter:chatter
-                                                                                           conversationType:eConversationTypeChat];
-                [[EaseMob sharedInstance].chatManager insertConversationToDB:conversation append2Chat:YES];
+                needReload = YES;
                 break;
             }
             case ADD_COMMENT:
@@ -223,13 +209,26 @@ DEF_SINGLETON(MessageManager);
                 break;
             }
         }
+    } else {
+        needReload = YES;
     }
     
-    [message updateMessageExtToDB];
-    
-    [[EaseMob sharedInstance].chatManager loadAllConversationsFromDatabaseWithAppend2Chat:NO];
-    
-    [[NSNotificationCenter defaultCenter] postNotificationName:kNotification_Refresh_Message object:nil userInfo:nil];
+    if (needReload) {
+        //插入message
+        [[EaseMob sharedInstance].chatManager insertMessagesToDB:@[message]];
+        
+        //插入conversation
+        [[EaseMob sharedInstance].chatManager conversationForChatter:KSYSTEM_MESSAGEID
+                                                    conversationType:eConversationTypeChat];
+        
+        [message updateMessageExtToDB];
+        
+        [[EaseMob sharedInstance].chatManager loadAllConversationsFromDatabaseWithAppend2Chat:NO];
+        
+        [[NSNotificationCenter defaultCenter] postNotificationName:kNotification_Refresh_Message object:nil userInfo:nil];
+        
+        [self setupUnreadMessageCount];
+    }
     
 #if !TARGET_IPHONE_SIMULATOR
     BOOL isAppActivity = [[UIApplication sharedApplication] applicationState] == UIApplicationStateActive;
@@ -243,16 +242,16 @@ DEF_SINGLETON(MessageManager);
     
 }
 
-// 未读消息数量变化回调
--(void)didUnreadMessagesCountChanged
-{
-    [self setupUnreadMessageCount];
-}
-
-- (void)didFinishedReceiveOfflineMessages
-{
-    [self setupUnreadMessageCount];
-}
+//// 未读消息数量变化回调
+//-(void)didUnreadMessagesCountChanged
+//{
+//    [self setupUnreadMessageCount];
+//}
+//
+//- (void)didFinishedReceiveOfflineMessages
+//{
+//    [self setupUnreadMessageCount];
+//}
 
 // 统计未读消息数
 -(void)setupUnreadMessageCount
