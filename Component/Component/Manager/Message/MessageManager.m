@@ -187,6 +187,7 @@ DEF_SINGLETON(MessageManager);
                 
                 if ([SStr(chatter) isEmpty]) {
                     chatter = [NSString stringWithFormat:@"%lu", [KGROUP_APPLYID integerValue]+_grouArray.count];
+                    [_grouArray addObject:@{@"group_id":ext[@"group_id"], @"chatter": chatter}];
                 }
                 
                 message.conversationChatter = chatter;
