@@ -56,7 +56,12 @@
 
 - (void)viewDidAppear:(BOOL)animated {
     [_feedListTableView loadData];
-    [self checkUnreadAlterCount];
+    
+    //避免会被取消
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [self checkUnreadAlterCount];
+    });
+    
 }
 
 - (void)viewWillDisappear:(BOOL)animated
