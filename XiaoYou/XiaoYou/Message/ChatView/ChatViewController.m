@@ -246,12 +246,12 @@
     [self.navigationItem setLeftBarButtonItem:backItem];
     
     if (self.isChatGroup) {
-        self.title = _studentDic[@"groupName"];
+        self.title = _studentDic[@"name"];
         UIImageView * headImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 40, 40)];
         headImageView.layer.cornerRadius = 20;
         headImageView.clipsToBounds = YES;
         headImageView.userInteractionEnabled = YES;
-        [headImageView setFaceImageWithUrl:_studentDic[@"groupIcon"]];
+        [headImageView setFaceImageWithUrl:_studentDic[@"icon"]];
         UIButton *detailButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 60, 44)];
         [detailButton addTarget:self action:@selector(showRoomContact:) forControlEvents:UIControlEventTouchUpInside];
         [headImageView addSubview:detailButton];
