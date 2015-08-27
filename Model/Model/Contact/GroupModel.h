@@ -19,7 +19,7 @@
 @property (nonatomic, strong) NSString *internalBaseClassDescription;
 @property (nonatomic, strong) NSString *star;
 @property (nonatomic, strong) NSString *groupIcon;
-@property (nonatomic, strong) NSString *hot;
+@property (nonatomic, assign) BOOL hot;
 @property (nonatomic, assign) BOOL isCool;
 @property (nonatomic, assign) double coolCount;
 @property (nonatomic, strong) NSString *keyWords;

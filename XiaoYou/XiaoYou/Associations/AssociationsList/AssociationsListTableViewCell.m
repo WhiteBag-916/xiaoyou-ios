@@ -18,7 +18,7 @@ NSString *const kAssociationsListTableViewCell = @"AssociationsListTableViewCell
 #define K_HEADIMG_WH    SCALE_NUM(30)   //头像宽高
 
 #define K_CONTENT_L     SCALE_NUM(22)   //内容左间距
-#define K_CONTENT_R     SCALE_NUM(-6)    //右间距
+#define K_CONTENT_R     SCALE_NUM(-6-11-24)    //右间距
 #define K_CONTENT_M     SCALE_NUM(16)   //中间间距
 
 #define K_TAG_IMG_W     SCALE_NUM(11)   //tag图片宽度
@@ -37,6 +37,7 @@ NSString *const kAssociationsListTableViewCell = @"AssociationsListTableViewCell
 @property (nonatomic, strong) UILabel       *defaultLabel;      //默认文字
 @property (nonatomic, strong) UILabel       *nameLabel;         //名字
 @property (nonatomic, strong) UIView        *starView;          //星级
+@property (nonatomic, strong) UIImageView   *hotImageView;      //hot
 
 @property (nonatomic, strong) UILabel       *typeLabel;         //类型
 
@@ -100,8 +101,19 @@ NSString *const kAssociationsListTableViewCell = @"AssociationsListTableViewCell
     [_nameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(_headImageView.mas_right).offset(K_CONTENT_L);
         make.top.equalTo(_headImageView.mas_top);
-        make.right.equalTo(_starView.mas_left).offset(K_CONTENT_R);
+        make.right.lessThanOrEqualTo(_starView.mas_left).offset(K_CONTENT_R);
         make.height.equalTo(_starView.mas_height);
+    }];
+    
+    //hot
+    _hotImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"hot"]];
+    _hotImageView.hidden = YES;
+    [self.contentView addSubview:_hotImageView];
+    [_hotImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(_nameLabel.mas_right).offset(SCALE_NUM(11));
+        make.top.equalTo(_nameLabel.mas_top);
+        make.width.mas_equalTo(SCALE_NUM(24));
+        make.height.mas_equalTo(SCALE_NUM(12));
     }];
     
     //4
@@ -187,6 +199,7 @@ NSString *const kAssociationsListTableViewCell = @"AssociationsListTableViewCell
     }
     
     _nameLabel.text = model.groupName;
+    _hotImageView.hidden = !model.hot;
     _keywordsLabel.text = model.keyWords;
     _typeLabel.text = model.category;
     NSInteger starNum = [model.star integerValue];

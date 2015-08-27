@@ -1208,7 +1208,7 @@
     if (_isRobot) {
         ext = @{kRobot_Message_Ext:[NSNumber numberWithBool:YES]};
     }
-    EMMessage *locationMessage = [ChatSendHelper sendLocationLatitude:latitude longitude:longitude address:address toUsername:_conversation.chatter messageType:[self messageType] requireEncryption:NO ext:ext];
+    EMMessage *locationMessage = [ChatSendHelper sendLocationLatitude:latitude longitude:longitude address:address toUsername:_conversation.chatter messageType:[self messageType] requireEncryption:NO ext:[self addAlertBody:ext]];
     [self addMessage:locationMessage];
 }
 
@@ -1766,6 +1766,17 @@
     self.isInvisible = NO;
 }
 
+- (NSDictionary *)addAlertBody:(NSDictionary *)ext {
+    NSMutableDictionary *extDic = [[NSMutableDictionary alloc] initWithDictionary:ext];
+    if (_isChatGroup) {
+        [extDic setObject:@{@"em_push_title":[NSString stringWithFormat:@"%@给你发来一条新消息", _studentDic[@"name"]]} forKey:@"em_apns_ext"];
+    } else {
+        [extDic setObject:@{@"em_push_title":[NSString stringWithFormat:@"%@给你发来一条新消息", [[ProvisionManager sharedInstance] getLoginInfo].studentName]} forKey:@"em_apns_ext"];
+    }
+    
+    return extDic;
+}
+
 #pragma mark - send message
 
 -(void)sendTextMessage:(NSString *)textMessage
@@ -1780,7 +1791,7 @@
                                                             toUsername:_conversation.chatter
                                                            messageType:[self messageType]
                                                      requireEncryption:NO
-                                                                   ext:ext];
+                                                                   ext:[self addAlertBody:ext]];
     [self addMessage:tempMessage];
 }
 
@@ -1796,7 +1807,7 @@
                                                             toUsername:_conversation.chatter
                                                            messageType:[self messageType]
                                                      requireEncryption:NO
-                                                                   ext:ext];
+                                                                   ext:[self addAlertBody:ext]];
     [self addMessage:tempMessage];
 }
 
@@ -1809,7 +1820,7 @@
     EMMessage *tempMessage = [ChatSendHelper sendVoice:voice
                                             toUsername:_conversation.chatter
                                            messageType:[self messageType]
-                                     requireEncryption:NO ext:ext];
+                                     requireEncryption:NO ext:[self addAlertBody:ext]];
     [self addMessage:tempMessage];
 }
 
@@ -1822,7 +1833,7 @@
     EMMessage *tempMessage = [ChatSendHelper sendVideo:video
                                             toUsername:_conversation.chatter
                                            messageType:[self messageType]
-                                     requireEncryption:NO ext:ext];
+                                     requireEncryption:NO ext:[self addAlertBody:ext]];
     [self addMessage:tempMessage];
 }
 

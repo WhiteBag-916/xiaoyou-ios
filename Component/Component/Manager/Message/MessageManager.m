@@ -302,7 +302,7 @@ DEF_SINGLETON(MessageManager);
     UILocalNotification *notification = [[UILocalNotification alloc] init];
     notification.fireDate = [NSDate date]; //触发通知的时间
     
-    notification.alertBody = @"您有一条新消息";
+    notification.alertBody = message.ext[@"em_apns_ext"][@"em_push_title"];
 //    notification.alertAction = @"查看";
     notification.timeZone = [NSTimeZone defaultTimeZone];
     notification.soundName = UILocalNotificationDefaultSoundName;
