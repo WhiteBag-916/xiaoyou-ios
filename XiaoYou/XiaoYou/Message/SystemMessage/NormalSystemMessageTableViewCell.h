@@ -7,11 +7,12 @@
 //
 
 #import "YTableViewCell.h"
+#import "EMMessage.h"
 
 extern NSString *const kNormalSystemMessageTableViewCell;
 
 @interface NormalSystemMessageTableViewCell : YTableViewCell
 
--(void)setCellInfo:(id) dic;
+-(void)setCellInfo:(EMMessage *) message;
 
 @end

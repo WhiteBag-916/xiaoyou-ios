@@ -16,6 +16,7 @@
 #import "EMErrorDefs.h"
 #import <AudioToolbox/AudioToolbox.h>
 #import "EMTextMessageBody.h"
+#import "YSystemDefine.h"
 
 #define kMessageManagerSyncQueue @"kMessageManagerSyncQueue"
 //两次提示的默认间隔
@@ -149,25 +150,39 @@ DEF_SINGLETON(MessageManager);
                 //插入conversation
                 EMConversation *conversation = [[EaseMob sharedInstance].chatManager conversationForChatter:@"000001"
                                                                             conversationType:eConversationTypeChat];
-                
                 [[EaseMob sharedInstance].chatManager insertConversationToDB:conversation append2Chat:YES];
                 
                 break;
             }
                 
-            case FRIEND_APPLY:
+            case FRIEND_APPLY: {
                 YLogD(@"好友申请推送");
                 
                 message.conversationChatter = @"000002";
                 message.from = @"000002";
+                //插入message
+                [[EaseMob sharedInstance].chatManager insertMessagesToDB:@[message]];
+                
+                //插入conversation
+                EMConversation *conversation = [[EaseMob sharedInstance].chatManager conversationForChatter:@"000002"
+                                                                                           conversationType:eConversationTypeChat];
+                [[EaseMob sharedInstance].chatManager insertConversationToDB:conversation append2Chat:YES];
                 break;
-            case GROUP_APPLY:
+            }
+            case GROUP_APPLY: {
                 YLogD(@"社团申请推送");
                 
                 message.conversationChatter = @"000003";
                 message.from = @"000003";
-                break;
+                //插入message
+                [[EaseMob sharedInstance].chatManager insertMessagesToDB:@[message]];
                 
+                //插入conversation
+                EMConversation *conversation = [[EaseMob sharedInstance].chatManager conversationForChatter:@"000003"
+                                                                                           conversationType:eConversationTypeChat];
+                [[EaseMob sharedInstance].chatManager insertConversationToDB:conversation append2Chat:YES];
+                break;
+            }
             default:
                 break;
         }

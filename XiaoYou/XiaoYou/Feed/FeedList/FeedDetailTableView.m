@@ -77,10 +77,10 @@
     _shareData = [NSMutableDictionary dictionaryWithObjectsAndKeys:tag,@"tag",content,@"content",img, @"pic", nil];
     
     _commentListArray = [NSMutableArray arrayWithArray:info.commentListItems];
-    if (_commentListArray.count > KPAGENUM) {
-        [self hiddenFooter:false];
-    } else {
+    if (_commentListArray.count < KPAGENUM) {
         [self hiddenFooter:true];
+    } else {
+        [self hiddenFooter:false];
     }
     [self reloadData];
     
@@ -102,10 +102,10 @@
             if ([message.object count] < KPAGENUM) {
                 [self showNoticeNoMoreData];
             }
-            if (_commentListArray.count > KPAGENUM) {
-                [self hiddenFooter:false];
-            } else {
+            if (_commentListArray.count < KPAGENUM) {
                 [self hiddenFooter:true];
+            } else {
+                [self hiddenFooter:false];
             }
             [self reloadData];
         } else {
@@ -180,6 +180,8 @@
     }
 }
 - (void)openReply:(int)index {
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:index + 1 inSection:0];
+    [self scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionMiddle animated:false];
     CommentListItems *item = _commentListArray[index];
     [self.parent openInputWithId:item.author.uid name:item.author.name];
 }

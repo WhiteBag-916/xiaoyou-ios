@@ -29,6 +29,8 @@
 #define kRemindImageViewWidth          13
 #define kRemindImageViewHeight         15
 #define kRemindImageViewToRight        25
+#define kBottomLineHeight              0.4
+
 
 @interface ContactsTableView ()<UITableViewDataSource,UITableViewDelegate>
 
@@ -188,6 +190,16 @@
         make.right.mas_equalTo(-kPaddingDistance);
         make.height.mas_equalTo(kLabelHeightDistacnce);
     }];
+    
+    UIView * bottomView = [[UIView alloc] init];
+    bottomView.backgroundColor = [UIColor grayColor];
+    bottomView.alpha = 0.6;
+    [backView addSubview:bottomView];
+    [bottomView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.right.bottom.mas_equalTo(0);
+        make.height.mas_equalTo(kBottomLineHeight);
+    }];
+    
     self.tableHeaderView = backView;
 }
 
