@@ -29,6 +29,7 @@ NSString *const kProfileInfoIsCool = @"isCool";
 NSString *const kProfileInfoQueryCodes = @"queryCodes";
 NSString *const kProfileInfoManagerGroups = @"managerGroups";
 NSString *const kProfileInfoUnreadAlterCount = @"unreadAlterCount";
+NSString *const kProfileInfoSchoolName = @"schoolName";
 
 @interface ProfileInfo ()
 
@@ -56,6 +57,7 @@ NSString *const kProfileInfoUnreadAlterCount = @"unreadAlterCount";
 @synthesize queryCodes = _queryCodes;
 @synthesize managerGroups = _managerGroups;
 @synthesize unreadAlterCount = _unreadAlterCount;
+@synthesize schoolName = _schoolName;
 
 + (instancetype)modelObjectWithDictionary:(NSDictionary *)dict
 {
@@ -164,6 +166,7 @@ NSString *const kProfileInfoUnreadAlterCount = @"unreadAlterCount";
     
     self.managerGroups = [NSArray arrayWithArray:parsedManagerGroups];
     self.unreadAlterCount = [[self objectOrNilForKey:kProfileInfoUnreadAlterCount fromDictionary:dict] doubleValue];
+    self.schoolName = [self objectOrNilForKey:kProfileInfoSchoolName fromDictionary:dict];
     
     return self;
     
@@ -252,6 +255,7 @@ NSString *const kProfileInfoUnreadAlterCount = @"unreadAlterCount";
     }
     [mutableDict setValue:[NSArray arrayWithArray:tempArrayForManagerGroups] forKey:kProfileInfoManagerGroups];
     [mutableDict setValue:[NSNumber numberWithDouble:self.unreadAlterCount] forKey:kProfileInfoUnreadAlterCount];
+    [mutableDict setValue:self.schoolName forKey:kProfileInfoSchoolName];
 
     return [NSDictionary dictionaryWithDictionary:mutableDict];
 }
@@ -293,6 +297,7 @@ NSString *const kProfileInfoUnreadAlterCount = @"unreadAlterCount";
     self.queryCodes = [aDecoder decodeObjectForKey:kProfileInfoQueryCodes];
     self.managerGroups = [aDecoder decodeObjectForKey:kProfileInfoManagerGroups];
     self.unreadAlterCount = [aDecoder decodeDoubleForKey:kProfileInfoUnreadAlterCount];
+    self.schoolName = [aDecoder decodeObjectForKey:kProfileInfoSchoolName];
     
     return self;
 }
@@ -318,6 +323,7 @@ NSString *const kProfileInfoUnreadAlterCount = @"unreadAlterCount";
     [aCoder encodeObject:_queryCodes forKey:kProfileInfoQueryCodes];
     [aCoder encodeObject:_managerGroups forKey:kProfileInfoManagerGroups];
     [aCoder encodeDouble:_unreadAlterCount forKey:kProfileInfoUnreadAlterCount];
+    [aCoder encodeObject:_schoolName forKey:kProfileInfoSchoolName];
 }
 
 - (id)copyWithZone:(NSZone *)zone
@@ -344,6 +350,7 @@ NSString *const kProfileInfoUnreadAlterCount = @"unreadAlterCount";
         copy.queryCodes = [self.queryCodes copyWithZone:zone];
         copy.managerGroups = [self.managerGroups copyWithZone:zone];
         copy.unreadAlterCount = self.unreadAlterCount;
+        copy.schoolName = [self.schoolName copyWithZone:zone];
     }
     
     return copy;

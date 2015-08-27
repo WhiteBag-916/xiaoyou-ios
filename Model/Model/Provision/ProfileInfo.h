@@ -30,6 +30,7 @@
 @property (nonatomic, strong) NSArray *queryCodes;
 @property (nonatomic, strong) NSArray *managerGroups;
 @property (nonatomic, assign) double unreadAlterCount;
+@property (nonatomic, strong) NSString *schoolName;
 
 + (instancetype)modelObjectWithDictionary:(NSDictionary *)dict;
 - (instancetype)initWithDictionary:(NSDictionary *)dict;
