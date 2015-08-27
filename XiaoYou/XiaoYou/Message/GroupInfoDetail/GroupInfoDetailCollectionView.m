@@ -139,7 +139,6 @@
     else
     {
         XYChoicePersonViewController * choicePersonViewController = [[XYChoicePersonViewController alloc] init];
-        choicePersonViewController.uid = [[ProvisionManager sharedInstance] getProfile].uid;
         choicePersonViewController.superType = kXYGroupInfoDetailViewController;
         [self.myController.navigationController pushViewController:choicePersonViewController animated:YES needHiddenBottomBar:YES];
     }

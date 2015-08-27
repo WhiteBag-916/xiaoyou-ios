@@ -10,6 +10,7 @@
 #import "GroupApplyTableView.h"
 #import "YCommonActionSheet.h"
 #import "XYChoicePersonViewController.h"
+#import "ApplicantList.h"
 
 @interface XYGroupApplyViewController ()
 
@@ -65,8 +66,7 @@
                                                         block:^(NSInteger checkNum) {
                                                             NSLog(@"集体发信");
                                                             
-                                                            XYChoicePersonViewController * choicePersonViewController = [[XYChoicePersonViewController alloc] init];
-                                                            [self.navigationController pushViewController:choicePersonViewController animated:YES needHiddenBottomBar:YES];
+                                                            [self choicePerson];
                                                             
                                                         }];
     YCommonActionSheet *sheet = [[YCommonActionSheet alloc] initWithType:@[item1,item2] title:nil];
@@ -77,20 +77,23 @@
     [_groupApplyTableView refreshTableView:[NSArray array]];
 }
 
+- (void)choicePerson {
+    NSArray *dataArray = [_groupApplyTableView getData];
+    NSMutableArray *authorArray = [@[] mutableCopy];
+    
+    [dataArray enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+        [authorArray addObject:[obj author]];
+    }];
+    
+    XYChoicePersonViewController * choicePersonViewController = [[XYChoicePersonViewController alloc] init];
+    choicePersonViewController.authorArr = [NSArray arrayWithArray:authorArray];
+    [self.navigationController pushViewController:choicePersonViewController animated:YES needHiddenBottomBar:YES];
+}
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

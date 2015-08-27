@@ -7,10 +7,13 @@
 //
 
 #import "YTableView.h"
+#import "XYChoicePersonViewController.h"
 
 @interface ChoicePersonTableView : YTableView
 
 @property(nonatomic,strong)NSMutableArray * dataSouceArr;
+
+@property(nonatomic,weak)XYChoicePersonViewController * superVC;
 
 -(void)refreshTableView:(NSMutableArray *) dataSouceArr;
 

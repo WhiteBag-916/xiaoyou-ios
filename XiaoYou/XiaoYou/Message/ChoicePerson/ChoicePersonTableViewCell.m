@@ -54,7 +54,6 @@ NSString *const kChoicePersonTableViewCell = @"ChoicePersonTableViewCellId";
         _nameLabel = [[UILabel alloc] init];
         _nameLabel.font = CONTENT_FONT(14);
         _nameLabel.backgroundColor = [UIColor clearColor];
-        _nameLabel.text = @"斯提尔伯格";
         [_backView addSubview:_nameLabel];
         [_nameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
             make.centerY.equalTo(_backView.mas_centerY);
@@ -68,9 +67,9 @@ NSString *const kChoicePersonTableViewCell = @"ChoicePersonTableViewCellId";
 
 -(void)setCellInfo:(NSDictionary *) dic
 {
-    LinkManList * model = dic[@"model"];
-    _nameLabel.text = model.name;
-    [_headImageView setFaceImageWithUrl:model.icon];
+    
+    _nameLabel.text = dic[@"name"];
+    [_headImageView setFaceImageWithUrl:dic[@"icon"]];
     if ([dic[@"isSelected"] boolValue] == YES)
     {
         _backView.backgroundColor = [UIColor hexChangeFloat:@"b8dcda"];

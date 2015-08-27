@@ -20,4 +20,6 @@
 
 -(void)refreshTableView:(NSArray *) dataSouceArr;
 
+- (NSArray *)getData;
+
 @end

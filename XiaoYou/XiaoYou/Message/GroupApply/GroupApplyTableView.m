@@ -41,6 +41,10 @@
     [self reloadData];
 }
 
+- (NSArray *)getData {
+    return _groupApplyArray;
+}
+
 #pragma mark - 继承者
 - (BOOL)showHeaderRefresh
 {

@@ -8,6 +8,9 @@
 
 #import "ChoicePersonTableView.h"
 #import "ChoicePersonTableViewCell.h"
+#import "XYGroupInfoDetailViewController.h"
+#import "LinkManList.h"
+#import "Author.h"
 
 @interface ChoicePersonTableView ()<UITableViewDataSource,UITableViewDelegate>
 
@@ -33,9 +36,24 @@
     [_dataSouceArr removeAllObjects];
     [dataSouceArr enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
         NSMutableDictionary * dic = [[NSMutableDictionary alloc] init];
-        [dic setObject:obj forKey:@"model"];
-        [dic setObject:@NO forKey:@"isSelected"];
-        [_dataSouceArr addObject:dic];
+        if ([_superVC.superType isEqualToString:kXYGroupInfoDetailViewController]) {
+            LinkManList * model = obj;
+            [dic setObject:model forKey:@"model"];
+            [dic setObject:model.name forKey:@"name"];
+            [dic setObject:model.icon forKey:@"icon"];
+            [dic setObject:@NO forKey:@"isSelected"];
+            [_dataSouceArr addObject:dic];
+        }
+        else
+        {
+            Author * model = obj;
+            [dic setObject:model forKey:@"model"];
+            [dic setObject:model.name forKey:@"name"];
+            [dic setObject:model.headPic forKey:@"icon"];
+            [dic setObject:@NO forKey:@"isSelected"];
+            [_dataSouceArr addObject:dic];
+        }
+        
     }];
     [self reloadData];
 }

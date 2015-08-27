@@ -15,6 +15,7 @@
 #import "YUtils+HUD.h"
 #import "XYGroupInfoDetailViewController.h"
 #import "XYGroupApplyViewController.h"
+#import "Author.h"
 
 #define kButtonItemHeightAndWidth           44
 #define kCancleButtonItemWidth              55
@@ -35,10 +36,17 @@
     // Do any additional setup after loading the view.
     
     [self setUpUI];
+    if ([_superType isEqualToString:kXYGroupInfoDetailViewController])
+    {
+        LinkManModel * model =[[ContactManager sharedInstance] getContactsListData];
+        _dataSourceArr = [[NSMutableArray alloc] initWithArray:model.linkManList];
+        [_choicePersonTableView refreshTableView:_dataSourceArr];
+    }
+    else
+    {
+        _dataSourceArr = [[NSMutableArray alloc] initWithArray:_authorArr];
+    }
     
-    LinkManModel * model =[[ContactManager sharedInstance] getContactsListData];
-    _dataSourceArr = [[NSMutableArray alloc] initWithArray:model.linkManList];
-    [_choicePersonTableView refreshTableView:_dataSourceArr];
     
 }
 
@@ -75,6 +83,7 @@
 
     
     _choicePersonTableView = [[ChoicePersonTableView alloc] init];
+    _choicePersonTableView.superVC = self;
     [self.view addSubview:_choicePersonTableView];
     [_choicePersonTableView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.bottom.left.right.mas_equalTo(0);
@@ -89,8 +98,17 @@
     [_choicePersonTableView.dataSouceArr enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
         if ([obj[@"isSelected"] boolValue])
         {
-            LinkManList * model = obj[@"model"];
-            [sendPersonsArr addObject:model];
+            if ([[self superType] isEqualToString:kXYGroupInfoDetailViewController])
+            {
+                LinkManList * model = obj[@"model"];
+                [sendPersonsArr addObject:model];
+            }
+            else
+            {
+                Author * model = obj[@"model"];
+                [sendPersonsArr addObject:model];
+            }
+            
         }
     }];
     if (sendPersonsArr.count > 0)
@@ -98,6 +116,7 @@
         if ([[self superType] isEqualToString:kXYGroupInfoDetailViewController])
         {
             [YUtils showTitle:@"邀请入社成功" hideAfter:2];
+            //走接口
         }
         else
         {

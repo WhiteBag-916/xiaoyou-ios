@@ -10,7 +10,7 @@
 
 @interface XYChoicePersonViewController : YViewController
 
-@property (nonatomic,strong)NSString * uid;
+@property (nonatomic,strong)NSArray * authorArr;
 
 @property (nonatomic,strong)NSString * superType;
 
