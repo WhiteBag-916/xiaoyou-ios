@@ -15,20 +15,14 @@
 #import "YDirectory+Data.h"
 #import "LinkManModel.h"
 #import "ProfileAction.h"
-#import "PraiseAction.h"
 #import "FindFriendsAction.h"
 #import "FriendsConditionAction.h"
-#import "SubmitApplyAction.h"
-#import "RejectApplyAction.h"
 #import "ApplyListAction.h"
-#import "IgnoreApplyListAction.h"
-#import "AgreeApplyAction.h"
 #import "ApplicantListAction.h"
 #import "GetFriendApplyListAction.h"
-#import "AgreeFriendApplyAction.h"
-#import "SubmitFriendApplyAction.h"
 #import "GroupDetailAction.h"
-#import "IgnoreFriendApplyAction.h"
+#import "CommonAction.h"
+#import "YUtils+Component.h"
 
 #define kContactsManagerSyncQueue @"kContactsManagerSyncQueue"
 
@@ -125,8 +119,9 @@ DEF_SINGLETON(ContactManager);
 
 //点赞别人
 - (void)praise:(NSString *)bePraiseId block:(ActionCompleteBlock)block {
-    PraiseAction* action = [[PraiseAction alloc] init];
-    action.bePraiseId = bePraiseId;
+    CommonAction* action = [[CommonAction alloc] init];
+    action.parameter = [YUtils getParameter:@{@"bePraiseId":bePraiseId} needUserToken:YES];
+    action.url = [YUtils getUrl:api_contact_Praise];
     
     [YAction startAction:action completionBlock:^(YActionMessage* message) {
         //主线程处理界面
@@ -159,8 +154,9 @@ DEF_SINGLETON(ContactManager);
 
 //申请进入群组
 - (void)submitApply:(NSString *)groupId block:(ActionCompleteBlock)block {
-    SubmitApplyAction* action = [[SubmitApplyAction alloc] init];
-    action.groupId = groupId;
+    CommonAction* action = [[CommonAction alloc] init];
+    action.parameter = [YUtils getParameter:@{@"groupId":groupId} needUserToken:YES needAddUserID:YES];
+    action.url = [YUtils getUrl:api_contact_SubmitApply];
     
     [YAction startAction:action completionBlock:^(YActionMessage* message) {
         //主线程处理界面
@@ -170,8 +166,9 @@ DEF_SINGLETON(ContactManager);
 
 //拒绝加入群组
 - (void)rejectApply:(NSString *)applyId block:(ActionCompleteBlock)block {
-    RejectApplyAction* action = [[RejectApplyAction alloc] init];
-    action.applyId = applyId;
+    CommonAction* action = [[CommonAction alloc] init];
+    action.parameter = [YUtils getParameter:@{@"applyId":applyId} needUserToken:YES needAddUserID:YES];
+    action.url = [YUtils getUrl:api_contact_RejectApply];
     
     [YAction startAction:action completionBlock:^(YActionMessage* message) {
         //主线程处理界面
@@ -192,8 +189,9 @@ DEF_SINGLETON(ContactManager);
 
 //忽略申请列表
 - (void)ignoreApplyList:(NSString *)applyIds block:(ActionCompleteBlock)block {
-    IgnoreApplyListAction* action = [[IgnoreApplyListAction alloc] init];
-    action.applyIds = applyIds;
+    CommonAction* action = [[CommonAction alloc] init];
+    action.parameter = [YUtils getParameter:@{@"applyIds":applyIds} needUserToken:YES needAddUserID:YES];
+    action.url = [YUtils getUrl:api_contact_IgnoreApplyList];
     
     [YAction startAction:action completionBlock:^(YActionMessage* message) {
         //主线程处理界面
@@ -203,8 +201,9 @@ DEF_SINGLETON(ContactManager);
 
 //同意加入群组
 - (void)agreeApply:(NSString *)applyId block:(ActionCompleteBlock)block {
-    AgreeApplyAction* action = [[AgreeApplyAction alloc] init];
-    action.applyId = applyId;
+    CommonAction* action = [[CommonAction alloc] init];
+    action.parameter = [YUtils getParameter:@{@"applyId":applyId} needUserToken:YES needAddUserID:YES];
+    action.url = [YUtils getUrl:api_contact_AgreeApply];
     
     [YAction startAction:action completionBlock:^(YActionMessage* message) {
         //主线程处理界面
@@ -235,8 +234,9 @@ DEF_SINGLETON(ContactManager);
 
 //同意好友申请
 - (void)agreeFriendApply:(NSString *)applyId block:(ActionCompleteBlock)block {
-    AgreeFriendApplyAction* action = [[AgreeFriendApplyAction alloc] init];
-    action.applyId = applyId;
+    CommonAction* action = [[CommonAction alloc] init];
+    action.parameter = [YUtils getParameter:@{@"applyId":applyId} needUserToken:YES needAddUserID:YES];
+    action.url = [YUtils getUrl:api_friend_AgreeApply];
     
     [YAction startAction:action completionBlock:^(YActionMessage* message) {
         //主线程处理界面
@@ -246,8 +246,9 @@ DEF_SINGLETON(ContactManager);
 
 //发送好友申请
 - (void)submitFriendApply:(NSString *)targetId block:(ActionCompleteBlock)block {
-    SubmitFriendApplyAction* action = [[SubmitFriendApplyAction alloc] init];
-    action.targetId = targetId;
+    CommonAction* action = [[CommonAction alloc] init];
+    action.parameter = [YUtils getParameter:@{@"targetId":targetId} needUserToken:YES needAddUserID:YES];
+    action.url = [YUtils getUrl:api_friend_SubmitFriendApply];
     
     [YAction startAction:action completionBlock:^(YActionMessage* message) {
         //主线程处理界面
@@ -257,8 +258,9 @@ DEF_SINGLETON(ContactManager);
 
 //忽略好友申请
 - (void)ignoreFriendApply:(NSString *)applyIds block:(ActionCompleteBlock)block {
-    IgnoreFriendApplyAction* action = [[IgnoreFriendApplyAction alloc] init];
-    action.applyIds = applyIds;
+    CommonAction* action = [[CommonAction alloc] init];
+    action.parameter = [YUtils getParameter:@{@"applyIds":applyIds} needUserToken:YES needAddUserID:YES];
+    action.url = [YUtils getUrl:api_friend_IgnoreApplyList];
     
     [YAction startAction:action completionBlock:^(YActionMessage* message) {
         //主线程处理界面

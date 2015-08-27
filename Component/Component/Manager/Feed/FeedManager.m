@@ -12,20 +12,16 @@
 #import "MyFeedAction.h"
 #import "FeedDetailAction.h"
 #import "FeedListAction.h"
-#import "NewFeedAction.h"
 #import "UploadFeedImageAction.h"
 #import "FindFriendsByTagsAction.h"
-#import "AddPraiseAction.h"
-#import "CommentAddPraiseAction.h"
 #import "AlertListAction.h"
-#import "AddReplyAction.h"
-#import "AddCommentAction.h"
-#import "ReadAllAction.h"
-#import "ReadByFeedAction.h"
 #import "GroupConditionsAction.h"
 #import "GroupListAction.h"
 #import "GroupDetailInfoAction.h"
 #import "GroupFeedsAction.h"
+#import "CommonAction.h"
+#import "YUtils+Component.h"
+#import "Feed.h"
 
 #define KFeedManagerSyncQueue @"kFeedManagerSyncQueue"
 
@@ -98,9 +94,10 @@ DEF_SINGLETON(FeedManager);
 
 //发送feed
 - (void)sendFeed:(Feed *)feed tagIds:(NSString *)tagIds block:(ActionCompleteBlock)block {
-    NewFeedAction *action = [[NewFeedAction alloc] init];
-    action.feed = feed;
-    action.tagIds = tagIds;
+    CommonAction *action = [[CommonAction alloc] init];
+    NSDictionary *dic = @{@"sendGroupId": SStr(feed.sendGroupId), @"type":SStr(feed.type), @"content":SStr(feed.content), @"img":SStr(feed.img)};
+    action.parameter = [YUtils getParameter:@{@"feed":dic, @"tagIds" : tagIds} needUserToken:YES];
+    action.url = [YUtils getUrl:api_feed_AddFeed];
     
     [YAction startAction:action completionBlock:^(YActionMessage* message) {
         //主线程处理界面
@@ -134,8 +131,9 @@ DEF_SINGLETON(FeedManager);
 
 //Feed敬酒
 - (void)addPraise:(NSString *)feedId block:(ActionCompleteBlock)block {
-    AddPraiseAction *action = [[AddPraiseAction alloc] init];
-    action.feedId = feedId;
+    CommonAction *action = [[CommonAction alloc] init];
+    action.parameter = [YUtils getParameter:@{@"feedId" : feedId} needUserToken:YES];
+    action.url = [YUtils getUrl:api_feed_addPraise];
     
     [YAction startAction:action completionBlock:^(YActionMessage* message) {
         //主线程处理界面
@@ -145,8 +143,9 @@ DEF_SINGLETON(FeedManager);
 
 //Feed评论敬酒
 - (void)commentAddPraise:(NSString *)commentId block:(ActionCompleteBlock)block {
-    CommentAddPraiseAction *action = [[CommentAddPraiseAction alloc] init];
-    action.commentId = commentId;
+    CommonAction *action = [[CommonAction alloc] init];
+    action.parameter = [YUtils getParameter:@{@"commentId" : commentId} needUserToken:YES];
+    action.url = [YUtils getUrl:api_feed_commonAddPraise];
     
     [YAction startAction:action completionBlock:^(YActionMessage* message) {
         //主线程处理界面
@@ -168,9 +167,9 @@ DEF_SINGLETON(FeedManager);
 
 //动态评论
 - (void)addComment:(NSString *)feedId content:(NSString *)content block:(ActionCompleteBlock)block {
-    AddCommentAction *action = [[AddCommentAction alloc] init];
-    action.feedId = feedId;
-    action.content = content;
+    CommonAction *action = [[CommonAction alloc] init];
+    action.parameter = [YUtils getParameter:@{@"feedId":feedId, @"content":content} needUserToken:YES];
+    action.url = [YUtils getUrl:api_feed_addComment];
     
     [YAction startAction:action completionBlock:^(YActionMessage* message) {
         //主线程处理界面
@@ -180,10 +179,9 @@ DEF_SINGLETON(FeedManager);
 
 //对动态评论
 - (void)addReply:(NSString *)feedId content:(NSString *)content toUserId:(NSString *)toUserId block:(ActionCompleteBlock)block {
-    AddReplyAction *action = [[AddReplyAction alloc] init];
-    action.feedId = feedId;
-    action.content = content;
-    action.toUserId = toUserId;
+    CommonAction *action = [[CommonAction alloc] init];
+    action.parameter = [YUtils getParameter:@{@"toUserId" : toUserId, @"feedId":feedId, @"content":content} needUserToken:YES];
+    action.url = [YUtils getUrl:api_feed_addReply];
     
     [YAction startAction:action completionBlock:^(YActionMessage* message) {
         //主线程处理界面
@@ -193,8 +191,9 @@ DEF_SINGLETON(FeedManager);
 
 //删除关于一个feed的提醒
 - (void)readByFeed:(NSString *)affectId block:(ActionCompleteBlock)block {
-    ReadByFeedAction *action = [[ReadByFeedAction alloc] init];
-    action.affectId = affectId;
+    CommonAction *action = [[CommonAction alloc] init];
+    action.parameter = [YUtils getParameter:@{@"affectId":affectId} needUserToken:YES needAddUserID:YES];
+    action.url = [YUtils getUrl:api_alert_readByFeed];
     
     [YAction startAction:action completionBlock:^(YActionMessage* message) {
         //主线程处理界面
@@ -204,7 +203,9 @@ DEF_SINGLETON(FeedManager);
 
 //删除这个用户所有的提醒
 - (void)readAll:(ActionCompleteBlock)block {
-    ReadAllAction *action = [[ReadAllAction alloc] init];
+    CommonAction *action = [[CommonAction alloc] init];
+    action.parameter = [YUtils getParameter:nil needUserToken:YES needAddUserID:YES];
+    action.url = [YUtils getUrl:api_alert_readAll];
     
     [YAction startAction:action completionBlock:^(YActionMessage* message) {
         //主线程处理界面

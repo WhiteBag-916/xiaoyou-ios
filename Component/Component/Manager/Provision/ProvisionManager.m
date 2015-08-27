@@ -13,11 +13,9 @@
 #import "YManagerCenter.h"
 #import "LoginResp.h"
 #import "SchoolListAction.h"
-#import "ForgotPasswordAction.h"
 #import "YDirectory+Data.h"
 #import "TagListAction.h"
 #import "UploadHeadImageAction.h"
-#import "UploadTagCodes.h"
 #import "ProfileInfo.h"
 #import "ProfileAction.h"
 #import "YNotificationDefine.h"
@@ -26,11 +24,12 @@
 #import "MyPraisePersonsAction.h"
 #import "MyCoolPersonsAction.h"
 #import "UpdateSelfIntroAction.h"
-#import "ReceiveMobileAuthCodeAction.h"
 #import "ModifyPasswordAction.h"
 #import "ReceiveAuthCodeAction.h"
-#import "LogoutAction.h"
 #import "YDirectory+Data.h"
+#import "CommonAction.h"
+#import "YUtils+Component.h"
+#import "ReceiveMobileAuthCodeAction.h"
 
 #define kProvisionManagerSyncQueue @"kProvisionManagerSyncQueue"
 
@@ -204,8 +203,10 @@ DEF_SINGLETON(ProvisionManager);
 
 //忘记密码
 - (void)forgotPasswordReq:(NSString *)studentNo block:(ActionCompleteBlock)block {
-    ForgotPasswordAction* action = [[ForgotPasswordAction alloc] init];
-    action.studentNo = studentNo;
+    CommonAction* action = [[CommonAction alloc] init];
+    action.parameter = [YUtils getParameter:@{@"schoolCode": [YShareData defaultData][kShareData_SchoolCode],
+                                              @"studentNo": studentNo}];
+    action.url = [YUtils getUrl:api_login_forgetPwd];
     
     [YAction startAction:action completionBlock:^(YActionMessage* message) {
         //主线程处理界面
@@ -248,8 +249,9 @@ DEF_SINGLETON(ProvisionManager);
 
 //上传标签
 - (void)uploadTagCodes:(NSString *)tagCodes block:(ActionCompleteBlock)block {
-    UploadTagCodes* action = [[UploadTagCodes alloc] init];
-    action.tagCodes = tagCodes;
+    CommonAction* action = [[CommonAction alloc] init];
+    action.parameter = [YUtils getParameter:@{@"tagCodes" : tagCodes} needUserToken:YES];
+    action.url = [YUtils getUrl:api_login_addTag];
     
     [YAction startAction:action completionBlock:^(YActionMessage* message) {
         //主线程处理界面
@@ -378,7 +380,9 @@ DEF_SINGLETON(ProvisionManager);
 
 //登出
 - (void)logout {
-    LogoutAction* action = [[LogoutAction alloc] init];
+    CommonAction* action = [[CommonAction alloc] init];
+    action.parameter = [YUtils getParameter:nil needUserToken:YES];
+    action.url = [YUtils getUrl:api_user_logOut];
     [YAction startAction:action completionBlock:^(YActionMessage* message) {
     }];
     

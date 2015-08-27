@@ -11,18 +11,9 @@
 		20859A821B64BD8500580ED3 /* ContactManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 20859A811B64BD8500580ED3 /* ContactManager.m */; };
 		20859A851B64BD9000580ED3 /* MessageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 20859A841B64BD9000580ED3 /* MessageManager.m */; };
 		20859A941B64C06A00580ED3 /* LoginAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 20859A931B64C06A00580ED3 /* LoginAction.m */; };
-		20C5B04B1B8DA93400B4A8A8 /* AddPraiseAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 20C5B04A1B8DA93400B4A8A8 /* AddPraiseAction.m */; };
-		20C5B04E1B8DA94100B4A8A8 /* CommentAddPraiseAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 20C5B04D1B8DA94100B4A8A8 /* CommentAddPraiseAction.m */; };
 		20C5B0511B8DB03900B4A8A8 /* GetFriendApplyListAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 20C5B0501B8DB03900B4A8A8 /* GetFriendApplyListAction.m */; };
-		20C5B0541B8DB04D00B4A8A8 /* AgreeFriendApplyAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 20C5B0531B8DB04D00B4A8A8 /* AgreeFriendApplyAction.m */; };
-		20C5B0571B8DB05D00B4A8A8 /* SubmitFriendApplyAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 20C5B0561B8DB05D00B4A8A8 /* SubmitFriendApplyAction.m */; };
 		20C5B05D1B8DB08900B4A8A8 /* GroupDetailAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 20C5B05C1B8DB08900B4A8A8 /* GroupDetailAction.m */; };
-		20C5B0601B8DB43B00B4A8A8 /* IgnoreFriendApplyAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 20C5B05F1B8DB43B00B4A8A8 /* IgnoreFriendApplyAction.m */; };
 		20C5B06C1B8DB77000B4A8A8 /* AlertListAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 20C5B06B1B8DB77000B4A8A8 /* AlertListAction.m */; };
-		20C5B06F1B8DBAF100B4A8A8 /* AddReplyAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 20C5B06E1B8DBAF100B4A8A8 /* AddReplyAction.m */; };
-		20C5B0721B8DBAFB00B4A8A8 /* AddCommentAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 20C5B0711B8DBAFB00B4A8A8 /* AddCommentAction.m */; };
-		20C5B0751B8DC35F00B4A8A8 /* ReadByFeedAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 20C5B0741B8DC35F00B4A8A8 /* ReadByFeedAction.m */; };
-		20C5B0781B8DC36C00B4A8A8 /* ReadAllAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 20C5B0771B8DC36C00B4A8A8 /* ReadAllAction.m */; };
 		20C5B07E1B8DF3DD00B4A8A8 /* GroupConditionsAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 20C5B07D1B8DF3DD00B4A8A8 /* GroupConditionsAction.m */; };
 		20C5B0811B8DF3E700B4A8A8 /* GroupListAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 20C5B0801B8DF3E700B4A8A8 /* GroupListAction.m */; };
 		20DA1A5A1B89751500DEF95C /* MyCommentPersonsAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 20DA1A591B89751500DEF95C /* MyCommentPersonsAction.m */; };
@@ -33,35 +24,27 @@
 		20DA74C31B8C120F0002E041 /* FriendsConditionAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 20DA74C21B8C120F0002E041 /* FriendsConditionAction.m */; };
 		20DA8B141B8EB91D007D0CDE /* GroupDetailInfoAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 20DA8B131B8EB91D007D0CDE /* GroupDetailInfoAction.m */; };
 		20DA8B171B8EB928007D0CDE /* GroupFeedsAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 20DA8B161B8EB928007D0CDE /* GroupFeedsAction.m */; };
+		20DA8B341B8EC4F0007D0CDE /* CommonAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 20DA8B331B8EC4F0007D0CDE /* CommonAction.m */; };
+		20DA8B371B8ECBC1007D0CDE /* ReceiveMobileAuthCodeAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 20DA8B361B8ECBC1007D0CDE /* ReceiveMobileAuthCodeAction.m */; };
 		20DAF9A31B871989005B7932 /* SchoolListAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 20DAF9A21B871989005B7932 /* SchoolListAction.m */; };
-		20DAF9E11B87397A005B7932 /* ForgotPasswordAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 20DAF9E01B87397A005B7932 /* ForgotPasswordAction.m */; };
 		20DAF9E61B8750A4005B7932 /* YDirectory+Data.m in Sources */ = {isa = PBXBuildFile; fileRef = 20DAF9E51B8750A4005B7932 /* YDirectory+Data.m */; };
 		20DBFD4A1B4FA0F5009134D0 /* libComponent.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 20DBFD3E1B4FA0F5009134D0 /* libComponent.a */; };
 		20DBFD861B4FD3F5009134D0 /* YUtils+Component.m in Sources */ = {isa = PBXBuildFile; fileRef = 20DBFD851B4FD3F5009134D0 /* YUtils+Component.m */; };
-		20DCB95B1B8CA60800C758DE /* NewFeedAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 20DCB95A1B8CA60800C758DE /* NewFeedAction.m */; };
 		20DCB95E1B8CA60800C758DE /* UploadFeedImageAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 20DCB95D1B8CA60800C758DE /* UploadFeedImageAction.m */; };
-		20DCB9611B8CA60800C758DE /* SubmitApplyAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 20DCB9601B8CA60800C758DE /* SubmitApplyAction.m */; };
-		20DCB9641B8CA60800C758DE /* RejectApplyAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 20DCB9631B8CA60800C758DE /* RejectApplyAction.m */; };
 		20DCB9671B8CA60800C758DE /* ApplyListAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 20DCB9661B8CA60800C758DE /* ApplyListAction.m */; };
-		20DCB96A1B8CA60800C758DE /* AgreeApplyAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 20DCB9691B8CA60800C758DE /* AgreeApplyAction.m */; };
-		20DCB96D1B8CA60800C758DE /* IgnoreApplyListAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 20DCB96C1B8CA60800C758DE /* IgnoreApplyListAction.m */; };
 		20DCB9701B8CA60800C758DE /* FindFriendsByTagsAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 20DCB96F1B8CA60800C758DE /* FindFriendsByTagsAction.m */; };
 		20DCB9731B8CA60800C758DE /* ApplicantListAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 20DCB9721B8CA60800C758DE /* ApplicantListAction.m */; };
 		20E0BFEA1B88B0CA00EDAED4 /* TagListAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 20E0BFE91B88B0CA00EDAED4 /* TagListAction.m */; };
 		20E0BFED1B88B0CA00EDAED4 /* MessageListAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 20E0BFEC1B88B0CA00EDAED4 /* MessageListAction.m */; };
 		20E0BFF01B88B0CA00EDAED4 /* UploadHeadImageAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 20E0BFEF1B88B0CA00EDAED4 /* UploadHeadImageAction.m */; };
-		20E0BFF31B88B0CA00EDAED4 /* UploadTagCodes.m in Sources */ = {isa = PBXBuildFile; fileRef = 20E0BFF21B88B0CA00EDAED4 /* UploadTagCodes.m */; };
 		20E0C00C1B88B0CA00EDAED4 /* ProfileAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 20E0C00B1B88B0CA00EDAED4 /* ProfileAction.m */; };
 		20E122171B705D3C00F90BD3 /* FeedManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 20E122161B705D3C00F90BD3 /* FeedManager.m */; };
-		20E193F11B8AF77900FD7B3D /* PraiseAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 20E193F01B8AF77900FD7B3D /* PraiseAction.m */; };
 		20E193F41B8AF78F00FD7B3D /* ContactsListAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 20E193F31B8AF78F00FD7B3D /* ContactsListAction.m */; };
 		20E1C6691B89E9E6008BA9D6 /* UpdateSelfIntroAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 20E1C6681B89E9E6008BA9D6 /* UpdateSelfIntroAction.m */; };
-		20E1C66C1B89EB81008BA9D6 /* ReceiveMobileAuthCodeAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 20E1C66B1B89EB81008BA9D6 /* ReceiveMobileAuthCodeAction.m */; };
 		20E1C66F1B89EB8D008BA9D6 /* ModifyPasswordAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 20E1C66E1B89EB8D008BA9D6 /* ModifyPasswordAction.m */; };
 		20E1C6721B89EB9F008BA9D6 /* ReceiveAuthCodeAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 20E1C6711B89EB9F008BA9D6 /* ReceiveAuthCodeAction.m */; };
 		20E1C67E1B89F148008BA9D6 /* FeedDetailAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 20E1C67D1B89F148008BA9D6 /* FeedDetailAction.m */; };
 		20E1C6811B89F2C8008BA9D6 /* FeedListAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 20E1C6801B89F2C8008BA9D6 /* FeedListAction.m */; };
-		20E1C6841B89F6B5008BA9D6 /* LogoutAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 20E1C6831B89F6B5008BA9D6 /* LogoutAction.m */; };
 		20E341801B720A54008CADC3 /* ProfileDao.m in Sources */ = {isa = PBXBuildFile; fileRef = 20E3417F1B720A54008CADC3 /* ProfileDao.m */; };
 /* End PBXBuildFile section */
 
@@ -98,30 +81,12 @@
 		20859A871B64BF3200580ED3 /* YUrlDefine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YUrlDefine.h; sourceTree = "<group>"; };
 		20859A921B64C06A00580ED3 /* LoginAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginAction.h; sourceTree = "<group>"; };
 		20859A931B64C06A00580ED3 /* LoginAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginAction.m; sourceTree = "<group>"; };
-		20C5B0491B8DA93400B4A8A8 /* AddPraiseAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddPraiseAction.h; sourceTree = "<group>"; };
-		20C5B04A1B8DA93400B4A8A8 /* AddPraiseAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddPraiseAction.m; sourceTree = "<group>"; };
-		20C5B04C1B8DA94100B4A8A8 /* CommentAddPraiseAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentAddPraiseAction.h; sourceTree = "<group>"; };
-		20C5B04D1B8DA94100B4A8A8 /* CommentAddPraiseAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentAddPraiseAction.m; sourceTree = "<group>"; };
 		20C5B04F1B8DB03900B4A8A8 /* GetFriendApplyListAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetFriendApplyListAction.h; sourceTree = "<group>"; };
 		20C5B0501B8DB03900B4A8A8 /* GetFriendApplyListAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetFriendApplyListAction.m; sourceTree = "<group>"; };
-		20C5B0521B8DB04D00B4A8A8 /* AgreeFriendApplyAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AgreeFriendApplyAction.h; sourceTree = "<group>"; };
-		20C5B0531B8DB04D00B4A8A8 /* AgreeFriendApplyAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AgreeFriendApplyAction.m; sourceTree = "<group>"; };
-		20C5B0551B8DB05D00B4A8A8 /* SubmitFriendApplyAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SubmitFriendApplyAction.h; sourceTree = "<group>"; };
-		20C5B0561B8DB05D00B4A8A8 /* SubmitFriendApplyAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SubmitFriendApplyAction.m; sourceTree = "<group>"; };
 		20C5B05B1B8DB08900B4A8A8 /* GroupDetailAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroupDetailAction.h; sourceTree = "<group>"; };
 		20C5B05C1B8DB08900B4A8A8 /* GroupDetailAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroupDetailAction.m; sourceTree = "<group>"; };
-		20C5B05E1B8DB43B00B4A8A8 /* IgnoreFriendApplyAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IgnoreFriendApplyAction.h; sourceTree = "<group>"; };
-		20C5B05F1B8DB43B00B4A8A8 /* IgnoreFriendApplyAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IgnoreFriendApplyAction.m; sourceTree = "<group>"; };
 		20C5B06A1B8DB77000B4A8A8 /* AlertListAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlertListAction.h; sourceTree = "<group>"; };
 		20C5B06B1B8DB77000B4A8A8 /* AlertListAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlertListAction.m; sourceTree = "<group>"; };
-		20C5B06D1B8DBAF100B4A8A8 /* AddReplyAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddReplyAction.h; sourceTree = "<group>"; };
-		20C5B06E1B8DBAF100B4A8A8 /* AddReplyAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddReplyAction.m; sourceTree = "<group>"; };
-		20C5B0701B8DBAFB00B4A8A8 /* AddCommentAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddCommentAction.h; sourceTree = "<group>"; };
-		20C5B0711B8DBAFB00B4A8A8 /* AddCommentAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddCommentAction.m; sourceTree = "<group>"; };
-		20C5B0731B8DC35F00B4A8A8 /* ReadByFeedAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReadByFeedAction.h; sourceTree = "<group>"; };
-		20C5B0741B8DC35F00B4A8A8 /* ReadByFeedAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReadByFeedAction.m; sourceTree = "<group>"; };
-		20C5B0761B8DC36C00B4A8A8 /* ReadAllAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReadAllAction.h; sourceTree = "<group>"; };
-		20C5B0771B8DC36C00B4A8A8 /* ReadAllAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReadAllAction.m; sourceTree = "<group>"; };
 		20C5B07C1B8DF3DD00B4A8A8 /* GroupConditionsAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroupConditionsAction.h; sourceTree = "<group>"; };
 		20C5B07D1B8DF3DD00B4A8A8 /* GroupConditionsAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroupConditionsAction.m; sourceTree = "<group>"; };
 		20C5B07F1B8DF3E700B4A8A8 /* GroupListAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroupListAction.h; sourceTree = "<group>"; };
@@ -142,10 +107,12 @@
 		20DA8B131B8EB91D007D0CDE /* GroupDetailInfoAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroupDetailInfoAction.m; sourceTree = "<group>"; };
 		20DA8B151B8EB928007D0CDE /* GroupFeedsAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroupFeedsAction.h; sourceTree = "<group>"; };
 		20DA8B161B8EB928007D0CDE /* GroupFeedsAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroupFeedsAction.m; sourceTree = "<group>"; };
+		20DA8B321B8EC4F0007D0CDE /* CommonAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonAction.h; sourceTree = "<group>"; };
+		20DA8B331B8EC4F0007D0CDE /* CommonAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommonAction.m; sourceTree = "<group>"; };
+		20DA8B351B8ECBC1007D0CDE /* ReceiveMobileAuthCodeAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReceiveMobileAuthCodeAction.h; sourceTree = "<group>"; };
+		20DA8B361B8ECBC1007D0CDE /* ReceiveMobileAuthCodeAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReceiveMobileAuthCodeAction.m; sourceTree = "<group>"; };
 		20DAF9A11B871989005B7932 /* SchoolListAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SchoolListAction.h; sourceTree = "<group>"; };
 		20DAF9A21B871989005B7932 /* SchoolListAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SchoolListAction.m; sourceTree = "<group>"; };
-		20DAF9DF1B87397A005B7932 /* ForgotPasswordAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ForgotPasswordAction.h; sourceTree = "<group>"; };
-		20DAF9E01B87397A005B7932 /* ForgotPasswordAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ForgotPasswordAction.m; sourceTree = "<group>"; };
 		20DAF9E41B8750A4005B7932 /* YDirectory+Data.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "YDirectory+Data.h"; sourceTree = "<group>"; };
 		20DAF9E51B8750A4005B7932 /* YDirectory+Data.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "YDirectory+Data.m"; sourceTree = "<group>"; };
 		20DBFD3E1B4FA0F5009134D0 /* libComponent.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libComponent.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -154,20 +121,10 @@
 		20DBFD7C1B4FD3F5009134D0 /* YSystemDefine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YSystemDefine.h; sourceTree = "<group>"; };
 		20DBFD841B4FD3F5009134D0 /* YUtils+Component.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "YUtils+Component.h"; sourceTree = "<group>"; };
 		20DBFD851B4FD3F5009134D0 /* YUtils+Component.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "YUtils+Component.m"; sourceTree = "<group>"; };
-		20DCB9591B8CA60800C758DE /* NewFeedAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewFeedAction.h; sourceTree = "<group>"; };
-		20DCB95A1B8CA60800C758DE /* NewFeedAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewFeedAction.m; sourceTree = "<group>"; };
 		20DCB95C1B8CA60800C758DE /* UploadFeedImageAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UploadFeedImageAction.h; sourceTree = "<group>"; };
 		20DCB95D1B8CA60800C758DE /* UploadFeedImageAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UploadFeedImageAction.m; sourceTree = "<group>"; };
-		20DCB95F1B8CA60800C758DE /* SubmitApplyAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SubmitApplyAction.h; sourceTree = "<group>"; };
-		20DCB9601B8CA60800C758DE /* SubmitApplyAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SubmitApplyAction.m; sourceTree = "<group>"; };
-		20DCB9621B8CA60800C758DE /* RejectApplyAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RejectApplyAction.h; sourceTree = "<group>"; };
-		20DCB9631B8CA60800C758DE /* RejectApplyAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RejectApplyAction.m; sourceTree = "<group>"; };
 		20DCB9651B8CA60800C758DE /* ApplyListAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ApplyListAction.h; sourceTree = "<group>"; };
 		20DCB9661B8CA60800C758DE /* ApplyListAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ApplyListAction.m; sourceTree = "<group>"; };
-		20DCB9681B8CA60800C758DE /* AgreeApplyAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AgreeApplyAction.h; sourceTree = "<group>"; };
-		20DCB9691B8CA60800C758DE /* AgreeApplyAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AgreeApplyAction.m; sourceTree = "<group>"; };
-		20DCB96B1B8CA60800C758DE /* IgnoreApplyListAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IgnoreApplyListAction.h; sourceTree = "<group>"; };
-		20DCB96C1B8CA60800C758DE /* IgnoreApplyListAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IgnoreApplyListAction.m; sourceTree = "<group>"; };
 		20DCB96E1B8CA60800C758DE /* FindFriendsByTagsAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FindFriendsByTagsAction.h; sourceTree = "<group>"; };
 		20DCB96F1B8CA60800C758DE /* FindFriendsByTagsAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FindFriendsByTagsAction.m; sourceTree = "<group>"; };
 		20DCB9711B8CA60800C758DE /* ApplicantListAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ApplicantListAction.h; sourceTree = "<group>"; };
@@ -180,21 +137,15 @@
 		20E0BFEC1B88B0CA00EDAED4 /* MessageListAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageListAction.m; sourceTree = "<group>"; };
 		20E0BFEE1B88B0CA00EDAED4 /* UploadHeadImageAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UploadHeadImageAction.h; sourceTree = "<group>"; };
 		20E0BFEF1B88B0CA00EDAED4 /* UploadHeadImageAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UploadHeadImageAction.m; sourceTree = "<group>"; };
-		20E0BFF11B88B0CA00EDAED4 /* UploadTagCodes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UploadTagCodes.h; sourceTree = "<group>"; };
-		20E0BFF21B88B0CA00EDAED4 /* UploadTagCodes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UploadTagCodes.m; sourceTree = "<group>"; };
 		20E0C00A1B88B0CA00EDAED4 /* ProfileAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileAction.h; sourceTree = "<group>"; };
 		20E0C00B1B88B0CA00EDAED4 /* ProfileAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileAction.m; sourceTree = "<group>"; };
 		20E122151B705D3C00F90BD3 /* FeedManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedManager.h; sourceTree = "<group>"; };
 		20E122161B705D3C00F90BD3 /* FeedManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedManager.m; sourceTree = "<group>"; };
 		20E18D5E1B807F4F005B75EE /* YNotificationDefine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YNotificationDefine.h; sourceTree = "<group>"; };
-		20E193EF1B8AF77900FD7B3D /* PraiseAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PraiseAction.h; sourceTree = "<group>"; };
-		20E193F01B8AF77900FD7B3D /* PraiseAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PraiseAction.m; sourceTree = "<group>"; };
 		20E193F21B8AF78F00FD7B3D /* ContactsListAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactsListAction.h; sourceTree = "<group>"; };
 		20E193F31B8AF78F00FD7B3D /* ContactsListAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactsListAction.m; sourceTree = "<group>"; };
 		20E1C6671B89E9E6008BA9D6 /* UpdateSelfIntroAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UpdateSelfIntroAction.h; sourceTree = "<group>"; };
 		20E1C6681B89E9E6008BA9D6 /* UpdateSelfIntroAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UpdateSelfIntroAction.m; sourceTree = "<group>"; };
-		20E1C66A1B89EB81008BA9D6 /* ReceiveMobileAuthCodeAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReceiveMobileAuthCodeAction.h; sourceTree = "<group>"; };
-		20E1C66B1B89EB81008BA9D6 /* ReceiveMobileAuthCodeAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReceiveMobileAuthCodeAction.m; sourceTree = "<group>"; };
 		20E1C66D1B89EB8D008BA9D6 /* ModifyPasswordAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModifyPasswordAction.h; sourceTree = "<group>"; };
 		20E1C66E1B89EB8D008BA9D6 /* ModifyPasswordAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModifyPasswordAction.m; sourceTree = "<group>"; };
 		20E1C6701B89EB9F008BA9D6 /* ReceiveAuthCodeAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReceiveAuthCodeAction.h; sourceTree = "<group>"; };
@@ -203,8 +154,6 @@
 		20E1C67D1B89F148008BA9D6 /* FeedDetailAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedDetailAction.m; sourceTree = "<group>"; };
 		20E1C67F1B89F2C8008BA9D6 /* FeedListAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedListAction.h; sourceTree = "<group>"; };
 		20E1C6801B89F2C8008BA9D6 /* FeedListAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedListAction.m; sourceTree = "<group>"; };
-		20E1C6821B89F6B5008BA9D6 /* LogoutAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LogoutAction.h; sourceTree = "<group>"; };
-		20E1C6831B89F6B5008BA9D6 /* LogoutAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LogoutAction.m; sourceTree = "<group>"; };
 		20E3417E1B720A54008CADC3 /* ProfileDao.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileDao.h; sourceTree = "<group>"; };
 		20E3417F1B720A54008CADC3 /* ProfileDao.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileDao.m; sourceTree = "<group>"; };
 		20E341811B720A80008CADC3 /* ProfileSQL.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProfileSQL.h; sourceTree = "<group>"; };
@@ -241,18 +190,16 @@
 		20859A8D1B64C03C00580ED3 /* Provision */ = {
 			isa = PBXGroup;
 			children = (
+				20DA8B351B8ECBC1007D0CDE /* ReceiveMobileAuthCodeAction.h */,
+				20DA8B361B8ECBC1007D0CDE /* ReceiveMobileAuthCodeAction.m */,
 				20859A921B64C06A00580ED3 /* LoginAction.h */,
 				20859A931B64C06A00580ED3 /* LoginAction.m */,
 				20DAF9A11B871989005B7932 /* SchoolListAction.h */,
 				20DAF9A21B871989005B7932 /* SchoolListAction.m */,
-				20DAF9DF1B87397A005B7932 /* ForgotPasswordAction.h */,
-				20DAF9E01B87397A005B7932 /* ForgotPasswordAction.m */,
 				20E0BFE81B88B0CA00EDAED4 /* TagListAction.h */,
 				20E0BFE91B88B0CA00EDAED4 /* TagListAction.m */,
 				20E0BFEE1B88B0CA00EDAED4 /* UploadHeadImageAction.h */,
 				20E0BFEF1B88B0CA00EDAED4 /* UploadHeadImageAction.m */,
-				20E0BFF11B88B0CA00EDAED4 /* UploadTagCodes.h */,
-				20E0BFF21B88B0CA00EDAED4 /* UploadTagCodes.m */,
 				20E0C00A1B88B0CA00EDAED4 /* ProfileAction.h */,
 				20E0C00B1B88B0CA00EDAED4 /* ProfileAction.m */,
 				20DA1A581B89751500DEF95C /* MyCommentPersonsAction.h */,
@@ -263,14 +210,10 @@
 				20DA1A7D1B89C44D00DEF95C /* MyCoolPersonsAction.m */,
 				20E1C6671B89E9E6008BA9D6 /* UpdateSelfIntroAction.h */,
 				20E1C6681B89E9E6008BA9D6 /* UpdateSelfIntroAction.m */,
-				20E1C66A1B89EB81008BA9D6 /* ReceiveMobileAuthCodeAction.h */,
-				20E1C66B1B89EB81008BA9D6 /* ReceiveMobileAuthCodeAction.m */,
 				20E1C66D1B89EB8D008BA9D6 /* ModifyPasswordAction.h */,
 				20E1C66E1B89EB8D008BA9D6 /* ModifyPasswordAction.m */,
 				20E1C6701B89EB9F008BA9D6 /* ReceiveAuthCodeAction.h */,
 				20E1C6711B89EB9F008BA9D6 /* ReceiveAuthCodeAction.m */,
-				20E1C6821B89F6B5008BA9D6 /* LogoutAction.h */,
-				20E1C6831B89F6B5008BA9D6 /* LogoutAction.m */,
 			);
 			path = Provision;
 			sourceTree = "<group>";
@@ -296,6 +239,15 @@
 				20E3417F1B720A54008CADC3 /* ProfileDao.m */,
 			);
 			path = Provision;
+			sourceTree = "<group>";
+		};
+		20DA8B311B8EC4E3007D0CDE /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				20DA8B321B8EC4F0007D0CDE /* CommonAction.h */,
+				20DA8B331B8EC4F0007D0CDE /* CommonAction.m */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 		20DBFD351B4FA0F5009134D0 = {
@@ -348,6 +300,7 @@
 		20DBFD741B4FD3F5009134D0 /* Action */ = {
 			isa = PBXGroup;
 			children = (
+				20DA8B311B8EC4E3007D0CDE /* Utils */,
 				20E0C02B1B88B0CA00EDAED4 /* Feed */,
 				20859A8D1B64C03C00580ED3 /* Provision */,
 				20DBFD761B4FD3F5009134D0 /* Contact */,
@@ -361,34 +314,18 @@
 			children = (
 				20E193F21B8AF78F00FD7B3D /* ContactsListAction.h */,
 				20E193F31B8AF78F00FD7B3D /* ContactsListAction.m */,
-				20E193EF1B8AF77900FD7B3D /* PraiseAction.h */,
-				20E193F01B8AF77900FD7B3D /* PraiseAction.m */,
 				20DA74BE1B8C12040002E041 /* FindFriendsAction.h */,
 				20DA74BF1B8C12040002E041 /* FindFriendsAction.m */,
 				20DA74C11B8C120F0002E041 /* FriendsConditionAction.h */,
 				20DA74C21B8C120F0002E041 /* FriendsConditionAction.m */,
-				20DCB95F1B8CA60800C758DE /* SubmitApplyAction.h */,
-				20DCB9601B8CA60800C758DE /* SubmitApplyAction.m */,
-				20DCB9621B8CA60800C758DE /* RejectApplyAction.h */,
-				20DCB9631B8CA60800C758DE /* RejectApplyAction.m */,
 				20DCB9651B8CA60800C758DE /* ApplyListAction.h */,
 				20DCB9661B8CA60800C758DE /* ApplyListAction.m */,
-				20DCB9681B8CA60800C758DE /* AgreeApplyAction.h */,
-				20DCB9691B8CA60800C758DE /* AgreeApplyAction.m */,
-				20DCB96B1B8CA60800C758DE /* IgnoreApplyListAction.h */,
-				20DCB96C1B8CA60800C758DE /* IgnoreApplyListAction.m */,
 				20DCB9711B8CA60800C758DE /* ApplicantListAction.h */,
 				20DCB9721B8CA60800C758DE /* ApplicantListAction.m */,
 				20C5B04F1B8DB03900B4A8A8 /* GetFriendApplyListAction.h */,
 				20C5B0501B8DB03900B4A8A8 /* GetFriendApplyListAction.m */,
-				20C5B0521B8DB04D00B4A8A8 /* AgreeFriendApplyAction.h */,
-				20C5B0531B8DB04D00B4A8A8 /* AgreeFriendApplyAction.m */,
-				20C5B0551B8DB05D00B4A8A8 /* SubmitFriendApplyAction.h */,
-				20C5B0561B8DB05D00B4A8A8 /* SubmitFriendApplyAction.m */,
 				20C5B05B1B8DB08900B4A8A8 /* GroupDetailAction.h */,
 				20C5B05C1B8DB08900B4A8A8 /* GroupDetailAction.m */,
-				20C5B05E1B8DB43B00B4A8A8 /* IgnoreFriendApplyAction.h */,
-				20C5B05F1B8DB43B00B4A8A8 /* IgnoreFriendApplyAction.m */,
 			);
 			path = Contact;
 			sourceTree = "<group>";
@@ -483,26 +420,12 @@
 				20E1C67D1B89F148008BA9D6 /* FeedDetailAction.m */,
 				20E1C67F1B89F2C8008BA9D6 /* FeedListAction.h */,
 				20E1C6801B89F2C8008BA9D6 /* FeedListAction.m */,
-				20DCB9591B8CA60800C758DE /* NewFeedAction.h */,
-				20DCB95A1B8CA60800C758DE /* NewFeedAction.m */,
 				20DCB95C1B8CA60800C758DE /* UploadFeedImageAction.h */,
 				20DCB95D1B8CA60800C758DE /* UploadFeedImageAction.m */,
 				20DCB96E1B8CA60800C758DE /* FindFriendsByTagsAction.h */,
 				20DCB96F1B8CA60800C758DE /* FindFriendsByTagsAction.m */,
-				20C5B0491B8DA93400B4A8A8 /* AddPraiseAction.h */,
-				20C5B04A1B8DA93400B4A8A8 /* AddPraiseAction.m */,
-				20C5B04C1B8DA94100B4A8A8 /* CommentAddPraiseAction.h */,
-				20C5B04D1B8DA94100B4A8A8 /* CommentAddPraiseAction.m */,
 				20C5B06A1B8DB77000B4A8A8 /* AlertListAction.h */,
 				20C5B06B1B8DB77000B4A8A8 /* AlertListAction.m */,
-				20C5B06D1B8DBAF100B4A8A8 /* AddReplyAction.h */,
-				20C5B06E1B8DBAF100B4A8A8 /* AddReplyAction.m */,
-				20C5B0701B8DBAFB00B4A8A8 /* AddCommentAction.h */,
-				20C5B0711B8DBAFB00B4A8A8 /* AddCommentAction.m */,
-				20C5B0731B8DC35F00B4A8A8 /* ReadByFeedAction.h */,
-				20C5B0741B8DC35F00B4A8A8 /* ReadByFeedAction.m */,
-				20C5B0761B8DC36C00B4A8A8 /* ReadAllAction.h */,
-				20C5B0771B8DC36C00B4A8A8 /* ReadAllAction.m */,
 				20C5B07C1B8DF3DD00B4A8A8 /* GroupConditionsAction.h */,
 				20C5B07D1B8DF3DD00B4A8A8 /* GroupConditionsAction.m */,
 				20C5B07F1B8DF3E700B4A8A8 /* GroupListAction.h */,
@@ -619,58 +542,41 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				20DCB95B1B8CA60800C758DE /* NewFeedAction.m in Sources */,
 				20C5B0511B8DB03900B4A8A8 /* GetFriendApplyListAction.m in Sources */,
 				20859A851B64BD9000580ED3 /* MessageManager.m in Sources */,
 				20859A7C1B64BD5B00580ED3 /* ProvisionManager.m in Sources */,
-				20C5B04E1B8DA94100B4A8A8 /* CommentAddPraiseAction.m in Sources */,
 				20DBFD861B4FD3F5009134D0 /* YUtils+Component.m in Sources */,
 				20DA1A5A1B89751500DEF95C /* MyCommentPersonsAction.m in Sources */,
-				20DCB9611B8CA60800C758DE /* SubmitApplyAction.m in Sources */,
-				20C5B0541B8DB04D00B4A8A8 /* AgreeFriendApplyAction.m in Sources */,
 				20DCB9701B8CA60800C758DE /* FindFriendsByTagsAction.m in Sources */,
-				20C5B04B1B8DA93400B4A8A8 /* AddPraiseAction.m in Sources */,
+				20DA8B341B8EC4F0007D0CDE /* CommonAction.m in Sources */,
 				20E1C6811B89F2C8008BA9D6 /* FeedListAction.m in Sources */,
-				20DAF9E11B87397A005B7932 /* ForgotPasswordAction.m in Sources */,
-				20E193F11B8AF77900FD7B3D /* PraiseAction.m in Sources */,
-				20C5B06F1B8DBAF100B4A8A8 /* AddReplyAction.m in Sources */,
-				20C5B0781B8DC36C00B4A8A8 /* ReadAllAction.m in Sources */,
 				20DAF9A31B871989005B7932 /* SchoolListAction.m in Sources */,
-				20C5B0751B8DC35F00B4A8A8 /* ReadByFeedAction.m in Sources */,
 				20DCB9731B8CA60800C758DE /* ApplicantListAction.m in Sources */,
 				20DA1A7E1B89C44D00DEF95C /* MyCoolPersonsAction.m in Sources */,
 				20E0BFEA1B88B0CA00EDAED4 /* TagListAction.m in Sources */,
 				20DA1A711B89B7DD00DEF95C /* MyFeedAction.m in Sources */,
-				20C5B0721B8DBAFB00B4A8A8 /* AddCommentAction.m in Sources */,
 				20DCB95E1B8CA60800C758DE /* UploadFeedImageAction.m in Sources */,
-				20E1C6841B89F6B5008BA9D6 /* LogoutAction.m in Sources */,
 				20E1C6691B89E9E6008BA9D6 /* UpdateSelfIntroAction.m in Sources */,
 				20E122171B705D3C00F90BD3 /* FeedManager.m in Sources */,
-				20DCB9641B8CA60800C758DE /* RejectApplyAction.m in Sources */,
-				20E0BFF31B88B0CA00EDAED4 /* UploadTagCodes.m in Sources */,
 				20C5B0811B8DF3E700B4A8A8 /* GroupListAction.m in Sources */,
 				20E0C00C1B88B0CA00EDAED4 /* ProfileAction.m in Sources */,
 				20E0BFED1B88B0CA00EDAED4 /* MessageListAction.m in Sources */,
 				20E1C67E1B89F148008BA9D6 /* FeedDetailAction.m in Sources */,
-				20C5B0571B8DB05D00B4A8A8 /* SubmitFriendApplyAction.m in Sources */,
 				20DA74C01B8C12040002E041 /* FindFriendsAction.m in Sources */,
 				20859A821B64BD8500580ED3 /* ContactManager.m in Sources */,
 				20E1C6721B89EB9F008BA9D6 /* ReceiveAuthCodeAction.m in Sources */,
 				20DA74C31B8C120F0002E041 /* FriendsConditionAction.m in Sources */,
 				20C5B05D1B8DB08900B4A8A8 /* GroupDetailAction.m in Sources */,
 				20C5B06C1B8DB77000B4A8A8 /* AlertListAction.m in Sources */,
-				20E1C66C1B89EB81008BA9D6 /* ReceiveMobileAuthCodeAction.m in Sources */,
 				20E0BFF01B88B0CA00EDAED4 /* UploadHeadImageAction.m in Sources */,
-				20C5B0601B8DB43B00B4A8A8 /* IgnoreFriendApplyAction.m in Sources */,
-				20DCB96D1B8CA60800C758DE /* IgnoreApplyListAction.m in Sources */,
 				20DA8B171B8EB928007D0CDE /* GroupFeedsAction.m in Sources */,
 				20C5B07E1B8DF3DD00B4A8A8 /* GroupConditionsAction.m in Sources */,
 				20DCB9671B8CA60800C758DE /* ApplyListAction.m in Sources */,
+				20DA8B371B8ECBC1007D0CDE /* ReceiveMobileAuthCodeAction.m in Sources */,
 				20DA1A5D1B89752000DEF95C /* MyPraisePersonsAction.m in Sources */,
 				20859A941B64C06A00580ED3 /* LoginAction.m in Sources */,
 				20E193F41B8AF78F00FD7B3D /* ContactsListAction.m in Sources */,
 				20E341801B720A54008CADC3 /* ProfileDao.m in Sources */,
-				20DCB96A1B8CA60800C758DE /* AgreeApplyAction.m in Sources */,
 				20E1C66F1B89EB8D008BA9D6 /* ModifyPasswordAction.m in Sources */,
 				20DA8B141B8EB91D007D0CDE /* GroupDetailInfoAction.m in Sources */,
 				20DAF9E61B8750A4005B7932 /* YDirectory+Data.m in Sources */,
