@@ -23,6 +23,7 @@
 #import "YUtils+Component.h"
 #import "Feed.h"
 #import "ListPraisePeoplesAction.h"
+#import "ListCommentAction.h"
 
 #define KFeedManagerSyncQueue @"kFeedManagerSyncQueue"
 
@@ -302,7 +303,15 @@ DEF_SINGLETON(FeedManager);
 
 //获取评论列表
 - (void)listComment:(NSString *)lastId size:(NSInteger)size feedId:(NSString *)feedId block:(ActionCompleteBlock)block{
+    ListCommentAction *action = [[ListCommentAction alloc] init];
+    action.lastId = lastId;
+    action.size = size;
+    action.feedId = feedId;
     
+    [YAction startAction:action completionBlock:^(YActionMessage* message) {
+        //主线程处理界面
+        block(message);
+    }];
 }
 
 @end
