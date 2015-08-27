@@ -300,4 +300,9 @@ DEF_SINGLETON(FeedManager);
     }];
 }
 
+//获取评论列表
+- (void)listComment:(NSString *)lastId size:(NSInteger)size feedId:(NSString *)feedId block:(ActionCompleteBlock)block{
+    
+}
+
 @end

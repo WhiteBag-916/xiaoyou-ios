@@ -80,6 +80,9 @@
             }
             
             _groupModel = [message.object groupModel];
+            if (nil != _associationsDetailTableViewDelegate) {
+                [_associationsDetailTableViewDelegate resetAddButtonType:_groupModel.groupStatus];
+            }
             
             [self resetFeedArray:[message.object groupFeeds] needRemoveAll:YES];
             

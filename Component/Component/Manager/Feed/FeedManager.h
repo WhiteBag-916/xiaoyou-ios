@@ -74,4 +74,7 @@ AS_SINGLETON(FeedManager);
 //feed删除
 - (void)deleteFeed:(NSString *)feedId block:(ActionCompleteBlock)block;
 
+//获取评论列表
+- (void)listComment:(NSString *)lastId size:(NSInteger)size feedId:(NSString *)feedId block:(ActionCompleteBlock)block;
+
 @end

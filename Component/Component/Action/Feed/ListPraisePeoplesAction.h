@@ -8,7 +8,7 @@
 
 #import "YHTTPRequestAction.h"
 
-@interface ListPraisePeoplesAction : YHTTPRequestAction
+@interface ListPraisePeoplesAction : YHTTPRequestAction<YAction>
 
 @property (nonatomic, assign) NSInteger limitStart;
 @property (nonatomic, assign) NSInteger limitEnd;

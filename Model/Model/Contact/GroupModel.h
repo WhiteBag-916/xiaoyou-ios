@@ -25,6 +25,7 @@
 @property (nonatomic, strong) NSString *keyWords;
 @property (nonatomic, strong) NSString *groupName;
 @property (nonatomic, strong) NSString *schoolName;
+@property (nonatomic, strong) NSString *groupStatus;
 @property (nonatomic, strong) NSString *thirdId;
 @property (nonatomic, strong) NSString *cacheVersion;
 

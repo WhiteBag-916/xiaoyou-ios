@@ -17,10 +17,19 @@ typedef NS_ENUM(NSInteger, AssociationsDetailTableViewSection) {
     AssociationsDetailTableViewSectionEnd
 };
 
+@protocol AssociationsDetailTableViewDelegate <NSObject>
+
+- (void)resetAddButtonType:(NSString *)type;
+
+@end
+
 @interface AssociationsDetailTableView : YTableView
 
 @property (nonatomic, weak) YViewController *parent;
+@property (nonatomic, assign) id<AssociationsDetailTableViewDelegate> associationsDetailTableViewDelegate;
 
 - (id)initWithGroupId:(NSString *)groupId;
+
+- (void)loadData;
 
 @end

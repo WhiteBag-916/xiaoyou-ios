@@ -22,6 +22,7 @@ NSString *const kGroupModelCoolCount = @"coolCount";
 NSString *const kGroupModelKeyWords = @"keyWords";
 NSString *const kGroupModelGroupName = @"groupName";
 NSString *const kGroupModelSchoolName = @"schoolName";
+NSString *const kGroupModelGroupStatus = @"groupStatus";
 NSString *const kGroupModelThirdId = @"thirdId";
 NSString *const kGroupModelCacheVersion = @"cacheVersion";
 
@@ -48,6 +49,7 @@ NSString *const kGroupModelCacheVersion = @"cacheVersion";
 @synthesize keyWords = _keyWords;
 @synthesize groupName = _groupName;
 @synthesize schoolName = _schoolName;
+@synthesize groupStatus = _groupStatus;
 @synthesize thirdId = _thirdId;
 @synthesize cacheVersion = _cacheVersion;
 
@@ -78,6 +80,7 @@ NSString *const kGroupModelCacheVersion = @"cacheVersion";
             self.keyWords = [self objectOrNilForKey:kGroupModelKeyWords fromDictionary:dict];
             self.groupName = [self objectOrNilForKey:kGroupModelGroupName fromDictionary:dict];
             self.schoolName = [self objectOrNilForKey:kGroupModelSchoolName fromDictionary:dict];
+            self.groupStatus = [self objectOrNilForKey:kGroupModelGroupStatus fromDictionary:dict];
             self.thirdId = [self objectOrNilForKey:kGroupModelThirdId fromDictionary:dict];
             self.cacheVersion = [self objectOrNilForKey:kGroupModelCacheVersion fromDictionary:dict];
 
@@ -104,6 +107,7 @@ NSString *const kGroupModelCacheVersion = @"cacheVersion";
     [mutableDict setValue:self.keyWords forKey:kGroupModelKeyWords];
     [mutableDict setValue:self.groupName forKey:kGroupModelGroupName];
     [mutableDict setValue:self.schoolName forKey:kGroupModelSchoolName];
+    [mutableDict setValue:self.groupStatus forKey:kGroupModelGroupStatus];
     [mutableDict setValue:self.thirdId forKey:kGroupModelThirdId];
     [mutableDict setValue:self.cacheVersion forKey:kGroupModelCacheVersion];
 
@@ -143,6 +147,7 @@ NSString *const kGroupModelCacheVersion = @"cacheVersion";
     self.keyWords = [aDecoder decodeObjectForKey:kGroupModelKeyWords];
     self.groupName = [aDecoder decodeObjectForKey:kGroupModelGroupName];
     self.schoolName = [aDecoder decodeObjectForKey:kGroupModelSchoolName];
+    self.groupStatus = [aDecoder decodeObjectForKey:kGroupModelGroupStatus];
     self.thirdId = [aDecoder decodeObjectForKey:kGroupModelThirdId];
     self.cacheVersion = [aDecoder decodeObjectForKey:kGroupModelCacheVersion];
     return self;
@@ -165,6 +170,7 @@ NSString *const kGroupModelCacheVersion = @"cacheVersion";
     [aCoder encodeObject:_keyWords forKey:kGroupModelKeyWords];
     [aCoder encodeObject:_groupName forKey:kGroupModelGroupName];
     [aCoder encodeObject:_schoolName forKey:kGroupModelSchoolName];
+    [aCoder encodeObject:_groupStatus forKey:kGroupModelGroupStatus];
     [aCoder encodeObject:_thirdId forKey:kGroupModelThirdId];
     [aCoder encodeObject:_cacheVersion forKey:kGroupModelCacheVersion];
 }
@@ -189,6 +195,7 @@ NSString *const kGroupModelCacheVersion = @"cacheVersion";
         copy.keyWords = [self.keyWords copyWithZone:zone];
         copy.groupName = [self.groupName copyWithZone:zone];
         copy.schoolName = [self.schoolName copyWithZone:zone];
+        copy.groupStatus = [self.groupStatus copyWithZone:zone];
         copy.thirdId = [self.thirdId copyWithZone:zone];
         copy.cacheVersion = [self.cacheVersion copyWithZone:zone];
     }
