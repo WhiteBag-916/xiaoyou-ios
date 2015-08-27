@@ -34,6 +34,15 @@
 - (void)viewDidLoad {
     [self initController];
     [self initView];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changeMode:) name:@"UITextInputCurrentInputModeDidChangeNotification" object:nil];
+}
+-(void) changeMode:(NSNotification *)notification{
+    if ([[[UITextInputMode currentInputMode] primaryLanguage] isEqualToString:@"emoji"]) {
+        [YUtils showTitle:@"不支持emoji"];
+    }
+}
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 - (void)initController {
     self.view.backgroundColor = KCOLORWHITE;
@@ -76,6 +85,12 @@
     _textView.placeholderColor = KCOLORGREEN_455A64;
     _textView.font = CONTENT_FONT(12);
     _textView.delegate = self;
+}
+- (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text {
+    if ([[[UITextInputMode currentInputMode] primaryLanguage] isEqualToString:@"emoji"]) {
+        return false;
+    }
+    return true;
 }
 - (void)textViewDidChange:(UITextView *)textView {
     if (textView.text.length > 0) {
