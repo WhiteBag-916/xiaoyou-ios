@@ -13,7 +13,7 @@
 #import "ProfileInfo.h"
 #import "ChatViewController.h"
 #import "YCommonReport.h"
-
+#import "YCommonAlertView.h"
 
 #define kNavigationgRightWidthAndHeight         40
 
@@ -109,7 +109,25 @@
     YActionSheetItem *item3 = [YActionSheetItem itemWithTitle:@"解除好友关系"
                                                          type:YCommonActionSheetItemTypeCommon
                                                         block:^(NSInteger checkNum) {
-                                                            UIAlertView * alertView = [[UIAlertView alloc] initWithTitle:@"确定删除此人？" message:nil delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
+                                                           YCommonAlertView * alertView = [[YCommonAlertView alloc] initWithTitle:nil message:@"确定解除好友关系？" buttonTitles:@"确定",@"取消", nil];
+                                                            [alertView clickedButtonHandler:^(NSInteger index) {
+                                                                switch (index) {
+                                                                    case 0:
+                                                                        [[ContactManager sharedInstance] delLinkMan:_studentDic[@"uid"] block:^(YActionMessage *message) {
+                                                                            
+                                                                            
+                                                                        }];
+                                                                        
+                                                                        [self.navigationController popViewControllerAnimated:YES];
+                                                                        break;
+                                                                    case 1:
+                                                                    
+                                                                        break;
+                                                                        
+                                                                    default:
+                                                                        break;
+                                                                }
+                                                            }];
                                                             [alertView show];
                                                         }];
     YActionSheetItem *item4 = [YActionSheetItem itemWithTitle:@"举报"
@@ -127,21 +145,5 @@
     // Dispose of any resources that can be recreated.
 }
 
-#pragma mark - UIAlterViewDelegate
-
--(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
-{
-    if (buttonIndex == 1)
-    {
-        
-        [[ContactManager sharedInstance] delLinkMan:_studentDic[@"uid"] block:^(YActionMessage *message) {
-            
-            
-        }];
-        
-        [self.navigationController popViewControllerAnimated:YES];
-
-    }
-}
 
 @end

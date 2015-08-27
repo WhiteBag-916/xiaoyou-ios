@@ -13,6 +13,8 @@
 #import "LinkManModel.h"
 #import "LinkManList.h"
 #import "YUtils+HUD.h"
+#import "XYGroupInfoDetailViewController.h"
+#import "XYGroupApplyViewController.h"
 
 #define kButtonItemHeightAndWidth           44
 #define kCancleButtonItemWidth              55
@@ -93,9 +95,17 @@
     }];
     if (sendPersonsArr.count > 0)
     {
-        XYSendMessageViewController * sendMessageViewController = [[XYSendMessageViewController alloc] init];
-        sendMessageViewController.sendPersonsArr = sendPersonsArr;
-        [self.navigationController pushViewController:sendMessageViewController animated:YES];
+        if ([[self superType] isEqualToString:kXYGroupInfoDetailViewController])
+        {
+            [YUtils showTitle:@"邀请入社成功" hideAfter:2];
+        }
+        else
+        {
+            XYSendMessageViewController * sendMessageViewController = [[XYSendMessageViewController alloc] init];
+            sendMessageViewController.sendPersonsArr = sendPersonsArr;
+            [self.navigationController pushViewController:sendMessageViewController animated:YES];
+        }
+        
     }
     else
     {

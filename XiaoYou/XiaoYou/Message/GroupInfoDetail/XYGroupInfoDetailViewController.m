@@ -21,6 +21,8 @@
 #define kNavigationgLeftHeight                  14
 #define kNavigationgRightWidthAndHeight         40
 
+NSString *const kXYGroupInfoDetailViewController = @"XYGroupInfoDetailViewControllerId";
+
 @interface XYGroupInfoDetailViewController ()
 
 @property (nonatomic,strong) GroupInfoDetailCollectionView * groupInfoDetailCollectionView;
