@@ -16,7 +16,7 @@ NSString *const kCommentFeedId = @"feedId";
 NSString *const kCommentPraiseCount = @"praiseCount";
 NSString *const kCommentToUserId = @"toUserId";
 NSString *const kCommentCreateTime = @"createTime";
-NSString *const kCommentIsRespect = @"isRespect";
+NSString *const kCommentIsRespect = @"isPraise";
 
 
 @interface Comment ()
