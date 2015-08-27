@@ -14,6 +14,7 @@
 #import "Tags.h"
 #import "ContactManager.h"
 #import "YUtils+HUD.h"
+#import "ChatViewController.h"
 
 #define kHeadCornerRadius              22.5
 #define kPaddingDistance               12
@@ -309,7 +310,13 @@ NSString *const kGroupApplyTableViewCell = @"GroupApplyTableViewCellId";
     }
 }
 
-- (void)toChat {
+- (void)toChat
+{
+    ChatViewController * chatVC = [[ChatViewController alloc] initWithChatter:[NSString stringWithFormat:@"4_%@",_applicantList.author.studentNo ] isGroup:YES];
+    chatVC.isSystemMessage = NO;
+    chatVC.studentDic = [_applicantList.author dictionaryRepresentation];
+    [self.superVC.navigationController pushViewController:chatVC animated:YES needHiddenBottomBar:YES];
+    
 }
 
 - (void)setIsRelated:(BOOL)isRelated {
