@@ -41,6 +41,7 @@
     [self showCustomNavigationMoreButton];
     
     _groupApplyTableView = [[GroupApplyTableView alloc] initWithGroupId:_groupId];
+    _groupApplyTableView.superVC = self;
     _groupApplyTableView.backgroundColor = [UIColor clearColor];
     [self.view addSubview:_groupApplyTableView];
     

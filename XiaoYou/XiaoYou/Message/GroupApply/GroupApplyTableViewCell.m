@@ -12,6 +12,8 @@
 #import "Author.h"
 #import "SKTagView.h"
 #import "Tags.h"
+#import "ContactManager.h"
+#import "YUtils+HUD.h"
 
 #define kHeadCornerRadius              22.5
 #define kPaddingDistance               12
@@ -134,7 +136,7 @@ NSString *const kGroupApplyTableViewCell = @"GroupApplyTableViewCellId";
         _afterDealButton = [[UIButton alloc] init];
         _afterDealButton.titleLabel.font = CONTENT_FONT(14);
         _afterDealButton.tag = BIG_BUTTON;
-        [_afterDealButton setBackgroundImage:[UIImage imageNamed:@"contacts_bottom"] forState:UIControlStateNormal];
+        _afterDealButton.backgroundColor = KCOLORGREEN_009688;
         [_afterDealButton setTitle:@"聊聊呗" forState:UIControlStateNormal];
         [_afterDealButton addTarget:self action:@selector(clickDealButton:) forControlEvents:UIControlEventTouchUpInside];
         [self.contentView addSubview:_afterDealButton];
@@ -150,7 +152,7 @@ NSString *const kGroupApplyTableViewCell = @"GroupApplyTableViewCellId";
         _refuseButton = [[UIButton alloc] init];
         _refuseButton.titleLabel.font = CONTENT_FONT(14);
         _refuseButton.tag = REFUSE_BUTTON;
-        [_refuseButton setBackgroundImage:[UIImage imageNamed:@"contacts_bottom"] forState:UIControlStateNormal];
+        _refuseButton.backgroundColor = [UIColor hexChangeFloat:@"76a5ad"];
         [_refuseButton setTitle:@"拒绝" forState:UIControlStateNormal];
         [_refuseButton addTarget:self action:@selector(clickDealButton:) forControlEvents:UIControlEventTouchUpInside];
         [self.contentView addSubview:_refuseButton];
@@ -164,7 +166,7 @@ NSString *const kGroupApplyTableViewCell = @"GroupApplyTableViewCellId";
         _passButton = [[UIButton alloc] init];
         _passButton.titleLabel.font = CONTENT_FONT(14);
         _passButton.tag = PASS_BUTTON;
-        [_passButton setBackgroundImage:[UIImage imageNamed:@"contacts_bottom"] forState:UIControlStateNormal];
+        _passButton.backgroundColor = KCOLORGREEN_009688;
         [_passButton setTitle:@"通过" forState:UIControlStateNormal];
         [_passButton addTarget:self action:@selector(clickDealButton:) forControlEvents:UIControlEventTouchUpInside];
         [self.contentView addSubview:_passButton];
@@ -178,7 +180,7 @@ NSString *const kGroupApplyTableViewCell = @"GroupApplyTableViewCellId";
         _sendButton = [[UIButton alloc] init];
         _sendButton.titleLabel.font = CONTENT_FONT(14);
         _sendButton.tag = SEND_BUTTON;
-        [_sendButton setBackgroundImage:[UIImage imageNamed:@"contacts_bottom"] forState:UIControlStateNormal];
+        _sendButton.backgroundColor = [UIColor hexChangeFloat:@"84ccc9"];
         [_sendButton setTitle:@"发信" forState:UIControlStateNormal];
         [_sendButton addTarget:self action:@selector(clickDealButton:) forControlEvents:UIControlEventTouchUpInside];
         [self.contentView addSubview:_sendButton];
@@ -188,6 +190,15 @@ NSString *const kGroupApplyTableViewCell = @"GroupApplyTableViewCellId";
             make.top.equalTo(_tagContent.mas_bottom).offset(kPaddingDistance);
             make.bottom.mas_equalTo(-kPaddingDistance);
         }];
+        
+        //line
+        UIView *line = [[UIView alloc] init];
+        [self.contentView addSubview:line];
+        [line mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.bottom.right.equalTo(self.contentView);
+            make.height.mas_equalTo(1);
+        }];
+        line.backgroundColor = KCOLORGREEN_e6ebea;
     }
     return self;
 }
@@ -200,22 +211,26 @@ NSString *const kGroupApplyTableViewCell = @"GroupApplyTableViewCellId";
     _nameLabel.text = _applicantList.author.name;
     _sexLabel.text = _applicantList.author.gender;
     
-    BOOL hasRelate = false;
-    for (int i = 0; i < _applicantList.author.tagsCommon.count; i++) {
-        BOOL isRelate = [_applicantList.author.tagsCommon[i] equal];
-        hasRelate |= isRelate;
-        SKTag *tag = [SKTag tagWithText:[_applicantList.author.tagsCommon[i] name]];
-        tag.font = CONTENT_FONT(10);
-        if (isRelate) {
-            tag.textColor = KCOLORGREEN_009688;
-        } else {
-            tag.textColor = KCOLORWHITE_696969;
+    if (_applicantList.author.tagsCommon.count == 0) {
+        _flagImageView.hidden = true;
+    } else {
+        _flagImageView.hidden = false;
+        
+        BOOL hasRelate = false;
+        for (int i = 0; i < _applicantList.author.tagsCommon.count; i++) {
+            BOOL isRelate = [_applicantList.author.tagsCommon[i] equal];
+            hasRelate |= isRelate;
+            SKTag *tag = [SKTag tagWithText:[_applicantList.author.tagsCommon[i] name]];
+            tag.font = CONTENT_FONT(10);
+            if (isRelate) {
+                tag.textColor = KCOLORGREEN_009688;
+            } else {
+                tag.textColor = KCOLORWHITE_696969;
+            }
+            [_tagContent addTag:tag];
         }
-        [_tagContent addTag:tag];
+        [self setIsRelated:hasRelate];
     }
-    [self setIsRelated:hasRelate];
-    
-    
 }
 
 
@@ -223,8 +238,30 @@ NSString *const kGroupApplyTableViewCell = @"GroupApplyTableViewCellId";
 - (void)updateButtonShow {
     if (0 == _applicantList.status) {
         //未处理
+        _afterDealButton.hidden = YES;
+        _refuseButton.hidden = NO;
+        _passButton.hidden = NO;
+        _sendButton.hidden = NO;
     } else if (1 == _applicantList.status) {
         //已同意
+        _afterDealButton.hidden = NO;
+        [_afterDealButton setTitle:@"已通过，聊聊呗" forState:UIControlStateNormal];
+        _afterDealButton.backgroundColor = KCOLORGREEN_009688;
+        _afterDealButton.userInteractionEnabled = YES;
+        _refuseButton.hidden = YES;
+        _passButton.hidden = YES;
+        _sendButton.hidden = YES;
+    } else if (2 == _applicantList.status) {
+        //拒绝
+        _afterDealButton.hidden = NO;
+        [_afterDealButton setTitle:@"已拒绝" forState:UIControlStateNormal];
+        _afterDealButton.backgroundColor = [UIColor hexChangeFloat:@"c0c5cb"];
+        _afterDealButton.userInteractionEnabled = NO;
+        _refuseButton.hidden = YES;
+        _passButton.hidden = YES;
+        _sendButton.hidden = YES;
+    } else if (3 == _applicantList.status) {
+        //忽略
     }
 }
 
@@ -232,21 +269,47 @@ NSString *const kGroupApplyTableViewCell = @"GroupApplyTableViewCellId";
 {
     switch (button.tag) {
         case BIG_BUTTON:
-            NSLog(@"聊聊呗");
+        {
+            [self toChat];
             break;
+        }
         case REFUSE_BUTTON:
-            NSLog(@"拒绝");
+        {
+            [[ContactManager sharedInstance] rejectApply:_applicantList.applyId block:^(YActionMessage *message) {
+                if (message.isSuccess) {
+                    _applicantList.status = 2;
+                    [self updateButtonShow];
+                } else {
+                    [YUtils showTitle:message.desc];
+                }
+            }];
+            
             break;
+        }
         case PASS_BUTTON:
-            NSLog(@"通过");
+        {
+            [[ContactManager sharedInstance] agreeApply:_applicantList.applyId block:^(YActionMessage *message) {
+                if (message.isSuccess) {
+                    _applicantList.status = 1;
+                    [self updateButtonShow];
+                } else {
+                    [YUtils showTitle:message.desc];
+                }
+            }];
             break;
+        }
         case SEND_BUTTON:
-            NSLog(@"发信");
+        {
+            [self toChat];
             break;
+        }
             
         default:
             break;
     }
+}
+
+- (void)toChat {
 }
 
 - (void)setIsRelated:(BOOL)isRelated {

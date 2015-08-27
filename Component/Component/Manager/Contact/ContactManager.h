@@ -38,7 +38,7 @@ AS_SINGLETON(ContactManager);
 - (void)submitApply:(NSString *)groupId block:(ActionCompleteBlock)block;
 
 //拒绝加入群组
-- (void)rejectApply:(NSString *)applyId block:(ActionCompleteBlock)block;
+- (void)rejectApply:(double)applyId block:(ActionCompleteBlock)block;
 
 //申请记录列表
 - (void)applyListApply:(NSString *)groupId block:(ActionCompleteBlock)block;
@@ -47,7 +47,7 @@ AS_SINGLETON(ContactManager);
 - (void)ignoreApplyList:(NSString *)applyIds block:(ActionCompleteBlock)block;
 
 //同意加入群组
-- (void)agreeApply:(NSString *)applyId block:(ActionCompleteBlock)block;
+- (void)agreeApply:(double)applyId block:(ActionCompleteBlock)block;
 
 //群组申请人员列表
 - (void)applicantList:(NSString *)groupId block:(ActionCompleteBlock)block;

@@ -25,6 +25,7 @@
     if (self) {
         self.dataSource = self;
         self.delegate = self;
+        self.separatorStyle = UITableViewCellSeparatorStyleNone;
         
         _groupId = groupId;
         _groupApplyArray = [NSMutableArray array];
@@ -75,7 +76,7 @@
 {
     
     GroupApplyTableViewCell * cell = [self dequeueReusableCellWithIdentifier:kGroupApplyTableViewCell forIndexPath:indexPath];
-    
+    cell.superVC = self.superVC;
     [cell setCellInfo:_groupApplyArray[indexPath.row]];
     
     return cell;
