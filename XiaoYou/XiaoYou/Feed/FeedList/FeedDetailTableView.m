@@ -31,10 +31,9 @@
 
 @implementation FeedDetailTableView
 
-- (id)initWithFeedId:(NSString *)feedId {
+- (id)init {
     self = [super init];
     if (self) {
-        _feedId = feedId;
         [self registerClass:[FeedListTableViewCell class] forCellReuseIdentifier:KCommentTableViewCell];
         [self registerClass:[FeedListTableViewCell class] forCellReuseIdentifier:kFeedDetailTableViewCell];
         self.dataSource = self;
@@ -46,16 +45,19 @@
     return self;
 }
 
-- (void)loadData {
-    [YUtils showHUDAddedTo:self title:@"正在加载"];
-    [[FeedManager sharedInstance] getFeedDetailByID:_feedId block:^(YActionMessage *message) {
-        [YUtils hiddenProgressHUD:self];
-        if (message.isSuccess) {
-            [self dealData:message.object];
-        } else {
-            [YUtils showTitle:message.desc];
-        }
-    }];
+- (void)loadDataWithFeedId:(NSString *)feedId {
+    if (nil == _feedId) {
+        _feedId = feedId;
+        [YUtils showHUDAddedTo:self title:@"正在加载"];
+        [[FeedManager sharedInstance] getFeedDetailByID:_feedId block:^(YActionMessage *message) {
+            [YUtils hiddenProgressHUD:self];
+            if (message.isSuccess) {
+                [self dealData:message.object];
+            } else {
+                [YUtils showTitle:message.desc];
+            }
+        }];
+    }
 }
 
 - (void)dealData:(FeedDetail *)info {

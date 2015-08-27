@@ -195,7 +195,7 @@
     }
     if (_info.praisePeoples.count > 4) {
         UIImageView *open = [[UIImageView alloc] init];
-        open.backgroundColor = [UIColor redColor];
+        open.image = [UIImage imageNamed:@"tooseemore"];
         [_personList addSubview:open];
         open.userInteractionEnabled = true;
         [open mas_makeConstraints:^(MASConstraintMaker *make) {

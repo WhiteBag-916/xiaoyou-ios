@@ -12,9 +12,8 @@
 
 @property (nonatomic, weak) FeedDetailViewController *parent;
 
-- (id)initWithFeedId:(NSString *)feedId;
 
-- (void)loadData;
+- (void)loadDataWithFeedId:(NSString *)feedId;
 
 - (void)openTool;
 @end
