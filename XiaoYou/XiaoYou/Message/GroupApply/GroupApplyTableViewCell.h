@@ -9,6 +9,7 @@
 #import "YTableViewCell.h"
 
 @class ApplicantList;
+@class YViewController;
 
 typedef enum : NSUInteger {
     BIG_BUTTON,
@@ -19,7 +20,10 @@ typedef enum : NSUInteger {
 
 extern NSString *const kGroupApplyTableViewCell;
 
+
 @interface GroupApplyTableViewCell : YTableViewCell
+
+@property (nonatomic, weak) YViewController *superVC;
 
 -(void)setCellInfo:(ApplicantList *)applicantList;
 

@@ -166,9 +166,9 @@ DEF_SINGLETON(ContactManager);
 }
 
 //拒绝加入群组
-- (void)rejectApply:(NSString *)applyId block:(ActionCompleteBlock)block {
+- (void)rejectApply:(double)applyId block:(ActionCompleteBlock)block {
     CommonAction* action = [[CommonAction alloc] init];
-    action.parameter = [YUtils getParameter:@{@"applyId":applyId} needUserToken:YES needAddUserID:YES];
+    action.parameter = [YUtils getParameter:@{@"applyId":@(applyId)} needUserToken:YES needAddUserID:YES];
     action.url = [YUtils getUrl:api_contact_RejectApply];
     
     [YAction startAction:action completionBlock:^(YActionMessage* message) {
@@ -201,9 +201,9 @@ DEF_SINGLETON(ContactManager);
 }
 
 //同意加入群组
-- (void)agreeApply:(NSString *)applyId block:(ActionCompleteBlock)block {
+- (void)agreeApply:(double)applyId block:(ActionCompleteBlock)block {
     CommonAction* action = [[CommonAction alloc] init];
-    action.parameter = [YUtils getParameter:@{@"applyId":applyId} needUserToken:YES needAddUserID:YES];
+    action.parameter = [YUtils getParameter:@{@"applyId":@(applyId)} needUserToken:YES needAddUserID:YES];
     action.url = [YUtils getUrl:api_contact_AgreeApply];
     
     [YAction startAction:action completionBlock:^(YActionMessage* message) {

@@ -8,7 +8,11 @@
 
 #import "YTableView.h"
 
+@class YViewController;
+
 @interface GroupApplyTableView : YTableView
+
+@property (nonatomic, weak) YViewController *superVC;
 
 - (instancetype)initWithGroupId:(NSString *)groupId;
 
