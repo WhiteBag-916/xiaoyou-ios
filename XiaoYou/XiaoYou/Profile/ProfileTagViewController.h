@@ -13,7 +13,7 @@ typedef NS_ENUM(NSInteger, ProfileTagType) {
     ProfileTagTypeAssociations,     //社团筛选
 };
 
-typedef void(^ProfileTagSelectedBlock)(NSArray *select);
+typedef void(^ProfileTagSelectedBlock)(NSString *filterStr);
 
 @interface ProfileTagViewController : YViewController
 

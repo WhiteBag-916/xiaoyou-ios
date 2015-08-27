@@ -64,11 +64,11 @@
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:view];
 }
 
-//筛选
+//筛选按钮
 - (void)filterBtnAction {
     ProfileTagViewController *profileTagViewController = [[ProfileTagViewController alloc] initWithMyTags:_filterArray type:ProfileTagTypeAssociations];
-    [profileTagViewController endSelected:^(NSArray *select) {
-        _filterArray = [NSArray arrayWithArray:select];
+    [profileTagViewController endSelected:^(NSString *filterStr) {
+        [_associationsListTableView resetArrayByFilter:filterStr];
     }];
     UINavigationController *navigationController =
     [[UINavigationController alloc] initWithRootViewController:profileTagViewController];
