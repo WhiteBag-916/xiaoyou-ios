@@ -13,6 +13,7 @@
 #import "YUtils+HUD.h"
 #import "ChatViewController.h"
 #import "GroupModel.h"
+#import "YCommonReport.h"
 
 @interface AssociationsDetailViewController ()
 <AssociationsDetailTableViewDelegate>
@@ -51,7 +52,7 @@
     YActionSheetItem *item2 = [YActionSheetItem itemWithTitle:@"举报"
                                                          type:YCommonActionSheetItemTypeCommon
                                                         block:^(NSInteger checkNum) {
-                                                            
+                                                            [YCommonReport report];
                                                         }];
     
     YCommonActionSheet *sheet = [[YCommonActionSheet alloc] initWithType:@[item1, item2] title:nil];

@@ -208,7 +208,7 @@
         make.right.lessThanOrEqualTo(titleView);
     }];
     
-    _schoolNo = [YUtils initLabel:CONTENT_FONT(9) color:KCOLORWHITE text:@"学号" frame:CGRectZero alignment:NSTextAlignmentLeft];
+    _schoolNo = [YUtils initLabel:CONTENT_FONT(10) color:KCOLORWHITE text:@"学号" frame:CGRectZero alignment:NSTextAlignmentLeft];
     [titleView addSubview:_schoolNo];
     [_schoolNo mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(_userName.mas_bottom).offset(KSCHOOLNOMARGIN_TOP);

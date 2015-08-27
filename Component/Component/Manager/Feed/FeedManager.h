@@ -77,4 +77,7 @@ AS_SINGLETON(FeedManager);
 //获取评论列表
 - (void)listComment:(NSString *)lastId size:(NSInteger)size feedId:(NSString *)feedId block:(ActionCompleteBlock)block;
 
+//社团点赞
+- (void)addGroupPraise:(NSString *)groupId block:(ActionCompleteBlock)block;
+
 @end

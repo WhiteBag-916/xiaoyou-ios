@@ -207,20 +207,20 @@
     
     if (AssociationsDetailTableViewLikeSection == section) {
         if (1 == row) {
-//            [YUtils showHUDWithTitle];
-//            [[ContactManager sharedInstance] praise:_model.uid block:^(YActionMessage *message) {
-//                if (message.isSuccess) {
-//                    _model.isCool = !_model.isCool;
-//                    if (_model.isCool) {
-//                        ++_model.coolCount;
-//                    } else {
-//                        --_model.coolCount;
-//                    }
-//                    
-//                    [self reloadData];
-//                }
-//                [YUtils hiddenProgressHUD];
-//            }];
+            [YUtils showHUDWithTitle];
+            [[FeedManager sharedInstance] addGroupPraise:_groupId block:^(YActionMessage *message) {
+                if (message.isSuccess) {
+                    _groupModel.isCool = !_groupModel.isCool;
+                    if (_groupModel.isCool) {
+                        ++_groupModel.coolCount;
+                    } else {
+                        --_groupModel.coolCount;
+                    }
+                    
+                    [self reloadData];
+                }
+                [YUtils hiddenProgressHUD];
+            }];
         }
     } else if (AssociationsDetailTableViewFeedSection == section) {
         FeedDetailViewController *feedDetailViewController = [[FeedDetailViewController alloc] initWithFeedId:[NSString stringWithFormat:@"%g", [[_feedListArray[indexPath.row] feed] feedIdentifier]]];

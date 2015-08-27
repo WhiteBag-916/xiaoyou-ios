@@ -19,6 +19,7 @@
 #import "FeedManager.h"
 #import "ProvisionManager.h"
 #import "ProfileInfo.h"
+#import "YCommonReport.h"
 
 
 #define KBOTTOMHEIGHT SCALE_NUM(25)                 //社团和feed列表中bottom的高度
@@ -282,7 +283,7 @@
     YActionSheetItem *item2 = [YActionSheetItem itemWithTitle:@"举报"
                                                          type:YCommonActionSheetItemTypeCommon
                                                         block:^(NSInteger checkNum) {
-                                                            
+                                                            [YCommonReport report];
                                                         }];
     
     YCommonActionSheet *sheet = [[YCommonActionSheet alloc] initWithType:@[item1, item2] title:nil];

@@ -14,6 +14,7 @@
 #import "ProvisionManager.h"
 #import "ProfileInfo.h"
 #import "GroupDetail.h"
+#import "YCommonReport.h"
 
 
 #define kNavigationgLeftWidth                   9
@@ -108,7 +109,7 @@
     YActionSheetItem *item3 = [YActionSheetItem itemWithTitle:@"举报"
                                                          type:YCommonActionSheetItemTypeCommon
                                                         block:^(NSInteger checkNum) {
-                                                            
+                                                            [YCommonReport report];
                                                         }];
     
     YCommonActionSheet *sheet = [[YCommonActionSheet alloc] initWithType:@[item1, item2, item3] title:nil];

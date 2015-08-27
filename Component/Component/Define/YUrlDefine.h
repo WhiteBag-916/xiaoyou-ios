@@ -97,6 +97,8 @@
 #define api_group_groupDetailInfo @"/group/groupDetailInfo"
 //社团feed列表
 #define api_group_groupFeeds @"/group/groupFeeds"
+//社团点赞
+#define api_group_addPraise @"/group/addPraise"
 //feed点赞人列表
 #define api_feed_listPraisePeoples @"/feed/listPraisePeoples"
 //Feed评论删除
@@ -135,6 +137,10 @@
 #define api_friend_IgnoreApplyList @"/friend/ignoreApplyList"
 //同意好友申请
 #define api_friend_AgreeApply @"/friend/agreeApply"
+//删除联系人
+#define api_user_delLinkMan @"/user/v2/delLinkMan"
+//社长删除社团成员
+#define api_group_deleteGroupUser @"/group/deleteGroupUser"
 
 /**********************************************************
  Url Define: MessageManager

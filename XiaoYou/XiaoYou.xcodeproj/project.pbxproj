@@ -435,6 +435,7 @@
 		65CF63881B8EA35800ACBB70 /* cupgreen@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 65CF63861B8EA35800ACBB70 /* cupgreen@3x.png */; };
 		65CF638B1B8EE17E00ACBB70 /* tooseemore@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 65CF63891B8EE17E00ACBB70 /* tooseemore@3x.png */; };
 		65CF638C1B8EE17E00ACBB70 /* toseemore@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 65CF638A1B8EE17E00ACBB70 /* toseemore@2x.png */; };
+		65CF638F1B8F0E4A00ACBB70 /* YCommonReport.m in Sources */ = {isa = PBXBuildFile; fileRef = 65CF638E1B8F0E4A00ACBB70 /* YCommonReport.m */; };
 		65F55A9E1B897C4700ED4348 /* ProfileTagViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 65F55A9D1B897C4700ED4348 /* ProfileTagViewController.m */; };
 		65F55AA11B899EBC00ED4348 /* UIImageView+Ext.m in Sources */ = {isa = PBXBuildFile; fileRef = 65F55AA01B899EBC00ED4348 /* UIImageView+Ext.m */; };
 		65F82F841B85E74A00FF6E2D /* FeedPublishViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 65F82F831B85E74A00FF6E2D /* FeedPublishViewController.m */; };
@@ -1109,6 +1110,8 @@
 		65CF63861B8EA35800ACBB70 /* cupgreen@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cupgreen@3x.png"; sourceTree = "<group>"; };
 		65CF63891B8EE17E00ACBB70 /* tooseemore@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tooseemore@3x.png"; sourceTree = "<group>"; };
 		65CF638A1B8EE17E00ACBB70 /* toseemore@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "toseemore@2x.png"; sourceTree = "<group>"; };
+		65CF638D1B8F0E4A00ACBB70 /* YCommonReport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YCommonReport.h; sourceTree = "<group>"; };
+		65CF638E1B8F0E4A00ACBB70 /* YCommonReport.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YCommonReport.m; sourceTree = "<group>"; };
 		65F55A9C1B897C4700ED4348 /* ProfileTagViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileTagViewController.h; sourceTree = "<group>"; };
 		65F55A9D1B897C4700ED4348 /* ProfileTagViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileTagViewController.m; sourceTree = "<group>"; };
 		65F55A9F1B899EBC00ED4348 /* UIImageView+Ext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+Ext.h"; sourceTree = "<group>"; };
@@ -1380,6 +1383,8 @@
 				650C6C051B8860FF00A89AC9 /* YCommonEditViewController.m */,
 				65A703CC1B8C4EE70094D8A2 /* YFlatSwitchView.h */,
 				65A703CD1B8C4EE70094D8A2 /* YFlatSwitchView.m */,
+				65CF638D1B8F0E4A00ACBB70 /* YCommonReport.h */,
+				65CF638E1B8F0E4A00ACBB70 /* YCommonReport.m */,
 			);
 			path = CommonView;
 			sourceTree = "<group>";
@@ -3013,6 +3018,7 @@
 				65A846FF1B81C9C300933815 /* FeedCellTopView.m in Sources */,
 				33380DA81B85DBAB008B51EB /* ApplySuccessSystemMessageTableViewCell.m in Sources */,
 				33380DA51B85DB89008B51EB /* NormalSystemMessageTableViewCell.m in Sources */,
+				65CF638F1B8F0E4A00ACBB70 /* YCommonReport.m in Sources */,
 				653CB2EF1B806BFD006ECBB2 /* pinyin.c in Sources */,
 				65969DD01B8723E3001DD348 /* YUtils+HUD.m in Sources */,
 				65969DD31B87312D001DD348 /* ProfilePersonListTableView.m in Sources */,

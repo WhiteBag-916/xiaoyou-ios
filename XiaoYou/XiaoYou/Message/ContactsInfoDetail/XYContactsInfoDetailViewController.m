@@ -12,6 +12,7 @@
 #import "ContactManager.h"
 #import "ProfileInfo.h"
 #import "ChatViewController.h"
+#import "YCommonReport.h"
 
 #define kNavigationgRightWidthAndHeight         40
 
@@ -113,7 +114,7 @@
     YActionSheetItem *item4 = [YActionSheetItem itemWithTitle:@"举报"
                                                          type:YCommonActionSheetItemTypeCommon
                                                         block:^(NSInteger checkNum) {
-                                                            
+                                                            [YCommonReport report];
                                                         }];
     
     YCommonActionSheet *sheet = [[YCommonActionSheet alloc] initWithType:@[item1, item2, item3, item4] title:nil];
