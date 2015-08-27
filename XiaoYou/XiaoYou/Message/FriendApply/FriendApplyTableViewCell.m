@@ -8,6 +8,7 @@
 
 #import "FriendApplyTableViewCell.h"
 #import "ConnectTag.h"
+#import "Author.h"
 
 #define kHeadCornerRadius              22.5
 #define kPaddingDistance               12
@@ -70,7 +71,6 @@ typedef enum : NSUInteger {
         _nameLabel = [[UILabel alloc] init];
         _nameLabel.font = CONTENT_FONT(14);
         _nameLabel.backgroundColor = [UIColor whiteColor];
-        _nameLabel.text = @"斯提尔伯格";
         [self.contentView addSubview:_nameLabel];
         [_nameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
             make.top.mas_equalTo(kPaddingDistance);
@@ -83,7 +83,6 @@ typedef enum : NSUInteger {
         _sexLabel = [[UILabel alloc] init];
         _sexLabel.font = CONTENT_FONT(14);
         _sexLabel.backgroundColor = [UIColor whiteColor];
-        _sexLabel.text = @"男";
         [self.contentView addSubview:_sexLabel];
         [_sexLabel mas_makeConstraints:^(MASConstraintMaker *make) {
             make.top.mas_equalTo(kPaddingDistance);
@@ -107,7 +106,6 @@ typedef enum : NSUInteger {
         _infoLabel = [[UILabel alloc] init];
         _infoLabel.font = CONTENT_FONT(12);
         _infoLabel.backgroundColor = [UIColor whiteColor];
-        _infoLabel.text = @"计算机与控制工程学院     15级";
         [self.contentView addSubview:_infoLabel];
         [_infoLabel mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.equalTo(_nameLabel);
@@ -132,7 +130,6 @@ typedef enum : NSUInteger {
         _flagLabel.font = CONTENT_FONT(11);
         _flagLabel.backgroundColor = [UIColor whiteColor];
         _flagLabel.numberOfLines = 0;
-        _flagLabel.text = @"互联网就业 留学陶瓷 网球社 互联网就业 留学陶瓷 网球社 互联网就业 留学陶瓷 网球社 ";
         [self.contentView addSubview:_flagLabel];
         [_flagLabel mas_makeConstraints:^(MASConstraintMaker *make) {
             make.top.equalTo(_headImageView.mas_bottom).offset(kFlagLabelToHead);
@@ -189,9 +186,14 @@ typedef enum : NSUInteger {
     return self;
 }
 
--(void)setCellInfo:(NSDictionary *) dic
+-(void)setCellInfo:(ApplicantList *) model
 {
-    
+    [_headImageView setFaceImageWithUrl:model.author.headPic];
+    _nameLabel.text = model.author.name;
+    _sexLabel.text = model.author.gender;
+//    _flagLabel
+//    _infoLabel.text =
+    [_connectTag updateWithTag:model.author.propetiesCommon];
 }
 
 -(void)clickDealButton:(UIButton *) button

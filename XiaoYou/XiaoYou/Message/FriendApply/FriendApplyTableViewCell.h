@@ -7,11 +7,12 @@
 //
 
 #import "YTableViewCell.h"
+#import "ApplicantList.h"
 
 extern NSString *const kFriendApplyTableViewCell;
 
 @interface FriendApplyTableViewCell : YTableViewCell
 
--(void)setCellInfo:(NSDictionary *) dic;
+-(void)setCellInfo:(ApplicantList *) model;
 
 @end

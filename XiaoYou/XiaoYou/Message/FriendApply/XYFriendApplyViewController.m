@@ -10,6 +10,7 @@
 #import "FriendApplyTableView.h"
 #import "YCommonActionSheet.h"
 #import "ContactManager.h"
+#import "ApplicantList.h"
 
 @interface XYFriendApplyViewController ()
 
