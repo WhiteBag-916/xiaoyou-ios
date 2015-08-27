@@ -53,8 +53,10 @@
 
 //筛选
 - (void)resetArrayByFilter:(NSString *)filterStr {
-    _filterStr = filterStr;
-    [self loadData];
+    if (![_filterStr isEqualToString:filterStr]) {
+        _filterStr = filterStr;
+        [self loadData];
+    }
 }
 
 //搜索
@@ -106,8 +108,6 @@
 }
 
 - (void)dealMessage:(YActionMessage *)message {
-    [self stopLoad];
-    
     if (message.isSuccess) {
         if ([self isHeaderRefresh]) {
             [_associationsListArray removeAllObjects];
@@ -121,11 +121,11 @@
     } else {
         [YUtils showTitleOn:self title:message.desc];
     }
+    
+    [self stopLoad];
 }
 
 - (void)searchMessage:(YActionMessage *)message {
-    [self stopLoad];
-    
     if (message.isSuccess && [_searchStr isEqualToString:[message.object searchKey]]) {
         [_associationsListArray removeAllObjects];
         [_associationsListArray addObjectsFromArray:[message.object groupList]];
@@ -135,6 +135,8 @@
         
         [self reloadData];
     }
+    
+    [self stopLoad];
 }
 
 #pragma mark - UITableViewDataSource
@@ -160,7 +162,7 @@
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-    AssociationsDetailViewController *associationsDetailViewController = [[AssociationsDetailViewController alloc] initWithId:[NSString stringWithFormat:@"%g", [_associationsListArray[indexPath.row] groupModelIdentifier]]];
+    AssociationsDetailViewController *associationsDetailViewController = [[AssociationsDetailViewController alloc] initWithId:[NSString stringWithFormat:@"%g", [_associationsListArray[indexPath.row] internalBaseClassIdentifier]]];
     [_superVC.navigationController pushViewController:associationsDetailViewController animated:YES needHiddenBottomBar:YES];
 }
 

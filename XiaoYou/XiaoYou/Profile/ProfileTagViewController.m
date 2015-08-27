@@ -176,7 +176,18 @@
 - (void)onNavigationRightButtonClicked {
     if (ProfileTagTypeAssociations == _type) {
         [_tagsArray removeObjectAtIndex:0];
-        _block(_tagsArray);
+        NSMutableString *tagStr = [@"" mutableCopy];
+        [_tagsArray enumerateObjectsUsingBlock:^(NSDictionary *obj, NSUInteger idx, BOOL *stop) {
+            if ([obj[tagIsSelected] boolValue]) {
+                Tags *tags = obj[tagObj];
+                if (tagStr.length > 0) {
+                    [tagStr appendString:@","];
+                }
+                [tagStr appendString:tags.internalBaseClassIdentifier];
+            }
+        }];
+        _block(tagStr);
+        [self.navigationController dismissViewControllerAnimated:YES completion:nil];
     } else if (ProfileTagTypePerson == _type) {
         NSMutableString *tagStr = [@"" mutableCopy];
         [_tagsArray enumerateObjectsUsingBlock:^(NSDictionary *obj, NSUInteger idx, BOOL *stop) {

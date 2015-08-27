@@ -37,6 +37,7 @@
 
 @property (nonatomic, strong) ProfileInfo *profileInfo; //个人信息,尽量用profile
 @property (nonatomic, strong) LoginResp *loginResp;     //登录信息
+@property (nonatomic, assign) NSInteger unreadAlterCountBeforeGetProfile;//取profile请求之前的未读
 
 @end
 
@@ -66,15 +67,20 @@ DEF_SINGLETON(ProvisionManager);
     [self initProfileData];
     
     [self getProfileInfo];
+    
+    [self resetUnreadAlterCount:[[[NSUserDefaults standardUserDefaults] objectForKey:kShareData_UnreadAlterCount] integerValue]];
 }
 
 - (void)appDidLogout
 {
     //清理数据
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:kShareData_Token];
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:kShareData_UnreadAlterCount];
+    
     _loginResp = nil;
     _profileInfo = nil;
     [self delPassword];
+    
     //删除文件
     NSString *cachePath = [[YDirectory fileCache] stringByAppendingString:NSStringFromClass([LoginResp class])];
     [YDirectory removeFolders:cachePath];
@@ -113,8 +119,33 @@ DEF_SINGLETON(ProvisionManager);
 //初始化个人数据,自动登录
 - (void)initProfileData{
     NSString *cachePath = [[YDirectory fileCache] stringByAppendingString:NSStringFromClass([ProfileInfo class])];
-    _profileInfo = [ProfileInfo instanceWithFile:cachePath];
+    self.profileInfo = [ProfileInfo instanceWithFile:cachePath];
 }
+
+- (void)setProfileInfo:(ProfileInfo *)profileInfo {
+    _profileInfo = profileInfo;
+    
+    [YShareData defaultData][kShareData_UserID] = _profileInfo.uid;
+}
+
+//增加feed提醒未读数
+- (void)addUnreadAlterCount:(NSInteger)addCount {
+    NSInteger nowCount = [[YShareData defaultData][kShareData_UnreadAlterCount] integerValue];
+    [self resetUnreadAlterCount:nowCount+addCount];
+}
+
+//重置feed提醒未读数
+- (void)resetUnreadAlterCount:(NSInteger)allCount {
+    [YShareData defaultData][kShareData_UnreadAlterCount] = @(allCount);
+    
+    [[NSUserDefaults standardUserDefaults] setObject:@(allCount) forKey:kShareData_UnreadAlterCount];
+    
+    //发送通知,告知界面刷新
+    [self postNotificationOnMainThreadName:KNotification_Update_UnreadAlterCount
+                                    object:nil
+                                  userInfo:nil];
+}
+
 - (NSString *)getUserId {
     return _profileInfo.uid;
 }
@@ -236,6 +267,9 @@ DEF_SINGLETON(ProvisionManager);
             if (nil != _profileInfo) {
                 _profileInfo.headPic = uploadImage.url;
                 [self saveProfileInfo];
+                
+                //必须放在此处,未读不在文件中管理
+                [self resetUnreadAlterCount:(_profileInfo.unreadAlterCount+_unreadAlterCountBeforeGetProfile)];
             }
             if (nil != _loginResp) {
                 _loginResp.icon = uploadImage.url;
@@ -262,11 +296,11 @@ DEF_SINGLETON(ProvisionManager);
 //获取个人Profile信息
 - (void)getProfileInfo {
     ProfileAction* action = [[ProfileAction alloc] init];
+    _unreadAlterCountBeforeGetProfile = [[YShareData defaultData][kShareData_UnreadAlterCount] integerValue];
     
     [YAction startAction:action completionBlock:^(YActionMessage* message) {
         if (message.isSuccess) {
-            _profileInfo = message.object;
-            [YShareData defaultData][kShareData_UserID] = _profileInfo.uid;
+            self.profileInfo = message.object;
             [self saveProfileInfo];
         }
         //发送通知,告知界面刷新

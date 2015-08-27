@@ -22,6 +22,8 @@
 #import "CommonAction.h"
 #import "YUtils+Component.h"
 #import "Feed.h"
+#import "ListPraisePeoplesAction.h"
+#import "ListCommentAction.h"
 
 #define KFeedManagerSyncQueue @"kFeedManagerSyncQueue"
 
@@ -255,6 +257,56 @@ DEF_SINGLETON(FeedManager);
     action.size = size;
     action.groupId = groupId;
     action.lastId = lastId;
+    
+    [YAction startAction:action completionBlock:^(YActionMessage* message) {
+        //主线程处理界面
+        block(message);
+    }];
+}
+
+//feed点赞人列表
+- (void)listPraisePeoples:(NSInteger)limitStart limitEnd:(NSInteger)limitEnd feedId:(NSString *)feedId block:(ActionCompleteBlock)block {
+    ListPraisePeoplesAction *action = [[ListPraisePeoplesAction alloc] init];
+    action.limitStart = limitStart;
+    action.limitEnd = limitEnd;
+    action.feedId = feedId;
+    
+    [YAction startAction:action completionBlock:^(YActionMessage* message) {
+        //主线程处理界面
+        block(message);
+    }];
+}
+
+//Feed评论删除
+- (void)deleteComment:(NSString *)commentId block:(ActionCompleteBlock)block {
+    CommonAction *action = [[CommonAction alloc] init];
+    action.parameter = [YUtils getParameter:@{@"commentId":commentId} needUserToken:YES];
+    action.url = [YUtils getUrl:api_feed_deleteComment];
+    
+    [YAction startAction:action completionBlock:^(YActionMessage* message) {
+        //主线程处理界面
+        block(message);
+    }];
+}
+
+//feed删除
+- (void)deleteFeed:(NSString *)feedId block:(ActionCompleteBlock)block {
+    CommonAction *action = [[CommonAction alloc] init];
+    action.parameter = [YUtils getParameter:@{@"feedId":feedId} needUserToken:YES];
+    action.url = [YUtils getUrl:api_feed_deleteFeed];
+    
+    [YAction startAction:action completionBlock:^(YActionMessage* message) {
+        //主线程处理界面
+        block(message);
+    }];
+}
+
+//获取评论列表
+- (void)listComment:(NSString *)lastId size:(NSInteger)size feedId:(NSString *)feedId block:(ActionCompleteBlock)block{
+    ListCommentAction *action = [[ListCommentAction alloc] init];
+    action.lastId = lastId;
+    action.size = size;
+    action.feedId = feedId;
     
     [YAction startAction:action completionBlock:^(YActionMessage* message) {
         //主线程处理界面

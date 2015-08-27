@@ -9,6 +9,7 @@
 #import "YTableView.h"
 
 @class YViewController;
+@class GroupModel;
 
 typedef NS_ENUM(NSInteger, AssociationsDetailTableViewSection) {
     AssociationsDetailTableViewTitleSection=0,      //社团详情
@@ -17,8 +18,19 @@ typedef NS_ENUM(NSInteger, AssociationsDetailTableViewSection) {
     AssociationsDetailTableViewSectionEnd
 };
 
+@protocol AssociationsDetailTableViewDelegate <NSObject>
+
+- (void)resetAddButtonType:(GroupModel *)model;
+
+@end
+
 @interface AssociationsDetailTableView : YTableView
 
 @property (nonatomic, weak) YViewController *parent;
+@property (nonatomic, assign) id<AssociationsDetailTableViewDelegate> associationsDetailTableViewDelegate;
+
+- (id)initWithGroupId:(NSString *)groupId;
+
+- (void)loadData;
 
 @end

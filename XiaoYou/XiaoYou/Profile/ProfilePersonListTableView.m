@@ -66,7 +66,12 @@
         [self beginLoadNewData];
     }
 }
-
+- (void)loadDataWithFeedId:(NSString *)feedId {
+    if (nil == _feedId) {
+        _feedId = feedId;
+        [self beginLoadNewData];
+    }
+}
 - (void)loadNewData
 {
     [self sendRequest];
@@ -97,6 +102,10 @@
         [[FeedManager sharedInstance] findFriendsByTags:cnt limitEnd:cnt + KPAGENUM queryCode:_queryCode block:^(YActionMessage *message) {
             [self dealMessage:message];
         }];
+    } else if (PersonPersonListTypeFeedRespect == _type) {
+        [[FeedManager sharedInstance] listPraisePeoples:cnt limitEnd:cnt + KPAGENUM feedId:_feedId block:^(YActionMessage *message) {
+            [self dealMessage:message];
+        }];
     }
 }
 - (void)dealMessage:(YActionMessage *)message {
@@ -118,10 +127,6 @@
     } else {
         [self stopLoadMoreData];
     }
-}
-- (void)loadDataWithFeedId:(NSString *)feedId {
-    _feedId = feedId;
-    [self reloadData];
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return _personListArray.count;

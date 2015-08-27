@@ -6,7 +6,7 @@
 //
 
 #import "Feed.h"
-
+#import "Tags.h"
 
 NSString *const kFeedId = @"id";
 NSString *const kFeedPraiseCount = @"praiseCount";

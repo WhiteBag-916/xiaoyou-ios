@@ -82,10 +82,10 @@
         lastID = [NSString stringWithFormat:@"%g", [_notifyListArray.lastObject affectId]];
     }
     [[FeedManager sharedInstance] alertList:lastID size:KPAGENUM block:^(YActionMessage *message) {
-        if ([self isHeaderRefresh]) {
-            [_notifyListArray removeAllObjects];
-        }
         if (message.isSuccess) {
+            if ([self isHeaderRefresh]) {
+                [_notifyListArray removeAllObjects];
+            }
             [self hiddenFooter:false];
             [_notifyListArray addObjectsFromArray:message.object];
             if ([message.object count] < KPAGENUM) {

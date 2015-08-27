@@ -42,7 +42,6 @@
 @property (nonatomic, strong, readwrite) UIImageView *respectImg;              //敬酒按钮
 @property (nonatomic, strong, readwrite) UIView *personList;                   //敬酒人
 @property (nonatomic, assign)            int type;                             //类型
-@property (nonatomic, assign)            NSString *feedId;
 @property (nonatomic, strong)            id myInfo;
 @property (nonatomic, strong)            FeedInfo *info;
 @property (nonatomic, strong)            NSMutableDictionary *shareData;
@@ -155,7 +154,6 @@
         NSString *img = data.feed.img.length > 0?[data.feed.img componentsSeparatedByString:@","][0]:@"";
         
         _shareData = [NSMutableDictionary dictionaryWithObjectsAndKeys:tag,@"tag",content,@"content",img, @"pic", nil];
-        _feedId = [NSString stringWithFormat:@"%d", (int)data.feed.feedIdentifier];
         _respectNum.text = [NSString stringWithFormat:@"%d", (int)data.feed.praiseCount];
         _commentNum.text = [NSString stringWithFormat:@"%d", (int)data.feed.commentCount];
         [self updateRespect:data.feed.isPraise];
@@ -164,7 +162,6 @@
         FeedInfo *data = inData;
         _myInfo = data.feed;
         _info = data;
-        _feedId = [NSString stringWithFormat:@"%d", (int)data.feed.feedIdentifier];
         _respectNum.text = [NSString stringWithFormat:@"%d", (int)data.feed.praiseCount];
         [self updateRespect:data.feed.isPraise];
         [self initPersonList];
@@ -196,9 +193,9 @@
         }];
         tmp = face;
     }
-    if (_info.praisePeoples.count < 4) {
+    if (_info.praisePeoples.count > 4) {
         UIImageView *open = [[UIImageView alloc] init];
-        open.backgroundColor = [UIColor redColor];
+        open.image = [UIImage imageNamed:@"tooseemore"];
         [_personList addSubview:open];
         open.userInteractionEnabled = true;
         [open mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -292,7 +289,7 @@
     [sheet show];
 }
 - (void)openDetail {
-    [[NSNotificationCenter defaultCenter] postNotificationName:KNotification_Open_PraiseDetail object:nil userInfo:@{@"feedId":_feedId}];
+    [[NSNotificationCenter defaultCenter] postNotificationName:KNotification_Open_PraiseDetail object:nil userInfo:@{@"feedId":[NSString stringWithFormat:@"%d", (int)[(Feed *)_myInfo feedIdentifier]]}];
 }
 
 @end

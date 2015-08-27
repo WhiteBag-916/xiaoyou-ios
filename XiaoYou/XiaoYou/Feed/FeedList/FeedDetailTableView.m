@@ -17,7 +17,11 @@
 #import "Comment.h"
 #import "Author.h"
 #import "CommentListItems.h"
+#import "FeedDetailViewController.h"
 #import "ProvisionManager.h"
+
+#define KPAGENUM 10
+
 @interface FeedDetailTableView()<UITableViewDataSource, UITableViewDelegate>
 
 @property (nonatomic, strong) NSDictionary *data;
@@ -30,10 +34,9 @@
 
 @implementation FeedDetailTableView
 
-- (id)initWithFeedId:(NSString *)feedId {
+- (id)init {
     self = [super init];
     if (self) {
-        _feedId = feedId;
         [self registerClass:[FeedListTableViewCell class] forCellReuseIdentifier:KCommentTableViewCell];
         [self registerClass:[FeedListTableViewCell class] forCellReuseIdentifier:kFeedDetailTableViewCell];
         self.dataSource = self;
@@ -44,17 +47,22 @@
     }
     return self;
 }
-
-- (void)loadData {
-    [YUtils showHUDAddedTo:self title:@"正在加载"];
-    [[FeedManager sharedInstance] getFeedDetailByID:_feedId block:^(YActionMessage *message) {
-        [YUtils hiddenProgressHUD:self];
-        if (message.isSuccess) {
-            [self dealData:message.object];
-        } else {
-            [YUtils showTitle:message.desc];
-        }
-    }];
+- (void)refresh {
+    [self sendRequest:true];
+}
+- (void)loadDataWithFeedId:(NSString *)feedId {
+    if (nil == _feedId) {
+        _feedId = feedId;
+        [YUtils showHUDAddedTo:self title:@"正在加载"];
+        [[FeedManager sharedInstance] getFeedDetailByID:_feedId block:^(YActionMessage *message) {
+            [YUtils hiddenProgressHUD:self];
+            if (message.isSuccess) {
+                [self dealData:message.object];
+            } else {
+                [YUtils showTitle:message.desc];
+            }
+        }];
+    }
 }
 
 - (void)dealData:(FeedDetail *)info {
@@ -69,7 +77,41 @@
     _shareData = [NSMutableDictionary dictionaryWithObjectsAndKeys:tag,@"tag",content,@"content",img, @"pic", nil];
     
     _commentListArray = [NSMutableArray arrayWithArray:info.commentListItems];
+    if (_commentListArray.count < KPAGENUM) {
+        [self hiddenFooter:true];
+    } else {
+        [self hiddenFooter:false];
+    }
     [self reloadData];
+    
+}
+- (void)loadMoreData
+{
+    [self sendRequest:false];
+}
+- (void)sendRequest:(BOOL)refresh {
+    NSString *lastId = refresh?@"":[NSString stringWithFormat:@"%d", (int)[(CommentListItems *)_commentListArray[_commentListArray.count - 1] comment].commentIdentifier];
+    [[FeedManager sharedInstance] listComment:lastId size:KPAGENUM feedId:_feedId block:^(YActionMessage *message) {
+        [self stopLoadMoreData];
+        if (message.isSuccess) {
+            if (refresh) {
+                _commentListArray = [NSMutableArray arrayWithArray:message.object];
+            } else {
+                [_commentListArray addObjectsFromArray:message.object];
+            }
+            if ([message.object count] < KPAGENUM) {
+                [self showNoticeNoMoreData];
+            }
+            if (_commentListArray.count < KPAGENUM) {
+                [self hiddenFooter:true];
+            } else {
+                [self hiddenFooter:false];
+            }
+            [self reloadData];
+        } else {
+            [YUtils showTitle:message.desc];
+        }
+    }];
 }
 #pragma mark - 继承者
 - (BOOL)showFooterRefresh
@@ -138,6 +180,8 @@
     }
 }
 - (void)openReply:(int)index {
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:index + 1 inSection:0];
+    [self scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionMiddle animated:false];
     CommentListItems *item = _commentListArray[index];
     [self.parent openInputWithId:item.author.uid name:item.author.name];
 }
@@ -154,33 +198,70 @@
     YActionSheetItem *item3 = [YActionSheetItem itemWithTitle:@"删除"
                                                          type:YCommonActionSheetItemTypeCommon
                                                         block:^(NSInteger checkNum) {
-                                                            
+                                                            [self deleteFeed];
                                                         }];
     
     YCommonActionSheet *sheet = [[YCommonActionSheet alloc] initWithType:[_feedInfo.author.uid isEqualToString:[[ProvisionManager sharedInstance] getUserId]]?@[item1, item3]:@[item1, item2] title:nil];
     [sheet show];
 }
-- (void)openOperate:(int)index {
+- (void)deleteFeed {
+    YCommonAlertView *alert = [[YCommonAlertView alloc] initWithTitle:nil message:@"是否确认删除？" buttonTitles:@"确认",@"取消", nil];
+    [alert clickedButtonHandler:^(NSInteger index) {
+        [alert hide];
+        if (index == 0) {
+            [[FeedManager sharedInstance] deleteFeed:_feedId block:^(YActionMessage *message) {
+                if (message.isSuccess) {
+                    [YUtils showTitle:@"删除成功"];
+                    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                        [self.parent.navigationController popViewControllerAnimated:true];
+                    });
+                } else {
+                    [YUtils showTitle:message.desc];
+                }
+            }];
+        }
+    }];
+    [alert show];
+}
+- (void)openOperate:(int)commentIndex {
     YActionSheetItem *item = [YActionSheetItem itemWithTitle:@"删除"
                                                          type:YCommonActionSheetItemTypeCommon
                                                         block:^(NSInteger checkNum) {
-                                                            
+                                                            [self dealComment:commentIndex];
                                                         }];
     YCommonActionSheet *sheet = [[YCommonActionSheet alloc] initWithType:@[item] title:nil];
     [sheet show];
 }
-- (void)openAuthorOperate:(int)index {
+- (void)openAuthorOperate:(int)commentIndex {
     YActionSheetItem *item1 = [YActionSheetItem itemWithTitle:@"回复"
                                                         type:YCommonActionSheetItemTypeCommon
                                                        block:^(NSInteger checkNum) {
-                                                           
+                                                           [self openReply:commentIndex];
                                                        }];
     YActionSheetItem *item2 = [YActionSheetItem itemWithTitle:@"删除"
                                                         type:YCommonActionSheetItemTypeCommon
                                                        block:^(NSInteger checkNum) {
-                                                           
+                                                           [self dealComment:commentIndex];
                                                        }];
     YCommonActionSheet *sheet = [[YCommonActionSheet alloc] initWithType:@[item1, item2] title:nil];
     [sheet show];
+}
+- (void)dealComment:(int)commentIndex {
+    YCommonAlertView *alert = [[YCommonAlertView alloc] initWithTitle:nil message:@"是否确认删除该评论？" buttonTitles:@"确认",@"取消", nil];
+    [alert clickedButtonHandler:^(NSInteger index) {
+        [alert hide];
+        if (index == 0) {
+            CommentListItems *cmt = _commentListArray[commentIndex];
+            [[FeedManager sharedInstance] deleteComment:[NSString stringWithFormat:@"%d", (int)cmt.comment.commentIdentifier] block:^(YActionMessage *message) {
+                if (message.isSuccess) {
+                    [_commentListArray removeObjectAtIndex:commentIndex];
+                    [self reloadData];
+                } else {
+                    [YUtils showTitle:message.desc];
+                }
+            }];
+        }
+    }];
+    [alert show];
 }
 @end

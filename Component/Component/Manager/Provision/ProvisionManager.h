@@ -23,6 +23,10 @@ AS_SINGLETON(ProvisionManager);
 - (void)initProfileData;
 //获取个人信息
 - (ProfileInfo *)getProfile;
+//增加feed提醒未读数
+- (void)addUnreadAlterCount:(NSInteger)addCount;
+//重置feed提醒未读数
+- (void)resetUnreadAlterCount:(NSInteger)allCount;
 //获取登录信息
 - (LoginResp *)getLoginInfo;
 //获取个人标签

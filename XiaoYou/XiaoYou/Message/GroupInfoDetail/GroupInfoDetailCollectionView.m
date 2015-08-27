@@ -91,7 +91,7 @@
         for (int i = 0; i < groupArr.count; i++)
         {
             Tags * tag = groupArr[i];
-            if ([[@(_headerModel.groupModelIdentifier) stringValue] isEqualToString: tag.internalBaseClassIdentifier])
+            if ([[@(_headerModel.internalBaseClassIdentifier) stringValue] isEqualToString: tag.internalBaseClassIdentifier])
             {
                 return _dataSourceArr.count + 1;
             }
