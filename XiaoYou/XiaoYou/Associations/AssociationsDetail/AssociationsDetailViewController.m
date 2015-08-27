@@ -22,7 +22,6 @@
 @property (nonatomic, strong) UIButton *addButton; //一键入社
 @property (nonatomic, strong) NSString *uid;//社团id
 @property (nonatomic, strong) GroupModel *groupModel;//详情
-@property (nonatomic, strong) NSDictionary *shareData;
 
 @end
 
@@ -47,17 +46,29 @@
 }
 //需要调用之前设定好_shareData，参考XYGroupInfoDetailViewController
 - (void)onNavigationRightButtonClicked {
-    YActionSheetItem *item1 = [YActionSheetItem itemWithType:YCommonActionSheetItemTypeShareOrganization title:@"分享这社团至" extraData:_shareData];
+    if (nil != _groupModel) {
+        YActionSheetItem *item1 = [YActionSheetItem itemWithType:YCommonActionSheetItemTypeShareOrganization title:@"分享这社团至" extraData:@{@"name":_groupModel.groupName, @"content":_groupModel.internalBaseClassDescription, @"pic":_groupModel.groupIcon}];
+        
+        
+        YActionSheetItem *item2 = [YActionSheetItem itemWithTitle:@"举报"
+                                                             type:YCommonActionSheetItemTypeCommon
+                                                            block:^(NSInteger checkNum) {
+                                                                [YCommonReport report];
+                                                            }];
+        
+        YCommonActionSheet *sheet = [[YCommonActionSheet alloc] initWithType:@[item1, item2] title:nil];
+        [sheet show];
+    } else {
+        YActionSheetItem *item1 = [YActionSheetItem itemWithTitle:@"举报"
+                                                             type:YCommonActionSheetItemTypeCommon
+                                                            block:^(NSInteger checkNum) {
+                                                                [YCommonReport report];
+                                                            }];
+        
+        YCommonActionSheet *sheet = [[YCommonActionSheet alloc] initWithType:@[item1] title:nil];
+        [sheet show];
+    }
     
-    
-    YActionSheetItem *item2 = [YActionSheetItem itemWithTitle:@"举报"
-                                                         type:YCommonActionSheetItemTypeCommon
-                                                        block:^(NSInteger checkNum) {
-                                                            [YCommonReport report];
-                                                        }];
-    
-    YCommonActionSheet *sheet = [[YCommonActionSheet alloc] initWithType:@[item1, item2] title:nil];
-    [sheet show];
 }
 
 - (void)initView {
