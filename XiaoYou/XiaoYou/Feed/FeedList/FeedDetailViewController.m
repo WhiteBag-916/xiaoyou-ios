@@ -78,7 +78,6 @@
     _chatToolBar.faceButton.originX = _chatToolBar.moreButton.originX;
 }
 
-
 -(void)keyBoardHidden
 {
     _replyId = nil;
