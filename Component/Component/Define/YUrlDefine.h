@@ -135,6 +135,10 @@
 #define api_friend_IgnoreApplyList @"/friend/ignoreApplyList"
 //同意好友申请
 #define api_friend_AgreeApply @"/friend/agreeApply"
+//删除联系人
+#define api_user_delLinkMan @"/user/v2/delLinkMan"
+//社长删除社团成员
+#define api_group_deleteGroupUser @"/group/deleteGroupUser"
 
 /**********************************************************
  Url Define: MessageManager

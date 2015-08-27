@@ -6,6 +6,8 @@
 //  Copyright (c) 2015年 xc. All rights reserved.
 //
 
+#import "ConvertToCommonEmoticonsHelper.h"
+#import "RobotManager.h"
 #import "ApplySuccessSystemMessageTableViewCell.h"
 
 #define kHeadImageViewHeightAndWidth        40
@@ -25,6 +27,8 @@ NSString *const kApplySuccessSystemMessageTableViewCell = @"ApplySuccessSystemMe
 @property(nonatomic,strong)UILabel * contentLabel;
 @property(nonatomic,strong)UIButton * chatButton;
 
+@property(nonatomic,strong)UILabel * defaultLabel;
+
 @end
 
 @implementation ApplySuccessSystemMessageTableViewCell
@@ -43,6 +47,17 @@ NSString *const kApplySuccessSystemMessageTableViewCell = @"ApplySuccessSystemMe
             make.left.mas_equalTo(2*kPaddingDistance);
             make.width.height.mas_equalTo(kHeadImageViewHeightAndWidth);
         }];
+        
+        //defaultLabel
+        _defaultLabel = [[UILabel alloc] init];
+        _defaultLabel.textAlignment = NSTextAlignmentCenter;
+        _defaultLabel.textColor = [UIColor whiteColor];
+        [self.contentView addSubview:_defaultLabel];
+//        [_defaultLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+//            make.top.mas_equalTo(_headImageView.mas_top).offset(kClassLabelDistance);
+//            make.left.mas_equalTo(_headImageView.mas_left).offset(kClassLabelDistance);
+//            make.width.height.mas_equalTo(kClassLabelWidthAndHeight);
+//        }];
         
         _backImageView = [[UIImageView alloc] init];
         _backImageView.image = [[UIImage imageNamed:@"chat_receiver_bg"] resizableImageWithCapInsets:UIEdgeInsetsMake(20, 24, 30, 24) resizingMode:UIImageResizingModeStretch];;
@@ -87,14 +102,63 @@ NSString *const kApplySuccessSystemMessageTableViewCell = @"ApplySuccessSystemMe
     return self;
 }
 
--(void)setCellInfo:(NSDictionary *) dic
-{
-    _contentLabel.text = dic[@"text"];
-}
 
 -(void)tapChatButton
 {
     NSLog(@"进入群聊");
+}
+
+-(void)setCellInfo:(EMMessage *) message
+{
+    _contentLabel.text = [self subTitleMessageByConversation:message];
+    _chatButton.backgroundColor = [UIColor clearColor];
+    if ([message.ext[@"group_icon"] isEqualToString:@""])
+    {
+        _headImageView.backgroundColor = [UIColor hexChangeFloat:@"258f74"];
+    }
+    else
+    {
+        [_headImageView setFaceImageWithUrl:message.ext[@"group_icon"]];
+    }
+    
+}
+
+// 得到最后消息文字或者类型
+-(NSString *)subTitleMessageByConversation:(EMMessage *)model
+{
+    NSString *ret = @"";
+    EMMessage *lastMessage = model;
+    if (lastMessage) {
+        id<IEMMessageBody> messageBody = lastMessage.messageBodies.lastObject;
+        switch (messageBody.messageBodyType) {
+            case eMessageBodyType_Image:{
+                ret = NSLocalizedString(@"[图片]", @"[image]");
+            } break;
+            case eMessageBodyType_Text:{
+                // 表情映射。
+                NSString *didReceiveText = [ConvertToCommonEmoticonsHelper
+                                            convertToSystemEmoticons:((EMTextMessageBody *)messageBody).text];
+                if ([[RobotManager sharedInstance] isRobotMenuMessage:lastMessage]) {
+                    ret = [[RobotManager sharedInstance] getRobotMenuMessageDigest:lastMessage];
+                } else {
+                    ret = didReceiveText;
+                }
+            } break;
+            case eMessageBodyType_Voice:{
+                ret = NSLocalizedString(@"[语音]", @"[voice]");
+            } break;
+            case eMessageBodyType_Location: {
+                ret = NSLocalizedString(@"[位置]", @"[location]");
+            } break;
+            case eMessageBodyType_Video: {
+                ret = NSLocalizedString(@"[视频]", @"[video]");
+            } break;
+            default: {
+            } break;
+        }
+    }
+    
+    return ret;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

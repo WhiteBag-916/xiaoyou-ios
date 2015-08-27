@@ -279,4 +279,28 @@ DEF_SINGLETON(ContactManager);
     }];
 }
 
+//删除联系人
+- (void)delLinkMan:(NSString *)delUids block:(ActionCompleteBlock)block {
+    CommonAction* action = [[CommonAction alloc] init];
+    action.parameter = [YUtils getParameter:@{@"delUids":delUids} needUserToken:YES];
+    action.url = [YUtils getUrl:api_user_delLinkMan];
+    
+    [YAction startAction:action completionBlock:^(YActionMessage* message) {
+        //主线程处理界面
+        block(message);
+    }];
+}
+
+//社长删除社团成员
+- (void)deleteGroupUser:(NSString *)groupId deleteUserIds:(NSString *)deleteUserIds block:(ActionCompleteBlock)block {
+    CommonAction* action = [[CommonAction alloc] init];
+    action.parameter = [YUtils getParameter:@{@"groupId":groupId, @"deleteUserIds":deleteUserIds} needUserToken:YES];
+    action.url = [YUtils getUrl:api_group_deleteGroupUser];
+    
+    [YAction startAction:action completionBlock:^(YActionMessage* message) {
+        //主线程处理界面
+        block(message);
+    }];
+}
+
 @end

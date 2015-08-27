@@ -13,6 +13,7 @@ extern NSString *const kMessageTableViewCell;
 @interface MessageTableViewCell : YTableViewCell
 
 @property(nonatomic,strong)NSDictionary * studentDic;
+@property (nonatomic,strong) EMConversation * conversation;
 
 -(void)setCellInfo:(id) dic;
 
