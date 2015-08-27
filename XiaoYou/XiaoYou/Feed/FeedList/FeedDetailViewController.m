@@ -55,7 +55,9 @@
 
 - (void)viewDidAppear:(BOOL)animated {
     [_feedDetailTable loadDataWithFeedId:_feedId];
-    [[FeedManager sharedInstance] readByFeed:_feedId block:nil];
+    [[FeedManager sharedInstance] readByFeed:_feedId block:^(YActionMessage *message) {
+        
+    }];
 }
 
 - (void)initTable {
