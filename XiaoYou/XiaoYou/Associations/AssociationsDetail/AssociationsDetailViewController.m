@@ -93,7 +93,9 @@
 - (void)pressAddButton {
     if ([_groupModel.groupStatus isEqualToString:@"3"]) {
         //进入群聊
-        [self.navigationController pushViewController:[[ChatViewController alloc] initWithChatter:_groupModel.thirdId isGroup:YES] animated:YES];
+        ChatViewController *chatViewController = [[ChatViewController alloc] initWithChatter:_groupModel.thirdId isGroup:YES];
+        chatViewController.studentDic = @{@"groupName":_groupModel.groupName, @"groupIcon":_groupModel.groupIcon,@"gid":[NSString stringWithFormat:@"%g", _groupModel.internalBaseClassIdentifier]};
+        [self.navigationController pushViewController:chatViewController animated:YES];
     } else {
         [YUtils showHUDWithTitle];
         //申请入社
