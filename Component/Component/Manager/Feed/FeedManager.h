@@ -65,4 +65,13 @@ AS_SINGLETON(FeedManager);
 //社团feed列表
 - (void)groupFeeds:(NSString *)lastId size:(NSInteger)size groupId:(NSString *)groupId block:(ActionCompleteBlock)block;
 
+//feed点赞人列表
+- (void)listPraisePeoples:(NSInteger)limitStart limitEnd:(NSInteger)limitEnd feedId:(NSString *)feedId block:(ActionCompleteBlock)block;
+
+//Feed评论删除
+- (void)deleteComment:(NSString *)commentId block:(ActionCompleteBlock)block;
+
+//feed删除
+- (void)deleteFeed:(NSString *)feedId block:(ActionCompleteBlock)block;
+
 @end

@@ -95,6 +95,12 @@
 #define api_group_groupDetailInfo @"/group/groupDetailInfo"
 //社团feed列表
 #define api_group_groupFeeds @"/group/groupFeeds"
+//feed点赞人列表
+#define api_feed_listPraisePeoples @"/feed/listPraisePeoples"
+//Feed评论删除
+#define api_feed_deleteComment @"/feed/comment/deleteComment"
+//feed删除
+#define api_feed_deleteFeed @"/feed/deleteFeed"
 
 /**********************************************************
  Url Define: ContactManager
