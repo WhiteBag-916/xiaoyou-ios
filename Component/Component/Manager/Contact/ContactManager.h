@@ -56,13 +56,13 @@ AS_SINGLETON(ContactManager);
 - (void)getFriendApplyList:(ActionCompleteBlock)block;
 
 //同意好友申请
-- (void)agreeFriendApply:(NSString *)applyId block:(ActionCompleteBlock)block;
+- (void)agreeFriendApply:(double)applyId block:(ActionCompleteBlock)block;
 
 //发送好友申请
 - (void)submitFriendApply:(NSString *)targetId block:(ActionCompleteBlock)block;
 
 //忽略好友申请
-- (void)ignoreFriendApply:(NSString *)applyIds block:(ActionCompleteBlock)block;
+- (void)ignoreFriendApply:(double)applyIds block:(ActionCompleteBlock)block;
 
 //获取群组详情
 - (void)groupDetail:(NSString *)groupId block:(ActionCompleteBlock)block;

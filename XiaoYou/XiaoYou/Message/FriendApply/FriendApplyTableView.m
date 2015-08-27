@@ -8,6 +8,7 @@
 
 #import "FriendApplyTableView.h"
 #import "FriendApplyTableViewCell.h"
+#import "ContactManager.h"
 
 @interface FriendApplyTableView ()<UITableViewDataSource,UITableViewDelegate>
 
@@ -23,6 +24,9 @@
     if (self) {
         self.dataSource = self;
         self.delegate = self;
+        self.separatorStyle = UITableViewCellSeparatorStyleNone;
+        
+        _dataSourceArr = [NSMutableArray array];
         
         [self registerClass:[FriendApplyTableViewCell class] forCellReuseIdentifier:kFriendApplyTableViewCell];
     }
@@ -35,57 +39,32 @@
     return YES;
 }
 
-- (BOOL)showFooterRefresh
-{
-    return YES;
-}
 - (void)loadData {
     [self beginLoadNewData];
 }
+
 - (void)loadNewData
 {
     [self sendRequest];
 }
 
 - (void)sendRequest {
-    //mod by xiongchen
-//    NSString *lastID;
-//    if (![self isHeaderRefresh]) {
-//        lastID = [NSString stringWithFormat:@"%g", [[_feedListArray.lastObject feed] feedIdentifier]];
-//    }
-//    [[FeedManager sharedInstance] feedList:lastID size:KPAGENUM queryCode:_filter block:^(YActionMessage *message) {
-//        if (message.isSuccess) {
-//            if ([self isHeaderRefresh]) {
-//                [_feedListArray removeAllObjects];
-//            }
-//            [self hiddenFooter:false];
-//            [_feedListArray addObjectsFromArray:message.object];
-//            if ([message.object count] < KPAGENUM) {
-//                [self showNoticeNoMoreData];
-//            }
-//            [self reloadData];
-//            
-//        } else {
-//            [YUtils showTitleOn:self title:message.desc];
-//        }
-//        if ([self isHeaderRefresh]) {
-//            [self stopLoadNewData];
-//        } else {
-//            [self stopLoadMoreData];
-//        }
-//    }];
+    [[ContactManager sharedInstance] getFriendApplyList:^(YActionMessage *message) {
+        if (message.isSuccess) {
+            _dataSourceArr = [NSMutableArray arrayWithArray:message.object];
+            [self reloadData];
+        } else {
+            [YUtils showTitleOn:self title:message.desc];
+        }
+        
+        [self stopLoad];
+    }];
 }
 
 -(void)refreshTableView:(NSMutableArray *) dataSouceArr
 {
     _dataSourceArr = dataSouceArr;
     [self reloadData];
-}
-
-
--(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
-    return 1;
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section

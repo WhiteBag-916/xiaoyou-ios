@@ -8,8 +8,13 @@
 
 #import "YTableView.h"
 
+@class YViewController;
+
 @interface FriendApplyTableView : YTableView
 
+@property (nonatomic, weak) YViewController *superVC;
+
+- (void)loadData;
 
 -(void)refreshTableView:(NSMutableArray *) dataSouceArr;
 

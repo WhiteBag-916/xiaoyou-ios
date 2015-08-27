@@ -29,16 +29,6 @@
     [self setUpUI];
 }
 
--(void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
-    
-    [[ContactManager sharedInstance] getFriendApplyList:^(YActionMessage *message) {
-        _dataSourceArr = [[NSMutableArray alloc] initWithArray:message.object];
-        [_friendApplyTableView refreshTableView:_dataSourceArr];
-    }];
-}
-
 -(void)setUpUI
 {
     self.title = @"好友申请";
@@ -46,12 +36,15 @@
     [self showCustomNavigationMoreButton];
     
     _friendApplyTableView = [[FriendApplyTableView alloc] init];
+    _friendApplyTableView.superVC = self;
     _friendApplyTableView.backgroundColor = [UIColor clearColor];
     [self.view addSubview:_friendApplyTableView];
     
     [_friendApplyTableView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.left.right.bottom.mas_equalTo(0);
     }];
+    
+    [_friendApplyTableView loadData];
     
 }
 
