@@ -66,14 +66,27 @@
     }];
     
     _bottomButton = [[UIButton alloc] init];
-    [_bottomButton setBackgroundImage:[UIImage imageNamed:@"contacts_bottom"] forState:UIControlStateNormal];    [_bottomButton setTitle:@"聊聊呗" forState:UIControlStateNormal];
     [_bottomButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    [_bottomButton addTarget:self action:@selector(clickBottomButton) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:_bottomButton];
+    
+    if ([[ContactManager sharedInstance] isFriendRelationShip:_uid])
+    {
+        _studentDic = [[[ContactManager sharedInstance] getFriendInfo:_uid] dictionaryRepresentation];
+        [_bottomButton addTarget:self action:@selector(clickBottomButton) forControlEvents:UIControlEventTouchUpInside];
+        [_bottomButton setTitle:@"聊聊呗" forState:UIControlStateNormal];
+        [_bottomButton setBackgroundImage:[UIImage imageNamed:@"contacts_bottom"] forState:UIControlStateNormal];
+    }
+    else
+    {
+        [_bottomButton setTitle:@"你们还不是好友" forState:UIControlStateNormal];
+        _bottomButton.backgroundColor = [UIColor grayColor];
+    }
+    
     [_bottomButton mas_makeConstraints:^(MASConstraintMaker *make) {
         make.bottom.left.right.mas_equalTo(0);
         make.height.mas_equalTo(KTabBarheight);
     }];
+    
 }
 
 -(void)clickBottomButton

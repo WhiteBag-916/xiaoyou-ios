@@ -1610,7 +1610,9 @@
     [self.view endEditing:YES];
     if (self.conversationType == eConversationTypeGroupChat) {
         XYGroupInfoDetailViewController * groupVC = [[XYGroupInfoDetailViewController alloc] init];
-        [self.navigationController pushViewController:groupVC animated:YES];
+        groupVC.studentDic = _studentDic;
+        groupVC.gid = _studentDic[@"gid"];
+        [self.navigationController pushViewController:groupVC animated:YES needHiddenBottomBar:YES];
     }
 }
 

@@ -29,6 +29,8 @@ NSString *const kApplySuccessSystemMessageTableViewCell = @"ApplySuccessSystemMe
 
 @property(nonatomic,strong)UILabel * defaultLabel;
 
+@property (nonatomic,strong)NSDictionary * groupDic;
+
 @end
 
 @implementation ApplySuccessSystemMessageTableViewCell
@@ -106,11 +108,17 @@ NSString *const kApplySuccessSystemMessageTableViewCell = @"ApplySuccessSystemMe
 
 -(void)tapChatButton
 {
-    NSLog(@"进入群聊");
+    if (nil != _delegat && [_delegat respondsToSelector:@selector(turnToGroupChat:)]) {
+        [_delegat turnToGroupChat:_groupDic];
+    }
 }
 
 -(void)setCellInfo:(EMMessage *) message
 {
+    if (message.ext)
+    {
+        _groupDic = message.ext ;
+    }
     _contentLabel.text = [self subTitleMessageByConversation:message];
     _chatButton.backgroundColor = [UIColor clearColor];
     if ([message.ext[@"group_icon"] isEqualToString:@""])

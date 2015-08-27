@@ -12,8 +12,9 @@
 #import "EMMessage.h"
 #import "ConvertToCommonEmoticonsHelper.h"
 #import "RobotManager.h"
+#import "ChatViewController.h"
 
-@interface SystemMessageTableView ()<UITableViewDataSource,UITableViewDelegate>
+@interface SystemMessageTableView ()<UITableViewDataSource,UITableViewDelegate,ApplySuccessSystemMessageTableViewCellDelegat>
 
 @property(nonatomic,strong)NSMutableArray * dataSouceArr;
 
@@ -67,6 +68,7 @@
     else
     {
         ApplySuccessSystemMessageTableViewCell * cell = [self dequeueReusableCellWithIdentifier:kApplySuccessSystemMessageTableViewCell forIndexPath:indexPath];
+        cell.delegat = self;
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         [cell setCellInfo:_dataSouceArr[indexPath.row]];
         
@@ -155,5 +157,26 @@
     return ret;
 }
 
+#pragma mark - ApplySuccessSystemMessageTableViewCellDelegat
+
+-(void)turnToGroupChat:(NSDictionary *) groupDic
+{
+    ChatViewController * chatVC = [[ChatViewController alloc] initWithChatter:groupDic[@"third_code"] isGroup:YES];
+    chatVC.isSystemMessage = NO;
+    chatVC.studentDic = [self transformDic:groupDic];
+    [self.myController.navigationController pushViewController:chatVC animated:YES needHiddenBottomBar:YES];
+}
+
+-(NSDictionary *)transformDic:(NSDictionary *) dic
+{
+    NSString * gid = dic[@"group_id"];
+    NSString * groupName = dic[@"group_name"];
+    NSString * groupIcon = dic[@"group_icon"];
+    NSMutableDictionary * newDic = [[NSMutableDictionary alloc] initWithDictionary:dic];
+    [newDic setObject:gid forKey:@"gid"];
+    [newDic setObject:groupName forKey:@"groupName"];
+    [newDic setObject:groupIcon forKey:@"groupIcon"];
+    return newDic;
+}
 
 @end
