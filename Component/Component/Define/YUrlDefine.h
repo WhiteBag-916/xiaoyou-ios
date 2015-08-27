@@ -97,6 +97,8 @@
 #define api_group_groupDetailInfo @"/group/groupDetailInfo"
 //社团feed列表
 #define api_group_groupFeeds @"/group/groupFeeds"
+//社团点赞
+#define api_group_addPraise @"/group/addPraise"
 //feed点赞人列表
 #define api_feed_listPraisePeoples @"/feed/listPraisePeoples"
 //Feed评论删除

@@ -314,4 +314,16 @@ DEF_SINGLETON(FeedManager);
     }];
 }
 
+//社团点赞
+- (void)addGroupPraise:(NSString *)groupId block:(ActionCompleteBlock)block {
+    CommonAction *action = [[CommonAction alloc] init];
+    action.parameter = [YUtils getParameter:@{@"groupId":groupId} needUserToken:YES];
+    action.url = [YUtils getUrl:api_group_addPraise];
+    
+    [YAction startAction:action completionBlock:^(YActionMessage* message) {
+        //主线程处理界面
+        block(message);
+    }];
+}
+
 @end
