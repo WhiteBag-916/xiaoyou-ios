@@ -191,7 +191,7 @@ typedef enum : NSUInteger {
 
 -(void)setCellInfo:(NSDictionary *) dic
 {
-
+    
 }
 
 -(void)clickDealButton:(UIButton *) button

@@ -11,6 +11,7 @@
 
 @interface FriendApplyTableView ()<UITableViewDataSource,UITableViewDelegate>
 
+@property(nonatomic,strong)NSMutableArray * dataSourceArr;
 
 @end
 
@@ -30,6 +31,7 @@
 
 -(void)refreshTableView:(NSMutableArray *) dataSouceArr
 {
+    _dataSourceArr = dataSouceArr;
     [self reloadData];
 }
 
@@ -41,14 +43,14 @@
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 5;
+    return _dataSourceArr.count;
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
     FriendApplyTableViewCell * cell = [self dequeueReusableCellWithIdentifier:kFriendApplyTableViewCell forIndexPath:indexPath];
-    [cell setCellInfo:nil];
+    [cell setCellInfo:_dataSourceArr[indexPath.row]];
     
     return cell;
     

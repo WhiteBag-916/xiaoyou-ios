@@ -9,10 +9,13 @@
 #import "XYFriendApplyViewController.h"
 #import "FriendApplyTableView.h"
 #import "YCommonActionSheet.h"
+#import "ContactManager.h"
 
 @interface XYFriendApplyViewController ()
 
 @property(nonatomic,strong) FriendApplyTableView * friendApplyTableView;
+
+@property (nonatomic,strong) NSMutableArray * dataSourceArr;
 
 @end
 
@@ -23,6 +26,16 @@
     // Do any additional setup after loading the view.
     
     [self setUpUI];
+}
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    [[ContactManager sharedInstance] getFriendApplyList:^(YActionMessage *message) {
+        _dataSourceArr = [[NSMutableArray alloc] initWithArray:message.object];
+        [_friendApplyTableView refreshTableView:_dataSourceArr];
+    }];
 }
 
 -(void)setUpUI
@@ -56,15 +69,5 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end
