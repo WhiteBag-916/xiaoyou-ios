@@ -167,7 +167,7 @@
     [self.navigationController presentViewController:navigationController animated:YES completion:nil];
 }
 - (void)toFeedFilter:(NSNotification *)notification {
-    [self.navigationController pushViewController:[[FeedFilterViewController alloc] initWithFilter:[notification userInfo][@"filter"] name:[notification userInfo][@"name"]] animated:true];
+    [self.navigationController pushViewController:[[FeedFilterViewController alloc] initWithFilter:[notification userInfo][@"filter"] name:[notification userInfo][@"name"]] animated:true needHiddenBottomBar:YES];
 }
 - (void)onNavigationRightButtonClicked {
     UINavigationController *navigationController =
