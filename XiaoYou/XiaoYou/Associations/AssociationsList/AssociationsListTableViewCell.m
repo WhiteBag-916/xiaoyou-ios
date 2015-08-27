@@ -72,7 +72,6 @@ NSString *const kAssociationsListTableViewCell = @"AssociationsListTableViewCell
     
     //班
     _defaultLabel = [[UILabel alloc] init];
-    _defaultLabel.text = @"社";
     _defaultLabel.textAlignment = NSTextAlignmentCenter;
     _defaultLabel.textColor = [UIColor whiteColor];
     [_headImageView addSubview:_defaultLabel];

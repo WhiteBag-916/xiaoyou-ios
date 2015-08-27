@@ -52,12 +52,13 @@ NSString *const kApplySuccessSystemMessageTableViewCell = @"ApplySuccessSystemMe
         _defaultLabel = [[UILabel alloc] init];
         _defaultLabel.textAlignment = NSTextAlignmentCenter;
         _defaultLabel.textColor = [UIColor whiteColor];
+        _defaultLabel.backgroundColor = [UIColor clearColor];
         [self.contentView addSubview:_defaultLabel];
-//        [_defaultLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-//            make.top.mas_equalTo(_headImageView.mas_top).offset(kClassLabelDistance);
-//            make.left.mas_equalTo(_headImageView.mas_left).offset(kClassLabelDistance);
-//            make.width.height.mas_equalTo(kClassLabelWidthAndHeight);
-//        }];
+        [_defaultLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.top.mas_equalTo(3*kPaddingDistance);
+            make.left.mas_equalTo(2*kPaddingDistance);
+            make.width.height.mas_equalTo(kHeadImageViewHeightAndWidth);
+        }];
         
         _backImageView = [[UIImageView alloc] init];
         _backImageView.image = [[UIImage imageNamed:@"chat_receiver_bg"] resizableImageWithCapInsets:UIEdgeInsetsMake(20, 24, 30, 24) resizingMode:UIImageResizingModeStretch];;
@@ -115,6 +116,7 @@ NSString *const kApplySuccessSystemMessageTableViewCell = @"ApplySuccessSystemMe
     if ([message.ext[@"group_icon"] isEqualToString:@""])
     {
         _headImageView.backgroundColor = [UIColor hexChangeFloat:@"258f74"];
+        _defaultLabel.text = message.ext[@"group_name"];
     }
     else
     {

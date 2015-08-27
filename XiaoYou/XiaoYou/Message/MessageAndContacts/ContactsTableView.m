@@ -312,24 +312,24 @@
     return YES;
 }
 
--(UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    return UITableViewCellEditingStyleDelete;
-}
+//-(UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath
+//{
+//    return UITableViewCellEditingStyleDelete;
+//}
 
--(NSString *)tableView:(UITableView *)tableView titleForDeleteConfirmationButtonForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    return @"删除";
-}
--(void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (editingStyle == UITableViewCellEditingStyleDelete)
-    {
-        self.deleteIndexPathOfCell = indexPath;
-        UIAlertView * alertView = [[UIAlertView alloc] initWithTitle:@"确定删除此人？" message:nil delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
-        [alertView show];
-    }
-}
+//-(NSString *)tableView:(UITableView *)tableView titleForDeleteConfirmationButtonForRowAtIndexPath:(NSIndexPath *)indexPath
+//{
+//    return @"删除";
+//}
+//-(void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+//{
+//    if (editingStyle == UITableViewCellEditingStyleDelete)
+//    {
+//        self.deleteIndexPathOfCell = indexPath;
+//        UIAlertView * alertView = [[UIAlertView alloc] initWithTitle:@"确定删除此人？" message:nil delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
+//        [alertView show];
+//    }
+//}
 
 -(NSArray *)sectionIndexTitlesForTableView:(UITableView *)tableView
 {
@@ -360,29 +360,29 @@
     
 }
 
-#pragma mark - UIAlterViewDelegate
-
--(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
-{
-    if (buttonIndex == 1)
-    {
-        YLogD(@"contactDelete");
-        YLogD(@"%@",self.deleteIndexPathOfCell);
-        ContactsTableViewCell * cell = (ContactsTableViewCell *)[self cellForRowAtIndexPath:self.deleteIndexPathOfCell];
-        
-        for (LinkManList * obj in _linkManModel.linkManList) {
-            if ([cell.studentDic[@"thirdCode"] isEqualToString:obj.thirdCode])
-            {
-                NSMutableArray * linkManArr = [[NSMutableArray alloc] initWithArray:_linkManModel.linkManList];
-                [linkManArr removeObject:obj];
-                _linkManModel.linkManList = [[NSArray alloc] initWithArray:linkManArr];
-                [self refreshTableView:_linkManModel];
-             
-                [[ContactManager sharedInstance] saveContactsList:_linkManModel];
-            }
-        }
-      
-    }
-}
+//#pragma mark - UIAlterViewDelegate
+//
+//-(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+//{
+//    if (buttonIndex == 1)
+//    {
+//        YLogD(@"contactDelete");
+//        YLogD(@"%@",self.deleteIndexPathOfCell);
+//        ContactsTableViewCell * cell = (ContactsTableViewCell *)[self cellForRowAtIndexPath:self.deleteIndexPathOfCell];
+//        
+//        for (LinkManList * obj in _linkManModel.linkManList) {
+//            if ([cell.studentDic[@"thirdCode"] isEqualToString:obj.thirdCode])
+//            {
+//                NSMutableArray * linkManArr = [[NSMutableArray alloc] initWithArray:_linkManModel.linkManList];
+//                [linkManArr removeObject:obj];
+//                _linkManModel.linkManList = [[NSArray alloc] initWithArray:linkManArr];
+//                [self refreshTableView:_linkManModel];
+//             
+//                [[ContactManager sharedInstance] saveContactsList:_linkManModel];
+//            }
+//        }
+//      
+//    }
+//}
 
 @end
