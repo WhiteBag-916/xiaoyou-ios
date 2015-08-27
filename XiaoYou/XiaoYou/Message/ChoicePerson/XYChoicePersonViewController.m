@@ -111,6 +111,7 @@
             
         }
     }];
+    
     if (sendPersonsArr.count > 0)
     {
         if ([[self superType] isEqualToString:kXYGroupInfoDetailViewController])
