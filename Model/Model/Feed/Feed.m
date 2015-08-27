@@ -22,7 +22,6 @@ NSString *const kFeedCreateTimeMiles = @"createTimeMiles";
 NSString *const kFeedSendId = @"sendId";
 NSString *const kFeedContent = @"content";
 NSString *const kFeedIsPraise = @"isPraise";
-NSString *const kFeedTagsCommon = @"tagsCommon";
 
 @interface Feed ()
 
@@ -46,7 +45,6 @@ NSString *const kFeedTagsCommon = @"tagsCommon";
 @synthesize sendId = _sendId;
 @synthesize content = _content;
 @synthesize isPraise = _isPraise;
-@synthesize tagsCommon = _tagsCommon;
 
 + (instancetype)modelObjectWithDictionary:(NSDictionary *)dict
 {
@@ -74,20 +72,6 @@ NSString *const kFeedTagsCommon = @"tagsCommon";
             self.sendId = [self objectOrNilForKey:kFeedSendId fromDictionary:dict];
             self.content = [self objectOrNilForKey:kFeedContent fromDictionary:dict];
         self.isPraise = [[self objectOrNilForKey:kFeedIsPraise fromDictionary:dict] boolValue];
-        
-        NSObject *receivedTagsCommon = [dict objectForKey:kFeedTagsCommon];
-        NSMutableArray *parsedTagsCommon = [NSMutableArray array];
-        if ([receivedTagsCommon isKindOfClass:[NSArray class]]) {
-            for (NSDictionary *item in (NSArray *)receivedTagsCommon) {
-                if ([item isKindOfClass:[NSDictionary class]]) {
-                    [parsedTagsCommon addObject:[Tags modelObjectWithDictionary:item]];
-                }
-            }
-        } else if ([receivedTagsCommon isKindOfClass:[NSDictionary class]]) {
-            [parsedTagsCommon addObject:[Tags modelObjectWithDictionary:(NSDictionary *)receivedTagsCommon]];
-        }
-        
-        self.tagsCommon = [NSArray arrayWithArray:parsedTagsCommon];
 
     }
     
@@ -112,18 +96,6 @@ NSString *const kFeedTagsCommon = @"tagsCommon";
     [mutableDict setValue:self.sendId forKey:kFeedSendId];
     [mutableDict setValue:self.content forKey:kFeedContent];
     [mutableDict setValue:[NSNumber numberWithBool:self.isPraise] forKey:kFeedIsPraise];
-    
-    NSMutableArray *tempArrayForTagsCommon = [NSMutableArray array];
-    for (NSObject *subArrayObject in self.tagsCommon) {
-        if([subArrayObject respondsToSelector:@selector(dictionaryRepresentation)]) {
-            // This class is a model object
-            [tempArrayForTagsCommon addObject:[subArrayObject performSelector:@selector(dictionaryRepresentation)]];
-        } else {
-            // Generic object
-            [tempArrayForTagsCommon addObject:subArrayObject];
-        }
-    }
-    [mutableDict setValue:[NSArray arrayWithArray:tempArrayForTagsCommon] forKey:kFeedTagsCommon];
 
     return [NSDictionary dictionaryWithDictionary:mutableDict];
 }
@@ -161,7 +133,6 @@ NSString *const kFeedTagsCommon = @"tagsCommon";
     self.sendId = [aDecoder decodeObjectForKey:kFeedSendId];
     self.content = [aDecoder decodeObjectForKey:kFeedContent];
     self.isPraise = [aDecoder decodeBoolForKey:kFeedIsPraise];
-    self.tagsCommon = [aDecoder decodeObjectForKey:kFeedTagsCommon];
     
     return self;
 }
@@ -183,7 +154,6 @@ NSString *const kFeedTagsCommon = @"tagsCommon";
     [aCoder encodeObject:_sendId forKey:kFeedSendId];
     [aCoder encodeObject:_content forKey:kFeedContent];
     [aCoder encodeBool:_isPraise forKey:kFeedIsPraise];
-    [aCoder encodeObject:_tagsCommon forKey:kFeedTagsCommon];
     
 }
 
@@ -207,7 +177,6 @@ NSString *const kFeedTagsCommon = @"tagsCommon";
         copy.sendId = [self.sendId copyWithZone:zone];
         copy.content = [self.content copyWithZone:zone];
         copy.isPraise = self.isPraise;
-        copy.tagsCommon = [self.tagsCommon copyWithZone:zone];
         
     }
     
