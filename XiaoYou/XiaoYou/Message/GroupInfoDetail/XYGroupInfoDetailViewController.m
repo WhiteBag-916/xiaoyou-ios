@@ -51,7 +51,7 @@ NSString *const kXYGroupInfoDetailViewController = @"XYGroupInfoDetailViewContro
         if (message.object) {
             _model = message.object;
             [_groupInfoDetailCollectionView refreshTableView:message.object];
-             _shareData = @{@"name":_model.groupModel.groupName,@"content":_model.groupModel.schoolName,@"pic":_model.groupModel.groupIcon};
+             _shareData = @{@"name":_model.groupModel.groupName,@"content":_model.groupModel.internalBaseClassDescription,@"pic":_model.groupModel.groupIcon};
         }
     }];}
 
