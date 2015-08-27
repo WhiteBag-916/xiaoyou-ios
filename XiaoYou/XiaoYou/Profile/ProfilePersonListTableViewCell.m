@@ -83,7 +83,7 @@ NSString *const kProfilePersonListTableViewCell = @"kProfilePersonListTableViewC
         [self.contentView addSubview:_tagView];
         [_tagView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.equalTo(_userName);
-            make.top.equalTo(_genderLabel.mas_bottom).offset(KTAGMARGIN_TOP);
+            make.top.equalTo(_genderLabel.mas_bottom).offset(KTAGMARGIN_TOP).priorityLow();
             make.right.equalTo(self.contentView).offset(-KTAGMARGIN_RIGHT);
         }];
         [_tagView.tagContent mas_makeConstraints:^(MASConstraintMaker *make) {

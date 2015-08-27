@@ -54,11 +54,11 @@
 }
 
 - (void)viewDidAppear:(BOOL)animated {
-    [_feedDetailTable loadData];
+    [_feedDetailTable loadDataWithFeedId:_feedId];
 }
 
 - (void)initTable {
-    _feedDetailTable  = [[FeedDetailTableView alloc] initWithFeedId:_feedId];
+    _feedDetailTable  = [[FeedDetailTableView alloc] init];
     [self.view addSubview:_feedDetailTable];
     _feedDetailTable.parent = self;
     [_feedDetailTable mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -77,7 +77,6 @@
     _chatToolBar.inputTextView.originX = _chatToolBar.styleChangeButton.originX;
     _chatToolBar.faceButton.originX = _chatToolBar.moreButton.originX;
 }
-
 
 -(void)keyBoardHidden
 {
@@ -99,7 +98,7 @@
             _replyId = nil;
             _chatToolBar.inputTextView.placeHolder = @"您老人家说两句呗";
             [_chatToolBar endEditing:YES];
-            [_feedDetailTable loadData];
+            [_feedDetailTable loadDataWithFeedId:_feedId];
         }];
     } else {
         [[FeedManager sharedInstance] addReply:_feedId content:text toUserId:_replyId block:^(YActionMessage *message) {
@@ -109,7 +108,7 @@
             _replyId = nil;
             _chatToolBar.inputTextView.placeHolder = @"您老人家说两句呗";
             [_chatToolBar endEditing:YES];
-            [_feedDetailTable loadData];
+            [_feedDetailTable loadDataWithFeedId:_feedId];
         }];
     }
 }
