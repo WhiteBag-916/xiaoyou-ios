@@ -98,7 +98,7 @@
             _replyId = nil;
             _chatToolBar.inputTextView.placeHolder = @"您老人家说两句呗";
             [_chatToolBar endEditing:YES];
-            [_feedDetailTable loadDataWithFeedId:_feedId];
+            [_feedDetailTable refresh];
         }];
     } else {
         [[FeedManager sharedInstance] addReply:_feedId content:text toUserId:_replyId block:^(YActionMessage *message) {
@@ -108,7 +108,7 @@
             _replyId = nil;
             _chatToolBar.inputTextView.placeHolder = @"您老人家说两句呗";
             [_chatToolBar endEditing:YES];
-            [_feedDetailTable loadDataWithFeedId:_feedId];
+            [_feedDetailTable refresh];
         }];
     }
 }
