@@ -24,6 +24,9 @@
 #import "Feed.h"
 #import "ListPraisePeoplesAction.h"
 #import "ListCommentAction.h"
+#import "ReadByFeedAction.h"
+#import "ReadFeedCount.h"
+#import "ProvisionManager.h"
 
 #define KFeedManagerSyncQueue @"kFeedManagerSyncQueue"
 
@@ -193,11 +196,16 @@ DEF_SINGLETON(FeedManager);
 
 //删除关于一个feed的提醒
 - (void)readByFeed:(NSString *)affectId block:(ActionCompleteBlock)block {
-    CommonAction *action = [[CommonAction alloc] init];
-    action.parameter = [YUtils getParameter:@{@"affectId":affectId} needUserToken:YES needAddUserID:YES];
-    action.url = [YUtils getUrl:api_alert_readByFeed];
+    ReadByFeedAction *action = [[ReadByFeedAction alloc] init];
+    action.affectId = affectId;
     
     [YAction startAction:action completionBlock:^(YActionMessage* message) {
+        if (message.isSuccess) {
+            NSInteger readCount = [message.object delCount];
+            
+            [[ProvisionManager sharedInstance] delUnreadAlterCount:readCount];
+        }
+        
         //主线程处理界面
         block(message);
     }];

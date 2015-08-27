@@ -9,9 +9,23 @@
 #import "YManager.h"
 #import "YAction.h"
 
+extern NSString *const KSYSTEM_MESSAGEID;
+extern NSString *const KFRIEND_APPLYID;
+extern NSString *const KGROUP_APPLYID;
+
+
+typedef enum : NSUInteger {
+    SYSTEM_MESSAGE = 1,
+    FRIEND_APPLY,
+    GROUP_APPLY,
+    ADD_COMMENT,
+    ADD_PRAOSE,
+    REPLY_COMMENT,
+    REPLY_PRAOSE,
+} PUSH_Message_TYPE;
+
 @interface MessageManager : YManager<YManager>
 AS_SINGLETON(MessageManager);
-
 
 - (void)getMessageListData:(ActionCompleteBlock)block;
 

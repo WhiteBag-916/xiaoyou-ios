@@ -96,7 +96,6 @@
 {
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshMeesageRes:) name:kNotification_Refresh_Message object:nil];
     [self refreshDataSource];
-    [self registerNotifications];
     [self removeEmptyConversationsFromDB];
     [[MessageManager sharedInstance] setupUnreadMessageCount];
     
@@ -147,12 +146,11 @@
     NSMutableArray *conversations = [[NSMutableArray alloc] initWithArray:[[EaseMob sharedInstance].chatManager conversations]];
     
     for (EMConversation *conversation in conversations) {
-        _systemMessage = [conversation latestMessage];
-        NSLog(@"arr = %@",_systemMessage);
-        if ([conversation.chatter isEqualToString:@"000001"])
+        if ([conversation.chatter isEqualToString:KSYSTEM_MESSAGEID])
         {
             _systemMessage = [conversation latestMessage];
             [conversations removeObject:conversation];
+            break;
         }
     }
     
@@ -171,30 +169,7 @@
     return ret;
 }
 
-#pragma mark - IChatMangerDelegate
-
--(void)didUnreadMessagesCountChanged
-{
-    [self refreshDataSource];
-}
-
-- (void)didUpdateGroupList:(NSArray *)allGroups error:(EMError *)error
-{
-    [self refreshDataSource];
-}
-
-#pragma mark - registerNotifications
--(void)registerNotifications{
-    [self unregisterNotifications];
-    [[EaseMob sharedInstance].chatManager addDelegate:self delegateQueue:nil];
-}
-
--(void)unregisterNotifications{
-    [[EaseMob sharedInstance].chatManager removeDelegate:self];
-}
-
 - (void)dealloc{
-    [self unregisterNotifications];
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 

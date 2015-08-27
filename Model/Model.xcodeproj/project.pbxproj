@@ -17,6 +17,7 @@
 		20DA74BD1B8C0BFA0002E041 /* FriendsCondition.m in Sources */ = {isa = PBXBuildFile; fileRef = 20DA74BC1B8C0BFA0002E041 /* FriendsCondition.m */; };
 		20DA8B111B8EB7C0007D0CDE /* GroupFeedList.m in Sources */ = {isa = PBXBuildFile; fileRef = 20DA8B101B8EB7C0007D0CDE /* GroupFeedList.m */; };
 		20DA8B1A1B8EBD27007D0CDE /* GroupAllList.m in Sources */ = {isa = PBXBuildFile; fileRef = 20DA8B191B8EBD27007D0CDE /* GroupAllList.m */; };
+		20DA8B441B8F5E76007D0CDE /* ReadFeedCount.m in Sources */ = {isa = PBXBuildFile; fileRef = 20DA8B431B8F5E76007D0CDE /* ReadFeedCount.m */; };
 		20DBFD271B4FA0E5009134D0 /* libModel.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 20DBFD1B1B4FA0E5009134D0 /* libModel.a */; };
 		20DCB9581B8CA60800C758DE /* ApplicantList.m in Sources */ = {isa = PBXBuildFile; fileRef = 20DCB9571B8CA60800C758DE /* ApplicantList.m */; };
 		20E0BFFF1B88B0CA00EDAED4 /* UploadImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 20E0BFFE1B88B0CA00EDAED4 /* UploadImage.m */; };
@@ -87,6 +88,8 @@
 		20DA8B101B8EB7C0007D0CDE /* GroupFeedList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroupFeedList.m; sourceTree = "<group>"; };
 		20DA8B181B8EBD27007D0CDE /* GroupAllList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroupAllList.h; sourceTree = "<group>"; };
 		20DA8B191B8EBD27007D0CDE /* GroupAllList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroupAllList.m; sourceTree = "<group>"; };
+		20DA8B421B8F5E76007D0CDE /* ReadFeedCount.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReadFeedCount.h; sourceTree = "<group>"; };
+		20DA8B431B8F5E76007D0CDE /* ReadFeedCount.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReadFeedCount.m; sourceTree = "<group>"; };
 		20DBFD1B1B4FA0E5009134D0 /* libModel.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libModel.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		20DBFD261B4FA0E5009134D0 /* ModelTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ModelTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		20DBFD2C1B4FA0E5009134D0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -296,6 +299,8 @@
 		20E0C0691B88B0CA00EDAED4 /* Feed */ = {
 			isa = PBXGroup;
 			children = (
+				20DA8B421B8F5E76007D0CDE /* ReadFeedCount.h */,
+				20DA8B431B8F5E76007D0CDE /* ReadFeedCount.m */,
 				20DA8B181B8EBD27007D0CDE /* GroupAllList.h */,
 				20DA8B191B8EBD27007D0CDE /* GroupAllList.m */,
 				20DA8B0F1B8EB7C0007D0CDE /* GroupFeedList.h */,
@@ -407,6 +412,7 @@
 				20DCB9581B8CA60800C758DE /* ApplicantList.m in Sources */,
 				20E0C07F1B88B0CA00EDAED4 /* ClassList.m in Sources */,
 				20859A991B64C0BC00580ED3 /* ResultCommon.m in Sources */,
+				20DA8B441B8F5E76007D0CDE /* ReadFeedCount.m in Sources */,
 				333E95DF1B70B7650001059D /* SystemPushInfoListModel.m in Sources */,
 				20E0C06E1B88B0CA00EDAED4 /* Feed.m in Sources */,
 				20C5B0661B8DB55C00B4A8A8 /* GroupModel.m in Sources */,

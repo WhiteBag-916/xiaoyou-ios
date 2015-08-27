@@ -50,12 +50,13 @@
     [SlideNavigationController sharedInstance].enableShadow = false;
     [SlideNavigationController sharedInstance].portraitSlideOffset = SCREEN_WIDTH * 0.3;
     [self showCustomNavigationPublishButton];
+
     [self initNotification];
-    
 }
 
 - (void)viewDidAppear:(BOOL)animated {
     [_feedListTableView loadData];
+    [self checkUnreadAlterCount];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -67,6 +68,15 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
+//查看是否有新消息提醒
+- (void)checkUnreadAlterCount {
+    int unreadCount = [[YShareData defaultData][kShareData_UnreadAlterCount] intValue];
+    if (unreadCount > 0) {
+        _menuButton.badgeValue = [NSString stringWithFormat:@"%i", unreadCount];
+    }else{
+        _menuButton.badgeValue = @"0";
+    }
+}
 
 - (void)initView
 {
@@ -121,6 +131,9 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(toNotifyView) name:kNotification_Push_Notify object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(toAddTag) name:kNotification_Push_AddTag object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(toFeedFilter:) name:kNotification_Push_FeedFilter object:nil];
+    [[NSNotificationCenter defaultCenter] addObserverForName:KNotification_Update_UnreadAlterCount object:nil queue:nil usingBlock:^(NSNotification *note) {
+        [self checkUnreadAlterCount];
+    }];
 }
 
 - (void)changeMenu {

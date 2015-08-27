@@ -23,6 +23,8 @@ AS_SINGLETON(ProvisionManager);
 - (void)initProfileData;
 //获取个人信息
 - (ProfileInfo *)getProfile;
+//减少feed提醒未读数
+- (void)delUnreadAlterCount:(NSInteger)delCount;
 //增加feed提醒未读数
 - (void)addUnreadAlterCount:(NSInteger)addCount;
 //重置feed提醒未读数
