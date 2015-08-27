@@ -9,6 +9,7 @@
 #import "XYSystemMessageViewController.h"
 #import "SystemMessageTableView.h"
 #import "EMConversation.h"
+#import "MessageManager.h"
 
 @interface XYSystemMessageViewController ()
 
@@ -34,7 +35,7 @@
 {
     NSArray *conversations = [[[EaseMob sharedInstance] chatManager] conversations];
     for (EMConversation *conversation in conversations) {
-        if ([conversation.chatter isEqualToString:@"000001"])
+        if ([conversation.chatter isEqualToString:KSYSTEM_MESSAGEID])
         {
             _dataSource = [[NSMutableArray alloc] initWithArray:[conversation loadAllMessages]];
             // 设置当前conversation的所有message为已读

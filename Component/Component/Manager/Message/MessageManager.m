@@ -17,6 +17,8 @@
 #import <AudioToolbox/AudioToolbox.h>
 #import "EMTextMessageBody.h"
 #import "YSystemDefine.h"
+#import "EMConversation.h"
+#import "ProvisionManager.h"
 
 #define kMessageManagerSyncQueue @"kMessageManagerSyncQueue"
 //两次提示的默认间隔
@@ -25,16 +27,15 @@ static NSString *kMessageType = @"MessageType";
 static NSString *kConversationChatter = @"ConversationChatter";
 static NSString *kGroupName = @"GroupName";
 
-typedef enum : NSUInteger {
-    SYSTEM_MESSAGE = 1,
-    FRIEND_APPLY,
-    GROUP_APPLY,
-} PUSH_Message_TYPE;
+NSString *const KSYSTEM_MESSAGEID = @"100001";//系统消息
+NSString *const KFRIEND_APPLYID = @"100002";//好友申请
+NSString *const KGROUP_APPLYID = @"100003";//社团申请，ID累加
 
 
 @interface MessageManager ()<EMChatManagerDelegate>
 
 @property (strong, nonatomic) NSDate *lastPlaySoundDate;
+@property (nonatomic, strong) NSMutableArray *grouArray;//现有的group
 
 @end
 
@@ -45,6 +46,7 @@ DEF_SINGLETON(MessageManager);
 - (instancetype)init
 {
     if (self == [super init]) {
+        _grouArray = [NSMutableArray array];
     }
     return self;
 }
@@ -112,6 +114,9 @@ DEF_SINGLETON(MessageManager);
         if (!error && loginInfo) {
             YLogD(@"登陆成功");
             
+            //取群组id，进行管理
+            [self initGroupIdArray];
+            
             [[NSNotificationCenter defaultCenter] postNotificationName:kNotification_Refresh_Message object:nil userInfo:@{kNotification_Request_Message:loginInfo}];
         } else if (nil != error) {
             [[NSNotificationCenter defaultCenter] postNotificationName:kNotification_Refresh_Message object:nil userInfo:@{kNotification_Request_Error:error}];
@@ -121,34 +126,41 @@ DEF_SINGLETON(MessageManager);
     } onQueue:nil];
 }
 
+- (void)initGroupIdArray {
+    NSMutableArray *conversations = [[NSMutableArray alloc] initWithArray:[[EaseMob sharedInstance].chatManager conversations]];
+    NSMutableArray *groupIdArray = [@[] mutableCopy];
+    [conversations enumerateObjectsUsingBlock:^(EMConversation *obj, NSUInteger idx, BOOL *stop) {
+        NSDictionary *ext = obj.latestMessage.ext;
+        if (GROUP_APPLY == [ext[@"type"] integerValue]) {
+            //群组
+            [groupIdArray addObject:obj.chatter];
+            
+            [_grouArray addObject:@{@"group_id":ext[@"group_id"], @"chatter": obj.chatter}];
+        }
+    }];
+}
+
 -(void)didReceiveMessage:(EMMessage *)message
 {
-    if ([message.ext[@"server_flag"] boolValue])
+    //解析
+    NSDictionary *ext = message.ext;
+    
+    if ([ext[@"server_flag"] boolValue])
     {
         [[EaseMob sharedInstance].chatManager removeConversationByChatter:message.conversationChatter deleteMessages:YES append2Chat:NO];
-        
-        //解析
-        NSDictionary *ext = message.ext;
-        
-        
-//        EMTextMessageBody * body = message.messageBodies[0];
-//        NSString * jasonStr = body.text;
-//        NSData *data = [jasonStr dataUsingEncoding:NSUTF8StringEncoding];
-//        NSDictionary *dic2 = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
-//        NSLog(@"dic2 = %@",dic2);
         
         switch ([ext[@"type"] integerValue])
         {
             case SYSTEM_MESSAGE: {
                 YLogD(@"系统消息推送");
                 
-                message.conversationChatter = @"000001";
-                message.from = @"000001";
+                message.conversationChatter = KSYSTEM_MESSAGEID;
+                message.from = KSYSTEM_MESSAGEID;
                 //插入message
                 [[EaseMob sharedInstance].chatManager insertMessagesToDB:@[message]];
                 
                 //插入conversation
-                EMConversation *conversation = [[EaseMob sharedInstance].chatManager conversationForChatter:@"000001"
+                EMConversation *conversation = [[EaseMob sharedInstance].chatManager conversationForChatter:KSYSTEM_MESSAGEID
                                                                             conversationType:eConversationTypeChat];
                 [[EaseMob sharedInstance].chatManager insertConversationToDB:conversation append2Chat:YES];
                 
@@ -158,40 +170,66 @@ DEF_SINGLETON(MessageManager);
             case FRIEND_APPLY: {
                 YLogD(@"好友申请推送");
                 
-                message.conversationChatter = @"000002";
-                message.from = @"000002";
+                message.conversationChatter = KFRIEND_APPLYID;
+                message.from = KFRIEND_APPLYID;
                 //插入message
                 [[EaseMob sharedInstance].chatManager insertMessagesToDB:@[message]];
                 
                 //插入conversation
-                EMConversation *conversation = [[EaseMob sharedInstance].chatManager conversationForChatter:@"000002"
+                EMConversation *conversation = [[EaseMob sharedInstance].chatManager conversationForChatter:KFRIEND_APPLYID
                                                                                            conversationType:eConversationTypeChat];
                 [[EaseMob sharedInstance].chatManager insertConversationToDB:conversation append2Chat:YES];
                 break;
             }
             case GROUP_APPLY: {
                 YLogD(@"社团申请推送");
+                __block NSString *chatter;
+                //先判断是否存在
+                [_grouArray enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+                    if ([obj[@"group_id"] integerValue] == [ext[@"group_id"] integerValue]) {
+                        chatter = obj[@"chatter"];
+                        
+                        *stop = YES;
+                    }
+                }];
                 
-                message.conversationChatter = @"000003";
-                message.from = @"000003";
+                if ([SStr(chatter) isEmpty]) {
+                    chatter = [NSString stringWithFormat:@"%lu", [KGROUP_APPLYID integerValue]+_grouArray.count];
+                }
+                
+                message.conversationChatter = chatter;
+                message.from = chatter;
                 //插入message
                 [[EaseMob sharedInstance].chatManager insertMessagesToDB:@[message]];
                 
                 //插入conversation
-                EMConversation *conversation = [[EaseMob sharedInstance].chatManager conversationForChatter:@"000003"
+                EMConversation *conversation = [[EaseMob sharedInstance].chatManager conversationForChatter:chatter
                                                                                            conversationType:eConversationTypeChat];
                 [[EaseMob sharedInstance].chatManager insertConversationToDB:conversation append2Chat:YES];
                 break;
             }
-            default:
+            case ADD_COMMENT:
+            case ADD_PRAOSE:
+            case REPLY_COMMENT:
+            case REPLY_PRAOSE:
+            {
+                //其他提醒消息
+                [[ProvisionManager sharedInstance] addUnreadAlterCount:[ext[@"count"] integerValue]];
                 break;
+            }
+            default:
+            {
+                
+                break;
+            }
         }
-        
-        [[NSNotificationCenter defaultCenter] postNotificationName:kNotification_Refresh_Message object:nil userInfo:nil];
-        
     }
+    
     [message updateMessageExtToDB];
     
+    [[EaseMob sharedInstance].chatManager loadAllConversationsFromDatabaseWithAppend2Chat:NO];
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:kNotification_Refresh_Message object:nil userInfo:nil];
     
 #if !TARGET_IPHONE_SIMULATOR
     BOOL isAppActivity = [[UIApplication sharedApplication] applicationState] == UIApplicationStateActive;

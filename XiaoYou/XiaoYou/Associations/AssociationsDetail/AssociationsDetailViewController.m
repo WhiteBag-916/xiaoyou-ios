@@ -58,17 +58,7 @@
         
         YCommonActionSheet *sheet = [[YCommonActionSheet alloc] initWithType:@[item1, item2] title:nil];
         [sheet show];
-    } else {
-        YActionSheetItem *item1 = [YActionSheetItem itemWithTitle:@"举报"
-                                                             type:YCommonActionSheetItemTypeCommon
-                                                            block:^(NSInteger checkNum) {
-                                                                [YCommonReport report];
-                                                            }];
-        
-        YCommonActionSheet *sheet = [[YCommonActionSheet alloc] initWithType:@[item1] title:nil];
-        [sheet show];
     }
-    
 }
 
 - (void)initView {

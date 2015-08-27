@@ -16,10 +16,11 @@
 #import "ContactManager.h"
 #import "LinkManList.h"
 #import "ClassList.h"
+#import "MessageManager.h"
 
 #define kHeadWidthAndHeight            40
 #define kNameLabelWidth                80
-#define kTimeLabelWidth                60
+#define kTimeLabelWidth                80
 #define kHeadCornerRadius              20
 #define kPaddingDistance               10
 #define kLabelHeightDistacnce          14
@@ -57,8 +58,6 @@ NSString *const kMessageTableViewCell = @"MessageTableViewCellId";
     if (self) {
         //头像
         _headImageView = [[UIImageView alloc] init];
-        _headImageView.layer.cornerRadius = kHeadCornerRadius;
-        _headImageView.clipsToBounds = YES;
         _headImageView.backgroundColor = [UIColor clearColor];
         [self.contentView addSubview:_headImageView];
         [_headImageView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -75,6 +74,18 @@ NSString *const kMessageTableViewCell = @"MessageTableViewCellId";
             make.left.mas_equalTo(_headImageView.mas_left).offset(kClassLabelDistance);
             make.width.height.mas_equalTo(kClassLabelWidthAndHeight);
         }];
+        //时间
+        _timeLabel = [[UILabel alloc] init];
+        _timeLabel.font = CONTENT_FONT(9);
+        _timeLabel.textAlignment = NSTextAlignmentRight;
+        _timeLabel.backgroundColor = [UIColor clearColor];
+        [self.contentView addSubview:_timeLabel];
+        [_timeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.top.mas_equalTo(kPaddingDistance);
+            make.right.mas_equalTo(-kPaddingDistance);
+            make.width.mas_equalTo(kTimeLabelWidth);
+            make.height.mas_equalTo(kLabelHeightDistacnce);
+        }];
         //姓名
         _nameLabel = [[UILabel alloc] init];
         _nameLabel.font = CONTENT_FONT(14);
@@ -83,7 +94,7 @@ NSString *const kMessageTableViewCell = @"MessageTableViewCellId";
         [_nameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
             make.top.mas_equalTo(kPaddingDistance);
             make.left.equalTo(_headImageView.mas_right).offset(kPaddingDistance);
-            make.width.mas_equalTo(kNameLabelWidth);
+            make.right.equalTo(_timeLabel.mas_left).offset(-kPaddingDistance);
             make.height.mas_equalTo(kLabelHeightDistacnce);
         }];
         //消息数
@@ -99,18 +110,6 @@ NSString *const kMessageTableViewCell = @"MessageTableViewCellId";
             make.right.equalTo(self.contentView).offset(-kPaddingDistance);
             make.height.mas_equalTo(kLabelHeightDistacnce);
             make.width.mas_equalTo(kBadgeWidthDistance);
-        }];
-        //时间
-        _timeLabel = [[UILabel alloc] init];
-        _timeLabel.font = CONTENT_FONT(9);
-        _timeLabel.textAlignment = NSTextAlignmentRight;
-        _timeLabel.backgroundColor = [UIColor clearColor];
-        [self.contentView addSubview:_timeLabel];
-        [_timeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.top.mas_equalTo(kPaddingDistance);
-            make.right.mas_equalTo(-kPaddingDistance); 
-            make.width.mas_equalTo(kTimeLabelWidth);
-            make.height.mas_equalTo(kLabelHeightDistacnce);
         }];
         //消息
         _messageLabel = [[UILabel alloc] init];
@@ -140,29 +139,33 @@ NSString *const kMessageTableViewCell = @"MessageTableViewCellId";
 -(void)setCellInfo:(id) dic
 {
     _conversation = dic;
-    
-    if ([_conversation.chatter isEqualToString:@"000002"])
-    {
-        _nameLabel.text = @"好友申请";
-        _messageLabel.text = [self subTitleMessageByConversation:_conversation];
-        _headImageView.image = [UIImage imageNamed:@"friend-requests"];
-    }
-    else if([_conversation.chatter isEqualToString:@"000003"])
-    {
-        _nameLabel.text = [NSString stringWithFormat:@"[%@]社员加入申请",_conversation.latestMessage.ext[@"group_name"]];
-        _messageLabel.text = [self subTitleMessageByConversation:_conversation];
-        if ([_conversation.latestMessage.ext[@"group_icon"] isEqualToString:@""])
-        {
-            _headImageView.backgroundColor = [UIColor hexChangeFloat:@"258f74"];
-            _defaultLabel.text = [_conversation.latestMessage.ext[@"group_name"] substringWithRange:NSMakeRange(0, 1)];
+    _defaultLabel.hidden = YES;
+    _headImageView.layer.cornerRadius = kHeadCornerRadius;
+    _headImageView.clipsToBounds = YES;
+    NSDictionary *ext = _conversation.latestMessage.ext;
+    if ([ext[@"server_flag"] boolValue]) {
+        //非聊天消息
+        if (FRIEND_APPLY == [ext[@"type"] integerValue]) {
+            _nameLabel.text = @"好友申请";
+            _messageLabel.text = [self subTitleMessageByConversation:_conversation];
+            _headImageView.image = [UIImage imageNamed:@"friend-requests"];
+            _headImageView.layer.cornerRadius = 0;
+            _headImageView.clipsToBounds = NO;
+        } else if (GROUP_APPLY == [ext[@"type"] integerValue]) {
+            _nameLabel.text = [NSString stringWithFormat:@"[%@]社员加入申请",ext[@"group_name"]];
+            _messageLabel.text = [self subTitleMessageByConversation:_conversation];
+            if ([ext[@"group_icon"] isEqualToString:@""])
+            {
+                _headImageView.backgroundColor = [UIColor hexChangeFloat:@"258f74"];
+                _defaultLabel.text = [ext[@"group_name"] substringWithRange:NSMakeRange(0, 1)];
+                _defaultLabel.hidden = NO;
+            }
+            else
+            {
+                [_headImageView setNormalImageWithUrl:ext[@"group_icon"]];
+            }
         }
-        else
-        {
-            _headImageView.image = [UIImage imageNamed:_conversation.latestMessage.ext[@"group_icon"]];
-        }
-    }
-    else
-    {
+    } else {
         NSDictionary * userInfoDic = [self getUserInfo:_conversation];
         
         _studentDic = userInfoDic;
@@ -171,28 +174,25 @@ NSString *const kMessageTableViewCell = @"MessageTableViewCellId";
         
         //昵称
         //    _nameLabel.text = userInfoDic[@"name"];
-        _nameLabel.text = _conversation.latestMessage.ext[@"userName"];
+        _nameLabel.text = ext[@"userName"];
         
         
         //头像
-        [_headImageView setFaceImageWithUrl:_conversation.latestMessage.ext[@"headImage"]];
-        
-        //未读数
-        if (![[self unreadMessageCountByConversation:_conversation] isEqualToString:@"0"]) {
-            _badgeNumberLabel.hidden = NO;
-            _badgeNumberLabel.text = [self unreadMessageCountByConversation:_conversation];
-        }
-        else
-        {
-            _badgeNumberLabel.hidden = YES;
-        }
-        
+        [_headImageView setFaceImageWithUrl:ext[@"headImage"]];
     }
+    
+    //未读数
+    if (![[self unreadMessageCountByConversation:_conversation] isEqualToString:@"0"]) {
+        _badgeNumberLabel.hidden = NO;
+        _badgeNumberLabel.text = [self unreadMessageCountByConversation:_conversation];
+    }
+    else
+    {
+        _badgeNumberLabel.hidden = YES;
+    }
+    
     //时间
     _timeLabel.text = [self lastMessageTimeByConversation:_conversation];
-    
-    
-    
 }
 
 -(NSDictionary *)getUserInfo:(EMConversation *) conversation
