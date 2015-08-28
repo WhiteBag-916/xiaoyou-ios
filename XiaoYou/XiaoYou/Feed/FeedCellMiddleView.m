@@ -72,7 +72,7 @@
     }
     if ([inData isKindOfClass:[CommentListItems class]]) {
         CommentListItems *data = inData;
-        _contentLabel.text = data.comment.content;
+        _contentLabel.text = [ConvertToCommonEmoticonsHelper convertToSystemEmoticons:data.comment.content];
         if (data.replyUser.name.length != 0) {
             _contentLabel.text = [NSString stringWithFormat:@"回复%@:%@",data.replyUser.name, _contentLabel.text];
         }

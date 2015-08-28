@@ -72,15 +72,15 @@
     [self addSubview:indexLabel];
     
     // 2.保存按钮
-    UIButton *saveButton = [[UIButton alloc] init];
-    [saveButton setTitle:@"保存" forState:UIControlStateNormal];
-    [saveButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    saveButton.backgroundColor = [UIColor colorWithRed:0.1f green:0.1f blue:0.1f alpha:0.90f];
-    saveButton.layer.cornerRadius = 5;
-    saveButton.clipsToBounds = YES;
-    [saveButton addTarget:self action:@selector(saveImage) forControlEvents:UIControlEventTouchUpInside];
-    _saveButton = saveButton;
-    [self addSubview:saveButton];
+//    UIButton *saveButton = [[UIButton alloc] init];
+//    [saveButton setTitle:@"保存" forState:UIControlStateNormal];
+//    [saveButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+//    saveButton.backgroundColor = [UIColor colorWithRed:0.1f green:0.1f blue:0.1f alpha:0.90f];
+//    saveButton.layer.cornerRadius = 5;
+//    saveButton.clipsToBounds = YES;
+//    [saveButton addTarget:self action:@selector(saveImage) forControlEvents:UIControlEventTouchUpInside];
+//    _saveButton = saveButton;
+//    [self addSubview:saveButton];
 }
 
 - (void)saveImage
