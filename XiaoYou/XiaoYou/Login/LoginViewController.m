@@ -38,19 +38,11 @@
     _isCheckButton = YES;
     
     [self initView];
+    
+    _accountTextField.text = [YShareData defaultData][kShareData_StudentNo];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
-    _accountTextField.text = [YShareData defaultData][kShareData_StudentNo];
-#if DEBUG    
-    if (_accountTextField.text.length <= 0) {
-        _accountTextField.text = @"1234";
-        _passwordTextField.text = @"123123";
-    } else {
-        _passwordTextField.text = [NSString stringWithFormat:@"%@%@", _accountTextField.text, _accountTextField.text];
-    }
-#endif
-    
     [self resetRightButton];
 }
 
@@ -77,6 +69,7 @@
     _accountTextField = (YTextField *)[accountView viewWithTag:kLoginCommonTextFieldTag];
     [_accountTextField registerChanged:self action:@selector(textFieldValueChanged:)];
     _accountTextField.placeholder = @"学号";
+    _accountTextField.keyboardType = UIKeyboardTypeNumberPad;
     
     //passwordTextField
     _passwordTextField = (YTextField *)[passwordView viewWithTag:kLoginCommonTextFieldTag];
@@ -179,6 +172,8 @@
         [YUtils showTitle:@"您还没有输入学号"];
         return;
     }
+    
+    [self.view endEditing:YES];
     
     //展示提示
     YCommonAlertView *alert = [[YCommonAlertView alloc] initWithTitle:nil
