@@ -180,6 +180,8 @@
         return;
     }
     
+    [self.view endEditing:YES];
+    
     //展示提示
     YCommonAlertView *alert = [[YCommonAlertView alloc] initWithTitle:nil
                                                               message:@"需要重置密码吗"
