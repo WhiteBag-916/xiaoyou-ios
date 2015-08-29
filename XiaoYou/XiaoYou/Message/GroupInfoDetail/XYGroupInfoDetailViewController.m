@@ -109,7 +109,7 @@ NSString *const kXYGroupInfoDetailViewController = @"XYGroupInfoDetailViewContro
     YActionSheetItem *item3 = [YActionSheetItem itemWithTitle:@"举报"
                                                          type:YCommonActionSheetItemTypeCommon
                                                         block:^(NSInteger checkNum) {
-                                                            
+                                                            [YCommonReport report];
                                                         }];
     
     YCommonActionSheet *sheet = [[YCommonActionSheet alloc] initWithType:@[item1, item3] title:nil];

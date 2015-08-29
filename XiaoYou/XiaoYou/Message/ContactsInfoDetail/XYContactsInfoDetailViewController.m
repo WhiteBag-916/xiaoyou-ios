@@ -42,16 +42,12 @@
         }
     }];
     
-    [self showCustomNavigationBackButton];
-    
-    
 }
-
-
 
 -(void)setUpUI
 {
     self.title = @"详情";
+    [self showCustomNavigationBackButton];
     [self showCustomNavigationMoreButton];
     
     _contactsInfoDetailTableView = [[ContactsInfoDetailTableView alloc] init];
