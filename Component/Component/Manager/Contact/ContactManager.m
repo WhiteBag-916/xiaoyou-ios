@@ -50,6 +50,21 @@ DEF_SINGLETON(ContactManager);
     return self;
 }
 
+//通过id获取联系人
+- (LinkManList *)getManById:(NSString *)uid {
+    LinkManList *linkManList;
+    
+    for (LinkManList * obj in _linkManModel.linkManList) {
+        if ([uid isEqualToString:obj.uid])
+        {
+            linkManList = obj;
+            break;
+        }
+    }
+    
+    return linkManList;
+}
+
 //更新联系人的头像
 - (void)updateContactsHeadImageByThirdCode:(NSString *)thirdCode headImage:(NSString *)headImage {
     for (LinkManList * obj in _linkManModel.linkManList) {

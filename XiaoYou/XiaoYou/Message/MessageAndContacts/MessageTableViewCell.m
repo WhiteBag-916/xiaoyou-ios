@@ -181,12 +181,20 @@ NSString *const kMessageTableViewCell = @"MessageTableViewCellId";
         _messageLabel.text = [self subTitleMessageByConversation:_conversation];
         
         //昵称
-        //    _nameLabel.text = userInfoDic[@"name"];
-        _nameLabel.text = ext[@"userName"];
-        
+        NSString *name = userInfoDic[@"name"];
+        if (name.length > 0) {
+            _nameLabel.text = userInfoDic[@"name"];
+        } else {
+            _nameLabel.text = ext[@"userName"];
+        }
         
         //头像
-        [_headImageView setFaceImageWithUrl:ext[@"headImage"]];
+        NSString *url = userInfoDic[@"icon"];
+        if (url.length > 0) {
+            [_headImageView setFaceImageWithUrl:userInfoDic[@"icon"]];
+        } else {
+            [_headImageView setFaceImageWithUrl:ext[@"headImage"]];
+        }
     }
     
     //未读数

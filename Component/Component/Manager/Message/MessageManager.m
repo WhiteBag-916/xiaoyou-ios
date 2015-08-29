@@ -243,6 +243,15 @@ DEF_SINGLETON(MessageManager);
         }
     } else {
         needReload = YES;
+        
+        if (eMessageTypeGroupChat == message.messageType) {
+            //群聊
+            //更新头像
+            [[ContactManager sharedInstance] updateContactsHeadImageByThirdCode:message.groupSenderName headImage:message.ext[@"headImage"]];
+        } else if (eMessageTypeChat == message.messageType) {
+            //更新头像
+            [[ContactManager sharedInstance] updateContactsHeadImageByThirdCode:message.from headImage:message.ext[@"headImage"]];
+        }
     }
     
     if (needReload) {

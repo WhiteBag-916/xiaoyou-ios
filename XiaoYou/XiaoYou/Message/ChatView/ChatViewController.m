@@ -83,6 +83,9 @@
 @property (nonatomic) BOOL isPlayingAudio;
 @property (nonatomic) BOOL isKicked;
 @property (nonatomic) BOOL isRobot;
+
+@property (nonatomic, strong) UIImageView *headImageView;
+
 @end
 
 @implementation ChatViewController
@@ -245,31 +248,27 @@
     UIBarButtonItem *backItem = [[UIBarButtonItem alloc] initWithCustomView:backButton];
     [self.navigationItem setLeftBarButtonItem:backItem];
     
-    if (self.isChatGroup) {
-        self.title = _studentDic[@"name"];
-        UIImageView * headImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 40, 40)];
-        headImageView.layer.cornerRadius = 20;
-        headImageView.clipsToBounds = YES;
-        headImageView.userInteractionEnabled = YES;
-        [headImageView setFaceImageWithUrl:_conversation.latestMessage.ext[@"headImage"]];
-        UIButton *detailButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 60, 44)];
-        [detailButton addTarget:self action:@selector(showRoomContact:) forControlEvents:UIControlEventTouchUpInside];
-        [headImageView addSubview:detailButton];
-        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:headImageView];    }
-    else{
-        self.title = _studentDic[@"name"];
-        UIImageView * headImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 40, 40)];
-        headImageView.layer.cornerRadius = 20;
-        headImageView.clipsToBounds = YES;
-        headImageView.userInteractionEnabled = YES;
-        [headImageView setFaceImageWithUrl:_studentDic[@"icon"]];
-        UIButton *detailButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 40, 40)];
-//        [clearButton addTarget:self action:@selector(removeAllMessages:) forControlEvents:UIControlEventTouchUpInside];
-        [detailButton addTarget:self action:@selector(pushToDetailPage:) forControlEvents:UIControlEventTouchUpInside];
-        [headImageView addSubview:detailButton];
-        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:headImageView];
-        
+    self.title = _studentDic[@"name"];
+    _headImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 40, 40)];
+    _headImageView.layer.cornerRadius = 20;
+    _headImageView.clipsToBounds = YES;
+    _headImageView.userInteractionEnabled = YES;
+    NSString *url = _studentDic[@"icon"];
+    if (url > 0) {
+        [_headImageView setFaceImageWithUrl:url];
+    } else {
+        [_headImageView setFaceImageWithUrl:_conversation.latestMessage.ext[@"headImage"]];
     }
+    UIButton *detailButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 60, 44)];
+    
+    if (self.isChatGroup) {
+        [detailButton addTarget:self action:@selector(showRoomContact:) forControlEvents:UIControlEventTouchUpInside];
+    } else{
+        [detailButton addTarget:self action:@selector(pushToDetailPage:) forControlEvents:UIControlEventTouchUpInside];
+    }
+    
+    [_headImageView addSubview:detailButton];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:_headImageView];
 }
 
 - (void)didReceiveMemoryWarning
@@ -994,18 +993,12 @@
 }
 
 -(void)didReceiveMessage:(EMMessage *)message
-{
-    if (eMessageTypeGroupChat == message.messageType) {
-        //群聊
-        
-        //更新头像
-        [[ContactManager sharedInstance] updateContactsHeadImageByThirdCode:message.groupSenderName headImage:message.ext[@"headImage"]];
-    } else if (eMessageTypeChat == message.messageType) {
-        //更新头像
-        [[ContactManager sharedInstance] updateContactsHeadImageByThirdCode:message.from headImage:message.ext[@"headImage"]];
-    }
-    
+{    
     if ([_conversation.chatter isEqualToString:message.conversationChatter]) {
+        
+        [_studentDic setValue:message.ext[@"headImage"] forKey:@"icon"];
+        [_headImageView setFaceImageWithUrl:_studentDic[@"icon"]];
+        
         [self addMessage:message];
         if ([self shouldAckMessage:message read:NO])
         {
