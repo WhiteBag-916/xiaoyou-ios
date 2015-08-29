@@ -8,8 +8,13 @@
 
 #import "YViewController.h"
 
+typedef NS_ENUM(NSUInteger, ProfilePhoneChangeType) {
+    ProfilePhoneChangeTypeMod,          //修改密码
+    ProfilePhoneChangeTypeRegister      //注册
+};
+
 @interface ProfilePhoneChangeViewController : YViewController
 
-- (id)initWithType:(BOOL)hasPhone;
+- (id)initWithType:(ProfilePhoneChangeType)type hasPhone:(BOOL)hasPhone;
 
 @end
