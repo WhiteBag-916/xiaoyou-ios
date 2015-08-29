@@ -40,7 +40,7 @@
     [self initTable];
     [self initController];
     [self initToolBar];
-    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changeMode:) name:@"UITextInputCurrentInputModeDidChangeNotification" object:nil];
 }
 
 - (void)initController {
@@ -78,6 +78,7 @@
     _chatToolBar.styleChangeButton.hidden = true;
     _chatToolBar.inputTextView.width += _chatToolBar.inputTextView.originX - _chatToolBar.styleChangeButton.originX + _chatToolBar.faceButton.rightX - _chatToolBar.inputTextView.rightX;
     _chatToolBar.inputTextView.originX = _chatToolBar.styleChangeButton.originX;
+    _chatToolBar.inputTextView.delegate = self;
     _chatToolBar.faceButton.originX = _chatToolBar.moreButton.originX;
 }
 
@@ -87,7 +88,17 @@
     _chatToolBar.inputTextView.placeHolder = @"您老人家说两句呗";
     [_chatToolBar endEditing:YES];
 }
-
+- (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text {
+    if ([[[UITextInputMode currentInputMode] primaryLanguage] isEqualToString:@"emoji"]) {
+        return false;
+    }
+    return true;
+}
+-(void) changeMode:(NSNotification *)notification{
+    if ([[[UITextInputMode currentInputMode] primaryLanguage] isEqualToString:@"emoji"]) {
+        [YUtils showTitle:@"不支持emoji"];
+    }
+}
 - (void)onNavigationRightButtonClicked {
     [_feedDetailTable openTool];
 }
@@ -129,5 +140,8 @@
         return true;
     }
     return false;
+}
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 @end
