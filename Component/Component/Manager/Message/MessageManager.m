@@ -33,7 +33,7 @@ NSString *const KFRIEND_APPLYID = @"100002";//好友申请
 NSString *const KGROUP_APPLYID = @"100003";//社团申请，ID累加
 
 
-@interface MessageManager ()<EMChatManagerDelegate>
+@interface MessageManager ()<EMChatManagerChatDelegate>
 
 @property (strong, nonatomic) NSDate *lastPlaySoundDate;
 @property (nonatomic, strong) NSMutableArray *grouArray;//现有的group
@@ -142,6 +142,12 @@ DEF_SINGLETON(MessageManager);
         }
     }];
 }
+-(void)didReceiveCmdMessage:(EMMessage *)cmdMessage
+{
+    int i = 0;
+    NSLog(@"test");
+}
+
 
 -(void)didReceiveMessage:(EMMessage *)message
 {

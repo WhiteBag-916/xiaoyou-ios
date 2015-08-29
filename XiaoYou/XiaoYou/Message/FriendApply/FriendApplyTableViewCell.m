@@ -283,6 +283,7 @@ typedef enum : NSUInteger {
             [[ContactManager sharedInstance] ignoreFriendApply:[NSString stringWithFormat:@"%g",_applicantList.applyId] block:^(YActionMessage *message) {
                 if (message.isSuccess) {
                     _applicantList.status = 3;
+                    [self refreshContactsList];
                     [self updateButtonShow];
                 } else {
                     [YUtils showTitle:message.desc];
@@ -322,6 +323,16 @@ typedef enum : NSUInteger {
     } else {
         _flagImageView.image = [UIImage imageNamed:@"tag-grey"];
     }
+}
+//重新请求联系人列表
+-(void)refreshContactsList
+{
+    [[ContactManager sharedInstance] getContactsListData:^(YActionMessage *message) {
+        if (message.isSuccess)
+        {
+            [[ContactManager sharedInstance] saveContactsList:message.object];
+        }
+    }];
 }
 
 @end

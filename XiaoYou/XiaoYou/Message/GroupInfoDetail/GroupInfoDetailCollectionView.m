@@ -55,7 +55,11 @@
         _isShowDel = show;
         
         [_dataSourceArr enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-            obj[@"isDelete"] = @(show);
+            if (![[obj[@"model"] uid] isEqualToString:[YShareData defaultData][kShareData_UserID]])
+            {
+                obj[@"isDelete"] = @(show);
+            }
+            
         }];
         
         [self reloadData];
@@ -225,7 +229,9 @@
 }
 
 - (void)longPressCell {
+    
     [self showDel:YES];
+    
 }
 
 @end
