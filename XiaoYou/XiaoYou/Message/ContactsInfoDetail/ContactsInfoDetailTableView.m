@@ -262,6 +262,7 @@
     {
         [YUtils showHUDWithTitle];
         [[ContactManager sharedInstance] praise:_model.uid block:^(YActionMessage *message) {
+            [YUtils hiddenProgressHUD];
             if (message.isSuccess) {
                 _model.isCool = !_model.isCool;
                 if (_model.isCool) {
@@ -271,8 +272,10 @@
                 }
                 
                 [self reloadData];
+            }else {
+                [YUtils showTitle:message.desc];
             }
-            [YUtils hiddenProgressHUD];
+            
         }];
     }
 }

@@ -1134,10 +1134,30 @@
 #if TARGET_IPHONE_SIMULATOR
     [self showHint:NSLocalizedString(@"相机不可用", @"simulator does not support taking picture")];
 #elif TARGET_OS_IPHONE
-    self.imagePicker.sourceType = UIImagePickerControllerSourceTypeCamera;
-    self.imagePicker.mediaTypes = @[(NSString *)kUTTypeImage,(NSString *)kUTTypeMovie];
-    [self presentViewController:self.imagePicker animated:YES completion:NULL];
-    self.isInvisible = YES;
+    AVAuthorizationStatus authStatus = [AVCaptureDevice authorizationStatusForMediaType:AVMediaTypeVideo];
+    if (authStatus == AVAuthorizationStatusRestricted ||authStatus ==AVAuthorizationStatusDenied){
+        YCommonAlertView *alert = [[YCommonAlertView alloc] initWithTitle:nil
+                                                                  message:@"您可以在 设置—>隐私—>相机中授权相机功能"
+                                                             buttonTitles:@"确认", nil];
+        [alert show];
+    }else if(authStatus == AVAuthorizationStatusNotDetermined){
+        // Explicit user permission is required for media capture, but the user has not yet granted or denied such permission.
+        [AVCaptureDevice requestAccessForMediaType:AVMediaTypeVideo completionHandler:^(BOOL granted) {
+            if(granted){//点击允许访问时调用
+                //用户明确许可与否，媒体需要捕获，但用户尚未授予或拒绝许可。
+                UIImagePickerController *picker = [[UIImagePickerController alloc] init];
+                [picker setSourceType:UIImagePickerControllerSourceTypeCamera];
+                picker.delegate = self;
+                [picker setAllowsEditing:YES];
+                [self presentViewController:picker animated:YES completion:nil];
+            }
+        }];
+    }else{
+        self.imagePicker.sourceType = UIImagePickerControllerSourceTypeCamera;
+        self.imagePicker.mediaTypes = @[(NSString *)kUTTypeImage,(NSString *)kUTTypeMovie];
+        [self presentViewController:self.imagePicker animated:YES completion:NULL];
+        self.isInvisible = YES;
+    }
 #endif
 }
 
@@ -1749,13 +1769,11 @@
 
 - (NSDictionary *)addAlertBody:(NSDictionary *)ext {
     NSMutableDictionary *extDic = [[NSMutableDictionary alloc] initWithDictionary:ext];
+    [extDic setObject:[[ProvisionManager sharedInstance] getLoginInfo].icon forKey:@"headImage"];
+    [extDic setObject:[[ProvisionManager sharedInstance] getLoginInfo].studentName forKey:@"userName"];
     if ([self messageType] == eMessageTypeGroupChat) {
         [extDic setObject:@{@"em_push_title":[NSString stringWithFormat:@"%@给你发来一条新消息", _studentDic[@"name"]]} forKey:@"em_apns_ext"];
-        [extDic setObject:_studentDic[@"icon"] forKey:@"headImage"];
-        [extDic setObject:_studentDic[@"name"] forKey:@"userName"];
     } else {
-        [extDic setObject:[[ProvisionManager sharedInstance] getLoginInfo].icon forKey:@"headImage"];
-        [extDic setObject:[[ProvisionManager sharedInstance] getLoginInfo].studentName forKey:@"userName"];
         __block BOOL needIgorePush = NO;
         [[[ContactManager sharedInstance] getForbiddenMeList] enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
             if ([_studentDic[@"thirdCode"] isEqualToString:obj])
