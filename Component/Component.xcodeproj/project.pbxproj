@@ -37,6 +37,7 @@
 		20DCB9671B8CA60800C758DE /* ApplyListAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 20DCB9661B8CA60800C758DE /* ApplyListAction.m */; };
 		20DCB9701B8CA60800C758DE /* FindFriendsByTagsAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 20DCB96F1B8CA60800C758DE /* FindFriendsByTagsAction.m */; };
 		20DCB9731B8CA60800C758DE /* ApplicantListAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 20DCB9721B8CA60800C758DE /* ApplicantListAction.m */; };
+		20DD81641B91D24900ACFD9A /* ForbiddenMeListAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 20DD81631B91D24900ACFD9A /* ForbiddenMeListAction.m */; };
 		20E0BFEA1B88B0CA00EDAED4 /* TagListAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 20E0BFE91B88B0CA00EDAED4 /* TagListAction.m */; };
 		20E0BFED1B88B0CA00EDAED4 /* MessageListAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 20E0BFEC1B88B0CA00EDAED4 /* MessageListAction.m */; };
 		20E0BFF01B88B0CA00EDAED4 /* UploadHeadImageAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 20E0BFEF1B88B0CA00EDAED4 /* UploadHeadImageAction.m */; };
@@ -140,6 +141,8 @@
 		20DCB9721B8CA60800C758DE /* ApplicantListAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ApplicantListAction.m; sourceTree = "<group>"; };
 		20DD4B2B1B7338D8007C352C /* YDefine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YDefine.h; sourceTree = "<group>"; };
 		20DD4B2C1B73390C007C352C /* YControlsDefine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YControlsDefine.h; sourceTree = "<group>"; };
+		20DD81621B91D24900ACFD9A /* ForbiddenMeListAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ForbiddenMeListAction.h; sourceTree = "<group>"; };
+		20DD81631B91D24900ACFD9A /* ForbiddenMeListAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ForbiddenMeListAction.m; sourceTree = "<group>"; };
 		20E0BFE81B88B0CA00EDAED4 /* TagListAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TagListAction.h; sourceTree = "<group>"; };
 		20E0BFE91B88B0CA00EDAED4 /* TagListAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TagListAction.m; sourceTree = "<group>"; };
 		20E0BFEB1B88B0CA00EDAED4 /* MessageListAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageListAction.h; sourceTree = "<group>"; };
@@ -335,6 +338,8 @@
 				20C5B0501B8DB03900B4A8A8 /* GetFriendApplyListAction.m */,
 				20C5B05B1B8DB08900B4A8A8 /* GroupDetailAction.h */,
 				20C5B05C1B8DB08900B4A8A8 /* GroupDetailAction.m */,
+				20DD81621B91D24900ACFD9A /* ForbiddenMeListAction.h */,
+				20DD81631B91D24900ACFD9A /* ForbiddenMeListAction.m */,
 			);
 			path = Contact;
 			sourceTree = "<group>";
@@ -586,6 +591,7 @@
 				20E0BFF01B88B0CA00EDAED4 /* UploadHeadImageAction.m in Sources */,
 				20DA8B3D1B8EE6C5007D0CDE /* ListCommentAction.m in Sources */,
 				20DA8B3A1B8ED078007D0CDE /* ListPraisePeoplesAction.m in Sources */,
+				20DD81641B91D24900ACFD9A /* ForbiddenMeListAction.m in Sources */,
 				20DA8B171B8EB928007D0CDE /* GroupFeedsAction.m in Sources */,
 				20C5B07E1B8DF3DD00B4A8A8 /* GroupConditionsAction.m in Sources */,
 				20DCB9671B8CA60800C758DE /* ApplyListAction.m in Sources */,

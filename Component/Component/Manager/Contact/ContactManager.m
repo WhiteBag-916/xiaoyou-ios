@@ -25,6 +25,8 @@
 #import "YUtils+Component.h"
 #import "LinkManList.h"
 #import "CommonAction.h"
+#import "ForbiddenMeListAction.h"
+#import "ForbiddenList.h"
 
 #define kContactsManagerSyncQueue @"kContactsManagerSyncQueue"
 
@@ -32,6 +34,7 @@
 @interface ContactManager ()
 
 @property (nonatomic, strong) LinkManModel *linkManModel; //个人信息
+@property (nonatomic, strong) NSArray *forbiddenMeList;//消息不提醒列表
 
 @end
 
@@ -99,6 +102,10 @@ DEF_SINGLETON(ContactManager);
 - (void)appDidLogin:(NSDictionary *)loginInfo
 {
     [self initLinkManListData];
+    
+    [self forbiddenMeList:^(YActionMessage *message) {
+        
+    }];
 }
 
 - (void)appDidLogout
@@ -367,6 +374,38 @@ DEF_SINGLETON(ContactManager);
     }
     
     return nil;
+}
+
+//屏蔽其他人
+- (void)forbiddenLinkMan:(NSString *)forbiddenId block:(ActionCompleteBlock)block {
+    CommonAction * action = [[CommonAction alloc] init];
+    action.parameter = [YUtils getParameter:@{@"forbiddenId":forbiddenId} needUserToken:YES];
+    action.url = [YUtils getUrl:api_contact_forbiddenLinkMan];
+    
+    [YAction startAction:action completionBlock:^(YActionMessage* message) {
+        //主线程处理界面
+        block(message);
+    }];
+}
+
+//屏蔽列表
+- (void)forbiddenMeList:(ActionCompleteBlock)block {
+    ForbiddenMeListAction * action = [[ForbiddenMeListAction alloc] init];
+    
+    [YAction startAction:action completionBlock:^(YActionMessage* message) {
+        
+        if (message.isSuccess) {
+            _forbiddenMeList = [NSArray arrayWithObject:[message.object forbiddenList]];
+        }
+        
+        //主线程处理界面
+        block(message);
+    }];
+}
+
+//获取屏蔽列表
+- (NSArray *)getForbiddenMeList {
+    return _forbiddenMeList;
 }
 
 @end

@@ -20,6 +20,7 @@
 		20DA8B441B8F5E76007D0CDE /* ReadFeedCount.m in Sources */ = {isa = PBXBuildFile; fileRef = 20DA8B431B8F5E76007D0CDE /* ReadFeedCount.m */; };
 		20DBFD271B4FA0E5009134D0 /* libModel.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 20DBFD1B1B4FA0E5009134D0 /* libModel.a */; };
 		20DCB9581B8CA60800C758DE /* ApplicantList.m in Sources */ = {isa = PBXBuildFile; fileRef = 20DCB9571B8CA60800C758DE /* ApplicantList.m */; };
+		20DD81611B91D22E00ACFD9A /* ForbiddenList.m in Sources */ = {isa = PBXBuildFile; fileRef = 20DD81601B91D22E00ACFD9A /* ForbiddenList.m */; };
 		20E0BFFF1B88B0CA00EDAED4 /* UploadImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 20E0BFFE1B88B0CA00EDAED4 /* UploadImage.m */; };
 		20E0C06E1B88B0CA00EDAED4 /* Feed.m in Sources */ = {isa = PBXBuildFile; fileRef = 20E0C06B1B88B0CA00EDAED4 /* Feed.m */; };
 		20E0C06F1B88B0CA00EDAED4 /* FeedInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 20E0C06D1B88B0CA00EDAED4 /* FeedInfo.m */; };
@@ -95,6 +96,8 @@
 		20DBFD2C1B4FA0E5009134D0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		20DCB9561B8CA60800C758DE /* ApplicantList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ApplicantList.h; sourceTree = "<group>"; };
 		20DCB9571B8CA60800C758DE /* ApplicantList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ApplicantList.m; sourceTree = "<group>"; };
+		20DD815F1B91D22E00ACFD9A /* ForbiddenList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ForbiddenList.h; sourceTree = "<group>"; };
+		20DD81601B91D22E00ACFD9A /* ForbiddenList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ForbiddenList.m; sourceTree = "<group>"; };
 		20E0BFFD1B88B0CA00EDAED4 /* UploadImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UploadImage.h; sourceTree = "<group>"; };
 		20E0BFFE1B88B0CA00EDAED4 /* UploadImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UploadImage.m; sourceTree = "<group>"; };
 		20E0C06A1B88B0CA00EDAED4 /* Feed.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Feed.h; sourceTree = "<group>"; };
@@ -253,6 +256,8 @@
 		20DBFD661B4FA8F0009134D0 /* Contact */ = {
 			isa = PBXGroup;
 			children = (
+				20DD815F1B91D22E00ACFD9A /* ForbiddenList.h */,
+				20DD81601B91D22E00ACFD9A /* ForbiddenList.m */,
 				20C5B0611B8DB55C00B4A8A8 /* GroupDetail.h */,
 				20C5B0621B8DB55C00B4A8A8 /* GroupDetail.m */,
 				20C5B0631B8DB55C00B4A8A8 /* GroupModel.h */,
@@ -424,6 +429,7 @@
 				20859AA31B64CB7E00580ED3 /* LoginResp.m in Sources */,
 				332D32681B71E9B400B69E96 /* PushInfo.m in Sources */,
 				20DA8B1A1B8EBD27007D0CDE /* GroupAllList.m in Sources */,
+				20DD81611B91D22E00ACFD9A /* ForbiddenList.m in Sources */,
 				333E95EA1B70B7AB0001059D /* SchoolDetailModel.m in Sources */,
 				333E95D61B70B7250001059D /* LinkManModel.m in Sources */,
 				20DA1A601B8995A000DEF95C /* ProvinceCode.m in Sources */,

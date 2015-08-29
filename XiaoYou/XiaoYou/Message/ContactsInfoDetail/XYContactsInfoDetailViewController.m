@@ -116,9 +116,7 @@
     YActionSheetItem *item2 = [YActionSheetItem itemWithTitle:@"消息不提醒"
                                                          type:YCommonActionSheetItemTypeSwitch
                                                          open:YES
-                                                        block:^(NSInteger checkNum) {
-                                                            
-                                                        }];
+                                                    extraData:@{@"uid":self.uid}];
     
     YActionSheetItem *item3 = [YActionSheetItem itemWithTitle:@"解除好友关系"
                                                          type:YCommonActionSheetItemTypeCommon

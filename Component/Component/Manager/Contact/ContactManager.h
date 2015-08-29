@@ -81,4 +81,13 @@ AS_SINGLETON(ContactManager);
 //获取好友详情
 - (LinkManList *)getFriendInfo:(NSString *) uid;
 
+//屏蔽其他人
+- (void)forbiddenLinkMan:(NSString *)forbiddenId block:(ActionCompleteBlock)block;
+
+//屏蔽列表
+- (void)forbiddenMeList:(ActionCompleteBlock)block;
+
+//获取屏蔽列表
+- (NSArray *)getForbiddenMeList;
+
 @end

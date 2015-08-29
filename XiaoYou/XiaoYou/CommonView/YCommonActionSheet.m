@@ -10,6 +10,7 @@
 #import "YFoundation.h"
 #import "YControlsDefine.h"
 #import "YCommonShare.h"
+#import "ContactManager.h"
 
 static const NSUInteger kYActionSheetButtonHeight = 50;
 static const NSUInteger kYActionSheetTitleHeight = 37;
@@ -35,12 +36,13 @@ static const NSUInteger kYActionSheetCancelHeight = 49;
     return item;
 }
 
-+(instancetype)itemWithTitle:(NSString *)title type:(YCommonActionItemSheetType)type open:(BOOL)isOpen block:(ActionSheetItemBlock)block
++(instancetype)itemWithTitle:(NSString *)title type:(YCommonActionItemSheetType)type open:(BOOL)isOpen extraData:(NSDictionary *)extraData
 {
     YActionSheetItem *item = [YActionSheetItem itemWithTitle:title
                                                         type:type
-                                                       block:block];
+                                                       block:nil];
     item.isOpen = isOpen;
+    item.extraData = extraData;
     return item;
 }
 + (instancetype)itemWithType:(YCommonActionItemSheetType)type title:(NSString *)title extraData:(NSDictionary *)extraData {
@@ -179,13 +181,17 @@ static const NSUInteger kYActionSheetCancelHeight = 49;
 
 -(void)switchAction
 {
-    _item.isOpen = !_item.isOpen;
-    
-    [self updateSwitchButton];
-    
-    if (_item.block) {
-        _item.block(0);
-    }
+    [YUtils showHUDWithTitle];
+    [[ContactManager sharedInstance] forbiddenLinkMan:_item.extraData[@"uid"] block:^(YActionMessage *message) {
+        [YUtils hiddenProgressHUD];
+        if (message.isSuccess) {
+            _item.isOpen = !_item.isOpen;
+            
+            [self updateSwitchButton];
+        }
+        
+        [YUtils showTitle:message.desc];
+    }];
 }
 
 @end

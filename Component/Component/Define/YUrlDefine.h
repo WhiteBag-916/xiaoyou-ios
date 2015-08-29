@@ -143,6 +143,10 @@
 #define api_group_deleteGroupUser @"/group/deleteGroupUser"
 //社长邀请社团成员
 #define api_group_addGroupUser @"/group/addGroupUser"
+//屏蔽人列表
+#define api_contact_forbiddenMeList @"/user/v2/forbiddenMeList"
+//屏蔽他人
+#define api_contact_forbiddenLinkMan @"/user/v2/forbiddenLinkMan"
 
 /**********************************************************
  Url Define: MessageManager
