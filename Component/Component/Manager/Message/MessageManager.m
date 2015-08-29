@@ -261,11 +261,14 @@ DEF_SINGLETON(MessageManager);
     }
     
 #if !TARGET_IPHONE_SIMULATOR
-    BOOL isAppActivity = [[UIApplication sharedApplication] applicationState] == UIApplicationStateActive;
-    if (!isAppActivity) {
-        [self showNotificationWithMessage:message];
-    } else {
-        [self playSoundAndVibration];
+    //判断是否发送本地推送
+    if (!ext[@"em_ignore_notification"]) {
+        BOOL isAppActivity = [[UIApplication sharedApplication] applicationState] == UIApplicationStateActive;
+        if (!isAppActivity) {
+            [self showNotificationWithMessage:message];
+        } else {
+            [self playSoundAndVibration];
+        }
     }
 #endif
     
@@ -373,9 +376,8 @@ DEF_SINGLETON(MessageManager);
     //发送本地推送
     UILocalNotification *notification = [[UILocalNotification alloc] init];
     notification.fireDate = [NSDate date]; //触发通知的时间
-    
     notification.alertBody = message.ext[@"em_apns_ext"][@"em_push_title"];
-//    notification.alertAction = @"查看";
+    //    notification.alertAction = @"查看";
     notification.timeZone = [NSTimeZone defaultTimeZone];
     notification.soundName = UILocalNotificationDefaultSoundName;
     NSMutableDictionary *userInfo = [NSMutableDictionary dictionary];
