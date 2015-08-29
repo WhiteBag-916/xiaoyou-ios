@@ -14,6 +14,7 @@
 #import "UIImageView+EMWebCache.h"
 #import "ProvisionManager.h"
 #import "ProfileInfo.h"
+#import "ContactManager.h"
 
 NSString *const kRouterEventChatHeadImageTapEventName = @"kRouterEventChatHeadImageTapEventName";
 
@@ -109,10 +110,19 @@ NSString *const kRouterEventChatHeadImageTapEventName = @"kRouterEventChatHeadIm
 //        UIImage *placeholderImage = [UIImage imageNamed:@"default_head"];
 //        [self.headImageView sd_setImageWithURL:_messageModel.headImageURL placeholderImage:placeholderImage];
 //        NSLog(@"%@",_messageModel.message.ext[@"headImage"]);
-        if (nil != _messageModel.headImageURL) {
-            [self.headImageView sd_setImageWithURL:_messageModel.headImageURL placeholderImage:[UIImage imageNamed:@"default_head"]];
-        } else {
-            [self.headImageView setFaceImageWithUrl:_messageModel.message.ext[@"headImage"]];
+        if (messageModel.messageType == eMessageTypeChat) {
+            if (nil != _messageModel.headImageURL) {
+                [self.headImageView sd_setImageWithURL:_messageModel.headImageURL placeholderImage:[UIImage imageNamed:@"default_head"]];
+            } else {
+                [self.headImageView setFaceImageWithUrl:_messageModel.message.ext[@"headImage"]];
+            }
+        } else if (messageModel.messageType == eMessageTypeGroupChat) {
+            LinkManList *manModel = [[ContactManager sharedInstance] getManByThirdCode:_messageModel.message.groupSenderName];
+            if (nil != manModel) {
+                [self.headImageView setFaceImageWithUrl:manModel.icon];
+            } else {
+                [self.headImageView setFaceImageWithUrl:_messageModel.message.ext[@"headImage"]];
+            }
         }
     }
     else

@@ -16,6 +16,9 @@ AS_SINGLETON(ContactManager);
 
 - (void)getContactsListData:(ActionCompleteBlock)block;
 
+//通过thirdCode获取联系人
+- (LinkManList *)getManByThirdCode:(NSString *)thirdCode;
+
 //通过id获取联系人
 - (LinkManList *)getManById:(NSString *)uid;
 
