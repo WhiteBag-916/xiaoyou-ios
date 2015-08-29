@@ -315,6 +315,7 @@
     [self showAddPicList];
 }
 - (void)showAddPicList {
+    [self.view endEditing:true];
     YActionSheetItem *item1 = [YActionSheetItem itemWithTitle:@"拍照"
                                                          type:YCommonActionSheetItemTypeCenterCommon
                                                         block:^(NSInteger checkNum) {

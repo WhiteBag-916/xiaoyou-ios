@@ -90,14 +90,14 @@
     _sendBtn.titleLabel.font = CONTENT_FONT(12);
     [_sendBtn addTarget:self action:@selector(getCode) forControlEvents:UIControlEventTouchUpInside];
     _waitLabel = [YUtils initLabel:CONTENT_FONT(12) color:KCOLORWHITE text:@"60s" frame:CGRectZero alignment:NSTextAlignmentCenter];
-    [_phoneField addSubview:_waitLabel];
+    [self.view addSubview:_waitLabel];
     [_waitLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.right.top.bottom.equalTo(_sendBtn);
         make.width.mas_equalTo(KWAITWIDTH);
     }];
     _waitLabel.backgroundColor = KCOLORGREEN_e5e5e5;
     _waitLabel.hidden = true;
-    
+
     _codeField = [self createField:1];
     _codeField.keyboardType = UIKeyboardTypeNumberPad;
     [_codeField mas_makeConstraints:^(MASConstraintMaker *make) {
