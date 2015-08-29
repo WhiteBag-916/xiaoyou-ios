@@ -49,5 +49,7 @@
  *********************************************************************/
 + (NSString*)initImageProcessingUrl:(NSString *)type width:(int)imageWidth height:(int)imageHeight;
 
+// 是否能有网络连接
++ (BOOL) IsEnableConnection;
 
 @end

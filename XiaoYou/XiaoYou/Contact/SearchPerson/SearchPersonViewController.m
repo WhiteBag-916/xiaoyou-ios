@@ -55,8 +55,8 @@
     
     //filter
     UIButton *filterButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [filterButton setImage:[UIImage imageNamed:@"toast_cup"] forState:UIControlStateNormal];
-    [filterButton setImage:[UIImage imageNamed:@"toast_cup"] forState:UIControlStateHighlighted];
+    [filterButton setImage:[UIImage imageNamed:@"campus-assistant_map_screen"] forState:UIControlStateNormal];
+    [filterButton setImage:[UIImage imageNamed:@"campus-assistant_map_screen"] forState:UIControlStateHighlighted];
     [filterButton addTarget:self action:@selector(pressFilterButton) forControlEvents:UIControlEventTouchUpInside];
     [textFieldBgView addSubview:filterButton];
     [filterButton mas_makeConstraints:^(MASConstraintMaker *make) {

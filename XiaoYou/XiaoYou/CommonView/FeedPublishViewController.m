@@ -37,7 +37,7 @@
 #define tagObj @"tagObj"
 #define tagIsSelected @"tagIsSelected"
 
-@interface FeedPublishViewController()<UIImagePickerControllerDelegate>
+@interface FeedPublishViewController()<UIImagePickerControllerDelegate, UITextViewDelegate>
 
 
 @property (nonatomic, strong) UIView *groupView;
@@ -76,10 +76,14 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     [self initView];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(openPhoto) name:KNotification_Present_TakePhoto object:nil];
-    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showAddPicList) name:KNotification_Present_TakePhoto object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changeMode:) name:@"UITextInputCurrentInputModeDidChangeNotification" object:nil];
 }
-
+-(void) changeMode:(NSNotification *)notification{
+    if ([[[UITextInputMode currentInputMode] primaryLanguage] isEqualToString:@"emoji"]) {
+        [YUtils showTitle:@"不支持emoji"];
+    }
+}
 - (void)initView {
     self.title = @"说两句";
     [self showCustomNavigationCancelButton];
@@ -212,6 +216,7 @@
         }
         make.height.mas_equalTo(KTEXTVIEWHEIGHT);
     }];
+    _textView.delegate = self;
     _textView.placeholder = @"发布优质内容，会有更多人给你敬酒";
     _textView.placeholderColor = KCOLORWHITE_b8b7b7;
     _textView.font = CONTENT_FONT(12);
@@ -311,10 +316,9 @@
     
     [_tagView updateTag:[_tagsArray[select][tagIsSelected] boolValue] atIndex:select];
 }
-- (void)openPhoto {
-    [self showAddPicList];
-}
+
 - (void)showAddPicList {
+    [self.view endEditing:true];
     YActionSheetItem *item1 = [YActionSheetItem itemWithTitle:@"拍照"
                                                          type:YCommonActionSheetItemTypeCenterCommon
                                                         block:^(NSInteger checkNum) {
@@ -347,6 +351,18 @@
                                                                   message:@"您可以在 设置—>隐私—>相机中授权相机功能"
                                                              buttonTitles:@"确认", nil];
         [alert show];
+    }else if(authStatus == AVAuthorizationStatusNotDetermined){
+        // Explicit user permission is required for media capture, but the user has not yet granted or denied such permission.
+        [AVCaptureDevice requestAccessForMediaType:AVMediaTypeVideo completionHandler:^(BOOL granted) {
+            if(granted){//点击允许访问时调用
+                //用户明确许可与否，媒体需要捕获，但用户尚未授予或拒绝许可。
+                UIImagePickerController *picker = [[UIImagePickerController alloc] init];
+                [picker setSourceType:UIImagePickerControllerSourceTypeCamera];
+                picker.delegate = self;
+                [picker setAllowsEditing:YES];
+                [self presentViewController:picker animated:YES completion:nil];
+            }
+        }];
     }else{
         UIImagePickerController *picker = [[UIImagePickerController alloc] init];
         [picker setSourceType:UIImagePickerControllerSourceTypeCamera];
@@ -422,7 +438,12 @@
     }];
     return tagStr;
 }
-
+- (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text {
+    if ([[[UITextInputMode currentInputMode] primaryLanguage] isEqualToString:@"emoji"]) {
+        return false;
+    }
+    return true;
+}
 - (void)uploadPic {
     [_picArray removeAllObjects];
     [YUtils showHUDWithTitle:@"正在上传"];
@@ -487,6 +508,7 @@
     }
     return imageStr;
 }
+
 - (void)dealloc {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }

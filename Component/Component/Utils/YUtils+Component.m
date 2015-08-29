@@ -8,6 +8,7 @@
 
 #import "YUtils+Component.h"
 #import "RegExCategories.h"
+#import "Reachability.h"
 
 @implementation YUtils(Component)
 
@@ -140,4 +141,13 @@
     return url;
 }
 
+// 是否能有网络连接
++ (BOOL) IsEnableConnection {
+    if (([Reachability reachabilityForInternetConnection].currentReachabilityStatus == NotReachable) &&
+        ([Reachability reachabilityForLocalWiFi].currentReachabilityStatus == NotReachable)) {
+        return NO;
+    }
+    
+    return YES;
+}
 @end

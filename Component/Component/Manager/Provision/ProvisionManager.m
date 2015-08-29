@@ -63,6 +63,8 @@ DEF_SINGLETON(ProvisionManager);
 
 - (void)appDidLogin:(NSDictionary *)loginInfo
 {
+    [YShareData defaultData][kShareData_LoginPassword] = [[NSUserDefaults standardUserDefaults] objectForKey:kShareData_LoginPassword];
+    
     [self initProfileData];
     
     [self getProfileInfo];
