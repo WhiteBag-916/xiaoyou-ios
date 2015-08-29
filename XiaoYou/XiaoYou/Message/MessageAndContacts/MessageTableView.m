@@ -315,7 +315,7 @@
     {
         EMConversation *converation = [_messageDataSource objectAtIndex:indexPath.row];
         
-        NSDictionary *ext = converation.latestMessage.ext;
+        NSDictionary *ext = converation.latestMessageFromOthers.ext;
         if ([ext[@"server_flag"] boolValue]) {
             //非聊天消息
             if (FRIEND_APPLY == [ext[@"type"] integerValue]) {

@@ -249,7 +249,12 @@
     UIBarButtonItem *backItem = [[UIBarButtonItem alloc] initWithCustomView:backButton];
     [self.navigationItem setLeftBarButtonItem:backItem];
     
-    self.title = _studentDic[@"name"];
+    NSString *name = _studentDic[@"name"];
+    if (name.length > 0) {
+        self.title = _studentDic[@"name"];
+    } else {
+        self.title = _conversation.latestMessageFromOthers.ext[@"userName"];
+    }
     _headImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 40, 40)];
     _headImageView.layer.cornerRadius = 20;
     _headImageView.clipsToBounds = YES;
@@ -258,7 +263,7 @@
     if (url > 0) {
         [_headImageView setFaceImageWithUrl:url];
     } else {
-        [_headImageView setFaceImageWithUrl:_conversation.latestMessage.ext[@"headImage"]];
+        [_headImageView setFaceImageWithUrl:_conversation.latestMessageFromOthers.ext[@"headImage"]];
     }
     UIButton *detailButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 60, 44)];
     
@@ -556,7 +561,11 @@
                 cell.backgroundColor = [UIColor clearColor];
             }
 //            model.headImageURL = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@",api_icon_base_url,_studentDic[@"icon"]]];
-            model.headImageURL = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@",api_icon_base_url,_studentDic[@"icon"]]];
+            NSString *url = _studentDic[@"icon"];
+            if (url.length > 0) {
+                model.headImageURL = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@",api_icon_base_url,_studentDic[@"icon"]]];
+            }
+            
             cell.messageModel = model;
             
             return cell;
@@ -1621,11 +1630,16 @@
 //联系人详情
 -(void)pushToDetailPage:(id)sender
 {
-    XYContactsInfoDetailViewController * contactsInfoDetailViewController = [[XYContactsInfoDetailViewController alloc] init];
-    contactsInfoDetailViewController.studentDic = _studentDic;
-    contactsInfoDetailViewController.uid = _studentDic[@"uid"];
-    contactsInfoDetailViewController.hidesBottomBarWhenPushed = YES;
-    [self.navigationController pushViewController:contactsInfoDetailViewController animated:YES];
+    NSString *uid = _studentDic[@"uid"];
+    if (uid.length > 0) {
+        XYContactsInfoDetailViewController * contactsInfoDetailViewController = [[XYContactsInfoDetailViewController alloc] init];
+        contactsInfoDetailViewController.studentDic = _studentDic;
+        contactsInfoDetailViewController.uid = _studentDic[@"uid"];
+        contactsInfoDetailViewController.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:contactsInfoDetailViewController animated:YES];
+    } else {
+        [YUtils showTitle:@"对方不是你好友"];
+    }
 }
 
 - (void)removeAllMessages:(id)sender

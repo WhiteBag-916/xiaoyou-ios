@@ -143,7 +143,7 @@ NSString *const kMessageTableViewCell = @"MessageTableViewCellId";
     _defaultLabel.hidden = YES;
     _headImageView.layer.cornerRadius = kHeadCornerRadius;
     _headImageView.clipsToBounds = YES;
-    NSDictionary *ext = _conversation.latestMessage.ext;
+    NSDictionary *ext = _conversation.latestMessageFromOthers.ext;
     if ([ext[@"server_flag"] boolValue]) {
         //非聊天消息
         if (FRIEND_APPLY == [ext[@"type"] integerValue]) {
