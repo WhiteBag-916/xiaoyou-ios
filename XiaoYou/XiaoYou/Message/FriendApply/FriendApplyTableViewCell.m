@@ -290,7 +290,7 @@ typedef enum : NSUInteger {
         }
         case OK_BUTTON:
         {
-            [[ContactManager sharedInstance] rejectApply:_applicantList.applyId block:^(YActionMessage *message) {
+            [[ContactManager sharedInstance] agreeFriendApply:_applicantList.applyId block:^(YActionMessage *message) {
                 if (message.isSuccess) {
                     _applicantList.status = 1;
                     [self updateButtonShow];
