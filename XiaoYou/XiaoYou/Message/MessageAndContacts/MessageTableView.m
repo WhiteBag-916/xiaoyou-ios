@@ -78,7 +78,7 @@
 
 -(void)refreshTableView:(NSMutableArray *) dataSouceArr AndHeaderModel:(EMMessage *) model
 {
-//    [self setUpHeaderView:model];
+    [self setUpHeaderView:model];
     _messageDataSource = dataSouceArr;
     [self reloadData];
 }
@@ -293,12 +293,12 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.row == 0)
-    {
-        XYSystemMessageViewController * systemMessageViewController = [[XYSystemMessageViewController alloc] init];
-        [self.myController.navigationController pushViewController:systemMessageViewController animated:YES needHiddenBottomBar:YES];
-    }
-    else
+//    if (indexPath.row == 0)
+//    {
+//        XYSystemMessageViewController * systemMessageViewController = [[XYSystemMessageViewController alloc] init];
+//        [self.myController.navigationController pushViewController:systemMessageViewController animated:YES needHiddenBottomBar:YES];
+//    }
+//    else
     {
         EMConversation *converation = [_messageDataSource objectAtIndex:indexPath.row];
         

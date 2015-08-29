@@ -145,17 +145,13 @@
     NSMutableArray *ret = nil;
     NSMutableArray *conversations = [[NSMutableArray alloc] initWithArray:[[EaseMob sharedInstance].chatManager conversations]];
     
-//    for (EMConversation *conversation in conversations) {
-//        if ([conversation.chatter isEqualToString:KSYSTEM_MESSAGEID])
-//        {
-//            _systemMessage = [conversation latestMessage];
-//            
-//            [conversations removeObject:conversation];
-//            
-//            [conversations insertObject:_systemMessage atIndex:0];
-//            break;
-//        }
-//    }
+    for (EMConversation *conversation in conversations) {
+        if ([conversation.chatter isEqualToString:KSYSTEM_MESSAGEID])
+        {
+            _systemMessage = [conversation latestMessage];
+            break;
+        }
+    }
     
     NSArray* sorte = [conversations sortedArrayUsingComparator:
                       ^(EMConversation *obj1, EMConversation* obj2){
@@ -170,21 +166,21 @@
     
     ret = [[NSMutableArray alloc] initWithArray:sorte];
     
-    //置顶 
-    __block NSInteger index = -1;
-    [ret enumerateObjectsUsingBlock:^(EMConversation *conversation, NSUInteger idx, BOOL *stop) {
-        if ([conversation.chatter isEqualToString:KSYSTEM_MESSAGEID])
-        {
-            index = idx;
-            *stop = YES;
-        }
-    }];
-    
-    if (index >= 0) {
-        EMConversation *conversation = [ret objectAtIndex:index];
-        [ret removeObjectAtIndex:index];
-        [ret insertObject:conversation atIndex:0];
-    }
+//    //置顶 
+//    __block NSInteger index = -1;
+//    [ret enumerateObjectsUsingBlock:^(EMConversation *conversation, NSUInteger idx, BOOL *stop) {
+//        if ([conversation.chatter isEqualToString:KSYSTEM_MESSAGEID])
+//        {
+//            index = idx;
+//            *stop = YES;
+//        }
+//    }];
+//    
+//    if (index >= 0) {
+//        EMConversation *conversation = [ret objectAtIndex:index];
+//        [ret removeObjectAtIndex:index];
+//        [ret insertObject:conversation atIndex:0];
+//    }
     
     
     return ret;
