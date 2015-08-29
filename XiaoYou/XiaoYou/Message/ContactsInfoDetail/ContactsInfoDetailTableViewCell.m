@@ -79,6 +79,14 @@ NSString *const kContactsInfoDetailTableViewCell = @"ContactsInfoDetailTableView
     if ([dic[@"index"] integerValue] == 2) {
         _flagImageView.image = [UIImage imageNamed:@"tag-grey"];
     }
+    if ([dic[@"equal"] boolValue])
+    {
+        _contentLabel.textColor = KCOLORGREEN_009688;
+    }
+    else
+    {
+        _contentLabel.textColor = [UIColor blackColor];
+    }
     _contentLabel.text = dic[@"content"];
     _line.hidden = hiddenLine;
 }
