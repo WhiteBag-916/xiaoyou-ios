@@ -316,13 +316,25 @@
 
 - (void)snapImage
 {
-#if !(TARGET_IPHONE_SIMULATOR)//真机执行的代码
+#if !(TARGET_IPHONE_SIMULATOR)//真机执行的代码    
     AVAuthorizationStatus authStatus = [AVCaptureDevice authorizationStatusForMediaType:AVMediaTypeVideo];
     if (authStatus == AVAuthorizationStatusRestricted ||authStatus ==AVAuthorizationStatusDenied){
         YCommonAlertView *alert = [[YCommonAlertView alloc] initWithTitle:nil
                                                                   message:@"您可以在 设置—>隐私—>相机中授权相机功能"
                                                              buttonTitles:@"确认", nil];
         [alert show];
+    }else if(authStatus == AVAuthorizationStatusNotDetermined){
+        // Explicit user permission is required for media capture, but the user has not yet granted or denied such permission.
+        [AVCaptureDevice requestAccessForMediaType:AVMediaTypeVideo completionHandler:^(BOOL granted) {
+            if(granted){//点击允许访问时调用
+                //用户明确许可与否，媒体需要捕获，但用户尚未授予或拒绝许可。
+                UIImagePickerController *picker = [[UIImagePickerController alloc] init];
+                [picker setSourceType:UIImagePickerControllerSourceTypeCamera];
+                picker.delegate = self;
+                [picker setAllowsEditing:YES];
+                [self presentViewController:picker animated:YES completion:nil];
+            }
+        }];
     }else{
         UIImagePickerController *picker = [[UIImagePickerController alloc] init];
         [picker setSourceType:UIImagePickerControllerSourceTypeCamera];
@@ -402,14 +414,14 @@
 }
 
 - (void)changePhone {
-    [self.navigationController pushViewController:[[ProfilePhoneChangeViewController alloc] initWithType:true] animated:true];
+    [self.navigationController pushViewController:[[ProfilePhoneChangeViewController alloc] initWithType:ProfilePhoneChangeTypeMod hasPhone:true] animated:true];
 }
 - (void)changePwd {
     UILabel *label = _bottomView.subviews[0];
     if (label.enabled) {
         [self.navigationController pushViewController:[[ProfileChangePwdViewController alloc] init] animated:true];
     } else {
-        [self.navigationController pushViewController:[[ProfilePhoneChangeViewController alloc] initWithType:false] animated:true];
+        [self.navigationController pushViewController:[[ProfilePhoneChangeViewController alloc] initWithType:ProfilePhoneChangeTypeMod hasPhone:false] animated:true];
     }
 }
 - (void)logOut {

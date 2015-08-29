@@ -11,6 +11,7 @@
 #import "YTextField+Ext.h"
 #import "ProvisionManager.h"
 #import "ProfileChangePwdViewController.h"
+#import "CNTextController.h"
 
 #define KBUTTONWIDTH SCALE_NUM(80)
 #define KBUTTONHEIGHT SCALE_NUM(25)
@@ -20,19 +21,24 @@
 @property (nonatomic, strong) YTextField *phoneField;
 @property (nonatomic, strong) YTextField *codeField;
 @property (nonatomic, strong) UIButton *sendBtn;
+@property (nonatomic, strong) UIButton *protocolCheckButton;
+@property (nonatomic, strong) UIButton *showProtocalButton;
+@property (nonatomic, assign) BOOL isCheckButton;//是否同意协议
 @property (nonatomic, strong) UILabel *waitLabel;
 @property (nonatomic, assign) BOOL hasPhone;
+@property (nonatomic, assign) ProfilePhoneChangeType type;
 
 @property (nonatomic, strong) YTextField *pwdField;
 @property (nonatomic, strong) UIView *pwdView;
 @end
 
 @implementation ProfilePhoneChangeViewController
-- (id)initWithType:(BOOL)hasPhone {
+- (id)initWithType:(ProfilePhoneChangeType)type hasPhone:(BOOL)hasPhone {
     self = [super init];
     if (self) {
         self.hidesBottomBarWhenPushed = true;
         _hasPhone = hasPhone;
+        _type = type;
     }
     return self;
 }
@@ -44,6 +50,36 @@
     }
     [self checkComplete];
     
+    if (ProfilePhoneChangeTypeRegister == _type) {
+        [self initViewByRegister];
+    }
+}
+- (void)initViewByRegister {
+    //protocolCheckButton
+    _protocolCheckButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [_protocolCheckButton setImage:[UIImage imageNamed:@"register-frame-agree"] forState:UIControlStateNormal];
+    [_protocolCheckButton addTarget:self action:@selector(checkButton) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:_protocolCheckButton];
+    [_protocolCheckButton mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(self.view);
+        make.top.equalTo(_codeField.mas_bottom);
+        make.height.mas_equalTo(SCALE_NUM(35));
+        make.width.mas_equalTo(SCALE_NUM(36));
+    }];
+    
+    //显示协议条款
+    _showProtocalButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [_showProtocalButton setTitle:@"同意用户条款" forState:UIControlStateNormal];
+    _showProtocalButton.titleLabel.font = CONTENT_FONT(12);
+    [_showProtocalButton setTitleColor:KCOLORGREEN_009688 forState:UIControlStateNormal];
+    [_showProtocalButton addTarget:self action:@selector(pressShowProtocalButton) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:_showProtocalButton];
+    [_showProtocalButton mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(_protocolCheckButton.mas_right);
+        make.top.height.equalTo(_protocolCheckButton);
+    }];
+    
+    _isCheckButton = YES;
 }
 - (void)initController {
     self.navigationController.navigationBarHidden = false;
@@ -130,6 +166,25 @@
     [field registerChanged:self action:@selector(checkComplete)];
     [YTextField placeHolderColor:field normalString:names[type] fontColor:KCOLORGREEN_455A64];
     return field;
+}
+
+//弹出协议条款
+- (void)pressShowProtocalButton {
+    CNTextController *textController = [[CNTextController alloc] init];
+    textController.textType = TextTermsOfAgreementType;
+    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:textController];
+    [self.navigationController presentViewController:navigationController animated:YES completion:nil];
+}
+
+//选择协议条款
+- (void)checkButton {
+    _isCheckButton = !_isCheckButton;
+    
+    if (_isCheckButton) {
+        [_protocolCheckButton setImage:[UIImage imageNamed:@"register-frame-agree"] forState:UIControlStateNormal];
+    } else {
+        [_protocolCheckButton setImage:[UIImage imageNamed:@"register-frame"] forState:UIControlStateNormal];
+    }
 }
 - (void)changeWait:(BOOL)isWaiting {
     if (isWaiting) {
