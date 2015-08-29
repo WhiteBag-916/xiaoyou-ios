@@ -115,6 +115,7 @@
     
     YActionSheetItem *item2 = [YActionSheetItem itemWithTitle:@"消息不提醒"
                                                          type:YCommonActionSheetItemTypeSwitch
+                                                      isGroup:NO
                                                          open:YES
                                                     extraData:@{@"uid":self.uid}];
     

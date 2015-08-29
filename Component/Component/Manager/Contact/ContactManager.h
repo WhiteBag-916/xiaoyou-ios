@@ -88,10 +88,10 @@ AS_SINGLETON(ContactManager);
 //屏蔽其他人
 - (void)forbiddenLinkMan:(NSString *)forbiddenId block:(ActionCompleteBlock)block;
 
-//屏蔽列表
+//屏蔽人列表
 - (void)forbiddenMeList:(ActionCompleteBlock)block;
 
-//获取屏蔽列表
+//获取屏蔽人列表
 - (NSArray *)getForbiddenMeList;
 
 //增加

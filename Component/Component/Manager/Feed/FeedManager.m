@@ -55,7 +55,7 @@ DEF_SINGLETON(FeedManager);
     
 }
 
-- (void)appDidLogout
+- (void)appDidLogout:(NSDictionary *)logoutInfo
 {
     
 }

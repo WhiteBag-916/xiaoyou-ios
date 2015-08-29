@@ -75,7 +75,7 @@
     return;
 }
 
-- (void)notifyAppLogouted
+- (void)notifyAppLogouted:(NSDictionary *)logoutInfo
 {
     NSArray *allManager = nil;
     @synchronized([self managers])
@@ -85,7 +85,7 @@
 
     for (YManager *manager in allManager)
     {
-        [manager appDidLogout];
+        [manager appDidLogout:logoutInfo];
     }
     return;
 }

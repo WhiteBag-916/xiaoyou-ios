@@ -34,7 +34,7 @@ NSString *const KFRIEND_APPLYID = @"100002";//好友申请
 NSString *const KGROUP_APPLYID = @"100003";//社团申请，ID累加
 
 
-@interface MessageManager ()<EMChatManagerChatDelegate>
+@interface MessageManager ()<EMChatManagerDelegate>
 
 @property (strong, nonatomic) NSDate *lastPlaySoundDate;
 @property (nonatomic, strong) NSMutableArray *grouArray;//现有的group
@@ -101,10 +101,10 @@ DEF_SINGLETON(MessageManager);
     [self loginEaseMob];
 }
 
-- (void)appDidLogout
+- (void)appDidLogout:(NSDictionary *)logoutInfo
 {
     [self unregisterNotifications];
-    [[EaseMob sharedInstance].chatManager asyncLogoffWithUnbindDeviceToken:YES completion:^(NSDictionary *info, EMError *error) {
+    [[EaseMob sharedInstance].chatManager asyncLogoffWithUnbindDeviceToken:[logoutInfo[@"logoutBySelf"] boolValue] completion:^(NSDictionary *info, EMError *error) {
         if (!error && info) {
             NSLog(@"退出成功");
         }

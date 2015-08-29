@@ -37,7 +37,7 @@
  *
  *  用户注销
  */
-- (void)appDidLogout;
+- (void)appDidLogout:(NSDictionary *)logoutInfo;
 
 @optional
 

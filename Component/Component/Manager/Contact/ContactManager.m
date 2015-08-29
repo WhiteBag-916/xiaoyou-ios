@@ -140,7 +140,7 @@ DEF_SINGLETON(ContactManager);
     }];
 }
 
-- (void)appDidLogout
+- (void)appDidLogout:(NSDictionary *)logoutInfo
 {
     //删除文件
     NSString *cachePath = [[YDirectory fileCache] stringByAppendingString:NSStringFromClass([LinkManModel class])];
@@ -428,7 +428,7 @@ DEF_SINGLETON(ContactManager);
     [YAction startAction:action completionBlock:^(YActionMessage* message) {
         
         if (message.isSuccess) {
-            _forbiddenMeList = [NSMutableArray arrayWithObject:[message.object forbiddenList]];
+            _forbiddenMeList = [NSMutableArray arrayWithObject:[[message.object forbiddenList] objectAtIndex:0]];
         }
         
         //主线程处理界面

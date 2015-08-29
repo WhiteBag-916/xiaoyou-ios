@@ -101,6 +101,7 @@ NSString *const kXYGroupInfoDetailViewController = @"XYGroupInfoDetailViewContro
     
     YActionSheetItem *item2 = [YActionSheetItem itemWithTitle:@"消息不提醒"
                                                          type:YCommonActionSheetItemTypeSwitch
+                                                      isGroup:YES
                                                          open:YES
                                                     extraData:@{@"uid":self.gid}];
     
