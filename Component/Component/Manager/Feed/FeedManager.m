@@ -218,6 +218,11 @@ DEF_SINGLETON(FeedManager);
     action.url = [YUtils getUrl:api_alert_readAll];
     
     [YAction startAction:action completionBlock:^(YActionMessage* message) {
+        
+        if (message.isSuccess) {
+            [[ProvisionManager sharedInstance] resetUnreadAlterCount:0];
+        }
+        
         //主线程处理界面
         block(message);
     }];
