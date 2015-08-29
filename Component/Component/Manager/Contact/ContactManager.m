@@ -29,6 +29,7 @@
 #import "ForbiddenList.h"
 #import "ForbiddenLinkManAction.h"
 #import "ClassList.h"
+#import "EaseMob.h"
 
 #define kContactsManagerSyncQueue @"kContactsManagerSyncQueue"
 
@@ -81,6 +82,11 @@ DEF_SINGLETON(ContactManager);
     }
 }
 
+//屏蔽群消息
+- (void)blockGroupByContact {
+    [[[EaseMob sharedInstance] chatManager] asyncUnblockGroup:@"99306000716136892" completion:nil onQueue:nil];
+}
+
 //存储联系人到本地
 - (void)saveContactsList
 {
@@ -111,6 +117,8 @@ DEF_SINGLETON(ContactManager);
             {
                 _linkManModel = message.object;
                 [self saveContactsList];
+                
+//                [self blockGroupByContact];
             }
             
             //主线程处理界面
@@ -428,7 +436,7 @@ DEF_SINGLETON(ContactManager);
     [YAction startAction:action completionBlock:^(YActionMessage* message) {
         
         if (message.isSuccess) {
-            _forbiddenMeList = [NSMutableArray arrayWithObject:[[message.object forbiddenList] objectAtIndex:0]];
+            _forbiddenMeList = [NSMutableArray arrayWithObject:[message.object forbiddenList]];
         }
         
         //主线程处理界面
