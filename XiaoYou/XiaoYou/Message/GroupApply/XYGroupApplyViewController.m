@@ -11,6 +11,7 @@
 #import "YCommonActionSheet.h"
 #import "XYChoicePersonViewController.h"
 #import "ApplicantList.h"
+#import "ContactManager.h"
 
 @interface XYGroupApplyViewController ()
 
@@ -74,7 +75,15 @@
 }
 
 - (void)removeAllData {
-    [_groupApplyTableView refreshTableView:[NSArray array]];
+    NSMutableArray * idArr = [NSMutableArray array];
+    [[_groupApplyTableView getData] enumerateObjectsUsingBlock:^(ApplicantList * obj, NSUInteger idx, BOOL *stop) {
+        [idArr addObject:@(obj.applyId)];
+        
+    }];
+    NSString * ids = [idArr componentsJoinedByString:@","];
+    [[ContactManager sharedInstance] ignoreApplyList:ids block:^(YActionMessage *message) {
+        [_groupApplyTableView refreshTableView:[NSArray array]];;
+    }];
 }
 
 - (void)choicePerson {

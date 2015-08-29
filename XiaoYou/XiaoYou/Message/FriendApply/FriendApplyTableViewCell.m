@@ -232,6 +232,8 @@ typedef enum : NSUInteger {
         [self setIsRelated:hasRelate];
     }
     [_connectTag updateWithTag:_applicantList.author.propetiesCommon];
+    
+//    _infoLabel.text = [NSString stringWithFormat:@"%@   %@",model.college,model.faculty];
 }
 
 //更新buttonshow

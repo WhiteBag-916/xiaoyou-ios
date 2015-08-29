@@ -64,10 +64,6 @@
             [weakSelf.contactsTableView refreshTableView:[[ContactManager sharedInstance] getContactsListData]];
         }
     }];
-    
-    [[EaseMob sharedInstance].chatManager loadAllConversationsFromDatabaseWithAppend2Chat:NO];
-    
-    
 }
 
 - (void)removeEmptyConversationsFromDB
