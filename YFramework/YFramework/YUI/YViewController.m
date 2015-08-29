@@ -136,12 +136,12 @@
 #pragma mark - 左导航栏
 - (void)showCustomNavigationBackButton
 {
-    [self showNomalNavigationLeftButton:@"" action:@selector(onNavigationLeftButtonClicked) imgName:@"common_back" frame:CGRectMake(0, 0, 9, 64)];
+    [self showNomalNavigationLeftButton:@"" action:@selector(onNavigationLeftButtonClicked) imgName:@"common_back" frame:CGRectMake(0, 0, 9, 14)];
 }
 
 //导航栏左侧显示取消按钮
 - (void)showCustomNavigationCancelButton {
-    [self showNomalNavigationLeftButton:@"" action:@selector(onNavigationLeftButtonClicked) imgName:@"complete-cancel" frame:CGRectMake(0, 0, 16, 64)];
+    [self showNomalNavigationLeftButton:@"" action:@selector(onNavigationLeftButtonClicked) imgName:@"complete-cancel" frame:CGRectMake(0, 0, 16, 16)];
 }
 
 - (void)showNomalNavigationLeftButton:(NSString *)title action:(SEL)selector imgName:(NSString *)imgName frame:(CGRect)frame
@@ -180,11 +180,11 @@
 
 //导航栏右侧，确认按钮
 - (void)showCustomNavigationSureButton {
-    [self showNomalNavigationRightButtonWithImage:@"" action:@selector(onNavigationRightButtonClicked) imgName:@"complete" frame:CGRectMake(0, 0, 20, 64)];
+    [self showNomalNavigationRightButtonWithImage:@"" action:@selector(onNavigationRightButtonClicked) imgName:@"complete" frame:CGRectMake(0, 0, 20, 15)];
 }
 //导航栏右侧，发布按钮
 - (void)showCustomNavigationPublishButton {
-    [self showNomalNavigationRightButtonWithImage:@"" action:@selector(onNavigationRightButtonClicked) imgName:@"mine-publisher" frame:CGRectMake(0, 0, 15, 64)];
+    [self showNomalNavigationRightButtonWithImage:@"" action:@selector(onNavigationRightButtonClicked) imgName:@"mine-publisher" frame:CGRectMake(0, 0, 15, 20)];
 }
 
 //导航栏右侧下一步按钮
