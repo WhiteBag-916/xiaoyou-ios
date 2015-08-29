@@ -70,16 +70,24 @@ NSString *const kGroupInfoDetailHeaderView = @"GroupInfoDetailHeaderViewId";
     return self;
 }
 
--(void)setHeaderViewInfo:(GroupModel *)model
+-(void)setHeaderViewInfo:(GroupModel *) model andIsClass:(BOOL) isClass
 {
     if ([model.groupIcon isEqualToString:@""])
     {
-        _grouoHeadLabel.text = [model.groupName substringWithRange:NSMakeRange(0, 1)];
+        if (isClass)
+        {
+             _grouoHeadLabel.text = @"班";
+        }
+        else
+        {
+             _grouoHeadLabel.text = [model.groupName substringWithRange:NSMakeRange(0, 1)];
+
+        }
+       
     }
     else
     {
-        _grouoHeadLabel.text = @"";
-        [_groupImageView setFaceImageWithUrl:model.groupIcon];
+        [_groupImageView setNormalImageWithUrl:model.groupIcon];
     }
     
     _groupNameLabel.text = model.groupName;

@@ -78,7 +78,7 @@
         [dic setObject:@NO forKey:@"isDelete"];
         [_dataSourceArr addObject:dic];
     }
-    [_headView setHeaderViewInfo:_headerModel];
+    [_headView setHeaderViewInfo:_headerModel andIsClass:self.myController.isClass];
     [self reloadData];
 }
 
@@ -187,7 +187,7 @@
 - (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath
 {
     _headView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:kGroupInfoDetailHeaderView forIndexPath:indexPath];
-    [_headView setHeaderViewInfo:_headerModel];
+    [_headView setHeaderViewInfo:_headerModel andIsClass:self.myController.isClass];
     return _headView;
 }
 
