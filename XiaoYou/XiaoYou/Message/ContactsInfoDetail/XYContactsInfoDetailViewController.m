@@ -111,6 +111,10 @@
 
 -(void)showShareActionSheet
 {
+    if (_shareData == nil) {
+        [YUtils showTitle:@"无网络连接"];
+        return;
+    }
     YActionSheetItem *item1 = [YActionSheetItem itemWithType:YCommonActionSheetItemTypeSharePerson title:@"分享该人名片至" extraData:_shareData];
     
     YActionSheetItem *item2 = [YActionSheetItem itemWithTitle:@"消息不提醒"
