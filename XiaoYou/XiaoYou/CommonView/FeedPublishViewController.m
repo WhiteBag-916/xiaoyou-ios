@@ -76,7 +76,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     [self initView];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(openPhoto) name:KNotification_Present_TakePhoto object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showAddPicList) name:KNotification_Present_TakePhoto object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changeMode:) name:@"UITextInputCurrentInputModeDidChangeNotification" object:nil];
 }
 -(void) changeMode:(NSNotification *)notification{
@@ -316,9 +316,7 @@
     
     [_tagView updateTag:[_tagsArray[select][tagIsSelected] boolValue] atIndex:select];
 }
-- (void)openPhoto {
-    [self showAddPicList];
-}
+
 - (void)showAddPicList {
     [self.view endEditing:true];
     YActionSheetItem *item1 = [YActionSheetItem itemWithTitle:@"拍照"

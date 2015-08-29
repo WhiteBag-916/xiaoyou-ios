@@ -285,6 +285,7 @@
         if([_pwdField.text isEqualToString:[YShareData defaultData][kShareData_LoginPassword]]) {
             self.title = @"验证手机号";
             _pwdView.hidden = true;
+            [self.view endEditing:true];
             [self checkComplete];
         } else {
             [YUtils showTitle:@"密码错误"];

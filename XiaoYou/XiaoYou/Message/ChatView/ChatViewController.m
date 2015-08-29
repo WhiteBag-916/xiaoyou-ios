@@ -251,7 +251,7 @@
         headImageView.layer.cornerRadius = 20;
         headImageView.clipsToBounds = YES;
         headImageView.userInteractionEnabled = YES;
-        [headImageView setFaceImageWithUrl:_studentDic[@"icon"]];
+        [headImageView setFaceImageWithUrl:_conversation.latestMessage.ext[@"headImage"]];
         UIButton *detailButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 60, 44)];
         [detailButton addTarget:self action:@selector(showRoomContact:) forControlEvents:UIControlEventTouchUpInside];
         [headImageView addSubview:detailButton];
@@ -1783,12 +1783,21 @@
 
 -(void)sendTextMessage:(NSString *)textMessage
 {
-    NSDictionary *ext = @{@"headImage":[[ProvisionManager sharedInstance] getLoginInfo].icon,@"userName":[[ProvisionManager sharedInstance] getLoginInfo].studentName};
-    NSLog(@"%@",ext);
+    NSDictionary *ext;
+    if ([self messageType] == eMessageTypeChat)
+    {
+        ext = @{@"headImage":[[ProvisionManager sharedInstance] getLoginInfo].icon,@"userName":[[ProvisionManager sharedInstance] getLoginInfo].studentName};
+    }
+    else if ([self messageType] == eMessageTypeGroupChat)
+    {
+        ext = @{@"headImage":_studentDic[@"icon"],@"userName":_studentDic[@"name"]};
+    }
+    
     
     if (_isRobot) {
         ext = @{kRobot_Message_Ext:[NSNumber numberWithBool:YES]};
     }
+     NSLog(@"%@",_conversation.chatter);
     EMMessage *tempMessage = [ChatSendHelper sendTextMessageWithString:textMessage
                                                             toUsername:_conversation.chatter
                                                            messageType:[self messageType]
@@ -1800,7 +1809,15 @@
 -(void)sendImageMessage:(UIImage *)image
 {
     
-    NSDictionary *ext = @{@"headImage":[[ProvisionManager sharedInstance] getLoginInfo].icon,@"userName":[[ProvisionManager sharedInstance] getLoginInfo].studentName};
+    NSDictionary *ext;
+    if ([self messageType] == eMessageTypeChat)
+    {
+        ext = @{@"headImage":[[ProvisionManager sharedInstance] getLoginInfo].icon,@"userName":[[ProvisionManager sharedInstance] getLoginInfo].studentName};
+    }
+    else if ([self messageType] == eMessageTypeGroupChat)
+    {
+        ext = @{@"headImage":_studentDic[@"icon"],@"userName":_studentDic[@"name"]};
+    }
     
     if (_isRobot) {
         ext = @{kRobot_Message_Ext:[NSNumber numberWithBool:YES]};
@@ -1815,7 +1832,15 @@
 
 -(void)sendAudioMessage:(EMChatVoice *)voice
 {
-    NSDictionary *ext = @{@"headImage":[[ProvisionManager sharedInstance] getLoginInfo].icon,@"userName":[[ProvisionManager sharedInstance] getLoginInfo].studentName};
+    NSDictionary *ext;
+    if ([self messageType] == eMessageTypeChat)
+    {
+        ext = @{@"headImage":[[ProvisionManager sharedInstance] getLoginInfo].icon,@"userName":[[ProvisionManager sharedInstance] getLoginInfo].studentName};
+    }
+    else if ([self messageType] == eMessageTypeGroupChat)
+    {
+        ext = @{@"headImage":_studentDic[@"icon"],@"userName":_studentDic[@"name"]};
+    }
     if (_isRobot) {
         ext = @{kRobot_Message_Ext:[NSNumber numberWithBool:YES]};
     }
@@ -1828,7 +1853,15 @@
 
 -(void)sendVideoMessage:(EMChatVideo *)video
 {
-    NSDictionary *ext = @{@"headImage":[[ProvisionManager sharedInstance] getLoginInfo].icon,@"userName":[[ProvisionManager sharedInstance] getLoginInfo].studentName};
+    NSDictionary *ext;
+    if ([self messageType] == eMessageTypeChat)
+    {
+        ext = @{@"headImage":[[ProvisionManager sharedInstance] getLoginInfo].icon,@"userName":[[ProvisionManager sharedInstance] getLoginInfo].studentName};
+    }
+    else if ([self messageType] == eMessageTypeGroupChat)
+    {
+        ext = @{@"headImage":_studentDic[@"icon"],@"userName":_studentDic[@"name"]};
+    }
     if (_isRobot) {
         ext = @{kRobot_Message_Ext:[NSNumber numberWithBool:YES]};
     }

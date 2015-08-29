@@ -68,17 +68,17 @@
     [_bottomButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [self.view addSubview:_bottomButton];
     
+    [_bottomButton setBackgroundImage:[UIImage imageNamed:@"contacts_bottom"] forState:UIControlStateNormal];
     if ([[ContactManager sharedInstance] isFriendRelationShip:_uid])
     {
         _studentDic = [[[ContactManager sharedInstance] getFriendInfo:_uid] dictionaryRepresentation];
         [_bottomButton addTarget:self action:@selector(clickBottomButton) forControlEvents:UIControlEventTouchUpInside];
         [_bottomButton setTitle:@"聊聊呗" forState:UIControlStateNormal];
-        [_bottomButton setBackgroundImage:[UIImage imageNamed:@"contacts_bottom"] forState:UIControlStateNormal];
     }
     else
     {
+        _bottomButton.enabled = NO;
         [_bottomButton setTitle:@"你们还不是好友" forState:UIControlStateNormal];
-        _bottomButton.backgroundColor = [UIColor grayColor];
     }
     
     [_bottomButton mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -161,7 +161,7 @@
         }
         else
         {
-            [YUtils showTitle:@"删除好友失败" hideAfter:2];
+            [YUtils showTitle:message.desc hideAfter:2];
         }
         
     }];
