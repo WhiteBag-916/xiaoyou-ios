@@ -16,4 +16,6 @@ extern NSString *const kXYGroupInfoDetailViewController;
 
 @property (nonatomic,strong)NSString * gid;
 
+@property (nonatomic,assign)BOOL isClass;
+
 @end
