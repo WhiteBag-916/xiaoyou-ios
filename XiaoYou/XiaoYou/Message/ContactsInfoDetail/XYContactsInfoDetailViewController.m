@@ -32,11 +32,14 @@
     // Do any additional setup after loading the view.
     
     [self setUpUI];
-    
     [[ContactManager sharedInstance] getUserDetailInfo:_uid block:^(YActionMessage *message) {
-        ProfileInfo * model = message.object;
-        _shareData = @{@"name":model.userName, @"pic":model.headPic, @"school":model.schoolName};
-        [_contactsInfoDetailTableView refreshTableView:model];
+        if (message.isSuccess) {
+            ProfileInfo * model = message.object;
+            _shareData = @{@"name":model.userName, @"pic":model.headPic, @"school":model.schoolName};
+            [_contactsInfoDetailTableView refreshTableView:model];
+        } else {
+            [YUtils showTitle:message.desc];
+        }
     }];
     
     [self showCustomNavigationBackButton];
