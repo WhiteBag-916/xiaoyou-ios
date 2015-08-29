@@ -24,6 +24,7 @@
 #import "MessageManager.h"
 #import "XYFriendApplyViewController.h"
 #import "XYGroupApplyViewController.h"
+#import "YUtils+Component.h"
 
 #define kRowHeight                     68
 #define kHeadWidthAndHeight            40
@@ -242,7 +243,7 @@
 -(NSString *)lastMessageTimeByConversation:(EMMessage *)model
 {
     NSString *ret = @"";
-    ret = [NSDate formattedTimeFromTimeInterval:model.timestamp];
+    ret = [YUtils distanceTimeToday:[NSDate dateWithTimeIntervalSince1970:model.timestamp/1000]];
     
     return ret;
 }

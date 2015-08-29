@@ -44,6 +44,7 @@
 #import "YNotificationDefine.h"
 #import "UIImageView+Ext.h"
 #import "ClassList.h"
+#import "YUtils+Component.h"
 
 #define KPageCount 20
 #define KHintAdjustY    50
@@ -1526,7 +1527,8 @@
             NSDate *createDate = [NSDate dateWithTimeIntervalInMilliSecondSince1970:(NSTimeInterval)message.timestamp];
             NSTimeInterval tempDate = [createDate timeIntervalSinceDate:self.chatTagDate];
             if (tempDate > 60 || tempDate < -60 || (self.chatTagDate == nil)) {
-                [formatArray addObject:[createDate formattedTime]];
+                [formatArray addObject:[YUtils distanceTimeToday:[NSDate dateWithTimeIntervalSince1970:message.timestamp/1000]]];
+//                [formatArray addObject:[createDate formattedTime]];
                 self.chatTagDate = createDate;
             }
             
@@ -1557,7 +1559,8 @@
     NSDate *createDate = [NSDate dateWithTimeIntervalInMilliSecondSince1970:(NSTimeInterval)message.timestamp];
     NSTimeInterval tempDate = [createDate timeIntervalSinceDate:self.chatTagDate];
     if (tempDate > 60 || tempDate < -60 || (self.chatTagDate == nil)) {
-        [ret addObject:[createDate formattedTime]];
+        [ret addObject:[YUtils distanceTimeToday:[NSDate dateWithTimeIntervalSince1970:message.timestamp/1000]]];
+//        [ret addObject:[createDate formattedTime]];
         self.chatTagDate = createDate;
     }
     

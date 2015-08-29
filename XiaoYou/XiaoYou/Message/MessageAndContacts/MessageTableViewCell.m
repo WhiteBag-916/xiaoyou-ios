@@ -17,6 +17,7 @@
 #import "LinkManList.h"
 #import "ClassList.h"
 #import "MessageManager.h"
+#import "YUtils+Component.h"
 
 #define kHeadWidthAndHeight            40
 #define kNameLabelWidth                80
@@ -285,7 +286,7 @@ NSString *const kMessageTableViewCell = @"MessageTableViewCellId";
     NSString *ret = @"";
     EMMessage *lastMessage = [conversation latestMessage];;
     if (lastMessage) {
-        ret = [NSDate formattedTimeFromTimeInterval:lastMessage.timestamp];
+        ret = [YUtils distanceTimeToday:[NSDate dateWithTimeIntervalSince1970:lastMessage.timestamp/1000]];
     }
     
     return ret;
