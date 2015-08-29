@@ -141,18 +141,13 @@
     return url;
 }
 
-// 是否wifi
-+ (BOOL) IsEnableWIFI {
-    return ([[Reachability reachabilityForLocalWiFi] currentReachabilityStatus] != NotReachable);
-}
-
-// 是否3G
-+ (BOOL) IsEnable3G {
-    return ([[Reachability reachabilityForInternetConnection] currentReachabilityStatus] != NotReachable);
-}
-
 // 是否能有网络连接
 + (BOOL) IsEnableConnection {
-    return [self IsEnableWIFI] || [self IsEnable3G];
+    if (([Reachability reachabilityForInternetConnection].currentReachabilityStatus == NotReachable) &&
+        ([Reachability reachabilityForLocalWiFi].currentReachabilityStatus == NotReachable)) {
+        return NO;
+    }
+    
+    return YES;
 }
 @end
