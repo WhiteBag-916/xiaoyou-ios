@@ -232,6 +232,8 @@ NSString *const kGroupApplyTableViewCell = @"GroupApplyTableViewCellId";
         }
         [self setIsRelated:hasRelate];
     }
+    _infoLabel.text = [NSString stringWithFormat:@"%@   %@",applicantList.author.college,applicantList.author.faculty];
+
 }
 
 

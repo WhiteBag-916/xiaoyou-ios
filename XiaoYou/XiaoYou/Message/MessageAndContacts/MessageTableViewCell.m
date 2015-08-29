@@ -23,7 +23,7 @@
 #define kTimeLabelWidth                80
 #define kHeadCornerRadius              20
 #define kPaddingDistance               10
-#define kLabelHeightDistacnce          14
+#define kLabelHeightDistacnce          16
 #define kBadgeWidthDistance            21
 #define kClassLabelDistance            5
 #define kClassLabelWidthAndHeight      30
