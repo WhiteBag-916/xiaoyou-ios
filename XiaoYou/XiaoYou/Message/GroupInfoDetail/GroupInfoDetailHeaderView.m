@@ -72,7 +72,16 @@ NSString *const kGroupInfoDetailHeaderView = @"GroupInfoDetailHeaderViewId";
 
 -(void)setHeaderViewInfo:(GroupModel *)model
 {
-    _grouoHeadLabel.text = [model.groupName substringWithRange:NSMakeRange(0, 1)];
+    if ([model.groupIcon isEqualToString:@""])
+    {
+        _grouoHeadLabel.text = [model.groupName substringWithRange:NSMakeRange(0, 1)];
+    }
+    else
+    {
+        _grouoHeadLabel.text = @"";
+        [_groupImageView setFaceImageWithUrl:model.groupIcon];
+    }
+    
     _groupNameLabel.text = model.groupName;
 
 }
