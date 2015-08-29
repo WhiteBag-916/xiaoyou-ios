@@ -52,11 +52,7 @@
 -(void)setUpUI
 {
     self.title = @"详情";
-    
-    UIButton *shareButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, kNavigationgRightWidthAndHeight, kNavigationgRightWidthAndHeight)];
-    [shareButton setImage:[UIImage imageNamed:@"more"] forState:UIControlStateNormal];
-    [shareButton addTarget:self action:@selector(showShareActionSheet) forControlEvents:UIControlEventTouchUpInside];
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:shareButton];
+    [self showCustomNavigationMoreButton];
     
     _contactsInfoDetailTableView = [[ContactsInfoDetailTableView alloc] init];
     _contactsInfoDetailTableView.myController = self;
@@ -109,7 +105,7 @@
         }
 }
 
--(void)showShareActionSheet
+-(void)onNavigationRightButtonClicked
 {
     if (_shareData == nil) {
         [YUtils showTitle:@"无网络连接"];
