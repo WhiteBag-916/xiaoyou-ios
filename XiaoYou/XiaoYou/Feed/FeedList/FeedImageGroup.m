@@ -23,6 +23,7 @@
 
 @property (nonatomic, assign) float imgSize;
 
+@property (nonatomic, strong) UIImageView *singleImg;
 
 @end
 
@@ -151,16 +152,18 @@
 }
 
 - (void)specialForOneImage:(NSString *)url {
+    UIImageView *img = (UIImageView *)[_contentView subviews][0];
+    [img mas_remakeConstraints:^(MASConstraintMaker *make) {
+        make.width.equalTo(_contentView);
+        make.height.equalTo(img.mas_width);
+        make.top.left.equalTo(_contentView);
+    }];
+    img.contentMode = UIViewContentModeScaleAspectFit;
+    [img setNormalImageWithUrl:url];
     [self moveToLine:3];
     for (int i = 1; i < 9; i++) {
         [_contentView.subviews[i] setHidden:true];
     }
-    UIImageView *img = (UIImageView *)[_contentView viewWithTag:KIMGTAG];
-    [img mas_remakeConstraints:^(MASConstraintMaker *make) {
-        make.edges.equalTo(_contentView);
-    }];
-    img.contentMode = UIViewContentModeScaleAspectFit;
-    [img setNormalImageWithUrl:url];
 }
 - (void)addPhoto:(UIImage *)image {
     [_smallImgs addObject:image];
@@ -168,19 +171,18 @@
 }
 
 - (void)normalForImages:(NSArray *)urls {
+    UIImageView *img = (UIImageView *)[_contentView subviews][0];
+    [img mas_remakeConstraints:^(MASConstraintMaker *make) {
+        make.left.top.equalTo(_contentView);
+        make.width.height.mas_equalTo(_imgSize);
+    }];
+    img.contentMode = UIViewContentModeScaleAspectFill;
     [self moveToLine:(int)(urls.count / 3)];
     for (int i = 0; i < urls.count; i ++) {
         [(UIImageView *)[_contentView viewWithTag:KIMGTAG+i] setNormalImageWithUrl:urls[i]];
     }
 }
 - (void)moveToLine:(int)index {
-    UIImageView *img = (UIImageView *)[_contentView viewWithTag:KIMGTAG];
-    [img mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.top.equalTo(_contentView);
-        make.width.height.mas_equalTo(_imgSize);
-    }];
-    img.contentMode = UIViewContentModeScaleAspectFill;
-    
     for (int i = 0; i < 9; i++) {
         [_contentView.subviews[i] setHidden:true];
         [_contentView.subviews[i] setTag:KIMGTAG - i-1];
