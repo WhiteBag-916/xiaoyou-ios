@@ -23,6 +23,8 @@ NSString *const kAuthorName = @"name";
 NSString *const kAuthorGroupCodes = @"groupCodes";
 NSString *const kAuthorGender = @"gender";
 NSString *const kAuthorFriendStatus = @"friendStatus";
+NSString *const kAuthorCollege = @"college";
+NSString *const kAuthorFaculty = @"faculty";
 
 @interface Author ()
 
@@ -45,6 +47,8 @@ NSString *const kAuthorFriendStatus = @"friendStatus";
 @synthesize groupCodes = _groupCodes;
 @synthesize gender = _gender;
 @synthesize friendStatus = _friendStatus;
+@synthesize college = _college;
+@synthesize faculty = _faculty;
 
 + (instancetype)modelObjectWithDictionary:(NSDictionary *)dict
 {
@@ -121,6 +125,8 @@ NSString *const kAuthorFriendStatus = @"friendStatus";
         
         self.gender = [self objectOrNilForKey:kAuthorGender fromDictionary:dict];
         self.friendStatus = [self objectOrNilForKey:kAuthorFriendStatus fromDictionary:dict];
+        self.college = [self objectOrNilForKey:kAuthorCollege fromDictionary:dict];
+        self.faculty = [self objectOrNilForKey:kAuthorFaculty fromDictionary:dict];
 
     }
     
@@ -184,6 +190,8 @@ NSString *const kAuthorFriendStatus = @"friendStatus";
     }
     [mutableDict setValue:[NSArray arrayWithArray:tempArrayForGroupCodes] forKey:kAuthorGroupCodes];
     [mutableDict setValue:self.friendStatus forKey:kAuthorFriendStatus];
+    [mutableDict setValue:self.college forKey:kAuthorCollege];
+    [mutableDict setValue:self.faculty forKey:kAuthorFaculty];
 
     return [NSDictionary dictionaryWithDictionary:mutableDict];
 }
@@ -220,6 +228,8 @@ NSString *const kAuthorFriendStatus = @"friendStatus";
     self.groupCodes = [aDecoder decodeObjectForKey:kAuthorGroupCodes];
     self.gender = [aDecoder decodeObjectForKey:kAuthorGender];
     self.friendStatus = [aDecoder decodeObjectForKey:kAuthorFriendStatus];
+    self.college = [aDecoder decodeObjectForKey:kAuthorCollege];
+    self.faculty = [aDecoder decodeObjectForKey:kAuthorFaculty];
     return self;
 }
 
@@ -239,6 +249,8 @@ NSString *const kAuthorFriendStatus = @"friendStatus";
     [aCoder encodeObject:_gender forKey:kAuthorGender];
     [aCoder encodeObject:_groupCodes forKey:kAuthorGroupCodes];
     [aCoder encodeObject:_friendStatus forKey:kAuthorFriendStatus];
+    [aCoder encodeObject:_college forKey:kAuthorCollege];
+    [aCoder encodeObject:_faculty forKey:kAuthorFaculty];
 }
 
 - (id)copyWithZone:(NSZone *)zone
@@ -260,6 +272,8 @@ NSString *const kAuthorFriendStatus = @"friendStatus";
         copy.gender = [self.gender copyWithZone:zone];
         copy.groupCodes = [self.groupCodes copyWithZone:zone];
         copy.friendStatus = [self.friendStatus copyWithZone:zone];
+        copy.college = [self.college copyWithZone:zone];
+        copy.faculty = [self.faculty copyWithZone:zone];
     }
     
     return copy;

@@ -145,6 +145,7 @@
         if ([conversation.chatter isEqualToString:KSYSTEM_MESSAGEID])
         {
             _systemMessage = [conversation latestMessage];
+            [conversations removeObject:conversation];
             break;
         }
     }
