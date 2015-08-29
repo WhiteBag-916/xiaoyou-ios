@@ -115,6 +115,8 @@ DEF_SINGLETON(MessageManager);
         if (!error && loginInfo) {
             YLogD(@"登陆成功");
             
+            [[EaseMob sharedInstance].chatManager loadAllConversationsFromDatabaseWithAppend2Chat:YES];
+            
             //取群组id，进行管理
             [self initGroupIdArray];
             
@@ -224,8 +226,6 @@ DEF_SINGLETON(MessageManager);
                                                     conversationType:eConversationTypeChat];
         
         [message updateMessageExtToDB];
-        
-        [[EaseMob sharedInstance].chatManager loadAllConversationsFromDatabaseWithAppend2Chat:NO];
         
         [[NSNotificationCenter defaultCenter] postNotificationName:kNotification_Refresh_Message object:nil userInfo:nil];
         

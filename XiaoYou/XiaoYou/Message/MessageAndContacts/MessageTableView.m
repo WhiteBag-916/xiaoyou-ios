@@ -143,7 +143,15 @@
     _timeLabel.font = CONTENT_FONT(9);
     _timeLabel.textAlignment = NSTextAlignmentRight;
     _timeLabel.backgroundColor = [UIColor clearColor];
-    _timeLabel.text = [self lastMessageTimeByConversation:model];
+    if (model)
+    {
+        _timeLabel.text = [self lastMessageTimeByConversation:model];
+    }
+    else
+    {
+        _timeLabel.text = @"";
+    }
+    
     [backView addSubview:_timeLabel];
     [_timeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.mas_equalTo(kPaddingDistance);
@@ -155,7 +163,15 @@
     _messageLabel = [[UILabel alloc] init];
     _messageLabel.font = CONTENT_FONT(12);
     _messageLabel.backgroundColor = [UIColor clearColor];
-    _messageLabel.text = [self subTitleMessageByConversation:model];;
+    if (model)
+    {
+        _messageLabel.text = [self subTitleMessageByConversation:model];
+    }
+    else
+    {
+        _messageLabel.text = @"暂时没有系统消息";
+    }
+    
     [backView addSubview:_messageLabel];
     [_messageLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.bottom.mas_equalTo(-kPaddingDistance);

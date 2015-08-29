@@ -125,22 +125,10 @@
                                                         block:^(NSInteger checkNum) {
                                                            YCommonAlertView * alertView = [[YCommonAlertView alloc] initWithTitle:nil message:@"确定解除好友关系？" buttonTitles:@"确定",@"取消", nil];
                                                             [alertView clickedButtonHandler:^(NSInteger index) {
-                                                                switch (index) {
-                                                                    case 0:
-                                                                        [[ContactManager sharedInstance] delLinkMan:_studentDic[@"uid"] block:^(YActionMessage *message) {
-                                                                            
-                                                                            
-                                                                        }];
-                                                                        
-                                                                        [self.navigationController popViewControllerAnimated:YES];
-                                                                        break;
-                                                                    case 1:
-                                                                    
-                                                                        break;
-                                                                        
-                                                                    default:
-                                                                        break;
+                                                                if (index == 0) {
+                                                                    [self deleteFriends];
                                                                 }
+                                                           
                                                             }];
                                                             [alertView show];
                                                         }];
@@ -162,6 +150,23 @@
         [sheet show];
     }
     
+}
+
+- (void)deleteFriends
+{
+    [YUtils showHUDWithTitle];
+    [[ContactManager sharedInstance] delLinkMan:_studentDic[@"uid"] block:^(YActionMessage *message) {
+        [YUtils hiddenProgressHUD];
+        if (message.isSuccess) {
+            
+            [self.navigationController popViewControllerAnimated:YES];
+        }
+        else
+        {
+            [YUtils showTitle:@"删除好友失败" hideAfter:2];
+        }
+        
+    }];
 }
 
 - (void)didReceiveMemoryWarning {
