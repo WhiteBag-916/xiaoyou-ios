@@ -72,6 +72,8 @@
 		20DD115D1B8D699C00767E62 /* CNTextController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20DD115C1B8D699C00767E62 /* CNTextController.m */; };
 		20DD4B311B7345EF007C352C /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20DD4B301B7345EF007C352C /* ProfileViewController.m */; };
 		20DD4B351B734781007C352C /* CommonSwitchView.m in Sources */ = {isa = PBXBuildFile; fileRef = 20DD4B341B734781007C352C /* CommonSwitchView.m */; };
+		20DD81331B91ABCE00ACFD9A /* campus-assistant_map_screen@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 20DD81311B91ABCE00ACFD9A /* campus-assistant_map_screen@2x.png */; };
+		20DD81341B91ABCE00ACFD9A /* campus-assistant_map_screen@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 20DD81321B91ABCE00ACFD9A /* campus-assistant_map_screen@3x.png */; };
 		20E033E51B842727002E4583 /* UMSocialLocalizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 20E033C41B842727002E4583 /* UMSocialLocalizable.strings */; };
 		20E033E61B842727002E4583 /* libUMSocial_Sdk_4.2.3.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 20E033D21B842727002E4583 /* libUMSocial_Sdk_4.2.3.a */; };
 		20E033E71B842727002E4583 /* UMSCommentDetailController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 20E033D41B842727002E4583 /* UMSCommentDetailController.xib */; };
@@ -556,6 +558,8 @@
 		20DD4B301B7345EF007C352C /* ProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileViewController.m; sourceTree = "<group>"; };
 		20DD4B331B734781007C352C /* CommonSwitchView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonSwitchView.h; sourceTree = "<group>"; };
 		20DD4B341B734781007C352C /* CommonSwitchView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommonSwitchView.m; sourceTree = "<group>"; };
+		20DD81311B91ABCE00ACFD9A /* campus-assistant_map_screen@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "campus-assistant_map_screen@2x.png"; sourceTree = "<group>"; };
+		20DD81321B91ABCE00ACFD9A /* campus-assistant_map_screen@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "campus-assistant_map_screen@3x.png"; sourceTree = "<group>"; };
 		20E033C51B842727002E4583 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/UMSocialLocalizable.strings; sourceTree = "<group>"; };
 		20E033C71B842727002E4583 /* UMSocial.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UMSocial.h; sourceTree = "<group>"; };
 		20E033C81B842727002E4583 /* UMSocialAccountManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UMSocialAccountManager.h; sourceTree = "<group>"; };
@@ -2322,6 +2326,8 @@
 		3334AC4A1B83319500FDDCCB /* contacts */ = {
 			isa = PBXGroup;
 			children = (
+				20DD81311B91ABCE00ACFD9A /* campus-assistant_map_screen@2x.png */,
+				20DD81321B91ABCE00ACFD9A /* campus-assistant_map_screen@3x.png */,
 				33380D981B85D57C008B51EB /* chat_remindnot@2x.png */,
 				33380D991B85D57C008B51EB /* chat_remindnot@3x.png */,
 				20E033FE1B846398002E4583 /* feed-find-someone-search-grey@2x.png */,
@@ -2701,6 +2707,7 @@
 				333122921B806EDC00D3D032 /* imageDownloadFail@2x.png in Resources */,
 				20E18DD71B808E42005B75EE /* society@3x.png in Resources */,
 				20E18DD41B808E42005B75EE /* search@2x.png in Resources */,
+				20DD81341B91ABCE00ACFD9A /* campus-assistant_map_screen@3x.png in Resources */,
 				33380D9A1B85D57C008B51EB /* chat_remindnot@2x.png in Resources */,
 				333122911B806EDC00D3D032 /* faceDelete@2x.png in Resources */,
 				20E033E71B842727002E4583 /* UMSCommentDetailController.xib in Resources */,
@@ -2889,6 +2896,7 @@
 				20DAF99F1B8713F6005B7932 /* login_school@2x.png in Resources */,
 				20E18DCC1B808E42005B75EE /* more@2x.png in Resources */,
 				650C6C1A1B886E4C00A89AC9 /* mine-toast-particulars@2x.png in Resources */,
+				20DD81331B91ABCE00ACFD9A /* campus-assistant_map_screen@2x.png in Resources */,
 				3334AC1F1B82D7C400FDDCCB /* VoiceSearchFeedback001.png in Resources */,
 				20E18DC11B808E42005B75EE /* message_tab_green@3x.png in Resources */,
 				3348CB6A1B87236200F97FAF /* send-click@2x.png in Resources */,
