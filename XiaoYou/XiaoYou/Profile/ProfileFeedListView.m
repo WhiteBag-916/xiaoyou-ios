@@ -48,16 +48,17 @@
 }
 - (void)loadNewData
 {
-    [self sendRequest];
+    [self sendRequest:true];
 }
 
 - (void)loadMoreData
 {
-    [self sendRequest];
+    [self sendRequest:false];
 }
 
-- (void)sendRequest {
-    [[FeedManager sharedInstance] getMyFeed:_userId limitStart:_feedArray.count limitEnd:_feedArray.count + KPAGENUM block:^(YActionMessage *message) {
+- (void)sendRequest:(BOOL)isRefresh {
+    int cnt = isRefresh?0:(int)_feedArray.count;
+    [[FeedManager sharedInstance] getMyFeed:_userId limitStart:cnt limitEnd:cnt + KPAGENUM block:^(YActionMessage *message) {
         if (message.isSuccess) {
             if ([self isHeaderRefresh]) {
                 [_feedArray removeAllObjects];
