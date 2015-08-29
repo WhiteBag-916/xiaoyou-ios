@@ -98,9 +98,9 @@ NSString *const filterIsSelected = @"filterIsSelected";
 //                            ,[@{filterName:@"女",filterIsSelected:@NO} mutableCopy]];
     
     //设置哪些已经选中
-    [_filterAllArray enumerateObjectsUsingBlock:^(NSDictionary *obj, NSUInteger idx, BOOL *stop) {
-        [_isSelectArray enumerateObjectsUsingBlock:^(NSString *obj2, NSUInteger idx, BOOL *stop) {
-            if ([obj2 isEqualToString:[obj[filterName] label]]) {
+    [_filterAllArray enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+        [_isSelectArray enumerateObjectsUsingBlock:^(id obj2, NSUInteger idx, BOOL *stop) {
+            if ([[obj2 label] isEqualToString:[obj[filterName] label]]) {
                 [obj setValue:@YES forKey:filterIsSelected];
             }
         }];
