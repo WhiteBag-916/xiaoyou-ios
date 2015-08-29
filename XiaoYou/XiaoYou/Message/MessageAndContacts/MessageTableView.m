@@ -129,9 +129,10 @@
         make.width.mas_equalTo(kBadgeWidthDistance);
     }];
     //未读数
-    if (![[self unreadMessageCountByConversation:model.conversation] isEqualToString:@"0"]) {
+    NSUInteger unreadCount = model.conversation.unreadMessagesCount;
+    if (unreadCount > 0) {
         _badgeNumberLabel.hidden = NO;
-        _badgeNumberLabel.text = [self unreadMessageCountByConversation:model.conversation];
+        _badgeNumberLabel.text = [NSString stringWithFormat:@"%lu", (unsigned long)unreadCount];
     }
     else
     {
@@ -231,14 +232,9 @@
 }
 
 // 得到未读消息条数
-- (NSString *)unreadMessageCountByConversation:(EMConversation *)conversation
+- (NSInteger)unreadMessageCountByConversation:(EMConversation *)conversation
 {
-    NSInteger ret = 0;
-    ret = conversation.unreadMessagesCount;
-    
-    NSString * count = [NSString stringWithFormat:@"%ld",ret];
-    
-    return  count;
+    return conversation.unreadMessagesCount;
 }
 
 #pragma mark - UITableViewDataSource和UITableViewDelegate
