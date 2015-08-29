@@ -16,6 +16,9 @@ AS_SINGLETON(ContactManager);
 
 - (void)getContactsListData:(ActionCompleteBlock)block;
 
+//通过id获取联系人
+- (LinkManList *)getManById:(NSString *)uid;
+
 //更新联系人的头像
 - (void)updateContactsHeadImageByThirdCode:(NSString *)thirdCode headImage:(NSString *)headImage;
 

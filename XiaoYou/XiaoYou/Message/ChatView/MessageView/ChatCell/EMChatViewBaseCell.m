@@ -108,8 +108,12 @@ NSString *const kRouterEventChatHeadImageTapEventName = @"kRouterEventChatHeadIm
     if (messageModel.isSender == NO) {
 //        UIImage *placeholderImage = [UIImage imageNamed:@"default_head"];
 //        [self.headImageView sd_setImageWithURL:_messageModel.headImageURL placeholderImage:placeholderImage];
-        NSLog(@"%@",_messageModel.message.ext[@"headImage"]);
-        [self.headImageView setFaceImageWithUrl:_messageModel.message.ext[@"headImage"]];
+//        NSLog(@"%@",_messageModel.message.ext[@"headImage"]);
+        if (nil != _messageModel.headImageURL) {
+            [self.headImageView sd_setImageWithURL:_messageModel.headImageURL placeholderImage:[UIImage imageNamed:@"default_head"]];
+        } else {
+            [self.headImageView setFaceImageWithUrl:_messageModel.message.ext[@"headImage"]];
+        }
     }
     else
     {

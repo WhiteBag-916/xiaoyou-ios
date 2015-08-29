@@ -93,14 +93,14 @@
         if ([_studentDic[@"linkType"] doubleValue] == 0) {
             ChatViewController * chatVC = [[ChatViewController alloc] initWithChatter:_studentDic[@"thirdCode"] isGroup:NO];
             chatVC.isSystemMessage = NO;
-            chatVC.studentDic = _studentDic;
+            chatVC.studentDic = [_studentDic mutableCopy];
             [self.navigationController pushViewController:chatVC animated:YES needHiddenBottomBar:YES];
         }
         else
         {
             ChatViewController * chatVC = [[ChatViewController alloc] initWithChatter:_studentDic[@"thirdCode"] isGroup:YES];
             chatVC.isSystemMessage = NO;
-            chatVC.studentDic = _studentDic;
+            chatVC.studentDic = [_studentDic mutableCopy];
             [self.navigationController pushViewController:chatVC animated:YES needHiddenBottomBar:YES];
         }
 }

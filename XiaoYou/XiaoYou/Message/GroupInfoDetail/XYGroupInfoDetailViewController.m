@@ -91,7 +91,7 @@ NSString *const kXYGroupInfoDetailViewController = @"XYGroupInfoDetailViewContro
 {
     ChatViewController * chatVC = [[ChatViewController alloc] initWithChatter:_studentDic[@"thirdCode"] isGroup:YES];
     chatVC.isSystemMessage = NO;
-    chatVC.studentDic = _studentDic;
+    chatVC.studentDic = [_studentDic mutableCopy];
     [self.navigationController pushViewController:chatVC animated:YES needHiddenBottomBar:YES];
 }
 

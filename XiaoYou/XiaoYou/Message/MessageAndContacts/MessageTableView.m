@@ -330,14 +330,14 @@
             if ([cell.studentDic[@"linkType"] doubleValue] == 0) {
                 ChatViewController * chatVC = [[ChatViewController alloc] initWithChatter:cell.conversation.chatter isGroup:NO];
                 chatVC.isSystemMessage = NO;
-                chatVC.studentDic = cell.studentDic;
+                chatVC.studentDic = [cell.studentDic  mutableCopy];
                 [self.myController.navigationController pushViewController:chatVC animated:YES];
             }
             else
             {
                 ChatViewController * chatVC = [[ChatViewController alloc] initWithChatter:cell.conversation.chatter isGroup:YES];
                 chatVC.isSystemMessage = NO;
-                chatVC.studentDic = cell.studentDic;
+                chatVC.studentDic = [cell.studentDic mutableCopy];
                 [self.myController.navigationController pushViewController:chatVC animated:YES];
             }
         }
