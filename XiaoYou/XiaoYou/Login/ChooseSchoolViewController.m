@@ -27,7 +27,6 @@
 @property (nonatomic, strong) YTableView *tableView;
 @property (nonatomic, strong) UIImageView *schoolLogoImageView;
 @property (nonatomic, strong) NSMutableArray *schoolSearchList;//服务器获取数据后才进行的搜索
-@property (nonatomic, strong) NSMutableArray *schoolList;//默认数据
 @property (nonatomic, strong) NSArray *schoolListBySeaver;//服务器的联系人列表，用于存储学校信息
 
 @end
@@ -42,7 +41,6 @@
     [self showCustomNavigationNextButton];
     self.view.backgroundColor = KCOLORGREEN_e6ebea;
     
-    [self initSchoolArray];
     [self setupUI];
     [self schoolListRequest];
 }
@@ -123,42 +121,9 @@
     }
 }
 
-- (void)initSchoolArray
-{
-    //读取列表
-    NSString *path = [[NSBundle mainBundle] pathForResource:@"SchollList" ofType:@"txt"];
-    NSString *schoolListStr = [NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:nil];
-    //去掉空格
-    NSString *formatStr =  [schoolListStr stringByReplacingOccurrencesOfString:@"\n" withString:@""];
-    //组成数组
-    NSArray *schoolNameArray = [formatStr componentsSeparatedByString:@","];
-    
-    //组成model
-    self.schoolList = [[NSMutableArray alloc] init];
-    [schoolNameArray enumerateObjectsUsingBlock:^(NSString *schoolName, NSUInteger idx, BOOL *stop) {
-        SchoolListModel *model = [[SchoolListModel alloc] init];
-        model.schoolName = schoolName;
-        [_schoolList addObject:model];
-    }];
-}
-
 //根据服务器的学校列表，更新总列表
 - (void)updateSchoolListArray:(NSArray *)schoolArray
 {
-    //先删除重复的
-    [schoolArray enumerateObjectsUsingBlock:^(SchoolListModel *schoolModel, NSUInteger idx1, BOOL *stop1) {
-        [_schoolList enumerateObjectsUsingBlock:^(SchoolListModel *obj, NSUInteger idx2, BOOL *stop2) {
-            if ([obj.schoolName isEqualToString:schoolModel.schoolName])
-            {
-                [_schoolList removeObjectAtIndex:idx2];
-                *stop2 = YES;
-            }
-        }];
-    }];
-    
-    //把新的加在最前面
-    [_schoolList insertObjects:schoolArray atIndexes:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0, schoolArray.count)]];
-    
     [self searchSchoolByKey:YES];
     [self checkTextChangeLogoImage];
 }
@@ -177,7 +142,7 @@
     
     if (searchKey.length > 0)
     {
-        [_schoolList enumerateObjectsUsingBlock:^(SchoolListModel *model, NSUInteger idx, BOOL *stop) {
+        [_schoolListBySeaver enumerateObjectsUsingBlock:^(SchoolListModel *model, NSUInteger idx, BOOL *stop) {
             NSRange range = [model.schoolName rangeOfString:searchKey];
             if (range.location != NSNotFound)
             {
@@ -209,7 +174,7 @@
     }
     else
     {
-        [_schoolSearchList addObjectsFromArray:_schoolList];
+        [_schoolSearchList addObjectsFromArray:_schoolListBySeaver];
     }
     
     [_tableView reloadData];
@@ -223,7 +188,7 @@
     
     __block NSString *logoImageStr;
     //相同
-    [_schoolList enumerateObjectsUsingBlock:^(SchoolListModel *schoolModel, NSUInteger idx, BOOL *stop) {
+    [_schoolListBySeaver enumerateObjectsUsingBlock:^(SchoolListModel *schoolModel, NSUInteger idx, BOOL *stop) {
         if ([searchText isEqualToString:schoolModel.schoolName])
         {
             logoImageStr = schoolModel.schoolLogoPath;
@@ -301,7 +266,7 @@
 - (void)onNavigationRightButtonClicked {
     //判断输入文字是否是数组中得文字全匹配
     __block BOOL isExist = NO;
-    [_schoolList enumerateObjectsUsingBlock:^(SchoolListModel *school, NSUInteger idx, BOOL *stop) {
+    [_schoolListBySeaver enumerateObjectsUsingBlock:^(SchoolListModel *school, NSUInteger idx, BOOL *stop) {
         if ([school.schoolName isEqualToString:_schoolTextField.text])
         {
             isExist = YES;

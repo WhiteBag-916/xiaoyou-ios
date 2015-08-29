@@ -66,7 +66,7 @@
     _addButton =[UIButton buttonWithType:UIButtonTypeCustom];
     [_addButton setTitle:@"一键申请加入网球社" forState:UIControlStateNormal];
     [_addButton setTitleColor:KCOLORWHITE forState:UIControlStateNormal];
-    [_addButton setBackgroundColor:KCOLORGREEN_009688];
+    [_addButton setBackgroundImage:[UIImage imageNamed:@"contacts_bottom"] forState:UIControlStateNormal];
     [_addButton addTarget:self action:@selector(pressAddButton) forControlEvents:UIControlEventTouchUpInside];
     [self addButtonEnabled:NO];
     [self.view addSubview:_addButton];
@@ -94,7 +94,7 @@
     if ([_groupModel.groupStatus isEqualToString:@"3"]) {
         //进入群聊
         ChatViewController *chatViewController = [[ChatViewController alloc] initWithChatter:_groupModel.thirdId isGroup:YES];
-        chatViewController.studentDic = @{@"groupName":_groupModel.groupName, @"groupIcon":_groupModel.groupIcon,@"gid":[NSString stringWithFormat:@"%g", _groupModel.internalBaseClassIdentifier]};
+        chatViewController.studentDic = @{@"name":_groupModel.groupName, @"icon":_groupModel.groupIcon,@"gid":[NSString stringWithFormat:@"%g", _groupModel.internalBaseClassIdentifier]};
         [self.navigationController pushViewController:chatViewController animated:YES];
     } else {
         [YUtils showHUDWithTitle];
@@ -113,11 +113,6 @@
 
 - (void)addButtonEnabled:(BOOL)isEnabled {
     _addButton.enabled = isEnabled;
-    if (isEnabled) {
-        [_addButton setBackgroundColor:KCOLORGREEN_009688];
-    } else {
-        [_addButton setBackgroundColor:KCOLORGREEN_e6ebea];
-    }
 }
 
 #pragma mark - AssociationsDetailTableViewDelegate
