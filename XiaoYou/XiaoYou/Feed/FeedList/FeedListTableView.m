@@ -95,7 +95,7 @@
             [self reloadData];
             
         } else {
-            [YUtils showTitleOn:self title:message.desc];
+            [YUtils showTitle:message.desc];
         }
         if ([self isHeaderRefresh]) {
             [self stopLoadNewData];
