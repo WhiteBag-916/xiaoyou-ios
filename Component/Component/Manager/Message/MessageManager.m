@@ -264,6 +264,8 @@ DEF_SINGLETON(MessageManager);
         
         [message updateMessageExtToDB];
         
+        [[EaseMob sharedInstance].chatManager loadAllConversationsFromDatabaseWithAppend2Chat:YES];
+        
         [[NSNotificationCenter defaultCenter] postNotificationName:kNotification_Refresh_Message object:nil userInfo:nil];
         
         [self setupUnreadMessageCount];
