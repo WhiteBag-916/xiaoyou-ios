@@ -150,8 +150,18 @@
                                                             [YCommonReport report];
                                                         }];
     
-    YCommonActionSheet *sheet = [[YCommonActionSheet alloc] initWithType:@[item1, item2, item3, item4] title:nil];
-    [sheet show];
+    if ([[ContactManager sharedInstance] isFriendRelationShip:_uid])
+    {
+        YCommonActionSheet *sheet = [[YCommonActionSheet alloc] initWithType:@[item1, item2, item3, item4] title:nil];
+        [sheet show];
+    }
+    else
+    {
+        
+        YCommonActionSheet *sheet = [[YCommonActionSheet alloc] initWithType:@[item1, item4] title:nil];
+        [sheet show];
+    }
+    
 }
 
 - (void)didReceiveMemoryWarning {
