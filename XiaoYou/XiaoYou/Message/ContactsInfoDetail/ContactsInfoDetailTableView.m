@@ -61,14 +61,16 @@
 -(void)refreshTableView:(ProfileInfo *) model
 {
     _model = model;
-    self.flagNameArr = [[NSMutableArray alloc]init];
-    for (int i = 0; i <_model.tagsCommon.count; i++)
-    {
-        [self.flagNameArr addObject:[_model.tagsCommon[i] name]];
+    if (_model != nil) {
+        self.flagNameArr = [[NSMutableArray alloc]init];
+        for (int i = 0; i <_model.tagsCommon.count; i++)
+        {
+            [self.flagNameArr addObject:[_model.tagsCommon[i] name]];
+        }
+        [self setUpHeaderView];
+        [self setUpFooterView];
+        [self reloadData];
     }
-    [self setUpHeaderView];
-    [self setUpFooterView];
-    [self reloadData];
 }
 
 -(void)setUpHeaderView
@@ -204,6 +206,9 @@
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
+    if (_model == nil) {
+        return 0;
+    }
     return _flagNameArr.count + 2;
 }
 

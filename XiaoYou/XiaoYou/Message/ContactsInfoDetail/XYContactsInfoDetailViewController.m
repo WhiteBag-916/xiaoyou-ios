@@ -32,11 +32,14 @@
     // Do any additional setup after loading the view.
     
     [self setUpUI];
-    
     [[ContactManager sharedInstance] getUserDetailInfo:_uid block:^(YActionMessage *message) {
-        ProfileInfo * model = message.object;
-        _shareData = @{@"name":model.userName, @"pic":model.headPic, @"school":model.schoolName};
-        [_contactsInfoDetailTableView refreshTableView:model];
+        if (message.isSuccess) {
+            ProfileInfo * model = message.object;
+            _shareData = @{@"name":model.userName, @"pic":model.headPic, @"school":model.schoolName};
+            [_contactsInfoDetailTableView refreshTableView:model];
+        } else {
+            [YUtils showTitle:message.desc];
+        }
     }];
     
     [self showCustomNavigationBackButton];
@@ -108,6 +111,10 @@
 
 -(void)showShareActionSheet
 {
+    if (_shareData == nil) {
+        [YUtils showTitle:@"无网络连接"];
+        return;
+    }
     YActionSheetItem *item1 = [YActionSheetItem itemWithType:YCommonActionSheetItemTypeSharePerson title:@"分享该人名片至" extraData:_shareData];
     
     YActionSheetItem *item2 = [YActionSheetItem itemWithTitle:@"消息不提醒"
@@ -147,8 +154,18 @@
                                                             [YCommonReport report];
                                                         }];
     
-    YCommonActionSheet *sheet = [[YCommonActionSheet alloc] initWithType:@[item1, item2, item3, item4] title:nil];
-    [sheet show];
+    if ([[ContactManager sharedInstance] isFriendRelationShip:_uid])
+    {
+        YCommonActionSheet *sheet = [[YCommonActionSheet alloc] initWithType:@[item1, item2, item3, item4] title:nil];
+        [sheet show];
+    }
+    else
+    {
+        
+        YCommonActionSheet *sheet = [[YCommonActionSheet alloc] initWithType:@[item1, item4] title:nil];
+        [sheet show];
+    }
+    
 }
 
 - (void)didReceiveMemoryWarning {
