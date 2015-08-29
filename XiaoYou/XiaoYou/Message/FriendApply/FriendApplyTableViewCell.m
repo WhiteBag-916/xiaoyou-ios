@@ -328,10 +328,6 @@ typedef enum : NSUInteger {
 -(void)refreshContactsList
 {
     [[ContactManager sharedInstance] getContactsListData:^(YActionMessage *message) {
-        if (message.isSuccess)
-        {
-            [[ContactManager sharedInstance] saveContactsList:message.object];
-        }
     }];
 }
 

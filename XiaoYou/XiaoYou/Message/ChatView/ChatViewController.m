@@ -995,42 +995,14 @@
 
 -(void)didReceiveMessage:(EMMessage *)message
 {
-    LinkManModel * linkManModel = [[ContactManager sharedInstance] getContactsListData];
-    NSMutableArray * contactsArr = [[NSMutableArray alloc] initWithArray:linkManModel.linkManList];
-    for (LinkManList * obj in contactsArr) {
-        if ([message.from isEqualToString:obj.thirdCode])
-        {
-            if (![message.ext[@"headImage"] isEqualToString:obj.icon])
-            {
-                obj.icon = [[NSString alloc] initWithString:message.ext[@"headImage"]];
-            }
-            linkManModel.linkManList = [[NSArray alloc] initWithArray:contactsArr];
-            
-//            [[NSNotificationCenter defaultCenter] postNotificationName:kNotification_HeadImage_Change object:nil];
-            
-            [[ContactManager sharedInstance] saveContactsList:linkManModel];
-        }
-    }
-    NSMutableArray * groupArr = [[NSMutableArray alloc] initWithArray:linkManModel.unionList];
-    for (ClassList * obj1 in groupArr) {
-        if ([message.from isEqualToString:obj1.thirdCode])
-        {
-            for (LinkManList * obj2 in contactsArr) {
-                if ([message.groupSenderName isEqualToString:obj2.thirdCode])
-                {
-                    if (![message.ext[@"headImage"] isEqualToString:obj2.icon])
-                    {
-                        obj2.icon = [[NSString alloc] initWithString:message.ext[@"headImage"]];
-                    }
-                    linkManModel.linkManList = [[NSArray alloc] initWithArray:contactsArr];
-                    
-                    //            [[NSNotificationCenter defaultCenter] postNotificationName:kNotification_HeadImage_Change object:nil];
-                    
-                    [[ContactManager sharedInstance] saveContactsList:linkManModel];
-                }
-            }
-            
-        }
+    if (eMessageTypeGroupChat == message.messageType) {
+        //群聊
+        
+        //更新头像
+        [[ContactManager sharedInstance] updateContactsHeadImageByThirdCode:message.groupSenderName headImage:message.ext[@"headImage"]];
+    } else if (eMessageTypeChat == message.messageType) {
+        //更新头像
+        [[ContactManager sharedInstance] updateContactsHeadImageByThirdCode:message.from headImage:message.ext[@"headImage"]];
     }
     
     if ([_conversation.chatter isEqualToString:message.conversationChatter]) {

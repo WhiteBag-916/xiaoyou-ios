@@ -22,6 +22,8 @@ typedef enum : NSUInteger {
     ADD_PRAOSE,
     REPLY_COMMENT,
     REPLY_PRAOSE,
+    FORBIDDEN_ME,
+    UNFORBIDDEN_ME,
 } PUSH_Message_TYPE;
 
 @interface MessageManager : YManager<YManager>

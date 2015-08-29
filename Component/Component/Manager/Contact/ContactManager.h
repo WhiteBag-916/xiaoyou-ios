@@ -16,7 +16,11 @@ AS_SINGLETON(ContactManager);
 
 - (void)getContactsListData:(ActionCompleteBlock)block;
 
-- (void)saveContactsList:(LinkManModel *) model;
+//更新联系人的头像
+- (void)updateContactsHeadImageByThirdCode:(NSString *)thirdCode headImage:(NSString *)headImage;
+
+//保存联系人
+- (void)saveContactsList;
 
 - (void)initLinkManListData;
 
@@ -89,5 +93,11 @@ AS_SINGLETON(ContactManager);
 
 //获取屏蔽列表
 - (NSArray *)getForbiddenMeList;
+
+//增加
+- (void)addForbiddenMeListByID:(NSString *)thirdCode;
+
+//删除
+- (void)delForbiddenMeListByID:(NSString *)thirdCode;
 
 @end

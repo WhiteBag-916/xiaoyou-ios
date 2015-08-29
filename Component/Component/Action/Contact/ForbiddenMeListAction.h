@@ -8,6 +8,6 @@
 
 #import "YHTTPRequestAction.h"
 
-@interface ForbiddenMeListAction : YHTTPRequestAction
+@interface ForbiddenMeListAction : YHTTPRequestAction<YAction>
 
 @end

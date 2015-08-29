@@ -27,6 +27,8 @@
 #import "CommonAction.h"
 #import "ForbiddenMeListAction.h"
 #import "ForbiddenList.h"
+#import "ForbiddenLinkManAction.h"
+#import "ClassList.h"
 
 #define kContactsManagerSyncQueue @"kContactsManagerSyncQueue"
 
@@ -34,7 +36,7 @@
 @interface ContactManager ()
 
 @property (nonatomic, strong) LinkManModel *linkManModel; //个人信息
-@property (nonatomic, strong) NSArray *forbiddenMeList;//消息不提醒列表
+@property (nonatomic, strong) NSMutableArray *forbiddenMeList;//消息不提醒列表
 
 @end
 
@@ -49,11 +51,40 @@ DEF_SINGLETON(ContactManager);
     return self;
 }
 
+//更新联系人的头像
+- (void)updateContactsHeadImageByThirdCode:(NSString *)thirdCode headImage:(NSString *)headImage {
+    for (LinkManList * obj in _linkManModel.linkManList) {
+        if ([thirdCode isEqualToString:obj.thirdCode])
+        {
+            if (![headImage isEqualToString:obj.icon])
+            {
+                obj.icon = headImage;
+                [self saveContactsList];
+                break;
+            }
+        }
+    }
+}
+
+- (void)updateIsRemindByUid:(NSString *)uid {
+    for (LinkManList * obj in _linkManModel.linkManList) {
+        if ([uid isEqualToString:obj.uid])
+        {
+            if ([obj.isRemind isEqualToString:@"y"])
+            {
+                obj.isRemind = @"n";
+            } else {
+                obj.isRemind = @"y";
+            }
+            [self saveContactsList];
+        }
+    }
+}
+
 //存储联系人到本地
-- (void)saveContactsList:(LinkManModel *) model
+- (void)saveContactsList
 {
     //存文件
-    _linkManModel = model;
     NSString *cachePath = [[YDirectory fileCache] stringByAppendingString:NSStringFromClass([LinkManModel class])];
     [_linkManModel writeToFile:cachePath];
 }
@@ -78,7 +109,8 @@ DEF_SINGLETON(ContactManager);
         [YQueue dispatchInSyncQueueWithQueueType:kContactsManagerSyncQueue block:^{
             if (message.isSuccess)
             {
-                [self saveContactsList:message.object];
+                _linkManModel = message.object;
+                [self saveContactsList];
             }
             
             //主线程处理界面
@@ -303,8 +335,7 @@ DEF_SINGLETON(ContactManager);
 
 -(void)delLocalLinkManByUid:(NSString *) delUids
 {
-    LinkManModel * linkManModel = [[ContactManager sharedInstance] getContactsListData];
-    NSMutableArray * contactsArr = [[NSMutableArray alloc] initWithArray:linkManModel.linkManList];
+    NSMutableArray * contactsArr = [[NSMutableArray alloc] initWithArray:_linkManModel.linkManList];
     for (LinkManList * obj in contactsArr)
     {
         if ([delUids isEqualToString:obj.uid])
@@ -314,9 +345,9 @@ DEF_SINGLETON(ContactManager);
         }
     }
     
-    linkManModel.linkManList = [[NSArray alloc] initWithArray:contactsArr];
+    _linkManModel.linkManList = [[NSArray alloc] initWithArray:contactsArr];
     
-    [[ContactManager sharedInstance] saveContactsList:linkManModel];
+    [[ContactManager sharedInstance] saveContactsList];
 }
 
 //社长删除社团成员
@@ -378,11 +409,13 @@ DEF_SINGLETON(ContactManager);
 
 //屏蔽其他人
 - (void)forbiddenLinkMan:(NSString *)forbiddenId block:(ActionCompleteBlock)block {
-    CommonAction * action = [[CommonAction alloc] init];
-    action.parameter = [YUtils getParameter:@{@"forbiddenId":forbiddenId} needUserToken:YES];
-    action.url = [YUtils getUrl:api_contact_forbiddenLinkMan];
+    ForbiddenLinkManAction * action = [[ForbiddenLinkManAction alloc] init];
+    action.forbiddenId = forbiddenId;
     
     [YAction startAction:action completionBlock:^(YActionMessage* message) {
+        if (message.isSuccess) {
+            [self updateIsRemindByUid:action.forbiddenId];
+        }
         //主线程处理界面
         block(message);
     }];
@@ -395,7 +428,7 @@ DEF_SINGLETON(ContactManager);
     [YAction startAction:action completionBlock:^(YActionMessage* message) {
         
         if (message.isSuccess) {
-            _forbiddenMeList = [NSArray arrayWithObject:[message.object forbiddenList]];
+            _forbiddenMeList = [NSMutableArray arrayWithObject:[message.object forbiddenList]];
         }
         
         //主线程处理界面
@@ -406,6 +439,16 @@ DEF_SINGLETON(ContactManager);
 //获取屏蔽列表
 - (NSArray *)getForbiddenMeList {
     return _forbiddenMeList;
+}
+
+//增加
+- (void)addForbiddenMeListByID:(NSString *)thirdCode {
+    [_forbiddenMeList addObject:thirdCode];
+}
+
+//删除
+- (void)delForbiddenMeListByID:(NSString *)thirdCode {
+    [_forbiddenMeList removeObject:thirdCode];
 }
 
 @end

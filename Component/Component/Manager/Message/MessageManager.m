@@ -20,6 +20,7 @@
 #import "EMConversation.h"
 #import "ProvisionManager.h"
 #import "YModel+ActionMessage.h"
+#import "ContactManager.h"
 
 #define kMessageManagerSyncQueue @"kMessageManagerSyncQueue"
 //两次提示的默认间隔
@@ -144,8 +145,29 @@ DEF_SINGLETON(MessageManager);
 }
 -(void)didReceiveCmdMessage:(EMMessage *)cmdMessage
 {
-    int i = 0;
-    NSLog(@"test");
+    //解析
+    NSDictionary *ext = cmdMessage.ext;    
+    if ([ext[@"server_flag"] boolValue])
+    {
+        switch ([ext[@"type"] integerValue])
+        {
+            case FORBIDDEN_ME:
+            {
+                [[ContactManager sharedInstance] addForbiddenMeListByID:ext[@"em_apns_ext"][@"em_push_title"]];
+                break;
+            }
+            case UNFORBIDDEN_ME:
+            {
+                [[ContactManager sharedInstance] delForbiddenMeListByID:ext[@"em_apns_ext"][@"em_push_title"]];
+                break;
+            }
+            default:
+            {
+                
+                break;
+            }
+        }
+    }
 }
 
 
