@@ -39,6 +39,7 @@ NSString *const kAssociationsListTableViewCell = @"AssociationsListTableViewCell
 @property (nonatomic, strong) UIView        *starView;          //星级
 @property (nonatomic, strong) UIImageView   *hotImageView;      //hot
 
+@property (nonatomic, strong) UIImageView   *tagImageView;       //类型imageview
 @property (nonatomic, strong) UILabel       *typeLabel;         //类型
 
 @property (nonatomic, strong) UILabel       *keywordsLabel;     //关键字
@@ -117,12 +118,12 @@ NSString *const kAssociationsListTableViewCell = @"AssociationsListTableViewCell
     }];
     
     //4
-    UIImageView *tagImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"tag-green"]];
-    [self.contentView addSubview:tagImageView];
-    [tagImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+    _tagImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"tag-green"]];
+    [self.contentView addSubview:_tagImageView];
+    [_tagImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(_nameLabel.mas_left);
         make.top.equalTo(_nameLabel.mas_bottom).offset(K_CONTENT_M);
-        make.height.mas_equalTo(K_TAG_IMG_H);
+        make.height.mas_equalTo(K_TAG_IMG_H).priorityLow();
         make.width.mas_equalTo(K_TAG_IMG_W);
     }];
     
@@ -134,9 +135,9 @@ NSString *const kAssociationsListTableViewCell = @"AssociationsListTableViewCell
                          alignment:NSTextAlignmentLeft];
     [self.contentView addSubview:_typeLabel];
     [_typeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(tagImageView.mas_right).offset(K_TAG_TXT_L);
+        make.left.equalTo(_tagImageView.mas_right).offset(K_TAG_TXT_L);
         make.right.mas_equalTo(K_CONTENT_R);
-        make.centerY.equalTo(tagImageView.mas_centerY);
+        make.centerY.equalTo(_tagImageView.mas_centerY);
     }];
     
     //6
@@ -148,7 +149,7 @@ NSString *const kAssociationsListTableViewCell = @"AssociationsListTableViewCell
     [self.contentView addSubview:_keywordsLabel];
     [_keywordsLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(_nameLabel.mas_left);
-        make.top.equalTo(tagImageView.mas_bottom).offset(K_CONTENT_M);
+        make.top.equalTo(_tagImageView.mas_bottom).offset(K_CONTENT_M);
         make.right.mas_equalTo(K_CONTENT_R);
         make.bottom.mas_equalTo(K_KEY_B);
     }];
@@ -201,6 +202,7 @@ NSString *const kAssociationsListTableViewCell = @"AssociationsListTableViewCell
     _nameLabel.text = model.groupName;
     _hotImageView.hidden = !model.hot;
     _keywordsLabel.text = model.keyWords;
+    _tagImageView.hidden = (model.keyWords.length <= 0);
     _typeLabel.text = model.category;
     NSInteger starNum = [model.star integerValue];
     
