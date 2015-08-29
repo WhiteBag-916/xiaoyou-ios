@@ -211,6 +211,7 @@
     if (nil == _pwdView || _pwdView.hidden) {
         MBProgressHUD *hud = [YUtils showHUDWithTitle:@"正在加载"];
         [[ProvisionManager sharedInstance] receiveMobileAuthCode:_phoneField.text authCode:_codeField.text block:^(YActionMessage *message) {
+            [hud removeFromSuperview];
             if (message.isSuccess) {
                 [hud removeFromSuperview];
                 if (_hasPhone) {

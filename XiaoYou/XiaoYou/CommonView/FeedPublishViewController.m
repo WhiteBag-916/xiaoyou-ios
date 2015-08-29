@@ -37,7 +37,7 @@
 #define tagObj @"tagObj"
 #define tagIsSelected @"tagIsSelected"
 
-@interface FeedPublishViewController()<UIImagePickerControllerDelegate>
+@interface FeedPublishViewController()<UIImagePickerControllerDelegate, UITextViewDelegate>
 
 
 @property (nonatomic, strong) UIView *groupView;
@@ -77,9 +77,13 @@
     // Do any additional setup after loading the view.
     [self initView];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(openPhoto) name:KNotification_Present_TakePhoto object:nil];
-    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changeMode:) name:@"UITextInputCurrentInputModeDidChangeNotification" object:nil];
 }
-
+-(void) changeMode:(NSNotification *)notification{
+    if ([[[UITextInputMode currentInputMode] primaryLanguage] isEqualToString:@"emoji"]) {
+        [YUtils showTitle:@"不支持emoji"];
+    }
+}
 - (void)initView {
     self.title = @"说两句";
     [self showCustomNavigationCancelButton];
@@ -212,6 +216,7 @@
         }
         make.height.mas_equalTo(KTEXTVIEWHEIGHT);
     }];
+    _textView.delegate = self;
     _textView.placeholder = @"发布优质内容，会有更多人给你敬酒";
     _textView.placeholderColor = KCOLORWHITE_b8b7b7;
     _textView.font = CONTENT_FONT(12);
@@ -423,7 +428,12 @@
     }];
     return tagStr;
 }
-
+- (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text {
+    if ([[[UITextInputMode currentInputMode] primaryLanguage] isEqualToString:@"emoji"]) {
+        return false;
+    }
+    return true;
+}
 - (void)uploadPic {
     [_picArray removeAllObjects];
     [YUtils showHUDWithTitle:@"正在上传"];
@@ -488,6 +498,7 @@
     }
     return imageStr;
 }
+
 - (void)dealloc {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }

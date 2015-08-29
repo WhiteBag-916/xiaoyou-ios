@@ -46,6 +46,7 @@
 @property (nonatomic, strong)            id myInfo;
 @property (nonatomic, strong)            FeedInfo *info;
 @property (nonatomic, strong)            NSMutableDictionary *shareData;
+@property (nonatomic, assign)            BOOL isAuthor;
 @end
 
 @implementation FeedCellBottomView
@@ -147,32 +148,36 @@
     return self;
 }
 - (void)setData:(id)inData {
+    NSString *authorId;
     if (_type == FeedListType) {
         FeedInfo *data = inData;
         NSString *tag = (data.tags.count == 0?@"校友观点":[data.tags[0] name]);
         _myInfo = data.feed;
         NSString *content = (data.feed.content.length == 0?@"":data.feed.content);
         NSString *img = data.feed.img.length > 0?[data.feed.img componentsSeparatedByString:@","][0]:@"";
-        
+        _info = data;
         _shareData = [NSMutableDictionary dictionaryWithObjectsAndKeys:tag,@"tag",content,@"content",img, @"pic", nil];
         _respectNum.text = [NSString stringWithFormat:@"%d", (int)data.feed.praiseCount];
         _commentNum.text = [NSString stringWithFormat:@"%d", (int)data.feed.commentCount];
+        authorId = data.author.uid;
         [self updateRespect:data.feed.isPraise];
     }
     if (_type == FeedDetailType) {
         FeedInfo *data = inData;
         _myInfo = data.feed;
-        _info = data;
         _respectNum.text = [NSString stringWithFormat:@"%d", (int)data.feed.praiseCount];
+        authorId = data.author.uid;
         [self updateRespect:data.feed.isPraise];
         [self initPersonList];
     }
     if (_type == FeedCommentType) {
         CommentListItems *data = inData;
         _myInfo = data.comment;
+        authorId = data.author.uid;
         _respectNum.text = [NSString stringWithFormat:@"%d", (int)data.comment.praiseCount];
         [self updateRespect:data.comment.isRespect];
     }
+    _isAuthor = [[[ProvisionManager sharedInstance] getProfile].uid isEqualToString:authorId];
 }
 - (void)initPersonList {
     [[_personList subviews] makeObjectsPerformSelector:@selector(removeFromSuperview)];
@@ -208,6 +213,10 @@
 }
 
 - (void)respect {
+    if (_isAuthor) {
+        [YUtils showTitle:@"不能给自己敬酒"];
+        return;
+    }
     if ([_myInfo isKindOfClass:[Feed class]]) {
         Feed *fd = _myInfo;
         [[FeedManager sharedInstance] addPraise:[NSString stringWithFormat:@"%d", (int)fd.feedIdentifier] block:^(YActionMessage *message) {
