@@ -62,7 +62,7 @@ AS_SINGLETON(ContactManager);
 - (void)submitFriendApply:(NSString *)targetId block:(ActionCompleteBlock)block;
 
 //忽略好友申请
-- (void)ignoreFriendApply:(double)applyIds block:(ActionCompleteBlock)block;
+- (void)ignoreFriendApply:(NSString *)applyIds block:(ActionCompleteBlock)block;
 
 //获取群组详情
 - (void)groupDetail:(NSString *)groupId block:(ActionCompleteBlock)block;
@@ -72,6 +72,8 @@ AS_SINGLETON(ContactManager);
 
 //社长删除社团成员
 - (void)deleteGroupUser:(NSString *)groupId deleteUserIds:(NSString *)deleteUserIds block:(ActionCompleteBlock)block;
+//社长邀请成员
+- (void)addGroupUser:(NSString *)groupId addUserIds:(NSString *)addUserIds block:(ActionCompleteBlock)block;
 
 //是否为好友
 - (BOOL)isFriendRelationShip:(NSString *) uid;

@@ -293,33 +293,41 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    EMConversation *converation = [_messageDataSource objectAtIndex:indexPath.row];
-    
-    NSDictionary *ext = converation.latestMessage.ext;
-    if ([ext[@"server_flag"] boolValue]) {
-        //非聊天消息
-        if (FRIEND_APPLY == [ext[@"type"] integerValue]) {
-            [_myController.navigationController pushViewController:[[XYFriendApplyViewController alloc] init] animated:YES needHiddenBottomBar:YES];
-        } else if (GROUP_APPLY == [ext[@"type"] integerValue]) {
-            [_myController.navigationController pushViewController:[[XYGroupApplyViewController alloc] initWithGroupId:[NSString stringWithFormat:@"%d", [ext[@"group_id"] intValue]]] animated:YES needHiddenBottomBar:YES];
-        }
-        [converation markAllMessagesAsRead:YES];
-    } else {
-        MessageTableViewCell * cell = (MessageTableViewCell *)[self cellForRowAtIndexPath:indexPath];
-        self.myController.hidesBottomBarWhenPushed = YES;
+    if (indexPath.row == 0)
+    {
+        XYSystemMessageViewController * systemMessageViewController = [[XYSystemMessageViewController alloc] init];
+        [self.myController.navigationController pushViewController:systemMessageViewController animated:YES needHiddenBottomBar:YES];
+    }
+    else
+    {
+        EMConversation *converation = [_messageDataSource objectAtIndex:indexPath.row];
         
-        if ([cell.studentDic[@"linkType"] doubleValue] == 0) {
-            ChatViewController * chatVC = [[ChatViewController alloc] initWithChatter:cell.conversation.chatter isGroup:NO];
-            chatVC.isSystemMessage = NO;
-            chatVC.studentDic = cell.studentDic;
-            [self.myController.navigationController pushViewController:chatVC animated:YES];
-        }
-        else
-        {
-            ChatViewController * chatVC = [[ChatViewController alloc] initWithChatter:cell.conversation.chatter isGroup:YES];
-            chatVC.isSystemMessage = NO;
-            chatVC.studentDic = cell.studentDic;
-            [self.myController.navigationController pushViewController:chatVC animated:YES];
+        NSDictionary *ext = converation.latestMessage.ext;
+        if ([ext[@"server_flag"] boolValue]) {
+            //非聊天消息
+            if (FRIEND_APPLY == [ext[@"type"] integerValue]) {
+                [_myController.navigationController pushViewController:[[XYFriendApplyViewController alloc] init] animated:YES needHiddenBottomBar:YES];
+            } else if (GROUP_APPLY == [ext[@"type"] integerValue]) {
+                [_myController.navigationController pushViewController:[[XYGroupApplyViewController alloc] initWithGroupId:[NSString stringWithFormat:@"%d", [ext[@"group_id"] intValue]]] animated:YES needHiddenBottomBar:YES];
+            }
+            [converation markAllMessagesAsRead:YES];
+        } else {
+            MessageTableViewCell * cell = (MessageTableViewCell *)[self cellForRowAtIndexPath:indexPath];
+            self.myController.hidesBottomBarWhenPushed = YES;
+            
+            if ([cell.studentDic[@"linkType"] doubleValue] == 0) {
+                ChatViewController * chatVC = [[ChatViewController alloc] initWithChatter:cell.conversation.chatter isGroup:NO];
+                chatVC.isSystemMessage = NO;
+                chatVC.studentDic = cell.studentDic;
+                [self.myController.navigationController pushViewController:chatVC animated:YES];
+            }
+            else
+            {
+                ChatViewController * chatVC = [[ChatViewController alloc] initWithChatter:cell.conversation.chatter isGroup:YES];
+                chatVC.isSystemMessage = NO;
+                chatVC.studentDic = cell.studentDic;
+                [self.myController.navigationController pushViewController:chatVC animated:YES];
+            }
         }
     }
 }

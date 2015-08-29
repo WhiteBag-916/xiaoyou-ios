@@ -24,6 +24,7 @@
 #import "CommonAction.h"
 #import "YUtils+Component.h"
 #import "LinkManList.h"
+#import "CommonAction.h"
 
 #define kContactsManagerSyncQueue @"kContactsManagerSyncQueue"
 
@@ -258,9 +259,9 @@ DEF_SINGLETON(ContactManager);
 }
 
 //忽略好友申请
-- (void)ignoreFriendApply:(double)applyIds block:(ActionCompleteBlock)block {
+- (void)ignoreFriendApply:(NSString *)applyIds block:(ActionCompleteBlock)block {
     CommonAction* action = [[CommonAction alloc] init];
-    action.parameter = [YUtils getParameter:@{@"applyIds":@(applyIds)} needUserToken:YES needAddUserID:YES];
+    action.parameter = [YUtils getParameter:@{@"applyIds":applyIds} needUserToken:YES needAddUserID:YES];
     action.url = [YUtils getUrl:api_friend_IgnoreApplyList];
     
     [YAction startAction:action completionBlock:^(YActionMessage* message) {
@@ -321,6 +322,19 @@ DEF_SINGLETON(ContactManager);
         //主线程处理界面
         block(message);
     }];
+}
+//社长邀请成员
+- (void)addGroupUser:(NSString *)groupId addUserIds:(NSString *)addUserIds block:(ActionCompleteBlock)block
+{
+    CommonAction * action = [[CommonAction alloc] init];
+    action.parameter = [YUtils getParameter:@{@"groupId":groupId,@"addUserIds":addUserIds} needUserToken:YES];
+    action.url = [YUtils getUrl:api_group_addGroupUser];
+    
+    [YAction startAction:action completionBlock:^(YActionMessage* message) {
+        //主线程处理界面
+        block(message);
+    }];
+    
 }
 
 //是否为好友

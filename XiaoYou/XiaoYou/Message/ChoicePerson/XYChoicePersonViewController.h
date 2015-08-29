@@ -14,4 +14,6 @@
 
 @property (nonatomic,strong)NSString * superType;
 
+@property (nonatomic,strong)NSString * groupId;
+
 @end

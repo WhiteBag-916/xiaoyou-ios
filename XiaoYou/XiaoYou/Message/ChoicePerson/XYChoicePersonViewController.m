@@ -116,8 +116,17 @@
     {
         if ([[self superType] isEqualToString:kXYGroupInfoDetailViewController])
         {
-            [YUtils showTitle:@"邀请入社成功" hideAfter:2];
+            NSMutableArray * uidArr = [NSMutableArray array];
+            for (int i = 0; i < sendPersonsArr.count; i++)
+            {
+                LinkManList * model = sendPersonsArr[i];
+                [uidArr addObject:model.uid];
+            }
+            NSString * uids = [uidArr componentsJoinedByString:@","];
             //走接口
+            [[ContactManager sharedInstance] addGroupUser:_groupId addUserIds:uids block:^(YActionMessage *message) {
+               [YUtils showTitle:message.desc hideAfter:2];
+            }];
         }
         else
         {
@@ -144,7 +153,5 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
-
 
 @end

@@ -140,6 +140,7 @@
     {
         XYChoicePersonViewController * choicePersonViewController = [[XYChoicePersonViewController alloc] init];
         choicePersonViewController.superType = kXYGroupInfoDetailViewController;
+        choicePersonViewController.groupId = self.myController.gid;
         [self.myController.navigationController pushViewController:choicePersonViewController animated:YES needHiddenBottomBar:YES];
     }
 }

@@ -141,6 +141,8 @@
 #define api_user_delLinkMan @"/user/v2/delLinkMan"
 //社长删除社团成员
 #define api_group_deleteGroupUser @"/group/deleteGroupUser"
+//社长邀请社团成员
+#define api_group_addGroupUser @"/group/addGroupUser"
 
 /**********************************************************
  Url Define: MessageManager

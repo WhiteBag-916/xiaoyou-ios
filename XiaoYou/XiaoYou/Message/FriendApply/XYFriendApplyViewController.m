@@ -16,8 +16,6 @@
 
 @property(nonatomic,strong) FriendApplyTableView * friendApplyTableView;
 
-@property (nonatomic,strong) NSMutableArray * dataSourceArr;
-
 @end
 
 @implementation XYFriendApplyViewController
@@ -60,7 +58,16 @@
 }
 
 - (void)removeAllData {
-    [_friendApplyTableView refreshTableView:[NSArray array]];
+    
+    NSMutableArray * idArr = [NSMutableArray array];
+    [[_friendApplyTableView getDataSource] enumerateObjectsUsingBlock:^(ApplicantList * obj, NSUInteger idx, BOOL *stop) {
+        [idArr addObject:@(obj.applyId)];
+        
+    }];
+    NSString * ids = [idArr componentsJoinedByString:@","];
+    [[ContactManager sharedInstance] ignoreFriendApply:ids block:^(YActionMessage *message) {
+        [_friendApplyTableView refreshTableView:[NSArray array]];;
+    }];
 }
 
 - (void)didReceiveMemoryWarning {

@@ -278,7 +278,7 @@ typedef enum : NSUInteger {
         }
         case IGNORE_BUTTON:
         {
-            [[ContactManager sharedInstance] ignoreFriendApply:_applicantList.applyId block:^(YActionMessage *message) {
+            [[ContactManager sharedInstance] ignoreFriendApply:[NSString stringWithFormat:@"%g",_applicantList.applyId] block:^(YActionMessage *message) {
                 if (message.isSuccess) {
                     _applicantList.status = 3;
                     [self updateButtonShow];

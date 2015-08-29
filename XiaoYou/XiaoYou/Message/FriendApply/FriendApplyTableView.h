@@ -14,6 +14,8 @@
 
 @property (nonatomic, weak) YViewController *superVC;
 
+-(NSArray *)getDataSource;
+
 - (void)loadData;
 
 -(void)refreshTableView:(NSArray *) dataSouceArr;
