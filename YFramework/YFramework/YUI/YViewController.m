@@ -175,7 +175,7 @@
 
 //导航栏右侧，更多按钮
 - (void)showCustomNavigationMoreButton {
-    [self showNomalNavigationRightButtonWithImage:@"" action:@selector(onNavigationRightButtonClicked) imgName:@"more" frame:CGRectMake(0, 0, 20, 64)];
+    [self showNomalNavigationRightButtonWithImage:@"" action:@selector(onNavigationRightButtonClicked) imgName:@"more" frame:CGRectMake(0, 0, 18, 64)];
 }
 
 //导航栏右侧，确认按钮
