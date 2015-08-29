@@ -12,6 +12,7 @@
 #import "FeedManager.h"
 #import "FeedDetailViewController.h"
 #import "AlertList.h"
+#import "YUtils+HUD.h"
 
 #define KPAGENUM 10
 
@@ -43,12 +44,17 @@
 //清除所有数据
 - (void)readAll {
     if (_notifyListArray.count > 0) {
-        [_notifyListArray removeAllObjects];
-        [self reloadData];
         
+        [YUtils showHUDWithTitle];
         //发请求
         [[FeedManager sharedInstance] readAll:^(YActionMessage *message) {
-            YLogD(@"readAll:%@", message.desc);
+            if (message.isSuccess) {
+                [_notifyListArray removeAllObjects];
+                [self reloadData];
+            }
+            
+            [YUtils hiddenProgressHUD];
+            [YUtils showTitle:message.desc];
         }];
     }
 }
