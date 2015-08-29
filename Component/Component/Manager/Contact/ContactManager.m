@@ -441,7 +441,7 @@ DEF_SINGLETON(ContactManager);
     [YAction startAction:action completionBlock:^(YActionMessage* message) {
         
         if (message.isSuccess) {
-            _forbiddenMeList = [NSMutableArray arrayWithObject:[message.object forbiddenList]];
+            _forbiddenMeList = [NSMutableArray arrayWithArray:[message.object forbiddenList]];
         }
         
         //主线程处理界面

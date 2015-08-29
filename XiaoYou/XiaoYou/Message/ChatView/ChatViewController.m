@@ -1754,15 +1754,21 @@
         [extDic setObject:_studentDic[@"icon"] forKey:@"headImage"];
         [extDic setObject:_studentDic[@"name"] forKey:@"userName"];
     } else {
-        [extDic setObject:@{@"em_push_title":[NSString stringWithFormat:@"%@给你发来一条新消息", [[ProvisionManager sharedInstance] getLoginInfo].studentName]} forKey:@"em_apns_ext"];
         [extDic setObject:[[ProvisionManager sharedInstance] getLoginInfo].icon forKey:@"headImage"];
         [extDic setObject:[[ProvisionManager sharedInstance] getLoginInfo].studentName forKey:@"userName"];
+        __block BOOL needIgorePush = NO;
         [[[ContactManager sharedInstance] getForbiddenMeList] enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-            if ([_studentDic[@"uid"] isEqualToString:obj])
+            if ([_studentDic[@"thirdCode"] isEqualToString:obj])
             {
-                [extDic setObject:@(true) forKey:@"em_ignore_notification"];
+                needIgorePush = YES;
+                [extDic setObject:@YES forKey:@"em_ignore_notification"];
+                *stop = YES;
             }
         }];
+        
+        if (!needIgorePush) {
+            [extDic setObject:@{@"em_push_title":[NSString stringWithFormat:@"%@给你发来一条新消息", [[ProvisionManager sharedInstance] getLoginInfo].studentName]} forKey:@"em_apns_ext"];
+        }
     }
     
     return extDic;
