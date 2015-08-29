@@ -71,7 +71,7 @@
     _textField.delegate = self;
     _textField.returnKeyType = UIReturnKeySearch;
     _textField.enablesReturnKeyAutomatically = YES;
-    _textField.placeholder = @"请输入姓名或设置删选条件搜索";
+    _textField.placeholder = @"请输入姓名或设置筛选条件搜索";
     [_textField registerChanged:self action:@selector(textFieldEditingChanged:)];
     [textFieldBgView addSubview:_textField];
     [_textField mas_makeConstraints:^(MASConstraintMaker *make) {
