@@ -116,7 +116,7 @@
     YActionSheetItem *item2 = [YActionSheetItem itemWithTitle:@"消息不提醒"
                                                          type:YCommonActionSheetItemTypeSwitch
                                                       isGroup:NO
-                                                         open:YES
+                                                         open:[self isRemind]
                                                     extraData:@{@"uid":self.uid}];
     
     YActionSheetItem *item3 = [YActionSheetItem itemWithTitle:@"解除好友关系"
@@ -166,6 +166,19 @@
         }
         
     }];
+}
+
+-(BOOL)isRemind
+{
+    //消息提醒
+    if ([_studentDic[@"isRemind"] isEqualToString:@"n"])
+    {
+        return YES;
+    }
+    else
+    {
+        return NO;
+    }
 }
 
 - (void)didReceiveMemoryWarning {
