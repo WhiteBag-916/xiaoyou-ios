@@ -176,9 +176,10 @@ DEF_SINGLETON(ContactManager);
 }
 
 //获取人详细信息,ProfileInfo
-- (void)getUserDetailInfo:(NSString *)userID block:(ActionCompleteBlock)block {
+- (void)getUserDetailInfo:(NSString *)userID hxId:(NSString *)hxId block:(ActionCompleteBlock)block {
     ProfileAction* action = [[ProfileAction alloc] init];
     action.userID = userID;
+    action.hxId = hxId;
     
     [YAction startAction:action completionBlock:^(YActionMessage* message) {
         //主线程处理界面

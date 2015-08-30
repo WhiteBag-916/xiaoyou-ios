@@ -183,7 +183,7 @@
 }
 - (void)startLoadData {
     MBProgressHUD *hud = [YUtils showHUDAddedTo:_loadingView title:@"正在加载"];
-    [[ContactManager sharedInstance] getUserDetailInfo:_userId block:^(YActionMessage *message) {
+    [[ContactManager sharedInstance] getUserDetailInfo:_userId hxId:nil block:^(YActionMessage *message) {
         [hud removeFromSuperview];
         if (message.isSuccess) {
             [_loadingView removeFromSuperview];

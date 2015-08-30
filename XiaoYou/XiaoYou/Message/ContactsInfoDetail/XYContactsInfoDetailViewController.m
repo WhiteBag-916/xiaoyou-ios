@@ -32,7 +32,7 @@
     // Do any additional setup after loading the view.
     
     [self setUpUI];
-    [[ContactManager sharedInstance] getUserDetailInfo:_uid block:^(YActionMessage *message) {
+    [[ContactManager sharedInstance] getUserDetailInfo:_uid hxId:_hxId block:^(YActionMessage *message) {
         if (message.isSuccess) {
             ProfileInfo * model = message.object;
             _shareData = @{@"name":model.userName, @"pic":model.headPic, @"school":model.schoolName};

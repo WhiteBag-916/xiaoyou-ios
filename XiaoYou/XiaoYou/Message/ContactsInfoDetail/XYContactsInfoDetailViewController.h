@@ -14,4 +14,6 @@
 
 @property (nonatomic,strong)NSString * uid;
 
+@property (nonatomic, strong) NSString *hxId;
+
 @end
