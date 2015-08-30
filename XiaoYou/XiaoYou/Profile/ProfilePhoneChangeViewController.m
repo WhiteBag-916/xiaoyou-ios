@@ -23,6 +23,7 @@
 @property (nonatomic, strong) UIButton *sendBtn;
 @property (nonatomic, strong) UIButton *protocolCheckButton;
 @property (nonatomic, strong) UIButton *showProtocalButton;
+@property (nonatomic, strong) UIButton *loginButton;
 @property (nonatomic, assign) BOOL isCheckButton;//是否同意协议
 @property (nonatomic, strong) UILabel *waitLabel;
 @property (nonatomic, assign) BOOL hasPhone;
@@ -52,9 +53,16 @@
     
     if (ProfilePhoneChangeTypeRegister == _type) {
         [self initViewByRegister];
+    } else {
+        [self showCustomNavigationConfirmButton];
     }
 }
 - (void)initViewByRegister {
+    [_sendBtn setTitle:@"获取初始密码" forState:UIControlStateNormal];
+    [_sendBtn setTitle:@"获取初始密码" forState:UIControlStateDisabled];
+    _phoneField.placeholder = @"输入手机号";
+    _codeField.placeholder = @"输入获取的初始密码";
+    
     //protocolCheckButton
     _protocolCheckButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [_protocolCheckButton setImage:[UIImage imageNamed:@"register-frame-agree"] forState:UIControlStateNormal];
@@ -79,12 +87,43 @@
         make.top.height.equalTo(_protocolCheckButton);
     }];
     
+    //登录按钮
+    _loginButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [_loginButton setTitle:@"登录" forState:UIControlStateNormal];
+    _loginButton.titleLabel.font = CONTENT_FONT(12);
+    [_loginButton setBackgroundImage:[UIImage imageNamed:@"contacts_bottom"] forState:UIControlStateNormal];
+    _loginButton.layer.masksToBounds = YES;
+    _loginButton.layer.cornerRadius = 3;
+    [_loginButton setTitleColor:KCOLORWHITE forState:UIControlStateNormal];
+    [_loginButton addTarget:self action:@selector(pressLogin) forControlEvents:UIControlEventTouchUpInside];
+    _loginButton.enabled = NO;
+    [self.view addSubview:_loginButton];
+    [_loginButton mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.mas_equalTo(SCALE_NUM(36));
+        make.right.mas_equalTo(SCALE_NUM(-36));
+        make.top.equalTo(_showProtocalButton.mas_bottom).offset(SCALE_NUM(15));
+        make.height.mas_equalTo(SCALE_NUM(24));
+    }];
+    
+    //文案
+    UILabel *textLabel = [YUtils initLabel:CONTENT_FONT(10)
+                                     color:KCOLORGREEN_455A64
+                                      text:@"校友网是实名社交，请填写本人真实手机号，管理员将于24h内审核您的信息，不真实的账号可能会被删除；\
+                          如有登录异常等问题，请联系所在院系辅导员。"
+                                     frame:CGRectZero
+                                 alignment:NSTextAlignmentCenter];
+    textLabel.numberOfLines = 3;
+    [self.view addSubview:textLabel];
+    [textLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.right.equalTo(_loginButton);
+        make.top.equalTo(_loginButton.mas_bottom).offset(SCALE_NUM(5));
+    }];
+    
     _isCheckButton = YES;
 }
 - (void)initController {
     self.navigationController.navigationBarHidden = false;
     [self showCustomNavigationBackButton];
-    [self showCustomNavigationConfirmButton];
     self.view.backgroundColor = KCOLORGREEN_f2f2f2;
     self.title = @"验证手机号";
 }
@@ -168,6 +207,11 @@
     return field;
 }
 
+//登录
+- (void)pressLogin {
+    
+}
+
 //弹出协议条款
 - (void)pressShowProtocalButton {
     CNTextController *textController = [[CNTextController alloc] init];
@@ -249,8 +293,10 @@
         }
         if (_phoneField.text.length > 0 && _codeField.text.length > 0) {
             self.navigationRightButton.enabled = true;
+            _loginButton.enabled = true;
         } else {
             self.navigationRightButton.enabled = false;
+            _loginButton.enabled = false;
         }
     } else {
         if (_pwdField.text.length == 0) {

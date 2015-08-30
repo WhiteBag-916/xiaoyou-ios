@@ -12,6 +12,7 @@
 #import "AppDelegate+RootVC.h"
 #import "LoginResp.h"
 #import "CNTextController.h"
+#import "ProfilePhoneChangeViewController.h"
 
 @interface LoginViewController ()
 
@@ -77,29 +78,29 @@
     _passwordTextField.secureTextEntry = YES;
     _passwordTextField.placeholder = @"初始密码为学号后4位＋一卡通编号后4位";
     
-    //protocolCheckButton
-    _protocolCheckButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [_protocolCheckButton setImage:[UIImage imageNamed:@"register-frame-agree"] forState:UIControlStateNormal];
-    [_protocolCheckButton addTarget:self action:@selector(checkButton) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:_protocolCheckButton];
-    [_protocolCheckButton mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(self.view);
-        make.top.equalTo(_passwordTextField.mas_bottom);
-        make.height.mas_equalTo(SCALE_NUM(35));
-        make.width.mas_equalTo(SCALE_NUM(36));
-    }];
-    
-    //显示协议条款
-    _showProtocalButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [_showProtocalButton setTitle:@"同意用户条款" forState:UIControlStateNormal];
-    _showProtocalButton.titleLabel.font = CONTENT_FONT(12);
-    [_showProtocalButton setTitleColor:KCOLORGREEN_009688 forState:UIControlStateNormal];
-    [_showProtocalButton addTarget:self action:@selector(pressShowProtocalButton) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:_showProtocalButton];
-    [_showProtocalButton mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(_protocolCheckButton.mas_right);
-        make.top.height.equalTo(_protocolCheckButton);
-    }];
+//    //protocolCheckButton
+//    _protocolCheckButton = [UIButton buttonWithType:UIButtonTypeCustom];
+//    [_protocolCheckButton setImage:[UIImage imageNamed:@"register-frame-agree"] forState:UIControlStateNormal];
+//    [_protocolCheckButton addTarget:self action:@selector(checkButton) forControlEvents:UIControlEventTouchUpInside];
+//    [self.view addSubview:_protocolCheckButton];
+//    [_protocolCheckButton mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.left.equalTo(self.view);
+//        make.top.equalTo(_passwordTextField.mas_bottom);
+//        make.height.mas_equalTo(SCALE_NUM(35));
+//        make.width.mas_equalTo(SCALE_NUM(36));
+//    }];
+//    
+//    //显示协议条款
+//    _showProtocalButton = [UIButton buttonWithType:UIButtonTypeCustom];
+//    [_showProtocalButton setTitle:@"同意用户条款" forState:UIControlStateNormal];
+//    _showProtocalButton.titleLabel.font = CONTENT_FONT(12);
+//    [_showProtocalButton setTitleColor:KCOLORGREEN_009688 forState:UIControlStateNormal];
+//    [_showProtocalButton addTarget:self action:@selector(pressShowProtocalButton) forControlEvents:UIControlEventTouchUpInside];
+//    [self.view addSubview:_showProtocalButton];
+//    [_showProtocalButton mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.left.equalTo(_protocolCheckButton.mas_right);
+//        make.top.height.equalTo(_protocolCheckButton);
+//    }];
     
     //忘记密码
     UIButton *forgotPassword = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -109,6 +110,20 @@
     [forgotPassword addTarget:self action:@selector(pressForgotPassword) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:forgotPassword];
     [forgotPassword mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(self.view);
+        make.top.equalTo(_passwordTextField.mas_bottom);
+        make.height.mas_equalTo(SCALE_NUM(35));
+        make.width.mas_equalTo(SCALE_NUM(87));
+    }];
+    
+    //首次登陆
+    UIButton *firstLogin = [UIButton buttonWithType:UIButtonTypeCustom];
+    [firstLogin setTitle:@"首次登录>" forState:UIControlStateNormal];
+    [firstLogin setTitleColor:KCOLORGREEN_009688 forState:UIControlStateNormal];
+    firstLogin.titleLabel.font = CONTENT_FONT(12);
+    [firstLogin addTarget:self action:@selector(pressFirstLogin) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:firstLogin];
+    [firstLogin mas_makeConstraints:^(MASConstraintMaker *make) {
         make.right.equalTo(self.view);
         make.top.equalTo(_passwordTextField.mas_bottom);
         make.height.mas_equalTo(SCALE_NUM(35));
@@ -164,6 +179,18 @@
     }
     
     [self resetRightButton];
+}
+
+//首次登录
+- (void)pressFirstLogin {
+    if ([_accountTextField.text isEmpty]) {
+        [YUtils showTitle:@"您还没有输入学号"];
+        return;
+    }
+    
+    [YShareData defaultData][kShareData_StudentNo] = _accountTextField.text;
+    
+    [self.navigationController pushViewController:[[ProfilePhoneChangeViewController alloc] initWithType:ProfilePhoneChangeTypeRegister hasPhone:NO] animated:YES];
 }
 
 //忘记密码
