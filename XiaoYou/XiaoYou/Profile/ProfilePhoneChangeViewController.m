@@ -112,7 +112,7 @@
     _sendBtn = [[UIButton alloc] init];
     [self.view addSubview:_sendBtn];
     [_sendBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.right.equalTo(_phoneField).offset(-SCALE_NUM(12));
+        make.left.equalTo(_phoneField.mas_right).offset(3);
         make.centerY.equalTo(_phoneField);
         make.width.mas_equalTo(KBUTTONWIDTH);
         make.height.mas_equalTo(KBUTTONHEIGHT);
@@ -157,7 +157,7 @@
     YTextField *field = [[YTextField alloc] init];
     [whiteBack addSubview:field];
     [field mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.right.equalTo(whiteBack);
+        make.right.equalTo(whiteBack).offset(-15-KBUTTONWIDTH);
         make.height.mas_equalTo(SCALE_NUM(50));
         make.top.bottom.equalTo(whiteBack);
         make.left.equalTo(whiteBack).offset(SCALE_NUM(10));
