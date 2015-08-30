@@ -181,6 +181,9 @@
         
         return NO;
     }
+    if ([[[UITextInputMode currentInputMode] primaryLanguage] isEqualToString:@"emoji"]) {
+        return NO;
+    }
     return YES;
 }
 
