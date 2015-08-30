@@ -17,6 +17,7 @@
 #import "LinkManList.h"
 #import "ClassList.h"
 #import "MessageManager.h"
+#import "YUtils+Component.h"
 
 #define kHeadWidthAndHeight            40
 #define kNameLabelWidth                80
@@ -142,7 +143,7 @@ NSString *const kMessageTableViewCell = @"MessageTableViewCellId";
     _defaultLabel.hidden = YES;
     _headImageView.layer.cornerRadius = kHeadCornerRadius;
     _headImageView.clipsToBounds = YES;
-    NSDictionary *ext = _conversation.latestMessage.ext;
+    NSDictionary *ext = _conversation.latestMessageFromOthers.ext;
     if ([ext[@"server_flag"] boolValue]) {
         //非聊天消息
         if (FRIEND_APPLY == [ext[@"type"] integerValue]) {
@@ -181,12 +182,20 @@ NSString *const kMessageTableViewCell = @"MessageTableViewCellId";
         _messageLabel.text = [self subTitleMessageByConversation:_conversation];
         
         //昵称
-        //    _nameLabel.text = userInfoDic[@"name"];
-        _nameLabel.text = ext[@"userName"];
-        
+        NSString *name = userInfoDic[@"name"];
+        if (name.length > 0) {
+            _nameLabel.text = userInfoDic[@"name"];
+        } else {
+            _nameLabel.text = ext[@"userName"];
+        }
         
         //头像
-        [_headImageView setFaceImageWithUrl:ext[@"headImage"]];
+        NSString *url = userInfoDic[@"icon"];
+        if (url.length > 0) {
+            [_headImageView setFaceImageWithUrl:userInfoDic[@"icon"]];
+        } else {
+            [_headImageView setFaceImageWithUrl:ext[@"headImage"]];
+        }
     }
     
     //未读数
@@ -277,7 +286,7 @@ NSString *const kMessageTableViewCell = @"MessageTableViewCellId";
     NSString *ret = @"";
     EMMessage *lastMessage = [conversation latestMessage];;
     if (lastMessage) {
-        ret = [NSDate formattedTimeFromTimeInterval:lastMessage.timestamp];
+        ret = [YUtils distanceTimeToday:[NSDate dateWithTimeIntervalSince1970:lastMessage.timestamp/1000]];
     }
     
     return ret;

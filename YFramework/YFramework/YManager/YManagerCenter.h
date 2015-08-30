@@ -47,5 +47,5 @@
  *
  *  App注销后调用,用来触发所有组件的appDidLogout方法
  */
-- (void)notifyAppLogouted;
+- (void)notifyAppLogouted:(NSDictionary *)logoutInfo;
 @end

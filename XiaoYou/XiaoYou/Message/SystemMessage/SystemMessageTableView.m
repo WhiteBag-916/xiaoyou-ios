@@ -163,7 +163,7 @@
 {
     ChatViewController * chatVC = [[ChatViewController alloc] initWithChatter:groupDic[@"third_code"] isGroup:YES];
     chatVC.isSystemMessage = NO;
-    chatVC.studentDic = [self transformDic:groupDic];
+    chatVC.studentDic = [[self transformDic:groupDic] mutableCopy];
     [self.myController.navigationController pushViewController:chatVC animated:YES needHiddenBottomBar:YES];
 }
 

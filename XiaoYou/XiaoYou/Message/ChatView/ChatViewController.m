@@ -44,6 +44,7 @@
 #import "YNotificationDefine.h"
 #import "UIImageView+Ext.h"
 #import "ClassList.h"
+#import "YUtils+Component.h"
 
 #define KPageCount 20
 #define KHintAdjustY    50
@@ -83,6 +84,9 @@
 @property (nonatomic) BOOL isPlayingAudio;
 @property (nonatomic) BOOL isKicked;
 @property (nonatomic) BOOL isRobot;
+
+@property (nonatomic, strong) UIImageView *headImageView;
+
 @end
 
 @implementation ChatViewController
@@ -245,31 +249,32 @@
     UIBarButtonItem *backItem = [[UIBarButtonItem alloc] initWithCustomView:backButton];
     [self.navigationItem setLeftBarButtonItem:backItem];
     
-    if (self.isChatGroup) {
+    NSString *name = _studentDic[@"name"];
+    if (name.length > 0) {
         self.title = _studentDic[@"name"];
-        UIImageView * headImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 40, 40)];
-        headImageView.layer.cornerRadius = 20;
-        headImageView.clipsToBounds = YES;
-        headImageView.userInteractionEnabled = YES;
-        [headImageView setFaceImageWithUrl:_conversation.latestMessage.ext[@"headImage"]];
-        UIButton *detailButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 60, 44)];
-        [detailButton addTarget:self action:@selector(showRoomContact:) forControlEvents:UIControlEventTouchUpInside];
-        [headImageView addSubview:detailButton];
-        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:headImageView];    }
-    else{
-        self.title = _studentDic[@"name"];
-        UIImageView * headImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 40, 40)];
-        headImageView.layer.cornerRadius = 20;
-        headImageView.clipsToBounds = YES;
-        headImageView.userInteractionEnabled = YES;
-        [headImageView setFaceImageWithUrl:_studentDic[@"icon"]];
-        UIButton *detailButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 40, 40)];
-//        [clearButton addTarget:self action:@selector(removeAllMessages:) forControlEvents:UIControlEventTouchUpInside];
-        [detailButton addTarget:self action:@selector(pushToDetailPage:) forControlEvents:UIControlEventTouchUpInside];
-        [headImageView addSubview:detailButton];
-        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:headImageView];
-        
+    } else {
+        self.title = _conversation.latestMessageFromOthers.ext[@"userName"];
     }
+    _headImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 40, 40)];
+    _headImageView.layer.cornerRadius = 20;
+    _headImageView.clipsToBounds = YES;
+    _headImageView.userInteractionEnabled = YES;
+    NSString *url = _studentDic[@"icon"];
+    if (url > 0) {
+        [_headImageView setFaceImageWithUrl:url];
+    } else {
+        [_headImageView setFaceImageWithUrl:_conversation.latestMessageFromOthers.ext[@"headImage"]];
+    }
+    UIButton *detailButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 60, 44)];
+    
+    if (self.isChatGroup) {
+        [detailButton addTarget:self action:@selector(showRoomContact:) forControlEvents:UIControlEventTouchUpInside];
+    } else{
+        [detailButton addTarget:self action:@selector(pushToDetailPage:) forControlEvents:UIControlEventTouchUpInside];
+    }
+    
+    [_headImageView addSubview:detailButton];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:_headImageView];
 }
 
 - (void)didReceiveMemoryWarning
@@ -556,7 +561,11 @@
                 cell.backgroundColor = [UIColor clearColor];
             }
 //            model.headImageURL = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@",api_icon_base_url,_studentDic[@"icon"]]];
-            model.headImageURL = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@",api_icon_base_url,_studentDic[@"icon"]]];
+            NSString *url = _studentDic[@"icon"];
+            if (url.length > 0) {
+                model.headImageURL = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@",api_icon_base_url,_studentDic[@"icon"]]];
+            }
+            
             cell.messageModel = model;
             
             return cell;
@@ -994,18 +1003,12 @@
 }
 
 -(void)didReceiveMessage:(EMMessage *)message
-{
-    if (eMessageTypeGroupChat == message.messageType) {
-        //群聊
-        
-        //更新头像
-        [[ContactManager sharedInstance] updateContactsHeadImageByThirdCode:message.groupSenderName headImage:message.ext[@"headImage"]];
-    } else if (eMessageTypeChat == message.messageType) {
-        //更新头像
-        [[ContactManager sharedInstance] updateContactsHeadImageByThirdCode:message.from headImage:message.ext[@"headImage"]];
-    }
-    
+{    
     if ([_conversation.chatter isEqualToString:message.conversationChatter]) {
+        
+        [_studentDic setValue:message.ext[@"headImage"] forKey:@"icon"];
+        [_headImageView setFaceImageWithUrl:_studentDic[@"icon"]];
+        
         [self addMessage:message];
         if ([self shouldAckMessage:message read:NO])
         {
@@ -1141,10 +1144,30 @@
 #if TARGET_IPHONE_SIMULATOR
     [self showHint:NSLocalizedString(@"相机不可用", @"simulator does not support taking picture")];
 #elif TARGET_OS_IPHONE
-    self.imagePicker.sourceType = UIImagePickerControllerSourceTypeCamera;
-    self.imagePicker.mediaTypes = @[(NSString *)kUTTypeImage,(NSString *)kUTTypeMovie];
-    [self presentViewController:self.imagePicker animated:YES completion:NULL];
-    self.isInvisible = YES;
+    AVAuthorizationStatus authStatus = [AVCaptureDevice authorizationStatusForMediaType:AVMediaTypeVideo];
+    if (authStatus == AVAuthorizationStatusRestricted ||authStatus ==AVAuthorizationStatusDenied){
+        YCommonAlertView *alert = [[YCommonAlertView alloc] initWithTitle:nil
+                                                                  message:@"您可以在 设置—>隐私—>相机中授权相机功能"
+                                                             buttonTitles:@"确认", nil];
+        [alert show];
+    }else if(authStatus == AVAuthorizationStatusNotDetermined){
+        // Explicit user permission is required for media capture, but the user has not yet granted or denied such permission.
+        [AVCaptureDevice requestAccessForMediaType:AVMediaTypeVideo completionHandler:^(BOOL granted) {
+            if(granted){//点击允许访问时调用
+                //用户明确许可与否，媒体需要捕获，但用户尚未授予或拒绝许可。
+                UIImagePickerController *picker = [[UIImagePickerController alloc] init];
+                [picker setSourceType:UIImagePickerControllerSourceTypeCamera];
+                picker.delegate = self;
+                [picker setAllowsEditing:YES];
+                [self presentViewController:picker animated:YES completion:nil];
+            }
+        }];
+    }else{
+        self.imagePicker.sourceType = UIImagePickerControllerSourceTypeCamera;
+        self.imagePicker.mediaTypes = @[(NSString *)kUTTypeImage,(NSString *)kUTTypeMovie];
+        [self presentViewController:self.imagePicker animated:YES completion:NULL];
+        self.isInvisible = YES;
+    }
 #endif
 }
 
@@ -1212,6 +1235,8 @@
  */
 - (void)didStartRecordingVoiceAction:(UIView *)recordView
 {
+    self.view.userInteractionEnabled = NO;
+    self.navigationController.navigationBar.userInteractionEnabled = NO;
     if ([self canRecord]) {
         DXRecordView *tmpView = (DXRecordView *)recordView;
         tmpView.center = self.view.center;
@@ -1236,6 +1261,8 @@
  */
 - (void)didCancelRecordingVoiceAction:(UIView *)recordView
 {
+    self.view.userInteractionEnabled = YES;
+    self.navigationController.navigationBar.userInteractionEnabled = YES;
     [[EMCDDeviceManager sharedInstance] cancelCurrentRecording];
 }
 
@@ -1244,6 +1271,8 @@
  */
 - (void)didFinishRecoingVoiceAction:(UIView *)recordView
 {
+    self.view.userInteractionEnabled = YES;
+    self.navigationController.navigationBar.userInteractionEnabled = YES;
     __weak typeof(self) weakSelf = self;
     [[EMCDDeviceManager sharedInstance] asyncStopRecordingWithCompletion:^(NSString *recordPath, NSInteger aDuration, NSError *error) {
         if (!error) {
@@ -1252,7 +1281,15 @@
             voice.duration = aDuration;
             [weakSelf sendAudioMessage:voice];
         }else {
-            [weakSelf showHudInView:self.view hint:NSLocalizedString(@"录音时间过短", @"The recording time is too short")];
+            if ([self canRecord])
+            {
+                [weakSelf showHudInView:self.view hint:NSLocalizedString(@"录音时间过短", @"The recording time is too short")];
+            }
+            else
+            {
+                [weakSelf showHudInView:self.view hint:NSLocalizedString(@"您没有设置麦克风的权限", @"The recording time is too short")];
+            }
+            
             weakSelf.chatToolBar.recordButton.enabled = NO;
             dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
                 [weakSelf hideHud];
@@ -1499,7 +1536,8 @@
             NSDate *createDate = [NSDate dateWithTimeIntervalInMilliSecondSince1970:(NSTimeInterval)message.timestamp];
             NSTimeInterval tempDate = [createDate timeIntervalSinceDate:self.chatTagDate];
             if (tempDate > 60 || tempDate < -60 || (self.chatTagDate == nil)) {
-                [formatArray addObject:[createDate formattedTime]];
+                [formatArray addObject:[YUtils distanceTimeToday:[NSDate dateWithTimeIntervalSince1970:message.timestamp/1000]]];
+//                [formatArray addObject:[createDate formattedTime]];
                 self.chatTagDate = createDate;
             }
             
@@ -1530,7 +1568,8 @@
     NSDate *createDate = [NSDate dateWithTimeIntervalInMilliSecondSince1970:(NSTimeInterval)message.timestamp];
     NSTimeInterval tempDate = [createDate timeIntervalSinceDate:self.chatTagDate];
     if (tempDate > 60 || tempDate < -60 || (self.chatTagDate == nil)) {
-        [ret addObject:[createDate formattedTime]];
+        [ret addObject:[YUtils distanceTimeToday:[NSDate dateWithTimeIntervalSince1970:message.timestamp/1000]]];
+//        [ret addObject:[createDate formattedTime]];
         self.chatTagDate = createDate;
     }
     
@@ -1594,6 +1633,7 @@
     XYContactsInfoDetailViewController * contactsInfoDetailViewController = [[XYContactsInfoDetailViewController alloc] init];
     contactsInfoDetailViewController.studentDic = _studentDic;
     contactsInfoDetailViewController.uid = _studentDic[@"uid"];
+    contactsInfoDetailViewController.hxId = _conversation.chatter;
     contactsInfoDetailViewController.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:contactsInfoDetailViewController animated:YES];
 }
@@ -1640,10 +1680,10 @@
         _menuController = [UIMenuController sharedMenuController];
     }
     if (_copyMenuItem == nil) {
-        _copyMenuItem = [[UIMenuItem alloc] initWithTitle:NSLocalizedString(@"copy", @"Copy") action:@selector(copyMenuAction:)];
+        _copyMenuItem = [[UIMenuItem alloc] initWithTitle:@"拷贝" action:@selector(copyMenuAction:)];
     }
     if (_deleteMenuItem == nil) {
-        _deleteMenuItem = [[UIMenuItem alloc] initWithTitle:NSLocalizedString(@"delete", @"Delete") action:@selector(deleteMenuAction:)];
+        _deleteMenuItem = [[UIMenuItem alloc] initWithTitle:@"删除" action:@selector(deleteMenuAction:)];
     }
     
     if (messageType == eMessageBodyType_Text) {
@@ -1742,10 +1782,24 @@
 
 - (NSDictionary *)addAlertBody:(NSDictionary *)ext {
     NSMutableDictionary *extDic = [[NSMutableDictionary alloc] initWithDictionary:ext];
-    if (_isChatGroup) {
+    [extDic setObject:[[ProvisionManager sharedInstance] getLoginInfo].icon forKey:@"headImage"];
+    [extDic setObject:[[ProvisionManager sharedInstance] getLoginInfo].studentName forKey:@"userName"];
+    if ([self messageType] == eMessageTypeGroupChat) {
         [extDic setObject:@{@"em_push_title":[NSString stringWithFormat:@"%@给你发来一条新消息", _studentDic[@"name"]]} forKey:@"em_apns_ext"];
     } else {
-        [extDic setObject:@{@"em_push_title":[NSString stringWithFormat:@"%@给你发来一条新消息", [[ProvisionManager sharedInstance] getLoginInfo].studentName]} forKey:@"em_apns_ext"];
+        __block BOOL needIgorePush = NO;
+        [[[ContactManager sharedInstance] getForbiddenMeList] enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+            if ([_studentDic[@"thirdCode"] isEqualToString:obj])
+            {
+                needIgorePush = YES;
+                [extDic setObject:@YES forKey:@"em_ignore_notification"];
+                *stop = YES;
+            }
+        }];
+        
+        if (!needIgorePush) {
+            [extDic setObject:@{@"em_push_title":[NSString stringWithFormat:@"%@给你发来一条新消息", [[ProvisionManager sharedInstance] getLoginInfo].studentName]} forKey:@"em_apns_ext"];
+        }
     }
     
     return extDic;
@@ -1756,15 +1810,6 @@
 -(void)sendTextMessage:(NSString *)textMessage
 {
     NSDictionary *ext;
-    if ([self messageType] == eMessageTypeChat)
-    {
-        ext = @{@"headImage":[[ProvisionManager sharedInstance] getLoginInfo].icon,@"userName":[[ProvisionManager sharedInstance] getLoginInfo].studentName};
-    }
-    else if ([self messageType] == eMessageTypeGroupChat)
-    {
-        ext = @{@"headImage":_studentDic[@"icon"],@"userName":_studentDic[@"name"]};
-    }
-    
     
     if (_isRobot) {
         ext = @{kRobot_Message_Ext:[NSNumber numberWithBool:YES]};
@@ -1782,14 +1827,6 @@
 {
     
     NSDictionary *ext;
-    if ([self messageType] == eMessageTypeChat)
-    {
-        ext = @{@"headImage":[[ProvisionManager sharedInstance] getLoginInfo].icon,@"userName":[[ProvisionManager sharedInstance] getLoginInfo].studentName};
-    }
-    else if ([self messageType] == eMessageTypeGroupChat)
-    {
-        ext = @{@"headImage":_studentDic[@"icon"],@"userName":_studentDic[@"name"]};
-    }
     
     if (_isRobot) {
         ext = @{kRobot_Message_Ext:[NSNumber numberWithBool:YES]};
@@ -1805,14 +1842,6 @@
 -(void)sendAudioMessage:(EMChatVoice *)voice
 {
     NSDictionary *ext;
-    if ([self messageType] == eMessageTypeChat)
-    {
-        ext = @{@"headImage":[[ProvisionManager sharedInstance] getLoginInfo].icon,@"userName":[[ProvisionManager sharedInstance] getLoginInfo].studentName};
-    }
-    else if ([self messageType] == eMessageTypeGroupChat)
-    {
-        ext = @{@"headImage":_studentDic[@"icon"],@"userName":_studentDic[@"name"]};
-    }
     if (_isRobot) {
         ext = @{kRobot_Message_Ext:[NSNumber numberWithBool:YES]};
     }
@@ -1826,14 +1855,7 @@
 -(void)sendVideoMessage:(EMChatVideo *)video
 {
     NSDictionary *ext;
-    if ([self messageType] == eMessageTypeChat)
-    {
-        ext = @{@"headImage":[[ProvisionManager sharedInstance] getLoginInfo].icon,@"userName":[[ProvisionManager sharedInstance] getLoginInfo].studentName};
-    }
-    else if ([self messageType] == eMessageTypeGroupChat)
-    {
-        ext = @{@"headImage":_studentDic[@"icon"],@"userName":_studentDic[@"name"]};
-    }
+ 
     if (_isRobot) {
         ext = @{kRobot_Message_Ext:[NSNumber numberWithBool:YES]};
     }

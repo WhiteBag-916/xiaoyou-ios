@@ -34,7 +34,7 @@ NSString *const KFRIEND_APPLYID = @"100002";//好友申请
 NSString *const KGROUP_APPLYID = @"100003";//社团申请，ID累加
 
 
-@interface MessageManager ()<EMChatManagerChatDelegate>
+@interface MessageManager ()<EMChatManagerDelegate>
 
 @property (strong, nonatomic) NSDate *lastPlaySoundDate;
 @property (nonatomic, strong) NSMutableArray *grouArray;//现有的group
@@ -101,10 +101,10 @@ DEF_SINGLETON(MessageManager);
     [self loginEaseMob];
 }
 
-- (void)appDidLogout
+- (void)appDidLogout:(NSDictionary *)logoutInfo
 {
     [self unregisterNotifications];
-    [[EaseMob sharedInstance].chatManager asyncLogoffWithUnbindDeviceToken:YES completion:^(NSDictionary *info, EMError *error) {
+    [[EaseMob sharedInstance].chatManager asyncLogoffWithUnbindDeviceToken:[logoutInfo[@"logoutBySelf"] boolValue] completion:^(NSDictionary *info, EMError *error) {
         if (!error && info) {
             NSLog(@"退出成功");
         }
@@ -243,6 +243,15 @@ DEF_SINGLETON(MessageManager);
         }
     } else {
         needReload = YES;
+        
+        if (eMessageTypeGroupChat == message.messageType) {
+            //群聊
+            //更新头像
+            [[ContactManager sharedInstance] updateContactsHeadImageByThirdCode:message.groupSenderName headImage:message.ext[@"headImage"]];
+        } else if (eMessageTypeChat == message.messageType) {
+            //更新头像
+            [[ContactManager sharedInstance] updateContactsHeadImageByThirdCode:message.from headImage:message.ext[@"headImage"]];
+        }
     }
     
     if (needReload) {
@@ -255,17 +264,22 @@ DEF_SINGLETON(MessageManager);
         
         [message updateMessageExtToDB];
         
+        [[EaseMob sharedInstance].chatManager loadAllConversationsFromDatabaseWithAppend2Chat:YES];
+        
         [[NSNotificationCenter defaultCenter] postNotificationName:kNotification_Refresh_Message object:nil userInfo:nil];
         
         [self setupUnreadMessageCount];
     }
     
 #if !TARGET_IPHONE_SIMULATOR
-    BOOL isAppActivity = [[UIApplication sharedApplication] applicationState] == UIApplicationStateActive;
-    if (!isAppActivity) {
-        [self showNotificationWithMessage:message];
-    } else {
-        [self playSoundAndVibration];
+    //判断是否发送本地推送
+    if (!ext[@"em_ignore_notification"]) {
+        BOOL isAppActivity = [[UIApplication sharedApplication] applicationState] == UIApplicationStateActive;
+        if (!isAppActivity) {
+            [self showNotificationWithMessage:message];
+        } else {
+            [self playSoundAndVibration];
+        }
     }
 #endif
     
@@ -373,9 +387,8 @@ DEF_SINGLETON(MessageManager);
     //发送本地推送
     UILocalNotification *notification = [[UILocalNotification alloc] init];
     notification.fireDate = [NSDate date]; //触发通知的时间
-    
     notification.alertBody = message.ext[@"em_apns_ext"][@"em_push_title"];
-//    notification.alertAction = @"查看";
+    //    notification.alertAction = @"查看";
     notification.timeZone = [NSTimeZone defaultTimeZone];
     notification.soundName = UILocalNotificationDefaultSoundName;
     NSMutableDictionary *userInfo = [NSMutableDictionary dictionary];

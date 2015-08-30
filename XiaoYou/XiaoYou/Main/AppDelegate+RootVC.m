@@ -51,7 +51,7 @@
     //踢下线
     [[NSUserDefaults standardUserDefaults] setObject:@"" forKey:kShareData_Token];
     //抛登出成功通知
-    [[YManagerCenter defaultCenter] notifyAppLogouted];
+    [[YManagerCenter defaultCenter] notifyAppLogouted:@{@"logoutBySelf":@NO}];
     
     //切换
     [self initChooseSchoolNC];

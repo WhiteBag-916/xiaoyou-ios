@@ -91,7 +91,7 @@ NSString *const kXYGroupInfoDetailViewController = @"XYGroupInfoDetailViewContro
 {
     ChatViewController * chatVC = [[ChatViewController alloc] initWithChatter:_studentDic[@"thirdCode"] isGroup:YES];
     chatVC.isSystemMessage = NO;
-    chatVC.studentDic = _studentDic;
+    chatVC.studentDic = [_studentDic mutableCopy];
     [self.navigationController pushViewController:chatVC animated:YES needHiddenBottomBar:YES];
 }
 
@@ -99,18 +99,20 @@ NSString *const kXYGroupInfoDetailViewController = @"XYGroupInfoDetailViewContro
 {
     YActionSheetItem *item1 = [YActionSheetItem itemWithType:YCommonActionSheetItemTypeShareOrganization title:@"分享社团名片至" extraData:_shareData];
     
-    YActionSheetItem *item2 = [YActionSheetItem itemWithTitle:@"消息不提醒"
-                                                         type:YCommonActionSheetItemTypeSwitch
-                                                         open:YES
-                                                    extraData:@{@"uid":self.gid}];
+//    YActionSheetItem *item2 = [YActionSheetItem itemWithTitle:@"消息不提醒"
+//                                                         type:YCommonActionSheetItemTypeSwitch
+//                                                      isGroup:YES
+//                                                         open:YES
+//                                                    extraData:@{@"uid":self.gid}];
+
     
     YActionSheetItem *item3 = [YActionSheetItem itemWithTitle:@"举报"
                                                          type:YCommonActionSheetItemTypeCommon
                                                         block:^(NSInteger checkNum) {
-                                                            
+                                                            [YCommonReport report];
                                                         }];
     
-    YCommonActionSheet *sheet = [[YCommonActionSheet alloc] initWithType:@[item1, item2, item3] title:nil];
+    YCommonActionSheet *sheet = [[YCommonActionSheet alloc] initWithType:@[item1, item3] title:nil];
     [sheet show];
 }
 

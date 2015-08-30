@@ -11,6 +11,8 @@
 #import "ConnectTag.h"
 #import "UIImageView+Ext.h"
 #import "Tags.h"
+#import "ProfileInfo.h"
+#import "LinkManList.h"
 #import "ProfilePublishViewController.h"
 #import "ContactManager.h"
 #import "YUtils+HUD.h"
@@ -233,7 +235,8 @@
     }
     else
     {
-        NSDictionary * dic = @{@"content":self.flagNameArr[indexPath.row - 2],@"index":indexStr};
+        Tags * tag = _model.tagsCommon[indexPath.row - 2];
+        NSDictionary * dic = @{@"content":self.flagNameArr[indexPath.row - 2],@"index":indexStr,@"equal":@(tag.equal)};
         [cell setCellInfo:dic hiddenLine:YES];
         return cell;
     }
@@ -259,6 +262,7 @@
     {
         [YUtils showHUDWithTitle];
         [[ContactManager sharedInstance] praise:_model.uid block:^(YActionMessage *message) {
+            [YUtils hiddenProgressHUD];
             if (message.isSuccess) {
                 _model.isCool = !_model.isCool;
                 if (_model.isCool) {
@@ -268,8 +272,10 @@
                 }
                 
                 [self reloadData];
+            }else {
+                [YUtils showTitle:message.desc];
             }
-            [YUtils hiddenProgressHUD];
+            
         }];
     }
 }

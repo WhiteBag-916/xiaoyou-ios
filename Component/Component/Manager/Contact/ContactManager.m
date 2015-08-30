@@ -28,7 +28,6 @@
 #import "ForbiddenMeListAction.h"
 #import "ForbiddenList.h"
 #import "ForbiddenLinkManAction.h"
-#import "ClassList.h"
 
 #define kContactsManagerSyncQueue @"kContactsManagerSyncQueue"
 
@@ -49,6 +48,36 @@ DEF_SINGLETON(ContactManager);
     if (self == [super init]) {
     }
     return self;
+}
+
+//通过thirdCode获取联系人
+- (LinkManList *)getManByThirdCode:(NSString *)thirdCode {
+    LinkManList *linkManList;
+    
+    for (LinkManList * obj in _linkManModel.linkManList) {
+        if ([thirdCode isEqualToString:obj.thirdCode])
+        {
+            linkManList = obj;
+            break;
+        }
+    }
+    
+    return linkManList;
+}
+
+//通过id获取联系人
+- (LinkManList *)getManById:(NSString *)uid {
+    LinkManList *linkManList;
+    
+    for (LinkManList * obj in _linkManModel.linkManList) {
+        if ([uid isEqualToString:obj.uid])
+        {
+            linkManList = obj;
+            break;
+        }
+    }
+    
+    return linkManList;
 }
 
 //更新联系人的头像
@@ -80,7 +109,6 @@ DEF_SINGLETON(ContactManager);
         }
     }
 }
-
 //存储联系人到本地
 - (void)saveContactsList
 {
@@ -140,7 +168,7 @@ DEF_SINGLETON(ContactManager);
     }];
 }
 
-- (void)appDidLogout
+- (void)appDidLogout:(NSDictionary *)logoutInfo
 {
     //删除文件
     NSString *cachePath = [[YDirectory fileCache] stringByAppendingString:NSStringFromClass([LinkManModel class])];
@@ -148,9 +176,10 @@ DEF_SINGLETON(ContactManager);
 }
 
 //获取人详细信息,ProfileInfo
-- (void)getUserDetailInfo:(NSString *)userID block:(ActionCompleteBlock)block {
+- (void)getUserDetailInfo:(NSString *)userID hxId:(NSString *)hxId block:(ActionCompleteBlock)block {
     ProfileAction* action = [[ProfileAction alloc] init];
     action.userID = userID;
+    action.hxId = hxId;
     
     [YAction startAction:action completionBlock:^(YActionMessage* message) {
         //主线程处理界面
@@ -428,7 +457,7 @@ DEF_SINGLETON(ContactManager);
     [YAction startAction:action completionBlock:^(YActionMessage* message) {
         
         if (message.isSuccess) {
-            _forbiddenMeList = [NSMutableArray arrayWithObject:[message.object forbiddenList]];
+            _forbiddenMeList = [NSMutableArray arrayWithArray:[message.object forbiddenList]];
         }
         
         //主线程处理界面

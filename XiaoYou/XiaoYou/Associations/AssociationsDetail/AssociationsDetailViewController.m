@@ -94,7 +94,7 @@
     if ([_groupModel.groupStatus isEqualToString:@"3"]) {
         //进入群聊
         ChatViewController *chatViewController = [[ChatViewController alloc] initWithChatter:_groupModel.thirdId isGroup:YES];
-        chatViewController.studentDic = @{@"name":_groupModel.groupName, @"icon":_groupModel.groupIcon,@"gid":[NSString stringWithFormat:@"%g", _groupModel.internalBaseClassIdentifier]};
+        chatViewController.studentDic = [@{@"name":_groupModel.groupName, @"icon":_groupModel.groupIcon,@"gid":[NSString stringWithFormat:@"%g", _groupModel.internalBaseClassIdentifier]} mutableCopy];
         [self.navigationController pushViewController:chatViewController animated:YES];
     } else {
         [YUtils showHUDWithTitle];

@@ -316,7 +316,7 @@ typedef enum : NSUInteger {
 - (void)toChat {
     ChatViewController * chatVC = [[ChatViewController alloc] initWithChatter:[NSString stringWithFormat:@"4_%@",_applicantList.author.studentNo] isGroup:NO];
     chatVC.isSystemMessage = NO;
-    chatVC.studentDic = @{@"name":_applicantList.author.name, @"icon":_applicantList.author.headPic, @"uid":_applicantList.author.uid};
+    chatVC.studentDic = [@{@"name":_applicantList.author.name, @"icon":_applicantList.author.headPic, @"uid":_applicantList.author.uid} mutableCopy];
     [self.superVC.navigationController pushViewController:chatVC animated:YES needHiddenBottomBar:YES];
 }
 

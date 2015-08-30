@@ -21,6 +21,7 @@ static const NSUInteger kYActionSheetCancelHeight = 49;
 @property (nonatomic,copy) NSString *title;
 @property (nonatomic,assign) YCommonActionItemSheetType type;
 @property (nonatomic, assign) BOOL isOpen;
+@property (nonatomic, assign) BOOL isGroup;
 @property (nonatomic,copy) ActionSheetItemBlock block;
 @property (nonatomic,copy) NSDictionary *extraData;
 @end
@@ -36,12 +37,13 @@ static const NSUInteger kYActionSheetCancelHeight = 49;
     return item;
 }
 
-+(instancetype)itemWithTitle:(NSString *)title type:(YCommonActionItemSheetType)type open:(BOOL)isOpen extraData:(NSDictionary *)extraData
++(instancetype)itemWithTitle:(NSString *)title type:(YCommonActionItemSheetType)type isGroup:(BOOL)isGroup open:(BOOL)isOpen extraData:(NSDictionary *)extraData
 {
     YActionSheetItem *item = [YActionSheetItem itemWithTitle:title
                                                         type:type
                                                        block:nil];
     item.isOpen = isOpen;
+    item.isGroup = isGroup;
     item.extraData = extraData;
     return item;
 }

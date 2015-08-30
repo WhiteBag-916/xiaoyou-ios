@@ -11,5 +11,6 @@
 @interface ProfileAction : YHTTPRequestAction<YAction>
 
 @property (nonatomic, strong) NSString *userID;
+@property (nonatomic, strong) NSString *hxId;
 
 @end

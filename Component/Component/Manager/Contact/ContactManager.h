@@ -16,6 +16,12 @@ AS_SINGLETON(ContactManager);
 
 - (void)getContactsListData:(ActionCompleteBlock)block;
 
+//通过thirdCode获取联系人
+- (LinkManList *)getManByThirdCode:(NSString *)thirdCode;
+
+//通过id获取联系人
+- (LinkManList *)getManById:(NSString *)uid;
+
 //更新联系人的头像
 - (void)updateContactsHeadImageByThirdCode:(NSString *)thirdCode headImage:(NSString *)headImage;
 
@@ -27,7 +33,7 @@ AS_SINGLETON(ContactManager);
 - (LinkManModel *)getContactsListData;
 
 //获取人详细信息
-- (void)getUserDetailInfo:(NSString *)userID block:(ActionCompleteBlock)block;
+- (void)getUserDetailInfo:(NSString *)userID hxId:(NSString *)hxId block:(ActionCompleteBlock)block;
 
 //点赞别人
 - (void)praise:(NSString *)bePraiseId block:(ActionCompleteBlock)block;
@@ -88,10 +94,10 @@ AS_SINGLETON(ContactManager);
 //屏蔽其他人
 - (void)forbiddenLinkMan:(NSString *)forbiddenId block:(ActionCompleteBlock)block;
 
-//屏蔽列表
+//屏蔽人列表
 - (void)forbiddenMeList:(ActionCompleteBlock)block;
 
-//获取屏蔽列表
+//获取屏蔽人列表
 - (NSArray *)getForbiddenMeList;
 
 //增加

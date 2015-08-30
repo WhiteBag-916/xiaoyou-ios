@@ -72,7 +72,7 @@ DEF_SINGLETON(ProvisionManager);
     [self resetUnreadAlterCount:[[[NSUserDefaults standardUserDefaults] objectForKey:kShareData_UnreadAlterCount] integerValue]];
 }
 
-- (void)appDidLogout
+- (void)appDidLogout:(NSDictionary *)logoutInfo
 {
     //清理数据
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:kShareData_Token];
@@ -426,7 +426,7 @@ DEF_SINGLETON(ProvisionManager);
     }];
     
     //抛登出
-    [[YManagerCenter defaultCenter] notifyAppLogouted];
+    [[YManagerCenter defaultCenter] notifyAppLogouted:@{@"logoutBySelf":@YES}];
 }
 
 @end

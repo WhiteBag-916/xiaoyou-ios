@@ -48,7 +48,7 @@
 
 - (void)onNavigationRightButtonClicked
 {
-    YActionSheetItem *item1 = [YActionSheetItem itemWithTitle:@"清空好友列表"
+    YActionSheetItem *item1 = [YActionSheetItem itemWithTitle:@"清空好友申请列表"
                                                          type:YCommonActionSheetItemTypeCenterCommon
                                                         block:^(NSInteger checkNum) {
                                                             [self removeAllData];

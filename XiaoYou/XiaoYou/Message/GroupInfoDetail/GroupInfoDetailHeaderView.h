@@ -13,6 +13,6 @@ extern NSString *const kGroupInfoDetailHeaderView;
 
 @interface GroupInfoDetailHeaderView : UICollectionReusableView
 
--(void)setHeaderViewInfo:(GroupModel *) model;
+-(void)setHeaderViewInfo:(GroupModel *) model andIsClass:(BOOL) isClass;
 
 @end

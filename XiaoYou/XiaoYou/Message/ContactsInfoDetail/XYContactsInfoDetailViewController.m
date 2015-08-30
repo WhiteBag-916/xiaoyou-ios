@@ -32,7 +32,7 @@
     // Do any additional setup after loading the view.
     
     [self setUpUI];
-    [[ContactManager sharedInstance] getUserDetailInfo:_uid block:^(YActionMessage *message) {
+    [[ContactManager sharedInstance] getUserDetailInfo:_uid hxId:_hxId block:^(YActionMessage *message) {
         if (message.isSuccess) {
             ProfileInfo * model = message.object;
             _shareData = @{@"name":model.userName, @"pic":model.headPic, @"school":model.schoolName};
@@ -42,16 +42,12 @@
         }
     }];
     
-    [self showCustomNavigationBackButton];
-    
-    
 }
-
-
 
 -(void)setUpUI
 {
     self.title = @"详情";
+    [self showCustomNavigationBackButton];
     [self showCustomNavigationMoreButton];
     
     _contactsInfoDetailTableView = [[ContactsInfoDetailTableView alloc] init];
@@ -93,14 +89,14 @@
         if ([_studentDic[@"linkType"] doubleValue] == 0) {
             ChatViewController * chatVC = [[ChatViewController alloc] initWithChatter:_studentDic[@"thirdCode"] isGroup:NO];
             chatVC.isSystemMessage = NO;
-            chatVC.studentDic = _studentDic;
+            chatVC.studentDic = [_studentDic mutableCopy];
             [self.navigationController pushViewController:chatVC animated:YES needHiddenBottomBar:YES];
         }
         else
         {
             ChatViewController * chatVC = [[ChatViewController alloc] initWithChatter:_studentDic[@"thirdCode"] isGroup:YES];
             chatVC.isSystemMessage = NO;
-            chatVC.studentDic = _studentDic;
+            chatVC.studentDic = [_studentDic mutableCopy];
             [self.navigationController pushViewController:chatVC animated:YES needHiddenBottomBar:YES];
         }
 }
@@ -115,7 +111,8 @@
     
     YActionSheetItem *item2 = [YActionSheetItem itemWithTitle:@"消息不提醒"
                                                          type:YCommonActionSheetItemTypeSwitch
-                                                         open:YES
+                                                      isGroup:NO
+                                                         open:[self isRemind]
                                                     extraData:@{@"uid":self.uid}];
     
     YActionSheetItem *item3 = [YActionSheetItem itemWithTitle:@"解除好友关系"
@@ -165,6 +162,19 @@
         }
         
     }];
+}
+
+-(BOOL)isRemind
+{
+    //消息提醒
+    if ([_studentDic[@"isRemind"] isEqualToString:@"n"])
+    {
+        return YES;
+    }
+    else
+    {
+        return NO;
+    }
 }
 
 - (void)didReceiveMemoryWarning {

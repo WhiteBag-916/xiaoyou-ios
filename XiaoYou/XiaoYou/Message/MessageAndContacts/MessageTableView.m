@@ -24,6 +24,7 @@
 #import "MessageManager.h"
 #import "XYFriendApplyViewController.h"
 #import "XYGroupApplyViewController.h"
+#import "YUtils+Component.h"
 
 #define kRowHeight                     68
 #define kHeadWidthAndHeight            40
@@ -242,7 +243,7 @@
 -(NSString *)lastMessageTimeByConversation:(EMMessage *)model
 {
     NSString *ret = @"";
-    ret = [NSDate formattedTimeFromTimeInterval:model.timestamp];
+    ret = [YUtils distanceTimeToday:[NSDate dateWithTimeIntervalSince1970:model.timestamp/1000]];
     
     return ret;
 }
@@ -314,7 +315,7 @@
     {
         EMConversation *converation = [_messageDataSource objectAtIndex:indexPath.row];
         
-        NSDictionary *ext = converation.latestMessage.ext;
+        NSDictionary *ext = converation.latestMessageFromOthers.ext;
         if ([ext[@"server_flag"] boolValue]) {
             //非聊天消息
             if (FRIEND_APPLY == [ext[@"type"] integerValue]) {
@@ -330,14 +331,14 @@
             if ([cell.studentDic[@"linkType"] doubleValue] == 0) {
                 ChatViewController * chatVC = [[ChatViewController alloc] initWithChatter:cell.conversation.chatter isGroup:NO];
                 chatVC.isSystemMessage = NO;
-                chatVC.studentDic = cell.studentDic;
+                chatVC.studentDic = [cell.studentDic  mutableCopy];
                 [self.myController.navigationController pushViewController:chatVC animated:YES];
             }
             else
             {
                 ChatViewController * chatVC = [[ChatViewController alloc] initWithChatter:cell.conversation.chatter isGroup:YES];
                 chatVC.isSystemMessage = NO;
-                chatVC.studentDic = cell.studentDic;
+                chatVC.studentDic = [cell.studentDic mutableCopy];
                 [self.myController.navigationController pushViewController:chatVC animated:YES];
             }
         }

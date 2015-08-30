@@ -207,6 +207,7 @@
 {
     XYGroupInfoDetailViewController * groupInfoDetailViewController = [[XYGroupInfoDetailViewController alloc] init];
     groupInfoDetailViewController.studentDic = _headDataSourceDic;
+    groupInfoDetailViewController.isClass = YES;
     groupInfoDetailViewController.gid = [_headDataSourceDic[@"gid"] stringValue];
     [self.myController.navigationController pushViewController:groupInfoDetailViewController animated:YES needHiddenBottomBar:YES];
 }
@@ -337,6 +338,7 @@
         XYGroupInfoDetailViewController * groupInfoDetailViewController = [[XYGroupInfoDetailViewController alloc] init];
         groupInfoDetailViewController.studentDic = cell.studentDic;
         groupInfoDetailViewController.gid = [cell.studentDic[@"gid"] stringValue];
+        groupInfoDetailViewController.isClass = NO;
         [self.myController.navigationController pushViewController:groupInfoDetailViewController animated:YES needHiddenBottomBar:YES];
     }
     
