@@ -30,7 +30,7 @@
 @property (strong, nonatomic) FeedListTableView         *feedListTableView;     //feed列表
 @property (strong, nonatomic) BBBadgeBarButtonItem      *menuButton;            //菜单按钮
 @property (nonatomic, strong) ProfilePersonListTableView *profilePersonListTableView;  //人
-
+@property (nonatomic, assign) BOOL needRefresh;
 @end
 
 @implementation FeedListViewController
@@ -40,7 +40,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     [self initView];
-    [_feedListTableView loadData];
+    _needRefresh = true;
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -51,14 +51,13 @@
     [SlideNavigationController sharedInstance].enableShadow = false;
     [SlideNavigationController sharedInstance].portraitSlideOffset = SCREEN_WIDTH * 0.3;
     [self showCustomNavigationPublishButton];
-
     [self initNotification];
 }
-- (void)refresh {
-    
-}
 - (void)viewDidAppear:(BOOL)animated {
-    
+    if (_needRefresh) {
+        _needRefresh = false;
+        [_feedListTableView loadData];
+    }
     //避免会被取消
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         [self checkUnreadAlterCount];
@@ -190,6 +189,7 @@
     [self.navigationController pushViewController:[[FeedFilterViewController alloc] initWithFilter:[notification userInfo][@"filter"] name:[notification userInfo][@"name"]] animated:true needHiddenBottomBar:YES];
 }
 - (void)onNavigationRightButtonClicked {
+    _needRefresh = true;
     UINavigationController *navigationController =
     [[UINavigationController alloc] initWithRootViewController:[[FeedPublishViewController alloc] init]];
     [self.navigationController presentViewController:navigationController animated:YES completion:nil];
