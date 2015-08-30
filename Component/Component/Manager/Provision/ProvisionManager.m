@@ -30,6 +30,7 @@
 #import "CommonAction.h"
 #import "YUtils+Component.h"
 #import "ReceiveMobileAuthCodeAction.h"
+#import "RegAction.h"
 
 #define kProvisionManagerSyncQueue @"kProvisionManagerSyncQueue"
 
@@ -194,6 +195,39 @@ DEF_SINGLETON(ProvisionManager);
     _loginResp = loginResp;
     
     [self updateLoginInfo];
+}
+
+//注册
+- (void)reg:(NSString *)account password:(NSString *)password mobilePhone:(NSString *)mobilePhone block:(ActionCompleteBlock)block {
+    RegAction* action = [[RegAction alloc] init];
+    action.password = password;
+    action.schoolCode = [YShareData defaultData][kShareData_SchoolCode];
+    action.studentNo = account;
+    action.platform = @"2";
+    action.mobilePhone = mobilePhone;
+    
+    [YAction startAction:action completionBlock:^(YActionMessage* message) {
+        //子线程处理数据
+        [YQueue dispatchInSyncQueueWithQueueType:kProvisionManagerSyncQueue block:^{
+            if (message.isSuccess)
+            {
+                //存文件
+                self.loginResp = message.object;
+                [self saveLoginInfo];
+                //存token
+                [[NSUserDefaults standardUserDefaults] setObject:_loginResp.token forKey:kShareData_Token];
+                [self savePassword:action.password];
+                
+                //抛登录成功
+                [[YManagerCenter defaultCenter] notifyAppLogined:nil];
+            }
+            
+            //主线程处理界面
+            [YQueue dispatchInMainQueueWithBlock:^{
+                block(message);
+            }];
+        }];
+    }];
 }
 
 - (void)goLogin:(NSString *)account password:(NSString *)password block:(ActionCompleteBlock)block
@@ -390,7 +424,7 @@ DEF_SINGLETON(ProvisionManager);
 }
 
 //绑定手机验证码获取
-- (void)receiveAuthCode:(NSString *)mobilePhone block:(ActionCompleteBlock)block {
+- (void)receiveAuthCode:(NSString *)mobilePhone needUserToken:(BOOL)needUserToken block:(ActionCompleteBlock)block {
     ReceiveAuthCodeAction* action = [[ReceiveAuthCodeAction alloc] init];
     action.mobilePhone = mobilePhone;
     

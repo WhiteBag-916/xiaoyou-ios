@@ -11,5 +11,6 @@
 @interface ReceiveAuthCodeAction : YHTTPRequestAction<YAction>
 
 @property (nonatomic, strong) NSString *mobilePhone;
+@property (nonatomic, assign) BOOL needUserToken;
 
 @end

@@ -35,6 +35,8 @@ AS_SINGLETON(ProvisionManager);
 - (NSArray *)profileTags;
 //登录
 - (void)goLogin:(NSString *)account password:(NSString *)password block:(ActionCompleteBlock)block;
+//注册
+- (void)reg:(NSString *)account password:(NSString *)password mobilePhone:(NSString *)mobilePhone block:(ActionCompleteBlock)block;
 //获取学校列表
 - (void)schoolListReq:(NSString *)schoolName block:(ActionCompleteBlock)block;
 //忘记密码
@@ -60,7 +62,7 @@ AS_SINGLETON(ProvisionManager);
 //修改密码
 - (void)ModifyPassword:(NSString *)password oldPassWord:(NSString *)oldPassWord block:(ActionCompleteBlock)block;
 //绑定手机验证码获取
-- (void)receiveAuthCode:(NSString *)mobilePhone block:(ActionCompleteBlock)block;
+- (void)receiveAuthCode:(NSString *)mobilePhone needUserToken:(BOOL)needUserToken block:(ActionCompleteBlock)block;
 //绑定手机
 - (void)receiveMobileAuthCode:(NSString *)mobilePhone authCode:(NSString *)authCode block:(ActionCompleteBlock)block;
 //登出
