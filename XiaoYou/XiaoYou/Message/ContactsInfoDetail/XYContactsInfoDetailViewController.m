@@ -43,7 +43,6 @@
         if (message.isSuccess) {
             ProfileInfo * model = message.object;
             _shareData = @{@"name":model.userName, @"pic":model.headPic, @"school":model.schoolName};
-            self.studentDic = [model dictionaryRepresentation];
             [_contactsInfoDetailTableView refreshTableView:model];
         } else {
             [YUtils showTitle:message.desc];
