@@ -170,6 +170,10 @@ DEF_SINGLETON(MessageManager);
     }
 }
 
+//删除会话
+- (void)delConversationByChatter:(NSString *)chatter {
+    [[EaseMob sharedInstance].chatManager removeConversationByChatter:chatter deleteMessages:YES append2Chat:YES];
+}
 
 -(void)didReceiveMessage:(EMMessage *)message
 {

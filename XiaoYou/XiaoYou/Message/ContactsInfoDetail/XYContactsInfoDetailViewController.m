@@ -48,7 +48,6 @@
 {
     self.title = @"详情";
     [self showCustomNavigationBackButton];
-    [self showCustomNavigationMoreButton];
     
     _contactsInfoDetailTableView = [[ContactsInfoDetailTableView alloc] init];
     _contactsInfoDetailTableView.myController = self;
@@ -70,6 +69,8 @@
         _studentDic = [[[ContactManager sharedInstance] getFriendInfo:_uid] dictionaryRepresentation];
         [_bottomButton addTarget:self action:@selector(clickBottomButton) forControlEvents:UIControlEventTouchUpInside];
         [_bottomButton setTitle:@"聊聊呗" forState:UIControlStateNormal];
+        
+        [self showCustomNavigationMoreButton];
     }
     else
     {
@@ -86,6 +87,9 @@
 
 -(void)clickBottomButton
 {
+    if ([self.navigationController.viewControllers[self.navigationController.viewControllers.count-2] isKindOfClass:[ChatViewController class]]) {
+        [self.navigationController popViewControllerAnimated:YES];
+    } else {
         if ([_studentDic[@"linkType"] doubleValue] == 0) {
             ChatViewController * chatVC = [[ChatViewController alloc] initWithChatter:_studentDic[@"thirdCode"] isGroup:NO];
             chatVC.isSystemMessage = NO;
@@ -99,6 +103,7 @@
             chatVC.studentDic = [_studentDic mutableCopy];
             [self.navigationController pushViewController:chatVC animated:YES needHiddenBottomBar:YES];
         }
+    }
 }
 
 -(void)onNavigationRightButtonClicked
@@ -153,8 +158,11 @@
     [[ContactManager sharedInstance] delLinkMan:_studentDic[@"uid"] block:^(YActionMessage *message) {
         [YUtils hiddenProgressHUD];
         if (message.isSuccess) {
-            
-            [self.navigationController popViewControllerAnimated:YES];
+            if ([self.navigationController.viewControllers[self.navigationController.viewControllers.count-2] isKindOfClass:[ChatViewController class]] && self.navigationController.viewControllers.count >= 3) {
+                [self.navigationController popToViewController:self.navigationController.viewControllers[self.navigationController.viewControllers.count-3] animated:YES];
+            } else {
+                [self.navigationController popViewControllerAnimated:YES];
+            }
         }
         else
         {
