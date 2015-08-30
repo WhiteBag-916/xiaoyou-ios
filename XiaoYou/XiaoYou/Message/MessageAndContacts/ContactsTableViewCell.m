@@ -50,6 +50,8 @@ NSString *const kContactsTableViewCell = @"ContactsTableViewCell";
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
+        self.contentView.backgroundColor = [UIColor clearColor];
+
         //头像
         _headImageView = [[UIImageView alloc] init];
         _headImageView.layer.cornerRadius = kHeadCornerRadius;

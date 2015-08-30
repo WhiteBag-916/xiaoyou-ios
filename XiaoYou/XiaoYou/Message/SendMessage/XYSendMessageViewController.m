@@ -136,7 +136,7 @@
     {
         Author * model = _sendPersonsArr[i];
         EMMessage *tempMessage = [ChatSendHelper sendTextMessageWithString:textMessage
-                                                                toUsername:[NSString stringWithFormat:@"4_%@",model.studentNo]
+                                                                toUsername:[NSString stringWithFormat:@"%@_%@",model.schoolCode,model.studentNo]
                                                                messageType:eMessageTypeChat
                                                          requireEncryption:NO
                                                                        ext:ext];

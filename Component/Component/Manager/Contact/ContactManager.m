@@ -310,6 +310,12 @@ DEF_SINGLETON(ContactManager);
     action.url = [YUtils getUrl:api_friend_AgreeApply];
     
     [YAction startAction:action completionBlock:^(YActionMessage* message) {
+        if (message.isSuccess)
+        {
+            [self getContactsListData:^(YActionMessage *message) {
+                
+            }];
+        }
         //主线程处理界面
         block(message);
     }];

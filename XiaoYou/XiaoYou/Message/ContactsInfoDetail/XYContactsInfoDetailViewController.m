@@ -32,16 +32,23 @@
     // Do any additional setup after loading the view.
     
     [self setUpUI];
+    
+    
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [YUtils showHUDWithTitle];
     [[ContactManager sharedInstance] getUserDetailInfo:_uid hxId:_hxId block:^(YActionMessage *message) {
+        [YUtils hiddenProgressHUD];
         if (message.isSuccess) {
             ProfileInfo * model = message.object;
             _shareData = @{@"name":model.userName, @"pic":model.headPic, @"school":model.schoolName};
+            self.studentDic = [model dictionaryRepresentation];
             [_contactsInfoDetailTableView refreshTableView:model];
         } else {
             [YUtils showTitle:message.desc];
         }
     }];
-    
 }
 
 -(void)setUpUI
@@ -90,19 +97,11 @@
     if ([self.navigationController.viewControllers[self.navigationController.viewControllers.count-2] isKindOfClass:[ChatViewController class]]) {
         [self.navigationController popViewControllerAnimated:YES];
     } else {
-        if ([_studentDic[@"linkType"] doubleValue] == 0) {
-            ChatViewController * chatVC = [[ChatViewController alloc] initWithChatter:_studentDic[@"thirdCode"] isGroup:NO];
-            chatVC.isSystemMessage = NO;
-            chatVC.studentDic = [_studentDic mutableCopy];
-            [self.navigationController pushViewController:chatVC animated:YES needHiddenBottomBar:YES];
-        }
-        else
-        {
-            ChatViewController * chatVC = [[ChatViewController alloc] initWithChatter:_studentDic[@"thirdCode"] isGroup:YES];
-            chatVC.isSystemMessage = NO;
-            chatVC.studentDic = [_studentDic mutableCopy];
-            [self.navigationController pushViewController:chatVC animated:YES needHiddenBottomBar:YES];
-        }
+        ChatViewController * chatVC = [[ChatViewController alloc] initWithChatter:_studentDic[@"thirdCode"] isGroup:NO];
+        chatVC.isSystemMessage = NO;
+        chatVC.studentDic = [_studentDic mutableCopy];
+        [self.navigationController pushViewController:chatVC animated:YES needHiddenBottomBar:YES];
+    
     }
 }
 

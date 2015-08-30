@@ -260,13 +260,22 @@
     _headImageView.clipsToBounds = YES;
     _headImageView.userInteractionEnabled = YES;
     NSString *url = _studentDic[@"icon"];
-    if (url > 0) {
-        [_headImageView setFaceImageWithUrl:url];
-    } else {
-        [_headImageView setFaceImageWithUrl:_conversation.latestMessageFromOthers.ext[@"headImage"]];
-    }
-    UIButton *detailButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 60, 44)];
     
+    UIButton *detailButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 60, 44)];
+    if ([_studentDic[@"linkType"] doubleValue] == 1)
+    {
+        [detailButton setBackgroundColor:KCOLORGREEN_009688];
+        [detailButton setTitleEdgeInsets:UIEdgeInsetsMake(0, 0, 2, 20)];
+        [detailButton setTitle:@"班" forState:UIControlStateNormal];
+    }
+    else
+    {
+        if (url > 0) {
+            [_headImageView setFaceImageWithUrl:url];
+        } else {
+            [_headImageView setFaceImageWithUrl:_conversation.latestMessageFromOthers.ext[@"headImage"]];
+        }
+    }
     if (self.isChatGroup) {
         [detailButton addTarget:self action:@selector(showRoomContact:) forControlEvents:UIControlEventTouchUpInside];
     } else{
@@ -1621,6 +1630,14 @@
     [self.view endEditing:YES];
     if (self.conversationType == eConversationTypeGroupChat) {
         XYGroupInfoDetailViewController * groupVC = [[XYGroupInfoDetailViewController alloc] init];
+        if ([_studentDic[@"linkType"] doubleValue] == 1)
+        {
+            groupVC.isClass = YES;
+        }
+        else
+        {
+            groupVC.isClass = NO;
+        }
         groupVC.studentDic = _studentDic;
         groupVC.gid = _studentDic[@"gid"];
         [self.navigationController pushViewController:groupVC animated:YES needHiddenBottomBar:YES];

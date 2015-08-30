@@ -112,7 +112,7 @@ DEF_SINGLETON(MessageManager);
 }
 
 - (void)loginEaseMob {
-    [[EaseMob sharedInstance].chatManager asyncLoginWithUsername:[NSString stringWithFormat:@"4_%@",[YShareData defaultData][kShareData_StudentNo]] password:[NSString stringWithFormat:@"4_%@",[YShareData defaultData][kShareData_StudentNo]] completion:^(NSDictionary *loginInfo, EMError *error) {
+    [[EaseMob sharedInstance].chatManager asyncLoginWithUsername:[NSString stringWithFormat:@"%@_%@",[YShareData defaultData][kShareData_SchoolCode],[YShareData defaultData][kShareData_StudentNo]] password:[NSString stringWithFormat:@"%@_%@",[YShareData defaultData][kShareData_SchoolCode],[YShareData defaultData][kShareData_StudentNo]] completion:^(NSDictionary *loginInfo, EMError *error) {
         if (!error && loginInfo) {
             YLogD(@"登陆成功");
             

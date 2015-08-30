@@ -26,7 +26,7 @@
 #define kInfoLabelToNameLabel          20
 #define kFlagImageViewWidth            11
 #define kFlagImageViewHeight           14
-#define kFlagImageViewToHead           33
+#define kFlagImageViewToHead           30
 #define kFlagLabelToHead               23
 
 
@@ -99,7 +99,6 @@ NSString *const kGroupApplyTableViewCell = @"GroupApplyTableViewCellId";
         _infoLabel = [[UILabel alloc] init];
         _infoLabel.font = CONTENT_FONT(12);
         _infoLabel.backgroundColor = [UIColor whiteColor];
-        _infoLabel.text = @"计算机与控制工程学院     15级";
         [self.contentView addSubview:_infoLabel];
         [_infoLabel mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.equalTo(_nameLabel);
@@ -218,10 +217,12 @@ NSString *const kGroupApplyTableViewCell = @"GroupApplyTableViewCellId";
         _flagImageView.hidden = false;
         
         BOOL hasRelate = false;
+        [_tagContent removeAllTags];
         for (int i = 0; i < _applicantList.author.tagsCommon.count; i++) {
             BOOL isRelate = [_applicantList.author.tagsCommon[i] equal];
             hasRelate |= isRelate;
             SKTag *tag = [SKTag tagWithText:[_applicantList.author.tagsCommon[i] name]];
+            tag.bgColor = [UIColor clearColor];
             tag.font = CONTENT_FONT(10);
             if (isRelate) {
                 tag.textColor = KCOLORGREEN_009688;
@@ -314,7 +315,7 @@ NSString *const kGroupApplyTableViewCell = @"GroupApplyTableViewCellId";
 
 - (void)toChat
 {
-    ChatViewController * chatVC = [[ChatViewController alloc] initWithChatter:[NSString stringWithFormat:@"4_%@",_applicantList.author.studentNo] isGroup:NO];
+    ChatViewController * chatVC = [[ChatViewController alloc] initWithChatter:[NSString stringWithFormat:@"%@_%@",_applicantList.author.schoolCode,_applicantList.author.studentNo] isGroup:NO];
     chatVC.isSystemMessage = NO;
     chatVC.studentDic = [@{@"name":_applicantList.author.name, @"icon":_applicantList.author.headPic, @"uid":_applicantList.author.uid} mutableCopy];
     [self.superVC.navigationController pushViewController:chatVC animated:YES needHiddenBottomBar:YES];

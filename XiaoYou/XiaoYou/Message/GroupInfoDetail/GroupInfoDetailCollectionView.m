@@ -16,6 +16,7 @@
 #import "GroupModel.h"
 #import "Author.h"
 #import "XYChoicePersonViewController.h"
+#import "XYContactsInfoDetailViewController.h"
 #import "ContactManager.h"
 
 
@@ -59,7 +60,6 @@
             {
                 obj[@"isDelete"] = @(show);
             }
-            
         }];
         
         [self reloadData];
@@ -138,7 +138,18 @@
 {
     if (indexPath.row < _dataSourceArr.count)
     {
-        [self showDel:NO];
+        if ([[_dataSourceArr[indexPath.row] objectForKey:@"isDelete"] boolValue])
+        {
+            [self showDel:NO];
+        }
+        else
+        {
+            XYContactsInfoDetailViewController * contactsInfoDetailVC = [[XYContactsInfoDetailViewController alloc] init];
+//            contactsInfoDetailVC.studentDic = cell.studentDic;
+            contactsInfoDetailVC.uid = [_dataSourceArr[indexPath.row][@"model"] uid];
+            [self.myController.navigationController pushViewController:contactsInfoDetailVC animated:YES needHiddenBottomBar:YES];
+        }
+        
     }
     else
     {
@@ -230,7 +241,25 @@
 
 - (void)longPressCell {
     
-    [self showDel:YES];
+    if (!_myController.isClass)
+    {
+        NSArray * groupArr =[[ProvisionManager sharedInstance] getProfile].managerGroups;
+        if (groupArr.count > 0)
+        {
+            for (int i = 0; i < groupArr.count; i++)
+            {
+                Tags * tag = groupArr[i];
+                if ([[@(_headerModel.internalBaseClassIdentifier) stringValue] isEqualToString: tag.internalBaseClassIdentifier])
+                {
+                    [self showDel:YES];
+                }
+                
+            }
+            
+        }
+        
+    }
+
     
 }
 

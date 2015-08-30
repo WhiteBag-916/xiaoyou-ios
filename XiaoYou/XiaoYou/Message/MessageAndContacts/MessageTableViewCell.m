@@ -18,6 +18,7 @@
 #import "ClassList.h"
 #import "MessageManager.h"
 #import "YUtils+Component.h"
+#import "LinkManList.h"
 
 #define kHeadWidthAndHeight            40
 #define kNameLabelWidth                80
@@ -57,6 +58,7 @@ NSString *const kMessageTableViewCell = @"MessageTableViewCellId";
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
+        self.contentView.backgroundColor = [UIColor clearColor];
         //头像
         _headImageView = [[UIImageView alloc] init];
         _headImageView.backgroundColor = [UIColor clearColor];
@@ -191,11 +193,22 @@ NSString *const kMessageTableViewCell = @"MessageTableViewCellId";
         
         //头像
         NSString *url = userInfoDic[@"icon"];
-        if (url.length > 0) {
-            [_headImageView setFaceImageWithUrl:userInfoDic[@"icon"]];
-        } else {
-            [_headImageView setFaceImageWithUrl:ext[@"headImage"]];
+        
+        if ([self isClass])
+        {
+            _headImageView.backgroundColor = KCOLORGREEN_009688;
+            _defaultLabel.text = @"班";
+            _defaultLabel.hidden = NO;
         }
+        else
+        {
+            if (url.length > 0) {
+                [_headImageView setFaceImageWithUrl:userInfoDic[@"icon"]];
+            } else {
+                [_headImageView setFaceImageWithUrl:ext[@"headImage"]];
+            }
+        }
+        
     }
     
     //未读数
@@ -301,6 +314,24 @@ NSString *const kMessageTableViewCell = @"MessageTableViewCellId";
     NSString * count = [NSString stringWithFormat:@"%ld",ret];
     
     return  count;
+}
+
+//判断是否为班级
+-(BOOL)isClass
+{
+    LinkManModel * linkManModel = [[ContactManager sharedInstance] getContactsListData];
+    NSMutableArray * linkManArr = [[NSMutableArray alloc] initWithArray:linkManModel.classList];
+    for (LinkManList * model in linkManArr)
+    {
+        if ([_conversation.chatter isEqualToString:model.thirdCode])
+        {
+            if (model.linkType == 1)
+            {
+                return YES;
+            }
+        }
+    }
+    return NO;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

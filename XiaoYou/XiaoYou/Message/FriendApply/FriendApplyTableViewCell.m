@@ -15,6 +15,9 @@
 #import "YUtils+HUD.h"
 #import "ApplicantList.h"
 #import "ChatViewController.h"
+#import "ChatSendHelper.h"
+#import "ProvisionManager.h"
+#import "LoginResp.h"
 
 #define kHeadCornerRadius              22.5
 #define kPaddingDistance               12
@@ -300,6 +303,12 @@ typedef enum : NSUInteger {
                 if (message.isSuccess) {
                     _applicantList.status = 1;
                     [self updateButtonShow];
+                    //给对方发消息
+                    EMMessage *tempMessage = [ChatSendHelper sendTextMessageWithString:@"我通过你的好友请求啦，聊聊呗"
+                                                                            toUsername:[NSString stringWithFormat:@"%@_%@",_applicantList.author.schoolCode,_applicantList.author.studentNo]
+                                                                           messageType:eMessageTypeChat
+                                                                     requireEncryption:NO
+                                                                                   ext:[self addAlertBody:nil]];
                 } else {
                     [YUtils showTitle:message.desc];
                 }
@@ -314,7 +323,7 @@ typedef enum : NSUInteger {
 }
 
 - (void)toChat {
-    ChatViewController * chatVC = [[ChatViewController alloc] initWithChatter:[NSString stringWithFormat:@"4_%@",_applicantList.author.studentNo] isGroup:NO];
+    ChatViewController * chatVC = [[ChatViewController alloc] initWithChatter:[NSString stringWithFormat:@"%@_%@",_applicantList.author.schoolCode,_applicantList.author.studentNo] isGroup:NO];
     chatVC.isSystemMessage = NO;
     chatVC.studentDic = [@{@"name":_applicantList.author.name, @"icon":_applicantList.author.headPic, @"uid":_applicantList.author.uid} mutableCopy];
     [self.superVC.navigationController pushViewController:chatVC animated:YES needHiddenBottomBar:YES];
@@ -332,6 +341,15 @@ typedef enum : NSUInteger {
 {
     [[ContactManager sharedInstance] getContactsListData:^(YActionMessage *message) {
     }];
+}
+//获取扩展消息
+- (NSDictionary *)addAlertBody:(NSDictionary *)ext {
+    NSMutableDictionary *extDic = [[NSMutableDictionary alloc] initWithDictionary:ext];
+    [extDic setObject:[[ProvisionManager sharedInstance] getLoginInfo].icon forKey:@"headImage"];
+    [extDic setObject:[[ProvisionManager sharedInstance] getLoginInfo].studentName forKey:@"userName"];
+        [extDic setObject:@{@"em_push_title":[NSString stringWithFormat:@"%@给你发来一条新消息", [[ProvisionManager sharedInstance] getLoginInfo].studentName]} forKey:@"em_apns_ext"];
+    
+    return extDic;
 }
 
 @end

@@ -129,6 +129,8 @@
     UIView * backView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, kRowHeight)];
     UITapGestureRecognizer * tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapGestureRecognizerAction)];
     [backView addGestureRecognizer:tapGestureRecognizer];
+    backView.backgroundColor = [UIColor clearColor];
+
     //头像
     _headImageView = [[UIImageView alloc] init];
     _headImageView.layer.cornerRadius = kHeadCornerRadius;
