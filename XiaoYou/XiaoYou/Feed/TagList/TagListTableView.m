@@ -89,15 +89,15 @@
     }
 }
 - (void)toFeedFilter:(NSString *)filter name:(NSString *)name {
+    [[NSNotificationCenter defaultCenter] postNotificationName:kNotification_Push_FeedFilter object:nil userInfo:@{@"filter":filter, @"name":name}];
     [[SlideNavigationController sharedInstance] closeMenuWithCompletion:^{
-        [[NSNotificationCenter defaultCenter] postNotificationName:kNotification_Push_FeedFilter object:nil userInfo:@{@"filter":filter, @"name":name}];
     }];
 }
 
 //跳转到添加标签
 - (void)toAddTag {
+    [[NSNotificationCenter defaultCenter] postNotificationName:kNotification_Push_AddTag object:nil];
     [[SlideNavigationController sharedInstance] closeMenuWithCompletion:^{
-        [[NSNotificationCenter defaultCenter] postNotificationName:kNotification_Push_AddTag object:nil];
     }];
 }
 @end

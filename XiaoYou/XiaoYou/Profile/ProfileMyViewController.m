@@ -425,7 +425,7 @@
     }
 }
 - (void)logOut {
-    YCommonAlertView *alert = [[YCommonAlertView alloc] initWithTitle:@"提示" message:@"是否登出" buttonTitles:@"确认",@"取消", nil];
+    YCommonAlertView *alert = [[YCommonAlertView alloc] initWithTitle:@"提示" message:@"是否退出" buttonTitles:@"确认",@"取消", nil];
     [alert clickedButtonHandler:^(NSInteger index) {
         if (index == 0) {
             [alert hide];
