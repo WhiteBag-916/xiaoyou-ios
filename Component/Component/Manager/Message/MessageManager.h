@@ -34,4 +34,7 @@ AS_SINGLETON(MessageManager);
 // 统计未读消息数
 -(void)setupUnreadMessageCount;
 
+//删除会话
+- (void)delConversationByChatter:(NSString *)chatter;
+
 @end

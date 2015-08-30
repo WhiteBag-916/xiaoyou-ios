@@ -110,6 +110,7 @@
 }
 - (void)dealMessage:(YActionMessage *)message {
     if (message.isSuccess) {
+        [self hiddenFooter:NO];
         if ([self isHeaderRefresh]) {
             [_personListArray removeAllObjects];
         }

@@ -1630,12 +1630,16 @@
 //联系人详情
 -(void)pushToDetailPage:(id)sender
 {
-    XYContactsInfoDetailViewController * contactsInfoDetailViewController = [[XYContactsInfoDetailViewController alloc] init];
-    contactsInfoDetailViewController.studentDic = _studentDic;
-    contactsInfoDetailViewController.uid = _studentDic[@"uid"];
-    contactsInfoDetailViewController.hxId = _conversation.chatter;
-    contactsInfoDetailViewController.hidesBottomBarWhenPushed = YES;
-    [self.navigationController pushViewController:contactsInfoDetailViewController animated:YES];
+    if ([self.navigationController.viewControllers[self.navigationController.viewControllers.count-2] isKindOfClass:[XYContactsInfoDetailViewController class]]) {
+        [self.navigationController popViewControllerAnimated:YES];
+    } else {
+        XYContactsInfoDetailViewController * contactsInfoDetailViewController = [[XYContactsInfoDetailViewController alloc] init];
+        contactsInfoDetailViewController.studentDic = _studentDic;
+        contactsInfoDetailViewController.uid = _studentDic[@"uid"];
+        contactsInfoDetailViewController.hxId = _conversation.chatter;
+        contactsInfoDetailViewController.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:contactsInfoDetailViewController animated:YES];
+    }
 }
 
 - (void)removeAllMessages:(id)sender

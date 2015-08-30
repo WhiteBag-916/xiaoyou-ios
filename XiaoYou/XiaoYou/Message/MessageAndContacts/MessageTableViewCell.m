@@ -104,7 +104,7 @@ NSString *const kMessageTableViewCell = @"MessageTableViewCellId";
         _badgeNumberLabel.font = CONTENT_FONT(10);
         _badgeNumberLabel.textColor = [UIColor whiteColor];
         _badgeNumberLabel.textAlignment = NSTextAlignmentCenter;
-        _badgeNumberLabel.backgroundColor = [UIColor hexChangeFloat:@"258f74"];
+        _badgeNumberLabel.backgroundColor = KCOLORGREEN_009688;
         [self.contentView addSubview:_badgeNumberLabel];
         [_badgeNumberLabel mas_makeConstraints:^(MASConstraintMaker *make) {
             make.bottom.mas_equalTo(-kPaddingDistance);
@@ -157,7 +157,7 @@ NSString *const kMessageTableViewCell = @"MessageTableViewCellId";
             _messageLabel.text = [self subTitleMessageByConversation:_conversation];
             if ([ext[@"group_icon"] isEqualToString:@""])
             {
-                _headImageView.backgroundColor = [UIColor hexChangeFloat:@"258f74"];
+                _headImageView.backgroundColor = KCOLORGREEN_009688;
                 _defaultLabel.text = [ext[@"group_name"] substringWithRange:NSMakeRange(0, 1)];
                 _defaultLabel.hidden = NO;
             }

@@ -28,6 +28,7 @@
 #import "ForbiddenMeListAction.h"
 #import "ForbiddenList.h"
 #import "ForbiddenLinkManAction.h"
+#import "MessageManager.h"
 
 #define kContactsManagerSyncQueue @"kContactsManagerSyncQueue"
 
@@ -351,12 +352,20 @@ DEF_SINGLETON(ContactManager);
 
 //删除联系人
 - (void)delLinkMan:(NSString *)delUids block:(ActionCompleteBlock)block {
-    [self delLocalLinkManByUid:delUids];
     CommonAction* action = [[CommonAction alloc] init];
     action.parameter = [YUtils getParameter:@{@"delUids":delUids} needUserToken:YES];
     action.url = [YUtils getUrl:api_user_delLinkMan];
 
     [YAction startAction:action completionBlock:^(YActionMessage* message) {
+        
+        if (message.isSuccess) {
+            
+            NSString *hxId = [[self getManById:delUids] thirdCode];
+            [[MessageManager sharedInstance] delConversationByChatter:hxId];
+            
+            [self delLocalLinkManByUid:delUids];
+        }
+        
         //主线程处理界面
         block(message);
     }];
