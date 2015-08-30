@@ -123,7 +123,7 @@ NSString *const kApplySuccessSystemMessageTableViewCell = @"ApplySuccessSystemMe
     _chatButton.backgroundColor = [UIColor clearColor];
     if ([message.ext[@"group_icon"] isEqualToString:@""])
     {
-        _headImageView.backgroundColor = [UIColor hexChangeFloat:@"258f74"];
+        _headImageView.backgroundColor = KCOLORGREEN_009688;
         _defaultLabel.text = message.ext[@"group_name"];
     }
     else

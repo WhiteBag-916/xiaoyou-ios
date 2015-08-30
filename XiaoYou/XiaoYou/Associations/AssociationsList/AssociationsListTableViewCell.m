@@ -65,7 +65,7 @@ NSString *const kAssociationsListTableViewCell = @"AssociationsListTableViewCell
     _headImageView = [UIImageView new];
     _headImageView.layer.cornerRadius = K_HEADIMG_WH/2;
     _headImageView.clipsToBounds = YES;
-    _headImageView.backgroundColor = [UIColor hexChangeFloat:@"258f74"];
+    _headImageView.backgroundColor = KCOLORGREEN_009688;
     [self.contentView addSubview:_headImageView];
     [_headImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.top.mas_equalTo(K_HEADIMG_LT);

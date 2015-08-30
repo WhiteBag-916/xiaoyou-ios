@@ -133,7 +133,7 @@
     _headImageView = [[UIImageView alloc] init];
     _headImageView.layer.cornerRadius = kHeadCornerRadius;
     _headImageView.clipsToBounds = YES;
-    _headImageView.backgroundColor = [UIColor hexChangeFloat:@"258f74"];
+    _headImageView.backgroundColor = KCOLORGREEN_009688;
     [backView addSubview:_headImageView];
     [_headImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.left.mas_equalTo(kPaddingDistance);
