@@ -140,12 +140,14 @@ typedef enum : NSUInteger {
             make.top.equalTo(_headImageView.mas_bottom).offset(kFlagLabelToHead);
             make.left.equalTo(_nameLabel.mas_left);
             make.right.equalTo(self.contentView.mas_right).offset(-kPaddingDistance);
-            make.bottom.equalTo(self.contentView.mas_bottom).offset(-53);
+//            make.bottom.equalTo(self.contentView.mas_bottom).offset(-56);
+            make.height.mas_equalTo(45);
         }];
+        _tagContent.clipsToBounds = true;
         _tagContent.insets = 21;
         _tagContent.lineSpace = 0;
         _tagContent.singleLine = false;
-        _tagContent.preferredMaxLayoutWidth = SCALE_NUM(230);
+//        _tagContent.preferredMaxLayoutWidth = SCALE_NUM(230);
         
         //大Button
         _afterDealButton = [[UIButton alloc] init];
@@ -217,6 +219,7 @@ typedef enum : NSUInteger {
         _flagImageView.hidden = false;
         
         BOOL hasRelate = false;
+        [_tagContent removeAllTags];
         for (int i = 0; i < _applicantList.author.tagsCommon.count; i++) {
             BOOL isRelate = [_applicantList.author.tagsCommon[i] equal];
             hasRelate |= isRelate;

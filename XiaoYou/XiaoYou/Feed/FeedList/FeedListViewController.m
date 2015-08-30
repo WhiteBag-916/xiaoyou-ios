@@ -54,7 +54,9 @@
 
     [self initNotification];
 }
-
+- (void)refresh {
+    
+}
 - (void)viewDidAppear:(BOOL)animated {
     
     //避免会被取消

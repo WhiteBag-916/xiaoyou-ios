@@ -12,4 +12,5 @@
 
 - (void)goToDetail:(NSString *)feedId;
 
+- (void)refresh;
 @end
