@@ -18,7 +18,7 @@
 #define MARGIN_RIGHT_LARGE 30
 #define MARGIN_RIGHT_SMALL 15
 #define SPACE_LARGE 20
-#define SPACE_SMALL 5
+#define SPACE_SMALL 0
 #define MESSAGE_LINE_SPACE 5
 
 #define RGBA(R, G, B, A) [UIColor colorWithRed:R / 255.0 green:G / 255.0 blue:B / 255.0 alpha:A]
