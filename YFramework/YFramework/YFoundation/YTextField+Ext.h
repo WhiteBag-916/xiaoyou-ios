@@ -13,10 +13,9 @@
 /**
  *  更改texField PlacHolder 颜色
  *  @author shiyue
- *  @param textField textField
  *  @param string    placeholder提示字
  *  @param color     想要改变的颜色
  */
-+ (void)placeHolderColor:(UITextField *)textField normalString:(NSString *)string fontColor:(UIColor *)color;
+- (void)placeHolderColor:(NSString *)string fontColor:(UIColor *)color;
 
 @end

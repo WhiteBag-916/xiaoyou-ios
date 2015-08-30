@@ -10,9 +10,9 @@
 
 @implementation  UITextField(Ext)
 
-+ (void)placeHolderColor:(UITextField *)textField normalString:(NSString *)string fontColor:(UIColor *)color
+- (void)placeHolderColor:(NSString *)string fontColor:(UIColor *)color
 {
-    textField.attributedPlaceholder= [[NSAttributedString alloc]initWithString:string
+    self.attributedPlaceholder= [[NSAttributedString alloc]initWithString:string
                                                                     attributes:@{NSForegroundColorAttributeName:color}];
 }
 

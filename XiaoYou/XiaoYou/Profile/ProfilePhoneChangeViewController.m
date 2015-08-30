@@ -20,6 +20,7 @@
 @interface ProfilePhoneChangeViewController()
 @property (nonatomic, strong) YTextField *phoneField;
 @property (nonatomic, strong) YTextField *codeField;
+@property (nonatomic, strong) YTextField *accountTextField;
 @property (nonatomic, strong) UIButton *sendBtn;
 @property (nonatomic, strong) UIButton *protocolCheckButton;
 @property (nonatomic, strong) UIButton *showProtocalButton;
@@ -58,15 +59,64 @@
     }
 }
 - (void)initViewByRegister {
+    self.title = @"首次登录";
     [_sendBtn setTitle:@"获取初始密码" forState:UIControlStateNormal];
     [_sendBtn setTitle:@"获取初始密码" forState:UIControlStateDisabled];
     _phoneField.placeholder = @"输入手机号";
     _codeField.placeholder = @"输入获取的初始密码";
     
+    //label
+    UILabel *accountLabel = [YUtils initLabel:CONTENT_FONT(10)
+                                     color:[UIColor blackColor]
+                                      text:@"学号"
+                                     frame:CGRectZero
+                                 alignment:NSTextAlignmentCenter];
+    [self.view addSubview:accountLabel];
+    [accountLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.mas_equalTo(SCALE_NUM(12));
+        make.top.mas_equalTo(SCALE_NUM(14));
+        make.height.mas_equalTo(SCALE_NUM(12));
+    }];
+    //accountView
+    UIView *accountView = [YUtils initLoginCommonView:@"register-number"];
+    [self.view addSubview:accountView];
+    [accountView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.right.equalTo(self.view);
+        make.top.equalTo(accountLabel.mas_bottom).offset(SCALE_NUM(10));
+        make.height.mas_equalTo(SCALE_NUM(49));
+    }];
+    
+    UILabel *phoneLabel = [YUtils initLabel:CONTENT_FONT(10)
+                                      color:[UIColor blackColor]
+                                      text:@"手机号 "
+                                     frame:CGRectZero
+                                 alignment:NSTextAlignmentCenter];
+    
+    [self.view addSubview:phoneLabel];
+    [phoneLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.mas_equalTo(SCALE_NUM(12));
+        make.top.equalTo(accountView.mas_bottom).offset(SCALE_NUM(15));
+        make.height.mas_equalTo(SCALE_NUM(12));
+    }];
+    
+    [_phoneField mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(phoneLabel.mas_bottom).offset(SCALE_NUM(10));
+    }];
+    
+    [_codeField mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(_phoneField.mas_bottom).offset(SCALE_NUM(5));
+    }];
+    
+    //accountTextField
+    _accountTextField = (YTextField *)[accountView viewWithTag:kLoginCommonTextFieldTag];
+    [_accountTextField registerChanged:self action:@selector(checkComplete)];
+    _accountTextField.placeholder = @"输入学号";
+    _accountTextField.keyboardType = UIKeyboardTypeNumberPad;
+    
     //protocolCheckButton
     _protocolCheckButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [_protocolCheckButton setImage:[UIImage imageNamed:@"register-frame-agree"] forState:UIControlStateNormal];
-    [_protocolCheckButton addTarget:self action:@selector(checkButton) forControlEvents:UIControlEventTouchUpInside];
+    [_protocolCheckButton addTarget:self action:@selector(registerDefaults:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:_protocolCheckButton];
     [_protocolCheckButton mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.view);
@@ -143,9 +193,11 @@
 }
 - (void)initView {
     _phoneField = [self createField:0];
-    [_phoneField mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self.view).offset(SCALE_NUM(28));
-    }];
+    if (ProfilePhoneChangeTypeRegister != _type) {
+        [_phoneField mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.top.equalTo(self.view).offset(SCALE_NUM(28));
+        }];
+    }
     _phoneField.keyboardType = UIKeyboardTypeNumberPad;
     
     _sendBtn = [[UIButton alloc] init];
@@ -203,7 +255,9 @@
     }];
     field.font = CONTENT_FONT(12);
     [field registerChanged:self action:@selector(checkComplete)];
-    [YTextField placeHolderColor:field normalString:names[type] fontColor:KCOLORGREEN_455A64];
+    field.textColor = KCOLORGREEN_455A64;
+    field.placeholder = names[type];
+//    [field placeHolderColor:names[type] fontColor:KCOLORGREEN_455A64];
     return field;
 }
 
@@ -291,7 +345,7 @@
         } else {
             [self changeBtn:false];
         }
-        if (_phoneField.text.length > 0 && _codeField.text.length > 0) {
+        if (_phoneField.text.length > 0 && _codeField.text.length > 0 && (nil == _accountTextField || _accountTextField.text.length > 0)) {
             self.navigationRightButton.enabled = true;
             _loginButton.enabled = true;
         } else {

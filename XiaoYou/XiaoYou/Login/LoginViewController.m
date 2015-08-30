@@ -118,7 +118,7 @@
     
     //首次登陆
     UIButton *firstLogin = [UIButton buttonWithType:UIButtonTypeCustom];
-    [firstLogin setTitle:@"输入学号，首次登录>" forState:UIControlStateNormal];
+    [firstLogin setTitle:@"首次登录>" forState:UIControlStateNormal];
     [firstLogin setTitleColor:KCOLORGREEN_009688 forState:UIControlStateNormal];
     firstLogin.titleLabel.font = CONTENT_FONT(12);
     [firstLogin addTarget:self action:@selector(pressFirstLogin) forControlEvents:UIControlEventTouchUpInside];
@@ -127,7 +127,7 @@
         make.right.equalTo(self.view);
         make.top.equalTo(_passwordTextField.mas_bottom);
         make.height.mas_equalTo(SCALE_NUM(35));
-        make.width.mas_equalTo(SCALE_NUM(127));
+        make.width.mas_equalTo(SCALE_NUM(87));
     }];
     
     //初始密码
@@ -183,13 +183,6 @@
 
 //首次登录
 - (void)pressFirstLogin {
-    if ([_accountTextField.text isEmpty]) {
-        [YUtils showTitle:@"您还没有输入学号"];
-        return;
-    }
-    
-    [YShareData defaultData][kShareData_StudentNo] = _accountTextField.text;
-    
     [self.navigationController pushViewController:[[ProfilePhoneChangeViewController alloc] initWithType:ProfilePhoneChangeTypeRegister hasPhone:NO] animated:YES];
 }
 

@@ -102,7 +102,9 @@
     field.font = CONTENT_FONT(12);
     field.secureTextEntry = true;
     [field registerChanged:self action:@selector(checkComplete)];
-    [YTextField placeHolderColor:field normalString:names[type] fontColor:KCOLORGREEN_455A64];
+    field.textColor = KCOLORGREEN_455A64;
+    field.placeholder = names[type];
+//    [field placeHolderColor:names[type] fontColor:KCOLORGREEN_455A64];
     return field;
 }
 - (void)forgetPwd {
