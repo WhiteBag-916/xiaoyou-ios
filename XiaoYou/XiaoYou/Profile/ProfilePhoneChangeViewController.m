@@ -12,6 +12,8 @@
 #import "ProvisionManager.h"
 #import "ProfileChangePwdViewController.h"
 #import "CNTextController.h"
+#import "LoginResp.h"
+#import "AppDelegate+RootVC.h"
 
 #define KBUTTONWIDTH SCALE_NUM(80)
 #define KBUTTONHEIGHT SCALE_NUM(25)
@@ -263,7 +265,24 @@
 
 //登录
 - (void)pressLogin {
-    
+    [YUtils showHUDWithTitle];
+    //reg
+    [[ProvisionManager sharedInstance] reg:_accountTextField.text password:_codeField.text mobilePhone:_phoneField.text block:^(YActionMessage *message) {
+        [YUtils hiddenProgressHUD];
+        if (message.isSuccess) {
+            //成功
+            //是否需要完善资料
+            LoginResp *loginResp = (LoginResp *)message.object;
+            if (loginResp.firstLogin) {
+                [kAppDelegateAccessor initPerfectNC];
+            } else {
+                [kAppDelegateAccessor initTabBarNC];
+            }
+            
+        } else {
+            [YUtils showTitle:message.desc];
+        }
+    }];
 }
 
 //弹出协议条款
@@ -328,12 +347,8 @@
     [self.view endEditing:true];
     [self changeWait:true];
     [self startCal];
-    [[ProvisionManager sharedInstance] receiveAuthCode:_phoneField.text block:^(YActionMessage *message) {
-        if (message.isSuccess) {
-            [YUtils showTitle:@"验证码发送成功"];
-        } else {
-            [YUtils showTitle:message.desc];
-        }
+    [[ProvisionManager sharedInstance] receiveAuthCode:_phoneField.text needUserToken:(_type != ProfilePhoneChangeTypeRegister) block:^(YActionMessage *message) {
+        [YUtils showTitle:message.desc];
     }];
 }
 - (void)checkComplete {

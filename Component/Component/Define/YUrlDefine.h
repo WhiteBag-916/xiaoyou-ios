@@ -29,6 +29,8 @@
  **********************************************************/
 //登录
 #define api_user_login  @"/user/v2/login"
+//注册
+#define api_user_reg  @"/user/v2/reg"
 //学校列表
 #define api_login_schoolList  @"/school/schoolList"
 //忘记密码

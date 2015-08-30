@@ -259,8 +259,10 @@
 
 - (void)goLogin
 {
+    [YUtils showHUDWithTitle];
     //login
     [[ProvisionManager sharedInstance] goLogin:_accountTextField.text password:_passwordTextField.text block:^(YActionMessage *message) {
+        [YUtils hiddenProgressHUD];
         if (message.isSuccess) {
             //成功
             //是否需要完善资料

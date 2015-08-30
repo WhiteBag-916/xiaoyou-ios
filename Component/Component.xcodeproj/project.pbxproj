@@ -51,6 +51,7 @@
 		20E1C67E1B89F148008BA9D6 /* FeedDetailAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 20E1C67D1B89F148008BA9D6 /* FeedDetailAction.m */; };
 		20E1C6811B89F2C8008BA9D6 /* FeedListAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 20E1C6801B89F2C8008BA9D6 /* FeedListAction.m */; };
 		20E341801B720A54008CADC3 /* ProfileDao.m in Sources */ = {isa = PBXBuildFile; fileRef = 20E3417F1B720A54008CADC3 /* ProfileDao.m */; };
+		20E366411B92F7DC00A22FFE /* RegAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 20E366401B92F7DC00A22FFE /* RegAction.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -172,6 +173,8 @@
 		20E3417E1B720A54008CADC3 /* ProfileDao.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileDao.h; sourceTree = "<group>"; };
 		20E3417F1B720A54008CADC3 /* ProfileDao.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileDao.m; sourceTree = "<group>"; };
 		20E341811B720A80008CADC3 /* ProfileSQL.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProfileSQL.h; sourceTree = "<group>"; };
+		20E3663F1B92F7DC00A22FFE /* RegAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegAction.h; sourceTree = "<group>"; };
+		20E366401B92F7DC00A22FFE /* RegAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegAction.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -229,6 +232,8 @@
 				20E1C66E1B89EB8D008BA9D6 /* ModifyPasswordAction.m */,
 				20E1C6701B89EB9F008BA9D6 /* ReceiveAuthCodeAction.h */,
 				20E1C6711B89EB9F008BA9D6 /* ReceiveAuthCodeAction.m */,
+				20E3663F1B92F7DC00A22FFE /* RegAction.h */,
+				20E366401B92F7DC00A22FFE /* RegAction.m */,
 			);
 			path = Provision;
 			sourceTree = "<group>";
@@ -597,6 +602,7 @@
 				20E0BFF01B88B0CA00EDAED4 /* UploadHeadImageAction.m in Sources */,
 				20DA8B3D1B8EE6C5007D0CDE /* ListCommentAction.m in Sources */,
 				20DA8B3A1B8ED078007D0CDE /* ListPraisePeoplesAction.m in Sources */,
+				20E366411B92F7DC00A22FFE /* RegAction.m in Sources */,
 				20DD81641B91D24900ACFD9A /* ForbiddenMeListAction.m in Sources */,
 				20DA8B171B8EB928007D0CDE /* GroupFeedsAction.m in Sources */,
 				20C5B07E1B8DF3DD00B4A8A8 /* GroupConditionsAction.m in Sources */,
