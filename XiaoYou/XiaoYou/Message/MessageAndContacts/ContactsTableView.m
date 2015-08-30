@@ -90,6 +90,8 @@
 //            [[ContactManager sharedInstance] saveContactsList:model];
             
             [self refreshTableView:[[ContactManager sharedInstance] getContactsListData]];
+        } else {
+            [YUtils showTitle:message.desc];
         }
     }];
     [self stopLoadNewData];
