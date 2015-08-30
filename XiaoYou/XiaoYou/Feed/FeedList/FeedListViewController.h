@@ -11,6 +11,4 @@
 @interface FeedListViewController : YViewController
 
 - (void)goToDetail:(NSString *)feedId;
-
-- (void)refresh;
 @end
