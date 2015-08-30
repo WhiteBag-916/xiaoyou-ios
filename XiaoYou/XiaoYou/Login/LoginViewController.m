@@ -76,7 +76,7 @@
     _passwordTextField = (YTextField *)[passwordView viewWithTag:kLoginCommonTextFieldTag];
     [_passwordTextField registerChanged:self action:@selector(textFieldValueChanged:)];
     _passwordTextField.secureTextEntry = YES;
-    _passwordTextField.placeholder = @"初始密码为学号后4位＋一卡通编号后4位";
+    _passwordTextField.placeholder = @"密码";
     
 //    //protocolCheckButton
 //    _protocolCheckButton = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -118,7 +118,7 @@
     
     //首次登陆
     UIButton *firstLogin = [UIButton buttonWithType:UIButtonTypeCustom];
-    [firstLogin setTitle:@"首次登录>" forState:UIControlStateNormal];
+    [firstLogin setTitle:@"输入学号，首次登录>" forState:UIControlStateNormal];
     [firstLogin setTitleColor:KCOLORGREEN_009688 forState:UIControlStateNormal];
     firstLogin.titleLabel.font = CONTENT_FONT(12);
     [firstLogin addTarget:self action:@selector(pressFirstLogin) forControlEvents:UIControlEventTouchUpInside];
@@ -127,37 +127,37 @@
         make.right.equalTo(self.view);
         make.top.equalTo(_passwordTextField.mas_bottom);
         make.height.mas_equalTo(SCALE_NUM(35));
-        make.width.mas_equalTo(SCALE_NUM(87));
+        make.width.mas_equalTo(SCALE_NUM(127));
     }];
     
     //初始密码
-    UIButton *initialPassword = [UIButton buttonWithType:UIButtonTypeCustom];
-    [initialPassword setTitle:@"初始密码范例" forState:UIControlStateNormal];
-    [initialPassword setTitleColor:KCOLORGREEN_009688 forState:UIControlStateNormal];
-    initialPassword.titleLabel.font = CONTENT_FONT(12);
-    initialPassword.layer.borderWidth = .5;
-    initialPassword.layer.cornerRadius = 3;
-    initialPassword.layer.borderColor = KCOLORGREEN_009688.CGColor;
-    [initialPassword addTarget:self action:@selector(pressInitialPassword) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:initialPassword];
-    [initialPassword mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.centerX.equalTo(self.view);
-        make.bottom.mas_equalTo(SCALE_NUM(-113));
-        make.height.mas_equalTo(SCALE_NUM(36));
-        make.width.mas_equalTo(SCALE_NUM(118));
-    }];
+//    UIButton *initialPassword = [UIButton buttonWithType:UIButtonTypeCustom];
+//    [initialPassword setTitle:@"初始密码范例" forState:UIControlStateNormal];
+//    [initialPassword setTitleColor:KCOLORGREEN_009688 forState:UIControlStateNormal];
+//    initialPassword.titleLabel.font = CONTENT_FONT(12);
+//    initialPassword.layer.borderWidth = .5;
+//    initialPassword.layer.cornerRadius = 3;
+//    initialPassword.layer.borderColor = KCOLORGREEN_009688.CGColor;
+//    [initialPassword addTarget:self action:@selector(pressInitialPassword) forControlEvents:UIControlEventTouchUpInside];
+//    [self.view addSubview:initialPassword];
+//    [initialPassword mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.centerX.equalTo(self.view);
+//        make.bottom.mas_equalTo(SCALE_NUM(-113));
+//        make.height.mas_equalTo(SCALE_NUM(36));
+//        make.width.mas_equalTo(SCALE_NUM(118));
+//    }];
     
     //蒙层
-    _protocolImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"login_tip"]];
-    _protocolImageView.hidden = YES;
-    [[[[UIApplication sharedApplication] delegate] window] addSubview:_protocolImageView];
-    [_protocolImageView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.edges.equalTo([[[UIApplication sharedApplication] delegate] window]);
-    }];
-    
-    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dissmissProtocol)];
-    _protocolImageView.userInteractionEnabled = YES;
-    [_protocolImageView addGestureRecognizer:tap];
+//    _protocolImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"login_tip"]];
+//    _protocolImageView.hidden = YES;
+//    [[[[UIApplication sharedApplication] delegate] window] addSubview:_protocolImageView];
+//    [_protocolImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.edges.equalTo([[[UIApplication sharedApplication] delegate] window]);
+//    }];
+//    
+//    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dissmissProtocol)];
+//    _protocolImageView.userInteractionEnabled = YES;
+//    [_protocolImageView addGestureRecognizer:tap];
 }
 
 //弹出协议条款
