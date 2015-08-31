@@ -197,7 +197,7 @@
     
     //展示提示
     YCommonAlertView *alert = [[YCommonAlertView alloc] initWithTitle:nil
-                                                              message:@"需要重置密码吗"
+                                                              message:@"我们将发送验证码至你绑定的手机号上，请及时修改"
                                                          buttonTitles:@"取消",@"确认", nil];
     [alert clickedButtonHandler:^(NSInteger index) {
         if (1 == index) {

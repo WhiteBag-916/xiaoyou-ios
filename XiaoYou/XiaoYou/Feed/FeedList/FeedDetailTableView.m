@@ -206,10 +206,10 @@
     [sheet show];
 }
 - (void)deleteFeed {
-    YCommonAlertView *alert = [[YCommonAlertView alloc] initWithTitle:nil message:@"是否确认删除？" buttonTitles:@"确认",@"取消", nil];
+    YCommonAlertView *alert = [[YCommonAlertView alloc] initWithTitle:nil message:@"是否确认删除？" buttonTitles:@"取消",@"确认", nil];
     [alert clickedButtonHandler:^(NSInteger index) {
         [alert hide];
-        if (index == 0) {
+        if (index == 1) {
             [[FeedManager sharedInstance] deleteFeed:_feedId block:^(YActionMessage *message) {
                 if (message.isSuccess) {
                     [YUtils showTitle:@"删除成功"];
@@ -248,10 +248,10 @@
     [sheet show];
 }
 - (void)dealComment:(int)commentIndex {
-    YCommonAlertView *alert = [[YCommonAlertView alloc] initWithTitle:nil message:@"是否确认删除该评论？" buttonTitles:@"确认",@"取消", nil];
+    YCommonAlertView *alert = [[YCommonAlertView alloc] initWithTitle:nil message:@"是否确认删除该评论？" buttonTitles:@"取消",@"确认", nil];
     [alert clickedButtonHandler:^(NSInteger index) {
         [alert hide];
-        if (index == 0) {
+        if (index == 1) {
             CommentListItems *cmt = _commentListArray[commentIndex];
             [[FeedManager sharedInstance] deleteComment:[NSString stringWithFormat:@"%d", (int)cmt.comment.commentIdentifier] block:^(YActionMessage *message) {
                 if (message.isSuccess) {

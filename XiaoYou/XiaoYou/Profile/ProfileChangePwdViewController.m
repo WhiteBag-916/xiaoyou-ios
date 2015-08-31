@@ -108,9 +108,11 @@
     return field;
 }
 - (void)forgetPwd {
-    YCommonAlertView *alert = [[YCommonAlertView alloc] initWithTitle:@"提示" message:@"是否确认忘记密码？" buttonTitles:@"确认",@"取消", nil];
+    YCommonAlertView *alert = [[YCommonAlertView alloc] initWithTitle:nil
+                                                              message:@"我们将发送验证码至你绑定的手机号上，请及时修改"
+                                                         buttonTitles:@"取消",@"确认", nil];
     [alert clickedButtonHandler:^(NSInteger index) {
-        if (index == 0) {
+        if (index == 1) {
             [alert hide];
             [[ProvisionManager sharedInstance] forgotPasswordReq:[[ProvisionManager sharedInstance] getLoginInfo].studentNo block:^(YActionMessage *message) {
                 [YUtils showTitle:message.desc];

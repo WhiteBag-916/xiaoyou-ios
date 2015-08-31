@@ -146,9 +146,9 @@
     YActionSheetItem *item3 = [YActionSheetItem itemWithTitle:@"解除好友关系"
                                                          type:YCommonActionSheetItemTypeCommon
                                                         block:^(NSInteger checkNum) {
-                                                           YCommonAlertView * alertView = [[YCommonAlertView alloc] initWithTitle:nil message:@"确定解除好友关系？" buttonTitles:@"确定",@"取消", nil];
+                                                           YCommonAlertView * alertView = [[YCommonAlertView alloc] initWithTitle:nil message:@"确定解除好友关系？" buttonTitles:@"取消",@"确定", nil];
                                                             [alertView clickedButtonHandler:^(NSInteger index) {
-                                                                if (index == 0) {
+                                                                if (index == 1) {
                                                                     [self deleteFriends];
                                                                 }
                                                            
