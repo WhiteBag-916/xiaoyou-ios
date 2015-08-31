@@ -14,7 +14,7 @@
 #import "Author.h"
 
 #define kHeadImageViewHeight            50
-#define kHeadImageViewToTop             7
+#define kHeadImageViewToTop             3
 #define kNameLabelToHeadImage           5
 #define kDeleteButtonHeightAndWodth     17
 
