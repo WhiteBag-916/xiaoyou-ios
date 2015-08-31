@@ -1,24 +1,26 @@
 //
-//  ReceiveAuthCodeModel.m
+//  EasyModel.m
 //
-//  Created by HuiYin  on 15/8/4
+//  Created by   on 15/8/31
 //  Copyright (c) 2015 __MyCompanyName__. All rights reserved.
 //
 
-#import "ReceiveAuthCodeModel.h"
+#import "EasyModel.h"
 
 
-NSString *const kReceiveAuthCodeModelTime = @"time";
+NSString *const kEasyModelNoticeUrl = @"noticeUrl";
+NSString *const kEasyModelTime = @"time";
 
 
-@interface ReceiveAuthCodeModel ()
+@interface EasyModel ()
 
 - (id)objectOrNilForKey:(id)aKey fromDictionary:(NSDictionary *)dict;
 
 @end
 
-@implementation ReceiveAuthCodeModel
+@implementation EasyModel
 
+@synthesize noticeUrl = _noticeUrl;
 @synthesize time = _time;
 
 
@@ -34,7 +36,8 @@ NSString *const kReceiveAuthCodeModelTime = @"time";
     // This check serves to make sure that a non-NSDictionary object
     // passed into the model class doesn't break the parsing.
     if(self && [dict isKindOfClass:[NSDictionary class]]) {
-            self.time = [self objectOrNilForKey:kReceiveAuthCodeModelTime fromDictionary:dict];
+            self.noticeUrl = [self objectOrNilForKey:kEasyModelNoticeUrl fromDictionary:dict];
+            self.time = [self objectOrNilForKey:kEasyModelTime fromDictionary:dict];
 
     }
     
@@ -45,7 +48,8 @@ NSString *const kReceiveAuthCodeModelTime = @"time";
 - (NSDictionary *)dictionaryRepresentation
 {
     NSMutableDictionary *mutableDict = [NSMutableDictionary dictionary];
-    [mutableDict setValue:self.time forKey:kReceiveAuthCodeModelTime];
+    [mutableDict setValue:self.noticeUrl forKey:kEasyModelNoticeUrl];
+    [mutableDict setValue:self.time forKey:kEasyModelTime];
 
     return [NSDictionary dictionaryWithDictionary:mutableDict];
 }
@@ -69,22 +73,25 @@ NSString *const kReceiveAuthCodeModelTime = @"time";
 {
     self = [super init];
 
-    self.time = [aDecoder decodeObjectForKey:kReceiveAuthCodeModelTime];
+    self.noticeUrl = [aDecoder decodeObjectForKey:kEasyModelNoticeUrl];
+    self.time = [aDecoder decodeObjectForKey:kEasyModelTime];
     return self;
 }
 
 - (void)encodeWithCoder:(NSCoder *)aCoder
 {
 
-    [aCoder encodeObject:_time forKey:kReceiveAuthCodeModelTime];
+    [aCoder encodeObject:_noticeUrl forKey:kEasyModelNoticeUrl];
+    [aCoder encodeObject:_time forKey:kEasyModelTime];
 }
 
 - (id)copyWithZone:(NSZone *)zone
 {
-    ReceiveAuthCodeModel *copy = [[ReceiveAuthCodeModel alloc] init];
+    EasyModel *copy = [[EasyModel alloc] init];
     
     if (copy) {
 
+        copy.noticeUrl = [self.noticeUrl copyWithZone:zone];
         copy.time = [self.time copyWithZone:zone];
     }
     

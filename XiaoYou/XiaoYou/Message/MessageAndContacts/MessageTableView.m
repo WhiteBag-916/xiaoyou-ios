@@ -80,7 +80,7 @@
 -(void)refreshTableView:(NSMutableArray *) dataSouceArr AndHeaderModel:(EMMessage *) model
 {
     [self setUpHeaderView:model];
-    _messageDataSource = dataSouceArr;
+    self.messageDataSource = [NSMutableArray arrayWithArray:dataSouceArr];
     [self reloadData];
 }
 
