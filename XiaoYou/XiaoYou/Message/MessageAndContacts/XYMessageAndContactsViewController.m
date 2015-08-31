@@ -58,21 +58,17 @@
 - (void)removeEmptyConversationsFromDB
 {
     NSArray *conversations = [[EaseMob sharedInstance].chatManager conversations];
-    NSMutableArray *needRemoveConversations;
+    NSMutableArray *needRemoveConversations = [@[] mutableCopy];
     for (EMConversation *conversation in conversations) {
         if (!conversation.latestMessage || (conversation.conversationType == eConversationTypeChatRoom)) {
-            if (!needRemoveConversations) {
-                needRemoveConversations = [[NSMutableArray alloc] initWithCapacity:0];
-            }
-            
             [needRemoveConversations addObject:conversation.chatter];
         }
     }
     
-    if (needRemoveConversations && needRemoveConversations.count > 0) {
+    if (needRemoveConversations.count > 0) {
         [[EaseMob sharedInstance].chatManager removeConversationsByChatters:needRemoveConversations
                                                              deleteMessages:YES
-                                                                append2Chat:NO];
+                                                                append2Chat:YES];
     }
 }
 
@@ -80,8 +76,8 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshMeesageRes:) name:kNotification_Refresh_Message object:nil];
-    [self refreshDataSource];
     [self removeEmptyConversationsFromDB];
+    [self refreshDataSource];
     [[MessageManager sharedInstance] setupUnreadMessageCount];
     
 

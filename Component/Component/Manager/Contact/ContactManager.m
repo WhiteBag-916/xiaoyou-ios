@@ -29,6 +29,7 @@
 #import "ForbiddenList.h"
 #import "ForbiddenLinkManAction.h"
 #import "MessageManager.h"
+#import "ClassList.h"
 
 #define kContactsManagerSyncQueue @"kContactsManagerSyncQueue"
 
@@ -79,6 +80,27 @@ DEF_SINGLETON(ContactManager);
     }
     
     return linkManList;
+}
+
+//删除群获取thirdCode
+- (NSString *)delClassListByGroupCode:(NSString *)name {
+    __block NSString *thirdCode;
+    NSMutableArray *unionListArray = [_linkManModel.unionList mutableCopy];
+    [unionListArray enumerateObjectsUsingBlock:^(ClassList *obj, NSUInteger idx, BOOL *stop) {
+        if ([name isEqualToString:[obj name]])
+        {
+            thirdCode = [obj thirdCode];
+            [unionListArray removeObjectAtIndex:idx];
+            *stop = YES;
+        }
+    }];
+    
+    if (thirdCode.length > 0) {
+        _linkManModel.unionList = [NSArray arrayWithArray:unionListArray];
+        [self saveContactsList];
+    }
+    
+    return thirdCode;
 }
 
 //更新联系人的头像
