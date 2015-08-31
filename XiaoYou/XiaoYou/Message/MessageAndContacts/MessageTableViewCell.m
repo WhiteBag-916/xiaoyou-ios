@@ -197,6 +197,7 @@ NSString *const kMessageTableViewCell = @"MessageTableViewCellId";
         if ([self isClass])
         {
             _headImageView.backgroundColor = KCOLORGREEN_009688;
+            _headImageView.image = nil;
             _defaultLabel.text = @"班";
             _defaultLabel.hidden = NO;
         }

@@ -27,7 +27,6 @@ NSString *const kGroupInfoCollectionViewCell = @"GroupInfoCollectionViewCellId";
 @property (nonatomic,strong)UIButton * deleteButton;
 @property (nonatomic,strong)UILongPressGestureRecognizer * longPressGestureRecognizer;
 @property (nonatomic,strong)UITapGestureRecognizer * tapGestureRecognizer;
-@property (nonatomic,strong)NSMutableDictionary * modelDic;
 
 @end
 

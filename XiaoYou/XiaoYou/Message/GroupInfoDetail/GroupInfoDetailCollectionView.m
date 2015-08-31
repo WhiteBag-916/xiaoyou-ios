@@ -136,6 +136,7 @@
 
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
+    GroupInfoCollectionViewCell * cell = (GroupInfoCollectionViewCell *)[self cellForItemAtIndexPath:indexPath];
     if (indexPath.row < _dataSourceArr.count)
     {
         if ([[_dataSourceArr[indexPath.row] objectForKey:@"isDelete"] boolValue])
@@ -145,7 +146,7 @@
         else
         {
             XYContactsInfoDetailViewController * contactsInfoDetailVC = [[XYContactsInfoDetailViewController alloc] init];
-//            contactsInfoDetailVC.studentDic = cell.studentDic;
+            contactsInfoDetailVC.studentDic = cell.modelDic;
             contactsInfoDetailVC.uid = [_dataSourceArr[indexPath.row][@"model"] uid];
             [self.myController.navigationController pushViewController:contactsInfoDetailVC animated:YES needHiddenBottomBar:YES];
         }

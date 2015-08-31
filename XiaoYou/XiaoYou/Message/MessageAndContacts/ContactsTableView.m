@@ -115,7 +115,11 @@
     _indexTitleArr = [[NSMutableArray alloc] init];
     //数据源
     _contactsDataSource = [NSMutableArray arrayWithArray:[self transformDataSouceArr:_originalContactsDataSource]];
-    [self setUpHeaderView:model.classList];
+    if (model.classList.count > 0)
+    {
+        [self setUpHeaderView:model.classList];
+    }
+    
     [self reloadData];
 }
 

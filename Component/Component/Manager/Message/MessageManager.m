@@ -21,6 +21,7 @@
 #import "ProvisionManager.h"
 #import "YModel+ActionMessage.h"
 #import "ContactManager.h"
+#import "EMTextMessageBody.h"
 
 #define kMessageManagerSyncQueue @"kMessageManagerSyncQueue"
 //两次提示的默认间隔
@@ -145,6 +146,7 @@ DEF_SINGLETON(MessageManager);
 }
 -(void)didReceiveCmdMessage:(EMMessage *)cmdMessage
 {
+
     //解析
     NSDictionary *ext = cmdMessage.ext;    
     if ([ext[@"server_flag"] boolValue])
@@ -177,6 +179,21 @@ DEF_SINGLETON(MessageManager);
 
 -(void)didReceiveMessage:(EMMessage *)message
 {
+    EMTextMessageBody * body = message.messageBodies.lastObject;
+    if (message.messageType == eMessageBodyType_Text)
+    {
+        if ([body.text isEqualToString:@"我通过你的好友请求啦，聊聊呗"])
+        {
+            [[ContactManager sharedInstance] getContactsListData:^(YActionMessage *message) {
+                if (message.isSuccess)
+                {
+                    [[NSNotificationCenter defaultCenter] postNotificationName:kNotification_Refresh_Message object:nil];
+                }
+            }];
+        }
+    }
+    
+    
     //解析
     NSDictionary *ext = message.ext;
     BOOL needReload = NO;
