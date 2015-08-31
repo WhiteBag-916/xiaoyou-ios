@@ -152,7 +152,8 @@
                                                                messageType:eMessageTypeChat
                                                          requireEncryption:NO
                                                                        ext:ext];
-        [[EaseMob sharedInstance].chatManager removeConversationByChatter:tempMessage.conversationChatter deleteMessages:YES append2Chat:NO];
+        EMConversation *conversation = [[EaseMob sharedInstance].chatManager conversationForChatter:tempMessage.conversationChatter conversationType:eConversationTypeChat];
+        [conversation removeMessage:tempMessage];
     }
 }
 
