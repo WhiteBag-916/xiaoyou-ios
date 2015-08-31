@@ -31,6 +31,7 @@
 @property (nonatomic, strong) NSArray *managerGroups;
 @property (nonatomic, assign) double unreadAlterCount;
 @property (nonatomic, strong) NSString *schoolName;
+@property (nonatomic, strong) NSString *friendStatus;
 
 + (instancetype)modelObjectWithDictionary:(NSDictionary *)dict;
 - (instancetype)initWithDictionary:(NSDictionary *)dict;

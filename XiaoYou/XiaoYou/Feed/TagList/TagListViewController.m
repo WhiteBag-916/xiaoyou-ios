@@ -194,22 +194,22 @@
 
 //跳转社团
 - (void)toAssociationsList {
+    [[NSNotificationCenter defaultCenter] postNotificationName:kNotification_Push_AssociationsList object:nil];
     [[SlideNavigationController sharedInstance] closeMenuWithCompletion:^{
-        [[NSNotificationCenter defaultCenter] postNotificationName:kNotification_Push_AssociationsList object:nil];
     }];
 }
 
 //跳转找人
 - (void)toSearchPerson {
+    [[NSNotificationCenter defaultCenter] postNotificationName:kNotification_Push_SearchPerson object:nil];
     [[SlideNavigationController sharedInstance] closeMenuWithCompletion:^{
-        [[NSNotificationCenter defaultCenter] postNotificationName:kNotification_Push_SearchPerson object:nil];
     }];
 }
 
 //跳转到新提醒
 - (void)toNotifyView {
+    [[NSNotificationCenter defaultCenter] postNotificationName:kNotification_Push_Notify object:nil];
     [[SlideNavigationController sharedInstance] closeMenuWithCompletion:^{
-        [[NSNotificationCenter defaultCenter] postNotificationName:kNotification_Push_Notify object:nil];
     }];
 }
 

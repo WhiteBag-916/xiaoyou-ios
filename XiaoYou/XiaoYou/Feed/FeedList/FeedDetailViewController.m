@@ -15,7 +15,7 @@
 #import "FeedManager.h"
 
 #define KBOTTOMHEIGHT [DXMessageToolBar defaultHeight]
-@interface FeedDetailViewController() <DXMessageToolBarDelegate, UIGestureRecognizerDelegate>
+@interface FeedDetailViewController() <DXMessageToolBarDelegate, UIGestureRecognizerDelegate, UITextViewDelegate>
 
 @property (nonatomic, strong) NSString *feedId;
 @property (nonatomic, strong) FeedDetailTableView *feedDetailTable;
@@ -78,7 +78,6 @@
     _chatToolBar.styleChangeButton.hidden = true;
     _chatToolBar.inputTextView.width += _chatToolBar.inputTextView.originX - _chatToolBar.styleChangeButton.originX + _chatToolBar.faceButton.rightX - _chatToolBar.inputTextView.rightX;
     _chatToolBar.inputTextView.originX = _chatToolBar.styleChangeButton.originX;
-    _chatToolBar.inputTextView.delegate = self;
     _chatToolBar.faceButton.originX = _chatToolBar.moreButton.originX;
 }
 
@@ -87,12 +86,6 @@
     _replyId = nil;
     _chatToolBar.inputTextView.placeHolder = @"您老人家说两句呗";
     [_chatToolBar endEditing:YES];
-}
-- (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text {
-    if ([[[UITextInputMode currentInputMode] primaryLanguage] isEqualToString:@"emoji"]) {
-        return false;
-    }
-    return true;
 }
 -(void) changeMode:(NSNotification *)notification{
     if ([[[UITextInputMode currentInputMode] primaryLanguage] isEqualToString:@"emoji"]) {

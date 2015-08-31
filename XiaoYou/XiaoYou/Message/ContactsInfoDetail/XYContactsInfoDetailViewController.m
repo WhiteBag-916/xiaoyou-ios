@@ -22,6 +22,7 @@
 @property(nonatomic,strong)ContactsInfoDetailTableView * contactsInfoDetailTableView;
 @property(nonatomic,strong)UIButton * bottomButton;
 @property   (nonatomic, strong) NSDictionary *shareData;
+@property (nonatomic, assign) BOOL isFriendRelationShip;//需要是好友
 
 @end
 
@@ -44,6 +45,10 @@
             ProfileInfo * model = message.object;
             _shareData = @{@"name":model.userName, @"pic":model.headPic, @"school":model.schoolName};
             [_contactsInfoDetailTableView refreshTableView:model];
+            
+            _uid = model.uid;
+            _bottomButton.enabled = YES;
+            [self updateStatus:model.friendStatus];
         } else {
             [YUtils showTitle:message.desc];
         }
@@ -68,39 +73,59 @@
     _bottomButton = [[UIButton alloc] init];
     [_bottomButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [self.view addSubview:_bottomButton];
-    
+    _bottomButton.enabled = NO;
     [_bottomButton setBackgroundImage:[UIImage imageNamed:@"contacts_bottom"] forState:UIControlStateNormal];
-    if ([[ContactManager sharedInstance] isFriendRelationShip:_uid])
+    _isFriendRelationShip = [[ContactManager sharedInstance] isFriendRelationShip:_uid];
+    [_bottomButton addTarget:self action:@selector(clickBottomButton) forControlEvents:UIControlEventTouchUpInside];
+    if (_isFriendRelationShip)
     {
         _studentDic = [[[ContactManager sharedInstance] getFriendInfo:_uid] dictionaryRepresentation];
-        [_bottomButton addTarget:self action:@selector(clickBottomButton) forControlEvents:UIControlEventTouchUpInside];
         [_bottomButton setTitle:@"聊聊呗" forState:UIControlStateNormal];
         
         [self showCustomNavigationMoreButton];
     }
     else
     {
-        _bottomButton.enabled = NO;
-        [_bottomButton setTitle:@"你们还不是好友" forState:UIControlStateNormal];
+        [_bottomButton setTitle:@"添加好友" forState:UIControlStateNormal];
     }
     
     [_bottomButton mas_makeConstraints:^(MASConstraintMaker *make) {
         make.bottom.left.right.mas_equalTo(0);
         make.height.mas_equalTo(KTabBarheight);
     }];
-    
+}
+
+- (void)updateStatus:(NSString *)status {
+    if ([status isEqualToString:@"2"]) {
+        _bottomButton.enabled = NO;
+        [_bottomButton setTitle:@"好友申请已发送" forState:UIControlStateNormal];
+    } else {
+        _bottomButton.enabled = YES;
+    }
 }
 
 -(void)clickBottomButton
 {
-    if ([self.navigationController.viewControllers[self.navigationController.viewControllers.count-2] isKindOfClass:[ChatViewController class]]) {
-        [self.navigationController popViewControllerAnimated:YES];
+    if (!_isFriendRelationShip) {
+        //添加好友
+        [YUtils showHUDWithTitle:@"发送中"];
+        [[ContactManager sharedInstance] submitFriendApply:_uid block:^(YActionMessage *message) {
+            [YUtils hiddenProgressHUD];
+            if (message.isSuccess) {
+                [self updateStatus:@"2"];
+            }
+            
+            [YUtils showTitle:message.desc];
+        }];
     } else {
-        ChatViewController * chatVC = [[ChatViewController alloc] initWithChatter:_studentDic[@"thirdCode"] isGroup:NO];
-        chatVC.isSystemMessage = NO;
-        chatVC.studentDic = [_studentDic mutableCopy];
-        [self.navigationController pushViewController:chatVC animated:YES needHiddenBottomBar:YES];
-    
+        if ([self.navigationController.viewControllers[self.navigationController.viewControllers.count-2] isKindOfClass:[ChatViewController class]]) {
+            [self.navigationController popViewControllerAnimated:YES];
+        } else {
+            ChatViewController * chatVC = [[ChatViewController alloc] initWithChatter:_studentDic[@"thirdCode"] isGroup:NO];
+            chatVC.isSystemMessage = NO;
+            chatVC.studentDic = [_studentDic mutableCopy];
+            [self.navigationController pushViewController:chatVC animated:YES needHiddenBottomBar:YES];
+        }
     }
 }
 
@@ -172,8 +197,11 @@
 
 -(BOOL)isRemind
 {
+    //获取该人的详情
+    LinkManList *man = [[ContactManager sharedInstance] getManById:_uid];
+    
     //消息提醒
-    if ([_studentDic[@"isRemind"] isEqualToString:@"n"])
+    if ([man.isRemind isEqualToString:@"n"])
     {
         return YES;
     }
