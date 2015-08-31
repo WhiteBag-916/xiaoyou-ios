@@ -338,7 +338,7 @@ DEF_SINGLETON(MessageManager);
     
 #if !TARGET_IPHONE_SIMULATOR
     //判断是否发送本地推送
-    if (!ext[@"em_ignore_notification"]) {
+    if (!message.ext[@"em_ignore_notification"]) {
         BOOL isAppActivity = [[UIApplication sharedApplication] applicationState] == UIApplicationStateActive;
         if (!isAppActivity) {
             [self showNotificationWithMessage:message];
