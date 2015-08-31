@@ -123,8 +123,9 @@
         }];
         _switchView = [[CommonSwitchView alloc] initWithFrame:CGRectMake(0, 0, SCALE_NUM(70), SCALE_NUM(20)) textArray:@[@"个人", @"社团"]];
         [_groupView addSubview:_switchView];
+        __weak FeedPublishViewController *weakSelf = self;
         [_switchView changedType:^(CommonSwitchType type) {
-            [self changeSwitchView:type];
+            [weakSelf changeSwitchView:type];
         }];
         [_switchView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.centerY.equalTo(infoLabel);
@@ -424,6 +425,7 @@
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
     [self showOrignMode];
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 - (NSString *)getTagSelected {
     NSMutableString *tagStr = [@"" mutableCopy];
@@ -509,7 +511,4 @@
     return imageStr;
 }
 
-- (void)dealloc {
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
-}
 @end
