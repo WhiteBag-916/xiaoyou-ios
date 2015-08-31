@@ -174,8 +174,8 @@
     NSString * groupIcon = dic[@"group_icon"];
     NSMutableDictionary * newDic = [[NSMutableDictionary alloc] initWithDictionary:dic];
     [newDic setObject:gid forKey:@"gid"];
-    [newDic setObject:groupName forKey:@"groupName"];
-    [newDic setObject:groupIcon forKey:@"groupIcon"];
+    [newDic setObject:groupName forKey:@"name"];
+    [newDic setObject:groupIcon forKey:@"icon"];
     return newDic;
 }
 
