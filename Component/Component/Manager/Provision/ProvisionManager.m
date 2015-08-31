@@ -198,6 +198,17 @@ DEF_SINGLETON(ProvisionManager);
     [self updateLoginInfo];
 }
 
+- (void)loginSuccess:(YActionMessage*)message {
+    //存文件
+    self.loginResp = message.object;
+    [self saveLoginInfo];
+    //存token
+    [[NSUserDefaults standardUserDefaults] setObject:_loginResp.token forKey:kShareData_Token];
+    
+    //抛登录成功
+    [[YManagerCenter defaultCenter] notifyAppLogined:nil];
+}
+
 //注册
 - (void)reg:(NSString *)account password:(NSString *)password mobilePhone:(NSString *)mobilePhone block:(ActionCompleteBlock)block {
     RegAction* action = [[RegAction alloc] init];
@@ -212,15 +223,9 @@ DEF_SINGLETON(ProvisionManager);
         [YQueue dispatchInSyncQueueWithQueueType:kProvisionManagerSyncQueue block:^{
             if (message.isSuccess)
             {
-                //存文件
-                self.loginResp = message.object;
-                [self saveLoginInfo];
-                //存token
-                [[NSUserDefaults standardUserDefaults] setObject:_loginResp.token forKey:kShareData_Token];
                 [self savePassword:action.password];
                 
-                //抛登录成功
-                [[YManagerCenter defaultCenter] notifyAppLogined:nil];
+                [self loginSuccess:message];
             }
             
             //主线程处理界面
@@ -244,15 +249,9 @@ DEF_SINGLETON(ProvisionManager);
         [YQueue dispatchInSyncQueueWithQueueType:kProvisionManagerSyncQueue block:^{
             if (message.isSuccess)
             {
-                //存文件
-                self.loginResp = message.object;
-                [self saveLoginInfo];
-                //存token
-                [[NSUserDefaults standardUserDefaults] setObject:_loginResp.token forKey:kShareData_Token];
                 [self savePassword:action.password];
                 
-                //抛登录成功
-                [[YManagerCenter defaultCenter] notifyAppLogined:nil];
+                [self loginSuccess:message];
             }
             
             //主线程处理界面
