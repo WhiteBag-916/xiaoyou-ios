@@ -156,7 +156,7 @@
         NSString *content = (data.feed.content.length == 0?@"":data.feed.content);
         NSString *img = data.feed.img.length > 0?[data.feed.img componentsSeparatedByString:@","][0]:@"";
         _info = data;
-        _shareData = [NSMutableDictionary dictionaryWithObjectsAndKeys:tag,@"tag",content,@"content",img, @"pic", nil];
+        _shareData = [NSMutableDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"%d", (int)data.feed.feedIdentifier], @"feedId", tag,@"tag",content,@"content",img, @"pic", nil];
         _respectNum.text = [NSString stringWithFormat:@"%d", (int)data.feed.praiseCount];
         _commentNum.text = [NSString stringWithFormat:@"%d", (int)data.feed.commentCount];
         authorId = data.author.uid;
