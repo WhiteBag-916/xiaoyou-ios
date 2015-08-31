@@ -1149,7 +1149,7 @@
 {
     [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:YES] forKey:@"isShowPicker"];
     [self keyBoardHidden];
-    
+
 #if TARGET_IPHONE_SIMULATOR
     [self showHint:NSLocalizedString(@"相机不可用", @"simulator does not support taking picture")];
 #elif TARGET_OS_IPHONE
@@ -1172,11 +1172,17 @@
             }
         }];
     }else{
-        self.imagePicker.sourceType = UIImagePickerControllerSourceTypeCamera;
-        self.imagePicker.mediaTypes = @[(NSString *)kUTTypeImage,(NSString *)kUTTypeMovie];
-        [self presentViewController:self.imagePicker animated:YES completion:NULL];
-        self.isInvisible = YES;
+//        self.imagePicker.sourceType = UIImagePickerControllerSourceTypeCamera;
+//        self.imagePicker.mediaTypes = @[(NSString *)kUTTypeImage,(NSString *)kUTTypeMovie];
+//        [self presentViewController:self.imagePicker animated:YES completion:NULL];
+//        self.isInvisible = YES;
+        UIImagePickerController *picker = [[UIImagePickerController alloc] init];
+        [picker setSourceType:UIImagePickerControllerSourceTypeCamera];
+        picker.delegate = self;
+        [picker setAllowsEditing:YES];
+        [self presentViewController:picker animated:YES completion:nil];
     }
+    
 #endif
 }
 
@@ -1346,7 +1352,8 @@
 - (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
 {
     [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:NO] forKey:@"isShowPicker"];
-    [self.imagePicker dismissViewControllerAnimated:YES completion:nil];
+//    [self.imagePicker dismissViewControllerAnimated:YES completion:nil];
+    [picker dismissViewControllerAnimated:YES completion:nil];
     self.isInvisible = NO;
 }
 
