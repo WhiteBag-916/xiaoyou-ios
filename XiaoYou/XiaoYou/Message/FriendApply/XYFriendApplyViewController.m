@@ -15,10 +15,20 @@
 @interface XYFriendApplyViewController ()
 
 @property(nonatomic,strong) FriendApplyTableView * friendApplyTableView;
+@property (nonatomic, strong) NSString *chatter;
 
 @end
 
 @implementation XYFriendApplyViewController
+
+
+- (instancetype)initWithChatter:(NSString *)chatter {
+    if (self = [super init]) {
+        _chatter = chatter;
+    }
+    
+    return self;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -46,6 +56,14 @@
     
 }
 
+- (void)onNavigationLeftButtonClicked {
+    if (0 == [_friendApplyTableView getDataSource].count) {
+        [[EaseMob sharedInstance].chatManager removeConversationByChatter:_chatter deleteMessages:YES append2Chat:NO];
+    }
+    
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
 - (void)onNavigationRightButtonClicked
 {
     YActionSheetItem *item1 = [YActionSheetItem itemWithTitle:@"清空好友申请列表"
@@ -68,16 +86,6 @@
     [[ContactManager sharedInstance] ignoreFriendApply:ids block:^(YActionMessage *message) {
         [_friendApplyTableView refreshTableView:[NSArray array]];;
     }];
-    
-    //清空会话列表
-    if (!([_friendApplyTableView getDataSource].count > 0)) {
-        NSArray *conversations = [[EaseMob sharedInstance].chatManager conversations];
-        [conversations enumerateObjectsUsingBlock:^(EMConversation * obj, NSUInteger idx, BOOL *stop) {
-            if ([obj.chatter isEqualToString:KFRIEND_APPLYID]) {
-                [[EaseMob sharedInstance].chatManager removeConversationByChatter:obj.chatter deleteMessages:YES append2Chat:NO];
-            }
-        }];
-    }
 }
 
 - (void)didReceiveMemoryWarning {
