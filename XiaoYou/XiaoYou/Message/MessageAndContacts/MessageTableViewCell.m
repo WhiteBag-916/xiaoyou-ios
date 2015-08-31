@@ -226,6 +226,9 @@ NSString *const kMessageTableViewCell = @"MessageTableViewCellId";
     
     //时间
     _timeLabel.text = [self lastMessageTimeByConversation:_conversation];
+    _headImageView.layer.cornerRadius = kHeadCornerRadius;
+    _headImageView.clipsToBounds = YES;
+    _headImageView.backgroundColor = [UIColor clearColor];
     
 }
 
