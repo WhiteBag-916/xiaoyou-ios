@@ -148,7 +148,7 @@ typedef enum : NSUInteger {
         _tagContent.maxLines = 2;
         _tagContent.clipsToBounds = true;
         _tagContent.insets = 21;
-        _tagContent.lineSpace = 0;
+        _tagContent.lineSpace = -5;
         _tagContent.singleLine = false;
         _tagContent.preferredMaxLayoutWidth = SCALE_NUM(230);
         
