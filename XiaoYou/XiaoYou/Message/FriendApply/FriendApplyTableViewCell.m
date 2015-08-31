@@ -212,9 +212,7 @@ typedef enum : NSUInteger {
 -(void)setCellInfo:(ApplicantList *) model
 {
     //重用cell时重设的属性
-    _afterDealButton.hidden = YES;
-    _ignoreButton.hidden = NO;
-    _confirmButton.hidden = NO;
+    [self updateButtonShow];
     
     _applicantList = model;
     

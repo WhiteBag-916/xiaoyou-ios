@@ -206,7 +206,7 @@ NSString *const kGroupApplyTableViewCell = @"GroupApplyTableViewCellId";
 -(void)setCellInfo:(ApplicantList *)applicantList
 {
     _applicantList = applicantList;
-    
+    [self updateButtonShow];
     [_headImageView setFaceImageWithUrl:_applicantList.author.headPic];
     _nameLabel.text = _applicantList.author.name;
     _sexLabel.text = _applicantList.author.gender;
