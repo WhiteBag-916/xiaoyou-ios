@@ -431,7 +431,7 @@
                         [self.navigationController popViewControllerAnimated:true];
                     });
                 } else {
-                    [self.navigationController pushViewController:[[ProfileChangePwdViewController alloc] init] animated:true];
+                    [self.navigationController pushViewController:[[ProfileChangePwdViewController alloc] initWithType:ProfileChangePwdTypeMod] animated:true];
                 }
             } else {
                 [YUtils showTitle:message.desc];

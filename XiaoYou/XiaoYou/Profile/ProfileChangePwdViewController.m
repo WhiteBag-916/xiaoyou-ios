@@ -25,20 +25,31 @@
 @property (nonatomic, strong) YTextField *pwdField;
 
 @property (nonatomic, strong) YTextField *pwdRepeatField;
+
+@property (nonatomic, assign) ProfileChangePwdType type;
 @end
 
 @implementation ProfileChangePwdViewController
 
-- (id)init {
+- (id)initWithType:(ProfileChangePwdType)type {
     self = [super init];
     if (self) {
         self.hidesBottomBarWhenPushed = true;
+        _type = type;
     }
     return self;
 }
 - (void)viewDidLoad {
     [self initController];
     [self initView];
+    
+    if (ProfileChangePwdTypeForget == _type) {
+        [self initViewByForget];
+    }
+}
+- (void)initViewByForget {
+    _currentPwdField.placeholder = @"请输入收到的验证码";
+    self.title = @"忘记密码";
 }
 - (void)initController {
     [self showCustomNavigationBackButton];
@@ -109,12 +120,15 @@
 }
 - (void)forgetPwd {
     YCommonAlertView *alert = [[YCommonAlertView alloc] initWithTitle:nil
-                                                              message:@"我们将发送验证码至你绑定的手机号上，请及时修改"
+                                                              message:@"我们将发送验证码至你绑定的手机号上"
                                                          buttonTitles:@"取消",@"确认", nil];
     [alert clickedButtonHandler:^(NSInteger index) {
         if (index == 1) {
             [alert hide];
             [[ProvisionManager sharedInstance] forgotPasswordReq:[[ProvisionManager sharedInstance] getLoginInfo].studentNo block:^(YActionMessage *message) {
+                if (message.isSuccess) {
+                    [self.navigationController pushViewController:[[ProfileChangePwdViewController alloc] initWithType:ProfileChangePwdTypeForget] animated:true];
+                }
                 [YUtils showTitle:message.desc];
             }];
         } else {
@@ -142,18 +156,22 @@
 }
 
 - (void)onNavigationRightButtonClicked {
-    MBProgressHUD *hud = [YUtils showHUDWithTitle:@"正在修改"];
-    [[ProvisionManager sharedInstance] ModifyPassword:_pwdField.text oldPassWord:_currentPwdField.text block:^(YActionMessage *message) {
-        [hud removeFromSuperview];
-        if (message.isSuccess) {
-            [YUtils showTitle:@"修改成功"];
-            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 1*NSEC_PER_SEC), dispatch_get_main_queue(), ^{
-                [self onNavigationLeftButtonClicked];
-            });
-        } else {
-            [YUtils showTitle:message.desc];
-        }
-    }];
+    if (ProfileChangePwdTypeMod == _type) {
+        MBProgressHUD *hud = [YUtils showHUDWithTitle:@"正在修改"];
+        [[ProvisionManager sharedInstance] ModifyPassword:_pwdField.text oldPassWord:_currentPwdField.text block:^(YActionMessage *message) {
+            [hud removeFromSuperview];
+            if (message.isSuccess) {
+                [YUtils showTitle:@"修改成功"];
+                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 1*NSEC_PER_SEC), dispatch_get_main_queue(), ^{
+                    [self onNavigationLeftButtonClicked];
+                });
+            } else {
+                [YUtils showTitle:message.desc];
+            }
+        }];
+    } else {
+        
+    }
 }
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];

@@ -419,7 +419,7 @@
 - (void)changePwd {
     UILabel *label = _bottomView.subviews[0];
     if (label.enabled) {
-        [self.navigationController pushViewController:[[ProfileChangePwdViewController alloc] init] animated:true];
+        [self.navigationController pushViewController:[[ProfileChangePwdViewController alloc] initWithType:ProfileChangePwdTypeMod] animated:true];
     } else {
         [self.navigationController pushViewController:[[ProfilePhoneChangeViewController alloc] initWithType:ProfilePhoneChangeTypeMod hasPhone:false] animated:true];
     }
