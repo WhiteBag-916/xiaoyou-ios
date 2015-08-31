@@ -143,7 +143,7 @@ NSString *const kAssociationsListTableViewCell = @"AssociationsListTableViewCell
     //6
     _keywordsLabel = [YUtils initLabel:CONTENT_FONT(10)
                              color:KCOLORGREEN_455A64
-                              text:@"keyword：零基础也没事、球场门票优惠keyword：零基础也没事、球场门票优惠keyword：零基础也没事、球场门票优惠keyword：零基础也没事、球场门票优惠"
+                              text:@"keywords：零基础也没事、球场门票优惠keyword：零基础也没事、球场门票优惠keyword：零基础也没事、球场门票优惠keyword：零基础也没事、球场门票优惠"
                              frame:CGRectZero
                          alignment:NSTextAlignmentLeft];
     [self.contentView addSubview:_keywordsLabel];
@@ -201,7 +201,11 @@ NSString *const kAssociationsListTableViewCell = @"AssociationsListTableViewCell
     
     _nameLabel.text = model.groupName;
     _hotImageView.hidden = !model.hot;
-    _keywordsLabel.text = model.keyWords;
+    if (model.keyWords.length > 0) {
+        _keywordsLabel.text = [NSString stringWithFormat:@"keywords:%@", model.keyWords];
+    } else {
+        _keywordsLabel.text = @"";
+    }
     _tagImageView.hidden = (model.keyWords.length <= 0);
     _typeLabel.text = model.category;
     NSInteger starNum = [model.star integerValue];
