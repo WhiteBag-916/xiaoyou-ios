@@ -105,6 +105,12 @@ DEF_SINGLETON(FeedManager);
     action.url = [YUtils getUrl:api_feed_AddFeed];
     
     [YAction startAction:action completionBlock:^(YActionMessage* message) {
+        
+        if (message.isSuccess) {
+            //更新我的动态
+            [[ProvisionManager sharedInstance] getProfileInfo];
+        }
+        
         //主线程处理界面
         block(message);
     }];
