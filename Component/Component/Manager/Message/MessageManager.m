@@ -116,13 +116,11 @@ DEF_SINGLETON(MessageManager);
     [[EaseMob sharedInstance].chatManager asyncLoginWithUsername:[NSString stringWithFormat:@"%@_%@",[YShareData defaultData][kShareData_SchoolCode],[YShareData defaultData][kShareData_StudentNo]] password:[NSString stringWithFormat:@"%@_%@",[YShareData defaultData][kShareData_SchoolCode],[YShareData defaultData][kShareData_StudentNo]] completion:^(NSDictionary *loginInfo, EMError *error) {
         if (!error && loginInfo) {
             YLogD(@"登陆成功");
-            
-            [[EaseMob sharedInstance].chatManager loadAllConversationsFromDatabaseWithAppend2Chat:YES];
-            
+        
             //取群组id，进行管理
             [self initGroupIdArray];
             
-            [[NSNotificationCenter defaultCenter] postNotificationName:kNotification_Refresh_Message object:nil userInfo:@{kNotification_Request_Message:loginInfo}];
+            [self updateMessage];
         } else if (nil != error) {
             [[NSNotificationCenter defaultCenter] postNotificationName:kNotification_Refresh_Message object:nil userInfo:@{kNotification_Request_Error:error}];
         }
@@ -177,17 +175,48 @@ DEF_SINGLETON(MessageManager);
     [[EaseMob sharedInstance].chatManager removeConversationByChatter:chatter deleteMessages:YES append2Chat:YES];
 }
 
--(void)didReceiveMessage:(EMMessage *)message
-{
-    YLogD(@"%@", message.ext);
-    //解析
+//更新会话
+- (void)updateMessage {
+    [[EaseMob sharedInstance].chatManager loadAllConversationsFromDatabaseWithAppend2Chat:YES];
+    [[NSNotificationCenter defaultCenter] postNotificationName:kNotification_Refresh_Message object:nil userInfo:nil];
+}
+
+//会话列表信息更新时的回调
+- (void)didUpdateConversationList:(NSArray *)conversationList {
+    //过滤信息，避免产生服务器数据
+    NSString *schoolCode = [YShareData defaultData][kShareData_SchoolCode];
+    if (schoolCode.length > 0) {
+        NSString *schoolId = [NSString stringWithFormat:@"school_%@_1", schoolCode];
+        [conversationList enumerateObjectsUsingBlock:^(EMConversation *obj, NSUInteger idx, BOOL *stop) {
+            if ([obj.chatter isEqualToString:schoolId])
+            {
+                //数据未转义，取出来数据重新转义
+                NSArray *messageArray = [obj loadAllMessages];
+                if (messageArray.count > 0) {
+                    [self resetErrorMessageArray:messageArray];
+                }
+                *stop = YES;
+            }
+        }];
+    }
+}
+
+- (void)resetErrorMessageArray:(NSArray *)messageArray {
+    [messageArray enumerateObjectsUsingBlock:^(EMMessage *obj, NSUInteger idx, BOOL *stop) {
+        [self resetMessage:obj];
+    }];
+    
+    [self updateMessage];
+}
+
+- (BOOL)resetMessage:(EMMessage *)message {
     NSDictionary *ext = message.ext;
     BOOL needReload = NO;
     BOOL needRefresh = NO;
     
     if ([ext[@"server_flag"] boolValue])
     {
-        [[EaseMob sharedInstance].chatManager removeConversationByChatter:message.conversationChatter deleteMessages:YES append2Chat:YES];
+        [[EaseMob sharedInstance].chatManager removeConversationByChatter:message.conversationChatter deleteMessages:YES append2Chat:NO];
         
         switch ([ext[@"type"] integerValue])
         {
@@ -289,12 +318,20 @@ DEF_SINGLETON(MessageManager);
                                                     conversationType:eConversationTypeChat];
     }
     
+    return needRefresh;
+}
+
+-(void)didReceiveMessage:(EMMessage *)message
+{
+    YLogD(@"%@", message.ext);
+    //解析
+    
+    BOOL needRefresh = [self resetMessage:message];
+    
     if (needRefresh) {
         [message updateMessageExtToDB];
         
-        [[EaseMob sharedInstance].chatManager loadAllConversationsFromDatabaseWithAppend2Chat:YES];
-        
-        [[NSNotificationCenter defaultCenter] postNotificationName:kNotification_Refresh_Message object:nil userInfo:nil];
+        [self updateMessage];
         
         [self setupUnreadMessageCount];
     }
