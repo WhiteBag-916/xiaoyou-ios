@@ -42,17 +42,17 @@
     
     [self setUpUI];
     
-//    WS(weakSelf)
+    WS(weakSelf)
     
     //联系人列表请求
-//    [[ContactManager sharedInstance] getContactsListData:^(YActionMessage *message) {
-//        YLogD(@"%@",message);
-//        if (message.isSuccess) {
-////            LinkManModel * model = message.object;
-//            
-//            [weakSelf.contactsTableView refreshTableView:[[ContactManager sharedInstance] getContactsListData]];
-//        }
-//    }];
+    [[ContactManager sharedInstance] getContactsListData:^(YActionMessage *message) {
+        YLogD(@"%@",message);
+        if (message.isSuccess) {
+//            LinkManModel * model = message.object;
+            
+            [weakSelf.contactsTableView refreshTableView:[[ContactManager sharedInstance] getContactsListData]];
+        }
+    }];
 }
 
 - (void)removeEmptyConversationsFromDB
