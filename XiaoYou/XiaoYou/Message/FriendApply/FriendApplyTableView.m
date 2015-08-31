@@ -9,8 +9,7 @@
 #import "FriendApplyTableView.h"
 #import "FriendApplyTableViewCell.h"
 #import "ContactManager.h"
-
-NSString *const KFRIEND_APPLYID = @"100002";//好友申请
+#import "MessageManager.h"
 
 @interface FriendApplyTableView ()<UITableViewDataSource,UITableViewDelegate>
 

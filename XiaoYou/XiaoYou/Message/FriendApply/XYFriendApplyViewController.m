@@ -68,6 +68,16 @@
     [[ContactManager sharedInstance] ignoreFriendApply:ids block:^(YActionMessage *message) {
         [_friendApplyTableView refreshTableView:[NSArray array]];;
     }];
+    
+    //清空会话列表
+    if (!([_friendApplyTableView getDataSource].count > 0)) {
+        NSArray *conversations = [[EaseMob sharedInstance].chatManager conversations];
+        [conversations enumerateObjectsUsingBlock:^(EMConversation * obj, NSUInteger idx, BOOL *stop) {
+            if ([obj.chatter isEqualToString:KFRIEND_APPLYID]) {
+                [[EaseMob sharedInstance].chatManager removeConversationByChatter:obj.chatter deleteMessages:YES append2Chat:NO];
+            }
+        }];
+    }
 }
 
 - (void)didReceiveMemoryWarning {
