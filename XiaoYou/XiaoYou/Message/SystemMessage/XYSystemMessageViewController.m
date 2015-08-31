@@ -37,6 +37,7 @@
     for (EMConversation *conversation in conversations) {
         if ([conversation.chatter isEqualToString:KSYSTEM_MESSAGEID])
         {
+            //将系统消息倒序
             NSMutableArray * tempArr  = (NSMutableArray *)[[[conversation loadAllMessages] reverseObjectEnumerator] allObjects];
             _dataSource = [[NSMutableArray alloc] initWithArray:tempArr];
             
