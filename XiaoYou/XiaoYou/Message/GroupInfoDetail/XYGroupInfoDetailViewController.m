@@ -53,7 +53,12 @@ NSString *const kXYGroupInfoDetailViewController = @"XYGroupInfoDetailViewContro
             [_groupInfoDetailCollectionView refreshTableView:message.object];
              _shareData = @{@"name":_model.groupModel.groupName,@"content":_model.groupModel.internalBaseClassDescription,@"pic":_model.groupModel.groupIcon,@"groupId":[NSString stringWithFormat:@"%g", _model.groupModel.internalBaseClassIdentifier]};
         }
-    }];}
+    }];
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [_groupInfoDetailCollectionView showDel:NO];
+}
 
 -(void)setUpUI
 {

@@ -230,7 +230,7 @@
     //判断是否为好友,输入框置灰
     if (![self isChatGroup])
     {
-        if ([[ContactManager sharedInstance] isFriendRelationShip:_studentDic[@"uid"]])
+        if (![[ContactManager sharedInstance] isFriendRelationShip:_studentDic[@"uid"]])
         {
             UIView * blackView = [[UIView alloc] initWithFrame:_chatToolBar.bounds];
             blackView.backgroundColor = [UIColor blackColor];
