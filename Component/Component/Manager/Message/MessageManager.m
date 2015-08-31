@@ -179,28 +179,15 @@ DEF_SINGLETON(MessageManager);
 
 -(void)didReceiveMessage:(EMMessage *)message
 {
-    EMTextMessageBody * body = message.messageBodies.lastObject;
-    if (message.messageType == eMessageBodyType_Text)
-    {
-        if ([body.text isEqualToString:@"我通过你的好友请求啦，聊聊呗"])
-        {
-            [[ContactManager sharedInstance] getContactsListData:^(YActionMessage *message) {
-                if (message.isSuccess)
-                {
-                    [[NSNotificationCenter defaultCenter] postNotificationName:kNotification_Refresh_Message object:nil];
-                }
-            }];
-        }
-    }
-    
-    
+    YLogD(@"%@", message.ext);
     //解析
     NSDictionary *ext = message.ext;
     BOOL needReload = NO;
+    BOOL needRefresh = NO;
     
     if ([ext[@"server_flag"] boolValue])
     {
-        [[EaseMob sharedInstance].chatManager removeConversationByChatter:message.conversationChatter deleteMessages:YES append2Chat:NO];
+        [[EaseMob sharedInstance].chatManager removeConversationByChatter:message.conversationChatter deleteMessages:YES append2Chat:YES];
         
         switch ([ext[@"type"] integerValue])
         {
@@ -210,6 +197,7 @@ DEF_SINGLETON(MessageManager);
                 message.conversationChatter = KSYSTEM_MESSAGEID;
                 message.from = KSYSTEM_MESSAGEID;
                 
+                needRefresh = YES;
                 needReload = YES;
                 
                 break;
@@ -222,6 +210,7 @@ DEF_SINGLETON(MessageManager);
                 message.from = KFRIEND_APPLYID;
                 
                 needReload = YES;
+                needRefresh = YES;
                 break;
             }
             case GROUP_APPLY: {
@@ -245,6 +234,7 @@ DEF_SINGLETON(MessageManager);
                 message.from = chatter;
                 
                 needReload = YES;
+                needRefresh = YES;
                 break;
             }
             case ADD_COMMENT:
@@ -263,13 +253,28 @@ DEF_SINGLETON(MessageManager);
             }
         }
     } else {
-        needReload = YES;
+        needRefresh = YES;
         
         if (eMessageTypeGroupChat == message.messageType) {
             //群聊
             //更新头像
             [[ContactManager sharedInstance] updateContactsHeadImageByThirdCode:message.groupSenderName headImage:message.ext[@"headImage"]];
         } else if (eMessageTypeChat == message.messageType) {
+            
+            EMTextMessageBody * body = message.messageBodies.lastObject;
+            if (message.messageType == eMessageBodyType_Text)
+            {
+                if ([body.text isEqualToString:@"我通过你的好友请求啦，聊聊呗"])
+                {
+                    [[ContactManager sharedInstance] getContactsListData:^(YActionMessage *message) {
+                        if (message.isSuccess)
+                        {
+                            [[NSNotificationCenter defaultCenter] postNotificationName:kNotification_Refresh_Message object:nil];
+                        }
+                    }];
+                }
+            }
+            
             //更新头像
             [[ContactManager sharedInstance] updateContactsHeadImageByThirdCode:message.from headImage:message.ext[@"headImage"]];
         }
@@ -282,7 +287,9 @@ DEF_SINGLETON(MessageManager);
         //插入conversation
         [[EaseMob sharedInstance].chatManager conversationForChatter:KSYSTEM_MESSAGEID
                                                     conversationType:eConversationTypeChat];
-        
+    }
+    
+    if (needRefresh) {
         [message updateMessageExtToDB];
         
         [[EaseMob sharedInstance].chatManager loadAllConversationsFromDatabaseWithAppend2Chat:YES];

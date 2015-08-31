@@ -105,13 +105,13 @@
     
     _linkManModel = model;
     //联系人model数组
-    _originalContactsDataSource = [NSMutableArray arrayWithArray:model.linkManList];
+    self.originalContactsDataSource = [NSMutableArray arrayWithArray:model.linkManList];
     //联系人+社团model数组
     [_originalContactsDataSource addObjectsFromArray:model.unionList];
     //索引数组
-    _indexTitleArr = [[NSMutableArray alloc] init];
+    self.indexTitleArr = [[NSMutableArray alloc] init];
     //数据源
-    _contactsDataSource = [NSMutableArray arrayWithArray:[self transformDataSouceArr:_originalContactsDataSource]];
+    self.contactsDataSource = [NSMutableArray arrayWithArray:[self transformDataSouceArr:_originalContactsDataSource]];
     if (model.classList.count > 0)
     {
         [self setUpHeaderView:model.classList];
@@ -124,7 +124,7 @@
 {
     if (headerDataSouce.count > 0)
     {
-        _headDataSourceDic = (NSMutableDictionary *)[headerDataSouce[0] dictionaryRepresentation];
+        self.headDataSourceDic = (NSMutableDictionary *)[headerDataSouce[0] dictionaryRepresentation];
     }
     
     UIView * backView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, kRowHeight)];

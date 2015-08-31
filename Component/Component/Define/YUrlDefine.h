@@ -53,6 +53,8 @@
 #define api_login_UpdateSelfIntro @"/user/v2/updateSelfIntro"
 //退出登录
 #define api_user_logOut  @"/user/logout"
+//注册须知
+#define api_user_notice  @"/user/v2/notice"
 //绑定手机号
 #define api_login_ReceiveMobileAuthCode  @"/user/v2/verifyAuthCode"
 //修改密码

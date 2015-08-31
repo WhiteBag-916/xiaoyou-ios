@@ -28,11 +28,6 @@
 @property (strong, nonatomic) MessageTableView *messageTableView;
 @property (strong, nonatomic) ContactsTableView *contactsTableView;
 @property (strong, nonatomic) CommonSwitchView *commonSwitchView;
-
-@property (nonatomic,strong) NSMutableArray *messageDataSource;
-@property (nonatomic,strong) NSMutableArray *contactsDataSource;
-@property (nonatomic,strong) NSMutableArray *contactsHeadDataSouce;
-
 @property (nonatomic,strong) EMMessage * systemMessage;
 
 @end
@@ -124,8 +119,7 @@
 //刷新数据源
 -(void)refreshDataSource
 {
-    _messageDataSource = [self loadDataSource];
-    [_messageTableView refreshTableView:_messageDataSource AndHeaderModel:_systemMessage];
+    [_messageTableView refreshTableView:[self loadDataSource] AndHeaderModel:_systemMessage];
     [_contactsTableView refreshTableView:[[ContactManager sharedInstance] getContactsListData]];
     [self hideHud];
 }

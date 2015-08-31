@@ -8,7 +8,7 @@
 
 #import "ReceiveAuthCodeAction.h"
 #import "YUtils+Component.h"
-#import "ReceiveAuthCodeModel.h"
+#import "EasyModel.h"
 
 @implementation ReceiveAuthCodeAction
 
@@ -17,7 +17,7 @@
     NSDictionary *parameter = [YUtils getParameter:@{@"flag":@"1", @"mobilePhone":_mobilePhone} needUserToken:_needUserToken];
     NSString *url = [YUtils getUrl:api_login_ReceiveAuthCode];
     [self POST:url parameters:parameter completion:^(YHttpRequest *request) {
-        YActionMessage *message = [ReceiveAuthCodeModel actionMessageWithHttpRequest:request];
+        YActionMessage *message = [EasyModel actionMessageWithHttpRequest:request];
         self.completionBlock(message);
     }];
 }

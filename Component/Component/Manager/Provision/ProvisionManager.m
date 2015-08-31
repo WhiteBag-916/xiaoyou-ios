@@ -31,6 +31,7 @@
 #import "YUtils+Component.h"
 #import "ReceiveMobileAuthCodeAction.h"
 #import "RegAction.h"
+#import "RegNoticeAction.h"
 
 #define kProvisionManagerSyncQueue @"kProvisionManagerSyncQueue"
 
@@ -461,6 +462,15 @@ DEF_SINGLETON(ProvisionManager);
     
     //抛登出
     [[YManagerCenter defaultCenter] notifyAppLogouted:@{@"logoutBySelf":@YES}];
+}
+
+//注册须知
+- (void)regNotice:(ActionCompleteBlock)block {
+    RegNoticeAction* action = [[RegNoticeAction alloc] init];
+    
+    [YAction startAction:action completionBlock:^(YActionMessage* message) {
+        block(message);
+    }];
 }
 
 @end
