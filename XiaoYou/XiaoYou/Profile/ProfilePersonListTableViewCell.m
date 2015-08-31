@@ -90,6 +90,7 @@ NSString *const kProfilePersonListTableViewCell = @"kProfilePersonListTableViewC
             make.left.equalTo(_tagView.tagIcon.mas_right).offset(KTAGTEXTMARGIN);
         }];
         _tagView.tagContent.lineSpace = -7;
+        _tagView.tagContent.maxLines = 2;
         self.clipsToBounds = true;
         
         _addFriend = [[UIButton alloc] init];

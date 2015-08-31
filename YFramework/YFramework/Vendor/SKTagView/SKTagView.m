@@ -32,7 +32,7 @@
     {
         return CGSizeZero;
     }
-    
+    _isOktoAdd = true;
     NSArray *subviews = self.subviews;
     UIView *previewsView = nil;
     CGFloat leftOffset = self.padding.left;
@@ -63,7 +63,9 @@
                 {
                     //New line
                     lineCount ++;
-                    
+                    if (_maxLines != 0 && lineCount > _maxLines) {
+                        _isOktoAdd = false;
+                    }
                     currentX = leftOffset + size.width;
                     intrinsicHeight += size.height;
                     
@@ -276,7 +278,11 @@
     [self.tags addObject:tag];
     
     self.didSetup = NO;
+    [self updateConstraints];
     [self invalidateIntrinsicContentSize];
+    if (_isOktoAdd == false) {
+        [self removeTag:tag];
+    }
 }
 
 - (void)insertTag:(SKTag *)tag atIndex:(NSUInteger)index

@@ -15,6 +15,8 @@
 @property (nonatomic) CGFloat insets;
 @property (nonatomic) CGFloat preferredMaxLayoutWidth;
 @property (nonatomic) BOOL singleLine;
+@property (nonatomic) int maxLines;
+@property (nonatomic) BOOL isOktoAdd;
 
 - (void)addTag:(SKTag *)tag;
 - (void)insertTag:(SKTag *)tag atIndex:(NSUInteger)index;

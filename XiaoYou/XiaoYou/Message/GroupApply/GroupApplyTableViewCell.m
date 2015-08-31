@@ -127,6 +127,7 @@ NSString *const kGroupApplyTableViewCell = @"GroupApplyTableViewCellId";
             make.right.equalTo(self.contentView.mas_right).offset(-kPaddingDistance);
             make.bottom.equalTo(self.contentView.mas_bottom).offset(-53);
         }];
+        _tagContent.maxLines = 2;
         _tagContent.insets = 21;
         _tagContent.lineSpace = 0;
         _tagContent.singleLine = false;
