@@ -14,6 +14,8 @@
 #import "CNTextController.h"
 #import "LoginResp.h"
 #import "AppDelegate+RootVC.h"
+#import "EasyModel.h"
+#import "UIImageView+WebCache.h"
 
 #define KBUTTONWIDTH SCALE_NUM(80)
 #define KBUTTONHEIGHT SCALE_NUM(25)
@@ -34,6 +36,8 @@
 
 @property (nonatomic, strong) YTextField *pwdField;
 @property (nonatomic, strong) UIView *pwdView;
+@property (nonatomic, strong) UIImageView *protocolImageView;//提示蒙层
+
 @end
 
 @implementation ProfilePhoneChangeViewController
@@ -172,6 +176,20 @@
     }];
     
     _isCheckButton = YES;
+    
+    //蒙层
+    _protocolImageView = [[UIImageView alloc] init];
+    _protocolImageView.hidden = YES;
+    [[[[UIApplication sharedApplication] delegate] window] addSubview:_protocolImageView];
+    [_protocolImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.equalTo([[[UIApplication sharedApplication] delegate] window]);
+    }];
+    
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dissmissProtocol)];
+    _protocolImageView.userInteractionEnabled = YES;
+    [_protocolImageView addGestureRecognizer:tap];
+    
+    [self regNotice];
 }
 - (void)initController {
     self.navigationController.navigationBarHidden = false;
@@ -261,6 +279,29 @@
     field.placeholder = names[type];
 //    [field placeHolderColor:names[type] fontColor:KCOLORGREEN_455A64];
     return field;
+}
+
+//初始密码范例
+- (void)pressInitialPassword {
+    _protocolImageView.hidden = NO;
+}
+
+- (void)dissmissProtocol {
+    _protocolImageView.hidden = YES;
+}
+
+//注册须知
+- (void)regNotice {
+    [[ProvisionManager sharedInstance] regNotice:^(YActionMessage *message) {
+        if (message.isSuccess) {
+            [_protocolImageView sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@", api_icon_base_url, [message.object noticeUrl]]] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+                if (nil == error && nil != image) {
+                    [self pressInitialPassword];
+                }
+            }];
+        }
+        
+    }];
 }
 
 //登录
@@ -390,7 +431,7 @@
                         [self.navigationController popViewControllerAnimated:true];
                     });
                 } else {
-                    [self.navigationController pushViewController:[[ProfileChangePwdViewController alloc] init] animated:true];
+                    [self.navigationController pushViewController:[[ProfileChangePwdViewController alloc] initWithType:ProfileChangePwdTypeMod needLogin:NO] animated:true];
                 }
             } else {
                 [YUtils showTitle:message.desc];

@@ -37,8 +37,10 @@
     for (EMConversation *conversation in conversations) {
         if ([conversation.chatter isEqualToString:KSYSTEM_MESSAGEID])
         {
-            _dataSource = [[NSMutableArray alloc] initWithArray:[conversation loadAllMessages]];
-            // 设置当前conversation的所有message为已读
+            //将系统消息倒序
+            NSMutableArray * tempArr  = (NSMutableArray *)[[[conversation loadAllMessages] reverseObjectEnumerator] allObjects];
+            _dataSource = [[NSMutableArray alloc] initWithArray:tempArr];
+            
         }
     }
 }

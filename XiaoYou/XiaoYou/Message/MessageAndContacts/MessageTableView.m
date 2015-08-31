@@ -25,6 +25,7 @@
 #import "XYFriendApplyViewController.h"
 #import "XYGroupApplyViewController.h"
 #import "YUtils+Component.h"
+#import "EMConversation.h"
 
 #define kRowHeight                     68
 #define kHeadWidthAndHeight            40
@@ -32,7 +33,7 @@
 #define kTimeLabelWidth                60
 #define kHeadCornerRadius              20
 #define kPaddingDistance               10
-#define kLabelHeightDistacnce          14
+#define kLabelHeightDistacnce          16
 #define kBadgeWidthDistance            21
 #define kBottomLineHeight              0.4
 
@@ -80,7 +81,7 @@
 -(void)refreshTableView:(NSMutableArray *) dataSouceArr AndHeaderModel:(EMMessage *) model
 {
     [self setUpHeaderView:model];
-    _messageDataSource = dataSouceArr;
+    self.messageDataSource = [NSMutableArray arrayWithArray:dataSouceArr];
     [self reloadData];
 }
 
@@ -234,7 +235,14 @@
 
 -(void)tapGestureRecognizerAction
 {
-    [_message.conversation markAllMessagesAsRead:YES];
+    NSArray *conversations = [[EaseMob sharedInstance].chatManager conversations];
+    for (EMConversation *conversation in conversations) {
+        if ([conversation.chatter isEqualToString:KSYSTEM_MESSAGEID])
+        {
+            [conversation markAllMessagesAsRead:YES];
+        }
+    }
+    
     [[MessageManager sharedInstance] setupUnreadMessageCount];
     XYSystemMessageViewController * systemMessageViewController = [[XYSystemMessageViewController alloc] init];
     [self.myController.navigationController pushViewController:systemMessageViewController animated:YES needHiddenBottomBar:YES];
@@ -299,6 +307,9 @@
 {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         EMConversation *converation = [_messageDataSource objectAtIndex:indexPath.row];
+        //删除前清空该回话未读数
+        [converation markAllMessagesAsRead:YES];
+        [[MessageManager sharedInstance] setupUnreadMessageCount];
         [[EaseMob sharedInstance].chatManager removeConversationByChatter:converation.chatter deleteMessages:YES append2Chat:YES];
         [_messageDataSource removeObjectAtIndex:indexPath.row];
         [self deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];

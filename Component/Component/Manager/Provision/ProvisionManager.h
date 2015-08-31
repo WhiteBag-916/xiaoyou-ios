@@ -67,5 +67,9 @@ AS_SINGLETON(ProvisionManager);
 - (void)receiveMobileAuthCode:(NSString *)mobilePhone authCode:(NSString *)authCode block:(ActionCompleteBlock)block;
 //登出
 - (void)logout;
+//注册须知
+- (void)regNotice:(ActionCompleteBlock)block;
+//重置密码
+- (void)resetPwd:(NSString *)authCode password:(NSString *)password block:(ActionCompleteBlock)block;
 
 @end

@@ -174,6 +174,8 @@ DEF_SINGLETON(ContactManager);
     //删除文件
     NSString *cachePath = [[YDirectory fileCache] stringByAppendingString:NSStringFromClass([LinkManModel class])];
     [YDirectory removeFolders:cachePath];
+    //清缓存
+    _linkManModel = nil;
 }
 
 //获取人详细信息,ProfileInfo

@@ -23,6 +23,7 @@ extern NSString *const kGroupInfoCollectionViewCell;
 @interface GroupInfoCollectionViewCell : UICollectionViewCell
 
 @property(nonatomic,weak) id<GroupInfoCollectionViewCellDelegate> delegate;
+@property (nonatomic,strong)NSDictionary * modelDic;
 
 -(void)setCellInfo:(NSDictionary *) groupDic;
 

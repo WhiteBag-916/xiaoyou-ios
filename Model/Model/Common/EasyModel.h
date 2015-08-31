@@ -1,7 +1,7 @@
 //
-//  ReceiveAuthCodeModel.h
+//  EasyModel.h
 //
-//  Created by HuiYin  on 15/8/4
+//  Created by   on 15/8/31
 //  Copyright (c) 2015 __MyCompanyName__. All rights reserved.
 //
 
@@ -9,8 +9,9 @@
 #import "YModel.h"
 
 
-@interface ReceiveAuthCodeModel : YModel <NSCoding, NSCopying>
+@interface EasyModel : YModel <NSCoding, NSCopying>
 
+@property (nonatomic, strong) NSString *noticeUrl;
 @property (nonatomic, strong) NSString *time;
 
 + (instancetype)modelObjectWithDictionary:(NSDictionary *)dict;

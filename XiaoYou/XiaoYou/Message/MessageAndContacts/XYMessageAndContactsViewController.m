@@ -28,11 +28,6 @@
 @property (strong, nonatomic) MessageTableView *messageTableView;
 @property (strong, nonatomic) ContactsTableView *contactsTableView;
 @property (strong, nonatomic) CommonSwitchView *commonSwitchView;
-
-@property (nonatomic,strong) NSMutableArray *messageDataSource;
-@property (nonatomic,strong) NSMutableArray *contactsDataSource;
-@property (nonatomic,strong) NSMutableArray *contactsHeadDataSouce;
-
 @property (nonatomic,strong) EMMessage * systemMessage;
 
 @end
@@ -49,12 +44,6 @@
     
     WS(weakSelf)
     
-    //聊天列表请求
-    [[MessageManager sharedInstance] getMessageListData:^(YActionMessage *message) {
-        YLogD(@"%@",message);
-//        weakSelf.messageDataSource = [NSMutableArray arrayWithArray:message.object];
-//        [weakSelf.messageTableView refreshTableView:self.messageDataSource];
-    }];
     //联系人列表请求
     [[ContactManager sharedInstance] getContactsListData:^(YActionMessage *message) {
         YLogD(@"%@",message);
@@ -130,8 +119,7 @@
 //刷新数据源
 -(void)refreshDataSource
 {
-    _messageDataSource = [self loadDataSource];
-    [_messageTableView refreshTableView:_messageDataSource AndHeaderModel:_systemMessage];
+    [_messageTableView refreshTableView:[self loadDataSource] AndHeaderModel:_systemMessage];
     [_contactsTableView refreshTableView:[[ContactManager sharedInstance] getContactsListData]];
     [self hideHud];
 }

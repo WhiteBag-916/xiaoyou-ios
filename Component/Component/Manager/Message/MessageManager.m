@@ -21,6 +21,7 @@
 #import "ProvisionManager.h"
 #import "YModel+ActionMessage.h"
 #import "ContactManager.h"
+#import "EMTextMessageBody.h"
 
 #define kMessageManagerSyncQueue @"kMessageManagerSyncQueue"
 //两次提示的默认间隔
@@ -115,13 +116,11 @@ DEF_SINGLETON(MessageManager);
     [[EaseMob sharedInstance].chatManager asyncLoginWithUsername:[NSString stringWithFormat:@"%@_%@",[YShareData defaultData][kShareData_SchoolCode],[YShareData defaultData][kShareData_StudentNo]] password:[NSString stringWithFormat:@"%@_%@",[YShareData defaultData][kShareData_SchoolCode],[YShareData defaultData][kShareData_StudentNo]] completion:^(NSDictionary *loginInfo, EMError *error) {
         if (!error && loginInfo) {
             YLogD(@"登陆成功");
-            
-            [[EaseMob sharedInstance].chatManager loadAllConversationsFromDatabaseWithAppend2Chat:YES];
-            
+        
             //取群组id，进行管理
             [self initGroupIdArray];
             
-            [[NSNotificationCenter defaultCenter] postNotificationName:kNotification_Refresh_Message object:nil userInfo:@{kNotification_Request_Message:loginInfo}];
+            [self updateMessage];
         } else if (nil != error) {
             [[NSNotificationCenter defaultCenter] postNotificationName:kNotification_Refresh_Message object:nil userInfo:@{kNotification_Request_Error:error}];
         }
@@ -145,6 +144,7 @@ DEF_SINGLETON(MessageManager);
 }
 -(void)didReceiveCmdMessage:(EMMessage *)cmdMessage
 {
+
     //解析
     NSDictionary *ext = cmdMessage.ext;    
     if ([ext[@"server_flag"] boolValue])
@@ -175,11 +175,50 @@ DEF_SINGLETON(MessageManager);
     [[EaseMob sharedInstance].chatManager removeConversationByChatter:chatter deleteMessages:YES append2Chat:YES];
 }
 
--(void)didReceiveMessage:(EMMessage *)message
-{
-    //解析
+//更新会话
+- (void)updateMessage {
+    [[EaseMob sharedInstance].chatManager loadAllConversationsFromDatabaseWithAppend2Chat:YES];
+    [[NSNotificationCenter defaultCenter] postNotificationName:kNotification_Refresh_Message object:nil userInfo:nil];
+}
+
+//会话列表信息更新时的回调
+- (void)didUpdateConversationList:(NSArray *)conversationList {
+    //过滤信息，避免产生服务器数据
+    NSString *schoolCode = [YShareData defaultData][kShareData_SchoolCode];
+    if (schoolCode.length > 0) {
+        NSString *schoolId = [NSString stringWithFormat:@"school_%@_1", schoolCode];
+        [conversationList enumerateObjectsUsingBlock:^(EMConversation *obj, NSUInteger idx, BOOL *stop) {
+            if ([obj.chatter isEqualToString:schoolId])
+            {
+                //数据未转义，取出来数据重新转义
+                NSArray *messageArray = [obj loadAllMessages];
+                if (messageArray.count > 0) {
+                    [self resetErrorMessageArray:messageArray];
+                }
+                *stop = YES;
+            }
+        }];
+    }
+}
+
+- (void)resetErrorMessageArray:(NSArray *)messageArray {
+    //子线程处理数据
+    [YQueue dispatchInSyncQueueWithQueueType:kMessageManagerSyncQueue block:^{
+        [messageArray enumerateObjectsUsingBlock:^(EMMessage *obj, NSUInteger idx, BOOL *stop) {
+            [self resetMessage:obj];
+        }];
+        
+        //主线程处理界面
+        [YQueue dispatchInMainQueueWithBlock:^{
+            [self updateMessage];
+        }];
+    }];
+}
+
+- (BOOL)resetMessage:(EMMessage *)message {
     NSDictionary *ext = message.ext;
     BOOL needReload = NO;
+    BOOL needRefresh = NO;
     
     if ([ext[@"server_flag"] boolValue])
     {
@@ -193,6 +232,7 @@ DEF_SINGLETON(MessageManager);
                 message.conversationChatter = KSYSTEM_MESSAGEID;
                 message.from = KSYSTEM_MESSAGEID;
                 
+                needRefresh = YES;
                 needReload = YES;
                 
                 break;
@@ -205,6 +245,7 @@ DEF_SINGLETON(MessageManager);
                 message.from = KFRIEND_APPLYID;
                 
                 needReload = YES;
+                needRefresh = YES;
                 break;
             }
             case GROUP_APPLY: {
@@ -228,6 +269,7 @@ DEF_SINGLETON(MessageManager);
                 message.from = chatter;
                 
                 needReload = YES;
+                needRefresh = YES;
                 break;
             }
             case ADD_COMMENT:
@@ -246,13 +288,28 @@ DEF_SINGLETON(MessageManager);
             }
         }
     } else {
-        needReload = YES;
+        needRefresh = YES;
         
         if (eMessageTypeGroupChat == message.messageType) {
             //群聊
             //更新头像
             [[ContactManager sharedInstance] updateContactsHeadImageByThirdCode:message.groupSenderName headImage:message.ext[@"headImage"]];
         } else if (eMessageTypeChat == message.messageType) {
+            
+            EMTextMessageBody * body = message.messageBodies.lastObject;
+            if (message.messageType == eMessageBodyType_Text)
+            {
+                if ([body.text isEqualToString:@"我通过你的好友请求啦，聊聊呗"])
+                {
+                    [[ContactManager sharedInstance] getContactsListData:^(YActionMessage *message) {
+                        if (message.isSuccess)
+                        {
+                            [[NSNotificationCenter defaultCenter] postNotificationName:kNotification_Refresh_Message object:nil];
+                        }
+                    }];
+                }
+            }
+            
             //更新头像
             [[ContactManager sharedInstance] updateContactsHeadImageByThirdCode:message.from headImage:message.ext[@"headImage"]];
         }
@@ -265,19 +322,29 @@ DEF_SINGLETON(MessageManager);
         //插入conversation
         [[EaseMob sharedInstance].chatManager conversationForChatter:KSYSTEM_MESSAGEID
                                                     conversationType:eConversationTypeChat];
-        
+    }
+    
+    return needRefresh;
+}
+
+-(void)didReceiveMessage:(EMMessage *)message
+{
+    YLogD(@"%@", message.ext);
+    //解析
+    
+    BOOL needRefresh = [self resetMessage:message];
+    
+    if (needRefresh) {
         [message updateMessageExtToDB];
         
-        [[EaseMob sharedInstance].chatManager loadAllConversationsFromDatabaseWithAppend2Chat:YES];
-        
-        [[NSNotificationCenter defaultCenter] postNotificationName:kNotification_Refresh_Message object:nil userInfo:nil];
+        [self updateMessage];
         
         [self setupUnreadMessageCount];
     }
     
 #if !TARGET_IPHONE_SIMULATOR
     //判断是否发送本地推送
-    if (!ext[@"em_ignore_notification"]) {
+    if (!message.ext[@"em_ignore_notification"]) {
         BOOL isAppActivity = [[UIApplication sharedApplication] applicationState] == UIApplicationStateActive;
         if (!isAppActivity) {
             [self showNotificationWithMessage:message];

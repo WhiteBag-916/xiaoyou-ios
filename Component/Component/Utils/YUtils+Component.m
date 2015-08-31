@@ -107,7 +107,9 @@
 
 + (NSString*)dictionaryToJson:(NSDictionary *)dic
 {
-    
+    if (nil == dic) {
+        return @"";
+    }
     NSError *parseError = nil;
     
     NSData *jsonData = [NSJSONSerialization dataWithJSONObject:dic options:NSJSONWritingPrettyPrinted error:&parseError];

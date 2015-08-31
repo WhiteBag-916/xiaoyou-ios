@@ -419,15 +419,15 @@
 - (void)changePwd {
     UILabel *label = _bottomView.subviews[0];
     if (label.enabled) {
-        [self.navigationController pushViewController:[[ProfileChangePwdViewController alloc] init] animated:true];
+        [self.navigationController pushViewController:[[ProfileChangePwdViewController alloc] initWithType:ProfileChangePwdTypeMod needLogin:NO] animated:true];
     } else {
         [self.navigationController pushViewController:[[ProfilePhoneChangeViewController alloc] initWithType:ProfilePhoneChangeTypeMod hasPhone:false] animated:true];
     }
 }
 - (void)logOut {
-    YCommonAlertView *alert = [[YCommonAlertView alloc] initWithTitle:@"提示" message:@"是否退出" buttonTitles:@"确认",@"取消", nil];
+    YCommonAlertView *alert = [[YCommonAlertView alloc] initWithTitle:@"提示" message:@"是否退出" buttonTitles:@"取消",@"确认", nil];
     [alert clickedButtonHandler:^(NSInteger index) {
-        if (index == 0) {
+        if (index == 1) {
             [alert hide];
             [[ProvisionManager sharedInstance] logout];
         } else {

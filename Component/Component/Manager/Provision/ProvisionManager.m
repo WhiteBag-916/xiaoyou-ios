@@ -31,6 +31,7 @@
 #import "YUtils+Component.h"
 #import "ReceiveMobileAuthCodeAction.h"
 #import "RegAction.h"
+#import "RegNoticeAction.h"
 
 #define kProvisionManagerSyncQueue @"kProvisionManagerSyncQueue"
 
@@ -197,6 +198,17 @@ DEF_SINGLETON(ProvisionManager);
     [self updateLoginInfo];
 }
 
+- (void)loginSuccess:(YActionMessage*)message {
+    //存文件
+    self.loginResp = message.object;
+    [self saveLoginInfo];
+    //存token
+    [[NSUserDefaults standardUserDefaults] setObject:_loginResp.token forKey:kShareData_Token];
+    
+    //抛登录成功
+    [[YManagerCenter defaultCenter] notifyAppLogined:nil];
+}
+
 //注册
 - (void)reg:(NSString *)account password:(NSString *)password mobilePhone:(NSString *)mobilePhone block:(ActionCompleteBlock)block {
     RegAction* action = [[RegAction alloc] init];
@@ -211,15 +223,9 @@ DEF_SINGLETON(ProvisionManager);
         [YQueue dispatchInSyncQueueWithQueueType:kProvisionManagerSyncQueue block:^{
             if (message.isSuccess)
             {
-                //存文件
-                self.loginResp = message.object;
-                [self saveLoginInfo];
-                //存token
-                [[NSUserDefaults standardUserDefaults] setObject:_loginResp.token forKey:kShareData_Token];
                 [self savePassword:action.password];
                 
-                //抛登录成功
-                [[YManagerCenter defaultCenter] notifyAppLogined:nil];
+                [self loginSuccess:message];
             }
             
             //主线程处理界面
@@ -243,15 +249,9 @@ DEF_SINGLETON(ProvisionManager);
         [YQueue dispatchInSyncQueueWithQueueType:kProvisionManagerSyncQueue block:^{
             if (message.isSuccess)
             {
-                //存文件
-                self.loginResp = message.object;
-                [self saveLoginInfo];
-                //存token
-                [[NSUserDefaults standardUserDefaults] setObject:_loginResp.token forKey:kShareData_Token];
                 [self savePassword:action.password];
                 
-                //抛登录成功
-                [[YManagerCenter defaultCenter] notifyAppLogined:nil];
+                [self loginSuccess:message];
             }
             
             //主线程处理界面
@@ -461,6 +461,27 @@ DEF_SINGLETON(ProvisionManager);
     
     //抛登出
     [[YManagerCenter defaultCenter] notifyAppLogouted:@{@"logoutBySelf":@YES}];
+}
+
+//注册须知
+- (void)regNotice:(ActionCompleteBlock)block {
+    RegNoticeAction* action = [[RegNoticeAction alloc] init];
+    
+    [YAction startAction:action completionBlock:^(YActionMessage* message) {
+        block(message);
+    }];
+}
+
+//重置密码
+- (void)resetPwd:(NSString *)authCode password:(NSString *)password block:(ActionCompleteBlock)block {
+    CommonAction* action = [[CommonAction alloc] init];
+    action.parameter = [YUtils getParameter:@{@"authCode" : authCode, @"studentNo":[YShareData defaultData][kShareData_StudentNo], @"schoolCode":[YShareData defaultData][kShareData_SchoolCode], @"password":password}];
+    action.url = [YUtils getUrl:api_login_resetPwd];
+    
+    [YAction startAction:action completionBlock:^(YActionMessage* message) {
+        //主线程处理界面
+        block(message);
+    }];
 }
 
 @end

@@ -53,12 +53,16 @@
 #define api_login_UpdateSelfIntro @"/user/v2/updateSelfIntro"
 //退出登录
 #define api_user_logOut  @"/user/logout"
+//注册须知
+#define api_user_notice  @"/user/v2/notice"
 //绑定手机号
 #define api_login_ReceiveMobileAuthCode  @"/user/v2/verifyAuthCode"
 //修改密码
 #define api_login_ModifyPassword  @"/user/v2/modifyPassword"
 //获取验证码
 #define api_login_ReceiveAuthCode  @"/user/v2/receiveAuthCode"
+//重置密码
+#define api_login_resetPwd  @"/user/v2/resetPwd"
 
 /**********************************************************
  Url Define: FeedManager

@@ -147,9 +147,9 @@ NSString *const kProfilePersonListTableViewCell = @"kProfilePersonListTableViewC
         if (message.isSuccess) {
             _myAuthor.friendStatus = @"2";
             [self updateStatus:_myAuthor.friendStatus];
-        } else {
-            [YUtils showTitle:message.desc];
         }
+        
+        [YUtils showTitle:message.desc];
     }];
 }
 

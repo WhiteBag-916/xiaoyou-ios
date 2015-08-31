@@ -11,10 +11,10 @@
 #import "YUtils+Component.h"
 @implementation YCommonReport
 + (void)report {
-    YCommonAlertView *alert = [[YCommonAlertView alloc] initWithTitle:nil message:@"是否确认举报？" buttonTitles:@"确认",@"取消", nil];
+    YCommonAlertView *alert = [[YCommonAlertView alloc] initWithTitle:nil message:@"是否确认举报？" buttonTitles:@"取消", @"确认",nil];
     [alert clickedButtonHandler:^(NSInteger index) {
         [alert hide];
-        if (index == 0) {
+        if (index == 1) {
             if ([YUtils IsEnableConnection]) {
                 [YUtils showTitle:@"举报成功"];
             } else {
