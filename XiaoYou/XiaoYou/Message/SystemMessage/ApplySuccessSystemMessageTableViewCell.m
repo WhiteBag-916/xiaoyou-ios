@@ -124,7 +124,7 @@ NSString *const kApplySuccessSystemMessageTableViewCell = @"ApplySuccessSystemMe
     if ([message.ext[@"group_icon"] isEqualToString:@""])
     {
         _headImageView.backgroundColor = KCOLORGREEN_009688;
-        _defaultLabel.text = message.ext[@"group_name"];
+        _defaultLabel.text = [message.ext[@"group_name" ] substringWithRange:NSMakeRange(0, 1)];
     }
     else
     {

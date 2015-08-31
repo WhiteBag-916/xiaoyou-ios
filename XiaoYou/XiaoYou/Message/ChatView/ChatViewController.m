@@ -96,6 +96,8 @@
     EMConversationType type = isGroup ? eConversationTypeGroupChat : eConversationTypeChat;
     self = [self initWithChatter:chatter conversationType:type];
     if (self) {
+        
+        
     }
     
     return self;
@@ -223,6 +225,18 @@
     if (_conversationType == eConversationTypeChatRoom)
     {
         [self joinChatroom:_chatter];
+    }
+    
+    //判断是否为好友,输入框置灰
+    if (![self isChatGroup])
+    {
+        if ([[ContactManager sharedInstance] isFriendRelationShip:_studentDic[@"uid"]])
+        {
+            UIView * blackView = [[UIView alloc] initWithFrame:_chatToolBar.bounds];
+            blackView.backgroundColor = [UIColor blackColor];
+            blackView.alpha = 0.5;
+            [_chatToolBar addSubview:blackView];
+        }
     }
 }
 
