@@ -89,10 +89,14 @@ NSString *const kXYGroupInfoDetailViewController = @"XYGroupInfoDetailViewContro
 
 -(void)clickBottomButton
 {
-    ChatViewController * chatVC = [[ChatViewController alloc] initWithChatter:_studentDic[@"thirdCode"] isGroup:YES];
-    chatVC.isSystemMessage = NO;
-    chatVC.studentDic = [_studentDic mutableCopy];
-    [self.navigationController pushViewController:chatVC animated:YES needHiddenBottomBar:YES];
+    if ([self.navigationController.viewControllers[self.navigationController.viewControllers.count-2] isKindOfClass:[ChatViewController class]]) {
+        [self.navigationController popViewControllerAnimated:YES];
+    } else {
+        ChatViewController * chatVC = [[ChatViewController alloc] initWithChatter:_studentDic[@"thirdCode"] isGroup:YES];
+        chatVC.isSystemMessage = NO;
+        chatVC.studentDic = [_studentDic mutableCopy];
+        [self.navigationController pushViewController:chatVC animated:YES needHiddenBottomBar:YES];
+    }
 }
 
 -(void)showShareActionSheet

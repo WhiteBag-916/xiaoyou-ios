@@ -147,6 +147,7 @@ NSString *const kMessageTableViewCell = @"MessageTableViewCellId";
     _defaultLabel.hidden = YES;
     _headImageView.layer.cornerRadius = kHeadCornerRadius;
     _headImageView.backgroundColor = [UIColor clearColor];
+    _headImageView.image = nil;
     NSDictionary *ext = _conversation.latestMessageFromOthers.ext;
     if ([ext[@"server_flag"] boolValue]) {
         //非聊天消息
@@ -193,23 +194,34 @@ NSString *const kMessageTableViewCell = @"MessageTableViewCellId";
         }
         
         //头像
-        NSString *url = userInfoDic[@"icon"];
-        
-        if ([self isClass])
-        {
-            _headImageView.backgroundColor = KCOLORGREEN_009688;
-            _defaultLabel.text = @"班";
-            _defaultLabel.hidden = NO;
-        }
-        else
-        {
+        if (eMessageTypeChat == _conversation.latestMessage.messageType) {
+            NSString *url = userInfoDic[@"icon"];
             if (url.length > 0) {
                 [_headImageView setFaceImageWithUrl:userInfoDic[@"icon"]];
             } else {
                 [_headImageView setFaceImageWithUrl:ext[@"headImage"]];
             }
+        } else if (eMessageTypeGroupChat == _conversation.latestMessage.messageType) {
+            if ([self isClass])
+            {
+                _headImageView.backgroundColor = KCOLORGREEN_009688;
+                _defaultLabel.text = @"班";
+                _defaultLabel.hidden = NO;
+            }
+            else
+            {
+                if ([ext[@"group_icon"] isEqualToString:@""])
+                {
+                    _headImageView.backgroundColor = KCOLORGREEN_009688;
+                    _defaultLabel.text = [ext[@"group_name"] substringWithRange:NSMakeRange(0, 1)];
+                    _defaultLabel.hidden = NO;
+                }
+                else
+                {
+                    [_headImageView setNormalImageWithUrl:ext[@"group_icon"]];
+                }
+            }
         }
-        
     }
     
     //未读数

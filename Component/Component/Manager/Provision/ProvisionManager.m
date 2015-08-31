@@ -170,21 +170,23 @@ DEF_SINGLETON(ProvisionManager);
 }
 
 //删除个人信息里的群tag
-- (void)delQueryCodesByGroupCode:(NSString *)groupCode {
-    __block BOOL fix = NO;
+- (NSString *)delQueryCodesByGroupCode:(NSString *)groupCode {
+    __block NSString *groupName;
     NSMutableArray *queryCodesArray = [_profileInfo.queryCodes mutableCopy];
     [queryCodesArray enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
         if ([[obj internalBaseClassIdentifier] isEqualToString:groupCode]) {
             [queryCodesArray removeObjectAtIndex:idx];
-            fix = YES;
+            groupName = [obj name];
             *stop = YES;
         }
     }];
     
-    if (fix) {
+    if (groupName.length > 0) {
         _profileInfo.queryCodes = [NSArray arrayWithArray:queryCodesArray];
         [self saveProfileInfo];
     }
+    
+    return groupName;
 }
 
 //获取个人标签
