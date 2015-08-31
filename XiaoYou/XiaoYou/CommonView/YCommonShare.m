@@ -77,16 +77,19 @@
                         [UMSocialData defaultData].extConfig.wechatSessionData.shareText = obj[@"content"];
                     }
                     urlResource = [[UMSocialUrlResource alloc] initWithSnsResourceType:UMSocialUrlResourceTypeImage url:[NSString stringWithFormat:@"%@%@", api_icon_base_url, obj[@"pic"]]];
+                    [UMSocialData defaultData].extConfig.wechatSessionData.url = [NSString stringWithFormat:@"http://share.xiaoyou.com/feed/detailInfo?id=%@", obj[@"feedId"]];
                     break;
                 case YCommonShareDetailTypePerson:
                     [UMSocialData defaultData].extConfig.wechatSessionData.title = @"分享校友名片给你！";
                     [UMSocialData defaultData].extConfig.wechatSessionData.shareText = [NSString stringWithFormat:@"校友人脉：%@-%@", obj[@"school"], obj[@"name"]];
                     urlResource = [[UMSocialUrlResource alloc] initWithSnsResourceType:UMSocialUrlResourceTypeImage url:[NSString stringWithFormat:@"%@%@", api_icon_base_url, obj[@"pic"]]];
+                    [UMSocialData defaultData].extConfig.wechatSessionData.url = [NSString stringWithFormat:@"http://share.xiaoyou.com/person/detailInfo?id=%@", obj[@"userId"]];
                     break;
                 case YCommonShareDetailTypeAssociation:
                     [UMSocialData defaultData].extConfig.wechatSessionData.title = [NSString stringWithFormat:@"一键申请加入%@", obj[@"name"]];
                     [UMSocialData defaultData].extConfig.wechatSessionData.shareText = obj[@"content"];
                     urlResource = [[UMSocialUrlResource alloc] initWithSnsResourceType:UMSocialUrlResourceTypeImage url:[NSString stringWithFormat:@"%@%@", api_icon_base_url, obj[@"pic"]]];
+                    [UMSocialData defaultData].extConfig.wechatSessionData.url = [NSString stringWithFormat:@"http://share.xiaoyou.com/group/detailInfo?id=%@", obj[@"groupId"]];
                     break;
                 default:
                     break;
@@ -102,14 +105,17 @@
                 case YCommonShareDetailTypeFeed:
                     [UMSocialData defaultData].extConfig.wechatTimelineData.title = [NSString stringWithFormat:@"关于%@，Ta说", obj[@"tag"]];
                     urlResource = [[UMSocialUrlResource alloc] initWithSnsResourceType:UMSocialUrlResourceTypeImage url:[NSString stringWithFormat:@"%@%@", api_icon_base_url, obj[@"pic"]]];
+                    [UMSocialData defaultData].extConfig.wechatTimelineData.url = [NSString stringWithFormat:@"http://share.xiaoyou.com/feed/detailInfo?id=%@", obj[@"feedId"]];
                     break;
                 case YCommonShareDetailTypePerson:
                     [UMSocialData defaultData].extConfig.wechatTimelineData.shareText = [NSString stringWithFormat:@"校友人脉：%@-%@", obj[@"school"], obj[@"name"]];
                     urlResource = [[UMSocialUrlResource alloc] initWithSnsResourceType:UMSocialUrlResourceTypeImage url:[NSString stringWithFormat:@"%@%@", api_icon_base_url, obj[@"pic"]]];
+                    [UMSocialData defaultData].extConfig.wechatTimelineData.url = [NSString stringWithFormat:@"http://share.xiaoyou.com/person/detailInfo?id=%@", obj[@"userId"]];
                     break;
                 case YCommonShareDetailTypeAssociation:
                     [UMSocialData defaultData].extConfig.wechatTimelineData.shareText = [NSString stringWithFormat:@"一键申请加入%@", obj[@"name"]];
                     urlResource = [[UMSocialUrlResource alloc] initWithSnsResourceType:UMSocialUrlResourceTypeImage url:[NSString stringWithFormat:@"%@%@", api_icon_base_url, obj[@"pic"]]];
+                    [UMSocialData defaultData].extConfig.wechatTimelineData.url = [NSString stringWithFormat:@"http://share.xiaoyou.com/group/detailInfo?id=%@", obj[@"groupId"]];
                     break;
                 default:
                     break;
