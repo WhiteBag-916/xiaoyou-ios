@@ -17,14 +17,16 @@
 
 @property(nonatomic,strong)GroupApplyTableView * groupApplyTableView;
 @property (nonatomic, strong) NSString *groupId;
+@property (nonatomic, strong) NSString *chatter;
 
 @end
 
 @implementation XYGroupApplyViewController
 
-- (instancetype)initWithGroupId:(NSString *)groupId {
+- (instancetype)initWithGroupId:(NSString *)groupId chatter:(NSString *)chatter {
     if (self = [super init]) {
         _groupId = groupId;
+        _chatter = chatter;
     }
     
     return self;
@@ -53,6 +55,14 @@
     
     [_groupApplyTableView loadData];
     
+}
+
+- (void)onNavigationLeftButtonClicked {
+    if (0 == [_groupApplyTableView getData].count) {
+        [[EaseMob sharedInstance].chatManager removeConversationByChatter:_chatter deleteMessages:YES append2Chat:NO];
+    }
+    
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void)onNavigationRightButtonClicked

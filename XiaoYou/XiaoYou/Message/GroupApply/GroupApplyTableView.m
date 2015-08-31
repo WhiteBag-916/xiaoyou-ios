@@ -10,7 +10,6 @@
 #import "GroupApplyTableViewCell.h"
 #import "ContactManager.h"
 
-NSString *const KFRIEND_APPLYID = @"100002";//好友申请
 @interface GroupApplyTableView ()<UITableViewDataSource,UITableViewDelegate>
 
 @property (nonatomic, strong) NSString *groupId;
@@ -64,14 +63,6 @@ NSString *const KFRIEND_APPLYID = @"100002";//好友申请
     [[ContactManager sharedInstance] applyListApply:_groupId block:^(YActionMessage *message) {
         if (message.isSuccess) {
             _groupApplyArray = [NSMutableArray arrayWithArray:message.object];
-            if (!(_groupApplyArray.count > 0)) {
-                NSArray *conversations = [[EaseMob sharedInstance].chatManager conversations];
-                [conversations enumerateObjectsUsingBlock:^(EMConversation * obj, NSUInteger idx, BOOL *stop) {
-                    if ([obj.chatter isEqualToString:KFRIEND_APPLYID]) {
-                        [[EaseMob sharedInstance].chatManager removeConversationByChatter:obj.chatter deleteMessages:YES append2Chat:NO];
-                    }
-                }];
-            }
             [self reloadData];
         } else {
             [YUtils showTitleOn:self title:message.desc];

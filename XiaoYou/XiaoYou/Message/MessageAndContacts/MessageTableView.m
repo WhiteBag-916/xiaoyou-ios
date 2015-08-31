@@ -333,7 +333,7 @@
             if (FRIEND_APPLY == [ext[@"type"] integerValue]) {
                 [_myController.navigationController pushViewController:[[XYFriendApplyViewController alloc] init] animated:YES needHiddenBottomBar:YES];
             } else if (GROUP_APPLY == [ext[@"type"] integerValue]) {
-                [_myController.navigationController pushViewController:[[XYGroupApplyViewController alloc] initWithGroupId:[NSString stringWithFormat:@"%d", [ext[@"group_id"] intValue]]] animated:YES needHiddenBottomBar:YES];
+                [_myController.navigationController pushViewController:[[XYGroupApplyViewController alloc] initWithGroupId:[NSString stringWithFormat:@"%d", [ext[@"group_id"] intValue]] chatter:converation.chatter] animated:YES needHiddenBottomBar:YES];
             }
             [converation markAllMessagesAsRead:YES];
         } else {
