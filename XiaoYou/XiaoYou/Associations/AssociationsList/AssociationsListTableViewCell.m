@@ -202,7 +202,7 @@ NSString *const kAssociationsListTableViewCell = @"AssociationsListTableViewCell
     _nameLabel.text = model.groupName;
     _hotImageView.hidden = !model.hot;
     if (model.keyWords.length > 0) {
-        _keywordsLabel.text = [NSString stringWithFormat:@"keywords:%@", model.keyWords];
+        _keywordsLabel.text = [NSString stringWithFormat:@"keywords：%@", model.keyWords];
     } else {
         _keywordsLabel.text = @"";
     }
