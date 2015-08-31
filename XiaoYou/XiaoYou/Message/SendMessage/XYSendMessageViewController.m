@@ -138,7 +138,7 @@
         }
     }
     
-    NSDictionary *ext = @{@"headImage":[[ProvisionManager sharedInstance] getLoginInfo].icon,@"userName":[[ProvisionManager sharedInstance] getLoginInfo].studentName,@"em_apns_ext":@{@"em_push_title":[NSString stringWithFormat:@"%@社社长发来一条消息", groupName]}};
+    NSDictionary *ext = @{@"headImage":[[ProvisionManager sharedInstance] getLoginInfo].icon,@"userName":[[ProvisionManager sharedInstance] getLoginInfo].studentName,@"em_apns_ext":@{@"em_push_title":[NSString stringWithFormat:@"%@社社长[%@]发来一条消息", groupName,[[ProvisionManager sharedInstance] getLoginInfo].studentName]}};
      
     
     if (_isRobot) {

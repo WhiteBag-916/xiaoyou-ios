@@ -124,8 +124,14 @@
             }
             NSString * uids = [uidArr componentsJoinedByString:@","];
             //走接口
+            [YUtils showHUDWithTitle];
             [[ContactManager sharedInstance] addGroupUser:_groupId addUserIds:uids block:^(YActionMessage *message) {
-               [YUtils showTitle:message.desc hideAfter:2];
+                [YUtils hiddenProgressHUD];
+                if (message.isSuccess)
+                {
+                    [self.navigationController popViewControllerAnimated:YES];
+                }
+               [YUtils showTitle:message.desc];
             }];
         }
         else
@@ -139,7 +145,7 @@
     }
     else
     {
-        [YUtils showTitle:@"没有选择任何人" hideAfter:2];
+        [YUtils showTitle:@"没有选择任何人"];
     }
     
 }
