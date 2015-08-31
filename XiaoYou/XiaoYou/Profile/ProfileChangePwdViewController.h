@@ -15,6 +15,6 @@ typedef NS_ENUM(NSUInteger, ProfileChangePwdType) {
 
 @interface ProfileChangePwdViewController : YViewController
 
-- (id)initWithType:(ProfileChangePwdType)type;
+- (id)initWithType:(ProfileChangePwdType)type needLogin:(BOOL)needLogin;
 
 @end

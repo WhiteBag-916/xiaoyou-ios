@@ -472,4 +472,16 @@ DEF_SINGLETON(ProvisionManager);
     }];
 }
 
+//重置密码
+- (void)resetPwd:(NSString *)authCode password:(NSString *)password block:(ActionCompleteBlock)block {
+    CommonAction* action = [[CommonAction alloc] init];
+    action.parameter = [YUtils getParameter:@{@"authCode" : authCode, @"studentNo":[YShareData defaultData][kShareData_StudentNo], @"schoolCode":[YShareData defaultData][kShareData_SchoolCode], @"password":password}];
+    action.url = [YUtils getUrl:api_login_resetPwd];
+    
+    [YAction startAction:action completionBlock:^(YActionMessage* message) {
+        //主线程处理界面
+        block(message);
+    }];
+}
+
 @end

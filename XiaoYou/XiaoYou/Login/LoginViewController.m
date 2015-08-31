@@ -207,7 +207,9 @@
                 [YUtils hiddenProgressHUD];
                 
                 if (message.isSuccess) {
-                    [self.navigationController pushViewController:[[ProfileChangePwdViewController alloc] initWithType:ProfileChangePwdTypeForget] animated:true];
+                    [YShareData defaultData][kShareData_StudentNo] = _accountTextField.text;
+                    
+                    [self.navigationController pushViewController:[[ProfileChangePwdViewController alloc] initWithType:ProfileChangePwdTypeForget needLogin:YES] animated:true];
                 }else if (999+kYYServerErrorBase == message.errorCode) {
                     //提示默认密码
                     [self pressInitialPassword:YES];

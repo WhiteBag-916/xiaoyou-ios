@@ -18,6 +18,8 @@
 #import "YTextField+Ext.h"
 #import "ProvisionManager.h"
 #import "LoginResp.h"
+#import "AppDelegate+RootVC.h"
+
 @interface ProfileChangePwdViewController()
 
 @property (nonatomic, strong) YTextField *currentPwdField;
@@ -25,17 +27,19 @@
 @property (nonatomic, strong) YTextField *pwdField;
 
 @property (nonatomic, strong) YTextField *pwdRepeatField;
-
+@property (nonatomic, strong) UIButton *forget;
 @property (nonatomic, assign) ProfileChangePwdType type;
+@property (nonatomic, assign) BOOL needLogin;
 @end
 
 @implementation ProfileChangePwdViewController
 
-- (id)initWithType:(ProfileChangePwdType)type {
+- (id)initWithType:(ProfileChangePwdType)type needLogin:(BOOL)needLogin {
     self = [super init];
     if (self) {
         self.hidesBottomBarWhenPushed = true;
         _type = type;
+        _needLogin = needLogin;
     }
     return self;
 }
@@ -50,6 +54,7 @@
 - (void)initViewByForget {
     _currentPwdField.placeholder = @"请输入收到的验证码";
     self.title = @"忘记密码";
+    _forget.hidden = YES;
 }
 - (void)initController {
     [self showCustomNavigationBackButton];
@@ -64,21 +69,21 @@
         make.top.equalTo(self.view).offset(SCALE_NUM(28));
     }];
     
-    UIButton *forget = [[UIButton alloc] init];
-    [self.view addSubview:forget];
-    [forget mas_makeConstraints:^(MASConstraintMaker *make) {
+    _forget = [[UIButton alloc] init];
+    [self.view addSubview:_forget];
+    [_forget mas_makeConstraints:^(MASConstraintMaker *make) {
         make.right.equalTo(self.view).offset(-SCALE_NUM(10));
         make.height.mas_equalTo(SCALE_NUM(40));
         make.top.equalTo(_currentPwdField.mas_bottom);
     }];
-    [forget setTitle:@"忘记密码" forState:UIControlStateNormal];
-    forget.titleLabel.font = CONTENT_FONT(10);
-    [forget setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-    [forget addTarget:self action:@selector(forgetPwd) forControlEvents:UIControlEventTouchUpInside];
+    [_forget setTitle:@"忘记密码" forState:UIControlStateNormal];
+    _forget.titleLabel.font = CONTENT_FONT(10);
+    [_forget setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [_forget addTarget:self action:@selector(forgetPwd) forControlEvents:UIControlEventTouchUpInside];
     
     _pwdField = [self createField:1];
     [_pwdField mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(forget.mas_bottom);
+        make.top.equalTo(_forget.mas_bottom);
     }];
     
     _pwdRepeatField = [self createField:2];
@@ -89,7 +94,7 @@
     UILabel *info = [YUtils initLabel:CONTENT_FONT(10) color:[UIColor blackColor] text:@"请设置6位以上包含大小写英文／数字的密码" frame:CGRectZero alignment:NSTextAlignmentLeft];
     [self.view addSubview:info];
     [info mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.right.equalTo(forget);
+        make.right.equalTo(_forget);
         make.top.equalTo(_pwdRepeatField.mas_bottom).offset(SCALE_NUM(12));
     }];
     
@@ -125,9 +130,11 @@
     [alert clickedButtonHandler:^(NSInteger index) {
         if (index == 1) {
             [alert hide];
+            [YUtils showHUDWithTitle];
             [[ProvisionManager sharedInstance] forgotPasswordReq:[[ProvisionManager sharedInstance] getLoginInfo].studentNo block:^(YActionMessage *message) {
+                [YUtils hiddenProgressHUD];
                 if (message.isSuccess) {
-                    [self.navigationController pushViewController:[[ProfileChangePwdViewController alloc] initWithType:ProfileChangePwdTypeForget] animated:true];
+                    [self.navigationController pushViewController:[[ProfileChangePwdViewController alloc] initWithType:ProfileChangePwdTypeForget needLogin:NO] animated:true];
                 }
                 [YUtils showTitle:message.desc];
             }];
@@ -155,6 +162,28 @@
     }
 }
 
+- (void)goLogin
+{
+    [YUtils showHUDWithTitle];
+    //login
+    [[ProvisionManager sharedInstance] goLogin:[YShareData defaultData][kShareData_StudentNo] password:_pwdField.text block:^(YActionMessage *message) {
+        [YUtils hiddenProgressHUD];
+        if (message.isSuccess) {
+            //成功
+            //是否需要完善资料
+            LoginResp *loginResp = (LoginResp *)message.object;
+            if (loginResp.firstLogin) {
+                [kAppDelegateAccessor initPerfectNC];
+            } else {
+                [kAppDelegateAccessor initTabBarNC];
+            }
+            
+        } else {
+            [YUtils showTitle:message.desc];
+        }
+    }];
+}
+
 - (void)onNavigationRightButtonClicked {
     if (ProfileChangePwdTypeMod == _type) {
         MBProgressHUD *hud = [YUtils showHUDWithTitle:@"正在修改"];
@@ -170,7 +199,19 @@
             }
         }];
     } else {
-        
+        [YUtils showHUDWithTitle];
+        [[ProvisionManager sharedInstance] resetPwd:_currentPwdField.text password:_pwdField.text block:^(YActionMessage *message) {
+            if (_needLogin) {
+                if (message.isSuccess) {
+                    //去登录
+                    [self goLogin];
+                }
+            } else {
+                [YUtils hiddenProgressHUD];
+                [self.navigationController popViewControllerAnimated:YES];
+                [YUtils showTitle:message.desc];
+            }
+        }];
     }
 }
 - (void)viewWillAppear:(BOOL)animated {
