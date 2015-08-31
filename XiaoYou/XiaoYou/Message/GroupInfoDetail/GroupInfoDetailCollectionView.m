@@ -145,10 +145,18 @@
         }
         else
         {
-            XYContactsInfoDetailViewController * contactsInfoDetailVC = [[XYContactsInfoDetailViewController alloc] init];
-            contactsInfoDetailVC.studentDic = cell.modelDic;
-            contactsInfoDetailVC.uid = [_dataSourceArr[indexPath.row][@"model"] uid];
-            [self.myController.navigationController pushViewController:contactsInfoDetailVC animated:YES needHiddenBottomBar:YES];
+            if ([[_dataSourceArr[indexPath.row][@"model"] uid] isEqualToString:[YShareData defaultData][kShareData_UserID]])
+            {
+                return;
+            }
+            else
+            {
+                XYContactsInfoDetailViewController * contactsInfoDetailVC = [[XYContactsInfoDetailViewController alloc] init];
+                contactsInfoDetailVC.studentDic = cell.modelDic;
+                contactsInfoDetailVC.uid = [_dataSourceArr[indexPath.row][@"model"] uid];
+                [self.myController.navigationController pushViewController:contactsInfoDetailVC animated:YES needHiddenBottomBar:YES];
+            }
+            
         }
         
     }
@@ -225,17 +233,17 @@
                     }
                 }];
             }
-            else
-            {
-                [YUtils showTitle:@"只有社长才有此权限" hideAfter:2];
-            }
+//            else
+//            {
+//                [YUtils showTitle:@"只有社长才有此权限" hideAfter:2];
+//            }
         }
         
     }
-    else
-    {
-        [YUtils showTitle:@"只有社长才有此权限" hideAfter:2];
-    }  
+//    else
+//    {
+//        [YUtils showTitle:@"只有社长才有此权限" hideAfter:2];
+//    }  
     
     [self reloadData];
 }

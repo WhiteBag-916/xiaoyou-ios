@@ -25,6 +25,7 @@
 #import "XYFriendApplyViewController.h"
 #import "XYGroupApplyViewController.h"
 #import "YUtils+Component.h"
+#import "EMConversation.h"
 
 #define kRowHeight                     68
 #define kHeadWidthAndHeight            40
@@ -234,7 +235,14 @@
 
 -(void)tapGestureRecognizerAction
 {
-    [_message.conversation markAllMessagesAsRead:YES];
+    NSArray *conversations = [[EaseMob sharedInstance].chatManager conversations];
+    for (EMConversation *conversation in conversations) {
+        if ([conversation.chatter isEqualToString:KSYSTEM_MESSAGEID])
+        {
+            [conversation markAllMessagesAsRead:YES];
+        }
+    }
+    
     [[MessageManager sharedInstance] setupUnreadMessageCount];
     XYSystemMessageViewController * systemMessageViewController = [[XYSystemMessageViewController alloc] init];
     [self.myController.navigationController pushViewController:systemMessageViewController animated:YES needHiddenBottomBar:YES];
@@ -299,6 +307,9 @@
 {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         EMConversation *converation = [_messageDataSource objectAtIndex:indexPath.row];
+        //删除前清空该回话未读数
+        [converation markAllMessagesAsRead:YES];
+        [[MessageManager sharedInstance] setupUnreadMessageCount];
         [[EaseMob sharedInstance].chatManager removeConversationByChatter:converation.chatter deleteMessages:YES append2Chat:YES];
         [_messageDataSource removeObjectAtIndex:indexPath.row];
         [self deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
