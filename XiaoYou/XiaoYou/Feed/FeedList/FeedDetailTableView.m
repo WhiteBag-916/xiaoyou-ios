@@ -75,7 +75,7 @@
     NSString *tag = (_feedInfo.tags.count == 0?@"校友观点":[_feedInfo.tags[0] name]);
     NSString *content = (_feedInfo.feed.content.length == 0?@"":_feedInfo.feed.content);
     NSString *img = _feedInfo.feed.img.length > 0?[_feedInfo.feed.img componentsSeparatedByString:@","][0]:@"";
-    _shareData = [NSMutableDictionary dictionaryWithObjectsAndKeys:tag,@"tag",content,@"content",img, @"pic", nil];
+    _shareData = [NSMutableDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"%d", (int)_feedInfo.feed.feedIdentifier], @"feedId", tag,@"tag",content,@"content",img, @"pic", nil];
     
     _commentListArray = [NSMutableArray arrayWithArray:info.commentListItems];
     if (_commentListArray.count < KPAGENUM) {
