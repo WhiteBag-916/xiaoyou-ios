@@ -85,9 +85,6 @@
     [[ContactManager sharedInstance] getContactsListData:^(YActionMessage *message) {
         YLogD(@"%@",message);
         if (message.isSuccess) {
-//            LinkManModel * model = message.object;
-            
-//            [[ContactManager sharedInstance] saveContactsList:model];
             
             [self refreshTableView:[[ContactManager sharedInstance] getContactsListData]];
         } else {
