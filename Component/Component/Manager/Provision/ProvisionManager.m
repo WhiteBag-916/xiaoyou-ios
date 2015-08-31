@@ -32,6 +32,7 @@
 #import "ReceiveMobileAuthCodeAction.h"
 #import "RegAction.h"
 #import "RegNoticeAction.h"
+#import "Tags.h"
 
 #define kProvisionManagerSyncQueue @"kProvisionManagerSyncQueue"
 
@@ -166,6 +167,24 @@ DEF_SINGLETON(ProvisionManager);
 //获取个人信息
 - (ProfileInfo *)getProfile {
     return _profileInfo;
+}
+
+//删除个人信息里的群tag
+- (void)delQueryCodesByGroupCode:(NSString *)groupCode {
+    __block BOOL fix = NO;
+    NSMutableArray *queryCodesArray = [_profileInfo.queryCodes mutableCopy];
+    [queryCodesArray enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+        if ([[obj internalBaseClassIdentifier] isEqualToString:groupCode]) {
+            [queryCodesArray removeObjectAtIndex:idx];
+            fix = YES;
+            *stop = YES;
+        }
+    }];
+    
+    if (fix) {
+        _profileInfo.queryCodes = [NSArray arrayWithArray:queryCodesArray];
+        [self saveProfileInfo];
+    }
 }
 
 //获取个人标签
@@ -468,6 +487,18 @@ DEF_SINGLETON(ProvisionManager);
     RegNoticeAction* action = [[RegNoticeAction alloc] init];
     
     [YAction startAction:action completionBlock:^(YActionMessage* message) {
+        block(message);
+    }];
+}
+
+//重置密码
+- (void)resetPwd:(NSString *)authCode password:(NSString *)password block:(ActionCompleteBlock)block {
+    CommonAction* action = [[CommonAction alloc] init];
+    action.parameter = [YUtils getParameter:@{@"authCode" : authCode, @"studentNo":[YShareData defaultData][kShareData_StudentNo], @"schoolCode":[YShareData defaultData][kShareData_SchoolCode], @"password":password}];
+    action.url = [YUtils getUrl:api_login_resetPwd];
+    
+    [YAction startAction:action completionBlock:^(YActionMessage* message) {
+        //主线程处理界面
         block(message);
     }];
 }

@@ -202,11 +202,17 @@ DEF_SINGLETON(MessageManager);
 }
 
 - (void)resetErrorMessageArray:(NSArray *)messageArray {
-    [messageArray enumerateObjectsUsingBlock:^(EMMessage *obj, NSUInteger idx, BOOL *stop) {
-        [self resetMessage:obj];
+    //子线程处理数据
+    [YQueue dispatchInSyncQueueWithQueueType:kMessageManagerSyncQueue block:^{
+        [messageArray enumerateObjectsUsingBlock:^(EMMessage *obj, NSUInteger idx, BOOL *stop) {
+            [self resetMessage:obj];
+        }];
+        
+        //主线程处理界面
+        [YQueue dispatchInMainQueueWithBlock:^{
+            [self updateMessage];
+        }];
     }];
-    
-    [self updateMessage];
 }
 
 - (BOOL)resetMessage:(EMMessage *)message {

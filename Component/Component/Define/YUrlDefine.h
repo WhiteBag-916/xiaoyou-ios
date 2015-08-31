@@ -61,6 +61,8 @@
 #define api_login_ModifyPassword  @"/user/v2/modifyPassword"
 //获取验证码
 #define api_login_ReceiveAuthCode  @"/user/v2/receiveAuthCode"
+//重置密码
+#define api_login_resetPwd  @"/user/v2/resetPwd"
 
 /**********************************************************
  Url Define: FeedManager

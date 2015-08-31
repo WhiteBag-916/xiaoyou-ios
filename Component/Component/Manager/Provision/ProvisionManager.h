@@ -23,6 +23,8 @@ AS_SINGLETON(ProvisionManager);
 - (void)initProfileData;
 //获取个人信息
 - (ProfileInfo *)getProfile;
+//删除个人信息里的群tag
+- (void)delQueryCodesByGroupCode:(NSString *)groupCode;
 //减少feed提醒未读数
 - (void)delUnreadAlterCount:(NSInteger)delCount;
 //增加feed提醒未读数
@@ -69,5 +71,7 @@ AS_SINGLETON(ProvisionManager);
 - (void)logout;
 //注册须知
 - (void)regNotice:(ActionCompleteBlock)block;
+//重置密码
+- (void)resetPwd:(NSString *)authCode password:(NSString *)password block:(ActionCompleteBlock)block;
 
 @end
