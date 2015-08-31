@@ -144,7 +144,6 @@ DEF_SINGLETON(MessageManager);
 }
 -(void)didReceiveCmdMessage:(EMMessage *)cmdMessage
 {
-
     //解析
     NSDictionary *ext = cmdMessage.ext;    
     if ([ext[@"server_flag"] boolValue])
@@ -159,6 +158,11 @@ DEF_SINGLETON(MessageManager);
             case UNFORBIDDEN_ME:
             {
                 [[ContactManager sharedInstance] delForbiddenMeListByID:ext[@"em_apns_ext"][@"em_push_title"]];
+                break;
+            }
+            case KICKGROUP:
+            {
+                [[ProvisionManager sharedInstance] delQueryCodesByGroupCode:ext[@"em_apns_ext"][@"em_push_title"]];
                 break;
             }
             default:

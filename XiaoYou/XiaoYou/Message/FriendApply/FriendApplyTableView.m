@@ -9,6 +9,7 @@
 #import "FriendApplyTableView.h"
 #import "FriendApplyTableViewCell.h"
 #import "ContactManager.h"
+#import "MessageManager.h"
 
 @interface FriendApplyTableView ()<UITableViewDataSource,UITableViewDelegate>
 
@@ -52,6 +53,16 @@
     [[ContactManager sharedInstance] getFriendApplyList:^(YActionMessage *message) {
         if (message.isSuccess) {
             _dataSourceArr = [NSMutableArray arrayWithArray:message.object];
+            if (!(_dataSourceArr.count > 0)) {
+                NSArray *conversations = [[EaseMob sharedInstance].chatManager conversations];
+                [conversations enumerateObjectsUsingBlock:^(EMConversation * obj, NSUInteger idx, BOOL *stop) {
+                    if ([obj.chatter isEqualToString:KFRIEND_APPLYID]) {
+                        [[EaseMob sharedInstance].chatManager removeConversationByChatter:obj.chatter deleteMessages:YES append2Chat:NO];
+                    }
+                }];
+            }
+            
+            
             [self reloadData];
         } else {
             [YUtils showTitleOn:self title:message.desc];
@@ -63,7 +74,7 @@
 
 -(void)refreshTableView:(NSArray *) dataSouceArr
 {
-    _dataSourceArr = dataSouceArr;
+    _dataSourceArr = (NSMutableArray *)dataSouceArr;
     [self reloadData];
 }
 

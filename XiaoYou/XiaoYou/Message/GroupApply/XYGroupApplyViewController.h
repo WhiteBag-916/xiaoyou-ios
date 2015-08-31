@@ -10,6 +10,6 @@
 
 @interface XYGroupApplyViewController : YViewController
 
-- (instancetype)initWithGroupId:(NSString *)groupId;
+- (instancetype)initWithGroupId:(NSString *)groupId chatter:(NSString *)chatter;
 
 @end

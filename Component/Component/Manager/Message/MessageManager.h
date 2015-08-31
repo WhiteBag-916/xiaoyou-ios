@@ -16,14 +16,15 @@ extern NSString *const KGROUP_APPLYID;
 
 typedef enum : NSUInteger {
     SYSTEM_MESSAGE = 1,
-    FRIEND_APPLY,
-    GROUP_APPLY,
-    ADD_COMMENT,
-    ADD_PRAOSE,
-    REPLY_COMMENT,
-    REPLY_PRAOSE,
-    FORBIDDEN_ME,
-    UNFORBIDDEN_ME,
+    FRIEND_APPLY=2,
+    GROUP_APPLY=3,
+    ADD_COMMENT=4,
+    ADD_PRAOSE=5,
+    REPLY_COMMENT=6,
+    REPLY_PRAOSE=7,
+    FORBIDDEN_ME=8,
+    UNFORBIDDEN_ME=9,
+    KICKGROUP=10,
 } PUSH_Message_TYPE;
 
 @interface MessageManager : YManager<YManager>

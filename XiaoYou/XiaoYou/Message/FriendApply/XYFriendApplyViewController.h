@@ -7,6 +7,7 @@
 //
 
 #import "YViewController.h"
+#import "MessageManager.h"
 
 @interface XYFriendApplyViewController : YViewController
 
