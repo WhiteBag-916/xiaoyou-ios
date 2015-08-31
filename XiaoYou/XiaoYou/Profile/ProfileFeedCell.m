@@ -107,7 +107,7 @@ NSString *const KProfileFeedCell = @"KProfileFeedCell";
     line.transform = CGAffineTransformMakeRotation(-M_PI/8);
 }
 - (void)setData:(FeedInfo *)info {
-    NSDate *date = [NSDate dateWithTimeIntervalSince1970:(long)info.feed.createTime/1000];
+    NSDate *date = [NSDate dateWithTimeIntervalSince1970:info.feed.createTime/1000];
     _yearLabel.text = [NSString stringWithFormat:@"%d", (int)date.getYear];
     _monthLabel.text = [NSString stringWithFormat:@"%d", (int)date.getMonth];
     _dayLabel.text = [NSString stringWithFormat:@"%d", (int)date.getDay];
