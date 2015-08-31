@@ -305,7 +305,7 @@ NSString *const kGroupApplyTableViewCell = @"GroupApplyTableViewCellId";
         }
         case SEND_BUTTON:
         {
-            [self toChat];
+            [self goToCollectiveMessage];
             break;
         }
             
@@ -321,6 +321,11 @@ NSString *const kGroupApplyTableViewCell = @"GroupApplyTableViewCellId";
     chatVC.studentDic = [@{@"name":_applicantList.author.name, @"icon":_applicantList.author.headPic, @"uid":_applicantList.author.uid} mutableCopy];
     [self.superVC.navigationController pushViewController:chatVC animated:YES needHiddenBottomBar:YES];
     
+}
+
+- (void)goToCollectiveMessage
+{
+    NSLog(@"集体发信");
 }
 
 - (void)setIsRelated:(BOOL)isRelated {

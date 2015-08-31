@@ -13,7 +13,7 @@
 @interface XYSendMessageViewController : YViewController
 
 @property (strong, nonatomic) DXMessageToolBar *chatToolBar;
-
+@property (nonatomic,strong)NSString * groupId;
 @property (nonatomic,strong)NSMutableArray * sendPersonsArr;
 
 @end

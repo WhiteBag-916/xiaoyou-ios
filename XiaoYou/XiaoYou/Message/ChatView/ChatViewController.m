@@ -1837,6 +1837,11 @@
 
 -(void)sendTextMessage:(NSString *)textMessage
 {
+    LinkManModel * linkManList = [[ContactManager sharedInstance] getContactsListData];
+    for (int i = 0; i<linkManList.linkManList.count; i++)
+    {
+        
+    }
     NSDictionary *ext;
     
     if (_isRobot) {

@@ -132,6 +132,7 @@
         {
             XYSendMessageViewController * sendMessageViewController = [[XYSendMessageViewController alloc] init];
             sendMessageViewController.sendPersonsArr = sendPersonsArr;
+            sendMessageViewController.groupId = _groupId;
             [self.navigationController pushViewController:sendMessageViewController animated:YES];
         }
         
