@@ -61,7 +61,7 @@ NSString *const kMessageTableViewCell = @"MessageTableViewCellId";
         self.contentView.backgroundColor = [UIColor clearColor];
         //头像
         _headImageView = [[UIImageView alloc] init];
-        _headImageView.backgroundColor = [UIColor clearColor];
+        _headImageView.backgroundColor = KCOLORGREEN_009688;
         _headImageView.layer.cornerRadius = kHeadCornerRadius;
         _headImageView.clipsToBounds = YES;
         [self.contentView addSubview:_headImageView];
@@ -143,9 +143,10 @@ NSString *const kMessageTableViewCell = @"MessageTableViewCellId";
 
 -(void)setCellInfo:(id) dic
 {
-
     _conversation = dic;
     _defaultLabel.hidden = YES;
+    _headImageView.layer.cornerRadius = kHeadCornerRadius;
+    _headImageView.backgroundColor = [UIColor clearColor];
     NSDictionary *ext = _conversation.latestMessageFromOthers.ext;
     if ([ext[@"server_flag"] boolValue]) {
         //非聊天消息
@@ -154,8 +155,6 @@ NSString *const kMessageTableViewCell = @"MessageTableViewCellId";
             _messageLabel.text = [self subTitleMessageByConversation:_conversation];
             _headImageView.image = [UIImage imageNamed:@"friend-requests"];
             _headImageView.layer.cornerRadius = 0;
-            _headImageView.clipsToBounds = NO;
-            _headImageView.backgroundColor = [UIColor clearColor];
         } else if (GROUP_APPLY == [ext[@"type"] integerValue]) {
             _nameLabel.text = [NSString stringWithFormat:@"[%@]社员加入申请",ext[@"group_name"]];
             _messageLabel.text = [self subTitleMessageByConversation:_conversation];
@@ -199,7 +198,6 @@ NSString *const kMessageTableViewCell = @"MessageTableViewCellId";
         if ([self isClass])
         {
             _headImageView.backgroundColor = KCOLORGREEN_009688;
-            _headImageView.image = nil;
             _defaultLabel.text = @"班";
             _defaultLabel.hidden = NO;
         }
@@ -226,9 +224,6 @@ NSString *const kMessageTableViewCell = @"MessageTableViewCellId";
     
     //时间
     _timeLabel.text = [self lastMessageTimeByConversation:_conversation];
-    _headImageView.layer.cornerRadius = kHeadCornerRadius;
-    _headImageView.clipsToBounds = YES;
-    _headImageView.backgroundColor = [UIColor clearColor];
     
 }
 
