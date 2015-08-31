@@ -13,6 +13,7 @@
 #import "LoginResp.h"
 #import "CNTextController.h"
 #import "ProfilePhoneChangeViewController.h"
+#import "ProfileChangePwdViewController.h"
 
 @interface LoginViewController ()
 
@@ -197,19 +198,22 @@
     
     //展示提示
     YCommonAlertView *alert = [[YCommonAlertView alloc] initWithTitle:nil
-                                                              message:@"我们将发送验证码至你绑定的手机号上，请及时修改"
+                                                              message:@"我们将发送验证码至你绑定的手机号上"
                                                          buttonTitles:@"取消",@"确认", nil];
     [alert clickedButtonHandler:^(NSInteger index) {
         if (1 == index) {
             [YUtils showHUDWithTitle];
             [[ProvisionManager sharedInstance] forgotPasswordReq:_accountTextField.text block:^(YActionMessage *message) {
                 [YUtils hiddenProgressHUD];
-                if (999+kYYServerErrorBase == message.errorCode) {
+                
+                if (message.isSuccess) {
+                    [self.navigationController pushViewController:[[ProfileChangePwdViewController alloc] initWithType:ProfileChangePwdTypeForget] animated:true];
+                }else if (999+kYYServerErrorBase == message.errorCode) {
                     //提示默认密码
                     [self pressInitialPassword:YES];
-                } else {
-                    [YUtils showTitle:message.desc];
                 }
+                
+                [YUtils showTitle:message.desc];
             }];
         }
     }];
