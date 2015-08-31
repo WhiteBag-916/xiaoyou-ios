@@ -98,8 +98,10 @@
         cnt = 0;
     }
     [[FeedManager sharedInstance] groupList:cnt limitEnd:cnt + KPAGENUM name:_searchStr queryCode:_filterStr block:^(YActionMessage *message) {
-        if (_searchStr.length > 0) {
-            [self searchMessage:message];
+        if (nil != _searchStr) {
+            if ([_searchStr isEqualToString:[message.object searchKey]]) {
+                [self searchMessage:message];
+            }
         } else {
             [self dealMessage:message];
         }
