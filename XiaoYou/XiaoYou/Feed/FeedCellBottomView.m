@@ -149,7 +149,7 @@
 }
 - (void)setData:(id)inData {
     NSString *authorId;
-    if (_type == FeedListType) {
+    if (_type == FeedListType || _type == FeedOrganizationType) {
         FeedInfo *data = inData;
         NSString *tag = (data.tags.count == 0?@"校友观点":[data.tags[0] name]);
         _myInfo = data.feed;
