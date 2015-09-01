@@ -1831,9 +1831,6 @@
     [extDic setObject:[[ProvisionManager sharedInstance] getLoginInfo].icon forKey:@"headImage"];
     [extDic setObject:[[ProvisionManager sharedInstance] getLoginInfo].studentName forKey:@"userName"];
     if ([self messageType] == eMessageTypeGroupChat) {
-        [extDic setObject:_studentDic[@"icon"] forKey:@"group_icon"];
-        [extDic setObject:_studentDic[@"name"] forKey:@"group_name"];
-        
         [extDic setObject:@{@"em_push_title":[NSString stringWithFormat:@"%@给你发来一条新消息", _studentDic[@"name"]]} forKey:@"em_apns_ext"];
     } else {
         __block BOOL needIgorePush = NO;

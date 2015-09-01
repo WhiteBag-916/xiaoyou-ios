@@ -30,7 +30,6 @@
 @property (strong, nonatomic) FeedListTableView         *feedListTableView;     //feed列表
 @property (strong, nonatomic) BBBadgeBarButtonItem      *menuButton;            //菜单按钮
 @property (nonatomic, strong) ProfilePersonListTableView *profilePersonListTableView;  //人
-@property (nonatomic, assign) BOOL needRefresh;
 @end
 
 @implementation FeedListViewController

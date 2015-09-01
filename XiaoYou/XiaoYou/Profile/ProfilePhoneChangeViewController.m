@@ -122,7 +122,7 @@
     //protocolCheckButton
     _protocolCheckButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [_protocolCheckButton setImage:[UIImage imageNamed:@"register-frame-agree"] forState:UIControlStateNormal];
-    [_protocolCheckButton addTarget:self action:@selector(registerDefaults:) forControlEvents:UIControlEventTouchUpInside];
+    [_protocolCheckButton addTarget:self action:@selector(checkButton) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:_protocolCheckButton];
     [_protocolCheckButton mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.view);
@@ -233,7 +233,7 @@
     [_sendBtn setTitle:@"获取验证码" forState:UIControlStateDisabled];
     [_sendBtn setTitleColor:KCOLORGREEN_009688 forState:UIControlStateNormal];
     [_sendBtn setTitleColor:KCOLORGREEN_455A64 forState:UIControlStateDisabled];
-    _sendBtn.enabled = false;
+//    _sendBtn.enabled = false;
     _sendBtn.titleLabel.font = CONTENT_FONT(12);
     [_sendBtn addTarget:self action:@selector(getCode) forControlEvents:UIControlEventTouchUpInside];
     _waitLabel = [YUtils initLabel:CONTENT_FONT(12) color:KCOLORWHITE text:@"60s" frame:CGRectZero alignment:NSTextAlignmentCenter];
@@ -386,9 +386,20 @@
 }
 - (void)getCode {
     [self.view endEditing:true];
+    if (0 == _phoneField.text.length) {
+        YCommonAlertView *alert = [[YCommonAlertView alloc] initWithTitle:nil
+                                                                  message:@"手机号为空"
+                                                             buttonTitles:@"确认", nil];
+        [alert show];
+        return;
+    }
+    
     [self changeWait:true];
     [self startCal];
     [[ProvisionManager sharedInstance] receiveAuthCode:_phoneField.text needUserToken:(_type != ProfilePhoneChangeTypeRegister) block:^(YActionMessage *message) {
+        if (!message.isSuccess) {
+            [self changeWait:false];
+        }
         [YUtils showTitle:message.desc];
     }];
 }
@@ -396,11 +407,11 @@
     //mod by xiongchen
     //add || nil == _pwdView
     if (nil == _pwdView || _pwdView.hidden) {
-        if (_phoneField.text.length > 0) {
-            [self changeBtn:true];
-        } else {
-            [self changeBtn:false];
-        }
+//        if (_phoneField.text.length > 0) {
+//            [self changeBtn:true];
+//        } else {
+//            [self changeBtn:false];
+//        }
         if (_phoneField.text.length > 0 && _codeField.text.length > 0 && (nil == _accountTextField || _accountTextField.text.length > 0)) {
             self.navigationRightButton.enabled = true;
             _loginButton.enabled = true;

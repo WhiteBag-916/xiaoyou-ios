@@ -10,6 +10,7 @@
 #import "ProfilePublishViewController.h"
 #import "ProfileFeedListView.h"
 #import "FeedPublishViewController.h"
+#import "FeedDetailViewController.h"
 @interface ProfilePublishViewController()
 @property (nonatomic, strong) NSString *userId;
 @property (nonatomic, strong) ProfileFeedListView *tableView;
@@ -21,6 +22,7 @@
     self = [super init];
     if (self) {
         _userId = userId;
+        _needRefresh = true;
         if (userName.length == 0) {
             self.title = @"我发布的事儿";
         } else {
@@ -46,6 +48,7 @@
 - (void)initTableView {
     _tableView = [[ProfileFeedListView alloc] init];
     [self.view addSubview:_tableView];
+    _tableView.parent = self;
     [_tableView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.equalTo(self.view);
     }];
@@ -55,12 +58,21 @@
     self.navigationController.navigationBarHidden = false;
 }
 - (void)viewDidAppear:(BOOL)animated {
-    [_tableView loadData:_userId];
+    if (_needRefresh) {
+        [_tableView loadData:_userId];
+        _needRefresh = false;
+    }
 }
 - (void)onNavigationRightButtonClicked {
+    _needRefresh = true;
     UINavigationController *navigationController =
     [[UINavigationController alloc] initWithRootViewController:[[FeedPublishViewController alloc] init]];
     [self.navigationController presentViewController:navigationController animated:YES completion:nil];
     
+}
+- (void)goToDetail:(NSString *)feedId {
+    FeedDetailViewController *feedDetailViewController = [[FeedDetailViewController alloc] initWithFeedId:feedId];
+    //    self.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:feedDetailViewController animated:YES];
 }
 @end

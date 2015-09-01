@@ -20,6 +20,8 @@
 #import "FeedDetailViewController.h"
 #import "ProvisionManager.h"
 #import "YCommonReport.h"
+#import "FeedListViewController.h"
+#import "ProfilePublishViewController.h"
 
 #define KPAGENUM 10
 
@@ -214,6 +216,13 @@
                 if (message.isSuccess) {
                     [YUtils showTitle:@"删除成功"];
                     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                        UIViewController *viewController = self.parent.navigationController.viewControllers[self.parent.navigationController.viewControllers.count -2];
+                        if ([viewController isKindOfClass:[FeedListViewController class]]) {
+                            [(FeedListViewController *)viewController setNeedRefresh:true];
+                        }
+                        if ([viewController isKindOfClass:[ProfilePublishViewController class]]) {
+                            [(ProfilePublishViewController *)viewController setNeedRefresh:true];
+                        }
                         [self.parent.navigationController popViewControllerAnimated:true];
                     });
                 } else {

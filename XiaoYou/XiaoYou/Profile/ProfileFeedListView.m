@@ -9,6 +9,9 @@
 #import "ProfileFeedListView.h"
 #import "ProfileFeedCell.h"
 #import "FeedManager.h"
+#import "FeedInfo.h"
+#import "Feed.h"
+#import "ProfilePublishViewController.h"
 
 #define KPAGENUM 15
 
@@ -100,5 +103,9 @@
         [cell setData:_feedArray[indexPath.row]];
     }];
     return height;
+}
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [_parent goToDetail:[NSString stringWithFormat:@"%d", (int)[(FeedInfo *)_feedArray[indexPath.row] feed].feedIdentifier]];
 }
 @end

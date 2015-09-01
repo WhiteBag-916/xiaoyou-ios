@@ -7,7 +7,9 @@
 //
 
 #import "YTableView.h"
-
+@class ProfilePublishViewController;
 @interface ProfileFeedListView : YTableView
+
+@property (nonatomic, weak) ProfilePublishViewController *parent;
 - (void)loadData:(NSString *)userId;
 @end
