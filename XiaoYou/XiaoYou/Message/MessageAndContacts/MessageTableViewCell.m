@@ -214,7 +214,8 @@ NSString *const kMessageTableViewCell = @"MessageTableViewCellId";
                 if (url.length > 0) {
                     [_headImageView setFaceImageWithUrl:userInfoDic[@"icon"]];
                 } else {
-                    if ([ext[@"group_icon"] isEqualToString:@""])
+                    NSString *groupIcon = ext[@"group_icon"];
+                    if (nil != groupIcon)
                     {
                         _headImageView.backgroundColor = KCOLORGREEN_009688;
                         _defaultLabel.text = [ext[@"group_name"] substringWithRange:NSMakeRange(0, 1)];
