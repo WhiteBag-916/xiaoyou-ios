@@ -145,7 +145,7 @@
     [alert show];
 }
 - (void)checkComplete {
-    if (_currentPwdField.text.length > 0 && _pwdField.text.length >= 6 && [_pwdField.text isEqualToString:_pwdRepeatField.text]) {
+    if (_currentPwdField.text.length > 0 && _pwdField.text.length >= 6) {
         self.navigationRightButton.enabled = true;
     } else {
         self.navigationRightButton.enabled = false;
@@ -189,6 +189,10 @@
 }
 
 - (void)onNavigationRightButtonClicked {
+    if (![_pwdField.text isEqualToString:_pwdRepeatField.text]) {
+        [YUtils showHUDWithTitle:@"密码两遍输入不一致"];
+        return;
+    }
     if (ProfileChangePwdTypeMod == _type) {
         MBProgressHUD *hud = [YUtils showHUDWithTitle:@"正在修改"];
         [[ProvisionManager sharedInstance] ModifyPassword:_pwdField.text oldPassWord:_currentPwdField.text block:^(YActionMessage *message) {
