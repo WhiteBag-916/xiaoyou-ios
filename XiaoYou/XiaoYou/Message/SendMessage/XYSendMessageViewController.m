@@ -155,6 +155,7 @@
         EMConversation *conversation = [[EaseMob sharedInstance].chatManager conversationForChatter:tempMessage.conversationChatter conversationType:eConversationTypeChat];
         [conversation removeMessage:tempMessage];
     }
+    [YUtils showTitle:@"发送成功"];
 }
 
 - (void)didReceiveMemoryWarning {
