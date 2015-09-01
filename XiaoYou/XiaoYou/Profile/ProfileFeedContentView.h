@@ -34,9 +34,9 @@ typedef NS_ENUM(int, ProfileFeedType) {
 
 @interface ProfileFeedContentView : UIView
 
-@property (nonatomic, strong, readonly) FeedTag *tagView;
-@property (nonatomic, strong, readonly) FeedImageGroup *imgGroup;
-@property (nonatomic, strong, readonly) UILabel *contentLabel;
+@property (nonatomic, strong, readonly) FeedTag *tagView;//feed的标签
+@property (nonatomic, strong, readonly) FeedImageGroup *imgGroup;//feed的图片
+@property (nonatomic, strong, readonly) UILabel *contentLabel;//feed的内容
 
 
 - (id)initWithType:(int)type;

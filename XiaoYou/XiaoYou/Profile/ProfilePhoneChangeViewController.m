@@ -22,19 +22,19 @@
 #define KWAITWIDTH SCALE_NUM(50)
 
 @interface ProfilePhoneChangeViewController()
-@property (nonatomic, strong) YTextField *phoneField;
-@property (nonatomic, strong) YTextField *codeField;
+@property (nonatomic, strong) YTextField *phoneField;//手机号码
+@property (nonatomic, strong) YTextField *codeField;//验证码
 @property (nonatomic, strong) YTextField *accountTextField;
-@property (nonatomic, strong) UIButton *sendBtn;
+@property (nonatomic, strong) UIButton *sendBtn;//验证码发送按钮
 @property (nonatomic, strong) UIButton *protocolCheckButton;
 @property (nonatomic, strong) UIButton *showProtocalButton;
 @property (nonatomic, strong) UIButton *loginButton;
 @property (nonatomic, assign) BOOL isCheckButton;//是否同意协议
-@property (nonatomic, strong) UILabel *waitLabel;
-@property (nonatomic, assign) BOOL hasPhone;
+@property (nonatomic, strong) UILabel *waitLabel;//验证码等待label
+@property (nonatomic, assign) BOOL hasPhone;//是否之前有手机绑定
 @property (nonatomic, assign) ProfilePhoneChangeType type;
 
-@property (nonatomic, strong) YTextField *pwdField;
+@property (nonatomic, strong) YTextField *pwdField;//密码
 @property (nonatomic, strong) UIView *pwdView;
 @property (nonatomic, strong) UIImageView *protocolImageView;//提示蒙层
 
@@ -345,6 +345,7 @@
         [_protocolCheckButton setImage:[UIImage imageNamed:@"register-frame"] forState:UIControlStateNormal];
     }
 }
+//更新短信等待label
 - (void)changeWait:(BOOL)isWaiting {
     if (isWaiting) {
         _sendBtn.hidden = true;
@@ -356,6 +357,7 @@
         _waitLabel.hidden = true;
     }
 }
+//更新验证码发送按钮状态
 - (void)changeBtn:(BOOL)isValid {
     if (isValid) {
         _sendBtn.enabled = true;
@@ -365,6 +367,7 @@
         _sendBtn.layer.borderColor = [KCOLORGREEN_455A64 CGColor];
     }
 }
+//短信发送等待计时
 - (void)startCal {
     __block int timeout = 60;
     dispatch_source_t timer = dispatch_source_create(DISPATCH_SOURCE_TYPE_TIMER, 0, 0, dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0));
@@ -385,6 +388,7 @@
     });
     dispatch_resume(timer);
 }
+//获取验证码
 - (void)getCode {
     [self.view endEditing:true];
     if (0 == _phoneField.text.length) {
@@ -408,11 +412,6 @@
     //mod by xiongchen
     //add || nil == _pwdView
     if (nil == _pwdView || _pwdView.hidden) {
-//        if (_phoneField.text.length > 0) {
-//            [self changeBtn:true];
-//        } else {
-//            [self changeBtn:false];
-//        }
         if (_phoneField.text.length > 0 && _codeField.text.length > 0 && (nil == _accountTextField || _accountTextField.text.length > 0)) {
             self.navigationRightButton.enabled = true;
             _loginButton.enabled = true;
