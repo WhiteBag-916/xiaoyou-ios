@@ -104,11 +104,11 @@ DEF_SINGLETON(ContactManager);
 }
 
 //删除联系人
-- (BOOL)delUserByUid:(NSString *)uid {
+- (BOOL)delUserByThirdCode:(NSString *)thirdCode {
     __block BOOL isDel = NO;
     NSMutableArray *linkManListArray = [_linkManModel.linkManList mutableCopy];
     [linkManListArray enumerateObjectsUsingBlock:^(LinkManList *obj, NSUInteger idx, BOOL *stop) {
-        if ([obj.uid isEqualToString:uid]) {
+        if ([obj.thirdCode isEqualToString:thirdCode]) {
             [linkManListArray removeObjectAtIndex:idx];
             isDel = YES;
             *stop = YES;

@@ -52,14 +52,13 @@
 - (void)viewWillAppear:(BOOL)animated {
     [self refreshData];
     _notifyCount.text = [[YShareData defaultData][kShareData_UnreadAlterCount] stringValue];
-    
-    [[NSNotificationCenter defaultCenter] addObserverForName:KNotification_Update_UnreadAlterCount object:nil queue:nil usingBlock:^(NSNotification *note) {
-        _notifyCount.text = [[YShareData defaultData][kShareData_UnreadAlterCount] stringValue];
-    }];
-//    [self refreshData];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(checkUnreadAlterCount) name:KNotification_Update_UnreadAlterCount object:nil];
 }
 
 
+- (void)checkUnreadAlterCount {
+    _notifyCount.text = [[YShareData defaultData][kShareData_UnreadAlterCount] stringValue];
+}
 
 - (void)initHeaderView {
     _notifyView = [[UIView alloc] init];

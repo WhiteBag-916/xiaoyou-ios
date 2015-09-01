@@ -141,6 +141,8 @@ NSString *const kContactsTableViewCell = @"ContactsTableViewCell";
     NSDictionary * modelDic = [dic dictionaryRepresentation];
     
     _studentDic = modelDic;
+    //清空重用cell上的tag
+    [_connectTag updateWithTag:nil];
     
     //昵称
     _nameLabel.text = modelDic[@"name"];

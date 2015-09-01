@@ -164,7 +164,7 @@
             if (!error || (error.errorCode == EMErrorChatroomJoined))
             {
                 [[EaseMob sharedInstance].chatManager asyncLeaveChatroom:chatroomId completion:^(EMChatroom *chatroom, EMError *error){
-                    [[EaseMob sharedInstance].chatManager removeConversationByChatter:chatroomId deleteMessages:YES append2Chat:YES];
+                    [[EaseMob sharedInstance].chatManager removeConversationByChatter:chatroomId deleteMessages:YES append2Chat:NO];
                 }];
             }
         }
@@ -367,7 +367,7 @@
         //退出聊天室，删除会话
         NSString *chatter = [_chatter copy];
         [[EaseMob sharedInstance].chatManager asyncLeaveChatroom:chatter completion:^(EMChatroom *chatroom, EMError *error){
-            [[EaseMob sharedInstance].chatManager removeConversationByChatter:chatter deleteMessages:YES append2Chat:YES];
+            [[EaseMob sharedInstance].chatManager removeConversationByChatter:chatter deleteMessages:YES append2Chat:NO];
         }];
     }
     
@@ -382,7 +382,7 @@
     //判断当前会话是否为空，若符合则删除该会话
     EMMessage *message = [_conversation latestMessage];
     if (message == nil) {
-        [[EaseMob sharedInstance].chatManager removeConversationByChatter:_conversation.chatter deleteMessages:NO append2Chat:YES];
+        [[EaseMob sharedInstance].chatManager removeConversationByChatter:_conversation.chatter deleteMessages:NO append2Chat:NO];
     }
     
     [self.navigationController popViewControllerAnimated:YES];
@@ -748,12 +748,12 @@
     id <IEMFileMessageBody> body = [model.message.messageBodies firstObject];
     EMAttachmentDownloadStatus downloadStatus = [body attachmentDownloadStatus];
     if (downloadStatus == EMAttachmentDownloading) {
-        [self showHint:NSLocalizedString(@"message.downloadingAudio", @"downloading voice, click later")];
+        [self showHint:NSLocalizedString(@"正在加载...", @"downloading voice, click later")];
         return;
     }
     else if (downloadStatus == EMAttachmentDownloadFailure)
     {
-        [self showHint:NSLocalizedString(@"message.downloadingAudio", @"downloading voice, click later")];
+        [self showHint:NSLocalizedString(@"正在加载...", @"downloading voice, click later")];
         [[EaseMob sharedInstance].chatManager asyncFetchMessage:model.message progress:nil];
         
         return;
@@ -820,7 +820,7 @@
     
     __weak ChatViewController *weakSelf = self;
     id <IChatManager> chatManager = [[EaseMob sharedInstance] chatManager];
-    [weakSelf showHudInView:weakSelf.view hint:NSLocalizedString(@"message.downloadingVideo", @"downloading video...")];
+    [weakSelf showHudInView:weakSelf.view hint:NSLocalizedString(@"正在加载...", @"downloading video...")];
     [chatManager asyncFetchMessage:model.message progress:nil completion:^(EMMessage *aMessage, EMError *error) {
         [weakSelf hideHud];
         if (!error) {
@@ -879,7 +879,7 @@
                     return ;
                 }
             }
-            [weakSelf showHudInView:weakSelf.view hint:NSLocalizedString(@"message.downloadingImage", @"downloading a image...")];
+            [weakSelf showHudInView:weakSelf.view hint:NSLocalizedString(@"正在加载...", @"downloading a image...")];
             [chatManager asyncFetchMessage:model.message progress:nil completion:^(EMMessage *aMessage, EMError *error) {
                 [weakSelf hideHud];
                 if (!error) {
@@ -1761,7 +1761,7 @@
     if (object) {
         EMMessage *message = (EMMessage *)object;
         [self addMessage:message];
-        [[EaseMob sharedInstance].chatManager insertMessageToDB:message append2Chat:YES];
+        [[EaseMob sharedInstance].chatManager insertMessageToDB:message append2Chat:NO];
     }
 }
 
