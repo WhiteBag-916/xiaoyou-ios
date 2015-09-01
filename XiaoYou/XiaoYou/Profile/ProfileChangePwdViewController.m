@@ -153,11 +153,15 @@
 }
 
 - (void)onNavigationLeftButtonClicked {
-    for (int i = 0; i < self.navigationController.viewControllers.count; i++) {
-        UIViewController *viewController = self.navigationController.viewControllers[i];
-        if ([viewController isKindOfClass:[ProfileMyViewController class]]) {
-            [self.navigationController popToViewController:viewController animated:true];
-            return;
+    if (ProfileChangePwdTypeForget == _type) {
+        [self.navigationController popViewControllerAnimated:YES];
+    } else {
+        for (int i = 0; i < self.navigationController.viewControllers.count; i++) {
+            UIViewController *viewController = self.navigationController.viewControllers[i];
+            if ([viewController isKindOfClass:[ProfileMyViewController class]]) {
+                [self.navigationController popToViewController:viewController animated:true];
+                return;
+            }
         }
     }
 }
