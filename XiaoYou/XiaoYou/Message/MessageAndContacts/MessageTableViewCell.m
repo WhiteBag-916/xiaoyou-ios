@@ -194,14 +194,14 @@ NSString *const kMessageTableViewCell = @"MessageTableViewCellId";
         }
         
         //头像
-        if (eMessageTypeChat == _conversation.latestMessage.messageType) {
+        if (eMessageTypeChat == _conversation.conversationType) {
             NSString *url = userInfoDic[@"icon"];
             if (url.length > 0) {
                 [_headImageView setFaceImageWithUrl:userInfoDic[@"icon"]];
             } else {
                 [_headImageView setFaceImageWithUrl:ext[@"headImage"]];
             }
-        } else if (eMessageTypeGroupChat == _conversation.latestMessage.messageType) {
+        } else if (eMessageTypeGroupChat == _conversation.conversationType) {
             if ([self isClass])
             {
                 _headImageView.backgroundColor = KCOLORGREEN_009688;
