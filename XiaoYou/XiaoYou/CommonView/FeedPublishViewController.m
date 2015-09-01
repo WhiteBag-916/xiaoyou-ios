@@ -270,6 +270,7 @@
     }];
     _tagView.insets = 5;
     _tagView.lineSpace = 5;
+    _tagView.maxLines = 0;
     __weak FeedPublishViewController *weakSelf = self;
     [_tagView setDidClickTagAtIndex:^(NSUInteger index) {
         [weakSelf updateTagSelected:index];
@@ -304,6 +305,7 @@
     [_groupTag updateTag:true atIndex:0];
 }
 - (void)loadTag {
+    [_tagView removeAllTags];
     [_tagsArray enumerateObjectsUsingBlock:^(NSDictionary *obj, NSUInteger idx, BOOL *stop) {
         Tags *tags = obj[tagObj];
         SKTag *tag = [SKTag tagWithText:tags.name];
