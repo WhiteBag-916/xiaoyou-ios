@@ -8,8 +8,8 @@
 
 #import "MessageListAction.h"
 #import "YDefine.h"
-#import "SenderListModel.h"
 #import "YUtils+Component.h"
+#import "SenderListModel.h"
 
 @implementation MessageListAction
 
