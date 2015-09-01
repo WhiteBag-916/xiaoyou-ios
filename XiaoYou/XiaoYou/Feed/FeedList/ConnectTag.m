@@ -17,6 +17,7 @@
 #define KMARGIN 6
 #define KTAGSIZE 14
 
+#define KTAG 10000
 @implementation ConnectTag
 
 - (id)init {
@@ -25,6 +26,7 @@
         for (int i = 0; i < 5; i++) {
             UILabel *label = [YUtils initLabel:CONTENT_FONT(10) color:KCOLORWHITE text:@"" frame:CGRectZero alignment:NSTextAlignmentCenter];
             [self addSubview:label];
+            label.tag = KTAG + i;
             label.backgroundColor = KCOLORGREEN_009688;
             [label mas_makeConstraints:^(MASConstraintMaker *make) {
                 make.top.bottom.equalTo(self);
@@ -32,7 +34,7 @@
                 if (i == 0) {
                     make.right.equalTo(self);
                 } else {
-                    make.right.equalTo([self.subviews[i-1] mas_left]).offset(-KMARGIN);
+                    make.right.equalTo([[self viewWithTag:KTAG+i-1] mas_left]).offset(-KMARGIN);
                 }
             }];
         }
@@ -46,14 +48,14 @@
     int index;
     int count = tags.count>5?5:(int)tags.count;
     for (index = 0; index < count; index ++) {
-        UILabel *label = (UILabel *)self.subviews[index];
+        UILabel *label = (UILabel *)[self viewWithTag:KTAG+index];
         label.hidden = false;
         label.text = [tags[index] name];
     }
-    while (index <= 4) {
-        [self.subviews[index] setHidden:true];
-        index ++;
-    }
+//    while (index <= 4) {
+//        [[self viewWithTag:KTAG+index] setHidden:true];
+//        index ++;
+//    }
     
     [self updateSize:count];
 }
@@ -65,8 +67,10 @@
     } else {
         self.hidden = true;
     }
+    self.backgroundColor = [UIColor redColor];
     [self mas_updateConstraints:^(MASConstraintMaker *make) {
         make.width.mas_equalTo(width);
+        make.right.equalTo([self viewWithTag:KTAG]);
     }];
 }
 

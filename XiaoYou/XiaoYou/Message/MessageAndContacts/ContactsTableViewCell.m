@@ -118,8 +118,8 @@ NSString *const kContactsTableViewCell = @"ContactsTableViewCell";
         _connectTag = [[ConnectTag alloc] init];
         [self.contentView addSubview:_connectTag];
         [_connectTag mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.right.mas_equalTo(-kPaddingDistance);
-            make.top.mas_equalTo(kPaddingDistance);
+            make.right.equalTo(self.contentView).offset(-kPaddingDistance);
+            make.top.equalTo(self.contentView).offset(kPaddingDistance);
         }];
         
         UIView * bottomView = [[UIView alloc] init];
@@ -141,8 +141,6 @@ NSString *const kContactsTableViewCell = @"ContactsTableViewCell";
     NSDictionary * modelDic = [dic dictionaryRepresentation];
     
     _studentDic = modelDic;
-    //清空重用cell上的tag
-    [_connectTag updateWithTag:nil];
     
     //昵称
     _nameLabel.text = modelDic[@"name"];
