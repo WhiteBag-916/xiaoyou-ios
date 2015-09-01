@@ -191,7 +191,7 @@ DEF_SINGLETON(MessageManager);
                 NSString *thirdCode = [[ContactManager sharedInstance] delClassListByGroupCode:groupName];
                 //删除会话刷新界面
                 if (thirdCode.length > 0) {
-                    [[EaseMob sharedInstance].chatManager removeConversationByChatter:thirdCode deleteMessages:YES append2Chat:YES];
+                    [[EaseMob sharedInstance].chatManager removeConversationByChatter:thirdCode deleteMessages:YES append2Chat:NO];
                     [[NSNotificationCenter defaultCenter] postNotificationName:kNotification_Refresh_Message object:nil userInfo:nil];
                 }
                 break;
@@ -202,7 +202,7 @@ DEF_SINGLETON(MessageManager);
                 
                 BOOL isDel = [[ContactManager sharedInstance] delUserByThirdCode:thirdCode];
                 if (isDel) {
-                    [[EaseMob sharedInstance].chatManager removeConversationByChatter:thirdCode deleteMessages:YES append2Chat:YES];
+                    [[EaseMob sharedInstance].chatManager removeConversationByChatter:thirdCode deleteMessages:YES append2Chat:NO];
                     [[NSNotificationCenter defaultCenter] postNotificationName:kNotification_Refresh_Message object:nil userInfo:nil];
                 }
                 
@@ -219,12 +219,11 @@ DEF_SINGLETON(MessageManager);
 
 //删除会话
 - (void)delConversationByChatter:(NSString *)chatter {
-    [[EaseMob sharedInstance].chatManager removeConversationByChatter:chatter deleteMessages:YES append2Chat:YES];
+    [[EaseMob sharedInstance].chatManager removeConversationByChatter:chatter deleteMessages:YES append2Chat:NO];
 }
 
 //更新会话
 - (void)updateMessage {
-    [[EaseMob sharedInstance].chatManager loadAllConversationsFromDatabaseWithAppend2Chat:YES];
     [[NSNotificationCenter defaultCenter] postNotificationName:kNotification_Refresh_Message object:nil userInfo:nil];
     
     [self setupUnreadMessageCount];
