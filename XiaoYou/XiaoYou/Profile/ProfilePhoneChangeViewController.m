@@ -51,6 +51,7 @@
     return self;
 }
 - (void)viewDidLoad {
+    [super viewDidLoad];
     [self initController];
     [self initView];
     if (_hasPhone) {

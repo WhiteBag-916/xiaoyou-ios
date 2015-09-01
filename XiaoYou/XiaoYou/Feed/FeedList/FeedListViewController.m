@@ -53,6 +53,8 @@
     [self initNotification];
 }
 - (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    
     if (_needRefresh) {
         _needRefresh = false;
         [_feedListTableView loadData];

@@ -32,6 +32,8 @@
     return self;
 }
 - (void)viewDidLoad {
+    [super viewDidLoad];
+    
     [self initController];
     [self initView];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changeMode:) name:@"UITextInputCurrentInputModeDidChangeNotification" object:nil];

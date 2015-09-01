@@ -34,6 +34,7 @@
     return self;
 }
 - (void)viewDidLoad {
+    [super viewDidLoad];
     [self initController];
     [self initTableView];
 }
@@ -58,6 +59,7 @@
     self.navigationController.navigationBarHidden = false;
 }
 - (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
     if (_needRefresh) {
         [_tableView loadData:_userId];
         _needRefresh = false;

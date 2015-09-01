@@ -47,6 +47,7 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
+    [super viewWillAppear:animated];
     _schoolTextField.text = [YShareData defaultData][kShareData_SchoolName];
     [self searchSchoolByKey:YES];
     

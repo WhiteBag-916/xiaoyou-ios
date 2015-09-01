@@ -50,6 +50,7 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 - (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
     [self refreshData];
     _notifyCount.text = [[YShareData defaultData][kShareData_UnreadAlterCount] stringValue];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(checkUnreadAlterCount) name:KNotification_Update_UnreadAlterCount object:nil];

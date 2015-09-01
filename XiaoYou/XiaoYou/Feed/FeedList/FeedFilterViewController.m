@@ -36,8 +36,7 @@
     [self initView];
     [_feedListTableView loadData];
 }
-- (void)viewDidAppear:(BOOL)animated {
-}
+
 - (void)initController {
     [self showCustomNavigationBackButton];
     

@@ -53,6 +53,7 @@
     return self;
 }
 - (void)viewDidLoad {
+    [super viewDidLoad];
     self.view.backgroundColor = KCOLORWHITE;
     [self initView];
 }
