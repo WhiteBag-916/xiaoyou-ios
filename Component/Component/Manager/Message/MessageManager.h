@@ -31,7 +31,8 @@ typedef enum : NSUInteger {
 AS_SINGLETON(MessageManager);
 
 - (void)getMessageListData:(ActionCompleteBlock)block;
-
+//获取发送建议
+- (void)getSuggestList:(ActionCompleteBlock)block;;
 // 统计未读消息数
 -(void)setupUnreadMessageCount;
 

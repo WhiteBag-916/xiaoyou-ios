@@ -22,6 +22,8 @@
 #import "YModel+ActionMessage.h"
 #import "ContactManager.h"
 #import "EMTextMessageBody.h"
+#import "SuggestListAction.h"
+
 
 #define kMessageManagerSyncQueue @"kMessageManagerSyncQueue"
 //两次提示的默认间隔
@@ -57,13 +59,33 @@ DEF_SINGLETON(MessageManager);
 
 - (void)getMessageListData:(ActionCompleteBlock)block
 {
-    MessageListAction * action = [[MessageListAction alloc] init];
+    MessageListAction * action = [[SuggestListAction alloc] init];
     [YAction startAction:action completionBlock:^(YActionMessage* message) {
         //子线程处理数据
         [YQueue dispatchInSyncQueueWithQueueType:kMessageManagerSyncQueue block:^{
             if (message.isSuccess)
             {
-             
+                
+            }
+            
+            //主线程处理界面
+            [YQueue dispatchInMainQueueWithBlock:^{
+                block(message);
+            }];
+        }];
+    }];
+}
+
+//获取发送建议
+- (void)getSuggestList:(ActionCompleteBlock)block
+{
+    SuggestListAction * action = [[SuggestListAction alloc] init];
+    [YAction startAction:action completionBlock:^(YActionMessage* message) {
+        //子线程处理数据
+        [YQueue dispatchInSyncQueueWithQueueType:kMessageManagerSyncQueue block:^{
+            if (message.isSuccess)
+            {
+                
             }
             
             //主线程处理界面
