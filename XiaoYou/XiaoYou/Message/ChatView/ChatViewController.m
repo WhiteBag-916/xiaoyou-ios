@@ -748,12 +748,12 @@
     id <IEMFileMessageBody> body = [model.message.messageBodies firstObject];
     EMAttachmentDownloadStatus downloadStatus = [body attachmentDownloadStatus];
     if (downloadStatus == EMAttachmentDownloading) {
-        [self showHint:NSLocalizedString(@"message.downloadingAudio", @"downloading voice, click later")];
+        [self showHint:NSLocalizedString(@"正在加载...", @"downloading voice, click later")];
         return;
     }
     else if (downloadStatus == EMAttachmentDownloadFailure)
     {
-        [self showHint:NSLocalizedString(@"message.downloadingAudio", @"downloading voice, click later")];
+        [self showHint:NSLocalizedString(@"正在加载...", @"downloading voice, click later")];
         [[EaseMob sharedInstance].chatManager asyncFetchMessage:model.message progress:nil];
         
         return;
@@ -820,7 +820,7 @@
     
     __weak ChatViewController *weakSelf = self;
     id <IChatManager> chatManager = [[EaseMob sharedInstance] chatManager];
-    [weakSelf showHudInView:weakSelf.view hint:NSLocalizedString(@"message.downloadingVideo", @"downloading video...")];
+    [weakSelf showHudInView:weakSelf.view hint:NSLocalizedString(@"正在加载...", @"downloading video...")];
     [chatManager asyncFetchMessage:model.message progress:nil completion:^(EMMessage *aMessage, EMError *error) {
         [weakSelf hideHud];
         if (!error) {
@@ -879,7 +879,7 @@
                     return ;
                 }
             }
-            [weakSelf showHudInView:weakSelf.view hint:NSLocalizedString(@"message.downloadingImage", @"downloading a image...")];
+            [weakSelf showHudInView:weakSelf.view hint:NSLocalizedString(@"正在加载...", @"downloading a image...")];
             [chatManager asyncFetchMessage:model.message progress:nil completion:^(EMMessage *aMessage, EMError *error) {
                 [weakSelf hideHud];
                 if (!error) {
