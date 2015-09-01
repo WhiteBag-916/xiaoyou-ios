@@ -251,6 +251,7 @@
 
 //下一步
 - (void)onNavigationRightButtonClicked {
+    [self.view endEditing:YES];
     if ([_passwordTextField.text isEmpty]) {
         //密码不能为空
         [YUtils showTitle:@"密码不能为空"];
