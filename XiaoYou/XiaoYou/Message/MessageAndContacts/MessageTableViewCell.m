@@ -210,15 +210,13 @@ NSString *const kMessageTableViewCell = @"MessageTableViewCellId";
             }
             else
             {
-                if ([ext[@"group_icon"] isEqualToString:@""])
-                {
+                NSString *url = userInfoDic[@"icon"];
+                if (url.length > 0) {
+                    [_headImageView setFaceImageWithUrl:userInfoDic[@"icon"]];
+                } else {
                     _headImageView.backgroundColor = KCOLORGREEN_009688;
-                    _defaultLabel.text = [ext[@"group_name"] substringWithRange:NSMakeRange(0, 1)];
+                    _defaultLabel.text = [userInfoDic[@"name"] substringWithRange:NSMakeRange(0, 1)];
                     _defaultLabel.hidden = NO;
-                }
-                else
-                {
-                    [_headImageView setNormalImageWithUrl:ext[@"group_icon"]];
                 }
             }
         }

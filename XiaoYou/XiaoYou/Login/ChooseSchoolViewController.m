@@ -264,6 +264,8 @@
 #pragma mark - Action
 //下一步
 - (void)onNavigationRightButtonClicked {
+    [self.view endEditing:YES];
+    
     //判断输入文字是否是数组中得文字全匹配
     __block BOOL isExist = NO;
     [_schoolListBySeaver enumerateObjectsUsingBlock:^(SchoolListModel *school, NSUInteger idx, BOOL *stop) {
