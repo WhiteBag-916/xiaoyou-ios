@@ -12,4 +12,8 @@
 
 - (id)initWithUserId:(NSString *)userId name:(NSString *)userName;
 
+- (void)goToDetail:(NSString *)feedId;
+
+@property (nonatomic, assign) BOOL needRefresh;
+
 @end

@@ -11,4 +11,6 @@
 @interface FeedListViewController : YViewController
 
 - (void)goToDetail:(NSString *)feedId;
+
+@property (nonatomic, assign) BOOL needRefresh;
 @end
