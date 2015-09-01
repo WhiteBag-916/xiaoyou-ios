@@ -1,20 +1,22 @@
 //
 //  ClassList.m
 //
-//  Created by HuiYin  on 15/8/22
+//  Created by   on 15/9/1
 //  Copyright (c) 2015 __MyCompanyName__. All rights reserved.
 //
 
 #import "ClassList.h"
 
 
-NSString *const kClassListId = @"id";
 NSString *const kClassListIcon = @"icon";
-NSString *const kClassListSchoolCode = @"schoolCode";
-NSString *const kClassListName = @"name";
 NSString *const kClassListThirdCode = @"thirdCode";
+NSString *const kClassListSchoolCode = @"schoolCode";
+NSString *const kClassListId = @"id";
+NSString *const kClassListIsRemind = @"isRemind";
 NSString *const kClassListLinkType = @"linkType";
+NSString *const kClassListName = @"name";
 NSString *const kClassListGid = @"gid";
+
 
 @interface ClassList ()
 
@@ -24,12 +26,13 @@ NSString *const kClassListGid = @"gid";
 
 @implementation ClassList
 
-@synthesize classListIdentifier = _classListIdentifier;
 @synthesize icon = _icon;
-@synthesize schoolCode = _schoolCode;
-@synthesize name = _name;
 @synthesize thirdCode = _thirdCode;
+@synthesize schoolCode = _schoolCode;
+@synthesize internalBaseClassIdentifier = _internalBaseClassIdentifier;
+@synthesize isRemind = _isRemind;
 @synthesize linkType = _linkType;
+@synthesize name = _name;
 @synthesize gid = _gid;
 
 
@@ -45,13 +48,14 @@ NSString *const kClassListGid = @"gid";
     // This check serves to make sure that a non-NSDictionary object
     // passed into the model class doesn't break the parsing.
     if(self && [dict isKindOfClass:[NSDictionary class]]) {
-            self.classListIdentifier = [[self objectOrNilForKey:kClassListId fromDictionary:dict] doubleValue];
             self.icon = [self objectOrNilForKey:kClassListIcon fromDictionary:dict];
-            self.schoolCode = [self objectOrNilForKey:kClassListSchoolCode fromDictionary:dict];
-            self.name = [self objectOrNilForKey:kClassListName fromDictionary:dict];
             self.thirdCode = [self objectOrNilForKey:kClassListThirdCode fromDictionary:dict];
+            self.schoolCode = [self objectOrNilForKey:kClassListSchoolCode fromDictionary:dict];
+            self.internalBaseClassIdentifier = [[self objectOrNilForKey:kClassListId fromDictionary:dict] doubleValue];
+            self.isRemind = [self objectOrNilForKey:kClassListIsRemind fromDictionary:dict];
             self.linkType = [[self objectOrNilForKey:kClassListLinkType fromDictionary:dict] doubleValue];
-        self.gid = [self objectOrNilForKey:kClassListGid fromDictionary:dict];
+            self.name = [self objectOrNilForKey:kClassListName fromDictionary:dict];
+            self.gid = [self objectOrNilForKey:kClassListGid fromDictionary:dict];
 
     }
     
@@ -62,12 +66,13 @@ NSString *const kClassListGid = @"gid";
 - (NSDictionary *)dictionaryRepresentation
 {
     NSMutableDictionary *mutableDict = [NSMutableDictionary dictionary];
-    [mutableDict setValue:[NSNumber numberWithDouble:self.classListIdentifier] forKey:kClassListId];
     [mutableDict setValue:self.icon forKey:kClassListIcon];
-    [mutableDict setValue:self.schoolCode forKey:kClassListSchoolCode];
-    [mutableDict setValue:self.name forKey:kClassListName];
     [mutableDict setValue:self.thirdCode forKey:kClassListThirdCode];
+    [mutableDict setValue:self.schoolCode forKey:kClassListSchoolCode];
+    [mutableDict setValue:[NSNumber numberWithDouble:self.internalBaseClassIdentifier] forKey:kClassListId];
+    [mutableDict setValue:self.isRemind forKey:kClassListIsRemind];
     [mutableDict setValue:[NSNumber numberWithDouble:self.linkType] forKey:kClassListLinkType];
+    [mutableDict setValue:self.name forKey:kClassListName];
     [mutableDict setValue:self.gid forKey:kClassListGid];
 
     return [NSDictionary dictionaryWithDictionary:mutableDict];
@@ -92,26 +97,27 @@ NSString *const kClassListGid = @"gid";
 {
     self = [super init];
 
-    self.classListIdentifier = [aDecoder decodeDoubleForKey:kClassListId];
     self.icon = [aDecoder decodeObjectForKey:kClassListIcon];
-    self.schoolCode = [aDecoder decodeObjectForKey:kClassListSchoolCode];
-    self.name = [aDecoder decodeObjectForKey:kClassListName];
     self.thirdCode = [aDecoder decodeObjectForKey:kClassListThirdCode];
+    self.schoolCode = [aDecoder decodeObjectForKey:kClassListSchoolCode];
+    self.internalBaseClassIdentifier = [aDecoder decodeDoubleForKey:kClassListId];
+    self.isRemind = [aDecoder decodeObjectForKey:kClassListIsRemind];
     self.linkType = [aDecoder decodeDoubleForKey:kClassListLinkType];
+    self.name = [aDecoder decodeObjectForKey:kClassListName];
     self.gid = [aDecoder decodeObjectForKey:kClassListGid];
-    
     return self;
 }
 
 - (void)encodeWithCoder:(NSCoder *)aCoder
 {
 
-    [aCoder encodeDouble:_classListIdentifier forKey:kClassListId];
     [aCoder encodeObject:_icon forKey:kClassListIcon];
-    [aCoder encodeObject:_schoolCode forKey:kClassListSchoolCode];
-    [aCoder encodeObject:_name forKey:kClassListName];
     [aCoder encodeObject:_thirdCode forKey:kClassListThirdCode];
+    [aCoder encodeObject:_schoolCode forKey:kClassListSchoolCode];
+    [aCoder encodeDouble:_internalBaseClassIdentifier forKey:kClassListId];
+    [aCoder encodeObject:_isRemind forKey:kClassListIsRemind];
     [aCoder encodeDouble:_linkType forKey:kClassListLinkType];
+    [aCoder encodeObject:_name forKey:kClassListName];
     [aCoder encodeObject:_gid forKey:kClassListGid];
 }
 
@@ -121,12 +127,13 @@ NSString *const kClassListGid = @"gid";
     
     if (copy) {
 
-        copy.classListIdentifier = self.classListIdentifier;
         copy.icon = [self.icon copyWithZone:zone];
-        copy.schoolCode = [self.schoolCode copyWithZone:zone];
-        copy.name = [self.name copyWithZone:zone];
         copy.thirdCode = [self.thirdCode copyWithZone:zone];
+        copy.schoolCode = [self.schoolCode copyWithZone:zone];
+        copy.internalBaseClassIdentifier = self.internalBaseClassIdentifier;
+        copy.isRemind = [self.isRemind copyWithZone:zone];
         copy.linkType = self.linkType;
+        copy.name = [self.name copyWithZone:zone];
         copy.gid = [self.gid copyWithZone:zone];
     }
     
