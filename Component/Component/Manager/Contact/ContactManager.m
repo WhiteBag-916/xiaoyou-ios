@@ -66,6 +66,20 @@ DEF_SINGLETON(ContactManager);
     
     return linkManList;
 }
+//通过thirdCode获取群信息
+- (ClassList *)getClassByThirdCode:(NSString *)gid {
+    ClassList *classList;
+    
+    for (ClassList * obj in _linkManModel.unionList) {
+        if ([gid isEqualToString:[NSString stringWithFormat:@"%g",obj.internalBaseClassIdentifier]])
+        {
+            classList = obj;
+            break;
+        }
+    }
+    
+    return classList;
+}
 
 //通过id获取联系人
 - (LinkManList *)getManById:(NSString *)uid {

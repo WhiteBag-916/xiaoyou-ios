@@ -10,6 +10,7 @@
 #import "YAction.h"
 #import "LinkManModel.h"
 #import "LinkManList.h"
+#import "ClassList.h"
 
 @interface ContactManager : YManager<YManager>
 AS_SINGLETON(ContactManager);
@@ -18,7 +19,8 @@ AS_SINGLETON(ContactManager);
 
 //通过thirdCode获取联系人
 - (LinkManList *)getManByThirdCode:(NSString *)thirdCode;
-
+//通过thirdCode获取群信息
+- (ClassList *)getClassByThirdCode:(NSString *)gid;
 //通过id获取联系人
 - (LinkManList *)getManById:(NSString *)uid;
 

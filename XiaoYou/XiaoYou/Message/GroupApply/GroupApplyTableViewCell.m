@@ -317,9 +317,11 @@ NSString *const kGroupApplyTableViewCell = @"GroupApplyTableViewCellId";
 
 - (void)toChat
 {
-    ChatViewController * chatVC = [[ChatViewController alloc] initWithChatter:[NSString stringWithFormat:@"%@_%@",_applicantList.author.schoolCode,_applicantList.author.studentNo] isGroup:NO];
+    NSString * groupThirdId = [NSString stringWithFormat:@"%g",_applicantList.groupId];
+    ClassList * model =  [[ContactManager sharedInstance] getClassByThirdCode:groupThirdId];
+    ChatViewController * chatVC = [[ChatViewController alloc] initWithChatter:model.thirdCode isGroup:YES];
     chatVC.isSystemMessage = NO;
-    chatVC.studentDic = [@{@"name":_applicantList.author.name, @"icon":_applicantList.author.headPic, @"uid":_applicantList.author.uid} mutableCopy];
+    chatVC.studentDic = (NSMutableDictionary *)[model dictionaryRepresentation];
     [self.superVC.navigationController pushViewController:chatVC animated:YES needHiddenBottomBar:YES];
     
 }
