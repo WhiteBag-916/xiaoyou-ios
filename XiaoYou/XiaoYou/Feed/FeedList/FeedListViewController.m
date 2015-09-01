@@ -23,7 +23,7 @@
 #import "ProvisionManager.h"
 #import "FeedFilterViewController.h"
 
-@interface FeedListViewController ()
+@interface FeedListViewController ()<SlideNavigationControllerDelegate>
 
 @property (strong, nonatomic) CommonSwitchView          *commonSwitchView;      //切换
 @property (strong, nonatomic) TagListViewController     *tagListVC;             //侧拉

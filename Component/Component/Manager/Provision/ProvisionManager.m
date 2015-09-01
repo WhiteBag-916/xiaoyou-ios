@@ -368,9 +368,9 @@ DEF_SINGLETON(ProvisionManager);
         //主线程处理界面
         block(message);
 //        //发送通知,告知界面刷新
-//        [self postNotificationOnMainThreadName:kNotification_Profile_GetProfile
-//                                        object:nil
-//                                      userInfo:@{kNotification_Request_Message:message}];
+        [self postNotificationOnMainThreadName:kNotification_Profile_GetProfile
+                                        object:nil
+                                      userInfo:@{kNotification_Request_Message:message}];
     }];
 }
 

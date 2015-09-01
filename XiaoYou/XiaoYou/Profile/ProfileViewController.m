@@ -68,14 +68,7 @@
     // Do any additional setup after loading the view.
     [super viewDidLoad];
     self.hidesBottomBarWhenPushed = NO;
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(refreshData:)
-                                                 name:kNotification_Profile_GetProfile
-                                               object:nil];
     [self initMyView];
-}
-- (void)dealloc {
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 - (void)initMyView {
     
@@ -406,26 +399,31 @@
 - (void)viewDidAppear:(BOOL)animated {
     [self startLoadData];
 }
+//选择标签
 - (void)openTagList {
     UINavigationController *navigationController =
     [[UINavigationController alloc] initWithRootViewController:[[ProfileTagViewController alloc] initWithMyTags:_tagModels type:ProfileTagTypePerson]];
     [self.navigationController presentViewController:navigationController animated:YES completion:nil];
 }
+//编辑态度
 - (void)openAttitude {
     UINavigationController *navigationController =
     [[UINavigationController alloc] initWithRootViewController:[[YCommonEditViewController alloc] initWithType:YCommonEditAttitude preText:_attitudeLabel.text]];
     [self.navigationController presentViewController:navigationController animated:YES completion:nil];
 }
+//查看敬酒人
 - (void)openRespect {
     [self.navigationController pushViewController:[[ProfilePersonListController alloc] initWithType:ProfilePersonListTypeRespect] animated:true];
 }
+//查看点赞人
 - (void)openCool {
     [self.navigationController pushViewController:[[ProfilePersonListController alloc] initWithType:ProfilePersonListTypeCool] animated:true];
 }
+//查看feed列表
 - (void)openFeed {
     [self.navigationController pushViewController:[[ProfilePublishViewController alloc] initWithUserId:@"" name:@""] animated:true];
 }
-
+//查看个人详细信息
 - (void)openProfile {
     [self.navigationController pushViewController:[[ProfileMyViewController alloc] init] animated:true];
 }
