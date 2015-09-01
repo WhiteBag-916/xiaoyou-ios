@@ -51,8 +51,15 @@
     return YES;
 }
 
+- (BOOL)showFooterRefresh
+{
+    return YES;
+}
+
 - (void)loadData {
     [self beginLoadNewData];
+    
+    [self hiddenFooter:YES];
 }
 - (void)loadNewData
 {
@@ -64,6 +71,11 @@
         if (message.isSuccess) {
             _groupApplyArray = [NSMutableArray arrayWithArray:message.object];
             [self reloadData];
+            
+            if (0 == [_groupApplyArray count]) {
+                [self hiddenFooter:NO];
+                [self showNoticeNoMoreData];
+            }
         } else {
             [YUtils showTitleOn:self title:message.desc];
         }
