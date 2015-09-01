@@ -162,7 +162,14 @@ DEF_SINGLETON(MessageManager);
             }
             case KICKGROUP:
             {
-                [[ProvisionManager sharedInstance] delQueryCodesByGroupCode:ext[@"em_apns_ext"][@"em_push_title"]];
+                NSString *groupCode = ext[@"em_apns_ext"][@"em_push_title"];
+                NSString *groupName = [[ProvisionManager sharedInstance] delQueryCodesByGroupCode:groupCode];
+                NSString *thirdCode = [[ContactManager sharedInstance] delClassListByGroupCode:groupName];
+                //删除会话刷新界面
+                if (thirdCode.length > 0) {
+                    [[EaseMob sharedInstance].chatManager removeConversationByChatter:thirdCode deleteMessages:YES append2Chat:YES];
+                    [[NSNotificationCenter defaultCenter] postNotificationName:kNotification_Refresh_Message object:nil userInfo:nil];
+                }
                 break;
             }
             default:
@@ -238,6 +245,17 @@ DEF_SINGLETON(MessageManager);
                 
                 needRefresh = YES;
                 needReload = YES;
+                
+                if (nil != ext[@"group_id"]) {
+                    //如果是社团同意，则去拉取联系人列表和自己的tag
+                    [[ContactManager sharedInstance] getContactsListData:^(YActionMessage *message) {
+                        if (message.isSuccess) {
+                            [[NSNotificationCenter defaultCenter] postNotificationName:kNotification_Refresh_Message object:nil userInfo:nil];
+                        }
+                    }];
+                    
+                    [[ProvisionManager sharedInstance] getProfileInfo];
+                }
                 
                 break;
             }

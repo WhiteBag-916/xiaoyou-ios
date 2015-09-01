@@ -16,4 +16,6 @@
 
 -(void)refreshTableView:(GroupDetail *) model;
 
+- (void)showDel:(BOOL)show;
+
 @end

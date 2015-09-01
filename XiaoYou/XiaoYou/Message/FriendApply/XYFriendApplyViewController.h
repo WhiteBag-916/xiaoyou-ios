@@ -11,4 +11,6 @@
 
 @interface XYFriendApplyViewController : YViewController
 
+- (instancetype)initWithChatter:(NSString *)chatter;
+
 @end

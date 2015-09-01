@@ -96,6 +96,8 @@
     EMConversationType type = isGroup ? eConversationTypeGroupChat : eConversationTypeChat;
     self = [self initWithChatter:chatter conversationType:type];
     if (self) {
+        
+        
     }
     
     return self;
@@ -224,6 +226,18 @@
     {
         [self joinChatroom:_chatter];
     }
+    
+    //判断是否为好友,输入框置灰
+    if (![self isChatGroup])
+    {
+        if (![[ContactManager sharedInstance] isFriendRelationShip:_studentDic[@"uid"]])
+        {
+            UIView * blackView = [[UIView alloc] initWithFrame:_chatToolBar.bounds];
+            blackView.backgroundColor = [UIColor blackColor];
+            blackView.alpha = 0.5;
+            [_chatToolBar addSubview:blackView];
+        }
+    }
 }
 
 - (void)handleCallNotification:(NSNotification *)notification
@@ -261,21 +275,23 @@
     _headImageView.userInteractionEnabled = YES;
     NSString *url = _studentDic[@"icon"];
     
+    //头像
     UIButton *detailButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 60, 44)];
-    if ([_studentDic[@"linkType"] doubleValue] == 1)
-    {
+    if (url.length > 0) {
+        [_headImageView setFaceImageWithUrl:url];
+    } else {
         [detailButton setBackgroundColor:KCOLORGREEN_009688];
-        [detailButton setTitleEdgeInsets:UIEdgeInsetsMake(0, 0, 2, 20)];
-        [detailButton setTitle:@"班" forState:UIControlStateNormal];
-    }
-    else
-    {
-        if (url > 0) {
-            [_headImageView setFaceImageWithUrl:url];
-        } else {
-            [_headImageView setFaceImageWithUrl:_conversation.latestMessageFromOthers.ext[@"headImage"]];
+        [detailButton setTitleEdgeInsets:UIEdgeInsetsMake(0, 0, 4, 20)];
+        if ([_studentDic[@"linkType"] doubleValue] == 1)
+        {
+            [detailButton setTitle:@"班" forState:UIControlStateNormal];
+        }
+        else
+        {
+            [detailButton setTitle:[_studentDic[@"name"] substringWithRange:NSMakeRange(0, 1)] forState:UIControlStateNormal];
         }
     }
+    
     if (self.isChatGroup) {
         [detailButton addTarget:self action:@selector(showRoomContact:) forControlEvents:UIControlEventTouchUpInside];
     } else{
@@ -1635,7 +1651,9 @@
 - (void)showRoomContact:(id)sender
 {
     [self.view endEditing:YES];
-    if (self.conversationType == eConversationTypeGroupChat) {
+    if ([self.navigationController.viewControllers[self.navigationController.viewControllers.count-2] isKindOfClass:[XYGroupInfoDetailViewController class]]) {
+        [self.navigationController popViewControllerAnimated:YES];
+    } else {
         XYGroupInfoDetailViewController * groupVC = [[XYGroupInfoDetailViewController alloc] init];
         if ([_studentDic[@"linkType"] doubleValue] == 1)
         {
@@ -1813,6 +1831,9 @@
     [extDic setObject:[[ProvisionManager sharedInstance] getLoginInfo].icon forKey:@"headImage"];
     [extDic setObject:[[ProvisionManager sharedInstance] getLoginInfo].studentName forKey:@"userName"];
     if ([self messageType] == eMessageTypeGroupChat) {
+        [extDic setObject:_studentDic[@"icon"] forKey:@"group_icon"];
+        [extDic setObject:_studentDic[@"name"] forKey:@"group_name"];
+        
         [extDic setObject:@{@"em_push_title":[NSString stringWithFormat:@"%@给你发来一条新消息", _studentDic[@"name"]]} forKey:@"em_apns_ext"];
     } else {
         __block BOOL needIgorePush = NO;
@@ -1837,6 +1858,11 @@
 
 -(void)sendTextMessage:(NSString *)textMessage
 {
+    LinkManModel * linkManList = [[ContactManager sharedInstance] getContactsListData];
+    for (int i = 0; i<linkManList.linkManList.count; i++)
+    {
+        
+    }
     NSDictionary *ext;
     
     if (_isRobot) {

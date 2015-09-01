@@ -106,6 +106,7 @@
     
     XYChoicePersonViewController * choicePersonViewController = [[XYChoicePersonViewController alloc] init];
     choicePersonViewController.authorArr = [NSArray arrayWithArray:authorArray];
+    choicePersonViewController.groupId = _groupId;
     [self.navigationController pushViewController:choicePersonViewController animated:YES needHiddenBottomBar:YES];
 }
 

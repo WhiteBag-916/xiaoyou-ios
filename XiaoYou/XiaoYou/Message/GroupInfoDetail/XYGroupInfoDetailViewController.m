@@ -53,7 +53,12 @@ NSString *const kXYGroupInfoDetailViewController = @"XYGroupInfoDetailViewContro
             [_groupInfoDetailCollectionView refreshTableView:message.object];
              _shareData = @{@"name":_model.groupModel.groupName,@"content":_model.groupModel.internalBaseClassDescription,@"pic":_model.groupModel.groupIcon,@"groupId":[NSString stringWithFormat:@"%g", _model.groupModel.internalBaseClassIdentifier]};
         }
-    }];}
+    }];
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [_groupInfoDetailCollectionView showDel:NO];
+}
 
 -(void)setUpUI
 {
@@ -89,10 +94,14 @@ NSString *const kXYGroupInfoDetailViewController = @"XYGroupInfoDetailViewContro
 
 -(void)clickBottomButton
 {
-    ChatViewController * chatVC = [[ChatViewController alloc] initWithChatter:_studentDic[@"thirdCode"] isGroup:YES];
-    chatVC.isSystemMessage = NO;
-    chatVC.studentDic = [_studentDic mutableCopy];
-    [self.navigationController pushViewController:chatVC animated:YES needHiddenBottomBar:YES];
+    if ([self.navigationController.viewControllers[self.navigationController.viewControllers.count-2] isKindOfClass:[ChatViewController class]]) {
+        [self.navigationController popViewControllerAnimated:YES];
+    } else {
+        ChatViewController * chatVC = [[ChatViewController alloc] initWithChatter:_studentDic[@"thirdCode"] isGroup:YES];
+        chatVC.isSystemMessage = NO;
+        chatVC.studentDic = [_studentDic mutableCopy];
+        [self.navigationController pushViewController:chatVC animated:YES needHiddenBottomBar:YES];
+    }
 }
 
 -(void)showShareActionSheet

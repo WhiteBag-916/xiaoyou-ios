@@ -312,6 +312,8 @@ typedef enum : NSUInteger {
                                                                            messageType:eMessageTypeChat
                                                                      requireEncryption:NO
                                                                                    ext:[self addAlertBody:nil]];
+                    [[EaseMob sharedInstance].chatManager removeConversationByChatter:tempMessage.conversationChatter deleteMessages:YES append2Chat:NO];
+
                 } else {
                     [YUtils showTitle:message.desc];
                 }

@@ -48,20 +48,21 @@
 }
 
 - (void)tokenFail:(NSNotification *)note {
-    //踢下线
-    [[NSUserDefaults standardUserDefaults] setObject:@"" forKey:kShareData_Token];
-    //抛登出成功通知
-    [[YManagerCenter defaultCenter] notifyAppLogouted:@{@"logoutBySelf":@NO}];
-    
-    //切换
-    [self initChooseSchoolNC];
-    
-    //提示
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        YLogE(@"tokenFail : %@", note.object[@"des"]);
-        [YUtils showTitle:note.object[@"des"]];
-    });
-    
+    if (![self.window.rootViewController isKindOfClass:[ChooseSchoolViewController class]]) {
+        //踢下线
+        [[NSUserDefaults standardUserDefaults] setObject:@"" forKey:kShareData_Token];
+        //抛登出成功通知
+        [[YManagerCenter defaultCenter] notifyAppLogouted:@{@"logoutBySelf":@NO}];
+        
+        //切换
+        [self initChooseSchoolNC];
+        
+        //提示
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            YLogE(@"tokenFail : %@", note.object[@"des"]);
+            [YUtils showTitle:note.object[@"des"]];
+        });
+    }
 }
 
 - (void)initChooseSchoolNC

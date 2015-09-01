@@ -14,6 +14,7 @@
 #import "ProfileInfo.h"
 #import "LoginResp.h"
 #import "RobotManager.h"
+#import "Tags.h"
 
 #define KBOTTOMHEIGHT [DXMessageToolBar defaultHeight]
 #define kBackViewHeight                 118
@@ -126,8 +127,19 @@
 
 -(void)sendTextMessage:(NSString *)textMessage
 {
-    NSDictionary *ext = @{@"headImage":[[ProvisionManager sharedInstance] getLoginInfo].icon,@"userName":[[ProvisionManager sharedInstance] getLoginInfo].studentName};
-    NSLog(@"%@",ext);
+    NSString * groupName = [NSString string];
+    
+    ProfileInfo * info =[[ProvisionManager sharedInstance] getProfile];
+    for (Tags * obj in info.managerGroups)
+    {
+        if ([_groupId isEqualToString:obj.internalBaseClassIdentifier])
+        {
+            groupName = obj.name;
+        }
+    }
+    
+    NSDictionary *ext = @{@"headImage":[[ProvisionManager sharedInstance] getLoginInfo].icon,@"userName":[[ProvisionManager sharedInstance] getLoginInfo].studentName,@"em_apns_ext":@{@"em_push_title":[NSString stringWithFormat:@"%@社社长[%@]发来一条消息", groupName,[[ProvisionManager sharedInstance] getLoginInfo].studentName]}};
+     
     
     if (_isRobot) {
         ext = @{kRobot_Message_Ext:[NSNumber numberWithBool:YES]};
@@ -140,6 +152,8 @@
                                                                messageType:eMessageTypeChat
                                                          requireEncryption:NO
                                                                        ext:ext];
+        EMConversation *conversation = [[EaseMob sharedInstance].chatManager conversationForChatter:tempMessage.conversationChatter conversationType:eConversationTypeChat];
+        [conversation removeMessage:tempMessage];
     }
 }
 

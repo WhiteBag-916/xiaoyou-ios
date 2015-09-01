@@ -15,6 +15,7 @@
 #import "ContactManager.h"
 #import "YUtils+HUD.h"
 #import "ChatViewController.h"
+#import "XYSendMessageViewController.h"
 
 #define kHeadCornerRadius              22.5
 #define kPaddingDistance               12
@@ -305,7 +306,7 @@ NSString *const kGroupApplyTableViewCell = @"GroupApplyTableViewCellId";
         }
         case SEND_BUTTON:
         {
-            [self toChat];
+            [self goToCollectiveMessage];
             break;
         }
             
@@ -321,6 +322,14 @@ NSString *const kGroupApplyTableViewCell = @"GroupApplyTableViewCellId";
     chatVC.studentDic = [@{@"name":_applicantList.author.name, @"icon":_applicantList.author.headPic, @"uid":_applicantList.author.uid} mutableCopy];
     [self.superVC.navigationController pushViewController:chatVC animated:YES needHiddenBottomBar:YES];
     
+}
+
+- (void)goToCollectiveMessage
+{
+    XYSendMessageViewController * sendMessageViewController = [[XYSendMessageViewController alloc] init];
+    sendMessageViewController.sendPersonsArr = [@[_applicantList.author] mutableCopy];
+    sendMessageViewController.groupId = [NSString stringWithFormat:@"%g",_applicantList.groupId];
+    [self.superVC.navigationController pushViewController:sendMessageViewController animated:YES needHiddenBottomBar:YES];
 }
 
 - (void)setIsRelated:(BOOL)isRelated {
