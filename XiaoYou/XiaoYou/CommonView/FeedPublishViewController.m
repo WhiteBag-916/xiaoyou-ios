@@ -97,7 +97,8 @@
     _contentView = [[UIView alloc] init];
     [scroll addSubview:_contentView];
     [_contentView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.edges.equalTo(self.view);
+        make.edges.equalTo(scroll);
+        make.width.equalTo(scroll);
     }];
     [self initGroupView];
     [self initTextView];
