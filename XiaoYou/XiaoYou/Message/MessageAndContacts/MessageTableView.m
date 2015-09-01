@@ -310,7 +310,7 @@
         //删除前清空该回话未读数
         [converation markAllMessagesAsRead:YES];
         [[MessageManager sharedInstance] setupUnreadMessageCount];
-        [[EaseMob sharedInstance].chatManager removeConversationByChatter:converation.chatter deleteMessages:YES append2Chat:YES];
+        [[EaseMob sharedInstance].chatManager removeConversationByChatter:converation.chatter deleteMessages:YES append2Chat:NO];
         [_messageDataSource removeObjectAtIndex:indexPath.row];
         [self deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
     }
