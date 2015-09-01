@@ -166,10 +166,12 @@ DEF_SINGLETON(MessageManager);
         }
     }];
 }
--(void)didReceiveCmdMessage:(EMMessage *)cmdMessage
-{
+
+- (BOOL)processReceiveCmdMessage:(EMMessage *)cmdMessage {
+    BOOL needRefresh = NO;
+    
     //解析
-    NSDictionary *ext = cmdMessage.ext;    
+    NSDictionary *ext = cmdMessage.ext;
     if ([ext[@"server_flag"] boolValue])
     {
         switch ([ext[@"type"] integerValue])
@@ -192,7 +194,7 @@ DEF_SINGLETON(MessageManager);
                 //删除会话刷新界面
                 if (thirdCode.length > 0) {
                     [[EaseMob sharedInstance].chatManager removeConversationByChatter:thirdCode deleteMessages:YES append2Chat:NO];
-                    [[NSNotificationCenter defaultCenter] postNotificationName:kNotification_Refresh_Message object:nil userInfo:nil];
+                    needRefresh = YES;
                 }
                 break;
             }
@@ -203,7 +205,7 @@ DEF_SINGLETON(MessageManager);
                 BOOL isDel = [[ContactManager sharedInstance] delUserByThirdCode:thirdCode];
                 if (isDel) {
                     [[EaseMob sharedInstance].chatManager removeConversationByChatter:thirdCode deleteMessages:YES append2Chat:NO];
-                    [[NSNotificationCenter defaultCenter] postNotificationName:kNotification_Refresh_Message object:nil userInfo:nil];
+                    needRefresh = YES;
                 }
                 
                 break;
@@ -215,6 +217,23 @@ DEF_SINGLETON(MessageManager);
             }
         }
     }
+    
+    return needRefresh;
+}
+
+-(void)didReceiveCmdMessage:(EMMessage *)cmdMessage
+{
+    //子线程处理数据
+    [YQueue dispatchInSyncQueueWithQueueType:kMessageManagerSyncQueue block:^{
+        BOOL needRefresh = [self processReceiveCmdMessage:cmdMessage];
+        
+        //主线程处理界面
+        [YQueue dispatchInMainQueueWithBlock:^{
+            if (needRefresh) {
+                [[NSNotificationCenter defaultCenter] postNotificationName:kNotification_Refresh_Message object:nil userInfo:nil];
+            }
+        }];
+    }];
 }
 
 //删除会话
@@ -394,13 +413,19 @@ DEF_SINGLETON(MessageManager);
     YLogD(@"%@", message.ext);
     //解析
     
-    BOOL needRefresh = [self resetMessage:message];
-    
-    if (needRefresh) {
-        [message updateMessageExtToDB];
+    //子线程处理数据
+    [YQueue dispatchInSyncQueueWithQueueType:kMessageManagerSyncQueue block:^{
+        BOOL needRefresh = [self resetMessage:message];
         
-        [self updateMessage];
-    }
+        //主线程处理界面
+        [YQueue dispatchInMainQueueWithBlock:^{
+            if (needRefresh) {
+                [message updateMessageExtToDB];
+                
+                [self updateMessage];
+            }
+        }];
+    }];
     
 #if !TARGET_IPHONE_SIMULATOR
     //判断是否发送本地推送
