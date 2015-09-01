@@ -187,21 +187,28 @@ NSString *const kMessageTableViewCell = @"MessageTableViewCellId";
         
         //昵称
         NSString *name = userInfoDic[@"name"];
-        if (name.length > 0) {
-            _nameLabel.text = userInfoDic[@"name"];
-        } else {
-            _nameLabel.text = ext[@"userName"];
-        }
         
         //头像
+        NSString *url = userInfoDic[@"icon"];
         if (eMessageTypeChat == _conversation.conversationType) {
-            NSString *url = userInfoDic[@"icon"];
+            if (name.length > 0) {
+                _nameLabel.text = userInfoDic[@"name"];
+            } else {
+                _nameLabel.text = ext[@"userName"];
+            }
+            
             if (url.length > 0) {
-                [_headImageView setFaceImageWithUrl:userInfoDic[@"icon"]];
+                [_headImageView setFaceImageWithUrl:url];
             } else {
                 [_headImageView setFaceImageWithUrl:ext[@"headImage"]];
             }
         } else if (eMessageTypeGroupChat == _conversation.conversationType) {
+            if (name.length > 0) {
+                _nameLabel.text = userInfoDic[@"name"];
+            } else {
+                _nameLabel.text = ext[@"groupName"];
+            }
+            
             if ([self isClass])
             {
                 _headImageView.backgroundColor = KCOLORGREEN_009688;
@@ -210,12 +217,18 @@ NSString *const kMessageTableViewCell = @"MessageTableViewCellId";
             }
             else
             {
-                NSString *url = userInfoDic[@"icon"];
+                NSString *groupIcon = ext[@"groupIcon"];
                 if (url.length > 0) {
-                    [_headImageView setFaceImageWithUrl:userInfoDic[@"icon"]];
-                } else {
+                    [_headImageView setFaceImageWithUrl:url];
+                } else if (groupIcon.length > 0) {
+                    [_headImageView setFaceImageWithUrl:groupIcon];
+                }else {
                     _headImageView.backgroundColor = KCOLORGREEN_009688;
-                    _defaultLabel.text = [userInfoDic[@"name"] substringWithRange:NSMakeRange(0, 1)];
+                    if (name.length > 0) {
+                        _defaultLabel.text = [name substringWithRange:NSMakeRange(0, 1)];
+                    } else {
+                        _defaultLabel.text = [ext[@"groupName"] substringWithRange:NSMakeRange(0, 1)];
+                    }
                     _defaultLabel.hidden = NO;
                 }
             }
