@@ -161,6 +161,8 @@
 #define api_message_list  @"/user/getsenderlist"
 //联系人列表
 #define api_contacts_list  @"/user/v2/listLinkMan"
+//发送建议
+#define api_suggest_list  @"/suggest/list?flag=groupManager"
 
 #endif
 

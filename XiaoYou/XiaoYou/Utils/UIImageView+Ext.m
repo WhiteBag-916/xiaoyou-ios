@@ -16,6 +16,11 @@
 }
 
 - (void)setNormalImageWithUrl:(NSString *)url {
-    [self sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@", api_icon_base_url, url]]];
+    self.userInteractionEnabled = false;
+    [self sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@", api_icon_base_url, url]] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+        if (image != nil) {
+            self.userInteractionEnabled = true;
+        }
+    }];
 }
 @end
