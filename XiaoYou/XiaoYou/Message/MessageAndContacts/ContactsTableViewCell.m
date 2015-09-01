@@ -65,7 +65,7 @@ NSString *const kContactsTableViewCell = @"ContactsTableViewCell";
         //班
         _defaultLabel = [[UILabel alloc] init];
         _defaultLabel.textAlignment = NSTextAlignmentCenter;
-        _defaultLabel.textColor = [UIColor clearColor];
+        _defaultLabel.textColor = [UIColor whiteColor];
         [self.contentView addSubview:_defaultLabel];
         [_defaultLabel mas_makeConstraints:^(MASConstraintMaker *make) {
             make.top.mas_equalTo(_headImageView.mas_top).offset(kClassLabelDistance);
@@ -140,6 +140,9 @@ NSString *const kContactsTableViewCell = @"ContactsTableViewCell";
 {
     NSDictionary * modelDic = [dic dictionaryRepresentation];
     
+    _headImageView.image = nil;
+    _defaultLabel.text = @"";
+     
     _studentDic = modelDic;
     
     //昵称
@@ -152,7 +155,17 @@ NSString *const kContactsTableViewCell = @"ContactsTableViewCell";
     
     //头像
     if ([modelDic[@"icon"] isEqualToString:@""]) {
-        _headImageView.image = [UIImage imageNamed:@"default_head"];
+        if ([[modelDic[@"linkType"] stringValue] isEqualToString:@"2"])
+        {
+            _headImageView.backgroundColor = KCOLORGREEN_009688;
+            _defaultLabel.text = [modelDic[@"name"] substringWithRange:NSMakeRange(0, 1)];
+        }
+        else
+        {
+            _headImageView.image = [UIImage imageNamed:@"default_head"];
+
+        }
+        
     }
     else
     {
