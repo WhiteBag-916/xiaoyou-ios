@@ -70,7 +70,9 @@ DEF_SINGLETON(ProvisionManager);
     
     [self initProfileData];
     
-    [self getProfileInfo];
+    [self getProfileInfo:^(YActionMessage *message) {
+        
+    }];
     
     [self resetUnreadAlterCount:[[[NSUserDefaults standardUserDefaults] objectForKey:kShareData_UnreadAlterCount] integerValue]];
 }
@@ -353,7 +355,7 @@ DEF_SINGLETON(ProvisionManager);
 }
 
 //获取个人Profile信息
-- (void)getProfileInfo {
+- (void)getProfileInfo:(ActionCompleteBlock)block {
     ProfileAction* action = [[ProfileAction alloc] init];
     
     [YAction startAction:action completionBlock:^(YActionMessage* message) {
@@ -363,10 +365,12 @@ DEF_SINGLETON(ProvisionManager);
             
             [self resetUnreadAlterCount:_profileInfo.unreadAlterCount];
         }
-        //发送通知,告知界面刷新
-        [self postNotificationOnMainThreadName:kNotification_Profile_GetProfile
-                                        object:nil
-                                      userInfo:@{kNotification_Request_Message:message}];
+        //主线程处理界面
+        block(message);
+//        //发送通知,告知界面刷新
+//        [self postNotificationOnMainThreadName:kNotification_Profile_GetProfile
+//                                        object:nil
+//                                      userInfo:@{kNotification_Request_Message:message}];
     }];
 }
 

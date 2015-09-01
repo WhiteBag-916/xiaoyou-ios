@@ -50,7 +50,7 @@ AS_SINGLETON(ProvisionManager);
 //上传标签
 - (void)uploadTagCodes:(NSString *)tagCodes block:(ActionCompleteBlock)block;
 //获取个人Profile信息
-- (void)getProfileInfo;
+- (void)getProfileInfo:(ActionCompleteBlock)block;
 //更新缓存标签
 - (void)updateTagList:(NSArray *)tagList;
 //评论过我的人

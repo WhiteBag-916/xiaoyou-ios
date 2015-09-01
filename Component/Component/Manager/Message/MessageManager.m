@@ -280,7 +280,9 @@ DEF_SINGLETON(MessageManager);
                         }
                     }];
                     
-                    [[ProvisionManager sharedInstance] getProfileInfo];
+                    [[ProvisionManager sharedInstance] getProfileInfo:^(YActionMessage *message) {
+                        
+                    }];
                 }
                 
                 break;
