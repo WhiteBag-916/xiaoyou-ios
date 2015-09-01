@@ -196,6 +196,17 @@ DEF_SINGLETON(MessageManager);
                 }
                 break;
             }
+            case DELETEUSER:
+            {
+                NSString *uid = ext[@"em_apns_ext"][@"em_push_title"];
+                
+                BOOL isDel = [[ContactManager sharedInstance] delUserByUid:uid];
+                if (isDel) {
+                    [[NSNotificationCenter defaultCenter] postNotificationName:kNotification_Refresh_Message object:nil userInfo:nil];
+                }
+                
+                break;
+            }
             default:
             {
                 

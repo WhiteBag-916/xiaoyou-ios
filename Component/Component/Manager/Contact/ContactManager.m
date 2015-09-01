@@ -103,6 +103,26 @@ DEF_SINGLETON(ContactManager);
     return thirdCode;
 }
 
+//删除联系人
+- (BOOL)delUserByUid:(NSString *)uid {
+    __block BOOL isDel = NO;
+    NSMutableArray *linkManListArray = [_linkManModel.linkManList mutableCopy];
+    [linkManListArray enumerateObjectsUsingBlock:^(LinkManList *obj, NSUInteger idx, BOOL *stop) {
+        if ([obj.uid isEqualToString:uid]) {
+            [linkManListArray removeObjectAtIndex:idx];
+            isDel = YES;
+            *stop = YES;
+        }
+    }];
+    
+    if (isDel) {
+        _linkManModel.linkManList = [NSArray arrayWithArray:linkManListArray];
+        [self saveContactsList];
+    }
+    
+    return isDel;
+}
+
 //更新联系人的头像
 - (void)updateContactsHeadImageByThirdCode:(NSString *)thirdCode headImage:(NSString *)headImage {
     for (LinkManList * obj in _linkManModel.linkManList) {
