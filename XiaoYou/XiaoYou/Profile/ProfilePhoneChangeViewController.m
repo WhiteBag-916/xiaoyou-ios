@@ -122,7 +122,7 @@
     //protocolCheckButton
     _protocolCheckButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [_protocolCheckButton setImage:[UIImage imageNamed:@"register-frame-agree"] forState:UIControlStateNormal];
-    [_protocolCheckButton addTarget:self action:@selector(registerDefaults:) forControlEvents:UIControlEventTouchUpInside];
+    [_protocolCheckButton addTarget:self action:@selector(checkButton) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:_protocolCheckButton];
     [_protocolCheckButton mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.view);
