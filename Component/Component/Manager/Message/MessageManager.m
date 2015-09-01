@@ -50,7 +50,7 @@ DEF_SINGLETON(MessageManager);
 
 - (instancetype)init
 {
-    if (self == [super init]) {
+    if (self = [super init]) {
         _grouArray = [NSMutableArray array];
     }
     return self;

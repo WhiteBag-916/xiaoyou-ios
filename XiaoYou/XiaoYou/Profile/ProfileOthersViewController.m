@@ -51,6 +51,7 @@
     return self;
 }
 - (void)viewDidLoad {
+    [super viewDidLoad];
     [self initController];
     [self initView];
 }
@@ -214,6 +215,7 @@
     [self preLoadData];
 }
 - (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
     [self startLoadData];
 }
 @end

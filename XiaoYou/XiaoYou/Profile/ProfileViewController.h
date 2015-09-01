@@ -14,6 +14,6 @@
 
 - (void)startLoadData;
 
-- (void)afterLoadData:(YActionMessage *)message;
+//- (void)afterLoadData:(YActionMessage *)message;
 
 @end

@@ -41,6 +41,7 @@ NSString *const filterIsSelected = @"filterIsSelected";
 }
 
 - (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
     [self resetRightButton];
     
     //拉取筛选条件

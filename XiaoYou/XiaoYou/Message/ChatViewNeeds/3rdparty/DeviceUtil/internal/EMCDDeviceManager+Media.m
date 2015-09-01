@@ -237,9 +237,9 @@ typedef NS_ENUM(NSInteger, EMAudioSession){
         [audioSession setCategory:audioSessionCategory error:nil];
     }
     if (isNeedActive) {
-        BOOL success = [audioSession setActive:isActive
-                                   withOptions:AVAudioSessionSetActiveOptionNotifyOthersOnDeactivation
-                                         error:&error];
+//        BOOL success = [audioSession setActive:isActive
+//                                   withOptions:AVAudioSessionSetActiveOptionNotifyOthersOnDeactivation
+//                                         error:&error];
         /*
         if(!success || error){
             error = [NSError errorWithDomain:NSLocalizedString(@"error.initPlayerFail", @"Failed to initialize AVAudioPlayer")

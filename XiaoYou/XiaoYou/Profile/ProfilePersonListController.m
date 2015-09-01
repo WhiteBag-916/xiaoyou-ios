@@ -32,6 +32,7 @@
     return self;
 }
 - (void)viewDidLoad {
+    [super viewDidLoad];
     [self showCustomNavigationBackButton];
     switch (_type) {
         case 0:
@@ -60,6 +61,7 @@
     self.navigationController.navigationBarHidden = false;
 }
 - (void)viewDidAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
     if (_type == PersonListFeedRespect) {
         [_tableView loadDataWithFeedId:_feedId];
     } else {

@@ -13,6 +13,8 @@
 #import "ConvertToCommonEmoticonsHelper.h"
 #import "RobotManager.h"
 #import "ChatViewController.h"
+#import "ClassList.h"
+#import "ContactManager.h"
 
 @interface SystemMessageTableView ()<UITableViewDataSource,UITableViewDelegate,ApplySuccessSystemMessageTableViewCellDelegat>
 
@@ -161,10 +163,16 @@
 
 -(void)turnToGroupChat:(NSDictionary *) groupDic
 {
-    ChatViewController * chatVC = [[ChatViewController alloc] initWithChatter:groupDic[@"third_code"] isGroup:YES];
-    chatVC.isSystemMessage = NO;
-    chatVC.studentDic = [[self transformDic:groupDic] mutableCopy];
-    [self.myController.navigationController pushViewController:chatVC animated:YES needHiddenBottomBar:YES];
+    ClassList * model =  [[ContactManager sharedInstance] getClassByThirdCode:groupDic[@"group_id"]];
+    if (nil != model) {
+        ChatViewController * chatVC = [[ChatViewController alloc] initWithChatter:groupDic[@"third_code"] isGroup:YES];
+        chatVC.isSystemMessage = NO;
+        chatVC.studentDic = [[model dictionaryRepresentation] mutableCopy];
+        [self.myController.navigationController pushViewController:chatVC animated:YES needHiddenBottomBar:YES];
+    } else {
+        [YUtils showTitle:@"您已不在此社团群聊中"];
+    }
+    
 }
 
 -(NSDictionary *)transformDic:(NSDictionary *) dic

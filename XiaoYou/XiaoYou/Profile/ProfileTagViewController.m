@@ -41,6 +41,7 @@
 }
 
 - (void)viewDidLoad {
+    [super viewDidLoad];
     [self initController];
     [self initView];
 }
@@ -78,6 +79,7 @@
 }
 
 - (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
     if (ProfileTagTypeAssociations == _type) {
         [self initGroupConditions];
     } else if (ProfileTagTypePerson == _type) {
@@ -167,6 +169,7 @@
     }
 }
 - (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
     self.navigationController.navigationBarHidden = false;
     [self showOrignMode];
 }
