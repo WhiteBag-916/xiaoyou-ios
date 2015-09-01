@@ -34,10 +34,6 @@
     
     [self setUpUI];
     
-    
-}
-
-- (void)viewWillAppear:(BOOL)animated {
     [YUtils showHUDWithTitle];
     [[ContactManager sharedInstance] getUserDetailInfo:_uid hxId:_hxId block:^(YActionMessage *message) {
         [YUtils hiddenProgressHUD];
@@ -187,10 +183,8 @@
                 [self.navigationController popViewControllerAnimated:YES];
             }
         }
-        else
-        {
-            [YUtils showTitle:message.desc hideAfter:2];
-        }
+        
+        [YUtils showTitle:message.desc];
         
     }];
 }
