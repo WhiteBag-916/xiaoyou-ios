@@ -69,6 +69,7 @@
         make.bottom.equalTo(self.view).offset(-KBOTTOMHEIGHT);
     }];
 }
+//定制输入框
 - (void)initToolBar {
     _chatToolBar = [[DXMessageToolBar alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height - [DXMessageToolBar defaultHeight], self.view.frame.size.width, KBOTTOMHEIGHT)];
     _chatToolBar.autoresizingMask = UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleRightMargin;
@@ -79,12 +80,13 @@
     _chatToolBar.inputTextView.width += _chatToolBar.inputTextView.originX - _chatToolBar.styleChangeButton.originX + _chatToolBar.faceButton.rightX - _chatToolBar.inputTextView.rightX;
     _chatToolBar.inputTextView.originX = _chatToolBar.styleChangeButton.originX;
     _chatToolBar.faceButton.originX = _chatToolBar.moreButton.originX;
+    _chatToolBar.inputTextView.placeHolder = @"说两句呗";
 }
-
+//默认恢复到回复feed状态
 -(void)keyBoardHidden
 {
     _replyId = nil;
-    _chatToolBar.inputTextView.placeHolder = @"您老人家说两句呗";
+    _chatToolBar.inputTextView.placeHolder = @"说两句呗";
     [_chatToolBar endEditing:YES];
 }
 -(void) changeMode:(NSNotification *)notification{
@@ -95,25 +97,28 @@
 - (void)onNavigationRightButtonClicked {
     [_feedDetailTable openTool];
 }
+//回复处理
 - (void)didSendText:(NSString *)text {
     text = [ConvertToCommonEmoticonsHelper convertToCommonEmoticons:text];
-    if (_replyId.length == 0) {
+    if (_replyId.length == 0) {//回复feed
         [[FeedManager sharedInstance] addComment:_feedId content:text block:^(YActionMessage *message) {
             if (!message.isSuccess) {
                 [YUtils showTitle:message.desc];
             }
+            //恢复到回复feed状态
             _replyId = nil;
-            _chatToolBar.inputTextView.placeHolder = @"您老人家说两句呗";
+            _chatToolBar.inputTextView.placeHolder = @"说两句呗";
             [_chatToolBar endEditing:YES];
             [_feedDetailTable refresh];
         }];
-    } else {
+    } else {//回复人
         [[FeedManager sharedInstance] addReply:_feedId content:text toUserId:_replyId block:^(YActionMessage *message) {
             if (!message.isSuccess) {
                 [YUtils showTitle:message.desc];
             }
+            //恢复到回复feed状态
             _replyId = nil;
-            _chatToolBar.inputTextView.placeHolder = @"您老人家说两句呗";
+            _chatToolBar.inputTextView.placeHolder = @"说两句呗";
             [_chatToolBar endEditing:YES];
             [_feedDetailTable refresh];
         }];
@@ -123,6 +128,7 @@
     [super viewWillAppear:animated];
     self.navigationController.navigationBarHidden = false;
 }
+//准备回复人
 - (void)openInputWithId:(NSString *)userId name:(NSString *)userName {
     _replyId = userId;
     _chatToolBar.inputTextView.placeHolder =[NSString stringWithFormat:@"回复：%@", userName];
