@@ -85,6 +85,9 @@
     [self initBottom];
     [self prepareLoadData];
 }
+- (void)refreshData:(NSNotification *)notification {
+    [self afterLoadData:[notification userInfo][kNotification_Request_Message]];
+}
 - (void)prepareLoadData {
     _loadingView = [[UIView alloc] init];
     [self.view addSubview:_loadingView];
@@ -102,19 +105,17 @@
         _loadingView.hidden = false;
         _hud = [YUtils showHUDAddedTo:self.view title:@"正在加载" animated:true];
     }
+    [[ProvisionManager sharedInstance] getProfileInfo:^(YActionMessage *message) {
+        [_hud removeFromSuperview];
+        _loadingView.hidden = true;
+        if (message.isSuccess) {
+            [self loadData:message.object];
+        } else {
+            [YUtils showTitle:message.desc];
+        }
+    }];
 }
-- (void)afterLoadData:(YActionMessage *)message {
-    [_hud removeFromSuperview];
-    _loadingView.hidden = true;
-    if (message.isSuccess) {
-        [self loadData:message.object];
-    } else {
-        [YUtils showTitle:message.desc];
-    }
-}
-- (void)refreshData:(NSNotification *)notification {
-    [self afterLoadData:[notification userInfo][kNotification_Request_Message]];
-}
+
 - (void)loadData:(ProfileInfo *)info {
     [_headImg setFaceImageWithUrl:info.headPic];
     _userName.text = info.userName;
