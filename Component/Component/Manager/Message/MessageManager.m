@@ -198,10 +198,11 @@ DEF_SINGLETON(MessageManager);
             }
             case DELETEUSER:
             {
-                NSString *uid = ext[@"em_apns_ext"][@"em_push_title"];
+                NSString *thirdCode = ext[@"em_apns_ext"][@"em_push_title"];
                 
-                BOOL isDel = [[ContactManager sharedInstance] delUserByUid:uid];
+                BOOL isDel = [[ContactManager sharedInstance] delUserByThirdCode:thirdCode];
                 if (isDel) {
+                    [[EaseMob sharedInstance].chatManager removeConversationByChatter:thirdCode deleteMessages:YES append2Chat:YES];
                     [[NSNotificationCenter defaultCenter] postNotificationName:kNotification_Refresh_Message object:nil userInfo:nil];
                 }
                 

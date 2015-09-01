@@ -26,7 +26,7 @@ AS_SINGLETON(ContactManager);
 - (NSString *)delClassListByGroupCode:(NSString *)name;
 
 //删除联系人
-- (BOOL)delUserByUid:(NSString *)uid;
+- (BOOL)delUserByThirdCode:(NSString *)thirdCode;
 
 //更新联系人的头像
 - (void)updateContactsHeadImageByThirdCode:(NSString *)thirdCode headImage:(NSString *)headImage;
