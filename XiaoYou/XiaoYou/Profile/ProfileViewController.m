@@ -78,9 +78,7 @@
     [self initBottom];
     [self prepareLoadData];
 }
-- (void)refreshData:(NSNotification *)notification {
-    [self afterLoadData:[notification userInfo][kNotification_Request_Message]];
-}
+//刷新准备
 - (void)prepareLoadData {
     _loadingView = [[UIView alloc] init];
     [self.view addSubview:_loadingView];
@@ -91,6 +89,7 @@
     _loadingView.backgroundColor = [UIColor whiteColor];
     _loadingView.hidden = true;
 }
+//刷新数据
 - (void)startLoadData {
     if ([[ProvisionManager sharedInstance] getProfile] != nil) {
         [self loadData:[[ProvisionManager sharedInstance] getProfile]];
@@ -108,7 +107,7 @@
         }
     }];
 }
-
+//加载数据
 - (void)loadData:(ProfileInfo *)info {
     [_headImg setFaceImageWithUrl:info.headPic];
     _userName.text = info.userName;
@@ -143,6 +142,7 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     self.navigationController.navigationBarHidden = true;
+    [self startLoadData];
 }
 
 - (void)initScroll {
@@ -395,10 +395,6 @@
     return right;
 }
 
-
-- (void)viewDidAppear:(BOOL)animated {
-    [self startLoadData];
-}
 //选择标签
 - (void)openTagList {
     UINavigationController *navigationController =
