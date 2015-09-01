@@ -8,6 +8,6 @@
 
 #import "YHTTPRequestAction.h"
 
-@interface SuggestListAction : YHTTPRequestAction
+@interface SuggestListAction : YHTTPRequestAction<YAction>
 
 @end

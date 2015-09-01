@@ -22,14 +22,16 @@
 @property (nonatomic, strong) UIButton *addButton; //一键入社
 @property (nonatomic, strong) NSString *uid;//社团id
 @property (nonatomic, strong) GroupModel *groupModel;//详情
+@property (nonatomic, strong) NSString *name;
 
 @end
 
 @implementation AssociationsDetailViewController
 
-- (instancetype)initWithId:(NSString *)uid {
+- (instancetype)initWithId:(NSString *)uid name:(NSString *)name {
     if (self = [super init]) {
         _uid = uid;
+        _name = name;
     }
     return self;
 }
@@ -38,7 +40,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    self.title = @"网球社";
+    self.title = _name;
     [self showCustomNavigationBackButton];
     [self showCustomNavigationMoreButton];
     
@@ -64,7 +66,7 @@
 - (void)initView {
     //button
     _addButton =[UIButton buttonWithType:UIButtonTypeCustom];
-    [_addButton setTitle:@"一键申请加入网球社" forState:UIControlStateNormal];
+    [_addButton setTitle:[NSString stringWithFormat:@"一键申请加入%@", _name] forState:UIControlStateNormal];
     [_addButton setTitleColor:KCOLORWHITE forState:UIControlStateNormal];
     [_addButton setBackgroundImage:[UIImage imageNamed:@"contacts_bottom"] forState:UIControlStateNormal];
     [_addButton addTarget:self action:@selector(pressAddButton) forControlEvents:UIControlEventTouchUpInside];

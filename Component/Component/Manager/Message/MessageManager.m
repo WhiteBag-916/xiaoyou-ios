@@ -142,12 +142,14 @@ DEF_SINGLETON(MessageManager);
             //取群组id，进行管理
             [self initGroupIdArray];
             
-            [self updateMessage];
+            //避免插入过晚
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                [self updateMessage];
+            });
+            
         } else if (nil != error) {
             [[NSNotificationCenter defaultCenter] postNotificationName:kNotification_Refresh_Message object:nil userInfo:@{kNotification_Request_Error:error}];
         }
-        
-        [self setupUnreadMessageCount];
     } onQueue:nil];
 }
 
@@ -212,6 +214,8 @@ DEF_SINGLETON(MessageManager);
 - (void)updateMessage {
     [[EaseMob sharedInstance].chatManager loadAllConversationsFromDatabaseWithAppend2Chat:YES];
     [[NSNotificationCenter defaultCenter] postNotificationName:kNotification_Refresh_Message object:nil userInfo:nil];
+    
+    [self setupUnreadMessageCount];
 }
 
 //会话列表信息更新时的回调
@@ -383,8 +387,6 @@ DEF_SINGLETON(MessageManager);
         [message updateMessageExtToDB];
         
         [self updateMessage];
-        
-        [self setupUnreadMessageCount];
     }
     
 #if !TARGET_IPHONE_SIMULATOR

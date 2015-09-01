@@ -10,6 +10,6 @@
 
 @interface AssociationsDetailViewController : YViewController
 
-- (instancetype)initWithId:(NSString *)uid;
+- (instancetype)initWithId:(NSString *)uid name:(NSString *)name;
 
 @end
