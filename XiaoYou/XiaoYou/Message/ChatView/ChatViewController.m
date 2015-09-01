@@ -280,15 +280,19 @@
     if (url.length > 0) {
         [_headImageView setFaceImageWithUrl:url];
     } else {
-        [detailButton setBackgroundColor:KCOLORGREEN_009688];
-        [detailButton setTitleEdgeInsets:UIEdgeInsetsMake(0, 0, 4, 20)];
-        if ([_studentDic[@"linkType"] doubleValue] == 1)
-        {
-            [detailButton setTitle:@"班" forState:UIControlStateNormal];
-        }
-        else
-        {
-            [detailButton setTitle:[_studentDic[@"name"] substringWithRange:NSMakeRange(0, 1)] forState:UIControlStateNormal];
+        if (eMessageTypeGroupChat == _conversation.latestMessage.messageType) {
+            [detailButton setBackgroundColor:KCOLORGREEN_009688];
+            [detailButton setTitleEdgeInsets:UIEdgeInsetsMake(0, 0, 4, 20)];
+            if ([_studentDic[@"linkType"] doubleValue] == 1)
+            {
+                [detailButton setTitle:@"班" forState:UIControlStateNormal];
+            }
+            else
+            {
+                [detailButton setTitle:[_studentDic[@"name"] substringWithRange:NSMakeRange(0, 1)] forState:UIControlStateNormal];
+            }
+        } else {
+            [_headImageView setFaceImageWithUrl:_conversation.latestMessageFromOthers.ext[@"headImage"]];
         }
     }
     

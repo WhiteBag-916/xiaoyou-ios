@@ -283,7 +283,7 @@ DEF_SINGLETON(MessageManager);
                 }];
                 
                 if ([SStr(chatter) isEmpty]) {
-                    chatter = [NSString stringWithFormat:@"%u", [KGROUP_APPLYID integerValue]+_grouArray.count];
+                    chatter = [NSString stringWithFormat:@"%lu", [KGROUP_APPLYID integerValue]+_grouArray.count];
                     [_grouArray addObject:@{@"group_id":ext[@"group_id"], @"chatter": chatter}];
                 }
                 
@@ -319,10 +319,11 @@ DEF_SINGLETON(MessageManager);
         } else if (eMessageTypeChat == message.messageType) {
             
             EMTextMessageBody * body = message.messageBodies.lastObject;
-            if (message.messageType == eMessageBodyType_Text)
+            if (body.messageBodyType == eMessageBodyType_Text)
             {
                 if ([body.text isEqualToString:@"我通过你的好友请求啦，聊聊呗"])
                 {
+                    //别人同意添加你为好友 
                     [[ContactManager sharedInstance] getContactsListData:^(YActionMessage *message) {
                         if (message.isSuccess)
                         {
@@ -405,6 +406,9 @@ DEF_SINGLETON(MessageManager);
     }
     
     [[NSNotificationCenter defaultCenter] postNotificationName:KNotification_Message_unread object:nil userInfo:@{@"unread":@(unreadCount)}];
+    
+    UIApplication *application = [UIApplication sharedApplication];
+    [application setApplicationIconBadgeNumber:unreadCount];
 }
 
 
