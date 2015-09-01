@@ -58,7 +58,7 @@
 }
 
 - (void)onNavigationLeftButtonClicked {
-    if (0 == [_groupApplyTableView getData].count) {
+    if (0 == [_groupApplyTableView getData].count && ![_groupApplyTableView isHeaderRefresh]) {
         [[EaseMob sharedInstance].chatManager removeConversationByChatter:_chatter deleteMessages:YES append2Chat:NO];
     }
     

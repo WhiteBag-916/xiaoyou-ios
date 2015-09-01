@@ -59,7 +59,7 @@ DEF_SINGLETON(MessageManager);
 
 - (void)getMessageListData:(ActionCompleteBlock)block
 {
-    MessageListAction * action = [[SuggestListAction alloc] init];
+    MessageListAction * action = [[MessageListAction alloc] init];
     [YAction startAction:action completionBlock:^(YActionMessage* message) {
         //子线程处理数据
         [YQueue dispatchInSyncQueueWithQueueType:kMessageManagerSyncQueue block:^{
@@ -142,12 +142,14 @@ DEF_SINGLETON(MessageManager);
             //取群组id，进行管理
             [self initGroupIdArray];
             
-            [self updateMessage];
+            //避免插入过晚
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                [self updateMessage];
+            });
+            
         } else if (nil != error) {
             [[NSNotificationCenter defaultCenter] postNotificationName:kNotification_Refresh_Message object:nil userInfo:@{kNotification_Request_Error:error}];
         }
-        
-        [self setupUnreadMessageCount];
     } onQueue:nil];
 }
 
@@ -212,6 +214,8 @@ DEF_SINGLETON(MessageManager);
 - (void)updateMessage {
     [[EaseMob sharedInstance].chatManager loadAllConversationsFromDatabaseWithAppend2Chat:YES];
     [[NSNotificationCenter defaultCenter] postNotificationName:kNotification_Refresh_Message object:nil userInfo:nil];
+    
+    [self setupUnreadMessageCount];
 }
 
 //会话列表信息更新时的回调
@@ -305,7 +309,7 @@ DEF_SINGLETON(MessageManager);
                 }];
                 
                 if ([SStr(chatter) isEmpty]) {
-                    chatter = [NSString stringWithFormat:@"%u", [KGROUP_APPLYID integerValue]+_grouArray.count];
+                    chatter = [NSString stringWithFormat:@"%lu", [KGROUP_APPLYID integerValue]+_grouArray.count];
                     [_grouArray addObject:@{@"group_id":ext[@"group_id"], @"chatter": chatter}];
                 }
                 
@@ -341,10 +345,11 @@ DEF_SINGLETON(MessageManager);
         } else if (eMessageTypeChat == message.messageType) {
             
             EMTextMessageBody * body = message.messageBodies.lastObject;
-            if (message.messageType == eMessageBodyType_Text)
+            if (body.messageBodyType == eMessageBodyType_Text)
             {
                 if ([body.text isEqualToString:@"我通过你的好友请求啦，聊聊呗"])
                 {
+                    //别人同意添加你为好友 
                     [[ContactManager sharedInstance] getContactsListData:^(YActionMessage *message) {
                         if (message.isSuccess)
                         {
@@ -382,8 +387,6 @@ DEF_SINGLETON(MessageManager);
         [message updateMessageExtToDB];
         
         [self updateMessage];
-        
-        [self setupUnreadMessageCount];
     }
     
 #if !TARGET_IPHONE_SIMULATOR
@@ -427,6 +430,9 @@ DEF_SINGLETON(MessageManager);
     }
     
     [[NSNotificationCenter defaultCenter] postNotificationName:KNotification_Message_unread object:nil userInfo:@{@"unread":@(unreadCount)}];
+    
+    UIApplication *application = [UIApplication sharedApplication];
+    [application setApplicationIconBadgeNumber:unreadCount];
 }
 
 

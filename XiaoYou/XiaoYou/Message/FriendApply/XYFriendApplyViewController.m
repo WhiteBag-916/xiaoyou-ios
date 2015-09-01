@@ -11,6 +11,7 @@
 #import "YCommonActionSheet.h"
 #import "ContactManager.h"
 #import "ApplicantList.h"
+#import "YTableView.h"
 
 @interface XYFriendApplyViewController ()
 
@@ -57,7 +58,7 @@
 }
 
 - (void)onNavigationLeftButtonClicked {
-    if (0 == [_friendApplyTableView getDataSource].count) {
+    if (0 == [_friendApplyTableView getDataSource].count && ![_friendApplyTableView isHeaderRefresh]) {
         [[EaseMob sharedInstance].chatManager removeConversationByChatter:_chatter deleteMessages:YES append2Chat:NO];
     }
     
