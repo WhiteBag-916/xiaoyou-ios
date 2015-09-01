@@ -305,7 +305,7 @@
 }
 -(void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
+    if (editingStyle == UITableViewCellEditingStyleDelete && _messageDataSource.count > indexPath.row) {
         EMConversation *converation = [_messageDataSource objectAtIndex:indexPath.row];
         //删除前清空该回话未读数
         [converation markAllMessagesAsRead:YES];
