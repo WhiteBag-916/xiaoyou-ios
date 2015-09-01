@@ -64,6 +64,7 @@
     }
 }
 - (void)onNavigationRightButtonClicked {
+    _needRefresh = true;
     UINavigationController *navigationController =
     [[UINavigationController alloc] initWithRootViewController:[[FeedPublishViewController alloc] init]];
     [self.navigationController presentViewController:navigationController animated:YES completion:nil];
