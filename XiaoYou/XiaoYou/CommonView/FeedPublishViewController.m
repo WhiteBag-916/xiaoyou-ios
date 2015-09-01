@@ -76,8 +76,6 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     [self initView];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showAddPicList) name:KNotification_Present_TakePhoto object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changeMode:) name:@"UITextInputCurrentInputModeDidChangeNotification" object:nil];
 }
 -(void) changeMode:(NSNotification *)notification{
     if ([[[UITextInputMode currentInputMode] primaryLanguage] isEqualToString:@"emoji"]) {
@@ -421,6 +419,8 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [self showEditMode];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showAddPicList) name:KNotification_Present_TakePhoto object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changeMode:) name:@"UITextInputCurrentInputModeDidChangeNotification" object:nil];
 }
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
