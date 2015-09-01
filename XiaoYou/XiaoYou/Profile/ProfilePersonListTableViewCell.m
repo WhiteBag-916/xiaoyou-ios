@@ -116,6 +116,7 @@ NSString *const kProfilePersonListTableViewCell = @"kProfilePersonListTableViewC
     [_tagView setData:author.tagsCommon];
     [_connect updateWithTag:author.propetiesCommon];
     
+    _genderLabel.text = author.gender;
     _genderLabel.hidden = !needShowGender;
     if (needShowGender) {
         [_tagView mas_updateConstraints:^(MASConstraintMaker *make) {

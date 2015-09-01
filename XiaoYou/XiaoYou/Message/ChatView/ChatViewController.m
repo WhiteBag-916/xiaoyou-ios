@@ -337,6 +337,8 @@
 {
     [super viewWillDisappear:animated];
     
+    [_chatToolBar.inputTextView resignFirstResponder];
+    
     // 设置当前conversation的所有message为已读
     [_conversation markAllMessagesAsRead:YES];
     [[EMCDDeviceManager sharedInstance] disableProximitySensor];
