@@ -228,9 +228,9 @@
     }
     
     //判断是否为好友,输入框置灰
-    if (![self isChatGroup])
+//    if (![self isChatGroup])
     {
-        if (![[ContactManager sharedInstance] isFriendRelationShip:_studentDic[@"uid"]])
+        if (nil == _studentDic)
         {
             UIView * blackView = [[UIView alloc] initWithFrame:_chatToolBar.bounds];
             blackView.backgroundColor = [UIColor blackColor];
@@ -266,7 +266,9 @@
     NSString *name = _studentDic[@"name"];
     if (name.length > 0) {
         self.title = _studentDic[@"name"];
-    } else {
+    } else if ([_conversation.latestMessageFromOthers.ext[@"groupName"] length] > 0) {
+        self.title = _conversation.latestMessageFromOthers.ext[@"groupName"];
+    }else {
         self.title = _conversation.latestMessageFromOthers.ext[@"userName"];
     }
     _headImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 40, 40)];
@@ -289,7 +291,12 @@
             }
             else
             {
-                [detailButton setTitle:[_studentDic[@"name"] substringWithRange:NSMakeRange(0, 1)] forState:UIControlStateNormal];
+                if (name.length > 0) {
+                    [detailButton setTitle:[_studentDic[@"name"] substringWithRange:NSMakeRange(0, 1)] forState:UIControlStateNormal];
+                } else {
+                    [detailButton setTitle:[_conversation.latestMessageFromOthers.ext[@"groupName"] substringWithRange:NSMakeRange(0, 1)] forState:UIControlStateNormal];
+                }
+                
             }
         } else {
             [_headImageView setFaceImageWithUrl:_conversation.latestMessageFromOthers.ext[@"headImage"]];
@@ -1838,6 +1845,8 @@
     [extDic setObject:[[ProvisionManager sharedInstance] getLoginInfo].studentName forKey:@"userName"];
     if ([self messageType] == eMessageTypeGroupChat) {
         [extDic setObject:@{@"em_push_title":[NSString stringWithFormat:@"%@给你发来一条新消息", _studentDic[@"name"]]} forKey:@"em_apns_ext"];
+        [extDic setObject:_studentDic[@"icon"] forKey:@"groupIcon"];
+        [extDic setObject:_studentDic[@"name"] forKey:@"groupName"];
     } else {
         __block BOOL needIgorePush = NO;
         [[[ContactManager sharedInstance] getForbiddenMeList] enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
