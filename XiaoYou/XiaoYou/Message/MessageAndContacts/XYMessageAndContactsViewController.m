@@ -68,7 +68,7 @@
     if (needRemoveConversations.count > 0) {
         [[EaseMob sharedInstance].chatManager removeConversationsByChatters:needRemoveConversations
                                                              deleteMessages:YES
-                                                                append2Chat:YES];
+                                                                append2Chat:NO];
     }
 }
 
@@ -123,7 +123,7 @@
 - (NSMutableArray *)loadDataSource
 {
     NSMutableArray *ret = nil;
-    NSMutableArray *conversations = [[NSMutableArray alloc] initWithArray:[[EaseMob sharedInstance].chatManager conversations]];
+    NSMutableArray *conversations = [[NSMutableArray alloc] initWithArray:[[EaseMob sharedInstance].chatManager loadAllConversationsFromDatabaseWithAppend2Chat:YES]];
     
     for (EMConversation *conversation in conversations) {
         if ([conversation.chatter isEqualToString:KSYSTEM_MESSAGEID])

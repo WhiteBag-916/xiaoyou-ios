@@ -41,18 +41,23 @@
     [self initSearchBtn];
     [self initBottomView];
     [self initTableView];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(refreshData)
+                                                 name:kNotification_Profile_GetProfile
+                                               object:nil];
 }
-
-- (void)viewWillAppear:(BOOL)animated {
-    _notifyCount.text = [[YShareData defaultData][kShareData_UnreadAlterCount] stringValue];
-    
-    [[NSNotificationCenter defaultCenter] addObserverForName:KNotification_Update_UnreadAlterCount object:nil queue:nil usingBlock:^(NSNotification *note) {
-        _notifyCount.text = [[YShareData defaultData][kShareData_UnreadAlterCount] stringValue];
-    }];
-}
-
-- (void)viewDidAppear:(BOOL)animated {
+- (void)dealloc {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+- (void)viewWillAppear:(BOOL)animated {
+    [self refreshData];
+    _notifyCount.text = [[YShareData defaultData][kShareData_UnreadAlterCount] stringValue];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(checkUnreadAlterCount) name:KNotification_Update_UnreadAlterCount object:nil];
+}
+
+
+- (void)checkUnreadAlterCount {
+    _notifyCount.text = [[YShareData defaultData][kShareData_UnreadAlterCount] stringValue];
 }
 
 - (void)initHeaderView {

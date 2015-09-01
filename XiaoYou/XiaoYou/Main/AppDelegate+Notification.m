@@ -65,6 +65,9 @@
 {
     YLogI(@"didReceiveRemoteNotification : %@", userInfo);
     
+    [[UIApplication sharedApplication] setApplicationIconBadgeNumber:1];
+    [[UIApplication sharedApplication] setApplicationIconBadgeNumber:0];
+    
 //    NSError *parseError = nil;
 //    NSData  *jsonData = [NSJSONSerialization dataWithJSONObject:userInfo
 //                                                        options:NSJSONWritingPrettyPrinted error:&parseError];
@@ -76,6 +79,18 @@
 //                                          cancelButtonTitle:NSLocalizedString(@"ok", @"OK")
 //                                          otherButtonTitles:nil];
 //    [alert show];
+}
+
+
+- (void)updateBadgeNum
+{
+    NSArray *conversations = [[[EaseMob sharedInstance] chatManager] conversations];
+    int unreadCount = 0;
+    for (EMConversation *conversation in conversations) {
+        unreadCount += conversation.unreadMessagesCount;
+    }
+    
+    [[UIApplication sharedApplication] setApplicationIconBadgeNumber:unreadCount];
 }
 
 // 监听系统生命周期回调，以便将需要的事件传给SDK
@@ -152,6 +167,8 @@
 - (void)appWillResignActiveNotif:(NSNotification*)notif
 {
     [[EaseMob sharedInstance] applicationWillResignActive:notif.object];
+    
+    [self updateBadgeNum];
 }
 
 - (void)appDidReceiveMemoryWarning:(NSNotification*)notif
