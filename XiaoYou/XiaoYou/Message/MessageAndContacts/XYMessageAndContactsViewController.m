@@ -76,7 +76,6 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshMeesageRes:) name:kNotification_Refresh_Message object:nil];
-    [self removeEmptyConversationsFromDB];
     [self refreshDataSource];
     [[MessageManager sharedInstance] setupUnreadMessageCount];
     
@@ -115,6 +114,8 @@
 //刷新数据源
 -(void)refreshDataSource
 {
+    [[EaseMob sharedInstance].chatManager loadAllConversationsFromDatabaseWithAppend2Chat:YES];
+    [self removeEmptyConversationsFromDB];
     [_messageTableView refreshTableView:[self loadDataSource] AndHeaderModel:_systemMessage];
     [_contactsTableView refreshTableView:[[ContactManager sharedInstance] getContactsListData]];
     [self hideHud];
@@ -123,7 +124,7 @@
 - (NSMutableArray *)loadDataSource
 {
     NSMutableArray *ret = nil;
-    NSMutableArray *conversations = [[NSMutableArray alloc] initWithArray:[[EaseMob sharedInstance].chatManager loadAllConversationsFromDatabaseWithAppend2Chat:YES]];
+    NSMutableArray *conversations = [[NSMutableArray alloc] initWithArray:[[EaseMob sharedInstance].chatManager conversations]];
     
     for (EMConversation *conversation in conversations) {
         if ([conversation.chatter isEqualToString:KSYSTEM_MESSAGEID])
