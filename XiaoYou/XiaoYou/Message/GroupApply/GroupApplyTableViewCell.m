@@ -129,7 +129,7 @@ NSString *const kGroupApplyTableViewCell = @"GroupApplyTableViewCellId";
         }];
         _tagContent.maxLines = 2;
         _tagContent.insets = 21;
-        _tagContent.lineSpace = -5;
+        _tagContent.lineSpace = -8;
         _tagContent.singleLine = false;
         _tagContent.preferredMaxLayoutWidth = SCALE_NUM(230);
         
