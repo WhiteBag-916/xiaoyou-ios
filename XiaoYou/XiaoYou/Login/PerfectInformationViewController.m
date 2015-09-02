@@ -144,6 +144,7 @@
 }
 
 - (void)loadTag {
+    [_tagView removeAllTags];
     [_tagsArray enumerateObjectsUsingBlock:^(NSDictionary *obj, NSUInteger idx, BOOL *stop) {
         Tags *tags = obj[tagObj];
         SKTag *tag = [SKTag tagWithText:tags.name];

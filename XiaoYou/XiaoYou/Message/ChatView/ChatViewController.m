@@ -918,7 +918,7 @@
                 if (!error) {
                     [weakSelf reloadTableViewDataWithMessage:model.message];
                 }else{
-                    [weakSelf showHint:NSLocalizedString(@"message.thumImageFail", @"thumbnail for failure!")];
+                    [weakSelf showHint:@"获取缩略图"];
                 }
                 
             } onQueue:nil];
@@ -931,7 +931,7 @@
                 if (!error) {
                     [weakSelf reloadTableViewDataWithMessage:model.message];
                 }else{
-                    [weakSelf showHint:NSLocalizedString(@"message.thumImageFail", @"thumbnail for failure!")];
+                    [weakSelf showHint:@"获取缩略图"];
                 }
             } onQueue:nil];
         }
@@ -1540,7 +1540,7 @@
         }
         else
         {
-            [weakSelf showHint:@"thumbnail for failure!"];
+            [weakSelf showHint:@"获取缩略图"];
         }
     };
     
