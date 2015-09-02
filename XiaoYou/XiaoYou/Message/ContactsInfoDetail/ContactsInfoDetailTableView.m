@@ -19,7 +19,7 @@
 
 #define kHeaderViewHeight              90
 #define kHeadWidthAndHeight            46
-#define kNameLabelWidth                80
+#define kNameLabelWidth                120
 #define kHeadCornerRadius              23
 #define kPaddingDistance               12
 #define kLabelHeightDistacnce          14
