@@ -32,6 +32,8 @@ NSString *const filterIsSelected = @"filterIsSelected";
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(tokenFail) name:kNotification_Server_Token_Fail object:nil];
+    
     self.title = @"筛选条件";
     [self showCustomNavigationCancelButton];
     [self showCustomNavigationSureButton];
@@ -47,12 +49,9 @@ NSString *const filterIsSelected = @"filterIsSelected";
     
     //拉取筛选条件
     [self friendsConditionRequest];
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(tokenFail) name:kNotification_Server_Token_Fail object:nil];
 }
 
-- (void)viewWillDisappear:(BOOL)animated {
-    [super viewWillDisappear:animated];
+- (void)dealloc {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
