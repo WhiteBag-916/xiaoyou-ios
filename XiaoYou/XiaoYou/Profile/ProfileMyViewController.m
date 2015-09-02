@@ -56,9 +56,6 @@
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(tokenFail) name:kNotification_Server_Token_Fail object:nil];
-    
     self.view.backgroundColor = KCOLORWHITE;
     [self initView];
 }
@@ -66,8 +63,10 @@
     [super viewWillAppear:animated];
     self.navigationController.navigationBarHidden = true;
     [self loadData];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(tokenFail) name:kNotification_Server_Token_Fail object:nil];
 }
-- (void)dealloc {
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 - (void)tokenFail {
