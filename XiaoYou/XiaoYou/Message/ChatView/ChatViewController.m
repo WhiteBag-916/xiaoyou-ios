@@ -195,6 +195,7 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(exitGroup) name:@"ExitGroup" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(insertCallMessage:) name:@"insertCallMessage" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(applicationDidEnterBackground) name:@"applicationDidEnterBackground" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(tokenFail) name:kNotification_Server_Token_Fail object:nil];
     
     _messageQueue = dispatch_queue_create("easemob.com", NULL);
     _isScrollToBottom = YES;
@@ -333,7 +334,6 @@
         _isScrollToBottom = YES;
     }
     self.isInvisible = NO;
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(tokenFail) name:kNotification_Server_Token_Fail object:nil];
 }
 
 - (void)tokenFail {
@@ -355,12 +355,12 @@
     [_conversation markAllMessagesAsRead:YES];
     [[EMCDDeviceManager sharedInstance] disableProximitySensor];
     self.isInvisible = YES;
-    
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 - (void)dealloc
 {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    
     _tableView.delegate = nil;
     _tableView.dataSource = nil;
     _tableView = nil;
