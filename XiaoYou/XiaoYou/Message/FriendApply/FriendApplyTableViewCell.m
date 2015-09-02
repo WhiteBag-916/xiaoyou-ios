@@ -150,11 +150,7 @@ typedef enum : NSUInteger {
         _tagContent.insets = 21;
         _tagContent.lineSpace = -5;
         _tagContent.singleLine = false;
-<<<<<<< HEAD
         _tagContent.preferredMaxLayoutWidth = SCALE_NUM(240);
-=======
-        _tagContent.preferredMaxLayoutWidth = SCALE_NUM(250);
->>>>>>> 7aa399159ba34af247e7b23435012a0f6fc0f37b
         
         //大Button
         _afterDealButton = [[UIButton alloc] init];
