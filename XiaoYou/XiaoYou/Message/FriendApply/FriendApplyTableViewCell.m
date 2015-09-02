@@ -150,7 +150,7 @@ typedef enum : NSUInteger {
         _tagContent.insets = 21;
         _tagContent.lineSpace = -5;
         _tagContent.singleLine = false;
-        _tagContent.preferredMaxLayoutWidth = SCALE_NUM(230);
+        _tagContent.preferredMaxLayoutWidth = SCALE_NUM(240);
         
         //大Button
         _afterDealButton = [[UIButton alloc] init];
@@ -356,5 +356,9 @@ typedef enum : NSUInteger {
     
     return extDic;
 }
-
+- (void)layoutSubviews {
+    [super layoutSubviews];
+    NSLog(@"%f", SCALE_NUM(240));
+    NSLog(@"%f", _tagContent.width);
+}
 @end

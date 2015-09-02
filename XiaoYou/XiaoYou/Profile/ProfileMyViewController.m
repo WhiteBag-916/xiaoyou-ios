@@ -93,7 +93,7 @@
     scroll.showsVerticalScrollIndicator = false;
     [scroll mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.right.bottom.equalTo(self.view);
-        make.top.equalTo(self.view).offset(-20);
+        make.top.equalTo(self.view).offset(0);
     }];
     _containerView = [[UIView alloc] init];
     [scroll addSubview:_containerView];
