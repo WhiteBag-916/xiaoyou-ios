@@ -163,7 +163,7 @@
 
 -(void)turnToGroupChat:(NSDictionary *) groupDic
 {
-    ClassList * model =  [[ContactManager sharedInstance] getClassByThirdCode:[groupDic[@"group_id"] doubleValue]];
+    ClassList * model =  [[ContactManager sharedInstance] getClassByThirdCode:groupDic[@"group_id"]];
     if (nil != model) {
         ChatViewController * chatVC = [[ChatViewController alloc] initWithChatter:groupDic[@"third_code"] isGroup:YES];
         chatVC.isSystemMessage = NO;

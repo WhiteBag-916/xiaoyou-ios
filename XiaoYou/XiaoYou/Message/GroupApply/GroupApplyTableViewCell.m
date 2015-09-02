@@ -316,7 +316,8 @@ NSString *const kGroupApplyTableViewCell = @"GroupApplyTableViewCellId";
 
 - (void)toChat
 {
-    ClassList * model =  [[ContactManager sharedInstance] getClassByThirdCode:_applicantList.groupId];
+    NSString * groupThirdId = [NSString stringWithFormat:@"%g",_applicantList.groupId];
+    ClassList * model =  [[ContactManager sharedInstance] getClassByThirdCode:groupThirdId];
     ChatViewController * chatVC = [[ChatViewController alloc] initWithChatter:model.thirdCode isGroup:YES];
     chatVC.isSystemMessage = NO;
     chatVC.studentDic = (NSMutableDictionary *)[model dictionaryRepresentation];
