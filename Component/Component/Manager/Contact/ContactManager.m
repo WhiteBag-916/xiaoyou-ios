@@ -67,11 +67,11 @@ DEF_SINGLETON(ContactManager);
     return linkManList;
 }
 //通过thirdCode获取群信息
-- (ClassList *)getClassByThirdCode:(NSString *)gid {
+- (ClassList *)getClassByThirdCode:(double)gid {
     ClassList *classList;
     
     for (ClassList * obj in _linkManModel.unionList) {
-        if ([gid isEqualToString:[NSString stringWithFormat:@"%g",obj.internalBaseClassIdentifier]])
+        if (gid == obj.internalBaseClassIdentifier)
         {
             classList = obj;
             break;

@@ -20,7 +20,7 @@ AS_SINGLETON(ContactManager);
 //通过thirdCode获取联系人
 - (LinkManList *)getManByThirdCode:(NSString *)thirdCode;
 //通过thirdCode获取群信息
-- (ClassList *)getClassByThirdCode:(NSString *)gid;
+- (ClassList *)getClassByThirdCode:(double)gid;
 //通过id获取联系人
 - (LinkManList *)getManById:(NSString *)uid;
 
