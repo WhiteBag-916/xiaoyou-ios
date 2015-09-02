@@ -367,7 +367,7 @@
             }
         }];
     }else{
-        UIImagePickerController *self.picker = [[UIImagePickerController alloc] init];
+        self.picker = [[UIImagePickerController alloc] init];
         [self.picker setSourceType:UIImagePickerControllerSourceTypeCamera];
         self.picker.delegate = self;
         [self presentViewController:self.picker animated:YES completion:nil];
