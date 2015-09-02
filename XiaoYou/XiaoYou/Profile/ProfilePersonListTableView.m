@@ -18,7 +18,7 @@
 @interface ProfilePersonListTableView()<UITableViewDataSource, UITableViewDelegate>
 @property (nonatomic, assign) int type;
 @property (nonatomic, strong) NSString *feedId;
-@property (nonatomic, strong) NSMutableArray *personListArray;
+@property (nonatomic, strong) NSMutableArray *personListArray;      //列表数据源
 @property (nonatomic, strong) NSDictionary *conditionDic;           //筛选条件
 @property (nonatomic, strong) NSString *queryCode;
 

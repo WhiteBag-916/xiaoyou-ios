@@ -24,7 +24,9 @@ NSString *const KProfileFeedCell = @"KProfileFeedCell";
 #define KDATEMARGIN_LEFT SCALE_NUM(5)
 #define KDATEMIDMARGIN SCALE_NUM(10)
 @interface ProfileFeedCell()
+//feed内容
 @property (nonatomic, strong) ProfileFeedContentView *content;
+//年月日信息
 @property (nonatomic, strong) UILabel *yearLabel;
 @property (nonatomic, strong) UILabel *monthLabel;
 @property (nonatomic, strong) UILabel *dayLabel;

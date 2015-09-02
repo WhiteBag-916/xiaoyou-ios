@@ -39,22 +39,23 @@
 
 @interface FeedPublishViewController()<UIImagePickerControllerDelegate, UITextViewDelegate>
 
-
+//布局用的view
 @property (nonatomic, strong) UIView *groupView;
 @property (nonatomic, strong) UIView *contentView;
 @property (nonatomic, strong) UIView *bottomView;
-@property (nonatomic, strong) YTextView *textView;
-@property (nonatomic, strong) FeedImageGroup *imgGroup;
-@property (nonatomic, strong) SKTagView *tagView;
-@property (nonatomic, strong) SKTagView *groupTag;
-@property (nonatomic, strong) NSMutableArray *groupArray;
 
-@property (nonatomic, assign) NSInteger groupIndex;
-@property (nonatomic, strong) NSMutableArray *isChecked;
 
-@property (nonatomic, strong) NSMutableArray *tagsArray;
-@property (nonatomic, strong) CommonSwitchView *switchView;
-@property (nonatomic, assign) BOOL isGroup;
+@property (nonatomic, strong) YTextView *textView;//feed内容
+@property (nonatomic, strong) FeedImageGroup *imgGroup;//feed图片
+@property (nonatomic, strong) SKTagView *tagView;//兴趣标签
+@property (nonatomic, strong) SKTagView *groupTag;//社团标签
+@property (nonatomic, strong) NSMutableArray *groupArray;//选中的社团
+
+@property (nonatomic, assign) NSInteger groupIndex;//社团index
+
+@property (nonatomic, strong) NSMutableArray *tagsArray;//选中的兴趣标签
+@property (nonatomic, strong) CommonSwitchView *switchView;//切换个人与社团
+@property (nonatomic, assign) BOOL isGroup;//是否选中社团名义
 
 @property (nonatomic, strong) NSMutableArray *picArray;
 
@@ -65,7 +66,6 @@
     self = [super init];
     if (self) {
         self.hidesBottomBarWhenPushed = YES;
-        _isChecked = [NSMutableArray array];
         _picArray = [NSMutableArray array];
         _isGroup = false;
         _groupIndex = 0;
@@ -399,6 +399,7 @@
         
     });
 }
+//更新图片
 - (void)updateImage {
     NSString *path = [YDirectory newImgCache:[NSString stringWithFormat:@"feed%d.png", [_imgGroup getImgCount]]];
     if (![YDirectory isDirectory:path])
@@ -430,6 +431,7 @@
     [self showOrignMode];
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
+//获取选中的标签
 - (NSString *)getTagSelected {
     NSMutableString *tagStr = [@"" mutableCopy];
     [_tagsArray enumerateObjectsUsingBlock:^(NSDictionary *obj, NSUInteger idx, BOOL *stop) {
@@ -450,6 +452,7 @@
     }
     return true;
 }
+//过滤emoj
 - (BOOL)stringContainsEmoji:(NSString *)string {
     __block BOOL returnValue = NO;
     [string enumerateSubstringsInRange:NSMakeRange(0, [string length]) options:NSStringEnumerationByComposedCharacterSequences usingBlock:
@@ -534,6 +537,7 @@
         
     }
 }
+//获取添加的图片的路径
 - (NSString *)getImageStr {
     NSMutableString *imageStr = [@"" mutableCopy];
     for (int i = 0; i < _picArray.count; i++) {

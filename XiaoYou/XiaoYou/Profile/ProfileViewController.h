@@ -7,13 +7,6 @@
 //
 
 #import "YViewController.h"
-@class YActionMessage;
 @interface ProfileViewController : YViewController
-
-- (void)prepareLoadData;
-
-- (void)startLoadData;
-
-//- (void)afterLoadData:(YActionMessage *)message;
 
 @end

@@ -27,11 +27,10 @@
 
 @interface FeedDetailTableView()<UITableViewDataSource, UITableViewDelegate>
 
-@property (nonatomic, strong) NSDictionary *data;
-@property (nonatomic, strong) NSMutableArray *commentListArray;
+@property (nonatomic, strong) NSMutableArray *commentListArray;//评论数据
 @property (nonatomic, strong) NSString *feedId;
 @property (nonatomic, strong) FeedInfo *feedInfo;
-@property (nonatomic, strong) NSMutableDictionary *shareData;
+@property (nonatomic, strong) NSMutableDictionary *shareData;//微信分享的数据
 
 @end
 
@@ -173,10 +172,10 @@
         int index = (int)indexPath.row - 1;
         CommentListItems *item = _commentListArray[index];
         if ([item.author.uid isEqualToString:[[ProvisionManager sharedInstance] getUserId]]) {
-            [self openOperate:index];
+            [self openOperate:index];//feed作者可以删除所有回复
         } else {
             if ([[[ProvisionManager sharedInstance] getUserId] isEqualToString:_feedInfo.author.uid]) {
-                [self openAuthorOperate:index];
+                [self openAuthorOperate:index];//可以删除自己的回复
             }
             [self openReply:index];
         }
@@ -216,6 +215,7 @@
                 if (message.isSuccess) {
                     [YUtils showTitle:@"删除成功"];
                     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                        //刷新列表controller的数据并返回
                         UIViewController *viewController = self.parent.navigationController.viewControllers[self.parent.navigationController.viewControllers.count -2];
                         if ([viewController isKindOfClass:[FeedListViewController class]]) {
                             [(FeedListViewController *)viewController setNeedRefresh:true];

@@ -22,12 +22,12 @@
 
 @interface ProfileChangePwdViewController()
 
-@property (nonatomic, strong) YTextField *currentPwdField;
+@property (nonatomic, strong) YTextField *currentPwdField;//当前密码
 
-@property (nonatomic, strong) YTextField *pwdField;
+@property (nonatomic, strong) YTextField *pwdField;//新密码
 
-@property (nonatomic, strong) YTextField *pwdRepeatField;
-@property (nonatomic, strong) UIButton *forget;
+@property (nonatomic, strong) YTextField *pwdRepeatField;//重复密码
+@property (nonatomic, strong) UIButton *forget;//忘记密码按钮
 @property (nonatomic, assign) ProfileChangePwdType type;
 @property (nonatomic, assign) BOOL needLogin;
 @end
@@ -121,7 +121,6 @@
     [field registerChanged:self action:@selector(checkComplete)];
     field.textColor = KCOLORGREEN_455A64;
     field.placeholder = names[type];
-//    [field placeHolderColor:names[type] fontColor:KCOLORGREEN_455A64];
     return field;
 }
 - (void)forgetPwd {
@@ -200,6 +199,7 @@
             [hud removeFromSuperview];
             if (message.isSuccess) {
                 [YUtils showTitle:@"修改成功"];
+                //1s后返回
                 dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 1*NSEC_PER_SEC), dispatch_get_main_queue(), ^{
                     [self onNavigationLeftButtonClicked];
                 });
