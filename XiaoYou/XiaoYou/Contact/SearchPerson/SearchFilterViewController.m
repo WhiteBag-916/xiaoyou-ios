@@ -11,6 +11,7 @@
 #import "SearchFilterTableViewCell.h"
 #import "ContactManager.h"
 #import "FriendsCondition.h"
+#import "YModel+ActionMessage.h"
 
 NSString *const filterName = @"filterName";
 NSString *const filterIsSelected = @"filterIsSelected";
@@ -46,6 +47,17 @@ NSString *const filterIsSelected = @"filterIsSelected";
     
     //拉取筛选条件
     [self friendsConditionRequest];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(tokenFail) name:kNotification_Server_Token_Fail object:nil];
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+- (void)tokenFail {
+    [self.navigationController dismissViewControllerAnimated:NO completion:nil];
 }
 
 - (void)onNavigationLeftButtonClicked {

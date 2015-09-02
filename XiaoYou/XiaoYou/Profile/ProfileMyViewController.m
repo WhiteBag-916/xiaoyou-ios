@@ -18,6 +18,7 @@
 #import "YDirectory+Data.h"
 #import "SDPhotoBrowser.h"
 #import "YCommonAlertView.h"
+#import "YModel+ActionMessage.h"
 
 #define KHEADHEIGHT SCALE_NUM(150)
 
@@ -40,6 +41,7 @@
 @property (nonatomic, strong) UILabel *classLabel;//班级
 
 @property (nonatomic, strong) NSString *headImagePath;//头像路径
+@property (nonatomic, strong) UIImagePickerController *picker;
 
 
 @end
@@ -61,6 +63,14 @@
     [super viewWillAppear:animated];
     self.navigationController.navigationBarHidden = true;
     [self loadData];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(tokenFail) name:kNotification_Server_Token_Fail object:nil];
+}
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+- (void)tokenFail {
+    [self.picker dismissViewControllerAnimated:NO completion:nil];
 }
 - (void)loadData {
     ProfileInfo *info = [[ProvisionManager sharedInstance] getProfile];
@@ -309,11 +319,11 @@
 
 - (void)pickImage
 {
-    UIImagePickerController *picker = [[UIImagePickerController alloc] init];
-    [picker setSourceType:UIImagePickerControllerSourceTypePhotoLibrary];
-    [picker setDelegate:self];
-    [picker setAllowsEditing:YES];
-    [self presentViewController:picker animated:YES completion:nil];
+    self.picker = [[UIImagePickerController alloc] init];
+    [self.picker setSourceType:UIImagePickerControllerSourceTypePhotoLibrary];
+    [self.picker setDelegate:self];
+    [self.picker setAllowsEditing:YES];
+    [self presentViewController:self.picker animated:YES completion:nil];
 }
 
 - (void)snapImage
@@ -330,19 +340,19 @@
         [AVCaptureDevice requestAccessForMediaType:AVMediaTypeVideo completionHandler:^(BOOL granted) {
             if(granted){//点击允许访问时调用
                 //用户明确许可与否，媒体需要捕获，但用户尚未授予或拒绝许可。
-                UIImagePickerController *picker = [[UIImagePickerController alloc] init];
-                [picker setSourceType:UIImagePickerControllerSourceTypeCamera];
-                picker.delegate = self;
-                [picker setAllowsEditing:YES];
-                [self presentViewController:picker animated:YES completion:nil];
+                self.picker = [[UIImagePickerController alloc] init];
+                [self.picker setSourceType:UIImagePickerControllerSourceTypeCamera];
+                self.picker.delegate = self;
+                [self.picker setAllowsEditing:YES];
+                [self presentViewController:self.picker animated:YES completion:nil];
             }
         }];
     }else{
-        UIImagePickerController *picker = [[UIImagePickerController alloc] init];
-        [picker setSourceType:UIImagePickerControllerSourceTypeCamera];
-        picker.delegate = self;
-        [picker setAllowsEditing:YES];
-        [self presentViewController:picker animated:YES completion:nil];
+        self.picker = [[UIImagePickerController alloc] init];
+        [self.picker setSourceType:UIImagePickerControllerSourceTypeCamera];
+        self.picker.delegate = self;
+        [self.picker setAllowsEditing:YES];
+        [self presentViewController:self.picker animated:YES completion:nil];
     }
 #endif
 }
@@ -406,7 +416,7 @@
 #pragma mark - UIImagePickerControllerDelegate
 -(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
-    [picker dismissViewControllerAnimated:YES completion:nil];
+    [self.picker dismissViewControllerAnimated:YES completion:nil];
     UIImage *getImage = info[@"UIImagePickerControllerEditedImage"];
     [self savePic:getImage];
 }

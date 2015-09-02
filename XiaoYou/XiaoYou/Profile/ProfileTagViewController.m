@@ -11,6 +11,7 @@
 #import "YTableView.h"
 #import "ProvisionManager.h"
 #import "FeedManager.h"
+#import "YModel+ActionMessage.h"
 
 #define tagObj @"tagObj"
 #define tagIsSelected @"tagIsSelected"
@@ -172,6 +173,15 @@
     [super viewWillAppear:animated];
     self.navigationController.navigationBarHidden = false;
     [self showOrignMode];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(tokenFail) name:kNotification_Server_Token_Fail object:nil];
+}
+-(void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+- (void)tokenFail {
+    [self.navigationController dismissViewControllerAnimated:NO completion:nil];
 }
 - (void)onNavigationLeftButtonClicked {
     [self.navigationController dismissViewControllerAnimated:YES completion:nil];

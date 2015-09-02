@@ -11,6 +11,7 @@
 #import "ProvisionManager.h"
 #import "LoginResp.h"
 #import "ConvertToCommonEmoticonsHelper.h"
+#import "YModel+ActionMessage.h"
 
 @interface YCommonEditViewController()<UITextViewDelegate>
 
@@ -95,10 +96,14 @@
     [super viewWillAppear:animated];
     self.navigationController.navigationBarHidden = false;
     [self showEditMode];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(tokenFail) name:kNotification_Server_Token_Fail object:nil];
 }
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
     [self showOrignMode];
+}
+- (void)tokenFail {
+    [self.navigationController dismissViewControllerAnimated:NO completion:nil];
 }
 - (void)onNavigationRightButtonClicked {
     [self.view endEditing:true];

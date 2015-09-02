@@ -333,6 +333,11 @@
         _isScrollToBottom = YES;
     }
     self.isInvisible = NO;
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(tokenFail) name:kNotification_Server_Token_Fail object:nil];
+}
+
+- (void)tokenFail {
+    [self.imagePicker dismissViewControllerAnimated:NO completion:nil];
 }
 
 -(void)viewWillLayoutSubviews
@@ -350,6 +355,8 @@
     [_conversation markAllMessagesAsRead:YES];
     [[EMCDDeviceManager sharedInstance] disableProximitySensor];
     self.isInvisible = YES;
+    
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 - (void)dealloc
