@@ -14,8 +14,8 @@
  Url Define: Common
  **********************************************************/
 /** https接口*/
-#if 0
-#define api_server_base_url @"http://api.xiaoyou.com/mobile"
+#if 1
+#define api_server_base_url @"http://release.xiaoyou.com/mobile"
 #define UMENG_APPKEY @"55cda497e0f55ad43d00204c"
 #else
 #define api_server_base_url @"http://beta.xiaoyou.com/mobile"
@@ -52,7 +52,7 @@
 //修改签名
 #define api_login_UpdateSelfIntro @"/user/v2/updateSelfIntro"
 //退出登录
-#define api_user_logOut  @"/user/logout"
+#define api_user_logOut  @"/user/v2/logout"
 //注册须知
 #define api_user_notice  @"/user/v2/notice"
 //绑定手机号
