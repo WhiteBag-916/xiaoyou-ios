@@ -1664,21 +1664,25 @@
 - (void)showRoomContact:(id)sender
 {
     [self.view endEditing:YES];
-    if ([self.navigationController.viewControllers[self.navigationController.viewControllers.count-2] isKindOfClass:[XYGroupInfoDetailViewController class]]) {
-        [self.navigationController popViewControllerAnimated:YES];
+    if (nil == _studentDic) {
+        [YUtils showTitle:@"您已不在此社团群聊中"];
     } else {
-        XYGroupInfoDetailViewController * groupVC = [[XYGroupInfoDetailViewController alloc] init];
-        if ([_studentDic[@"linkType"] doubleValue] == 1)
-        {
-            groupVC.isClass = YES;
+        if ([self.navigationController.viewControllers[self.navigationController.viewControllers.count-2] isKindOfClass:[XYGroupInfoDetailViewController class]]) {
+            [self.navigationController popViewControllerAnimated:YES];
+        } else {
+            XYGroupInfoDetailViewController * groupVC = [[XYGroupInfoDetailViewController alloc] init];
+            if ([_studentDic[@"linkType"] doubleValue] == 1)
+            {
+                groupVC.isClass = YES;
+            }
+            else
+            {
+                groupVC.isClass = NO;
+            }
+            groupVC.studentDic = _studentDic;
+            groupVC.gid = _studentDic[@"gid"];
+            [self.navigationController pushViewController:groupVC animated:YES needHiddenBottomBar:YES];
         }
-        else
-        {
-            groupVC.isClass = NO;
-        }
-        groupVC.studentDic = _studentDic;
-        groupVC.gid = _studentDic[@"gid"];
-        [self.navigationController pushViewController:groupVC animated:YES needHiddenBottomBar:YES];
     }
 }
 
