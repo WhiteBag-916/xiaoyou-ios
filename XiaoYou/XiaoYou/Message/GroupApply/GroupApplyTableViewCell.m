@@ -20,7 +20,7 @@
 #define kHeadCornerRadius              22.5
 #define kPaddingDistance               12
 #define kHeadImageWidthAndHeight       45
-#define kNameWidth                     90
+#define kNameWidth                     110
 #define kNameHeight                    20
 #define kDetailButtonHeight            14
 #define kSexHeightAndWidth             20
