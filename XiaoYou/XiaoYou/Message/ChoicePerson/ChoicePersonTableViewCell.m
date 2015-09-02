@@ -12,7 +12,7 @@
 #define kHeadCornerRadius              22.5
 #define kPaddingDistance               12
 #define kHeadImageWidthAndHeight       45
-#define kNameWidth                     90
+#define kNameWidth                     200
 #define kNameHeight                    20
 
 NSString *const kChoicePersonTableViewCell = @"ChoicePersonTableViewCellId";

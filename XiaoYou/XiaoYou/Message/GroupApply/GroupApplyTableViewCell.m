@@ -23,7 +23,7 @@
 #define kNameWidth                     90
 #define kNameHeight                    20
 #define kDetailButtonHeight            14
-#define kSexHeightAndWidth             30
+#define kSexHeightAndWidth             20
 #define kInfoLabelToNameLabel          20
 #define kFlagImageViewWidth            11
 #define kFlagImageViewHeight           14
@@ -88,7 +88,6 @@ NSString *const kGroupApplyTableViewCell = @"GroupApplyTableViewCellId";
         _sexLabel = [[UILabel alloc] init];
         _sexLabel.font = CONTENT_FONT(14);
         _sexLabel.backgroundColor = [UIColor whiteColor];
-        _sexLabel.text = @"男";
         [self.contentView addSubview:_sexLabel];
         [_sexLabel mas_makeConstraints:^(MASConstraintMaker *make) {
             make.top.mas_equalTo(kPaddingDistance);

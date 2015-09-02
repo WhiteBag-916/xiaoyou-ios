@@ -25,6 +25,7 @@
 @property (nonatomic, strong) NSString *sendId;
 @property (nonatomic, strong) NSString *content;
 @property (nonatomic, assign) BOOL isPraise;
+@property (nonatomic, strong) NSString *bigImg;
 
 + (instancetype)modelObjectWithDictionary:(NSDictionary *)dict;
 - (instancetype)initWithDictionary:(NSDictionary *)dict;

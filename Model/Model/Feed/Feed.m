@@ -22,6 +22,7 @@ NSString *const kFeedCreateTimeMiles = @"createTimeMiles";
 NSString *const kFeedSendId = @"sendId";
 NSString *const kFeedContent = @"content";
 NSString *const kFeedIsPraise = @"isPraise";
+NSString *const kFeedBigImg = @"bigImg";
 
 @interface Feed ()
 
@@ -45,6 +46,7 @@ NSString *const kFeedIsPraise = @"isPraise";
 @synthesize sendId = _sendId;
 @synthesize content = _content;
 @synthesize isPraise = _isPraise;
+@synthesize bigImg = _bigImg;
 
 + (instancetype)modelObjectWithDictionary:(NSDictionary *)dict
 {
@@ -72,6 +74,7 @@ NSString *const kFeedIsPraise = @"isPraise";
             self.sendId = [self objectOrNilForKey:kFeedSendId fromDictionary:dict];
             self.content = [self objectOrNilForKey:kFeedContent fromDictionary:dict];
         self.isPraise = [[self objectOrNilForKey:kFeedIsPraise fromDictionary:dict] boolValue];
+        self.bigImg = [self objectOrNilForKey:kFeedBigImg fromDictionary:dict];
 
     }
     
@@ -96,6 +99,7 @@ NSString *const kFeedIsPraise = @"isPraise";
     [mutableDict setValue:self.sendId forKey:kFeedSendId];
     [mutableDict setValue:self.content forKey:kFeedContent];
     [mutableDict setValue:[NSNumber numberWithBool:self.isPraise] forKey:kFeedIsPraise];
+    [mutableDict setValue:self.bigImg forKey:kFeedBigImg];
 
     return [NSDictionary dictionaryWithDictionary:mutableDict];
 }
@@ -133,6 +137,7 @@ NSString *const kFeedIsPraise = @"isPraise";
     self.sendId = [aDecoder decodeObjectForKey:kFeedSendId];
     self.content = [aDecoder decodeObjectForKey:kFeedContent];
     self.isPraise = [aDecoder decodeBoolForKey:kFeedIsPraise];
+    self.bigImg = [aDecoder decodeObjectForKey:kFeedBigImg];
     
     return self;
 }
@@ -154,7 +159,7 @@ NSString *const kFeedIsPraise = @"isPraise";
     [aCoder encodeObject:_sendId forKey:kFeedSendId];
     [aCoder encodeObject:_content forKey:kFeedContent];
     [aCoder encodeBool:_isPraise forKey:kFeedIsPraise];
-    
+    [aCoder encodeObject:_bigImg forKey:kFeedBigImg];
 }
 
 - (id)copyWithZone:(NSZone *)zone
@@ -177,7 +182,7 @@ NSString *const kFeedIsPraise = @"isPraise";
         copy.sendId = [self.sendId copyWithZone:zone];
         copy.content = [self.content copyWithZone:zone];
         copy.isPraise = self.isPraise;
-        
+        copy.bigImg = [self.bigImg copyWithZone:zone];
     }
     
     return copy;
