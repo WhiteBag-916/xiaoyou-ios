@@ -124,7 +124,7 @@
         if (_smallImgs.count == 0) {
             [self moveToLine:-1];
         } else if (_smallImgs.count == 1) {
-            [self specialForOneImage:[_smallImgs objectAtIndex:0]];
+            [self specialForOneImage:[_bigImgs objectAtIndex:0]];
         } else {
             [self normalForImages:_smallImgs];
         }
@@ -258,7 +258,12 @@
     UIImage *image = [(UIImageView *)[_contentView viewWithTag:KIMGTAG+index] image];
     return image;
 }
-
+- (NSURL *)photoBrowser:(SDPhotoBrowser *)browser highQualityImageURLForIndex:(NSInteger)index {
+    if (_bigImgs.count == _smallImgs.count) {
+        return [NSURL URLWithString:[NSString stringWithFormat:@"%@%@",api_icon_base_url, _bigImgs[index]]];
+    }
+    return nil;
+}
 //打开拍照功能
 - (void)openPhoto {
     [[NSNotificationCenter defaultCenter] postNotificationName:KNotification_Present_TakePhoto object:nil];

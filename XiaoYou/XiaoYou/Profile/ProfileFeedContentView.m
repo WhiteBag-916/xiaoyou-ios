@@ -77,15 +77,15 @@
 - (void)setData:(FeedInfo *)info {
     if (info == nil) {
         [_tagView setData:nil];
-        [_imgGroup updateWithImgs:nil];
+        [_imgGroup updateWithImgs:nil bigPics:nil];
         _contentLabel.text = nil;
     } else {
         [_tagView setData:info.tags];
         _contentLabel.text = info.feed.content;
         if (info.feed.img.length == 0) {
-            [_imgGroup updateWithImgs:nil];
+            [_imgGroup updateWithImgs:nil bigPics:nil];
         } else {
-            [_imgGroup updateWithImgs:[info.feed.img componentsSeparatedByString:@","]];
+            [_imgGroup updateWithImgs:[info.feed.img componentsSeparatedByString:@","] bigPics:[info.feed.bigImg componentsSeparatedByString:@","]];
         }
     }
 }

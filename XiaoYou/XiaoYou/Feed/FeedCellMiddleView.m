@@ -65,9 +65,9 @@
         FeedInfo *data = inData;
         _contentLabel.text = [ConvertToCommonEmoticonsHelper convertToSystemEmoticons:data.feed.content];
         if (data.feed.img.length == 0) {
-            [_imgGroup updateWithImgs:nil];
+            [_imgGroup updateWithImgs:nil bigPics:nil];
         } else {
-            [_imgGroup updateWithImgs:[data.feed.img componentsSeparatedByString:@","]];
+            [_imgGroup updateWithImgs:[data.feed.img componentsSeparatedByString:@","] bigPics:[data.feed.bigImg componentsSeparatedByString:@","]];
         }
     }
     if ([inData isKindOfClass:[CommentListItems class]]) {
