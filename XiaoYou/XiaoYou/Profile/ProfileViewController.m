@@ -20,7 +20,6 @@
 #import "ProvisionManager.h"
 #import "ProfileTagViewController.h"
 #import "ProfilePersonListTableView.h"
-#import "ProfileOthersViewController.h"
 #import "ConvertToCommonEmoticonsHelper.h"
 
 #define KTOPHEIGHT SCALE_NUM(90)
@@ -38,28 +37,31 @@
 #define KFEEDMARGIN_TOP SCALE_NUM(20)
 
 @interface ProfileViewController ()
-@property (nonatomic, strong) UIImageView *headImg;
-@property (nonatomic, strong) UILabel *userName;
-@property (nonatomic, strong) UILabel *schoolNo;
-@property (nonatomic, strong) UIView *containerView;
-@property (nonatomic, strong) UILabel *respectNum;
-@property (nonatomic, strong) UILabel *coolNum;
-@property (nonatomic, strong) UILabel *attitudeLabel;
-@property (nonatomic, strong) UILabel *tagLabel;
-@property (nonatomic, strong) UILabel *tagCountLabel;
-@property (nonatomic, strong) UILabel *feedHintLabel;
-@property (nonatomic, strong) ProfileFeedContentView *feed;
 
+@property (nonatomic, strong) UIView *containerView;//scroll的一级view，所有其他view放在其中
 
+@property (nonatomic, strong) UIImageView *headImg;//头像
+@property (nonatomic, strong) UILabel *userName;//姓名
+@property (nonatomic, strong) UILabel *schoolNo;//学号
+
+@property (nonatomic, strong) UILabel *respectNum;//敬酒数
+@property (nonatomic, strong) UILabel *coolNum;//点赞数
+@property (nonatomic, strong) UILabel *attitudeLabel;//态度
+@property (nonatomic, strong) UILabel *tagLabel;//一个兴趣名称
+@property (nonatomic, strong) UILabel *tagCountLabel;//兴趣后续内容
+@property (nonatomic, strong) UILabel *feedHintLabel;//feed栏提示语
+@property (nonatomic, strong) ProfileFeedContentView *feed;//一个feed的内容
+
+//布局用的view
 @property (nonatomic, strong) UIView *topView;
 @property (nonatomic, strong) UIView *middleView;
 @property (nonatomic, strong) UIView *bottomView;
 
-@property (nonatomic, strong) UIView *loadingView;
-@property (nonatomic, strong) MBProgressHUD *hud;
+@property (nonatomic, strong) UIView *loadingView;//加载提示
+@property (nonatomic, strong) MBProgressHUD *hud;//加载提示
 
-@property (nonatomic, strong) NSString *userId;
-@property (nonatomic, strong) NSArray *tagModels;
+@property (nonatomic, strong) NSString *userId;//缓存个人id
+@property (nonatomic, strong) NSArray *tagModels;//缓存个人兴趣
 @end
 
 @implementation ProfileViewController
@@ -139,6 +141,7 @@
     }
     
 }
+//每次出现时刷新数据
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     self.navigationController.navigationBarHidden = true;

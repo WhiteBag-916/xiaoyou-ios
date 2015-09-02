@@ -17,6 +17,11 @@ extern NSString *const kOrganizationFeedListTableViewCell;
 @interface FeedListTableViewCell : YTableViewCell
 
 - (void)setData:(id)info;
-
+/**
+ *  @author 李思良, 15-09-01
+ *
+ *  @brief  特别用于社团feed的显示需求（动态图标）
+ *
+ */
 - (void)setHintHidden:(BOOL)isHidden;
 @end

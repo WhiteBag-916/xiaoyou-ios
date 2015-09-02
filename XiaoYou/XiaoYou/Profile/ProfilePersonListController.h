@@ -9,15 +9,39 @@
 #import "YViewController.h"
 
 typedef NS_ENUM(int, PersonListType) {
+    /**
+     *  @author 李思良, 15-09-01
+     *
+     *  @brief  个人敬酒人列表
+     */
     PersonListMyRespect     = 0,
+    /**
+     *  @author 李思良, 15-09-01
+     *
+     *  @brief  个人点赞人列表
+     */
     PersonListMyCool        = 1,
+    /**
+     *  @author 李思良, 15-09-01
+     *
+     *  @brief  feed敬酒人列表
+     */
     PersonListFeedRespect   = 2,
 };
 
 @interface ProfilePersonListController : YViewController
-
+/**
+ *  @author 李思良, 15-09-01
+ *
+ *  @brief  个人列表使用
+ *
+ */
 - (id)initWithType:(int)type;
-
+/**
+ *  @author 李思良, 15-09-01
+ *
+ *  @brief  feed敬酒人列表使用
+ */
 - (id)initWithType:(int)type feedId:(NSString *)feedId;
 
 @end

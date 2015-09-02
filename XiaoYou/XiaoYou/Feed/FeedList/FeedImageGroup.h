@@ -9,11 +9,32 @@
 #import <UIKit/UIKit.h>
 
 @interface FeedImageGroup : UIView
-
+/**
+ *  @author 李思良, 15-09-01
+ *
+ *  @brief  含有拍照功能的使用这个
+ *
+ */
 - (id)initWithCamera;
+/**
+ *  @author 李思良, 15-09-01
+ *
+ *  @brief  根据图片url添加到组
+ *
+ */
 - (void)updateWithImgs:(NSArray *)smallPics;
-
+/**
+ *  @author 李思良, 15-09-01
+ *
+ *  @brief  添加一个照片image
+ *
+ */
 - (void)addPhoto:(UIImage *)image;
-
+/**
+ *  @author 李思良, 15-09-01
+ *
+ *  @brief  获取图片总数
+ *
+ */
 - (int)getImgCount;
 @end

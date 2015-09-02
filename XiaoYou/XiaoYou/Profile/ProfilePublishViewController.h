@@ -11,9 +11,18 @@
 @interface ProfilePublishViewController : YViewController
 
 - (id)initWithUserId:(NSString *)userId name:(NSString *)userName;
-
+/**
+ *  @author 李思良, 15-09-01
+ *
+ *  @brief  前往feed详情
+ *
+ */
 - (void)goToDetail:(NSString *)feedId;
-
+/**
+ *  @author 李思良, 15-09-01
+ *
+ *  @brief  是否需要在willappear时刷新
+ */
 @property (nonatomic, assign) BOOL needRefresh;
 
 @end

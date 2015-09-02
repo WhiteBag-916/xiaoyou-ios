@@ -29,7 +29,7 @@
 
 
 - (void)updateWithTag:(NSArray *)tags {
-    [self removeAllSubviews];
+    [self removeAllSubviews];//移除之前添加的tag
     int count = tags.count>5?5:(int)tags.count;
     for (int i = 0; i < count; i++) {
         UILabel *label = [YUtils initLabel:CONTENT_FONT(10) color:KCOLORWHITE text:@"" frame:CGRectZero alignment:NSTextAlignmentCenter];
@@ -47,7 +47,7 @@
         }];
     }
     
-    [self updateSize:count];
+    [self updateSize:count];//更新self宽度
 }
 - (void)updateSize:(int)count {
     float width = 0;

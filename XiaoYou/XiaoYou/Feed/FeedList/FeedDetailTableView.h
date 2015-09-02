@@ -14,7 +14,11 @@
 
 
 - (void)loadDataWithFeedId:(NSString *)feedId;
-
+/**
+ *  @author 李思良, 15-09-01
+ *
+ *  @brief  打开feed功能栏
+ */
 - (void)openTool;
 
 - (void)refresh;

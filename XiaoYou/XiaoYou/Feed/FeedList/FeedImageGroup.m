@@ -115,6 +115,7 @@
     [self updateAll];
     
 }
+//更新控件布局
 - (void)updateAll {
     if (_camera == nil) {
         if (_smallImgs.count == 0) {
@@ -150,7 +151,7 @@
 
     }
 }
-
+//单图片特殊处理
 - (void)specialForOneImage:(NSString *)url {
     UIImageView *img = (UIImageView *)[_contentView subviews][0];
     [img mas_remakeConstraints:^(MASConstraintMaker *make) {
@@ -169,7 +170,7 @@
     [_smallImgs addObject:image];
     [self updateAll];
 }
-
+//普通图片处理
 - (void)normalForImages:(NSArray *)urls {
     UIImageView *img = (UIImageView *)[_contentView subviews][0];
     [img mas_remakeConstraints:^(MASConstraintMaker *make) {
@@ -182,6 +183,7 @@
         [(UIImageView *)[_contentView viewWithTag:KIMGTAG+i] setNormalImageWithUrl:urls[i]];
     }
 }
+//修正group的高度
 - (void)moveToLine:(int)index {
     for (int i = 0; i < 9; i++) {
         [_contentView.subviews[i] setHidden:true];
@@ -216,6 +218,7 @@
     }];
     
 }
+//长按删除图片
 - (void)longPress:(UILongPressGestureRecognizer *)press {
     if (press.state == UIGestureRecognizerStateBegan) {
         int index = (int)press.view.tag - KIMGTAG;
@@ -226,6 +229,7 @@
         [self updateAll];
     }
 }
+//放大图片
 - (void)choosePic:(UITapGestureRecognizer *)tap {
     int index = (int)tap.view.tag - KIMGTAG;
     if (index < 0 || index >= _smallImgs.count) {
@@ -252,10 +256,7 @@
     return image;
 }
 
-//- (NSURL *)photoBrowser:(SDPhotoBrowser *)browser highQualityImageURLForIndex:(NSInteger)index {
-//    return [NSURL URLWithString:_bigImgs[index]];
-//}
-
+//打开拍照功能
 - (void)openPhoto {
     [[NSNotificationCenter defaultCenter] postNotificationName:KNotification_Present_TakePhoto object:nil];
 }

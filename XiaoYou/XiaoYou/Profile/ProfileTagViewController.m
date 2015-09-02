@@ -16,8 +16,8 @@
 #define tagIsSelected @"tagIsSelected"
 #define KTAGTABLEVIEWCELL @"KTAGTABLEVIEWCELL"
 @interface ProfileTagViewController()<UITableViewDataSource, UITableViewDelegate>
-@property (nonatomic, strong) NSMutableArray *tagsArray;
-@property (nonatomic, strong) NSMutableSet *myTagName;
+@property (nonatomic, strong) NSMutableArray *tagsArray;//兴趣数据源
+@property (nonatomic, strong) NSMutableSet *myTagName;//已经选择的兴趣
 @property (nonatomic, strong) YTableView *tagTableView;
 
 @property (nonatomic, assign) ProfileTagType type;

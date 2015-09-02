@@ -66,7 +66,7 @@
     }
 }
 - (void)onNavigationRightButtonClicked {
-    _needRefresh = true;
+    _needRefresh = true;//发布界面回来时需要刷新
     UINavigationController *navigationController =
     [[UINavigationController alloc] initWithRootViewController:[[FeedPublishViewController alloc] init]];
     [self.navigationController presentViewController:navigationController animated:YES completion:nil];
@@ -74,7 +74,6 @@
 }
 - (void)goToDetail:(NSString *)feedId {
     FeedDetailViewController *feedDetailViewController = [[FeedDetailViewController alloc] initWithFeedId:feedId];
-    //    self.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:feedDetailViewController animated:YES];
 }
 @end

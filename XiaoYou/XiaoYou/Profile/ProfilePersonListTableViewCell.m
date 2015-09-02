@@ -32,14 +32,14 @@ NSString *const kProfilePersonListTableViewCell = @"kProfilePersonListTableViewC
 #define KADDFRIENDWIDTH SCALE_NUM(28)
 @interface ProfilePersonListTableViewCell()
 
-@property (nonatomic, strong) YFaceImageView *face;
-@property (nonatomic, strong) UILabel *userName;
-@property (nonatomic, strong) ConnectTag *connect;
-@property (nonatomic, strong) FeedTag *tagView;
-@property (nonatomic, strong) UIButton *addFriend;
-@property (nonatomic, strong) UILabel *genderLabel;
+@property (nonatomic, strong) YFaceImageView *face;//头像
+@property (nonatomic, strong) UILabel *userName;//姓名
+@property (nonatomic, strong) ConnectTag *connect;//人脉关系
+@property (nonatomic, strong) FeedTag *tagView;//兴趣标签
+@property (nonatomic, strong) UIButton *addFriend;//添加好友按钮
+@property (nonatomic, strong) UILabel *genderLabel;//性别
 
-@property (nonatomic, strong) Author *myAuthor;
+@property (nonatomic, strong) Author *myAuthor;//缓存人信息
 
 @end
 
@@ -129,6 +129,7 @@ NSString *const kProfilePersonListTableViewCell = @"kProfilePersonListTableViewC
     }
     [self updateStatus:author.friendStatus];
 }
+//更新好友申请状态
 - (void)updateStatus:(NSString *)status {
     if ([status isEqualToString:@"1"]) {
         _addFriend.hidden = false;
@@ -142,6 +143,7 @@ NSString *const kProfilePersonListTableViewCell = @"kProfilePersonListTableViewC
         _addFriend.hidden = true;
     }
 }
+//添加好友
 - (void)clickAdd {
     [YUtils showHUDWithTitle:@"发送中"];
     [[ContactManager sharedInstance] submitFriendApply:_face.userId block:^(YActionMessage *message) {

@@ -24,22 +24,22 @@
 #define KIMGSIZE SCALE_NUM(88)
 
 @interface ProfileMyViewController()<UIImagePickerControllerDelegate,SDPhotoBrowserDelegate>
-
+//布局用的view
 @property (nonatomic, strong) UIView *containerView;
 @property (nonatomic, strong) UIView *headView;
 @property (nonatomic, strong) UIView *faceContainer;
 @property (nonatomic, strong) UIView *middelView;
 @property (nonatomic, strong) UIView *bottomView;
 
-@property (nonatomic, strong) UIImageView *faceImg;
-@property (nonatomic, strong) UILabel *nameLabel;
-@property (nonatomic, strong) UILabel *schoolNoLabel;
-@property (nonatomic, strong) UILabel *schoolLabel;
-@property (nonatomic, strong) UILabel *departmentLabel;
-@property (nonatomic, strong) UILabel *gradeLabel;
-@property (nonatomic, strong) UILabel *classLabel;
+@property (nonatomic, strong) UIImageView *faceImg;//头像
+@property (nonatomic, strong) UILabel *nameLabel;//姓名
+@property (nonatomic, strong) UILabel *schoolNoLabel;//学号
+@property (nonatomic, strong) UILabel *schoolLabel;//学校
+@property (nonatomic, strong) UILabel *departmentLabel;//院系
+@property (nonatomic, strong) UILabel *gradeLabel;//年级
+@property (nonatomic, strong) UILabel *classLabel;//班级
 
-@property (nonatomic, strong) NSString *headImagePath;
+@property (nonatomic, strong) NSString *headImagePath;//头像路径
 
 
 @end
@@ -286,6 +286,7 @@
     YCommonActionSheet *sheet = [[YCommonActionSheet alloc] initWithType:@[item, item1, item2] title:nil];
     [sheet show];
 }
+//查看头像大图
 - (void)choosePic {
 
     SDPhotoBrowser *browser = [[SDPhotoBrowser alloc] init];
@@ -345,6 +346,7 @@
     }
 #endif
 }
+//保存头像
 - (void)savePic:(UIImage *)image
 {
     if (nil == image)
@@ -353,8 +355,6 @@
     }
     
     dispatch_async(dispatch_get_global_queue(0, 0), ^{
-        
-        //根据时间格式确保文件名唯一性
         NSString *keyStr = @"face.png";
         
         //写入文件
@@ -390,6 +390,7 @@
         }
     }
 }
+//上传头像
 - (void)uploadHeadImage:(void(^)(NSString *url))block {
     NSString *path = [YDirectory newImgCache:_headImagePath];
     [[ProvisionManager sharedInstance] uploadHeadImage:path
@@ -409,14 +410,15 @@
     UIImage *getImage = info[@"UIImagePickerControllerEditedImage"];
     [self savePic:getImage];
 }
-
+//返回
 - (void)goBack {
     [self.navigationController popViewControllerAnimated:true];
 }
-
+//更改手机号
 - (void)changePhone {
     [self.navigationController pushViewController:[[ProfilePhoneChangeViewController alloc] initWithType:ProfilePhoneChangeTypeMod hasPhone:true] animated:true];
 }
+//更改密码
 - (void)changePwd {
     UILabel *label = _bottomView.subviews[0];
     if (label.enabled) {
@@ -425,6 +427,7 @@
         [self.navigationController pushViewController:[[ProfilePhoneChangeViewController alloc] initWithType:ProfilePhoneChangeTypeMod hasPhone:false] animated:true];
     }
 }
+//登出
 - (void)logOut {
     YCommonAlertView *alert = [[YCommonAlertView alloc] initWithTitle:@"提示" message:@"是否退出" buttonTitles:@"取消",@"确认", nil];
     [alert clickedButtonHandler:^(NSInteger index) {
