@@ -165,6 +165,7 @@
     if (_type == FeedDetailType) {
         FeedInfo *data = inData;
         _myInfo = data.feed;
+        _info = data;
         _respectNum.text = [NSString stringWithFormat:@"%d", (int)data.feed.praiseCount];
         authorId = data.author.uid;
         [self updateRespect:data.feed.isPraise];
