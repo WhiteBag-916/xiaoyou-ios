@@ -17,6 +17,8 @@
 
 @property (nonatomic, strong) NSMutableArray *smallImgs;
 
+@property (nonatomic, strong) NSMutableArray *bigImgs;
+
 @property (nonatomic, strong) UIView *contentView;
 
 @property (nonatomic, strong) UIImageView *camera;
@@ -110,8 +112,9 @@
     }
 }
 
-- (void)updateWithImgs:(NSArray *)smallPics {
+- (void)updateWithImgs:(NSArray *)smallPics bigPics:(NSArray *)bigPics{
     _smallImgs = [NSMutableArray arrayWithArray:smallPics];
+    _bigImgs = [NSMutableArray arrayWithArray:bigPics];
     [self updateAll];
     
 }

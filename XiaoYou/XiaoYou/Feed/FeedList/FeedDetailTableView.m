@@ -53,7 +53,7 @@
     [self sendRequest:true];
 }
 - (void)loadDataWithFeedId:(NSString *)feedId {
-    if (nil == _feedId) {
+    if (nil == _feedId) {//第一次进来加载数据
         _feedId = feedId;
         [YUtils showHUDAddedTo:self title:@"正在加载"];
         [[FeedManager sharedInstance] getFeedDetailByID:_feedId block:^(YActionMessage *message) {
@@ -181,6 +181,7 @@
         }
     }
 }
+//回复
 - (void)openReply:(int)index {
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:index + 1 inSection:0];
     [self scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionMiddle animated:false];
@@ -242,6 +243,7 @@
     YCommonActionSheet *sheet = [[YCommonActionSheet alloc] initWithType:@[item] title:nil];
     [sheet show];
 }
+//feed发布者操作
 - (void)openAuthorOperate:(int)commentIndex {
     YActionSheetItem *item1 = [YActionSheetItem itemWithTitle:@"回复"
                                                         type:YCommonActionSheetItemTypeCommon
@@ -256,6 +258,7 @@
     YCommonActionSheet *sheet = [[YCommonActionSheet alloc] initWithType:@[item1, item2] title:nil];
     [sheet show];
 }
+//操作评论
 - (void)dealComment:(int)commentIndex {
     YCommonAlertView *alert = [[YCommonAlertView alloc] initWithTitle:nil message:@"是否确认删除该评论？" buttonTitles:@"取消",@"确认", nil];
     [alert clickedButtonHandler:^(NSInteger index) {

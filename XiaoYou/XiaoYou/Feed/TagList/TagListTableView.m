@@ -29,7 +29,6 @@
         _type = type;
         self.delegate = self;
         self.dataSource = self;
-//        [self registerClass:[TagListTableViewCell class] forCellReuseIdentifier:KTagListTableViewCell];
         self.separatorStyle = UITableViewCellSeparatorStyleNone;
         self.backgroundColor = [UIColor clearColor];
         self.showsVerticalScrollIndicator = false;
@@ -88,6 +87,7 @@
         }
     }
 }
+//跳转到搜索结果
 - (void)toFeedFilter:(NSString *)filter name:(NSString *)name {
     [[NSNotificationCenter defaultCenter] postNotificationName:kNotification_Push_FeedFilter object:nil userInfo:@{@"filter":filter, @"name":name}];
     [[SlideNavigationController sharedInstance] closeMenuWithCompletion:^{

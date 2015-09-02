@@ -22,7 +22,7 @@
  *  @brief  根据图片url添加到组
  *
  */
-- (void)updateWithImgs:(NSArray *)smallPics;
+- (void)updateWithImgs:(NSArray *)smallPics bigPics:(NSArray *)bigPics;
 /**
  *  @author 李思良, 15-09-01
  *

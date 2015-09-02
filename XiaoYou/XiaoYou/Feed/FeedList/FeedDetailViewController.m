@@ -40,7 +40,6 @@
     [self initTable];
     [self initController];
     [self initToolBar];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changeMode:) name:@"UITextInputCurrentInputModeDidChangeNotification" object:nil];
 }
 
 - (void)initController {
@@ -88,11 +87,6 @@
     _replyId = nil;
     _chatToolBar.inputTextView.placeHolder = @"说两句呗";
     [_chatToolBar endEditing:YES];
-}
--(void) changeMode:(NSNotification *)notification{
-    if ([[[UITextInputMode currentInputMode] primaryLanguage] isEqualToString:@"emoji"]) {
-        [YUtils showTitle:@"不支持emoji"];
-    }
 }
 - (void)onNavigationRightButtonClicked {
     [_feedDetailTable openTool];
