@@ -39,6 +39,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     [self initView];
+    [self showCustomNavigationPublishButton];
     _needRefresh = true;
 }
 
@@ -49,7 +50,6 @@
     [SlideNavigationController sharedInstance].enableSwipeGesture = YES;
     [SlideNavigationController sharedInstance].enableShadow = false;
     [SlideNavigationController sharedInstance].portraitSlideOffset = SCREEN_WIDTH * 0.3;
-    [self showCustomNavigationPublishButton];
     [self initNotification];
 }
 - (void)viewDidAppear:(BOOL)animated {
