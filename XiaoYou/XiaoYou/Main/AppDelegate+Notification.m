@@ -18,7 +18,7 @@
     [self registerRemoteNotification];
     
     //环信初始化
-    [[EaseMob sharedInstance] registerSDKWithAppKey:@"jiankun#xiaoyoubeta" apnsCertName:@"xiaoyou_development_beta"];
+    [[EaseMob sharedInstance] registerSDKWithAppKey:@"jiankun#xiaoyou" apnsCertName:@"xiaoyou_producation"];
     [[EaseMob sharedInstance] application:application didFinishLaunchingWithOptions:launchOptions];
     
     [self setupNotifiers];
