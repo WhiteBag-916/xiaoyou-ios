@@ -452,6 +452,7 @@ DEF_SINGLETON(ProvisionManager);
 - (void)receiveAuthCode:(NSString *)mobilePhone needUserToken:(BOOL)needUserToken block:(ActionCompleteBlock)block {
     ReceiveAuthCodeAction* action = [[ReceiveAuthCodeAction alloc] init];
     action.mobilePhone = mobilePhone;
+    action.needUserToken = needUserToken;
     
     [YAction startAction:action completionBlock:^(YActionMessage* message) {
         //主线程处理界面
