@@ -143,7 +143,7 @@ typedef enum : NSUInteger {
             make.top.equalTo(_headImageView.mas_bottom).offset(kFlagLabelToHead);
             make.left.equalTo(_nameLabel.mas_left);
             make.right.equalTo(self.contentView.mas_right).offset(-kPaddingDistance);
-            make.bottom.equalTo(self.contentView.mas_bottom).offset(-54);
+            make.bottom.equalTo(self.contentView.mas_bottom).offset(-50);
         }];
         _tagContent.maxLines = 2;
         _tagContent.clipsToBounds = true;
