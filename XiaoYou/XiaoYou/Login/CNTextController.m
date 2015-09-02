@@ -29,10 +29,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.view.backgroundColor = [UIColor whiteColor];
+    self.view.backgroundColor = KCOLORGREEN_455A64;
     
     _textWebView = [[UIWebView alloc]init];
-    _textWebView.backgroundColor = [UIColor clearColor];
     [self.view addSubview:_textWebView];
     
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -58,9 +57,10 @@
             make.bottom.mas_equalTo(SCALE_NUM(-75));
         }];
         
-        NSString *path = [[NSBundle mainBundle] pathForResource:@"ServiceTerms" ofType:@"html"];
-        NSData *data = [NSData dataWithContentsOfFile:path];
-        [_textWebView loadData:data MIMEType:@"text/html" textEncodingName:@"utf-8" baseURL:nil];
+//        NSString *path = [[NSBundle mainBundle] pathForResource:@"ServiceTerms" ofType:@"html"];
+//        NSData *data = [NSData dataWithContentsOfFile:path];
+//        [_textWebView loadData:data MIMEType:@"text/html" textEncodingName:@"utf-8" baseURL:nil];
+        [_textWebView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://licene.xiaoyou.com/clause.html"]]];
     }
     else
     {
