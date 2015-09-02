@@ -181,7 +181,7 @@
         make.width.height.mas_equalTo(_imgSize);
     }];
     img.contentMode = UIViewContentModeScaleAspectFill;
-    [self moveToLine:(int)(urls.count / 3)];
+    [self moveToLine:(int)((urls.count-1) / 3)];
     for (int i = 0; i < urls.count; i ++) {
         [(UIImageView *)[_contentView viewWithTag:KIMGTAG+i] setNormalImageWithUrl:urls[i]];
     }
