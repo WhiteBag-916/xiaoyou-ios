@@ -100,9 +100,15 @@
 -(void)setupUnreadMessageCount:(NSNotification *)notification
 {
     int unreadCount = [[notification userInfo][@"unread"] intValue];
-    if (unreadCount > 0) {
+    if (unreadCount > 99)
+    {
+        _messageViewCotroller.tabBarItem.badgeValue = @"99+";
+    }
+    else if(unreadCount > 0)
+    {
         _messageViewCotroller.tabBarItem.badgeValue = [NSString stringWithFormat:@"%i", unreadCount];
-    }else{
+    }
+    else{
         _messageViewCotroller.tabBarItem.badgeValue = nil;
     }
     
