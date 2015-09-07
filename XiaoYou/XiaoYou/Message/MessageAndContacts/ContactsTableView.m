@@ -213,7 +213,7 @@
     XYGroupInfoDetailViewController * groupInfoDetailViewController = [[XYGroupInfoDetailViewController alloc] init];
     groupInfoDetailViewController.studentDic = _headDataSourceDic;
     groupInfoDetailViewController.isClass = YES;
-    groupInfoDetailViewController.gid = [_headDataSourceDic[@"gid"] stringValue];
+    groupInfoDetailViewController.gid = _headDataSourceDic[@"gid"];
     [self.myController.navigationController pushViewController:groupInfoDetailViewController animated:YES needHiddenBottomBar:YES];
 }
 
