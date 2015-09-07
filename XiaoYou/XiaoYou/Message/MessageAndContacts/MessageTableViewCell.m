@@ -236,9 +236,19 @@ NSString *const kMessageTableViewCell = @"MessageTableViewCellId";
     }
     
     //未读数
-    if (![[self unreadMessageCountByConversation:_conversation] isEqualToString:@"0"]) {
-        _badgeNumberLabel.hidden = NO;
-        _badgeNumberLabel.text = [self unreadMessageCountByConversation:_conversation];
+    if (![[self unreadMessageCountByConversation:_conversation] isEqualToString:@"0"])
+    {
+        if ([[self unreadMessageCountByConversation:_conversation] doubleValue] > 99)
+        {
+            _badgeNumberLabel.hidden = NO;
+            _badgeNumberLabel.text = @"99+";
+        }
+        else
+        {
+            _badgeNumberLabel.hidden = NO;
+            _badgeNumberLabel.text = [self unreadMessageCountByConversation:_conversation];
+        }
+        
     }
     else
     {

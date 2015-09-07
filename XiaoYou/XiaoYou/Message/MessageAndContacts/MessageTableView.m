@@ -133,7 +133,12 @@
     }];
     //未读数
     NSUInteger unreadCount = model.conversation.unreadMessagesCount;
-    if (unreadCount > 0) {
+    if (unreadCount > 99) {
+        _badgeNumberLabel.hidden = NO;
+        _badgeNumberLabel.text = @"99+";
+    }
+    else if(unreadCount > 0)
+    {
         _badgeNumberLabel.hidden = NO;
         _badgeNumberLabel.text = [NSString stringWithFormat:@"%lu", (unsigned long)unreadCount];
     }
