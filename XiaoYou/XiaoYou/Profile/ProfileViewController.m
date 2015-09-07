@@ -353,11 +353,21 @@
         _feedHintLabel = [YUtils initLabel:CONTENT_FONT(12) color:[UIColor blackColor] text:@"查看全部" frame:CGRectZero alignment:NSTextAlignmentLeft];
         [item addSubview:_feedHintLabel];
         [_feedHintLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.left.equalTo(_userName);
-            make.right.equalTo(item);
+            make.left.right.equalTo(_attitudeLabel);
             make.centerY.equalTo(icon);
+            make.height.equalTo(_tagCountLabel);
         }];
-        [self rightArray:2 inView:_feedHintLabel];
+        
+        UIImageView *right = [[UIImageView alloc] init];
+        [item addSubview:right];
+        [right mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.centerY.equalTo(_feedHintLabel);
+            make.right.equalTo(item).offset(-SCALE_NUM(12));
+            make.width.mas_equalTo(SCALE_NUM(8));
+        }];
+        right.image = [UIImage imageNamed:@"mine-concern-particulars"];
+        right.contentMode = UIViewContentModeRight;
+        
         _feed = [[ProfileFeedContentView alloc] initWithType:ProfileFeedMy];
         _feed.userInteractionEnabled = false;
         [item addSubview:_feed];
