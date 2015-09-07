@@ -103,16 +103,25 @@
 -(void)clickBottomButton
 {
     if (!_isFriendRelationShip) {
-        //添加好友
-        [YUtils showHUDWithTitle:@"发送中"];
-        [[ContactManager sharedInstance] submitFriendApply:_uid block:^(YActionMessage *message) {
-            [YUtils hiddenProgressHUD];
-            if (message.isSuccess) {
-                [self updateStatus:@"2"];
+        //展示提示
+        YCommonAlertView *alert = [[YCommonAlertView alloc] initWithTitle:nil
+                                                                  message:[NSString stringWithFormat:@"确定向%@发送好友申请吗？", _shareData[@"name"]]
+                                                             buttonTitles:@"取消",@"确认", nil];
+        [alert clickedButtonHandler:^(NSInteger index) {
+            if (1 == index) {
+                //添加好友
+                [YUtils showHUDWithTitle:@"发送中"];
+                [[ContactManager sharedInstance] submitFriendApply:_uid block:^(YActionMessage *message) {
+                    [YUtils hiddenProgressHUD];
+                    if (message.isSuccess) {
+                        [self updateStatus:@"2"];
+                    }
+                    
+                    [YUtils showTitle:message.desc];
+                }];
             }
-            
-            [YUtils showTitle:message.desc];
         }];
+        [alert show];
     } else {
         if ([self.navigationController.viewControllers[self.navigationController.viewControllers.count-2] isKindOfClass:[ChatViewController class]]) {
             [self.navigationController popViewControllerAnimated:YES];

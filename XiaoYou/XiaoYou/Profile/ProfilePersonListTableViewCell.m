@@ -145,16 +145,25 @@ NSString *const kProfilePersonListTableViewCell = @"kProfilePersonListTableViewC
 }
 //添加好友
 - (void)clickAdd {
-    [YUtils showHUDWithTitle:@"发送中"];
-    [[ContactManager sharedInstance] submitFriendApply:_face.userId block:^(YActionMessage *message) {
-        [YUtils hiddenProgressHUD];
-        if (message.isSuccess) {
-            _myAuthor.friendStatus = @"2";
-            [self updateStatus:_myAuthor.friendStatus];
+    //展示提示
+    YCommonAlertView *alert = [[YCommonAlertView alloc] initWithTitle:nil
+                                                              message:[NSString stringWithFormat:@"确定向%@发送好友申请吗？", _userName.text]
+                                                         buttonTitles:@"取消",@"确认", nil];
+    [alert clickedButtonHandler:^(NSInteger index) {
+        if (1 == index) {
+            [YUtils showHUDWithTitle:@"发送中"];
+            [[ContactManager sharedInstance] submitFriendApply:_face.userId block:^(YActionMessage *message) {
+                [YUtils hiddenProgressHUD];
+                if (message.isSuccess) {
+                    _myAuthor.friendStatus = @"2";
+                    [self updateStatus:_myAuthor.friendStatus];
+                }
+                
+                [YUtils showTitle:message.desc];
+            }];
         }
-        
-        [YUtils showTitle:message.desc];
     }];
+    [alert show];
 }
 
 @end
