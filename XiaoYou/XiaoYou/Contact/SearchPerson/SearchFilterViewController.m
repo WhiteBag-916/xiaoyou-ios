@@ -45,7 +45,6 @@ NSString *const filterIsSelected = @"filterIsSelected";
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    [self resetRightButton];
     
     //拉取筛选条件
     [self friendsConditionRequest];
@@ -135,22 +134,6 @@ NSString *const filterIsSelected = @"filterIsSelected";
     _searchFilterSelectedBlock = block;
 }
 
-//重置右上角按钮是否可点
-- (void)resetRightButton
-{
-    //判断
-    if ([self isSelectedArray])
-    {
-        self.navigationRightButton.userInteractionEnabled = YES;
-        [self.navigationRightButton setImage:[UIImage imageNamed:@"complete"] forState:UIControlStateNormal];
-    }
-    else
-    {
-        self.navigationRightButton.userInteractionEnabled = NO;
-        [self.navigationRightButton setImage:[UIImage imageNamed:@"complete-grey"] forState:UIControlStateNormal];
-    }
-}
-
 //是否有选中
 - (BOOL)isSelectedArray {
     __block BOOL isSelect = NO;
@@ -191,8 +174,6 @@ NSString *const filterIsSelected = @"filterIsSelected";
 {
     _filterAllArray[indexPath.row][filterIsSelected] = @(![_filterAllArray[indexPath.row][filterIsSelected] boolValue]);
     [_searchFilterTableView reloadData];
-    
-    [self resetRightButton];
 }
 
 /*
