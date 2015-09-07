@@ -92,7 +92,7 @@
     } else if (unreadCount > 0) {
         _feedListViewCotroller.tabBarItem.badgeValue = [NSString stringWithFormat:@"%i", unreadCount];
     } else{
-        _feedListViewCotroller.tabBarItem.badgeValue = @"0";
+        _feedListViewCotroller.tabBarItem.badgeValue = @"";
     }
 }
 
