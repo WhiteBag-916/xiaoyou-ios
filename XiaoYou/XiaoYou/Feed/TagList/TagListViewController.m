@@ -58,7 +58,15 @@
 
 
 - (void)checkUnreadAlterCount {
-    _notifyCount.text = [[YShareData defaultData][kShareData_UnreadAlterCount] stringValue];
+    int unreadCount = [[YShareData defaultData][kShareData_UnreadAlterCount] intValue];
+    
+    if (unreadCount > 99) {
+        _notifyCount.text = @"99+";
+    } else if (unreadCount > 0) {
+        _notifyCount.text = [NSString stringWithFormat:@"%i", unreadCount];
+    } else{
+        _notifyCount.text = @"0";
+    }
 }
 
 - (void)initHeaderView {

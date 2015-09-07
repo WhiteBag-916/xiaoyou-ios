@@ -286,7 +286,6 @@
         NSMutableDictionary *dic = [@{tagObj:obj,tagIsSelected:@NO} mutableCopy];
         [_tagsArray addObject:dic];
     }];
-    
     //传入控件
     [self loadTag];
 }
@@ -419,6 +418,9 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [self showEditMode];
+}
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 - (void)tokenFail {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
