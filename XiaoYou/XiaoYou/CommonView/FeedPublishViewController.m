@@ -417,6 +417,7 @@
     [self savePic:getImage];
 }
 - (void)onNavigationLeftButtonClicked {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
     [self.navigationController dismissViewControllerAnimated:YES completion:nil];
 }
 - (void)onNavigationRightButtonClicked {
@@ -427,15 +428,13 @@
     [self showEditMode];
 }
 - (void)tokenFail {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
     [self.picker dismissViewControllerAnimated:NO completion:nil];
     [self.navigationController dismissViewControllerAnimated:NO completion:nil];
 }
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
     [self showOrignMode];
-}
-- (void)dealloc {
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 //获取选中的标签
 - (NSString *)getTagSelected {
