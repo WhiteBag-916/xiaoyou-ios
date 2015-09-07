@@ -409,7 +409,6 @@
     [self savePic:getImage];
 }
 - (void)onNavigationLeftButtonClicked {
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
     [self.navigationController dismissViewControllerAnimated:YES completion:nil];
 }
 - (void)onNavigationRightButtonClicked {
@@ -423,7 +422,6 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 - (void)tokenFail {
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
     [self.picker dismissViewControllerAnimated:NO completion:nil];
     [self.navigationController dismissViewControllerAnimated:NO completion:nil];
 }
