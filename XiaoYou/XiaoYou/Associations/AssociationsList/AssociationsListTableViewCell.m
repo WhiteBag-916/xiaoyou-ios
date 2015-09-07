@@ -63,9 +63,6 @@ NSString *const kAssociationsListTableViewCell = @"AssociationsListTableViewCell
 - (void)initView {
     //1
     _headImageView = [UIImageView new];
-    _headImageView.layer.cornerRadius = K_HEADIMG_WH/2;
-    _headImageView.clipsToBounds = YES;
-    _headImageView.backgroundColor = KCOLORGREEN_009688;
     [self.contentView addSubview:_headImageView];
     [_headImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.top.mas_equalTo(K_HEADIMG_LT);
@@ -194,8 +191,10 @@ NSString *const kAssociationsListTableViewCell = @"AssociationsListTableViewCell
     [_headImageView setNormalImageWithUrl:model.groupIcon];
     if (model.groupIcon.length > 0) {
         _defaultLabel.hidden = YES;
+        _headImageView.backgroundColor = [UIColor clearColor];
     } else {
         _defaultLabel.hidden = NO;
+        _headImageView.backgroundColor = KCOLORGREEN_009688;
         _defaultLabel.text = [model.groupName substringWithRange:NSMakeRange(0, 1)];
     }
     

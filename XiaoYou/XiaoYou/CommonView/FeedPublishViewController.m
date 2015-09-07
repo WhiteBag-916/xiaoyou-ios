@@ -280,18 +280,19 @@
     [self initListTag];
 }
 - (void)initListTag {
+    WS(weakSelf);
     [[ProvisionManager sharedInstance] getTagList:^(YActionMessage *message) {
         if (message.isSuccess) {
+            weakSelf.tagsArray = [[NSMutableArray alloc] init];
             //构造tag
-            _tagsArray = [@[] mutableCopy];
             NSArray *tagList = message.object;
             [tagList enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
                 NSMutableDictionary *dic = [@{tagObj:obj,tagIsSelected:@NO} mutableCopy];
-                [_tagsArray addObject:dic];
+                [weakSelf.tagsArray addObject:dic];
             }];
             
             //传入控件
-            [self loadTag];
+            [weakSelf loadTag];
         } else {
             [YUtils showTitle:message.desc];
         }
@@ -417,6 +418,7 @@
     [self savePic:getImage];
 }
 - (void)onNavigationLeftButtonClicked {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
     [self.navigationController dismissViewControllerAnimated:YES completion:nil];
 }
 - (void)onNavigationRightButtonClicked {
@@ -427,15 +429,13 @@
     [self showEditMode];
 }
 - (void)tokenFail {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
     [self.picker dismissViewControllerAnimated:NO completion:nil];
     [self.navigationController dismissViewControllerAnimated:NO completion:nil];
 }
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
     [self showOrignMode];
-}
-- (void)dealloc {
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 //获取选中的标签
 - (NSString *)getTagSelected {

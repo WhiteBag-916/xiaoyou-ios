@@ -39,6 +39,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     [self initView];
+    [self showCustomNavigationPublishButton];
     _needRefresh = true;
 }
 
@@ -49,7 +50,6 @@
     [SlideNavigationController sharedInstance].enableSwipeGesture = YES;
     [SlideNavigationController sharedInstance].enableShadow = false;
     [SlideNavigationController sharedInstance].portraitSlideOffset = SCREEN_WIDTH * 0.3;
-    [self showCustomNavigationPublishButton];
     [self initNotification];
 }
 - (void)viewDidAppear:(BOOL)animated {
@@ -78,9 +78,12 @@
 //查看是否有新消息提醒
 - (void)checkUnreadAlterCount {
     int unreadCount = [[YShareData defaultData][kShareData_UnreadAlterCount] intValue];
-    if (unreadCount > 0) {
+    
+    if (unreadCount > 99) {
+        _menuButton.badgeValue = @"99+";
+    } else if (unreadCount > 0) {
         _menuButton.badgeValue = [NSString stringWithFormat:@"%i", unreadCount];
-    }else{
+    } else{
         _menuButton.badgeValue = @"0";
     }
 }

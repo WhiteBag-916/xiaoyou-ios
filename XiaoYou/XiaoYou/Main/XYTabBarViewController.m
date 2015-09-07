@@ -87,9 +87,11 @@
 //feed提醒未读数
 - (void)setupUnreadAlterCount {
     int unreadCount = [[YShareData defaultData][kShareData_UnreadAlterCount] intValue];
-    if (unreadCount > 0) {
+    if (unreadCount > 99) {
+        _feedListViewCotroller.tabBarItem.badgeValue = @"99+";
+    } else if (unreadCount > 0) {
         _feedListViewCotroller.tabBarItem.badgeValue = [NSString stringWithFormat:@"%i", unreadCount];
-    }else{
+    } else{
         _feedListViewCotroller.tabBarItem.badgeValue = nil;
     }
 }
