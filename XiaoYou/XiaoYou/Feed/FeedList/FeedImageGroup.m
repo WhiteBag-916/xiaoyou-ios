@@ -13,6 +13,7 @@
 #import "SDPhotoBrowser/SDPhotoBrowser.h"
 
 #define KIMGTAG 10000
+#define KIMGSIZE SCALE_NUM(200)
 @interface FeedImageGroup()<SDPhotoBrowserDelegate>
 
 @property (nonatomic, strong) NSMutableArray *smallImgs;
@@ -158,11 +159,11 @@
 - (void)specialForOneImage:(NSString *)url {
     UIImageView *img = (UIImageView *)[_contentView subviews][0];
     [img mas_remakeConstraints:^(MASConstraintMaker *make) {
-        make.width.equalTo(_contentView);
+        make.width.mas_equalTo(KIMGSIZE);
         make.height.equalTo(img.mas_width);
         make.top.left.equalTo(_contentView);
     }];
-    img.contentMode = UIViewContentModeScaleAspectFit;
+    img.contentMode = UIViewContentModeScaleAspectFill;
     [img setNormalImageWithUrl:url];
     [self moveToLine:3];
     for (int i = 1; i < 9; i++) {
@@ -216,7 +217,7 @@
         } else if (index == 1) {
             make.height.equalTo(_contentView.mas_width).multipliedBy(0.5).offset(_imgSize/2).priorityLow();
         } else {
-            make.height.equalTo(_contentView.mas_width).priorityLow();
+            make.height.mas_equalTo(KIMGSIZE).priorityLow();
         }
     }];
     

@@ -280,22 +280,15 @@
     [self initListTag];
 }
 - (void)initListTag {
-    [[ProvisionManager sharedInstance] getTagList:^(YActionMessage *message) {
-        if (message.isSuccess) {
-            //构造tag
-            _tagsArray = [@[] mutableCopy];
-            NSArray *tagList = message.object;
-            [tagList enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-                NSMutableDictionary *dic = [@{tagObj:obj,tagIsSelected:@NO} mutableCopy];
-                [_tagsArray addObject:dic];
-            }];
-            
-            //传入控件
-            [self loadTag];
-        } else {
-            [YUtils showTitle:message.desc];
-        }
+    _tagsArray = [NSMutableArray array];
+    NSArray *tagList = [[ProvisionManager sharedInstance] getProfile].tagModels;
+    [tagList enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+        NSMutableDictionary *dic = [@{tagObj:obj,tagIsSelected:@NO} mutableCopy];
+        [_tagsArray addObject:dic];
     }];
+    
+    //传入控件
+    [self loadTag];
 }
 - (void)loadGroupTag {
     [_groupArray enumerateObjectsUsingBlock:^(NSDictionary *obj, NSUInteger idx, BOOL *stop) {

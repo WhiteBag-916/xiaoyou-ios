@@ -35,6 +35,7 @@
     [self initController];
     [self initView];
     [_feedListTableView loadData];
+    [self showCustomNavigationPublishButton];
 }
 
 - (void)initController {
