@@ -78,9 +78,12 @@
 //查看是否有新消息提醒
 - (void)checkUnreadAlterCount {
     int unreadCount = [[YShareData defaultData][kShareData_UnreadAlterCount] intValue];
-    if (unreadCount > 0) {
+    
+    if (unreadCount > 99) {
+        _menuButton.badgeValue = @"99+";
+    } else if (unreadCount > 0) {
         _menuButton.badgeValue = [NSString stringWithFormat:@"%i", unreadCount];
-    }else{
+    } else{
         _menuButton.badgeValue = @"0";
     }
 }
