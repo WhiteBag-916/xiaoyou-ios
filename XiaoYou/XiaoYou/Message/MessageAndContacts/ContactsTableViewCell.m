@@ -15,6 +15,7 @@
 #import "Tags.h"
 #import "ProvisionManager.h"
 #import "ProfileInfo.h"
+#import "SKTagView.h"
 
 #define kHeadWidthAndHeight            40
 #define kNameLabelWidth                120
@@ -28,6 +29,7 @@
 #define kRemindImageViewWidth          13
 #define kRemindImageViewHeight         15
 #define kBottomLineHeight              0.4
+#define kFlagLabelToHead               14
 
 
 NSString *const kContactsTableViewCell = @"ContactsTableViewCell";
@@ -40,7 +42,7 @@ NSString *const kContactsTableViewCell = @"ContactsTableViewCell";
 @property (strong, nonatomic)  ConnectTag * connectTag;
 @property (nonatomic,strong)  UILabel * defaultLabel;
 @property (nonatomic,strong) UIImageView * remindImageView;
-
+@property (nonatomic, strong) SKTagView *tagContent;
 
 @end
 
@@ -93,18 +95,33 @@ NSString *const kContactsTableViewCell = @"ContactsTableViewCell";
             make.width.mas_equalTo(kFlagImageViewWidth);
             make.height.mas_equalTo(kFlagImageViewHeight);
         }];
-        //标签
-        _flagLabel = [[UILabel alloc] init];
-        _flagLabel.font = CONTENT_FONT(10);
-        _flagLabel.textColor = KCOLORWHITE_696969;
-        _flagLabel.backgroundColor = [UIColor clearColor];
-        [self.contentView addSubview:_flagLabel];
-        [_flagLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.bottom.mas_equalTo(-kPaddingDistance);
+        //
+        _tagContent = [[SKTagView alloc] init];
+        [self.contentView addSubview:_tagContent];
+        [_tagContent mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.top.equalTo(_nameLabel.mas_bottom).offset(kFlagLabelToHead);
             make.left.equalTo(_flagImageView.mas_right).offset(kPaddingDistance);
-            make.right.mas_equalTo(-kPaddingDistance);
-            make.height.mas_equalTo(kLabelHeightDistacnce);
+            make.right.equalTo(self.contentView.mas_right).offset(-kPaddingDistance);
+            make.bottom.equalTo(self.contentView.mas_bottom).offset(-kPaddingDistance);
         }];
+        _tagContent.maxLines = 1;
+        _tagContent.clipsToBounds = true;
+        _tagContent.insets = 21;
+        _tagContent.lineSpace = -5;
+        _tagContent.singleLine = false;
+        _tagContent.preferredMaxLayoutWidth = SCALE_NUM(240);
+        //标签
+//        _flagLabel = [[UILabel alloc] init];
+//        _flagLabel.font = CONTENT_FONT(10);
+//        _flagLabel.textColor = KCOLORWHITE_696969;
+//        _flagLabel.backgroundColor = [UIColor clearColor];
+//        [self.contentView addSubview:_flagLabel];
+//        [_flagLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+//            make.bottom.mas_equalTo(-kPaddingDistance);
+//            make.left.equalTo(_flagImageView.mas_right).offset(kPaddingDistance);
+//            make.right.mas_equalTo(-kPaddingDistance);
+//            make.height.mas_equalTo(kLabelHeightDistacnce);
+//        }];
         //提醒
         _remindImageView = [[UIImageView alloc] init];
         _remindImageView.image = [UIImage imageNamed:@"chat_remindnot"];
@@ -150,9 +167,26 @@ NSString *const kContactsTableViewCell = @"ContactsTableViewCell";
     _nameLabel.text = modelDic[@"name"];
     
     //标签
-    NSString * flagString = [modelDic[@"tags"] stringByReplacingOccurrencesOfString:@"," withString:@"  "];
-    _flagLabel.text = flagString;
-    _flagImageView.image = [UIImage imageNamed:@"tag-green"];
+    BOOL hasRelate = false;
+    [_tagContent removeAllTags];
+    NSArray * tagsArr = modelDic[@"tagsCommon"];
+    for (int i = 0; i < tagsArr.count; i++) {
+        Tags * tempTag = [[Tags alloc]initWithDictionary:tagsArr[i]];
+        BOOL isRelate = [tempTag equal];
+        hasRelate |= isRelate;
+        SKTag *tag = [SKTag tagWithText:[tempTag name]];
+        tag.font = CONTENT_FONT(10);
+        if (isRelate) {
+            tag.textColor = KCOLORGREEN_009688;
+        } else {
+            tag.textColor = KCOLORWHITE_696969;
+        }
+        [_tagContent addTag:tag];
+    }
+    [self setIsRelated:hasRelate];
+//    NSString * flagString = [modelDic[@"tags"] stringByReplacingOccurrencesOfString:@"," withString:@"  "];
+//    _flagLabel.text = flagString;
+//    _flagImageView.image = [UIImage imageNamed:@"tag-green"];
     
     //头像
     if ([modelDic[@"icon"] isEqualToString:@""]) {
@@ -175,9 +209,9 @@ NSString *const kContactsTableViewCell = @"ContactsTableViewCell";
     }
     
     //共同标签
-    NSArray * tagsArr = modelDic[@"propetiesCommon"];
+    NSArray * propetiesArr = modelDic[@"propetiesCommon"];
     NSMutableArray * propetiesCommonArr = [[NSMutableArray alloc] init];
-    for (int i = 0; i < tagsArr.count; i++)
+    for (int i = 0; i < propetiesArr.count; i++)
     {
         [propetiesCommonArr addObject:[[Tags alloc]initWithDictionary:modelDic[@"propetiesCommon"][i]]];
     }
@@ -191,6 +225,14 @@ NSString *const kContactsTableViewCell = @"ContactsTableViewCell";
     else
     {
         _remindImageView.hidden = NO;
+    }
+}
+
+- (void)setIsRelated:(BOOL)isRelated {
+    if (isRelated) {
+        _flagImageView.image = [UIImage imageNamed:@"tag-green"];
+    } else {
+        _flagImageView.image = [UIImage imageNamed:@"tag-grey"];
     }
 }
 
