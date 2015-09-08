@@ -185,7 +185,8 @@
     }];
     //标签
     _flagLabel = [[UILabel alloc] init];
-    _flagLabel.font = CONTENT_FONT(11);
+    _flagLabel.font = CONTENT_FONT(10);
+    _flagLabel.textColor = KCOLORWHITE_696969;
     _flagLabel.text = @"班级群聊";
     _flagLabel.backgroundColor = [UIColor clearColor];
     [backView addSubview:_flagLabel];
