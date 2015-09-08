@@ -95,7 +95,8 @@ NSString *const kContactsTableViewCell = @"ContactsTableViewCell";
         }];
         //标签
         _flagLabel = [[UILabel alloc] init];
-        _flagLabel.font = CONTENT_FONT(11);
+        _flagLabel.font = CONTENT_FONT(10);
+        _flagLabel.textColor = KCOLORWHITE_696969;
         _flagLabel.backgroundColor = [UIColor clearColor];
         [self.contentView addSubview:_flagLabel];
         [_flagLabel mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -149,7 +150,7 @@ NSString *const kContactsTableViewCell = @"ContactsTableViewCell";
     _nameLabel.text = modelDic[@"name"];
     
     //标签
-    NSString * flagString = [modelDic[@"tags"] stringByReplacingOccurrencesOfString:@"," withString:@" "];
+    NSString * flagString = [modelDic[@"tags"] stringByReplacingOccurrencesOfString:@"," withString:@"  "];
     _flagLabel.text = flagString;
     _flagImageView.image = [UIImage imageNamed:@"tag-green"];
     
