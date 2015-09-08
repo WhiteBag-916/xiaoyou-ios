@@ -41,6 +41,7 @@ NSString *const KGROUP_APPLYID = @"100003";//社团申请，ID累加
 
 @property (strong, nonatomic) NSDate *lastPlaySoundDate;
 @property (nonatomic, strong) NSMutableArray *grouArray;//现有的group
+@property (nonatomic, strong) NSMutableArray *forbiddenGroupArray;//屏蔽的群
 
 @end
 
@@ -52,6 +53,7 @@ DEF_SINGLETON(MessageManager);
 {
     if (self = [super init]) {
         _grouArray = [NSMutableArray array];
+        _forbiddenGroupArray = [NSMutableArray array];
     }
     return self;
 }
@@ -141,6 +143,9 @@ DEF_SINGLETON(MessageManager);
         
             //取群组id，进行管理
             [self initGroupIdArray];
+            
+            //获取屏蔽群组的id
+            self.forbiddenGroupArray = [[[EaseMob sharedInstance].chatManager ignoredGroupIds] mutableCopy];
             
             //避免插入过晚
             dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
@@ -239,6 +244,31 @@ DEF_SINGLETON(MessageManager);
 //删除会话
 - (void)delConversationByChatter:(NSString *)chatter {
     [[EaseMob sharedInstance].chatManager removeConversationByChatter:chatter deleteMessages:YES append2Chat:NO];
+}
+
+//设置群消息不提醒
+- (void)forbiddenGroupByThirdCode:(NSString *)thirdCode {
+    BOOL isForbidden = [self isForbiddenGroupByThirdCode:thirdCode];
+    [[EaseMob sharedInstance].chatManager asyncIgnoreGroupPushNotification:thirdCode isIgnore:!isForbidden completion:^(NSArray *ignoreGroupsList, EMError *error) {
+        if (!error) {
+            self.forbiddenGroupArray = [ignoreGroupsList mutableCopy];
+        }
+    } onQueue:nil];
+}
+
+//判断是否已屏蔽
+- (BOOL)isForbiddenGroupByThirdCode:(NSString *)thirdCode {
+    __block BOOL isForbidden = NO;
+    
+    [_forbiddenGroupArray enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+        if ([thirdCode isEqualToString:obj]) {
+            isForbidden = YES;
+            
+            *stop = YES;
+        }
+    }];
+    
+    return isForbidden;
 }
 
 //更新会话
@@ -428,8 +458,19 @@ DEF_SINGLETON(MessageManager);
     }];
     
 #if !TARGET_IPHONE_SIMULATOR
-    //判断是否发送本地推送
+    BOOL needPush = NO;
     if (!message.ext[@"em_ignore_notification"]) {
+        if (eMessageTypeChat == message.messageType) {
+            needPush = YES;
+        } else if (eMessageTypeGroupChat == message.messageType) {
+            if (![self isForbiddenGroupByThirdCode:message.from]) {
+                needPush = YES;
+            }
+        }
+    }
+    
+    //判断是否发送本地推送
+    if (needPush) {
         BOOL isAppActivity = [[UIApplication sharedApplication] applicationState] == UIApplicationStateActive;
         if (!isAppActivity) {
             [self showNotificationWithMessage:message];

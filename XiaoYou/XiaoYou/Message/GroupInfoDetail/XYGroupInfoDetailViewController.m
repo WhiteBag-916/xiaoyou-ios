@@ -16,7 +16,7 @@
 #import "GroupDetail.h"
 #import "YCommonReport.h"
 #import "GroupModel.h"
-
+#import "MessageManager.h"
 
 #define kNavigationgLeftWidth                   9
 #define kNavigationgLeftHeight                  14
@@ -109,11 +109,14 @@ NSString *const kXYGroupInfoDetailViewController = @"XYGroupInfoDetailViewContro
 {
     YActionSheetItem *item1 = [YActionSheetItem itemWithType:YCommonActionSheetItemTypeShareOrganization title:@"分享社团名片至" extraData:_shareData];
     
-//    YActionSheetItem *item2 = [YActionSheetItem itemWithTitle:@"消息不提醒"
-//                                                         type:YCommonActionSheetItemTypeSwitch
-//                                                      isGroup:YES
-//                                                         open:YES
-//                                                    extraData:@{@"uid":self.gid}];
+    YActionSheetItem *item2 = [YActionSheetItem itemWithTitle:@"消息不提醒"
+                                                         type:YCommonActionSheetItemTypeSwitch
+                                                      isGroup:YES
+                                                         open:[[MessageManager sharedInstance] isForbiddenGroupByThirdCode:_studentDic[@"thirdCode"]]
+                                                    extraData:nil
+                                                        block:^(NSInteger checkNum) {
+                                                            [self forbiddenGroup];
+                                                        }];
 
     
     YActionSheetItem *item3 = [YActionSheetItem itemWithTitle:@"举报"
@@ -122,8 +125,12 @@ NSString *const kXYGroupInfoDetailViewController = @"XYGroupInfoDetailViewContro
                                                             [YCommonReport report];
                                                         }];
     
-    YCommonActionSheet *sheet = [[YCommonActionSheet alloc] initWithType:@[item1, item3] title:nil];
+    YCommonActionSheet *sheet = [[YCommonActionSheet alloc] initWithType:@[item1, item2, item3] title:nil];
     [sheet show];
+}
+
+- (void)forbiddenGroup {
+    [[MessageManager sharedInstance] forbiddenGroupByThirdCode:_studentDic[@"thirdCode"]];
 }
 
 -(void)back
