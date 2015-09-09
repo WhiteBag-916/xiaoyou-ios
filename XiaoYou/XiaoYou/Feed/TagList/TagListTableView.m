@@ -31,7 +31,6 @@
         self.dataSource = self;
         self.separatorStyle = UITableViewCellSeparatorStyleNone;
         self.backgroundColor = [UIColor clearColor];
-        self.showsVerticalScrollIndicator = false;
     }
     return self;
 }
