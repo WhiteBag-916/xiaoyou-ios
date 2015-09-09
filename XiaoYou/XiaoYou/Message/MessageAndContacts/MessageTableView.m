@@ -115,7 +115,6 @@
     [_nameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.mas_equalTo(kPaddingDistance);
         make.left.equalTo(_headImageView.mas_right).offset(kPaddingDistance);
-        make.width.mas_equalTo(kNameLabelWidth);
         make.height.mas_equalTo(kLabelHeightDistacnce);
     }];
     //消息数
@@ -198,6 +197,10 @@
     }];
     
     self.tableHeaderView = backView;
+    [self.tableHeaderView  mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.width.mas_equalTo(SCREEN_WIDTH);
+        make.height.mas_equalTo(kRowHeight);
+    }];
 }
 
 // 得到最后消息文字或者类型
