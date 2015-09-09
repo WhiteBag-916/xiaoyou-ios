@@ -9,6 +9,8 @@
 #import "YViewController.h"
 
 @interface FeedFilterViewController : YViewController
+
+@property (nonatomic, assign) BOOL needRefresh;
 - (id)initWithFilter:(NSString *)filter name:(NSString *)name;
 
 - (void)goToDetail:(NSString *)feedId;

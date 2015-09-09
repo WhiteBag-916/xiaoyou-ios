@@ -11,6 +11,7 @@
 #import "FeedListTableView.h"
 #import "FeedDetailViewController.h"
 #import "ProfilePersonListTableView.h"
+#import "FeedPublishViewController.h"
 
 #define KHEADHEIGHT SCALE_NUM(30)
 
@@ -27,6 +28,7 @@
     if (self) {
         _filter = filter;
         self.title = name;
+        _needRefresh = true;
     }
     return self;
 }
@@ -34,10 +36,17 @@
     [super viewDidLoad];
     [self initController];
     [self initView];
-    [_feedListTableView loadData];
     [self showCustomNavigationPublishButton];
 }
-
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    
+    if (_needRefresh) {
+        _needRefresh = false;
+        [_feedListTableView loadData];
+    }
+    
+}
 - (void)initController {
     [self showCustomNavigationBackButton];
     
@@ -86,5 +95,12 @@
 - (void)goToDetail:(NSString *)feedId {
     FeedDetailViewController *feedDetailViewController = [[FeedDetailViewController alloc] initWithFeedId:feedId];
     [self.navigationController pushViewController:feedDetailViewController animated:YES];
+}
+- (void)onNavigationRightButtonClicked {
+    _needRefresh = true;
+    UINavigationController *navigationController =
+    [[UINavigationController alloc] initWithRootViewController:[[FeedPublishViewController alloc] init]];
+    [self.navigationController presentViewController:navigationController animated:YES completion:nil];
+    
 }
 @end
