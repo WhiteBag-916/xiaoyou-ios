@@ -37,6 +37,16 @@ static const NSUInteger kYActionSheetCancelHeight = 49;
     return item;
 }
 
++(instancetype)itemWithTitle:(NSString *)title type:(YCommonActionItemSheetType)type isGroup:(BOOL)isGroup open:(BOOL)isOpen extraData:(NSDictionary *)extraData block:(ActionSheetItemBlock)block {
+    YActionSheetItem *item = [YActionSheetItem itemWithTitle:title
+                                                        type:type
+                                                     isGroup:isGroup
+                                                        open:isOpen
+                                                   extraData:extraData];
+    item.block = block;
+    return item;
+}
+
 +(instancetype)itemWithTitle:(NSString *)title type:(YCommonActionItemSheetType)type isGroup:(BOOL)isGroup open:(BOOL)isOpen extraData:(NSDictionary *)extraData
 {
     YActionSheetItem *item = [YActionSheetItem itemWithTitle:title
@@ -183,17 +193,27 @@ static const NSUInteger kYActionSheetCancelHeight = 49;
 
 -(void)switchAction
 {
-    [YUtils showHUDWithTitle];
-    [[ContactManager sharedInstance] forbiddenLinkMan:_item.extraData[@"uid"] block:^(YActionMessage *message) {
-        [YUtils hiddenProgressHUD];
-        if (message.isSuccess) {
-            _item.isOpen = !_item.isOpen;
+    if (!_item.isGroup) {
+        [YUtils showHUDWithTitle];
+        [[ContactManager sharedInstance] forbiddenLinkMan:_item.extraData[@"uid"] block:^(YActionMessage *message) {
+            [YUtils hiddenProgressHUD];
+            if (message.isSuccess) {
+                _item.isOpen = !_item.isOpen;
+                
+                [self updateSwitchButton];
+            }
             
-            [self updateSwitchButton];
-        }
+            [YUtils showTitle:message.desc];
+        }];
+    } else {
+        _item.isOpen = !_item.isOpen;
         
-        [YUtils showTitle:message.desc];
-    }];
+        [self updateSwitchButton];
+        
+        if (_item.block) {
+            _item.block(0);
+        }
+    }
 }
 
 @end

@@ -185,7 +185,8 @@
     }];
     //标签
     _flagLabel = [[UILabel alloc] init];
-    _flagLabel.font = CONTENT_FONT(11);
+    _flagLabel.font = CONTENT_FONT(10);
+    _flagLabel.textColor = KCOLORWHITE_696969;
     _flagLabel.text = @"班级群聊";
     _flagLabel.backgroundColor = [UIColor clearColor];
     [backView addSubview:_flagLabel];
@@ -206,6 +207,10 @@
     }];
     
     self.tableHeaderView = backView;
+    [self.tableHeaderView  mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.width.mas_equalTo(SCREEN_WIDTH);
+        make.height.mas_equalTo(kRowHeight);
+    }];
 }
 
 -(void)tapGestureRecognizerAction
@@ -213,7 +218,7 @@
     XYGroupInfoDetailViewController * groupInfoDetailViewController = [[XYGroupInfoDetailViewController alloc] init];
     groupInfoDetailViewController.studentDic = _headDataSourceDic;
     groupInfoDetailViewController.isClass = YES;
-    groupInfoDetailViewController.gid = [_headDataSourceDic[@"gid"] stringValue];
+    groupInfoDetailViewController.gid = _headDataSourceDic[@"gid"];
     [self.myController.navigationController pushViewController:groupInfoDetailViewController animated:YES needHiddenBottomBar:YES];
 }
 

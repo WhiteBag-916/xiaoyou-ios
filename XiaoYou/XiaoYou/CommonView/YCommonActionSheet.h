@@ -40,6 +40,8 @@ typedef void(^ActionSheetItemBlock)(NSInteger checkNum);
  */
 + (instancetype)itemWithType:(YCommonActionItemSheetType)type title:(NSString *)title extraData:(NSDictionary *)extraData;
 //传开关
++(instancetype)itemWithTitle:(NSString *)title type:(YCommonActionItemSheetType)type isGroup:(BOOL)isGroup open:(BOOL)isOpen extraData:(NSDictionary *)extraData block:(ActionSheetItemBlock)block;
+//传开关
 +(instancetype)itemWithTitle:(NSString *)title type:(YCommonActionItemSheetType)type isGroup:(BOOL)isGroup open:(BOOL)isOpen extraData:(NSDictionary *)extraData;
 @end
 

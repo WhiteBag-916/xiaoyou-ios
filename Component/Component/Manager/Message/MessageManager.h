@@ -40,4 +40,10 @@ AS_SINGLETON(MessageManager);
 //删除会话
 - (void)delConversationByChatter:(NSString *)chatter;
 
+//设置群消息不提醒
+- (void)forbiddenGroupByThirdCode:(NSString *)thirdCode;
+
+//判断是否已屏蔽
+- (BOOL)isForbiddenGroupByThirdCode:(NSString *)thirdCode;
+
 @end
