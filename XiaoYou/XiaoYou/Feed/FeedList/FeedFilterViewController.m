@@ -69,6 +69,9 @@
         
         if (![_profilePersonListTableView isHidden]) {
             [_profilePersonListTableView loadDataWithQueryCode:_filter];
+            self.navigationItem.rightBarButtonItem = nil;
+        } else {
+            [self showCustomNavigationPublishButton];
         }
     }];
 }

@@ -452,14 +452,15 @@
     [_picArray removeAllObjects];
     [YUtils showHUDWithTitle:@"正在上传"];
     for (int i = 0; i < [_imgGroup getImgCount]; i++) {
+        WS(weakSelf);
         [[FeedManager sharedInstance] uploadFeedImage:[YDirectory newImgCache:[NSString stringWithFormat:@"feed%d.png", i]] block:^(YActionMessage *message) {
             if (message.isSuccess) {
-                [_picArray addObject:[(UploadImage *)message.object url]];
+                [weakSelf.picArray addObject:[(UploadImage *)message.object url]];
             } else {
-                [_picArray addObject:@""];
+                [weakSelf.picArray addObject:@""];
             }
-            if (_picArray.count == [_imgGroup getImgCount]) {
-                [self uploadFeed];
+            if (weakSelf.picArray.count == [weakSelf.imgGroup getImgCount]) {
+                [weakSelf uploadFeed];
             }
         }];
     }
@@ -484,12 +485,13 @@
         } else {
             feed.type = @"IMAGE";
         }
+        WS(weakSelf);
         [[FeedManager sharedInstance] sendFeed:feed tagIds:_isGroup?@"":[self getTagSelected] block:^(YActionMessage *message) {
             [YUtils hiddenProgressHUD];
             if (message.isSuccess) {
                 [YUtils showTitle:@"发布成功"];
                 dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                    [self onNavigationLeftButtonClicked];
+                    [weakSelf onNavigationLeftButtonClicked];
                 });
             } else {
                 [YUtils showTitle:message.desc];
