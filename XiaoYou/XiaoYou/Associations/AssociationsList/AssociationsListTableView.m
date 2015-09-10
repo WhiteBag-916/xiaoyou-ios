@@ -111,6 +111,7 @@
 
 - (void)dealMessage:(YActionMessage *)message {
     if (message.isSuccess) {
+        [self hiddenFooter:NO];
         if ([self isHeaderRefresh]) {
             [_associationsListArray removeAllObjects];
         }
@@ -129,6 +130,7 @@
 
 - (void)searchMessage:(YActionMessage *)message {
     if (message.isSuccess && [_searchStr isEqualToString:[message.object searchKey]]) {
+        [self hiddenFooter:NO];
         [_associationsListArray removeAllObjects];
         [_associationsListArray addObjectsFromArray:[message.object groupList]];
         if ([_associationsListArray count] < KPAGENUM) {

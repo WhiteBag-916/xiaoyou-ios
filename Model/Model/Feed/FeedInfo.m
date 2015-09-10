@@ -9,12 +9,12 @@
 #import "Author.h"
 #import "Tags.h"
 #import "Feed.h"
-
+#import "GroupModel.h"
 
 NSString *const kFeedInfoAuthor = @"author";
 NSString *const kFeedInfoTags = @"tags";
 NSString *const kFeedInfoFeed = @"feed";
-
+NSString *const kFeedInfoGroupModels = @"groupModels";
 
 @interface FeedInfo ()
 
@@ -27,7 +27,7 @@ NSString *const kFeedInfoFeed = @"feed";
 @synthesize author = _author;
 @synthesize tags = _tags;
 @synthesize feed = _feed;
-
+@synthesize groupModels = _groupModels;
 
 + (instancetype)modelObjectWithDictionary:(NSDictionary *)dict
 {
@@ -56,6 +56,19 @@ NSString *const kFeedInfoFeed = @"feed";
 
     self.tags = [NSArray arrayWithArray:parsedTags];
             self.feed = [Feed modelObjectWithDictionary:[dict objectForKey:kFeedInfoFeed]];
+        NSObject *receivedGroupModel = [dict objectForKey:kFeedInfoGroupModels];
+        NSMutableArray *parsedGroupModel = [NSMutableArray array];
+        if ([receivedGroupModel isKindOfClass:[NSArray class]]) {
+            for (NSDictionary *item in (NSArray *)receivedGroupModel) {
+                if ([item isKindOfClass:[NSDictionary class]]) {
+                    [parsedGroupModel addObject:[GroupModel modelObjectWithDictionary:item]];
+                }
+            }
+        } else if ([receivedGroupModel isKindOfClass:[NSDictionary class]]) {
+            [parsedGroupModel addObject:[GroupModel modelObjectWithDictionary:(NSDictionary *)receivedGroupModel]];
+        }
+        
+        self.groupModels = [NSArray arrayWithArray:parsedGroupModel];
 
     }
     
@@ -79,7 +92,17 @@ NSString *const kFeedInfoFeed = @"feed";
     }
     [mutableDict setValue:[NSArray arrayWithArray:tempArrayForTags] forKey:kFeedInfoTags];
     [mutableDict setValue:[self.feed dictionaryRepresentation] forKey:kFeedInfoFeed];
-
+    NSMutableArray *tempArrayForGroupModel = [NSMutableArray array];
+    for (NSObject *subArrayObject in self.groupModels) {
+        if([subArrayObject respondsToSelector:@selector(dictionaryRepresentation)]) {
+            // This class is a model object
+            [tempArrayForGroupModel addObject:[subArrayObject performSelector:@selector(dictionaryRepresentation)]];
+        } else {
+            // Generic object
+            [tempArrayForGroupModel addObject:subArrayObject];
+        }
+    }
+    [mutableDict setValue:[NSArray arrayWithArray:tempArrayForGroupModel] forKey:kFeedInfoGroupModels];
     return [NSDictionary dictionaryWithDictionary:mutableDict];
 }
 
@@ -105,12 +128,13 @@ NSString *const kFeedInfoFeed = @"feed";
     self.author = [aDecoder decodeObjectForKey:kFeedInfoAuthor];
     self.tags = [aDecoder decodeObjectForKey:kFeedInfoTags];
     self.feed = [aDecoder decodeObjectForKey:kFeedInfoFeed];
+    self.groupModels = [aDecoder decodeObjectForKey:kFeedInfoGroupModels];
     return self;
 }
 
 - (void)encodeWithCoder:(NSCoder *)aCoder
 {
-
+    [aCoder encodeObject:_groupModels forKey:kFeedInfoGroupModels];
     [aCoder encodeObject:_author forKey:kFeedInfoAuthor];
     [aCoder encodeObject:_tags forKey:kFeedInfoTags];
     [aCoder encodeObject:_feed forKey:kFeedInfoFeed];
@@ -121,7 +145,7 @@ NSString *const kFeedInfoFeed = @"feed";
     FeedInfo *copy = [[FeedInfo alloc] init];
     
     if (copy) {
-
+        copy.groupModels = [self.groupModels copyWithZone:zone];
         copy.author = [self.author copyWithZone:zone];
         copy.tags = [self.tags copyWithZone:zone];
         copy.feed = [self.feed copyWithZone:zone];

@@ -15,6 +15,7 @@
 @property (nonatomic, strong) Author *author;
 @property (nonatomic, strong) NSArray *tags;
 @property (nonatomic, strong) Feed *feed;
+@property (nonatomic, strong) NSArray *groupModels;
 //请保留这个，从别的渠道进行赋值使用
 @property (nonatomic, strong) NSArray *praisePeoples;
 
