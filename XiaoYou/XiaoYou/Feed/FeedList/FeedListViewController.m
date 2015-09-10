@@ -142,11 +142,19 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(toAddTag) name:kNotification_Push_AddTag object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(toFeedFilter:) name:kNotification_Push_FeedFilter object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(checkUnreadAlterCount) name:KNotification_Update_UnreadAlterCount object:nil];
+    
+    //侧拉通知
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(openTagListVC:) name:SlideNavigationControllerDidReveal object:nil];
 }
 
 - (void)changeMenu {
     [[SlideNavigationController sharedInstance] toggleLeftMenu];
-    [_tagListVC refreshData];
+}
+
+- (void)openTagListVC:(NSNotification *)notification {
+    if ([[notification userInfo][@"menu"] isEqualToString:@"left"]) {
+        [_tagListVC refreshData];
+    }
 }
 
 //改变switch
