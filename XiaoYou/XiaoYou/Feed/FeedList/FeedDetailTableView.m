@@ -72,6 +72,7 @@
     _feedInfo.tags = info.tags;
     _feedInfo.author = info.author;
     _feedInfo.feed = info.feed;
+    _feedInfo.groupModels = info.groupModels;
     _feedInfo.praisePeoples = info.praisePeoples;
     NSString *tag = (_feedInfo.tags.count == 0?@"校友观点":[_feedInfo.tags[0] name]);
     NSString *content = (_feedInfo.feed.content.length == 0?@"":_feedInfo.feed.content);

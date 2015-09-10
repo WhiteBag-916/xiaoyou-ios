@@ -10,4 +10,9 @@
 
 @interface GroupTag : UIView
 
+@property (nonatomic,strong) UIImageView * tagGroupIcon;
+@property (nonatomic,strong) UILabel * tagGroupName;
+
+- (void)setData:(NSString *)groupName;
+
 @end

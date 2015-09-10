@@ -16,6 +16,7 @@
 @property (nonatomic, strong) NSArray *tags;
 @property (nonatomic, strong) Feed *feed;
 @property (nonatomic, strong) Author *author;
+@property (nonatomic, strong) NSArray *groupModels;
 @property (nonatomic, strong) NSArray *praisePeoples;
 
 + (instancetype)modelObjectWithDictionary:(NSDictionary *)dict;

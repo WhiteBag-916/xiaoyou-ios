@@ -35,7 +35,7 @@
         [self addSubview:_tagContent];
         [_tagContent mas_makeConstraints:^(MASConstraintMaker *make) {
             make.top.equalTo(_tagIcon.mas_centerY).offset(-KLABELHEIGHT);
-            make.right.bottom.equalTo(self);
+            make.right.equalTo(self);
         }];
         _tagContent.insets = 21;
         _tagContent.lineSpace = 0;

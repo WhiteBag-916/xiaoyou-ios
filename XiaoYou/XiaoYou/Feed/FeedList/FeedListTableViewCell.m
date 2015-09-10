@@ -19,6 +19,8 @@
 #import "FeedInfo.h"
 #import "Author.h"
 #import "Feed.h"
+#import "GroupTag.h"
+#import "GroupModel.h"
 
 NSString *const kFeedListTableViewCell = @"FeedListTableViewCellId";
 NSString *const kFeedDetailTableViewCell = @"kFeedDetailTableViewCell";
@@ -38,6 +40,7 @@ NSString *const KCommentTableViewCell = @"CommentTableViewCell";
 @property (nonatomic, strong) FeedCellMiddleView *middleView;       //中间部分UI
 @property (nonatomic, strong) FeedTag           *tagView;           //tag的view
 @property (nonatomic, strong) FeedCellBottomView *bottomView;       //底下部分UI
+@property (nonatomic, strong) GroupTag          *groupTagView;      //社团的view
 
 @property (nonatomic, strong) UILabel *hintLabel;                   //动态
 
@@ -67,6 +70,7 @@ NSString *const KCommentTableViewCell = @"CommentTableViewCell";
         [self initMiddleView];
         if (_feedType == FeedListType || _feedType == FeedDetailType) {
             [self initTagView];
+            [self initGroupTagView];
         }
         [self initBottomView];
     }
@@ -137,21 +141,65 @@ NSString *const KCommentTableViewCell = @"CommentTableViewCell";
     }];
     
 }
+//社团view
+- (void)initGroupTagView
+{
+    _groupTagView = [[GroupTag alloc] init];
+    [self.contentView addSubview:_groupTagView];
+    [_groupTagView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(self.contentView);
+        make.top.equalTo(_tagView.mas_bottom).offset(KTAGMICONARGIN_TOP);
+        make.width.equalTo(self.contentView);
+        make.height.mas_equalTo(40);
+    }];
+    [_groupTagView.tagGroupIcon mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.centerX.equalTo(_topView.contactHeadImageView);
+    }];
+    [_groupTagView.tagGroupName mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(_topView.contactNameLabel.mas_left);
+    }];
+}
 
 - (void)initBottomView {
     _bottomView = [[FeedCellBottomView alloc] initWithType:_feedType];
     [self.contentView addSubview:_bottomView];
     [_bottomView mas_makeConstraints:^(MASConstraintMaker *make) {
         if (_feedType == FeedCommentType) {
-            make.top.equalTo(_middleView);
+            if (_groupTagView != nil)
+            {
+                make.top.equalTo(_groupTagView.mas_bottom);
+
+            }
+            else
+            {
+                make.top.equalTo(_middleView);
+            }
             make.right.equalTo(_middleView.mas_left);
             
         } else {
             make.right.equalTo(_topView);
             if (_feedType == FeedOrganizationType) {
-                make.top.equalTo(_middleView.mas_bottom).offset(KBOTTOMMARGIN_TOP);
+                if (_groupTagView != nil)
+                {
+                    make.top.equalTo(_groupTagView.mas_bottom);
+                    
+                }
+                else
+                {
+                    make.top.equalTo(_middleView.mas_bottom).offset(KBOTTOMMARGIN_TOP);
+                }
+                
             } else {
-                make.top.equalTo(_tagView.mas_bottom).offset(KBOTTOMMARGIN_TOP);
+                if (_groupTagView != nil)
+                {
+                    make.top.equalTo(_groupTagView.mas_bottom);
+                    
+                }
+                else
+                {
+                    make.top.equalTo(_tagView.mas_bottom).offset(KBOTTOMMARGIN_TOP);
+                }
+                
             }
         }
         make.bottom.lessThanOrEqualTo(self.contentView).offset(-10);
@@ -194,6 +242,7 @@ NSString *const KCommentTableViewCell = @"CommentTableViewCell";
 
 - (void)setData:(id)info
 {
+    
     if (_feedType != FeedOrganizationType) {
         [_topView setData:info];
     }
@@ -201,6 +250,23 @@ NSString *const KCommentTableViewCell = @"CommentTableViewCell";
     [_bottomView setData:info];
     if (_feedType == FeedListType || _feedType == FeedDetailType) {
         [_tagView setData:[(FeedInfo *)info tags]];
+    }
+    FeedInfo * feedInfo = info;
+    if (feedInfo.groupModels.count > 0)
+    {
+        NSMutableString * groupNameStr = [[NSMutableString alloc] init];
+        for (int i = 0; i < feedInfo.groupModels.count ; i++)
+        {
+            GroupModel * model = feedInfo.groupModels[i];
+            NSString * tempStr = model.groupName;
+            [groupNameStr appendString:tempStr];
+        }
+        [_groupTagView setData:groupNameStr];
+
+    }
+    else
+    {
+        [_groupTagView setData:nil];
     }
 }
 
