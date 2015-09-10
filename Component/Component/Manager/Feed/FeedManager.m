@@ -73,7 +73,7 @@ DEF_SINGLETON(FeedManager);
     }];
 }
 
-//获取动态详情，FeedDetail
+//获取动态详情，FeedInfo
 - (void)getFeedDetailByID:(NSString *)feedID block:(ActionCompleteBlock)block {
     FeedDetailAction *action = [[FeedDetailAction alloc] init];
     action.feedId = feedID;

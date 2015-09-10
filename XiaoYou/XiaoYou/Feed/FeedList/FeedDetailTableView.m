@@ -11,7 +11,7 @@
 #import "YCommonActionSheet.h"
 #import "FeedDetailViewController.h"
 #import "FeedManager.h"
-#import "FeedDetail.h"
+#import "FeedInfo.h"
 #import "FeedInfo.h"
 #import "Feed.h"
 #import "Comment.h"
@@ -67,13 +67,8 @@
     }
 }
 
-- (void)dealData:(FeedDetail *)info {
-    _feedInfo = [FeedInfo new];
-    _feedInfo.tags = info.tags;
-    _feedInfo.author = info.author;
-    _feedInfo.feed = info.feed;
-    _feedInfo.groupModels = info.groupModels;
-    _feedInfo.praisePeoples = info.praisePeoples;
+- (void)dealData:(FeedInfo *)info {
+    _feedInfo = info;
     NSString *tag = (_feedInfo.tags.count == 0?@"校友观点":[_feedInfo.tags[0] name]);
     NSString *content = (_feedInfo.feed.content.length == 0?@"":_feedInfo.feed.content);
     NSString *img = _feedInfo.feed.img.length > 0?[_feedInfo.feed.img componentsSeparatedByString:@","][0]:@"";

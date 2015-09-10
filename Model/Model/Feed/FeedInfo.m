@@ -10,11 +10,14 @@
 #import "Tags.h"
 #import "Feed.h"
 #import "GroupModel.h"
+#import "CommentListItems.h"
 
 NSString *const kFeedInfoAuthor = @"author";
 NSString *const kFeedInfoTags = @"tags";
 NSString *const kFeedInfoFeed = @"feed";
 NSString *const kFeedInfoGroupModels = @"groupModels";
+NSString *const kFeedInfoPraisePeoples = @"praisePeoples";
+NSString *const kFeedInfoCommentListItems = @"commentListItems";
 
 @interface FeedInfo ()
 
@@ -28,6 +31,8 @@ NSString *const kFeedInfoGroupModels = @"groupModels";
 @synthesize tags = _tags;
 @synthesize feed = _feed;
 @synthesize groupModels = _groupModels;
+@synthesize commentListItems = _commentListItems;
+@synthesize praisePeoples = _praisePeoples;
 
 + (instancetype)modelObjectWithDictionary:(NSDictionary *)dict
 {
@@ -69,6 +74,34 @@ NSString *const kFeedInfoGroupModels = @"groupModels";
         }
         
         self.groupModels = [NSArray arrayWithArray:parsedGroupModel];
+        
+        NSObject *receivedPraisePeoples = [dict objectForKey:kFeedInfoPraisePeoples];
+        NSMutableArray *parsedPraisePeoples = [NSMutableArray array];
+        if ([receivedPraisePeoples isKindOfClass:[NSArray class]]) {
+            for (NSDictionary *item in (NSArray *)receivedPraisePeoples) {
+                if ([item isKindOfClass:[NSDictionary class]]) {
+                    [parsedPraisePeoples addObject:[Author modelObjectWithDictionary:item]];
+                }
+            }
+        } else if ([receivedPraisePeoples isKindOfClass:[NSDictionary class]]) {
+            [parsedPraisePeoples addObject:[Author modelObjectWithDictionary:(NSDictionary *)receivedPraisePeoples]];
+        }
+        
+        self.praisePeoples = [NSArray arrayWithArray:parsedPraisePeoples];
+        
+        NSObject *receivedCommentListItems = [dict objectForKey:kFeedInfoCommentListItems];
+        NSMutableArray *parsedCommentListItems = [NSMutableArray array];
+        if ([receivedCommentListItems isKindOfClass:[NSArray class]]) {
+            for (NSDictionary *item in (NSArray *)receivedCommentListItems) {
+                if ([item isKindOfClass:[NSDictionary class]]) {
+                    [parsedCommentListItems addObject:[CommentListItems modelObjectWithDictionary:item]];
+                }
+            }
+        } else if ([receivedCommentListItems isKindOfClass:[NSDictionary class]]) {
+            [parsedCommentListItems addObject:[CommentListItems modelObjectWithDictionary:(NSDictionary *)receivedCommentListItems]];
+        }
+        
+        self.commentListItems = [NSArray arrayWithArray:parsedCommentListItems];
 
     }
     
@@ -103,6 +136,31 @@ NSString *const kFeedInfoGroupModels = @"groupModels";
         }
     }
     [mutableDict setValue:[NSArray arrayWithArray:tempArrayForGroupModel] forKey:kFeedInfoGroupModels];
+    
+    NSMutableArray *tempArrayForCommentListItems = [NSMutableArray array];
+    for (NSObject *subArrayObject in self.commentListItems) {
+        if([subArrayObject respondsToSelector:@selector(dictionaryRepresentation)]) {
+            // This class is a model object
+            [tempArrayForCommentListItems addObject:[subArrayObject performSelector:@selector(dictionaryRepresentation)]];
+        } else {
+            // Generic object
+            [tempArrayForCommentListItems addObject:subArrayObject];
+        }
+    }
+    [mutableDict setValue:[NSArray arrayWithArray:tempArrayForCommentListItems] forKey:kFeedInfoCommentListItems];
+    
+    NSMutableArray *tempArrayForPraisePeoples = [NSMutableArray array];
+    for (NSObject *subArrayObject in self.praisePeoples) {
+        if([subArrayObject respondsToSelector:@selector(dictionaryRepresentation)]) {
+            // This class is a model object
+            [tempArrayForPraisePeoples addObject:[subArrayObject performSelector:@selector(dictionaryRepresentation)]];
+        } else {
+            // Generic object
+            [tempArrayForPraisePeoples addObject:subArrayObject];
+        }
+    }
+    [mutableDict setValue:[NSArray arrayWithArray:tempArrayForPraisePeoples] forKey:kFeedInfoPraisePeoples];
+    
     return [NSDictionary dictionaryWithDictionary:mutableDict];
 }
 
@@ -129,6 +187,8 @@ NSString *const kFeedInfoGroupModels = @"groupModels";
     self.tags = [aDecoder decodeObjectForKey:kFeedInfoTags];
     self.feed = [aDecoder decodeObjectForKey:kFeedInfoFeed];
     self.groupModels = [aDecoder decodeObjectForKey:kFeedInfoGroupModels];
+    self.commentListItems = [aDecoder decodeObjectForKey:kFeedInfoCommentListItems];
+    self.praisePeoples = [aDecoder decodeObjectForKey:kFeedInfoPraisePeoples];
     return self;
 }
 
@@ -138,6 +198,8 @@ NSString *const kFeedInfoGroupModels = @"groupModels";
     [aCoder encodeObject:_author forKey:kFeedInfoAuthor];
     [aCoder encodeObject:_tags forKey:kFeedInfoTags];
     [aCoder encodeObject:_feed forKey:kFeedInfoFeed];
+    [aCoder encodeObject:_commentListItems forKey:kFeedInfoCommentListItems];
+    [aCoder encodeObject:_praisePeoples forKey:kFeedInfoPraisePeoples];
 }
 
 - (id)copyWithZone:(NSZone *)zone
@@ -149,6 +211,8 @@ NSString *const kFeedInfoGroupModels = @"groupModels";
         copy.author = [self.author copyWithZone:zone];
         copy.tags = [self.tags copyWithZone:zone];
         copy.feed = [self.feed copyWithZone:zone];
+        copy.commentListItems = [self.commentListItems copyWithZone:zone];
+        copy.praisePeoples = [self.praisePeoples copyWithZone:zone];
     }
     
     return copy;

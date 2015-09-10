@@ -7,7 +7,7 @@
 //
 
 #import "FeedDetailAction.h"
-#import "FeedDetail.h"
+#import "FeedInfo.h"
 #import "YUtils+Component.h"
 
 @implementation FeedDetailAction
@@ -17,7 +17,7 @@
     NSDictionary *parameter = [YUtils getParameter:@{@"feedId":_feedId} needUserToken:YES];
     NSString *url = [YUtils getUrl:api_feed_DetailFeed];
     [self POST:url parameters:parameter completion:^(YHttpRequest *request) {
-        YActionMessage *message = [FeedDetail actionMessageWithHttpRequest:request];
+        YActionMessage *message = [FeedInfo actionMessageWithHttpRequest:request];
         self.completionBlock(message);
     }];
 }

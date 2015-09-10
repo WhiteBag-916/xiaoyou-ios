@@ -13,6 +13,6 @@
 @property (nonatomic,strong) UIImageView * tagGroupIcon;
 @property (nonatomic,strong) UILabel * tagGroupName;
 
-- (void)setData:(NSString *)groupName;
+- (void)setData:(id)inData;
 
 @end

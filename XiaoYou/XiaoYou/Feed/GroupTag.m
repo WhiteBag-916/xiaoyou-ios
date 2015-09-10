@@ -7,6 +7,8 @@
 //
 
 #import "GroupTag.h"
+#import "FeedInfo.h"
+#import "GroupModel.h"
 
 @implementation GroupTag
 
@@ -33,19 +35,27 @@
     return self;
 }
 
-- (void)setData:(NSString *)groupName
+- (void)setData:(id)inData
 {
-    if (groupName != nil)
-    {
-        _tagGroupName.text = groupName;
-        _tagGroupIcon.image = [UIImage imageNamed:@"group_logo"];
-    }
-    else
-    {
-        _tagGroupName.text = @"";
-        _tagGroupIcon.image = nil;
-    }
+    self.hidden = YES;
     
+    if ([inData isKindOfClass:[FeedInfo class]]) {
+        FeedInfo * feedInfo = inData;
+        if (feedInfo.groupModels.count > 0)
+        {
+            NSMutableString * groupNameStr = [[NSMutableString alloc] init];
+            for (int i = 0; i < feedInfo.groupModels.count ; i++)
+            {
+                GroupModel * model = feedInfo.groupModels[i];
+                NSString * tempStr = model.groupName;
+                [groupNameStr appendString:tempStr];
+            }
+            _tagGroupName.text = groupNameStr;
+            _tagGroupIcon.image = [UIImage imageNamed:@"group_logo"];
+            
+            self.hidden = NO;
+        }
+    }
 }
 
 @end

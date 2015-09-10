@@ -20,7 +20,6 @@
 #import "Author.h"
 #import "Feed.h"
 #import "GroupTag.h"
-#import "GroupModel.h"
 
 NSString *const kFeedListTableViewCell = @"FeedListTableViewCellId";
 NSString *const kFeedDetailTableViewCell = @"kFeedDetailTableViewCell";
@@ -250,23 +249,7 @@ NSString *const KCommentTableViewCell = @"CommentTableViewCell";
     [_bottomView setData:info];
     if (_feedType == FeedListType || _feedType == FeedDetailType) {
         [_tagView setData:[(FeedInfo *)info tags]];
-    }
-    FeedInfo * feedInfo = info;
-    if (feedInfo.groupModels.count > 0)
-    {
-        NSMutableString * groupNameStr = [[NSMutableString alloc] init];
-        for (int i = 0; i < feedInfo.groupModels.count ; i++)
-        {
-            GroupModel * model = feedInfo.groupModels[i];
-            NSString * tempStr = model.groupName;
-            [groupNameStr appendString:tempStr];
-        }
-        [_groupTagView setData:groupNameStr];
-
-    }
-    else
-    {
-        [_groupTagView setData:nil];
+        [_groupTagView setData:info];
     }
 }
 

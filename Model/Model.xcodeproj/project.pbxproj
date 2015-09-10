@@ -31,7 +31,6 @@
 		20E0C0821B88B0CA00EDAED4 /* LinkManList.m in Sources */ = {isa = PBXBuildFile; fileRef = 20E0C0811B88B0CA00EDAED4 /* LinkManList.m */; };
 		20E1C6791B89F0A7008BA9D6 /* Comment.m in Sources */ = {isa = PBXBuildFile; fileRef = 20E1C6741B89F0A7008BA9D6 /* Comment.m */; };
 		20E1C67A1B89F0A7008BA9D6 /* CommentListItems.m in Sources */ = {isa = PBXBuildFile; fileRef = 20E1C6761B89F0A7008BA9D6 /* CommentListItems.m */; };
-		20E1C67B1B89F0A7008BA9D6 /* FeedDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = 20E1C6781B89F0A7008BA9D6 /* FeedDetail.m */; };
 		3307BBCB1B9561FD003446F8 /* SenderListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3307BBC81B9561FD003446F8 /* SenderListModel.m */; };
 		3307BBCC1B9561FD003446F8 /* SuggestListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3307BBCA1B9561FD003446F8 /* SuggestListModel.m */; };
 		331E17E41B7AFBC8006789B0 /* Tags.m in Sources */ = {isa = PBXBuildFile; fileRef = 331E17E11B7AFBC8006789B0 /* Tags.m */; };
@@ -119,8 +118,6 @@
 		20E1C6741B89F0A7008BA9D6 /* Comment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Comment.m; sourceTree = "<group>"; };
 		20E1C6751B89F0A7008BA9D6 /* CommentListItems.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentListItems.h; sourceTree = "<group>"; };
 		20E1C6761B89F0A7008BA9D6 /* CommentListItems.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentListItems.m; sourceTree = "<group>"; };
-		20E1C6771B89F0A7008BA9D6 /* FeedDetail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedDetail.h; sourceTree = "<group>"; };
-		20E1C6781B89F0A7008BA9D6 /* FeedDetail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedDetail.m; sourceTree = "<group>"; };
 		3307BBC71B9561FD003446F8 /* SenderListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SenderListModel.h; sourceTree = "<group>"; };
 		3307BBC81B9561FD003446F8 /* SenderListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SenderListModel.m; sourceTree = "<group>"; };
 		3307BBC91B9561FD003446F8 /* SuggestListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SuggestListModel.h; sourceTree = "<group>"; };
@@ -321,8 +318,6 @@
 				20E1C6741B89F0A7008BA9D6 /* Comment.m */,
 				20E1C6751B89F0A7008BA9D6 /* CommentListItems.h */,
 				20E1C6761B89F0A7008BA9D6 /* CommentListItems.m */,
-				20E1C6771B89F0A7008BA9D6 /* FeedDetail.h */,
-				20E1C6781B89F0A7008BA9D6 /* FeedDetail.m */,
 				20E0C06A1B88B0CA00EDAED4 /* Feed.h */,
 				20E0C06B1B88B0CA00EDAED4 /* Feed.m */,
 				20E0C06C1B88B0CA00EDAED4 /* FeedInfo.h */,
@@ -439,7 +434,6 @@
 				333E95D61B70B7250001059D /* LinkManModel.m in Sources */,
 				20DA1A601B8995A000DEF95C /* ProvinceCode.m in Sources */,
 				20E0BFFF1B88B0CA00EDAED4 /* UploadImage.m in Sources */,
-				20E1C67B1B89F0A7008BA9D6 /* FeedDetail.m in Sources */,
 				333E95E21B70B7820001059D /* UpdateAvatarModel.m in Sources */,
 				20E0C0821B88B0CA00EDAED4 /* LinkManList.m in Sources */,
 				331E17E41B7AFBC8006789B0 /* Tags.m in Sources */,
