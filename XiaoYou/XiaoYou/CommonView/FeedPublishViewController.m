@@ -412,6 +412,10 @@
     [self.navigationController dismissViewControllerAnimated:YES completion:nil];
 }
 - (void)onNavigationRightButtonClicked {
+    if ([_imgGroup getImgCount] == 0 && _textView.text.length == 0) {
+        [YUtils showTitle:@"请上传图片或填写内容"];
+        return;
+    }
     [self uploadPic];
 }
 - (void)viewWillAppear:(BOOL)animated {

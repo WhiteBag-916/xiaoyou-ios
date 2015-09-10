@@ -207,6 +207,10 @@
     }];
     
     self.tableHeaderView = backView;
+    [self.tableHeaderView  mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.width.mas_equalTo(SCREEN_WIDTH);
+        make.height.mas_equalTo(kRowHeight);
+    }];
 }
 
 -(void)tapGestureRecognizerAction
