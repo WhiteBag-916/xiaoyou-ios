@@ -110,18 +110,7 @@ NSString *const kContactsTableViewCell = @"ContactsTableViewCell";
         _tagContent.lineSpace = -5;
         _tagContent.singleLine = false;
         _tagContent.preferredMaxLayoutWidth = SCALE_NUM(240);
-        //标签
-//        _flagLabel = [[UILabel alloc] init];
-//        _flagLabel.font = CONTENT_FONT(10);
-//        _flagLabel.textColor = KCOLORWHITE_696969;
-//        _flagLabel.backgroundColor = [UIColor clearColor];
-//        [self.contentView addSubview:_flagLabel];
-//        [_flagLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-//            make.bottom.mas_equalTo(-kPaddingDistance);
-//            make.left.equalTo(_flagImageView.mas_right).offset(kPaddingDistance);
-//            make.right.mas_equalTo(-kPaddingDistance);
-//            make.height.mas_equalTo(kLabelHeightDistacnce);
-//        }];
+
         //提醒
         _remindImageView = [[UIImageView alloc] init];
         _remindImageView.image = [UIImage imageNamed:@"chat_remindnot"];

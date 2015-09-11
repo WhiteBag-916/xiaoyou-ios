@@ -25,7 +25,7 @@
 #define kPaddingDistance               10
 #define kLabelHeightDistacnce          14
 #define kClassLabelDistance            5
-#define kClassLabelWidthAndHeight      30
+#define kClassLabelWidthAndHeight      40
 #define kRemindImageViewWidth          13
 #define kRemindImageViewHeight         15
 #define kRemindImageViewToRight        25
@@ -131,38 +131,26 @@
     UITapGestureRecognizer * tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapGestureRecognizerAction)];
     [backView addGestureRecognizer:tapGestureRecognizer];
     backView.backgroundColor = [UIColor clearColor];
-
+    
     //头像
-    _headImageView = [[UIImageView alloc] init];
+    _headImageView = [[UIImageView alloc] initWithFrame:CGRectMake(kPaddingDistance, kPaddingDistance, kHeadWidthAndHeight, kHeadWidthAndHeight)];
     _headImageView.layer.cornerRadius = kHeadCornerRadius;
     _headImageView.clipsToBounds = YES;
     _headImageView.backgroundColor = KCOLORGREEN_009688;
     [backView addSubview:_headImageView];
-    [_headImageView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.left.mas_equalTo(kPaddingDistance);
-        make.width.height.mas_equalTo(kHeadWidthAndHeight);
-    }];
+
     //班
-    _defaultLabel = [[UILabel alloc] init];
+    _defaultLabel = [[UILabel alloc] initWithFrame:CGRectMake(kPaddingDistance, kPaddingDistance, kClassLabelWidthAndHeight, kClassLabelWidthAndHeight)];
     _defaultLabel.text = @"班";
     _defaultLabel.textAlignment = NSTextAlignmentCenter;
     _defaultLabel.textColor = [UIColor whiteColor];
     [backView addSubview:_defaultLabel];
-    [_defaultLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.mas_equalTo(_headImageView.mas_top).offset(kClassLabelDistance);
-        make.left.mas_equalTo(_headImageView.mas_left).offset(kClassLabelDistance);
-        make.width.height.mas_equalTo(kClassLabelWidthAndHeight);
-    }];
+    
     //提醒
-    _remindImageView = [[UIImageView alloc] init];
+    _remindImageView = [[UIImageView alloc] initWithFrame:CGRectMake(SCREEN_WIDTH - kRemindImageViewToRight - kRemindImageViewWidth, kRowHeight - kPaddingDistance - kRemindImageViewHeight, kRemindImageViewWidth, kRemindImageViewHeight)];
     _remindImageView.image = [UIImage imageNamed:@"chat_remindnot"];
     [backView addSubview:_remindImageView];
-    [_remindImageView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.bottom.mas_equalTo(-kPaddingDistance);
-        make.right.mas_equalTo(-kRemindImageViewToRight);
-        make.height.mas_equalTo(kRemindImageViewHeight);
-        make.width.mas_equalTo(kRemindImageViewWidth);
-    }];
+    
     if ([_headDataSourceDic[@"isRemind"] isEqualToString:@"y"])
     {
         _remindImageView.hidden = YES;
@@ -172,45 +160,111 @@
         _remindImageView.hidden = NO;
     }
     //姓名
-    _nameLabel = [[UILabel alloc] init];
+    _nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(2*kPaddingDistance + kHeadWidthAndHeight, kPaddingDistance, kNameLabelWidth, kLabelHeightDistacnce)];
     _nameLabel.font = CONTENT_FONT(14);
     _nameLabel.text = _headDataSourceDic[@"name"];
     _nameLabel.backgroundColor = [UIColor clearColor];
     [backView addSubview:_nameLabel];
-    [_nameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.mas_equalTo(kPaddingDistance);
-        make.left.equalTo(_headImageView.mas_right).offset(kPaddingDistance);
-        make.width.mas_equalTo(kNameLabelWidth);
-        make.height.mas_equalTo(kLabelHeightDistacnce);
-    }];
+
     //标签
-    _flagLabel = [[UILabel alloc] init];
+    _flagLabel = [[UILabel alloc] initWithFrame:CGRectMake(2*kPaddingDistance + kHeadWidthAndHeight, kRowHeight - kLabelHeightDistacnce - kPaddingDistance, 15*kPaddingDistance, kLabelHeightDistacnce)];
     _flagLabel.font = CONTENT_FONT(10);
     _flagLabel.textColor = KCOLORWHITE_696969;
     _flagLabel.text = @"班级群聊";
     _flagLabel.backgroundColor = [UIColor clearColor];
     [backView addSubview:_flagLabel];
-    [_flagLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.bottom.mas_equalTo(-kPaddingDistance);
-        make.left.equalTo(_headImageView.mas_right).offset(kPaddingDistance);
-        make.right.mas_equalTo(-kPaddingDistance);
-        make.height.mas_equalTo(kLabelHeightDistacnce);
-    }];
     
-    UIView * bottomView = [[UIView alloc] init];
+    UIView * bottomView = [[UIView alloc] initWithFrame:CGRectMake(0, kRowHeight-1, SCREEN_WIDTH, kBottomLineHeight)];
     bottomView.backgroundColor = [UIColor grayColor];
     bottomView.alpha = 0.6;
     [backView addSubview:bottomView];
-    [bottomView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.right.bottom.mas_equalTo(0);
-        make.height.mas_equalTo(kBottomLineHeight);
-    }];
     
     self.tableHeaderView = backView;
-    [self.tableHeaderView  mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.width.mas_equalTo(SCREEN_WIDTH);
-        make.height.mas_equalTo(kRowHeight);
-    }];
+    
+//    UIView * backView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, kRowHeight)];
+//    UITapGestureRecognizer * tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapGestureRecognizerAction)];
+//    [backView addGestureRecognizer:tapGestureRecognizer];
+//    backView.backgroundColor = [UIColor clearColor];
+//
+//    //头像
+//    _headImageView = [[UIImageView alloc] init];
+//    _headImageView.layer.cornerRadius = kHeadCornerRadius;
+//    _headImageView.clipsToBounds = YES;
+//    _headImageView.backgroundColor = KCOLORGREEN_009688;
+//    [backView addSubview:_headImageView];
+//    [_headImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.top.left.mas_equalTo(kPaddingDistance);
+//        make.width.height.mas_equalTo(kHeadWidthAndHeight);
+//    }];
+//    //班
+//    _defaultLabel = [[UILabel alloc] init];
+//    _defaultLabel.text = @"班";
+//    _defaultLabel.textAlignment = NSTextAlignmentCenter;
+//    _defaultLabel.textColor = [UIColor whiteColor];
+//    [backView addSubview:_defaultLabel];
+//    [_defaultLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.top.mas_equalTo(_headImageView.mas_top).offset(kClassLabelDistance);
+//        make.left.mas_equalTo(_headImageView.mas_left).offset(kClassLabelDistance);
+//        make.width.height.mas_equalTo(kClassLabelWidthAndHeight);
+//    }];
+//    //提醒
+//    _remindImageView = [[UIImageView alloc] init];
+//    _remindImageView.image = [UIImage imageNamed:@"chat_remindnot"];
+//    [backView addSubview:_remindImageView];
+//    [_remindImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.bottom.mas_equalTo(-kPaddingDistance);
+//        make.right.mas_equalTo(-kRemindImageViewToRight);
+//        make.height.mas_equalTo(kRemindImageViewHeight);
+//        make.width.mas_equalTo(kRemindImageViewWidth);
+//    }];
+//    if ([_headDataSourceDic[@"isRemind"] isEqualToString:@"y"])
+//    {
+//        _remindImageView.hidden = YES;
+//    }
+//    else
+//    {
+//        _remindImageView.hidden = NO;
+//    }
+//    //姓名
+//    _nameLabel = [[UILabel alloc] init];
+//    _nameLabel.font = CONTENT_FONT(14);
+//    _nameLabel.text = _headDataSourceDic[@"name"];
+//    _nameLabel.backgroundColor = [UIColor clearColor];
+//    [backView addSubview:_nameLabel];
+//    [_nameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.top.mas_equalTo(kPaddingDistance);
+//        make.left.equalTo(_headImageView.mas_right).offset(kPaddingDistance);
+//        make.width.mas_equalTo(kNameLabelWidth);
+//        make.height.mas_equalTo(kLabelHeightDistacnce);
+//    }];
+//    //标签
+//    _flagLabel = [[UILabel alloc] init];
+//    _flagLabel.font = CONTENT_FONT(10);
+//    _flagLabel.textColor = KCOLORWHITE_696969;
+//    _flagLabel.text = @"班级群聊";
+//    _flagLabel.backgroundColor = [UIColor clearColor];
+//    [backView addSubview:_flagLabel];
+//    [_flagLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.bottom.mas_equalTo(-kPaddingDistance);
+//        make.left.equalTo(_headImageView.mas_right).offset(kPaddingDistance);
+//        make.right.mas_equalTo(-kPaddingDistance);
+//        make.height.mas_equalTo(kLabelHeightDistacnce);
+//    }];
+//    
+//    UIView * bottomView = [[UIView alloc] init];
+//    bottomView.backgroundColor = [UIColor grayColor];
+//    bottomView.alpha = 0.6;
+//    [backView addSubview:bottomView];
+//    [bottomView mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.left.right.bottom.mas_equalTo(0);
+//        make.height.mas_equalTo(kBottomLineHeight);
+//    }];
+//    
+//    self.tableHeaderView = backView;
+//    [self.tableHeaderView  mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.width.mas_equalTo(SCREEN_WIDTH);
+//        make.height.mas_equalTo(kRowHeight);
+//    }];
 }
 
 -(void)tapGestureRecognizerAction

@@ -94,42 +94,27 @@
     [backView addGestureRecognizer:tapGestureRecognizer];
     backView.backgroundColor = [UIColor clearColor];
     //头像
-    _headImageView = [[UIImageView alloc] init];
+    _headImageView = [[UIImageView alloc] initWithFrame:CGRectMake(kPaddingDistance, kPaddingDistance, kHeadWidthAndHeight, kHeadWidthAndHeight)];
     _headImageView.layer.cornerRadius = kHeadCornerRadius;
     _headImageView.clipsToBounds = YES;
-//    _headImageView.image = [YShareData defaultData][kShareData_SchoolIcon];
     [_headImageView setNormalImageWithUrl:[YShareData defaultData][kShareData_SchoolIcon]];
     [backView addSubview:_headImageView];
-    [_headImageView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.left.mas_equalTo(kPaddingDistance);
-        make.width.height.mas_equalTo(kHeadWidthAndHeight);
-    }];
-    
     
     //姓名
-    _nameLabel = [[UILabel alloc] init];
+    _nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(2*kPaddingDistance+kHeadWidthAndHeight, kPaddingDistance, 15*kPaddingDistance, kLabelHeightDistacnce)];
     _nameLabel.text = @"系统消息";
     _nameLabel.font = CONTENT_FONT(14);
     _nameLabel.backgroundColor = [UIColor clearColor];
     [backView addSubview:_nameLabel];
-    [_nameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.mas_equalTo(kPaddingDistance);
-        make.left.equalTo(_headImageView.mas_right).offset(kPaddingDistance);
-        make.height.mas_equalTo(kLabelHeightDistacnce);
-    }];
+    
     //消息数
-    _badgeNumberLabel = [[UILabel alloc] init];
+    _badgeNumberLabel = [[UILabel alloc] initWithFrame:CGRectMake(SCREEN_WIDTH - kPaddingDistance - kBadgeWidthDistance, kRowHeight - kLabelHeightDistacnce - kPaddingDistance, kBadgeWidthDistance, kLabelHeightDistacnce)];
     _badgeNumberLabel.font = CONTENT_FONT(10);
     _badgeNumberLabel.textAlignment = NSTextAlignmentCenter;
     _badgeNumberLabel.textColor = [UIColor whiteColor];
     _badgeNumberLabel.backgroundColor = KCOLORGREEN_009688;
     [backView addSubview:_badgeNumberLabel];
-    [_badgeNumberLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.bottom.mas_equalTo(-kPaddingDistance);
-        make.right.equalTo(backView).offset(-kPaddingDistance);
-        make.height.mas_equalTo(kLabelHeightDistacnce);
-        make.width.mas_equalTo(kBadgeWidthDistance);
-    }];
+    
     //未读数
     NSUInteger unreadCount = model.conversation.unreadMessagesCount;
     if (unreadCount > 99) {
@@ -146,7 +131,7 @@
         _badgeNumberLabel.hidden = YES;
     }
     //时间
-    _timeLabel = [[UILabel alloc] init];
+    _timeLabel = [[UILabel alloc] initWithFrame:CGRectMake(SCREEN_WIDTH - kPaddingDistance - kTimeLabelWidth, kPaddingDistance, kTimeLabelWidth, kLabelHeightDistacnce)];
     _timeLabel.font = CONTENT_FONT(9);
     _timeLabel.textAlignment = NSTextAlignmentRight;
     _timeLabel.backgroundColor = [UIColor clearColor];
@@ -160,14 +145,9 @@
     }
     
     [backView addSubview:_timeLabel];
-    [_timeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.mas_equalTo(kPaddingDistance);
-        make.right.mas_equalTo(-kPaddingDistance);
-        make.width.mas_equalTo(kTimeLabelWidth);
-        make.height.mas_equalTo(kLabelHeightDistacnce);
-    }];
+
     //消息
-    _messageLabel = [[UILabel alloc] init];
+    _messageLabel = [[UILabel alloc] initWithFrame:CGRectMake(2*kPaddingDistance + kHeadWidthAndHeight, kRowHeight - kLabelHeightDistacnce - kPaddingDistance, SCREEN_WIDTH - kBadgeWidthDistance - kHeadWidthAndHeight - 4*kPaddingDistance, kLabelHeightDistacnce)];
     _messageLabel.font = CONTENT_FONT(12);
     _messageLabel.backgroundColor = [UIColor clearColor];
     if (model)
@@ -180,27 +160,126 @@
     }
     
     [backView addSubview:_messageLabel];
-    [_messageLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.bottom.mas_equalTo(-kPaddingDistance);
-        make.left.equalTo(_headImageView.mas_right).offset(kPaddingDistance);
-        make.right.equalTo(_badgeNumberLabel.mas_left).offset(-kPaddingDistance);
-        make.height.mas_equalTo(kLabelHeightDistacnce);
-    }];
     
-    UIView * bottomView = [[UIView alloc] init];
+    UIView * bottomView = [[UIView alloc] initWithFrame:CGRectMake(0, kRowHeight-1, SCREEN_WIDTH, kBottomLineHeight)];
     bottomView.backgroundColor = [UIColor grayColor];
     bottomView.alpha = 0.6;
     [backView addSubview:bottomView];
-    [bottomView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.right.bottom.mas_equalTo(0);
-        make.height.mas_equalTo(kBottomLineHeight);
-    }];
+    
     
     self.tableHeaderView = backView;
-    [self.tableHeaderView  mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.width.mas_equalTo(SCREEN_WIDTH);
-        make.height.mas_equalTo(kRowHeight);
-    }];
+//    UIView * backView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, kRowHeight)];
+//    UITapGestureRecognizer * tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapGestureRecognizerAction)];
+//    [backView addGestureRecognizer:tapGestureRecognizer];
+//    backView.backgroundColor = [UIColor clearColor];
+//    //头像
+//    _headImageView = [[UIImageView alloc] init];
+//    _headImageView.layer.cornerRadius = kHeadCornerRadius;
+//    _headImageView.clipsToBounds = YES;
+////    _headImageView.image = [YShareData defaultData][kShareData_SchoolIcon];
+//    [_headImageView setNormalImageWithUrl:[YShareData defaultData][kShareData_SchoolIcon]];
+//    [backView addSubview:_headImageView];
+//    [_headImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.top.left.mas_equalTo(kPaddingDistance);
+//        make.width.height.mas_equalTo(kHeadWidthAndHeight);
+//    }];
+//    
+//    
+//    //姓名
+//    _nameLabel = [[UILabel alloc] init];
+//    _nameLabel.text = @"系统消息";
+//    _nameLabel.font = CONTENT_FONT(14);
+//    _nameLabel.backgroundColor = [UIColor clearColor];
+//    [backView addSubview:_nameLabel];
+//    [_nameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.top.mas_equalTo(kPaddingDistance);
+//        make.left.equalTo(_headImageView.mas_right).offset(kPaddingDistance);
+//        make.height.mas_equalTo(kLabelHeightDistacnce);
+//    }];
+//    //消息数
+//    _badgeNumberLabel = [[UILabel alloc] init];
+//    _badgeNumberLabel.font = CONTENT_FONT(10);
+//    _badgeNumberLabel.textAlignment = NSTextAlignmentCenter;
+//    _badgeNumberLabel.textColor = [UIColor whiteColor];
+//    _badgeNumberLabel.backgroundColor = KCOLORGREEN_009688;
+//    [backView addSubview:_badgeNumberLabel];
+//    [_badgeNumberLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.bottom.mas_equalTo(-kPaddingDistance);
+//        make.right.equalTo(backView).offset(-kPaddingDistance);
+//        make.height.mas_equalTo(kLabelHeightDistacnce);
+//        make.width.mas_equalTo(kBadgeWidthDistance);
+//    }];
+//    //未读数
+//    NSUInteger unreadCount = model.conversation.unreadMessagesCount;
+//    if (unreadCount > 99) {
+//        _badgeNumberLabel.hidden = NO;
+//        _badgeNumberLabel.text = @"99+";
+//    }
+//    else if(unreadCount > 0)
+//    {
+//        _badgeNumberLabel.hidden = NO;
+//        _badgeNumberLabel.text = [NSString stringWithFormat:@"%lu", (unsigned long)unreadCount];
+//    }
+//    else
+//    {
+//        _badgeNumberLabel.hidden = YES;
+//    }
+//    //时间
+//    _timeLabel = [[UILabel alloc] init];
+//    _timeLabel.font = CONTENT_FONT(9);
+//    _timeLabel.textAlignment = NSTextAlignmentRight;
+//    _timeLabel.backgroundColor = [UIColor clearColor];
+//    if (model)
+//    {
+//        _timeLabel.text = [self lastMessageTimeByConversation:model];
+//    }
+//    else
+//    {
+//        _timeLabel.text = @"";
+//    }
+//    
+//    [backView addSubview:_timeLabel];
+//    [_timeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.top.mas_equalTo(kPaddingDistance);
+//        make.right.mas_equalTo(-kPaddingDistance);
+//        make.width.mas_equalTo(kTimeLabelWidth);
+//        make.height.mas_equalTo(kLabelHeightDistacnce);
+//    }];
+//    //消息
+//    _messageLabel = [[UILabel alloc] init];
+//    _messageLabel.font = CONTENT_FONT(12);
+//    _messageLabel.backgroundColor = [UIColor clearColor];
+//    if (model)
+//    {
+//        _messageLabel.text = [self subTitleMessageByConversation:model];
+//    }
+//    else
+//    {
+//        _messageLabel.text = @"暂时没有系统消息";
+//    }
+//    
+//    [backView addSubview:_messageLabel];
+//    [_messageLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.bottom.mas_equalTo(-kPaddingDistance);
+//        make.left.equalTo(_headImageView.mas_right).offset(kPaddingDistance);
+//        make.right.equalTo(_badgeNumberLabel.mas_left).offset(-kPaddingDistance);
+//        make.height.mas_equalTo(kLabelHeightDistacnce);
+//    }];
+//    
+//    UIView * bottomView = [[UIView alloc] init];
+//    bottomView.backgroundColor = [UIColor grayColor];
+//    bottomView.alpha = 0.6;
+//    [backView addSubview:bottomView];
+//    [bottomView mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.left.right.bottom.mas_equalTo(0);
+//        make.height.mas_equalTo(kBottomLineHeight);
+//    }];
+//    
+//    self.tableHeaderView = backView;
+//    [self.tableHeaderView  mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.width.mas_equalTo(SCREEN_WIDTH);
+//        make.height.mas_equalTo(kRowHeight);
+//    }];
 }
 
 // 得到最后消息文字或者类型
