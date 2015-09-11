@@ -16,7 +16,7 @@
 {
     self = [super init];
     if (self) {
-        _tagGroupIcon = [[UIImageView alloc] init];
+        _tagGroupIcon = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"group_logo"]];
         [self addSubview:_tagGroupIcon];
         [_tagGroupIcon mas_makeConstraints:^(MASConstraintMaker *make) {
             make.width.mas_equalTo(SCALE_NUM(16));
@@ -51,7 +51,6 @@
                 [groupNameStr appendString:tempStr];
             }
             _tagGroupName.text = groupNameStr;
-            _tagGroupIcon.image = [UIImage imageNamed:@"group_logo"];
             
             self.hidden = NO;
         }

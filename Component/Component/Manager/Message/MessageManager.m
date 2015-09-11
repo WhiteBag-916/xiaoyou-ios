@@ -502,7 +502,7 @@ DEF_SINGLETON(MessageManager);
 // 统计未读消息数
 -(void)setupUnreadMessageCount
 {
-    NSArray *conversations = [[[EaseMob sharedInstance] chatManager] conversations];
+    NSArray *conversations = [[EaseMob sharedInstance].chatManager loadAllConversationsFromDatabaseWithAppend2Chat:YES];
     int unreadCount = 0;
     for (EMConversation *conversation in conversations) {
         unreadCount += conversation.unreadMessagesCount;
