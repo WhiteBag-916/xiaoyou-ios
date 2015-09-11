@@ -74,7 +74,6 @@
         make.edges.equalTo(self);
         make.height.equalTo(_contentView.mas_width);
     }];
-    
     for (int i = 0; i < 3; i ++) {
         for (int j = 0; j < 3; j++) {
             UIImageView *img = [[UIImageView alloc] init];
@@ -164,11 +163,15 @@
         make.top.left.equalTo(_contentView);
     }];
     img.contentMode = UIViewContentModeScaleAspectFill;
-    [img setNormalImageWithUrl:url];
     [self moveToLine:3];
+    [img setNormalImageWithUrl:url];
     for (int i = 1; i < 9; i++) {
         [_contentView.subviews[i] setHidden:true];
     }
+    [_contentView mas_remakeConstraints:^(MASConstraintMaker *make) {
+        make.edges.equalTo(self);
+        make.height.mas_equalTo(KIMGSIZE).priorityLow();;
+    }];
 }
 - (void)addPhoto:(UIImage *)image {
     [_smallImgs addObject:image];
@@ -217,7 +220,7 @@
         } else if (index == 1) {
             make.height.equalTo(_contentView.mas_width).multipliedBy(0.5).offset(_imgSize/2).priorityLow();
         } else {
-            make.height.mas_equalTo(KIMGSIZE).priorityLow();
+            make.height.equalTo(_contentView.mas_width).priorityLow();
         }
     }];
     
