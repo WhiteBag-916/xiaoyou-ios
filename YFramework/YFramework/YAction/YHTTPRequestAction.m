@@ -37,7 +37,7 @@ static int const kAsyncQueueTypeHTTPRequestActionMaxConcurrentOperationCount = 5
                                             [self execute];
                                         }
                               completionBlock:^{
-                                  [self completed];
+//                                  [self completed];
                               }
      ];
 }
