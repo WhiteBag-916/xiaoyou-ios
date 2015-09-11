@@ -361,7 +361,7 @@
 		3348CB6A1B87236200F97FAF /* send-click@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3348CB661B87236200F97FAF /* send-click@2x.png */; };
 		3348CB6B1B87236200F97FAF /* send-click@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3348CB671B87236200F97FAF /* send-click@3x.png */; };
 		337C90BC1BA12E9A00D9CEAC /* group_logo@3X.png in Resources */ = {isa = PBXBuildFile; fileRef = 337C90BA1BA12E9A00D9CEAC /* group_logo@3X.png */; };
-		337C90BD1BA12E9A00D9CEAC /* group_logo@2X.PNG in Resources */ = {isa = PBXBuildFile; fileRef = 337C90BB1BA12E9A00D9CEAC /* group_logo@2X.PNG */; };
+		337C90BD1BA12E9A00D9CEAC /* group_logo@2X.png in Resources */ = {isa = PBXBuildFile; fileRef = 337C90BB1BA12E9A00D9CEAC /* group_logo@2X.png */; };
 		337C90C01BA1340100D9CEAC /* GroupTag.m in Sources */ = {isa = PBXBuildFile; fileRef = 337C90BF1BA1340100D9CEAC /* GroupTag.m */; };
 		339549831B81BD6700F9ECB1 /* XYGroupInfoDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 339549821B81BD6700F9ECB1 /* XYGroupInfoDetailViewController.m */; };
 		339549861B81BDD500F9ECB1 /* GroupInfoCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 339549851B81BDD500F9ECB1 /* GroupInfoCollectionViewCell.m */; };
@@ -996,7 +996,7 @@
 		3348CB661B87236200F97FAF /* send-click@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "send-click@2x.png"; sourceTree = "<group>"; };
 		3348CB671B87236200F97FAF /* send-click@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "send-click@3x.png"; sourceTree = "<group>"; };
 		337C90BA1BA12E9A00D9CEAC /* group_logo@3X.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "group_logo@3X.png"; sourceTree = "<group>"; };
-		337C90BB1BA12E9A00D9CEAC /* group_logo@2X.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "group_logo@2X.PNG"; sourceTree = "<group>"; };
+		337C90BB1BA12E9A00D9CEAC /* group_logo@2X.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "group_logo@2X.png"; sourceTree = "<group>"; };
 		337C90BE1BA1340100D9CEAC /* GroupTag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroupTag.h; sourceTree = "<group>"; };
 		337C90BF1BA1340100D9CEAC /* GroupTag.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroupTag.m; sourceTree = "<group>"; };
 		339549811B81BD6700F9ECB1 /* XYGroupInfoDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYGroupInfoDetailViewController.h; sourceTree = "<group>"; };
@@ -1663,7 +1663,7 @@
 			isa = PBXGroup;
 			children = (
 				337C90BA1BA12E9A00D9CEAC /* group_logo@3X.png */,
-				337C90BB1BA12E9A00D9CEAC /* group_logo@2X.PNG */,
+				337C90BB1BA12E9A00D9CEAC /* group_logo@2X.png */,
 				20DA8B3E1B8F1E18007D0CDE /* hot@2x.png */,
 				20DA8B3F1B8F1E18007D0CDE /* hot@3x.png */,
 				20E18D9C1B808E42005B75EE /* comment@2x.png */,
@@ -2697,7 +2697,7 @@
 				650C6C2E1B88777400A89AC9 /* mine-complete-grey@2x.png in Resources */,
 				3348CB521B87207600F97FAF /* chatBar_recordBg@2x.png in Resources */,
 				3334AC361B82E32100FDDCCB /* chat_receiver_bg.png in Resources */,
-				337C90BD1BA12E9A00D9CEAC /* group_logo@2X.PNG in Resources */,
+				337C90BD1BA12E9A00D9CEAC /* group_logo@2X.png in Resources */,
 				20E18DB91B808E42005B75EE /* common_search@3x.png in Resources */,
 				3334AC3A1B82E32700FDDCCB /* chat_sender_bg.png in Resources */,
 				2076A3181B81DA3E001FFBAC /* toolbar-mine@2x.png in Resources */,
@@ -3297,7 +3297,7 @@
 					"$(PROJECT_DIR)/XiaoYou/Utils/UMengSDK/UMSocial_Sdk_Extra_Frameworks/Wechat",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "8e89790f-3912-4ec4-a6ac-295110ebe76d";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
 				USER_HEADER_SEARCH_PATHS = "../**";
 			};
@@ -3324,7 +3324,7 @@
 					"$(PROJECT_DIR)/XiaoYou/Utils/UMengSDK/UMSocial_Sdk_Extra_Frameworks/Wechat",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "8e89790f-3912-4ec4-a6ac-295110ebe76d";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
 				USER_HEADER_SEARCH_PATHS = "../**";
 			};
