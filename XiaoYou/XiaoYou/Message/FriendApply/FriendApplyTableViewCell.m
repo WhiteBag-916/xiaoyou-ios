@@ -18,6 +18,7 @@
 #import "ChatSendHelper.h"
 #import "ProvisionManager.h"
 #import "LoginResp.h"
+#import "YFaceImageView.h"
 
 #define kHeadCornerRadius              22.5
 #define kPaddingDistance               12
@@ -41,7 +42,7 @@ typedef enum : NSUInteger {
 
 @interface FriendApplyTableViewCell ()
 
-@property(nonatomic,strong) UIImageView * headImageView;
+@property(nonatomic,strong) YFaceImageView * headImageView;
 @property(nonatomic,strong) UILabel * nameLabel;
 @property(nonatomic,strong) UILabel * sexLabel;
 @property(nonatomic,strong) UIButton * detailButton;
@@ -67,7 +68,7 @@ typedef enum : NSUInteger {
     if (self) {
         
         //头像
-        _headImageView = [[UIImageView alloc] init];
+        _headImageView = [[YFaceImageView alloc] init];
         _headImageView.backgroundColor = [UIColor clearColor];
         _headImageView.layer.cornerRadius = kHeadCornerRadius;
         _headImageView.clipsToBounds = YES;
@@ -216,6 +217,7 @@ typedef enum : NSUInteger {
     _applicantList = model;
     
     [_headImageView setFaceImageWithUrl:_applicantList.author.headPic];
+    [_headImageView setData:_applicantList.author.uid imageUrl:_applicantList.author.headPic];
     _nameLabel.text = _applicantList.author.name;
     _sexLabel.text = _applicantList.author.gender;
     if (_applicantList.author.tagsCommon.count == 0) {
