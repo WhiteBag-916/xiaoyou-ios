@@ -250,9 +250,12 @@ DEF_SINGLETON(MessageManager);
 - (void)forbiddenGroupByThirdCode:(NSString *)thirdCode {
     BOOL isForbidden = [self isForbiddenGroupByThirdCode:thirdCode];
     [[EaseMob sharedInstance].chatManager asyncIgnoreGroupPushNotification:thirdCode isIgnore:!isForbidden completion:^(NSArray *ignoreGroupsList, EMError *error) {
+        BOOL isSuccess = NO;
         if (!error) {
             self.forbiddenGroupArray = [ignoreGroupsList mutableCopy];
+            isSuccess = YES;
         }
+        [[NSNotificationCenter defaultCenter] postNotificationName:kNotification_Forbidden_Group object:nil userInfo:@{@"isSuccess":@(isSuccess)}];
     } onQueue:nil];
 }
 

@@ -28,6 +28,7 @@
 #define KNotification_Message_unread                    @"KNotification_Message_unread"
 
 #define kNotification_Refresh_Message                   @"kNotification_Refresh_Message"
+#define kNotification_Forbidden_Group                   @"kNotification_Forbidden_Group"
 
 #define KNotification_Update_UnreadAlterCount           @"KNotification_Update_UnreadAlterCount"
 
