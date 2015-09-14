@@ -50,10 +50,14 @@
         else {
             dic = [[NSMutableDictionary alloc] init];
         }
-        [dic setValue:@{@"schoolCode": [YShareData defaultData][kShareData_SchoolCode],
-                        @"studentNo": [YShareData defaultData][kShareData_StudentNo],
-                        @"token": [YShareData defaultData][kShareData_Token]}
-               forKey:@"userToken"];
+        if (nil == [YShareData defaultData][kShareData_SchoolCode])  {
+            [[NSNotificationCenter defaultCenter] postNotificationName:kNotification_Server_Token_Fail object:@{@"des":@"您的账号已在别的地方登录"}];
+        } else {
+            [dic setValue:@{@"schoolCode": [YShareData defaultData][kShareData_SchoolCode],
+                            @"studentNo": [YShareData defaultData][kShareData_StudentNo],
+                            @"token": [YShareData defaultData][kShareData_Token]}
+                   forKey:@"userToken"];
+        }
         return [self getParameter:dic];
     }
     
