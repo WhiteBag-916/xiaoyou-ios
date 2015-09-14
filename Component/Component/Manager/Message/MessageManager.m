@@ -247,7 +247,7 @@ DEF_SINGLETON(MessageManager);
 }
 
 //设置群消息不提醒
-- (void)forbiddenGroupByThirdCode:(NSString *)thirdCode {
+- (void)forbiddenGroupByThirdCode:(NSString *)thirdCode block:(ForbiddenGroupBlock)block {
     BOOL isForbidden = [self isForbiddenGroupByThirdCode:thirdCode];
     [[EaseMob sharedInstance].chatManager asyncIgnoreGroupPushNotification:thirdCode isIgnore:!isForbidden completion:^(NSArray *ignoreGroupsList, EMError *error) {
         BOOL isSuccess = NO;
@@ -255,7 +255,7 @@ DEF_SINGLETON(MessageManager);
             self.forbiddenGroupArray = [ignoreGroupsList mutableCopy];
             isSuccess = YES;
         }
-        [[NSNotificationCenter defaultCenter] postNotificationName:kNotification_Forbidden_Group object:nil userInfo:@{@"isSuccess":@(isSuccess)}];
+        block(isSuccess);
     } onQueue:nil];
 }
 

@@ -116,10 +116,7 @@ NSString *const kXYGroupInfoDetailViewController = @"XYGroupInfoDetailViewContro
                                                              type:YCommonActionSheetItemTypeSwitch
                                                           isGroup:YES
                                                              open:[[MessageManager sharedInstance] isForbiddenGroupByThirdCode:_studentDic[@"thirdCode"]]
-                                                        extraData:nil
-                                                            block:^(NSInteger checkNum) {
-                                                                [self forbiddenGroup:checkNum];
-                                                            }];
+                                                        extraData:@{@"thirdCode":_studentDic[@"thirdCode"]}];
         
         
         YActionSheetItem *item3 = [YActionSheetItem itemWithTitle:@"举报"
@@ -139,10 +136,7 @@ NSString *const kXYGroupInfoDetailViewController = @"XYGroupInfoDetailViewContro
                                                              type:YCommonActionSheetItemTypeSwitch
                                                           isGroup:YES
                                                              open:[[MessageManager sharedInstance] isForbiddenGroupByThirdCode:_studentDic[@"thirdCode"]]
-                                                        extraData:nil
-                                                            block:^(NSInteger checkNum) {
-                                                                [self forbiddenGroup:checkNum];
-                                                            }];
+                                                        extraData:@{@"thirdCode":_studentDic[@"thirdCode"]}];
         
         
         YActionSheetItem *item3 = [YActionSheetItem itemWithTitle:@"举报"
@@ -153,20 +147,6 @@ NSString *const kXYGroupInfoDetailViewController = @"XYGroupInfoDetailViewContro
         
         YCommonActionSheet *sheet = [[YCommonActionSheet alloc] initWithType:@[item1, item2, item3] title:nil];
         [sheet show];
-    }
-    
-}
-
-- (void)forbiddenGroup:(NSInteger) checkNum{
-    [[MessageManager sharedInstance] forbiddenGroupByThirdCode:_studentDic[@"thirdCode"]];
-    if (checkNum == 0)
-    {
-        [YUtils showTitle:@"取消屏蔽成功"];
-    }
-    else
-    {
-        [YUtils showTitle:@"屏蔽成功"];
-
     }
     
 }
