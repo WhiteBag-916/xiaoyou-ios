@@ -111,19 +111,20 @@ NSString *const kXYGroupInfoDetailViewController = @"XYGroupInfoDetailViewContro
 {
     LinkManModel * model = [[ContactManager sharedInstance] getContactsListData];
     ClassList * classModel = model.classList[0];
+    
+    YActionSheetItem *item2 = [YActionSheetItem itemWithTitle:@"消息不提醒"
+                                                         type:YCommonActionSheetItemTypeSwitch
+                                                      isGroup:YES
+                                                         open:[[MessageManager sharedInstance] isForbiddenGroupByThirdCode:_studentDic[@"thirdCode"]]
+                                                    extraData:@{@"thirdCode":_studentDic[@"thirdCode"]}];
+    
+    
+    YActionSheetItem *item3 = [YActionSheetItem itemWithTitle:@"举报"
+                                                         type:YCommonActionSheetItemTypeCommon
+                                                        block:^(NSInteger checkNum) {
+                                                            [YCommonReport report];
+                                                        }];
     if ([[NSString stringWithFormat:@"%g", _model.groupModel.internalBaseClassIdentifier] isEqualToString:classModel.gid]) {
-        YActionSheetItem *item2 = [YActionSheetItem itemWithTitle:@"消息不提醒"
-                                                             type:YCommonActionSheetItemTypeSwitch
-                                                          isGroup:YES
-                                                             open:[[MessageManager sharedInstance] isForbiddenGroupByThirdCode:_studentDic[@"thirdCode"]]
-                                                        extraData:@{@"thirdCode":_studentDic[@"thirdCode"]}];
-        
-        
-        YActionSheetItem *item3 = [YActionSheetItem itemWithTitle:@"举报"
-                                                             type:YCommonActionSheetItemTypeCommon
-                                                            block:^(NSInteger checkNum) {
-                                                                [YCommonReport report];
-                                                            }];
         
         YCommonActionSheet *sheet = [[YCommonActionSheet alloc] initWithType:@[item2, item3] title:nil];
         [sheet show];
@@ -131,19 +132,6 @@ NSString *const kXYGroupInfoDetailViewController = @"XYGroupInfoDetailViewContro
     else
     {
         YActionSheetItem *item1 = [YActionSheetItem itemWithType:YCommonActionSheetItemTypeShareOrganization title:@"分享社团名片至" extraData:_shareData];
-        
-        YActionSheetItem *item2 = [YActionSheetItem itemWithTitle:@"消息不提醒"
-                                                             type:YCommonActionSheetItemTypeSwitch
-                                                          isGroup:YES
-                                                             open:[[MessageManager sharedInstance] isForbiddenGroupByThirdCode:_studentDic[@"thirdCode"]]
-                                                        extraData:@{@"thirdCode":_studentDic[@"thirdCode"]}];
-        
-        
-        YActionSheetItem *item3 = [YActionSheetItem itemWithTitle:@"举报"
-                                                             type:YCommonActionSheetItemTypeCommon
-                                                            block:^(NSInteger checkNum) {
-                                                                [YCommonReport report];
-                                                            }];
         
         YCommonActionSheet *sheet = [[YCommonActionSheet alloc] initWithType:@[item1, item2, item3] title:nil];
         [sheet show];
