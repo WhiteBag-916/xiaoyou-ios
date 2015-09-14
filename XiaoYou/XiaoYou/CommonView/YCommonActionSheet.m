@@ -211,7 +211,7 @@ static const NSUInteger kYActionSheetCancelHeight = 49;
         [self updateSwitchButton];
         
         if (_item.block) {
-            _item.block(0);
+            _item.block(_item.isOpen);
         }
     }
 }

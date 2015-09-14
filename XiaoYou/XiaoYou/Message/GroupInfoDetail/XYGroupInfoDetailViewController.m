@@ -118,7 +118,7 @@ NSString *const kXYGroupInfoDetailViewController = @"XYGroupInfoDetailViewContro
                                                              open:[[MessageManager sharedInstance] isForbiddenGroupByThirdCode:_studentDic[@"thirdCode"]]
                                                         extraData:nil
                                                             block:^(NSInteger checkNum) {
-                                                                [self forbiddenGroup];
+                                                                [self forbiddenGroup:checkNum];
                                                             }];
         
         
@@ -141,7 +141,7 @@ NSString *const kXYGroupInfoDetailViewController = @"XYGroupInfoDetailViewContro
                                                              open:[[MessageManager sharedInstance] isForbiddenGroupByThirdCode:_studentDic[@"thirdCode"]]
                                                         extraData:nil
                                                             block:^(NSInteger checkNum) {
-                                                                [self forbiddenGroup];
+                                                                [self forbiddenGroup:checkNum];
                                                             }];
         
         
@@ -157,8 +157,18 @@ NSString *const kXYGroupInfoDetailViewController = @"XYGroupInfoDetailViewContro
     
 }
 
-- (void)forbiddenGroup {
+- (void)forbiddenGroup:(NSInteger) checkNum{
     [[MessageManager sharedInstance] forbiddenGroupByThirdCode:_studentDic[@"thirdCode"]];
+    if (checkNum == 0)
+    {
+        [YUtils showTitle:@"取消屏蔽成功"];
+    }
+    else
+    {
+        [YUtils showTitle:@"屏蔽成功"];
+
+    }
+    
 }
 
 -(void)back
