@@ -12,7 +12,7 @@
 @class GroupModel;
 
 typedef NS_ENUM(NSInteger, AssociationsDetailTableViewSection) {
-    AssociationsDetailTableViewTitleSection=0,      //社团详情
+    AssociationsDetailTableViewTitleSection=0,      //社团简介
     AssociationsDetailTableViewLikeSection,         //点赞，酷
     AssociationsDetailTableViewFeedSection,         //feed
     AssociationsDetailTableViewSectionEnd
