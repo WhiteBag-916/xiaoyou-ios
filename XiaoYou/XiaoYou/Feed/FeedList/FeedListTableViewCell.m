@@ -149,7 +149,8 @@ NSString *const KCommentTableViewCell = @"CommentTableViewCell";
         make.left.equalTo(self.contentView);
         make.top.equalTo(_tagView.mas_bottom).offset(KTAGMICONARGIN_TOP);
         make.width.equalTo(self.contentView);
-        make.height.mas_equalTo(40);
+        make.height.mas_equalTo(40).priorityHigh();
+        make.height.mas_equalTo(0).priorityLow();
     }];
     [_groupTagView.tagGroupIcon mas_updateConstraints:^(MASConstraintMaker *make) {
         make.centerX.equalTo(_topView.contactHeadImageView);

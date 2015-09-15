@@ -39,9 +39,6 @@
 - (void)setData:(id)inData
 {
 //    self.hidden = YES;
-    [self mas_updateConstraints:^(MASConstraintMaker *make) {
-        make.height.mas_equalTo(0);
-    }];
     
     if ([inData isKindOfClass:[FeedInfo class]]) {
         FeedInfo * feedInfo = inData;
@@ -57,7 +54,13 @@
             _tagGroupName.text = groupNameStr;
             
             [self mas_updateConstraints:^(MASConstraintMaker *make) {
-                make.height.mas_equalTo(40);
+                make.height.mas_equalTo(40).priorityHigh();
+                make.height.mas_equalTo(0).priorityLow();
+            }];
+        } else {
+            [self mas_updateConstraints:^(MASConstraintMaker *make) {
+                make.height.mas_equalTo(0).priorityHigh();
+                make.height.mas_equalTo(40).priorityLow();
             }];
         }
     }
