@@ -491,6 +491,11 @@ DEF_SINGLETON(MessageManager);
     [[NSNotificationCenter defaultCenter] postNotificationName:kNotification_Server_Token_Fail object:@{@"des":@"您的账号已在别的地方登录"}];
 }
 
+//服务器删除
+- (void)didRemovedFromServer {
+    [[NSNotificationCenter defaultCenter] postNotificationName:kNotification_Server_Token_Fail object:@{@"des":@"您的账号已在别的地方登录"}];
+}
+
 //// 未读消息数量变化回调
 //-(void)didUnreadMessagesCountChanged
 //{
