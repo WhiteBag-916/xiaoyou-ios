@@ -187,7 +187,11 @@
 {
     NSInteger section = indexPath.section;
     if (AssociationsDetailTableViewTitleSection == section) {
-        return SCALE_NUM(90);
+        //计算高度
+        CGFloat height = [tableView fd_heightForCellWithIdentifier:kAssociationsListTableViewCell cacheByIndexPath:indexPath configuration:^(AssociationsListTableViewCell *cell) {
+            [cell resetData:_groupModel];
+        }];
+        return height;
     } else if (AssociationsDetailTableViewLikeSection == section) {
         return SCALE_NUM(40);
     }
