@@ -11,6 +11,7 @@
 #import "EMConversation.h"
 #import "MessageManager.h"
 
+
 @interface XYSystemMessageViewController ()
 
 @property(nonatomic,strong)SystemMessageTableView * systemMessageTableView;

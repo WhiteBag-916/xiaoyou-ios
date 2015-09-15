@@ -8,6 +8,8 @@
 
 #import "YTableViewCell.h"
 #import "EMMessage.h"
+#import "SystemMessageTableView.h"
+#import "PPLabel.h"
 
 extern NSString *const kNormalSystemMessageTableViewCell;
 

@@ -19,11 +19,12 @@
 
 NSString *const kNormalSystemMessageTableViewCell = @"NormalSystemMessageTableViewCellId";
 
-@interface NormalSystemMessageTableViewCell ()
+@interface NormalSystemMessageTableViewCell ()<PPLabelDelegate>
 
 @property(nonatomic,strong)UIImageView * headImageView;
 @property(nonatomic,strong)UIImageView * backImageView;
-@property(nonatomic,strong)UILabel * contentLabel;
+@property(nonatomic,strong)PPLabel * contentLabel;
+@property(nonatomic, strong) NSArray* matches;
 
 @end
 
@@ -46,6 +47,7 @@ NSString *const kNormalSystemMessageTableViewCell = @"NormalSystemMessageTableVi
         
         _backImageView = [[UIImageView alloc] init];
         _backImageView.image = [[UIImage imageNamed:@"chat_receiver_bg"] resizableImageWithCapInsets:UIEdgeInsetsMake(20, 24, 30, 24) resizingMode:UIImageResizingModeStretch];;
+        _backImageView.userInteractionEnabled = YES;
         [self.contentView addSubview:_backImageView];
         [_backImageView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.top.mas_equalTo(3*kPaddingDistance);
@@ -54,7 +56,8 @@ NSString *const kNormalSystemMessageTableViewCell = @"NormalSystemMessageTableVi
             make.left.equalTo(_headImageView.mas_right).offset(kPaddingDistance);
         }];
         
-        _contentLabel = [[UILabel alloc] init];
+        _contentLabel = [[PPLabel alloc] init];
+        _contentLabel.delegate = self;
         _contentLabel.numberOfLines = 0;
         _contentLabel.font = CONTENT_FONT(12);
         _contentLabel.backgroundColor = [UIColor clearColor];
@@ -73,6 +76,12 @@ NSString *const kNormalSystemMessageTableViewCell = @"NormalSystemMessageTableVi
 {
     _contentLabel.text = [self subTitleMessageByConversation:message];
     [_headImageView setNormalImageWithUrl:[YShareData defaultData][kShareData_SchoolIcon]];
+    NSError *error = NULL;
+    NSDataDetector *detector = [NSDataDetector dataDetectorWithTypes:NSTextCheckingTypeLink error:&error];
+    
+    self.matches = [detector matchesInString:_contentLabel.text options:0 range:NSMakeRange(0, _contentLabel.text.length)];
+    
+    [self highlightLinksWithIndex:NSNotFound];
 }
 
 // 得到最后消息文字或者类型
@@ -111,6 +120,73 @@ NSString *const kNormalSystemMessageTableViewCell = @"NormalSystemMessageTableVi
     }
     
     return ret;
+}
+
+#pragma mark - PPLabelDelegat
+
+- (void)label:(PPLabel *)label didBeginTouch:(UITouch *)touch onCharacterAtIndex:(CFIndex)charIndex {
+    
+    [self highlightLinksWithIndex:charIndex];
+}
+
+- (void)label:(PPLabel *)label didMoveTouch:(UITouch *)touch onCharacterAtIndex:(CFIndex)charIndex {
+    
+    [self highlightLinksWithIndex:charIndex];
+}
+
+- (void)label:(PPLabel *)label didEndTouch:(UITouch *)touch onCharacterAtIndex:(CFIndex)charIndex {
+    
+    [self highlightLinksWithIndex:NSNotFound];
+    
+    for (NSTextCheckingResult *match in self.matches) {
+        
+        if ([match resultType] == NSTextCheckingTypeLink) {
+            
+            NSRange matchRange = [match range];
+            
+            if ([self isIndex:charIndex inRange:matchRange]) {
+                
+                [[UIApplication sharedApplication] openURL:match.URL];
+                break;
+            }
+        }
+    }
+    
+}
+
+- (void)label:(PPLabel *)label didCancelTouch:(UITouch *)touch {
+    
+    [self highlightLinksWithIndex:NSNotFound];
+}
+
+#pragma mark -
+
+- (BOOL)isIndex:(CFIndex)index inRange:(NSRange)range {
+    return index > range.location && index < range.location+range.length;
+}
+
+- (void)highlightLinksWithIndex:(CFIndex)index {
+    
+    NSMutableAttributedString* attributedString = [_contentLabel.attributedText mutableCopy];
+    
+    for (NSTextCheckingResult *match in self.matches) {
+        
+        if ([match resultType] == NSTextCheckingTypeLink) {
+            
+            NSRange matchRange = [match range];
+            
+            if ([self isIndex:index inRange:matchRange]) {
+                [attributedString addAttribute:NSForegroundColorAttributeName value:[UIColor grayColor] range:matchRange];
+            }
+            else {
+                [attributedString addAttribute:NSForegroundColorAttributeName value:[UIColor blueColor] range:matchRange];
+            }
+            
+            [attributedString addAttribute:NSUnderlineStyleAttributeName value:[NSNumber numberWithInteger:NSUnderlineStyleSingle] range:matchRange];
+        }
+    }
+    
+    _contentLabel.attributedText = attributedString;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

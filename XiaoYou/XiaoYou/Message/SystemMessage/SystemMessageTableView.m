@@ -15,6 +15,7 @@
 #import "ChatViewController.h"
 #import "ClassList.h"
 #import "ContactManager.h"
+#import "PPLabel.h"
 
 @interface SystemMessageTableView ()<UITableViewDataSource,UITableViewDelegate,ApplySuccessSystemMessageTableViewCellDelegat>
 
@@ -186,5 +187,7 @@
     [newDic setObject:groupIcon forKey:@"icon"];
     return newDic;
 }
+
+
 
 @end
