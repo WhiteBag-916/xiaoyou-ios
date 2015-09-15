@@ -23,19 +23,21 @@
 - (id)init {
     self = [super init];
     if (self) {
+        self.clipsToBounds = true;
         _tagIcon = [[UIImageView alloc] init];
         [self addSubview:_tagIcon];
         [_tagIcon mas_makeConstraints:^(MASConstraintMaker *make) {
             make.width.mas_equalTo(SCALE_NUM(11));
             make.height.mas_equalTo(SCALE_NUM(14));
             make.left.top.equalTo(self);
+            make.bottom.equalTo(self).priorityLow();
         }];
         
         _tagContent = [[SKTagView alloc] init];
         [self addSubview:_tagContent];
         [_tagContent mas_makeConstraints:^(MASConstraintMaker *make) {
             make.top.equalTo(_tagIcon.mas_centerY).offset(-KLABELHEIGHT);
-            make.right.equalTo(self);
+            make.right.bottom.equalTo(self);
         }];
         _tagContent.insets = 21;
         _tagContent.lineSpace = 0;
@@ -51,9 +53,13 @@
 - (void)setData:(NSArray *)tags {
     [_tagContent removeAllTags];
     if (tags.count == 0) {
-        self.hidden = true;
+        [self mas_updateConstraints:^(MASConstraintMaker *make) {
+            make.height.mas_equalTo(0).priorityHigh();
+        }];
     } else {
-        self.hidden = false;
+        [self mas_updateConstraints:^(MASConstraintMaker *make) {
+            make.height.mas_equalTo(0).priorityLow();
+        }];
         BOOL hasRelate = false;
         for (int i = 0; i < tags.count; i++) {
             BOOL isRelate = [tags[i] equal];

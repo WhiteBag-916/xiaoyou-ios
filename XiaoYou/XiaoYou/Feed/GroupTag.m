@@ -16,6 +16,7 @@
 {
     self = [super init];
     if (self) {
+        self.clipsToBounds = true;
         _tagGroupIcon = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"group_logo"]];
         [self addSubview:_tagGroupIcon];
         [_tagGroupIcon mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -37,7 +38,10 @@
 
 - (void)setData:(id)inData
 {
-    self.hidden = YES;
+//    self.hidden = YES;
+    [self mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.height.mas_equalTo(0);
+    }];
     
     if ([inData isKindOfClass:[FeedInfo class]]) {
         FeedInfo * feedInfo = inData;
@@ -52,7 +56,9 @@
             }
             _tagGroupName.text = groupNameStr;
             
-            self.hidden = NO;
+            [self mas_updateConstraints:^(MASConstraintMaker *make) {
+                make.height.mas_equalTo(40);
+            }];
         }
     }
 }

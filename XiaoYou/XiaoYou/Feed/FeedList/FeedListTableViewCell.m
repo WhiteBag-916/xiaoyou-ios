@@ -28,7 +28,7 @@ NSString *const KCommentTableViewCell = @"CommentTableViewCell";
 
 #define KLEFTMARGIN SCALE_NUM(15)//头像的左间距
 
-#define KTAGMICONARGIN_TOP SCALE_NUM(18)
+#define KTAGMICONARGIN_TOP SCALE_NUM(12)
 #define KBOTTOMMARGIN_TOP SCALE_NUM(12)
 
 #define KHINTSIZE SCALE_NUM(34)
