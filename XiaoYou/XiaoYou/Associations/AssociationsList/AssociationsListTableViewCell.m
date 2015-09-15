@@ -140,9 +140,10 @@ NSString *const kAssociationsListTableViewCell = @"AssociationsListTableViewCell
     //6
     _keywordsLabel = [YUtils initLabel:CONTENT_FONT(10)
                              color:KCOLORGREEN_455A64
-                              text:@"keywords：零基础也没事、球场门票优惠keyword：零基础也没事、球场门票优惠keyword：零基础也没事、球场门票优惠keyword：零基础也没事、球场门票优惠"
+                              text:@""
                              frame:CGRectZero
                          alignment:NSTextAlignmentLeft];
+    _keywordsLabel.numberOfLines = 0;
     [self.contentView addSubview:_keywordsLabel];
     [_keywordsLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(_nameLabel.mas_left);

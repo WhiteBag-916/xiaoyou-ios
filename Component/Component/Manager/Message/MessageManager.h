@@ -28,6 +28,8 @@ typedef enum : NSUInteger {
     DELETEUSER=11,          //被好友删除
 } PUSH_Message_TYPE;
 
+typedef void (^ForbiddenGroupBlock)(BOOL isSuccess);
+
 @interface MessageManager : YManager<YManager>
 AS_SINGLETON(MessageManager);
 
@@ -41,7 +43,7 @@ AS_SINGLETON(MessageManager);
 - (void)delConversationByChatter:(NSString *)chatter;
 
 //设置群消息不提醒
-- (void)forbiddenGroupByThirdCode:(NSString *)thirdCode;
+- (void)forbiddenGroupByThirdCode:(NSString *)thirdCode block:(ForbiddenGroupBlock)block;
 
 //判断是否已屏蔽
 - (BOOL)isForbiddenGroupByThirdCode:(NSString *)thirdCode;

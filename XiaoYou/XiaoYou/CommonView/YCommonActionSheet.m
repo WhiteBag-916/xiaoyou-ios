@@ -11,6 +11,7 @@
 #import "YControlsDefine.h"
 #import "YCommonShare.h"
 #import "ContactManager.h"
+#import "MessageManager.h"
 
 static const NSUInteger kYActionSheetButtonHeight = 50;
 static const NSUInteger kYActionSheetTitleHeight = 37;
@@ -206,13 +207,31 @@ static const NSUInteger kYActionSheetCancelHeight = 49;
             [YUtils showTitle:message.desc];
         }];
     } else {
-        _item.isOpen = !_item.isOpen;
-        
-        [self updateSwitchButton];
-        
-        if (_item.block) {
-            _item.block(0);
-        }
+        [[MessageManager sharedInstance] forbiddenGroupByThirdCode:_item.extraData[@"thirdCode"] block:^(BOOL isSuccess) {
+            NSString *str;
+            if (isSuccess)
+            {
+                _item.isOpen = !_item.isOpen;
+                
+                [self updateSwitchButton];
+                
+                if (_item.isOpen) {
+                    [YUtils showTitle:@"屏蔽成功"];
+                } else {
+                    [YUtils showTitle:@"取消屏蔽成功"];
+                }
+            }
+            else
+            {
+                if (_item.isOpen) {
+                    [YUtils showTitle:@"取消屏蔽失败"];
+                } else {
+                    [YUtils showTitle:@"屏蔽失败"];
+                }
+            }
+            
+            [YUtils showTitle:str];
+        }];
     }
 }
 

@@ -38,6 +38,7 @@
 		28CBB0DF1ADAE41000D69527 /* YOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 28CBB0DE1ADAE41000D69527 /* YOperation.m */; };
 		28CBB0E61ADAFAF400D69527 /* YHttpRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 28CBB0E51ADAFAF400D69527 /* YHttpRequest.m */; };
 		28DB2C891B2BD553000FB76B /* YNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28DB2C881B2BD553000FB76B /* YNavigationController.m */; };
+		331473A41BA7E5DF0006F72D /* PPLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 331473A31BA7E5DF0006F72D /* PPLabel.m */; };
 		492FDE3A1B45152C0085C770 /* YDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = 492FDE391B45152C0085C770 /* YDevice.m */; };
 		49DB52CC1B3D81A900B0D1EB /* NSArray+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 49DB52CB1B3D81A900B0D1EB /* NSArray+Additions.m */; };
 		57C6053F1AE8C45900A92A54 /* YString+Ext.m in Sources */ = {isa = PBXBuildFile; fileRef = 57C6053E1AE8C45900A92A54 /* YString+Ext.m */; };
@@ -150,6 +151,8 @@
 		28CBB0E91ADB04AD00D69527 /* YHttpOperationCode.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YHttpOperationCode.h; sourceTree = "<group>"; };
 		28DB2C871B2BD553000FB76B /* YNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YNavigationController.h; sourceTree = "<group>"; };
 		28DB2C881B2BD553000FB76B /* YNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YNavigationController.m; sourceTree = "<group>"; };
+		331473A21BA7E5DF0006F72D /* PPLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPLabel.h; sourceTree = "<group>"; };
+		331473A31BA7E5DF0006F72D /* PPLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPLabel.m; sourceTree = "<group>"; };
 		492FDE381B45152C0085C770 /* YDevice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YDevice.h; sourceTree = "<group>"; };
 		492FDE391B45152C0085C770 /* YDevice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YDevice.m; sourceTree = "<group>"; };
 		49DB52CA1B3D81A900B0D1EB /* NSArray+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+Additions.h"; sourceTree = "<group>"; };
@@ -256,6 +259,7 @@
 		2817D9B81ADA1EA500FDB4F6 /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
+				331473A11BA7E5DF0006F72D /* PPLabel */,
 				65F82F851B8601EB00FF6E2D /* SKTagView */,
 				654602181B7F8C1D0039F622 /* SDPhotoBrowser */,
 				28A1EBFA1AE1FC3200F7F93B /* Readme.txt */,
@@ -399,6 +403,15 @@
 				2803C92B1AE3BA60002303B6 /* YManagerCenter.m */,
 			);
 			path = YManager;
+			sourceTree = "<group>";
+		};
+		331473A11BA7E5DF0006F72D /* PPLabel */ = {
+			isa = PBXGroup;
+			children = (
+				331473A21BA7E5DF0006F72D /* PPLabel.h */,
+				331473A31BA7E5DF0006F72D /* PPLabel.m */,
+			);
+			path = PPLabel;
 			sourceTree = "<group>";
 		};
 		654602181B7F8C1D0039F622 /* SDPhotoBrowser */ = {
@@ -547,6 +560,7 @@
 				654602221B7F8C1D0039F622 /* SDPhotoBrowser.m in Sources */,
 				57CFE0DA1AE7A3AF00D4C4E9 /* YImage+Ext.m in Sources */,
 				57C6053F1AE8C45900A92A54 /* YString+Ext.m in Sources */,
+				331473A41BA7E5DF0006F72D /* PPLabel.m in Sources */,
 				971758891B132D7D00CCEEE4 /* YTextField+Ext.m in Sources */,
 				28A1EBFD1AE2015700F7F93B /* YDirectory.m in Sources */,
 				20E033F91B845706002E4583 /* YTextField.m in Sources */,
