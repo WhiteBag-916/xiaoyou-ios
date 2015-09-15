@@ -91,7 +91,7 @@
     {
         if ([[message.ext[@"sub_type"] stringValue] isEqualToString:@"1"])
         {
-            return 70;
+            return 75;
         }
         else
         {
@@ -103,7 +103,7 @@
     {
         if ([[message.ext[@"sub_type"] stringValue] isEqualToString:@"1"])
         {
-             return titleSize.height + 65;
+             return titleSize.height + 70;
         }
         else
         {
@@ -111,7 +111,7 @@
         }
         
     }
-    return 70;
+    return 75;
    
 }
 
