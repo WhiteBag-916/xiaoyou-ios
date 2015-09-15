@@ -488,12 +488,12 @@ DEF_SINGLETON(MessageManager);
 
 //环信踢出
 - (void)didLoginFromOtherDevice {
-    [[NSNotificationCenter defaultCenter] postNotificationName:kNotification_Server_Token_Fail object:@{@"des":@"您的账号已在别的地方登录"}];
+    [[NSNotificationCenter defaultCenter] postNotificationName:kNotification_Server_Token_Fail object:@{@"des":@"您的账号已在其他设备登录"}];
 }
 
 //服务器删除
 - (void)didRemovedFromServer {
-    [[NSNotificationCenter defaultCenter] postNotificationName:kNotification_Server_Token_Fail object:@{@"des":@"您的账号已在别的地方登录"}];
+    [[NSNotificationCenter defaultCenter] postNotificationName:kNotification_Server_Token_Fail object:@{@"des":@"你的帐号未通过审核，已被冻结"}];
 }
 
 //// 未读消息数量变化回调
