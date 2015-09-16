@@ -7,6 +7,7 @@
 //
 
 #import "ContactsInfoDetailTableViewCell.h"
+#import "SDPhotoBrowser.h"
 
 #define kFlagImageDistanceToLeft            22
 #define kLabelDistanceToRight               22
@@ -16,7 +17,7 @@
 
 NSString *const kContactsInfoDetailTableViewCell = @"ContactsInfoDetailTableViewCellId";
 
-@interface ContactsInfoDetailTableViewCell ()
+@interface ContactsInfoDetailTableViewCell ()<SDPhotoBrowserDelegate>
 
 @property (nonatomic,strong)UIImageView * flagImageView;
 @property (nonatomic,strong)UILabel * contentLabel;
@@ -31,6 +32,7 @@ NSString *const kContactsInfoDetailTableViewCell = @"ContactsInfoDetailTableView
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self)
     {
+        
         _flagImageView = [[UIImageView alloc] init];
         _flagImageView.backgroundColor = [UIColor clearColor];
         [self.contentView addSubview:_flagImageView];
@@ -93,6 +95,7 @@ NSString *const kContactsInfoDetailTableViewCell = @"ContactsInfoDetailTableView
     _contentLabel.text = dic[@"content"];
     _line.hidden = hiddenLine;
 }
+
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];

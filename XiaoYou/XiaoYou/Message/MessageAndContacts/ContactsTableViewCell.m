@@ -97,11 +97,12 @@ NSString *const kContactsTableViewCell = @"ContactsTableViewCell";
         }];
         //
         _tagContent = [[SKTagView alloc] init];
+        _tagContent.backgroundColor = [UIColor clearColor];
         [self.contentView addSubview:_tagContent];
         [_tagContent mas_makeConstraints:^(MASConstraintMaker *make) {
             make.top.equalTo(_nameLabel.mas_bottom).offset(kFlagLabelToHead);
             make.left.equalTo(_flagImageView.mas_right).offset(kPaddingDistance);
-            make.right.equalTo(self.contentView.mas_right).offset(-kPaddingDistance);
+            make.right.equalTo(self.contentView.mas_right).offset(-3*kPaddingDistance);
             make.bottom.equalTo(self.contentView.mas_bottom).offset(-kPaddingDistance);
         }];
         _tagContent.maxLines = 1;
