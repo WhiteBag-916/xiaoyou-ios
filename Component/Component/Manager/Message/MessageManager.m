@@ -154,6 +154,8 @@ DEF_SINGLETON(MessageManager);
             
         } else if (nil != error) {
             [[NSNotificationCenter defaultCenter] postNotificationName:kNotification_Refresh_Message object:nil userInfo:@{kNotification_Request_Error:error}];
+        } else {
+            [[NSNotificationCenter defaultCenter] postNotificationName:kNotification_Server_Token_Fail object:@{@"des":@"登录失败"}];
         }
     } onQueue:nil];
 }
