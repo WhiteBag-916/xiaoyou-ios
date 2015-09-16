@@ -20,6 +20,7 @@
 #import "ContactManager.h"
 #import "LinkManModel.h"
 #import "ContactManager.h"
+#import "YModel+ActionMessage.h"
 
 @interface XYMessageAndContactsViewController ()<IChatManagerDelegate>
 @property (strong, nonatomic) UIView * navigationView;
@@ -94,20 +95,12 @@
         [self refreshDataSource];
     } else {
         switch (error.errorCode) {
-            case EMErrorServerNotReachable:
-                TTAlertNoTitle(NSLocalizedString(@"error.connectServerFail", @"Connect to the server failed!"));
-                break;
-            case EMErrorServerDuplicatedAccount:
-                TTAlertNoTitle(NSLocalizedString(@"register.repeat", @"You registered user already exists!"));
-                break;
             case EMErrorNetworkNotConnected:
+            case EMErrorServerTimeout:
                 [YUtils showTitle:@"无网络连接"];
                 break;
-            case EMErrorServerTimeout:
-                TTAlertNoTitle(NSLocalizedString(@"error.connectServerTimeout", @"Connect to the server timed out!"));
-                break;
             default:
-                TTAlertNoTitle(NSLocalizedString(@"register.fail", @"Registration failed"));
+                [[NSNotificationCenter defaultCenter] postNotificationName:kNotification_Server_Token_Fail object:@{@"des":@"登录失败"}];
                 break;
         }
     }
