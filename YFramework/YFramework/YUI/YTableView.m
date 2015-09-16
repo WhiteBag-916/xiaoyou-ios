@@ -19,6 +19,7 @@
         {
             self.header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
                 if (![self.footer isRefreshing]) {
+                    [self.footer resetNoMoreData];
                     [self loadNewData];
                 } else {
                     [self.header endRefreshing];
