@@ -22,7 +22,7 @@
 #define kLabelHeight                    20
 #define kTableViewHeight                290
 
-@interface XYSendMessageViewController ()<DXMessageToolBarDelegate,SendMessageTableViewDelegate,DXMessageToolBarDelegate>
+@interface XYSendMessageViewController ()<SendMessageTableViewDelegate,DXMessageToolBarDelegate>
 
 @property(nonatomic,strong)SendMessageTableView * sendMessageTableView;
 
@@ -156,6 +156,11 @@
         [conversation removeMessage:tempMessage];
     }
     [YUtils showTitle:@"发送成功"];
+}
+
+#pragma mark - DXMessageToolBarDelegate
+- (void)didChangeFrameToHeight:(CGFloat)toHeight {
+    
 }
 
 - (void)didReceiveMemoryWarning {

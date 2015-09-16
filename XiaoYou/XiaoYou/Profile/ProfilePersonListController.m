@@ -61,7 +61,7 @@
     self.navigationController.navigationBarHidden = false;
 }
 - (void)viewDidAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
+    [super viewDidAppear:animated];
     if (_type == PersonListFeedRespect) {
         [_tableView loadDataWithFeedId:_feedId];
     } else {

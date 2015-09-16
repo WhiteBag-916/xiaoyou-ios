@@ -131,7 +131,10 @@ static MessageReadManager *detailInstance = nil;
             {
                 
             }
-            [photoArray addObject:photo];
+            
+            if (nil != photo) {
+                [photoArray addObject:photo];
+            }
         }
         
         self.photos = photoArray;

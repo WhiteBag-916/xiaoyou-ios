@@ -60,7 +60,7 @@
 {
     [UMSocialData defaultData].extConfig.wxMessageType = UMSocialWXMessageTypeWeb;
     
-    NSString *typeStr;
+    NSString *typeStr = @"";
     UMSocialUrlResource *urlResource ;
     switch (shareType) {
         case YShareTypeToWechatSession:{
