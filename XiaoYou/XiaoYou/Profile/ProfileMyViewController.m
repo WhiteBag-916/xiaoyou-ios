@@ -394,7 +394,7 @@
     {
         NSString *path = [YDirectory newImgCache:_headImagePath];
         
-        if (![YDirectory isDirectory:path])
+        if (![YDirectory isExistsPath:path])
         {
             //存在
             _faceImg.image = [UIImage imageWithContentsOfFile:path];

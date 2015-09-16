@@ -32,4 +32,15 @@
  */
 + (BOOL)isDirectory:(NSString *)filePath;
 
+/**
+ *  @author xc
+ *
+ *  判断某一路径是否存在
+ *
+ *  @param filePath 文件路径
+ *
+ *  @return 是否存在文件
+ */
++ (BOOL)isExistsPath:(NSString *)filePath;
+
 @end
