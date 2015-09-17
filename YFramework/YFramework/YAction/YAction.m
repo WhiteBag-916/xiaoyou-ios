@@ -88,10 +88,4 @@
     });
     return Actions;
 }
-
--(void)dealloc
-{
-    YLogE(@"dealloc -- %@",self.type);
-    return;
-}
 @end
