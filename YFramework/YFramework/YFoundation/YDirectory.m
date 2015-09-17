@@ -55,4 +55,9 @@
     return isDirectory;
 }
 
++ (BOOL)isExistsPath:(NSString *)filePath
+{
+    return [[NSFileManager defaultManager] fileExistsAtPath:filePath isDirectory:nil];
+}
+
 @end

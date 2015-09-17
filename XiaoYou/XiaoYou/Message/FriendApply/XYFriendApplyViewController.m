@@ -57,6 +57,7 @@
     
 }
 
+#pragma mark - 导航左侧
 - (void)onNavigationLeftButtonClicked {
     if (0 == [_friendApplyTableView getDataSource].count && ![_friendApplyTableView isHeaderRefresh]) {
         [[EaseMob sharedInstance].chatManager removeConversationByChatter:_chatter deleteMessages:YES append2Chat:NO];
@@ -65,6 +66,7 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 
+#pragma mark - 导航右侧
 - (void)onNavigationRightButtonClicked
 {
     YActionSheetItem *item1 = [YActionSheetItem itemWithTitle:@"清空好友申请列表"
@@ -76,6 +78,7 @@
     [sheet show];
 }
 
+#pragma mark - 清空数据
 - (void)removeAllData {
     
     NSMutableArray * idArr = [NSMutableArray array];

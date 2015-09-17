@@ -116,7 +116,7 @@
             [_associationsListArray removeAllObjects];
         }
         [_associationsListArray addObjectsFromArray:[message.object groupList]];
-        if ([_associationsListArray count] < KPAGENUM) {
+        if ([[message.object groupList] count] < KPAGENUM) {
             [self showNoticeNoMoreData];
         }
         [self reloadData];
@@ -133,7 +133,7 @@
         [self hiddenFooter:NO];
         [_associationsListArray removeAllObjects];
         [_associationsListArray addObjectsFromArray:[message.object groupList]];
-        if ([_associationsListArray count] < KPAGENUM) {
+        if ([[message.object groupList] count] < KPAGENUM) {
             [self showNoticeNoMoreData];
         }
         

@@ -79,7 +79,7 @@
     CGPathAddRect(path, NULL, textRect);
     
     CTFrameRef frame = CTFramesetterCreateFrame(framesetter, CFRangeMake(0, [self.attributedText length]), path, NULL);
-    
+    CFRelease(framesetter);
     if (frame == NULL) {
         CFRelease(path);
         return NSNotFound;

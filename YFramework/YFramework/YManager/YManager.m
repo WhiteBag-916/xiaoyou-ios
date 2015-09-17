@@ -14,7 +14,7 @@
 
 - (instancetype)init
 {
-    if (self == [super init])
+    if (self = [super init])
     {
         //初始化时自动注册到Center
         [[YManagerCenter defaultCenter] registerManager:self];
@@ -51,7 +51,7 @@
 - (void)appDidLogin:(NSDictionary *)loginInfo
 { //子类业务操作
 }
-- (void)appDidLogout
+- (void)appDidLogout:(NSDictionary *)logoutInfo
 { //子类业务操作
 }
 

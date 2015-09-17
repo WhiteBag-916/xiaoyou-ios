@@ -77,7 +77,7 @@
     return YES;
 }
 
-
+#pragma mark - 刷新界面
 -(void)refreshTableView:(NSMutableArray *) dataSouceArr AndHeaderModel:(EMMessage *) model
 {
     [self setUpHeaderView:model];
@@ -282,7 +282,7 @@
 //    }];
 }
 
-// 得到最后消息文字或者类型
+#pragma mark - 得到最后消息文字或者类型
 -(NSString *)subTitleMessageByConversation:(EMMessage *)model
 {
     NSString *ret = @"";
@@ -319,7 +319,7 @@
     
     return ret;
 }
-
+#pragma mark - headerView点击事件
 -(void)tapGestureRecognizerAction
 {
     NSArray *conversations = [[EaseMob sharedInstance].chatManager conversations];
@@ -335,7 +335,7 @@
     [self.myController.navigationController pushViewController:systemMessageViewController animated:YES needHiddenBottomBar:YES];
 }
 
-// 得到最后消息时间
+#pragma mark - 得到最后消息时间
 -(NSString *)lastMessageTimeByConversation:(EMMessage *)model
 {
     NSString *ret = @"";
@@ -344,7 +344,7 @@
     return ret;
 }
 
-// 得到未读消息条数
+#pragma mark - 得到未读消息条数
 - (NSInteger)unreadMessageCountByConversation:(EMConversation *)conversation
 {
     return conversation.unreadMessagesCount;
@@ -405,33 +405,27 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-//    if (indexPath.row == 0)
-//    {
-//        XYSystemMessageViewController * systemMessageViewController = [[XYSystemMessageViewController alloc] init];
-//        [self.myController.navigationController pushViewController:systemMessageViewController animated:YES needHiddenBottomBar:YES];
-//    }
-//    else
-    {
-        EMConversation *converation = [_messageDataSource objectAtIndex:indexPath.row];
-        
-        NSDictionary *ext = converation.latestMessageFromOthers.ext;
-        if ([ext[@"server_flag"] boolValue]) {
-            //非聊天消息
-            if (FRIEND_APPLY == [ext[@"type"] integerValue]) {
-                [_myController.navigationController pushViewController:[[XYFriendApplyViewController alloc] initWithChatter:converation.chatter] animated:YES needHiddenBottomBar:YES];
-            } else if (GROUP_APPLY == [ext[@"type"] integerValue]) {
-                [_myController.navigationController pushViewController:[[XYGroupApplyViewController alloc] initWithGroupId:[NSString stringWithFormat:@"%d", [ext[@"group_id"] intValue]] chatter:converation.chatter] animated:YES needHiddenBottomBar:YES];
-            }
-            [converation markAllMessagesAsRead:YES];
-        } else {
-            MessageTableViewCell * cell = (MessageTableViewCell *)[self cellForRowAtIndexPath:indexPath];
-            self.myController.hidesBottomBarWhenPushed = YES;
-            ChatViewController * chatVC = [[ChatViewController alloc] initWithChatter:cell.conversation.chatter isGroup:converation.conversationType];
-            chatVC.isSystemMessage = NO;
-            chatVC.studentDic = [cell.studentDic  mutableCopy];
-            [self.myController.navigationController pushViewController:chatVC animated:YES];
+
+    EMConversation *converation = [_messageDataSource objectAtIndex:indexPath.row];
+    
+    NSDictionary *ext = converation.latestMessageFromOthers.ext;
+    if ([ext[@"server_flag"] boolValue]) {
+        //非聊天消息
+        if (FRIEND_APPLY == [ext[@"type"] integerValue]) {
+            [_myController.navigationController pushViewController:[[XYFriendApplyViewController alloc] initWithChatter:converation.chatter] animated:YES needHiddenBottomBar:YES];
+        } else if (GROUP_APPLY == [ext[@"type"] integerValue]) {
+            [_myController.navigationController pushViewController:[[XYGroupApplyViewController alloc] initWithGroupId:[NSString stringWithFormat:@"%d", [ext[@"group_id"] intValue]] chatter:converation.chatter] animated:YES needHiddenBottomBar:YES];
         }
+        [converation markAllMessagesAsRead:YES];
+    } else {
+        MessageTableViewCell * cell = (MessageTableViewCell *)[self cellForRowAtIndexPath:indexPath];
+        self.myController.hidesBottomBarWhenPushed = YES;
+        ChatViewController * chatVC = [[ChatViewController alloc] initWithChatter:cell.conversation.chatter isGroup:converation.conversationType];
+        chatVC.isSystemMessage = NO;
+        chatVC.studentDic = [cell.studentDic  mutableCopy];
+        [self.myController.navigationController pushViewController:chatVC animated:YES];
     }
+    
 }
 
 

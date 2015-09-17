@@ -22,7 +22,7 @@
 #define kLabelHeight                    20
 #define kTableViewHeight                290
 
-@interface XYSendMessageViewController ()<DXMessageToolBarDelegate,SendMessageTableViewDelegate,DXMessageToolBarDelegate>
+@interface XYSendMessageViewController ()<SendMessageTableViewDelegate,DXMessageToolBarDelegate>
 
 @property(nonatomic,strong)SendMessageTableView * sendMessageTableView;
 
@@ -60,7 +60,7 @@
     _sendPersonLabel = [[UILabel alloc] init];
     _sendPersonLabel.backgroundColor = [UIColor clearColor];
     Author * model = _sendPersonsArr[0];
-    _sendPersonLabel.text = [NSString stringWithFormat:@"%@等%ld人",model.name,_sendPersonsArr.count];
+    _sendPersonLabel.text = [NSString stringWithFormat:@"%@等%d人",model.name,_sendPersonsArr.count];
     _sendPersonLabel.font = CONTENT_FONT(13);
     [backView addSubview:_sendPersonLabel];
     [_sendPersonLabel mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -94,6 +94,8 @@
     
 }
 
+#pragma mark - 初始化输入框
+
 - (void)initToolBar {
     _chatToolBar = [[DXMessageToolBar alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height - [DXMessageToolBar defaultHeight], self.view.frame.size.width, KBOTTOMHEIGHT)];
     _chatToolBar.autoresizingMask = UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleRightMargin;
@@ -124,6 +126,8 @@
         [self sendTextMessage:text];
     }
 }
+
+#pragma mark - 点击发送事件
 
 -(void)sendTextMessage:(NSString *)textMessage
 {
@@ -156,6 +160,11 @@
         [conversation removeMessage:tempMessage];
     }
     [YUtils showTitle:@"发送成功"];
+}
+
+#pragma mark - DXMessageToolBarDelegate
+- (void)didChangeFrameToHeight:(CGFloat)toHeight {
+    
 }
 
 - (void)didReceiveMemoryWarning {

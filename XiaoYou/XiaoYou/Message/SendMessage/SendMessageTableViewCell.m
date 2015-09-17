@@ -25,29 +25,33 @@ NSString *const kSendMessageTableViewCell = @"SendMessageTableViewCellId";
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
-        
-        _backView = [[UIView alloc] init];
-        _backView.backgroundColor = [UIColor hexChangeFloat:@"465a65"];
-        [self.contentView addSubview:_backView];
-        [_backView mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.left.right.mas_equalTo(0);
-            make.top.mas_equalTo(kCellLineHeight);
-            make.bottom.mas_equalTo(-kCellLineHeight);
-        }];
-        
-        _infoLabel = [[UILabel alloc] init];
-        _infoLabel.font = CONTENT_FONT(13);
-        _infoLabel.textColor = [UIColor hexChangeFloat:@"465a65"];
-        _infoLabel.textAlignment = NSTextAlignmentCenter;
-        _infoLabel.backgroundColor = [UIColor whiteColor];
-        [_backView addSubview:_infoLabel];
-        [_infoLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.top.mas_equalTo(kCellLineHeight);
-            make.bottom.mas_equalTo(-kCellLineHeight);
-            make.left.right.mas_equalTo(0);
-        }];
+        [self setUpUI];
     }
     return self;
+}
+
+-(void)setUpUI
+{
+    _backView = [[UIView alloc] init];
+    _backView.backgroundColor = [UIColor hexChangeFloat:@"465a65"];
+    [self.contentView addSubview:_backView];
+    [_backView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.right.mas_equalTo(0);
+        make.top.mas_equalTo(kCellLineHeight);
+        make.bottom.mas_equalTo(-kCellLineHeight);
+    }];
+    
+    _infoLabel = [[UILabel alloc] init];
+    _infoLabel.font = CONTENT_FONT(13);
+    _infoLabel.textColor = [UIColor hexChangeFloat:@"465a65"];
+    _infoLabel.textAlignment = NSTextAlignmentCenter;
+    _infoLabel.backgroundColor = [UIColor whiteColor];
+    [_backView addSubview:_infoLabel];
+    [_infoLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.mas_equalTo(kCellLineHeight);
+        make.bottom.mas_equalTo(-kCellLineHeight);
+        make.left.right.mas_equalTo(0);
+    }];
 }
 
 -(void)setCellInfo:(NSString *) text

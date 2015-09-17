@@ -95,6 +95,7 @@ NSString *const kXYGroupInfoDetailViewController = @"XYGroupInfoDetailViewContro
     }];
 }
 
+#pragma mark - 点击底部button事件
 -(void)clickBottomButton
 {
     if ([self.navigationController.viewControllers[self.navigationController.viewControllers.count-2] isKindOfClass:[ChatViewController class]]) {
@@ -106,7 +107,7 @@ NSString *const kXYGroupInfoDetailViewController = @"XYGroupInfoDetailViewContro
         [self.navigationController pushViewController:chatVC animated:YES needHiddenBottomBar:YES];
     }
 }
-
+#pragma mark - 分享ActionSheet
 -(void)showShareActionSheet
 {
     LinkManModel * model = [[ContactManager sharedInstance] getContactsListData];
@@ -139,6 +140,7 @@ NSString *const kXYGroupInfoDetailViewController = @"XYGroupInfoDetailViewContro
     
 }
 
+#pragma mark - 导航返回按钮点击事件
 -(void)back
 {
     [self.navigationController popViewControllerAnimated:YES];

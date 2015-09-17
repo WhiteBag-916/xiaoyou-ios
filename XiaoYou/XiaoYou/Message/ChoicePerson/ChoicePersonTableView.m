@@ -31,6 +31,8 @@
     return self;
 }
 
+#pragma mark - 刷新界面
+
 -(void)refreshTableView:(NSMutableArray *) dataSouceArr
 {
     [_dataSouceArr removeAllObjects];
@@ -58,6 +60,7 @@
     [self reloadData];
 }
 
+#pragma mark - UITableViewDataSource和UITableViewDataDelegate
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {

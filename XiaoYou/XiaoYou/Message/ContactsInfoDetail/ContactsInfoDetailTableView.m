@@ -16,6 +16,7 @@
 #import "ProfilePublishViewController.h"
 #import "ContactManager.h"
 #import "YUtils+HUD.h"
+#import "SDPhotoBrowser.h"
 
 #define kHeaderViewHeight              90
 #define kHeadWidthAndHeight            46
@@ -27,8 +28,9 @@
 #define kFlagImageViewHeight           13
 
 
-@interface ContactsInfoDetailTableView ()<UITableViewDataSource,UITableViewDelegate>
+@interface ContactsInfoDetailTableView ()<UITableViewDataSource,UITableViewDelegate,SDPhotoBrowserDelegate>
 
+@property (nonatomic, strong) UIView *faceContainer;
 @property (strong, nonatomic)  UIImageView *headImageView;
 @property (strong, nonatomic)  UILabel *nameLabel;
 @property (strong, nonatomic)  UILabel *flagLabel;
@@ -60,6 +62,7 @@
     return self;
 }
 
+#pragma mark - 刷新界面
 -(void)refreshTableView:(ProfileInfo *) model
 {
     _model = model;
@@ -78,18 +81,30 @@
 -(void)setUpHeaderView
 {
     UIView * backView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, kHeaderViewHeight)];
-    //头像
-    _headImageView = [[UIImageView alloc] init];
-    _headImageView.layer.cornerRadius = kHeadCornerRadius;
-    _headImageView.clipsToBounds = YES;
-    _headImageView.backgroundColor = [UIColor clearColor];
-    [_headImageView setFaceImageWithUrl:_model.headPic];
-    [backView addSubview:_headImageView];
-    [_headImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+    
+    UITapGestureRecognizer * gestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(clickedHeadImageVIew)];
+    //放大头像
+    _faceContainer = [[UIView alloc] init];
+    _faceContainer.backgroundColor = [UIColor clearColor];
+    [backView addSubview:_faceContainer];
+    [_faceContainer mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.mas_equalTo(kPaddingDistance);
         make.centerY.equalTo(backView);
         make.width.height.mas_equalTo(kHeadWidthAndHeight);
     }];
+    //头像
+    _headImageView = [[UIImageView alloc] init];
+    _headImageView.userInteractionEnabled = YES;
+    [_headImageView addGestureRecognizer:gestureRecognizer];
+    _headImageView.layer.cornerRadius = kHeadCornerRadius;
+    _headImageView.clipsToBounds = YES;
+    _headImageView.backgroundColor = [UIColor clearColor];
+    [_headImageView setFaceImageWithUrl:_model.headPic];
+    [_faceContainer addSubview:_headImageView];
+    [_headImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.right.top.bottom.mas_equalTo(0);
+    }];
+    
     //姓名
     _nameLabel = [[UILabel alloc] init];
     _nameLabel.font = CONTENT_FONT(14);
@@ -201,6 +216,8 @@
     
 }
 
+#pragma mark - UITableViewDataSource和UITableViewDataDelegate
+
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     return 1;
@@ -219,7 +236,7 @@
     
     ContactsInfoDetailTableViewCell * cell = [self dequeueReusableCellWithIdentifier:kContactsInfoDetailTableViewCell forIndexPath:indexPath];
     
-    NSString * indexStr = [NSString stringWithFormat:@"%ld",indexPath.row];
+    NSString * indexStr = [NSString stringWithFormat:@"%d",indexPath.row];
     
     if (indexPath.row == 0)
     {
@@ -279,4 +296,26 @@
         }];
     }
 }
+
+#pragma mark - 查看头像大图
+- (void)clickedHeadImageVIew {
+    
+    SDPhotoBrowser *browser = [[SDPhotoBrowser alloc] init];
+    
+    browser.sourceImagesContainerView = _faceContainer;
+    
+    browser.imageCount = 1;
+    
+    browser.currentImageIndex = 0;
+    
+    browser.delegate = self;
+    
+    [browser show];
+}
+
+#pragma mark - SDPhotoBrowser
+- (UIImage *)photoBrowser:(SDPhotoBrowser *)browser placeholderImageForIndex:(NSInteger)index {
+    return _headImageView.image;
+}
+
 @end

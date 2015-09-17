@@ -31,6 +31,7 @@
     if (self) {
         self.dataSource = self;
         self.delegate = self;
+        //cell的分割线
         self.separatorStyle = NO;
 
         [self registerClass:[NormalSystemMessageTableViewCell class] forCellReuseIdentifier:kNormalSystemMessageTableViewCell];
@@ -116,12 +117,6 @@
    
 }
 
--(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    
-  
-}
-
 // 得到最后消息文字或者类型
 -(NSString *)subTitleMessageByConversation:(EMMessage *)model
 {
@@ -175,19 +170,5 @@
     }
     
 }
-
--(NSDictionary *)transformDic:(NSDictionary *) dic
-{
-    NSString * gid = dic[@"group_id"];
-    NSString * groupName = dic[@"group_name"];
-    NSString * groupIcon = dic[@"group_icon"];
-    NSMutableDictionary * newDic = [[NSMutableDictionary alloc] initWithDictionary:dic];
-    [newDic setObject:gid forKey:@"gid"];
-    [newDic setObject:groupName forKey:@"name"];
-    [newDic setObject:groupIcon forKey:@"icon"];
-    return newDic;
-}
-
-
 
 @end

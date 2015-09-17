@@ -18,4 +18,6 @@
 
 - (void)initPerfectNC;
 
+- (void)initChooseSchoolNC;
+
 @end

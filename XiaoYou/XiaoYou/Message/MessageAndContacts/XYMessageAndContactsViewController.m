@@ -20,6 +20,7 @@
 #import "ContactManager.h"
 #import "LinkManModel.h"
 #import "ContactManager.h"
+#import "YModel+ActionMessage.h"
 
 @interface XYMessageAndContactsViewController ()<IChatManagerDelegate>
 @property (strong, nonatomic) UIView * navigationView;
@@ -34,7 +35,23 @@
 
 @implementation XYMessageAndContactsViewController
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshMeesageRes:) name:kNotification_Refresh_Message object:nil];
+    [self refreshDataSource];
+    [[MessageManager sharedInstance] setupUnreadMessageCount];
+}
 
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+-(void)viewWillLayoutSubviews
+{
+    self.hidesBottomBarWhenPushed = NO;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -48,13 +65,12 @@
     [[ContactManager sharedInstance] getContactsListData:^(YActionMessage *message) {
         YLogD(@"%@",message);
         if (message.isSuccess) {
-//            LinkManModel * model = message.object;
             
             [weakSelf.contactsTableView refreshTableView:[[ContactManager sharedInstance] getContactsListData]];
         }
     }];
 }
-
+#pragma mark - 删除数据库中空会话
 - (void)removeEmptyConversationsFromDB
 {
     NSArray *conversations = [[EaseMob sharedInstance].chatManager conversations];
@@ -72,48 +88,25 @@
     }
 }
 
-
-- (void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshMeesageRes:) name:kNotification_Refresh_Message object:nil];
-    [self refreshDataSource];
-    [[MessageManager sharedInstance] setupUnreadMessageCount];
-    
-
-}
-
-- (void)viewWillDisappear:(BOOL)animated {
-    [super viewWillDisappear:animated];
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
-}
-
+#pragma mark - 刷新消息
 - (void)refreshMeesageRes:(NSNotification *)notification {
     EMError *error = [notification userInfo][kNotification_Request_Error];
     if (nil == error) {
         [self refreshDataSource];
     } else {
         switch (error.errorCode) {
-            case EMErrorServerNotReachable:
-                TTAlertNoTitle(NSLocalizedString(@"error.connectServerFail", @"Connect to the server failed!"));
-                break;
-            case EMErrorServerDuplicatedAccount:
-                TTAlertNoTitle(NSLocalizedString(@"register.repeat", @"You registered user already exists!"));
-                break;
             case EMErrorNetworkNotConnected:
+            case EMErrorServerTimeout:
                 [YUtils showTitle:@"无网络连接"];
                 break;
-            case EMErrorServerTimeout:
-                TTAlertNoTitle(NSLocalizedString(@"error.connectServerTimeout", @"Connect to the server timed out!"));
-                break;
             default:
-                TTAlertNoTitle(NSLocalizedString(@"register.fail", @"Registration failed"));
+                [[NSNotificationCenter defaultCenter] postNotificationName:kNotification_Server_Token_Fail object:@{@"des":@"登录失败"}];
                 break;
         }
     }
 }
 
-//刷新数据源
+#pragma mark - 刷新数据源
 -(void)refreshDataSource
 {
     [[EaseMob sharedInstance].chatManager loadAllConversationsFromDatabaseWithAppend2Chat:YES];
@@ -174,13 +167,7 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
--(void)viewWillLayoutSubviews
-{
-    self.hidesBottomBarWhenPushed = NO;
-}
-
 #pragma mark - setUpUI方法
-
 -(void)setUpUI
 {
     //switch
@@ -209,7 +196,6 @@
 }
 
 #pragma mark - NavigationBar点击方法
-
 //改变switch
 - (void)changeSwitchView:(CommonSwitchType)type;
 {

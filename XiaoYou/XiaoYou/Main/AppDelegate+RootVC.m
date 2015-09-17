@@ -16,6 +16,7 @@
 #import "YUtils+HUD.h"
 #import "YModel+ActionMessage.h"
 #import "PerfectInformationViewController.h"
+#import "LoginWaitingViewController.h"
 
 @implementation AppDelegate(RootVC)
 
@@ -31,11 +32,15 @@
     NSString *token = [[NSUserDefaults standardUserDefaults] objectForKey:kShareData_Token];
     if (token.length > 0) {
         //初始化登录数据
-        [[ProvisionManager sharedInstance] initLoginData];
-        //抛登录成功通知
-        [[YManagerCenter defaultCenter] notifyAppLogined:nil];
-        
-        [self initTabBarNC];
+        BOOL isSuccess = [[ProvisionManager sharedInstance] initLoginData];
+        //如果初始化失败，表示文件被删除
+        if (isSuccess) {
+            //抛登录成功通知
+            [[YManagerCenter defaultCenter] notifyAppLogined:nil];
+            [self initTabBarNC];
+        } else {
+            [self initLoginWaitingNC];
+        }
     } else {
         [self initChooseSchoolNC];
     }
@@ -63,6 +68,12 @@
             [YUtils showTitle:note.object[@"des"]];
         });
     }
+}
+
+- (void)initLoginWaitingNC
+{
+    UINavigationController * home = [[UINavigationController alloc] initWithRootViewController:[[LoginWaitingViewController alloc] init]];
+    self.window.rootViewController = home;
 }
 
 - (void)initChooseSchoolNC

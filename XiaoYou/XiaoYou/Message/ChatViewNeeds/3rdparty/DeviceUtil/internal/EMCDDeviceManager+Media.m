@@ -116,10 +116,10 @@ typedef NS_ENUM(NSInteger, EMAudioSession){
     }
      */
     
-    BOOL isNeedSetActive = YES;
+//    BOOL isNeedSetActive = YES;
     if ([self isRecording]) {
         [EMAudioRecorderUtil cancelCurrentRecording];
-        isNeedSetActive = NO;
+//        isNeedSetActive = NO;
     }
     
     [self setupAudioSessionCategory:EM_AUDIORECORDER

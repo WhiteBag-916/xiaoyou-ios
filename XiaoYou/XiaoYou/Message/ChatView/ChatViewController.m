@@ -322,7 +322,7 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
-//    [super viewWillAppear:animated];
+    [super viewWillAppear:animated];
     
 //    [super viewWillAppear:animated navigationBarHidden:NO tabBarHidden:YES];
     

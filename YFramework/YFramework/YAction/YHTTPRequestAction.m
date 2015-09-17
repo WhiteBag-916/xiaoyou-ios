@@ -14,7 +14,7 @@ NSString *const kAsyncQueueTypeYHTTPRequestAction = @"kAsyncQueueTypeYHTTPReques
 static int const kAsyncQueueTypeHTTPRequestActionMaxConcurrentOperationCount = 5;
 
 @interface YHTTPRequestAction ()
-@property (nonatomic,strong) YHttpRequest *httpRequest;
+//@property (nonatomic,strong) YHttpRequest *httpRequest;
 @end
 
 @implementation YHTTPRequestAction
@@ -46,7 +46,7 @@ static int const kAsyncQueueTypeHTTPRequestActionMaxConcurrentOperationCount = 5
 {
     [super cancel];
     [YQueue cancelOpertionsWithName:self.type];
-    [self.httpRequest stop];
+//    [self.httpRequest stop];
 //    [YQueue dispatchInMainQueueWithBlock:^{
 //        YActionMessage *message = [[YActionMessage alloc] initWithType:NSStringFromClass([self class]) errorCode:RequestCancelledErrorType desc:@"The request was cancelled" object:nil];
 //        self.completionBlock(message);
@@ -56,7 +56,7 @@ static int const kAsyncQueueTypeHTTPRequestActionMaxConcurrentOperationCount = 5
 
 - (void)setTimeOutSeconds:(NSTimeInterval) timeout
 {
-    self.httpRequest.timeout = timeout;
+//    self.httpRequest.timeout = timeout;
 }
 
 #pragma mark - Http 请求封装
@@ -69,12 +69,20 @@ static int const kAsyncQueueTypeHTTPRequestActionMaxConcurrentOperationCount = 5
               receivedProgress:(YHTTPRequstProgressBlock)receivedProgress
                   sentProgress:(YHTTPRequstProgressBlock)sentProgress
 {
-  self.httpRequest = [YHttpRequest requestWithURL:URLString type:type parameters:parameters];
-  [self.httpRequest startWithBlockSuccess:success
-                                  failure:failure
-                         receivedProgress:receivedProgress
-                             sentProgress:sentProgress];
-  return self.httpRequest;
+//  self.httpRequest = [YHttpRequest requestWithURL:URLString type:type parameters:parameters];
+//  [self.httpRequest startWithBlockSuccess:success
+//                                  failure:failure
+//                         receivedProgress:receivedProgress
+//                             sentProgress:sentProgress];
+//  return self.httpRequest;
+    YHttpRequest *httpRequest = [YHttpRequest requestWithURL:URLString
+                                                        type:type
+                                                  parameters:parameters];
+    [httpRequest startWithBlockSuccess:success
+                               failure:failure
+                      receivedProgress:receivedProgress
+                          sentProgress:sentProgress];
+    return httpRequest;
 }
 
 - (YHttpRequest *)GET:(NSString *)URLString

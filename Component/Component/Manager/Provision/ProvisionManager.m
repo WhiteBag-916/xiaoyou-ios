@@ -81,6 +81,8 @@ DEF_SINGLETON(ProvisionManager);
 {
     //清理数据
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:kShareData_Token];
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:kShareData_StudentNo];
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:kShareData_SchoolCode];
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:kShareData_UnreadAlterCount];
     
     _loginResp = nil;
@@ -99,9 +101,16 @@ DEF_SINGLETON(ProvisionManager);
                                   userInfo:nil];
 }
 
-- (void)initLoginData {
+- (BOOL)initLoginData {
     NSString *cachePath = [[YDirectory fileCache] stringByAppendingString:NSStringFromClass([LoginResp class])];
-    self.loginResp = [LoginResp instanceWithFile:cachePath];
+    if ([YDirectory isExistsPath:cachePath]) {
+        //如果文件存在
+        self.loginResp = [LoginResp instanceWithFile:cachePath];
+        
+        return YES;
+    }
+    
+    return NO;
 }
 
 //更新个人常用信息
@@ -227,6 +236,8 @@ DEF_SINGLETON(ProvisionManager);
     [self saveLoginInfo];
     //存token
     [[NSUserDefaults standardUserDefaults] setObject:_loginResp.token forKey:kShareData_Token];
+    [[NSUserDefaults standardUserDefaults] setObject:_loginResp.schoolCode forKey:kShareData_SchoolCode];
+    [[NSUserDefaults standardUserDefaults] setObject:_loginResp.studentNo forKey:kShareData_StudentNo];
     
     //抛登录成功
     [[YManagerCenter defaultCenter] notifyAppLogined:nil];

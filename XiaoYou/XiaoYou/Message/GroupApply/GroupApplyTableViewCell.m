@@ -60,149 +60,155 @@ NSString *const kGroupApplyTableViewCell = @"GroupApplyTableViewCellId";
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
         
-        //头像
-        _headImageView = [[YFaceImageView alloc] init];
-        _headImageView.backgroundColor = [UIColor clearColor];
-        _headImageView.layer.cornerRadius = kHeadCornerRadius;
-        _headImageView.clipsToBounds = YES;
-        _headImageView.image = [UIImage imageNamed:@"default_head"];
-        [self.contentView addSubview:_headImageView];
-        [_headImageView mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.left.top.mas_equalTo(kPaddingDistance);
-            make.width.height.mas_equalTo(kHeadImageWidthAndHeight);
-        }];
+        [self setUpUI];
         
-        //昵称
-        _nameLabel = [[UILabel alloc] init];
-        _nameLabel.font = CONTENT_FONT(14);
-        _nameLabel.backgroundColor = [UIColor whiteColor];
-        _nameLabel.text = @"斯提尔伯格";
-        [self.contentView addSubview:_nameLabel];
-        [_nameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.top.mas_equalTo(kPaddingDistance);
-            make.left.equalTo(_headImageView.mas_right).offset(kPaddingDistance);
-            make.width.mas_equalTo(kNameWidth);
-            make.height.mas_equalTo(kNameHeight);
-        }];
-        
-        //性别
-        _sexLabel = [[UILabel alloc] init];
-        _sexLabel.font = CONTENT_FONT(14);
-        _sexLabel.backgroundColor = [UIColor whiteColor];
-        [self.contentView addSubview:_sexLabel];
-        [_sexLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.top.mas_equalTo(kPaddingDistance);
-            make.left.equalTo(_nameLabel.mas_right).offset(kPaddingDistance);
-            make.width.height.mas_equalTo(kSexHeightAndWidth);
-        }];
-        
-        //院系信息
-        _infoLabel = [[UILabel alloc] init];
-        _infoLabel.font = CONTENT_FONT(12);
-        _infoLabel.backgroundColor = [UIColor whiteColor];
-        [self.contentView addSubview:_infoLabel];
-        [_infoLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.left.equalTo(_nameLabel);
-            make.top.equalTo(_nameLabel.mas_bottom).offset(kInfoLabelToNameLabel);
-            make.height.mas_equalTo(kNameHeight);
-            make.right.equalTo(self.contentView.mas_right).offset(-kPaddingDistance);
-        }];
-        
-        //自选标签
-        _flagImageView = [[UIImageView alloc] init];
-        [self.contentView addSubview:_flagImageView];
-        [_flagImageView mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.centerX.equalTo(_headImageView.mas_centerX);
-            make.top.equalTo(_headImageView.mas_bottom).offset(kFlagImageViewToHead);
-            make.width.mas_equalTo(kFlagImageViewWidth);
-            make.height.mas_equalTo(kFlagImageViewHeight);
-        }];
-        
-        [self setIsRelated:YES];
-        
-        _tagContent = [[SKTagView alloc] init];
-        [self addSubview:_tagContent];
-        [_tagContent mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.top.equalTo(_headImageView.mas_bottom).offset(kFlagLabelToHead);
-            make.left.equalTo(_nameLabel.mas_left);
-            make.right.equalTo(self.contentView.mas_right).offset(-kPaddingDistance);
-            make.bottom.equalTo(self.contentView.mas_bottom).offset(-50);
-        }];
-        _tagContent.maxLines = 2;
-        _tagContent.insets = 21;
-        _tagContent.lineSpace = -8;
-        _tagContent.singleLine = false;
-        _tagContent.preferredMaxLayoutWidth = SCALE_NUM(250);
-        
-        //大Button
-        _afterDealButton = [[UIButton alloc] init];
-        _afterDealButton.titleLabel.font = CONTENT_FONT(14);
-        _afterDealButton.tag = BIG_BUTTON;
-        _afterDealButton.backgroundColor = KCOLORGREEN_009688;
-        [_afterDealButton setTitle:@"聊聊呗" forState:UIControlStateNormal];
-        [_afterDealButton addTarget:self action:@selector(clickDealButton:) forControlEvents:UIControlEventTouchUpInside];
-        [self.contentView addSubview:_afterDealButton];
-        [_afterDealButton mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.left.mas_equalTo(kPaddingDistance);
-            make.right.mas_equalTo(-kPaddingDistance);
-            make.top.equalTo(_tagContent.mas_bottom).offset(kPaddingDistance);
-            make.bottom.mas_equalTo(-kPaddingDistance);
-        }];
-        _afterDealButton.hidden = YES;
-        
-        //拒绝
-        _refuseButton = [[UIButton alloc] init];
-        _refuseButton.titleLabel.font = CONTENT_FONT(14);
-        _refuseButton.tag = REFUSE_BUTTON;
-        _refuseButton.backgroundColor = [UIColor hexChangeFloat:@"76a5ad"];
-        [_refuseButton setTitle:@"拒绝" forState:UIControlStateNormal];
-        [_refuseButton addTarget:self action:@selector(clickDealButton:) forControlEvents:UIControlEventTouchUpInside];
-        [self.contentView addSubview:_refuseButton];
-        [_refuseButton mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.left.mas_equalTo(kPaddingDistance);
-            make.width.mas_equalTo((SCREEN_WIDTH - kPaddingDistance*4)/3);
-            make.top.equalTo(_tagContent.mas_bottom).offset(kPaddingDistance);
-            make.bottom.mas_equalTo(-kPaddingDistance);
-        }];
-        //通过
-        _passButton = [[UIButton alloc] init];
-        _passButton.titleLabel.font = CONTENT_FONT(14);
-        _passButton.tag = PASS_BUTTON;
-        _passButton.backgroundColor = KCOLORGREEN_009688;
-        [_passButton setTitle:@"通过" forState:UIControlStateNormal];
-        [_passButton addTarget:self action:@selector(clickDealButton:) forControlEvents:UIControlEventTouchUpInside];
-        [self.contentView addSubview:_passButton];
-        [_passButton mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.centerX.equalTo(self.contentView.mas_centerX);
-            make.width.mas_equalTo((SCREEN_WIDTH - kPaddingDistance*4)/3);
-            make.top.equalTo(_tagContent.mas_bottom).offset(kPaddingDistance);
-            make.bottom.mas_equalTo(-kPaddingDistance);
-        }];
-        //发信
-        _sendButton = [[UIButton alloc] init];
-        _sendButton.titleLabel.font = CONTENT_FONT(14);
-        _sendButton.tag = SEND_BUTTON;
-        _sendButton.backgroundColor = [UIColor hexChangeFloat:@"84ccc9"];
-        [_sendButton setTitle:@"发信" forState:UIControlStateNormal];
-        [_sendButton addTarget:self action:@selector(clickDealButton:) forControlEvents:UIControlEventTouchUpInside];
-        [self.contentView addSubview:_sendButton];
-        [_sendButton mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.right.mas_equalTo(-kPaddingDistance);
-            make.width.mas_equalTo((SCREEN_WIDTH - kPaddingDistance*4)/3);
-            make.top.equalTo(_tagContent.mas_bottom).offset(kPaddingDistance);
-            make.bottom.mas_equalTo(-kPaddingDistance);
-        }];
-        
-        //line
-        UIView *line = [[UIView alloc] init];
-        [self.contentView addSubview:line];
-        [line mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.left.bottom.right.equalTo(self.contentView);
-            make.height.mas_equalTo(1);
-        }];
-        line.backgroundColor = KCOLORGREEN_e6ebea;
     }
     return self;
+}
+
+-(void)setUpUI
+{
+    //头像
+    _headImageView = [[YFaceImageView alloc] init];
+    _headImageView.backgroundColor = [UIColor clearColor];
+    _headImageView.layer.cornerRadius = kHeadCornerRadius;
+    _headImageView.clipsToBounds = YES;
+    _headImageView.image = [UIImage imageNamed:@"default_head"];
+    [self.contentView addSubview:_headImageView];
+    [_headImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.top.mas_equalTo(kPaddingDistance);
+        make.width.height.mas_equalTo(kHeadImageWidthAndHeight);
+    }];
+    
+    //昵称
+    _nameLabel = [[UILabel alloc] init];
+    _nameLabel.font = CONTENT_FONT(14);
+    _nameLabel.backgroundColor = [UIColor whiteColor];
+    _nameLabel.text = @"斯提尔伯格";
+    [self.contentView addSubview:_nameLabel];
+    [_nameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.mas_equalTo(kPaddingDistance);
+        make.left.equalTo(_headImageView.mas_right).offset(kPaddingDistance);
+        make.width.mas_equalTo(kNameWidth);
+        make.height.mas_equalTo(kNameHeight);
+    }];
+    
+    //性别
+    _sexLabel = [[UILabel alloc] init];
+    _sexLabel.font = CONTENT_FONT(14);
+    _sexLabel.backgroundColor = [UIColor whiteColor];
+    [self.contentView addSubview:_sexLabel];
+    [_sexLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.mas_equalTo(kPaddingDistance);
+        make.left.equalTo(_nameLabel.mas_right).offset(kPaddingDistance);
+        make.width.height.mas_equalTo(kSexHeightAndWidth);
+    }];
+    
+    //院系信息
+    _infoLabel = [[UILabel alloc] init];
+    _infoLabel.font = CONTENT_FONT(12);
+    _infoLabel.backgroundColor = [UIColor whiteColor];
+    [self.contentView addSubview:_infoLabel];
+    [_infoLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(_nameLabel);
+        make.top.equalTo(_nameLabel.mas_bottom).offset(kInfoLabelToNameLabel);
+        make.height.mas_equalTo(kNameHeight);
+        make.right.equalTo(self.contentView.mas_right).offset(-kPaddingDistance);
+    }];
+    
+    //自选标签
+    _flagImageView = [[UIImageView alloc] init];
+    [self.contentView addSubview:_flagImageView];
+    [_flagImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerX.equalTo(_headImageView.mas_centerX);
+        make.top.equalTo(_headImageView.mas_bottom).offset(kFlagImageViewToHead);
+        make.width.mas_equalTo(kFlagImageViewWidth);
+        make.height.mas_equalTo(kFlagImageViewHeight);
+    }];
+    
+    [self setIsRelated:YES];
+    
+    _tagContent = [[SKTagView alloc] init];
+    [self addSubview:_tagContent];
+    [_tagContent mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(_headImageView.mas_bottom).offset(kFlagLabelToHead);
+        make.left.equalTo(_nameLabel.mas_left);
+        make.right.equalTo(self.contentView.mas_right).offset(-kPaddingDistance);
+        make.bottom.equalTo(self.contentView.mas_bottom).offset(-50);
+    }];
+    _tagContent.maxLines = 2;
+    _tagContent.insets = 21;
+    _tagContent.lineSpace = -8;
+    _tagContent.singleLine = false;
+    _tagContent.preferredMaxLayoutWidth = SCALE_NUM(250);
+    
+    //大Button
+    _afterDealButton = [[UIButton alloc] init];
+    _afterDealButton.titleLabel.font = CONTENT_FONT(14);
+    _afterDealButton.tag = BIG_BUTTON;
+    _afterDealButton.backgroundColor = KCOLORGREEN_009688;
+    [_afterDealButton setTitle:@"聊聊呗" forState:UIControlStateNormal];
+    [_afterDealButton addTarget:self action:@selector(clickDealButton:) forControlEvents:UIControlEventTouchUpInside];
+    [self.contentView addSubview:_afterDealButton];
+    [_afterDealButton mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.mas_equalTo(kPaddingDistance);
+        make.right.mas_equalTo(-kPaddingDistance);
+        make.top.equalTo(_tagContent.mas_bottom).offset(kPaddingDistance);
+        make.bottom.mas_equalTo(-kPaddingDistance);
+    }];
+    _afterDealButton.hidden = YES;
+    
+    //拒绝
+    _refuseButton = [[UIButton alloc] init];
+    _refuseButton.titleLabel.font = CONTENT_FONT(14);
+    _refuseButton.tag = REFUSE_BUTTON;
+    _refuseButton.backgroundColor = [UIColor hexChangeFloat:@"76a5ad"];
+    [_refuseButton setTitle:@"拒绝" forState:UIControlStateNormal];
+    [_refuseButton addTarget:self action:@selector(clickDealButton:) forControlEvents:UIControlEventTouchUpInside];
+    [self.contentView addSubview:_refuseButton];
+    [_refuseButton mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.mas_equalTo(kPaddingDistance);
+        make.width.mas_equalTo((SCREEN_WIDTH - kPaddingDistance*4)/3);
+        make.top.equalTo(_tagContent.mas_bottom).offset(kPaddingDistance);
+        make.bottom.mas_equalTo(-kPaddingDistance);
+    }];
+    //通过
+    _passButton = [[UIButton alloc] init];
+    _passButton.titleLabel.font = CONTENT_FONT(14);
+    _passButton.tag = PASS_BUTTON;
+    _passButton.backgroundColor = KCOLORGREEN_009688;
+    [_passButton setTitle:@"通过" forState:UIControlStateNormal];
+    [_passButton addTarget:self action:@selector(clickDealButton:) forControlEvents:UIControlEventTouchUpInside];
+    [self.contentView addSubview:_passButton];
+    [_passButton mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerX.equalTo(self.contentView.mas_centerX);
+        make.width.mas_equalTo((SCREEN_WIDTH - kPaddingDistance*4)/3);
+        make.top.equalTo(_tagContent.mas_bottom).offset(kPaddingDistance);
+        make.bottom.mas_equalTo(-kPaddingDistance);
+    }];
+    //发信
+    _sendButton = [[UIButton alloc] init];
+    _sendButton.titleLabel.font = CONTENT_FONT(14);
+    _sendButton.tag = SEND_BUTTON;
+    _sendButton.backgroundColor = [UIColor hexChangeFloat:@"84ccc9"];
+    [_sendButton setTitle:@"发信" forState:UIControlStateNormal];
+    [_sendButton addTarget:self action:@selector(clickDealButton:) forControlEvents:UIControlEventTouchUpInside];
+    [self.contentView addSubview:_sendButton];
+    [_sendButton mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.right.mas_equalTo(-kPaddingDistance);
+        make.width.mas_equalTo((SCREEN_WIDTH - kPaddingDistance*4)/3);
+        make.top.equalTo(_tagContent.mas_bottom).offset(kPaddingDistance);
+        make.bottom.mas_equalTo(-kPaddingDistance);
+    }];
+    
+    //line
+    UIView *line = [[UIView alloc] init];
+    [self.contentView addSubview:line];
+    [line mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.bottom.right.equalTo(self.contentView);
+        make.height.mas_equalTo(1);
+    }];
+    line.backgroundColor = KCOLORGREEN_e6ebea;
 }
 
 -(void)setCellInfo:(ApplicantList *)applicantList
@@ -240,8 +246,8 @@ NSString *const kGroupApplyTableViewCell = @"GroupApplyTableViewCellId";
 
 }
 
+#pragma mark - 更新buttonshow
 
-//更新buttonshow
 - (void)updateButtonShow {
     if (0 == _applicantList.status) {
         //未处理
@@ -271,6 +277,8 @@ NSString *const kGroupApplyTableViewCell = @"GroupApplyTableViewCellId";
         //忽略
     }
 }
+
+#pragma mark - 点击处理事件
 
 -(void)clickDealButton:(UIButton *) button
 {
@@ -315,6 +323,7 @@ NSString *const kGroupApplyTableViewCell = @"GroupApplyTableViewCellId";
             break;
     }
 }
+#pragma mark - 跳转至聊天
 
 - (void)toChat
 {
@@ -327,6 +336,8 @@ NSString *const kGroupApplyTableViewCell = @"GroupApplyTableViewCellId";
     
 }
 
+#pragma mark - 跳转至集体发信
+
 - (void)goToCollectiveMessage
 {
     XYSendMessageViewController * sendMessageViewController = [[XYSendMessageViewController alloc] init];
@@ -334,6 +345,7 @@ NSString *const kGroupApplyTableViewCell = @"GroupApplyTableViewCellId";
     sendMessageViewController.groupId = [NSString stringWithFormat:@"%g",_applicantList.groupId];
     [self.superVC.navigationController pushViewController:sendMessageViewController animated:YES needHiddenBottomBar:YES];
 }
+#pragma mark - 判断标签
 
 - (void)setIsRelated:(BOOL)isRelated {
     if (isRelated) {

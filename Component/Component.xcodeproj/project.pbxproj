@@ -51,7 +51,6 @@
 		20E1C6721B89EB9F008BA9D6 /* ReceiveAuthCodeAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 20E1C6711B89EB9F008BA9D6 /* ReceiveAuthCodeAction.m */; };
 		20E1C67E1B89F148008BA9D6 /* FeedDetailAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 20E1C67D1B89F148008BA9D6 /* FeedDetailAction.m */; };
 		20E1C6811B89F2C8008BA9D6 /* FeedListAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 20E1C6801B89F2C8008BA9D6 /* FeedListAction.m */; };
-		20E341801B720A54008CADC3 /* ProfileDao.m in Sources */ = {isa = PBXBuildFile; fileRef = 20E3417F1B720A54008CADC3 /* ProfileDao.m */; };
 		20E366411B92F7DC00A22FFE /* RegAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 20E366401B92F7DC00A22FFE /* RegAction.m */; };
 		3339625C1B95575400DD0A6D /* SuggestListAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 3339625B1B95575400DD0A6D /* SuggestListAction.m */; };
 /* End PBXBuildFile section */
@@ -174,8 +173,6 @@
 		20E1C67D1B89F148008BA9D6 /* FeedDetailAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedDetailAction.m; sourceTree = "<group>"; };
 		20E1C67F1B89F2C8008BA9D6 /* FeedListAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedListAction.h; sourceTree = "<group>"; };
 		20E1C6801B89F2C8008BA9D6 /* FeedListAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedListAction.m; sourceTree = "<group>"; };
-		20E3417E1B720A54008CADC3 /* ProfileDao.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileDao.h; sourceTree = "<group>"; };
-		20E3417F1B720A54008CADC3 /* ProfileDao.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileDao.m; sourceTree = "<group>"; };
 		20E341811B720A80008CADC3 /* ProfileSQL.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProfileSQL.h; sourceTree = "<group>"; };
 		20E3663F1B92F7DC00A22FFE /* RegAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegAction.h; sourceTree = "<group>"; };
 		20E366401B92F7DC00A22FFE /* RegAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegAction.m; sourceTree = "<group>"; };
@@ -258,15 +255,6 @@
 			children = (
 			);
 			path = Message;
-			sourceTree = "<group>";
-		};
-		20859AAE1B64DE3500580ED3 /* Provision */ = {
-			isa = PBXGroup;
-			children = (
-				20E3417E1B720A54008CADC3 /* ProfileDao.h */,
-				20E3417F1B720A54008CADC3 /* ProfileDao.m */,
-			);
-			path = Provision;
 			sourceTree = "<group>";
 		};
 		20DA8B311B8EC4E3007D0CDE /* Utils */ = {
@@ -379,7 +367,6 @@
 				20E1221A1B705D8300F90BD3 /* Feed */,
 				20859AAC1B64DE3500580ED3 /* Contact */,
 				20859AAD1B64DE3500580ED3 /* Message */,
-				20859AAE1B64DE3500580ED3 /* Provision */,
 			);
 			path = Dao;
 			sourceTree = "<group>";
@@ -623,7 +610,6 @@
 				20DA1A5D1B89752000DEF95C /* MyPraisePersonsAction.m in Sources */,
 				20859A941B64C06A00580ED3 /* LoginAction.m in Sources */,
 				20E193F41B8AF78F00FD7B3D /* ContactsListAction.m in Sources */,
-				20E341801B720A54008CADC3 /* ProfileDao.m in Sources */,
 				20E1C66F1B89EB8D008BA9D6 /* ModifyPasswordAction.m in Sources */,
 				20DA8B471B8F5EA0007D0CDE /* ReadByFeedAction.m in Sources */,
 				20DA8B141B8EB91D007D0CDE /* GroupDetailInfoAction.m in Sources */,

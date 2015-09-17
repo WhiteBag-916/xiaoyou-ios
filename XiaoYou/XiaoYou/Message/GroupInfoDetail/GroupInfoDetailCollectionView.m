@@ -51,6 +51,7 @@
     return self;
 }
 
+#pragma mark - GroupInfoCollectionViewCellDelegate
 - (void)showDel:(BOOL)show {
     if (_isShowDel != show) {
         _isShowDel = show;
@@ -66,6 +67,7 @@
     }
 }
 
+#pragma mark - 刷新界面
 -(void)refreshTableView:(GroupDetail *) model
 {
     [_dataSourceArr removeAllObjects];
@@ -82,7 +84,7 @@
     [self reloadData];
 }
 
-
+#pragma mark - UICollectionViewDataSource和UICollectionViewDelegate
 -(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
 {
     return 1;

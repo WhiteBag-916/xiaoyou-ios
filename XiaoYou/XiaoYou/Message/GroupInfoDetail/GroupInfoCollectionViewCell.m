@@ -35,40 +35,47 @@ NSString *const kGroupInfoCollectionViewCell = @"GroupInfoCollectionViewCellId";
 {
     self = [super initWithFrame:frame];
     if (self) {
-        _headImageView = [[UIImageView alloc] init];
-        _headImageView.userInteractionEnabled = YES;
-        [self.contentView addSubview:_headImageView];
-        [_headImageView mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.top.mas_equalTo(kHeadImageViewToTop);
-            make.centerX.equalTo(self.contentView);
-            make.height.width.mas_equalTo(kHeadImageViewHeight);
-        }];
         
-        _longPressGestureRecognizer = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longPress:)];
-        _longPressGestureRecognizer.minimumPressDuration = .5;
-        [_headImageView addGestureRecognizer:_longPressGestureRecognizer];
+        [self setUpUI];
         
-        _deleteButton = [[UIButton alloc] init];
-        [_deleteButton setBackgroundImage:[UIImage imageNamed:@"delete-member"] forState:UIControlStateNormal];
-        [_deleteButton addTarget:self action:@selector(clickdeleteButton) forControlEvents:UIControlEventTouchUpInside];
-        [self.contentView addSubview:_deleteButton];
-        [_deleteButton mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.top.left.mas_equalTo(0);
-            make.height.width.mas_equalTo(kDeleteButtonHeightAndWodth);
-        }];
-        _deleteButton.hidden = YES;
-        
-        _nameLabel = [[UILabel alloc] init];
-        _nameLabel.font = CONTENT_FONT(12);
-        _nameLabel.textAlignment = NSTextAlignmentCenter;
-        _nameLabel.backgroundColor = [UIColor clearColor];
-        [self.contentView addSubview:_nameLabel];
-        [_nameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.top.equalTo(_headImageView.mas_bottom).offset(kNameLabelToHeadImage);
-            make.left.right.bottom.mas_equalTo(0);
-        }];
     }
     return self;
+}
+
+-(void)setUpUI
+{
+    _headImageView = [[UIImageView alloc] init];
+    _headImageView.userInteractionEnabled = YES;
+    [self.contentView addSubview:_headImageView];
+    [_headImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.mas_equalTo(kHeadImageViewToTop);
+        make.centerX.equalTo(self.contentView);
+        make.height.width.mas_equalTo(kHeadImageViewHeight);
+    }];
+    
+    _longPressGestureRecognizer = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longPress:)];
+    _longPressGestureRecognizer.minimumPressDuration = .5;
+    [_headImageView addGestureRecognizer:_longPressGestureRecognizer];
+    
+    _deleteButton = [[UIButton alloc] init];
+    [_deleteButton setBackgroundImage:[UIImage imageNamed:@"delete-member"] forState:UIControlStateNormal];
+    [_deleteButton addTarget:self action:@selector(clickdeleteButton) forControlEvents:UIControlEventTouchUpInside];
+    [self.contentView addSubview:_deleteButton];
+    [_deleteButton mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.left.mas_equalTo(0);
+        make.height.width.mas_equalTo(kDeleteButtonHeightAndWodth);
+    }];
+    _deleteButton.hidden = YES;
+    
+    _nameLabel = [[UILabel alloc] init];
+    _nameLabel.font = CONTENT_FONT(12);
+    _nameLabel.textAlignment = NSTextAlignmentCenter;
+    _nameLabel.backgroundColor = [UIColor clearColor];
+    [self.contentView addSubview:_nameLabel];
+    [_nameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(_headImageView.mas_bottom).offset(kNameLabelToHeadImage);
+        make.left.right.bottom.mas_equalTo(0);
+    }];
 }
 
 -(void)setCellInfo:(NSDictionary *) groupDic
@@ -104,6 +111,7 @@ NSString *const kGroupInfoCollectionViewCell = @"GroupInfoCollectionViewCellId";
     
 }
 
+#pragma mark - 长按cell事件
 -(void)longPress:(UILongPressGestureRecognizer *)gesture
 {
     if(gesture.state == UIGestureRecognizerStateBegan)
@@ -114,7 +122,7 @@ NSString *const kGroupInfoCollectionViewCell = @"GroupInfoCollectionViewCellId";
     }
 
 }
-
+#pragma mark - 点击删除按钮事件
 -(void)clickdeleteButton
 {
     NSLog(@"delete");

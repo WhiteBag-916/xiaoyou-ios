@@ -58,7 +58,7 @@ DEF_SINGLETON(MessageManager);
     return self;
 }
 
-
+//获取聊天列表
 - (void)getMessageListData:(ActionCompleteBlock)block
 {
     MessageListAction * action = [[MessageListAction alloc] init];
@@ -135,7 +135,7 @@ DEF_SINGLETON(MessageManager);
         }
     } onQueue:nil];
 }
-
+//登录环信
 - (void)loginEaseMob {
     [[EaseMob sharedInstance].chatManager asyncLoginWithUsername:[NSString stringWithFormat:@"%@_%@",[YShareData defaultData][kShareData_SchoolCode],[YShareData defaultData][kShareData_StudentNo]] password:[NSString stringWithFormat:@"%@_%@",[YShareData defaultData][kShareData_SchoolCode],[YShareData defaultData][kShareData_StudentNo]] completion:^(NSDictionary *loginInfo, EMError *error) {
         if (!error && loginInfo) {
@@ -225,7 +225,7 @@ DEF_SINGLETON(MessageManager);
     
     return needRefresh;
 }
-
+//接收静默消息
 -(void)didReceiveCmdMessage:(EMMessage *)cmdMessage
 {
     //子线程处理数据
@@ -440,7 +440,7 @@ DEF_SINGLETON(MessageManager);
     
     return needRefresh;
 }
-
+//接收正常消息
 -(void)didReceiveMessage:(EMMessage *)message
 {
     YLogD(@"%@", message.ext);

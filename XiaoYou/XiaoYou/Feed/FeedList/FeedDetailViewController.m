@@ -53,6 +53,7 @@
 }
 
 - (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
     [_feedDetailTable loadDataWithFeedId:_feedId];
     [[FeedManager sharedInstance] readByFeed:_feedId block:^(YActionMessage *message) {
         
@@ -136,5 +137,10 @@
 }
 - (void)dealloc {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+#pragma mark - DXMessageToolBarDelegate
+- (void)didChangeFrameToHeight:(CGFloat)toHeight {
+    
 }
 @end

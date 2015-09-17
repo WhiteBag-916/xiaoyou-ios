@@ -151,7 +151,7 @@ DEF_SINGLETON(ContactManager);
         }
     }
 }
-
+//更新消息是否提醒
 - (void)updateIsRemindByUid:(NSString *)uid {
     for (LinkManList * obj in _linkManModel.linkManList) {
         if ([uid isEqualToString:obj.uid])
@@ -185,7 +185,7 @@ DEF_SINGLETON(ContactManager);
 {
     return _linkManModel;
 }
-
+//获取联系人你列表
 -(void)getContactsListData:(ActionCompleteBlock)block
 {
     ContactsListAction * action = [[ContactsListAction alloc] init];
@@ -434,7 +434,7 @@ DEF_SINGLETON(ContactManager);
         block(message);
     }];
 }
-
+//删除联系人
 -(void)delLocalLinkManByUid:(NSString *) delUids
 {
     NSMutableArray * contactsArr = [[NSMutableArray alloc] initWithArray:_linkManModel.linkManList];

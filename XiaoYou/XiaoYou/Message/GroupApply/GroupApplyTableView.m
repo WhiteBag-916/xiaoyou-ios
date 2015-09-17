@@ -34,7 +34,7 @@
     }
     return self;
 }
-
+#pragma mark - 刷新界面
 -(void)refreshTableView:(NSArray *) dataSouceArr
 {
     _groupApplyArray = [NSMutableArray arrayWithArray:dataSouceArr];
@@ -84,6 +84,7 @@
     }];
 }
 
+#pragma mark - UITableViewDataSource和UITableViewDataDelegate
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     return _groupApplyArray.count;

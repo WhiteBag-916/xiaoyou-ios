@@ -57,6 +57,8 @@
     
 }
 
+#pragma mark - 导航栏左侧
+
 - (void)onNavigationLeftButtonClicked {
     if (0 == [_groupApplyTableView getData].count && ![_groupApplyTableView isHeaderRefresh]) {
         [[EaseMob sharedInstance].chatManager removeConversationByChatter:_chatter deleteMessages:YES append2Chat:NO];
@@ -64,6 +66,8 @@
     
     [self.navigationController popViewControllerAnimated:YES];
 }
+
+#pragma mark - 导航栏右侧
 
 - (void)onNavigationRightButtonClicked
 {
@@ -84,6 +88,8 @@
     [sheet show];
 }
 
+#pragma mark - 清空
+
 - (void)removeAllData {
     NSMutableArray * idArr = [NSMutableArray array];
     [[_groupApplyTableView getData] enumerateObjectsUsingBlock:^(ApplicantList * obj, NSUInteger idx, BOOL *stop) {
@@ -95,6 +101,8 @@
         [_groupApplyTableView refreshTableView:[NSArray array]];;
     }];
 }
+
+#pragma mark - 跳转至集体发信
 
 - (void)choicePerson {
     NSArray *dataArray = [_groupApplyTableView getData];
