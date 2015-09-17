@@ -286,6 +286,26 @@
         _respectNum.textColor = KCOLORWHITE_696969;
     }
 }
+- (void)deleteFeed {
+    YCommonAlertView *alert = [[YCommonAlertView alloc] initWithTitle:nil message:@"是否确认删除？" buttonTitles:@"取消",@"确认", nil];
+    [alert clickedButtonHandler:^(NSInteger index) {
+        [alert hide];
+        if (index == 1) {
+            [[FeedManager sharedInstance] deleteFeed:_shareData[@"feedId"] block:^(YActionMessage *message) {
+                if (message.isSuccess) {
+                    [YUtils showTitle:@"删除成功"];
+                    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                        [[NSNotificationCenter defaultCenter] postNotificationName:KNotification_Refresh_FeedList object:nil];
+                    });
+                } else {
+                    [YUtils showTitle:message.desc];
+                }
+            }];
+        }
+    }];
+    [alert show];
+}
+
 - (void)openShare {
     YActionSheetItem *item1 = [YActionSheetItem itemWithType:YCommonActionSheetItemTypeShareFeed title:@"分享这条动态至" extraData:_shareData];
     
@@ -295,8 +315,17 @@
                                                         block:^(NSInteger checkNum) {
                                                             [YCommonReport report];
                                                         }];
-    
-    YCommonActionSheet *sheet = [[YCommonActionSheet alloc] initWithType:@[item1, item2] title:nil];
+    YActionSheetItem *item3 = [YActionSheetItem itemWithTitle:@"删除"
+                                                         type:YCommonActionSheetItemTypeCommon
+                                                        block:^(NSInteger checkNum) {
+                                                            [self deleteFeed];
+                                                        }];
+    YCommonActionSheet *sheet;
+    if (_isAuthor) {
+        sheet = [[YCommonActionSheet alloc] initWithType:@[item1, item2, item3] title:nil];
+    } else {
+        sheet = [[YCommonActionSheet alloc] initWithType:@[item1, item2] title:nil];
+    }
     [sheet show];
 }
 - (void)openDetail {

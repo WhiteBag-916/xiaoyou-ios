@@ -57,7 +57,7 @@
     
     if (_needRefresh) {
         _needRefresh = false;
-        [_feedListTableView loadData];
+        [self refreshData];
     }
     //避免会被取消
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
@@ -65,7 +65,9 @@
     });
     
 }
-
+- (void)refreshData {
+    [_feedListTableView loadData];
+}
 - (void)viewWillDisappear:(BOOL)animated
 {
     self.hidesBottomBarWhenPushed = NO;
@@ -142,6 +144,7 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(toAddTag) name:kNotification_Push_AddTag object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(toFeedFilter:) name:kNotification_Push_FeedFilter object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(checkUnreadAlterCount) name:KNotification_Update_UnreadAlterCount object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshData) name:KNotification_Refresh_FeedList object:nil];
     
     //侧拉通知
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(openTagListVC:) name:SlideNavigationControllerDidReveal object:nil];
