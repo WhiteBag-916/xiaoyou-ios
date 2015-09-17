@@ -86,7 +86,7 @@
     //mod by xiongchen
     NSString *lastID;
     if (![self isHeaderRefresh]) {
-        lastID = [NSString stringWithFormat:@"%g", [_notifyListArray.lastObject affectId]];
+        lastID = [NSString stringWithFormat:@"%g", [_notifyListArray.lastObject internalBaseClassIdentifier]];
     }
     [[FeedManager sharedInstance] alertList:lastID size:KPAGENUM block:^(YActionMessage *message) {
         if (message.isSuccess) {
