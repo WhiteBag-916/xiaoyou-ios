@@ -466,7 +466,7 @@
 
 #pragma mark - YKeyBoardDlegate
 - (void)keyboardWillShowNotification:(NSNotification *)notification {
-    if ([_codeField isFirstResponder]) {
+    if ([_codeField isFirstResponder]) {        
         [UIView animateWithDuration:0.5 animations:^{
             self.view.transform = CGAffineTransformMakeTranslation(0, -100);
         }];
