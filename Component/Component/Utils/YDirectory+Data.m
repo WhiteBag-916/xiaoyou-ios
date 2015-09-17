@@ -40,13 +40,13 @@
 {
     //所有进入程序需要的文件夹，都在这里创建
     NSString *path = [self fileCache];
-    if (![self isDirectory:path])
+    if (![self isExistsPath:path])
     {
         [[NSFileManager defaultManager] createDirectoryAtPath:path withIntermediateDirectories:YES attributes:nil error:nil];
     }
     
     path = [self newImgCache];
-    if (![self isDirectory:path])
+    if (![self isExistsPath:path])
     {
         [[NSFileManager defaultManager] createDirectoryAtPath:path withIntermediateDirectories:YES attributes:nil error:nil];
     }
@@ -55,7 +55,7 @@
 //删除文件
 + (void)removeFolders:(NSString *)path {
     //所有进入程序需要的文件夹，都在这里创建
-    if ([self isDirectory:path])
+    if ([self isExistsPath:path])
     {
         [[NSFileManager defaultManager] removeItemAtPath:path error:nil];
         
