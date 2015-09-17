@@ -13,6 +13,7 @@
 #import "FeedDetailViewController.h"
 #import "AlertList.h"
 #import "YUtils+HUD.h"
+#import "ProvisionManager.h"
 
 #define KPAGENUM 10
 
@@ -96,6 +97,9 @@
             [_notifyListArray addObjectsFromArray:message.object];
             if ([message.object count] < KPAGENUM) {
                 [self showNoticeNoMoreData];
+                
+                //更新未读数
+                [[ProvisionManager sharedInstance] resetUnreadAlterCount:[_notifyListArray count]];
             }
             [self reloadData];
             
