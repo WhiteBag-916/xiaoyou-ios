@@ -51,7 +51,6 @@
 }
 - (void)initController {
     [self showCustomNavigationCancelButton];
-    [self showCustomNavigationSureButton];
     self.title = @"定义你的标签";
     self.view.backgroundColor = [UIColor whiteColor];
 }
@@ -108,6 +107,7 @@
             
             //传入控件
             [_tagTableView reloadData];
+            [self showCustomNavigationSureButton];
         } else {
             [YUtils showTitle:message.desc];
         }
@@ -129,6 +129,7 @@
             
             //传入控件
             [_tagTableView reloadData];
+            [self showCustomNavigationSureButton];
         } else {
             [YUtils showTitle:message.desc];
         }
