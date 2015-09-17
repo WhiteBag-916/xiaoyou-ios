@@ -155,7 +155,7 @@
     } else if (AssociationsDetailTableViewLikeSection == section) {
         ContactsInfoDetailTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kContactsInfoDetailTableViewCell];
         
-        NSString * indexStr = [NSString stringWithFormat:@"%ld",row];
+        NSString * indexStr = [NSString stringWithFormat:@"%ld",(long)row];
         
         if (0 == row)
         {
