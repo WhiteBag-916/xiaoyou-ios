@@ -39,72 +39,75 @@ NSString *const kApplySuccessSystemMessageTableViewCell = @"ApplySuccessSystemMe
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
-        _headImageView = [[UIImageView alloc] init];
-        _headImageView.layer.cornerRadius = kHeadCornerRadius;
-        _headImageView.clipsToBounds = YES;
-        _headImageView.backgroundColor = [UIColor redColor];
-        [self.contentView addSubview:_headImageView];
-        [_headImageView mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.top.mas_equalTo(3*kPaddingDistance);
-            make.left.mas_equalTo(2*kPaddingDistance);
-            make.width.height.mas_equalTo(kHeadImageViewHeightAndWidth);
-        }];
-        
-        //defaultLabel
-        _defaultLabel = [[UILabel alloc] init];
-        _defaultLabel.textAlignment = NSTextAlignmentCenter;
-        _defaultLabel.textColor = [UIColor whiteColor];
-        _defaultLabel.backgroundColor = [UIColor clearColor];
-        [self.contentView addSubview:_defaultLabel];
-        [_defaultLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.top.mas_equalTo(3*kPaddingDistance);
-            make.left.mas_equalTo(2*kPaddingDistance);
-            make.width.height.mas_equalTo(kHeadImageViewHeightAndWidth);
-        }];
-        
-        _backImageView = [[UIImageView alloc] init];
-        _backImageView.image = [[UIImage imageNamed:@"chat_receiver_bg"] resizableImageWithCapInsets:UIEdgeInsetsMake(20, 24, 30, 24) resizingMode:UIImageResizingModeStretch];;
-        [self.contentView addSubview:_backImageView];
-        [_backImageView mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.top.mas_equalTo(3*kPaddingDistance);
-            make.right.mas_equalTo(-4*kPaddingDistance);
-            make.left.equalTo(_headImageView.mas_right).offset(kPaddingDistance);
-            make.height.mas_equalTo(55);
-        }];
-        
-        _chatButton = [[UIButton alloc] init];
-        [_chatButton setTitle:@"进入群聊" forState:UIControlStateNormal];
-        _chatButton.layer.cornerRadius = 3;
-        _chatButton.clipsToBounds = YES;
-        _chatButton.titleLabel.font = CONTENT_FONT(12);
-        _chatButton.tintColor = [UIColor whiteColor];
-        [_chatButton setBackgroundImage:[UIImage imageNamed:@"contacts_bottom"] forState:UIControlStateNormal];
-        [_chatButton addTarget:self action:@selector(tapChatButton) forControlEvents:UIControlEventTouchUpInside];
-        [self.contentView addSubview:_chatButton];
-        [_chatButton mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.bottom.mas_equalTo(-kPaddingDistance);
-            make.height.mas_equalTo(kChatButtonHeight);
-            make.left.mas_equalTo(_backImageView.mas_left).offset(4*kPaddingDistance);
-            make.right.mas_equalTo(-6*kPaddingDistance);
-        }];
-        
-        _contentLabel = [[UILabel alloc] init];
-        _contentLabel.numberOfLines = 0;
-        _contentLabel.font = CONTENT_FONT(12);
-        _contentLabel.backgroundColor = [UIColor clearColor];
-        [_backImageView addSubview:_contentLabel];
-        [_contentLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.top.mas_equalTo(kBackTopAndBottom);
-            make.left.mas_equalTo(kBackLeft);
-            make.height.mas_equalTo(kPaddingDistance*7);
-            make.right.mas_equalTo(-kBackRight);
-        }];
-        
-        
+        [self setUpUI];
     }
     return self;
 }
 
+-(void)setUpUI
+{
+    //头像
+    _headImageView = [[UIImageView alloc] init];
+    _headImageView.layer.cornerRadius = kHeadCornerRadius;
+    _headImageView.clipsToBounds = YES;
+    _headImageView.backgroundColor = [UIColor redColor];
+    [self.contentView addSubview:_headImageView];
+    [_headImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.mas_equalTo(3*kPaddingDistance);
+        make.left.mas_equalTo(2*kPaddingDistance);
+        make.width.height.mas_equalTo(kHeadImageViewHeightAndWidth);
+    }];
+    
+    //头像上的默认字
+    _defaultLabel = [[UILabel alloc] init];
+    _defaultLabel.textAlignment = NSTextAlignmentCenter;
+    _defaultLabel.textColor = [UIColor whiteColor];
+    _defaultLabel.backgroundColor = [UIColor clearColor];
+    [self.contentView addSubview:_defaultLabel];
+    [_defaultLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.mas_equalTo(3*kPaddingDistance);
+        make.left.mas_equalTo(2*kPaddingDistance);
+        make.width.height.mas_equalTo(kHeadImageViewHeightAndWidth);
+    }];
+    //默认气泡
+    _backImageView = [[UIImageView alloc] init];
+    _backImageView.image = [[UIImage imageNamed:@"chat_receiver_bg"] resizableImageWithCapInsets:UIEdgeInsetsMake(20, 24, 30, 24) resizingMode:UIImageResizingModeStretch];;
+    [self.contentView addSubview:_backImageView];
+    [_backImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.mas_equalTo(3*kPaddingDistance);
+        make.right.mas_equalTo(-4*kPaddingDistance);
+        make.left.equalTo(_headImageView.mas_right).offset(kPaddingDistance);
+        make.height.mas_equalTo(55);
+    }];
+    //进入群聊按钮
+    _chatButton = [[UIButton alloc] init];
+    [_chatButton setTitle:@"进入群聊" forState:UIControlStateNormal];
+    _chatButton.layer.cornerRadius = 3;
+    _chatButton.clipsToBounds = YES;
+    _chatButton.titleLabel.font = CONTENT_FONT(12);
+    _chatButton.tintColor = [UIColor whiteColor];
+    [_chatButton setBackgroundImage:[UIImage imageNamed:@"contacts_bottom"] forState:UIControlStateNormal];
+    [_chatButton addTarget:self action:@selector(tapChatButton) forControlEvents:UIControlEventTouchUpInside];
+    [self.contentView addSubview:_chatButton];
+    [_chatButton mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.bottom.mas_equalTo(-kPaddingDistance);
+        make.height.mas_equalTo(kChatButtonHeight);
+        make.left.mas_equalTo(_backImageView.mas_left).offset(4*kPaddingDistance);
+        make.right.mas_equalTo(-6*kPaddingDistance);
+    }];
+    //文字内容Label
+    _contentLabel = [[UILabel alloc] init];
+    _contentLabel.numberOfLines = 0;
+    _contentLabel.font = CONTENT_FONT(12);
+    _contentLabel.backgroundColor = [UIColor clearColor];
+    [_backImageView addSubview:_contentLabel];
+    [_contentLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.mas_equalTo(kBackTopAndBottom);
+        make.left.mas_equalTo(kBackLeft);
+        make.height.mas_equalTo(kPaddingDistance*7);
+        make.right.mas_equalTo(-kBackRight);
+    }];
+}
 
 -(void)tapChatButton
 {
@@ -112,7 +115,7 @@ NSString *const kApplySuccessSystemMessageTableViewCell = @"ApplySuccessSystemMe
         [_delegat turnToGroupChat:_groupDic];
     }
 }
-
+#pragma mark - 进入群聊点击事件
 -(void)setCellInfo:(EMMessage *) message
 {
     if (message.ext)
@@ -133,7 +136,7 @@ NSString *const kApplySuccessSystemMessageTableViewCell = @"ApplySuccessSystemMe
     
 }
 
-// 得到最后消息文字或者类型
+#pragma mark - 得到最后消息文字或者类型
 -(NSString *)subTitleMessageByConversation:(EMMessage *)model
 {
     NSString *ret = @"";

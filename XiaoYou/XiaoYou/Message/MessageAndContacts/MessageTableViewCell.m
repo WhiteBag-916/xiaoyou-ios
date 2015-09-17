@@ -58,87 +58,93 @@ NSString *const kMessageTableViewCell = @"MessageTableViewCellId";
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
-        self.contentView.backgroundColor = [UIColor clearColor];
-        //头像
-        _headImageView = [[UIImageView alloc] init];
-        _headImageView.backgroundColor = KCOLORGREEN_009688;
-        _headImageView.layer.cornerRadius = kHeadCornerRadius;
-        _headImageView.clipsToBounds = YES;
-        [self.contentView addSubview:_headImageView];
-        [_headImageView mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.top.left.mas_equalTo(kPaddingDistance);
-            make.width.height.mas_equalTo(kHeadWidthAndHeight);
-        }];
-        //defaultLabel
-        _defaultLabel = [[UILabel alloc] init];
-        _defaultLabel.textAlignment = NSTextAlignmentCenter;
-        _defaultLabel.textColor = [UIColor whiteColor];
-        [self.contentView addSubview:_defaultLabel];
-        [_defaultLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.top.mas_equalTo(_headImageView.mas_top).offset(kClassLabelDistance);
-            make.left.mas_equalTo(_headImageView.mas_left).offset(kClassLabelDistance);
-            make.width.height.mas_equalTo(kClassLabelWidthAndHeight);
-        }];
-        //时间
-        _timeLabel = [[UILabel alloc] init];
-        _timeLabel.font = CONTENT_FONT(9);
-        _timeLabel.textAlignment = NSTextAlignmentRight;
-        _timeLabel.backgroundColor = [UIColor clearColor];
-        [self.contentView addSubview:_timeLabel];
-        [_timeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.top.mas_equalTo(kPaddingDistance);
-            make.right.mas_equalTo(-kPaddingDistance);
-            make.width.mas_equalTo(kTimeLabelWidth);
-            make.height.mas_equalTo(kLabelHeightDistacnce);
-        }];
-        //姓名
-        _nameLabel = [[UILabel alloc] init];
-        _nameLabel.font = CONTENT_FONT(14);
-        _nameLabel.backgroundColor = [UIColor clearColor];
-        [self.contentView addSubview:_nameLabel];
-        [_nameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.top.mas_equalTo(kPaddingDistance);
-            make.left.equalTo(_headImageView.mas_right).offset(kPaddingDistance);
-            make.right.equalTo(_timeLabel.mas_left).offset(-kPaddingDistance);
-            make.height.mas_equalTo(kLabelHeightDistacnce);
-        }];
-        //消息数
-        _badgeNumberLabel = [[UILabel alloc] init];
-        _badgeNumberLabel.hidden = YES;
-        _badgeNumberLabel.font = CONTENT_FONT(10);
-        _badgeNumberLabel.textColor = [UIColor whiteColor];
-        _badgeNumberLabel.textAlignment = NSTextAlignmentCenter;
-        _badgeNumberLabel.backgroundColor = KCOLORGREEN_009688;
-        [self.contentView addSubview:_badgeNumberLabel];
-        [_badgeNumberLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.bottom.mas_equalTo(-kPaddingDistance);
-            make.right.equalTo(self.contentView).offset(-kPaddingDistance);
-            make.height.mas_equalTo(kLabelHeightDistacnce);
-            make.width.mas_equalTo(kBadgeWidthDistance);
-        }];
-        //消息
-        _messageLabel = [[UILabel alloc] init];
-        _messageLabel.font = CONTENT_FONT(12);
-        _messageLabel.backgroundColor = [UIColor clearColor];
-        [self.contentView addSubview:_messageLabel];
-        [_messageLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.bottom.mas_equalTo(-kPaddingDistance);
-            make.left.equalTo(_headImageView.mas_right).offset(kPaddingDistance);
-            make.right.equalTo(_badgeNumberLabel.mas_left).offset(-kPaddingDistance);
-            make.height.mas_equalTo(kLabelHeightDistacnce);
-        }];
         
-        UIView * bottomView = [[UIView alloc] init];
-        bottomView.backgroundColor = [UIColor grayColor];
-        bottomView.alpha = 0.6;
-        [self.contentView addSubview:bottomView];
-        [bottomView mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.left.right.bottom.mas_equalTo(0);
-            make.height.mas_equalTo(kBottomLineHeight);
-        }];
+        [self setUpUI];
         
     }
     return self;
+}
+
+-(void)setUpUI
+{
+    self.contentView.backgroundColor = [UIColor clearColor];
+    //头像
+    _headImageView = [[UIImageView alloc] init];
+    _headImageView.backgroundColor = KCOLORGREEN_009688;
+    _headImageView.layer.cornerRadius = kHeadCornerRadius;
+    _headImageView.clipsToBounds = YES;
+    [self.contentView addSubview:_headImageView];
+    [_headImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.left.mas_equalTo(kPaddingDistance);
+        make.width.height.mas_equalTo(kHeadWidthAndHeight);
+    }];
+    //defaultLabel
+    _defaultLabel = [[UILabel alloc] init];
+    _defaultLabel.textAlignment = NSTextAlignmentCenter;
+    _defaultLabel.textColor = [UIColor whiteColor];
+    [self.contentView addSubview:_defaultLabel];
+    [_defaultLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.mas_equalTo(_headImageView.mas_top).offset(kClassLabelDistance);
+        make.left.mas_equalTo(_headImageView.mas_left).offset(kClassLabelDistance);
+        make.width.height.mas_equalTo(kClassLabelWidthAndHeight);
+    }];
+    //时间
+    _timeLabel = [[UILabel alloc] init];
+    _timeLabel.font = CONTENT_FONT(9);
+    _timeLabel.textAlignment = NSTextAlignmentRight;
+    _timeLabel.backgroundColor = [UIColor clearColor];
+    [self.contentView addSubview:_timeLabel];
+    [_timeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.mas_equalTo(kPaddingDistance);
+        make.right.mas_equalTo(-kPaddingDistance);
+        make.width.mas_equalTo(kTimeLabelWidth);
+        make.height.mas_equalTo(kLabelHeightDistacnce);
+    }];
+    //姓名
+    _nameLabel = [[UILabel alloc] init];
+    _nameLabel.font = CONTENT_FONT(14);
+    _nameLabel.backgroundColor = [UIColor clearColor];
+    [self.contentView addSubview:_nameLabel];
+    [_nameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.mas_equalTo(kPaddingDistance);
+        make.left.equalTo(_headImageView.mas_right).offset(kPaddingDistance);
+        make.right.equalTo(_timeLabel.mas_left).offset(-kPaddingDistance);
+        make.height.mas_equalTo(kLabelHeightDistacnce);
+    }];
+    //消息数
+    _badgeNumberLabel = [[UILabel alloc] init];
+    _badgeNumberLabel.hidden = YES;
+    _badgeNumberLabel.font = CONTENT_FONT(10);
+    _badgeNumberLabel.textColor = [UIColor whiteColor];
+    _badgeNumberLabel.textAlignment = NSTextAlignmentCenter;
+    _badgeNumberLabel.backgroundColor = KCOLORGREEN_009688;
+    [self.contentView addSubview:_badgeNumberLabel];
+    [_badgeNumberLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.bottom.mas_equalTo(-kPaddingDistance);
+        make.right.equalTo(self.contentView).offset(-kPaddingDistance);
+        make.height.mas_equalTo(kLabelHeightDistacnce);
+        make.width.mas_equalTo(kBadgeWidthDistance);
+    }];
+    //消息
+    _messageLabel = [[UILabel alloc] init];
+    _messageLabel.font = CONTENT_FONT(12);
+    _messageLabel.backgroundColor = [UIColor clearColor];
+    [self.contentView addSubview:_messageLabel];
+    [_messageLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.bottom.mas_equalTo(-kPaddingDistance);
+        make.left.equalTo(_headImageView.mas_right).offset(kPaddingDistance);
+        make.right.equalTo(_badgeNumberLabel.mas_left).offset(-kPaddingDistance);
+        make.height.mas_equalTo(kLabelHeightDistacnce);
+    }];
+    
+    UIView * bottomView = [[UIView alloc] init];
+    bottomView.backgroundColor = [UIColor grayColor];
+    bottomView.alpha = 0.6;
+    [self.contentView addSubview:bottomView];
+    [bottomView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.right.bottom.mas_equalTo(0);
+        make.height.mas_equalTo(kBottomLineHeight);
+    }];
 }
 
 -(void)setCellInfo:(id) dic
@@ -260,6 +266,7 @@ NSString *const kMessageTableViewCell = @"MessageTableViewCellId";
     
 }
 
+#pragma mark - 通过会话获取对方信息
 -(NSDictionary *)getUserInfo:(EMConversation *) conversation
 {
     LinkManModel * model = [[ContactManager sharedInstance] getContactsListData];
@@ -290,7 +297,7 @@ NSString *const kMessageTableViewCell = @"MessageTableViewCellId";
     return nil;
 }
 
-// 得到最后消息文字或者类型
+#pragma mark - 得到最后消息文字或者类型
 -(NSString *)subTitleMessageByConversation:(EMConversation *)conversation
 {
     NSString *ret = @"";
@@ -328,7 +335,7 @@ NSString *const kMessageTableViewCell = @"MessageTableViewCellId";
     return ret;
 }
 
-// 得到最后消息时间
+#pragma mark - 得到最后消息时间
 -(NSString *)lastMessageTimeByConversation:(EMConversation *)conversation
 {
     NSString *ret = @"";
@@ -340,18 +347,18 @@ NSString *const kMessageTableViewCell = @"MessageTableViewCellId";
     return ret;
 }
 
-// 得到未读消息条数
+#pragma mark - 得到未读消息条数
 - (NSString *)unreadMessageCountByConversation:(EMConversation *)conversation
 {
     NSInteger ret = 0;
     ret = conversation.unreadMessagesCount;
     
-    NSString * count = [NSString stringWithFormat:@"%ld",ret];
+    NSString * count = [NSString stringWithFormat:@"%d",ret];
     
     return  count;
 }
 
-//判断是否为班级
+#pragma mark - 判断是否为班级
 -(BOOL)isClass
 {
     LinkManModel * linkManModel = [[ContactManager sharedInstance] getContactsListData];

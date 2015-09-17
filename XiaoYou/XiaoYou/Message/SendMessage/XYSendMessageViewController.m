@@ -60,7 +60,7 @@
     _sendPersonLabel = [[UILabel alloc] init];
     _sendPersonLabel.backgroundColor = [UIColor clearColor];
     Author * model = _sendPersonsArr[0];
-    _sendPersonLabel.text = [NSString stringWithFormat:@"%@等%ld人",model.name,_sendPersonsArr.count];
+    _sendPersonLabel.text = [NSString stringWithFormat:@"%@等%d人",model.name,_sendPersonsArr.count];
     _sendPersonLabel.font = CONTENT_FONT(13);
     [backView addSubview:_sendPersonLabel];
     [_sendPersonLabel mas_makeConstraints:^(MASConstraintMaker *make) {

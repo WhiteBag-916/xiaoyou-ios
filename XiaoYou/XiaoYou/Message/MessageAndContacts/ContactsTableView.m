@@ -62,6 +62,7 @@
 {
     if (self = [super initWithFrame:frame])
     {
+        //索引部分设置
         self.sectionIndexBackgroundColor = [UIColor whiteColor];
         self.sectionIndexColor = [UIColor blackColor];
         
@@ -99,7 +100,7 @@
     return YES;
 }
 
-
+#pragma mark - 刷新界面
 -(void)refreshTableView:(LinkManModel *) model
 {
     
@@ -266,7 +267,7 @@
 //        make.height.mas_equalTo(kRowHeight);
 //    }];
 }
-
+#pragma mark - headView 点击事件
 -(void)tapGestureRecognizerAction
 {
     XYGroupInfoDetailViewController * groupInfoDetailViewController = [[XYGroupInfoDetailViewController alloc] init];
@@ -276,7 +277,7 @@
     [self.myController.navigationController pushViewController:groupInfoDetailViewController animated:YES needHiddenBottomBar:YES];
 }
 
-
+#pragma mark - 将拿到的数据源转化成自己需要的数据格式
 -(NSMutableArray *)transformDataSouceArr:(NSMutableArray *) dataSouceArr
 {
     NSMutableArray * receiveDataSouceArr = [[NSMutableArray alloc] initWithArray:dataSouceArr];

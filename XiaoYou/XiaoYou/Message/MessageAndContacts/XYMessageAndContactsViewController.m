@@ -34,7 +34,23 @@
 
 @implementation XYMessageAndContactsViewController
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshMeesageRes:) name:kNotification_Refresh_Message object:nil];
+    [self refreshDataSource];
+    [[MessageManager sharedInstance] setupUnreadMessageCount];
+}
 
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+-(void)viewWillLayoutSubviews
+{
+    self.hidesBottomBarWhenPushed = NO;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -48,13 +64,12 @@
     [[ContactManager sharedInstance] getContactsListData:^(YActionMessage *message) {
         YLogD(@"%@",message);
         if (message.isSuccess) {
-//            LinkManModel * model = message.object;
             
             [weakSelf.contactsTableView refreshTableView:[[ContactManager sharedInstance] getContactsListData]];
         }
     }];
 }
-
+#pragma mark - 删除数据库中空会话
 - (void)removeEmptyConversationsFromDB
 {
     NSArray *conversations = [[EaseMob sharedInstance].chatManager conversations];
@@ -72,22 +87,7 @@
     }
 }
 
-
-- (void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshMeesageRes:) name:kNotification_Refresh_Message object:nil];
-    [self refreshDataSource];
-    [[MessageManager sharedInstance] setupUnreadMessageCount];
-    
-
-}
-
-- (void)viewWillDisappear:(BOOL)animated {
-    [super viewWillDisappear:animated];
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
-}
-
+#pragma mark - 刷新消息
 - (void)refreshMeesageRes:(NSNotification *)notification {
     EMError *error = [notification userInfo][kNotification_Request_Error];
     if (nil == error) {
@@ -113,7 +113,7 @@
     }
 }
 
-//刷新数据源
+#pragma mark - 刷新数据源
 -(void)refreshDataSource
 {
     [[EaseMob sharedInstance].chatManager loadAllConversationsFromDatabaseWithAppend2Chat:YES];
@@ -174,13 +174,7 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
--(void)viewWillLayoutSubviews
-{
-    self.hidesBottomBarWhenPushed = NO;
-}
-
 #pragma mark - setUpUI方法
-
 -(void)setUpUI
 {
     //switch
@@ -209,7 +203,6 @@
 }
 
 #pragma mark - NavigationBar点击方法
-
 //改变switch
 - (void)changeSwitchView:(CommonSwitchType)type;
 {
