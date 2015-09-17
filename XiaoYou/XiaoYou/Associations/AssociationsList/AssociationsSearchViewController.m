@@ -104,7 +104,9 @@
 
 #pragma mark - UISearchBarDelegate
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
-    [self searchSchoolByKey];
+    if (![searchBar.text isEmpty]) {
+        [self searchSchoolByKey];
+    }
 }
 
 /*
