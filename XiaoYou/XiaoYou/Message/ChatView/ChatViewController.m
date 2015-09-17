@@ -326,6 +326,15 @@
     
 //    [super viewWillAppear:animated navigationBarHidden:NO tabBarHidden:YES];
     
+    //从详情页返回时重新设置头像
+    LinkManList * model = [[ContactManager sharedInstance] getManByThirdCode:_studentDic[@"thirdCode"]];
+    if (model.icon)
+    {
+        [_studentDic setObject:model.icon forKey:@"icon"];
+        [_headImageView setFaceImageWithUrl:_studentDic[@"icon"]];
+        [self.tableView reloadData];
+    }
+    
     [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:NO] forKey:@"isShowPicker"];
     if (_isScrollToBottom) {
         [self scrollViewToBottom:NO];

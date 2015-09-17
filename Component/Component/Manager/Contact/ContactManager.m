@@ -185,7 +185,7 @@ DEF_SINGLETON(ContactManager);
 {
     return _linkManModel;
 }
-//获取联系人你列表
+//获取联系人列表
 -(void)getContactsListData:(ActionCompleteBlock)block
 {
     ContactsListAction * action = [[ContactsListAction alloc] init];

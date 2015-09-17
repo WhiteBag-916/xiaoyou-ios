@@ -45,6 +45,9 @@
             _uid = model.uid;
             _bottomButton.enabled = YES;
             [self updateStatus:model.friendStatus];
+            
+            
+            [[ContactManager sharedInstance] updateContactsHeadImageByThirdCode:[NSString stringWithFormat:@"%@_%@",model.schoolCode,model.studentNo] headImage:model.headPic];
         } else {
             [YUtils showTitle:message.desc];
         }

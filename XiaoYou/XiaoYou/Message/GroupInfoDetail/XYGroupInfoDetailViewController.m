@@ -19,6 +19,7 @@
 #import "MessageManager.h"
 #import "ContactManager.h"
 #import "ClassList.h"
+#import "YUtils+HUD.h"
 
 #define kNavigationgLeftWidth                   9
 #define kNavigationgLeftHeight                  14
@@ -48,8 +49,10 @@ NSString *const kXYGroupInfoDetailViewController = @"XYGroupInfoDetailViewContro
 
 -(void)viewWillAppear:(BOOL)animated
 {
+    [YUtils showHUDWithTitle];
     [super viewWillAppear:animated];
     [[ContactManager sharedInstance] groupDetail:_gid block:^(YActionMessage *message) {
+        [YUtils hiddenProgressHUD];
         if (message.object) {
             _model = message.object;
             [_groupInfoDetailCollectionView refreshTableView:message.object];
