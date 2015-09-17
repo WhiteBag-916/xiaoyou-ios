@@ -94,6 +94,8 @@
     
 }
 
+#pragma mark - 初始化输入框
+
 - (void)initToolBar {
     _chatToolBar = [[DXMessageToolBar alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height - [DXMessageToolBar defaultHeight], self.view.frame.size.width, KBOTTOMHEIGHT)];
     _chatToolBar.autoresizingMask = UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleRightMargin;
@@ -124,6 +126,8 @@
         [self sendTextMessage:text];
     }
 }
+
+#pragma mark - 点击发送事件
 
 -(void)sendTextMessage:(NSString *)textMessage
 {

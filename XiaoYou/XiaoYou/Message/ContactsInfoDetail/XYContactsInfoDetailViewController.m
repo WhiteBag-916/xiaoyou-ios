@@ -91,6 +91,7 @@
     }];
 }
 
+#pragma mark - 更新bottomButton
 - (void)updateStatus:(NSString *)status {
     if ([status isEqualToString:@"2"]) {
         _bottomButton.enabled = NO;
@@ -100,6 +101,7 @@
     }
 }
 
+#pragma mark - 点击bottomButton事件
 -(void)clickBottomButton
 {
     if (!_isFriendRelationShip) {
@@ -134,6 +136,7 @@
     }
 }
 
+#pragma mark - 导航右ActionSheetItem
 -(void)onNavigationRightButtonClicked
 {
     if (_shareData == nil) {
@@ -179,7 +182,7 @@
     }
     
 }
-
+#pragma mark - 删除好友事件
 - (void)deleteFriends
 {
     [YUtils showHUDWithTitle];
@@ -198,6 +201,7 @@
     }];
 }
 
+#pragma mark - 判断消息是否提醒
 -(BOOL)isRemind
 {
     //获取该人的详情

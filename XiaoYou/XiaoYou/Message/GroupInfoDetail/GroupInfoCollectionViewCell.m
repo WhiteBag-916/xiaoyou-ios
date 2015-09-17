@@ -111,6 +111,7 @@ NSString *const kGroupInfoCollectionViewCell = @"GroupInfoCollectionViewCellId";
     
 }
 
+#pragma mark - 长按cell事件
 -(void)longPress:(UILongPressGestureRecognizer *)gesture
 {
     if(gesture.state == UIGestureRecognizerStateBegan)
@@ -121,7 +122,7 @@ NSString *const kGroupInfoCollectionViewCell = @"GroupInfoCollectionViewCellId";
     }
 
 }
-
+#pragma mark - 点击删除按钮事件
 -(void)clickdeleteButton
 {
     NSLog(@"delete");

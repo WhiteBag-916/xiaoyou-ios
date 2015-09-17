@@ -62,6 +62,7 @@
     return self;
 }
 
+#pragma mark - 刷新界面
 -(void)refreshTableView:(ProfileInfo *) model
 {
     _model = model;
@@ -215,6 +216,8 @@
     
 }
 
+#pragma mark - UITableViewDataSource和UITableViewDataDelegate
+
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     return 1;
@@ -294,7 +297,7 @@
     }
 }
 
-//查看头像大图
+#pragma mark - 查看头像大图
 - (void)clickedHeadImageVIew {
     
     SDPhotoBrowser *browser = [[SDPhotoBrowser alloc] init];
@@ -310,7 +313,7 @@
     [browser show];
 }
 
-#pragma SDPhotoBrowser
+#pragma mark - SDPhotoBrowser
 - (UIImage *)photoBrowser:(SDPhotoBrowser *)browser placeholderImageForIndex:(NSInteger)index {
     return _headImageView.image;
 }

@@ -74,11 +74,15 @@
     }];
 }
 
+#pragma mark - 刷新界面
+
 -(void)refreshTableView:(NSArray *) dataSouceArr
 {
     _dataSourceArr = (NSMutableArray *)dataSouceArr;
     [self reloadData];
 }
+
+#pragma mark - UITableViewDelegate和UITableViewDataSouce
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {

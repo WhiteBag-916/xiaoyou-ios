@@ -31,40 +31,45 @@ NSString *const kChoicePersonTableViewCell = @"ChoicePersonTableViewCellId";
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
-        
-        _backView = [[UIView alloc] init];
-        [self.contentView addSubview:_backView];
-        [_backView mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.top.left.right.bottom.mas_equalTo(0);
-        }];
-        
-        //头像
-        _headImageView = [[UIImageView alloc] init];
-        _headImageView.backgroundColor = [UIColor clearColor];
-        _headImageView.layer.cornerRadius = kHeadCornerRadius;
-        _headImageView.clipsToBounds = YES;
-        _headImageView.image = [UIImage imageNamed:@"default_head"];
-        [_backView addSubview:_headImageView];
-        [_headImageView mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.left.top.mas_equalTo(kPaddingDistance);
-            make.width.height.mas_equalTo(kHeadImageWidthAndHeight);
-        }];
-        
-        //昵称
-        _nameLabel = [[UILabel alloc] init];
-        _nameLabel.font = CONTENT_FONT(14);
-        _nameLabel.backgroundColor = [UIColor clearColor];
-        [_backView addSubview:_nameLabel];
-        [_nameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.centerY.equalTo(_backView.mas_centerY);
-            make.left.equalTo(_headImageView.mas_right).offset(kPaddingDistance);
-            make.width.mas_equalTo(kNameWidth);
-            make.height.mas_equalTo(kNameHeight);
-        }];
+
+        [self setUpUI];
+
     }
     return self;
 }
 
+-(void)setUpUI
+{
+    _backView = [[UIView alloc] init];
+    [self.contentView addSubview:_backView];
+    [_backView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.left.right.bottom.mas_equalTo(0);
+    }];
+    
+    //头像
+    _headImageView = [[UIImageView alloc] init];
+    _headImageView.backgroundColor = [UIColor clearColor];
+    _headImageView.layer.cornerRadius = kHeadCornerRadius;
+    _headImageView.clipsToBounds = YES;
+    _headImageView.image = [UIImage imageNamed:@"default_head"];
+    [_backView addSubview:_headImageView];
+    [_headImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.top.mas_equalTo(kPaddingDistance);
+        make.width.height.mas_equalTo(kHeadImageWidthAndHeight);
+    }];
+    
+    //昵称
+    _nameLabel = [[UILabel alloc] init];
+    _nameLabel.font = CONTENT_FONT(14);
+    _nameLabel.backgroundColor = [UIColor clearColor];
+    [_backView addSubview:_nameLabel];
+    [_nameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerY.equalTo(_backView.mas_centerY);
+        make.left.equalTo(_headImageView.mas_right).offset(kPaddingDistance);
+        make.width.mas_equalTo(kNameWidth);
+        make.height.mas_equalTo(kNameHeight);
+    }];
+}
 -(void)setCellInfo:(NSDictionary *) dic
 {
     

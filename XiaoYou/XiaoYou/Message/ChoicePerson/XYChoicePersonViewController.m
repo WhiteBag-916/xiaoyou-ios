@@ -90,6 +90,7 @@
     }];
 }
 
+#pragma mark - 选人完成事件
 
 -(void)finishChoice
 {
@@ -149,6 +150,8 @@
     }
     
 }
+
+#pragma mark - 取消选择事件
 
 -(void)cancelChoice
 {

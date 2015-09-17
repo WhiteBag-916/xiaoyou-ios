@@ -40,12 +40,15 @@
     return self;
 }
 
+#pragma mark - 刷新界面
+
 -(void)refreshTableView:(NSArray *) dataSouceArr
 {
     _dataSouceArr = [[NSMutableArray alloc] initWithArray:dataSouceArr];
     [self reloadData];
 }
 
+#pragma mark - UITableViewDataSource 和 UITableViewDataDelegate
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
