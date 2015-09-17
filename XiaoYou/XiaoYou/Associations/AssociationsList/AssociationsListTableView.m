@@ -138,6 +138,8 @@
         }
         
         [self reloadData];
+    } else {
+        [YUtils showTitle:message.desc];
     }
     
     [self stopLoad];

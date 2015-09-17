@@ -16,6 +16,7 @@
 #import "AppDelegate+RootVC.h"
 #import "EasyModel.h"
 #import "UIImageView+WebCache.h"
+#import "YKeyBoard.h"
 
 #define KBUTTONWIDTH SCALE_NUM(80)
 #define KBUTTONHEIGHT SCALE_NUM(25)
@@ -191,6 +192,9 @@
     [_protocolImageView addGestureRecognizer:tap];
     
     [self regNotice];
+    
+    [YKeyBoard registerKeyBoardShow:self];
+    [YKeyBoard registerKeyBoardHide:self];
 }
 - (void)initController {
     self.navigationController.navigationBarHidden = false;
@@ -458,5 +462,20 @@
             [YUtils showTitle:@"密码错误"];
         }
     }
+}
+
+#pragma mark - YKeyBoardDlegate
+- (void)keyboardWillShowNotification:(NSNotification *)notification {
+    if ([_codeField isFirstResponder]) {        
+        [UIView animateWithDuration:0.5 animations:^{
+            self.view.transform = CGAffineTransformMakeTranslation(0, -100);
+        }];
+    }
+}
+
+- (void)keyboardWillHideNotification:(NSNotification *)notification {
+    [UIView animateWithDuration:0.5 animations:^{
+        self.view.transform = CGAffineTransformIdentity;
+    }];
 }
 @end
