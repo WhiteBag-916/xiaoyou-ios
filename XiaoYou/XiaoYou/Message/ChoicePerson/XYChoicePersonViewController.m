@@ -132,7 +132,10 @@
                 {
                     [self.navigationController popViewControllerAnimated:YES];
                 }
-               [YUtils showTitle:message.desc];
+                else
+                {
+                    [YUtils showTitle:message.desc];
+                }
             }];
         }
         else
