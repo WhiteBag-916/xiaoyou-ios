@@ -190,7 +190,7 @@
 
 - (void)onNavigationRightButtonClicked {
     if (![_pwdField.text isEqualToString:_pwdRepeatField.text]) {
-        [YUtils showHUDWithTitle:@"密码两遍输入不一致"];
+        [YUtils showTitle:@"密码两遍输入不一致"];
         return;
     }
     if (ProfileChangePwdTypeMod == _type) {
