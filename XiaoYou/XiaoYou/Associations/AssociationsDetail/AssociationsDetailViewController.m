@@ -44,8 +44,15 @@
     [self showCustomNavigationBackButton];
     [self showCustomNavigationMoreButton];
     
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshData) name:KNotification_Refresh_FeedList object:nil];
+    
     [self initView];
 }
+
+- (void)refreshData {
+    [_associationsDetailTableView loadData];
+}
+
 //需要调用之前设定好_shareData，参考XYGroupInfoDetailViewController
 - (void)onNavigationRightButtonClicked {
     if (nil != _groupModel) {
