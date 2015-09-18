@@ -396,7 +396,7 @@
 //更新图片
 - (void)updateImage {
     NSString *path = [YDirectory newImgCache:[NSString stringWithFormat:@"feed%d.png", [_imgGroup getImgCount]]];
-    if (![YDirectory isExistsPath:path])
+    if ([YDirectory isExistsPath:path])
     {
         [_imgGroup addPhoto:[UIImage imageWithContentsOfFile:path]];
     }
