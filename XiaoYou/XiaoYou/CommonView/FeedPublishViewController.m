@@ -449,6 +449,8 @@
 }
 
 - (void)uploadPic {
+    [self.view endEditing:YES];
+    
     [_picArray removeAllObjects];
     [YUtils showHUDWithTitle:@"正在上传"];
     for (int i = 0; i < [_imgGroup getImgCount]; i++) {
