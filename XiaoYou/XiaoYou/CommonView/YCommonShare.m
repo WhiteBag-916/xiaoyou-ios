@@ -58,10 +58,10 @@
 
 - (void)shareForViewControllerWithType:(YCommonShareDetailType)type dataModel:(NSDictionary *)obj shareType:(NSInteger)shareType
 {
-    [UMSocialData defaultData].extConfig.wxMessageType = UMSocialWXMessageTypeWeb;
-    
     NSString *typeStr = @"";
-    UMSocialUrlResource *urlResource ;
+    UMSocialUrlResource *urlResource;
+    [UMSocialData defaultData].extConfig.wechatSessionData.wxMessageType = UMSocialWXMessageTypeWeb;
+    [UMSocialData defaultData].extConfig.wechatTimelineData.wxMessageType = UMSocialWXMessageTypeWeb;
     switch (shareType) {
         case YShareTypeToWechatSession:{
             /**
