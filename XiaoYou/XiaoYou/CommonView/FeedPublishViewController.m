@@ -412,10 +412,13 @@
     [self.navigationController dismissViewControllerAnimated:YES completion:nil];
 }
 - (void)onNavigationRightButtonClicked {
-    if ([_imgGroup getImgCount] == 0 && _textView.text.length == 0) {
+    if ([_imgGroup getImgCount] == 0 && [_textView.text isEmpty]) {
         [YUtils showTitle:@"请上传图片或填写内容"];
         return;
     }
+    
+    [self.view endEditing:YES];
+    
     [self uploadPic];
 }
 - (void)viewWillAppear:(BOOL)animated {
@@ -449,8 +452,6 @@
 }
 
 - (void)uploadPic {
-    [self.view endEditing:YES];
-    
     [_picArray removeAllObjects];
     [YUtils showHUDWithTitle:@"正在上传"];
     for (int i = 0; i < [_imgGroup getImgCount]; i++) {
