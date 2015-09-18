@@ -170,11 +170,11 @@
         if ([item.author.uid isEqualToString:[[ProvisionManager sharedInstance] getUserId]]) {
             [self openOperate:index];//可以删除自己的回复
         } else {
-            if ([[[ProvisionManager sharedInstance] getUserId] isEqualToString:_feedInfo.author.uid]) {
-                [self openAuthorOperate:index];//feed作者可以删除所有回复
-            } else {
+//            if ([[[ProvisionManager sharedInstance] getUserId] isEqualToString:_feedInfo.author.uid]) {
+//                [self openAuthorOperate:index];//feed作者可以删除所有回复
+//            } else {
                 [self openReply:index];
-            }
+//            }
         }
     }
 }
