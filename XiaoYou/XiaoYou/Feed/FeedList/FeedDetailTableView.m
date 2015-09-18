@@ -168,12 +168,13 @@
         int index = (int)indexPath.row - 1;
         CommentListItems *item = _commentListArray[index];
         if ([item.author.uid isEqualToString:[[ProvisionManager sharedInstance] getUserId]]) {
-            [self openOperate:index];//feed作者可以删除所有回复
+            [self openOperate:index];//可以删除自己的回复
         } else {
             if ([[[ProvisionManager sharedInstance] getUserId] isEqualToString:_feedInfo.author.uid]) {
-                [self openAuthorOperate:index];//可以删除自己的回复
+                [self openAuthorOperate:index];//feed作者可以删除所有回复
+            } else {
+                [self openReply:index];
             }
-            [self openReply:index];
         }
     }
 }
