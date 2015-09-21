@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		041E3EB91BAFF9FE00454487 /* CTAssetsPickerChecked.png in Resources */ = {isa = PBXBuildFile; fileRef = 041E3EB71BAFF9FE00454487 /* CTAssetsPickerChecked.png */; settings = {ASSET_TAGS = (); }; };
+		041E3EBA1BAFF9FE00454487 /* CTAssetsPickerChecked@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 041E3EB81BAFF9FE00454487 /* CTAssetsPickerChecked@2x.png */; settings = {ASSET_TAGS = (); }; };
+		041E3EBD1BAFFA0800454487 /* CTAssetsPickerChecked~iOS6.png in Resources */ = {isa = PBXBuildFile; fileRef = 041E3EBB1BAFFA0800454487 /* CTAssetsPickerChecked~iOS6.png */; settings = {ASSET_TAGS = (); }; };
+		041E3EBE1BAFFA0800454487 /* CTAssetsPickerChecked~iOS6@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 041E3EBC1BAFFA0800454487 /* CTAssetsPickerChecked~iOS6@2x.png */; settings = {ASSET_TAGS = (); }; };
 		200E397C1B4E818B000B587B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 200E397B1B4E818B000B587B /* main.m */; };
 		200E39871B4E818B000B587B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 200E39861B4E818B000B587B /* Images.xcassets */; };
 		200E39961B4E818B000B587B /* XiaoYouTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 200E39951B4E818B000B587B /* XiaoYouTests.m */; };
@@ -463,6 +467,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		041E3EB71BAFF9FE00454487 /* CTAssetsPickerChecked.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CTAssetsPickerChecked.png; sourceTree = "<group>"; };
+		041E3EB81BAFF9FE00454487 /* CTAssetsPickerChecked@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "CTAssetsPickerChecked@2x.png"; sourceTree = "<group>"; };
+		041E3EBB1BAFFA0800454487 /* CTAssetsPickerChecked~iOS6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "CTAssetsPickerChecked~iOS6.png"; sourceTree = "<group>"; };
+		041E3EBC1BAFFA0800454487 /* CTAssetsPickerChecked~iOS6@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "CTAssetsPickerChecked~iOS6@2x.png"; sourceTree = "<group>"; };
 		200E39761B4E818B000B587B /* XiaoYou.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = XiaoYou.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		200E397A1B4E818B000B587B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		200E397B1B4E818B000B587B /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -1675,6 +1683,10 @@
 		20E18D9B1B808E42005B75EE /* Feed */ = {
 			isa = PBXGroup;
 			children = (
+				041E3EBB1BAFFA0800454487 /* CTAssetsPickerChecked~iOS6.png */,
+				041E3EBC1BAFFA0800454487 /* CTAssetsPickerChecked~iOS6@2x.png */,
+				041E3EB71BAFF9FE00454487 /* CTAssetsPickerChecked.png */,
+				041E3EB81BAFF9FE00454487 /* CTAssetsPickerChecked@2x.png */,
 				20DD039A1BA2B956005DFC51 /* group_logo@2x.png */,
 				20DD039B1BA2B956005DFC51 /* group_logo@3x.png */,
 				20DA8B3E1B8F1E18007D0CDE /* hot@2x.png */,
@@ -2828,6 +2840,7 @@
 				3334ABE51B82C50200FDDCCB /* chatBar_faceSelected.png in Resources */,
 				20E033E81B842727002E4583 /* UMSCommentInputController.xib in Resources */,
 				20DD039C1BA2B956005DFC51 /* group_logo@2x.png in Resources */,
+				041E3EBE1BAFFA0800454487 /* CTAssetsPickerChecked~iOS6@2x.png in Resources */,
 				2076A3161B81DA3E001FFBAC /* toolbar-mine-click@2x.png in Resources */,
 				20DA1A791B89BEF100DEF95C /* register-frame@3x.png in Resources */,
 				3348CB681B87236200F97FAF /* send_normal@2x.png in Resources */,
@@ -2835,11 +2848,13 @@
 				65CF638C1B8EE17E00ACBB70 /* toseemore@2x.png in Resources */,
 				334670691B84228000A8628A /* contacts_bottom@2x.png in Resources */,
 				20DAF9DE1B873883005B7932 /* unicode_to_hanyu_pinyin.txt in Resources */,
+				041E3EBA1BAFF9FE00454487 /* CTAssetsPickerChecked@2x.png in Resources */,
 				333122C11B806EDC00D3D032 /* chat_receiver_audio_playing003.png in Resources */,
 				333122BD1B806EDC00D3D032 /* chat_receiver_audio_playing001.png in Resources */,
 				3348CB511B87207600F97FAF /* chatBar_recordSelectedBg.png in Resources */,
 				20E18DC61B808E42005B75EE /* cup@2x.png in Resources */,
 				3335C3661B8178E8007DEFD4 /* chatFire_audioPlaying1@2x.png in Resources */,
+				041E3EB91BAFF9FE00454487 /* CTAssetsPickerChecked.png in Resources */,
 				20DAE1541B882CFF00607996 /* register-password@2x.png in Resources */,
 				20E9424E1B833D10009C2DC6 /* complete@2x.png in Resources */,
 				3334AC3B1B82E32700FDDCCB /* chat_sender_bg@2x.png in Resources */,
@@ -2926,6 +2941,7 @@
 				20E18DCC1B808E42005B75EE /* more@2x.png in Resources */,
 				650C6C1A1B886E4C00A89AC9 /* mine-toast-particulars@2x.png in Resources */,
 				20DD81331B91ABCE00ACFD9A /* campus-assistant_map_screen@2x.png in Resources */,
+				041E3EBD1BAFFA0800454487 /* CTAssetsPickerChecked~iOS6.png in Resources */,
 				3334AC1F1B82D7C400FDDCCB /* VoiceSearchFeedback001.png in Resources */,
 				20E18DC11B808E42005B75EE /* message_tab_green@3x.png in Resources */,
 				3348CB6A1B87236200F97FAF /* send-click@2x.png in Resources */,

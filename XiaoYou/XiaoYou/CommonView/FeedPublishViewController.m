@@ -24,6 +24,7 @@
 #import "UploadImage.h"
 #import "Feed.h"
 #import "YModel+ActionMessage.h"
+#import "CTAssetsPickerController.h"
 
 #define KTEXTVIEWMARGIN_LEFT SCALE_NUM(5)
 #define KTEXTVIEWMARGIN_TOP SCALE_NUM(15)
@@ -38,7 +39,7 @@
 #define tagObj @"tagObj"
 #define tagIsSelected @"tagIsSelected"
 
-@interface FeedPublishViewController()<UIImagePickerControllerDelegate, UITextViewDelegate>
+@interface FeedPublishViewController()<UIImagePickerControllerDelegate, UITextViewDelegate,CTAssetsPickerControllerDelegate>
 
 //布局用的view
 @property (nonatomic, strong) UIView *groupView;
@@ -332,11 +333,34 @@
 
 - (void)pickImage
 {
-    self.picker = [[UIImagePickerController alloc] init];
+    /*self.picker = [[UIImagePickerController alloc] init];
     [self.picker setSourceType:UIImagePickerControllerSourceTypePhotoLibrary];
     [self.picker setDelegate:self];
-    [self presentViewController:self.picker animated:YES completion:nil];
+    [self presentViewController:self.picker animated:YES completion:nil];*/
+    
+    if (!self.picArray)
+        self.picArray = [[NSMutableArray alloc] init];
+    
+    CTAssetsPickerController *picker = [[CTAssetsPickerController alloc] init];
+    picker.maximumNumberOfSelection = 10;
+    picker.assetsFilter = [ALAssetsFilter allAssets];
+    picker.delegate = self;
+    
+    [self presentViewController:picker animated:YES completion:NULL];
+    
+    
 }
+
+
+#pragma mark - Assets Picker Delegate
+- (void)assetsPickerController:(CTAssetsPickerController *)picker didFinishPickingAssets:(NSArray *)assets
+{
+    //[self.picArray addObjectsFromArray:assets];
+    for (ALAsset *asset in assets) {
+        [self savePic:[UIImage imageWithCGImage:asset.thumbnail]];
+    }
+}
+
 
 - (void)snapImage
 {

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		041E3EB31BAFF50A00454487 /* CTAssetsPickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 041E3EB21BAFF50A00454487 /* CTAssetsPickerController.m */; settings = {ASSET_TAGS = (); }; };
+		041E3EB61BAFF54000454487 /* NSDate+TimeInterval.m in Sources */ = {isa = PBXBuildFile; fileRef = 041E3EB51BAFF54000454487 /* NSDate+TimeInterval.m */; settings = {ASSET_TAGS = (); }; };
 		045F09261AF1CE2E00804EC7 /* YTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 045F09251AF1CE2E00804EC7 /* YTextView.m */; };
 		20AEFE521B40FBA600975B84 /* NSDictionary+CLLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 20AEFE511B40FBA600975B84 /* NSDictionary+CLLocation.m */; };
 		20DAF9671B870A3B005B7932 /* YTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 20DAF9661B870A3B005B7932 /* YTableViewCell.m */; };
@@ -82,6 +84,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		041E3EB11BAFF50A00454487 /* CTAssetsPickerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTAssetsPickerController.h; sourceTree = "<group>"; };
+		041E3EB21BAFF50A00454487 /* CTAssetsPickerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTAssetsPickerController.m; sourceTree = "<group>"; };
+		041E3EB41BAFF54000454487 /* NSDate+TimeInterval.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+TimeInterval.h"; sourceTree = "<group>"; };
+		041E3EB51BAFF54000454487 /* NSDate+TimeInterval.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+TimeInterval.m"; sourceTree = "<group>"; };
 		045F09241AF1CE2E00804EC7 /* YTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YTextView.h; sourceTree = "<group>"; };
 		045F09251AF1CE2E00804EC7 /* YTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YTextView.m; sourceTree = "<group>"; };
 		20AEFE501B40FBA600975B84 /* NSDictionary+CLLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+CLLocation.h"; sourceTree = "<group>"; };
@@ -205,6 +211,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		041E3EB01BAFF50A00454487 /* CTAssetsPicker */ = {
+			isa = PBXGroup;
+			children = (
+				041E3EB41BAFF54000454487 /* NSDate+TimeInterval.h */,
+				041E3EB51BAFF54000454487 /* NSDate+TimeInterval.m */,
+				041E3EB11BAFF50A00454487 /* CTAssetsPickerController.h */,
+				041E3EB21BAFF50A00454487 /* CTAssetsPickerController.m */,
+			);
+			path = CTAssetsPicker;
+			sourceTree = "<group>";
+		};
 		2817D98F1ADA188400FDB4F6 = {
 			isa = PBXGroup;
 			children = (
@@ -259,6 +276,7 @@
 		2817D9B81ADA1EA500FDB4F6 /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
+				041E3EB01BAFF50A00454487 /* CTAssetsPicker */,
 				331473A11BA7E5DF0006F72D /* PPLabel */,
 				65F82F851B8601EB00FF6E2D /* SKTagView */,
 				654602181B7F8C1D0039F622 /* SDPhotoBrowser */,
@@ -562,6 +580,7 @@
 				57C6053F1AE8C45900A92A54 /* YString+Ext.m in Sources */,
 				331473A41BA7E5DF0006F72D /* PPLabel.m in Sources */,
 				971758891B132D7D00CCEEE4 /* YTextField+Ext.m in Sources */,
+				041E3EB61BAFF54000454487 /* NSDate+TimeInterval.m in Sources */,
 				28A1EBFD1AE2015700F7F93B /* YDirectory.m in Sources */,
 				20E033F91B845706002E4583 /* YTextField.m in Sources */,
 				2848A13E1ADED633007E2682 /* YTimer.m in Sources */,
@@ -571,6 +590,7 @@
 				57CFE0F91AE7B14600D4C4E9 /* YDate+Ext.m in Sources */,
 				57EF11D31AF713C3009F49DD /* YShareData.m in Sources */,
 				654602201B7F8C1D0039F622 /* SDBrowserImageView.m in Sources */,
+				041E3EB31BAFF50A00454487 /* CTAssetsPickerController.m in Sources */,
 				2873DBCD1ADFF5A900F5FD3E /* YDatabase.m in Sources */,
 				285B7D551B2EEF0A00C3C107 /* YKeyBoard.m in Sources */,
 				2817D9C11ADA1EA500FDB4F6 /* YHttp.m in Sources */,
