@@ -16,11 +16,11 @@
 {
     NSDictionary *parameter = [YUtils getParameter:nil needUserToken:YES];
     NSString *url = [YUtils getUrl:api_login_listTag];
-//    __weak TagListAction *weakself = self;
+//    WS(weakSelf)
     [self POST:url parameters:parameter completion:^(YHttpRequest *request) {
         YActionMessage *message = [Tags actionMessageWithHttpRequest:request];
         self.completionBlock(message);
-//        weakself.completionBlock(message);
+//        weakSelf.completionBlock(message);
 //        [weakself completed];
     }];
 }
