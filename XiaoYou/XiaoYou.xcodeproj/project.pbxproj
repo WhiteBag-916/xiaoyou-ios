@@ -245,7 +245,6 @@
 		333122761B806EDB00D3D032 /* SRSlimeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3331219F1B806EDB00D3D032 /* SRSlimeView.m */; };
 		333122771B806EDB00D3D032 /* THProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 333121A21B806EDB00D3D032 /* THProgressView.m */; };
 		333122781B806EDB00D3D032 /* TTGlobalUICommon.m in Sources */ = {isa = PBXBuildFile; fileRef = 333121A51B806EDB00D3D032 /* TTGlobalUICommon.m */; };
-		333122791B806EDB00D3D032 /* libMobClickLibrary.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 333121A71B806EDB00D3D032 /* libMobClickLibrary.a */; };
 		3331227A1B806EDB00D3D032 /* amrFileCodec.mm in Sources */ = {isa = PBXBuildFile; fileRef = 333121AC1B806EDB00D3D032 /* amrFileCodec.mm */; };
 		3331227B1B806EDB00D3D032 /* wav.mm in Sources */ = {isa = PBXBuildFile; fileRef = 333121AE1B806EDB00D3D032 /* wav.mm */; };
 		3331227C1B806EDB00D3D032 /* EMVoiceConverter.mm in Sources */ = {isa = PBXBuildFile; fileRef = 333121B01B806EDB00D3D032 /* EMVoiceConverter.mm */; };
@@ -855,8 +854,6 @@
 		333121A21B806EDB00D3D032 /* THProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THProgressView.m; sourceTree = "<group>"; };
 		333121A41B806EDB00D3D032 /* TTGlobalUICommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTGlobalUICommon.h; sourceTree = "<group>"; };
 		333121A51B806EDB00D3D032 /* TTGlobalUICommon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTGlobalUICommon.m; sourceTree = "<group>"; };
-		333121A71B806EDB00D3D032 /* libMobClickLibrary.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libMobClickLibrary.a; sourceTree = "<group>"; };
-		333121A81B806EDB00D3D032 /* MobClick.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MobClick.h; sourceTree = "<group>"; };
 		333121AB1B806EDB00D3D032 /* amrFileCodec.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = amrFileCodec.h; sourceTree = "<group>"; };
 		333121AC1B806EDB00D3D032 /* amrFileCodec.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = amrFileCodec.mm; sourceTree = "<group>"; };
 		333121AD1B806EDB00D3D032 /* wav.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = wav.h; sourceTree = "<group>"; };
@@ -1168,7 +1165,6 @@
 				20E033F11B842727002E4583 /* libWeChatSDK.a in Frameworks */,
 				34AF80435283028D453BFBFC /* libPods-XiaoYou.a in Frameworks */,
 				3331227E1B806EDC00D3D032 /* libopencore-amrwb.a in Frameworks */,
-				333122791B806EDB00D3D032 /* libMobClickLibrary.a in Frameworks */,
 				20E033F01B842727002E4583 /* libSocialWechat.a in Frameworks */,
 				20E033E61B842727002E4583 /* libUMSocial_Sdk_4.2.3.a in Frameworks */,
 			);
@@ -1898,7 +1894,6 @@
 				333121981B806EDB00D3D032 /* SlimeRefresh */,
 				333121A01B806EDB00D3D032 /* THProgressView */,
 				333121A31B806EDB00D3D032 /* TTGlobalUICommon */,
-				333121A61B806EDB00D3D032 /* UMeng */,
 				333121A91B806EDB00D3D032 /* VoiceConvert */,
 			);
 			path = 3rdparty;
@@ -2125,15 +2120,6 @@
 				333121A51B806EDB00D3D032 /* TTGlobalUICommon.m */,
 			);
 			path = TTGlobalUICommon;
-			sourceTree = "<group>";
-		};
-		333121A61B806EDB00D3D032 /* UMeng */ = {
-			isa = PBXGroup;
-			children = (
-				333121A71B806EDB00D3D032 /* libMobClickLibrary.a */,
-				333121A81B806EDB00D3D032 /* MobClick.h */,
-			);
-			path = UMeng;
 			sourceTree = "<group>";
 		};
 		333121A91B806EDB00D3D032 /* VoiceConvert */ = {
