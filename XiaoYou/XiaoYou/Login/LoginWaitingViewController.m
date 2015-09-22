@@ -10,6 +10,7 @@
 #import "ProvisionManager.h"
 #import "AppDelegate+RootVC.h"
 #import "YSystemDefine.h"
+#import "YModel+ActionMessage.h"
 
 @interface LoginWaitingViewController ()
 
@@ -51,19 +52,23 @@
     NSString *loginPassword = [[NSUserDefaults standardUserDefaults] objectForKey:kShareData_LoginPassword];
     [YShareData defaultData][kShareData_SchoolCode] = [[NSUserDefaults standardUserDefaults] objectForKey:kShareData_SchoolCode];
     
-    [YUtils showHUDWithTitle:@""];
-    [[ProvisionManager sharedInstance] goLogin:studentNo
-                                      password:loginPassword
-                                         block:^(YActionMessage *message) {
-                                             [YUtils hiddenProgressHUD];
-                                             if (message.isSuccess) {
-                                                 //成功
-                                                 [kAppDelegateAccessor initTabBarNC];
-                                             } else {
-                                                 [kAppDelegateAccessor initChooseSchoolNC];
-                                                 [YUtils showTitle:message.desc];
-                                             }
-                                         }];
+    if (nil == studentNo || nil == loginPassword) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:kNotification_Server_Token_Fail object:@{@"des":@"您的账号已在别的地方登录"}];
+    } else {
+        [YUtils showHUDWithTitle:@""];
+        [[ProvisionManager sharedInstance] goLogin:studentNo
+                                          password:loginPassword
+                                             block:^(YActionMessage *message) {
+                                                 [YUtils hiddenProgressHUD];
+                                                 if (message.isSuccess) {
+                                                     //成功
+                                                     [kAppDelegateAccessor initTabBarNC];
+                                                 } else {
+                                                     [kAppDelegateAccessor initChooseSchoolNC];
+                                                     [YUtils showTitle:message.desc];
+                                                 }
+                                             }];
+    }
 }
 
 - (void)didReceiveMemoryWarning {
