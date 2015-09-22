@@ -343,8 +343,6 @@
     
     if (!self.picArray)
         self.picArray = [[NSMutableArray alloc] init];
-    
-    
     UzysAssetsPickerController *picker = [[UzysAssetsPickerController alloc] init];
     picker.assetsFilter = [ALAssetsFilter allPhotos];
     picker.maximumNumberOfSelectionVideo = 0;
@@ -366,6 +364,8 @@
                                          orientation:(UIImageOrientation)representation.defaultRepresentation.orientation];
         self.isPhotoSaveEnd = NO;
         [self savePic:img];
+        
+        //每次选择
         while (!self.isPhotoSaveEnd) {
             [[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode beforeDate:[NSDate distantFuture]];
         }

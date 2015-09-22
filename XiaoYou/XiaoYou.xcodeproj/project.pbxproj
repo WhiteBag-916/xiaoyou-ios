@@ -1025,6 +1025,7 @@
 		3395498E1B81C67000F9ECB1 /* GroupInfoDetailHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroupInfoDetailHeaderView.m; sourceTree = "<group>"; };
 		33F83A8A1B8B2B6D00FF5483 /* mine-heart-red@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mine-heart-red@2x.png"; sourceTree = "<group>"; };
 		33F83A8B1B8B2B6D00FF5483 /* mine-heart-red@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mine-heart-red@3x.png"; sourceTree = "<group>"; };
+		465021E5B3B56D53E10E1AAE /* Pods-XiaoYou.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XiaoYou.debug.xcconfig"; path = "../Pods/Target Support Files/Pods-XiaoYou/Pods-XiaoYou.debug.xcconfig"; sourceTree = "<group>"; };
 		65024C0D1B82C423007DE404 /* FeedTag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedTag.h; sourceTree = "<group>"; };
 		65024C0E1B82C423007DE404 /* FeedTag.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedTag.m; sourceTree = "<group>"; };
 		65024C1A1B833565007DE404 /* feedmore@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "feedmore@2x.png"; sourceTree = "<group>"; };
@@ -1147,6 +1148,7 @@
 		65F82F821B85E74A00FF6E2D /* FeedPublishViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FeedPublishViewController.h; path = XiaoYou/CommonView/FeedPublishViewController.h; sourceTree = SOURCE_ROOT; };
 		65F82F831B85E74A00FF6E2D /* FeedPublishViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FeedPublishViewController.m; path = XiaoYou/CommonView/FeedPublishViewController.m; sourceTree = SOURCE_ROOT; };
 		77B574BED9D4FF3F4BFAA9FE /* libPods-XiaoYou.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-XiaoYou.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		E1D8A55CC0081FB2C8604F21 /* Pods-XiaoYou.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XiaoYou.release.xcconfig"; path = "../Pods/Target Support Files/Pods-XiaoYou/Pods-XiaoYou.release.xcconfig"; sourceTree = "<group>"; };
 		F531E541C4347E287F02139F /* Pods-XiaoYou.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XiaoYou.release.xcconfig"; path = "../Pods/Target Support Files/Pods-XiaoYou/Pods-XiaoYou.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -1187,6 +1189,7 @@
 				200E39921B4E818B000B587B /* XiaoYouTests */,
 				200E39771B4E818B000B587B /* Products */,
 				200E39E01B4E8696000B587B /* Frameworks */,
+				7DDA6F9D3A74CB8FFC3445B0 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -2602,6 +2605,15 @@
 			name = FeedCell;
 			sourceTree = "<group>";
 		};
+		7DDA6F9D3A74CB8FFC3445B0 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				465021E5B3B56D53E10E1AAE /* Pods-XiaoYou.debug.xcconfig */,
+				E1D8A55CC0081FB2C8604F21 /* Pods-XiaoYou.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		888C5F0F224BB9F4ECBAEB96 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -3302,7 +3314,7 @@
 		};
 		200E399A1B4E818B000B587B /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 234A25BD9458AE14C70CE430 /* Pods-XiaoYou.debug.xcconfig */;
+			baseConfigurationReference = 465021E5B3B56D53E10E1AAE /* Pods-XiaoYou.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -3330,7 +3342,7 @@
 		};
 		200E399B1B4E818B000B587B /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = F531E541C4347E287F02139F /* Pods-XiaoYou.release.xcconfig */;
+			baseConfigurationReference = E1D8A55CC0081FB2C8604F21 /* Pods-XiaoYou.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
