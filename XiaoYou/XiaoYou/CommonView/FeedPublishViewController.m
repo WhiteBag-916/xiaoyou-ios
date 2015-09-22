@@ -63,7 +63,7 @@
 
 @property (nonatomic, strong) UIImagePickerController *picker;
 
-@property (nonatomic, assign) BOOL isPhotoSaveEnd;
+@property (nonatomic, assign) BOOL isPhotoSaveEnd;//上传图片时的同步操作
 
 @end
 
@@ -147,6 +147,7 @@
         _groupView.hidden = true;
     }
 }
+
 - (void)initGroup:(NSArray *)groups {
     _groupTag = [[SKTagView alloc] init];
     [_groupView addSubview:_groupTag];
@@ -334,6 +335,7 @@
     [sheet show];
 }
 
+
 - (void)pickImage
 {
     /*self.picker = [[UIImagePickerController alloc] init];
@@ -349,27 +351,25 @@
     picker.maximumNumberOfSelectionPhoto = 9;
     picker.delegate = self;
     [self presentViewController:picker animated:YES completion:NULL];
-    
 }
 
 
 #pragma mark - Assets Picker Delegate
 -(void)uzysAssetsPickerController:(UzysAssetsPickerController *)picker didFinishPickingAssets:(NSArray *)assets
 {
-
     [assets enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
         ALAsset *representation = obj;
         UIImage *img = [UIImage imageWithCGImage:representation.defaultRepresentation.fullResolutionImage
                                                scale:representation.defaultRepresentation.scale
                                          orientation:(UIImageOrientation)representation.defaultRepresentation.orientation];
+        
+        //上传图片超过9张的时候会出现错误
         self.isPhotoSaveEnd = NO;
         [self savePic:img];
-        
-        //每次选择
+        //每次选择一张  避免多线程上传图片的时候图片模糊
         while (!self.isPhotoSaveEnd) {
-            [[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode beforeDate:[NSDate distantFuture]];
+            [[NSRunLoop mainRunLoop] runMode:NSDefaultRunLoopMode beforeDate:[NSDate distantFuture]];
         }
-        
     }];
 }
 
@@ -426,6 +426,8 @@
         //界面
         dispatch_async(dispatch_get_main_queue(), ^{
             [self updateImage];
+            
+            //上传图片同步
             self.isPhotoSaveEnd = YES;
         });
         

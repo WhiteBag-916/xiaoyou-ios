@@ -196,8 +196,9 @@
         [_contentView.subviews[i] setHidden:true];
         [_contentView.subviews[i] setTag:KIMGTAG - i-1];
     }
+    //限制图片上传不能超过9张
     if (index != 1) {
-        for (int i = 0; i < _smallImgs.count; i++) {
+        for (int i = 0; i < _smallImgs.count && i<9; i++) {
             [_contentView.subviews[i] setHidden:false];
             [_contentView.subviews[i] setTag:KIMGTAG + i];
         }
