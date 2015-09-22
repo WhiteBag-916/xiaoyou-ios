@@ -24,7 +24,7 @@
 #import "UploadImage.h"
 #import "Feed.h"
 #import "YModel+ActionMessage.h"
-#import "CTAssetsPickerController.h"
+#import "UzysAssetsPickerController.h"
 
 #define KTEXTVIEWMARGIN_LEFT SCALE_NUM(5)
 #define KTEXTVIEWMARGIN_TOP SCALE_NUM(15)
@@ -39,7 +39,7 @@
 #define tagObj @"tagObj"
 #define tagIsSelected @"tagIsSelected"
 
-@interface FeedPublishViewController()<UIImagePickerControllerDelegate, UITextViewDelegate,CTAssetsPickerControllerDelegate>
+@interface FeedPublishViewController()<UIImagePickerControllerDelegate, UITextViewDelegate,UzysAssetsPickerControllerDelegate>
 
 //布局用的view
 @property (nonatomic, strong) UIView *groupView;
@@ -63,6 +63,8 @@
 
 @property (nonatomic, strong) UIImagePickerController *picker;
 
+@property (nonatomic, assign) BOOL isPhotoSaveEnd;
+
 @end
 
 @implementation FeedPublishViewController
@@ -73,6 +75,7 @@
         _picArray = [NSMutableArray array];
         _isGroup = false;
         _groupIndex = 0;
+        _isPhotoSaveEnd = NO;
     }
     return self;
 }
@@ -341,25 +344,35 @@
     if (!self.picArray)
         self.picArray = [[NSMutableArray alloc] init];
     
-    CTAssetsPickerController *picker = [[CTAssetsPickerController alloc] init];
-    picker.maximumNumberOfSelection = 10;
-    picker.assetsFilter = [ALAssetsFilter allAssets];
+    
+    UzysAssetsPickerController *picker = [[UzysAssetsPickerController alloc] init];
+    picker.assetsFilter = [ALAssetsFilter allPhotos];
+    picker.maximumNumberOfSelectionVideo = 0;
+    picker.maximumNumberOfSelectionPhoto = 9;
     picker.delegate = self;
-    
     [self presentViewController:picker animated:YES completion:NULL];
-    
     
 }
 
 
 #pragma mark - Assets Picker Delegate
-- (void)assetsPickerController:(CTAssetsPickerController *)picker didFinishPickingAssets:(NSArray *)assets
+-(void)uzysAssetsPickerController:(UzysAssetsPickerController *)picker didFinishPickingAssets:(NSArray *)assets
 {
-    //[self.picArray addObjectsFromArray:assets];
-    for (ALAsset *asset in assets) {
-        [self savePic:[UIImage imageWithCGImage:asset.thumbnail]];
-    }
+
+    [assets enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+        ALAsset *representation = obj;
+        UIImage *img = [UIImage imageWithCGImage:representation.defaultRepresentation.fullResolutionImage
+                                               scale:representation.defaultRepresentation.scale
+                                         orientation:(UIImageOrientation)representation.defaultRepresentation.orientation];
+        self.isPhotoSaveEnd = NO;
+        [self savePic:img];
+        while (!self.isPhotoSaveEnd) {
+            [[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode beforeDate:[NSDate distantFuture]];
+        }
+        
+    }];
 }
+
 
 
 - (void)snapImage
@@ -413,10 +426,12 @@
         //界面
         dispatch_async(dispatch_get_main_queue(), ^{
             [self updateImage];
+            self.isPhotoSaveEnd = YES;
         });
         
     });
 }
+
 //更新图片
 - (void)updateImage {
     NSString *path = [YDirectory newImgCache:[NSString stringWithFormat:@"feed%d.png", [_imgGroup getImgCount]]];
@@ -425,13 +440,8 @@
         [_imgGroup addPhoto:[UIImage imageWithContentsOfFile:path]];
     }
 }
-#pragma mark - UIImagePickerControllerDelegate
--(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
-{
-    [self.picker dismissViewControllerAnimated:YES completion:nil];
-    UIImage *getImage = info[@"UIImagePickerControllerOriginalImage"];
-    [self savePic:getImage];
-}
+
+
 - (void)onNavigationLeftButtonClicked {
     [self.navigationController dismissViewControllerAnimated:YES completion:nil];
 }
