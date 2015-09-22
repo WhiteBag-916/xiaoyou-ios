@@ -240,7 +240,11 @@
 //是否是录入学校
 - (void)checkSchoolRequest
 {
+    [YUtils showHUDWithTitle];
     [[ProvisionManager sharedInstance] schoolListReq:_schoolTextField.text block:^(YActionMessage *message) {
+        
+        [YUtils hiddenProgressHUD];
+        
         if (message.isSuccess) {
             //选取学校
             __block SchoolListModel *schoolModel=nil;
@@ -266,22 +270,6 @@
 //下一步
 - (void)onNavigationRightButtonClicked {
     [self.view endEditing:YES];
-    
-    //判断输入文字是否是数组中得文字全匹配
-    __block BOOL isExist = NO;
-    [_schoolListBySeaver enumerateObjectsUsingBlock:^(SchoolListModel *school, NSUInteger idx, BOOL *stop) {
-        if ([school.schoolName isEqualToString:_schoolTextField.text])
-        {
-            isExist = YES;
-            
-            *stop = YES;
-        }
-    }];
-    
-    if (!isExist) {
-        [YUtils showTitle:@"学校输入错误"];
-        return;
-    }
     
     //选取学校
     __block SchoolListModel *schoolModel=nil;
