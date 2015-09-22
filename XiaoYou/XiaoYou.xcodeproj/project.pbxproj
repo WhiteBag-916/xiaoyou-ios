@@ -3334,7 +3334,7 @@
 					"$(PROJECT_DIR)/XiaoYou/Utils/UMengSDK/UMSocial_Sdk_Extra_Frameworks/Wechat",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "2a86097e-5d84-4dec-b890-0e0a8332cdf7";
+				PROVISIONING_PROFILE = "556b6aec-919d-487e-aae4-73bbab223ba6";
 				TARGETED_DEVICE_FAMILY = 1;
 				USER_HEADER_SEARCH_PATHS = "../**";
 			};
@@ -3362,7 +3362,7 @@
 					"$(PROJECT_DIR)/XiaoYou/Utils/UMengSDK/UMSocial_Sdk_Extra_Frameworks/Wechat",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "2a86097e-5d84-4dec-b890-0e0a8332cdf7";
+				PROVISIONING_PROFILE = "556b6aec-919d-487e-aae4-73bbab223ba6";
 				TARGETED_DEVICE_FAMILY = 1;
 				USER_HEADER_SEARCH_PATHS = "../**";
 			};

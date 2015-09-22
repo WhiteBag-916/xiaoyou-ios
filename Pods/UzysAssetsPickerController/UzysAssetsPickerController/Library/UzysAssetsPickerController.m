@@ -63,6 +63,11 @@
     return library;
 }
 
+- (void)takePhoto {
+    UIButton *btn = [UIButton buttonWithType:UIButtonTypeSystem];
+    btn.tag = kTagButtonCamera;
+    [self btnAction:btn];
+}
 
 - (id)init
 {

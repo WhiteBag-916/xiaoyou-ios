@@ -375,8 +375,12 @@
 
 
 
+
 - (void)snapImage
 {
+    UzysAssetsPickerController *picker = [[UzysAssetsPickerController alloc] init];
+    picker.delegate = self;
+    [picker takePhoto];
 #if !(TARGET_IPHONE_SIMULATOR)//真机执行的代码
     AVAuthorizationStatus authStatus = [AVCaptureDevice authorizationStatusForMediaType:AVMediaTypeVideo];
     if (authStatus == AVAuthorizationStatusRestricted ||authStatus ==AVAuthorizationStatusDenied){
@@ -389,11 +393,15 @@
         [AVCaptureDevice requestAccessForMediaType:AVMediaTypeVideo completionHandler:^(BOOL granted) {
             if(granted){//点击允许访问时调用
                 //用户明确许可与否，媒体需要捕获，但用户尚未授予或拒绝许可。
-                self.picker = [[UIImagePickerController alloc] init];
-                [self.picker setSourceType:UIImagePickerControllerSourceTypeCamera];
-                self.picker.delegate = self;
-                [self.picker setAllowsEditing:YES];
-                [self presentViewController:self.picker animated:YES completion:nil];
+//                self.picker = [[UIImagePickerController alloc] init];
+//                [self.picker setSourceType:UIImagePickerControllerSourceTypeCamera];
+//                self.picker.delegate = self;
+//                [self.picker setAllowsEditing:YES];
+//                [self presentViewController:self.picker animated:YES completion:nil];
+                //UzysAssetsPickerController *picker = [[UzysAssetsPickerController alloc] init];
+                
+                //[picker takePhoto];
+                
             }
         }];
     }else{
