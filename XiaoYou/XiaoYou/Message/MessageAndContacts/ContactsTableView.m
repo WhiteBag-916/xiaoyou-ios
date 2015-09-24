@@ -127,59 +127,105 @@
     {
         self.headDataSourceDic = (NSMutableDictionary *)[headerDataSouce[0] dictionaryRepresentation];
     }
+    UIView * backView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 2*kRowHeight)];
     
-    UIView * backView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, kRowHeight)];
-    UITapGestureRecognizer * tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapGestureRecognizerAction)];
-    [backView addGestureRecognizer:tapGestureRecognizer];
-    backView.backgroundColor = [UIColor clearColor];
+    UIView * classBackView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, kRowHeight)];
+    UITapGestureRecognizer * tapClassGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapClassGestureRecognizerAction)];
+    [classBackView addGestureRecognizer:tapClassGestureRecognizer];
+    classBackView.backgroundColor = [UIColor clearColor];
     
     //头像
-    _headImageView = [[UIImageView alloc] initWithFrame:CGRectMake(kPaddingDistance, kPaddingDistance, kHeadWidthAndHeight, kHeadWidthAndHeight)];
-    _headImageView.layer.cornerRadius = kHeadCornerRadius;
-    _headImageView.clipsToBounds = YES;
-    _headImageView.backgroundColor = KCOLORGREEN_009688;
-    [backView addSubview:_headImageView];
+    UIImageView * classHeadImageView = [[UIImageView alloc] initWithFrame:CGRectMake(kPaddingDistance, kPaddingDistance, kHeadWidthAndHeight, kHeadWidthAndHeight)];
+    classHeadImageView.layer.cornerRadius = kHeadCornerRadius;
+    classHeadImageView.clipsToBounds = YES;
+    classHeadImageView.backgroundColor = KCOLORGREEN_009688;
+    [classBackView addSubview:classHeadImageView];
 
     //班
-    _defaultLabel = [[UILabel alloc] initWithFrame:CGRectMake(kPaddingDistance, kPaddingDistance, kClassLabelWidthAndHeight, kClassLabelWidthAndHeight)];
-    _defaultLabel.text = @"班";
-    _defaultLabel.textAlignment = NSTextAlignmentCenter;
-    _defaultLabel.textColor = [UIColor whiteColor];
-    [backView addSubview:_defaultLabel];
+    UILabel * classDefaultLabel = [[UILabel alloc] initWithFrame:CGRectMake(kPaddingDistance, kPaddingDistance, kClassLabelWidthAndHeight, kClassLabelWidthAndHeight)];
+    classDefaultLabel.text = @"班";
+    classDefaultLabel.font = CONTENT_FONT(12);
+    classDefaultLabel.textAlignment = NSTextAlignmentCenter;
+    classDefaultLabel.textColor = [UIColor whiteColor];
+    [classBackView addSubview:classDefaultLabel];
     
     //提醒
-    _remindImageView = [[UIImageView alloc] initWithFrame:CGRectMake(SCREEN_WIDTH - kRemindImageViewToRight - kRemindImageViewWidth, kRowHeight - kPaddingDistance - kRemindImageViewHeight, kRemindImageViewWidth, kRemindImageViewHeight)];
-    _remindImageView.image = [UIImage imageNamed:@"chat_remindnot"];
-    [backView addSubview:_remindImageView];
+    UIImageView * classRemindImageView = [[UIImageView alloc] initWithFrame:CGRectMake(SCREEN_WIDTH - kRemindImageViewToRight - kRemindImageViewWidth, kRowHeight - kPaddingDistance - kRemindImageViewHeight, kRemindImageViewWidth, kRemindImageViewHeight)];
+    classRemindImageView.image = [UIImage imageNamed:@"chat_remindnot"];
+    [classBackView addSubview:classRemindImageView];
+    classRemindImageView.hidden = [_headDataSourceDic[@"isRemind"] isEqualToString:@"y"];
     
-    if ([_headDataSourceDic[@"isRemind"] isEqualToString:@"y"])
-    {
-        _remindImageView.hidden = YES;
-    }
-    else
-    {
-        _remindImageView.hidden = NO;
-    }
     //姓名
-    _nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(2*kPaddingDistance + kHeadWidthAndHeight, kPaddingDistance, kNameLabelWidth, kLabelHeightDistacnce)];
-    _nameLabel.font = CONTENT_FONT(14);
-    _nameLabel.text = _headDataSourceDic[@"name"];
-    _nameLabel.backgroundColor = [UIColor clearColor];
-    [backView addSubview:_nameLabel];
+    UILabel * classNameLabel = [[UILabel alloc] initWithFrame:CGRectMake(2*kPaddingDistance + kHeadWidthAndHeight, kPaddingDistance, kNameLabelWidth, kLabelHeightDistacnce)];
+    classNameLabel.font = CONTENT_FONT(14);
+    classNameLabel.text = _headDataSourceDic[@"name"];
+    classNameLabel.backgroundColor = [UIColor clearColor];
+    [classBackView addSubview:classNameLabel];
 
     //标签
-    _flagLabel = [[UILabel alloc] initWithFrame:CGRectMake(2*kPaddingDistance + kHeadWidthAndHeight, kRowHeight - kLabelHeightDistacnce - kPaddingDistance, 15*kPaddingDistance, kLabelHeightDistacnce)];
-    _flagLabel.font = CONTENT_FONT(10);
-    _flagLabel.textColor = KCOLORWHITE_696969;
-    _flagLabel.text = @"班级群聊";
-    _flagLabel.backgroundColor = [UIColor clearColor];
-    [backView addSubview:_flagLabel];
+    UILabel * classFlagLabel = [[UILabel alloc] initWithFrame:CGRectMake(2*kPaddingDistance + kHeadWidthAndHeight, kRowHeight - kLabelHeightDistacnce - kPaddingDistance, 15*kPaddingDistance, kLabelHeightDistacnce)];
+    classFlagLabel.font = CONTENT_FONT(10);
+    classFlagLabel.textColor = KCOLORWHITE_696969;
+    classFlagLabel.text = @"班级群聊";
+    classFlagLabel.backgroundColor = [UIColor clearColor];
+    [classBackView addSubview:classFlagLabel];
     
-    UIView * bottomView = [[UIView alloc] initWithFrame:CGRectMake(0, kRowHeight-1, SCREEN_WIDTH, kBottomLineHeight)];
-    bottomView.backgroundColor = [UIColor grayColor];
-    bottomView.alpha = 0.6;
-    [backView addSubview:bottomView];
+    //底线
+    UIView * classBottomView = [[UIView alloc] initWithFrame:CGRectMake(0, kRowHeight-1, SCREEN_WIDTH, kBottomLineHeight)];
+    classBottomView.backgroundColor = [UIColor grayColor];
+    classBottomView.alpha = 0.6;
+    [classBackView addSubview:classBottomView];
     
+    UIView * funBackView = [[UIView alloc] initWithFrame:CGRectMake(0, kRowHeight, SCREEN_WIDTH, kRowHeight)];
+    UITapGestureRecognizer * tapFunGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapFunGestureRecognizerAction)];
+    [funBackView addGestureRecognizer:tapFunGestureRecognizer];
+    funBackView.backgroundColor = [UIColor clearColor];
+    
+    //头像
+    UIImageView * funHeadImageView = [[UIImageView alloc] initWithFrame:CGRectMake(kPaddingDistance, kPaddingDistance, kHeadWidthAndHeight, kHeadWidthAndHeight)];
+    funHeadImageView.layer.cornerRadius = kHeadCornerRadius;
+    funHeadImageView.clipsToBounds = YES;
+    funHeadImageView.backgroundColor = [UIColor redColor];
+    [funBackView addSubview:funHeadImageView];
+    
+    //好玩
+    UILabel * funDefaultLabel = [[UILabel alloc] initWithFrame:CGRectMake(kPaddingDistance, kPaddingDistance, kClassLabelWidthAndHeight, kClassLabelWidthAndHeight)];
+    funDefaultLabel.text = @"好玩";
+    funDefaultLabel.font = CONTENT_FONT(12);
+    funDefaultLabel.textAlignment = NSTextAlignmentCenter;
+    funDefaultLabel.textColor = [UIColor whiteColor];
+    [funBackView addSubview:funDefaultLabel];
+    
+    //提醒
+    UIImageView * funRemindImageView = [[UIImageView alloc] initWithFrame:CGRectMake(SCREEN_WIDTH - kRemindImageViewToRight - kRemindImageViewWidth, kRowHeight - kPaddingDistance - kRemindImageViewHeight, kRemindImageViewWidth, kRemindImageViewHeight)];
+    funRemindImageView.image = [UIImage imageNamed:@"chat_remindnot"];
+    [funBackView addSubview:funRemindImageView];
+    
+    funRemindImageView.hidden = [_headDataSourceDic[@"isRemind"] isEqualToString:@"y"];
+
+    //姓名
+    UILabel * funNameLabel = [[UILabel alloc] initWithFrame:CGRectMake(2*kPaddingDistance + kHeadWidthAndHeight, kPaddingDistance, kNameLabelWidth, kLabelHeightDistacnce)];
+    funNameLabel.font = CONTENT_FONT(14);
+    funNameLabel.text = @"好玩";
+    funNameLabel.backgroundColor = [UIColor clearColor];
+    [funBackView addSubview:funNameLabel];
+    
+    //标签
+    UILabel * funFlagLabel = [[UILabel alloc] initWithFrame:CGRectMake(2*kPaddingDistance + kHeadWidthAndHeight, kRowHeight - kLabelHeightDistacnce - kPaddingDistance, 15*kPaddingDistance, kLabelHeightDistacnce)];
+    funFlagLabel.font = CONTENT_FONT(10);
+    funFlagLabel.textColor = KCOLORWHITE_696969;
+    funFlagLabel.text = @"校际活动精选";
+    funFlagLabel.backgroundColor = [UIColor clearColor];
+    [funBackView addSubview:funFlagLabel];
+    
+    //底线
+    UIView * funBottomView = [[UIView alloc] initWithFrame:CGRectMake(0, kRowHeight-1, SCREEN_WIDTH, kBottomLineHeight)];
+    funBottomView.backgroundColor = [UIColor grayColor];
+    funBottomView.alpha = 0.6;
+    [funBackView addSubview:funBottomView];
+    
+    [backView addSubview:classBackView];
+    [backView addSubview:funBackView];
     self.tableHeaderView = backView;
     
 //    UIView * backView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, kRowHeight)];
@@ -268,13 +314,17 @@
 //    }];
 }
 #pragma mark - headView 点击事件
--(void)tapGestureRecognizerAction
+-(void)tapClassGestureRecognizerAction
 {
     XYGroupInfoDetailViewController * groupInfoDetailViewController = [[XYGroupInfoDetailViewController alloc] init];
     groupInfoDetailViewController.studentDic = _headDataSourceDic;
     groupInfoDetailViewController.isClass = YES;
     groupInfoDetailViewController.gid = _headDataSourceDic[@"gid"];
     [self.myController.navigationController pushViewController:groupInfoDetailViewController animated:YES needHiddenBottomBar:YES];
+}
+-(void)tapFunGestureRecognizerAction
+{
+    //好玩详情页
 }
 
 #pragma mark - 将拿到的数据源转化成自己需要的数据格式

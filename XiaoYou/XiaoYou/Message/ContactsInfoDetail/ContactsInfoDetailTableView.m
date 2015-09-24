@@ -20,7 +20,7 @@
 
 #define kHeaderViewHeight              90
 #define kHeadWidthAndHeight            46
-#define kNameLabelWidth                120
+#define kNameLabelWidth                80
 #define kHeadCornerRadius              23
 #define kPaddingDistance               12
 #define kLabelHeightDistacnce          14
@@ -108,8 +108,8 @@
     //姓名
     _nameLabel = [[UILabel alloc] init];
     _nameLabel.font = CONTENT_FONT(14);
-    _nameLabel.text = _model.userName;
-    _nameLabel.backgroundColor = [UIColor clearColor];
+    _nameLabel.text = @"还需要多多";
+    _nameLabel.backgroundColor = [UIColor orangeColor];
     [backView addSubview:_nameLabel];
     [_nameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.mas_equalTo(kPaddingDistance);
@@ -117,6 +117,18 @@
         make.width.mas_equalTo(kNameLabelWidth);
         make.height.mas_equalTo(kLabelHeightDistacnce);
     }];
+    
+    //认证
+    UIImageView * uverifiedImageView = [[UIImageView alloc] init];
+    uverifiedImageView.backgroundColor = [UIColor grayColor];
+    [backView addSubview:uverifiedImageView];
+    [uverifiedImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(_nameLabel.mas_right).offset(2*kPaddingDistance);
+        make.top.equalTo(_nameLabel);
+        make.height.width.mas_equalTo(2*kPaddingDistance);
+        
+    }];
+    
    //标签
     _connectTag = [[ConnectTag alloc] init];
     [backView addSubview:_connectTag];
