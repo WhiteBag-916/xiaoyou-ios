@@ -202,14 +202,7 @@
     [funBackView addSubview:funRemindImageView];
     
     funRemindImageView.hidden = [_headDataSourceDic[@"isRemind"] isEqualToString:@"y"];
-//    if ([_headDataSourceDic[@"isRemind"] isEqualToString:@"y"])
-//    {
-//        _remindImageView.hidden = YES;
-//    }
-//    else
-//    {
-//        _remindImageView.hidden = NO;
-//    }
+
     //姓名
     UILabel * funNameLabel = [[UILabel alloc] initWithFrame:CGRectMake(2*kPaddingDistance + kHeadWidthAndHeight, kPaddingDistance, kNameLabelWidth, kLabelHeightDistacnce)];
     funNameLabel.font = CONTENT_FONT(14);
