@@ -10,4 +10,8 @@
 
 @interface BottomView : UIView
 
+@property (nonatomic, retain) NSArray *tagList;
+
+@property (nonatomic, retain) NSArray *aaList;
+
 @end

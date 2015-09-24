@@ -10,4 +10,6 @@
 
 @interface commenTagList : UIView
 
+@property (nonatomic,retain) NSArray *dataSource;
+
 @end

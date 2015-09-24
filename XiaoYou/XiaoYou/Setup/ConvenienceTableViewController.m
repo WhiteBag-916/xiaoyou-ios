@@ -7,8 +7,10 @@
 //
 
 #import "ConvenienceTableViewController.h"
-
+#define REUSERIDEN  @"Convenience"
 @interface ConvenienceTableViewController ()
+
+@property (nonatomic, retain) NSArray *dataSource;
 
 @end
 
@@ -17,11 +19,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
     
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:REUSERIDEN];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -32,24 +31,57 @@
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-#warning Incomplete implementation, return the number of sections
-    return 0;
+    return 3;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-#warning Incomplete implementation, return the number of rows
-    return 0;
+    return 1;
 }
 
-/*
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
     
-    // Configure the cell...
-    
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:REUSERIDEN forIndexPath:indexPath];
+    if (!cell) {
+        cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:REUSERIDEN];
+    }
+    cell.textLabel.text = self.dataSource[indexPath.section];
+    cell.imageView.image = [UIImage imageNamed:@"test"];
+    UISwitch *switchView = [[UISwitch alloc]init];
+    [switchView addTarget:self action:@selector(switchViewClick:) forControlEvents:UIControlEventValueChanged];
+    switchView.tag = 50000 + indexPath.section;
+    cell.accessoryView = switchView;
     return cell;
 }
-*/
+
+- (void)switchViewClick:(UISwitch*)switchView {
+    NSInteger index = switchView.tag - 50000;
+    if (index == 0) {
+        if (switchView.on)
+            NSLog(@"test 1");
+    }
+    else if (index == 1) {
+        NSLog(@"test 2");
+    }
+    else if (index == 2) {
+        NSLog(@"test 3");
+    }
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 44.0f;
+}
+
+
+
+-(NSArray *)dataSource
+{
+    if (!_dataSource) {
+        _dataSource = @[@"学校官方活动提醒我",@"院系官方活动提醒我",@"校友APP发布的好玩的活动一定要提醒我"];
+    }
+    return _dataSource;
+}
 
 /*
 // Override to support conditional editing of the table view.

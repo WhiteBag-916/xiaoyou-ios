@@ -22,6 +22,7 @@
 #import "FeedPublishViewController.h"
 #import "ProvisionManager.h"
 #import "FeedFilterViewController.h"
+#import "SetupTableViewController.h"
 
 @interface FeedListViewController ()<SlideNavigationControllerDelegate>
 
@@ -30,6 +31,8 @@
 @property (strong, nonatomic) FeedListTableView         *feedListTableView;     //feed列表
 @property (strong, nonatomic) BBBadgeBarButtonItem      *menuButton;            //菜单按钮
 @property (nonatomic, strong) ProfilePersonListTableView *profilePersonListTableView;  //人
+
+@property (nonatomic, assign) NSInteger viewIndex;
 @end
 
 @implementation FeedListViewController
@@ -166,9 +169,11 @@
     _profilePersonListTableView.hidden = (type == CommonSwitchTypeFir);
     if (type == CommonSwitchTypeFir) {
         [self showCustomNavigationPublishButton];
+        self.viewIndex = 1;
     } else {
-        self.navigationItem.rightBarButtonItem = nil;
-        
+        //self.navigationItem.rightBarButtonItem = nil;
+        [self showCustomNavigationNextButton];
+        self.viewIndex = 2;
         [_profilePersonListTableView loadDataWithQueryCode:@""];
     }
 }
@@ -202,10 +207,17 @@
     [self.navigationController pushViewController:[[FeedFilterViewController alloc] initWithFilter:[notification userInfo][@"filter"] name:[notification userInfo][@"name"]] animated:true needHiddenBottomBar:YES];
 }
 - (void)onNavigationRightButtonClicked {
-    _needRefresh = true;
-    UINavigationController *navigationController =
-    [[UINavigationController alloc] initWithRootViewController:[[FeedPublishViewController alloc] init]];
-    [self.navigationController presentViewController:navigationController animated:YES completion:nil];
+    
+    if (self.viewIndex == 1) {
+        _needRefresh = true;
+        UINavigationController *navigationController =
+        [[UINavigationController alloc] initWithRootViewController:[[FeedPublishViewController alloc] init]];
+        [self.navigationController presentViewController:navigationController animated:YES completion:nil];
+    } else if (self.viewIndex == 2) {
+        UINavigationController *navigationController =
+        [[UINavigationController alloc] initWithRootViewController:[[SetupTableViewController alloc] init]];
+        [self.navigationController presentViewController:navigationController animated:YES completion:nil];
+    }
     
 }
 

@@ -7,8 +7,11 @@
 //
 
 #import "SetupTableViewController.h"
+#import "ConvenienceTableViewController.h"
 
 @interface SetupTableViewController ()
+
+@property (nonatomic, retain) NSArray *dataSource;
 
 @end
 
@@ -22,6 +25,7 @@
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"SetUp"];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -29,27 +33,57 @@
     // Dispose of any resources that can be recreated.
 }
 
-#pragma mark - Table view data source
-
+#pragma mark 协议方法
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-#warning Incomplete implementation, return the number of sections
-    return 0;
+    return 3;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-#warning Incomplete implementation, return the number of rows
-    return 0;
+    return 1;
 }
 
-/*
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 44;
+}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
     
-    // Configure the cell...
-    
+    static NSString *reuserIden = @"SetUp";
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:reuserIden forIndexPath:indexPath];
+    if (!cell) {
+        cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuserIden];
+    }
+    cell.textLabel.text = self.dataSource[indexPath.section];
+    if (indexPath.section == 0)
+        cell.imageView.image = [UIImage imageNamed:@"test"];
+    else if (indexPath.section == 1) {
+        
+    }
+    else if (indexPath.section == 2) {
+        
+    }
     return cell;
 }
-*/
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (indexPath.section == 2) {
+        ConvenienceTableViewController *convence = [[ConvenienceTableViewController alloc]init];
+        [self.navigationController pushViewController:convence animated:YES];
+    }
+}
+
+
+#pragma mark 准备数据源
+-(NSArray *)dataSource
+{
+    if (!_dataSource) {
+        _dataSource = @[@"我收藏的",@"我关注的活动类型",@"便利性设置"];
+    }
+    return _dataSource;
+}
 
 /*
 // Override to support conditional editing of the table view.

@@ -49,7 +49,7 @@
 }
 - (void)initController {
     [self showCustomNavigationBackButton];
-    
+
 }
 - (void)initView {
     [self initSwith];
@@ -70,6 +70,7 @@
         if (![_profilePersonListTableView isHidden]) {
             [_profilePersonListTableView loadDataWithQueryCode:_filter];
             self.navigationItem.rightBarButtonItem = nil;
+            //[self showCustomNavigationPublishButton];
         } else {
             [self showCustomNavigationPublishButton];
         }
@@ -104,6 +105,6 @@
     UINavigationController *navigationController =
     [[UINavigationController alloc] initWithRootViewController:[[FeedPublishViewController alloc] init]];
     [self.navigationController presentViewController:navigationController animated:YES completion:nil];
-    
 }
+
 @end

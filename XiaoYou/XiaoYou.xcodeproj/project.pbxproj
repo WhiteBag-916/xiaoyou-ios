@@ -11,6 +11,12 @@
 		041E3EBA1BAFF9FE00454487 /* CTAssetsPickerChecked@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 041E3EB81BAFF9FE00454487 /* CTAssetsPickerChecked@2x.png */; settings = {ASSET_TAGS = (); }; };
 		041E3EBD1BAFFA0800454487 /* CTAssetsPickerChecked~iOS6.png in Resources */ = {isa = PBXBuildFile; fileRef = 041E3EBB1BAFFA0800454487 /* CTAssetsPickerChecked~iOS6.png */; settings = {ASSET_TAGS = (); }; };
 		041E3EBE1BAFFA0800454487 /* CTAssetsPickerChecked~iOS6@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 041E3EBC1BAFFA0800454487 /* CTAssetsPickerChecked~iOS6@2x.png */; settings = {ASSET_TAGS = (); }; };
+		044792BD1BB14DF40053412A /* commenTagList.m in Sources */ = {isa = PBXBuildFile; fileRef = 044792BC1BB14DF40053412A /* commenTagList.m */; settings = {ASSET_TAGS = (); }; };
+		0464E31B1BB3A0F70017696E /* SetupTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0464E31A1BB3A0F70017696E /* SetupTableViewController.m */; settings = {ASSET_TAGS = (); }; };
+		0464E3211BB3A3DA0017696E /* ConvenienceTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0464E3201BB3A3DA0017696E /* ConvenienceTableViewController.m */; settings = {ASSET_TAGS = (); }; };
+		049C55C21BB3DE18007565E1 /* FastViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 049C55C11BB3DE18007565E1 /* FastViewController.m */; settings = {ASSET_TAGS = (); }; };
+		049C55C91BB3F319007565E1 /* TopView.m in Sources */ = {isa = PBXBuildFile; fileRef = 049C55C81BB3F319007565E1 /* TopView.m */; settings = {ASSET_TAGS = (); }; };
+		049C55CC1BB3F33D007565E1 /* BottomView.m in Sources */ = {isa = PBXBuildFile; fileRef = 049C55CB1BB3F33D007565E1 /* BottomView.m */; settings = {ASSET_TAGS = (); }; };
 		200E397C1B4E818B000B587B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 200E397B1B4E818B000B587B /* main.m */; };
 		200E39871B4E818B000B587B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 200E39861B4E818B000B587B /* Images.xcassets */; };
 		200E39961B4E818B000B587B /* XiaoYouTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 200E39951B4E818B000B587B /* XiaoYouTests.m */; };
@@ -470,6 +476,18 @@
 		041E3EB81BAFF9FE00454487 /* CTAssetsPickerChecked@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "CTAssetsPickerChecked@2x.png"; sourceTree = "<group>"; };
 		041E3EBB1BAFFA0800454487 /* CTAssetsPickerChecked~iOS6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "CTAssetsPickerChecked~iOS6.png"; sourceTree = "<group>"; };
 		041E3EBC1BAFFA0800454487 /* CTAssetsPickerChecked~iOS6@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "CTAssetsPickerChecked~iOS6@2x.png"; sourceTree = "<group>"; };
+		044792BB1BB14DF40053412A /* commenTagList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = commenTagList.h; sourceTree = "<group>"; };
+		044792BC1BB14DF40053412A /* commenTagList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = commenTagList.m; sourceTree = "<group>"; };
+		0464E3191BB3A0F70017696E /* SetupTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SetupTableViewController.h; sourceTree = "<group>"; };
+		0464E31A1BB3A0F70017696E /* SetupTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SetupTableViewController.m; sourceTree = "<group>"; };
+		0464E31F1BB3A3DA0017696E /* ConvenienceTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConvenienceTableViewController.h; sourceTree = "<group>"; };
+		0464E3201BB3A3DA0017696E /* ConvenienceTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConvenienceTableViewController.m; sourceTree = "<group>"; };
+		049C55C01BB3DE18007565E1 /* FastViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FastViewController.h; sourceTree = "<group>"; };
+		049C55C11BB3DE18007565E1 /* FastViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FastViewController.m; sourceTree = "<group>"; };
+		049C55C71BB3F319007565E1 /* TopView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TopView.h; sourceTree = "<group>"; };
+		049C55C81BB3F319007565E1 /* TopView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TopView.m; sourceTree = "<group>"; };
+		049C55CA1BB3F33D007565E1 /* BottomView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BottomView.h; sourceTree = "<group>"; };
+		049C55CB1BB3F33D007565E1 /* BottomView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BottomView.m; sourceTree = "<group>"; };
 		200E39761B4E818B000B587B /* XiaoYou.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = XiaoYou.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		200E397A1B4E818B000B587B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		200E397B1B4E818B000B587B /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -1182,6 +1200,30 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0464E3151BB3A0590017696E /* Setup */ = {
+			isa = PBXGroup;
+			children = (
+				0464E3191BB3A0F70017696E /* SetupTableViewController.h */,
+				0464E31A1BB3A0F70017696E /* SetupTableViewController.m */,
+				0464E31F1BB3A3DA0017696E /* ConvenienceTableViewController.h */,
+				0464E3201BB3A3DA0017696E /* ConvenienceTableViewController.m */,
+			);
+			path = Setup;
+			sourceTree = "<group>";
+		};
+		049C55BF1BB3DDF1007565E1 /* Fast */ = {
+			isa = PBXGroup;
+			children = (
+				049C55C01BB3DE18007565E1 /* FastViewController.h */,
+				049C55C11BB3DE18007565E1 /* FastViewController.m */,
+				049C55C71BB3F319007565E1 /* TopView.h */,
+				049C55C81BB3F319007565E1 /* TopView.m */,
+				049C55CA1BB3F33D007565E1 /* BottomView.h */,
+				049C55CB1BB3F33D007565E1 /* BottomView.m */,
+			);
+			path = Fast;
+			sourceTree = "<group>";
+		};
 		200E396D1B4E818B000B587B = {
 			isa = PBXGroup;
 			children = (
@@ -1205,6 +1247,7 @@
 		200E39781B4E818B000B587B /* XiaoYou */ = {
 			isa = PBXGroup;
 			children = (
+				0464E3151BB3A0590017696E /* Setup */,
 				20DBFD601B4FA7E1009134D0 /* Main */,
 				20DC87EF1B5F3D570019DC7F /* Login */,
 				20E122181B705D4E00F90BD3 /* Feed */,
@@ -1417,6 +1460,8 @@
 				65A703CD1B8C4EE70094D8A2 /* YFlatSwitchView.m */,
 				65CF638D1B8F0E4A00ACBB70 /* YCommonReport.h */,
 				65CF638E1B8F0E4A00ACBB70 /* YCommonReport.m */,
+				044792BB1BB14DF40053412A /* commenTagList.h */,
+				044792BC1BB14DF40053412A /* commenTagList.m */,
 			);
 			path = CommonView;
 			sourceTree = "<group>";
@@ -1529,6 +1574,7 @@
 		20E122181B705D4E00F90BD3 /* Feed */ = {
 			isa = PBXGroup;
 			children = (
+				049C55BF1BB3DDF1007565E1 /* Fast */,
 				65A846FC1B81C9A400933815 /* FeedCell */,
 				2076A2F41B81B8F1001FFBAC /* NotifyList */,
 				20E1222A1B708CB400F90BD3 /* TagList */,
@@ -3089,6 +3135,7 @@
 				6518A2481B80429300AEB79D /* TagListTableView.m in Sources */,
 				656234771B837FDC00651C88 /* YFaceImageView.m in Sources */,
 				65969DCD1B871AA9001DD348 /* ProfilePersonListController.m in Sources */,
+				049C55CC1BB3F33D007565E1 /* BottomView.m in Sources */,
 				33380D971B857826008B51EB /* SendMessageTableViewCell.m in Sources */,
 				6592DCD91B806A9B004CD118 /* GroupApplyTableViewCell.m in Sources */,
 				333122571B806EDB00D3D032 /* EMSDWebImageDecoder.m in Sources */,
@@ -3098,6 +3145,7 @@
 				6592DCDB1B806A9B004CD118 /* ContactsTableView.m in Sources */,
 				20DAE14D1B8821DD00607996 /* PerfectInformationViewController.m in Sources */,
 				333122521B806EDB00D3D032 /* MWTapDetectingView.m in Sources */,
+				044792BD1BB14DF40053412A /* commenTagList.m in Sources */,
 				653199DE1B80B41C00405B72 /* ConnectTag.m in Sources */,
 				3331223C1B806EDB00D3D032 /* EMChatViewCell.m in Sources */,
 				339549891B81BDFF00F9ECB1 /* GroupInfoDetailCollectionView.m in Sources */,
@@ -3125,6 +3173,7 @@
 				6592DCDC1B806A9B004CD118 /* ContactsTableViewCell.m in Sources */,
 				20DAF9A81B871E45005B7932 /* ChooseSchoolTableViewCell.m in Sources */,
 				3331223A1B806EDB00D3D032 /* EMChatTimeCell.m in Sources */,
+				049C55C91BB3F319007565E1 /* TopView.m in Sources */,
 				65F55AA11B899EBC00ED4348 /* UIImageView+Ext.m in Sources */,
 				333122591B806EDB00D3D032 /* EMSDWebImageDownloaderOperation.m in Sources */,
 				333122631B806EDB00D3D032 /* UIImageView+EMWebCache.m in Sources */,
@@ -3178,8 +3227,10 @@
 				207F80871B7098E3005E8F6A /* AppDelegate+RootVC.m in Sources */,
 				20DD78FB1BA97AAF009AD1A9 /* LoginWaitingViewController.m in Sources */,
 				6592DCD71B806A9B004CD118 /* XYFriendApplyViewController.m in Sources */,
+				0464E3211BB3A3DA0017696E /* ConvenienceTableViewController.m in Sources */,
 				333122321B806EDB00D3D032 /* DXChatBarMoreView.m in Sources */,
 				6592DCD31B806A9B004CD118 /* XYContactsInfoDetailViewController.m in Sources */,
+				0464E31B1BB3A0F70017696E /* SetupTableViewController.m in Sources */,
 				3331222A1B806EDB00D3D032 /* ChatSendHelper.m in Sources */,
 				209C4C731B8C662900B584DF /* AssociationsDetailViewController.m in Sources */,
 				20E034091B8471E5002E4583 /* SearchFilterTableViewCell.m in Sources */,
@@ -3195,6 +3246,7 @@
 				3331227F1B806EDC00D3D032 /* NSDate+Category.m in Sources */,
 				3331222E1B806EDB00D3D032 /* LocationViewController.m in Sources */,
 				3331222F1B806EDB00D3D032 /* DXMessageToolBar.m in Sources */,
+				049C55C21BB3DE18007565E1 /* FastViewController.m in Sources */,
 				2076A3011B81C590001FFBAC /* YCommonAlertView.m in Sources */,
 				65969DDC1B875F31001DD348 /* ProfilePublishViewController.m in Sources */,
 				3331227A1B806EDB00D3D032 /* amrFileCodec.mm in Sources */,

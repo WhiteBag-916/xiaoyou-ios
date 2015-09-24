@@ -33,6 +33,7 @@
 @property (nonatomic, strong, readwrite) UILabel *contactNameLabel;            //名字
 @property (nonatomic, strong, readwrite) UILabel *timeLabel;                   //时间
 @property (nonatomic, strong, readwrite) ConnectTag *tagList;                  //人脉标签
+@property (nonatomic, strong, readwrite) UILabel *genderLabel;
 @end
 
 @implementation FeedCellTopView
@@ -59,6 +60,8 @@
             _contactHeadImageView.layer.cornerRadius = KHEADIMGWIDTH / 2;
             _contactHeadImageView.clipsToBounds = true;
             _contactHeadImageView.backgroundColor = [UIColor redColor];
+            
+            _genderLabel = [[UILabel alloc]init];
             
             _contactNameLabel = [YUtils initLabel:CONTENT_FONT(14)
                                             color:[UIColor blackColor]

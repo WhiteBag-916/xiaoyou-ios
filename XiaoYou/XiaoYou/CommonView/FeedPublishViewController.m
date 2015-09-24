@@ -238,7 +238,6 @@
         make.width.mas_equalTo(KIMGGROUPSIZE);
     }];
     
-    
 }
 
 - (void)initBottom {
@@ -378,6 +377,7 @@
 
 - (void)snapImage
 {
+    //照片选择
     UzysAssetsPickerController *picker = [[UzysAssetsPickerController alloc] init];
     picker.delegate = self;
     [picker takePhoto];
