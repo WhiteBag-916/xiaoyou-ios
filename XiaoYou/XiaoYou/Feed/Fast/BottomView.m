@@ -26,7 +26,9 @@
 -(instancetype)init
 {
     if (self = [super init]) {
-        
+        [self initTopView];
+        [self initMiddleView];
+        [self initBottomView];
     }
     return self;
 }
@@ -57,9 +59,12 @@
 }
 
 
+//使用懒加载方式加载View
 -(UIView *)topView {
     if (!_topView) {
         _topView = [[UIView alloc]init];
+        _topView.backgroundColor = [UIColor lightGrayColor];
+        
         [self addSubview:_topView];
     }
     return _topView;
@@ -68,6 +73,7 @@
 -(UIView *)bottomView {
     if (!_bottomView) {
         _bottomView = [[UIView alloc]init];
+        _bottomView.backgroundColor = [UIColor cyanColor];
         [self addSubview:_bottomView];
     }
     return _bottomView;
@@ -75,6 +81,7 @@
 
 -(UIView *)middleView {
     if (!_middleView) {
+        _middleView.backgroundColor = [UIColor redColor];
         _middleView = [[UIView alloc]init];
         [self addSubview:_middleView];
     }

@@ -7,8 +7,12 @@
 //
 
 #import "FastViewController.h"
-
+#import "BottomView.h"
+#import "TopView.h"
 @interface FastViewController ()
+
+@property (nonatomic,retain) TopView    *topView;
+@property (nonatomic,retain) BottomView *bottomView;
 
 @end
 
@@ -17,6 +21,48 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    self.title = @"FAST CONNECTION";
+    self.view.backgroundColor = [UIColor whiteColor];
+    
+    self.topView.backgroundColor = [UIColor lightGrayColor];
+    [self.topView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.view);
+        make.leading.mas_equalTo(0);
+        make.trailing.mas_equalTo(0);
+        make.height.mas_equalTo(300);
+    }];
+    
+    BottomView *bottomView = [[BottomView alloc]init];
+    [self.view addSubview:bottomView];
+    self.bottomView.backgroundColor = [UIColor cyanColor];
+    [bottomView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.bottomView).width.offset(2);
+        make.leading.mas_equalTo(0);
+        make.trailing.mas_equalTo(0);
+        make.bottom.equalTo(self.view.mas_bottom);
+        
+    }];
+    
+    
+}
+
+
+
+-(BottomView *)bottomView {
+    if (!_bottomView) {
+        _bottomView = [[BottomView alloc]init];
+        [self.view addSubview:_bottomView];
+    }
+    return _bottomView;
+}
+
+-(TopView *)topView {
+    if (!_topView) {
+        _topView = [TopView topView];
+        [self.view addSubview:_topView];
+    }
+    return _topView;
 }
 
 - (void)didReceiveMemoryWarning {

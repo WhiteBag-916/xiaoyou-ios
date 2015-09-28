@@ -104,7 +104,7 @@
     [scroll addSubview:_contentView];
     [_contentView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.equalTo(scroll);
-        make.width.equalTo(scroll);
+        //make.width.equalTo(scroll);
     }];
     [self initGroupView];
     [self initTextView];
@@ -442,6 +442,8 @@
     });
 }
 
+
+#pragma mark 优化 add完成之后刷新UI
 //更新图片
 - (void)updateImage {
     NSString *path = [YDirectory newImgCache:[NSString stringWithFormat:@"feed%d.png", [_imgGroup getImgCount]]];

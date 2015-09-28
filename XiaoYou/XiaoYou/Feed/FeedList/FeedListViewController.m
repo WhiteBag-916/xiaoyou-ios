@@ -22,7 +22,12 @@
 #import "FeedPublishViewController.h"
 #import "ProvisionManager.h"
 #import "FeedFilterViewController.h"
+
+//测试用
 #import "SetupTableViewController.h"
+#import "FastViewController.h"
+#import "RemindViewController.h"
+#import "ScheduleViewController.h"
 
 @interface FeedListViewController ()<SlideNavigationControllerDelegate>
 
@@ -214,9 +219,21 @@
         [[UINavigationController alloc] initWithRootViewController:[[FeedPublishViewController alloc] init]];
         [self.navigationController presentViewController:navigationController animated:YES completion:nil];
     } else if (self.viewIndex == 2) {
-        UINavigationController *navigationController =
-        [[UINavigationController alloc] initWithRootViewController:[[SetupTableViewController alloc] init]];
-        [self.navigationController presentViewController:navigationController animated:YES completion:nil];
+        //UINavigationController *navigationController =
+        //[[UINavigationController alloc] initWithRootViewController:[[SetupTableViewController alloc] init]];
+        //[self.navigationController pushViewController: animated:YES];
+        
+        
+        //FastViewController *fast = [[FastViewController alloc]init];
+        //[self.navigationController presentViewController:fast animated:YES completion:nil];
+        //[self.navigationController pushViewController:fast animated:YES];
+        
+        //RemindViewController *remind = [[RemindViewController alloc]init];
+        //[self.navigationController pushViewController:remind animated:YES];
+        
+        ScheduleViewController *shcedule = [[ScheduleViewController alloc]init];
+        [self.navigationController pushViewController:shcedule animated:YES];
+        
     }
     
 }

@@ -10,4 +10,6 @@
 
 @interface TopView : UIView
 
++(TopView*)topView;
+
 @end

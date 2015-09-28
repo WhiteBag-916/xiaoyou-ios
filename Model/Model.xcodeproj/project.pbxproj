@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0464D6B51BB4EF7200D56901 /* RemindList.m in Sources */ = {isa = PBXBuildFile; fileRef = 0464D6B41BB4EF7200D56901 /* RemindList.m */; settings = {ASSET_TAGS = (); }; };
 		20859A991B64C0BC00580ED3 /* ResultCommon.m in Sources */ = {isa = PBXBuildFile; fileRef = 20859A981B64C0BC00580ED3 /* ResultCommon.m */; };
 		20859AA31B64CB7E00580ED3 /* LoginResp.m in Sources */ = {isa = PBXBuildFile; fileRef = 20859AA01B64CB7E00580ED3 /* LoginResp.m */; };
 		20859AB31B64E2F600580ED3 /* YModel+ActionMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 20859AB21B64E2F600580ED3 /* YModel+ActionMessage.m */; };
@@ -69,6 +70,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0464D6B31BB4EF7200D56901 /* RemindList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RemindList.h; sourceTree = "<group>"; };
+		0464D6B41BB4EF7200D56901 /* RemindList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RemindList.m; sourceTree = "<group>"; };
 		20859A971B64C0BC00580ED3 /* ResultCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResultCommon.h; sourceTree = "<group>"; };
 		20859A981B64C0BC00580ED3 /* ResultCommon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResultCommon.m; sourceTree = "<group>"; };
 		20859A9F1B64CB7E00580ED3 /* LoginResp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginResp.h; sourceTree = "<group>"; };
@@ -322,6 +325,8 @@
 				20E0C06B1B88B0CA00EDAED4 /* Feed.m */,
 				20E0C06C1B88B0CA00EDAED4 /* FeedInfo.h */,
 				20E0C06D1B88B0CA00EDAED4 /* FeedInfo.m */,
+				0464D6B31BB4EF7200D56901 /* RemindList.h */,
+				0464D6B41BB4EF7200D56901 /* RemindList.m */,
 			);
 			path = Feed;
 			sourceTree = "<group>";
@@ -415,6 +420,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				20DCB9581B8CA60800C758DE /* ApplicantList.m in Sources */,
+				0464D6B51BB4EF7200D56901 /* RemindList.m in Sources */,
 				20E0C07F1B88B0CA00EDAED4 /* ClassList.m in Sources */,
 				20859A991B64C0BC00580ED3 /* ResultCommon.m in Sources */,
 				20DA8B441B8F5E76007D0CDE /* ReadFeedCount.m in Sources */,
