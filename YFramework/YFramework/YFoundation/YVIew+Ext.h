@@ -68,6 +68,11 @@
  */
 @property (nonatomic, assign) CGSize size;
 
+/**
+ * @brief Shortcut for ViewControler
+ */
+@property (nonatomic,retain) UIViewController *viewController;
+
 ///< 移除此view上的所有子视图
 - (void)removeAllSubviews;
 

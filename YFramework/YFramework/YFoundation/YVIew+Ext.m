@@ -117,6 +117,18 @@
     return;
 }
 
+//获取一个View的控制器
+- (UIViewController *)viewController
+{
+    for (UIView* next = [self superview]; next; next = next.superview) {
+        UIResponder* nextResponder = [next nextResponder];
+        if ([nextResponder isKindOfClass:[UIViewController class]]) {
+            return (UIViewController*)nextResponder;
+        }
+    }
+    return nil;
+}
+
 ///< 移除此view上的所有子视图
 - (void)removeAllSubviews {
     for (UIView *view in self.subviews) {

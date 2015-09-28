@@ -9,10 +9,11 @@
 #import "ScheduleCell.h"
 #define CELL_INSET  10
 @interface ScheduleCell ()
-
+@property (nonatomic,retain) UIImageView    *timeRemindImageView;//时间提醒,今天,明天,后天,
 @property (nonatomic,retain) UIView         *wrapContentView;   //内容View
 @property (nonatomic,retain) UILabel        *timeLabel;         //时间
 @property (nonatomic,retain) UILabel        *otherLabel;        //还有谁
+@property (nonatomic,retain) UIImageView    *tooSeeMoreImageView;//查看更多图片
 @property (nonatomic,retain) UIView         *sepLineView;       //分割线
 @property (nonatomic,retain) UILabel        *projectNameLabel;  //项目名称
 @property (nonatomic,retain) UIImageView    *activityTimeImageView;//时间图片
@@ -38,9 +39,11 @@
 
 -(void)initView
 {
+    
     //容器视图
     _wrapContentView = [[UIView alloc]init];
     [self.contentView addSubview:_wrapContentView];
+    _wrapContentView.backgroundColor = [UIColor whiteColor];//[UIColor colorWithRed:254.0/255 green:1 blue:1 alpha:0];
     _wrapContentView.layer.borderWidth = 1;
     _wrapContentView.layer.borderColor = [UIColor lightGrayColor].CGColor;
     [_wrapContentView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -49,7 +52,6 @@
         make.left.equalTo(self.mas_left).offset(CELL_INSET);
         make.right.equalTo(self.mas_right).offset(-CELL_INSET);
     }];
-    _wrapContentView.backgroundColor = [UIColor cyanColor];
     _wrapContentView.layer.cornerRadius = 5;
     _wrapContentView.clipsToBounds = YES;
     
@@ -68,8 +70,17 @@
     _otherLabel.font = [UIFont systemFontOfSize:16];
     _otherLabel.text = @"还有谁";
     [_otherLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.trailing.mas_equalTo(-10);
+        make.trailing.mas_equalTo(-20);
         make.centerY.equalTo(self.timeLabel.mas_centerY);
+    }];
+    
+    
+    _tooSeeMoreImageView = [[UIImageView alloc]init];
+    [self.wrapContentView addSubview:_tooSeeMoreImageView];
+    _tooSeeMoreImageView.image = [UIImage imageNamed:@"arrow"];
+    [_tooSeeMoreImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.trailing.mas_equalTo(-5);
+        make.centerY.equalTo(_otherLabel.mas_centerY);
     }];
     
     _sepLineView = [[UIView alloc]init];
@@ -92,7 +103,7 @@
     
     _activityTimeImageView = [[UIImageView alloc]init];
     [self.wrapContentView addSubview:_activityTimeImageView];
-    _activityTimeImageView.image = [UIImage imageNamed:@"default_head@3x"];
+    _activityTimeImageView.image = [UIImage imageNamed:@"schedule_time"];
     [_activityTimeImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.timeLabel.mas_left);
         make.top.equalTo(self.projectNameLabel.mas_bottom).offset(10);
@@ -117,7 +128,7 @@
     
     _locationImageView = [[UIImageView alloc]init];
     [self.wrapContentView addSubview:_locationImageView];
-    _locationImageView.image = [UIImage imageNamed:@"default_head"];
+    _locationImageView.image = [UIImage imageNamed:@"schedule_location"];
     [_locationImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.timeLabel);
         make.top.equalTo(self.activityTimeImageView.mas_bottom).offset(10);
@@ -129,6 +140,14 @@
     [_locationLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.equalTo(self.locationImageView);
         make.left.equalTo(self.activityTimeLabel);
+    }];
+    
+    _timeRemindImageView = [[UIImageView alloc]init];
+    [self.contentView addSubview:_timeRemindImageView];
+    _timeRemindImageView.image = [UIImage imageNamed:@"schedule_houtian"];
+    [_timeRemindImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.leading.mas_equalTo(0);
+        make.top.mas_equalTo(10);
     }];
 }
 

@@ -8,6 +8,7 @@
 
 #import "ScheduleListTableView.h"
 #import "ScheduleCell.h"
+#define SCHEREUSEID @"schedulecell"
 
 @interface ScheduleListTableView ()<UITableViewDelegate,UITableViewDataSource>
 @end
@@ -41,7 +42,7 @@
 #pragma mark 协议方法
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 200;
+    return 150;
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
@@ -54,7 +55,6 @@
     return 1;
 }
 
-
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     return 10;
@@ -62,10 +62,16 @@
 
 -(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    ScheduleCell *cell = [tableView dequeueReusableCellWithIdentifier:@"aa"];
+    ScheduleCell *cell = [tableView dequeueReusableCellWithIdentifier:SCHEREUSEID];
     if (!cell) {
-        cell = [[ScheduleCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@""];
+        cell = [[ScheduleCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:SCHEREUSEID];
     }
     return cell;
 }
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    
+}
+
 @end
