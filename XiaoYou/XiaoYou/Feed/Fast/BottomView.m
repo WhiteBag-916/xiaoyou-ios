@@ -73,7 +73,6 @@
 -(UIView *)bottomView {
     if (!_bottomView) {
         _bottomView = [[UIView alloc]init];
-        _bottomView.backgroundColor = [UIColor cyanColor];
         [self addSubview:_bottomView];
     }
     return _bottomView;

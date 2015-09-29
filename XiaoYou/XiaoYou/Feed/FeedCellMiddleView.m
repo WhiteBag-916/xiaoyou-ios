@@ -60,6 +60,7 @@
     }
     return self;
 }
+
 - (void)setData:(id)inData {
     if ([inData isKindOfClass:[FeedInfo class]]) {
         FeedInfo *data = inData;

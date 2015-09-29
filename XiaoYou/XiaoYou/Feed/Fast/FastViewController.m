@@ -35,7 +35,6 @@
     
     BottomView *bottomView = [[BottomView alloc]init];
     [self.view addSubview:bottomView];
-    self.bottomView.backgroundColor = [UIColor cyanColor];
     [bottomView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.bottomView).width.offset(2);
         make.leading.mas_equalTo(0);
