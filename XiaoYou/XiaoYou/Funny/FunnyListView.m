@@ -8,6 +8,9 @@
 
 #import "FunnyListView.h"
 #import "FunnyCell.h"
+#import "YVIew+Ext.h"
+#import "FunnyDetaiViewController.h"
+#import "YNavigationController.h"
 @interface FunnyListView ()<UITableViewDataSource,UITableViewDelegate>
 @end
 
@@ -34,12 +37,12 @@
 #pragma mark 协议方法
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 1;
+    return 5;
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 400;
+    return SCALE_NUM(300);
 }
 
 -(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -47,4 +50,11 @@
     FunnyCell *cell = [FunnyCell cellWithTableView:tableView];
     return cell;
 }
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    FunnyDetaiViewController *detailVC = [[FunnyDetaiViewController alloc]init];
+    [self.viewController.navigationController pushViewController:detailVC animated:YES needHiddenBottomBar:YES];
+}
+
 @end

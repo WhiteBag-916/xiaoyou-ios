@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
-@interface ConvenienceTableViewController : UITableViewController
+#import "YViewController.h"
+@interface ConvenienceTableViewController : YViewController
 
 @end

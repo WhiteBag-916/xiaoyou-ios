@@ -10,4 +10,5 @@
 
 @interface FunnyMiddleView : UIView
 
+
 @end

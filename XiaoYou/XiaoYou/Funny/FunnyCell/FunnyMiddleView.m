@@ -7,7 +7,7 @@
 //
 
 #import "FunnyMiddleView.h"
-
+#import "FunnyTopView.h"
 @interface FunnyMiddleView ()
 @property (nonatomic,strong) UIImageView    *timeImageView; //报名截止时间
 @property (nonatomic,strong) UILabel        *staticDeadLineDes;//截止时间
@@ -34,7 +34,7 @@
     [self addSubview:_timeImageView];
     
     [_timeImageView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.leading.mas_equalTo(35);
+        make.leading.mas_equalTo(50);
         make.top.mas_equalTo(10);
     }];
     
@@ -42,7 +42,8 @@
     [self addSubview:_staticDeadLineDes];
     _staticDeadLineDes.text = @"报名截止时间";
     [_staticDeadLineDes mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(_timeImageView.mas_right).offset(10);
+        make.leading.mas_equalTo(SCALE_NUM(70));
+        //make.left.equalTo(_timeImageView.mas_right).offset(10);
         make.centerY.equalTo(_timeImageView.mas_centerY);
     }];
     
@@ -85,7 +86,7 @@
         make.centerY.equalTo(_locationImageView.mas_centerY);
     }];
     
-    _categotyImageView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"schedule_time"]];
+    _categotyImageView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"funny_detail_category"]];
     [self addSubview:_categotyImageView];
     [_categotyImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(_locationImageView.mas_bottom).offset(10);
@@ -100,6 +101,5 @@
         make.centerY.equalTo(_categotyImageView.mas_centerY);
     }];
 }
-
 
 @end

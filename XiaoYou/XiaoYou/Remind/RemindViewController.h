@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
-@interface RemindViewController : UIViewController
+#import "YViewController.h"
+@interface RemindViewController : YViewController
 
 @end

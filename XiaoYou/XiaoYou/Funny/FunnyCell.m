@@ -15,7 +15,8 @@
 @property (nonatomic,strong) FunnyTopView       *funnyTopView;
 @property (nonatomic,strong) FunnyMiddleView    *funnyMiddleView;
 @property (nonatomic,strong) FunnyBottomView    *funnyBottomView;
-@property (nonatomic,strong) UIView             *dashLineView;//中间虚线
+@property (nonatomic,strong) UIView             *middleDashLineView;//中间虚线
+@property (nonatomic,strong) UIView             *bottomDashLineView;//下方虚线
 @end
 
 @implementation FunnyCell
@@ -31,8 +32,6 @@
 
 -(instancetype)init {
     if (self = [super init]) {
-        //[self initFunnyTopView];
-        //[self initFunnyMiddleView];
     }
     return self;
 }
@@ -41,8 +40,9 @@
 {
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
         [self initFunnyTopView];
-        [self drawDashLine];
+        [self initMiddleDashLineView];
         [self initFunnyMiddleView];
+        [self initBottomDashLineView];
         [self initFunnyBottomView];
         self.selectionStyle = UITableViewCellSelectionStyleNone;
     }
@@ -82,19 +82,34 @@
     }];
 }
 
--(void)drawDashLine {
-    _dashLineView = [[UIView alloc]init];
-    [self.contentView addSubview:_dashLineView];
-    [_dashLineView mas_makeConstraints:^(MASConstraintMaker *make) {
+-(void)initMiddleDashLineView {
+    _middleDashLineView = [[UIView alloc]init];
+    [self.contentView addSubview:_middleDashLineView];
+    [_middleDashLineView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(_funnyTopView.mas_bottom).offset(5);
         make.height.mas_equalTo(2);
-        make.leading.mas_equalTo(20);
+        make.leading.mas_equalTo(SCALE_NUM(70));
         make.trailing.mas_equalTo(0);
-        
     }];
-    //超出部分截断
-    _dashLineView.layer.masksToBounds = YES;
-    
+    [_middleDashLineView.layer addSublayer:[self drawDashLine]];
+    _middleDashLineView.layer.masksToBounds = YES;
+}
+
+-(void)initBottomDashLineView {
+    _bottomDashLineView = [[UIView alloc]init];
+    [self.contentView addSubview:_bottomDashLineView];
+    [_bottomDashLineView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.leading.mas_equalTo(SCALE_NUM(70));
+        make.top.equalTo(_funnyMiddleView.mas_bottom).offset(5);
+        make.height.mas_equalTo(2);
+        make.trailing.mas_equalTo(0);
+    }];
+    [_bottomDashLineView.layer addSublayer:[self drawDashLine]];
+    _bottomDashLineView.layer.masksToBounds = YES;
+}
+
+//画出一条虚线
+-(CAShapeLayer*)drawDashLine {
     CAShapeLayer *shapeLayer = [CAShapeLayer layer];
     [shapeLayer setBounds:self.bounds];
     [shapeLayer setPosition:self.center];
@@ -108,11 +123,10 @@
     [shapeLayer setLineWidth:2.0f];
     [shapeLayer setLineJoin:kCALineJoinRound];
     
-    // 3=线的宽度 1=每条线的间距
+    // 3=每条线的宽度 1=每条线的间距 － － － －
     [shapeLayer setLineDashPattern:[NSArray arrayWithObjects:
                                     [NSNumber numberWithInt:3],
                                     [NSNumber numberWithInt:1],nil]];
-
     // Setup the path
     CGMutablePathRef path = CGPathCreateMutable();
     
@@ -123,7 +137,8 @@
     [shapeLayer setPath:path];
     CGPathRelease(path);
     // 可以把self改成任何你想要的UIView, 下图演示就是放到UITableViewCell中的
-    [self.dashLineView.layer addSublayer:shapeLayer];
+    //[self.dashLineView.layer addSublayer:shapeLayer];
+    return shapeLayer;
 }
 
 @end

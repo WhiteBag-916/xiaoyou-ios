@@ -9,5 +9,5 @@
 #import "YTableView.h"
 
 @interface FunnyTopView : UIView
-@property (nonatomic,strong) UILabel        *descriptionLabel;//描述,只显示一行
+@property (nonatomic,strong) UILabel        *titleLabel;    //标题(校级活动公告)
 @end

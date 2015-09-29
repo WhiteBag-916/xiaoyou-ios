@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
-@interface ScheduleViewController : UIViewController
+#import "YViewController.h"
+@interface ScheduleViewController : YViewController
 
 @end

@@ -29,9 +29,10 @@
     _seeMoreLable = [[UILabel alloc]init];
     [self addSubview:_seeMoreLable];
     _seeMoreLable.text = @"see more";
+    [_seeMoreLable setTextColor:[UIColor greenColor]];
     [_seeMoreLable mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.mas_equalTo(10);
-        make.leading.mas_equalTo(20);
+        make.leading.mas_equalTo(SCALE_NUM(70));
     }];
     
     _seeMoreImageView = [[UIImageView alloc]init];

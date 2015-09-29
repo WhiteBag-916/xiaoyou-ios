@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
-@interface SetupTableViewController : UITableViewController
+#import "YViewController.h"
+@interface SetupTableViewController : YViewController
 
 @end

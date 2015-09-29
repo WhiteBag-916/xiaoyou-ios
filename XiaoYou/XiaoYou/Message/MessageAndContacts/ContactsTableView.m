@@ -13,6 +13,7 @@
 #import "YLog.h"
 #import "XYContactsInfoDetailViewController.h"
 #import "XYGroupInfoDetailViewController.h"
+#import "FunnyViewController.h"
 #import "Masonry.h"
 #import "YSystemDefine.h"
 #import "ContactManager.h"
@@ -324,7 +325,9 @@
 }
 -(void)tapFunGestureRecognizerAction
 {
-    //好玩详情页
+    //好玩列表页
+    FunnyViewController *funnyVC = [[FunnyViewController alloc]init];
+    [self.myController.navigationController pushViewController:funnyVC animated:YES needHiddenBottomBar:YES];
 }
 
 #pragma mark - 将拿到的数据源转化成自己需要的数据格式
@@ -438,7 +441,8 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
+ 
+    NSLog(@"this is row = %li",(long)indexPath.section);
     ContactsTableViewCell * cell = (ContactsTableViewCell *)[self cellForRowAtIndexPath:indexPath];
     
     

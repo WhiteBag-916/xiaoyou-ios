@@ -8,9 +8,10 @@
 
 #import "ConvenienceTableViewController.h"
 #define REUSERIDEN  @"Convenience"
-@interface ConvenienceTableViewController ()
+@interface ConvenienceTableViewController ()<UITableViewDelegate,UITableViewDataSource>
 
-@property (nonatomic, retain) NSArray *dataSource;
+@property (nonatomic, retain) UITableView   *tableView;
+@property (nonatomic, retain) NSArray       *dataSource;
 
 @end
 
@@ -19,7 +20,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    
+    [self setTitleView];
+    [self showCustomNavigationBackButton];
+    [self tableView];
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:REUSERIDEN];
 }
 
@@ -28,8 +31,29 @@
     // Dispose of any resources that can be recreated.
 }
 
-#pragma mark - Table view data source
+-(UITableView *)tableView {
+    if (!_tableView) {
+        _tableView = [[UITableView alloc]initWithFrame:CGRectZero style:UITableViewStyleGrouped];
+        [self.view addSubview:_tableView];
+        _tableView.delegate = self;
+        _tableView.dataSource = self;
+        [_tableView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.edges.equalTo(self.view);
+        }];
+    }
+    return _tableView;
+}
 
+-(void)setTitleView {
+    UILabel *titleLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, 150, 64)];
+    titleLabel.font = [UIFont systemFontOfSize:18];
+    titleLabel.textAlignment = NSTextAlignmentCenter;
+    titleLabel.text = @"便利性设置";
+    [titleLabel setTextColor:[UIColor whiteColor]];
+    self.navigationItem.titleView = titleLabel;
+}
+
+#pragma mark - Table view data source
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 3;
 }
@@ -38,6 +62,15 @@
     return 1;
 }
 
+-(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
+{
+    return 0.1;
+}
+
+-(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    return 0.1;
+}
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
@@ -46,7 +79,7 @@
         cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:REUSERIDEN];
     }
     cell.textLabel.text = self.dataSource[indexPath.section];
-    cell.imageView.image = [UIImage imageNamed:@"test"];
+    cell.textLabel.font = [UIFont systemFontOfSize:16];
     UISwitch *switchView = [[UISwitch alloc]init];
     [switchView addTarget:self action:@selector(switchViewClick:) forControlEvents:UIControlEventValueChanged];
     switchView.tag = 50000 + indexPath.section;

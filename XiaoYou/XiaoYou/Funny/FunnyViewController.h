@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
-@interface FunnyViewController : UIViewController
+#import "YViewController.h"
+@interface FunnyViewController : YViewController
 
 @end

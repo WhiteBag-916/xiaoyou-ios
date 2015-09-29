@@ -8,6 +8,10 @@
 
 #import "FunnyViewController.h"
 #import "FunnyListView.h"
+#import "YNavigationController.h"
+#import "SetupTableViewController.h"
+#import "RemindViewController.h"
+#import "ScheduleViewController.h"
 @interface FunnyViewController ()
 @property (nonatomic,strong) FunnyListView *funnyList;
 @end
@@ -17,6 +21,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    [self setUpCustomNavgationBar];
     [self funnyList];
 }
 
@@ -33,6 +38,50 @@
     return _funnyList;
 }
 
+-(void)setUpCustomNavgationBar {
+    //right barbutton view
+    UIView * view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 95, KNavigationBarheight)];
+    
+    UIButton *setupButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 25, KNavigationBarheight)];
+    [setupButton setImage:[UIImage imageNamed:@"bar_setup"] forState:UIControlStateNormal];
+    [setupButton addTarget:self
+                     action:@selector(setupBtnAction)
+           forControlEvents:UIControlEventTouchUpInside];
+    [view addSubview:setupButton];
+    
+    UIButton * remindBtn = [[UIButton alloc] initWithFrame:CGRectMake(35, 0, 25, KNavigationBarheight)];
+    [remindBtn setImage:[UIImage imageNamed:@"bar_bell"] forState:UIControlStateNormal];
+    [remindBtn addTarget:self
+                  action:@selector(remindAction)
+        forControlEvents:UIControlEventTouchUpInside];
+    [view addSubview:remindBtn];
+    
+    UIButton * scheduleBtn = [[UIButton alloc] initWithFrame:CGRectMake(70, 0, 25, KNavigationBarheight)];
+    [scheduleBtn setImage:[UIImage imageNamed:@"bar_time"] forState:UIControlStateNormal];
+    [scheduleBtn addTarget:self
+                  action:@selector(scheduleAction)
+        forControlEvents:UIControlEventTouchUpInside];
+    [view addSubview:scheduleBtn];
+    
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:view];
+    
+    [self showCustomNavigationBackButton];
+}
+
+-(void)setupBtnAction {
+    SetupTableViewController *setupVC = [[SetupTableViewController alloc] init];
+    [self.navigationController pushViewController:setupVC animated:YES needHiddenBottomBar:YES];
+}
+
+-(void)remindAction {
+    RemindViewController *remindVC = [[RemindViewController alloc]init];
+    [self.navigationController pushViewController:remindVC animated:YES needHiddenBottomBar:YES];
+}
+
+-(void)scheduleAction {
+    ScheduleViewController *scheduleVC = [[ScheduleViewController alloc]init];
+    [self.navigationController pushViewController:scheduleVC animated:YES needHiddenBottomBar:YES];
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
