@@ -1,5 +1,5 @@
 //
-//  FunnyDetaiViewController.h
+//  FunnyDetailCell.h
 //  XiaoYou
 //
 //  Created by sheng on 15/9/29.
@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface FunnyDetaiViewController : UIViewController
+@interface ActivityDetailCell : UITableViewCell
+
++(ActivityDetailCell*)cellWithTableView:(UITableView*)tableView;
 
 @end

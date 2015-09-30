@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 #import "YViewController.h"
-@interface FunnyViewController : YViewController
+@interface ActivityViewController : YViewController
 
 @end

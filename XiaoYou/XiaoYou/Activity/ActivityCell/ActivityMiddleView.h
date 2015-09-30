@@ -1,5 +1,5 @@
 //
-//  FunnyListView.h
+//  FunnyMiddleView.h
 //  XiaoYou
 //
 //  Created by sheng on 15/9/28.
@@ -8,6 +8,7 @@
 
 #import "YTableView.h"
 
-@interface FunnyListView : YTableView
+@interface ActivityMiddleView : UIView
+
 
 @end

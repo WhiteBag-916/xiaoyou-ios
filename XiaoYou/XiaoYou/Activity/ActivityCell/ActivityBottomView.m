@@ -6,16 +6,16 @@
 //  Copyright © 2015年 xc. All rights reserved.
 //
 
-#import "FunnyBottomView.h"
+#import "ActivityBottomView.h"
 
-@interface FunnyBottomView ()
+@interface ActivityBottomView ()
 
 @property (nonatomic,strong) UILabel        *seeMoreLable;
 @property (nonatomic,strong) UIImageView    *seeMoreImageView;
 
 @end
 
-@implementation FunnyBottomView
+@implementation ActivityBottomView
 
 
 -(instancetype)init {

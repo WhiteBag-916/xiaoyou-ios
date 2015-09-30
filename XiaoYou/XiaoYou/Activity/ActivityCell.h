@@ -8,8 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface FunnyCell : UITableViewCell
+@interface ActivityCell : UITableViewCell
 
-+(FunnyCell*)cellWithTableView:(UITableView*)tableView;
++(ActivityCell*)cellWithTableView:(UITableView*)tableView;
 
 @end

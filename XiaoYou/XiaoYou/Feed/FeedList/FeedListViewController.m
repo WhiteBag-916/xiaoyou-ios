@@ -28,7 +28,7 @@
 #import "FastViewController.h"
 #import "RemindViewController.h"
 #import "ScheduleViewController.h"
-#import "FunnyViewController.h"
+#import "ActivityViewController.h"
 
 @interface FeedListViewController ()<SlideNavigationControllerDelegate>
 
@@ -235,7 +235,7 @@
         /*ScheduleViewController *shcedule = [[ScheduleViewController alloc]init];
         [self.navigationController pushViewController:shcedule animated:YES];*/
         
-        FunnyViewController *funny = [[FunnyViewController alloc]init];
+        ActivityViewController *funny = [[ActivityViewController alloc]init];
         [self.navigationController pushViewController:funny animated:YES];
         
     }

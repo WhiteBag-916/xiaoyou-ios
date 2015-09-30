@@ -6,17 +6,17 @@
 //  Copyright © 2015年 xc. All rights reserved.
 //
 
-#import "FunnyViewController.h"
-#import "FunnyListView.h"
+#import "ActivityViewController.h"
+#import "ActivityListView.h"
 #import "YNavigationController.h"
 #import "SetupTableViewController.h"
 #import "RemindViewController.h"
 #import "ScheduleViewController.h"
-@interface FunnyViewController ()
-@property (nonatomic,strong) FunnyListView *funnyList;
+@interface ActivityViewController ()
+@property (nonatomic,strong) ActivityListView *funnyList;
 @end
 
-@implementation FunnyViewController
+@implementation ActivityViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -26,10 +26,10 @@
 }
 
 
--(FunnyListView *)funnyList
+-(ActivityListView *)funnyList
 {
     if (!_funnyList) {
-        _funnyList = [[FunnyListView alloc]init];
+        _funnyList = [[ActivityListView alloc]init];
         [self.view addSubview:_funnyList];
         [_funnyList mas_makeConstraints:^(MASConstraintMaker *make) {
             make.edges.equalTo(self.view);

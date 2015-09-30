@@ -6,15 +6,15 @@
 //  Copyright © 2015年 xc. All rights reserved.
 //
 
-#import "FunnyListView.h"
-#import "FunnyCell.h"
+#import "ActivityListView.h"
+#import "ActivityCell.h"
 #import "YVIew+Ext.h"
-#import "FunnyDetaiViewController.h"
+#import "ActivityDetailViewController.h"
 #import "YNavigationController.h"
-@interface FunnyListView ()<UITableViewDataSource,UITableViewDelegate>
+@interface ActivityListView ()<UITableViewDataSource,UITableViewDelegate>
 @end
 
-@implementation FunnyListView
+@implementation ActivityListView
 
 -(instancetype)init
 {
@@ -47,13 +47,13 @@
 
 -(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    FunnyCell *cell = [FunnyCell cellWithTableView:tableView];
+    ActivityCell *cell = [ActivityCell cellWithTableView:tableView];
     return cell;
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    FunnyDetaiViewController *detailVC = [[FunnyDetaiViewController alloc]init];
+    ActivityDetailViewController *detailVC = [[ActivityDetailViewController alloc]init];
     [self.viewController.navigationController pushViewController:detailVC animated:YES needHiddenBottomBar:YES];
 }
 

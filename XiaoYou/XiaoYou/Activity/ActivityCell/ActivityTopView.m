@@ -6,30 +6,37 @@
 //  Copyright © 2015年 xc. All rights reserved.
 //
 
-#import "FunnyTopView.h"
+#import "ActivityTopView.h"
 
 #define HEADIMAGEVIEW_WIDTH         SCALE_NUM(50)
 #define LEADINGOFF_HEADIMAGEVIEW    SCALE_NUM(10)
-@interface FunnyTopView ()
+@interface ActivityTopView ()
 @property (nonatomic,strong) UIImageView    *headImageView; //公告图
 @property (nonatomic,strong) UIView         *sepLineView;   //分割线
 @property (nonatomic,strong) UILabel        *nameLabel;     //名称
 @property (nonatomic,strong) UILabel        *descriptionLabel;//描述,只显示一行；
-
+@property (nonatomic,strong) UILabel        *titleLabel;    //标题(校级活动公告)
 @property (nonatomic,strong) UILabel        *staticNameLabel;//静态name
 @property (nonatomic,strong) UILabel        *staticDesLabel;
 @end
 
-@implementation FunnyTopView
+@implementation ActivityTopView
 
 -(instancetype)init {
     if (self = [super init]) {
-        [self initView];
+        [self initViewWithType:SHORT_BRIEF];
     }
     return self;
 }
 
--(void)initView {
+-(instancetype)initWithType:(TOPVIEWTYPE)viewType {
+    if (self = [super init]) {
+        [self initViewWithType:viewType];
+    }
+    return self;
+}
+
+-(void)initViewWithType:(TOPVIEWTYPE)type {
     _headImageView = [[UIImageView alloc]init];
     [self addSubview:_headImageView];
     _headImageView.image = [UIImage imageNamed:@"default_head"];
@@ -84,15 +91,21 @@
     }];
     
     _descriptionLabel = [[UILabel alloc]init];
-    _descriptionLabel.numberOfLines = 1;
-    _descriptionLabel.lineBreakMode = NSLineBreakByTruncatingTail;
+    if (type == DETAIL_INFO) {
+        _descriptionLabel.numberOfLines = 0;
+        _descriptionLabel.lineBreakMode = NSLineBreakByWordWrapping;
+    } else {
+        _descriptionLabel.numberOfLines = 1;
+        _descriptionLabel.lineBreakMode = NSLineBreakByTruncatingTail;
+    }
     [self addSubview:_descriptionLabel];
-    _descriptionLabel.text = @"清华大学舞蹈大赛于清华大学舞蹈大赛于清华大学舞蹈大赛于清华大学舞蹈大赛于清华大学舞蹈大赛于";
+    _descriptionLabel.text = @"清华大学舞蹈大赛于清华大学舞蹈大赛清华大学舞蹈大赛于清华大学舞蹈大赛清华大学舞蹈大赛于清华大学舞蹈大赛清华大学舞蹈大赛于清华大学舞蹈大赛清华大学舞蹈大赛于清华大学舞蹈大赛清华大学舞蹈大赛于清华大学舞蹈大赛清华大学舞蹈大赛于清华大学舞蹈大赛清华大学舞蹈大赛于清华大学舞蹈大赛清华大学舞蹈大赛于清华大学舞蹈大赛清华大学舞蹈大赛于清华大学舞蹈大赛于清华大学舞蹈大赛于清华大学舞蹈大赛于清华大学舞蹈大赛于";
     [_descriptionLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(_nameLabel);
         make.trailing.mas_equalTo(5);
         make.top.equalTo(_staticDesLabel);
     }];
+    self.backgroundColor = [UIColor redColor];
 }
 
 

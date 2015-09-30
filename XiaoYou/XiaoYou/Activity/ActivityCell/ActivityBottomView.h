@@ -1,14 +1,13 @@
 //
-//  FunnyMiddleView.h
+//  FunnyBottomView.h
 //  XiaoYou
 //
 //  Created by sheng on 15/9/28.
 //  Copyright © 2015年 xc. All rights reserved.
 //
 
-#import "YTableView.h"
+#import <UIKit/UIKit.h>
 
-@interface FunnyMiddleView : UIView
-
+@interface ActivityBottomView : UIView
 
 @end

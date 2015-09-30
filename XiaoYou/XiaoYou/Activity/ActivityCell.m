@@ -6,26 +6,26 @@
 //  Copyright © 2015年 xc. All rights reserved.
 //
 
-#import "FunnyCell.h"
-#import "FunnyTopView.h"
-#import "FunnyMiddleView.h"
-#import "FunnyBottomView.h"
+#import "ActivityCell.h"
+#import "ActivityTopView.h"
+#import "ActivityMiddleView.h"
+#import "ActivityBottomView.h"
 #define REUSEFUNNNYCELL @"funnycell"
-@interface FunnyCell ()
-@property (nonatomic,strong) FunnyTopView       *funnyTopView;
-@property (nonatomic,strong) FunnyMiddleView    *funnyMiddleView;
-@property (nonatomic,strong) FunnyBottomView    *funnyBottomView;
+@interface ActivityCell ()
+@property (nonatomic,strong) ActivityTopView       *activityTopView;
+@property (nonatomic,strong) ActivityMiddleView    *activityMiddleView;
+@property (nonatomic,strong) ActivityBottomView    *activityBottomView;
 @property (nonatomic,strong) UIView             *middleDashLineView;//中间虚线
 @property (nonatomic,strong) UIView             *bottomDashLineView;//下方虚线
 @end
 
-@implementation FunnyCell
+@implementation ActivityCell
 
-+(FunnyCell *)cellWithTableView:(UITableView *)tableView
++(ActivityCell *)cellWithTableView:(UITableView *)tableView
 {
-    FunnyCell *cell = [tableView dequeueReusableCellWithIdentifier:REUSEFUNNNYCELL];
+    ActivityCell *cell = [tableView dequeueReusableCellWithIdentifier:REUSEFUNNNYCELL];
     if (!cell) {
-        cell = [[FunnyCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:REUSEFUNNNYCELL];
+        cell = [[ActivityCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:REUSEFUNNNYCELL];
     }
     return cell;
 }
@@ -50,9 +50,9 @@
 }
 
 -(void)initFunnyTopView {
-    _funnyTopView = [[FunnyTopView alloc]init];
-    [self.contentView addSubview:_funnyTopView];
-    [_funnyTopView mas_makeConstraints:^(MASConstraintMaker *make) {
+    _activityTopView = [[ActivityTopView alloc]init];
+    [self.contentView addSubview:_activityTopView];
+    [_activityTopView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.leading.mas_equalTo(0);
         make.trailing.mas_equalTo(0);
         make.top.mas_equalTo(0);
@@ -61,10 +61,10 @@
 }
 
 -(void)initFunnyMiddleView {
-    _funnyMiddleView = [[FunnyMiddleView alloc]init];
-    [self.contentView addSubview:_funnyMiddleView];
-    [_funnyMiddleView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(_funnyTopView.mas_bottom).offset(10);
+    _activityMiddleView = [[ActivityMiddleView alloc]init];
+    [self.contentView addSubview:_activityMiddleView];
+    [_activityMiddleView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(_activityTopView.mas_bottom).offset(10);
         make.leading.mas_equalTo(0);
         make.trailing.mas_equalTo(0);
         make.height.mas_equalTo(130);
@@ -72,10 +72,10 @@
 }
 
 -(void)initFunnyBottomView {
-    _funnyBottomView = [[FunnyBottomView alloc]init];
-    [self.contentView addSubview:_funnyBottomView];
-    [_funnyBottomView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(_funnyMiddleView.mas_bottom).offset(10);
+    _activityBottomView = [[ActivityBottomView alloc]init];
+    [self.contentView addSubview:_activityBottomView];
+    [_activityBottomView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(_activityMiddleView.mas_bottom).offset(10);
         make.leading.mas_equalTo(0);
         make.trailing.mas_equalTo(0);
         make.height.mas_equalTo(100);
@@ -86,7 +86,7 @@
     _middleDashLineView = [[UIView alloc]init];
     [self.contentView addSubview:_middleDashLineView];
     [_middleDashLineView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(_funnyTopView.mas_bottom).offset(5);
+        make.top.equalTo(_activityTopView.mas_bottom).offset(5);
         make.height.mas_equalTo(2);
         make.leading.mas_equalTo(SCALE_NUM(70));
         make.trailing.mas_equalTo(0);
@@ -100,7 +100,7 @@
     [self.contentView addSubview:_bottomDashLineView];
     [_bottomDashLineView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.leading.mas_equalTo(SCALE_NUM(70));
-        make.top.equalTo(_funnyMiddleView.mas_bottom).offset(5);
+        make.top.equalTo(_activityMiddleView.mas_bottom).offset(5);
         make.height.mas_equalTo(2);
         make.trailing.mas_equalTo(0);
     }];

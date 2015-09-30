@@ -6,9 +6,9 @@
 //  Copyright © 2015年 xc. All rights reserved.
 //
 
-#import "FunnyMiddleView.h"
-#import "FunnyTopView.h"
-@interface FunnyMiddleView ()
+#import "ActivityMiddleView.h"
+#import "ActivityTopView.h"
+@interface ActivityMiddleView ()
 @property (nonatomic,strong) UIImageView    *timeImageView; //报名截止时间
 @property (nonatomic,strong) UILabel        *staticDeadLineDes;//截止时间
 @property (nonatomic,strong) UILabel        *deadLineTimeLabel;
@@ -20,7 +20,7 @@
 @property (nonatomic,strong) UILabel        *categoryLabel;
 @end
 
-@implementation FunnyMiddleView
+@implementation ActivityMiddleView
 
 -(instancetype)init {
     if (self = [super init]) {

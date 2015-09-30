@@ -15,7 +15,8 @@
 #import "FeedManager.h"
 
 #define KBOTTOMHEIGHT [DXMessageToolBar defaultHeight]
-@interface FeedDetailViewController() <DXMessageToolBarDelegate, UIGestureRecognizerDelegate, UITextViewDelegate>
+@interface FeedDetailViewController()
+<DXMessageToolBarDelegate, UIGestureRecognizerDelegate, UITextViewDelegate>
 
 @property (nonatomic, strong) NSString *feedId;
 @property (nonatomic, strong) FeedDetailTableView *feedDetailTable;
@@ -119,10 +120,12 @@
         }];
     }
 }
+
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     self.navigationController.navigationBarHidden = false;
 }
+
 //准备回复人
 - (void)openInputWithId:(NSString *)userId name:(NSString *)userName {
     _replyId = userId;

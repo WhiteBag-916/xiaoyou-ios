@@ -13,7 +13,7 @@
 #import "YLog.h"
 #import "XYContactsInfoDetailViewController.h"
 #import "XYGroupInfoDetailViewController.h"
-#import "FunnyViewController.h"
+#import "ActivityViewController.h"
 #import "Masonry.h"
 #import "YSystemDefine.h"
 #import "ContactManager.h"
@@ -326,7 +326,7 @@
 -(void)tapFunGestureRecognizerAction
 {
     //好玩列表页
-    FunnyViewController *funnyVC = [[FunnyViewController alloc]init];
+    ActivityViewController *funnyVC = [[ActivityViewController alloc]init];
     [self.myController.navigationController pushViewController:funnyVC animated:YES needHiddenBottomBar:YES];
 }
 
