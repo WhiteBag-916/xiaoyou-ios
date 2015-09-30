@@ -62,6 +62,7 @@ NSString *const kProfilePersonListTableViewCell = @"kProfilePersonListTableViewC
         [_userName mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.equalTo(_face.mas_right).offset(KTAGMARGIN);
             make.centerY.equalTo(_face);
+            make.height.mas_equalTo(12);
         }];
         
         _connect = [[ConnectTag alloc] init];
