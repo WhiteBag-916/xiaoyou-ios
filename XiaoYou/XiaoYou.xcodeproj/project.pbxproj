@@ -485,6 +485,9 @@
 		654379B31B8DB223007B15CA /* icon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 654379B11B8DB223007B15CA /* icon@3x.png */; };
 		654602171B7F2FF00039F622 /* FeedImageGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 654602161B7F2FF00039F622 /* FeedImageGroup.m */; };
 		656234771B837FDC00651C88 /* YFaceImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 656234761B837FDC00651C88 /* YFaceImageView.m */; };
+		656A4CFD1BBF9E1E00BDB725 /* QRCameraSwitchButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 656A4CF71BBF9E1E00BDB725 /* QRCameraSwitchButton.m */; settings = {ASSET_TAGS = (); }; };
+		656A4CFE1BBF9E1E00BDB725 /* QRCodeReaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 656A4CFA1BBF9E1E00BDB725 /* QRCodeReaderView.m */; settings = {ASSET_TAGS = (); }; };
+		656A4CFF1BBF9E1E00BDB725 /* QRCodeReaderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 656A4CFC1BBF9E1E00BDB725 /* QRCodeReaderViewController.m */; settings = {ASSET_TAGS = (); }; };
 		656F59751B8896370094B658 /* ProfilePhoneChangeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 656F59741B8896370094B658 /* ProfilePhoneChangeViewController.m */; };
 		6592DCD31B806A9B004CD118 /* XYContactsInfoDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6592DCB31B806A9B004CD118 /* XYContactsInfoDetailViewController.m */; };
 		6592DCD51B806A9B004CD118 /* FriendApplyTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6592DCB81B806A9B004CD118 /* FriendApplyTableView.m */; };
@@ -1242,6 +1245,13 @@
 		654602161B7F2FF00039F622 /* FeedImageGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedImageGroup.m; sourceTree = "<group>"; };
 		656234751B837FDC00651C88 /* YFaceImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YFaceImageView.h; sourceTree = "<group>"; };
 		656234761B837FDC00651C88 /* YFaceImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YFaceImageView.m; sourceTree = "<group>"; };
+		656A4CF61BBF9E1E00BDB725 /* QRCameraSwitchButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QRCameraSwitchButton.h; sourceTree = "<group>"; };
+		656A4CF71BBF9E1E00BDB725 /* QRCameraSwitchButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QRCameraSwitchButton.m; sourceTree = "<group>"; };
+		656A4CF81BBF9E1E00BDB725 /* QRCodeReaderDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QRCodeReaderDelegate.h; sourceTree = "<group>"; };
+		656A4CF91BBF9E1E00BDB725 /* QRCodeReaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QRCodeReaderView.h; sourceTree = "<group>"; };
+		656A4CFA1BBF9E1E00BDB725 /* QRCodeReaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QRCodeReaderView.m; sourceTree = "<group>"; };
+		656A4CFB1BBF9E1E00BDB725 /* QRCodeReaderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QRCodeReaderViewController.h; sourceTree = "<group>"; };
+		656A4CFC1BBF9E1E00BDB725 /* QRCodeReaderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QRCodeReaderViewController.m; sourceTree = "<group>"; };
 		656F59731B8896370094B658 /* ProfilePhoneChangeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfilePhoneChangeViewController.h; sourceTree = "<group>"; };
 		656F59741B8896370094B658 /* ProfilePhoneChangeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfilePhoneChangeViewController.m; sourceTree = "<group>"; };
 		6592DCB21B806A9B004CD118 /* XYContactsInfoDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYContactsInfoDetailViewController.h; sourceTree = "<group>"; };
@@ -2852,6 +2862,7 @@
 		653CB2E81B806BFD006ECBB2 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				656A4CF51BBF9E1500BDB725 /* QRCodeReaderViewController */,
 				20DAF9C71B873883005B7932 /* pinyin */,
 				20E033C21B842727002E4583 /* UMengSDK */,
 				653CB2E91B806BFD006ECBB2 /* ChineseSorting */,
@@ -2879,6 +2890,20 @@
 				653CB2ED1B806BFD006ECBB2 /* pinyin.h */,
 			);
 			path = ChineseSorting;
+			sourceTree = "<group>";
+		};
+		656A4CF51BBF9E1500BDB725 /* QRCodeReaderViewController */ = {
+			isa = PBXGroup;
+			children = (
+				656A4CF61BBF9E1E00BDB725 /* QRCameraSwitchButton.h */,
+				656A4CF71BBF9E1E00BDB725 /* QRCameraSwitchButton.m */,
+				656A4CF81BBF9E1E00BDB725 /* QRCodeReaderDelegate.h */,
+				656A4CF91BBF9E1E00BDB725 /* QRCodeReaderView.h */,
+				656A4CFA1BBF9E1E00BDB725 /* QRCodeReaderView.m */,
+				656A4CFB1BBF9E1E00BDB725 /* QRCodeReaderViewController.h */,
+				656A4CFC1BBF9E1E00BDB725 /* QRCodeReaderViewController.m */,
+			);
+			name = QRCodeReaderViewController;
 			sourceTree = "<group>";
 		};
 		6592DCB11B806A9B004CD118 /* ContactsInfoDetail */ = {
@@ -3047,7 +3072,7 @@
 				TargetAttributes = {
 					200E39751B4E818B000B587B = {
 						CreatedOnToolsVersion = 6.3.1;
-						DevelopmentTeam = SKFG6SSZL8;
+						DevelopmentTeam = AVJ7F5B5B9;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 0;
@@ -3464,6 +3489,7 @@
 				3331227B1B806EDB00D3D032 /* wav.mm in Sources */,
 				3331225B1B806EDB00D3D032 /* EMSDWebImagePrefetcher.m in Sources */,
 				20DAF9AB1B87209E005B7932 /* LoginViewController.m in Sources */,
+				656A4CFD1BBF9E1E00BDB725 /* QRCameraSwitchButton.m in Sources */,
 				3331222D1B806EDB00D3D032 /* ConvertToCommonEmoticonsHelper.m in Sources */,
 				65969DC41B86BDE1001DD348 /* MBProgressHUD+Add.m in Sources */,
 				20DAF9D71B873883005B7932 /* ChineseToPinyinResource.m in Sources */,
@@ -3509,6 +3535,7 @@
 				333122471B806EDB00D3D032 /* EMAlertView.m in Sources */,
 				333122431B806EDB00D3D032 /* EMCDDeviceManager+Microphone.m in Sources */,
 				333122391B806EDB00D3D032 /* EMChatVideoBubbleView.m in Sources */,
+				656A4CFF1BBF9E1E00BDB725 /* QRCodeReaderViewController.m in Sources */,
 				049480271BB8CF4800C68460 /* ScheduleListTableView.m in Sources */,
 				333122711B806EDB00D3D032 /* PSTGridLayoutSection.m in Sources */,
 				6518A2481B80429300AEB79D /* TagListTableView.m in Sources */,
@@ -3597,6 +3624,7 @@
 				20DAF9AE1B872528005B7932 /* YUtils+UI.m in Sources */,
 				20DCB9761B8CA60800C758DE /* NotifyListTableView.m in Sources */,
 				20E0340E1B847F9F002E4583 /* SearchResultViewController.m in Sources */,
+				656A4CFE1BBF9E1E00BDB725 /* QRCodeReaderView.m in Sources */,
 				333122801B806EDC00D3D032 /* NSDateFormatter+Category.m in Sources */,
 				3331227C1B806EDB00D3D032 /* EMVoiceConverter.mm in Sources */,
 				333122361B806EDB00D3D032 /* EMChatImageBubbleView.m in Sources */,
@@ -3780,7 +3808,7 @@
 					"$(PROJECT_DIR)/XiaoYou/Utils/UMengSDK/UMSocial_Sdk_Extra_Frameworks/Wechat",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "556b6aec-919d-487e-aae4-73bbab223ba6";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
 				USER_HEADER_SEARCH_PATHS = "../**";
 			};
@@ -3808,7 +3836,7 @@
 					"$(PROJECT_DIR)/XiaoYou/Utils/UMengSDK/UMSocial_Sdk_Extra_Frameworks/Wechat",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "556b6aec-919d-487e-aae4-73bbab223ba6";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
 				USER_HEADER_SEARCH_PATHS = "../**";
 			};

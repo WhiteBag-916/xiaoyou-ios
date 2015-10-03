@@ -21,6 +21,7 @@
 #import "ProfileTagViewController.h"
 #import "ProfilePersonListTableView.h"
 #import "ConvertToCommonEmoticonsHelper.h"
+#import "QRCodeReaderViewController.h"
 
 #define KTOPHEIGHT SCALE_NUM(90)
 #define KHEADIMG_SIZE SCALE_NUM(45)
@@ -36,7 +37,7 @@
 
 #define KFEEDMARGIN_TOP SCALE_NUM(20)
 
-@interface ProfileViewController ()
+@interface ProfileViewController () <QRCodeReaderDelegate>
 
 @property (nonatomic, strong) UIView *containerView;//scroll的一级view，所有其他view放在其中
 
@@ -145,6 +146,7 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     self.navigationController.navigationBarHidden = true;
+    
     [self startLoadData];
 }
 
@@ -224,18 +226,26 @@
         make.left.right.equalTo(_topView);
         make.top.equalTo(_topView.mas_bottom);
     }];
-    UIView *item1 = [self whiteItem:true];
+    UIView *item1 = [self whiteItem:0];
     [item1 mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.right.top.equalTo(_middleView);
         make.height.mas_equalTo(KMIDDELITEMHEIGHT);
     }];
     
-    UIView *item2 = [self whiteItem:false];
+    UIView *item2 = [self whiteItem:1];
     [item2 mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(item1.mas_bottom);
         make.left.right.height.equalTo(item1);
+    }];
+    
+    UIView *item3 = [self whiteItem:2];
+    [item3 mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(item2.mas_bottom);
+        make.left.right.height.equalTo(item1);
         make.bottom.equalTo(_middleView);
     }];
+    
+    
 }
 
 - (void)initBottom {
@@ -264,13 +274,13 @@
     }];
 }
 
-- (UIView *)whiteItem:(BOOL)isRespect {
+- (UIView *)whiteItem:(int)index {
     UIView *item = [[UIView alloc] init];
     [_middleView addSubview:item];
     UIImageView *icon = [[UIImageView alloc] init];
     [item addSubview:icon];
     [self rightArray:1 inView:item];
-    if (isRespect) {
+    if (index == 0) {
         [item addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(openRespect)]];
         [icon mas_makeConstraints:^(MASConstraintMaker *make) {
             make.width.height.mas_equalTo(SCALE_NUM(17));
@@ -284,7 +294,7 @@
             make.left.equalTo(_userName);
             make.top.bottom.right.equalTo(item);
         }];
-    } else {
+    } else if (index == 1) {
         [item addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(openCool)]];
         [icon mas_makeConstraints:^(MASConstraintMaker *make) {
             make.width.height.mas_equalTo(SCALE_NUM(17));
@@ -299,6 +309,20 @@
             make.top.bottom.right.equalTo(item);
         }];
         
+    } else {
+        [item addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(scanAction)]];
+        [icon mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.width.height.mas_equalTo(SCALE_NUM(17));
+            make.centerX.equalTo(_headImg);
+            make.centerY.equalTo(item);
+        }];
+        icon.image = [UIImage imageNamed:@"mine-heart"];
+        UILabel *hint = [YUtils initLabel:CONTENT_FONT(12) color:[UIColor blackColor] text:@"扫一扫加好友or获得校友礼券" frame:CGRectZero alignment:NSTextAlignmentLeft];
+        [item addSubview:hint];
+        [hint mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.equalTo(_userName);
+            make.top.bottom.right.equalTo(item);
+        }];
     }
     
     return item;
@@ -437,6 +461,36 @@
     [self.navigationController pushViewController:[[ProfileMyViewController alloc] init] animated:true];
 }
 
+//扫码
+- (void)scanAction
+{
+    QRCodeReaderViewController *reader = [QRCodeReaderViewController new];
+    reader.modalPresentationStyle = UIModalPresentationFormSheet;
+    reader.delegate = self;
+    self.navigationController.navigationBarHidden = true;
+    __weak typeof (self) wSelf = self;
+    [reader setCompletionWithBlock:^(NSString *resultAsString) {
+        [wSelf.navigationController popViewControllerAnimated:YES];
+        [[[UIAlertView alloc] initWithTitle:@"" message:resultAsString delegate:self cancelButtonTitle:@"好的" otherButtonTitles: nil] show];
+    }];
+    [self.navigationController pushViewController:reader animated:YES];
+    
+}
+
+#pragma mark - QRCodeReader Delegate Methods
+
+- (void)reader:(QRCodeReaderViewController *)reader didScanResult:(NSString *)result
+{
+    [self dismissViewControllerAnimated:YES completion:^{
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"QRCodeReader" message:result delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [alert show];
+    }];
+}
+
+- (void)readerDidCancel:(QRCodeReaderViewController *)reader
+{
+    [self.navigationController popViewControllerAnimated:YES];
+}
 
 
 @end

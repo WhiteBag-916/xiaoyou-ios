@@ -27,6 +27,38 @@
             endingLineNumber = "141"
             landmarkName = "-setData:"
             landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[FeedCellBottomView initWithType:]"
+                  moduleName = "XiaoYou"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/lsl/Documents/iosProject/xiaoyou_ios/XiaoYou/XiaoYou/Feed/FeedCellBottomView.m"
+                  timestampString = "465547285.8567"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "141"
+                  endingLineNumber = "141"
+                  offsetFromSymbolStart = "4532">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__35-[FeedCellBottomView initWithType:]_block_invoke108"
+                  moduleName = "XiaoYou"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/lsl/Documents/iosProject/xiaoyou_ios/XiaoYou/XiaoYou/Feed/FeedCellBottomView.m"
+                  timestampString = "465547285.856962"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "141"
+                  endingLineNumber = "141"
+                  offsetFromSymbolStart = "48">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
