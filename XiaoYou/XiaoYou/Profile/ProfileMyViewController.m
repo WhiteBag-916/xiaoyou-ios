@@ -32,6 +32,7 @@
 @property (nonatomic, strong) UIView *middelView;
 @property (nonatomic, strong) UIView *bottomView;
 
+@property (nonatomic, strong) UIImageView *codeView;//二维码
 @property (nonatomic, strong) UIImageView *faceImg;//头像
 @property (nonatomic, strong) UILabel *nameLabel;//姓名
 @property (nonatomic, strong) UILabel *schoolNoLabel;//学号
@@ -149,6 +150,16 @@
         make.height.mas_equalTo(SCALE_NUM(11));
         make.centerY.equalTo(_headView);
     }];
+    
+    _codeView = [[UIImageView alloc] init];
+    [_headView addSubview:_codeView];
+    [_codeView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.width.height.mas_equalTo(SCALE_NUM(30));
+        make.bottom.right.equalTo(_headView).offset(-15);
+    }];
+    _codeView.backgroundColor = [UIColor redColor];
+    [_codeView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(openCode)]];
+    
     
     [_headView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(goBack)]];
 }
@@ -276,6 +287,19 @@
     
     return label;
 }
+
+
+
+
+//打开二维码图片
+- (void)openCode {
+    
+}
+
+
+
+
+
 - (void)showAddPicList {
     
     YActionSheetItem *item = [YActionSheetItem itemWithTitle:@"查看大图"

@@ -22,6 +22,7 @@
 #import "ProfilePersonListTableView.h"
 #import "ConvertToCommonEmoticonsHelper.h"
 #import "QRCodeReaderViewController.h"
+#import "GiftViewController.h"
 
 #define KTOPHEIGHT SCALE_NUM(90)
 #define KHEADIMG_SIZE SCALE_NUM(45)
@@ -468,11 +469,6 @@
     reader.modalPresentationStyle = UIModalPresentationFormSheet;
     reader.delegate = self;
     self.navigationController.navigationBarHidden = true;
-    __weak typeof (self) wSelf = self;
-    [reader setCompletionWithBlock:^(NSString *resultAsString) {
-        [wSelf.navigationController popViewControllerAnimated:YES];
-        [[[UIAlertView alloc] initWithTitle:@"" message:resultAsString delegate:self cancelButtonTitle:@"好的" otherButtonTitles: nil] show];
-    }];
     [self.navigationController pushViewController:reader animated:YES];
     
 }
@@ -481,16 +477,10 @@
 
 - (void)reader:(QRCodeReaderViewController *)reader didScanResult:(NSString *)result
 {
-    [self dismissViewControllerAnimated:YES completion:^{
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"QRCodeReader" message:result delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-        [alert show];
-    }];
+    [self.navigationController popViewControllerAnimated:true];
+    [self.navigationController pushViewController:[[GiftViewController alloc] initWithCode:result] animated:true];
 }
 
-- (void)readerDidCancel:(QRCodeReaderViewController *)reader
-{
-    [self.navigationController popViewControllerAnimated:YES];
-}
 
 
 @end

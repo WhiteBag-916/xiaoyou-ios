@@ -27,13 +27,14 @@
 #import <UIKit/UIKit.h>
 #import <AVFoundation/AVFoundation.h>
 #import "QRCodeReaderDelegate.h"
+#import "YViewController.h"
 
 /**
  * The `QRCodeReaderViewController` is a simple QRCode Reader/Scanner based on
  * the `AVFoundation` framework from Apple. It aims to replace ZXing or ZBar
  * for iOS 7 and over.
  */
-@interface QRCodeReaderViewController : UIViewController
+@interface QRCodeReaderViewController : YViewController
 
 #pragma mark - Managing the Delegate
 /** @name Managing the Delegate */

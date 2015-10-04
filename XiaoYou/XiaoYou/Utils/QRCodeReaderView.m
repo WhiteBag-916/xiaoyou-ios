@@ -60,6 +60,7 @@
         innerRect.origin.y   += (rect.size.height - minSize) / 2 - rect.size.height / 6;
         innerRect.size.height = minSize;
     }
+    innerRect.origin.y = SCALE_NUM(30);
     CGRect offsetRect = CGRectOffset(innerRect, 0, 15);
     
     innerViewRect = offsetRect;

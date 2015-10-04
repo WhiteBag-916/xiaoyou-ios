@@ -89,8 +89,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"相册" style:UIBarButtonItemStylePlain target:self action:@selector(clickRightBarButton:)];
+    [self showCustomNavigationBackButton];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -120,7 +119,7 @@
 
 - (void)scanAnimate
 {
-    _imgLine.frame = CGRectMake(0, _cameraView.innerViewRect.origin.y, mainWidth, 12);
+    _imgLine.frame = CGRectMake(_cameraView.innerViewRect.origin.x, _cameraView.innerViewRect.origin.y, _cameraView.innerViewRect.size.width, 2);
     [UIView animateWithDuration:2 animations:^{
         _imgLine.frame = CGRectMake(_imgLine.frame.origin.x, _imgLine.frame.origin.y + _cameraView.innerViewRect.size.height - 6, _imgLine.frame.size.width, _imgLine.frame.size.height);
     }];
@@ -193,10 +192,9 @@
     
     
     CGFloat c_width = mainWidth - 100;
-    CGFloat s_height = mainHeight - 40;
-    CGFloat y = (s_height - c_width) / 2 - s_height / 6;
+    CGFloat y = SCALE_NUM(30);
     
-    _lblTip = [[UILabel alloc] initWithFrame:CGRectMake(0,y + 90 + c_width, mainWidth, 15)];
+    _lblTip = [[UILabel alloc] initWithFrame:CGRectMake(0,y + 30 + c_width, mainWidth, 15)];
     _lblTip.text = @"将二维码放入框内 即可自动扫描";
     _lblTip.textColor = [UIColor whiteColor];
     _lblTip.font = [UIFont systemFontOfSize:13];
@@ -205,19 +203,19 @@
     
     CGFloat corWidth = 16;
     
-    UIImageView* img1 = [[UIImageView alloc] initWithFrame:CGRectMake(49, y + 76, corWidth, corWidth)];
+    UIImageView* img1 = [[UIImageView alloc] initWithFrame:CGRectMake(49, y + corWidth - 1, corWidth, corWidth)];
     img1.image = [UIImage imageNamed:@"cor1"];
     [self.view addSubview:img1];
     
-    UIImageView* img2 = [[UIImageView alloc] initWithFrame:CGRectMake(35 + c_width, y + 76, corWidth, corWidth)];
+    UIImageView* img2 = [[UIImageView alloc] initWithFrame:CGRectMake(35 + c_width, y + corWidth - 1, corWidth, corWidth)];
     img2.image = [UIImage imageNamed:@"cor2"];
     [self.view addSubview:img2];
     
-    UIImageView* img3 = [[UIImageView alloc] initWithFrame:CGRectMake(49, y + c_width + 64, corWidth, corWidth)];
+    UIImageView* img3 = [[UIImageView alloc] initWithFrame:CGRectMake(49, y + c_width, corWidth, corWidth)];
     img3.image = [UIImage imageNamed:@"cor3"];
     [self.view addSubview:img3];
     
-    UIImageView* img4 = [[UIImageView alloc] initWithFrame:CGRectMake(35 + c_width, y + c_width + 64, corWidth, corWidth)];
+    UIImageView* img4 = [[UIImageView alloc] initWithFrame:CGRectMake(35 + c_width, y + c_width, corWidth, corWidth)];
     img4.image = [UIImage imageNamed:@"cor4"];
     [self.view addSubview:img4];
     
@@ -225,6 +223,17 @@
     _imgLine = [[UIImageView alloc] init];
     _imgLine.image = [UIImage imageNamed:@"QRCodeScanLine"];
     [self.view addSubview:_imgLine];
+    
+    
+    UIImageView *info = [[UIImageView alloc] init];
+    [self.view addSubview:info];
+    [info mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.width.mas_equalTo(231);
+        make.height.mas_equalTo(90);
+        make.bottom.equalTo(self.view);
+        make.centerX.equalTo(self.view).offset(-15);
+    }];
+    info.image = [UIImage imageNamed:@"scaninfo"];
 }
 
 
@@ -286,20 +295,19 @@
     [_session commitConfiguration];
   }
 }
-
+- (void)onNavigationLeftButtonClicked {
+    [self cancelAction];
+}
 #pragma mark - Catching Button Events
 
-- (void)cancelAction:(UIButton *)button
+- (void)cancelAction
 {
   [self stopScanning];
   
   if (_completionBlock) {
     _completionBlock(nil);
   }
-  
-  if (_delegate && [_delegate respondsToSelector:@selector(readerDidCancel:)]) {
-    [_delegate readerDidCancel:self];
-  }
+    [self.navigationController popViewControllerAnimated:true];
 }
 
 - (void)switchCameraAction:(UIButton *)button
