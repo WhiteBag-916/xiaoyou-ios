@@ -12,4 +12,6 @@
 
 +(ActivityDetailCell*)cellWithTableView:(UITableView*)tableView;
 
+-(void)setData:(id)data;
+
 @end

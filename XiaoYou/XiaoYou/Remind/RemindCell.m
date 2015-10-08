@@ -50,7 +50,7 @@
     [self.contentView addSubview:_wrapContentView];
     _wrapContentView.backgroundColor = [UIColor whiteColor];
     _wrapContentView.layer.borderWidth = 1;
-    _wrapContentView.layer.borderColor = [UIColor lightGrayColor].CGColor;
+    _wrapContentView.layer.borderColor = [UIColor colorWithRed:204/255.0 green:204/255.0 blue:204/255.0 alpha:1].CGColor;
     [_wrapContentView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self);
         make.bottom.equalTo(self);
@@ -73,10 +73,9 @@
     }];
     
     _remindTitleLabel = [[UILabel alloc]init];
-    _remindTitleLabel.text = @"活动申请通过";
-    _remindTitleLabel.font = [UIFont systemFontOfSize:[DataConvert pxConvertToFontSize:20]];
-    
     [self.wrapContentView addSubview:_remindTitleLabel];
+    _remindTitleLabel.text = @"活动申请通过！！！";
+    _remindTitleLabel.font = [UIFont systemFontOfSize:14];
     [_remindTitleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.titleImageView.mas_right).offset(10);
         make.top.equalTo(self.titleImageView);
@@ -86,12 +85,12 @@
     
     //中间内容部分
     _topLineView = [[UIView alloc]init];
-    _topLineView.backgroundColor = [UIColor lightGrayColor];
+    _topLineView.backgroundColor = [UIColor colorWithRed:204/255.0 green:204/255.0 blue:204/255.0 alpha:1];
     [self.wrapContentView addSubview:_topLineView];
     [_topLineView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.leading.mas_equalTo(0);
         make.trailing.mas_equalTo(0);
-        make.top.equalTo(self.remindTitleLabel.mas_bottom).offset(17);
+        make.top.equalTo(self.remindTitleLabel.mas_bottom).offset(15);
         make.height.mas_equalTo(1);
     }];
     
@@ -110,8 +109,8 @@
     
     _contentTitleLabel = [[UILabel alloc]init];
     [self.wrapContentView addSubview:_contentTitleLabel];
+    _contentTitleLabel.font = [UIFont systemFontOfSize:12.0f];
     _contentTitleLabel.text = @"校级活动公告";
-    _contentTitleLabel.font = [UIFont systemFontOfSize:[DataConvert pxConvertToFontSize:12]];
     [_contentTitleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.headImageView);
         make.left.equalTo(self.headImageView.mas_right).offset(10);
@@ -119,7 +118,7 @@
     
     _contentNameLabel = [[UILabel alloc]init];
     [self.wrapContentView addSubview:_contentNameLabel];
-    _contentNameLabel.font = [UIFont systemFontOfSize:24.0f];
+    _contentNameLabel.font = [UIFont systemFontOfSize:12.0f];
     _contentNameLabel.text = @"名称：校级舞蹈大赛";
     [_contentNameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.contentTitleLabel.mas_left);
@@ -128,7 +127,7 @@
     
     _bottomLineView = [[UIView alloc]init];
     [self.wrapContentView addSubview:_bottomLineView];
-    _bottomLineView.backgroundColor = [UIColor lightGrayColor];
+    _bottomLineView.backgroundColor = [UIColor colorWithRed:204/255.0 green:204/255.0 blue:204/255.0 alpha:1];
     [_bottomLineView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.headImageView.mas_bottom).offset(10);
         make.leading.mas_equalTo(0);
@@ -139,18 +138,19 @@
     _tailLabel = [[UILabel alloc]init];
     [self.wrapContentView addSubview:_tailLabel];
     _tailLabel.text = @"看看还有什么人";
+    _tailLabel.font = [UIFont systemFontOfSize:12.0f];
     [_tailLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self.bottomLineView.mas_bottom).offset(10);
+        make.top.equalTo(self.bottomLineView.mas_bottom).offset(16);
         make.leading.mas_equalTo(10);
     }];
     
-    _tailImageView = [[UIImageView alloc]init];
-    [self.wrapContentView addSubview:_tailImageView];
-    _tailImageView.image = [UIImage imageNamed:@"tooseemore"];
-    [_tailImageView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.centerY.equalTo(self.tailLabel.mas_centerY);
-        make.trailing.mas_equalTo(-10);
-    }];
+//    _tailImageView = [[UIImageView alloc]init];
+//    [self.wrapContentView addSubview:_tailImageView];
+//    _tailImageView.image = [UIImage imageNamed:@"tooseemore"];
+//    [_tailImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.centerY.equalTo(self.tailLabel.mas_centerY);
+//        make.trailing.mas_equalTo(-10);
+//    }];
     
 }
 

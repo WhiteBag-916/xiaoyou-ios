@@ -80,4 +80,9 @@
     }];
 }
 
+-(void)setData:(id)data
+{
+    
+}
+
 @end

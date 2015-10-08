@@ -7,8 +7,9 @@
 //
 
 #import "ConvenienceTableViewController.h"
+#import "DataConvert.h"
 #define REUSERIDEN  @"Convenience"
-#define CELL_HEIGHT SCALE_NUM(50)
+#define CELL_HEIGHT SCALE_NUM(44)
 @interface ConvenienceTableViewController ()<UITableViewDelegate,UITableViewDataSource>
 
 @property (nonatomic, retain) UITableView   *tableView;
@@ -45,15 +46,6 @@
     return _tableView;
 }
 
--(void)setTitleView {
-    UILabel *titleLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, 150, 64)];
-    titleLabel.font = [UIFont systemFontOfSize:18];
-    titleLabel.textAlignment = NSTextAlignmentCenter;
-    titleLabel.text = @"便利性设置";
-    [titleLabel setTextColor:[UIColor whiteColor]];
-    self.navigationItem.titleView = titleLabel;
-}
-
 #pragma mark - Table view data source
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 3;
@@ -65,12 +57,12 @@
 
 -(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
 {
-    return 0.1;
+    return 0.001;
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
-    return 0.1;
+    return 0.001;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -80,7 +72,7 @@
         cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:REUSERIDEN];
     }
     cell.textLabel.text = self.dataSource[indexPath.section];
-    cell.textLabel.font = [UIFont systemFontOfSize:16];
+    cell.textLabel.font = [UIFont systemFontOfSize:12];
     UISwitch *switchView = [[UISwitch alloc]init];
     [switchView addTarget:self action:@selector(switchViewClick:) forControlEvents:UIControlEventValueChanged];
     switchView.tag = 50000 + indexPath.section;
@@ -106,8 +98,6 @@
 {
     return CELL_HEIGHT;
 }
-
-
 
 -(NSArray *)dataSource
 {

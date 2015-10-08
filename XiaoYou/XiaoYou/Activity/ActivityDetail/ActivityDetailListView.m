@@ -31,7 +31,21 @@
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 600;
+    return 560;
+    CGFloat height;
+    if (indexPath.row == 0)
+    {
+        height = [tableView fd_heightForCellWithIdentifier:@"activitydetail" cacheByIndexPath:indexPath configuration:^(ActivityDetailCell *cell) {
+            //[cell setData:_feedListArray[indexPath.row]];
+        }];
+    }
+    else
+    {
+        height = [tableView fd_heightForCellWithIdentifier:@"joinincell" cacheByIndexPath:indexPath configuration:^(ActivityJoinInCell *cell) {
+            //[cell setData:_feedListArray[indexPath.row]];
+        }];
+    }
+    return height;
 }
 
 -(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath

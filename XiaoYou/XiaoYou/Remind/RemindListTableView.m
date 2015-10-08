@@ -45,11 +45,7 @@
 #pragma mark 协议方法
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 200;
-    /*CGFloat height = [tableView fd_heightForCellWithIdentifier:REMINDVIEWCELL cacheByIndexPath:indexPath configuration:^(RemindCell *cell) {
-        [cell setData:self.remindListArray[indexPath.section]];
-    }];
-    return height;*/
+    return 180;
 }
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -62,10 +58,10 @@
     return 1;
 }
 
-//-(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
-//{
-//    return SCALE_NUM(33);
-//}
+-(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    return 33;
+}
 
 //返回header
 -(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section

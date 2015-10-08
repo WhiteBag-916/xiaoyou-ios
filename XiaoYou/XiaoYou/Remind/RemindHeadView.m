@@ -6,9 +6,9 @@
 //  Copyright © 2015年 xc. All rights reserved.
 //
 
-#define REUSERID @"ReminHeadView"
 #import "RemindHeadView.h"
 
+#define REUSERID @"ReminHeadView"
 @interface RemindHeadView ()
 @property (nonatomic,strong) UILabel    *timeLabel;
 @end
@@ -36,6 +36,7 @@
 -(void)initView {
     _timeLabel = [[UILabel alloc]init];
     [self addSubview:_timeLabel];
+    _timeLabel.font = [UIFont systemFontOfSize:11];
     [_timeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.equalTo(self.mas_centerX);
         make.centerY.equalTo(self.mas_centerY);

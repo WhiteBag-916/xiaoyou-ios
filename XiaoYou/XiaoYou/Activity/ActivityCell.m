@@ -56,7 +56,7 @@
         make.leading.mas_equalTo(0);
         make.trailing.mas_equalTo(0);
         make.top.mas_equalTo(0);
-        make.height.mas_equalTo(150);
+        make.height.mas_equalTo(142);
     }];
 }
 
@@ -64,10 +64,10 @@
     _activityMiddleView = [[ActivityMiddleView alloc]init];
     [self.contentView addSubview:_activityMiddleView];
     [_activityMiddleView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(_activityTopView.mas_bottom).offset(10);
+        make.top.equalTo(_activityTopView.mas_bottom);
         make.leading.mas_equalTo(0);
         make.trailing.mas_equalTo(0);
-        make.height.mas_equalTo(130);
+        make.height.mas_equalTo(133);
     }];
 }
 
@@ -75,10 +75,10 @@
     _activityBottomView = [[ActivityBottomView alloc]init];
     [self.contentView addSubview:_activityBottomView];
     [_activityBottomView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(_activityMiddleView.mas_bottom).offset(10);
+        make.top.equalTo(_activityMiddleView.mas_bottom);
         make.leading.mas_equalTo(0);
         make.trailing.mas_equalTo(0);
-        make.height.mas_equalTo(100);
+        make.height.mas_equalTo(38);
     }];
 }
 
@@ -86,8 +86,8 @@
     _middleDashLineView = [[UIView alloc]init];
     [self.contentView addSubview:_middleDashLineView];
     [_middleDashLineView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(_activityTopView.mas_bottom).offset(5);
-        make.height.mas_equalTo(2);
+        make.top.equalTo(_activityTopView.mas_bottom);
+        make.height.mas_equalTo(1);
         make.leading.mas_equalTo(SCALE_NUM(70));
         make.trailing.mas_equalTo(0);
     }];
@@ -100,8 +100,8 @@
     [self.contentView addSubview:_bottomDashLineView];
     [_bottomDashLineView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.leading.mas_equalTo(SCALE_NUM(70));
-        make.top.equalTo(_activityMiddleView.mas_bottom).offset(5);
-        make.height.mas_equalTo(2);
+        make.top.equalTo(_activityMiddleView.mas_bottom);
+        make.height.mas_equalTo(1);
         make.trailing.mas_equalTo(0);
     }];
     [_bottomDashLineView.layer addSublayer:[self drawDashLine]];

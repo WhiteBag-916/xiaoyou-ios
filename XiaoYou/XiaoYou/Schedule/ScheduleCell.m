@@ -7,7 +7,7 @@
 //
 
 #import "ScheduleCell.h"
-#define CELL_INSET  10
+#define CELL_INSET  12
 #define CELL_BACK_GROUND_COLOR
 @interface ScheduleCell ()
 @property (nonatomic,retain) UIImageView    *timeRemindImageView;//时间提醒,今天,明天,后天,
@@ -68,7 +68,7 @@
     
     _otherLabel = [[UILabel alloc]init];
     [self.wrapContentView addSubview:_otherLabel];
-    _otherLabel.font = [UIFont systemFontOfSize:16];
+    _otherLabel.font = [UIFont systemFontOfSize:12];
     _otherLabel.text = @"还有谁";
     [_otherLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.trailing.mas_equalTo(-20);
@@ -78,7 +78,7 @@
     
     _tooSeeMoreImageView = [[UIImageView alloc]init];
     [self.wrapContentView addSubview:_tooSeeMoreImageView];
-    _tooSeeMoreImageView.image = [UIImage imageNamed:@"arrow"];
+    _tooSeeMoreImageView.image = [UIImage imageNamed:@"too_see_more_arrow"];
     [_tooSeeMoreImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.trailing.mas_equalTo(-5);
         make.centerY.equalTo(_otherLabel.mas_centerY);
@@ -91,23 +91,25 @@
         make.leading.mas_equalTo(0);
         make.trailing.mas_equalTo(0);
         make.height.mas_equalTo(1);
-        make.top.equalTo(self.wrapContentView.mas_top).offset(42);
+        make.top.equalTo(self.wrapContentView.mas_top).offset(44);
     }];
     
     _staticNameLabel = [[UILabel alloc]init];
     [self.wrapContentView addSubview:_staticNameLabel];
+    _staticNameLabel.font = [UIFont systemFontOfSize:12.0];
     _staticNameLabel.text = @"名称:";
     [_staticNameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.leading.mas_equalTo(10);
-        make.top.equalTo(self.sepLineView.mas_bottom).offset(10);
+        make.top.equalTo(self.sepLineView.mas_bottom).offset(15);
     }];
     
     _projectNameLabel = [[UILabel alloc]init];
     [self.wrapContentView addSubview:_projectNameLabel];
+    _projectNameLabel.font = [UIFont systemFontOfSize:12.0f];
     _projectNameLabel.text = @"10个人荧光跑";
     [_projectNameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(self.staticNameLabel.mas_right).offset(10);
-        make.top.equalTo(self.sepLineView.mas_bottom).offset(10);
+        make.left.equalTo(self.staticNameLabel.mas_right).offset(20);
+        make.top.equalTo(self.staticNameLabel);
     }];
     
     _activityTimeImageView = [[UIImageView alloc]init];
@@ -115,13 +117,13 @@
     _activityTimeImageView.image = [UIImage imageNamed:@"schedule_time"];
     [_activityTimeImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.right.equalTo(self.staticNameLabel);
-        make.top.equalTo(self.projectNameLabel.mas_bottom).offset(10);
+        make.top.equalTo(self.projectNameLabel.mas_bottom).offset(15);
     }];
     
     _activityTimeLabel = [[UILabel alloc]init];
     [self.wrapContentView addSubview:_activityTimeLabel];
+    _activityTimeLabel.font = [UIFont systemFontOfSize:12.0f];
     _activityTimeLabel.text = @"活动时间";
-    _activityTimeLabel.font = [UIFont systemFontOfSize:14.0f];
     [_activityTimeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.equalTo(self.activityTimeImageView.mas_centerY);
         make.left.equalTo(self.projectNameLabel);
@@ -129,6 +131,7 @@
     
     _activityTimeDesLabel = [[UILabel alloc]init];
     [self.wrapContentView addSubview:_activityTimeDesLabel];
+    _activityTimeDesLabel.font = [UIFont systemFontOfSize:12.0f];
     _activityTimeDesLabel.text = @"15/10/28  18:00";
     [_activityTimeDesLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.equalTo(self.activityTimeImageView.mas_centerY);
@@ -140,11 +143,12 @@
     _locationImageView.image = [UIImage imageNamed:@"schedule_location"];
     [_locationImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.right.equalTo(self.activityTimeImageView);
-        make.top.equalTo(self.activityTimeImageView.mas_bottom).offset(10);
+        make.top.equalTo(self.activityTimeImageView.mas_bottom).offset(15);
     }];
     
     _locationLabel = [[UILabel alloc]init];
     [self.wrapContentView addSubview:_locationLabel];
+    _locationLabel.font = [UIFont systemFontOfSize:12.0f];
     _locationLabel.text = @"大脚超市门口";
     [_locationLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.equalTo(self.locationImageView);
