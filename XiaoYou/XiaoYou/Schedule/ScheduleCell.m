@@ -8,6 +8,7 @@
 
 #import "ScheduleCell.h"
 #define CELL_INSET  10
+#define CELL_BACK_GROUND_COLOR
 @interface ScheduleCell ()
 @property (nonatomic,retain) UIImageView    *timeRemindImageView;//时间提醒,今天,明天,后天,
 @property (nonatomic,retain) UIView         *wrapContentView;   //内容View
@@ -15,6 +16,7 @@
 @property (nonatomic,retain) UILabel        *otherLabel;        //还有谁
 @property (nonatomic,retain) UIImageView    *tooSeeMoreImageView;//查看更多图片
 @property (nonatomic,retain) UIView         *sepLineView;       //分割线
+@property (nonatomic,strong) UILabel        *staticNameLabel;   //静态名称
 @property (nonatomic,retain) UILabel        *projectNameLabel;  //项目名称
 @property (nonatomic,retain) UIImageView    *activityTimeImageView;//时间图片
 @property (nonatomic,retain) UILabel        *activityTimeLabel; //静态活动时间
@@ -31,7 +33,7 @@
 {
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
         self.selectionStyle = UITableViewCellSelectionStyleNone;
-        self.backgroundColor = [UIColor colorWithRed:235.0/255 green:235/255 blue:241/255 alpha:0];
+        self.backgroundColor = [UIColor colorWithRed:246.0/255 green:247/255 blue:249/255 alpha:0];
         [self initView];
     }
     return self;
@@ -39,13 +41,12 @@
 
 -(void)initView
 {
-    
     //容器视图
     _wrapContentView = [[UIView alloc]init];
     [self.contentView addSubview:_wrapContentView];
     _wrapContentView.backgroundColor = [UIColor whiteColor];//[UIColor colorWithRed:254.0/255 green:1 blue:1 alpha:0];
     _wrapContentView.layer.borderWidth = 1;
-    _wrapContentView.layer.borderColor = [UIColor lightGrayColor].CGColor;
+    _wrapContentView.layer.borderColor = [UIColor colorWithRed:204/255.0 green:204/255.0 blue:204/255.0 alpha:1].CGColor;
     [_wrapContentView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self);
         make.bottom.equalTo(self);
@@ -85,7 +86,7 @@
     
     _sepLineView = [[UIView alloc]init];
     [self.wrapContentView addSubview:_sepLineView];
-    _sepLineView.backgroundColor = [UIColor lightGrayColor];
+    _sepLineView.backgroundColor = [UIColor colorWithRed:204/255.0 green:204/255.0 blue:204/255.0 alpha:1];
     [_sepLineView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.leading.mas_equalTo(0);
         make.trailing.mas_equalTo(0);
@@ -93,11 +94,19 @@
         make.top.equalTo(self.wrapContentView.mas_top).offset(42);
     }];
     
+    _staticNameLabel = [[UILabel alloc]init];
+    [self.wrapContentView addSubview:_staticNameLabel];
+    _staticNameLabel.text = @"名称:";
+    [_staticNameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.leading.mas_equalTo(10);
+        make.top.equalTo(self.sepLineView.mas_bottom).offset(10);
+    }];
+    
     _projectNameLabel = [[UILabel alloc]init];
     [self.wrapContentView addSubview:_projectNameLabel];
-    _projectNameLabel.text = @"名称：10个人荧光跑";
+    _projectNameLabel.text = @"10个人荧光跑";
     [_projectNameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(self.timeLabel.mas_left);
+        make.left.equalTo(self.staticNameLabel.mas_right).offset(10);
         make.top.equalTo(self.sepLineView.mas_bottom).offset(10);
     }];
     
@@ -105,7 +114,7 @@
     [self.wrapContentView addSubview:_activityTimeImageView];
     _activityTimeImageView.image = [UIImage imageNamed:@"schedule_time"];
     [_activityTimeImageView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(self.timeLabel.mas_left);
+        make.right.equalTo(self.staticNameLabel);
         make.top.equalTo(self.projectNameLabel.mas_bottom).offset(10);
     }];
     
@@ -115,7 +124,7 @@
     _activityTimeLabel.font = [UIFont systemFontOfSize:14.0f];
     [_activityTimeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.equalTo(self.activityTimeImageView.mas_centerY);
-        make.left.equalTo(self.activityTimeImageView.mas_right).offset(15);
+        make.left.equalTo(self.projectNameLabel);
     }];
     
     _activityTimeDesLabel = [[UILabel alloc]init];
@@ -130,7 +139,7 @@
     [self.wrapContentView addSubview:_locationImageView];
     _locationImageView.image = [UIImage imageNamed:@"schedule_location"];
     [_locationImageView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(self.timeLabel);
+        make.right.equalTo(self.activityTimeImageView);
         make.top.equalTo(self.activityTimeImageView.mas_bottom).offset(10);
     }];
     
@@ -147,7 +156,7 @@
     _timeRemindImageView.image = [UIImage imageNamed:@"schedule_houtian"];
     [_timeRemindImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.leading.mas_equalTo(0);
-        make.top.mas_equalTo(10);
+        make.top.mas_equalTo(SCALE_NUM(10));
     }];
 }
 

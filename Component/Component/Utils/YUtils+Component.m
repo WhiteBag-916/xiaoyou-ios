@@ -124,7 +124,7 @@
         return @"";
     }
     NSDate *date = [NSDate dateWithTimeIntervalSince1970:[timeIntervalString longLongValue]];
-    return [NSString stringWithFormat:@"%ld年%ld月",(unsigned long)[date getYear],[date getMonth]];
+    return [NSString stringWithFormat:@"%ld年%ld月",(unsigned long)[date getYear],(unsigned long)[date getMonth]];
 }
 
 //根据需求进行图片裁剪的url

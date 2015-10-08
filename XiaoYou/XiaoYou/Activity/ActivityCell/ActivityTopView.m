@@ -14,7 +14,6 @@
 @property (nonatomic,strong) UIImageView    *headImageView; //公告图
 @property (nonatomic,strong) UIView         *sepLineView;   //分割线
 @property (nonatomic,strong) UILabel        *nameLabel;     //名称
-@property (nonatomic,strong) UILabel        *descriptionLabel;//描述,只显示一行；
 @property (nonatomic,strong) UILabel        *titleLabel;    //标题(校级活动公告)
 @property (nonatomic,strong) UILabel        *staticNameLabel;//静态name
 @property (nonatomic,strong) UILabel        *staticDesLabel;
@@ -105,7 +104,6 @@
         make.trailing.mas_equalTo(5);
         make.top.equalTo(_staticDesLabel);
     }];
-    self.backgroundColor = [UIColor redColor];
 }
 
 

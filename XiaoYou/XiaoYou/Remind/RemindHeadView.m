@@ -9,7 +9,19 @@
 #define REUSERID @"ReminHeadView"
 #import "RemindHeadView.h"
 
+@interface RemindHeadView ()
+@property (nonatomic,strong) UILabel    *timeLabel;
+@end
+
+
 @implementation RemindHeadView
+
+-(instancetype)initWithReuseIdentifier:(NSString *)reuseIdentifier {
+    if (self = [super initWithReuseIdentifier:reuseIdentifier]) {
+        [self initView];
+    }
+    return self;
+}
 
 +(RemindHeadView *)remindHeadViewWithTableView:(UITableView *)tableView
 {
@@ -19,6 +31,16 @@
     }
     remindHeadView.backgroundColor = [UIColor colorWithRed:247/255 green:247/255 blue:247/255 alpha:0];
     return (RemindHeadView*)remindHeadView;
+}
+
+-(void)initView {
+    _timeLabel = [[UILabel alloc]init];
+    [self addSubview:_timeLabel];
+    [_timeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerX.equalTo(self.mas_centerX);
+        make.centerY.equalTo(self.mas_centerY);
+    }];
+    _timeLabel.text = @"今天 18:22";
 }
 
 @end

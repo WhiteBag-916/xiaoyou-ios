@@ -8,6 +8,7 @@
 
 #import "ConvenienceTableViewController.h"
 #define REUSERIDEN  @"Convenience"
+#define CELL_HEIGHT SCALE_NUM(50)
 @interface ConvenienceTableViewController ()<UITableViewDelegate,UITableViewDataSource>
 
 @property (nonatomic, retain) UITableView   *tableView;
@@ -20,7 +21,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self setTitleView];
+    [self setTitle:@"便利性设置"];
     [self showCustomNavigationBackButton];
     [self tableView];
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:REUSERIDEN];
@@ -103,7 +104,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 44.0f;
+    return CELL_HEIGHT;
 }
 
 

@@ -19,6 +19,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.view.backgroundColor = [UIColor whiteColor];
+    [self setTitle:@"提醒"];
     [self showCustomNavigationBackButton];
     [self remindList];
 }

@@ -10,4 +10,6 @@
 
 @interface ActivityJoinInCell : UITableViewCell
 
++(ActivityJoinInCell*)cellWithTableView:(UITableView*)tableView;
+
 @end

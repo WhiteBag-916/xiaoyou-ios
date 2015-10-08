@@ -11,6 +11,8 @@
 #import "RemindCell.h"
 #define REMINDVIEWCELL  @"remindCell"
 #define REMINDHEADVIEW  @"remindHeadView"
+#define HEADCELL_HEIGHT SCALE_NUM(33)
+
 @interface RemindListTableView ()<UITableViewDataSource,UITableViewDelegate>
 @property(nonatomic,retain)NSArray *remindListArray;
 @end
@@ -32,25 +34,13 @@
         self.delegate = self;
         self.dataSource = self;
         self.separatorStyle = UITableViewCellSeparatorStyleNone;
-        self.backgroundColor = [UIColor clearColor];
+        self.tableHeaderView.height = HEADCELL_HEIGHT;
         [self registerClass:[RemindCell class] forCellReuseIdentifier:REMINDVIEWCELL];
     }
     return self;
 }
 
 
--(NSArray *)remindListArray {
-    if (!_remindListArray) {
-        RemindList *model = [[RemindList alloc]init];
-        model.remindTitle = @"活动申请通过!";
-        model.noticeTitle = @"校级活动公告";
-        model.noticeContent=@"名称：10个人荧光跑";
-        model.remindTrail  =@"看看还有什么人";
-
-        _remindListArray = @[model,model,model];
-    }
-    return _remindListArray;
-}
 
 #pragma mark 协议方法
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -72,10 +62,10 @@
     return 1;
 }
 
--(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
-{
-    return 20;
-}
+//-(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+//{
+//    return SCALE_NUM(33);
+//}
 
 //返回header
 -(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section

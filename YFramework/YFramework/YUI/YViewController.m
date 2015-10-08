@@ -187,6 +187,11 @@
     [self showNomalNavigationRightButtonWithImage:@"" action:@selector(onNavigationRightButtonClicked) imgName:@"mine-publisher" frame:CGRectMake(0, 0, 15, 20)];
 }
 
+//导航栏右侧，Fast按钮
+- (void)showCustomNavigationFastButton {
+    [self showNomalNavigationRightButtonWithImage:@"" action:@selector(onNavigationRightButtonClicked) imgName:@"fast_add_white" frame:CGRectMake(0, 0, 20, 20)];
+}
+
 //导航栏右侧下一步按钮
 - (void)showCustomNavigationNextButton {
     [self showNomalNavigationRightButtonWithImage:@"下一步" action:@selector(onNavigationRightButtonClicked) imgName:nil frame:CGRectMake(0, 0, 20, 15)];

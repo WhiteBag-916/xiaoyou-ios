@@ -24,11 +24,7 @@
 #import "FeedFilterViewController.h"
 
 //测试用
-#import "SetupTableViewController.h"
 #import "FastViewController.h"
-#import "RemindViewController.h"
-#import "ScheduleViewController.h"
-#import "ActivityViewController.h"
 
 @interface FeedListViewController ()<SlideNavigationControllerDelegate>
 
@@ -178,7 +174,7 @@
         self.viewIndex = 1;
     } else {
         //self.navigationItem.rightBarButtonItem = nil;
-        [self showCustomNavigationNextButton];
+        [self showCustomNavigationFastButton];
         self.viewIndex = 2;
         [_profilePersonListTableView loadDataWithQueryCode:@""];
     }
@@ -220,24 +216,12 @@
         [[UINavigationController alloc] initWithRootViewController:[[FeedPublishViewController alloc] init]];
         [self.navigationController presentViewController:navigationController animated:YES completion:nil];
     } else if (self.viewIndex == 2) {
-        //UINavigationController *navigationController =
-        //[[UINavigationController alloc] initWithRootViewController:[[SetupTableViewController alloc] init]];
-        //[self.navigationController pushViewController: animated:YES];
         
-        
-        //FastViewController *fast = [[FastViewController alloc]init];
+        FastViewController *fastViewController = [[FastViewController alloc]init];
         //[self.navigationController presentViewController:fast animated:YES completion:nil];
-        //[self.navigationController pushViewController:fast animated:YES];
-        
-        //RemindViewController *remind = [[RemindViewController alloc]init];
-        //[self.navigationController pushViewController:remind animated:YES];
-        
-        /*ScheduleViewController *shcedule = [[ScheduleViewController alloc]init];
-        [self.navigationController pushViewController:shcedule animated:YES];*/
-        
-        ActivityViewController *funny = [[ActivityViewController alloc]init];
-        [self.navigationController pushViewController:funny animated:YES];
-        
+        //UINavigationController *navigationController = [[UINavigationController alloc]initWithRootViewController:fastViewController];
+        //[self.navigationController presentViewController:navigationController animated:YES completion:nil];
+        [self.navigationController pushViewController:fastViewController animated:YES needHiddenBottomBar:YES];
     }
     
 }

@@ -8,8 +8,8 @@
 
 #import "ScheduleListTableView.h"
 #import "ScheduleCell.h"
-#define SCHEREUSEID @"schedulecell"
-
+#define SCHEREUSEID             @"schedulecell"
+#define CELL_BACKGROUND_COLOR   @""
 @interface ScheduleListTableView ()<UITableViewDelegate,UITableViewDataSource>
 @end
 @implementation ScheduleListTableView

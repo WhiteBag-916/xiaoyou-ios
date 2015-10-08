@@ -24,7 +24,7 @@
     [super viewDidLoad];
     
     self.view.backgroundColor = [UIColor whiteColor];
-    [self setTitleView];
+    [self setTitle:@"设置及其它"];
     [self showCustomNavigationBackButton];
     [self tableView];
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"SetUp"];
@@ -34,16 +34,6 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
-}
-
-
--(void)setTitleView {
-    UILabel *titleLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, 150, 64)];
-    titleLabel.font = [UIFont systemFontOfSize:18];
-    titleLabel.textAlignment = NSTextAlignmentCenter;
-    titleLabel.text = @"设置及其它";
-    [titleLabel setTextColor:[UIColor whiteColor]];
-    self.navigationItem.titleView = titleLabel;
 }
 
 -(UITableView *)tableView {

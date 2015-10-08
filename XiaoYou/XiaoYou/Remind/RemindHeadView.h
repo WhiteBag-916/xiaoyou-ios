@@ -12,4 +12,6 @@
 
 +(RemindHeadView*)remindHeadViewWithTableView:(UITableView*)tableView;
 
+
+
 @end

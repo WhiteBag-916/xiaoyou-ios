@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
-@interface FastViewController : UIViewController
+#import "YViewController.h"
+@interface FastViewController : YViewController
 
 @end

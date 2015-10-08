@@ -7,9 +7,10 @@
 //
 
 #import "RemindCell.h"
+#import "DataConvert.h"
 
-#define CELL_INSET  SCALE_NUM(20)
-
+#define CELL_INSET          SCALE_NUM(12)
+#define TOP_CELL_HEIGHT     SCALE_NUM(44)
 @interface RemindCell ()
 
 @property(nonatomic,retain) UIView      *wrapContentView;   //内容视图
@@ -31,12 +32,11 @@
 {
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
         self.selectionStyle = UITableViewCellSelectionStyleNone;
-        self.contentView.backgroundColor = KCOLORWHITE;
+        self.backgroundColor = [UIColor colorWithRed:246.0/255 green:247/255 blue:249/255 alpha:0];
         [self initView];
     }
     return self;
 }
-
 
 -(void)setData:(RemindList *)remindModel
 {
@@ -48,6 +48,7 @@
     //容器视图
     _wrapContentView = [[UIView alloc]init];
     [self.contentView addSubview:_wrapContentView];
+    _wrapContentView.backgroundColor = [UIColor whiteColor];
     _wrapContentView.layer.borderWidth = 1;
     _wrapContentView.layer.borderColor = [UIColor lightGrayColor].CGColor;
     [_wrapContentView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -56,7 +57,7 @@
         make.left.equalTo(self.mas_left).offset(CELL_INSET);
         make.right.equalTo(self.mas_right).offset(-CELL_INSET);
     }];
-    _wrapContentView.backgroundColor = [UIColor cyanColor];
+    
     _wrapContentView.layer.cornerRadius = 5;
     _wrapContentView.clipsToBounds = YES;
     
@@ -67,13 +68,13 @@
     [_titleImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.leading.mas_equalTo(10);
         make.top.equalTo(self).offset(18);
-        make.width.mas_equalTo(SCALE_NUM(28));
-        make.height.mas_equalTo(SCALE_NUM(26));
+        make.width.mas_equalTo(SCALE_NUM(14));
+        make.height.mas_equalTo(SCALE_NUM(13));
     }];
     
     _remindTitleLabel = [[UILabel alloc]init];
     _remindTitleLabel.text = @"活动申请通过";
-    _remindTitleLabel.font = [UIFont systemFontOfSize:20];
+    _remindTitleLabel.font = [UIFont systemFontOfSize:[DataConvert pxConvertToFontSize:20]];
     
     [self.wrapContentView addSubview:_remindTitleLabel];
     [_remindTitleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -90,7 +91,7 @@
     [_topLineView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.leading.mas_equalTo(0);
         make.trailing.mas_equalTo(0);
-        make.top.equalTo(self.remindTitleLabel.mas_bottom).offset(10);
+        make.top.equalTo(self.remindTitleLabel.mas_bottom).offset(17);
         make.height.mas_equalTo(1);
     }];
     
@@ -99,10 +100,10 @@
     _headImageView.image = [UIImage imageNamed:@"chatBar_face"];
     
     [_headImageView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self.topLineView).offset(10);
+        make.top.equalTo(self.topLineView).offset(15);
         make.leading.mas_equalTo(10);
-        make.width.mas_equalTo(SCALE_NUM(50));
-        make.height.mas_equalTo(SCALE_NUM(50));
+        make.width.mas_equalTo(SCALE_NUM(45));
+        make.height.mas_equalTo(SCALE_NUM(45));
     }];
     _headImageView.layer.cornerRadius = 25;
     _headImageView.clipsToBounds = YES;
@@ -110,10 +111,10 @@
     _contentTitleLabel = [[UILabel alloc]init];
     [self.wrapContentView addSubview:_contentTitleLabel];
     _contentTitleLabel.text = @"校级活动公告";
-    _contentTitleLabel.font = [UIFont systemFontOfSize:24.0f];
+    _contentTitleLabel.font = [UIFont systemFontOfSize:[DataConvert pxConvertToFontSize:12]];
     [_contentTitleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.headImageView);
-        make.left.equalTo(self.headImageView.mas_right).offset(15);
+        make.left.equalTo(self.headImageView.mas_right).offset(10);
     }];
     
     _contentNameLabel = [[UILabel alloc]init];

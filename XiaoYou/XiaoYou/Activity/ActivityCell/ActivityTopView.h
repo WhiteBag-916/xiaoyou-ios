@@ -17,4 +17,5 @@ typedef enum : NSUInteger {
 
 @interface ActivityTopView : UIView
 -(instancetype)initWithType:(TOPVIEWTYPE)viewType;
+@property (nonatomic,strong) UILabel        *descriptionLabel;//描述,只显示一行;
 @end

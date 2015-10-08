@@ -55,6 +55,9 @@
 //导航栏右侧确定按钮
 - (void)showCustomNavigationConfirmButton;
 
+//导航栏右侧,Fast按钮
+- (void)showCustomNavigationFastButton;
+
 - (void)showEditMode;
 
 - (void)showOrignMode;

@@ -8,6 +8,7 @@
 
 #import "ActivityDetailListView.h"
 #import "ActivityDetailCell.h"
+#import "ActivityJoinInCell.h"
 @interface ActivityDetailListView ()<UITableViewDataSource,UITableViewDelegate>
 @end
 
@@ -35,8 +36,17 @@
 
 -(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    ActivityDetailCell *cell = [ActivityDetailCell cellWithTableView:tableView];
-    return cell;
+    if (indexPath.row == 0)
+    {
+        ActivityDetailCell *cell = [ActivityDetailCell cellWithTableView:tableView];
+        return cell;
+    }
+    else
+    {
+        ActivityJoinInCell *cell = [ActivityJoinInCell cellWithTableView:tableView];
+        return cell;
+    }
+    return nil;
 }
 
 
