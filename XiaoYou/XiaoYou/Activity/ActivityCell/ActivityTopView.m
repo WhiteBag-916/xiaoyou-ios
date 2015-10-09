@@ -11,12 +11,14 @@
 #define HEADIMAGEVIEW_WIDTH         SCALE_NUM(45)
 #define LEADINGOFF_HEADIMAGEVIEW    SCALE_NUM(12)
 @interface ActivityTopView ()
+
 @property (nonatomic,strong) UIImageView    *headImageView; //公告图
 @property (nonatomic,strong) UIView         *sepLineView;   //分割线
 @property (nonatomic,strong) UILabel        *nameLabel;     //名称
 @property (nonatomic,strong) UILabel        *titleLabel;    //标题(校级活动公告)
 @property (nonatomic,strong) UILabel        *staticNameLabel;//静态name
 @property (nonatomic,strong) UILabel        *staticDesLabel;
+
 @end
 
 @implementation ActivityTopView
@@ -106,7 +108,7 @@
     _descriptionLabel.text = @"清华大学舞蹈大赛于清华大学舞蹈大赛清华大学舞蹈大赛于清华大学舞蹈大赛清华大学舞蹈大赛于清华大学舞蹈大赛清华大学舞蹈大赛于清华大学舞蹈大赛清华大学舞蹈大赛于清华大学舞蹈大赛清华大学舞蹈大赛于清华大学舞蹈大赛清华大学舞蹈大赛于清华大学舞蹈大赛清华大学舞蹈大赛于清华大学舞蹈大赛清华大学舞蹈大赛于清华大学舞蹈大赛清华大学舞蹈大赛于清华大学舞蹈大赛于清华大学舞蹈大赛于清华大学舞蹈大赛于清华大学舞蹈大赛于赛于赛于";
     [_descriptionLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(_nameLabel);
-        make.trailing.mas_equalTo(5);
+        make.trailing.mas_equalTo(-12);
         make.top.equalTo(_staticDesLabel);
     }];
 }

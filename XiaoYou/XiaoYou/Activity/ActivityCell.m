@@ -108,7 +108,7 @@
     _bottomDashLineView.layer.masksToBounds = YES;
 }
 
-//画出一条虚线
+//画出一条虚线,为了方便控制虚线的宽度,需要把此虚线加在View上，然后设置cliptoBounds属性
 -(CAShapeLayer*)drawDashLine {
     CAShapeLayer *shapeLayer = [CAShapeLayer layer];
     [shapeLayer setBounds:self.bounds];
@@ -133,7 +133,7 @@
     //设置初始起点和终点
     CGPathMoveToPoint(path, NULL, 0, 0);
     CGPathAddLineToPoint(path, NULL, 1000,0);
-
+    
     [shapeLayer setPath:path];
     CGPathRelease(path);
     // 可以把self改成任何你想要的UIView, 下图演示就是放到UITableViewCell中的
