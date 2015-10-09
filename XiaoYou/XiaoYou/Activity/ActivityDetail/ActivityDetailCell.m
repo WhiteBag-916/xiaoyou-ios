@@ -57,7 +57,6 @@
     [_middleView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(_topView.mas_bottom);
         make.left.equalTo(_topView.descriptionLabel.mas_left);
-        //make.trailing.mas_equalTo(-5);
         make.right.equalTo(_topView.descriptionLabel);
     }];
     
