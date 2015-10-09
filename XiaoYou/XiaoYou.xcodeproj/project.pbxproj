@@ -549,6 +549,8 @@
 		65F55A9E1B897C4700ED4348 /* ProfileTagViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 65F55A9D1B897C4700ED4348 /* ProfileTagViewController.m */; };
 		65F55AA11B899EBC00ED4348 /* UIImageView+Ext.m in Sources */ = {isa = PBXBuildFile; fileRef = 65F55AA01B899EBC00ED4348 /* UIImageView+Ext.m */; };
 		65F82F841B85E74A00FF6E2D /* FeedPublishViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 65F82F831B85E74A00FF6E2D /* FeedPublishViewController.m */; };
+		E4467C571BC66F7C0011C18F /* TagsCommonView.m in Sources */ = {isa = PBXBuildFile; fileRef = E4467C561BC66F7C0011C18F /* TagsCommonView.m */; settings = {ASSET_TAGS = (); }; };
+		E45008171BC74D8800604F81 /* MyFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = E45008161BC74D8800604F81 /* MyFlowLayout.m */; settings = {ASSET_TAGS = (); }; };
 		E4E28CE61BB3DCAF00E3808A /* FunDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E4E28CE51BB3DCAF00E3808A /* FunDetailViewController.m */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
@@ -1374,6 +1376,10 @@
 		65F82F831B85E74A00FF6E2D /* FeedPublishViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FeedPublishViewController.m; path = XiaoYou/CommonView/FeedPublishViewController.m; sourceTree = SOURCE_ROOT; };
 		77B574BED9D4FF3F4BFAA9FE /* libPods-XiaoYou.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-XiaoYou.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1D8A55CC0081FB2C8604F21 /* Pods-XiaoYou.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XiaoYou.release.xcconfig"; path = "../Pods/Target Support Files/Pods-XiaoYou/Pods-XiaoYou.release.xcconfig"; sourceTree = "<group>"; };
+		E4467C551BC66F7C0011C18F /* TagsCommonView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TagsCommonView.h; sourceTree = "<group>"; };
+		E4467C561BC66F7C0011C18F /* TagsCommonView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TagsCommonView.m; sourceTree = "<group>"; };
+		E45008151BC74D8800604F81 /* MyFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyFlowLayout.h; sourceTree = "<group>"; };
+		E45008161BC74D8800604F81 /* MyFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyFlowLayout.m; sourceTree = "<group>"; };
 		E4E28CE41BB3DCAF00E3808A /* FunDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FunDetailViewController.h; path = ../MessageAndContacts/FunDetailViewController.h; sourceTree = "<group>"; };
 		E4E28CE51BB3DCAF00E3808A /* FunDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FunDetailViewController.m; path = ../MessageAndContacts/FunDetailViewController.m; sourceTree = "<group>"; };
 		F531E541C4347E287F02139F /* Pods-XiaoYou.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XiaoYou.release.xcconfig"; path = "../Pods/Target Support Files/Pods-XiaoYou/Pods-XiaoYou.release.xcconfig"; sourceTree = "<group>"; };
@@ -1416,6 +1422,10 @@
 				04394B401BBB91B10098BB8F /* TagListView.m */,
 				04394B421BBBB0080098BB8F /* TagCollectionCell.h */,
 				04394B431BBBB0080098BB8F /* TagCollectionCell.m */,
+				E4467C551BC66F7C0011C18F /* TagsCommonView.h */,
+				E4467C561BC66F7C0011C18F /* TagsCommonView.m */,
+				E45008151BC74D8800604F81 /* MyFlowLayout.h */,
+				E45008161BC74D8800604F81 /* MyFlowLayout.m */,
 			);
 			path = JoinInCell;
 			sourceTree = "<group>";
@@ -3627,6 +3637,7 @@
 				656341551BC1061500E10025 /* YStripeView.m in Sources */,
 				65CF638F1B8F0E4A00ACBB70 /* YCommonReport.m in Sources */,
 				653CB2EF1B806BFD006ECBB2 /* pinyin.c in Sources */,
+				E45008171BC74D8800604F81 /* MyFlowLayout.m in Sources */,
 				65969DD01B8723E3001DD348 /* YUtils+HUD.m in Sources */,
 				65969DD31B87312D001DD348 /* ProfilePersonListTableView.m in Sources */,
 				33380D941B8577E8008B51EB /* SendMessageTableView.m in Sources */,
@@ -3663,6 +3674,7 @@
 				200E397C1B4E818B000B587B /* main.m in Sources */,
 				333122351B806EDB00D3D032 /* EMChatBaseBubbleView.m in Sources */,
 				6592DCDE1B806A9B004CD118 /* MessageTableViewCell.m in Sources */,
+				E4467C571BC66F7C0011C18F /* TagsCommonView.m in Sources */,
 				20E1222D1B708CDC00F90BD3 /* TagListViewController.m in Sources */,
 				650C6C061B8860FF00A89AC9 /* YCommonEditViewController.m in Sources */,
 				044DA0551BBA77C900AA321A /* ActivityDetailCell.m in Sources */,

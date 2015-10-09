@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface TagCollectionCell : UICollectionViewCell
-
+@property (nonatomic,strong) UILabel *tagLabel;
 @end
