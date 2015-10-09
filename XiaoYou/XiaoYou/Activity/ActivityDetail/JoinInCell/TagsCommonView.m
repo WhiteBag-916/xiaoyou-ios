@@ -25,14 +25,17 @@
 @property (nonatomic,strong) ConnectTag     *connectTag;
 @property (nonatomic,strong) NSMutableArray * commonTagsArr;
 
+@property (nonatomic,strong) ProfileInfo * model;
+
 @end
 
 @implementation TagsCommonView
 
-- (instancetype)initWithCollectionViewHeight:(CGFloat) height
+- (instancetype)initWithCollectionViewHeight:(CGFloat) height andModel:(ProfileInfo *) model
 {
     self = [super init];
     if (self) {
+        _model = model;
         [self setUpUIWithCollectionViewHeight:height];
         [_tagCollectionView registerClass:[TagCollectionCell class] forCellWithReuseIdentifier:REUSECELL];
     }
@@ -41,7 +44,7 @@
 
 -(void)setUpUIWithCollectionViewHeight:(CGFloat) height
 {
-    self.backgroundColor = [UIColor magentaColor];
+    self.backgroundColor = [UIColor clearColor];
     _flagImageView = [[UIImageView alloc]init];
     [self addSubview:_flagImageView];
     _flagImageView.image = [UIImage imageNamed:@"tag-green"];
@@ -65,22 +68,22 @@
         make.height.mas_equalTo(height);
 //        make.bottom.equalTo(self);
     }];
-    _tagCollectionView.backgroundColor = [UIColor grayColor];
+    _tagCollectionView.backgroundColor = [UIColor clearColor];
     
     //共同标签
-    NSMutableArray * propetiesCommonArr = [[NSMutableArray alloc] init];
-    for (int i = 0; i < 3; i++)
-    {
-        [propetiesCommonArr addObject:[[Tags alloc]initWithDictionary:@{@"name":@"班"}]];
-    }
-    [_connectTag updateWithTag:propetiesCommonArr];
+//    NSMutableArray * propetiesCommonArr = [[NSMutableArray alloc] init];
+//    for (int i = 0; i < 3; i++)
+//    {
+//        [propetiesCommonArr addObject:[[Tags alloc]initWithDictionary:@{@"name":@"班"}]];
+//    }
+    [_connectTag updateWithTag:_model.propetiesCommon];
     
     _commonTagsArr = [[NSMutableArray alloc] initWithArray:@[@"考研",@"雅思",@"托福GRE",@"外资企业",@"铁饭碗攻略",@"代购导游",@"骑行"]];
 }
 
 -(UICollectionView *)tagCollectionView {
     if (!_tagCollectionView) {
-        _tagCollectionView.backgroundColor = [UIColor redColor];
+        _tagCollectionView.backgroundColor = [UIColor clearColor];
         MyFlowLayout *layout = [[MyFlowLayout alloc]init];
         layout.minimumInteritemSpacing = 10;
         _tagCollectionView = [[UICollectionView alloc]initWithFrame:CGRectZero collectionViewLayout:layout];
@@ -108,7 +111,6 @@
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     TagCollectionCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:REUSECELL forIndexPath:indexPath];
-    cell.backgroundColor = [UIColor greenColor];
     cell.tagLabel.text = _commonTagsArr[indexPath.row];
     return cell;
 }
