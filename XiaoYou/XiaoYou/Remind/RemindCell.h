@@ -7,9 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "RemindList.h"
+#import "RemindInfo.h"
 @interface RemindCell : UITableViewCell
 
--(void)setData:(RemindList*)remindModel;
+-(void)setData:(RemindInfo*)remindInfo;
 
 @end

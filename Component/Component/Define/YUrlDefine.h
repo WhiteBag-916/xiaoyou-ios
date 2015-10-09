@@ -168,5 +168,11 @@
 //发送建议
 #define api_suggest_list  @"/suggest/list?flag=groupManager"
 
+/**********************************************************
+ Url Define: Activity
+ **********************************************************/
+//提醒列表
+#define api_remind_list     @"/user/getsenderlist"
+#define api_schedule_list   @"/user/getschedulelist"
 #endif
 

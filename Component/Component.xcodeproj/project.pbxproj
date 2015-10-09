@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		04A82D911BC7A24F00EF87B7 /* RemindAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A82D901BC7A24F00EF87B7 /* RemindAction.m */; settings = {ASSET_TAGS = (); }; };
+		04A82D951BC7B3FC00EF87B7 /* RemindManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A82D941BC7B3FC00EF87B7 /* RemindManager.m */; settings = {ASSET_TAGS = (); }; };
 		20859A7C1B64BD5B00580ED3 /* ProvisionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 20859A7B1B64BD5B00580ED3 /* ProvisionManager.m */; };
 		20859A821B64BD8500580ED3 /* ContactManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 20859A811B64BD8500580ED3 /* ContactManager.m */; };
 		20859A851B64BD9000580ED3 /* MessageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 20859A841B64BD9000580ED3 /* MessageManager.m */; };
@@ -78,6 +80,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		04A82D8F1BC7A24F00EF87B7 /* RemindAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RemindAction.h; sourceTree = "<group>"; };
+		04A82D901BC7A24F00EF87B7 /* RemindAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RemindAction.m; sourceTree = "<group>"; };
+		04A82D931BC7B3FC00EF87B7 /* RemindManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RemindManager.h; sourceTree = "<group>"; };
+		04A82D941BC7B3FC00EF87B7 /* RemindManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RemindManager.m; sourceTree = "<group>"; };
 		20859A7A1B64BD5B00580ED3 /* ProvisionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProvisionManager.h; sourceTree = "<group>"; };
 		20859A7B1B64BD5B00580ED3 /* ProvisionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProvisionManager.m; sourceTree = "<group>"; };
 		20859A801B64BD8500580ED3 /* ContactManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactManager.h; sourceTree = "<group>"; };
@@ -199,6 +205,38 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		04A82D891BC79C2F00EF87B7 /* Schedule */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Schedule;
+			sourceTree = "<group>";
+		};
+		04A82D8D1BC7A23200EF87B7 /* Remind */ = {
+			isa = PBXGroup;
+			children = (
+				04A82D8F1BC7A24F00EF87B7 /* RemindAction.h */,
+				04A82D901BC7A24F00EF87B7 /* RemindAction.m */,
+			);
+			path = Remind;
+			sourceTree = "<group>";
+		};
+		04A82D8E1BC7A23200EF87B7 /* Schedule */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Schedule;
+			sourceTree = "<group>";
+		};
+		04A82D921BC7B3FC00EF87B7 /* Remind */ = {
+			isa = PBXGroup;
+			children = (
+				04A82D931BC7B3FC00EF87B7 /* RemindManager.h */,
+				04A82D941BC7B3FC00EF87B7 /* RemindManager.m */,
+			);
+			path = Remind;
+			sourceTree = "<group>";
+		};
 		20859A791B64BD4C00580ED3 /* Provision */ = {
 			isa = PBXGroup;
 			children = (
@@ -316,6 +354,8 @@
 		20DBFD741B4FD3F5009134D0 /* Action */ = {
 			isa = PBXGroup;
 			children = (
+				04A82D8D1BC7A23200EF87B7 /* Remind */,
+				04A82D8E1BC7A23200EF87B7 /* Schedule */,
 				20DA8B311B8EC4E3007D0CDE /* Utils */,
 				20E0C02B1B88B0CA00EDAED4 /* Feed */,
 				20859A8D1B64C03C00580ED3 /* Provision */,
@@ -387,6 +427,8 @@
 		20DBFD7D1B4FD3F5009134D0 /* Manager */ = {
 			isa = PBXGroup;
 			children = (
+				04A82D921BC7B3FC00EF87B7 /* Remind */,
+				04A82D891BC79C2F00EF87B7 /* Schedule */,
 				20E122141B705D3C00F90BD3 /* Feed */,
 				20859A791B64BD4C00580ED3 /* Provision */,
 				20DBFD7F1B4FD3F5009134D0 /* Contact */,
@@ -583,6 +625,7 @@
 				20DA1A7E1B89C44D00DEF95C /* MyCoolPersonsAction.m in Sources */,
 				20E0BFEA1B88B0CA00EDAED4 /* TagListAction.m in Sources */,
 				20DA1A711B89B7DD00DEF95C /* MyFeedAction.m in Sources */,
+				04A82D911BC7A24F00EF87B7 /* RemindAction.m in Sources */,
 				20DCB95E1B8CA60800C758DE /* UploadFeedImageAction.m in Sources */,
 				20E1C6691B89E9E6008BA9D6 /* UpdateSelfIntroAction.m in Sources */,
 				20DD81671B91DA1700ACFD9A /* ForbiddenLinkManAction.m in Sources */,
@@ -595,6 +638,7 @@
 				20DA74C01B8C12040002E041 /* FindFriendsAction.m in Sources */,
 				20859A821B64BD8500580ED3 /* ContactManager.m in Sources */,
 				20E1C6721B89EB9F008BA9D6 /* ReceiveAuthCodeAction.m in Sources */,
+				04A82D951BC7B3FC00EF87B7 /* RemindManager.m in Sources */,
 				20DA74C31B8C120F0002E041 /* FriendsConditionAction.m in Sources */,
 				20C5B05D1B8DB08900B4A8A8 /* GroupDetailAction.m in Sources */,
 				20C5B06C1B8DB77000B4A8A8 /* AlertListAction.m in Sources */,
