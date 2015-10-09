@@ -88,7 +88,7 @@
     [_middleDashLineView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(_activityTopView.mas_bottom);
         make.height.mas_equalTo(1);
-        make.leading.mas_equalTo(SCALE_NUM(70));
+        make.leading.mas_equalTo(SCALE_NUM(66));
         make.trailing.mas_equalTo(0);
     }];
     [_middleDashLineView.layer addSublayer:[self drawDashLine]];

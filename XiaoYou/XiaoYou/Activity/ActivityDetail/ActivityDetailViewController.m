@@ -30,7 +30,6 @@
     // Dispose of any resources that can be recreated.
 }
 
-
 -(ActivityDetailListView *)detailListView {
     if (!_detailListView) {
         _detailListView = [[ActivityDetailListView alloc]init];
