@@ -12,4 +12,6 @@
 
 +(ActivityJoinInCell*)cellWithTableView:(UITableView*)tableView;
 
+-(void)setCellInfo;
+
 @end

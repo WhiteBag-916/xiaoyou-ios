@@ -8,7 +8,7 @@
 
 #import "TagCollectionCell.h"
 @interface TagCollectionCell ()
-@property (nonatomic,strong) UILabel *tagLabel;
+
 @end
 @implementation TagCollectionCell
 
@@ -29,7 +29,8 @@
 -(void)initView {
     _tagLabel = [[UILabel alloc]init];
     [self addSubview:_tagLabel];
-    _tagLabel.text = @"互联网公司";
+    _tagLabel.textAlignment = NSTextAlignmentCenter;
+    _tagLabel.font = CONTENT_FONT(10);
     [_tagLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.equalTo(self.contentView);
     }];
