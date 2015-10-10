@@ -30,6 +30,10 @@
     _tagLabel = [[UILabel alloc]init];
     [self addSubview:_tagLabel];
     _tagLabel.textAlignment = NSTextAlignmentCenter;
+    _tagLabel.textColor = [UIColor whiteColor];
+    _tagLabel.backgroundColor = [UIColor hexChangeFloat:@"009f92"];
+    _tagLabel.layer.cornerRadius = 2;
+    _tagLabel.clipsToBounds = YES;
     _tagLabel.font = CONTENT_FONT(10);
     [_tagLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.equalTo(self.contentView);

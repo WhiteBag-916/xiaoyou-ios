@@ -552,6 +552,9 @@
 		65F82F841B85E74A00FF6E2D /* FeedPublishViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 65F82F831B85E74A00FF6E2D /* FeedPublishViewController.m */; };
 		E4467C571BC66F7C0011C18F /* TagsCommonView.m in Sources */ = {isa = PBXBuildFile; fileRef = E4467C561BC66F7C0011C18F /* TagsCommonView.m */; settings = {ASSET_TAGS = (); }; };
 		E45008171BC74D8800604F81 /* MyFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = E45008161BC74D8800604F81 /* MyFlowLayout.m */; settings = {ASSET_TAGS = (); }; };
+		E4BE2DAA1BC7989300124F22 /* ContactsInfoFirstTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E4BE2DA91BC7989300124F22 /* ContactsInfoFirstTableViewCell.m */; settings = {ASSET_TAGS = (); }; };
+		E4BE2DAD1BC798A600124F22 /* ContactsInfoSecondTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E4BE2DAC1BC798A600124F22 /* ContactsInfoSecondTableViewCell.m */; settings = {ASSET_TAGS = (); }; };
+		E4BE2DB01BC798B500124F22 /* ContactsInfoThirdTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E4BE2DAF1BC798B500124F22 /* ContactsInfoThirdTableViewCell.m */; settings = {ASSET_TAGS = (); }; };
 		E4E28CE61BB3DCAF00E3808A /* FunDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E4E28CE51BB3DCAF00E3808A /* FunDetailViewController.m */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
@@ -1383,6 +1386,12 @@
 		E4467C561BC66F7C0011C18F /* TagsCommonView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TagsCommonView.m; sourceTree = "<group>"; };
 		E45008151BC74D8800604F81 /* MyFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyFlowLayout.h; sourceTree = "<group>"; };
 		E45008161BC74D8800604F81 /* MyFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyFlowLayout.m; sourceTree = "<group>"; };
+		E4BE2DA81BC7989300124F22 /* ContactsInfoFirstTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactsInfoFirstTableViewCell.h; sourceTree = "<group>"; };
+		E4BE2DA91BC7989300124F22 /* ContactsInfoFirstTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactsInfoFirstTableViewCell.m; sourceTree = "<group>"; };
+		E4BE2DAB1BC798A600124F22 /* ContactsInfoSecondTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactsInfoSecondTableViewCell.h; sourceTree = "<group>"; };
+		E4BE2DAC1BC798A600124F22 /* ContactsInfoSecondTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactsInfoSecondTableViewCell.m; sourceTree = "<group>"; };
+		E4BE2DAE1BC798B500124F22 /* ContactsInfoThirdTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactsInfoThirdTableViewCell.h; sourceTree = "<group>"; };
+		E4BE2DAF1BC798B500124F22 /* ContactsInfoThirdTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactsInfoThirdTableViewCell.m; sourceTree = "<group>"; };
 		E4E28CE41BB3DCAF00E3808A /* FunDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FunDetailViewController.h; path = ../MessageAndContacts/FunDetailViewController.h; sourceTree = "<group>"; };
 		E4E28CE51BB3DCAF00E3808A /* FunDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FunDetailViewController.m; path = ../MessageAndContacts/FunDetailViewController.m; sourceTree = "<group>"; };
 		F531E541C4347E287F02139F /* Pods-XiaoYou.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XiaoYou.release.xcconfig"; path = "../Pods/Target Support Files/Pods-XiaoYou/Pods-XiaoYou.release.xcconfig"; sourceTree = "<group>"; };
@@ -3011,6 +3020,12 @@
 				3334AC451B831B2200FDDCCB /* ContactsInfoDetailTableView.m */,
 				3334AC471B831DE500FDDCCB /* ContactsInfoDetailTableViewCell.h */,
 				3334AC481B831DE500FDDCCB /* ContactsInfoDetailTableViewCell.m */,
+				E4BE2DA81BC7989300124F22 /* ContactsInfoFirstTableViewCell.h */,
+				E4BE2DA91BC7989300124F22 /* ContactsInfoFirstTableViewCell.m */,
+				E4BE2DAB1BC798A600124F22 /* ContactsInfoSecondTableViewCell.h */,
+				E4BE2DAC1BC798A600124F22 /* ContactsInfoSecondTableViewCell.m */,
+				E4BE2DAE1BC798B500124F22 /* ContactsInfoThirdTableViewCell.h */,
+				E4BE2DAF1BC798B500124F22 /* ContactsInfoThirdTableViewCell.m */,
 			);
 			path = ContactsInfoDetail;
 			sourceTree = "<group>";
@@ -3590,6 +3605,7 @@
 				20DC87F21B5F3DC70019DC7F /* ChooseSchoolViewController.m in Sources */,
 				333122301B806EDB00D3D032 /* DXFaceView.m in Sources */,
 				20DBFD631B4FA7E1009134D0 /* AppDelegate.m in Sources */,
+				E4BE2DB01BC798B500124F22 /* ContactsInfoThirdTableViewCell.m in Sources */,
 				33380D9F1B85DAC5008B51EB /* XYSystemMessageViewController.m in Sources */,
 				333122811B806EDC00D3D032 /* NSString+Valid.m in Sources */,
 				333122441B806EDB00D3D032 /* EMCDDeviceManager+ProximitySensor.m in Sources */,
@@ -3681,6 +3697,7 @@
 				6592DCDE1B806A9B004CD118 /* MessageTableViewCell.m in Sources */,
 				E4467C571BC66F7C0011C18F /* TagsCommonView.m in Sources */,
 				20E1222D1B708CDC00F90BD3 /* TagListViewController.m in Sources */,
+				E4BE2DAD1BC798A600124F22 /* ContactsInfoSecondTableViewCell.m in Sources */,
 				650C6C061B8860FF00A89AC9 /* YCommonEditViewController.m in Sources */,
 				044DA0551BBA77C900AA321A /* ActivityDetailCell.m in Sources */,
 				333122681B806EDB00D3D032 /* PSTCollectionViewController.m in Sources */,
@@ -3688,6 +3705,7 @@
 				333122311B806EDB00D3D032 /* FacialView.m in Sources */,
 				3331226F1B806EDB00D3D032 /* PSTGridLayoutItem.m in Sources */,
 				333122701B806EDB00D3D032 /* PSTGridLayoutRow.m in Sources */,
+				E4BE2DAA1BC7989300124F22 /* ContactsInfoFirstTableViewCell.m in Sources */,
 				044DA05B1BBA77C900AA321A /* ActivityCell.m in Sources */,
 				65A703CB1B8C467C0094D8A2 /* FeedFilterViewController.m in Sources */,
 				333122501B806EDB00D3D032 /* MWPhotoBrowser.m in Sources */,
