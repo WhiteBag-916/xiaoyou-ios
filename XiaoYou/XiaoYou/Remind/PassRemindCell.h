@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "RemindInfo.h"
-@interface RemindCell : UITableViewCell
+@interface PassRemindCell : UITableViewCell
 
 -(void)setData:(RemindInfo*)remindInfo;
 

@@ -255,6 +255,18 @@
     return endOfWeek;
 }
 
+- (BOOL) isTodayWithTimeZone:(NSTimeZone*)timeZone{
+    return [self isSameDay:[NSDate date] timeZone:timeZone];
+}
+
+- (BOOL) isSameDay:(NSDate*)anotherDate timeZone:(NSTimeZone*)timeZone{
+    NSCalendar* calendar = [NSCalendar currentCalendar];
+    calendar.timeZone = timeZone;
+    NSDateComponents* components1 = [calendar components:(NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay) fromDate:self];
+    NSDateComponents* components2 = [calendar components:(NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay) fromDate:anotherDate];
+    return ([components1 year] == [components2 year] && [components1 month] == [components2 month] && [components1 day] == [components2 day]);
+}
+
 //转为NSString类型的
 + (NSDate *)dateFromString:(NSString *)string {
     return [NSDate dateFromString:string withFormat:[NSDate dbFormatString]];
@@ -357,5 +369,6 @@
 + (NSString *)dbFormatString {
     return [NSDate timestampFormatString];
 }
+
 
 @end

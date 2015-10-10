@@ -8,7 +8,7 @@
 
 #import "RemindListTableView.h"
 #import "RemindHeadView.h"
-#import "RemindCell.h"
+#import "PassRemindCell.h"
 #import "RemindManager.h"
 #define REMINDVIEWCELL  @"remindCell"
 #define REMINDHEADVIEW  @"remindHeadView"
@@ -27,7 +27,7 @@
         self.dataSource = self;
         self.separatorStyle = UITableViewCellSeparatorStyleNone;
         self.backgroundColor = [UIColor clearColor];
-        [self registerClass:[RemindCell class] forCellReuseIdentifier:REMINDVIEWCELL];
+        [self registerClass:[PassRemindCell class] forCellReuseIdentifier:REMINDVIEWCELL];
     }
     return self;
 }
@@ -38,7 +38,7 @@
         self.dataSource = self;
         self.separatorStyle = UITableViewCellSeparatorStyleNone;
         self.tableHeaderView.height = HEADCELL_HEIGHT;
-        [self registerClass:[RemindCell class] forCellReuseIdentifier:REMINDVIEWCELL];
+        [self registerClass:[PassRemindCell class] forCellReuseIdentifier:REMINDVIEWCELL];
     }
     return self;
 }
@@ -53,9 +53,11 @@
 {
     return YES;
 }
+
 - (void)loadData {
     [self beginLoadNewData];
 }
+
 - (void)loadNewData
 {
     [self sendRequest];
@@ -67,7 +69,6 @@
 }
 
 - (void)sendRequest {
-    //mod by xiongchen
     /*NSString *lastID;
     if (![self isHeaderRefresh]) {
         lastID = [NSString stringWithFormat:@"%g", [[_feedListArray.lastObject feed] feedIdentifier]];
@@ -159,9 +160,9 @@
 
 -(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    RemindCell *cell = [tableView dequeueReusableCellWithIdentifier:REMINDVIEWCELL];
+    PassRemindCell *cell = [tableView dequeueReusableCellWithIdentifier:REMINDVIEWCELL];
     if (!cell) {
-        cell = [[RemindCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:REMINDVIEWCELL];
+        cell = [[PassRemindCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:REMINDVIEWCELL];
     }
     return cell;
 }

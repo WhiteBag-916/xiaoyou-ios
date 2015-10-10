@@ -20,5 +20,4 @@ pod 'MJRefresh'
 pod 'Masonry'
 pod 'UITableView+FDTemplateLayoutCell'
 pod 'UzysAssetsPickerController'
-xcodeproj 'XiaoYou/XiaoYou.xcodeproj'
 end
