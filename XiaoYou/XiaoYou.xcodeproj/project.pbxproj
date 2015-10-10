@@ -551,6 +551,7 @@
 		65F82F841B85E74A00FF6E2D /* FeedPublishViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 65F82F831B85E74A00FF6E2D /* FeedPublishViewController.m */; };
 		E46A3A5A1BC90330009AE8F1 /* MyFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = E46A3A551BC90330009AE8F1 /* MyFlowLayout.m */; settings = {ASSET_TAGS = (); }; };
 		E46A3A5B1BC90330009AE8F1 /* TagCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E46A3A571BC90330009AE8F1 /* TagCollectionCell.m */; settings = {ASSET_TAGS = (); }; };
+		E46A3A5E1BC9044D009AE8F1 /* TagsCommonView.m in Sources */ = {isa = PBXBuildFile; fileRef = E46A3A5D1BC9044D009AE8F1 /* TagsCommonView.m */; settings = {ASSET_TAGS = (); }; };
 		E4BE2DAA1BC7989300124F22 /* ContactsInfoFirstTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E4BE2DA91BC7989300124F22 /* ContactsInfoFirstTableViewCell.m */; settings = {ASSET_TAGS = (); }; };
 		E4BE2DAD1BC798A600124F22 /* ContactsInfoSecondTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E4BE2DAC1BC798A600124F22 /* ContactsInfoSecondTableViewCell.m */; settings = {ASSET_TAGS = (); }; };
 		E4BE2DB01BC798B500124F22 /* ContactsInfoThirdTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E4BE2DAF1BC798B500124F22 /* ContactsInfoThirdTableViewCell.m */; settings = {ASSET_TAGS = (); }; };
@@ -1384,6 +1385,7 @@
 		E46A3A561BC90330009AE8F1 /* TagCollectionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TagCollectionCell.h; sourceTree = "<group>"; };
 		E46A3A571BC90330009AE8F1 /* TagCollectionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TagCollectionCell.m; sourceTree = "<group>"; };
 		E46A3A581BC90330009AE8F1 /* TagsCommonView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TagsCommonView.h; sourceTree = "<group>"; };
+		E46A3A5D1BC9044D009AE8F1 /* TagsCommonView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TagsCommonView.m; sourceTree = "<group>"; };
 		E4BE2DA81BC7989300124F22 /* ContactsInfoFirstTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactsInfoFirstTableViewCell.h; sourceTree = "<group>"; };
 		E4BE2DA91BC7989300124F22 /* ContactsInfoFirstTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactsInfoFirstTableViewCell.m; sourceTree = "<group>"; };
 		E4BE2DAB1BC798A600124F22 /* ContactsInfoSecondTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactsInfoSecondTableViewCell.h; sourceTree = "<group>"; };
@@ -1857,6 +1859,7 @@
 				E46A3A561BC90330009AE8F1 /* TagCollectionCell.h */,
 				E46A3A571BC90330009AE8F1 /* TagCollectionCell.m */,
 				E46A3A581BC90330009AE8F1 /* TagsCommonView.h */,
+				E46A3A5D1BC9044D009AE8F1 /* TagsCommonView.m */,
 				2076A2FC1B81C590001FFBAC /* YCommonActionSheet.h */,
 				2076A2FD1B81C590001FFBAC /* YCommonActionSheet.m */,
 				2076A2FE1B81C590001FFBAC /* YCommonAlertView.h */,
@@ -3771,6 +3774,7 @@
 				0464D6BC1BB53CC100D56901 /* ScheduleViewController.m in Sources */,
 				20E122211B705ED200F90BD3 /* FeedListViewController.m in Sources */,
 				20DD115D1B8D699C00767E62 /* CNTextController.m in Sources */,
+				E46A3A5E1BC9044D009AE8F1 /* TagsCommonView.m in Sources */,
 				3346708A1B84AA3700A8628A /* ChoicePersonTableView.m in Sources */,
 				20E122131B705C2100F90BD3 /* XYTabBarViewController.m in Sources */,
 				207F80871B7098E3005E8F6A /* AppDelegate+RootVC.m in Sources */,
