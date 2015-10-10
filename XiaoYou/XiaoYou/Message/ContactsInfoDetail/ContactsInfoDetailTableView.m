@@ -308,7 +308,51 @@
     }
     else if(indexPath.row == 1)
     {
-        return 80;
+        
+        if (_model.tagModels.count > 0)
+        {
+            CGFloat height = 60;
+            for (int i = 0; i < _model.tagModels.count; i++)
+            {
+                CGFloat width;
+                Tags * tag = _model.tagModels[i];
+                NSDictionary *attributes = @{NSFontAttributeName:[UIFont systemFontOfSize:12]};
+                CGSize textSize = [tag.name boundingRectWithSize:CGSizeMake(150, 14) options:NSStringDrawingTruncatesLastVisibleLine attributes:attributes context:nil].size;
+                width += 10;
+                width += textSize.width + 15;
+                if (width > SCREEN_WIDTH - 117)
+                {
+                    height += 20;
+                    width = 10 + textSize.width;
+                }
+            }
+            return height;
+        }
+        else
+        {
+            return 40;
+        }
+        
+//        if (_model.tagModels.count <= 4)
+//        {
+//            return 60;
+//        }
+//        else if (_model.tagModels.count <= 8)
+//        {
+//            return 80;
+//        }
+//        else if (_model.tagModels.count <= 12)
+//        {
+//            return 100;
+//        }
+//        else if (_model.tagModels.count <= 16)
+//        {
+//            return 120;
+//        }
+//        else
+//        {
+//            return 140;
+//        }
     }
     else
     {

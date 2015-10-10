@@ -8,6 +8,7 @@
 
 #import "ContactsInfoSecondTableViewCell.h"
 #import "TagsCommonView.h"
+#import "ProfileInfo.h"
 
 NSString *const kContactsInfoSecondTableViewCell = @"ContactsInfoSecondTableViewCellId";
 
@@ -62,7 +63,7 @@ NSString *const kContactsInfoSecondTableViewCell = @"ContactsInfoSecondTableView
 
 -(void)setCellInfo:(ProfileInfo *) model
 {
-
+    [_tagsCommonView setData:model];
 }
 
 @end

@@ -9,6 +9,8 @@
 #import "TagCollectionCell.h"
 @interface TagCollectionCell ()
 
+@property (nonatomic,strong) UILabel *tagLabel;
+
 @end
 @implementation TagCollectionCell
 
@@ -40,5 +42,17 @@
     }];
 }
 
+-(void)setCellInfo:(Tags *) tag
+{
+    _tagLabel.text = tag.name;
+    if (tag.equal)
+    {
+         _tagLabel.backgroundColor = [UIColor hexChangeFloat:@"009f92"];
+    }
+    else
+    {
+        _tagLabel.backgroundColor = [UIColor hexChangeFloat:@"95d5d0"];
+    }
+}
 
 @end

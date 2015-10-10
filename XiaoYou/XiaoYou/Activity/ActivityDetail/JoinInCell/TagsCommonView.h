@@ -11,6 +11,10 @@
 
 @interface TagsCommonView : UIView
 
+@property(nonatomic,strong)ProfileInfo * model;
+
 - (instancetype)initWithCollectionViewHeight:(CGFloat) height andModel:(ProfileInfo *) model;
+
+- (void)setData:(ProfileInfo *) model;
 
 @end
