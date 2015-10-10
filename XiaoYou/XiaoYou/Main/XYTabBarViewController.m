@@ -63,6 +63,7 @@
                                  imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     _messageViewCotroller.tabBarItem = messageItem;
     
+    
     //Feed
     UITabBarItem *feedListItem = [[UITabBarItem alloc] initWithTitle:@"人脉"
                                                                image:[UIImage imageNamed:@"toolbar-contact"]
