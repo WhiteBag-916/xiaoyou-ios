@@ -13,7 +13,6 @@
 		041E3EBD1BAFFA0800454487 /* CTAssetsPickerChecked~iOS6.png in Resources */ = {isa = PBXBuildFile; fileRef = 041E3EBB1BAFFA0800454487 /* CTAssetsPickerChecked~iOS6.png */; settings = {ASSET_TAGS = (); }; };
 		041E3EBE1BAFFA0800454487 /* CTAssetsPickerChecked~iOS6@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 041E3EBC1BAFFA0800454487 /* CTAssetsPickerChecked~iOS6@2x.png */; settings = {ASSET_TAGS = (); }; };
 		04394B411BBB91B10098BB8F /* TagListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04394B401BBB91B10098BB8F /* TagListView.m */; settings = {ASSET_TAGS = (); }; };
-		04394B441BBBB0080098BB8F /* TagCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04394B431BBBB0080098BB8F /* TagCollectionCell.m */; settings = {ASSET_TAGS = (); }; };
 		04394B471BBBB6620098BB8F /* fast_to_add@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 04394B451BBBB6620098BB8F /* fast_to_add@2x.png */; settings = {ASSET_TAGS = (); }; };
 		04394B481BBBB6620098BB8F /* fast_to_add@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 04394B461BBBB6620098BB8F /* fast_to_add@3x.png */; settings = {ASSET_TAGS = (); }; };
 		04394B4B1BBBB78B0098BB8F /* fast_add_white@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 04394B491BBBB78B0098BB8F /* fast_add_white@2x.png */; settings = {ASSET_TAGS = (); }; };
@@ -581,8 +580,9 @@
 		65F55A9E1B897C4700ED4348 /* ProfileTagViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 65F55A9D1B897C4700ED4348 /* ProfileTagViewController.m */; };
 		65F55AA11B899EBC00ED4348 /* UIImageView+Ext.m in Sources */ = {isa = PBXBuildFile; fileRef = 65F55AA01B899EBC00ED4348 /* UIImageView+Ext.m */; };
 		65F82F841B85E74A00FF6E2D /* FeedPublishViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 65F82F831B85E74A00FF6E2D /* FeedPublishViewController.m */; };
-		E4467C571BC66F7C0011C18F /* TagsCommonView.m in Sources */ = {isa = PBXBuildFile; fileRef = E4467C561BC66F7C0011C18F /* TagsCommonView.m */; settings = {ASSET_TAGS = (); }; };
-		E45008171BC74D8800604F81 /* MyFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = E45008161BC74D8800604F81 /* MyFlowLayout.m */; settings = {ASSET_TAGS = (); }; };
+		E46A3A5A1BC90330009AE8F1 /* MyFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = E46A3A551BC90330009AE8F1 /* MyFlowLayout.m */; settings = {ASSET_TAGS = (); }; };
+		E46A3A5B1BC90330009AE8F1 /* TagCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E46A3A571BC90330009AE8F1 /* TagCollectionCell.m */; settings = {ASSET_TAGS = (); }; };
+		E46A3A5E1BC9044D009AE8F1 /* TagsCommonView.m in Sources */ = {isa = PBXBuildFile; fileRef = E46A3A5D1BC9044D009AE8F1 /* TagsCommonView.m */; settings = {ASSET_TAGS = (); }; };
 		E4BE2DAA1BC7989300124F22 /* ContactsInfoFirstTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E4BE2DA91BC7989300124F22 /* ContactsInfoFirstTableViewCell.m */; settings = {ASSET_TAGS = (); }; };
 		E4BE2DAD1BC798A600124F22 /* ContactsInfoSecondTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E4BE2DAC1BC798A600124F22 /* ContactsInfoSecondTableViewCell.m */; settings = {ASSET_TAGS = (); }; };
 		E4BE2DB01BC798B500124F22 /* ContactsInfoThirdTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E4BE2DAF1BC798B500124F22 /* ContactsInfoThirdTableViewCell.m */; settings = {ASSET_TAGS = (); }; };
@@ -608,8 +608,6 @@
 		041E3EBC1BAFFA0800454487 /* CTAssetsPickerChecked~iOS6@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "CTAssetsPickerChecked~iOS6@2x.png"; sourceTree = "<group>"; };
 		04394B3F1BBB91B10098BB8F /* TagListView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TagListView.h; sourceTree = "<group>"; };
 		04394B401BBB91B10098BB8F /* TagListView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TagListView.m; sourceTree = "<group>"; };
-		04394B421BBBB0080098BB8F /* TagCollectionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TagCollectionCell.h; sourceTree = "<group>"; };
-		04394B431BBBB0080098BB8F /* TagCollectionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TagCollectionCell.m; sourceTree = "<group>"; };
 		04394B451BBBB6620098BB8F /* fast_to_add@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "fast_to_add@2x.png"; sourceTree = "<group>"; };
 		04394B461BBBB6620098BB8F /* fast_to_add@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "fast_to_add@3x.png"; sourceTree = "<group>"; };
 		04394B491BBBB78B0098BB8F /* fast_add_white@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "fast_add_white@2x.png"; sourceTree = "<group>"; };
@@ -1475,10 +1473,12 @@
 		65F82F831B85E74A00FF6E2D /* FeedPublishViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FeedPublishViewController.m; path = XiaoYou/CommonView/FeedPublishViewController.m; sourceTree = SOURCE_ROOT; };
 		77B574BED9D4FF3F4BFAA9FE /* libPods-XiaoYou.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-XiaoYou.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1D8A55CC0081FB2C8604F21 /* Pods-XiaoYou.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XiaoYou.release.xcconfig"; path = "../Pods/Target Support Files/Pods-XiaoYou/Pods-XiaoYou.release.xcconfig"; sourceTree = "<group>"; };
-		E4467C551BC66F7C0011C18F /* TagsCommonView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TagsCommonView.h; sourceTree = "<group>"; };
-		E4467C561BC66F7C0011C18F /* TagsCommonView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TagsCommonView.m; sourceTree = "<group>"; };
-		E45008151BC74D8800604F81 /* MyFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyFlowLayout.h; sourceTree = "<group>"; };
-		E45008161BC74D8800604F81 /* MyFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyFlowLayout.m; sourceTree = "<group>"; };
+		E46A3A541BC90330009AE8F1 /* MyFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyFlowLayout.h; sourceTree = "<group>"; };
+		E46A3A551BC90330009AE8F1 /* MyFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyFlowLayout.m; sourceTree = "<group>"; };
+		E46A3A561BC90330009AE8F1 /* TagCollectionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TagCollectionCell.h; sourceTree = "<group>"; };
+		E46A3A571BC90330009AE8F1 /* TagCollectionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TagCollectionCell.m; sourceTree = "<group>"; };
+		E46A3A581BC90330009AE8F1 /* TagsCommonView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TagsCommonView.h; sourceTree = "<group>"; };
+		E46A3A5D1BC9044D009AE8F1 /* TagsCommonView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TagsCommonView.m; sourceTree = "<group>"; };
 		E4BE2DA81BC7989300124F22 /* ContactsInfoFirstTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactsInfoFirstTableViewCell.h; sourceTree = "<group>"; };
 		E4BE2DA91BC7989300124F22 /* ContactsInfoFirstTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactsInfoFirstTableViewCell.m; sourceTree = "<group>"; };
 		E4BE2DAB1BC798A600124F22 /* ContactsInfoSecondTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactsInfoSecondTableViewCell.h; sourceTree = "<group>"; };
@@ -1525,12 +1525,6 @@
 			children = (
 				04394B3F1BBB91B10098BB8F /* TagListView.h */,
 				04394B401BBB91B10098BB8F /* TagListView.m */,
-				04394B421BBBB0080098BB8F /* TagCollectionCell.h */,
-				04394B431BBBB0080098BB8F /* TagCollectionCell.m */,
-				E4467C551BC66F7C0011C18F /* TagsCommonView.h */,
-				E4467C561BC66F7C0011C18F /* TagsCommonView.m */,
-				E45008151BC74D8800604F81 /* MyFlowLayout.h */,
-				E45008161BC74D8800604F81 /* MyFlowLayout.m */,
 			);
 			path = JoinInCell;
 			sourceTree = "<group>";
@@ -2021,6 +2015,12 @@
 		20DC87F81B5F683F0019DC7F /* CommonView */ = {
 			isa = PBXGroup;
 			children = (
+				E46A3A541BC90330009AE8F1 /* MyFlowLayout.h */,
+				E46A3A551BC90330009AE8F1 /* MyFlowLayout.m */,
+				E46A3A561BC90330009AE8F1 /* TagCollectionCell.h */,
+				E46A3A571BC90330009AE8F1 /* TagCollectionCell.m */,
+				E46A3A581BC90330009AE8F1 /* TagsCommonView.h */,
+				E46A3A5D1BC9044D009AE8F1 /* TagsCommonView.m */,
 				2076A2FC1B81C590001FFBAC /* YCommonActionSheet.h */,
 				2076A2FD1B81C590001FFBAC /* YCommonActionSheet.m */,
 				2076A2FE1B81C590001FFBAC /* YCommonAlertView.h */,
@@ -3840,7 +3840,6 @@
 				656341551BC1061500E10025 /* YStripeView.m in Sources */,
 				65CF638F1B8F0E4A00ACBB70 /* YCommonReport.m in Sources */,
 				653CB2EF1B806BFD006ECBB2 /* pinyin.c in Sources */,
-				E45008171BC74D8800604F81 /* MyFlowLayout.m in Sources */,
 				65969DD01B8723E3001DD348 /* YUtils+HUD.m in Sources */,
 				65969DD31B87312D001DD348 /* ProfilePersonListTableView.m in Sources */,
 				20DA170C1BC7C51200A61B37 /* MGCYearCalendarView.m in Sources */,
@@ -3880,7 +3879,7 @@
 				200E397C1B4E818B000B587B /* main.m in Sources */,
 				333122351B806EDB00D3D032 /* EMChatBaseBubbleView.m in Sources */,
 				6592DCDE1B806A9B004CD118 /* MessageTableViewCell.m in Sources */,
-				E4467C571BC66F7C0011C18F /* TagsCommonView.m in Sources */,
+				E46A3A5B1BC90330009AE8F1 /* TagCollectionCell.m in Sources */,
 				20E1222D1B708CDC00F90BD3 /* TagListViewController.m in Sources */,
 				E4BE2DAD1BC798A600124F22 /* ContactsInfoSecondTableViewCell.m in Sources */,
 				650C6C061B8860FF00A89AC9 /* YCommonEditViewController.m in Sources */,
@@ -3944,7 +3943,6 @@
 				3334AC461B831B2200FDDCCB /* ContactsInfoDetailTableView.m in Sources */,
 				044DA0671BBA7E4700AA321A /* ActivityTopView.m in Sources */,
 				20E18D561B807752005B75EE /* AssociationsListViewController.m in Sources */,
-				04394B441BBBB0080098BB8F /* TagCollectionCell.m in Sources */,
 				333122541B806EDB00D3D032 /* DACircularProgressView.m in Sources */,
 				04394B411BBB91B10098BB8F /* TagListView.m in Sources */,
 				3395498F1B81C67000F9ECB1 /* GroupInfoDetailHeaderView.m in Sources */,
@@ -3975,6 +3973,7 @@
 				049FF1C51BC91778000645C8 /* ScheduleViewController.m in Sources */,
 				20E122211B705ED200F90BD3 /* FeedListViewController.m in Sources */,
 				20DD115D1B8D699C00767E62 /* CNTextController.m in Sources */,
+				E46A3A5E1BC9044D009AE8F1 /* TagsCommonView.m in Sources */,
 				3346708A1B84AA3700A8628A /* ChoicePersonTableView.m in Sources */,
 				20E122131B705C2100F90BD3 /* XYTabBarViewController.m in Sources */,
 				207F80871B7098E3005E8F6A /* AppDelegate+RootVC.m in Sources */,
@@ -3985,6 +3984,7 @@
 				6592DCD31B806A9B004CD118 /* XYContactsInfoDetailViewController.m in Sources */,
 				3331222A1B806EDB00D3D032 /* ChatSendHelper.m in Sources */,
 				044DA05D1BBA77C900AA321A /* ActivityViewController.m in Sources */,
+				E46A3A5A1BC90330009AE8F1 /* MyFlowLayout.m in Sources */,
 				209C4C731B8C662900B584DF /* AssociationsDetailViewController.m in Sources */,
 				20E034091B8471E5002E4583 /* SearchFilterTableViewCell.m in Sources */,
 				049FF1C31BC91778000645C8 /* ScheduleCell.m in Sources */,
