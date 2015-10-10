@@ -43,7 +43,7 @@
     _staticDeadLineDes.font = [UIFont systemFontOfSize:13];
     _staticDeadLineDes.text = @"报名截止时间";
     [_staticDeadLineDes mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.leading.mas_equalTo(SCALE_NUM(70));
+        make.leading.mas_equalTo(SCALE_NUM(66));
         make.centerY.equalTo(_timeImageView.mas_centerY);
     }];
     

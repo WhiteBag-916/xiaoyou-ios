@@ -12,6 +12,7 @@
 #import "SetupTableViewController.h"
 #import "RemindViewController.h"
 #import "ScheduleViewController.h"
+
 @interface ActivityViewController ()
 @property (nonatomic,strong) ActivityListView *funnyList;
 @end
