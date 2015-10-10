@@ -88,7 +88,6 @@
 		0494806E1BB94FF900C68460 /* too_see_more_arrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0494806C1BB94FF900C68460 /* too_see_more_arrow@2x.png */; settings = {ASSET_TAGS = (); }; };
 		0494806F1BB94FF900C68460 /* too_see_more_arrow@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0494806D1BB94FF900C68460 /* too_see_more_arrow@3x.png */; settings = {ASSET_TAGS = (); }; };
 		049C55C21BB3DE18007565E1 /* FastViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 049C55C11BB3DE18007565E1 /* FastViewController.m */; settings = {ASSET_TAGS = (); }; };
-		049C55C91BB3F319007565E1 /* FastTopView.m in Sources */ = {isa = PBXBuildFile; fileRef = 049C55C81BB3F319007565E1 /* FastTopView.m */; settings = {ASSET_TAGS = (); }; };
 		049C55CC1BB3F33D007565E1 /* BottomView.m in Sources */ = {isa = PBXBuildFile; fileRef = 049C55CB1BB3F33D007565E1 /* BottomView.m */; settings = {ASSET_TAGS = (); }; };
 		04D500681BBA94AA00C1B438 /* ActivityJoinInCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04D500671BBA94AA00C1B438 /* ActivityJoinInCell.m */; settings = {ASSET_TAGS = (); }; };
 		200E397C1B4E818B000B587B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 200E397B1B4E818B000B587B /* main.m */; };
@@ -114,6 +113,7 @@
 		207F808D1B709A1E005E8F6A /* AppDelegate+Notification.m in Sources */ = {isa = PBXBuildFile; fileRef = 207F808C1B709A1E005E8F6A /* AppDelegate+Notification.m */; };
 		209C4C731B8C662900B584DF /* AssociationsDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 209C4C721B8C662900B584DF /* AssociationsDetailViewController.m */; };
 		209C4C791B8C688000B584DF /* AssociationsDetailTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 209C4C781B8C688000B584DF /* AssociationsDetailTableView.m */; };
+		20BEAF9F1BC913120002A365 /* FastTopView.m in Sources */ = {isa = PBXBuildFile; fileRef = 20BEAF9D1BC913120002A365 /* FastTopView.m */; settings = {ASSET_TAGS = (); }; };
 		20C5B07B1B8DE58700B4A8A8 /* AssociationsSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20C5B07A1B8DE58700B4A8A8 /* AssociationsSearchViewController.m */; };
 		20DA16F31BC7C51200A61B37 /* MGCAllDayEventsViewLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 20DA16BA1BC7C51200A61B37 /* MGCAllDayEventsViewLayout.m */; settings = {ASSET_TAGS = (); }; };
 		20DA16F41BC7C51200A61B37 /* MGCDateRange.m in Sources */ = {isa = PBXBuildFile; fileRef = 20DA16BC1BC7C51200A61B37 /* MGCDateRange.m */; settings = {ASSET_TAGS = (); }; };
@@ -705,8 +705,6 @@
 		0494806D1BB94FF900C68460 /* too_see_more_arrow@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "too_see_more_arrow@3x.png"; sourceTree = "<group>"; };
 		049C55C01BB3DE18007565E1 /* FastViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FastViewController.h; sourceTree = "<group>"; };
 		049C55C11BB3DE18007565E1 /* FastViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FastViewController.m; sourceTree = "<group>"; };
-		049C55C71BB3F319007565E1 /* FastTopView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FastTopView.h; sourceTree = "<group>"; };
-		049C55C81BB3F319007565E1 /* FastTopView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FastTopView.m; sourceTree = "<group>"; };
 		049C55CA1BB3F33D007565E1 /* BottomView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BottomView.h; sourceTree = "<group>"; };
 		049C55CB1BB3F33D007565E1 /* BottomView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BottomView.m; sourceTree = "<group>"; };
 		04D500661BBA94AA00C1B438 /* ActivityJoinInCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityJoinInCell.h; sourceTree = "<group>"; };
@@ -747,6 +745,8 @@
 		209C4C721B8C662900B584DF /* AssociationsDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AssociationsDetailViewController.m; sourceTree = "<group>"; };
 		209C4C771B8C688000B584DF /* AssociationsDetailTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AssociationsDetailTableView.h; sourceTree = "<group>"; };
 		209C4C781B8C688000B584DF /* AssociationsDetailTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AssociationsDetailTableView.m; sourceTree = "<group>"; };
+		20BEAF9D1BC913120002A365 /* FastTopView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FastTopView.m; sourceTree = "<group>"; };
+		20BEAF9E1BC913120002A365 /* FastTopView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FastTopView.h; sourceTree = "<group>"; };
 		20C5B0791B8DE58700B4A8A8 /* AssociationsSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AssociationsSearchViewController.h; sourceTree = "<group>"; };
 		20C5B07A1B8DE58700B4A8A8 /* AssociationsSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AssociationsSearchViewController.m; sourceTree = "<group>"; };
 		20DA16B91BC7C51200A61B37 /* MGCAllDayEventsViewLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGCAllDayEventsViewLayout.h; sourceTree = "<group>"; };
@@ -1715,8 +1715,8 @@
 			children = (
 				049C55C01BB3DE18007565E1 /* FastViewController.h */,
 				049C55C11BB3DE18007565E1 /* FastViewController.m */,
-				049C55C71BB3F319007565E1 /* FastTopView.h */,
-				049C55C81BB3F319007565E1 /* FastTopView.m */,
+				20BEAF9E1BC913120002A365 /* FastTopView.h */,
+				20BEAF9D1BC913120002A365 /* FastTopView.m */,
 				049C55CA1BB3F33D007565E1 /* BottomView.h */,
 				049C55CB1BB3F33D007565E1 /* BottomView.m */,
 				0486769E1BC803CB009F8C43 /* FastBottomView.h */,
@@ -3792,6 +3792,7 @@
 				3331225B1B806EDB00D3D032 /* EMSDWebImagePrefetcher.m in Sources */,
 				20DAF9AB1B87209E005B7932 /* LoginViewController.m in Sources */,
 				656A4CFD1BBF9E1E00BDB725 /* QRCameraSwitchButton.m in Sources */,
+				20BEAF9F1BC913120002A365 /* FastTopView.m in Sources */,
 				3331222D1B806EDB00D3D032 /* ConvertToCommonEmoticonsHelper.m in Sources */,
 				65969DC41B86BDE1001DD348 /* MBProgressHUD+Add.m in Sources */,
 				20DAF9D71B873883005B7932 /* ChineseToPinyinResource.m in Sources */,
@@ -3910,9 +3911,7 @@
 				6592DCDC1B806A9B004CD118 /* ContactsTableViewCell.m in Sources */,
 				20DAF9A81B871E45005B7932 /* ChooseSchoolTableViewCell.m in Sources */,
 				3331223A1B806EDB00D3D032 /* EMChatTimeCell.m in Sources */,
-				049C55C91BB3F319007565E1 /* TopView.m in Sources */,
 				20DA170F1BC7C51200A61B37 /* OSCache.m in Sources */,
-				049C55C91BB3F319007565E1 /* FastTopView.m in Sources */,
 				65F55AA11B899EBC00ED4348 /* UIImageView+Ext.m in Sources */,
 				333122591B806EDB00D3D032 /* EMSDWebImageDownloaderOperation.m in Sources */,
 				333122631B806EDB00D3D032 /* UIImageView+EMWebCache.m in Sources */,
