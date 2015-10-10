@@ -10,4 +10,7 @@
 
 @interface RemindListTableView : YTableView
 
+//加载数据
+- (void)loadData;
+
 @end

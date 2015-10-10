@@ -103,7 +103,6 @@ NSString *const kGroupAllListSearchKey = @"searchKey";
 
 - (void)encodeWithCoder:(NSCoder *)aCoder
 {
-
     [aCoder encodeObject:_groupList forKey:kGroupAllListGroupList];
     [aCoder encodeObject:_searchKey forKey:kGroupAllListSearchKey];
 }
