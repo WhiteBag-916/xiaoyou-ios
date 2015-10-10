@@ -10,19 +10,20 @@
 #define CELL_INSET  12
 #define CELL_BACK_GROUND_COLOR
 @interface ScheduleCell ()
-@property (nonatomic,retain) UIImageView    *timeRemindImageView;//时间提醒,今天,明天,后天,
-@property (nonatomic,retain) UIView         *wrapContentView;   //内容View
-@property (nonatomic,retain) UILabel        *timeLabel;         //时间
-@property (nonatomic,retain) UILabel        *otherLabel;        //还有谁
-@property (nonatomic,retain) UIImageView    *tooSeeMoreImageView;//查看更多图片
-@property (nonatomic,retain) UIView         *sepLineView;       //分割线
+
+@property (nonatomic,strong) UIImageView    *timeRemindImageView;//时间提醒,今天,明天,后天,
+@property (nonatomic,strong) UIView         *wrapContentView;   //内容View
+@property (nonatomic,strong) UILabel        *timeLabel;         //时间
+@property (nonatomic,strong) UILabel        *otherLabel;        //还有谁
+@property (nonatomic,strong) UIImageView    *tooSeeMoreImageView;//查看更多图片
+@property (nonatomic,strong) UIView         *sepLineView;       //分割线
 @property (nonatomic,strong) UILabel        *staticNameLabel;   //静态名称
-@property (nonatomic,retain) UILabel        *projectNameLabel;  //项目名称
-@property (nonatomic,retain) UIImageView    *activityTimeImageView;//时间图片
-@property (nonatomic,retain) UILabel        *activityTimeLabel; //静态活动时间
-@property (nonatomic,retain) UILabel        *activityTimeDesLabel;//具体时间
-@property (nonatomic,retain) UIImageView    *locationImageView; //地址图片
-@property (nonatomic,retain) UILabel        *locationLabel;     //活动地址
+@property (nonatomic,strong) UILabel        *projectNameLabel;  //项目名称
+@property (nonatomic,strong) UIImageView    *activityTimeImageView;//时间图片
+@property (nonatomic,strong) UILabel        *activityTimeLabel; //静态活动时间
+@property (nonatomic,strong) UILabel        *activityTimeDesLabel;//具体时间
+@property (nonatomic,strong) UIImageView    *locationImageView; //地址图片
+@property (nonatomic,strong) UILabel        *locationLabel;     //活动地址
 
 @end
 

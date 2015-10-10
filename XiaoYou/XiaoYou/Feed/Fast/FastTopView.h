@@ -8,8 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface TopView : UIView
+@interface FastTopView : UIView
 
-+(TopView*)topView;
++(FastTopView*)topView;
 
 @end

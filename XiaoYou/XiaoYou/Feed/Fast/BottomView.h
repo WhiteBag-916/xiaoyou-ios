@@ -15,3 +15,19 @@
 @property (nonatomic, retain) NSArray *aaList;
 
 @end
+
+
+@interface InnerTopView : UIView
+
+@end
+
+
+@interface InnerMiddleView : UIView
+
+@end
+
+@interface InnerBottomView : UIView
+
+@end
+
+

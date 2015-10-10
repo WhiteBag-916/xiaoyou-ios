@@ -8,6 +8,7 @@
 
 #import "YTableViewCell.h"
 extern NSString *const kProfilePersonListTableViewCell;
+//todo:此处隐藏一个bug,当下面的88设为90的时候,第一次加载的时候底下会有显示不全的一行
 #define KCELLHEIGHT SCALE_NUM(90)
 #define KFIND_CELLHEIGHT SCALE_NUM(120)
 
