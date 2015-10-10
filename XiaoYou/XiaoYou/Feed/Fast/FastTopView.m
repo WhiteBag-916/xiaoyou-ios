@@ -42,6 +42,12 @@
     }];
     _nameLabel = [[UILabel alloc]init];
     [self addSubview:_nameLabel];
+    _nameLabel.text = @"杨颖";
+    _nameLabel.font = [UIFont systemFontOfSize:17.0f];
+    _nameLabel.textColor = [UIColor whiteColor];
+    _nameLabel.layer.shadowOffset = CGSizeMake(2, 2);
+    _nameLabel.layer.shadowOpacity = 0.4;
+    _nameLabel.layer.shadowColor = [UIColor blackColor].CGColor;
     [_nameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(_genderImageView);
         make.left.equalTo(_genderImageView.mas_right).offset(5);

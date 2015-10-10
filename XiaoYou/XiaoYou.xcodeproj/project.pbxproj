@@ -56,7 +56,7 @@
 		044DA0661BBA7E4700AA321A /* ActivityMiddleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 044DA0621BBA7E4700AA321A /* ActivityMiddleView.m */; settings = {ASSET_TAGS = (); }; };
 		044DA0671BBA7E4700AA321A /* ActivityTopView.m in Sources */ = {isa = PBXBuildFile; fileRef = 044DA0641BBA7E4700AA321A /* ActivityTopView.m */; settings = {ASSET_TAGS = (); }; };
 		0464D6AF1BB4E9AC00D56901 /* RemindViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0464D6AE1BB4E9AC00D56901 /* RemindViewController.m */; settings = {ASSET_TAGS = (); }; };
-		0464D6B21BB4E9F200D56901 /* RemindCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0464D6B11BB4E9F200D56901 /* RemindCell.m */; settings = {ASSET_TAGS = (); }; };
+		0464D6B21BB4E9F200D56901 /* PassRemindCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0464D6B11BB4E9F200D56901 /* PassRemindCell.m */; settings = {ASSET_TAGS = (); }; };
 		0464D6BC1BB53CC100D56901 /* ScheduleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0464D6BB1BB53CC100D56901 /* ScheduleViewController.m */; settings = {ASSET_TAGS = (); }; };
 		0464D6BF1BB53CDF00D56901 /* ScheduleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0464D6BE1BB53CDF00D56901 /* ScheduleCell.m */; settings = {ASSET_TAGS = (); }; };
 		0464E31B1BB3A0F70017696E /* SetupTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0464E31A1BB3A0F70017696E /* SetupTableViewController.m */; settings = {ASSET_TAGS = (); }; };
@@ -632,8 +632,8 @@
 		044DA0641BBA7E4700AA321A /* ActivityTopView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityTopView.m; sourceTree = "<group>"; };
 		0464D6AD1BB4E9AC00D56901 /* RemindViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RemindViewController.h; sourceTree = "<group>"; };
 		0464D6AE1BB4E9AC00D56901 /* RemindViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RemindViewController.m; sourceTree = "<group>"; };
-		0464D6B01BB4E9F200D56901 /* RemindCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RemindCell.h; sourceTree = "<group>"; };
-		0464D6B11BB4E9F200D56901 /* RemindCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RemindCell.m; sourceTree = "<group>"; };
+		0464D6B01BB4E9F200D56901 /* PassRemindCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PassRemindCell.h; sourceTree = "<group>"; };
+		0464D6B11BB4E9F200D56901 /* PassRemindCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PassRemindCell.m; sourceTree = "<group>"; };
 		0464D6BA1BB53CC100D56901 /* ScheduleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScheduleViewController.h; sourceTree = "<group>"; };
 		0464D6BB1BB53CC100D56901 /* ScheduleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScheduleViewController.m; sourceTree = "<group>"; };
 		0464D6BD1BB53CDF00D56901 /* ScheduleCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScheduleCell.h; sourceTree = "<group>"; };
@@ -1539,8 +1539,8 @@
 			children = (
 				0464D6AD1BB4E9AC00D56901 /* RemindViewController.h */,
 				0464D6AE1BB4E9AC00D56901 /* RemindViewController.m */,
-				0464D6B01BB4E9F200D56901 /* RemindCell.h */,
-				0464D6B11BB4E9F200D56901 /* RemindCell.m */,
+				0464D6B01BB4E9F200D56901 /* PassRemindCell.h */,
+				0464D6B11BB4E9F200D56901 /* PassRemindCell.m */,
 				0465C3B41BB647840032D241 /* RemindHeadView.h */,
 				0465C3B51BB647840032D241 /* RemindHeadView.m */,
 				049480221BB8C51C00C68460 /* RemindListTableView.h */,
@@ -3622,7 +3622,7 @@
 				20DAF9D71B873883005B7932 /* ChineseToPinyinResource.m in Sources */,
 				333122831B806EDC00D3D032 /* UIViewController+DismissKeyboard.m in Sources */,
 				041DF0631BC4D90300C6F324 /* DataConvert.m in Sources */,
-				0464D6B21BB4E9F200D56901 /* RemindCell.m in Sources */,
+				0464D6B21BB4E9F200D56901 /* PassRemindCell.m in Sources */,
 				333122841B806EDC00D3D032 /* UIViewController+HUD.m in Sources */,
 				333122821B806EDC00D3D032 /* UIResponder+Router.m in Sources */,
 				333122781B806EDB00D3D032 /* TTGlobalUICommon.m in Sources */,

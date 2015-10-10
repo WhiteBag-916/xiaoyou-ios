@@ -6,12 +6,12 @@
 //  Copyright © 2015年 xc. All rights reserved.
 //
 
-#import "RemindCell.h"
+#import "PassRemindCell.h"
 #import "DataConvert.h"
 
 #define CELL_INSET          SCALE_NUM(12)
 #define TOP_CELL_HEIGHT     SCALE_NUM(44)
-@interface RemindCell ()
+@interface PassRemindCell ()
 
 @property(nonatomic,retain) UIView      *wrapContentView;   //内容视图
 @property(nonatomic,retain) UIImageView *titleImageView;    //图标
@@ -27,7 +27,7 @@
 @end
 
 
-@implementation RemindCell
+@implementation PassRemindCell
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
@@ -144,13 +144,13 @@
         make.leading.mas_equalTo(10);
     }];
     
-//    _tailImageView = [[UIImageView alloc]init];
-//    [self.wrapContentView addSubview:_tailImageView];
-//    _tailImageView.image = [UIImage imageNamed:@"tooseemore"];
-//    [_tailImageView mas_makeConstraints:^(MASConstraintMaker *make) {
-//        make.centerY.equalTo(self.tailLabel.mas_centerY);
-//        make.trailing.mas_equalTo(-10);
-//    }];
+    _tailImageView = [[UIImageView alloc]init];
+    [self.wrapContentView addSubview:_tailImageView];
+    _tailImageView.image = [UIImage imageNamed:@"mine-concern-particulars"];
+    [_tailImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerY.equalTo(self.tailLabel.mas_centerY);
+        make.trailing.mas_equalTo(-10);
+    }];
     
 }
 
