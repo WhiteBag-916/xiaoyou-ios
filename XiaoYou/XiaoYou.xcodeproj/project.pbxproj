@@ -115,6 +115,36 @@
 		209C4C731B8C662900B584DF /* AssociationsDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 209C4C721B8C662900B584DF /* AssociationsDetailViewController.m */; };
 		209C4C791B8C688000B584DF /* AssociationsDetailTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 209C4C781B8C688000B584DF /* AssociationsDetailTableView.m */; };
 		20C5B07B1B8DE58700B4A8A8 /* AssociationsSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20C5B07A1B8DE58700B4A8A8 /* AssociationsSearchViewController.m */; };
+		20DA16F31BC7C51200A61B37 /* MGCAllDayEventsViewLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 20DA16BA1BC7C51200A61B37 /* MGCAllDayEventsViewLayout.m */; settings = {ASSET_TAGS = (); }; };
+		20DA16F41BC7C51200A61B37 /* MGCDateRange.m in Sources */ = {isa = PBXBuildFile; fileRef = 20DA16BC1BC7C51200A61B37 /* MGCDateRange.m */; settings = {ASSET_TAGS = (); }; };
+		20DA16F51BC7C51200A61B37 /* MGCDayColumnCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 20DA16BE1BC7C51200A61B37 /* MGCDayColumnCell.m */; settings = {ASSET_TAGS = (); }; };
+		20DA16F61BC7C51200A61B37 /* MGCDayPlannerEKViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20DA16C01BC7C51200A61B37 /* MGCDayPlannerEKViewController.m */; settings = {ASSET_TAGS = (); }; };
+		20DA16F71BC7C51200A61B37 /* MGCDayPlannerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 20DA16C21BC7C51200A61B37 /* MGCDayPlannerView.m */; settings = {ASSET_TAGS = (); }; };
+		20DA16F81BC7C51200A61B37 /* MGCDayPlannerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20DA16C41BC7C51200A61B37 /* MGCDayPlannerViewController.m */; settings = {ASSET_TAGS = (); }; };
+		20DA16F91BC7C51200A61B37 /* MGCEventCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 20DA16C61BC7C51200A61B37 /* MGCEventCell.m */; settings = {ASSET_TAGS = (); }; };
+		20DA16FA1BC7C51200A61B37 /* MGCEventCellLayoutAttributes.m in Sources */ = {isa = PBXBuildFile; fileRef = 20DA16C81BC7C51200A61B37 /* MGCEventCellLayoutAttributes.m */; settings = {ASSET_TAGS = (); }; };
+		20DA16FB1BC7C51200A61B37 /* MGCEventsRowView.m in Sources */ = {isa = PBXBuildFile; fileRef = 20DA16CA1BC7C51200A61B37 /* MGCEventsRowView.m */; settings = {ASSET_TAGS = (); }; };
+		20DA16FC1BC7C51200A61B37 /* MGCEventView.m in Sources */ = {isa = PBXBuildFile; fileRef = 20DA16CC1BC7C51200A61B37 /* MGCEventView.m */; settings = {ASSET_TAGS = (); }; };
+		20DA16FD1BC7C51200A61B37 /* MGCInteractiveEventView.m in Sources */ = {isa = PBXBuildFile; fileRef = 20DA16CE1BC7C51200A61B37 /* MGCInteractiveEventView.m */; settings = {ASSET_TAGS = (); }; };
+		20DA16FE1BC7C51200A61B37 /* MGCMonthMiniCalendarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 20DA16D01BC7C51200A61B37 /* MGCMonthMiniCalendarView.m */; settings = {ASSET_TAGS = (); }; };
+		20DA16FF1BC7C51200A61B37 /* MGCMonthPlannerBackgroundView.m in Sources */ = {isa = PBXBuildFile; fileRef = 20DA16D21BC7C51200A61B37 /* MGCMonthPlannerBackgroundView.m */; settings = {ASSET_TAGS = (); }; };
+		20DA17001BC7C51200A61B37 /* MGCMonthPlannerEKViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20DA16D41BC7C51200A61B37 /* MGCMonthPlannerEKViewController.m */; settings = {ASSET_TAGS = (); }; };
+		20DA17011BC7C51200A61B37 /* MGCMonthPlannerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 20DA16D61BC7C51200A61B37 /* MGCMonthPlannerView.m */; settings = {ASSET_TAGS = (); }; };
+		20DA17021BC7C51200A61B37 /* MGCMonthPlannerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20DA16D81BC7C51200A61B37 /* MGCMonthPlannerViewController.m */; settings = {ASSET_TAGS = (); }; };
+		20DA17031BC7C51200A61B37 /* MGCMonthPlannerViewDayCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 20DA16DA1BC7C51200A61B37 /* MGCMonthPlannerViewDayCell.m */; settings = {ASSET_TAGS = (); }; };
+		20DA17041BC7C51200A61B37 /* MGCMonthPlannerViewLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 20DA16DC1BC7C51200A61B37 /* MGCMonthPlannerViewLayout.m */; settings = {ASSET_TAGS = (); }; };
+		20DA17051BC7C51200A61B37 /* MGCMonthPlannerWeekView.m in Sources */ = {isa = PBXBuildFile; fileRef = 20DA16DE1BC7C51200A61B37 /* MGCMonthPlannerWeekView.m */; settings = {ASSET_TAGS = (); }; };
+		20DA17061BC7C51200A61B37 /* MGCReusableObjectQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 20DA16E01BC7C51200A61B37 /* MGCReusableObjectQueue.m */; settings = {ASSET_TAGS = (); }; };
+		20DA17071BC7C51200A61B37 /* MGCStandardEventView.m in Sources */ = {isa = PBXBuildFile; fileRef = 20DA16E21BC7C51200A61B37 /* MGCStandardEventView.m */; settings = {ASSET_TAGS = (); }; };
+		20DA17081BC7C51200A61B37 /* MGCTimedEventsViewLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 20DA16E41BC7C51200A61B37 /* MGCTimedEventsViewLayout.m */; settings = {ASSET_TAGS = (); }; };
+		20DA17091BC7C51200A61B37 /* MGCTimeRowsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 20DA16E61BC7C51200A61B37 /* MGCTimeRowsView.m */; settings = {ASSET_TAGS = (); }; };
+		20DA170A1BC7C51200A61B37 /* MGCYearCalendarMonthCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 20DA16E81BC7C51200A61B37 /* MGCYearCalendarMonthCell.m */; settings = {ASSET_TAGS = (); }; };
+		20DA170B1BC7C51200A61B37 /* MGCYearCalendarMonthHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 20DA16EA1BC7C51200A61B37 /* MGCYearCalendarMonthHeaderView.m */; settings = {ASSET_TAGS = (); }; };
+		20DA170C1BC7C51200A61B37 /* MGCYearCalendarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 20DA16EC1BC7C51200A61B37 /* MGCYearCalendarView.m */; settings = {ASSET_TAGS = (); }; };
+		20DA170D1BC7C51200A61B37 /* NSCalendar+MGCAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 20DA16EE1BC7C51200A61B37 /* NSCalendar+MGCAdditions.m */; settings = {ASSET_TAGS = (); }; };
+		20DA170E1BC7C51200A61B37 /* OrderedDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = 20DA16F01BC7C51200A61B37 /* OrderedDictionary.m */; settings = {ASSET_TAGS = (); }; };
+		20DA170F1BC7C51200A61B37 /* OSCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 20DA16F21BC7C51200A61B37 /* OSCache.m */; settings = {ASSET_TAGS = (); }; };
+		20DA171E1BC7C51200A61B37 /* CalendarDayHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 20DA171D1BC7C51200A61B37 /* CalendarDayHeaderView.m */; settings = {ASSET_TAGS = (); }; };
 		20DA1A761B89BEF100DEF95C /* register-frame-agree@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 20DA1A721B89BEF100DEF95C /* register-frame-agree@2x.png */; };
 		20DA1A771B89BEF100DEF95C /* register-frame-agree@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 20DA1A731B89BEF100DEF95C /* register-frame-agree@3x.png */; };
 		20DA1A781B89BEF100DEF95C /* register-frame@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 20DA1A741B89BEF100DEF95C /* register-frame@2x.png */; };
@@ -230,6 +260,7 @@
 		20E18DD61B808E42005B75EE /* society@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 20E18DAF1B808E42005B75EE /* society@2x.png */; };
 		20E18DD71B808E42005B75EE /* society@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 20E18DB01B808E42005B75EE /* society@3x.png */; };
 		20E193F81B8B516000FD7B3D /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20E193F71B8B516000FD7B3D /* AudioToolbox.framework */; };
+		20E3EF931BC9064C00B3D27E /* WeekViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20E3EF921BC9064C00B3D27E /* WeekViewController.m */; settings = {ASSET_TAGS = (); }; };
 		20E942181B833D10009C2DC6 /* wechat@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 20E942161B833D10009C2DC6 /* wechat@2x.png */; };
 		20E942191B833D10009C2DC6 /* wechat@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 20E942171B833D10009C2DC6 /* wechat@3x.png */; };
 		20E9421C1B833D10009C2DC6 /* wechat_friends@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 20E9421A1B833D10009C2DC6 /* wechat_friends@2x.png */; };
@@ -718,6 +749,66 @@
 		209C4C781B8C688000B584DF /* AssociationsDetailTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AssociationsDetailTableView.m; sourceTree = "<group>"; };
 		20C5B0791B8DE58700B4A8A8 /* AssociationsSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AssociationsSearchViewController.h; sourceTree = "<group>"; };
 		20C5B07A1B8DE58700B4A8A8 /* AssociationsSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AssociationsSearchViewController.m; sourceTree = "<group>"; };
+		20DA16B91BC7C51200A61B37 /* MGCAllDayEventsViewLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGCAllDayEventsViewLayout.h; sourceTree = "<group>"; };
+		20DA16BA1BC7C51200A61B37 /* MGCAllDayEventsViewLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGCAllDayEventsViewLayout.m; sourceTree = "<group>"; };
+		20DA16BB1BC7C51200A61B37 /* MGCDateRange.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGCDateRange.h; sourceTree = "<group>"; };
+		20DA16BC1BC7C51200A61B37 /* MGCDateRange.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGCDateRange.m; sourceTree = "<group>"; };
+		20DA16BD1BC7C51200A61B37 /* MGCDayColumnCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGCDayColumnCell.h; sourceTree = "<group>"; };
+		20DA16BE1BC7C51200A61B37 /* MGCDayColumnCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGCDayColumnCell.m; sourceTree = "<group>"; };
+		20DA16BF1BC7C51200A61B37 /* MGCDayPlannerEKViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGCDayPlannerEKViewController.h; sourceTree = "<group>"; };
+		20DA16C01BC7C51200A61B37 /* MGCDayPlannerEKViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGCDayPlannerEKViewController.m; sourceTree = "<group>"; };
+		20DA16C11BC7C51200A61B37 /* MGCDayPlannerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGCDayPlannerView.h; sourceTree = "<group>"; };
+		20DA16C21BC7C51200A61B37 /* MGCDayPlannerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGCDayPlannerView.m; sourceTree = "<group>"; };
+		20DA16C31BC7C51200A61B37 /* MGCDayPlannerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGCDayPlannerViewController.h; sourceTree = "<group>"; };
+		20DA16C41BC7C51200A61B37 /* MGCDayPlannerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGCDayPlannerViewController.m; sourceTree = "<group>"; };
+		20DA16C51BC7C51200A61B37 /* MGCEventCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGCEventCell.h; sourceTree = "<group>"; };
+		20DA16C61BC7C51200A61B37 /* MGCEventCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGCEventCell.m; sourceTree = "<group>"; };
+		20DA16C71BC7C51200A61B37 /* MGCEventCellLayoutAttributes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGCEventCellLayoutAttributes.h; sourceTree = "<group>"; };
+		20DA16C81BC7C51200A61B37 /* MGCEventCellLayoutAttributes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGCEventCellLayoutAttributes.m; sourceTree = "<group>"; };
+		20DA16C91BC7C51200A61B37 /* MGCEventsRowView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGCEventsRowView.h; sourceTree = "<group>"; };
+		20DA16CA1BC7C51200A61B37 /* MGCEventsRowView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGCEventsRowView.m; sourceTree = "<group>"; };
+		20DA16CB1BC7C51200A61B37 /* MGCEventView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGCEventView.h; sourceTree = "<group>"; };
+		20DA16CC1BC7C51200A61B37 /* MGCEventView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGCEventView.m; sourceTree = "<group>"; };
+		20DA16CD1BC7C51200A61B37 /* MGCInteractiveEventView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGCInteractiveEventView.h; sourceTree = "<group>"; };
+		20DA16CE1BC7C51200A61B37 /* MGCInteractiveEventView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGCInteractiveEventView.m; sourceTree = "<group>"; };
+		20DA16CF1BC7C51200A61B37 /* MGCMonthMiniCalendarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGCMonthMiniCalendarView.h; sourceTree = "<group>"; };
+		20DA16D01BC7C51200A61B37 /* MGCMonthMiniCalendarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGCMonthMiniCalendarView.m; sourceTree = "<group>"; };
+		20DA16D11BC7C51200A61B37 /* MGCMonthPlannerBackgroundView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGCMonthPlannerBackgroundView.h; sourceTree = "<group>"; };
+		20DA16D21BC7C51200A61B37 /* MGCMonthPlannerBackgroundView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGCMonthPlannerBackgroundView.m; sourceTree = "<group>"; };
+		20DA16D31BC7C51200A61B37 /* MGCMonthPlannerEKViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGCMonthPlannerEKViewController.h; sourceTree = "<group>"; };
+		20DA16D41BC7C51200A61B37 /* MGCMonthPlannerEKViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGCMonthPlannerEKViewController.m; sourceTree = "<group>"; };
+		20DA16D51BC7C51200A61B37 /* MGCMonthPlannerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGCMonthPlannerView.h; sourceTree = "<group>"; };
+		20DA16D61BC7C51200A61B37 /* MGCMonthPlannerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGCMonthPlannerView.m; sourceTree = "<group>"; };
+		20DA16D71BC7C51200A61B37 /* MGCMonthPlannerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGCMonthPlannerViewController.h; sourceTree = "<group>"; };
+		20DA16D81BC7C51200A61B37 /* MGCMonthPlannerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGCMonthPlannerViewController.m; sourceTree = "<group>"; };
+		20DA16D91BC7C51200A61B37 /* MGCMonthPlannerViewDayCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGCMonthPlannerViewDayCell.h; sourceTree = "<group>"; };
+		20DA16DA1BC7C51200A61B37 /* MGCMonthPlannerViewDayCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGCMonthPlannerViewDayCell.m; sourceTree = "<group>"; };
+		20DA16DB1BC7C51200A61B37 /* MGCMonthPlannerViewLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGCMonthPlannerViewLayout.h; sourceTree = "<group>"; };
+		20DA16DC1BC7C51200A61B37 /* MGCMonthPlannerViewLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGCMonthPlannerViewLayout.m; sourceTree = "<group>"; };
+		20DA16DD1BC7C51200A61B37 /* MGCMonthPlannerWeekView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGCMonthPlannerWeekView.h; sourceTree = "<group>"; };
+		20DA16DE1BC7C51200A61B37 /* MGCMonthPlannerWeekView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGCMonthPlannerWeekView.m; sourceTree = "<group>"; };
+		20DA16DF1BC7C51200A61B37 /* MGCReusableObjectQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGCReusableObjectQueue.h; sourceTree = "<group>"; };
+		20DA16E01BC7C51200A61B37 /* MGCReusableObjectQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGCReusableObjectQueue.m; sourceTree = "<group>"; };
+		20DA16E11BC7C51200A61B37 /* MGCStandardEventView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGCStandardEventView.h; sourceTree = "<group>"; };
+		20DA16E21BC7C51200A61B37 /* MGCStandardEventView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGCStandardEventView.m; sourceTree = "<group>"; };
+		20DA16E31BC7C51200A61B37 /* MGCTimedEventsViewLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGCTimedEventsViewLayout.h; sourceTree = "<group>"; };
+		20DA16E41BC7C51200A61B37 /* MGCTimedEventsViewLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGCTimedEventsViewLayout.m; sourceTree = "<group>"; };
+		20DA16E51BC7C51200A61B37 /* MGCTimeRowsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGCTimeRowsView.h; sourceTree = "<group>"; };
+		20DA16E61BC7C51200A61B37 /* MGCTimeRowsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGCTimeRowsView.m; sourceTree = "<group>"; };
+		20DA16E71BC7C51200A61B37 /* MGCYearCalendarMonthCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGCYearCalendarMonthCell.h; sourceTree = "<group>"; };
+		20DA16E81BC7C51200A61B37 /* MGCYearCalendarMonthCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGCYearCalendarMonthCell.m; sourceTree = "<group>"; };
+		20DA16E91BC7C51200A61B37 /* MGCYearCalendarMonthHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGCYearCalendarMonthHeaderView.h; sourceTree = "<group>"; };
+		20DA16EA1BC7C51200A61B37 /* MGCYearCalendarMonthHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGCYearCalendarMonthHeaderView.m; sourceTree = "<group>"; };
+		20DA16EB1BC7C51200A61B37 /* MGCYearCalendarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGCYearCalendarView.h; sourceTree = "<group>"; };
+		20DA16EC1BC7C51200A61B37 /* MGCYearCalendarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGCYearCalendarView.m; sourceTree = "<group>"; };
+		20DA16ED1BC7C51200A61B37 /* NSCalendar+MGCAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSCalendar+MGCAdditions.h"; sourceTree = "<group>"; };
+		20DA16EE1BC7C51200A61B37 /* NSCalendar+MGCAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSCalendar+MGCAdditions.m"; sourceTree = "<group>"; };
+		20DA16EF1BC7C51200A61B37 /* OrderedDictionary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderedDictionary.h; sourceTree = "<group>"; };
+		20DA16F01BC7C51200A61B37 /* OrderedDictionary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderedDictionary.m; sourceTree = "<group>"; };
+		20DA16F11BC7C51200A61B37 /* OSCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSCache.h; sourceTree = "<group>"; };
+		20DA16F21BC7C51200A61B37 /* OSCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSCache.m; sourceTree = "<group>"; };
+		20DA171C1BC7C51200A61B37 /* CalendarDayHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalendarDayHeaderView.h; sourceTree = "<group>"; };
+		20DA171D1BC7C51200A61B37 /* CalendarDayHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalendarDayHeaderView.m; sourceTree = "<group>"; };
 		20DA1A721B89BEF100DEF95C /* register-frame-agree@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "register-frame-agree@2x.png"; sourceTree = "<group>"; };
 		20DA1A731B89BEF100DEF95C /* register-frame-agree@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "register-frame-agree@3x.png"; sourceTree = "<group>"; };
 		20DA1A741B89BEF100DEF95C /* register-frame@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "register-frame@2x.png"; sourceTree = "<group>"; };
@@ -882,6 +973,8 @@
 		20E18DAF1B808E42005B75EE /* society@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "society@2x.png"; sourceTree = "<group>"; };
 		20E18DB01B808E42005B75EE /* society@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "society@3x.png"; sourceTree = "<group>"; };
 		20E193F71B8B516000FD7B3D /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		20E3EF911BC9064C00B3D27E /* WeekViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeekViewController.h; sourceTree = "<group>"; };
+		20E3EF921BC9064C00B3D27E /* WeekViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeekViewController.m; sourceTree = "<group>"; };
 		20E942161B833D10009C2DC6 /* wechat@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "wechat@2x.png"; sourceTree = "<group>"; };
 		20E942171B833D10009C2DC6 /* wechat@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "wechat@3x.png"; sourceTree = "<group>"; };
 		20E9421A1B833D10009C2DC6 /* wechat_friends@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "wechat_friends@2x.png"; sourceTree = "<group>"; };
@@ -1493,6 +1586,7 @@
 		044DA0401BBA77C900AA321A /* Activity */ = {
 			isa = PBXGroup;
 			children = (
+				20E3EF901BC9064C00B3D27E /* AvailableTime */,
 				044DA05E1BBA7E4700AA321A /* ActivityCell */,
 				044DA0411BBA77C900AA321A /* ActivityDetail */,
 				044DA04F1BBA77C900AA321A /* ActivityCell.h */,
@@ -1737,6 +1831,73 @@
 				20DCB9781B8CA60800C758DE /* NotifyListTableViewCell.m */,
 			);
 			path = NotifyList;
+			sourceTree = "<group>";
+		};
+		20DA16B81BC7C51200A61B37 /* CalendarLib */ = {
+			isa = PBXGroup;
+			children = (
+				20DA16B91BC7C51200A61B37 /* MGCAllDayEventsViewLayout.h */,
+				20DA16BA1BC7C51200A61B37 /* MGCAllDayEventsViewLayout.m */,
+				20DA16BB1BC7C51200A61B37 /* MGCDateRange.h */,
+				20DA16BC1BC7C51200A61B37 /* MGCDateRange.m */,
+				20DA16BD1BC7C51200A61B37 /* MGCDayColumnCell.h */,
+				20DA16BE1BC7C51200A61B37 /* MGCDayColumnCell.m */,
+				20DA16BF1BC7C51200A61B37 /* MGCDayPlannerEKViewController.h */,
+				20DA16C01BC7C51200A61B37 /* MGCDayPlannerEKViewController.m */,
+				20DA171C1BC7C51200A61B37 /* CalendarDayHeaderView.h */,
+				20DA171D1BC7C51200A61B37 /* CalendarDayHeaderView.m */,
+				20DA16C11BC7C51200A61B37 /* MGCDayPlannerView.h */,
+				20DA16C21BC7C51200A61B37 /* MGCDayPlannerView.m */,
+				20DA16C31BC7C51200A61B37 /* MGCDayPlannerViewController.h */,
+				20DA16C41BC7C51200A61B37 /* MGCDayPlannerViewController.m */,
+				20DA16C51BC7C51200A61B37 /* MGCEventCell.h */,
+				20DA16C61BC7C51200A61B37 /* MGCEventCell.m */,
+				20DA16C71BC7C51200A61B37 /* MGCEventCellLayoutAttributes.h */,
+				20DA16C81BC7C51200A61B37 /* MGCEventCellLayoutAttributes.m */,
+				20DA16C91BC7C51200A61B37 /* MGCEventsRowView.h */,
+				20DA16CA1BC7C51200A61B37 /* MGCEventsRowView.m */,
+				20DA16CB1BC7C51200A61B37 /* MGCEventView.h */,
+				20DA16CC1BC7C51200A61B37 /* MGCEventView.m */,
+				20DA16CD1BC7C51200A61B37 /* MGCInteractiveEventView.h */,
+				20DA16CE1BC7C51200A61B37 /* MGCInteractiveEventView.m */,
+				20DA16CF1BC7C51200A61B37 /* MGCMonthMiniCalendarView.h */,
+				20DA16D01BC7C51200A61B37 /* MGCMonthMiniCalendarView.m */,
+				20DA16D11BC7C51200A61B37 /* MGCMonthPlannerBackgroundView.h */,
+				20DA16D21BC7C51200A61B37 /* MGCMonthPlannerBackgroundView.m */,
+				20DA16D31BC7C51200A61B37 /* MGCMonthPlannerEKViewController.h */,
+				20DA16D41BC7C51200A61B37 /* MGCMonthPlannerEKViewController.m */,
+				20DA16D51BC7C51200A61B37 /* MGCMonthPlannerView.h */,
+				20DA16D61BC7C51200A61B37 /* MGCMonthPlannerView.m */,
+				20DA16D71BC7C51200A61B37 /* MGCMonthPlannerViewController.h */,
+				20DA16D81BC7C51200A61B37 /* MGCMonthPlannerViewController.m */,
+				20DA16D91BC7C51200A61B37 /* MGCMonthPlannerViewDayCell.h */,
+				20DA16DA1BC7C51200A61B37 /* MGCMonthPlannerViewDayCell.m */,
+				20DA16DB1BC7C51200A61B37 /* MGCMonthPlannerViewLayout.h */,
+				20DA16DC1BC7C51200A61B37 /* MGCMonthPlannerViewLayout.m */,
+				20DA16DD1BC7C51200A61B37 /* MGCMonthPlannerWeekView.h */,
+				20DA16DE1BC7C51200A61B37 /* MGCMonthPlannerWeekView.m */,
+				20DA16DF1BC7C51200A61B37 /* MGCReusableObjectQueue.h */,
+				20DA16E01BC7C51200A61B37 /* MGCReusableObjectQueue.m */,
+				20DA16E11BC7C51200A61B37 /* MGCStandardEventView.h */,
+				20DA16E21BC7C51200A61B37 /* MGCStandardEventView.m */,
+				20DA16E31BC7C51200A61B37 /* MGCTimedEventsViewLayout.h */,
+				20DA16E41BC7C51200A61B37 /* MGCTimedEventsViewLayout.m */,
+				20DA16E51BC7C51200A61B37 /* MGCTimeRowsView.h */,
+				20DA16E61BC7C51200A61B37 /* MGCTimeRowsView.m */,
+				20DA16E71BC7C51200A61B37 /* MGCYearCalendarMonthCell.h */,
+				20DA16E81BC7C51200A61B37 /* MGCYearCalendarMonthCell.m */,
+				20DA16E91BC7C51200A61B37 /* MGCYearCalendarMonthHeaderView.h */,
+				20DA16EA1BC7C51200A61B37 /* MGCYearCalendarMonthHeaderView.m */,
+				20DA16EB1BC7C51200A61B37 /* MGCYearCalendarView.h */,
+				20DA16EC1BC7C51200A61B37 /* MGCYearCalendarView.m */,
+				20DA16ED1BC7C51200A61B37 /* NSCalendar+MGCAdditions.h */,
+				20DA16EE1BC7C51200A61B37 /* NSCalendar+MGCAdditions.m */,
+				20DA16EF1BC7C51200A61B37 /* OrderedDictionary.h */,
+				20DA16F01BC7C51200A61B37 /* OrderedDictionary.m */,
+				20DA16F11BC7C51200A61B37 /* OSCache.h */,
+				20DA16F21BC7C51200A61B37 /* OSCache.m */,
+			);
+			path = CalendarLib;
 			sourceTree = "<group>";
 		};
 		20DA35F31B81E89F002E5A96 /* Contact */ = {
@@ -2227,6 +2388,15 @@
 				20DAF99E1B8713F6005B7932 /* login_school@3x.png */,
 			);
 			path = Login;
+			sourceTree = "<group>";
+		};
+		20E3EF901BC9064C00B3D27E /* AvailableTime */ = {
+			isa = PBXGroup;
+			children = (
+				20E3EF911BC9064C00B3D27E /* WeekViewController.h */,
+				20E3EF921BC9064C00B3D27E /* WeekViewController.m */,
+			);
+			path = AvailableTime;
 			sourceTree = "<group>";
 		};
 		333120E51B806EDA00D3D032 /* ChatView */ = {
@@ -2963,6 +3133,7 @@
 		653CB2E81B806BFD006ECBB2 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				20DA16B81BC7C51200A61B37 /* CalendarLib */,
 				656A4CF51BBF9E1500BDB725 /* QRCodeReaderViewController */,
 				20DAF9C71B873883005B7932 /* pinyin */,
 				20E033C21B842727002E4583 /* UMengSDK */,
@@ -3582,7 +3753,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				20DA16F81BC7C51200A61B37 /* MGCDayPlannerViewController.m in Sources */,
+				20DA17011BC7C51200A61B37 /* MGCMonthPlannerView.m in Sources */,
 				3331226C1B806EDB00D3D032 /* PSTCollectionViewLayout.m in Sources */,
+				20DA16FD1BC7C51200A61B37 /* MGCInteractiveEventView.m in Sources */,
 				65F55A9E1B897C4700ED4348 /* ProfileTagViewController.m in Sources */,
 				333122641B806EDB00D3D032 /* UIView+EMWebCacheOperation.m in Sources */,
 				3331224F1B806EDB00D3D032 /* MWPhoto.m in Sources */,
@@ -3611,6 +3785,7 @@
 				333122441B806EDB00D3D032 /* EMCDDeviceManager+ProximitySensor.m in Sources */,
 				20DAF9DD1B873883005B7932 /* PinyinHelper.m in Sources */,
 				337C90C01BA1340100D9CEAC /* GroupTag.m in Sources */,
+				20DA16FC1BC7C51200A61B37 /* MGCEventView.m in Sources */,
 				333122451B806EDB00D3D032 /* EMCDDeviceManager+Remind.m in Sources */,
 				333122751B806EDB00D3D032 /* SRRefreshView.m in Sources */,
 				3331227B1B806EDB00D3D032 /* wav.mm in Sources */,
@@ -3626,7 +3801,9 @@
 				333122841B806EDC00D3D032 /* UIViewController+HUD.m in Sources */,
 				333122821B806EDC00D3D032 /* UIResponder+Router.m in Sources */,
 				333122781B806EDB00D3D032 /* TTGlobalUICommon.m in Sources */,
+				20DA16F41BC7C51200A61B37 /* MGCDateRange.m in Sources */,
 				3331225D1B806EDB00D3D032 /* NSData+EMImageContentType.m in Sources */,
+				20DA170E1BC7C51200A61B37 /* OrderedDictionary.m in Sources */,
 				333122411B806EDB00D3D032 /* EMAudioRecorderUtil.m in Sources */,
 				6592DCD81B806A9B004CD118 /* GroupApplyTableView.m in Sources */,
 				20DAF9DB1B873883005B7932 /* PinyinFormatter.m in Sources */,
@@ -3639,9 +3816,11 @@
 				3331225E1B806EDB00D3D032 /* UIButton+EMWebCache.m in Sources */,
 				6518A24B1B80583600AEB79D /* TagListTableViewCell.m in Sources */,
 				20DD4B311B7345EF007C352C /* ProfileViewController.m in Sources */,
+				20DA170D1BC7C51200A61B37 /* NSCalendar+MGCAdditions.m in Sources */,
 				333122381B806EDB00D3D032 /* EMChatTextBubbleView.m in Sources */,
 				333122D91B806F7E00D3D032 /* RobotManager.m in Sources */,
 				333122481B806EDB00D3D032 /* Emoji.m in Sources */,
+				20DA16FA1BC7C51200A61B37 /* MGCEventCellLayoutAttributes.m in Sources */,
 				20E033F61B8427AF002E4583 /* YCommonShare.m in Sources */,
 				3331224D1B806EDB00D3D032 /* MWGridCell.m in Sources */,
 				333122621B806EDB00D3D032 /* UIImageView+EMHighlightedWebCache.m in Sources */,
@@ -3655,18 +3834,22 @@
 				33380DA81B85DBAB008B51EB /* ApplySuccessSystemMessageTableViewCell.m in Sources */,
 				33380DA51B85DB89008B51EB /* NormalSystemMessageTableViewCell.m in Sources */,
 				044DA0571BBA77C900AA321A /* ActivityDetailViewController.m in Sources */,
+				20DA17051BC7C51200A61B37 /* MGCMonthPlannerWeekView.m in Sources */,
 				656341551BC1061500E10025 /* YStripeView.m in Sources */,
 				65CF638F1B8F0E4A00ACBB70 /* YCommonReport.m in Sources */,
 				653CB2EF1B806BFD006ECBB2 /* pinyin.c in Sources */,
 				E45008171BC74D8800604F81 /* MyFlowLayout.m in Sources */,
 				65969DD01B8723E3001DD348 /* YUtils+HUD.m in Sources */,
 				65969DD31B87312D001DD348 /* ProfilePersonListTableView.m in Sources */,
+				20DA170C1BC7C51200A61B37 /* MGCYearCalendarView.m in Sources */,
 				33380D941B8577E8008B51EB /* SendMessageTableView.m in Sources */,
 				333122471B806EDB00D3D032 /* EMAlertView.m in Sources */,
 				333122431B806EDB00D3D032 /* EMCDDeviceManager+Microphone.m in Sources */,
 				333122391B806EDB00D3D032 /* EMChatVideoBubbleView.m in Sources */,
 				656A4CFF1BBF9E1E00BDB725 /* QRCodeReaderViewController.m in Sources */,
 				049480271BB8CF4800C68460 /* ScheduleListTableView.m in Sources */,
+				20E3EF931BC9064C00B3D27E /* WeekViewController.m in Sources */,
+				20DA17031BC7C51200A61B37 /* MGCMonthPlannerViewDayCell.m in Sources */,
 				333122711B806EDB00D3D032 /* PSTGridLayoutSection.m in Sources */,
 				6518A2481B80429300AEB79D /* TagListTableView.m in Sources */,
 				656234771B837FDC00651C88 /* YFaceImageView.m in Sources */,
@@ -3678,6 +3861,7 @@
 				6592DCD91B806A9B004CD118 /* GroupApplyTableViewCell.m in Sources */,
 				333122571B806EDB00D3D032 /* EMSDWebImageDecoder.m in Sources */,
 				2076A3001B81C590001FFBAC /* YCommonActionSheet.m in Sources */,
+				20DA16F61BC7C51200A61B37 /* MGCDayPlannerEKViewController.m in Sources */,
 				3331226B1B806EDB00D3D032 /* PSTCollectionViewItemKey.m in Sources */,
 				65F82F841B85E74A00FF6E2D /* FeedPublishViewController.m in Sources */,
 				6592DCDB1B806A9B004CD118 /* ContactsTableView.m in Sources */,
@@ -3686,6 +3870,7 @@
 				044792BD1BB14DF40053412A /* commenTagList.m in Sources */,
 				653199DE1B80B41C00405B72 /* ConnectTag.m in Sources */,
 				0465C3B61BB647840032D241 /* RemindHeadView.m in Sources */,
+				20DA17021BC7C51200A61B37 /* MGCMonthPlannerViewController.m in Sources */,
 				3331223C1B806EDB00D3D032 /* EMChatViewCell.m in Sources */,
 				339549891B81BDFF00F9ECB1 /* GroupInfoDetailCollectionView.m in Sources */,
 				6592DCDA1B806A9B004CD118 /* XYGroupApplyViewController.m in Sources */,
@@ -3704,21 +3889,29 @@
 				339549831B81BD6700F9ECB1 /* XYGroupInfoDetailViewController.m in Sources */,
 				333122311B806EDB00D3D032 /* FacialView.m in Sources */,
 				3331226F1B806EDB00D3D032 /* PSTGridLayoutItem.m in Sources */,
+				20DA16FE1BC7C51200A61B37 /* MGCMonthMiniCalendarView.m in Sources */,
+				20DA17091BC7C51200A61B37 /* MGCTimeRowsView.m in Sources */,
 				333122701B806EDB00D3D032 /* PSTGridLayoutRow.m in Sources */,
+				20DA170A1BC7C51200A61B37 /* MGCYearCalendarMonthCell.m in Sources */,
 				E4BE2DAA1BC7989300124F22 /* ContactsInfoFirstTableViewCell.m in Sources */,
 				044DA05B1BBA77C900AA321A /* ActivityCell.m in Sources */,
 				65A703CB1B8C467C0094D8A2 /* FeedFilterViewController.m in Sources */,
 				333122501B806EDB00D3D032 /* MWPhotoBrowser.m in Sources */,
 				333122761B806EDB00D3D032 /* SRSlimeView.m in Sources */,
 				044DA0661BBA7E4700AA321A /* ActivityMiddleView.m in Sources */,
+				20DA16F91BC7C51200A61B37 /* MGCEventCell.m in Sources */,
 				333122531B806EDB00D3D032 /* MWZoomingScrollView.m in Sources */,
 				65CBE15D1BBFFF5B00C28D57 /* GiftViewController.m in Sources */,
 				65024C0F1B82C423007DE404 /* FeedTag.m in Sources */,
+				20DA17081BC7C51200A61B37 /* MGCTimedEventsViewLayout.m in Sources */,
 				20DA63761B7482DE007D22AC /* FeedListTableView.m in Sources */,
 				207F808D1B709A1E005E8F6A /* AppDelegate+Notification.m in Sources */,
+				20DA17061BC7C51200A61B37 /* MGCReusableObjectQueue.m in Sources */,
 				6592DCDC1B806A9B004CD118 /* ContactsTableViewCell.m in Sources */,
 				20DAF9A81B871E45005B7932 /* ChooseSchoolTableViewCell.m in Sources */,
 				3331223A1B806EDB00D3D032 /* EMChatTimeCell.m in Sources */,
+				049C55C91BB3F319007565E1 /* TopView.m in Sources */,
+				20DA170F1BC7C51200A61B37 /* OSCache.m in Sources */,
 				049C55C91BB3F319007565E1 /* FastTopView.m in Sources */,
 				65F55AA11B899EBC00ED4348 /* UIImageView+Ext.m in Sources */,
 				333122591B806EDB00D3D032 /* EMSDWebImageDownloaderOperation.m in Sources */,
@@ -3728,6 +3921,7 @@
 				20E033FD1B846114002E4583 /* SearchFilterViewController.m in Sources */,
 				20E18D551B807752005B75EE /* AssociationsListTableViewCell.m in Sources */,
 				65969DDF1B877356001DD348 /* ProfileFeedListView.m in Sources */,
+				20DA16F71BC7C51200A61B37 /* MGCDayPlannerView.m in Sources */,
 				33380DA21B85DAF8008B51EB /* SystemMessageTableView.m in Sources */,
 				333122851B806EDC00D3D032 /* XHMessageTextView.m in Sources */,
 				333122611B806EDB00D3D032 /* UIImage+EMWebP.m in Sources */,
@@ -3739,6 +3933,7 @@
 				20DAF9D91B873883005B7932 /* NSString+PinYin4Cocoa.m in Sources */,
 				044DA05C1BBA77C900AA321A /* ActivityListView.m in Sources */,
 				333122461B806EDB00D3D032 /* EMCDDeviceManagerBase.m in Sources */,
+				20DA16F31BC7C51200A61B37 /* MGCAllDayEventsViewLayout.m in Sources */,
 				3331222C1B806EDB00D3D032 /* ChatViewController.m in Sources */,
 				333122661B806EDB00D3D032 /* PSTCollectionView.m in Sources */,
 				333122491B806EDB00D3D032 /* EmojiEmoticons.m in Sources */,
@@ -3747,6 +3942,7 @@
 				6592DCDF1B806A9B004CD118 /* XYMessageAndContactsViewController.m in Sources */,
 				3331226E1B806EDB00D3D032 /* PSTGridLayoutInfo.m in Sources */,
 				20DC5CD01B7B4FA00059B6E6 /* FeedListTableViewCell.m in Sources */,
+				20DA16FF1BC7C51200A61B37 /* MGCMonthPlannerBackgroundView.m in Sources */,
 				3334AC461B831B2200FDDCCB /* ContactsInfoDetailTableView.m in Sources */,
 				044DA0671BBA7E4700AA321A /* ActivityTopView.m in Sources */,
 				20E18D561B807752005B75EE /* AssociationsListViewController.m in Sources */,
@@ -3769,17 +3965,20 @@
 				6592DCDD1B806A9B004CD118 /* MessageTableView.m in Sources */,
 				65BCCAEB1B81A72500266A18 /* FeedDetailTableView.m in Sources */,
 				333122771B806EDB00D3D032 /* THProgressView.m in Sources */,
+				20DA170B1BC7C51200A61B37 /* MGCYearCalendarMonthHeaderView.m in Sources */,
 				65BCF1E11B818441003457F4 /* FeedDetailViewController.m in Sources */,
 				333122691B806EDB00D3D032 /* PSTCollectionViewData.m in Sources */,
 				65969DE21B877896001DD348 /* ProfileFeedCell.m in Sources */,
 				65A847051B81CA1900933815 /* FeedCellBottomView.m in Sources */,
 				0464D6BC1BB53CC100D56901 /* ScheduleViewController.m in Sources */,
+				20DA17001BC7C51200A61B37 /* MGCMonthPlannerEKViewController.m in Sources */,
 				20E122211B705ED200F90BD3 /* FeedListViewController.m in Sources */,
 				20DD115D1B8D699C00767E62 /* CNTextController.m in Sources */,
 				3346708A1B84AA3700A8628A /* ChoicePersonTableView.m in Sources */,
 				20E122131B705C2100F90BD3 /* XYTabBarViewController.m in Sources */,
 				207F80871B7098E3005E8F6A /* AppDelegate+RootVC.m in Sources */,
 				20DD78FB1BA97AAF009AD1A9 /* LoginWaitingViewController.m in Sources */,
+				20DA171E1BC7C51200A61B37 /* CalendarDayHeaderView.m in Sources */,
 				6592DCD71B806A9B004CD118 /* XYFriendApplyViewController.m in Sources */,
 				0464E3211BB3A3DA0017696E /* ConvenienceTableViewController.m in Sources */,
 				333122321B806EDB00D3D032 /* DXChatBarMoreView.m in Sources */,
@@ -3795,6 +3994,7 @@
 				333122341B806EDB00D3D032 /* EMChatAudioBubbleView.m in Sources */,
 				65A703CE1B8C4EE70094D8A2 /* YFlatSwitchView.m in Sources */,
 				333122581B806EDB00D3D032 /* EMSDWebImageDownloader.m in Sources */,
+				20DA16F51BC7C51200A61B37 /* MGCDayColumnCell.m in Sources */,
 				650C6C001B881A9800A89AC9 /* ProfileMyViewController.m in Sources */,
 				650C6C031B88529600A89AC9 /* ProfileChangePwdViewController.m in Sources */,
 				3331223F1B806EDB00D3D032 /* MessageReadManager.m in Sources */,
@@ -3804,7 +4004,10 @@
 				048676A01BC803CB009F8C43 /* FastBottomView.m in Sources */,
 				3331222F1B806EDB00D3D032 /* DXMessageToolBar.m in Sources */,
 				049C55C21BB3DE18007565E1 /* FastViewController.m in Sources */,
+				20DA16FB1BC7C51200A61B37 /* MGCEventsRowView.m in Sources */,
+				20DA17071BC7C51200A61B37 /* MGCStandardEventView.m in Sources */,
 				2076A3011B81C590001FFBAC /* YCommonAlertView.m in Sources */,
+				20DA17041BC7C51200A61B37 /* MGCMonthPlannerViewLayout.m in Sources */,
 				65969DDC1B875F31001DD348 /* ProfilePublishViewController.m in Sources */,
 				044DA0651BBA7E4700AA321A /* ActivityBottomView.m in Sources */,
 				3331227A1B806EDB00D3D032 /* amrFileCodec.mm in Sources */,

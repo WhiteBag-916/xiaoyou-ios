@@ -53,6 +53,10 @@
 - (NSDate *)endOfMonth;
 //返回当前周的周末
 - (NSDate *)endOfWeek;
+
+- (BOOL) isTodayWithTimeZone:(NSTimeZone*)timeZone;
+- (BOOL) isSameDay:(NSDate*)anotherDate timeZone:(NSTimeZone*)timeZone;
+
 //转为NSString类型的
 + (NSDate *)dateFromString:(NSString *)string;
 + (NSDate *)dateFromString:(NSString *)string withFormat:(NSString *)format;
