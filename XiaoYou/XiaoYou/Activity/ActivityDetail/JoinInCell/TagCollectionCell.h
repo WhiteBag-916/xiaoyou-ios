@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Tags.h"
 
 @interface TagCollectionCell : UICollectionViewCell
-@property (nonatomic,strong) UILabel *tagLabel;
+
+-(void)setCellInfo:(Tags *) tag;
+
 @end

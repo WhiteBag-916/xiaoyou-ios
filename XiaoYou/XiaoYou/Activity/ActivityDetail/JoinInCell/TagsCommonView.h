@@ -7,9 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ProfileInfo.h"
 
 @interface TagsCommonView : UIView
 
-- (instancetype)initWithCollectionViewHeight:(CGFloat) height;
+@property(nonatomic,strong)ProfileInfo * model;
+
+- (instancetype)initWithCollectionViewHeight:(CGFloat) height andModel:(ProfileInfo *) model;
+
+- (void)setData:(ProfileInfo *) model;
 
 @end

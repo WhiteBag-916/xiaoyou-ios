@@ -8,6 +8,9 @@
 
 #import "ContactsInfoDetailTableView.h"
 #import "ContactsInfoDetailTableViewCell.h"
+#import "ContactsInfoFirstTableViewCell.h"
+#import "ContactsInfoSecondTableViewCell.h"
+#import "ContactsInfoThirdTableViewCell.h"
 #import "ConnectTag.h"
 #import "UIImageView+Ext.h"
 #import "Tags.h"
@@ -17,8 +20,10 @@
 #import "ContactManager.h"
 #import "YUtils+HUD.h"
 #import "SDPhotoBrowser.h"
+#import "Author.h"
+#import "FeedInfo.h"
 
-#define kHeaderViewHeight              90
+#define kHeaderViewHeight              60
 #define kHeadWidthAndHeight            46
 #define kNameLabelWidth                80
 #define kHeadCornerRadius              23
@@ -28,7 +33,7 @@
 #define kFlagImageViewHeight           13
 
 
-@interface ContactsInfoDetailTableView ()<UITableViewDataSource,UITableViewDelegate,SDPhotoBrowserDelegate>
+@interface ContactsInfoDetailTableView ()<UITableViewDataSource,UITableViewDelegate,SDPhotoBrowserDelegate,ContactsInfoThirdTableViewCellDelegate>
 
 @property (nonatomic, strong) UIView *faceContainer;
 @property (strong, nonatomic)  UIImageView *headImageView;
@@ -57,7 +62,9 @@
         self.dataSource = self;
         self.separatorStyle = NO;
         
-        [self registerClass:[ContactsInfoDetailTableViewCell class] forCellReuseIdentifier:kContactsInfoDetailTableViewCell];
+        [self registerClass:[ContactsInfoFirstTableViewCell class] forCellReuseIdentifier:kContactsInfoFirstTableViewCell];
+        [self registerClass:[ContactsInfoSecondTableViewCell class] forCellReuseIdentifier:kContactsInfoSecondTableViewCell];
+        [self registerClass:[ContactsInfoThirdTableViewCell class] forCellReuseIdentifier:kContactsInfoThirdTableViewCell];
     }
     return self;
 }
@@ -81,7 +88,7 @@
 -(void)setUpHeaderView
 {
     UIView * backView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, kHeaderViewHeight)];
-    
+    backView.backgroundColor = [UIColor clearColor];
     UITapGestureRecognizer * gestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(clickedHeadImageVIew)];
     //放大头像
     _faceContainer = [[UIView alloc] init];
@@ -108,66 +115,66 @@
     //姓名
     _nameLabel = [[UILabel alloc] init];
     _nameLabel.font = CONTENT_FONT(14);
-    _nameLabel.text = @"还需要多多";
-    _nameLabel.backgroundColor = [UIColor orangeColor];
+    _nameLabel.textColor = [UIColor hexChangeFloat:@"333333"];
+    _nameLabel.text = _model.userName;
+    _nameLabel.backgroundColor = [UIColor clearColor];
+    NSDictionary *attributes = @{NSFontAttributeName:[UIFont systemFontOfSize:14]};
+    CGSize textSize = [_model.userName boundingRectWithSize:CGSizeMake(150, 14) options:NSStringDrawingTruncatesLastVisibleLine attributes:attributes context:nil].size;
     [backView addSubview:_nameLabel];
     [_nameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.mas_equalTo(kPaddingDistance);
+        make.top.equalTo(_headImageView.mas_top);
         make.left.equalTo(_headImageView.mas_right).offset(kPaddingDistance);
-        make.width.mas_equalTo(kNameLabelWidth);
+        make.width.mas_equalTo(textSize.width+20);
         make.height.mas_equalTo(kLabelHeightDistacnce);
     }];
     
-    //认证
-    UIImageView * uverifiedImageView = [[UIImageView alloc] init];
-    uverifiedImageView.backgroundColor = [UIColor grayColor];
-    [backView addSubview:uverifiedImageView];
-    [uverifiedImageView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(_nameLabel.mas_right).offset(2*kPaddingDistance);
-        make.top.equalTo(_nameLabel);
-        make.height.width.mas_equalTo(2*kPaddingDistance);
+    //性别
+    UIImageView * sexImageView = [[UIImageView alloc] init];
+    sexImageView.backgroundColor = [UIColor grayColor];
+    [backView addSubview:sexImageView];
+    [sexImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(_nameLabel.mas_right);
+        make.centerY.equalTo(_nameLabel);
+        make.height.width.mas_equalTo(14);
         
     }];
     
-   //标签
-    _connectTag = [[ConnectTag alloc] init];
-    [backView addSubview:_connectTag];
-    [_connectTag mas_makeConstraints:^(MASConstraintMaker *make) {
+    //认证
+    UILabel * authenticationLabel = [[UILabel alloc] init];
+    authenticationLabel.text = @"手机号未注册";
+    authenticationLabel.textColor = [UIColor hexChangeFloat:@"999999"];
+    authenticationLabel.font = CONTENT_FONT(10);
+    [backView addSubview:authenticationLabel];
+    [authenticationLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.right.mas_equalTo(-kPaddingDistance);
-        make.top.mas_equalTo(kPaddingDistance);
+        make.centerY.equalTo(_nameLabel);
     }];
-
-    //共同标签
-    [_connectTag updateWithTag:_model.propetiesCommon];
-    //状态
-    _statesLabel = [[UILabel alloc] init];
-    _statesLabel.font = CONTENT_FONT(12);
-    _statesLabel.numberOfLines = 0;
-    if (![_model.selfIntro isEqualToString:@""])
-    {
-        _statesLabel.text = _model.selfIntro;
-    }
-    else
-    {
-        _statesLabel.text = @"一个没有态度的人";
-    }
     
-    _statesLabel.backgroundColor = [UIColor clearColor];
-    [backView addSubview:_statesLabel];
-    [_statesLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.bottom.mas_equalTo(-kPaddingDistance);
+    
+    //院系年级
+    UILabel * classLabel = [[UILabel alloc] init];
+    if (_model.lastFeeds.count > 0)
+    {
+        FeedInfo * feedInfo = _model.lastFeeds[0];
+        classLabel.text = feedInfo.author.faculty;
+    }
+    classLabel.font = CONTENT_FONT(12);
+    classLabel.textColor = [UIColor hexChangeFloat:@"999999"];
+    [backView addSubview:classLabel];
+    [classLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.bottom.equalTo(_headImageView.mas_bottom);
         make.left.equalTo(_headImageView.mas_right).offset(kPaddingDistance);
         make.right.equalTo(backView).offset(-kPaddingDistance);
         make.top.equalTo(_nameLabel.mas_bottom).offset(kPaddingDistance);
     }];
-    self.tableHeaderView = backView;
-    
 
+    self.tableHeaderView = backView;
 }
 
 -(void)setUpFooterView
 {
     UIView * backView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, kHeaderViewHeight)];
+    backView.backgroundColor = [UIColor clearColor];
     //头像
     _feedBackView = [[UIImageView alloc] init];
     _feedBackView.layer.cornerRadius = kHeadCornerRadius;
@@ -184,6 +191,7 @@
     _feedCountLabel.textColor = [UIColor whiteColor];
     _feedCountLabel.textAlignment = NSTextAlignmentCenter;
     _feedCountLabel.text = @"观点";
+    _feedCountLabel.font = CONTENT_FONT(15);
     [backView addSubview:_feedCountLabel];
     [_feedCountLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.mas_equalTo(kPaddingDistance);
@@ -194,6 +202,7 @@
     //姓名
     _feedLabel = [[UILabel alloc] init];
     _feedLabel.font = CONTENT_FONT(14);
+    _feedLabel.textColor = [UIColor hexChangeFloat:@"666666"];
     _feedLabel.text = [NSString stringWithFormat:@"共%g条",_model.feedCount];
     _feedLabel.backgroundColor = [UIColor clearColor];
     [backView addSubview:_feedLabel];
@@ -240,74 +249,164 @@
     if (_model == nil) {
         return 0;
     }
-    return _flagNameArr.count + 2;
+//    return _flagNameArr.count + 2;
+    return 3;
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
-    ContactsInfoDetailTableViewCell * cell = [self dequeueReusableCellWithIdentifier:kContactsInfoDetailTableViewCell forIndexPath:indexPath];
+//    ContactsInfoDetailTableViewCell * cell = [self dequeueReusableCellWithIdentifier:kContactsInfoDetailTableViewCell forIndexPath:indexPath];
+//    
+//    NSString * indexStr = [NSString stringWithFormat:@"%d",indexPath.row];
+//    
+//    if (indexPath.row == 0)
+//    {
+//        NSDictionary * dic = @{@"content":[NSString stringWithFormat:@"%g人向%@撰写的内容敬酒",_model.praiseCount,_model.userName],@"index":indexStr};
+//        [cell setCellInfo:dic hiddenLine:YES];
+//        return cell;
+//    }
+//    else if (indexPath.row == 1)
+//    {
+//        NSDictionary * dic = @{@"content":[NSString stringWithFormat:@"%g人觉得%@很酷",_model.coolCount,_model.userName],@"index":indexStr, @"isCool":@(_model.isCool)};
+//        [cell setCellInfo:dic hiddenLine:YES];
+//        return cell;
+//    }
+//    else
+//    {
+//        Tags * tag = _model.tagsCommon[indexPath.row - 2];
+//        NSDictionary * dic = @{@"content":self.flagNameArr[indexPath.row - 2],@"index":indexStr,@"equal":@(tag.equal)};
+//        [cell setCellInfo:dic hiddenLine:YES];
+//        return cell;
+//    }
     
-    NSString * indexStr = [NSString stringWithFormat:@"%d",indexPath.row];
     
-    if (indexPath.row == 0)
-    {
-        NSDictionary * dic = @{@"content":[NSString stringWithFormat:@"%g人向%@撰写的内容敬酒",_model.praiseCount,_model.userName],@"index":indexStr};
-        [cell setCellInfo:dic hiddenLine:YES];
-        return cell;
-    }
-    else if (indexPath.row == 1)
-    {
-        NSDictionary * dic = @{@"content":[NSString stringWithFormat:@"%g人觉得%@很酷",_model.coolCount,_model.userName],@"index":indexStr, @"isCool":@(_model.isCool)};
-        [cell setCellInfo:dic hiddenLine:YES];
-        return cell;
-    }
-    else
-    {
-        Tags * tag = _model.tagsCommon[indexPath.row - 2];
-        NSDictionary * dic = @{@"content":self.flagNameArr[indexPath.row - 2],@"index":indexStr,@"equal":@(tag.equal)};
-        [cell setCellInfo:dic hiddenLine:YES];
-        return cell;
-    }
+        if (indexPath.row == 0)
+        {
+            ContactsInfoFirstTableViewCell * cell = [self dequeueReusableCellWithIdentifier:kContactsInfoFirstTableViewCell forIndexPath:indexPath];
+            [cell setCellInfo:_model];
+            return cell;
+        }
+        else if (indexPath.row == 1)
+        {
+            ContactsInfoSecondTableViewCell * cell = [self dequeueReusableCellWithIdentifier:kContactsInfoSecondTableViewCell forIndexPath:indexPath];
+            [cell setCellInfo:_model];
+            return cell;
+        }
+        else
+        {
+            ContactsInfoThirdTableViewCell * cell = [self dequeueReusableCellWithIdentifier:kContactsInfoThirdTableViewCell forIndexPath:indexPath];
+            cell.myDelegate = self;
+            [cell setCellInfo:_model];
+            return cell;
+        }
     
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.row == 0 || indexPath.row == 1)
+    if (indexPath.row == 0)
     {
-        return 60;
+        return 30;
+    }
+    else if(indexPath.row == 1)
+    {
+        
+        if (_model.tagModels.count > 0)
+        {
+            CGFloat height = 60;
+            for (int i = 0; i < _model.tagModels.count; i++)
+            {
+                CGFloat width;
+                Tags * tag = _model.tagModels[i];
+                NSDictionary *attributes = @{NSFontAttributeName:[UIFont systemFontOfSize:12]};
+                CGSize textSize = [tag.name boundingRectWithSize:CGSizeMake(150, 14) options:NSStringDrawingTruncatesLastVisibleLine attributes:attributes context:nil].size;
+                width += 10;
+                width += textSize.width + 15;
+                if (width > SCREEN_WIDTH - 117)
+                {
+                    height += 20;
+                    width = 10 + textSize.width;
+                }
+            }
+            return height;
+        }
+        else
+        {
+            return 40;
+        }
+        
+//        if (_model.tagModels.count <= 4)
+//        {
+//            return 60;
+//        }
+//        else if (_model.tagModels.count <= 8)
+//        {
+//            return 80;
+//        }
+//        else if (_model.tagModels.count <= 12)
+//        {
+//            return 100;
+//        }
+//        else if (_model.tagModels.count <= 16)
+//        {
+//            return 120;
+//        }
+//        else
+//        {
+//            return 140;
+//        }
     }
     else
     {
-        return 40;
+        return 103;
     }
 }
 
-
--(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+-(void)didSelectCool
 {
-    if (indexPath.row == 1)
-    {
-        [YUtils showHUDWithTitle];
-        [[ContactManager sharedInstance] praise:_model.uid block:^(YActionMessage *message) {
-            [YUtils hiddenProgressHUD];
-            if (message.isSuccess) {
-                _model.isCool = !_model.isCool;
-                if (_model.isCool) {
-                    ++_model.coolCount;
-                } else {
-                    --_model.coolCount;
-                }
-                
-                [self reloadData];
-            }else {
-                [YUtils showTitle:message.desc];
+    [YUtils showHUDWithTitle];
+    [[ContactManager sharedInstance] praise:_model.uid block:^(YActionMessage *message) {
+        [YUtils hiddenProgressHUD];
+        if (message.isSuccess) {
+            _model.isCool = !_model.isCool;
+            if (_model.isCool) {
+                ++_model.coolCount;
+            } else {
+                --_model.coolCount;
             }
             
-        }];
-    }
+            [self reloadData];
+        }else {
+            [YUtils showTitle:message.desc];
+        }
+        
+    }];
 }
+
+//-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+//{
+//    if (indexPath.row == 1)
+//    {
+//        [YUtils showHUDWithTitle];
+//        [[ContactManager sharedInstance] praise:_model.uid block:^(YActionMessage *message) {
+//            [YUtils hiddenProgressHUD];
+//            if (message.isSuccess) {
+//                _model.isCool = !_model.isCool;
+//                if (_model.isCool) {
+//                    ++_model.coolCount;
+//                } else {
+//                    --_model.coolCount;
+//                }
+//                
+//                [self reloadData];
+//            }else {
+//                [YUtils showTitle:message.desc];
+//            }
+//            
+//        }];
+//    }
+//}
 
 #pragma mark - 查看头像大图
 - (void)clickedHeadImageVIew {

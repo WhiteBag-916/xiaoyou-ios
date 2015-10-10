@@ -110,7 +110,7 @@
     
     
     //标签
-    _tagsCommonView = [[TagsCommonView alloc]initWithCollectionViewHeight:100];
+    _tagsCommonView = [[TagsCommonView alloc]initWithCollectionViewHeight:100 andModel:nil];
     [self.contentView addSubview:_tagsCommonView];
     [_tagsCommonView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(_headImageView.mas_bottom);

@@ -8,6 +8,7 @@
 
 #import "RemindViewController.h"
 #import "RemindListTableView.h"
+#import "RemindManager.h"
 @interface RemindViewController ()
 
 @property (nonatomic,retain) RemindListTableView *remindList;
@@ -24,6 +25,28 @@
     [self remindList];
 }
 
+- (void)sendRequest {
+    /*[[RemindManager sharedInstance] groupDetailInfo:KPAGENUM groupId:_groupId block:^(YActionMessage *message) {
+        if (message.isSuccess) {
+            [self hiddenFooter:false];
+            if ([[message.object groupFeeds] count] < KPAGENUM) {
+                [self showNoticeNoMoreData];
+            }
+            
+            _groupModel = [message.object groupModel];
+            if (nil != _associationsDetailTableViewDelegate) {
+                [_associationsDetailTableViewDelegate resetAddButtonType:_groupModel];
+            }
+            
+            [self resetFeedArray:[message.object groupFeeds] needRemoveAll:YES];
+            
+        } else {
+            [YUtils showTitleOn:self title:message.desc];
+        }
+        
+        [self stopLoad];
+    }];*/
+}
 
 -(RemindListTableView *)remindList {
     if (!_remindList) {

@@ -13,7 +13,6 @@
 @property (nonatomic,strong) UILabel    *timeLabel;
 @end
 
-
 @implementation RemindHeadView
 
 -(instancetype)initWithReuseIdentifier:(NSString *)reuseIdentifier {
@@ -29,7 +28,7 @@
     if (!remindHeadView) {
         remindHeadView = [[RemindHeadView alloc]initWithReuseIdentifier:REUSERID];
     }
-    remindHeadView.backgroundColor = [UIColor colorWithRed:247/255 green:247/255 blue:247/255 alpha:0];
+    remindHeadView.contentView.backgroundColor = [UIColor colorWithRed:247/255 green:247/255 blue:247/255 alpha:0];
     return (RemindHeadView*)remindHeadView;
 }
 

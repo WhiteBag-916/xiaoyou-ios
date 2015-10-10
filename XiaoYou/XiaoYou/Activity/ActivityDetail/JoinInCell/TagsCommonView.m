@@ -25,11 +25,12 @@
 @property (nonatomic,strong) ConnectTag     *connectTag;
 @property (nonatomic,strong) NSMutableArray * commonTagsArr;
 
+
 @end
 
 @implementation TagsCommonView
 
-- (instancetype)initWithCollectionViewHeight:(CGFloat) height
+- (instancetype)initWithCollectionViewHeight:(CGFloat) height andModel:(ProfileInfo *) model
 {
     self = [super init];
     if (self) {
@@ -41,7 +42,7 @@
 
 -(void)setUpUIWithCollectionViewHeight:(CGFloat) height
 {
-    self.backgroundColor = [UIColor magentaColor];
+    self.backgroundColor = [UIColor clearColor];
     _flagImageView = [[UIImageView alloc]init];
     [self addSubview:_flagImageView];
     _flagImageView.image = [UIImage imageNamed:@"tag-green"];
@@ -62,29 +63,30 @@
         make.top.equalTo(_connectTag.mas_bottom);
         make.left.equalTo(_connectTag.mas_left).offset(-kPaddingDistance/2);
         make.trailing.mas_equalTo(0);
-        make.height.mas_equalTo(height);
-//        make.bottom.equalTo(self);
+//        make.height.mas_equalTo(height);
+        make.bottom.equalTo(self);
     }];
-    _tagCollectionView.backgroundColor = [UIColor grayColor];
+    _tagCollectionView.backgroundColor = [UIColor clearColor];
     
-    //共同标签
-    NSMutableArray * propetiesCommonArr = [[NSMutableArray alloc] init];
-    for (int i = 0; i < 3; i++)
-    {
-        [propetiesCommonArr addObject:[[Tags alloc]initWithDictionary:@{@"name":@"班"}]];
-    }
-    [_connectTag updateWithTag:propetiesCommonArr];
+    [_connectTag updateWithTag:_model.propetiesCommon];
     
-    _commonTagsArr = [[NSMutableArray alloc] initWithArray:@[@"考研",@"雅思",@"托福GRE",@"外资企业",@"铁饭碗攻略",@"代购导游",@"骑行"]];
+}
+
+- (void)setData:(ProfileInfo *) model
+{
+    [_connectTag updateWithTag:model.propetiesCommon];
+    _commonTagsArr = [NSMutableArray arrayWithArray:model.tagModels];
+    [_tagCollectionView reloadData];
 }
 
 -(UICollectionView *)tagCollectionView {
     if (!_tagCollectionView) {
-        _tagCollectionView.backgroundColor = [UIColor redColor];
+        _tagCollectionView.backgroundColor = [UIColor clearColor];
         MyFlowLayout *layout = [[MyFlowLayout alloc]init];
         layout.minimumInteritemSpacing = 10;
         _tagCollectionView = [[UICollectionView alloc]initWithFrame:CGRectZero collectionViewLayout:layout];
         [self addSubview:_tagCollectionView];
+        _tagCollectionView.scrollEnabled = NO;
         _tagCollectionView.dataSource = self;
         _tagCollectionView.delegate = self;
         _tagCollectionView.backgroundColor = [UIColor colorWithRed:246.0/255 green:247.0/255 blue:249.0/255 alpha:0];
@@ -107,9 +109,9 @@
 
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
+    Tags * tag = _commonTagsArr[indexPath.row];
     TagCollectionCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:REUSECELL forIndexPath:indexPath];
-    cell.backgroundColor = [UIColor greenColor];
-    cell.tagLabel.text = _commonTagsArr[indexPath.row];
+    [cell setCellInfo:tag];
     return cell;
 }
 
@@ -118,9 +120,10 @@
 //定义每个UICollectionView 的大小
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
+    Tags * tag = _commonTagsArr[indexPath.row];
     NSDictionary *attributes = @{NSFontAttributeName:[UIFont systemFontOfSize:10]};
-    CGSize textSize = [_commonTagsArr[indexPath.row] boundingRectWithSize:CGSizeMake(100, 20) options:NSStringDrawingTruncatesLastVisibleLine attributes:attributes context:nil].size;
-    return CGSizeMake(textSize.width+5, 14);
+    CGSize textSize = [tag.name boundingRectWithSize:CGSizeMake(100, 20) options:NSStringDrawingTruncatesLastVisibleLine attributes:attributes context:nil].size;
+    return CGSizeMake(textSize.width+15, 14);
 }
 //定义每个UICollectionView 的间距（返回UIEdgeInsets：上、左、下、右）
 -(UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section

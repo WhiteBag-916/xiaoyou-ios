@@ -8,10 +8,10 @@
 
 #import "FastViewController.h"
 #import "BottomView.h"
-#import "TopView.h"
+#import "FastTopView.h"
 @interface FastViewController ()
 
-@property (nonatomic,retain) TopView    *topView;
+@property (nonatomic,retain) FastTopView    *topView;
 @property (nonatomic,retain) BottomView *bottomView;
 
 @end
@@ -46,9 +46,9 @@
     return _bottomView;
 }
 
--(TopView *)topView {
+-(FastTopView *)topView {
     if (!_topView) {
-        _topView = [TopView topView];
+        _topView = [FastTopView topView];
         [self.view addSubview:_topView];
         [_topView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.top.equalTo(self.view);

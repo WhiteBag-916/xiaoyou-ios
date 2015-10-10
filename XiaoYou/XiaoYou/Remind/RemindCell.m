@@ -38,7 +38,7 @@
     return self;
 }
 
--(void)setData:(RemindList *)remindModel
+-(void)setData:(RemindInfo *)remindInfo
 {
     
 }
