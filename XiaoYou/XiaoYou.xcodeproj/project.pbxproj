@@ -55,16 +55,7 @@
 		044DA0651BBA7E4700AA321A /* ActivityBottomView.m in Sources */ = {isa = PBXBuildFile; fileRef = 044DA0601BBA7E4700AA321A /* ActivityBottomView.m */; settings = {ASSET_TAGS = (); }; };
 		044DA0661BBA7E4700AA321A /* ActivityMiddleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 044DA0621BBA7E4700AA321A /* ActivityMiddleView.m */; settings = {ASSET_TAGS = (); }; };
 		044DA0671BBA7E4700AA321A /* ActivityTopView.m in Sources */ = {isa = PBXBuildFile; fileRef = 044DA0641BBA7E4700AA321A /* ActivityTopView.m */; settings = {ASSET_TAGS = (); }; };
-		0464D6AF1BB4E9AC00D56901 /* RemindViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0464D6AE1BB4E9AC00D56901 /* RemindViewController.m */; settings = {ASSET_TAGS = (); }; };
-		0464D6B21BB4E9F200D56901 /* PassRemindCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0464D6B11BB4E9F200D56901 /* PassRemindCell.m */; settings = {ASSET_TAGS = (); }; };
-		0464D6BC1BB53CC100D56901 /* ScheduleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0464D6BB1BB53CC100D56901 /* ScheduleViewController.m */; settings = {ASSET_TAGS = (); }; };
-		0464D6BF1BB53CDF00D56901 /* ScheduleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0464D6BE1BB53CDF00D56901 /* ScheduleCell.m */; settings = {ASSET_TAGS = (); }; };
-		0464E31B1BB3A0F70017696E /* SetupTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0464E31A1BB3A0F70017696E /* SetupTableViewController.m */; settings = {ASSET_TAGS = (); }; };
-		0464E3211BB3A3DA0017696E /* ConvenienceTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0464E3201BB3A3DA0017696E /* ConvenienceTableViewController.m */; settings = {ASSET_TAGS = (); }; };
-		0465C3B61BB647840032D241 /* RemindHeadView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0465C3B51BB647840032D241 /* RemindHeadView.m */; settings = {ASSET_TAGS = (); }; };
 		048676A01BC803CB009F8C43 /* FastBottomView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0486769F1BC803CB009F8C43 /* FastBottomView.m */; settings = {ASSET_TAGS = (); }; };
-		049480241BB8C51C00C68460 /* RemindListTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 049480231BB8C51C00C68460 /* RemindListTableView.m */; settings = {ASSET_TAGS = (); }; };
-		049480271BB8CF4800C68460 /* ScheduleListTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 049480261BB8CF4800C68460 /* ScheduleListTableView.m */; settings = {ASSET_TAGS = (); }; };
 		049480341BB8D76C00C68460 /* tick@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0494802B1BB8D76C00C68460 /* tick@2x.png */; settings = {ASSET_TAGS = (); }; };
 		049480351BB8D76C00C68460 /* tick@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0494802C1BB8D76C00C68460 /* tick@3x.png */; settings = {ASSET_TAGS = (); }; };
 		049480361BB8D76C00C68460 /* schedule_green@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0494802E1BB8D76C00C68460 /* schedule_green@2x.png */; settings = {ASSET_TAGS = (); }; };
@@ -89,6 +80,15 @@
 		0494806F1BB94FF900C68460 /* too_see_more_arrow@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0494806D1BB94FF900C68460 /* too_see_more_arrow@3x.png */; settings = {ASSET_TAGS = (); }; };
 		049C55C21BB3DE18007565E1 /* FastViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 049C55C11BB3DE18007565E1 /* FastViewController.m */; settings = {ASSET_TAGS = (); }; };
 		049C55CC1BB3F33D007565E1 /* BottomView.m in Sources */ = {isa = PBXBuildFile; fileRef = 049C55CB1BB3F33D007565E1 /* BottomView.m */; settings = {ASSET_TAGS = (); }; };
+		049FF1BF1BC91777000645C8 /* PassRemindCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 049FF1AC1BC91777000645C8 /* PassRemindCell.m */; settings = {ASSET_TAGS = (); }; };
+		049FF1C01BC91777000645C8 /* RemindHeadView.m in Sources */ = {isa = PBXBuildFile; fileRef = 049FF1AE1BC91777000645C8 /* RemindHeadView.m */; settings = {ASSET_TAGS = (); }; };
+		049FF1C11BC91777000645C8 /* RemindListTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 049FF1B01BC91777000645C8 /* RemindListTableView.m */; settings = {ASSET_TAGS = (); }; };
+		049FF1C21BC91777000645C8 /* RemindViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 049FF1B21BC91777000645C8 /* RemindViewController.m */; settings = {ASSET_TAGS = (); }; };
+		049FF1C31BC91778000645C8 /* ScheduleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 049FF1B51BC91777000645C8 /* ScheduleCell.m */; settings = {ASSET_TAGS = (); }; };
+		049FF1C41BC91778000645C8 /* ScheduleListTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 049FF1B71BC91777000645C8 /* ScheduleListTableView.m */; settings = {ASSET_TAGS = (); }; };
+		049FF1C51BC91778000645C8 /* ScheduleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 049FF1B91BC91777000645C8 /* ScheduleViewController.m */; settings = {ASSET_TAGS = (); }; };
+		049FF1C61BC91778000645C8 /* ConvenienceTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 049FF1BC1BC91777000645C8 /* ConvenienceTableViewController.m */; settings = {ASSET_TAGS = (); }; };
+		049FF1C71BC91778000645C8 /* SetupTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 049FF1BE1BC91777000645C8 /* SetupTableViewController.m */; settings = {ASSET_TAGS = (); }; };
 		04D500681BBA94AA00C1B438 /* ActivityJoinInCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04D500671BBA94AA00C1B438 /* ActivityJoinInCell.m */; settings = {ASSET_TAGS = (); }; };
 		200E397C1B4E818B000B587B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 200E397B1B4E818B000B587B /* main.m */; };
 		200E39871B4E818B000B587B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 200E39861B4E818B000B587B /* Images.xcassets */; };
@@ -661,26 +661,8 @@
 		044DA0621BBA7E4700AA321A /* ActivityMiddleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityMiddleView.m; sourceTree = "<group>"; };
 		044DA0631BBA7E4700AA321A /* ActivityTopView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityTopView.h; sourceTree = "<group>"; };
 		044DA0641BBA7E4700AA321A /* ActivityTopView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityTopView.m; sourceTree = "<group>"; };
-		0464D6AD1BB4E9AC00D56901 /* RemindViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RemindViewController.h; sourceTree = "<group>"; };
-		0464D6AE1BB4E9AC00D56901 /* RemindViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RemindViewController.m; sourceTree = "<group>"; };
-		0464D6B01BB4E9F200D56901 /* PassRemindCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PassRemindCell.h; sourceTree = "<group>"; };
-		0464D6B11BB4E9F200D56901 /* PassRemindCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PassRemindCell.m; sourceTree = "<group>"; };
-		0464D6BA1BB53CC100D56901 /* ScheduleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScheduleViewController.h; sourceTree = "<group>"; };
-		0464D6BB1BB53CC100D56901 /* ScheduleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScheduleViewController.m; sourceTree = "<group>"; };
-		0464D6BD1BB53CDF00D56901 /* ScheduleCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScheduleCell.h; sourceTree = "<group>"; };
-		0464D6BE1BB53CDF00D56901 /* ScheduleCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScheduleCell.m; sourceTree = "<group>"; };
-		0464E3191BB3A0F70017696E /* SetupTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SetupTableViewController.h; sourceTree = "<group>"; };
-		0464E31A1BB3A0F70017696E /* SetupTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SetupTableViewController.m; sourceTree = "<group>"; };
-		0464E31F1BB3A3DA0017696E /* ConvenienceTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConvenienceTableViewController.h; sourceTree = "<group>"; };
-		0464E3201BB3A3DA0017696E /* ConvenienceTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConvenienceTableViewController.m; sourceTree = "<group>"; };
-		0465C3B41BB647840032D241 /* RemindHeadView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RemindHeadView.h; sourceTree = "<group>"; };
-		0465C3B51BB647840032D241 /* RemindHeadView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RemindHeadView.m; sourceTree = "<group>"; };
 		0486769E1BC803CB009F8C43 /* FastBottomView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FastBottomView.h; sourceTree = "<group>"; };
 		0486769F1BC803CB009F8C43 /* FastBottomView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FastBottomView.m; sourceTree = "<group>"; };
-		049480221BB8C51C00C68460 /* RemindListTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RemindListTableView.h; sourceTree = "<group>"; };
-		049480231BB8C51C00C68460 /* RemindListTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RemindListTableView.m; sourceTree = "<group>"; };
-		049480251BB8CF4800C68460 /* ScheduleListTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScheduleListTableView.h; sourceTree = "<group>"; };
-		049480261BB8CF4800C68460 /* ScheduleListTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScheduleListTableView.m; sourceTree = "<group>"; };
 		0494802B1BB8D76C00C68460 /* tick@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tick@2x.png"; sourceTree = "<group>"; };
 		0494802C1BB8D76C00C68460 /* tick@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tick@3x.png"; sourceTree = "<group>"; };
 		0494802E1BB8D76C00C68460 /* schedule_green@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "schedule_green@2x.png"; sourceTree = "<group>"; };
@@ -707,6 +689,24 @@
 		049C55C11BB3DE18007565E1 /* FastViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FastViewController.m; sourceTree = "<group>"; };
 		049C55CA1BB3F33D007565E1 /* BottomView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BottomView.h; sourceTree = "<group>"; };
 		049C55CB1BB3F33D007565E1 /* BottomView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BottomView.m; sourceTree = "<group>"; };
+		049FF1AB1BC91777000645C8 /* PassRemindCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PassRemindCell.h; sourceTree = "<group>"; };
+		049FF1AC1BC91777000645C8 /* PassRemindCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PassRemindCell.m; sourceTree = "<group>"; };
+		049FF1AD1BC91777000645C8 /* RemindHeadView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RemindHeadView.h; sourceTree = "<group>"; };
+		049FF1AE1BC91777000645C8 /* RemindHeadView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RemindHeadView.m; sourceTree = "<group>"; };
+		049FF1AF1BC91777000645C8 /* RemindListTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RemindListTableView.h; sourceTree = "<group>"; };
+		049FF1B01BC91777000645C8 /* RemindListTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RemindListTableView.m; sourceTree = "<group>"; };
+		049FF1B11BC91777000645C8 /* RemindViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RemindViewController.h; sourceTree = "<group>"; };
+		049FF1B21BC91777000645C8 /* RemindViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RemindViewController.m; sourceTree = "<group>"; };
+		049FF1B41BC91777000645C8 /* ScheduleCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScheduleCell.h; sourceTree = "<group>"; };
+		049FF1B51BC91777000645C8 /* ScheduleCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScheduleCell.m; sourceTree = "<group>"; };
+		049FF1B61BC91777000645C8 /* ScheduleListTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScheduleListTableView.h; sourceTree = "<group>"; };
+		049FF1B71BC91777000645C8 /* ScheduleListTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScheduleListTableView.m; sourceTree = "<group>"; };
+		049FF1B81BC91777000645C8 /* ScheduleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScheduleViewController.h; sourceTree = "<group>"; };
+		049FF1B91BC91777000645C8 /* ScheduleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScheduleViewController.m; sourceTree = "<group>"; };
+		049FF1BB1BC91777000645C8 /* ConvenienceTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConvenienceTableViewController.h; sourceTree = "<group>"; };
+		049FF1BC1BC91777000645C8 /* ConvenienceTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConvenienceTableViewController.m; sourceTree = "<group>"; };
+		049FF1BD1BC91777000645C8 /* SetupTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SetupTableViewController.h; sourceTree = "<group>"; };
+		049FF1BE1BC91777000645C8 /* SetupTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SetupTableViewController.m; sourceTree = "<group>"; };
 		04D500661BBA94AA00C1B438 /* ActivityJoinInCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityJoinInCell.h; sourceTree = "<group>"; };
 		04D500671BBA94AA00C1B438 /* ActivityJoinInCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityJoinInCell.m; sourceTree = "<group>"; };
 		200E39761B4E818B000B587B /* XiaoYou.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = XiaoYou.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1586,6 +1586,9 @@
 		044DA0401BBA77C900AA321A /* Activity */ = {
 			isa = PBXGroup;
 			children = (
+				049FF1AA1BC91777000645C8 /* Remind */,
+				049FF1B31BC91777000645C8 /* Schedule */,
+				049FF1BA1BC91777000645C8 /* Setup */,
 				20E3EF901BC9064C00B3D27E /* AvailableTime */,
 				044DA05E1BBA7E4700AA321A /* ActivityCell */,
 				044DA0411BBA77C900AA321A /* ActivityDetail */,
@@ -1626,45 +1629,6 @@
 				044DA0601BBA7E4700AA321A /* ActivityBottomView.m */,
 			);
 			path = ActivityCell;
-			sourceTree = "<group>";
-		};
-		0464D6AC1BB4E97700D56901 /* Remind */ = {
-			isa = PBXGroup;
-			children = (
-				0464D6AD1BB4E9AC00D56901 /* RemindViewController.h */,
-				0464D6AE1BB4E9AC00D56901 /* RemindViewController.m */,
-				0464D6B01BB4E9F200D56901 /* PassRemindCell.h */,
-				0464D6B11BB4E9F200D56901 /* PassRemindCell.m */,
-				0465C3B41BB647840032D241 /* RemindHeadView.h */,
-				0465C3B51BB647840032D241 /* RemindHeadView.m */,
-				049480221BB8C51C00C68460 /* RemindListTableView.h */,
-				049480231BB8C51C00C68460 /* RemindListTableView.m */,
-			);
-			path = Remind;
-			sourceTree = "<group>";
-		};
-		0464D6B91BB53CA000D56901 /* Schedule */ = {
-			isa = PBXGroup;
-			children = (
-				0464D6BA1BB53CC100D56901 /* ScheduleViewController.h */,
-				0464D6BB1BB53CC100D56901 /* ScheduleViewController.m */,
-				0464D6BD1BB53CDF00D56901 /* ScheduleCell.h */,
-				0464D6BE1BB53CDF00D56901 /* ScheduleCell.m */,
-				049480251BB8CF4800C68460 /* ScheduleListTableView.h */,
-				049480261BB8CF4800C68460 /* ScheduleListTableView.m */,
-			);
-			path = Schedule;
-			sourceTree = "<group>";
-		};
-		0464E3151BB3A0590017696E /* Setup */ = {
-			isa = PBXGroup;
-			children = (
-				0464E3191BB3A0F70017696E /* SetupTableViewController.h */,
-				0464E31A1BB3A0F70017696E /* SetupTableViewController.m */,
-				0464E31F1BB3A3DA0017696E /* ConvenienceTableViewController.h */,
-				0464E3201BB3A3DA0017696E /* ConvenienceTableViewController.m */,
-			);
-			path = Setup;
 			sourceTree = "<group>";
 		};
 		0494802A1BB8D76C00C68460 /* Remind */ = {
@@ -1725,6 +1689,45 @@
 			path = Fast;
 			sourceTree = "<group>";
 		};
+		049FF1AA1BC91777000645C8 /* Remind */ = {
+			isa = PBXGroup;
+			children = (
+				049FF1AB1BC91777000645C8 /* PassRemindCell.h */,
+				049FF1AC1BC91777000645C8 /* PassRemindCell.m */,
+				049FF1AD1BC91777000645C8 /* RemindHeadView.h */,
+				049FF1AE1BC91777000645C8 /* RemindHeadView.m */,
+				049FF1AF1BC91777000645C8 /* RemindListTableView.h */,
+				049FF1B01BC91777000645C8 /* RemindListTableView.m */,
+				049FF1B11BC91777000645C8 /* RemindViewController.h */,
+				049FF1B21BC91777000645C8 /* RemindViewController.m */,
+			);
+			path = Remind;
+			sourceTree = "<group>";
+		};
+		049FF1B31BC91777000645C8 /* Schedule */ = {
+			isa = PBXGroup;
+			children = (
+				049FF1B41BC91777000645C8 /* ScheduleCell.h */,
+				049FF1B51BC91777000645C8 /* ScheduleCell.m */,
+				049FF1B61BC91777000645C8 /* ScheduleListTableView.h */,
+				049FF1B71BC91777000645C8 /* ScheduleListTableView.m */,
+				049FF1B81BC91777000645C8 /* ScheduleViewController.h */,
+				049FF1B91BC91777000645C8 /* ScheduleViewController.m */,
+			);
+			path = Schedule;
+			sourceTree = "<group>";
+		};
+		049FF1BA1BC91777000645C8 /* Setup */ = {
+			isa = PBXGroup;
+			children = (
+				049FF1BB1BC91777000645C8 /* ConvenienceTableViewController.h */,
+				049FF1BC1BC91777000645C8 /* ConvenienceTableViewController.m */,
+				049FF1BD1BC91777000645C8 /* SetupTableViewController.h */,
+				049FF1BE1BC91777000645C8 /* SetupTableViewController.m */,
+			);
+			path = Setup;
+			sourceTree = "<group>";
+		};
 		200E396D1B4E818B000B587B = {
 			isa = PBXGroup;
 			children = (
@@ -1749,9 +1752,6 @@
 			isa = PBXGroup;
 			children = (
 				044DA0401BBA77C900AA321A /* Activity */,
-				0464D6B91BB53CA000D56901 /* Schedule */,
-				0464D6AC1BB4E97700D56901 /* Remind */,
-				0464E3151BB3A0590017696E /* Setup */,
 				20DBFD601B4FA7E1009134D0 /* Main */,
 				20DC87EF1B5F3D570019DC7F /* Login */,
 				20E122181B705D4E00F90BD3 /* Feed */,
@@ -3760,6 +3760,7 @@
 				65F55A9E1B897C4700ED4348 /* ProfileTagViewController.m in Sources */,
 				333122641B806EDB00D3D032 /* UIView+EMWebCacheOperation.m in Sources */,
 				3331224F1B806EDB00D3D032 /* MWPhoto.m in Sources */,
+				049FF1C71BC91778000645C8 /* SetupTableViewController.m in Sources */,
 				653CB2EE1B806BFD006ECBB2 /* ChineseString.m in Sources */,
 				6592DCD61B806A9B004CD118 /* FriendApplyTableViewCell.m in Sources */,
 				209C4C791B8C688000B584DF /* AssociationsDetailTableView.m in Sources */,
@@ -3798,10 +3799,10 @@
 				20DAF9D71B873883005B7932 /* ChineseToPinyinResource.m in Sources */,
 				333122831B806EDC00D3D032 /* UIViewController+DismissKeyboard.m in Sources */,
 				041DF0631BC4D90300C6F324 /* DataConvert.m in Sources */,
-				0464D6B21BB4E9F200D56901 /* PassRemindCell.m in Sources */,
 				333122841B806EDC00D3D032 /* UIViewController+HUD.m in Sources */,
 				333122821B806EDC00D3D032 /* UIResponder+Router.m in Sources */,
 				333122781B806EDB00D3D032 /* TTGlobalUICommon.m in Sources */,
+				049FF1C41BC91778000645C8 /* ScheduleListTableView.m in Sources */,
 				20DA16F41BC7C51200A61B37 /* MGCDateRange.m in Sources */,
 				3331225D1B806EDB00D3D032 /* NSData+EMImageContentType.m in Sources */,
 				20DA170E1BC7C51200A61B37 /* OrderedDictionary.m in Sources */,
@@ -3848,7 +3849,6 @@
 				333122431B806EDB00D3D032 /* EMCDDeviceManager+Microphone.m in Sources */,
 				333122391B806EDB00D3D032 /* EMChatVideoBubbleView.m in Sources */,
 				656A4CFF1BBF9E1E00BDB725 /* QRCodeReaderViewController.m in Sources */,
-				049480271BB8CF4800C68460 /* ScheduleListTableView.m in Sources */,
 				20E3EF931BC9064C00B3D27E /* WeekViewController.m in Sources */,
 				20DA17031BC7C51200A61B37 /* MGCMonthPlannerViewDayCell.m in Sources */,
 				333122711B806EDB00D3D032 /* PSTGridLayoutSection.m in Sources */,
@@ -3858,9 +3858,9 @@
 				65969DCD1B871AA9001DD348 /* ProfilePersonListController.m in Sources */,
 				049C55CC1BB3F33D007565E1 /* BottomView.m in Sources */,
 				33380D971B857826008B51EB /* SendMessageTableViewCell.m in Sources */,
-				0464D6BF1BB53CDF00D56901 /* ScheduleCell.m in Sources */,
 				6592DCD91B806A9B004CD118 /* GroupApplyTableViewCell.m in Sources */,
 				333122571B806EDB00D3D032 /* EMSDWebImageDecoder.m in Sources */,
+				049FF1BF1BC91777000645C8 /* PassRemindCell.m in Sources */,
 				2076A3001B81C590001FFBAC /* YCommonActionSheet.m in Sources */,
 				20DA16F61BC7C51200A61B37 /* MGCDayPlannerEKViewController.m in Sources */,
 				3331226B1B806EDB00D3D032 /* PSTCollectionViewItemKey.m in Sources */,
@@ -3870,7 +3870,6 @@
 				333122521B806EDB00D3D032 /* MWTapDetectingView.m in Sources */,
 				044792BD1BB14DF40053412A /* commenTagList.m in Sources */,
 				653199DE1B80B41C00405B72 /* ConnectTag.m in Sources */,
-				0465C3B61BB647840032D241 /* RemindHeadView.m in Sources */,
 				20DA17021BC7C51200A61B37 /* MGCMonthPlannerViewController.m in Sources */,
 				3331223C1B806EDB00D3D032 /* EMChatViewCell.m in Sources */,
 				339549891B81BDFF00F9ECB1 /* GroupInfoDetailCollectionView.m in Sources */,
@@ -3913,6 +3912,7 @@
 				3331223A1B806EDB00D3D032 /* EMChatTimeCell.m in Sources */,
 				20DA170F1BC7C51200A61B37 /* OSCache.m in Sources */,
 				65F55AA11B899EBC00ED4348 /* UIImageView+Ext.m in Sources */,
+				049FF1C61BC91778000645C8 /* ConvenienceTableViewController.m in Sources */,
 				333122591B806EDB00D3D032 /* EMSDWebImageDownloaderOperation.m in Sources */,
 				333122631B806EDB00D3D032 /* UIImageView+EMWebCache.m in Sources */,
 				333122421B806EDB00D3D032 /* EMCDDeviceManager+Media.m in Sources */,
@@ -3928,7 +3928,6 @@
 				20DA35F71B81E89F002E5A96 /* SearchPersonViewController.m in Sources */,
 				6592DCE01B806A9B004CD118 /* XYSendMessageViewController.m in Sources */,
 				20DCB9791B8CA60800C758DE /* NotifyListTableViewCell.m in Sources */,
-				0464D6AF1BB4E9AC00D56901 /* RemindViewController.m in Sources */,
 				20DAF9D91B873883005B7932 /* NSString+PinYin4Cocoa.m in Sources */,
 				044DA05C1BBA77C900AA321A /* ActivityListView.m in Sources */,
 				333122461B806EDB00D3D032 /* EMCDDeviceManagerBase.m in Sources */,
@@ -3956,6 +3955,7 @@
 				20DCB9761B8CA60800C758DE /* NotifyListTableView.m in Sources */,
 				20E0340E1B847F9F002E4583 /* SearchResultViewController.m in Sources */,
 				656A4CFE1BBF9E1E00BDB725 /* QRCodeReaderView.m in Sources */,
+				049FF1C21BC91777000645C8 /* RemindViewController.m in Sources */,
 				333122801B806EDC00D3D032 /* NSDateFormatter+Category.m in Sources */,
 				3331227C1B806EDB00D3D032 /* EMVoiceConverter.mm in Sources */,
 				333122361B806EDB00D3D032 /* EMChatImageBubbleView.m in Sources */,
@@ -3966,11 +3966,13 @@
 				333122771B806EDB00D3D032 /* THProgressView.m in Sources */,
 				20DA170B1BC7C51200A61B37 /* MGCYearCalendarMonthHeaderView.m in Sources */,
 				65BCF1E11B818441003457F4 /* FeedDetailViewController.m in Sources */,
+				049FF1C11BC91777000645C8 /* RemindListTableView.m in Sources */,
+				049FF1C01BC91777000645C8 /* RemindHeadView.m in Sources */,
 				333122691B806EDB00D3D032 /* PSTCollectionViewData.m in Sources */,
 				65969DE21B877896001DD348 /* ProfileFeedCell.m in Sources */,
 				65A847051B81CA1900933815 /* FeedCellBottomView.m in Sources */,
-				0464D6BC1BB53CC100D56901 /* ScheduleViewController.m in Sources */,
 				20DA17001BC7C51200A61B37 /* MGCMonthPlannerEKViewController.m in Sources */,
+				049FF1C51BC91778000645C8 /* ScheduleViewController.m in Sources */,
 				20E122211B705ED200F90BD3 /* FeedListViewController.m in Sources */,
 				20DD115D1B8D699C00767E62 /* CNTextController.m in Sources */,
 				3346708A1B84AA3700A8628A /* ChoicePersonTableView.m in Sources */,
@@ -3979,14 +3981,13 @@
 				20DD78FB1BA97AAF009AD1A9 /* LoginWaitingViewController.m in Sources */,
 				20DA171E1BC7C51200A61B37 /* CalendarDayHeaderView.m in Sources */,
 				6592DCD71B806A9B004CD118 /* XYFriendApplyViewController.m in Sources */,
-				0464E3211BB3A3DA0017696E /* ConvenienceTableViewController.m in Sources */,
 				333122321B806EDB00D3D032 /* DXChatBarMoreView.m in Sources */,
 				6592DCD31B806A9B004CD118 /* XYContactsInfoDetailViewController.m in Sources */,
-				0464E31B1BB3A0F70017696E /* SetupTableViewController.m in Sources */,
 				3331222A1B806EDB00D3D032 /* ChatSendHelper.m in Sources */,
 				044DA05D1BBA77C900AA321A /* ActivityViewController.m in Sources */,
 				209C4C731B8C662900B584DF /* AssociationsDetailViewController.m in Sources */,
 				20E034091B8471E5002E4583 /* SearchFilterTableViewCell.m in Sources */,
+				049FF1C31BC91778000645C8 /* ScheduleCell.m in Sources */,
 				3331226D1B806EDB00D3D032 /* PSTCollectionViewUpdateItem.m in Sources */,
 				333122561B806EDB00D3D032 /* EMSDWebImageCompat.m in Sources */,
 				20E18D541B807752005B75EE /* AssociationsListTableView.m in Sources */,
@@ -3999,7 +4000,6 @@
 				3331223F1B806EDB00D3D032 /* MessageReadManager.m in Sources */,
 				3331227F1B806EDC00D3D032 /* NSDate+Category.m in Sources */,
 				3331222E1B806EDB00D3D032 /* LocationViewController.m in Sources */,
-				049480241BB8C51C00C68460 /* RemindListTableView.m in Sources */,
 				048676A01BC803CB009F8C43 /* FastBottomView.m in Sources */,
 				3331222F1B806EDB00D3D032 /* DXMessageToolBar.m in Sources */,
 				049C55C21BB3DE18007565E1 /* FastViewController.m in Sources */,
