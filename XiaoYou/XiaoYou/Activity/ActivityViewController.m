@@ -12,6 +12,7 @@
 #import "SetupTableViewController.h"
 #import "RemindViewController.h"
 #import "ScheduleViewController.h"
+#import "ActivityChoiceController.h"
 
 @interface ActivityViewController ()
 @property (nonatomic,strong) ActivityListView *funnyList;
@@ -53,7 +54,7 @@
     UIButton * remindBtn = [[UIButton alloc] initWithFrame:CGRectMake(35, 0, 25, KNavigationBarheight)];
     [remindBtn setImage:[UIImage imageNamed:@"bar_bell"] forState:UIControlStateNormal];
     [remindBtn addTarget:self
-                  action:@selector(remindAction)
+                  action:@selector(filterAction)
         forControlEvents:UIControlEventTouchUpInside];
     [view addSubview:remindBtn];
     
@@ -67,22 +68,26 @@
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:view];
 }
 
-//设置Action
+//发布Action
 -(void)setupBtnAction {
     SetupTableViewController *setupVC = [[SetupTableViewController alloc] init];
     [self.navigationController pushViewController:setupVC animated:YES needHiddenBottomBar:YES];
 }
 
-//提醒Action
--(void)remindAction {
-    RemindViewController *remindVC = [[RemindViewController alloc]init];
-    [self.navigationController pushViewController:remindVC animated:YES needHiddenBottomBar:YES];
+//筛选Action
+-(void)filterAction {
+    RemindViewController *vc = [[RemindViewController alloc]init];
+    [self.navigationController pushViewController:vc animated:YES needHiddenBottomBar:YES];
+   
 }
 
 //日程
 -(void)scheduleAction {
-    ScheduleViewController *scheduleVC = [[ScheduleViewController alloc]init];
-    [self.navigationController pushViewController:scheduleVC animated:YES needHiddenBottomBar:YES];
+    
+    ActivityChoiceController *choiceVC = [[ActivityChoiceController alloc]init];
+    [self.navigationController pushViewController:choiceVC animated:YES needHiddenBottomBar:YES];
+    //ScheduleViewController *scheduleVC = [[ScheduleViewController alloc]init];
+    //[self.navigationController pushViewController:scheduleVC animated:YES needHiddenBottomBar:YES];
 }
 
 
