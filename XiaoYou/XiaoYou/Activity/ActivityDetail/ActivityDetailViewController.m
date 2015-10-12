@@ -23,6 +23,7 @@
     self.view.backgroundColor = [UIColor whiteColor];
     [self showCustomNavigationBackButton];
     [self detailListView];
+    [self setTitle:@"活动详情"];
 }
 
 - (void)didReceiveMemoryWarning {

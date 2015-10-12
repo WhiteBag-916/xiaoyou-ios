@@ -8,9 +8,15 @@
 
 #import <UIKit/UIKit.h>
 
+typedef enum : NSUInteger {
+    DEFAULT_VIEW,
+    IS_TOPVIEW,
+    NOT_TOPVIEW
+} CELLTYPE;
+
 @interface ActivityJoinInCell : UITableViewCell
 
-+(ActivityJoinInCell*)cellWithTableView:(UITableView*)tableView;
++(ActivityJoinInCell*)cellWithTableView:(UITableView*)tableView cellType:(CELLTYPE)type;
 
 -(void)setCellInfo;
 

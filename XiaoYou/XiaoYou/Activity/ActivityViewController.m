@@ -65,24 +65,40 @@
     [view addSubview:scheduleBtn];
     
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:view];
-    
-    [self showCustomNavigationBackButton];
 }
 
+//设置Action
 -(void)setupBtnAction {
     SetupTableViewController *setupVC = [[SetupTableViewController alloc] init];
     [self.navigationController pushViewController:setupVC animated:YES needHiddenBottomBar:YES];
 }
 
+//提醒Action
 -(void)remindAction {
     RemindViewController *remindVC = [[RemindViewController alloc]init];
     [self.navigationController pushViewController:remindVC animated:YES needHiddenBottomBar:YES];
 }
 
+//日程
 -(void)scheduleAction {
     ScheduleViewController *scheduleVC = [[ScheduleViewController alloc]init];
     [self.navigationController pushViewController:scheduleVC animated:YES needHiddenBottomBar:YES];
 }
+
+
+#pragma mark 避免返回的时候TabBar消失
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    self.hidesBottomBarWhenPushed = YES;
+}
+
+-(void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    self.hidesBottomBarWhenPushed = NO;
+}
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

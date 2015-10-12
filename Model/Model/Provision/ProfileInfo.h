@@ -11,6 +11,7 @@
 
 @interface ProfileInfo : YModel <NSCoding, NSCopying>
 
+//数组里是tags
 @property (nonatomic, strong) NSArray *tagModels;
 @property (nonatomic, strong) NSString *uid;
 @property (nonatomic, strong) NSString *schoolCode;
@@ -24,7 +25,7 @@
 @property (nonatomic, assign) double commentCount;
 @property (nonatomic, assign) double coolCount;
 @property (nonatomic, strong) NSArray *tagsCommon;
-@property (nonatomic, strong) NSArray *propetiesCommon;
+@property (nonatomic, strong) NSArray *propetiesCommon; //tags
 @property (nonatomic, assign) double feedCount;
 @property (nonatomic, assign) BOOL isCool;
 @property (nonatomic, strong) NSArray *queryCodes;
