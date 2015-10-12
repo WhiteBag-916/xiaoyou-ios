@@ -89,10 +89,21 @@
     Tags *tag3 = [[Tags alloc]init];
     tag3.name = @"乡";
     
+<<<<<<< HEAD
     ProfileInfo *profile = [[ProfileInfo alloc]init];
     profile.propetiesCommon = [NSArray arrayWithObjects:tag1,tag2,tag3,nil];
     profile.tagModels = [NSArray arrayWithObjects:tag1,tag2,tag3, nil];
     [_tagsView setData:profile];
+=======
+    //标签
+    _tagsCommonView = [[TagsCommonView alloc] init];
+    [self.contentView addSubview:_tagsCommonView];
+    [_tagsCommonView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(_headImageView.mas_bottom);
+        make.left.equalTo(_nameLabel.mas_left);
+        make.right.bottom.equalTo(self.contentView);
+    }];
+>>>>>>> 7581ea9886a24d503624181cd478d8e646a5eb31
 }
 
 

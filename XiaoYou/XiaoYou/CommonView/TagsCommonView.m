@@ -30,17 +30,17 @@
 
 @implementation TagsCommonView
 
-- (instancetype)initWithCollectionViewHeight:(CGFloat) height andModel:(ProfileInfo *) model
+- (instancetype)init
 {
     self = [super init];
     if (self) {
-        [self setUpUIWithCollectionViewHeight:height];
+        [self setUpUI];
         [_tagCollectionView registerClass:[TagCollectionCell class] forCellWithReuseIdentifier:REUSECELL];
     }
     return self;
 }
 
--(void)setUpUIWithCollectionViewHeight:(CGFloat) height
+-(void)setUpUI
 {
     self.backgroundColor = [UIColor clearColor];
     _flagImageView = [[UIImageView alloc]init];

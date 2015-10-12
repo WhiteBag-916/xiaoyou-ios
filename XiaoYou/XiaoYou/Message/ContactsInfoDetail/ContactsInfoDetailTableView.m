@@ -307,7 +307,18 @@
 {
     if (indexPath.row == 0)
     {
+//        NSDictionary *attributes = @{NSFontAttributeName:[UIFont systemFontOfSize:12]};
+//        CGSize textSize = [_model.selfIntro boundingRectWithSize:CGSizeMake(SCREEN_WIDTH - 82, 14) options:NSStringDrawingTruncatesLastVisibleLine attributes:attributes context:nil].size;
+//        if (textSize.width > SCREEN_WIDTH - 82)
+//        {
+//            return 60;
+//        }
+//        else
+//        {
+//            return 30;
+//        }
         return 30;
+        
     }
     else if(indexPath.row == 1)
     {

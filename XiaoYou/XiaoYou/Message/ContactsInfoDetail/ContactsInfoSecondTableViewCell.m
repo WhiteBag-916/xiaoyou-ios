@@ -46,7 +46,7 @@ NSString *const kContactsInfoSecondTableViewCell = @"ContactsInfoSecondTableView
         make.top.mas_equalTo(6);
     }];
     
-    _tagsCommonView = [[TagsCommonView alloc] initWithCollectionViewHeight:40 andModel:nil];
+    _tagsCommonView = [[TagsCommonView alloc] init];
     _tagsCommonView.backgroundColor = [UIColor hexChangeFloat:@"F9F9F9"];
     [backView addSubview:_tagsCommonView];
     [_tagsCommonView mas_makeConstraints:^(MASConstraintMaker *make) {
