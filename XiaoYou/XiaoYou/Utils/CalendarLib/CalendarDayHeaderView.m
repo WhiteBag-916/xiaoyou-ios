@@ -86,7 +86,7 @@
         TKDateLabel *label = [[TKDateLabel alloc] initWithFrame:CGRectMake(minX+(DAY_LABEL_WIDTH+per)*i, 16, DAY_LABEL_WIDTH, DAY_LABEL_WIDTH)];
         label.weekend = i % 6 == 0;
         //label.backgroundColor = [UIColor redColor];
-        [self addSubview:label];
+        [self insertSubview:label atIndex:0];
         [labels addObject:label];
     }
     
@@ -172,7 +172,7 @@
             label.userInteractionEnabled = YES;
             [label addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(didTapWeekdayLabel:)]];
         }
-        [dayContainerView addSubview:weekdayView];
+        [dayContainerView insertSubview:weekdayView atIndex:0];
         [self.weekdayPages addObject:weekdayView];
     }
 }
@@ -193,6 +193,11 @@
     TKDateLabel *currentLabel = weekView.weekdayLabels[self.indexOfCurrentDay];
     NSDate *theNewDate = currentLabel.date;
     [self _resetWeekdayOrderByMoving:moveRight];
+    
+    if (self.delegate) {
+        [self.delegate moveToDate:theNewDate];
+    }
+    
 //    [self _timelineAtIndex:pageToUpdate].date = theNewDate;
 //    [self _refreshDataWithPageAtIndex:pageToUpdate];
 //
@@ -359,14 +364,17 @@
     
     if([label.date isSameDay:self.currentDay timeZone:self.calendar.timeZone]) return;
     
-//    BOOL moveRight = [label.date compare:self.currentDay] == NSOrderedDescending;
-//    NSInteger pageToUpdate = moveRight ? 2 : 0;
+    BOOL moveRight = [label.date compare:self.currentDay] == NSOrderedDescending;
+    NSInteger pageToUpdate = moveRight ? 2 : 0;
     
     self.userInteractionEnabled = NO;
     
 //    [self _timelineAtIndex:pageToUpdate].date = label.date;
 //    [self _refreshDataWithPageAtIndex:pageToUpdate];
     
+    if (self.delegate) {
+        [self.delegate moveToDate:theNewDate];
+    }
     
     [UIView transitionWithView:self.daysScrollView.subviews.firstObject duration:0.3 options:UIViewAnimationOptionTransitionCrossDissolve animations:^{
         [self _updateSelectedWeekdayAtIndex:indexOfSelectedLabel];
@@ -599,7 +607,7 @@
 - (UIScrollView*) daysScrollView{
     if(_daysScrollView) return _daysScrollView;
     _daysScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.frame), CGRectGetMinY(self.monthYearLabel.frame))];
-    _daysScrollView.backgroundColor = [UIColor redColor];
+//    _daysScrollView.backgroundColor = [UIColor redColor];
     _daysScrollView.pagingEnabled = YES;
     _daysScrollView.delegate = self;
     _daysScrollView.contentSize = CGSizeMake(CGRectGetWidth(self.daysScrollView.frame)*3.0, 0);
