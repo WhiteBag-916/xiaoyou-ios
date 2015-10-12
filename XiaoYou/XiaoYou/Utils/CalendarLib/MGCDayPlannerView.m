@@ -72,7 +72,7 @@ static const CGFloat kMinHourSlotHeight = 40.;
 static const CGFloat kMaxHourSlotHeight = 150.;
 
 
-@interface MGCDayPlannerView () <UICollectionViewDataSource, MGCTimedEventsViewLayoutDelegate, MGCAllDayEventsViewLayoutDelegate, UICollectionViewDelegateFlowLayout>
+@interface MGCDayPlannerView () <UICollectionViewDataSource, MGCTimedEventsViewLayoutDelegate, MGCAllDayEventsViewLayoutDelegate, UICollectionViewDelegateFlowLayout,CalendarDayHeaderDelegate>
 
 // subviews
 @property (nonatomic, readonly) UICollectionView *timedEventsView;
@@ -744,6 +744,7 @@ static const CGFloat kMaxHourSlotHeight = 150.;
 - (CalendarDayHeaderView *)calendarDayHeaderView {
     if (!_calendarDayHeaderView) {
         _calendarDayHeaderView = [[CalendarDayHeaderView alloc] initWithFrame:CGRectMake(0, 0, self.width, TOP_BAR_HEIGHT) calendar:self.calendar];
+        _calendarDayHeaderView.delegate = self;
     }
     
     return _calendarDayHeaderView;
@@ -1421,7 +1422,7 @@ static const CGFloat kMaxHourSlotHeight = 150.;
 	CGFloat allDayEventsViewHeight = 2;
 	if (self.showsAllDayEvents) {
 		allDayEventsViewHeight = fmaxf(self.allDayEventCellHeight + 4, self.allDayEventsView.contentSize.height);
-		allDayEventsViewHeight = fminf(allDayEventsViewHeight, self.allDayEventCellHeight * 2.5 + 6);
+		allDayEventsViewHeight = fminf(allDayEventsViewHeight, self.allDayEventCellHeight * 2.5 + 16);
 	}
 	CGFloat timedEventViewTop = self.calendarDayHeaderView.bottomY + allDayEventsViewHeight;
 	CGFloat timedEventsViewWidth = self.bounds.size.width - self.timeColumnWidth;
@@ -2104,6 +2105,11 @@ static const CGFloat kMaxHourSlotHeight = 150.;
 	//NSLog(@"scrollViewDidEndScrollingAnimation");
 
 	[self scrollViewDidEndScrolling:scrollView];
+}
+
+#pragma mark - CalendarDayHeaderDelegate
+- (void)moveToDate:(NSDate *)date {
+    [self scrollToDate:date options:MGCDayPlannerScrollDate animated:YES];
 }
 
 @end
