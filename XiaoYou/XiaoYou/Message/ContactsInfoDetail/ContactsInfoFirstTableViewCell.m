@@ -41,7 +41,7 @@ NSString *const kContactsInfoFirstTableViewCell = @"ContactsInfoFirstTableViewCe
     _statesLabel.textColor = [UIColor hexChangeFloat:@"666666"];
     [self.contentView addSubview:_statesLabel];
     [_statesLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.right.top.bottom.equalTo(self.contentView);
+        make.top.bottom.equalTo(self.contentView);
         make.right.mas_equalTo(-12);
         make.left.mas_equalTo(70);
     }];
