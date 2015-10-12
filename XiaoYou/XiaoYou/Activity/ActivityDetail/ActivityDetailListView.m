@@ -26,21 +26,22 @@
 #pragma mark -协议方法
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 2;
+    return 4;
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    return 500;
+{;
     CGFloat height;
     if (indexPath.row == 0)
     {
+        return 500;
         height = [tableView fd_heightForCellWithIdentifier:@"activitydetail" cacheByIndexPath:indexPath configuration:^(ActivityDetailCell *cell) {
             //[cell setData:_feedListArray[indexPath.row]];
         }];
     }
     else
     {
+        return 250;
         height = [tableView fd_heightForCellWithIdentifier:@"joinincell" cacheByIndexPath:indexPath configuration:^(ActivityJoinInCell *cell) {
             //[cell setData:_feedListArray[indexPath.row]];
         }];
