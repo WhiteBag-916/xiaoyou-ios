@@ -14,6 +14,7 @@
 		041E3EBE1BAFFA0800454487 /* CTAssetsPickerChecked~iOS6@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 041E3EBC1BAFFA0800454487 /* CTAssetsPickerChecked~iOS6@2x.png */; settings = {ASSET_TAGS = (); }; };
 		042AADC31BCB493D0056C09F /* JoinInTopView.m in Sources */ = {isa = PBXBuildFile; fileRef = 042AADC21BCB493D0056C09F /* JoinInTopView.m */; settings = {ASSET_TAGS = (); }; };
 		042AADC61BCB4AC40056C09F /* JoinInHeadView.m in Sources */ = {isa = PBXBuildFile; fileRef = 042AADC51BCB4AC40056C09F /* JoinInHeadView.m */; settings = {ASSET_TAGS = (); }; };
+		042AADCC1BCB8BA00056C09F /* ApplyRemindCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 042AADCB1BCB8BA00056C09F /* ApplyRemindCell.m */; settings = {ASSET_TAGS = (); }; };
 		04394B471BBBB6620098BB8F /* fast_to_add@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 04394B451BBBB6620098BB8F /* fast_to_add@2x.png */; settings = {ASSET_TAGS = (); }; };
 		04394B481BBBB6620098BB8F /* fast_to_add@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 04394B461BBBB6620098BB8F /* fast_to_add@3x.png */; settings = {ASSET_TAGS = (); }; };
 		04394B4B1BBBB78B0098BB8F /* fast_add_white@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 04394B491BBBB78B0098BB8F /* fast_add_white@2x.png */; settings = {ASSET_TAGS = (); }; };
@@ -615,6 +616,8 @@
 		042AADC21BCB493D0056C09F /* JoinInTopView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JoinInTopView.m; sourceTree = "<group>"; };
 		042AADC41BCB4AC40056C09F /* JoinInHeadView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JoinInHeadView.h; sourceTree = "<group>"; };
 		042AADC51BCB4AC40056C09F /* JoinInHeadView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JoinInHeadView.m; sourceTree = "<group>"; };
+		042AADCA1BCB8BA00056C09F /* ApplyRemindCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ApplyRemindCell.h; sourceTree = "<group>"; };
+		042AADCB1BCB8BA00056C09F /* ApplyRemindCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ApplyRemindCell.m; sourceTree = "<group>"; };
 		04394B451BBBB6620098BB8F /* fast_to_add@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "fast_to_add@2x.png"; sourceTree = "<group>"; };
 		04394B461BBBB6620098BB8F /* fast_to_add@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "fast_to_add@3x.png"; sourceTree = "<group>"; };
 		04394B491BBBB78B0098BB8F /* fast_add_white@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "fast_add_white@2x.png"; sourceTree = "<group>"; };
@@ -1704,6 +1707,8 @@
 		049FF1AA1BC91777000645C8 /* Remind */ = {
 			isa = PBXGroup;
 			children = (
+				042AADCA1BCB8BA00056C09F /* ApplyRemindCell.h */,
+				042AADCB1BCB8BA00056C09F /* ApplyRemindCell.m */,
 				049FF1AB1BC91777000645C8 /* PassRemindCell.h */,
 				049FF1AC1BC91777000645C8 /* PassRemindCell.m */,
 				049FF1AD1BC91777000645C8 /* RemindHeadView.h */,
@@ -3904,6 +3909,7 @@
 				20DAE14D1B8821DD00607996 /* PerfectInformationViewController.m in Sources */,
 				333122521B806EDB00D3D032 /* MWTapDetectingView.m in Sources */,
 				044792BD1BB14DF40053412A /* commenTagList.m in Sources */,
+				042AADCC1BCB8BA00056C09F /* ApplyRemindCell.m in Sources */,
 				653199DE1B80B41C00405B72 /* ConnectTag.m in Sources */,
 				20DA17021BC7C51200A61B37 /* MGCMonthPlannerViewController.m in Sources */,
 				3331223C1B806EDB00D3D032 /* EMChatViewCell.m in Sources */,
