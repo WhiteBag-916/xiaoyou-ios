@@ -325,7 +325,7 @@
         
         if (_model.tagModels.count > 0)
         {
-            CGFloat height = 60;
+            CGFloat height = 65;
             for (int i = 0; i < _model.tagModels.count; i++)
             {
                 CGFloat width;

@@ -60,7 +60,7 @@
         make.top.equalTo(self).offset(kPaddingDistance);
     }];
     [self.tagCollectionView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(_connectTag.mas_bottom);
+        make.top.equalTo(_connectTag.mas_bottom).offset(5);
         make.left.equalTo(_connectTag.mas_left).offset(-kPaddingDistance/2);
         make.trailing.mas_equalTo(0);
 //        make.height.mas_equalTo(height);
