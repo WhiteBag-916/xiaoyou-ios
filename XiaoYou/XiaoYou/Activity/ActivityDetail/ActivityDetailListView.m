@@ -57,7 +57,11 @@
     }
     else
     {
-        ActivityJoinInCell *cell = [ActivityJoinInCell cellWithTableView:tableView];
+        ActivityJoinInCell *cell;
+        if (indexPath.row == 1)
+            cell = [ActivityJoinInCell cellWithTableView:tableView cellType:IS_TOPVIEW];
+        else
+            cell = [ActivityJoinInCell cellWithTableView:tableView cellType:NOT_TOPVIEW];
         return cell;
     }
     return nil;

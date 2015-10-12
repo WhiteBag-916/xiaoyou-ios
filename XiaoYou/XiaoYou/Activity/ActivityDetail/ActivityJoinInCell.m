@@ -9,35 +9,28 @@
 #import "ActivityJoinInCell.h"
 #import "TagListView.h"
 #import "TagsCommonView.h"
+#import "JoinInHeadView.h"
+#import "JoinInTopView.h"
+#import "Tags.h"
 
 #define REUSEID @"joinincell"
-#define kHeadCornerRadius                   22.5
-#define kPaddingDistance                    12
-#define kNameLabelWidth                     90
-#define kLabelHeightDistacnce               14
 
 @interface ActivityJoinInCell ()
-////上面部分通用部分View
-//@property (nonatomic,strong) UIImageView    *headImageView;
-//@property (nonatomic,strong) UILabel        *nameLabel;
-//@property (nonatomic,strong) UIImageView    *genderImageView;
-//@property (nonatomic,strong) UIView         *detailInfoView;
-@property (nonatomic,strong) TagListView *tagListView;
-@property (nonatomic,strong) TagsCommonView * tagsCommonView;
 
-@property (nonatomic,strong) UIImageView * headImageView;
-@property (nonatomic,strong) UILabel * nameLabel;
-@property (nonatomic,strong) UIImageView * sexImageView;
-@property (nonatomic,strong) UIImageView * addFriendImageView;
+@property (nonatomic,assign) CELLTYPE       cellType;
+@property (nonatomic,strong) JoinInHeadView *joinInHeadView;
+@property (nonatomic,strong) JoinInTopView  *joinTopView;
 
+@property (nonatomic,strong) TagsCommonView *tagsView;
 @end
 
 @implementation ActivityJoinInCell
 
 
-+(ActivityJoinInCell *)cellWithTableView:(UITableView *)tableView
++(ActivityJoinInCell *)cellWithTableView:(UITableView *)tableView cellType:(CELLTYPE)type
 {
     ActivityJoinInCell *cell = [tableView dequeueReusableCellWithIdentifier:REUSEID];
+    cell.cellType = type;
     if (!cell) {
         cell = [[ActivityJoinInCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:REUSEID];
     }
@@ -48,76 +41,60 @@
 {
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
         self.selectionStyle = UITableViewCellSelectionStyleNone;
-        [self initView];
+        if (self.cellType == DEFAULT_VIEW || self.cellType == NOT_TOPVIEW)
+            [self initViewWithType:NOT_TOPVIEW];
+        else
+            [self initViewWithType:IS_TOPVIEW];
     }
     return self;
 }
 
--(void)initView {
-//    _tagListView = [[TagListView alloc]init];
-//    [self.contentView addSubview:_tagListView];
-//    [_tagListView mas_makeConstraints:^(MASConstraintMaker *make) {
-//        make.edges.equalTo(self.contentView);
-//    }];
-
-    //头像
-    _headImageView = [[UIImageView alloc] init];
-    _headImageView.userInteractionEnabled = YES;
-    _headImageView.layer.cornerRadius = kHeadCornerRadius;
-    _headImageView.clipsToBounds = YES;
-    _headImageView.backgroundColor = [UIColor clearColor];
-    [_headImageView setFaceImageWithUrl:nil];
-    [self.contentView addSubview:_headImageView];
-    [_headImageView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.top.mas_equalTo(kPaddingDistance);
-        make.width.height.mas_equalTo(45);
+//初始化控件
+-(void)initViewWithType:(CELLTYPE)type
+{
+    _joinInHeadView = [[JoinInHeadView alloc]init];
+    [self addSubview:_joinInHeadView];
+    [_joinInHeadView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.mas_equalTo(0);
+        make.leading.mas_equalTo(0);
+        make.trailing.mas_equalTo(0);
+        make.height.mas_equalTo(SCALE_NUM(49));
     }];
     
-    //姓名
-    _nameLabel = [[UILabel alloc] init];
-    _nameLabel.font = CONTENT_FONT(14);
-    _nameLabel.text = @"还需要多多";
-    _nameLabel.backgroundColor = [UIColor orangeColor];
-    [self.contentView addSubview:_nameLabel];
-    [_nameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.centerY.equalTo(_headImageView);
-        make.left.equalTo(_headImageView.mas_right).offset(kPaddingDistance);
-        make.width.mas_equalTo(kNameLabelWidth);
-        make.height.mas_equalTo(kLabelHeightDistacnce);
+    _joinTopView = [[JoinInTopView alloc]init];
+    [self addSubview:_joinTopView];
+    [_joinTopView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(_joinInHeadView.mas_bottom).offset(0);
+        make.leading.equalTo(self);
+        make.trailing.equalTo(self);
+        make.height.mas_equalTo(SCALE_NUM(60));
     }];
     
-    //性别
-    _sexImageView = [[UIImageView alloc] init];
-    _sexImageView.backgroundColor = [UIColor redColor];
-    [self.contentView addSubview:_sexImageView];
-    [_sexImageView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.centerY.equalTo(_headImageView);
-        make.left.equalTo(_nameLabel.mas_right).offset(kPaddingDistance);
-        make.width.height.mas_equalTo(10);
+    _tagsView = [[TagsCommonView alloc]init];
+    [self addSubview:_tagsView];
+    [_tagsView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.mas_equalTo(140);
+        make.leading.mas_equalTo(71);
+        make.trailing.mas_equalTo(-20);
+        make.height.mas_equalTo(100);
     }];
+    _tagsView.backgroundColor = [UIColor cyanColor];
+    Tags *tag1 = [[Tags alloc]init];
+    tag1.name = @"班";
+    tag1.equal = YES;
     
-    //加好友
-    _addFriendImageView = [[UIImageView alloc] init];
-    _addFriendImageView.backgroundColor = [UIColor redColor];
-    _addFriendImageView.layer.cornerRadius = 15;
-    _addFriendImageView.clipsToBounds = YES;
-    [self.contentView addSubview:_addFriendImageView];
-    [_addFriendImageView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.centerY.equalTo(_headImageView);
-        make.right.equalTo(self.contentView.mas_right).offset(-kPaddingDistance);
-        make.width.height.mas_equalTo(30);
-    }];
+    Tags *tag2 = [[Tags alloc]init];
+    tag2.name = @"社";
     
+    Tags *tag3 = [[Tags alloc]init];
+    tag3.name = @"乡";
     
-    //标签
-    _tagsCommonView = [[TagsCommonView alloc]initWithCollectionViewHeight:100 andModel:nil];
-    [self.contentView addSubview:_tagsCommonView];
-    [_tagsCommonView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(_headImageView.mas_bottom);
-        make.left.equalTo(_nameLabel.mas_left);
-        make.right.bottom.equalTo(self.contentView);
-    }];
+    ProfileInfo *profile = [[ProfileInfo alloc]init];
+    profile.propetiesCommon = [NSArray arrayWithObjects:tag1,tag2,tag3,nil];
+    profile.tagModels = [NSArray arrayWithObjects:tag1,tag2,tag3, nil];
+    [_tagsView setData:profile];
 }
+
 
 -(void)setCellInfo
 {
