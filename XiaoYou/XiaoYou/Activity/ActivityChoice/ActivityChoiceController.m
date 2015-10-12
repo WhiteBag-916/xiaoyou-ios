@@ -7,8 +7,11 @@
 //
 
 #import "ActivityChoiceController.h"
+#import "ActivityChoiceTableView.h"
 
 @interface ActivityChoiceController ()
+
+@property (nonatomic,strong)ActivityChoiceTableView * activityChoiceTableView;
 
 @end
 
@@ -16,7 +19,17 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    
+    [self setUpUI];
+}
+
+-(void)setUpUI
+{
+    _activityChoiceTableView = [[ActivityChoiceTableView alloc] init];
+    [self.view addSubview:_activityChoiceTableView];
+    [_activityChoiceTableView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.bottom.leading.trailing.mas_equalTo(0);
+    }];
 }
 
 - (void)didReceiveMemoryWarning {
