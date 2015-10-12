@@ -585,6 +585,7 @@
 		E455DCE71BCB686E00B78E54 /* ActivityChoiceTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = E455DCE61BCB686E00B78E54 /* ActivityChoiceTableView.m */; settings = {ASSET_TAGS = (); }; };
 		E455DCED1BCB793000B78E54 /* ActivityDateAndTimeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E455DCEC1BCB793000B78E54 /* ActivityDateAndTimeCell.m */; settings = {ASSET_TAGS = (); }; };
 		E455DCF01BCB798400B78E54 /* ActivityReleaseAndTypeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E455DCEF1BCB798400B78E54 /* ActivityReleaseAndTypeCell.m */; settings = {ASSET_TAGS = (); }; };
+		E455DCF41BCB8F6D00B78E54 /* ActivityReleaseController.m in Sources */ = {isa = PBXBuildFile; fileRef = E455DCF31BCB8F6D00B78E54 /* ActivityReleaseController.m */; settings = {ASSET_TAGS = (); }; };
 		E46A3A5A1BC90330009AE8F1 /* MyFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = E46A3A551BC90330009AE8F1 /* MyFlowLayout.m */; settings = {ASSET_TAGS = (); }; };
 		E46A3A5B1BC90330009AE8F1 /* TagCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E46A3A571BC90330009AE8F1 /* TagCollectionCell.m */; settings = {ASSET_TAGS = (); }; };
 		E46A3A5E1BC9044D009AE8F1 /* TagsCommonView.m in Sources */ = {isa = PBXBuildFile; fileRef = E46A3A5D1BC9044D009AE8F1 /* TagsCommonView.m */; settings = {ASSET_TAGS = (); }; };
@@ -1488,6 +1489,8 @@
 		E455DCEC1BCB793000B78E54 /* ActivityDateAndTimeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityDateAndTimeCell.m; sourceTree = "<group>"; };
 		E455DCEE1BCB798400B78E54 /* ActivityReleaseAndTypeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityReleaseAndTypeCell.h; sourceTree = "<group>"; };
 		E455DCEF1BCB798400B78E54 /* ActivityReleaseAndTypeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityReleaseAndTypeCell.m; sourceTree = "<group>"; };
+		E455DCF21BCB8F6D00B78E54 /* ActivityReleaseController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityReleaseController.h; sourceTree = "<group>"; };
+		E455DCF31BCB8F6D00B78E54 /* ActivityReleaseController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityReleaseController.m; sourceTree = "<group>"; };
 		E46A3A541BC90330009AE8F1 /* MyFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyFlowLayout.h; sourceTree = "<group>"; };
 		E46A3A551BC90330009AE8F1 /* MyFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyFlowLayout.m; sourceTree = "<group>"; };
 		E46A3A561BC90330009AE8F1 /* TagCollectionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TagCollectionCell.h; sourceTree = "<group>"; };
@@ -1597,6 +1600,7 @@
 		044DA0401BBA77C900AA321A /* Activity */ = {
 			isa = PBXGroup;
 			children = (
+				E455DCF11BCB8F4700B78E54 /* ActivityRelease */,
 				E455DCE11BCB67C100B78E54 /* ActivityChoice */,
 				049FF1AA1BC91777000645C8 /* Remind */,
 				049FF1B31BC91777000645C8 /* Schedule */,
@@ -3334,6 +3338,15 @@
 			path = ActivityChoice;
 			sourceTree = "<group>";
 		};
+		E455DCF11BCB8F4700B78E54 /* ActivityRelease */ = {
+			isa = PBXGroup;
+			children = (
+				E455DCF21BCB8F6D00B78E54 /* ActivityReleaseController.h */,
+				E455DCF31BCB8F6D00B78E54 /* ActivityReleaseController.m */,
+			);
+			path = ActivityRelease;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -3860,6 +3873,7 @@
 				20E033F61B8427AF002E4583 /* YCommonShare.m in Sources */,
 				3331224D1B806EDB00D3D032 /* MWGridCell.m in Sources */,
 				333122621B806EDB00D3D032 /* UIImageView+EMHighlightedWebCache.m in Sources */,
+				E455DCF41BCB8F6D00B78E54 /* ActivityReleaseController.m in Sources */,
 				207F808A1B7099C2005E8F6A /* AppDelegate+Manager.m in Sources */,
 				6592DCD51B806A9B004CD118 /* FriendApplyTableView.m in Sources */,
 				333122551B806EDB00D3D032 /* EMSDImageCache.m in Sources */,
