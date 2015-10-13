@@ -7,7 +7,10 @@
 //
 
 #import "ActivityReleaseCollectionView.h"
-#import "NameAndPlaceCollectionViewCell.h"
+#import "NameCollectionViewCell.h"
+#import "DescriptionCollectionViewCell.h"
+#import "DateAndTimeCollectionViewCell.h"
+#import "TypeCollectionViewCell.h"
 
 @interface ActivityReleaseCollectionView ()<UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout>
 
@@ -23,9 +26,13 @@
         self.delegate = self;
         self.dataSource = self;
         self.scrollEnabled = YES;
-        self.pagingEnabled = YES;
-        [self registerClass:[NameAndPlaceCollectionViewCell class] forCellWithReuseIdentifier:kNameAndPlaceCollectionViewCell];
+        self.pagingEnabled = NO;
         
+        [self registerClass:[NameCollectionViewCell class] forCellWithReuseIdentifier:kNameCollectionViewCell];
+        [self registerClass:[DescriptionCollectionViewCell class] forCellWithReuseIdentifier:kDescriptionCollectionViewCell];
+        [self registerClass:[DateAndTimeCollectionViewCell class] forCellWithReuseIdentifier:kDateAndTimeCollectionViewCell];
+        [self registerClass:[TypeCollectionViewCell class] forCellWithReuseIdentifier:kTypeCollectionViewCell
+         ];
     }
     return self;
 }
@@ -44,10 +51,30 @@
 
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
+    if (indexPath.row == 0 || indexPath.row == 3)
+    {
+        NameCollectionViewCell * cell = (NameCollectionViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:kNameCollectionViewCell forIndexPath:indexPath];
+        [cell setCellInfo:indexPath.row];
+        return cell;
+    }
+    else if (indexPath.row == 1)
+    {
+        DescriptionCollectionViewCell * cell = (DescriptionCollectionViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:kDescriptionCollectionViewCell forIndexPath:indexPath];
+        return cell;
+    }
+    else if (indexPath.row == 2)
+    {
+        DateAndTimeCollectionViewCell * cell = (DateAndTimeCollectionViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:kDateAndTimeCollectionViewCell forIndexPath:indexPath];
+        cell.backgroundColor = [UIColor magentaColor];
+        return cell;
+    }
+    else
+    {
+        TypeCollectionViewCell * cell = (TypeCollectionViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:kTypeCollectionViewCell forIndexPath:indexPath];
+        cell.backgroundColor = [UIColor magentaColor];
+        return cell;
+    }
     
-    NameAndPlaceCollectionViewCell * cell = (NameAndPlaceCollectionViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:kNameAndPlaceCollectionViewCell forIndexPath:indexPath];
-    cell.backgroundColor = [UIColor magentaColor];
-    return cell;
 }
 
 //-(CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section
@@ -69,7 +96,7 @@
 
 -(CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    CGSize size = {SCREEN_WIDTH,300};
+    CGSize size = {230,300};
     return size;
 }
 

@@ -9,8 +9,10 @@
 #import <UIKit/UIKit.h>
 #import "ActivityBaseCollectionViewCell.h"
 
-extern NSString *const kNameAndPlaceCollectionViewCell;
+extern NSString *const kNameCollectionViewCell;
 
-@interface NameAndPlaceCollectionViewCell : ActivityBaseCollectionViewCell
+@interface NameCollectionViewCell : ActivityBaseCollectionViewCell
+
+-(void)setCellInfo:(NSInteger) index;
 
 @end
