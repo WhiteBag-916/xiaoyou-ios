@@ -11,6 +11,7 @@
 #import "ScheduleCardCell.h"
 #import "StudyRoomCell.h"
 #import "ScroungeCourseCell.h"
+#import "RemindViewController.h"
 
 @interface AvailableListView ()<UITableViewDataSource,UITableViewDelegate>
 
@@ -83,11 +84,11 @@
 }
 
 
--(void)gotoDetailWithCellType:(CELLTYPE)type
+/*-(void)gotoDetailWithCellType:(CELLTYPE)type
 {
     //日程
     if (type == SCHEDULECARD_CELL) {
-        
+        RemindViewController *remindVC = [[RemindViewController alloc]init];
     }
     //空闲教室
     else if (type == STUDYROOM_CELL) {
@@ -97,7 +98,7 @@
     else if (type == SCHEDULECARD_CELL) {
         
     }
-}
+}*/
 
 
 @end
