@@ -8,6 +8,8 @@
 
 #import "DateAndTimeCollectionViewCell.h"
 
+NSString *const kDateAndTimeCollectionViewCell = @"DateAndTimeCollectionViewCellId";
+
 @implementation DateAndTimeCollectionViewCell
 
 @end

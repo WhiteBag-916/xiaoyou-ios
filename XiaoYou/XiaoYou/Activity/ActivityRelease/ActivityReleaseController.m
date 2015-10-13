@@ -27,12 +27,14 @@
 {
     //顶部Label
     UILabel * topLabel = [[UILabel alloc] init];
-    topLabel.backgroundColor = [UIColor grayColor];
+    topLabel.backgroundColor = [UIColor clearColor];
     topLabel.text = @"有创意的发布文案有助于薅到更多好玩的人";
+    topLabel.textColor = KCOLORGREEN_B5;
     topLabel.font = CONTENT_FONT(12);
     [self.view addSubview:topLabel];
     [topLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.left.right.mas_equalTo(0);
+        make.top.right.mas_equalTo(0);
+        make.left.mas_equalTo(12);
         make.height.mas_equalTo(40);
     }];
     
@@ -50,6 +52,9 @@
         make.width.mas_equalTo(SCREEN_WIDTH);
         make.height.mas_equalTo(305);
     }];
+    
+    //.........
+    
     
 }
 

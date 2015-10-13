@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
+extern NSString *const kDateAndTimeCollectionViewCell;
+
 @interface DateAndTimeCollectionViewCell : UICollectionViewCell
 
 @end
