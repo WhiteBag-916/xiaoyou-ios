@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
-@interface AvailableViewController : UIViewController
+#import "YViewController.h"
+@interface AvailableViewController : YViewController
 
 @end
