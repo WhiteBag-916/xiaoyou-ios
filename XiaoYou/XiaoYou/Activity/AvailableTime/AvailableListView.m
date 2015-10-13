@@ -8,6 +8,9 @@
 
 #import "AvailableListView.h"
 #import "AvailableCell.h"
+#import "ScheduleCardCell.h"
+#import "StudyRoomCell.h"
+#import "ScroungeCourseCell.h"
 
 @interface AvailableListView ()<UITableViewDataSource,UITableViewDelegate>
 
@@ -29,6 +32,7 @@
         self.delegate = self;
         self.dataSource = self;
     }
+    
     return self;
 }
 
@@ -36,18 +40,41 @@
 #pragma mark 协议方法
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 5;
+    return 8;
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return SCALE_NUM(312);
+    if (indexPath.row == 0)
+        return SCALE_NUM(140);
+    else if (indexPath.row == 1)
+        return 85;
+    else if (indexPath.row == 6) {
+        return 85;
+    }
+    return SCALE_NUM(400);
 }
 
 -(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    AvailableCell *cell = [AvailableCell cellWithTableView:tableView];
-    return cell;
+    if (indexPath.row == 0) {
+        ScheduleCardCell *cell = [ScheduleCardCell cellWithTableView:tableView];
+        return cell;
+    }
+    else if (indexPath.row == 1) {
+        StudyRoomCell *cell = [StudyRoomCell cellWithTableView:tableView];
+        return cell;
+    }
+    else if (indexPath.row == 6) {
+        ScroungeCourseCell *cell = [ScroungeCourseCell cellWithTableView:tableView];
+        return cell;
+    }
+    else
+    {
+        AvailableCell *cell = [AvailableCell cellWithTableView:tableView];
+        return cell;
+    }
+    return nil;
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath

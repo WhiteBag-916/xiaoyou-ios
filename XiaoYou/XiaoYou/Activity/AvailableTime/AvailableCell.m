@@ -40,6 +40,7 @@
 -(instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
+        self.selectionStyle = UITableViewCellSelectionStyleNone;
         [self initView];
     }
     return self;
@@ -50,6 +51,7 @@
 {
     _startImageView = [[UIImageView alloc]init];
     [self.contentView addSubview:_startImageView];
+    _startImageView.image = [UIImage imageNamed:@"green_bar"];
     [_startImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.leading.mas_equalTo(0);
         make.top.mas_equalTo(20);
@@ -67,8 +69,10 @@
     _typeLabel = [[UILabel alloc]init];
     [self.contentView addSubview:_typeLabel];
     [_typeLabel setTextColor:[UIColor whiteColor]];
+    _typeLabel.layer.cornerRadius = 3;
+    _typeLabel.clipsToBounds = YES;
     _typeLabel.backgroundColor = [UIColor redColor];
-    _typeLabel.text = @"活动";
+    _typeLabel.text = @" 活动 ";
     _typeLabel.font = [UIFont systemFontOfSize:SCALE_NUM(10)];
     [_typeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.equalTo(_titleLabel.mas_centerY);
@@ -78,13 +82,13 @@
     _descriptionLabel = [[UILabel alloc]init];
     [self.contentView addSubview:_descriptionLabel];
     _descriptionLabel.numberOfLines = 3;
-    _descriptionLabel.lineBreakMode = NSLineBreakByWordWrapping;
+    _descriptionLabel.lineBreakMode = NSLineBreakByTruncatingTail;
     _descriptionLabel.font = [UIFont systemFontOfSize:SCALE_NUM(12)];
-    _descriptionLabel.text = @"唔知安迪电影10不连续放映唔知安迪电影10不连续放映唔知安迪电影10不连续放映唔知安迪电影10不连续放映唔知安迪电影10不连续放映唔知安迪电影10不连续放映唔知安迪电影10不连续放映唔知安迪电影10不连续放映唔知安迪电影10不连续放映唔知安迪电影10不连续放映唔知安迪电影10不连续放映唔知安迪电影10不连续放映";
+    _descriptionLabel.text = @"描述:唔知安迪电影10不连续放映唔知安迪电影10不连续放映唔知安迪电影10不连续放映唔知安迪电影10不连续放映唔知安迪电影10不连续放映唔知安迪电影10不连续放映唔知安迪电影10不连续放映唔知安迪电影10不连续放映唔知安迪电影10不连续放映唔知安迪电影10不连续放映唔知安迪电影10不连续放映唔知安迪电影10不连续放映唔知安迪电影10不连续放映唔知安迪电影10不连续放映唔知安迪电影10不连续放映唔知安迪电影10不连续放映唔知安迪电影10不连续放映唔知安迪电影10不连续放映唔知安迪电影10不连续放映唔知安迪电影10不连续放映唔知安迪电影10不连续放映唔知安迪电影10不连续放映唔知安迪电影10不连续放映唔知安迪电影1";
     [_descriptionLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(_titleLabel.mas_bottom).offset(SCALE_NUM(18));
         make.left.equalTo(_titleLabel);
-        make.trailing.mas_equalTo(SCALE_NUM(12));
+        make.trailing.mas_equalTo(SCALE_NUM(-12));
     }];
     
     _imageGroupView = [[FeedImageGroup alloc]init];
@@ -92,12 +96,32 @@
     [_imageGroupView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(_descriptionLabel.mas_bottom).offset(SCALE_NUM(15));
         make.left.equalTo(_descriptionLabel);
+        make.right.equalTo(_descriptionLabel.mas_right);
     }];
+    NSArray *smallImages    = @[@"/dev/feed/s/c2cfe0e7-ba38-43e0-b345-3d14ff2f2bcf.png"];
+    NSArray *bigImages      = @[@"/dev/feed/c2cfe0e7-ba38-43e0-b345-3d14ff2f2bcf.png"];
+    [_imageGroupView updateWithImgs:smallImages bigPics:bigImages];
+    
+    
+//    _middleView = [[FeedImageGroup alloc]init];
+//    [self.contentView addSubview:_middleView];
+//    
+//    [_middleView mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.top.equalTo(_topView.mas_bottom);
+//        make.left.equalTo(_topView.descriptionLabel.mas_left);
+//        make.right.equalTo(_topView.descriptionLabel);
+//    }];
+//    
+//    NSArray *smallImages    = @[@"/dev/feed/s/c2cfe0e7-ba38-43e0-b345-3d14ff2f2bcf.png",@"/dev/feed/s/c2cfe0e7-ba38-43e0-b345-3d14ff2f2bcf.png",@"/dev/feed/s/c2cfe0e7-ba38-43e0-b345-3d14ff2f2bcf.png"];
+//    NSArray *bigImages      = @[@"/dev/feed/c2cfe0e7-ba38-43e0-b345-3d14ff2f2bcf.png",@"/dev/feed/c2cfe0e7-ba38-43e0-b345-3d14ff2f2bcf.png",@"/dev/feed/c2cfe0e7-ba38-43e0-b345-3d14ff2f2bcf.png"];
+//    [_middleView updateWithImgs:smallImages bigPics:bigImages];
+    
+    
     
     _signUpTimeLabel = [[UILabel alloc]init];
     [self.contentView addSubview:_signUpTimeLabel];
     _signUpTimeLabel.text = @"报名时间: 2015/10/25-2015/11/12";
-    _signUpTimeLabel.font = [UIFont systemFontOfSize:SCALE_NUM(10)];
+    _signUpTimeLabel.font = [UIFont systemFontOfSize:SCALE_NUM(12)];
     [_signUpTimeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(_imageGroupView);
         make.top.equalTo(_imageGroupView.mas_bottom).offset(SCALE_NUM(15));
@@ -105,19 +129,19 @@
     
     _activityTimeLabel = [[UILabel alloc]init];
     [self.contentView addSubview:_activityTimeLabel];
-    _activityTimeLabel.font = [UIFont systemFontOfSize:SCALE_NUM(10)];
+    _activityTimeLabel.font = [UIFont systemFontOfSize:SCALE_NUM(12)];
     _activityTimeLabel.text = @"活动时间:2015/11/25";
     [_activityTimeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(_signUpTimeLabel).offset(SCALE_NUM(15));
+        make.top.equalTo(_signUpTimeLabel.mas_bottom).offset(SCALE_NUM(15));
         make.left.equalTo(_signUpTimeLabel);
     }];
     
     _organizerLabel = [[UILabel alloc]init];
     [self.contentView addSubview:_organizerLabel];
-    _organizerLabel.font = [UIFont systemFontOfSize:SCALE_NUM(10)];
+    _organizerLabel.font = [UIFont systemFontOfSize:SCALE_NUM(12)];
     _organizerLabel.text = @"组织者:王小明";
     [_organizerLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(_activityTimeLabel).offset(SCALE_NUM(15));
+        make.top.equalTo(_activityTimeLabel.mas_bottom).offset(SCALE_NUM(15));
         make.left.equalTo(_activityTimeLabel);
     }];
 }

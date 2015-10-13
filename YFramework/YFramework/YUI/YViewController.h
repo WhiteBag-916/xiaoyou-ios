@@ -58,6 +58,9 @@
 //导航栏右侧,Fast按钮
 - (void)showCustomNavigationFastButton;
 
+//导航栏左侧,提醒按钮
+- (void)showCustomNavigationRemindButton;
+
 - (void)showEditMode;
 
 - (void)showOrignMode;
