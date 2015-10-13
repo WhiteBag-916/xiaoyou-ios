@@ -39,14 +39,16 @@ NSString *const kActivityReleaseAndTypeCell = @"ActivityReleaseAndTypeCellId";
     if (num == 1)
     {
         _dataArr = @[@"学校活动",@"校友活动",@"个人活动",@"社团活动"];
-        _releaseAndTypeImageView.image = [UIImage imageNamed:@"funny_detail_category"];
+        _releaseAndTypeImageView.image = [UIImage imageNamed:@"activity-releaser"];
         _releaseAndTypeLabel.text = @"发布者";
+
     }
     else
     {
         _dataArr = @[@"全部",@"综合类",@"学术类",@"公益类",@"教科类"];
         _releaseAndTypeImageView.image = [UIImage imageNamed:@"funny_detail_category"];
         _releaseAndTypeLabel.text = @"类型";
+        
     }
     [_pickerView reloadAllComponents];
 }
@@ -65,7 +67,6 @@ NSString *const kActivityReleaseAndTypeCell = @"ActivityReleaseAndTypeCellId";
     //字
     _releaseAndTypeLabel = [[UILabel alloc] init];
     _releaseAndTypeLabel.backgroundColor = [UIColor clearColor];
-    _releaseAndTypeLabel.text = @"日期";
     _releaseAndTypeLabel.font = CONTENT_FONT(14);
     [self.contentView addSubview:_releaseAndTypeLabel];
     [_releaseAndTypeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
