@@ -157,6 +157,7 @@
 		20DA63761B7482DE007D22AC /* FeedListTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 20DA63751B7482DE007D22AC /* FeedListTableView.m */; };
 		20DA8B401B8F1E18007D0CDE /* hot@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 20DA8B3E1B8F1E18007D0CDE /* hot@2x.png */; };
 		20DA8B411B8F1E18007D0CDE /* hot@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 20DA8B3F1B8F1E18007D0CDE /* hot@3x.png */; };
+		20DAAA6C1BCD05F5006DF231 /* WeekViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20DAAA6B1BCD05F5006DF231 /* WeekViewController.m */; settings = {ASSET_TAGS = (); }; };
 		20DAE14A1B88195C00607996 /* login_tip.png in Resources */ = {isa = PBXBuildFile; fileRef = 20DAE1491B88195C00607996 /* login_tip.png */; };
 		20DAE14D1B8821DD00607996 /* PerfectInformationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20DAE14C1B8821DD00607996 /* PerfectInformationViewController.m */; };
 		20DAE1521B882CFF00607996 /* register-number@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 20DAE14E1B882CFF00607996 /* register-number@2x.png */; };
@@ -264,7 +265,6 @@
 		20E18DD61B808E42005B75EE /* society@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 20E18DAF1B808E42005B75EE /* society@2x.png */; };
 		20E18DD71B808E42005B75EE /* society@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 20E18DB01B808E42005B75EE /* society@3x.png */; };
 		20E193F81B8B516000FD7B3D /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20E193F71B8B516000FD7B3D /* AudioToolbox.framework */; };
-		20E3EF931BC9064C00B3D27E /* WeekViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20E3EF921BC9064C00B3D27E /* WeekViewController.m */; settings = {ASSET_TAGS = (); }; };
 		20E942181B833D10009C2DC6 /* wechat@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 20E942161B833D10009C2DC6 /* wechat@2x.png */; };
 		20E942191B833D10009C2DC6 /* wechat@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 20E942171B833D10009C2DC6 /* wechat@3x.png */; };
 		20E9421C1B833D10009C2DC6 /* wechat_friends@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 20E9421A1B833D10009C2DC6 /* wechat_friends@2x.png */; };
@@ -842,6 +842,8 @@
 		20DA63751B7482DE007D22AC /* FeedListTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedListTableView.m; sourceTree = "<group>"; };
 		20DA8B3E1B8F1E18007D0CDE /* hot@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "hot@2x.png"; sourceTree = "<group>"; };
 		20DA8B3F1B8F1E18007D0CDE /* hot@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "hot@3x.png"; sourceTree = "<group>"; };
+		20DAAA6A1BCD05F5006DF231 /* WeekViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeekViewController.h; sourceTree = "<group>"; };
+		20DAAA6B1BCD05F5006DF231 /* WeekViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeekViewController.m; sourceTree = "<group>"; };
 		20DAE1491B88195C00607996 /* login_tip.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = login_tip.png; sourceTree = "<group>"; };
 		20DAE14B1B8821DD00607996 /* PerfectInformationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PerfectInformationViewController.h; sourceTree = "<group>"; };
 		20DAE14C1B8821DD00607996 /* PerfectInformationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PerfectInformationViewController.m; sourceTree = "<group>"; };
@@ -996,8 +998,6 @@
 		20E18DAF1B808E42005B75EE /* society@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "society@2x.png"; sourceTree = "<group>"; };
 		20E18DB01B808E42005B75EE /* society@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "society@3x.png"; sourceTree = "<group>"; };
 		20E193F71B8B516000FD7B3D /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
-		20E3EF911BC9064C00B3D27E /* WeekViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeekViewController.h; sourceTree = "<group>"; };
-		20E3EF921BC9064C00B3D27E /* WeekViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeekViewController.m; sourceTree = "<group>"; };
 		20E942161B833D10009C2DC6 /* wechat@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "wechat@2x.png"; sourceTree = "<group>"; };
 		20E942171B833D10009C2DC6 /* wechat@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "wechat@3x.png"; sourceTree = "<group>"; };
 		20E9421A1B833D10009C2DC6 /* wechat_friends@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "wechat_friends@2x.png"; sourceTree = "<group>"; };
@@ -1627,6 +1627,7 @@
 		044DA0401BBA77C900AA321A /* Activity */ = {
 			isa = PBXGroup;
 			children = (
+				20DAAA691BCD05F5006DF231 /* Calendar */,
 				E455DCF11BCB8F4700B78E54 /* ActivityRelease */,
 				E455DCE11BCB67C100B78E54 /* ActivityChoice */,
 				049FF1AA1BC91777000645C8 /* Remind */,
@@ -1966,6 +1967,15 @@
 				20E0340D1B847F9F002E4583 /* SearchResultViewController.m */,
 			);
 			path = SearchPerson;
+			sourceTree = "<group>";
+		};
+		20DAAA691BCD05F5006DF231 /* Calendar */ = {
+			isa = PBXGroup;
+			children = (
+				20DAAA6A1BCD05F5006DF231 /* WeekViewController.h */,
+				20DAAA6B1BCD05F5006DF231 /* WeekViewController.m */,
+			);
+			path = Calendar;
 			sourceTree = "<group>";
 		};
 		20DAF9C71B873883005B7932 /* pinyin */ = {
@@ -2444,8 +2454,6 @@
 		20E3EF901BC9064C00B3D27E /* AvailableTime */ = {
 			isa = PBXGroup;
 			children = (
-				20E3EF911BC9064C00B3D27E /* WeekViewController.h */,
-				20E3EF921BC9064C00B3D27E /* WeekViewController.m */,
 				044C313C1BCC903D00E0D508 /* AvailableCell.h */,
 				044C313D1BCC903D00E0D508 /* AvailableCell.m */,
 				044C313F1BCCA94300E0D508 /* AvailableViewController.h */,
@@ -3943,7 +3951,6 @@
 				333122431B806EDB00D3D032 /* EMCDDeviceManager+Microphone.m in Sources */,
 				333122391B806EDB00D3D032 /* EMChatVideoBubbleView.m in Sources */,
 				656A4CFF1BBF9E1E00BDB725 /* QRCodeReaderViewController.m in Sources */,
-				20E3EF931BC9064C00B3D27E /* WeekViewController.m in Sources */,
 				20DA17031BC7C51200A61B37 /* MGCMonthPlannerViewDayCell.m in Sources */,
 				333122711B806EDB00D3D032 /* PSTGridLayoutSection.m in Sources */,
 				E43E10071BCC9CE50018B6D7 /* NameAndPlaceCollectionViewCell.m in Sources */,
@@ -3951,6 +3958,7 @@
 				656234771B837FDC00651C88 /* YFaceImageView.m in Sources */,
 				E4E28CE61BB3DCAF00E3808A /* FunDetailViewController.m in Sources */,
 				65969DCD1B871AA9001DD348 /* ProfilePersonListController.m in Sources */,
+				20DAAA6C1BCD05F5006DF231 /* WeekViewController.m in Sources */,
 				049C55CC1BB3F33D007565E1 /* BottomView.m in Sources */,
 				33380D971B857826008B51EB /* SendMessageTableViewCell.m in Sources */,
 				E455DCED1BCB793000B78E54 /* ActivityDateAndTimeCell.m in Sources */,
