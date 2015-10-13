@@ -12,7 +12,9 @@ NSString *const kActivityReleaseAndTypeCell = @"ActivityReleaseAndTypeCellId";
 
 @interface ActivityReleaseAndTypeCell ()<UIPickerViewDataSource,UIPickerViewDelegate>
 
-@property (nonatomic,strong) UIPickerView * datePickerView;
+@property (nonatomic,strong) UIImageView * releaseAndTypeImageView;
+@property (nonatomic,strong) UILabel * releaseAndTypeLabel;
+@property (nonatomic,strong) UIPickerView * pickerView;
 @property (nonatomic,strong) NSArray * dataArr;
 
 @end
@@ -27,10 +29,8 @@ NSString *const kActivityReleaseAndTypeCell = @"ActivityReleaseAndTypeCellId";
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self)
-    {
         [self setUpUI];
-        
-    }
+
     return self;
 }
 
@@ -39,42 +39,47 @@ NSString *const kActivityReleaseAndTypeCell = @"ActivityReleaseAndTypeCellId";
     if (num == 1)
     {
         _dataArr = @[@"学校活动",@"校友活动",@"个人活动",@"社团活动"];
+        _releaseAndTypeImageView.image = [UIImage imageNamed:@"funny_detail_category"];
+        _releaseAndTypeLabel.text = @"发布者";
     }
     else
     {
         _dataArr = @[@"全部",@"综合类",@"学术类",@"公益类",@"教科类"];
+        _releaseAndTypeImageView.image = [UIImage imageNamed:@"funny_detail_category"];
+        _releaseAndTypeLabel.text = @"类型";
     }
-    [_datePickerView reloadAllComponents];
+    [_pickerView reloadAllComponents];
 }
 
 -(void)setUpUI
 {
-    UIImageView * dateImageView = [[UIImageView alloc] init];
-    dateImageView.backgroundColor = [UIColor redColor];
-    [self.contentView addSubview:dateImageView];
-    [dateImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+    //图
+    _releaseAndTypeImageView = [[UIImageView alloc] init];
+    _releaseAndTypeImageView.backgroundColor = [UIColor clearColor];
+    [self.contentView addSubview:_releaseAndTypeImageView];
+    [_releaseAndTypeImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.leading.mas_equalTo(15);
         make.top.mas_equalTo(22);
         make.height.width.mas_equalTo(17);
     }];
-    
-    UILabel * dateLabel = [[UILabel alloc] init];
-    dateLabel.backgroundColor = [UIColor blueColor];
-    dateLabel.text = @"日期";
-    dateLabel.font = CONTENT_FONT(17);
-    [self.contentView addSubview:dateLabel];
-    [dateLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(dateImageView.mas_right).offset(5);
-        make.centerY.equalTo(dateImageView);
+    //字
+    _releaseAndTypeLabel = [[UILabel alloc] init];
+    _releaseAndTypeLabel.backgroundColor = [UIColor clearColor];
+    _releaseAndTypeLabel.text = @"日期";
+    _releaseAndTypeLabel.font = CONTENT_FONT(14);
+    [self.contentView addSubview:_releaseAndTypeLabel];
+    [_releaseAndTypeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(_releaseAndTypeImageView.mas_right).offset(5);
+        make.centerY.equalTo(_releaseAndTypeImageView);
         make.height.mas_equalTo(17);
-        make.width.mas_equalTo(34);
+        make.width.mas_equalTo(51);
     }];
     
-    _datePickerView = [[UIPickerView alloc] init];
-    _datePickerView.delegate = self;
-    _datePickerView.dataSource = self;
-    [self.contentView addSubview:_datePickerView];
-    [_datePickerView mas_makeConstraints:^(MASConstraintMaker *make) {
+    _pickerView = [[UIPickerView alloc] init];
+    _pickerView.delegate = self;
+    _pickerView.dataSource = self;
+    [self.contentView addSubview:_pickerView];
+    [_pickerView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.equalTo(self.contentView);
         make.top.equalTo(self.contentView);
         make.width.mas_equalTo(150);

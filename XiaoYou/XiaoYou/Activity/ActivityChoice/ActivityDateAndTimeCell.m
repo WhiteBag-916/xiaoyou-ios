@@ -35,19 +35,22 @@ NSString *const kActivityDateAndTimeCell = @"ActivityDateAndTimeCellId";
 
 -(void)setUpUI
 {
+    //日期图
     UIImageView * dateImageView = [[UIImageView alloc] init];
-    dateImageView.backgroundColor = [UIColor redColor];
+    dateImageView.backgroundColor = [UIColor clearColor];
+    dateImageView.image = [UIImage imageNamed:@"funny_detail_time"];
     [self.contentView addSubview:dateImageView];
     [dateImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.leading.mas_equalTo(15);
         make.top.mas_equalTo(22);
-        make.height.width.mas_equalTo(17);
+        make.width.mas_equalTo(15);
+        make.height.mas_equalTo(17);
     }];
-    
+    //日期字
     UILabel * dateLabel = [[UILabel alloc] init];
-    dateLabel.backgroundColor = [UIColor blueColor];
+    dateLabel.backgroundColor = [UIColor clearColor];
     dateLabel.text = @"时间与日期";
-    dateLabel.font = CONTENT_FONT(17);
+    dateLabel.font = CONTENT_FONT(14);
     [self.contentView addSubview:dateLabel];
     [dateLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(dateImageView.mas_right).offset(5);
@@ -56,6 +59,7 @@ NSString *const kActivityDateAndTimeCell = @"ActivityDateAndTimeCellId";
         make.width.mas_equalTo(85);
     }];
     
+    //日期选择器
     _datePickerView = [[UIDatePicker alloc] init];
     [self.contentView addSubview:_datePickerView];
     [_datePickerView mas_makeConstraints:^(MASConstraintMaker *make) {

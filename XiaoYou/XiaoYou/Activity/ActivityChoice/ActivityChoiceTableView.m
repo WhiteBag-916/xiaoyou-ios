@@ -38,7 +38,9 @@
     
     //错号
     UIButton * dissMissBtn = [[UIButton alloc] init];
-    dissMissBtn.backgroundColor = [UIColor redColor];
+    dissMissBtn.backgroundColor = [UIColor clearColor];
+    [dissMissBtn setImage:[UIImage imageNamed:@"mine-cancel"] forState:UIControlStateNormal];
+    [dissMissBtn addTarget:self action:@selector(clickBtnForCancel) forControlEvents:UIControlEventTouchUpInside];
     [backView addSubview:dissMissBtn];
     [dissMissBtn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.equalTo(backView);
@@ -48,18 +50,21 @@
     
     //对号
     UIButton * finishBtn = [[UIButton alloc] init];
-    finishBtn.backgroundColor = [UIColor redColor];
+    finishBtn.backgroundColor = [UIColor clearColor];
+    [finishBtn setImage:[UIImage imageNamed:@"mine-complete-grey"] forState:UIControlStateNormal];
+    [finishBtn addTarget:self action:@selector(clickBtnForChoice) forControlEvents:UIControlEventTouchUpInside];
     [backView addSubview:finishBtn];
     [finishBtn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.equalTo(backView);
         make.trailing.mas_equalTo(-12);
-        make.height.width.mas_equalTo(15);
+        make.width.mas_equalTo(15);
+        make.height.mas_equalTo(12);
     }];
     //筛选
     UILabel * centerLabel = [[UILabel alloc] init];
     centerLabel.textAlignment = NSTextAlignmentCenter;
     centerLabel.text = @"筛选";
-    centerLabel.font = CONTENT_FONT(14);
+    centerLabel.font = CONTENT_FONT(15);
     [backView addSubview:centerLabel];
     [centerLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.centerY.equalTo(backView);
@@ -68,6 +73,16 @@
     }];
     
     self.tableHeaderView = backView;
+}
+
+-(void)clickBtnForCancel
+{
+    NSLog(@"cancel");
+}
+
+-(void)clickBtnForChoice
+{
+    NSLog(@"choice");
 }
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
