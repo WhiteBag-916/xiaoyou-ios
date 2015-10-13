@@ -64,6 +64,7 @@
 @property (nonatomic, strong) UIImagePickerController *picker;
 
 @property (nonatomic, assign) BOOL isPhotoSaveEnd;//上传图片时的同步操作
+@property (nonatomic, assign) BOOL isUpLoadEnd; //图片是否上传成功
 
 @end
 
@@ -497,7 +498,11 @@
     return tagStr;
 }
 
+
+//上传图片没有同步
 - (void)uploadPic {
+    _isUpLoadEnd = NO;
+    
     [_picArray removeAllObjects];
     [YUtils showHUDWithTitle:@"正在上传"];
     for (int i = 0; i < [_imgGroup getImgCount]; i++) {
@@ -505,6 +510,7 @@
         [[FeedManager sharedInstance] uploadFeedImage:[YDirectory newImgCache:[NSString stringWithFormat:@"feed%d.png", i]] block:^(YActionMessage *message) {
             if (message.isSuccess) {
                 [weakSelf.picArray addObject:[(UploadImage *)message.object url]];
+                _isUpLoadEnd = YES;
             } else {
                 [weakSelf.picArray addObject:@""];
             }
@@ -512,6 +518,10 @@
                 [weakSelf uploadFeed];
             }
         }];
+        
+        while (!self.isUpLoadEnd) {
+            [[NSRunLoop mainRunLoop] runMode:NSDefaultRunLoopMode beforeDate:[NSDate distantFuture]];
+        }
     }
     if ([_imgGroup getImgCount] == 0) {
         [self uploadFeed];

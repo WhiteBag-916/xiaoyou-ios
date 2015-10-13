@@ -10,4 +10,6 @@
 
 @interface AvailableCell : UITableViewCell
 
++(AvailableCell*)cellWithTableView:(UITableView*)tableView;
+
 @end

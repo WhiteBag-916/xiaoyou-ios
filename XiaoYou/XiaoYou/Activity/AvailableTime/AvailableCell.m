@@ -8,7 +8,7 @@
 
 #import "AvailableCell.h"
 #import "FeedImageGroup.h"
-
+#define REUSEID @"AvailableCell"
 @interface AvailableCell ()
 
 @property (nonatomic,strong) UIImageView    *startImageView; //开始图
@@ -25,6 +25,17 @@
 
 
 @implementation AvailableCell
+
+
++(AvailableCell *)cellWithTableView:(UITableView *)tableView
+{
+    AvailableCell *cell = [tableView dequeueReusableCellWithIdentifier:REUSEID];
+    if (!cell) {
+        cell = [[AvailableCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:REUSEID];
+    }
+    return cell;
+}
+
 
 -(instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {

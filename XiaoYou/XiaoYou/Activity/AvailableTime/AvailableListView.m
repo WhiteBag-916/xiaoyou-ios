@@ -1,0 +1,60 @@
+//
+//  AvailableListView.m
+//  XiaoYou
+//
+//  Created by sheng on 15/10/13.
+//  Copyright © 2015年 xc. All rights reserved.
+//
+
+#import "AvailableListView.h"
+#import "AvailableCell.h"
+
+@interface AvailableListView ()<UITableViewDataSource,UITableViewDelegate>
+
+@end
+
+@implementation AvailableListView
+
+-(instancetype)init
+{
+    if (self = [super init]) {
+        self.delegate = self;
+        self.dataSource = self;
+    }
+    return self;
+}
+
+-(instancetype)initWithFrame:(CGRect)frame style:(UITableViewStyle)style {
+    if (self = [super initWithFrame:frame style:style]) {
+        self.delegate = self;
+        self.dataSource = self;
+    }
+    return self;
+}
+
+
+#pragma mark 协议方法
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return 5;
+}
+
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return SCALE_NUM(312);
+}
+
+-(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    AvailableCell *cell = [AvailableCell cellWithTableView:tableView];
+    return cell;
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    //ActivityDetailViewController *detailVC = [[ActivityDetailViewController alloc]init];
+    //[self.viewController.navigationController pushViewController:detailVC animated:YES needHiddenBottomBar:YES];
+}
+
+
+@end
