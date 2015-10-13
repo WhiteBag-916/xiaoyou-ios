@@ -21,6 +21,7 @@
 		04394B4C1BBBB78B0098BB8F /* fast_add_white@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 04394B4A1BBBB78B0098BB8F /* fast_add_white@3x.png */; settings = {ASSET_TAGS = (); }; };
 		04394B4E1BBBCA5C0098BB8F /* description.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 04394B4D1BBBCA5C0098BB8F /* description.rtf */; settings = {ASSET_TAGS = (); }; };
 		044792BD1BB14DF40053412A /* commenTagList.m in Sources */ = {isa = PBXBuildFile; fileRef = 044792BC1BB14DF40053412A /* commenTagList.m */; settings = {ASSET_TAGS = (); }; };
+		044C313E1BCC903D00E0D508 /* AvailableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 044C313D1BCC903D00E0D508 /* AvailableCell.m */; settings = {ASSET_TAGS = (); }; };
 		044D9FFD1BBA314300AA321A /* funny_detail_boy@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 044D9FF21BBA314300AA321A /* funny_detail_boy@2x.png */; settings = {ASSET_TAGS = (); }; };
 		044D9FFE1BBA314300AA321A /* funny_detail_category@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 044D9FF31BBA314300AA321A /* funny_detail_category@2x.png */; settings = {ASSET_TAGS = (); }; };
 		044D9FFF1BBA314300AA321A /* funny_detail_category@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 044D9FF41BBA314300AA321A /* funny_detail_category@3x.png */; settings = {ASSET_TAGS = (); }; };
@@ -631,6 +632,8 @@
 		04394B4D1BBBCA5C0098BB8F /* description.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = description.rtf; sourceTree = "<group>"; };
 		044792BB1BB14DF40053412A /* commenTagList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = commenTagList.h; sourceTree = "<group>"; };
 		044792BC1BB14DF40053412A /* commenTagList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = commenTagList.m; sourceTree = "<group>"; };
+		044C313C1BCC903D00E0D508 /* AvailableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AvailableCell.h; sourceTree = "<group>"; };
+		044C313D1BCC903D00E0D508 /* AvailableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AvailableCell.m; sourceTree = "<group>"; };
 		044D9FF21BBA314300AA321A /* funny_detail_boy@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "funny_detail_boy@2x.png"; sourceTree = "<group>"; };
 		044D9FF31BBA314300AA321A /* funny_detail_category@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "funny_detail_category@2x.png"; sourceTree = "<group>"; };
 		044D9FF41BBA314300AA321A /* funny_detail_category@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "funny_detail_category@3x.png"; sourceTree = "<group>"; };
@@ -2437,6 +2440,8 @@
 			children = (
 				20E3EF911BC9064C00B3D27E /* WeekViewController.h */,
 				20E3EF921BC9064C00B3D27E /* WeekViewController.m */,
+				044C313C1BCC903D00E0D508 /* AvailableCell.h */,
+				044C313D1BCC903D00E0D508 /* AvailableCell.m */,
 			);
 			path = AvailableTime;
 			sourceTree = "<group>";
@@ -4094,6 +4099,7 @@
 				20DA16FB1BC7C51200A61B37 /* MGCEventsRowView.m in Sources */,
 				20DA17071BC7C51200A61B37 /* MGCStandardEventView.m in Sources */,
 				2076A3011B81C590001FFBAC /* YCommonAlertView.m in Sources */,
+				044C313E1BCC903D00E0D508 /* AvailableCell.m in Sources */,
 				20DA17041BC7C51200A61B37 /* MGCMonthPlannerViewLayout.m in Sources */,
 				65969DDC1B875F31001DD348 /* ProfilePublishViewController.m in Sources */,
 				044DA0651BBA7E4700AA321A /* ActivityBottomView.m in Sources */,

@@ -13,6 +13,7 @@
 #import "RemindViewController.h"
 #import "ScheduleViewController.h"
 #import "ActivityChoiceController.h"
+#import "ActivityReleaseController.h"
 
 @interface ActivityViewController ()
 @property (nonatomic,strong) ActivityListView *funnyList;
@@ -68,10 +69,13 @@
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:view];
 }
 
-//发布Action
+//设置Action
 -(void)setupBtnAction {
-    SetupTableViewController *setupVC = [[SetupTableViewController alloc] init];
-    [self.navigationController pushViewController:setupVC animated:YES needHiddenBottomBar:YES];
+    //SetupTableViewController *setupVC = [[SetupTableViewController alloc] init];
+    //[self.navigationController pushViewController:setupVC animated:YES needHiddenBottomBar:YES];
+    
+    ActivityReleaseController *activityVC = [[ActivityReleaseController alloc]init];
+    [self.navigationController pushViewController:activityVC animated:YES needHiddenBottomBar:YES];
 }
 
 //筛选Action

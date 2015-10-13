@@ -9,6 +9,7 @@
 #import "PassRemindCell.h"
 #import "DataConvert.h"
 
+#define REUSRID             @"PassRemindCell"
 #define CELL_INSET          SCALE_NUM(12)
 #define TOP_CELL_HEIGHT     SCALE_NUM(44)
 @interface PassRemindCell ()
@@ -28,6 +29,17 @@
 
 
 @implementation PassRemindCell
+
+
++(PassRemindCell *)passRemindCellWithTableView:(UITableView *)tableView
+{
+    PassRemindCell *cell = [tableView dequeueReusableCellWithIdentifier:REUSRID];
+    if (!cell) {
+        cell = [[PassRemindCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:REUSRID];
+    }
+    return cell;
+}
+
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {

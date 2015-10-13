@@ -10,6 +10,7 @@
 #import "RemindHeadView.h"
 #import "PassRemindCell.h"
 #import "RemindManager.h"
+#import "ApplyRemindCell.h"
 #define REMINDVIEWCELL  @"remindCell"
 #define REMINDHEADVIEW  @"remindHeadView"
 #define HEADCELL_HEIGHT SCALE_NUM(33)
@@ -125,13 +126,19 @@
 #pragma mark 协议方法
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 180;
+    if (indexPath.section < 3) {
+        return 180;
+    }
+    else
+    {
+        return 240;
+    }
     return REMIND_CELL_HEIGHT;
 }
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 2;
+    return 10;
     return _remindListArray.count;
 }
 
@@ -160,11 +167,21 @@
 
 -(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    PassRemindCell *cell = [tableView dequeueReusableCellWithIdentifier:REMINDVIEWCELL];
+    if (indexPath.section < 3) {
+        PassRemindCell *cell = [PassRemindCell passRemindCellWithTableView:tableView];
+        return cell;
+    }
+    else
+    {
+        ApplyRemindCell *cell = [ApplyRemindCell cellWithTableView:tableView];
+        return cell;
+    }
+    /*PassRemindCell *cell = [tableView dequeueReusableCellWithIdentifier:REMINDVIEWCELL];
     if (!cell) {
         cell = [[PassRemindCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:REMINDVIEWCELL];
     }
-    return cell;
+    return cell;*/
+    return nil;
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
