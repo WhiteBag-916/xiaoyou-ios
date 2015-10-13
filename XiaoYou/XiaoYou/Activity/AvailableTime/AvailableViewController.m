@@ -9,6 +9,8 @@
 #import "AvailableViewController.h"
 #import "AvailableListView.h"
 #import "ActivityReleaseController.h"
+#import "RemindViewController.h"
+#import "ActivityChoiceController.h"
 
 @interface AvailableViewController ()
 
@@ -50,7 +52,7 @@
     UIButton *setupButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 25, KNavigationBarheight)];
     [setupButton setImage:[UIImage imageNamed:@"have_time_publish"] forState:UIControlStateNormal];
     [setupButton addTarget:self
-                    action:@selector(setupBtnAction)
+                    action:@selector(publishAction)
           forControlEvents:UIControlEventTouchUpInside];
     [view addSubview:setupButton];
     
@@ -69,22 +71,19 @@
     [view addSubview:scheduleBtn];
     
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:view];
+    [self showCustomNavigationRemindButton];
 }
 
-//设置Action
--(void)setupBtnAction {
-    //SetupTableViewController *setupVC = [[SetupTableViewController alloc] init];
-    //[self.navigationController pushViewController:setupVC animated:YES needHiddenBottomBar:YES];
-    
+//发布Action
+-(void)publishAction {
     ActivityReleaseController *activityVC = [[ActivityReleaseController alloc]init];
     [self.navigationController pushViewController:activityVC animated:YES needHiddenBottomBar:YES];
 }
 
 //筛选Action
 -(void)filterAction {
-    //RemindViewController *vc = [[RemindViewController alloc]init];
-    //[self.navigationController pushViewController:vc animated:YES needHiddenBottomBar:YES];
-    
+    ActivityChoiceController *choiceVC = [[ActivityChoiceController alloc]init];
+    [self.navigationController pushViewController:choiceVC animated:YES needHiddenBottomBar:YES];
 }
 
 //日程
@@ -94,6 +93,14 @@
     //[self.navigationController pushViewController:choiceVC animated:YES needHiddenBottomBar:YES];
     //ScheduleViewController *scheduleVC = [[ScheduleViewController alloc]init];
     //[self.navigationController pushViewController:scheduleVC animated:YES needHiddenBottomBar:YES];
+}
+
+
+#pragma mark 协议方法
+-(void)onNavigationLeftButtonClicked
+{
+    RemindViewController *remindVC = [[RemindViewController alloc]init];
+    [self.navigationController pushViewController:remindVC animated:YES needHiddenBottomBar:YES];
 }
 
 

@@ -57,4 +57,9 @@
     [self.viewController.navigationController pushViewController:detailVC animated:YES needHiddenBottomBar:YES];
 }
 
+-(void)gotoDetailWithType:(CELLTYPE)type
+{
+    
+}
+
 @end
