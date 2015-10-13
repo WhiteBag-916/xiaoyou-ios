@@ -183,6 +183,7 @@
 		20DAAA9E1BCD05F5006DF231 /* StudyRoomDetailTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 20DAAA961BCD05F5006DF231 /* StudyRoomDetailTableViewCell.m */; settings = {ASSET_TAGS = (); }; };
 		20DAAA9F1BCD05F5006DF231 /* StudyRoomTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 20DAAA981BCD05F5006DF231 /* StudyRoomTableView.m */; settings = {ASSET_TAGS = (); }; };
 		20DAAAA01BCD05F5006DF231 /* StudyRoomTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 20DAAA9A1BCD05F5006DF231 /* StudyRoomTableViewCell.m */; settings = {ASSET_TAGS = (); }; };
+		20DAAAA31BCD05F5006DF231 /* ActivityBaseCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 20DAAAA21BCD05F5006DF231 /* ActivityBaseCollectionViewCell.m */; settings = {ASSET_TAGS = (); }; };
 		20DAE14A1B88195C00607996 /* login_tip.png in Resources */ = {isa = PBXBuildFile; fileRef = 20DAE1491B88195C00607996 /* login_tip.png */; };
 		20DAE14D1B8821DD00607996 /* PerfectInformationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20DAE14C1B8821DD00607996 /* PerfectInformationViewController.m */; };
 		20DAE1521B882CFF00607996 /* register-number@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 20DAE14E1B882CFF00607996 /* register-number@2x.png */; };
@@ -904,6 +905,8 @@
 		20DAAA981BCD05F5006DF231 /* StudyRoomTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StudyRoomTableView.m; sourceTree = "<group>"; };
 		20DAAA991BCD05F5006DF231 /* StudyRoomTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StudyRoomTableViewCell.h; sourceTree = "<group>"; };
 		20DAAA9A1BCD05F5006DF231 /* StudyRoomTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StudyRoomTableViewCell.m; sourceTree = "<group>"; };
+		20DAAAA11BCD05F5006DF231 /* ActivityBaseCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityBaseCollectionViewCell.h; sourceTree = "<group>"; };
+		20DAAAA21BCD05F5006DF231 /* ActivityBaseCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityBaseCollectionViewCell.m; sourceTree = "<group>"; };
 		20DAE1491B88195C00607996 /* login_tip.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = login_tip.png; sourceTree = "<group>"; };
 		20DAE14B1B8821DD00607996 /* PerfectInformationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PerfectInformationViewController.h; sourceTree = "<group>"; };
 		20DAE14C1B8821DD00607996 /* PerfectInformationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PerfectInformationViewController.m; sourceTree = "<group>"; };
@@ -3494,6 +3497,8 @@
 		E455DCF11BCB8F4700B78E54 /* ActivityRelease */ = {
 			isa = PBXGroup;
 			children = (
+				20DAAAA11BCD05F5006DF231 /* ActivityBaseCollectionViewCell.h */,
+				20DAAAA21BCD05F5006DF231 /* ActivityBaseCollectionViewCell.m */,
 				E455DCF21BCB8F6D00B78E54 /* ActivityReleaseController.h */,
 				E455DCF31BCB8F6D00B78E54 /* ActivityReleaseController.m */,
 				E43E10021BCC9CA90018B6D7 /* ActivityReleaseCollectionView.h */,
@@ -4052,6 +4057,7 @@
 				333122481B806EDB00D3D032 /* Emoji.m in Sources */,
 				E43E10041BCC9CA90018B6D7 /* ActivityReleaseCollectionView.m in Sources */,
 				20DA16FA1BC7C51200A61B37 /* MGCEventCellLayoutAttributes.m in Sources */,
+				20DAAAA31BCD05F5006DF231 /* ActivityBaseCollectionViewCell.m in Sources */,
 				20E033F61B8427AF002E4583 /* YCommonShare.m in Sources */,
 				3331224D1B806EDB00D3D032 /* MWGridCell.m in Sources */,
 				333122621B806EDB00D3D032 /* UIImageView+EMHighlightedWebCache.m in Sources */,
