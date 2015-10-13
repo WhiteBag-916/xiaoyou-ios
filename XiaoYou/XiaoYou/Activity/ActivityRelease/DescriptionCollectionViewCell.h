@@ -7,9 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ActivityBaseCollectionViewCell.h"
 
 extern NSString *const kDescriptionCollectionViewCell;
 
-@interface DescriptionCollectionViewCell : UICollectionViewCell
+@interface DescriptionCollectionViewCell : ActivityBaseCollectionViewCell
 
 @end

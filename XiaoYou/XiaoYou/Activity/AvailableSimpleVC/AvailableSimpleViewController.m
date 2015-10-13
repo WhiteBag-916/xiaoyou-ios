@@ -49,7 +49,6 @@
         self.title = @"自习室";
         
         _studyRoomTableView = [[StudyRoomTableView alloc] init];
-        _studyRoomTableView.superVC = self;
         [self.view addSubview:_studyRoomTableView];
         
         [_studyRoomTableView mas_makeConstraints:^(MASConstraintMaker *make) {

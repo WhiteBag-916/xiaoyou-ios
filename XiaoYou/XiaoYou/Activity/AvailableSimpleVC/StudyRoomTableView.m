@@ -52,7 +52,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     AvailableSimpleViewController *vc = [[AvailableSimpleViewController alloc] initWithType:AvailableSimpleTypeStudyRoomDetail];
-    [self.superVC.navigationController pushViewController:vc animated:YES needHiddenBottomBar:YES];
+    [self.viewController.navigationController pushViewController:vc animated:YES needHiddenBottomBar:YES];
     return;
 }
 @end

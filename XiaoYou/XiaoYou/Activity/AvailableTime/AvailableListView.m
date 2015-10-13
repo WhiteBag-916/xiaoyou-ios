@@ -81,7 +81,16 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
+    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+    if ([cell isKindOfClass:[ScheduleCardCell class]]) {
+        [self gotoDetailWithCellType:SCHEDULECARD_CELL];
+    }
+    else if ([cell isKindOfClass:[StudyRoomCell class]]) {
+        [self gotoDetailWithCellType:STUDYROOM_CELL];
+    }
+    else if ([cell isKindOfClass:[ScroungeCourseCell class]]) {
+        [self gotoDetailWithCellType:SCROUGECOURSE_CELL];
+    }
 }
 
 
@@ -98,7 +107,7 @@
         [self.viewController.navigationController pushViewController:vc animated:YES needHiddenBottomBar:YES];
     }
     //可以蹭的课
-    else if (type == SCHEDULECARD_CELL) {
+    else if (type == SCROUGECOURSE_CELL) {
         AvailableSimpleViewController *vc = [[AvailableSimpleViewController alloc] initWithType:AvailableSimpleTypeStudyRoom];
         [self.viewController.navigationController pushViewController:vc animated:YES needHiddenBottomBar:YES];
     }

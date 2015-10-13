@@ -7,9 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ActivityBaseCollectionViewCell.h"
 
 extern NSString *const kDateAndTimeCollectionViewCell;
 
-@interface DateAndTimeCollectionViewCell : UICollectionViewCell
+@interface DateAndTimeCollectionViewCell : ActivityBaseCollectionViewCell
 
 @end
