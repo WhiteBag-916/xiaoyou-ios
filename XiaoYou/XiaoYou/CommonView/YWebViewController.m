@@ -68,9 +68,6 @@
     [_webView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.equalTo(_contentView);
     }];
-    _contentView.backgroundColor = [UIColor blueColor];
-    
-    _webView.backgroundColor = [UIColor redColor];
     _progressProxy = [[NJKWebViewProgress alloc] init];
     _webView.delegate = _progressProxy;
     _progressProxy.webViewProxyDelegate = self;
@@ -84,7 +81,11 @@
     CGRect barFrame = CGRectMake(0, navigationBarBounds.size.height - progressBarHeight, navigationBarBounds.size.width, progressBarHeight);
     _progressView = [[NJKWebViewProgressView alloc] initWithFrame:barFrame];
     _progressView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleTopMargin;
+    
+    
     _progressView.progressBarView.backgroundColor = KCOLORGREEN_009688;
+    
+    
 }
 - (void)loadUrl {
     NSURLRequest *req = [[NSURLRequest alloc] initWithURL:[NSURL URLWithString:_url]];
