@@ -26,7 +26,6 @@
 #import "XYGroupApplyViewController.h"
 #import "YUtils+Component.h"
 #import "EMConversation.h"
-//#import "WeekViewController.h"
 
 #define kRowHeight                     68
 #define kHeadWidthAndHeight            40
@@ -406,10 +405,6 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-//    WeekViewController *vc = [[WeekViewController alloc] init];
-//    [self.myController.navigationController pushViewController:vc animated:YES needHiddenBottomBar:YES];
-//    return;
-
     EMConversation *converation = [_messageDataSource objectAtIndex:indexPath.row];
     
     NSDictionary *ext = converation.latestMessageFromOthers.ext;

@@ -177,6 +177,13 @@
 		20DAAA781BCD05F5006DF231 /* MyFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 20DAAA731BCD05F5006DF231 /* MyFlowLayout.m */; settings = {ASSET_TAGS = (); }; };
 		20DAAA791BCD05F5006DF231 /* TagCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 20DAAA751BCD05F5006DF231 /* TagCollectionCell.m */; settings = {ASSET_TAGS = (); }; };
 		20DAAA7A1BCD05F5006DF231 /* TagsCommonView.m in Sources */ = {isa = PBXBuildFile; fileRef = 20DAAA771BCD05F5006DF231 /* TagsCommonView.m */; settings = {ASSET_TAGS = (); }; };
+		20DAAA9B1BCD05F5006DF231 /* RubLessonTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 20DAAA901BCD05F5006DF231 /* RubLessonTableView.m */; settings = {ASSET_TAGS = (); }; };
+		20DAAA9C1BCD05F5006DF231 /* RubLessonTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 20DAAA921BCD05F5006DF231 /* RubLessonTableViewCell.m */; settings = {ASSET_TAGS = (); }; };
+		20DAAA9D1BCD05F5006DF231 /* StudyRoomDetailTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 20DAAA941BCD05F5006DF231 /* StudyRoomDetailTableView.m */; settings = {ASSET_TAGS = (); }; };
+		20DAAA9E1BCD05F5006DF231 /* StudyRoomDetailTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 20DAAA961BCD05F5006DF231 /* StudyRoomDetailTableViewCell.m */; settings = {ASSET_TAGS = (); }; };
+		20DAAA9F1BCD05F5006DF231 /* StudyRoomTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 20DAAA981BCD05F5006DF231 /* StudyRoomTableView.m */; settings = {ASSET_TAGS = (); }; };
+		20DAAAA01BCD05F5006DF231 /* StudyRoomTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 20DAAA9A1BCD05F5006DF231 /* StudyRoomTableViewCell.m */; settings = {ASSET_TAGS = (); }; };
+		20DAAAA31BCD05F5006DF231 /* ActivityBaseCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 20DAAAA21BCD05F5006DF231 /* ActivityBaseCollectionViewCell.m */; settings = {ASSET_TAGS = (); }; };
 		20DAE14A1B88195C00607996 /* login_tip.png in Resources */ = {isa = PBXBuildFile; fileRef = 20DAE1491B88195C00607996 /* login_tip.png */; };
 		20DAE14D1B8821DD00607996 /* PerfectInformationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20DAE14C1B8821DD00607996 /* PerfectInformationViewController.m */; };
 		20DAE1521B882CFF00607996 /* register-number@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 20DAE14E1B882CFF00607996 /* register-number@2x.png */; };
@@ -913,6 +920,20 @@
 		20DAAA751BCD05F5006DF231 /* TagCollectionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TagCollectionCell.m; sourceTree = "<group>"; };
 		20DAAA761BCD05F5006DF231 /* TagsCommonView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TagsCommonView.h; sourceTree = "<group>"; };
 		20DAAA771BCD05F5006DF231 /* TagsCommonView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TagsCommonView.m; sourceTree = "<group>"; };
+		20DAAA8F1BCD05F5006DF231 /* RubLessonTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RubLessonTableView.h; sourceTree = "<group>"; };
+		20DAAA901BCD05F5006DF231 /* RubLessonTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RubLessonTableView.m; sourceTree = "<group>"; };
+		20DAAA911BCD05F5006DF231 /* RubLessonTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RubLessonTableViewCell.h; sourceTree = "<group>"; };
+		20DAAA921BCD05F5006DF231 /* RubLessonTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RubLessonTableViewCell.m; sourceTree = "<group>"; };
+		20DAAA931BCD05F5006DF231 /* StudyRoomDetailTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StudyRoomDetailTableView.h; sourceTree = "<group>"; };
+		20DAAA941BCD05F5006DF231 /* StudyRoomDetailTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StudyRoomDetailTableView.m; sourceTree = "<group>"; };
+		20DAAA951BCD05F5006DF231 /* StudyRoomDetailTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StudyRoomDetailTableViewCell.h; sourceTree = "<group>"; };
+		20DAAA961BCD05F5006DF231 /* StudyRoomDetailTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StudyRoomDetailTableViewCell.m; sourceTree = "<group>"; };
+		20DAAA971BCD05F5006DF231 /* StudyRoomTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StudyRoomTableView.h; sourceTree = "<group>"; };
+		20DAAA981BCD05F5006DF231 /* StudyRoomTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StudyRoomTableView.m; sourceTree = "<group>"; };
+		20DAAA991BCD05F5006DF231 /* StudyRoomTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StudyRoomTableViewCell.h; sourceTree = "<group>"; };
+		20DAAA9A1BCD05F5006DF231 /* StudyRoomTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StudyRoomTableViewCell.m; sourceTree = "<group>"; };
+		20DAAAA11BCD05F5006DF231 /* ActivityBaseCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityBaseCollectionViewCell.h; sourceTree = "<group>"; };
+		20DAAAA21BCD05F5006DF231 /* ActivityBaseCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityBaseCollectionViewCell.m; sourceTree = "<group>"; };
 		20DAE1491B88195C00607996 /* login_tip.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = login_tip.png; sourceTree = "<group>"; };
 		20DAE14B1B8821DD00607996 /* PerfectInformationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PerfectInformationViewController.h; sourceTree = "<group>"; };
 		20DAE14C1B8821DD00607996 /* PerfectInformationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PerfectInformationViewController.m; sourceTree = "<group>"; };
@@ -2093,6 +2114,18 @@
 		20DAAA6D1BCD05F5006DF231 /* AvailableSimpleVC */ = {
 			isa = PBXGroup;
 			children = (
+				20DAAA8F1BCD05F5006DF231 /* RubLessonTableView.h */,
+				20DAAA901BCD05F5006DF231 /* RubLessonTableView.m */,
+				20DAAA911BCD05F5006DF231 /* RubLessonTableViewCell.h */,
+				20DAAA921BCD05F5006DF231 /* RubLessonTableViewCell.m */,
+				20DAAA931BCD05F5006DF231 /* StudyRoomDetailTableView.h */,
+				20DAAA941BCD05F5006DF231 /* StudyRoomDetailTableView.m */,
+				20DAAA951BCD05F5006DF231 /* StudyRoomDetailTableViewCell.h */,
+				20DAAA961BCD05F5006DF231 /* StudyRoomDetailTableViewCell.m */,
+				20DAAA971BCD05F5006DF231 /* StudyRoomTableView.h */,
+				20DAAA981BCD05F5006DF231 /* StudyRoomTableView.m */,
+				20DAAA991BCD05F5006DF231 /* StudyRoomTableViewCell.h */,
+				20DAAA9A1BCD05F5006DF231 /* StudyRoomTableViewCell.m */,
 				20DAAA6E1BCD05F5006DF231 /* AvailableSimpleViewController.h */,
 				20DAAA6F1BCD05F5006DF231 /* AvailableSimpleViewController.m */,
 			);
@@ -3553,6 +3586,8 @@
 		E455DCF11BCB8F4700B78E54 /* ActivityRelease */ = {
 			isa = PBXGroup;
 			children = (
+				20DAAAA11BCD05F5006DF231 /* ActivityBaseCollectionViewCell.h */,
+				20DAAAA21BCD05F5006DF231 /* ActivityBaseCollectionViewCell.m */,
 				E455DCF21BCB8F6D00B78E54 /* ActivityReleaseController.h */,
 				E455DCF31BCB8F6D00B78E54 /* ActivityReleaseController.m */,
 				E43E10021BCC9CA90018B6D7 /* ActivityReleaseCollectionView.h */,
@@ -4082,12 +4117,14 @@
 				3331222B1B806EDB00D3D032 /* ChatViewController+Category.m in Sources */,
 				3331226A1B806EDB00D3D032 /* PSTCollectionViewFlowLayout.m in Sources */,
 				2076A2F71B81B8F1001FFBAC /* NotifyListViewController.m in Sources */,
+				20DAAA9E1BCD05F5006DF231 /* StudyRoomDetailTableViewCell.m in Sources */,
 				044DA0561BBA77C900AA321A /* ActivityDetailListView.m in Sources */,
 				333122371B806EDB00D3D032 /* EMChatLocationBubbleView.m in Sources */,
 				333122331B806EDB00D3D032 /* DXRecordView.m in Sources */,
 				333122671B806EDB00D3D032 /* PSTCollectionViewCell.m in Sources */,
 				20DC87F21B5F3DC70019DC7F /* ChooseSchoolViewController.m in Sources */,
 				333122301B806EDB00D3D032 /* DXFaceView.m in Sources */,
+				20DAAAA01BCD05F5006DF231 /* StudyRoomTableViewCell.m in Sources */,
 				20DBFD631B4FA7E1009134D0 /* AppDelegate.m in Sources */,
 				E4BE2DB01BC798B500124F22 /* ContactsInfoThirdTableViewCell.m in Sources */,
 				33380D9F1B85DAC5008B51EB /* XYSystemMessageViewController.m in Sources */,
@@ -4103,6 +4140,7 @@
 				3331225B1B806EDB00D3D032 /* EMSDWebImagePrefetcher.m in Sources */,
 				20DAF9AB1B87209E005B7932 /* LoginViewController.m in Sources */,
 				656A4CFD1BBF9E1E00BDB725 /* QRCameraSwitchButton.m in Sources */,
+				20DAAA9F1BCD05F5006DF231 /* StudyRoomTableView.m in Sources */,
 				20BEAF9F1BC913120002A365 /* FastTopView.m in Sources */,
 				3331222D1B806EDB00D3D032 /* ConvertToCommonEmoticonsHelper.m in Sources */,
 				65969DC41B86BDE1001DD348 /* MBProgressHUD+Add.m in Sources */,
@@ -4136,6 +4174,7 @@
 				333122481B806EDB00D3D032 /* Emoji.m in Sources */,
 				E43E10041BCC9CA90018B6D7 /* ActivityReleaseCollectionView.m in Sources */,
 				20DA16FA1BC7C51200A61B37 /* MGCEventCellLayoutAttributes.m in Sources */,
+				20DAAAA31BCD05F5006DF231 /* ActivityBaseCollectionViewCell.m in Sources */,
 				20E033F61B8427AF002E4583 /* YCommonShare.m in Sources */,
 				3331224D1B806EDB00D3D032 /* MWGridCell.m in Sources */,
 				333122621B806EDB00D3D032 /* UIImageView+EMHighlightedWebCache.m in Sources */,
@@ -4241,7 +4280,9 @@
 				333122421B806EDB00D3D032 /* EMCDDeviceManager+Media.m in Sources */,
 				654602171B7F2FF00039F622 /* FeedImageGroup.m in Sources */,
 				20E033FD1B846114002E4583 /* SearchFilterViewController.m in Sources */,
+				20DAAA9D1BCD05F5006DF231 /* StudyRoomDetailTableView.m in Sources */,
 				20E18D551B807752005B75EE /* AssociationsListTableViewCell.m in Sources */,
+				20DAAA9B1BCD05F5006DF231 /* RubLessonTableView.m in Sources */,
 				65969DDF1B877356001DD348 /* ProfileFeedListView.m in Sources */,
 				20DA16F71BC7C51200A61B37 /* MGCDayPlannerView.m in Sources */,
 				E43E10841BCCFB9E0018B6D7 /* ActivityBaseCollectionViewCell.m in Sources */,
@@ -4316,6 +4357,7 @@
 				049FF1C31BC91778000645C8 /* ScheduleCell.m in Sources */,
 				3331226D1B806EDB00D3D032 /* PSTCollectionViewUpdateItem.m in Sources */,
 				333122561B806EDB00D3D032 /* EMSDWebImageCompat.m in Sources */,
+				20DAAA9C1BCD05F5006DF231 /* RubLessonTableViewCell.m in Sources */,
 				20E18D541B807752005B75EE /* AssociationsListTableView.m in Sources */,
 				333122341B806EDB00D3D032 /* EMChatAudioBubbleView.m in Sources */,
 				65A703CE1B8C4EE70094D8A2 /* YFlatSwitchView.m in Sources */,

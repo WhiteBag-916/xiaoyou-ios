@@ -10,16 +10,59 @@
 
 NSString *const kStudyRoomTableViewCell = @"StudyRoomTableViewCellId";
 
+#define K_BUTTON_T         SCALE_NUM(30)  
+#define K_LABEL_T         SCALE_NUM(15)
+
+@interface StudyRoomTableViewCell ()
+
+@property (nonatomic, strong) UIButton *studyRoomNameButton;
+@property (nonatomic, strong) UILabel *studyRoomNumberLabel;
+
+@end
+
 @implementation StudyRoomTableViewCell
 
-- (void)awakeFromNib {
-    // Initialization code
+- (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
+{
+    if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier])
+    {
+        [self initView];
+        
+        self.contentView.backgroundColor = KCOLORWHITE;
+    }
+    
+    return self;
 }
 
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-    [super setSelected:selected animated:animated];
+- (void)initView {
+    _studyRoomNameButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    _studyRoomNameButton.userInteractionEnabled = NO;
+    [_studyRoomNameButton setImage:[UIImage imageNamed:@"setup_other"] forState:UIControlStateNormal];
+    [_studyRoomNameButton setTitle:@"教学2楼" forState:UIControlStateNormal];
+    [_studyRoomNameButton setTitleColor:KCOLORGREEN_B4 forState:UIControlStateNormal];
+    _studyRoomNameButton.titleLabel.font = CONTENT_FONT(15);
+    [_studyRoomNameButton setImageEdgeInsets:UIEdgeInsetsMake(0, 0, 0, 8)];
+    [self.contentView addSubview:_studyRoomNameButton];
+    
+    [_studyRoomNameButton mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.right.equalTo(self.contentView);
+        make.top.mas_equalTo(K_BUTTON_T);
+    }];
+    
+    _studyRoomNumberLabel = [YUtils initLabel:CONTENT_FONT(12)
+                                        color:KCOLORGREEN_B5
+                                         text:@"11个教室空缺"
+                                    alignment:NSTextAlignmentCenter];
+    [self.contentView addSubview:_studyRoomNumberLabel];
+    
+    [_studyRoomNumberLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.right.equalTo(self.contentView);
+        make.top.equalTo(_studyRoomNameButton.mas_bottom).offset(K_LABEL_T);
+    }];
+}
 
-    // Configure the view for the selected state
+- (BOOL)needLine {
+    return YES;
 }
 
 @end
