@@ -17,6 +17,4 @@ typedef enum : NSUInteger {
 } CELLTYPE;
 @interface AvailableListView : YTableView
 
-@property (nonatomic, weak) YViewController *superVC;
-
 @end

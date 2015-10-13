@@ -90,17 +90,17 @@
     //日程
     if (type == SCHEDULECARD_CELL) {
         WeekViewController *vc = [[WeekViewController alloc] init];
-        [self.superVC.navigationController pushViewController:vc animated:YES needHiddenBottomBar:YES];
+        [self.viewController.navigationController pushViewController:vc animated:YES needHiddenBottomBar:YES];
     }
     //空闲教室
     else if (type == STUDYROOM_CELL) {
         AvailableSimpleViewController *vc = [[AvailableSimpleViewController alloc] initWithType:AvailableSimpleTypeStudyRoom];
-        [self.superVC.navigationController pushViewController:vc animated:YES needHiddenBottomBar:YES];
+        [self.viewController.navigationController pushViewController:vc animated:YES needHiddenBottomBar:YES];
     }
     //可以蹭的课
     else if (type == SCHEDULECARD_CELL) {
         AvailableSimpleViewController *vc = [[AvailableSimpleViewController alloc] initWithType:AvailableSimpleTypeStudyRoom];
-        [self.superVC.navigationController pushViewController:vc animated:YES needHiddenBottomBar:YES];
+        [self.viewController.navigationController pushViewController:vc animated:YES needHiddenBottomBar:YES];
     }
 }
 
