@@ -17,6 +17,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    [self showCustomNavigationBackButton];
+    self.title = @"你的日程卡";
     	
 	self.dayPlannerView.backgroundColor = [UIColor whiteColor];
 	self.dayPlannerView.backgroundView = [UIView new];
