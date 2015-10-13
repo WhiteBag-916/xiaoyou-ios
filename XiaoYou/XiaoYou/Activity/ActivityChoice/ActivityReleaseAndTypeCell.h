@@ -8,6 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
+extern NSString *const kActivityReleaseAndTypeCell;
+
 @interface ActivityReleaseAndTypeCell : UITableViewCell
+
+-(void)setCellType:(NSInteger) num;
 
 @end
