@@ -549,6 +549,7 @@
 		654379B21B8DB223007B15CA /* icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 654379B01B8DB223007B15CA /* icon@2x.png */; };
 		654379B31B8DB223007B15CA /* icon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 654379B11B8DB223007B15CA /* icon@3x.png */; };
 		654602171B7F2FF00039F622 /* FeedImageGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 654602161B7F2FF00039F622 /* FeedImageGroup.m */; };
+		654AFE151BCCBFD0003E623C /* YWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 654AFE141BCCBFD0003E623C /* YWebViewController.m */; settings = {ASSET_TAGS = (); }; };
 		656234771B837FDC00651C88 /* YFaceImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 656234761B837FDC00651C88 /* YFaceImageView.m */; };
 		656341551BC1061500E10025 /* YStripeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 656341541BC1061500E10025 /* YStripeView.m */; settings = {ASSET_TAGS = (); }; };
 		656341571BC10D6500E10025 /* gift_line@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 656341561BC10D6500E10025 /* gift_line@2x.png */; settings = {ASSET_TAGS = (); }; };
@@ -1448,6 +1449,8 @@
 		654379B11B8DB223007B15CA /* icon@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon@3x.png"; sourceTree = "<group>"; };
 		654602151B7F2FF00039F622 /* FeedImageGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedImageGroup.h; sourceTree = "<group>"; };
 		654602161B7F2FF00039F622 /* FeedImageGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedImageGroup.m; sourceTree = "<group>"; };
+		654AFE131BCCBFD0003E623C /* YWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YWebViewController.h; sourceTree = "<group>"; };
+		654AFE141BCCBFD0003E623C /* YWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YWebViewController.m; sourceTree = "<group>"; };
 		656234751B837FDC00651C88 /* YFaceImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YFaceImageView.h; sourceTree = "<group>"; };
 		656234761B837FDC00651C88 /* YFaceImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YFaceImageView.m; sourceTree = "<group>"; };
 		656341531BC1061500E10025 /* YStripeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YStripeView.h; sourceTree = "<group>"; };
@@ -2197,6 +2200,8 @@
 				044792BC1BB14DF40053412A /* commenTagList.m */,
 				656341531BC1061500E10025 /* YStripeView.h */,
 				656341541BC1061500E10025 /* YStripeView.m */,
+				654AFE131BCCBFD0003E623C /* YWebViewController.h */,
+				654AFE141BCCBFD0003E623C /* YWebViewController.m */,
 			);
 			path = CommonView;
 			sourceTree = "<group>";
@@ -3507,6 +3512,7 @@
 				200E39731B4E818B000B587B /* Frameworks */,
 				200E39741B4E818B000B587B /* Resources */,
 				8D128BB15157CCD9381C2821 /* Copy Pods Resources */,
+				2B407717F01BC604CBD9D9B6 /* Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -3922,6 +3928,21 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		2B407717F01BC604CBD9D9B6 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/../Pods/Target Support Files/Pods-XiaoYou/Pods-XiaoYou-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		8D128BB15157CCD9381C2821 /* Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -3964,6 +3985,7 @@
 				3331226C1B806EDB00D3D032 /* PSTCollectionViewLayout.m in Sources */,
 				20DA16FD1BC7C51200A61B37 /* MGCInteractiveEventView.m in Sources */,
 				65F55A9E1B897C4700ED4348 /* ProfileTagViewController.m in Sources */,
+				654AFE151BCCBFD0003E623C /* YWebViewController.m in Sources */,
 				333122641B806EDB00D3D032 /* UIView+EMWebCacheOperation.m in Sources */,
 				20DAAA791BCD05F5006DF231 /* TagCollectionCell.m in Sources */,
 				3331224F1B806EDB00D3D032 /* MWPhoto.m in Sources */,

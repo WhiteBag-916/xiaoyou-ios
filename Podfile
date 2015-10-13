@@ -20,4 +20,5 @@ pod 'MJRefresh'
 pod 'Masonry'
 pod 'UITableView+FDTemplateLayoutCell'
 pod 'UzysAssetsPickerController'
+pod 'NJKWebViewProgress'
 end

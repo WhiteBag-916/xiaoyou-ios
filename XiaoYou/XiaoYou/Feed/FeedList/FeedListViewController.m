@@ -22,7 +22,6 @@
 #import "FeedPublishViewController.h"
 #import "ProvisionManager.h"
 #import "FeedFilterViewController.h"
-
 //测试用
 #import "FastViewController.h"
 
@@ -182,7 +181,6 @@
 
 - (void)goToDetail:(NSString *)feedId {
     FeedDetailViewController *feedDetailViewController = [[FeedDetailViewController alloc] initWithFeedId:feedId];
-//    self.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:feedDetailViewController animated:YES];
 }
 
