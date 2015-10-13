@@ -1445,15 +1445,7 @@ static const CGFloat kMaxHourSlotHeight = 150.;
 	if (!self.dayColumnsView.superview) {
 		[self addSubview:self.dayColumnsView];
 	}
-    
-    if (!self.calendarDayHeaderView.superview) {
-        [self addSubview:self.calendarDayHeaderView];
-        
-        NSDate *date = [self dateFromDayOffset:0];
-        [self.calendarDayHeaderView resetData:date];
-    }
-    
-	
+
 	self.allDayEventsView.frame = CGRectMake(self.timeColumnWidth, self.calendarDayHeaderView.bottomY, timedEventsViewWidth, allDayEventsViewHeight);
 	if (!self.allDayEventsView.superview) {
 		[self addSubview:self.allDayEventsView];
@@ -1483,6 +1475,13 @@ static const CGFloat kMaxHourSlotHeight = 150.;
 	}
 	
 	[self.allDayEventsView flashScrollIndicators];
+    
+    if (!self.calendarDayHeaderView.superview) {
+        [self addSubview:self.calendarDayHeaderView];
+        
+        NSDate *date = [self dateFromDayOffset:0];
+        [self.calendarDayHeaderView resetData:date];
+    }
 }
 
 - (void)invalidateLayout
