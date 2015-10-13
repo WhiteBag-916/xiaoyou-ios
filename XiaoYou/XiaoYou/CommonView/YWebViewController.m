@@ -1,0 +1,113 @@
+//
+//  YWebViewController.m
+//  XiaoYou
+//
+//  Created by 李思良 on 15/10/13.
+//  Copyright © 2015年 xc. All rights reserved.
+//
+
+#import "YWebViewController.h"
+#import "NJKWebViewProgress.h"
+#import "NJKWebViewProgressView.h"
+
+@interface YWebViewController () <NJKWebViewProgressDelegate, UIWebViewDelegate>
+@property (copy,    nonatomic)  NSString *url;
+@property (strong,  nonatomic)  NJKWebViewProgressView *progressView;
+@property (strong,  nonatomic)  NJKWebViewProgress *progressProxy;
+@property (strong,  nonatomic)  UIWebView *webView;
+
+@property (strong,  nonatomic)  UIView *contentView;
+
+@end
+
+@implementation YWebViewController
+
+- (id)initWithUrl:(NSString *)url andTitle:(NSString *)title {
+    if (self = [super init]) {
+        _url = url;
+        self.title = title;
+        self.hidesBottomBarWhenPushed = true;
+    }
+    return self;
+}
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    [self showCustomNavigationBackButton];
+    [self initWebView];
+    [self initProgress];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [self.navigationController.navigationBar addSubview:_progressView];
+    [self loadUrl];
+}
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    [_progressView removeFromSuperview];
+}
+
+- (void)initWebView {
+    
+    UIScrollView *scroll = [[UIScrollView alloc] init];
+    [self.view addSubview:scroll];
+    [scroll mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.equalTo(self.view);
+    }];
+    
+    
+    _contentView = [[UIView alloc] init];
+    [scroll addSubview:_contentView];
+    [_contentView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.equalTo(scroll);
+        make.width.equalTo(scroll);
+    }];
+    _webView = [[UIWebView alloc] init];
+    [_contentView addSubview:_webView];
+    [_webView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.equalTo(_contentView);
+    }];
+    _progressProxy = [[NJKWebViewProgress alloc] init];
+    _webView.delegate = _progressProxy;
+    _progressProxy.webViewProxyDelegate = self;
+    _progressProxy.progressDelegate = self;
+    _webView.userInteractionEnabled = false;
+}
+
+- (void)initProgress {
+    CGFloat progressBarHeight = 2.f;
+    CGRect navigationBarBounds = self.navigationController.navigationBar.bounds;
+    CGRect barFrame = CGRectMake(0, navigationBarBounds.size.height - progressBarHeight, navigationBarBounds.size.width, progressBarHeight);
+    _progressView = [[NJKWebViewProgressView alloc] initWithFrame:barFrame];
+    _progressView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleTopMargin;
+    
+    
+    _progressView.progressBarView.backgroundColor = KCOLORGREEN_009688;
+    
+    
+}
+- (void)loadUrl {
+    NSURLRequest *req = [[NSURLRequest alloc] initWithURL:[NSURL URLWithString:_url]];
+    [_webView loadRequest:req];
+}
+
+- (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType {
+    if (navigationType != UIWebViewNavigationTypeOther) {
+        return NO;
+    }
+    return YES;
+}
+#pragma mark - NJKWebViewProgressDelegate
+-(void)webViewProgress:(NJKWebViewProgress *)webViewProgress updateProgress:(float)progress
+{
+    [_progressView setProgress:progress animated:YES];
+    if (progress == 1.0) {
+        CGFloat height = [[_webView stringByEvaluatingJavaScriptFromString:@"document.body.clientHeight"] floatValue];
+        [_webView mas_updateConstraints:^(MASConstraintMaker *make) {
+            make.height.mas_equalTo(height);
+        }];
+    }
+}
+
+@end

@@ -7,15 +7,69 @@
 //
 
 #import "ActivityReleaseCollectionView.h"
+#import "ActivityBaseCollectionViewCell.h"
+
+@interface ActivityReleaseCollectionView ()<UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout>
+
+
+@end
 
 @implementation ActivityReleaseCollectionView
 
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect {
-    // Drawing code
+- (instancetype)initWithFrame:(CGRect)frame collectionViewLayout:(UICollectionViewLayout *)layout
+{
+    self = [super initWithFrame:frame collectionViewLayout:layout];
+    if (self) {
+        self.delegate = self;
+        self.dataSource = self;
+        self.scrollEnabled = YES;
+        self.pagingEnabled = YES;
+        [self registerClass:[ActivityBaseCollectionViewCell class] forCellWithReuseIdentifier:kActivityBaseCollectionViewCell];
+        
+    }
+    return self;
 }
-*/
+
+#pragma mark - UICollectionViewDataSource和UICollectionViewDelegate
+
+-(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
+{
+    return 1;
+}
+
+-(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
+{
+    return 5;
+}
+
+-(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    ActivityBaseCollectionViewCell * cell = (ActivityBaseCollectionViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:kActivityBaseCollectionViewCell forIndexPath:indexPath];
+    cell.backgroundColor = [UIColor magentaColor];
+    return cell;
+}
+
+//-(CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section
+//{
+//    return 10;
+//}
+
+
+//-(UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section
+//{
+//    UIEdgeInsets insets = UIEdgeInsetsMake(0, 10, 0, 10);
+//    return insets;
+//}
+
+//-(CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section
+//{
+//    return 10;
+//}
+
+-(CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    CGSize size = {SCREEN_WIDTH,300};
+    return size;
+}
 
 @end

@@ -35,6 +35,11 @@ PODS:
     - MBProgressHUD (~> 0.9.1)
   - MJExtension (2.5.12)
   - MJRefresh (2.4.11)
+  - NJKWebViewProgress (0.2.3):
+    - NJKWebViewProgress/Core (= 0.2.3)
+    - NJKWebViewProgress/ProgressView (= 0.2.3)
+  - NJKWebViewProgress/Core (0.2.3)
+  - NJKWebViewProgress/ProgressView (0.2.3)
   - Reachability (3.2)
   - RegExCategories (1.0)
   - SDWebImage (3.7.3):
@@ -56,6 +61,7 @@ DEPENDENCIES:
   - MBProgressHUD+BWMExtension
   - MJExtension
   - MJRefresh
+  - NJKWebViewProgress
   - RegExCategories
   - SDWebImage
   - UITableView+FDTemplateLayoutCell
@@ -75,6 +81,7 @@ SPEC CHECKSUMS:
   MBProgressHUD+BWMExtension: dd1dff033c1802edf7cb613c5643db5f090575bd
   MJExtension: 5ab633484e431f777387c70b676c80f993361f1b
   MJRefresh: b327947f35ab3eb16ca42646b26f7347e6aa7186
+  NJKWebViewProgress: f481fd424cb5ecc27eacae11b5397db92fba9a4d
   Reachability: 33e18b67625424e47b6cde6d202dce689ad7af96
   RegExCategories: e68befacacd5bda853c88f70ec745cb2d0cfb89c
   SDWebImage: 1d2b1a1efda1ade1b00b6f8498865f8ddedc8a84
@@ -82,4 +89,4 @@ SPEC CHECKSUMS:
   UMengAnalytics-NO-IDFA: 279e28990a08efb56cff1821d2954bb00aa6975a
   UzysAssetsPickerController: 47c27bd96955467925f3d4d80b1e2e8aaeff766d
 
-COCOAPODS: 0.38.2
+COCOAPODS: 0.39.0
