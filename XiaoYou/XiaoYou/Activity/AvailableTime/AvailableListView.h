@@ -9,12 +9,12 @@
 #import "YTableView.h"
 #import "YViewController.h"
 //cell类型
-//typedef enum : NSUInteger {
-//    DEFAULT,
-//    SCHEDULECARD_CELL,
-//    STUDYROOM_CELL,
-//    SCROUGECOURSE_CELL
-//} CELLTYPE;
+typedef enum : NSUInteger {
+    DEFAULT,
+    SCHEDULECARD_CELL,
+    STUDYROOM_CELL,
+    SCROUGECOURSE_CELL
+} CELLTYPE;
 @interface AvailableListView : YTableView
 
 @property (nonatomic, weak) YViewController *superVC;
