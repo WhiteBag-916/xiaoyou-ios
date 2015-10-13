@@ -40,7 +40,7 @@ NSString *const kStudyRoomDetailTableViewCell = @"StudyRoomDetailTableViewCellId
 
 - (void)initView {
     //1
-    UIImageView *studyImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"setup_other"]];
+    UIImageView *studyImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"common_icon_classroom"]];
     [self.contentView addSubview:studyImageView];
     
     [studyImageView mas_makeConstraints:^(MASConstraintMaker *make) {

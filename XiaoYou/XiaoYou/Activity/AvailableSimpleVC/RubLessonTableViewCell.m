@@ -42,7 +42,7 @@ NSString *const kRubLessonTableViewCell = @"RubLessonTableViewCellId";
 
 - (void)initView {
     //课程
-    UIImageView *courseImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"setup_other"]];
+    UIImageView *courseImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"havetime_icon_classname"]];
     [self.contentView addSubview:courseImageView];
     
     [courseImageView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -75,7 +75,7 @@ NSString *const kRubLessonTableViewCell = @"RubLessonTableViewCellId";
     }];
     
     //授课人
-    UIImageView *lecturerImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"setup_other"]];
+    UIImageView *lecturerImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"havetime_icon_teacher"]];
     [self.contentView addSubview:lecturerImageView];
     
     [lecturerImageView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -108,7 +108,7 @@ NSString *const kRubLessonTableViewCell = @"RubLessonTableViewCellId";
     }];
     
     //院系
-    UIImageView *departmentsImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"setup_other"]];
+    UIImageView *departmentsImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"havetime_icon_academy"]];
     [self.contentView addSubview:departmentsImageView];
     
     [departmentsImageView mas_makeConstraints:^(MASConstraintMaker *make) {

@@ -37,7 +37,6 @@
 {
     if (!_availableListView) {
         _availableListView = [[AvailableListView alloc]init];
-        _availableListView.superVC = self;
         [self.view addSubview:_availableListView];
         [_availableListView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.edges.equalTo(self.view);
@@ -101,6 +100,7 @@
 -(void)onNavigationLeftButtonClicked
 {
     RemindViewController *remindVC = [[RemindViewController alloc]init];
+    //[self.navigationController presentViewController:remindVC animated:YES completion:nil];
     [self.navigationController pushViewController:remindVC animated:YES needHiddenBottomBar:YES];
 }
 
@@ -109,13 +109,13 @@
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    self.hidesBottomBarWhenPushed = YES;
+    //self.hidesBottomBarWhenPushed = YES;
 }
 
 -(void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
-    self.hidesBottomBarWhenPushed = NO;
+    //self.hidesBottomBarWhenPushed = NO;
 }
 
 @end
