@@ -15,6 +15,7 @@ NSString *const kStudyRoomDetailTableViewCell = @"StudyRoomDetailTableViewCellId
 #define K_IMG_H             SCALE_NUM(14)   //图标高
 #define K_TEXT_L            SCALE_NUM(6)    //字左
 #define K_ROOM_T            SCALE_NUM(16)   //室上
+#define K_TEXT_H            SCALE_NUM(10)   //字高
 
 @interface StudyRoomDetailTableViewCell ()
 
@@ -71,7 +72,8 @@ NSString *const kStudyRoomDetailTableViewCell = @"StudyRoomDetailTableViewCellId
     [self.contentView addSubview:_studyRoomLabel];
     
     [_studyRoomLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.right.height.equalTo(_studyFloorLabel);
+        make.left.right.equalTo(_studyFloorLabel);
+        make.height.mas_equalTo(K_TEXT_H);
         make.top.equalTo(_studyFloorLabel.mas_bottom).offset(K_ROOM_T);
     }];
     
@@ -83,7 +85,8 @@ NSString *const kStudyRoomDetailTableViewCell = @"StudyRoomDetailTableViewCellId
     [self.contentView addSubview:_timeLabel];
     
     [_timeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.right.height.equalTo(_studyFloorLabel);
+        make.left.right.equalTo(_studyFloorLabel);
+        make.height.mas_equalTo(K_TEXT_H);
         make.top.equalTo(_studyRoomLabel.mas_bottom).offset(K_ROOM_T);
     }];
 }
