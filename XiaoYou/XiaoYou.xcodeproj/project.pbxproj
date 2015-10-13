@@ -585,6 +585,11 @@
 		65F55A9E1B897C4700ED4348 /* ProfileTagViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 65F55A9D1B897C4700ED4348 /* ProfileTagViewController.m */; };
 		65F55AA11B899EBC00ED4348 /* UIImageView+Ext.m in Sources */ = {isa = PBXBuildFile; fileRef = 65F55AA01B899EBC00ED4348 /* UIImageView+Ext.m */; };
 		65F82F841B85E74A00FF6E2D /* FeedPublishViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 65F82F831B85E74A00FF6E2D /* FeedPublishViewController.m */; };
+		E43E10041BCC9CA90018B6D7 /* ActivityReleaseCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = E43E10031BCC9CA90018B6D7 /* ActivityReleaseCollectionView.m */; settings = {ASSET_TAGS = (); }; };
+		E43E10071BCC9CE50018B6D7 /* NameAndPlaceCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E43E10061BCC9CE50018B6D7 /* NameAndPlaceCollectionViewCell.m */; settings = {ASSET_TAGS = (); }; };
+		E43E100A1BCC9D4A0018B6D7 /* DescriptionCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E43E10091BCC9D4A0018B6D7 /* DescriptionCollectionViewCell.m */; settings = {ASSET_TAGS = (); }; };
+		E43E100D1BCC9D670018B6D7 /* DateAndTimeCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E43E100C1BCC9D670018B6D7 /* DateAndTimeCollectionViewCell.m */; settings = {ASSET_TAGS = (); }; };
+		E43E10101BCC9D8D0018B6D7 /* TypeCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E43E100F1BCC9D8D0018B6D7 /* TypeCollectionViewCell.m */; settings = {ASSET_TAGS = (); }; };
 		E455DCE41BCB683C00B78E54 /* ActivityChoiceController.m in Sources */ = {isa = PBXBuildFile; fileRef = E455DCE31BCB683C00B78E54 /* ActivityChoiceController.m */; settings = {ASSET_TAGS = (); }; };
 		E455DCE71BCB686E00B78E54 /* ActivityChoiceTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = E455DCE61BCB686E00B78E54 /* ActivityChoiceTableView.m */; settings = {ASSET_TAGS = (); }; };
 		E455DCED1BCB793000B78E54 /* ActivityDateAndTimeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E455DCEC1BCB793000B78E54 /* ActivityDateAndTimeCell.m */; settings = {ASSET_TAGS = (); }; };
@@ -1493,6 +1498,16 @@
 		65F82F831B85E74A00FF6E2D /* FeedPublishViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FeedPublishViewController.m; path = XiaoYou/CommonView/FeedPublishViewController.m; sourceTree = SOURCE_ROOT; };
 		77B574BED9D4FF3F4BFAA9FE /* libPods-XiaoYou.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-XiaoYou.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1D8A55CC0081FB2C8604F21 /* Pods-XiaoYou.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XiaoYou.release.xcconfig"; path = "../Pods/Target Support Files/Pods-XiaoYou/Pods-XiaoYou.release.xcconfig"; sourceTree = "<group>"; };
+		E43E10021BCC9CA90018B6D7 /* ActivityReleaseCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityReleaseCollectionView.h; sourceTree = "<group>"; };
+		E43E10031BCC9CA90018B6D7 /* ActivityReleaseCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityReleaseCollectionView.m; sourceTree = "<group>"; };
+		E43E10051BCC9CE50018B6D7 /* NameAndPlaceCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NameAndPlaceCollectionViewCell.h; sourceTree = "<group>"; };
+		E43E10061BCC9CE50018B6D7 /* NameAndPlaceCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NameAndPlaceCollectionViewCell.m; sourceTree = "<group>"; };
+		E43E10081BCC9D4A0018B6D7 /* DescriptionCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DescriptionCollectionViewCell.h; sourceTree = "<group>"; };
+		E43E10091BCC9D4A0018B6D7 /* DescriptionCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DescriptionCollectionViewCell.m; sourceTree = "<group>"; };
+		E43E100B1BCC9D670018B6D7 /* DateAndTimeCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DateAndTimeCollectionViewCell.h; sourceTree = "<group>"; };
+		E43E100C1BCC9D670018B6D7 /* DateAndTimeCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DateAndTimeCollectionViewCell.m; sourceTree = "<group>"; };
+		E43E100E1BCC9D8D0018B6D7 /* TypeCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TypeCollectionViewCell.h; sourceTree = "<group>"; };
+		E43E100F1BCC9D8D0018B6D7 /* TypeCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TypeCollectionViewCell.m; sourceTree = "<group>"; };
 		E455DCE21BCB683C00B78E54 /* ActivityChoiceController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityChoiceController.h; sourceTree = "<group>"; };
 		E455DCE31BCB683C00B78E54 /* ActivityChoiceController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityChoiceController.m; sourceTree = "<group>"; };
 		E455DCE51BCB686E00B78E54 /* ActivityChoiceTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityChoiceTableView.h; sourceTree = "<group>"; };
@@ -3363,6 +3378,16 @@
 			children = (
 				E455DCF21BCB8F6D00B78E54 /* ActivityReleaseController.h */,
 				E455DCF31BCB8F6D00B78E54 /* ActivityReleaseController.m */,
+				E43E10021BCC9CA90018B6D7 /* ActivityReleaseCollectionView.h */,
+				E43E10031BCC9CA90018B6D7 /* ActivityReleaseCollectionView.m */,
+				E43E10051BCC9CE50018B6D7 /* NameAndPlaceCollectionViewCell.h */,
+				E43E10061BCC9CE50018B6D7 /* NameAndPlaceCollectionViewCell.m */,
+				E43E10081BCC9D4A0018B6D7 /* DescriptionCollectionViewCell.h */,
+				E43E10091BCC9D4A0018B6D7 /* DescriptionCollectionViewCell.m */,
+				E43E100B1BCC9D670018B6D7 /* DateAndTimeCollectionViewCell.h */,
+				E43E100C1BCC9D670018B6D7 /* DateAndTimeCollectionViewCell.m */,
+				E43E100E1BCC9D8D0018B6D7 /* TypeCollectionViewCell.h */,
+				E43E100F1BCC9D8D0018B6D7 /* TypeCollectionViewCell.m */,
 			);
 			path = ActivityRelease;
 			sourceTree = "<group>";
@@ -3889,6 +3914,7 @@
 				042AADC61BCB4AC40056C09F /* JoinInHeadView.m in Sources */,
 				333122D91B806F7E00D3D032 /* RobotManager.m in Sources */,
 				333122481B806EDB00D3D032 /* Emoji.m in Sources */,
+				E43E10041BCC9CA90018B6D7 /* ActivityReleaseCollectionView.m in Sources */,
 				20DA16FA1BC7C51200A61B37 /* MGCEventCellLayoutAttributes.m in Sources */,
 				20E033F61B8427AF002E4583 /* YCommonShare.m in Sources */,
 				3331224D1B806EDB00D3D032 /* MWGridCell.m in Sources */,
@@ -3920,6 +3946,7 @@
 				20E3EF931BC9064C00B3D27E /* WeekViewController.m in Sources */,
 				20DA17031BC7C51200A61B37 /* MGCMonthPlannerViewDayCell.m in Sources */,
 				333122711B806EDB00D3D032 /* PSTGridLayoutSection.m in Sources */,
+				E43E10071BCC9CE50018B6D7 /* NameAndPlaceCollectionViewCell.m in Sources */,
 				6518A2481B80429300AEB79D /* TagListTableView.m in Sources */,
 				656234771B837FDC00651C88 /* YFaceImageView.m in Sources */,
 				E4E28CE61BB3DCAF00E3808A /* FunDetailViewController.m in Sources */,
@@ -3951,7 +3978,9 @@
 				200E397C1B4E818B000B587B /* main.m in Sources */,
 				333122351B806EDB00D3D032 /* EMChatBaseBubbleView.m in Sources */,
 				6592DCDE1B806A9B004CD118 /* MessageTableViewCell.m in Sources */,
+				E43E100D1BCC9D670018B6D7 /* DateAndTimeCollectionViewCell.m in Sources */,
 				E46A3A5B1BC90330009AE8F1 /* TagCollectionCell.m in Sources */,
+				E43E100A1BCC9D4A0018B6D7 /* DescriptionCollectionViewCell.m in Sources */,
 				20E1222D1B708CDC00F90BD3 /* TagListViewController.m in Sources */,
 				E4BE2DAD1BC798A600124F22 /* ContactsInfoSecondTableViewCell.m in Sources */,
 				650C6C061B8860FF00A89AC9 /* YCommonEditViewController.m in Sources */,
@@ -4017,6 +4046,7 @@
 				20DA16FF1BC7C51200A61B37 /* MGCMonthPlannerBackgroundView.m in Sources */,
 				3334AC461B831B2200FDDCCB /* ContactsInfoDetailTableView.m in Sources */,
 				044DA0671BBA7E4700AA321A /* ActivityTopView.m in Sources */,
+				E43E10101BCC9D8D0018B6D7 /* TypeCollectionViewCell.m in Sources */,
 				20E18D561B807752005B75EE /* AssociationsListViewController.m in Sources */,
 				333122541B806EDB00D3D032 /* DACircularProgressView.m in Sources */,
 				3395498F1B81C67000F9ECB1 /* GroupInfoDetailHeaderView.m in Sources */,

@@ -7,8 +7,11 @@
 //
 
 #import "ActivityReleaseController.h"
+#import "ActivityReleaseCollectionView.h"
 
 @interface ActivityReleaseController ()
+
+@property (nonatomic,strong) ActivityReleaseCollectionView * releaseCollectionView;
 
 @end
 
@@ -16,7 +19,21 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    
+    [self setUpUI];
+}
+
+-(void)setUpUI
+{
+    UILabel * topLabel = [[UILabel alloc] init];
+    topLabel.backgroundColor = [UIColor grayColor];
+    topLabel.text = @"有创意的发布文案有助于薅到更多好玩的人";
+    topLabel.font = CONTENT_FONT(12);
+    [self.view addSubview:topLabel];
+    [topLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.left.right.mas_equalTo(0);
+        make.height.mas_equalTo(50);
+    }];
 }
 
 - (void)didReceiveMemoryWarning {

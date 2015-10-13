@@ -86,7 +86,7 @@
         TKDateLabel *label = [[TKDateLabel alloc] initWithFrame:CGRectMake(minX+(DAY_LABEL_WIDTH+per)*i, 16, DAY_LABEL_WIDTH, DAY_LABEL_WIDTH)];
         label.weekend = i % 6 == 0;
         //label.backgroundColor = [UIColor redColor];
-        [self insertSubview:label atIndex:0];
+        [self addSubview:label];
         [labels addObject:label];
     }
     
@@ -118,11 +118,11 @@
         
         self.calendar = calendar;
         
-        [self initDayView];
-        
         [self initHeadView];
         
         [self initDateView];
+        
+        [self initDayView];
     }
     
     return self;
@@ -159,7 +159,7 @@
     
     [self addSubview:self.daysScrollView];
 
-    UIView *dayContainerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.daysScrollView.width, CGRectGetHeight(self.daysScrollView.frame))];
+    UIView *dayContainerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.daysScrollView.width*3, CGRectGetHeight(self.daysScrollView.frame))];
     [self.daysScrollView addSubview:dayContainerView];
     
     CGRect weekFrame = self.daysScrollView.frame;
@@ -172,7 +172,8 @@
             label.userInteractionEnabled = YES;
             [label addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(didTapWeekdayLabel:)]];
         }
-        [dayContainerView insertSubview:weekdayView atIndex:0];
+        [dayContainerView addSubview:weekdayView];
+        [weekdayView bringSubviewToFront:dayContainerView];
         [self.weekdayPages addObject:weekdayView];
     }
 }
@@ -364,8 +365,8 @@
     
     if([label.date isSameDay:self.currentDay timeZone:self.calendar.timeZone]) return;
     
-    BOOL moveRight = [label.date compare:self.currentDay] == NSOrderedDescending;
-    NSInteger pageToUpdate = moveRight ? 2 : 0;
+//    BOOL moveRight = [label.date compare:self.currentDay] == NSOrderedDescending;
+//    NSInteger pageToUpdate = moveRight ? 2 : 0;
     
     self.userInteractionEnabled = NO;
     
