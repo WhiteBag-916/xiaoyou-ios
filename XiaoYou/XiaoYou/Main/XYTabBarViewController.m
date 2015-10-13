@@ -15,7 +15,7 @@
 #import "XYContactsInfoDetailViewController.h"
 #import "YCommonEditViewController.h"
 #import "ProfilePersonListController.h"
-#import "ActivityViewController.h"
+#import "AvailableViewController.h"
 
 #define kTag_TabBar_Base 0
 #define kTag_TabBar_Message kTag_TabBar_Base + 1
@@ -28,7 +28,7 @@
 @property(nonatomic,strong)XYMessageAndContactsViewController *messageVC;
 @property(nonatomic,strong)UINavigationController *messageViewCotroller;
 @property (nonatomic, strong) UINavigationController *feedListViewCotroller;
-@property (nonatomic, strong) UINavigationController *activityViewController;
+@property (nonatomic, strong) UINavigationController *availableViewController;
 
 @end
 
@@ -54,7 +54,7 @@
     ProfileViewController *profileVC = [[ProfileViewController alloc] init];
     
     _messageViewCotroller = [[UINavigationController alloc] initWithRootViewController:_messageVC];
-    _activityViewController = [[UINavigationController alloc] initWithRootViewController:[[ActivityViewController alloc] init]];
+    _availableViewController = [[UINavigationController alloc] initWithRootViewController:[[AvailableViewController alloc] init]];
     _feedListViewCotroller = [[UINavigationController alloc] initWithRootViewController:feedVC];
     UINavigationController *profileViewCotroller = [[UINavigationController alloc] initWithRootViewController:profileVC];
     
@@ -67,12 +67,12 @@
     _messageViewCotroller.tabBarItem = messageItem;
     
     //有空
-    UITabBarItem *activityItem = [[UITabBarItem alloc] initWithTitle:@"有空"
+    UITabBarItem *availableItem = [[UITabBarItem alloc] initWithTitle:@"有空"
                                                               image:[UIImage imageNamed:@"toolbar-chat"]
                                                                 tag:kTag_TabBar_Message];
-    activityItem.selectedImage = [[UIImage imageNamed:@"toolbar-chat-chosen"]
+    availableItem.selectedImage = [[UIImage imageNamed:@"toolbar-chat-chosen"]
                                  imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
-    _activityViewController.tabBarItem = activityItem;
+    _availableViewController.tabBarItem = availableItem;
     
     //Feed
     UITabBarItem *feedListItem = [[UITabBarItem alloc] initWithTitle:@"人脉"
@@ -92,7 +92,7 @@
     profileViewCotroller.tabBarItem = profileItem;
     
     self.tabBar.tintColor = KCOLORGREEN_009688;
-    self.viewControllers = @[_messageViewCotroller, _activityViewController, _feedListViewCotroller, profileViewCotroller];
+    self.viewControllers = @[_messageViewCotroller, _availableViewController, _feedListViewCotroller, profileViewCotroller];
 }
 
 //feed提醒未读数
