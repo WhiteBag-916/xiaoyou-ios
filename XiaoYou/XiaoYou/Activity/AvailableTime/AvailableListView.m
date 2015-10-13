@@ -79,8 +79,24 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    //ActivityDetailViewController *detailVC = [[ActivityDetailViewController alloc]init];
-    //[self.viewController.navigationController pushViewController:detailVC animated:YES needHiddenBottomBar:YES];
+    
+}
+
+
+-(void)gotoDetailWithCellType:(CELLTYPE)type
+{
+    //日程
+    if (type == SCHEDULECARD_CELL) {
+        
+    }
+    //空闲教室
+    else if (type == STUDYROOM_CELL) {
+        
+    }
+    //可以蹭的课
+    else if (type == SCHEDULECARD_CELL) {
+        
+    }
 }
 
 
