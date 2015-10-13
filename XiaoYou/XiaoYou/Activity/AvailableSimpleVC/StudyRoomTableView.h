@@ -11,6 +11,4 @@
 
 @interface StudyRoomTableView : YTableView
 
-@property (nonatomic, weak) YViewController *superVC;
-
 @end
