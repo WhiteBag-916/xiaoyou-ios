@@ -6,8 +6,10 @@
 //  Copyright © 2015年 xc. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "YTableViewCell.h"
 
-@interface RubLessonTableViewCell : UITableViewCell
+extern NSString *const kRubLessonTableViewCell;
+
+@interface RubLessonTableViewCell : YTableViewCell
 
 @end

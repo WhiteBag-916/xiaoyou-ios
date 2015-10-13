@@ -65,6 +65,10 @@ NSInteger const kLoginCommonTextFieldTag = 1999;
     return label;
 }
 
++ (UILabel *)initLabel:(UIFont *)font color:(UIColor *)color text:(NSString *)text alignment:(NSTextAlignment)alignment {
+    return [self initLabel:font color:color text:text frame:CGRectZero alignment:alignment];
+}
+
 + (UIImageView *)initImageView:(UIImage *)image frame:(CGRect)frame
 {
     UIImageView *imageView = [[UIImageView alloc] initWithFrame:frame];

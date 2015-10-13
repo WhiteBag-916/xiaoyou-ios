@@ -6,8 +6,10 @@
 //  Copyright © 2015年 xc. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "YTableViewCell.h"
 
-@interface StudyRoomTableViewCell : UITableViewCell
+extern NSString *const kStudyRoomTableViewCell;
+
+@interface StudyRoomTableViewCell : YTableViewCell
 
 @end

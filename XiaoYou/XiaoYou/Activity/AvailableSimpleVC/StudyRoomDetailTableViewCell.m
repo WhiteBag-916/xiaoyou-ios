@@ -8,6 +8,8 @@
 
 #import "StudyRoomDetailTableViewCell.h"
 
+NSString *const kStudyRoomDetailTableViewCell = @"StudyRoomDetailTableViewCellId";
+
 @implementation StudyRoomDetailTableViewCell
 
 - (void)awakeFromNib {

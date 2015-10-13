@@ -7,15 +7,49 @@
 //
 
 #import "RubLessonTableView.h"
+#import "RubLessonTableViewCell.h"
+
+@interface RubLessonTableView ()
+<UITableViewDataSource
+,UITableViewDelegate>
+
+@end
 
 @implementation RubLessonTableView
 
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect {
-    // Drawing code
+- (instancetype)initWithFrame:(CGRect)frame
+{
+    self = [super initWithFrame:frame];
+    if (self) {
+        self.delegate = self;
+        self.dataSource = self;
+        self.separatorStyle = UITableViewCellSeparatorStyleNone;
+        
+        [self registerClass:[RubLessonTableViewCell class] forCellReuseIdentifier:kRubLessonTableViewCell];
+    }
+    return self;
 }
-*/
 
+#pragma mark - UITableViewDataSource
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return 10;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    RubLessonTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kRubLessonTableViewCell];
+    return cell;
+}
+
+#pragma mark - UITableViewDelegate
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return SCALE_NUM(105);
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    
+}
 @end
