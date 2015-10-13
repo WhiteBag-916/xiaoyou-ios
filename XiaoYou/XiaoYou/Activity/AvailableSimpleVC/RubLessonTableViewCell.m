@@ -7,7 +7,6 @@
 //
 
 #import "RubLessonTableViewCell.h"
-#import "YUtils+UI.h"
 
 NSString *const kRubLessonTableViewCell = @"RubLessonTableViewCellId";
 
@@ -140,15 +139,10 @@ NSString *const kRubLessonTableViewCell = @"RubLessonTableViewCellId";
         make.left.equalTo(departmentsLabel.mas_right).offset(K_NAMELAB_L);
         make.right.mas_equalTo(K_NAMELAB_L);
     }];
-    
-    //线
-    UIView *line = [[UIView alloc] init];
-    [self.contentView addSubview:line];
-    [line mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.bottom.right.equalTo(self.contentView);
-        make.height.mas_equalTo(1);
-    }];
-    line.backgroundColor = KCOLORGREEN_B2;
+}
+
+- (BOOL)needLine {
+    return YES;
 }
 
 @end

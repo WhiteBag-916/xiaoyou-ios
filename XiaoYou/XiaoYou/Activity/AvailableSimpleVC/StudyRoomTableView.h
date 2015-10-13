@@ -7,7 +7,10 @@
 //
 
 #import "YTableView.h"
+#import "YViewController.h"
 
 @interface StudyRoomTableView : YTableView
+
+@property (nonatomic, weak) YViewController *superVC;
 
 @end
