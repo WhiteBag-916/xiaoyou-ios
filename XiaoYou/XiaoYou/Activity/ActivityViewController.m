@@ -13,6 +13,7 @@
 #import "RemindViewController.h"
 #import "ScheduleViewController.h"
 #import "ActivityChoiceController.h"
+#import "ActivityReleaseController.h"
 
 @interface ActivityViewController ()
 @property (nonatomic,strong) ActivityListView *funnyList;
@@ -73,7 +74,8 @@
     //SetupTableViewController *setupVC = [[SetupTableViewController alloc] init];
     //[self.navigationController pushViewController:setupVC animated:YES needHiddenBottomBar:YES];
     
-    //ActivityReleaseController
+    ActivityReleaseController *activityVC = [[ActivityReleaseController alloc]init];
+    [self.navigationController pushViewController:activityVC animated:YES needHiddenBottomBar:YES];
 }
 
 //筛选Action
