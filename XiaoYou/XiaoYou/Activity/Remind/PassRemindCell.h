@@ -10,6 +10,9 @@
 #import "RemindInfo.h"
 @interface PassRemindCell : UITableViewCell
 
+
++(PassRemindCell*)passRemindCellWithTableView:(UITableView*)tableView;
+
 -(void)setData:(RemindInfo*)remindInfo;
 
 @end

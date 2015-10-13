@@ -70,7 +70,7 @@
         make.height.mas_equalTo(SCALE_NUM(60));
     }];
     
-    /*_tagsView = [[TagsCommonView alloc]init];
+    _tagsView = [[TagsCommonView alloc]init];
     [self addSubview:_tagsView];
     [_tagsView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.mas_equalTo(140);
@@ -94,14 +94,6 @@
     profile.propetiesCommon = [NSArray arrayWithObjects:tag1,tag2,tag3,nil];
     profile.tagModels = [NSArray arrayWithObjects:tag1,tag2,tag3, nil];
     [_tagsView setData:profile];
-    //标签
-    _tagsView = [[TagsCommonView alloc] init];
-    [self.contentView addSubview:_tagsView];
-    [_tagsView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(_tagsView.mas_bottom);
-        //make.left.equalTo(_nameLabel.mas_left);
-        make.right.bottom.equalTo(self.contentView);
-    }];*/
 }
 
 

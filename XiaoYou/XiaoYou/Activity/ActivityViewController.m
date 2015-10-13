@@ -68,10 +68,12 @@
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:view];
 }
 
-//发布Action
+//设置Action
 -(void)setupBtnAction {
-    SetupTableViewController *setupVC = [[SetupTableViewController alloc] init];
-    [self.navigationController pushViewController:setupVC animated:YES needHiddenBottomBar:YES];
+    //SetupTableViewController *setupVC = [[SetupTableViewController alloc] init];
+    //[self.navigationController pushViewController:setupVC animated:YES needHiddenBottomBar:YES];
+    
+    //ActivityReleaseController
 }
 
 //筛选Action
