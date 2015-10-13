@@ -8,8 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-extern NSString *const kActivityBaseCollectionViewCell;
-
 @interface ActivityBaseCollectionViewCell : UICollectionViewCell
+
+@property (nonatomic,strong) UIView * backView;
+@property (nonatomic,strong) UIImageView * numImageView;
+@property (nonatomic,strong) UILabel * typeLabel;
 
 @end

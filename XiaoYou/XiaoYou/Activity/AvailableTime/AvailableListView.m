@@ -11,7 +11,8 @@
 #import "ScheduleCardCell.h"
 #import "StudyRoomCell.h"
 #import "ScroungeCourseCell.h"
-#import "RemindViewController.h"
+#import "AvailableSimpleViewController.h"
+#import "WeekViewController.h"
 
 @interface AvailableListView ()<UITableViewDataSource,UITableViewDelegate>
 
@@ -84,21 +85,24 @@
 }
 
 
-/*-(void)gotoDetailWithCellType:(CELLTYPE)type
+-(void)gotoDetailWithCellType:(CELLTYPE)type
 {
     //日程
     if (type == SCHEDULECARD_CELL) {
-        RemindViewController *remindVC = [[RemindViewController alloc]init];
+        WeekViewController *vc = [[WeekViewController alloc] init];
+        [self.superVC.navigationController pushViewController:vc animated:YES needHiddenBottomBar:YES];
     }
     //空闲教室
     else if (type == STUDYROOM_CELL) {
-        
+        AvailableSimpleViewController *vc = [[AvailableSimpleViewController alloc] initWithType:AvailableSimpleTypeStudyRoom];
+        [self.superVC.navigationController pushViewController:vc animated:YES needHiddenBottomBar:YES];
     }
     //可以蹭的课
     else if (type == SCHEDULECARD_CELL) {
-        
+        AvailableSimpleViewController *vc = [[AvailableSimpleViewController alloc] initWithType:AvailableSimpleTypeStudyRoom];
+        [self.superVC.navigationController pushViewController:vc animated:YES needHiddenBottomBar:YES];
     }
-}*/
+}
 
 
 @end

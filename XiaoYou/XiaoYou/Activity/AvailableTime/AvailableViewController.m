@@ -37,6 +37,7 @@
 {
     if (!_availableListView) {
         _availableListView = [[AvailableListView alloc]init];
+        _availableListView.superVC = self;
         [self.view addSubview:_availableListView];
         [_availableListView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.edges.equalTo(self.view);

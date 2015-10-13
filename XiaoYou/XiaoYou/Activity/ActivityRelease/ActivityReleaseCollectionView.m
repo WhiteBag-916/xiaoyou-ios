@@ -7,7 +7,7 @@
 //
 
 #import "ActivityReleaseCollectionView.h"
-#import "ActivityBaseCollectionViewCell.h"
+#import "NameAndPlaceCollectionViewCell.h"
 
 @interface ActivityReleaseCollectionView ()<UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout>
 
@@ -24,7 +24,7 @@
         self.dataSource = self;
         self.scrollEnabled = YES;
         self.pagingEnabled = YES;
-        [self registerClass:[ActivityBaseCollectionViewCell class] forCellWithReuseIdentifier:kActivityBaseCollectionViewCell];
+        [self registerClass:[NameAndPlaceCollectionViewCell class] forCellWithReuseIdentifier:kNameAndPlaceCollectionViewCell];
         
     }
     return self;
@@ -44,7 +44,8 @@
 
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    ActivityBaseCollectionViewCell * cell = (ActivityBaseCollectionViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:kActivityBaseCollectionViewCell forIndexPath:indexPath];
+    
+    NameAndPlaceCollectionViewCell * cell = (NameAndPlaceCollectionViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:kNameAndPlaceCollectionViewCell forIndexPath:indexPath];
     cell.backgroundColor = [UIColor magentaColor];
     return cell;
 }

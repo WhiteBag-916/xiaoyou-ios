@@ -8,6 +8,8 @@
 
 #import "TypeCollectionViewCell.h"
 
+NSString *const kTypeCollectionViewCell = @"TypeCollectionViewCellId";
+
 @implementation TypeCollectionViewCell
 
 @end

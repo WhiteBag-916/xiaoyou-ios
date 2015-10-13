@@ -10,4 +10,6 @@
 
 @interface YTableViewCell : UITableViewCell
 
+- (BOOL)needLine;
+
 @end
