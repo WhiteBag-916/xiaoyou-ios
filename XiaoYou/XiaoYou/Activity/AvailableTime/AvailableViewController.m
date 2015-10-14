@@ -44,7 +44,7 @@
     _promptView.alpha = 0.6;
     UIWindow *window = [UIApplication sharedApplication].keyWindow;
     
-    [self.view addSubview:_promptView];
+    [window addSubview:_promptView];
     [_promptView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.equalTo(window);
     }];
@@ -52,7 +52,7 @@
     NSString *imageName = @"havetime_box_calender";
     UIImage *image = [[UIImage imageNamed:imageName]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     _guideImageView = [[UIImageView alloc] initWithImage:image];
-    [self.view addSubview:_guideImageView];
+    [window addSubview:_guideImageView];
     
     
     [_guideImageView mas_makeConstraints:^(MASConstraintMaker *make) {
