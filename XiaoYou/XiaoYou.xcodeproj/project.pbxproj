@@ -172,6 +172,7 @@
 		20DA63761B7482DE007D22AC /* FeedListTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 20DA63751B7482DE007D22AC /* FeedListTableView.m */; };
 		20DA8B401B8F1E18007D0CDE /* hot@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 20DA8B3E1B8F1E18007D0CDE /* hot@2x.png */; };
 		20DA8B411B8F1E18007D0CDE /* hot@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 20DA8B3F1B8F1E18007D0CDE /* hot@3x.png */; };
+		20DAA29C1BCDFCE300420234 /* CommonPopView.m in Sources */ = {isa = PBXBuildFile; fileRef = 20DAA29B1BCDFCE300420234 /* CommonPopView.m */; settings = {ASSET_TAGS = (); }; };
 		20DAAA6C1BCD05F5006DF231 /* WeekViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20DAAA6B1BCD05F5006DF231 /* WeekViewController.m */; settings = {ASSET_TAGS = (); }; };
 		20DAAA701BCD05F5006DF231 /* AvailableSimpleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20DAAA6F1BCD05F5006DF231 /* AvailableSimpleViewController.m */; settings = {ASSET_TAGS = (); }; };
 		20DAAA781BCD05F5006DF231 /* MyFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 20DAAA731BCD05F5006DF231 /* MyFlowLayout.m */; settings = {ASSET_TAGS = (); }; };
@@ -918,6 +919,8 @@
 		20DA63751B7482DE007D22AC /* FeedListTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedListTableView.m; sourceTree = "<group>"; };
 		20DA8B3E1B8F1E18007D0CDE /* hot@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "hot@2x.png"; sourceTree = "<group>"; };
 		20DA8B3F1B8F1E18007D0CDE /* hot@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "hot@3x.png"; sourceTree = "<group>"; };
+		20DAA29A1BCDFCE300420234 /* CommonPopView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonPopView.h; sourceTree = "<group>"; };
+		20DAA29B1BCDFCE300420234 /* CommonPopView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommonPopView.m; sourceTree = "<group>"; };
 		20DAAA6A1BCD05F5006DF231 /* WeekViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeekViewController.h; sourceTree = "<group>"; };
 		20DAAA6B1BCD05F5006DF231 /* WeekViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeekViewController.m; sourceTree = "<group>"; };
 		20DAAA6E1BCD05F5006DF231 /* AvailableSimpleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AvailableSimpleViewController.h; sourceTree = "<group>"; };
@@ -2273,6 +2276,8 @@
 				2076A2FF1B81C590001FFBAC /* YCommonAlertView.m */,
 				20DD4B331B734781007C352C /* CommonSwitchView.h */,
 				20DD4B341B734781007C352C /* CommonSwitchView.m */,
+				20DAA29A1BCDFCE300420234 /* CommonPopView.h */,
+				20DAA29B1BCDFCE300420234 /* CommonPopView.m */,
 				656234751B837FDC00651C88 /* YFaceImageView.h */,
 				656234761B837FDC00651C88 /* YFaceImageView.m */,
 				20E033F41B8427AF002E4583 /* YCommonShare.h */,
@@ -4314,6 +4319,7 @@
 				654602171B7F2FF00039F622 /* FeedImageGroup.m in Sources */,
 				20E033FD1B846114002E4583 /* SearchFilterViewController.m in Sources */,
 				20DAAA9D1BCD05F5006DF231 /* StudyRoomDetailTableView.m in Sources */,
+				20DAA29C1BCDFCE300420234 /* CommonPopView.m in Sources */,
 				20E18D551B807752005B75EE /* AssociationsListTableViewCell.m in Sources */,
 				20DAAA9B1BCD05F5006DF231 /* RubLessonTableView.m in Sources */,
 				65969DDF1B877356001DD348 /* ProfileFeedListView.m in Sources */,
