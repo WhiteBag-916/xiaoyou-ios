@@ -32,18 +32,15 @@ NSString *const kChooseSchoolTableViewCell = @"ChooseSchoolTableViewCellId";
             make.edges.equalTo(self.contentView).insets(UIEdgeInsetsMake(0, 11, 0, 0));
         }];
         
-        UIView *line = [[UIView alloc] init];
-        [self.contentView addSubview:line];
-        [line mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.left.bottom.right.equalTo(self.contentView);
-            make.height.mas_equalTo(1);
-        }];
-        line.backgroundColor = [UIColor hexChangeFloat:@"c0c2c1"];
-        
         self.contentView.backgroundColor = KCOLORGREEN_e6ebea;
     }
     
     return self;
+}
+
+- (BOOL)needLine
+{
+    return YES;
 }
 
 - (void)initData:(NSString *)name {

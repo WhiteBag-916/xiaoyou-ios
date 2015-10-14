@@ -10,7 +10,6 @@
 
 #define DAY_LABEL_WIDTH 35.0f
 #define DAY_FONT_SIZE 18
-#define WEEKEND_TEXT_COLOR [UIColor colorWithWhite:167/255. alpha:1]
 
 @interface TKDateLabel : UILabel
 @property (nonatomic,strong) NSDate *date;
@@ -39,12 +38,12 @@
 - (void) _updateLabelColorState{
     
     if(self.selected){
-        self.backgroundColor = self.today ? self.tintColor : [UIColor blackColor];
+        self.backgroundColor = self.today ? KCOLORGREEN_g1 : KCOLORGREEN_B5;
         self.textColor = [UIColor whiteColor];
         self.font = [UIFont boldSystemFontOfSize:DAY_FONT_SIZE];
     }else{
-        UIColor *clr = self.weekend ? WEEKEND_TEXT_COLOR : [UIColor blackColor];
-        self.textColor = self.today ? self.tintColor : clr;
+        UIColor *clr = self.weekend ? KCOLORGREEN_B5 : [UIColor blackColor];
+        self.textColor = self.today ? KCOLORGREEN_g1 : clr;
         self.backgroundColor = [UIColor clearColor];
         self.font = [UIFont systemFontOfSize:DAY_FONT_SIZE];
     }
@@ -144,7 +143,7 @@
         label.font = [UIFont systemFontOfSize:10];
 //        label.text = [str substringToIndex:1];
         label.text = str;
-        label.textColor = cnt == 0 || cnt == 6 ? WEEKEND_TEXT_COLOR : [UIColor blackColor];
+        label.textColor = cnt == 0 || cnt == 6 ? KCOLORGREEN_B5 : [UIColor blackColor];
         label.textAlignment = NSTextAlignmentCenter;
         label.userInteractionEnabled = NO;
         [self addSubview:label];

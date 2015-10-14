@@ -240,6 +240,10 @@ NSString *const KCommentTableViewCell = @"CommentTableViewCell";
     
 }
 
+- (BOOL)needLine {
+    return YES;
+}
+
 - (void)setData:(id)info
 {
     

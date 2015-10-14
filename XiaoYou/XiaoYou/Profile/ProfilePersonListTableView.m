@@ -35,6 +35,8 @@
         self.tableFooterView = [UIView new];
         self.backgroundColor = KCOLORGREEN_f2f2f2;
         _personListArray = [NSMutableArray array];
+        
+        self.separatorStyle = UITableViewCellSeparatorStyleNone;
     }
     return self;
 }
