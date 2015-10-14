@@ -172,6 +172,7 @@
 		20DA63761B7482DE007D22AC /* FeedListTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 20DA63751B7482DE007D22AC /* FeedListTableView.m */; };
 		20DA8B401B8F1E18007D0CDE /* hot@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 20DA8B3E1B8F1E18007D0CDE /* hot@2x.png */; };
 		20DA8B411B8F1E18007D0CDE /* hot@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 20DA8B3F1B8F1E18007D0CDE /* hot@3x.png */; };
+		20DAA29C1BCDFCE300420234 /* CommonPopView.m in Sources */ = {isa = PBXBuildFile; fileRef = 20DAA29B1BCDFCE300420234 /* CommonPopView.m */; settings = {ASSET_TAGS = (); }; };
 		20DAAA6C1BCD05F5006DF231 /* WeekViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20DAAA6B1BCD05F5006DF231 /* WeekViewController.m */; settings = {ASSET_TAGS = (); }; };
 		20DAAA701BCD05F5006DF231 /* AvailableSimpleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20DAAA6F1BCD05F5006DF231 /* AvailableSimpleViewController.m */; settings = {ASSET_TAGS = (); }; };
 		20DAAA781BCD05F5006DF231 /* MyFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 20DAAA731BCD05F5006DF231 /* MyFlowLayout.m */; settings = {ASSET_TAGS = (); }; };
@@ -184,6 +185,14 @@
 		20DAAA9F1BCD05F5006DF231 /* StudyRoomTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 20DAAA981BCD05F5006DF231 /* StudyRoomTableView.m */; settings = {ASSET_TAGS = (); }; };
 		20DAAAA01BCD05F5006DF231 /* StudyRoomTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 20DAAA9A1BCD05F5006DF231 /* StudyRoomTableViewCell.m */; settings = {ASSET_TAGS = (); }; };
 		20DAAAA31BCD05F5006DF231 /* ActivityBaseCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 20DAAAA21BCD05F5006DF231 /* ActivityBaseCollectionViewCell.m */; settings = {ASSET_TAGS = (); }; };
+		20DAAAAA1BCD05F5006DF231 /* havetime_icon_academy@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 20DAAAA41BCD05F5006DF231 /* havetime_icon_academy@2x.png */; settings = {ASSET_TAGS = (); }; };
+		20DAAAAB1BCD05F5006DF231 /* havetime_icon_academy@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 20DAAAA51BCD05F5006DF231 /* havetime_icon_academy@3x.png */; settings = {ASSET_TAGS = (); }; };
+		20DAAAAC1BCD05F5006DF231 /* havetime_icon_classname@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 20DAAAA61BCD05F5006DF231 /* havetime_icon_classname@2x.png */; settings = {ASSET_TAGS = (); }; };
+		20DAAAAD1BCD05F5006DF231 /* havetime_icon_classname@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 20DAAAA71BCD05F5006DF231 /* havetime_icon_classname@3x.png */; settings = {ASSET_TAGS = (); }; };
+		20DAAAAE1BCD05F5006DF231 /* havetime_icon_teacher@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 20DAAAA81BCD05F5006DF231 /* havetime_icon_teacher@2x.png */; settings = {ASSET_TAGS = (); }; };
+		20DAAAAF1BCD05F5006DF231 /* havetime_icon_teacher@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 20DAAAA91BCD05F5006DF231 /* havetime_icon_teacher@3x.png */; settings = {ASSET_TAGS = (); }; };
+		20DAAAB21BCD05F5006DF231 /* common_icon_classroom@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 20DAAAB01BCD05F5006DF231 /* common_icon_classroom@2x.png */; settings = {ASSET_TAGS = (); }; };
+		20DAAAB31BCD05F5006DF231 /* common_icon_classroom@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 20DAAAB11BCD05F5006DF231 /* common_icon_classroom@3x.png */; settings = {ASSET_TAGS = (); }; };
 		20DAE14A1B88195C00607996 /* login_tip.png in Resources */ = {isa = PBXBuildFile; fileRef = 20DAE1491B88195C00607996 /* login_tip.png */; };
 		20DAE14D1B8821DD00607996 /* PerfectInformationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20DAE14C1B8821DD00607996 /* PerfectInformationViewController.m */; };
 		20DAE1521B882CFF00607996 /* register-number@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 20DAE14E1B882CFF00607996 /* register-number@2x.png */; };
@@ -611,8 +620,9 @@
 		65F55A9E1B897C4700ED4348 /* ProfileTagViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 65F55A9D1B897C4700ED4348 /* ProfileTagViewController.m */; };
 		65F55AA11B899EBC00ED4348 /* UIImageView+Ext.m in Sources */ = {isa = PBXBuildFile; fileRef = 65F55AA01B899EBC00ED4348 /* UIImageView+Ext.m */; };
 		65F82F841B85E74A00FF6E2D /* FeedPublishViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 65F82F831B85E74A00FF6E2D /* FeedPublishViewController.m */; };
+		E426A5661BCD0D620064A415 /* PlaceCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E426A5651BCD0D620064A415 /* PlaceCollectionViewCell.m */; settings = {ASSET_TAGS = (); }; };
 		E43E10041BCC9CA90018B6D7 /* ActivityReleaseCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = E43E10031BCC9CA90018B6D7 /* ActivityReleaseCollectionView.m */; settings = {ASSET_TAGS = (); }; };
-		E43E10071BCC9CE50018B6D7 /* NameAndPlaceCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E43E10061BCC9CE50018B6D7 /* NameAndPlaceCollectionViewCell.m */; settings = {ASSET_TAGS = (); }; };
+		E43E10071BCC9CE50018B6D7 /* NameCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E43E10061BCC9CE50018B6D7 /* NameCollectionViewCell.m */; settings = {ASSET_TAGS = (); }; };
 		E43E100A1BCC9D4A0018B6D7 /* DescriptionCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E43E10091BCC9D4A0018B6D7 /* DescriptionCollectionViewCell.m */; settings = {ASSET_TAGS = (); }; };
 		E43E100D1BCC9D670018B6D7 /* DateAndTimeCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E43E100C1BCC9D670018B6D7 /* DateAndTimeCollectionViewCell.m */; settings = {ASSET_TAGS = (); }; };
 		E43E10101BCC9D8D0018B6D7 /* TypeCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E43E100F1BCC9D8D0018B6D7 /* TypeCollectionViewCell.m */; settings = {ASSET_TAGS = (); }; };
@@ -909,6 +919,8 @@
 		20DA63751B7482DE007D22AC /* FeedListTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedListTableView.m; sourceTree = "<group>"; };
 		20DA8B3E1B8F1E18007D0CDE /* hot@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "hot@2x.png"; sourceTree = "<group>"; };
 		20DA8B3F1B8F1E18007D0CDE /* hot@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "hot@3x.png"; sourceTree = "<group>"; };
+		20DAA29A1BCDFCE300420234 /* CommonPopView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonPopView.h; sourceTree = "<group>"; };
+		20DAA29B1BCDFCE300420234 /* CommonPopView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommonPopView.m; sourceTree = "<group>"; };
 		20DAAA6A1BCD05F5006DF231 /* WeekViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeekViewController.h; sourceTree = "<group>"; };
 		20DAAA6B1BCD05F5006DF231 /* WeekViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeekViewController.m; sourceTree = "<group>"; };
 		20DAAA6E1BCD05F5006DF231 /* AvailableSimpleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AvailableSimpleViewController.h; sourceTree = "<group>"; };
@@ -933,6 +945,14 @@
 		20DAAA9A1BCD05F5006DF231 /* StudyRoomTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StudyRoomTableViewCell.m; sourceTree = "<group>"; };
 		20DAAAA11BCD05F5006DF231 /* ActivityBaseCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityBaseCollectionViewCell.h; sourceTree = "<group>"; };
 		20DAAAA21BCD05F5006DF231 /* ActivityBaseCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityBaseCollectionViewCell.m; sourceTree = "<group>"; };
+		20DAAAA41BCD05F5006DF231 /* havetime_icon_academy@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "havetime_icon_academy@2x.png"; sourceTree = "<group>"; };
+		20DAAAA51BCD05F5006DF231 /* havetime_icon_academy@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "havetime_icon_academy@3x.png"; sourceTree = "<group>"; };
+		20DAAAA61BCD05F5006DF231 /* havetime_icon_classname@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "havetime_icon_classname@2x.png"; sourceTree = "<group>"; };
+		20DAAAA71BCD05F5006DF231 /* havetime_icon_classname@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "havetime_icon_classname@3x.png"; sourceTree = "<group>"; };
+		20DAAAA81BCD05F5006DF231 /* havetime_icon_teacher@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "havetime_icon_teacher@2x.png"; sourceTree = "<group>"; };
+		20DAAAA91BCD05F5006DF231 /* havetime_icon_teacher@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "havetime_icon_teacher@3x.png"; sourceTree = "<group>"; };
+		20DAAAB01BCD05F5006DF231 /* common_icon_classroom@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "common_icon_classroom@2x.png"; sourceTree = "<group>"; };
+		20DAAAB11BCD05F5006DF231 /* common_icon_classroom@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "common_icon_classroom@3x.png"; sourceTree = "<group>"; };
 		20DAE1491B88195C00607996 /* login_tip.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = login_tip.png; sourceTree = "<group>"; };
 		20DAE14B1B8821DD00607996 /* PerfectInformationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PerfectInformationViewController.h; sourceTree = "<group>"; };
 		20DAE14C1B8821DD00607996 /* PerfectInformationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PerfectInformationViewController.m; sourceTree = "<group>"; };
@@ -1587,10 +1607,12 @@
 		65F82F831B85E74A00FF6E2D /* FeedPublishViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FeedPublishViewController.m; path = XiaoYou/CommonView/FeedPublishViewController.m; sourceTree = SOURCE_ROOT; };
 		77B574BED9D4FF3F4BFAA9FE /* libPods-XiaoYou.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-XiaoYou.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1D8A55CC0081FB2C8604F21 /* Pods-XiaoYou.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XiaoYou.release.xcconfig"; path = "../Pods/Target Support Files/Pods-XiaoYou/Pods-XiaoYou.release.xcconfig"; sourceTree = "<group>"; };
+		E426A5641BCD0D620064A415 /* PlaceCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlaceCollectionViewCell.h; sourceTree = "<group>"; };
+		E426A5651BCD0D620064A415 /* PlaceCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlaceCollectionViewCell.m; sourceTree = "<group>"; };
 		E43E10021BCC9CA90018B6D7 /* ActivityReleaseCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityReleaseCollectionView.h; sourceTree = "<group>"; };
 		E43E10031BCC9CA90018B6D7 /* ActivityReleaseCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityReleaseCollectionView.m; sourceTree = "<group>"; };
-		E43E10051BCC9CE50018B6D7 /* NameAndPlaceCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NameAndPlaceCollectionViewCell.h; sourceTree = "<group>"; };
-		E43E10061BCC9CE50018B6D7 /* NameAndPlaceCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NameAndPlaceCollectionViewCell.m; sourceTree = "<group>"; };
+		E43E10051BCC9CE50018B6D7 /* NameCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NameCollectionViewCell.h; sourceTree = "<group>"; };
+		E43E10061BCC9CE50018B6D7 /* NameCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NameCollectionViewCell.m; sourceTree = "<group>"; };
 		E43E10081BCC9D4A0018B6D7 /* DescriptionCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DescriptionCollectionViewCell.h; sourceTree = "<group>"; };
 		E43E10091BCC9D4A0018B6D7 /* DescriptionCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DescriptionCollectionViewCell.m; sourceTree = "<group>"; };
 		E43E100B1BCC9D670018B6D7 /* DateAndTimeCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DateAndTimeCollectionViewCell.h; sourceTree = "<group>"; };
@@ -1688,6 +1710,12 @@
 		044C31451BCCAF0000E0D508 /* Available */ = {
 			isa = PBXGroup;
 			children = (
+				20DAAAA41BCD05F5006DF231 /* havetime_icon_academy@2x.png */,
+				20DAAAA51BCD05F5006DF231 /* havetime_icon_academy@3x.png */,
+				20DAAAA61BCD05F5006DF231 /* havetime_icon_classname@2x.png */,
+				20DAAAA71BCD05F5006DF231 /* havetime_icon_classname@3x.png */,
+				20DAAAA81BCD05F5006DF231 /* havetime_icon_teacher@2x.png */,
+				20DAAAA91BCD05F5006DF231 /* havetime_icon_teacher@3x.png */,
 				044C31461BCCAF0000E0D508 /* green_bar@2x.png */,
 				044C31471BCCAF0000E0D508 /* green_bar@3x.png */,
 				044C31481BCCAF0000E0D508 /* have_time_msg@2x.png */,
@@ -2248,6 +2276,8 @@
 				2076A2FF1B81C590001FFBAC /* YCommonAlertView.m */,
 				20DD4B331B734781007C352C /* CommonSwitchView.h */,
 				20DD4B341B734781007C352C /* CommonSwitchView.m */,
+				20DAA29A1BCDFCE300420234 /* CommonPopView.h */,
+				20DAA29B1BCDFCE300420234 /* CommonPopView.m */,
 				656234751B837FDC00651C88 /* YFaceImageView.h */,
 				656234761B837FDC00651C88 /* YFaceImageView.m */,
 				20E033F41B8427AF002E4583 /* YCommonShare.h */,
@@ -2477,6 +2507,8 @@
 		20E18D891B808E42005B75EE /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				20DAAAB01BCD05F5006DF231 /* common_icon_classroom@2x.png */,
+				20DAAAB11BCD05F5006DF231 /* common_icon_classroom@3x.png */,
 				654379B01B8DB223007B15CA /* icon@2x.png */,
 				654379B11B8DB223007B15CA /* icon@3x.png */,
 				20E942521B833D10009C2DC6 /* complete-cancel@2x.png */,
@@ -3583,14 +3615,16 @@
 		E455DCF11BCB8F4700B78E54 /* ActivityRelease */ = {
 			isa = PBXGroup;
 			children = (
-				20DAAAA11BCD05F5006DF231 /* ActivityBaseCollectionViewCell.h */,
-				20DAAAA21BCD05F5006DF231 /* ActivityBaseCollectionViewCell.m */,
 				E455DCF21BCB8F6D00B78E54 /* ActivityReleaseController.h */,
 				E455DCF31BCB8F6D00B78E54 /* ActivityReleaseController.m */,
 				E43E10021BCC9CA90018B6D7 /* ActivityReleaseCollectionView.h */,
 				E43E10031BCC9CA90018B6D7 /* ActivityReleaseCollectionView.m */,
-				E43E10051BCC9CE50018B6D7 /* NameAndPlaceCollectionViewCell.h */,
-				E43E10061BCC9CE50018B6D7 /* NameAndPlaceCollectionViewCell.m */,
+				20DAAAA11BCD05F5006DF231 /* ActivityBaseCollectionViewCell.h */,
+				20DAAAA21BCD05F5006DF231 /* ActivityBaseCollectionViewCell.m */,
+				E43E10051BCC9CE50018B6D7 /* NameCollectionViewCell.h */,
+				E43E10061BCC9CE50018B6D7 /* NameCollectionViewCell.m */,
+				E426A5641BCD0D620064A415 /* PlaceCollectionViewCell.h */,
+				E426A5651BCD0D620064A415 /* PlaceCollectionViewCell.m */,
 				E43E10081BCC9D4A0018B6D7 /* DescriptionCollectionViewCell.h */,
 				E43E10091BCC9D4A0018B6D7 /* DescriptionCollectionViewCell.m */,
 				E43E100B1BCC9D670018B6D7 /* DateAndTimeCollectionViewCell.h */,
@@ -3699,6 +3733,7 @@
 				E43E106B1BCCFA840018B6D7 /* btn_delete@3x.png in Resources */,
 				E43E106E1BCCFA840018B6D7 /* circle_green@2x.png in Resources */,
 				654379B31B8DB223007B15CA /* icon@3x.png in Resources */,
+				20DAAAAE1BCD05F5006DF231 /* havetime_icon_teacher@2x.png in Resources */,
 				333122CD1B806EDC00D3D032 /* chat_sender_audio_playing_003.png in Resources */,
 				0494804F1BB8E51A00C68460 /* schedule_houtian@2x.png in Resources */,
 				2076A3131B81DA3E001FFBAC /* toolbar-contact-click@3x.png in Resources */,
@@ -3817,12 +3852,14 @@
 				3334AC1E1B82D7C400FDDCCB /* VoiceSearchFeedback000@2x.png in Resources */,
 				20E942251B833D10009C2DC6 /* toggle-on@3x.png in Resources */,
 				65CBE1671BC013B300C28D57 /* gift_id@3x.png in Resources */,
+				20DAAAAA1BCD05F5006DF231 /* havetime_icon_academy@2x.png in Resources */,
 				20DA1A771B89BEF100DEF95C /* register-frame-agree@3x.png in Resources */,
 				20E0BFFC1B88B0CA00EDAED4 /* register-photo-upload-boundary@3x.png in Resources */,
 				20DAE1581B882D0500607996 /* register-photo-upload@2x.png in Resources */,
 				333122C31B806EDC00D3D032 /* chat_receiver_audio_playing_full.png in Resources */,
 				04394B4C1BBBB78B0098BB8F /* fast_add_white@3x.png in Resources */,
 				049480451BB8DE1700C68460 /* photo4.jpg in Resources */,
+				20DAAAAF1BCD05F5006DF231 /* havetime_icon_teacher@3x.png in Resources */,
 				20DD79071BA97D72009AD1A9 /* background-start.png in Resources */,
 				334670791B84337E00A8628A /* friend-requests@3x.png in Resources */,
 				333122D31B806EDC00D3D032 /* back@2x.png in Resources */,
@@ -3843,6 +3880,7 @@
 				333122BF1B806EDC00D3D032 /* chat_receiver_audio_playing002.png in Resources */,
 				20E034051B846398002E4583 /* feed-find-someone-search@3x.png in Resources */,
 				044C315B1BCCAF0000E0D508 /* have_time_select@3x.png in Resources */,
+				20DAAAB31BCD05F5006DF231 /* common_icon_classroom@3x.png in Resources */,
 				650C6C171B886E2600A89AC9 /* mine-particulars@3x.png in Resources */,
 				2076A3111B81DA3E001FFBAC /* toolbar-chat@3x.png in Resources */,
 				3334AC251B82D7C400FDDCCB /* VoiceSearchFeedback004.png in Resources */,
@@ -3862,6 +3900,7 @@
 				3334AC201B82D7C400FDDCCB /* VoiceSearchFeedback001@2x.png in Resources */,
 				3334AC431B8316F000FDDCCB /* chat_voice_bg@2x.png in Resources */,
 				333122D41B806EDC00D3D032 /* delete@2x.png in Resources */,
+				20DAAAAC1BCD05F5006DF231 /* havetime_icon_classname@2x.png in Resources */,
 				049480381BB8D76C00C68460 /* schedule_location@2x.png in Resources */,
 				333122901B806EDC00D3D032 /* faceDelete.png in Resources */,
 				3334ABE51B82C50200FDDCCB /* chatBar_faceSelected.png in Resources */,
@@ -3928,6 +3967,7 @@
 				044C31531BCCAF0000E0D508 /* green_bar@3x.png in Resources */,
 				650C6C271B88708100A89AC9 /* mine-publisher@3x.png in Resources */,
 				3334ABF61B82C5D200FDDCCB /* chatBar_moreSelected@2x.png in Resources */,
+				20DAAAAD1BCD05F5006DF231 /* havetime_icon_classname@3x.png in Resources */,
 				650C6C261B88708100A89AC9 /* mine-publisher@2x.png in Resources */,
 				049480371BB8D76C00C68460 /* schedule_green@3x.png in Resources */,
 				E43E106C1BCCFA840018B6D7 /* circle_gray@2x.png in Resources */,
@@ -3954,6 +3994,7 @@
 				044C315A1BCCAF0000E0D508 /* have_time_select@2x.png in Resources */,
 				333122BC1B806EDC00D3D032 /* chat_receiver_audio_playing000@2x.png in Resources */,
 				6563415D1BC1133C00E10025 /* gift_home@3x.png in Resources */,
+				20DAAAAB1BCD05F5006DF231 /* havetime_icon_academy@3x.png in Resources */,
 				334670641B841F2800A8628A /* new-remind-number@2x.png in Resources */,
 				6563415C1BC1133C00E10025 /* gift_home@2x.png in Resources */,
 				044DA00F1BBA598C00AA321A /* funny_detail_boy@3x.png in Resources */,
@@ -3997,6 +4038,7 @@
 				20DAE14A1B88195C00607996 /* login_tip.png in Resources */,
 				20E18DCE1B808E42005B75EE /* tag-green@2x.png in Resources */,
 				3334ABF51B82C5D200FDDCCB /* chatBar_moreSelected.png in Resources */,
+				20DAAAB21BCD05F5006DF231 /* common_icon_classroom@2x.png in Resources */,
 				20E942451B833D10009C2DC6 /* add-03@3x.png in Resources */,
 				3335C3671B8178E8007DEFD4 /* chatFire_audioPlaying2.png in Resources */,
 				3334ABF31B82C5D200FDDCCB /* chatBar_more.png in Resources */,
@@ -4201,7 +4243,7 @@
 				656A4CFF1BBF9E1E00BDB725 /* QRCodeReaderViewController.m in Sources */,
 				20DA17031BC7C51200A61B37 /* MGCMonthPlannerViewDayCell.m in Sources */,
 				333122711B806EDB00D3D032 /* PSTGridLayoutSection.m in Sources */,
-				E43E10071BCC9CE50018B6D7 /* NameAndPlaceCollectionViewCell.m in Sources */,
+				E43E10071BCC9CE50018B6D7 /* NameCollectionViewCell.m in Sources */,
 				6518A2481B80429300AEB79D /* TagListTableView.m in Sources */,
 				656234771B837FDC00651C88 /* YFaceImageView.m in Sources */,
 				E4E28CE61BB3DCAF00E3808A /* FunDetailViewController.m in Sources */,
@@ -4247,6 +4289,7 @@
 				20DA16FE1BC7C51200A61B37 /* MGCMonthMiniCalendarView.m in Sources */,
 				20DA17091BC7C51200A61B37 /* MGCTimeRowsView.m in Sources */,
 				044C31441BCCA95F00E0D508 /* AvailableListView.m in Sources */,
+				E426A5661BCD0D620064A415 /* PlaceCollectionViewCell.m in Sources */,
 				333122701B806EDB00D3D032 /* PSTGridLayoutRow.m in Sources */,
 				20DA170A1BC7C51200A61B37 /* MGCYearCalendarMonthCell.m in Sources */,
 				E4BE2DAA1BC7989300124F22 /* ContactsInfoFirstTableViewCell.m in Sources */,
@@ -4276,6 +4319,7 @@
 				654602171B7F2FF00039F622 /* FeedImageGroup.m in Sources */,
 				20E033FD1B846114002E4583 /* SearchFilterViewController.m in Sources */,
 				20DAAA9D1BCD05F5006DF231 /* StudyRoomDetailTableView.m in Sources */,
+				20DAA29C1BCDFCE300420234 /* CommonPopView.m in Sources */,
 				20E18D551B807752005B75EE /* AssociationsListTableViewCell.m in Sources */,
 				20DAAA9B1BCD05F5006DF231 /* RubLessonTableView.m in Sources */,
 				65969DDF1B877356001DD348 /* ProfileFeedListView.m in Sources */,

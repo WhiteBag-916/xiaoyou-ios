@@ -28,12 +28,12 @@
     _backView = [[UIView alloc] init];
     _backView.layer.cornerRadius = 4;
     _backView.clipsToBounds = YES;
-    _backView.backgroundColor = [UIColor grayColor];
+    _backView.backgroundColor = KCOLORGREEN_B1;
     [self.contentView addSubview:_backView];
     [_backView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.bottom.mas_equalTo(0);
-        make.left.mas_equalTo(10);
-        make.right.mas_equalTo(-10);
+        make.left.mas_equalTo(5);
+        make.right.mas_equalTo(-5);
     }];
     
     UIImageView * topImageView = [[UIImageView alloc] init];
@@ -54,7 +54,6 @@
     }];
     
     _numImageView = [[UIImageView alloc] init];
-    _numImageView.image = [UIImage imageNamed:@"img_num1"];
     [_backView addSubview:_numImageView];
     [_numImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.mas_equalTo(12);

@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ActivityReleaseController.h"
 
 @interface ActivityReleaseCollectionView : UICollectionView
+
+@property (nonatomic,weak)ActivityReleaseController * myController;
 
 @end

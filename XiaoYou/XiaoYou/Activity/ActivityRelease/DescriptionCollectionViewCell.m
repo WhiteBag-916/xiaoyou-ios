@@ -8,11 +8,15 @@
 
 #import "DescriptionCollectionViewCell.h"
 #import "YTextView.h"
+#import "YCommonActionSheet.h"
+#import "SDPhotoBrowser.h"
+#import "YVIew+Ext.h"
 
 NSString *const kDescriptionCollectionViewCell = @"DescriptionCollectionViewCellId";
 
-@interface DescriptionCollectionViewCell ()
+@interface DescriptionCollectionViewCell ()<UIImagePickerControllerDelegate,UINavigationControllerDelegate>
 
+@property (nonatomic,strong) UIImagePickerController * imagePicker;
 @property (nonatomic,strong) UIButton * picButton;
 @property (nonatomic,strong) YTextView * textView;
 
@@ -31,10 +35,108 @@ NSString *const kDescriptionCollectionViewCell = @"DescriptionCollectionViewCell
 
 -(void)changUI
 {
+    _picButton = [[UIButton alloc] init];
+    _picButton.layer.cornerRadius = 4;
+    _picButton.clipsToBounds = YES;
+    [_picButton setImage:[UIImage imageNamed:@"btn_add"] forState:UIControlStateNormal];
+    [self.backView addSubview:_picButton];
+    [_picButton mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.mas_equalTo(80);
+        make.left.equalTo(self.numImageView.mas_left);
+        make.height.width.mas_equalTo(72);
+    }];
+    [_picButton addTarget:self action:@selector(choicePictrue) forControlEvents:UIControlEventTouchUpInside];
+    
+    _textView = [[YTextView alloc] init];
+    _textView.backgroundColor = [UIColor yellowColor];
+    _textView.font = CONTENT_FONT(12);
+    _textView.placeholderColor = KCOLORGREEN_B5;
+    [self.backView addSubview:_textView];
+    [_textView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(_picButton.mas_bottom).offset(12);
+        make.left.equalTo(self.numImageView.mas_left);
+        make.right.mas_equalTo(-12);
+        make.bottom.mas_equalTo(-12);
+    }];
+    
+    self.numImageView.image = [UIImage imageNamed:@"img_num2"];
     self.typeLabel.text = @"活动描述";
-    
-    
+    _textView.placeholder = @"例如：\n我觉得要阐明举办此次活动的背景,表述活动举办的意义以及目的,最后将活动所取得的效果加以描述并且稍稍夸大一点.再用几句话总结一下就可以了.比如：此次活动是在某某某单位的大力支持下举办的,通过我们主办人员的通力合作,克服了重重困难.最后这场精彩纷呈的什么什么（就是你们活动的主题）活动呈现在大家面前,活动的效果是明显的,证明我们一切的努力都没有白费.等等";
     
 }
 
+-(void)choicePictrue
+{
+    YActionSheetItem *item1 = [YActionSheetItem itemWithTitle:@"拍照"
+                                                         type:YCommonActionSheetItemTypeCenterCommon
+                                                        block:^(NSInteger checkNum) {
+                                                            [self snapImage];
+                                                        }];
+    YActionSheetItem *item2 = [YActionSheetItem itemWithTitle:@"从相册中选择"
+                                                         type:YCommonActionSheetItemTypeCenterCommon
+                                                        block:^(NSInteger checkNum) {
+                                                            [self pickImage];
+                                                        }];
+    
+    YCommonActionSheet *sheet = [[YCommonActionSheet alloc] initWithType:@[item1, item2] title:nil];
+    [sheet show];
+    
+}
+
+- (void)snapImage
+{
+#if !(TARGET_IPHONE_SIMULATOR)//真机执行的代码
+    AVAuthorizationStatus authStatus = [AVCaptureDevice authorizationStatusForMediaType:AVMediaTypeVideo];
+    if (authStatus == AVAuthorizationStatusRestricted ||authStatus ==AVAuthorizationStatusDenied){
+        YCommonAlertView *alert = [[YCommonAlertView alloc] initWithTitle:nil
+                                                                  message:@"您可以在 设置—>隐私—>相机中授权相机功能"
+                                                             buttonTitles:@"确认", nil];
+        [alert show];
+    }else if(authStatus == AVAuthorizationStatusNotDetermined){
+        // Explicit user permission is required for media capture, but the user has not yet granted or denied such permission.
+        [AVCaptureDevice requestAccessForMediaType:AVMediaTypeVideo completionHandler:^(BOOL granted) {
+            if(granted){//点击允许访问时调用
+                //用户明确许可与否，媒体需要捕获，但用户尚未授予或拒绝许可。
+                UIImagePickerController *picker = [[UIImagePickerController alloc] init];
+                [picker setSourceType:UIImagePickerControllerSourceTypeCamera];
+                picker.delegate = self;
+                [picker setAllowsEditing:YES];
+                [self presentViewController:picker animated:YES completion:nil];
+            }
+        }];
+    }else{
+        UIImagePickerController *picker = [[UIImagePickerController alloc] init];
+        [picker setSourceType:UIImagePickerControllerSourceTypeCamera];
+        picker.delegate = self;
+        [picker setAllowsEditing:YES];
+        [self presentViewController:picker animated:YES completion:nil];
+    }
+#endif
+}
+
+- (void)pickImage
+{
+    UIImagePickerController *picker = [[UIImagePickerController alloc] init];
+    [picker setSourceType:UIImagePickerControllerSourceTypePhotoLibrary];
+    [picker setDelegate:self];
+    [picker setAllowsEditing:YES];
+    [self.myController presentViewController:picker animated:YES completion:nil];
+}
+
+-(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info
+{
+    //打印出字典中的内容
+    NSLog(@"get the media info: %@", info);
+    
+    //获取用户编辑之后的图像
+    UIImage* editedImage = [info objectForKey:UIImagePickerControllerEditedImage];
+    [_picButton setImage:editedImage forState:UIControlStateNormal];
+
+     [self.myController dismissViewControllerAnimated:YES completion:nil];
+}
+
+-(void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
+{
+    [self.myController dismissViewControllerAnimated:YES completion:nil];
+}
 @end

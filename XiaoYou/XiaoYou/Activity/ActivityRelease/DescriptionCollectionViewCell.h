@@ -8,9 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import "ActivityBaseCollectionViewCell.h"
+#import "ActivityReleaseController.h"
 
 extern NSString *const kDescriptionCollectionViewCell;
 
 @interface DescriptionCollectionViewCell : ActivityBaseCollectionViewCell
+@property (nonatomic,weak)ActivityReleaseController * myController;
 
 @end

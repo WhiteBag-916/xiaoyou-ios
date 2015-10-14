@@ -44,7 +44,8 @@
     layout.minimumLineSpacing = 0;
     layout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
     _releaseCollectionView = [[ActivityReleaseCollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:layout];
-    _releaseCollectionView.backgroundColor = [UIColor redColor];
+    _releaseCollectionView.backgroundColor = [UIColor clearColor];
+    _releaseCollectionView.myController = self;
     [self.view addSubview:_releaseCollectionView];
     [_releaseCollectionView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(topLabel.mas_bottom);
