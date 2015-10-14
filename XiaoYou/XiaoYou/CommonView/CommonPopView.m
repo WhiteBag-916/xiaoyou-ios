@@ -57,7 +57,7 @@
             line.backgroundColor = [UIColor hexChangeFloat:@"e9e9e9"];
             [self.bgView addSubview:line];
             
-            view.originY = 76;
+            view.originY += 56;
         }
         else
         {
