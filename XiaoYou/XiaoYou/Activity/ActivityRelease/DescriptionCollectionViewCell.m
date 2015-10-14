@@ -6,6 +6,7 @@
 //  Copyright © 2015年 xc. All rights reserved.
 //
 
+#import <AVFoundation/AVFoundation.h>
 #import "DescriptionCollectionViewCell.h"
 #import "YTextView.h"
 #import "YCommonActionSheet.h"
@@ -101,7 +102,7 @@ NSString *const kDescriptionCollectionViewCell = @"DescriptionCollectionViewCell
                 [picker setSourceType:UIImagePickerControllerSourceTypeCamera];
                 picker.delegate = self;
                 [picker setAllowsEditing:YES];
-                [self presentViewController:picker animated:YES completion:nil];
+                [self.viewController presentViewController:picker animated:YES completion:nil];
             }
         }];
     }else{
@@ -109,7 +110,7 @@ NSString *const kDescriptionCollectionViewCell = @"DescriptionCollectionViewCell
         [picker setSourceType:UIImagePickerControllerSourceTypeCamera];
         picker.delegate = self;
         [picker setAllowsEditing:YES];
-        [self presentViewController:picker animated:YES completion:nil];
+        [self.viewController presentViewController:picker animated:YES completion:nil];
     }
 #endif
 }
