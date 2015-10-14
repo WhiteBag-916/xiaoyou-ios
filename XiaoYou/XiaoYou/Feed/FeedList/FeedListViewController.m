@@ -51,7 +51,7 @@
     [self showCustomNavigationPublishButton];
     _needRefresh = true;
     
-    if ([AppConfigData isUserFirstUseIt])
+    if ([AppConfigData isUserFirstUseFeed])
         [self addGuideView];
 }
 

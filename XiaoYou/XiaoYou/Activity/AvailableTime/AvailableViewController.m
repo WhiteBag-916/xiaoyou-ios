@@ -32,7 +32,7 @@
     [self setUpCustomNavgationBar];
     [self availableListView];
     
-    if([AppConfigData isUserFirstUseIt])
+    if([AppConfigData isUserFirstUseHaveTime])
         [self addGuideView];
 }
 

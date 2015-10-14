@@ -7,22 +7,50 @@
 //
 
 #import "AppConfigData.h"
-#define FIRST_USE_KEY   @"isFirstUse"
+#define HAVETIME_USE_KEY   @"isFirstUseHaveTime"
+#define FEED_USE_KEY       @"isFirstUseFeed"
+#define READCODE_USE_KEY   @"isFirstUseReadCode"
 @implementation AppConfigData
 
 
-+(BOOL)isUserFirstUseIt
++(BOOL)isUserFirstUseHaveTime
 {
     NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
-    NSString *value = [userDefault objectForKey:FIRST_USE_KEY];
+    NSString *value = [userDefault objectForKey:HAVETIME_USE_KEY];
     
     //第一次使用
     if(!value) {
-        [userDefault setValue:@"NO" forKey:FIRST_USE_KEY];
+        [userDefault setValue:@"NO" forKey:HAVETIME_USE_KEY];
         return YES;
     }
     return NO;
 }
 
 
++(BOOL)isUserFirstUseFeed
+{
+    NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
+    NSString *value = [userDefault objectForKey:FEED_USE_KEY];
+    
+    //第一次使用
+    if(!value) {
+        [userDefault setValue:@"NO" forKey:FEED_USE_KEY];
+        return YES;
+    }
+    return NO;
+}
+
+
++(BOOL)isUserFirstUseReadCode
+{
+    NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
+    NSString *value = [userDefault objectForKey:READCODE_USE_KEY];
+    
+    //第一次使用
+    if(!value) {
+        [userDefault setValue:@"NO" forKey:READCODE_USE_KEY];
+        return YES;
+    }
+    return NO;
+}
 @end

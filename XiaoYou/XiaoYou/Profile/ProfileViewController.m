@@ -78,7 +78,7 @@
     self.hidesBottomBarWhenPushed = NO;
     [self initMyView];
     
-    if ([AppConfigData isUserFirstUseIt])
+    if ([AppConfigData isUserFirstUseReadCode])
         [self addGuideView];
 }
 - (void)initMyView {
