@@ -34,7 +34,7 @@
         NSInteger bgHeight = view.height+56;
         if (isShowButton)
         {
-            bgHeight += 20;
+            bgHeight += 10;
         }
         
         CGRect begainFrame = self.isTop ? CGRectMake(0, 0-bgHeight, self.width, bgHeight) : CGRectMake(0, self.bottomY, self.width, bgHeight);
@@ -57,7 +57,7 @@
             line.backgroundColor = [UIColor hexChangeFloat:@"e9e9e9"];
             [self.bgView addSubview:line];
             
-            view.originY = 56;
+            view.originY = 76;
         }
         else
         {
@@ -123,7 +123,7 @@
         [button setTitle:@"取消" forState:UIControlStateNormal];
     }
     
-    button.imageEdgeInsets = UIEdgeInsetsMake(5, 5, 5, 5);
+    button.titleLabel.font = CONTENT_FONT(12);
     
     return button;
 }
