@@ -52,6 +52,11 @@
             [btnOk addTarget:self action:@selector(clickOk) forControlEvents:UIControlEventTouchDown];
             [self.bgView addSubview:btnOk];
             
+            //线
+            UIView *line = [[UIView alloc] initWithFrame:CGRectMake(0, 56, self.frame.size.width, 1)];
+            line.backgroundColor = [UIColor hexChangeFloat:@"e9e9e9"];
+            [self.bgView addSubview:line];
+            
             view.originY = 40;
         }
         else
@@ -108,11 +113,13 @@
     if (1 == btnType)
     {
         button.frame = CGRectMake(self.width-45, 8, 40, 40);
+        [button setTitleColor:KCOLORGREEN_g1 forState:UIControlStateNormal];
         [button setTitle:@"确定" forState:UIControlStateNormal];
     }
     else
     {
         button.frame = CGRectMake(5, 8, 40, 40);
+        [button setTitleColor:KCOLORGREEN_B5 forState:UIControlStateNormal];
         [button setTitle:@"取消" forState:UIControlStateNormal];
     }
     
