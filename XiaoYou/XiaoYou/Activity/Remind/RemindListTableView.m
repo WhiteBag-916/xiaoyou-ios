@@ -11,6 +11,7 @@
 #import "PassRemindCell.h"
 #import "RemindManager.h"
 #import "ApplyRemindCell.h"
+
 #define REMINDVIEWCELL  @"remindCell"
 #define REMINDHEADVIEW  @"remindHeadView"
 #define HEADCELL_HEIGHT SCALE_NUM(33)
@@ -171,16 +172,18 @@
         PassRemindCell *cell = [PassRemindCell passRemindCellWithTableView:tableView];
         return cell;
     }
+    else if (indexPath.section == 3)
+    {
+        ApplyRemindCell *cell = [ApplyRemindCell cellWithTableView:tableView];
+        cell.cellType = WAIT_SELECT;
+        return cell;
+    }
     else
     {
         ApplyRemindCell *cell = [ApplyRemindCell cellWithTableView:tableView];
+        cell.cellType = IGNORED;
         return cell;
     }
-    /*PassRemindCell *cell = [tableView dequeueReusableCellWithIdentifier:REMINDVIEWCELL];
-    if (!cell) {
-        cell = [[PassRemindCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:REMINDVIEWCELL];
-    }
-    return cell;*/
     return nil;
 }
 

@@ -15,8 +15,16 @@
  */
 #import <UIKit/UIKit.h>
 
+typedef enum : NSUInteger {
+    WAIT_SELECT,
+    AGREED,
+    IGNORED,
+} CELL_TYPE;
+
 @interface ApplyRemindCell : UITableViewCell
 
 +(ApplyRemindCell*)cellWithTableView:(UITableView*)tableView;
+
+@property (nonatomic,assign) CELL_TYPE cellType;
 
 @end

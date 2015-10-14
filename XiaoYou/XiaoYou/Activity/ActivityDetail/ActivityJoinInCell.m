@@ -30,10 +30,10 @@
 +(ActivityJoinInCell *)cellWithTableView:(UITableView *)tableView cellType:(CELLTYPE)type
 {
     ActivityJoinInCell *cell = [tableView dequeueReusableCellWithIdentifier:REUSEID];
-    cell.cellType = type;
     if (!cell) {
         cell = [[ActivityJoinInCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:REUSEID];
     }
+    cell.cellType = type;
     return cell;
 }
 
@@ -41,28 +41,42 @@
 {
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
         self.selectionStyle = UITableViewCellSelectionStyleNone;
-        if (self.cellType == DEFAULT_VIEW || self.cellType == NOT_TOPVIEW)
-            [self initViewWithType:NOT_TOPVIEW];
-        else
-            [self initViewWithType:IS_TOPVIEW];
+            [self initViewWithType];
     }
     return self;
 }
 
+
+-(void)setCellType:(CELLTYPE)cellType
+{
+    if (cellType == IS_TOPVIEW) {
+        [_joinInHeadView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.height.mas_equalTo(SCALE_NUM(49)).priorityHigh();
+        }];
+        [_joinInHeadView updateConstraints];
+    }
+    else if (cellType == NOT_TOPVIEW) {
+        [_joinInHeadView clearContent];
+    }
+}
+
+
 //初始化控件
--(void)initViewWithType:(CELLTYPE)type
+-(void)initViewWithType
 {
     _joinInHeadView = [[JoinInHeadView alloc]init];
-    [self addSubview:_joinInHeadView];
+    [self.contentView addSubview:_joinInHeadView];
     [_joinInHeadView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.mas_equalTo(0);
         make.leading.mas_equalTo(0);
         make.trailing.mas_equalTo(0);
-        make.height.mas_equalTo(SCALE_NUM(49));
+        make.width.mas_equalTo(0).priorityLow();
+        make.height.mas_equalTo(0).priorityLow();
     }];
     
+    
     _joinTopView = [[JoinInTopView alloc]init];
-    [self addSubview:_joinTopView];
+    [self.contentView addSubview:_joinTopView];
     [_joinTopView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(_joinInHeadView.mas_bottom).offset(0);
         make.leading.equalTo(self);
@@ -71,9 +85,9 @@
     }];
     
     _tagsView = [[TagsCommonView alloc]init];
-    [self addSubview:_tagsView];
+    [self.contentView addSubview:_tagsView];
     [_tagsView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.mas_equalTo(140);
+        make.top.equalTo(_joinTopView.mas_bottom).offset(SCALE_NUM(15));
         make.leading.mas_equalTo(71);
         make.trailing.mas_equalTo(-20);
         make.height.mas_equalTo(100);

@@ -97,7 +97,7 @@
     
     //中间内容部分
     _topLineView = [[UIView alloc]init];
-    _topLineView.backgroundColor = [UIColor colorWithRed:204/255.0 green:204/255.0 blue:204/255.0 alpha:1];
+    _topLineView.backgroundColor = KCOLORGRAY;
     [self.wrapContentView addSubview:_topLineView];
     [_topLineView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.leading.mas_equalTo(0);
@@ -163,7 +163,6 @@
         make.centerY.equalTo(self.tailLabel.mas_centerY);
         make.trailing.mas_equalTo(-10);
     }];
-    
 }
 
 @end

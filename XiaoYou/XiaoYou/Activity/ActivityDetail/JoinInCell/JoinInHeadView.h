@@ -10,4 +10,6 @@
 
 @interface JoinInHeadView : YView
 
+-(void)clearContent;
+
 @end

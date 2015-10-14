@@ -49,4 +49,11 @@
     }];
 }
 
+//清空内容;
+-(void)clearContent
+{
+    _pointImageView.image = nil;
+    _desLabel.text = @"";
+}
+
 @end
