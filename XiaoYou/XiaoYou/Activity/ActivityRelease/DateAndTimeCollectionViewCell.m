@@ -45,10 +45,10 @@ NSString *const kDateAndTimeCollectionViewCell = @"DateAndTimeCollectionViewCell
     applyLabel.text = @"报名时间(选填)";
     [self.backView addSubview:applyLabel];
     [applyLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.mas_equalTo(80);
+        make.top.mas_equalTo(SCALE_NUM(80));
         make.left.equalTo(self.numImageView);
-        make.height.mas_equalTo(12);
-        make.width.mas_equalTo(100);
+        make.height.mas_equalTo(SCALE_NUM(12));
+        make.width.mas_equalTo(SCALE_NUM(100));
     }];
     
     _applayTimeLabel = [[UILabel alloc] init];
@@ -59,10 +59,10 @@ NSString *const kDateAndTimeCollectionViewCell = @"DateAndTimeCollectionViewCell
     _applayTimeLabel.textColor = KCOLORGREEN_B4;
     [self.backView addSubview:_applayTimeLabel];
     [_applayTimeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(applyLabel.mas_bottom).offset(10);
-        make.left.equalTo(self.backView).offset(10);
-        make.right.equalTo(self.backView).offset(-10);
-        make.height.mas_equalTo(40);
+        make.top.equalTo(applyLabel.mas_bottom).offset(SCALE_NUM(10));
+        make.left.equalTo(self.backView).offset(SCALE_NUM(10));
+        make.right.equalTo(self.backView).offset(SCALE_NUM(-10));
+        make.height.mas_equalTo(SCALE_NUM(40));
     }];
     
     UITapGestureRecognizer * applayTapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(applayChoiceTime)];
@@ -76,10 +76,10 @@ NSString *const kDateAndTimeCollectionViewCell = @"DateAndTimeCollectionViewCell
     activityLabel.text = @"活动时间";
     [self.backView addSubview:activityLabel];
     [activityLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(_applayTimeLabel.mas_bottom).offset(10);
+        make.top.equalTo(_applayTimeLabel.mas_bottom).offset(SCALE_NUM(10));
         make.left.equalTo(self.numImageView);
-        make.height.mas_equalTo(12);
-        make.width.mas_equalTo(100);
+        make.height.mas_equalTo(SCALE_NUM(12));
+        make.width.mas_equalTo(SCALE_NUM(100));
     }];
     
     //开始活动时间
@@ -91,10 +91,10 @@ NSString *const kDateAndTimeCollectionViewCell = @"DateAndTimeCollectionViewCell
     _beginTimeLabel.textColor = KCOLORGREEN_B4;
     [self.backView addSubview:_beginTimeLabel];
     [_beginTimeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(activityLabel.mas_bottom).offset(10);
-        make.left.equalTo(self.backView).offset(10);
-        make.right.equalTo(self.backView).offset(-10);
-        make.height.mas_equalTo(40);
+        make.top.equalTo(activityLabel.mas_bottom).offset(SCALE_NUM(10));
+        make.left.equalTo(self.backView).offset(SCALE_NUM(10));
+        make.right.equalTo(self.backView).offset(SCALE_NUM(-10));
+        make.height.mas_equalTo(SCALE_NUM(40));
     }];
     
     UITapGestureRecognizer * beginTapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(beginChoiceTime)];
@@ -109,10 +109,9 @@ NSString *const kDateAndTimeCollectionViewCell = @"DateAndTimeCollectionViewCell
     toLabel.text = @"至";
     [self.backView addSubview:toLabel];
     [toLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(_beginTimeLabel.mas_bottom).offset(10);
+        make.top.equalTo(_beginTimeLabel.mas_bottom).offset(SCALE_NUM(10));
         make.centerX.equalTo(self.backView);
-        make.height.mas_equalTo(12);
-        make.width.mas_equalTo(12);
+        make.width.height.mas_equalTo(SCALE_NUM(12));
     }];
     
     //结束活动时间
@@ -124,10 +123,10 @@ NSString *const kDateAndTimeCollectionViewCell = @"DateAndTimeCollectionViewCell
     _endTimeLabel.textColor = KCOLORGREEN_B4;
     [self.backView addSubview:_endTimeLabel];
     [_endTimeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(toLabel.mas_bottom).offset(10);
-        make.left.equalTo(self.backView).offset(10);
-        make.right.equalTo(self.backView).offset(-10);
-        make.height.mas_equalTo(40);
+        make.top.equalTo(toLabel.mas_bottom).offset(SCALE_NUM(10));
+        make.left.equalTo(self.backView).offset(SCALE_NUM(10));
+        make.right.equalTo(self.backView).offset(SCALE_NUM(-10));
+        make.height.mas_equalTo(SCALE_NUM(40));
     }];
     
     UITapGestureRecognizer * endTapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(endChoiceTime)];

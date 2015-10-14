@@ -36,10 +36,9 @@ NSString *const kPlaceCollectionViewCell = @"PlaceCollectionViewCellId";
     _textView.placeholderColor = KCOLORGREEN_B5;
     [self.backView addSubview:_textView];
     [_textView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.mas_equalTo(80);
+        make.top.mas_equalTo(SCALE_NUM(80));
         make.left.equalTo(self.numImageView.mas_left);
-        make.right.mas_equalTo(-12);
-        make.bottom.mas_equalTo(-12);
+        make.bottom.right.mas_equalTo(SCALE_NUM(-12));
     }];
     
     self.numImageView.image = [UIImage imageNamed:@"img_num4"];

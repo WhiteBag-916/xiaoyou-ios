@@ -15,7 +15,6 @@
 
 @interface ActivityReleaseCollectionView ()<UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout>
 
-
 @end
 
 @implementation ActivityReleaseCollectionView
@@ -102,7 +101,7 @@
 
 -(CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    CGSize size = {230,300};
+    CGSize size = {SCALE_NUM(230),SCALE_NUM(300)};
     return size;
 }
 

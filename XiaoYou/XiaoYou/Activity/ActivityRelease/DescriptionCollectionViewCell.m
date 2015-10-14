@@ -45,9 +45,9 @@ NSString *const kDescriptionCollectionViewCell = @"DescriptionCollectionViewCell
     _picImageView.image = [UIImage imageNamed:@"btn_add"];
     [self.backView addSubview:_picImageView];
     [_picImageView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.mas_equalTo(80);
+        make.top.mas_equalTo(SCALE_NUM(80));
         make.left.equalTo(self.numImageView.mas_left);
-        make.height.width.mas_equalTo(72);
+        make.height.width.mas_equalTo(SCALE_NUM(72));
     }];
     UITapGestureRecognizer * tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(choicePictrue)];
     [_picImageView addGestureRecognizer:tapGestureRecognizer];
@@ -60,9 +60,9 @@ NSString *const kDescriptionCollectionViewCell = @"DescriptionCollectionViewCell
     [_deleteBtn addTarget:self action:@selector(deleteImage) forControlEvents:UIControlEventTouchUpInside];
     [self.backView addSubview:_deleteBtn];
     [_deleteBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.mas_equalTo(68);
-        make.right.equalTo(_picImageView.mas_right).offset(12);
-        make.width.height.mas_equalTo(24);
+        make.top.mas_equalTo(SCALE_NUM(68));
+        make.right.equalTo(_picImageView.mas_right).offset(SCALE_NUM(12));
+        make.width.height.mas_equalTo(SCALE_NUM(24));
     }];
     _deleteBtn.hidden = YES;
     
@@ -72,10 +72,9 @@ NSString *const kDescriptionCollectionViewCell = @"DescriptionCollectionViewCell
     _textView.placeholderColor = KCOLORGREEN_B5;
     [self.backView addSubview:_textView];
     [_textView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(_picImageView.mas_bottom).offset(12);
+        make.top.equalTo(_picImageView.mas_bottom).offset(SCALE_NUM(12));
         make.left.equalTo(self.numImageView.mas_left);
-        make.right.mas_equalTo(-12);
-        make.bottom.mas_equalTo(-12);
+        make.bottom.right.mas_equalTo(SCALE_NUM(-12));
     }];
     
     self.numImageView.image = [UIImage imageNamed:@"img_num2"];

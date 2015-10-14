@@ -40,10 +40,10 @@ NSString *const kTypeCollectionViewCell = @"TypeCollectionViewCellId";
     topLabel.text = @"选择您本次活动的类型,可以多选哦:";
     [self.backView addSubview:topLabel];
     [topLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.mas_equalTo(80);
+        make.top.mas_equalTo(SCALE_NUM(80));
         make.left.equalTo(self.numImageView);
-        make.height.mas_equalTo(12);
-        make.right.equalTo(self.backView.mas_right).offset(-12);
+        make.height.mas_equalTo(SCALE_NUM(12));
+        make.right.equalTo(self.backView.mas_right).offset(SCALE_NUM(-12));
     }];
     
     //CollectionView
@@ -55,9 +55,9 @@ NSString *const kTypeCollectionViewCell = @"TypeCollectionViewCellId";
     _collectionView.backgroundColor = [UIColor clearColor];
     [self.backView addSubview:_collectionView];
     [_collectionView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(topLabel.mas_bottom).offset(12);
+        make.top.equalTo(topLabel.mas_bottom).offset(SCALE_NUM(12));
         make.width.left.equalTo(topLabel);
-        make.bottom.equalTo(self.backView.mas_bottom).offset(-12);
+        make.bottom.equalTo(self.backView.mas_bottom).offset(SCALE_NUM(-12));
     }];
     
 }
