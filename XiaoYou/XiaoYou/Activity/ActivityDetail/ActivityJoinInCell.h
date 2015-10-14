@@ -9,7 +9,6 @@
 #import <UIKit/UIKit.h>
 
 typedef enum : NSUInteger {
-    DEFAULT_VIEW,
     IS_TOPVIEW,
     NOT_TOPVIEW
 } CELLTYPE;

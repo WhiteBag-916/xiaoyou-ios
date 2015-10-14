@@ -38,7 +38,7 @@
         NSInteger bgHeight = view.height+MID_MAR*2;
         if (isShowButton)
         {
-            bgHeight += MID_MAR*2;
+            bgHeight += BUTTON_TB*2+BUTTON_H;
         }
         
         CGRect begainFrame = self.isTop ? CGRectMake(0, 0-bgHeight, self.width, bgHeight) : CGRectMake(0, self.bottomY, self.width, bgHeight);
@@ -57,7 +57,7 @@
             [self.bgView addSubview:btnOk];
             
             //线
-            UIView *line = [[UIView alloc] initWithFrame:CGRectMake(0, 56, self.frame.size.width, 1)];
+            UIView *line = [[UIView alloc] initWithFrame:CGRectMake(0, BUTTON_TB*2+BUTTON_H, self.frame.size.width, 1)];
             line.backgroundColor = [UIColor hexChangeFloat:@"e9e9e9"];
             [self.bgView addSubview:line];
             

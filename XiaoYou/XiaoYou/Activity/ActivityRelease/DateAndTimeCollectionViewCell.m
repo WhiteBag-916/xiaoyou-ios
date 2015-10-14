@@ -17,6 +17,7 @@ NSString *const kDateAndTimeCollectionViewCell = @"DateAndTimeCollectionViewCell
 @property (nonatomic,strong)UILabel * applayTimeLabel;
 @property (nonatomic,strong)UILabel * beginTimeLabel;
 @property (nonatomic,strong)UILabel * endTimeLabel;
+@property (nonatomic,strong)UIDatePicker * datePicker;
 
 @end
 
@@ -132,30 +133,69 @@ NSString *const kDateAndTimeCollectionViewCell = @"DateAndTimeCollectionViewCell
     UITapGestureRecognizer * endTapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(endChoiceTime)];
     [_endTimeLabel addGestureRecognizer:endTapGesture];
     
+    //日期选择
+    _datePicker = [[UIDatePicker alloc] initWithFrame:CGRectMake(10, 0, SCREEN_WIDTH-20, 160)];
+    
 }
 
+//手势回调方法
 -(void)applayChoiceTime
 {
-    UIView *testView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 300, 200)];
-    testView.backgroundColor = [UIColor redColor];
-    CommonPopView *popView = [[CommonPopView alloc] initWithFrame:[UIScreen mainScreen].bounds
-                                                       showButton:YES
-                                                           addSub:testView
-                                                            isTop:NO
-                                                           isRoot:YES
-                                                          addSelf:[UIApplication sharedApplication].keyWindow];
-    [popView comSet:self action:@selector(chooseDate) params:nil];
+    CommonPopView * popView = [[CommonPopView alloc] initWithFrame:[UIScreen mainScreen].bounds
+                                         showButton:YES
+                                             addSub:_datePicker
+                                              isTop:NO
+                                             isRoot:YES
+                                            addSelf:[UIApplication sharedApplication].keyWindow];
+    [popView comSet:self action:@selector(applayChooseDate) params:nil];
     [popView showView];
 }
 
 -(void)beginChoiceTime
 {
-
+    CommonPopView * popView = [[CommonPopView alloc] initWithFrame:[UIScreen mainScreen].bounds
+                                                        showButton:YES
+                                                            addSub:_datePicker
+                                                             isTop:NO
+                                                            isRoot:YES
+                                                           addSelf:[UIApplication sharedApplication].keyWindow];
+    [popView comSet:self action:@selector(heginChooseDate) params:nil];
+    [popView showView];
 }
 
 -(void)endChoiceTime
 {
-    
+    CommonPopView * popView = [[CommonPopView alloc] initWithFrame:[UIScreen mainScreen].bounds
+                                                        showButton:YES
+                                                            addSub:_datePicker
+                                                             isTop:NO
+                                                            isRoot:YES
+                                                           addSelf:[UIApplication sharedApplication].keyWindow];
+    [popView comSet:self action:@selector(endChooseDate) params:nil];
+    [popView showView];
+}
+
+//确定选择日期
+-(void)applayChooseDate
+{
+    NSDateFormatter * formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"yyyy-MM-dd HH:mm"];
+    NSString * showStr = [formatter stringFromDate:_datePicker.date];
+    _applayTimeLabel.text = showStr;
+}
+-(void)heginChooseDate
+{
+    NSDateFormatter * formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"yyyy-MM-dd HH:mm"];
+    NSString * showStr = [formatter stringFromDate:_datePicker.date];
+    _beginTimeLabel.text = showStr;
+}
+-(void)endChooseDate
+{
+    NSDateFormatter * formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"yyyy-MM-dd HH:mm"];
+    NSString * showStr = [formatter stringFromDate:_datePicker.date];
+    _endTimeLabel.text = showStr;
 }
 
 @end
