@@ -51,7 +51,7 @@
     [self showCustomNavigationPublishButton];
     _needRefresh = true;
     
-    if ([AppConfigData isUserFirstUseIt])
+    if ([AppConfigData isUserFirstUseFeed])
         [self addGuideView];
 }
 
@@ -248,7 +248,7 @@
     
     [window addSubview:_promptView];
     [_promptView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.edges.equalTo(self);
+        make.edges.equalTo(window);
     }];
     
     NSString *imageName = @"friend_box_serch";

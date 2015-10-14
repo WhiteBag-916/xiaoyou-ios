@@ -151,15 +151,11 @@ NSString *const kAssociationsListTableViewCell = @"AssociationsListTableViewCell
         make.right.mas_equalTo(K_CONTENT_R);
         make.bottom.mas_equalTo(K_KEY_B);
     }];
-    
-    //7
-    UIView *line = [[UIView alloc] init];
-    [self.contentView addSubview:line];
-    [line mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.bottom.right.equalTo(self.contentView);
-        make.height.mas_equalTo(1);
-    }];
-    line.backgroundColor = KCOLORGREEN_e6ebea;
+}
+
+- (BOOL)needLine
+{
+    return YES;
 }
 
 - (void)initStarView

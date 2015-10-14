@@ -68,9 +68,6 @@
 		044DA0551BBA77C900AA321A /* ActivityDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 044DA0431BBA77C900AA321A /* ActivityDetailCell.m */; settings = {ASSET_TAGS = (); }; };
 		044DA0561BBA77C900AA321A /* ActivityDetailListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 044DA0451BBA77C900AA321A /* ActivityDetailListView.m */; settings = {ASSET_TAGS = (); }; };
 		044DA0571BBA77C900AA321A /* ActivityDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 044DA0471BBA77C900AA321A /* ActivityDetailViewController.m */; settings = {ASSET_TAGS = (); }; };
-		044DA05B1BBA77C900AA321A /* ActivityCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 044DA0501BBA77C900AA321A /* ActivityCell.m */; settings = {ASSET_TAGS = (); }; };
-		044DA05C1BBA77C900AA321A /* ActivityListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 044DA0521BBA77C900AA321A /* ActivityListView.m */; settings = {ASSET_TAGS = (); }; };
-		044DA05D1BBA77C900AA321A /* ActivityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 044DA0541BBA77C900AA321A /* ActivityViewController.m */; settings = {ASSET_TAGS = (); }; };
 		044DA0651BBA7E4700AA321A /* ActivityBottomView.m in Sources */ = {isa = PBXBuildFile; fileRef = 044DA0601BBA7E4700AA321A /* ActivityBottomView.m */; settings = {ASSET_TAGS = (); }; };
 		044DA0661BBA7E4700AA321A /* ActivityMiddleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 044DA0621BBA7E4700AA321A /* ActivityMiddleView.m */; settings = {ASSET_TAGS = (); }; };
 		044DA0671BBA7E4700AA321A /* ActivityTopView.m in Sources */ = {isa = PBXBuildFile; fileRef = 044DA0641BBA7E4700AA321A /* ActivityTopView.m */; settings = {ASSET_TAGS = (); }; };
@@ -764,12 +761,6 @@
 		044DA0451BBA77C900AA321A /* ActivityDetailListView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityDetailListView.m; sourceTree = "<group>"; };
 		044DA0461BBA77C900AA321A /* ActivityDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityDetailViewController.h; sourceTree = "<group>"; };
 		044DA0471BBA77C900AA321A /* ActivityDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityDetailViewController.m; sourceTree = "<group>"; };
-		044DA04F1BBA77C900AA321A /* ActivityCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityCell.h; sourceTree = "<group>"; };
-		044DA0501BBA77C900AA321A /* ActivityCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityCell.m; sourceTree = "<group>"; };
-		044DA0511BBA77C900AA321A /* ActivityListView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityListView.h; sourceTree = "<group>"; };
-		044DA0521BBA77C900AA321A /* ActivityListView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityListView.m; sourceTree = "<group>"; };
-		044DA0531BBA77C900AA321A /* ActivityViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityViewController.h; sourceTree = "<group>"; };
-		044DA0541BBA77C900AA321A /* ActivityViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityViewController.m; sourceTree = "<group>"; };
 		044DA05F1BBA7E4700AA321A /* ActivityBottomView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityBottomView.h; sourceTree = "<group>"; };
 		044DA0601BBA7E4700AA321A /* ActivityBottomView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityBottomView.m; sourceTree = "<group>"; };
 		044DA0611BBA7E4700AA321A /* ActivityMiddleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityMiddleView.h; sourceTree = "<group>"; };
@@ -1828,12 +1819,6 @@
 				20E3EF901BC9064C00B3D27E /* AvailableTime */,
 				044DA05E1BBA7E4700AA321A /* ActivityCell */,
 				044DA0411BBA77C900AA321A /* ActivityDetail */,
-				044DA04F1BBA77C900AA321A /* ActivityCell.h */,
-				044DA0501BBA77C900AA321A /* ActivityCell.m */,
-				044DA0511BBA77C900AA321A /* ActivityListView.h */,
-				044DA0521BBA77C900AA321A /* ActivityListView.m */,
-				044DA0531BBA77C900AA321A /* ActivityViewController.h */,
-				044DA0541BBA77C900AA321A /* ActivityViewController.m */,
 			);
 			path = Activity;
 			sourceTree = "<group>";
@@ -4373,7 +4358,6 @@
 				333122701B806EDB00D3D032 /* PSTGridLayoutRow.m in Sources */,
 				20DA170A1BC7C51200A61B37 /* MGCYearCalendarMonthCell.m in Sources */,
 				E4BE2DAA1BC7989300124F22 /* ContactsInfoFirstTableViewCell.m in Sources */,
-				044DA05B1BBA77C900AA321A /* ActivityCell.m in Sources */,
 				65A703CB1B8C467C0094D8A2 /* FeedFilterViewController.m in Sources */,
 				E455DCF01BCB798400B78E54 /* ActivityReleaseAndTypeCell.m in Sources */,
 				333122501B806EDB00D3D032 /* MWPhotoBrowser.m in Sources */,
@@ -4412,7 +4396,6 @@
 				6592DCE01B806A9B004CD118 /* XYSendMessageViewController.m in Sources */,
 				20DCB9791B8CA60800C758DE /* NotifyListTableViewCell.m in Sources */,
 				20DAF9D91B873883005B7932 /* NSString+PinYin4Cocoa.m in Sources */,
-				044DA05C1BBA77C900AA321A /* ActivityListView.m in Sources */,
 				333122461B806EDB00D3D032 /* EMCDDeviceManagerBase.m in Sources */,
 				20DA16F31BC7C51200A61B37 /* MGCAllDayEventsViewLayout.m in Sources */,
 				3331222C1B806EDB00D3D032 /* ChatViewController.m in Sources */,
@@ -4471,7 +4454,6 @@
 				333122321B806EDB00D3D032 /* DXChatBarMoreView.m in Sources */,
 				6592DCD31B806A9B004CD118 /* XYContactsInfoDetailViewController.m in Sources */,
 				3331222A1B806EDB00D3D032 /* ChatSendHelper.m in Sources */,
-				044DA05D1BBA77C900AA321A /* ActivityViewController.m in Sources */,
 				209C4C731B8C662900B584DF /* AssociationsDetailViewController.m in Sources */,
 				20E034091B8471E5002E4583 /* SearchFilterTableViewCell.m in Sources */,
 				049FF1C31BC91778000645C8 /* ScheduleCell.m in Sources */,

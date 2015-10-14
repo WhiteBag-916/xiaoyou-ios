@@ -200,15 +200,11 @@ NSString *const kGroupApplyTableViewCell = @"GroupApplyTableViewCellId";
         make.top.equalTo(_tagContent.mas_bottom).offset(kPaddingDistance);
         make.bottom.mas_equalTo(-kPaddingDistance);
     }];
-    
-    //line
-    UIView *line = [[UIView alloc] init];
-    [self.contentView addSubview:line];
-    [line mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.bottom.right.equalTo(self.contentView);
-        make.height.mas_equalTo(1);
-    }];
-    line.backgroundColor = KCOLORGREEN_e6ebea;
+}
+
+- (BOOL)needLine
+{
+    return YES;
 }
 
 -(void)setCellInfo:(ApplicantList *)applicantList
