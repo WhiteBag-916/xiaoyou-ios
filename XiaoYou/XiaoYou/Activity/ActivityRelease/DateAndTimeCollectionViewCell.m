@@ -7,6 +7,8 @@
 //
 
 #import "DateAndTimeCollectionViewCell.h"
+#import "CommonPopView.h"
+#import "YVIew+Ext.h"
 
 NSString *const kDateAndTimeCollectionViewCell = @"DateAndTimeCollectionViewCellId";
 
@@ -134,7 +136,16 @@ NSString *const kDateAndTimeCollectionViewCell = @"DateAndTimeCollectionViewCell
 
 -(void)applayChoiceTime
 {
-
+    UIView *testView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 300, 200)];
+    testView.backgroundColor = [UIColor redColor];
+    CommonPopView *popView = [[CommonPopView alloc] initWithFrame:[UIScreen mainScreen].bounds
+                                                       showButton:YES
+                                                           addSub:testView
+                                                            isTop:NO
+                                                           isRoot:YES
+                                                          addSelf:[UIApplication sharedApplication].keyWindow];
+    [popView comSet:self action:@selector(chooseDate) params:nil];
+    [popView showView];
 }
 
 -(void)beginChoiceTime
