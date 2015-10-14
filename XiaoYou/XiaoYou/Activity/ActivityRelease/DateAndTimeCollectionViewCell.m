@@ -179,21 +179,21 @@ NSString *const kDateAndTimeCollectionViewCell = @"DateAndTimeCollectionViewCell
 -(void)applayChooseDate
 {
     NSDateFormatter * formatter = [[NSDateFormatter alloc] init];
-    [formatter setDateFormat:@"yyyy-MM-dd HH:mm"];
+    [formatter setDateFormat:@"yyyy-MM-dd a HH:mm"];
     NSString * showStr = [formatter stringFromDate:_datePicker.date];
     _applayTimeLabel.text = showStr;
 }
 -(void)heginChooseDate
 {
     NSDateFormatter * formatter = [[NSDateFormatter alloc] init];
-    [formatter setDateFormat:@"yyyy-MM-dd HH:mm"];
+    [formatter setDateFormat:@"yyyy-MM-dd a HH:mm"];
     NSString * showStr = [formatter stringFromDate:_datePicker.date];
     _beginTimeLabel.text = showStr;
 }
 -(void)endChooseDate
 {
     NSDateFormatter * formatter = [[NSDateFormatter alloc] init];
-    [formatter setDateFormat:@"yyyy-MM-dd HH:mm"];
+    [formatter setDateFormat:@"yyyy-MM-dd a HH:mm"];
     NSString * showStr = [formatter stringFromDate:_datePicker.date];
     _endTimeLabel.text = showStr;
 }

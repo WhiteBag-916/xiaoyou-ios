@@ -12,6 +12,7 @@
 @interface ActivityReleaseController ()
 
 @property (nonatomic,strong) ActivityReleaseCollectionView * releaseCollectionView;
+@property (nonatomic,strong) UIButton * releaseButton;
 
 @end
 
@@ -56,7 +57,23 @@
     
     //.........
     
+    //发布按钮
+    _releaseButton = [[UIButton alloc] init];
+    _releaseButton.backgroundColor = KCOLORGREEN_g1;
+    [_releaseButton setTitle:@"发布" forState:UIControlStateNormal];
+    [_releaseButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [_releaseButton addTarget:self action:@selector(clickReleaseBtn) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:_releaseButton];
+    [_releaseButton mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.right.bottom.mas_equalTo(0);
+        make.height.mas_equalTo(46);
+    }];
     
+}
+
+-(void)clickReleaseBtn
+{
+    NSLog(@"发布");
 }
 
 - (void)didReceiveMemoryWarning {

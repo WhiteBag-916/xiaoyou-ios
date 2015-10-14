@@ -17,8 +17,9 @@ NSString *const kDescriptionCollectionViewCell = @"DescriptionCollectionViewCell
 @interface DescriptionCollectionViewCell ()<UIImagePickerControllerDelegate,UINavigationControllerDelegate>
 
 @property (nonatomic,strong) UIImagePickerController * imagePicker;
-@property (nonatomic,strong) UIButton * picButton;
+@property (nonatomic,strong) UIImageView * picImageView;
 @property (nonatomic,strong) YTextView * textView;
+@property (nonatomic,strong) UIButton * deleteBtn;
 
 @end
 
@@ -35,17 +36,34 @@ NSString *const kDescriptionCollectionViewCell = @"DescriptionCollectionViewCell
 
 -(void)changUI
 {
-    _picButton = [[UIButton alloc] init];
-    _picButton.layer.cornerRadius = 4;
-    _picButton.clipsToBounds = YES;
-    [_picButton setImage:[UIImage imageNamed:@"btn_add"] forState:UIControlStateNormal];
-    [self.backView addSubview:_picButton];
-    [_picButton mas_makeConstraints:^(MASConstraintMaker *make) {
+    
+    _picImageView = [[UIImageView alloc] init];
+    _picImageView.userInteractionEnabled = YES;
+    _picImageView.layer.cornerRadius = 4;
+    _picImageView.clipsToBounds = YES;
+    _picImageView.image = [UIImage imageNamed:@"btn_add"];
+    [self.backView addSubview:_picImageView];
+    [_picImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.mas_equalTo(80);
         make.left.equalTo(self.numImageView.mas_left);
         make.height.width.mas_equalTo(72);
     }];
-    [_picButton addTarget:self action:@selector(choicePictrue) forControlEvents:UIControlEventTouchUpInside];
+    UITapGestureRecognizer * tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(choicePictrue)];
+    [_picImageView addGestureRecognizer:tapGestureRecognizer];
+    
+    UILongPressGestureRecognizer * longPressGestureRecognizer = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(deleteBtnShow)];
+    [_picImageView addGestureRecognizer:longPressGestureRecognizer];
+    
+    _deleteBtn = [[UIButton alloc] init];
+    [_deleteBtn setImage:[UIImage imageNamed:@"btn_delete"] forState:UIControlStateNormal];
+    [_deleteBtn addTarget:self action:@selector(deleteImage) forControlEvents:UIControlEventTouchUpInside];
+    [self.backView addSubview:_deleteBtn];
+    [_deleteBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.mas_equalTo(68);
+        make.right.equalTo(_picImageView.mas_right).offset(12);
+        make.width.height.mas_equalTo(24);
+    }];
+    _deleteBtn.hidden = YES;
     
     _textView = [[YTextView alloc] init];
     _textView.backgroundColor = [UIColor clearColor];
@@ -53,7 +71,7 @@ NSString *const kDescriptionCollectionViewCell = @"DescriptionCollectionViewCell
     _textView.placeholderColor = KCOLORGREEN_B5;
     [self.backView addSubview:_textView];
     [_textView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(_picButton.mas_bottom).offset(12);
+        make.top.equalTo(_picImageView.mas_bottom).offset(12);
         make.left.equalTo(self.numImageView.mas_left);
         make.right.mas_equalTo(-12);
         make.bottom.mas_equalTo(-12);
@@ -67,6 +85,8 @@ NSString *const kDescriptionCollectionViewCell = @"DescriptionCollectionViewCell
 
 -(void)choicePictrue
 {
+    _deleteBtn.hidden = YES;
+    
     YActionSheetItem *item1 = [YActionSheetItem itemWithTitle:@"拍照"
                                                          type:YCommonActionSheetItemTypeCenterCommon
                                                         block:^(NSInteger checkNum) {
@@ -122,7 +142,7 @@ NSString *const kDescriptionCollectionViewCell = @"DescriptionCollectionViewCell
     [picker setAllowsEditing:YES];
     [self.myController presentViewController:picker animated:YES completion:nil];
 }
-
+//imagePickerController委托回调
 -(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info
 {
     //打印出字典中的内容
@@ -130,7 +150,7 @@ NSString *const kDescriptionCollectionViewCell = @"DescriptionCollectionViewCell
     
     //获取用户编辑之后的图像
     UIImage* editedImage = [info objectForKey:UIImagePickerControllerEditedImage];
-    [_picButton setImage:editedImage forState:UIControlStateNormal];
+    _picImageView.image = editedImage;
 
      [self.myController dismissViewControllerAnimated:YES completion:nil];
 }
@@ -139,4 +159,22 @@ NSString *const kDescriptionCollectionViewCell = @"DescriptionCollectionViewCell
 {
     [self.myController dismissViewControllerAnimated:YES completion:nil];
 }
+
+//展示删除按钮
+-(void)deleteBtnShow
+{
+    if (![_picImageView.image isEqual:[UIImage imageNamed:@"btn_add"]])
+    {
+        _deleteBtn.hidden = NO;
+    }
+    
+}
+//点击删除按钮
+-(void)deleteImage
+{
+    NSLog(@"delete");
+    _deleteBtn.hidden = YES;
+    _picImageView.image = [UIImage imageNamed:@"btn_add"];
+}
+
 @end

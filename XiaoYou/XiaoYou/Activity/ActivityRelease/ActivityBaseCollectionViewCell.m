@@ -29,6 +29,9 @@
     _backView.layer.cornerRadius = 4;
     _backView.clipsToBounds = YES;
     _backView.backgroundColor = KCOLORGREEN_B1;
+    _backView.layer.borderWidth = 1;
+    _backView.layer.borderColor = KCOLORGREEN_B2.CGColor;
+    _backView.alpha = 0.8;
     [self.contentView addSubview:_backView];
     [_backView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.bottom.mas_equalTo(0);
