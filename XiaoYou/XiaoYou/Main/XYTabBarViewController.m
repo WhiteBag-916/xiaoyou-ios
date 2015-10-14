@@ -60,38 +60,38 @@
     
     //消息
     UITabBarItem *messageItem = [[UITabBarItem alloc] initWithTitle:@"消息"
-                                                              image:[UIImage imageNamed:@"toolbar-chat"]
+                                                              image:[UIImage imageNamed:@"btn_message_n"]
                                                                 tag:kTag_TabBar_Message];
-    messageItem.selectedImage = [[UIImage imageNamed:@"toolbar-chat-chosen"]
+    messageItem.selectedImage = [[UIImage imageNamed:@"btn_message_y"]
                                  imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     _messageViewCotroller.tabBarItem = messageItem;
     
     //有空
     UITabBarItem *availableItem = [[UITabBarItem alloc] initWithTitle:@"有空"
-                                                              image:[UIImage imageNamed:@"toolbar-chat"]
+                                                              image:[UIImage imageNamed:@"btn_free_n"]
                                                                 tag:kTag_TabBar_Message];
-    availableItem.selectedImage = [[UIImage imageNamed:@"toolbar-chat-chosen"]
+    availableItem.selectedImage = [[UIImage imageNamed:@"btn_free_y"]
                                  imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     _availableViewController.tabBarItem = availableItem;
     
     //Feed
     UITabBarItem *feedListItem = [[UITabBarItem alloc] initWithTitle:@"人脉"
-                                                               image:[UIImage imageNamed:@"toolbar-contact"]
+                                                               image:[UIImage imageNamed:@"btn_friends_n"]
                                                                  tag:kTag_TabBar_FeedList];
-    feedListItem.selectedImage = [[UIImage imageNamed:@"toolbar-contact-chosen"]
+    feedListItem.selectedImage = [[UIImage imageNamed:@"btn_friends_y"]
                                   imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     _feedListViewCotroller.tabBarItem = feedListItem;
     
     
     //我
     UITabBarItem *profileItem = [[UITabBarItem alloc] initWithTitle:@"我的"
-                                                         image:[UIImage imageNamed:@"toolbar-mine"]
+                                                         image:[UIImage imageNamed:@"btn_mine_n"]
                                                            tag:kTag_TabBar_Profile];
-    profileItem.selectedImage = [[UIImage imageNamed:@"toolbar-mine-chosen"]
+    profileItem.selectedImage = [[UIImage imageNamed:@"btn_mine_y"]
                             imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     profileViewCotroller.tabBarItem = profileItem;
     
-    self.tabBar.tintColor = KCOLORGREEN_009688;
+    self.tabBar.tintColor = KCOLORGREEN_g1;
     self.viewControllers = @[_messageViewCotroller, _availableViewController, _feedListViewCotroller, profileViewCotroller];
 }
 

@@ -32,8 +32,10 @@
 
 - (BOOL)dayPlannerView:(MGCDayPlannerView*)view canCreateNewEventOfType:(MGCEventType)type atDate:(NSDate*)date
 {
-	NSDateComponents *comps = [self.calendar components:NSWeekdayCalendarUnit fromDate:date];
-	return comps.weekday != 1;
+    return YES;
+    //星期天不能加事件
+//	NSDateComponents *comps = [self.calendar components:NSWeekdayCalendarUnit fromDate:date];
+//	return comps.weekday != 1;
 }
 //
 //#pragma mark - CalendarControllerNavigation
