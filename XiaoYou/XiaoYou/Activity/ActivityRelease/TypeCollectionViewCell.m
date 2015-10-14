@@ -12,4 +12,20 @@ NSString *const kTypeCollectionViewCell = @"TypeCollectionViewCellId";
 
 @implementation TypeCollectionViewCell
 
+- (instancetype)initWithFrame:(CGRect)frame
+{
+    self = [super initWithFrame:frame];
+    if (self) {
+        [self changUI];
+    }
+    return self;
+}
+
+-(void)changUI
+{
+    self.numImageView.image = [UIImage imageNamed:@"img_num5"];
+    self.typeLabel.text = @"类型";
+    
+}
+
 @end
