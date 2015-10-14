@@ -41,7 +41,7 @@
 #import "MGCTimeRowsView.h"
 #import "CalendarDayHeaderView.h"
 
-#define TOP_BAR_HEIGHT 84.0
+#define TOP_BAR_HEIGHT 94.0
 
 // used to restrict scrolling to one direction / axis
 typedef enum: NSUInteger
