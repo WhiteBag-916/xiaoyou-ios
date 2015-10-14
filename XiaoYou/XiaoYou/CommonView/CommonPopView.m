@@ -7,7 +7,7 @@
 //
 
 #import "CommonPopView.h"
-#import "YCPDefine.h"
+#import "YDefine.h"
 
 @implementation CommonPopView
 
@@ -108,12 +108,12 @@
     if (1 == btnType)
     {
         button.frame = CGRectMake(self.width-45, 8, 40, 40);
-        [button setImage:[UIImage imageNamed:@"night_share_send"] forState:UIControlStateNormal];
+        [button setTitle:@"确定" forState:UIControlStateNormal];
     }
     else
     {
         button.frame = CGRectMake(5, 8, 40, 40);
-        [button setImage:[UIImage imageNamed:@"night_share_cancel"] forState:UIControlStateNormal];
+        [button setTitle:@"取消" forState:UIControlStateNormal];
     }
     
     button.imageEdgeInsets = UIEdgeInsetsMake(5, 5, 5, 5);
