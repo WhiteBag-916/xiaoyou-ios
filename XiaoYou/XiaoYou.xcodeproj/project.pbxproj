@@ -620,6 +620,7 @@
 		65F55A9E1B897C4700ED4348 /* ProfileTagViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 65F55A9D1B897C4700ED4348 /* ProfileTagViewController.m */; };
 		65F55AA11B899EBC00ED4348 /* UIImageView+Ext.m in Sources */ = {isa = PBXBuildFile; fileRef = 65F55AA01B899EBC00ED4348 /* UIImageView+Ext.m */; };
 		65F82F841B85E74A00FF6E2D /* FeedPublishViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 65F82F831B85E74A00FF6E2D /* FeedPublishViewController.m */; };
+		65FC7EB21BCE122500B3AA7C /* YWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 65FC7EB11BCE122500B3AA7C /* YWebViewController.m */; settings = {ASSET_TAGS = (); }; };
 		E426A5661BCD0D620064A415 /* PlaceCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E426A5651BCD0D620064A415 /* PlaceCollectionViewCell.m */; settings = {ASSET_TAGS = (); }; };
 		E43E10041BCC9CA90018B6D7 /* ActivityReleaseCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = E43E10031BCC9CA90018B6D7 /* ActivityReleaseCollectionView.m */; settings = {ASSET_TAGS = (); }; };
 		E43E10071BCC9CE50018B6D7 /* NameCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E43E10061BCC9CE50018B6D7 /* NameCollectionViewCell.m */; settings = {ASSET_TAGS = (); }; };
@@ -1605,6 +1606,8 @@
 		65F55AA01B899EBC00ED4348 /* UIImageView+Ext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+Ext.m"; sourceTree = "<group>"; };
 		65F82F821B85E74A00FF6E2D /* FeedPublishViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FeedPublishViewController.h; path = XiaoYou/CommonView/FeedPublishViewController.h; sourceTree = SOURCE_ROOT; };
 		65F82F831B85E74A00FF6E2D /* FeedPublishViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FeedPublishViewController.m; path = XiaoYou/CommonView/FeedPublishViewController.m; sourceTree = SOURCE_ROOT; };
+		65FC7EB01BCE122500B3AA7C /* YWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YWebViewController.h; sourceTree = "<group>"; };
+		65FC7EB11BCE122500B3AA7C /* YWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YWebViewController.m; sourceTree = "<group>"; };
 		77B574BED9D4FF3F4BFAA9FE /* libPods-XiaoYou.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-XiaoYou.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1D8A55CC0081FB2C8604F21 /* Pods-XiaoYou.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XiaoYou.release.xcconfig"; path = "../Pods/Target Support Files/Pods-XiaoYou/Pods-XiaoYou.release.xcconfig"; sourceTree = "<group>"; };
 		E426A5641BCD0D620064A415 /* PlaceCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlaceCollectionViewCell.h; sourceTree = "<group>"; };
@@ -2269,6 +2272,8 @@
 		20DC87F81B5F683F0019DC7F /* CommonView */ = {
 			isa = PBXGroup;
 			children = (
+				65FC7EB01BCE122500B3AA7C /* YWebViewController.h */,
+				65FC7EB11BCE122500B3AA7C /* YWebViewController.m */,
 				20DAAA711BCD05F5006DF231 /* TagsCommonView */,
 				2076A2FC1B81C590001FFBAC /* YCommonActionSheet.h */,
 				2076A2FD1B81C590001FFBAC /* YCommonActionSheet.m */,
@@ -4348,6 +4353,7 @@
 				3334AC461B831B2200FDDCCB /* ContactsInfoDetailTableView.m in Sources */,
 				044DA0671BBA7E4700AA321A /* ActivityTopView.m in Sources */,
 				E43E10101BCC9D8D0018B6D7 /* TypeCollectionViewCell.m in Sources */,
+				65FC7EB21BCE122500B3AA7C /* YWebViewController.m in Sources */,
 				20E18D561B807752005B75EE /* AssociationsListViewController.m in Sources */,
 				333122541B806EDB00D3D032 /* DACircularProgressView.m in Sources */,
 				3395498F1B81C67000F9ECB1 /* GroupInfoDetailHeaderView.m in Sources */,
