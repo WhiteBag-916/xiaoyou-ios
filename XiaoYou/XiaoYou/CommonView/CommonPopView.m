@@ -31,7 +31,7 @@
         [self.grayView addGestureRecognizer:tapgest];
         
         //根据view计算背景高度  上下间隔20
-        NSInteger bgHeight = view.height+40*2;
+        NSInteger bgHeight = view.height+56;
         if (isShowButton)
         {
             bgHeight += 20;
