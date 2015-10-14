@@ -505,7 +505,7 @@
     
     [window addSubview:_promptView];
     [_promptView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.edges.equalTo(self);
+        make.edges.equalTo(window);
     }];
     
     NSString *imageName = @"mine_box_yard";
@@ -515,7 +515,7 @@
     
     [_guideImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.mas_equalTo(SCALE_NUM(220));
-        make.centerX.equalTo(self);
+        make.centerX.equalTo(window);
     }];
     
     

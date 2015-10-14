@@ -248,7 +248,7 @@
     
     [window addSubview:_promptView];
     [_promptView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.edges.equalTo(self);
+        make.edges.equalTo(window);
     }];
     
     NSString *imageName = @"friend_box_serch";
