@@ -11,10 +11,15 @@
 #import "ActivityReleaseController.h"
 #import "RemindViewController.h"
 #import "ActivityChoiceController.h"
-
+#import "AppConfigData.h"
 @interface AvailableViewController ()
 
 @property (nonatomic,strong) AvailableListView *availableListView;
+
+
+@property (nonatomic,strong) UIView         *promptView;        //提示透明背景
+@property (nonatomic,strong) UIImageView    *guideImageView;    //提示图片
+@property (nonatomic,assign) int            guideIndex;        //当前提示索引
 
 @end
 
@@ -23,8 +28,64 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
     [self setUpCustomNavgationBar];
     [self availableListView];
+    
+    if([AppConfigData isUserFirstUseHaveTime])
+        [self addGuideView];
+}
+
+
+- (void)addGuideView {
+    
+    _promptView = [[UIView alloc]init];
+    _promptView.backgroundColor = [UIColor blackColor];
+    _promptView.alpha = 0.6;
+    UIWindow *window = [UIApplication sharedApplication].keyWindow;
+    
+    [window addSubview:_promptView];
+    [_promptView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.equalTo(self);
+    }];
+    
+    NSString *imageName = @"havetime_box_calender";
+    UIImage *image = [[UIImage imageNamed:imageName]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    _guideImageView = [[UIImageView alloc] initWithImage:image];
+    [window addSubview:_guideImageView];
+    
+    [_guideImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.mas_equalTo(SCALE_NUM(170));
+        make.centerX.equalTo(self);
+    }];
+    
+    
+    _guideImageView.userInteractionEnabled = YES;
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissGuideView)];
+    [_promptView addGestureRecognizer:tap];
+    
+    UITapGestureRecognizer *tap1 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissGuideView)];
+    [_guideImageView addGestureRecognizer:tap1];
+    self.guideIndex = 1;
+}
+
+- (void)nextPromptView {
+    _guideImageView.image = [UIImage imageNamed:@"havetime_box_classroom"];
+    
+    [_guideImageView mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.top.mas_equalTo(SCALE_NUM(250));
+    }];
+    self.guideIndex = 2;
+}
+
+-(void)dismissGuideView {
+    if (self.guideIndex == 1) {
+        [self nextPromptView];
+    }
+    else if (self.guideIndex == 2) {
+        [_guideImageView removeFromSuperview];
+        [_promptView removeFromSuperview];
+    }
 }
 
 - (void)didReceiveMemoryWarning {
