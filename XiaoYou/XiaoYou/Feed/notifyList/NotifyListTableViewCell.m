@@ -67,18 +67,14 @@ NSString *const kNotifyListTableViewCell = @"NotifyListTableViewCellId";
             make.right.equalTo(_timeLabel.mas_left).offset(-KCONTENTMARGIN);
             make.centerY.equalTo(self.contentView);
         }];
-        
-        //line
-        UIView *line = [[UIView alloc] init];
-        [self.contentView addSubview:line];
-        [line mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.left.bottom.right.equalTo(self.contentView);
-            make.height.mas_equalTo(1);
-        }];
-        line.backgroundColor = KCOLORGREEN_e6ebea;
     }
     
     return self;
+}
+
+- (BOOL)needLine
+{
+    return YES;
 }
 
 - (void)initData:(AlertList *)alertList {
