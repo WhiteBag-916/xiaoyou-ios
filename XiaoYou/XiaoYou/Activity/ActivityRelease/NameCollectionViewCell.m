@@ -32,7 +32,7 @@ NSString *const kNameCollectionViewCell = @"NameCollectionViewCellId";
 {  
     _textView = [[YTextView alloc] init];
     _textView.backgroundColor = [UIColor clearColor];
-    _textView.font = CONTENT_FONT(15);
+    _textView.font = CONTENT_FONT(12);
     _textView.placeholderColor = KCOLORGREEN_B5;
     [self.backView addSubview:_textView];
     [_textView mas_makeConstraints:^(MASConstraintMaker *make) {

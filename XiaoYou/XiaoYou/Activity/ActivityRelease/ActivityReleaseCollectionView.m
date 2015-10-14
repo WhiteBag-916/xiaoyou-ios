@@ -62,6 +62,7 @@
     else if (indexPath.row == 1)
     {
         DescriptionCollectionViewCell * cell = (DescriptionCollectionViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:kDescriptionCollectionViewCell forIndexPath:indexPath];
+        cell.myController = self.myController;
         return cell;
     }
     else if (indexPath.row == 2)
