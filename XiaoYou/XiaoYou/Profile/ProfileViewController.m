@@ -23,6 +23,7 @@
 #import "ConvertToCommonEmoticonsHelper.h"
 #import "QRCodeReaderViewController.h"
 #import "GiftViewController.h"
+#import "AppConfigData.h"
 
 #define KTOPHEIGHT SCALE_NUM(90)
 #define KHEADIMG_SIZE SCALE_NUM(45)
@@ -64,6 +65,9 @@
 
 @property (nonatomic, strong) NSString *userId;//缓存个人id
 @property (nonatomic, strong) NSArray *tagModels;//缓存个人兴趣
+
+@property (nonatomic,strong) UIView         *promptView;
+@property (nonatomic,strong) UIImageView    *guideImageView;
 @end
 
 @implementation ProfileViewController
@@ -73,6 +77,9 @@
     [super viewDidLoad];
     self.hidesBottomBarWhenPushed = NO;
     [self initMyView];
+    
+    if ([AppConfigData isUserFirstUseIt])
+        [self addGuideView];
 }
 - (void)initMyView {
     
@@ -482,5 +489,48 @@
 }
 
 
+
+
+#pragma mark引导蒙城
+
+/**
+ *  nil
+ */
+- (void)addGuideView {
+    
+    _promptView = [[UIView alloc]init];
+    _promptView.backgroundColor = [UIColor blackColor];
+    _promptView.alpha = 0.6;
+    UIWindow *window = [UIApplication sharedApplication].keyWindow;
+    
+    [window addSubview:_promptView];
+    [_promptView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.equalTo(self);
+    }];
+    
+    NSString *imageName = @"mine_box_yard";
+    UIImage *image = [[UIImage imageNamed:imageName]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    _guideImageView = [[UIImageView alloc] initWithImage:image];
+    [window addSubview:_guideImageView];
+    
+    [_guideImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.mas_equalTo(SCALE_NUM(220));
+        make.centerX.equalTo(self);
+    }];
+    
+    
+    _guideImageView.userInteractionEnabled = YES;
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissGuideView)];
+    [_promptView addGestureRecognizer:tap];
+    
+    UITapGestureRecognizer *tap1 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissGuideView)];
+    [_guideImageView addGestureRecognizer:tap1];
+}
+
+
+-(void)dismissGuideView {
+    [_promptView removeFromSuperview];
+    [_guideImageView removeFromSuperview];
+}
 
 @end

@@ -132,7 +132,7 @@
     }
     else
     {
-        return 240;
+        return SCALE_NUM(197);
     }
     return REMIND_CELL_HEIGHT;
 }
