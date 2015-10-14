@@ -9,6 +9,10 @@
 #import "CommonPopView.h"
 #import "YDefine.h"
 
+#define BUTTON_TB  10
+#define BUTTON_H   14
+#define MID_MAR    10   //间隔
+
 @implementation CommonPopView
 
 - (instancetype)initWithFrame:(CGRect)frame
@@ -30,11 +34,11 @@
         [tapgest addTarget:self action:@selector(clickCancel)];
         [self.grayView addGestureRecognizer:tapgest];
         
-        //根据view计算背景高度  上下间隔20
-        NSInteger bgHeight = view.height+56;
+        //根据view计算背景高度  上下间隔10
+        NSInteger bgHeight = view.height+MID_MAR*2;
         if (isShowButton)
         {
-            bgHeight += 10;
+            bgHeight += MID_MAR*2;
         }
         
         CGRect begainFrame = self.isTop ? CGRectMake(0, 0-bgHeight, self.width, bgHeight) : CGRectMake(0, self.bottomY, self.width, bgHeight);
@@ -57,7 +61,7 @@
             line.backgroundColor = [UIColor hexChangeFloat:@"e9e9e9"];
             [self.bgView addSubview:line];
             
-            view.originY = 66;
+            view.originY = BUTTON_TB*2+BUTTON_H+MID_MAR;
         }
         else
         {
@@ -112,13 +116,13 @@
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
     if (1 == btnType)
     {
-        button.frame = CGRectMake(self.width-45, 8, 40, 40);
+        button.frame = CGRectMake(self.width-45, 8, 40, BUTTON_H);
         [button setTitleColor:KCOLORGREEN_g1 forState:UIControlStateNormal];
         [button setTitle:@"确定" forState:UIControlStateNormal];
     }
     else
     {
-        button.frame = CGRectMake(5, 8, 40, 40);
+        button.frame = CGRectMake(5, 8, 40, BUTTON_H);
         [button setTitleColor:KCOLORGREEN_B5 forState:UIControlStateNormal];
         [button setTitle:@"取消" forState:UIControlStateNormal];
     }
