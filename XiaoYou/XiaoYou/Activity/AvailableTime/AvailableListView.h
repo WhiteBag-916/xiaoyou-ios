@@ -11,9 +11,10 @@
 //cell类型
 typedef enum : NSUInteger {
     DEFAULT,
-    SCHEDULECARD_CELL,
-    STUDYROOM_CELL,
-    SCROUGECOURSE_CELL
+    SCHEDULECARD_CELL,  //日程
+    STUDYROOM_CELL,     //空闲教室
+    SCROUGECOURSE_CELL, //蹭课
+    ACTIVITY_DETAIL_CELL//活动详情
 } CELLTYPE;
 @interface AvailableListView : YTableView
 

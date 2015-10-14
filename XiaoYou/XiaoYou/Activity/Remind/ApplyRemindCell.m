@@ -60,7 +60,17 @@
     return self;
 }
 
-
+-(void)setCellType:(CELL_TYPE)cellType
+{
+    if (cellType == WAIT_SELECT) {
+        _bottomSelectView.hidden = NO;
+        _statusButton.hidden = YES;
+    }
+    else if (cellType == IGNORED) {
+        _statusButton.hidden = NO;
+        _bottomSelectView.hidden = YES;
+    }
+}
 
 
 -(void)initView
@@ -164,7 +174,7 @@
     
     _bottomLineView = [[UIView alloc]init];
     [self.wrapContentView addSubview:_bottomLineView];
-    _bottomLineView.backgroundColor = [UIColor lightGrayColor];
+    _bottomLineView.backgroundColor = _topLineView.backgroundColor = [UIColor colorWithRed:204/255.0 green:204/255.0 blue:204/255.0 alpha:1];
     [_bottomLineView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(_applyContentLable.mas_bottom).offset(SCALE_NUM(15));
         make.leading.equalTo(_wrapContentView);
@@ -173,7 +183,7 @@
     }];
     
     [self addStatusButton];
-    //[self addBottomSelectView];
+    [self addBottomSelectView];
 }
 
 
@@ -181,6 +191,7 @@
 {
     _statusButton = [[UIButton alloc]init];
     [self.wrapContentView addSubview:_statusButton];
+    _statusButton.titleLabel.font = [UIFont systemFontOfSize:SCALE_NUM(12)];
     [_statusButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     [_statusButton setTitle:@"已同意" forState:UIControlStateNormal];
     [_statusButton mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -193,7 +204,6 @@
 -(void)addBottomSelectView
 {
     _bottomSelectView = [[UIView alloc]init];
-//    _bottomSelectView.backgroundColor = [UIColor lightGrayColor];
     [self.wrapContentView addSubview:_bottomSelectView];
     [_bottomSelectView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(_bottomLineView.mas_bottom);
@@ -204,7 +214,7 @@
     
     _middleLineView = [[UIView alloc]init];
     [self.bottomSelectView addSubview:_middleLineView];
-    _middleLineView.backgroundColor = [UIColor lightGrayColor];
+    _middleLineView.backgroundColor = _topLineView.backgroundColor = KCOLORGRAY;
     [_middleLineView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.equalTo(_bottomSelectView.mas_centerX);
         make.top.equalTo(_bottomSelectView).offset(SCALE_NUM(8));
@@ -214,6 +224,8 @@
     
     _agreeButton = [[UIButton alloc]init];
     [self.bottomSelectView addSubview:_agreeButton];
+    _agreeButton.titleLabel.font = [UIFont systemFontOfSize:SCALE_NUM(12)];
+    [_agreeButton addTarget:self action:@selector(agreeAction) forControlEvents:UIControlEventTouchUpInside];
     [_agreeButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     [_agreeButton setTitle:@"同意" forState:UIControlStateNormal];
     [_agreeButton mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -225,6 +237,8 @@
     
     _ignoreButton = [[UIButton alloc]init];
     [self.bottomSelectView addSubview:_ignoreButton];
+    _ignoreButton.titleLabel.font = [UIFont systemFontOfSize:SCALE_NUM(12)];
+    [_ignoreButton addTarget:self action:@selector(ignoreAction) forControlEvents:UIControlEventTouchUpInside];
     [_ignoreButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     [_ignoreButton setTitle:@"忽略" forState:UIControlStateNormal];
     [_ignoreButton mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -233,6 +247,16 @@
         make.trailing.equalTo(_bottomSelectView);
         make.bottom.equalTo(_bottomSelectView);
     }];
+    
+}
+
+
+-(void)agreeAction {
+    NSLog(@"agree it");
+}
+
+-(void)ignoreAction {
+    NSLog(@"ignore it");
 }
 
 

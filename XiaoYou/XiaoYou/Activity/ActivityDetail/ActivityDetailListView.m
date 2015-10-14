@@ -10,6 +10,9 @@
 #import "ActivityDetailCell.h"
 #import "ActivityJoinInCell.h"
 @interface ActivityDetailListView ()<UITableViewDataSource,UITableViewDelegate>
+
+
+
 @end
 
 @implementation ActivityDetailListView
@@ -35,16 +38,16 @@
     if (indexPath.row == 0)
     {
         return 500;
-        height = [tableView fd_heightForCellWithIdentifier:@"activitydetail" cacheByIndexPath:indexPath configuration:^(ActivityDetailCell *cell) {
+        //height = [tableView fd_heightForCellWithIdentifier:@"activitydetail" cacheByIndexPath:indexPath configuration:^(ActivityDetailCell *cell) {
             //[cell setData:_feedListArray[indexPath.row]];
-        }];
+        //}];
     }
     else
     {
         return 250;
-        height = [tableView fd_heightForCellWithIdentifier:@"joinincell" cacheByIndexPath:indexPath configuration:^(ActivityJoinInCell *cell) {
+        //height = [tableView fd_heightForCellWithIdentifier:@"joinincell" cacheByIndexPath:indexPath configuration:^(ActivityJoinInCell *cell) {
             //[cell setData:_feedListArray[indexPath.row]];
-        }];
+        //}];
     }
     return height;
 }
@@ -56,13 +59,16 @@
         ActivityDetailCell *cell = [ActivityDetailCell cellWithTableView:tableView];
         return cell;
     }
+    else if (indexPath.row == 1)
+    {
+        ActivityJoinInCell *cell;
+        cell = [ActivityJoinInCell cellWithTableView:tableView cellType:IS_TOPVIEW];
+        return cell;
+    }
     else
     {
         ActivityJoinInCell *cell;
-        if (indexPath.row == 1)
-            cell = [ActivityJoinInCell cellWithTableView:tableView cellType:IS_TOPVIEW];
-        else
-            cell = [ActivityJoinInCell cellWithTableView:tableView cellType:NOT_TOPVIEW];
+        cell = [ActivityJoinInCell cellWithTableView:tableView cellType:NOT_TOPVIEW];
         return cell;
     }
     return nil;

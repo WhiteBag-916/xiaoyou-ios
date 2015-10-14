@@ -13,6 +13,7 @@
 #import "ScroungeCourseCell.h"
 #import "AvailableSimpleViewController.h"
 #import "WeekViewController.h"
+#import "ActivityDetailViewController.h"
 
 @interface AvailableListView ()<UITableViewDataSource,UITableViewDelegate>
 
@@ -91,6 +92,9 @@
     else if ([cell isKindOfClass:[ScroungeCourseCell class]]) {
         [self gotoDetailWithCellType:SCROUGECOURSE_CELL];
     }
+    else if ([cell isKindOfClass:[AvailableCell class]]) {
+        [self gotoDetailWithCellType:ACTIVITY_DETAIL_CELL];
+    }
 }
 
 
@@ -110,6 +114,11 @@
     else if (type == SCROUGECOURSE_CELL) {
         AvailableSimpleViewController *vc = [[AvailableSimpleViewController alloc] initWithType:AvailableSimpleTypeStudyRoom];
         [self.viewController.navigationController pushViewController:vc animated:YES needHiddenBottomBar:YES];
+    }
+    //活动详情
+    else if (type == ACTIVITY_DETAIL_CELL) {
+        ActivityDetailViewController *activityDetailVC = [[ActivityDetailViewController alloc]init];
+        [self.viewController.navigationController pushViewController:activityDetailVC animated:YES needHiddenBottomBar:YES];
     }
 }
 

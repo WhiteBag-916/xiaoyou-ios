@@ -88,7 +88,6 @@
 
 //日程
 -(void)scheduleAction {
-    
     //ActivityChoiceController *choiceVC = [[ActivityChoiceController alloc]init];
     //[self.navigationController pushViewController:choiceVC animated:YES needHiddenBottomBar:YES];
     //ScheduleViewController *scheduleVC = [[ScheduleViewController alloc]init];
@@ -109,13 +108,12 @@
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    //self.hidesBottomBarWhenPushed = YES;
 }
 
 -(void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
-    //self.hidesBottomBarWhenPushed = NO;
+    self.hidesBottomBarWhenPushed = NO;
 }
 
 @end
