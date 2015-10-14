@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		04A2A0071BCE3969006A35FB /* AppConfigData.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A2A0061BCE3969006A35FB /* AppConfigData.m */; settings = {ASSET_TAGS = (); }; };
 		04A82D911BC7A24F00EF87B7 /* RemindAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A82D901BC7A24F00EF87B7 /* RemindAction.m */; settings = {ASSET_TAGS = (); }; };
 		04A82D951BC7B3FC00EF87B7 /* RemindManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A82D941BC7B3FC00EF87B7 /* RemindManager.m */; settings = {ASSET_TAGS = (); }; };
 		20859A7C1B64BD5B00580ED3 /* ProvisionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 20859A7B1B64BD5B00580ED3 /* ProvisionManager.m */; };
@@ -80,6 +81,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		04A2A0051BCE3969006A35FB /* AppConfigData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppConfigData.h; sourceTree = "<group>"; };
+		04A2A0061BCE3969006A35FB /* AppConfigData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppConfigData.m; sourceTree = "<group>"; };
 		04A82D8F1BC7A24F00EF87B7 /* RemindAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RemindAction.h; sourceTree = "<group>"; };
 		04A82D901BC7A24F00EF87B7 /* RemindAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RemindAction.m; sourceTree = "<group>"; };
 		04A82D931BC7B3FC00EF87B7 /* RemindManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RemindManager.h; sourceTree = "<group>"; };
@@ -470,6 +473,8 @@
 				20DAF9E51B8750A4005B7932 /* YDirectory+Data.m */,
 				20DBFD841B4FD3F5009134D0 /* YUtils+Component.h */,
 				20DBFD851B4FD3F5009134D0 /* YUtils+Component.m */,
+				04A2A0051BCE3969006A35FB /* AppConfigData.h */,
+				04A2A0061BCE3969006A35FB /* AppConfigData.m */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -638,6 +643,7 @@
 				20DA74C01B8C12040002E041 /* FindFriendsAction.m in Sources */,
 				20859A821B64BD8500580ED3 /* ContactManager.m in Sources */,
 				20E1C6721B89EB9F008BA9D6 /* ReceiveAuthCodeAction.m in Sources */,
+				04A2A0071BCE3969006A35FB /* AppConfigData.m in Sources */,
 				04A82D951BC7B3FC00EF87B7 /* RemindManager.m in Sources */,
 				20DA74C31B8C120F0002E041 /* FriendsConditionAction.m in Sources */,
 				20C5B05D1B8DB08900B4A8A8 /* GroupDetailAction.m in Sources */,
