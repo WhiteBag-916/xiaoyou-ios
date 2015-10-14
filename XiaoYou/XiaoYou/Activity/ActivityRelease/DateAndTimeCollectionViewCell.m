@@ -17,6 +17,7 @@ NSString *const kDateAndTimeCollectionViewCell = @"DateAndTimeCollectionViewCell
 @property (nonatomic,strong)UILabel * applayTimeLabel;
 @property (nonatomic,strong)UILabel * beginTimeLabel;
 @property (nonatomic,strong)UILabel * endTimeLabel;
+@property (nonatomic,strong)UIDatePicker * datePicker;
 
 @end
 
@@ -132,15 +133,15 @@ NSString *const kDateAndTimeCollectionViewCell = @"DateAndTimeCollectionViewCell
     UITapGestureRecognizer * endTapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(endChoiceTime)];
     [_endTimeLabel addGestureRecognizer:endTapGesture];
     
+    _datePicker = [[UIDatePicker alloc] initWithFrame:CGRectMake(10, 0, SCREEN_WIDTH-20, 160)];
+    
 }
 
 -(void)applayChoiceTime
 {
-    UIView *testView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 300, 200)];
-    testView.backgroundColor = [UIColor redColor];
     CommonPopView *popView = [[CommonPopView alloc] initWithFrame:[UIScreen mainScreen].bounds
                                                        showButton:YES
-                                                           addSub:testView
+                                                           addSub:_datePicker
                                                             isTop:NO
                                                            isRoot:YES
                                                           addSelf:[UIApplication sharedApplication].keyWindow];
