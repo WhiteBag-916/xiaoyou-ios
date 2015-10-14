@@ -12,4 +12,20 @@ NSString *const kDateAndTimeCollectionViewCell = @"DateAndTimeCollectionViewCell
 
 @implementation DateAndTimeCollectionViewCell
 
+- (instancetype)initWithFrame:(CGRect)frame
+{
+    self = [super initWithFrame:frame];
+    if (self) {
+        [self changUI];
+    }
+    return self;
+}
+
+-(void)changUI
+{ 
+    self.numImageView.image = [UIImage imageNamed:@"img_num3"];
+    self.typeLabel.text = @"时间";
+    
+}
+
 @end

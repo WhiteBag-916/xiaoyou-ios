@@ -13,6 +13,5 @@ extern NSString *const kNameCollectionViewCell;
 
 @interface NameCollectionViewCell : ActivityBaseCollectionViewCell
 
--(void)setCellInfo:(NSInteger) index;
 
 @end

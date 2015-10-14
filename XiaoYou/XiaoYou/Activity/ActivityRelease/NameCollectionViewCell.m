@@ -31,7 +31,7 @@ NSString *const kNameCollectionViewCell = @"NameCollectionViewCellId";
 -(void)changUI
 {  
     _textView = [[YTextView alloc] init];
-    _textView.backgroundColor = [UIColor yellowColor];
+    _textView.backgroundColor = [UIColor clearColor];
     _textView.font = CONTENT_FONT(15);
     _textView.placeholderColor = KCOLORGREEN_B5;
     [self.backView addSubview:_textView];
@@ -42,22 +42,9 @@ NSString *const kNameCollectionViewCell = @"NameCollectionViewCellId";
         make.bottom.mas_equalTo(-12);
     }];
     
-}
-
--(void)setCellInfo:(NSInteger) index
-{
-    if (index == 0)
-    {
-        self.numImageView.image = [UIImage imageNamed:@"img_num1"];
-        self.typeLabel.text = @"活动名称(0-30字)";
-        _textView.placeholder = @"例如：\n怀旧活动:一起擦雪花膏\n怀旧活动:一起擦雪花膏";
-    }
-    else
-    {
-        self.numImageView.image = [UIImage imageNamed:@"img_num4"];
-        self.typeLabel.text = @"地点";
-        _textView.placeholder = @"在这里填写您的活动地点,\n如：第六教学楼204教室";
-    }
+    self.numImageView.image = [UIImage imageNamed:@"img_num1"];
+    self.typeLabel.text = @"活动名称(0-30字)";
+    _textView.placeholder = @"例如：\n怀旧活动:一起擦雪花膏\n怀旧活动:一起擦雪花膏";
     
 }
 

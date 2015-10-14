@@ -28,7 +28,7 @@
     _backView = [[UIView alloc] init];
     _backView.layer.cornerRadius = 4;
     _backView.clipsToBounds = YES;
-    _backView.backgroundColor = [UIColor grayColor];
+    _backView.backgroundColor = KCOLORGREEN_B1;
     [self.contentView addSubview:_backView];
     [_backView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.bottom.mas_equalTo(0);

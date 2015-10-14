@@ -8,6 +8,7 @@
 
 #import "ActivityReleaseCollectionView.h"
 #import "NameCollectionViewCell.h"
+#import "PlaceCollectionViewCell.h"
 #import "DescriptionCollectionViewCell.h"
 #import "DateAndTimeCollectionViewCell.h"
 #import "TypeCollectionViewCell.h"
@@ -33,6 +34,8 @@
         [self registerClass:[DateAndTimeCollectionViewCell class] forCellWithReuseIdentifier:kDateAndTimeCollectionViewCell];
         [self registerClass:[TypeCollectionViewCell class] forCellWithReuseIdentifier:kTypeCollectionViewCell
          ];
+        [self registerClass:[PlaceCollectionViewCell class] forCellWithReuseIdentifier:kPlaceCollectionViewCell
+         ];
     }
     return self;
 }
@@ -51,10 +54,9 @@
 
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.row == 0 || indexPath.row == 3)
+    if (indexPath.row == 0)
     {
         NameCollectionViewCell * cell = (NameCollectionViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:kNameCollectionViewCell forIndexPath:indexPath];
-        [cell setCellInfo:indexPath.row];
         return cell;
     }
     else if (indexPath.row == 1)
@@ -65,13 +67,16 @@
     else if (indexPath.row == 2)
     {
         DateAndTimeCollectionViewCell * cell = (DateAndTimeCollectionViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:kDateAndTimeCollectionViewCell forIndexPath:indexPath];
-        cell.backgroundColor = [UIColor magentaColor];
+        return cell;
+    }
+    else if (indexPath.row == 3)
+    {
+        PlaceCollectionViewCell * cell = (PlaceCollectionViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:kPlaceCollectionViewCell forIndexPath:indexPath];
         return cell;
     }
     else
     {
         TypeCollectionViewCell * cell = (TypeCollectionViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:kTypeCollectionViewCell forIndexPath:indexPath];
-        cell.backgroundColor = [UIColor magentaColor];
         return cell;
     }
     
