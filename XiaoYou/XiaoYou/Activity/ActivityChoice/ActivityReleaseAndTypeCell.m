@@ -60,9 +60,9 @@ NSString *const kActivityReleaseAndTypeCell = @"ActivityReleaseAndTypeCellId";
     _releaseAndTypeImageView.backgroundColor = [UIColor clearColor];
     [self.contentView addSubview:_releaseAndTypeImageView];
     [_releaseAndTypeImageView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.leading.mas_equalTo(15);
-        make.top.mas_equalTo(22);
-        make.height.width.mas_equalTo(17);
+        make.leading.mas_equalTo(SCALE_NUM(15));
+        make.top.mas_equalTo(SCALE_NUM(22));
+        make.height.width.mas_equalTo(SCALE_NUM(17));
     }];
     //字
     _releaseAndTypeLabel = [[UILabel alloc] init];
@@ -70,10 +70,10 @@ NSString *const kActivityReleaseAndTypeCell = @"ActivityReleaseAndTypeCellId";
     _releaseAndTypeLabel.font = CONTENT_FONT(14);
     [self.contentView addSubview:_releaseAndTypeLabel];
     [_releaseAndTypeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(_releaseAndTypeImageView.mas_right).offset(5);
+        make.left.equalTo(_releaseAndTypeImageView.mas_right).offset(SCALE_NUM(5));
         make.centerY.equalTo(_releaseAndTypeImageView);
-        make.height.mas_equalTo(17);
-        make.width.mas_equalTo(51);
+        make.height.mas_equalTo(SCALE_NUM(17));
+        make.width.mas_equalTo(SCALE_NUM(51));
     }];
     
     _pickerView = [[UIPickerView alloc] init];
@@ -83,8 +83,8 @@ NSString *const kActivityReleaseAndTypeCell = @"ActivityReleaseAndTypeCellId";
     [_pickerView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.equalTo(self.contentView);
         make.top.equalTo(self.contentView);
-        make.width.mas_equalTo(150);
-        make.height.mas_equalTo(130);
+        make.width.mas_equalTo(SCALE_NUM(150));
+        make.height.mas_equalTo(SCALE_NUM(130));
     }];
     
 }

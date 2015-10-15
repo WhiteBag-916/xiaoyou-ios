@@ -7,7 +7,10 @@
 //
 
 #import "YTableView.h"
+#import "ActivityChoiceController.h"
 
 @interface ActivityChoiceTableView : YTableView
+
+@property (nonatomic,strong)ActivityChoiceController * myController;
 
 @end

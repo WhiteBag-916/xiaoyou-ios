@@ -41,10 +41,10 @@ NSString *const kActivityDateAndTimeCell = @"ActivityDateAndTimeCellId";
     dateImageView.image = [UIImage imageNamed:@"funny_detail_time"];
     [self.contentView addSubview:dateImageView];
     [dateImageView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.leading.mas_equalTo(15);
-        make.top.mas_equalTo(22);
-        make.width.mas_equalTo(15);
-        make.height.mas_equalTo(17);
+        make.leading.mas_equalTo(SCALE_NUM(15));
+        make.top.mas_equalTo(SCALE_NUM(22));
+        make.width.mas_equalTo(SCALE_NUM(15));
+        make.height.mas_equalTo(SCALE_NUM(17));
     }];
     //日期字
     UILabel * dateLabel = [[UILabel alloc] init];
@@ -53,10 +53,10 @@ NSString *const kActivityDateAndTimeCell = @"ActivityDateAndTimeCellId";
     dateLabel.font = CONTENT_FONT(14);
     [self.contentView addSubview:dateLabel];
     [dateLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(dateImageView.mas_right).offset(5);
+        make.left.equalTo(dateImageView.mas_right).offset(SCALE_NUM(5));
         make.centerY.equalTo(dateImageView);
-        make.height.mas_equalTo(17);
-        make.width.mas_equalTo(85);
+        make.height.mas_equalTo(SCALE_NUM(17));
+        make.width.mas_equalTo(SCALE_NUM(85));
     }];
     
     //日期选择器
@@ -66,7 +66,7 @@ NSString *const kActivityDateAndTimeCell = @"ActivityDateAndTimeCellId";
         make.centerX.equalTo(self.contentView);
         make.top.equalTo(dateLabel.mas_bottom);
         make.width.mas_equalTo(SCREEN_WIDTH);
-        make.height.mas_equalTo(120);
+        make.height.mas_equalTo(SCALE_NUM(140));
     }];
     [_datePickerView addTarget:self action:@selector(dateChanged:) forControlEvents:UIControlEventValueChanged ];
 
