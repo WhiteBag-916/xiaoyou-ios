@@ -22,6 +22,7 @@ NSString *const kRubLessonTableViewCell = @"RubLessonTableViewCellId";
 
 @property (nonatomic, strong) UILabel *courseName;          //课程名称
 @property (nonatomic, strong) UILabel *lecturerName;        //授课人
+@property (nonatomic, strong) UILabel *timeLabel;           //上课时间
 @property (nonatomic, strong) UILabel *departmentsName;     //院系
 
 @end
@@ -63,7 +64,7 @@ NSString *const kRubLessonTableViewCell = @"RubLessonTableViewCellId";
     }];
     
     _courseName = [YUtils initLabel:CONTENT_FONT(12)
-                              color:KCOLORGREEN_B5
+                              color:KCOLORGREEN_B3
                                text:@"大学汉语"
                           alignment:NSTextAlignmentLeft];
     [self.contentView addSubview:_courseName];
@@ -96,7 +97,7 @@ NSString *const kRubLessonTableViewCell = @"RubLessonTableViewCellId";
     }];
     
     _lecturerName = [YUtils initLabel:CONTENT_FONT(12)
-                              color:KCOLORGREEN_B5
+                              color:KCOLORGREEN_B3
                                text:@"王中磊"
                           alignment:NSTextAlignmentLeft];
     [self.contentView addSubview:_lecturerName];
@@ -107,13 +108,46 @@ NSString *const kRubLessonTableViewCell = @"RubLessonTableViewCellId";
         make.right.mas_equalTo(K_NAMELAB_L);
     }];
     
+    //上课时间
+    UIImageView *timeImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"havetime_icon_time"]];
+    [self.contentView addSubview:timeImageView];
+    
+    [timeImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.height.width.equalTo(courseImageView);
+        make.top.equalTo(lecturerImageView.mas_bottom).offset(K_DEPARTMENTSIMG_T);
+    }];
+    
+    UILabel *timeLeftLabel = [YUtils initLabel:CONTENT_FONT(12)
+                                         color:KCOLORGREEN_B5
+                                          text:@"上课时间："
+                                     alignment:NSTextAlignmentLeft];
+    [self.contentView addSubview:timeLeftLabel];
+    
+    [timeLeftLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.height.equalTo(timeImageView);
+        make.left.equalTo(timeImageView.mas_right).offset(K_LEFTLAB_L);
+        make.width.mas_equalTo(K_LEFTLAB_W);
+    }];
+    
+    _timeLabel = [YUtils initLabel:CONTENT_FONT(12)
+                                color:KCOLORGREEN_B3
+                                 text:@"今天 9:00-10:30"
+                            alignment:NSTextAlignmentLeft];
+    [self.contentView addSubview:_timeLabel];
+    
+    [_timeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.height.equalTo(timeLeftLabel);
+        make.left.equalTo(timeLeftLabel.mas_right).offset(K_NAMELAB_L);
+        make.right.mas_equalTo(K_NAMELAB_L);
+    }];
+    
     //院系
     UIImageView *departmentsImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"havetime_icon_academy"]];
     [self.contentView addSubview:departmentsImageView];
     
     [departmentsImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.height.width.equalTo(courseImageView);
-        make.top.equalTo(lecturerImageView.mas_bottom).offset(K_DEPARTMENTSIMG_T);
+        make.top.equalTo(timeImageView.mas_bottom).offset(K_DEPARTMENTSIMG_T);
     }];
     
     UILabel *departmentsLabel = [YUtils initLabel:CONTENT_FONT(12)
@@ -129,7 +163,7 @@ NSString *const kRubLessonTableViewCell = @"RubLessonTableViewCellId";
     }];
     
     _departmentsName = [YUtils initLabel:CONTENT_FONT(12)
-                              color:KCOLORGREEN_B5
+                              color:KCOLORGREEN_B3
                                text:@"汉语言文学系"
                           alignment:NSTextAlignmentLeft];
     [self.contentView addSubview:_departmentsName];

@@ -112,7 +112,7 @@
     }
     //可以蹭的课
     else if (type == SCROUGECOURSE_CELL) {
-        AvailableSimpleViewController *vc = [[AvailableSimpleViewController alloc] initWithType:AvailableSimpleTypeStudyRoom];
+        AvailableSimpleViewController *vc = [[AvailableSimpleViewController alloc] initWithType:AvailableSimpleTypeRubLesson];
         [self.viewController.navigationController pushViewController:vc animated:YES needHiddenBottomBar:YES];
     }
     //活动详情

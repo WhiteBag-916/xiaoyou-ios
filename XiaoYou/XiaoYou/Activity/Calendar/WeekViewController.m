@@ -20,7 +20,7 @@
     
     [self showCustomNavigationBackButton];
     self.title = @"你的日程卡";
-    	
+    
 	self.dayPlannerView.backgroundColor = [UIColor whiteColor];
 	self.dayPlannerView.backgroundView = [UIView new];
 	self.dayPlannerView.backgroundView.backgroundColor = [UIColor clearColor];
@@ -28,8 +28,8 @@
 	self.dayPlannerView.dayHeaderHeight = 50;
 }
 
-#pragma mark - MGCDayPlannerViewController
 
+#pragma mark - MGCDayPlannerViewController
 - (BOOL)dayPlannerView:(MGCDayPlannerView*)view canCreateNewEventOfType:(MGCEventType)type atDate:(NSDate*)date
 {
     return YES;
