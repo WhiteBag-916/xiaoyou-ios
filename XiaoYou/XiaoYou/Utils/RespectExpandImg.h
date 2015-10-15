@@ -8,6 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
+/**
+ *  按钮扩大点击区域，已经废弃不用
+ */
 @interface RespectExpandImg : UIImageView
 
 @end

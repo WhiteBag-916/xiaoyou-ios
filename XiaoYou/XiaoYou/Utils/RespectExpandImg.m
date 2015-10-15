@@ -16,18 +16,12 @@
 {
     CGRect bounds = self.bounds;
     
-    NSLog(@"point == %@",NSStringFromCGPoint(point));
-    NSLog(@"self.bounds = %@",NSStringFromCGRect(bounds));
-    
     //若原热区小于44x44，则放大热区，否则保持原大小不变
     CGFloat widthDelta = MAX(EXPAND_RANGE - bounds.size.width, 0);
     CGFloat heightDelta = MAX(EXPAND_RANGE - bounds.size.height, 0);
     //bounds = CGRectInset(bounds, -0.5 * widthDelta, -0.5 * heightDelta);
     
-    bounds = CGRectMake(-30, -30, 60, 60);
-    
-    NSLog(@"end bounds = %@",NSStringFromCGRect(bounds));
-    
+    bounds = CGRectMake(-30, -60, 200, 200);
     return CGRectContainsPoint(bounds, point);
 }
 
