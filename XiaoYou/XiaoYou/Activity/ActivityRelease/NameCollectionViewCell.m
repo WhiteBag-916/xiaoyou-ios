@@ -8,12 +8,15 @@
 
 #import "NameCollectionViewCell.h"
 #import "YTextView.h"
+#import "ActivityReleaseDataManager.h"
 
 NSString *const kNameCollectionViewCell = @"NameCollectionViewCellId";
 
-@interface NameCollectionViewCell ()
+@interface NameCollectionViewCell ()<UITextViewDelegate>
 
 @property(nonatomic,strong)YTextView * textView;
+
+@property(nonatomic,strong)ActivityReleaseDataManager * dataManager;
 
 @end
 
@@ -24,6 +27,7 @@ NSString *const kNameCollectionViewCell = @"NameCollectionViewCellId";
     self = [super initWithFrame:frame];
     if (self) {
         [self changUI];
+        _dataManager = [ActivityReleaseDataManager shareActivityReleaseDataManager];
     }
     return self;
 }
@@ -32,6 +36,7 @@ NSString *const kNameCollectionViewCell = @"NameCollectionViewCellId";
 {  
     _textView = [[YTextView alloc] init];
     _textView.backgroundColor = [UIColor clearColor];
+    _textView.delegate = self;
     _textView.font = CONTENT_FONT(12);
     _textView.placeholderColor = KCOLORGREEN_B5;
     [self.backView addSubview:_textView];
@@ -45,6 +50,12 @@ NSString *const kNameCollectionViewCell = @"NameCollectionViewCellId";
     self.typeLabel.text = @"活动名称(0-30字)";
     _textView.placeholder = @"例如：\n怀旧活动:一起擦雪花膏\n怀旧活动:一起擦雪花膏";
     
+}
+
+- (void)textViewDidChange:(UITextView *)textView
+{
+    _dataManager.ActivityNameText = textView.text;
+    [_dataManager isEnableToRelease];
 }
 
 @end

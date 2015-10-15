@@ -50,7 +50,7 @@ NSString *const kTypeCollectionViewCell = @"TypeCollectionViewCellId";
     UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc]init];
 //    layout.minimumInteritemSpacing = 5;
 //    layout.minimumLineSpacing = 5;
-    layout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
+    layout.scrollDirection = UICollectionViewScrollDirectionVertical;
     _collectionView = [[TypeDetailCollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:layout];
     _collectionView.backgroundColor = [UIColor clearColor];
     [self.backView addSubview:_collectionView];

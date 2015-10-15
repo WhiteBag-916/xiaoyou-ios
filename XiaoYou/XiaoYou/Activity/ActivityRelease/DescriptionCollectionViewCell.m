@@ -12,15 +12,17 @@
 #import "YCommonActionSheet.h"
 #import "SDPhotoBrowser.h"
 #import "YVIew+Ext.h"
+#import "ActivityReleaseDataManager.h"
 
 NSString *const kDescriptionCollectionViewCell = @"DescriptionCollectionViewCellId";
 
-@interface DescriptionCollectionViewCell ()<UIImagePickerControllerDelegate,UINavigationControllerDelegate>
+@interface DescriptionCollectionViewCell ()<UIImagePickerControllerDelegate,UINavigationControllerDelegate,UITextViewDelegate>
 
 @property (nonatomic,strong) UIImagePickerController * imagePicker;
 @property (nonatomic,strong) UIImageView * picImageView;
 @property (nonatomic,strong) YTextView * textView;
 @property (nonatomic,strong) UIButton * deleteBtn;
+@property(nonatomic,strong)ActivityReleaseDataManager * dataManager;
 
 @end
 
@@ -31,6 +33,7 @@ NSString *const kDescriptionCollectionViewCell = @"DescriptionCollectionViewCell
     self = [super initWithFrame:frame];
     if (self) {
         [self changUI];
+        _dataManager = [ActivityReleaseDataManager shareActivityReleaseDataManager];
     }
     return self;
 }
@@ -67,6 +70,7 @@ NSString *const kDescriptionCollectionViewCell = @"DescriptionCollectionViewCell
     _deleteBtn.hidden = YES;
     
     _textView = [[YTextView alloc] init];
+    _textView.delegate = self;
     _textView.backgroundColor = [UIColor clearColor];
     _textView.font = CONTENT_FONT(12);
     _textView.placeholderColor = KCOLORGREEN_B5;
@@ -151,6 +155,8 @@ NSString *const kDescriptionCollectionViewCell = @"DescriptionCollectionViewCell
     //获取用户编辑之后的图像
     UIImage* editedImage = [info objectForKey:UIImagePickerControllerEditedImage];
     _picImageView.image = editedImage;
+   
+    _dataManager.ActivityDesciptionImage = editedImage;
 
      [self.myController dismissViewControllerAnimated:YES completion:nil];
 }
@@ -175,6 +181,12 @@ NSString *const kDescriptionCollectionViewCell = @"DescriptionCollectionViewCell
     NSLog(@"delete");
     _deleteBtn.hidden = YES;
     _picImageView.image = [UIImage imageNamed:@"btn_add"];
+}
+
+- (void)textViewDidChange:(UITextView *)textView
+{
+    _dataManager.ActivityDesciptionText = textView.text;
+    [_dataManager isEnableToRelease];
 }
 
 @end

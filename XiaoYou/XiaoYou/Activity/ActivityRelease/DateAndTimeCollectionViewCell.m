@@ -9,6 +9,7 @@
 #import "DateAndTimeCollectionViewCell.h"
 #import "CommonPopView.h"
 #import "YVIew+Ext.h"
+#import "ActivityReleaseDataManager.h"
 
 NSString *const kDateAndTimeCollectionViewCell = @"DateAndTimeCollectionViewCellId";
 
@@ -18,6 +19,7 @@ NSString *const kDateAndTimeCollectionViewCell = @"DateAndTimeCollectionViewCell
 @property (nonatomic,strong)UILabel * beginTimeLabel;
 @property (nonatomic,strong)UILabel * endTimeLabel;
 @property (nonatomic,strong)UIDatePicker * datePicker;
+@property(nonatomic,strong)ActivityReleaseDataManager * dataManager;
 
 @end
 
@@ -28,6 +30,7 @@ NSString *const kDateAndTimeCollectionViewCell = @"DateAndTimeCollectionViewCell
     self = [super initWithFrame:frame];
     if (self) {
         [self changUI];
+        _dataManager = [ActivityReleaseDataManager shareActivityReleaseDataManager];
     }
     return self;
 }
@@ -55,7 +58,7 @@ NSString *const kDateAndTimeCollectionViewCell = @"DateAndTimeCollectionViewCell
     _applayTimeLabel.userInteractionEnabled = YES;
     _applayTimeLabel.backgroundColor = [UIColor whiteColor];
     _applayTimeLabel.font = CONTENT_FONT(12);
-    _applayTimeLabel.text = @"2015年10月17日 下午1:00";
+    _applayTimeLabel.text = @"点击后可以选择时间";
     _applayTimeLabel.textColor = KCOLORGREEN_B4;
     [self.backView addSubview:_applayTimeLabel];
     [_applayTimeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -87,7 +90,7 @@ NSString *const kDateAndTimeCollectionViewCell = @"DateAndTimeCollectionViewCell
     _beginTimeLabel.userInteractionEnabled = YES;
     _beginTimeLabel.backgroundColor = [UIColor whiteColor];
     _beginTimeLabel.font = CONTENT_FONT(12);
-    _beginTimeLabel.text = @"2015年10月17日 下午2:00";
+    _beginTimeLabel.text = @"点击后可以选择时间";
     _beginTimeLabel.textColor = KCOLORGREEN_B4;
     [self.backView addSubview:_beginTimeLabel];
     [_beginTimeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -119,7 +122,7 @@ NSString *const kDateAndTimeCollectionViewCell = @"DateAndTimeCollectionViewCell
     _endTimeLabel.userInteractionEnabled = YES;
     _endTimeLabel.backgroundColor = [UIColor whiteColor];
     _endTimeLabel.font = CONTENT_FONT(12);
-    _endTimeLabel.text = @"2015年10月17日 下午3:00";
+    _endTimeLabel.text = @"点击后可以选择时间";
     _endTimeLabel.textColor = KCOLORGREEN_B4;
     [self.backView addSubview:_endTimeLabel];
     [_endTimeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -178,23 +181,29 @@ NSString *const kDateAndTimeCollectionViewCell = @"DateAndTimeCollectionViewCell
 -(void)applayChooseDate
 {
     NSDateFormatter * formatter = [[NSDateFormatter alloc] init];
-    [formatter setDateFormat:@"yyyy-MM-dd a HH:mm"];
+    [formatter setDateFormat:@"yyyy年MM月dd日 a HH:mm"];
     NSString * showStr = [formatter stringFromDate:_datePicker.date];
     _applayTimeLabel.text = showStr;
+    _dataManager.ActivityDateApplyText = showStr;
+    [_dataManager isEnableToRelease];
 }
 -(void)heginChooseDate
 {
     NSDateFormatter * formatter = [[NSDateFormatter alloc] init];
-    [formatter setDateFormat:@"yyyy-MM-dd a HH:mm"];
+    [formatter setDateFormat:@"yyyy年MM月dd日 a HH:mm"];
     NSString * showStr = [formatter stringFromDate:_datePicker.date];
     _beginTimeLabel.text = showStr;
+    _dataManager.ActivityDateBeginText = showStr;
+    [_dataManager isEnableToRelease];
 }
 -(void)endChooseDate
 {
     NSDateFormatter * formatter = [[NSDateFormatter alloc] init];
-    [formatter setDateFormat:@"yyyy-MM-dd a HH:mm"];
+    [formatter setDateFormat:@"yyyy年MM月dd日 a HH:mm"];
     NSString * showStr = [formatter stringFromDate:_datePicker.date];
     _endTimeLabel.text = showStr;
+    _dataManager.ActivityDateEndText = showStr;
+    [_dataManager isEnableToRelease];
 }
 
 @end
