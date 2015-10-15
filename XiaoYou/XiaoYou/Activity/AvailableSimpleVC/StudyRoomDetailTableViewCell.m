@@ -80,7 +80,7 @@ NSString *const kStudyRoomDetailTableViewCell = @"StudyRoomDetailTableViewCellId
     //4
     _timeLabel = [YUtils initLabel:CONTENT_FONT(12)
                                   color:KCOLORGREEN_B5
-                                   text:@"无课时间：14:00~16:00"
+                                   text:@"无课时间：14:00-16:00"
                               alignment:NSTextAlignmentLeft];
     [self.contentView addSubview:_timeLabel];
     
