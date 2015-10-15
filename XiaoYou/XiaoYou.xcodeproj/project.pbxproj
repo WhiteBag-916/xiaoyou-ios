@@ -20,6 +20,7 @@
 		04394B4B1BBBB78B0098BB8F /* fast_add_white@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 04394B491BBBB78B0098BB8F /* fast_add_white@2x.png */; settings = {ASSET_TAGS = (); }; };
 		04394B4C1BBBB78B0098BB8F /* fast_add_white@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 04394B4A1BBBB78B0098BB8F /* fast_add_white@3x.png */; settings = {ASSET_TAGS = (); }; };
 		04394B4E1BBBCA5C0098BB8F /* description.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 04394B4D1BBBCA5C0098BB8F /* description.rtf */; settings = {ASSET_TAGS = (); }; };
+		043AC8621BCF338600AB6E09 /* RespectExpandImg.m in Sources */ = {isa = PBXBuildFile; fileRef = 043AC8611BCF338600AB6E09 /* RespectExpandImg.m */; settings = {ASSET_TAGS = (); }; };
 		044792BD1BB14DF40053412A /* commenTagList.m in Sources */ = {isa = PBXBuildFile; fileRef = 044792BC1BB14DF40053412A /* commenTagList.m */; settings = {ASSET_TAGS = (); }; };
 		044C313E1BCC903D00E0D508 /* AvailableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 044C313D1BCC903D00E0D508 /* AvailableCell.m */; settings = {ASSET_TAGS = (); }; };
 		044C31411BCCA94300E0D508 /* AvailableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 044C31401BCCA94300E0D508 /* AvailableViewController.m */; settings = {ASSET_TAGS = (); }; };
@@ -703,6 +704,8 @@
 		04394B491BBBB78B0098BB8F /* fast_add_white@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "fast_add_white@2x.png"; sourceTree = "<group>"; };
 		04394B4A1BBBB78B0098BB8F /* fast_add_white@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "fast_add_white@3x.png"; sourceTree = "<group>"; };
 		04394B4D1BBBCA5C0098BB8F /* description.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = description.rtf; sourceTree = "<group>"; };
+		043AC8601BCF338600AB6E09 /* RespectExpandImg.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RespectExpandImg.h; sourceTree = "<group>"; };
+		043AC8611BCF338600AB6E09 /* RespectExpandImg.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RespectExpandImg.m; sourceTree = "<group>"; };
 		044792BB1BB14DF40053412A /* commenTagList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = commenTagList.h; sourceTree = "<group>"; };
 		044792BC1BB14DF40053412A /* commenTagList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = commenTagList.m; sourceTree = "<group>"; };
 		044C313C1BCC903D00E0D508 /* AvailableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AvailableCell.h; sourceTree = "<group>"; };
@@ -3462,6 +3465,8 @@
 				654379AE1B8D8680007B15CA /* UIScrollView+UITouchEvent.m */,
 				041DF0611BC4D90300C6F324 /* DataConvert.h */,
 				041DF0621BC4D90300C6F324 /* DataConvert.m */,
+				043AC8601BCF338600AB6E09 /* RespectExpandImg.h */,
+				043AC8611BCF338600AB6E09 /* RespectExpandImg.m */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -4453,6 +4458,7 @@
 				6592DCD71B806A9B004CD118 /* XYFriendApplyViewController.m in Sources */,
 				333122321B806EDB00D3D032 /* DXChatBarMoreView.m in Sources */,
 				6592DCD31B806A9B004CD118 /* XYContactsInfoDetailViewController.m in Sources */,
+				043AC8621BCF338600AB6E09 /* RespectExpandImg.m in Sources */,
 				3331222A1B806EDB00D3D032 /* ChatSendHelper.m in Sources */,
 				209C4C731B8C662900B584DF /* AssociationsDetailViewController.m in Sources */,
 				20E034091B8471E5002E4583 /* SearchFilterTableViewCell.m in Sources */,

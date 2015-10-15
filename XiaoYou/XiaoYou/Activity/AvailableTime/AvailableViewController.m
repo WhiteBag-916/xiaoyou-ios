@@ -145,7 +145,7 @@
 //筛选Action
 -(void)filterAction {
     ActivityChoiceController *choiceVC = [[ActivityChoiceController alloc]init];
-    [self.navigationController pushViewController:choiceVC animated:YES needHiddenBottomBar:YES];
+    [self.navigationController presentViewController:choiceVC animated:YES completion:nil];
 }
 
 //日程
