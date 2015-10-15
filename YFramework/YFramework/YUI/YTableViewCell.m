@@ -9,6 +9,8 @@
 #import "YTableViewCell.h"
 #import "YColor+Ext.h"
 
+#define KLINE_TAG       1999221
+
 @implementation YTableViewCell
 
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
@@ -20,8 +22,13 @@
 
 - (void)layoutSubviews {
     if ([self needLine]) {
+        UIView *oldLine = [self.contentView viewWithTag:KLINE_TAG];
+        if (nil != oldLine) {
+            [oldLine removeFromSuperview];
+        }
         //线
         UIView *line = [[UIView alloc] initWithFrame:CGRectMake(0, self.frame.size.height-1, self.frame.size.width, 1)];
+        line.tag = KLINE_TAG;
         line.backgroundColor = [UIColor hexChangeFloat:@"e9e9e9"];
         [self.contentView addSubview:line];
     }

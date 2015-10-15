@@ -519,9 +519,11 @@
             }
         }];
         
+        //解决图片顺序问题
         while (!self.isUpLoadEnd) {
             [[NSRunLoop mainRunLoop] runMode:NSDefaultRunLoopMode beforeDate:[NSDate distantFuture]];
         }
+        _isUpLoadEnd = NO;
     }
     if ([_imgGroup getImgCount] == 0) {
         [self uploadFeed];
