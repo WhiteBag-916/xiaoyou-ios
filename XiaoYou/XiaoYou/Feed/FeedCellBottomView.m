@@ -20,6 +20,7 @@
 #import "ProvisionManager.h"
 #import "ProfileInfo.h"
 #import "YCommonReport.h"
+#import "RespectExpandImg.h"
 
 
 #define KBOTTOMHEIGHT SCALE_NUM(25)                 //社团和feed列表中bottom的高度
@@ -40,7 +41,7 @@
 @property (nonatomic, strong, readwrite) UIImageView *shareButton;             //分享按钮
 @property (nonatomic, strong, readwrite) UILabel *commentNum;                  //评论数
 @property (nonatomic, strong, readwrite) UILabel *respectNum;                  //敬酒数
-@property (nonatomic, strong, readwrite) UIImageView *respectImg;              //敬酒按钮
+@property (nonatomic, strong, readwrite) RespectExpandImg *respectImg;         //敬酒按钮
 @property (nonatomic, strong, readwrite) UIView *personList;                   //敬酒人
 @property (nonatomic, assign)            int type;                             //类型
 @property (nonatomic, strong)            id myInfo;
@@ -101,7 +102,7 @@
                 make.right.equalTo(self).offset(-SCALE_NUM(5));
             }];
             
-            _respectImg = [[UIImageView alloc] init];
+            _respectImg = [[RespectExpandImg alloc] init];
             [self addSubview:_respectImg];
             [_respectImg mas_makeConstraints:^(MASConstraintMaker *make) {
                 make.right.equalTo(_respectNum);
@@ -116,7 +117,7 @@
             [self mas_makeConstraints:^(MASConstraintMaker *make) {
                 make.height.mas_equalTo(KHEADWIDTH);
             }];
-            _respectImg = [[UIImageView alloc] init];
+            _respectImg = [[RespectExpandImg alloc] init];
             [self addSubview:_respectImg];
             [_respectImg mas_makeConstraints:^(MASConstraintMaker *make) {
                 make.left.equalTo(self);

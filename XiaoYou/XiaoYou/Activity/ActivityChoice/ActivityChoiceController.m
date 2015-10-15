@@ -26,6 +26,7 @@
 -(void)setUpUI
 {
     _activityChoiceTableView = [[ActivityChoiceTableView alloc] init];
+    _activityChoiceTableView.myController = self;
     [self.view addSubview:_activityChoiceTableView];
     [_activityChoiceTableView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.bottom.leading.trailing.mas_equalTo(0);

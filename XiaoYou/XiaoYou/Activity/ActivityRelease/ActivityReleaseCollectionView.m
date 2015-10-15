@@ -13,7 +13,7 @@
 #import "DateAndTimeCollectionViewCell.h"
 #import "TypeCollectionViewCell.h"
 
-@interface ActivityReleaseCollectionView ()<UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout>
+@interface ActivityReleaseCollectionView ()<UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout,UIScrollViewDelegate>
 
 @end
 
@@ -103,6 +103,30 @@
 {
     CGSize size = {SCALE_NUM(230),SCALE_NUM(300)};
     return size;
+}
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    NSLog(@"%@",NSStringFromCGPoint(self.contentOffset));
+    if (self.contentOffset.x < SCALE_NUM(75)) {
+        [self.myController setPointHighlight:1];
+    }
+    else if (self.contentOffset.x < SCALE_NUM(305))
+    {
+        [self.myController setPointHighlight:2];
+    }
+    else if (self.contentOffset.x < SCALE_NUM(535))
+    {
+        [self.myController setPointHighlight:3];
+    }
+    else if (self.contentOffset.x < SCALE_NUM(760))
+    {
+        [self.myController setPointHighlight:4];
+    }
+    else
+    {
+        [self.myController setPointHighlight:5];
+    }
 }
 
 @end

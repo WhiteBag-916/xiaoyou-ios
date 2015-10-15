@@ -44,8 +44,8 @@
     [backView addSubview:dissMissBtn];
     [dissMissBtn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.equalTo(backView);
-        make.leading.mas_equalTo(12);
-        make.height.width.mas_equalTo(15);
+        make.leading.mas_equalTo(SCALE_NUM(12));
+        make.height.width.mas_equalTo(SCALE_NUM(15));
     }];
     
     //对号
@@ -56,9 +56,9 @@
     [backView addSubview:finishBtn];
     [finishBtn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.equalTo(backView);
-        make.trailing.mas_equalTo(-12);
-        make.width.mas_equalTo(15);
-        make.height.mas_equalTo(12);
+        make.trailing.mas_equalTo(SCALE_NUM(-12));
+        make.width.mas_equalTo(SCALE_NUM(15));
+        make.height.mas_equalTo(SCALE_NUM(12));
     }];
     //筛选
     UILabel * centerLabel = [[UILabel alloc] init];
@@ -68,8 +68,8 @@
     [backView addSubview:centerLabel];
     [centerLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.centerY.equalTo(backView);
-        make.height.mas_equalTo(20);
-        make.width.mas_equalTo(60);
+        make.height.mas_equalTo(SCALE_NUM(20));
+        make.width.mas_equalTo(SCALE_NUM(60));
     }];
     
     self.tableHeaderView = backView;
@@ -77,12 +77,12 @@
 
 -(void)clickBtnForCancel
 {
-    NSLog(@"cancel");
+    [self.myController dismissViewControllerAnimated:YES completion:nil];
 }
 
 -(void)clickBtnForChoice
 {
-    NSLog(@"choice");
+    [self.myController dismissViewControllerAnimated:YES completion:nil];
 }
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -117,11 +117,11 @@
 {
     if (indexPath.row == 0)
     {
-        return 160;
+        return SCALE_NUM(180);
     }
     else
     {
-        return 140;
+        return SCALE_NUM(140);
     }
     
 }

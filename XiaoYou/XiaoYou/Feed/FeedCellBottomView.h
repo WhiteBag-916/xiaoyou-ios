@@ -7,15 +7,17 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "RespectExpandImg.h"
 
 @class FeedInfo;
+@class RespectExpandImg;
 
 @interface FeedCellBottomView : UIView
 
 @property (nonatomic, strong, readonly) UIImageView *shareButton;             //分享按钮
 @property (nonatomic, strong, readonly) UILabel *commentNum;                  //评论数
 @property (nonatomic, strong, readonly) UILabel *respectNum;                  //敬酒数
-@property (nonatomic, strong, readonly) UIImageView *respectImg;              //敬酒按钮
+@property (nonatomic, strong, readonly) RespectExpandImg *respectImg;              //敬酒按钮
 @property (nonatomic, strong, readonly) UIView *personList;                   //敬酒人
 - (id)initWithType:(int)type;
 

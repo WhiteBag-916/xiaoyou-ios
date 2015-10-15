@@ -249,7 +249,7 @@
     
     //发布按钮
     _releaseButton = [[UIButton alloc] init];
-    _releaseButton.backgroundColor = KCOLORGREEN_g1;
+    _releaseButton.backgroundColor = KCOLORGREEN_B5;
     [_releaseButton setTitle:@"发布" forState:UIControlStateNormal];
     [_releaseButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [_releaseButton addTarget:self action:@selector(clickReleaseBtn) forControlEvents:UIControlEventTouchUpInside];
@@ -264,6 +264,50 @@
 -(void)clickReleaseBtn
 {
     NSLog(@"发布");
+}
+
+-(void)setPointHighlight:(NSInteger) num
+{
+    switch (num) {
+        case 1:
+            _point1View.backgroundColor = KCOLORGREEN_g1;
+            _point2View.backgroundColor = KCOLORGREEN_B5;
+            _point3View.backgroundColor = KCOLORGREEN_B5;
+            _point4View.backgroundColor = KCOLORGREEN_B5;
+            _point5View.backgroundColor = KCOLORGREEN_B5;
+            break;
+        case 2:
+            _point2View.backgroundColor = KCOLORGREEN_g1;
+            _point1View.backgroundColor = KCOLORGREEN_B5;
+            _point3View.backgroundColor = KCOLORGREEN_B5;
+            _point4View.backgroundColor = KCOLORGREEN_B5;
+            _point5View.backgroundColor = KCOLORGREEN_B5;
+            break;
+        case 3:
+            _point3View.backgroundColor = KCOLORGREEN_g1;
+            _point2View.backgroundColor = KCOLORGREEN_B5;
+            _point1View.backgroundColor = KCOLORGREEN_B5;
+            _point4View.backgroundColor = KCOLORGREEN_B5;
+            _point5View.backgroundColor = KCOLORGREEN_B5;
+            break;
+        case 4:
+            _point4View.backgroundColor = KCOLORGREEN_g1;
+            _point2View.backgroundColor = KCOLORGREEN_B5;
+            _point3View.backgroundColor = KCOLORGREEN_B5;
+            _point1View.backgroundColor = KCOLORGREEN_B5;
+            _point5View.backgroundColor = KCOLORGREEN_B5;
+            break;
+        case 5:
+            _point5View.backgroundColor = KCOLORGREEN_g1;
+            _point2View.backgroundColor = KCOLORGREEN_B5;
+            _point3View.backgroundColor = KCOLORGREEN_B5;
+            _point4View.backgroundColor = KCOLORGREEN_B5;
+            _point1View.backgroundColor = KCOLORGREEN_B5;
+            break;
+            
+        default:
+            break;
+    }
 }
 
 - (void)didReceiveMemoryWarning {
