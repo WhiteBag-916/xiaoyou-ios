@@ -108,7 +108,7 @@
     _remindTitleLabel = [[UILabel alloc]init];
     [self.wrapContentView addSubview:_remindTitleLabel];
     _remindTitleLabel.text = @"活动申请通过！！！";
-    _remindTitleLabel.font = [UIFont systemFontOfSize:FONT_SIZE];
+    _remindTitleLabel.font = CONTENT_FONT(FONT_SIZE);
     [_remindTitleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.titleImageView.mas_right).offset(10);
         make.top.equalTo(self.titleImageView);
@@ -142,7 +142,7 @@
     
     _nameLabel = [[UILabel alloc]init];
     [self.wrapContentView addSubview:_nameLabel];
-    _nameLabel.font = [UIFont systemFontOfSize:FONT_SIZE];
+    _nameLabel.font = CONTENT_FONT(FONT_SIZE);
     _nameLabel.text = @"李颖";
     [_nameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(_headImageView.mas_right).offset(SCALE_NUM(10));
@@ -200,7 +200,7 @@
 {
     _statusButton = [UIButton buttonWithType:UIButtonTypeSystem];
     [self.wrapContentView addSubview:_statusButton];
-    _statusButton.titleLabel.font = [UIFont systemFontOfSize:SCALE_NUM(12)];
+    _statusButton.titleLabel.font = CONTENT_FONT(12);
     [_statusButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     [_statusButton setTitle:@"已同意" forState:UIControlStateNormal];
     _statusButton.enabled = NO;
@@ -235,7 +235,7 @@
     
     _agreeButton = [UIButton buttonWithType:UIButtonTypeSystem];
     [self.bottomSelectView addSubview:_agreeButton];
-    _agreeButton.titleLabel.font = [UIFont systemFontOfSize:SCALE_NUM(12)];
+    _agreeButton.titleLabel.font = CONTENT_FONT(12);
     [_agreeButton addTarget:self action:@selector(agreeAction) forControlEvents:UIControlEventTouchUpInside];
     [_agreeButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     [_agreeButton setTitle:@"同意" forState:UIControlStateNormal];
@@ -248,7 +248,7 @@
     
     _ignoreButton = [UIButton buttonWithType:UIButtonTypeSystem];
     [self.bottomSelectView addSubview:_ignoreButton];
-    _ignoreButton.titleLabel.font = [UIFont systemFontOfSize:SCALE_NUM(12)];
+    _ignoreButton.titleLabel.font = CONTENT_FONT(12);
     [_ignoreButton addTarget:self action:@selector(ignoreAction) forControlEvents:UIControlEventTouchUpInside];
     [_ignoreButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     [_ignoreButton setTitle:@"忽略" forState:UIControlStateNormal];

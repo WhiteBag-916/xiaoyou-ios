@@ -60,7 +60,7 @@
     _titleLabel = [[UILabel alloc]init];
     [self.contentView addSubview:_titleLabel];
     _titleLabel.text = @"唔知安迪电影10不连续放映";
-    _titleLabel.font = [UIFont systemFontOfSize:SCALE_NUM(15)];
+    _titleLabel.font = CONTENT_FONT(15);
     [_titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(_startImageView.mas_right).offset(SCALE_NUM(12));
         make.centerY.equalTo(_startImageView.mas_centerY);
@@ -73,7 +73,7 @@
     _typeLabel.clipsToBounds = YES;
     _typeLabel.backgroundColor = [UIColor redColor];
     _typeLabel.text = @" 活动 ";
-    _typeLabel.font = [UIFont systemFontOfSize:SCALE_NUM(10)];
+    _typeLabel.font = CONTENT_FONT(10);
     [_typeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.equalTo(_titleLabel.mas_centerY);
         make.left.mas_equalTo(_titleLabel.mas_right).offset(SCALE_NUM(10));
@@ -83,7 +83,7 @@
     [self.contentView addSubview:_descriptionLabel];
     _descriptionLabel.numberOfLines = 3;
     _descriptionLabel.lineBreakMode = NSLineBreakByTruncatingTail;
-    _descriptionLabel.font = [UIFont systemFontOfSize:SCALE_NUM(12)];
+    _descriptionLabel.font = CONTENT_FONT(12);
     _descriptionLabel.text = @"描述:唔知安迪电影10不连续放映唔知安迪电影10不连续放映唔知安迪电影10不连续放映唔知安迪电影10不连续放映唔知安迪电影10不连续放映唔知安迪电影10不连续放映唔知安迪电影10不连续放映唔知安迪电影10不连续放映唔知安迪电影10不连续放映唔知安迪电影10不连续放映唔知安迪电影10不连续放映唔知安迪电影10不连续放映唔知安迪电影10不连续放映唔知安迪电影10不连续放映唔知安迪电影10不连续放映唔知安迪电影10不连续放映唔知安迪电影10不连续放映唔知安迪电影10不连续放映唔知安迪电影10不连续放映唔知安迪电影10不连续放映唔知安迪电影10不连续放映唔知安迪电影10不连续放映唔知安迪电影10不连续放映唔知安迪电影1";
     [_descriptionLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(_titleLabel.mas_bottom).offset(SCALE_NUM(18));
@@ -121,7 +121,7 @@
     _signUpTimeLabel = [[UILabel alloc]init];
     [self.contentView addSubview:_signUpTimeLabel];
     _signUpTimeLabel.text = @"报名时间: 2015/10/25-2015/11/12";
-    _signUpTimeLabel.font = [UIFont systemFontOfSize:SCALE_NUM(12)];
+    _signUpTimeLabel.font = CONTENT_FONT(12);
     [_signUpTimeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(_imageGroupView);
         make.top.equalTo(_imageGroupView.mas_bottom).offset(SCALE_NUM(15));
@@ -129,7 +129,7 @@
     
     _activityTimeLabel = [[UILabel alloc]init];
     [self.contentView addSubview:_activityTimeLabel];
-    _activityTimeLabel.font = [UIFont systemFontOfSize:SCALE_NUM(12)];
+    _activityTimeLabel.font = CONTENT_FONT(12);
     _activityTimeLabel.text = @"活动时间:2015/11/25";
     [_activityTimeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(_signUpTimeLabel.mas_bottom).offset(SCALE_NUM(15));
@@ -138,7 +138,7 @@
     
     _organizerLabel = [[UILabel alloc]init];
     [self.contentView addSubview:_organizerLabel];
-    _organizerLabel.font = [UIFont systemFontOfSize:SCALE_NUM(12)];
+    _organizerLabel.font = CONTENT_FONT(12);
     _organizerLabel.text = @"组织者:王小明";
     [_organizerLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(_activityTimeLabel.mas_bottom).offset(SCALE_NUM(15));

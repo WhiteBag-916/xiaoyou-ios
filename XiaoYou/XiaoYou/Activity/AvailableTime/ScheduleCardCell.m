@@ -54,7 +54,7 @@
     
     _titleLabel = [[UILabel alloc]init];
     [self.contentView addSubview:_titleLabel];
-    _titleLabel.font = [UIFont systemFontOfSize:SCALE_NUM(14)];
+    _titleLabel.font = CONTENT_FONT(14);
     _titleLabel.text = @"你的日程卡";
     [_titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.leading.mas_equalTo(SCALE_NUM(15));
@@ -64,7 +64,7 @@
     _timeLabel1 = [[UILabel alloc]init];
     [self.contentView addSubview:_timeLabel1];
     _timeLabel1.text = @"8:00-9:00";
-    _timeLabel1.font = [UIFont systemFontOfSize:SCALE_NUM(10)];
+    _timeLabel1.font = CONTENT_FONT(10);
     [_timeLabel1 mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(_titleLabel.mas_bottom).offset(SCALE_NUM(20));
         make.left.equalTo(_titleLabel);
@@ -73,7 +73,7 @@
     _projectLabel1 = [[UILabel alloc]init];
     [self.contentView addSubview:_projectLabel1];
     _projectLabel1.text = @"英语口语练习";
-    _projectLabel1.font = [UIFont systemFontOfSize:SCALE_NUM(10)];
+    _projectLabel1.font = CONTENT_FONT(10);
     [_projectLabel1 mas_makeConstraints:^(MASConstraintMaker *make) {
         make.leading.mas_equalTo(SCALE_NUM(100));
         make.centerY.equalTo(_timeLabel1);
@@ -82,7 +82,7 @@
     _timeLabel2 = [[UILabel alloc]init];
     [self.contentView addSubview:_timeLabel2];
     _timeLabel2.text = @"8:00-9:00";
-    _timeLabel2.font = [UIFont systemFontOfSize:SCALE_NUM(10)];
+    _timeLabel2.font = CONTENT_FONT(10);
     [_timeLabel2 mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(_timeLabel1.mas_bottom).offset(SCALE_NUM(15));
         make.left.equalTo(_timeLabel1);
@@ -91,7 +91,7 @@
     _projectLabel2 = [[UILabel alloc]init];
     [self.contentView addSubview:_projectLabel2];
     _projectLabel2.text = @"XX社团集体大会";
-    _projectLabel2.font = [UIFont systemFontOfSize:SCALE_NUM(10)];
+    _projectLabel2.font = CONTENT_FONT(10);
     [_projectLabel2 mas_makeConstraints:^(MASConstraintMaker *make) {
         make.leading.mas_equalTo(SCALE_NUM(100));
         make.centerY.equalTo(_timeLabel2);
@@ -100,7 +100,7 @@
     _timeLabel3 = [[UILabel alloc]init];
     [self.contentView addSubview:_timeLabel3];
     _timeLabel3.text = @"10:00-12:00";
-    _timeLabel3.font = [UIFont systemFontOfSize:SCALE_NUM(10)];
+    _timeLabel3.font = CONTENT_FONT(10);
     [_timeLabel3 mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(_timeLabel2.mas_bottom).offset(SCALE_NUM(15));
         make.left.equalTo(_timeLabel2);
@@ -109,7 +109,7 @@
     _projectLabel3 = [[UILabel alloc]init];
     [self.contentView addSubview:_projectLabel3];
     _projectLabel3.text = @"读书社名人讲座";
-    _projectLabel3.font = [UIFont systemFontOfSize:SCALE_NUM(10)];
+    _projectLabel3.font = CONTENT_FONT(10);
     [_projectLabel3 mas_makeConstraints:^(MASConstraintMaker *make) {
         make.leading.mas_equalTo(SCALE_NUM(100));
         make.centerY.equalTo(_timeLabel3);

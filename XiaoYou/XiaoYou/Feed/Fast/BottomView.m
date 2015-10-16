@@ -112,7 +112,7 @@
     _contactLabel = [[UILabel alloc]init];
     [self addSubview:_contactLabel];
     _contactLabel.text = @"人脉标签";
-    _contactLabel.font = [UIFont systemFontOfSize:12];
+    _contactLabel.font = CONTENT_FONT(12);
     [_contactLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.leading.mas_equalTo(14);
         make.top.mas_equalTo(16);

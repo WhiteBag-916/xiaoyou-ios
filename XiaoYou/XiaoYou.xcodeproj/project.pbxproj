@@ -80,6 +80,10 @@
 		044DA0651BBA7E4700AA321A /* ActivityBottomView.m in Sources */ = {isa = PBXBuildFile; fileRef = 044DA0601BBA7E4700AA321A /* ActivityBottomView.m */; settings = {ASSET_TAGS = (); }; };
 		044DA0661BBA7E4700AA321A /* ActivityMiddleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 044DA0621BBA7E4700AA321A /* ActivityMiddleView.m */; settings = {ASSET_TAGS = (); }; };
 		044DA0671BBA7E4700AA321A /* ActivityTopView.m in Sources */ = {isa = PBXBuildFile; fileRef = 044DA0641BBA7E4700AA321A /* ActivityTopView.m */; settings = {ASSET_TAGS = (); }; };
+		0476B6291BD0E4EC00FD13DF /* 1havetime_box_calender@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0476B6251BD0E4EC00FD13DF /* 1havetime_box_calender@2x.png */; settings = {ASSET_TAGS = (); }; };
+		0476B62A1BD0E4EC00FD13DF /* 1havetime_box_calender@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0476B6261BD0E4EC00FD13DF /* 1havetime_box_calender@3x.png */; settings = {ASSET_TAGS = (); }; };
+		0476B62B1BD0E4EC00FD13DF /* 1havetime_box_classroom@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0476B6271BD0E4EC00FD13DF /* 1havetime_box_classroom@2x.png */; settings = {ASSET_TAGS = (); }; };
+		0476B62C1BD0E4EC00FD13DF /* 1havetime_box_classroom@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0476B6281BD0E4EC00FD13DF /* 1havetime_box_classroom@3x.png */; settings = {ASSET_TAGS = (); }; };
 		048676A01BC803CB009F8C43 /* FastBottomView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0486769F1BC803CB009F8C43 /* FastBottomView.m */; settings = {ASSET_TAGS = (); }; };
 		049480341BB8D76C00C68460 /* tick@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0494802B1BB8D76C00C68460 /* tick@2x.png */; settings = {ASSET_TAGS = (); }; };
 		049480351BB8D76C00C68460 /* tick@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0494802C1BB8D76C00C68460 /* tick@3x.png */; settings = {ASSET_TAGS = (); }; };
@@ -785,6 +789,10 @@
 		044DA0621BBA7E4700AA321A /* ActivityMiddleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityMiddleView.m; sourceTree = "<group>"; };
 		044DA0631BBA7E4700AA321A /* ActivityTopView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityTopView.h; sourceTree = "<group>"; };
 		044DA0641BBA7E4700AA321A /* ActivityTopView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityTopView.m; sourceTree = "<group>"; };
+		0476B6251BD0E4EC00FD13DF /* 1havetime_box_calender@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "1havetime_box_calender@2x.png"; sourceTree = "<group>"; };
+		0476B6261BD0E4EC00FD13DF /* 1havetime_box_calender@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "1havetime_box_calender@3x.png"; sourceTree = "<group>"; };
+		0476B6271BD0E4EC00FD13DF /* 1havetime_box_classroom@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "1havetime_box_classroom@2x.png"; sourceTree = "<group>"; };
+		0476B6281BD0E4EC00FD13DF /* 1havetime_box_classroom@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "1havetime_box_classroom@3x.png"; sourceTree = "<group>"; };
 		0486769E1BC803CB009F8C43 /* FastBottomView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FastBottomView.h; sourceTree = "<group>"; };
 		0486769F1BC803CB009F8C43 /* FastBottomView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FastBottomView.m; sourceTree = "<group>"; };
 		0494802B1BB8D76C00C68460 /* tick@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tick@2x.png"; sourceTree = "<group>"; };
@@ -1754,6 +1762,10 @@
 		043AC8631BCF7BFC00AB6E09 /* mengcheng */ = {
 			isa = PBXGroup;
 			children = (
+				0476B6251BD0E4EC00FD13DF /* 1havetime_box_calender@2x.png */,
+				0476B6261BD0E4EC00FD13DF /* 1havetime_box_calender@3x.png */,
+				0476B6271BD0E4EC00FD13DF /* 1havetime_box_classroom@2x.png */,
+				0476B6281BD0E4EC00FD13DF /* 1havetime_box_classroom@3x.png */,
 				043AC8641BCF7BFC00AB6E09 /* friend_box_serch@2x.png */,
 				043AC8651BCF7BFC00AB6E09 /* friend_box_serch@3x.png */,
 				043AC8661BCF7BFC00AB6E09 /* havetime_box_calender@2x.png */,
@@ -3966,6 +3978,7 @@
 				3334AC221B82D7C400FDDCCB /* VoiceSearchFeedback002@2x.png in Resources */,
 				3334AC1D1B82D7C400FDDCCB /* VoiceSearchFeedback000.png in Resources */,
 				20E18DD61B808E42005B75EE /* society@2x.png in Resources */,
+				0476B62C1BD0E4EC00FD13DF /* 1havetime_box_classroom@3x.png in Resources */,
 				3334AC3F1B83075800FDDCCB /* default_head@3x.png in Resources */,
 				044DA0001BBA314300AA321A /* funny_detail_circle@2x.png in Resources */,
 				656341571BC10D6500E10025 /* gift_line@2x.png in Resources */,
@@ -4030,6 +4043,7 @@
 				3334AC3B1B82E32700FDDCCB /* chat_sender_bg@2x.png in Resources */,
 				650C6C161B886E2600A89AC9 /* mine-particulars@2x.png in Resources */,
 				3348CB691B87236200F97FAF /* send_normal@3x.png in Resources */,
+				0476B62A1BD0E4EC00FD13DF /* 1havetime_box_calender@3x.png in Resources */,
 				333122C91B806EDC00D3D032 /* chat_sender_audio_playing_001.png in Resources */,
 				333122BA1B806EDC00D3D032 /* messageToolbarBg@2x.png in Resources */,
 				0494803B1BB8D76C00C68460 /* schedule_time@3x.png in Resources */,
@@ -4093,6 +4107,7 @@
 				20E18DC81B808E42005B75EE /* menu-remind@2x.png in Resources */,
 				044C315A1BCCAF0000E0D508 /* have_time_select@2x.png in Resources */,
 				333122BC1B806EDC00D3D032 /* chat_receiver_audio_playing000@2x.png in Resources */,
+				0476B62B1BD0E4EC00FD13DF /* 1havetime_box_classroom@2x.png in Resources */,
 				6563415D1BC1133C00E10025 /* gift_home@3x.png in Resources */,
 				20DAAAAB1BCD05F5006DF231 /* havetime_icon_academy@3x.png in Resources */,
 				334670641B841F2800A8628A /* new-remind-number@2x.png in Resources */,
@@ -4181,6 +4196,7 @@
 				0494803A1BB8D76C00C68460 /* schedule_time@2x.png in Resources */,
 				20DAA2B41BCE34DF00420234 /* btn_friends_n@3x.png in Resources */,
 				20E18DBA1B808E42005B75EE /* common_star@2x.png in Resources */,
+				0476B6291BD0E4EC00FD13DF /* 1havetime_box_calender@2x.png in Resources */,
 				3334AC241B82D7C400FDDCCB /* VoiceSearchFeedback003@2x.png in Resources */,
 				654379B21B8DB223007B15CA /* icon@2x.png in Resources */,
 				E43E107F1BCCFA840018B6D7 /* img_top@3x.png in Resources */,
