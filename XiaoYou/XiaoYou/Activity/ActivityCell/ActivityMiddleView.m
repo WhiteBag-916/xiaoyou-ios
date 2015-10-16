@@ -40,7 +40,7 @@
     
     _staticDeadLineDes = [[UILabel alloc]init];
     [self addSubview:_staticDeadLineDes];
-    _staticDeadLineDes.font = [UIFont systemFontOfSize:13];
+    _staticDeadLineDes.font = CONTENT_FONT(13);
     _staticDeadLineDes.text = @"报名截止时间";
     [_staticDeadLineDes mas_makeConstraints:^(MASConstraintMaker *make) {
         make.leading.mas_equalTo(SCALE_NUM(66));
@@ -49,7 +49,7 @@
     
     _deadLineTimeLabel = [[UILabel alloc]init];
     [self addSubview:_deadLineTimeLabel];
-    _deadLineTimeLabel.font = [UIFont systemFontOfSize:13.0f];
+    _deadLineTimeLabel.font = CONTENT_FONT(13);
     _deadLineTimeLabel.text = @"15/09/28 18:00";
     [_deadLineTimeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(_staticDeadLineDes.mas_right).offset(10);
@@ -58,7 +58,7 @@
     
     _staticActivityTimeDes = [[UILabel alloc]init];
     [self addSubview:_staticActivityTimeDes];
-    _staticActivityTimeDes.font = [UIFont systemFontOfSize:13.0f];
+    _staticActivityTimeDes.font = CONTENT_FONT(13);
     _staticActivityTimeDes.text = @"活动时间";
     [_staticActivityTimeDes mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(_deadLineTimeLabel.mas_bottom).offset(10);
@@ -67,7 +67,7 @@
     
     _activityTimeLabel = [[UILabel alloc]init];
     [self addSubview:_activityTimeLabel];
-    _activityTimeLabel.font = [UIFont systemFontOfSize:13.0f];
+    _activityTimeLabel.font = CONTENT_FONT(13);
     _activityTimeLabel.text = @"15/09/28 18:00";
     [_activityTimeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(_staticActivityTimeDes);
@@ -84,7 +84,7 @@
     _locationLabel = [[UILabel alloc]init];
     _locationLabel.text = @"大脚超市门口";
     [self addSubview:_locationLabel];
-    _locationLabel.font = [UIFont systemFontOfSize:13.0f];
+    _locationLabel.font = CONTENT_FONT(13);
     [_locationLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(_staticActivityTimeDes);
         make.centerY.equalTo(_locationImageView.mas_centerY);
@@ -99,7 +99,7 @@
     
     _categoryLabel = [[UILabel alloc]init];
     [self addSubview:_categoryLabel];
-    _categoryLabel.font = [UIFont systemFontOfSize:13.0f];
+    _categoryLabel.font = CONTENT_FONT(13);
     _categoryLabel.text = @"学术类";
     [_categoryLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(_locationLabel);

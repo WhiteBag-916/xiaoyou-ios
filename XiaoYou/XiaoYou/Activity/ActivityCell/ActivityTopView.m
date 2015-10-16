@@ -51,7 +51,7 @@
     _titleLabel = [[UILabel alloc]init];
     _titleLabel.text = @"校级活动公告";
     [self addSubview:_titleLabel];
-    _titleLabel.font = [UIFont systemFontOfSize:15.0f];
+    _titleLabel.font = CONTENT_FONT(15);
     [_titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(_headImageView.mas_right).offset(12);
         make.centerY.equalTo(_headImageView.mas_centerY);
@@ -70,7 +70,7 @@
     
     _staticNameLabel = [[UILabel alloc]init];
     [self addSubview:_staticNameLabel];
-    _staticNameLabel.font = [UIFont systemFontOfSize:13.0f];
+    _staticNameLabel.font = CONTENT_FONT(13);
     _staticNameLabel.text = @"名称:";
     [_staticNameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(_sepLineView.mas_bottom).offset(15);
@@ -79,7 +79,7 @@
     
     _nameLabel = [[UILabel alloc]init];
     [self addSubview:_nameLabel];
-    _nameLabel.font = [UIFont systemFontOfSize:13.0f];
+    _nameLabel.font = CONTENT_FONT(13);
     _nameLabel.text = @"校级舞蹈大赛";
     [_nameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(_titleLabel);
@@ -88,7 +88,7 @@
     
     _staticDesLabel = [[UILabel alloc]init];
     [self addSubview:_staticDesLabel];
-    _staticDesLabel.font = [UIFont systemFontOfSize:13.0f];
+    _staticDesLabel.font = CONTENT_FONT(13);
     _staticDesLabel.text = @"描述:";
     [_staticDesLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(_nameLabel.mas_bottom).offset(15);
@@ -96,7 +96,7 @@
     }];
     
     _descriptionLabel = [[UILabel alloc]init];
-    _descriptionLabel.font = [UIFont systemFontOfSize:13.0f];
+    _descriptionLabel.font = CONTENT_FONT(13);
     if (type == DETAIL_INFO) {
         _descriptionLabel.numberOfLines = 0;
         _descriptionLabel.lineBreakMode = NSLineBreakByWordWrapping;

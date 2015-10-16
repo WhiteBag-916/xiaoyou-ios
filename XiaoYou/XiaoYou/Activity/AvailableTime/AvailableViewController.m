@@ -38,15 +38,16 @@
 
 - (void)addGuideView {
     
-    _promptView = [[UIView alloc]init];
-    _promptView.backgroundColor = [UIColor blackColor];
-    _promptView.alpha = 0.6;
     UIWindow *window = [UIApplication sharedApplication].keyWindow;
-    
-    [window addSubview:_promptView];
-    [_promptView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.edges.equalTo(window);
-    }];
+//    _promptView = [[UIView alloc]init];
+//    _promptView.backgroundColor = [UIColor blackColor];
+//    _promptView.alpha = 0.6;
+
+//    
+//    [window addSubview:_promptView];
+//    [_promptView mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.edges.equalTo(window);
+//    }];
     
     NSString *imageName = @"havetime_box_calender";
     UIImage *image = [[UIImage imageNamed:imageName]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
@@ -61,8 +62,8 @@
     
     
     _guideImageView.userInteractionEnabled = YES;
-    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissGuideView)];
-    [_promptView addGestureRecognizer:tap];
+//    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissGuideView)];
+//    [_promptView addGestureRecognizer:tap];
     
     UITapGestureRecognizer *tap1 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissGuideView)];
     [_guideImageView addGestureRecognizer:tap1];
