@@ -40,6 +40,87 @@
 }
 
 
+#pragma mark - 继承者
+- (BOOL)showHeaderRefresh
+{
+    return YES;
+}
+
+- (BOOL)showFooterRefresh
+{
+    return YES;
+}
+
+- (void)loadData {
+    [self beginLoadNewData];
+}
+
+- (void)loadNewData
+{
+    [self sendRequest];
+}
+
+- (void)loadMoreData
+{
+    [self sendRequest];
+}
+
+- (void)sendRequest {
+    [self stopLoadNewData];
+    NSString *lastID;
+    if (![self isHeaderRefresh]) {
+        //lastID = [NSString stringWithFormat:@"%g", [[_feedListArray.lastObject feed] feedIdentifier]];
+    }
+    //  [[FeedManager sharedInstance] feedList:lastID size:KPAGENUM queryCode:_filter block:^(YActionMessage *message) {
+    //        if (message.isSuccess) {
+    //            if ([self isHeaderRefresh]) {
+    //                [_feedListArray removeAllObjects];
+    //            }
+    //            [self hiddenFooter:false];
+    //            [_feedListArray addObjectsFromArray:message.object];
+    //            if ([message.object count] < KPAGENUM) {
+    //                [self showNoticeNoMoreData];
+    //            }
+    //            [self reloadData];
+    //
+    //        } else {
+    //            [YUtils showTitle:message.desc];
+    //        }
+    //        if ([self isHeaderRefresh]) {
+    //            [self stopLoadNewData];
+    //        } else {
+    //            [self stopLoadMoreData];
+    //        }
+    //    }];
+    //    NSString *lastID;
+    if (![self isHeaderRefresh]) {
+        lastID = [NSString stringWithFormat:@""];
+    }
+    /*[[RemindManager sharedInstance] getMyFeed:lastID limitStart:2 limitEnd:10 block:^(YActionMessage *message) {
+        if (message.isSuccess) {
+            if ([self isHeaderRefresh]) {
+                [_remindListArray removeAllObjects];
+            }
+            [self hiddenFooter:false];
+            [_remindListArray addObjectsFromArray:message.object];
+            if ([message.object count] < 6) {
+                [self showNoticeNoMoreData];
+            }
+            [self reloadData];
+        } else {
+            [YUtils showTitle:message.desc];
+        }
+        if ([self isHeaderRefresh]) {
+            [self stopLoadNewData];
+        } else {
+            [self stopLoadMoreData];
+        }
+    }];*/
+}
+
+
+
+
 #pragma mark 协议方法
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {

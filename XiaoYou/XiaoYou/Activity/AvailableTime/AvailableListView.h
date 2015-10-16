@@ -18,4 +18,6 @@ typedef enum : NSUInteger {
 } CELLTYPE;
 @interface AvailableListView : YTableView
 
+- (void)loadData;
+
 @end

@@ -103,7 +103,9 @@
         [_availableListView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.edges.equalTo(self.view);
         }];
+        [_availableListView loadData];
     }
+    
     return _availableListView;
 }
 
