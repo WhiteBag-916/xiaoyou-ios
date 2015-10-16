@@ -40,7 +40,7 @@ NSString *const kDescriptionCollectionViewCell = @"DescriptionCollectionViewCell
 
 -(void)changUI
 {
-    
+    //图片
     _picImageView = [[UIImageView alloc] init];
     _picImageView.userInteractionEnabled = YES;
     _picImageView.layer.cornerRadius = 4;
@@ -58,6 +58,7 @@ NSString *const kDescriptionCollectionViewCell = @"DescriptionCollectionViewCell
     UILongPressGestureRecognizer * longPressGestureRecognizer = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(deleteBtnShow)];
     [_picImageView addGestureRecognizer:longPressGestureRecognizer];
     
+    //删除
     _deleteBtn = [[UIButton alloc] init];
     [_deleteBtn setImage:[UIImage imageNamed:@"btn_delete"] forState:UIControlStateNormal];
     [_deleteBtn addTarget:self action:@selector(deleteImage) forControlEvents:UIControlEventTouchUpInside];
@@ -69,6 +70,7 @@ NSString *const kDescriptionCollectionViewCell = @"DescriptionCollectionViewCell
     }];
     _deleteBtn.hidden = YES;
     
+    //输入部分
     _textView = [[YTextView alloc] init];
     _textView.delegate = self;
     _textView.backgroundColor = [UIColor clearColor];
@@ -81,6 +83,7 @@ NSString *const kDescriptionCollectionViewCell = @"DescriptionCollectionViewCell
         make.bottom.right.mas_equalTo(SCALE_NUM(-12));
     }];
     
+    //设置每个cell的不同部分
     self.numImageView.image = [UIImage imageNamed:@"img_num2"];
     self.typeLabel.text = @"活动描述";
     _textView.placeholder = @"例如：\n我觉得要阐明举办此次活动的背景,表述活动举办的意义以及目的,最后将活动所取得的效果加以描述并且稍稍夸大一点.再用几句话总结一下就可以了";
@@ -146,7 +149,7 @@ NSString *const kDescriptionCollectionViewCell = @"DescriptionCollectionViewCell
     [picker setAllowsEditing:YES];
     [self.myController presentViewController:picker animated:YES completion:nil];
 }
-//imagePickerController委托回调
+#pragma mark - imagePickerController委托回调
 -(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info
 {
     //打印出字典中的内容
@@ -166,7 +169,7 @@ NSString *const kDescriptionCollectionViewCell = @"DescriptionCollectionViewCell
     [self.myController dismissViewControllerAnimated:YES completion:nil];
 }
 
-//展示删除按钮
+#pragma mark - 展示删除按钮
 -(void)deleteBtnShow
 {
     if (![_picImageView.image isEqual:[UIImage imageNamed:@"btn_add"]])
@@ -175,13 +178,15 @@ NSString *const kDescriptionCollectionViewCell = @"DescriptionCollectionViewCell
     }
     
 }
-//点击删除按钮
+#pragma mark - 点击删除按钮
 -(void)deleteImage
 {
     NSLog(@"delete");
     _deleteBtn.hidden = YES;
     _picImageView.image = [UIImage imageNamed:@"btn_add"];
 }
+
+#pragma mark - UITextViewDelegate
 
 - (void)textViewDidChange:(UITextView *)textView
 {

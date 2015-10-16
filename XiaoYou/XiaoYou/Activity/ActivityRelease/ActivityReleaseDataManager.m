@@ -28,7 +28,7 @@
 -(void)isEnableToRelease
 {
 
-    if (_ActivityDateApplyText == nil|| _ActivityDateBeginText == nil || _ActivityDateEndText == nil || _ActivityDesciptionText == nil || _ActivityNameText == nil || _ActivityPlaceText == nil || _ActivityTypeArr.count <= 0)
+    if (_ActivityDateBeginText == nil || _ActivityDateEndText == nil || _ActivityDesciptionText == nil || _ActivityNameText == nil || _ActivityPlaceText == nil || _ActivityTypeArr.count <= 0)
     {
         NSDictionary * dic = @{@"isEnabel":@NO};
         [[NSNotificationCenter defaultCenter] postNotificationName:KNotification_Enabel_ReleaseBtn object:dic];
@@ -36,7 +36,7 @@
     }
     else
     {
-        if ([_ActivityDateApplyText isEqualToString:@"点击后可以选择时间"]|| [_ActivityDateBeginText isEqualToString:@"点击后可以选择时间"] || [_ActivityDateEndText isEqualToString:@"点击后可以选择时间"] || [_ActivityDesciptionText isEqualToString:@""] || [_ActivityNameText isEqualToString:@""] || [_ActivityPlaceText isEqualToString:@""] || _ActivityTypeArr.count == 0)
+        if ([_ActivityDateBeginText isEqualToString:@"点击后可以选择时间"] || [_ActivityDateEndText isEqualToString:@"点击后可以选择时间"] || [_ActivityDesciptionText isEqualToString:@""] || [_ActivityNameText isEqualToString:@""] || [_ActivityPlaceText isEqualToString:@""] || _ActivityTypeArr.count == 0)
         {
             NSDictionary * dic = @{@"isEnabel":@NO};
             [[NSNotificationCenter defaultCenter] postNotificationName:KNotification_Enabel_ReleaseBtn object:dic];

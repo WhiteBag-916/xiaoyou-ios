@@ -26,6 +26,7 @@
 
 +(instancetype)shareActivityReleaseDataManager;
 
+//判断是否可以发布
 -(void)isEnableToRelease;
 
 @end

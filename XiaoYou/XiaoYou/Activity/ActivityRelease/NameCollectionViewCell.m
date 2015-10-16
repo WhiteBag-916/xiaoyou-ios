@@ -33,7 +33,8 @@ NSString *const kNameCollectionViewCell = @"NameCollectionViewCellId";
 }
 
 -(void)changUI
-{  
+{
+    //输入部分
     _textView = [[YTextView alloc] init];
     _textView.backgroundColor = [UIColor clearColor];
     _textView.delegate = self;
@@ -46,11 +47,14 @@ NSString *const kNameCollectionViewCell = @"NameCollectionViewCellId";
         make.bottom.right.mas_equalTo(SCALE_NUM(-12));
     }];
     
+    //设置每个cell的不同部分
     self.numImageView.image = [UIImage imageNamed:@"img_num1"];
     self.typeLabel.text = @"活动名称(0-30字)";
     _textView.placeholder = @"例如：\n怀旧活动:一起擦雪花膏\n怀旧活动:一起擦雪花膏";
     
 }
+
+#pragma mark - UITextViewDelegate
 
 - (void)textViewDidChange:(UITextView *)textView
 {

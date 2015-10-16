@@ -34,6 +34,7 @@ NSString *const kPlaceCollectionViewCell = @"PlaceCollectionViewCellId";
 
 -(void)changUI
 {
+    //输入部分
     _textView = [[YTextView alloc] init];
     _textView.backgroundColor = [UIColor clearColor];
     _textView.delegate = self;
@@ -46,11 +47,14 @@ NSString *const kPlaceCollectionViewCell = @"PlaceCollectionViewCellId";
         make.bottom.right.mas_equalTo(SCALE_NUM(-12));
     }];
     
+    //设置每个cell的不同部分
     self.numImageView.image = [UIImage imageNamed:@"img_num4"];
     self.typeLabel.text = @"地点";
     _textView.placeholder = @"在这里填写您的活动地点,\n如：第六教学楼204教室";
     
 }
+
+#pragma mark - UITextViewDelegate
 
 - (void)textViewDidChange:(UITextView *)textView
 {

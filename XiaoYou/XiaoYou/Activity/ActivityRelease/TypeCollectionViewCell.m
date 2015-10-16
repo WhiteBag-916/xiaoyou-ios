@@ -30,9 +30,11 @@ NSString *const kTypeCollectionViewCell = @"TypeCollectionViewCellId";
 
 -(void)changUI
 {
+    //设置每个cell的不同部分
     self.numImageView.image = [UIImage imageNamed:@"img_num5"];
     self.typeLabel.text = @"类型";
     
+    //顶部提示文字
     UILabel * topLabel = [[UILabel alloc] init];
     topLabel.backgroundColor = [UIColor clearColor];
     topLabel.font = CONTENT_FONT(12);

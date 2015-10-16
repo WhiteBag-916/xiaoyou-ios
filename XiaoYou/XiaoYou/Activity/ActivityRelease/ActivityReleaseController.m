@@ -10,20 +10,29 @@
 #import "ActivityReleaseCollectionView.h"
 #import "ActivityReleaseDataManager.h"
 
+typedef enum : NSUInteger {
+    POINT1 = 1,
+    POINT2 = 2,
+    POINT3 = 3,
+    POINT4 = 4,
+    POINT5 = 5,
+} MyPointNum;
+
 @interface ActivityReleaseController ()
 
 @property (nonatomic,strong) ActivityReleaseCollectionView * releaseCollectionView;
 
+//背景scrollView
 @property (nonatomic,strong)UIScrollView * scrollView;
-
+//发布按钮
 @property (nonatomic,strong) UIButton * releaseButton;
-
+//五个可变状态的点
 @property (nonatomic,strong) UIView * point1View;
 @property (nonatomic,strong) UIView * point2View;
 @property (nonatomic,strong) UIView * point3View;
 @property (nonatomic,strong) UIView * point4View;
 @property (nonatomic,strong) UIView * point5View;
-
+//数据Manager
 @property (nonatomic,strong) ActivityReleaseDataManager * dataManager;
 
 @end
@@ -47,7 +56,7 @@
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
-
+#pragma mark - 改变发布按钮是否可点击状态方法
 -(void)changeEnabelStateForReleaseBtn:(NSNotification *) notification
 {
     if ([notification.object[@"isEnabel"] boolValue])
@@ -110,7 +119,7 @@
     }];
     
     //.........
-    //1
+    //Point1
     _point1View = [[UIView alloc] init];
     _point1View.backgroundColor = KCOLORGREEN_g1;
     _point1View.layer.cornerRadius = 4;
@@ -142,7 +151,7 @@
         make.width.mas_equalTo(SCALE_NUM(30));
         make.height.mas_equalTo(SCALE_NUM(12));
     }];
-    //2
+    //Point2
     _point2View = [[UIImageView alloc] init];
     _point2View.backgroundColor = KCOLORGREEN_B5;
     _point2View.layer.cornerRadius = 4;
@@ -174,7 +183,7 @@
         make.width.mas_equalTo(SCALE_NUM(30));
         make.height.mas_equalTo(SCALE_NUM(12));
     }];
-    //3
+    //Point3
     _point3View = [[UIImageView alloc] init];
     _point3View.backgroundColor = KCOLORGREEN_B5;
     _point3View.layer.cornerRadius = 4;
@@ -206,7 +215,7 @@
         make.width.mas_equalTo(SCALE_NUM(30));
         make.height.mas_equalTo(SCALE_NUM(12));
     }];
-    //4
+    //Point4
     _point4View = [[UIImageView alloc] init];
     _point4View.backgroundColor = KCOLORGREEN_B5;
     _point4View.layer.cornerRadius = 4;
@@ -238,7 +247,7 @@
         make.width.mas_equalTo(SCALE_NUM(30));
         make.height.mas_equalTo(SCALE_NUM(12));
     }];
-    //5
+    //Point5
     _point5View = [[UIImageView alloc] init];
     _point5View.backgroundColor = KCOLORGREEN_B5;
     _point5View.layer.cornerRadius = 4;
@@ -275,6 +284,7 @@
         make.height.mas_equalTo(SCALE_NUM(34));
     }];
     
+    //提示部分
     UIImageView * remindImageView = [[UIImageView alloc] init];
     remindImageView.image = [UIImage imageNamed:@"icon_info"];
     [backgroundView addSubview:remindImageView];
@@ -322,40 +332,49 @@
     NSLog(@"%@",_dataManager.ActivityDateEndText);
     NSLog(@"%@",_dataManager.ActivityPlaceText);
     NSLog(@"%@",_dataManager.ActivityTypeArr);
+    
+    _dataManager.ActivityNameText = nil;
+    _dataManager.ActivityDesciptionText = nil;
+    _dataManager.ActivityDesciptionImage = nil;
+    _dataManager.ActivityDateApplyText = nil;
+    _dataManager.ActivityDateBeginText = nil;
+    _dataManager.ActivityDateEndText = nil;
+    _dataManager.ActivityPlaceText = nil;
+    _dataManager.ActivityTypeArr= nil;
 }
 
--(void)setPointHighlight:(NSInteger) num
+-(void)setPointHighlight:(NSInteger) pointNum
 {
-    switch (num) {
-        case 1:
+    switch (pointNum) {
+        case POINT1:
             _point1View.backgroundColor = KCOLORGREEN_g1;
             _point2View.backgroundColor = KCOLORGREEN_B5;
             _point3View.backgroundColor = KCOLORGREEN_B5;
             _point4View.backgroundColor = KCOLORGREEN_B5;
             _point5View.backgroundColor = KCOLORGREEN_B5;
             break;
-        case 2:
+        case POINT2:
             _point2View.backgroundColor = KCOLORGREEN_g1;
             _point1View.backgroundColor = KCOLORGREEN_B5;
             _point3View.backgroundColor = KCOLORGREEN_B5;
             _point4View.backgroundColor = KCOLORGREEN_B5;
             _point5View.backgroundColor = KCOLORGREEN_B5;
             break;
-        case 3:
+        case POINT3:
             _point3View.backgroundColor = KCOLORGREEN_g1;
             _point2View.backgroundColor = KCOLORGREEN_B5;
             _point1View.backgroundColor = KCOLORGREEN_B5;
             _point4View.backgroundColor = KCOLORGREEN_B5;
             _point5View.backgroundColor = KCOLORGREEN_B5;
             break;
-        case 4:
+        case POINT4:
             _point4View.backgroundColor = KCOLORGREEN_g1;
             _point2View.backgroundColor = KCOLORGREEN_B5;
             _point3View.backgroundColor = KCOLORGREEN_B5;
             _point1View.backgroundColor = KCOLORGREEN_B5;
             _point5View.backgroundColor = KCOLORGREEN_B5;
             break;
-        case 5:
+        case POINT5:
             _point5View.backgroundColor = KCOLORGREEN_g1;
             _point2View.backgroundColor = KCOLORGREEN_B5;
             _point3View.backgroundColor = KCOLORGREEN_B5;

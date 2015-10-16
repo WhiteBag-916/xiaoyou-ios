@@ -36,7 +36,8 @@ NSString *const kDateAndTimeCollectionViewCell = @"DateAndTimeCollectionViewCell
 }
 
 -(void)changUI
-{ 
+{
+    //设置每个cell的不同部分
     self.numImageView.image = [UIImage imageNamed:@"img_num3"];
     self.typeLabel.text = @"时间";
     
@@ -140,7 +141,7 @@ NSString *const kDateAndTimeCollectionViewCell = @"DateAndTimeCollectionViewCell
     
 }
 
-//手势回调方法
+#pragma mark - 手势回调方法
 -(void)applayChoiceTime
 {
     CommonPopView * popView = [[CommonPopView alloc] initWithFrame:[UIScreen mainScreen].bounds
@@ -177,7 +178,7 @@ NSString *const kDateAndTimeCollectionViewCell = @"DateAndTimeCollectionViewCell
     [popView showView];
 }
 
-//确定选择日期
+#pragma mark - 确定选择日期
 -(void)applayChooseDate
 {
     NSDateFormatter * formatter = [[NSDateFormatter alloc] init];

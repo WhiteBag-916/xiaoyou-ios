@@ -25,6 +25,7 @@
 
 -(void)setUpUI
 {
+    //背景View
     _backView = [[UIView alloc] init];
     _backView.layer.cornerRadius = 4;
     _backView.clipsToBounds = YES;
@@ -38,7 +39,7 @@
         make.left.mas_equalTo(SCALE_NUM(5));
         make.right.mas_equalTo(SCALE_NUM(-5));
     }];
-    
+    //顶部绿色长条
     UIImageView * topImageView = [[UIImageView alloc] init];
     topImageView.image = [UIImage imageNamed:@"img_top"];
     [_backView addSubview:topImageView];
@@ -46,7 +47,7 @@
         make.top.left.right.mas_equalTo(0);
         make.height.mas_equalTo(SCALE_NUM(6));
     }];
-    
+    //中部虚线
     UIImageView * lineImageView = [[UIImageView alloc] init];
     lineImageView.image = [UIImage imageNamed:@"img_line"];
     [_backView addSubview:lineImageView];
@@ -55,7 +56,7 @@
         make.left.right.mas_equalTo(0);
         make.height.mas_equalTo(SCALE_NUM(10));
     }];
-    
+    //数字
     _numImageView = [[UIImageView alloc] init];
     [_backView addSubview:_numImageView];
     [_numImageView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -63,7 +64,7 @@
         make.top.mas_equalTo(SCALE_NUM(22));
         make.height.width.mas_equalTo(SCALE_NUM(34));
     }];
-    
+    //类型名称
     _typeLabel = [[UILabel alloc] init];
     _typeLabel.textColor = KCOLORGREEN_g1;
     _typeLabel.font = CONTENT_FONT(20);
