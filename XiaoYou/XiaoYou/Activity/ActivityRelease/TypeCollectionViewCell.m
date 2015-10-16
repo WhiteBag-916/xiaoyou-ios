@@ -39,7 +39,7 @@ NSString *const kTypeCollectionViewCell = @"TypeCollectionViewCellId";
     topLabel.backgroundColor = [UIColor clearColor];
     topLabel.font = CONTENT_FONT(12);
     topLabel.textColor = KCOLORGREEN_B5;
-    topLabel.text = @"选择您本次活动的类型,可以多选哦:";
+    topLabel.text = @"在这里选择活动类型:";
     [self.backView addSubview:topLabel];
     [topLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.mas_equalTo(SCALE_NUM(80));

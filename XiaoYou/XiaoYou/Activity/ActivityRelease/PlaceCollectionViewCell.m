@@ -50,7 +50,7 @@ NSString *const kPlaceCollectionViewCell = @"PlaceCollectionViewCellId";
     //设置每个cell的不同部分
     self.numImageView.image = [UIImage imageNamed:@"img_num4"];
     self.typeLabel.text = @"地点";
-    _textView.placeholder = @"在这里填写您的活动地点,\n如：第六教学楼204教室";
+    _textView.placeholder = @"在这里填写您的活动地点,\n如：增城宁西茶园基地";
     
 }
 
