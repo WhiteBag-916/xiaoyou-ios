@@ -68,7 +68,7 @@ NSString *const kActivityDateAndTimeCell = @"ActivityDateAndTimeCellId";
         make.width.mas_equalTo(SCREEN_WIDTH);
         make.height.mas_equalTo(SCALE_NUM(140));
     }];
-    [_datePickerView addTarget:self action:@selector(dateChanged:) forControlEvents:UIControlEventValueChanged ];
+    [_datePickerView addTarget:self action:@selector(dateChanged:) forControlEvents:UIControlEventValueChanged];
 
 }
 

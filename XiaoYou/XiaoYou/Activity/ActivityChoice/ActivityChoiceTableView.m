@@ -83,9 +83,10 @@
 
 -(void)clickBtnForChoice
 {
-    [self.myController dismissViewControllerAnimated:YES completion:nil];
-    ActivityResultViewController * resultViewController = [[ActivityResultViewController alloc] init];
-    [self.myController.superViewController.navigationController pushViewController:resultViewController animated:YES];
+    [self.myController dismissViewControllerAnimated:YES completion:^{
+        ActivityResultViewController * resultViewController = [[ActivityResultViewController alloc] init];
+        [self.myController.superViewController.navigationController pushViewController:resultViewController animated:YES needHiddenBottomBar:YES];
+    }];
 
 }
 

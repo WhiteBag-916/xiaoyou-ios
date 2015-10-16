@@ -25,8 +25,10 @@
 
 -(void)setUpUI
 {
+    [self showCustomNavigationBackButton];
+    
     _resultTableView = [[ActivityResultTableView alloc] init];
-    _resultTableView.backgroundColor = [UIColor orangeColor];
+    _resultTableView.backgroundColor = [UIColor clearColor];
     [self.view addSubview:_resultTableView];
     [_resultTableView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.left.right.bottom.mas_equalTo(0);
