@@ -35,8 +35,8 @@
 
 -(void)setUpHeaderView
 {
-    UIView * backView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 44)];
-    
+    UIView * backView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 60)];
+    backView.backgroundColor = [UIColor clearColor];
     //错号
     UIButton * dissMissBtn = [[UIButton alloc] init];
     dissMissBtn.backgroundColor = [UIColor clearColor];
@@ -46,7 +46,7 @@
     [dissMissBtn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.equalTo(backView);
         make.leading.mas_equalTo(SCALE_NUM(12));
-        make.height.width.mas_equalTo(SCALE_NUM(15));
+        make.height.width.mas_equalTo(SCALE_NUM(30));
     }];
     
     //对号
@@ -58,8 +58,8 @@
     [finishBtn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.equalTo(backView);
         make.trailing.mas_equalTo(SCALE_NUM(-12));
-        make.width.mas_equalTo(SCALE_NUM(15));
-        make.height.mas_equalTo(SCALE_NUM(12));
+        make.width.mas_equalTo(SCALE_NUM(30));
+        make.height.mas_equalTo(SCALE_NUM(24));
     }];
     //筛选
     UILabel * centerLabel = [[UILabel alloc] init];
@@ -97,7 +97,7 @@
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 3;
+    return 4;
 }
 
 
@@ -126,7 +126,7 @@
 //    }
 //    else
 //    {
-        return SCALE_NUM(140);
+        return SCALE_NUM(130);
 //    }
     
 }
