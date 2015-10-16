@@ -220,13 +220,6 @@
 			path = Remind;
 			sourceTree = "<group>";
 		};
-		04A82D8E1BC7A23200EF87B7 /* Schedule */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Schedule;
-			sourceTree = "<group>";
-		};
 		04A82D921BC7B3FC00EF87B7 /* Remind */ = {
 			isa = PBXGroup;
 			children = (
@@ -312,6 +305,13 @@
 			path = Activity;
 			sourceTree = "<group>";
 		};
+		20DADED91BD0964D00FB294F /* Activity */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Activity;
+			sourceTree = "<group>";
+		};
 		20DBFD351B4FA0F5009134D0 = {
 			isa = PBXGroup;
 			children = (
@@ -362,8 +362,8 @@
 		20DBFD741B4FD3F5009134D0 /* Action */ = {
 			isa = PBXGroup;
 			children = (
+				20DADED91BD0964D00FB294F /* Activity */,
 				04A82D8D1BC7A23200EF87B7 /* Remind */,
-				04A82D8E1BC7A23200EF87B7 /* Schedule */,
 				20DA8B311B8EC4E3007D0CDE /* Utils */,
 				20E0C02B1B88B0CA00EDAED4 /* Feed */,
 				20859A8D1B64C03C00580ED3 /* Provision */,
