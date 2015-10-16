@@ -35,4 +35,6 @@
 #define KNotification_Open_PraiseDetail                 @"KNotification_Open_PraiseDetail"
 
 #define KNotification_Refresh_FeedList                  @"KNotification_Refresh_FeedList"
+
+#define KNotification_Enabel_ReleaseBtn                  @"KNotification_Enabel_ReleaseBtn"
 #endif
