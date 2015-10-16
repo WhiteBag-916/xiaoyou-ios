@@ -136,7 +136,7 @@
     else if (indexPath.row == 6) {
         return 85;
     }
-    return SCALE_NUM(415);
+    return SCALE_NUM(430);
 }
 
 -(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath

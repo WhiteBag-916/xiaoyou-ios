@@ -28,9 +28,8 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    //if([AppConfigData isUserFirstUseHaveTime])
+    if([AppConfigData isUserFirstUseHaveTime])
         [self addGuideView];
-    
     [self setUpCustomNavgationBar];
     [self availableListView];
     
@@ -73,11 +72,7 @@
 }
 
 - (void)nextPromptView {
-    _guideImageView.image = [UIImage imageNamed:@"havetime_box_classroom"];
-    
-    [_guideImageView mas_updateConstraints:^(MASConstraintMaker *make) {
-        make.top.mas_equalTo(SCALE_NUM(250));
-    }];
+    _guideImageView.image = [UIImage imageNamed:@"1havetime_box_classroom"];
     self.guideIndex = 2;
 }
 

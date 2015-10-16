@@ -37,7 +37,7 @@
     CGFloat height;
     if (indexPath.row == 0)
     {
-        return 640;
+        return 700;
         //height = [tableView fd_heightForCellWithIdentifier:@"activitydetail" cacheByIndexPath:indexPath configuration:^(ActivityDetailCell *cell) {
             //[cell setData:_feedListArray[indexPath.row]];
         //}];
