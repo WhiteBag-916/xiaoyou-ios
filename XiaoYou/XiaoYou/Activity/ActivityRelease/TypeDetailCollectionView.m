@@ -8,10 +8,14 @@
 
 #import "TypeDetailCollectionView.h"
 #import "TypeDetailCollectionViewCell.h"
+#import "ActivityReleaseDataManager.h"
 
 @interface TypeDetailCollectionView ()<UICollectionViewDataSource,UICollectionViewDelegate>
 
 @property(nonatomic,strong)NSMutableArray * dataSouceArr;
+
+@property(nonatomic,strong)ActivityReleaseDataManager * dataManager;
+@property(nonatomic,strong)NSMutableArray * typeArr;
 
 @end
 
@@ -23,10 +27,13 @@
     if (self) {
         self.delegate = self;
         self.dataSource = self;
-        self.scrollEnabled = NO;
+        self.scrollEnabled = YES;
         self.pagingEnabled = NO;
         [self registerClass:[TypeDetailCollectionViewCell class] forCellWithReuseIdentifier:kTypeDetailCollectionViewCell];
-        _dataSouceArr = [[NSMutableArray alloc] initWithArray:@[[NSMutableDictionary dictionaryWithDictionary:@{@"type":@"综合类",@"isChoice":@NO}],[NSMutableDictionary dictionaryWithDictionary:@{@"type":@"公益类",@"isChoice":@NO}],[NSMutableDictionary dictionaryWithDictionary:@{@"type":@"体育类",@"isChoice":@NO}],[NSMutableDictionary dictionaryWithDictionary:@{@"type":@"文艺类",@"isChoice":@NO}],[NSMutableDictionary dictionaryWithDictionary:@{@"type":@"学术类",@"isChoice":@NO}],[NSMutableDictionary dictionaryWithDictionary:@{@"type":@"学术型",@"isChoice":@NO}],[NSMutableDictionary dictionaryWithDictionary:@{@"type":@"科技类",@"isChoice":@NO}],[NSMutableDictionary dictionaryWithDictionary:@{@"type":@"国际交流类",@"isChoice":@NO}],[NSMutableDictionary dictionaryWithDictionary:@{@"type":@"职业类",@"isChoice":@NO}],[NSMutableDictionary dictionaryWithDictionary:@{@"type":@"技术类",@"isChoice":@NO}]]];
+        _dataSouceArr = [[NSMutableArray alloc] initWithArray:@[[NSMutableDictionary dictionaryWithDictionary:@{@"type":@"竞技·比赛",@"isChoice":@NO}],[NSMutableDictionary dictionaryWithDictionary:@{@"type":@"讲座·培训",@"isChoice":@NO}],[NSMutableDictionary dictionaryWithDictionary:@{@"type":@"实习·招聘",@"isChoice":@NO}],[NSMutableDictionary dictionaryWithDictionary:@{@"type":@"运动·户外",@"isChoice":@NO}],[NSMutableDictionary dictionaryWithDictionary:@{@"type":@"义工·支教",@"isChoice":@NO}],[NSMutableDictionary dictionaryWithDictionary:@{@"type":@"社交·沙龙",@"isChoice":@NO}],[NSMutableDictionary dictionaryWithDictionary:@{@"type":@"演出·晚会",@"isChoice":@NO}],[NSMutableDictionary dictionaryWithDictionary:@{@"type":@"综合·其他",@"isChoice":@NO}]]];
+        
+        _dataManager = [ActivityReleaseDataManager shareActivityReleaseDataManager];
+        _typeArr = [[NSMutableArray alloc] init];
     }
     return self;
 }
@@ -76,6 +83,7 @@
 
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
+    //判断是否被选中
     if ([_dataSouceArr[indexPath.row][@"isChoice"] boolValue] == YES)
     {
         [_dataSouceArr[indexPath.row] setObject:@NO forKey:@"isChoice"];
@@ -84,6 +92,30 @@
     {
         [_dataSouceArr[indexPath.row] setObject:@YES forKey:@"isChoice"];
     }
+    
+    //根据选中情况提取数据
+    for (int i = 0; i<_dataSouceArr.count; i++)
+    {
+        if ([_dataSouceArr[indexPath.row][@"isChoice"] boolValue] == YES) {
+            
+            NSString * tempStr = _dataSouceArr[indexPath.row][@"type"];
+            if (![_typeArr containsObject:tempStr])
+            {
+                [_typeArr addObject:tempStr];
+            }
+        }
+        else
+        {
+            NSString * tempStr = _dataSouceArr[indexPath.row][@"type"];
+            if ([_typeArr containsObject:tempStr])
+            {
+                [_typeArr removeObject:tempStr];
+            }
+        }
+    }
+    
+    _dataManager.ActivityTypeArr = _typeArr;
+    [_dataManager isEnableToRelease];
     
     [self reloadData];
 }

@@ -64,7 +64,7 @@
 @property (nonatomic, strong) UIImagePickerController *picker;
 
 @property (nonatomic, assign) BOOL isPhotoSaveEnd;//上传图片时的同步操作
-@property (nonatomic, assign) BOOL isUpLoadEnd; //图片是否上传成功
+@property (nonatomic, assign) BOOL isUpLoadEnd; //图片是否上传成功时的同步操作
 
 @end
 

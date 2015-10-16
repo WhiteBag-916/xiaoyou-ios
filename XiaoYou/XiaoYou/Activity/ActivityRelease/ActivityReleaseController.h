@@ -10,6 +10,6 @@
 
 @interface ActivityReleaseController : YViewController
 
--(void)setPointHighlight:(NSInteger) num;
+-(void)setPointHighlight:(NSInteger) pointNum;
 
 @end

@@ -36,9 +36,14 @@ NSString *const kActivityReleaseAndTypeCell = @"ActivityReleaseAndTypeCellId";
 
 -(void)setCellType:(NSInteger) num
 {
-    if (num == 1)
+    if (num == 0) {
+        _dataArr = @[@"全部",@"今天",@"一周内",@"两周内"];
+        _releaseAndTypeImageView.image = [UIImage imageNamed:@"funny_detail_time"];
+        _releaseAndTypeLabel.text = @"时间与日期";
+    }
+    else if (num == 1)
     {
-        _dataArr = @[@"学校活动",@"校友活动",@"个人活动",@"社团活动"];
+        _dataArr = @[@"不限",@"学校活动",@"校友活动",@"个人活动",@"社团活动"];
         _releaseAndTypeImageView.image = [UIImage imageNamed:@"activity-releaser"];
         _releaseAndTypeLabel.text = @"发布者";
 
@@ -73,7 +78,7 @@ NSString *const kActivityReleaseAndTypeCell = @"ActivityReleaseAndTypeCellId";
         make.left.equalTo(_releaseAndTypeImageView.mas_right).offset(SCALE_NUM(5));
         make.centerY.equalTo(_releaseAndTypeImageView);
         make.height.mas_equalTo(SCALE_NUM(17));
-        make.width.mas_equalTo(SCALE_NUM(51));
+        make.width.mas_equalTo(SCALE_NUM(100));
     }];
     
     _pickerView = [[UIPickerView alloc] init];

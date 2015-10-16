@@ -165,4 +165,19 @@
     }];
 }
 
+
+#pragma waring 此处需要添加图片
+-(void)setCellType:(CELL_TYPE)cellType
+{
+    if(cellType == ALREADY_SUBMIT) {
+        self.remindTitleLabel.text = @"报名申请已提交,请等待审核结果";
+    } else if (cellType == AUDIT_PASSED) {
+        //do nothing
+    } else if (cellType == AUDIT_NOT_PASSED) {
+        self.titleImageView.image = [UIImage imageNamed:@""];
+    } else if (cellType == SUCESSED_JOININ) {
+        self.remindTitleLabel.text = @"你已成功参加活动";
+    }
+}
+
 @end

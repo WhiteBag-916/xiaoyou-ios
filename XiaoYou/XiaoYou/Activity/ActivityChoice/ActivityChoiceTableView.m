@@ -98,31 +98,31 @@
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.row == 0)
-    {
-        ActivityDateAndTimeCell * cell = [self dequeueReusableCellWithIdentifier:kActivityDateAndTimeCell forIndexPath:indexPath];
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        return cell;
-    }
-    else
-    {
+//    if (indexPath.row == 0)
+//    {
+//        ActivityDateAndTimeCell * cell = [self dequeueReusableCellWithIdentifier:kActivityDateAndTimeCell forIndexPath:indexPath];
+//        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+//        return cell;
+//    }
+//    else
+//    {
         ActivityReleaseAndTypeCell * cell = [self dequeueReusableCellWithIdentifier:kActivityReleaseAndTypeCell forIndexPath:indexPath];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         [cell setCellType:indexPath.row];
         return cell;
-    }
+//    }
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.row == 0)
-    {
-        return SCALE_NUM(180);
-    }
-    else
-    {
+//    if (indexPath.row == 0)
+//    {
+//        return SCALE_NUM(180);
+//    }
+//    else
+//    {
         return SCALE_NUM(140);
-    }
+//    }
     
 }
 

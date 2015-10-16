@@ -633,6 +633,7 @@
 		65F55AA11B899EBC00ED4348 /* UIImageView+Ext.m in Sources */ = {isa = PBXBuildFile; fileRef = 65F55AA01B899EBC00ED4348 /* UIImageView+Ext.m */; };
 		65F82F841B85E74A00FF6E2D /* FeedPublishViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 65F82F831B85E74A00FF6E2D /* FeedPublishViewController.m */; };
 		65FC7EB21BCE122500B3AA7C /* YWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 65FC7EB11BCE122500B3AA7C /* YWebViewController.m */; settings = {ASSET_TAGS = (); }; };
+		E416053E1BCF7FA400C6C4A5 /* ActivityReleaseDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E416053D1BCF7FA400C6C4A5 /* ActivityReleaseDataManager.m */; settings = {ASSET_TAGS = (); }; };
 		E426A5661BCD0D620064A415 /* PlaceCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E426A5651BCD0D620064A415 /* PlaceCollectionViewCell.m */; settings = {ASSET_TAGS = (); }; };
 		E43E10041BCC9CA90018B6D7 /* ActivityReleaseCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = E43E10031BCC9CA90018B6D7 /* ActivityReleaseCollectionView.m */; settings = {ASSET_TAGS = (); }; };
 		E43E10071BCC9CE50018B6D7 /* NameCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E43E10061BCC9CE50018B6D7 /* NameCollectionViewCell.m */; settings = {ASSET_TAGS = (); }; };
@@ -1636,6 +1637,8 @@
 		65FC7EB11BCE122500B3AA7C /* YWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YWebViewController.m; sourceTree = "<group>"; };
 		77B574BED9D4FF3F4BFAA9FE /* libPods-XiaoYou.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-XiaoYou.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1D8A55CC0081FB2C8604F21 /* Pods-XiaoYou.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XiaoYou.release.xcconfig"; path = "../Pods/Target Support Files/Pods-XiaoYou/Pods-XiaoYou.release.xcconfig"; sourceTree = "<group>"; };
+		E416053C1BCF7FA400C6C4A5 /* ActivityReleaseDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityReleaseDataManager.h; sourceTree = "<group>"; };
+		E416053D1BCF7FA400C6C4A5 /* ActivityReleaseDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityReleaseDataManager.m; sourceTree = "<group>"; };
 		E426A5641BCD0D620064A415 /* PlaceCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlaceCollectionViewCell.h; sourceTree = "<group>"; };
 		E426A5651BCD0D620064A415 /* PlaceCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlaceCollectionViewCell.m; sourceTree = "<group>"; };
 		E43E10021BCC9CA90018B6D7 /* ActivityReleaseCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityReleaseCollectionView.h; sourceTree = "<group>"; };
@@ -3700,6 +3703,8 @@
 				E45005D41BCE332500933AB9 /* TypeDetailCollectionView.m */,
 				E45005D61BCE333B00933AB9 /* TypeDetailCollectionViewCell.h */,
 				E45005D71BCE333B00933AB9 /* TypeDetailCollectionViewCell.m */,
+				E416053C1BCF7FA400C6C4A5 /* ActivityReleaseDataManager.h */,
+				E416053D1BCF7FA400C6C4A5 /* ActivityReleaseDataManager.m */,
 			);
 			path = ActivityRelease;
 			sourceTree = "<group>";
@@ -4425,6 +4430,7 @@
 				339549861B81BDD500F9ECB1 /* GroupInfoCollectionViewCell.m in Sources */,
 				333122601B806EDB00D3D032 /* UIImage+EMMultiFormat.m in Sources */,
 				6592DCDF1B806A9B004CD118 /* XYMessageAndContactsViewController.m in Sources */,
+				E416053E1BCF7FA400C6C4A5 /* ActivityReleaseDataManager.m in Sources */,
 				042AADC31BCB493D0056C09F /* JoinInTopView.m in Sources */,
 				3331226E1B806EDB00D3D032 /* PSTGridLayoutInfo.m in Sources */,
 				20DC5CD01B7B4FA00059B6E6 /* FeedListTableViewCell.m in Sources */,

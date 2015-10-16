@@ -8,12 +8,15 @@
 
 #import "NameCollectionViewCell.h"
 #import "YTextView.h"
+#import "ActivityReleaseDataManager.h"
 
 NSString *const kNameCollectionViewCell = @"NameCollectionViewCellId";
 
-@interface NameCollectionViewCell ()
+@interface NameCollectionViewCell ()<UITextViewDelegate>
 
 @property(nonatomic,strong)YTextView * textView;
+
+@property(nonatomic,strong)ActivityReleaseDataManager * dataManager;
 
 @end
 
@@ -24,14 +27,17 @@ NSString *const kNameCollectionViewCell = @"NameCollectionViewCellId";
     self = [super initWithFrame:frame];
     if (self) {
         [self changUI];
+        _dataManager = [ActivityReleaseDataManager shareActivityReleaseDataManager];
     }
     return self;
 }
 
 -(void)changUI
-{  
+{
+    //输入部分
     _textView = [[YTextView alloc] init];
     _textView.backgroundColor = [UIColor clearColor];
+    _textView.delegate = self;
     _textView.font = CONTENT_FONT(12);
     _textView.placeholderColor = KCOLORGREEN_B5;
     [self.backView addSubview:_textView];
@@ -41,10 +47,19 @@ NSString *const kNameCollectionViewCell = @"NameCollectionViewCellId";
         make.bottom.right.mas_equalTo(SCALE_NUM(-12));
     }];
     
+    //设置每个cell的不同部分
     self.numImageView.image = [UIImage imageNamed:@"img_num1"];
     self.typeLabel.text = @"活动名称(0-30字)";
     _textView.placeholder = @"例如：\n怀旧活动:一起擦雪花膏\n怀旧活动:一起擦雪花膏";
     
+}
+
+#pragma mark - UITextViewDelegate
+
+- (void)textViewDidChange:(UITextView *)textView
+{
+    _dataManager.ActivityNameText = textView.text;
+    [_dataManager isEnableToRelease];
 }
 
 @end

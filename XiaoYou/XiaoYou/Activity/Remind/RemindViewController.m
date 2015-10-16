@@ -59,6 +59,7 @@
             make.bottom.equalTo(self.view);
         }];
     }
+    [_remindList loadData];
     return _remindList;
 }
 @end

@@ -12,9 +12,9 @@
 
 @interface FeedTag()
 
-@property (nonatomic, strong, readwrite) UIImageView *tagIcon;                 //tag图标
+@property (nonatomic, strong, readwrite) UIImageView *tagIcon;      //tag图标
 
-@property (nonatomic, strong, readwrite) SKTagView *tagContent;                   //tag标签
+@property (nonatomic, strong, readwrite) SKTagView *tagContent;     //tag标签
 
 @end
 
@@ -88,7 +88,6 @@
         tag.textColor = KCOLORGREEN_009688;
         [_tagContent addTag:tag];
     }
-    
     
 }
 

@@ -8,17 +8,32 @@
 
 #import "ActivityReleaseController.h"
 #import "ActivityReleaseCollectionView.h"
+#import "ActivityReleaseDataManager.h"
+
+typedef enum : NSUInteger {
+    POINT1 = 1,
+    POINT2 = 2,
+    POINT3 = 3,
+    POINT4 = 4,
+    POINT5 = 5,
+} MyPointNum;
 
 @interface ActivityReleaseController ()
 
 @property (nonatomic,strong) ActivityReleaseCollectionView * releaseCollectionView;
-@property (nonatomic,strong) UIButton * releaseButton;
 
+//背景scrollView
+@property (nonatomic,strong)UIScrollView * scrollView;
+//发布按钮
+@property (nonatomic,strong) UIButton * releaseButton;
+//五个可变状态的点
 @property (nonatomic,strong) UIView * point1View;
 @property (nonatomic,strong) UIView * point2View;
 @property (nonatomic,strong) UIView * point3View;
 @property (nonatomic,strong) UIView * point4View;
 @property (nonatomic,strong) UIView * point5View;
+//数据Manager
+@property (nonatomic,strong) ActivityReleaseDataManager * dataManager;
 
 @end
 
@@ -27,18 +42,60 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    _dataManager = [ActivityReleaseDataManager shareActivityReleaseDataManager];
+    
     [self setUpUI];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changeEnabelStateForReleaseBtn:) name:KNotification_Enabel_ReleaseBtn object:nil];
+}
+
+-(void)viewWillDisappear:(BOOL)animated
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+#pragma mark - 改变发布按钮是否可点击状态方法
+-(void)changeEnabelStateForReleaseBtn:(NSNotification *) notification
+{
+    if ([notification.object[@"isEnabel"] boolValue])
+    {
+        _releaseButton.enabled = YES;
+        _releaseButton.backgroundColor = KCOLORGREEN_g1;
+        [_releaseButton addTarget:self action:@selector(clickReleaseBtn) forControlEvents:UIControlEventTouchUpInside];
+    }
+    else
+    {
+        _releaseButton.enabled = NO;
+        _releaseButton.backgroundColor = KCOLORGREEN_B5;
+        [_releaseButton removeTarget:self action:@selector(clickReleaseBtn) forControlEvents:UIControlEventTouchUpInside];
+    }
+    
+}
+
+-(void)viewDidLayoutSubviews{
+    [super viewDidLayoutSubviews];
+    _scrollView.frame = CGRectMake(0, 0, SCREEN_WIDTH, self.view.bounds.size.height - SCALE_NUM(46));
+    _scrollView.contentSize = CGSizeMake(SCREEN_WIDTH, SCALE_NUM(460));
+    
 }
 
 -(void)setUpUI
 {
+    _scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, self.view.bounds.size.height - SCALE_NUM(46))];
+    _scrollView.backgroundColor = [UIColor clearColor];
+    _scrollView.scrollEnabled = YES;
+    [self.view addSubview:_scrollView];
+    
+    
     //顶部Label
     UILabel * topLabel = [[UILabel alloc] init];
     topLabel.backgroundColor = [UIColor clearColor];
     topLabel.text = @"有创意的发布文案有助于薅到更多好玩的人";
     topLabel.textColor = KCOLORGREEN_B5;
     topLabel.font = CONTENT_FONT(12);
-    [self.view addSubview:topLabel];
+    [_scrollView addSubview:topLabel];
     [topLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.right.mas_equalTo(0);
         make.left.mas_equalTo(SCALE_NUM(12));
@@ -53,7 +110,7 @@
     _releaseCollectionView = [[ActivityReleaseCollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:layout];
     _releaseCollectionView.backgroundColor = [UIColor clearColor];
     _releaseCollectionView.myController = self;
-    [self.view addSubview:_releaseCollectionView];
+    [_scrollView addSubview:_releaseCollectionView];
     [_releaseCollectionView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(topLabel.mas_bottom);
         make.left.mas_equalTo(0);
@@ -62,12 +119,12 @@
     }];
     
     //.........
-    //1
+    //Point1
     _point1View = [[UIView alloc] init];
     _point1View.backgroundColor = KCOLORGREEN_g1;
     _point1View.layer.cornerRadius = 4;
     _point1View.clipsToBounds = YES;
-    [self.view addSubview:_point1View];
+    [_scrollView addSubview:_point1View];
     [_point1View mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.mas_equalTo(15);
         make.top.equalTo(_releaseCollectionView.mas_bottom).offset(SCALE_NUM(20));
@@ -75,7 +132,7 @@
     }];
     UIImageView * line1 = [[UIImageView alloc] init];
     line1.image = [UIImage imageNamed:@"line_dot"];
-    [self.view addSubview:line1];
+    [_scrollView addSubview:line1];
     [line1 mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(_point1View.mas_right);
         make.centerY.equalTo(_point1View);
@@ -87,19 +144,19 @@
     typeLabel1.textAlignment = NSTextAlignmentCenter;
     typeLabel1.textColor = KCOLORGREEN_B5;
     typeLabel1.font = CONTENT_FONT(12);
-    [self.view addSubview:typeLabel1];
+    [_scrollView addSubview:typeLabel1];
     [typeLabel1 mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.equalTo(_point1View);
         make.top.equalTo(_point1View.mas_bottom).offset(SCALE_NUM(8));
         make.width.mas_equalTo(SCALE_NUM(30));
         make.height.mas_equalTo(SCALE_NUM(12));
     }];
-    //2
+    //Point2
     _point2View = [[UIImageView alloc] init];
     _point2View.backgroundColor = KCOLORGREEN_B5;
     _point2View.layer.cornerRadius = 4;
     _point2View.clipsToBounds = YES;
-    [self.view addSubview:_point2View];
+    [_scrollView addSubview:_point2View];
     [_point2View mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(line1.mas_right);
         make.top.equalTo(_releaseCollectionView.mas_bottom).offset(SCALE_NUM(20));
@@ -107,7 +164,7 @@
     }];
     UIImageView * line2 = [[UIImageView alloc] init];
     line2.image = [UIImage imageNamed:@"line_dot"];
-    [self.view addSubview:line2];
+    [_scrollView addSubview:line2];
     [line2 mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(_point2View.mas_right);
         make.centerY.equalTo(_point2View);
@@ -119,19 +176,19 @@
     typeLabel2.textAlignment = NSTextAlignmentCenter;
     typeLabel2.textColor = KCOLORGREEN_B5;
     typeLabel2.font = CONTENT_FONT(12);
-    [self.view addSubview:typeLabel2];
+    [_scrollView addSubview:typeLabel2];
     [typeLabel2 mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.equalTo(_point2View);
         make.top.equalTo(_point2View.mas_bottom).offset(SCALE_NUM(8));
         make.width.mas_equalTo(SCALE_NUM(30));
         make.height.mas_equalTo(SCALE_NUM(12));
     }];
-    //3
+    //Point3
     _point3View = [[UIImageView alloc] init];
     _point3View.backgroundColor = KCOLORGREEN_B5;
     _point3View.layer.cornerRadius = 4;
     _point3View.clipsToBounds = YES;
-    [self.view addSubview:_point3View];
+    [_scrollView addSubview:_point3View];
     [_point3View mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(line2.mas_right);
         make.top.equalTo(_releaseCollectionView.mas_bottom).offset(SCALE_NUM(20));
@@ -139,7 +196,7 @@
     }];
     UIImageView * line3 = [[UIImageView alloc] init];
     line3.image = [UIImage imageNamed:@"line_dot"];
-    [self.view addSubview:line3];
+    [_scrollView addSubview:line3];
     [line3 mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(_point3View.mas_right);
         make.centerY.equalTo(_point3View);
@@ -151,19 +208,19 @@
     typeLabel3.textAlignment = NSTextAlignmentCenter;
     typeLabel3.textColor = KCOLORGREEN_B5;
     typeLabel3.font = CONTENT_FONT(12);
-    [self.view addSubview:typeLabel3];
+    [_scrollView addSubview:typeLabel3];
     [typeLabel3 mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.equalTo(_point3View);
         make.top.equalTo(_point3View.mas_bottom).offset(SCALE_NUM(8));
         make.width.mas_equalTo(SCALE_NUM(30));
         make.height.mas_equalTo(SCALE_NUM(12));
     }];
-    //4
+    //Point4
     _point4View = [[UIImageView alloc] init];
     _point4View.backgroundColor = KCOLORGREEN_B5;
     _point4View.layer.cornerRadius = 4;
     _point4View.clipsToBounds = YES;
-    [self.view addSubview:_point4View];
+    [_scrollView addSubview:_point4View];
     [_point4View mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(line3.mas_right);
         make.top.equalTo(_releaseCollectionView.mas_bottom).offset(SCALE_NUM(20));
@@ -171,7 +228,7 @@
     }];
     UIImageView * line4 = [[UIImageView alloc] init];
     line4.image = [UIImage imageNamed:@"line_dot"];
-    [self.view addSubview:line4];
+    [_scrollView addSubview:line4];
     [line4 mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(_point4View.mas_right);
         make.centerY.equalTo(_point4View);
@@ -183,18 +240,19 @@
     typeLabel4.textAlignment = NSTextAlignmentCenter;
     typeLabel4.textColor = KCOLORGREEN_B5;
     typeLabel4.font = CONTENT_FONT(12);
-    [self.view addSubview:typeLabel4];
+    [_scrollView addSubview:typeLabel4];
     [typeLabel4 mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.equalTo(_point4View);
         make.top.equalTo(_point4View.mas_bottom).offset(SCALE_NUM(8));
         make.width.mas_equalTo(SCALE_NUM(30));
         make.height.mas_equalTo(SCALE_NUM(12));
     }];
-    //5
+    //Point5
     _point5View = [[UIImageView alloc] init];
     _point5View.backgroundColor = KCOLORGREEN_B5;
     _point5View.layer.cornerRadius = 4;
-    _point5View.clipsToBounds = YES;    [self.view addSubview:_point5View];
+    _point5View.clipsToBounds = YES;
+    [_scrollView addSubview:_point5View];
     [_point5View mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(line4.mas_right);
         make.top.equalTo(_releaseCollectionView.mas_bottom).offset(SCALE_NUM(20));
@@ -205,7 +263,7 @@
     typeLabel5.textAlignment = NSTextAlignmentCenter;
     typeLabel5.textColor = KCOLORGREEN_B5;
     typeLabel5.font = CONTENT_FONT(12);
-    [self.view addSubview:typeLabel5];
+    [_scrollView addSubview:typeLabel5];
     [typeLabel5 mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.equalTo(_point5View);
         make.top.equalTo(_point5View.mas_bottom).offset(SCALE_NUM(8));
@@ -218,7 +276,7 @@
     backgroundView.backgroundColor = KCOLORGREEN_B2;
     backgroundView.layer.cornerRadius = 15;
     backgroundView.clipsToBounds = YES;
-    [self.view addSubview:backgroundView];
+    [_scrollView addSubview:backgroundView];
     [backgroundView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(_releaseCollectionView).offset(SCALE_NUM(20));
         make.trailing.mas_equalTo(SCALE_NUM(30));
@@ -226,6 +284,7 @@
         make.height.mas_equalTo(SCALE_NUM(34));
     }];
     
+    //提示部分
     UIImageView * remindImageView = [[UIImageView alloc] init];
     remindImageView.image = [UIImage imageNamed:@"icon_info"];
     [backgroundView addSubview:remindImageView];
@@ -247,12 +306,13 @@
         make.width.mas_equalTo(SCALE_NUM(150));
     }];
     
+    
     //发布按钮
     _releaseButton = [[UIButton alloc] init];
+    _releaseButton.hidden = NO;
     _releaseButton.backgroundColor = KCOLORGREEN_B5;
     [_releaseButton setTitle:@"发布" forState:UIControlStateNormal];
     [_releaseButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    [_releaseButton addTarget:self action:@selector(clickReleaseBtn) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:_releaseButton];
     [_releaseButton mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.right.bottom.mas_equalTo(0);
@@ -264,40 +324,57 @@
 -(void)clickReleaseBtn
 {
     NSLog(@"发布");
+    NSLog(@"%@",_dataManager.ActivityNameText);
+    NSLog(@"%@",_dataManager.ActivityDesciptionText);
+    NSLog(@"%@",_dataManager.ActivityDesciptionImage);
+    NSLog(@"%@",_dataManager.ActivityDateApplyText);
+    NSLog(@"%@",_dataManager.ActivityDateBeginText);
+    NSLog(@"%@",_dataManager.ActivityDateEndText);
+    NSLog(@"%@",_dataManager.ActivityPlaceText);
+    NSLog(@"%@",_dataManager.ActivityTypeArr);
+    
+    _dataManager.ActivityNameText = nil;
+    _dataManager.ActivityDesciptionText = nil;
+    _dataManager.ActivityDesciptionImage = nil;
+    _dataManager.ActivityDateApplyText = nil;
+    _dataManager.ActivityDateBeginText = nil;
+    _dataManager.ActivityDateEndText = nil;
+    _dataManager.ActivityPlaceText = nil;
+    _dataManager.ActivityTypeArr= nil;
 }
 
--(void)setPointHighlight:(NSInteger) num
+-(void)setPointHighlight:(NSInteger) pointNum
 {
-    switch (num) {
-        case 1:
+    switch (pointNum) {
+        case POINT1:
             _point1View.backgroundColor = KCOLORGREEN_g1;
             _point2View.backgroundColor = KCOLORGREEN_B5;
             _point3View.backgroundColor = KCOLORGREEN_B5;
             _point4View.backgroundColor = KCOLORGREEN_B5;
             _point5View.backgroundColor = KCOLORGREEN_B5;
             break;
-        case 2:
+        case POINT2:
             _point2View.backgroundColor = KCOLORGREEN_g1;
             _point1View.backgroundColor = KCOLORGREEN_B5;
             _point3View.backgroundColor = KCOLORGREEN_B5;
             _point4View.backgroundColor = KCOLORGREEN_B5;
             _point5View.backgroundColor = KCOLORGREEN_B5;
             break;
-        case 3:
+        case POINT3:
             _point3View.backgroundColor = KCOLORGREEN_g1;
             _point2View.backgroundColor = KCOLORGREEN_B5;
             _point1View.backgroundColor = KCOLORGREEN_B5;
             _point4View.backgroundColor = KCOLORGREEN_B5;
             _point5View.backgroundColor = KCOLORGREEN_B5;
             break;
-        case 4:
+        case POINT4:
             _point4View.backgroundColor = KCOLORGREEN_g1;
             _point2View.backgroundColor = KCOLORGREEN_B5;
             _point3View.backgroundColor = KCOLORGREEN_B5;
             _point1View.backgroundColor = KCOLORGREEN_B5;
             _point5View.backgroundColor = KCOLORGREEN_B5;
             break;
-        case 5:
+        case POINT5:
             _point5View.backgroundColor = KCOLORGREEN_g1;
             _point2View.backgroundColor = KCOLORGREEN_B5;
             _point3View.backgroundColor = KCOLORGREEN_B5;

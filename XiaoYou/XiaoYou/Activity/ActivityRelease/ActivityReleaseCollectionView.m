@@ -13,6 +13,14 @@
 #import "DateAndTimeCollectionViewCell.h"
 #import "TypeCollectionViewCell.h"
 
+typedef enum : NSUInteger {
+    POINT1 = 1,
+    POINT2 = 2,
+    POINT3 = 3,
+    POINT4 = 4,
+    POINT5 = 5,
+} MyPointNum;
+
 @interface ActivityReleaseCollectionView ()<UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout,UIScrollViewDelegate>
 
 @end
@@ -105,27 +113,29 @@
     return size;
 }
 
+#pragma mark - UIScrollViewDelegate
+
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
     NSLog(@"%@",NSStringFromCGPoint(self.contentOffset));
     if (self.contentOffset.x < SCALE_NUM(75)) {
-        [self.myController setPointHighlight:1];
+        [self.myController setPointHighlight:POINT1];
     }
     else if (self.contentOffset.x < SCALE_NUM(305))
     {
-        [self.myController setPointHighlight:2];
+        [self.myController setPointHighlight:POINT2];
     }
     else if (self.contentOffset.x < SCALE_NUM(535))
     {
-        [self.myController setPointHighlight:3];
+        [self.myController setPointHighlight:POINT3];
     }
     else if (self.contentOffset.x < SCALE_NUM(760))
     {
-        [self.myController setPointHighlight:4];
+        [self.myController setPointHighlight:POINT4];
     }
     else
     {
-        [self.myController setPointHighlight:5];
+        [self.myController setPointHighlight:POINT5];
     }
 }
 

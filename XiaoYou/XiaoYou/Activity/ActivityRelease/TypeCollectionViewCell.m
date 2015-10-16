@@ -30,9 +30,11 @@ NSString *const kTypeCollectionViewCell = @"TypeCollectionViewCellId";
 
 -(void)changUI
 {
+    //设置每个cell的不同部分
     self.numImageView.image = [UIImage imageNamed:@"img_num5"];
     self.typeLabel.text = @"类型";
     
+    //顶部提示文字
     UILabel * topLabel = [[UILabel alloc] init];
     topLabel.backgroundColor = [UIColor clearColor];
     topLabel.font = CONTENT_FONT(12);
@@ -50,7 +52,7 @@ NSString *const kTypeCollectionViewCell = @"TypeCollectionViewCellId";
     UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc]init];
 //    layout.minimumInteritemSpacing = 5;
 //    layout.minimumLineSpacing = 5;
-    layout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
+    layout.scrollDirection = UICollectionViewScrollDirectionVertical;
     _collectionView = [[TypeDetailCollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:layout];
     _collectionView.backgroundColor = [UIColor clearColor];
     [self.backView addSubview:_collectionView];
