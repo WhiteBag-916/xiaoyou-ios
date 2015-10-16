@@ -7,7 +7,10 @@
 //
 
 #import "YViewController.h"
+#import "AvailableViewController.h"
 
 @interface ActivityChoiceController : YViewController
+
+@property(nonatomic,strong)AvailableViewController * superViewController;
 
 @end

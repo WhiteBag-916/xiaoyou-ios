@@ -673,6 +673,8 @@
 		E455DCED1BCB793000B78E54 /* ActivityDateAndTimeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E455DCEC1BCB793000B78E54 /* ActivityDateAndTimeCell.m */; settings = {ASSET_TAGS = (); }; };
 		E455DCF01BCB798400B78E54 /* ActivityReleaseAndTypeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E455DCEF1BCB798400B78E54 /* ActivityReleaseAndTypeCell.m */; settings = {ASSET_TAGS = (); }; };
 		E455DCF41BCB8F6D00B78E54 /* ActivityReleaseController.m in Sources */ = {isa = PBXBuildFile; fileRef = E455DCF31BCB8F6D00B78E54 /* ActivityReleaseController.m */; settings = {ASSET_TAGS = (); }; };
+		E45E98F61BD0D1910012F9DA /* ActivityResultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E45E98F51BD0D1910012F9DA /* ActivityResultViewController.m */; settings = {ASSET_TAGS = (); }; };
+		E45E98F91BD0D3320012F9DA /* ActivityResultTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = E45E98F81BD0D3320012F9DA /* ActivityResultTableView.m */; settings = {ASSET_TAGS = (); }; };
 		E45FD8501BCF41EB007619D7 /* activity-releaser@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E45FD84E1BCF41EB007619D7 /* activity-releaser@2x.png */; settings = {ASSET_TAGS = (); }; };
 		E45FD8511BCF41EB007619D7 /* activity-releaser@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E45FD84F1BCF41EB007619D7 /* activity-releaser@3x.png */; settings = {ASSET_TAGS = (); }; };
 		E4BE2DAA1BC7989300124F22 /* ContactsInfoFirstTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E4BE2DA91BC7989300124F22 /* ContactsInfoFirstTableViewCell.m */; settings = {ASSET_TAGS = (); }; };
@@ -1691,6 +1693,10 @@
 		E455DCEF1BCB798400B78E54 /* ActivityReleaseAndTypeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityReleaseAndTypeCell.m; sourceTree = "<group>"; };
 		E455DCF21BCB8F6D00B78E54 /* ActivityReleaseController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityReleaseController.h; sourceTree = "<group>"; };
 		E455DCF31BCB8F6D00B78E54 /* ActivityReleaseController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityReleaseController.m; sourceTree = "<group>"; };
+		E45E98F41BD0D1910012F9DA /* ActivityResultViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityResultViewController.h; sourceTree = "<group>"; };
+		E45E98F51BD0D1910012F9DA /* ActivityResultViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityResultViewController.m; sourceTree = "<group>"; };
+		E45E98F71BD0D3320012F9DA /* ActivityResultTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityResultTableView.h; sourceTree = "<group>"; };
+		E45E98F81BD0D3320012F9DA /* ActivityResultTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityResultTableView.m; sourceTree = "<group>"; };
 		E45FD84E1BCF41EB007619D7 /* activity-releaser@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "activity-releaser@2x.png"; sourceTree = "<group>"; };
 		E45FD84F1BCF41EB007619D7 /* activity-releaser@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "activity-releaser@3x.png"; sourceTree = "<group>"; };
 		E4BE2DA81BC7989300124F22 /* ContactsInfoFirstTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactsInfoFirstTableViewCell.h; sourceTree = "<group>"; };
@@ -3713,6 +3719,10 @@
 		E45E98F31BD0ABFF0012F9DA /* ActivityResult */ = {
 			isa = PBXGroup;
 			children = (
+				E45E98F41BD0D1910012F9DA /* ActivityResultViewController.h */,
+				E45E98F51BD0D1910012F9DA /* ActivityResultViewController.m */,
+				E45E98F71BD0D3320012F9DA /* ActivityResultTableView.h */,
+				E45E98F81BD0D3320012F9DA /* ActivityResultTableView.m */,
 			);
 			name = ActivityResult;
 			path = Calendar/ActivityResult;
@@ -4295,6 +4305,7 @@
 				20DAAA701BCD05F5006DF231 /* AvailableSimpleViewController.m in Sources */,
 				20DAF9DB1B873883005B7932 /* PinyinFormatter.m in Sources */,
 				65969DD91B875166001DD348 /* ProfileFeedContentView.m in Sources */,
+				E45E98F91BD0D3320012F9DA /* ActivityResultTableView.m in Sources */,
 				656F59751B8896370094B658 /* ProfilePhoneChangeViewController.m in Sources */,
 				20DD4B351B734781007C352C /* CommonSwitchView.m in Sources */,
 				3331225F1B806EDB00D3D032 /* UIImage+EMGIF.m in Sources */,
@@ -4459,6 +4470,7 @@
 				20DCB9761B8CA60800C758DE /* NotifyListTableView.m in Sources */,
 				20E0340E1B847F9F002E4583 /* SearchResultViewController.m in Sources */,
 				656A4CFE1BBF9E1E00BDB725 /* QRCodeReaderView.m in Sources */,
+				E45E98F61BD0D1910012F9DA /* ActivityResultViewController.m in Sources */,
 				049FF1C21BC91777000645C8 /* RemindViewController.m in Sources */,
 				333122801B806EDC00D3D032 /* NSDateFormatter+Category.m in Sources */,
 				3331227C1B806EDB00D3D032 /* EMVoiceConverter.mm in Sources */,
