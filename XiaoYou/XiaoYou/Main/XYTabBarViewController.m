@@ -38,7 +38,6 @@
     [super viewDidLoad];
 
     [self initControllers];
-    
     self.tabBar.translucent = NO;
 }
 

@@ -19,9 +19,8 @@
 #import "LoginViewController.h"
 
 @interface ChooseSchoolViewController ()
-<UITextFieldDelegate
-,UITableViewDataSource
-,UITableViewDelegate>
+<UITextFieldDelegate,UITableViewDataSource,
+UITableViewDelegate>
 
 @property (nonatomic, strong) YTextField *schoolTextField;
 @property (nonatomic, strong) YTableView *tableView;

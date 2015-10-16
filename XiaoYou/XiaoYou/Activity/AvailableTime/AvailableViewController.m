@@ -16,7 +16,6 @@
 
 @property (nonatomic,strong) AvailableListView *availableListView;
 
-
 @property (nonatomic,strong) UIView         *promptView;        //提示透明背景
 @property (nonatomic,strong) UIImageView    *guideImageView;    //提示图片
 @property (nonatomic,assign) int            guideIndex;        //当前提示索引
@@ -94,7 +93,6 @@
     // Dispose of any resources that can be recreated.
 }
 
-
 -(AvailableListView *)availableListView
 {
     if (!_availableListView) {
@@ -147,6 +145,7 @@
 //筛选Action
 -(void)filterAction {
     ActivityChoiceController *choiceVC = [[ActivityChoiceController alloc]init];
+    choiceVC.superViewController = self;
     [self.navigationController presentViewController:choiceVC animated:YES completion:nil];
 }
 
