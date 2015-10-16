@@ -86,7 +86,7 @@ NSString *const kDescriptionCollectionViewCell = @"DescriptionCollectionViewCell
     //设置每个cell的不同部分
     self.numImageView.image = [UIImage imageNamed:@"img_num2"];
     self.typeLabel.text = @"活动描述";
-    _textView.placeholder = @"例如：\n我觉得要阐明举办此次活动的背景,表述活动举办的意义以及目的,最后将活动所取得的效果加以描述并且稍稍夸大一点.再用几句话总结一下就可以了";
+    _textView.placeholder = @"例如：想品尝自己亲手采制的新茶吗？有兴趣欣赏茶园里的美丽景致吗？参与明轩茶艺社本次活动，你可以亲身体会采茶、炒茶的乐趣，并有专业人员全程指导，让您喝上自己亲手制作的茶叶。";
     
 }
 

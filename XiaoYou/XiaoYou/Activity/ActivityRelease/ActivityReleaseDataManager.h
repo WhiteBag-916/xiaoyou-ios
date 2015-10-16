@@ -22,7 +22,7 @@
 //活动地点
 @property(nonatomic,strong)NSString * ActivityPlaceText;
 //活动类型
-@property(nonatomic,strong)NSArray * ActivityTypeArr;
+@property(nonatomic,strong)NSString * ActivityTypeStr;
 
 +(instancetype)shareActivityReleaseDataManager;
 

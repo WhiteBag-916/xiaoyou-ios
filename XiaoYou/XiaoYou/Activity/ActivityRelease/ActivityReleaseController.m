@@ -92,7 +92,7 @@ typedef enum : NSUInteger {
     //顶部Label
     UILabel * topLabel = [[UILabel alloc] init];
     topLabel.backgroundColor = [UIColor clearColor];
-    topLabel.text = @"有创意的发布文案有助于薅到更多好玩的人";
+    topLabel.text = @"有创意的文案会吸引到更多参与者喔";
     topLabel.textColor = KCOLORGREEN_B5;
     topLabel.font = CONTENT_FONT(12);
     [_scrollView addSubview:topLabel];
@@ -295,7 +295,7 @@ typedef enum : NSUInteger {
     }];
     
     UILabel * remindLabel = [[UILabel alloc] init];
-    remindLabel.text = @"这轱辘你好好想想";
+    remindLabel.text = @"兹事体大, 别选错啦";
     remindLabel.textColor = KCOLORGREEN_g1;
     remindLabel.font = CONTENT_FONT(12);
     [backgroundView addSubview:remindLabel];
@@ -331,7 +331,7 @@ typedef enum : NSUInteger {
     NSLog(@"%@",_dataManager.ActivityDateBeginText);
     NSLog(@"%@",_dataManager.ActivityDateEndText);
     NSLog(@"%@",_dataManager.ActivityPlaceText);
-    NSLog(@"%@",_dataManager.ActivityTypeArr);
+    NSLog(@"%@",_dataManager.ActivityTypeStr);
     
     _dataManager.ActivityNameText = nil;
     _dataManager.ActivityDesciptionText = nil;
@@ -340,7 +340,9 @@ typedef enum : NSUInteger {
     _dataManager.ActivityDateBeginText = nil;
     _dataManager.ActivityDateEndText = nil;
     _dataManager.ActivityPlaceText = nil;
-    _dataManager.ActivityTypeArr= nil;
+    _dataManager.ActivityTypeStr = nil;
+    
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 -(void)setPointHighlight:(NSInteger) pointNum

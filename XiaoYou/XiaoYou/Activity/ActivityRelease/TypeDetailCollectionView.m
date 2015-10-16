@@ -15,7 +15,8 @@
 @property(nonatomic,strong)NSMutableArray * dataSouceArr;
 
 @property(nonatomic,strong)ActivityReleaseDataManager * dataManager;
-@property(nonatomic,strong)NSMutableArray * typeArr;
+//@property(nonatomic,strong)NSMutableArray * typeArr;
+@property(nonatomic,strong)NSString * typeStr;
 
 @end
 
@@ -30,10 +31,11 @@
         self.scrollEnabled = YES;
         self.pagingEnabled = NO;
         [self registerClass:[TypeDetailCollectionViewCell class] forCellWithReuseIdentifier:kTypeDetailCollectionViewCell];
-        _dataSouceArr = [[NSMutableArray alloc] initWithArray:@[[NSMutableDictionary dictionaryWithDictionary:@{@"type":@"竞技·比赛",@"isChoice":@NO}],[NSMutableDictionary dictionaryWithDictionary:@{@"type":@"讲座·培训",@"isChoice":@NO}],[NSMutableDictionary dictionaryWithDictionary:@{@"type":@"实习·招聘",@"isChoice":@NO}],[NSMutableDictionary dictionaryWithDictionary:@{@"type":@"运动·户外",@"isChoice":@NO}],[NSMutableDictionary dictionaryWithDictionary:@{@"type":@"义工·支教",@"isChoice":@NO}],[NSMutableDictionary dictionaryWithDictionary:@{@"type":@"社交·沙龙",@"isChoice":@NO}],[NSMutableDictionary dictionaryWithDictionary:@{@"type":@"演出·晚会",@"isChoice":@NO}],[NSMutableDictionary dictionaryWithDictionary:@{@"type":@"综合·其他",@"isChoice":@NO}]]];
+        _dataSouceArr = [[NSMutableArray alloc] initWithArray:@[[NSMutableDictionary dictionaryWithDictionary:@{@"type":@"竞技·比赛",@"isChoice":@NO}],[NSMutableDictionary dictionaryWithDictionary:@{@"type":@"讲座·培训",@"isChoice":@NO}],[NSMutableDictionary dictionaryWithDictionary:@{@"type":@"实习·招聘",@"isChoice":@NO}],[NSMutableDictionary dictionaryWithDictionary:@{@"type":@"运动·户外",@"isChoice":@NO}],[NSMutableDictionary dictionaryWithDictionary:@{@"type":@"义工·支教",@"isChoice":@NO}],[NSMutableDictionary dictionaryWithDictionary:@{@"type":@"社交·沙龙",@"isChoice":@NO}],[NSMutableDictionary dictionaryWithDictionary:@{@"type":@"演出·晚会",@"isChoice":@NO}],[NSMutableDictionary dictionaryWithDictionary:@{@"type":@"综合·其他",@"isChoice":@YES}]]];
         
         _dataManager = [ActivityReleaseDataManager shareActivityReleaseDataManager];
-        _typeArr = [[NSMutableArray alloc] init];
+        _dataManager.ActivityTypeStr = @"综合·其他";
+//        _typeArr = [[NSMutableArray alloc] init];
     }
     return self;
 }
@@ -84,37 +86,66 @@
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
     //判断是否被选中
-    if ([_dataSouceArr[indexPath.row][@"isChoice"] boolValue] == YES)
+    if (![_dataSouceArr[indexPath.row][@"isChoice"] boolValue])
     {
-        [_dataSouceArr[indexPath.row] setObject:@NO forKey:@"isChoice"];
+        for (int i = 0; i < _dataSouceArr.count ;i++)
+        {
+            if (i == indexPath.row)
+            {
+                [_dataSouceArr[indexPath.row] setObject:@YES forKey:@"isChoice"];
+            }
+            else
+            {
+                [_dataSouceArr[i] setObject:@NO forKey:@"isChoice"];
+            }
+        }
     }
-    else
-    {
-        [_dataSouceArr[indexPath.row] setObject:@YES forKey:@"isChoice"];
-    }
+    /**
+     多选情况
+     **/
+//    if ([_dataSouceArr[indexPath.row][@"isChoice"] boolValue] == YES)
+//    {
+//        [_dataSouceArr[indexPath.row] setObject:@NO forKey:@"isChoice"];
+//    }
+//    else
+//    {
+//        [_dataSouceArr[indexPath.row] setObject:@YES forKey:@"isChoice"];
+//    }
     
     //根据选中情况提取数据
     for (int i = 0; i<_dataSouceArr.count; i++)
     {
         if ([_dataSouceArr[indexPath.row][@"isChoice"] boolValue] == YES) {
+
+            _typeStr = _dataSouceArr[indexPath.row][@"type"];
             
-            NSString * tempStr = _dataSouceArr[indexPath.row][@"type"];
-            if (![_typeArr containsObject:tempStr])
-            {
-                [_typeArr addObject:tempStr];
-            }
         }
-        else
-        {
-            NSString * tempStr = _dataSouceArr[indexPath.row][@"type"];
-            if ([_typeArr containsObject:tempStr])
-            {
-                [_typeArr removeObject:tempStr];
-            }
-        }
+        
+        /**
+         多选情况
+         **/
+//        if ([_dataSouceArr[indexPath.row][@"isChoice"] boolValue] == YES) {
+//            
+//            NSString * tempStr = _dataSouceArr[indexPath.row][@"type"];
+//            if (![_typeArr containsObject:tempStr])
+//            {
+//                [_typeArr addObject:tempStr];
+//            }
+//        }
+//        else
+//        {
+//            NSString * tempStr = _dataSouceArr[indexPath.row][@"type"];
+//            if ([_typeArr containsObject:tempStr])
+//            {
+//                [_typeArr removeObject:tempStr];
+//            }
+//        }
     }
+    /**
+     多选情况
+     **/
+    _dataManager.ActivityTypeStr = _typeStr;
     
-    _dataManager.ActivityTypeArr = _typeArr;
     [_dataManager isEnableToRelease];
     
     [self reloadData];

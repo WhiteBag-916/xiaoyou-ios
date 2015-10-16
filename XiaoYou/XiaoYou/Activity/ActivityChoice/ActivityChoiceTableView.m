@@ -9,6 +9,7 @@
 #import "ActivityChoiceTableView.h"
 #import "ActivityDateAndTimeCell.h"
 #import "ActivityReleaseAndTypeCell.h"
+#import "ActivityResultViewController.h"
 
 @interface ActivityChoiceTableView ()<UITableViewDataSource,UITableViewDelegate>
 
@@ -83,6 +84,9 @@
 -(void)clickBtnForChoice
 {
     [self.myController dismissViewControllerAnimated:YES completion:nil];
+    ActivityResultViewController * resultViewController = [[ActivityResultViewController alloc] init];
+    [self.myController.superViewController.navigationController pushViewController:resultViewController animated:YES];
+
 }
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
