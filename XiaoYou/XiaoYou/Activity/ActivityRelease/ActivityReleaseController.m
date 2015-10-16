@@ -83,6 +83,9 @@ typedef enum : NSUInteger {
 
 -(void)setUpUI
 {
+    [self showCustomNavigationBackButton];
+    self.title = @"发布活动";
+    
     _scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, self.view.bounds.size.height - SCALE_NUM(46))];
     _scrollView.backgroundColor = [UIColor clearColor];
     _scrollView.scrollEnabled = YES;
@@ -151,6 +154,15 @@ typedef enum : NSUInteger {
         make.width.mas_equalTo(SCALE_NUM(30));
         make.height.mas_equalTo(SCALE_NUM(12));
     }];
+    UIButton * btn1 = [[UIButton alloc] init];
+    btn1.backgroundColor = [UIColor orangeColor];
+    [_scrollView addSubview:btn1];
+    [btn1 mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(_point1View);
+        make.right.bottom.left.equalTo(typeLabel1);
+    }];
+    [btn1 addTarget:self action:@selector(clickeLabelButton) forControlEvents:UIControlEventTouchUpInside];
+    
     //Point2
     _point2View = [[UIImageView alloc] init];
     _point2View.backgroundColor = KCOLORGREEN_B5;
@@ -387,6 +399,11 @@ typedef enum : NSUInteger {
         default:
             break;
     }
+}
+
+-(void)clickeLabelButton
+{
+    
 }
 
 - (void)didReceiveMemoryWarning {
