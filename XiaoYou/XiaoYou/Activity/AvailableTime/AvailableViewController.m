@@ -28,11 +28,13 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+    //if([AppConfigData isUserFirstUseHaveTime])
+        [self addGuideView];
+    
     [self setUpCustomNavgationBar];
     [self availableListView];
     
-    if([AppConfigData isUserFirstUseHaveTime])
-        [self addGuideView];
+    
 }
 
 
@@ -49,15 +51,15 @@
 //        make.edges.equalTo(window);
 //    }];
     
-    NSString *imageName = @"havetime_box_calender";
+    NSString *imageName = @"1havetime_box_calender";
     UIImage *image = [[UIImage imageNamed:imageName]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     _guideImageView = [[UIImageView alloc] initWithImage:image];
+    _guideImageView.alpha = 1;
     [window addSubview:_guideImageView];
     
     
     [_guideImageView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.mas_equalTo(SCALE_NUM(170));
-        make.centerX.equalTo(window);
+        make.edges.equalTo(window);
     }];
     
     
