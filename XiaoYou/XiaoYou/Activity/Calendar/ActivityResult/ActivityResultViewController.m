@@ -25,6 +25,7 @@
 
 -(void)setUpUI
 {
+    self.title = @"筛选结果";
     [self showCustomNavigationBackButton];
     
     _resultTableView = [[ActivityResultTableView alloc] init];
