@@ -1,13 +1,13 @@
 //
-//  ActivityListInfo.h
+//  HaveTimeModel.h
 //  Model
 //
-//  Created by sheng on 15/10/9.
+//  Created by sheng on 15/10/16.
 //  Copyright © 2015年 xc. All rights reserved.
 //
 
 #import "YModel.h"
 
-@interface ActivityListInfo : YModel
+@interface HaveTimeModel : YModel
 
 @end

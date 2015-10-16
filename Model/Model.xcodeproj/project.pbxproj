@@ -7,9 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		04480EB51BC75F8C0082EB87 /* RemindInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 04480EB41BC75F8C0082EB87 /* RemindInfo.m */; settings = {ASSET_TAGS = (); }; };
-		04480EB81BC771E80082EB87 /* ScheduleInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 04480EB71BC771E80082EB87 /* ScheduleInfo.m */; settings = {ASSET_TAGS = (); }; };
-		04480EBB1BC772160082EB87 /* ActivityListInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 04480EBA1BC772160082EB87 /* ActivityListInfo.m */; settings = {ASSET_TAGS = (); }; };
+		0476B61F1BD0979800FD13DF /* RemindInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 0476B61B1BD0979800FD13DF /* RemindInfo.m */; settings = {ASSET_TAGS = (); }; };
+		0476B6201BD0979800FD13DF /* ScheduleInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 0476B61E1BD0979800FD13DF /* ScheduleInfo.m */; settings = {ASSET_TAGS = (); }; };
+		0476B6241BD0980000FD13DF /* HaveTimeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0476B6231BD0980000FD13DF /* HaveTimeModel.m */; settings = {ASSET_TAGS = (); }; };
 		20859A991B64C0BC00580ED3 /* ResultCommon.m in Sources */ = {isa = PBXBuildFile; fileRef = 20859A981B64C0BC00580ED3 /* ResultCommon.m */; };
 		20859AA31B64CB7E00580ED3 /* LoginResp.m in Sources */ = {isa = PBXBuildFile; fileRef = 20859AA01B64CB7E00580ED3 /* LoginResp.m */; };
 		20859AB31B64E2F600580ED3 /* YModel+ActionMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 20859AB21B64E2F600580ED3 /* YModel+ActionMessage.m */; };
@@ -72,12 +72,12 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		04480EB31BC75F8C0082EB87 /* RemindInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RemindInfo.h; sourceTree = "<group>"; };
-		04480EB41BC75F8C0082EB87 /* RemindInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RemindInfo.m; sourceTree = "<group>"; };
-		04480EB61BC771E80082EB87 /* ScheduleInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScheduleInfo.h; sourceTree = "<group>"; };
-		04480EB71BC771E80082EB87 /* ScheduleInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScheduleInfo.m; sourceTree = "<group>"; };
-		04480EB91BC772160082EB87 /* ActivityListInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityListInfo.h; sourceTree = "<group>"; };
-		04480EBA1BC772160082EB87 /* ActivityListInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityListInfo.m; sourceTree = "<group>"; };
+		0476B61A1BD0979800FD13DF /* RemindInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RemindInfo.h; sourceTree = "<group>"; };
+		0476B61B1BD0979800FD13DF /* RemindInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RemindInfo.m; sourceTree = "<group>"; };
+		0476B61D1BD0979800FD13DF /* ScheduleInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScheduleInfo.h; sourceTree = "<group>"; };
+		0476B61E1BD0979800FD13DF /* ScheduleInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScheduleInfo.m; sourceTree = "<group>"; };
+		0476B6221BD0980000FD13DF /* HaveTimeModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HaveTimeModel.h; sourceTree = "<group>"; };
+		0476B6231BD0980000FD13DF /* HaveTimeModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HaveTimeModel.m; sourceTree = "<group>"; };
 		20859A971B64C0BC00580ED3 /* ResultCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResultCommon.h; sourceTree = "<group>"; };
 		20859A981B64C0BC00580ED3 /* ResultCommon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResultCommon.m; sourceTree = "<group>"; };
 		20859A9F1B64CB7E00580ED3 /* LoginResp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginResp.h; sourceTree = "<group>"; };
@@ -177,28 +177,38 @@
 		04480EB01BC75F1A0082EB87 /* Activity */ = {
 			isa = PBXGroup;
 			children = (
-				04480EB91BC772160082EB87 /* ActivityListInfo.h */,
-				04480EBA1BC772160082EB87 /* ActivityListInfo.m */,
+				0476B6211BD097E600FD13DF /* HaveTime */,
+				0476B6191BD0979800FD13DF /* Remind */,
+				0476B61C1BD0979800FD13DF /* Schedule */,
 			);
 			path = Activity;
 			sourceTree = "<group>";
 		};
-		04480EB11BC75F1A0082EB87 /* Remind */ = {
+		0476B6191BD0979800FD13DF /* Remind */ = {
 			isa = PBXGroup;
 			children = (
-				04480EB31BC75F8C0082EB87 /* RemindInfo.h */,
-				04480EB41BC75F8C0082EB87 /* RemindInfo.m */,
+				0476B61A1BD0979800FD13DF /* RemindInfo.h */,
+				0476B61B1BD0979800FD13DF /* RemindInfo.m */,
 			);
 			path = Remind;
 			sourceTree = "<group>";
 		};
-		04480EB21BC75F1A0082EB87 /* Schedule */ = {
+		0476B61C1BD0979800FD13DF /* Schedule */ = {
 			isa = PBXGroup;
 			children = (
-				04480EB61BC771E80082EB87 /* ScheduleInfo.h */,
-				04480EB71BC771E80082EB87 /* ScheduleInfo.m */,
+				0476B61D1BD0979800FD13DF /* ScheduleInfo.h */,
+				0476B61E1BD0979800FD13DF /* ScheduleInfo.m */,
 			);
 			path = Schedule;
+			sourceTree = "<group>";
+		};
+		0476B6211BD097E600FD13DF /* HaveTime */ = {
+			isa = PBXGroup;
+			children = (
+				0476B6221BD0980000FD13DF /* HaveTimeModel.h */,
+				0476B6231BD0980000FD13DF /* HaveTimeModel.m */,
+			);
+			path = HaveTime;
 			sourceTree = "<group>";
 		};
 		20859A961B64C0BC00580ED3 /* Common */ = {
@@ -280,8 +290,6 @@
 			isa = PBXGroup;
 			children = (
 				04480EB01BC75F1A0082EB87 /* Activity */,
-				04480EB11BC75F1A0082EB87 /* Remind */,
-				04480EB21BC75F1A0082EB87 /* Schedule */,
 				20859AB01B64E2EE00580ED3 /* Utils */,
 				20859A961B64C0BC00580ED3 /* Common */,
 				20859A9E1B64CB7600580ED3 /* Provision */,
@@ -463,11 +471,10 @@
 				333E95D91B70B7400001059D /* addFriendPushInfoListModel.m in Sources */,
 				20E0C0721B88B0CA00EDAED4 /* Author.m in Sources */,
 				20859AB31B64E2F600580ED3 /* YModel+ActionMessage.m in Sources */,
-				04480EB81BC771E80082EB87 /* ScheduleInfo.m in Sources */,
 				3307BBCC1B9561FD003446F8 /* SuggestListModel.m in Sources */,
-				04480EB51BC75F8C0082EB87 /* RemindInfo.m in Sources */,
 				20DA74BD1B8C0BFA0002E041 /* FriendsCondition.m in Sources */,
 				20859AA31B64CB7E00580ED3 /* LoginResp.m in Sources */,
+				0476B6201BD0979800FD13DF /* ScheduleInfo.m in Sources */,
 				332D32681B71E9B400B69E96 /* PushInfo.m in Sources */,
 				20DA8B1A1B8EBD27007D0CDE /* GroupAllList.m in Sources */,
 				20DD81611B91D22E00ACFD9A /* ForbiddenList.m in Sources */,
@@ -479,14 +486,15 @@
 				20E0C0821B88B0CA00EDAED4 /* LinkManList.m in Sources */,
 				331E17E41B7AFBC8006789B0 /* Tags.m in Sources */,
 				20C5B0691B8DB75A00B4A8A8 /* AlertList.m in Sources */,
+				0476B61F1BD0979800FD13DF /* RemindInfo.m in Sources */,
 				20E1C67A1B89F0A7008BA9D6 /* CommentListItems.m in Sources */,
+				0476B6241BD0980000FD13DF /* HaveTimeModel.m in Sources */,
 				333E95E51B70B78C0001059D /* LastSystemPushInfoListModel.m in Sources */,
 				20E0C0751B88B0CA00EDAED4 /* ProfileInfo.m in Sources */,
 				333E95D01B70B6DF0001059D /* CheckAccountModel.m in Sources */,
 				20DED86F1B94205B004B5E7B /* EasyModel.m in Sources */,
 				20E1C6791B89F0A7008BA9D6 /* Comment.m in Sources */,
 				3307BBCB1B9561FD003446F8 /* SenderListModel.m in Sources */,
-				04480EBB1BC772160082EB87 /* ActivityListInfo.m in Sources */,
 				20E0C06F1B88B0CA00EDAED4 /* FeedInfo.m in Sources */,
 				20C5B0651B8DB55C00B4A8A8 /* GroupDetail.m in Sources */,
 				20DA8B111B8EB7C0007D0CDE /* GroupFeedList.m in Sources */,

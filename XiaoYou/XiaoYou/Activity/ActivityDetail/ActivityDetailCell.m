@@ -60,8 +60,8 @@
         make.right.equalTo(_topView.descriptionLabel);
     }];
     
-    NSArray *smallImages    = @[@"/dev/feed/s/c2cfe0e7-ba38-43e0-b345-3d14ff2f2bcf.png",@"/dev/feed/s/c2cfe0e7-ba38-43e0-b345-3d14ff2f2bcf.png",@"/dev/feed/s/c2cfe0e7-ba38-43e0-b345-3d14ff2f2bcf.png"];
-    NSArray *bigImages      = @[@"/dev/feed/c2cfe0e7-ba38-43e0-b345-3d14ff2f2bcf.png",@"/dev/feed/c2cfe0e7-ba38-43e0-b345-3d14ff2f2bcf.png",@"/dev/feed/c2cfe0e7-ba38-43e0-b345-3d14ff2f2bcf.png"];
+    NSArray *smallImages    = @[@"/dev/feed/s/c2cfe0e7-ba38-43e0-b345-3d14ff2f2bcf.png"];
+    NSArray *bigImages      = @[@"/dev/feed/c2cfe0e7-ba38-43e0-b345-3d14ff2f2bcf.png"];
     [_middleView updateWithImgs:smallImages bigPics:bigImages];
 }
 
