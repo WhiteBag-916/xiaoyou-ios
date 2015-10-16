@@ -1846,6 +1846,7 @@
 				20DAAA691BCD05F5006DF231 /* Calendar */,
 				E455DCF11BCB8F4700B78E54 /* ActivityRelease */,
 				E455DCE11BCB67C100B78E54 /* ActivityChoice */,
+				E45E98F31BD0ABFF0012F9DA /* ActivityResult */,
 				049FF1AA1BC91777000645C8 /* Remind */,
 				049FF1B31BC91777000645C8 /* Schedule */,
 				049FF1BA1BC91777000645C8 /* Setup */,
@@ -3707,6 +3708,14 @@
 				E416053D1BCF7FA400C6C4A5 /* ActivityReleaseDataManager.m */,
 			);
 			path = ActivityRelease;
+			sourceTree = "<group>";
+		};
+		E45E98F31BD0ABFF0012F9DA /* ActivityResult */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = ActivityResult;
+			path = Calendar/ActivityResult;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
