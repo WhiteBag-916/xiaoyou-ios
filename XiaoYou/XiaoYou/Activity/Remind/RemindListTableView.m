@@ -60,6 +60,10 @@
     [self beginLoadNewData];
 }
 
+//- (void)beginLoadNewData {
+//    [super beginLoadNewData];
+//}
+
 - (void)loadNewData
 {
     [self sendRequest];
@@ -71,32 +75,32 @@
 }
 
 - (void)sendRequest {
-    /*NSString *lastID;
-    if (![self isHeaderRefresh]) {
-        lastID = [NSString stringWithFormat:@"%g", [[_feedListArray.lastObject feed] feedIdentifier]];
-    }
-    [[FeedManager sharedInstance] feedList:lastID size:KPAGENUM queryCode:_filter block:^(YActionMessage *message) {
-        if (message.isSuccess) {
-            if ([self isHeaderRefresh]) {
-                [_feedListArray removeAllObjects];
-            }
-            [self hiddenFooter:false];
-            [_feedListArray addObjectsFromArray:message.object];
-            if ([message.object count] < KPAGENUM) {
-                [self showNoticeNoMoreData];
-            }
-            [self reloadData];
-            
-        } else {
-            [YUtils showTitle:message.desc];
-        }
-        if ([self isHeaderRefresh]) {
-            [self stopLoadNewData];
-        } else {
-            [self stopLoadMoreData];
-        }
-    }];*/
     NSString *lastID;
+    if (![self isHeaderRefresh]) {
+        //lastID = [NSString stringWithFormat:@"%g", [[_feedListArray.lastObject feed] feedIdentifier]];
+    }
+//  [[FeedManager sharedInstance] feedList:lastID size:KPAGENUM queryCode:_filter block:^(YActionMessage *message) {
+//        if (message.isSuccess) {
+//            if ([self isHeaderRefresh]) {
+//                [_feedListArray removeAllObjects];
+//            }
+//            [self hiddenFooter:false];
+//            [_feedListArray addObjectsFromArray:message.object];
+//            if ([message.object count] < KPAGENUM) {
+//                [self showNoticeNoMoreData];
+//            }
+//            [self reloadData];
+//            
+//        } else {
+//            [YUtils showTitle:message.desc];
+//        }
+//        if ([self isHeaderRefresh]) {
+//            [self stopLoadNewData];
+//        } else {
+//            [self stopLoadMoreData];
+//        }
+//    }];
+//    NSString *lastID;
     if (![self isHeaderRefresh]) {
         lastID = [NSString stringWithFormat:@""];
     }
@@ -128,11 +132,12 @@
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.section < 3) {
-        return 180;
+        return SCALE_NUM(160);
+        return SCALE_NUM(116);
     }
     else
     {
-        return SCALE_NUM(197);
+        return SCALE_NUM(198);
     }
     return REMIND_CELL_HEIGHT;
 }
@@ -170,6 +175,9 @@
 {
     if (indexPath.section < 3) {
         PassRemindCell *cell = [PassRemindCell passRemindCellWithTableView:tableView];
+        if (indexPath.section == 1) {
+            cell.cellType = AUDIT_NOT_PASSED;
+        }
         return cell;
     }
     else if (indexPath.section == 3)

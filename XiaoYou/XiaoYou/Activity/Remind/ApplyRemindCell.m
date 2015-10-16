@@ -60,11 +60,12 @@
     return self;
 }
 
--(void)setCellType:(CELL_TYPE)cellType
+-(void)setCellType:(APPLY_CELL_TYPE)cellType
 {
     if (cellType == WAIT_SELECT) {
         _bottomSelectView.hidden = NO;
         _statusButton.hidden = YES;
+        [_applyContentLable updateConstraints];
     }
     else if (cellType == IGNORED) {
         _statusButton.hidden = NO;
@@ -165,21 +166,29 @@
     
     _applyContentLable = [[UILabel alloc]init];
     [self.wrapContentView addSubview:_applyContentLable];
+    _applyContentLable.numberOfLines = 0;
+    _applyContentLable.lineBreakMode = NSLineBreakByWordWrapping;
     _applyContentLable.text = @"申请参加百团纳新志愿者选拔活动!";
+    _applyContentLable.font = CONTENT_FONT(12);
     [_applyContentLable mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(_headImageView.mas_bottom).offset(SCALE_NUM(21));
-        make.leading.mas_equalTo(SCALE_NUM(10));
-        make.leading.mas_equalTo(SCALE_NUM(10));
+        make.left.equalTo(_headImageView);
+        make.trailing.mas_equalTo(0);
     }];
     
     _bottomLineView = [[UIView alloc]init];
     [self.wrapContentView addSubview:_bottomLineView];
     _bottomLineView.backgroundColor = _topLineView.backgroundColor = [UIColor colorWithRed:204/255.0 green:204/255.0 blue:204/255.0 alpha:1];
     [_bottomLineView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(_applyContentLable.mas_bottom).offset(SCALE_NUM(15));
+        //make.top.equalTo(_applyContentLable.mas_bottom).offset(SCALE_NUM(15)).priorityHigh();
         make.leading.equalTo(_wrapContentView);
         make.trailing.equalTo(_wrapContentView);
         make.height.mas_equalTo(1);
+        make.bottom.equalTo(_wrapContentView.mas_bottom).offset(SCALE_NUM(-44));
+    }];
+    
+    [_applyContentLable mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.bottom.equalTo(_bottomLineView.mas_top).offset(SCALE_NUM(-10));
     }];
     
     [self addStatusButton];
@@ -189,15 +198,17 @@
 
 -(void)addStatusButton
 {
-    _statusButton = [[UIButton alloc]init];
+    _statusButton = [UIButton buttonWithType:UIButtonTypeSystem];
     [self.wrapContentView addSubview:_statusButton];
     _statusButton.titleLabel.font = [UIFont systemFontOfSize:SCALE_NUM(12)];
     [_statusButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     [_statusButton setTitle:@"已同意" forState:UIControlStateNormal];
+    _statusButton.enabled = NO;
     [_statusButton mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(_bottomLineView.mas_bottom).offset(10);
+        make.top.equalTo(_bottomLineView.mas_bottom);
         make.leading.equalTo(_wrapContentView);
         make.trailing.equalTo(_wrapContentView);
+        make.bottom.equalTo(_wrapContentView.mas_bottom);
     }];
 }
 
@@ -209,7 +220,7 @@
         make.top.equalTo(_bottomLineView.mas_bottom);
         make.leading.equalTo(_wrapContentView);
         make.trailing.equalTo(_wrapContentView);
-        make.height.mas_equalTo(SCALE_NUM(44));
+        make.bottom.equalTo(_wrapContentView);
     }];
     
     _middleLineView = [[UIView alloc]init];
@@ -222,7 +233,7 @@
         make.width.mas_equalTo(1);
     }];
     
-    _agreeButton = [[UIButton alloc]init];
+    _agreeButton = [UIButton buttonWithType:UIButtonTypeSystem];
     [self.bottomSelectView addSubview:_agreeButton];
     _agreeButton.titleLabel.font = [UIFont systemFontOfSize:SCALE_NUM(12)];
     [_agreeButton addTarget:self action:@selector(agreeAction) forControlEvents:UIControlEventTouchUpInside];
@@ -235,7 +246,7 @@
         make.right.equalTo(_middleLineView.mas_left);
     }];
     
-    _ignoreButton = [[UIButton alloc]init];
+    _ignoreButton = [UIButton buttonWithType:UIButtonTypeSystem];
     [self.bottomSelectView addSubview:_ignoreButton];
     _ignoreButton.titleLabel.font = [UIFont systemFontOfSize:SCALE_NUM(12)];
     [_ignoreButton addTarget:self action:@selector(ignoreAction) forControlEvents:UIControlEventTouchUpInside];
