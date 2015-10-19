@@ -45,6 +45,8 @@
         [_rubLessonTableView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.edges.mas_equalTo(self.view);
         }];
+        
+        [self setUpCustomNavgationBar];
     } else if (AvailableSimpleTypeStudyRoom == _type) {
         self.title = @"自习室";
         
@@ -66,9 +68,34 @@
     }
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+-(void)setUpCustomNavgationBar {
+    //right barbutton view
+    UIView * view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 60, KNavigationBarheight)];
+    
+    UIButton * remindBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 25, KNavigationBarheight)];
+    [remindBtn setImage:[UIImage imageNamed:@"have_time_select"] forState:UIControlStateNormal];
+    [remindBtn addTarget:self
+                  action:@selector(filterAction)
+        forControlEvents:UIControlEventTouchUpInside];
+    [view addSubview:remindBtn];
+    
+    UIButton * scheduleBtn = [[UIButton alloc] initWithFrame:CGRectMake(35, 0, 25, KNavigationBarheight)];
+    [scheduleBtn setImage:[UIImage imageNamed:@"have_time_search"] forState:UIControlStateNormal];
+    [scheduleBtn addTarget:self
+                    action:@selector(searchAction)
+          forControlEvents:UIControlEventTouchUpInside];
+    [view addSubview:scheduleBtn];
+    
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:view];
+}
+
+//筛选Action
+- (void)filterAction {
+}
+
+//搜索Action
+- (void)searchAction {
+    
 }
 
 /*

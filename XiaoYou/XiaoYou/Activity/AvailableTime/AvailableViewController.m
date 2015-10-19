@@ -29,6 +29,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+    self.title = @"有空";
     if([AppConfigData isUserFirstUseHaveTime])
         [self addGuideView];
     [self setUpCustomNavgationBar];

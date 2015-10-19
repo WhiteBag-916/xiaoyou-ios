@@ -37,14 +37,17 @@
     CGFloat height;
     if (indexPath.row == 0)
     {
-        return 700;
+        return SCALE_NUM(700);
         //height = [tableView fd_heightForCellWithIdentifier:@"activitydetail" cacheByIndexPath:indexPath configuration:^(ActivityDetailCell *cell) {
             //[cell setData:_feedListArray[indexPath.row]];
         //}];
     }
+    else if (indexPath.row == 1) {
+        return SCALE_NUM(270);
+    }
     else
     {
-        return 250;
+        return SCALE_NUM(250);
         //height = [tableView fd_heightForCellWithIdentifier:@"joinincell" cacheByIndexPath:indexPath configuration:^(ActivityJoinInCell *cell) {
             //[cell setData:_feedListArray[indexPath.row]];
         //}];
