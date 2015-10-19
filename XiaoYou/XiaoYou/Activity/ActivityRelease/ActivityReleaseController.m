@@ -50,6 +50,14 @@ typedef enum : NSUInteger {
 - (void)viewWillAppear:(BOOL)animated
 {
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changeEnabelStateForReleaseBtn:) name:KNotification_Enabel_ReleaseBtn object:nil];
+    
+    _dataManager.ActivityNameText = nil;
+    _dataManager.ActivityDesciptionText = nil;
+    _dataManager.ActivityDesciptionImage = nil;
+    _dataManager.ActivityDateApplyText = nil;
+    _dataManager.ActivityDateBeginText = nil;
+    _dataManager.ActivityDateEndText = nil;
+    _dataManager.ActivityPlaceText = nil;
 }
 
 -(void)viewWillDisappear:(BOOL)animated
@@ -383,16 +391,27 @@ typedef enum : NSUInteger {
     NSLog(@"%@",_dataManager.ActivityPlaceText);
     NSLog(@"%@",_dataManager.ActivityTypeStr);
     
-    _dataManager.ActivityNameText = nil;
-    _dataManager.ActivityDesciptionText = nil;
-    _dataManager.ActivityDesciptionImage = nil;
-    _dataManager.ActivityDateApplyText = nil;
-    _dataManager.ActivityDateBeginText = nil;
-    _dataManager.ActivityDateEndText = nil;
-    _dataManager.ActivityPlaceText = nil;
-    _dataManager.ActivityTypeStr = nil;
+    NSDateFormatter * formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"yyyy年MM月dd日 a HH:mm"];
+    NSDate * applyDate = [formatter dateFromString:_dataManager.ActivityDateApplyText];
+    NSDate * endDate = [formatter dateFromString:_dataManager.ActivityDateEndText];
+    if ([endDate isEqualToDate:[applyDate laterDate:endDate]])
+    {
+        _dataManager.ActivityNameText = nil;
+        _dataManager.ActivityDesciptionText = nil;
+        _dataManager.ActivityDesciptionImage = nil;
+        _dataManager.ActivityDateApplyText = nil;
+        _dataManager.ActivityDateBeginText = nil;
+        _dataManager.ActivityDateEndText = nil;
+        _dataManager.ActivityPlaceText = nil;
+        
+        [self.navigationController popViewControllerAnimated:YES];
+    }
+    else
+    {
+        [YUtils showTitle:@"截至时间不能在活动结束时间之后"];
+    }
     
-    [self.navigationController popViewControllerAnimated:YES];
 }
 
 -(void)setPointHighlight:(NSInteger) pointNum
