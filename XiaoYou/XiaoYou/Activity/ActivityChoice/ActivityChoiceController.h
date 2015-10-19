@@ -18,4 +18,6 @@ typedef enum : NSUInteger {
 
 @property(nonatomic,strong)AvailableViewController * superViewController;
 
+-(instancetype)initWithType:(CHOICE_TYPE) type;
+
 @end
