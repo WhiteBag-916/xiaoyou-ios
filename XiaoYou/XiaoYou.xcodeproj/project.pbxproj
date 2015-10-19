@@ -122,6 +122,8 @@
 		200E397C1B4E818B000B587B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 200E397B1B4E818B000B587B /* main.m */; };
 		200E39871B4E818B000B587B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 200E39861B4E818B000B587B /* Images.xcassets */; };
 		200E39961B4E818B000B587B /* XiaoYouTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 200E39951B4E818B000B587B /* XiaoYouTests.m */; };
+		202BD76D1BD4E12800461577 /* build_icon_location@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 202BD76B1BD4E12800461577 /* build_icon_location@2x.png */; settings = {ASSET_TAGS = (); }; };
+		202BD76E1BD4E12800461577 /* build_icon_location@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 202BD76C1BD4E12800461577 /* build_icon_location@3x.png */; settings = {ASSET_TAGS = (); }; };
 		2076A2F71B81B8F1001FFBAC /* NotifyListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2076A2F61B81B8F1001FFBAC /* NotifyListViewController.m */; };
 		2076A3001B81C590001FFBAC /* YCommonActionSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = 2076A2FD1B81C590001FFBAC /* YCommonActionSheet.m */; };
 		2076A3011B81C590001FFBAC /* YCommonAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2076A2FF1B81C590001FFBAC /* YCommonAlertView.m */; };
@@ -854,6 +856,8 @@
 		200E39941B4E818B000B587B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		200E39951B4E818B000B587B /* XiaoYouTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XiaoYouTests.m; sourceTree = "<group>"; };
 		200E39DE1B4E867D000B587B /* libXFramework.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libXFramework.a; path = "../XFramework/build/Debug-iphoneos/libXFramework.a"; sourceTree = "<group>"; };
+		202BD76B1BD4E12800461577 /* build_icon_location@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "build_icon_location@2x.png"; sourceTree = "<group>"; };
+		202BD76C1BD4E12800461577 /* build_icon_location@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "build_icon_location@3x.png"; sourceTree = "<group>"; };
 		2076A2F51B81B8F1001FFBAC /* NotifyListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotifyListViewController.h; sourceTree = "<group>"; };
 		2076A2F61B81B8F1001FFBAC /* NotifyListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotifyListViewController.m; sourceTree = "<group>"; };
 		2076A2FC1B81C590001FFBAC /* YCommonActionSheet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YCommonActionSheet.h; sourceTree = "<group>"; };
@@ -1797,6 +1801,8 @@
 				043AC8631BCF7BFC00AB6E09 /* mengcheng */,
 				20DAAAA41BCD05F5006DF231 /* havetime_icon_academy@2x.png */,
 				20DAAAA51BCD05F5006DF231 /* havetime_icon_academy@3x.png */,
+				202BD76B1BD4E12800461577 /* build_icon_location@2x.png */,
+				202BD76C1BD4E12800461577 /* build_icon_location@3x.png */,
 				20DAAAA61BCD05F5006DF231 /* havetime_icon_classname@2x.png */,
 				20DAAAA71BCD05F5006DF231 /* havetime_icon_classname@3x.png */,
 				20DAAAA81BCD05F5006DF231 /* havetime_icon_teacher@2x.png */,
@@ -4178,6 +4184,7 @@
 				20DAE14A1B88195C00607996 /* login_tip.png in Resources */,
 				20E18DCE1B808E42005B75EE /* tag-green@2x.png in Resources */,
 				3334ABF51B82C5D200FDDCCB /* chatBar_moreSelected.png in Resources */,
+				202BD76D1BD4E12800461577 /* build_icon_location@2x.png in Resources */,
 				20DAAAB21BCD05F5006DF231 /* common_icon_classroom@2x.png in Resources */,
 				20E942451B833D10009C2DC6 /* add-03@3x.png in Resources */,
 				3335C3671B8178E8007DEFD4 /* chatFire_audioPlaying2.png in Resources */,
@@ -4204,6 +4211,7 @@
 				3334ABFB1B82C66F00FDDCCB /* chatBar_record.png in Resources */,
 				20DAA2B51BCE34DF00420234 /* btn_friends_y@2x.png in Resources */,
 				E43E107A1BCCFA840018B6D7 /* img_num4@2x.png in Resources */,
+				202BD76E1BD4E12800461577 /* build_icon_location@3x.png in Resources */,
 				044DA0061BBA314300AA321A /* funny_location@2x.png in Resources */,
 				65CBE1691BC013B300C28D57 /* gift_respect@3x.png in Resources */,
 				3334AC0E1B82C89500FDDCCB /* chatBar_colorMore_photoSelected@2x.png in Resources */,
