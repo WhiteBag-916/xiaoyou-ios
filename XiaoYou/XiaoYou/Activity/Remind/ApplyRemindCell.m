@@ -106,7 +106,7 @@
     //2.提醒标题
     _remindTitleLabel = [[UILabel alloc]init];
     [self.wrapContentView addSubview:_remindTitleLabel];
-    _remindTitleLabel.text = @"活动申请通过！！！";
+    _remindTitleLabel.text = @"恭喜,报名申请通过！！！";
     _remindTitleLabel.font = CONTENT_FONT(12);
     [_remindTitleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.titleImageView.mas_right).offset(10);

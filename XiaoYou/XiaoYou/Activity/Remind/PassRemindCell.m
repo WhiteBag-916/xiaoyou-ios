@@ -86,7 +86,7 @@
     
     _remindTitleLabel = [[UILabel alloc]init];
     [self.wrapContentView addSubview:_remindTitleLabel];
-    _remindTitleLabel.text = @"活动申请通过！！！";
+    _remindTitleLabel.text = @"恭喜,报名申请通过！！！";
     _remindTitleLabel.textColor = KCOLORGREEN_B4;
     _remindTitleLabel.font = CONTENT_FONT(12);
     [_remindTitleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -182,7 +182,7 @@
         [_titleImageView mas_updateConstraints:^(MASConstraintMaker *make) {
             make.top.equalTo(self).offset(SCALE_NUM(10));
             make.height.mas_equalTo(SCALE_NUM(20));
-            make.width.mas_equalTo(SCALE_NUM(8));
+            make.width.mas_equalTo(SCALE_NUM(5));
         }];
         _remindTitleLabel.text = @"很遗憾，你的报名申请未通过审核";
     } else if (cellType == SUCESSED_JOININ) {

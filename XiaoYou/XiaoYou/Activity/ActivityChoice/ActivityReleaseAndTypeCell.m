@@ -36,36 +36,56 @@ NSString *const kActivityReleaseAndTypeCell = @"ActivityReleaseAndTypeCellId";
 
 -(void)setCellType:(NSInteger) num
 {
-    if (num == 0)
+    if (_myType == ACTIVITY_CHOICE_TYPE)
     {
-        _dataArr = @[@"全部",@"无课"];
-        _releaseAndTypeImageView.image = [UIImage imageNamed:@"havetime－icon_free"];
-        _releaseAndTypeLabel.text = @"空闲";
-    }
-    else if (num == 1) {
-        _dataArr = @[@"全部",@"今天",@"一周内",@"两周内"];
-        _releaseAndTypeImageView.image = [UIImage imageNamed:@"funny_detail_time"];
-        _releaseAndTypeLabel.text = @"日期";
-    }
-    else if (num == 2)
-    {
-        _dataArr = @[@"全部",@"学校活动",@"校友活动",@"个人活动",@"社团活动"];
-        _releaseAndTypeImageView.image = [UIImage imageNamed:@"activity-releaser"];
-        _releaseAndTypeLabel.text = @"发布者";
-
+        if (num == 0)
+        {
+            _dataArr = @[@"全部",@"无课"];
+            _releaseAndTypeImageView.image = [UIImage imageNamed:@"havetime－icon_free"];
+            _releaseAndTypeLabel.text = @"空闲";
+        }
+        else if (num == 1) {
+            _dataArr = @[@"全部",@"今天",@"一周内",@"两周内"];
+            _releaseAndTypeImageView.image = [UIImage imageNamed:@"funny_detail_time"];
+            _releaseAndTypeLabel.text = @"日期";
+        }
+        else if (num == 2)
+        {
+            _dataArr = @[@"全部",@"学校活动",@"校友活动",@"个人活动",@"社团活动"];
+            _releaseAndTypeImageView.image = [UIImage imageNamed:@"activity-releaser"];
+            _releaseAndTypeLabel.text = @"发布者";
+            
+        }
+        else
+        {
+            _dataArr = @[@"全部",@"综合类",@"学术类",@"公益类",@"教科类"];
+            _releaseAndTypeImageView.image = [UIImage imageNamed:@"funny_detail_category"];
+            _releaseAndTypeLabel.text = @"类型";
+            
+        }
     }
     else
     {
-        _dataArr = @[@"全部",@"综合类",@"学术类",@"公益类",@"教科类"];
-        _releaseAndTypeImageView.image = [UIImage imageNamed:@"funny_detail_category"];
-        _releaseAndTypeLabel.text = @"类型";
-        
+        if (num == 0)
+        {
+            _dataArr = @[@"全部",@"经济学院",@"管理学院",@"工程学院",@"外国语学院",@"信息学院",@"艺术学院"];
+            _releaseAndTypeImageView.image = [UIImage imageNamed:@"havetime_icon_academy"];
+            _releaseAndTypeLabel.text = @"学院";
+        }
+        else
+        {
+            _dataArr = @[@"全部",@"今天",@"明天",@"一周内"];
+            _releaseAndTypeImageView.image = [UIImage imageNamed:@"funny_detail_time"];
+            _releaseAndTypeLabel.text = @"日期";
+        }
     }
+    
     [_pickerView reloadAllComponents];
 }
 
 -(void)setUpUI
 {
+    
     //图
     _releaseAndTypeImageView = [[UIImageView alloc] init];
     _releaseAndTypeImageView.backgroundColor = [UIColor clearColor];
@@ -98,6 +118,11 @@ NSString *const kActivityReleaseAndTypeCell = @"ActivityReleaseAndTypeCellId";
         make.height.mas_equalTo(SCALE_NUM(130));
     }];
     
+}
+
+- (BOOL)needLine
+{
+    return YES;
 }
 
 -(NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView
