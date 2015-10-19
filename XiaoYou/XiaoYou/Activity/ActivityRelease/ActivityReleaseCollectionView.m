@@ -35,6 +35,8 @@ typedef enum : NSUInteger {
         self.dataSource = self;
         self.scrollEnabled = YES;
         self.pagingEnabled = NO;
+        self.showsHorizontalScrollIndicator = NO;
+        self.showsVerticalScrollIndicator = NO;
         
         [self registerClass:[NameCollectionViewCell class] forCellWithReuseIdentifier:kNameCollectionViewCell];
         [self registerClass:[DescriptionCollectionViewCell class] forCellWithReuseIdentifier:kDescriptionCollectionViewCell];

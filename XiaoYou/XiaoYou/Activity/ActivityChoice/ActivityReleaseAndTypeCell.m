@@ -45,11 +45,11 @@ NSString *const kActivityReleaseAndTypeCell = @"ActivityReleaseAndTypeCellId";
     else if (num == 1) {
         _dataArr = @[@"全部",@"今天",@"一周内",@"两周内"];
         _releaseAndTypeImageView.image = [UIImage imageNamed:@"funny_detail_time"];
-        _releaseAndTypeLabel.text = @"时间与日期";
+        _releaseAndTypeLabel.text = @"日期";
     }
     else if (num == 2)
     {
-        _dataArr = @[@"不限",@"学校活动",@"校友活动",@"个人活动",@"社团活动"];
+        _dataArr = @[@"全部",@"学校活动",@"校友活动",@"个人活动",@"社团活动"];
         _releaseAndTypeImageView.image = [UIImage imageNamed:@"activity-releaser"];
         _releaseAndTypeLabel.text = @"发布者";
 

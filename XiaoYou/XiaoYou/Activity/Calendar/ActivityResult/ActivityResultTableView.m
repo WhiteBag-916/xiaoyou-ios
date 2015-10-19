@@ -66,7 +66,7 @@
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return SCALE_NUM(400);
+    return SCALE_NUM(430);
 }
 
 @end

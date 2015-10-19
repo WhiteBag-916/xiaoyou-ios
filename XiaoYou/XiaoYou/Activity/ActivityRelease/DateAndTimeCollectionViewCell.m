@@ -46,7 +46,7 @@ NSString *const kDateAndTimeCollectionViewCell = @"DateAndTimeCollectionViewCell
     applyLabel.backgroundColor = [UIColor clearColor];
     applyLabel.font = CONTENT_FONT(12);
     applyLabel.textColor = KCOLORGREEN_B5;
-    applyLabel.text = @"报名截至时间(选填)";
+    applyLabel.text = @"报名截至时间";
     [self.backView addSubview:applyLabel];
     [applyLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.mas_equalTo(SCALE_NUM(80));
@@ -115,7 +115,8 @@ NSString *const kDateAndTimeCollectionViewCell = @"DateAndTimeCollectionViewCell
     [toLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(_beginTimeLabel.mas_bottom).offset(SCALE_NUM(10));
         make.centerX.equalTo(self.backView);
-        make.width.height.mas_equalTo(SCALE_NUM(12));
+        make.height.mas_equalTo(SCALE_NUM(12));
+        make.width.mas_equalTo(SCALE_NUM(20));
     }];
     
     //结束活动时间

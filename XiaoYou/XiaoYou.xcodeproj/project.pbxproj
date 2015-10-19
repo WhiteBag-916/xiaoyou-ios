@@ -277,6 +277,9 @@
 		20E0BFFA1B88B0CA00EDAED4 /* register-label-chosen-boundary@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 20E0BFF61B88B0CA00EDAED4 /* register-label-chosen-boundary@3x.png */; };
 		20E0BFFB1B88B0CA00EDAED4 /* register-photo-upload-boundary@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 20E0BFF71B88B0CA00EDAED4 /* register-photo-upload-boundary@2x.png */; };
 		20E0BFFC1B88B0CA00EDAED4 /* register-photo-upload-boundary@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 20E0BFF81B88B0CA00EDAED4 /* register-photo-upload-boundary@3x.png */; };
+		20E1007B1BD495A5009CB7E8 /* NewScheduleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20E1007A1BD495A5009CB7E8 /* NewScheduleViewController.m */; settings = {ASSET_TAGS = (); }; };
+		20E1007E1BD495BC009CB7E8 /* EditScheduleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20E1007D1BD495BC009CB7E8 /* EditScheduleViewController.m */; settings = {ASSET_TAGS = (); }; };
+		20E100811BD495D8009CB7E8 /* ScheduleDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20E100801BD495D8009CB7E8 /* ScheduleDetailViewController.m */; settings = {ASSET_TAGS = (); }; };
 		20E122131B705C2100F90BD3 /* XYTabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20E122121B705C2100F90BD3 /* XYTabBarViewController.m */; };
 		20E122211B705ED200F90BD3 /* FeedListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20E122201B705ED200F90BD3 /* FeedListViewController.m */; };
 		20E1222D1B708CDC00F90BD3 /* TagListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20E1222C1B708CDC00F90BD3 /* TagListViewController.m */; };
@@ -1100,6 +1103,12 @@
 		20E0BFF61B88B0CA00EDAED4 /* register-label-chosen-boundary@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "register-label-chosen-boundary@3x.png"; sourceTree = "<group>"; };
 		20E0BFF71B88B0CA00EDAED4 /* register-photo-upload-boundary@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "register-photo-upload-boundary@2x.png"; sourceTree = "<group>"; };
 		20E0BFF81B88B0CA00EDAED4 /* register-photo-upload-boundary@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "register-photo-upload-boundary@3x.png"; sourceTree = "<group>"; };
+		20E100791BD495A5009CB7E8 /* NewScheduleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewScheduleViewController.h; sourceTree = "<group>"; };
+		20E1007A1BD495A5009CB7E8 /* NewScheduleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewScheduleViewController.m; sourceTree = "<group>"; };
+		20E1007C1BD495BC009CB7E8 /* EditScheduleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditScheduleViewController.h; sourceTree = "<group>"; };
+		20E1007D1BD495BC009CB7E8 /* EditScheduleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditScheduleViewController.m; sourceTree = "<group>"; };
+		20E1007F1BD495D8009CB7E8 /* ScheduleDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScheduleDetailViewController.h; sourceTree = "<group>"; };
+		20E100801BD495D8009CB7E8 /* ScheduleDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScheduleDetailViewController.m; sourceTree = "<group>"; };
 		20E122111B705C2100F90BD3 /* XYTabBarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYTabBarViewController.h; sourceTree = "<group>"; };
 		20E122121B705C2100F90BD3 /* XYTabBarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYTabBarViewController.m; sourceTree = "<group>"; };
 		20E1221F1B705ED200F90BD3 /* FeedListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedListViewController.h; sourceTree = "<group>"; };
@@ -2226,6 +2235,12 @@
 			children = (
 				20DAAA6A1BCD05F5006DF231 /* WeekViewController.h */,
 				20DAAA6B1BCD05F5006DF231 /* WeekViewController.m */,
+				20E100791BD495A5009CB7E8 /* NewScheduleViewController.h */,
+				20E1007A1BD495A5009CB7E8 /* NewScheduleViewController.m */,
+				20E1007C1BD495BC009CB7E8 /* EditScheduleViewController.h */,
+				20E1007D1BD495BC009CB7E8 /* EditScheduleViewController.m */,
+				20E1007F1BD495D8009CB7E8 /* ScheduleDetailViewController.h */,
+				20E100801BD495D8009CB7E8 /* ScheduleDetailViewController.m */,
 			);
 			path = Calendar;
 			sourceTree = "<group>";
@@ -4303,6 +4318,7 @@
 				20DAF9AB1B87209E005B7932 /* LoginViewController.m in Sources */,
 				656A4CFD1BBF9E1E00BDB725 /* QRCameraSwitchButton.m in Sources */,
 				20DAAA9F1BCD05F5006DF231 /* StudyRoomTableView.m in Sources */,
+				20E1007E1BD495BC009CB7E8 /* EditScheduleViewController.m in Sources */,
 				20BEAF9F1BC913120002A365 /* FastTopView.m in Sources */,
 				3331222D1B806EDB00D3D032 /* ConvertToCommonEmoticonsHelper.m in Sources */,
 				65969DC41B86BDE1001DD348 /* MBProgressHUD+Add.m in Sources */,
@@ -4416,6 +4432,7 @@
 				20DA16FE1BC7C51200A61B37 /* MGCMonthMiniCalendarView.m in Sources */,
 				20DA17091BC7C51200A61B37 /* MGCTimeRowsView.m in Sources */,
 				044C31441BCCA95F00E0D508 /* AvailableListView.m in Sources */,
+				20E1007B1BD495A5009CB7E8 /* NewScheduleViewController.m in Sources */,
 				E426A5661BCD0D620064A415 /* PlaceCollectionViewCell.m in Sources */,
 				333122701B806EDB00D3D032 /* PSTGridLayoutRow.m in Sources */,
 				20DA170A1BC7C51200A61B37 /* MGCYearCalendarMonthCell.m in Sources */,
@@ -4500,6 +4517,7 @@
 				20DA170B1BC7C51200A61B37 /* MGCYearCalendarMonthHeaderView.m in Sources */,
 				044C31631BCCE79200E0D508 /* StudyRoomCell.m in Sources */,
 				65BCF1E11B818441003457F4 /* FeedDetailViewController.m in Sources */,
+				20E100811BD495D8009CB7E8 /* ScheduleDetailViewController.m in Sources */,
 				049FF1C11BC91777000645C8 /* RemindListTableView.m in Sources */,
 				049FF1C01BC91777000645C8 /* RemindHeadView.m in Sources */,
 				333122691B806EDB00D3D032 /* PSTCollectionViewData.m in Sources */,

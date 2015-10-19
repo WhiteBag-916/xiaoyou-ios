@@ -67,7 +67,7 @@
     //类型名称
     _typeLabel = [[UILabel alloc] init];
     _typeLabel.textColor = KCOLORGREEN_g1;
-    _typeLabel.font = CONTENT_FONT(20);
+    _typeLabel.font = CONTENT_FONT(17);
     _typeLabel.backgroundColor = [UIColor clearColor];
     [_backView addSubview:_typeLabel];
     [_typeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
