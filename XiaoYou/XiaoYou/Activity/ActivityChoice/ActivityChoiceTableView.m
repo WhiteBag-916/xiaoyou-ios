@@ -64,7 +64,14 @@
     //筛选
     UILabel * centerLabel = [[UILabel alloc] init];
     centerLabel.textAlignment = NSTextAlignmentCenter;
-    centerLabel.text = @"筛选";
+    if (_myType == ACTIVITY_CHOICE_TYPE)
+    {
+        centerLabel.text = @"活动筛选";
+    }
+    else
+    {
+        centerLabel.text = @"蹭课筛选";
+    }
     centerLabel.font = CONTENT_FONT(15);
     [backView addSubview:centerLabel];
     [centerLabel mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -120,6 +127,7 @@
 
         ActivityReleaseAndTypeCell * cell = [self dequeueReusableCellWithIdentifier:kActivityReleaseAndTypeCell forIndexPath:indexPath];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        cell.myType = _myType;
         [cell setCellType:indexPath.row];
         return cell;
 
