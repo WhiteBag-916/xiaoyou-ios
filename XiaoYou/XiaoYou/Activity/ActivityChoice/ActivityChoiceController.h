@@ -8,6 +8,7 @@
 
 #import "YViewController.h"
 #import "AvailableViewController.h"
+#import "AvailableSimpleViewController.h"
 
 typedef enum : NSUInteger {
     ACTIVITY_CHOICE_TYPE,
@@ -16,7 +17,8 @@ typedef enum : NSUInteger {
 
 @interface ActivityChoiceController : YViewController
 
-@property(nonatomic,strong)AvailableViewController * superViewController;
+@property(nonatomic,strong)AvailableViewController * activityViewController;
+@property(nonatomic,strong)AvailableSimpleViewController * classViewController;
 
 -(instancetype)initWithType:(CHOICE_TYPE) type;
 

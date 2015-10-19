@@ -131,7 +131,7 @@
 //筛选Action
 -(void)filterAction {
     ActivityChoiceController *choiceVC = [[ActivityChoiceController alloc]initWithType:ACTIVITY_CHOICE_TYPE];
-    choiceVC.superViewController = self;
+    choiceVC.activityViewController = self;
     [self.navigationController presentViewController:choiceVC animated:YES completion:nil];
 }
 
