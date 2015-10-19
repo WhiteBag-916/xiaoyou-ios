@@ -39,7 +39,7 @@ NSString *const kActivityReleaseAndTypeCell = @"ActivityReleaseAndTypeCellId";
     if (num == 0)
     {
         _dataArr = @[@"全部",@"无课"];
-        _releaseAndTypeImageView.image = [UIImage imageNamed:@"funny_detail_time"];
+        _releaseAndTypeImageView.image = [UIImage imageNamed:@"havetime－icon_free"];
         _releaseAndTypeLabel.text = @"空闲";
     }
     else if (num == 1) {
