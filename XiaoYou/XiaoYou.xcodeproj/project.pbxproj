@@ -689,7 +689,6 @@
 		E4BE2DAA1BC7989300124F22 /* ContactsInfoFirstTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E4BE2DA91BC7989300124F22 /* ContactsInfoFirstTableViewCell.m */; settings = {ASSET_TAGS = (); }; };
 		E4BE2DAD1BC798A600124F22 /* ContactsInfoSecondTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E4BE2DAC1BC798A600124F22 /* ContactsInfoSecondTableViewCell.m */; settings = {ASSET_TAGS = (); }; };
 		E4BE2DB01BC798B500124F22 /* ContactsInfoThirdTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E4BE2DAF1BC798B500124F22 /* ContactsInfoThirdTableViewCell.m */; settings = {ASSET_TAGS = (); }; };
-		E4E28CE61BB3DCAF00E3808A /* FunDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E4E28CE51BB3DCAF00E3808A /* FunDetailViewController.m */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -1726,8 +1725,6 @@
 		E4BE2DAC1BC798A600124F22 /* ContactsInfoSecondTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactsInfoSecondTableViewCell.m; sourceTree = "<group>"; };
 		E4BE2DAE1BC798B500124F22 /* ContactsInfoThirdTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactsInfoThirdTableViewCell.h; sourceTree = "<group>"; };
 		E4BE2DAF1BC798B500124F22 /* ContactsInfoThirdTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactsInfoThirdTableViewCell.m; sourceTree = "<group>"; };
-		E4E28CE41BB3DCAF00E3808A /* FunDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FunDetailViewController.h; path = ../MessageAndContacts/FunDetailViewController.h; sourceTree = "<group>"; };
-		E4E28CE51BB3DCAF00E3808A /* FunDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FunDetailViewController.m; path = ../MessageAndContacts/FunDetailViewController.m; sourceTree = "<group>"; };
 		F531E541C4347E287F02139F /* Pods-XiaoYou.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XiaoYou.release.xcconfig"; path = "../Pods/Target Support Files/Pods-XiaoYou/Pods-XiaoYou.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -3552,8 +3549,6 @@
 		6592DCB11B806A9B004CD118 /* ContactsInfoDetail */ = {
 			isa = PBXGroup;
 			children = (
-				E4E28CE41BB3DCAF00E3808A /* FunDetailViewController.h */,
-				E4E28CE51BB3DCAF00E3808A /* FunDetailViewController.m */,
 				6592DCB21B806A9B004CD118 /* XYContactsInfoDetailViewController.h */,
 				6592DCB31B806A9B004CD118 /* XYContactsInfoDetailViewController.m */,
 				3334AC441B831B2200FDDCCB /* ContactsInfoDetailTableView.h */,
@@ -4397,7 +4392,6 @@
 				E43E10071BCC9CE50018B6D7 /* NameCollectionViewCell.m in Sources */,
 				6518A2481B80429300AEB79D /* TagListTableView.m in Sources */,
 				656234771B837FDC00651C88 /* YFaceImageView.m in Sources */,
-				E4E28CE61BB3DCAF00E3808A /* FunDetailViewController.m in Sources */,
 				65969DCD1B871AA9001DD348 /* ProfilePersonListController.m in Sources */,
 				20DAAA6C1BCD05F5006DF231 /* WeekViewController.m in Sources */,
 				049C55CC1BB3F33D007565E1 /* BottomView.m in Sources */,
