@@ -48,21 +48,18 @@
 #pragma mark - 继承者
 - (BOOL)showHeaderRefresh
 {
-    return YES;
+    return NO;
 }
 
 - (BOOL)showFooterRefresh
 {
-    return YES;
+    return NO;
 }
 
 - (void)loadData {
-    [self beginLoadNewData];
+    //[self beginLoadNewData];
 }
 
-//- (void)beginLoadNewData {
-//    [super beginLoadNewData];
-//}
 
 - (void)loadNewData
 {
