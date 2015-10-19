@@ -25,8 +25,7 @@
         self.dataSource = self;
         
         [self setUpHeaderView];
-        
-        [self registerClass:[ActivityDateAndTimeCell class] forCellReuseIdentifier:kActivityDateAndTimeCell];
+
         [self registerClass:[ActivityReleaseAndTypeCell class] forCellReuseIdentifier:kActivityReleaseAndTypeCell];
     }
     return self;
