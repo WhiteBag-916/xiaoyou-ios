@@ -216,20 +216,13 @@
     [self.navigationController pushViewController:[[FeedFilterViewController alloc] initWithFilter:[notification userInfo][@"filter"] name:[notification userInfo][@"name"]] animated:true needHiddenBottomBar:YES];
 }
 - (void)onNavigationRightButtonClicked {
-    NSLog(@"已经进入按钮点击界面........");
-    NSLog(@"selg ==== %ld",(long)self.viewIndex);
     if (self.viewIndex == 1) {
-        NSLog(@"已经进入按钮点击界面1111........");
         _needRefresh = true;
         UINavigationController *navigationController =
         [[UINavigationController alloc] initWithRootViewController:[[FeedPublishViewController alloc] init]];
         [self.navigationController presentViewController:navigationController animated:YES completion:nil];
     } else if (self.viewIndex == 2) {
-        
         FastViewController *fastViewController = [[FastViewController alloc]init];
-        //[self.navigationController presentViewController:fast animated:YES completion:nil];
-        //UINavigationController *navigationController = [[UINavigationController alloc]initWithRootViewController:fastViewController];
-        //[self.navigationController presentViewController:navigationController animated:YES completion:nil];
         [self.navigationController pushViewController:fastViewController animated:YES needHiddenBottomBar:YES];
     }
 }
