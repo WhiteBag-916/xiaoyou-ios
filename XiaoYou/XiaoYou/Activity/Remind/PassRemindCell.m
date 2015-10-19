@@ -185,6 +185,7 @@
             make.width.mas_equalTo(SCALE_NUM(5));
         }];
         _remindTitleLabel.text = @"很遗憾，你的报名申请未通过审核";
+        _bottomLineView.hidden = YES;
     } else if (cellType == SUCESSED_JOININ) {
         self.remindTitleLabel.text = @"你已成功参加活动";
     }
