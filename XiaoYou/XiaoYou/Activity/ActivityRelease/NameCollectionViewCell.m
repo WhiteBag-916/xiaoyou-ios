@@ -50,7 +50,7 @@ NSString *const kNameCollectionViewCell = @"NameCollectionViewCellId";
     //设置每个cell的不同部分
     self.numImageView.image = [UIImage imageNamed:@"img_num1"];
     self.typeLabel.text = @"活动名称(0-30字)";
-    _textView.placeholder = @"例如：2015秋游采茶之旅";
+    _textView.placeholder = @"例如：\n2015秋游采茶之旅";
     
 }
 

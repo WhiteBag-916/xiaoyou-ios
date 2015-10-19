@@ -130,7 +130,8 @@
     
     //性别
     UIImageView * sexImageView = [[UIImageView alloc] init];
-    sexImageView.backgroundColor = [UIColor grayColor];
+    sexImageView.backgroundColor = [UIColor clearColor];
+    sexImageView.image = [UIImage imageNamed:@"funny_detail_girl"];
     [backView addSubview:sexImageView];
     [sexImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(_nameLabel.mas_right);

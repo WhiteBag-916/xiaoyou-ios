@@ -55,7 +55,7 @@
             make.edges.mas_equalTo(self.view);
         }];
     }else if (AvailableSimpleTypeStudyRoomDetail == _type) {
-        self.title = @"自习室";
+        self.title = @"教学2楼";
         
         _studyRoomDetailTableView = [[StudyRoomDetailTableView alloc] init];
         [self.view addSubview:_studyRoomDetailTableView];

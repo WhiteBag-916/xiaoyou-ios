@@ -19,7 +19,7 @@ NSString *const kStudyRoomDetailTableViewCell = @"StudyRoomDetailTableViewCellId
 
 @interface StudyRoomDetailTableViewCell ()
 
-@property (nonatomic, strong) UILabel *studyFloorLabel; //自习楼
+//@property (nonatomic, strong) UILabel *studyFloorLabel; //自习楼
 @property (nonatomic, strong) UILabel *studyRoomLabel;  //自习室
 @property (nonatomic, strong) UILabel *timeLabel;       //时间
 
@@ -40,29 +40,29 @@ NSString *const kStudyRoomDetailTableViewCell = @"StudyRoomDetailTableViewCellId
 }
 
 - (void)initView {
-    //1
-    UIImageView *studyImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"common_icon_classroom"]];
-    [self.contentView addSubview:studyImageView];
-    
-    [studyImageView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.mas_equalTo(K_IMG_L);
-        make.top.width.mas_equalTo(K_IMG_TW);
-        make.height.mas_equalTo(K_IMG_H);
-    }];
-    
-    //2
-    _studyFloorLabel = [YUtils initLabel:CONTENT_FONT(15)
-                                   color:KCOLORGREEN_B4
-                                    text:@"教学2楼"
-                               alignment:NSTextAlignmentLeft];
-    [self.contentView addSubview:_studyFloorLabel];
-    
-    [_studyFloorLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(studyImageView.mas_right).offset(K_TEXT_L);
-        make.height.equalTo(studyImageView);
-        make.right.mas_equalTo(-K_TEXT_L);
-        make.top.equalTo(studyImageView);
-    }];
+//    //1
+//    UIImageView *studyImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"common_icon_classroom"]];
+//    [self.contentView addSubview:studyImageView];
+//    
+//    [studyImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.left.mas_equalTo(K_IMG_L);
+//        make.top.width.mas_equalTo(K_IMG_TW);
+//        make.height.mas_equalTo(K_IMG_H);
+//    }];
+//    
+//    //2
+//    _studyFloorLabel = [YUtils initLabel:CONTENT_FONT(15)
+//                                   color:KCOLORGREEN_B4
+//                                    text:@"教学2楼"
+//                               alignment:NSTextAlignmentLeft];
+//    [self.contentView addSubview:_studyFloorLabel];
+//    
+//    [_studyFloorLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.left.equalTo(studyImageView.mas_right).offset(K_TEXT_L);
+//        make.height.equalTo(studyImageView);
+//        make.right.mas_equalTo(-K_TEXT_L);
+//        make.top.equalTo(studyImageView);
+//    }];
     
     //3
     _studyRoomLabel = [YUtils initLabel:CONTENT_FONT(12)
@@ -72,9 +72,9 @@ NSString *const kStudyRoomDetailTableViewCell = @"StudyRoomDetailTableViewCellId
     [self.contentView addSubview:_studyRoomLabel];
     
     [_studyRoomLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.right.equalTo(_studyFloorLabel);
+        make.left.right.mas_equalTo(K_IMG_L);
         make.height.mas_equalTo(K_TEXT_H);
-        make.top.equalTo(_studyFloorLabel.mas_bottom).offset(K_ROOM_T);
+        make.top.mas_equalTo(K_IMG_TW);
     }];
     
     //4
@@ -85,7 +85,7 @@ NSString *const kStudyRoomDetailTableViewCell = @"StudyRoomDetailTableViewCellId
     [self.contentView addSubview:_timeLabel];
     
     [_timeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.right.equalTo(_studyFloorLabel);
+        make.left.right.equalTo(_studyRoomLabel);
         make.height.mas_equalTo(K_TEXT_H);
         make.top.equalTo(_studyRoomLabel.mas_bottom).offset(K_ROOM_T);
     }];

@@ -130,7 +130,7 @@
 //星期
 - (void)initHeadView {
     NSInteger cnt = 0;
-    NSArray *daySymbols = [[NSCalendar currentCalendar] shortWeekdaySymbols];
+    NSArray *daySymbols = @[@"日", @"一", @"二", @"三", @"四", @"五", @"六"];//[[NSCalendar currentCalendar] shortWeekdaySymbols];
     CGFloat wid = CGRectGetWidth(self.frame);
     wid -= 8;
     
@@ -141,8 +141,7 @@
     for(NSString *str in daySymbols){
         UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(minX + cnt*(DAY_LABEL_WIDTH+per) , 0, DAY_LABEL_WIDTH, 20)];
         label.font = [UIFont systemFontOfSize:10];
-        label.text = [str substringFromIndex:1];
-//        label.text = str;
+        label.text = str;
         label.textColor = cnt == 0 || cnt == 6 ? KCOLORGREEN_B5 : [UIColor blackColor];
         label.textAlignment = NSTextAlignmentCenter;
         label.userInteractionEnabled = NO;
