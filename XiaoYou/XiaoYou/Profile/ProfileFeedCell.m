@@ -116,5 +116,9 @@ NSString *const KProfileFeedCell = @"KProfileFeedCell";
     [_content setData:info];
 }
 
+- (BOOL)needLine {
+    return YES;
+}
+
 
 @end
