@@ -63,7 +63,7 @@
 
 //参加某个活动的事件
 - (void)joinInAction {
-    
+    NSLog(@"我要加入...");
 }
 
 @end

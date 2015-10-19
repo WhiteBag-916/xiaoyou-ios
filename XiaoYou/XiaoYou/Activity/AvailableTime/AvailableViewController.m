@@ -32,23 +32,12 @@
         [self addGuideView];
     [self setUpCustomNavgationBar];
     [self availableListView];
-    
-    
 }
 
 
 - (void)addGuideView {
     
     UIWindow *window = [UIApplication sharedApplication].keyWindow;
-//    _promptView = [[UIView alloc]init];
-//    _promptView.backgroundColor = [UIColor blackColor];
-//    _promptView.alpha = 0.6;
-
-//    
-//    [window addSubview:_promptView];
-//    [_promptView mas_makeConstraints:^(MASConstraintMaker *make) {
-//        make.edges.equalTo(window);
-//    }];
     
     NSString *imageName = @"1havetime_box_calender";
     UIImage *image = [[UIImage imageNamed:imageName]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
@@ -61,10 +50,7 @@
         make.edges.equalTo(window);
     }];
     
-    
     _guideImageView.userInteractionEnabled = YES;
-//    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissGuideView)];
-//    [_promptView addGestureRecognizer:tap];
     
     UITapGestureRecognizer *tap1 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissGuideView)];
     [_guideImageView addGestureRecognizer:tap1];

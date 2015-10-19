@@ -63,6 +63,10 @@
     
     _addFriendImageView = [[UIImageView alloc]init];
     [self addSubview:_addFriendImageView];
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(addFriendAction)];
+    _addFriendImageView.userInteractionEnabled = YES;
+    [_addFriendImageView addGestureRecognizer:tap];
+    
     _addFriendImageView.image = [UIImage imageNamed:@"mine-add-friend"];
     [_addFriendImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.trailing.mas_equalTo(SCALE_NUM(-12));
@@ -70,5 +74,9 @@
     }];
 }
 
+
+-(void)addFriendAction {
+    NSLog(@"addFriendAtion click...");
+}
 
 @end

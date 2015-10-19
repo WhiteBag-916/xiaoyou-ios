@@ -184,7 +184,7 @@
 }
 //导航栏右侧，发布按钮
 - (void)showCustomNavigationPublishButton {
-    [self showNomalNavigationRightButtonWithImage:@"" action:@selector(onNavigationRightButtonClicked) imgName:@"mine-publisher" frame:CGRectMake(0, 0, 15, 20)];
+    [self showNomalNavigationRightButtonWithImage:@"" action:@selector(onNavigationRightButtonClicked) imgName:@"mine-publisher" frame:CGRectMake(0, 0, 18, 64)];
 }
 
 //导航栏右侧，Fast按钮
