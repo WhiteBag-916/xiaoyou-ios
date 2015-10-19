@@ -155,13 +155,14 @@ typedef enum : NSUInteger {
         make.height.mas_equalTo(SCALE_NUM(12));
     }];
     UIButton * btn1 = [[UIButton alloc] init];
-    btn1.backgroundColor = [UIColor orangeColor];
+    btn1.tag = 000000001;
+    btn1.backgroundColor = [UIColor clearColor];
     [_scrollView addSubview:btn1];
     [btn1 mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(_point1View);
         make.right.bottom.left.equalTo(typeLabel1);
     }];
-    [btn1 addTarget:self action:@selector(clickeLabelButton) forControlEvents:UIControlEventTouchUpInside];
+    [btn1 addTarget:self action:@selector(clickeLabelButton:) forControlEvents:UIControlEventTouchUpInside];
     
     //Point2
     _point2View = [[UIImageView alloc] init];
@@ -195,6 +196,16 @@ typedef enum : NSUInteger {
         make.width.mas_equalTo(SCALE_NUM(30));
         make.height.mas_equalTo(SCALE_NUM(12));
     }];
+    UIButton * btn2 = [[UIButton alloc] init];
+    btn2.tag = 000000002;
+    btn2.backgroundColor = [UIColor clearColor];
+    [_scrollView addSubview:btn2];
+    [btn2 mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(_point2View);
+        make.right.bottom.left.equalTo(typeLabel2);
+    }];
+    [btn2 addTarget:self action:@selector(clickeLabelButton:) forControlEvents:UIControlEventTouchUpInside];
+    
     //Point3
     _point3View = [[UIImageView alloc] init];
     _point3View.backgroundColor = KCOLORGREEN_B5;
@@ -227,6 +238,15 @@ typedef enum : NSUInteger {
         make.width.mas_equalTo(SCALE_NUM(30));
         make.height.mas_equalTo(SCALE_NUM(12));
     }];
+    UIButton * btn3 = [[UIButton alloc] init];
+    btn3.tag = 000000003;
+    btn3.backgroundColor = [UIColor clearColor];
+    [_scrollView addSubview:btn3];
+    [btn3 mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(_point3View);
+        make.right.bottom.left.equalTo(typeLabel3);
+    }];
+    [btn3 addTarget:self action:@selector(clickeLabelButton:) forControlEvents:UIControlEventTouchUpInside];
     //Point4
     _point4View = [[UIImageView alloc] init];
     _point4View.backgroundColor = KCOLORGREEN_B5;
@@ -259,6 +279,15 @@ typedef enum : NSUInteger {
         make.width.mas_equalTo(SCALE_NUM(30));
         make.height.mas_equalTo(SCALE_NUM(12));
     }];
+    UIButton * btn4 = [[UIButton alloc] init];
+    btn4.tag = 000000004;
+    btn4.backgroundColor = [UIColor clearColor];
+    [_scrollView addSubview:btn4];
+    [btn4 mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(_point4View);
+        make.right.bottom.left.equalTo(typeLabel4);
+    }];
+    [btn4 addTarget:self action:@selector(clickeLabelButton:) forControlEvents:UIControlEventTouchUpInside];
     //Point5
     _point5View = [[UIImageView alloc] init];
     _point5View.backgroundColor = KCOLORGREEN_B5;
@@ -282,6 +311,15 @@ typedef enum : NSUInteger {
         make.width.mas_equalTo(SCALE_NUM(30));
         make.height.mas_equalTo(SCALE_NUM(12));
     }];
+    UIButton * btn5 = [[UIButton alloc] init];
+    btn5.tag = 000000005;
+    btn5.backgroundColor = [UIColor clearColor];
+    [_scrollView addSubview:btn5];
+    [btn5 mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(_point5View);
+        make.right.bottom.left.equalTo(typeLabel5);
+    }];
+    [btn5 addTarget:self action:@selector(clickeLabelButton:) forControlEvents:UIControlEventTouchUpInside];
     
     //这咕噜你好好想想
     UIView * backgroundView = [[UIView alloc] init];
@@ -401,8 +439,48 @@ typedef enum : NSUInteger {
     }
 }
 
--(void)clickeLabelButton
+-(void)clickeLabelButton:(UIButton *) btn
 {
+    switch (btn.tag) {
+        case 000000001:
+        {
+            [UIView animateWithDuration:0.2 animations:^{
+                _releaseCollectionView.contentOffset = CGPointMake(0, 0);
+            } completion:nil];
+            break;
+        }
+        case 000000002:
+        {
+            [UIView animateWithDuration:0.2 animations:^{
+                _releaseCollectionView.contentOffset = CGPointMake(SCALE_NUM(186), 0);
+            } completion:nil];
+            break;
+        }
+        case 000000003:
+        {
+            [UIView animateWithDuration:0.2 animations:^{
+                _releaseCollectionView.contentOffset = CGPointMake(SCALE_NUM(418), 0);
+            } completion:nil];
+            break;
+        }
+        case 000000004:
+        {
+            [UIView animateWithDuration:0.2 animations:^{
+                _releaseCollectionView.contentOffset = CGPointMake(SCALE_NUM(646), 0);
+            } completion:nil];
+            break;
+        }
+        case 000000005:
+        {
+            [UIView animateWithDuration:0.2 animations:^{
+                _releaseCollectionView.contentOffset = CGPointMake(SCALE_NUM(830), 0);
+            } completion:nil];
+            break;
+        }
+            
+        default:
+            break;
+    }
     
 }
 

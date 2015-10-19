@@ -115,7 +115,8 @@ NSString *const kDateAndTimeCollectionViewCell = @"DateAndTimeCollectionViewCell
     [toLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(_beginTimeLabel.mas_bottom).offset(SCALE_NUM(10));
         make.centerX.equalTo(self.backView);
-        make.width.height.mas_equalTo(SCALE_NUM(12));
+        make.height.mas_equalTo(SCALE_NUM(12));
+        make.width.mas_equalTo(SCALE_NUM(20));
     }];
     
     //结束活动时间
