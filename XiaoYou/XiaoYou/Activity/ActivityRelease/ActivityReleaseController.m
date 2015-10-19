@@ -337,7 +337,7 @@ typedef enum : NSUInteger {
     [_scrollView addSubview:backgroundView];
     [backgroundView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(_releaseCollectionView).offset(SCALE_NUM(20));
-        make.trailing.mas_equalTo(SCALE_NUM(30));
+        make.right.equalTo(self.view).offset(30);
         make.top.equalTo(typeLabel1.mas_bottom).offset(SCALE_NUM(15));
         make.height.mas_equalTo(SCALE_NUM(34));
     }];
