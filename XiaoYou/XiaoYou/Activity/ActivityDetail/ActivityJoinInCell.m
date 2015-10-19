@@ -92,7 +92,7 @@
         make.trailing.mas_equalTo(-20);
         make.height.mas_equalTo(100);
     }];
-    _tagsView.backgroundColor = [UIColor cyanColor];
+    _tagsView.backgroundColor = RGBACOLOR(246, 247, 249, 1);
     Tags *tag1 = [[Tags alloc]init];
     tag1.name = @"班";
     tag1.equal = YES;
@@ -103,10 +103,19 @@
     Tags *tag3 = [[Tags alloc]init];
     tag3.name = @"乡";
     
+    Tags *tag4 = [[Tags alloc]init];
+    tag4.name = @"托福GRE";
+    tag4.equal = YES;
+    
+    Tags *tag5 = [[Tags alloc]init];
+    tag5.name = @"雅思";
+    
+    Tags *tag6 = [[Tags alloc]init];
+    tag6.name = @"铁饭碗攻略";
     
     ProfileInfo *profile = [[ProfileInfo alloc]init];
     profile.propetiesCommon = [NSArray arrayWithObjects:tag1,tag2,tag3,nil];
-    profile.tagModels = [NSArray arrayWithObjects:tag1,tag2,tag3, nil];
+    profile.tagModels = [NSArray arrayWithObjects:tag4,tag5,tag6, nil];
     [_tagsView setData:profile];
 }
 

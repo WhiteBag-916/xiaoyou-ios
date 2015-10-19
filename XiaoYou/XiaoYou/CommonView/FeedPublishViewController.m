@@ -380,8 +380,15 @@
 {
     //照片选择
     UzysAssetsPickerController *picker = [[UzysAssetsPickerController alloc] init];
+    picker.assetsFilter = [ALAssetsFilter allPhotos];
+    picker.maximumNumberOfSelectionVideo = 0;
+    picker.maximumNumberOfSelectionPhoto = 9;
     picker.delegate = self;
-    [picker takePhoto];
+    
+    [self presentViewController:picker animated:YES completion:^{
+        [picker takePhoto];
+    }];
+    /*
 #if !(TARGET_IPHONE_SIMULATOR)//真机执行的代码
     AVAuthorizationStatus authStatus = [AVCaptureDevice authorizationStatusForMediaType:AVMediaTypeVideo];
     if (authStatus == AVAuthorizationStatusRestricted ||authStatus ==AVAuthorizationStatusDenied){
@@ -412,6 +419,7 @@
         [self presentViewController:self.picker animated:YES completion:nil];
     }
 #endif
+     */
 }
 
 - (void)savePic:(UIImage *)image

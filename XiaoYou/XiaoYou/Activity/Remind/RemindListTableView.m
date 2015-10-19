@@ -101,7 +101,7 @@
 //        }
 //    }];
 //    NSString *lastID;
-    if (![self isHeaderRefresh]) {
+    /*if (![self isHeaderRefresh]) {
         lastID = [NSString stringWithFormat:@""];
     }
     [[RemindManager sharedInstance] getMyFeed:lastID limitStart:2 limitEnd:10 block:^(YActionMessage *message) {
@@ -123,7 +123,7 @@
         } else {
             [self stopLoadMoreData];
         }
-    }];
+    }];*/
 }
 
 
