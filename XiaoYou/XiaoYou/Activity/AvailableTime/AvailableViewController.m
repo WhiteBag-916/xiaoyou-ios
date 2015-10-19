@@ -12,6 +12,7 @@
 #import "RemindViewController.h"
 #import "ActivityChoiceController.h"
 #import "AppConfigData.h"
+#import "ActivityChoiceController.h"
 @interface AvailableViewController ()
 
 @property (nonatomic,strong) AvailableListView *availableListView;
@@ -129,7 +130,7 @@
 
 //筛选Action
 -(void)filterAction {
-    ActivityChoiceController *choiceVC = [[ActivityChoiceController alloc]init];
+    ActivityChoiceController *choiceVC = [[ActivityChoiceController alloc]initWithType:ACTIVITY_CHOICE_TYPE];
     choiceVC.superViewController = self;
     [self.navigationController presentViewController:choiceVC animated:YES completion:nil];
 }

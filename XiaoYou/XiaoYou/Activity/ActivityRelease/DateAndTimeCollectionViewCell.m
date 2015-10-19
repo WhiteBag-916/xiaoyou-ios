@@ -60,6 +60,7 @@ NSString *const kDateAndTimeCollectionViewCell = @"DateAndTimeCollectionViewCell
     _applayTimeLabel.backgroundColor = [UIColor whiteColor];
     _applayTimeLabel.font = CONTENT_FONT(12);
     _applayTimeLabel.text = @"点击后可以选择时间";
+    _applayTimeLabel.textAlignment = NSTextAlignmentCenter;
     _applayTimeLabel.textColor = KCOLORGREEN_B4;
     [self.backView addSubview:_applayTimeLabel];
     [_applayTimeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -92,6 +93,7 @@ NSString *const kDateAndTimeCollectionViewCell = @"DateAndTimeCollectionViewCell
     _beginTimeLabel.backgroundColor = [UIColor whiteColor];
     _beginTimeLabel.font = CONTENT_FONT(12);
     _beginTimeLabel.text = @"点击后可以选择时间";
+    _beginTimeLabel.textAlignment = NSTextAlignmentCenter;
     _beginTimeLabel.textColor = KCOLORGREEN_B4;
     [self.backView addSubview:_beginTimeLabel];
     [_beginTimeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -125,6 +127,7 @@ NSString *const kDateAndTimeCollectionViewCell = @"DateAndTimeCollectionViewCell
     _endTimeLabel.backgroundColor = [UIColor whiteColor];
     _endTimeLabel.font = CONTENT_FONT(12);
     _endTimeLabel.text = @"点击后可以选择时间";
+    _endTimeLabel.textAlignment = NSTextAlignmentCenter;
     _endTimeLabel.textColor = KCOLORGREEN_B4;
     [self.backView addSubview:_endTimeLabel];
     [_endTimeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
