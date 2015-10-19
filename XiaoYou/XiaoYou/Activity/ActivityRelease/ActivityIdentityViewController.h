@@ -7,7 +7,10 @@
 //
 
 #import "YViewController.h"
+#import "AvailableViewController.h"
 
 @interface ActivityIdentityViewController : YViewController
+
+@property(nonatomic,strong)AvailableViewController * availableViewController;
 
 @end
