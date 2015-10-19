@@ -24,6 +24,7 @@
     if (self) {
         self.delegate = self;
         self.dataSource = self;
+        self.separatorStyle = UITableViewCellSeparatorStyleNone;
         
         [self setUpHeaderView];
 
@@ -82,10 +83,18 @@
 
 -(void)clickBtnForChoice
 {
-    [self.myController dismissViewControllerAnimated:YES completion:^{
-        ActivityResultViewController * resultViewController = [[ActivityResultViewController alloc] init];
-        [self.myController.superViewController.navigationController pushViewController:resultViewController animated:YES needHiddenBottomBar:YES];
-    }];
+    if (_myType == ACTIVITY_CHOICE_TYPE)
+    {
+        [self.myController dismissViewControllerAnimated:YES completion:^{
+            ActivityResultViewController * resultViewController = [[ActivityResultViewController alloc] init];
+            [self.myController.activityViewController.navigationController pushViewController:resultViewController animated:YES needHiddenBottomBar:YES];
+        }];
+    }
+    else
+    {
+        [self.myController dismissViewControllerAnimated:YES completion:nil];
+    }
+    
 
 }
 

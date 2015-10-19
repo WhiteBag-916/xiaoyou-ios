@@ -10,6 +10,7 @@
 #import "RubLessonTableView.h"
 #import "StudyRoomTableView.h"
 #import "StudyRoomDetailTableView.h"
+#import "ActivityChoiceController.h"
 
 @interface AvailableSimpleViewController ()
 
@@ -91,6 +92,9 @@
 
 //筛选Action
 - (void)filterAction {
+    ActivityChoiceController * choiceController = [[ActivityChoiceController alloc] initWithType:CLASS_CHOICE_TYPE];
+    choiceController.classViewController = self;
+    [self.navigationController presentViewController:choiceController animated:YES completion:nil];
 }
 
 //搜索Action
