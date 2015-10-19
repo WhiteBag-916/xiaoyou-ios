@@ -7,7 +7,6 @@
 //
 
 #import "ActivityChoiceTableView.h"
-#import "ActivityDateAndTimeCell.h"
 #import "ActivityReleaseAndTypeCell.h"
 #import "ActivityResultViewController.h"
 
