@@ -12,7 +12,6 @@
 
 #define CELL_INSET          SCALE_NUM(12)
 #define TOP_CELL_HEIGHT     SCALE_NUM(44)
-#define FONT_SIZE           SCALE_NUM(12)
 #define REUSERID            @"ApplyRemindCell"
 @interface ApplyRemindCell ()
 //上面部分View
@@ -108,7 +107,7 @@
     _remindTitleLabel = [[UILabel alloc]init];
     [self.wrapContentView addSubview:_remindTitleLabel];
     _remindTitleLabel.text = @"活动申请通过！！！";
-    _remindTitleLabel.font = CONTENT_FONT(FONT_SIZE);
+    _remindTitleLabel.font = CONTENT_FONT(12);
     [_remindTitleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.titleImageView.mas_right).offset(10);
         make.top.equalTo(self.titleImageView);
@@ -142,7 +141,7 @@
     
     _nameLabel = [[UILabel alloc]init];
     [self.wrapContentView addSubview:_nameLabel];
-    _nameLabel.font = CONTENT_FONT(FONT_SIZE);
+    _nameLabel.font = CONTENT_FONT(12);
     _nameLabel.text = @"李颖";
     [_nameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(_headImageView.mas_right).offset(SCALE_NUM(10));

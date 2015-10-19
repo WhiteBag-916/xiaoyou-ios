@@ -88,7 +88,7 @@
     [self.wrapContentView addSubview:_remindTitleLabel];
     _remindTitleLabel.text = @"活动申请通过！！！";
     _remindTitleLabel.textColor = KCOLORGREEN_B4;
-    _remindTitleLabel.font = [UIFont systemFontOfSize:14];
+    _remindTitleLabel.font = CONTENT_FONT(12);
     [_remindTitleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.titleImageView.mas_right).offset(10);
         make.top.equalTo(self.titleImageView);
@@ -122,7 +122,7 @@
     
     _contentTitleLabel = [[UILabel alloc]init];
     [self.wrapContentView addSubview:_contentTitleLabel];
-    _contentTitleLabel.font = [UIFont systemFontOfSize:12.0f];
+    _contentTitleLabel.font = CONTENT_FONT(12);
     _contentTitleLabel.text = @"校级活动公告";
     _contentNameLabel.textColor = KCOLORGREEN_B3;
     [_contentTitleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -132,7 +132,7 @@
     
     _contentNameLabel = [[UILabel alloc]init];
     [self.wrapContentView addSubview:_contentNameLabel];
-    _contentNameLabel.font = [UIFont systemFontOfSize:12.0f];
+    _contentNameLabel.font = CONTENT_FONT(12);
     _contentNameLabel.text = @"名称：校级舞蹈大赛";
     _contentNameLabel.textColor = KCOLORGREEN_B3;
     [_contentNameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -154,7 +154,7 @@
     [self.wrapContentView addSubview:_tailLabel];
     _tailLabel.text = @"看看还有什么人";
     _tailLabel.textColor = KCOLORGREEN_B3;
-    _tailLabel.font = [UIFont systemFontOfSize:12.0f];
+    _tailLabel.font = CONTENT_FONT(12);
     [_tailLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.bottomLineView.mas_bottom).offset(16);
         make.leading.mas_equalTo(10);
@@ -178,7 +178,13 @@
     } else if (cellType == AUDIT_PASSED) {
         //do nothing
     } else if (cellType == AUDIT_NOT_PASSED) {
-        self.titleImageView.image = [UIImage imageNamed:@""];
+        _titleImageView.image = [[UIImage imageNamed:@"havetime_icon_no"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+        [_titleImageView mas_updateConstraints:^(MASConstraintMaker *make) {
+            make.top.equalTo(self).offset(SCALE_NUM(10));
+            make.height.mas_equalTo(SCALE_NUM(20));
+            make.width.mas_equalTo(SCALE_NUM(8));
+        }];
+        _remindTitleLabel.text = @"很遗憾，你的报名申请未通过审核";
     } else if (cellType == SUCESSED_JOININ) {
         self.remindTitleLabel.text = @"你已成功参加活动";
     }
