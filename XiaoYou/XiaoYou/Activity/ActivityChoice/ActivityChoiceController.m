@@ -9,6 +9,11 @@
 #import "ActivityChoiceController.h"
 #import "ActivityChoiceTableView.h"
 
+typedef enum : NSUInteger {
+    ACTIVITY_CHOICE_TYPE,
+    CLASS_CHOICE_TYPE,
+} CHOICE_TYPE;
+
 @interface ActivityChoiceController ()
 
 @property (nonatomic,strong)ActivityChoiceTableView * activityChoiceTableView;
@@ -16,6 +21,25 @@
 @end
 
 @implementation ActivityChoiceController
+
+-(instancetype)initWithType:(CHOICE_TYPE) type
+{
+    self = [super init];
+    if (self) {
+        switch (type) {
+            case ACTIVITY_CHOICE_TYPE:
+                ;
+                break;
+            case CLASS_CHOICE_TYPE:
+                ;
+                break;
+            
+            default:
+                break;
+        }
+    }
+    return self;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
