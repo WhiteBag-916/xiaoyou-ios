@@ -74,7 +74,7 @@
     _availableViewController.tabBarItem = availableItem;
     
     //Feed
-    UITabBarItem *feedListItem = [[UITabBarItem alloc] initWithTitle:@"人脉"
+    UITabBarItem *feedListItem = [[UITabBarItem alloc] initWithTitle:@"校友圈"
                                                                image:[UIImage imageNamed:@"btn_friends_n"]
                                                                  tag:kTag_TabBar_FeedList];
     feedListItem.selectedImage = [[UIImage imageNamed:@"btn_friends_y"]
