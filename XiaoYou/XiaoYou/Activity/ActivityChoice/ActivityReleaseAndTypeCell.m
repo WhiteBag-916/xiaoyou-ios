@@ -78,12 +78,12 @@ NSString *const kActivityReleaseAndTypeCell = @"ActivityReleaseAndTypeCellId";
     //字
     _releaseAndTypeLabel = [[UILabel alloc] init];
     _releaseAndTypeLabel.backgroundColor = [UIColor clearColor];
-    _releaseAndTypeLabel.font = CONTENT_FONT(14);
+    _releaseAndTypeLabel.font = CONTENT_FONT(12);
     [self.contentView addSubview:_releaseAndTypeLabel];
     [_releaseAndTypeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(_releaseAndTypeImageView.mas_right).offset(SCALE_NUM(5));
         make.centerY.equalTo(_releaseAndTypeImageView);
-        make.height.mas_equalTo(SCALE_NUM(17));
+        make.height.mas_equalTo(SCALE_NUM(12));
         make.width.mas_equalTo(SCALE_NUM(100));
     }];
     
@@ -123,6 +123,19 @@ NSString *const kActivityReleaseAndTypeCell = @"ActivityReleaseAndTypeCellId";
 -(void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
 {
     
+}
+
+- (UIView *)pickerView:(UIPickerView *)pickerView viewForRow:(NSInteger)row forComponent:(NSInteger)component reusingView:(UIView *)view{
+    UILabel* pickerLabel = (UILabel*)view;
+    if (!pickerLabel){
+        pickerLabel = [[UILabel alloc] init];
+        pickerLabel.adjustsFontSizeToFitWidth = YES;
+        [pickerLabel setTextAlignment:NSTextAlignmentCenter];
+        [pickerLabel setBackgroundColor:[UIColor clearColor]];
+        [pickerLabel setFont:[UIFont systemFontOfSize:12]];
+    }
+    pickerLabel.text=[self pickerView:pickerView titleForRow:row forComponent:component];
+    return pickerLabel;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

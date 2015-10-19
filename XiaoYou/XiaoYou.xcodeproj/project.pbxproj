@@ -677,7 +677,6 @@
 		E45005D81BCE333B00933AB9 /* TypeDetailCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E45005D71BCE333B00933AB9 /* TypeDetailCollectionViewCell.m */; settings = {ASSET_TAGS = (); }; };
 		E455DCE41BCB683C00B78E54 /* ActivityChoiceController.m in Sources */ = {isa = PBXBuildFile; fileRef = E455DCE31BCB683C00B78E54 /* ActivityChoiceController.m */; settings = {ASSET_TAGS = (); }; };
 		E455DCE71BCB686E00B78E54 /* ActivityChoiceTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = E455DCE61BCB686E00B78E54 /* ActivityChoiceTableView.m */; settings = {ASSET_TAGS = (); }; };
-		E455DCED1BCB793000B78E54 /* ActivityDateAndTimeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E455DCEC1BCB793000B78E54 /* ActivityDateAndTimeCell.m */; settings = {ASSET_TAGS = (); }; };
 		E455DCF01BCB798400B78E54 /* ActivityReleaseAndTypeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E455DCEF1BCB798400B78E54 /* ActivityReleaseAndTypeCell.m */; settings = {ASSET_TAGS = (); }; };
 		E455DCF41BCB8F6D00B78E54 /* ActivityReleaseController.m in Sources */ = {isa = PBXBuildFile; fileRef = E455DCF31BCB8F6D00B78E54 /* ActivityReleaseController.m */; settings = {ASSET_TAGS = (); }; };
 		E45E98F61BD0D1910012F9DA /* ActivityResultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E45E98F51BD0D1910012F9DA /* ActivityResultViewController.m */; settings = {ASSET_TAGS = (); }; };
@@ -689,6 +688,7 @@
 		E4BE2DAA1BC7989300124F22 /* ContactsInfoFirstTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E4BE2DA91BC7989300124F22 /* ContactsInfoFirstTableViewCell.m */; settings = {ASSET_TAGS = (); }; };
 		E4BE2DAD1BC798A600124F22 /* ContactsInfoSecondTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E4BE2DAC1BC798A600124F22 /* ContactsInfoSecondTableViewCell.m */; settings = {ASSET_TAGS = (); }; };
 		E4BE2DB01BC798B500124F22 /* ContactsInfoThirdTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E4BE2DAF1BC798B500124F22 /* ContactsInfoThirdTableViewCell.m */; settings = {ASSET_TAGS = (); }; };
+		E4E2348F1BD4DA910092E81B /* ActivityIdentityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E4E2348E1BD4DA910092E81B /* ActivityIdentityViewController.m */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -1705,8 +1705,6 @@
 		E455DCE31BCB683C00B78E54 /* ActivityChoiceController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityChoiceController.m; sourceTree = "<group>"; };
 		E455DCE51BCB686E00B78E54 /* ActivityChoiceTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityChoiceTableView.h; sourceTree = "<group>"; };
 		E455DCE61BCB686E00B78E54 /* ActivityChoiceTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityChoiceTableView.m; sourceTree = "<group>"; };
-		E455DCEB1BCB793000B78E54 /* ActivityDateAndTimeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityDateAndTimeCell.h; sourceTree = "<group>"; };
-		E455DCEC1BCB793000B78E54 /* ActivityDateAndTimeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityDateAndTimeCell.m; sourceTree = "<group>"; };
 		E455DCEE1BCB798400B78E54 /* ActivityReleaseAndTypeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityReleaseAndTypeCell.h; sourceTree = "<group>"; };
 		E455DCEF1BCB798400B78E54 /* ActivityReleaseAndTypeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityReleaseAndTypeCell.m; sourceTree = "<group>"; };
 		E455DCF21BCB8F6D00B78E54 /* ActivityReleaseController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityReleaseController.h; sourceTree = "<group>"; };
@@ -1725,6 +1723,8 @@
 		E4BE2DAC1BC798A600124F22 /* ContactsInfoSecondTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactsInfoSecondTableViewCell.m; sourceTree = "<group>"; };
 		E4BE2DAE1BC798B500124F22 /* ContactsInfoThirdTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactsInfoThirdTableViewCell.h; sourceTree = "<group>"; };
 		E4BE2DAF1BC798B500124F22 /* ContactsInfoThirdTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactsInfoThirdTableViewCell.m; sourceTree = "<group>"; };
+		E4E2348D1BD4DA910092E81B /* ActivityIdentityViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityIdentityViewController.h; sourceTree = "<group>"; };
+		E4E2348E1BD4DA910092E81B /* ActivityIdentityViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityIdentityViewController.m; sourceTree = "<group>"; };
 		F531E541C4347E287F02139F /* Pods-XiaoYou.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XiaoYou.release.xcconfig"; path = "../Pods/Target Support Files/Pods-XiaoYou/Pods-XiaoYou.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -3707,8 +3707,6 @@
 				E455DCE31BCB683C00B78E54 /* ActivityChoiceController.m */,
 				E455DCE51BCB686E00B78E54 /* ActivityChoiceTableView.h */,
 				E455DCE61BCB686E00B78E54 /* ActivityChoiceTableView.m */,
-				E455DCEB1BCB793000B78E54 /* ActivityDateAndTimeCell.h */,
-				E455DCEC1BCB793000B78E54 /* ActivityDateAndTimeCell.m */,
 				E455DCEE1BCB798400B78E54 /* ActivityReleaseAndTypeCell.h */,
 				E455DCEF1BCB798400B78E54 /* ActivityReleaseAndTypeCell.m */,
 			);
@@ -3738,6 +3736,8 @@
 				E45005D41BCE332500933AB9 /* TypeDetailCollectionView.m */,
 				E45005D61BCE333B00933AB9 /* TypeDetailCollectionViewCell.h */,
 				E45005D71BCE333B00933AB9 /* TypeDetailCollectionViewCell.m */,
+				E4E2348D1BD4DA910092E81B /* ActivityIdentityViewController.h */,
+				E4E2348E1BD4DA910092E81B /* ActivityIdentityViewController.m */,
 				E416053C1BCF7FA400C6C4A5 /* ActivityReleaseDataManager.h */,
 				E416053D1BCF7FA400C6C4A5 /* ActivityReleaseDataManager.m */,
 			);
@@ -4354,6 +4354,7 @@
 				042AADC61BCB4AC40056C09F /* JoinInHeadView.m in Sources */,
 				333122D91B806F7E00D3D032 /* RobotManager.m in Sources */,
 				333122481B806EDB00D3D032 /* Emoji.m in Sources */,
+				E4E2348F1BD4DA910092E81B /* ActivityIdentityViewController.m in Sources */,
 				E43E10041BCC9CA90018B6D7 /* ActivityReleaseCollectionView.m in Sources */,
 				20DA16FA1BC7C51200A61B37 /* MGCEventCellLayoutAttributes.m in Sources */,
 				20DAAAA31BCD05F5006DF231 /* ActivityBaseCollectionViewCell.m in Sources */,
@@ -4396,7 +4397,6 @@
 				20DAAA6C1BCD05F5006DF231 /* WeekViewController.m in Sources */,
 				049C55CC1BB3F33D007565E1 /* BottomView.m in Sources */,
 				33380D971B857826008B51EB /* SendMessageTableViewCell.m in Sources */,
-				E455DCED1BCB793000B78E54 /* ActivityDateAndTimeCell.m in Sources */,
 				6592DCD91B806A9B004CD118 /* GroupApplyTableViewCell.m in Sources */,
 				333122571B806EDB00D3D032 /* EMSDWebImageDecoder.m in Sources */,
 				049FF1BF1BC91777000645C8 /* PassRemindCell.m in Sources */,
