@@ -12,5 +12,6 @@
 @interface ActivityChoiceTableView : YTableView
 
 @property (nonatomic,strong)ActivityChoiceController * myController;
+@property (nonatomic,assign)NSInteger myType;
 
 @end
