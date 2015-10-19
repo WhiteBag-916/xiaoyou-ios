@@ -201,6 +201,7 @@
     _statusButton = [UIButton buttonWithType:UIButtonTypeSystem];
     [self.wrapContentView addSubview:_statusButton];
     _statusButton.titleLabel.font = CONTENT_FONT(12);
+    _statusButton.titleLabel.textColor = KCOLORGREEN_B5;
     [_statusButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     [_statusButton setTitle:@"已同意" forState:UIControlStateNormal];
     _statusButton.enabled = NO;
@@ -236,6 +237,7 @@
     _agreeButton = [UIButton buttonWithType:UIButtonTypeSystem];
     [self.bottomSelectView addSubview:_agreeButton];
     _agreeButton.titleLabel.font = CONTENT_FONT(12);
+    _agreeButton.titleLabel.textColor = KCOLORGREEN_B4;
     [_agreeButton addTarget:self action:@selector(agreeAction) forControlEvents:UIControlEventTouchUpInside];
     [_agreeButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     [_agreeButton setTitle:@"同意" forState:UIControlStateNormal];
@@ -248,6 +250,7 @@
     
     _ignoreButton = [UIButton buttonWithType:UIButtonTypeSystem];
     [self.bottomSelectView addSubview:_ignoreButton];
+    _ignoreButton.titleLabel.textColor = KCOLORGREEN_B4;
     _ignoreButton.titleLabel.font = CONTENT_FONT(12);
     [_ignoreButton addTarget:self action:@selector(ignoreAction) forControlEvents:UIControlEventTouchUpInside];
     [_ignoreButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];

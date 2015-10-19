@@ -87,6 +87,7 @@
     _remindTitleLabel = [[UILabel alloc]init];
     [self.wrapContentView addSubview:_remindTitleLabel];
     _remindTitleLabel.text = @"活动申请通过！！！";
+    _remindTitleLabel.textColor = KCOLORGREEN_B4;
     _remindTitleLabel.font = [UIFont systemFontOfSize:14];
     [_remindTitleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.titleImageView.mas_right).offset(10);
@@ -123,6 +124,7 @@
     [self.wrapContentView addSubview:_contentTitleLabel];
     _contentTitleLabel.font = [UIFont systemFontOfSize:12.0f];
     _contentTitleLabel.text = @"校级活动公告";
+    _contentNameLabel.textColor = KCOLORGREEN_B3;
     [_contentTitleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.headImageView);
         make.left.equalTo(self.headImageView.mas_right).offset(10);
@@ -132,6 +134,7 @@
     [self.wrapContentView addSubview:_contentNameLabel];
     _contentNameLabel.font = [UIFont systemFontOfSize:12.0f];
     _contentNameLabel.text = @"名称：校级舞蹈大赛";
+    _contentNameLabel.textColor = KCOLORGREEN_B3;
     [_contentNameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.contentTitleLabel.mas_left);
         make.bottom.equalTo(self.headImageView.mas_bottom);
@@ -150,6 +153,7 @@
     _tailLabel = [[UILabel alloc]init];
     [self.wrapContentView addSubview:_tailLabel];
     _tailLabel.text = @"看看还有什么人";
+    _tailLabel.textColor = KCOLORGREEN_B3;
     _tailLabel.font = [UIFont systemFontOfSize:12.0f];
     [_tailLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.bottomLineView.mas_bottom).offset(16);
