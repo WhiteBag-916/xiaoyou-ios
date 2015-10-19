@@ -44,13 +44,6 @@ typedef enum : NSUInteger {
     
     _dataManager = [ActivityReleaseDataManager shareActivityReleaseDataManager];
     
-    [self setUpUI];
-}
-
-- (void)viewWillAppear:(BOOL)animated
-{
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changeEnabelStateForReleaseBtn:) name:KNotification_Enabel_ReleaseBtn object:nil];
-    
     _dataManager.ActivityNameText = nil;
     _dataManager.ActivityDesciptionText = nil;
     _dataManager.ActivityDesciptionImage = nil;
@@ -58,10 +51,21 @@ typedef enum : NSUInteger {
     _dataManager.ActivityDateBeginText = nil;
     _dataManager.ActivityDateEndText = nil;
     _dataManager.ActivityPlaceText = nil;
+    
+    [self setUpUI];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changeEnabelStateForReleaseBtn:) name:KNotification_Enabel_ReleaseBtn object:nil];
+    
 }
 
 -(void)viewWillDisappear:(BOOL)animated
 {
+    [super viewWillDisappear:animated];
+    
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 #pragma mark - 改变发布按钮是否可点击状态方法
