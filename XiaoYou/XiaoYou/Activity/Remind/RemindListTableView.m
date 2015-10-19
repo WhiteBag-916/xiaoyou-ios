@@ -128,6 +128,9 @@
 #pragma mark 协议方法
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    if (indexPath.section == 1) {
+        return SCALE_NUM(116);
+    }
     if (indexPath.section < 3) {
         return SCALE_NUM(160);
         return SCALE_NUM(116);

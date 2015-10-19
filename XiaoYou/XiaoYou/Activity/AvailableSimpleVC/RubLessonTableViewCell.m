@@ -138,7 +138,7 @@ NSString *const kRubLessonTableViewCell = @"RubLessonTableViewCellId";
     
     _timeLabel = [YUtils initLabel:CONTENT_FONT(12)
                                 color:KCOLORGREEN_B3
-                                 text:@"今天 9:00-10:30"
+                                 text:@"今天 09:00-10:30"
                             alignment:NSTextAlignmentLeft];
     [self.contentView addSubview:_timeLabel];
     
