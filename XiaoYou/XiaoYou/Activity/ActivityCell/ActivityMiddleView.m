@@ -53,7 +53,7 @@
     _deadLineTimeLabel = [[UILabel alloc]init];
     [self addSubview:_deadLineTimeLabel];
     _deadLineTimeLabel.font = CONTENT_FONT(13);
-    _deadLineTimeLabel.text = @"15/09/28 18:00";
+    _deadLineTimeLabel.text = @"15/10/25 06:00";
     [_deadLineTimeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(_staticDeadLineDes.mas_right).offset(10);
         make.centerY.equalTo(_staticDeadLineDes.mas_centerY);
@@ -71,7 +71,7 @@
     _activityTimeLabel = [[UILabel alloc]init];
     [self addSubview:_activityTimeLabel];
     _activityTimeLabel.font = CONTENT_FONT(13);
-    _activityTimeLabel.text = @"15/09/28 18:00";
+    _activityTimeLabel.text = @"15/10/05 06:00";
     [_activityTimeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(_staticActivityTimeDes);
         make.left.equalTo(_deadLineTimeLabel);
@@ -89,7 +89,7 @@
     _activityEndTimeLabel = [[UILabel alloc]init];
     [self addSubview:_activityEndTimeLabel];
     _activityEndTimeLabel.font = CONTENT_FONT(13);
-    _activityEndTimeLabel.text = @"15/09/28 18:00";
+    _activityEndTimeLabel.text = @"15/10/25 06:00";
     [_activityEndTimeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(_activityEndTimeDes.mas_right).offset(10);
         make.centerY.equalTo(_activityEndTimeDes.mas_centerY);

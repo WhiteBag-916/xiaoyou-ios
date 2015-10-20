@@ -133,7 +133,7 @@
     
     _signUpTimeLabel = [[UILabel alloc]init];
     [self.contentView addSubview:_signUpTimeLabel];
-    _signUpTimeLabel.text = @"2015/10/25 6:00";
+    _signUpTimeLabel.text = @"2015/10/25 06:00";
     _signUpTimeLabel.font = CONTENT_FONT(12);
     _signUpTimeLabel.textColor = KCOLORGREEN_B5;
     [_signUpTimeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -156,7 +156,7 @@
     [self.contentView addSubview:_activityTimeLabel];
     _activityTimeLabel.font = CONTENT_FONT(12);
     _activityTimeLabel.textColor = KCOLORGREEN_B5;
-    _activityTimeLabel.text = @"2015/10/05 8:00";
+    _activityTimeLabel.text = @"2015/10/05 06:00";
     [_activityTimeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.equalTo(_activityTimeDes);
         make.left.equalTo(_signUpTimeLabel);
@@ -178,7 +178,7 @@
     [self.contentView addSubview:_activityEndTimeLabel];
     _activityEndTimeLabel.font = CONTENT_FONT(12);
     _activityEndTimeLabel.textColor = KCOLORGREEN_B5;
-    _activityEndTimeLabel.text = @"2015/10/25 6:00";
+    _activityEndTimeLabel.text = @"2015/10/25 06:00";
     [_activityEndTimeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.equalTo(_activityEndTimeDes);
         make.left.equalTo(_activityTimeLabel);
