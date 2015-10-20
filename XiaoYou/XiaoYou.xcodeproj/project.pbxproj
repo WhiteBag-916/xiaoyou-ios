@@ -23,10 +23,6 @@
 		043AC8621BCF338600AB6E09 /* RespectExpandImg.m in Sources */ = {isa = PBXBuildFile; fileRef = 043AC8611BCF338600AB6E09 /* RespectExpandImg.m */; settings = {ASSET_TAGS = (); }; };
 		043AC86C1BCF7BFC00AB6E09 /* friend_box_serch@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 043AC8641BCF7BFC00AB6E09 /* friend_box_serch@2x.png */; settings = {ASSET_TAGS = (); }; };
 		043AC86D1BCF7BFC00AB6E09 /* friend_box_serch@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 043AC8651BCF7BFC00AB6E09 /* friend_box_serch@3x.png */; settings = {ASSET_TAGS = (); }; };
-		043AC86E1BCF7BFC00AB6E09 /* havetime_box_calender@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 043AC8661BCF7BFC00AB6E09 /* havetime_box_calender@2x.png */; settings = {ASSET_TAGS = (); }; };
-		043AC86F1BCF7BFC00AB6E09 /* havetime_box_calender@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 043AC8671BCF7BFC00AB6E09 /* havetime_box_calender@3x.png */; settings = {ASSET_TAGS = (); }; };
-		043AC8701BCF7BFC00AB6E09 /* havetime_box_classroom@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 043AC8681BCF7BFC00AB6E09 /* havetime_box_classroom@2x.png */; settings = {ASSET_TAGS = (); }; };
-		043AC8711BCF7BFC00AB6E09 /* havetime_box_classroom@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 043AC8691BCF7BFC00AB6E09 /* havetime_box_classroom@3x.png */; settings = {ASSET_TAGS = (); }; };
 		043AC8721BCF7BFC00AB6E09 /* mine_box_yard@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 043AC86A1BCF7BFC00AB6E09 /* mine_box_yard@2x.png */; settings = {ASSET_TAGS = (); }; };
 		043AC8731BCF7BFC00AB6E09 /* mine_box_yard@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 043AC86B1BCF7BFC00AB6E09 /* mine_box_yard@3x.png */; settings = {ASSET_TAGS = (); }; };
 		044792BD1BB14DF40053412A /* commenTagList.m in Sources */ = {isa = PBXBuildFile; fileRef = 044792BC1BB14DF40053412A /* commenTagList.m */; settings = {ASSET_TAGS = (); }; };
@@ -727,10 +723,6 @@
 		043AC8611BCF338600AB6E09 /* RespectExpandImg.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RespectExpandImg.m; sourceTree = "<group>"; };
 		043AC8641BCF7BFC00AB6E09 /* friend_box_serch@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "friend_box_serch@2x.png"; sourceTree = "<group>"; };
 		043AC8651BCF7BFC00AB6E09 /* friend_box_serch@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "friend_box_serch@3x.png"; sourceTree = "<group>"; };
-		043AC8661BCF7BFC00AB6E09 /* havetime_box_calender@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "havetime_box_calender@2x.png"; sourceTree = "<group>"; };
-		043AC8671BCF7BFC00AB6E09 /* havetime_box_calender@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "havetime_box_calender@3x.png"; sourceTree = "<group>"; };
-		043AC8681BCF7BFC00AB6E09 /* havetime_box_classroom@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "havetime_box_classroom@2x.png"; sourceTree = "<group>"; };
-		043AC8691BCF7BFC00AB6E09 /* havetime_box_classroom@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "havetime_box_classroom@3x.png"; sourceTree = "<group>"; };
 		043AC86A1BCF7BFC00AB6E09 /* mine_box_yard@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mine_box_yard@2x.png"; sourceTree = "<group>"; };
 		043AC86B1BCF7BFC00AB6E09 /* mine_box_yard@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mine_box_yard@3x.png"; sourceTree = "<group>"; };
 		044792BB1BB14DF40053412A /* commenTagList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = commenTagList.h; sourceTree = "<group>"; };
@@ -1786,10 +1778,6 @@
 				0476B6281BD0E4EC00FD13DF /* 1havetime_box_classroom@3x.png */,
 				043AC8641BCF7BFC00AB6E09 /* friend_box_serch@2x.png */,
 				043AC8651BCF7BFC00AB6E09 /* friend_box_serch@3x.png */,
-				043AC8661BCF7BFC00AB6E09 /* havetime_box_calender@2x.png */,
-				043AC8671BCF7BFC00AB6E09 /* havetime_box_calender@3x.png */,
-				043AC8681BCF7BFC00AB6E09 /* havetime_box_classroom@2x.png */,
-				043AC8691BCF7BFC00AB6E09 /* havetime_box_classroom@3x.png */,
 				043AC86A1BCF7BFC00AB6E09 /* mine_box_yard@2x.png */,
 				043AC86B1BCF7BFC00AB6E09 /* mine_box_yard@3x.png */,
 			);
@@ -3988,14 +3976,12 @@
 				65CBE1671BC013B300C28D57 /* gift_id@3x.png in Resources */,
 				20DAAAAA1BCD05F5006DF231 /* havetime_icon_academy@2x.png in Resources */,
 				20DA1A771B89BEF100DEF95C /* register-frame-agree@3x.png in Resources */,
-				043AC8701BCF7BFC00AB6E09 /* havetime_box_classroom@2x.png in Resources */,
 				20E0BFFC1B88B0CA00EDAED4 /* register-photo-upload-boundary@3x.png in Resources */,
 				20DAE1581B882D0500607996 /* register-photo-upload@2x.png in Resources */,
 				333122C31B806EDC00D3D032 /* chat_receiver_audio_playing_full.png in Resources */,
 				04394B4C1BBBB78B0098BB8F /* fast_add_white@3x.png in Resources */,
 				049480451BB8DE1700C68460 /* photo4.jpg in Resources */,
 				20DAAAAF1BCD05F5006DF231 /* havetime_icon_teacher@3x.png in Resources */,
-				043AC86E1BCF7BFC00AB6E09 /* havetime_box_calender@2x.png in Resources */,
 				20DD79071BA97D72009AD1A9 /* background-start.png in Resources */,
 				334670791B84337E00A8628A /* friend-requests@3x.png in Resources */,
 				333122D31B806EDC00D3D032 /* back@2x.png in Resources */,
@@ -4084,7 +4070,6 @@
 				E43E10751BCCFA840018B6D7 /* img_num1@3x.png in Resources */,
 				04394B4B1BBBB78B0098BB8F /* fast_add_white@2x.png in Resources */,
 				E43E10811BCCFA840018B6D7 /* line_dot@3x.png in Resources */,
-				043AC8711BCF7BFC00AB6E09 /* havetime_box_classroom@3x.png in Resources */,
 				049480481BB8DE1700C68460 /* PhotoBorder@2x.png in Resources */,
 				20DA1A761B89BEF100DEF95C /* register-frame-agree@2x.png in Resources */,
 				044C31581BCCAF0000E0D508 /* have_time_search@2x.png in Resources */,
@@ -4126,7 +4111,6 @@
 				0494806F1BB94FF900C68460 /* too_see_more_arrow@3x.png in Resources */,
 				044C315C1BCCAF0000E0D508 /* red_bar@2x.png in Resources */,
 				20DAA2BA1BCE34DF00420234 /* btn_message_y@3x.png in Resources */,
-				043AC86F1BCF7BFC00AB6E09 /* havetime_box_calender@3x.png in Resources */,
 				650C6C131B886D8200A89AC9 /* mine-heart@3x.png in Resources */,
 				049480341BB8D76C00C68460 /* tick@2x.png in Resources */,
 				20E033EE1B842727002E4583 /* UMSShareListController.xib in Resources */,
