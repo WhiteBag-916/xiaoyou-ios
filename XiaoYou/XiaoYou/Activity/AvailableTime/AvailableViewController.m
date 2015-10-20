@@ -127,6 +127,7 @@
 -(void)publishAction {
     ActivityIdentityViewController *activityVC = [[ActivityIdentityViewController alloc]init];
     //[self.navigationController pushViewController:activityVC animated:YES needHiddenBottomBar:YES];
+    activityVC.availableViewController = self;
     [self presentViewController:activityVC animated:YES completion:nil];
 }
 
