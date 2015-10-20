@@ -52,7 +52,7 @@
     [self.contentView addSubview:_titleLabel];
     _titleLabel.text = @"你可以蹭的课";
     _titleLabel.textColor = KCOLORGREEN_B4;
-    _titleLabel.font = CONTENT_FONT(12);
+    _titleLabel.font = CONTENT_FONT(15);
     [_titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.equalTo(_startImageView.mas_centerY);
         make.leading.mas_equalTo(SCALE_NUM(15));

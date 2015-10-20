@@ -15,9 +15,10 @@ NSString *const kRubLessonTableViewCell = @"RubLessonTableViewCellId";
 #define K_LECTURERIMG_T     SCALE_NUM(15)   //授课人图标上间距
 #define K_DEPARTMENTSIMG_T  SCALE_NUM(14)   //院系图标上间距
 #define K_LEFTLAB_L         SCALE_NUM(10)   //描述左
-#define K_LEFTLAB_W         SCALE_NUM(61)   //描述宽
+#define K_LEFTLAB_W         SCALE_NUM(70)   //描述宽
 #define K_NAMELAB_L         SCALE_NUM(0)   //名字左
-#define K_ADD_T             SCALE_NUM(20)   //加日程上
+#define K_NAMELAB_R         SCALE_NUM(-12)   //名字右
+#define K_ADD_T             SCALE_NUM(19)   //加日程上
 #define K_ADD_R             SCALE_NUM(9)   //加日程上
 #define K_ADD_H             SCALE_NUM(26)   //加日程高
 #define K_ADD_W             SCALE_NUM(70)   //加日程宽
@@ -76,12 +77,6 @@ NSString *const kRubLessonTableViewCell = @"RubLessonTableViewCellId";
                           alignment:NSTextAlignmentLeft];
     [self.contentView addSubview:_courseName];
     
-    [_courseName mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.height.equalTo(courseImageView);
-        make.left.equalTo(courseLabel.mas_right).offset(K_NAMELAB_L);
-        make.right.mas_equalTo(K_NAMELAB_L);
-    }];
-    
     //授课人
     UIImageView *lecturerImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"havetime_icon_teacher"]];
     [self.contentView addSubview:lecturerImageView];
@@ -99,7 +94,7 @@ NSString *const kRubLessonTableViewCell = @"RubLessonTableViewCellId";
     
     [lecturerLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.height.equalTo(lecturerImageView);
-        make.left.equalTo(lecturerImageView.mas_right).offset(K_LEFTLAB_L);
+        make.left.equalTo(courseLabel);
         make.width.mas_equalTo(K_LEFTLAB_W);
     }];
     
@@ -112,7 +107,7 @@ NSString *const kRubLessonTableViewCell = @"RubLessonTableViewCellId";
     [_lecturerName mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.height.equalTo(lecturerImageView);
         make.left.equalTo(lecturerLabel.mas_right).offset(K_NAMELAB_L);
-        make.right.mas_equalTo(K_NAMELAB_L);
+        make.right.mas_equalTo(K_NAMELAB_R);
     }];
     
     //上课时间
@@ -132,7 +127,7 @@ NSString *const kRubLessonTableViewCell = @"RubLessonTableViewCellId";
     
     [timeLeftLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.height.equalTo(timeImageView);
-        make.left.equalTo(timeImageView.mas_right).offset(K_LEFTLAB_L);
+        make.left.equalTo(courseLabel);
         make.width.mas_equalTo(K_LEFTLAB_W);
     }];
     
@@ -144,8 +139,8 @@ NSString *const kRubLessonTableViewCell = @"RubLessonTableViewCellId";
     
     [_timeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.height.equalTo(timeLeftLabel);
-        make.left.equalTo(timeLeftLabel.mas_right).offset(K_NAMELAB_L);
-        make.right.mas_equalTo(K_NAMELAB_L);
+        make.left.equalTo(_lecturerName);
+        make.right.mas_equalTo(K_NAMELAB_R);
     }];
     
     //上课地点
@@ -167,7 +162,7 @@ NSString *const kRubLessonTableViewCell = @"RubLessonTableViewCellId";
     
     [locationLeftLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.height.equalTo(locationImageView);
-        make.left.equalTo(locationImageView.mas_right).offset(K_LEFTLAB_L);
+        make.left.equalTo(courseLabel);
         make.width.mas_equalTo(K_LEFTLAB_W);
     }];
     
@@ -179,8 +174,8 @@ NSString *const kRubLessonTableViewCell = @"RubLessonTableViewCellId";
     
     [_locationLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.height.equalTo(locationLeftLabel);
-        make.left.equalTo(locationLeftLabel.mas_right).offset(K_NAMELAB_L);
-        make.right.mas_equalTo(K_NAMELAB_L);
+        make.left.equalTo(_lecturerName);
+        make.right.mas_equalTo(K_NAMELAB_R);
     }];
     
     //院系
@@ -200,7 +195,7 @@ NSString *const kRubLessonTableViewCell = @"RubLessonTableViewCellId";
     
     [departmentsLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.height.equalTo(departmentsImageView);
-        make.left.equalTo(departmentsImageView.mas_right).offset(K_LEFTLAB_L);
+        make.left.equalTo(courseLabel);
         make.width.mas_equalTo(K_LEFTLAB_W);
     }];
     
@@ -212,8 +207,8 @@ NSString *const kRubLessonTableViewCell = @"RubLessonTableViewCellId";
     
     [_departmentsName mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.height.equalTo(departmentsImageView);
-        make.left.equalTo(departmentsLabel.mas_right).offset(K_NAMELAB_L);
-        make.right.mas_equalTo(K_NAMELAB_L);
+        make.left.equalTo(_lecturerName);
+        make.right.mas_equalTo(K_NAMELAB_R);
     }];
     
     //加入日程
@@ -231,6 +226,12 @@ NSString *const kRubLessonTableViewCell = @"RubLessonTableViewCellId";
         make.right.mas_equalTo(-K_ADD_R);
         make.width.mas_equalTo(K_ADD_W);
         make.height.mas_equalTo(K_ADD_H);
+    }];
+    
+    [_courseName mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.height.equalTo(courseImageView);
+        make.left.equalTo(_lecturerName);
+        make.right.equalTo(_addToCalendar.mas_left).offset(K_NAMELAB_R);
     }];
 }
 

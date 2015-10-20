@@ -11,11 +11,11 @@
 NSString *const kStudyRoomDetailTableViewCell = @"StudyRoomDetailTableViewCellId";
 
 #define K_IMG_L             SCALE_NUM(12)   //图标左
-#define K_IMG_TW            SCALE_NUM(20)   //图标上
+#define K_IMG_TW            SCALE_NUM(19)   //图标上
 #define K_IMG_H             SCALE_NUM(14)   //图标高
 #define K_TEXT_L            SCALE_NUM(6)    //字左
-#define K_ROOM_T            SCALE_NUM(16)   //室上
-#define K_TEXT_H            SCALE_NUM(10)   //字高
+#define K_ROOM_T            SCALE_NUM(15)   //室上
+#define K_TEXT_H            SCALE_NUM(12)   //字高
 
 @interface StudyRoomDetailTableViewCell ()
 
@@ -87,7 +87,7 @@ NSString *const kStudyRoomDetailTableViewCell = @"StudyRoomDetailTableViewCellId
     [_timeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.right.equalTo(_studyRoomLabel);
         make.height.mas_equalTo(K_TEXT_H);
-        make.top.equalTo(_studyRoomLabel.mas_bottom).offset(K_ROOM_T);
+        make.bottom.mas_equalTo(-K_IMG_TW);
     }];
 }
 

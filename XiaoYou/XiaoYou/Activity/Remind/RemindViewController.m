@@ -10,7 +10,6 @@
 #import "RemindListTableView.h"
 #import "RemindManager.h"
 @interface RemindViewController ()
-
 @property (nonatomic,retain) RemindListTableView *remindList;
 @end
 

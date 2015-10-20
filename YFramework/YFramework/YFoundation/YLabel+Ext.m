@@ -15,6 +15,7 @@
     NSMutableAttributedString *attStr = [[NSMutableAttributedString alloc]initWithString:text];
     NSMutableParagraphStyle *style = [[NSMutableParagraphStyle alloc]init];
     [style setLineSpacing:lineSpacing];
+    [style setLineBreakMode:NSLineBreakByTruncatingTail];
     //根据给定长度与style设置attStr式样
     [attStr addAttribute:NSParagraphStyleAttributeName value:style range:NSMakeRange(0, text.length)];
     //Label获取attStr式样

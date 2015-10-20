@@ -55,7 +55,7 @@
     [self.contentView addSubview:_middleView];
     
     [_middleView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(_topView.mas_bottom);
+        make.top.equalTo(_topView.mas_bottom).offset(SCALE_NUM(10));
         make.left.equalTo(_topView.descriptionLabel.mas_left);
         make.right.equalTo(_topView.descriptionLabel);
     }];
@@ -71,7 +71,7 @@
     [self.contentView addSubview:_bottomView];
     
     [_bottomView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(_middleView.mas_bottom);
+        make.top.equalTo(_middleView.mas_bottom).offset(SCALE_NUM(5));
         make.leading.mas_equalTo(0);
         make.trailing.mas_equalTo(0);
         make.bottom.mas_equalTo(0);
