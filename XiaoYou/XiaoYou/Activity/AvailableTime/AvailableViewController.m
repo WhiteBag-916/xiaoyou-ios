@@ -13,6 +13,7 @@
 #import "ActivityChoiceController.h"
 #import "AppConfigData.h"
 #import "ActivityChoiceController.h"
+#import "ActivityIdentityViewController.h"
 @interface AvailableViewController ()
 
 @property (nonatomic,strong) AvailableListView *availableListView;
@@ -124,7 +125,7 @@
 
 //发布Action
 -(void)publishAction {
-    ActivityReleaseController *activityVC = [[ActivityReleaseController alloc]init];
+    ActivityIdentityViewController *activityVC = [[ActivityIdentityViewController alloc]init];
     [self.navigationController pushViewController:activityVC animated:YES needHiddenBottomBar:YES];
 }
 
