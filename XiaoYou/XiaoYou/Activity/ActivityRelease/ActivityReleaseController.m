@@ -32,6 +32,14 @@ typedef enum : NSUInteger {
 @property (nonatomic,strong) UIView * point3View;
 @property (nonatomic,strong) UIView * point4View;
 @property (nonatomic,strong) UIView * point5View;
+
+//五个名称
+@property (nonatomic,strong) UILabel * typeLabel1;
+@property (nonatomic,strong) UILabel * typeLabel2;
+@property (nonatomic,strong) UILabel * typeLabel3;
+@property (nonatomic,strong) UILabel * typeLabel4;
+@property (nonatomic,strong) UILabel * typeLabel5;
+
 //数据Manager
 @property (nonatomic,strong) ActivityReleaseDataManager * dataManager;
 
@@ -154,13 +162,13 @@ typedef enum : NSUInteger {
         make.width.mas_equalTo((SCREEN_WIDTH - 80)/4);
         make.height.mas_equalTo(2);
     }];
-    UILabel * typeLabel1 = [[UILabel alloc]init];
-    typeLabel1.text = @"名称";
-    typeLabel1.textAlignment = NSTextAlignmentCenter;
-    typeLabel1.textColor = KCOLORGREEN_B5;
-    typeLabel1.font = CONTENT_FONT(12);
-    [_scrollView addSubview:typeLabel1];
-    [typeLabel1 mas_makeConstraints:^(MASConstraintMaker *make) {
+    _typeLabel1 = [[UILabel alloc]init];
+    _typeLabel1.text = @"名称";
+    _typeLabel1.textAlignment = NSTextAlignmentCenter;
+    _typeLabel1.textColor = KCOLORGREEN_g1;
+    _typeLabel1.font = CONTENT_FONT(12);
+    [_scrollView addSubview:_typeLabel1];
+    [_typeLabel1 mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.equalTo(_point1View);
         make.top.equalTo(_point1View.mas_bottom).offset(SCALE_NUM(8));
         make.width.mas_equalTo(SCALE_NUM(30));
@@ -172,7 +180,7 @@ typedef enum : NSUInteger {
     [_scrollView addSubview:btn1];
     [btn1 mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(_point1View);
-        make.right.bottom.left.equalTo(typeLabel1);
+        make.right.bottom.left.equalTo(_typeLabel1);
     }];
     [btn1 addTarget:self action:@selector(clickeLabelButton:) forControlEvents:UIControlEventTouchUpInside];
     
@@ -196,13 +204,13 @@ typedef enum : NSUInteger {
         make.width.mas_equalTo((SCREEN_WIDTH - 80)/4);
         make.height.mas_equalTo(2);
     }];
-    UILabel * typeLabel2 = [[UILabel alloc]init];
-    typeLabel2.text = @"描述";
-    typeLabel2.textAlignment = NSTextAlignmentCenter;
-    typeLabel2.textColor = KCOLORGREEN_B5;
-    typeLabel2.font = CONTENT_FONT(12);
-    [_scrollView addSubview:typeLabel2];
-    [typeLabel2 mas_makeConstraints:^(MASConstraintMaker *make) {
+    _typeLabel2 = [[UILabel alloc]init];
+    _typeLabel2.text = @"描述";
+    _typeLabel2.textAlignment = NSTextAlignmentCenter;
+    _typeLabel2.textColor = KCOLORGREEN_B5;
+    _typeLabel2.font = CONTENT_FONT(12);
+    [_scrollView addSubview:_typeLabel2];
+    [_typeLabel2 mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.equalTo(_point2View);
         make.top.equalTo(_point2View.mas_bottom).offset(SCALE_NUM(8));
         make.width.mas_equalTo(SCALE_NUM(30));
@@ -214,7 +222,7 @@ typedef enum : NSUInteger {
     [_scrollView addSubview:btn2];
     [btn2 mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(_point2View);
-        make.right.bottom.left.equalTo(typeLabel2);
+        make.right.bottom.left.equalTo(_typeLabel2);
     }];
     [btn2 addTarget:self action:@selector(clickeLabelButton:) forControlEvents:UIControlEventTouchUpInside];
     
@@ -238,13 +246,13 @@ typedef enum : NSUInteger {
         make.width.mas_equalTo((SCREEN_WIDTH - 80)/4);
         make.height.mas_equalTo(2);
     }];
-    UILabel * typeLabel3 = [[UILabel alloc]init];
-    typeLabel3.text = @"时间";
-    typeLabel3.textAlignment = NSTextAlignmentCenter;
-    typeLabel3.textColor = KCOLORGREEN_B5;
-    typeLabel3.font = CONTENT_FONT(12);
-    [_scrollView addSubview:typeLabel3];
-    [typeLabel3 mas_makeConstraints:^(MASConstraintMaker *make) {
+    _typeLabel3 = [[UILabel alloc]init];
+    _typeLabel3.text = @"时间";
+    _typeLabel3.textAlignment = NSTextAlignmentCenter;
+    _typeLabel3.textColor = KCOLORGREEN_B5;
+    _typeLabel3.font = CONTENT_FONT(12);
+    [_scrollView addSubview:_typeLabel3];
+    [_typeLabel3 mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.equalTo(_point3View);
         make.top.equalTo(_point3View.mas_bottom).offset(SCALE_NUM(8));
         make.width.mas_equalTo(SCALE_NUM(30));
@@ -256,7 +264,7 @@ typedef enum : NSUInteger {
     [_scrollView addSubview:btn3];
     [btn3 mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(_point3View);
-        make.right.bottom.left.equalTo(typeLabel3);
+        make.right.bottom.left.equalTo(_typeLabel3);
     }];
     [btn3 addTarget:self action:@selector(clickeLabelButton:) forControlEvents:UIControlEventTouchUpInside];
     //Point4
@@ -279,13 +287,13 @@ typedef enum : NSUInteger {
         make.width.mas_equalTo((SCREEN_WIDTH - 80)/4);
         make.height.mas_equalTo(2);
     }];
-    UILabel * typeLabel4 = [[UILabel alloc]init];
-    typeLabel4.text = @"地点";
-    typeLabel4.textAlignment = NSTextAlignmentCenter;
-    typeLabel4.textColor = KCOLORGREEN_B5;
-    typeLabel4.font = CONTENT_FONT(12);
-    [_scrollView addSubview:typeLabel4];
-    [typeLabel4 mas_makeConstraints:^(MASConstraintMaker *make) {
+    _typeLabel4 = [[UILabel alloc]init];
+    _typeLabel4.text = @"地点";
+    _typeLabel4.textAlignment = NSTextAlignmentCenter;
+    _typeLabel4.textColor = KCOLORGREEN_B5;
+    _typeLabel4.font = CONTENT_FONT(12);
+    [_scrollView addSubview:_typeLabel4];
+    [_typeLabel4 mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.equalTo(_point4View);
         make.top.equalTo(_point4View.mas_bottom).offset(SCALE_NUM(8));
         make.width.mas_equalTo(SCALE_NUM(30));
@@ -297,7 +305,7 @@ typedef enum : NSUInteger {
     [_scrollView addSubview:btn4];
     [btn4 mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(_point4View);
-        make.right.bottom.left.equalTo(typeLabel4);
+        make.right.bottom.left.equalTo(_typeLabel4);
     }];
     [btn4 addTarget:self action:@selector(clickeLabelButton:) forControlEvents:UIControlEventTouchUpInside];
     //Point5
@@ -311,13 +319,13 @@ typedef enum : NSUInteger {
         make.top.equalTo(_releaseCollectionView.mas_bottom).offset(SCALE_NUM(20));
         make.width.height.mas_equalTo(SCALE_NUM(8));
     }];
-    UILabel * typeLabel5 = [[UILabel alloc]init];
-    typeLabel5.text = @"类型";
-    typeLabel5.textAlignment = NSTextAlignmentCenter;
-    typeLabel5.textColor = KCOLORGREEN_B5;
-    typeLabel5.font = CONTENT_FONT(12);
-    [_scrollView addSubview:typeLabel5];
-    [typeLabel5 mas_makeConstraints:^(MASConstraintMaker *make) {
+    _typeLabel5 = [[UILabel alloc]init];
+    _typeLabel5.text = @"类型";
+    _typeLabel5.textAlignment = NSTextAlignmentCenter;
+    _typeLabel5.textColor = KCOLORGREEN_B5;
+    _typeLabel5.font = CONTENT_FONT(12);
+    [_scrollView addSubview:_typeLabel5];
+    [_typeLabel5 mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.equalTo(_point5View);
         make.top.equalTo(_point5View.mas_bottom).offset(SCALE_NUM(8));
         make.width.mas_equalTo(SCALE_NUM(30));
@@ -329,7 +337,7 @@ typedef enum : NSUInteger {
     [_scrollView addSubview:btn5];
     [btn5 mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(_point5View);
-        make.right.bottom.left.equalTo(typeLabel5);
+        make.right.bottom.left.equalTo(_typeLabel5);
     }];
     [btn5 addTarget:self action:@selector(clickeLabelButton:) forControlEvents:UIControlEventTouchUpInside];
     
@@ -342,7 +350,7 @@ typedef enum : NSUInteger {
     [backgroundView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(_releaseCollectionView).offset(SCALE_NUM(20));
         make.right.equalTo(self.view).offset(30);
-        make.top.equalTo(typeLabel1.mas_bottom).offset(SCALE_NUM(15));
+        make.top.equalTo(_typeLabel1.mas_bottom).offset(SCALE_NUM(15));
         make.height.mas_equalTo(SCALE_NUM(34));
     }];
     
@@ -427,6 +435,11 @@ typedef enum : NSUInteger {
             _point3View.backgroundColor = KCOLORGREEN_B5;
             _point4View.backgroundColor = KCOLORGREEN_B5;
             _point5View.backgroundColor = KCOLORGREEN_B5;
+            _typeLabel1.textColor = KCOLORGREEN_g1;
+            _typeLabel2.textColor = KCOLORGREEN_B5;
+            _typeLabel3.textColor = KCOLORGREEN_B5;
+            _typeLabel4.textColor = KCOLORGREEN_B5;
+            _typeLabel5.textColor = KCOLORGREEN_B5;
             break;
         case POINT2:
             _point2View.backgroundColor = KCOLORGREEN_g1;
@@ -434,6 +447,11 @@ typedef enum : NSUInteger {
             _point3View.backgroundColor = KCOLORGREEN_B5;
             _point4View.backgroundColor = KCOLORGREEN_B5;
             _point5View.backgroundColor = KCOLORGREEN_B5;
+            _typeLabel2.textColor = KCOLORGREEN_g1;
+            _typeLabel1.textColor = KCOLORGREEN_B5;
+            _typeLabel3.textColor = KCOLORGREEN_B5;
+            _typeLabel4.textColor = KCOLORGREEN_B5;
+            _typeLabel5.textColor = KCOLORGREEN_B5;
             break;
         case POINT3:
             _point3View.backgroundColor = KCOLORGREEN_g1;
@@ -441,6 +459,11 @@ typedef enum : NSUInteger {
             _point1View.backgroundColor = KCOLORGREEN_B5;
             _point4View.backgroundColor = KCOLORGREEN_B5;
             _point5View.backgroundColor = KCOLORGREEN_B5;
+            _typeLabel3.textColor = KCOLORGREEN_g1;
+            _typeLabel2.textColor = KCOLORGREEN_B5;
+            _typeLabel1.textColor = KCOLORGREEN_B5;
+            _typeLabel4.textColor = KCOLORGREEN_B5;
+            _typeLabel5.textColor = KCOLORGREEN_B5;
             break;
         case POINT4:
             _point4View.backgroundColor = KCOLORGREEN_g1;
@@ -448,6 +471,11 @@ typedef enum : NSUInteger {
             _point3View.backgroundColor = KCOLORGREEN_B5;
             _point1View.backgroundColor = KCOLORGREEN_B5;
             _point5View.backgroundColor = KCOLORGREEN_B5;
+            _typeLabel4.textColor = KCOLORGREEN_g1;
+            _typeLabel2.textColor = KCOLORGREEN_B5;
+            _typeLabel3.textColor = KCOLORGREEN_B5;
+            _typeLabel1.textColor = KCOLORGREEN_B5;
+            _typeLabel5.textColor = KCOLORGREEN_B5;
             break;
         case POINT5:
             _point5View.backgroundColor = KCOLORGREEN_g1;
@@ -455,6 +483,11 @@ typedef enum : NSUInteger {
             _point3View.backgroundColor = KCOLORGREEN_B5;
             _point4View.backgroundColor = KCOLORGREEN_B5;
             _point1View.backgroundColor = KCOLORGREEN_B5;
+            _typeLabel5.textColor = KCOLORGREEN_g1;
+            _typeLabel2.textColor = KCOLORGREEN_B5;
+            _typeLabel3.textColor = KCOLORGREEN_B5;
+            _typeLabel4.textColor = KCOLORGREEN_B5;
+            _typeLabel1.textColor = KCOLORGREEN_B5;
             break;
             
         default:
@@ -476,6 +509,7 @@ typedef enum : NSUInteger {
         {
             [UIView animateWithDuration:0.2 animations:^{
                 _releaseCollectionView.contentOffset = CGPointMake(SCALE_NUM(186), 0);
+//                _releaseCollectionView.contentOffset = CGPointMake(SCALE_NUM(270), 0);
             } completion:nil];
             break;
         }
@@ -483,6 +517,7 @@ typedef enum : NSUInteger {
         {
             [UIView animateWithDuration:0.2 animations:^{
                 _releaseCollectionView.contentOffset = CGPointMake(SCALE_NUM(418), 0);
+//                _releaseCollectionView.contentOffset = CGPointMake(SCALE_NUM(540), 0);
             } completion:nil];
             break;
         }
@@ -490,6 +525,7 @@ typedef enum : NSUInteger {
         {
             [UIView animateWithDuration:0.2 animations:^{
                 _releaseCollectionView.contentOffset = CGPointMake(SCALE_NUM(646), 0);
+//                _releaseCollectionView.contentOffset = CGPointMake(SCALE_NUM(810), 0);
             } completion:nil];
             break;
         }
@@ -497,6 +533,7 @@ typedef enum : NSUInteger {
         {
             [UIView animateWithDuration:0.2 animations:^{
                 _releaseCollectionView.contentOffset = CGPointMake(SCALE_NUM(830), 0);
+//                _releaseCollectionView.contentOffset = CGPointMake(SCALE_NUM(1080), 0);
             } completion:nil];
             break;
         }

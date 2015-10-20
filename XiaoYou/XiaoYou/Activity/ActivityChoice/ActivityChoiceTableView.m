@@ -63,6 +63,7 @@
     }];
     //筛选
     UILabel * centerLabel = [[UILabel alloc] init];
+    centerLabel.backgroundColor = [UIColor clearColor];
     centerLabel.textAlignment = NSTextAlignmentCenter;
     if (_myType == ACTIVITY_CHOICE_TYPE)
     {
@@ -77,7 +78,7 @@
     [centerLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.centerY.equalTo(backView);
         make.height.mas_equalTo(SCALE_NUM(20));
-        make.width.mas_equalTo(SCALE_NUM(60));
+        make.width.mas_equalTo(SCALE_NUM(80));
     }];
     
     self.tableHeaderView = backView;
