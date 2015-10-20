@@ -23,6 +23,9 @@
 
 -(void)setUpUI
 {
+    [self showCustomNavigationBackButton];
+    self.title = @"选择活动发布身份";
+    
     UIView * backView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 60)];
     backView.backgroundColor = [UIColor redColor];
     //错号
@@ -59,6 +62,8 @@
         make.height.mas_equalTo(SCALE_NUM(20));
         make.width.mas_equalTo(SCALE_NUM(60));
     }];
+    
+    [self.view addSubview:backView];
 }
 
 -(void)clickBtnForCancel
