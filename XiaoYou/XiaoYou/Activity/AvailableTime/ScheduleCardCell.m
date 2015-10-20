@@ -54,7 +54,7 @@
     
     _titleLabel = [[UILabel alloc]init];
     [self.contentView addSubview:_titleLabel];
-    _titleLabel.font = CONTENT_FONT(14);
+    _titleLabel.font = CONTENT_FONT(15);
     _titleLabel.text = @"日程卡";
     _titleLabel.textColor = KCOLORGREEN_B4;
     [_titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {

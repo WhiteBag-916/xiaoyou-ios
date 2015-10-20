@@ -18,6 +18,9 @@
 @property (nonatomic,strong) UILabel        *locationLabel;
 @property (nonatomic,strong) UIImageView    *categotyImageView;
 @property (nonatomic,strong) UILabel        *categoryLabel;
+
+@property (nonatomic,strong) UILabel        *activityEndTimeDes;
+@property (nonatomic,strong) UILabel        *activityEndTimeLabel;
 @end
 
 @implementation ActivityMiddleView
@@ -59,7 +62,7 @@
     _staticActivityTimeDes = [[UILabel alloc]init];
     [self addSubview:_staticActivityTimeDes];
     _staticActivityTimeDes.font = CONTENT_FONT(13);
-    _staticActivityTimeDes.text = @"活动时间";
+    _staticActivityTimeDes.text = @"活动开始时间";
     [_staticActivityTimeDes mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(_deadLineTimeLabel.mas_bottom).offset(10);
         make.left.equalTo(_staticDeadLineDes);
@@ -74,10 +77,28 @@
         make.left.equalTo(_deadLineTimeLabel);
     }];
     
+    _activityEndTimeDes = [[UILabel alloc]init];
+    [self addSubview:_activityEndTimeDes];
+    _activityEndTimeDes.font = CONTENT_FONT(13);
+    _activityEndTimeDes.text = @"活动结束时间";
+    [_activityEndTimeDes mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(_staticActivityTimeDes.mas_bottom).offset(10);
+        make.left.equalTo(_staticActivityTimeDes);
+    }];
+    
+    _activityEndTimeLabel = [[UILabel alloc]init];
+    [self addSubview:_activityEndTimeLabel];
+    _activityEndTimeLabel.font = CONTENT_FONT(13);
+    _activityEndTimeLabel.text = @"15/09/28 18:00";
+    [_activityEndTimeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(_activityEndTimeDes.mas_right).offset(10);
+        make.centerY.equalTo(_activityEndTimeDes.mas_centerY);
+    }];
+    
     _locationImageView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"schedule_location"]];
     [self addSubview:_locationImageView];
     [_locationImageView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(_staticActivityTimeDes.mas_bottom).offset(16);
+        make.top.equalTo(_activityEndTimeDes.mas_bottom).offset(16);
         make.centerX.equalTo(_timeImageView.mas_centerX);
     }];
     
