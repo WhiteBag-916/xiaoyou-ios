@@ -11,6 +11,9 @@
 
 @interface ActivityIdentityViewController ()
 
+@property(nonatomic,strong) UIButton * personalButton;
+@property(nonatomic,strong) UIButton * groupButton;
+
 @end
 
 @implementation ActivityIdentityViewController
@@ -35,7 +38,7 @@
     [dissMissBtn addTarget:self action:@selector(clickBtnForCancel) forControlEvents:UIControlEventTouchUpInside];
     [backView addSubview:dissMissBtn];
     [dissMissBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.bottom.mas_equalTo(SCALE_NUM(0));
+        make.bottom.mas_equalTo(SCALE_NUM(-4));
         make.leading.mas_equalTo(SCALE_NUM(12));
         make.height.width.mas_equalTo(SCALE_NUM(30));
     }];
@@ -67,13 +70,68 @@
     }];
     
     [self.view addSubview:backView];
+    
+    //个人
+    _personalButton = [[UIButton alloc] init];
+    _personalButton.layer.borderColor = [UIColor hexChangeFloat:@"465a65"].CGColor;
+    _personalButton.layer.borderWidth = 1;
+    _personalButton.layer.cornerRadius = 2;
+    _personalButton.clipsToBounds = YES;
+    [_personalButton setTitle:@"个人" forState:UIControlStateNormal];
+    [_personalButton  setTitleColor:KCOLORGREEN_B4 forState:UIControlStateNormal];
+    _personalButton.tintColor = KCOLORGREEN_B4;
+    _personalButton.titleLabel.font = CONTENT_FONT(15);
+    [_personalButton addTarget:self action:@selector(clickPersonalButton) forControlEvents:UIControlEventTouchUpInside];
+
+    //社团
+    _groupButton = [[UIButton alloc] init];
+    _groupButton.layer.borderColor = [UIColor hexChangeFloat:@"465a65"].CGColor;
+    _groupButton.layer.cornerRadius = 2;
+    _groupButton.clipsToBounds = YES;
+    _groupButton.backgroundColor = KCOLORGREEN_g1;
+    [_groupButton setTitle:@"社团" forState:UIControlStateNormal];
+    [_groupButton  setTitleColor:KCOLORGREEN_W1 forState:UIControlStateNormal];
+    _groupButton.titleLabel.font = CONTENT_FONT(15);
+    [_groupButton addTarget:self action:@selector(clickGroupButton) forControlEvents:UIControlEventTouchUpInside];
+    
+    [self.view addSubview:_personalButton];
+    [self.view addSubview:_groupButton];
+    [_personalButton mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.leading.mas_equalTo(SCALE_NUM(50));
+        make.top.equalTo(backView.mas_bottom).offset(SCALE_NUM(30));
+        make.height.mas_equalTo(SCALE_NUM(30));
+        make.width.mas_equalTo(SCALE_NUM(87));
+    }];
+    [_groupButton mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.trailing.mas_equalTo(SCALE_NUM(-50));
+        make.top.equalTo(_personalButton);
+        make.height.mas_equalTo(SCALE_NUM(30));
+        make.width.mas_equalTo(SCALE_NUM(87));
+    }];
+    
+    //提示
+    UILabel * remindLabel = [[UILabel alloc] init];
+    remindLabel.font = CONTENT_FONT(12);
+    remindLabel.textColor = KCOLORGREEN_B5;
+    remindLabel.numberOfLines = 0;
+    remindLabel.backgroundColor = [UIColor clearColor];
+    remindLabel.text = @"提示：以社团身份发布活动需经过审核。若您的活动限制报名人数，请登录后台查看所有报名同学，并进行通过和拒绝操作";
+    [self.view addSubview:remindLabel];
+    [remindLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(_personalButton.mas_left).offset(SCALE_NUM(-10));
+        make.right.equalTo(_groupButton.mas_right).offset(SCALE_NUM(10));
+        make.top.equalTo(_personalButton.mas_bottom).offset(SCALE_NUM(38));
+        make.height.mas_equalTo(SCALE_NUM(110));
+    }];
+    
 }
 
+//错号
 -(void)clickBtnForCancel
 {
     [self dismissViewControllerAnimated:YES completion:nil];
 }
-
+//对号
 -(void)clickBtnForChoice
 {
     [self dismissViewControllerAnimated:YES completion:^{
@@ -82,7 +140,28 @@
     }];
     
 }
-
+//个人
+-(void)clickPersonalButton
+{
+    _personalButton.backgroundColor = KCOLORGREEN_g1;
+    [_personalButton setTitleColor:KCOLORGREEN_W1 forState:UIControlStateNormal];
+    _groupButton.backgroundColor = KCOLORGREEN_W1;
+    [_groupButton setTitleColor:KCOLORGREEN_B4 forState:UIControlStateNormal];
+    
+    _personalButton.layer.borderWidth = 0;
+    _groupButton.layer.borderWidth = 1;
+}
+//社团
+-(void)clickGroupButton
+{
+    _groupButton.backgroundColor = KCOLORGREEN_g1;
+    [_groupButton setTitleColor:KCOLORGREEN_W1 forState:UIControlStateNormal];
+    _personalButton.backgroundColor = KCOLORGREEN_W1;
+    [_personalButton setTitleColor:KCOLORGREEN_B4 forState:UIControlStateNormal];
+    
+    _groupButton.layer.borderWidth = 0;
+    _personalButton.layer.borderWidth = 1;
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
