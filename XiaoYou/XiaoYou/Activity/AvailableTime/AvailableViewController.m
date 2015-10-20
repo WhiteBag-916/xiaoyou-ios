@@ -126,7 +126,8 @@
 //发布Action
 -(void)publishAction {
     ActivityIdentityViewController *activityVC = [[ActivityIdentityViewController alloc]init];
-    [self.navigationController pushViewController:activityVC animated:YES needHiddenBottomBar:YES];
+    //[self.navigationController pushViewController:activityVC animated:YES needHiddenBottomBar:YES];
+    [self presentViewController:activityVC animated:YES completion:nil];
 }
 
 //筛选Action

@@ -388,8 +388,25 @@
     [self presentViewController:picker animated:YES completion:^{
         [picker takePhoto];
     }];
-    /*
+    
+    /**
+     *  相册相机使用授权
+     *
+     *  @param TARGET_IPHONE_SIMULATOR nil
+     *
+     *  @return nil
+     */
 #if !(TARGET_IPHONE_SIMULATOR)//真机执行的代码
+    ALAuthorizationStatus authorPhotos = [ALAssetsLibraryauthorizationStatus];
+    //无权限
+    if (author == kCLAuthorizationStatusRestricted || author ==kCLAuthorizationStatusDenied){
+        YCommonAlertView *alert = [[YCommonAlertView alloc] initWithTitle:nil
+                                                                  message:@"您可以在 设置—>隐私—>中授权相机功能"
+                                                             buttonTitles:@"确认", nil];
+        [alert show];
+    }
+    
+    
     AVAuthorizationStatus authStatus = [AVCaptureDevice authorizationStatusForMediaType:AVMediaTypeVideo];
     if (authStatus == AVAuthorizationStatusRestricted ||authStatus ==AVAuthorizationStatusDenied){
         YCommonAlertView *alert = [[YCommonAlertView alloc] initWithTitle:nil
@@ -419,7 +436,7 @@
         [self presentViewController:self.picker animated:YES completion:nil];
     }
 #endif
-     */
+    
 }
 
 - (void)savePic:(UIImage *)image
