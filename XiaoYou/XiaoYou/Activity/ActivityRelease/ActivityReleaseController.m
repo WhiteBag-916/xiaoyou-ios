@@ -508,24 +508,24 @@ typedef enum : NSUInteger {
         case 000000002:
         {
             [UIView animateWithDuration:0.2 animations:^{
-                _releaseCollectionView.contentOffset = CGPointMake(SCALE_NUM(186), 0);
-//                _releaseCollectionView.contentOffset = CGPointMake(SCALE_NUM(270), 0);
+//                _releaseCollectionView.contentOffset = CGPointMake(SCALE_NUM(186), 0);
+                _releaseCollectionView.contentOffset = CGPointMake(SCALE_NUM(230), 0);
             } completion:nil];
             break;
         }
         case 000000003:
         {
             [UIView animateWithDuration:0.2 animations:^{
-                _releaseCollectionView.contentOffset = CGPointMake(SCALE_NUM(418), 0);
-//                _releaseCollectionView.contentOffset = CGPointMake(SCALE_NUM(540), 0);
+//                _releaseCollectionView.contentOffset = CGPointMake(SCALE_NUM(418), 0);
+                _releaseCollectionView.contentOffset = CGPointMake(SCALE_NUM(460), 0);
             } completion:nil];
             break;
         }
         case 000000004:
         {
             [UIView animateWithDuration:0.2 animations:^{
-                _releaseCollectionView.contentOffset = CGPointMake(SCALE_NUM(646), 0);
-//                _releaseCollectionView.contentOffset = CGPointMake(SCALE_NUM(810), 0);
+//                _releaseCollectionView.contentOffset = CGPointMake(SCALE_NUM(646), 0);
+                _releaseCollectionView.contentOffset = CGPointMake(SCALE_NUM(690), 0);
             } completion:nil];
             break;
         }
@@ -533,7 +533,7 @@ typedef enum : NSUInteger {
         {
             [UIView animateWithDuration:0.2 animations:^{
                 _releaseCollectionView.contentOffset = CGPointMake(SCALE_NUM(830), 0);
-//                _releaseCollectionView.contentOffset = CGPointMake(SCALE_NUM(1080), 0);
+//                _releaseCollectionView.contentOffset = CGPointMake(SCALE_NUM(920), 0);
             } completion:nil];
             break;
         }

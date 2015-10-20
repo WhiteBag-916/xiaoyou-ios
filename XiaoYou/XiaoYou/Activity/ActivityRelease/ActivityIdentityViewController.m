@@ -120,8 +120,8 @@
     [remindLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(_personalButton.mas_left).offset(SCALE_NUM(-10));
         make.right.equalTo(_groupButton.mas_right).offset(SCALE_NUM(10));
-        make.top.equalTo(_personalButton.mas_bottom).offset(SCALE_NUM(30));
-        make.height.mas_equalTo(SCALE_NUM(70));
+        make.top.equalTo(_personalButton.mas_bottom).offset(SCALE_NUM(20));
+        make.height.mas_equalTo(SCALE_NUM(100));
     }];
     
 }
