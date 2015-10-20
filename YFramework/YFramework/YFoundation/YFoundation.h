@@ -25,4 +25,5 @@
 #import "YDate+Ext.h"
 #import "NSArray+Additions.h"
 #import "NSDictionary+CLLocation.h"
+#import "YLabel+Ext.h"
 #endif
