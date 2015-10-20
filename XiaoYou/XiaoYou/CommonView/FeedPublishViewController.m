@@ -378,17 +378,6 @@
 
 - (void)snapImage
 {
-    //照片选择
-    UzysAssetsPickerController *picker = [[UzysAssetsPickerController alloc] init];
-    picker.assetsFilter = [ALAssetsFilter allPhotos];
-    picker.maximumNumberOfSelectionVideo = 0;
-    picker.maximumNumberOfSelectionPhoto = 9;
-    picker.delegate = self;
-    
-    [self presentViewController:picker animated:YES completion:^{
-        [picker takePhoto];
-    }];
-    
     /**
      *  相册相机使用授权
      *
@@ -397,16 +386,34 @@
      *  @return nil
      */
 #if !(TARGET_IPHONE_SIMULATOR)//真机执行的代码
-    ALAuthorizationStatus authorPhotos = [ALAssetsLibraryauthorizationStatus];
+    
+    ALAuthorizationStatus authorPhotos = [ALAssetsLibrary authorizationStatus];
     //无权限
-    if (author == kCLAuthorizationStatusRestricted || author ==kCLAuthorizationStatusDenied){
+    if (authorPhotos == kCLAuthorizationStatusRestricted || authorPhotos ==kCLAuthorizationStatusDenied){
         YCommonAlertView *alert = [[YCommonAlertView alloc] initWithTitle:nil
-                                                                  message:@"您可以在 设置—>隐私—>中授权相机功能"
+              
+                                                                  message:@"您可以在 设置—>隐私—>中授权相册功能"
                                                              buttonTitles:@"确认", nil];
         [alert show];
+        return;
+    } else if (authorPhotos == AVAuthorizationStatusNotDetermined) {
+        [AVCaptureDevice requestAccessForMediaType:AVMediaTypeVideo completionHandler:^(BOOL granted) {
+            if(granted) {
+                [self requestPhotoAuthorization];
+            }
+            else{
+                return;
+            }
+        }];
     }
     
+    [self requestPhotoAuthorization];
+#endif
     
+}
+
+
+- (void)requestPhotoAuthorization {
     AVAuthorizationStatus authStatus = [AVCaptureDevice authorizationStatusForMediaType:AVMediaTypeVideo];
     if (authStatus == AVAuthorizationStatusRestricted ||authStatus ==AVAuthorizationStatusDenied){
         YCommonAlertView *alert = [[YCommonAlertView alloc] initWithTitle:nil
@@ -418,25 +425,44 @@
         [AVCaptureDevice requestAccessForMediaType:AVMediaTypeVideo completionHandler:^(BOOL granted) {
             if(granted){//点击允许访问时调用
                 //用户明确许可与否，媒体需要捕获，但用户尚未授予或拒绝许可。
-//                self.picker = [[UIImagePickerController alloc] init];
-//                [self.picker setSourceType:UIImagePickerControllerSourceTypeCamera];
-//                self.picker.delegate = self;
-//                [self.picker setAllowsEditing:YES];
-//                [self presentViewController:self.picker animated:YES completion:nil];
+                //                self.picker = [[UIImagePickerController alloc] init];
+                //                [self.picker setSourceType:UIImagePickerControllerSourceTypeCamera];
+                //                self.picker.delegate = self;
+                //                [self.picker setAllowsEditing:YES];
+                //                [self presentViewController:self.picker animated:YES completion:nil];
                 //UzysAssetsPickerController *picker = [[UzysAssetsPickerController alloc] init];
                 
                 //[picker takePhoto];
+                UzysAssetsPickerController *picker = [[UzysAssetsPickerController alloc] init];
+                picker.assetsFilter = [ALAssetsFilter allPhotos];
+                picker.maximumNumberOfSelectionVideo = 0;
+                picker.maximumNumberOfSelectionPhoto = 9;
+                picker.delegate = self;
+                
+                [self presentViewController:picker animated:YES completion:^{
+                    [picker takePhoto];
+                }];
+                
+            } else {
                 
             }
         }];
     }else{
-        self.picker = [[UIImagePickerController alloc] init];
-        [self.picker setSourceType:UIImagePickerControllerSourceTypeCamera];
-        self.picker.delegate = self;
-        [self presentViewController:self.picker animated:YES completion:nil];
+        //        self.picker = [[UIImagePickerController alloc] init];
+        //        [self.picker setSourceType:UIImagePickerControllerSourceTypeCamera];
+        //        self.picker.delegate = self;
+        //        [self presentViewController:self.picker animated:YES completion:nil];
+        UzysAssetsPickerController *picker = [[UzysAssetsPickerController alloc] init];
+        picker.assetsFilter = [ALAssetsFilter allPhotos];
+        picker.maximumNumberOfSelectionVideo = 0;
+        picker.maximumNumberOfSelectionPhoto = 9;
+        picker.delegate = self;
+        
+        [self presentViewController:picker animated:YES completion:^{
+            [picker takePhoto];
+        }];
     }
-#endif
-    
+    //照片选择
 }
 
 - (void)savePic:(UIImage *)image
