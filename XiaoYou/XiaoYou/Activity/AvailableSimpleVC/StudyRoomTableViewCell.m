@@ -57,7 +57,7 @@ NSString *const kStudyRoomTableViewCell = @"StudyRoomTableViewCellId";
     
     [_studyRoomNumberLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.right.equalTo(self.contentView);
-        make.top.equalTo(_studyRoomNameButton.mas_bottom).offset(K_LABEL_T);
+        make.bottom.mas_equalTo(-K_BUTTON_T);
     }];
 }
 

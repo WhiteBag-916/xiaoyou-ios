@@ -87,7 +87,7 @@ NSString *const kStudyRoomDetailTableViewCell = @"StudyRoomDetailTableViewCellId
     [_timeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.right.equalTo(_studyRoomLabel);
         make.height.mas_equalTo(K_TEXT_H);
-        make.top.equalTo(_studyRoomLabel.mas_bottom).offset(K_ROOM_T);
+        make.bottom.mas_equalTo(-K_IMG_TW);
     }];
 }
 
