@@ -27,11 +27,11 @@
     self.title = @"选择活动发布身份";
     
     UIView * backView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 60)];
-    backView.backgroundColor = KCOLORGREEN_B4;
+    backView.backgroundColor = [UIColor hexChangeFloat:@"465A65"];
     //错号
     UIButton * dissMissBtn = [[UIButton alloc] init];
     dissMissBtn.backgroundColor = [UIColor clearColor];
-    [dissMissBtn setImage:[UIImage imageNamed:@"mine-cancel"] forState:UIControlStateNormal];
+    [dissMissBtn setImage:[UIImage imageNamed:@"complete-cancel"] forState:UIControlStateNormal];
     [dissMissBtn addTarget:self action:@selector(clickBtnForCancel) forControlEvents:UIControlEventTouchUpInside];
     [backView addSubview:dissMissBtn];
     [dissMissBtn mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -43,7 +43,7 @@
     //对号
     UIButton * finishBtn = [[UIButton alloc] init];
     finishBtn.backgroundColor = [UIColor clearColor];
-    [finishBtn setImage:[UIImage imageNamed:@"mine-complete-grey"] forState:UIControlStateNormal];
+    [finishBtn setImage:[UIImage imageNamed:@"complete"] forState:UIControlStateNormal];
     [finishBtn addTarget:self action:@selector(clickBtnForChoice) forControlEvents:UIControlEventTouchUpInside];
     [backView addSubview:finishBtn];
     [finishBtn mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -56,7 +56,8 @@
     UILabel * centerLabel = [[UILabel alloc] init];
     centerLabel.text = @"选择活动发布身份";
     centerLabel.textAlignment = NSTextAlignmentCenter;
-    centerLabel.font = CONTENT_FONT(15);
+    centerLabel.textColor = [UIColor whiteColor];
+    centerLabel.font = CONTENT_FONT(14);
     [backView addSubview:centerLabel];
     [centerLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.equalTo(backView);

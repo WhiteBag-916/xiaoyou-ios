@@ -11,6 +11,6 @@
 
 @interface ActivityIdentityViewController : YViewController
 
-@property(nonatomic,strong)AvailableViewController * availableViewController;
+@property(nonatomic,weak)AvailableViewController * availableViewController;
 
 @end
