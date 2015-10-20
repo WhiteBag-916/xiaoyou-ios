@@ -99,6 +99,7 @@ NSString *const kActivityReleaseAndTypeCell = @"ActivityReleaseAndTypeCellId";
     _releaseAndTypeLabel = [[UILabel alloc] init];
     _releaseAndTypeLabel.backgroundColor = [UIColor clearColor];
     _releaseAndTypeLabel.font = CONTENT_FONT(12);
+    _releaseAndTypeLabel.textColor = KCOLORGREEN_B3;
     [self.contentView addSubview:_releaseAndTypeLabel];
     [_releaseAndTypeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(_releaseAndTypeImageView.mas_right).offset(SCALE_NUM(5));
@@ -154,10 +155,11 @@ NSString *const kActivityReleaseAndTypeCell = @"ActivityReleaseAndTypeCellId";
     UILabel* pickerLabel = (UILabel*)view;
     if (!pickerLabel){
         pickerLabel = [[UILabel alloc] init];
+        pickerLabel.textColor = KCOLORGREEN_B4;
         pickerLabel.adjustsFontSizeToFitWidth = YES;
         [pickerLabel setTextAlignment:NSTextAlignmentCenter];
         [pickerLabel setBackgroundColor:[UIColor clearColor]];
-        [pickerLabel setFont:[UIFont systemFontOfSize:12]];
+        [pickerLabel setFont:[UIFont systemFontOfSize:14]];
     }
     pickerLabel.text=[self pickerView:pickerView titleForRow:row forComponent:component];
     return pickerLabel;
