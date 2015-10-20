@@ -27,7 +27,7 @@
     self.title = @"选择活动发布身份";
     
     UIView * backView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 60)];
-    backView.backgroundColor = [UIColor redColor];
+    backView.backgroundColor = KCOLORGREEN_B4;
     //错号
     UIButton * dissMissBtn = [[UIButton alloc] init];
     dissMissBtn.backgroundColor = [UIColor clearColor];
@@ -35,7 +35,7 @@
     [dissMissBtn addTarget:self action:@selector(clickBtnForCancel) forControlEvents:UIControlEventTouchUpInside];
     [backView addSubview:dissMissBtn];
     [dissMissBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.centerY.equalTo(backView);
+        make.bottom.mas_equalTo(SCALE_NUM(0));
         make.leading.mas_equalTo(SCALE_NUM(12));
         make.height.width.mas_equalTo(SCALE_NUM(30));
     }];
@@ -47,20 +47,22 @@
     [finishBtn addTarget:self action:@selector(clickBtnForChoice) forControlEvents:UIControlEventTouchUpInside];
     [backView addSubview:finishBtn];
     [finishBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.centerY.equalTo(backView);
+        make.centerY.equalTo(dissMissBtn);
         make.trailing.mas_equalTo(SCALE_NUM(-12));
         make.width.mas_equalTo(SCALE_NUM(30));
         make.height.mas_equalTo(SCALE_NUM(24));
     }];
-    //筛选
+    //选择活动发布身份
     UILabel * centerLabel = [[UILabel alloc] init];
+    centerLabel.text = @"选择活动发布身份";
     centerLabel.textAlignment = NSTextAlignmentCenter;
     centerLabel.font = CONTENT_FONT(15);
     [backView addSubview:centerLabel];
     [centerLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.centerX.centerY.equalTo(backView);
+        make.centerX.equalTo(backView);
+        make.centerY.equalTo(dissMissBtn);
         make.height.mas_equalTo(SCALE_NUM(20));
-        make.width.mas_equalTo(SCALE_NUM(60));
+        make.width.mas_equalTo(SCALE_NUM(150));
     }];
     
     [self.view addSubview:backView];
