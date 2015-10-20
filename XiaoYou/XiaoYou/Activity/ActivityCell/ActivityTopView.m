@@ -52,6 +52,7 @@
     _titleLabel.text = @"校级活动公告";
     [self addSubview:_titleLabel];
     _titleLabel.font = CONTENT_FONT(15);
+    _titleLabel.textColor = KCOLORGREEN_B4;
     [_titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(_headImageView.mas_right).offset(12);
         make.centerY.equalTo(_headImageView.mas_centerY);
@@ -97,6 +98,7 @@
     
     _descriptionLabel = [[UILabel alloc]init];
     _descriptionLabel.font = CONTENT_FONT(13);
+    _descriptionLabel.textColor = KCOLORGREEN_B3;
     if (type == DETAIL_INFO) {
         _descriptionLabel.numberOfLines = 0;
         _descriptionLabel.lineBreakMode = NSLineBreakByWordWrapping;

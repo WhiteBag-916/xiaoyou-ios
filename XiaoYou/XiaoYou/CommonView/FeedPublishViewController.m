@@ -387,25 +387,25 @@
      */
 #if !(TARGET_IPHONE_SIMULATOR)//真机执行的代码
     
-    ALAuthorizationStatus authorPhotos = [ALAssetsLibrary authorizationStatus];
-    //无权限
-    if (authorPhotos == kCLAuthorizationStatusRestricted || authorPhotos ==kCLAuthorizationStatusDenied){
-        YCommonAlertView *alert = [[YCommonAlertView alloc] initWithTitle:nil
-              
-                                                                  message:@"您可以在 设置—>隐私—>中授权相册功能"
-                                                             buttonTitles:@"确认", nil];
-        [alert show];
-        return;
-    } else if (authorPhotos == AVAuthorizationStatusNotDetermined) {
-        [AVCaptureDevice requestAccessForMediaType:AVMediaTypeVideo completionHandler:^(BOOL granted) {
-            if(granted) {
-                [self requestPhotoAuthorization];
-            }
-            else{
-                return;
-            }
-        }];
-    }
+//    ALAuthorizationStatus authorPhotos = [ALAssetsLibrary authorizationStatus];
+//    //无权限
+//    if (authorPhotos == kCLAuthorizationStatusRestricted || authorPhotos ==kCLAuthorizationStatusDenied){
+//        YCommonAlertView *alert = [[YCommonAlertView alloc] initWithTitle:nil
+//              
+//                                                                  message:@"您可以在 设置—>隐私—>中授权相册功能"
+//                                                             buttonTitles:@"确认", nil];
+//        [alert show];
+//        return;
+//    } else if (authorPhotos == AVAuthorizationStatusNotDetermined) {
+//        [AVCaptureDevice requestAccessForMediaType:AVMediaTypeVideo completionHandler:^(BOOL granted) {
+//            if(granted) {
+//                [self requestPhotoAuthorization];
+//            }
+//            else{
+//                return;
+//            }
+//        }];
+//    }
     
     [self requestPhotoAuthorization];
 #endif
