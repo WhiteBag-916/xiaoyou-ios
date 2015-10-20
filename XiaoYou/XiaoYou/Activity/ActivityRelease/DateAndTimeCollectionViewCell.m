@@ -46,7 +46,7 @@ NSString *const kDateAndTimeCollectionViewCell = @"DateAndTimeCollectionViewCell
     applyLabel.backgroundColor = [UIColor clearColor];
     applyLabel.font = CONTENT_FONT(12);
     applyLabel.textColor = KCOLORGREEN_B5;
-    applyLabel.text = @"报名截至时间";
+    applyLabel.text = @"报名截止时间";
     [self.backView addSubview:applyLabel];
     [applyLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.mas_equalTo(SCALE_NUM(80));
@@ -155,6 +155,42 @@ NSString *const kDateAndTimeCollectionViewCell = @"DateAndTimeCollectionViewCell
                                              isRoot:YES
                                             addSelf:[UIApplication sharedApplication].keyWindow];
     [popView comSet:self action:@selector(applayChooseDate) params:nil];
+    //不允许选中结束时间之后的时间
+//    NSDateFormatter * formatter = [[NSDateFormatter alloc] init];
+//    [formatter setDateFormat:@"yyyy年MM月dd日 a HH:mm"];
+//    NSDate* maxDate = [formatter dateFromString:_dataManager.ActivityDateEndText];
+//    _datePicker.maximumDate = maxDate;
+    //重置结束时间
+//    NSDateFormatter * formatter = [[NSDateFormatter alloc] init];
+//    [formatter setDateFormat:@"yyyy年MM月dd日 a HH:mm"];
+//    if ([_dataManager.ActivityDateEndText isEqualToString:@"点击后可以选择时间"] || _dataManager.ActivityDateEndText == nil)
+//    {
+//        if ([_dataManager.ActivityDateBeginText isEqualToString:@"点击后可以选择时间"] || _dataManager.ActivityDateBeginText == nil)
+//        {
+//            _datePicker.maximumDate = nil;
+//        }
+//        else
+//        {
+//            _datePicker.minimumDate = [formatter dateFromString:_dataManager.ActivityDateApplyText];
+//        }
+//    }
+//    else
+//    {
+//        _datePicker.maximumDate = nil;
+//        _datePicker.minimumDate = [formatter dateFromString:_dataManager.ActivityDateBeginText];
+//        
+//        if ([_dataManager.ActivityDateApplyText isEqualToString:@"点击后可以选择时间"] || _dataManager.ActivityDateApplyText == nil)
+//        {
+//            
+//        }
+//        else
+//        {
+//            NSDate * applyDate = [formatter dateFromString:_dataManager.ActivityDateApplyText];
+//            NSDate * beginDate = [formatter dateFromString:_dataManager.ActivityDateBeginText];
+//            NSDate * laterDate = [applyDate laterDate:beginDate];
+//            _datePicker.minimumDate = laterDate;
+//        }
+//    }
     [popView showView];
 }
 
@@ -167,6 +203,11 @@ NSString *const kDateAndTimeCollectionViewCell = @"DateAndTimeCollectionViewCell
                                                             isRoot:YES
                                                            addSelf:[UIApplication sharedApplication].keyWindow];
     [popView comSet:self action:@selector(heginChooseDate) params:nil];
+    //不允许选中结束时间之后的时间
+//    NSDateFormatter * formatter = [[NSDateFormatter alloc] init];
+//    [formatter setDateFormat:@"yyyy年MM月dd日 a HH:mm"];
+//    NSDate* maxDate = [formatter dateFromString:_dataManager.ActivityDateEndText];
+//    _datePicker.maximumDate = maxDate;
     [popView showView];
 }
 
@@ -179,6 +220,37 @@ NSString *const kDateAndTimeCollectionViewCell = @"DateAndTimeCollectionViewCell
                                                             isRoot:YES
                                                            addSelf:[UIApplication sharedApplication].keyWindow];
     [popView comSet:self action:@selector(endChooseDate) params:nil];
+    //重置结束时间
+//    NSDateFormatter * formatter = [[NSDateFormatter alloc] init];
+//    [formatter setDateFormat:@"yyyy年MM月dd日 a HH:mm"];
+//    if ([_dataManager.ActivityDateBeginText isEqualToString:@"点击后可以选择时间"] || _dataManager.ActivityDateEndText == nil)
+//    {
+//        if ([_dataManager.ActivityDateApplyText isEqualToString:@"点击后可以选择时间"] || _dataManager.ActivityDateApplyText == nil)
+//        {
+//             _datePicker.maximumDate = nil;
+//        }
+//        else
+//        {
+//            _datePicker.minimumDate = [formatter dateFromString:_dataManager.ActivityDateApplyText];
+//        }
+//    }
+//    else
+//    {
+//        _datePicker.maximumDate = nil;
+//        _datePicker.minimumDate = [formatter dateFromString:_dataManager.ActivityDateBeginText];
+//        
+//        if ([_dataManager.ActivityDateApplyText isEqualToString:@"点击后可以选择时间"] || _dataManager.ActivityDateApplyText == nil)
+//        {
+//            
+//        }
+//        else
+//        {
+//            NSDate * applyDate = [formatter dateFromString:_dataManager.ActivityDateApplyText];
+//            NSDate * beginDate = [formatter dateFromString:_dataManager.ActivityDateBeginText];
+//            NSDate * laterDate = [applyDate laterDate:beginDate];
+//            _datePicker.minimumDate = laterDate;
+//        }
+//    }
     [popView showView];
 }
 
