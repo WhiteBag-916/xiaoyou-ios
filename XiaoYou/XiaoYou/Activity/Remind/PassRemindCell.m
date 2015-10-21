@@ -170,8 +170,10 @@
     _tailLabel.textColor = KCOLORGREEN_B3;
     _tailLabel.font = CONTENT_FONT(12);
     [_tailLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.height.mas_equalTo(SCALE_NUM(12));
-        make.top.equalTo(_bottomLineView).equalTo(make.bottom.equalTo(_wrapContentView));
+//        make.height.mas_equalTo(SCALE_NUM(12));
+//        make.top.equalTo(_bottomLineView).equalTo(make.bottom.equalTo(_wrapContentView));
+        make.top.equalTo(_bottomLineView.mas_bottom);
+        make.bottom.equalTo(_wrapContentView);
         make.leading.mas_equalTo(10);
     }];
     
