@@ -46,6 +46,7 @@
     _staticDeadLineDes.font = CONTENT_FONT(13);
     _staticDeadLineDes.text = @"报名截止时间";
     [_staticDeadLineDes mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.height.mas_equalTo(SCALE_NUM(13));
         make.leading.mas_equalTo(SCALE_NUM(66));
         make.centerY.equalTo(_timeImageView.mas_centerY);
     }];
@@ -55,6 +56,7 @@
     _deadLineTimeLabel.font = CONTENT_FONT(13);
     _deadLineTimeLabel.text = @"15/10/25 06:00";
     [_deadLineTimeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.height.mas_equalTo(SCALE_NUM(13));
         make.left.equalTo(_staticDeadLineDes.mas_right).offset(10);
         make.centerY.equalTo(_staticDeadLineDes.mas_centerY);
     }];
@@ -64,6 +66,7 @@
     _staticActivityTimeDes.font = CONTENT_FONT(13);
     _staticActivityTimeDes.text = @"活动开始时间";
     [_staticActivityTimeDes mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.height.mas_equalTo(SCALE_NUM(13));
         make.top.equalTo(_deadLineTimeLabel.mas_bottom).offset(10);
         make.left.equalTo(_staticDeadLineDes);
     }];
@@ -73,6 +76,7 @@
     _activityTimeLabel.font = CONTENT_FONT(13);
     _activityTimeLabel.text = @"15/10/05 06:00";
     [_activityTimeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.height.mas_equalTo(SCALE_NUM(13));
         make.top.equalTo(_staticActivityTimeDes);
         make.left.equalTo(_deadLineTimeLabel);
     }];
@@ -82,6 +86,7 @@
     _activityEndTimeDes.font = CONTENT_FONT(13);
     _activityEndTimeDes.text = @"活动结束时间";
     [_activityEndTimeDes mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.height.mas_equalTo(SCALE_NUM(13));
         make.top.equalTo(_staticActivityTimeDes.mas_bottom).offset(10);
         make.left.equalTo(_staticActivityTimeDes);
     }];
@@ -91,6 +96,7 @@
     _activityEndTimeLabel.font = CONTENT_FONT(13);
     _activityEndTimeLabel.text = @"15/10/25 06:00";
     [_activityEndTimeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.height.mas_equalTo(SCALE_NUM(13));
         make.left.equalTo(_activityEndTimeDes.mas_right).offset(10);
         make.centerY.equalTo(_activityEndTimeDes.mas_centerY);
     }];
@@ -107,6 +113,7 @@
     [self addSubview:_locationLabel];
     _locationLabel.font = CONTENT_FONT(13);
     [_locationLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.height.mas_equalTo(SCALE_NUM(13));
         make.left.equalTo(_staticActivityTimeDes);
         make.centerY.equalTo(_locationImageView.mas_centerY);
     }];
@@ -123,6 +130,7 @@
     _categoryLabel.font = CONTENT_FONT(13);
     _categoryLabel.text = @"学术类";
     [_categoryLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.height.mas_equalTo(SCALE_NUM(13));
         make.left.equalTo(_locationLabel);
         make.centerY.equalTo(_categotyImageView.mas_centerY);
     }];

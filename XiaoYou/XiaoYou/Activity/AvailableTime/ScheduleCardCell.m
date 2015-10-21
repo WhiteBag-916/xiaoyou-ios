@@ -58,6 +58,7 @@
     _titleLabel.text = @"日程卡";
     _titleLabel.textColor = KCOLORGREEN_B4;
     [_titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.height.mas_equalTo(SCALE_NUM(15));
         make.leading.mas_equalTo(SCALE_NUM(15));
         make.centerY.equalTo(_startImageView.mas_centerY);
     }];
@@ -68,6 +69,7 @@
     _timeLabel1.font = CONTENT_FONT(12);
     _timeLabel1.textColor = KCOLORGREEN_B5;
     [_timeLabel1 mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.height.mas_equalTo(SCALE_NUM(12));
         make.top.equalTo(_titleLabel.mas_bottom).offset(SCALE_NUM(20));
         make.left.equalTo(_titleLabel);
     }];
@@ -78,6 +80,7 @@
     _projectLabel1.text = @"英语口语练习";
     _projectLabel1.font = CONTENT_FONT(12);
     [_projectLabel1 mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.height.mas_equalTo(SCALE_NUM(12));
         make.leading.mas_equalTo(SCALE_NUM(100));
         make.centerY.equalTo(_timeLabel1);
     }];
@@ -88,6 +91,7 @@
     _timeLabel2.text = @"8:00-9:00";
     _timeLabel2.font = CONTENT_FONT(12);
     [_timeLabel2 mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.height.mas_equalTo(SCALE_NUM(12));
         make.top.equalTo(_timeLabel1.mas_bottom).offset(SCALE_NUM(15));
         make.left.equalTo(_timeLabel1);
     }];
@@ -98,6 +102,7 @@
     _projectLabel2.textColor = KCOLORGREEN_B5;
     _projectLabel2.font = CONTENT_FONT(12);
     [_projectLabel2 mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.height.mas_equalTo(SCALE_NUM(12));
         make.leading.mas_equalTo(SCALE_NUM(100));
         make.centerY.equalTo(_timeLabel2);
     }];
@@ -108,6 +113,7 @@
     _timeLabel3.textColor = KCOLORGREEN_B5;
     _timeLabel3.font = CONTENT_FONT(12);
     [_timeLabel3 mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.height.mas_equalTo(SCALE_NUM(12));
         make.top.equalTo(_timeLabel2.mas_bottom).offset(SCALE_NUM(15));
         make.left.equalTo(_timeLabel2);
     }];
@@ -118,6 +124,7 @@
     _projectLabel3.font = CONTENT_FONT(12);
     _projectLabel3.textColor = KCOLORGREEN_B5;
     [_projectLabel3 mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.height.mas_equalTo(SCALE_NUM(12));
         make.leading.mas_equalTo(SCALE_NUM(100));
         make.centerY.equalTo(_timeLabel3);
     }];
