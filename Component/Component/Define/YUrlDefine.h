@@ -168,11 +168,15 @@
 //发送建议
 #define api_suggest_list  @"/suggest/list?flag=groupManager"
 
+
 /**********************************************************
  Url Define: Activity
  **********************************************************/
 //提醒列表
 #define api_remind_list     @"/user/getsenderlist"
 #define api_schedule_list   @"/user/getschedulelist"
+
+//当前用户相关的活动列表接口
+#define api_currentuser_activity_list   @"/mobile/activity/list"
 #endif
 

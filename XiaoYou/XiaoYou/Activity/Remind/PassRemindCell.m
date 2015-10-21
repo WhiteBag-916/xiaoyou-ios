@@ -156,7 +156,7 @@
     _tailLabel.textColor = KCOLORGREEN_B3;
     _tailLabel.font = CONTENT_FONT(12);
     [_tailLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self.bottomLineView.mas_bottom).offset(16);
+        make.top.equalTo(_bottomLineView).equalTo(make.bottom.equalTo(_wrapContentView));
         make.leading.mas_equalTo(10);
     }];
     
@@ -173,6 +173,7 @@
 #pragma waring 此处需要添加图片
 -(void)setCellType:(CELL_TYPE)cellType
 {
+    _cellType = cellType;
     if(cellType == ALREADY_SUBMIT) {
         self.remindTitleLabel.text = @"报名申请已提交,请等待审核结果";
     } else if (cellType == AUDIT_PASSED) {
@@ -186,6 +187,8 @@
         }];
         _remindTitleLabel.text = @"很遗憾，你的报名申请未通过审核";
         _bottomLineView.hidden = YES;
+        _tailLabel.text = @"";
+        _tailImageView.image = nil;
     } else if (cellType == SUCESSED_JOININ) {
         self.remindTitleLabel.text = @"你已成功参加活动";
     }
