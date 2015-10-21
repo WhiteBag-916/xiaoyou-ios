@@ -36,7 +36,7 @@
     }
     else
     {
-        if ([_ActivityDateApplyText isEqualToString:@"点击后可以选择时间"] || [_ActivityDateBeginText isEqualToString:@"点击后可以选择时间"] || [_ActivityDateEndText isEqualToString:@"点击后可以选择时间"] || [_ActivityDesciptionText isEqualToString:@""] || [_ActivityNameText isEqualToString:@""] || [_ActivityPlaceText isEqualToString:@""] || [_ActivityTypeStr isEqualToString:@""])
+        if ([_ActivityDateApplyText isEqualToString:@"请选择活动报名时间"] || [_ActivityDateBeginText isEqualToString:@"请选择活动开始时间"] || [_ActivityDateEndText isEqualToString:@"请选择活动结束时间"] || [_ActivityDesciptionText isEqualToString:@""] || [_ActivityNameText isEqualToString:@""] || [_ActivityPlaceText isEqualToString:@""] || [_ActivityTypeStr isEqualToString:@""])
         {
             NSDictionary * dic = @{@"isEnabel":@NO};
             [[NSNotificationCenter defaultCenter] postNotificationName:KNotification_Enabel_ReleaseBtn object:dic];

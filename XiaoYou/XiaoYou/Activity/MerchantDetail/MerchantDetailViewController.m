@@ -38,6 +38,15 @@
         make.left.right.top.mas_equalTo(0);
         make.height.mas_equalTo(SCALE_NUM(150));
     }];
+    
+    _middleInfoView = [[MiddleInfoView alloc] init];
+    _middleInfoView.backgroundColor = [UIColor cyanColor];
+    [self.view addSubview:_middleInfoView];
+    [_middleInfoView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.right.mas_equalTo(0);
+        make.height.mas_equalTo(SCALE_NUM(132));
+        make.top.equalTo(_topView.mas_bottom);
+    }];
 }
 
 - (void)didReceiveMemoryWarning {

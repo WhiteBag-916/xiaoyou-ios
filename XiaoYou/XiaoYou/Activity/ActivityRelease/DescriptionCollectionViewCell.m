@@ -48,7 +48,7 @@ NSString *const kDescriptionCollectionViewCell = @"DescriptionCollectionViewCell
     _picImageView.image = [UIImage imageNamed:@"btn_add"];
     [self.backView addSubview:_picImageView];
     [_picImageView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.mas_equalTo(SCALE_NUM(80));
+        make.top.mas_equalTo(SCALE_NUM(85));
         make.left.equalTo(self.numImageView.mas_left);
         make.height.width.mas_equalTo(SCALE_NUM(72));
     }];
@@ -64,7 +64,7 @@ NSString *const kDescriptionCollectionViewCell = @"DescriptionCollectionViewCell
     [_deleteBtn addTarget:self action:@selector(deleteImage) forControlEvents:UIControlEventTouchUpInside];
     [self.backView addSubview:_deleteBtn];
     [_deleteBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.mas_equalTo(SCALE_NUM(68));
+        make.top.mas_equalTo(SCALE_NUM(73));
         make.right.equalTo(_picImageView.mas_right).offset(SCALE_NUM(12));
         make.width.height.mas_equalTo(SCALE_NUM(24));
     }];
@@ -78,7 +78,7 @@ NSString *const kDescriptionCollectionViewCell = @"DescriptionCollectionViewCell
     _textView.placeholderColor = KCOLORGREEN_B5;
     [self.backView addSubview:_textView];
     [_textView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(_picImageView.mas_bottom).offset(SCALE_NUM(12));
+        make.top.equalTo(_picImageView.mas_bottom).offset(SCALE_NUM(5));
         make.left.equalTo(self.numImageView.mas_left);
         make.bottom.right.mas_equalTo(SCALE_NUM(-12));
     }];
@@ -86,6 +86,8 @@ NSString *const kDescriptionCollectionViewCell = @"DescriptionCollectionViewCell
     //设置每个cell的不同部分
     self.numImageView.image = [UIImage imageNamed:@"img_num2"];
     self.typeLabel.text = @"活动描述";
+
+//    _textView.lineSpacing = SCALE_NUM(3);
     _textView.placeholder = @"例如：\n想品尝自己亲手采制的新茶吗?参与明轩茶艺社本次活动,你可以亲身体会采茶、炒茶的乐趣,并有专业人员全程指导,让您喝上自己亲手制作的茶叶。";
     
 }

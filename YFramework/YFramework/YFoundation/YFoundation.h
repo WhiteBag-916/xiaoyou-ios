@@ -26,4 +26,5 @@
 #import "NSArray+Additions.h"
 #import "NSDictionary+CLLocation.h"
 #import "YLabel+Ext.h"
+#import "YTextField+Ext.h"
 #endif

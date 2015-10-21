@@ -145,7 +145,7 @@ typedef enum : NSUInteger {
     //Point1
     _point1View = [[UIView alloc] init];
     _point1View.backgroundColor = KCOLORGREEN_g1;
-    _point1View.layer.cornerRadius = 4;
+    _point1View.layer.cornerRadius = SCALE_NUM(4);
     _point1View.clipsToBounds = YES;
     [_scrollView addSubview:_point1View];
     [_point1View mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -187,7 +187,7 @@ typedef enum : NSUInteger {
     //Point2
     _point2View = [[UIImageView alloc] init];
     _point2View.backgroundColor = KCOLORGREEN_B5;
-    _point2View.layer.cornerRadius = 4;
+    _point2View.layer.cornerRadius = SCALE_NUM(4);
     _point2View.clipsToBounds = YES;
     [_scrollView addSubview:_point2View];
     [_point2View mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -229,7 +229,7 @@ typedef enum : NSUInteger {
     //Point3
     _point3View = [[UIImageView alloc] init];
     _point3View.backgroundColor = KCOLORGREEN_B5;
-    _point3View.layer.cornerRadius = 4;
+    _point3View.layer.cornerRadius = SCALE_NUM(4);
     _point3View.clipsToBounds = YES;
     [_scrollView addSubview:_point3View];
     [_point3View mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -270,7 +270,7 @@ typedef enum : NSUInteger {
     //Point4
     _point4View = [[UIImageView alloc] init];
     _point4View.backgroundColor = KCOLORGREEN_B5;
-    _point4View.layer.cornerRadius = 4;
+    _point4View.layer.cornerRadius = SCALE_NUM(4);
     _point4View.clipsToBounds = YES;
     [_scrollView addSubview:_point4View];
     [_point4View mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -311,7 +311,7 @@ typedef enum : NSUInteger {
     //Point5
     _point5View = [[UIImageView alloc] init];
     _point5View.backgroundColor = KCOLORGREEN_B5;
-    _point5View.layer.cornerRadius = 4;
+    _point5View.layer.cornerRadius = SCALE_NUM(4);
     _point5View.clipsToBounds = YES;
     [_scrollView addSubview:_point5View];
     [_point5View mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -344,7 +344,7 @@ typedef enum : NSUInteger {
     //这咕噜你好好想想
     UIView * backgroundView = [[UIView alloc] init];
     backgroundView.backgroundColor = KCOLORGREEN_B2;
-    backgroundView.layer.cornerRadius = 15;
+    backgroundView.layer.cornerRadius = 17;
     backgroundView.clipsToBounds = YES;
     [_scrollView addSubview:backgroundView];
     [backgroundView mas_makeConstraints:^(MASConstraintMaker *make) {

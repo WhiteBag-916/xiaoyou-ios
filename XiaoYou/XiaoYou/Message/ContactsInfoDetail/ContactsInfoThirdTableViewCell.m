@@ -75,7 +75,7 @@ NSString *const kContactsInfoThirdTableViewCell = @"ContactsInfoThirdTableViewCe
         make.top.equalTo(_toastImageView.mas_bottom).offset(17);
         make.left.mas_equalTo(12);
         make.width.mas_equalTo(14);
-        make.height.mas_equalTo(12);
+        make.height.mas_equalTo(13);
     }];
     
     _coolLabel = [[UILabel alloc] init];
