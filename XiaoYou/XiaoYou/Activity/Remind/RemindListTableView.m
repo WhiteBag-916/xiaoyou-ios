@@ -11,6 +11,7 @@
 #import "PassRemindCell.h"
 #import "RemindManager.h"
 #import "ApplyRemindCell.h"
+#import "WhoJoinInController.h"
 
 #define REMINDVIEWCELL  @"remindCell"
 #define REMINDHEADVIEW  @"remindHeadView"
@@ -178,6 +179,10 @@
         if (indexPath.section == 1) {
             cell.cellType = AUDIT_NOT_PASSED;
         }
+        else
+        {
+            cell.cellType = AUDIT_PASSED;
+        }
         return cell;
     }
     else if (indexPath.section == 3)
@@ -197,7 +202,13 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
+    WhoJoinInController *whoJoinIn = [[WhoJoinInController alloc]init];
+    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+    if ([cell isKindOfClass:[PassRemindCell class]]) {
+        PassRemindCell *remindCell = (PassRemindCell*)cell;
+        if (remindCell.cellType == AUDIT_PASSED)
+            [self.viewController.navigationController pushViewController:whoJoinIn animated:YES needHiddenBottomBar:YES];
+    }
 }
 
 @end
