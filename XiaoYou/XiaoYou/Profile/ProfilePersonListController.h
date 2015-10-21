@@ -27,6 +27,10 @@ typedef NS_ENUM(int, PersonListType) {
      *  @brief  feed敬酒人列表
      */
     PersonListFeedRespect   = 2,
+    /**
+     *  @author,刘德胜
+     */
+    PersonListWhoJoinInThisActivity = 3
 };
 
 @interface ProfilePersonListController : YViewController

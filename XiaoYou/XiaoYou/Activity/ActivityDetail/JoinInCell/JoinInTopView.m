@@ -36,7 +36,9 @@
 {
     _headImageView = [[UIImageView alloc]init];
     [self addSubview:_headImageView];
-    _headImageView.image = [UIImage imageNamed:@"chatBar_face"];
+    _headImageView.layer.cornerRadius = HEAD_IMAGE_SIZE/2.0;
+    _headImageView.clipsToBounds = YES;
+    _headImageView.image = [UIImage imageNamed:@"headImage.jpg"];
     [_headImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.leading.mas_equalTo(HEADIMAGE_LEADING);
         make.top.mas_equalTo(HEADIMAGE_LEADING);
