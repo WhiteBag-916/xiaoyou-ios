@@ -290,7 +290,8 @@
         }
         else if (indexPath.row == 1)
         {
-            ContactsInfoSecondTableViewCell * cell = [self dequeueReusableCellWithIdentifier:kContactsInfoSecondTableViewCell forIndexPath:indexPath];
+            ContactsInfoSecondTableViewCell * cell = [[ContactsInfoSecondTableViewCell alloc] init];
+//            ContactsInfoSecondTableViewCell * cell = [self dequeueReusableCellWithIdentifier:kContactsInfoSecondTableViewCell forIndexPath:indexPath];
             [cell setCellInfo:_model];
             return cell;
         }
