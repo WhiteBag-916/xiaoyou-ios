@@ -130,13 +130,13 @@
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.row == 0)
-        return SCALE_NUM(160);
+        return SCALE_NUM(140);
     else if (indexPath.row == 1)
-        return SCALE_NUM(100);
+        return SCALE_NUM(85);
     else if (indexPath.row == 6) {
-        return SCALE_NUM(100);
+        return SCALE_NUM(85);
     }
-    return SCALE_NUM(450);
+    return SCALE_NUM(465);
 }
 
 -(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath

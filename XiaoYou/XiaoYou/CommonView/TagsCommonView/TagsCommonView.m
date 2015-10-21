@@ -45,7 +45,7 @@
     self.backgroundColor = [UIColor clearColor];
     _flagImageView = [[UIImageView alloc]init];
     [self addSubview:_flagImageView];
-    _flagImageView.image = [UIImage imageNamed:@"tag-green"];
+    _flagImageView.image = [UIImage imageNamed:@"detail_flag_new"];
     [_flagImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.mas_equalTo(kPaddingDistance);
         make.leading.mas_equalTo(0);

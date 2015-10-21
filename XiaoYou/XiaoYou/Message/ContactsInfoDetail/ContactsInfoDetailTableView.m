@@ -96,7 +96,7 @@
     [backView addSubview:_faceContainer];
     [_faceContainer mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.mas_equalTo(kPaddingDistance);
-        make.centerY.equalTo(backView);
+        make.bottom.equalTo(backView);
         make.width.height.mas_equalTo(kHeadWidthAndHeight);
     }];
     //头像
@@ -290,7 +290,8 @@
         }
         else if (indexPath.row == 1)
         {
-            ContactsInfoSecondTableViewCell * cell = [self dequeueReusableCellWithIdentifier:kContactsInfoSecondTableViewCell forIndexPath:indexPath];
+            ContactsInfoSecondTableViewCell * cell = [[ContactsInfoSecondTableViewCell alloc] init];
+//            ContactsInfoSecondTableViewCell * cell = [self dequeueReusableCellWithIdentifier:kContactsInfoSecondTableViewCell forIndexPath:indexPath];
             [cell setCellInfo:_model];
             return cell;
         }

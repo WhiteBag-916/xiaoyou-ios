@@ -54,6 +54,7 @@
     _titleLabel.font = CONTENT_FONT(15);
     _titleLabel.textColor = KCOLORGREEN_B4;
     [_titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.height.mas_equalTo(SCALE_NUM(15));
         make.left.equalTo(_headImageView.mas_right).offset(12);
         make.centerY.equalTo(_headImageView.mas_centerY);
     }];
@@ -74,6 +75,7 @@
     _staticNameLabel.font = CONTENT_FONT(13);
     _staticNameLabel.text = @"名称:";
     [_staticNameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        //make.height.mas_equalTo(SCALE_NUM(13));
         make.top.equalTo(_sepLineView.mas_bottom).offset(15);
         make.leading.mas_equalTo(22);
     }];
@@ -86,6 +88,7 @@
     [_nameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(_titleLabel);
         make.top.equalTo(_staticNameLabel);
+        make.trailing.mas_equalTo(-12);
     }];
     
     _staticDesLabel = [[UILabel alloc]init];
@@ -93,6 +96,7 @@
     _staticDesLabel.font = CONTENT_FONT(13);
     _staticDesLabel.text = @"简介:";
     [_staticDesLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        //make.height.mas_equalTo(SCALE_NUM(13));
         make.top.equalTo(_nameLabel.mas_bottom).offset(15);
         make.left.equalTo(_staticNameLabel);
     }];

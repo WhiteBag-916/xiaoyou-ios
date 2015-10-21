@@ -53,6 +53,7 @@
     _titleLabel.font = CONTENT_FONT(15);
     _titleLabel.textColor = KCOLORGREEN_B4;
     [_titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.height.mas_equalTo(SCALE_NUM(15));
         make.centerY.equalTo(_startImageView.mas_centerY);
         make.leading.mas_equalTo(SCALE_NUM(15));
     }];
@@ -63,6 +64,7 @@
     _desLabel.textColor = KCOLORGREEN_B5;
     _desLabel.text = @"没什么大事就去学习一下";
     [_desLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.height.mas_equalTo(SCALE_NUM(12));
         make.top.equalTo(_titleLabel.mas_bottom).offset(SCALE_NUM(20));
         make.left.equalTo(_titleLabel);
     }];
