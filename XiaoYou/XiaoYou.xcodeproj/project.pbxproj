@@ -687,7 +687,7 @@
 		E46CF85F1BD72A4600FF563B /* MerchantListTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = E46CF85E1BD72A4600FF563B /* MerchantListTableView.m */; settings = {ASSET_TAGS = (); }; };
 		E46CF8651BD72A9900FF563B /* MerchantListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E46CF8641BD72A9900FF563B /* MerchantListTableViewCell.m */; settings = {ASSET_TAGS = (); }; };
 		E46CF8691BD7531B00FF563B /* MerchantDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E46CF8681BD7531B00FF563B /* MerchantDetailViewController.m */; settings = {ASSET_TAGS = (); }; };
-		E46CF86C1BD753D400FF563B /* TopScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = E46CF86B1BD753D400FF563B /* TopScrollView.m */; settings = {ASSET_TAGS = (); }; };
+		E46CF86C1BD753D400FF563B /* TopView.m in Sources */ = {isa = PBXBuildFile; fileRef = E46CF86B1BD753D400FF563B /* TopView.m */; settings = {ASSET_TAGS = (); }; };
 		E46CF86F1BD7541000FF563B /* MiddleInfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = E46CF86E1BD7541000FF563B /* MiddleInfoView.m */; settings = {ASSET_TAGS = (); }; };
 		E46CF8721BD7544500FF563B /* PrivilegeDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = E46CF8711BD7544500FF563B /* PrivilegeDetailView.m */; settings = {ASSET_TAGS = (); }; };
 		E47C6A5C1BD4C95E0058DCAA /* havetime－icon_free@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E47C6A5A1BD4C95E0058DCAA /* havetime－icon_free@2x.png */; settings = {ASSET_TAGS = (); }; };
@@ -1730,8 +1730,8 @@
 		E46CF8641BD72A9900FF563B /* MerchantListTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MerchantListTableViewCell.m; sourceTree = "<group>"; };
 		E46CF8671BD7531B00FF563B /* MerchantDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MerchantDetailViewController.h; sourceTree = "<group>"; };
 		E46CF8681BD7531B00FF563B /* MerchantDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MerchantDetailViewController.m; sourceTree = "<group>"; };
-		E46CF86A1BD753D400FF563B /* TopScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TopScrollView.h; sourceTree = "<group>"; };
-		E46CF86B1BD753D400FF563B /* TopScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TopScrollView.m; sourceTree = "<group>"; };
+		E46CF86A1BD753D400FF563B /* TopView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TopView.h; sourceTree = "<group>"; };
+		E46CF86B1BD753D400FF563B /* TopView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TopView.m; sourceTree = "<group>"; };
 		E46CF86D1BD7541000FF563B /* MiddleInfoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MiddleInfoView.h; sourceTree = "<group>"; };
 		E46CF86E1BD7541000FF563B /* MiddleInfoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MiddleInfoView.m; sourceTree = "<group>"; };
 		E46CF8701BD7544500FF563B /* PrivilegeDetailView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrivilegeDetailView.h; sourceTree = "<group>"; };
@@ -3797,8 +3797,8 @@
 			children = (
 				E46CF8671BD7531B00FF563B /* MerchantDetailViewController.h */,
 				E46CF8681BD7531B00FF563B /* MerchantDetailViewController.m */,
-				E46CF86A1BD753D400FF563B /* TopScrollView.h */,
-				E46CF86B1BD753D400FF563B /* TopScrollView.m */,
+				E46CF86A1BD753D400FF563B /* TopView.h */,
+				E46CF86B1BD753D400FF563B /* TopView.m */,
 				E46CF86D1BD7541000FF563B /* MiddleInfoView.h */,
 				E46CF86E1BD7541000FF563B /* MiddleInfoView.m */,
 				E46CF8701BD7544500FF563B /* PrivilegeDetailView.h */,
@@ -4447,7 +4447,7 @@
 				E43E10071BCC9CE50018B6D7 /* NameCollectionViewCell.m in Sources */,
 				6518A2481B80429300AEB79D /* TagListTableView.m in Sources */,
 				656234771B837FDC00651C88 /* YFaceImageView.m in Sources */,
-				E46CF86C1BD753D400FF563B /* TopScrollView.m in Sources */,
+				E46CF86C1BD753D400FF563B /* TopView.m in Sources */,
 				65969DCD1B871AA9001DD348 /* ProfilePersonListController.m in Sources */,
 				20DAAA6C1BCD05F5006DF231 /* WeekViewController.m in Sources */,
 				049C55CC1BB3F33D007565E1 /* BottomView.m in Sources */,

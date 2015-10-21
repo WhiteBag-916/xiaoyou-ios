@@ -7,8 +7,15 @@
 //
 
 #import "MerchantDetailViewController.h"
+#import "TopView.h"
+#import "MiddleInfoView.h"
+#import "PrivilegeDetailView.h"
 
 @interface MerchantDetailViewController ()
+
+@property(nonatomic,strong)TopView * topView;
+@property(nonatomic,strong)MiddleInfoView * middleInfoView;
+@property(nonatomic,strong)PrivilegeDetailView * privilegeDetailView;
 
 @end
 
@@ -16,7 +23,21 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    [self setUpUI];
+}
+
+-(void)setUpUI
+{
+    self.title = @"必胜客";
+    [self showCustomNavigationBackButton];
+    
+    _topView = [[TopView alloc] init];
+    _topView.backgroundColor = [UIColor clearColor];
+    [self.view addSubview:_topView];
+    [_topView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.right.top.mas_equalTo(0);
+        make.height.mas_equalTo(SCALE_NUM(150));
+    }];
 }
 
 - (void)didReceiveMemoryWarning {

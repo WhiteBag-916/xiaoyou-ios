@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface TopScrollView : UIView
+@interface TopView : UIView
 
 @end
