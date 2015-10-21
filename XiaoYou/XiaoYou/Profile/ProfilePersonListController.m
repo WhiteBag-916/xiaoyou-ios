@@ -44,6 +44,11 @@
         case 2:
             self.title = @"敬酒的朋友们";
             break;
+        case 3:
+        {
+            self.title = @"参加活动的小伙伴";
+            break;
+        }
         default:
             break;
     }

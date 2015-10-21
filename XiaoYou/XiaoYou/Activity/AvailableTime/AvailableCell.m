@@ -19,16 +19,21 @@
 @property (nonatomic,strong) FeedImageGroup *imageGroupView;   //图片
 //底部部分View
 
-@property (nonatomic,strong) UILabel        *signUpTimeDes;     //报名
-@property (nonatomic,strong) UILabel        *activityTimeDes;   //活动
+@property (nonatomic,strong) UILabel        *signUpTimeDes;     //报名截止时间
+@property (nonatomic,strong) UILabel        *activityTimeDes;   //活动开始时间
+@property (nonatomic,strong) UILabel        *activityEndTimeDes;//活动结束时间
+@property (nonatomic,strong) UILabel        *activityLocationDes;//活动地点
 @property (nonatomic,strong) UILabel        *oranizerDes;       //组织者
 
-@property (nonatomic,strong) UILabel        *signUpTimeLabel;  //报名时间
-@property (nonatomic,strong) UILabel        *activityTimeLabel;//活动时间
-@property (nonatomic,strong) UILabel        *organizerLabel;   //组织者
 
-@property (nonatomic,strong) UILabel        *activityEndTimeDes;
-@property (nonatomic,strong) UILabel        *activityEndTimeLabel;//活动结束时间
+@property (nonatomic,strong) UILabel        *signUpTimeLabel;       //报名截止时间
+@property (nonatomic,strong) UILabel        *activityTimeLabel;     //活动开始时间
+@property (nonatomic,strong) UILabel        *activityEndTimeLabel;  //活动结束时间
+@property (nonatomic,strong) UILabel        *activityLocationLabel; //活动地点
+@property (nonatomic,strong) UILabel        *organizerLabel;        //组织者
+
+
+
 @end
 
 
@@ -67,7 +72,7 @@
     
     _titleLabel = [[UILabel alloc]init];
     [self.contentView addSubview:_titleLabel];
-    _titleLabel.text = @"音乐剧《和平使者——抗战中的宋庆龄》奋斗史";
+    _titleLabel.text = @"大型历史音乐剧《和平使者——抗战中的宋庆龄》奋斗史";
     _titleLabel.numberOfLines = 1;
     _titleLabel.lineBreakMode = NSLineBreakByTruncatingTail;
     _titleLabel.textColor = KCOLORGREEN_B4;
@@ -199,6 +204,29 @@
     }];
     
     
+    _activityLocationDes = [[UILabel alloc]init];
+    [self.contentView addSubview:_activityLocationDes];
+    _activityLocationDes.font = CONTENT_FONT(12);
+    _activityLocationDes.textColor = KCOLORGREEN_B5;
+    _activityLocationDes.text = @"活动地点：";
+    [_activityLocationDes mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.height.mas_equalTo(SCALE_NUM(12));
+        make.top.equalTo(_activityEndTimeDes.mas_bottom).offset(SCALE_NUM(15));
+        make.left.equalTo(_activityEndTimeDes);
+    }];
+    
+    _activityLocationLabel = [[UILabel alloc]init];
+    [self.contentView addSubview:_activityLocationLabel];
+    _activityLocationLabel.font = CONTENT_FONT(12);
+    _activityLocationLabel.textColor = KCOLORGREEN_B5;
+    _activityLocationLabel.text = @"大脚超市门口";
+    [_activityLocationLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.height.mas_equalTo(SCALE_NUM(12));
+        make.centerY.equalTo(_activityLocationDes);
+        make.left.equalTo(_activityEndTimeLabel);
+    }];
+    
+    
     _oranizerDes = [[UILabel alloc]init];
     [self.contentView addSubview:_oranizerDes];
     _oranizerDes.font = CONTENT_FONT(12);
@@ -206,8 +234,8 @@
     _oranizerDes.text = @"组织者：";
     [_oranizerDes mas_makeConstraints:^(MASConstraintMaker *make) {
         make.height.mas_equalTo(SCALE_NUM(12));
-        make.top.equalTo(_activityEndTimeDes.mas_bottom).offset(SCALE_NUM(15));
-        make.left.equalTo(_activityEndTimeDes);
+        make.top.equalTo(_activityLocationDes.mas_bottom).offset(SCALE_NUM(15));
+        make.left.equalTo(_activityLocationDes);
     }];
     
     _organizerLabel = [[UILabel alloc]init];

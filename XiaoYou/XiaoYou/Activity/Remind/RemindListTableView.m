@@ -12,6 +12,8 @@
 #import "RemindManager.h"
 #import "ApplyRemindCell.h"
 #import "WhoJoinInController.h"
+#import "ProfilePersonListController.h"
+#import "ProfileViewController.h"
 
 #define REMINDVIEWCELL  @"remindCell"
 #define REMINDHEADVIEW  @"remindHeadView"
@@ -130,11 +132,10 @@
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.section == 1) {
-        return SCALE_NUM(116);
+        return SCALE_NUM(146);
     }
-    if (indexPath.section < 3) {
-        return SCALE_NUM(160);
-        return SCALE_NUM(116);
+    if (indexPath.section == 0 || indexPath.section == 2) {
+        return SCALE_NUM(190);
     }
     else
     {
@@ -202,7 +203,8 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    WhoJoinInController *whoJoinIn = [[WhoJoinInController alloc]init];
+    ProfilePersonListController *whoJoinIn = [[ProfilePersonListController alloc]init];
+    [whoJoinIn initWithType:PersonListWhoJoinInThisActivity];
     UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
     if ([cell isKindOfClass:[PassRemindCell class]]) {
         PassRemindCell *remindCell = (PassRemindCell*)cell;

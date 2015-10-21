@@ -53,7 +53,7 @@
 {
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
         self.selectionStyle = UITableViewCellSelectionStyleNone;
-        self.backgroundColor = [UIColor colorWithRed:246.0/255 green:247/255 blue:249/255 alpha:0];
+        self.backgroundColor = KCOLORGREEN_B1;
         [self initView];
     }
     return self;
@@ -108,6 +108,7 @@
     _remindTitleLabel.text = @"恭喜,报名申请通过！！！";
     _remindTitleLabel.font = CONTENT_FONT(15);
     [_remindTitleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.height.mas_equalTo(SCALE_NUM(15));
         make.left.equalTo(self.titleImageView.mas_right).offset(10);
         make.top.equalTo(self.titleImageView);
         make.height.equalTo(self.titleImageView);
@@ -128,7 +129,7 @@
     //1.头像
     _headImageView = [[UIImageView alloc]init];
     [self.wrapContentView addSubview:_headImageView];
-    _headImageView.image = [UIImage imageNamed:@"chatBar_face"];
+    _headImageView.image = [UIImage imageNamed:@"headImage.jpg"];
     [_headImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.topLineView).offset(15);
         make.leading.mas_equalTo(10);

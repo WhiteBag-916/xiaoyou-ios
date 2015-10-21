@@ -35,19 +35,23 @@
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {;
     CGFloat height;
-    if (indexPath.row == 0)
+    if (indexPath.row == 0 && IS_IPHONE_5)
     {
         return SCALE_NUM(1000);
         //height = [tableView fd_heightForCellWithIdentifier:@"activitydetail" cacheByIndexPath:indexPath configuration:^(ActivityDetailCell *cell) {
             //[cell setData:_feedListArray[indexPath.row]];
         //}];
     }
+    if (indexPath.row == 0 && IS_IPHONE_6)
+    {
+        return SCALE_NUM(810);
+    }
     else if (indexPath.row == 1) {
         return SCALE_NUM(270);
     }
     else
     {
-        return SCALE_NUM(250);
+        return SCALE_NUM(200);
         //height = [tableView fd_heightForCellWithIdentifier:@"joinincell" cacheByIndexPath:indexPath configuration:^(ActivityJoinInCell *cell) {
             //[cell setData:_feedListArray[indexPath.row]];
         //}];

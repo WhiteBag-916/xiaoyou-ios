@@ -84,7 +84,7 @@
     [self addSubview:_nameLabel];
     _nameLabel.font = CONTENT_FONT(13);
     _nameLabel.numberOfLines = 0;
-    _nameLabel.text = @"音乐剧《和平使者——抗战中的宋庆龄》";
+    _nameLabel.text = @"大型历史音乐剧《和平使者——抗战中的宋庆龄》";
     [_nameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(_titleLabel);
         make.top.equalTo(_staticNameLabel);
