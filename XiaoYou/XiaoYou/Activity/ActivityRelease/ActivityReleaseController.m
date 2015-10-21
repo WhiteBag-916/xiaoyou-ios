@@ -207,7 +207,7 @@ typedef enum : NSUInteger {
     _typeLabel2 = [[UILabel alloc]init];
     _typeLabel2.text = @"描述";
     _typeLabel2.textAlignment = NSTextAlignmentCenter;
-    _typeLabel2.textColor = KCOLORGREEN_B5;
+    _typeLabel2.textColor = KCOLORGREEN_B3;
     _typeLabel2.font = CONTENT_FONT(12);
     [_scrollView addSubview:_typeLabel2];
     [_typeLabel2 mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -249,7 +249,7 @@ typedef enum : NSUInteger {
     _typeLabel3 = [[UILabel alloc]init];
     _typeLabel3.text = @"时间";
     _typeLabel3.textAlignment = NSTextAlignmentCenter;
-    _typeLabel3.textColor = KCOLORGREEN_B5;
+    _typeLabel3.textColor = KCOLORGREEN_B3;
     _typeLabel3.font = CONTENT_FONT(12);
     [_scrollView addSubview:_typeLabel3];
     [_typeLabel3 mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -290,7 +290,7 @@ typedef enum : NSUInteger {
     _typeLabel4 = [[UILabel alloc]init];
     _typeLabel4.text = @"地点";
     _typeLabel4.textAlignment = NSTextAlignmentCenter;
-    _typeLabel4.textColor = KCOLORGREEN_B5;
+    _typeLabel4.textColor = KCOLORGREEN_B3;
     _typeLabel4.font = CONTENT_FONT(12);
     [_scrollView addSubview:_typeLabel4];
     [_typeLabel4 mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -322,7 +322,7 @@ typedef enum : NSUInteger {
     _typeLabel5 = [[UILabel alloc]init];
     _typeLabel5.text = @"类型";
     _typeLabel5.textAlignment = NSTextAlignmentCenter;
-    _typeLabel5.textColor = KCOLORGREEN_B5;
+    _typeLabel5.textColor = KCOLORGREEN_B3;
     _typeLabel5.font = CONTENT_FONT(12);
     [_scrollView addSubview:_typeLabel5];
     [_typeLabel5 mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -436,10 +436,10 @@ typedef enum : NSUInteger {
             _point4View.backgroundColor = KCOLORGREEN_B5;
             _point5View.backgroundColor = KCOLORGREEN_B5;
             _typeLabel1.textColor = KCOLORGREEN_g1;
-            _typeLabel2.textColor = KCOLORGREEN_B5;
-            _typeLabel3.textColor = KCOLORGREEN_B5;
-            _typeLabel4.textColor = KCOLORGREEN_B5;
-            _typeLabel5.textColor = KCOLORGREEN_B5;
+            _typeLabel2.textColor = KCOLORGREEN_B3;
+            _typeLabel3.textColor = KCOLORGREEN_B3;
+            _typeLabel4.textColor = KCOLORGREEN_B3;
+            _typeLabel5.textColor = KCOLORGREEN_B3;
             break;
         case POINT2:
             _point2View.backgroundColor = KCOLORGREEN_g1;
@@ -448,10 +448,10 @@ typedef enum : NSUInteger {
             _point4View.backgroundColor = KCOLORGREEN_B5;
             _point5View.backgroundColor = KCOLORGREEN_B5;
             _typeLabel2.textColor = KCOLORGREEN_g1;
-            _typeLabel1.textColor = KCOLORGREEN_B5;
-            _typeLabel3.textColor = KCOLORGREEN_B5;
-            _typeLabel4.textColor = KCOLORGREEN_B5;
-            _typeLabel5.textColor = KCOLORGREEN_B5;
+            _typeLabel1.textColor = KCOLORGREEN_B3;
+            _typeLabel3.textColor = KCOLORGREEN_B3;
+            _typeLabel4.textColor = KCOLORGREEN_B3;
+            _typeLabel5.textColor = KCOLORGREEN_B3;
             break;
         case POINT3:
             _point3View.backgroundColor = KCOLORGREEN_g1;
@@ -460,10 +460,10 @@ typedef enum : NSUInteger {
             _point4View.backgroundColor = KCOLORGREEN_B5;
             _point5View.backgroundColor = KCOLORGREEN_B5;
             _typeLabel3.textColor = KCOLORGREEN_g1;
-            _typeLabel2.textColor = KCOLORGREEN_B5;
-            _typeLabel1.textColor = KCOLORGREEN_B5;
-            _typeLabel4.textColor = KCOLORGREEN_B5;
-            _typeLabel5.textColor = KCOLORGREEN_B5;
+            _typeLabel2.textColor = KCOLORGREEN_B3;
+            _typeLabel1.textColor = KCOLORGREEN_B3;
+            _typeLabel4.textColor = KCOLORGREEN_B3;
+            _typeLabel5.textColor = KCOLORGREEN_B3;
             break;
         case POINT4:
             _point4View.backgroundColor = KCOLORGREEN_g1;
@@ -472,10 +472,10 @@ typedef enum : NSUInteger {
             _point1View.backgroundColor = KCOLORGREEN_B5;
             _point5View.backgroundColor = KCOLORGREEN_B5;
             _typeLabel4.textColor = KCOLORGREEN_g1;
-            _typeLabel2.textColor = KCOLORGREEN_B5;
-            _typeLabel3.textColor = KCOLORGREEN_B5;
-            _typeLabel1.textColor = KCOLORGREEN_B5;
-            _typeLabel5.textColor = KCOLORGREEN_B5;
+            _typeLabel2.textColor = KCOLORGREEN_B3;
+            _typeLabel3.textColor = KCOLORGREEN_B3;
+            _typeLabel1.textColor = KCOLORGREEN_B3;
+            _typeLabel5.textColor = KCOLORGREEN_B3;
             break;
         case POINT5:
             _point5View.backgroundColor = KCOLORGREEN_g1;
@@ -484,10 +484,10 @@ typedef enum : NSUInteger {
             _point4View.backgroundColor = KCOLORGREEN_B5;
             _point1View.backgroundColor = KCOLORGREEN_B5;
             _typeLabel5.textColor = KCOLORGREEN_g1;
-            _typeLabel2.textColor = KCOLORGREEN_B5;
-            _typeLabel3.textColor = KCOLORGREEN_B5;
-            _typeLabel4.textColor = KCOLORGREEN_B5;
-            _typeLabel1.textColor = KCOLORGREEN_B5;
+            _typeLabel2.textColor = KCOLORGREEN_B3;
+            _typeLabel3.textColor = KCOLORGREEN_B3;
+            _typeLabel4.textColor = KCOLORGREEN_B3;
+            _typeLabel1.textColor = KCOLORGREEN_B3;
             break;
             
         default:

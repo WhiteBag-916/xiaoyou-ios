@@ -45,7 +45,7 @@ NSString *const kDateAndTimeCollectionViewCell = @"DateAndTimeCollectionViewCell
     UILabel * applyLabel = [[UILabel alloc] init];
     applyLabel.backgroundColor = [UIColor clearColor];
     applyLabel.font = CONTENT_FONT(12);
-    applyLabel.textColor = KCOLORGREEN_B5;
+    applyLabel.textColor = KCOLORGREEN_B3;
     applyLabel.text = @"报名截止时间";
     [self.backView addSubview:applyLabel];
     [applyLabel mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -77,7 +77,7 @@ NSString *const kDateAndTimeCollectionViewCell = @"DateAndTimeCollectionViewCell
     UILabel * activityLabel = [[UILabel alloc] init];
     activityLabel.backgroundColor = [UIColor clearColor];
     activityLabel.font = CONTENT_FONT(12);
-    activityLabel.textColor = KCOLORGREEN_B5;
+    activityLabel.textColor = KCOLORGREEN_B3;
     activityLabel.text = @"活动时间";
     [self.backView addSubview:activityLabel];
     [activityLabel mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -111,7 +111,7 @@ NSString *const kDateAndTimeCollectionViewCell = @"DateAndTimeCollectionViewCell
     toLabel.backgroundColor = [UIColor clearColor];
     toLabel.textAlignment = NSTextAlignmentCenter;
     toLabel.font = CONTENT_FONT(12);
-    toLabel.textColor = KCOLORGREEN_B5;
+    toLabel.textColor = KCOLORGREEN_B3;
     toLabel.text = @"至";
     [self.backView addSubview:toLabel];
     [toLabel mas_makeConstraints:^(MASConstraintMaker *make) {

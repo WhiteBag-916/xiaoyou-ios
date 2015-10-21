@@ -56,7 +56,7 @@ NSString *const kTypeDetailCollectionViewCell = @"TypeDetailCollectionViewCellId
     else
     {
         _typeLabel.backgroundColor = [UIColor clearColor];
-        _typeLabel.textColor = KCOLORGREEN_B5;
+        _typeLabel.textColor = KCOLORGREEN_B3;
     }
 }
 
