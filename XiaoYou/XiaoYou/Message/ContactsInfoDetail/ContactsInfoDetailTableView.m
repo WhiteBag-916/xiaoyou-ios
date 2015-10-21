@@ -96,7 +96,7 @@
     [backView addSubview:_faceContainer];
     [_faceContainer mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.mas_equalTo(kPaddingDistance);
-        make.centerY.equalTo(backView);
+        make.bottom.equalTo(backView);
         make.width.height.mas_equalTo(kHeadWidthAndHeight);
     }];
     //头像
