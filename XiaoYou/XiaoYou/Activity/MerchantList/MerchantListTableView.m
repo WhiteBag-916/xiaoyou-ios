@@ -8,6 +8,7 @@
 
 #import "MerchantListTableView.h"
 #import "MerchantListTableViewCell.h"
+#import "MerchantDetailViewController.h"
 
 @interface MerchantListTableView ()<UITableViewDataSource,UITableViewDelegate>
 
@@ -46,7 +47,8 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-
+    MerchantDetailViewController * merchantDetailViewController = [[MerchantDetailViewController alloc] init];
+    [self.viewController.navigationController pushViewController:merchantDetailViewController animated:YES];
 }
 
 -(void)gotoDetailWithCellType
