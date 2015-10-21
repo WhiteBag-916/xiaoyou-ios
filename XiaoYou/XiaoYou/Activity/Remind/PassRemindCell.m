@@ -124,7 +124,7 @@
     [self.wrapContentView addSubview:_contentTitleLabel];
     _contentTitleLabel.font = CONTENT_FONT(12);
     _contentTitleLabel.text = @"校级活动公告";
-    _contentNameLabel.textColor = KCOLORGREEN_g1;
+    _contentTitleLabel.textColor = KCOLORGREEN_g1;
     [_contentTitleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.height.mas_equalTo(SCALE_NUM(12));
         make.top.equalTo(self.headImageView);
