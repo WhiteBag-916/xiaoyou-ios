@@ -12,7 +12,7 @@
 #import "StudyRoomCell.h"
 #import "ScroungeCourseCell.h"
 #import "AvailableSimpleViewController.h"
-#import "ScheduleDetailViewController.h"
+#import "WeekViewController.h"
 #import "ActivityDetailViewController.h"
 
 @interface AvailableListView ()<UITableViewDataSource,UITableViewDelegate>
@@ -183,7 +183,7 @@
 {
     //日程
     if (type == SCHEDULECARD_CELL) {
-        ScheduleDetailViewController *vc = [[ScheduleDetailViewController alloc] init];
+        WeekViewController *vc = [[WeekViewController alloc] init];
         [self.viewController.navigationController pushViewController:vc animated:YES needHiddenBottomBar:YES];
     }
     //空闲教室
