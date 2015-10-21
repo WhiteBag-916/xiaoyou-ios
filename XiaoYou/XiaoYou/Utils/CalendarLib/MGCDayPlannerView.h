@@ -413,6 +413,11 @@ typedef enum : NSUInteger {
  */
 - (void)endInteraction;
 
+/*!
+	@abstract	新建日程
+ */
+- (void)addNewPlanner;
+
 @end
 
 

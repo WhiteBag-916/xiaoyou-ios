@@ -19,6 +19,7 @@
     [super viewDidLoad];
     
     [self showCustomNavigationBackButton];
+    [self initRightBar];
     self.title = @"你的日程卡";
     
 	self.dayPlannerView.backgroundColor = [UIColor whiteColor];
@@ -28,6 +29,21 @@
 	self.dayPlannerView.dayHeaderHeight = 50;
 }
 
+- (void)initRightBar {
+    //right barbutton view
+    UIButton *rightButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    rightButton.frame = CGRectMake(0, 0, 15, 30);
+    [rightButton setImage:[UIImage imageNamed:@"havetime_icon_add"] forState:UIControlStateNormal];
+    [rightButton setImage:[UIImage imageNamed:@"havetime_icon_add"] forState:UIControlStateHighlighted];
+    
+    [rightButton addTarget:self action:@selector(newPlanner) forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem *btnNavRightItem = [[UIBarButtonItem alloc] initWithCustomView:rightButton];
+    self.navigationItem.rightBarButtonItem = btnNavRightItem;
+}
+
+- (void)newPlanner {
+    [self.dayPlannerView addNewPlanner];
+}
 
 #pragma mark - MGCDayPlannerViewController
 - (BOOL)dayPlannerView:(MGCDayPlannerView*)view canCreateNewEventOfType:(MGCEventType)type atDate:(NSDate*)date
