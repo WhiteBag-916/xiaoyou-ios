@@ -59,9 +59,9 @@ NSString *const kDateAndTimeCollectionViewCell = @"DateAndTimeCollectionViewCell
     _applayTimeLabel.userInteractionEnabled = YES;
     _applayTimeLabel.backgroundColor = [UIColor whiteColor];
     _applayTimeLabel.font = CONTENT_FONT(12);
-    _applayTimeLabel.text = @"点击后可以选择时间";
+    _applayTimeLabel.text = @"请选择活动报名时间";
     _applayTimeLabel.textAlignment = NSTextAlignmentCenter;
-    _applayTimeLabel.textColor = KCOLORGREEN_B4;
+    _applayTimeLabel.textColor = KCOLORGREEN_B5;
     [self.backView addSubview:_applayTimeLabel];
     [_applayTimeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(applyLabel.mas_bottom).offset(SCALE_NUM(10));
@@ -92,9 +92,9 @@ NSString *const kDateAndTimeCollectionViewCell = @"DateAndTimeCollectionViewCell
     _beginTimeLabel.userInteractionEnabled = YES;
     _beginTimeLabel.backgroundColor = [UIColor whiteColor];
     _beginTimeLabel.font = CONTENT_FONT(12);
-    _beginTimeLabel.text = @"点击后可以选择时间";
+    _beginTimeLabel.text = @"请选择活动开始时间";
     _beginTimeLabel.textAlignment = NSTextAlignmentCenter;
-    _beginTimeLabel.textColor = KCOLORGREEN_B4;
+    _beginTimeLabel.textColor = KCOLORGREEN_B5;
     [self.backView addSubview:_beginTimeLabel];
     [_beginTimeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(activityLabel.mas_bottom).offset(SCALE_NUM(10));
@@ -126,9 +126,9 @@ NSString *const kDateAndTimeCollectionViewCell = @"DateAndTimeCollectionViewCell
     _endTimeLabel.userInteractionEnabled = YES;
     _endTimeLabel.backgroundColor = [UIColor whiteColor];
     _endTimeLabel.font = CONTENT_FONT(12);
-    _endTimeLabel.text = @"点击后可以选择时间";
+    _endTimeLabel.text = @"请选择活动结束时间";
     _endTimeLabel.textAlignment = NSTextAlignmentCenter;
-    _endTimeLabel.textColor = KCOLORGREEN_B4;
+    _endTimeLabel.textColor = KCOLORGREEN_B5;
     [self.backView addSubview:_endTimeLabel];
     [_endTimeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(toLabel.mas_bottom).offset(SCALE_NUM(10));
@@ -163,9 +163,9 @@ NSString *const kDateAndTimeCollectionViewCell = @"DateAndTimeCollectionViewCell
     //重置结束时间
 //    NSDateFormatter * formatter = [[NSDateFormatter alloc] init];
 //    [formatter setDateFormat:@"yyyy年MM月dd日 a HH:mm"];
-//    if ([_dataManager.ActivityDateEndText isEqualToString:@"点击后可以选择时间"] || _dataManager.ActivityDateEndText == nil)
+//    if ([_dataManager.ActivityDateEndText isEqualToString:@"请选择活动结束时间"] || _dataManager.ActivityDateEndText == nil)
 //    {
-//        if ([_dataManager.ActivityDateBeginText isEqualToString:@"点击后可以选择时间"] || _dataManager.ActivityDateBeginText == nil)
+//        if ([_dataManager.ActivityDateBeginText isEqualToString:@"请选择活动开始时间"] || _dataManager.ActivityDateBeginText == nil)
 //        {
 //            _datePicker.maximumDate = nil;
 //        }
@@ -179,7 +179,7 @@ NSString *const kDateAndTimeCollectionViewCell = @"DateAndTimeCollectionViewCell
 //        _datePicker.maximumDate = nil;
 //        _datePicker.minimumDate = [formatter dateFromString:_dataManager.ActivityDateBeginText];
 //        
-//        if ([_dataManager.ActivityDateApplyText isEqualToString:@"点击后可以选择时间"] || _dataManager.ActivityDateApplyText == nil)
+//        if ([_dataManager.ActivityDateApplyText isEqualToString:@"请选择活动报名时间"] || _dataManager.ActivityDateApplyText == nil)
 //        {
 //            
 //        }
@@ -223,9 +223,9 @@ NSString *const kDateAndTimeCollectionViewCell = @"DateAndTimeCollectionViewCell
     //重置结束时间
 //    NSDateFormatter * formatter = [[NSDateFormatter alloc] init];
 //    [formatter setDateFormat:@"yyyy年MM月dd日 a HH:mm"];
-//    if ([_dataManager.ActivityDateBeginText isEqualToString:@"点击后可以选择时间"] || _dataManager.ActivityDateEndText == nil)
+//    if ([_dataManager.ActivityDateBeginText isEqualToString:@"请选择活动开始时间"] || _dataManager.ActivityDateEndText == nil)
 //    {
-//        if ([_dataManager.ActivityDateApplyText isEqualToString:@"点击后可以选择时间"] || _dataManager.ActivityDateApplyText == nil)
+//        if ([_dataManager.ActivityDateApplyText isEqualToString:@"请选择活动报名时间"] || _dataManager.ActivityDateApplyText == nil)
 //        {
 //             _datePicker.maximumDate = nil;
 //        }
@@ -239,7 +239,7 @@ NSString *const kDateAndTimeCollectionViewCell = @"DateAndTimeCollectionViewCell
 //        _datePicker.maximumDate = nil;
 //        _datePicker.minimumDate = [formatter dateFromString:_dataManager.ActivityDateBeginText];
 //        
-//        if ([_dataManager.ActivityDateApplyText isEqualToString:@"点击后可以选择时间"] || _dataManager.ActivityDateApplyText == nil)
+//        if ([_dataManager.ActivityDateApplyText isEqualToString:@"请选择活动报名时间"] || _dataManager.ActivityDateApplyText == nil)
 //        {
 //            
 //        }

@@ -240,7 +240,7 @@
     UILabel * moreMerchantsLabel = [[UILabel alloc] init];
     moreMerchantsLabel.userInteractionEnabled = YES;
     moreMerchantsLabel.textColor = KCOLORGREEN_W1;
-    moreMerchantsLabel.font = CONTENT_FONT(10);
+    moreMerchantsLabel.font = CONTENT_FONT(12);
     moreMerchantsLabel.text = @"查看合作商家";
     moreMerchantsLabel.backgroundColor = [UIColor clearColor];
     moreMerchantsLabel.textAlignment = NSTextAlignmentCenter;
@@ -249,7 +249,7 @@
         make.centerX.equalTo(self.view);
         make.bottom.equalTo(info.mas_top).offset(-20);
         make.height.mas_equalTo(12);
-        make.width.mas_equalTo(75);
+        make.width.mas_equalTo(100);
     }];
     
     UITapGestureRecognizer * tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(clickMoreMerchants)];
@@ -261,8 +261,8 @@
     [self.view addSubview:flagImageView];
     [flagImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.equalTo(moreMerchantsLabel);
-        make.height.mas_equalTo(9);
-        make.width.mas_equalTo(6);
+        make.height.mas_equalTo(12);
+        make.width.mas_equalTo(8);
         make.left.equalTo(moreMerchantsLabel.mas_right);
     }];
     flagImageView.image = [UIImage imageNamed:@"mine-particulars"];
