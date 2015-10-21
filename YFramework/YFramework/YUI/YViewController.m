@@ -85,7 +85,7 @@
     _lbTitle.text = title;
 }
 - (void)showOrignMode {
-    self.navigationController.navigationBar.barTintColor = [UIColor hexChangeFloat:@"455a64"];
+    self.navigationController.navigationBar.barTintColor = [UIColor hexChangeFloat:@"455964"];
     _lbTitle.textColor = [UIColor whiteColor];
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent animated:true];
 }

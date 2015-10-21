@@ -1301,6 +1301,12 @@ static const CGFloat kMaxHourSlotHeight = 150.;
 	self.timeRowsView.timeMark = 0;
 }
 
+- (void)addNewPlanner {
+    if ([self.dataSource respondsToSelector:@selector(dayPlannerView:createNewEventOfType:atDate:)]) {
+        [self.dataSource dayPlannerView:self createNewEventOfType:self.interactiveCellType atDate:[self dateFromDayOffset:0]];
+    }
+}
+
 #pragma mark - Reloading content
 
 // this is called whenever we recenter the views during scrolling

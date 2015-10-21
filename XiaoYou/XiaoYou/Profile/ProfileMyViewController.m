@@ -151,14 +151,14 @@
         make.centerY.equalTo(_headView);
     }];
     
-    _codeView = [[UIImageView alloc] init];
-    [_headView addSubview:_codeView];
-    [_codeView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.width.height.mas_equalTo(SCALE_NUM(30));
-        make.bottom.right.equalTo(_headView).offset(-15);
-    }];
-    _codeView.backgroundColor = [UIColor redColor];
-    [_codeView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(openCode)]];
+//    _codeView = [[UIImageView alloc] init];
+//    [_headView addSubview:_codeView];
+//    [_codeView mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.width.height.mas_equalTo(SCALE_NUM(30));
+//        make.bottom.right.equalTo(_headView).offset(-15);
+//    }];
+//    _codeView.backgroundColor = [UIColor redColor];
+//    [_codeView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(openCode)]];
     
     
     [_headView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(goBack)]];
