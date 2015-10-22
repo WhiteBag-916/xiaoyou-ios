@@ -248,7 +248,7 @@
     [self.view addSubview:moreMerchantsLabel];
     [moreMerchantsLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.equalTo(self.view);
-        make.bottom.equalTo(info.mas_top).offset(-20);
+        make.bottom.equalTo(info.mas_top).offset(-30);
         make.height.mas_equalTo(12);
         make.width.mas_equalTo(100);
     }];
@@ -272,10 +272,10 @@
 
 -(void)clickMoreMerchants
 {
-//    MerchantListViewController * merchantListViewController = [[MerchantListViewController alloc] init];
-//    [self.navigationController pushViewController:merchantListViewController animated:YES];
-    ScanfResultViewController * resultViewController = [[ScanfResultViewController alloc] init];
-    [self.navigationController pushViewController:resultViewController animated:YES needHiddenBottomBar:YES];
+    MerchantListViewController * merchantListViewController = [[MerchantListViewController alloc] init];
+    [self.navigationController pushViewController:merchantListViewController animated:YES];
+//    ScanfResultViewController * resultViewController = [[ScanfResultViewController alloc] init];
+//    [self.navigationController pushViewController:resultViewController animated:YES needHiddenBottomBar:YES];
 }
 
 
