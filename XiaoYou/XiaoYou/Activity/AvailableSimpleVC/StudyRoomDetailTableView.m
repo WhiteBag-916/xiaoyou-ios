@@ -33,12 +33,13 @@
 #pragma mark - UITableViewDataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 10;
+    return 5;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     StudyRoomDetailTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kStudyRoomDetailTableViewCell];
+    [cell initData:indexPath.row];
     return cell;
 }
 

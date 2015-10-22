@@ -65,4 +65,31 @@ NSString *const kStudyRoomTableViewCell = @"StudyRoomTableViewCellId";
     return YES;
 }
 
+- (void)initData:(NSInteger)num {
+    switch (num) {
+        case 0:
+            [_studyRoomNameButton setTitle:@"文学部教学楼" forState:UIControlStateNormal];
+            _studyRoomNumberLabel.text = @"17个教室空缺";
+            break;
+        case 1:
+            [_studyRoomNameButton setTitle:@"中央教学楼" forState:UIControlStateNormal];
+            _studyRoomNumberLabel.text = @"5个教室空缺";
+            break;
+        case 2:
+            [_studyRoomNameButton setTitle:@"工学部教学楼" forState:UIControlStateNormal];
+            _studyRoomNumberLabel.text = @"12个教室空缺";
+            break;
+        case 3:
+            [_studyRoomNameButton setTitle:@"理学部教学楼" forState:UIControlStateNormal];
+            _studyRoomNumberLabel.text = @"9个教室空缺";
+            break;
+        case 4:
+            [_studyRoomNameButton setTitle:@"科研教学楼" forState:UIControlStateNormal];
+            _studyRoomNumberLabel.text = @"6个教室空缺";
+            break;
+        default:
+            break;
+    }
+}
+
 @end

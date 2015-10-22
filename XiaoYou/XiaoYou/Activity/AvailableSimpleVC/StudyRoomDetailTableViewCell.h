@@ -12,4 +12,6 @@ extern NSString *const kStudyRoomDetailTableViewCell;
 
 @interface StudyRoomDetailTableViewCell : YTableViewCell
 
+- (void)initData:(NSInteger)num;
+
 @end
