@@ -764,6 +764,7 @@ static const CGFloat kMaxHourSlotHeight = 150.;
 		_timeRowsView.hourSlotHeight = self.hourSlotHeight;
 		_timeRowsView.insetsHeight = self.eventsViewInnerMargin;
 		_timeRowsView.timeColumnWidth = self.timeColumnWidth;
+        _timeRowsView.currentTimeColor = KCOLORGREEN_g1;
 		_timeRowsView.contentMode = UIViewContentModeRedraw;
 		[_timeScrollView addSubview:_timeRowsView];
 	}
@@ -1252,7 +1253,7 @@ static const CGFloat kMaxHourSlotHeight = 150.;
 	else if (CGRectContainsPoint(upScrollRect, point)) {
 		self.dragTimer = [NSTimer scheduledTimerWithTimeInterval:0.05 target:self selector:@selector(dragTimerDidFire:) userInfo:@{@"direction": @(ScrollDirectionUp)} repeats:YES];
 	}
-	
+    
 	[self updateMovingCellAtPoint:point];
 }
 
@@ -1435,7 +1436,7 @@ static const CGFloat kMaxHourSlotHeight = 150.;
 {
 	CGFloat allDayEventsViewHeight = 2;
 	if (self.showsAllDayEvents) {
-		allDayEventsViewHeight = fmaxf(self.allDayEventCellHeight + 4, self.allDayEventsView.contentSize.height);
+		allDayEventsViewHeight = fmaxf(48, self.allDayEventsView.contentSize.height);
 		allDayEventsViewHeight = fminf(allDayEventsViewHeight, self.allDayEventCellHeight * 2.5 + 16);
 	}
 	CGFloat timedEventViewTop = self.calendarDayHeaderView.bottomY + allDayEventsViewHeight;
@@ -1981,7 +1982,7 @@ static const CGFloat kMaxHourSlotHeight = 150.;
         if (offset.x > prevOffset.x) {
             [self.calendarDayHeaderView _movePagesToIndex:2 animated:YES];
         }
-        else {
+        else if (offset.x < prevOffset.x) {
             [self.calendarDayHeaderView _movePagesToIndex:1 animated:YES];
         }
 	}
