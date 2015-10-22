@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		04722E261BD8892700F95816 /* AvailableAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 04722E251BD8892700F95816 /* AvailableAction.m */; settings = {ASSET_TAGS = (); }; };
 		04A2A0071BCE3969006A35FB /* AppConfigData.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A2A0061BCE3969006A35FB /* AppConfigData.m */; settings = {ASSET_TAGS = (); }; };
 		04A82D911BC7A24F00EF87B7 /* RemindAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A82D901BC7A24F00EF87B7 /* RemindAction.m */; settings = {ASSET_TAGS = (); }; };
 		04A82D951BC7B3FC00EF87B7 /* RemindManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A82D941BC7B3FC00EF87B7 /* RemindManager.m */; settings = {ASSET_TAGS = (); }; };
@@ -82,6 +83,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		04722E241BD8892700F95816 /* AvailableAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AvailableAction.h; sourceTree = "<group>"; };
+		04722E251BD8892700F95816 /* AvailableAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AvailableAction.m; sourceTree = "<group>"; };
 		04A2A0051BCE3969006A35FB /* AppConfigData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppConfigData.h; sourceTree = "<group>"; };
 		04A2A0061BCE3969006A35FB /* AppConfigData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppConfigData.m; sourceTree = "<group>"; };
 		04A82D8F1BC7A24F00EF87B7 /* RemindAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RemindAction.h; sourceTree = "<group>"; };
@@ -211,6 +214,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		04722E231BD8891100F95816 /* Activity */ = {
+			isa = PBXGroup;
+			children = (
+				04722E241BD8892700F95816 /* AvailableAction.h */,
+				04722E251BD8892700F95816 /* AvailableAction.m */,
+			);
+			path = Activity;
+			sourceTree = "<group>";
+		};
 		04A82D8D1BC7A23200EF87B7 /* Remind */ = {
 			isa = PBXGroup;
 			children = (
@@ -305,13 +317,6 @@
 			path = Activity;
 			sourceTree = "<group>";
 		};
-		20DADED91BD0964D00FB294F /* Activity */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Activity;
-			sourceTree = "<group>";
-		};
 		20DBFD351B4FA0F5009134D0 = {
 			isa = PBXGroup;
 			children = (
@@ -362,7 +367,7 @@
 		20DBFD741B4FD3F5009134D0 /* Action */ = {
 			isa = PBXGroup;
 			children = (
-				20DADED91BD0964D00FB294F /* Activity */,
+				04722E231BD8891100F95816 /* Activity */,
 				04A82D8D1BC7A23200EF87B7 /* Remind */,
 				20DA8B311B8EC4E3007D0CDE /* Utils */,
 				20E0C02B1B88B0CA00EDAED4 /* Feed */,
@@ -648,6 +653,7 @@
 				3339625C1B95575400DD0A6D /* SuggestListAction.m in Sources */,
 				20DA74C01B8C12040002E041 /* FindFriendsAction.m in Sources */,
 				20859A821B64BD8500580ED3 /* ContactManager.m in Sources */,
+				04722E261BD8892700F95816 /* AvailableAction.m in Sources */,
 				20E1C6721B89EB9F008BA9D6 /* ReceiveAuthCodeAction.m in Sources */,
 				04A2A0071BCE3969006A35FB /* AppConfigData.m in Sources */,
 				04A82D951BC7B3FC00EF87B7 /* RemindManager.m in Sources */,

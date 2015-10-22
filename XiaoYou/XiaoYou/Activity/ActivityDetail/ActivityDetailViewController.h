@@ -10,4 +10,6 @@
 #import "YViewController.h"
 @interface ActivityDetailViewController : YViewController
 
+@property (nonatomic,assign) NSInteger index;
+
 @end

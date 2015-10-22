@@ -7,11 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ActivityModel.h"
 
 @interface ActivityDetailCell : UITableViewCell
 
 +(ActivityDetailCell*)cellWithTableView:(UITableView*)tableView;
 
--(void)setData:(id)data;
+-(void)setData:(ActivityModel*)model;
 
 @end

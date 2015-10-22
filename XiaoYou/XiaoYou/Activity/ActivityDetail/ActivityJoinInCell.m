@@ -12,6 +12,7 @@
 #import "JoinInHeadView.h"
 #import "JoinInTopView.h"
 #import "Tags.h"
+#import "UIImageView+WebCache.h"
 
 #define REUSEID @"joinincell"
 
@@ -119,10 +120,23 @@
     [_tagsView setData:profile];
 }
 
-
--(void)setCellInfo
+-(void)setData:(JoinInModel *)joinModel
 {
+    [_joinTopView.headImageView sd_setImageWithURL:[NSURL URLWithString:joinModel.headImageUrl]];
+    _joinTopView.nameLabel.text = joinModel.nameStr;
+    ProfileInfo *profile = [[ProfileInfo alloc]init];
+    
+    NSMutableArray *arr1 = [NSMutableArray array];
+    for (NSString *str in joinModel.tagsArr) {
+        Tags *tag = [[Tags alloc]init];
+        tag.name = str;
+        [arr1 addObject:tag];
+    }
+    
+    profile.tagModels = arr1;
+    [_tagsView setData:profile];
     
 }
+
 
 @end

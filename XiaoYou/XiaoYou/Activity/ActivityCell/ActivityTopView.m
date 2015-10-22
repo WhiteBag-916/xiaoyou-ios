@@ -12,12 +12,7 @@
 #define LEADINGOFF_HEADIMAGEVIEW    SCALE_NUM(12)
 @interface ActivityTopView ()
 
-@property (nonatomic,strong) UIImageView    *headImageView; //公告图
-@property (nonatomic,strong) UIView         *sepLineView;   //分割线
-@property (nonatomic,strong) UILabel        *nameLabel;     //名称
-@property (nonatomic,strong) UILabel        *titleLabel;    //标题(校级活动公告)
-@property (nonatomic,strong) UILabel        *staticNameLabel;//静态name
-@property (nonatomic,strong) UILabel        *staticDesLabel;
+
 
 @end
 
@@ -40,6 +35,8 @@
 -(void)initViewWithType:(TOPVIEWTYPE)type {
     _headImageView = [[UIImageView alloc]init];
     [self addSubview:_headImageView];
+    _headImageView.layer.cornerRadius = HEADIMAGEVIEW_WIDTH/2.0;
+    _headImageView.layer.masksToBounds = YES;
     _headImageView.image = [UIImage imageNamed:@"default_head"];
     [_headImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.leading.mas_equalTo(12);

@@ -13,4 +13,6 @@
 //加载数据
 - (void)loadData;
 
+@property (nonatomic,strong) NSArray *myDataSource;
+
 @end

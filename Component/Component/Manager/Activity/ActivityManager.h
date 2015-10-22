@@ -12,12 +12,7 @@
 @interface ActivityManager : YManager<YManager>
 AS_SINGLETON(ActivityManager);
 
-//获取我的动态
-- (void)getMyFeed:(NSString *)uid limitStart:(NSInteger)limitStart limitEnd:(NSInteger)limitEnd block:(ActionCompleteBlock)block;
-
-//获取当前用户活动列表
-//- (void)getCurrentUseActivityListWithS
-
-
+//有空界面,获取当前用户活动列表
+- (void)getCurrentUseAvailableListLimitStart:(NSInteger)limitStart limitEnd:(NSInteger)limitEnd block:(ActionCompleteBlock)block;
 
 @end

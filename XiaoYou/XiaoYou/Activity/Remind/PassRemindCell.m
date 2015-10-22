@@ -8,6 +8,7 @@
 
 #import "PassRemindCell.h"
 #import "DataConvert.h"
+#import "UIImageView+WebCache.h"
 
 #define REUSRID             @"PassRemindCell"
 #define CELL_INSET          SCALE_NUM(12)
@@ -51,11 +52,6 @@
     return self;
 }
 
--(void)setData:(RemindInfo *)remindInfo
-{
-    
-}
-
 -(void)initView
 {
     //容器视图
@@ -63,7 +59,7 @@
     [self.contentView addSubview:_wrapContentView];
     _wrapContentView.backgroundColor = [UIColor whiteColor];
     _wrapContentView.layer.borderWidth = 1;
-    _wrapContentView.layer.borderColor = [UIColor colorWithRed:204/255.0 green:204/255.0 blue:204/255.0 alpha:1].CGColor;
+    _wrapContentView.layer.borderColor = KCOLORGRAY_B6.CGColor;
     [_wrapContentView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self);
         make.bottom.equalTo(self);
@@ -98,7 +94,7 @@
     
     //中间内容部分
     _topLineView = [[UIView alloc]init];
-    _topLineView.backgroundColor = KCOLORGRAY;
+    _topLineView.backgroundColor = KCOLORGRAY_B6;
     [self.wrapContentView addSubview:_topLineView];
     [_topLineView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.leading.mas_equalTo(0);
@@ -117,8 +113,8 @@
         make.width.mas_equalTo(SCALE_NUM(45));
         make.height.mas_equalTo(SCALE_NUM(45));
     }];
-    _headImageView.layer.cornerRadius = 25;
-    _headImageView.clipsToBounds = YES;
+    _headImageView.layer.cornerRadius = 45.0/2;
+    _headImageView.layer.masksToBounds = YES;
     
     _contentTitleLabel = [[UILabel alloc]init];
     [self.wrapContentView addSubview:_contentTitleLabel];
@@ -156,7 +152,7 @@
     
     _bottomLineView = [[UIView alloc]init];
     [self.wrapContentView addSubview:_bottomLineView];
-    _bottomLineView.backgroundColor = [UIColor colorWithRed:204/255.0 green:204/255.0 blue:204/255.0 alpha:1];
+    _bottomLineView.backgroundColor = KCOLORGRAY_B6;
     [_bottomLineView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(_activityTimeLabel.mas_bottom).offset(SCALE_NUM(15));
         make.leading.mas_equalTo(0);
@@ -207,6 +203,13 @@
     } else if (cellType == SUCESSED_JOININ) {
         self.remindTitleLabel.text = @"你已成功参加活动";
     }
+}
+
+-(void)setData:(RemindModel *)model
+{
+    [_headImageView sd_setImageWithURL:[NSURL URLWithString:model.headImageUrl]];
+    _contentTitleLabel.text = model.acType;
+    _contentNameLabel.text = [NSString stringWithFormat:@"名称：%@",model.acName];
 }
 
 @end
