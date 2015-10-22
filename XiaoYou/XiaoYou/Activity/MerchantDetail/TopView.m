@@ -36,6 +36,8 @@
     _scrollView.userInteractionEnabled = YES;
     _scrollView.pagingEnabled = YES;
     _scrollView.delegate = self;
+    _scrollView.showsHorizontalScrollIndicator = NO;
+    _scrollView.showsVerticalScrollIndicator = NO;
     _scrollView.contentSize = CGSizeMake(SCREEN_WIDTH*3, SCALE_NUM(150));
     [self addSubview:_scrollView];
     
@@ -43,9 +45,9 @@
     _imageView2 = [[UIImageView alloc] initWithFrame:CGRectMake(SCREEN_WIDTH, 0, SCREEN_WIDTH, SCALE_NUM(150))];
     _imageView3 = [[UIImageView alloc] initWithFrame:CGRectMake(SCREEN_WIDTH*2, 0, SCREEN_WIDTH, SCALE_NUM(150))];
     
-    _imageView1.backgroundColor = [UIColor redColor];
-    _imageView2.backgroundColor = [UIColor orangeColor];
-    _imageView3.backgroundColor = [UIColor cyanColor];
+    _imageView1.image = [UIImage imageNamed:@"common_picture_loading_c"];
+    _imageView2.image = [UIImage imageNamed:@"common_picture_loading_c"];
+    _imageView3.image = [UIImage imageNamed:@"common_picture_loading_c"];
     
     [_scrollView addSubview:_imageView1];
     [_scrollView addSubview:_imageView2];

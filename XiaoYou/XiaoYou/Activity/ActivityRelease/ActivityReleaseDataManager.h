@@ -24,6 +24,9 @@
 //活动类型
 @property(nonatomic,strong)NSString * ActivityTypeStr;
 
+//报名审核
+@property(nonatomic,strong)NSString * ActivityCheckStr;
+
 +(instancetype)shareActivityReleaseDataManager;
 
 //判断是否可以发布

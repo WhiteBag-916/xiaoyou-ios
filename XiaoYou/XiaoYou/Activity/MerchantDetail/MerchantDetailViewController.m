@@ -7,15 +7,12 @@
 //
 
 #import "MerchantDetailViewController.h"
-#import "TopView.h"
-#import "MiddleInfoView.h"
-#import "PrivilegeDetailView.h"
+#import "MerchantDetailTableView.h"
 
 @interface MerchantDetailViewController ()
 
-@property(nonatomic,strong)TopView * topView;
-@property(nonatomic,strong)MiddleInfoView * middleInfoView;
-@property(nonatomic,strong)PrivilegeDetailView * privilegeDetailView;
+
+@property(nonatomic,strong)MerchantDetailTableView * merchantDetailTableView;
 
 @end
 
@@ -28,25 +25,18 @@
 
 -(void)setUpUI
 {
+    
     self.title = @"必胜客";
     [self showCustomNavigationBackButton];
     
-    _topView = [[TopView alloc] init];
-    _topView.backgroundColor = [UIColor clearColor];
-    [self.view addSubview:_topView];
-    [_topView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.right.top.mas_equalTo(0);
-        make.height.mas_equalTo(SCALE_NUM(150));
+    _merchantDetailTableView = [[MerchantDetailTableView alloc] init];
+    _merchantDetailTableView.backgroundColor = [UIColor clearColor];
+    [self.view addSubview:_merchantDetailTableView];
+    [_merchantDetailTableView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.left.right.bottom.mas_equalTo(0);
     }];
     
-    _middleInfoView = [[MiddleInfoView alloc] init];
-    _middleInfoView.backgroundColor = [UIColor cyanColor];
-    [self.view addSubview:_middleInfoView];
-    [_middleInfoView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.right.mas_equalTo(0);
-        make.height.mas_equalTo(SCALE_NUM(132));
-        make.top.equalTo(_topView.mas_bottom);
-    }];
+    
 }
 
 - (void)didReceiveMemoryWarning {
