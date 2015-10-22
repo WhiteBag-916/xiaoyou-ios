@@ -162,7 +162,7 @@ typedef enum : NSUInteger {
     [line1 mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(_point1View.mas_right);
         make.centerY.equalTo(_point1View);
-        make.width.mas_equalTo((SCREEN_WIDTH - 80)/5);
+        make.width.mas_equalTo((SCREEN_WIDTH - 88)/5);
         make.height.mas_equalTo(2);
     }];
     _typeLabel1 = [[UILabel alloc]init];
@@ -204,7 +204,7 @@ typedef enum : NSUInteger {
     [line2 mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(_point2View.mas_right);
         make.centerY.equalTo(_point2View);
-        make.width.mas_equalTo((SCREEN_WIDTH - 80)/5);
+        make.width.mas_equalTo((SCREEN_WIDTH - 88)/5);
         make.height.mas_equalTo(2);
     }];
     _typeLabel2 = [[UILabel alloc]init];
@@ -246,7 +246,7 @@ typedef enum : NSUInteger {
     [line3 mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(_point3View.mas_right);
         make.centerY.equalTo(_point3View);
-        make.width.mas_equalTo((SCREEN_WIDTH - 80)/5);
+        make.width.mas_equalTo((SCREEN_WIDTH - 88)/5);
         make.height.mas_equalTo(2);
     }];
     _typeLabel3 = [[UILabel alloc]init];
@@ -287,7 +287,7 @@ typedef enum : NSUInteger {
     [line4 mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(_point4View.mas_right);
         make.centerY.equalTo(_point4View);
-        make.width.mas_equalTo((SCREEN_WIDTH - 80)/5);
+        make.width.mas_equalTo((SCREEN_WIDTH - 88)/5);
         make.height.mas_equalTo(2);
     }];
     _typeLabel4 = [[UILabel alloc]init];
@@ -328,7 +328,7 @@ typedef enum : NSUInteger {
     [line5 mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(_point5View.mas_right);
         make.centerY.equalTo(_point5View);
-        make.width.mas_equalTo((SCREEN_WIDTH - 80)/5);
+        make.width.mas_equalTo((SCREEN_WIDTH - 88)/5);
         make.height.mas_equalTo(2);
     }];
     _typeLabel5 = [[UILabel alloc]init];
