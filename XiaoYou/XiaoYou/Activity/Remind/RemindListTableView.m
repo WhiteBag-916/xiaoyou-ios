@@ -126,11 +126,17 @@
     }];*/
 }
 
+-(void)setMyDataSource:(NSArray *)myDataSource
+{
+    _myDataSource = myDataSource;
+    [self reloadData];
+}
 
 
 #pragma mark 协议方法
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    return SCALE_NUM(190);
     if (indexPath.section == 1) {
         return SCALE_NUM(146);
     }
@@ -146,7 +152,7 @@
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 10;
+    return 3;
     return _remindListArray.count;
 }
 
@@ -175,16 +181,19 @@
 
 -(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.section < 3) {
+    if (indexPath.section < 100) {
         PassRemindCell *cell = [PassRemindCell passRemindCellWithTableView:tableView];
-        if (indexPath.section == 1) {
+        cell.cellType = AUDIT_PASSED;
+        [cell setData:self.myDataSource[indexPath.section]];
+        return cell;
+        /*if (indexPath.section == 1) {
             cell.cellType = AUDIT_NOT_PASSED;
         }
         else
         {
             cell.cellType = AUDIT_PASSED;
         }
-        return cell;
+        return cell;*/
     }
     else if (indexPath.section == 3)
     {

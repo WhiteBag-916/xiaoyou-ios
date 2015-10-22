@@ -20,4 +20,9 @@ typedef enum : NSUInteger {
 
 - (void)loadData;
 
+-(void)loadMyData;
+
+
+@property (nonatomic,strong) NSArray *myDataSource;
+
 @end

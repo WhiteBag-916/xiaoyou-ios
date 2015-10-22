@@ -79,7 +79,7 @@
     [self.contentView addSubview:_wrapContentView];
     _wrapContentView.backgroundColor = [UIColor whiteColor];
     _wrapContentView.layer.borderWidth = 1;
-    _wrapContentView.layer.borderColor = KCOLORGREEN_B2.CGColor;
+    _wrapContentView.layer.borderColor = KCOLORGRAY_B6.CGColor;
     [_wrapContentView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self);
         make.bottom.equalTo(self);
@@ -117,7 +117,7 @@
     
     //中间内容部分，分割线
     _topLineView = [[UIView alloc]init];
-    _topLineView.backgroundColor = KCOLORGREEN_B2;
+    _topLineView.backgroundColor = KCOLORGRAY_B6;
     [self.wrapContentView addSubview:_topLineView];
     [_topLineView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.leading.mas_equalTo(0);
@@ -143,6 +143,7 @@
     [self.wrapContentView addSubview:_nameLabel];
     _nameLabel.font = CONTENT_FONT(12);
     _nameLabel.text = @"李颖";
+    _nameLabel.textColor = KCOLORGREEN_g1;
     [_nameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(_headImageView.mas_right).offset(SCALE_NUM(10));
         make.centerY.equalTo(_headImageView.mas_centerY);
@@ -168,6 +169,7 @@
     _applyContentLable.numberOfLines = 0;
     _applyContentLable.lineBreakMode = NSLineBreakByWordWrapping;
     _applyContentLable.text = @"申请参加百团纳新志愿者选拔活动!";
+    _applyContentLable.textColor = KCOLORGREEN_B3;
     _applyContentLable.font = CONTENT_FONT(12);
     [_applyContentLable mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(_headImageView.mas_bottom).offset(SCALE_NUM(21));
@@ -178,7 +180,7 @@
     _bottomLineView = [[UIView alloc]init];
     [self.wrapContentView addSubview:_bottomLineView];
     
-    _bottomLineView.backgroundColor = KCOLORGREEN_B2;
+    _bottomLineView.backgroundColor = KCOLORGRAY_B6;
     [_bottomLineView mas_makeConstraints:^(MASConstraintMaker *make) {
         //make.top.equalTo(_applyContentLable.mas_bottom).offset(SCALE_NUM(15)).priorityHigh();
         make.leading.equalTo(_wrapContentView);
@@ -226,7 +228,7 @@
     
     _middleLineView = [[UIView alloc]init];
     [self.bottomSelectView addSubview:_middleLineView];
-    _middleLineView.backgroundColor = _topLineView.backgroundColor = KCOLORGRAY;
+    _middleLineView.backgroundColor = KCOLORGRAY_B6;
     [_middleLineView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.equalTo(_bottomSelectView.mas_centerX);
         make.top.equalTo(_bottomSelectView).offset(SCALE_NUM(8));

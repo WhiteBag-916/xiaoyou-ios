@@ -13,10 +13,7 @@
 
 @interface JoinInTopView ()
 
-@property (nonatomic,strong) UIImageView    *headImageView;
-@property (nonatomic,strong) UILabel        *nameLabel;
-@property (nonatomic,strong) UIImageView    *genderImageView;
-@property (nonatomic,strong) UIImageView    *addFriendImageView;
+
 
 @end
 

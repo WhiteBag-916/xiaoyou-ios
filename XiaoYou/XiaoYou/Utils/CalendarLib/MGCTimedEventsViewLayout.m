@@ -130,9 +130,20 @@
 		
 		// iterate previous frames (i.e with highest or equal y-pos)
 		for (NSInteger j = i - 1; j >= 0; j--) {
-			
-			MGCEventCellLayoutAttributes *attribs2 = [adjustedAttributes objectAtIndex:j];
-			if (CGRectIntersectsRect(attribs1.frame, attribs2.frame)) {
+            MGCEventCellLayoutAttributes *attribs2 = [adjustedAttributes objectAtIndex:j];
+            if (j == i-1) {
+                //第一个
+                if (attribs1.frame.origin.y < attribs2.frame.origin.y+attribs2.frame.size.height) {
+                    [layoutGroup addObject:attribs2];
+                }
+            } else {
+                MGCEventCellLayoutAttributes *attribs3 = [adjustedAttributes objectAtIndex:j+1];
+                if (attribs3.frame.origin.y < attribs2.frame.origin.y+attribs2.frame.size.height) {
+                    [layoutGroup addObject:attribs2];
+                }
+            }
+//			MGCEventCellLayoutAttributes *attribs2 = [adjustedAttributes objectAtIndex:j];
+//			if (CGRectIntersectsRect(attribs1.frame, attribs2.frame)) {
 //				CGFloat visibleHeight = fabs(attribs1.frame.origin.y - attribs2.frame.origin.y);
 //				
 //				if (visibleHeight > self.minimumVisibleHeight) {
@@ -141,9 +152,9 @@
 //					break;
 //				}
 //				else {
-					[layoutGroup addObject:attribs2];
+//					[layoutGroup addObject:attribs2];
 //				}
-			}
+//			}
 		}
 		
 		// now, distribute elements in layout group
