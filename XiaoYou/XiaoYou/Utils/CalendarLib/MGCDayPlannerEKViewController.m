@@ -452,13 +452,14 @@ static NSString* const EventCellReuseIdentifier = @"EventCellReuseIdentifier";
 
 - (BOOL)dayPlannerView:(MGCDayPlannerView*)view canMoveEventOfType:(MGCEventType)type atIndex:(NSUInteger)index date:(NSDate*)date toType:(MGCEventType)targetType date:(NSDate*)targetDate
 {
-	NSDateComponents *comps = [self.calendar components:NSWeekdayCalendarUnit fromDate:targetDate];
-	return (comps.weekday != 1 && comps.weekday != 7);
-	
-	if (targetType == MGCAllDayEventType)
-		return NO;
-	EKEvent *ev = [self eventOfType:type atIndex:index date:date];
-	return ev.calendar.allowsContentModifications;
+    return YES;
+//	NSDateComponents *comps = [self.calendar components:NSWeekdayCalendarUnit fromDate:targetDate];
+//	return (comps.weekday != 1 && comps.weekday != 7);
+//	
+//	if (targetType == MGCAllDayEventType)
+//		return NO;
+//	EKEvent *ev = [self eventOfType:type atIndex:index date:date];
+//	return ev.calendar.allowsContentModifications;
 }
 
 - (void)dayPlannerView:(MGCDayPlannerView*)view moveEventOfType:(MGCEventType)type atIndex:(NSUInteger)index date:(NSDate*)date toType:(MGCEventType)targetType date:(NSDate*)targetDate
