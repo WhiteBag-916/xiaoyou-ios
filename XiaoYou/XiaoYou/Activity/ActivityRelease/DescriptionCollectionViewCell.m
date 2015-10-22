@@ -45,7 +45,7 @@ NSString *const kDescriptionCollectionViewCell = @"DescriptionCollectionViewCell
     _picImageView.userInteractionEnabled = YES;
     _picImageView.layer.cornerRadius = 4;
     _picImageView.clipsToBounds = YES;
-    _picImageView.image = [UIImage imageNamed:@"btn_add"];
+    _picImageView.image = [UIImage imageNamed:@"camera"];
     [self.backView addSubview:_picImageView];
     [_picImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.mas_equalTo(SCALE_NUM(85));
@@ -174,7 +174,7 @@ NSString *const kDescriptionCollectionViewCell = @"DescriptionCollectionViewCell
 #pragma mark - 展示删除按钮
 -(void)deleteBtnShow
 {
-    if (![_picImageView.image isEqual:[UIImage imageNamed:@"btn_add"]])
+    if (![_picImageView.image isEqual:[UIImage imageNamed:@"camera"]])
     {
         _deleteBtn.hidden = NO;
     }
@@ -185,7 +185,7 @@ NSString *const kDescriptionCollectionViewCell = @"DescriptionCollectionViewCell
 {
     NSLog(@"delete");
     _deleteBtn.hidden = YES;
-    _picImageView.image = [UIImage imageNamed:@"btn_add"];
+    _picImageView.image = [UIImage imageNamed:@"camera"];
 }
 
 #pragma mark - UITextViewDelegate

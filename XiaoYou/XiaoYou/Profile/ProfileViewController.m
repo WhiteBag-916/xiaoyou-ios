@@ -24,6 +24,7 @@
 #import "QRCodeReaderViewController.h"
 #import "GiftViewController.h"
 #import "AppConfigData.h"
+#import "ScanfResultViewController.h"
 
 #define KTOPHEIGHT SCALE_NUM(90)
 #define KHEADIMG_SIZE SCALE_NUM(45)
@@ -484,8 +485,10 @@
 
 - (void)reader:(QRCodeReaderViewController *)reader didScanResult:(NSString *)result
 {
-    [self.navigationController popViewControllerAnimated:true];
-    [self.navigationController pushViewController:[[GiftViewController alloc] initWithCode:result] animated:true];
+//    [self.navigationController popViewControllerAnimated:true];
+//    [self.navigationController pushViewController:[[GiftViewController alloc] initWithCode:result] animated:true];
+    ScanfResultViewController * resultViewController = [[ScanfResultViewController alloc] init];
+    [self.navigationController pushViewController:resultViewController animated:YES needHiddenBottomBar:YES];
 }
 
 

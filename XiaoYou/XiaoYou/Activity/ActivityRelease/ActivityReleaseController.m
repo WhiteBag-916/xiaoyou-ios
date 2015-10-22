@@ -16,6 +16,7 @@ typedef enum : NSUInteger {
     POINT3 = 3,
     POINT4 = 4,
     POINT5 = 5,
+    POINT6 = 6,
 } MyPointNum;
 
 @interface ActivityReleaseController ()
@@ -32,6 +33,7 @@ typedef enum : NSUInteger {
 @property (nonatomic,strong) UIView * point3View;
 @property (nonatomic,strong) UIView * point4View;
 @property (nonatomic,strong) UIView * point5View;
+@property (nonatomic,strong) UIView * point6View;
 
 //五个名称
 @property (nonatomic,strong) UILabel * typeLabel1;
@@ -39,6 +41,7 @@ typedef enum : NSUInteger {
 @property (nonatomic,strong) UILabel * typeLabel3;
 @property (nonatomic,strong) UILabel * typeLabel4;
 @property (nonatomic,strong) UILabel * typeLabel5;
+@property (nonatomic,strong) UILabel * typeLabel6;
 
 //数据Manager
 @property (nonatomic,strong) ActivityReleaseDataManager * dataManager;
@@ -159,7 +162,7 @@ typedef enum : NSUInteger {
     [line1 mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(_point1View.mas_right);
         make.centerY.equalTo(_point1View);
-        make.width.mas_equalTo((SCREEN_WIDTH - 80)/4);
+        make.width.mas_equalTo((SCREEN_WIDTH - 88)/5);
         make.height.mas_equalTo(2);
     }];
     _typeLabel1 = [[UILabel alloc]init];
@@ -175,7 +178,7 @@ typedef enum : NSUInteger {
         make.height.mas_equalTo(SCALE_NUM(12));
     }];
     UIButton * btn1 = [[UIButton alloc] init];
-    btn1.tag = 000000001;
+    btn1.tag = 100000001;
     btn1.backgroundColor = [UIColor clearColor];
     [_scrollView addSubview:btn1];
     [btn1 mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -201,7 +204,7 @@ typedef enum : NSUInteger {
     [line2 mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(_point2View.mas_right);
         make.centerY.equalTo(_point2View);
-        make.width.mas_equalTo((SCREEN_WIDTH - 80)/4);
+        make.width.mas_equalTo((SCREEN_WIDTH - 88)/5);
         make.height.mas_equalTo(2);
     }];
     _typeLabel2 = [[UILabel alloc]init];
@@ -217,7 +220,7 @@ typedef enum : NSUInteger {
         make.height.mas_equalTo(SCALE_NUM(12));
     }];
     UIButton * btn2 = [[UIButton alloc] init];
-    btn2.tag = 000000002;
+    btn2.tag = 100000002;
     btn2.backgroundColor = [UIColor clearColor];
     [_scrollView addSubview:btn2];
     [btn2 mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -243,7 +246,7 @@ typedef enum : NSUInteger {
     [line3 mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(_point3View.mas_right);
         make.centerY.equalTo(_point3View);
-        make.width.mas_equalTo((SCREEN_WIDTH - 80)/4);
+        make.width.mas_equalTo((SCREEN_WIDTH - 88)/5);
         make.height.mas_equalTo(2);
     }];
     _typeLabel3 = [[UILabel alloc]init];
@@ -259,7 +262,7 @@ typedef enum : NSUInteger {
         make.height.mas_equalTo(SCALE_NUM(12));
     }];
     UIButton * btn3 = [[UIButton alloc] init];
-    btn3.tag = 000000003;
+    btn3.tag = 100000003;
     btn3.backgroundColor = [UIColor clearColor];
     [_scrollView addSubview:btn3];
     [btn3 mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -284,7 +287,7 @@ typedef enum : NSUInteger {
     [line4 mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(_point4View.mas_right);
         make.centerY.equalTo(_point4View);
-        make.width.mas_equalTo((SCREEN_WIDTH - 80)/4);
+        make.width.mas_equalTo((SCREEN_WIDTH - 88)/5);
         make.height.mas_equalTo(2);
     }];
     _typeLabel4 = [[UILabel alloc]init];
@@ -300,7 +303,7 @@ typedef enum : NSUInteger {
         make.height.mas_equalTo(SCALE_NUM(12));
     }];
     UIButton * btn4 = [[UIButton alloc] init];
-    btn4.tag = 000000004;
+    btn4.tag = 100000004;
     btn4.backgroundColor = [UIColor clearColor];
     [_scrollView addSubview:btn4];
     [btn4 mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -319,6 +322,15 @@ typedef enum : NSUInteger {
         make.top.equalTo(_releaseCollectionView.mas_bottom).offset(SCALE_NUM(20));
         make.width.height.mas_equalTo(SCALE_NUM(8));
     }];
+    UIImageView * line5 = [[UIImageView alloc] init];
+    line5.image = [UIImage imageNamed:@"line_dot"];
+    [_scrollView addSubview:line5];
+    [line5 mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(_point5View.mas_right);
+        make.centerY.equalTo(_point5View);
+        make.width.mas_equalTo((SCREEN_WIDTH - 88)/5);
+        make.height.mas_equalTo(2);
+    }];
     _typeLabel5 = [[UILabel alloc]init];
     _typeLabel5.text = @"类型";
     _typeLabel5.textAlignment = NSTextAlignmentCenter;
@@ -332,7 +344,7 @@ typedef enum : NSUInteger {
         make.height.mas_equalTo(SCALE_NUM(12));
     }];
     UIButton * btn5 = [[UIButton alloc] init];
-    btn5.tag = 000000005;
+    btn5.tag = 100000005;
     btn5.backgroundColor = [UIColor clearColor];
     [_scrollView addSubview:btn5];
     [btn5 mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -340,6 +352,39 @@ typedef enum : NSUInteger {
         make.right.bottom.left.equalTo(_typeLabel5);
     }];
     [btn5 addTarget:self action:@selector(clickeLabelButton:) forControlEvents:UIControlEventTouchUpInside];
+    
+    //Point6
+    _point6View = [[UIImageView alloc] init];
+    _point6View.backgroundColor = KCOLORGREEN_B5;
+    _point6View.layer.cornerRadius = SCALE_NUM(4);
+    _point6View.clipsToBounds = YES;
+    [_scrollView addSubview:_point6View];
+    [_point6View mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(line5.mas_right);
+        make.top.equalTo(_releaseCollectionView.mas_bottom).offset(SCALE_NUM(20));
+        make.width.height.mas_equalTo(SCALE_NUM(8));
+    }];
+    _typeLabel6 = [[UILabel alloc]init];
+    _typeLabel6.text = @"审核";
+    _typeLabel6.textAlignment = NSTextAlignmentCenter;
+    _typeLabel6.textColor = KCOLORGREEN_B3;
+    _typeLabel6.font = CONTENT_FONT(12);
+    [_scrollView addSubview:_typeLabel6];
+    [_typeLabel6 mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerX.equalTo(_point6View);
+        make.top.equalTo(_point5View.mas_bottom).offset(SCALE_NUM(8));
+        make.width.mas_equalTo(SCALE_NUM(30));
+        make.height.mas_equalTo(SCALE_NUM(12));
+    }];
+    UIButton * btn6 = [[UIButton alloc] init];
+    btn6.tag = 100000006;
+    btn6.backgroundColor = [UIColor clearColor];
+    [_scrollView addSubview:btn6];
+    [btn6 mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(_point5View);
+        make.right.bottom.left.equalTo(_typeLabel6);
+    }];
+    [btn6 addTarget:self action:@selector(clickeLabelButton:) forControlEvents:UIControlEventTouchUpInside];
     
     //这咕噜你好好想想
     UIView * backgroundView = [[UIView alloc] init];
@@ -435,6 +480,8 @@ typedef enum : NSUInteger {
             _point3View.backgroundColor = KCOLORGREEN_B5;
             _point4View.backgroundColor = KCOLORGREEN_B5;
             _point5View.backgroundColor = KCOLORGREEN_B5;
+            _point6View.backgroundColor = KCOLORGREEN_B5;
+            _typeLabel6.textColor = KCOLORGREEN_B3;
             _typeLabel1.textColor = KCOLORGREEN_g1;
             _typeLabel2.textColor = KCOLORGREEN_B3;
             _typeLabel3.textColor = KCOLORGREEN_B3;
@@ -447,6 +494,8 @@ typedef enum : NSUInteger {
             _point3View.backgroundColor = KCOLORGREEN_B5;
             _point4View.backgroundColor = KCOLORGREEN_B5;
             _point5View.backgroundColor = KCOLORGREEN_B5;
+            _point6View.backgroundColor = KCOLORGREEN_B5;
+            _typeLabel6.textColor = KCOLORGREEN_B3;
             _typeLabel2.textColor = KCOLORGREEN_g1;
             _typeLabel1.textColor = KCOLORGREEN_B3;
             _typeLabel3.textColor = KCOLORGREEN_B3;
@@ -459,6 +508,8 @@ typedef enum : NSUInteger {
             _point1View.backgroundColor = KCOLORGREEN_B5;
             _point4View.backgroundColor = KCOLORGREEN_B5;
             _point5View.backgroundColor = KCOLORGREEN_B5;
+            _point6View.backgroundColor = KCOLORGREEN_B5;
+            _typeLabel6.textColor = KCOLORGREEN_B3;
             _typeLabel3.textColor = KCOLORGREEN_g1;
             _typeLabel2.textColor = KCOLORGREEN_B3;
             _typeLabel1.textColor = KCOLORGREEN_B3;
@@ -471,6 +522,8 @@ typedef enum : NSUInteger {
             _point3View.backgroundColor = KCOLORGREEN_B5;
             _point1View.backgroundColor = KCOLORGREEN_B5;
             _point5View.backgroundColor = KCOLORGREEN_B5;
+            _point6View.backgroundColor = KCOLORGREEN_B5;
+            _typeLabel6.textColor = KCOLORGREEN_B3;
             _typeLabel4.textColor = KCOLORGREEN_g1;
             _typeLabel2.textColor = KCOLORGREEN_B3;
             _typeLabel3.textColor = KCOLORGREEN_B3;
@@ -483,7 +536,23 @@ typedef enum : NSUInteger {
             _point3View.backgroundColor = KCOLORGREEN_B5;
             _point4View.backgroundColor = KCOLORGREEN_B5;
             _point1View.backgroundColor = KCOLORGREEN_B5;
+            _point6View.backgroundColor = KCOLORGREEN_B5;
+            _typeLabel6.textColor = KCOLORGREEN_B3;
             _typeLabel5.textColor = KCOLORGREEN_g1;
+            _typeLabel2.textColor = KCOLORGREEN_B3;
+            _typeLabel3.textColor = KCOLORGREEN_B3;
+            _typeLabel4.textColor = KCOLORGREEN_B3;
+            _typeLabel1.textColor = KCOLORGREEN_B3;
+            break;
+        case POINT6:
+            _point6View.backgroundColor = KCOLORGREEN_g1;
+            _point2View.backgroundColor = KCOLORGREEN_B5;
+            _point3View.backgroundColor = KCOLORGREEN_B5;
+            _point4View.backgroundColor = KCOLORGREEN_B5;
+            _point1View.backgroundColor = KCOLORGREEN_B5;
+            _point5View.backgroundColor = KCOLORGREEN_B5;
+            _typeLabel6.textColor = KCOLORGREEN_g1;
+            _typeLabel5.textColor = KCOLORGREEN_B3;
             _typeLabel2.textColor = KCOLORGREEN_B3;
             _typeLabel3.textColor = KCOLORGREEN_B3;
             _typeLabel4.textColor = KCOLORGREEN_B3;
@@ -498,14 +567,14 @@ typedef enum : NSUInteger {
 -(void)clickeLabelButton:(UIButton *) btn
 {
     switch (btn.tag) {
-        case 000000001:
+        case 100000001:
         {
             [UIView animateWithDuration:0.2 animations:^{
                 _releaseCollectionView.contentOffset = CGPointMake(0, 0);
             } completion:nil];
             break;
         }
-        case 000000002:
+        case 100000002:
         {
             [UIView animateWithDuration:0.2 animations:^{
 //                _releaseCollectionView.contentOffset = CGPointMake(SCALE_NUM(186), 0);
@@ -513,7 +582,7 @@ typedef enum : NSUInteger {
             } completion:nil];
             break;
         }
-        case 000000003:
+        case 100000003:
         {
             [UIView animateWithDuration:0.2 animations:^{
 //                _releaseCollectionView.contentOffset = CGPointMake(SCALE_NUM(418), 0);
@@ -521,7 +590,7 @@ typedef enum : NSUInteger {
             } completion:nil];
             break;
         }
-        case 000000004:
+        case 100000004:
         {
             [UIView animateWithDuration:0.2 animations:^{
 //                _releaseCollectionView.contentOffset = CGPointMake(SCALE_NUM(646), 0);
@@ -529,11 +598,19 @@ typedef enum : NSUInteger {
             } completion:nil];
             break;
         }
-        case 000000005:
+        case 100000005:
         {
             [UIView animateWithDuration:0.2 animations:^{
-                _releaseCollectionView.contentOffset = CGPointMake(SCALE_NUM(830), 0);
-//                _releaseCollectionView.contentOffset = CGPointMake(SCALE_NUM(920), 0);
+//                _releaseCollectionView.contentOffset = CGPointMake(SCALE_NUM(830), 0);
+                _releaseCollectionView.contentOffset = CGPointMake(SCALE_NUM(920), 0);
+            } completion:nil];
+            break;
+        }
+        case 100000006:
+        {
+            [UIView animateWithDuration:0.2 animations:^{
+                _releaseCollectionView.contentOffset = CGPointMake(SCALE_NUM(1060), 0);
+                //                _releaseCollectionView.contentOffset = CGPointMake(SCALE_NUM(920), 0);
             } completion:nil];
             break;
         }

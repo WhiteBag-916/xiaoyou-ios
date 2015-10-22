@@ -418,6 +418,11 @@ typedef enum : NSUInteger {
  */
 - (void)addNewPlanner;
 
+/*!
+	@abstract	移动到今天
+ */
+- (void)scrollToToday:(BOOL)animated;
+
 @end
 
 

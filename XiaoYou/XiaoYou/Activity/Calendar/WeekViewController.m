@@ -8,6 +8,11 @@
 #import "WeekViewController.h"
 #import "MGCDateRange.h"
 
+@interface WeekViewController ()
+
+@property (nonatomic, assign) BOOL needShowToday;
+
+@end
 
 @implementation WeekViewController
 
@@ -27,6 +32,8 @@
 	self.dayPlannerView.backgroundView.backgroundColor = [UIColor clearColor];
 	self.dayPlannerView.dateFormat = @"eeeee\nd MMM";
 	self.dayPlannerView.dayHeaderHeight = 50;
+    
+    _needShowToday = YES;
 }
 
 - (void)initRightBar {
@@ -43,6 +50,23 @@
 
 - (void)newPlanner {
     [self.dayPlannerView addNewPlanner];
+}
+
+- (void)onNavigationLeftButtonClicked {
+    _needShowToday = YES;
+    
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    
+    if (_needShowToday) {
+        [self.dayPlannerView scrollToToday:YES];
+        
+        _needShowToday = NO;
+    }
+    
 }
 
 #pragma mark - MGCDayPlannerViewController

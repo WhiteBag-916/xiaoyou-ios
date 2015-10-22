@@ -586,7 +586,7 @@
 
 - (void) _updateDateLabel{
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    formatter.dateFormat = @"EEEE MMMM d, yyyy";
+    formatter.dateFormat = @"yyyy年MM月d日 EE";
     formatter.timeZone = self.calendar.timeZone;
     self.monthYearLabel.text = [formatter stringFromDate:self.currentDay];
 }

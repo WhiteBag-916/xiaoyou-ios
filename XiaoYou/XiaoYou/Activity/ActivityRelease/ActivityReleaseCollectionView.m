@@ -12,6 +12,7 @@
 #import "DescriptionCollectionViewCell.h"
 #import "DateAndTimeCollectionViewCell.h"
 #import "TypeCollectionViewCell.h"
+#import "CheckCollectionViewCell.h"
 
 typedef enum : NSUInteger {
     POINT1 = 1,
@@ -19,6 +20,7 @@ typedef enum : NSUInteger {
     POINT3 = 3,
     POINT4 = 4,
     POINT5 = 5,
+    POINT6 = 6,
 } MyPointNum;
 
 @interface ActivityReleaseCollectionView ()<UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout,UIScrollViewDelegate>
@@ -45,6 +47,8 @@ typedef enum : NSUInteger {
          ];
         [self registerClass:[PlaceCollectionViewCell class] forCellWithReuseIdentifier:kPlaceCollectionViewCell
          ];
+        [self registerClass:[CheckCollectionViewCell class] forCellWithReuseIdentifier:kCheckCollectionViewCell
+         ];
     }
     return self;
 }
@@ -58,7 +62,7 @@ typedef enum : NSUInteger {
 
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    return 5;
+    return 6;
 }
 
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
@@ -84,9 +88,14 @@ typedef enum : NSUInteger {
         PlaceCollectionViewCell * cell = (PlaceCollectionViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:kPlaceCollectionViewCell forIndexPath:indexPath];
         return cell;
     }
-    else
+    else if (indexPath.row == 4)
     {
         TypeCollectionViewCell * cell = (TypeCollectionViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:kTypeCollectionViewCell forIndexPath:indexPath];
+        return cell;
+    }
+    else
+    {
+        CheckCollectionViewCell * cell = (CheckCollectionViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:kCheckCollectionViewCell forIndexPath:indexPath];
         return cell;
     }
     
@@ -135,9 +144,13 @@ typedef enum : NSUInteger {
     {
         [self.myController setPointHighlight:POINT4];
     }
-    else
+    else if (self.contentOffset.x < SCALE_NUM(1000))
     {
         [self.myController setPointHighlight:POINT5];
+    }
+    else
+    {
+        [self.myController setPointHighlight:POINT6];
     }
 }
 
