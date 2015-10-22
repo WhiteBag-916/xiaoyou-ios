@@ -731,6 +731,9 @@
 		E48E09AC1BD781B10017D395 /* scanf_code_point@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E48E099E1BD781B10017D395 /* scanf_code_point@3x.png */; settings = {ASSET_TAGS = (); }; };
 		E48E09AD1BD781B10017D395 /* scanf_code_schoolCode@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E48E099F1BD781B10017D395 /* scanf_code_schoolCode@2x.png */; settings = {ASSET_TAGS = (); }; };
 		E48E09AE1BD781B10017D395 /* scanf_code_schoolCode@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E48E09A01BD781B10017D395 /* scanf_code_schoolCode@3x.png */; settings = {ASSET_TAGS = (); }; };
+		E48E09B11BD7B9880017D395 /* CheckCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E48E09B01BD7B9880017D395 /* CheckCollectionViewCell.m */; settings = {ASSET_TAGS = (); }; };
+		E48E09B41BD7BBCA0017D395 /* img_num6@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E48E09B21BD7BBCA0017D395 /* img_num6@2x.png */; settings = {ASSET_TAGS = (); }; };
+		E48E09B51BD7BBCA0017D395 /* img_num6@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E48E09B31BD7BBCA0017D395 /* img_num6@3x.png */; settings = {ASSET_TAGS = (); }; };
 		E4BE2DAA1BC7989300124F22 /* ContactsInfoFirstTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E4BE2DA91BC7989300124F22 /* ContactsInfoFirstTableViewCell.m */; settings = {ASSET_TAGS = (); }; };
 		E4BE2DAD1BC798A600124F22 /* ContactsInfoSecondTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E4BE2DAC1BC798A600124F22 /* ContactsInfoSecondTableViewCell.m */; settings = {ASSET_TAGS = (); }; };
 		E4BE2DB01BC798B500124F22 /* ContactsInfoThirdTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E4BE2DAF1BC798B500124F22 /* ContactsInfoThirdTableViewCell.m */; settings = {ASSET_TAGS = (); }; };
@@ -1818,6 +1821,10 @@
 		E48E099E1BD781B10017D395 /* scanf_code_point@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "scanf_code_point@3x.png"; sourceTree = "<group>"; };
 		E48E099F1BD781B10017D395 /* scanf_code_schoolCode@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "scanf_code_schoolCode@2x.png"; sourceTree = "<group>"; };
 		E48E09A01BD781B10017D395 /* scanf_code_schoolCode@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "scanf_code_schoolCode@3x.png"; sourceTree = "<group>"; };
+		E48E09AF1BD7B9880017D395 /* CheckCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheckCollectionViewCell.h; sourceTree = "<group>"; };
+		E48E09B01BD7B9880017D395 /* CheckCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckCollectionViewCell.m; sourceTree = "<group>"; };
+		E48E09B21BD7BBCA0017D395 /* img_num6@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "img_num6@2x.png"; sourceTree = "<group>"; };
+		E48E09B31BD7BBCA0017D395 /* img_num6@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "img_num6@3x.png"; sourceTree = "<group>"; };
 		E4BE2DA81BC7989300124F22 /* ContactsInfoFirstTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactsInfoFirstTableViewCell.h; sourceTree = "<group>"; };
 		E4BE2DA91BC7989300124F22 /* ContactsInfoFirstTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactsInfoFirstTableViewCell.m; sourceTree = "<group>"; };
 		E4BE2DAB1BC798A600124F22 /* ContactsInfoSecondTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactsInfoSecondTableViewCell.h; sourceTree = "<group>"; };
@@ -3823,6 +3830,8 @@
 				E43E10611BCCFA830018B6D7 /* img_num4@3x.png */,
 				E43E10621BCCFA830018B6D7 /* img_num5@2x.png */,
 				E43E10631BCCFA830018B6D7 /* img_num5@3x.png */,
+				E48E09B21BD7BBCA0017D395 /* img_num6@2x.png */,
+				E48E09B31BD7BBCA0017D395 /* img_num6@3x.png */,
 				E43E10641BCCFA830018B6D7 /* img_top@2x.png */,
 				E43E10651BCCFA830018B6D7 /* img_top@3x.png */,
 				E43E10661BCCFA830018B6D7 /* line_dot@2x.png */,
@@ -3874,6 +3883,8 @@
 				E43E10091BCC9D4A0018B6D7 /* DescriptionCollectionViewCell.m */,
 				E43E100B1BCC9D670018B6D7 /* DateAndTimeCollectionViewCell.h */,
 				E43E100C1BCC9D670018B6D7 /* DateAndTimeCollectionViewCell.m */,
+				E48E09AF1BD7B9880017D395 /* CheckCollectionViewCell.h */,
+				E48E09B01BD7B9880017D395 /* CheckCollectionViewCell.m */,
 				E43E100E1BCC9D8D0018B6D7 /* TypeCollectionViewCell.h */,
 				E43E100F1BCC9D8D0018B6D7 /* TypeCollectionViewCell.m */,
 				E45005D31BCE332500933AB9 /* TypeDetailCollectionView.h */,
@@ -4142,6 +4153,7 @@
 				333122C71B806EDC00D3D032 /* chat_sender_audio_playing_000.png in Resources */,
 				3334AC2A1B82D7C400FDDCCB /* VoiceSearchFeedback006@2x.png in Resources */,
 				20DD115A1B8D698900767E62 /* ServiceTerms.html in Resources */,
+				E48E09B51BD7BBCA0017D395 /* img_num6@3x.png in Resources */,
 				3346706C1B8426D400A8628A /* delete-member@2x.png in Resources */,
 				20E033E51B842727002E4583 /* UMSocialLocalizable.strings in Resources */,
 				3334AC271B82D7C400FDDCCB /* VoiceSearchFeedback005.png in Resources */,
@@ -4362,6 +4374,7 @@
 				650C6C2A1B88776800A89AC9 /* mine-cancel@2x.png in Resources */,
 				049480521BB8E51A00C68460 /* schedule_jintian@3x.png in Resources */,
 				20DA1A781B89BEF100DEF95C /* register-frame@2x.png in Resources */,
+				E48E09B41BD7BBCA0017D395 /* img_num6@2x.png in Resources */,
 				049480441BB8DE1700C68460 /* photo2.jpg in Resources */,
 				043AC86D1BCF7BFC00AB6E09 /* friend_box_serch@3x.png in Resources */,
 				E43E107D1BCCFA840018B6D7 /* img_num5@3x.png in Resources */,
@@ -4651,6 +4664,7 @@
 				650C6C061B8860FF00A89AC9 /* YCommonEditViewController.m in Sources */,
 				044DA0551BBA77C900AA321A /* ActivityDetailCell.m in Sources */,
 				333122681B806EDB00D3D032 /* PSTCollectionViewController.m in Sources */,
+				E48E09B11BD7B9880017D395 /* CheckCollectionViewCell.m in Sources */,
 				339549831B81BD6700F9ECB1 /* XYGroupInfoDetailViewController.m in Sources */,
 				333122311B806EDB00D3D032 /* FacialView.m in Sources */,
 				3331226F1B806EDB00D3D032 /* PSTGridLayoutItem.m in Sources */,
