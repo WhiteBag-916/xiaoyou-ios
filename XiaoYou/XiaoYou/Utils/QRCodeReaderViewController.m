@@ -28,6 +28,7 @@
 #import "QRCameraSwitchButton.h"
 #import "QRCodeReaderView.h"
 #import "MerchantListViewController.h"
+#import "ScanfResultViewController.h"
 
 #define mainHeight     [[UIScreen mainScreen] bounds].size.height
 #define mainWidth      [[UIScreen mainScreen] bounds].size.width
@@ -271,8 +272,10 @@
 
 -(void)clickMoreMerchants
 {
-    MerchantListViewController * merchantListViewController = [[MerchantListViewController alloc] init];
-    [self.navigationController pushViewController:merchantListViewController animated:YES];
+//    MerchantListViewController * merchantListViewController = [[MerchantListViewController alloc] init];
+//    [self.navigationController pushViewController:merchantListViewController animated:YES];
+    ScanfResultViewController * resultViewController = [[ScanfResultViewController alloc] init];
+    [self.navigationController pushViewController:resultViewController animated:YES needHiddenBottomBar:YES];
 }
 
 

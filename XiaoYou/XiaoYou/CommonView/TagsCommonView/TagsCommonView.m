@@ -110,7 +110,19 @@
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     Tags * tag = _commonTagsArr[indexPath.row];
-    TagCollectionCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:REUSECELL forIndexPath:indexPath];
+    
+    TagCollectionCell *cell;
+    if (cell == nil) {
+        cell = [collectionView dequeueReusableCellWithReuseIdentifier:REUSECELL forIndexPath:indexPath];
+    }
+    else
+    {
+        //删除cell的所有子视图
+        while ([cell.contentView.subviews lastObject] != nil)
+        {
+            [(UIView*)[cell.contentView.subviews lastObject] removeFromSuperview];
+        }
+    }
     [cell setCellInfo:tag];
     return cell;
 }

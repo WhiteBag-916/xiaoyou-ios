@@ -8,6 +8,10 @@
 
 #import "YTableViewCell.h"
 
+extern NSString *const kScanfResultTableViewCell;
+
 @interface ScanfResultTableViewCell : YTableViewCell
+
+-(void)setCellInfo:(NSString *) showStr isHeader:(BOOL) isHeader;
 
 @end
