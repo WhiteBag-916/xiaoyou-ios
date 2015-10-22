@@ -58,7 +58,27 @@
             make.edges.mas_equalTo(self.view);
         }];
     }else if (AvailableSimpleTypeStudyRoomDetail == _type) {
-        self.title = @"教学2楼";
+        
+        switch (self.num) {
+            case 0:
+                self.title = @"文学部教学楼";
+                break;
+            case 1:
+                self.title = @"中央教学楼";
+                break;
+            case 2:
+                self.title = @"工学部教学楼";
+                break;
+            case 3:
+                self.title = @"理学部教学楼";
+                break;
+            case 4:
+                self.title = @"科研教学楼";
+                break;
+                
+            default:
+                break;
+        }
         
         _studyRoomDetailTableView = [[StudyRoomDetailTableView alloc] init];
         [self.view addSubview:_studyRoomDetailTableView];

@@ -133,16 +133,16 @@
 			
 			MGCEventCellLayoutAttributes *attribs2 = [adjustedAttributes objectAtIndex:j];
 			if (CGRectIntersectsRect(attribs1.frame, attribs2.frame)) {
-				CGFloat visibleHeight = fabs(attribs1.frame.origin.y - attribs2.frame.origin.y);
-				
-				if (visibleHeight > self.minimumVisibleHeight) {
-					covered = attribs2;
-					covered.visibleHeight = visibleHeight;
-					break;
-				}
-				else {
+//				CGFloat visibleHeight = fabs(attribs1.frame.origin.y - attribs2.frame.origin.y);
+//				
+//				if (visibleHeight > self.minimumVisibleHeight) {
+//					covered = attribs2;
+//					covered.visibleHeight = visibleHeight;
+//					break;
+//				}
+//				else {
 					[layoutGroup addObject:attribs2];
-				}
+//				}
 			}
 		}
 		
