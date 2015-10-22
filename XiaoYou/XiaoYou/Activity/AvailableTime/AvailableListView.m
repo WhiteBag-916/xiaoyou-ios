@@ -163,7 +163,10 @@
 //    else if (indexPath.row == 6) {
 //        return SCALE_NUM(85);
 //    }
-    return SCALE_NUM(495);
+    if (IS_IPHONE_6P) {
+        return SCALE_NUM(490);
+    }
+    return SCALE_NUM(510);
 }
 
 -(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath

@@ -47,6 +47,15 @@
     CGFloat height;
     if (indexPath.row == 0 && IS_IPHONE_5)
     {
+        if ([self.model.acBrief containsString:@"在习近平总书记"]) {
+            return SCALE_NUM(1000);
+        }
+        else if ([self.model.acBrief containsString:@"西班牙建筑风格"]) {
+            return SCALE_NUM(1130);
+        }
+        else if ([self.model.acBrief containsString:@"过好大学每一"]) {
+            return SCALE_NUM(800);
+        }
         return SCALE_NUM(1000);
         //height = [tableView fd_heightForCellWithIdentifier:@"activitydetail" cacheByIndexPath:indexPath configuration:^(ActivityDetailCell *cell) {
             //[cell setData:_feedListArray[indexPath.row]];
@@ -54,10 +63,28 @@
     }
     if (indexPath.row == 0 && IS_IPHONE_6)
     {
+        if ([self.model.acBrief containsString:@"在习近平总书记"]) {
+            return SCALE_NUM(850);
+        }
+        else if ([self.model.acBrief containsString:@"西班牙建筑风格"]) {
+            return SCALE_NUM(860);
+        }
+        else if ([self.model.acBrief containsString:@"过好大学每一"]) {
+            return SCALE_NUM(700);
+        }
         return SCALE_NUM(810);
     }
     if (indexPath.row == 0 && IS_IPHONE_6P)
     {
+        if ([self.model.acBrief containsString:@"在习近平总书记"]) {
+            return SCALE_NUM(750);
+        }
+        else if ([self.model.acBrief containsString:@"西班牙建筑风格"]) {
+            return SCALE_NUM(800);
+        }
+        else if ([self.model.acBrief containsString:@"过好大学每一"]) {
+            return SCALE_NUM(650);
+        }
         return SCALE_NUM(740);
     }
     else if (indexPath.row == 1) {
@@ -107,13 +134,13 @@
     m1.tagsArr = @[@"托福GRE",@"考研",@"留学"];
     
     JoinInModel *m2 = [[JoinInModel alloc]init];
-    m2.headImageUrl = @"http://img.qqbody.com/uploads/allimg/120624/091A44245-6.jpg";
+    m2.headImageUrl = @"http://img1.touxiang.cn/uploads/20130925/25-072725_605.jpg";
     m2.nameStr = @"李哲";
     m2.sexStr = @"男";
     m2.tagsArr = @[@"运动",@"创业",@"雅思",@"名企实习"];
     
     JoinInModel *m3 = [[JoinInModel alloc]init];
-    m3.headImageUrl = @"http://img.qqbody.com/uploads/allimg/120624/091A44245-6.jpg";
+    m3.headImageUrl = @"http://img.sj33.cn/uploads/allimg/200801/2008012001210907.jpg";
     m3.nameStr = @"王欣欣";
     m3.sexStr = @"女";
     m3.tagsArr = @[@"外资企业",@"互联网公司",@"雅思",@"考研",@"创业"];

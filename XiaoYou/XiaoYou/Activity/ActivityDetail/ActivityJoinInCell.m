@@ -30,10 +30,11 @@
 
 +(ActivityJoinInCell *)cellWithTableView:(UITableView *)tableView cellType:(CELLTYPE)type
 {
-    ActivityJoinInCell *cell = [tableView dequeueReusableCellWithIdentifier:REUSEID];
+    /*ActivityJoinInCell *cell = [tableView dequeueReusableCellWithIdentifier:REUSEID];
     if (!cell) {
         cell = [[ActivityJoinInCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:REUSEID];
-    }
+    }*/
+    ActivityJoinInCell *cell = [[ActivityJoinInCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil];
     cell.cellType = type;
     return cell;
 }
@@ -133,6 +134,16 @@
         [arr1 addObject:tag];
     }
     
+    Tags *tag1 = [[Tags alloc]init];
+    tag1.name = @"班";
+    tag1.equal = YES;
+    
+    Tags *tag2 = [[Tags alloc]init];
+    tag2.name = @"社";
+    
+    Tags *tag3 = [[Tags alloc]init];
+    tag3.name = @"乡";
+    profile.propetiesCommon = [NSArray arrayWithObjects:tag1,tag2,tag3,nil];
     profile.tagModels = arr1;
     [_tagsView setData:profile];
     
