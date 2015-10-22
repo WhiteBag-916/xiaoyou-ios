@@ -70,26 +70,22 @@
         make.top.mas_equalTo(SCALE_NUM(20));
     }];
     
+    
     _titleLabel = [[UILabel alloc]init];
     [self.contentView addSubview:_titleLabel];
     _titleLabel.text = @"大型历史音乐剧《和平使者——抗战中的宋庆龄》奋斗史";
-    _titleLabel.numberOfLines = 1;
-    _titleLabel.lineBreakMode = NSLineBreakByTruncatingTail;
+    _titleLabel.numberOfLines = 0;
     _titleLabel.textColor = KCOLORGREEN_B4;
     _titleLabel.font = CONTENT_FONT(15);
     [_titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.height.mas_equalTo(SCALE_NUM(15));
+        //make.left.equalTo(_typeLabel.mas_right).offset(SCALE_NUM(10));
+        //make.top.equalTo(_typeLabel);
+        
         make.leading.mas_equalTo(SCALE_NUM(15));
-        make.centerY.equalTo(_startImageView.mas_centerY);
+        make.trailing.mas_equalTo(SCALE_NUM(-15));
+        make.top.equalTo(_startImageView.mas_top).offset(SCALE_NUM(-5));
     }];
     
-    NSDictionary *attributes = @{NSFontAttributeName:[UIFont systemFontOfSize:15]};
-    CGSize textSize = [_titleLabel.text boundingRectWithSize:CGSizeMake(9999, 15) options:NSStringDrawingTruncatesLastVisibleLine attributes:attributes context:nil].size;
-    if (SCREEN_WIDTH - textSize.width - SCALE_NUM(15) < SCALE_NUM(50)) {
-        [_titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.trailing.mas_equalTo(-SCALE_NUM(50));
-        }];
-    }
     
     _typeLabel = [[UILabel alloc]init];
     [self.contentView addSubview:_typeLabel];
@@ -100,9 +96,9 @@
     _typeLabel.text = @"  活动  ";
     _typeLabel.font = CONTENT_FONT(10);
     [_typeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.height.equalTo(_titleLabel);
-        make.centerY.equalTo(_titleLabel.mas_centerY);
-        make.left.mas_equalTo(_titleLabel.mas_right).offset(SCALE_NUM(10));
+        make.height.mas_equalTo(SCALE_NUM(15));
+        make.leading.mas_equalTo(SCALE_NUM(15));
+        make.top.equalTo(_titleLabel).offset(SCALE_NUM(3));
     }];
     
     _descriptionLabel = [[UILabel alloc]init];
@@ -248,6 +244,22 @@
         make.centerY.equalTo(_oranizerDes);
         make.left.equalTo(_activityTimeLabel);
     }];
+}
+
+
+-(void)setData:(ActivityModel *)model
+{
+    if (![model.acTitle containsString:@"            "])
+        model.acTitle = [NSString stringWithFormat:@"            %@",model.acTitle];
+    _titleLabel.text        = model.acTitle;
+    //_descriptionLabel.text  = model.acBrief;
+    
+    [_descriptionLabel setText:model.acBrief lineSpacing:SCALE_NUM(10.f)];
+    NSArray *smallImages    = @[@"/dev/feed/s/c2cfe0e7-ba38-43e0-b345-3d14ff2f2bcf.png"];
+    NSArray *bigImages      = @[@"/dev/feed/c2cfe0e7-ba38-43e0-b345-3d14ff2f2bcf.png"];
+    [_imageGroupView updateWithImgs:smallImages bigPics:bigImages];
+    _activityLocationLabel.text = model.acLocation;
+    _organizerLabel.text = model.acOgnazier;
 }
 
 @end

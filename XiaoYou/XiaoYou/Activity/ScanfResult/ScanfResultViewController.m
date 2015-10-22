@@ -7,8 +7,11 @@
 //
 
 #import "ScanfResultViewController.h"
+#import "ScanfResultTableView.h"
 
 @interface ScanfResultViewController ()
+
+@property(nonatomic,strong)ScanfResultTableView * scanfResultTableView;
 
 @end
 
@@ -16,7 +19,20 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    
+    [self setUpUI];
+    
+}
+
+-(void)setUpUI
+{
+    self.navigationController.navigationBar.hidden = YES;
+    
+    _scanfResultTableView = [[ScanfResultTableView alloc] init];
+    [self.view addSubview:_scanfResultTableView];
+    [_scanfResultTableView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.left.right.bottom.mas_equalTo(0);
+    }];
 }
 
 - (void)didReceiveMemoryWarning {

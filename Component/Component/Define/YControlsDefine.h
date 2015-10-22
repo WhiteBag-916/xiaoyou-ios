@@ -38,6 +38,8 @@
 #define KCOLORGREEN_g1 [UIColor hexChangeFloat:@"009f92"]
 #define KCOLORGREEN_g2 [UIColor hexChangeFloat:@"95d5d0"]
 
+#define KCOLORGRAY_B6 [UIColor hexChangeFloat:@"F6F6F6"]
+
 #define KCOLORGRAY     [UIColor colorWithRed:204/255.0 green:204/255.0 blue:204/255.0 alpha:1]
 
 #endif

@@ -177,6 +177,6 @@
 #define api_schedule_list   @"/user/getschedulelist"
 
 //当前用户相关的活动列表接口
-#define api_currentuser_activity_list   @"/mobile/activity/list"
+#define api_available_list   @"/activity/list"
 #endif
 

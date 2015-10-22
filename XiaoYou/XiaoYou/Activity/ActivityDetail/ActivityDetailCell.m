@@ -10,6 +10,8 @@
 #import "ActivityTopView.h"
 #import "ActivityMiddleView.h"
 #import "FeedImageGroup.h"
+#import "YLabel+Ext.h"
+#import "UIImageView+WebCache.h"
 #define REUSEID @"activitydetail"
 @interface ActivityDetailCell ()
 @property (nonatomic,strong) ActivityTopView        *topView;
@@ -78,9 +80,15 @@
     }];
 }
 
--(void)setData:(id)data
+-(void)setData:(ActivityModel*)data
 {
+    [_topView.headImageView sd_setImageWithURL:[NSURL URLWithString:data.acHeadImage]];
+    _topView.titleLabel.text = data.acName;
+    _topView.nameLabel.text = data.acTitle;
+    //_topView.descriptionLabel.text = data.acBrief;
+    [_topView.descriptionLabel setText:data.acBrief lineSpacing:10.0f];
     
+    _bottomView.locationLabel.text = data.acLocation;
 }
 
 @end

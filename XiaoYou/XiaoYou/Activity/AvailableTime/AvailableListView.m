@@ -14,6 +14,8 @@
 #import "AvailableSimpleViewController.h"
 #import "WeekViewController.h"
 #import "ActivityDetailViewController.h"
+#import "ActivityManager.h"
+#import "AvailableListModel.h"
 
 @interface AvailableListView ()<UITableViewDataSource,UITableViewDelegate>
 
@@ -37,6 +39,12 @@
     }
     
     return self;
+}
+
+-(void)setMyDataSource:(NSArray *)myDataSource
+{
+    _myDataSource = myDataSource;
+    [self reloadData];
 }
 
 
@@ -119,12 +127,31 @@
 }
 
 
+-(void)loadMyData {
+    
+    [[ActivityManager sharedInstance] getCurrentUseAvailableListLimitStart:0 limitEnd:10 block:^(YActionMessage *message) {
+        [YUtils hiddenProgressHUD:self];
+        if (message.isSuccess) {
+            [self dealData:message.object];
+        } else {
+            [YUtils showTitle:message.desc];
+        }
+    }];
+}
+
+
+//
+-(void)dealData:(AvailableListModel*)availabelModel
+{
+    NSLog(@"this is my data = %@",availabelModel);
+}
+
 
 
 #pragma mark 协议方法
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 8;
+    return 5;
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -133,9 +160,9 @@
         return SCALE_NUM(140);
     else if (indexPath.row == 1)
         return SCALE_NUM(85);
-    else if (indexPath.row == 6) {
-        return SCALE_NUM(85);
-    }
+//    else if (indexPath.row == 6) {
+//        return SCALE_NUM(85);
+//    }
     return SCALE_NUM(495);
 }
 
@@ -149,13 +176,14 @@
         StudyRoomCell *cell = [StudyRoomCell cellWithTableView:tableView];
         return cell;
     }
-    else if (indexPath.row == 6) {
-        ScroungeCourseCell *cell = [ScroungeCourseCell cellWithTableView:tableView];
-        return cell;
-    }
+//    else if (indexPath.row == 6) {
+//        ScroungeCourseCell *cell = [ScroungeCourseCell cellWithTableView:tableView];
+//        return cell;
+//    }
     else
     {
         AvailableCell *cell = [AvailableCell cellWithTableView:tableView];
+        [cell setData:self.myDataSource[indexPath.row-2]];
         return cell;
     }
     return nil;
@@ -165,21 +193,21 @@
 {
     UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
     if ([cell isKindOfClass:[ScheduleCardCell class]]) {
-        [self gotoDetailWithCellType:SCHEDULECARD_CELL];
+        [self gotoDetailWithCellType:SCHEDULECARD_CELL indexPath:indexPath];
     }
     else if ([cell isKindOfClass:[StudyRoomCell class]]) {
-        [self gotoDetailWithCellType:STUDYROOM_CELL];
+        [self gotoDetailWithCellType:STUDYROOM_CELL indexPath:indexPath];
     }
     else if ([cell isKindOfClass:[ScroungeCourseCell class]]) {
-        [self gotoDetailWithCellType:SCROUGECOURSE_CELL];
+        [self gotoDetailWithCellType:SCROUGECOURSE_CELL indexPath:indexPath];
     }
     else if ([cell isKindOfClass:[AvailableCell class]]) {
-        [self gotoDetailWithCellType:ACTIVITY_DETAIL_CELL];
+        [self gotoDetailWithCellType:ACTIVITY_DETAIL_CELL indexPath:indexPath];
     }
 }
 
 
--(void)gotoDetailWithCellType:(CELLTYPE)type
+-(void)gotoDetailWithCellType:(CELLTYPE)type indexPath:(NSIndexPath*)indexPath
 {
     //日程
     if (type == SCHEDULECARD_CELL) {
@@ -199,6 +227,7 @@
     //活动详情
     else if (type == ACTIVITY_DETAIL_CELL) {
         ActivityDetailViewController *activityDetailVC = [[ActivityDetailViewController alloc]init];
+        activityDetailVC.index = indexPath.row - 2;
         [self.viewController.navigationController pushViewController:activityDetailVC animated:YES needHiddenBottomBar:YES];
     }
 }
