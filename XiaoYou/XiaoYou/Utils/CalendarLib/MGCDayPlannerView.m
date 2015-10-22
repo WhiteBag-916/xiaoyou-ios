@@ -1307,6 +1307,14 @@ static const CGFloat kMaxHourSlotHeight = 150.;
     }
 }
 
+- (void)scrollToToday:(BOOL)animated {
+    NSDate *currentDate = [NSDate date];
+    NSDateComponents *comps = [[NSDateComponents alloc] init];
+    [comps setMinute:-60];
+    NSDate *date = [self.calendar dateByAddingComponents:comps toDate:currentDate  options:0];
+    [self scrollToDate:date options:MGCDayPlannerScrollTime animated:YES];
+}
+
 #pragma mark - Reloading content
 
 // this is called whenever we recenter the views during scrolling
@@ -1435,7 +1443,7 @@ static const CGFloat kMaxHourSlotHeight = 150.;
 	CGFloat timedEventsViewHeight = self.bounds.size.height - (self.calendarDayHeaderView.bottomY + allDayEventsViewHeight);
 	
 	//self.backgroundView.frame = CGRectMake(0, self.dayHeaderHeight, self.bounds.size.width, self.bounds.size.height - self.dayHeaderHeight);
-	self.backgroundView.frame = CGRectMake(self.timeColumnWidth, self.calendarDayHeaderView.bottomY + allDayEventsViewHeight, timedEventsViewWidth, timedEventsViewHeight);
+//	self.backgroundView.frame = CGRectMake(self.timeColumnWidth, self.calendarDayHeaderView.bottomY + allDayEventsViewHeight, timedEventsViewWidth, timedEventsViewHeight);
 	self.backgroundView.frame = CGRectMake(0, timedEventViewTop, self.bounds.size.width, timedEventsViewHeight);
 	if (!self.backgroundView.superview) {
 		[self addSubview:self.backgroundView];
@@ -1445,6 +1453,13 @@ static const CGFloat kMaxHourSlotHeight = 150.;
 	self.allDayEventsBackgroundView.frame = CGRectMake(-1, self.calendarDayHeaderView.bottomY, self.bounds.size.width + 2, allDayEventsViewHeight);
 	if (!self.allDayEventsBackgroundView.superview) {
 		[self addSubview:self.allDayEventsBackgroundView];
+        
+        //全天label
+        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.timeColumnWidth, allDayEventsViewHeight)];
+        label.text = @"全天";
+        label.font = [UIFont systemFontOfSize:10.f];
+        label.textAlignment = NSTextAlignmentCenter;
+        [self.allDayEventsBackgroundView addSubview:label];
 	}
 	
 	self.dayColumnsView.frame = CGRectMake(self.timeColumnWidth, self.calendarDayHeaderView.bottomY-self.dayHeaderHeight, timedEventsViewWidth, self.bounds.size.height);
