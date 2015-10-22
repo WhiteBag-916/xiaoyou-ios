@@ -31,8 +31,8 @@ NSString *const kScanfResultTableViewCell = @"ScanfResultTableViewCellId";
 {
     
     _contentLabel = [[UILabel alloc] init];
-    _contentLabel.backgroundColor = [UIColor clearColor];
-    _contentLabel.font = CONTENT_FONT(12);
+    _contentLabel.backgroundColor = [UIColor orangeColor];
+    _contentLabel.font = CONTENT_FONT(SCALE_NUM(12));
     _contentLabel.numberOfLines = 0;
     _contentLabel.textAlignment = NSTextAlignmentCenter;
     _contentLabel.textColor = KCOLORGREEN_B4;
@@ -48,13 +48,13 @@ NSString *const kScanfResultTableViewCell = @"ScanfResultTableViewCellId";
 {
     if (isHeader)
     {
-        _contentLabel.font = CONTENT_FONT(14);
+        _contentLabel.font = CONTENT_FONT(SCALE_NUM(16));
         _contentLabel.textColor = KCOLORGREEN_g1;
         _contentLabel.text = showStr;
     }
     else
     {
-        _contentLabel.font = CONTENT_FONT(12);
+        _contentLabel.font = CONTENT_FONT(SCALE_NUM(12));
         _contentLabel.textColor = KCOLORGREEN_B4;
         _contentLabel.text = showStr;
     }

@@ -50,8 +50,9 @@
 -(void)setUpHeaderView
 {
     //背景图
-    UIImageView * backgroundView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 180)];
+    UIImageView * backgroundView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCALE_NUM(170))];
     backgroundView.image = [UIImage imageNamed:@"scanf_head_background"];
+    backgroundView.userInteractionEnabled = YES;
     
     //返回按钮
     _backImageView = [[UIImageView alloc]init];
@@ -68,7 +69,7 @@
     backButton.backgroundColor = [UIColor clearColor];
     [backgroundView addSubview:backButton];
     [backButton mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.center.equalTo(_backImageView);
+        make.centerX.centerY.equalTo(_backImageView);
         make.width.height.mas_equalTo(30);
     }];
     [backButton addTarget:self action:@selector(popToSuperController) forControlEvents:UIControlEventTouchUpInside];
@@ -144,7 +145,7 @@
 
 -(void)setUpFooterView
 {
-    UIView * backView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 180)];
+    UIView * backView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCALE_NUM(170))];
     
     //分割线
     UIView * bottomView = [[UIView alloc]init];
@@ -171,7 +172,7 @@
     _stuNameLabel.font = CONTENT_FONT(12);
     _stuNameLabel.textColor = KCOLORGREEN_B5;
     _stuNameLabel.textAlignment = NSTextAlignmentLeft;
-    _stuNameLabel.backgroundColor = [UIColor orangeColor];
+    _stuNameLabel.backgroundColor = [UIColor clearColor];
     [backView addSubview:_stuNameLabel];
     [_stuNameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(_stuNameImageView.mas_right).offset(SCALE_NUM(20));
@@ -185,7 +186,7 @@
     _stuNumImageView.image = [UIImage imageNamed:@"scanf_stu_num"];
     [backView addSubview:_stuNumImageView];
     [_stuNumImageView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.mas_equalTo(SCALE_NUM(30));
+        make.centerX.equalTo(_stuNameImageView);
         make.top.equalTo(_stuNameImageView.mas_bottom).offset(SCALE_NUM(15));
         make.width.mas_equalTo(SCALE_NUM(24));
         make.height.mas_equalTo(SCALE_NUM(22));
@@ -196,7 +197,7 @@
     _stuNumLabel.font = CONTENT_FONT(12);
     _stuNumLabel.textColor = KCOLORGREEN_B5;
     _stuNumLabel.textAlignment = NSTextAlignmentLeft;
-    _stuNumLabel.backgroundColor = [UIColor orangeColor];
+    _stuNumLabel.backgroundColor = [UIColor clearColor];
     [backView addSubview:_stuNumLabel];
     [_stuNumLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(_stuNameLabel);
@@ -210,7 +211,7 @@
     _toastCountImageView.image = [UIImage imageNamed:@"scanf_stu_toast"];
     [backView addSubview:_toastCountImageView];
     [_toastCountImageView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.mas_equalTo(SCALE_NUM(30));
+        make.centerX.equalTo(_stuNameImageView);
         make.top.equalTo(_stuNumImageView.mas_bottom).offset(SCALE_NUM(15));
         make.width.mas_equalTo(SCALE_NUM(26));
         make.height.mas_equalTo(SCALE_NUM(24));
@@ -221,7 +222,7 @@
     _toastCountLabel.font = CONTENT_FONT(12);
     _toastCountLabel.textColor = KCOLORGREEN_B5;
     _toastCountLabel.textAlignment = NSTextAlignmentLeft;
-    _toastCountLabel.backgroundColor = [UIColor orangeColor];
+    _toastCountLabel.backgroundColor = [UIColor clearColor];
     [backView addSubview:_toastCountLabel];
     [_toastCountLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(_stuNameLabel);
@@ -232,17 +233,17 @@
     
     //提示Label
     _remindLabel = [[UILabel alloc] init];
-    _remindLabel.text = @"敬酒数量越多";
-    _remindLabel.font = CONTENT_FONT(12);
-    _remindLabel.textColor = KCOLORGREEN_B5;
-    _remindLabel.textAlignment = NSTextAlignmentLeft;
-    _remindLabel.backgroundColor = [UIColor orangeColor];
+    _remindLabel.text = @"敬酒数量越多可获得更加优惠的校友礼劵!";
+    _remindLabel.font = CONTENT_FONT(14);
+    _remindLabel.textColor = KCOLORGREEN_g1;
+    _remindLabel.textAlignment = NSTextAlignmentCenter;
+    _remindLabel.backgroundColor = [UIColor clearColor];
     [backView addSubview:_remindLabel];
     [_remindLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(_stuNameLabel);
-        make.centerY.equalTo(_toastCountImageView);
-        make.right.equalTo(backView).offset(SCALE_NUM(-15));
-        make.height.mas_equalTo(12);
+        make.left.equalTo(backView).offset(SCALE_NUM(10));
+        make.top.equalTo(_toastCountImageView.mas_bottom).offset(SCALE_NUM(15));
+        make.right.equalTo(backView).offset(SCALE_NUM(-10));
+        make.height.mas_equalTo(SCALE_NUM(14));
     }];
     self.tableFooterView = backView;
     
@@ -272,7 +273,7 @@
     }
     else
     {
-        [cell setCellInfo:@"商家优惠优惠详情" isHeader:NO];
+        [cell setCellInfo:@"商家优惠优惠详情商家优惠优惠详情商家优惠优惠详情商家优惠优惠详情商家优惠优惠详情商家优惠优惠详情商家优惠优惠详情商家优惠优惠详情" isHeader:NO];
     }
     
     return cell;
