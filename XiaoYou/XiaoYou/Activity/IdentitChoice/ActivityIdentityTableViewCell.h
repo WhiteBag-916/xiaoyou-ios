@@ -8,6 +8,8 @@
 
 #import "YTableViewCell.h"
 
+extern NSString *const kActivityIdentityTableViewCell;
+
 @interface ActivityIdentityTableViewCell : YTableViewCell
 
 @end

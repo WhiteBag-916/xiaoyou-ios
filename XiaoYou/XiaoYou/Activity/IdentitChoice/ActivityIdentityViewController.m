@@ -8,11 +8,14 @@
 
 #import "ActivityIdentityViewController.h"
 #import "ActivityReleaseController.h"
+#import "ActivityIdentityTableView.h"
 
 @interface ActivityIdentityViewController ()
 
 @property(nonatomic,strong) UIButton * personalButton;
 @property(nonatomic,strong) UIButton * groupButton;
+
+@property(nonatomic,strong) ActivityIdentityTableView * activityIdentityTableView;
 
 @end
 
@@ -115,13 +118,21 @@
     remindLabel.textColor = KCOLORGREEN_B5;
     remindLabel.numberOfLines = 0;
     [remindLabel setText:@"提示：以社团身份发布活动需经过审核。若您的活动限制报名人数，请登录后台查看所有报名同学，并进行通过和拒绝操作。" lineSpacing:10];
-    remindLabel.backgroundColor = [UIColor clearColor];
+    remindLabel.backgroundColor = [UIColor orangeColor];
     [self.view addSubview:remindLabel];
     [remindLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(_personalButton.mas_left).offset(SCALE_NUM(-10));
         make.right.equalTo(_groupButton.mas_right).offset(SCALE_NUM(10));
         make.top.equalTo(_personalButton.mas_bottom).offset(SCALE_NUM(20));
         make.height.mas_equalTo(SCALE_NUM(100));
+    }];
+    
+    _activityIdentityTableView = [[ActivityIdentityTableView alloc] init];
+    _activityIdentityTableView.backgroundColor = [UIColor redColor];
+    [self.view addSubview:_activityIdentityTableView];
+    [_activityIdentityTableView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(remindLabel.mas_bottom);
+        make.left.right.bottom.mas_equalTo(0);
     }];
     
 }

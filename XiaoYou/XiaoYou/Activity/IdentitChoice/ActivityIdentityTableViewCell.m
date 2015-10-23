@@ -8,14 +8,29 @@
 
 #import "ActivityIdentityTableViewCell.h"
 
+NSString *const kActivityIdentityTableViewCell = @"ActivityIdentityTableViewCellId";
+
+@interface ActivityIdentityTableViewCell ()
+
+@property(nonatomic,strong)UILabel * contentLabel;
+
+@end
+
 @implementation ActivityIdentityTableViewCell
 
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect {
-    // Drawing code
+-(instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
+{
+    self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
+    if (self) {
+        
+        [self setUpUI];
+    }
+    return self;
 }
-*/
+
+-(void)setUpUI
+{
+    
+}
 
 @end
