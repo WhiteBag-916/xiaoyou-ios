@@ -7,15 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		047145D51BD8E5B4001D75FC /* RemindModelTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 047145D41BD8E5B4001D75FC /* RemindModelTest.m */; settings = {ASSET_TAGS = (); }; };
-		047145D81BD8F03B001D75FC /* JoinInModelTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 047145D71BD8F03B001D75FC /* JoinInModelTest.m */; settings = {ASSET_TAGS = (); }; };
-		04722E151BD882C900F95816 /* ActivityCoverageModelsTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 04722E0B1BD882C900F95816 /* ActivityCoverageModelsTest.m */; settings = {ASSET_TAGS = (); }; };
-		04722E161BD882C900F95816 /* ActivityImageTextModelsTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 04722E0D1BD882C900F95816 /* ActivityImageTextModelsTest.m */; settings = {ASSET_TAGS = (); }; };
-		04722E171BD882C900F95816 /* ActivityPublishedModelTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 04722E0F1BD882C900F95816 /* ActivityPublishedModelTest.m */; settings = {ASSET_TAGS = (); }; };
-		04722E1F1BD8854100F95816 /* AvailableListModelTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 04722E1E1BD8854100F95816 /* AvailableListModelTest.m */; settings = {ASSET_TAGS = (); }; };
-		0476B61F1BD0979800FD13DF /* RemindInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 0476B61B1BD0979800FD13DF /* RemindInfo.m */; settings = {ASSET_TAGS = (); }; };
-		0476B6201BD0979800FD13DF /* ScheduleInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 0476B61E1BD0979800FD13DF /* ScheduleInfo.m */; settings = {ASSET_TAGS = (); }; };
-		049BA8D81BD8C70900A368D7 /* ActivityModelTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 049BA8D71BD8C70900A368D7 /* ActivityModelTest.m */; settings = {ASSET_TAGS = (); }; };
+		047145D51BD8E5B4001D75FC /* RemindModelTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 047145D41BD8E5B4001D75FC /* RemindModelTest.m */; };
+		047145D81BD8F03B001D75FC /* JoinInModelTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 047145D71BD8F03B001D75FC /* JoinInModelTest.m */; };
+		04722E151BD882C900F95816 /* ActivityCoverageModelsTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 04722E0B1BD882C900F95816 /* ActivityCoverageModelsTest.m */; };
+		04722E161BD882C900F95816 /* ActivityImageTextModelsTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 04722E0D1BD882C900F95816 /* ActivityImageTextModelsTest.m */; };
+		04722E171BD882C900F95816 /* ActivityPublishedModelTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 04722E0F1BD882C900F95816 /* ActivityPublishedModelTest.m */; };
+		04722E1F1BD8854100F95816 /* AvailableListModelTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 04722E1E1BD8854100F95816 /* AvailableListModelTest.m */; };
+		0476B61F1BD0979800FD13DF /* RemindInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 0476B61B1BD0979800FD13DF /* RemindInfo.m */; };
+		0476B6201BD0979800FD13DF /* ScheduleInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 0476B61E1BD0979800FD13DF /* ScheduleInfo.m */; };
+		049BA8D81BD8C70900A368D7 /* ActivityModelTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 049BA8D71BD8C70900A368D7 /* ActivityModelTest.m */; };
 		20859A991B64C0BC00580ED3 /* ResultCommon.m in Sources */ = {isa = PBXBuildFile; fileRef = 20859A981B64C0BC00580ED3 /* ResultCommon.m */; };
 		20859AA31B64CB7E00580ED3 /* LoginResp.m in Sources */ = {isa = PBXBuildFile; fileRef = 20859AA01B64CB7E00580ED3 /* LoginResp.m */; };
 		20859AB31B64E2F600580ED3 /* YModel+ActionMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 20859AB21B64E2F600580ED3 /* YModel+ActionMessage.m */; };
@@ -30,6 +30,10 @@
 		20DBFD271B4FA0E5009134D0 /* libModel.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 20DBFD1B1B4FA0E5009134D0 /* libModel.a */; };
 		20DCB9581B8CA60800C758DE /* ApplicantList.m in Sources */ = {isa = PBXBuildFile; fileRef = 20DCB9571B8CA60800C758DE /* ApplicantList.m */; };
 		20DD81611B91D22E00ACFD9A /* ForbiddenList.m in Sources */ = {isa = PBXBuildFile; fileRef = 20DD81601B91D22E00ACFD9A /* ForbiddenList.m */; };
+		20DDA3F41BDA20860023179A /* ActivityCoverageModels.m in Sources */ = {isa = PBXBuildFile; fileRef = 20DDA3ED1BDA20860023179A /* ActivityCoverageModels.m */; };
+		20DDA3F51BDA20860023179A /* ActivityImageTextModels.m in Sources */ = {isa = PBXBuildFile; fileRef = 20DDA3EF1BDA20860023179A /* ActivityImageTextModels.m */; };
+		20DDA3F61BDA20860023179A /* ActivityPublishedModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 20DDA3F11BDA20860023179A /* ActivityPublishedModel.m */; };
+		20DDA3F71BDA20860023179A /* AvailableListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 20DDA3F31BDA20860023179A /* AvailableListModel.m */; };
 		20DED86F1B94205B004B5E7B /* EasyModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 20DED86E1B94205B004B5E7B /* EasyModel.m */; };
 		20E0BFFF1B88B0CA00EDAED4 /* UploadImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 20E0BFFE1B88B0CA00EDAED4 /* UploadImage.m */; };
 		20E0C06E1B88B0CA00EDAED4 /* Feed.m in Sources */ = {isa = PBXBuildFile; fileRef = 20E0C06B1B88B0CA00EDAED4 /* Feed.m */; };
@@ -125,6 +129,14 @@
 		20DCB9571B8CA60800C758DE /* ApplicantList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ApplicantList.m; sourceTree = "<group>"; };
 		20DD815F1B91D22E00ACFD9A /* ForbiddenList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ForbiddenList.h; sourceTree = "<group>"; };
 		20DD81601B91D22E00ACFD9A /* ForbiddenList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ForbiddenList.m; sourceTree = "<group>"; };
+		20DDA3EC1BDA20860023179A /* ActivityCoverageModels.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityCoverageModels.h; sourceTree = "<group>"; };
+		20DDA3ED1BDA20860023179A /* ActivityCoverageModels.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityCoverageModels.m; sourceTree = "<group>"; };
+		20DDA3EE1BDA20860023179A /* ActivityImageTextModels.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityImageTextModels.h; sourceTree = "<group>"; };
+		20DDA3EF1BDA20860023179A /* ActivityImageTextModels.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityImageTextModels.m; sourceTree = "<group>"; };
+		20DDA3F01BDA20860023179A /* ActivityPublishedModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityPublishedModel.h; sourceTree = "<group>"; };
+		20DDA3F11BDA20860023179A /* ActivityPublishedModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityPublishedModel.m; sourceTree = "<group>"; };
+		20DDA3F21BDA20860023179A /* AvailableListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AvailableListModel.h; sourceTree = "<group>"; };
+		20DDA3F31BDA20860023179A /* AvailableListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AvailableListModel.m; sourceTree = "<group>"; };
 		20DED86D1B94205B004B5E7B /* EasyModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EasyModel.h; sourceTree = "<group>"; };
 		20DED86E1B94205B004B5E7B /* EasyModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EasyModel.m; sourceTree = "<group>"; };
 		20E0BFFD1B88B0CA00EDAED4 /* UploadImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UploadImage.h; sourceTree = "<group>"; };
@@ -195,6 +207,14 @@
 		0447A3A21BD7788300341684 /* MainPage */ = {
 			isa = PBXGroup;
 			children = (
+				20DDA3EC1BDA20860023179A /* ActivityCoverageModels.h */,
+				20DDA3ED1BDA20860023179A /* ActivityCoverageModels.m */,
+				20DDA3EE1BDA20860023179A /* ActivityImageTextModels.h */,
+				20DDA3EF1BDA20860023179A /* ActivityImageTextModels.m */,
+				20DDA3F01BDA20860023179A /* ActivityPublishedModel.h */,
+				20DDA3F11BDA20860023179A /* ActivityPublishedModel.m */,
+				20DDA3F21BDA20860023179A /* AvailableListModel.h */,
+				20DDA3F31BDA20860023179A /* AvailableListModel.m */,
 				049BA8D61BD8C70900A368D7 /* ActivityModelTest.h */,
 				049BA8D71BD8C70900A368D7 /* ActivityModelTest.m */,
 				047145D61BD8F03B001D75FC /* JoinInModelTest.h */,
@@ -493,8 +513,10 @@
 			files = (
 				047145D51BD8E5B4001D75FC /* RemindModelTest.m in Sources */,
 				20DCB9581B8CA60800C758DE /* ApplicantList.m in Sources */,
+				20DDA3F51BDA20860023179A /* ActivityImageTextModels.m in Sources */,
 				20E0C07F1B88B0CA00EDAED4 /* ClassList.m in Sources */,
 				20859A991B64C0BC00580ED3 /* ResultCommon.m in Sources */,
+				20DDA3F71BDA20860023179A /* AvailableListModel.m in Sources */,
 				20DA8B441B8F5E76007D0CDE /* ReadFeedCount.m in Sources */,
 				333E95DF1B70B7650001059D /* SystemPushInfoListModel.m in Sources */,
 				20E0C06E1B88B0CA00EDAED4 /* Feed.m in Sources */,
@@ -507,6 +529,7 @@
 				20DA74BD1B8C0BFA0002E041 /* FriendsCondition.m in Sources */,
 				20859AA31B64CB7E00580ED3 /* LoginResp.m in Sources */,
 				0476B6201BD0979800FD13DF /* ScheduleInfo.m in Sources */,
+				20DDA3F61BDA20860023179A /* ActivityPublishedModel.m in Sources */,
 				332D32681B71E9B400B69E96 /* PushInfo.m in Sources */,
 				04722E1F1BD8854100F95816 /* AvailableListModelTest.m in Sources */,
 				047145D81BD8F03B001D75FC /* JoinInModelTest.m in Sources */,
@@ -525,6 +548,7 @@
 				0476B61F1BD0979800FD13DF /* RemindInfo.m in Sources */,
 				04722E151BD882C900F95816 /* ActivityCoverageModelsTest.m in Sources */,
 				20E1C67A1B89F0A7008BA9D6 /* CommentListItems.m in Sources */,
+				20DDA3F41BDA20860023179A /* ActivityCoverageModels.m in Sources */,
 				333E95E51B70B78C0001059D /* LastSystemPushInfoListModel.m in Sources */,
 				20E0C0751B88B0CA00EDAED4 /* ProfileInfo.m in Sources */,
 				333E95D01B70B6DF0001059D /* CheckAccountModel.m in Sources */,

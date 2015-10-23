@@ -12,7 +12,10 @@
 @interface ActivityManager : YManager<YManager>
 AS_SINGLETON(ActivityManager);
 
-//有空界面,获取当前用户活动列表
+//获取当前用户活动列表
 - (void)getCurrentUseAvailableListLimitStart:(NSInteger)limitStart limitEnd:(NSInteger)limitEnd block:(ActionCompleteBlock)block;
+
+//查询活动类型列表
+- (void)findActivityTypes:(ActionCompleteBlock)block;
 
 @end

@@ -175,6 +175,7 @@
 //提醒列表
 #define api_remind_list     @"/user/getsenderlist"
 #define api_schedule_list   @"/user/getschedulelist"
+#define api_activity_findActivityTypes   @"/activity/findActivityTypes"
 
 //当前用户相关的活动列表接口
 #define api_available_list   @"/activity/list"
