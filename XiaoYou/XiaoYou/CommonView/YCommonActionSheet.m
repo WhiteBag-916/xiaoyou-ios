@@ -123,7 +123,10 @@ static const NSUInteger kYActionSheetCancelHeight = 49;
     
     //2
     UIButton *switchButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    switchButton.frame = CGRectMake(self.width-43, 0, 27, self.height);
+    switchButton.backgroundColor = [UIColor clearColor];
+//    switchButton.frame = CGRectMake(self.width-43, 0, 27, self.height);
+    switchButton.frame = CGRectMake(self.width-55, 0, 54, self.height);
+
     switchButton.tag = 10001;
     [switchButton addTarget:self action:@selector(switchAction) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:switchButton];
