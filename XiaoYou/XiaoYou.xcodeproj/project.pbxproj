@@ -699,6 +699,9 @@
 		E455DCE71BCB686E00B78E54 /* ActivityChoiceTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = E455DCE61BCB686E00B78E54 /* ActivityChoiceTableView.m */; settings = {ASSET_TAGS = (); }; };
 		E455DCF01BCB798400B78E54 /* ActivityReleaseAndTypeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E455DCEF1BCB798400B78E54 /* ActivityReleaseAndTypeCell.m */; settings = {ASSET_TAGS = (); }; };
 		E455DCF41BCB8F6D00B78E54 /* ActivityReleaseController.m in Sources */ = {isa = PBXBuildFile; fileRef = E455DCF31BCB8F6D00B78E54 /* ActivityReleaseController.m */; settings = {ASSET_TAGS = (); }; };
+		E45E964A1BDA4B7500836F4F /* ActivityIdentityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E45E96491BDA4B7500836F4F /* ActivityIdentityViewController.m */; settings = {ASSET_TAGS = (); }; };
+		E45E96531BDA4C4F00836F4F /* ActivityIdentityTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = E45E96521BDA4C4F00836F4F /* ActivityIdentityTableView.m */; settings = {ASSET_TAGS = (); }; };
+		E45E96561BDA4C6D00836F4F /* ActivityIdentityTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E45E96551BDA4C6D00836F4F /* ActivityIdentityTableViewCell.m */; settings = {ASSET_TAGS = (); }; };
 		E45E98F61BD0D1910012F9DA /* ActivityResultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E45E98F51BD0D1910012F9DA /* ActivityResultViewController.m */; settings = {ASSET_TAGS = (); }; };
 		E45E98F91BD0D3320012F9DA /* ActivityResultTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = E45E98F81BD0D3320012F9DA /* ActivityResultTableView.m */; settings = {ASSET_TAGS = (); }; };
 		E45FD8501BCF41EB007619D7 /* activity-releaser@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E45FD84E1BCF41EB007619D7 /* activity-releaser@2x.png */; settings = {ASSET_TAGS = (); }; };
@@ -754,7 +757,6 @@
 		E4BE2DAA1BC7989300124F22 /* ContactsInfoFirstTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E4BE2DA91BC7989300124F22 /* ContactsInfoFirstTableViewCell.m */; settings = {ASSET_TAGS = (); }; };
 		E4BE2DAD1BC798A600124F22 /* ContactsInfoSecondTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E4BE2DAC1BC798A600124F22 /* ContactsInfoSecondTableViewCell.m */; settings = {ASSET_TAGS = (); }; };
 		E4BE2DB01BC798B500124F22 /* ContactsInfoThirdTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E4BE2DAF1BC798B500124F22 /* ContactsInfoThirdTableViewCell.m */; settings = {ASSET_TAGS = (); }; };
-		E4E2348F1BD4DA910092E81B /* ActivityIdentityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E4E2348E1BD4DA910092E81B /* ActivityIdentityViewController.m */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -1798,6 +1800,12 @@
 		E455DCEF1BCB798400B78E54 /* ActivityReleaseAndTypeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityReleaseAndTypeCell.m; sourceTree = "<group>"; };
 		E455DCF21BCB8F6D00B78E54 /* ActivityReleaseController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityReleaseController.h; sourceTree = "<group>"; };
 		E455DCF31BCB8F6D00B78E54 /* ActivityReleaseController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityReleaseController.m; sourceTree = "<group>"; };
+		E45E96481BDA4B7500836F4F /* ActivityIdentityViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityIdentityViewController.h; sourceTree = "<group>"; };
+		E45E96491BDA4B7500836F4F /* ActivityIdentityViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityIdentityViewController.m; sourceTree = "<group>"; };
+		E45E96511BDA4C4F00836F4F /* ActivityIdentityTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityIdentityTableView.h; sourceTree = "<group>"; };
+		E45E96521BDA4C4F00836F4F /* ActivityIdentityTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityIdentityTableView.m; sourceTree = "<group>"; };
+		E45E96541BDA4C6D00836F4F /* ActivityIdentityTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityIdentityTableViewCell.h; sourceTree = "<group>"; };
+		E45E96551BDA4C6D00836F4F /* ActivityIdentityTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityIdentityTableViewCell.m; sourceTree = "<group>"; };
 		E45E98F41BD0D1910012F9DA /* ActivityResultViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityResultViewController.h; sourceTree = "<group>"; };
 		E45E98F51BD0D1910012F9DA /* ActivityResultViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityResultViewController.m; sourceTree = "<group>"; };
 		E45E98F71BD0D3320012F9DA /* ActivityResultTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityResultTableView.h; sourceTree = "<group>"; };
@@ -1870,8 +1878,6 @@
 		E4BE2DAC1BC798A600124F22 /* ContactsInfoSecondTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactsInfoSecondTableViewCell.m; sourceTree = "<group>"; };
 		E4BE2DAE1BC798B500124F22 /* ContactsInfoThirdTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactsInfoThirdTableViewCell.h; sourceTree = "<group>"; };
 		E4BE2DAF1BC798B500124F22 /* ContactsInfoThirdTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactsInfoThirdTableViewCell.m; sourceTree = "<group>"; };
-		E4E2348D1BD4DA910092E81B /* ActivityIdentityViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityIdentityViewController.h; sourceTree = "<group>"; };
-		E4E2348E1BD4DA910092E81B /* ActivityIdentityViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityIdentityViewController.m; sourceTree = "<group>"; };
 		F531E541C4347E287F02139F /* Pods-XiaoYou.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XiaoYou.release.xcconfig"; path = "../Pods/Target Support Files/Pods-XiaoYou/Pods-XiaoYou.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -2037,6 +2043,7 @@
 				20DAAA6D1BCD05F5006DF231 /* AvailableSimpleVC */,
 				20DAAA691BCD05F5006DF231 /* Calendar */,
 				E455DCF11BCB8F4700B78E54 /* ActivityRelease */,
+				E45E96471BDA4B4100836F4F /* IdentitChoice */,
 				E455DCE11BCB67C100B78E54 /* ActivityChoice */,
 				E45E98F31BD0ABFF0012F9DA /* ActivityResult */,
 				E44A6E991BD67C0000FF3175 /* MerchantList */,
@@ -3937,12 +3944,23 @@
 				E45005D41BCE332500933AB9 /* TypeDetailCollectionView.m */,
 				E45005D61BCE333B00933AB9 /* TypeDetailCollectionViewCell.h */,
 				E45005D71BCE333B00933AB9 /* TypeDetailCollectionViewCell.m */,
-				E4E2348D1BD4DA910092E81B /* ActivityIdentityViewController.h */,
-				E4E2348E1BD4DA910092E81B /* ActivityIdentityViewController.m */,
 				E416053C1BCF7FA400C6C4A5 /* ActivityReleaseDataManager.h */,
 				E416053D1BCF7FA400C6C4A5 /* ActivityReleaseDataManager.m */,
 			);
 			path = ActivityRelease;
+			sourceTree = "<group>";
+		};
+		E45E96471BDA4B4100836F4F /* IdentitChoice */ = {
+			isa = PBXGroup;
+			children = (
+				E45E96481BDA4B7500836F4F /* ActivityIdentityViewController.h */,
+				E45E96491BDA4B7500836F4F /* ActivityIdentityViewController.m */,
+				E45E96511BDA4C4F00836F4F /* ActivityIdentityTableView.h */,
+				E45E96521BDA4C4F00836F4F /* ActivityIdentityTableView.m */,
+				E45E96541BDA4C6D00836F4F /* ActivityIdentityTableViewCell.h */,
+				E45E96551BDA4C6D00836F4F /* ActivityIdentityTableViewCell.m */,
+			);
+			path = IdentitChoice;
 			sourceTree = "<group>";
 		};
 		E45E98F31BD0ABFF0012F9DA /* ActivityResult */ = {
@@ -4657,6 +4675,7 @@
 				E45E98F91BD0D3320012F9DA /* ActivityResultTableView.m in Sources */,
 				656F59751B8896370094B658 /* ProfilePhoneChangeViewController.m in Sources */,
 				20DD4B351B734781007C352C /* CommonSwitchView.m in Sources */,
+				E45E964A1BDA4B7500836F4F /* ActivityIdentityViewController.m in Sources */,
 				3331225F1B806EDB00D3D032 /* UIImage+EMGIF.m in Sources */,
 				333122651B806EDB00D3D032 /* NSIndexPath+PSTCollectionViewAdditions.m in Sources */,
 				3331225A1B806EDB00D3D032 /* EMSDWebImageManager.m in Sources */,
@@ -4668,7 +4687,6 @@
 				042AADC61BCB4AC40056C09F /* JoinInHeadView.m in Sources */,
 				333122D91B806F7E00D3D032 /* RobotManager.m in Sources */,
 				333122481B806EDB00D3D032 /* Emoji.m in Sources */,
-				E4E2348F1BD4DA910092E81B /* ActivityIdentityViewController.m in Sources */,
 				E482D56A1BD8CB020045F4DB /* ScanfResultTableViewCell.m in Sources */,
 				E43E10041BCC9CA90018B6D7 /* ActivityReleaseCollectionView.m in Sources */,
 				20DA16FA1BC7C51200A61B37 /* MGCEventCellLayoutAttributes.m in Sources */,
@@ -4723,6 +4741,7 @@
 				3331226B1B806EDB00D3D032 /* PSTCollectionViewItemKey.m in Sources */,
 				65F82F841B85E74A00FF6E2D /* FeedPublishViewController.m in Sources */,
 				E46CF8651BD72A9900FF563B /* MerchantListTableViewCell.m in Sources */,
+				E45E96561BDA4C6D00836F4F /* ActivityIdentityTableViewCell.m in Sources */,
 				6592DCDB1B806A9B004CD118 /* ContactsTableView.m in Sources */,
 				20DAE14D1B8821DD00607996 /* PerfectInformationViewController.m in Sources */,
 				333122521B806EDB00D3D032 /* MWTapDetectingView.m in Sources */,
@@ -4770,6 +4789,7 @@
 				65024C0F1B82C423007DE404 /* FeedTag.m in Sources */,
 				20DA17081BC7C51200A61B37 /* MGCTimedEventsViewLayout.m in Sources */,
 				20DA63761B7482DE007D22AC /* FeedListTableView.m in Sources */,
+				E45E96531BDA4C4F00836F4F /* ActivityIdentityTableView.m in Sources */,
 				207F808D1B709A1E005E8F6A /* AppDelegate+Notification.m in Sources */,
 				20DA17061BC7C51200A61B37 /* MGCReusableObjectQueue.m in Sources */,
 				6592DCDC1B806A9B004CD118 /* ContactsTableViewCell.m in Sources */,
