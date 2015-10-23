@@ -12,4 +12,6 @@ extern NSString *const kActivityIdentityTableViewCell;
 
 @interface ActivityIdentityTableViewCell : YTableViewCell
 
+-(void)setCellInfo:(NSString *) contentText;
+
 @end
