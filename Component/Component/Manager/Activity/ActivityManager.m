@@ -108,7 +108,7 @@ DEF_SINGLETON(ActivityManager);
     CommonAction *action = [[CommonAction alloc] init];
     NSDictionary *dic = [model dictionaryRepresentation];
     action.parameter = [YUtils getParameter:dic needUserToken:YES needContent:YES];
-    action.url = [YUtils getUrl:api_available_enrollActivity];
+    action.url = [YUtils getUrl:api_available_edit];
     
     [YAction startAction:action completionBlock:^(YActionMessage* message) {
         
