@@ -80,7 +80,7 @@
     }];
 }
 
--(void)setData:(ActivityModel*)data
+-(void)setData:(ActivityModelTest*)data
 {
     [_topView.headImageView sd_setImageWithURL:[NSURL URLWithString:data.acHeadImage]];
     _topView.titleLabel.text = data.acName;

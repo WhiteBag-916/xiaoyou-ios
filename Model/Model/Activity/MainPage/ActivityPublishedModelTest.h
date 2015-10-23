@@ -9,7 +9,7 @@
 #import "YModel.h"
 
 
-@interface ActivityPublishedModel : YModel <NSCoding, NSCopying>
+@interface ActivityPublishedModelTest : YModel <NSCoding, NSCopying>
 
 @property (nonatomic, assign) BOOL enrollCheck;
 @property (nonatomic, strong) NSString *status;

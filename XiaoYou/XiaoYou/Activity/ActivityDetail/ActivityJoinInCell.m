@@ -121,7 +121,7 @@
     [_tagsView setData:profile];
 }
 
--(void)setData:(JoinInModel *)joinModel
+-(void)setData:(JoinInModelTest *)joinModel
 {
     [_joinTopView.headImageView sd_setImageWithURL:[NSURL URLWithString:joinModel.headImageUrl]];
     _joinTopView.nameLabel.text = joinModel.nameStr;

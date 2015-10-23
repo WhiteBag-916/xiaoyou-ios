@@ -207,7 +207,7 @@
     }
 }
 
--(void)setData:(RemindModel *)model
+-(void)setData:(RemindModelTest *)model
 {
     [_headImageView sd_setImageWithURL:[NSURL URLWithString:model.headImageUrl]];
     _contentTitleLabel.text = model.acType;

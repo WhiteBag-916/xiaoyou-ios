@@ -9,7 +9,7 @@
 #import "YModel.h"
 
 
-@interface ActivityCoverageModels : YModel <NSCoding, NSCopying>
+@interface ActivityCoverageModelsTest : YModel <NSCoding, NSCopying>
 
 @property (nonatomic, assign) double activityId;
 @property (nonatomic, strong) NSString *coverageType;

@@ -8,11 +8,11 @@
 #import <Foundation/Foundation.h>
 #import "YModel.h"
 
-@class ActivityPublishedModel;
+@class ActivityPublishedModelTest;
 
-@interface AvailableListModel : YModel <NSCoding, NSCopying>
+@interface AvailableListModelTest : YModel <NSCoding, NSCopying>
 
-@property (nonatomic, strong) ActivityPublishedModel *activityPublishedModel;
+@property (nonatomic, strong) ActivityPublishedModelTest *activityPublishedModel;
 @property (nonatomic, strong) NSArray *activityCoverageModels;
 @property (nonatomic, strong) NSArray *activityImageTextModels;
 

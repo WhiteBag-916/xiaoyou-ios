@@ -25,14 +25,11 @@
 @property (nonatomic,strong) UILabel        *activityLocationDes;//活动地点
 @property (nonatomic,strong) UILabel        *oranizerDes;       //组织者
 
-
 @property (nonatomic,strong) UILabel        *signUpTimeLabel;       //报名截止时间
 @property (nonatomic,strong) UILabel        *activityTimeLabel;     //活动开始时间
 @property (nonatomic,strong) UILabel        *activityEndTimeLabel;  //活动结束时间
 @property (nonatomic,strong) UILabel        *activityLocationLabel; //活动地点
 @property (nonatomic,strong) UILabel        *organizerLabel;        //组织者
-
-
 
 @end
 
@@ -82,7 +79,10 @@
         //make.top.equalTo(_typeLabel);
         
         make.leading.mas_equalTo(SCALE_NUM(15));
-        make.trailing.mas_equalTo(SCALE_NUM(-15));
+        if (IS_IPHONE_6)
+            make.trailing.mas_equalTo(SCALE_NUM(-45));
+        else
+            make.trailing.mas_equalTo(SCALE_NUM(-55));
         make.top.equalTo(_startImageView.mas_top).offset(SCALE_NUM(-5));
     }];
     
@@ -97,8 +97,8 @@
     _typeLabel.font = CONTENT_FONT(10);
     [_typeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.height.mas_equalTo(SCALE_NUM(15));
-        make.leading.mas_equalTo(SCALE_NUM(15));
-        make.top.equalTo(_titleLabel).offset(SCALE_NUM(0));
+        make.trailing.mas_equalTo(SCALE_NUM(-15));
+        make.top.equalTo(_titleLabel).offset(SCALE_NUM(2));
     }];
     
     _descriptionLabel = [[UILabel alloc]init];
@@ -247,10 +247,10 @@
 }
 
 
--(void)setData:(ActivityModel *)model
+-(void)setData:(ActivityModelTest *)model
 {
     if (![model.acTitle containsString:@"            "])
-        model.acTitle = [NSString stringWithFormat:@"            %@",model.acTitle];
+        model.acTitle = [NSString stringWithFormat:@"%@",model.acTitle];
     _titleLabel.text        = model.acTitle;
     //_descriptionLabel.text  = model.acBrief;
     

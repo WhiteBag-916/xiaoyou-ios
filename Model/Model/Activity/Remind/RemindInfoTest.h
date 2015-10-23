@@ -8,7 +8,7 @@
 
 #import "YModel.h"
 
-@interface RemindInfo : YModel<NSCoding, NSCopying>
+@interface RemindInfoTest : YModel<NSCoding, NSCopying>
 
 @property (nonatomic,copy) NSString *remindTimeString;
 @property (nonatomic,copy) NSString *headImageUrl;

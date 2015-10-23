@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface JoinInModel : NSObject
+@interface JoinInModelTest : NSObject
 
 @property (nonatomic,copy)      NSString *headImageUrl;
 @property (nonatomic,copy)      NSString *nameStr;
