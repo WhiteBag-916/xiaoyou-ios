@@ -1,11 +1,11 @@
 //
 //  ActivityPublishedModel.m
 //
-//  Created by sheng  on 15/10/22
+//  Created by   on 15/10/23
 //  Copyright (c) 2015 __MyCompanyName__. All rights reserved.
 //
 
-#import "ActivityPublishedModelTest.h"
+#import "ActivityPublishedModel.h"
 
 
 NSString *const kActivityPublishedModelEnrollCheck = @"enrollCheck";
@@ -33,13 +33,13 @@ NSString *const kActivityPublishedModelCreateTime = @"createTime";
 NSString *const kActivityPublishedModelAddress = @"address";
 
 
-@interface ActivityPublishedModelTest ()
+@interface ActivityPublishedModel ()
 
 - (id)objectOrNilForKey:(id)aKey fromDictionary:(NSDictionary *)dict;
 
 @end
 
-@implementation ActivityPublishedModelTest
+@implementation ActivityPublishedModel
 
 @synthesize enrollCheck = _enrollCheck;
 @synthesize status = _status;
@@ -213,7 +213,7 @@ NSString *const kActivityPublishedModelAddress = @"address";
 
 - (id)copyWithZone:(NSZone *)zone
 {
-    ActivityPublishedModelTest *copy = [[ActivityPublishedModelTest alloc] init];
+    ActivityPublishedModel *copy = [[ActivityPublishedModel alloc] init];
     
     if (copy) {
 

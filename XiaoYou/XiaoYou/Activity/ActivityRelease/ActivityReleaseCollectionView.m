@@ -25,14 +25,20 @@ typedef enum : NSUInteger {
 
 @interface ActivityReleaseCollectionView ()<UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout,UIScrollViewDelegate>
 
+//是否为社长
+@property (nonatomic,assign) BOOL isIdentity;
+
 @end
 
 @implementation ActivityReleaseCollectionView
 
-- (instancetype)initWithFrame:(CGRect)frame collectionViewLayout:(UICollectionViewLayout *)layout
+- (instancetype)initWithFrame:(CGRect)frame collectionViewLayout:(UICollectionViewLayout *)layout andIsIdentity:(BOOL) isIdentity
 {
     self = [super initWithFrame:frame collectionViewLayout:layout];
     if (self) {
+        
+        _isIdentity = isIdentity;
+        
         self.delegate = self;
         self.dataSource = self;
         self.scrollEnabled = YES;
@@ -62,7 +68,15 @@ typedef enum : NSUInteger {
 
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    return 6;
+    if (_isIdentity)
+    {
+        return 6;
+    }
+    else
+    {
+        return 5;
+    }
+    
 }
 
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath

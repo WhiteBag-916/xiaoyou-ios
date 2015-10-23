@@ -12,7 +12,19 @@
 @interface ActivityManager : YManager<YManager>
 AS_SINGLETON(ActivityManager);
 
-//有空界面,获取当前用户活动列表
+//获取当前用户活动列表
 - (void)getCurrentUseAvailableListLimitStart:(NSInteger)limitStart limitEnd:(NSInteger)limitEnd block:(ActionCompleteBlock)block;
+
+//查询活动类型列表
+- (void)findActivityTypes:(ActionCompleteBlock)block;
+
+//根据发布后的活动id查询发布后的活动信息
+- (void)findByActivityPublishedId:(NSString *)activityId block:(ActionCompleteBlock)block;
+
+//活动报名
+- (void)enrollActivity:(NSString *)activityPublishedId block:(ActionCompleteBlock)block;
+
+//报名审核
+- (void)checkEnrollActivity:(NSString *)checkStatus activityId:(NSString *)activityId block:(ActionCompleteBlock)block;
 
 @end

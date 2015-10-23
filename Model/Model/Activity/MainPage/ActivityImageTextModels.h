@@ -1,7 +1,7 @@
 //
 //  ActivityImageTextModels.h
 //
-//  Created by sheng  on 15/10/22
+//  Created by   on 15/10/23
 //  Copyright (c) 2015 __MyCompanyName__. All rights reserved.
 //
 
@@ -9,7 +9,7 @@
 #import "YModel.h"
 
 
-@interface ActivityImageTextModelsTest : YModel <NSCoding, NSCopying>
+@interface ActivityImageTextModels : YModel <NSCoding, NSCopying>
 
 @property (nonatomic, strong) NSString *opUser;
 @property (nonatomic, strong) NSString *content;
