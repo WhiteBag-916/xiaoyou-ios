@@ -7,6 +7,7 @@
 //
 
 #import "CheckCollectionViewCell.h"
+#import "ActivityReleaseDataManager.h"
 
 NSString *const kCheckCollectionViewCell = @"CheckCollectionViewCellId";
 
@@ -14,6 +15,8 @@ NSString *const kCheckCollectionViewCell = @"CheckCollectionViewCellId";
 
 @property(nonatomic,strong)UILabel * needCheckLabel;
 @property(nonatomic,strong)UILabel * notNeedCheckLabel;
+
+@property(nonatomic,strong)ActivityReleaseDataManager * dataManager;
 
 @end
 
@@ -25,6 +28,8 @@ NSString *const kCheckCollectionViewCell = @"CheckCollectionViewCellId";
     if (self) {
         [self changUI];
         
+        _dataManager = [ActivityReleaseDataManager shareActivityReleaseDataManager];
+        _dataManager.ActivityCheckStr = @"不需要报名审核";
     }
     return self;
 }
@@ -131,6 +136,8 @@ NSString *const kCheckCollectionViewCell = @"CheckCollectionViewCellId";
     
     _needCheckLabel.backgroundColor = KCOLORGREEN_g1;
     _notNeedCheckLabel.backgroundColor = [UIColor clearColor];
+    
+    _dataManager.ActivityCheckStr = @"需要报名审核";
 }
 
 -(void)tapNotNeedCheck
@@ -140,6 +147,8 @@ NSString *const kCheckCollectionViewCell = @"CheckCollectionViewCellId";
     
     _notNeedCheckLabel.backgroundColor = KCOLORGREEN_g1;
     _needCheckLabel.backgroundColor = [UIColor clearColor];
+    
+    _dataManager.ActivityCheckStr = @"不需要报名审核";
 }
 
 

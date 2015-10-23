@@ -79,6 +79,7 @@
 		044DA0651BBA7E4700AA321A /* ActivityBottomView.m in Sources */ = {isa = PBXBuildFile; fileRef = 044DA0601BBA7E4700AA321A /* ActivityBottomView.m */; settings = {ASSET_TAGS = (); }; };
 		044DA0661BBA7E4700AA321A /* ActivityMiddleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 044DA0621BBA7E4700AA321A /* ActivityMiddleView.m */; settings = {ASSET_TAGS = (); }; };
 		044DA0671BBA7E4700AA321A /* ActivityTopView.m in Sources */ = {isa = PBXBuildFile; fileRef = 044DA0641BBA7E4700AA321A /* ActivityTopView.m */; settings = {ASSET_TAGS = (); }; };
+		0475AD891BDA247400763896 /* SearchActivityListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0475AD881BDA247400763896 /* SearchActivityListView.m */; settings = {ASSET_TAGS = (); }; };
 		0476B6291BD0E4EC00FD13DF /* 1havetime_box_calender@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0476B6251BD0E4EC00FD13DF /* 1havetime_box_calender@2x.png */; settings = {ASSET_TAGS = (); }; };
 		0476B62A1BD0E4EC00FD13DF /* 1havetime_box_calender@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0476B6261BD0E4EC00FD13DF /* 1havetime_box_calender@3x.png */; settings = {ASSET_TAGS = (); }; };
 		0476B62B1BD0E4EC00FD13DF /* 1havetime_box_classroom@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0476B6271BD0E4EC00FD13DF /* 1havetime_box_classroom@2x.png */; settings = {ASSET_TAGS = (); }; };
@@ -859,6 +860,8 @@
 		044DA0621BBA7E4700AA321A /* ActivityMiddleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityMiddleView.m; sourceTree = "<group>"; };
 		044DA0631BBA7E4700AA321A /* ActivityTopView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityTopView.h; sourceTree = "<group>"; };
 		044DA0641BBA7E4700AA321A /* ActivityTopView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityTopView.m; sourceTree = "<group>"; };
+		0475AD871BDA247400763896 /* SearchActivityListView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchActivityListView.h; sourceTree = "<group>"; };
+		0475AD881BDA247400763896 /* SearchActivityListView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchActivityListView.m; sourceTree = "<group>"; };
 		0476B6251BD0E4EC00FD13DF /* 1havetime_box_calender@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "1havetime_box_calender@2x.png"; sourceTree = "<group>"; };
 		0476B6261BD0E4EC00FD13DF /* 1havetime_box_calender@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "1havetime_box_calender@3x.png"; sourceTree = "<group>"; };
 		0476B6271BD0E4EC00FD13DF /* 1havetime_box_classroom@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "1havetime_box_classroom@2x.png"; sourceTree = "<group>"; };
@@ -2932,6 +2935,8 @@
 				044C31621BCCE79200E0D508 /* StudyRoomCell.m */,
 				044C31641BCCF09F00E0D508 /* ScroungeCourseCell.h */,
 				044C31651BCCF09F00E0D508 /* ScroungeCourseCell.m */,
+				0475AD871BDA247400763896 /* SearchActivityListView.h */,
+				0475AD881BDA247400763896 /* SearchActivityListView.m */,
 			);
 			path = AvailableTime;
 			sourceTree = "<group>";
@@ -4815,6 +4820,7 @@
 				65FC7EB21BCE122500B3AA7C /* YWebViewController.m in Sources */,
 				20E18D561B807752005B75EE /* AssociationsListViewController.m in Sources */,
 				333122541B806EDB00D3D032 /* DACircularProgressView.m in Sources */,
+				0475AD891BDA247400763896 /* SearchActivityListView.m in Sources */,
 				3395498F1B81C67000F9ECB1 /* GroupInfoDetailHeaderView.m in Sources */,
 				65A847021B81C9D300933815 /* FeedCellMiddleView.m in Sources */,
 				65969DD61B873168001DD348 /* ProfilePersonListTableViewCell.m in Sources */,

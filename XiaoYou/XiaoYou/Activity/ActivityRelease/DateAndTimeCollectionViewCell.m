@@ -156,6 +156,9 @@ NSString *const kDateAndTimeCollectionViewCell = @"DateAndTimeCollectionViewCell
                                             addSelf:[UIApplication sharedApplication].keyWindow];
     [popView comSet:self action:@selector(applayChooseDate) params:nil];
 
+    _datePicker.minimumDate = nil;
+    _datePicker.maximumDate = nil;
+    
     [popView showView];
 }
 
