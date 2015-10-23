@@ -5,10 +5,10 @@
 //  Copyright (c) 2015 __MyCompanyName__. All rights reserved.
 //
 
-#import "AvailableListModel.h"
-#import "ActivityPublishedModel.h"
-#import "ActivityCoverageModels.h"
-#import "ActivityImageTextModels.h"
+#import "AvailableListModelTest.h"
+#import "ActivityPublishedModelTest.h"
+#import "ActivityCoverageModelsTest.h"
+#import "ActivityImageTextModelsTest.h"
 
 
 NSString *const kObjActivityPublishedModel = @"activityPublishedModel";
@@ -16,13 +16,13 @@ NSString *const kObjActivityCoverageModels = @"activityCoverageModels";
 NSString *const kObjActivityImageTextModels = @"activityImageTextModels";
 
 
-@interface AvailableListModel ()
+@interface AvailableListModelTest ()
 
 - (id)objectOrNilForKey:(id)aKey fromDictionary:(NSDictionary *)dict;
 
 @end
 
-@implementation AvailableListModel
+@implementation AvailableListModelTest
 
 @synthesize activityPublishedModel = _activityPublishedModel;
 @synthesize activityCoverageModels = _activityCoverageModels;
@@ -41,17 +41,17 @@ NSString *const kObjActivityImageTextModels = @"activityImageTextModels";
     // This check serves to make sure that a non-NSDictionary object
     // passed into the model class doesn't break the parsing.
     if(self && [dict isKindOfClass:[NSDictionary class]]) {
-            self.activityPublishedModel = [ActivityPublishedModel modelObjectWithDictionary:[dict objectForKey:kObjActivityPublishedModel]];
+            self.activityPublishedModel = [ActivityPublishedModelTest modelObjectWithDictionary:[dict objectForKey:kObjActivityPublishedModel]];
     NSObject *receivedActivityCoverageModels = [dict objectForKey:kObjActivityCoverageModels];
     NSMutableArray *parsedActivityCoverageModels = [NSMutableArray array];
     if ([receivedActivityCoverageModels isKindOfClass:[NSArray class]]) {
         for (NSDictionary *item in (NSArray *)receivedActivityCoverageModels) {
             if ([item isKindOfClass:[NSDictionary class]]) {
-                [parsedActivityCoverageModels addObject:[ActivityCoverageModels modelObjectWithDictionary:item]];
+                [parsedActivityCoverageModels addObject:[ActivityCoverageModelsTest modelObjectWithDictionary:item]];
             }
        }
     } else if ([receivedActivityCoverageModels isKindOfClass:[NSDictionary class]]) {
-       [parsedActivityCoverageModels addObject:[ActivityCoverageModels modelObjectWithDictionary:(NSDictionary *)receivedActivityCoverageModels]];
+       [parsedActivityCoverageModels addObject:[ActivityCoverageModelsTest modelObjectWithDictionary:(NSDictionary *)receivedActivityCoverageModels]];
     }
 
     self.activityCoverageModels = [NSArray arrayWithArray:parsedActivityCoverageModels];
@@ -60,11 +60,11 @@ NSString *const kObjActivityImageTextModels = @"activityImageTextModels";
     if ([receivedActivityImageTextModels isKindOfClass:[NSArray class]]) {
         for (NSDictionary *item in (NSArray *)receivedActivityImageTextModels) {
             if ([item isKindOfClass:[NSDictionary class]]) {
-                [parsedActivityImageTextModels addObject:[ActivityImageTextModels modelObjectWithDictionary:item]];
+                [parsedActivityImageTextModels addObject:[ActivityImageTextModelsTest modelObjectWithDictionary:item]];
             }
        }
     } else if ([receivedActivityImageTextModels isKindOfClass:[NSDictionary class]]) {
-       [parsedActivityImageTextModels addObject:[ActivityImageTextModels modelObjectWithDictionary:(NSDictionary *)receivedActivityImageTextModels]];
+       [parsedActivityImageTextModels addObject:[ActivityImageTextModelsTest modelObjectWithDictionary:(NSDictionary *)receivedActivityImageTextModels]];
     }
 
     self.activityImageTextModels = [NSArray arrayWithArray:parsedActivityImageTextModels];
@@ -140,7 +140,7 @@ NSString *const kObjActivityImageTextModels = @"activityImageTextModels";
 
 - (id)copyWithZone:(NSZone *)zone
 {
-    AvailableListModel *copy = [[AvailableListModel alloc] init];
+    AvailableListModelTest *copy = [[AvailableListModelTest alloc] init];
     
     if (copy) {
 

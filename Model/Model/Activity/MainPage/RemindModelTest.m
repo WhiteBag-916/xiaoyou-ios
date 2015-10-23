@@ -1,13 +1,13 @@
 //
-//  JoinInCell.m
+//  RemindModel.m
 //  Model
 //
 //  Created by sheng on 15/10/22.
 //  Copyright © 2015年 xc. All rights reserved.
 //
 
-#import "JoinInModel.h"
+#import "RemindModelTest.h"
 
-@implementation JoinInModel
+@implementation RemindModelTest
 
 @end

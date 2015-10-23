@@ -5,7 +5,7 @@
 //  Copyright (c) 2015 __MyCompanyName__. All rights reserved.
 //
 
-#import "ActivityImageTextModels.h"
+#import "ActivityImageTextModelsTest.h"
 
 
 NSString *const kActivityImageTextModelsOpUser = @"opUser";
@@ -18,13 +18,13 @@ NSString *const kActivityImageTextModelsType = @"type";
 NSString *const kActivityImageTextModelsCreateTime = @"createTime";
 
 
-@interface ActivityImageTextModels ()
+@interface ActivityImageTextModelsTest ()
 
 - (id)objectOrNilForKey:(id)aKey fromDictionary:(NSDictionary *)dict;
 
 @end
 
-@implementation ActivityImageTextModels
+@implementation ActivityImageTextModelsTest
 
 @synthesize opUser = _opUser;
 @synthesize content = _content;
@@ -123,7 +123,7 @@ NSString *const kActivityImageTextModelsCreateTime = @"createTime";
 
 - (id)copyWithZone:(NSZone *)zone
 {
-    ActivityImageTextModels *copy = [[ActivityImageTextModels alloc] init];
+    ActivityImageTextModelsTest *copy = [[ActivityImageTextModelsTest alloc] init];
     
     if (copy) {
 

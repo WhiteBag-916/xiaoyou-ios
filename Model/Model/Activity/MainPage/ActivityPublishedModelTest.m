@@ -5,7 +5,7 @@
 //  Copyright (c) 2015 __MyCompanyName__. All rights reserved.
 //
 
-#import "ActivityPublishedModel.h"
+#import "ActivityPublishedModelTest.h"
 
 
 NSString *const kActivityPublishedModelEnrollCheck = @"enrollCheck";
@@ -33,13 +33,13 @@ NSString *const kActivityPublishedModelCreateTime = @"createTime";
 NSString *const kActivityPublishedModelAddress = @"address";
 
 
-@interface ActivityPublishedModel ()
+@interface ActivityPublishedModelTest ()
 
 - (id)objectOrNilForKey:(id)aKey fromDictionary:(NSDictionary *)dict;
 
 @end
 
-@implementation ActivityPublishedModel
+@implementation ActivityPublishedModelTest
 
 @synthesize enrollCheck = _enrollCheck;
 @synthesize status = _status;
@@ -213,7 +213,7 @@ NSString *const kActivityPublishedModelAddress = @"address";
 
 - (id)copyWithZone:(NSZone *)zone
 {
-    ActivityPublishedModel *copy = [[ActivityPublishedModel alloc] init];
+    ActivityPublishedModelTest *copy = [[ActivityPublishedModelTest alloc] init];
     
     if (copy) {
 

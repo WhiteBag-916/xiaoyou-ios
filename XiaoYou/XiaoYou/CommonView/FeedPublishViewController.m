@@ -225,7 +225,7 @@
         make.height.mas_equalTo(KTEXTVIEWHEIGHT);
     }];
     _textView.delegate = self;
-    _textView.placeholder = @"发布优质内容，会有更多人给你敬酒";
+    _textView.placeholder = @"和你的校友分享...";
     _textView.placeholderColor = KCOLORWHITE_b8b7b7;
     _textView.font = CONTENT_FONT(12);
 }
@@ -266,7 +266,7 @@
         make.height.mas_equalTo(SCALE_NUM(10));
     }];
     info.font = CONTENT_FONT(10);
-    info.text = @"选择以下标签，动态将会同步进入选中标签的列表中";
+    info.text = @"选标签，告诉大家你在关注什么";
     
     _tagView = [[SKTagView alloc] init];
     [_bottomView addSubview:_tagView];

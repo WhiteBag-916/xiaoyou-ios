@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface ActivityModel : NSObject
+@interface ActivityModelTest : NSObject
 
 @property (nonatomic,copy) NSString *acTitle;
 

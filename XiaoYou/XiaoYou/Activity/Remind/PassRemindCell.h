@@ -11,7 +11,7 @@
  */
 #import <UIKit/UIKit.h>
 #import "RemindInfo.h"
-#import "RemindModel.h"
+#import "RemindModelTest.h"
 
 //提醒的5个状态
 typedef enum : NSUInteger {
@@ -28,6 +28,6 @@ typedef enum : NSUInteger {
 
 +(PassRemindCell*)passRemindCellWithTableView:(UITableView*)tableView;
 
--(void)setData:(RemindModel*)model;
+-(void)setData:(RemindModelTest*)model;
 
 @end

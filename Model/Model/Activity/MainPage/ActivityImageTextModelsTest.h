@@ -9,7 +9,7 @@
 #import "YModel.h"
 
 
-@interface ActivityImageTextModels : YModel <NSCoding, NSCopying>
+@interface ActivityImageTextModelsTest : YModel <NSCoding, NSCopying>
 
 @property (nonatomic, strong) NSString *opUser;
 @property (nonatomic, strong) NSString *content;

@@ -1,0 +1,2 @@
+/Users/sheng/Documents/xiaoyou_ios/XiaoYou/../Pods/EaseMobSDK/EaseMobSDK/resources/EaseMob.bundle
+/Users/sheng/Documents/xiaoyou_ios/XiaoYou/../Pods/MJRefresh/MJRefresh/MJRefresh.bundle

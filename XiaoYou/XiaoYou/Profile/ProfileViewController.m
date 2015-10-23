@@ -340,7 +340,7 @@
 - (UIView *)greenItem:(int)index {
     UIView *item = [[UIView alloc] init];
     [_bottomView addSubview:item];
-    NSArray *names = @[@"态度", @"关注", @"观点"];
+    NSArray *names = @[@"态度", @"关注", @"动态"];
     UILabel *icon = [YUtils initLabel:CONTENT_FONT(10) color:KCOLORWHITE text:names[index] frame:CGRectZero alignment:NSTextAlignmentCenter];
     icon.backgroundColor = KCOLORGREEN_009688;
     icon.layer.cornerRadius = KBOTTOMLABELSIZE/2;

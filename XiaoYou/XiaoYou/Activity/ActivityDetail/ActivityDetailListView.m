@@ -9,7 +9,7 @@
 #import "ActivityDetailListView.h"
 #import "ActivityDetailCell.h"
 #import "ActivityJoinInCell.h"
-#import "JoinInModel.h"
+#import "JoinInModelTest.h"
 @interface ActivityDetailListView ()<UITableViewDataSource,UITableViewDelegate>
 
 
@@ -27,7 +27,7 @@
 }
 
 
--(void)setModel:(ActivityModel *)model
+-(void)setModel:(ActivityModelTest *)model
 {
     _model = model;
     _myDataSource2 = [self getDataSource];
@@ -44,7 +44,7 @@
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {;
-    CGFloat height;
+    CGFloat height = 1000;
     if (indexPath.row == 0 && IS_IPHONE_5)
     {
         if ([self.model.acBrief containsString:@"在习近平总书记"]) {
@@ -76,6 +76,11 @@
     }
     if (indexPath.row == 0 && IS_IPHONE_6P)
     {
+        //放大模式
+        if ([UIScreen mainScreen].bounds.size.width == 320.0) {
+            
+        }
+        
         if ([self.model.acBrief containsString:@"在习近平总书记"]) {
             return SCALE_NUM(750);
         }
@@ -92,6 +97,8 @@
     }
     else
     {
+        if (indexPath.row == 0)
+            return SCALE_NUM(1000);
         return SCALE_NUM(200);
         //height = [tableView fd_heightForCellWithIdentifier:@"joinincell" cacheByIndexPath:indexPath configuration:^(ActivityJoinInCell *cell) {
             //[cell setData:_feedListArray[indexPath.row]];
@@ -127,19 +134,19 @@
 
 
 -(NSArray *)getDataSource {
-    JoinInModel *m1 = [[JoinInModel alloc]init];
+    JoinInModelTest *m1 = [[JoinInModelTest alloc]init];
     m1.headImageUrl = @"http://img.qqbody.com/uploads/allimg/120624/091A44245-6.jpg";
     m1.nameStr = @"王亚楠";
     m1.sexStr = @"女";
     m1.tagsArr = @[@"托福GRE",@"考研",@"留学"];
     
-    JoinInModel *m2 = [[JoinInModel alloc]init];
+    JoinInModelTest *m2 = [[JoinInModelTest alloc]init];
     m2.headImageUrl = @"http://img1.touxiang.cn/uploads/20130925/25-072725_605.jpg";
     m2.nameStr = @"李哲";
     m2.sexStr = @"男";
     m2.tagsArr = @[@"运动",@"创业",@"雅思",@"名企实习"];
     
-    JoinInModel *m3 = [[JoinInModel alloc]init];
+    JoinInModelTest *m3 = [[JoinInModelTest alloc]init];
     m3.headImageUrl = @"http://img.sj33.cn/uploads/allimg/200801/2008012001210907.jpg";
     m3.nameStr = @"王欣欣";
     m3.sexStr = @"女";

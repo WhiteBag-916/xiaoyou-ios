@@ -9,7 +9,7 @@
 #import "RemindViewController.h"
 #import "RemindListTableView.h"
 #import "RemindManager.h"
-#import "RemindModel.h"
+#import "RemindModelTest.h"
 @interface RemindViewController ()
 @property (nonatomic,retain) RemindListTableView *remindList;
 @end
@@ -51,17 +51,17 @@
 
 -(NSArray*)getDataSource
 {
-    RemindModel *m1 = [[RemindModel alloc]init];
+    RemindModelTest *m1 = [[RemindModelTest alloc]init];
     m1.headImageUrl = @"http://img1.touxiang.cn/uploads/20130925/25-072725_605.jpg";
     m1.acType = @"社团活动公告";
     m1.acName = @"爱心领养";
     
-    RemindModel *m2 = [[RemindModel alloc]init];
+    RemindModelTest *m2 = [[RemindModelTest alloc]init];
     m2.headImageUrl = @"http://d.hiphotos.baidu.com/zhidao/wh%3D600%2C800/sign=9030f48cfe039245a1e0e909b7a488fa/e61190ef76c6a7ef9de5aa67fffaaf51f2de66ab.jpg";
     m2.acType = @"社团活动公告";
     m2.acName = @"天津老乡会";
     
-    RemindModel *m3 = [[RemindModel alloc]init];
+    RemindModelTest *m3 = [[RemindModelTest alloc]init];
     m3.headImageUrl = @"http://www.toux8.com/uploads/allimg/120703/1_120703155353_5.jpg";
     m3.acType = @"校级活动公告";
     m3.acName = @"校级男子足球比赛";
