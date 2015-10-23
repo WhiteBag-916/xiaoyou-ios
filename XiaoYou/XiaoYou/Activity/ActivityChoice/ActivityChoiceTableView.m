@@ -114,11 +114,11 @@
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     if (_myType == ACTIVITY_CHOICE_TYPE) {
-        return 5;
+        return 4;
     }
     else
     {
-        return 2;
+        return 1;
     }
 }
 

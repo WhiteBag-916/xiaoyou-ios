@@ -112,7 +112,7 @@
 
 //筛选Action
 - (void)filterAction {
-    ActivityChoiceController * choiceController = [[ActivityChoiceController alloc] initWithType:CLASS_CHOICE_TYPE];
+    ActivityChoiceController * choiceController = [[ActivityChoiceController alloc] initWithType:CLASSROOM_CHOICE_TYPE];
     choiceController.classViewController = self;
     [self.navigationController presentViewController:choiceController animated:YES completion:nil];
 }
