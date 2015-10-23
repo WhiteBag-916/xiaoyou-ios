@@ -185,6 +185,8 @@
 #define api_available_enrollActivity   @"/activity/enrollActivity"
 //报名审核
 #define api_available_checkEnrollActivity   @"/activity/checkEnrollActivity"
+//编辑/发布活动
+#define api_available_edit   @"/activity/edit"
 
 #endif
 
