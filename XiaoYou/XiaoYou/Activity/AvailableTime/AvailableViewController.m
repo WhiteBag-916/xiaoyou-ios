@@ -15,6 +15,7 @@
 #import "ActivityChoiceController.h"
 #import "ActivityIdentityViewController.h"
 #import "ActivityModelTest.h"
+#import "AssociationsSearchViewController.h"
 @interface AvailableViewController ()
 
 @property (nonatomic,strong) AvailableListView *availableListView;
@@ -146,7 +147,7 @@
     UIButton * scheduleBtn = [[UIButton alloc] initWithFrame:CGRectMake(70, 0, 25, KNavigationBarheight)];
     [scheduleBtn setImage:[UIImage imageNamed:@"have_time_search"] forState:UIControlStateNormal];
     [scheduleBtn addTarget:self
-                    action:@selector(scheduleAction)
+                    action:@selector(searchAction)
           forControlEvents:UIControlEventTouchUpInside];
     [view addSubview:scheduleBtn];
     
@@ -169,12 +170,11 @@
     [self.navigationController presentViewController:choiceVC animated:YES completion:nil];
 }
 
-//日程
--(void)scheduleAction {
-    //ActivityChoiceController *choiceVC = [[ActivityChoiceController alloc]init];
-    //[self.navigationController pushViewController:choiceVC animated:YES needHiddenBottomBar:YES];
-    //ScheduleViewController *scheduleVC = [[ScheduleViewController alloc]init];
-    //[self.navigationController pushViewController:scheduleVC animated:YES needHiddenBottomBar:YES];
+//搜索🔍
+-(void)searchAction {
+    AssociationsSearchViewController *searchVC = [[AssociationsSearchViewController alloc]init];
+    searchVC.searchType = ACTIVITY_TYPE;
+    [self.navigationController pushViewController:searchVC animated:YES needHiddenBottomBar:YES];
 }
 
 
