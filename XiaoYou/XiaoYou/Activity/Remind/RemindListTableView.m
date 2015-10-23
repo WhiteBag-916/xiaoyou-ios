@@ -14,6 +14,7 @@
 #import "WhoJoinInController.h"
 #import "ProfilePersonListController.h"
 #import "ProfileViewController.h"
+#import "ActivityDetailViewController.h"
 
 #define REMINDVIEWCELL  @"remindCell"
 #define REMINDHEADVIEW  @"remindHeadView"
@@ -212,14 +213,17 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    ProfilePersonListController *whoJoinIn = [[ProfilePersonListController alloc]init];
+    
+    ActivityDetailViewController *detailVC = [[ActivityDetailViewController alloc]init];
+    [self.viewController.navigationController pushViewController:detailVC animated:YES needHiddenBottomBar:YES];
+    /*ProfilePersonListController *whoJoinIn = [[ProfilePersonListController alloc]init];
     [whoJoinIn initWithType:PersonListWhoJoinInThisActivity];
     UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
     if ([cell isKindOfClass:[PassRemindCell class]]) {
         PassRemindCell *remindCell = (PassRemindCell*)cell;
         if (remindCell.cellType == AUDIT_PASSED)
             [self.viewController.navigationController pushViewController:whoJoinIn animated:YES needHiddenBottomBar:YES];
-    }
+    }*/
 }
 
 @end

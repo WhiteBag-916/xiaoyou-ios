@@ -98,7 +98,7 @@
     [_typeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.height.mas_equalTo(SCALE_NUM(15));
         make.leading.mas_equalTo(SCALE_NUM(15));
-        make.top.equalTo(_titleLabel).offset(SCALE_NUM(3));
+        make.top.equalTo(_titleLabel).offset(SCALE_NUM(0));
     }];
     
     _descriptionLabel = [[UILabel alloc]init];
@@ -255,8 +255,8 @@
     //_descriptionLabel.text  = model.acBrief;
     
     [_descriptionLabel setText:model.acBrief lineSpacing:SCALE_NUM(10.f)];
-    NSArray *smallImages    = @[@"/dev/feed/s/c2cfe0e7-ba38-43e0-b345-3d14ff2f2bcf.png"];
-    NSArray *bigImages      = @[@"/dev/feed/c2cfe0e7-ba38-43e0-b345-3d14ff2f2bcf.png"];
+    NSArray *smallImages    = @[model.acPhotos];
+    NSArray *bigImages      = @[model.acPhotos];
     [_imageGroupView updateWithImgs:smallImages bigPics:bigImages];
     _activityLocationLabel.text = model.acLocation;
     _organizerLabel.text = model.acOgnazier;

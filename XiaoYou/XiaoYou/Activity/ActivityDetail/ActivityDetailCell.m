@@ -86,9 +86,14 @@
     _topView.titleLabel.text = data.acName;
     _topView.nameLabel.text = data.acTitle;
     //_topView.descriptionLabel.text = data.acBrief;
+    data.acBrief = [data.acBrief substringFromIndex:5];
     [_topView.descriptionLabel setText:data.acBrief lineSpacing:10.0f];
     
     _bottomView.locationLabel.text = data.acLocation;
+    
+    NSArray *smallImages    = @[data.acPhotos];
+    NSArray *bigImages      = @[data.acPhotos];
+    [_middleView updateWithImgs:smallImages bigPics:bigImages];
 }
 
 @end
