@@ -181,5 +181,7 @@
 #define api_available_list   @"/activity/list"
 //根据发布后的活动id查询发布后的活动信息
 #define api_available_findByActivityPublishedId   @"/activity/findByActivityPublishedId"
+//活动报名
+#define api_available_enrollActivity   @"/activity/enrollActivity"
 #endif
 

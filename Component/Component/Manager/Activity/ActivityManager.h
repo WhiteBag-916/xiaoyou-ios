@@ -21,4 +21,7 @@ AS_SINGLETON(ActivityManager);
 //根据发布后的活动id查询发布后的活动信息
 - (void)findByActivityPublishedId:(NSString *)activityId block:(ActionCompleteBlock)block;
 
+//活动报名
+- (void)enrollActivity:(NSString *)activityPublishedId block:(ActionCompleteBlock)block;
+
 @end

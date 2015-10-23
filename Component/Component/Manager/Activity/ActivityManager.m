@@ -10,6 +10,8 @@
 #import "AvailableAction.h"
 #import "FindActivityTypesAction.h"
 #import "FindByActivityPublishedIdAction.h"
+#import "CommonAction.h"
+#import "YUtils+Component.h"
 
 #define KActivityManagerSyncQueue @"kActivityManagerSyncQueue"
 
@@ -70,6 +72,19 @@ DEF_SINGLETON(ActivityManager);
     action.activityId = activityId;
     
     [YAction startAction:action completionBlock:^(YActionMessage *message) {
+        block(message);
+    }];
+}
+
+//活动报名
+- (void)enrollActivity:(NSString *)activityPublishedId block:(ActionCompleteBlock)block {
+    CommonAction *action = [[CommonAction alloc] init];
+    action.parameter = [YUtils getParameter:@{@"activityPublishedId":activityPublishedId} needUserToken:YES];
+    action.url = [YUtils getUrl:api_available_enrollActivity];
+    
+    [YAction startAction:action completionBlock:^(YActionMessage* message) {
+        
+        //主线程处理界面
         block(message);
     }];
 }
