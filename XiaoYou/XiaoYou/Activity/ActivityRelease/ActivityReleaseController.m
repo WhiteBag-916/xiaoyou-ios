@@ -43,6 +43,9 @@ typedef enum : NSUInteger {
 @property (nonatomic,strong) UILabel * typeLabel5;
 @property (nonatomic,strong) UILabel * typeLabel6;
 
+//是否为社长
+@property (nonatomic,assign) BOOL isIdentity;
+
 //数据Manager
 @property (nonatomic,strong) ActivityReleaseDataManager * dataManager;
 
@@ -50,8 +53,20 @@ typedef enum : NSUInteger {
 
 @implementation ActivityReleaseController
 
+
+- (instancetype)initWithIsIdentity:(BOOL) isIdentity
+{
+    self = [super init];
+    if (self) {
+        _isIdentity = isIdentity;
+    }
+    return self;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    _isIdentity = YES;
     
     _dataManager = [ActivityReleaseDataManager shareActivityReleaseDataManager];
     
@@ -133,7 +148,7 @@ typedef enum : NSUInteger {
     layout.minimumInteritemSpacing = 0;
     layout.minimumLineSpacing = 0;
     layout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
-    _releaseCollectionView = [[ActivityReleaseCollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:layout];
+    _releaseCollectionView = [[ActivityReleaseCollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:layout andIsIdentity:_isIdentity];
     _releaseCollectionView.backgroundColor = [UIColor clearColor];
     _releaseCollectionView.myController = self;
     [_scrollView addSubview:_releaseCollectionView];
@@ -162,7 +177,14 @@ typedef enum : NSUInteger {
     [line1 mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(_point1View.mas_right);
         make.centerY.equalTo(_point1View);
-        make.width.mas_equalTo((SCREEN_WIDTH - 88)/5);
+        if (_isIdentity)
+        {
+            make.width.mas_equalTo(SCALE_NUM((SCREEN_WIDTH - 78)/5));
+        }
+        else
+        {
+            make.width.mas_equalTo(SCALE_NUM((SCREEN_WIDTH - 70)/4));
+        }
         make.height.mas_equalTo(2);
     }];
     _typeLabel1 = [[UILabel alloc]init];
@@ -204,7 +226,14 @@ typedef enum : NSUInteger {
     [line2 mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(_point2View.mas_right);
         make.centerY.equalTo(_point2View);
-        make.width.mas_equalTo((SCREEN_WIDTH - 88)/5);
+        if (_isIdentity)
+        {
+            make.width.mas_equalTo(SCALE_NUM((SCREEN_WIDTH - 78)/5));
+        }
+        else
+        {
+            make.width.mas_equalTo(SCALE_NUM((SCREEN_WIDTH - 70)/4));
+        }
         make.height.mas_equalTo(2);
     }];
     _typeLabel2 = [[UILabel alloc]init];
@@ -246,7 +275,14 @@ typedef enum : NSUInteger {
     [line3 mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(_point3View.mas_right);
         make.centerY.equalTo(_point3View);
-        make.width.mas_equalTo((SCREEN_WIDTH - 88)/5);
+        if (_isIdentity)
+        {
+            make.width.mas_equalTo(SCALE_NUM((SCREEN_WIDTH - 78)/5));
+        }
+        else
+        {
+            make.width.mas_equalTo(SCALE_NUM((SCREEN_WIDTH - 70)/4));
+        }
         make.height.mas_equalTo(2);
     }];
     _typeLabel3 = [[UILabel alloc]init];
@@ -287,7 +323,14 @@ typedef enum : NSUInteger {
     [line4 mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(_point4View.mas_right);
         make.centerY.equalTo(_point4View);
-        make.width.mas_equalTo((SCREEN_WIDTH - 88)/5);
+        if (_isIdentity)
+        {
+            make.width.mas_equalTo(SCALE_NUM((SCREEN_WIDTH - 78)/5));
+        }
+        else
+        {
+            make.width.mas_equalTo(SCALE_NUM((SCREEN_WIDTH - 70)/4));
+        }
         make.height.mas_equalTo(2);
     }];
     _typeLabel4 = [[UILabel alloc]init];
@@ -322,15 +365,7 @@ typedef enum : NSUInteger {
         make.top.equalTo(_releaseCollectionView.mas_bottom).offset(SCALE_NUM(20));
         make.width.height.mas_equalTo(SCALE_NUM(8));
     }];
-    UIImageView * line5 = [[UIImageView alloc] init];
-    line5.image = [UIImage imageNamed:@"line_dot"];
-    [_scrollView addSubview:line5];
-    [line5 mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(_point5View.mas_right);
-        make.centerY.equalTo(_point5View);
-        make.width.mas_equalTo((SCREEN_WIDTH - 88)/5);
-        make.height.mas_equalTo(2);
-    }];
+
     _typeLabel5 = [[UILabel alloc]init];
     _typeLabel5.text = @"类型";
     _typeLabel5.textAlignment = NSTextAlignmentCenter;
@@ -354,42 +389,56 @@ typedef enum : NSUInteger {
     [btn5 addTarget:self action:@selector(clickeLabelButton:) forControlEvents:UIControlEventTouchUpInside];
     
     //Point6
-    _point6View = [[UIImageView alloc] init];
-    _point6View.backgroundColor = KCOLORGREEN_B5;
-    _point6View.layer.cornerRadius = SCALE_NUM(4);
-    _point6View.clipsToBounds = YES;
-    [_scrollView addSubview:_point6View];
-    [_point6View mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(line5.mas_right);
-        make.top.equalTo(_releaseCollectionView.mas_bottom).offset(SCALE_NUM(20));
-        make.width.height.mas_equalTo(SCALE_NUM(8));
-    }];
-    _typeLabel6 = [[UILabel alloc]init];
-    _typeLabel6.text = @"审核";
-    _typeLabel6.textAlignment = NSTextAlignmentCenter;
-    _typeLabel6.textColor = KCOLORGREEN_B3;
-    _typeLabel6.font = CONTENT_FONT(12);
-    [_scrollView addSubview:_typeLabel6];
-    [_typeLabel6 mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.centerX.equalTo(_point6View);
-        make.top.equalTo(_point5View.mas_bottom).offset(SCALE_NUM(8));
-        make.width.mas_equalTo(SCALE_NUM(30));
-        make.height.mas_equalTo(SCALE_NUM(12));
-    }];
-    UIButton * btn6 = [[UIButton alloc] init];
-    btn6.tag = 100000006;
-    btn6.backgroundColor = [UIColor clearColor];
-    [_scrollView addSubview:btn6];
-    [btn6 mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(_point5View);
-        make.right.bottom.left.equalTo(_typeLabel6);
-    }];
-    [btn6 addTarget:self action:@selector(clickeLabelButton:) forControlEvents:UIControlEventTouchUpInside];
+    if (_isIdentity)
+    {
+        UIImageView * line5 = [[UIImageView alloc] init];
+        line5.image = [UIImage imageNamed:@"line_dot"];
+        [_scrollView addSubview:line5];
+        [line5 mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.equalTo(_point5View.mas_right);
+            make.centerY.equalTo(_point5View);
+            make.width.mas_equalTo(SCALE_NUM((SCREEN_WIDTH - 78)/5));
+            make.height.mas_equalTo(2);
+        }];
+        
+        _point6View = [[UIImageView alloc] init];
+        _point6View.backgroundColor = KCOLORGREEN_B5;
+        _point6View.layer.cornerRadius = SCALE_NUM(4);
+        _point6View.clipsToBounds = YES;
+        [_scrollView addSubview:_point6View];
+        [_point6View mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.equalTo(line5.mas_right);
+            make.top.equalTo(_releaseCollectionView.mas_bottom).offset(SCALE_NUM(20));
+            make.width.height.mas_equalTo(SCALE_NUM(8));
+        }];
+        _typeLabel6 = [[UILabel alloc]init];
+        _typeLabel6.text = @"审核";
+        _typeLabel6.textAlignment = NSTextAlignmentCenter;
+        _typeLabel6.textColor = KCOLORGREEN_B3;
+        _typeLabel6.font = CONTENT_FONT(12);
+        [_scrollView addSubview:_typeLabel6];
+        [_typeLabel6 mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.centerX.equalTo(_point6View);
+            make.top.equalTo(_point5View.mas_bottom).offset(SCALE_NUM(8));
+            make.width.mas_equalTo(SCALE_NUM(30));
+            make.height.mas_equalTo(SCALE_NUM(12));
+        }];
+        UIButton * btn6 = [[UIButton alloc] init];
+        btn6.tag = 100000006;
+        btn6.backgroundColor = [UIColor clearColor];
+        [_scrollView addSubview:btn6];
+        [btn6 mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.top.equalTo(_point5View);
+            make.right.bottom.left.equalTo(_typeLabel6);
+        }];
+        [btn6 addTarget:self action:@selector(clickeLabelButton:) forControlEvents:UIControlEventTouchUpInside];
+    }
+    
     
     //这咕噜你好好想想
     UIView * backgroundView = [[UIView alloc] init];
     backgroundView.backgroundColor = KCOLORGREEN_B2;
-    backgroundView.layer.cornerRadius = 17;
+    backgroundView.layer.cornerRadius = SCALE_NUM(17);
     backgroundView.clipsToBounds = YES;
     [_scrollView addSubview:backgroundView];
     [backgroundView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -447,6 +496,7 @@ typedef enum : NSUInteger {
     NSLog(@"%@",_dataManager.ActivityDateEndText);
     NSLog(@"%@",_dataManager.ActivityPlaceText);
     NSLog(@"%@",_dataManager.ActivityTypeStr);
+    NSLog(@"%@",_dataManager.ActivityCheckStr);
     
     NSDateFormatter * formatter = [[NSDateFormatter alloc] init];
     [formatter setDateFormat:@"yyyy年MM月dd日 a HH:mm"];
@@ -601,8 +651,14 @@ typedef enum : NSUInteger {
         case 100000005:
         {
             [UIView animateWithDuration:0.2 animations:^{
-//                _releaseCollectionView.contentOffset = CGPointMake(SCALE_NUM(830), 0);
-                _releaseCollectionView.contentOffset = CGPointMake(SCALE_NUM(920), 0);
+                if (_isIdentity)
+                {
+                    _releaseCollectionView.contentOffset = CGPointMake(SCALE_NUM(920), 0);
+                }
+                else{
+                    _releaseCollectionView.contentOffset = CGPointMake(SCALE_NUM(830), 0);
+                }
+                
             } completion:nil];
             break;
         }

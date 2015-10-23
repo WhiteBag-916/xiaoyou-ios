@@ -10,6 +10,8 @@
 
 @interface ActivityReleaseController : YViewController
 
+- (instancetype)initWithIsIdentity:(BOOL) isIdentity;
+
 -(void)setPointHighlight:(NSInteger) pointNum;
 
 @end

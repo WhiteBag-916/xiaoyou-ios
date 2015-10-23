@@ -13,4 +13,6 @@
 
 @property (nonatomic,weak)ActivityReleaseController * myController;
 
+- (instancetype)initWithFrame:(CGRect)frame collectionViewLayout:(UICollectionViewLayout *)layout andIsIdentity:(BOOL) isIdentity;
+
 @end
