@@ -56,34 +56,22 @@ NSString *const kActivityReleaseAndTypeCell = @"ActivityReleaseAndTypeCellId";
             _releaseAndTypeLabel.text = @"发布者";
             
         }
-        else if (num == 3)
+        else
         {
             _dataArr = @[@"全部",@"综合类",@"学术类",@"公益类",@"教科类"];
             _releaseAndTypeImageView.image = [UIImage imageNamed:@"funny_detail_category"];
             _releaseAndTypeLabel.text = @"类型";
-            
-        }
-        else
-        {
-            _dataArr = @[@"新校区",@"老校区"];
-            _releaseAndTypeImageView.image = [UIImage imageNamed:@"funny_detail_category"];
-            _releaseAndTypeLabel.text = @"校区";
         }
     }
     else
     {
         if (num == 0)
         {
-            _dataArr = @[@"全部",@"经济学院",@"管理学院",@"工程学院",@"外国语学院",@"信息学院",@"艺术学院"];
+            _dataArr = @[@"新校区",@"老校区"];
             _releaseAndTypeImageView.image = [UIImage imageNamed:@"havetime_icon_academy"];
-            _releaseAndTypeLabel.text = @"学院";
+            _releaseAndTypeLabel.text = @"校区";
         }
-        else
-        {
-            _dataArr = @[@"全部",@"今天",@"明天",@"一周内"];
-            _releaseAndTypeImageView.image = [UIImage imageNamed:@"funny_detail_time"];
-            _releaseAndTypeLabel.text = @"日期";
-        }
+        
     }
     
     [_pickerView reloadAllComponents];

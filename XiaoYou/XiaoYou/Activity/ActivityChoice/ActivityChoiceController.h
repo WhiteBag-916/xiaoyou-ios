@@ -12,7 +12,7 @@
 
 typedef enum : NSUInteger {
     ACTIVITY_CHOICE_TYPE,
-    CLASS_CHOICE_TYPE,
+    CLASSROOM_CHOICE_TYPE,
 } CHOICE_TYPE;
 
 @interface ActivityChoiceController : YViewController
