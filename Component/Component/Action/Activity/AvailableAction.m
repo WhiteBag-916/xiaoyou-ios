@@ -8,7 +8,7 @@
 
 #import "AvailableAction.h"
 #import "YUtils+Component.h"
-#import "AvailableListModel.h"
+#import "ActivityInfoModel.h"
 
 @implementation AvailableAction
 
@@ -17,7 +17,7 @@
     NSDictionary *parameter = [YUtils getParameter:@{@"limitStart":@(_limitStart), @"limitEnd":@(_limitEnd)} needUserToken:YES];
     NSString *url = [YUtils getUrl:api_available_list];
     [self POST:url parameters:parameter completion:^(YHttpRequest *request) {
-        YActionMessage *message = [AvailableListModel actionMessageWithHttpRequest:request];
+        YActionMessage *message = [ActivityInfoModel actionMessageWithHttpRequest:request];
         self.completionBlock(message);
     }];
 }

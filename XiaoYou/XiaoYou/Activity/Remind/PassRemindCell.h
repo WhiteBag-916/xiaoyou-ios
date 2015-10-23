@@ -10,7 +10,7 @@
  自己申请活动的提醒，包括下面描述的5个状态
  */
 #import <UIKit/UIKit.h>
-#import "RemindInfo.h"
+#import "RemindInfoTest.h"
 #import "RemindModelTest.h"
 
 //提醒的5个状态

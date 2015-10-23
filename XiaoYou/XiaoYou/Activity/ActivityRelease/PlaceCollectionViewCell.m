@@ -62,5 +62,39 @@ NSString *const kPlaceCollectionViewCell = @"PlaceCollectionViewCellId";
     [_dataManager isEnableToRelease];
 }
 
+-(BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text
+{
+    
+    if (range.location>=100)
+    {
+        if ([self isBlankString:text])
+        {
+            [YUtils showTitle:@"地点不能为空"];
+            return NO;
+        }
+        else
+        {
+            [YUtils showTitle:@"地点字数不能大于100字"];
+            return NO;
+        }
+    }
+    else
+    {
+        return YES;
+    }
+}
+//判断字符串为空和只为空格解决办法
+- (BOOL) isBlankString:(NSString *)string {
+    if (string == nil || string == NULL) {
+        return YES;
+    }
+    if ([string isKindOfClass:[NSNull class]]) {
+        return YES;
+    }
+    if ([[string stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]] length]==0) {
+        return YES;
+    }
+    return NO;
+}
 
 @end

@@ -6,14 +6,14 @@
 //  Copyright © 2015年 xc. All rights reserved.
 //
 
-#import "RemindInfo.h"
+#import "RemindInfoTest.h"
 
 NSString *const kRemindTimeString   = @"remindtime";
 NSString *const kHeadImageUrl       = @"imageurl";
 NSString *const kRemindTitle        = @"remindtitle";
 NSString *const kRemindName         = @"id";
 
-@implementation RemindInfo
+@implementation RemindInfoTest
 
 +(instancetype)modelObjectWithDictionary:(NSDictionary *)dict
 {
@@ -77,7 +77,7 @@ NSString *const kRemindName         = @"id";
 
 - (id)copyWithZone:(NSZone *)zone
 {
-    RemindInfo *copy = [[RemindInfo alloc]init];
+    RemindInfoTest *copy = [[RemindInfoTest alloc]init];
     if (copy) {
         copy.remindTimeString = self.remindTimeString;
         copy.headImageUrl = self.headImageUrl;
