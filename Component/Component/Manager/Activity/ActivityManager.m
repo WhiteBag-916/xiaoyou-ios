@@ -12,6 +12,7 @@
 #import "FindByActivityPublishedIdAction.h"
 #import "CommonAction.h"
 #import "YUtils+Component.h"
+#import "ActivityInfoModel.h"
 
 #define KActivityManagerSyncQueue @"kActivityManagerSyncQueue"
 
@@ -93,6 +94,20 @@ DEF_SINGLETON(ActivityManager);
 - (void)checkEnrollActivity:(NSString *)checkStatus activityId:(NSString *)activityId block:(ActionCompleteBlock)block {
     CommonAction *action = [[CommonAction alloc] init];
     action.parameter = [YUtils getParameter:@{@"checkStatus":checkStatus, @"activityId":activityId} needUserToken:YES needContent:YES];
+    action.url = [YUtils getUrl:api_available_enrollActivity];
+    
+    [YAction startAction:action completionBlock:^(YActionMessage* message) {
+        
+        //主线程处理界面
+        block(message);
+    }];
+}
+
+//编辑/发布活动
+- (void)editActivity:(ActivityInfoModel *)model block:(ActionCompleteBlock)block {
+    CommonAction *action = [[CommonAction alloc] init];
+    NSDictionary *dic = [model dictionaryRepresentation];
+    action.parameter = [YUtils getParameter:dic needUserToken:YES needContent:YES];
     action.url = [YUtils getUrl:api_available_enrollActivity];
     
     [YAction startAction:action completionBlock:^(YActionMessage* message) {
