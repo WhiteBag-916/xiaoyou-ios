@@ -179,13 +179,14 @@ NSString *const kDateAndTimeCollectionViewCell = @"DateAndTimeCollectionViewCell
         }
         else
         {
+            _datePicker.minimumDate = nil;
             _datePicker.maximumDate = [formatter dateFromString:_dataManager.ActivityDateEndText];
         }
     }
     else
     {
-        _datePicker.maximumDate = nil;
-        _datePicker.minimumDate = [formatter dateFromString:_dataManager.ActivityDateBeginText];
+        _datePicker.minimumDate = nil;
+        _datePicker.maximumDate = [formatter dateFromString:_dataManager.ActivityDateEndText];
         
     }
     [popView showView];
@@ -211,6 +212,7 @@ NSString *const kDateAndTimeCollectionViewCell = @"DateAndTimeCollectionViewCell
         }
         else
         {
+            _datePicker.minimumDate = nil;
             _datePicker.maximumDate = [formatter dateFromString:_dataManager.ActivityDateEndText];
         }
     }
