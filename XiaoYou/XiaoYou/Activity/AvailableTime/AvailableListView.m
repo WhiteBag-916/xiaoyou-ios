@@ -15,7 +15,7 @@
 #import "WeekViewController.h"
 #import "ActivityDetailViewController.h"
 #import "ActivityManager.h"
-#import "AvailableListModelTest.h"
+#import "ActivityInfoModel.h"
 
 @interface AvailableListView ()<UITableViewDataSource,UITableViewDelegate>
 
@@ -141,7 +141,7 @@
 
 
 //
--(void)dealData:(AvailableListModelTest*)availabelModel
+-(void)dealData:(ActivityInfoModel*)availabelModel
 {
     NSLog(@"this is my data = %@",availabelModel);
 }

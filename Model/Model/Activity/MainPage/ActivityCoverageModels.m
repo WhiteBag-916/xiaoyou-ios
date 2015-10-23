@@ -1,11 +1,11 @@
 //
 //  ActivityCoverageModels.m
 //
-//  Created by sheng  on 15/10/22
+//  Created by   on 15/10/23
 //  Copyright (c) 2015 __MyCompanyName__. All rights reserved.
 //
 
-#import "ActivityCoverageModelsTest.h"
+#import "ActivityCoverageModels.h"
 
 
 NSString *const kActivityCoverageModelsActivityId = @"activityId";
@@ -18,13 +18,13 @@ NSString *const kActivityCoverageModelsCoverage = @"coverage";
 NSString *const kActivityCoverageModelsCreateTime = @"createTime";
 
 
-@interface ActivityCoverageModelsTest ()
+@interface ActivityCoverageModels ()
 
 - (id)objectOrNilForKey:(id)aKey fromDictionary:(NSDictionary *)dict;
 
 @end
 
-@implementation ActivityCoverageModelsTest
+@implementation ActivityCoverageModels
 
 @synthesize activityId = _activityId;
 @synthesize coverageType = _coverageType;
@@ -123,7 +123,7 @@ NSString *const kActivityCoverageModelsCreateTime = @"createTime";
 
 - (id)copyWithZone:(NSZone *)zone
 {
-    ActivityCoverageModelsTest *copy = [[ActivityCoverageModelsTest alloc] init];
+    ActivityCoverageModels *copy = [[ActivityCoverageModels alloc] init];
     
     if (copy) {
 

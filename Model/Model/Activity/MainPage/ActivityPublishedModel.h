@@ -1,7 +1,7 @@
 //
 //  ActivityPublishedModel.h
 //
-//  Created by sheng  on 15/10/22
+//  Created by   on 15/10/23
 //  Copyright (c) 2015 __MyCompanyName__. All rights reserved.
 //
 
@@ -9,7 +9,7 @@
 #import "YModel.h"
 
 
-@interface ActivityPublishedModelTest : YModel <NSCoding, NSCopying>
+@interface ActivityPublishedModel : YModel <NSCoding, NSCopying>
 
 @property (nonatomic, assign) BOOL enrollCheck;
 @property (nonatomic, strong) NSString *status;

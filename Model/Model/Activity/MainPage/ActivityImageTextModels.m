@@ -1,11 +1,11 @@
 //
 //  ActivityImageTextModels.m
 //
-//  Created by sheng  on 15/10/22
+//  Created by   on 15/10/23
 //  Copyright (c) 2015 __MyCompanyName__. All rights reserved.
 //
 
-#import "ActivityImageTextModelsTest.h"
+#import "ActivityImageTextModels.h"
 
 
 NSString *const kActivityImageTextModelsOpUser = @"opUser";
@@ -18,13 +18,13 @@ NSString *const kActivityImageTextModelsType = @"type";
 NSString *const kActivityImageTextModelsCreateTime = @"createTime";
 
 
-@interface ActivityImageTextModelsTest ()
+@interface ActivityImageTextModels ()
 
 - (id)objectOrNilForKey:(id)aKey fromDictionary:(NSDictionary *)dict;
 
 @end
 
-@implementation ActivityImageTextModelsTest
+@implementation ActivityImageTextModels
 
 @synthesize opUser = _opUser;
 @synthesize content = _content;
@@ -123,7 +123,7 @@ NSString *const kActivityImageTextModelsCreateTime = @"createTime";
 
 - (id)copyWithZone:(NSZone *)zone
 {
-    ActivityImageTextModelsTest *copy = [[ActivityImageTextModelsTest alloc] init];
+    ActivityImageTextModels *copy = [[ActivityImageTextModels alloc] init];
     
     if (copy) {
 

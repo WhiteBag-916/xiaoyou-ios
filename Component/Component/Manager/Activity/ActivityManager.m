@@ -8,6 +8,10 @@
 
 #import "ActivityManager.h"
 #import "AvailableAction.h"
+#import "FindActivityTypesAction.h"
+#import "FindByActivityPublishedIdAction.h"
+#import "CommonAction.h"
+#import "YUtils+Component.h"
 
 #define KActivityManagerSyncQueue @"kActivityManagerSyncQueue"
 
@@ -41,21 +45,7 @@ DEF_SINGLETON(ActivityManager);
     
 }
 
-
-////发送feed
-//- (void)sendFeed:(Feed *)feed tagIds:(NSString *)tagIds block:(ActionCompleteBlock)block {
-//    CommonAction *action = [[CommonAction alloc] init];
-//    NSDictionary *dic = @{@"sendGroupId": SStr(feed.sendGroupId), @"type":SStr(feed.type), @"content":SStr(feed.content), @"img":SStr(feed.img)};
-//    action.parameter = [YUtils getParameter:@{@"feed":dic, @"tagIds" : tagIds} needUserToken:YES];
-//    action.url = [YUtils getUrl:api_feed_AddFeed];
-//    
-//    [YAction startAction:action completionBlock:^(YActionMessage* message) {
-//        
-//        //主线程处理界面
-//        block(message);
-//    }];
-//}
-
+//获取当前用户活动列表
 - (void)getCurrentUseAvailableListLimitStart:(NSInteger)limitStart limitEnd:(NSInteger)limitEnd block:(ActionCompleteBlock)block
 {
     AvailableAction *action = [[AvailableAction alloc]init];
@@ -63,6 +53,51 @@ DEF_SINGLETON(ActivityManager);
     action.limitEnd = limitEnd;
     
     [YAction startAction:action completionBlock:^(YActionMessage *message) {
+        block(message);
+    }];
+}
+
+//查询活动类型列表接口
+- (void)findActivityTypes:(ActionCompleteBlock)block {
+    FindActivityTypesAction *action = [[FindActivityTypesAction alloc]init];
+    
+    [YAction startAction:action completionBlock:^(YActionMessage *message) {
+        block(message);
+    }];
+}
+
+//根据发布后的活动id查询发布后的活动信息
+- (void)findByActivityPublishedId:(NSString *)activityId block:(ActionCompleteBlock)block {
+    FindByActivityPublishedIdAction *action = [[FindByActivityPublishedIdAction alloc]init];
+    action.activityId = activityId;
+    
+    [YAction startAction:action completionBlock:^(YActionMessage *message) {
+        block(message);
+    }];
+}
+
+//活动报名
+- (void)enrollActivity:(NSString *)activityPublishedId block:(ActionCompleteBlock)block {
+    CommonAction *action = [[CommonAction alloc] init];
+    action.parameter = [YUtils getParameter:@{@"activityPublishedId":activityPublishedId} needUserToken:YES needContent:YES];
+    action.url = [YUtils getUrl:api_available_enrollActivity];
+    
+    [YAction startAction:action completionBlock:^(YActionMessage* message) {
+        
+        //主线程处理界面
+        block(message);
+    }];
+}
+
+//报名审核
+- (void)checkEnrollActivity:(NSString *)checkStatus activityId:(NSString *)activityId block:(ActionCompleteBlock)block {
+    CommonAction *action = [[CommonAction alloc] init];
+    action.parameter = [YUtils getParameter:@{@"checkStatus":checkStatus, @"activityId":activityId} needUserToken:YES needContent:YES];
+    action.url = [YUtils getUrl:api_available_enrollActivity];
+    
+    [YAction startAction:action completionBlock:^(YActionMessage* message) {
+        
+        //主线程处理界面
         block(message);
     }];
 }
