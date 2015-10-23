@@ -138,6 +138,9 @@ NSString *const kCheckCollectionViewCell = @"CheckCollectionViewCellId";
     _notNeedCheckLabel.backgroundColor = [UIColor clearColor];
     
     _dataManager.ActivityCheckStr = @"需要报名审核";
+    
+    NSDictionary * dic = @{@"position":@6};
+    [[NSNotificationCenter defaultCenter] postNotificationName:KNotification_Activity_Release_ScrollTo object:dic];
 }
 
 -(void)tapNotNeedCheck
@@ -149,6 +152,9 @@ NSString *const kCheckCollectionViewCell = @"CheckCollectionViewCellId";
     _needCheckLabel.backgroundColor = [UIColor clearColor];
     
     _dataManager.ActivityCheckStr = @"不需要报名审核";
+    
+    NSDictionary * dic = @{@"position":@6};
+    [[NSNotificationCenter defaultCenter] postNotificationName:KNotification_Activity_Release_ScrollTo object:dic];
 }
 
 

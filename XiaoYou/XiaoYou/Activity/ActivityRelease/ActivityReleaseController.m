@@ -11,13 +11,13 @@
 #import "ActivityReleaseDataManager.h"
 
 typedef enum : NSUInteger {
-    POINT1 = 1,
-    POINT2 = 2,
-    POINT3 = 3,
-    POINT4 = 4,
-    POINT5 = 5,
-    POINT6 = 6,
-} MyPointNum;
+    POSITION1 = 1,
+    POSITION2 = 2,
+    POSITION3 = 3,
+    POSITION4 = 4,
+    POSITION5 = 5,
+    POSITION6 = 6,
+} MyPositionNum;
 
 @interface ActivityReleaseController ()
 
@@ -42,6 +42,13 @@ typedef enum : NSUInteger {
 @property (nonatomic,strong) UILabel * typeLabel4;
 @property (nonatomic,strong) UILabel * typeLabel5;
 @property (nonatomic,strong) UILabel * typeLabel6;
+
+@property (nonatomic,strong) UIButton * btn1;
+@property (nonatomic,strong) UIButton * btn2;
+@property (nonatomic,strong) UIButton * btn3;
+@property (nonatomic,strong) UIButton * btn4;
+@property (nonatomic,strong) UIButton * btn5;
+@property (nonatomic,strong) UIButton * btn6;
 
 //是否为社长
 @property (nonatomic,assign) BOOL isIdentity;
@@ -85,6 +92,7 @@ typedef enum : NSUInteger {
 {
     [super viewWillAppear:animated];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changeEnabelStateForReleaseBtn:) name:KNotification_Enabel_ReleaseBtn object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changeScrollPosition:) name:KNotification_Activity_Release_ScrollTo object:nil];
     
 }
 
@@ -108,6 +116,47 @@ typedef enum : NSUInteger {
         _releaseButton.enabled = NO;
         _releaseButton.backgroundColor = KCOLORGREEN_B5;
         [_releaseButton removeTarget:self action:@selector(clickReleaseBtn) forControlEvents:UIControlEventTouchUpInside];
+    }
+    
+}
+
+-(void)changeScrollPosition:(NSNotification *) notification
+{
+    switch ([notification.object[@"position"] integerValue])
+    {
+        case POSITION1:
+            NSLog(@"1");
+            [self clickeLabelButton:_btn1];
+            [self setPointHighlight:1];
+            break;
+        case POSITION2:
+            NSLog(@"2");
+            [self clickeLabelButton:_btn2];
+            [self setPointHighlight:2];
+            break;
+        case POSITION3:
+            NSLog(@"3");
+            [self clickeLabelButton:_btn3];
+            [self setPointHighlight:3];
+            break;
+        case POSITION4:
+            NSLog(@"4");
+            [self clickeLabelButton:_btn4];
+            [self setPointHighlight:4];
+            break;
+        case POSITION5:
+            NSLog(@"5");
+            [self clickeLabelButton:_btn5];
+            [self setPointHighlight:5];
+            break;
+        case POSITION6:
+            NSLog(@"6");
+            [self clickeLabelButton:_btn6];
+            [self setPointHighlight:6];
+            break;
+            
+        default:
+            break;
     }
     
 }
@@ -199,15 +248,15 @@ typedef enum : NSUInteger {
         make.width.mas_equalTo(SCALE_NUM(30));
         make.height.mas_equalTo(SCALE_NUM(12));
     }];
-    UIButton * btn1 = [[UIButton alloc] init];
-    btn1.tag = 100000001;
-    btn1.backgroundColor = [UIColor clearColor];
-    [_scrollView addSubview:btn1];
-    [btn1 mas_makeConstraints:^(MASConstraintMaker *make) {
+    _btn1 = [[UIButton alloc] init];
+    _btn1.tag = 100000001;
+    _btn1.backgroundColor = [UIColor clearColor];
+    [_scrollView addSubview:_btn1];
+    [_btn1 mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(_point1View);
         make.right.bottom.left.equalTo(_typeLabel1);
     }];
-    [btn1 addTarget:self action:@selector(clickeLabelButton:) forControlEvents:UIControlEventTouchUpInside];
+    [_btn1 addTarget:self action:@selector(clickeLabelButton:) forControlEvents:UIControlEventTouchUpInside];
     
     //Point2
     _point2View = [[UIImageView alloc] init];
@@ -248,15 +297,15 @@ typedef enum : NSUInteger {
         make.width.mas_equalTo(SCALE_NUM(30));
         make.height.mas_equalTo(SCALE_NUM(12));
     }];
-    UIButton * btn2 = [[UIButton alloc] init];
-    btn2.tag = 100000002;
-    btn2.backgroundColor = [UIColor clearColor];
-    [_scrollView addSubview:btn2];
-    [btn2 mas_makeConstraints:^(MASConstraintMaker *make) {
+    _btn2 = [[UIButton alloc] init];
+    _btn2.tag = 100000002;
+    _btn2.backgroundColor = [UIColor clearColor];
+    [_scrollView addSubview:_btn2];
+    [_btn2 mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(_point2View);
         make.right.bottom.left.equalTo(_typeLabel2);
     }];
-    [btn2 addTarget:self action:@selector(clickeLabelButton:) forControlEvents:UIControlEventTouchUpInside];
+    [_btn2 addTarget:self action:@selector(clickeLabelButton:) forControlEvents:UIControlEventTouchUpInside];
     
     //Point3
     _point3View = [[UIImageView alloc] init];
@@ -297,15 +346,15 @@ typedef enum : NSUInteger {
         make.width.mas_equalTo(SCALE_NUM(30));
         make.height.mas_equalTo(SCALE_NUM(12));
     }];
-    UIButton * btn3 = [[UIButton alloc] init];
-    btn3.tag = 100000003;
-    btn3.backgroundColor = [UIColor clearColor];
-    [_scrollView addSubview:btn3];
-    [btn3 mas_makeConstraints:^(MASConstraintMaker *make) {
+    _btn3 = [[UIButton alloc] init];
+    _btn3.tag = 100000003;
+    _btn3.backgroundColor = [UIColor clearColor];
+    [_scrollView addSubview:_btn3];
+    [_btn3 mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(_point3View);
         make.right.bottom.left.equalTo(_typeLabel3);
     }];
-    [btn3 addTarget:self action:@selector(clickeLabelButton:) forControlEvents:UIControlEventTouchUpInside];
+    [_btn3 addTarget:self action:@selector(clickeLabelButton:) forControlEvents:UIControlEventTouchUpInside];
     //Point4
     _point4View = [[UIImageView alloc] init];
     _point4View.backgroundColor = KCOLORGREEN_B5;
@@ -345,15 +394,15 @@ typedef enum : NSUInteger {
         make.width.mas_equalTo(SCALE_NUM(30));
         make.height.mas_equalTo(SCALE_NUM(12));
     }];
-    UIButton * btn4 = [[UIButton alloc] init];
-    btn4.tag = 100000004;
-    btn4.backgroundColor = [UIColor clearColor];
-    [_scrollView addSubview:btn4];
-    [btn4 mas_makeConstraints:^(MASConstraintMaker *make) {
+    _btn4 = [[UIButton alloc] init];
+    _btn4.tag = 100000004;
+    _btn4.backgroundColor = [UIColor clearColor];
+    [_scrollView addSubview:_btn4];
+    [_btn4 mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(_point4View);
         make.right.bottom.left.equalTo(_typeLabel4);
     }];
-    [btn4 addTarget:self action:@selector(clickeLabelButton:) forControlEvents:UIControlEventTouchUpInside];
+    [_btn4 addTarget:self action:@selector(clickeLabelButton:) forControlEvents:UIControlEventTouchUpInside];
     //Point5
     _point5View = [[UIImageView alloc] init];
     _point5View.backgroundColor = KCOLORGREEN_B5;
@@ -378,15 +427,15 @@ typedef enum : NSUInteger {
         make.width.mas_equalTo(SCALE_NUM(30));
         make.height.mas_equalTo(SCALE_NUM(12));
     }];
-    UIButton * btn5 = [[UIButton alloc] init];
-    btn5.tag = 100000005;
-    btn5.backgroundColor = [UIColor clearColor];
-    [_scrollView addSubview:btn5];
-    [btn5 mas_makeConstraints:^(MASConstraintMaker *make) {
+    _btn5 = [[UIButton alloc] init];
+    _btn5.tag = 100000005;
+    _btn5.backgroundColor = [UIColor clearColor];
+    [_scrollView addSubview:_btn5];
+    [_btn5 mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(_point5View);
         make.right.bottom.left.equalTo(_typeLabel5);
     }];
-    [btn5 addTarget:self action:@selector(clickeLabelButton:) forControlEvents:UIControlEventTouchUpInside];
+    [_btn5 addTarget:self action:@selector(clickeLabelButton:) forControlEvents:UIControlEventTouchUpInside];
     
     //Point6
     if (_isIdentity)
@@ -423,15 +472,15 @@ typedef enum : NSUInteger {
             make.width.mas_equalTo(SCALE_NUM(30));
             make.height.mas_equalTo(SCALE_NUM(12));
         }];
-        UIButton * btn6 = [[UIButton alloc] init];
-        btn6.tag = 100000006;
-        btn6.backgroundColor = [UIColor clearColor];
-        [_scrollView addSubview:btn6];
-        [btn6 mas_makeConstraints:^(MASConstraintMaker *make) {
+        _btn6 = [[UIButton alloc] init];
+        _btn6.tag = 100000006;
+        _btn6.backgroundColor = [UIColor clearColor];
+        [_scrollView addSubview:_btn6];
+        [_btn6 mas_makeConstraints:^(MASConstraintMaker *make) {
             make.top.equalTo(_point5View);
             make.right.bottom.left.equalTo(_typeLabel6);
         }];
-        [btn6 addTarget:self action:@selector(clickeLabelButton:) forControlEvents:UIControlEventTouchUpInside];
+        [_btn6 addTarget:self action:@selector(clickeLabelButton:) forControlEvents:UIControlEventTouchUpInside];
     }
     
     

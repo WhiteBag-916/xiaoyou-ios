@@ -8,10 +8,12 @@
 
 #import <UIKit/UIKit.h>
 #import "ActivityBaseCollectionViewCell.h"
+#import "ActivityReleaseCollectionView.h"
 
 extern NSString *const kNameCollectionViewCell;
 
 @interface NameCollectionViewCell : ActivityBaseCollectionViewCell
 
+@property (nonatomic,weak)ActivityReleaseCollectionView * myCollectionView;
 
 @end

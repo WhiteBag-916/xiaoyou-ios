@@ -96,6 +96,10 @@ NSString *const kDescriptionCollectionViewCell = @"DescriptionCollectionViewCell
 {
     _deleteBtn.hidden = YES;
     
+    NSDictionary * dic = @{@"position":@2};
+    [[NSNotificationCenter defaultCenter] postNotificationName:KNotification_Activity_Release_ScrollTo object:dic];
+    
+    
     YActionSheetItem *item1 = [YActionSheetItem itemWithTitle:@"拍照"
                                                          type:YCommonActionSheetItemTypeCenterCommon
                                                         block:^(NSInteger checkNum) {
@@ -194,6 +198,13 @@ NSString *const kDescriptionCollectionViewCell = @"DescriptionCollectionViewCell
 {
     _dataManager.ActivityDesciptionText = textView.text;
     [_dataManager isEnableToRelease];
+}
+
+-(void)textViewDidBeginEditing:(UITextView *)textView
+{
+    NSDictionary * dic = @{@"position":@2};
+    [[NSNotificationCenter defaultCenter] postNotificationName:KNotification_Activity_Release_ScrollTo object:dic];
+    
 }
 
 -(BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text
