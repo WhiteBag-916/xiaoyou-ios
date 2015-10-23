@@ -14,7 +14,7 @@
 
 - (void)execute
 {
-    NSDictionary *parameter = [YUtils getParameter:@{@"id":_activityId} needUserToken:YES];
+    NSDictionary *parameter = [YUtils getParameter:@{@"id":_activityId} needUserToken:YES needContent:YES];
     NSString *url = [YUtils getUrl:api_available_findByActivityPublishedId];
     [self POST:url parameters:parameter completion:^(YHttpRequest *request) {
         YActionMessage *message = [ActivityInfoModel actionMessageWithHttpRequest:request];

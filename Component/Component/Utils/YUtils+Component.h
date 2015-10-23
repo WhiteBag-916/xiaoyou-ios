@@ -17,6 +17,7 @@
 + getParameter;
 + getParameter:(NSDictionary *)parameters;
 + getParameter:(NSDictionary *)parameters needUserToken:(BOOL)needUserToken;
++ getParameter:(NSDictionary *)parameters needUserToken:(BOOL)needUserToken needContent:(BOOL)needContent;
 + getParameter:(NSDictionary *)parameters needUserToken:(BOOL)needUserToken needAddUserID:(BOOL)needAddUserID;
 
 /**

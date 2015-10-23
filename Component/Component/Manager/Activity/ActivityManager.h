@@ -24,4 +24,7 @@ AS_SINGLETON(ActivityManager);
 //活动报名
 - (void)enrollActivity:(NSString *)activityPublishedId block:(ActionCompleteBlock)block;
 
+//报名审核
+- (void)checkEnrollActivity:(NSString *)checkStatus activityId:(NSString *)activityId block:(ActionCompleteBlock)block;
+
 @end

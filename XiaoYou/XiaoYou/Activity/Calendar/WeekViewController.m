@@ -7,7 +7,6 @@
 
 #import "WeekViewController.h"
 #import "MGCDateRange.h"
-#import "ActivityManager.h"
 
 @interface WeekViewController ()
 
@@ -35,10 +34,6 @@
 	self.dayPlannerView.dayHeaderHeight = 50;
     
     _needShowToday = YES;
-    
-    [[ActivityManager sharedInstance] findActivityTypes:^(YActionMessage *message) {
-        
-    }];
 }
 
 - (void)initRightBar {

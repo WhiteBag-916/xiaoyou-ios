@@ -79,7 +79,20 @@ DEF_SINGLETON(ActivityManager);
 //活动报名
 - (void)enrollActivity:(NSString *)activityPublishedId block:(ActionCompleteBlock)block {
     CommonAction *action = [[CommonAction alloc] init];
-    action.parameter = [YUtils getParameter:@{@"activityPublishedId":activityPublishedId} needUserToken:YES];
+    action.parameter = [YUtils getParameter:@{@"activityPublishedId":activityPublishedId} needUserToken:YES needContent:YES];
+    action.url = [YUtils getUrl:api_available_enrollActivity];
+    
+    [YAction startAction:action completionBlock:^(YActionMessage* message) {
+        
+        //主线程处理界面
+        block(message);
+    }];
+}
+
+//报名审核
+- (void)checkEnrollActivity:(NSString *)checkStatus activityId:(NSString *)activityId block:(ActionCompleteBlock)block {
+    CommonAction *action = [[CommonAction alloc] init];
+    action.parameter = [YUtils getParameter:@{@"checkStatus":checkStatus, @"activityId":activityId} needUserToken:YES needContent:YES];
     action.url = [YUtils getUrl:api_available_enrollActivity];
     
     [YAction startAction:action completionBlock:^(YActionMessage* message) {

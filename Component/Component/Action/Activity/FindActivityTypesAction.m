@@ -14,7 +14,7 @@
 
 - (void)execute
 {
-    NSDictionary *parameter = [YUtils getParameter:nil needUserToken:YES];
+    NSDictionary *parameter = [YUtils getParameter:nil needUserToken:YES needContent:YES];
     NSString *url = [YUtils getUrl:api_activity_findActivityTypes];
     [self POST:url parameters:parameter completion:^(YHttpRequest *request) {
         YActionMessage *message = [Tags actionMessageWithHttpRequest:request];

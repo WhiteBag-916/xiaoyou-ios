@@ -183,5 +183,8 @@
 #define api_available_findByActivityPublishedId   @"/activity/findByActivityPublishedId"
 //活动报名
 #define api_available_enrollActivity   @"/activity/enrollActivity"
+//报名审核
+#define api_available_checkEnrollActivity   @"/activity/checkEnrollActivity"
+
 #endif
 
