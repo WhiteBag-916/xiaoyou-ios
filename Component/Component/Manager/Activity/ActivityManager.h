@@ -18,4 +18,7 @@ AS_SINGLETON(ActivityManager);
 //查询活动类型列表
 - (void)findActivityTypes:(ActionCompleteBlock)block;
 
+//根据发布后的活动id查询发布后的活动信息
+- (void)findByActivityPublishedId:(NSString *)activityId block:(ActionCompleteBlock)block;
+
 @end

@@ -9,6 +9,7 @@
 #import "ActivityManager.h"
 #import "AvailableAction.h"
 #import "FindActivityTypesAction.h"
+#import "FindByActivityPublishedIdAction.h"
 
 #define KActivityManagerSyncQueue @"kActivityManagerSyncQueue"
 
@@ -57,6 +58,16 @@ DEF_SINGLETON(ActivityManager);
 //查询活动类型列表接口
 - (void)findActivityTypes:(ActionCompleteBlock)block {
     FindActivityTypesAction *action = [[FindActivityTypesAction alloc]init];
+    
+    [YAction startAction:action completionBlock:^(YActionMessage *message) {
+        block(message);
+    }];
+}
+
+//根据发布后的活动id查询发布后的活动信息
+- (void)findByActivityPublishedId:(NSString *)activityId block:(ActionCompleteBlock)block {
+    FindByActivityPublishedIdAction *action = [[FindByActivityPublishedIdAction alloc]init];
+    action.activityId = activityId;
     
     [YAction startAction:action completionBlock:^(YActionMessage *message) {
         block(message);
