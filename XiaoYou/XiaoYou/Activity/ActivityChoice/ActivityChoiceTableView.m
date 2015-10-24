@@ -7,8 +7,9 @@
 //
 
 #import "ActivityChoiceTableView.h"
-#import "ActivityDateAndTimeCell.h"
 #import "ActivityReleaseAndTypeCell.h"
+#import "ActivityResultViewController.h"
+#import "ActivityChoiceController.h"
 
 @interface ActivityChoiceTableView ()<UITableViewDataSource,UITableViewDelegate>
 
@@ -23,10 +24,10 @@
     if (self) {
         self.delegate = self;
         self.dataSource = self;
+        self.separatorStyle = UITableViewCellSeparatorStyleNone;
         
         [self setUpHeaderView];
-        
-        [self registerClass:[ActivityDateAndTimeCell class] forCellReuseIdentifier:kActivityDateAndTimeCell];
+
         [self registerClass:[ActivityReleaseAndTypeCell class] forCellReuseIdentifier:kActivityReleaseAndTypeCell];
     }
     return self;
@@ -34,8 +35,8 @@
 
 -(void)setUpHeaderView
 {
-    UIView * backView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 44)];
-    
+    UIView * backView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 60)];
+    backView.backgroundColor = [UIColor clearColor];
     //错号
     UIButton * dissMissBtn = [[UIButton alloc] init];
     dissMissBtn.backgroundColor = [UIColor clearColor];
@@ -44,8 +45,8 @@
     [backView addSubview:dissMissBtn];
     [dissMissBtn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.equalTo(backView);
-        make.leading.mas_equalTo(12);
-        make.height.width.mas_equalTo(15);
+        make.leading.mas_equalTo(SCALE_NUM(12));
+        make.height.width.mas_equalTo(SCALE_NUM(30));
     }];
     
     //对号
@@ -56,20 +57,28 @@
     [backView addSubview:finishBtn];
     [finishBtn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.equalTo(backView);
-        make.trailing.mas_equalTo(-12);
-        make.width.mas_equalTo(15);
-        make.height.mas_equalTo(12);
+        make.trailing.mas_equalTo(SCALE_NUM(-12));
+        make.width.mas_equalTo(SCALE_NUM(30));
+        make.height.mas_equalTo(SCALE_NUM(24));
     }];
     //筛选
     UILabel * centerLabel = [[UILabel alloc] init];
+    centerLabel.backgroundColor = [UIColor clearColor];
     centerLabel.textAlignment = NSTextAlignmentCenter;
-    centerLabel.text = @"筛选";
+    if (_myType == ACTIVITY_CHOICE_TYPE)
+    {
+        centerLabel.text = @"活动筛选";
+    }
+    else
+    {
+        centerLabel.text = @"蹭课筛选";
+    }
     centerLabel.font = CONTENT_FONT(15);
     [backView addSubview:centerLabel];
     [centerLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.centerY.equalTo(backView);
-        make.height.mas_equalTo(20);
-        make.width.mas_equalTo(60);
+        make.height.mas_equalTo(SCALE_NUM(20));
+        make.width.mas_equalTo(SCALE_NUM(80));
     }];
     
     self.tableHeaderView = backView;
@@ -77,12 +86,24 @@
 
 -(void)clickBtnForCancel
 {
-    NSLog(@"cancel");
+    [self.myController dismissViewControllerAnimated:YES completion:nil];
 }
 
 -(void)clickBtnForChoice
 {
-    NSLog(@"choice");
+    if (_myType == ACTIVITY_CHOICE_TYPE)
+    {
+        [self.myController dismissViewControllerAnimated:YES completion:^{
+            ActivityResultViewController * resultViewController = [[ActivityResultViewController alloc] init];
+            [self.myController.activityViewController.navigationController pushViewController:resultViewController animated:YES needHiddenBottomBar:YES];
+        }];
+    }
+    else
+    {
+        [self.myController dismissViewControllerAnimated:YES completion:nil];
+    }
+    
+
 }
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -92,37 +113,31 @@
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 3;
+    if (_myType == ACTIVITY_CHOICE_TYPE) {
+        return 4;
+    }
+    else
+    {
+        return 1;
+    }
 }
 
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.row == 0)
-    {
-        ActivityDateAndTimeCell * cell = [self dequeueReusableCellWithIdentifier:kActivityDateAndTimeCell forIndexPath:indexPath];
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        return cell;
-    }
-    else
-    {
+
         ActivityReleaseAndTypeCell * cell = [self dequeueReusableCellWithIdentifier:kActivityReleaseAndTypeCell forIndexPath:indexPath];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        cell.myType = _myType;
         [cell setCellType:indexPath.row];
         return cell;
-    }
+
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.row == 0)
-    {
-        return 160;
-    }
-    else
-    {
-        return 140;
-    }
+
+        return SCALE_NUM(130);
     
 }
 

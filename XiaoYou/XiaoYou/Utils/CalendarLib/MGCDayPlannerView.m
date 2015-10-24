@@ -41,7 +41,7 @@
 #import "MGCTimeRowsView.h"
 #import "CalendarDayHeaderView.h"
 
-#define TOP_BAR_HEIGHT 84.0
+#define TOP_BAR_HEIGHT 94.0
 
 // used to restrict scrolling to one direction / axis
 typedef enum: NSUInteger
@@ -764,6 +764,7 @@ static const CGFloat kMaxHourSlotHeight = 150.;
 		_timeRowsView.hourSlotHeight = self.hourSlotHeight;
 		_timeRowsView.insetsHeight = self.eventsViewInnerMargin;
 		_timeRowsView.timeColumnWidth = self.timeColumnWidth;
+        _timeRowsView.currentTimeColor = KCOLORGREEN_g1;
 		_timeRowsView.contentMode = UIViewContentModeRedraw;
 		[_timeScrollView addSubview:_timeRowsView];
 	}
@@ -1252,7 +1253,7 @@ static const CGFloat kMaxHourSlotHeight = 150.;
 	else if (CGRectContainsPoint(upScrollRect, point)) {
 		self.dragTimer = [NSTimer scheduledTimerWithTimeInterval:0.05 target:self selector:@selector(dragTimerDidFire:) userInfo:@{@"direction": @(ScrollDirectionUp)} repeats:YES];
 	}
-	
+    
 	[self updateMovingCellAtPoint:point];
 }
 
@@ -1299,6 +1300,20 @@ static const CGFloat kMaxHourSlotHeight = 150.;
 	}
 	self.interactiveCellTouchPoint = CGPointZero;
 	self.timeRowsView.timeMark = 0;
+}
+
+- (void)addNewPlanner {
+    if ([self.dataSource respondsToSelector:@selector(dayPlannerView:createNewEventOfType:atDate:)]) {
+        [self.dataSource dayPlannerView:self createNewEventOfType:self.interactiveCellType atDate:[self dateFromDayOffset:0]];
+    }
+}
+
+- (void)scrollToToday:(BOOL)animated {
+    NSDate *currentDate = [NSDate date];
+    NSDateComponents *comps = [[NSDateComponents alloc] init];
+    [comps setMinute:-60];
+    NSDate *date = [self.calendar dateByAddingComponents:comps toDate:currentDate  options:0];
+    [self scrollToDate:date options:MGCDayPlannerScrollTime animated:YES];
 }
 
 #pragma mark - Reloading content
@@ -1421,7 +1436,7 @@ static const CGFloat kMaxHourSlotHeight = 150.;
 {
 	CGFloat allDayEventsViewHeight = 2;
 	if (self.showsAllDayEvents) {
-		allDayEventsViewHeight = fmaxf(self.allDayEventCellHeight + 4, self.allDayEventsView.contentSize.height);
+		allDayEventsViewHeight = fmaxf(48, self.allDayEventsView.contentSize.height);
 		allDayEventsViewHeight = fminf(allDayEventsViewHeight, self.allDayEventCellHeight * 2.5 + 16);
 	}
 	CGFloat timedEventViewTop = self.calendarDayHeaderView.bottomY + allDayEventsViewHeight;
@@ -1429,7 +1444,7 @@ static const CGFloat kMaxHourSlotHeight = 150.;
 	CGFloat timedEventsViewHeight = self.bounds.size.height - (self.calendarDayHeaderView.bottomY + allDayEventsViewHeight);
 	
 	//self.backgroundView.frame = CGRectMake(0, self.dayHeaderHeight, self.bounds.size.width, self.bounds.size.height - self.dayHeaderHeight);
-	self.backgroundView.frame = CGRectMake(self.timeColumnWidth, self.calendarDayHeaderView.bottomY + allDayEventsViewHeight, timedEventsViewWidth, timedEventsViewHeight);
+//	self.backgroundView.frame = CGRectMake(self.timeColumnWidth, self.calendarDayHeaderView.bottomY + allDayEventsViewHeight, timedEventsViewWidth, timedEventsViewHeight);
 	self.backgroundView.frame = CGRectMake(0, timedEventViewTop, self.bounds.size.width, timedEventsViewHeight);
 	if (!self.backgroundView.superview) {
 		[self addSubview:self.backgroundView];
@@ -1439,6 +1454,13 @@ static const CGFloat kMaxHourSlotHeight = 150.;
 	self.allDayEventsBackgroundView.frame = CGRectMake(-1, self.calendarDayHeaderView.bottomY, self.bounds.size.width + 2, allDayEventsViewHeight);
 	if (!self.allDayEventsBackgroundView.superview) {
 		[self addSubview:self.allDayEventsBackgroundView];
+        
+        //全天label
+        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.timeColumnWidth, allDayEventsViewHeight)];
+        label.text = @"全天";
+        label.font = [UIFont systemFontOfSize:10.f];
+        label.textAlignment = NSTextAlignmentCenter;
+        [self.allDayEventsBackgroundView addSubview:label];
 	}
 	
 	self.dayColumnsView.frame = CGRectMake(self.timeColumnWidth, self.calendarDayHeaderView.bottomY-self.dayHeaderHeight, timedEventsViewWidth, self.bounds.size.height);
@@ -1960,7 +1982,7 @@ static const CGFloat kMaxHourSlotHeight = 150.;
         if (offset.x > prevOffset.x) {
             [self.calendarDayHeaderView _movePagesToIndex:2 animated:YES];
         }
-        else {
+        else if (offset.x < prevOffset.x) {
             [self.calendarDayHeaderView _movePagesToIndex:1 animated:YES];
         }
 	}

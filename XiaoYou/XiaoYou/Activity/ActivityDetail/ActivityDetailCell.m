@@ -10,6 +10,8 @@
 #import "ActivityTopView.h"
 #import "ActivityMiddleView.h"
 #import "FeedImageGroup.h"
+#import "YLabel+Ext.h"
+#import "UIImageView+WebCache.h"
 #define REUSEID @"activitydetail"
 @interface ActivityDetailCell ()
 @property (nonatomic,strong) ActivityTopView        *topView;
@@ -55,13 +57,13 @@
     [self.contentView addSubview:_middleView];
     
     [_middleView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(_topView.mas_bottom);
+        make.top.equalTo(_topView.mas_bottom).offset(SCALE_NUM(10));
         make.left.equalTo(_topView.descriptionLabel.mas_left);
         make.right.equalTo(_topView.descriptionLabel);
     }];
     
-    NSArray *smallImages    = @[@"/dev/feed/s/c2cfe0e7-ba38-43e0-b345-3d14ff2f2bcf.png",@"/dev/feed/s/c2cfe0e7-ba38-43e0-b345-3d14ff2f2bcf.png",@"/dev/feed/s/c2cfe0e7-ba38-43e0-b345-3d14ff2f2bcf.png"];
-    NSArray *bigImages      = @[@"/dev/feed/c2cfe0e7-ba38-43e0-b345-3d14ff2f2bcf.png",@"/dev/feed/c2cfe0e7-ba38-43e0-b345-3d14ff2f2bcf.png",@"/dev/feed/c2cfe0e7-ba38-43e0-b345-3d14ff2f2bcf.png"];
+    NSArray *smallImages    = @[@"/dev/feed/s/c2cfe0e7-ba38-43e0-b345-3d14ff2f2bcf.png"];
+    NSArray *bigImages      = @[@"/dev/feed/c2cfe0e7-ba38-43e0-b345-3d14ff2f2bcf.png"];
     [_middleView updateWithImgs:smallImages bigPics:bigImages];
 }
 
@@ -71,16 +73,27 @@
     [self.contentView addSubview:_bottomView];
     
     [_bottomView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(_middleView.mas_bottom);
+        make.top.equalTo(_middleView.mas_bottom).offset(SCALE_NUM(5));
         make.leading.mas_equalTo(0);
         make.trailing.mas_equalTo(0);
         make.bottom.mas_equalTo(0);
     }];
 }
 
--(void)setData:(id)data
+-(void)setData:(ActivityModelTest*)data
 {
+    [_topView.headImageView sd_setImageWithURL:[NSURL URLWithString:data.acHeadImage]];
+    _topView.titleLabel.text = data.acName;
+    _topView.nameLabel.text = data.acTitle;
+    //_topView.descriptionLabel.text = data.acBrief;
+    data.acBrief = [data.acBrief substringFromIndex:5];
+    [_topView.descriptionLabel setText:data.acBrief lineSpacing:10.0f];
     
+    _bottomView.locationLabel.text = data.acLocation;
+    
+    NSArray *smallImages    = @[data.acPhotos];
+    NSArray *bigImages      = @[data.acPhotos];
+    [_middleView updateWithImgs:smallImages bigPics:bigImages];
 }
 
 @end

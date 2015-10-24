@@ -8,13 +8,24 @@
 
 #import "YTableView.h"
 #import "MJRefresh.h"
+#import "YVIew+Ext.h"
 
 @implementation YTableView
 
-- (instancetype)initWithFrame:(CGRect)frame
+//-(instancetype)initWithFrame:(CGRect)frame style:(UITableViewStyle)style {
+//    if (self = [super initWithFrame:frame style:style]) {
+//        self.delegate = self;
+//        self.dataSource = self;
+//        self.separatorStyle = UITableViewCellSeparatorStyleNone;
+//        self.tableHeaderView.height = HEADCELL_HEIGHT;
+//        [self registerClass:[PassRemindCell class] forCellReuseIdentifier:REMINDVIEWCELL];
+//    }
+//    return self;
+//}
+
+- (instancetype)initWithFrame:(CGRect)frame style:(UITableViewStyle)style
 {
-    if (self = [super initWithFrame:frame])
-    {
+    if (self = [super initWithFrame:frame style:style]) {
         if ([self showHeaderRefresh])
         {
             self.header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{

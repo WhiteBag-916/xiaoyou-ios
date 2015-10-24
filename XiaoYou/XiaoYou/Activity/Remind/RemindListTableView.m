@@ -11,6 +11,10 @@
 #import "PassRemindCell.h"
 #import "RemindManager.h"
 #import "ApplyRemindCell.h"
+#import "WhoJoinInController.h"
+#import "ProfilePersonListController.h"
+#import "ProfileViewController.h"
+#import "ActivityDetailViewController.h"
 
 #define REMINDVIEWCELL  @"remindCell"
 #define REMINDHEADVIEW  @"remindHeadView"
@@ -48,17 +52,18 @@
 #pragma mark - 继承者
 - (BOOL)showHeaderRefresh
 {
-    return YES;
+    return NO;
 }
 
 - (BOOL)showFooterRefresh
 {
-    return YES;
+    return NO;
 }
 
 - (void)loadData {
-    [self beginLoadNewData];
+    //[self beginLoadNewData];
 }
+
 
 - (void)loadNewData
 {
@@ -71,33 +76,33 @@
 }
 
 - (void)sendRequest {
-    /*NSString *lastID;
-    if (![self isHeaderRefresh]) {
-        lastID = [NSString stringWithFormat:@"%g", [[_feedListArray.lastObject feed] feedIdentifier]];
-    }
-    [[FeedManager sharedInstance] feedList:lastID size:KPAGENUM queryCode:_filter block:^(YActionMessage *message) {
-        if (message.isSuccess) {
-            if ([self isHeaderRefresh]) {
-                [_feedListArray removeAllObjects];
-            }
-            [self hiddenFooter:false];
-            [_feedListArray addObjectsFromArray:message.object];
-            if ([message.object count] < KPAGENUM) {
-                [self showNoticeNoMoreData];
-            }
-            [self reloadData];
-            
-        } else {
-            [YUtils showTitle:message.desc];
-        }
-        if ([self isHeaderRefresh]) {
-            [self stopLoadNewData];
-        } else {
-            [self stopLoadMoreData];
-        }
-    }];*/
     NSString *lastID;
     if (![self isHeaderRefresh]) {
+        //lastID = [NSString stringWithFormat:@"%g", [[_feedListArray.lastObject feed] feedIdentifier]];
+    }
+//  [[FeedManager sharedInstance] feedList:lastID size:KPAGENUM queryCode:_filter block:^(YActionMessage *message) {
+//        if (message.isSuccess) {
+//            if ([self isHeaderRefresh]) {
+//                [_feedListArray removeAllObjects];
+//            }
+//            [self hiddenFooter:false];
+//            [_feedListArray addObjectsFromArray:message.object];
+//            if ([message.object count] < KPAGENUM) {
+//                [self showNoticeNoMoreData];
+//            }
+//            [self reloadData];
+//            
+//        } else {
+//            [YUtils showTitle:message.desc];
+//        }
+//        if ([self isHeaderRefresh]) {
+//            [self stopLoadNewData];
+//        } else {
+//            [self stopLoadMoreData];
+//        }
+//    }];
+//    NSString *lastID;
+    /*if (![self isHeaderRefresh]) {
         lastID = [NSString stringWithFormat:@""];
     }
     [[RemindManager sharedInstance] getMyFeed:lastID limitStart:2 limitEnd:10 block:^(YActionMessage *message) {
@@ -119,27 +124,36 @@
         } else {
             [self stopLoadMoreData];
         }
-    }];
+    }];*/
 }
 
+-(void)setMyDataSource:(NSArray *)myDataSource
+{
+    _myDataSource = myDataSource;
+    [self reloadData];
+}
 
 
 #pragma mark 协议方法
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.section < 3) {
-        return 180;
+    return SCALE_NUM(190);
+    if (indexPath.section == 1) {
+        return SCALE_NUM(146);
+    }
+    if (indexPath.section == 0 || indexPath.section == 2) {
+        return SCALE_NUM(190);
     }
     else
     {
-        return 240;
+        return SCALE_NUM(198);
     }
     return REMIND_CELL_HEIGHT;
 }
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 10;
+    return 3;
     return _remindListArray.count;
 }
 
@@ -168,9 +182,19 @@
 
 -(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.section < 3) {
+    if (indexPath.section < 100) {
         PassRemindCell *cell = [PassRemindCell passRemindCellWithTableView:tableView];
+        cell.cellType = AUDIT_PASSED;
+        [cell setData:self.myDataSource[indexPath.section]];
         return cell;
+        /*if (indexPath.section == 1) {
+            cell.cellType = AUDIT_NOT_PASSED;
+        }
+        else
+        {
+            cell.cellType = AUDIT_PASSED;
+        }
+        return cell;*/
     }
     else if (indexPath.section == 3)
     {
@@ -190,6 +214,16 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
+    ActivityDetailViewController *detailVC = [[ActivityDetailViewController alloc]init];
+    [self.viewController.navigationController pushViewController:detailVC animated:YES needHiddenBottomBar:YES];
+    /*ProfilePersonListController *whoJoinIn = [[ProfilePersonListController alloc]init];
+    [whoJoinIn initWithType:PersonListWhoJoinInThisActivity];
+    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+    if ([cell isKindOfClass:[PassRemindCell class]]) {
+        PassRemindCell *remindCell = (PassRemindCell*)cell;
+        if (remindCell.cellType == AUDIT_PASSED)
+            [self.viewController.navigationController pushViewController:whoJoinIn animated:YES needHiddenBottomBar:YES];
+    }*/
 }
 
 @end

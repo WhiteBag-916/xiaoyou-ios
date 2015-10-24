@@ -8,8 +8,15 @@
 
 #import "YViewController.h"
 
+typedef enum : NSUInteger {
+    ASSOCIATION_TYPE,       //搜索社团
+    ACTIVITY_TYPE,          //活动类型
+} SEARCH_TYPE;
+
 @interface AssociationsSearchViewController : YViewController
 
 - (id)initWithArray:(NSArray *)array;
+
+@property (nonatomic,assign) SEARCH_TYPE searchType;
 
 @end

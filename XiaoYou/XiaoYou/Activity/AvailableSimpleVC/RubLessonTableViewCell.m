@@ -15,14 +15,23 @@ NSString *const kRubLessonTableViewCell = @"RubLessonTableViewCellId";
 #define K_LECTURERIMG_T     SCALE_NUM(15)   //授课人图标上间距
 #define K_DEPARTMENTSIMG_T  SCALE_NUM(14)   //院系图标上间距
 #define K_LEFTLAB_L         SCALE_NUM(10)   //描述左
-#define K_LEFTLAB_W         SCALE_NUM(61)   //描述宽
+#define K_LEFTLAB_W         SCALE_NUM(70)   //描述宽
 #define K_NAMELAB_L         SCALE_NUM(0)   //名字左
+#define K_NAMELAB_R         SCALE_NUM(-12)   //名字右
+#define K_ADD_T             SCALE_NUM(19)   //加日程上
+#define K_ADD_R             SCALE_NUM(9)   //加日程上
+#define K_ADD_H             SCALE_NUM(26)   //加日程高
+#define K_ADD_W             SCALE_NUM(70)   //加日程宽
+#define K_LOCATION_IMG_W    SCALE_NUM(9)   //地点图宽
 
 @interface RubLessonTableViewCell ()
 
 @property (nonatomic, strong) UILabel *courseName;          //课程名称
 @property (nonatomic, strong) UILabel *lecturerName;        //授课人
+@property (nonatomic, strong) UILabel *timeLabel;           //上课时间
+@property (nonatomic, strong) UILabel *locationLabel;       //上课地点
 @property (nonatomic, strong) UILabel *departmentsName;     //院系
+@property (nonatomic, strong) UIButton *addToCalendar;      //加入日程
 
 @end
 
@@ -63,16 +72,10 @@ NSString *const kRubLessonTableViewCell = @"RubLessonTableViewCellId";
     }];
     
     _courseName = [YUtils initLabel:CONTENT_FONT(12)
-                              color:KCOLORGREEN_B5
+                              color:KCOLORGREEN_B3
                                text:@"大学汉语"
                           alignment:NSTextAlignmentLeft];
     [self.contentView addSubview:_courseName];
-    
-    [_courseName mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.height.equalTo(courseImageView);
-        make.left.equalTo(courseLabel.mas_right).offset(K_NAMELAB_L);
-        make.right.mas_equalTo(K_NAMELAB_L);
-    }];
     
     //授课人
     UIImageView *lecturerImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"havetime_icon_teacher"]];
@@ -91,12 +94,12 @@ NSString *const kRubLessonTableViewCell = @"RubLessonTableViewCellId";
     
     [lecturerLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.height.equalTo(lecturerImageView);
-        make.left.equalTo(lecturerImageView.mas_right).offset(K_LEFTLAB_L);
+        make.left.equalTo(courseLabel);
         make.width.mas_equalTo(K_LEFTLAB_W);
     }];
     
     _lecturerName = [YUtils initLabel:CONTENT_FONT(12)
-                              color:KCOLORGREEN_B5
+                              color:KCOLORGREEN_B3
                                text:@"王中磊"
                           alignment:NSTextAlignmentLeft];
     [self.contentView addSubview:_lecturerName];
@@ -104,7 +107,75 @@ NSString *const kRubLessonTableViewCell = @"RubLessonTableViewCellId";
     [_lecturerName mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.height.equalTo(lecturerImageView);
         make.left.equalTo(lecturerLabel.mas_right).offset(K_NAMELAB_L);
-        make.right.mas_equalTo(K_NAMELAB_L);
+        make.right.mas_equalTo(K_NAMELAB_R);
+    }];
+    
+    //上课时间
+    UIImageView *timeImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"havetime_icon_time"]];
+    [self.contentView addSubview:timeImageView];
+    
+    [timeImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.height.width.equalTo(courseImageView);
+        make.top.equalTo(lecturerImageView.mas_bottom).offset(K_DEPARTMENTSIMG_T);
+    }];
+    
+    UILabel *timeLeftLabel = [YUtils initLabel:CONTENT_FONT(12)
+                                         color:KCOLORGREEN_B5
+                                          text:@"上课时间："
+                                     alignment:NSTextAlignmentLeft];
+    [self.contentView addSubview:timeLeftLabel];
+    
+    [timeLeftLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.height.equalTo(timeImageView);
+        make.left.equalTo(courseLabel);
+        make.width.mas_equalTo(K_LEFTLAB_W);
+    }];
+    
+    _timeLabel = [YUtils initLabel:CONTENT_FONT(12)
+                                color:KCOLORGREEN_B3
+                                 text:@"今天 09:00-10:30"
+                            alignment:NSTextAlignmentLeft];
+    [self.contentView addSubview:_timeLabel];
+    
+    [_timeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.height.equalTo(timeLeftLabel);
+        make.left.equalTo(_lecturerName);
+        make.right.mas_equalTo(K_NAMELAB_R);
+    }];
+    
+    //上课地点
+    UIImageView *locationImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"build_icon_location"]];
+    [self.contentView addSubview:locationImageView];
+    
+    [locationImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.height.equalTo(courseImageView);
+        make.centerX.equalTo(courseImageView.mas_centerX);
+        make.width.mas_equalTo(K_LOCATION_IMG_W);
+        make.top.equalTo(timeImageView.mas_bottom).offset(K_DEPARTMENTSIMG_T);
+    }];
+    
+    UILabel *locationLeftLabel = [YUtils initLabel:CONTENT_FONT(12)
+                                         color:KCOLORGREEN_B5
+                                          text:@"上课地点："
+                                     alignment:NSTextAlignmentLeft];
+    [self.contentView addSubview:locationLeftLabel];
+    
+    [locationLeftLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.height.equalTo(locationImageView);
+        make.left.equalTo(courseLabel);
+        make.width.mas_equalTo(K_LEFTLAB_W);
+    }];
+    
+    _locationLabel = [YUtils initLabel:CONTENT_FONT(12)
+                             color:KCOLORGREEN_B3
+                              text:@"5号教学楼 5132室"
+                         alignment:NSTextAlignmentLeft];
+    [self.contentView addSubview:_locationLabel];
+    
+    [_locationLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.height.equalTo(locationLeftLabel);
+        make.left.equalTo(_lecturerName);
+        make.right.mas_equalTo(K_NAMELAB_R);
     }];
     
     //院系
@@ -113,7 +184,7 @@ NSString *const kRubLessonTableViewCell = @"RubLessonTableViewCellId";
     
     [departmentsImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.height.width.equalTo(courseImageView);
-        make.top.equalTo(lecturerImageView.mas_bottom).offset(K_DEPARTMENTSIMG_T);
+        make.top.equalTo(locationImageView.mas_bottom).offset(K_DEPARTMENTSIMG_T);
     }];
     
     UILabel *departmentsLabel = [YUtils initLabel:CONTENT_FONT(12)
@@ -124,20 +195,43 @@ NSString *const kRubLessonTableViewCell = @"RubLessonTableViewCellId";
     
     [departmentsLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.height.equalTo(departmentsImageView);
-        make.left.equalTo(departmentsImageView.mas_right).offset(K_LEFTLAB_L);
+        make.left.equalTo(courseLabel);
         make.width.mas_equalTo(K_LEFTLAB_W);
     }];
     
     _departmentsName = [YUtils initLabel:CONTENT_FONT(12)
-                              color:KCOLORGREEN_B5
+                              color:KCOLORGREEN_B3
                                text:@"汉语言文学系"
                           alignment:NSTextAlignmentLeft];
     [self.contentView addSubview:_departmentsName];
     
     [_departmentsName mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.height.equalTo(departmentsImageView);
-        make.left.equalTo(departmentsLabel.mas_right).offset(K_NAMELAB_L);
-        make.right.mas_equalTo(K_NAMELAB_L);
+        make.left.equalTo(_lecturerName);
+        make.right.mas_equalTo(K_NAMELAB_R);
+    }];
+    
+    //加入日程
+    _addToCalendar = [UIButton buttonWithType:UIButtonTypeCustom];
+    [_addToCalendar setTitle:@"加入日程表" forState:UIControlStateNormal];
+    _addToCalendar.titleLabel.font = CONTENT_FONT(12);
+    [_addToCalendar setTitleColor:KCOLORGREEN_g1 forState:UIControlStateNormal];
+    _addToCalendar.layer.cornerRadius = 4;
+    _addToCalendar.layer.borderColor = KCOLORGREEN_g1.CGColor;
+    _addToCalendar.layer.borderWidth = 1;
+    [self.contentView addSubview:_addToCalendar];
+    
+    [_addToCalendar mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.mas_equalTo(K_ADD_T);
+        make.right.mas_equalTo(-K_ADD_R);
+        make.width.mas_equalTo(K_ADD_W);
+        make.height.mas_equalTo(K_ADD_H);
+    }];
+    
+    [_courseName mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.height.equalTo(courseImageView);
+        make.left.equalTo(_lecturerName);
+        make.right.equalTo(_addToCalendar.mas_left).offset(K_NAMELAB_R);
     }];
 }
 

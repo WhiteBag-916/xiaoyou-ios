@@ -24,6 +24,7 @@
 #import "FeedFilterViewController.h"
 //测试用
 #import "FastViewController.h"
+#import "AppConfigData.h"
 
 @interface FeedListViewController ()<SlideNavigationControllerDelegate>
 
@@ -34,6 +35,10 @@
 @property (nonatomic, strong) ProfilePersonListTableView *profilePersonListTableView;  //人
 
 @property (nonatomic, assign) NSInteger viewIndex;
+
+
+@property (nonatomic,strong) UIView         *promptView;
+@property (nonatomic,strong) UIImageView    *guideImageView;
 @end
 
 @implementation FeedListViewController
@@ -45,7 +50,11 @@
     [self initView];
     [self showCustomNavigationPublishButton];
     _needRefresh = true;
+    self.viewIndex = 1;
+    if ([AppConfigData isUserFirstUseFeed])
+        [self addGuideView];
 }
+
 
 - (void)viewWillAppear:(BOOL)animated
 {
@@ -207,21 +216,58 @@
     [self.navigationController pushViewController:[[FeedFilterViewController alloc] initWithFilter:[notification userInfo][@"filter"] name:[notification userInfo][@"name"]] animated:true needHiddenBottomBar:YES];
 }
 - (void)onNavigationRightButtonClicked {
-    
     if (self.viewIndex == 1) {
         _needRefresh = true;
         UINavigationController *navigationController =
         [[UINavigationController alloc] initWithRootViewController:[[FeedPublishViewController alloc] init]];
         [self.navigationController presentViewController:navigationController animated:YES completion:nil];
     } else if (self.viewIndex == 2) {
-        
         FastViewController *fastViewController = [[FastViewController alloc]init];
-        //[self.navigationController presentViewController:fast animated:YES completion:nil];
-        //UINavigationController *navigationController = [[UINavigationController alloc]initWithRootViewController:fastViewController];
-        //[self.navigationController presentViewController:navigationController animated:YES completion:nil];
         [self.navigationController pushViewController:fastViewController animated:YES needHiddenBottomBar:YES];
     }
+}
+
+
+#pragma mark引导蒙城
+
+/**
+ *  nil
+ */
+- (void)addGuideView {
     
+    _promptView = [[UIView alloc]init];
+    _promptView.backgroundColor = [UIColor blackColor];
+    _promptView.alpha = 0.6;
+    UIWindow *window = [UIApplication sharedApplication].keyWindow;
+    
+    [window addSubview:_promptView];
+    [_promptView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.equalTo(window);
+    }];
+    
+    NSString *imageName = @"friend_box_serch";
+    UIImage *image = [[UIImage imageNamed:imageName]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    _guideImageView = [[UIImageView alloc] initWithImage:image];
+    [window addSubview:_guideImageView];
+    
+    [_guideImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.mas_equalTo(SCALE_NUM(40));
+        make.leading.mas_equalTo(0);
+    }];
+    
+    
+    _guideImageView.userInteractionEnabled = YES;
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissGuideView)];
+    [_promptView addGestureRecognizer:tap];
+    
+    UITapGestureRecognizer *tap1 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissGuideView)];
+    [_guideImageView addGestureRecognizer:tap1];
+}
+
+
+-(void)dismissGuideView {
+    [_promptView removeFromSuperview];
+    [_guideImageView removeFromSuperview];
 }
 
 @end

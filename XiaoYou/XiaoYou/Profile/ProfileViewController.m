@@ -23,6 +23,8 @@
 #import "ConvertToCommonEmoticonsHelper.h"
 #import "QRCodeReaderViewController.h"
 #import "GiftViewController.h"
+#import "AppConfigData.h"
+#import "ScanfResultViewController.h"
 
 #define KTOPHEIGHT SCALE_NUM(90)
 #define KHEADIMG_SIZE SCALE_NUM(45)
@@ -64,6 +66,9 @@
 
 @property (nonatomic, strong) NSString *userId;//缓存个人id
 @property (nonatomic, strong) NSArray *tagModels;//缓存个人兴趣
+
+@property (nonatomic,strong) UIView         *promptView;
+@property (nonatomic,strong) UIImageView    *guideImageView;
 @end
 
 @implementation ProfileViewController
@@ -73,6 +78,9 @@
     [super viewDidLoad];
     self.hidesBottomBarWhenPushed = NO;
     [self initMyView];
+    
+    if ([AppConfigData isUserFirstUseReadCode])
+        [self addGuideView];
 }
 - (void)initMyView {
     
@@ -332,7 +340,7 @@
 - (UIView *)greenItem:(int)index {
     UIView *item = [[UIView alloc] init];
     [_bottomView addSubview:item];
-    NSArray *names = @[@"态度", @"关注", @"观点"];
+    NSArray *names = @[@"态度", @"关注", @"动态"];
     UILabel *icon = [YUtils initLabel:CONTENT_FONT(10) color:KCOLORWHITE text:names[index] frame:CGRectZero alignment:NSTextAlignmentCenter];
     icon.backgroundColor = KCOLORGREEN_009688;
     icon.layer.cornerRadius = KBOTTOMLABELSIZE/2;
@@ -477,10 +485,55 @@
 
 - (void)reader:(QRCodeReaderViewController *)reader didScanResult:(NSString *)result
 {
-    [self.navigationController popViewControllerAnimated:true];
-    [self.navigationController pushViewController:[[GiftViewController alloc] initWithCode:result] animated:true];
+//    [self.navigationController popViewControllerAnimated:true];
+//    [self.navigationController pushViewController:[[GiftViewController alloc] initWithCode:result] animated:true];
+    ScanfResultViewController * resultViewController = [[ScanfResultViewController alloc] init];
+    [self.navigationController pushViewController:resultViewController animated:YES needHiddenBottomBar:YES];
 }
 
 
+
+
+#pragma mark引导蒙城
+
+/**
+ *  nil
+ */
+- (void)addGuideView {
+    
+    _promptView = [[UIView alloc]init];
+    _promptView.backgroundColor = [UIColor blackColor];
+    _promptView.alpha = 0.6;
+    UIWindow *window = [UIApplication sharedApplication].keyWindow;
+    
+    [window addSubview:_promptView];
+    [_promptView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.equalTo(window);
+    }];
+    
+    NSString *imageName = @"mine_box_yard";
+    UIImage *image = [[UIImage imageNamed:imageName]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    _guideImageView = [[UIImageView alloc] initWithImage:image];
+    [window addSubview:_guideImageView];
+    
+    [_guideImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.mas_equalTo(SCALE_NUM(220));
+        make.centerX.equalTo(window);
+    }];
+    
+    
+    _guideImageView.userInteractionEnabled = YES;
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissGuideView)];
+    [_promptView addGestureRecognizer:tap];
+    
+    UITapGestureRecognizer *tap1 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissGuideView)];
+    [_guideImageView addGestureRecognizer:tap1];
+}
+
+
+-(void)dismissGuideView {
+    [_promptView removeFromSuperview];
+    [_guideImageView removeFromSuperview];
+}
 
 @end

@@ -7,9 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ActivityModelTest.h"
 
 @interface AvailableCell : UITableViewCell
 
 +(AvailableCell*)cellWithTableView:(UITableView*)tableView;
+
+-(void)setData:(ActivityModelTest*)model;
 
 @end

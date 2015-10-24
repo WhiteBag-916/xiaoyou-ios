@@ -7,7 +7,9 @@
 //
 
 #import "YTableView.h"
+#import "ActivityModelTest.h"
 
 @interface ActivityDetailListView : YTableView
 
+@property (nonatomic,strong) ActivityModelTest *model;
 @end

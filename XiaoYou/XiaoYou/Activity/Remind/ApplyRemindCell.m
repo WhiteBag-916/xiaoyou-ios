@@ -12,7 +12,6 @@
 
 #define CELL_INSET          SCALE_NUM(12)
 #define TOP_CELL_HEIGHT     SCALE_NUM(44)
-#define FONT_SIZE           SCALE_NUM(12)
 #define REUSERID            @"ApplyRemindCell"
 @interface ApplyRemindCell ()
 //上面部分View
@@ -54,24 +53,24 @@
 {
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
         self.selectionStyle = UITableViewCellSelectionStyleNone;
-        self.backgroundColor = [UIColor colorWithRed:246.0/255 green:247/255 blue:249/255 alpha:0];
+        self.backgroundColor = KCOLORGREEN_B1;
         [self initView];
     }
     return self;
 }
 
--(void)setCellType:(CELL_TYPE)cellType
+-(void)setCellType:(APPLY_CELL_TYPE)cellType
 {
     if (cellType == WAIT_SELECT) {
         _bottomSelectView.hidden = NO;
         _statusButton.hidden = YES;
+        [_applyContentLable updateConstraints];
     }
     else if (cellType == IGNORED) {
         _statusButton.hidden = NO;
         _bottomSelectView.hidden = YES;
     }
 }
-
 
 -(void)initView
 {
@@ -80,7 +79,7 @@
     [self.contentView addSubview:_wrapContentView];
     _wrapContentView.backgroundColor = [UIColor whiteColor];
     _wrapContentView.layer.borderWidth = 1;
-    _wrapContentView.layer.borderColor = [UIColor colorWithRed:204/255.0 green:204/255.0 blue:204/255.0 alpha:1].CGColor;
+    _wrapContentView.layer.borderColor = KCOLORGRAY_B6.CGColor;
     [_wrapContentView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self);
         make.bottom.equalTo(self);
@@ -106,9 +105,10 @@
     //2.提醒标题
     _remindTitleLabel = [[UILabel alloc]init];
     [self.wrapContentView addSubview:_remindTitleLabel];
-    _remindTitleLabel.text = @"活动申请通过！！！";
-    _remindTitleLabel.font = [UIFont systemFontOfSize:FONT_SIZE];
+    _remindTitleLabel.text = @"恭喜,报名申请通过！！！";
+    _remindTitleLabel.font = CONTENT_FONT(15);
     [_remindTitleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.height.mas_equalTo(SCALE_NUM(15));
         make.left.equalTo(self.titleImageView.mas_right).offset(10);
         make.top.equalTo(self.titleImageView);
         make.height.equalTo(self.titleImageView);
@@ -117,7 +117,7 @@
     
     //中间内容部分，分割线
     _topLineView = [[UIView alloc]init];
-    _topLineView.backgroundColor = [UIColor colorWithRed:204/255.0 green:204/255.0 blue:204/255.0 alpha:1];
+    _topLineView.backgroundColor = KCOLORGRAY_B6;
     [self.wrapContentView addSubview:_topLineView];
     [_topLineView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.leading.mas_equalTo(0);
@@ -129,7 +129,7 @@
     //1.头像
     _headImageView = [[UIImageView alloc]init];
     [self.wrapContentView addSubview:_headImageView];
-    _headImageView.image = [UIImage imageNamed:@"chatBar_face"];
+    _headImageView.image = [UIImage imageNamed:@"headImage.jpg"];
     [_headImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.topLineView).offset(15);
         make.leading.mas_equalTo(10);
@@ -141,8 +141,9 @@
     
     _nameLabel = [[UILabel alloc]init];
     [self.wrapContentView addSubview:_nameLabel];
-    _nameLabel.font = [UIFont systemFontOfSize:FONT_SIZE];
+    _nameLabel.font = CONTENT_FONT(12);
     _nameLabel.text = @"李颖";
+    _nameLabel.textColor = KCOLORGREEN_g1;
     [_nameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(_headImageView.mas_right).offset(SCALE_NUM(10));
         make.centerY.equalTo(_headImageView.mas_centerY);
@@ -165,21 +166,31 @@
     
     _applyContentLable = [[UILabel alloc]init];
     [self.wrapContentView addSubview:_applyContentLable];
+    _applyContentLable.numberOfLines = 0;
+    _applyContentLable.lineBreakMode = NSLineBreakByWordWrapping;
     _applyContentLable.text = @"申请参加百团纳新志愿者选拔活动!";
+    _applyContentLable.textColor = KCOLORGREEN_B3;
+    _applyContentLable.font = CONTENT_FONT(12);
     [_applyContentLable mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(_headImageView.mas_bottom).offset(SCALE_NUM(21));
-        make.leading.mas_equalTo(SCALE_NUM(10));
-        make.leading.mas_equalTo(SCALE_NUM(10));
+        make.left.equalTo(_headImageView);
+        make.trailing.mas_equalTo(0);
     }];
     
     _bottomLineView = [[UIView alloc]init];
     [self.wrapContentView addSubview:_bottomLineView];
-    _bottomLineView.backgroundColor = _topLineView.backgroundColor = [UIColor colorWithRed:204/255.0 green:204/255.0 blue:204/255.0 alpha:1];
+    
+    _bottomLineView.backgroundColor = KCOLORGRAY_B6;
     [_bottomLineView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(_applyContentLable.mas_bottom).offset(SCALE_NUM(15));
+        //make.top.equalTo(_applyContentLable.mas_bottom).offset(SCALE_NUM(15)).priorityHigh();
         make.leading.equalTo(_wrapContentView);
         make.trailing.equalTo(_wrapContentView);
         make.height.mas_equalTo(1);
+        make.bottom.equalTo(_wrapContentView.mas_bottom).offset(SCALE_NUM(-44));
+    }];
+    
+    [_applyContentLable mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.bottom.equalTo(_bottomLineView.mas_top).offset(SCALE_NUM(-10));
     }];
     
     [self addStatusButton];
@@ -189,15 +200,18 @@
 
 -(void)addStatusButton
 {
-    _statusButton = [[UIButton alloc]init];
+    _statusButton = [UIButton buttonWithType:UIButtonTypeSystem];
     [self.wrapContentView addSubview:_statusButton];
-    _statusButton.titleLabel.font = [UIFont systemFontOfSize:SCALE_NUM(12)];
+    _statusButton.titleLabel.font = CONTENT_FONT(12);
+    _statusButton.titleLabel.textColor = KCOLORGREEN_B5;
     [_statusButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     [_statusButton setTitle:@"已同意" forState:UIControlStateNormal];
+    _statusButton.enabled = NO;
     [_statusButton mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(_bottomLineView.mas_bottom).offset(10);
+        make.top.equalTo(_bottomLineView.mas_bottom);
         make.leading.equalTo(_wrapContentView);
         make.trailing.equalTo(_wrapContentView);
+        make.bottom.equalTo(_wrapContentView.mas_bottom);
     }];
 }
 
@@ -209,12 +223,12 @@
         make.top.equalTo(_bottomLineView.mas_bottom);
         make.leading.equalTo(_wrapContentView);
         make.trailing.equalTo(_wrapContentView);
-        make.height.mas_equalTo(SCALE_NUM(44));
+        make.bottom.equalTo(_wrapContentView);
     }];
     
     _middleLineView = [[UIView alloc]init];
     [self.bottomSelectView addSubview:_middleLineView];
-    _middleLineView.backgroundColor = _topLineView.backgroundColor = KCOLORGRAY;
+    _middleLineView.backgroundColor = KCOLORGRAY_B6;
     [_middleLineView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.equalTo(_bottomSelectView.mas_centerX);
         make.top.equalTo(_bottomSelectView).offset(SCALE_NUM(8));
@@ -222,9 +236,10 @@
         make.width.mas_equalTo(1);
     }];
     
-    _agreeButton = [[UIButton alloc]init];
+    _agreeButton = [UIButton buttonWithType:UIButtonTypeSystem];
     [self.bottomSelectView addSubview:_agreeButton];
-    _agreeButton.titleLabel.font = [UIFont systemFontOfSize:SCALE_NUM(12)];
+    _agreeButton.titleLabel.font = CONTENT_FONT(12);
+    _agreeButton.titleLabel.textColor = KCOLORGREEN_B4;
     [_agreeButton addTarget:self action:@selector(agreeAction) forControlEvents:UIControlEventTouchUpInside];
     [_agreeButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     [_agreeButton setTitle:@"同意" forState:UIControlStateNormal];
@@ -235,9 +250,10 @@
         make.right.equalTo(_middleLineView.mas_left);
     }];
     
-    _ignoreButton = [[UIButton alloc]init];
+    _ignoreButton = [UIButton buttonWithType:UIButtonTypeSystem];
     [self.bottomSelectView addSubview:_ignoreButton];
-    _ignoreButton.titleLabel.font = [UIFont systemFontOfSize:SCALE_NUM(12)];
+    _ignoreButton.titleLabel.textColor = KCOLORGREEN_B4;
+    _ignoreButton.titleLabel.font = CONTENT_FONT(12);
     [_ignoreButton addTarget:self action:@selector(ignoreAction) forControlEvents:UIControlEventTouchUpInside];
     [_ignoreButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     [_ignoreButton setTitle:@"忽略" forState:UIControlStateNormal];

@@ -64,7 +64,7 @@
 @property (nonatomic, strong) UIImagePickerController *picker;
 
 @property (nonatomic, assign) BOOL isPhotoSaveEnd;//上传图片时的同步操作
-@property (nonatomic, assign) BOOL isUpLoadEnd; //图片是否上传成功
+@property (nonatomic, assign) BOOL isUpLoadEnd; //图片是否上传成功时的同步操作
 
 @end
 
@@ -225,7 +225,7 @@
         make.height.mas_equalTo(KTEXTVIEWHEIGHT);
     }];
     _textView.delegate = self;
-    _textView.placeholder = @"发布优质内容，会有更多人给你敬酒";
+    _textView.placeholder = @"和你的校友分享...";
     _textView.placeholderColor = KCOLORWHITE_b8b7b7;
     _textView.font = CONTENT_FONT(12);
 }
@@ -266,7 +266,7 @@
         make.height.mas_equalTo(SCALE_NUM(10));
     }];
     info.font = CONTENT_FONT(10);
-    info.text = @"选择以下标签，动态将会同步进入选中标签的列表中";
+    info.text = @"选标签，告诉大家你在关注什么";
     
     _tagView = [[SKTagView alloc] init];
     [_bottomView addSubview:_tagView];
@@ -378,11 +378,42 @@
 
 - (void)snapImage
 {
-    //照片选择
-    UzysAssetsPickerController *picker = [[UzysAssetsPickerController alloc] init];
-    picker.delegate = self;
-    [picker takePhoto];
+    /**
+     *  相册相机使用授权
+     *
+     *  @param TARGET_IPHONE_SIMULATOR nil
+     *
+     *  @return nil
+     */
 #if !(TARGET_IPHONE_SIMULATOR)//真机执行的代码
+    
+//    ALAuthorizationStatus authorPhotos = [ALAssetsLibrary authorizationStatus];
+//    //无权限
+//    if (authorPhotos == kCLAuthorizationStatusRestricted || authorPhotos ==kCLAuthorizationStatusDenied){
+//        YCommonAlertView *alert = [[YCommonAlertView alloc] initWithTitle:nil
+//              
+//                                                                  message:@"您可以在 设置—>隐私—>中授权相册功能"
+//                                                             buttonTitles:@"确认", nil];
+//        [alert show];
+//        return;
+//    } else if (authorPhotos == AVAuthorizationStatusNotDetermined) {
+//        [AVCaptureDevice requestAccessForMediaType:AVMediaTypeVideo completionHandler:^(BOOL granted) {
+//            if(granted) {
+//                [self requestPhotoAuthorization];
+//            }
+//            else{
+//                return;
+//            }
+//        }];
+//    }
+    
+    [self requestPhotoAuthorization];
+#endif
+    
+}
+
+
+- (void)requestPhotoAuthorization {
     AVAuthorizationStatus authStatus = [AVCaptureDevice authorizationStatusForMediaType:AVMediaTypeVideo];
     if (authStatus == AVAuthorizationStatusRestricted ||authStatus ==AVAuthorizationStatusDenied){
         YCommonAlertView *alert = [[YCommonAlertView alloc] initWithTitle:nil
@@ -394,24 +425,44 @@
         [AVCaptureDevice requestAccessForMediaType:AVMediaTypeVideo completionHandler:^(BOOL granted) {
             if(granted){//点击允许访问时调用
                 //用户明确许可与否，媒体需要捕获，但用户尚未授予或拒绝许可。
-//                self.picker = [[UIImagePickerController alloc] init];
-//                [self.picker setSourceType:UIImagePickerControllerSourceTypeCamera];
-//                self.picker.delegate = self;
-//                [self.picker setAllowsEditing:YES];
-//                [self presentViewController:self.picker animated:YES completion:nil];
+                //                self.picker = [[UIImagePickerController alloc] init];
+                //                [self.picker setSourceType:UIImagePickerControllerSourceTypeCamera];
+                //                self.picker.delegate = self;
+                //                [self.picker setAllowsEditing:YES];
+                //                [self presentViewController:self.picker animated:YES completion:nil];
                 //UzysAssetsPickerController *picker = [[UzysAssetsPickerController alloc] init];
                 
                 //[picker takePhoto];
+                UzysAssetsPickerController *picker = [[UzysAssetsPickerController alloc] init];
+                picker.assetsFilter = [ALAssetsFilter allPhotos];
+                picker.maximumNumberOfSelectionVideo = 0;
+                picker.maximumNumberOfSelectionPhoto = 9;
+                picker.delegate = self;
+                
+                [self presentViewController:picker animated:YES completion:^{
+                    [picker takePhoto];
+                }];
+                
+            } else {
                 
             }
         }];
     }else{
-        self.picker = [[UIImagePickerController alloc] init];
-        [self.picker setSourceType:UIImagePickerControllerSourceTypeCamera];
-        self.picker.delegate = self;
-        [self presentViewController:self.picker animated:YES completion:nil];
+        //        self.picker = [[UIImagePickerController alloc] init];
+        //        [self.picker setSourceType:UIImagePickerControllerSourceTypeCamera];
+        //        self.picker.delegate = self;
+        //        [self presentViewController:self.picker animated:YES completion:nil];
+        UzysAssetsPickerController *picker = [[UzysAssetsPickerController alloc] init];
+        picker.assetsFilter = [ALAssetsFilter allPhotos];
+        picker.maximumNumberOfSelectionVideo = 0;
+        picker.maximumNumberOfSelectionPhoto = 9;
+        picker.delegate = self;
+        
+        [self presentViewController:picker animated:YES completion:^{
+            [picker takePhoto];
+        }];
     }
-#endif
+    //照片选择
 }
 
 - (void)savePic:(UIImage *)image
@@ -519,9 +570,11 @@
             }
         }];
         
+        //解决图片顺序问题
         while (!self.isUpLoadEnd) {
             [[NSRunLoop mainRunLoop] runMode:NSDefaultRunLoopMode beforeDate:[NSDate distantFuture]];
         }
+        _isUpLoadEnd = NO;
     }
     if ([_imgGroup getImgCount] == 0) {
         [self uploadFeed];

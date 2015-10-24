@@ -14,6 +14,7 @@
 		20DAF9671B870A3B005B7932 /* YTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 20DAF9661B870A3B005B7932 /* YTableViewCell.m */; };
 		20DD4B281B73039B007C352C /* YTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 20DD4B271B73039B007C352C /* YTableView.m */; };
 		20E033F91B845706002E4583 /* YTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 20E033F81B845706002E4583 /* YTextField.m */; };
+		20E239A21BD63A8A0040D799 /* YLabel+Ext.m in Sources */ = {isa = PBXBuildFile; fileRef = 20E239A11BD63A8A0040D799 /* YLabel+Ext.m */; settings = {ASSET_TAGS = (); }; };
 		2803C92C1AE3BA60002303B6 /* YManagerCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 2803C92B1AE3BA60002303B6 /* YManagerCenter.m */; };
 		2803C9301AE3BD42002303B6 /* YUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 2803C92E1AE3BD42002303B6 /* YUtils.m */; };
 		2803C9331AE406E5002303B6 /* YModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2803C9321AE406E5002303B6 /* YModel.m */; };
@@ -98,6 +99,8 @@
 		20DD4B271B73039B007C352C /* YTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YTableView.m; sourceTree = "<group>"; };
 		20E033F71B845706002E4583 /* YTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YTextField.h; sourceTree = "<group>"; };
 		20E033F81B845706002E4583 /* YTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YTextField.m; sourceTree = "<group>"; };
+		20E239A01BD63A8A0040D799 /* YLabel+Ext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "YLabel+Ext.h"; sourceTree = "<group>"; };
+		20E239A11BD63A8A0040D799 /* YLabel+Ext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "YLabel+Ext.m"; sourceTree = "<group>"; };
 		2803C92A1AE3BA60002303B6 /* YManagerCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YManagerCenter.h; sourceTree = "<group>"; };
 		2803C92B1AE3BA60002303B6 /* YManagerCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YManagerCenter.m; sourceTree = "<group>"; };
 		2803C92D1AE3BD42002303B6 /* YUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YUtils.h; sourceTree = "<group>"; };
@@ -354,6 +357,8 @@
 				57C6053E1AE8C45900A92A54 /* YString+Ext.m */,
 				9717588A1B132D9A00CCEEE4 /* YTextField+Ext.h */,
 				971758881B132D7D00CCEEE4 /* YTextField+Ext.m */,
+				20E239A01BD63A8A0040D799 /* YLabel+Ext.h */,
+				20E239A11BD63A8A0040D799 /* YLabel+Ext.m */,
 				49DB52CA1B3D81A900B0D1EB /* NSArray+Additions.h */,
 				49DB52CB1B3D81A900B0D1EB /* NSArray+Additions.m */,
 				20AEFE501B40FBA600975B84 /* NSDictionary+CLLocation.h */,
@@ -561,6 +566,7 @@
 				2862E36C1AE03BF500AD0257 /* YDao.m in Sources */,
 				2885DB3C1ADD2C84002D4F23 /* YOperationQueue.m in Sources */,
 				2862E38D1AE05EA600AD0257 /* YViewController.m in Sources */,
+				20E239A21BD63A8A0040D799 /* YLabel+Ext.m in Sources */,
 				2873DBD01ADFF66E00F5FD3E /* YFMDatabaseQueue.m in Sources */,
 				2862E35F1AE03AAE00AD0257 /* YObject.m in Sources */,
 				2848A13B1ADED603007E2682 /* YLog.m in Sources */,

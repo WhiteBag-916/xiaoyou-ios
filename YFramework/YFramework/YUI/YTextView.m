@@ -7,6 +7,7 @@
 //
 
 #import "YTextView.h"
+#import "YLabel+Ext.h"
 
 @interface YTextView()
 @property (nonatomic, retain) UILabel *placeHolderLabel;
@@ -35,6 +36,9 @@ CGFloat const UI_PLACEHOLDER_TEXT_CHANGED_ANIMATION_DURATION = 0.25;
     
     // Use Interface Builder User Defined Runtime Attributes to set
     // placeholder and placeholderColor in Interface Builder.
+    
+    _lineSpacing = 0;
+    
     if (!self.placeholder) {
         [self setPlaceholder:@""];
     }
@@ -49,6 +53,7 @@ CGFloat const UI_PLACEHOLDER_TEXT_CHANGED_ANIMATION_DURATION = 0.25;
 - (id)init {
     self = [super init];
     if (self) {
+        _lineSpacing = 0;
         [self setPlaceholder:@""];
         [self setPlaceholderColor:[UIColor lightGrayColor]];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(textChanged:) name:UITextViewTextDidChangeNotification object:nil];
@@ -98,7 +103,7 @@ CGFloat const UI_PLACEHOLDER_TEXT_CHANGED_ANIMATION_DURATION = 0.25;
             [self addSubview:_placeHolderLabel];
         }
         
-        _placeHolderLabel.text = self.placeholder;
+        [_placeHolderLabel setText:self.placeholder lineSpacing:_lineSpacing];
         [_placeHolderLabel sizeToFit];
         [self sendSubviewToBack:_placeHolderLabel];
     }
@@ -110,5 +115,17 @@ CGFloat const UI_PLACEHOLDER_TEXT_CHANGED_ANIMATION_DURATION = 0.25;
     
     [super drawRect:rect];
 }
+
+//-(void)setPlaceholder:(NSString *)placeholder lineSpacing:(CGFloat)lineSpacing
+//{
+//    NSMutableAttributedString *attStr = [[NSMutableAttributedString alloc]initWithString:placeholder];
+//    NSMutableParagraphStyle *style = [[NSMutableParagraphStyle alloc]init];
+//    [style setLineSpacing:lineSpacing];
+//    [style setLineBreakMode:NSLineBreakByTruncatingTail];
+//    //根据给定长度与style设置attStr式样
+//    [attStr addAttribute:NSParagraphStyleAttributeName value:style range:NSMakeRange(0, placeholder.length)];
+//    //Label获取attStr式样
+//    self.attributedText = attStr;
+//}
 
 @end

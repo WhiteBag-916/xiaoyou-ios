@@ -45,13 +45,13 @@ NSString *const kContactsInfoThirdTableViewCell = @"ContactsInfoThirdTableViewCe
     
     //敬酒
     _toastImageView = [[UIImageView alloc] init];
-    _toastImageView.image = [UIImage imageNamed:@"toast_cup"];
+    _toastImageView.image = [UIImage imageNamed:@"detail_toast_new"];
     [backView addSubview:_toastImageView];
     [_toastImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.mas_equalTo(10);
         make.left.mas_equalTo(12);
-        make.width.mas_equalTo(16.5);
-        make.height.mas_equalTo(16);
+        make.width.mas_equalTo(14);
+        make.height.mas_equalTo(13);
     }];
     
     _toastLabel = [[UILabel alloc] init];
@@ -70,12 +70,12 @@ NSString *const kContactsInfoThirdTableViewCell = @"ContactsInfoThirdTableViewCe
     _coolImageView = [[UIImageView alloc] init];
     _coolImageView.userInteractionEnabled = YES;
     [backView addSubview:_coolImageView];
-    _coolImageView.image = [UIImage imageNamed:@"mine-heart-red"];
+    _coolImageView.image = [UIImage imageNamed:@"detail_cool_new"];
     [_coolImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(_toastImageView.mas_bottom).offset(17);
         make.left.mas_equalTo(12);
-        make.width.mas_equalTo(16);
-        make.height.mas_equalTo(15.5);
+        make.width.mas_equalTo(14);
+        make.height.mas_equalTo(13);
     }];
     
     _coolLabel = [[UILabel alloc] init];

@@ -60,6 +60,15 @@
     return [self getParameter:parameters];
 }
 
++ getParameter:(NSDictionary *)parameters needUserToken:(BOOL)needUserToken needContent:(BOOL)needContent {
+    NSDictionary *dic;
+    if (nil != parameters) {
+        dic = @{@"content":parameters};
+    }
+    
+    return [self getParameter:dic needUserToken:needUserToken];
+}
+
 + getParameter:(NSDictionary *)parameters needUserToken:(BOOL)needUserToken needAddUserID:(BOOL)needAddUserID {
     
     NSMutableDictionary *dic;

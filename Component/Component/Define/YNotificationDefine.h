@@ -35,4 +35,9 @@
 #define KNotification_Open_PraiseDetail                 @"KNotification_Open_PraiseDetail"
 
 #define KNotification_Refresh_FeedList                  @"KNotification_Refresh_FeedList"
+//发布活动
+#define KNotification_Enabel_ReleaseBtn                  @"KNotification_Enabel_ReleaseBtn"
+
+#define KNotification_Activity_Release_ScrollTo         @"KNotification_Activity_Release_ScrollTo"
+
 #endif

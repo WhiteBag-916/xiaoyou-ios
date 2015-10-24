@@ -12,9 +12,11 @@
 #import "YUtils+Macros.h"
 #import "YColor+Ext.h"
 
-#define CONTENT_FONT(font) [UIFont systemFontOfSize:SCALE_NUM(font)]
+#define CONTENT_FONT(font) [UIFont systemFontOfSize:SCALE_NUM_4_7(font)]
 
 #define SCALE_NUM(number)   number * SCREEN_WIDTH / 320
+
+#define SCALE_NUM_4_7(number)   number * 375 / 320
 
 #define KCOLORGREEN_455A64 [UIColor hexChangeFloat:@"455A64"]
 #define KCOLORWHITE [UIColor whiteColor]
@@ -35,6 +37,8 @@
 #define KCOLORGREEN_B5 [UIColor hexChangeFloat:@"999999"]
 #define KCOLORGREEN_g1 [UIColor hexChangeFloat:@"009f92"]
 #define KCOLORGREEN_g2 [UIColor hexChangeFloat:@"95d5d0"]
+
+#define KCOLORGRAY_B6 [UIColor hexChangeFloat:@"F6F6F6"]
 
 #define KCOLORGRAY     [UIColor colorWithRed:204/255.0 green:204/255.0 blue:204/255.0 alpha:1]
 

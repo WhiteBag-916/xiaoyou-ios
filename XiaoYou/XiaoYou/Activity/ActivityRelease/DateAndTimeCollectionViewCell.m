@@ -9,6 +9,7 @@
 #import "DateAndTimeCollectionViewCell.h"
 #import "CommonPopView.h"
 #import "YVIew+Ext.h"
+#import "ActivityReleaseDataManager.h"
 
 NSString *const kDateAndTimeCollectionViewCell = @"DateAndTimeCollectionViewCellId";
 
@@ -18,6 +19,7 @@ NSString *const kDateAndTimeCollectionViewCell = @"DateAndTimeCollectionViewCell
 @property (nonatomic,strong)UILabel * beginTimeLabel;
 @property (nonatomic,strong)UILabel * endTimeLabel;
 @property (nonatomic,strong)UIDatePicker * datePicker;
+@property(nonatomic,strong)ActivityReleaseDataManager * dataManager;
 
 @end
 
@@ -28,12 +30,14 @@ NSString *const kDateAndTimeCollectionViewCell = @"DateAndTimeCollectionViewCell
     self = [super initWithFrame:frame];
     if (self) {
         [self changUI];
+        _dataManager = [ActivityReleaseDataManager shareActivityReleaseDataManager];
     }
     return self;
 }
 
 -(void)changUI
-{ 
+{
+    //设置每个cell的不同部分
     self.numImageView.image = [UIImage imageNamed:@"img_num3"];
     self.typeLabel.text = @"时间";
     
@@ -41,28 +45,29 @@ NSString *const kDateAndTimeCollectionViewCell = @"DateAndTimeCollectionViewCell
     UILabel * applyLabel = [[UILabel alloc] init];
     applyLabel.backgroundColor = [UIColor clearColor];
     applyLabel.font = CONTENT_FONT(12);
-    applyLabel.textColor = KCOLORGREEN_B5;
-    applyLabel.text = @"报名时间(选填)";
+    applyLabel.textColor = KCOLORGREEN_B3;
+    applyLabel.text = @"报名截止时间";
     [self.backView addSubview:applyLabel];
     [applyLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.mas_equalTo(80);
+        make.top.mas_equalTo(SCALE_NUM(80));
         make.left.equalTo(self.numImageView);
-        make.height.mas_equalTo(12);
-        make.width.mas_equalTo(100);
+        make.height.mas_equalTo(SCALE_NUM(12));
+        make.width.mas_equalTo(SCALE_NUM(140));
     }];
     
     _applayTimeLabel = [[UILabel alloc] init];
     _applayTimeLabel.userInteractionEnabled = YES;
     _applayTimeLabel.backgroundColor = [UIColor whiteColor];
     _applayTimeLabel.font = CONTENT_FONT(12);
-    _applayTimeLabel.text = @"2015年10月17日 下午1:00";
-    _applayTimeLabel.textColor = KCOLORGREEN_B4;
+    _applayTimeLabel.text = @"请选择活动报名时间";
+    _applayTimeLabel.textAlignment = NSTextAlignmentCenter;
+    _applayTimeLabel.textColor = KCOLORGREEN_B5;
     [self.backView addSubview:_applayTimeLabel];
     [_applayTimeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(applyLabel.mas_bottom).offset(10);
-        make.left.equalTo(self.backView).offset(10);
-        make.right.equalTo(self.backView).offset(-10);
-        make.height.mas_equalTo(40);
+        make.top.equalTo(applyLabel.mas_bottom).offset(SCALE_NUM(10));
+        make.left.equalTo(self.backView).offset(SCALE_NUM(10));
+        make.right.equalTo(self.backView).offset(SCALE_NUM(-10));
+        make.height.mas_equalTo(SCALE_NUM(40));
     }];
     
     UITapGestureRecognizer * applayTapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(applayChoiceTime)];
@@ -72,14 +77,14 @@ NSString *const kDateAndTimeCollectionViewCell = @"DateAndTimeCollectionViewCell
     UILabel * activityLabel = [[UILabel alloc] init];
     activityLabel.backgroundColor = [UIColor clearColor];
     activityLabel.font = CONTENT_FONT(12);
-    activityLabel.textColor = KCOLORGREEN_B5;
+    activityLabel.textColor = KCOLORGREEN_B3;
     activityLabel.text = @"活动时间";
     [self.backView addSubview:activityLabel];
     [activityLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(_applayTimeLabel.mas_bottom).offset(10);
+        make.top.equalTo(_applayTimeLabel.mas_bottom).offset(SCALE_NUM(10));
         make.left.equalTo(self.numImageView);
-        make.height.mas_equalTo(12);
-        make.width.mas_equalTo(100);
+        make.height.mas_equalTo(SCALE_NUM(12));
+        make.width.mas_equalTo(SCALE_NUM(100));
     }];
     
     //开始活动时间
@@ -87,14 +92,15 @@ NSString *const kDateAndTimeCollectionViewCell = @"DateAndTimeCollectionViewCell
     _beginTimeLabel.userInteractionEnabled = YES;
     _beginTimeLabel.backgroundColor = [UIColor whiteColor];
     _beginTimeLabel.font = CONTENT_FONT(12);
-    _beginTimeLabel.text = @"2015年10月17日 下午2:00";
-    _beginTimeLabel.textColor = KCOLORGREEN_B4;
+    _beginTimeLabel.text = @"请选择活动开始时间";
+    _beginTimeLabel.textAlignment = NSTextAlignmentCenter;
+    _beginTimeLabel.textColor = KCOLORGREEN_B5;
     [self.backView addSubview:_beginTimeLabel];
     [_beginTimeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(activityLabel.mas_bottom).offset(10);
-        make.left.equalTo(self.backView).offset(10);
-        make.right.equalTo(self.backView).offset(-10);
-        make.height.mas_equalTo(40);
+        make.top.equalTo(activityLabel.mas_bottom).offset(SCALE_NUM(10));
+        make.left.equalTo(self.backView).offset(SCALE_NUM(10));
+        make.right.equalTo(self.backView).offset(SCALE_NUM(-10));
+        make.height.mas_equalTo(SCALE_NUM(40));
     }];
     
     UITapGestureRecognizer * beginTapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(beginChoiceTime)];
@@ -105,14 +111,14 @@ NSString *const kDateAndTimeCollectionViewCell = @"DateAndTimeCollectionViewCell
     toLabel.backgroundColor = [UIColor clearColor];
     toLabel.textAlignment = NSTextAlignmentCenter;
     toLabel.font = CONTENT_FONT(12);
-    toLabel.textColor = KCOLORGREEN_B5;
+    toLabel.textColor = KCOLORGREEN_B3;
     toLabel.text = @"至";
     [self.backView addSubview:toLabel];
     [toLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(_beginTimeLabel.mas_bottom).offset(10);
+        make.top.equalTo(_beginTimeLabel.mas_bottom).offset(SCALE_NUM(10));
         make.centerX.equalTo(self.backView);
-        make.height.mas_equalTo(12);
-        make.width.mas_equalTo(12);
+        make.height.mas_equalTo(SCALE_NUM(12));
+        make.width.mas_equalTo(SCALE_NUM(20));
     }];
     
     //结束活动时间
@@ -120,14 +126,15 @@ NSString *const kDateAndTimeCollectionViewCell = @"DateAndTimeCollectionViewCell
     _endTimeLabel.userInteractionEnabled = YES;
     _endTimeLabel.backgroundColor = [UIColor whiteColor];
     _endTimeLabel.font = CONTENT_FONT(12);
-    _endTimeLabel.text = @"2015年10月17日 下午3:00";
-    _endTimeLabel.textColor = KCOLORGREEN_B4;
+    _endTimeLabel.text = @"请选择活动结束时间";
+    _endTimeLabel.textAlignment = NSTextAlignmentCenter;
+    _endTimeLabel.textColor = KCOLORGREEN_B5;
     [self.backView addSubview:_endTimeLabel];
     [_endTimeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(toLabel.mas_bottom).offset(10);
-        make.left.equalTo(self.backView).offset(10);
-        make.right.equalTo(self.backView).offset(-10);
-        make.height.mas_equalTo(40);
+        make.top.equalTo(toLabel.mas_bottom).offset(SCALE_NUM(10));
+        make.left.equalTo(self.backView).offset(SCALE_NUM(10));
+        make.right.equalTo(self.backView).offset(SCALE_NUM(-10));
+        make.height.mas_equalTo(SCALE_NUM(40));
     }];
     
     UITapGestureRecognizer * endTapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(endChoiceTime)];
@@ -138,7 +145,7 @@ NSString *const kDateAndTimeCollectionViewCell = @"DateAndTimeCollectionViewCell
     
 }
 
-//手势回调方法
+#pragma mark - 手势回调方法
 -(void)applayChoiceTime
 {
     CommonPopView * popView = [[CommonPopView alloc] initWithFrame:[UIScreen mainScreen].bounds
@@ -148,6 +155,15 @@ NSString *const kDateAndTimeCollectionViewCell = @"DateAndTimeCollectionViewCell
                                              isRoot:YES
                                             addSelf:[UIApplication sharedApplication].keyWindow];
     [popView comSet:self action:@selector(applayChooseDate) params:nil];
+
+    _datePicker.minimumDate = nil;
+    _datePicker.maximumDate = nil;
+    
+    
+    NSDictionary * dic = @{@"position":@3};
+    [[NSNotificationCenter defaultCenter] postNotificationName:KNotification_Activity_Release_ScrollTo object:dic];
+
+    
     [popView showView];
 }
 
@@ -160,6 +176,31 @@ NSString *const kDateAndTimeCollectionViewCell = @"DateAndTimeCollectionViewCell
                                                             isRoot:YES
                                                            addSelf:[UIApplication sharedApplication].keyWindow];
     [popView comSet:self action:@selector(heginChooseDate) params:nil];
+    //重置开始时间
+    NSDateFormatter * formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"yyyy年MM月dd日 a HH:mm"];
+    if ([_dataManager.ActivityDateBeginText isEqualToString:@"请选择活动开始时间"] || _dataManager.ActivityDateBeginText == nil)
+    {
+        if ([_dataManager.ActivityDateEndText isEqualToString:@"请选择活动结束时间"] || _dataManager.ActivityDateEndText == nil)
+        {
+            _datePicker.maximumDate = nil;
+        }
+        else
+        {
+            _datePicker.minimumDate = nil;
+            _datePicker.maximumDate = [formatter dateFromString:_dataManager.ActivityDateEndText];
+        }
+    }
+    else
+    {
+        _datePicker.minimumDate = nil;
+        _datePicker.maximumDate = [formatter dateFromString:_dataManager.ActivityDateEndText];
+        
+    }
+    
+    NSDictionary * dic = @{@"position":@3};
+    [[NSNotificationCenter defaultCenter] postNotificationName:KNotification_Activity_Release_ScrollTo object:dic];
+    
     [popView showView];
 }
 
@@ -172,30 +213,60 @@ NSString *const kDateAndTimeCollectionViewCell = @"DateAndTimeCollectionViewCell
                                                             isRoot:YES
                                                            addSelf:[UIApplication sharedApplication].keyWindow];
     [popView comSet:self action:@selector(endChooseDate) params:nil];
+    //重置结束时间
+    NSDateFormatter * formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"yyyy年MM月dd日 a HH:mm"];
+    if ([_dataManager.ActivityDateBeginText isEqualToString:@"请选择活动开始时间"] || _dataManager.ActivityDateBeginText == nil)
+    {
+        if ([_dataManager.ActivityDateEndText isEqualToString:@"请选择活动结束时间"] || _dataManager.ActivityDateEndText == nil)
+        {
+             _datePicker.maximumDate = nil;
+        }
+        else
+        {
+            _datePicker.minimumDate = nil;
+            _datePicker.maximumDate = [formatter dateFromString:_dataManager.ActivityDateEndText];
+        }
+    }
+    else
+    {
+        _datePicker.maximumDate = nil;
+        _datePicker.minimumDate = [formatter dateFromString:_dataManager.ActivityDateBeginText];
+        
+    }
+    NSDictionary * dic = @{@"position":@3};
+    [[NSNotificationCenter defaultCenter] postNotificationName:KNotification_Activity_Release_ScrollTo object:dic];
+    
     [popView showView];
 }
 
-//确定选择日期
+#pragma mark - 确定选择日期
 -(void)applayChooseDate
 {
     NSDateFormatter * formatter = [[NSDateFormatter alloc] init];
-    [formatter setDateFormat:@"yyyy-MM-dd HH:mm"];
+    [formatter setDateFormat:@"yyyy年MM月dd日 a HH:mm"];
     NSString * showStr = [formatter stringFromDate:_datePicker.date];
     _applayTimeLabel.text = showStr;
+    _dataManager.ActivityDateApplyText = showStr;
+    [_dataManager isEnableToRelease];
 }
 -(void)heginChooseDate
 {
     NSDateFormatter * formatter = [[NSDateFormatter alloc] init];
-    [formatter setDateFormat:@"yyyy-MM-dd HH:mm"];
+    [formatter setDateFormat:@"yyyy年MM月dd日 a HH:mm"];
     NSString * showStr = [formatter stringFromDate:_datePicker.date];
     _beginTimeLabel.text = showStr;
+    _dataManager.ActivityDateBeginText = showStr;
+    [_dataManager isEnableToRelease];
 }
 -(void)endChooseDate
 {
     NSDateFormatter * formatter = [[NSDateFormatter alloc] init];
-    [formatter setDateFormat:@"yyyy-MM-dd HH:mm"];
+    [formatter setDateFormat:@"yyyy年MM月dd日 a HH:mm"];
     NSString * showStr = [formatter stringFromDate:_datePicker.date];
     _endTimeLabel.text = showStr;
+    _dataManager.ActivityDateEndText = showStr;
+    [_dataManager isEnableToRelease];
 }
 
 @end

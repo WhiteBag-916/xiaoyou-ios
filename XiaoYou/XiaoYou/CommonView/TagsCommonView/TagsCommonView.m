@@ -45,7 +45,7 @@
     self.backgroundColor = [UIColor clearColor];
     _flagImageView = [[UIImageView alloc]init];
     [self addSubview:_flagImageView];
-    _flagImageView.image = [UIImage imageNamed:@"tag-green"];
+    _flagImageView.image = [UIImage imageNamed:@"detail_flag_new"];
     [_flagImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.mas_equalTo(kPaddingDistance);
         make.leading.mas_equalTo(0);
@@ -110,7 +110,19 @@
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     Tags * tag = _commonTagsArr[indexPath.row];
-    TagCollectionCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:REUSECELL forIndexPath:indexPath];
+    
+    TagCollectionCell *cell;
+    if (cell == nil) {
+        cell = [collectionView dequeueReusableCellWithReuseIdentifier:REUSECELL forIndexPath:indexPath];
+    }
+    else
+    {
+        //删除cell的所有子视图
+        while ([cell.contentView.subviews lastObject] != nil)
+        {
+            [(UIView*)[cell.contentView.subviews lastObject] removeFromSuperview];
+        }
+    }
     [cell setCellInfo:tag];
     return cell;
 }

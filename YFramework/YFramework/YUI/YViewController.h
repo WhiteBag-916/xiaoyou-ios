@@ -17,9 +17,6 @@
  *  UIViewController 框架基类,自定义控制器请继承此类
  */
 
-@interface UIViewController (MethodSwizzling)
-@end
-
 @protocol YViewControllerDelegate <NSObject>
 @optional
 - (BOOL)shouldBeginInteractivePopGesture;

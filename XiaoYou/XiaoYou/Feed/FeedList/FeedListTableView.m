@@ -34,6 +34,8 @@
         self.tableFooterView = [[UIView alloc] init];
         _feedListArray = [NSMutableArray array];
         self.fd_debugLogEnabled = false;
+        
+        self.separatorStyle = UITableViewCellSeparatorStyleNone;
     }
     return self;
 }

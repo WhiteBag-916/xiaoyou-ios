@@ -9,11 +9,13 @@
 #import "AssociationsSearchViewController.h"
 #import "AssociationsListTableView.h"
 #import "YTableView.h"
+#import "SearchActivityListView.h"
 
 @interface AssociationsSearchViewController ()
 <UISearchBarDelegate>
 
 @property (nonatomic, strong) AssociationsListTableView *associationsListTableView;
+@property (nonatomic, strong) SearchActivityListView *searchActivityListView;
 @property (nonatomic, strong) UISearchBar *searchBar;
 @property (nonatomic, strong) NSArray *associationsArray;//社团数组
 
@@ -70,6 +72,9 @@
     _searchBar = [UISearchBar new];
     [_searchBar setBackgroundImage:[UIImage new]];
     _searchBar.placeholder = @"输入社团名称搜索";
+    if (self.searchType == ACTIVITY_TYPE)
+        _searchBar.placeholder = @"输入活动名称搜索";
+    
     [_searchBar becomeFirstResponder];
     _searchBar.delegate = self;
     [headView addSubview:_searchBar];
@@ -79,33 +84,56 @@
         make.centerY.equalTo(headView).offset(10);
     }];
     
-    //tableView
-    _associationsListTableView = [[AssociationsListTableView alloc] init];
-    [_associationsListTableView hiddenHeader:YES];
-    _associationsListTableView.superVC = self;
-    [self.view addSubview:_associationsListTableView];
+    //活动列表
+    if (self.searchType == ACTIVITY_TYPE) {
+        _searchActivityListView = [[SearchActivityListView alloc] init];
+        [_searchActivityListView hiddenHeader:YES];
+        [self.view addSubview:_searchActivityListView];
+        [_searchActivityListView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.bottom.right.mas_equalTo(self.view);
+            make.top.equalTo(headView.mas_bottom);
+        }];
+    }
+    //associations tableView
+    else {
+        _associationsListTableView = [[AssociationsListTableView alloc] init];
+        [_associationsListTableView hiddenHeader:YES];
+        _associationsListTableView.superVC = self;
+        [self.view addSubview:_associationsListTableView];
     
-    [_associationsListTableView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.bottom.right.mas_equalTo(self.view);
-        make.top.equalTo(headView.mas_bottom);
-    }];
+        [_associationsListTableView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.bottom.right.mas_equalTo(self.view);
+            make.top.equalTo(headView.mas_bottom);
+        }];
+    }
 }
 
 - (void)pressCancelButton {
     [self.navigationController popViewControllerAnimated:YES];
 }
 
-//搜索
+//搜索学校社团
 - (void)searchSchoolByKey
 {
     NSString *searchKey = [_searchBar.text lowercaseString];
     [_associationsListTableView resetArrayBySearch:searchKey];
 }
 
+- (void)searchActivity
+{
+    NSString *searchKey = [_searchBar.text lowercaseString];
+    
+}
+
 #pragma mark - UISearchBarDelegate
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
     if (![searchBar.text isEmpty]) {
-        [self searchSchoolByKey];
+        if (self.searchType == ACTIVITY_TYPE) {
+            [self searchActivity];
+        }
+        else {
+            [self searchSchoolByKey];
+        }
     }
 }
 

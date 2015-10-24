@@ -7,10 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ActivityChoiceController.h"
+#import "YTableViewCell.h"
 
 extern NSString *const kActivityReleaseAndTypeCell;
 
-@interface ActivityReleaseAndTypeCell : UITableViewCell
+@interface ActivityReleaseAndTypeCell : YTableViewCell
+
+@property (nonatomic,assign)NSInteger myType;
 
 -(void)setCellType:(NSInteger) num;
 

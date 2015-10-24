@@ -10,7 +10,6 @@
 
 #define DAY_LABEL_WIDTH 35.0f
 #define DAY_FONT_SIZE 18
-#define WEEKEND_TEXT_COLOR [UIColor colorWithWhite:167/255. alpha:1]
 
 @interface TKDateLabel : UILabel
 @property (nonatomic,strong) NSDate *date;
@@ -39,12 +38,12 @@
 - (void) _updateLabelColorState{
     
     if(self.selected){
-        self.backgroundColor = self.today ? self.tintColor : [UIColor blackColor];
+        self.backgroundColor = self.today ? KCOLORGREEN_g1 : KCOLORGREEN_B5;
         self.textColor = [UIColor whiteColor];
         self.font = [UIFont boldSystemFontOfSize:DAY_FONT_SIZE];
     }else{
-        UIColor *clr = self.weekend ? WEEKEND_TEXT_COLOR : [UIColor blackColor];
-        self.textColor = self.today ? self.tintColor : clr;
+        UIColor *clr = self.weekend ? KCOLORGREEN_B5 : [UIColor blackColor];
+        self.textColor = self.today ? KCOLORGREEN_g1 : clr;
         self.backgroundColor = [UIColor clearColor];
         self.font = [UIFont systemFontOfSize:DAY_FONT_SIZE];
     }
@@ -131,7 +130,7 @@
 //星期
 - (void)initHeadView {
     NSInteger cnt = 0;
-    NSArray *daySymbols = [[NSCalendar currentCalendar] shortWeekdaySymbols];
+    NSArray *daySymbols = @[@"日", @"一", @"二", @"三", @"四", @"五", @"六"];//[[NSCalendar currentCalendar] shortWeekdaySymbols];
     CGFloat wid = CGRectGetWidth(self.frame);
     wid -= 8;
     
@@ -142,8 +141,8 @@
     for(NSString *str in daySymbols){
         UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(minX + cnt*(DAY_LABEL_WIDTH+per) , 0, DAY_LABEL_WIDTH, 20)];
         label.font = [UIFont systemFontOfSize:10];
-        label.text = [str substringToIndex:1];
-        label.textColor = cnt == 0 || cnt == 6 ? WEEKEND_TEXT_COLOR : [UIColor blackColor];
+        label.text = str;
+        label.textColor = cnt == 0 || cnt == 6 ? KCOLORGREEN_B5 : [UIColor blackColor];
         label.textAlignment = NSTextAlignmentCenter;
         label.userInteractionEnabled = NO;
         [self addSubview:label];
@@ -587,7 +586,7 @@
 
 - (void) _updateDateLabel{
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    formatter.dateFormat = @"EEEE MMMM d, yyyy";
+    formatter.dateFormat = @"yyyy年MM月d日 EE";
     formatter.timeZone = self.calendar.timeZone;
     self.monthYearLabel.text = [formatter stringFromDate:self.currentDay];
 }

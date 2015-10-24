@@ -426,7 +426,7 @@ static NSString* const EventCellReuseIdentifier = @"EventCellReuseIdentifier";
 	evCell.font = [UIFont systemFontOfSize:11];
 	evCell.title = ev.title;
 	evCell.subtitle = ev.location;
-	evCell.color = [UIColor colorWithCGColor:ev.calendar.CGColor];
+    evCell.color = KCOLORGREEN_g1;//[UIColor colorWithCGColor:ev.calendar.CGColor];
 	evCell.style = MGCStandardEventViewStylePlain|MGCStandardEventViewStyleSubtitle;
 	evCell.style |= (type == MGCAllDayEventType) ?: MGCStandardEventViewStyleBorder;
 	return evCell;
@@ -452,13 +452,14 @@ static NSString* const EventCellReuseIdentifier = @"EventCellReuseIdentifier";
 
 - (BOOL)dayPlannerView:(MGCDayPlannerView*)view canMoveEventOfType:(MGCEventType)type atIndex:(NSUInteger)index date:(NSDate*)date toType:(MGCEventType)targetType date:(NSDate*)targetDate
 {
-	NSDateComponents *comps = [self.calendar components:NSWeekdayCalendarUnit fromDate:targetDate];
-	return (comps.weekday != 1 && comps.weekday != 7);
-	
-	if (targetType == MGCAllDayEventType)
-		return NO;
-	EKEvent *ev = [self eventOfType:type atIndex:index date:date];
-	return ev.calendar.allowsContentModifications;
+    return YES;
+//	NSDateComponents *comps = [self.calendar components:NSWeekdayCalendarUnit fromDate:targetDate];
+//	return (comps.weekday != 1 && comps.weekday != 7);
+//	
+//	if (targetType == MGCAllDayEventType)
+//		return NO;
+//	EKEvent *ev = [self eventOfType:type atIndex:index date:date];
+//	return ev.calendar.allowsContentModifications;
 }
 
 - (void)dayPlannerView:(MGCDayPlannerView*)view moveEventOfType:(MGCEventType)type atIndex:(NSUInteger)index date:(NSDate*)date toType:(MGCEventType)targetType date:(NSDate*)targetDate
@@ -485,11 +486,11 @@ static NSString* const EventCellReuseIdentifier = @"EventCellReuseIdentifier";
 
 - (MGCEventView*)dayPlannerView:(MGCDayPlannerView*)view viewForNewEventOfType:(MGCEventType)type atDate:(NSDate*)date
 {
-	EKCalendar *defaultCalendar = [self.eventStore defaultCalendarForNewEvents];
+//	EKCalendar *defaultCalendar = [self.eventStore defaultCalendarForNewEvents];
 	
 	MGCStandardEventView *evCell = [MGCStandardEventView new];
 	evCell.title = NSLocalizedString(@"New Event", nil);
-	evCell.color = [UIColor colorWithCGColor:defaultCalendar.CGColor];
+    evCell.color = KCOLORGREEN_g1;//[UIColor colorWithCGColor:defaultCalendar.CGColor];
 	return evCell;
 }
 

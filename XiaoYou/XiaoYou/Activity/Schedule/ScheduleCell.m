@@ -60,7 +60,7 @@
     
     _timeLabel = [[UILabel alloc]init];
     [self.wrapContentView addSubview:_timeLabel];
-    _timeLabel.font = [UIFont systemFontOfSize:20.0f];
+    _timeLabel.font = CONTENT_FONT(20);
     _timeLabel.text = @"明天";
     [_timeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.leading.mas_equalTo(10);
@@ -69,7 +69,7 @@
     
     _otherLabel = [[UILabel alloc]init];
     [self.wrapContentView addSubview:_otherLabel];
-    _otherLabel.font = [UIFont systemFontOfSize:12];
+    _otherLabel.font = CONTENT_FONT(12);
     _otherLabel.text = @"还有谁";
     [_otherLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.trailing.mas_equalTo(-20);
@@ -97,7 +97,7 @@
     
     _staticNameLabel = [[UILabel alloc]init];
     [self.wrapContentView addSubview:_staticNameLabel];
-    _staticNameLabel.font = [UIFont systemFontOfSize:12.0];
+    _staticNameLabel.font = CONTENT_FONT(12);
     _staticNameLabel.text = @"名称:";
     [_staticNameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.leading.mas_equalTo(10);
@@ -106,7 +106,7 @@
     
     _projectNameLabel = [[UILabel alloc]init];
     [self.wrapContentView addSubview:_projectNameLabel];
-    _projectNameLabel.font = [UIFont systemFontOfSize:12.0f];
+    _projectNameLabel.font = CONTENT_FONT(12);
     _projectNameLabel.text = @"10个人荧光跑";
     [_projectNameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.staticNameLabel.mas_right).offset(20);
@@ -123,7 +123,7 @@
     
     _activityTimeLabel = [[UILabel alloc]init];
     [self.wrapContentView addSubview:_activityTimeLabel];
-    _activityTimeLabel.font = [UIFont systemFontOfSize:12.0f];
+    _activityTimeLabel.font = CONTENT_FONT(12);
     _activityTimeLabel.text = @"活动时间";
     [_activityTimeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.equalTo(self.activityTimeImageView.mas_centerY);
@@ -132,7 +132,7 @@
     
     _activityTimeDesLabel = [[UILabel alloc]init];
     [self.wrapContentView addSubview:_activityTimeDesLabel];
-    _activityTimeDesLabel.font = [UIFont systemFontOfSize:12.0f];
+    _activityTimeDesLabel.font = CONTENT_FONT(12);
     _activityTimeDesLabel.text = @"15/10/28  18:00";
     [_activityTimeDesLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.equalTo(self.activityTimeImageView.mas_centerY);
@@ -149,7 +149,7 @@
     
     _locationLabel = [[UILabel alloc]init];
     [self.wrapContentView addSubview:_locationLabel];
-    _locationLabel.font = [UIFont systemFontOfSize:12.0f];
+    _locationLabel.font = CONTENT_FONT(12);
     _locationLabel.text = @"大脚超市门口";
     [_locationLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.equalTo(self.locationImageView);

@@ -28,7 +28,7 @@
 -(void)initView {
     _seeMoreLable = [[UILabel alloc]init];
     [self addSubview:_seeMoreLable];
-    _seeMoreLable.font = [UIFont systemFontOfSize:14];
+    _seeMoreLable.font = CONTENT_FONT(14);
     _seeMoreLable.text = @"see more";
     [_seeMoreLable setTextColor:[UIColor colorWithRed:16/255.0 green:86/255.0 blue:136/255.0 alpha:1]];
     [_seeMoreLable mas_makeConstraints:^(MASConstraintMaker *make) {

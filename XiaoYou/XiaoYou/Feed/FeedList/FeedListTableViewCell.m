@@ -213,14 +213,14 @@ NSString *const KCommentTableViewCell = @"CommentTableViewCell";
         [_bottomView.shareButton mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.equalTo(_middleView);
         }];
-        UIView *line = [[UIView alloc] init];
+        /*UIView *line = [[UIView alloc] init];
         [self.contentView addSubview:line];
         [line mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.right.equalTo(_bottomView);
             make.bottom.equalTo(self.contentView);
             make.height.mas_equalTo(0.5);
         }];
-        line.backgroundColor = KCOLORGREEN_e6ebea;
+        line.backgroundColor = KCOLORGREEN_e6ebea;*/
     }
     if (_feedType == FeedDetailType || _feedType == FeedCommentType) {
         [_bottomView.respectImg mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -238,6 +238,10 @@ NSString *const KCommentTableViewCell = @"CommentTableViewCell";
         }];
     }
     
+}
+
+- (BOOL)needLine {
+    return YES;
 }
 
 - (void)setData:(id)info

@@ -27,6 +27,8 @@
 #import "QRCodeReaderViewController.h"
 #import "QRCameraSwitchButton.h"
 #import "QRCodeReaderView.h"
+#import "MerchantListViewController.h"
+#import "ScanfResultViewController.h"
 
 #define mainHeight     [[UIScreen mainScreen] bounds].size.height
 #define mainWidth      [[UIScreen mainScreen] bounds].size.width
@@ -234,6 +236,46 @@
         make.centerX.equalTo(self.view).offset(-15);
     }];
     info.image = [UIImage imageNamed:@"scaninfo"];
+    
+    //查看合作商家
+    UILabel * moreMerchantsLabel = [[UILabel alloc] init];
+    moreMerchantsLabel.userInteractionEnabled = YES;
+    moreMerchantsLabel.textColor = KCOLORGREEN_W1;
+    moreMerchantsLabel.font = CONTENT_FONT(12);
+    moreMerchantsLabel.text = @"查看合作商家";
+    moreMerchantsLabel.backgroundColor = [UIColor clearColor];
+    moreMerchantsLabel.textAlignment = NSTextAlignmentCenter;
+    [self.view addSubview:moreMerchantsLabel];
+    [moreMerchantsLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerX.equalTo(self.view);
+        make.bottom.equalTo(info.mas_top).offset(-30);
+        make.height.mas_equalTo(12);
+        make.width.mas_equalTo(100);
+    }];
+    
+    UITapGestureRecognizer * tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(clickMoreMerchants)];
+    [moreMerchantsLabel addGestureRecognizer:tapGestureRecognizer];
+    
+    //箭头
+    UIImageView * flagImageView = [[UIImageView alloc] init];
+    flagImageView.backgroundColor = [UIColor clearColor];
+    [self.view addSubview:flagImageView];
+    [flagImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerY.equalTo(moreMerchantsLabel);
+        make.height.mas_equalTo(12);
+        make.width.mas_equalTo(8);
+        make.left.equalTo(moreMerchantsLabel.mas_right);
+    }];
+    flagImageView.image = [UIImage imageNamed:@"mine-particulars"];
+}
+
+
+-(void)clickMoreMerchants
+{
+    MerchantListViewController * merchantListViewController = [[MerchantListViewController alloc] init];
+    [self.navigationController pushViewController:merchantListViewController animated:YES];
+//    ScanfResultViewController * resultViewController = [[ScanfResultViewController alloc] init];
+//    [self.navigationController pushViewController:resultViewController animated:YES needHiddenBottomBar:YES];
 }
 
 

@@ -105,7 +105,6 @@
         } else {
             [self dealMessage:message];
         }
-        
     }];
 }
 

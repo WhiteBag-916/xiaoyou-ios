@@ -6,19 +6,23 @@
 //  Copyright © 2015年 xc. All rights reserved.
 //
 
+#import <AVFoundation/AVFoundation.h>
 #import "DescriptionCollectionViewCell.h"
 #import "YTextView.h"
 #import "YCommonActionSheet.h"
 #import "SDPhotoBrowser.h"
 #import "YVIew+Ext.h"
+#import "ActivityReleaseDataManager.h"
 
 NSString *const kDescriptionCollectionViewCell = @"DescriptionCollectionViewCellId";
 
-@interface DescriptionCollectionViewCell ()<UIImagePickerControllerDelegate,UINavigationControllerDelegate>
+@interface DescriptionCollectionViewCell ()<UIImagePickerControllerDelegate,UINavigationControllerDelegate,UITextViewDelegate>
 
 @property (nonatomic,strong) UIImagePickerController * imagePicker;
-@property (nonatomic,strong) UIButton * picButton;
+@property (nonatomic,strong) UIImageView * picImageView;
 @property (nonatomic,strong) YTextView * textView;
+@property (nonatomic,strong) UIButton * deleteBtn;
+@property(nonatomic,strong)ActivityReleaseDataManager * dataManager;
 
 @end
 
@@ -29,44 +33,73 @@ NSString *const kDescriptionCollectionViewCell = @"DescriptionCollectionViewCell
     self = [super initWithFrame:frame];
     if (self) {
         [self changUI];
+        _dataManager = [ActivityReleaseDataManager shareActivityReleaseDataManager];
     }
     return self;
 }
 
 -(void)changUI
 {
-    _picButton = [[UIButton alloc] init];
-    _picButton.layer.cornerRadius = 4;
-    _picButton.clipsToBounds = YES;
-    [_picButton setImage:[UIImage imageNamed:@"btn_add"] forState:UIControlStateNormal];
-    [self.backView addSubview:_picButton];
-    [_picButton mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.mas_equalTo(80);
+    //图片
+    _picImageView = [[UIImageView alloc] init];
+    _picImageView.userInteractionEnabled = YES;
+    _picImageView.layer.cornerRadius = 4;
+    _picImageView.clipsToBounds = YES;
+    _picImageView.image = [UIImage imageNamed:@"camera"];
+    [self.backView addSubview:_picImageView];
+    [_picImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.mas_equalTo(SCALE_NUM(85));
         make.left.equalTo(self.numImageView.mas_left);
-        make.height.width.mas_equalTo(72);
+        make.height.width.mas_equalTo(SCALE_NUM(72));
     }];
-    [_picButton addTarget:self action:@selector(choicePictrue) forControlEvents:UIControlEventTouchUpInside];
+    UITapGestureRecognizer * tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(choicePictrue)];
+    [_picImageView addGestureRecognizer:tapGestureRecognizer];
     
+    UILongPressGestureRecognizer * longPressGestureRecognizer = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(deleteBtnShow)];
+    [_picImageView addGestureRecognizer:longPressGestureRecognizer];
+    
+    //删除
+    _deleteBtn = [[UIButton alloc] init];
+    [_deleteBtn setImage:[UIImage imageNamed:@"btn_delete"] forState:UIControlStateNormal];
+    [_deleteBtn addTarget:self action:@selector(deleteImage) forControlEvents:UIControlEventTouchUpInside];
+    [self.backView addSubview:_deleteBtn];
+    [_deleteBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.mas_equalTo(SCALE_NUM(73));
+        make.right.equalTo(_picImageView.mas_right).offset(SCALE_NUM(12));
+        make.width.height.mas_equalTo(SCALE_NUM(24));
+    }];
+    _deleteBtn.hidden = YES;
+    
+    //输入部分
     _textView = [[YTextView alloc] init];
+    _textView.delegate = self;
     _textView.backgroundColor = [UIColor clearColor];
     _textView.font = CONTENT_FONT(12);
     _textView.placeholderColor = KCOLORGREEN_B5;
     [self.backView addSubview:_textView];
     [_textView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(_picButton.mas_bottom).offset(12);
+        make.top.equalTo(_picImageView.mas_bottom).offset(SCALE_NUM(5));
         make.left.equalTo(self.numImageView.mas_left);
-        make.right.mas_equalTo(-12);
-        make.bottom.mas_equalTo(-12);
+        make.bottom.right.mas_equalTo(SCALE_NUM(-12));
     }];
     
+    //设置每个cell的不同部分
     self.numImageView.image = [UIImage imageNamed:@"img_num2"];
     self.typeLabel.text = @"活动描述";
-    _textView.placeholder = @"例如：\n我觉得要阐明举办此次活动的背景,表述活动举办的意义以及目的,最后将活动所取得的效果加以描述并且稍稍夸大一点.再用几句话总结一下就可以了";
+
+//    _textView.lineSpacing = SCALE_NUM(3);
+    _textView.placeholder = @"例如：\n想品尝自己亲手采制的新茶吗?参与明轩茶艺社本次活动,你可以亲身体会采茶、炒茶的乐趣,并有专业人员全程指导,让您喝上自己亲手制作的茶叶。";
     
 }
 
 -(void)choicePictrue
 {
+    _deleteBtn.hidden = YES;
+    
+    NSDictionary * dic = @{@"position":@2};
+    [[NSNotificationCenter defaultCenter] postNotificationName:KNotification_Activity_Release_ScrollTo object:dic];
+    
+    
     YActionSheetItem *item1 = [YActionSheetItem itemWithTitle:@"拍照"
                                                          type:YCommonActionSheetItemTypeCenterCommon
                                                         block:^(NSInteger checkNum) {
@@ -101,7 +134,7 @@ NSString *const kDescriptionCollectionViewCell = @"DescriptionCollectionViewCell
                 [picker setSourceType:UIImagePickerControllerSourceTypeCamera];
                 picker.delegate = self;
                 [picker setAllowsEditing:YES];
-                [self presentViewController:picker animated:YES completion:nil];
+                [self.viewController presentViewController:picker animated:YES completion:nil];
             }
         }];
     }else{
@@ -109,7 +142,7 @@ NSString *const kDescriptionCollectionViewCell = @"DescriptionCollectionViewCell
         [picker setSourceType:UIImagePickerControllerSourceTypeCamera];
         picker.delegate = self;
         [picker setAllowsEditing:YES];
-        [self presentViewController:picker animated:YES completion:nil];
+        [self.viewController presentViewController:picker animated:YES completion:nil];
     }
 #endif
 }
@@ -122,7 +155,7 @@ NSString *const kDescriptionCollectionViewCell = @"DescriptionCollectionViewCell
     [picker setAllowsEditing:YES];
     [self.myController presentViewController:picker animated:YES completion:nil];
 }
-
+#pragma mark - imagePickerController委托回调
 -(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info
 {
     //打印出字典中的内容
@@ -130,7 +163,9 @@ NSString *const kDescriptionCollectionViewCell = @"DescriptionCollectionViewCell
     
     //获取用户编辑之后的图像
     UIImage* editedImage = [info objectForKey:UIImagePickerControllerEditedImage];
-    [_picButton setImage:editedImage forState:UIControlStateNormal];
+    _picImageView.image = editedImage;
+   
+    _dataManager.ActivityDesciptionImage = editedImage;
 
      [self.myController dismissViewControllerAnimated:YES completion:nil];
 }
@@ -139,4 +174,72 @@ NSString *const kDescriptionCollectionViewCell = @"DescriptionCollectionViewCell
 {
     [self.myController dismissViewControllerAnimated:YES completion:nil];
 }
+
+#pragma mark - 展示删除按钮
+-(void)deleteBtnShow
+{
+    if (![_picImageView.image isEqual:[UIImage imageNamed:@"camera"]])
+    {
+        _deleteBtn.hidden = NO;
+    }
+    
+}
+#pragma mark - 点击删除按钮
+-(void)deleteImage
+{
+    NSLog(@"delete");
+    _deleteBtn.hidden = YES;
+    _picImageView.image = [UIImage imageNamed:@"camera"];
+}
+
+#pragma mark - UITextViewDelegate
+
+- (void)textViewDidChange:(UITextView *)textView
+{
+    _dataManager.ActivityDesciptionText = textView.text;
+    [_dataManager isEnableToRelease];
+}
+
+-(void)textViewDidBeginEditing:(UITextView *)textView
+{
+    NSDictionary * dic = @{@"position":@2};
+    [[NSNotificationCenter defaultCenter] postNotificationName:KNotification_Activity_Release_ScrollTo object:dic];
+    
+}
+
+-(BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text
+{
+    
+    if (range.location>=5000)
+    {
+        if ([self isBlankString:text])
+        {
+            [YUtils showTitle:@"描述不能为空"];
+            return NO;
+        }
+        else
+        {
+            [YUtils showTitle:@"描述字数不能大于5000字"];
+            return NO;
+        }
+    }
+    else
+    {
+        return YES;
+    }
+}
+//判断字符串为空和只为空格解决办法
+- (BOOL) isBlankString:(NSString *)string {
+    if (string == nil || string == NULL) {
+        return YES;
+    }
+    if ([string isKindOfClass:[NSNull class]]) {
+        return YES;
+    }
+    if ([[string stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]] length]==0) {
+        return YES;
+    }
+    return NO;
+}
+
 @end

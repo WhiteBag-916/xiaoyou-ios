@@ -13,10 +13,7 @@
 
 @interface JoinInTopView ()
 
-@property (nonatomic,strong) UIImageView    *headImageView;
-@property (nonatomic,strong) UILabel        *nameLabel;
-@property (nonatomic,strong) UIImageView    *genderImageView;
-@property (nonatomic,strong) UIImageView    *addFriendImageView;
+
 
 @end
 
@@ -36,7 +33,9 @@
 {
     _headImageView = [[UIImageView alloc]init];
     [self addSubview:_headImageView];
-    _headImageView.image = [UIImage imageNamed:@"chatBar_face"];
+    _headImageView.layer.cornerRadius = HEAD_IMAGE_SIZE/2.0;
+    _headImageView.clipsToBounds = YES;
+    _headImageView.image = [UIImage imageNamed:@"headImage.jpg"];
     [_headImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.leading.mas_equalTo(HEADIMAGE_LEADING);
         make.top.mas_equalTo(HEADIMAGE_LEADING);
@@ -63,6 +62,10 @@
     
     _addFriendImageView = [[UIImageView alloc]init];
     [self addSubview:_addFriendImageView];
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(addFriendAction)];
+    _addFriendImageView.userInteractionEnabled = YES;
+    [_addFriendImageView addGestureRecognizer:tap];
+    
     _addFriendImageView.image = [UIImage imageNamed:@"mine-add-friend"];
     [_addFriendImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.trailing.mas_equalTo(SCALE_NUM(-12));
@@ -70,5 +73,9 @@
     }];
 }
 
+
+-(void)addFriendAction {
+    NSLog(@"addFriendAtion click...");
+}
 
 @end

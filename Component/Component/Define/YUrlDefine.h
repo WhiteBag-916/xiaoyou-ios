@@ -20,7 +20,7 @@
 #define hx_AppKey            @"jiankun#xiaoyou"
 #define hx_AppCertificate           @"xiaoyou_producation"
 #else
-#define api_server_base_url @"http://beta.xiaoyou.com/mobile"
+#define api_server_base_url @"http://beta.xiaoyou.com:9081/mobile"
 #define UMENG_APPKEY @"55cda7c3e0f55a0de40018c7"
 #define hx_AppKey            @"jiankun#xiaoyoubeta"
 #define hx_AppCertificate           @"xiaoyou_development_beta"
@@ -168,11 +168,25 @@
 //发送建议
 #define api_suggest_list  @"/suggest/list?flag=groupManager"
 
+
 /**********************************************************
  Url Define: Activity
  **********************************************************/
 //提醒列表
 #define api_remind_list     @"/user/getsenderlist"
 #define api_schedule_list   @"/user/getschedulelist"
+//查询当前用户相关的活动列表
+#define api_activity_findActivityTypes   @"/activity/findActivityTypes"
+//当前用户相关的活动列表接口
+#define api_available_list   @"/activity/list"
+//根据发布后的活动id查询发布后的活动信息
+#define api_available_findByActivityPublishedId   @"/activity/findByActivityPublishedId"
+//活动报名
+#define api_available_enrollActivity   @"/activity/enrollActivity"
+//报名审核
+#define api_available_checkEnrollActivity   @"/activity/checkEnrollActivity"
+//编辑/发布活动
+#define api_available_edit   @"/activity/edit"
+
 #endif
 

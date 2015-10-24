@@ -10,33 +10,6 @@
 #import "YFoundation.h"
 #import "MobClick.h"
 
-
-
-#import <objc/runtime.h>
-
-@implementation UIViewController (MethodSwizzling)
-
-//+ (void)load
-//{
-//    static dispatch_once_t onceToken;
-//    dispatch_once(&onceToken, ^{
-//        {
-//            Method originMethod = class_getInstanceMethod([self class], @selector(viewDidAppear:));
-//            Method swizzledMethod = class_getInstanceMethod([self class], @selector(swizzling_viewDidAppear:));
-//            method_exchangeImplementations(originMethod, swizzledMethod);
-//        }
-//    });
-//}
-//
-//- (void)swizzling_viewDidAppear:(BOOL)animated
-//{
-//    [self swizzling_viewDidAppear:animated];
-//    self.navigationController.interactivePopGestureRecognizer.enabled = YES;
-//}
-
-@end
-
-
 @interface YViewController ()<UIGestureRecognizerDelegate>
 
 @property (nonatomic, strong) UILabel *lbTitle;
@@ -112,7 +85,7 @@
     _lbTitle.text = title;
 }
 - (void)showOrignMode {
-    self.navigationController.navigationBar.barTintColor = [UIColor hexChangeFloat:@"455a64"];
+    self.navigationController.navigationBar.barTintColor = [UIColor hexChangeFloat:@"455964"];
     _lbTitle.textColor = [UIColor whiteColor];
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent animated:true];
 }
@@ -184,7 +157,7 @@
 }
 //导航栏右侧，发布按钮
 - (void)showCustomNavigationPublishButton {
-    [self showNomalNavigationRightButtonWithImage:@"" action:@selector(onNavigationRightButtonClicked) imgName:@"mine-publisher" frame:CGRectMake(0, 0, 15, 20)];
+    [self showNomalNavigationRightButtonWithImage:@"" action:@selector(onNavigationRightButtonClicked) imgName:@"mine-publisher" frame:CGRectMake(0, 0, 18, 64)];
 }
 
 //导航栏右侧，Fast按钮

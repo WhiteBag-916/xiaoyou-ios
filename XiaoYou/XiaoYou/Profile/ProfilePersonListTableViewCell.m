@@ -110,6 +110,10 @@ NSString *const kProfilePersonListTableViewCell = @"kProfilePersonListTableViewC
     return self;
 }
 
+- (BOOL)needLine {
+    return YES;
+}
+
 - (void)setData:(Author *)author needShowGender:(BOOL)needShowGender {
     _myAuthor = author;
     [_face setData:author.uid imageUrl:author.headPic];

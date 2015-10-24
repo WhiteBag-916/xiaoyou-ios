@@ -12,6 +12,7 @@
 
 @property (nonatomic, retain) NSString *placeholder;
 @property (nonatomic, retain) UIColor *placeholderColor;
+@property (nonatomic,assign)float lineSpacing;
 
 -(void)textChanged:(NSNotification*)notification;
 
