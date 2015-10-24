@@ -12,6 +12,7 @@
 
 @interface YWebViewController () <NJKWebViewProgressDelegate, UIWebViewDelegate>
 @property (copy,    nonatomic)  NSString *url;
+@property (assign,  nonatomic)  BOOL canClick;
 @property (strong,  nonatomic)  NJKWebViewProgressView *progressView;
 @property (strong,  nonatomic)  NJKWebViewProgress *progressProxy;
 @property (strong,  nonatomic)  UIWebView *webView;
@@ -22,10 +23,11 @@
 
 @implementation YWebViewController
 
-- (id)initWithUrl:(NSString *)url andTitle:(NSString *)title {
+- (id)initWithUrl:(NSString *)url andTitle:(NSString *)title canClick:(BOOL)canClick {
     if (self = [super init]) {
         _url = url;
         self.title = title;
+        _canClick = canClick;
         self.hidesBottomBarWhenPushed = true;
     }
     return self;
@@ -72,7 +74,7 @@
     _webView.delegate = _progressProxy;
     _progressProxy.webViewProxyDelegate = self;
     _progressProxy.progressDelegate = self;
-    _webView.userInteractionEnabled = false;
+    _webView.userInteractionEnabled = _canClick;
 }
 
 - (void)initProgress {

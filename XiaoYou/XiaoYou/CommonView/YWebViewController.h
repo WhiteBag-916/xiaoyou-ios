@@ -10,6 +10,6 @@
 
 @interface YWebViewController : YViewController
 
-- (id)initWithUrl:(NSString *)url andTitle:(NSString *)title;
+- (id)initWithUrl:(NSString *)url andTitle:(NSString *)title canClick:(BOOL)canClick;
 
 @end
