@@ -9,5 +9,5 @@
 #import "YTableView.h"
 
 @interface InterestTableView : YTableView
-
+@property (weak, nonatomic) UIViewController *parent;
 @end

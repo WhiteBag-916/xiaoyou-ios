@@ -9,7 +9,7 @@
 #import "InterestViewController.h"
 #import "InterestTableView.h"
 @interface InterestViewController ()
-
+@property (strong, nonatomic) InterestTableView *tableView;
 @end
 
 @implementation InterestViewController
@@ -24,11 +24,20 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    [self initController];
+    [self initTable];
 }
 
 - (void)initController {
     [self showCustomNavigationBackButton];
     self.title = @"好看";
 }
-
+- (void)initTable {
+    _tableView = [[InterestTableView alloc] init];
+    [self.view addSubview:_tableView];
+    [_tableView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.equalTo(self.view);
+    }];
+    _tableView.parent = self;
+}
 @end

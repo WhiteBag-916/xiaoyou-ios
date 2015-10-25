@@ -8,6 +8,19 @@
 
 #import "YTableViewCell.h"
 
+#define KInterestCell @"KInterestCell"
+
+@interface InterestModel : NSObject
+@property (strong ,nonatomic) NSString *picture;
+@property (strong, nonatomic) NSString *title;
+@property (strong, nonatomic) NSString *source;
+@property (strong, nonatomic) NSDate *time;
+@property (strong, nonatomic) NSString *url;
+@end
+
+
 @interface InterestTableViewCell : YTableViewCell
+
+- (void)setData:(InterestModel *)model;
 
 @end
