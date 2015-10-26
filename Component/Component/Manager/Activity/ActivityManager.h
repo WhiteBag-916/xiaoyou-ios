@@ -14,34 +14,102 @@
 @interface ActivityManager : YManager<YManager>
 AS_SINGLETON(ActivityManager);
 
-//获取当前用户活动列表
+/*********************************************************************
+ 函数名称 : getCurrentUseAvailableListLimitStart
+ 函数描述 : 获取当前用户活动列表
+ 参数 : limitStart：开始
+        limitEnd：结束
+ 返回值 : return：ActivityInfoModel
+ 作者 : XiongChen
+ *********************************************************************/
 - (void)getCurrentUseAvailableListLimitStart:(NSInteger)limitStart limitEnd:(NSInteger)limitEnd block:(ActionCompleteBlock)block;
 
-//获取搜索活动列表
+/*********************************************************************
+ 函数名称 : getCurrentUseAvailableListLimitStart
+ 函数描述 : 获取搜索活动列表
+ 参数 : limitStart：开始
+        limitEnd：结束
+        searchText：搜索文字
+ 返回值 : return：ActivityInfoModel
+ 作者 : XiongChen
+ *********************************************************************/
 - (void)getCurrentUseAvailableListLimitStart:(NSInteger)limitStart limitEnd:(NSInteger)limitEnd search:(NSString *)searchText block:(ActionCompleteBlock)block;
 
-//筛选活动列表
+/*********************************************************************
+ 函数名称 : getCurrentUseAvailableListLimitStart
+ 函数描述 : 筛选活动列表
+ 参数 : limitStart：开始
+        limitEnd：结束
+        dic：字典类型，根据GetFilterConditionsModel拼凑
+ 返回值 : return：ActivityInfoModel
+ 作者 : XiongChen
+ *********************************************************************/
 - (void)getCurrentUseAvailableListLimitStart:(NSInteger)limitStart limitEnd:(NSInteger)limitEnd dic:(NSDictionary *)condition block:(ActionCompleteBlock)block;
 
-//查询活动类型列表
+/*********************************************************************
+ 函数名称 : findActivityTypes
+ 函数描述 : 查询活动类型列表
+ 参数 : N/A
+ 返回值 : Tags
+ 作者 : XiongChen
+ *********************************************************************/
 - (void)findActivityTypes:(ActionCompleteBlock)block;
 
-//根据发布后的活动id查询发布后的活动信息
+/*********************************************************************
+ 函数名称 : findByActivityPublishedId
+ 函数描述 : 根据发布后的活动id查询发布后的活动信息
+ 参数 : activityId:活动id
+ 返回值 : ActivityInfoModel
+ 作者 : XiongChen
+ *********************************************************************/
 - (void)findByActivityPublishedId:(NSString *)activityId block:(ActionCompleteBlock)block;
 
-//活动报名
+/*********************************************************************
+ 函数名称 : checkEnrollActivity
+ 函数描述 : 活动报名
+ 参数 : checkStatus:发布后的活动id
+ 返回值 : N/A
+ 作者 : XiongChen
+ *********************************************************************/
 - (void)enrollActivity:(NSString *)activityPublishedId block:(ActionCompleteBlock)block;
 
-//报名审核
+/*********************************************************************
+ 函数名称 : checkEnrollActivity
+ 函数描述 : 报名审核
+ 参数 : checkStatus:活动审核状态(见wiki附录1)
+        activityId：活动id
+ 返回值 : N/A
+ 作者 : XiongChen
+ *********************************************************************/
 - (void)checkEnrollActivity:(NSString *)checkStatus activityId:(NSString *)activityId block:(ActionCompleteBlock)block;
 
-//编辑/发布活动
+/*********************************************************************
+ 函数名称 : editActivity
+ 函数描述 : 编辑/发布活动
+ 参数 : 构造活动详情的model
+ 返回值 : N/A
+ 作者 : XiongChen
+ *********************************************************************/
 - (void)editActivity:(ActivityInfoModel *)model block:(ActionCompleteBlock)block;
 
-//上传图片
-- (void)commonImgUpload:(NSString *)uploadType needSnap:(NSString *)needSnap block:(ActionCompleteBlock)block;
+/*********************************************************************
+ 函数名称 : commonImgUpload
+ 函数描述 : 上传图片
+ 参数 : uploadType:目前取值范围为（apps、school、group、user、feed、qr、activity）
+        needSnap:是否要缩略图（true/false）
+        imagePath:图片沙盒路径，用","隔开
+ 返回值 : ImageUploadModel
+ 作者 : XiongChen
+ *********************************************************************/
+- (void)commonImgUpload:(NSString *)uploadType needSnap:(NSString *)needSnap imagePath:(NSString *)imagePath block:(ActionCompleteBlock)block;
 
-//获取有空筛选条件
+/*********************************************************************
+ 函数名称 : getFilterConditions
+ 函数描述 : 获取有空筛选条件
+ 参数 : N/A
+ 返回值 : GetFilterConditionsModel
+ 作者 : XiongChen
+ *********************************************************************/
 - (void)getFilterConditions:(ActionCompleteBlock)block;
 
 @end

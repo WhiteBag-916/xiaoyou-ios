@@ -144,10 +144,11 @@ DEF_SINGLETON(ActivityManager);
 }
 
 //上传图片
-- (void)commonImgUpload:(NSString *)uploadType needSnap:(NSString *)needSnap block:(ActionCompleteBlock)block {
+- (void)commonImgUpload:(NSString *)uploadType needSnap:(NSString *)needSnap imagePath:(NSString *)imagePath block:(ActionCompleteBlock)block {
     CommonImgUpload *action = [[CommonImgUpload alloc] init];
     action.uploadType = uploadType;
     action.needSnap = needSnap;
+    action.imagePath = imagePath;
     
     [YAction startAction:action completionBlock:^(YActionMessage* message) {
         
