@@ -8,6 +8,8 @@
 
 #import "ActivityResultViewController.h"
 #import "ActivityResultTableView.h"
+#import "ActivityManager.h"
+#import "ActivityInfoModel.h"
 
 @interface ActivityResultViewController ()
 
@@ -33,6 +35,14 @@
     [self.view addSubview:_resultTableView];
     [_resultTableView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.left.right.bottom.mas_equalTo(0);
+    }];
+    
+    [[ActivityManager sharedInstance] getCurrentUseAvailableListLimitStart:1 limitEnd:10 dic:self.requestDic block:^(YActionMessage *message) {
+        
+        ActivityInfoModel * model = message.object;
+        NSLog(@"%@",message.object);
+        _resultTableView.dataSouceArr = message.object;
+        
     }];
 }
 

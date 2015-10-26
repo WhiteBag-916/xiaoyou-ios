@@ -14,8 +14,6 @@
 
 @interface ActivityResultTableView ()<UITableViewDataSource,UITableViewDelegate>
 
-@property(nonatomic,strong)NSArray * dataSouceArr;
-
 @end
 
 @implementation ActivityResultTableView

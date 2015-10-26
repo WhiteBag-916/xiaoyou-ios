@@ -17,6 +17,7 @@ NSString *const kActivityReleaseAndTypeCell = @"ActivityReleaseAndTypeCellId";
 @property (nonatomic,strong) UIPickerView * pickerView;
 @property (nonatomic,strong) NSArray * dataArr;
 
+@property (nonatomic,strong) GetFilterConditionsModel * model;
 @end
 
 @implementation ActivityReleaseAndTypeCell
@@ -34,46 +35,48 @@ NSString *const kActivityReleaseAndTypeCell = @"ActivityReleaseAndTypeCellId";
     return self;
 }
 
--(void)setCellType:(NSInteger) num
+-(void)setCellType:(GetFilterConditionsModel *) model
 {
+    _model = model;
     if (_myType == ACTIVITY_CHOICE_TYPE)
     {
-        if (num == 0)
+        
+        if ([model.name isEqualToString:@"空闲"])
         {
-            _dataArr = @[@"全部",@"无课"];
+            _dataArr = model.tags;
             _releaseAndTypeImageView.image = [UIImage imageNamed:@"havetime－icon_free"];
-            _releaseAndTypeLabel.text = @"空闲";
+            _releaseAndTypeLabel.text = model.name;
         }
-        else if (num == 1) {
-            _dataArr = @[@"全部",@"今天",@"一周内",@"两周内"];
+        else if ([model.name isEqualToString:@"日期"]) {
+            _dataArr = model.tags;
             _releaseAndTypeImageView.image = [UIImage imageNamed:@"funny_detail_time"];
-            _releaseAndTypeLabel.text = @"日期";
+            _releaseAndTypeLabel.text = model.name;
         }
-        else if (num == 2)
+        else if ([model.name isEqualToString:@"活动创建来源"])
         {
-            _dataArr = @[@"全部",@"学校活动",@"校友活动",@"个人活动",@"学生组织/社团活动"];
+            _dataArr = model.tags;
             _releaseAndTypeImageView.image = [UIImage imageNamed:@"activity-releaser"];
-            _releaseAndTypeLabel.text = @"发布者";
+            _releaseAndTypeLabel.text = model.name;
             
         }
         else
         {
-            _dataArr = @[@"全部",@"综合类",@"学术类",@"公益类",@"教科类"];
+            _dataArr = model.tags;
             _releaseAndTypeImageView.image = [UIImage imageNamed:@"funny_detail_category"];
-            _releaseAndTypeLabel.text = @"类型";
+            _releaseAndTypeLabel.text = model.name;
         }
     }
     else
     {
-        if (num == 0)
-        {
-            _dataArr = @[@"新校区",@"老校区"];
-            _releaseAndTypeImageView.image = [UIImage imageNamed:@"havetime_icon_academy"];
-            _releaseAndTypeLabel.text = @"校区";
-        }
+//        if (num == 0)
+//        {
+//            _dataArr = @[@"新校区",@"老校区"];
+//            _releaseAndTypeImageView.image = [UIImage imageNamed:@"havetime_icon_academy"];
+//            _releaseAndTypeLabel.text = @"校区";
+//        }
         
     }
-    
+
     [_pickerView reloadAllComponents];
 }
 
@@ -137,12 +140,16 @@ NSString *const kActivityReleaseAndTypeCell = @"ActivityReleaseAndTypeCellId";
 
 -(NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
 {
-    return _dataArr[row];
+    Tags * tag = _dataArr[row];
+    return tag.name;
 }
 
 -(void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
 {
-    
+    if ([self.delegate respondsToSelector:@selector(didSelectRow:andType:)])
+    {
+        [self.delegate didSelectRow:_dataArr[row] andType:_model.param];
+    }
 }
 
 - (UIView *)pickerView:(UIPickerView *)pickerView viewForRow:(NSInteger)row forComponent:(NSInteger)component reusingView:(UIView *)view{

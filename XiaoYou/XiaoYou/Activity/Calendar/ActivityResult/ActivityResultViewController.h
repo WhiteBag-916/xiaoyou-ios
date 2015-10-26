@@ -10,4 +10,6 @@
 
 @interface ActivityResultViewController : YViewController
 
+@property (nonatomic,strong) NSDictionary * requestDic;
+
 @end

@@ -10,4 +10,6 @@
 
 @interface ActivityResultTableView : YTableView
 
+@property(nonatomic,strong)NSArray * dataSouceArr;
+
 @end

@@ -10,10 +10,8 @@
 #import "ActivityReleaseCollectionView.h"
 #import "ActivityReleaseDataManager.h"
 #import "ActivityManager.h"
-#import "ActivityInfoModel.h"
-#import "ActivityImageTextModels.h"
-#import "ImageUploadModel.h"
 #import "YDirectory+Data.h"
+#import "ActivityInfoModel.h"
 
 typedef enum : NSUInteger {
     POSITION1 = 1,
@@ -550,8 +548,6 @@ typedef enum : NSUInteger {
     NSLog(@"%@",_dataManager.ActivityTypeStr);
     NSLog(@"%@",_dataManager.ActivityCheckStr);
     
-    NSMutableDictionary * dic = [[NSMutableDictionary alloc] init];
-    
     [self savePic:_dataManager.ActivityDesciptionImage];
     
     if (_dataManager.ActivityDesciptionImage != nil)
@@ -561,14 +557,50 @@ typedef enum : NSUInteger {
         
         [[ActivityManager sharedInstance] commonImgUpload:@"activity" needSnap:@"true" imagePath:fullPath block:^(YActionMessage *message) {
             NSLog(@"%@",message);
+            
+            NSMutableDictionary *modelDic = [@{} mutableCopy];
+            NSMutableDictionary *activityModelDic = [@{} mutableCopy];
+            
+            [activityModelDic setObject:[self transformDate:_dataManager.ActivityDateEndText] forKey:@"actEndTime"];
+            [activityModelDic setObject:[self transformDate:_dataManager.ActivityDateBeginText] forKey:@"actStartTime"];
+            if (_isIdentity)
+            {
+                [activityModelDic setObject:@"group_activity" forKey:@"activityDirection"];
+                if ([_dataManager.ActivityCheckStr isEqualToString:@"需要报名审核"])
+                {
+                    [activityModelDic setObject:@"true" forKey:@"enrollCheck"];
+                }
+                else
+                {
+                    [activityModelDic setObject:@"false" forKey:@"enrollCheck"];
+                }
+                
+            }
+            else
+            {
+                [activityModelDic setObject:@"user_activity" forKey:@"activityDirection"];
+                [activityModelDic setObject:@"false" forKey:@"enrollCheck"];
+            }
+            [activityModelDic setObject:_dataManager.ActivityPlaceText forKey:@"address"];
+            [activityModelDic setObject:@"true" forKey:@"enroll"];
+            [activityModelDic setObject:[self transformDate:_dataManager.ActivityDateApplyText] forKey:@"enrollEndTime"];
+            [activityModelDic setObject:@"1970-01-01 01:01:01" forKey:@"enrollStartTime"];
+            [activityModelDic setObject:_dataManager.ActivityNameText forKey:@"name"];
+            [activityModelDic setObject:_dataManager.ActivityTypeStr forKey:@"type"];
+            
+            NSArray * arr = @[@{@"content":[message.object valueForKey:@"images"][0],@"displayOrder":@1,@"type":@"image"},@{@"content":_dataManager.ActivityDesciptionText,@"displayOrder":@2,@"type":@"text"}];
+
+            [modelDic setObject:arr forKey:@"activityImageTextModels"];
+            [modelDic setObject:activityModelDic forKey:@"activityModel"];
+            
+            
+            [[ActivityManager sharedInstance] editActivity:modelDic block:^(YActionMessage *message) {
+                NSLog(@"%@",message);
+            }];
         }];
     }
     
-//    ActivityInfoModel * model = [ActivityInfoModel new];
-//    ActivityImageTextModels * imageTextModel = [ActivityImageTextModels new];
-//    imageTextModel.content =
-//    model.activityImageTextModels = 
-//    [ActivityManager sharedInstance] editActivity:(*) block:<#^(YActionMessage *message)block#>
+    
     
 //    NSDateFormatter * formatter = [[NSDateFormatter alloc] init];
 //    [formatter setDateFormat:@"yyyy年MM月dd日 a HH:mm"];
@@ -591,6 +623,17 @@ typedef enum : NSUInteger {
 //        [YUtils showTitle:@"截至时间不能在活动结束时间之后"];
 //    }
     
+}
+
+-(NSString *)transformDate:(NSString *) date
+{
+    NSDateFormatter * formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"yyyy年MM月dd日 a HH:mm"];
+    NSDate * tempDate = [formatter dateFromString:date];
+    [formatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+    NSString * dateStr = [formatter stringFromDate:tempDate];
+    
+    return dateStr;
 }
 
 - (void)savePic:(UIImage *)image
