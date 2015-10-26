@@ -17,7 +17,13 @@
 #import "ActivityManager.h"
 #import "ActivityInfoModel.h"
 
+#define KPAGENUM 10
+
+#define REUSEID_AVAILABEL_CELL @"AvailableCell"
+
 @interface AvailableListView ()<UITableViewDataSource,UITableViewDelegate>
+
+@property (nonatomic,assign) NSInteger currentIndex;
 
 @end
 
@@ -28,6 +34,7 @@
     if (self = [super init]) {
         self.delegate = self;
         self.dataSource = self;
+        [self registerClass:[AvailableCell class] forCellReuseIdentifier:REUSEID_AVAILABEL_CELL];
     }
     return self;
 }
@@ -36,17 +43,19 @@
     if (self = [super initWithFrame:frame style:style]) {
         self.delegate = self;
         self.dataSource = self;
+        [self registerClass:[AvailableCell class] forCellReuseIdentifier:REUSEID_AVAILABEL_CELL];
+        self.currentIndex = 0;
     }
-    
     return self;
 }
 
--(void)setMyDataSource:(NSArray *)myDataSource
+-(NSMutableArray *)availableListArray
 {
-    _myDataSource = myDataSource;
-    [self reloadData];
+    if (!_availableListArray) {
+        _availableListArray = [NSMutableArray array];
+    }
+    return _availableListArray;
 }
-
 
 #pragma mark - 继承者
 - (BOOL)showHeaderRefresh
@@ -65,24 +74,50 @@
 
 - (void)loadNewData
 {
+    _currentIndex = 0;
     [self sendRequest];
 }
 
 - (void)loadMoreData
 {
+    _currentIndex = self.availableListArray.count;
     [self sendRequest];
 }
 
 - (void)sendRequest {
-    [self stopLoadNewData];
-    NSString *lastID;
-    if (![self isHeaderRefresh]) {
-        //lastID = [NSString stringWithFormat:@"%g", [[_feedListArray.lastObject feed] feedIdentifier]];
-    }
-    //  [[FeedManager sharedInstance] feedList:lastID size:KPAGENUM queryCode:_filter block:^(YActionMessage *message) {
+    [[ActivityManager sharedInstance] getCurrentUseAvailableListLimitStart:_currentIndex limitEnd:_currentIndex+KPAGENUM block:^(YActionMessage *message) {
+        if (message.isSuccess) {
+            if ([self isHeaderRefresh]) {
+                [self.availableListArray removeAllObjects];
+            }
+            [self.availableListArray addObjectsFromArray:message.object];
+            
+            [self hiddenFooter:NO];
+            if ([message.object count] < KPAGENUM) {
+                [self showNoticeNoMoreData];
+            }
+            [self reloadData];
+            _currentIndex += KPAGENUM;
+        } else {
+            [YUtils showTitle:message.desc];
+        }
+        if ([self isHeaderRefresh]) {
+            [self stopLoadNewData];
+        } else
+        {
+            [self stopLoadMoreData];
+        }
+    }];
+    
+//    [self stopLoadNewData];
+//    NSString *lastID;
+//    if (![self isHeaderRefresh]) {
+//        lastID = [NSString stringWithFormat:@"%g", [[_feedListArray.lastObject feed] feedIdentifier]];
+//    }
+//      [[FeedManager sharedInstance] feedList:lastID size:KPAGENUM queryCode:_filter block:^(YActionMessage *message) {
     //        if (message.isSuccess) {
     //            if ([self isHeaderRefresh]) {
-    //                [_feedListArray removeAllObjects];
+//                    [_feedListArray removeAllObjects];
     //            }
     //            [self hiddenFooter:false];
     //            [_feedListArray addObjectsFromArray:message.object];
@@ -100,73 +135,30 @@
     //            [self stopLoadMoreData];
     //        }
     //    }];
-    //    NSString *lastID;
-    if (![self isHeaderRefresh]) {
-        lastID = [NSString stringWithFormat:@""];
-    }
-    /*[[RemindManager sharedInstance] getMyFeed:lastID limitStart:2 limitEnd:10 block:^(YActionMessage *message) {
-        if (message.isSuccess) {
-            if ([self isHeaderRefresh]) {
-                [_remindListArray removeAllObjects];
-            }
-            [self hiddenFooter:false];
-            [_remindListArray addObjectsFromArray:message.object];
-            if ([message.object count] < 6) {
-                [self showNoticeNoMoreData];
-            }
-            [self reloadData];
-        } else {
-            [YUtils showTitle:message.desc];
-        }
-        if ([self isHeaderRefresh]) {
-            [self stopLoadNewData];
-        } else {
-            [self stopLoadMoreData];
-        }
-    }];*/
+
+
 }
-
-
--(void)loadMyData {
-    
-    [[ActivityManager sharedInstance] getCurrentUseAvailableListLimitStart:0 limitEnd:10 block:^(YActionMessage *message) {
-        [YUtils hiddenProgressHUD:self];
-        if (message.isSuccess) {
-            [self dealData:message.object];
-        } else {
-            [YUtils showTitle:message.desc];
-        }
-    }];
-}
-
-
-//
--(void)dealData:(ActivityInfoModel*)availabelModel
-{
-    NSLog(@"this is my data = %@",availabelModel);
-}
-
-
 
 #pragma mark 协议方法
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 5;
+    return self.availableListArray.count + 2;
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    CGFloat height;
     if (indexPath.row == 0)
         return SCALE_NUM(140);
     else if (indexPath.row == 1)
         return SCALE_NUM(85);
-//    else if (indexPath.row == 6) {
-//        return SCALE_NUM(85);
-//    }
-    if (IS_IPHONE_6P) {
-        return SCALE_NUM(490);
+    else {
+        height = [tableView fd_heightForCellWithIdentifier:REUSEID_AVAILABEL_CELL cacheByIndexPath:indexPath configuration:^(AvailableCell *cell) {
+            [cell setData:_availableListArray[indexPath.row-2]];
+        }];
+        return height;
     }
-    return SCALE_NUM(510);
+    return 1100;
 }
 
 -(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -174,19 +166,13 @@
     if (indexPath.row == 0) {
         ScheduleCardCell *cell = [ScheduleCardCell cellWithTableView:tableView];
         return cell;
-    }
-    else if (indexPath.row == 1) {
+    } else if (indexPath.row == 1) {
         StudyRoomCell *cell = [StudyRoomCell cellWithTableView:tableView];
         return cell;
-    }
-//    else if (indexPath.row == 6) {
-//        ScroungeCourseCell *cell = [ScroungeCourseCell cellWithTableView:tableView];
-//        return cell;
-//    }
-    else
+    } else
     {
-        AvailableCell *cell = [AvailableCell cellWithTableView:tableView];
-        [cell setData:self.myDataSource[indexPath.row-2]];
+        AvailableCell *cell = [tableView dequeueReusableCellWithIdentifier:REUSEID_AVAILABEL_CELL];
+        [cell setData:self.availableListArray[indexPath.row-2]];
         return cell;
     }
     return nil;

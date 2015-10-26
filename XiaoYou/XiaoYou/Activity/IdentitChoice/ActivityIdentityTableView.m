@@ -21,6 +21,7 @@
     if (self) {
         self.delegate = self;
         self.dataSource = self;
+        self.scrollEnabled = NO;
         self.separatorStyle = UITableViewCellSeparatorStyleNone;
         
         [self registerClass:[ActivityIdentityTableViewCell class] forCellReuseIdentifier:kActivityIdentityTableViewCell];

@@ -31,6 +31,7 @@ NSString *const kProfileInfoManagerGroups = @"managerGroups";
 NSString *const kProfileInfoUnreadAlterCount = @"unreadAlterCount";
 NSString *const kProfileInfoSchoolName = @"schoolName";
 NSString *const kProfileInfoFriendStatus = @"friendStatus";
+NSString *const kProfileInfoGender = @"gender";
 
 @interface ProfileInfo ()
 
@@ -60,6 +61,7 @@ NSString *const kProfileInfoFriendStatus = @"friendStatus";
 @synthesize unreadAlterCount = _unreadAlterCount;
 @synthesize schoolName = _schoolName;
 @synthesize friendStatus = _friendStatus;
+@synthesize gender = _gender;
 
 + (instancetype)modelObjectWithDictionary:(NSDictionary *)dict
 {
@@ -170,6 +172,7 @@ NSString *const kProfileInfoFriendStatus = @"friendStatus";
     self.unreadAlterCount = [[self objectOrNilForKey:kProfileInfoUnreadAlterCount fromDictionary:dict] doubleValue];
     self.schoolName = [self objectOrNilForKey:kProfileInfoSchoolName fromDictionary:dict];
     self.friendStatus = [self objectOrNilForKey:kProfileInfoFriendStatus fromDictionary:dict];
+    self.gender = [self objectOrNilForKey:kProfileInfoGender fromDictionary:dict];
     
     return self;
     
@@ -260,6 +263,7 @@ NSString *const kProfileInfoFriendStatus = @"friendStatus";
     [mutableDict setValue:[NSNumber numberWithDouble:self.unreadAlterCount] forKey:kProfileInfoUnreadAlterCount];
     [mutableDict setValue:self.schoolName forKey:kProfileInfoSchoolName];
     [mutableDict setValue:self.friendStatus forKey:kProfileInfoFriendStatus];
+    [mutableDict setValue:self.gender forKey:kProfileInfoGender];
 
     return [NSDictionary dictionaryWithDictionary:mutableDict];
 }
@@ -303,6 +307,7 @@ NSString *const kProfileInfoFriendStatus = @"friendStatus";
     self.unreadAlterCount = [aDecoder decodeDoubleForKey:kProfileInfoUnreadAlterCount];
     self.schoolName = [aDecoder decodeObjectForKey:kProfileInfoSchoolName];
     self.friendStatus = [aDecoder decodeObjectForKey:kProfileInfoFriendStatus];
+    self.gender = [aDecoder decodeObjectForKey:kProfileInfoGender];
     
     return self;
 }
@@ -330,6 +335,7 @@ NSString *const kProfileInfoFriendStatus = @"friendStatus";
     [aCoder encodeDouble:_unreadAlterCount forKey:kProfileInfoUnreadAlterCount];
     [aCoder encodeObject:_schoolName forKey:kProfileInfoSchoolName];
     [aCoder encodeObject:_friendStatus forKey:kProfileInfoFriendStatus];
+    [aCoder encodeObject:_gender forKey:kProfileInfoGender];
 }
 
 - (id)copyWithZone:(NSZone *)zone
@@ -358,6 +364,7 @@ NSString *const kProfileInfoFriendStatus = @"friendStatus";
         copy.unreadAlterCount = self.unreadAlterCount;
         copy.schoolName = [self.schoolName copyWithZone:zone];
         copy.friendStatus = [self.friendStatus copyWithZone:zone];
+        copy.gender = [self.gender copyWithZone:zone];
     }
     
     return copy;

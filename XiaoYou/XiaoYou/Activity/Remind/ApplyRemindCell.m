@@ -182,7 +182,6 @@
     
     _bottomLineView.backgroundColor = KCOLORGRAY_B6;
     [_bottomLineView mas_makeConstraints:^(MASConstraintMaker *make) {
-        //make.top.equalTo(_applyContentLable.mas_bottom).offset(SCALE_NUM(15)).priorityHigh();
         make.leading.equalTo(_wrapContentView);
         make.trailing.equalTo(_wrapContentView);
         make.height.mas_equalTo(1);
@@ -198,6 +197,7 @@
 }
 
 
+//添加同意-忽略状态
 -(void)addStatusButton
 {
     _statusButton = [UIButton buttonWithType:UIButtonTypeSystem];
@@ -215,6 +215,7 @@
     }];
 }
 
+//添加底部同意/选择按钮
 -(void)addBottomSelectView
 {
     _bottomSelectView = [[UIView alloc]init];

@@ -58,7 +58,7 @@
     
     
     _sepLineView = [[UIView alloc]init];
-    _sepLineView.backgroundColor = [UIColor lightGrayColor];
+    _sepLineView.backgroundColor = KCOLORGREEN_B3;
     [self addSubview:_sepLineView];
     [_sepLineView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(_headImageView.mas_bottom).offset(12);

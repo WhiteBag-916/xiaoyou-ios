@@ -14,7 +14,6 @@
 #import "TypeCollectionViewCell.h"
 #import "CheckCollectionViewCell.h"
 
-
 @interface ActivityReleaseCollectionView ()<UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout,UIScrollViewDelegate>
 
 //是否为社长
@@ -47,6 +46,7 @@
          ];
         [self registerClass:[CheckCollectionViewCell class] forCellWithReuseIdentifier:kCheckCollectionViewCell
          ];
+        
     }
     return self;
 }

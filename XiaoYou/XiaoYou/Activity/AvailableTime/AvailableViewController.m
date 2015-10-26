@@ -16,6 +16,10 @@
 #import "ActivityIdentityViewController.h"
 #import "ActivityModelTest.h"
 #import "AssociationsSearchViewController.h"
+#import "ActivityManager.h"
+#import "ProvisionManager.h"
+#import "ProfileInfo.h"
+#import "Tags.h"
 @interface AvailableViewController ()
 
 @property (nonatomic,strong) AvailableListView *availableListView;
@@ -37,6 +41,18 @@
         [self addGuideView];
     [self setUpCustomNavgationBar];
     [self availableListView];
+    
+    
+//    [[ActivityManager sharedInstance]getCurrentUseAvailableListLimitStart:0 limitEnd:10 block:^(YActionMessage *message) {
+//        
+//        if (message.isSuccess) {
+//            NSLog(@"this is object = %@",message.object);
+//        }
+//        
+//        NSLog(@"this is %@",message);
+//    }];
+    
+    
 }
 
 
@@ -90,13 +106,12 @@
         [_availableListView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.edges.equalTo(self.view);
         }];
-        [_availableListView loadMyData];
     }
-    _availableListView.myDataSource = [self getDataSource];
+    [_availableListView sendRequest];
     return _availableListView;
 }
 
-
+#pragma mark 测试数据代码
 -(NSArray*)getDataSource
 {
     ActivityModelTest *m1 = [[ActivityModelTest alloc]init];
@@ -157,10 +172,18 @@
 
 //发布Action
 -(void)publishAction {
-    ActivityIdentityViewController *activityVC = [[ActivityIdentityViewController alloc]init];
-    //[self.navigationController pushViewController:activityVC animated:YES needHiddenBottomBar:YES];
-    activityVC.availableViewController = self;
-    [self presentViewController:activityVC animated:YES completion:nil];
+    NSArray * groupArr =[[ProvisionManager sharedInstance] getProfile].managerGroups;
+    if (groupArr.count > 0)
+    {
+        ActivityIdentityViewController *activityVC = [[ActivityIdentityViewController alloc]init];
+        activityVC.availableViewController = self;
+        [self presentViewController:activityVC animated:YES completion:nil];
+    }
+    else
+    {
+        ActivityReleaseController *releaseVC = [[ActivityReleaseController alloc]initWithIsIdentity:NO];
+        [self.navigationController pushViewController:releaseVC animated:YES needHiddenBottomBar:YES];
+    }
 }
 
 //筛选Action

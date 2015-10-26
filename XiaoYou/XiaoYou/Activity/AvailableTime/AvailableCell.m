@@ -8,6 +8,10 @@
 
 #import "AvailableCell.h"
 #import "FeedImageGroup.h"
+#import "ActivityImageTextModels.h"
+#import "ActivityCoverageModels.h"
+#import "TimeFormatterConvert.h"
+
 #define REUSEID @"AvailableCell"
 @interface AvailableCell ()
 
@@ -26,7 +30,7 @@
 @property (nonatomic,strong) UILabel        *oranizerDes;       //组织者
 
 @property (nonatomic,strong) UILabel        *signUpTimeLabel;       //报名截止时间
-@property (nonatomic,strong) UILabel        *activityTimeLabel;     //活动开始时间
+@property (nonatomic,strong) UILabel        *activityStartTimeLabel;//活动开始时间
 @property (nonatomic,strong) UILabel        *activityEndTimeLabel;  //活动结束时间
 @property (nonatomic,strong) UILabel        *activityLocationLabel; //活动地点
 @property (nonatomic,strong) UILabel        *organizerLabel;        //组织者
@@ -35,17 +39,6 @@
 
 
 @implementation AvailableCell
-
-
-+(AvailableCell *)cellWithTableView:(UITableView *)tableView
-{
-    AvailableCell *cell = [tableView dequeueReusableCellWithIdentifier:REUSEID];
-    if (!cell) {
-        cell = [[AvailableCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:REUSEID];
-    }
-    return cell;
-}
-
 
 -(instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
@@ -65,6 +58,8 @@
     [_startImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.leading.mas_equalTo(SCALE_NUM(0));
         make.top.mas_equalTo(SCALE_NUM(20));
+        make.height.mas_equalTo(SCALE_NUM(12));
+        make.width.mas_equalTo(SCALE_NUM(3));
     }];
     
     
@@ -75,15 +70,12 @@
     _titleLabel.textColor = KCOLORGREEN_B4;
     _titleLabel.font = CONTENT_FONT(15);
     [_titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        //make.left.equalTo(_typeLabel.mas_right).offset(SCALE_NUM(10));
-        //make.top.equalTo(_typeLabel);
-        
         make.leading.mas_equalTo(SCALE_NUM(15));
         if (IS_IPHONE_6)
             make.trailing.mas_equalTo(SCALE_NUM(-45));
         else
             make.trailing.mas_equalTo(SCALE_NUM(-55));
-        make.top.equalTo(_startImageView.mas_top).offset(SCALE_NUM(-5));
+        make.top.equalTo(_startImageView).offset(SCALE_NUM(-5));
     }];
     
     
@@ -98,7 +90,7 @@
     [_typeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.height.mas_equalTo(SCALE_NUM(15));
         make.trailing.mas_equalTo(SCALE_NUM(-15));
-        make.top.equalTo(_titleLabel).offset(SCALE_NUM(2));
+        make.top.equalTo(_startImageView).offset(SCALE_NUM(-5));
     }];
     
     _descriptionLabel = [[UILabel alloc]init];
@@ -125,20 +117,17 @@
         make.left.equalTo(_descriptionLabel);
         make.right.equalTo(_descriptionLabel.mas_right);
     }];
-    NSArray *smallImages    = @[@"/dev/feed/s/c2cfe0e7-ba38-43e0-b345-3d14ff2f2bcf.png"];
-    NSArray *bigImages      = @[@"/dev/feed/c2cfe0e7-ba38-43e0-b345-3d14ff2f2bcf.png"];
-    [_imageGroupView updateWithImgs:smallImages bigPics:bigImages];
-    
     
     _signUpTimeDes = [[UILabel alloc]init];
     [self.contentView addSubview:_signUpTimeDes];
     _signUpTimeDes.text = @"报名截止时间：";
     _signUpTimeDes.font = CONTENT_FONT(12);
+    _signUpTimeDes.numberOfLines = 1;
     _signUpTimeDes.textColor = KCOLORGREEN_B5;
     [_signUpTimeDes mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.height.mas_equalTo(SCALE_NUM(12));
-        make.left.equalTo(_imageGroupView);
         make.top.equalTo(_imageGroupView.mas_bottom).offset(SCALE_NUM(15));
+        make.left.equalTo(_imageGroupView);
+        make.height.mas_equalTo(SCALE_NUM(12));
     }];
     
     _signUpTimeLabel = [[UILabel alloc]init];
@@ -159,17 +148,17 @@
     _activityTimeDes.textColor = KCOLORGREEN_B5;
     _activityTimeDes.text = @"活动开始时间：";
     [_activityTimeDes mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.height.mas_equalTo(SCALE_NUM(12));
         make.top.equalTo(_signUpTimeDes.mas_bottom).offset(SCALE_NUM(15));
         make.left.equalTo(_signUpTimeDes);
+        make.height.mas_equalTo(SCALE_NUM(12));
     }];
     
-    _activityTimeLabel = [[UILabel alloc]init];
-    [self.contentView addSubview:_activityTimeLabel];
-    _activityTimeLabel.font = CONTENT_FONT(12);
-    _activityTimeLabel.textColor = KCOLORGREEN_B5;
-    _activityTimeLabel.text = @"2015/10/05 06:00";
-    [_activityTimeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+    _activityStartTimeLabel = [[UILabel alloc]init];
+    [self.contentView addSubview:_activityStartTimeLabel];
+    _activityStartTimeLabel.font = CONTENT_FONT(12);
+    _activityStartTimeLabel.textColor = KCOLORGREEN_B5;
+    _activityStartTimeLabel.text = @"2015/10/05 06:00";
+    [_activityStartTimeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.height.mas_equalTo(SCALE_NUM(12));
         make.centerY.equalTo(_activityTimeDes);
         make.left.equalTo(_signUpTimeLabel);
@@ -196,7 +185,7 @@
     [_activityEndTimeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.height.mas_equalTo(SCALE_NUM(12));
         make.centerY.equalTo(_activityEndTimeDes);
-        make.left.equalTo(_activityTimeLabel);
+        make.left.equalTo(_activityStartTimeLabel);
     }];
     
     
@@ -225,6 +214,7 @@
     
     _oranizerDes = [[UILabel alloc]init];
     [self.contentView addSubview:_oranizerDes];
+    _oranizerDes.numberOfLines = 1;
     _oranizerDes.font = CONTENT_FONT(12);
     _oranizerDes.textColor = KCOLORGREEN_B5;
     _oranizerDes.text = @"组织者：";
@@ -236,30 +226,43 @@
     
     _organizerLabel = [[UILabel alloc]init];
     [self.contentView addSubview:_organizerLabel];
+    _organizerLabel.numberOfLines = 1;
     _organizerLabel.font = CONTENT_FONT(12);
     _organizerLabel.textColor = KCOLORGREEN_B5;
     _organizerLabel.text = @"话剧社";
     [_organizerLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.height.mas_equalTo(SCALE_NUM(12));
         make.centerY.equalTo(_oranizerDes);
-        make.left.equalTo(_activityTimeLabel);
+        make.left.equalTo(_activityStartTimeLabel);
+        make.bottom.mas_equalTo(SCALE_NUM(-15));
     }];
 }
 
 
--(void)setData:(ActivityModelTest *)model
+-(void)setData:(ActivityInfoModel *)model
 {
-    if (![model.acTitle containsString:@"            "])
-        model.acTitle = [NSString stringWithFormat:@"%@",model.acTitle];
-    _titleLabel.text        = model.acTitle;
-    //_descriptionLabel.text  = model.acBrief;
+    ActivityPublishedModel  *publishModel   = model.activityPublishedModel;
+    NSArray *imageTextModels =  model.activityImageTextModels;
+    NSArray *coverageModels =   model.activityCoverageModels;
     
-    [_descriptionLabel setText:model.acBrief lineSpacing:SCALE_NUM(10.f)];
-    NSArray *smallImages    = @[model.acPhotos];
-    NSArray *bigImages      = @[model.acPhotos];
-    [_imageGroupView updateWithImgs:smallImages bigPics:bigImages];
-    _activityLocationLabel.text = model.acLocation;
-    _organizerLabel.text = model.acOgnazier;
+    _titleLabel.text        = publishModel.name;//标题
+    //_titleLabel.text        = @"奋斗史奋斗史奋斗史奋斗史奋斗史奋斗史奋斗史奋斗史奋斗史";
+    //图文混排
+    for (ActivityImageTextModels *imageText in imageTextModels) {
+        if ([imageText.type isEqualToString:@"text"]) {
+            _descriptionLabel.text = imageText.content;
+        }
+        else if ([imageText.type isEqualToString:@"image"]) {
+            imageText.content = @"/dev/feed/s/c2cfe0e7-ba38-43e0-b345-3d14ff2f2bcf.png";
+            [_imageGroupView updateWithImgs:@[imageText.content] bigPics:@[imageText.content]];
+        }
+    }
+    
+    _signUpTimeLabel.text = [TimeFormatterConvert timeConvertToFommtterAvailable:publishModel.enroll];
+    _activityStartTimeLabel.text = [TimeFormatterConvert timeConvertToFommtterAvailable:publishModel.actStartTime];
+    _activityEndTimeLabel.text = [TimeFormatterConvert timeConvertToFommtterAvailable:publishModel.actEndTime];
+    _activityLocationLabel.text = publishModel.address;
+    _organizerLabel.text = @"话剧社";
 }
 
 @end

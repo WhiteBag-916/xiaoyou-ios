@@ -9,10 +9,13 @@
 /* Begin PBXBuildFile section */
 		047145D51BD8E5B4001D75FC /* RemindModelTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 047145D41BD8E5B4001D75FC /* RemindModelTest.m */; };
 		047145D81BD8F03B001D75FC /* JoinInModelTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 047145D71BD8F03B001D75FC /* JoinInModelTest.m */; };
-		049BA8D81BD8C70900A368D7 /* ActivityModelTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 049BA8D71BD8C70900A368D7 /* ActivityModelTest.m */; };
+		04AF14521BDDC74400FEE6A4 /* FilterCondition.m in Sources */ = {isa = PBXBuildFile; fileRef = 04AF14511BDDC74400FEE6A4 /* FilterCondition.m */; settings = {ASSET_TAGS = (); }; };
+		04AF14551BDDC7AC00FEE6A4 /* FilterConditionModels.m in Sources */ = {isa = PBXBuildFile; fileRef = 04AF14541BDDC7AC00FEE6A4 /* FilterConditionModels.m */; settings = {ASSET_TAGS = (); }; };
+		049173A51BDCBACE00D204AF /* ActivityModelTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 049173A41BDCBACE00D204AF /* ActivityModelTest.m */; };
 		20859A991B64C0BC00580ED3 /* ResultCommon.m in Sources */ = {isa = PBXBuildFile; fileRef = 20859A981B64C0BC00580ED3 /* ResultCommon.m */; };
 		20859AA31B64CB7E00580ED3 /* LoginResp.m in Sources */ = {isa = PBXBuildFile; fileRef = 20859AA01B64CB7E00580ED3 /* LoginResp.m */; };
 		20859AB31B64E2F600580ED3 /* YModel+ActionMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 20859AB21B64E2F600580ED3 /* YModel+ActionMessage.m */; };
+		209E08C81BDDCDDD0062758E /* GetFilterConditionsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 209E08C71BDDCDDD0062758E /* GetFilterConditionsModel.m */; };
 		20C5B0651B8DB55C00B4A8A8 /* GroupDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = 20C5B0621B8DB55C00B4A8A8 /* GroupDetail.m */; };
 		20C5B0661B8DB55C00B4A8A8 /* GroupModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 20C5B0641B8DB55C00B4A8A8 /* GroupModel.m */; };
 		20C5B0691B8DB75A00B4A8A8 /* AlertList.m in Sources */ = {isa = PBXBuildFile; fileRef = 20C5B0681B8DB75A00B4A8A8 /* AlertList.m */; };
@@ -39,6 +42,7 @@
 		20E0C0821B88B0CA00EDAED4 /* LinkManList.m in Sources */ = {isa = PBXBuildFile; fileRef = 20E0C0811B88B0CA00EDAED4 /* LinkManList.m */; };
 		20E1C6791B89F0A7008BA9D6 /* Comment.m in Sources */ = {isa = PBXBuildFile; fileRef = 20E1C6741B89F0A7008BA9D6 /* Comment.m */; };
 		20E1C67A1B89F0A7008BA9D6 /* CommentListItems.m in Sources */ = {isa = PBXBuildFile; fileRef = 20E1C6761B89F0A7008BA9D6 /* CommentListItems.m */; };
+		20E372C21BDDC03B0063BF56 /* ImageUploadModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 20E372C11BDDC03B0063BF56 /* ImageUploadModel.m */; };
 		3307BBCB1B9561FD003446F8 /* SenderListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3307BBC81B9561FD003446F8 /* SenderListModel.m */; };
 		3307BBCC1B9561FD003446F8 /* SuggestListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3307BBCA1B9561FD003446F8 /* SuggestListModel.m */; };
 		331E17E41B7AFBC8006789B0 /* Tags.m in Sources */ = {isa = PBXBuildFile; fileRef = 331E17E11B7AFBC8006789B0 /* Tags.m */; };
@@ -81,14 +85,20 @@
 		047145D41BD8E5B4001D75FC /* RemindModelTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RemindModelTest.m; sourceTree = "<group>"; };
 		047145D61BD8F03B001D75FC /* JoinInModelTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JoinInModelTest.h; sourceTree = "<group>"; };
 		047145D71BD8F03B001D75FC /* JoinInModelTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JoinInModelTest.m; sourceTree = "<group>"; };
-		049BA8D61BD8C70900A368D7 /* ActivityModelTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityModelTest.h; sourceTree = "<group>"; };
-		049BA8D71BD8C70900A368D7 /* ActivityModelTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityModelTest.m; sourceTree = "<group>"; };
+		049173A31BDCBACE00D204AF /* ActivityModelTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityModelTest.h; sourceTree = "<group>"; };
+		049173A41BDCBACE00D204AF /* ActivityModelTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityModelTest.m; sourceTree = "<group>"; };
+		04AF14501BDDC74400FEE6A4 /* FilterCondition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FilterCondition.h; sourceTree = "<group>"; };
+		04AF14511BDDC74400FEE6A4 /* FilterCondition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FilterCondition.m; sourceTree = "<group>"; };
+		04AF14531BDDC7AC00FEE6A4 /* FilterConditionModels.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FilterConditionModels.h; sourceTree = "<group>"; };
+		04AF14541BDDC7AC00FEE6A4 /* FilterConditionModels.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FilterConditionModels.m; sourceTree = "<group>"; };
 		20859A971B64C0BC00580ED3 /* ResultCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResultCommon.h; sourceTree = "<group>"; };
 		20859A981B64C0BC00580ED3 /* ResultCommon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResultCommon.m; sourceTree = "<group>"; };
 		20859A9F1B64CB7E00580ED3 /* LoginResp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginResp.h; sourceTree = "<group>"; };
 		20859AA01B64CB7E00580ED3 /* LoginResp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginResp.m; sourceTree = "<group>"; };
 		20859AB11B64E2F600580ED3 /* YModel+ActionMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "YModel+ActionMessage.h"; sourceTree = "<group>"; };
 		20859AB21B64E2F600580ED3 /* YModel+ActionMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "YModel+ActionMessage.m"; sourceTree = "<group>"; };
+		209E08C61BDDCDDD0062758E /* GetFilterConditionsModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetFilterConditionsModel.h; sourceTree = "<group>"; };
+		209E08C71BDDCDDD0062758E /* GetFilterConditionsModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetFilterConditionsModel.m; sourceTree = "<group>"; };
 		20C5B0611B8DB55C00B4A8A8 /* GroupDetail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroupDetail.h; sourceTree = "<group>"; };
 		20C5B0621B8DB55C00B4A8A8 /* GroupDetail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroupDetail.m; sourceTree = "<group>"; };
 		20C5B0631B8DB55C00B4A8A8 /* GroupModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroupModel.h; sourceTree = "<group>"; };
@@ -142,6 +152,8 @@
 		20E1C6741B89F0A7008BA9D6 /* Comment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Comment.m; sourceTree = "<group>"; };
 		20E1C6751B89F0A7008BA9D6 /* CommentListItems.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentListItems.h; sourceTree = "<group>"; };
 		20E1C6761B89F0A7008BA9D6 /* CommentListItems.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentListItems.m; sourceTree = "<group>"; };
+		20E372C01BDDC03B0063BF56 /* ImageUploadModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageUploadModel.h; sourceTree = "<group>"; };
+		20E372C11BDDC03B0063BF56 /* ImageUploadModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageUploadModel.m; sourceTree = "<group>"; };
 		3307BBC71B9561FD003446F8 /* SenderListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SenderListModel.h; sourceTree = "<group>"; };
 		3307BBC81B9561FD003446F8 /* SenderListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SenderListModel.m; sourceTree = "<group>"; };
 		3307BBC91B9561FD003446F8 /* SuggestListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SuggestListModel.h; sourceTree = "<group>"; };
@@ -192,6 +204,14 @@
 		0447A3A21BD7788300341684 /* MainPage */ = {
 			isa = PBXGroup;
 			children = (
+				04AF14531BDDC7AC00FEE6A4 /* FilterConditionModels.h */,
+				04AF14541BDDC7AC00FEE6A4 /* FilterConditionModels.m */,
+				04AF14501BDDC74400FEE6A4 /* FilterCondition.h */,
+				04AF14511BDDC74400FEE6A4 /* FilterCondition.m */,
+				209E08C61BDDCDDD0062758E /* GetFilterConditionsModel.h */,
+				209E08C71BDDCDDD0062758E /* GetFilterConditionsModel.m */,
+				049173A31BDCBACE00D204AF /* ActivityModelTest.h */,
+				049173A41BDCBACE00D204AF /* ActivityModelTest.m */,
 				20DDA4231BDA24300023179A /* ActivityCoverageModels.h */,
 				20DDA4241BDA24300023179A /* ActivityCoverageModels.m */,
 				20DDA4251BDA24300023179A /* ActivityImageTextModels.h */,
@@ -200,8 +220,6 @@
 				20DDA4281BDA24300023179A /* ActivityInfoModel.m */,
 				20DDA4291BDA24300023179A /* ActivityPublishedModel.h */,
 				20DDA42A1BDA24300023179A /* ActivityPublishedModel.m */,
-				049BA8D61BD8C70900A368D7 /* ActivityModelTest.h */,
-				049BA8D71BD8C70900A368D7 /* ActivityModelTest.m */,
 				047145D61BD8F03B001D75FC /* JoinInModelTest.h */,
 				047145D71BD8F03B001D75FC /* JoinInModelTest.m */,
 				047145D31BD8E5B4001D75FC /* RemindModelTest.h */,
@@ -222,6 +240,8 @@
 		20859A961B64C0BC00580ED3 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				20E372C01BDDC03B0063BF56 /* ImageUploadModel.h */,
+				20E372C11BDDC03B0063BF56 /* ImageUploadModel.m */,
 				20DED86D1B94205B004B5E7B /* EasyModel.h */,
 				20DED86E1B94205B004B5E7B /* EasyModel.m */,
 				20859A971B64C0BC00580ED3 /* ResultCommon.h */,
@@ -481,11 +501,12 @@
 				047145D51BD8E5B4001D75FC /* RemindModelTest.m in Sources */,
 				20DCB9581B8CA60800C758DE /* ApplicantList.m in Sources */,
 				20E0C07F1B88B0CA00EDAED4 /* ClassList.m in Sources */,
+				20E372C21BDDC03B0063BF56 /* ImageUploadModel.m in Sources */,
 				20859A991B64C0BC00580ED3 /* ResultCommon.m in Sources */,
+				049173A51BDCBACE00D204AF /* ActivityModelTest.m in Sources */,
 				20DA8B441B8F5E76007D0CDE /* ReadFeedCount.m in Sources */,
 				333E95DF1B70B7650001059D /* SystemPushInfoListModel.m in Sources */,
 				20E0C06E1B88B0CA00EDAED4 /* Feed.m in Sources */,
-				049BA8D81BD8C70900A368D7 /* ActivityModelTest.m in Sources */,
 				20C5B0661B8DB55C00B4A8A8 /* GroupModel.m in Sources */,
 				333E95D91B70B7400001059D /* addFriendPushInfoListModel.m in Sources */,
 				20E0C0721B88B0CA00EDAED4 /* Author.m in Sources */,
@@ -495,7 +516,9 @@
 				20DA74BD1B8C0BFA0002E041 /* FriendsCondition.m in Sources */,
 				20859AA31B64CB7E00580ED3 /* LoginResp.m in Sources */,
 				332D32681B71E9B400B69E96 /* PushInfo.m in Sources */,
+				209E08C81BDDCDDD0062758E /* GetFilterConditionsModel.m in Sources */,
 				20DDA42E1BDA24300023179A /* ActivityPublishedModel.m in Sources */,
+				04AF14521BDDC74400FEE6A4 /* FilterCondition.m in Sources */,
 				047145D81BD8F03B001D75FC /* JoinInModelTest.m in Sources */,
 				20DA8B1A1B8EBD27007D0CDE /* GroupAllList.m in Sources */,
 				20DD81611B91D22E00ACFD9A /* ForbiddenList.m in Sources */,
@@ -504,6 +527,7 @@
 				20DA1A601B8995A000DEF95C /* ProvinceCode.m in Sources */,
 				20E0BFFF1B88B0CA00EDAED4 /* UploadImage.m in Sources */,
 				333E95E21B70B7820001059D /* UpdateAvatarModel.m in Sources */,
+				04AF14551BDDC7AC00FEE6A4 /* FilterConditionModels.m in Sources */,
 				20E0C0821B88B0CA00EDAED4 /* LinkManList.m in Sources */,
 				331E17E41B7AFBC8006789B0 /* Tags.m in Sources */,
 				20C5B0691B8DB75A00B4A8A8 /* AlertList.m in Sources */,

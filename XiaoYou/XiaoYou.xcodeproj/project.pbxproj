@@ -120,6 +120,7 @@
 		049FF1C51BC91778000645C8 /* ScheduleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 049FF1B91BC91777000645C8 /* ScheduleViewController.m */; settings = {ASSET_TAGS = (); }; };
 		049FF1C61BC91778000645C8 /* ConvenienceTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 049FF1BC1BC91777000645C8 /* ConvenienceTableViewController.m */; settings = {ASSET_TAGS = (); }; };
 		049FF1C71BC91778000645C8 /* SetupTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 049FF1BE1BC91777000645C8 /* SetupTableViewController.m */; settings = {ASSET_TAGS = (); }; };
+		04C08FE41BDBF0F7002F8BAE /* TimeFormatterConvert.m in Sources */ = {isa = PBXBuildFile; fileRef = 04C08FE31BDBF0F7002F8BAE /* TimeFormatterConvert.m */; settings = {ASSET_TAGS = (); }; };
 		04D500681BBA94AA00C1B438 /* ActivityJoinInCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04D500671BBA94AA00C1B438 /* ActivityJoinInCell.m */; settings = {ASSET_TAGS = (); }; };
 		200E397C1B4E818B000B587B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 200E397B1B4E818B000B587B /* main.m */; };
 		200E39871B4E818B000B587B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 200E39861B4E818B000B587B /* Images.xcassets */; };
@@ -926,6 +927,8 @@
 		049FF1BC1BC91777000645C8 /* ConvenienceTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConvenienceTableViewController.m; sourceTree = "<group>"; };
 		049FF1BD1BC91777000645C8 /* SetupTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SetupTableViewController.h; sourceTree = "<group>"; };
 		049FF1BE1BC91777000645C8 /* SetupTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SetupTableViewController.m; sourceTree = "<group>"; };
+		04C08FE21BDBF0F7002F8BAE /* TimeFormatterConvert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimeFormatterConvert.h; sourceTree = "<group>"; };
+		04C08FE31BDBF0F7002F8BAE /* TimeFormatterConvert.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimeFormatterConvert.m; sourceTree = "<group>"; };
 		04D500661BBA94AA00C1B438 /* ActivityJoinInCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityJoinInCell.h; sourceTree = "<group>"; };
 		04D500671BBA94AA00C1B438 /* ActivityJoinInCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityJoinInCell.m; sourceTree = "<group>"; };
 		200E39761B4E818B000B587B /* XiaoYou.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = XiaoYou.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -3739,6 +3742,8 @@
 				041DF0621BC4D90300C6F324 /* DataConvert.m */,
 				043AC8601BCF338600AB6E09 /* RespectExpandImg.h */,
 				043AC8611BCF338600AB6E09 /* RespectExpandImg.m */,
+				04C08FE21BDBF0F7002F8BAE /* TimeFormatterConvert.h */,
+				04C08FE31BDBF0F7002F8BAE /* TimeFormatterConvert.m */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -4779,6 +4784,7 @@
 				6518A2481B80429300AEB79D /* TagListTableView.m in Sources */,
 				656234771B837FDC00651C88 /* YFaceImageView.m in Sources */,
 				E46CF86C1BD753D400FF563B /* TopView.m in Sources */,
+				04C08FE41BDBF0F7002F8BAE /* TimeFormatterConvert.m in Sources */,
 				65969DCD1B871AA9001DD348 /* ProfilePersonListController.m in Sources */,
 				20DAAA6C1BCD05F5006DF231 /* WeekViewController.m in Sources */,
 				049C55CC1BB3F33D007565E1 /* BottomView.m in Sources */,

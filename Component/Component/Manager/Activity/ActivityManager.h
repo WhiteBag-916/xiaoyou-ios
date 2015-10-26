@@ -17,6 +17,12 @@ AS_SINGLETON(ActivityManager);
 //获取当前用户活动列表
 - (void)getCurrentUseAvailableListLimitStart:(NSInteger)limitStart limitEnd:(NSInteger)limitEnd block:(ActionCompleteBlock)block;
 
+//获取搜索活动列表
+- (void)getCurrentUseAvailableListLimitStart:(NSInteger)limitStart limitEnd:(NSInteger)limitEnd search:(NSString *)searchText block:(ActionCompleteBlock)block;
+
+//筛选活动列表
+- (void)getCurrentUseAvailableListLimitStart:(NSInteger)limitStart limitEnd:(NSInteger)limitEnd dic:(NSDictionary *)condition block:(ActionCompleteBlock)block;
+
 //查询活动类型列表
 - (void)findActivityTypes:(ActionCompleteBlock)block;
 
@@ -31,5 +37,11 @@ AS_SINGLETON(ActivityManager);
 
 //编辑/发布活动
 - (void)editActivity:(ActivityInfoModel *)model block:(ActionCompleteBlock)block;
+
+//上传图片
+- (void)commonImgUpload:(NSString *)uploadType needSnap:(NSString *)needSnap block:(ActionCompleteBlock)block;
+
+//获取有空筛选条件
+- (void)getFilterConditions:(ActionCompleteBlock)block;
 
 @end

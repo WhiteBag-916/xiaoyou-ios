@@ -10,11 +10,12 @@
 		04722E261BD8892700F95816 /* AvailableAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 04722E251BD8892700F95816 /* AvailableAction.m */; };
 		04A2A0071BCE3969006A35FB /* AppConfigData.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A2A0061BCE3969006A35FB /* AppConfigData.m */; };
 		04A82D911BC7A24F00EF87B7 /* RemindAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A82D901BC7A24F00EF87B7 /* RemindAction.m */; };
-		04A82D951BC7B3FC00EF87B7 /* RemindManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A82D941BC7B3FC00EF87B7 /* RemindManager.m */; };
 		20859A7C1B64BD5B00580ED3 /* ProvisionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 20859A7B1B64BD5B00580ED3 /* ProvisionManager.m */; };
 		20859A821B64BD8500580ED3 /* ContactManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 20859A811B64BD8500580ED3 /* ContactManager.m */; };
 		20859A851B64BD9000580ED3 /* MessageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 20859A841B64BD9000580ED3 /* MessageManager.m */; };
 		20859A941B64C06A00580ED3 /* LoginAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 20859A931B64C06A00580ED3 /* LoginAction.m */; };
+		209E08C51BDDC9E20062758E /* RemindManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 209E08C41BDDC9E20062758E /* RemindManager.m */; };
+		209E08CB1BDDCE050062758E /* GetFilterConditionsAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 209E08CA1BDDCE050062758E /* GetFilterConditionsAction.m */; };
 		20C5B0511B8DB03900B4A8A8 /* GetFriendApplyListAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 20C5B0501B8DB03900B4A8A8 /* GetFriendApplyListAction.m */; };
 		20C5B05D1B8DB08900B4A8A8 /* GroupDetailAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 20C5B05C1B8DB08900B4A8A8 /* GroupDetailAction.m */; };
 		20C5B06C1B8DB77000B4A8A8 /* AlertListAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 20C5B06B1B8DB77000B4A8A8 /* AlertListAction.m */; };
@@ -59,6 +60,7 @@
 		20E1C67E1B89F148008BA9D6 /* FeedDetailAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 20E1C67D1B89F148008BA9D6 /* FeedDetailAction.m */; };
 		20E1C6811B89F2C8008BA9D6 /* FeedListAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 20E1C6801B89F2C8008BA9D6 /* FeedListAction.m */; };
 		20E366411B92F7DC00A22FFE /* RegAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 20E366401B92F7DC00A22FFE /* RegAction.m */; };
+		20E372BF1BDDBFC50063BF56 /* CommonImgUpload.m in Sources */ = {isa = PBXBuildFile; fileRef = 20E372BE1BDDBFC50063BF56 /* CommonImgUpload.m */; };
 		3339625C1B95575400DD0A6D /* SuggestListAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 3339625B1B95575400DD0A6D /* SuggestListAction.m */; };
 /* End PBXBuildFile section */
 
@@ -91,8 +93,6 @@
 		04A2A0061BCE3969006A35FB /* AppConfigData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppConfigData.m; sourceTree = "<group>"; };
 		04A82D8F1BC7A24F00EF87B7 /* RemindAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RemindAction.h; sourceTree = "<group>"; };
 		04A82D901BC7A24F00EF87B7 /* RemindAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RemindAction.m; sourceTree = "<group>"; };
-		04A82D931BC7B3FC00EF87B7 /* RemindManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RemindManager.h; sourceTree = "<group>"; };
-		04A82D941BC7B3FC00EF87B7 /* RemindManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RemindManager.m; sourceTree = "<group>"; };
 		20859A7A1B64BD5B00580ED3 /* ProvisionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProvisionManager.h; sourceTree = "<group>"; };
 		20859A7B1B64BD5B00580ED3 /* ProvisionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProvisionManager.m; sourceTree = "<group>"; };
 		20859A801B64BD8500580ED3 /* ContactManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactManager.h; sourceTree = "<group>"; };
@@ -103,6 +103,10 @@
 		20859A871B64BF3200580ED3 /* YUrlDefine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YUrlDefine.h; sourceTree = "<group>"; };
 		20859A921B64C06A00580ED3 /* LoginAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginAction.h; sourceTree = "<group>"; };
 		20859A931B64C06A00580ED3 /* LoginAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginAction.m; sourceTree = "<group>"; };
+		209E08C31BDDC9E20062758E /* RemindManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RemindManager.h; sourceTree = "<group>"; };
+		209E08C41BDDC9E20062758E /* RemindManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RemindManager.m; sourceTree = "<group>"; };
+		209E08C91BDDCE050062758E /* GetFilterConditionsAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetFilterConditionsAction.h; sourceTree = "<group>"; };
+		209E08CA1BDDCE050062758E /* GetFilterConditionsAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetFilterConditionsAction.m; sourceTree = "<group>"; };
 		20C5B04F1B8DB03900B4A8A8 /* GetFriendApplyListAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetFriendApplyListAction.h; sourceTree = "<group>"; };
 		20C5B0501B8DB03900B4A8A8 /* GetFriendApplyListAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetFriendApplyListAction.m; sourceTree = "<group>"; };
 		20C5B05B1B8DB08900B4A8A8 /* GroupDetailAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroupDetailAction.h; sourceTree = "<group>"; };
@@ -197,6 +201,8 @@
 		20E341811B720A80008CADC3 /* ProfileSQL.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProfileSQL.h; sourceTree = "<group>"; };
 		20E3663F1B92F7DC00A22FFE /* RegAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegAction.h; sourceTree = "<group>"; };
 		20E366401B92F7DC00A22FFE /* RegAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegAction.m; sourceTree = "<group>"; };
+		20E372BD1BDDBFC50063BF56 /* CommonImgUpload.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonImgUpload.h; sourceTree = "<group>"; };
+		20E372BE1BDDBFC50063BF56 /* CommonImgUpload.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommonImgUpload.m; sourceTree = "<group>"; };
 		3339625A1B95575400DD0A6D /* SuggestListAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SuggestListAction.h; sourceTree = "<group>"; };
 		3339625B1B95575400DD0A6D /* SuggestListAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SuggestListAction.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -229,6 +235,8 @@
 				20DDA3EA1BDA1D8D0023179A /* FindActivityTypesAction.m */,
 				20DDA42F1BDA26050023179A /* FindByActivityPublishedIdAction.h */,
 				20DDA4301BDA26050023179A /* FindByActivityPublishedIdAction.m */,
+				209E08C91BDDCE050062758E /* GetFilterConditionsAction.h */,
+				209E08CA1BDDCE050062758E /* GetFilterConditionsAction.m */,
 			);
 			path = Activity;
 			sourceTree = "<group>";
@@ -238,15 +246,6 @@
 			children = (
 				04A82D8F1BC7A24F00EF87B7 /* RemindAction.h */,
 				04A82D901BC7A24F00EF87B7 /* RemindAction.m */,
-			);
-			path = Remind;
-			sourceTree = "<group>";
-		};
-		04A82D921BC7B3FC00EF87B7 /* Remind */ = {
-			isa = PBXGroup;
-			children = (
-				04A82D931BC7B3FC00EF87B7 /* RemindManager.h */,
-				04A82D941BC7B3FC00EF87B7 /* RemindManager.m */,
 			);
 			path = Remind;
 			sourceTree = "<group>";
@@ -314,6 +313,8 @@
 			children = (
 				20DA8B321B8EC4F0007D0CDE /* CommonAction.h */,
 				20DA8B331B8EC4F0007D0CDE /* CommonAction.m */,
+				20E372BD1BDDBFC50063BF56 /* CommonImgUpload.h */,
+				20E372BE1BDDBFC50063BF56 /* CommonImgUpload.m */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -321,6 +322,8 @@
 		20DADED51BD0956C00FB294F /* Activity */ = {
 			isa = PBXGroup;
 			children = (
+				209E08C31BDDC9E20062758E /* RemindManager.h */,
+				209E08C41BDDC9E20062758E /* RemindManager.m */,
 				20DADED61BD0958400FB294F /* ActivityManager.h */,
 				20DADED71BD0958400FB294F /* ActivityManager.m */,
 			);
@@ -451,7 +454,6 @@
 			isa = PBXGroup;
 			children = (
 				20DADED51BD0956C00FB294F /* Activity */,
-				04A82D921BC7B3FC00EF87B7 /* Remind */,
 				20E122141B705D3C00F90BD3 /* Feed */,
 				20859A791B64BD4C00580ED3 /* Provision */,
 				20DBFD7F1B4FD3F5009134D0 /* Contact */,
@@ -639,6 +641,7 @@
 				20C5B0511B8DB03900B4A8A8 /* GetFriendApplyListAction.m in Sources */,
 				20859A851B64BD9000580ED3 /* MessageManager.m in Sources */,
 				20859A7C1B64BD5B00580ED3 /* ProvisionManager.m in Sources */,
+				209E08C51BDDC9E20062758E /* RemindManager.m in Sources */,
 				20DBFD861B4FD3F5009134D0 /* YUtils+Component.m in Sources */,
 				20DA1A5A1B89751500DEF95C /* MyCommentPersonsAction.m in Sources */,
 				20DCB9701B8CA60800C758DE /* FindFriendsByTagsAction.m in Sources */,
@@ -668,7 +671,6 @@
 				20DDA3EB1BDA1D8D0023179A /* FindActivityTypesAction.m in Sources */,
 				20E1C6721B89EB9F008BA9D6 /* ReceiveAuthCodeAction.m in Sources */,
 				04A2A0071BCE3969006A35FB /* AppConfigData.m in Sources */,
-				04A82D951BC7B3FC00EF87B7 /* RemindManager.m in Sources */,
 				20DA74C31B8C120F0002E041 /* FriendsConditionAction.m in Sources */,
 				20C5B05D1B8DB08900B4A8A8 /* GroupDetailAction.m in Sources */,
 				20C5B06C1B8DB77000B4A8A8 /* AlertListAction.m in Sources */,
@@ -681,6 +683,8 @@
 				20C5B07E1B8DF3DD00B4A8A8 /* GroupConditionsAction.m in Sources */,
 				20DCB9671B8CA60800C758DE /* ApplyListAction.m in Sources */,
 				20DA8B371B8ECBC1007D0CDE /* ReceiveMobileAuthCodeAction.m in Sources */,
+				20E372BF1BDDBFC50063BF56 /* CommonImgUpload.m in Sources */,
+				209E08CB1BDDCE050062758E /* GetFilterConditionsAction.m in Sources */,
 				20DA1A5D1B89752000DEF95C /* MyPraisePersonsAction.m in Sources */,
 				20859A941B64C06A00580ED3 /* LoginAction.m in Sources */,
 				20E193F41B8AF78F00FD7B3D /* ContactsListAction.m in Sources */,
