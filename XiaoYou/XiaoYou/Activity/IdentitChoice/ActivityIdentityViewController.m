@@ -15,6 +15,8 @@
 @property(nonatomic,strong) UIButton * personalButton;
 @property(nonatomic,strong) UIButton * groupButton;
 
+@property(nonatomic,assign) BOOL  isIdentity;
+
 @property(nonatomic,strong) ActivityIdentityTableView * activityIdentityTableView;
 
 @end
@@ -25,6 +27,8 @@
     [super viewDidLoad];
     
     [self setUpUI];
+    
+    _isIdentity = YES;
 }
 
 -(void)setUpUI
@@ -146,7 +150,7 @@
 -(void)clickBtnForChoice
 {
     [self dismissViewControllerAnimated:YES completion:^{
-        ActivityReleaseController * releaseController = [[ActivityReleaseController alloc] init];
+        ActivityReleaseController * releaseController = [[ActivityReleaseController alloc] initWithIsIdentity:_isIdentity];
         [_availableViewController.navigationController pushViewController:releaseController animated:YES needHiddenBottomBar:YES];
     }];
     
@@ -161,6 +165,9 @@
     
     _personalButton.layer.borderWidth = 0;
     _groupButton.layer.borderWidth = 1;
+    
+    _isIdentity = NO;
+    _activityIdentityTableView.hidden = YES;
 }
 //社团
 -(void)clickGroupButton
@@ -172,6 +179,8 @@
     
     _groupButton.layer.borderWidth = 0;
     _personalButton.layer.borderWidth = 1;
+    _isIdentity = YES;
+    _activityIdentityTableView.hidden = NO;
 }
 
 - (void)didReceiveMemoryWarning {
