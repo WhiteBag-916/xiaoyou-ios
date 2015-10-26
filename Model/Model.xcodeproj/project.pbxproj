@@ -10,6 +10,8 @@
 		047145D51BD8E5B4001D75FC /* RemindModelTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 047145D41BD8E5B4001D75FC /* RemindModelTest.m */; };
 		047145D81BD8F03B001D75FC /* JoinInModelTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 047145D71BD8F03B001D75FC /* JoinInModelTest.m */; };
 		049173A51BDCBACE00D204AF /* ActivityModelTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 049173A41BDCBACE00D204AF /* ActivityModelTest.m */; settings = {ASSET_TAGS = (); }; };
+		04AF14521BDDC74400FEE6A4 /* FilterCondition.m in Sources */ = {isa = PBXBuildFile; fileRef = 04AF14511BDDC74400FEE6A4 /* FilterCondition.m */; settings = {ASSET_TAGS = (); }; };
+		04AF14551BDDC7AC00FEE6A4 /* FilterConditionModels.m in Sources */ = {isa = PBXBuildFile; fileRef = 04AF14541BDDC7AC00FEE6A4 /* FilterConditionModels.m */; settings = {ASSET_TAGS = (); }; };
 		20859A991B64C0BC00580ED3 /* ResultCommon.m in Sources */ = {isa = PBXBuildFile; fileRef = 20859A981B64C0BC00580ED3 /* ResultCommon.m */; };
 		20859AA31B64CB7E00580ED3 /* LoginResp.m in Sources */ = {isa = PBXBuildFile; fileRef = 20859AA01B64CB7E00580ED3 /* LoginResp.m */; };
 		20859AB31B64E2F600580ED3 /* YModel+ActionMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 20859AB21B64E2F600580ED3 /* YModel+ActionMessage.m */; };
@@ -83,6 +85,10 @@
 		047145D71BD8F03B001D75FC /* JoinInModelTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JoinInModelTest.m; sourceTree = "<group>"; };
 		049173A31BDCBACE00D204AF /* ActivityModelTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityModelTest.h; sourceTree = "<group>"; };
 		049173A41BDCBACE00D204AF /* ActivityModelTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityModelTest.m; sourceTree = "<group>"; };
+		04AF14501BDDC74400FEE6A4 /* FilterCondition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FilterCondition.h; sourceTree = "<group>"; };
+		04AF14511BDDC74400FEE6A4 /* FilterCondition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FilterCondition.m; sourceTree = "<group>"; };
+		04AF14531BDDC7AC00FEE6A4 /* FilterConditionModels.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FilterConditionModels.h; sourceTree = "<group>"; };
+		04AF14541BDDC7AC00FEE6A4 /* FilterConditionModels.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FilterConditionModels.m; sourceTree = "<group>"; };
 		20859A971B64C0BC00580ED3 /* ResultCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResultCommon.h; sourceTree = "<group>"; };
 		20859A981B64C0BC00580ED3 /* ResultCommon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResultCommon.m; sourceTree = "<group>"; };
 		20859A9F1B64CB7E00580ED3 /* LoginResp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginResp.h; sourceTree = "<group>"; };
@@ -192,6 +198,10 @@
 		0447A3A21BD7788300341684 /* MainPage */ = {
 			isa = PBXGroup;
 			children = (
+				04AF14531BDDC7AC00FEE6A4 /* FilterConditionModels.h */,
+				04AF14541BDDC7AC00FEE6A4 /* FilterConditionModels.m */,
+				04AF14501BDDC74400FEE6A4 /* FilterCondition.h */,
+				04AF14511BDDC74400FEE6A4 /* FilterCondition.m */,
 				049173A31BDCBACE00D204AF /* ActivityModelTest.h */,
 				049173A41BDCBACE00D204AF /* ActivityModelTest.m */,
 				20DDA4231BDA24300023179A /* ActivityCoverageModels.h */,
@@ -496,6 +506,7 @@
 				20859AA31B64CB7E00580ED3 /* LoginResp.m in Sources */,
 				332D32681B71E9B400B69E96 /* PushInfo.m in Sources */,
 				20DDA42E1BDA24300023179A /* ActivityPublishedModel.m in Sources */,
+				04AF14521BDDC74400FEE6A4 /* FilterCondition.m in Sources */,
 				047145D81BD8F03B001D75FC /* JoinInModelTest.m in Sources */,
 				20DA8B1A1B8EBD27007D0CDE /* GroupAllList.m in Sources */,
 				20DD81611B91D22E00ACFD9A /* ForbiddenList.m in Sources */,
@@ -504,6 +515,7 @@
 				20DA1A601B8995A000DEF95C /* ProvinceCode.m in Sources */,
 				20E0BFFF1B88B0CA00EDAED4 /* UploadImage.m in Sources */,
 				333E95E21B70B7820001059D /* UpdateAvatarModel.m in Sources */,
+				04AF14551BDDC7AC00FEE6A4 /* FilterConditionModels.m in Sources */,
 				20E0C0821B88B0CA00EDAED4 /* LinkManList.m in Sources */,
 				331E17E41B7AFBC8006789B0 /* Tags.m in Sources */,
 				20C5B0691B8DB75A00B4A8A8 /* AlertList.m in Sources */,

@@ -11,6 +11,7 @@
 		04A2A0071BCE3969006A35FB /* AppConfigData.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A2A0061BCE3969006A35FB /* AppConfigData.m */; };
 		04A82D911BC7A24F00EF87B7 /* RemindAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A82D901BC7A24F00EF87B7 /* RemindAction.m */; };
 		04A82D951BC7B3FC00EF87B7 /* RemindManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A82D941BC7B3FC00EF87B7 /* RemindManager.m */; };
+		04AF144F1BDDC56200FEE6A4 /* AvailableQueryCondition.m in Sources */ = {isa = PBXBuildFile; fileRef = 04AF144E1BDDC56200FEE6A4 /* AvailableQueryCondition.m */; settings = {ASSET_TAGS = (); }; };
 		20859A7C1B64BD5B00580ED3 /* ProvisionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 20859A7B1B64BD5B00580ED3 /* ProvisionManager.m */; };
 		20859A821B64BD8500580ED3 /* ContactManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 20859A811B64BD8500580ED3 /* ContactManager.m */; };
 		20859A851B64BD9000580ED3 /* MessageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 20859A841B64BD9000580ED3 /* MessageManager.m */; };
@@ -93,6 +94,8 @@
 		04A82D901BC7A24F00EF87B7 /* RemindAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RemindAction.m; sourceTree = "<group>"; };
 		04A82D931BC7B3FC00EF87B7 /* RemindManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RemindManager.h; sourceTree = "<group>"; };
 		04A82D941BC7B3FC00EF87B7 /* RemindManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RemindManager.m; sourceTree = "<group>"; };
+		04AF144D1BDDC56200FEE6A4 /* AvailableQueryCondition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AvailableQueryCondition.h; sourceTree = "<group>"; };
+		04AF144E1BDDC56200FEE6A4 /* AvailableQueryCondition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AvailableQueryCondition.m; sourceTree = "<group>"; };
 		20859A7A1B64BD5B00580ED3 /* ProvisionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProvisionManager.h; sourceTree = "<group>"; };
 		20859A7B1B64BD5B00580ED3 /* ProvisionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProvisionManager.m; sourceTree = "<group>"; };
 		20859A801B64BD8500580ED3 /* ContactManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactManager.h; sourceTree = "<group>"; };
@@ -225,6 +228,8 @@
 			children = (
 				04722E241BD8892700F95816 /* AvailableAction.h */,
 				04722E251BD8892700F95816 /* AvailableAction.m */,
+				04AF144D1BDDC56200FEE6A4 /* AvailableQueryCondition.h */,
+				04AF144E1BDDC56200FEE6A4 /* AvailableQueryCondition.m */,
 				20DDA3E91BDA1D8D0023179A /* FindActivityTypesAction.h */,
 				20DDA3EA1BDA1D8D0023179A /* FindActivityTypesAction.m */,
 				20DDA42F1BDA26050023179A /* FindByActivityPublishedIdAction.h */,
@@ -668,6 +673,7 @@
 				20DDA3EB1BDA1D8D0023179A /* FindActivityTypesAction.m in Sources */,
 				20E1C6721B89EB9F008BA9D6 /* ReceiveAuthCodeAction.m in Sources */,
 				04A2A0071BCE3969006A35FB /* AppConfigData.m in Sources */,
+				04AF144F1BDDC56200FEE6A4 /* AvailableQueryCondition.m in Sources */,
 				04A82D951BC7B3FC00EF87B7 /* RemindManager.m in Sources */,
 				20DA74C31B8C120F0002E041 /* FriendsConditionAction.m in Sources */,
 				20C5B05D1B8DB08900B4A8A8 /* GroupDetailAction.m in Sources */,

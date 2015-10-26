@@ -14,7 +14,7 @@
 //@"2015/10/25 06:00"
 +(NSString*)timeConvertToFommtterAvailable:(double)timestamp
 {
-    NSTimeInterval time = timestamp + 28800;//因为时差问题要加8小时 == 28800 sec
+    NSTimeInterval time = (timestamp + 28800)/1000;//因为时差问题要加8小时 == 28800 sec
     NSDate *detaildate=[NSDate dateWithTimeIntervalSince1970:time];
     //实例化一个NSDateFormatter对象
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];

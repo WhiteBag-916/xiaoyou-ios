@@ -187,6 +187,8 @@
 #define api_available_checkEnrollActivity   @"/activity/checkEnrollActivity"
 //编辑/发布活动
 #define api_available_edit   @"/activity/edit"
+//获取活动所有的查询条件
+#define api_filter_condition @"/activity/getFilterConditions"
 
 #endif
 

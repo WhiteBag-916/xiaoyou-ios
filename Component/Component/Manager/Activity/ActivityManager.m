@@ -13,6 +13,7 @@
 #import "CommonAction.h"
 #import "YUtils+Component.h"
 #import "ActivityInfoModel.h"
+#import "AvailableQueryCondition.h"
 
 #define KActivityManagerSyncQueue @"kActivityManagerSyncQueue"
 
@@ -113,6 +114,16 @@ DEF_SINGLETON(ActivityManager);
     [YAction startAction:action completionBlock:^(YActionMessage* message) {
         
         //主线程处理界面
+        block(message);
+    }];
+}
+
+//获取有空界面的查询条件
+-(void)getAvailableQueryConditionWithBlock:(ActionCompleteBlock)block
+{
+    AvailableQueryCondition *action = [[AvailableAction alloc]init];
+    //不需要参数
+    [YAction startAction:action completionBlock:^(YActionMessage *message) {
         block(message);
     }];
 }

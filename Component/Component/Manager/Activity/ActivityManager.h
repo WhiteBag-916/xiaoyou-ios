@@ -32,4 +32,6 @@ AS_SINGLETON(ActivityManager);
 //编辑/发布活动
 - (void)editActivity:(ActivityInfoModel *)model block:(ActionCompleteBlock)block;
 
+//获取有空界面的查询条件
+- (void)getAvailableQueryConditionWithBlock:(ActionCompleteBlock)block;
 @end

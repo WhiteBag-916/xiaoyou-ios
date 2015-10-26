@@ -17,6 +17,9 @@
 #import "ActivityModelTest.h"
 #import "AssociationsSearchViewController.h"
 #import "ActivityManager.h"
+#import "ProvisionManager.h"
+#import "ProfileInfo.h"
+#import "Tags.h"
 @interface AvailableViewController ()
 
 @property (nonatomic,strong) AvailableListView *availableListView;
@@ -169,10 +172,18 @@
 
 //发布Action
 -(void)publishAction {
-    ActivityIdentityViewController *activityVC = [[ActivityIdentityViewController alloc]init];
-    //[self.navigationController pushViewController:activityVC animated:YES needHiddenBottomBar:YES];
-    activityVC.availableViewController = self;
-    [self presentViewController:activityVC animated:YES completion:nil];
+    NSArray * groupArr =[[ProvisionManager sharedInstance] getProfile].managerGroups;
+    if (groupArr.count > 0)
+    {
+        ActivityIdentityViewController *activityVC = [[ActivityIdentityViewController alloc]init];
+        activityVC.availableViewController = self;
+        [self presentViewController:activityVC animated:YES completion:nil];
+    }
+    else
+    {
+        ActivityReleaseController *releaseVC = [[ActivityReleaseController alloc]initWithIsIdentity:NO];
+        [self.navigationController pushViewController:releaseVC animated:YES needHiddenBottomBar:YES];
+    }
 }
 
 //筛选Action
