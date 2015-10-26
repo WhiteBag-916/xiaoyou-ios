@@ -414,8 +414,8 @@
 //            while (!self.isHeadImageUploadEnd) {
 //                [[NSRunLoop mainRunLoop] runMode:NSDefaultRunLoopMode beforeDate:[NSDate distantFuture]];
 //            }
-//            _faceImg.image = [UIImage imageWithData:imageData];
-//            self.isHeadImageUploadEnd = NO;
+            _faceImg.image = [UIImage imageWithData:imageData];
+            self.isHeadImageUploadEnd = NO;
         });
     });
 }
