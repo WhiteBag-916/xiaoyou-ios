@@ -18,11 +18,12 @@ typedef enum : NSUInteger {
 } CELLTYPE;
 @interface AvailableListView : YTableView
 
-- (void)loadData;
+//-(void)loadData;
+//
+//-(void)loadNewData;
 
--(void)loadMyData;
+- (void)sendRequest;
 
-
-@property (nonatomic,strong) NSArray *myDataSource;
+@property (nonatomic,strong) NSMutableArray *availableListArray;
 
 @end

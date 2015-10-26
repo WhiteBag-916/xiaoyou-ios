@@ -27,6 +27,9 @@
 @property(nonatomic,strong) UILabel     *tailLabel;         //尾部文字
 @property(nonatomic,strong) UIImageView *tailImageView;     //尾部next图片
 
+@property(nonatomic,strong) UIButton    *middleButton;      //中间button
+@property(nonatomic,strong) UIButton    *bottomButton;      //底部button
+
 @end
 
 
@@ -180,8 +183,40 @@
         make.centerY.equalTo(self.tailLabel.mas_centerY);
         make.trailing.mas_equalTo(-10);
     }];
+    
+    _middleButton = [UIButton buttonWithType:UIButtonTypeSystem];
+    [self.wrapContentView addSubview:_middleButton];
+    _middleButton.backgroundColor = [UIColor clearColor];
+    [_middleButton addTarget:self action:@selector(middleAction:) forControlEvents:UIControlEventTouchUpInside];
+    [_middleButton mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(_topLineView.mas_bottom);
+        make.leading.mas_equalTo(0);
+        make.trailing.mas_equalTo(0);
+        make.bottom.equalTo(_bottomLineView);
+    }];
+    
+    _bottomButton = [UIButton buttonWithType:UIButtonTypeSystem];
+    [self.wrapContentView addSubview:_bottomButton];
+    _bottomButton.backgroundColor = [UIColor clearColor];
+    [_bottomButton addTarget:self action:@selector(bottomAction:) forControlEvents:UIControlEventTouchUpInside];
+    [_bottomButton mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(_bottomLineView);
+        make.leading.mas_equalTo(0);
+        make.trailing.mas_equalTo(0);
+        make.bottom.mas_equalTo(0);
+    }];
 }
 
+
+//点击中间部分cell
+-(void)middleAction:(UIButton*)btn {
+    NSLog(@"this is midele action");
+}
+
+//点击下面部分cell
+-(void)bottomAction:(UIButton*)btn {
+    NSLog(@"this is bottom action");
+}
 
 #pragma waring 此处需要添加图片
 -(void)setCellType:(CELL_TYPE)cellType

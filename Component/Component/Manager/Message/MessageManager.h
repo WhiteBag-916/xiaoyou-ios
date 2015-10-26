@@ -26,6 +26,7 @@ typedef enum : NSUInteger {
     UNFORBIDDEN_ME=9,       //解除对我消息不提醒
     KICKGROUP=10,           //踢出群
     DELETEUSER=11,          //被好友删除
+    ACTIVITY_PUSH=12        //活动推送
 } PUSH_Message_TYPE;
 
 typedef void (^ForbiddenGroupBlock)(BOOL isSuccess);

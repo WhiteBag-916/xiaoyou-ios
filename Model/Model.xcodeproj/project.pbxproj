@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		047145D51BD8E5B4001D75FC /* RemindModelTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 047145D41BD8E5B4001D75FC /* RemindModelTest.m */; };
 		047145D81BD8F03B001D75FC /* JoinInModelTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 047145D71BD8F03B001D75FC /* JoinInModelTest.m */; };
-		049BA8D81BD8C70900A368D7 /* ActivityModelTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 049BA8D71BD8C70900A368D7 /* ActivityModelTest.m */; };
+		049173A51BDCBACE00D204AF /* ActivityModelTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 049173A41BDCBACE00D204AF /* ActivityModelTest.m */; settings = {ASSET_TAGS = (); }; };
 		20859A991B64C0BC00580ED3 /* ResultCommon.m in Sources */ = {isa = PBXBuildFile; fileRef = 20859A981B64C0BC00580ED3 /* ResultCommon.m */; };
 		20859AA31B64CB7E00580ED3 /* LoginResp.m in Sources */ = {isa = PBXBuildFile; fileRef = 20859AA01B64CB7E00580ED3 /* LoginResp.m */; };
 		20859AB31B64E2F600580ED3 /* YModel+ActionMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 20859AB21B64E2F600580ED3 /* YModel+ActionMessage.m */; };
@@ -82,8 +82,8 @@
 		047145D41BD8E5B4001D75FC /* RemindModelTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RemindModelTest.m; sourceTree = "<group>"; };
 		047145D61BD8F03B001D75FC /* JoinInModelTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JoinInModelTest.h; sourceTree = "<group>"; };
 		047145D71BD8F03B001D75FC /* JoinInModelTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JoinInModelTest.m; sourceTree = "<group>"; };
-		049BA8D61BD8C70900A368D7 /* ActivityModelTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityModelTest.h; sourceTree = "<group>"; };
-		049BA8D71BD8C70900A368D7 /* ActivityModelTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityModelTest.m; sourceTree = "<group>"; };
+		049173A31BDCBACE00D204AF /* ActivityModelTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityModelTest.h; sourceTree = "<group>"; };
+		049173A41BDCBACE00D204AF /* ActivityModelTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityModelTest.m; sourceTree = "<group>"; };
 		20859A971B64C0BC00580ED3 /* ResultCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResultCommon.h; sourceTree = "<group>"; };
 		20859A981B64C0BC00580ED3 /* ResultCommon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResultCommon.m; sourceTree = "<group>"; };
 		20859A9F1B64CB7E00580ED3 /* LoginResp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginResp.h; sourceTree = "<group>"; };
@@ -195,6 +195,8 @@
 		0447A3A21BD7788300341684 /* MainPage */ = {
 			isa = PBXGroup;
 			children = (
+				049173A31BDCBACE00D204AF /* ActivityModelTest.h */,
+				049173A41BDCBACE00D204AF /* ActivityModelTest.m */,
 				20DDA4231BDA24300023179A /* ActivityCoverageModels.h */,
 				20DDA4241BDA24300023179A /* ActivityCoverageModels.m */,
 				20DDA4251BDA24300023179A /* ActivityImageTextModels.h */,
@@ -203,8 +205,6 @@
 				20DDA4281BDA24300023179A /* ActivityInfoModel.m */,
 				20DDA4291BDA24300023179A /* ActivityPublishedModel.h */,
 				20DDA42A1BDA24300023179A /* ActivityPublishedModel.m */,
-				049BA8D61BD8C70900A368D7 /* ActivityModelTest.h */,
-				049BA8D71BD8C70900A368D7 /* ActivityModelTest.m */,
 				047145D61BD8F03B001D75FC /* JoinInModelTest.h */,
 				047145D71BD8F03B001D75FC /* JoinInModelTest.m */,
 				047145D31BD8E5B4001D75FC /* RemindModelTest.h */,
@@ -488,10 +488,10 @@
 				20E0C07F1B88B0CA00EDAED4 /* ClassList.m in Sources */,
 				20E372C21BDDC03B0063BF56 /* ImageUploadModel.m in Sources */,
 				20859A991B64C0BC00580ED3 /* ResultCommon.m in Sources */,
+				049173A51BDCBACE00D204AF /* ActivityModelTest.m in Sources */,
 				20DA8B441B8F5E76007D0CDE /* ReadFeedCount.m in Sources */,
 				333E95DF1B70B7650001059D /* SystemPushInfoListModel.m in Sources */,
 				20E0C06E1B88B0CA00EDAED4 /* Feed.m in Sources */,
-				049BA8D81BD8C70900A368D7 /* ActivityModelTest.m in Sources */,
 				20C5B0661B8DB55C00B4A8A8 /* GroupModel.m in Sources */,
 				333E95D91B70B7400001059D /* addFriendPushInfoListModel.m in Sources */,
 				20E0C0721B88B0CA00EDAED4 /* Author.m in Sources */,

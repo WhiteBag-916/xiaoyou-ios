@@ -85,6 +85,9 @@
 
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
+    NSDictionary * dic = @{@"position":@5};
+    [[NSNotificationCenter defaultCenter] postNotificationName:KNotification_Activity_Release_ScrollTo object:dic];
+    
     //判断是否被选中
     if (![_dataSouceArr[indexPath.row][@"isChoice"] boolValue])
     {

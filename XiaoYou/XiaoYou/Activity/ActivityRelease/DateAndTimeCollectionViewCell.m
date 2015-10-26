@@ -159,6 +159,11 @@ NSString *const kDateAndTimeCollectionViewCell = @"DateAndTimeCollectionViewCell
     _datePicker.minimumDate = nil;
     _datePicker.maximumDate = nil;
     
+    
+    NSDictionary * dic = @{@"position":@3};
+    [[NSNotificationCenter defaultCenter] postNotificationName:KNotification_Activity_Release_ScrollTo object:dic];
+
+    
     [popView showView];
 }
 
@@ -192,6 +197,10 @@ NSString *const kDateAndTimeCollectionViewCell = @"DateAndTimeCollectionViewCell
         _datePicker.maximumDate = [formatter dateFromString:_dataManager.ActivityDateEndText];
         
     }
+    
+    NSDictionary * dic = @{@"position":@3};
+    [[NSNotificationCenter defaultCenter] postNotificationName:KNotification_Activity_Release_ScrollTo object:dic];
+    
     [popView showView];
 }
 
@@ -225,6 +234,9 @@ NSString *const kDateAndTimeCollectionViewCell = @"DateAndTimeCollectionViewCell
         _datePicker.minimumDate = [formatter dateFromString:_dataManager.ActivityDateBeginText];
         
     }
+    NSDictionary * dic = @{@"position":@3};
+    [[NSNotificationCenter defaultCenter] postNotificationName:KNotification_Activity_Release_ScrollTo object:dic];
+    
     [popView showView];
 }
 
