@@ -19,6 +19,7 @@
 #import "SDPhotoBrowser.h"
 #import "YCommonAlertView.h"
 #import "YModel+ActionMessage.h"
+#import "ImageUploadModel.h"
 
 #define KHEADHEIGHT SCALE_NUM(150)
 
@@ -438,7 +439,7 @@
                                                  block:^(YActionMessage *message) {
                                                      if (message.isSuccess) {
                                                          self.isHeadImageUploadEnd = YES;
-                                                         block((NSString *)[message.object url]);
+                                                         block([[message.object snapImages] objectAtIndex:0]);
                                                      } else {
                                                          [YUtils showTitle:message.desc];
                                                      }
