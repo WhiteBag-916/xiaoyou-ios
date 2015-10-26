@@ -211,7 +211,6 @@ typedef enum : NSUInteger {
         make.height.mas_equalTo(SCALE_NUM(305));
     }];
     
-    //.........
     //Point1
     _point1View = [[UIView alloc] init];
     _point1View.backgroundColor = KCOLORGREEN_g1;
