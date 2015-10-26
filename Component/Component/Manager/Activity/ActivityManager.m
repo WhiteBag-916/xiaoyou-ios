@@ -13,6 +13,7 @@
 #import "CommonAction.h"
 #import "YUtils+Component.h"
 #import "ActivityInfoModel.h"
+#import "CommonImgUpload.h"
 
 #define KActivityManagerSyncQueue @"kActivityManagerSyncQueue"
 
@@ -109,6 +110,19 @@ DEF_SINGLETON(ActivityManager);
     NSDictionary *dic = [model dictionaryRepresentation];
     action.parameter = [YUtils getParameter:dic needUserToken:YES needContent:YES];
     action.url = [YUtils getUrl:api_available_edit];
+    
+    [YAction startAction:action completionBlock:^(YActionMessage* message) {
+        
+        //主线程处理界面
+        block(message);
+    }];
+}
+
+//上传图片
+- (void)commonImgUpload:(NSString *)uploadType needSnap:(NSString *)needSnap block:(ActionCompleteBlock)block {
+    CommonImgUpload *action = [[CommonImgUpload alloc] init];
+    action.uploadType = uploadType;
+    action.needSnap = needSnap;
     
     [YAction startAction:action completionBlock:^(YActionMessage* message) {
         

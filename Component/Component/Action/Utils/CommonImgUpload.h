@@ -12,5 +12,6 @@
 
 @property (nonatomic, strong) NSString *uploadType; //上传类型
 @property (nonatomic, strong) NSString *needSnap;   //需要缩略图
+@property (nonatomic, strong) NSString *imagePath;
 
 @end

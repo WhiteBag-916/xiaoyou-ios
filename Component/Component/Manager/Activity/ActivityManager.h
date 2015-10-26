@@ -32,4 +32,7 @@ AS_SINGLETON(ActivityManager);
 //编辑/发布活动
 - (void)editActivity:(ActivityInfoModel *)model block:(ActionCompleteBlock)block;
 
+//上传图片
+- (void)commonImgUpload:(NSString *)uploadType needSnap:(NSString *)needSnap block:(ActionCompleteBlock)block;
+
 @end

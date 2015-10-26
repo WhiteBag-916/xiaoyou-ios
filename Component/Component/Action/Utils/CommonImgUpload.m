@@ -8,19 +8,20 @@
 
 #import "CommonImgUpload.h"
 #import "YUtils+Component.h"
-#import "UploadImage.h"
+#import "ImageUploadModel.h"
 #import "YShareDataDefine.h"
 
 @implementation CommonImgUpload
 
 - (void)execute
 {
-//    NSDictionary *parameter = [YUtils getParameter];
-//    NSString *url = [YUtils getUrl:api_feed_UpdateImg needUserToken:YES];
-//    [self Upload:url files:@[_imagePath] parameters:parameter sentProgress:nil completion:^(YHttpRequest *request) {
-//        YActionMessage *message = [UploadImage actionMessageWithHttpRequest:request];
-//        self.completionBlock(message);
-//    }];
+    NSDictionary *parameter = [YUtils getParameter];
+    NSString *url = [YUtils getUrl:api_img_uploadFiles];
+    url = [url stringByAppendingString:[NSString stringWithFormat:@"?uploadType=%@&needSnap=%@&token=%@&schoolCode=%@&studentNo=%@", _uploadType, SStr(_needSnap), [YShareData defaultData][kShareData_Token], [YShareData defaultData][kShareData_SchoolCode] ,[YShareData defaultData][kShareData_StudentNo]]];
+    [self Upload:url files:[_imagePath componentsSeparatedByString:@","] parameters:parameter sentProgress:nil completion:^(YHttpRequest *request) {
+        YActionMessage *message = [ImageUploadModel actionMessageWithHttpRequest:request];
+        self.completionBlock(message);
+    }];
 }
 
 @end

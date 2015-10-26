@@ -6,10 +6,10 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "YModel.h"
 
 
-
-@interface ImageUploadModel : NSObject <NSCoding, NSCopying>
+@interface ImageUploadModel : YModel <NSCoding, NSCopying>
 
 @property (nonatomic, strong) NSArray *images;
 @property (nonatomic, strong) NSArray *snapImages;
