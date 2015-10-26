@@ -237,6 +237,7 @@
         _bottomLineView.hidden = YES;
         _tailLabel.text = @"";
         _tailImageView.image = nil;
+        _bottomButton.enabled = NO;
     } else if (cellType == SUCESSED_JOININ) {
         self.remindTitleLabel.text = @"你已成功参加活动";
     }
