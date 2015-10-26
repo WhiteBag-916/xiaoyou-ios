@@ -79,6 +79,7 @@ typedef enum : NSUInteger {
     [super viewDidLoad];
         
     _dataManager = [ActivityReleaseDataManager shareActivityReleaseDataManager];
+    _dataManager.isIdentity = _isIdentity;
     
     _dataManager.ActivityNameText = nil;
     _dataManager.ActivityDesciptionText = nil;

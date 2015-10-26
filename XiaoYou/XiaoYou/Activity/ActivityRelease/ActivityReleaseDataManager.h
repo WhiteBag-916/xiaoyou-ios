@@ -27,6 +27,8 @@
 //报名审核
 @property(nonatomic,strong)NSString * ActivityCheckStr;
 
+@property (nonatomic,assign) BOOL isIdentity;
+
 +(instancetype)shareActivityReleaseDataManager;
 
 //判断是否可以发布
