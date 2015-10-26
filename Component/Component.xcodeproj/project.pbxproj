@@ -59,6 +59,7 @@
 		20E1C67E1B89F148008BA9D6 /* FeedDetailAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 20E1C67D1B89F148008BA9D6 /* FeedDetailAction.m */; };
 		20E1C6811B89F2C8008BA9D6 /* FeedListAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 20E1C6801B89F2C8008BA9D6 /* FeedListAction.m */; };
 		20E366411B92F7DC00A22FFE /* RegAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 20E366401B92F7DC00A22FFE /* RegAction.m */; };
+		20E372BF1BDDBFC50063BF56 /* CommonImgUpload.m in Sources */ = {isa = PBXBuildFile; fileRef = 20E372BE1BDDBFC50063BF56 /* CommonImgUpload.m */; };
 		3339625C1B95575400DD0A6D /* SuggestListAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 3339625B1B95575400DD0A6D /* SuggestListAction.m */; };
 /* End PBXBuildFile section */
 
@@ -197,6 +198,8 @@
 		20E341811B720A80008CADC3 /* ProfileSQL.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProfileSQL.h; sourceTree = "<group>"; };
 		20E3663F1B92F7DC00A22FFE /* RegAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegAction.h; sourceTree = "<group>"; };
 		20E366401B92F7DC00A22FFE /* RegAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegAction.m; sourceTree = "<group>"; };
+		20E372BD1BDDBFC50063BF56 /* CommonImgUpload.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonImgUpload.h; sourceTree = "<group>"; };
+		20E372BE1BDDBFC50063BF56 /* CommonImgUpload.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommonImgUpload.m; sourceTree = "<group>"; };
 		3339625A1B95575400DD0A6D /* SuggestListAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SuggestListAction.h; sourceTree = "<group>"; };
 		3339625B1B95575400DD0A6D /* SuggestListAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SuggestListAction.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -314,6 +317,8 @@
 			children = (
 				20DA8B321B8EC4F0007D0CDE /* CommonAction.h */,
 				20DA8B331B8EC4F0007D0CDE /* CommonAction.m */,
+				20E372BD1BDDBFC50063BF56 /* CommonImgUpload.h */,
+				20E372BE1BDDBFC50063BF56 /* CommonImgUpload.m */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -681,6 +686,7 @@
 				20C5B07E1B8DF3DD00B4A8A8 /* GroupConditionsAction.m in Sources */,
 				20DCB9671B8CA60800C758DE /* ApplyListAction.m in Sources */,
 				20DA8B371B8ECBC1007D0CDE /* ReceiveMobileAuthCodeAction.m in Sources */,
+				20E372BF1BDDBFC50063BF56 /* CommonImgUpload.m in Sources */,
 				20DA1A5D1B89752000DEF95C /* MyPraisePersonsAction.m in Sources */,
 				20859A941B64C06A00580ED3 /* LoginAction.m in Sources */,
 				20E193F41B8AF78F00FD7B3D /* ContactsListAction.m in Sources */,
