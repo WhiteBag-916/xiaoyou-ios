@@ -10,7 +10,7 @@
 #import "YDefine.h"
 
 #define BUTTON_TB  10
-#define BUTTON_H   14
+#define BUTTON_H   30
 #define MID_MAR    10   //间隔
 
 @implementation CommonPopView
@@ -116,13 +116,13 @@
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
     if (1 == btnType)
     {
-        button.frame = CGRectMake(self.width-45, 8, 40, BUTTON_H);
+        button.frame = CGRectMake(self.width-40, 0, 50, BUTTON_H);
         [button setTitleColor:KCOLORGREEN_g1 forState:UIControlStateNormal];
         [button setTitle:@"确定" forState:UIControlStateNormal];
     }
     else
     {
-        button.frame = CGRectMake(5, 8, 40, BUTTON_H);
+        button.frame = CGRectMake(0, 0, 50, BUTTON_H);
         [button setTitleColor:KCOLORGREEN_B5 forState:UIControlStateNormal];
         [button setTitle:@"取消" forState:UIControlStateNormal];
     }

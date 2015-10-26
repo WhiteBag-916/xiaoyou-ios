@@ -130,9 +130,8 @@ DEF_SINGLETON(ActivityManager);
 }
 
 //编辑/发布活动
-- (void)editActivity:(ActivityInfoModel *)model block:(ActionCompleteBlock)block {
+- (void)editActivity:(NSDictionary *)dic block:(ActionCompleteBlock)block {
     CommonAction *action = [[CommonAction alloc] init];
-    NSDictionary *dic = [model dictionaryRepresentation];
     action.parameter = [YUtils getParameter:dic needUserToken:YES needContent:YES];
     action.url = [YUtils getUrl:api_available_edit];
     

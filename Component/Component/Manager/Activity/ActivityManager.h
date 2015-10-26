@@ -90,7 +90,7 @@ AS_SINGLETON(ActivityManager);
  返回值 : N/A
  作者 : XiongChen
  *********************************************************************/
-- (void)editActivity:(ActivityInfoModel *)model block:(ActionCompleteBlock)block;
+- (void)editActivity:(NSDictionary *)dic block:(ActionCompleteBlock)block;
 
 /*********************************************************************
  函数名称 : commonImgUpload

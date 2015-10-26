@@ -39,7 +39,6 @@
 		20DAF9E61B8750A4005B7932 /* YDirectory+Data.m in Sources */ = {isa = PBXBuildFile; fileRef = 20DAF9E51B8750A4005B7932 /* YDirectory+Data.m */; };
 		20DBFD4A1B4FA0F5009134D0 /* libComponent.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 20DBFD3E1B4FA0F5009134D0 /* libComponent.a */; };
 		20DBFD861B4FD3F5009134D0 /* YUtils+Component.m in Sources */ = {isa = PBXBuildFile; fileRef = 20DBFD851B4FD3F5009134D0 /* YUtils+Component.m */; };
-		20DCB95E1B8CA60800C758DE /* UploadFeedImageAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 20DCB95D1B8CA60800C758DE /* UploadFeedImageAction.m */; };
 		20DCB9671B8CA60800C758DE /* ApplyListAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 20DCB9661B8CA60800C758DE /* ApplyListAction.m */; };
 		20DCB9701B8CA60800C758DE /* FindFriendsByTagsAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 20DCB96F1B8CA60800C758DE /* FindFriendsByTagsAction.m */; };
 		20DCB9731B8CA60800C758DE /* ApplicantListAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 20DCB9721B8CA60800C758DE /* ApplicantListAction.m */; };
@@ -50,7 +49,6 @@
 		20DED8721B94208B004B5E7B /* RegNoticeAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 20DED8711B94208B004B5E7B /* RegNoticeAction.m */; };
 		20E0BFEA1B88B0CA00EDAED4 /* TagListAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 20E0BFE91B88B0CA00EDAED4 /* TagListAction.m */; };
 		20E0BFED1B88B0CA00EDAED4 /* MessageListAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 20E0BFEC1B88B0CA00EDAED4 /* MessageListAction.m */; };
-		20E0BFF01B88B0CA00EDAED4 /* UploadHeadImageAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 20E0BFEF1B88B0CA00EDAED4 /* UploadHeadImageAction.m */; };
 		20E0C00C1B88B0CA00EDAED4 /* ProfileAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 20E0C00B1B88B0CA00EDAED4 /* ProfileAction.m */; };
 		20E122171B705D3C00F90BD3 /* FeedManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 20E122161B705D3C00F90BD3 /* FeedManager.m */; };
 		20E193F41B8AF78F00FD7B3D /* ContactsListAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 20E193F31B8AF78F00FD7B3D /* ContactsListAction.m */; };
@@ -155,8 +153,6 @@
 		20DBFD7C1B4FD3F5009134D0 /* YSystemDefine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YSystemDefine.h; sourceTree = "<group>"; };
 		20DBFD841B4FD3F5009134D0 /* YUtils+Component.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "YUtils+Component.h"; sourceTree = "<group>"; };
 		20DBFD851B4FD3F5009134D0 /* YUtils+Component.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "YUtils+Component.m"; sourceTree = "<group>"; };
-		20DCB95C1B8CA60800C758DE /* UploadFeedImageAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UploadFeedImageAction.h; sourceTree = "<group>"; };
-		20DCB95D1B8CA60800C758DE /* UploadFeedImageAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UploadFeedImageAction.m; sourceTree = "<group>"; };
 		20DCB9651B8CA60800C758DE /* ApplyListAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ApplyListAction.h; sourceTree = "<group>"; };
 		20DCB9661B8CA60800C758DE /* ApplyListAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ApplyListAction.m; sourceTree = "<group>"; };
 		20DCB96E1B8CA60800C758DE /* FindFriendsByTagsAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FindFriendsByTagsAction.h; sourceTree = "<group>"; };
@@ -179,8 +175,6 @@
 		20E0BFE91B88B0CA00EDAED4 /* TagListAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TagListAction.m; sourceTree = "<group>"; };
 		20E0BFEB1B88B0CA00EDAED4 /* MessageListAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageListAction.h; sourceTree = "<group>"; };
 		20E0BFEC1B88B0CA00EDAED4 /* MessageListAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageListAction.m; sourceTree = "<group>"; };
-		20E0BFEE1B88B0CA00EDAED4 /* UploadHeadImageAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UploadHeadImageAction.h; sourceTree = "<group>"; };
-		20E0BFEF1B88B0CA00EDAED4 /* UploadHeadImageAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UploadHeadImageAction.m; sourceTree = "<group>"; };
 		20E0C00A1B88B0CA00EDAED4 /* ProfileAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileAction.h; sourceTree = "<group>"; };
 		20E0C00B1B88B0CA00EDAED4 /* ProfileAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileAction.m; sourceTree = "<group>"; };
 		20E122151B705D3C00F90BD3 /* FeedManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedManager.h; sourceTree = "<group>"; };
@@ -270,8 +264,6 @@
 				20DAF9A21B871989005B7932 /* SchoolListAction.m */,
 				20E0BFE81B88B0CA00EDAED4 /* TagListAction.h */,
 				20E0BFE91B88B0CA00EDAED4 /* TagListAction.m */,
-				20E0BFEE1B88B0CA00EDAED4 /* UploadHeadImageAction.h */,
-				20E0BFEF1B88B0CA00EDAED4 /* UploadHeadImageAction.m */,
 				20E0C00A1B88B0CA00EDAED4 /* ProfileAction.h */,
 				20E0C00B1B88B0CA00EDAED4 /* ProfileAction.m */,
 				20DA1A581B89751500DEF95C /* MyCommentPersonsAction.h */,
@@ -510,8 +502,6 @@
 				20E1C67D1B89F148008BA9D6 /* FeedDetailAction.m */,
 				20E1C67F1B89F2C8008BA9D6 /* FeedListAction.h */,
 				20E1C6801B89F2C8008BA9D6 /* FeedListAction.m */,
-				20DCB95C1B8CA60800C758DE /* UploadFeedImageAction.h */,
-				20DCB95D1B8CA60800C758DE /* UploadFeedImageAction.m */,
 				20DCB96E1B8CA60800C758DE /* FindFriendsByTagsAction.h */,
 				20DCB96F1B8CA60800C758DE /* FindFriendsByTagsAction.m */,
 				20C5B06A1B8DB77000B4A8A8 /* AlertListAction.h */,
@@ -654,7 +644,11 @@
 				20DA1A7E1B89C44D00DEF95C /* MyCoolPersonsAction.m in Sources */,
 				20E0BFEA1B88B0CA00EDAED4 /* TagListAction.m in Sources */,
 				20DA1A711B89B7DD00DEF95C /* MyFeedAction.m in Sources */,
+<<<<<<< HEAD
 				20DCB95E1B8CA60800C758DE /* UploadFeedImageAction.m in Sources */,
+=======
+				04A82D911BC7A24F00EF87B7 /* RemindAction.m in Sources */,
+>>>>>>> 3a6fa9a2846ac4f898a99b222d4aa7a7457c395b
 				20E1C6691B89E9E6008BA9D6 /* UpdateSelfIntroAction.m in Sources */,
 				20DD81671B91DA1700ACFD9A /* ForbiddenLinkManAction.m in Sources */,
 				20E122171B705D3C00F90BD3 /* FeedManager.m in Sources */,
@@ -673,7 +667,6 @@
 				20DA74C31B8C120F0002E041 /* FriendsConditionAction.m in Sources */,
 				20C5B05D1B8DB08900B4A8A8 /* GroupDetailAction.m in Sources */,
 				20C5B06C1B8DB77000B4A8A8 /* AlertListAction.m in Sources */,
-				20E0BFF01B88B0CA00EDAED4 /* UploadHeadImageAction.m in Sources */,
 				20DA8B3D1B8EE6C5007D0CDE /* ListCommentAction.m in Sources */,
 				20DA8B3A1B8ED078007D0CDE /* ListPraisePeoplesAction.m in Sources */,
 				20E366411B92F7DC00A22FFE /* RegAction.m in Sources */,

@@ -15,11 +15,11 @@
 #import "SchoolListAction.h"
 #import "YDirectory+Data.h"
 #import "TagListAction.h"
-#import "UploadHeadImageAction.h"
+#import "CommonImgUpload.h"
 #import "ProfileInfo.h"
 #import "ProfileAction.h"
 #import "YNotificationDefine.h"
-#import "UploadImage.h"
+#import "ImageUploadModel.h"
 #import "MyCommentPersonsAction.h"
 #import "MyPraisePersonsAction.h"
 #import "MyCoolPersonsAction.h"
@@ -332,19 +332,21 @@ DEF_SINGLETON(ProvisionManager);
 
 //上传头像
 - (void)uploadHeadImage:(NSString *)path block:(ActionCompleteBlock)block {
-    UploadHeadImageAction* action = [[UploadHeadImageAction alloc] init];
+    CommonImgUpload* action = [[CommonImgUpload alloc] init];
+    action.uploadType = @"user";
+    action.needSnap = @"true";
     action.imagePath = path;
     
     [YAction startAction:action completionBlock:^(YActionMessage* message) {
         if (message.isSuccess) {
-            UploadImage *uploadImage = (UploadImage *)message.object;
+            ImageUploadModel *uploadImage = (ImageUploadModel *)message.object;
             //更改缓存
             if (nil != _profileInfo) {
-                _profileInfo.headPic = uploadImage.url;
+                _profileInfo.headPic = [uploadImage.snapImages objectAtIndex:0];
                 [self saveProfileInfo];
             }
             if (nil != _loginResp) {
-                _loginResp.icon = uploadImage.url;
+                _loginResp.icon = [uploadImage.snapImages objectAtIndex:0];
                 [self saveLoginInfo];
             }
         }
