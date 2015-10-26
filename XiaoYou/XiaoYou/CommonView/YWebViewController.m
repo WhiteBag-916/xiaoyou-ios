@@ -12,6 +12,7 @@
 
 @interface YWebViewController () <NJKWebViewProgressDelegate, UIWebViewDelegate>
 @property (copy,    nonatomic)  NSString *url;
+@property (assign,  nonatomic)  BOOL canClick;
 @property (strong,  nonatomic)  NJKWebViewProgressView *progressView;
 @property (strong,  nonatomic)  NJKWebViewProgress *progressProxy;
 @property (strong,  nonatomic)  UIWebView *webView;
@@ -22,10 +23,11 @@
 
 @implementation YWebViewController
 
-- (id)initWithUrl:(NSString *)url andTitle:(NSString *)title {
+- (id)initWithUrl:(NSString *)url andTitle:(NSString *)title canClick:(BOOL)canClick {
     if (self = [super init]) {
         _url = url;
         self.title = title;
+        _canClick = canClick;
         self.hidesBottomBarWhenPushed = true;
     }
     return self;
@@ -67,12 +69,16 @@
     [_contentView addSubview:_webView];
     [_webView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.equalTo(_contentView);
+        if (_canClick) {
+            make.height.equalTo(self.view);
+        }
     }];
     _progressProxy = [[NJKWebViewProgress alloc] init];
     _webView.delegate = _progressProxy;
+    _webView.backgroundColor = [UIColor whiteColor];
     _progressProxy.webViewProxyDelegate = self;
     _progressProxy.progressDelegate = self;
-    _webView.userInteractionEnabled = false;
+    _webView.userInteractionEnabled = _canClick;
 }
 
 - (void)initProgress {
@@ -94,7 +100,7 @@
 
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType {
     if (navigationType != UIWebViewNavigationTypeOther) {
-        return NO;
+        return NO || _canClick;
     }
     return YES;
 }
@@ -102,12 +108,27 @@
 -(void)webViewProgress:(NJKWebViewProgress *)webViewProgress updateProgress:(float)progress
 {
     [_progressView setProgress:progress animated:YES];
-    if (progress == 1.0) {
+    if (!_canClick && progress == 1.0) {
         CGFloat height = [[_webView stringByEvaluatingJavaScriptFromString:@"document.body.clientHeight"] floatValue];
         [_webView mas_updateConstraints:^(MASConstraintMaker *make) {
             make.height.mas_equalTo(height);
         }];
     }
 }
-
+- (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error {
+    [_progressView setProgress:1 animated:true];
+    UIView *infoView = [[UIView alloc] initWithFrame:self.view.bounds];
+    [self.view addSubview:infoView];
+    infoView.backgroundColor = [UIColor whiteColor];
+    
+    UIImageView *imgView = [[UIImageView alloc] init];
+    [infoView addSubview:imgView];
+    [imgView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.mas_equalTo(SCALE_NUM(90));
+        make.top.mas_equalTo(135);
+    }];
+    imgView.image = [UIImage imageNamed:@"news_pic_beautiful"];
+    
+    
+}
 @end

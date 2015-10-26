@@ -62,6 +62,13 @@ NSString *const kPlaceCollectionViewCell = @"PlaceCollectionViewCellId";
     [_dataManager isEnableToRelease];
 }
 
+-(void)textViewDidBeginEditing:(UITextView *)textView
+{
+    NSDictionary * dic = @{@"position":@4};
+    [[NSNotificationCenter defaultCenter] postNotificationName:KNotification_Activity_Release_ScrollTo object:dic];
+    
+}
+
 -(BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text
 {
     

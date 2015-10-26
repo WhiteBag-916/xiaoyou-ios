@@ -14,14 +14,6 @@
 #import "TypeCollectionViewCell.h"
 #import "CheckCollectionViewCell.h"
 
-typedef enum : NSUInteger {
-    POINT1 = 1,
-    POINT2 = 2,
-    POINT3 = 3,
-    POINT4 = 4,
-    POINT5 = 5,
-    POINT6 = 6,
-} MyPointNum;
 
 @interface ActivityReleaseCollectionView ()<UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout,UIScrollViewDelegate>
 
@@ -84,6 +76,7 @@ typedef enum : NSUInteger {
     if (indexPath.row == 0)
     {
         NameCollectionViewCell * cell = (NameCollectionViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:kNameCollectionViewCell forIndexPath:indexPath];
+        cell.myCollectionView = self;
         return cell;
     }
     else if (indexPath.row == 1)
@@ -142,6 +135,8 @@ typedef enum : NSUInteger {
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
+    [self endEditing:YES];
+    
     NSLog(@"%@",NSStringFromCGPoint(self.contentOffset));
     if (self.contentOffset.x < SCALE_NUM(75)) {
         [self.myController setPointHighlight:POINT1];
@@ -166,6 +161,11 @@ typedef enum : NSUInteger {
     {
         [self.myController setPointHighlight:POINT6];
     }
+}
+
+-(void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
+{
+    [self endEditing:YES];
 }
 
 @end

@@ -8,11 +8,14 @@
 
 #import "ActivityIdentityViewController.h"
 #import "ActivityReleaseController.h"
+#import "ActivityIdentityTableView.h"
 
 @interface ActivityIdentityViewController ()
 
 @property(nonatomic,strong) UIButton * personalButton;
 @property(nonatomic,strong) UIButton * groupButton;
+
+@property(nonatomic,strong) ActivityIdentityTableView * activityIdentityTableView;
 
 @end
 
@@ -122,6 +125,14 @@
         make.right.equalTo(_groupButton.mas_right).offset(SCALE_NUM(10));
         make.top.equalTo(_personalButton.mas_bottom).offset(SCALE_NUM(20));
         make.height.mas_equalTo(SCALE_NUM(100));
+    }];
+    
+    _activityIdentityTableView = [[ActivityIdentityTableView alloc] init];
+    _activityIdentityTableView.backgroundColor = [UIColor clearColor];
+    [self.view addSubview:_activityIdentityTableView];
+    [_activityIdentityTableView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(remindLabel.mas_bottom).offset(SCALE_NUM(10));
+        make.left.right.bottom.mas_equalTo(0);
     }];
     
 }

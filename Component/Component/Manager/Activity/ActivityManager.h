@@ -9,6 +9,8 @@
 #import "YManager.h"
 #import "YAction.h"
 
+@class ActivityInfoModel;
+
 @interface ActivityManager : YManager<YManager>
 AS_SINGLETON(ActivityManager);
 
@@ -26,5 +28,8 @@ AS_SINGLETON(ActivityManager);
 
 //报名审核
 - (void)checkEnrollActivity:(NSString *)checkStatus activityId:(NSString *)activityId block:(ActionCompleteBlock)block;
+
+//编辑/发布活动
+- (void)editActivity:(ActivityInfoModel *)model block:(ActionCompleteBlock)block;
 
 @end
