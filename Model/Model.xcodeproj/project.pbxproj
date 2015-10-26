@@ -9,9 +9,9 @@
 /* Begin PBXBuildFile section */
 		047145D51BD8E5B4001D75FC /* RemindModelTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 047145D41BD8E5B4001D75FC /* RemindModelTest.m */; };
 		047145D81BD8F03B001D75FC /* JoinInModelTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 047145D71BD8F03B001D75FC /* JoinInModelTest.m */; };
-		04AF14521BDDC74400FEE6A4 /* FilterCondition.m in Sources */ = {isa = PBXBuildFile; fileRef = 04AF14511BDDC74400FEE6A4 /* FilterCondition.m */; settings = {ASSET_TAGS = (); }; };
-		04AF14551BDDC7AC00FEE6A4 /* FilterConditionModels.m in Sources */ = {isa = PBXBuildFile; fileRef = 04AF14541BDDC7AC00FEE6A4 /* FilterConditionModels.m */; settings = {ASSET_TAGS = (); }; };
 		049173A51BDCBACE00D204AF /* ActivityModelTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 049173A41BDCBACE00D204AF /* ActivityModelTest.m */; };
+		04AF14521BDDC74400FEE6A4 /* FilterCondition.m in Sources */ = {isa = PBXBuildFile; fileRef = 04AF14511BDDC74400FEE6A4 /* FilterCondition.m */; };
+		04AF14551BDDC7AC00FEE6A4 /* FilterConditionModels.m in Sources */ = {isa = PBXBuildFile; fileRef = 04AF14541BDDC7AC00FEE6A4 /* FilterConditionModels.m */; };
 		20859A991B64C0BC00580ED3 /* ResultCommon.m in Sources */ = {isa = PBXBuildFile; fileRef = 20859A981B64C0BC00580ED3 /* ResultCommon.m */; };
 		20859AA31B64CB7E00580ED3 /* LoginResp.m in Sources */ = {isa = PBXBuildFile; fileRef = 20859AA01B64CB7E00580ED3 /* LoginResp.m */; };
 		20859AB31B64E2F600580ED3 /* YModel+ActionMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 20859AB21B64E2F600580ED3 /* YModel+ActionMessage.m */; };
@@ -33,7 +33,6 @@
 		20DDA42D1BDA24300023179A /* ActivityInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 20DDA4281BDA24300023179A /* ActivityInfoModel.m */; };
 		20DDA42E1BDA24300023179A /* ActivityPublishedModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 20DDA42A1BDA24300023179A /* ActivityPublishedModel.m */; };
 		20DED86F1B94205B004B5E7B /* EasyModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 20DED86E1B94205B004B5E7B /* EasyModel.m */; };
-		20E0BFFF1B88B0CA00EDAED4 /* UploadImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 20E0BFFE1B88B0CA00EDAED4 /* UploadImage.m */; };
 		20E0C06E1B88B0CA00EDAED4 /* Feed.m in Sources */ = {isa = PBXBuildFile; fileRef = 20E0C06B1B88B0CA00EDAED4 /* Feed.m */; };
 		20E0C06F1B88B0CA00EDAED4 /* FeedInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 20E0C06D1B88B0CA00EDAED4 /* FeedInfo.m */; };
 		20E0C0721B88B0CA00EDAED4 /* Author.m in Sources */ = {isa = PBXBuildFile; fileRef = 20E0C0711B88B0CA00EDAED4 /* Author.m */; };
@@ -134,8 +133,6 @@
 		20DDA42A1BDA24300023179A /* ActivityPublishedModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityPublishedModel.m; sourceTree = "<group>"; };
 		20DED86D1B94205B004B5E7B /* EasyModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EasyModel.h; sourceTree = "<group>"; };
 		20DED86E1B94205B004B5E7B /* EasyModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EasyModel.m; sourceTree = "<group>"; };
-		20E0BFFD1B88B0CA00EDAED4 /* UploadImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UploadImage.h; sourceTree = "<group>"; };
-		20E0BFFE1B88B0CA00EDAED4 /* UploadImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UploadImage.m; sourceTree = "<group>"; };
 		20E0C06A1B88B0CA00EDAED4 /* Feed.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Feed.h; sourceTree = "<group>"; };
 		20E0C06B1B88B0CA00EDAED4 /* Feed.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Feed.m; sourceTree = "<group>"; };
 		20E0C06C1B88B0CA00EDAED4 /* FeedInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedInfo.h; sourceTree = "<group>"; };
@@ -253,8 +250,6 @@
 		20859A9E1B64CB7600580ED3 /* Provision */ = {
 			isa = PBXGroup;
 			children = (
-				20E0BFFD1B88B0CA00EDAED4 /* UploadImage.h */,
-				20E0BFFE1B88B0CA00EDAED4 /* UploadImage.m */,
 				333E95CE1B70B6DF0001059D /* CheckAccountModel.h */,
 				333E95CF1B70B6DF0001059D /* CheckAccountModel.m */,
 				20859A9F1B64CB7E00580ED3 /* LoginResp.h */,
@@ -525,7 +520,6 @@
 				333E95EA1B70B7AB0001059D /* SchoolDetailModel.m in Sources */,
 				333E95D61B70B7250001059D /* LinkManModel.m in Sources */,
 				20DA1A601B8995A000DEF95C /* ProvinceCode.m in Sources */,
-				20E0BFFF1B88B0CA00EDAED4 /* UploadImage.m in Sources */,
 				333E95E21B70B7820001059D /* UpdateAvatarModel.m in Sources */,
 				04AF14551BDDC7AC00FEE6A4 /* FilterConditionModels.m in Sources */,
 				20E0C0821B88B0CA00EDAED4 /* LinkManList.m in Sources */,

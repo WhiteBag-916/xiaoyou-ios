@@ -21,7 +21,7 @@
 #import "YCommonAlertView.h"
 #import "UIScrollView+UITouchEvent.h"
 #import "FeedManager.h"
-#import "UploadImage.h"
+#import "ImageUploadModel.h"
 #import "Feed.h"
 #import "YModel+ActionMessage.h"
 #import "UzysAssetsPickerController.h"
@@ -556,26 +556,42 @@
     
     [_picArray removeAllObjects];
     [YUtils showHUDWithTitle:@"正在上传"];
+    NSMutableArray *pathArray = [[NSMutableArray alloc] init];
     for (int i = 0; i < [_imgGroup getImgCount]; i++) {
-        WS(weakSelf);
-        [[FeedManager sharedInstance] uploadFeedImage:[YDirectory newImgCache:[NSString stringWithFormat:@"feed%d.png", i]] block:^(YActionMessage *message) {
-            if (message.isSuccess) {
-                [weakSelf.picArray addObject:[(UploadImage *)message.object url]];
-                _isUpLoadEnd = YES;
-            } else {
-                [weakSelf.picArray addObject:@""];
-            }
-            if (weakSelf.picArray.count == [weakSelf.imgGroup getImgCount]) {
-                [weakSelf uploadFeed];
-            }
-        }];
-        
-        //解决图片顺序问题
-        while (!self.isUpLoadEnd) {
-            [[NSRunLoop mainRunLoop] runMode:NSDefaultRunLoopMode beforeDate:[NSDate distantFuture]];
-        }
-        _isUpLoadEnd = NO;
+        [pathArray addObject:[YDirectory newImgCache:[NSString stringWithFormat:@"feed%d.png", i]]];
+//        WS(weakSelf);
+//        [[FeedManager sharedInstance] uploadFeedImage:[YDirectory newImgCache:[NSString stringWithFormat:@"feed%d.png", i]] block:^(YActionMessage *message) {
+//            if (message.isSuccess) {
+//                [weakSelf.picArray addObject:[(UploadImage *)message.object url]];
+//                _isUpLoadEnd = YES;
+//            } else {
+//                [weakSelf.picArray addObject:@""];
+//            }
+//            if (weakSelf.picArray.count == [weakSelf.imgGroup getImgCount]) {
+//                [weakSelf uploadFeed];
+//            }
+//        }];
+//        
+//        //解决图片顺序问题
+//        while (!self.isUpLoadEnd) {
+//            [[NSRunLoop mainRunLoop] runMode:NSDefaultRunLoopMode beforeDate:[NSDate distantFuture]];
+//        }
+//        _isUpLoadEnd = NO;
     }
+    
+    WS(weakSelf);
+    [[FeedManager sharedInstance] uploadFeedImage:[pathArray componentsJoinedByString:@","] block:^(YActionMessage *message) {
+        if (message.isSuccess) {
+            weakSelf.picArray = [NSMutableArray arrayWithArray:[(ImageUploadModel *)message.object images]];
+            _isUpLoadEnd = YES;
+        } else {
+            [weakSelf.picArray addObject:@""];
+        }
+        if (weakSelf.picArray.count == [weakSelf.imgGroup getImgCount]) {
+            [weakSelf uploadFeed];
+        }
+    }];
+    
     if ([_imgGroup getImgCount] == 0) {
         [self uploadFeed];
     }

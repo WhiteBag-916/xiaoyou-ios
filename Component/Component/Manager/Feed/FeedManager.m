@@ -12,7 +12,7 @@
 #import "MyFeedAction.h"
 #import "FeedDetailAction.h"
 #import "FeedListAction.h"
-#import "UploadFeedImageAction.h"
+#import "CommonImgUpload.h"
 #import "FindFriendsByTagsAction.h"
 #import "AlertListAction.h"
 #import "GroupConditionsAction.h"
@@ -113,7 +113,9 @@ DEF_SINGLETON(FeedManager);
 
 //上传feed图片,传图片存储的绝对路径,UploadImage
 - (void)uploadFeedImage:(NSString *)imgPath block:(ActionCompleteBlock)block {
-    UploadFeedImageAction *action = [[UploadFeedImageAction alloc] init];
+    CommonImgUpload *action = [[CommonImgUpload alloc] init];
+    action.uploadType = @"feed";
+    action.needSnap = @"true";
     action.imagePath = imgPath;
     
     [YAction startAction:action completionBlock:^(YActionMessage* message) {
