@@ -10,8 +10,8 @@
  自己申请活动的提醒，包括下面描述的5个状态
  */
 #import <UIKit/UIKit.h>
-#import "RemindInfoTest.h"
 #import "RemindModelTest.h"
+#import "NoticeInfo.h"
 
 //提醒的5个状态
 typedef enum : NSUInteger {
@@ -28,6 +28,6 @@ typedef enum : NSUInteger {
 
 +(PassRemindCell*)passRemindCellWithTableView:(UITableView*)tableView;
 
--(void)setData:(RemindModelTest*)model;
+-(void)setData:(NoticeInfo*)model;
 
 @end

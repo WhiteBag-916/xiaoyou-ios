@@ -9,12 +9,13 @@
 #import "RemindListTableView.h"
 #import "RemindHeadView.h"
 #import "PassRemindCell.h"
-#import "RemindManager.h"
+//#import "RemindManager.h"
 #import "ApplyRemindCell.h"
 #import "WhoJoinInController.h"
 #import "ProfilePersonListController.h"
 #import "ProfileViewController.h"
 #import "ActivityDetailViewController.h"
+#import "NoticeManager.h"
 
 #define REMINDVIEWCELL  @"remindCell"
 #define REMINDHEADVIEW  @"remindHeadView"
@@ -23,7 +24,6 @@
 
 @interface RemindListTableView ()
 <UITableViewDataSource,UITableViewDelegate>
-@property(nonatomic,retain)NSMutableArray *remindListArray;
 @end
 @implementation RemindListTableView
 
@@ -47,6 +47,14 @@
         [self registerClass:[PassRemindCell class] forCellReuseIdentifier:REMINDVIEWCELL];
     }
     return self;
+}
+
+-(NSMutableArray *)remindListArray
+{
+    if (!_remindListArray) {
+        _remindListArray = [NSMutableArray array];
+    }
+    return _remindListArray;
 }
 
 #pragma mark - 继承者
@@ -76,10 +84,22 @@
 }
 
 - (void)sendRequest {
-    NSString *lastID;
-    if (![self isHeaderRefresh]) {
-        //lastID = [NSString stringWithFormat:@"%g", [[_feedListArray.lastObject feed] feedIdentifier]];
-    }
+    
+    
+    [[NoticeManager sharedInstance] getMyNoticeInfoWithLimiteStart:0 limiteEnd:10 block:^(YActionMessage *message) {
+        if (message.isSuccess) {
+            if ([self isHeaderRefresh]) {
+                [_remindListArray removeAllObjects];
+            }
+            [self hiddenFooter:NO];
+            [self.remindListArray addObjectsFromArray:message.object];
+            [self reloadData];
+        }
+    }];
+//    NSString *lastID;
+//    if (![self isHeaderRefresh]) {
+//        //lastID = [NSString stringWithFormat:@"%g", [[_feedListArray.lastObject feed] feedIdentifier]];
+//    }
 //  [[FeedManager sharedInstance] feedList:lastID size:KPAGENUM queryCode:_filter block:^(YActionMessage *message) {
 //        if (message.isSuccess) {
 //            if ([self isHeaderRefresh]) {
@@ -127,12 +147,6 @@
     }];*/
 }
 
--(void)setMyDataSource:(NSArray *)myDataSource
-{
-    _myDataSource = myDataSource;
-    [self reloadData];
-}
-
 
 #pragma mark 协议方法
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -153,7 +167,7 @@
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 4;
+    return 1;
     return _remindListArray.count;
 }
 
@@ -182,32 +196,43 @@
 
 -(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.section < 3) {
-        PassRemindCell *cell = [PassRemindCell passRemindCellWithTableView:tableView];
-        cell.cellType = AUDIT_PASSED;
-        [cell setData:self.myDataSource[indexPath.section]];
-        if (indexPath.section == 1) {
-            cell.cellType = AUDIT_NOT_PASSED;
-        }
-        else
-        {
-            cell.cellType = AUDIT_PASSED;
-        }
-        return cell;
-    }
-    else if (indexPath.section == 4)
-    {
-        ApplyRemindCell *cell = [ApplyRemindCell cellWithTableView:tableView];
-        cell.cellType = WAIT_SELECT;
-        return cell;
-    }
-    else
-    {
-        ApplyRemindCell *cell = [ApplyRemindCell cellWithTableView:tableView];
-        cell.cellType = IGNORED;
-        return cell;
-    }
-    return nil;
+    
+    PassRemindCell *cell = [PassRemindCell passRemindCellWithTableView:tableView];
+    cell.cellType = AUDIT_PASSED;
+    
+    if (!_remindListArray && _remindListArray.count != 0)
+        [cell setData:self.remindListArray[indexPath.section]];
+    return cell;
+//    if (indexPath.section == 1) {
+//        cell.cellType = AUDIT_NOT_PASSED;
+//    }
+//
+//    if (indexPath.section < 3) {
+//        PassRemindCell *cell = [PassRemindCell passRemindCellWithTableView:tableView];
+//        cell.cellType = AUDIT_PASSED;
+//        //[cell setData:self.myDataSource[indexPath.section]];
+//        if (indexPath.section == 1) {
+//            cell.cellType = AUDIT_NOT_PASSED;
+//        }
+//        else
+//        {
+//            cell.cellType = AUDIT_PASSED;
+//        }
+//        return cell;
+//    }
+//    else if (indexPath.section == 4)
+//    {
+//        ApplyRemindCell *cell = [ApplyRemindCell cellWithTableView:tableView];
+//        cell.cellType = WAIT_SELECT;
+//        return cell;
+//    }
+//    else
+//    {
+//        ApplyRemindCell *cell = [ApplyRemindCell cellWithTableView:tableView];
+//        cell.cellType = IGNORED;
+//        return cell;
+//    }
+//    return nil;
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath

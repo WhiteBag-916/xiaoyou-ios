@@ -13,6 +13,8 @@
 //加载数据
 - (void)loadData;
 
-@property (nonatomic,strong) NSArray *myDataSource;
+@property (nonatomic,strong) NSMutableArray *remindListArray;
+
+- (void)sendRequest;
 
 @end

@@ -173,7 +173,7 @@
  Url Define: Activity
  **********************************************************/
 //提醒列表
-#define api_remind_list     @"/user/getsenderlist"
+#define api_remind_list     @"/facade/activity/findNoticeInfo"
 #define api_schedule_list   @"/user/getschedulelist"
 //查询当前用户相关的活动列表
 #define api_activity_findActivityTypes   @"/activity/findActivityTypes"

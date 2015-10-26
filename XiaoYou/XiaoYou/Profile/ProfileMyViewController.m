@@ -19,6 +19,7 @@
 #import "SDPhotoBrowser.h"
 #import "YCommonAlertView.h"
 #import "YModel+ActionMessage.h"
+#import "ImageUploadModel.h"
 
 #define KHEADHEIGHT SCALE_NUM(150)
 
@@ -408,12 +409,13 @@
         //原先bug原因:异步线程不能刷新UI,UI操作只能在主线程完成
         dispatch_async(dispatch_get_main_queue(), ^{
             [self uploadHeadImage:^(NSString *url) {
-                //[_faceImg setFaceImageWithUrl:url];
+                [_faceImg setFaceImageWithUrl:url];
             }];
             while (!self.isHeadImageUploadEnd) {
                 [[NSRunLoop mainRunLoop] runMode:NSDefaultRunLoopMode beforeDate:[NSDate distantFuture]];
             }
             _faceImg.image = [UIImage imageWithData:imageData];
+            self.isHeadImageUploadEnd = NO;
         });
     });
 }
@@ -431,14 +433,15 @@
         }
     }
 }
+
 //上传头像
 - (void)uploadHeadImage:(void(^)(NSString *url))block {
     NSString *path = [YDirectory newImgCache:_headImagePath];
     [[ProvisionManager sharedInstance] uploadHeadImage:path
                                                  block:^(YActionMessage *message) {
                                                      if (message.isSuccess) {
+                                                         block([[message.object snapImages] objectAtIndex:0]);
                                                          self.isHeadImageUploadEnd = YES;
-                                                         block((NSString *)[message.object url]);
                                                      } else {
                                                          [YUtils showTitle:message.desc];
                                                      }
@@ -469,6 +472,7 @@
         [self.navigationController pushViewController:[[ProfilePhoneChangeViewController alloc] initWithType:ProfilePhoneChangeTypeMod hasPhone:false] animated:true];
     }
 }
+
 //登出
 - (void)logOut {
     YCommonAlertView *alert = [[YCommonAlertView alloc] initWithTitle:@"提示" message:@"是否退出" buttonTitles:@"取消",@"确认", nil];

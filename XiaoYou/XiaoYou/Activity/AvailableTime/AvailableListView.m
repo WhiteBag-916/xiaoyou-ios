@@ -91,7 +91,7 @@
                 [self.availableListArray removeAllObjects];
             }
             
-            NSLog(@"this is message = %@",message.object);
+            NSLog(@"this is message = %@",message);
             
             [self.availableListArray addObjectsFromArray:message.object];
             

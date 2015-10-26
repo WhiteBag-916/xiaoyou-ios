@@ -20,6 +20,7 @@
     [dic setObject:SStr(_searchText) forKey:@"name"];
     NSDictionary *parameter = [YUtils getParameter:dic needUserToken:YES needContent:YES];
     NSString *url = [YUtils getUrl:api_available_list];
+    
     [self POST:url parameters:parameter completion:^(YHttpRequest *request) {
         YActionMessage *message = [ActivityInfoModel actionMessageWithHttpRequest:request];
         self.completionBlock(message);

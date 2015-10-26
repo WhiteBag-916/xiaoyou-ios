@@ -133,7 +133,7 @@
     _contentNameLabel = [[UILabel alloc]init];
     [self.wrapContentView addSubview:_contentNameLabel];
     _contentNameLabel.font = CONTENT_FONT(12);
-    _contentNameLabel.text = @"名称：校级舞蹈大赛";
+    _contentNameLabel.text = @"名称：%@";
     _contentNameLabel.textColor = KCOLORGREEN_B3;
     [_contentNameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.height.mas_equalTo(SCALE_NUM(12));
@@ -243,11 +243,18 @@
     }
 }
 
--(void)setData:(RemindModelTest *)model
+-(void)setData:(NoticeInfo *)model
 {
-    [_headImageView sd_setImageWithURL:[NSURL URLWithString:model.headImageUrl]];
-    _contentTitleLabel.text = model.acType;
-    _contentNameLabel.text = [NSString stringWithFormat:@"名称：%@",model.acName];
+    [_headImageView sd_setImageWithURL:[NSURL URLWithString:model.userHeadPic]];
+    _contentTitleLabel.text = model.userName;
+    _contentNameLabel.text = [NSString stringWithFormat:_contentNameLabel.text,model.activityName];
 }
+
+//-(void)setData:(RemindModelTest *)model
+//{
+//    [_headImageView sd_setImageWithURL:[NSURL URLWithString:model.headImageUrl]];
+//    _contentTitleLabel.text = model.acType;
+//    _contentNameLabel.text = [NSString stringWithFormat:@"名称：%@",model.acName];
+//}
 
 @end
