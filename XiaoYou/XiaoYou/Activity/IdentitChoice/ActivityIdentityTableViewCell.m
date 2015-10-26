@@ -48,9 +48,17 @@ NSString *const kActivityIdentityTableViewCell = @"ActivityIdentityTableViewCell
     }];
 }
 
--(void)setCellInfo:(NSString *) contentText
+-(void)setCellInfo:(NSMutableDictionary *) dic
 {
-    _contentLabel.text = contentText;
+    _contentLabel.text = dic[@"name"];
+    if ([dic[@"isChoice"] boolValue])
+    {
+        _contentLabel.backgroundColor = KCOLORGREEN_g1;
+    }
+    else
+    {
+        _contentLabel.backgroundColor = [UIColor clearColor];
+    }
 }
 
 //-(BOOL)needLine

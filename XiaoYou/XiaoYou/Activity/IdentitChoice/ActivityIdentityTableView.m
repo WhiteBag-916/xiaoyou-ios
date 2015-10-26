@@ -8,8 +8,13 @@
 
 #import "ActivityIdentityTableView.h"
 #import "ActivityIdentityTableViewCell.h"
+#import "ProvisionManager.h"
+#import "ProfileInfo.h"
+#import "Tags.h"
 
 @interface ActivityIdentityTableView ()<UITableViewDataSource,UITableViewDelegate>
+
+@property (nonatomic,strong) NSMutableArray * dataSouceArr;
 
 @end
 
@@ -26,6 +31,22 @@
         
         [self registerClass:[ActivityIdentityTableViewCell class] forCellReuseIdentifier:kActivityIdentityTableViewCell];
         [self setUpHeaderView];
+        
+        _dataSouceArr = [[NSMutableArray alloc] init];
+        NSArray * groupArr =[[ProvisionManager sharedInstance] getProfile].managerGroups;
+        if (groupArr.count > 0)
+        {
+            for (int i = 0; i < groupArr.count; i++)
+            {
+                Tags * tag = groupArr[i];
+                NSMutableDictionary * dic = [[NSMutableDictionary alloc] initWithDictionary:[tag dictionaryRepresentation]];
+                
+                [dic setObject:@NO forKey:@"isChoice"];
+                
+                [_dataSouceArr addObject:dic];
+            }
+        }
+        
     }
     return self;
 }
@@ -60,19 +81,44 @@
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 3;
+    return _dataSouceArr.count;
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     ActivityIdentityTableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:kActivityIdentityTableViewCell forIndexPath:indexPath];
-    [cell setCellInfo:@"就是一只什么熊大哥啦底格里匹克皮"];
+    [cell setCellInfo:_dataSouceArr[indexPath.row]];
     return cell;
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     return SCALE_NUM(40);
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    for (int i = 0; i < _dataSouceArr.count; i++)
+    {
+        if (i == indexPath.row)
+        {
+            if ([_dataSouceArr[indexPath.row][@"isChoice"] boolValue])
+            {
+                [_dataSouceArr[indexPath.row] setObject:@NO forKey:@"isChoice"];
+            }
+            else
+            {
+                [_dataSouceArr[indexPath.row] setObject:@YES forKey:@"isChoice"];
+            }
+        }
+        else
+        {
+            [_dataSouceArr[i] setObject:@NO forKey:@"isChoice"];
+        }
+    }
+    
+    [self reloadData];
+    
 }
 
 @end
