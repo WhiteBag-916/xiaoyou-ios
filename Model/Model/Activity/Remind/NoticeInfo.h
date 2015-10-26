@@ -1,0 +1,30 @@
+//
+//  Obj.h
+//
+//  Created by sheng  on 15/10/26
+//  Copyright (c) 2015 __MyCompanyName__. All rights reserved.
+//
+
+#import <Foundation/Foundation.h>
+#import "YModel.h"
+
+
+@interface NoticeInfo :  YModel <NSCoding, NSCopying>
+
+@property (nonatomic, strong) NSString *userId;
+@property (nonatomic, strong) NSString *userHeadPic;
+@property (nonatomic, assign) double enrollTime;
+@property (nonatomic, strong) NSString *userName;
+@property (nonatomic, strong) NSString *activityOrganizer;
+@property (nonatomic, assign) BOOL activityOwner;
+@property (nonatomic, assign) double activityPublishedId;
+@property (nonatomic, strong) NSString *activityName;
+@property (nonatomic, assign) double activityEndTime;
+@property (nonatomic, strong) NSString *checkStatus;
+@property (nonatomic, assign) double activityStartTime;
+
++ (instancetype)modelObjectWithDictionary:(NSDictionary *)dict;
+- (instancetype)initWithDictionary:(NSDictionary *)dict;
+- (NSDictionary *)dictionaryRepresentation;
+
+@end

@@ -8,7 +8,7 @@
 
 #import "RemindViewController.h"
 #import "RemindListTableView.h"
-#import "RemindManager.h"
+//#import "RemindManager.h"
 #import "RemindModelTest.h"
 @interface RemindViewController ()
 @property (nonatomic,retain) RemindListTableView *remindList;
@@ -80,8 +80,8 @@
             make.bottom.equalTo(self.view);
         }];
     }
-    [_remindList loadData];
-    _remindList.myDataSource = [self getDataSource];
+    [_remindList sendRequest];
+    //[_remindList loadData];
     return _remindList;
 }
 @end
