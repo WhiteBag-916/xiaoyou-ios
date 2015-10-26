@@ -87,20 +87,20 @@
 - (void)sendRequest {
     [[ActivityManager sharedInstance] getCurrentUseAvailableListLimitStart:_currentIndex limitEnd:_currentIndex+KPAGENUM block:^(YActionMessage *message) {
         if (message.isSuccess) {
-//            if ([self isHeaderRefresh]) {
-//                [self.availableListArray removeAllObjects];
-//            }
-//            
-//            NSLog(@"this is message = %@",message.object);
-//            
-//            [self.availableListArray addObjectsFromArray:message.object];
-//            
-//            [self hiddenFooter:NO];
-//            if ([message.object count] < KPAGENUM) {
-//                [self showNoticeNoMoreData];
-//            }
-//            [self reloadData];
-//            _currentIndex += KPAGENUM;
+            if ([self isHeaderRefresh]) {
+                [self.availableListArray removeAllObjects];
+            }
+            
+            NSLog(@"this is message = %@",message.object);
+            
+            [self.availableListArray addObjectsFromArray:message.object];
+            
+            [self hiddenFooter:NO];
+            if ([message.object count] < KPAGENUM) {
+                [self showNoticeNoMoreData];
+            }
+            [self reloadData];
+            _currentIndex += KPAGENUM;
         } else {
             [YUtils showTitle:message.desc];
         }

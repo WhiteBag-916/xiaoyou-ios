@@ -44,7 +44,7 @@
 @property (nonatomic, strong) NSString *headImagePath;//头像路径
 @property (nonatomic, strong) UIImagePickerController *picker;
 
-
+@property (nonatomic, assign) BOOL isHeadImageUploadEnd;//头像是否上传完成
 @end
 
 @implementation ProfileMyViewController
@@ -344,6 +344,7 @@
 
 - (void)pickImage
 {
+    self.isHeadImageUploadEnd = NO;
     self.picker = [[UIImagePickerController alloc] init];
     [self.picker setSourceType:UIImagePickerControllerSourceTypePhotoLibrary];
     [self.picker setDelegate:self];
@@ -403,12 +404,17 @@
         _headImagePath = keyStr;
         
         //界面
+        //mod by desheng
+        //原先bug原因:异步线程不能刷新UI,UI操作只能在主线程完成
         dispatch_async(dispatch_get_main_queue(), ^{
             [self uploadHeadImage:^(NSString *url) {
-                [_faceImg setFaceImageWithUrl:url];
+                //[_faceImg setFaceImageWithUrl:url];
             }];
+            while (!self.isHeadImageUploadEnd) {
+                [[NSRunLoop mainRunLoop] runMode:NSDefaultRunLoopMode beforeDate:[NSDate distantFuture]];
+            }
+            _faceImg.image = [UIImage imageWithData:imageData];
         });
-        
     });
 }
 //更新头像
@@ -431,6 +437,7 @@
     [[ProvisionManager sharedInstance] uploadHeadImage:path
                                                  block:^(YActionMessage *message) {
                                                      if (message.isSuccess) {
+                                                         self.isHeadImageUploadEnd = YES;
                                                          block((NSString *)[message.object url]);
                                                      } else {
                                                          [YUtils showTitle:message.desc];
