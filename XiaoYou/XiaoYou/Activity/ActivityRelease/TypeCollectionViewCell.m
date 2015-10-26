@@ -24,6 +24,8 @@ NSString *const kTypeCollectionViewCell = @"TypeCollectionViewCellId";
     self = [super initWithFrame:frame];
     if (self) {
         [self changUI];
+        
+        
     }
     return self;
 }

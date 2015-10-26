@@ -131,7 +131,6 @@
     //性别
     UIImageView * sexImageView = [[UIImageView alloc] init];
     sexImageView.backgroundColor = [UIColor clearColor];
-    sexImageView.image = [UIImage imageNamed:@"funny_detail_girl"];
     [backView addSubview:sexImageView];
     [sexImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(_nameLabel.mas_right);
@@ -139,6 +138,14 @@
         make.height.width.mas_equalTo(14);
         
     }];
+    if ([_model.gender isEqualToString:@"男"])
+    {
+        sexImageView.image = [UIImage imageNamed:@"funny_detail_boy"];
+    }
+    else if ([_model.gender isEqualToString:@"女"])
+    {
+        sexImageView.image = [UIImage imageNamed:@"funny_detail_girl"];
+    }
     
     //认证
     UILabel * authenticationLabel = [[UILabel alloc] init];

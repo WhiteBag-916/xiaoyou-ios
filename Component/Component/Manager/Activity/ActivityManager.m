@@ -13,7 +13,8 @@
 #import "CommonAction.h"
 #import "YUtils+Component.h"
 #import "ActivityInfoModel.h"
-#import "AvailableQueryCondition.h"
+#import "CommonImgUpload.h"
+#import "GetFilterConditionsAction.h"
 
 #define KActivityManagerSyncQueue @"kActivityManagerSyncQueue"
 
@@ -53,6 +54,30 @@ DEF_SINGLETON(ActivityManager);
     AvailableAction *action = [[AvailableAction alloc]init];
     action.limitStart = limitStart;
     action.limitEnd = limitEnd;
+    
+    [YAction startAction:action completionBlock:^(YActionMessage *message) {
+        block(message);
+    }];
+}
+
+//获取搜索活动列表
+- (void)getCurrentUseAvailableListLimitStart:(NSInteger)limitStart limitEnd:(NSInteger)limitEnd search:(NSString *)searchText block:(ActionCompleteBlock)block {
+    AvailableAction *action = [[AvailableAction alloc]init];
+    action.limitStart = limitStart;
+    action.limitEnd = limitEnd;
+    action.searchText = searchText;
+    
+    [YAction startAction:action completionBlock:^(YActionMessage *message) {
+        block(message);
+    }];
+}
+
+//筛选活动列表
+- (void)getCurrentUseAvailableListLimitStart:(NSInteger)limitStart limitEnd:(NSInteger)limitEnd dic:(NSDictionary *)condition block:(ActionCompleteBlock)block {
+    AvailableAction *action = [[AvailableAction alloc]init];
+    action.limitStart = limitStart;
+    action.limitEnd = limitEnd;
+    action.condition = [NSDictionary dictionaryWithDictionary:condition];
     
     [YAction startAction:action completionBlock:^(YActionMessage *message) {
         block(message);
@@ -118,12 +143,26 @@ DEF_SINGLETON(ActivityManager);
     }];
 }
 
-//获取有空界面的查询条件
--(void)getAvailableQueryConditionWithBlock:(ActionCompleteBlock)block
-{
-    AvailableQueryCondition *action = [[AvailableAction alloc]init];
-    //不需要参数
-    [YAction startAction:action completionBlock:^(YActionMessage *message) {
+//上传图片
+- (void)commonImgUpload:(NSString *)uploadType needSnap:(NSString *)needSnap block:(ActionCompleteBlock)block {
+    CommonImgUpload *action = [[CommonImgUpload alloc] init];
+    action.uploadType = uploadType;
+    action.needSnap = needSnap;
+    
+    [YAction startAction:action completionBlock:^(YActionMessage* message) {
+        
+        //主线程处理界面
+        block(message);
+    }];
+}
+
+//获取有空筛选条件
+- (void)getFilterConditions:(ActionCompleteBlock)block {
+    GetFilterConditionsAction *action = [[GetFilterConditionsAction alloc] init];
+    
+    [YAction startAction:action completionBlock:^(YActionMessage* message) {
+        
+        //主线程处理界面
         block(message);
     }];
 }

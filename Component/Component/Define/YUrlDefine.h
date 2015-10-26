@@ -187,8 +187,10 @@
 #define api_available_checkEnrollActivity   @"/activity/checkEnrollActivity"
 //编辑/发布活动
 #define api_available_edit   @"/activity/edit"
-//获取活动所有的查询条件
-#define api_filter_condition @"/activity/getFilterConditions"
+//多图片上传
+#define api_img_uploadFiles   @"/img/uploadFiles"
+//获取有空筛选条件
+#define api_activity_getFilterConditions   @"/activity/getFilterConditions"
 
 #endif
 

@@ -47,7 +47,7 @@ NSString *const kTypeDetailCollectionViewCell = @"TypeDetailCollectionViewCellId
 
 -(void)setCellInfo:(NSDictionary *)dic
 {
-    _typeLabel.text = dic[@"type"];
+    _typeLabel.text = dic[@"name"];
     if ([dic[@"isChoice"] boolValue])
     {
         _typeLabel.backgroundColor = KCOLORGREEN_g1;

@@ -9,13 +9,14 @@
 #import "TypeDetailCollectionView.h"
 #import "TypeDetailCollectionViewCell.h"
 #import "ActivityReleaseDataManager.h"
+#import "ActivityManager.h"
+#import "Tags.h"
 
 @interface TypeDetailCollectionView ()<UICollectionViewDataSource,UICollectionViewDelegate>
 
 @property(nonatomic,strong)NSMutableArray * dataSouceArr;
 
 @property(nonatomic,strong)ActivityReleaseDataManager * dataManager;
-//@property(nonatomic,strong)NSMutableArray * typeArr;
 @property(nonatomic,strong)NSString * typeStr;
 
 @end
@@ -31,13 +32,40 @@
         self.scrollEnabled = YES;
         self.pagingEnabled = NO;
         [self registerClass:[TypeDetailCollectionViewCell class] forCellWithReuseIdentifier:kTypeDetailCollectionViewCell];
-        _dataSouceArr = [[NSMutableArray alloc] initWithArray:@[[NSMutableDictionary dictionaryWithDictionary:@{@"type":@"竞技·比赛",@"isChoice":@NO}],[NSMutableDictionary dictionaryWithDictionary:@{@"type":@"讲座·培训",@"isChoice":@NO}],[NSMutableDictionary dictionaryWithDictionary:@{@"type":@"实习·招聘",@"isChoice":@NO}],[NSMutableDictionary dictionaryWithDictionary:@{@"type":@"运动·户外",@"isChoice":@NO}],[NSMutableDictionary dictionaryWithDictionary:@{@"type":@"义工·支教",@"isChoice":@NO}],[NSMutableDictionary dictionaryWithDictionary:@{@"type":@"社交·沙龙",@"isChoice":@NO}],[NSMutableDictionary dictionaryWithDictionary:@{@"type":@"演出·晚会",@"isChoice":@NO}],[NSMutableDictionary dictionaryWithDictionary:@{@"type":@"综合·其他",@"isChoice":@YES}]]];
+        
+        _dataSouceArr = [[NSMutableArray alloc] init];
+        [[ActivityManager sharedInstance] findActivityTypes:^(YActionMessage *message) {
+            
+            [self transformData:message.object];
+            
+        }];
+//        _dataSouceArr = [[NSMutableArray alloc] initWithArray:@[[NSMutableDictionary dictionaryWithDictionary:@{@"type":@"竞技·比赛",@"isChoice":@NO}],[NSMutableDictionary dictionaryWithDictionary:@{@"type":@"讲座·培训",@"isChoice":@NO}],[NSMutableDictionary dictionaryWithDictionary:@{@"type":@"实习·招聘",@"isChoice":@NO}],[NSMutableDictionary dictionaryWithDictionary:@{@"type":@"运动·户外",@"isChoice":@NO}],[NSMutableDictionary dictionaryWithDictionary:@{@"type":@"义工·支教",@"isChoice":@NO}],[NSMutableDictionary dictionaryWithDictionary:@{@"type":@"社交·沙龙",@"isChoice":@NO}],[NSMutableDictionary dictionaryWithDictionary:@{@"type":@"演出·晚会",@"isChoice":@NO}],[NSMutableDictionary dictionaryWithDictionary:@{@"type":@"综合·其他",@"isChoice":@YES}]]];
         
         _dataManager = [ActivityReleaseDataManager shareActivityReleaseDataManager];
-        _dataManager.ActivityTypeStr = @"综合·其他";
-//        _typeArr = [[NSMutableArray alloc] init];
+        
     }
     return self;
+}
+
+-(void)transformData:(NSArray *) dataArr
+{
+    NSMutableArray * temepArr = [[NSMutableArray alloc] initWithArray:dataArr];
+    for (int i = 0; i < temepArr.count; i++)
+    {
+        Tags * tag = temepArr[i];
+        NSMutableDictionary * dic = [[NSMutableDictionary alloc] initWithDictionary:[tag dictionaryRepresentation]];
+        if (i == temepArr.count - 1)
+        {
+            [dic setObject:@YES forKey:@"isChoice"];
+            _dataManager.ActivityTypeStr = dic[@"name"];
+            [self reloadData];
+        }
+        else
+        {
+            [dic setObject:@NO forKey:@"isChoice"];
+        }
+        [_dataSouceArr addObject:dic];
+    }
 }
 
 #pragma mark - UICollectionViewDataSource和UICollectionViewDelegate
