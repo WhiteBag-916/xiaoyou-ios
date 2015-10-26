@@ -37,7 +37,13 @@
         return [NSString stringWithFormat:NSLocalizedString(@"%.f年前", @""), timeInterval / 31536000];
     }
 }
-
+/*精确到日的日期描述*/
+- (NSString *)dayDescription
+{
+    NSDateFormatter *dateFormatter = [NSDateFormatter dateFormatterWithFormat:@"yyyyMMdd"];
+    
+    return [dateFormatter stringFromDate:self];
+}
 /*精确到分钟的日期描述*/
 - (NSString *)minuteDescription
 {
