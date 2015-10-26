@@ -33,6 +33,7 @@
 @property (nonatomic, assign) double unreadAlterCount;
 @property (nonatomic, strong) NSString *schoolName;
 @property (nonatomic, strong) NSString *friendStatus;
+@property (nonatomic, strong) NSString *gender;
 
 + (instancetype)modelObjectWithDictionary:(NSDictionary *)dict;
 - (instancetype)initWithDictionary:(NSDictionary *)dict;

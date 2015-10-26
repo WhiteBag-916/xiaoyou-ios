@@ -116,6 +116,7 @@
         make.height.mas_equalTo(SCALE_NUM(12));
         make.top.equalTo(_timeLabel2.mas_bottom).offset(SCALE_NUM(15));
         make.left.equalTo(_timeLabel2);
+        make.bottom.mas_equalTo(SCALE_NUM(-15));
     }];
     
     _projectLabel3 = [[UILabel alloc]init];

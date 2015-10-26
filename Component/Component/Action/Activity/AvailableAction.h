@@ -14,5 +14,7 @@
 @property (nonatomic, strong) NSString *userID;
 @property (nonatomic, assign) NSInteger limitStart;
 @property (nonatomic, assign) NSInteger limitEnd;
+@property (nonatomic, strong) NSString *searchText;
+@property (nonatomic, strong) NSDictionary *condition;
 
 @end

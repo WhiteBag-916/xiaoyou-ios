@@ -16,6 +16,7 @@
 #import "ActivityIdentityViewController.h"
 #import "ActivityModelTest.h"
 #import "AssociationsSearchViewController.h"
+#import "ActivityManager.h"
 @interface AvailableViewController ()
 
 @property (nonatomic,strong) AvailableListView *availableListView;
@@ -37,6 +38,18 @@
         [self addGuideView];
     [self setUpCustomNavgationBar];
     [self availableListView];
+    
+    
+//    [[ActivityManager sharedInstance]getCurrentUseAvailableListLimitStart:0 limitEnd:10 block:^(YActionMessage *message) {
+//        
+//        if (message.isSuccess) {
+//            NSLog(@"this is object = %@",message.object);
+//        }
+//        
+//        NSLog(@"this is %@",message);
+//    }];
+    
+    
 }
 
 
@@ -90,13 +103,12 @@
         [_availableListView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.edges.equalTo(self.view);
         }];
-        [_availableListView loadMyData];
     }
-    _availableListView.myDataSource = [self getDataSource];
+    [_availableListView sendRequest];
     return _availableListView;
 }
 
-
+#pragma mark 测试数据代码
 -(NSArray*)getDataSource
 {
     ActivityModelTest *m1 = [[ActivityModelTest alloc]init];

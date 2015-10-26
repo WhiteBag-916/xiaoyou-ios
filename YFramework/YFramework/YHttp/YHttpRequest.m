@@ -88,12 +88,16 @@ static NSMutableArray *Requests = nil;
                     if ([parameters[kYHttpRequestUploadFile] isKindOfClass:[NSArray class]])
                     {
                         NSArray *files = parameters[kYHttpRequestUploadFile];
-                        [files enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-//                            [(ASIFormDataRequest *) request setFile:obj
-//                                                             forKey:[NSString stringWithFormat:@"%lu",idx+1]];
-                            [(ASIFormDataRequest *) request setFile:obj
+                        if (1 == files.count) {
+                            [(ASIFormDataRequest *) request setFile:[files objectAtIndex:0]
                                                              forKey:@"imgfile"];
-                        }];
+                        } else {
+                            [files enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+                                [(ASIFormDataRequest *) request setFile:obj
+                                                                 forKey:[NSString stringWithFormat:@"%lu",idx+1]];
+                                
+                            }];
+                        }
                     }
                 }
                 else if (YHttpRequestTypeUploadData == type)
