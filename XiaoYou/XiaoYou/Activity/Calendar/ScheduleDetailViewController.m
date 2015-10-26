@@ -236,7 +236,7 @@
 
 //删除活动
 - (void)delSchedule {
-    YCommonAlertView *alert = [[YCommonAlertView alloc] initWithTitle:nil message:@"是否确认删除？" buttonTitles:@"取消",@"确认", nil];
+    YCommonAlertView *alert = [[YCommonAlertView alloc] initWithTitle:nil message:@"确定删除此日程吗？" buttonTitles:@"取消",@"确认", nil];
     [alert clickedButtonHandler:^(NSInteger index) {
         [alert hide];
         if (index == 1) {
