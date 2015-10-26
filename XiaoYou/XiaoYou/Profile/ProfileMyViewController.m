@@ -411,9 +411,9 @@
             [self uploadHeadImage:^(NSString *url) {
                 [_faceImg setFaceImageWithUrl:url];
             }];
-//            while (!self.isHeadImageUploadEnd) {
-//                [[NSRunLoop mainRunLoop] runMode:NSDefaultRunLoopMode beforeDate:[NSDate distantFuture]];
-//            }
+            while (!self.isHeadImageUploadEnd) {
+                [[NSRunLoop mainRunLoop] runMode:NSDefaultRunLoopMode beforeDate:[NSDate distantFuture]];
+            }
             _faceImg.image = [UIImage imageWithData:imageData];
             self.isHeadImageUploadEnd = NO;
         });
@@ -433,6 +433,7 @@
         }
     }
 }
+
 //上传头像
 - (void)uploadHeadImage:(void(^)(NSString *url))block {
     NSString *path = [YDirectory newImgCache:_headImagePath];
@@ -471,6 +472,7 @@
         [self.navigationController pushViewController:[[ProfilePhoneChangeViewController alloc] initWithType:ProfilePhoneChangeTypeMod hasPhone:false] animated:true];
     }
 }
+
 //登出
 - (void)logOut {
     YCommonAlertView *alert = [[YCommonAlertView alloc] initWithTitle:@"提示" message:@"是否退出" buttonTitles:@"取消",@"确认", nil];

@@ -644,11 +644,7 @@
 				20DA1A7E1B89C44D00DEF95C /* MyCoolPersonsAction.m in Sources */,
 				20E0BFEA1B88B0CA00EDAED4 /* TagListAction.m in Sources */,
 				20DA1A711B89B7DD00DEF95C /* MyFeedAction.m in Sources */,
-<<<<<<< HEAD
 				20DCB95E1B8CA60800C758DE /* UploadFeedImageAction.m in Sources */,
-=======
-				04A82D911BC7A24F00EF87B7 /* RemindAction.m in Sources */,
->>>>>>> 3a6fa9a2846ac4f898a99b222d4aa7a7457c395b
 				20E1C6691B89E9E6008BA9D6 /* UpdateSelfIntroAction.m in Sources */,
 				20DD81671B91DA1700ACFD9A /* ForbiddenLinkManAction.m in Sources */,
 				20E122171B705D3C00F90BD3 /* FeedManager.m in Sources */,
