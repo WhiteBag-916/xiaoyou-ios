@@ -334,7 +334,7 @@ DEF_SINGLETON(MessageManager);
                 
                 needRefresh = YES;
                 needReload = YES;
-                
+                 
                 if (nil != ext[@"group_id"]) {
                     //如果是社团同意，则去拉取联系人列表和自己的tag
                     [[ContactManager sharedInstance] getContactsListData:^(YActionMessage *message) {
@@ -374,7 +374,7 @@ DEF_SINGLETON(MessageManager);
                 }];
                 
                 if ([SStr(chatter) isEmpty]) {
-                    chatter = [NSString stringWithFormat:@"%lu", [KGROUP_APPLYID integerValue]+_grouArray.count];
+                    chatter = [NSString stringWithFormat:@"%u", [KGROUP_APPLYID integerValue]+_grouArray.count];
                     [_grouArray addObject:@{@"group_id":ext[@"group_id"], @"chatter": chatter}];
                 }
                 
@@ -383,6 +383,12 @@ DEF_SINGLETON(MessageManager);
                 
                 needReload = YES;
                 needRefresh = YES;
+                break;
+            }
+            case ACTIVITY_PUSH:
+            {
+                YLogD(@"活动推送");
+                NSString *activityID = ext[@"aaaa"];
                 break;
             }
             case ADD_COMMENT:

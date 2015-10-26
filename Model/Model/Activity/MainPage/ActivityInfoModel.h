@@ -6,9 +6,9 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "ActivityPublishedModel.h"
 #import "YModel.h"
 
-@class ActivityPublishedModel;
 
 @interface ActivityInfoModel : YModel <NSCoding, NSCopying>
 
