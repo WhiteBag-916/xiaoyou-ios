@@ -15,6 +15,7 @@
 		20859A851B64BD9000580ED3 /* MessageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 20859A841B64BD9000580ED3 /* MessageManager.m */; };
 		20859A941B64C06A00580ED3 /* LoginAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 20859A931B64C06A00580ED3 /* LoginAction.m */; };
 		209E08C51BDDC9E20062758E /* RemindManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 209E08C41BDDC9E20062758E /* RemindManager.m */; };
+		209E08CB1BDDCE050062758E /* GetFilterConditionsAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 209E08CA1BDDCE050062758E /* GetFilterConditionsAction.m */; };
 		20C5B0511B8DB03900B4A8A8 /* GetFriendApplyListAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 20C5B0501B8DB03900B4A8A8 /* GetFriendApplyListAction.m */; };
 		20C5B05D1B8DB08900B4A8A8 /* GroupDetailAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 20C5B05C1B8DB08900B4A8A8 /* GroupDetailAction.m */; };
 		20C5B06C1B8DB77000B4A8A8 /* AlertListAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 20C5B06B1B8DB77000B4A8A8 /* AlertListAction.m */; };
@@ -104,6 +105,8 @@
 		20859A931B64C06A00580ED3 /* LoginAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginAction.m; sourceTree = "<group>"; };
 		209E08C31BDDC9E20062758E /* RemindManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RemindManager.h; sourceTree = "<group>"; };
 		209E08C41BDDC9E20062758E /* RemindManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RemindManager.m; sourceTree = "<group>"; };
+		209E08C91BDDCE050062758E /* GetFilterConditionsAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetFilterConditionsAction.h; sourceTree = "<group>"; };
+		209E08CA1BDDCE050062758E /* GetFilterConditionsAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetFilterConditionsAction.m; sourceTree = "<group>"; };
 		20C5B04F1B8DB03900B4A8A8 /* GetFriendApplyListAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetFriendApplyListAction.h; sourceTree = "<group>"; };
 		20C5B0501B8DB03900B4A8A8 /* GetFriendApplyListAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetFriendApplyListAction.m; sourceTree = "<group>"; };
 		20C5B05B1B8DB08900B4A8A8 /* GroupDetailAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroupDetailAction.h; sourceTree = "<group>"; };
@@ -232,6 +235,8 @@
 				20DDA3EA1BDA1D8D0023179A /* FindActivityTypesAction.m */,
 				20DDA42F1BDA26050023179A /* FindByActivityPublishedIdAction.h */,
 				20DDA4301BDA26050023179A /* FindByActivityPublishedIdAction.m */,
+				209E08C91BDDCE050062758E /* GetFilterConditionsAction.h */,
+				209E08CA1BDDCE050062758E /* GetFilterConditionsAction.m */,
 			);
 			path = Activity;
 			sourceTree = "<group>";
@@ -679,6 +684,7 @@
 				20DCB9671B8CA60800C758DE /* ApplyListAction.m in Sources */,
 				20DA8B371B8ECBC1007D0CDE /* ReceiveMobileAuthCodeAction.m in Sources */,
 				20E372BF1BDDBFC50063BF56 /* CommonImgUpload.m in Sources */,
+				209E08CB1BDDCE050062758E /* GetFilterConditionsAction.m in Sources */,
 				20DA1A5D1B89752000DEF95C /* MyPraisePersonsAction.m in Sources */,
 				20859A941B64C06A00580ED3 /* LoginAction.m in Sources */,
 				20E193F41B8AF78F00FD7B3D /* ContactsListAction.m in Sources */,

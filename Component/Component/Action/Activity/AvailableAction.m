@@ -14,7 +14,11 @@
 
 - (void)execute
 {
-    NSDictionary *parameter = [YUtils getParameter:@{@"limitStart":@(_limitStart), @"limitEnd":@(_limitEnd)} needUserToken:YES needContent:YES];
+    NSMutableDictionary *dic = [NSMutableDictionary dictionaryWithDictionary:_condition];
+    [dic setObject:@(_limitStart) forKey:@"limitStart"];
+    [dic setObject:@(_limitEnd) forKey:@"limitEnd"];
+    [dic setObject:SStr(_searchText) forKey:@"name"];
+    NSDictionary *parameter = [YUtils getParameter:dic needUserToken:YES needContent:YES];
     NSString *url = [YUtils getUrl:api_available_list];
     [self POST:url parameters:parameter completion:^(YHttpRequest *request) {
         YActionMessage *message = [ActivityInfoModel actionMessageWithHttpRequest:request];

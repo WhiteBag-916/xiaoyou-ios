@@ -9,10 +9,11 @@
 /* Begin PBXBuildFile section */
 		047145D51BD8E5B4001D75FC /* RemindModelTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 047145D41BD8E5B4001D75FC /* RemindModelTest.m */; };
 		047145D81BD8F03B001D75FC /* JoinInModelTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 047145D71BD8F03B001D75FC /* JoinInModelTest.m */; };
-		049173A51BDCBACE00D204AF /* ActivityModelTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 049173A41BDCBACE00D204AF /* ActivityModelTest.m */; settings = {ASSET_TAGS = (); }; };
+		049173A51BDCBACE00D204AF /* ActivityModelTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 049173A41BDCBACE00D204AF /* ActivityModelTest.m */; };
 		20859A991B64C0BC00580ED3 /* ResultCommon.m in Sources */ = {isa = PBXBuildFile; fileRef = 20859A981B64C0BC00580ED3 /* ResultCommon.m */; };
 		20859AA31B64CB7E00580ED3 /* LoginResp.m in Sources */ = {isa = PBXBuildFile; fileRef = 20859AA01B64CB7E00580ED3 /* LoginResp.m */; };
 		20859AB31B64E2F600580ED3 /* YModel+ActionMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 20859AB21B64E2F600580ED3 /* YModel+ActionMessage.m */; };
+		209E08C81BDDCDDD0062758E /* GetFilterConditionsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 209E08C71BDDCDDD0062758E /* GetFilterConditionsModel.m */; };
 		20C5B0651B8DB55C00B4A8A8 /* GroupDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = 20C5B0621B8DB55C00B4A8A8 /* GroupDetail.m */; };
 		20C5B0661B8DB55C00B4A8A8 /* GroupModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 20C5B0641B8DB55C00B4A8A8 /* GroupModel.m */; };
 		20C5B0691B8DB75A00B4A8A8 /* AlertList.m in Sources */ = {isa = PBXBuildFile; fileRef = 20C5B0681B8DB75A00B4A8A8 /* AlertList.m */; };
@@ -90,6 +91,8 @@
 		20859AA01B64CB7E00580ED3 /* LoginResp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginResp.m; sourceTree = "<group>"; };
 		20859AB11B64E2F600580ED3 /* YModel+ActionMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "YModel+ActionMessage.h"; sourceTree = "<group>"; };
 		20859AB21B64E2F600580ED3 /* YModel+ActionMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "YModel+ActionMessage.m"; sourceTree = "<group>"; };
+		209E08C61BDDCDDD0062758E /* GetFilterConditionsModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetFilterConditionsModel.h; sourceTree = "<group>"; };
+		209E08C71BDDCDDD0062758E /* GetFilterConditionsModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetFilterConditionsModel.m; sourceTree = "<group>"; };
 		20C5B0611B8DB55C00B4A8A8 /* GroupDetail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroupDetail.h; sourceTree = "<group>"; };
 		20C5B0621B8DB55C00B4A8A8 /* GroupDetail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroupDetail.m; sourceTree = "<group>"; };
 		20C5B0631B8DB55C00B4A8A8 /* GroupModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroupModel.h; sourceTree = "<group>"; };
@@ -195,6 +198,8 @@
 		0447A3A21BD7788300341684 /* MainPage */ = {
 			isa = PBXGroup;
 			children = (
+				209E08C61BDDCDDD0062758E /* GetFilterConditionsModel.h */,
+				209E08C71BDDCDDD0062758E /* GetFilterConditionsModel.m */,
 				049173A31BDCBACE00D204AF /* ActivityModelTest.h */,
 				049173A41BDCBACE00D204AF /* ActivityModelTest.m */,
 				20DDA4231BDA24300023179A /* ActivityCoverageModels.h */,
@@ -501,6 +506,7 @@
 				20DA74BD1B8C0BFA0002E041 /* FriendsCondition.m in Sources */,
 				20859AA31B64CB7E00580ED3 /* LoginResp.m in Sources */,
 				332D32681B71E9B400B69E96 /* PushInfo.m in Sources */,
+				209E08C81BDDCDDD0062758E /* GetFilterConditionsModel.m in Sources */,
 				20DDA42E1BDA24300023179A /* ActivityPublishedModel.m in Sources */,
 				047145D81BD8F03B001D75FC /* JoinInModelTest.m in Sources */,
 				20DA8B1A1B8EBD27007D0CDE /* GroupAllList.m in Sources */,

@@ -189,6 +189,8 @@
 #define api_available_edit   @"/activity/edit"
 //多图片上传
 #define api_img_uploadFiles   @"/img/uploadFiles"
+//获取有空筛选条件
+#define api_activity_getFilterConditions   @"/activity/getFilterConditions"
 
 #endif
 

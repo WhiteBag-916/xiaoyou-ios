@@ -14,6 +14,7 @@
 #import "YUtils+Component.h"
 #import "ActivityInfoModel.h"
 #import "CommonImgUpload.h"
+#import "GetFilterConditionsAction.h"
 
 #define KActivityManagerSyncQueue @"kActivityManagerSyncQueue"
 
@@ -53,6 +54,30 @@ DEF_SINGLETON(ActivityManager);
     AvailableAction *action = [[AvailableAction alloc]init];
     action.limitStart = limitStart;
     action.limitEnd = limitEnd;
+    
+    [YAction startAction:action completionBlock:^(YActionMessage *message) {
+        block(message);
+    }];
+}
+
+//获取搜索活动列表
+- (void)getCurrentUseAvailableListLimitStart:(NSInteger)limitStart limitEnd:(NSInteger)limitEnd search:(NSString *)searchText block:(ActionCompleteBlock)block {
+    AvailableAction *action = [[AvailableAction alloc]init];
+    action.limitStart = limitStart;
+    action.limitEnd = limitEnd;
+    action.searchText = searchText;
+    
+    [YAction startAction:action completionBlock:^(YActionMessage *message) {
+        block(message);
+    }];
+}
+
+//筛选活动列表
+- (void)getCurrentUseAvailableListLimitStart:(NSInteger)limitStart limitEnd:(NSInteger)limitEnd dic:(NSDictionary *)condition block:(ActionCompleteBlock)block {
+    AvailableAction *action = [[AvailableAction alloc]init];
+    action.limitStart = limitStart;
+    action.limitEnd = limitEnd;
+    action.condition = [NSDictionary dictionaryWithDictionary:condition];
     
     [YAction startAction:action completionBlock:^(YActionMessage *message) {
         block(message);
@@ -123,6 +148,17 @@ DEF_SINGLETON(ActivityManager);
     CommonImgUpload *action = [[CommonImgUpload alloc] init];
     action.uploadType = uploadType;
     action.needSnap = needSnap;
+    
+    [YAction startAction:action completionBlock:^(YActionMessage* message) {
+        
+        //主线程处理界面
+        block(message);
+    }];
+}
+
+//获取有空筛选条件
+- (void)getFilterConditions:(ActionCompleteBlock)block {
+    GetFilterConditionsAction *action = [[GetFilterConditionsAction alloc] init];
     
     [YAction startAction:action completionBlock:^(YActionMessage* message) {
         
