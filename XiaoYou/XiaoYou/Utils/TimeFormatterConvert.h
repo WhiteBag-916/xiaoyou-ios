@@ -12,4 +12,7 @@
 
 +(NSString*)timeConvertToFommtterAvailable:(double)timestampStr;
 
++(NSString*)timeConvertToFommtterNotice:(double)timestamp;
+
++(NSString*)timeConvertToFommtterNoticeHead:(double)timestamp;
 @end

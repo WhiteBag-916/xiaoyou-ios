@@ -246,14 +246,13 @@
     NSArray *coverageModels =   model.activityCoverageModels;
     
     _titleLabel.text        = publishModel.name;//标题
-    //_titleLabel.text        = @"奋斗史奋斗史奋斗史奋斗史奋斗史奋斗史奋斗史奋斗史奋斗史";
     //图文混排
     for (ActivityImageTextModels *imageText in imageTextModels) {
         if ([imageText.type isEqualToString:@"text"]) {
             _descriptionLabel.text = imageText.content;
         }
         else if ([imageText.type isEqualToString:@"image"]) {
-            imageText.content = @"/dev/feed/s/c2cfe0e7-ba38-43e0-b345-3d14ff2f2bcf.png";
+            imageText.content = imageText.content;//@"/dev/feed/s/c2cfe0e7-ba38-43e0-b345-3d14ff2f2bcf.png";
             [_imageGroupView updateWithImgs:@[imageText.content] bigPics:@[imageText.content]];
         }
     }
@@ -262,7 +261,7 @@
     _activityStartTimeLabel.text = [TimeFormatterConvert timeConvertToFommtterAvailable:publishModel.actStartTime];
     _activityEndTimeLabel.text = [TimeFormatterConvert timeConvertToFommtterAvailable:publishModel.actEndTime];
     _activityLocationLabel.text = publishModel.address;
-    _organizerLabel.text = @"话剧社";
+    _organizerLabel.text = publishModel.activityOrganizer;
 }
 
 @end

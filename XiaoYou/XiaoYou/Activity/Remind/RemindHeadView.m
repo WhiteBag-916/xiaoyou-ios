@@ -7,6 +7,7 @@
 //
 
 #import "RemindHeadView.h"
+#import "TimeFormatterConvert.h"
 
 #define REUSERID @"ReminHeadView"
 @interface RemindHeadView ()
@@ -42,6 +43,11 @@
         make.centerY.equalTo(self.mas_centerY);
     }];
     _timeLabel.text = @"今天 18:22";
+}
+
+-(void)setData:(NoticeInfo *)model
+{
+    _timeLabel.text = [TimeFormatterConvert timeConvertToFommtterNoticeHead:model.enrollTime];
 }
 
 @end

@@ -9,6 +9,7 @@
 #import "ApplyRemindCell.h"
 #import "ConnectTag.h"
 #import "Tags.h"
+#import "UIImageView+Ext.h"
 
 #define CELL_INSET          SCALE_NUM(12)
 #define TOP_CELL_HEIGHT     SCALE_NUM(44)
@@ -112,7 +113,6 @@
         make.left.equalTo(self.titleImageView.mas_right).offset(10);
         make.top.equalTo(self.titleImageView);
         make.height.equalTo(self.titleImageView);
-        
     }];
     
     //中间内容部分，分割线
@@ -168,7 +168,7 @@
     [self.wrapContentView addSubview:_applyContentLable];
     _applyContentLable.numberOfLines = 0;
     _applyContentLable.lineBreakMode = NSLineBreakByWordWrapping;
-    _applyContentLable.text = @"申请参加百团纳新志愿者选拔活动!";
+    _applyContentLable.text = @"参加了你的%@活动!";
     _applyContentLable.textColor = KCOLORGREEN_B3;
     _applyContentLable.font = CONTENT_FONT(12);
     [_applyContentLable mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -197,6 +197,13 @@
     //[self addBottomSelectView];
 }
 
+
+-(void)setData:(NoticeInfo *)model
+{
+    [_headImageView setFaceImageWithUrl:model.userHeadPic];
+    _nameLabel.text = model.userName;
+    _applyContentLable.text = [NSString stringWithFormat:_applyContentLable.text,model.activityName];
+}
 
 ////添加同意-忽略状态
 //-(void)addStatusButton

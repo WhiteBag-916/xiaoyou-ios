@@ -34,6 +34,7 @@
 @property (nonatomic, strong) NSString *checkStatus;
 @property (nonatomic, assign) double createTime;
 @property (nonatomic, strong) NSString *address;
+@property (nonatomic, strong) NSString *activityOrganizer;
 
 + (instancetype)modelObjectWithDictionary:(NSDictionary *)dict;
 - (instancetype)initWithDictionary:(NSDictionary *)dict;
