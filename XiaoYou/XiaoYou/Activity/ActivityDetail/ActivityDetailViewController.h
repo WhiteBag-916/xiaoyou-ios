@@ -8,8 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import "YViewController.h"
+#import "NoticeInfo.h"
 @interface ActivityDetailViewController : YViewController
 
 @property (nonatomic,assign) NSInteger index;
+
+@property (nonatomic,strong) NoticeInfo *model;
 
 @end

@@ -27,8 +27,10 @@
 - (void)initNavigationTitle {
     _titleButton = [UIButton buttonWithType:UIButtonTypeCustom];
     _titleButton.frame = CGRectMake(0, 0, 100, 40);
+    [_titleButton setImage:[UIImage imageNamed:@"icon_arrow"] forState:UIControlStateNormal];
     [_titleButton setTitle:@"第六周" forState:UIControlStateNormal];
-    [_titleButton setImage:[UIImage imageNamed:@""] forState:UIControlStateNormal];
+    [_titleButton setImageEdgeInsets:UIEdgeInsetsMake(0, SCALE_NUM(65), 0, 0)];
+    [_titleButton setTitleEdgeInsets:UIEdgeInsetsMake(0, 0, 0, SCALE_NUM(15))];
     [_titleButton addTarget:self action:@selector(showChooseWeek) forControlEvents:UIControlEventTouchUpInside];
     
     self.navigationItem.titleView = _titleButton;
