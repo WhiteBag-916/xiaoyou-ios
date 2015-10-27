@@ -25,6 +25,7 @@
 #import "GiftViewController.h"
 #import "AppConfigData.h"
 #import "ScanfResultViewController.h"
+#import "MyTimetableViewController.h"
 
 #define KTOPHEIGHT SCALE_NUM(90)
 #define KHEADIMG_SIZE SCALE_NUM(45)
@@ -251,10 +252,14 @@
     [item3 mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(item2.mas_bottom);
         make.left.right.height.equalTo(item1);
-        make.bottom.equalTo(_middleView);
     }];
     
-    
+    UIView *item4 = [self whiteItem:3];
+    [item4 mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(item3.mas_bottom);
+        make.left.right.height.equalTo(item1);
+        make.bottom.equalTo(_middleView);
+    }];
 }
 
 - (void)initBottom {
@@ -318,15 +323,29 @@
             make.top.bottom.right.equalTo(item);
         }];
         
-    } else {
+    } else if (2 == index) {
         [item addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(scanAction)]];
         [icon mas_makeConstraints:^(MASConstraintMaker *make) {
             make.width.height.mas_equalTo(SCALE_NUM(17));
             make.centerX.equalTo(_headImg);
             make.centerY.equalTo(item);
         }];
-        icon.image = [UIImage imageNamed:@"mine-heart"];
+        icon.image = [UIImage imageNamed:@"mine－icon－yard"];
         UILabel *hint = [YUtils initLabel:CONTENT_FONT(12) color:[UIColor blackColor] text:@"扫一扫加好友or获得校友礼券" frame:CGRectZero alignment:NSTextAlignmentLeft];
+        [item addSubview:hint];
+        [hint mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.equalTo(_userName);
+            make.top.bottom.right.equalTo(item);
+        }];
+    } else if (3 == index) {
+        [item addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(timetableAction)]];
+        [icon mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.width.height.mas_equalTo(SCALE_NUM(17));
+            make.centerX.equalTo(_headImg);
+            make.centerY.equalTo(item);
+        }];
+        icon.image = [UIImage imageNamed:@"mine－icon－course"];
+        UILabel *hint = [YUtils initLabel:CONTENT_FONT(12) color:[UIColor blackColor] text:@"我的课程表" frame:CGRectZero alignment:NSTextAlignmentLeft];
         [item addSubview:hint];
         [hint mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.equalTo(_userName);
@@ -479,6 +498,12 @@
     self.navigationController.navigationBarHidden = true;
     [self.navigationController pushViewController:reader animated:YES];
     
+}
+
+//我的课程表
+- (void)timetableAction {
+    MyTimetableViewController *myTimetableViewController = [[MyTimetableViewController alloc] init];
+    [self.navigationController pushViewController:myTimetableViewController animated:YES needHiddenBottomBar:YES];
 }
 
 #pragma mark - QRCodeReader Delegate Methods
