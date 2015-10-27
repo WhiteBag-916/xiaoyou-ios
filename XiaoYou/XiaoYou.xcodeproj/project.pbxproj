@@ -85,6 +85,7 @@
 		0476B62B1BD0E4EC00FD13DF /* 1havetime_box_classroom@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0476B6271BD0E4EC00FD13DF /* 1havetime_box_classroom@2x.png */; };
 		0476B62C1BD0E4EC00FD13DF /* 1havetime_box_classroom@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0476B6281BD0E4EC00FD13DF /* 1havetime_box_classroom@3x.png */; };
 		048676A01BC803CB009F8C43 /* FastBottomView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0486769F1BC803CB009F8C43 /* FastBottomView.m */; };
+		0487E4391BDF4DA5002396CD /* PassRemindCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0487E4381BDF4DA5002396CD /* PassRemindCell.m */; settings = {ASSET_TAGS = (); }; };
 		048C49EE1BD4EDB0008E1D88 /* havetime_icon_no@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 048C49EC1BD4EDB0008E1D88 /* havetime_icon_no@2x.png */; };
 		048C49EF1BD4EDB0008E1D88 /* havetime_icon_no@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 048C49ED1BD4EDB0008E1D88 /* havetime_icon_no@3x.png */; };
 		049480341BB8D76C00C68460 /* tick@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0494802B1BB8D76C00C68460 /* tick@2x.png */; };
@@ -111,7 +112,6 @@
 		0494806F1BB94FF900C68460 /* too_see_more_arrow@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0494806D1BB94FF900C68460 /* too_see_more_arrow@3x.png */; };
 		049C55C21BB3DE18007565E1 /* FastViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 049C55C11BB3DE18007565E1 /* FastViewController.m */; };
 		049C55CC1BB3F33D007565E1 /* BottomView.m in Sources */ = {isa = PBXBuildFile; fileRef = 049C55CB1BB3F33D007565E1 /* BottomView.m */; };
-		049FF1BF1BC91777000645C8 /* PassRemindCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 049FF1AC1BC91777000645C8 /* PassRemindCell.m */; };
 		049FF1C01BC91777000645C8 /* RemindHeadView.m in Sources */ = {isa = PBXBuildFile; fileRef = 049FF1AE1BC91777000645C8 /* RemindHeadView.m */; };
 		049FF1C11BC91777000645C8 /* RemindListTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 049FF1B01BC91777000645C8 /* RemindListTableView.m */; };
 		049FF1C21BC91777000645C8 /* RemindViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 049FF1B21BC91777000645C8 /* RemindViewController.m */; };
@@ -888,6 +888,7 @@
 		0476B6281BD0E4EC00FD13DF /* 1havetime_box_classroom@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "1havetime_box_classroom@3x.png"; sourceTree = "<group>"; };
 		0486769E1BC803CB009F8C43 /* FastBottomView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FastBottomView.h; sourceTree = "<group>"; };
 		0486769F1BC803CB009F8C43 /* FastBottomView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FastBottomView.m; sourceTree = "<group>"; };
+		0487E4381BDF4DA5002396CD /* PassRemindCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PassRemindCell.m; sourceTree = "<group>"; };
 		048C49EC1BD4EDB0008E1D88 /* havetime_icon_no@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "havetime_icon_no@2x.png"; sourceTree = "<group>"; };
 		048C49ED1BD4EDB0008E1D88 /* havetime_icon_no@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "havetime_icon_no@3x.png"; sourceTree = "<group>"; };
 		0494802B1BB8D76C00C68460 /* tick@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tick@2x.png"; sourceTree = "<group>"; };
@@ -917,7 +918,6 @@
 		049C55CA1BB3F33D007565E1 /* BottomView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BottomView.h; sourceTree = "<group>"; };
 		049C55CB1BB3F33D007565E1 /* BottomView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BottomView.m; sourceTree = "<group>"; };
 		049FF1AB1BC91777000645C8 /* PassRemindCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PassRemindCell.h; sourceTree = "<group>"; };
-		049FF1AC1BC91777000645C8 /* PassRemindCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PassRemindCell.m; sourceTree = "<group>"; };
 		049FF1AD1BC91777000645C8 /* RemindHeadView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RemindHeadView.h; sourceTree = "<group>"; };
 		049FF1AE1BC91777000645C8 /* RemindHeadView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RemindHeadView.m; sourceTree = "<group>"; };
 		049FF1AF1BC91777000645C8 /* RemindListTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RemindListTableView.h; sourceTree = "<group>"; };
@@ -2195,7 +2195,7 @@
 				042AADCA1BCB8BA00056C09F /* ApplyRemindCell.h */,
 				042AADCB1BCB8BA00056C09F /* ApplyRemindCell.m */,
 				049FF1AB1BC91777000645C8 /* PassRemindCell.h */,
-				049FF1AC1BC91777000645C8 /* PassRemindCell.m */,
+				0487E4381BDF4DA5002396CD /* PassRemindCell.m */,
 				049FF1AD1BC91777000645C8 /* RemindHeadView.h */,
 				049FF1AE1BC91777000645C8 /* RemindHeadView.m */,
 				049FF1AF1BC91777000645C8 /* RemindListTableView.h */,
@@ -4830,7 +4830,6 @@
 				6596A5E61BDB63A800738F08 /* InterestTableView.m in Sources */,
 				6592DCD91B806A9B004CD118 /* GroupApplyTableViewCell.m in Sources */,
 				333122571B806EDB00D3D032 /* EMSDWebImageDecoder.m in Sources */,
-				049FF1BF1BC91777000645C8 /* PassRemindCell.m in Sources */,
 				2076A3001B81C590001FFBAC /* YCommonActionSheet.m in Sources */,
 				20DA16F61BC7C51200A61B37 /* MGCDayPlannerEKViewController.m in Sources */,
 				044C31411BCCA94300E0D508 /* AvailableViewController.m in Sources */,
@@ -4921,6 +4920,7 @@
 				333122461B806EDB00D3D032 /* EMCDDeviceManagerBase.m in Sources */,
 				20DA16F31BC7C51200A61B37 /* MGCAllDayEventsViewLayout.m in Sources */,
 				3331222C1B806EDB00D3D032 /* ChatViewController.m in Sources */,
+				0487E4391BDF4DA5002396CD /* PassRemindCell.m in Sources */,
 				333122661B806EDB00D3D032 /* PSTCollectionView.m in Sources */,
 				333122491B806EDB00D3D032 /* EmojiEmoticons.m in Sources */,
 				339549861B81BDD500F9ECB1 /* GroupInfoCollectionViewCell.m in Sources */,

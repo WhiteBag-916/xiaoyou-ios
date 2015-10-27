@@ -9,7 +9,6 @@
 #import "NoticeAction.h"
 #import "YUtils+Component.h"
 #import "NoticeInfo.h"
-#import "NoticeInfoModels.h"
 
 @implementation NoticeAction
 

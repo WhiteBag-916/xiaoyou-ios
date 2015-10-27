@@ -19,7 +19,7 @@ NSString *const kObjActivityName = @"activityName";
 NSString *const kObjActivityEndTime = @"activityEndTime";
 NSString *const kObjCheckStatus = @"checkStatus";
 NSString *const kObjActivityStartTime = @"activityStartTime";
-
+NSString *const kObjActivityUser=@"activityUser";
 
 @interface NoticeInfo ()
 
@@ -40,7 +40,7 @@ NSString *const kObjActivityStartTime = @"activityStartTime";
 @synthesize activityEndTime = _activityEndTime;
 @synthesize checkStatus = _checkStatus;
 @synthesize activityStartTime = _activityStartTime;
-
+@synthesize activityUser = _activityUser;
 
 + (instancetype)modelObjectWithDictionary:(NSDictionary *)dict
 {
@@ -65,7 +65,7 @@ NSString *const kObjActivityStartTime = @"activityStartTime";
             self.activityEndTime = [[self objectOrNilForKey:kObjActivityEndTime fromDictionary:dict] doubleValue];
             self.checkStatus = [self objectOrNilForKey:kObjCheckStatus fromDictionary:dict];
             self.activityStartTime = [[self objectOrNilForKey:kObjActivityStartTime fromDictionary:dict] doubleValue];
-
+            self.activityUser = [self objectOrNilForKey:kObjActivityUser fromDictionary:dict];
     }
     
     return self;
@@ -86,7 +86,7 @@ NSString *const kObjActivityStartTime = @"activityStartTime";
     [mutableDict setValue:[NSNumber numberWithDouble:self.activityEndTime] forKey:kObjActivityEndTime];
     [mutableDict setValue:self.checkStatus forKey:kObjCheckStatus];
     [mutableDict setValue:[NSNumber numberWithDouble:self.activityStartTime] forKey:kObjActivityStartTime];
-
+    [mutableDict setValue:self.activityUser forKey:kObjActivityUser];
     return [NSDictionary dictionaryWithDictionary:mutableDict];
 }
 
@@ -120,6 +120,7 @@ NSString *const kObjActivityStartTime = @"activityStartTime";
     self.activityEndTime = [aDecoder decodeDoubleForKey:kObjActivityEndTime];
     self.checkStatus = [aDecoder decodeObjectForKey:kObjCheckStatus];
     self.activityStartTime = [aDecoder decodeDoubleForKey:kObjActivityStartTime];
+    self.activityUser = [aDecoder decodeObjectForKey:kObjActivityUser];
     return self;
 }
 
@@ -137,6 +138,7 @@ NSString *const kObjActivityStartTime = @"activityStartTime";
     [aCoder encodeDouble:_activityEndTime forKey:kObjActivityEndTime];
     [aCoder encodeObject:_checkStatus forKey:kObjCheckStatus];
     [aCoder encodeDouble:_activityStartTime forKey:kObjActivityStartTime];
+    [aCoder encodeObject:_activityUser forKey:kObjActivityUser];
 }
 
 - (id)copyWithZone:(NSZone *)zone
@@ -156,6 +158,7 @@ NSString *const kObjActivityStartTime = @"activityStartTime";
         copy.activityEndTime = self.activityEndTime;
         copy.checkStatus = [self.checkStatus copyWithZone:zone];
         copy.activityStartTime = self.activityStartTime;
+        copy.activityUser = self.activityUser;
     }
     
     return copy;

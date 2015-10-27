@@ -7,7 +7,8 @@
 
 #import <Foundation/Foundation.h>
 #import "YModel.h"
-
+//#import "ActivityUser.h"
+#import "ProfileInfo.h"
 
 @interface NoticeInfo :  YModel <NSCoding, NSCopying>
 
@@ -22,6 +23,7 @@
 @property (nonatomic, assign) double activityEndTime;
 @property (nonatomic, strong) NSString *checkStatus;
 @property (nonatomic, assign) double activityStartTime;
+@property (nonatomic, strong) ProfileInfo *activityUser;
 
 + (instancetype)modelObjectWithDictionary:(NSDictionary *)dict;
 - (instancetype)initWithDictionary:(NSDictionary *)dict;

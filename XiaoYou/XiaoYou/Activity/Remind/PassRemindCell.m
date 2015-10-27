@@ -9,7 +9,6 @@
 #import "PassRemindCell.h"
 #import "DataConvert.h"
 #import "UIImageView+WebCache.h"
-#import "TimeFormatterConvert.h"
 
 #define REUSRID             @"PassRemindCell"
 #define CELL_INSET          SCALE_NUM(12)
@@ -143,11 +142,10 @@
         //make.bottom.equalTo(self.headImageView.mas_bottom);
     }];
     
-    //15/12/12 18:00-20:00
     _activityTimeLabel = [[UILabel alloc]init];
     [self.wrapContentView addSubview:_activityTimeLabel];
     _activityTimeLabel.font = CONTENT_FONT(12);
-    _activityTimeLabel.text = @"活动开始时间：%@";
+    _activityTimeLabel.text = @"活动时间：15/12/12 18:00-20:00";
     _activityTimeLabel.textColor = KCOLORGREEN_B3;
     [_activityTimeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.height.mas_equalTo(SCALE_NUM(12));
@@ -171,7 +169,8 @@
     _tailLabel.textColor = KCOLORGREEN_B3;
     _tailLabel.font = CONTENT_FONT(12);
     [_tailLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.height.mas_equalTo(SCALE_NUM(12));
+//        make.height.mas_equalTo(SCALE_NUM(12));
+//        make.top.equalTo(_bottomLineView).equalTo(make.bottom.equalTo(_wrapContentView));
         make.top.equalTo(_bottomLineView.mas_bottom);
         make.bottom.equalTo(_wrapContentView);
         make.leading.mas_equalTo(10);
@@ -239,7 +238,6 @@
         _tailLabel.text = @"";
         _tailImageView.image = nil;
         _bottomButton.enabled = NO;
-        _middleButton.enabled = NO;
     } else if (cellType == SUCESSED_JOININ) {
         self.remindTitleLabel.text = @"你已成功参加活动";
     }
@@ -247,11 +245,16 @@
 
 -(void)setData:(NoticeInfo *)model
 {
-    [_headImageView setFaceImageWithUrl:model.userHeadPic];
+    [_headImageView sd_setImageWithURL:[NSURL URLWithString:model.userHeadPic]];
     _contentTitleLabel.text = model.userName;
     _contentNameLabel.text = [NSString stringWithFormat:_contentNameLabel.text,model.activityName];
-    NSString *beginTime = [TimeFormatterConvert timeConvertToFommtterNotice:model.activityStartTime];
-    _activityTimeLabel.text = [NSString stringWithFormat:_activityTimeLabel.text,beginTime];
 }
+
+//-(void)setData:(RemindModelTest *)model
+//{
+//    [_headImageView sd_setImageWithURL:[NSURL URLWithString:model.headImageUrl]];
+//    _contentTitleLabel.text = model.acType;
+//    _contentNameLabel.text = [NSString stringWithFormat:@"名称：%@",model.acName];
+//}
 
 @end
