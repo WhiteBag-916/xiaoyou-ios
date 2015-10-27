@@ -178,9 +178,19 @@
 //对号
 -(void)clickBtnForChoice
 {
-    if (_dataManager.ActivityOrganizerId == nil || _dataManager.ActivityOrganizer == nil)
+    if (_isIdentity)
     {
-        [YUtils showTitle:@"请选择要发布活动的社团"];
+        if (_dataManager.ActivityOrganizerId == nil || _dataManager.ActivityOrganizer == nil)
+        {
+            [YUtils showTitle:@"请选择要发布活动的社团"];
+        }
+        else
+        {
+            [self dismissViewControllerAnimated:YES completion:^{
+                ActivityReleaseController * releaseController = [[ActivityReleaseController alloc] initWithIsIdentity:_isIdentity];
+                [_availableViewController.navigationController pushViewController:releaseController animated:YES needHiddenBottomBar:YES];
+            }];
+        }
     }
     else
     {
@@ -189,6 +199,7 @@
             [_availableViewController.navigationController pushViewController:releaseController animated:YES needHiddenBottomBar:YES];
         }];
     }
+    
 }
 //个人
 -(void)clickPersonalButton

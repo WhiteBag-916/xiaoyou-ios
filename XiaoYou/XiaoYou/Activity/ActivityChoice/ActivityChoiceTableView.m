@@ -110,8 +110,6 @@
 
 -(void)clickBtnForChoice
 {
-    
-    
     if (_myType == ACTIVITY_CHOICE_TYPE)
     {
         [self.myController dismissViewControllerAnimated:YES completion:^{
