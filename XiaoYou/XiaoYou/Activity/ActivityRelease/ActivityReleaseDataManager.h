@@ -16,7 +16,8 @@
 @property(nonatomic,strong)NSString * ActivityDesciptionText;
 @property(nonatomic,strong)UIImage * ActivityDesciptionImage;
 //活动时间
-@property(nonatomic,strong)NSString * ActivityDateApplyText;
+@property(nonatomic,strong)NSString * ActivityDateBeginApplyText;
+@property(nonatomic,strong)NSString * ActivityDateEndApplyText;
 @property(nonatomic,strong)NSString * ActivityDateBeginText;
 @property(nonatomic,strong)NSString * ActivityDateEndText;
 //活动地点

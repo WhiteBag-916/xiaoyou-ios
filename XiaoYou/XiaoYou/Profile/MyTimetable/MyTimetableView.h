@@ -10,4 +10,7 @@
 
 @interface MyTimetableView : YView
 
+//刷新课程时间
+- (void)refreshCourseTimeList;
+
 @end

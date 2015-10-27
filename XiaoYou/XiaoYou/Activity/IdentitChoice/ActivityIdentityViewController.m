@@ -9,6 +9,7 @@
 #import "ActivityIdentityViewController.h"
 #import "ActivityReleaseController.h"
 #import "ActivityIdentityTableView.h"
+#import "ActivityReleaseDataManager.h"
 
 @interface ActivityIdentityViewController ()
 
@@ -19,15 +20,43 @@
 
 @property(nonatomic,strong) ActivityIdentityTableView * activityIdentityTableView;
 
+@property (nonatomic,strong)ActivityReleaseDataManager * dataManager;
+
 @end
 
 @implementation ActivityIdentityViewController
+
+-(void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    
+    [self removeManagerData];
+}
+
+-(void)removeManagerData
+{
+    _dataManager.ActivityNameText = nil;
+    _dataManager.ActivityDesciptionText = nil;
+    _dataManager.ActivityDesciptionImage = nil;
+    _dataManager.ActivityDateEndApplyText = nil;
+    _dataManager.ActivityDateBeginApplyText = nil;
+    _dataManager.ActivityDateBeginText = nil;
+    _dataManager.ActivityDateEndText = nil;
+    _dataManager.ActivityPlaceText = nil;
+    _dataManager.ActivityOrganizer = nil;
+    _dataManager.ActivityOrganizerId = nil;
+    _dataManager.ActivityTypeStr = nil;
+    _dataManager.ActivityCheckStr = nil;
+}
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
     [self setUpUI];
     
+    _dataManager = [ActivityReleaseDataManager shareActivityReleaseDataManager];
+
     _isIdentity = YES;
 }
 
@@ -149,10 +178,27 @@
 //对号
 -(void)clickBtnForChoice
 {
-    [self dismissViewControllerAnimated:YES completion:^{
-        ActivityReleaseController * releaseController = [[ActivityReleaseController alloc] initWithIsIdentity:_isIdentity];
-        [_availableViewController.navigationController pushViewController:releaseController animated:YES needHiddenBottomBar:YES];
-    }];
+    if (_isIdentity)
+    {
+        if (_dataManager.ActivityOrganizerId == nil || _dataManager.ActivityOrganizer == nil)
+        {
+            [YUtils showTitle:@"请选择要发布活动的社团"];
+        }
+        else
+        {
+            [self dismissViewControllerAnimated:YES completion:^{
+                ActivityReleaseController * releaseController = [[ActivityReleaseController alloc] initWithIsIdentity:_isIdentity];
+                [_availableViewController.navigationController pushViewController:releaseController animated:YES needHiddenBottomBar:YES];
+            }];
+        }
+    }
+    else
+    {
+        [self dismissViewControllerAnimated:YES completion:^{
+            ActivityReleaseController * releaseController = [[ActivityReleaseController alloc] initWithIsIdentity:_isIdentity];
+            [_availableViewController.navigationController pushViewController:releaseController animated:YES needHiddenBottomBar:YES];
+        }];
+    }
     
 }
 //个人
