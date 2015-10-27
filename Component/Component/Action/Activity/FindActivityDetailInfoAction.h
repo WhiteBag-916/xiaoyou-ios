@@ -11,5 +11,6 @@
 @interface FindActivityDetailInfoAction : YHTTPRequestAction
 
 @property (nonatomic, strong) NSString *activityPublishedId;
+@property (nonatomic, strong) NSString *getDetail;
 
 @end

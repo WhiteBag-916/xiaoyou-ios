@@ -115,10 +115,10 @@ AS_SINGLETON(ActivityManager);
 /*********************************************************************
  函数名称 : findActivityDetailInfo
  函数描述 : 查询活动详情接口
- 参数 : activityPublishedId:活动id
+ 参数 : activityPublishedId:活动id getDetail:是否获取详情
  返回值 : ActivityDetailModel
  作者 : XiongChen
  *********************************************************************/
-- (void)findActivityDetailInfo:(NSString *)activityPublishedId block:(ActionCompleteBlock)block;
+- (void)findActivityDetailInfo:(NSString *)activityPublishedId getDetail:(NSString *)getDetail block:(ActionCompleteBlock)block;
 
 @end

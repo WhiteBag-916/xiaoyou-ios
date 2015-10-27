@@ -169,9 +169,10 @@ DEF_SINGLETON(ActivityManager);
 }
 
 //查询活动详情接口
-- (void)findActivityDetailInfo:(NSString *)activityPublishedId block:(ActionCompleteBlock)block {
+- (void)findActivityDetailInfo:(NSString *)activityPublishedId getDetail:(NSString *)getDetail block:(ActionCompleteBlock)block {
     FindActivityDetailInfoAction *action = [[FindActivityDetailInfoAction alloc] init];
     action.activityPublishedId = activityPublishedId;
+    action.getDetail = getDetail;
     
     [YAction startAction:action completionBlock:^(YActionMessage* message) {
         
