@@ -60,7 +60,9 @@
         }];
         
     }
-    _detailListView.model = [[self getDataSource] objectAtIndex:self.index];
+    _detailListView.model = self.model;
+    [_detailListView sendRequest];
+    //_detailListView.model = [[self getDataSource] objectAtIndex:self.index];
     return _detailListView;
 }
 

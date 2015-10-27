@@ -7,12 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "ActivityModelTest.h"
+#import "ActivityDetailModel.h"
+
+typedef enum : NSUInteger {
+    SHORT_BRIEF,
+    DETAIL_INFO
+} TOPVIEWTYPE;
 
 @interface ActivityDetailCell : UITableViewCell
 
-+(ActivityDetailCell*)cellWithTableView:(UITableView*)tableView;
-
--(void)setData:(ActivityModelTest*)model;
+-(void)setData:(ActivityDetailModel*)model;
 
 @end

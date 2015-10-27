@@ -12,88 +12,321 @@
 #import "FeedImageGroup.h"
 #import "YLabel+Ext.h"
 #import "UIImageView+WebCache.h"
-#define REUSEID @"activitydetail"
+#import "ActivityImageTextModels.h"
+#import "TimeFormatterConvert.h"
+#define REUSEID @"ActivityDetailCell"
+#define HEADIMAGEVIEW_WIDTH         SCALE_NUM(45)
+#define LEADINGOFF_HEADIMAGEVIEW    SCALE_NUM(12)
+
 @interface ActivityDetailCell ()
-@property (nonatomic,strong) ActivityTopView        *topView;
-@property (nonatomic,strong) FeedImageGroup         *middleView;
-@property (nonatomic,strong) ActivityMiddleView     *bottomView;
+//@property (nonatomic,strong) ActivityTopView        *topView;
+////@property (nonatomic,strong) FeedImageGroup         *middleView;
+//@property (nonatomic,strong) ActivityMiddleView     *bottomView;
+
+#pragma mark 顶部TopView
+@property (nonatomic,strong) UIImageView    *headImageView; //公告图
+@property (nonatomic,strong) UIView         *sepLineView;   //分割线
+@property (nonatomic,strong) UILabel        *nameLabel;     //名称
+@property (nonatomic,strong) UILabel        *titleLabel;    //标题(校级活动公告)
+@property (nonatomic,strong) UILabel        *staticNameLabel;//静态name
+@property (nonatomic,strong) UILabel        *staticDesLabel; //简介
+@property (nonatomic,strong) UILabel        *descriptionLabel;//描述,只显示一行;
+#pragma mark 中间MiddleView
+@property (nonatomic,strong) FeedImageGroup *middleView;
+#pragma mark 底部BottomView
+@property (nonatomic,strong) UIImageView    *timeImageView; //报名截止时间
+@property (nonatomic,strong) UILabel        *staticDeadLineDes;//截止时间
+@property (nonatomic,strong) UILabel        *deadLineTimeLabel;
+@property (nonatomic,strong) UILabel        *staticActivityTimeDes;//活动时间
+@property (nonatomic,strong) UILabel        *activityTimeLabel;//活动时间
+@property (nonatomic,strong) UIImageView    *locationImageView;
+@property (nonatomic,strong) UILabel        *locationLabel;
+@property (nonatomic,strong) UIImageView    *categotyImageView;
+@property (nonatomic,strong) UILabel        *categoryLabel;
+@property (nonatomic,strong) UILabel        *staticActivityEndTimeDes;//活动结束时间
+@property (nonatomic,strong) UILabel        *activityEndTimeLabel;
+
 @end
 @implementation ActivityDetailCell
-
-+(ActivityDetailCell *)cellWithTableView:(UITableView *)tableView
-{
-    ActivityDetailCell *detailCell = [tableView dequeueReusableCellWithIdentifier:REUSEID];
-    if (!detailCell) {
-        detailCell = [[ActivityDetailCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:REUSEID];
-    }
-    return detailCell;
-}
 
 -(instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
         self.selectionStyle = UITableViewCellSelectionStyleNone;
-        [self initTopView];
-        [self initMiddleView];
-        [self initBottomView];
+//        [self initTopViewWithType:DETAIL_INFO];
+//        [self initMiddleView];
+//        [self initBottomView];
     }
     return self;
 }
 
 
--(void)initTopView {
-    _topView = [[ActivityTopView alloc]initWithType:DETAIL_INFO];
-    [self.contentView addSubview:_topView];
-    [_topView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.leading.mas_equalTo(0);
-        make.trailing.mas_equalTo(0);
-        make.top.mas_equalTo(0);
-        make.bottom.mas_equalTo(_topView.descriptionLabel.mas_bottom);
-    }];
-}
+//-(void)initTopView {
+//    _topView = [[ActivityTopView alloc]initWithType:DETAIL_INFO];
+//    [self.contentView addSubview:_topView];
+//    [_topView mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.leading.mas_equalTo(0);
+//        make.trailing.mas_equalTo(0);
+//        make.top.mas_equalTo(0);
+//        //make.bottom.mas_equalTo(0);
+//        //make.bottom.mas_equalTo(_topView.descriptionLabel.mas_bottom);
+//    }];
+//}
 
 -(void)initMiddleView {
     _middleView = [[FeedImageGroup alloc]init];
     [self.contentView addSubview:_middleView];
     
     [_middleView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(_topView.mas_bottom).offset(SCALE_NUM(10));
-        make.left.equalTo(_topView.descriptionLabel.mas_left);
-        make.right.equalTo(_topView.descriptionLabel);
+        make.top.equalTo(_descriptionLabel.mas_bottom).offset(SCALE_NUM(10));
+        make.left.equalTo(_descriptionLabel.mas_left);
+        make.right.equalTo(_descriptionLabel);
     }];
     
-    NSArray *smallImages    = @[@"/dev/feed/s/c2cfe0e7-ba38-43e0-b345-3d14ff2f2bcf.png"];
-    NSArray *bigImages      = @[@"/dev/feed/c2cfe0e7-ba38-43e0-b345-3d14ff2f2bcf.png"];
-    [_middleView updateWithImgs:smallImages bigPics:bigImages];
+//    NSArray *smallImages    = @[@"/dev/feed/s/c2cfe0e7-ba38-43e0-b345-3d14ff2f2bcf.png"];
+//    NSArray *bigImages      = @[@"/dev/feed/c2cfe0e7-ba38-43e0-b345-3d14ff2f2bcf.png"];
 }
 
-#pragma mark －需要改进
--(void)initBottomView {
-    _bottomView = [[ActivityMiddleView alloc]init];
-    [self.contentView addSubview:_bottomView];
-    
-    [_bottomView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(_middleView.mas_bottom).offset(SCALE_NUM(5));
-        make.leading.mas_equalTo(0);
-        make.trailing.mas_equalTo(0);
-        make.bottom.mas_equalTo(0);
-    }];
-}
 
--(void)setData:(ActivityModelTest*)data
+-(void)setData:(ActivityDetailModel *)model
 {
-    [_topView.headImageView sd_setImageWithURL:[NSURL URLWithString:data.acHeadImage]];
-    _topView.titleLabel.text = data.acName;
-    _topView.nameLabel.text = data.acTitle;
-    //_topView.descriptionLabel.text = data.acBrief;
-    data.acBrief = [data.acBrief substringFromIndex:5];
-    [_topView.descriptionLabel setText:data.acBrief lineSpacing:10.0f];
+    /*ActivityOrganizer *organizer = model.activityOrganizer;
+    ActivityTypeInfo *info = model.activityTypeInfo;
+    ActivityPublishedModel *publishModel = model.activityPublishedDto.activityPublishedModel;
     
-    _bottomView.locationLabel.text = data.acLocation;
+    [_headImageView setFaceImageWithUrl:organizer.headPic];
+    _titleLabel.text = organizer.name;
+    _nameLabel.text = publishModel.name;
+    NSArray *imageTextModels = model.activityPublishedDto.activityImageTextModels;
+    //图片内容是否为空
+    BOOL notHaveImage = YES;
+    for (ActivityImageTextModels *imageText in imageTextModels) {
+        
+        if ([imageText.type isEqualToString:@"image"]) {
+            if (imageText.content != nil && ![imageText.content isEmpty]) {
+                [_middleView updateWithImgs:@[imageText.content] bigPics:@[imageText.content]];
+                notHaveImage = NO;
+            }
+        } else if ([imageText.type isEqualToString:@"text"]) {
+            _descriptionLabel.text = imageText.content;
+        }
+    }
+    if (notHaveImage) {
+        [_middleView updateWithImgs:nil bigPics:nil];
+    }
     
-    NSArray *smallImages    = @[data.acPhotos];
-    NSArray *bigImages      = @[data.acPhotos];
-    [_middleView updateWithImgs:smallImages bigPics:bigImages];
+    //底部数据的初始化
+    
+    _deadLineTimeLabel.text = [TimeFormatterConvert timeConvertToFommtterAvailable:publishModel.enrollEndTime];
+    _activityTimeLabel.text = [TimeFormatterConvert timeConvertToFommtterAvailable:publishModel.actStartTime];
+    _activityEndTimeLabel.text = [TimeFormatterConvert timeConvertToFommtterAvailable:publishModel.actEndTime];
+    _locationLabel.text = publishModel.address;
+    _categoryLabel.text = info.name;*/
+}
+
+
+
+-(void)initTopViewWithType:(TOPVIEWTYPE)type {
+    _headImageView = [[UIImageView alloc]init];
+    [self addSubview:_headImageView];
+    _headImageView.layer.cornerRadius = HEADIMAGEVIEW_WIDTH/2.0;
+    _headImageView.layer.masksToBounds = YES;
+    _headImageView.image = [UIImage imageNamed:@"default_head"];
+    [_headImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.leading.mas_equalTo(SCALE_NUM(12));
+        make.top.mas_equalTo(SCALE_NUM(12));
+        make.width.mas_equalTo(HEADIMAGEVIEW_WIDTH);
+        make.height.mas_equalTo(HEADIMAGEVIEW_WIDTH);
+    }];
+    
+    _titleLabel = [[UILabel alloc]init];
+    _titleLabel.text = @"校级活动公告";
+    [self addSubview:_titleLabel];
+    _titleLabel.font = CONTENT_FONT(15);
+    _titleLabel.textColor = KCOLORGREEN_B4;
+    [_titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.height.mas_equalTo(SCALE_NUM(15));
+        make.left.equalTo(_headImageView.mas_right).offset(SCALE_NUM(12));
+        make.centerY.equalTo(_headImageView.mas_centerY);
+    }];
+    
+    
+    _sepLineView = [[UIView alloc]init];
+    _sepLineView.backgroundColor = KCOLORGREEN_B3;
+    [self addSubview:_sepLineView];
+    [_sepLineView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(_headImageView.mas_bottom).offset(SCALE_NUM(12));
+        make.left.equalTo(_titleLabel);
+        make.trailing.mas_equalTo(0);
+        make.height.mas_equalTo(SCALE_NUM(1));
+    }];
+    
+    _staticNameLabel = [[UILabel alloc]init];
+    [self addSubview:_staticNameLabel];
+//    _staticNameLabel.numberOfLines = 0;
+//    _staticNameLabel.lineBreakMode = NSLineBreakByWordWrapping;
+    _staticNameLabel.font = CONTENT_FONT(13);
+    _staticNameLabel.text = @"名称:";
+    [_staticNameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.height.mas_equalTo(SCALE_NUM(16));
+        make.top.equalTo(_sepLineView.mas_bottom).offset(SCALE_NUM(15));
+        make.leading.mas_equalTo(SCALE_NUM(22));
+    }];
+    
+    _nameLabel = [[UILabel alloc]init];
+    [self addSubview:_nameLabel];
+    _nameLabel.font = CONTENT_FONT(13);
+    _nameLabel.numberOfLines = 0;
+    _nameLabel.text = @"大型历史音乐剧《和平使者——抗战中的宋庆龄》";
+    [_nameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(_titleLabel);
+        make.top.equalTo(_sepLineView.mas_bottom).offset(SCALE_NUM(14));
+        make.trailing.mas_equalTo(SCALE_NUM(-12));
+    }];
+    
+    _staticDesLabel = [[UILabel alloc]init];
+    [self addSubview:_staticDesLabel];
+    _staticDesLabel.font = CONTENT_FONT(13);
+    _staticDesLabel.text = @"简介:";
+    [_staticDesLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.height.mas_equalTo(SCALE_NUM(13));
+        make.top.equalTo(_nameLabel.mas_bottom).offset(SCALE_NUM(15));
+        make.left.equalTo(_staticNameLabel);
+    }];
+    
+    _descriptionLabel = [[UILabel alloc]init];
+    _descriptionLabel.font = CONTENT_FONT(13);
+    _descriptionLabel.textColor = KCOLORGREEN_B3;
+    if (type == DETAIL_INFO) {
+        _descriptionLabel.numberOfLines = 0;
+        _descriptionLabel.lineBreakMode = NSLineBreakByWordWrapping;
+    } else {
+        _descriptionLabel.numberOfLines = 1;
+        _descriptionLabel.lineBreakMode = NSLineBreakByTruncatingTail;
+    }
+    [self addSubview:_descriptionLabel];
+    NSString *textString = @"本剧讲述了在日寇荼毒神州大地的悲壮年代，宋庆龄从中华民族的大局利益出发，积极投身抗日救亡的运动中。 从1932年1月，侵华日军突袭上海，第一次“淞沪抗战“爆发，宋庆龄亲赴前线慰问十九路军官兵；到促使“西安事变”和平解决，全国上下团结抗日局面的形成；再到香港组建“保卫中国同盟”募集物资支援抗战，参加广州火炬大游行；最后为巩固抗日统一战线，宋氏三姐妹赴重庆视察，并向世界发表广播演讲为主线。充分展示了宋庆龄在国家动荡之时，在民族危难之际，所体现出伟大的爱国主义、民主主义精神！塑造了一个“柔肩担道义、正气盈天地”的伟大女性。";
+    [_descriptionLabel setText:textString lineSpacing:10.f];
+    
+    [_descriptionLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(_nameLabel);
+        make.trailing.mas_equalTo(SCALE_NUM(-12));
+        make.top.equalTo(_nameLabel.mas_bottom).offset(SCALE_NUM(14));
+    }];
+}
+
+
+-(void)initBottomView {
+    _timeImageView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"schedule_time"]];
+    [self addSubview:_timeImageView];
+    
+    [_timeImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.leading.mas_equalTo(SCALE_NUM(31));
+        make.top.equalTo(_middleView.mas_bottom).offset(SCALE_NUM(10));
+    }];
+    
+    _staticDeadLineDes = [[UILabel alloc]init];
+    [self addSubview:_staticDeadLineDes];
+    _staticDeadLineDes.font = CONTENT_FONT(13);
+    _staticDeadLineDes.text = @"报名截止时间";
+    _staticDeadLineDes.textColor = KCOLORGREEN_B3;
+    [_staticDeadLineDes mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.height.mas_equalTo(SCALE_NUM(13));
+        make.leading.mas_equalTo(SCALE_NUM(66));
+        make.centerY.equalTo(_timeImageView.mas_centerY);
+    }];
+    
+    _deadLineTimeLabel = [[UILabel alloc]init];
+    [self addSubview:_deadLineTimeLabel];
+    _deadLineTimeLabel.textColor = KCOLORGREEN_B3;
+    _deadLineTimeLabel.font = CONTENT_FONT(13);
+    _deadLineTimeLabel.text = @"15/10/25 06:00";
+    [_deadLineTimeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.height.mas_equalTo(SCALE_NUM(13));
+        make.left.equalTo(_staticDeadLineDes.mas_right).offset(SCALE_NUM(10));
+        make.centerY.equalTo(_staticDeadLineDes.mas_centerY);
+    }];
+    
+    _staticActivityTimeDes = [[UILabel alloc]init];
+    [self addSubview:_staticActivityTimeDes];
+    _staticActivityTimeDes.textColor = KCOLORGREEN_B3;
+    _staticActivityTimeDes.font = CONTENT_FONT(13);
+    _staticActivityTimeDes.text = @"活动开始时间";
+    [_staticActivityTimeDes mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.height.mas_equalTo(SCALE_NUM(13));
+        make.top.equalTo(_deadLineTimeLabel.mas_bottom).offset(SCALE_NUM(15));
+        make.left.equalTo(_staticDeadLineDes);
+    }];
+    
+    _activityTimeLabel = [[UILabel alloc]init];
+    [self addSubview:_activityTimeLabel];
+    _activityTimeLabel.textColor = KCOLORGREEN_B3;
+    _activityTimeLabel.font = CONTENT_FONT(13);
+    _activityTimeLabel.text = @"15/10/05 06:00";
+    [_activityTimeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.height.mas_equalTo(SCALE_NUM(13));
+        make.top.equalTo(_staticActivityTimeDes);
+        make.left.equalTo(_deadLineTimeLabel);
+    }];
+    
+    _staticActivityEndTimeDes = [[UILabel alloc]init];
+    [self addSubview:_staticActivityEndTimeDes];
+    _staticActivityEndTimeDes.font = CONTENT_FONT(13);
+    _staticActivityEndTimeDes.textColor = KCOLORGREEN_B3;
+    _staticActivityEndTimeDes.text = @"活动结束时间";
+    [_staticActivityEndTimeDes mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.height.mas_equalTo(SCALE_NUM(13));
+        make.top.equalTo(_staticActivityTimeDes.mas_bottom).offset(SCALE_NUM(15));
+        make.left.equalTo(_staticActivityTimeDes);
+    }];
+    
+    _activityEndTimeLabel = [[UILabel alloc]init];
+    [self addSubview:_activityEndTimeLabel];
+    _activityEndTimeLabel.textColor = KCOLORGREEN_B3;
+    _activityEndTimeLabel.font = CONTENT_FONT(13);
+    _activityEndTimeLabel.text = @"15/10/25 06:00";
+    [_activityEndTimeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.height.mas_equalTo(SCALE_NUM(13));
+        make.left.equalTo(_staticActivityEndTimeDes.mas_right).offset(SCALE_NUM(10));
+        make.centerY.equalTo(_staticActivityEndTimeDes.mas_centerY);
+    }];
+    
+    _locationImageView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"schedule_location"]];
+    [self addSubview:_locationImageView];
+    [_locationImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(_staticActivityEndTimeDes.mas_bottom).offset(SCALE_NUM(16));
+        make.centerX.equalTo(_timeImageView.mas_centerX);
+    }];
+    
+    _locationLabel = [[UILabel alloc]init];
+    _locationLabel.text = @"大脚超市门口";
+    [self addSubview:_locationLabel];
+    _locationLabel.textColor = KCOLORGREEN_B3;
+    _locationLabel.font = CONTENT_FONT(13);
+    [_locationLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.height.mas_equalTo(SCALE_NUM(13));
+        make.left.equalTo(_staticActivityTimeDes);
+        make.centerY.equalTo(_locationImageView.mas_centerY);
+    }];
+    
+    _categotyImageView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"funny_detail_category"]];
+    [self addSubview:_categotyImageView];
+    [_categotyImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(_locationImageView.mas_bottom).offset(SCALE_NUM(15));
+        make.centerX.equalTo(_locationImageView);
+        make.bottom.mas_equalTo(SCALE_NUM(-15));
+    }];
+    
+    _categoryLabel = [[UILabel alloc]init];
+    [self addSubview:_categoryLabel];
+    _categoryLabel.font = CONTENT_FONT(13);
+    _categoryLabel.text = @"学术类";
+    _categoryLabel.textColor = KCOLORGREEN_B3;
+    [_categoryLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.height.mas_equalTo(SCALE_NUM(13));
+        make.left.equalTo(_locationLabel);
+        make.centerY.equalTo(_categotyImageView.mas_centerY);
+    }];
 }
 
 @end

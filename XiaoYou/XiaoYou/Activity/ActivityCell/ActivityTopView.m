@@ -7,12 +7,19 @@
 //
 
 #import "ActivityTopView.h"
+#import "ActivityImageTextModels.h"
 
 #define HEADIMAGEVIEW_WIDTH         SCALE_NUM(45)
 #define LEADINGOFF_HEADIMAGEVIEW    SCALE_NUM(12)
 @interface ActivityTopView ()
 
-
+#pragma mark 暂时移动到这里
+@property (nonatomic,strong) UIImageView    *headImageView; //公告图
+@property (nonatomic,strong) UIView         *sepLineView;   //分割线
+@property (nonatomic,strong) UILabel        *nameLabel;     //名称
+@property (nonatomic,strong) UILabel        *titleLabel;    //标题(校级活动公告)
+@property (nonatomic,strong) UILabel        *staticNameLabel;//静态name
+@property (nonatomic,strong) UILabel        *staticDesLabel; //简介
 
 @end
 
@@ -20,19 +27,19 @@
 
 -(instancetype)init {
     if (self = [super init]) {
-        [self initViewWithType:SHORT_BRIEF];
+        [self initViewWithType:SHORT_BRIEF1];
     }
     return self;
 }
 
--(instancetype)initWithType:(TOPVIEWTYPE)viewType {
-    if (self = [super init]) {
-        [self initViewWithType:viewType];
-    }
-    return self;
-}
+//-(instancetype)initWithType:(TOPVIEWTYPE)viewType {
+//    if (self = [super init]) {
+//        [self initViewWithType:viewType];
+//    }
+//    return self;
+//}
 
--(void)initViewWithType:(TOPVIEWTYPE)type {
+-(void)initViewWithType:(TOPVIEWTYPE1)type {
     _headImageView = [[UIImageView alloc]init];
     [self addSubview:_headImageView];
     _headImageView.layer.cornerRadius = HEADIMAGEVIEW_WIDTH/2.0;
@@ -72,7 +79,7 @@
     _staticNameLabel.font = CONTENT_FONT(13);
     _staticNameLabel.text = @"名称:";
     [_staticNameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        //make.height.mas_equalTo(SCALE_NUM(13));
+        make.height.mas_equalTo(SCALE_NUM(13));
         make.top.equalTo(_sepLineView.mas_bottom).offset(15);
         make.leading.mas_equalTo(22);
     }];
@@ -84,7 +91,7 @@
     _nameLabel.text = @"大型历史音乐剧《和平使者——抗战中的宋庆龄》";
     [_nameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(_titleLabel);
-        make.top.equalTo(_staticNameLabel);
+        make.centerY.equalTo(_staticNameLabel);
         make.trailing.mas_equalTo(-12);
     }];
     
@@ -101,7 +108,7 @@
     _descriptionLabel = [[UILabel alloc]init];
     _descriptionLabel.font = CONTENT_FONT(13);
     _descriptionLabel.textColor = KCOLORGREEN_B3;
-    if (type == DETAIL_INFO) {
+    if (type == DETAIL_INFO1) {
         _descriptionLabel.numberOfLines = 0;
         _descriptionLabel.lineBreakMode = NSLineBreakByWordWrapping;
     } else {
@@ -116,8 +123,25 @@
         make.left.equalTo(_nameLabel);
         make.trailing.mas_equalTo(-12);
         make.top.equalTo(_staticDesLabel);
+        make.bottom.mas_equalTo(0);
     }];
 }
 
+
+-(void)setData:(ActivityDetailModel *)model
+{
+    ActivityOrganizer *organizer = model.activityOrganizer;
+    [_headImageView setFaceImageWithUrl:organizer.headPic];
+    _titleLabel.text = organizer.name;
+    
+    NSArray *imageTextModels = model.activityPublishedDto.activityImageTextModels;
+    
+    //图文混排
+    for (ActivityImageTextModels *imageText in imageTextModels) {
+        if ([imageText.type isEqualToString:@"text"]) {
+            _descriptionLabel.text = imageText.content;
+        }
+    }
+}
 
 @end

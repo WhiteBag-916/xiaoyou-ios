@@ -10,100 +10,147 @@
 #import "ActivityDetailCell.h"
 #import "ActivityJoinInCell.h"
 #import "JoinInModelTest.h"
+#import "ActivityManager.h"
+#import "ActivityDetailModel.h"
+
+#define REUSEID_DETAILCELL @"ActivityDetailCell"
 @interface ActivityDetailListView ()<UITableViewDataSource,UITableViewDelegate>
 
+@property (nonatomic,strong) NSMutableArray *activityDetailArray;
 
-@property (nonatomic,retain) NSArray *myDataSource2;
 @end
 
 @implementation ActivityDetailListView
+
+-(instancetype)init
+{
+    if (self = [super init]) {
+        self.delegate = self;
+        self.dataSource = self;
+        [self registerClass:[ActivityDetailCell class] forCellReuseIdentifier:REUSEID_DETAILCELL];
+    }
+    return self;
+}
 
 -(instancetype)initWithFrame:(CGRect)frame style:(UITableViewStyle)style {
     if (self = [super initWithFrame:frame style:style]) {
         self.delegate = self;
         self.dataSource = self;
+        [self registerClass:[ActivityDetailCell class] forCellReuseIdentifier:REUSEID_DETAILCELL];
     }
     return self;
 }
 
-
--(void)setModel:(ActivityModelTest *)model
+-(NSMutableArray *)activityDetailArray
 {
-    _model = model;
-    _myDataSource2 = [self getDataSource];
-    [self reloadData];
+    if (!_activityDetailArray) {
+        _activityDetailArray = [NSMutableArray array];
+    }
+    return _activityDetailArray;
 }
 
+
+-(void)sendRequest
+{
+    //NSString *publishID = [NSString stringWithFormat:@"%f",_model.activityPublishedId];
+    [[ActivityManager sharedInstance] findActivityDetailInfo:0 limitEnd:10 activityPublishedId:@"4" getDetail:YES block:^(YActionMessage *message) {
+        if (message.isSuccess) {
+            
+            
+            [self.activityDetailArray addObject:message.object];
+            [self reloadData];
+        }
+    }];
+}
 
 
 #pragma mark -协议方法
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 4;
+    return self.activityDetailArray.count;
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {;
-    CGFloat height = 1000;
-    if (indexPath.row == 0 && IS_IPHONE_5)
-    {
-        if ([self.model.acBrief containsString:@"在习近平总书记"]) {
-            return SCALE_NUM(1000);
-        }
-        else if ([self.model.acBrief containsString:@"西班牙建筑风格"]) {
-            return SCALE_NUM(1130);
-        }
-        else if ([self.model.acBrief containsString:@"过好大学每一"]) {
-            return SCALE_NUM(800);
-        }
-        return SCALE_NUM(1000);
-        //height = [tableView fd_heightForCellWithIdentifier:@"activitydetail" cacheByIndexPath:indexPath configuration:^(ActivityDetailCell *cell) {
-            //[cell setData:_feedListArray[indexPath.row]];
-        //}];
-    }
-    if (indexPath.row == 0 && IS_IPHONE_6)
-    {
-        if ([self.model.acBrief containsString:@"在习近平总书记"]) {
-            return SCALE_NUM(850);
-        }
-        else if ([self.model.acBrief containsString:@"西班牙建筑风格"]) {
-            return SCALE_NUM(860);
-        }
-        else if ([self.model.acBrief containsString:@"过好大学每一"]) {
-            return SCALE_NUM(700);
-        }
-        return SCALE_NUM(810);
-    }
-    if (indexPath.row == 0 && IS_IPHONE_6P)
-    {
-        //放大模式
-        if ([UIScreen mainScreen].bounds.size.width == 320.0) {
-            
-        }
-        
-        if ([self.model.acBrief containsString:@"在习近平总书记"]) {
-            return SCALE_NUM(750);
-        }
-        else if ([self.model.acBrief containsString:@"西班牙建筑风格"]) {
-            return SCALE_NUM(800);
-        }
-        else if ([self.model.acBrief containsString:@"过好大学每一"]) {
-            return SCALE_NUM(650);
-        }
-        return SCALE_NUM(740);
-    }
-    else if (indexPath.row == 1) {
-        return SCALE_NUM(270);
-    }
-    else
-    {
-        if (indexPath.row == 0)
-            return SCALE_NUM(1000);
-        return SCALE_NUM(200);
-        //height = [tableView fd_heightForCellWithIdentifier:@"joinincell" cacheByIndexPath:indexPath configuration:^(ActivityJoinInCell *cell) {
-            //[cell setData:_feedListArray[indexPath.row]];
-        //}];
-    }
+    
+//    height = [tableView fd_heightForCellWithIdentifier:REUSEID_AVAILABEL_CELL cacheByIndexPath:indexPath configuration:^(AvailableCell *cell) {
+//        [cell setData:_availableListArray[indexPath.row-2]];
+//    }];
+//    return height;
+    
+    //return 1000;
+    CGFloat height;
+//    if (indexPath.row == 0)
+//        return SCALE_NUM(140);
+//    else if (indexPath.row == 1)
+//        return SCALE_NUM(85);
+//    else {
+        height = [tableView fd_heightForCellWithIdentifier:REUSEID_DETAILCELL cacheByIndexPath:indexPath configuration:^(ActivityDetailCell *cell) {
+            [cell setData:self.activityDetailArray[0]];
+        }];
+        return height;
+//    }
+//    return 1100;
+
+//    if (indexPath.row == 0 && IS_IPHONE_5)
+//    {
+//        if ([self.model.acBrief containsString:@"在习近平总书记"]) {
+//            return SCALE_NUM(1000);
+//        }
+//        else if ([self.model.acBrief containsString:@"西班牙建筑风格"]) {
+//            return SCALE_NUM(1130);
+//        }
+//        else if ([self.model.acBrief containsString:@"过好大学每一"]) {
+//            return SCALE_NUM(800);
+//        }
+//        return SCALE_NUM(1000);
+//        //height = [tableView fd_heightForCellWithIdentifier:@"activitydetail" cacheByIndexPath:indexPath configuration:^(ActivityDetailCell *cell) {
+//            //[cell setData:_feedListArray[indexPath.row]];
+//        //}];
+//    }
+//    if (indexPath.row == 0 && IS_IPHONE_6)
+//    {
+//        if ([self.model.acBrief containsString:@"在习近平总书记"]) {
+//            return SCALE_NUM(850);
+//        }
+//        else if ([self.model.acBrief containsString:@"西班牙建筑风格"]) {
+//            return SCALE_NUM(860);
+//        }
+//        else if ([self.model.acBrief containsString:@"过好大学每一"]) {
+//            return SCALE_NUM(700);
+//        }
+//        return SCALE_NUM(810);
+//    }
+//    if (indexPath.row == 0 && IS_IPHONE_6P)
+//    {
+//        //放大模式
+//        if ([UIScreen mainScreen].bounds.size.width == 320.0) {
+//            
+//        }
+//        
+//        if ([self.model.acBrief containsString:@"在习近平总书记"]) {
+//            return SCALE_NUM(750);
+//        }
+//        else if ([self.model.acBrief containsString:@"西班牙建筑风格"]) {
+//            return SCALE_NUM(800);
+//        }
+//        else if ([self.model.acBrief containsString:@"过好大学每一"]) {
+//            return SCALE_NUM(650);
+//        }
+//        return SCALE_NUM(740);
+//    }
+//    else if (indexPath.row == 1) {
+//        return SCALE_NUM(270);
+//    }
+//    else
+//    {
+//        if (indexPath.row == 0)
+//            return SCALE_NUM(1000);
+//        return SCALE_NUM(200);
+//        //height = [tableView fd_heightForCellWithIdentifier:@"joinincell" cacheByIndexPath:indexPath configuration:^(ActivityJoinInCell *cell) {
+//            //[cell setData:_feedListArray[indexPath.row]];
+//        //}];
+//    }
     return height;
 }
 
@@ -111,22 +158,23 @@
 {
     if (indexPath.row == 0)
     {
-        ActivityDetailCell *cell = [ActivityDetailCell cellWithTableView:tableView];
-        [cell setData:self.model];
+        ActivityDetailCell *cell = [tableView dequeueReusableCellWithIdentifier:REUSEID_DETAILCELL];
+        if (self.activityDetailArray.count != 0)
+            [cell setData:self.activityDetailArray[indexPath.row]];
         return cell;
     }
     else if (indexPath.row == 1)
     {
         ActivityJoinInCell *cell;
         cell = [ActivityJoinInCell cellWithTableView:tableView cellType:IS_TOPVIEW];
-        [cell setData:self.myDataSource2[indexPath.row-1]];
+        //[cell setData:self.myDataSource2[indexPath.row-1]];
         return cell;
     }
     else
     {
         ActivityJoinInCell *cell;
         cell = [ActivityJoinInCell cellWithTableView:tableView cellType:NOT_TOPVIEW];
-        [cell setData:self.myDataSource2[indexPath.row-1]];
+        //[cell setData:self.myDataSource2[indexPath.row-1]];
         return cell;
     }
     return nil;
