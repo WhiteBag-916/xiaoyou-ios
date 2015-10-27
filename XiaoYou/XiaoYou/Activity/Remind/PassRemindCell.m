@@ -10,6 +10,7 @@
 #import "DataConvert.h"
 #import "UIImageView+WebCache.h"
 #import "ProfileInfo.h"
+#import "WhoJoinInController.h"
 
 #define REUSRID             @"PassRemindCell"
 #define CELL_INSET          SCALE_NUM(12)
@@ -31,6 +32,8 @@
 @property(nonatomic,strong) UIButton    *middleButton;      //中间button
 @property(nonatomic,strong) UIButton    *bottomButton;      //底部button
 
+
+@property(nonatomic,strong) NoticeInfo  *model;             //提醒model
 @end
 
 
@@ -216,7 +219,10 @@
 
 //点击下面部分cell
 -(void)bottomAction:(UIButton*)btn {
+    
     NSLog(@"this is bottom action");
+    WhoJoinInController *whoJoinIn = [[WhoJoinInController alloc]init];
+    [self.viewController.navigationController pushViewController:whoJoinIn animated:YES needHiddenBottomBar:YES];
 }
 
 #pragma waring 此处需要添加图片
@@ -246,6 +252,7 @@
 
 -(void)setData:(NoticeInfo *)model
 {
+    _model = model;
     ProfileInfo *info = model.activityUser;
     [_headImageView setFaceImageWithUrl:info.headPic];
     _contentTitleLabel.text = info.name;

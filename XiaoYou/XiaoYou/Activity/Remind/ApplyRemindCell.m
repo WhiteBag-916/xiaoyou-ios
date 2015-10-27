@@ -207,6 +207,8 @@
     [_headImageView setFaceImageWithUrl:info.headPic];
     _nameLabel.text = info.name;
     _applyContentLable.text = [NSString stringWithFormat:_applyContentLable.text,model.activityName];
+    
+    
     [_connectTagView updateWithTag:info.propetiesCommon];
     
 //    Tags *tag1 = [[Tags alloc]init];

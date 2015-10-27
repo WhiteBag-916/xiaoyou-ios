@@ -60,12 +60,12 @@
         }];
         
     }
-    //_detailListView.model = [[self getDataSource] objectAtIndex:self.index];
+    _detailListView.model = [[self getDataSource] objectAtIndex:self.index];
     return _detailListView;
 }
 
 
-/*-(NSArray*)getDataSource
+-(NSArray*)getDataSource
 {
     ActivityModelTest *m1 = [[ActivityModelTest alloc]init];
     m1.acTitle = @"立艺为民 严以用权：仇立权廉政艺术绘画展";
@@ -97,7 +97,7 @@
     m3.acHeadImage = @"http://img.hb.aicdn.com/6bf5ff09d88c83043c5a7fc44460cbb46e6216bf1e4d3-MGHqhh_fw658";
     
     return [NSArray arrayWithObjects:m1,m2,m3,nil];
-}*/
+}
 
 
 //参加某个活动的事件
