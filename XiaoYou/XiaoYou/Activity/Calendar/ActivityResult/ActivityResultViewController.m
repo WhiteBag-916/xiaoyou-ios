@@ -17,6 +17,11 @@
 
 @implementation ActivityResultViewController
 
+-(void)viewWillAppear:(BOOL)animated
+{
+    [_resultTableView sendRequest];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     

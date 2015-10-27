@@ -12,4 +12,6 @@
 
 @property(nonatomic,strong)NSMutableArray * dataSouceArr;
 
+- (void)sendRequest;
+
 @end
