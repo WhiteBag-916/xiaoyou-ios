@@ -13,6 +13,6 @@
 
 @property (nonatomic,assign) NSInteger index;
 
-@property (nonatomic,strong) NoticeInfo *model;
+@property (nonatomic,copy) NSString *publishID;
 
 @end

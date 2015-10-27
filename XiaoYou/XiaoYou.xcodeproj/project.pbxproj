@@ -2095,7 +2095,6 @@
 				049FF1B31BC91777000645C8 /* Schedule */,
 				049FF1BA1BC91777000645C8 /* Setup */,
 				20E3EF901BC9064C00B3D27E /* AvailableTime */,
-				044DA05E1BBA7E4700AA321A /* ActivityCell */,
 				044DA0411BBA77C900AA321A /* ActivityDetail */,
 			);
 			path = Activity;
@@ -2115,13 +2114,6 @@
 				04D500671BBA94AA00C1B438 /* ActivityJoinInCell.m */,
 			);
 			path = ActivityDetail;
-			sourceTree = "<group>";
-		};
-		044DA05E1BBA7E4700AA321A /* ActivityCell */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ActivityCell;
 			sourceTree = "<group>";
 		};
 		0494802A1BB8D76C00C68460 /* Remind */ = {

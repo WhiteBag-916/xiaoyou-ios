@@ -33,20 +33,11 @@
 -(void)initView {
     _profileListView = [[ProfilePersonListTableView alloc]initWIthType:ProfilePersonListTypeFeedPerson];
     _profileListView.backgroundColor = KCOLORWHITE;
-    _profileListView.hidden = YES;
     [self.view addSubview:_profileListView];
     [_profileListView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.mas_equalTo(self.view);
     }];
     [_profileListView loadDataWithQueryCode:@""];
-//    _profilePersonListTableView = [[ProfilePersonListTableView alloc] initWIthType:ProfilePersonListTypeFeedPerson];
-//    _profilePersonListTableView.backgroundColor = KCOLORWHITE;
-//    _profilePersonListTableView.hidden = YES;
-//    [self.view addSubview:_profilePersonListTableView];
-//    
-//    [_profilePersonListTableView mas_makeConstraints:^(MASConstraintMaker *make) {
-//        make.edges.mas_equalTo(self.view);
-//    }];
 }
 
 - (void)didReceiveMemoryWarning {
