@@ -548,8 +548,6 @@ typedef enum : NSUInteger {
     NSLog(@"%@",_dataManager.ActivityTypeStr);
     NSLog(@"%@",_dataManager.ActivityCheckStr);
     
-    [self savePic:_dataManager.ActivityDesciptionImage];
-    
     if (_dataManager.ActivityDesciptionImage != nil)
     {
         NSString *keyStr = @"activityRelease.png";
@@ -558,46 +556,12 @@ typedef enum : NSUInteger {
         [[ActivityManager sharedInstance] commonImgUpload:@"activity" needSnap:@"true" imagePath:fullPath block:^(YActionMessage *message) {
             NSLog(@"%@",message);
             
-            NSMutableDictionary *modelDic = [@{} mutableCopy];
-            NSMutableDictionary *activityModelDic = [@{} mutableCopy];
-            
-            [activityModelDic setObject:[self transformDate:_dataManager.ActivityDateEndText] forKey:@"actEndTime"];
-            [activityModelDic setObject:[self transformDate:_dataManager.ActivityDateBeginText] forKey:@"actStartTime"];
-            if (_isIdentity)
-            {
-                [activityModelDic setObject:@"group_activity" forKey:@"activityDirection"];
-                if ([_dataManager.ActivityCheckStr isEqualToString:@"需要报名审核"])
-                {
-                    [activityModelDic setObject:@"true" forKey:@"enrollCheck"];
-                }
-                else
-                {
-                    [activityModelDic setObject:@"false" forKey:@"enrollCheck"];
-                }
-                
-            }
-            else
-            {
-                [activityModelDic setObject:@"user_activity" forKey:@"activityDirection"];
-                [activityModelDic setObject:@"false" forKey:@"enrollCheck"];
-            }
-            [activityModelDic setObject:_dataManager.ActivityPlaceText forKey:@"address"];
-            [activityModelDic setObject:@"true" forKey:@"enroll"];
-            [activityModelDic setObject:[self transformDate:_dataManager.ActivityDateApplyText] forKey:@"enrollEndTime"];
-            [activityModelDic setObject:@"1970-01-01 01:01:01" forKey:@"enrollStartTime"];
-            [activityModelDic setObject:_dataManager.ActivityNameText forKey:@"name"];
-            [activityModelDic setObject:_dataManager.ActivityTypeStr forKey:@"type"];
-            
-            NSArray * arr = @[@{@"content":[message.object valueForKey:@"images"][0],@"displayOrder":@1,@"type":@"image"},@{@"content":_dataManager.ActivityDesciptionText,@"displayOrder":@2,@"type":@"text"}];
-
-            [modelDic setObject:arr forKey:@"activityImageTextModels"];
-            [modelDic setObject:activityModelDic forKey:@"activityModel"];
-            
-            
-            [[ActivityManager sharedInstance] editActivity:modelDic block:^(YActionMessage *message) {
-                NSLog(@"%@",message);
-            }];
+            [self sendReleaseRequest:message];
         }];
+    }
+    else
+    {
+        [self sendReleaseRequest:nil];
     }
     
     
@@ -625,6 +589,61 @@ typedef enum : NSUInteger {
     
 }
 
+//发布活动请求
+-(void)sendReleaseRequest:(YActionMessage *) message
+{
+    NSMutableDictionary *modelDic = [@{} mutableCopy];
+    NSMutableDictionary *activityModelDic = [@{} mutableCopy];
+    
+    [activityModelDic setObject:[self transformDate:_dataManager.ActivityDateEndText] forKey:@"actEndTime"];
+    [activityModelDic setObject:[self transformDate:_dataManager.ActivityDateBeginText] forKey:@"actStartTime"];
+    if (_isIdentity)
+    {
+        [activityModelDic setObject:@"group_activity" forKey:@"activityDirection"];
+        if ([_dataManager.ActivityCheckStr isEqualToString:@"需要报名审核"])
+        {
+            [activityModelDic setObject:@"true" forKey:@"enrollCheck"];
+        }
+        else
+        {
+            [activityModelDic setObject:@"false" forKey:@"enrollCheck"];
+        }
+        
+    }
+    else
+    {
+        [activityModelDic setObject:@"user_activity" forKey:@"activityDirection"];
+        [activityModelDic setObject:@"false" forKey:@"enrollCheck"];
+    }
+    [activityModelDic setObject:_dataManager.ActivityPlaceText forKey:@"address"];
+    [activityModelDic setObject:@"true" forKey:@"enroll"];
+    [activityModelDic setObject:[self transformDate:_dataManager.ActivityDateApplyText] forKey:@"enrollEndTime"];
+    [activityModelDic setObject:[self getNowDate] forKey:@"enrollStartTime"];
+    [activityModelDic setObject:_dataManager.ActivityNameText forKey:@"name"];
+    [activityModelDic setObject:_dataManager.ActivityTypeStr forKey:@"type"];
+    
+    NSMutableArray * arr = [[NSMutableArray alloc] init];
+    [arr addObject:@{@"content":_dataManager.ActivityDesciptionText,@"displayOrder":@2,@"type":@"text"}];
+    if (message != nil)
+    {
+        [arr addObject:@{@"content":[message.object valueForKey:@"images"][0],@"displayOrder":@1,@"type":@"image"}];
+    }
+    else
+    {
+        [arr addObject:@{@"content":@"",@"displayOrder":@1,@"type":@"image"}];
+    }
+    
+    
+    [modelDic setObject:arr forKey:@"activityImageTextModels"];
+    [modelDic setObject:activityModelDic forKey:@"activityModel"];
+    
+    
+    [[ActivityManager sharedInstance] editActivity:modelDic block:^(YActionMessage *message) {
+        NSLog(@"%@",message);
+    }];
+}
+
+//转换成标准时间
 -(NSString *)transformDate:(NSString *) date
 {
     NSDateFormatter * formatter = [[NSDateFormatter alloc] init];
@@ -635,28 +654,16 @@ typedef enum : NSUInteger {
     
     return dateStr;
 }
-
-- (void)savePic:(UIImage *)image
+//获取当前标准时间
+-(NSString *)getNowDate
 {
-    if (nil == image)
-    {
-        return;
-    }
+    NSDate * now = [NSDate date];
+    NSDateFormatter * formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+    NSString * dateStr = [formatter stringFromDate:now];
     
-    dispatch_async(dispatch_get_global_queue(0, 0), ^{
-        
-        NSString *keyStr = @"activityRelease.png";
-        
-        //写入文件
-        NSData *imageData = UIImageJPEGRepresentation(image, 0.5);
-        NSString *fullPath = [[YDirectory newImgCache] stringByAppendingPathComponent:keyStr];
-        
-        //保存到沙盒
-        [imageData writeToFile:fullPath atomically:NO];
-        
-    });
+    return dateStr;
 }
-
 
 -(void)setPointHighlight:(NSInteger) pointNum
 {

@@ -13,6 +13,7 @@
 #import "SDPhotoBrowser.h"
 #import "YVIew+Ext.h"
 #import "ActivityReleaseDataManager.h"
+#import "YDirectory+Data.h"
 
 NSString *const kDescriptionCollectionViewCell = @"DescriptionCollectionViewCellId";
 
@@ -167,7 +168,30 @@ NSString *const kDescriptionCollectionViewCell = @"DescriptionCollectionViewCell
    
     _dataManager.ActivityDesciptionImage = editedImage;
 
+    [self savePic:editedImage];
+    
      [self.myController dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void)savePic:(UIImage *)image
+{
+    if (nil == image)
+    {
+        return;
+    }
+    
+    dispatch_async(dispatch_get_global_queue(0, 0), ^{
+        
+        NSString *keyStr = @"activityRelease.png";
+        
+        //写入文件
+        NSData *imageData = UIImageJPEGRepresentation(image, 0.5);
+        NSString *fullPath = [[YDirectory newImgCache] stringByAppendingPathComponent:keyStr];
+        
+        //保存到沙盒
+        [imageData writeToFile:fullPath atomically:NO];
+        
+    });
 }
 
 -(void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
