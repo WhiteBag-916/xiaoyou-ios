@@ -592,6 +592,7 @@ typedef enum : NSUInteger {
 //发布活动请求
 -(void)sendReleaseRequest:(YActionMessage *) message
 {
+    [YUtils showHUDWithTitle];
     NSMutableDictionary *modelDic = [@{} mutableCopy];
     NSMutableDictionary *activityModelDic = [@{} mutableCopy];
     
@@ -640,6 +641,12 @@ typedef enum : NSUInteger {
     
     [[ActivityManager sharedInstance] editActivity:modelDic block:^(YActionMessage *message) {
         NSLog(@"%@",message);
+        [YUtils hiddenProgressHUD];
+        [YUtils showTitle:message.desc];
+        if ([[message.object valueForKey:@"code"] integerValue] == 1)
+        {
+            [self.navigationController popViewControllerAnimated:YES];
+        }
     }];
 }
 
