@@ -36,13 +36,13 @@
         [self registerClass:[ActivityReleaseAndTypeCell class] forCellReuseIdentifier:kActivityReleaseAndTypeCell];
         
         [[ActivityManager sharedInstance] getFilterConditions:^(YActionMessage *message) {
-            NSLog(@"%@",message.object);
+//            NSLog(@"%@",message.object);
             
             _dataSourceArr = [NSMutableArray arrayWithArray:message.object];
             [_dataSourceArr exchangeObjectAtIndex:0 withObjectAtIndex:3];
             [self reloadData];
         }];
-        
+                
         _typesDic = [[NSMutableDictionary alloc] init];
         [_typesDic setObject:@"no_class" forKey:@"free"];
         [_typesDic setObject:@"school_manager" forKey:@"createUserSource"];
@@ -110,6 +110,8 @@
 
 -(void)clickBtnForChoice
 {
+    
+    
     if (_myType == ACTIVITY_CHOICE_TYPE)
     {
         [self.myController dismissViewControllerAnimated:YES completion:^{
@@ -123,7 +125,6 @@
         [self.myController dismissViewControllerAnimated:YES completion:nil];
     }
     
-
 }
 
 -(void)didSelectRow:(Tags *) tag andType:(NSString *)type

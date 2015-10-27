@@ -11,6 +11,7 @@
 @interface ActivityResultTableView : YTableView
 
 @property(nonatomic,strong)NSMutableArray * dataSouceArr;
+@property(nonatomic,strong)NSDictionary * requestDic;
 
 - (void)sendRequest;
 

@@ -79,13 +79,7 @@ typedef enum : NSUInteger {
     _dataManager = [ActivityReleaseDataManager shareActivityReleaseDataManager];
     _dataManager.isIdentity = _isIdentity;
     
-    _dataManager.ActivityNameText = nil;
-    _dataManager.ActivityDesciptionText = nil;
-    _dataManager.ActivityDesciptionImage = nil;
-    _dataManager.ActivityDateApplyText = nil;
-    _dataManager.ActivityDateBeginText = nil;
-    _dataManager.ActivityDateEndText = nil;
-    _dataManager.ActivityPlaceText = nil;
+    
     
     [self setUpUI];
 }
@@ -95,11 +89,28 @@ typedef enum : NSUInteger {
     [super viewWillAppear:animated];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changeEnabelStateForReleaseBtn:) name:KNotification_Enabel_ReleaseBtn object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changeScrollPosition:) name:KNotification_Activity_Release_ScrollTo object:nil];
-    
+}
+
+-(void)removeManagerData
+{
+    _dataManager.ActivityNameText = nil;
+    _dataManager.ActivityDesciptionText = nil;
+    _dataManager.ActivityDesciptionImage = nil;
+    _dataManager.ActivityDateEndApplyText = nil;
+    _dataManager.ActivityDateBeginApplyText = nil;
+    _dataManager.ActivityDateBeginText = nil;
+    _dataManager.ActivityDateEndText = nil;
+    _dataManager.ActivityPlaceText = nil;
+    _dataManager.ActivityOrganizer = nil;
+    _dataManager.ActivityOrganizerId = nil;
+    _dataManager.ActivityTypeStr = nil;
+    _dataManager.ActivityCheckStr = nil;
 }
 
 -(void)viewWillDisappear:(BOOL)animated
 {
+    [self removeManagerData];
+    
     [super viewWillDisappear:animated];
     
     [[NSNotificationCenter defaultCenter] removeObserver:self];
@@ -541,7 +552,7 @@ typedef enum : NSUInteger {
     NSLog(@"%@",_dataManager.ActivityNameText);
     NSLog(@"%@",_dataManager.ActivityDesciptionText);
     NSLog(@"%@",_dataManager.ActivityDesciptionImage);
-    NSLog(@"%@",_dataManager.ActivityDateApplyText);
+    NSLog(@"%@",_dataManager.ActivityDateEndApplyText);
     NSLog(@"%@",_dataManager.ActivityDateBeginText);
     NSLog(@"%@",_dataManager.ActivityDateEndText);
     NSLog(@"%@",_dataManager.ActivityPlaceText);
@@ -618,8 +629,8 @@ typedef enum : NSUInteger {
     }
     [activityModelDic setObject:_dataManager.ActivityPlaceText forKey:@"address"];
     [activityModelDic setObject:@"true" forKey:@"enroll"];
-    [activityModelDic setObject:[self transformDate:_dataManager.ActivityDateApplyText] forKey:@"enrollEndTime"];
-    [activityModelDic setObject:[self getNowDate] forKey:@"enrollStartTime"];
+    [activityModelDic setObject:[self transformDate:_dataManager.ActivityDateEndApplyText] forKey:@"enrollEndTime"];
+    [activityModelDic setObject:[self transformDate:_dataManager.ActivityDateBeginApplyText] forKey:@"enrollStartTime"];
     [activityModelDic setObject:_dataManager.ActivityNameText forKey:@"name"];
     [activityModelDic setObject:_dataManager.ActivityTypeStr forKey:@"type"];
     

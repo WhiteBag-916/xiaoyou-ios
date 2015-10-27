@@ -11,10 +11,12 @@
 #import "ProvisionManager.h"
 #import "ProfileInfo.h"
 #import "Tags.h"
+#import "ActivityReleaseDataManager.h"
 
 @interface ActivityIdentityTableView ()<UITableViewDataSource,UITableViewDelegate>
 
 @property (nonatomic,strong) NSMutableArray * dataSouceArr;
+@property(nonatomic,strong)ActivityReleaseDataManager * dataManager;
 
 @end
 
@@ -31,6 +33,8 @@
         
         [self registerClass:[ActivityIdentityTableViewCell class] forCellReuseIdentifier:kActivityIdentityTableViewCell];
         [self setUpHeaderView];
+        
+        _dataManager = [ActivityReleaseDataManager shareActivityReleaseDataManager];
         
         _dataSouceArr = [[NSMutableArray alloc] init];
         NSArray * groupArr =[[ProvisionManager sharedInstance] getProfile].managerGroups;
@@ -105,10 +109,14 @@
             if ([_dataSouceArr[indexPath.row][@"isChoice"] boolValue])
             {
                 [_dataSouceArr[indexPath.row] setObject:@NO forKey:@"isChoice"];
+                _dataManager.ActivityOrganizer = nil;
+                _dataManager.ActivityOrganizerId = nil;
             }
             else
             {
                 [_dataSouceArr[indexPath.row] setObject:@YES forKey:@"isChoice"];
+                _dataManager.ActivityOrganizer = _dataSouceArr[indexPath.row][@"name"];
+                _dataManager.ActivityOrganizerId = _dataSouceArr[indexPath.row][@"code"];
             }
         }
         else
@@ -116,7 +124,7 @@
             [_dataSouceArr[i] setObject:@NO forKey:@"isChoice"];
         }
     }
-    
+  
     [self reloadData];
     
 }
