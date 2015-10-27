@@ -7,13 +7,10 @@
 
 #import <Foundation/Foundation.h>
 #import "YModel.h"
-//#import "ActivityUser.h"
 #import "ProfileInfo.h"
 
 @interface NoticeInfo :  YModel <NSCoding, NSCopying>
 
-@property (nonatomic, strong) NSString *userId;
-@property (nonatomic, strong) NSString *userHeadPic;
 @property (nonatomic, assign) double enrollTime;
 @property (nonatomic, strong) NSString *userName;
 @property (nonatomic, strong) NSString *activityOrganizer;

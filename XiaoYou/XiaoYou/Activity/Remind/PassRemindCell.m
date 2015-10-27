@@ -9,6 +9,7 @@
 #import "PassRemindCell.h"
 #import "DataConvert.h"
 #import "UIImageView+WebCache.h"
+#import "ProfileInfo.h"
 
 #define REUSRID             @"PassRemindCell"
 #define CELL_INSET          SCALE_NUM(12)
@@ -245,16 +246,10 @@
 
 -(void)setData:(NoticeInfo *)model
 {
-    [_headImageView sd_setImageWithURL:[NSURL URLWithString:model.userHeadPic]];
-    _contentTitleLabel.text = model.userName;
+    ProfileInfo *info = model.activityUser;
+    [_headImageView setFaceImageWithUrl:info.headPic];
+    _contentTitleLabel.text = info.name;
     _contentNameLabel.text = [NSString stringWithFormat:_contentNameLabel.text,model.activityName];
 }
-
-//-(void)setData:(RemindModelTest *)model
-//{
-//    [_headImageView sd_setImageWithURL:[NSURL URLWithString:model.headImageUrl]];
-//    _contentTitleLabel.text = model.acType;
-//    _contentNameLabel.text = [NSString stringWithFormat:@"名称：%@",model.acName];
-//}
 
 @end
