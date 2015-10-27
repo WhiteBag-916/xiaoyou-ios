@@ -273,6 +273,10 @@
 		20DD81331B91ABCE00ACFD9A /* campus-assistant_map_screen@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 20DD81311B91ABCE00ACFD9A /* campus-assistant_map_screen@2x.png */; };
 		20DD81341B91ABCE00ACFD9A /* campus-assistant_map_screen@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 20DD81321B91ABCE00ACFD9A /* campus-assistant_map_screen@3x.png */; };
 		20DF5FF41BDF293800C8383B /* MyTimetableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20DF5FF31BDF293800C8383B /* MyTimetableViewController.m */; };
+		20DF5FF91BDF2B7900C8383B /* mine－icon－course@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 20DF5FF51BDF2B7900C8383B /* mine－icon－course@2x.png */; };
+		20DF5FFA1BDF2B7900C8383B /* mine－icon－course@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 20DF5FF61BDF2B7900C8383B /* mine－icon－course@3x.png */; };
+		20DF5FFB1BDF2B7900C8383B /* mine－icon－yard@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 20DF5FF71BDF2B7900C8383B /* mine－icon－yard@2x.png */; };
+		20DF5FFC1BDF2B7900C8383B /* mine－icon－yard@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 20DF5FF81BDF2B7900C8383B /* mine－icon－yard@3x.png */; };
 		20E033E51B842727002E4583 /* UMSocialLocalizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 20E033C41B842727002E4583 /* UMSocialLocalizable.strings */; };
 		20E033E61B842727002E4583 /* libUMSocial_Sdk_4.2.3.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 20E033D21B842727002E4583 /* libUMSocial_Sdk_4.2.3.a */; };
 		20E033E71B842727002E4583 /* UMSCommentDetailController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 20E033D41B842727002E4583 /* UMSCommentDetailController.xib */; };
@@ -1166,6 +1170,10 @@
 		20DD81321B91ABCE00ACFD9A /* campus-assistant_map_screen@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "campus-assistant_map_screen@3x.png"; sourceTree = "<group>"; };
 		20DF5FF21BDF293800C8383B /* MyTimetableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyTimetableViewController.h; sourceTree = "<group>"; };
 		20DF5FF31BDF293800C8383B /* MyTimetableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyTimetableViewController.m; sourceTree = "<group>"; };
+		20DF5FF51BDF2B7900C8383B /* mine－icon－course@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mine－icon－course@2x.png"; sourceTree = "<group>"; };
+		20DF5FF61BDF2B7900C8383B /* mine－icon－course@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mine－icon－course@3x.png"; sourceTree = "<group>"; };
+		20DF5FF71BDF2B7900C8383B /* mine－icon－yard@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mine－icon－yard@2x.png"; sourceTree = "<group>"; };
+		20DF5FF81BDF2B7900C8383B /* mine－icon－yard@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mine－icon－yard@3x.png"; sourceTree = "<group>"; };
 		20E033C51B842727002E4583 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/UMSocialLocalizable.strings; sourceTree = "<group>"; };
 		20E033C71B842727002E4583 /* UMSocial.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UMSocial.h; sourceTree = "<group>"; };
 		20E033C81B842727002E4583 /* UMSocialAccountManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UMSocialAccountManager.h; sourceTree = "<group>"; };
@@ -3698,6 +3706,10 @@
 		650C6C0B1B886D3200A89AC9 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
+				20DF5FF51BDF2B7900C8383B /* mine－icon－course@2x.png */,
+				20DF5FF61BDF2B7900C8383B /* mine－icon－course@3x.png */,
+				20DF5FF71BDF2B7900C8383B /* mine－icon－yard@2x.png */,
+				20DF5FF81BDF2B7900C8383B /* mine－icon－yard@3x.png */,
 				6563415A1BC1133C00E10025 /* gift_home@2x.png */,
 				6563415B1BC1133C00E10025 /* gift_home@3x.png */,
 				656341561BC10D6500E10025 /* gift_line@2x.png */,
@@ -4283,7 +4295,9 @@
 				20E942231B833D10009C2DC6 /* toggle-off@3x.png in Resources */,
 				044C31571BCCAF0000E0D508 /* have_time_publish@3x.png in Resources */,
 				E482D57E1BD8F4E00045F4DB /* scanf_stu_name@2x.png in Resources */,
+				20DF5FFC1BDF2B7900C8383B /* mine－icon－yard@3x.png in Resources */,
 				20E18DBB1B808E42005B75EE /* common_star@3x.png in Resources */,
+				20DF5FFB1BDF2B7900C8383B /* mine－icon－yard@2x.png in Resources */,
 				E43E10681BCCFA840018B6D7 /* btn_add@2x.png in Resources */,
 				049480501BB8E51A00C68460 /* schedule_houtian@3x.png in Resources */,
 				043AC86C1BCF7BFC00AB6E09 /* friend_box_serch@2x.png in Resources */,
@@ -4367,6 +4381,7 @@
 				3334AC371B82E32100FDDCCB /* chat_receiver_bg@2x.png in Resources */,
 				E46CF87E1BD7765A00FF563B /* detail_toast_new@3x.png in Resources */,
 				333122BF1B806EDC00D3D032 /* chat_receiver_audio_playing002.png in Resources */,
+				20DF5FF91BDF2B7900C8383B /* mine－icon－course@2x.png in Resources */,
 				20E034051B846398002E4583 /* feed-find-someone-search@3x.png in Resources */,
 				20DA39FD1BD76E4E00B4B1B1 /* build_btn_finish@3x.png in Resources */,
 				044C315B1BCCAF0000E0D508 /* have_time_select@3x.png in Resources */,
@@ -4418,6 +4433,7 @@
 				20DAA2BB1BCE34DF00420234 /* btn_mine_n@2x.png in Resources */,
 				3348CB511B87207600F97FAF /* chatBar_recordSelectedBg.png in Resources */,
 				20E18DC61B808E42005B75EE /* cup@2x.png in Resources */,
+				20DF5FFA1BDF2B7900C8383B /* mine－icon－course@3x.png in Resources */,
 				3335C3661B8178E8007DEFD4 /* chatFire_audioPlaying1@2x.png in Resources */,
 				E482D57B1BD8F4E00045F4DB /* scanf_stu_num@3x.png in Resources */,
 				20DA3A0F1BD7805E00B4B1B1 /* build_icon_stop@2x.png in Resources */,

@@ -10,6 +10,8 @@
 
 @interface MyTimetableViewController ()
 
+@property (nonatomic, strong) UIButton *titleButton;
+
 @end
 
 @implementation MyTimetableViewController
@@ -17,11 +19,30 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    [self showCustomNavigationBackButton];
+    [self initNavigationTitle];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (void)initNavigationTitle {
+    _titleButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    _titleButton.frame = CGRectMake(0, 0, 100, 40);
+    [_titleButton setTitle:@"第六周" forState:UIControlStateNormal];
+    [_titleButton setImage:[UIImage imageNamed:@""] forState:UIControlStateNormal];
+    [_titleButton addTarget:self action:@selector(showChooseWeek) forControlEvents:UIControlEventTouchUpInside];
+    
+    self.navigationItem.titleView = _titleButton;
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    self.navigationController.navigationBarHidden = NO;
+}
+
+//选择第几周
+- (void)showChooseWeek {
+    
 }
 
 /*
