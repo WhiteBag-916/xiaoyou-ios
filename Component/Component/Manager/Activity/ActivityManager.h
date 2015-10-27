@@ -119,6 +119,6 @@ AS_SINGLETON(ActivityManager);
  返回值 : ActivityDetailModel
  作者 : XiongChen
  *********************************************************************/
-- (void)findActivityDetailInfo:(NSString *)activityPublishedId getDetail:(NSString *)getDetail block:(ActionCompleteBlock)block;
+- (void)findActivityDetailInfo:(NSInteger)limitStart limitEnd:(NSInteger)limitEnd activityPublishedId:(NSString *)activityPublishedId getDetail:(BOOL)getDetail block:(ActionCompleteBlock)block;
 
 @end
