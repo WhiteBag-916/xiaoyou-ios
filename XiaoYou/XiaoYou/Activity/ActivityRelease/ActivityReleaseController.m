@@ -10,10 +10,8 @@
 #import "ActivityReleaseCollectionView.h"
 #import "ActivityReleaseDataManager.h"
 #import "ActivityManager.h"
-#import "ActivityInfoModel.h"
-#import "ActivityImageTextModels.h"
-#import "ImageUploadModel.h"
 #import "YDirectory+Data.h"
+#import "ActivityInfoModel.h"
 
 typedef enum : NSUInteger {
     POSITION1 = 1,
@@ -550,10 +548,6 @@ typedef enum : NSUInteger {
     NSLog(@"%@",_dataManager.ActivityTypeStr);
     NSLog(@"%@",_dataManager.ActivityCheckStr);
     
-    NSMutableDictionary * dic = [[NSMutableDictionary alloc] init];
-    
-    [self savePic:_dataManager.ActivityDesciptionImage];
-    
     if (_dataManager.ActivityDesciptionImage != nil)
     {
         NSString *keyStr = @"activityRelease.png";
@@ -561,14 +555,16 @@ typedef enum : NSUInteger {
         
         [[ActivityManager sharedInstance] commonImgUpload:@"activity" needSnap:@"true" imagePath:fullPath block:^(YActionMessage *message) {
             NSLog(@"%@",message);
+            
+            [self sendReleaseRequest:message];
         }];
     }
+    else
+    {
+        [self sendReleaseRequest:nil];
+    }
     
-//    ActivityInfoModel * model = [ActivityInfoModel new];
-//    ActivityImageTextModels * imageTextModel = [ActivityImageTextModels new];
-//    imageTextModel.content =
-//    model.activityImageTextModels = 
-//    [ActivityManager sharedInstance] editActivity:(*) block:<#^(YActionMessage *message)block#>
+    
     
 //    NSDateFormatter * formatter = [[NSDateFormatter alloc] init];
 //    [formatter setDateFormat:@"yyyy年MM月dd日 a HH:mm"];
@@ -593,27 +589,81 @@ typedef enum : NSUInteger {
     
 }
 
-- (void)savePic:(UIImage *)image
+//发布活动请求
+-(void)sendReleaseRequest:(YActionMessage *) message
 {
-    if (nil == image)
+    NSMutableDictionary *modelDic = [@{} mutableCopy];
+    NSMutableDictionary *activityModelDic = [@{} mutableCopy];
+    
+    [activityModelDic setObject:[self transformDate:_dataManager.ActivityDateEndText] forKey:@"actEndTime"];
+    [activityModelDic setObject:[self transformDate:_dataManager.ActivityDateBeginText] forKey:@"actStartTime"];
+    if (_isIdentity)
     {
-        return;
+        [activityModelDic setObject:@"group_activity" forKey:@"activityDirection"];
+        if ([_dataManager.ActivityCheckStr isEqualToString:@"需要报名审核"])
+        {
+            [activityModelDic setObject:@"true" forKey:@"enrollCheck"];
+        }
+        else
+        {
+            [activityModelDic setObject:@"false" forKey:@"enrollCheck"];
+        }
+        
+    }
+    else
+    {
+        [activityModelDic setObject:@"user_activity" forKey:@"activityDirection"];
+        [activityModelDic setObject:@"false" forKey:@"enrollCheck"];
+    }
+    [activityModelDic setObject:_dataManager.ActivityPlaceText forKey:@"address"];
+    [activityModelDic setObject:@"true" forKey:@"enroll"];
+    [activityModelDic setObject:[self transformDate:_dataManager.ActivityDateApplyText] forKey:@"enrollEndTime"];
+    [activityModelDic setObject:[self getNowDate] forKey:@"enrollStartTime"];
+    [activityModelDic setObject:_dataManager.ActivityNameText forKey:@"name"];
+    [activityModelDic setObject:_dataManager.ActivityTypeStr forKey:@"type"];
+    
+    NSMutableArray * arr = [[NSMutableArray alloc] init];
+    [arr addObject:@{@"content":_dataManager.ActivityDesciptionText,@"displayOrder":@2,@"type":@"text"}];
+    if (message != nil)
+    {
+        [arr addObject:@{@"content":[message.object valueForKey:@"images"][0],@"displayOrder":@1,@"type":@"image"}];
+    }
+    else
+    {
+        [arr addObject:@{@"content":@"",@"displayOrder":@1,@"type":@"image"}];
     }
     
-    dispatch_async(dispatch_get_global_queue(0, 0), ^{
-        
-        NSString *keyStr = @"activityRelease.png";
-        
-        //写入文件
-        NSData *imageData = UIImageJPEGRepresentation(image, 0.5);
-        NSString *fullPath = [[YDirectory newImgCache] stringByAppendingPathComponent:keyStr];
-        
-        //保存到沙盒
-        [imageData writeToFile:fullPath atomically:NO];
-        
-    });
+    
+    [modelDic setObject:arr forKey:@"activityImageTextModels"];
+    [modelDic setObject:activityModelDic forKey:@"activityModel"];
+    
+    
+    [[ActivityManager sharedInstance] editActivity:modelDic block:^(YActionMessage *message) {
+        NSLog(@"%@",message);
+    }];
 }
 
+//转换成标准时间
+-(NSString *)transformDate:(NSString *) date
+{
+    NSDateFormatter * formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"yyyy年MM月dd日 a HH:mm"];
+    NSDate * tempDate = [formatter dateFromString:date];
+    [formatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+    NSString * dateStr = [formatter stringFromDate:tempDate];
+    
+    return dateStr;
+}
+//获取当前标准时间
+-(NSString *)getNowDate
+{
+    NSDate * now = [NSDate date];
+    NSDateFormatter * formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+    NSString * dateStr = [formatter stringFromDate:now];
+    
+    return dateStr;
+}
 
 -(void)setPointHighlight:(NSInteger) pointNum
 {

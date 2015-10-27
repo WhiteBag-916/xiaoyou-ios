@@ -34,6 +34,7 @@
     [_resultTableView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.left.right.bottom.mas_equalTo(0);
     }];
+    
 }
 
 - (void)didReceiveMemoryWarning {

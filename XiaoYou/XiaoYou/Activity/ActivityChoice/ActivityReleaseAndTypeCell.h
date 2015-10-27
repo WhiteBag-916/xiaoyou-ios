@@ -9,13 +9,22 @@
 #import <UIKit/UIKit.h>
 #import "ActivityChoiceController.h"
 #import "YTableViewCell.h"
+#import "GetFilterConditionsModel.h"
+#import "Tags.h"
 
 extern NSString *const kActivityReleaseAndTypeCell;
 
+@protocol ActivityReleaseAndTypeCellDelegate <NSObject>
+
+-(void)didSelectRow:(Tags *) tag andType:(NSString *) type;
+
+@end
+
 @interface ActivityReleaseAndTypeCell : YTableViewCell
 
+@property (nonatomic,weak)id<ActivityReleaseAndTypeCellDelegate>delegate;
 @property (nonatomic,assign)NSInteger myType;
 
--(void)setCellType:(NSInteger) num;
+-(void)setCellType:(GetFilterConditionsModel *) model;
 
 @end

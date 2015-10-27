@@ -9,12 +9,14 @@
 #import "ActivityResultTableView.h"
 #import "AvailableCell.h"
 #import "ActivityDetailViewController.h"
+#import "ActivityManager.h"
 
 #define REUSEID @"AvailableCell"
+#define KPAGENUM 10
 
 @interface ActivityResultTableView ()<UITableViewDataSource,UITableViewDelegate>
 
-@property(nonatomic,strong)NSArray * dataSouceArr;
+@property (nonatomic,assign) NSInteger currentIndex;
 
 @end
 
@@ -28,9 +30,67 @@
         self.dataSource = self;
         
         [self registerClass:[AvailableCell class] forCellReuseIdentifier:REUSEID];
-        
+        _dataSouceArr = [[NSMutableArray alloc] init];
     }
     return self;
+}
+
+#pragma mark - 继承者
+- (BOOL)showHeaderRefresh
+{
+    return YES;
+}
+
+- (BOOL)showFooterRefresh
+{
+    return YES;
+}
+
+- (void)loadData {
+    [self beginLoadNewData];
+}
+
+- (void)loadNewData
+{
+    _currentIndex = 0;
+    [self sendRequest];
+}
+
+- (void)loadMoreData
+{
+    _currentIndex = self.dataSouceArr.count;
+    [self sendRequest];
+}
+
+- (void)sendRequest {
+    [[ActivityManager sharedInstance] getCurrentUseAvailableListLimitStart:_currentIndex limitEnd:_currentIndex+KPAGENUM block:^(YActionMessage *message) {
+        if (message.isSuccess) {
+            if ([self isHeaderRefresh]) {
+                [self.dataSouceArr removeAllObjects];
+            }
+            
+            NSLog(@"this is message = %@",message);
+            
+            [self.dataSouceArr addObjectsFromArray:message.object];
+            
+            [self hiddenFooter:NO];
+            if ([message.object count] < KPAGENUM) {
+                [self showNoticeNoMoreData];
+            }
+            [self reloadData];
+            _currentIndex += KPAGENUM;
+        } else {
+            [YUtils showTitle:message.desc];
+        }
+        if ([self isHeaderRefresh]) {
+            [self stopLoadNewData];
+        } else
+        {
+            [self stopLoadMoreData];
+        }
+    }];
+    
+    
 }
 
 -(NSInteger)numberOfRowsInSection:(NSInteger)section
@@ -40,12 +100,13 @@
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 5;
+    return _dataSouceArr.count;
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     AvailableCell * cell = [tableView dequeueReusableCellWithIdentifier:REUSEID forIndexPath:indexPath];
+    [cell setData:_dataSouceArr[indexPath.row]];
     return cell;
 }
 

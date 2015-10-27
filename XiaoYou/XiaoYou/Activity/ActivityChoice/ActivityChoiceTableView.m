@@ -10,9 +10,14 @@
 #import "ActivityReleaseAndTypeCell.h"
 #import "ActivityResultViewController.h"
 #import "ActivityChoiceController.h"
+#import "ActivityManager.h"
+#import "GetFilterConditionsModel.h"
+#import "Tags.h"
 
-@interface ActivityChoiceTableView ()<UITableViewDataSource,UITableViewDelegate>
+@interface ActivityChoiceTableView ()<UITableViewDataSource,UITableViewDelegate,ActivityReleaseAndTypeCellDelegate>
 
+@property (nonatomic,strong)NSMutableArray * dataSourceArr;
+@property (nonatomic,strong)NSMutableDictionary * typesDic;
 
 @end
 
@@ -29,6 +34,20 @@
         [self setUpHeaderView];
 
         [self registerClass:[ActivityReleaseAndTypeCell class] forCellReuseIdentifier:kActivityReleaseAndTypeCell];
+        
+        [[ActivityManager sharedInstance] getFilterConditions:^(YActionMessage *message) {
+            NSLog(@"%@",message.object);
+            
+            _dataSourceArr = [NSMutableArray arrayWithArray:message.object];
+            [_dataSourceArr exchangeObjectAtIndex:0 withObjectAtIndex:3];
+            [self reloadData];
+        }];
+        
+        _typesDic = [[NSMutableDictionary alloc] init];
+        [_typesDic setObject:@"no_class" forKey:@"free"];
+        [_typesDic setObject:@"school_manager" forKey:@"createUserSource"];
+        [_typesDic setObject:@1 forKey:@"datePeriod"];
+        [_typesDic setObject:@"jingji_bisai" forKey:@"types"];
     }
     return self;
 }
@@ -95,6 +114,7 @@
     {
         [self.myController dismissViewControllerAnimated:YES completion:^{
             ActivityResultViewController * resultViewController = [[ActivityResultViewController alloc] init];
+            resultViewController.requestDic = _typesDic;
             [self.myController.activityViewController.navigationController pushViewController:resultViewController animated:YES needHiddenBottomBar:YES];
         }];
     }
@@ -104,6 +124,11 @@
     }
     
 
+}
+
+-(void)didSelectRow:(Tags *) tag andType:(NSString *)type
+{
+    [_typesDic setObject:tag.internalBaseClassIdentifier forKey:type];
 }
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -126,10 +151,11 @@
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
 
-        ActivityReleaseAndTypeCell * cell = [self dequeueReusableCellWithIdentifier:kActivityReleaseAndTypeCell forIndexPath:indexPath];
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        cell.myType = _myType;
-        [cell setCellType:indexPath.row];
+    ActivityReleaseAndTypeCell * cell = [self dequeueReusableCellWithIdentifier:kActivityReleaseAndTypeCell forIndexPath:indexPath];
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    cell.delegate = self;
+    cell.myType = _myType;
+    [cell setCellType:_dataSourceArr[indexPath.row]];
         return cell;
 
 }

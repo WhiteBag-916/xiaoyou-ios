@@ -212,17 +212,18 @@
         AvailableSimpleViewController *vc = [[AvailableSimpleViewController alloc] initWithType:AvailableSimpleTypeStudyRoom];
         [self.viewController.navigationController pushViewController:vc animated:YES needHiddenBottomBar:YES];
     }
-    //可以蹭的课
-    else if (type == SCROUGECOURSE_CELL) {
-        AvailableSimpleViewController *vc = [[AvailableSimpleViewController alloc] initWithType:AvailableSimpleTypeRubLesson];
-        [self.viewController.navigationController pushViewController:vc animated:YES needHiddenBottomBar:YES];
-    }
     //活动详情
     else if (type == ACTIVITY_DETAIL_CELL) {
         ActivityDetailViewController *activityDetailVC = [[ActivityDetailViewController alloc]init];
-        activityDetailVC.index = indexPath.row - 2;
+        
         [self.viewController.navigationController pushViewController:activityDetailVC animated:YES needHiddenBottomBar:YES];
     }
+    //可以蹭的课
+//    else if (type == SCROUGECOURSE_CELL) {
+//        AvailableSimpleViewController *vc = [[AvailableSimpleViewController alloc] initWithType:AvailableSimpleTypeRubLesson];
+//        [self.viewController.navigationController pushViewController:vc animated:YES needHiddenBottomBar:YES];
+//    }
+    
 }
 
 

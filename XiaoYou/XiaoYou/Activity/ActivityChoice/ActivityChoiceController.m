@@ -12,6 +12,8 @@
 @interface ActivityChoiceController ()
 
 @property (nonatomic,strong)ActivityChoiceTableView * activityChoiceTableView;
+
+
 @property (nonatomic,assign)NSInteger myType;
 
 @end
@@ -32,6 +34,7 @@
     [super viewDidLoad];
     
     [self setUpUI];
+    
 }
 
 -(void)setUpUI

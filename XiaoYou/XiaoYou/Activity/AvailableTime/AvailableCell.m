@@ -243,8 +243,9 @@
 {
     ActivityPublishedModel  *publishModel   = model.activityPublishedModel;
     NSArray *imageTextModels =  model.activityImageTextModels;
-    NSArray *coverageModels =   model.activityCoverageModels;
+    //NSArray *coverageModels =   model.activityCoverageModels;
     
+    BOOL isNotHaveImage = YES;
     _titleLabel.text        = publishModel.name;//标题
     //图文混排
     for (ActivityImageTextModels *imageText in imageTextModels) {
@@ -252,9 +253,14 @@
             _descriptionLabel.text = imageText.content;
         }
         else if ([imageText.type isEqualToString:@"image"]) {
-            imageText.content = imageText.content;//@"/dev/feed/s/c2cfe0e7-ba38-43e0-b345-3d14ff2f2bcf.png";
-            [_imageGroupView updateWithImgs:@[imageText.content] bigPics:@[imageText.content]];
+            if (![imageText.content isEmpty]) {
+                [_imageGroupView updateWithImgs:@[imageText.content] bigPics:@[imageText.content]];
+                isNotHaveImage = NO;
+            }
         }
+    }
+    if (isNotHaveImage) {
+        [_imageGroupView updateWithImgs:nil bigPics:nil];
     }
     
     _signUpTimeLabel.text = [TimeFormatterConvert timeConvertToFommtterAvailable:publishModel.enroll];

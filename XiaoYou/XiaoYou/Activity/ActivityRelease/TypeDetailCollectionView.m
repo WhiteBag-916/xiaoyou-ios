@@ -57,7 +57,7 @@
         if (i == temepArr.count - 1)
         {
             [dic setObject:@YES forKey:@"isChoice"];
-            _dataManager.ActivityTypeStr = dic[@"name"];
+            _dataManager.ActivityTypeStr = dic[@"code"];
             [self reloadData];
         }
         else
@@ -148,7 +148,7 @@
     {
         if ([_dataSouceArr[indexPath.row][@"isChoice"] boolValue] == YES) {
 
-            _typeStr = _dataSouceArr[indexPath.row][@"type"];
+            _typeStr = _dataSouceArr[indexPath.row][@"code"];
             
         }
         
