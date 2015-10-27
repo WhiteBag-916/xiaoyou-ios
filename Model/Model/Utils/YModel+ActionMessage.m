@@ -46,7 +46,7 @@ NSString *const kCommonObj = @"obj";
                 if (self != [ResultCommon class])
                 {
                     NSDictionary *dataDic = [NSJSONSerialization JSONObjectWithData:request.responseData options:kNilOptions error:nil];
-                    NSDictionary *dataDicByKey = [dataDic objectForKey:kCommonObj];
+                    NSDictionary *dataDicByKey = [self objectOrNilForKey:kCommonObj fromDictionary:dataDic];
                     if (nil != dataDicByKey) {
                         if ([dataDicByKey isKindOfClass:[NSArray class]])
                         {
@@ -58,7 +58,7 @@ NSString *const kCommonObj = @"obj";
                             aObject = [self modelObjectWithKeyValues:dataDicByKey];
                         }
                     } else {
-                        aObject = [self modelObjectWithJSONData:request.responseData];
+                        aObject = nil;
                     }
                 }
             }
@@ -87,4 +87,12 @@ NSString *const kCommonObj = @"obj";
     YLogI(@"Message:%@", message);
     return message;
 }
+
+#pragma mark - Helper Method
++ (id)objectOrNilForKey:(id)aKey fromDictionary:(NSDictionary *)dict
+{
+    id object = [dict objectForKey:aKey];
+    return [object isEqual:[NSNull null]] ? nil : object;
+}
+
 @end
