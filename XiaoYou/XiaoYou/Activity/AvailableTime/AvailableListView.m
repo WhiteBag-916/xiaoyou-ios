@@ -215,7 +215,7 @@
     //活动详情
     else if (type == ACTIVITY_DETAIL_CELL) {
         ActivityDetailViewController *activityDetailVC = [[ActivityDetailViewController alloc]init];
-        
+        activityDetailVC.model = self.availableListArray[indexPath.row];
         [self.viewController.navigationController pushViewController:activityDetailVC animated:YES needHiddenBottomBar:YES];
     }
     //可以蹭的课

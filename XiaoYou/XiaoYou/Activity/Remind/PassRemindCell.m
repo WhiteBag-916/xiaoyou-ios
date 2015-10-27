@@ -9,6 +9,8 @@
 #import "PassRemindCell.h"
 #import "DataConvert.h"
 #import "UIImageView+WebCache.h"
+#import "ProfileInfo.h"
+#import "WhoJoinInController.h"
 
 #define REUSRID             @"PassRemindCell"
 #define CELL_INSET          SCALE_NUM(12)
@@ -30,6 +32,8 @@
 @property(nonatomic,strong) UIButton    *middleButton;      //中间button
 @property(nonatomic,strong) UIButton    *bottomButton;      //底部button
 
+
+@property(nonatomic,strong) NoticeInfo  *model;             //提醒model
 @end
 
 
@@ -215,7 +219,10 @@
 
 //点击下面部分cell
 -(void)bottomAction:(UIButton*)btn {
+    
     NSLog(@"this is bottom action");
+    WhoJoinInController *whoJoinIn = [[WhoJoinInController alloc]init];
+    [self.viewController.navigationController pushViewController:whoJoinIn animated:YES needHiddenBottomBar:YES];
 }
 
 #pragma waring 此处需要添加图片
@@ -245,16 +252,11 @@
 
 -(void)setData:(NoticeInfo *)model
 {
-    [_headImageView sd_setImageWithURL:[NSURL URLWithString:model.userHeadPic]];
-    _contentTitleLabel.text = model.userName;
+    _model = model;
+    ProfileInfo *info = model.activityUser;
+    [_headImageView setFaceImageWithUrl:info.headPic];
+    _contentTitleLabel.text = info.name;
     _contentNameLabel.text = [NSString stringWithFormat:_contentNameLabel.text,model.activityName];
 }
-
-//-(void)setData:(RemindModelTest *)model
-//{
-//    [_headImageView sd_setImageWithURL:[NSURL URLWithString:model.headImageUrl]];
-//    _contentTitleLabel.text = model.acType;
-//    _contentNameLabel.text = [NSString stringWithFormat:@"名称：%@",model.acName];
-//}
 
 @end
