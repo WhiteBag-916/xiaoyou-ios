@@ -8,9 +8,23 @@
 
 #import "ActivityMiddleView.h"
 #import "ActivityTopView.h"
+#import "TimeFormatterConvert.h"
+#import "ActivityPublishedModel.h"
+#import "ActivityTypeInfo.h"
 @interface ActivityMiddleView ()
 
-
+#pragma mark 暂时移动这里
+@property (nonatomic,strong) UIImageView    *timeImageView; //报名截止时间
+@property (nonatomic,strong) UILabel        *staticDeadLineDes;//截止时间
+@property (nonatomic,strong) UILabel        *deadLineTimeLabel;
+@property (nonatomic,strong) UILabel        *staticActivityTimeDes;//活动时间
+@property (nonatomic,strong) UILabel        *activityTimeLabel;//活动时间
+@property (nonatomic,strong) UIImageView    *locationImageView;
+@property (nonatomic,strong) UILabel        *locationLabel;
+@property (nonatomic,strong) UIImageView    *categotyImageView;
+@property (nonatomic,strong) UILabel        *categoryLabel;
+@property (nonatomic,strong) UILabel        *staticActivityEndTimeDes;//活动结束时间
+@property (nonatomic,strong) UILabel        *activityEndTimeLabel;
 
 @end
 
@@ -134,5 +148,19 @@
         make.centerY.equalTo(_categotyImageView.mas_centerY);
     }];
 }
+
+
+-(void)setData:(ActivityDetailModel *)model
+{
+    ActivityTypeInfo *info = model.activityTypeInfo;
+    ActivityPublishedModel *publishModel = model.activityPublishedDto.activityPublishedModel;
+    _deadLineTimeLabel.text = [TimeFormatterConvert timeConvertToFommtterAvailable:publishModel.enrollEndTime];
+    _activityTimeLabel.text = [TimeFormatterConvert timeConvertToFommtterAvailable:publishModel.actStartTime];
+    _activityEndTimeLabel.text = [TimeFormatterConvert timeConvertToFommtterAvailable:publishModel.actEndTime];
+    _locationLabel.text = publishModel.address;
+    _categoryLabel.text = info.name;
+    
+}
+
 
 @end

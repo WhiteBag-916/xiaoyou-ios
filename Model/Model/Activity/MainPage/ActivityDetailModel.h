@@ -7,8 +7,9 @@
 
 #import <Foundation/Foundation.h>
 #import "YModel.h"
-
-@class ActivityOrganizer, ActivityTypeInfo, ActivityInfoModel;
+#import "ActivityOrganizer.h"
+#import "ActivityTypeInfo.h"
+#import "ActivityInfoModel.h"
 
 @interface ActivityDetailModel : YModel <NSCoding, NSCopying>
 

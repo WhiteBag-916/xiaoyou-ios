@@ -8,8 +8,12 @@
 
 #import "YTableView.h"
 #import "ActivityModelTest.h"
+#import "NoticeInfo.h"
 
 @interface ActivityDetailListView : YTableView
 
-@property (nonatomic,strong) ActivityModelTest *model;
+@property (nonatomic,strong) NoticeInfo *model;
+
+-(void)sendRequest;
+
 @end

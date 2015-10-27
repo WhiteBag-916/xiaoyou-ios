@@ -251,8 +251,10 @@ NSString *const kDateAndTimeCollectionViewCell = @"DateAndTimeCollectionViewCell
     NSDateFormatter * formatter = [[NSDateFormatter alloc] init];
     [formatter setDateFormat:@"yyyy年MM月dd日 a HH:mm"];
     NSString * showStr = [formatter stringFromDate:_datePicker.date];
+    NSString * BeginApplyStr = [formatter stringFromDate:[NSDate dateWithTimeInterval:-300 sinceDate:_datePicker.date]];
     _applayTimeLabel.text = showStr;
-    _dataManager.ActivityDateApplyText = showStr;
+    _dataManager.ActivityDateEndApplyText = showStr;
+    _dataManager.ActivityDateBeginApplyText = BeginApplyStr;
     [_dataManager isEnableToRelease];
 }
 -(void)heginChooseDate

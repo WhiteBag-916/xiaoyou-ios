@@ -33,9 +33,17 @@
         self.dataSource = self;
         
         [self registerClass:[AvailableCell class] forCellReuseIdentifier:REUSEID_AVAILABEL_CELL];
-        _dataSouceArr = [[NSMutableArray alloc] init];
+        _currentIndex = 0;
     }
     return self;
+}
+
+-(NSMutableArray *)dataSouceArr
+{
+    if (!_dataSouceArr) {
+        _dataSouceArr = [NSMutableArray array];
+    }
+    return _dataSouceArr;
 }
 
 #pragma mark - 继承者
@@ -65,16 +73,18 @@
     [self sendRequest];
 }
 
-- (void)sendRequest {
-    [[ActivityManager sharedInstance] getCurrentUseAvailableListLimitStart:_currentIndex limitEnd:_currentIndex+KPAGENUM block:^(YActionMessage *message) {
+- (void)sendRequest{
+    [[ActivityManager sharedInstance] getCurrentUseAvailableListLimitStart:_currentIndex limitEnd:_currentIndex+KPAGENUM dic:_requestDic block:^(YActionMessage *message) {
         if (message.isSuccess) {
             if ([self isHeaderRefresh]) {
                 [self.dataSouceArr removeAllObjects];
             }
             
-            NSLog(@"this is message = %@",message);
+//            NSLog(@"this is message = %@",message);
+            
             
             [self.dataSouceArr addObjectsFromArray:message.object];
+            
             
             [self hiddenFooter:NO];
             if ([message.object count] < KPAGENUM) {

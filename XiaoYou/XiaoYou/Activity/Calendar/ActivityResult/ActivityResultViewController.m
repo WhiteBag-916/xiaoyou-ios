@@ -35,6 +35,7 @@
     
     _resultTableView = [[ActivityResultTableView alloc] init];
     _resultTableView.backgroundColor = [UIColor clearColor];
+    _resultTableView.requestDic = _requestDic;
     [self.view addSubview:_resultTableView];
     [_resultTableView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.left.right.bottom.mas_equalTo(0);
