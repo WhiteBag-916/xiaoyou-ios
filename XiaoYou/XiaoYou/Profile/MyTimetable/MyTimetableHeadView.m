@@ -9,9 +9,9 @@
 #import "MyTimetableHeadView.h"
 
 #define K_LABEL_TAG          600000
-#define K_LABEL_T            SCALE_NUM(0)
+#define K_LABEL_T            SCALE_NUM(5)
 #define K_LABEL_L            SCALE_NUM(40)
-#define K_LABEL_WH            SCALE_NUM(31)
+#define K_LABEL_WH            SCALE_NUM(30)
 
 @interface MyTimetableHeadView ()
 
@@ -38,6 +38,7 @@
             label.layer.masksToBounds = YES;
             label.textAlignment = NSTextAlignmentCenter;
             label.textColor = KCOLORWHITE;
+            label.userInteractionEnabled = YES;
             [label addGestureRecognizer:[[UIGestureRecognizer alloc] initWithTarget:self action:@selector(chooseDay:)]];
             [self addSubview:label];
             

@@ -331,7 +331,7 @@
             make.centerY.equalTo(item);
         }];
         icon.image = [UIImage imageNamed:@"mine－icon－yard"];
-        UILabel *hint = [YUtils initLabel:CONTENT_FONT(12) color:[UIColor blackColor] text:@"扫一扫加好友or获得校友礼券" frame:CGRectZero alignment:NSTextAlignmentLeft];
+        UILabel *hint = [YUtils initLabel:CONTENT_FONT(12) color:[UIColor blackColor] text:@"扫一扫加好友or享受校友特权" frame:CGRectZero alignment:NSTextAlignmentLeft];
         [item addSubview:hint];
         [hint mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.equalTo(_userName);
