@@ -85,7 +85,7 @@
 		0476B62B1BD0E4EC00FD13DF /* 1havetime_box_classroom@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0476B6271BD0E4EC00FD13DF /* 1havetime_box_classroom@2x.png */; };
 		0476B62C1BD0E4EC00FD13DF /* 1havetime_box_classroom@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0476B6281BD0E4EC00FD13DF /* 1havetime_box_classroom@3x.png */; };
 		048676A01BC803CB009F8C43 /* FastBottomView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0486769F1BC803CB009F8C43 /* FastBottomView.m */; };
-		0487E4391BDF4DA5002396CD /* PassRemindCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0487E4381BDF4DA5002396CD /* PassRemindCell.m */; settings = {ASSET_TAGS = (); }; };
+		0487E4391BDF4DA5002396CD /* PassRemindCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0487E4381BDF4DA5002396CD /* PassRemindCell.m */; };
 		048C49EE1BD4EDB0008E1D88 /* havetime_icon_no@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 048C49EC1BD4EDB0008E1D88 /* havetime_icon_no@2x.png */; };
 		048C49EF1BD4EDB0008E1D88 /* havetime_icon_no@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 048C49ED1BD4EDB0008E1D88 /* havetime_icon_no@3x.png */; };
 		049480341BB8D76C00C68460 /* tick@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0494802B1BB8D76C00C68460 /* tick@2x.png */; };
@@ -279,6 +279,8 @@
 		20DF5FFC1BDF2B7900C8383B /* mine－icon－yard@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 20DF5FF81BDF2B7900C8383B /* mine－icon－yard@3x.png */; };
 		20DF5FFF1BDF2E2A00C8383B /* icon_arrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 20DF5FFD1BDF2E2A00C8383B /* icon_arrow@2x.png */; };
 		20DF60001BDF2E2A00C8383B /* icon_arrow@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 20DF5FFE1BDF2E2A00C8383B /* icon_arrow@3x.png */; };
+		20DF60031BDF554C00C8383B /* MyTimetableHeadView.m in Sources */ = {isa = PBXBuildFile; fileRef = 20DF60021BDF554C00C8383B /* MyTimetableHeadView.m */; };
+		20DF60061BDF606200C8383B /* MyTimetableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 20DF60051BDF606200C8383B /* MyTimetableView.m */; };
 		20E033E51B842727002E4583 /* UMSocialLocalizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 20E033C41B842727002E4583 /* UMSocialLocalizable.strings */; };
 		20E033E61B842727002E4583 /* libUMSocial_Sdk_4.2.3.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 20E033D21B842727002E4583 /* libUMSocial_Sdk_4.2.3.a */; };
 		20E033E71B842727002E4583 /* UMSCommentDetailController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 20E033D41B842727002E4583 /* UMSCommentDetailController.xib */; };
@@ -1178,6 +1180,10 @@
 		20DF5FF81BDF2B7900C8383B /* mine－icon－yard@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mine－icon－yard@3x.png"; sourceTree = "<group>"; };
 		20DF5FFD1BDF2E2A00C8383B /* icon_arrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_arrow@2x.png"; sourceTree = "<group>"; };
 		20DF5FFE1BDF2E2A00C8383B /* icon_arrow@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_arrow@3x.png"; sourceTree = "<group>"; };
+		20DF60011BDF554C00C8383B /* MyTimetableHeadView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyTimetableHeadView.h; sourceTree = "<group>"; };
+		20DF60021BDF554C00C8383B /* MyTimetableHeadView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyTimetableHeadView.m; sourceTree = "<group>"; };
+		20DF60041BDF606200C8383B /* MyTimetableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyTimetableView.h; sourceTree = "<group>"; };
+		20DF60051BDF606200C8383B /* MyTimetableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyTimetableView.m; sourceTree = "<group>"; };
 		20E033C51B842727002E4583 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/UMSocialLocalizable.strings; sourceTree = "<group>"; };
 		20E033C71B842727002E4583 /* UMSocial.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UMSocial.h; sourceTree = "<group>"; };
 		20E033C81B842727002E4583 /* UMSocialAccountManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UMSocialAccountManager.h; sourceTree = "<group>"; };
@@ -2670,6 +2676,10 @@
 			children = (
 				20DF5FF21BDF293800C8383B /* MyTimetableViewController.h */,
 				20DF5FF31BDF293800C8383B /* MyTimetableViewController.m */,
+				20DF60011BDF554C00C8383B /* MyTimetableHeadView.h */,
+				20DF60021BDF554C00C8383B /* MyTimetableHeadView.m */,
+				20DF60041BDF606200C8383B /* MyTimetableView.h */,
+				20DF60051BDF606200C8383B /* MyTimetableView.m */,
 			);
 			path = MyTimetable;
 			sourceTree = "<group>";
@@ -4702,6 +4712,8 @@
 				20DA16F81BC7C51200A61B37 /* MGCDayPlannerViewController.m in Sources */,
 				20DA17011BC7C51200A61B37 /* MGCMonthPlannerView.m in Sources */,
 				3331226C1B806EDB00D3D032 /* PSTCollectionViewLayout.m in Sources */,
+				20DF60031BDF554C00C8383B /* MyTimetableHeadView.m in Sources */,
+				20DF60061BDF606200C8383B /* MyTimetableView.m in Sources */,
 				20DA16FD1BC7C51200A61B37 /* MGCInteractiveEventView.m in Sources */,
 				65F55A9E1B897C4700ED4348 /* ProfileTagViewController.m in Sources */,
 				333122641B806EDB00D3D032 /* UIView+EMWebCacheOperation.m in Sources */,

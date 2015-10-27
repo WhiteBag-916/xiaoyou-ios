@@ -156,7 +156,8 @@ NSString *const kDateAndTimeCollectionViewCell = @"DateAndTimeCollectionViewCell
                                             addSelf:[UIApplication sharedApplication].keyWindow];
     [popView comSet:self action:@selector(applayChooseDate) params:nil];
 
-    _datePicker.minimumDate = nil;
+    _datePicker.minimumDate = [NSDate date];
+//    _datePicker.minimumDate = nil;
     _datePicker.maximumDate = nil;
     
     
@@ -183,11 +184,13 @@ NSString *const kDateAndTimeCollectionViewCell = @"DateAndTimeCollectionViewCell
     {
         if ([_dataManager.ActivityDateEndText isEqualToString:@"请选择活动结束时间"] || _dataManager.ActivityDateEndText == nil)
         {
+            _datePicker.minimumDate = [NSDate date];
             _datePicker.maximumDate = nil;
         }
         else
         {
-            _datePicker.minimumDate = nil;
+            _datePicker.minimumDate = [NSDate date];
+//            _datePicker.minimumDate = nil;
             _datePicker.maximumDate = [formatter dateFromString:_dataManager.ActivityDateEndText];
         }
     }
@@ -220,11 +223,13 @@ NSString *const kDateAndTimeCollectionViewCell = @"DateAndTimeCollectionViewCell
     {
         if ([_dataManager.ActivityDateEndText isEqualToString:@"请选择活动结束时间"] || _dataManager.ActivityDateEndText == nil)
         {
+             _datePicker.minimumDate = [NSDate date];
              _datePicker.maximumDate = nil;
         }
         else
         {
-            _datePicker.minimumDate = nil;
+            _datePicker.minimumDate = [NSDate date];
+//            _datePicker.minimumDate = nil;
             _datePicker.maximumDate = [formatter dateFromString:_dataManager.ActivityDateEndText];
         }
     }

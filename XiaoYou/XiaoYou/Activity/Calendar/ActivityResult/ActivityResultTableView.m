@@ -10,8 +10,11 @@
 #import "AvailableCell.h"
 #import "ActivityDetailViewController.h"
 #import "ActivityManager.h"
+#import "ActivityInfoModel.h"
+#import "ActivityImageTextModels.h"
+#import "UITableView+FDTemplateLayoutCell.h"
 
-#define REUSEID @"AvailableCell"
+#define REUSEID_AVAILABEL_CELL @"AvailableCell"
 #define KPAGENUM 10
 
 @interface ActivityResultTableView ()<UITableViewDataSource,UITableViewDelegate>
@@ -29,7 +32,7 @@
         self.delegate = self;
         self.dataSource = self;
         
-        [self registerClass:[AvailableCell class] forCellReuseIdentifier:REUSEID];
+        [self registerClass:[AvailableCell class] forCellReuseIdentifier:REUSEID_AVAILABEL_CELL];
         _dataSouceArr = [[NSMutableArray alloc] init];
     }
     return self;
@@ -105,7 +108,7 @@
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    AvailableCell * cell = [tableView dequeueReusableCellWithIdentifier:REUSEID forIndexPath:indexPath];
+    AvailableCell * cell = [tableView dequeueReusableCellWithIdentifier:REUSEID_AVAILABEL_CELL forIndexPath:indexPath];
     [cell setData:_dataSouceArr[indexPath.row]];
     return cell;
 }
@@ -127,7 +130,14 @@
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return SCALE_NUM(480);
+    
+    CGFloat height;
+    
+    height = [tableView fd_heightForCellWithIdentifier:REUSEID_AVAILABEL_CELL cacheByIndexPath:indexPath configuration:^(AvailableCell *cell) {
+        [cell setData:_dataSouceArr[indexPath.row]];
+    }];
+    return height;
+    
 }
 
 @end

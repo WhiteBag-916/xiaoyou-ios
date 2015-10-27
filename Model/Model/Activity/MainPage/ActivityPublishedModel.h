@@ -1,7 +1,7 @@
 //
 //  ActivityPublishedModel.h
 //
-//  Created by   on 15/10/23
+//  Created by   on 15/10/27
 //  Copyright (c) 2015 __MyCompanyName__. All rights reserved.
 //
 
@@ -33,8 +33,8 @@
 @property (nonatomic, assign) double enrollStartTime;
 @property (nonatomic, strong) NSString *checkStatus;
 @property (nonatomic, assign) double createTime;
-@property (nonatomic, strong) NSString *address;
 @property (nonatomic, strong) NSString *activityOrganizer;
+@property (nonatomic, strong) NSString *address;
 
 + (instancetype)modelObjectWithDictionary:(NSDictionary *)dict;
 - (instancetype)initWithDictionary:(NSDictionary *)dict;

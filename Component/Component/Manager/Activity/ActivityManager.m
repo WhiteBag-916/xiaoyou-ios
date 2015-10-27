@@ -15,6 +15,7 @@
 #import "ActivityInfoModel.h"
 #import "CommonImgUpload.h"
 #import "GetFilterConditionsAction.h"
+#import "FindActivityDetailInfoAction.h"
 
 #define KActivityManagerSyncQueue @"kActivityManagerSyncQueue"
 
@@ -159,6 +160,18 @@ DEF_SINGLETON(ActivityManager);
 //获取有空筛选条件
 - (void)getFilterConditions:(ActionCompleteBlock)block {
     GetFilterConditionsAction *action = [[GetFilterConditionsAction alloc] init];
+    
+    [YAction startAction:action completionBlock:^(YActionMessage* message) {
+        
+        //主线程处理界面
+        block(message);
+    }];
+}
+
+//查询活动详情接口
+- (void)findActivityDetailInfo:(NSString *)activityPublishedId block:(ActionCompleteBlock)block {
+    FindActivityDetailInfoAction *action = [[FindActivityDetailInfoAction alloc] init];
+    action.activityPublishedId = activityPublishedId;
     
     [YAction startAction:action completionBlock:^(YActionMessage* message) {
         

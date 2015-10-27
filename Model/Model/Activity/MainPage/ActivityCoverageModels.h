@@ -1,7 +1,7 @@
 //
 //  ActivityCoverageModels.h
 //
-//  Created by   on 15/10/23
+//  Created by   on 15/10/27
 //  Copyright (c) 2015 __MyCompanyName__. All rights reserved.
 //
 

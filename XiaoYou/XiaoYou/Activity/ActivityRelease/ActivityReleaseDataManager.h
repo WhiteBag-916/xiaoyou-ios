@@ -26,7 +26,12 @@
 
 //报名审核
 @property(nonatomic,strong)NSString * ActivityCheckStr;
+//组织者
+@property(nonatomic,strong)NSString * ActivityOrganizer;
+//组织者ID
+@property(nonatomic,strong)NSString * ActivityOrganizerId;
 
+//是否是社长身份
 @property (nonatomic,assign) BOOL isIdentity;
 
 +(instancetype)shareActivityReleaseDataManager;
