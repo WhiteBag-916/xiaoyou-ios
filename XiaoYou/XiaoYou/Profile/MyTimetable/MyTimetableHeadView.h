@@ -10,4 +10,6 @@
 
 @interface MyTimetableHeadView : YView
 
+- (void)resetSelectDay:(NSInteger)selectDay;
+
 @end

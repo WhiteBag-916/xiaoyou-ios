@@ -192,6 +192,8 @@
 #define api_img_uploadFiles   @"/img/uploadFiles"
 //获取有空筛选条件
 #define api_activity_getFilterConditions   @"/activity/getFilterConditions"
+//查询活动详情接口
+#define api_activity_findActivityDetailInfo   @"/activity/findActivityDetailInfo"
 
 #endif
 
