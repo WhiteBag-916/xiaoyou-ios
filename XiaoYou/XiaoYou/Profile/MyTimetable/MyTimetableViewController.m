@@ -43,8 +43,8 @@
     }];
     
     _myTimetableView = [[MyTimetableView alloc] init];
-    [self.view addSubview:_myTimetableHeadView];
-    [_myTimetableHeadView mas_makeConstraints:^(MASConstraintMaker *make) {
+    [self.view addSubview:_myTimetableView];
+    [_myTimetableView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.bottom.right.equalTo(self.view);
         make.top.equalTo(_myTimetableHeadView.mas_bottom);
     }];

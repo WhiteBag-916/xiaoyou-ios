@@ -195,5 +195,11 @@
 //查询活动详情接口
 #define api_activity_findActivityDetailInfo   @"/activity/findActivityDetailInfo"
 
+/**********************************************************
+ Url Define: CourseTime
+ **********************************************************/
+//获取课程学时对应时间
+#define api_courseTime_list   @"/courseTime/list"
+
 #endif
 

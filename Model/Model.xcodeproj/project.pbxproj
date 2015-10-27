@@ -36,6 +36,7 @@
 		20DF600F1BDF677700C8383B /* ActivityOrganizer.m in Sources */ = {isa = PBXBuildFile; fileRef = 20DF60081BDF677700C8383B /* ActivityOrganizer.m */; };
 		20DF60111BDF677700C8383B /* ActivityTypeInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 20DF600C1BDF677700C8383B /* ActivityTypeInfo.m */; };
 		20DF60151BDF6A8000C8383B /* ActivityDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 20DF60141BDF6A8000C8383B /* ActivityDetailModel.m */; };
+		20DF60231BDF874900C8383B /* CourseTimeListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 20DF60221BDF874900C8383B /* CourseTimeListModel.m */; };
 		20E0C06E1B88B0CA00EDAED4 /* Feed.m in Sources */ = {isa = PBXBuildFile; fileRef = 20E0C06B1B88B0CA00EDAED4 /* Feed.m */; };
 		20E0C06F1B88B0CA00EDAED4 /* FeedInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 20E0C06D1B88B0CA00EDAED4 /* FeedInfo.m */; };
 		20E0C0721B88B0CA00EDAED4 /* Author.m in Sources */ = {isa = PBXBuildFile; fileRef = 20E0C0711B88B0CA00EDAED4 /* Author.m */; };
@@ -142,6 +143,8 @@
 		20DF600C1BDF677700C8383B /* ActivityTypeInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityTypeInfo.m; sourceTree = "<group>"; };
 		20DF60131BDF6A8000C8383B /* ActivityDetailModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityDetailModel.h; sourceTree = "<group>"; };
 		20DF60141BDF6A8000C8383B /* ActivityDetailModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityDetailModel.m; sourceTree = "<group>"; };
+		20DF60211BDF874900C8383B /* CourseTimeListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CourseTimeListModel.h; sourceTree = "<group>"; };
+		20DF60221BDF874900C8383B /* CourseTimeListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CourseTimeListModel.m; sourceTree = "<group>"; };
 		20E0C06A1B88B0CA00EDAED4 /* Feed.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Feed.h; sourceTree = "<group>"; };
 		20E0C06B1B88B0CA00EDAED4 /* Feed.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Feed.m; sourceTree = "<group>"; };
 		20E0C06C1B88B0CA00EDAED4 /* FeedInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedInfo.h; sourceTree = "<group>"; };
@@ -265,6 +268,7 @@
 		20859A9E1B64CB7600580ED3 /* Provision */ = {
 			isa = PBXGroup;
 			children = (
+				20DF60201BDF874400C8383B /* Curriculum */,
 				333E95CE1B70B6DF0001059D /* CheckAccountModel.h */,
 				333E95CF1B70B6DF0001059D /* CheckAccountModel.m */,
 				20859A9F1B64CB7E00580ED3 /* LoginResp.h */,
@@ -397,6 +401,15 @@
 			path = Remind;
 			sourceTree = "<group>";
 		};
+		20DF60201BDF874400C8383B /* Curriculum */ = {
+			isa = PBXGroup;
+			children = (
+				20DF60211BDF874900C8383B /* CourseTimeListModel.h */,
+				20DF60221BDF874900C8383B /* CourseTimeListModel.m */,
+			);
+			path = Curriculum;
+			sourceTree = "<group>";
+		};
 		20E0C0691B88B0CA00EDAED4 /* Feed */ = {
 			isa = PBXGroup;
 			children = (
@@ -527,6 +540,7 @@
 				20DF60111BDF677700C8383B /* ActivityTypeInfo.m in Sources */,
 				20859AA31B64CB7E00580ED3 /* LoginResp.m in Sources */,
 				332D32681B71E9B400B69E96 /* PushInfo.m in Sources */,
+				20DF60231BDF874900C8383B /* CourseTimeListModel.m in Sources */,
 				209E08C81BDDCDDD0062758E /* GetFilterConditionsModel.m in Sources */,
 				20DDA42E1BDA24300023179A /* ActivityPublishedModel.m in Sources */,
 				04AF14521BDDC74400FEE6A4 /* FilterCondition.m in Sources */,
