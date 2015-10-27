@@ -1,7 +1,7 @@
 //
 //  ActivityPublishedModel.m
 //
-//  Created by   on 15/10/23
+//  Created by   on 15/10/27
 //  Copyright (c) 2015 __MyCompanyName__. All rights reserved.
 //
 
@@ -30,8 +30,9 @@ NSString *const kActivityPublishedModelOpUser = @"opUser";
 NSString *const kActivityPublishedModelEnrollStartTime = @"enrollStartTime";
 NSString *const kActivityPublishedModelCheckStatus = @"checkStatus";
 NSString *const kActivityPublishedModelCreateTime = @"createTime";
+NSString *const kActivityPublishedModelActivityOrganizer = @"activityOrganizer";
 NSString *const kActivityPublishedModelAddress = @"address";
-NSString *const kActivityPublishedModelactivityOrganizer = @"activityOrganizer";
+
 
 @interface ActivityPublishedModel ()
 
@@ -63,8 +64,8 @@ NSString *const kActivityPublishedModelactivityOrganizer = @"activityOrganizer";
 @synthesize enrollStartTime = _enrollStartTime;
 @synthesize checkStatus = _checkStatus;
 @synthesize createTime = _createTime;
-@synthesize address = _address;
 @synthesize activityOrganizer = _activityOrganizer;
+@synthesize address = _address;
 
 
 + (instancetype)modelObjectWithDictionary:(NSDictionary *)dict
@@ -101,8 +102,9 @@ NSString *const kActivityPublishedModelactivityOrganizer = @"activityOrganizer";
             self.enrollStartTime = [[self objectOrNilForKey:kActivityPublishedModelEnrollStartTime fromDictionary:dict] doubleValue];
             self.checkStatus = [self objectOrNilForKey:kActivityPublishedModelCheckStatus fromDictionary:dict];
             self.createTime = [[self objectOrNilForKey:kActivityPublishedModelCreateTime fromDictionary:dict] doubleValue];
+            self.activityOrganizer = [self objectOrNilForKey:kActivityPublishedModelActivityOrganizer fromDictionary:dict];
             self.address = [self objectOrNilForKey:kActivityPublishedModelAddress fromDictionary:dict];
-            self.activityOrganizer = [self objectOrNilForKey:kActivityPublishedModelactivityOrganizer fromDictionary:dict];
+
     }
     
     return self;
@@ -134,8 +136,9 @@ NSString *const kActivityPublishedModelactivityOrganizer = @"activityOrganizer";
     [mutableDict setValue:[NSNumber numberWithDouble:self.enrollStartTime] forKey:kActivityPublishedModelEnrollStartTime];
     [mutableDict setValue:self.checkStatus forKey:kActivityPublishedModelCheckStatus];
     [mutableDict setValue:[NSNumber numberWithDouble:self.createTime] forKey:kActivityPublishedModelCreateTime];
+    [mutableDict setValue:self.activityOrganizer forKey:kActivityPublishedModelActivityOrganizer];
     [mutableDict setValue:self.address forKey:kActivityPublishedModelAddress];
-    [mutableDict setValue:self.activityOrganizer forKey:kActivityPublishedModelactivityOrganizer];
+
     return [NSDictionary dictionaryWithDictionary:mutableDict];
 }
 
@@ -180,8 +183,8 @@ NSString *const kActivityPublishedModelactivityOrganizer = @"activityOrganizer";
     self.enrollStartTime = [aDecoder decodeDoubleForKey:kActivityPublishedModelEnrollStartTime];
     self.checkStatus = [aDecoder decodeObjectForKey:kActivityPublishedModelCheckStatus];
     self.createTime = [aDecoder decodeDoubleForKey:kActivityPublishedModelCreateTime];
+    self.activityOrganizer = [aDecoder decodeObjectForKey:kActivityPublishedModelActivityOrganizer];
     self.address = [aDecoder decodeObjectForKey:kActivityPublishedModelAddress];
-    self.activityOrganizer = [aDecoder decodeObjectForKey:kActivityPublishedModelactivityOrganizer];
     return self;
 }
 
@@ -210,8 +213,8 @@ NSString *const kActivityPublishedModelactivityOrganizer = @"activityOrganizer";
     [aCoder encodeDouble:_enrollStartTime forKey:kActivityPublishedModelEnrollStartTime];
     [aCoder encodeObject:_checkStatus forKey:kActivityPublishedModelCheckStatus];
     [aCoder encodeDouble:_createTime forKey:kActivityPublishedModelCreateTime];
+    [aCoder encodeObject:_activityOrganizer forKey:kActivityPublishedModelActivityOrganizer];
     [aCoder encodeObject:_address forKey:kActivityPublishedModelAddress];
-    [aCoder encodeObject:_activityOrganizer forKey:kActivityPublishedModelactivityOrganizer];
 }
 
 - (id)copyWithZone:(NSZone *)zone
@@ -242,8 +245,8 @@ NSString *const kActivityPublishedModelactivityOrganizer = @"activityOrganizer";
         copy.enrollStartTime = self.enrollStartTime;
         copy.checkStatus = [self.checkStatus copyWithZone:zone];
         copy.createTime = self.createTime;
-        copy.address = [self.address copyWithZone:zone];
         copy.activityOrganizer = [self.activityOrganizer copyWithZone:zone];
+        copy.address = [self.address copyWithZone:zone];
     }
     
     return copy;

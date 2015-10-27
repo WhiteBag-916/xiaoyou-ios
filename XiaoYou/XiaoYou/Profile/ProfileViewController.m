@@ -503,7 +503,7 @@
 //我的课程表
 - (void)timetableAction {
     MyTimetableViewController *myTimetableViewController = [[MyTimetableViewController alloc] init];
-    [self.navigationController pushViewController:myTimetableViewController animated:YES needHiddenBottomBar:YES];
+    [self.navigationController pushViewController:myTimetableViewController animated:YES];
 }
 
 #pragma mark - QRCodeReader Delegate Methods

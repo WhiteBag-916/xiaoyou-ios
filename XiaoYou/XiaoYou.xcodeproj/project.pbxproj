@@ -280,6 +280,8 @@
 		20DF5FFF1BDF2E2A00C8383B /* icon_arrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 20DF5FFD1BDF2E2A00C8383B /* icon_arrow@2x.png */; };
 		20DF60001BDF2E2A00C8383B /* icon_arrow@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 20DF5FFE1BDF2E2A00C8383B /* icon_arrow@3x.png */; };
 		20DF60031BDF554C00C8383B /* MyTimetableHeadView.m in Sources */ = {isa = PBXBuildFile; fileRef = 20DF60021BDF554C00C8383B /* MyTimetableHeadView.m */; };
+		20DF60061BDF606200C8383B /* MyTimetableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 20DF60051BDF606200C8383B /* MyTimetableView.m */; };
+		20DF601B1BDF772800C8383B /* MyTimetableDayCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 20DF601A1BDF772800C8383B /* MyTimetableDayCollectionViewCell.m */; };
 		20E033E51B842727002E4583 /* UMSocialLocalizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 20E033C41B842727002E4583 /* UMSocialLocalizable.strings */; };
 		20E033E61B842727002E4583 /* libUMSocial_Sdk_4.2.3.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 20E033D21B842727002E4583 /* libUMSocial_Sdk_4.2.3.a */; };
 		20E033E71B842727002E4583 /* UMSCommentDetailController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 20E033D41B842727002E4583 /* UMSCommentDetailController.xib */; };
@@ -1181,6 +1183,10 @@
 		20DF5FFE1BDF2E2A00C8383B /* icon_arrow@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_arrow@3x.png"; sourceTree = "<group>"; };
 		20DF60011BDF554C00C8383B /* MyTimetableHeadView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyTimetableHeadView.h; sourceTree = "<group>"; };
 		20DF60021BDF554C00C8383B /* MyTimetableHeadView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyTimetableHeadView.m; sourceTree = "<group>"; };
+		20DF60041BDF606200C8383B /* MyTimetableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyTimetableView.h; sourceTree = "<group>"; };
+		20DF60051BDF606200C8383B /* MyTimetableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyTimetableView.m; sourceTree = "<group>"; };
+		20DF60191BDF772800C8383B /* MyTimetableDayCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyTimetableDayCollectionViewCell.h; sourceTree = "<group>"; };
+		20DF601A1BDF772800C8383B /* MyTimetableDayCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyTimetableDayCollectionViewCell.m; sourceTree = "<group>"; };
 		20E033C51B842727002E4583 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/UMSocialLocalizable.strings; sourceTree = "<group>"; };
 		20E033C71B842727002E4583 /* UMSocial.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UMSocial.h; sourceTree = "<group>"; };
 		20E033C81B842727002E4583 /* UMSocialAccountManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UMSocialAccountManager.h; sourceTree = "<group>"; };
@@ -2675,6 +2681,10 @@
 				20DF5FF31BDF293800C8383B /* MyTimetableViewController.m */,
 				20DF60011BDF554C00C8383B /* MyTimetableHeadView.h */,
 				20DF60021BDF554C00C8383B /* MyTimetableHeadView.m */,
+				20DF60041BDF606200C8383B /* MyTimetableView.h */,
+				20DF60051BDF606200C8383B /* MyTimetableView.m */,
+				20DF60191BDF772800C8383B /* MyTimetableDayCollectionViewCell.h */,
+				20DF601A1BDF772800C8383B /* MyTimetableDayCollectionViewCell.m */,
 			);
 			path = MyTimetable;
 			sourceTree = "<group>";
@@ -4708,6 +4718,7 @@
 				20DA17011BC7C51200A61B37 /* MGCMonthPlannerView.m in Sources */,
 				3331226C1B806EDB00D3D032 /* PSTCollectionViewLayout.m in Sources */,
 				20DF60031BDF554C00C8383B /* MyTimetableHeadView.m in Sources */,
+				20DF60061BDF606200C8383B /* MyTimetableView.m in Sources */,
 				20DA16FD1BC7C51200A61B37 /* MGCInteractiveEventView.m in Sources */,
 				65F55A9E1B897C4700ED4348 /* ProfileTagViewController.m in Sources */,
 				333122641B806EDB00D3D032 /* UIView+EMWebCacheOperation.m in Sources */,
@@ -4886,6 +4897,7 @@
 				333122761B806EDB00D3D032 /* SRSlimeView.m in Sources */,
 				044DA0661BBA7E4700AA321A /* ActivityMiddleView.m in Sources */,
 				20DA16F91BC7C51200A61B37 /* MGCEventCell.m in Sources */,
+				20DF601B1BDF772800C8383B /* MyTimetableDayCollectionViewCell.m in Sources */,
 				333122531B806EDB00D3D032 /* MWZoomingScrollView.m in Sources */,
 				65CBE15D1BBFFF5B00C28D57 /* GiftViewController.m in Sources */,
 				65024C0F1B82C423007DE404 /* FeedTag.m in Sources */,

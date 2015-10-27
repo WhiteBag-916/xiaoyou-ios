@@ -7,21 +7,47 @@
 //
 
 #import "MyTimetableViewController.h"
+#import "MyTimetableHeadView.h"
+#import "MyTimetableView.h"
 
 @interface MyTimetableViewController ()
 
 @property (nonatomic, strong) UIButton *titleButton;
+@property (nonatomic, strong) MyTimetableHeadView *myTimetableHeadView;
+@property (nonatomic, strong) MyTimetableView *myTimetableView;
 
 @end
 
 @implementation MyTimetableViewController
 
+- (instancetype)init {
+    if (self = [super init]) {
+        self.hidesBottomBarWhenPushed = YES;
+    }
+    
+    return self;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
+
     [self showCustomNavigationBackButton];
     [self initNavigationTitle];
+    
+    _myTimetableHeadView = [[MyTimetableHeadView alloc] init];
+    [self.view addSubview:_myTimetableHeadView];
+    [_myTimetableHeadView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.top.right.equalTo(self.view);
+        make.height.mas_equalTo(SCALE_NUM(40));
+    }];
+    
+    _myTimetableView = [[MyTimetableView alloc] init];
+    [self.view addSubview:_myTimetableView];
+    [_myTimetableView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.bottom.right.equalTo(self.view);
+        make.top.equalTo(_myTimetableHeadView.mas_bottom);
+    }];
 }
 
 - (void)initNavigationTitle {
@@ -40,6 +66,8 @@
     [super viewWillAppear:animated];
     
     self.navigationController.navigationBarHidden = NO;
+    
+    [_myTimetableHeadView resetSelectDay:4];
 }
 
 //选择第几周

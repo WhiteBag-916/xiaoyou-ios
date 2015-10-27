@@ -279,9 +279,12 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
-    ActivityDetailViewController *detailVC = [[ActivityDetailViewController alloc]init];
-    [self.viewController.navigationController pushViewController:detailVC animated:YES needHiddenBottomBar:YES];
+    NoticeInfo *info = self.remindListArray[indexPath.section];
+    if (info.activityOwner) {
+        ActivityDetailViewController *detailVC = [[ActivityDetailViewController alloc]init];
+        detailVC.model = self.remindListArray[indexPath.section];
+        [self.viewController.navigationController pushViewController:detailVC animated:YES needHiddenBottomBar:YES];
+    }
     /*ProfilePersonListController *whoJoinIn = [[ProfilePersonListController alloc]init];
     [whoJoinIn initWithType:PersonListWhoJoinInThisActivity];
     UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];

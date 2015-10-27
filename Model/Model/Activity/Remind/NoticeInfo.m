@@ -6,6 +6,7 @@
 //
 
 #import "NoticeInfo.h"
+#import "ProfileInfo.h"
 
 
 NSString *const kObjUserId = @"userId";
@@ -29,8 +30,8 @@ NSString *const kObjActivityUser=@"activityUser";
 
 @implementation NoticeInfo
 
-@synthesize userId = _userId;
-@synthesize userHeadPic = _userHeadPic;
+//@synthesize userId = _userId;
+//@synthesize userHeadPic = _userHeadPic;
 @synthesize enrollTime = _enrollTime;
 @synthesize userName = _userName;
 @synthesize activityOrganizer = _activityOrganizer;
@@ -54,8 +55,8 @@ NSString *const kObjActivityUser=@"activityUser";
     // This check serves to make sure that a non-NSDictionary object
     // passed into the model class doesn't break the parsing.
     if(self && [dict isKindOfClass:[NSDictionary class]]) {
-            self.userId = [self objectOrNilForKey:kObjUserId fromDictionary:dict];
-            self.userHeadPic = [self objectOrNilForKey:kObjUserHeadPic fromDictionary:dict];
+//            self.userId = [self objectOrNilForKey:kObjUserId fromDictionary:dict];
+//            self.userHeadPic = [self objectOrNilForKey:kObjUserHeadPic fromDictionary:dict];
             self.enrollTime = [[self objectOrNilForKey:kObjEnrollTime fromDictionary:dict] doubleValue];
             self.userName = [self objectOrNilForKey:kObjUserName fromDictionary:dict];
             self.activityOrganizer = [self objectOrNilForKey:kObjActivityOrganizer fromDictionary:dict];
@@ -65,7 +66,7 @@ NSString *const kObjActivityUser=@"activityUser";
             self.activityEndTime = [[self objectOrNilForKey:kObjActivityEndTime fromDictionary:dict] doubleValue];
             self.checkStatus = [self objectOrNilForKey:kObjCheckStatus fromDictionary:dict];
             self.activityStartTime = [[self objectOrNilForKey:kObjActivityStartTime fromDictionary:dict] doubleValue];
-            self.activityUser = [self objectOrNilForKey:kObjActivityUser fromDictionary:dict];
+            self.activityUser = [ProfileInfo modelObjectWithDictionary:[dict objectForKey:kObjActivityUser]];
     }
     
     return self;
@@ -75,8 +76,8 @@ NSString *const kObjActivityUser=@"activityUser";
 - (NSDictionary *)dictionaryRepresentation
 {
     NSMutableDictionary *mutableDict = [NSMutableDictionary dictionary];
-    [mutableDict setValue:self.userId forKey:kObjUserId];
-    [mutableDict setValue:self.userHeadPic forKey:kObjUserHeadPic];
+//    [mutableDict setValue:self.userId forKey:kObjUserId];
+//    [mutableDict setValue:self.userHeadPic forKey:kObjUserHeadPic];
     [mutableDict setValue:[NSNumber numberWithDouble:self.enrollTime] forKey:kObjEnrollTime];
     [mutableDict setValue:self.userName forKey:kObjUserName];
     [mutableDict setValue:self.activityOrganizer forKey:kObjActivityOrganizer];
@@ -109,8 +110,8 @@ NSString *const kObjActivityUser=@"activityUser";
 {
     self = [super init];
 
-    self.userId = [aDecoder decodeObjectForKey:kObjUserId];
-    self.userHeadPic = [aDecoder decodeObjectForKey:kObjUserHeadPic];
+//    self.userId = [aDecoder decodeObjectForKey:kObjUserId];
+//    self.userHeadPic = [aDecoder decodeObjectForKey:kObjUserHeadPic];
     self.enrollTime = [aDecoder decodeDoubleForKey:kObjEnrollTime];
     self.userName = [aDecoder decodeObjectForKey:kObjUserName];
     self.activityOrganizer = [aDecoder decodeObjectForKey:kObjActivityOrganizer];
@@ -127,8 +128,8 @@ NSString *const kObjActivityUser=@"activityUser";
 - (void)encodeWithCoder:(NSCoder *)aCoder
 {
 
-    [aCoder encodeObject:_userId forKey:kObjUserId];
-    [aCoder encodeObject:_userHeadPic forKey:kObjUserHeadPic];
+//    [aCoder encodeObject:_userId forKey:kObjUserId];
+//    [aCoder encodeObject:_userHeadPic forKey:kObjUserHeadPic];
     [aCoder encodeDouble:_enrollTime forKey:kObjEnrollTime];
     [aCoder encodeObject:_userName forKey:kObjUserName];
     [aCoder encodeObject:_activityOrganizer forKey:kObjActivityOrganizer];
@@ -147,8 +148,8 @@ NSString *const kObjActivityUser=@"activityUser";
     
     if (copy) {
 
-        copy.userId = [self.userId copyWithZone:zone];
-        copy.userHeadPic = [self.userHeadPic copyWithZone:zone];
+//        copy.userId = [self.userId copyWithZone:zone];
+//        copy.userHeadPic = [self.userHeadPic copyWithZone:zone];
         copy.enrollTime = self.enrollTime;
         copy.userName = [self.userName copyWithZone:zone];
         copy.activityOrganizer = [self.activityOrganizer copyWithZone:zone];

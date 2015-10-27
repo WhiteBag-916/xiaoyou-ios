@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		040619DF1BDE174E008E3E4E /* NoticeInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 040619DE1BDE174E008E3E4E /* NoticeInfo.m */; settings = {ASSET_TAGS = (); }; };
+		040619DF1BDE174E008E3E4E /* NoticeInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 040619DE1BDE174E008E3E4E /* NoticeInfo.m */; };
 		047145D51BD8E5B4001D75FC /* RemindModelTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 047145D41BD8E5B4001D75FC /* RemindModelTest.m */; };
 		047145D81BD8F03B001D75FC /* JoinInModelTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 047145D71BD8F03B001D75FC /* JoinInModelTest.m */; };
 		049173A51BDCBACE00D204AF /* ActivityModelTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 049173A41BDCBACE00D204AF /* ActivityModelTest.m */; };
@@ -33,6 +33,10 @@
 		20DDA42D1BDA24300023179A /* ActivityInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 20DDA4281BDA24300023179A /* ActivityInfoModel.m */; };
 		20DDA42E1BDA24300023179A /* ActivityPublishedModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 20DDA42A1BDA24300023179A /* ActivityPublishedModel.m */; };
 		20DED86F1B94205B004B5E7B /* EasyModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 20DED86E1B94205B004B5E7B /* EasyModel.m */; };
+		20DF600F1BDF677700C8383B /* ActivityOrganizer.m in Sources */ = {isa = PBXBuildFile; fileRef = 20DF60081BDF677700C8383B /* ActivityOrganizer.m */; };
+		20DF60111BDF677700C8383B /* ActivityTypeInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 20DF600C1BDF677700C8383B /* ActivityTypeInfo.m */; };
+		20DF60151BDF6A8000C8383B /* ActivityDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 20DF60141BDF6A8000C8383B /* ActivityDetailModel.m */; };
+		20DF60231BDF874900C8383B /* CourseTimeListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 20DF60221BDF874900C8383B /* CourseTimeListModel.m */; };
 		20E0C06E1B88B0CA00EDAED4 /* Feed.m in Sources */ = {isa = PBXBuildFile; fileRef = 20E0C06B1B88B0CA00EDAED4 /* Feed.m */; };
 		20E0C06F1B88B0CA00EDAED4 /* FeedInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 20E0C06D1B88B0CA00EDAED4 /* FeedInfo.m */; };
 		20E0C0721B88B0CA00EDAED4 /* Author.m in Sources */ = {isa = PBXBuildFile; fileRef = 20E0C0711B88B0CA00EDAED4 /* Author.m */; };
@@ -133,6 +137,14 @@
 		20DDA42A1BDA24300023179A /* ActivityPublishedModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityPublishedModel.m; sourceTree = "<group>"; };
 		20DED86D1B94205B004B5E7B /* EasyModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EasyModel.h; sourceTree = "<group>"; };
 		20DED86E1B94205B004B5E7B /* EasyModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EasyModel.m; sourceTree = "<group>"; };
+		20DF60071BDF677700C8383B /* ActivityOrganizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityOrganizer.h; sourceTree = "<group>"; };
+		20DF60081BDF677700C8383B /* ActivityOrganizer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityOrganizer.m; sourceTree = "<group>"; };
+		20DF600B1BDF677700C8383B /* ActivityTypeInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityTypeInfo.h; sourceTree = "<group>"; };
+		20DF600C1BDF677700C8383B /* ActivityTypeInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityTypeInfo.m; sourceTree = "<group>"; };
+		20DF60131BDF6A8000C8383B /* ActivityDetailModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityDetailModel.h; sourceTree = "<group>"; };
+		20DF60141BDF6A8000C8383B /* ActivityDetailModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityDetailModel.m; sourceTree = "<group>"; };
+		20DF60211BDF874900C8383B /* CourseTimeListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CourseTimeListModel.h; sourceTree = "<group>"; };
+		20DF60221BDF874900C8383B /* CourseTimeListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CourseTimeListModel.m; sourceTree = "<group>"; };
 		20E0C06A1B88B0CA00EDAED4 /* Feed.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Feed.h; sourceTree = "<group>"; };
 		20E0C06B1B88B0CA00EDAED4 /* Feed.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Feed.m; sourceTree = "<group>"; };
 		20E0C06C1B88B0CA00EDAED4 /* FeedInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedInfo.h; sourceTree = "<group>"; };
@@ -201,6 +213,10 @@
 		0447A3A21BD7788300341684 /* MainPage */ = {
 			isa = PBXGroup;
 			children = (
+				20DF60071BDF677700C8383B /* ActivityOrganizer.h */,
+				20DF60081BDF677700C8383B /* ActivityOrganizer.m */,
+				20DF600B1BDF677700C8383B /* ActivityTypeInfo.h */,
+				20DF600C1BDF677700C8383B /* ActivityTypeInfo.m */,
 				04AF14531BDDC7AC00FEE6A4 /* FilterConditionModels.h */,
 				04AF14541BDDC7AC00FEE6A4 /* FilterConditionModels.m */,
 				04AF14501BDDC74400FEE6A4 /* FilterCondition.h */,
@@ -217,6 +233,8 @@
 				20DDA4281BDA24300023179A /* ActivityInfoModel.m */,
 				20DDA4291BDA24300023179A /* ActivityPublishedModel.h */,
 				20DDA42A1BDA24300023179A /* ActivityPublishedModel.m */,
+				20DF60131BDF6A8000C8383B /* ActivityDetailModel.h */,
+				20DF60141BDF6A8000C8383B /* ActivityDetailModel.m */,
 				047145D61BD8F03B001D75FC /* JoinInModelTest.h */,
 				047145D71BD8F03B001D75FC /* JoinInModelTest.m */,
 				047145D31BD8E5B4001D75FC /* RemindModelTest.h */,
@@ -250,6 +268,7 @@
 		20859A9E1B64CB7600580ED3 /* Provision */ = {
 			isa = PBXGroup;
 			children = (
+				20DF60201BDF874400C8383B /* Curriculum */,
 				333E95CE1B70B6DF0001059D /* CheckAccountModel.h */,
 				333E95CF1B70B6DF0001059D /* CheckAccountModel.m */,
 				20859A9F1B64CB7E00580ED3 /* LoginResp.h */,
@@ -382,6 +401,15 @@
 			path = Remind;
 			sourceTree = "<group>";
 		};
+		20DF60201BDF874400C8383B /* Curriculum */ = {
+			isa = PBXGroup;
+			children = (
+				20DF60211BDF874900C8383B /* CourseTimeListModel.h */,
+				20DF60221BDF874900C8383B /* CourseTimeListModel.m */,
+			);
+			path = Curriculum;
+			sourceTree = "<group>";
+		};
 		20E0C0691B88B0CA00EDAED4 /* Feed */ = {
 			isa = PBXGroup;
 			children = (
@@ -509,8 +537,10 @@
 				20859AB31B64E2F600580ED3 /* YModel+ActionMessage.m in Sources */,
 				3307BBCC1B9561FD003446F8 /* SuggestListModel.m in Sources */,
 				20DA74BD1B8C0BFA0002E041 /* FriendsCondition.m in Sources */,
+				20DF60111BDF677700C8383B /* ActivityTypeInfo.m in Sources */,
 				20859AA31B64CB7E00580ED3 /* LoginResp.m in Sources */,
 				332D32681B71E9B400B69E96 /* PushInfo.m in Sources */,
+				20DF60231BDF874900C8383B /* CourseTimeListModel.m in Sources */,
 				209E08C81BDDCDDD0062758E /* GetFilterConditionsModel.m in Sources */,
 				20DDA42E1BDA24300023179A /* ActivityPublishedModel.m in Sources */,
 				04AF14521BDDC74400FEE6A4 /* FilterCondition.m in Sources */,
@@ -537,7 +567,9 @@
 				3307BBCB1B9561FD003446F8 /* SenderListModel.m in Sources */,
 				20E0C06F1B88B0CA00EDAED4 /* FeedInfo.m in Sources */,
 				20C5B0651B8DB55C00B4A8A8 /* GroupDetail.m in Sources */,
+				20DF600F1BDF677700C8383B /* ActivityOrganizer.m in Sources */,
 				20DA8B111B8EB7C0007D0CDE /* GroupFeedList.m in Sources */,
+				20DF60151BDF6A8000C8383B /* ActivityDetailModel.m in Sources */,
 				333E95EB1B70B7AB0001059D /* SchoolListModel.m in Sources */,
 				333E95DC1B70B75E0001059D /* PushInfoListModel.m in Sources */,
 			);

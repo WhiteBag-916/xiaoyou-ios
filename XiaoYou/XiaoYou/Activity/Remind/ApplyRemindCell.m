@@ -10,6 +10,7 @@
 #import "ConnectTag.h"
 #import "Tags.h"
 #import "UIImageView+Ext.h"
+#import "ProfileInfo.h"
 
 #define CELL_INSET          SCALE_NUM(12)
 #define TOP_CELL_HEIGHT     SCALE_NUM(44)
@@ -136,7 +137,7 @@
         make.width.mas_equalTo(SCALE_NUM(45));
         make.height.mas_equalTo(SCALE_NUM(45));
     }];
-    _headImageView.layer.cornerRadius = 25;
+    _headImageView.layer.cornerRadius = (SCALE_NUM(45)/2.0);
     _headImageView.clipsToBounds = YES;
     
     _nameLabel = [[UILabel alloc]init];
@@ -150,10 +151,12 @@
     }];
     
     _connectTagView = [[ConnectTag alloc]init];
+    _connectTagView.backgroundColor = [UIColor cyanColor];
     [self.wrapContentView addSubview:_connectTagView];
     [_connectTagView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.equalTo(_headImageView.mas_centerY);
         make.trailing.mas_equalTo(SCALE_NUM(-10));
+        //make.height.mas_equalTo(SCALE_NUM(20));
     }];
     
     Tags *tag1 = [[Tags alloc]init];
@@ -200,9 +203,28 @@
 
 -(void)setData:(NoticeInfo *)model
 {
-    [_headImageView setFaceImageWithUrl:model.userHeadPic];
-    _nameLabel.text = model.userName;
+    ProfileInfo *info = model.activityUser;
+    [_headImageView setFaceImageWithUrl:info.headPic];
+    _nameLabel.text = info.name;
     _applyContentLable.text = [NSString stringWithFormat:_applyContentLable.text,model.activityName];
+    
+    
+    [_connectTagView updateWithTag:info.propetiesCommon];
+    
+//    Tags *tag1 = [[Tags alloc]init];
+//    tag1.name = @"班";
+//    Tags *tag2 = [[Tags alloc]init];
+//    tag2.name = @"社";
+//    Tags *tag3 = [[Tags alloc]init];
+//    tag3.name = @"乡";
+//    [_connectTagView updateWithTag:[NSArray arrayWithObjects:tag1,tag2,tag3, nil]];;
+    
+//    [_connectTag updateWithTag:_model.propetiesCommon];
+//    
+//    ProfileInfo *profile = [[ProfileInfo alloc]init];
+//    profile.propetiesCommon = [NSArray arrayWithObjects:tag1,tag2,tag3,nil];
+//    profile.tagModels = [NSArray arrayWithObjects:tag4,tag5,tag6, nil];
+//    [_tagsView setData:profile];
 }
 
 ////添加同意-忽略状态
