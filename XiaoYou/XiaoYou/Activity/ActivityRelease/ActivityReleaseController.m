@@ -230,7 +230,7 @@ typedef enum : NSUInteger {
     [_point1View mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.mas_equalTo(15);
         make.top.equalTo(_releaseCollectionView.mas_bottom).offset(SCALE_NUM(20));
-        make.width.height.mas_equalTo(SCALE_NUM(8));
+        make.width.height.mas_equalTo(8);
     }];
     UIImageView * line1 = [[UIImageView alloc] init];
     line1.image = [UIImage imageNamed:@"line_dot"];
@@ -240,11 +240,11 @@ typedef enum : NSUInteger {
         make.centerY.equalTo(_point1View);
         if (_isIdentity)
         {
-            make.width.mas_equalTo(SCALE_NUM((SCREEN_WIDTH - 78)/5));
+            make.width.mas_equalTo((SCREEN_WIDTH - 78)/5);
         }
         else
         {
-            make.width.mas_equalTo(SCALE_NUM((SCREEN_WIDTH - 70)/4));
+            make.width.mas_equalTo((SCREEN_WIDTH - 70)/4);
         }
         make.height.mas_equalTo(2);
     }];
@@ -279,7 +279,7 @@ typedef enum : NSUInteger {
     [_point2View mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(line1.mas_right);
         make.top.equalTo(_releaseCollectionView.mas_bottom).offset(SCALE_NUM(20));
-        make.width.height.mas_equalTo(SCALE_NUM(8));
+        make.width.height.mas_equalTo(8);
     }];
     UIImageView * line2 = [[UIImageView alloc] init];
     line2.image = [UIImage imageNamed:@"line_dot"];
@@ -289,11 +289,11 @@ typedef enum : NSUInteger {
         make.centerY.equalTo(_point2View);
         if (_isIdentity)
         {
-            make.width.mas_equalTo(SCALE_NUM((SCREEN_WIDTH - 78)/5));
+            make.width.mas_equalTo((SCREEN_WIDTH - 78)/5);
         }
         else
         {
-            make.width.mas_equalTo(SCALE_NUM((SCREEN_WIDTH - 70)/4));
+            make.width.mas_equalTo((SCREEN_WIDTH - 70)/4);
         }
         make.height.mas_equalTo(2);
     }];
@@ -328,7 +328,7 @@ typedef enum : NSUInteger {
     [_point3View mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(line2.mas_right);
         make.top.equalTo(_releaseCollectionView.mas_bottom).offset(SCALE_NUM(20));
-        make.width.height.mas_equalTo(SCALE_NUM(8));
+        make.width.height.mas_equalTo(8);
     }];
     UIImageView * line3 = [[UIImageView alloc] init];
     line3.image = [UIImage imageNamed:@"line_dot"];
@@ -338,11 +338,11 @@ typedef enum : NSUInteger {
         make.centerY.equalTo(_point3View);
         if (_isIdentity)
         {
-            make.width.mas_equalTo(SCALE_NUM((SCREEN_WIDTH - 78)/5));
+            make.width.mas_equalTo((SCREEN_WIDTH - 78)/5);
         }
         else
         {
-            make.width.mas_equalTo(SCALE_NUM((SCREEN_WIDTH - 70)/4));
+            make.width.mas_equalTo((SCREEN_WIDTH - 70)/4);
         }
         make.height.mas_equalTo(2);
     }];
@@ -376,7 +376,7 @@ typedef enum : NSUInteger {
     [_point4View mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(line3.mas_right);
         make.top.equalTo(_releaseCollectionView.mas_bottom).offset(SCALE_NUM(20));
-        make.width.height.mas_equalTo(SCALE_NUM(8));
+        make.width.height.mas_equalTo(8);
     }];
     UIImageView * line4 = [[UIImageView alloc] init];
     line4.image = [UIImage imageNamed:@"line_dot"];
@@ -386,11 +386,11 @@ typedef enum : NSUInteger {
         make.centerY.equalTo(_point4View);
         if (_isIdentity)
         {
-            make.width.mas_equalTo(SCALE_NUM((SCREEN_WIDTH - 78)/5));
+            make.width.mas_equalTo((SCREEN_WIDTH - 78)/5);
         }
         else
         {
-            make.width.mas_equalTo(SCALE_NUM((SCREEN_WIDTH - 70)/4));
+            make.width.mas_equalTo((SCREEN_WIDTH - 70)/4);
         }
         make.height.mas_equalTo(2);
     }];
@@ -424,7 +424,7 @@ typedef enum : NSUInteger {
     [_point5View mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(line4.mas_right);
         make.top.equalTo(_releaseCollectionView.mas_bottom).offset(SCALE_NUM(20));
-        make.width.height.mas_equalTo(SCALE_NUM(8));
+        make.width.height.mas_equalTo(8);
     }];
 
     _typeLabel5 = [[UILabel alloc]init];
@@ -458,7 +458,7 @@ typedef enum : NSUInteger {
         [line5 mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.equalTo(_point5View.mas_right);
             make.centerY.equalTo(_point5View);
-            make.width.mas_equalTo(SCALE_NUM((SCREEN_WIDTH - 78)/5));
+            make.width.mas_equalTo((SCREEN_WIDTH - 78)/5);
             make.height.mas_equalTo(2);
         }];
         
@@ -470,7 +470,7 @@ typedef enum : NSUInteger {
         [_point6View mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.equalTo(line5.mas_right);
             make.top.equalTo(_releaseCollectionView.mas_bottom).offset(SCALE_NUM(20));
-            make.width.height.mas_equalTo(SCALE_NUM(8));
+            make.width.height.mas_equalTo(8);
         }];
         _typeLabel6 = [[UILabel alloc]init];
         _typeLabel6.text = @"审核";
