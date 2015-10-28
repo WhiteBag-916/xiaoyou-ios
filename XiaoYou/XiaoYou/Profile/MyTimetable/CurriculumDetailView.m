@@ -24,9 +24,6 @@
 
 @interface CurriculumDetailView ()
 
-@property (strong, nonatomic) UIView *backgroundView;
-@property (strong, nonatomic) UIView *contentView;
-
 @property (nonatomic, strong) UILabel *courseName;          //课程名称
 @property (nonatomic, strong) UILabel *lecturerName;        //授课人
 @property (nonatomic, strong) UILabel *timeLabel;           //上课时间
@@ -42,11 +39,11 @@
     if (self = [super initWithFrame:[UIScreen mainScreen].bounds]) {
         self.backgroundColor = [UIColor clearColor];
         
-        _backgroundView = [[UIView alloc] initWithFrame:self.frame];
-        _backgroundView.backgroundColor = [UIColor blackColor];
-        [self addSubview:_backgroundView];
+        self.backgroundView = [[UIView alloc] initWithFrame:self.frame];
+        self.backgroundView.backgroundColor = [UIColor blackColor];
+        [self addSubview:self.backgroundView];
         
-        [_backgroundView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hide)]];
+        [self.backgroundView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hide)]];
         
         [self initContentView];
     }
@@ -54,17 +51,17 @@
 }
 
 - (void)initContentView {
-    _contentView = [[UIView alloc] init];
-    [self addSubview:_contentView];
-    [_contentView mas_makeConstraints:^(MASConstraintMaker *make) {
+    self.contentView = [[UIView alloc] init];
+    [self addSubview:self.contentView];
+    [self.contentView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.equalTo(self).insets(UIEdgeInsetsMake(K_BACK_T, K_BACK_LR, K_BACK_B, K_BACK_LR));
     }];
     
     UIImageView *backgroundImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@""]];
     backgroundImageView.image = [[UIImage imageNamed:@"build_background"] resizableImageWithCapInsets:UIEdgeInsetsMake(9, 5, 6, 5) resizingMode:UIImageResizingModeStretch];
-    [_contentView addSubview:backgroundImageView];
+    [self.contentView addSubview:backgroundImageView];
     [backgroundImageView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.edges.equalTo(_contentView);
+        make.edges.equalTo(self.contentView);
     }];
     
     [self initMidView];
@@ -271,54 +268,8 @@
     }];
 }
 
-- (void)show {
-    UIWindow *window = [[[UIApplication sharedApplication] delegate] window];
-    NSArray *windowViews = [window subviews];
-    if(windowViews && [windowViews count] > 0){
-        UIView *subView = [windowViews objectAtIndex:[windowViews count]-1];
-        for(UIView *aSubView in subView.subviews)
-        {
-            [aSubView.layer removeAllAnimations];
-        }
-        [window addSubview:self];
-        [self showBackground];
-        [self showAlertAnimation];
-    }
-}
-
-- (void)hide {
-    [self hideAlertAnimation];
-}
-
 - (void)showBackground
 {
-    _backgroundView.alpha = 0.7;
-}
-
--(void)showAlertAnimation
-{
-    CAKeyframeAnimation * animation;
-    animation = [CAKeyframeAnimation animationWithKeyPath:@"transform"];
-    
-    animation.duration = 0.25;
-    animation.removedOnCompletion = NO;
-    animation.fillMode = kCAFillModeForwards;
-    
-    NSMutableArray *values = [NSMutableArray array];
-    
-    [values addObject:[NSValue valueWithCATransform3D:CATransform3DMakeScale(1.02, 1.02, 1.0)]];
-    [values addObject:[NSValue valueWithCATransform3D:CATransform3DMakeScale(1.0, 1.0, 1.0)]];
-    
-    animation.values = values;
-    animation.timingFunction = [CAMediaTimingFunction functionWithName: kCAMediaTimingFunctionEaseIn];
-    
-    [_contentView.layer addAnimation:animation forKey:nil];
-    
-}
-
-- (void)hideAlertAnimation {
-    [self removeFromSuperview];
-    _contentView.hidden = YES;
-    
+    self.backgroundView.alpha = 0.7;
 }
 @end

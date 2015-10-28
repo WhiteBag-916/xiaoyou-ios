@@ -25,7 +25,6 @@
 
 @interface YCommonAlertView ()
 
-@property (strong, nonatomic) UIView *backgroundView;
 @property (strong, nonatomic) UIView *titleView;
 @property (strong, nonatomic) UIImageView *iconImageView;
 @property (strong, nonatomic) UILabel *titleLabel;
@@ -47,9 +46,9 @@ CGFloat contentViewHeight;
     if (self = [super initWithFrame:[UIScreen mainScreen].bounds]) {
         self.backgroundColor = [UIColor clearColor];
         
-        _backgroundView = [[UIView alloc] initWithFrame:self.frame];
-        _backgroundView.backgroundColor = [UIColor blackColor];
-        [self addSubview:_backgroundView];
+        self.backgroundView = [[UIView alloc] initWithFrame:self.frame];
+        self.backgroundView.backgroundColor = [UIColor blackColor];
+        [self addSubview:self.backgroundView];
     }
     return self;
 }
@@ -80,20 +79,13 @@ CGFloat contentViewHeight;
         
         self.backgroundColor = [UIColor clearColor];
         
-        _backgroundView = [[UIView alloc] initWithFrame:self.frame];
-        _backgroundView.backgroundColor = [UIColor blackColor];
-        [self addSubview:_backgroundView];
+        self.backgroundView = [[UIView alloc] initWithFrame:self.frame];
+        self.backgroundView.backgroundColor = [UIColor blackColor];
+        [self addSubview:self.backgroundView];
         [self initContentView];
     }
     return self;
  
-}
-
-
-- (void)setContentView:(UIView *)contentView {
-    _contentView = contentView;
-    _contentView.center = self.center;
-    [self addSubview:_contentView];
 }
 
 - (void)setTitle:(NSString *)title {
@@ -115,18 +107,18 @@ CGFloat contentViewHeight;
     contentViewWidth = 270 * self.frame.size.width / 320;
     contentViewHeight = MARGIN_TOP;
     
-    _contentView = [[UIView alloc] init];
-    _contentView.backgroundColor = [UIColor hexChangeFloat:@"ffffff"];
-    _contentView.layer.cornerRadius = 5.0;
-    _contentView.layer.masksToBounds = YES;
+    self.contentView = [[UIView alloc] init];
+    self.contentView.backgroundColor = [UIColor hexChangeFloat:@"ffffff"];
+    self.contentView.layer.cornerRadius = 5.0;
+    self.contentView.layer.masksToBounds = YES;
     
     [self initTitleAndIcon];
     [self initMessage];
     [self initAllButtons];
     
-    _contentView.frame = CGRectMake(0, 0, contentViewWidth, contentViewHeight);
-    _contentView.center = self.center;
-    [self addSubview:_contentView];
+    self.contentView.frame = CGRectMake(0, 0, contentViewWidth, contentViewHeight);
+    self.contentView.center = self.center;
+    [self addSubview:self.contentView];
 }
 
 - (void)initTitleAndIcon {
@@ -153,7 +145,7 @@ CGFloat contentViewHeight;
     
     _titleView.frame = CGRectMake(0, MARGIN_TOP, _iconImageView.frame.size.width + SPACE_SMALL + titleSize.width, MAX(_iconImageView.frame.size.height, titleSize.height));
     _titleView.center = CGPointMake(contentViewWidth / 2, MARGIN_TOP + _titleView.frame.size.height / 2);
-    [_contentView addSubview:_titleView];
+    [self.contentView addSubview:_titleView];
     contentViewHeight += _titleView.frame.size.height;
 }
 
@@ -174,7 +166,7 @@ CGFloat contentViewHeight;
         
         CGSize messageSize = [self getMessageSize];
         _messageLabel.frame = CGRectMake(MARGIN_LEFT_LARGE, _titleView.frame.origin.y + _titleView.frame.size.height + SPACE_LARGE, MAX(contentViewWidth - MARGIN_LEFT_LARGE - MARGIN_RIGHT_LARGE, messageSize.width), messageSize.height);
-        [_contentView addSubview:_messageLabel];
+        [self.contentView addSubview:_messageLabel];
         contentViewHeight += SPACE_LARGE + _messageLabel.frame.size.height;
     }
 }
@@ -184,7 +176,7 @@ CGFloat contentViewHeight;
         contentViewHeight += SPACE_LARGE + 45;
         UIView *horizonSperatorView = [[UIView alloc] initWithFrame:CGRectMake(0, _messageLabel.frame.origin.y + _messageLabel.frame.size.height + SPACE_LARGE, contentViewWidth, 1)];
         horizonSperatorView.backgroundColor = RGBA(218, 218, 222, 1.0);
-        [_contentView addSubview:horizonSperatorView];
+        [self.contentView addSubview:horizonSperatorView];
         
         CGFloat buttonWidth = contentViewWidth / _buttonTitleArray.count;
         for (NSString *buttonTitle in _buttonTitleArray) {
@@ -195,12 +187,12 @@ CGFloat contentViewHeight;
             [button setTitleColor:[UIColor hexChangeFloat:@"494949"] forState:UIControlStateNormal];
             [button addTarget:self action:@selector(buttonWithPressed:) forControlEvents:UIControlEventTouchUpInside];
             [_buttonArray addObject:button];
-            [_contentView addSubview:button];
+            [self.contentView addSubview:button];
             
             if (index < _buttonTitleArray.count - 1) {
                 UIView *verticalSeperatorView = [[UIView alloc] initWithFrame:CGRectMake(button.frame.origin.x + button.frame.size.width, button.frame.origin.y, 1, button.frame.size.height)];
                 verticalSeperatorView.backgroundColor = RGBA(218, 218, 222, 1.0);
-                [_contentView addSubview:verticalSeperatorView];
+                [self.contentView addSubview:verticalSeperatorView];
             }
         }
     }
@@ -254,25 +246,6 @@ CGFloat contentViewHeight;
     
 }
 
-- (void)show {
-    UIWindow *window = [[[UIApplication sharedApplication] delegate] window];
-    NSArray *windowViews = [window subviews];
-    if(windowViews && [windowViews count] > 0){
-        UIView *subView = [windowViews objectAtIndex:[windowViews count]-1];
-        for(UIView *aSubView in subView.subviews)
-        {
-            [aSubView.layer removeAllAnimations];
-        }
-        [window addSubview:self];
-        [self showBackground];
-        [self showAlertAnimation];
-    }
-}
-
-- (void)hide {
-    [self hideAlertAnimation];
-}
-
 - (void)setTitleColor:(UIColor *)color fontSize:(CGFloat)size {
     if (color != nil) {
         _titleLabel.textColor = color;
@@ -306,34 +279,7 @@ CGFloat contentViewHeight;
 
 - (void)showBackground
 {
-    _backgroundView.alpha = 0.4;
-}
-
--(void)showAlertAnimation
-{
-    CAKeyframeAnimation * animation;
-    animation = [CAKeyframeAnimation animationWithKeyPath:@"transform"];
-    
-    animation.duration = 0.25;
-    animation.removedOnCompletion = NO;
-    animation.fillMode = kCAFillModeForwards;
-    
-    NSMutableArray *values = [NSMutableArray array];
-    
-    [values addObject:[NSValue valueWithCATransform3D:CATransform3DMakeScale(1.02, 1.02, 1.0)]];
-    [values addObject:[NSValue valueWithCATransform3D:CATransform3DMakeScale(1.0, 1.0, 1.0)]];
-    
-    animation.values = values;
-    animation.timingFunction = [CAMediaTimingFunction functionWithName: kCAMediaTimingFunctionEaseIn];
-    
-    [_contentView.layer addAnimation:animation forKey:nil];
-    
-}
-
-- (void)hideAlertAnimation {
-    [self removeFromSuperview];
-    _contentView.hidden = YES;
-    
+    self.backgroundView.alpha = 0.4;
 }
 
 @end

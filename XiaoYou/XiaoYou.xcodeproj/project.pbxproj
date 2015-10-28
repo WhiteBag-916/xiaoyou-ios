@@ -134,6 +134,7 @@
 		209C4C791B8C688000B584DF /* AssociationsDetailTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 209C4C781B8C688000B584DF /* AssociationsDetailTableView.m */; };
 		20BEAF9F1BC913120002A365 /* FastTopView.m in Sources */ = {isa = PBXBuildFile; fileRef = 20BEAF9D1BC913120002A365 /* FastTopView.m */; };
 		20C5B07B1B8DE58700B4A8A8 /* AssociationsSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20C5B07A1B8DE58700B4A8A8 /* AssociationsSearchViewController.m */; };
+		20D821A01BE0976700C5E21C /* YCommonDialogView.m in Sources */ = {isa = PBXBuildFile; fileRef = 20D8219F1BE0976700C5E21C /* YCommonDialogView.m */; };
 		20D8B12F1BE06F62003F7911 /* CurriculumDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = 20D8B12E1BE06F62003F7911 /* CurriculumDetailView.m */; };
 		20D8B1321BE07595003F7911 /* course_icon_week@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 20D8B1301BE07595003F7911 /* course_icon_week@2x.png */; };
 		20D8B1331BE07595003F7911 /* course_icon_week@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 20D8B1311BE07595003F7911 /* course_icon_week@3x.png */; };
@@ -966,6 +967,8 @@
 		20BEAF9E1BC913120002A365 /* FastTopView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FastTopView.h; sourceTree = "<group>"; };
 		20C5B0791B8DE58700B4A8A8 /* AssociationsSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AssociationsSearchViewController.h; sourceTree = "<group>"; };
 		20C5B07A1B8DE58700B4A8A8 /* AssociationsSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AssociationsSearchViewController.m; sourceTree = "<group>"; };
+		20D8219E1BE0976700C5E21C /* YCommonDialogView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YCommonDialogView.h; sourceTree = "<group>"; };
+		20D8219F1BE0976700C5E21C /* YCommonDialogView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YCommonDialogView.m; sourceTree = "<group>"; };
 		20D8B12D1BE06F62003F7911 /* CurriculumDetailView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CurriculumDetailView.h; sourceTree = "<group>"; };
 		20D8B12E1BE06F62003F7911 /* CurriculumDetailView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CurriculumDetailView.m; sourceTree = "<group>"; };
 		20D8B1301BE07595003F7911 /* course_icon_week@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "course_icon_week@2x.png"; sourceTree = "<group>"; };
@@ -2605,6 +2608,8 @@
 				2076A2FD1B81C590001FFBAC /* YCommonActionSheet.m */,
 				2076A2FE1B81C590001FFBAC /* YCommonAlertView.h */,
 				2076A2FF1B81C590001FFBAC /* YCommonAlertView.m */,
+				20D8219E1BE0976700C5E21C /* YCommonDialogView.h */,
+				20D8219F1BE0976700C5E21C /* YCommonDialogView.m */,
 				20DD4B331B734781007C352C /* CommonSwitchView.h */,
 				20DD4B341B734781007C352C /* CommonSwitchView.m */,
 				20DAA29A1BCDFCE300420234 /* CommonPopView.h */,
@@ -4740,6 +4745,7 @@
 				333122331B806EDB00D3D032 /* DXRecordView.m in Sources */,
 				333122671B806EDB00D3D032 /* PSTCollectionViewCell.m in Sources */,
 				20DC87F21B5F3DC70019DC7F /* ChooseSchoolViewController.m in Sources */,
+				20D821A01BE0976700C5E21C /* YCommonDialogView.m in Sources */,
 				333122301B806EDB00D3D032 /* DXFaceView.m in Sources */,
 				20DAAAA01BCD05F5006DF231 /* StudyRoomTableViewCell.m in Sources */,
 				20DBFD631B4FA7E1009134D0 /* AppDelegate.m in Sources */,
