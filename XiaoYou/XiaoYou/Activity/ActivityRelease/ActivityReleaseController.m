@@ -676,6 +676,7 @@ typedef enum : NSUInteger {
         [YUtils showTitle:message.desc];
         if ([[message.object valueForKey:@"code"] integerValue] == 1)
         {
+            [[NSNotificationCenter defaultCenter] postNotificationName:KNotification_Activity_Release_Success object:nil];
             [self.navigationController popViewControllerAnimated:YES];
         }
     }];

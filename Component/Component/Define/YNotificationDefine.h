@@ -39,5 +39,6 @@
 #define KNotification_Enabel_ReleaseBtn                  @"KNotification_Enabel_ReleaseBtn"
 
 #define KNotification_Activity_Release_ScrollTo         @"KNotification_Activity_Release_ScrollTo"
-
+//发布活动成功通知刷界面
+#define KNotification_Activity_Release_Success         @"KNotification_Activity_Release_Success"
 #endif
