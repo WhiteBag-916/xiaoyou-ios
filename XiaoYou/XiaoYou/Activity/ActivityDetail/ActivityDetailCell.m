@@ -75,6 +75,12 @@
     }];
 }
 
+#pragma mark 重载
+-(BOOL)needLine
+{
+    return YES;
+}
+
 
 -(void)setData:(ActivityDetailModel *)model
 {

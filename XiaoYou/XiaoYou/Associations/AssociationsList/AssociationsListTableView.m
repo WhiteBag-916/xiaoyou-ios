@@ -12,6 +12,7 @@
 #import "FeedManager.h"
 #import "GroupModel.h"
 #import "GroupAllList.h"
+#import "AssociationsSearchViewController.h"
 
 #define KPAGENUM 15
 
@@ -94,7 +95,7 @@
 }
 - (void)sendRequest {
     NSInteger cnt = _associationsListArray.count;
-    if ([self isHeaderRefresh] || _searchStr.length > 0) {
+    if ([self isHeaderRefresh]) {
         cnt = 0;
     }
     [[FeedManager sharedInstance] groupList:cnt limitEnd:cnt + KPAGENUM name:_searchStr queryCode:_filterStr block:^(YActionMessage *message) {
@@ -129,14 +130,32 @@
 
 - (void)searchMessage:(YActionMessage *)message {
     if (message.isSuccess && [_searchStr isEqualToString:[message.object searchKey]]) {
-        [self hiddenFooter:NO];
-        [_associationsListArray removeAllObjects];
-        [_associationsListArray addObjectsFromArray:[message.object groupList]];
-        if ([[message.object groupList] count] < KPAGENUM) {
-            [self showNoticeNoMoreData];
+        
+        if ([self isFooterRefresh]) {
+            [_associationsListArray addObjectsFromArray:[message.object groupList]];
+            if ([[message.object groupList] count] < KPAGENUM) {
+                [self showNoticeNoMoreData];
+            }
+            
+            [self reloadData];
+        } else {
+            //如果一条数据也没有，则显示nodata
+            AssociationsSearchViewController *vc = (AssociationsSearchViewController *)self.viewController;
+            if ([[message.object groupList] count] <= 0) {
+                [vc hiddenNodata:NO];
+            } else {
+                [vc hiddenNodata:YES];
+                [self hiddenFooter:NO];
+                [_associationsListArray removeAllObjects];
+                [_associationsListArray addObjectsFromArray:[message.object groupList]];
+                if ([[message.object groupList] count] < KPAGENUM) {
+                    [self showNoticeNoMoreData];
+                }
+                
+                [self reloadData];
+            }
         }
         
-        [self reloadData];
     } else {
         [YUtils showTitle:message.desc];
     }
