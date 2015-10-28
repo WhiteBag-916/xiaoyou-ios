@@ -26,9 +26,9 @@
 
 @implementation ActivityIdentityViewController
 
--(void)viewWillDisappear:(BOOL)animated
+-(void)viewWillAppear:(BOOL)animated
 {
-    [super viewWillDisappear:animated];
+    [super viewWillAppear:animated];
     
     [self removeManagerData];
 }

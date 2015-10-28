@@ -45,7 +45,6 @@
     self.backgroundColor = [UIColor clearColor];
     _flagImageView = [[UIImageView alloc]init];
     [self addSubview:_flagImageView];
-    _flagImageView.image = [UIImage imageNamed:@"detail_flag_new"];
     [_flagImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.mas_equalTo(kPaddingDistance);
         make.leading.mas_equalTo(0);
@@ -74,6 +73,14 @@
 
 - (void)setData:(ProfileInfo *) model
 {
+    if (model.propetiesCommon.count <=0 && model.tagModels.count <= 0)
+    {
+        _flagImageView.image = nil;
+    }
+    else
+    {
+        _flagImageView.image = [UIImage imageNamed:@"detail_flag_new"];
+    }
     [_connectTag updateWithTag:model.propetiesCommon];
     _commonTagsArr = [NSMutableArray arrayWithArray:model.tagModels];
     [_tagCollectionView reloadData];
