@@ -17,7 +17,7 @@ NSString *const kActivityDetailModelEnrollActivityUserInfos = @"enrollActivityUs
 NSString *const kActivityDetailModelActivityOrganizer = @"activityOrganizer";
 NSString *const kActivityDetailModelActivityTypeInfo = @"activityTypeInfo";
 NSString *const kActivityDetailModelActivityPublishedDto = @"activityPublishedDto";
-
+NSString *const kActivityDetailModelActivityEnrollStatus = @"enrollStatus";
 
 @interface ActivityDetailModel ()
 
@@ -46,6 +46,8 @@ NSString *const kActivityDetailModelActivityPublishedDto = @"activityPublishedDt
     // This check serves to make sure that a non-NSDictionary object
     // passed into the model class doesn't break the parsing.
     if(self && [dict isKindOfClass:[NSDictionary class]]) {
+        self.enrollStatus = [self objectOrNilForKey:kActivityDetailModelActivityEnrollStatus fromDictionary:dict];
+        
             self.enroll = [[self objectOrNilForKey:kActivityDetailModelEnroll fromDictionary:dict] boolValue];
     NSObject *receivedEnrollActivityUserInfos = [dict objectForKey:kActivityDetailModelEnrollActivityUserInfos];
     NSMutableArray *parsedEnrollActivityUserInfos = [NSMutableArray array];
@@ -74,6 +76,7 @@ NSString *const kActivityDetailModelActivityPublishedDto = @"activityPublishedDt
 {
     NSMutableDictionary *mutableDict = [NSMutableDictionary dictionary];
     [mutableDict setValue:[NSNumber numberWithBool:self.enroll] forKey:kActivityDetailModelEnroll];
+    [mutableDict setValue:self.enrollStatus forKey:kActivityDetailModelActivityEnrollStatus];
     NSMutableArray *tempArrayForEnrollActivityUserInfos = [NSMutableArray array];
     for (NSObject *subArrayObject in self.enrollActivityUserInfos) {
         if([subArrayObject respondsToSelector:@selector(dictionaryRepresentation)]) {
@@ -116,6 +119,7 @@ NSString *const kActivityDetailModelActivityPublishedDto = @"activityPublishedDt
     self.activityOrganizer = [aDecoder decodeObjectForKey:kActivityDetailModelActivityOrganizer];
     self.activityTypeInfo = [aDecoder decodeObjectForKey:kActivityDetailModelActivityTypeInfo];
     self.activityPublishedDto = [aDecoder decodeObjectForKey:kActivityDetailModelActivityPublishedDto];
+    self.enrollStatus = [aDecoder decodeObjectForKey:kActivityDetailModelActivityEnrollStatus];
     return self;
 }
 
@@ -127,6 +131,7 @@ NSString *const kActivityDetailModelActivityPublishedDto = @"activityPublishedDt
     [aCoder encodeObject:_activityOrganizer forKey:kActivityDetailModelActivityOrganizer];
     [aCoder encodeObject:_activityTypeInfo forKey:kActivityDetailModelActivityTypeInfo];
     [aCoder encodeObject:_activityPublishedDto forKey:kActivityDetailModelActivityPublishedDto];
+    [aCoder encodeObject:_enrollStatus forKey:kActivityDetailModelActivityEnrollStatus];
 }
 
 - (id)copyWithZone:(NSZone *)zone
@@ -140,6 +145,7 @@ NSString *const kActivityDetailModelActivityPublishedDto = @"activityPublishedDt
         copy.activityOrganizer = [self.activityOrganizer copyWithZone:zone];
         copy.activityTypeInfo = [self.activityTypeInfo copyWithZone:zone];
         copy.activityPublishedDto = [self.activityPublishedDto copyWithZone:zone];
+        copy.enrollStatus = [self.enrollStatus copyWithZone:zone];
     }
     
     return copy;

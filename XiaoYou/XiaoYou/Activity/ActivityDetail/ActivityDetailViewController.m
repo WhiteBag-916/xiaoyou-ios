@@ -64,7 +64,11 @@
 
 -(void)exitActivity
 {
-    NSLog(@"this is activity...");
+    YLogD(@"this is activity...");
+    [[ActivityManager sharedInstance] cancleActivitySignUpByActivityID:self.publishID block:^(YActionMessage *message) {
+        [YUtils showTitle:message.desc];
+        [self updateJoinButtonStatus];
+    }];
 }
 
 
@@ -110,9 +114,21 @@
             NSMutableArray *arr = [NSMutableArray array];
             [arr addObject:message.object];
             ActivityDetailModel *model = arr[0];
-            if (model.enroll) {
-                [_joinInBtn setTitle:@"我已参加" forState:UIControlStateNormal];
+            if ([model.enrollStatus isEqualToString:@"未报名"]) {
+                [_joinInBtn setTitle:@"我要加入" forState:UIControlStateNormal];
+                _joinInBtn.enabled = YES;
+            }
+            else if ([model.enrollStatus isEqualToString:@"已报名"]) {
+                [_joinInBtn setTitle:@"已经报名" forState:UIControlStateNormal];
+                _joinInBtn.enabled = YES;
+            }
+            else if ([model.enrollStatus isEqualToString:@"报名已过期"]) {
+                [_joinInBtn setTitle:@"报名已过期" forState:UIControlStateNormal];
                 _joinInBtn.enabled = NO;
+            }
+            else if ([model.enrollStatus isEqualToString:@"报名审核中"]) {
+                [_joinInBtn setTitle:@"正在审核" forState:UIControlStateNormal];
+                _joinInBtn.enabled = YES;
             }
         }
     }];
@@ -131,6 +147,7 @@
             _joinInBtn.enabled = NO;
         }
         [YUtils showTitle:message.desc];
+        [self updateJoinButtonStatus];
     }];
 }
 

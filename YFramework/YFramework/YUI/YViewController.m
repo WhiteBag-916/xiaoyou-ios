@@ -9,6 +9,7 @@
 #import "YViewController.h"
 #import "YFoundation.h"
 #import "MobClick.h"
+#import "UINavigationController+FDFullscreenPopGesture.h"
 
 @interface YViewController ()<UIGestureRecognizerDelegate>
 
@@ -30,6 +31,8 @@
     [self showOrignMode];
     
     self.view.backgroundColor = [UIColor whiteColor];
+
+    self.fd_prefersNavigationBarHidden = NO;
 }
 
 - (void)viewWillAppear:(BOOL)animated navigationBarHidden:(BOOL)navigationBarHidden tabBarHidden:(BOOL)tabBarHidden
