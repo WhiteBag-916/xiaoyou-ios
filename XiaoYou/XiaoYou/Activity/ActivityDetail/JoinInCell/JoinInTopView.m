@@ -15,6 +15,12 @@
 
 @interface JoinInTopView ()
 
+//@property (nonatomic,strong) UIImageView    *headImageView;         //头像
+//@property (nonatomic,strong) UILabel        *nameLabel;             //姓名
+//@property (nonatomic,strong) UIImageView    *genderImageView;       //性别
+//@property (nonatomic,strong) UIButton       *addFriendImageView;    //添加好友
+@property (nonatomic,strong) UILabel        *isSelfNameLabel;       //是否是自己
+
 @property (nonatomic,strong) Author *author;
 
 @end
@@ -72,6 +78,9 @@
         make.left.equalTo(_nameLabel.mas_right).offset(SCALE_NUM(10));
         make.centerY.equalTo(_nameLabel.mas_centerY);
     }];
+    
+    _isSelfNameLabel = [[UILabel alloc]init];
+    [self addSubview:_isSelfNameLabel];
     
     _addFriendImageView = [UIButton buttonWithType:UIButtonTypeSystem];
     [self addSubview:_addFriendImageView];

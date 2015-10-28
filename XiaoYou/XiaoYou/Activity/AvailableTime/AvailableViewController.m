@@ -42,6 +42,19 @@
     [self availableListView];
 }
 
+-(void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+
+
+
+-(void)receiveNotificationOfReleaseSuccess
+{
+    [_availableListView loadData];
+    [_availableListView loadNewData];
+}
 
 - (void)addGuideView {
     
@@ -173,12 +186,15 @@
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    [[NSNotificationCenter defaultCenter]removeObserver:self];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(receiveNotificationOfReleaseSuccess) name:KNotification_Activity_Release_Success object:nil];
 }
 
 -(void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
     self.hidesBottomBarWhenPushed = NO;
+    
 }
 
 @end
