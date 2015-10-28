@@ -43,7 +43,7 @@ NSInteger const kLoginCommonTextFieldTag = 1999;
     YTextField *inTextField = [[YTextField alloc] init];
     inTextField.tag = kLoginCommonTextFieldTag;
     inTextField.font = CONTENT_FONT(12);
-    inTextField.textColor = KCOLORGREEN_455A64;
+    inTextField.textColor = KCOLOR_455A64;
     [schoolView addSubview:inTextField];
     [inTextField mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(lineView.mas_right).offset(SCALE_NUM(14));

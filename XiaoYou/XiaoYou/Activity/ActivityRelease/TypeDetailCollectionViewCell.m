@@ -31,7 +31,7 @@ NSString *const kTypeDetailCollectionViewCell = @"TypeDetailCollectionViewCellId
 {
     self.backgroundColor = [UIColor clearColor];
     _typeLabel = [[UILabel alloc] init];
-    _typeLabel.layer.borderColor = KCOLORGREEN_B2.CGColor;
+    _typeLabel.layer.borderColor = KCOLOR_B2.CGColor;
     _typeLabel.layer.borderWidth = 1;
     _typeLabel.layer.cornerRadius = 4;
     _typeLabel.clipsToBounds = YES;
@@ -50,13 +50,13 @@ NSString *const kTypeDetailCollectionViewCell = @"TypeDetailCollectionViewCellId
     _typeLabel.text = dic[@"name"];
     if ([dic[@"isChoice"] boolValue])
     {
-        _typeLabel.backgroundColor = KCOLORGREEN_g1;
+        _typeLabel.backgroundColor = KCOLOR_g1;
         _typeLabel.textColor = [UIColor whiteColor];
     }
     else
     {
         _typeLabel.backgroundColor = [UIColor clearColor];
-        _typeLabel.textColor = KCOLORGREEN_B3;
+        _typeLabel.textColor = KCOLOR_B3;
     }
 }
 

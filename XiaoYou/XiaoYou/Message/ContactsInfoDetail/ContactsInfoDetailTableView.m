@@ -187,7 +187,7 @@
     _feedBackView = [[UIImageView alloc] init];
     _feedBackView.layer.cornerRadius = kHeadCornerRadius;
     _feedBackView.clipsToBounds = YES;
-    _feedBackView.backgroundColor = KCOLORGREEN_009688;
+    _feedBackView.backgroundColor = KCOLOR_009688;
     [backView addSubview:_feedBackView];
     [_feedBackView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.mas_equalTo(kPaddingDistance);

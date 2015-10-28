@@ -122,7 +122,7 @@
         make.top.left.right.equalTo(_containerView);
         make.height.mas_equalTo(KHEADHEIGHT);
     }];
-    _headView.backgroundColor = KCOLORGREEN_455A64;
+    _headView.backgroundColor = KCOLOR_455A64;
     
     _faceContainer = [[UIView alloc] init];
     [_containerView addSubview:_faceContainer];
@@ -235,7 +235,7 @@
 }
 
 - (UILabel *)labelWithColor:(BOOL)isGreen size:(float)size{
-    UILabel *label = [YUtils initLabel:CONTENT_FONT(size) color:(isGreen?KCOLORGREEN_009688:[UIColor blackColor]) text:@"" frame:CGRectZero alignment:NSTextAlignmentCenter];
+    UILabel *label = [YUtils initLabel:CONTENT_FONT(size) color:(isGreen?KCOLOR_009688:[UIColor blackColor]) text:@"" frame:CGRectZero alignment:NSTextAlignmentCenter];
     [_middelView addSubview:label];
     [label mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.right.equalTo(_middelView);
@@ -246,13 +246,13 @@
 
 - (UILabel *)labelWithType:(int)type {
     NSArray *names = @[@"修改绑定手机号", @"修改密码", @"退出"];
-    UILabel *label = [YUtils initLabel:CONTENT_FONT(12) color:KCOLORGREEN_455A64 text:names[type] frame:CGRectZero alignment:NSTextAlignmentCenter];
+    UILabel *label = [YUtils initLabel:CONTENT_FONT(12) color:KCOLOR_455A64 text:names[type] frame:CGRectZero alignment:NSTextAlignmentCenter];
     [_bottomView addSubview:label];
     [label mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.right.equalTo(_bottomView);
         make.height.mas_equalTo(SCALE_NUM(48));
     }];
-    label.backgroundColor = KCOLORGREEN_f2f2f2;
+    label.backgroundColor = KCOLOR_f2f2f2;
     label.userInteractionEnabled = true;
     
     UIView *line = [[UIView alloc] init];
@@ -261,7 +261,7 @@
         make.top.left.right.equalTo(label);
         make.height.mas_equalTo(1);
     }];
-    line.backgroundColor = KCOLORGREEN_455A64;
+    line.backgroundColor = KCOLOR_455A64;
     
     line = [[UIView alloc] init];
     [label addSubview:line];
@@ -269,7 +269,7 @@
         make.bottom.left.right.equalTo(label);
         make.height.mas_equalTo(1);
     }];
-    line.backgroundColor = KCOLORGREEN_455A64;
+    line.backgroundColor = KCOLOR_455A64;
     
     
     switch (type) {

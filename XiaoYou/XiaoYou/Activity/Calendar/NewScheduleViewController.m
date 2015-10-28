@@ -10,6 +10,8 @@
 #import "YTextField.h"
 #import "CommonPopView.h"
 #import "YKeyBoard.h"
+#import "YCommonPickerView.h"
+#import "CommonPopView.h"
 
 #define K_TITLE_H         SCALE_NUM(52)
 #define K_BACK_LR         SCALE_NUM(10)
@@ -24,10 +26,11 @@
 #define K_FIELD_T           SCALE_NUM(24)   //textfieldbg
 
 
-#define K_TAG_NAME            70000       //课程名称
+#define K_TAG_NAME            70000       //日程名称
 #define K_TAG_BCLASS          70001       //开始时间
 #define K_TAG_FCLASS          70002       //结束时间
 #define K_TAG_LOCATION        70003       //地点
+#define K_TAG_REMIND          70004       //提醒
 
 @interface NewScheduleViewController ()
 <UITextFieldDelegate
@@ -38,10 +41,13 @@
 @property (nonatomic, strong) UIView *contentView;
 @property (nonatomic, strong) UIDatePicker *datePicker; //时间选择器
 
-@property (nonatomic, strong) UIView *nameView;         //课程名称
+@property (nonatomic, strong) UIView *nameView;         //日程名称
 @property (nonatomic, strong) UIView *bClassView;       //开始时间
 @property (nonatomic, strong) UIView *fClassView;       //开始时间
 @property (nonatomic, strong) UIView *locationView;     //地点
+@property (nonatomic, strong) UIView *remindView;       //提醒
+
+@property (nonatomic, strong) YCommonPickerView *remindPicker; //提醒选择
 
 @property (nonatomic, assign) NSInteger chooesTag;      //tag选择
 
@@ -53,7 +59,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    self.view.backgroundColor = KCOLORGREEN_B2;
+    self.view.backgroundColor = KCOLOR_B2;
     
     [self initTitle];
     [self initView];
@@ -139,7 +145,7 @@
         make.edges.equalTo(_contentView).insets(UIEdgeInsetsMake(0, K_BACK_LR, K_BACK_B, K_BACK_LR));
     }];
     
-    //课程名称
+    //日程名称
     _nameView = [UIView new];
     [_contentView addSubview:_nameView];
     [_nameView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -180,10 +186,21 @@
         make.top.equalTo(_fClassView.mas_bottom).offset(K_CONTENT_T);
         make.left.right.equalTo(_nameView);
         make.height.mas_equalTo(K_CONTENT_H);
-        make.bottom.equalTo(backgroundImageView).offset(-K_CONTENT_B);
     }];
     
     [self initField:@"build_icon_location" labelName:@"活动地点" fieldTag:K_TAG_LOCATION backView:_locationView];
+    
+    //提醒
+    _remindView = [UIView new];
+    [_contentView addSubview:_remindView];
+    [_remindView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(_locationView.mas_bottom).offset(K_CONTENT_T);
+        make.left.right.equalTo(_nameView);
+        make.height.mas_equalTo(K_CONTENT_H);
+        make.bottom.equalTo(backgroundImageView).offset(-K_CONTENT_B);
+    }];
+    
+    [self initButton:@"havetime_icon_remind" labelName:@"提醒" buttonTag:K_TAG_REMIND backView:_remindView buttonText:@"不设置提醒"];
 }
 
 - (void)initHead:(NSString *)imageName labelName:(NSString *)labelName backView:(UIView *)backView {
@@ -199,7 +216,7 @@
     
     //label
     UILabel *courseLabel = [YUtils initLabel:CONTENT_FONT(12)
-                                       color:KCOLORGREEN_B5
+                                       color:KCOLOR_B5
                                         text:labelName
                                    alignment:NSTextAlignmentLeft];
     [backView addSubview:courseLabel];
@@ -225,9 +242,9 @@
     
     //field
     YTextField *textField = [[YTextField alloc] init];
-    [textField placeHolderColor:[NSString stringWithFormat:@"请输入%@", labelName] fontColor:KCOLORGREEN_B5];
+    [textField placeHolderColor:[NSString stringWithFormat:@"请输入%@", labelName] fontColor:KCOLOR_B5];
     textField.font = CONTENT_FONT(12);
-    textField.textColor = KCOLORGREEN_B4;
+    textField.textColor = KCOLOR_B4;
     textField.delegate = self;
     textField.tag = fieldTag;
     [textField registerChanged:self action:@selector(textFieldValueChanged:)];
@@ -252,7 +269,7 @@
     
     //timeLabel
     UILabel *timeLabel = [YUtils initLabel:CONTENT_FONT(12)
-                                     color:KCOLORGREEN_B5
+                                     color:KCOLOR_B5
                                       text:[NSString stringWithFormat:@"请选择%@", labelName]
                                  alignment:NSTextAlignmentLeft];
     timeLabel.tag = timeTag;
@@ -266,6 +283,36 @@
     [timeLabel addGestureRecognizer:beginTapGesture];
 }
 
+
+- (void)initButton:(NSString *)imageName labelName:(NSString *)labelName buttonTag:(NSInteger)buttonTag backView:(UIView *)backView buttonText:(NSString *)buttonText {
+    
+    [self initHead:imageName labelName:labelName backView:backView];
+    
+    //fieldBg
+    UIImageView *fieldBgImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@""]];
+    [fieldBgImageView setImage:[[UIImage imageNamed:@"build_put_bg"] resizableImageWithCapInsets:UIEdgeInsetsMake(5, 5, 5, 5) resizingMode:UIImageResizingModeStretch]];
+    [backView addSubview:fieldBgImageView];
+    [fieldBgImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.right.bottom.equalTo(backView);
+        make.top.mas_equalTo(K_FIELD_T);
+    }];
+    
+    //buttonLabel
+    UILabel *timeLabel = [YUtils initLabel:CONTENT_FONT(12)
+                                     color:KCOLOR_B5
+                                      text:[NSString stringWithFormat:buttonText, labelName]
+                                 alignment:NSTextAlignmentLeft];
+    timeLabel.tag = buttonTag;
+    timeLabel.userInteractionEnabled = YES;
+    [backView addSubview:timeLabel];
+    [timeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.equalTo(fieldBgImageView).insets(UIEdgeInsetsMake(0, K_CONTENT_LR, 0, K_CONTENT_LR));
+    }];
+    
+    UITapGestureRecognizer *beginTapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(pressButton:)];
+    [timeLabel addGestureRecognizer:beginTapGesture];
+}
+
 -(void)clickBtnForCancel
 {
     [self dismissViewControllerAnimated:YES completion:nil];
@@ -273,6 +320,35 @@
 
 -(void)clickBtnForChoice
 {
+}
+
+#pragma mark - 按钮
+- (void)pressButton:(UITapGestureRecognizer*)gesture {
+    if (nil == _remindPicker) {
+        _remindPicker = [[YCommonPickerView alloc] initWithFrame:PickerView_CalendarRemind];
+    }
+    
+    CommonPopView *popView = [[CommonPopView alloc] initWithFrame:[UIScreen mainScreen].bounds
+                                                       showButton:YES
+                                                           addSub:_remindPicker
+                                                            isTop:NO
+                                                           isRoot:YES
+                                                          addSelf:self.view];
+    [popView comSet:self action:@selector(chooseRemind) params:nil];
+    [popView showView];
+}
+
+- (void)chooseRemind {
+    //取值
+    NSDictionary *data = [_remindPicker getData];
+    NSString *remindText = data[kPickerViewCalendarRemind];
+    UILabel *label = (UILabel *)[_remindView viewWithTag:K_TAG_REMIND];
+    label.text = remindText;
+    if ([remindText isEqualToString:@"不设置提醒"]) {
+        label.textColor = KCOLOR_B5;
+    } else {
+        label.textColor = KCOLOR_B4;
+    }
 }
 
 #pragma mark - 选择日期
@@ -304,11 +380,11 @@
     if (K_TAG_BCLASS == _chooesTag) {
         UILabel *timeLabel = (UILabel *)[_bClassView viewWithTag:_chooesTag];
         timeLabel.text = showStr;
-        timeLabel.textColor = KCOLORGREEN_B4;
+        timeLabel.textColor = KCOLOR_B4;
     } else if (K_TAG_FCLASS == _chooesTag) {
         UILabel *timeLabel = (UILabel *)[_fClassView viewWithTag:_chooesTag];
         timeLabel.text = showStr;
-        timeLabel.textColor = KCOLORGREEN_B4;
+        timeLabel.textColor = KCOLOR_B4;
     }
     
 }

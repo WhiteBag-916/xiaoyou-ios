@@ -61,7 +61,7 @@
 //    UILabel * remindLabel = [[UILabel alloc] init];
     UILabel * remindLabel = [[UILabel alloc] initWithFrame:CGRectMake(SCALE_NUM(40), SCALE_NUM(5), SCREEN_WIDTH - SCALE_NUM(80), SCALE_NUM(30))];
     remindLabel.font = CONTENT_FONT(SCALE_NUM(12));
-    remindLabel.textColor = KCOLORGREEN_g1;
+    remindLabel.textColor = KCOLOR_g1;
     remindLabel.textAlignment = NSTextAlignmentLeft;
     remindLabel.text = @"请选择活动发布社团/学生组织";
     [headerView.contentView addSubview:remindLabel];

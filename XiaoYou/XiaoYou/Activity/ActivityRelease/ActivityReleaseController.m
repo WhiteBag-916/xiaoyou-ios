@@ -118,13 +118,13 @@ typedef enum : NSUInteger {
     if ([notification.object[@"isEnabel"] boolValue])
     {
         _releaseButton.enabled = YES;
-        _releaseButton.backgroundColor = KCOLORGREEN_g1;
+        _releaseButton.backgroundColor = KCOLOR_g1;
         [_releaseButton addTarget:self action:@selector(clickReleaseBtn) forControlEvents:UIControlEventTouchUpInside];
     }
     else
     {
         _releaseButton.enabled = NO;
-        _releaseButton.backgroundColor = KCOLORGREEN_B5;
+        _releaseButton.backgroundColor = KCOLOR_B5;
         [_releaseButton removeTarget:self action:@selector(clickReleaseBtn) forControlEvents:UIControlEventTouchUpInside];
     }
     
@@ -193,7 +193,7 @@ typedef enum : NSUInteger {
     UILabel * topLabel = [[UILabel alloc] init];
     topLabel.backgroundColor = [UIColor clearColor];
     topLabel.text = @"有创意的文案会吸引到更多参与者喔";
-    topLabel.textColor = KCOLORGREEN_B5;
+    topLabel.textColor = KCOLOR_B5;
     topLabel.font = CONTENT_FONT(12);
     [_scrollView addSubview:topLabel];
     [topLabel mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -220,7 +220,7 @@ typedef enum : NSUInteger {
     
     //Point1
     _point1View = [[UIView alloc] init];
-    _point1View.backgroundColor = KCOLORGREEN_g1;
+    _point1View.backgroundColor = KCOLOR_g1;
     _point1View.layer.cornerRadius = SCALE_NUM(4);
     _point1View.clipsToBounds = YES;
     [_scrollView addSubview:_point1View];
@@ -248,7 +248,7 @@ typedef enum : NSUInteger {
     _typeLabel1 = [[UILabel alloc]init];
     _typeLabel1.text = @"名称";
     _typeLabel1.textAlignment = NSTextAlignmentCenter;
-    _typeLabel1.textColor = KCOLORGREEN_g1;
+    _typeLabel1.textColor = KCOLOR_g1;
     _typeLabel1.font = CONTENT_FONT(12);
     [_scrollView addSubview:_typeLabel1];
     [_typeLabel1 mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -269,7 +269,7 @@ typedef enum : NSUInteger {
     
     //Point2
     _point2View = [[UIImageView alloc] init];
-    _point2View.backgroundColor = KCOLORGREEN_B5;
+    _point2View.backgroundColor = KCOLOR_B5;
     _point2View.layer.cornerRadius = SCALE_NUM(4);
     _point2View.clipsToBounds = YES;
     [_scrollView addSubview:_point2View];
@@ -297,7 +297,7 @@ typedef enum : NSUInteger {
     _typeLabel2 = [[UILabel alloc]init];
     _typeLabel2.text = @"描述";
     _typeLabel2.textAlignment = NSTextAlignmentCenter;
-    _typeLabel2.textColor = KCOLORGREEN_B3;
+    _typeLabel2.textColor = KCOLOR_B3;
     _typeLabel2.font = CONTENT_FONT(12);
     [_scrollView addSubview:_typeLabel2];
     [_typeLabel2 mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -318,7 +318,7 @@ typedef enum : NSUInteger {
     
     //Point3
     _point3View = [[UIImageView alloc] init];
-    _point3View.backgroundColor = KCOLORGREEN_B5;
+    _point3View.backgroundColor = KCOLOR_B5;
     _point3View.layer.cornerRadius = SCALE_NUM(4);
     _point3View.clipsToBounds = YES;
     [_scrollView addSubview:_point3View];
@@ -346,7 +346,7 @@ typedef enum : NSUInteger {
     _typeLabel3 = [[UILabel alloc]init];
     _typeLabel3.text = @"时间";
     _typeLabel3.textAlignment = NSTextAlignmentCenter;
-    _typeLabel3.textColor = KCOLORGREEN_B3;
+    _typeLabel3.textColor = KCOLOR_B3;
     _typeLabel3.font = CONTENT_FONT(12);
     [_scrollView addSubview:_typeLabel3];
     [_typeLabel3 mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -366,7 +366,7 @@ typedef enum : NSUInteger {
     [_btn3 addTarget:self action:@selector(clickeLabelButton:) forControlEvents:UIControlEventTouchUpInside];
     //Point4
     _point4View = [[UIImageView alloc] init];
-    _point4View.backgroundColor = KCOLORGREEN_B5;
+    _point4View.backgroundColor = KCOLOR_B5;
     _point4View.layer.cornerRadius = SCALE_NUM(4);
     _point4View.clipsToBounds = YES;
     [_scrollView addSubview:_point4View];
@@ -394,7 +394,7 @@ typedef enum : NSUInteger {
     _typeLabel4 = [[UILabel alloc]init];
     _typeLabel4.text = @"地点";
     _typeLabel4.textAlignment = NSTextAlignmentCenter;
-    _typeLabel4.textColor = KCOLORGREEN_B3;
+    _typeLabel4.textColor = KCOLOR_B3;
     _typeLabel4.font = CONTENT_FONT(12);
     [_scrollView addSubview:_typeLabel4];
     [_typeLabel4 mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -414,7 +414,7 @@ typedef enum : NSUInteger {
     [_btn4 addTarget:self action:@selector(clickeLabelButton:) forControlEvents:UIControlEventTouchUpInside];
     //Point5
     _point5View = [[UIImageView alloc] init];
-    _point5View.backgroundColor = KCOLORGREEN_B5;
+    _point5View.backgroundColor = KCOLOR_B5;
     _point5View.layer.cornerRadius = SCALE_NUM(4);
     _point5View.clipsToBounds = YES;
     [_scrollView addSubview:_point5View];
@@ -427,7 +427,7 @@ typedef enum : NSUInteger {
     _typeLabel5 = [[UILabel alloc]init];
     _typeLabel5.text = @"类型";
     _typeLabel5.textAlignment = NSTextAlignmentCenter;
-    _typeLabel5.textColor = KCOLORGREEN_B3;
+    _typeLabel5.textColor = KCOLOR_B3;
     _typeLabel5.font = CONTENT_FONT(12);
     [_scrollView addSubview:_typeLabel5];
     [_typeLabel5 mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -460,7 +460,7 @@ typedef enum : NSUInteger {
         }];
         
         _point6View = [[UIImageView alloc] init];
-        _point6View.backgroundColor = KCOLORGREEN_B5;
+        _point6View.backgroundColor = KCOLOR_B5;
         _point6View.layer.cornerRadius = SCALE_NUM(4);
         _point6View.clipsToBounds = YES;
         [_scrollView addSubview:_point6View];
@@ -472,7 +472,7 @@ typedef enum : NSUInteger {
         _typeLabel6 = [[UILabel alloc]init];
         _typeLabel6.text = @"审核";
         _typeLabel6.textAlignment = NSTextAlignmentCenter;
-        _typeLabel6.textColor = KCOLORGREEN_B3;
+        _typeLabel6.textColor = KCOLOR_B3;
         _typeLabel6.font = CONTENT_FONT(12);
         [_scrollView addSubview:_typeLabel6];
         [_typeLabel6 mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -495,7 +495,7 @@ typedef enum : NSUInteger {
     
     //这咕噜你好好想想
     UIView * backgroundView = [[UIView alloc] init];
-    backgroundView.backgroundColor = KCOLORGREEN_B2;
+    backgroundView.backgroundColor = KCOLOR_B2;
     backgroundView.layer.cornerRadius = SCALE_NUM(17);
     backgroundView.clipsToBounds = YES;
     [_scrollView addSubview:backgroundView];
@@ -518,7 +518,7 @@ typedef enum : NSUInteger {
     
     UILabel * remindLabel = [[UILabel alloc] init];
     remindLabel.text = @"兹事体大, 别选错啦";
-    remindLabel.textColor = KCOLORGREEN_g1;
+    remindLabel.textColor = KCOLOR_g1;
     remindLabel.font = CONTENT_FONT(12);
     [backgroundView addSubview:remindLabel];
     [remindLabel mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -532,7 +532,7 @@ typedef enum : NSUInteger {
     //发布按钮
     _releaseButton = [[UIButton alloc] init];
     _releaseButton.hidden = NO;
-    _releaseButton.backgroundColor = KCOLORGREEN_B5;
+    _releaseButton.backgroundColor = KCOLOR_B5;
     [_releaseButton setTitle:@"发布" forState:UIControlStateNormal];
     [_releaseButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [self.view addSubview:_releaseButton];
@@ -691,88 +691,88 @@ typedef enum : NSUInteger {
 {
     switch (pointNum) {
         case POINT1:
-            _point1View.backgroundColor = KCOLORGREEN_g1;
-            _point2View.backgroundColor = KCOLORGREEN_B5;
-            _point3View.backgroundColor = KCOLORGREEN_B5;
-            _point4View.backgroundColor = KCOLORGREEN_B5;
-            _point5View.backgroundColor = KCOLORGREEN_B5;
-            _point6View.backgroundColor = KCOLORGREEN_B5;
-            _typeLabel6.textColor = KCOLORGREEN_B3;
-            _typeLabel1.textColor = KCOLORGREEN_g1;
-            _typeLabel2.textColor = KCOLORGREEN_B3;
-            _typeLabel3.textColor = KCOLORGREEN_B3;
-            _typeLabel4.textColor = KCOLORGREEN_B3;
-            _typeLabel5.textColor = KCOLORGREEN_B3;
+            _point1View.backgroundColor = KCOLOR_g1;
+            _point2View.backgroundColor = KCOLOR_B5;
+            _point3View.backgroundColor = KCOLOR_B5;
+            _point4View.backgroundColor = KCOLOR_B5;
+            _point5View.backgroundColor = KCOLOR_B5;
+            _point6View.backgroundColor = KCOLOR_B5;
+            _typeLabel6.textColor = KCOLOR_B3;
+            _typeLabel1.textColor = KCOLOR_g1;
+            _typeLabel2.textColor = KCOLOR_B3;
+            _typeLabel3.textColor = KCOLOR_B3;
+            _typeLabel4.textColor = KCOLOR_B3;
+            _typeLabel5.textColor = KCOLOR_B3;
             break;
         case POINT2:
-            _point2View.backgroundColor = KCOLORGREEN_g1;
-            _point1View.backgroundColor = KCOLORGREEN_B5;
-            _point3View.backgroundColor = KCOLORGREEN_B5;
-            _point4View.backgroundColor = KCOLORGREEN_B5;
-            _point5View.backgroundColor = KCOLORGREEN_B5;
-            _point6View.backgroundColor = KCOLORGREEN_B5;
-            _typeLabel6.textColor = KCOLORGREEN_B3;
-            _typeLabel2.textColor = KCOLORGREEN_g1;
-            _typeLabel1.textColor = KCOLORGREEN_B3;
-            _typeLabel3.textColor = KCOLORGREEN_B3;
-            _typeLabel4.textColor = KCOLORGREEN_B3;
-            _typeLabel5.textColor = KCOLORGREEN_B3;
+            _point2View.backgroundColor = KCOLOR_g1;
+            _point1View.backgroundColor = KCOLOR_B5;
+            _point3View.backgroundColor = KCOLOR_B5;
+            _point4View.backgroundColor = KCOLOR_B5;
+            _point5View.backgroundColor = KCOLOR_B5;
+            _point6View.backgroundColor = KCOLOR_B5;
+            _typeLabel6.textColor = KCOLOR_B3;
+            _typeLabel2.textColor = KCOLOR_g1;
+            _typeLabel1.textColor = KCOLOR_B3;
+            _typeLabel3.textColor = KCOLOR_B3;
+            _typeLabel4.textColor = KCOLOR_B3;
+            _typeLabel5.textColor = KCOLOR_B3;
             break;
         case POINT3:
-            _point3View.backgroundColor = KCOLORGREEN_g1;
-            _point2View.backgroundColor = KCOLORGREEN_B5;
-            _point1View.backgroundColor = KCOLORGREEN_B5;
-            _point4View.backgroundColor = KCOLORGREEN_B5;
-            _point5View.backgroundColor = KCOLORGREEN_B5;
-            _point6View.backgroundColor = KCOLORGREEN_B5;
-            _typeLabel6.textColor = KCOLORGREEN_B3;
-            _typeLabel3.textColor = KCOLORGREEN_g1;
-            _typeLabel2.textColor = KCOLORGREEN_B3;
-            _typeLabel1.textColor = KCOLORGREEN_B3;
-            _typeLabel4.textColor = KCOLORGREEN_B3;
-            _typeLabel5.textColor = KCOLORGREEN_B3;
+            _point3View.backgroundColor = KCOLOR_g1;
+            _point2View.backgroundColor = KCOLOR_B5;
+            _point1View.backgroundColor = KCOLOR_B5;
+            _point4View.backgroundColor = KCOLOR_B5;
+            _point5View.backgroundColor = KCOLOR_B5;
+            _point6View.backgroundColor = KCOLOR_B5;
+            _typeLabel6.textColor = KCOLOR_B3;
+            _typeLabel3.textColor = KCOLOR_g1;
+            _typeLabel2.textColor = KCOLOR_B3;
+            _typeLabel1.textColor = KCOLOR_B3;
+            _typeLabel4.textColor = KCOLOR_B3;
+            _typeLabel5.textColor = KCOLOR_B3;
             break;
         case POINT4:
-            _point4View.backgroundColor = KCOLORGREEN_g1;
-            _point2View.backgroundColor = KCOLORGREEN_B5;
-            _point3View.backgroundColor = KCOLORGREEN_B5;
-            _point1View.backgroundColor = KCOLORGREEN_B5;
-            _point5View.backgroundColor = KCOLORGREEN_B5;
-            _point6View.backgroundColor = KCOLORGREEN_B5;
-            _typeLabel6.textColor = KCOLORGREEN_B3;
-            _typeLabel4.textColor = KCOLORGREEN_g1;
-            _typeLabel2.textColor = KCOLORGREEN_B3;
-            _typeLabel3.textColor = KCOLORGREEN_B3;
-            _typeLabel1.textColor = KCOLORGREEN_B3;
-            _typeLabel5.textColor = KCOLORGREEN_B3;
+            _point4View.backgroundColor = KCOLOR_g1;
+            _point2View.backgroundColor = KCOLOR_B5;
+            _point3View.backgroundColor = KCOLOR_B5;
+            _point1View.backgroundColor = KCOLOR_B5;
+            _point5View.backgroundColor = KCOLOR_B5;
+            _point6View.backgroundColor = KCOLOR_B5;
+            _typeLabel6.textColor = KCOLOR_B3;
+            _typeLabel4.textColor = KCOLOR_g1;
+            _typeLabel2.textColor = KCOLOR_B3;
+            _typeLabel3.textColor = KCOLOR_B3;
+            _typeLabel1.textColor = KCOLOR_B3;
+            _typeLabel5.textColor = KCOLOR_B3;
             break;
         case POINT5:
-            _point5View.backgroundColor = KCOLORGREEN_g1;
-            _point2View.backgroundColor = KCOLORGREEN_B5;
-            _point3View.backgroundColor = KCOLORGREEN_B5;
-            _point4View.backgroundColor = KCOLORGREEN_B5;
-            _point1View.backgroundColor = KCOLORGREEN_B5;
-            _point6View.backgroundColor = KCOLORGREEN_B5;
-            _typeLabel6.textColor = KCOLORGREEN_B3;
-            _typeLabel5.textColor = KCOLORGREEN_g1;
-            _typeLabel2.textColor = KCOLORGREEN_B3;
-            _typeLabel3.textColor = KCOLORGREEN_B3;
-            _typeLabel4.textColor = KCOLORGREEN_B3;
-            _typeLabel1.textColor = KCOLORGREEN_B3;
+            _point5View.backgroundColor = KCOLOR_g1;
+            _point2View.backgroundColor = KCOLOR_B5;
+            _point3View.backgroundColor = KCOLOR_B5;
+            _point4View.backgroundColor = KCOLOR_B5;
+            _point1View.backgroundColor = KCOLOR_B5;
+            _point6View.backgroundColor = KCOLOR_B5;
+            _typeLabel6.textColor = KCOLOR_B3;
+            _typeLabel5.textColor = KCOLOR_g1;
+            _typeLabel2.textColor = KCOLOR_B3;
+            _typeLabel3.textColor = KCOLOR_B3;
+            _typeLabel4.textColor = KCOLOR_B3;
+            _typeLabel1.textColor = KCOLOR_B3;
             break;
         case POINT6:
-            _point6View.backgroundColor = KCOLORGREEN_g1;
-            _point2View.backgroundColor = KCOLORGREEN_B5;
-            _point3View.backgroundColor = KCOLORGREEN_B5;
-            _point4View.backgroundColor = KCOLORGREEN_B5;
-            _point1View.backgroundColor = KCOLORGREEN_B5;
-            _point5View.backgroundColor = KCOLORGREEN_B5;
-            _typeLabel6.textColor = KCOLORGREEN_g1;
-            _typeLabel5.textColor = KCOLORGREEN_B3;
-            _typeLabel2.textColor = KCOLORGREEN_B3;
-            _typeLabel3.textColor = KCOLORGREEN_B3;
-            _typeLabel4.textColor = KCOLORGREEN_B3;
-            _typeLabel1.textColor = KCOLORGREEN_B3;
+            _point6View.backgroundColor = KCOLOR_g1;
+            _point2View.backgroundColor = KCOLOR_B5;
+            _point3View.backgroundColor = KCOLOR_B5;
+            _point4View.backgroundColor = KCOLOR_B5;
+            _point1View.backgroundColor = KCOLOR_B5;
+            _point5View.backgroundColor = KCOLOR_B5;
+            _typeLabel6.textColor = KCOLOR_g1;
+            _typeLabel5.textColor = KCOLOR_B3;
+            _typeLabel2.textColor = KCOLOR_B3;
+            _typeLabel3.textColor = KCOLOR_B3;
+            _typeLabel4.textColor = KCOLOR_B3;
+            _typeLabel1.textColor = KCOLOR_B3;
             break;
             
         default:

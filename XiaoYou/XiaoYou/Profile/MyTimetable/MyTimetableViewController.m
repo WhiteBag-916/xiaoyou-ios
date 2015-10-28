@@ -13,6 +13,7 @@
 
 @interface MyTimetableViewController ()
 
+@property (nonatomic, strong) UIView *titleView;
 @property (nonatomic, strong) UIButton *titleButton;
 @property (nonatomic, strong) MyTimetableHeadView *myTimetableHeadView;
 @property (nonatomic, strong) MyTimetableView *myTimetableView;
@@ -33,14 +34,14 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-
-    [self showCustomNavigationBackButton];
+    
     [self initNavigationTitle];
     
     _myTimetableHeadView = [[MyTimetableHeadView alloc] init];
     [self.view addSubview:_myTimetableHeadView];
     [_myTimetableHeadView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.top.right.equalTo(self.view);
+        make.left.right.equalTo(_titleView);
+        make.top.equalTo(_titleView.mas_bottom);
         make.height.mas_equalTo(SCALE_NUM(40));
     }];
     
@@ -53,23 +54,49 @@
 }
 
 - (void)initNavigationTitle {
+    _titleView = [UIView new];
+    _titleView.backgroundColor = KCOLOR_455A64;
+    [self.view addSubview:_titleView];
+    [_titleView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.top.right.equalTo(self.view);
+        make.height.mas_equalTo(64);
+    }];
+    
+    UIButton *leftButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [leftButton setImage:[UIImage imageNamed:@"common_back"] forState:UIControlStateNormal];
+    [leftButton setImage:[UIImage imageNamed:@"common_back"] forState:UIControlStateHighlighted];
+    [leftButton setImageEdgeInsets:UIEdgeInsetsMake(13, 15, 13, 15)];
+    [leftButton addTarget:self action:@selector(popVC) forControlEvents:UIControlEventTouchUpInside];
+    [_titleView addSubview:leftButton];
+    [leftButton mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.bottom.equalTo(_titleView);
+        make.height.mas_equalTo(40);
+        make.width.mas_equalTo(40);
+    }];
+    
     _titleButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    _titleButton.frame = CGRectMake(0, 0, 100, 40);
     [_titleButton setImage:[UIImage imageNamed:@"icon_arrow"] forState:UIControlStateNormal];
     [_titleButton setTitle:@"第六周" forState:UIControlStateNormal];
-    [_titleButton setImageEdgeInsets:UIEdgeInsetsMake(0, SCALE_NUM(65), 0, 0)];
-    [_titleButton setTitleEdgeInsets:UIEdgeInsetsMake(0, 0, 0, SCALE_NUM(15))];
+    [_titleButton setImageEdgeInsets:UIEdgeInsetsMake(0, SCALE_NUM(60), 0, 0)];
+    [_titleButton setTitleEdgeInsets:UIEdgeInsetsMake(0, 0, 0, SCALE_NUM(60))];
     [_titleButton addTarget:self action:@selector(showChooseWeek) forControlEvents:UIControlEventTouchUpInside];
-    
-    self.navigationItem.titleView = _titleButton;
+    [_titleView addSubview:_titleButton];
+    [_titleButton mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(leftButton.mas_right).offset(10);
+        make.right.mas_equalTo(-leftButton.width-10);
+        make.height.mas_equalTo(40);
+        make.bottom.equalTo(_titleView);
+    }];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
-    self.navigationController.navigationBarHidden = NO;
-    
     [_myTimetableHeadView resetSelectDay:4];
+}
+
+- (void)popVC {
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 //选择第几周

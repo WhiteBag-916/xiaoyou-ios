@@ -240,7 +240,7 @@
     //查看合作商家
     UILabel * moreMerchantsLabel = [[UILabel alloc] init];
     moreMerchantsLabel.userInteractionEnabled = YES;
-    moreMerchantsLabel.textColor = KCOLORGREEN_W1;
+    moreMerchantsLabel.textColor = KCOLOR_W1;
     moreMerchantsLabel.font = CONTENT_FONT(12);
     moreMerchantsLabel.text = @"查看合作商家";
     moreMerchantsLabel.backgroundColor = [UIColor clearColor];

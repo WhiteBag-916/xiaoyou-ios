@@ -66,7 +66,7 @@ NSString *const kContactsInfoDetailTableViewCell = @"ContactsInfoDetailTableView
         make.left.bottom.right.equalTo(self.contentView);
         make.height.mas_equalTo(1);
     }];
-    _line.backgroundColor = KCOLORGREEN_e6ebea;
+    _line.backgroundColor = KCOLOR_e6ebea;
 }
 
 -(void)setCellInfo:(NSDictionary *) dic hiddenLine:(BOOL)hiddenLine
@@ -90,7 +90,7 @@ NSString *const kContactsInfoDetailTableViewCell = @"ContactsInfoDetailTableView
     }
     if ([dic[@"equal"] boolValue])
     {
-        _contentLabel.textColor = KCOLORGREEN_009688;
+        _contentLabel.textColor = KCOLOR_009688;
     }
     else
     {

@@ -170,7 +170,7 @@ NSString *const kContactsTableViewCell = @"ContactsTableViewCell";
         SKTag *tag = [SKTag tagWithText:[tempTag name]];
         tag.font = CONTENT_FONT(10);
         if (isRelate) {
-            tag.textColor = KCOLORGREEN_009688;
+            tag.textColor = KCOLOR_009688;
         } else {
             tag.textColor = KCOLORWHITE_696969;
         }
@@ -182,7 +182,7 @@ NSString *const kContactsTableViewCell = @"ContactsTableViewCell";
     if ([modelDic[@"icon"] isEqualToString:@""]) {
         if ([[modelDic[@"linkType"] stringValue] isEqualToString:@"2"])
         {
-            _headImageView.backgroundColor = KCOLORGREEN_009688;
+            _headImageView.backgroundColor = KCOLOR_009688;
             _defaultLabel.text = [modelDic[@"name"] substringWithRange:NSMakeRange(0, 1)];
         }
         else

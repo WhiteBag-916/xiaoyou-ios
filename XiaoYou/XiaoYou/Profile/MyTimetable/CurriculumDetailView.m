@@ -78,7 +78,7 @@
     }];
     
     UILabel *courseLabel = [YUtils initLabel:CONTENT_FONT(12)
-                                       color:KCOLORGREEN_B5
+                                       color:KCOLOR_B5
                                         text:@"课程名称："
                                    alignment:NSTextAlignmentLeft];
     [self.contentView addSubview:courseLabel];
@@ -90,7 +90,7 @@
     }];
     
     _courseName = [YUtils initLabel:CONTENT_FONT(12)
-                              color:KCOLORGREEN_B3
+                              color:KCOLOR_B3
                                text:@"大学汉语"
                           alignment:NSTextAlignmentLeft];
     [self.contentView addSubview:_courseName];
@@ -111,7 +111,7 @@
     }];
     
     UILabel *lecturerLabel = [YUtils initLabel:CONTENT_FONT(12)
-                                         color:KCOLORGREEN_B5
+                                         color:KCOLOR_B5
                                           text:@"授课人："
                                      alignment:NSTextAlignmentLeft];
     [self.contentView addSubview:lecturerLabel];
@@ -123,7 +123,7 @@
     }];
     
     _lecturerName = [YUtils initLabel:CONTENT_FONT(12)
-                                color:KCOLORGREEN_B3
+                                color:KCOLOR_B3
                                  text:@"王中磊"
                             alignment:NSTextAlignmentLeft];
     [self.contentView addSubview:_lecturerName];
@@ -144,7 +144,7 @@
     }];
     
     UILabel *timeLeftLabel = [YUtils initLabel:CONTENT_FONT(12)
-                                         color:KCOLORGREEN_B5
+                                         color:KCOLOR_B5
                                           text:@"上课时间："
                                      alignment:NSTextAlignmentLeft];
     [self.contentView addSubview:timeLeftLabel];
@@ -156,7 +156,7 @@
     }];
     
     _timeLabel = [YUtils initLabel:CONTENT_FONT(12)
-                             color:KCOLORGREEN_B3
+                             color:KCOLOR_B3
                               text:@"9:00-10:30"
                          alignment:NSTextAlignmentLeft];
     [self.contentView addSubview:_timeLabel];
@@ -177,7 +177,7 @@
     }];
     
     UILabel *weekLeftLabel = [YUtils initLabel:CONTENT_FONT(12)
-                                             color:KCOLORGREEN_B5
+                                             color:KCOLOR_B5
                                               text:@"周次："
                                          alignment:NSTextAlignmentLeft];
     [self.contentView addSubview:weekLeftLabel];
@@ -189,7 +189,7 @@
     }];
     
     _weekLabel = [YUtils initLabel:CONTENT_FONT(12)
-                                 color:KCOLORGREEN_B3
+                                 color:KCOLOR_B3
                                   text:@"双周，每周三"
                              alignment:NSTextAlignmentLeft];
     [self.contentView addSubview:_weekLabel];
@@ -211,7 +211,7 @@
     }];
     
     UILabel *locationLeftLabel = [YUtils initLabel:CONTENT_FONT(12)
-                                             color:KCOLORGREEN_B5
+                                             color:KCOLOR_B5
                                               text:@"上课地点："
                                          alignment:NSTextAlignmentLeft];
     [self.contentView addSubview:locationLeftLabel];
@@ -223,7 +223,7 @@
     }];
     
     _locationLabel = [YUtils initLabel:CONTENT_FONT(12)
-                                 color:KCOLORGREEN_B3
+                                 color:KCOLOR_B3
                                   text:@"5号教学楼 5132室"
                              alignment:NSTextAlignmentLeft];
     [self.contentView addSubview:_locationLabel];
@@ -244,7 +244,7 @@
     }];
     
     UILabel *departmentsLabel = [YUtils initLabel:CONTENT_FONT(12)
-                                            color:KCOLORGREEN_B5
+                                            color:KCOLOR_B5
                                              text:@"院系："
                                         alignment:NSTextAlignmentLeft];
     [self.contentView addSubview:departmentsLabel];
@@ -256,7 +256,7 @@
     }];
     
     _departmentsName = [YUtils initLabel:CONTENT_FONT(12)
-                                   color:KCOLORGREEN_B3
+                                   color:KCOLOR_B3
                                     text:@"汉语言文学系"
                                alignment:NSTextAlignmentLeft];
     [self.contentView addSubview:_departmentsName];

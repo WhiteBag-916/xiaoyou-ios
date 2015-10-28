@@ -146,7 +146,7 @@ NSString *const kGroupApplyTableViewCell = @"GroupApplyTableViewCellId";
     _afterDealButton = [[UIButton alloc] init];
     _afterDealButton.titleLabel.font = CONTENT_FONT(14);
     _afterDealButton.tag = BIG_BUTTON;
-    _afterDealButton.backgroundColor = KCOLORGREEN_009688;
+    _afterDealButton.backgroundColor = KCOLOR_009688;
     [_afterDealButton setTitle:@"聊聊呗" forState:UIControlStateNormal];
     [_afterDealButton addTarget:self action:@selector(clickDealButton:) forControlEvents:UIControlEventTouchUpInside];
     [self.contentView addSubview:_afterDealButton];
@@ -176,7 +176,7 @@ NSString *const kGroupApplyTableViewCell = @"GroupApplyTableViewCellId";
     _passButton = [[UIButton alloc] init];
     _passButton.titleLabel.font = CONTENT_FONT(14);
     _passButton.tag = PASS_BUTTON;
-    _passButton.backgroundColor = KCOLORGREEN_009688;
+    _passButton.backgroundColor = KCOLOR_009688;
     [_passButton setTitle:@"通过" forState:UIControlStateNormal];
     [_passButton addTarget:self action:@selector(clickDealButton:) forControlEvents:UIControlEventTouchUpInside];
     [self.contentView addSubview:_passButton];
@@ -230,7 +230,7 @@ NSString *const kGroupApplyTableViewCell = @"GroupApplyTableViewCellId";
             tag.bgColor = [UIColor clearColor];
             tag.font = CONTENT_FONT(10);
             if (isRelate) {
-                tag.textColor = KCOLORGREEN_009688;
+                tag.textColor = KCOLOR_009688;
             } else {
                 tag.textColor = KCOLORWHITE_696969;
             }
@@ -255,7 +255,7 @@ NSString *const kGroupApplyTableViewCell = @"GroupApplyTableViewCellId";
         //已同意
         _afterDealButton.hidden = NO;
         [_afterDealButton setTitle:@"已通过，聊聊呗" forState:UIControlStateNormal];
-        _afterDealButton.backgroundColor = KCOLORGREEN_009688;
+        _afterDealButton.backgroundColor = KCOLOR_009688;
         _afterDealButton.userInteractionEnabled = YES;
         _refuseButton.hidden = YES;
         _passButton.hidden = YES;

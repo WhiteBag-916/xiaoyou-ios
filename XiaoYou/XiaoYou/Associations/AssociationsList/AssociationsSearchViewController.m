@@ -49,7 +49,7 @@
 
 - (void)initView {
     UIView *headView = [UIView new];
-    headView.backgroundColor = KCOLORGREEN_455A64;
+    headView.backgroundColor = KCOLOR_455A64;
     [self.view addSubview:headView];
     [headView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.top.right.equalTo(self.view);

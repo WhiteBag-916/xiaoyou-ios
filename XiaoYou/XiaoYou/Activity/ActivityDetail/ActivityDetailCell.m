@@ -127,7 +127,7 @@
     _titleLabel.text = @"校级活动公告";
     [self.contentView addSubview:_titleLabel];
     _titleLabel.font = CONTENT_FONT(15);
-    _titleLabel.textColor = KCOLORGREEN_B4;
+    _titleLabel.textColor = KCOLOR_B4;
     [_titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.height.mas_equalTo(SCALE_NUM(15));
         make.left.equalTo(_headImageView.mas_right).offset(SCALE_NUM(12));
@@ -136,7 +136,7 @@
     
     
     _sepLineView = [[UIView alloc]init];
-    _sepLineView.backgroundColor = KCOLORGREEN_B5;
+    _sepLineView.backgroundColor = KCOLOR_B5;
     [self.contentView addSubview:_sepLineView];
     [_sepLineView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(_headImageView.mas_bottom).offset(SCALE_NUM(12));
@@ -178,7 +178,7 @@
     
     _descriptionLabel = [[UILabel alloc]init];
     _descriptionLabel.font = CONTENT_FONT(13);
-    _descriptionLabel.textColor = KCOLORGREEN_B3;
+    _descriptionLabel.textColor = KCOLOR_B3;
     if (type == DETAIL_INFO) {
         _descriptionLabel.numberOfLines = 0;
         _descriptionLabel.lineBreakMode = NSLineBreakByWordWrapping;
@@ -211,7 +211,7 @@
     [self.contentView addSubview:_staticDeadLineDes];
     _staticDeadLineDes.font = CONTENT_FONT(13);
     _staticDeadLineDes.text = @"报名截止时间";
-    _staticDeadLineDes.textColor = KCOLORGREEN_B3;
+    _staticDeadLineDes.textColor = KCOLOR_B3;
     [_staticDeadLineDes mas_makeConstraints:^(MASConstraintMaker *make) {
         make.height.mas_equalTo(SCALE_NUM(13));
         make.leading.mas_equalTo(SCALE_NUM(66));
@@ -220,7 +220,7 @@
     
     _deadLineTimeLabel = [[UILabel alloc]init];
     [self.contentView addSubview:_deadLineTimeLabel];
-    _deadLineTimeLabel.textColor = KCOLORGREEN_B3;
+    _deadLineTimeLabel.textColor = KCOLOR_B3;
     _deadLineTimeLabel.font = CONTENT_FONT(13);
     _deadLineTimeLabel.text = @"15/10/25 06:00";
     [_deadLineTimeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -231,7 +231,7 @@
     
     _staticActivityTimeDes = [[UILabel alloc]init];
     [self.contentView addSubview:_staticActivityTimeDes];
-    _staticActivityTimeDes.textColor = KCOLORGREEN_B3;
+    _staticActivityTimeDes.textColor = KCOLOR_B3;
     _staticActivityTimeDes.font = CONTENT_FONT(13);
     _staticActivityTimeDes.text = @"活动开始时间";
     [_staticActivityTimeDes mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -242,7 +242,7 @@
     
     _activityTimeLabel = [[UILabel alloc]init];
     [self.contentView addSubview:_activityTimeLabel];
-    _activityTimeLabel.textColor = KCOLORGREEN_B3;
+    _activityTimeLabel.textColor = KCOLOR_B3;
     _activityTimeLabel.font = CONTENT_FONT(13);
     _activityTimeLabel.text = @"15/10/05 06:00";
     [_activityTimeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -254,7 +254,7 @@
     _staticActivityEndTimeDes = [[UILabel alloc]init];
     [self.contentView addSubview:_staticActivityEndTimeDes];
     _staticActivityEndTimeDes.font = CONTENT_FONT(13);
-    _staticActivityEndTimeDes.textColor = KCOLORGREEN_B3;
+    _staticActivityEndTimeDes.textColor = KCOLOR_B3;
     _staticActivityEndTimeDes.text = @"活动结束时间";
     [_staticActivityEndTimeDes mas_makeConstraints:^(MASConstraintMaker *make) {
         make.height.mas_equalTo(SCALE_NUM(13));
@@ -264,7 +264,7 @@
     
     _activityEndTimeLabel = [[UILabel alloc]init];
     [self.contentView addSubview:_activityEndTimeLabel];
-    _activityEndTimeLabel.textColor = KCOLORGREEN_B3;
+    _activityEndTimeLabel.textColor = KCOLOR_B3;
     _activityEndTimeLabel.font = CONTENT_FONT(13);
     _activityEndTimeLabel.text = @"15/10/25 06:00";
     [_activityEndTimeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -283,7 +283,7 @@
     _locationLabel = [[UILabel alloc]init];
     _locationLabel.text = @"大脚超市门口";
     [self.contentView addSubview:_locationLabel];
-    _locationLabel.textColor = KCOLORGREEN_B3;
+    _locationLabel.textColor = KCOLOR_B3;
     _locationLabel.font = CONTENT_FONT(13);
     [_locationLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         //make.height.mas_equalTo(SCALE_NUM(13));
@@ -303,7 +303,7 @@
     [self.contentView addSubview:_categoryLabel];
     _categoryLabel.font = CONTENT_FONT(13);
     _categoryLabel.text = @"学术类";
-    _categoryLabel.textColor = KCOLORGREEN_B3;
+    _categoryLabel.textColor = KCOLOR_B3;
     [_categoryLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.height.mas_equalTo(SCALE_NUM(13));
         make.left.equalTo(_locationLabel);

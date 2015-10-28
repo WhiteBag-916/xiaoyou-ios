@@ -40,7 +40,7 @@ NSString *const kChooseSchoolTableViewCell = @"ChooseSchoolTableViewCellId";
         }];
         line.backgroundColor = [UIColor hexChangeFloat:@"c0c2c1"];
         
-        self.contentView.backgroundColor = KCOLORGREEN_e6ebea;
+        self.contentView.backgroundColor = KCOLOR_e6ebea;
     }
     
     return self;

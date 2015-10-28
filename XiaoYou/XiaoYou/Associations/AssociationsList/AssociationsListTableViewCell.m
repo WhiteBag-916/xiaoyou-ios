@@ -91,7 +91,7 @@ NSString *const kAssociationsListTableViewCell = @"AssociationsListTableViewCell
     
     //3
     _nameLabel = [YUtils initLabel:CONTENT_FONT(14)
-                             color:KCOLORGREEN_455A64
+                             color:KCOLOR_455A64
                               text:@"网球社网球社网球社网球社网球社网球社网球社网球社网球社网球社网球社网球社"
                              frame:CGRectZero
                          alignment:NSTextAlignmentLeft];
@@ -139,7 +139,7 @@ NSString *const kAssociationsListTableViewCell = @"AssociationsListTableViewCell
     
     //6
     _keywordsLabel = [YUtils initLabel:CONTENT_FONT(10)
-                             color:KCOLORGREEN_455A64
+                             color:KCOLOR_455A64
                               text:@""
                              frame:CGRectZero
                          alignment:NSTextAlignmentLeft];
@@ -191,7 +191,7 @@ NSString *const kAssociationsListTableViewCell = @"AssociationsListTableViewCell
         _headImageView.backgroundColor = [UIColor clearColor];
     } else {
         _defaultLabel.hidden = NO;
-        _headImageView.backgroundColor = KCOLORGREEN_009688;
+        _headImageView.backgroundColor = KCOLOR_009688;
         _defaultLabel.text = [model.groupName substringWithRange:NSMakeRange(0, 1)];
     }
     

@@ -34,7 +34,7 @@ NSString *const KTagListTableViewCell = @"TagListTableViewCellId";
             make.height.mas_equalTo(KLABELHEIGHT);
         }];
         self.backgroundColor = [UIColor clearColor];
-        _tagLabel.backgroundColor = KCOLORGREEN_009688;
+        _tagLabel.backgroundColor = KCOLOR_009688;
         _tagLabel.layer.cornerRadius = KLABELRADIUS;
         _tagLabel.clipsToBounds = true;
         

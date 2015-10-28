@@ -35,7 +35,7 @@ NSString *const kScanfResultTableViewCell = @"ScanfResultTableViewCellId";
     _contentLabel.font = CONTENT_FONT(SCALE_NUM(12));
     _contentLabel.numberOfLines = 0;
     _contentLabel.textAlignment = NSTextAlignmentCenter;
-    _contentLabel.textColor = KCOLORGREEN_B4;
+    _contentLabel.textColor = KCOLOR_B4;
     [self.contentView addSubview:_contentLabel];
     [_contentLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.right.mas_equalTo(0);
@@ -49,13 +49,13 @@ NSString *const kScanfResultTableViewCell = @"ScanfResultTableViewCellId";
     if (isHeader)
     {
         _contentLabel.font = CONTENT_FONT(SCALE_NUM(16));
-        _contentLabel.textColor = KCOLORGREEN_g1;
+        _contentLabel.textColor = KCOLOR_g1;
         _contentLabel.text = showStr;
     }
     else
     {
         _contentLabel.font = CONTENT_FONT(SCALE_NUM(12));
-        _contentLabel.textColor = KCOLORGREEN_B4;
+        _contentLabel.textColor = KCOLOR_B4;
         _contentLabel.text = showStr;
     }
 }

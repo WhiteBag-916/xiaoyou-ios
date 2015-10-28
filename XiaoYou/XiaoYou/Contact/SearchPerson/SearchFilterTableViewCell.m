@@ -23,7 +23,7 @@ NSString *const kSearchFilterTableViewCell = @"SearchFilterTableViewCellId";
     
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
         _nameLabel = [YUtils initLabel:CONTENT_FONT(15)
-                                 color:KCOLORGREEN_79909e
+                                 color:KCOLOR_79909e
                                   text:@""
                                  frame:CGRectZero
                              alignment:NSTextAlignmentLeft];
@@ -46,9 +46,9 @@ NSString *const kSearchFilterTableViewCell = @"SearchFilterTableViewCellId";
     
     if (isSelect) {
         _nameLabel.textColor = KCOLORWHITE;
-        self.contentView.backgroundColor = KCOLORGREEN_79909e;
+        self.contentView.backgroundColor = KCOLOR_79909e;
     } else {
-        _nameLabel.textColor = KCOLORGREEN_79909e;
+        _nameLabel.textColor = KCOLOR_79909e;
         self.contentView.backgroundColor = KCOLORWHITE;
     }
 }

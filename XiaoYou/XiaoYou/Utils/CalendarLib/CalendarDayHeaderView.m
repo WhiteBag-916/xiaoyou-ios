@@ -38,12 +38,12 @@
 - (void) _updateLabelColorState{
     
     if(self.selected){
-        self.backgroundColor = self.today ? KCOLORGREEN_g1 : KCOLORGREEN_B5;
+        self.backgroundColor = self.today ? KCOLOR_g1 : KCOLOR_B5;
         self.textColor = [UIColor whiteColor];
         self.font = [UIFont boldSystemFontOfSize:DAY_FONT_SIZE];
     }else{
-        UIColor *clr = self.weekend ? KCOLORGREEN_B5 : [UIColor blackColor];
-        self.textColor = self.today ? KCOLORGREEN_g1 : clr;
+        UIColor *clr = self.weekend ? KCOLOR_B5 : [UIColor blackColor];
+        self.textColor = self.today ? KCOLOR_g1 : clr;
         self.backgroundColor = [UIColor clearColor];
         self.font = [UIFont systemFontOfSize:DAY_FONT_SIZE];
     }
@@ -142,7 +142,7 @@
         UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(minX + cnt*(DAY_LABEL_WIDTH+per) , 0, DAY_LABEL_WIDTH, 20)];
         label.font = [UIFont systemFontOfSize:10];
         label.text = str;
-        label.textColor = cnt == 0 || cnt == 6 ? KCOLORGREEN_B5 : [UIColor blackColor];
+        label.textColor = cnt == 0 || cnt == 6 ? KCOLOR_B5 : [UIColor blackColor];
         label.textAlignment = NSTextAlignmentCenter;
         label.userInteractionEnabled = NO;
         [self addSubview:label];

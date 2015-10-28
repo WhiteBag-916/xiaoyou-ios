@@ -67,7 +67,7 @@
             SKTag *tag = [SKTag tagWithText:[tags[i] name]];
             tag.font = CONTENT_FONT(10);
             if (isRelate) {
-                tag.textColor = KCOLORGREEN_009688;
+                tag.textColor = KCOLOR_009688;
             } else {
                 tag.textColor = KCOLORWHITE_696969;
             }
@@ -85,7 +85,7 @@
         SKTag *tag = [SKTag tagWithText:labelName[i]];
         tag.font = CONTENT_FONT(10);
         tag.textColor = KCOLORWHITE_696969;
-        tag.textColor = KCOLORGREEN_009688;
+        tag.textColor = KCOLOR_009688;
         [_tagContent addTag:tag];
     }
     

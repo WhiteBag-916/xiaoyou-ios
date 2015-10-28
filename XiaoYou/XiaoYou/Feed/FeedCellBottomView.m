@@ -130,7 +130,7 @@
             _respectImg.userInteractionEnabled = true;
             [_respectImg addGestureRecognizer:tap];
             
-            _respectNum = [YUtils initLabel:CONTENT_FONT(8) color:KCOLORGREEN_009688 text:@"0" frame:CGRectZero alignment:NSTextAlignmentCenter];
+            _respectNum = [YUtils initLabel:CONTENT_FONT(8) color:KCOLOR_009688 text:@"0" frame:CGRectZero alignment:NSTextAlignmentCenter];
             [self addSubview:_respectNum];
             [_respectNum mas_makeConstraints:^(MASConstraintMaker *make) {
                 make.centerX.equalTo(_respectImg);
@@ -281,7 +281,7 @@
     }
     if (isRepect) {
         _respectImg.image = [UIImage imageNamed:@"cupgreen"];
-        _respectNum.textColor = KCOLORGREEN_009688;
+        _respectNum.textColor = KCOLOR_009688;
     } else {
         _respectImg.image = [UIImage imageNamed:@"cup"];
         _respectNum.textColor = KCOLORWHITE_696969;

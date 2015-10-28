@@ -33,7 +33,7 @@
         self.dataSource = self;
         [self registerClass:[ProfilePersonListTableViewCell class] forCellReuseIdentifier:kProfilePersonListTableViewCell];
         self.tableFooterView = [UIView new];
-        self.backgroundColor = KCOLORGREEN_f2f2f2;
+        self.backgroundColor = KCOLOR_f2f2f2;
         _personListArray = [NSMutableArray array];
         
         self.separatorStyle = UITableViewCellSeparatorStyleNone;

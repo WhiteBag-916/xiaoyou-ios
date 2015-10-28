@@ -44,7 +44,7 @@
         self.dataSource = self;
         self.separatorStyle = UITableViewCellSeparatorStyleNone;
         self.tableHeaderView.height = HEADCELL_HEIGHT;
-        self.backgroundColor = KCOLORGREEN_B1;
+        self.backgroundColor = KCOLOR_B1;
         [self registerClass:[PassRemindCell class] forCellReuseIdentifier:REMINDVIEWCELL];
     }
     return self;
