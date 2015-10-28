@@ -552,12 +552,16 @@ typedef enum : NSUInteger {
     NSLog(@"%@",_dataManager.ActivityNameText);
     NSLog(@"%@",_dataManager.ActivityDesciptionText);
     NSLog(@"%@",_dataManager.ActivityDesciptionImage);
+    NSLog(@"%@",_dataManager.ActivityDateBeginApplyText);
     NSLog(@"%@",_dataManager.ActivityDateEndApplyText);
     NSLog(@"%@",_dataManager.ActivityDateBeginText);
     NSLog(@"%@",_dataManager.ActivityDateEndText);
     NSLog(@"%@",_dataManager.ActivityPlaceText);
     NSLog(@"%@",_dataManager.ActivityTypeStr);
     NSLog(@"%@",_dataManager.ActivityCheckStr);
+    NSLog(@"%@",_dataManager.ActivityCheckStatus);
+    NSLog(@"%@",_dataManager.ActivityOrganizer);
+    NSLog(@"%@",_dataManager.ActivityOrganizerId);
     
     if (_dataManager.ActivityDesciptionImage != nil)
     {
@@ -633,6 +637,9 @@ typedef enum : NSUInteger {
     [activityModelDic setObject:[self transformDate:_dataManager.ActivityDateBeginApplyText] forKey:@"enrollStartTime"];
     [activityModelDic setObject:_dataManager.ActivityNameText forKey:@"name"];
     [activityModelDic setObject:_dataManager.ActivityTypeStr forKey:@"type"];
+    [activityModelDic setObject:_dataManager.ActivityCheckStatus forKey:@"checkStatus"];
+    [activityModelDic setObject:_dataManager.ActivityOrganizer forKey:@"activityOrganizer"];
+    [activityModelDic setObject:_dataManager.ActivityOrganizerId forKey:@"activityOrganizerId"];
     
     NSMutableArray * arr = [[NSMutableArray alloc] init];
     [arr addObject:@{@"content":_dataManager.ActivityDesciptionText,@"displayOrder":@2,@"type":@"text"}];

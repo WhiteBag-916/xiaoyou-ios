@@ -57,25 +57,26 @@
 
 -(void)setUpHeaderView
 {
-    UIView * backView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCALE_NUM(40))];
-    UILabel * remindLabel = [[UILabel alloc] init];
+    UITableViewHeaderFooterView * headerView = [[UITableViewHeaderFooterView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCALE_NUM(40))];
+//    UILabel * remindLabel = [[UILabel alloc] init];
+    UILabel * remindLabel = [[UILabel alloc] initWithFrame:CGRectMake(SCALE_NUM(40), SCALE_NUM(5), SCREEN_WIDTH - SCALE_NUM(80), SCALE_NUM(30))];
     remindLabel.font = CONTENT_FONT(SCALE_NUM(12));
     remindLabel.textColor = KCOLORGREEN_g1;
     remindLabel.textAlignment = NSTextAlignmentLeft;
     remindLabel.text = @"请选择活动发布社团/学生组织";
-    [backView addSubview:remindLabel];
-    [remindLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.mas_equalTo(SCALE_NUM(40));
-        make.right.mas_equalTo(SCALE_NUM(-40));
-        make.top.mas_equalTo(SCALE_NUM(5));
-        make.bottom.mas_equalTo(SCALE_NUM(-5));
-    }];
+    [headerView.contentView addSubview:remindLabel];
+//    [remindLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.left.mas_equalTo(SCALE_NUM(40));
+//        make.right.mas_equalTo(SCALE_NUM(-40));
+//        make.top.mas_equalTo(SCALE_NUM(5));
+//        make.bottom.mas_equalTo(SCALE_NUM(-5));
+//    }];
     
 //    UIView *line = [[UIView alloc] initWithFrame:CGRectMake(0, self.frame.size.height-1, self.frame.size.width, 1)];
 //    line.backgroundColor = [UIColor hexChangeFloat:@"e9e9e9"];
 //    [backView addSubview:line];
     
-    self.tableHeaderView = backView;
+    self.tableHeaderView = headerView;
 }
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView

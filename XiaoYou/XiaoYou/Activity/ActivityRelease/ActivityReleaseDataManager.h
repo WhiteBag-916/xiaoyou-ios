@@ -31,6 +31,8 @@
 @property(nonatomic,strong)NSString * ActivityOrganizer;
 //组织者ID
 @property(nonatomic,strong)NSString * ActivityOrganizerId;
+//审核状态
+@property(nonatomic,strong)NSString * ActivityCheckStatus;
 
 //是否是社长身份
 @property (nonatomic,assign) BOOL isIdentity;

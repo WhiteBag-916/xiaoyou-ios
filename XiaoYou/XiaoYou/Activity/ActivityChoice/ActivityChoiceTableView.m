@@ -39,7 +39,10 @@
 //            NSLog(@"%@",message.object);
             
             _dataSourceArr = [NSMutableArray arrayWithArray:message.object];
-            [_dataSourceArr exchangeObjectAtIndex:0 withObjectAtIndex:3];
+            if (_dataSourceArr.count > 0)
+            {
+                [_dataSourceArr exchangeObjectAtIndex:0 withObjectAtIndex:3];
+            }
             [self reloadData];
         }];
                 

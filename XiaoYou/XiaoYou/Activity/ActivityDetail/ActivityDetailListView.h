@@ -12,7 +12,7 @@
 
 @interface ActivityDetailListView : YTableView
 
-@property (nonatomic,strong) NoticeInfo *model;
+@property (nonatomic,copy) NSString *publishID;
 
 -(void)sendRequest;
 

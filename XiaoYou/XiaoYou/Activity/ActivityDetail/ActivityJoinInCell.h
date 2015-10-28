@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "JoinInModelTest.h"
+#import "Author.h"
 
 typedef enum : NSUInteger {
     IS_TOPVIEW,
@@ -16,9 +17,8 @@ typedef enum : NSUInteger {
 
 @interface ActivityJoinInCell : UITableViewCell
 
-+(ActivityJoinInCell*)cellWithTableView:(UITableView*)tableView cellType:(CELLTYPE)type;
+-(instancetype)initWithType:(CELLTYPE)type;
 
-
--(void)setData:(JoinInModelTest*)joinModel;
+-(void)setData:(Author*)joinModel;
 
 @end

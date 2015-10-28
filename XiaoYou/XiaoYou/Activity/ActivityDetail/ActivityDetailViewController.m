@@ -60,7 +60,7 @@
         }];
         
     }
-    _detailListView.model = self.model;
+    _detailListView.publishID = self.publishID;
     [_detailListView sendRequest];
     //_detailListView.model = [[self getDataSource] objectAtIndex:self.index];
     return _detailListView;
