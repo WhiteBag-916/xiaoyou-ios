@@ -134,6 +134,9 @@
 		209C4C791B8C688000B584DF /* AssociationsDetailTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 209C4C781B8C688000B584DF /* AssociationsDetailTableView.m */; };
 		20BEAF9F1BC913120002A365 /* FastTopView.m in Sources */ = {isa = PBXBuildFile; fileRef = 20BEAF9D1BC913120002A365 /* FastTopView.m */; };
 		20C5B07B1B8DE58700B4A8A8 /* AssociationsSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20C5B07A1B8DE58700B4A8A8 /* AssociationsSearchViewController.m */; };
+		20D8B12F1BE06F62003F7911 /* CurriculumDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = 20D8B12E1BE06F62003F7911 /* CurriculumDetailView.m */; };
+		20D8B1321BE07595003F7911 /* course_icon_week@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 20D8B1301BE07595003F7911 /* course_icon_week@2x.png */; };
+		20D8B1331BE07595003F7911 /* course_icon_week@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 20D8B1311BE07595003F7911 /* course_icon_week@3x.png */; };
 		20DA16F31BC7C51200A61B37 /* MGCAllDayEventsViewLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 20DA16BA1BC7C51200A61B37 /* MGCAllDayEventsViewLayout.m */; };
 		20DA16F41BC7C51200A61B37 /* MGCDateRange.m in Sources */ = {isa = PBXBuildFile; fileRef = 20DA16BC1BC7C51200A61B37 /* MGCDateRange.m */; };
 		20DA16F51BC7C51200A61B37 /* MGCDayColumnCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 20DA16BE1BC7C51200A61B37 /* MGCDayColumnCell.m */; };
@@ -963,6 +966,10 @@
 		20BEAF9E1BC913120002A365 /* FastTopView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FastTopView.h; sourceTree = "<group>"; };
 		20C5B0791B8DE58700B4A8A8 /* AssociationsSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AssociationsSearchViewController.h; sourceTree = "<group>"; };
 		20C5B07A1B8DE58700B4A8A8 /* AssociationsSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AssociationsSearchViewController.m; sourceTree = "<group>"; };
+		20D8B12D1BE06F62003F7911 /* CurriculumDetailView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CurriculumDetailView.h; sourceTree = "<group>"; };
+		20D8B12E1BE06F62003F7911 /* CurriculumDetailView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CurriculumDetailView.m; sourceTree = "<group>"; };
+		20D8B1301BE07595003F7911 /* course_icon_week@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "course_icon_week@2x.png"; sourceTree = "<group>"; };
+		20D8B1311BE07595003F7911 /* course_icon_week@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "course_icon_week@3x.png"; sourceTree = "<group>"; };
 		20DA16B91BC7C51200A61B37 /* MGCAllDayEventsViewLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGCAllDayEventsViewLayout.h; sourceTree = "<group>"; };
 		20DA16BA1BC7C51200A61B37 /* MGCAllDayEventsViewLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGCAllDayEventsViewLayout.m; sourceTree = "<group>"; };
 		20DA16BB1BC7C51200A61B37 /* MGCDateRange.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGCDateRange.h; sourceTree = "<group>"; };
@@ -2667,6 +2674,8 @@
 				20DF601A1BDF772800C8383B /* MyTimetableDayCollectionViewCell.m */,
 				20DF60281BDF912000C8383B /* MyTimetableCurriculumCollectionViewCell.h */,
 				20DF60291BDF912000C8383B /* MyTimetableCurriculumCollectionViewCell.m */,
+				20D8B12D1BE06F62003F7911 /* CurriculumDetailView.h */,
+				20D8B12E1BE06F62003F7911 /* CurriculumDetailView.m */,
 			);
 			path = MyTimetable;
 			sourceTree = "<group>";
@@ -3707,6 +3716,8 @@
 		650C6C0B1B886D3200A89AC9 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
+				20D8B1301BE07595003F7911 /* course_icon_week@2x.png */,
+				20D8B1311BE07595003F7911 /* course_icon_week@3x.png */,
 				20DF5FFD1BDF2E2A00C8383B /* icon_arrow@2x.png */,
 				20DF5FFE1BDF2E2A00C8383B /* icon_arrow@3x.png */,
 				20DF5FF51BDF2B7900C8383B /* mine－icon－course@2x.png */,
@@ -4372,6 +4383,7 @@
 				3334AC221B82D7C400FDDCCB /* VoiceSearchFeedback002@2x.png in Resources */,
 				3334AC1D1B82D7C400FDDCCB /* VoiceSearchFeedback000.png in Resources */,
 				20E18DD61B808E42005B75EE /* society@2x.png in Resources */,
+				20D8B1331BE07595003F7911 /* course_icon_week@3x.png in Resources */,
 				0476B62C1BD0E4EC00FD13DF /* 1havetime_box_classroom@3x.png in Resources */,
 				3334AC3F1B83075800FDDCCB /* default_head@3x.png in Resources */,
 				65AC81291BDD1AB7005450F3 /* news_icon_location@2x.png in Resources */,
@@ -4535,6 +4547,7 @@
 				20E034041B846398002E4583 /* feed-find-someone-search@2x.png in Resources */,
 				048C49EE1BD4EDB0008E1D88 /* havetime_icon_no@2x.png in Resources */,
 				65024C1D1B833565007DE404 /* feedmore@3x.png in Resources */,
+				20D8B1321BE07595003F7911 /* course_icon_week@2x.png in Resources */,
 				3334AC0D1B82C89500FDDCCB /* chatBar_colorMore_photo@2x.png in Resources */,
 				65CF638B1B8EE17E00ACBB70 /* tooseemore@3x.png in Resources */,
 				20E942241B833D10009C2DC6 /* toggle-on@2x.png in Resources */,
@@ -4758,6 +4771,7 @@
 				333122821B806EDC00D3D032 /* UIResponder+Router.m in Sources */,
 				333122781B806EDB00D3D032 /* TTGlobalUICommon.m in Sources */,
 				049FF1C41BC91778000645C8 /* ScheduleListTableView.m in Sources */,
+				20D8B12F1BE06F62003F7911 /* CurriculumDetailView.m in Sources */,
 				20DA16F41BC7C51200A61B37 /* MGCDateRange.m in Sources */,
 				3331225D1B806EDB00D3D032 /* NSData+EMImageContentType.m in Sources */,
 				20DA170E1BC7C51200A61B37 /* OrderedDictionary.m in Sources */,

@@ -39,7 +39,8 @@
             label.textAlignment = NSTextAlignmentCenter;
             label.textColor = KCOLORWHITE;
             label.userInteractionEnabled = YES;
-            [label addGestureRecognizer:[[UIGestureRecognizer alloc] initWithTarget:self action:@selector(chooseDay:)]];
+            label.font = CONTENT_FONT(13);
+//            [label addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(chooseDay:)]];
             [self addSubview:label];
             
             [label mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -71,7 +72,7 @@
     } else {
         //选中
         UILabel *label = (UILabel *)[self viewWithTag:K_LABEL_TAG+selectDay];
-        label.textColor = KCOLORGREEN_455A64;
+        label.textColor = KCOLORGREEN_B4;
         label.backgroundColor = [UIColor whiteColor];
     }
     

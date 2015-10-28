@@ -145,12 +145,11 @@ NSString *const kRubLessonTableViewCell = @"RubLessonTableViewCellId";
     
     //上课地点
     UIImageView *locationImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"build_icon_location"]];
+    locationImageView.contentMode = UIViewContentModeCenter;
     [self.contentView addSubview:locationImageView];
     
     [locationImageView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.height.equalTo(courseImageView);
-        make.centerX.equalTo(courseImageView.mas_centerX);
-        make.width.mas_equalTo(K_LOCATION_IMG_W);
+        make.left.height.width.equalTo(courseImageView);
         make.top.equalTo(timeImageView.mas_bottom).offset(K_DEPARTMENTSIMG_T);
     }];
     

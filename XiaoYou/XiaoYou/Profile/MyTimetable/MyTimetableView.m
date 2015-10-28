@@ -12,8 +12,10 @@
 #import "CourseTimeListModel.h"
 #import "MyTimetableCurriculumCollectionViewCell.h"
 #import "MGCTimedEventsViewLayout.h"
+#import "CurriculumDetailView.h"
 
 #define K_CURRICULUM_WH            SCALE_NUM(40)  //1节课课程宽高
+#define K_EVENT_L                   SCALE_NUM(39)  //1节课课程宽高
 
 @interface MyTimetableView ()
 <UICollectionViewDataSource
@@ -63,7 +65,6 @@
         _eventCollectionView.backgroundColor = [UIColor clearColor];
         _eventCollectionView.dataSource = self;
         _eventCollectionView.delegate = self;
-        _eventCollectionView.userInteractionEnabled = NO;
         _eventCollectionView.scrollsToTop = NO;
         _eventCollectionView.decelerationRate = UIScrollViewDecelerationRateFast;
         _eventCollectionView.allowsSelection = YES;
@@ -115,7 +116,7 @@
     if (collectionView == _allDayCollectionView) {
         return 8;
     } else if (collectionView == _eventCollectionView) {
-        if (0 == section || 1 == section) {
+        if (0 == section || 1 == section || 5 == section) {
             return 1;
         }
     }
@@ -149,24 +150,33 @@
     return nil;
 }
 
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    CurriculumDetailView *curriculumDetailView = [[CurriculumDetailView alloc] init];
+    [curriculumDetailView show];
+}
+
 #pragma mark - MGCTimedEventsViewLayoutDelegate
 - (CGFloat)collectionView:(UICollectionView*)collectionView layout:(MGCTimedEventsViewLayout*)layout yPosForEventAtIndexPath:(NSIndexPath*)indexPath {
     if (1 == indexPath.section) {
-        return K_CURRICULUM_WH*12;
+        return K_CURRICULUM_WH*8;
+    } else if (5 == indexPath.section) {
+        return K_CURRICULUM_WH*6;
     }
     return 0;
 }
 
 - (CGFloat)collectionView:(UICollectionView*)collectionView layout:(MGCTimedEventsViewLayout*)layout heightForEventAtIndexPath:(NSIndexPath*)indexPath {
     if (1 == indexPath.section) {
-        return K_CURRICULUM_WH*2;
+        return K_CURRICULUM_WH*3;
+    } else if (5 == indexPath.section) {
+        return K_CURRICULUM_WH*5;
     }
-    return K_CURRICULUM_WH;
+    return K_CURRICULUM_WH*2;
 }
 
 #pragma mark - UIScrollViewDelegate
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-    _eventCollectionView.contentOffset = scrollView.contentOffset;
+    _allDayCollectionView.contentOffset = scrollView.contentOffset;
 }
 
 /*
