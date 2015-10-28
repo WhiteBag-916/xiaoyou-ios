@@ -70,7 +70,7 @@ NSString *const kActivityReleaseAndTypeCell = @"ActivityReleaseAndTypeCellId";
     {
 
         _dataArr = @[@"新校区",@"老校区"];
-        _releaseAndTypeImageView.image = [UIImage imageNamed:@"havetime_icon_academy"];
+        _releaseAndTypeImageView.image = [UIImage imageNamed:@"havetime_icon_school"];
         _releaseAndTypeLabel.text = @"校区";
         
     }

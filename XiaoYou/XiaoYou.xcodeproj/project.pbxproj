@@ -732,6 +732,8 @@
 		E455DCF41BCB8F6D00B78E54 /* ActivityReleaseController.m in Sources */ = {isa = PBXBuildFile; fileRef = E455DCF31BCB8F6D00B78E54 /* ActivityReleaseController.m */; };
 		E459B41B1BE0CB29002B7D41 /* havetime_icon_prompt@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E459B4191BE0CB29002B7D41 /* havetime_icon_prompt@2x.png */; settings = {ASSET_TAGS = (); }; };
 		E459B41C1BE0CB29002B7D41 /* havetime_icon_prompt@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E459B41A1BE0CB29002B7D41 /* havetime_icon_prompt@3x.png */; settings = {ASSET_TAGS = (); }; };
+		E459B41F1BE0D68F002B7D41 /* havetime_icon_school@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E459B41D1BE0D68F002B7D41 /* havetime_icon_school@2x.png */; settings = {ASSET_TAGS = (); }; };
+		E459B4201BE0D68F002B7D41 /* havetime_icon_school@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E459B41E1BE0D68F002B7D41 /* havetime_icon_school@3x.png */; settings = {ASSET_TAGS = (); }; };
 		E45E964A1BDA4B7500836F4F /* ActivityIdentityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E45E96491BDA4B7500836F4F /* ActivityIdentityViewController.m */; };
 		E45E96531BDA4C4F00836F4F /* ActivityIdentityTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = E45E96521BDA4C4F00836F4F /* ActivityIdentityTableView.m */; };
 		E45E96561BDA4C6D00836F4F /* ActivityIdentityTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E45E96551BDA4C6D00836F4F /* ActivityIdentityTableViewCell.m */; };
@@ -1879,6 +1881,8 @@
 		E455DCF31BCB8F6D00B78E54 /* ActivityReleaseController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityReleaseController.m; sourceTree = "<group>"; };
 		E459B4191BE0CB29002B7D41 /* havetime_icon_prompt@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "havetime_icon_prompt@2x.png"; sourceTree = "<group>"; };
 		E459B41A1BE0CB29002B7D41 /* havetime_icon_prompt@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "havetime_icon_prompt@3x.png"; sourceTree = "<group>"; };
+		E459B41D1BE0D68F002B7D41 /* havetime_icon_school@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "havetime_icon_school@2x.png"; path = "mengcheng/havetime_icon_school@2x.png"; sourceTree = "<group>"; };
+		E459B41E1BE0D68F002B7D41 /* havetime_icon_school@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "havetime_icon_school@3x.png"; path = "mengcheng/havetime_icon_school@3x.png"; sourceTree = "<group>"; };
 		E45E96481BDA4B7500836F4F /* ActivityIdentityViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityIdentityViewController.h; sourceTree = "<group>"; };
 		E45E96491BDA4B7500836F4F /* ActivityIdentityViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityIdentityViewController.m; sourceTree = "<group>"; };
 		E45E96511BDA4C4F00836F4F /* ActivityIdentityTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityIdentityTableView.h; sourceTree = "<group>"; };
@@ -2022,6 +2026,8 @@
 				043AC8631BCF7BFC00AB6E09 /* mengcheng */,
 				048C49EC1BD4EDB0008E1D88 /* havetime_icon_no@2x.png */,
 				048C49ED1BD4EDB0008E1D88 /* havetime_icon_no@3x.png */,
+				E459B41D1BE0D68F002B7D41 /* havetime_icon_school@2x.png */,
+				E459B41E1BE0D68F002B7D41 /* havetime_icon_school@3x.png */,
 				20D821A91BE0ADF700C5E21C /* havetime_icon_remind@2x.png */,
 				20D821AA1BE0ADF700C5E21C /* havetime_icon_remind@3x.png */,
 				20DA3A231BD7ABCC00B4B1B1 /* havetime_icon_add@2x.png */,
@@ -4305,6 +4311,7 @@
 				E43E10711BCCFA840018B6D7 /* icon_info@3x.png in Resources */,
 				20DD81341B91ABCE00ACFD9A /* campus-assistant_map_screen@3x.png in Resources */,
 				E43E107B1BCCFA840018B6D7 /* img_num4@3x.png in Resources */,
+				E459B41F1BE0D68F002B7D41 /* havetime_icon_school@2x.png in Resources */,
 				044C315D1BCCAF0000E0D508 /* red_bar@3x.png in Resources */,
 				33380D9A1B85D57C008B51EB /* chat_remindnot@2x.png in Resources */,
 				E43E106D1BCCFA840018B6D7 /* circle_gray@3x.png in Resources */,
@@ -4691,6 +4698,7 @@
 				20DAA2B41BCE34DF00420234 /* btn_friends_n@3x.png in Resources */,
 				20E18DBA1B808E42005B75EE /* common_star@2x.png in Resources */,
 				0476B6291BD0E4EC00FD13DF /* 1havetime_box_calender@2x.png in Resources */,
+				E459B4201BE0D68F002B7D41 /* havetime_icon_school@3x.png in Resources */,
 				3334AC241B82D7C400FDDCCB /* VoiceSearchFeedback003@2x.png in Resources */,
 				E46CF87C1BD7765A00FF563B /* detail_flag_new@3x.png in Resources */,
 				654379B21B8DB223007B15CA /* icon@2x.png in Resources */,
