@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		040619DC1BDE11C3008E3E4E /* NoticeAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 040619DB1BDE11C3008E3E4E /* NoticeAction.m */; };
+		0463588E1BE0F5450055819F /* CancleActivityAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 0463588D1BE0F5450055819F /* CancleActivityAction.m */; settings = {ASSET_TAGS = (); }; };
 		04722E261BD8892700F95816 /* AvailableAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 04722E251BD8892700F95816 /* AvailableAction.m */; };
 		04A2A0071BCE3969006A35FB /* AppConfigData.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A2A0061BCE3969006A35FB /* AppConfigData.m */; };
 		20859A7C1B64BD5B00580ED3 /* ProvisionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 20859A7B1B64BD5B00580ED3 /* ProvisionManager.m */; };
@@ -90,6 +91,8 @@
 /* Begin PBXFileReference section */
 		040619DA1BDE11C3008E3E4E /* NoticeAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoticeAction.h; sourceTree = "<group>"; };
 		040619DB1BDE11C3008E3E4E /* NoticeAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoticeAction.m; sourceTree = "<group>"; };
+		0463588C1BE0F5450055819F /* CancleActivityAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CancleActivityAction.h; sourceTree = "<group>"; };
+		0463588D1BE0F5450055819F /* CancleActivityAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CancleActivityAction.m; sourceTree = "<group>"; };
 		04722E241BD8892700F95816 /* AvailableAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AvailableAction.h; sourceTree = "<group>"; };
 		04722E251BD8892700F95816 /* AvailableAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AvailableAction.m; sourceTree = "<group>"; };
 		04A2A0051BCE3969006A35FB /* AppConfigData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppConfigData.h; sourceTree = "<group>"; };
@@ -242,6 +245,8 @@
 				209E08CA1BDDCE050062758E /* GetFilterConditionsAction.m */,
 				20DF60161BDF6B9E00C8383B /* FindActivityDetailInfoAction.h */,
 				20DF60171BDF6B9E00C8383B /* FindActivityDetailInfoAction.m */,
+				0463588C1BE0F5450055819F /* CancleActivityAction.h */,
+				0463588D1BE0F5450055819F /* CancleActivityAction.m */,
 			);
 			path = Activity;
 			sourceTree = "<group>";
@@ -677,6 +682,7 @@
 				20E0BFED1B88B0CA00EDAED4 /* MessageListAction.m in Sources */,
 				20E1C67E1B89F148008BA9D6 /* FeedDetailAction.m in Sources */,
 				3339625C1B95575400DD0A6D /* SuggestListAction.m in Sources */,
+				0463588E1BE0F5450055819F /* CancleActivityAction.m in Sources */,
 				20DF60181BDF6B9E00C8383B /* FindActivityDetailInfoAction.m in Sources */,
 				20DA74C01B8C12040002E041 /* FindFriendsAction.m in Sources */,
 				20859A821B64BD8500580ED3 /* ContactManager.m in Sources */,

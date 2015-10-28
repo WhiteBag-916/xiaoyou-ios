@@ -121,4 +121,9 @@ AS_SINGLETON(ActivityManager);
  *********************************************************************/
 - (void)findActivityDetailInfo:(NSInteger)limitStart limitEnd:(NSInteger)limitEnd activityPublishedId:(NSString *)activityPublishedId getDetail:(BOOL)getDetail block:(ActionCompleteBlock)block;
 
+/**
+ *  取消活动报名
+ */
+- (void)cancleActivitySignUpByActivityID:(NSString*)activityID block:(ActionCompleteBlock)block;
+
 @end

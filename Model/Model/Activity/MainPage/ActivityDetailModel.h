@@ -14,6 +14,7 @@
 @interface ActivityDetailModel : YModel <NSCoding, NSCopying>
 
 @property (nonatomic, assign) BOOL enroll;
+@property (nonatomic, copy) NSString *enrollStatus;
 @property (nonatomic, strong) NSArray *enrollActivityUserInfos;
 @property (nonatomic, strong) ActivityOrganizer *activityOrganizer;
 @property (nonatomic, strong) ActivityTypeInfo *activityTypeInfo;

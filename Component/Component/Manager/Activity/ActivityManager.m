@@ -16,6 +16,7 @@
 #import "CommonImgUpload.h"
 #import "GetFilterConditionsAction.h"
 #import "FindActivityDetailInfoAction.h"
+#import "CancleActivityAction.h"
 
 #define KActivityManagerSyncQueue @"kActivityManagerSyncQueue"
 
@@ -179,6 +180,16 @@ DEF_SINGLETON(ActivityManager);
     [YAction startAction:action completionBlock:^(YActionMessage* message) {
         
         //主线程处理界面
+        block(message);
+    }];
+}
+
+//取消活动报名
+-(void)cancleActivitySignUpByActivityID:(NSString *)activityID block:(ActionCompleteBlock)block
+{
+    CancleActivityAction *action = [[CancleActivityAction alloc]init];
+    action.activityPublishedId = activityID;
+    [YAction startAction:action completionBlock:^(YActionMessage *message) {
         block(message);
     }];
 }

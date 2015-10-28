@@ -194,7 +194,7 @@
 #define api_activity_getFilterConditions   @"/activity/getFilterConditions"
 //查询活动详情接口
 #define api_activity_findActivityDetailInfo   @"/activity/findActivityDetailInfo"
-
+#define api_activity_cancleAvtivity         @"/activity/cancelEnroll"
 /**********************************************************
  Url Define: CourseTime
  **********************************************************/
