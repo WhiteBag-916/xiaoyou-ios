@@ -13,6 +13,8 @@
 
 @property (nonatomic,copy) NSString *publishID;
 
+-(void)loadData;
+
 -(void)sendRequest;
 
 @end

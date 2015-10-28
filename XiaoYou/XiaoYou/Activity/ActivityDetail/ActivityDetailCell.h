@@ -8,13 +8,15 @@
 
 #import <UIKit/UIKit.h>
 #import "ActivityDetailModel.h"
+#import "YTableViewCell.h"
+
 
 typedef enum : NSUInteger {
     SHORT_BRIEF,
     DETAIL_INFO
 } TOPVIEWTYPE;
 
-@interface ActivityDetailCell : UITableViewCell
+@interface ActivityDetailCell : YTableViewCell
 
 -(void)setData:(ActivityDetailModel*)model;
 

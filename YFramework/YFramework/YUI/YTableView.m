@@ -154,6 +154,9 @@
 - (BOOL)isHeaderRefresh {
     return self.header.isRefreshing;
 }
+- (BOOL)isFooterRefresh {
+    return self.footer.isRefreshing;
+}
 /*
 // Only override drawRect: if you perform custom drawing.
 // An empty implementation adversely affects performance during animation.

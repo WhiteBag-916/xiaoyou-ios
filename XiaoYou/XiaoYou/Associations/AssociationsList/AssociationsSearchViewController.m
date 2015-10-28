@@ -10,7 +10,10 @@
 #import "AssociationsListTableView.h"
 #import "YTableView.h"
 #import "ActivityResultTableView.h"
-//#import "SearchActivityListView.h"
+#import "YTimer.h"
+#import "YCommonNoDataView.h"
+
+const NSInteger kSearchTimerDelay = 2.f;
 
 @interface AssociationsSearchViewController ()
 <UISearchBarDelegate>
@@ -19,6 +22,8 @@
 @property (nonatomic, strong) ActivityResultTableView *searchActivityListView;
 @property (nonatomic, strong) UISearchBar *searchBar;
 @property (nonatomic, strong) NSArray *associationsArray;//社团数组
+@property (nonatomic, assign) YTimerID searchTimerID;  //两秒搜索
+@property (nonatomic, strong) YCommonNoDataView *noDataView;//搜索没数据
 
 @end
 
@@ -107,14 +112,28 @@
             make.top.equalTo(headView.mas_bottom);
         }];
     }
+    
+    //noDataView
+    _noDataView = [[YCommonNoDataView alloc] initWithType:NoDataView_SearchActivity];
+    _noDataView.hidden = YES;
+    [self.view addSubview:_noDataView];
+    [_noDataView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.bottom.right.mas_equalTo(self.view);
+        make.top.equalTo(headView.mas_bottom);
+    }];
 }
 
 - (void)pressCancelButton {
     [self.navigationController popViewControllerAnimated:YES];
 }
 
+//是否展示没数据
+- (void)hiddenNodata:(BOOL)hidden {
+    _noDataView.hidden = hidden;
+}
+
 //搜索学校社团
-- (void)searchSchoolByKey
+- (void)searchAssociationsByKey
 {
     NSString *searchKey = [_searchBar.text lowercaseString];
     [_associationsListTableView resetArrayBySearch:searchKey];
@@ -127,18 +146,35 @@
     [_searchActivityListView sendRequestBySearchDataByKey:searchKey];
 }
 
-#pragma mark - UISearchBarDelegate
-- (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
-    if (![searchBar.text isEmpty]) {
-        if (self.searchType == ACTIVITY_TYPE) {
-            [self searchActivity];
-        }
-        else {
-            [self searchSchoolByKey];
-        }
+- (void)toSearch {
+    if (self.searchType == ACTIVITY_TYPE) {
+        [self searchActivity];
+    }
+    else {
+        [self searchAssociationsByKey];
     }
 }
 
+#pragma mark - UISearchBarDelegate
+- (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
+    if (![searchBar.text isEmpty]) {
+        
+        //取消定时器
+        [YTimer killTimerWithID:_searchTimerID];
+        
+        //重新开始
+        _searchTimerID = [YTimer scheduledTimerWithTimeInterval:kSearchTimerDelay repeats:NO block:^{
+            [self toSearch];
+        }];
+    }
+}
+
+- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
+    //取消定时器
+    [YTimer killTimerWithID:_searchTimerID];
+    
+    [self toSearch];
+}
 
 
 @end

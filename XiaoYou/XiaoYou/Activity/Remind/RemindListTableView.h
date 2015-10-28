@@ -12,6 +12,7 @@
 
 @property (nonatomic,strong) NSMutableArray *remindListArray;
 
+- (void)loadData;
 - (void)sendRequest;
 
 @end

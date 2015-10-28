@@ -10,6 +10,7 @@
 #import "ActivityDetailListView.h"
 #import "ActivityManager.h"
 #import "ActivityDetailModel.h"
+#import "YCommonActionSheet.h"
 
 @interface ActivityDetailViewController ()
 
@@ -28,6 +29,9 @@
     // Do any additional setup after loading the view.
     self.view.backgroundColor = [UIColor whiteColor];
     [self showCustomNavigationBackButton];
+    
+    [self showCustomNavigationMoreButton];
+    
     [self detailListView];
     [self setTitle:@"活动详情"];
     [self updateJoinButtonStatus];
@@ -46,11 +50,28 @@
     return self;
 }
 
+
+- (void)onNavigationRightButtonClicked {
+    NSLog(@"this is data...");
+    YActionSheetItem *item1 = [YActionSheetItem itemWithTitle:@"我要退出" type:YCommonActionSheetItemTypeCenterCommon block:^(NSInteger checkNum) {
+        [self exitActivity];
+    }];
+    
+    YCommonActionSheet *sheet = [[YCommonActionSheet alloc] initWithType:@[item1] title:nil];
+    [sheet show];
+}
+
+
+-(void)exitActivity
+{
+    NSLog(@"this is activity...");
+}
+
+
 -(ActivityDetailListView *)detailListView {
     if (!_detailListView) {
         _joinInBtn = [UIButton buttonWithType:UIButtonTypeSystem];
         [self.view addSubview:_joinInBtn];
-        _joinInBtn.enabled = self.isEnroll;
         [_joinInBtn addTarget:self action:@selector(joinInAction) forControlEvents:UIControlEventTouchUpInside];
         _joinInBtn.layer.borderWidth = 0.6;
         [_joinInBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
@@ -76,6 +97,7 @@
         
     }
     _detailListView.publishID = self.publishID;
+    [_detailListView loadData];
     [_detailListView sendRequest];
     return _detailListView;
 }

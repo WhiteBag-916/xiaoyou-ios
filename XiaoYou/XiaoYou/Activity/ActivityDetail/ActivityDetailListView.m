@@ -15,6 +15,7 @@
 #import "Tags.h"
 #import "Author.h"
 #import "UIDevice+DeviceType.h"
+#import "YUtils.h"
 
 #define REUSEID_DETAILCELL  @"ActivityDetailCell"
 #define REUSEID_JOINCELL    @"ActivityJoinInCell"
@@ -59,6 +60,9 @@
 }
 
 #pragma mark - 继承者
+- (void)loadData {
+    //[self beginLoadNewData];
+}
 - (BOOL)showHeaderRefresh
 {
     return YES;
@@ -86,8 +90,11 @@
 -(void)sendRequest
 {
     [_activityDetailArray removeAllObjects];
+    
+    [YUtils showHUDWithTitle:@"正在加载..."];
     [[ActivityManager sharedInstance] findActivityDetailInfo:_currentIndex limitEnd:_currentIndex + KPAGENUM activityPublishedId:self.publishID getDetail:YES block:^(YActionMessage *message) {
         if (message.isSuccess) {
+            [YUtils hiddenProgressHUD];
             if ([self isHeaderRefresh]) {
                 [self.activityDetailArray removeAllObjects];
             }

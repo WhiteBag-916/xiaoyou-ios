@@ -17,7 +17,7 @@
     NSMutableDictionary *dic = [NSMutableDictionary dictionaryWithDictionary:_condition];
     [dic setObject:@(_limitStart) forKey:@"limitStart"];
     [dic setObject:@(_limitEnd) forKey:@"limitEnd"];
-    [dic setObject:SStr(_searchText) forKey:@"name"];
+    [dic setObject:SStr(_searchText) forKey:@"keyword"];
     NSDictionary *parameter = [YUtils getParameter:dic needUserToken:YES needContent:YES];
     NSString *url = [YUtils getUrl:api_available_list];
     

@@ -76,7 +76,7 @@
 		044DA0551BBA77C900AA321A /* ActivityDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 044DA0431BBA77C900AA321A /* ActivityDetailCell.m */; };
 		044DA0561BBA77C900AA321A /* ActivityDetailListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 044DA0451BBA77C900AA321A /* ActivityDetailListView.m */; };
 		044DA0571BBA77C900AA321A /* ActivityDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 044DA0471BBA77C900AA321A /* ActivityDetailViewController.m */; };
-		0463588B1BE096790055819F /* UIDevice+DeviceType.m in Sources */ = {isa = PBXBuildFile; fileRef = 0463588A1BE096790055819F /* UIDevice+DeviceType.m */; settings = {ASSET_TAGS = (); }; };
+		0463588B1BE096790055819F /* UIDevice+DeviceType.m in Sources */ = {isa = PBXBuildFile; fileRef = 0463588A1BE096790055819F /* UIDevice+DeviceType.m */; };
 		0475AD891BDA247400763896 /* SearchActivityListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0475AD881BDA247400763896 /* SearchActivityListView.m */; };
 		0476B6291BD0E4EC00FD13DF /* 1havetime_box_calender@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0476B6251BD0E4EC00FD13DF /* 1havetime_box_calender@2x.png */; };
 		0476B62A1BD0E4EC00FD13DF /* 1havetime_box_calender@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0476B6261BD0E4EC00FD13DF /* 1havetime_box_calender@3x.png */; };
@@ -143,6 +143,9 @@
 		20D821AF1BE0B3C000C5E21C /* ChooseWeekCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 20D821AE1BE0B3C000C5E21C /* ChooseWeekCell.m */; };
 		20D821B21BE0B55C00C5E21C /* class_tab_putup@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 20D821B01BE0B55C00C5E21C /* class_tab_putup@2x.png */; };
 		20D821B31BE0B55C00C5E21C /* class_tab_putup@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 20D821B11BE0B55C00C5E21C /* class_tab_putup@3x.png */; };
+		20D821C51BE0D17900C5E21C /* YCommonNoDataView.m in Sources */ = {isa = PBXBuildFile; fileRef = 20D821C41BE0D17900C5E21C /* YCommonNoDataView.m */; };
+		20D821C81BE0D42E00C5E21C /* schedule－picture－nosearch@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 20D821C61BE0D42E00C5E21C /* schedule－picture－nosearch@2x.png */; };
+		20D821C91BE0D42E00C5E21C /* schedule－picture－nosearch@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 20D821C71BE0D42E00C5E21C /* schedule－picture－nosearch@3x.png */; };
 		20D8B12F1BE06F62003F7911 /* CurriculumDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = 20D8B12E1BE06F62003F7911 /* CurriculumDetailView.m */; };
 		20D8B1321BE07595003F7911 /* course_icon_week@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 20D8B1301BE07595003F7911 /* course_icon_week@2x.png */; };
 		20D8B1331BE07595003F7911 /* course_icon_week@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 20D8B1311BE07595003F7911 /* course_icon_week@3x.png */; };
@@ -730,10 +733,15 @@
 		E455DCE71BCB686E00B78E54 /* ActivityChoiceTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = E455DCE61BCB686E00B78E54 /* ActivityChoiceTableView.m */; };
 		E455DCF01BCB798400B78E54 /* ActivityReleaseAndTypeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E455DCEF1BCB798400B78E54 /* ActivityReleaseAndTypeCell.m */; };
 		E455DCF41BCB8F6D00B78E54 /* ActivityReleaseController.m in Sources */ = {isa = PBXBuildFile; fileRef = E455DCF31BCB8F6D00B78E54 /* ActivityReleaseController.m */; };
+<<<<<<< HEAD
 		E459B41B1BE0CB29002B7D41 /* havetime_icon_prompt@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E459B4191BE0CB29002B7D41 /* havetime_icon_prompt@2x.png */; settings = {ASSET_TAGS = (); }; };
 		E459B41C1BE0CB29002B7D41 /* havetime_icon_prompt@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E459B41A1BE0CB29002B7D41 /* havetime_icon_prompt@3x.png */; settings = {ASSET_TAGS = (); }; };
 		E459B41F1BE0D68F002B7D41 /* havetime_icon_school@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E459B41D1BE0D68F002B7D41 /* havetime_icon_school@2x.png */; settings = {ASSET_TAGS = (); }; };
 		E459B4201BE0D68F002B7D41 /* havetime_icon_school@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E459B41E1BE0D68F002B7D41 /* havetime_icon_school@3x.png */; settings = {ASSET_TAGS = (); }; };
+=======
+		E459B41B1BE0CB29002B7D41 /* havetime_icon_prompt@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E459B4191BE0CB29002B7D41 /* havetime_icon_prompt@2x.png */; };
+		E459B41C1BE0CB29002B7D41 /* havetime_icon_prompt@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E459B41A1BE0CB29002B7D41 /* havetime_icon_prompt@3x.png */; };
+>>>>>>> 1420956d4562755152b65123c5154453bc9943c6
 		E45E964A1BDA4B7500836F4F /* ActivityIdentityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E45E96491BDA4B7500836F4F /* ActivityIdentityViewController.m */; };
 		E45E96531BDA4C4F00836F4F /* ActivityIdentityTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = E45E96521BDA4C4F00836F4F /* ActivityIdentityTableView.m */; };
 		E45E96561BDA4C6D00836F4F /* ActivityIdentityTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E45E96551BDA4C6D00836F4F /* ActivityIdentityTableViewCell.m */; };
@@ -993,6 +1001,10 @@
 		20D821AE1BE0B3C000C5E21C /* ChooseWeekCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChooseWeekCell.m; sourceTree = "<group>"; };
 		20D821B01BE0B55C00C5E21C /* class_tab_putup@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "class_tab_putup@2x.png"; sourceTree = "<group>"; };
 		20D821B11BE0B55C00C5E21C /* class_tab_putup@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "class_tab_putup@3x.png"; sourceTree = "<group>"; };
+		20D821C31BE0D17900C5E21C /* YCommonNoDataView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YCommonNoDataView.h; sourceTree = "<group>"; };
+		20D821C41BE0D17900C5E21C /* YCommonNoDataView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YCommonNoDataView.m; sourceTree = "<group>"; };
+		20D821C61BE0D42E00C5E21C /* schedule－picture－nosearch@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "schedule－picture－nosearch@2x.png"; sourceTree = "<group>"; };
+		20D821C71BE0D42E00C5E21C /* schedule－picture－nosearch@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "schedule－picture－nosearch@3x.png"; sourceTree = "<group>"; };
 		20D8B12D1BE06F62003F7911 /* CurriculumDetailView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CurriculumDetailView.h; sourceTree = "<group>"; };
 		20D8B12E1BE06F62003F7911 /* CurriculumDetailView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CurriculumDetailView.m; sourceTree = "<group>"; };
 		20D8B1301BE07595003F7911 /* course_icon_week@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "course_icon_week@2x.png"; sourceTree = "<group>"; };
@@ -2664,6 +2676,8 @@
 				656341541BC1061500E10025 /* YStripeView.m */,
 				20D821A61BE0A97800C5E21C /* YCommonPickerView.h */,
 				20D821A71BE0A97800C5E21C /* YCommonPickerView.m */,
+				20D821C31BE0D17900C5E21C /* YCommonNoDataView.h */,
+				20D821C41BE0D17900C5E21C /* YCommonNoDataView.m */,
 			);
 			path = CommonView;
 			sourceTree = "<group>";
@@ -2903,6 +2917,8 @@
 		20E18D891B808E42005B75EE /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				20D821C61BE0D42E00C5E21C /* schedule－picture－nosearch@2x.png */,
+				20D821C71BE0D42E00C5E21C /* schedule－picture－nosearch@3x.png */,
 				65AC81271BDD1AB7005450F3 /* news_icon_location@2x.png */,
 				65AC81281BDD1AB7005450F3 /* news_icon_location@3x.png */,
 				65AC81201BDCEA54005450F3 /* news_tag_time@2x.png */,
@@ -4334,6 +4350,7 @@
 				E482D5601BD8C4DA0045F4DB /* common_picture_loading_c@3x.png in Resources */,
 				3334AC261B82D7C400FDDCCB /* VoiceSearchFeedback004@2x.png in Resources */,
 				20E0BFF91B88B0CA00EDAED4 /* register-label-chosen-boundary@2x.png in Resources */,
+				20D821C81BE0D42E00C5E21C /* schedule－picture－nosearch@2x.png in Resources */,
 				20E9424F1B833D10009C2DC6 /* complete@3x.png in Resources */,
 				20E942541B833D10009C2DC6 /* complete-cancel@2x.png in Resources */,
 				3334ABEC1B82C58600FDDCCB /* chatBar_keyboard@2x.png in Resources */,
@@ -4407,6 +4424,7 @@
 				E459B41B1BE0CB29002B7D41 /* havetime_icon_prompt@2x.png in Resources */,
 				3334ABE31B82C50200FDDCCB /* chatBar_face.png in Resources */,
 				E48E09AB1BD781B10017D395 /* scanf_code_point@2x.png in Resources */,
+				20D821C91BE0D42E00C5E21C /* schedule－picture－nosearch@3x.png in Resources */,
 				20DD039D1BA2B956005DFC51 /* group_logo@3x.png in Resources */,
 				049480391BB8D76C00C68460 /* schedule_location@3x.png in Resources */,
 				20DAA2B01BCE34DF00420234 /* btn_free_n@3x.png in Resources */,
@@ -4986,6 +5004,7 @@
 				65969DDF1B877356001DD348 /* ProfileFeedListView.m in Sources */,
 				20DA16F71BC7C51200A61B37 /* MGCDayPlannerView.m in Sources */,
 				33380DA21B85DAF8008B51EB /* SystemMessageTableView.m in Sources */,
+				20D821C51BE0D17900C5E21C /* YCommonNoDataView.m in Sources */,
 				333122851B806EDC00D3D032 /* XHMessageTextView.m in Sources */,
 				333122611B806EDB00D3D032 /* UIImage+EMWebP.m in Sources */,
 				04D500681BBA94AA00C1B438 /* ActivityJoinInCell.m in Sources */,

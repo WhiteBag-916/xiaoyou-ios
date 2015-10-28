@@ -325,7 +325,7 @@
 #pragma mark - 按钮
 - (void)pressButton:(UITapGestureRecognizer*)gesture {
     if (nil == _remindPicker) {
-        _remindPicker = [[YCommonPickerView alloc] initWithFrame:PickerView_CalendarRemind];
+        _remindPicker = [[YCommonPickerView alloc] initWithType:PickerView_CalendarRemind];
     }
     
     CommonPopView *popView = [[CommonPopView alloc] initWithFrame:[UIScreen mainScreen].bounds

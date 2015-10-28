@@ -67,6 +67,11 @@
 }
 
 #pragma mark - 继承者
+
+- (void)loadData {
+    [self beginLoadNewData];
+}
+
 - (BOOL)showHeaderRefresh
 {
     return YES;

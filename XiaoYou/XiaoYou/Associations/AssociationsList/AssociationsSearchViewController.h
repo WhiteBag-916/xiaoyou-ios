@@ -15,8 +15,11 @@ typedef enum : NSUInteger {
 
 @interface AssociationsSearchViewController : YViewController
 
+@property (nonatomic,assign) SEARCH_TYPE searchType;
+
 - (id)initWithArray:(NSArray *)array;
 
-@property (nonatomic,assign) SEARCH_TYPE searchType;
+//是否展示没数据
+- (void)hiddenNodata:(BOOL)hidden;
 
 @end
