@@ -29,4 +29,5 @@
 - (void)showNoticeNoMoreData;
 
 - (BOOL)isHeaderRefresh;
+- (BOOL)isFooterRefresh;
 @end

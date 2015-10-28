@@ -23,7 +23,7 @@ NSString *const kPickerViewCalendarRemind = @"PickerViewCalendarRemindC";
 
 @implementation YCommonPickerView
 
-- (instancetype)initWithFrame:(PickerView_Type)type
+- (instancetype)initWithType:(PickerView_Type)type
 {
     if (self = [super initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 160)])
     {
