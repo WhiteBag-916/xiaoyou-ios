@@ -9,12 +9,14 @@
 #import "MyTimetableViewController.h"
 #import "MyTimetableHeadView.h"
 #import "MyTimetableView.h"
+#import "ChooseWeekView.h"
 
 @interface MyTimetableViewController ()
 
 @property (nonatomic, strong) UIButton *titleButton;
 @property (nonatomic, strong) MyTimetableHeadView *myTimetableHeadView;
 @property (nonatomic, strong) MyTimetableView *myTimetableView;
+@property (nonatomic, strong) ChooseWeekView *chooseWeekView;
 
 @end
 

@@ -10,7 +10,6 @@
 
 @implementation YCommonDialogView
 
-
 - (void)show {
     UIWindow *window = [[[UIApplication sharedApplication] delegate] window];
     NSArray *windowViews = [window subviews];
