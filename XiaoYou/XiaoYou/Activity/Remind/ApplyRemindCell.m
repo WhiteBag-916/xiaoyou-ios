@@ -74,6 +74,11 @@
     }
 }
 
+-(BOOL)needLine
+{
+    return YES;
+}
+
 -(void)initView
 {
     //容器视图
