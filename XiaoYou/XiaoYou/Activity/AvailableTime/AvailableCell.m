@@ -49,6 +49,15 @@
     return self;
 }
 
+-(BOOL)needLine
+{
+    return NO;
+}
+
+-(CGFloat)lineX
+{
+    return 20;
+}
 
 -(void)initView
 {

@@ -7,8 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-
-@interface StudyRoomCell : UITableViewCell
+#import "YTableViewCell.h"
+@interface StudyRoomCell : YTableViewCell
 
 
 +(StudyRoomCell*)cellWithTableView:(UITableView*)tableView;

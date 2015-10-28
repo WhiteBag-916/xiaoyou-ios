@@ -32,6 +32,10 @@
     return cell;
 }
 
+-(BOOL)needLine
+{
+    return YES;
+}
 
 -(instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {

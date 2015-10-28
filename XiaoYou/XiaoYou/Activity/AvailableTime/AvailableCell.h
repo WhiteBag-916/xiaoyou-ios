@@ -8,8 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import "ActivityInfoModel.h"
-
-@interface AvailableCell : UITableViewCell
+#import "YTableViewCell.h"
+@interface AvailableCell : YTableViewCell
 
 -(void)setData:(ActivityInfoModel*)model;
 
