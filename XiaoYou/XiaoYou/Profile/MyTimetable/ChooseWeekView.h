@@ -8,6 +8,10 @@
 
 #import "YCommonDialogView.h"
 
+typedef void(^ChooseWeekBlock)(NSInteger checkNum);
+
 @interface ChooseWeekView : YCommonDialogView
+
+- (id)initWithBlock:(NSInteger)selectNum block:(ChooseWeekBlock)block;
 
 @end

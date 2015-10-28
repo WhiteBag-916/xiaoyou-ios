@@ -136,7 +136,7 @@
     }];
     
     //背景图
-    UIImageView *backgroundImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@""]];
+    UIImageView *backgroundImageView = [[UIImageView alloc] init];
     backgroundImageView.image = [[UIImage imageNamed:@"build_background"] resizableImageWithCapInsets:UIEdgeInsetsMake(10, 6, 6, 6) resizingMode:UIImageResizingModeStretch];
     [_contentView addSubview:backgroundImageView];
     [backgroundImageView mas_makeConstraints:^(MASConstraintMaker *make) {

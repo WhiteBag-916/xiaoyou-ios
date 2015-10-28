@@ -57,7 +57,7 @@
         make.edges.equalTo(self).insets(UIEdgeInsetsMake(K_BACK_T, K_BACK_LR, K_BACK_B, K_BACK_LR));
     }];
     
-    UIImageView *backgroundImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@""]];
+    UIImageView *backgroundImageView = [[UIImageView alloc] init];
     backgroundImageView.image = [[UIImage imageNamed:@"build_background"] resizableImageWithCapInsets:UIEdgeInsetsMake(9, 5, 6, 5) resizingMode:UIImageResizingModeStretch];
     [self.contentView addSubview:backgroundImageView];
     [backgroundImageView mas_makeConstraints:^(MASConstraintMaker *make) {

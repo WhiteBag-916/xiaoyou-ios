@@ -7,6 +7,7 @@
 //
 
 #import "ChooseWeekView.h"
+#import "ChooseWeekCell.h"
 
 #define K_BACK_LR         SCALE_NUM(15)
 #define K_BACK_T         SCALE_NUM(123)
@@ -17,12 +18,14 @@
 ,UITableViewDelegate>
 
 @property (nonatomic, strong) UITableView *weekTableView;
+@property (nonatomic, copy) ChooseWeekBlock chooseWeekBlock;
+@property (nonatomic, assign) NSInteger selectNum;
 
 @end
 
 @implementation ChooseWeekView
 
-- (instancetype)init {
+- (id)initWithBlock:(NSInteger)selectNum block:(ChooseWeekBlock)block {
     if (self = [super initWithFrame:[UIScreen mainScreen].bounds]) {
         self.backgroundColor = [UIColor clearColor];
         
@@ -33,6 +36,10 @@
         [self.backgroundView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hide)]];
         
         [self initContentView];
+        
+        _chooseWeekBlock = block;
+        
+        _selectNum = selectNum;
     }
     return self;
 }
@@ -42,11 +49,13 @@
     self.contentView = [[UIView alloc] init];
     [self addSubview:self.contentView];
     [self.contentView mas_makeConstraints:^(MASConstraintMaker *make) {
-//        make.edges.equalTo(self).insets(UIEdgeInsetsMake(K_BACK_T, K_BACK_LR, K_BACK_B, K_BACK_LR));
+        make.top.mas_equalTo(SCALE_NUM(49));
+        make.centerX.equalTo(self);
+        make.width.mas_equalTo(110);
+        make.height.mas_equalTo(190);
     }];
     
-    UIImageView *backgroundImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@""]];
-    backgroundImageView.image = [[UIImage imageNamed:@"build_background"] resizableImageWithCapInsets:UIEdgeInsetsMake(9, 5, 6, 5) resizingMode:UIImageResizingModeStretch];
+    UIImageView *backgroundImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"class_tab_putup"]];
     [self.contentView addSubview:backgroundImageView];
     [backgroundImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.equalTo(self.contentView);
@@ -60,6 +69,11 @@
     _weekTableView.delegate = self;
     _weekTableView.dataSource = self;
     _weekTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    [_weekTableView registerClass:[ChooseWeekCell class] forCellReuseIdentifier:kChooseWeekCell];
+    [self.contentView addSubview:_weekTableView];
+    [_weekTableView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.equalTo(self.contentView).insets(UIEdgeInsetsMake(12, 0, 0, 0));
+    }];
 }
 
 #pragma mark - UITableViewDataSource
@@ -70,18 +84,26 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    ChooseWeekCell *cell = [tableView dequeueReusableCellWithIdentifier:kChooseWeekCell];
     
-    return nil;
+    NSInteger row = indexPath.row;
+    
+    [cell initData:row+1 selected:(row+1 == _selectNum)];
+    
+    return cell;
 }
 
 #pragma mark - UITableViewDelegate
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return SCALE_NUM(90);
+    return SCALE_NUM(30);
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    [self hide];
+    
+    _chooseWeekBlock(indexPath.row+1);
 }
 
 /*

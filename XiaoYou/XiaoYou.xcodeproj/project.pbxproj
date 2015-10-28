@@ -139,6 +139,9 @@
 		20D821A81BE0A97800C5E21C /* YCommonPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 20D821A71BE0A97800C5E21C /* YCommonPickerView.m */; };
 		20D821AB1BE0ADF700C5E21C /* havetime_icon_remind@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 20D821A91BE0ADF700C5E21C /* havetime_icon_remind@2x.png */; };
 		20D821AC1BE0ADF700C5E21C /* havetime_icon_remind@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 20D821AA1BE0ADF700C5E21C /* havetime_icon_remind@3x.png */; };
+		20D821AF1BE0B3C000C5E21C /* ChooseWeekCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 20D821AE1BE0B3C000C5E21C /* ChooseWeekCell.m */; };
+		20D821B21BE0B55C00C5E21C /* class_tab_putup@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 20D821B01BE0B55C00C5E21C /* class_tab_putup@2x.png */; };
+		20D821B31BE0B55C00C5E21C /* class_tab_putup@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 20D821B11BE0B55C00C5E21C /* class_tab_putup@3x.png */; };
 		20D8B12F1BE06F62003F7911 /* CurriculumDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = 20D8B12E1BE06F62003F7911 /* CurriculumDetailView.m */; };
 		20D8B1321BE07595003F7911 /* course_icon_week@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 20D8B1301BE07595003F7911 /* course_icon_week@2x.png */; };
 		20D8B1331BE07595003F7911 /* course_icon_week@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 20D8B1311BE07595003F7911 /* course_icon_week@3x.png */; };
@@ -979,6 +982,10 @@
 		20D821A71BE0A97800C5E21C /* YCommonPickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YCommonPickerView.m; sourceTree = "<group>"; };
 		20D821A91BE0ADF700C5E21C /* havetime_icon_remind@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "havetime_icon_remind@2x.png"; sourceTree = "<group>"; };
 		20D821AA1BE0ADF700C5E21C /* havetime_icon_remind@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "havetime_icon_remind@3x.png"; sourceTree = "<group>"; };
+		20D821AD1BE0B3C000C5E21C /* ChooseWeekCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChooseWeekCell.h; sourceTree = "<group>"; };
+		20D821AE1BE0B3C000C5E21C /* ChooseWeekCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChooseWeekCell.m; sourceTree = "<group>"; };
+		20D821B01BE0B55C00C5E21C /* class_tab_putup@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "class_tab_putup@2x.png"; sourceTree = "<group>"; };
+		20D821B11BE0B55C00C5E21C /* class_tab_putup@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "class_tab_putup@3x.png"; sourceTree = "<group>"; };
 		20D8B12D1BE06F62003F7911 /* CurriculumDetailView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CurriculumDetailView.h; sourceTree = "<group>"; };
 		20D8B12E1BE06F62003F7911 /* CurriculumDetailView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CurriculumDetailView.m; sourceTree = "<group>"; };
 		20D8B1301BE07595003F7911 /* course_icon_week@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "course_icon_week@2x.png"; sourceTree = "<group>"; };
@@ -2697,6 +2704,8 @@
 				20D8B12E1BE06F62003F7911 /* CurriculumDetailView.m */,
 				20D821A11BE098FE00C5E21C /* ChooseWeekView.h */,
 				20D821A21BE098FE00C5E21C /* ChooseWeekView.m */,
+				20D821AD1BE0B3C000C5E21C /* ChooseWeekCell.h */,
+				20D821AE1BE0B3C000C5E21C /* ChooseWeekCell.m */,
 			);
 			path = MyTimetable;
 			sourceTree = "<group>";
@@ -3737,6 +3746,8 @@
 		650C6C0B1B886D3200A89AC9 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
+				20D821B01BE0B55C00C5E21C /* class_tab_putup@2x.png */,
+				20D821B11BE0B55C00C5E21C /* class_tab_putup@3x.png */,
 				20D8B1301BE07595003F7911 /* course_icon_week@2x.png */,
 				20D8B1311BE07595003F7911 /* course_icon_week@3x.png */,
 				20DF5FFD1BDF2E2A00C8383B /* icon_arrow@2x.png */,
@@ -4345,6 +4356,7 @@
 				333122BE1B806EDC00D3D032 /* chat_receiver_audio_playing001@2x.png in Resources */,
 				3335C3641B8178E8007DEFD4 /* chatFire_audioPlaying0@2x.png in Resources */,
 				20E9421D1B833D10009C2DC6 /* wechat_friends@3x.png in Resources */,
+				20D821B31BE0B55C00C5E21C /* class_tab_putup@3x.png in Resources */,
 				20DAF9A51B871D31005B7932 /* SchollList.txt in Resources */,
 				20E18DD11B808E42005B75EE /* tag-grey@3x.png in Resources */,
 				E46CF8791BD7765A00FF563B /* detail_cool_new@2x.png in Resources */,
@@ -4479,6 +4491,7 @@
 				041E3EB91BAFF9FE00454487 /* CTAssetsPickerChecked.png in Resources */,
 				65AC81221BDCEA54005450F3 /* news_tag_time@2x.png in Resources */,
 				20DAE1541B882CFF00607996 /* register-password@2x.png in Resources */,
+				20D821B21BE0B55C00C5E21C /* class_tab_putup@2x.png in Resources */,
 				E43E10731BCCFA840018B6D7 /* img_line@3x.png in Resources */,
 				20E9424E1B833D10009C2DC6 /* complete@2x.png in Resources */,
 				3334AC3B1B82E32700FDDCCB /* chat_sender_bg@2x.png in Resources */,
@@ -4884,6 +4897,7 @@
 				653199DE1B80B41C00405B72 /* ConnectTag.m in Sources */,
 				20DA17021BC7C51200A61B37 /* MGCMonthPlannerViewController.m in Sources */,
 				E482D5671BD8CAC50045F4DB /* ScanfResultTableView.m in Sources */,
+				20D821AF1BE0B3C000C5E21C /* ChooseWeekCell.m in Sources */,
 				3331223C1B806EDB00D3D032 /* EMChatViewCell.m in Sources */,
 				339549891B81BDFF00F9ECB1 /* GroupInfoDetailCollectionView.m in Sources */,
 				6592DCDA1B806A9B004CD118 /* XYGroupApplyViewController.m in Sources */,
