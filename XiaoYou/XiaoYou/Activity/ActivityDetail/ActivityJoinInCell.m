@@ -14,7 +14,7 @@
 #import "Tags.h"
 #import "UIImageView+WebCache.h"
 
-#define REUSEID @"joinincell"
+
 
 @interface ActivityJoinInCell ()
 
@@ -23,30 +23,30 @@
 @property (nonatomic,strong) JoinInTopView  *joinTopView;
 
 @property (nonatomic,strong) TagsCommonView *tagsView;
+
+@property (nonatomic,strong) UIView         *tagsWrapView;
 @end
 
 @implementation ActivityJoinInCell
 
-
-+(ActivityJoinInCell *)cellWithTableView:(UITableView *)tableView cellType:(CELLTYPE)type
+-(instancetype)initWithType:(CELLTYPE)type
 {
-    /*ActivityJoinInCell *cell = [tableView dequeueReusableCellWithIdentifier:REUSEID];
-    if (!cell) {
-        cell = [[ActivityJoinInCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:REUSEID];
-    }*/
-    ActivityJoinInCell *cell = [[ActivityJoinInCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil];
-    cell.cellType = type;
-    return cell;
-}
-
--(instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
-{
-    if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
+    if (self = [super init]) {
+        [self initViewWithType];
+        [self setCellType:type];
         self.selectionStyle = UITableViewCellSelectionStyleNone;
-            [self initViewWithType];
     }
     return self;
 }
+
+//-(instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
+//{
+//    if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
+//        self.selectionStyle = UITableViewCellSelectionStyleNone;
+//            [self initViewWithType];
+//    }
+//    return self;
+//}
 
 
 -(void)setCellType:(CELLTYPE)cellType
@@ -76,7 +76,6 @@
         make.height.mas_equalTo(0).priorityLow();
     }];
     
-    
     _joinTopView = [[JoinInTopView alloc]init];
     [self.contentView addSubview:_joinTopView];
     [_joinTopView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -86,14 +85,26 @@
         make.height.mas_equalTo(SCALE_NUM(60));
     }];
     
-    _tagsView = [[TagsCommonView alloc]init];
-    [self.contentView addSubview:_tagsView];
-    [_tagsView mas_makeConstraints:^(MASConstraintMaker *make) {
+    _tagsWrapView = [[UIView alloc]init];
+    [self.contentView addSubview:_tagsWrapView];
+    _tagsWrapView.backgroundColor = RGBACOLOR(246, 247, 249, 1);
+    [_tagsWrapView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(_joinTopView.mas_bottom).offset(SCALE_NUM(15));
         make.leading.mas_equalTo(71);
         make.trailing.mas_equalTo(-20);
         make.height.mas_equalTo(100);
     }];
+    
+    
+    _tagsView = [[TagsCommonView alloc]init];
+    [_tagsWrapView addSubview:_tagsView];
+    [_tagsView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.mas_equalTo(0);
+        make.leading.mas_equalTo(SCALE_NUM(10));
+        make.trailing.mas_equalTo(SCALE_NUM(0));
+        make.bottom.mas_equalTo(SCALE_NUM(0));
+    }];
+    
     _tagsView.backgroundColor = RGBACOLOR(246, 247, 249, 1);
     Tags *tag1 = [[Tags alloc]init];
     tag1.name = @"班";
@@ -121,9 +132,26 @@
     [_tagsView setData:profile];
 }
 
--(void)setData:(JoinInModelTest *)joinModel
+-(void)setData:(Author *)joinModel
 {
-    [_joinTopView.headImageView sd_setImageWithURL:[NSURL URLWithString:joinModel.headImageUrl]];
+    [_joinTopView.headImageView setFaceImageWithUrl:joinModel.headPic];
+    _joinTopView.nameLabel.text = joinModel.name;
+    
+    
+    ProfileInfo *profile = [[ProfileInfo alloc]init];
+    profile.propetiesCommon = joinModel.propetiesCommon;
+    profile.tagModels = joinModel.tagsCommon;
+    [_tagsView setData:profile];
+    
+    //[UIImage imageNamed:@"funny_detail_boy"]
+    if ([joinModel.gender isEqualToString:@"男"]) {
+        _joinTopView.genderImageView.image = [UIImage imageNamed:@"funny_detail_boy"];
+    } else
+    {
+        _joinTopView.genderImageView.image = [UIImage imageNamed:@"funny_detail_girl"];
+    }
+    
+    /*[_joinTopView.headImageView sd_setImageWithURL:[NSURL URLWithString:joinModel.headImageUrl]];
     _joinTopView.nameLabel.text = joinModel.nameStr;
     ProfileInfo *profile = [[ProfileInfo alloc]init];
     
@@ -145,7 +173,7 @@
     tag3.name = @"乡";
     profile.propetiesCommon = [NSArray arrayWithObjects:tag1,tag2,tag3,nil];
     profile.tagModels = arr1;
-    [_tagsView setData:profile];
+    [_tagsView setData:profile];*/
     
 }
 

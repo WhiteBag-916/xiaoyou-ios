@@ -11,6 +11,7 @@
 #import "UIImageView+WebCache.h"
 #import "ProfileInfo.h"
 #import "WhoJoinInController.h"
+#import "ActivityDetailViewController.h"
 
 #define REUSRID             @"PassRemindCell"
 #define CELL_INSET          SCALE_NUM(12)
@@ -120,7 +121,7 @@
         make.width.mas_equalTo(SCALE_NUM(45));
         make.height.mas_equalTo(SCALE_NUM(45));
     }];
-    _headImageView.layer.cornerRadius = 45.0/2;
+    _headImageView.layer.cornerRadius = SCALE_NUM(45)/2.0;
     _headImageView.layer.masksToBounds = YES;
     
     _contentTitleLabel = [[UILabel alloc]init];
@@ -215,6 +216,10 @@
 //点击中间部分cell
 -(void)middleAction:(UIButton*)btn {
     NSLog(@"this is midele action");
+    NSString *publishID = [NSString stringWithFormat:@"%ld",(long)self.model.activityPublishedId];
+    ActivityDetailViewController *detailVC = [[ActivityDetailViewController alloc]init];
+    detailVC.publishID = publishID;
+    [self.viewController.navigationController pushViewController:detailVC animated:YES needHiddenBottomBar:YES];
 }
 
 //点击下面部分cell
