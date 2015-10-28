@@ -35,7 +35,7 @@
     self.title = @"登录";
     [self showCustomNavigationBackButton];
     [self showCustomNavigationNextButton];
-    self.view.backgroundColor = KCOLORGREEN_e6ebea;
+    self.view.backgroundColor = KCOLOR_e6ebea;
     
     _isCheckButton = YES;
     
@@ -96,7 +96,7 @@
 //    _showProtocalButton = [UIButton buttonWithType:UIButtonTypeCustom];
 //    [_showProtocalButton setTitle:@"同意用户条款" forState:UIControlStateNormal];
 //    _showProtocalButton.titleLabel.font = CONTENT_FONT(12);
-//    [_showProtocalButton setTitleColor:KCOLORGREEN_009688 forState:UIControlStateNormal];
+//    [_showProtocalButton setTitleColor:KCOLOR_009688 forState:UIControlStateNormal];
 //    [_showProtocalButton addTarget:self action:@selector(pressShowProtocalButton) forControlEvents:UIControlEventTouchUpInside];
 //    [self.view addSubview:_showProtocalButton];
 //    [_showProtocalButton mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -121,7 +121,7 @@
     //首次登陆
     UIButton *firstLogin = [UIButton buttonWithType:UIButtonTypeCustom];
     [firstLogin setTitle:@"首次登录>" forState:UIControlStateNormal];
-    [firstLogin setTitleColor:KCOLORGREEN_009688 forState:UIControlStateNormal];
+    [firstLogin setTitleColor:KCOLOR_009688 forState:UIControlStateNormal];
     firstLogin.titleLabel.font = CONTENT_FONT(12);
     [firstLogin addTarget:self action:@selector(pressFirstLogin) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:firstLogin];
@@ -135,11 +135,11 @@
     //初始密码
 //    UIButton *initialPassword = [UIButton buttonWithType:UIButtonTypeCustom];
 //    [initialPassword setTitle:@"初始密码范例" forState:UIControlStateNormal];
-//    [initialPassword setTitleColor:KCOLORGREEN_009688 forState:UIControlStateNormal];
+//    [initialPassword setTitleColor:KCOLOR_009688 forState:UIControlStateNormal];
 //    initialPassword.titleLabel.font = CONTENT_FONT(12);
 //    initialPassword.layer.borderWidth = .5;
 //    initialPassword.layer.cornerRadius = 3;
-//    initialPassword.layer.borderColor = KCOLORGREEN_009688.CGColor;
+//    initialPassword.layer.borderColor = KCOLOR_009688.CGColor;
 //    [initialPassword addTarget:self action:@selector(pressInitialPassword) forControlEvents:UIControlEventTouchUpInside];
 //    [self.view addSubview:initialPassword];
 //    [initialPassword mas_makeConstraints:^(MASConstraintMaker *make) {

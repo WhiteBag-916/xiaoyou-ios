@@ -33,7 +33,7 @@ NSString *const kActivityIdentityTableViewCell = @"ActivityIdentityTableViewCell
     _contentLabel = [[UILabel alloc] init];
     _contentLabel.backgroundColor = [UIColor clearColor];
     _contentLabel.font = CONTENT_FONT(SCALE_NUM(12));
-    _contentLabel.textColor = KCOLORGREEN_B4;
+    _contentLabel.textColor = KCOLOR_B4;
     _contentLabel.textAlignment = NSTextAlignmentCenter;
     _contentLabel.layer.borderColor = [UIColor hexChangeFloat:@"465a65"].CGColor;
     _contentLabel.layer.borderWidth = 1;
@@ -53,7 +53,7 @@ NSString *const kActivityIdentityTableViewCell = @"ActivityIdentityTableViewCell
     _contentLabel.text = dic[@"name"];
     if ([dic[@"isChoice"] boolValue])
     {
-        _contentLabel.backgroundColor = KCOLORGREEN_g1;
+        _contentLabel.backgroundColor = KCOLOR_g1;
         _contentLabel.layer.borderColor = [UIColor clearColor].CGColor;
         
     }

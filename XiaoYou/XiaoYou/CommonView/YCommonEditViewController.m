@@ -81,7 +81,7 @@
         LoginResp *resp = [[ProvisionManager sharedInstance] getLoginInfo];
         _textView.placeholder = [NSString stringWithFormat:@"我是%@级%@的%@", resp.grad, resp.college, resp.studentName];
     }
-    _textView.placeholderColor = KCOLORGREEN_455A64;
+    _textView.placeholderColor = KCOLOR_455A64;
     _textView.font = CONTENT_FONT(12);
     _textView.delegate = self;
 }

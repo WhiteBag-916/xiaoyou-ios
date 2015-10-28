@@ -30,7 +30,7 @@ NSString *const kMyTimetableDayCollectionViewCell = @"MyTimetableDayCollectionVi
         
         //数字
         _numLabel = [YUtils initLabel:CONTENT_FONT(16)
-                                color:KCOLORGREEN_B4
+                                color:KCOLOR_B4
                                  text:@"1"
                             alignment:NSTextAlignmentCenter];
         [self.contentView addSubview:_numLabel];
@@ -42,7 +42,7 @@ NSString *const kMyTimetableDayCollectionViewCell = @"MyTimetableDayCollectionVi
         
         //时间
         _timeLabel = [YUtils initLabel:CONTENT_FONT(10)
-                                color:KCOLORGREEN_B5
+                                color:KCOLOR_B5
                                  text:@"8:00"
                             alignment:NSTextAlignmentCenter];
         [self.contentView addSubview:_timeLabel];
@@ -54,7 +54,7 @@ NSString *const kMyTimetableDayCollectionViewCell = @"MyTimetableDayCollectionVi
         
         //右边的线
         _rightLine = [UIView new];
-        _rightLine.backgroundColor = KCOLORGREEN_B2;
+        _rightLine.backgroundColor = KCOLOR_B2;
         [self.contentView addSubview:_rightLine];
         [_rightLine mas_makeConstraints:^(MASConstraintMaker *make) {
             make.top.bottom.equalTo(self.contentView);
@@ -64,7 +64,7 @@ NSString *const kMyTimetableDayCollectionViewCell = @"MyTimetableDayCollectionVi
         
         //下面的线
         _bottomLine = [UIView new];
-        _bottomLine.backgroundColor = KCOLORGREEN_B2;
+        _bottomLine.backgroundColor = KCOLOR_B2;
         [self.contentView addSubview:_bottomLine];
         [_bottomLine mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.right.equalTo(self.contentView);

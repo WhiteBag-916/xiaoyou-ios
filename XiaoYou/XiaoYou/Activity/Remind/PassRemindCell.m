@@ -54,7 +54,7 @@
 {
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
         self.selectionStyle = UITableViewCellSelectionStyleNone;
-        self.backgroundColor = KCOLORGREEN_B1;
+        self.backgroundColor = KCOLOR_B1;
         [self initView];
     }
     return self;
@@ -92,7 +92,7 @@
     _remindTitleLabel = [[UILabel alloc]init];
     [self.wrapContentView addSubview:_remindTitleLabel];
     _remindTitleLabel.text = @"恭喜,报名申请通过！！！";
-    _remindTitleLabel.textColor = KCOLORGREEN_B4;
+    _remindTitleLabel.textColor = KCOLOR_B4;
     _remindTitleLabel.font = CONTENT_FONT(15);
     [_remindTitleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.height.mas_equalTo(SCALE_NUM(15));
@@ -128,7 +128,7 @@
     [self.wrapContentView addSubview:_contentTitleLabel];
     _contentTitleLabel.font = CONTENT_FONT(12);
     _contentTitleLabel.text = @"校级活动公告";
-    _contentTitleLabel.textColor = KCOLORGREEN_g1;
+    _contentTitleLabel.textColor = KCOLOR_g1;
     [_contentTitleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.height.mas_equalTo(SCALE_NUM(12));
         make.top.equalTo(self.headImageView);
@@ -139,7 +139,7 @@
     [self.wrapContentView addSubview:_contentNameLabel];
     _contentNameLabel.font = CONTENT_FONT(12);
     _contentNameLabel.text = @"名称：%@";
-    _contentNameLabel.textColor = KCOLORGREEN_B3;
+    _contentNameLabel.textColor = KCOLOR_B3;
     [_contentNameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.height.mas_equalTo(SCALE_NUM(12));
         make.top.equalTo(_contentTitleLabel.mas_bottom).offset(SCALE_NUM(15));
@@ -151,7 +151,7 @@
     [self.wrapContentView addSubview:_activityTimeLabel];
     _activityTimeLabel.font = CONTENT_FONT(12);
     _activityTimeLabel.text = @"活动时间：15/12/12 18:00-20:00";
-    _activityTimeLabel.textColor = KCOLORGREEN_B3;
+    _activityTimeLabel.textColor = KCOLOR_B3;
     [_activityTimeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.height.mas_equalTo(SCALE_NUM(12));
         make.top.equalTo(_contentNameLabel.mas_bottom).offset(SCALE_NUM(15));
@@ -171,7 +171,7 @@
     _tailLabel = [[UILabel alloc]init];
     [self.wrapContentView addSubview:_tailLabel];
     _tailLabel.text = @"看看还有什么人";
-    _tailLabel.textColor = KCOLORGREEN_B3;
+    _tailLabel.textColor = KCOLOR_B3;
     _tailLabel.font = CONTENT_FONT(12);
     [_tailLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(_bottomLineView.mas_bottom);

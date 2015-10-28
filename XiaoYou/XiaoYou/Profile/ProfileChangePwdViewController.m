@@ -60,7 +60,7 @@
 - (void)initController {
     [self showCustomNavigationBackButton];
     [self showCustomNavigationConfirmButton];
-    self.view.backgroundColor = KCOLORGREEN_f2f2f2;
+    self.view.backgroundColor = KCOLOR_f2f2f2;
     self.title = @"修改密码";
     self.navigationRightButton.enabled = false;
 }
@@ -119,7 +119,7 @@
     field.font = CONTENT_FONT(12);
     field.secureTextEntry = true;
     [field registerChanged:self action:@selector(checkComplete)];
-    field.textColor = KCOLORGREEN_455A64;
+    field.textColor = KCOLOR_455A64;
     field.placeholder = names[type];
     return field;
 }

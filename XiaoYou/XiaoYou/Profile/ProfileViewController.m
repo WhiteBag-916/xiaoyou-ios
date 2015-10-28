@@ -136,7 +136,7 @@
         _tagCountLabel.text = @"";
     } else {
         _tagLabel.text = [_tagModels[0] name];
-        _tagLabel.textColor = KCOLORGREEN_009688;
+        _tagLabel.textColor = KCOLOR_009688;
         if (_tagModels.count > 1) {
             _tagCountLabel.text = [NSString stringWithFormat:@"等%d个", (int)_tagModels.count];
         } else {
@@ -181,7 +181,7 @@
         make.left.right.top.equalTo(_containerView);
         make.height.mas_equalTo(KTOPHEIGHT);
     }];
-    _topView.backgroundColor = KCOLORGREEN_455A64;
+    _topView.backgroundColor = KCOLOR_455A64;
     [_topView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(openProfile)]];
     
     UIView *infoView = [[UIView alloc] init];
@@ -361,7 +361,7 @@
     [_bottomView addSubview:item];
     NSArray *names = @[@"态度", @"关注", @"动态"];
     UILabel *icon = [YUtils initLabel:CONTENT_FONT(10) color:KCOLORWHITE text:names[index] frame:CGRectZero alignment:NSTextAlignmentCenter];
-    icon.backgroundColor = KCOLORGREEN_009688;
+    icon.backgroundColor = KCOLOR_009688;
     icon.layer.cornerRadius = KBOTTOMLABELSIZE/2;
     icon.clipsToBounds = true;
     [item addSubview:icon];
@@ -385,7 +385,7 @@
         [item addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(openAttitude)]];
     }
     if (index == 1) {
-        _tagLabel = [YUtils initLabel:CONTENT_FONT(12) color:KCOLORGREEN_009688 text:@"标签" frame:CGRectZero alignment:NSTextAlignmentLeft];
+        _tagLabel = [YUtils initLabel:CONTENT_FONT(12) color:KCOLOR_009688 text:@"标签" frame:CGRectZero alignment:NSTextAlignmentLeft];
         [item addSubview:_tagLabel];
         [_tagLabel mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.equalTo(_userName);

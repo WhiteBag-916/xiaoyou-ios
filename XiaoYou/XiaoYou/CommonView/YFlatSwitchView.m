@@ -43,9 +43,9 @@
             tmp = label;
         }
         _index = 0;
-        [self.subviews[0] setTextColor:KCOLORGREEN_009688];
+        [self.subviews[0] setTextColor:KCOLOR_009688];
         _line = [[UIView alloc] init];
-        _line.backgroundColor = KCOLORGREEN_009688;
+        _line.backgroundColor = KCOLOR_009688;
         [self addSubview:_line];
         [_line mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.right.bottom.equalTo(self.subviews[0]);
@@ -62,7 +62,7 @@
     int newIndex = (int)tap.view.tag - KLABELTAG;
     if (newIndex != _index) {
         [self.subviews[_index] setTextColor:KCOLORWHITE_696969];
-        [self.subviews[newIndex] setTextColor:KCOLORGREEN_009688];
+        [self.subviews[newIndex] setTextColor:KCOLOR_009688];
         [UIView animateWithDuration:0.3 animations:^{
             [_line mas_remakeConstraints:^(MASConstraintMaker *make) {
                 make.left.right.bottom.equalTo(self.subviews[newIndex]);

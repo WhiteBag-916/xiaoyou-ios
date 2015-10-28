@@ -52,7 +52,7 @@ NSString *const kStudyRoomDetailTableViewCell = @"StudyRoomDetailTableViewCellId
 //    
 //    //2
 //    _studyFloorLabel = [YUtils initLabel:CONTENT_FONT(15)
-//                                   color:KCOLORGREEN_B4
+//                                   color:KCOLOR_B4
 //                                    text:@"教学2楼"
 //                               alignment:NSTextAlignmentLeft];
 //    [self.contentView addSubview:_studyFloorLabel];
@@ -66,7 +66,7 @@ NSString *const kStudyRoomDetailTableViewCell = @"StudyRoomDetailTableViewCellId
     
     //3
     _studyRoomLabel = [YUtils initLabel:CONTENT_FONT(12)
-                                  color:KCOLORGREEN_B5
+                                  color:KCOLOR_B5
                                    text:@"2012室"
                               alignment:NSTextAlignmentLeft];
     [self.contentView addSubview:_studyRoomLabel];
@@ -79,7 +79,7 @@ NSString *const kStudyRoomDetailTableViewCell = @"StudyRoomDetailTableViewCellId
     
     //4
     _timeLabel = [YUtils initLabel:CONTENT_FONT(12)
-                                  color:KCOLORGREEN_B5
+                                  color:KCOLOR_B5
                                    text:@"无课时间：14:00-16:00"
                               alignment:NSTextAlignmentLeft];
     [self.contentView addSubview:_timeLabel];

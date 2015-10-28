@@ -137,7 +137,7 @@
     _showProtocalButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [_showProtocalButton setTitle:@"同意用户条款" forState:UIControlStateNormal];
     _showProtocalButton.titleLabel.font = CONTENT_FONT(12);
-    [_showProtocalButton setTitleColor:KCOLORGREEN_009688 forState:UIControlStateNormal];
+    [_showProtocalButton setTitleColor:KCOLOR_009688 forState:UIControlStateNormal];
     [_showProtocalButton addTarget:self action:@selector(pressShowProtocalButton) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:_showProtocalButton];
     [_showProtocalButton mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -165,7 +165,7 @@
     
     //文案
     UILabel *textLabel = [YUtils initLabel:CONTENT_FONT(10)
-                                     color:KCOLORGREEN_455A64
+                                     color:KCOLOR_455A64
                                       text:@"校友网是实名社交，请填写本人真实手机号，管理员将于24h内审核您的信息，不真实的账号可能会被删除；\
                           如有登录异常等问题，请联系所在院系辅导员。"
                                      frame:CGRectZero
@@ -199,14 +199,14 @@
 - (void)initController {
     self.navigationController.navigationBarHidden = false;
     [self showCustomNavigationBackButton];
-    self.view.backgroundColor = KCOLORGREEN_f2f2f2;
+    self.view.backgroundColor = KCOLOR_f2f2f2;
     self.title = @"验证手机号";
 }
 - (void)initPwdView {
     self.title = @"输入密码";
     _pwdView = [[UIView alloc] init];
     [self.view addSubview:_pwdView];
-    _pwdView.backgroundColor = KCOLORGREEN_f2f2f2;
+    _pwdView.backgroundColor = KCOLOR_f2f2f2;
     [_pwdView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.equalTo(self.view);
     }];
@@ -236,8 +236,8 @@
     _sendBtn.layer.borderWidth = 1;
     [_sendBtn setTitle:@"获取验证码" forState:UIControlStateNormal];
     [_sendBtn setTitle:@"获取验证码" forState:UIControlStateDisabled];
-    [_sendBtn setTitleColor:KCOLORGREEN_009688 forState:UIControlStateNormal];
-    [_sendBtn setTitleColor:KCOLORGREEN_455A64 forState:UIControlStateDisabled];
+    [_sendBtn setTitleColor:KCOLOR_009688 forState:UIControlStateNormal];
+    [_sendBtn setTitleColor:KCOLOR_455A64 forState:UIControlStateDisabled];
 //    _sendBtn.enabled = false;
     _sendBtn.titleLabel.font = CONTENT_FONT(12);
     [_sendBtn addTarget:self action:@selector(getCode) forControlEvents:UIControlEventTouchUpInside];
@@ -247,7 +247,7 @@
         make.right.top.bottom.equalTo(_sendBtn);
         make.width.mas_equalTo(KWAITWIDTH);
     }];
-    _waitLabel.backgroundColor = KCOLORGREEN_e5e5e5;
+    _waitLabel.backgroundColor = KCOLOR_e5e5e5;
     _waitLabel.hidden = true;
 
     _codeField = [self createField:1];
@@ -280,9 +280,9 @@
     }];
     field.font = CONTENT_FONT(12);
     [field registerChanged:self action:@selector(checkComplete)];
-    field.textColor = KCOLORGREEN_455A64;
+    field.textColor = KCOLOR_455A64;
     field.placeholder = names[type];
-//    [field placeHolderColor:names[type] fontColor:KCOLORGREEN_455A64];
+//    [field placeHolderColor:names[type] fontColor:KCOLOR_455A64];
     return field;
 }
 
@@ -365,10 +365,10 @@
 - (void)changeBtn:(BOOL)isValid {
     if (isValid) {
         _sendBtn.enabled = true;
-        _sendBtn.layer.borderColor = [KCOLORGREEN_009688 CGColor];
+        _sendBtn.layer.borderColor = [KCOLOR_009688 CGColor];
     } else {
         _sendBtn.enabled = false;
-        _sendBtn.layer.borderColor = [KCOLORGREEN_455A64 CGColor];
+        _sendBtn.layer.borderColor = [KCOLOR_455A64 CGColor];
     }
 }
 //短信发送等待计时

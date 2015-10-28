@@ -56,7 +56,7 @@
         [_joinInBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
         _joinInBtn.layer.borderColor = KCOLORGRAY.CGColor;
         [_joinInBtn setTitle:@"我要加入" forState:UIControlStateNormal];
-        [_joinInBtn setBackgroundColor:KCOLORGREEN_g1];
+        [_joinInBtn setBackgroundColor:KCOLOR_g1];
         [_joinInBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         [_joinInBtn mas_makeConstraints:^(MASConstraintMaker *make) {
             make.leading.mas_equalTo(-1);

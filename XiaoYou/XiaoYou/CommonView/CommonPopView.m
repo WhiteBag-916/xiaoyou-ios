@@ -116,14 +116,14 @@
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
     if (1 == btnType)
     {
-        button.frame = CGRectMake(self.width-40, 0, 50, BUTTON_H);
-        [button setTitleColor:KCOLORGREEN_g1 forState:UIControlStateNormal];
+        button.frame = CGRectMake(self.width-50, 0, 50, BUTTON_H+MID_MAR*2);
+        [button setTitleColor:KCOLOR_g1 forState:UIControlStateNormal];
         [button setTitle:@"确定" forState:UIControlStateNormal];
     }
     else
     {
-        button.frame = CGRectMake(0, 0, 50, BUTTON_H);
-        [button setTitleColor:KCOLORGREEN_B5 forState:UIControlStateNormal];
+        button.frame = CGRectMake(0, 0, 50, BUTTON_H+MID_MAR*2);
+        [button setTitleColor:KCOLOR_B5 forState:UIControlStateNormal];
         [button setTitle:@"取消" forState:UIControlStateNormal];
     }
     

@@ -57,8 +57,8 @@
     _pageControl.backgroundColor = [UIColor clearColor];
     _pageControl.numberOfPages = 3;
     _pageControl.currentPage = 0;
-    _pageControl.pageIndicatorTintColor = KCOLORGREEN_W1;
-    _pageControl.currentPageIndicatorTintColor = KCOLORGREEN_g1;
+    _pageControl.pageIndicatorTintColor = KCOLOR_W1;
+    _pageControl.currentPageIndicatorTintColor = KCOLOR_g1;
     [self addSubview:_pageControl];
     [_pageControl mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.equalTo(self);

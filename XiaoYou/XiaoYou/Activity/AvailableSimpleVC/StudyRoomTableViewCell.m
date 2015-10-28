@@ -39,7 +39,7 @@ NSString *const kStudyRoomTableViewCell = @"StudyRoomTableViewCellId";
     _studyRoomNameButton.userInteractionEnabled = NO;
     [_studyRoomNameButton setImage:[UIImage imageNamed:@"common_icon_classroom"] forState:UIControlStateNormal];
     [_studyRoomNameButton setTitle:@"教学2楼" forState:UIControlStateNormal];
-    [_studyRoomNameButton setTitleColor:KCOLORGREEN_B4 forState:UIControlStateNormal];
+    [_studyRoomNameButton setTitleColor:KCOLOR_B4 forState:UIControlStateNormal];
     _studyRoomNameButton.titleLabel.font = CONTENT_FONT(15);
     [_studyRoomNameButton setImageEdgeInsets:UIEdgeInsetsMake(0, 0, 0, 8)];
     [self.contentView addSubview:_studyRoomNameButton];
@@ -50,7 +50,7 @@ NSString *const kStudyRoomTableViewCell = @"StudyRoomTableViewCellId";
     }];
     
     _studyRoomNumberLabel = [YUtils initLabel:CONTENT_FONT(12)
-                                        color:KCOLORGREEN_B5
+                                        color:KCOLOR_B5
                                          text:@"11个教室空缺"
                                     alignment:NSTextAlignmentCenter];
     [self.contentView addSubview:_studyRoomNumberLabel];

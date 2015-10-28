@@ -24,7 +24,7 @@
 - (instancetype)init {
     if (self = [super init]) {
         
-        self.backgroundColor = KCOLORGREEN_455A64;
+        self.backgroundColor = KCOLOR_455A64;
         
         NSArray *dayArr = @[@"一", @"二", @"三", @"四", @"五", @"六", @"日"];
         
@@ -72,7 +72,7 @@
     } else {
         //选中
         UILabel *label = (UILabel *)[self viewWithTag:K_LABEL_TAG+selectDay];
-        label.textColor = KCOLORGREEN_B4;
+        label.textColor = KCOLOR_B4;
         label.backgroundColor = [UIColor whiteColor];
     }
     

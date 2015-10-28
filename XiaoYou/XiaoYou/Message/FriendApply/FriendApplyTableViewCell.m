@@ -164,7 +164,7 @@ typedef enum : NSUInteger {
     _afterDealButton = [[UIButton alloc] init];
     _afterDealButton.titleLabel.font = CONTENT_FONT(14);
     _afterDealButton.tag = BIG_BUTTON;
-    _afterDealButton.backgroundColor = KCOLORGREEN_009688;
+    _afterDealButton.backgroundColor = KCOLOR_009688;
     [_afterDealButton setTitle:@"聊聊呗" forState:UIControlStateNormal];
     [_afterDealButton addTarget:self action:@selector(clickDealButton:) forControlEvents:UIControlEventTouchUpInside];
     [self.contentView addSubview:_afterDealButton];
@@ -194,7 +194,7 @@ typedef enum : NSUInteger {
     _confirmButton = [[UIButton alloc] init];
     _confirmButton.titleLabel.font = CONTENT_FONT(14);
     _confirmButton.tag = OK_BUTTON;
-    _confirmButton.backgroundColor = KCOLORGREEN_009688;
+    _confirmButton.backgroundColor = KCOLOR_009688;
     [_confirmButton setTitle:@"好啊" forState:UIControlStateNormal];
     [_confirmButton addTarget:self action:@selector(clickDealButton:) forControlEvents:UIControlEventTouchUpInside];
     [self.contentView addSubview:_confirmButton];
@@ -235,7 +235,7 @@ typedef enum : NSUInteger {
             SKTag *tag = [SKTag tagWithText:[_applicantList.author.tagsCommon[i] name]];
             tag.font = CONTENT_FONT(10);
             if (isRelate) {
-                tag.textColor = KCOLORGREEN_009688;
+                tag.textColor = KCOLOR_009688;
             } else {
                 tag.textColor = KCOLORWHITE_696969;
             }
@@ -260,7 +260,7 @@ typedef enum : NSUInteger {
         //已同意
         _afterDealButton.hidden = NO;
         [_afterDealButton setTitle:@"聊聊呗" forState:UIControlStateNormal];
-        _afterDealButton.backgroundColor = KCOLORGREEN_009688;
+        _afterDealButton.backgroundColor = KCOLOR_009688;
         _afterDealButton.userInteractionEnabled = YES;
         _ignoreButton.hidden = YES;
         _confirmButton.hidden = YES;

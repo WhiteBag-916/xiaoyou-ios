@@ -262,7 +262,7 @@ static const NSUInteger kYActionSheetCancelHeight = 49;
         CGFloat sheetViewBackgroundViewHeight = (title.length > 0? kYActionSheetTitleHeight:0) + items.count * kYActionSheetButtonHeight + kYActionSheetCancelHeight;
         
         _sheetViewBackgroundView = [[UIView alloc] initWithFrame:CGRectMake(0, self.height, self.width, sheetViewBackgroundViewHeight)];
-        _sheetViewBackgroundView.backgroundColor = KCOLORGREEN_455A64;
+        _sheetViewBackgroundView.backgroundColor = KCOLOR_455A64;
         
         CGFloat height = 0;
         

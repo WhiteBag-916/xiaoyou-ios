@@ -139,7 +139,7 @@
     UIImageView * classHeadImageView = [[UIImageView alloc] initWithFrame:CGRectMake(kPaddingDistance, kPaddingDistance, kHeadWidthAndHeight, kHeadWidthAndHeight)];
     classHeadImageView.layer.cornerRadius = kHeadCornerRadius;
     classHeadImageView.clipsToBounds = YES;
-    classHeadImageView.backgroundColor = KCOLORGREEN_009688;
+    classHeadImageView.backgroundColor = KCOLOR_009688;
     [classBackView addSubview:classHeadImageView];
 
     //班
@@ -238,7 +238,7 @@
 //    _headImageView = [[UIImageView alloc] init];
 //    _headImageView.layer.cornerRadius = kHeadCornerRadius;
 //    _headImageView.clipsToBounds = YES;
-//    _headImageView.backgroundColor = KCOLORGREEN_009688;
+//    _headImageView.backgroundColor = KCOLOR_009688;
 //    [backView addSubview:_headImageView];
 //    [_headImageView mas_makeConstraints:^(MASConstraintMaker *make) {
 //        make.top.left.mas_equalTo(kPaddingDistance);

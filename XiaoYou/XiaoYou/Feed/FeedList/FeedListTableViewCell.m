@@ -121,7 +121,7 @@ NSString *const KCommentTableViewCell = @"CommentTableViewCell";
         }];
         _hintLabel.layer.cornerRadius = KHINTSIZE/2;
         _hintLabel.clipsToBounds = true;
-        _hintLabel.backgroundColor = KCOLORGREEN_009688;
+        _hintLabel.backgroundColor = KCOLOR_009688;
     }
 }
 
@@ -220,7 +220,7 @@ NSString *const KCommentTableViewCell = @"CommentTableViewCell";
             make.bottom.equalTo(self.contentView);
             make.height.mas_equalTo(0.5);
         }];
-        line.backgroundColor = KCOLORGREEN_e6ebea;*/
+        line.backgroundColor = KCOLOR_e6ebea;*/
     }
     if (_feedType == FeedDetailType || _feedType == FeedCommentType) {
         [_bottomView.respectImg mas_makeConstraints:^(MASConstraintMaker *make) {

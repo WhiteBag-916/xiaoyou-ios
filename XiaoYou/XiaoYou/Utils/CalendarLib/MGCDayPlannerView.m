@@ -764,7 +764,7 @@ static const CGFloat kMaxHourSlotHeight = 150.;
 		_timeRowsView.hourSlotHeight = self.hourSlotHeight;
 		_timeRowsView.insetsHeight = self.eventsViewInnerMargin;
 		_timeRowsView.timeColumnWidth = self.timeColumnWidth;
-        _timeRowsView.currentTimeColor = KCOLORGREEN_g1;
+        _timeRowsView.currentTimeColor = KCOLOR_g1;
 		_timeRowsView.contentMode = UIViewContentModeRedraw;
 		[_timeScrollView addSubview:_timeRowsView];
 	}

@@ -112,7 +112,7 @@
     _badgeNumberLabel.font = CONTENT_FONT(10);
     _badgeNumberLabel.textAlignment = NSTextAlignmentCenter;
     _badgeNumberLabel.textColor = [UIColor whiteColor];
-    _badgeNumberLabel.backgroundColor = KCOLORGREEN_009688;
+    _badgeNumberLabel.backgroundColor = KCOLOR_009688;
     [backView addSubview:_badgeNumberLabel];
     
     //未读数
@@ -201,7 +201,7 @@
 //    _badgeNumberLabel.font = CONTENT_FONT(10);
 //    _badgeNumberLabel.textAlignment = NSTextAlignmentCenter;
 //    _badgeNumberLabel.textColor = [UIColor whiteColor];
-//    _badgeNumberLabel.backgroundColor = KCOLORGREEN_009688;
+//    _badgeNumberLabel.backgroundColor = KCOLOR_009688;
 //    [backView addSubview:_badgeNumberLabel];
 //    [_badgeNumberLabel mas_makeConstraints:^(MASConstraintMaker *make) {
 //        make.bottom.mas_equalTo(-kPaddingDistance);

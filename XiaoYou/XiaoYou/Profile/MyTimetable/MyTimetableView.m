@@ -49,8 +49,7 @@
         _allDayCollectionView.delegate = self;
         _allDayCollectionView.dataSource = self;
         _allDayCollectionView.allowsSelection = NO;
-        _allDayCollectionView.showsVerticalScrollIndicator = NO;
-        _allDayCollectionView.bounces = NO;
+        
         [self addSubview:_allDayCollectionView];
         [_allDayCollectionView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.edges.equalTo(self);
@@ -66,9 +65,11 @@
         _eventCollectionView.dataSource = self;
         _eventCollectionView.delegate = self;
         _eventCollectionView.scrollsToTop = NO;
+        _eventCollectionView.showsVerticalScrollIndicator = NO;
         _eventCollectionView.decelerationRate = UIScrollViewDecelerationRateFast;
         _eventCollectionView.allowsSelection = YES;
         _eventCollectionView.directionalLockEnabled = YES;
+        _eventCollectionView.bounces = NO;
         
         [_eventCollectionView registerClass:[MyTimetableCurriculumCollectionViewCell class] forCellWithReuseIdentifier:kMyTimetableCurriculumCollectionViewCell];
         [self addSubview:_eventCollectionView];
@@ -116,7 +117,7 @@
     if (collectionView == _allDayCollectionView) {
         return 8;
     } else if (collectionView == _eventCollectionView) {
-        if (0 == section || 1 == section || 5 == section) {
+        if (0 == section || 1 == section || 6 == section) {
             return 1;
         }
     }
@@ -159,7 +160,7 @@
 - (CGFloat)collectionView:(UICollectionView*)collectionView layout:(MGCTimedEventsViewLayout*)layout yPosForEventAtIndexPath:(NSIndexPath*)indexPath {
     if (1 == indexPath.section) {
         return K_CURRICULUM_WH*8;
-    } else if (5 == indexPath.section) {
+    } else if (6 == indexPath.section) {
         return K_CURRICULUM_WH*6;
     }
     return 0;
@@ -168,7 +169,7 @@
 - (CGFloat)collectionView:(UICollectionView*)collectionView layout:(MGCTimedEventsViewLayout*)layout heightForEventAtIndexPath:(NSIndexPath*)indexPath {
     if (1 == indexPath.section) {
         return K_CURRICULUM_WH*3;
-    } else if (5 == indexPath.section) {
+    } else if (6 == indexPath.section) {
         return K_CURRICULUM_WH*5;
     }
     return K_CURRICULUM_WH*2;

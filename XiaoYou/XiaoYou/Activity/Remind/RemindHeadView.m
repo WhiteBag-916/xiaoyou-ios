@@ -29,7 +29,7 @@
     if (!remindHeadView) {
         remindHeadView = [[RemindHeadView alloc]initWithReuseIdentifier:REUSERID];
     }
-    remindHeadView.contentView.backgroundColor = KCOLORGREEN_B1;
+    remindHeadView.contentView.backgroundColor = KCOLOR_B1;
     return (RemindHeadView*)remindHeadView;
 }
 
@@ -37,7 +37,7 @@
     _timeLabel = [[UILabel alloc]init];
     [self.contentView addSubview:_timeLabel];
     _timeLabel.font = [UIFont systemFontOfSize:11];
-    _timeLabel.textColor = KCOLORGREEN_B5;
+    _timeLabel.textColor = KCOLOR_B5;
     [_timeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.equalTo(self.mas_centerX);
         make.centerY.equalTo(self.mas_centerY);

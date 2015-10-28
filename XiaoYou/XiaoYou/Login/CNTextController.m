@@ -29,14 +29,14 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.view.backgroundColor = KCOLORGREEN_455A64;
+    self.view.backgroundColor = KCOLOR_455A64;
     
     _textWebView = [[UIWebView alloc]init];
     [self.view addSubview:_textWebView];
     
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
     [button setTitle:@"OK" forState:UIControlStateNormal];
-    [button setBackgroundColor:KCOLORGREEN_009688];
+    [button setBackgroundColor:KCOLOR_009688];
     [button addTarget:self action:@selector(dissmiss) forControlEvents:UIControlEventTouchUpInside];
     button.hidden = YES;
     [self.view addSubview:button];

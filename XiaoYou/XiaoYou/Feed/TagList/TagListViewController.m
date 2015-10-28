@@ -36,7 +36,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.view.backgroundColor = KCOLORGREEN_455A64;
+    self.view.backgroundColor = KCOLOR_455A64;
     [self initHeaderView];
     [self initSearchBtn];
     [self initBottomView];
@@ -94,7 +94,7 @@
         make.width.height.mas_equalTo(KNOTIFYCOUNTHEIGHT);
         make.left.mas_equalTo(KNOTIFYCOUNTMARGIN_LEFT);
     }];
-    _notifyCount.backgroundColor = KCOLORGREEN_009688;
+    _notifyCount.backgroundColor = KCOLOR_009688;
     _notifyCount.layer.cornerRadius = 3;
     _notifyCount.clipsToBounds = true;
     
@@ -117,7 +117,7 @@
         make.top.equalTo(_notifyView.mas_bottom);
         make.height.mas_equalTo(KSEARCHHEIGHT);
     }];
-    _searchLabel.backgroundColor = KCOLORGREEN_32424A;
+    _searchLabel.backgroundColor = KCOLOR_32424A;
     
     UIImageView *icon = [[UIImageView alloc] init];
     [self.view addSubview:icon];

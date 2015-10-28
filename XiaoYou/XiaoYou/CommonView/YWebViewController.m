@@ -89,7 +89,7 @@
     _progressView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleTopMargin;
     
     
-    _progressView.progressBarView.backgroundColor = KCOLORGREEN_009688;
+    _progressView.progressBarView.backgroundColor = KCOLOR_009688;
     
     
 }

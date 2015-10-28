@@ -48,7 +48,7 @@
     _houseLabel = [[UILabel alloc] init];
     _houseLabel.text = @"必胜客";
     _houseLabel.font = CONTENT_FONT(12);
-    _houseLabel.textColor = KCOLORGREEN_B3;
+    _houseLabel.textColor = KCOLOR_B3;
     _houseLabel.textAlignment = NSTextAlignmentLeft;
     [self addSubview:_houseLabel];
     [_houseLabel mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -73,7 +73,7 @@
     _phoneLabel = [[UILabel alloc] init];
     _phoneLabel.text = @"022-666 6666";
     _phoneLabel.font = CONTENT_FONT(12);
-    _phoneLabel.textColor = KCOLORGREEN_B3;
+    _phoneLabel.textColor = KCOLOR_B3;
     _phoneLabel.textAlignment = NSTextAlignmentLeft;
     [self addSubview:_phoneLabel];
     [_phoneLabel mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -97,7 +97,7 @@
     _placeLabel = [[UILabel alloc] init];
     _placeLabel.text = @"和平区西湖道风荷园1-4-20";
     _placeLabel.font = CONTENT_FONT(12);
-    _placeLabel.textColor = KCOLORGREEN_B3;
+    _placeLabel.textColor = KCOLOR_B3;
     _placeLabel.textAlignment = NSTextAlignmentLeft;
     [self addSubview:_placeLabel];
     [_placeLabel mas_makeConstraints:^(MASConstraintMaker *make) {

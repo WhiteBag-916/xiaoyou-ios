@@ -31,7 +31,7 @@
 }
 
 - (void)initView {
-    self.view.backgroundColor = KCOLORGREEN_e6ebea;
+    self.view.backgroundColor = KCOLOR_e6ebea;
     NSMutableArray *nameArray = [@[] mutableCopy];
     
     [_searchCondition enumerateObjectsUsingBlock:^(FriendsCondition *obj, NSUInteger idx, BOOL *stop) {
@@ -51,12 +51,12 @@
     NSRange searchConditionStrRange = [text rangeOfString:searchConditionStr];
     NSRange searchNameRange = [text rangeOfString:_searchName];
     [contentText addAttributes:@{NSStrokeWidthAttributeName : @0,
-                                 NSForegroundColorAttributeName : KCOLORGREEN_009688,
+                                 NSForegroundColorAttributeName : KCOLOR_009688,
                                  NSUnderlineColorAttributeName: KCOLORWHITE_696969,
                                  NSFontAttributeName:CONTENT_FONT(12)}
                          range:searchConditionStrRange];
     [contentText addAttributes:@{NSStrokeWidthAttributeName : @0,
-                                 NSForegroundColorAttributeName : KCOLORGREEN_009688,
+                                 NSForegroundColorAttributeName : KCOLOR_009688,
                                  NSUnderlineColorAttributeName: KCOLORWHITE_696969,
                                  NSFontAttributeName:CONTENT_FONT(12)}
                          range:searchNameRange];
@@ -78,7 +78,7 @@
     //table
     _profilePersonListTableView = [[ProfilePersonListTableView alloc] initWIthType:ProfilePersonListTypeFind];
     [_profilePersonListTableView hiddenHeader:YES];
-    _profilePersonListTableView.backgroundColor = KCOLORGREEN_e6ebea;
+    _profilePersonListTableView.backgroundColor = KCOLOR_e6ebea;
     [self.view addSubview:_profilePersonListTableView];
     [_profilePersonListTableView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.right.bottom.equalTo(self.view);

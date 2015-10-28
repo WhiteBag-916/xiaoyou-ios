@@ -45,7 +45,7 @@ NSString *const kNotifyListTableViewCell = @"NotifyListTableViewCellId";
         
         //时间
         _timeLabel = [YUtils initLabel:CONTENT_FONT(10)
-                                 color:KCOLORGREEN_455A64
+                                 color:KCOLOR_455A64
                                   text:@"刚刚"
                                  frame:CGRectZero
                              alignment:NSTextAlignmentLeft];
@@ -57,7 +57,7 @@ NSString *const kNotifyListTableViewCell = @"NotifyListTableViewCellId";
         
         //content
         _contentLabel = [YUtils initLabel:CONTENT_FONT(12)
-                                    color:KCOLORGREEN_455A64
+                                    color:KCOLOR_455A64
                                      text:@"评论评论评论评论评论评论评论评论评论评论评论评论评论评论评论"
                                     frame:CGRectZero
                                 alignment:NSTextAlignmentLeft];
