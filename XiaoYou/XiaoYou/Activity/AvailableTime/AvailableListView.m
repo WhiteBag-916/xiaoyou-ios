@@ -35,6 +35,7 @@
         self.delegate = self;
         self.dataSource = self;
         [self registerClass:[AvailableCell class] forCellReuseIdentifier:REUSEID_AVAILABEL_CELL];
+        self.separatorStyle = UITableViewCellSelectionStyleNone;
     }
     return self;
 }
@@ -44,6 +45,7 @@
         self.delegate = self;
         self.dataSource = self;
         [self registerClass:[AvailableCell class] forCellReuseIdentifier:REUSEID_AVAILABEL_CELL];
+        self.separatorStyle = UITableViewCellSelectionStyleNone;
         self.currentIndex = 0;
     }
     return self;

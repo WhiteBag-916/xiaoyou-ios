@@ -15,14 +15,14 @@
  */
 #import <UIKit/UIKit.h>
 #import "NoticeInfo.h"
-
+#import "YTableViewCell.h"
 typedef enum : NSUInteger {
     WAIT_SELECT,        //等待选择
     AGREED,             //同意
     IGNORED,            //忽略
 } APPLY_CELL_TYPE;
 
-@interface ApplyRemindCell : UITableViewCell
+@interface ApplyRemindCell : YTableViewCell
 
 +(ApplyRemindCell*)cellWithTableView:(UITableView*)tableView;
 

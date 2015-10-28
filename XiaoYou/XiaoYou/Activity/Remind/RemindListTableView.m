@@ -40,6 +40,7 @@
         self.separatorStyle = UITableViewCellSeparatorStyleNone;
         self.backgroundColor = [UIColor clearColor];
         [self registerClass:[PassRemindCell class] forCellReuseIdentifier:REMINDVIEWCELL];
+        self.separatorStyle = UITableViewCellSelectionStyleNone;
         _currentIndex = 0;
     }
     return self;
@@ -53,6 +54,7 @@
         self.tableHeaderView.height = HEADCELL_HEIGHT;
         self.backgroundColor = KCOLOR_B1;
         [self registerClass:[PassRemindCell class] forCellReuseIdentifier:REMINDVIEWCELL];
+        self.separatorStyle = UITableViewCellSelectionStyleNone;
         _currentIndex = 0;
     }
     return self;

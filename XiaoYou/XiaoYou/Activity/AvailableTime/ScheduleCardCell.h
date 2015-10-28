@@ -10,8 +10,8 @@
  *  有空模块-你的日程卡
  */
 #import "YTableViewCell.h"
-
-@interface ScheduleCardCell : UITableViewCell
+#import "YTableViewCell.h"
+@interface ScheduleCardCell : YTableViewCell
 
 
 +(ScheduleCardCell*)cellWithTableView:(UITableView*)tableView;

@@ -7,8 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-
-@interface ScroungeCourseCell : UITableViewCell
+#import "YTableViewCell.h"
+@interface ScroungeCourseCell : YTableViewCell
 
 +(ScroungeCourseCell *)cellWithTableView:(UITableView *)tableView;
 

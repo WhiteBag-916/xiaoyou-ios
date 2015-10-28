@@ -49,12 +49,21 @@
     return self;
 }
 
+-(BOOL)needLine
+{
+    return NO;
+}
+
+-(CGFloat)lineX
+{
+    return 20;
+}
 
 -(void)initView
 {
     _startImageView = [[UIImageView alloc]init];
     [self.contentView addSubview:_startImageView];
-    _startImageView.image = [UIImage imageNamed:@"_bar"];
+    _startImageView.image = [UIImage imageNamed:@"green_bar"];
     [_startImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.leading.mas_equalTo(SCALE_NUM(0));
         make.top.mas_equalTo(SCALE_NUM(20));

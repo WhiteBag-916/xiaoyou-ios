@@ -8,13 +8,14 @@
 
 #import <UIKit/UIKit.h>
 #import "Author.h"
+#import "YTableViewCell.h"
 
 typedef enum : NSUInteger {
     IS_TOPVIEW,
     NOT_TOPVIEW
 } CELLTYPE;
 
-@interface ActivityJoinInCell : UITableViewCell
+@interface ActivityJoinInCell : YTableViewCell
 
 -(instancetype)initWithType:(CELLTYPE)type;
 

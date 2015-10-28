@@ -11,7 +11,7 @@
  */
 #import <UIKit/UIKit.h>
 #import "NoticeInfo.h"
-
+#import "YTableViewCell.h"
 //提醒的5个状态
 typedef enum : NSUInteger {
     ALREADY_SUBMIT,     //已经提交
@@ -21,7 +21,7 @@ typedef enum : NSUInteger {
     SOMEONE_JOININ      //有人参加你发布的活动
 } CELL_TYPE;
 
-@interface PassRemindCell : UITableViewCell
+@interface PassRemindCell : YTableViewCell
 
 @property (nonatomic,assign) CELL_TYPE cellType;
 

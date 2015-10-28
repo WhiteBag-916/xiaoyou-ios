@@ -70,7 +70,7 @@
         make.centerY.mas_equalTo(_headImageView.centerY);
         make.left.equalTo(_headImageView.mas_right).offset(NAME_LEADING);
     }];
-    
+     
     _genderImageView = [[UIImageView alloc]init];
     [self addSubview:_genderImageView];
     _genderImageView.image = [UIImage imageNamed:@"funny_detail_boy"];
