@@ -182,11 +182,12 @@
     else if (type == STUDYROOM_CELL) {
         AvailableSimpleViewController *vc = [[AvailableSimpleViewController alloc] initWithType:AvailableSimpleTypeStudyRoom];
         [self.viewController.navigationController pushViewController:vc animated:YES needHiddenBottomBar:YES];
-    }
+    } 
     //活动详情
     else if (type == ACTIVITY_DETAIL_CELL) {
         ActivityInfoModel *model = self.availableListArray[indexPath.row-2];
-        NSString *publishID = [NSString stringWithFormat:@"%ld",(long)model.activityPublishedModel.activityId];
+        NSString *publishID = [NSString stringWithFormat:@"%ld",(long)model.activityPublishedModel.activityPublishedModelIdentifier];
+        
         ActivityDetailViewController *activityDetailVC = [[ActivityDetailViewController alloc]initWithPublishID:publishID];
         
         [self.viewController.navigationController pushViewController:activityDetailVC animated:YES needHiddenBottomBar:YES];
