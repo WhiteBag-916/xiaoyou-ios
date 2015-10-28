@@ -10,9 +10,6 @@
 
 @interface RemindListTableView : YTableView
 
-//加载数据
-- (void)loadData;
-
 @property (nonatomic,strong) NSMutableArray *remindListArray;
 
 - (void)sendRequest;

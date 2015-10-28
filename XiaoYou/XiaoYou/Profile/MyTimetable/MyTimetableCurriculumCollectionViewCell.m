@@ -37,7 +37,7 @@ NSString *const kMyTimetableCurriculumCollectionViewCell = @"MyTimetableCurricul
         
         //课程名字
         _nameLabel = [YUtils initLabel:CONTENT_FONT(12)
-                                 color:KCOLORGREEN_B4
+                                 color:KCOLOR_B4
                                   text:@"设计伦理"
                              alignment:NSTextAlignmentCenter];
         _nameLabel.numberOfLines = 2;
@@ -49,7 +49,7 @@ NSString *const kMyTimetableCurriculumCollectionViewCell = @"MyTimetableCurricul
         
         //教室
         _classroomLabel = [YUtils initLabel:CONTENT_FONT(8)
-                                 color:KCOLORGREEN_B5
+                                 color:KCOLOR_B5
                                   text:@"美院A204"
                              alignment:NSTextAlignmentCenter];
         _classroomLabel.numberOfLines = 2;
@@ -61,7 +61,7 @@ NSString *const kMyTimetableCurriculumCollectionViewCell = @"MyTimetableCurricul
         
         //单双周
         _weekLabel = [YUtils initLabel:CONTENT_FONT(8)
-                                 color:KCOLORGREEN_B5
+                                 color:KCOLOR_B5
                                   text:@"单周"
                              alignment:NSTextAlignmentCenter];
         _weekLabel.numberOfLines = 1;

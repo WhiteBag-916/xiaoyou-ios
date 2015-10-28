@@ -76,7 +76,7 @@ NSString *const kDescriptionCollectionViewCell = @"DescriptionCollectionViewCell
     _textView.delegate = self;
     _textView.backgroundColor = [UIColor clearColor];
     _textView.font = CONTENT_FONT(12);
-    _textView.placeholderColor = KCOLORGREEN_B5;
+    _textView.placeholderColor = KCOLOR_B5;
     [self.backView addSubview:_textView];
     [_textView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(_picImageView.mas_bottom).offset(SCALE_NUM(5));

@@ -12,6 +12,8 @@
 #import "ProvisionManager.h"
 #import "ContactManager.h"
 #import "FeedManager.h"
+#import "ActivityManager.h"
+#import "ActivityDetailModel.h"
 
 #define KPAGENUM 15
 
@@ -33,7 +35,7 @@
         self.dataSource = self;
         [self registerClass:[ProfilePersonListTableViewCell class] forCellReuseIdentifier:kProfilePersonListTableViewCell];
         self.tableFooterView = [UIView new];
-        self.backgroundColor = KCOLORGREEN_f2f2f2;
+        self.backgroundColor = KCOLOR_f2f2f2;
         _personListArray = [NSMutableArray array];
         
         self.separatorStyle = UITableViewCellSeparatorStyleNone;
@@ -108,6 +110,11 @@
         [[FeedManager sharedInstance] listPraisePeoples:cnt limitEnd:cnt + KPAGENUM feedId:_feedId block:^(YActionMessage *message) {
             [self dealMessage:message];
         }];
+    } else if (ProfilePersonListTypeNoticePerson == _type) {
+        [[ActivityManager sharedInstance]findActivityDetailInfo:cnt limitEnd:cnt + KPAGENUM activityPublishedId:self.publishID getDetail:NO block:^(YActionMessage *message) {
+            
+            [self dealMessage:message];
+        }];
     }
 }
 - (void)dealMessage:(YActionMessage *)message {
@@ -116,8 +123,22 @@
         if ([self isHeaderRefresh]) {
             [_personListArray removeAllObjects];
         }
-        [_personListArray addObjectsFromArray:message.object];
-        if ([message.object count] < KPAGENUM) {
+        NSUInteger dataLen = 0;
+        if (ProfilePersonListTypeNoticePerson == _type) {
+            ActivityDetailModel *detailModel = message.object;
+            NSArray *joinInArr = detailModel.enrollActivityUserInfos;
+            [_personListArray addObjectsFromArray:joinInArr];
+            dataLen = joinInArr.count;
+        }
+        else
+            [_personListArray addObjectsFromArray:message.object];
+        
+        
+        if (ProfilePersonListTypeNoticePerson != _type) {
+            dataLen = [message.object count];
+        }
+        
+        if (dataLen < KPAGENUM) {
             [self showNoticeNoMoreData];
         }
         [self reloadData];

@@ -21,6 +21,8 @@
 
 @property (nonatomic,assign) NSInteger currentIndex;
 
+@property (nonatomic,assign) RESUTLT_TYPE resultType;
+
 @end
 
 @implementation ActivityResultTableView
@@ -29,6 +31,20 @@
 {
     self = [super init];
     if (self) {
+        self.delegate = self;
+        self.dataSource = self;
+        self.separatorStyle = UITableViewCellSeparatorStyleNone;
+        [self registerClass:[AvailableCell class] forCellReuseIdentifier:REUSEID_AVAILABEL_CELL];
+        _currentIndex = 0;
+    }
+    return self;
+}
+
+-(instancetype)initWithResultType:(RESUTLT_TYPE)type
+{
+    self = [super init];
+    if (self) {
+        _resultType = type;
         self.delegate = self;
         self.dataSource = self;
         self.separatorStyle = UITableViewCellSeparatorStyleNone;
@@ -64,13 +80,19 @@
 - (void)loadNewData
 {
     _currentIndex = 0;
-    [self sendRequest];
+    if (self.resultType != DEFAULT)
+        [self sendRequest];
+    else
+        [self sendRequestBySearchDataByKey:@""];
 }
 
 - (void)loadMoreData
 {
     _currentIndex = self.dataSouceArr.count;
-    [self sendRequest];
+    if (self.resultType != DEFAULT)
+        [self sendRequest];
+    else
+        [self sendRequestBySearchDataByKey:@""];
 }
 
 - (void)sendRequest{
@@ -79,10 +101,6 @@
             if ([self isHeaderRefresh]) {
                 [self.dataSouceArr removeAllObjects];
             }
-            
-//            NSLog(@"this is message = %@",message);
-            
-            
             [self.dataSouceArr addObjectsFromArray:message.object];
             
             
@@ -102,9 +120,14 @@
             [self stopLoadMoreData];
         }
     }];
-    
+}
+
+
+-(void)sendRequestBySearchDataByKey:(NSString *)key
+{
     
 }
+
 
 -(NSInteger)numberOfRowsInSection:(NSInteger)section
 {

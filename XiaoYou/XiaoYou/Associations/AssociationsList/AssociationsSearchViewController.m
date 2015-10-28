@@ -9,13 +9,14 @@
 #import "AssociationsSearchViewController.h"
 #import "AssociationsListTableView.h"
 #import "YTableView.h"
-#import "SearchActivityListView.h"
+#import "ActivityResultTableView.h"
+//#import "SearchActivityListView.h"
 
 @interface AssociationsSearchViewController ()
 <UISearchBarDelegate>
 
 @property (nonatomic, strong) AssociationsListTableView *associationsListTableView;
-@property (nonatomic, strong) SearchActivityListView *searchActivityListView;
+@property (nonatomic, strong) ActivityResultTableView *searchActivityListView;
 @property (nonatomic, strong) UISearchBar *searchBar;
 @property (nonatomic, strong) NSArray *associationsArray;//社团数组
 
@@ -49,7 +50,7 @@
 
 - (void)initView {
     UIView *headView = [UIView new];
-    headView.backgroundColor = KCOLORGREEN_455A64;
+    headView.backgroundColor = KCOLOR_455A64;
     [self.view addSubview:headView];
     [headView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.top.right.equalTo(self.view);
@@ -86,7 +87,7 @@
     
     //活动列表
     if (self.searchType == ACTIVITY_TYPE) {
-        _searchActivityListView = [[SearchActivityListView alloc] init];
+        _searchActivityListView = [[ActivityResultTableView alloc] init];
         [_searchActivityListView hiddenHeader:YES];
         [self.view addSubview:_searchActivityListView];
         [_searchActivityListView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -119,10 +120,11 @@
     [_associationsListTableView resetArrayBySearch:searchKey];
 }
 
+//搜索活动
 - (void)searchActivity
 {
     NSString *searchKey = [_searchBar.text lowercaseString];
-    
+    [_searchActivityListView sendRequestBySearchDataByKey:searchKey];
 }
 
 #pragma mark - UISearchBarDelegate
@@ -137,14 +139,6 @@
     }
 }
 
-/*
-#pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

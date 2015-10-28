@@ -101,7 +101,7 @@
 -(void)recordButtonDragOutside
 {
 //    _textLabel.text = NSLocalizedString(@"松开取消发送", @"loosen the fingers, to cancel sending");
-//    _textLabel.backgroundColor = KCOLORGREEN_009688;
+//    _textLabel.backgroundColor = KCOLOR_009688;
 }
 
 -(void)setVoiceImage {

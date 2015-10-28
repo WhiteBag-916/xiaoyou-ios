@@ -8,11 +8,20 @@
 
 #import "YTableView.h"
 
+typedef enum : NSUInteger {
+    DEFAULT,
+    SEARCH_TYPE,
+} RESUTLT_TYPE;
+
 @interface ActivityResultTableView : YTableView
 
 @property(nonatomic,strong)NSMutableArray * dataSouceArr;
 @property(nonatomic,strong)NSDictionary * requestDic;
 
+-(instancetype)initWithResultType:(RESUTLT_TYPE)type;
+
 - (void)sendRequest;
+
+- (void)sendRequestBySearchDataByKey:(NSString*)key;
 
 @end

@@ -10,4 +10,6 @@
 
 @interface WhoJoinInController : YViewController
 
+@property (nonatomic,strong) NSString *publishID;
+
 @end

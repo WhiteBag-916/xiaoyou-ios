@@ -7,7 +7,6 @@
 //
 
 #import "YTableView.h"
-#import "ActivityModelTest.h"
 #import "NoticeInfo.h"
 
 @interface ActivityDetailListView : YTableView

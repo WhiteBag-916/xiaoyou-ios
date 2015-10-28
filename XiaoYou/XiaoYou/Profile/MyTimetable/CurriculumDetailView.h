@@ -8,12 +8,6 @@
 
 #import "YView.h"
 
-@interface CurriculumDetailView : YView
-
-//显示
-- (void)show;
-
-//隐藏
-- (void)hide;
+@interface CurriculumDetailView : YCommonDialogView
 
 @end

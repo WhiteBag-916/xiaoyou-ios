@@ -41,7 +41,7 @@
 {
     _startImageView = [[UIImageView alloc]init];
     [self.contentView addSubview:_startImageView];
-    _startImageView.image = [UIImage imageNamed:@"green_bar"];
+    _startImageView.image = [UIImage imageNamed:@"_bar"];
     [_startImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.mas_equalTo(SCALE_NUM(20));
         make.leading.mas_equalTo(0);
@@ -51,7 +51,7 @@
     [self.contentView addSubview:_titleLabel];
     _titleLabel.text = @"114个教室没课";
     _titleLabel.font = CONTENT_FONT(15);
-    _titleLabel.textColor = KCOLORGREEN_B4;
+    _titleLabel.textColor = KCOLOR_B4;
     [_titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.height.mas_equalTo(SCALE_NUM(15));
         make.centerY.equalTo(_startImageView.mas_centerY);
@@ -61,7 +61,7 @@
     _desLabel = [[UILabel alloc]init];
     [self.contentView addSubview:_desLabel];
     _desLabel.font = CONTENT_FONT(12);
-    _desLabel.textColor = KCOLORGREEN_B5;
+    _desLabel.textColor = KCOLOR_B5;
     _desLabel.text = @"没什么大事就去学习一下？";
     [_desLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.height.mas_equalTo(SCALE_NUM(12));

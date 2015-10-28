@@ -42,12 +42,12 @@ NSString *const kCheckCollectionViewCell = @"CheckCollectionViewCellId";
     //需要报名审核
     _needCheckLabel = [[UILabel alloc] init];
     _needCheckLabel.userInteractionEnabled = YES;
-    _needCheckLabel.layer.borderColor = KCOLORGREEN_B2.CGColor;
+    _needCheckLabel.layer.borderColor = KCOLOR_B2.CGColor;
     _needCheckLabel.layer.borderWidth = 1;
     _needCheckLabel.layer.cornerRadius = SCALE_NUM(4);
     _needCheckLabel.clipsToBounds = YES;
     _needCheckLabel.text = @"需要报名审核";
-    _needCheckLabel.textColor = KCOLORGREEN_B3;
+    _needCheckLabel.textColor = KCOLOR_B3;
     _needCheckLabel.textAlignment = NSTextAlignmentCenter;
     _needCheckLabel.backgroundColor = [UIColor clearColor];
     _needCheckLabel.font = CONTENT_FONT(12);
@@ -55,14 +55,14 @@ NSString *const kCheckCollectionViewCell = @"CheckCollectionViewCellId";
     //不需要报名审核
     _notNeedCheckLabel = [[UILabel alloc] init];
     _notNeedCheckLabel.userInteractionEnabled = YES;
-    _notNeedCheckLabel.layer.borderColor = KCOLORGREEN_B2.CGColor;
+    _notNeedCheckLabel.layer.borderColor = KCOLOR_B2.CGColor;
     _notNeedCheckLabel.layer.borderWidth = 1;
     _notNeedCheckLabel.layer.cornerRadius = SCALE_NUM(4);
     _notNeedCheckLabel.clipsToBounds = YES;
     _notNeedCheckLabel.text = @"不需要报名审核";
-    _notNeedCheckLabel.textColor = KCOLORGREEN_W1;
+    _notNeedCheckLabel.textColor = KCOLOR_W1;
     _notNeedCheckLabel.textAlignment = NSTextAlignmentCenter;
-    _notNeedCheckLabel.backgroundColor = KCOLORGREEN_g1;
+    _notNeedCheckLabel.backgroundColor = KCOLOR_g1;
     _notNeedCheckLabel.font = CONTENT_FONT(12);
     [self.contentView addSubview:_notNeedCheckLabel];
     
@@ -91,7 +91,7 @@ NSString *const kCheckCollectionViewCell = @"CheckCollectionViewCellId";
     
     //point
     UIView * pointView = [[UIView alloc] init];
-    pointView.backgroundColor = KCOLORGREEN_B5;
+    pointView.backgroundColor = KCOLOR_B5;
     pointView.clipsToBounds = YES;
     pointView.layer.cornerRadius = SCALE_NUM(4);
     [self.contentView addSubview:pointView];
@@ -104,7 +104,7 @@ NSString *const kCheckCollectionViewCell = @"CheckCollectionViewCellId";
     UILabel * aboutLabel = [[UILabel alloc] init];
     aboutLabel.font = CONTENT_FONT(11);
     aboutLabel.text = @"关于报名审核";
-    aboutLabel.textColor = KCOLORGREEN_B5;
+    aboutLabel.textColor = KCOLOR_B5;
     aboutLabel.backgroundColor = [UIColor clearColor];
     [self.contentView addSubview:aboutLabel];
     [aboutLabel mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -119,7 +119,7 @@ NSString *const kCheckCollectionViewCell = @"CheckCollectionViewCellId";
     contentLabel.backgroundColor = [UIColor clearColor];
     contentLabel.numberOfLines = 0;
     [contentLabel setText:@"若活动发起人希望限制活动参加人数，请选择 ⌈需要报名审核⌋ ，然后使用社团账号，登录活动发布后台，对活动报名的同学进行 ⌈通过⌋ 或 ⌈拒绝⌋ 操作。\n若选择 ⌈不需要报名审核⌋ ，则视为该活动所有人都可以参与。" lineSpacing:5];
-    contentLabel.textColor = KCOLORGREEN_B5;
+    contentLabel.textColor = KCOLOR_B5;
     [self.contentView addSubview:contentLabel];
     [contentLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(pointView);
@@ -132,9 +132,9 @@ NSString *const kCheckCollectionViewCell = @"CheckCollectionViewCellId";
 -(void)tapNeedCheck
 {
     _needCheckLabel.textColor = [UIColor whiteColor];
-    _notNeedCheckLabel.textColor = KCOLORGREEN_B3;
+    _notNeedCheckLabel.textColor = KCOLOR_B3;
     
-    _needCheckLabel.backgroundColor = KCOLORGREEN_g1;
+    _needCheckLabel.backgroundColor = KCOLOR_g1;
     _notNeedCheckLabel.backgroundColor = [UIColor clearColor];
     
     _dataManager.ActivityCheckStr = @"需要报名审核";
@@ -146,9 +146,9 @@ NSString *const kCheckCollectionViewCell = @"CheckCollectionViewCellId";
 -(void)tapNotNeedCheck
 {
     _notNeedCheckLabel.textColor = [UIColor whiteColor];
-    _needCheckLabel.textColor = KCOLORGREEN_B3;
+    _needCheckLabel.textColor = KCOLOR_B3;
     
-    _notNeedCheckLabel.backgroundColor = KCOLORGREEN_g1;
+    _notNeedCheckLabel.backgroundColor = KCOLOR_g1;
     _needCheckLabel.backgroundColor = [UIColor clearColor];
     
     _dataManager.ActivityCheckStr = @"不需要报名审核";

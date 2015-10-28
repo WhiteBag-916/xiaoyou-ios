@@ -78,7 +78,7 @@
     _shopNameLabel = [[UILabel alloc] init];
     _shopNameLabel.text = @"AntiSlim Coffee";
     _shopNameLabel.font = CONTENT_FONT(14);
-    _shopNameLabel.textColor = KCOLORGREEN_W1;
+    _shopNameLabel.textColor = KCOLOR_W1;
     _shopNameLabel.textAlignment = NSTextAlignmentCenter;
     _shopNameLabel.backgroundColor = [UIColor clearColor];
     [backgroundView addSubview:_shopNameLabel];
@@ -105,7 +105,7 @@
     _phoneLabel = [[UILabel alloc] init];
     _phoneLabel.text = @"Tel：022-6666 6666";
     _phoneLabel.font = CONTENT_FONT(12);
-    _phoneLabel.textColor = KCOLORGREEN_W1;
+    _phoneLabel.textColor = KCOLOR_W1;
     _phoneLabel.textAlignment = NSTextAlignmentLeft;
     _phoneLabel.backgroundColor = [UIColor clearColor];
     [backgroundView addSubview:_phoneLabel];
@@ -120,7 +120,7 @@
     _placeLabel = [[UILabel alloc] init];
     _placeLabel.text = @"和平区西湖道风荷园1-4-201";
     _placeLabel.font = CONTENT_FONT(12);
-    _placeLabel.textColor = KCOLORGREEN_W1;
+    _placeLabel.textColor = KCOLOR_W1;
     _placeLabel.textAlignment = NSTextAlignmentLeft;
     _placeLabel.backgroundColor = [UIColor clearColor];
     [backgroundView addSubview:_placeLabel];
@@ -133,7 +133,7 @@
     
     //分割线
     UIView * bottomView = [[UIView alloc]init];
-    bottomView.backgroundColor = KCOLORGREEN_B4;
+    bottomView.backgroundColor = KCOLOR_B4;
     [backgroundView addSubview:bottomView];
     [bottomView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.bottom.right.mas_equalTo(0);
@@ -149,7 +149,7 @@
     
     //分割线
     UIView * bottomView = [[UIView alloc]init];
-    bottomView.backgroundColor = KCOLORGREEN_B4;
+    bottomView.backgroundColor = KCOLOR_B4;
     [backView addSubview:bottomView];
     [bottomView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.top.right.mas_equalTo(0);
@@ -170,7 +170,7 @@
     _stuNameLabel = [[UILabel alloc] init];
     _stuNameLabel.text = @"姓名：校园小助手";
     _stuNameLabel.font = CONTENT_FONT(12);
-    _stuNameLabel.textColor = KCOLORGREEN_B5;
+    _stuNameLabel.textColor = KCOLOR_B5;
     _stuNameLabel.textAlignment = NSTextAlignmentLeft;
     _stuNameLabel.backgroundColor = [UIColor clearColor];
     [backView addSubview:_stuNameLabel];
@@ -195,7 +195,7 @@
     _stuNumLabel = [[UILabel alloc] init];
     _stuNumLabel.text = @"学号：100001";
     _stuNumLabel.font = CONTENT_FONT(12);
-    _stuNumLabel.textColor = KCOLORGREEN_B5;
+    _stuNumLabel.textColor = KCOLOR_B5;
     _stuNumLabel.textAlignment = NSTextAlignmentLeft;
     _stuNumLabel.backgroundColor = [UIColor clearColor];
     [backView addSubview:_stuNumLabel];
@@ -220,7 +220,7 @@
     _toastCountLabel = [[UILabel alloc] init];
     _toastCountLabel.text = @"敬酒数：121";
     _toastCountLabel.font = CONTENT_FONT(12);
-    _toastCountLabel.textColor = KCOLORGREEN_B5;
+    _toastCountLabel.textColor = KCOLOR_B5;
     _toastCountLabel.textAlignment = NSTextAlignmentLeft;
     _toastCountLabel.backgroundColor = [UIColor clearColor];
     [backView addSubview:_toastCountLabel];
@@ -235,7 +235,7 @@
     _remindLabel = [[UILabel alloc] init];
     _remindLabel.text = @"敬酒数量越多可获得更加优惠的校友礼劵!";
     _remindLabel.font = CONTENT_FONT(14);
-    _remindLabel.textColor = KCOLORGREEN_g1;
+    _remindLabel.textColor = KCOLOR_g1;
     _remindLabel.textAlignment = NSTextAlignmentCenter;
     _remindLabel.backgroundColor = [UIColor clearColor];
     [backView addSubview:_remindLabel];

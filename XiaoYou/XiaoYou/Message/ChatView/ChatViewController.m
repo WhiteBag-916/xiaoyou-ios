@@ -284,7 +284,7 @@
         [_headImageView setFaceImageWithUrl:url];
     } else {
         if (eMessageTypeGroupChat == _conversationType) {
-            [detailButton setBackgroundColor:KCOLORGREEN_009688];
+            [detailButton setBackgroundColor:KCOLOR_009688];
             [detailButton setTitleEdgeInsets:UIEdgeInsetsMake(0, 0, 4, 20)];
             if ([_studentDic[@"linkType"] doubleValue] == 1)
             {

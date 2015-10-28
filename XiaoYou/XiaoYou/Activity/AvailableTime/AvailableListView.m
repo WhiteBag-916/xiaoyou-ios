@@ -112,35 +112,6 @@
             [self stopLoadMoreData];
         }
     }];
-    
-//    [self stopLoadNewData];
-//    NSString *lastID;
-//    if (![self isHeaderRefresh]) {
-//        lastID = [NSString stringWithFormat:@"%g", [[_feedListArray.lastObject feed] feedIdentifier]];
-//    }
-//      [[FeedManager sharedInstance] feedList:lastID size:KPAGENUM queryCode:_filter block:^(YActionMessage *message) {
-    //        if (message.isSuccess) {
-    //            if ([self isHeaderRefresh]) {
-//                    [_feedListArray removeAllObjects];
-    //            }
-    //            [self hiddenFooter:false];
-    //            [_feedListArray addObjectsFromArray:message.object];
-    //            if ([message.object count] < KPAGENUM) {
-    //                [self showNoticeNoMoreData];
-    //            }
-    //            [self reloadData];
-    //
-    //        } else {
-    //            [YUtils showTitle:message.desc];
-    //        }
-    //        if ([self isHeaderRefresh]) {
-    //            [self stopLoadNewData];
-    //        } else {
-    //            [self stopLoadMoreData];
-    //        }
-    //    }];
-
-
 }
 
 #pragma mark 协议方法
@@ -214,9 +185,10 @@
     }
     //活动详情
     else if (type == ACTIVITY_DETAIL_CELL) {
-        ActivityDetailViewController *activityDetailVC = [[ActivityDetailViewController alloc]init];
         ActivityInfoModel *model = self.availableListArray[indexPath.row-2];
-        activityDetailVC.publishID = [NSString stringWithFormat:@"%ld",(long)model.activityPublishedModel.activityId];
+        NSString *publishID = [NSString stringWithFormat:@"%ld",(long)model.activityPublishedModel.activityId];
+        ActivityDetailViewController *activityDetailVC = [[ActivityDetailViewController alloc]initWithPublishID:publishID];
+        
         [self.viewController.navigationController pushViewController:activityDetailVC animated:YES needHiddenBottomBar:YES];
     }
     //可以蹭的课

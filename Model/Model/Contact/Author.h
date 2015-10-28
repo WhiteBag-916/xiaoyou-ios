@@ -24,6 +24,9 @@
 @property (nonatomic, strong) NSString *name;
 @property (nonatomic, strong) NSArray *groupCodes;//ProvinceCode
 @property (nonatomic, strong) NSString *gender;
+/**
+ *  friendStatus 1.陌生人
+ */
 @property (nonatomic, strong) NSString *friendStatus;
 @property (nonatomic, strong) NSString *college;
 @property (nonatomic, strong) NSString *faculty;

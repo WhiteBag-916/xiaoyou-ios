@@ -57,7 +57,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    self.view.backgroundColor = KCOLORGREEN_B2;
+    self.view.backgroundColor = KCOLOR_B2;
     
     [self initTitle];
     [self initView];
@@ -136,7 +136,7 @@
     }];
     
     //背景图
-    UIImageView *backgroundImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@""]];
+    UIImageView *backgroundImageView = [[UIImageView alloc] init];
     backgroundImageView.image = [[UIImage imageNamed:@"build_background"] resizableImageWithCapInsets:UIEdgeInsetsMake(10, 6, 6, 6) resizingMode:UIImageResizingModeStretch];
     [_contentView addSubview:backgroundImageView];
     [backgroundImageView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -225,7 +225,7 @@
     
     //label
     UILabel *courseLabel = [YUtils initLabel:CONTENT_FONT(12)
-                                       color:KCOLORGREEN_B5
+                                       color:KCOLOR_B5
                                         text:labelName
                                    alignment:NSTextAlignmentLeft];
     [backView addSubview:courseLabel];
@@ -251,9 +251,9 @@
     
     //field
     YTextField *textField = [[YTextField alloc] init];
-    [textField placeHolderColor:[NSString stringWithFormat:@"请输入%@", labelName] fontColor:KCOLORGREEN_B5];
+    [textField placeHolderColor:[NSString stringWithFormat:@"请输入%@", labelName] fontColor:KCOLOR_B5];
     textField.font = CONTENT_FONT(12);
-    textField.textColor = KCOLORGREEN_B4;
+    textField.textColor = KCOLOR_B4;
     textField.delegate = self;
     textField.tag = fieldTag;
     [textField registerChanged:self action:@selector(textFieldValueChanged:)];
@@ -278,7 +278,7 @@
     
     //timeLabel
     UILabel *timeLabel = [YUtils initLabel:CONTENT_FONT(12)
-                                    color:KCOLORGREEN_B5
+                                    color:KCOLOR_B5
                                      text:[NSString stringWithFormat:@"请选择%@", labelName]
                                  alignment:NSTextAlignmentLeft];
     timeLabel.tag = timeTag;
@@ -330,11 +330,11 @@
     if (K_TAG_BCLASS == _chooesTag) {
         UILabel *timeLabel = (UILabel *)[_bClassView viewWithTag:_chooesTag];
         timeLabel.text = showStr;
-        timeLabel.textColor = KCOLORGREEN_B4;
+        timeLabel.textColor = KCOLOR_B4;
     } else if (K_TAG_FCLASS == _chooesTag) {
         UILabel *timeLabel = (UILabel *)[_fClassView viewWithTag:_chooesTag];
         timeLabel.text = showStr;
-        timeLabel.textColor = KCOLORGREEN_B4;
+        timeLabel.textColor = KCOLOR_B4;
     }
     
 }

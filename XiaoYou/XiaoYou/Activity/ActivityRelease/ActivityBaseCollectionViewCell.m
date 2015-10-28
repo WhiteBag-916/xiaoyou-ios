@@ -29,9 +29,9 @@
     _backView = [[UIView alloc] init];
     _backView.layer.cornerRadius = 4;
     _backView.clipsToBounds = YES;
-    _backView.backgroundColor = KCOLORGREEN_B1;
+    _backView.backgroundColor = KCOLOR_B1;
     _backView.layer.borderWidth = 1;
-    _backView.layer.borderColor = KCOLORGREEN_B2.CGColor;
+    _backView.layer.borderColor = KCOLOR_B2.CGColor;
     _backView.alpha = 0.8;
     [self.contentView addSubview:_backView];
     [_backView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -66,7 +66,7 @@
     }];
     //类型名称
     _typeLabel = [[UILabel alloc] init];
-    _typeLabel.textColor = KCOLORGREEN_g1;
+    _typeLabel.textColor = KCOLOR_g1;
     _typeLabel.font = CONTENT_FONT(17);
     _typeLabel.backgroundColor = [UIColor clearColor];
     [_backView addSubview:_typeLabel];

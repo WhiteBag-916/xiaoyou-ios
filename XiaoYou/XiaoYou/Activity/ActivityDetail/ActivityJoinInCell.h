@@ -7,7 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "JoinInModelTest.h"
 #import "Author.h"
 
 typedef enum : NSUInteger {

@@ -114,8 +114,8 @@
     _personalButton.layer.cornerRadius = 2;
     _personalButton.clipsToBounds = YES;
     [_personalButton setTitle:@"个人" forState:UIControlStateNormal];
-    [_personalButton  setTitleColor:KCOLORGREEN_B4 forState:UIControlStateNormal];
-    _personalButton.tintColor = KCOLORGREEN_B4;
+    [_personalButton  setTitleColor:KCOLOR_B4 forState:UIControlStateNormal];
+    _personalButton.tintColor = KCOLOR_B4;
     _personalButton.titleLabel.font = CONTENT_FONT(15);
     [_personalButton addTarget:self action:@selector(clickPersonalButton) forControlEvents:UIControlEventTouchUpInside];
 
@@ -124,9 +124,9 @@
     _groupButton.layer.borderColor = [UIColor hexChangeFloat:@"465a65"].CGColor;
     _groupButton.layer.cornerRadius = 2;
     _groupButton.clipsToBounds = YES;
-    _groupButton.backgroundColor = KCOLORGREEN_g1;
+    _groupButton.backgroundColor = KCOLOR_g1;
     [_groupButton setTitle:@"社团" forState:UIControlStateNormal];
-    [_groupButton  setTitleColor:KCOLORGREEN_W1 forState:UIControlStateNormal];
+    [_groupButton  setTitleColor:KCOLOR_W1 forState:UIControlStateNormal];
     _groupButton.titleLabel.font = CONTENT_FONT(15);
     [_groupButton addTarget:self action:@selector(clickGroupButton) forControlEvents:UIControlEventTouchUpInside];
     
@@ -148,7 +148,7 @@
     //提示
     UILabel * remindLabel = [[UILabel alloc] init];
     remindLabel.font = CONTENT_FONT(12);
-    remindLabel.textColor = KCOLORGREEN_B5;
+    remindLabel.textColor = KCOLOR_B5;
     remindLabel.numberOfLines = 0;
     [remindLabel setText:@"提示：以社团身份发布活动需经过审核。若您的活动限制报名人数，请登录后台查看所有报名同学，并进行通过和拒绝操作。" lineSpacing:10];
     remindLabel.backgroundColor = [UIColor clearColor];
@@ -206,10 +206,10 @@
 //个人
 -(void)clickPersonalButton
 {
-    _personalButton.backgroundColor = KCOLORGREEN_g1;
-    [_personalButton setTitleColor:KCOLORGREEN_W1 forState:UIControlStateNormal];
-    _groupButton.backgroundColor = KCOLORGREEN_W1;
-    [_groupButton setTitleColor:KCOLORGREEN_B4 forState:UIControlStateNormal];
+    _personalButton.backgroundColor = KCOLOR_g1;
+    [_personalButton setTitleColor:KCOLOR_W1 forState:UIControlStateNormal];
+    _groupButton.backgroundColor = KCOLOR_W1;
+    [_groupButton setTitleColor:KCOLOR_B4 forState:UIControlStateNormal];
     
     _personalButton.layer.borderWidth = 0;
     _groupButton.layer.borderWidth = 1;
@@ -220,10 +220,10 @@
 //社团
 -(void)clickGroupButton
 {
-    _groupButton.backgroundColor = KCOLORGREEN_g1;
-    [_groupButton setTitleColor:KCOLORGREEN_W1 forState:UIControlStateNormal];
-    _personalButton.backgroundColor = KCOLORGREEN_W1;
-    [_personalButton setTitleColor:KCOLORGREEN_B4 forState:UIControlStateNormal];
+    _groupButton.backgroundColor = KCOLOR_g1;
+    [_groupButton setTitleColor:KCOLOR_W1 forState:UIControlStateNormal];
+    _personalButton.backgroundColor = KCOLOR_W1;
+    [_personalButton setTitleColor:KCOLOR_B4 forState:UIControlStateNormal];
     
     _groupButton.layer.borderWidth = 0;
     _personalButton.layer.borderWidth = 1;

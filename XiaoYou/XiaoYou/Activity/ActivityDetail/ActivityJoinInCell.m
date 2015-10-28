@@ -13,8 +13,8 @@
 #import "JoinInTopView.h"
 #import "Tags.h"
 #import "UIImageView+WebCache.h"
-
-
+#import "ContactManager.h"
+#import "YCommonAlertView.h"
 
 @interface ActivityJoinInCell ()
 
@@ -25,6 +25,9 @@
 @property (nonatomic,strong) TagsCommonView *tagsView;
 
 @property (nonatomic,strong) UIView         *tagsWrapView;
+
+@property (nonatomic,strong) Author         *author;
+
 @end
 
 @implementation ActivityJoinInCell
@@ -106,76 +109,89 @@
     }];
     
     _tagsView.backgroundColor = RGBACOLOR(246, 247, 249, 1);
-    Tags *tag1 = [[Tags alloc]init];
-    tag1.name = @"班";
-    tag1.equal = YES;
-    
-    Tags *tag2 = [[Tags alloc]init];
-    tag2.name = @"社";
-    
-    Tags *tag3 = [[Tags alloc]init];
-    tag3.name = @"乡";
-    
-    Tags *tag4 = [[Tags alloc]init];
-    tag4.name = @"托福GRE";
-    tag4.equal = YES;
-    
-    Tags *tag5 = [[Tags alloc]init];
-    tag5.name = @"雅思";
-    
-    Tags *tag6 = [[Tags alloc]init];
-    tag6.name = @"铁饭碗攻略";
-    
-    ProfileInfo *profile = [[ProfileInfo alloc]init];
-    profile.propetiesCommon = [NSArray arrayWithObjects:tag1,tag2,tag3,nil];
-    profile.tagModels = [NSArray arrayWithObjects:tag4,tag5,tag6, nil];
-    [_tagsView setData:profile];
+//    Tags *tag1 = [[Tags alloc]init];
+//    tag1.name = @"班";
+//    tag1.equal = YES;
+//    
+//    Tags *tag2 = [[Tags alloc]init];
+//    tag2.name = @"社";
+//    
+//    Tags *tag3 = [[Tags alloc]init];
+//    tag3.name = @"乡";
+//    
+//    Tags *tag4 = [[Tags alloc]init];
+//    tag4.name = @"托福GRE";
+//    tag4.equal = YES;
+//    
+//    Tags *tag5 = [[Tags alloc]init];
+//    tag5.name = @"雅思";
+//    
+//    Tags *tag6 = [[Tags alloc]init];
+//    tag6.name = @"铁饭碗攻略";
+//    
+//    ProfileInfo *profile = [[ProfileInfo alloc]init];
+//    profile.propetiesCommon = [NSArray arrayWithObjects:tag1,tag2,tag3,nil];
+//    profile.tagModels = [NSArray arrayWithObjects:tag4,tag5,tag6, nil];
+//    [_tagsView setData:profile];
 }
 
 -(void)setData:(Author *)joinModel
 {
-    [_joinTopView.headImageView setFaceImageWithUrl:joinModel.headPic];
-    _joinTopView.nameLabel.text = joinModel.name;
-    
+    _author = joinModel;
+    [_joinTopView setData:joinModel];
     
     ProfileInfo *profile = [[ProfileInfo alloc]init];
     profile.propetiesCommon = joinModel.propetiesCommon;
     profile.tagModels = joinModel.tagsCommon;
     [_tagsView setData:profile];
     
-    //[UIImage imageNamed:@"funny_detail_boy"]
     if ([joinModel.gender isEqualToString:@"男"]) {
         _joinTopView.genderImageView.image = [UIImage imageNamed:@"funny_detail_boy"];
     } else
     {
         _joinTopView.genderImageView.image = [UIImage imageNamed:@"funny_detail_girl"];
     }
+
     
-    /*[_joinTopView.headImageView sd_setImageWithURL:[NSURL URLWithString:joinModel.headImageUrl]];
-    _joinTopView.nameLabel.text = joinModel.nameStr;
-    ProfileInfo *profile = [[ProfileInfo alloc]init];
+//    ProfileInfo *info = [[ProfileInfo alloc]init];
+//    info.tagModels = joinModel.tagsCommon;
+    CGFloat height = [self calculatorTagsCommHeightByProfileInfo:profile];
     
-    NSMutableArray *arr1 = [NSMutableArray array];
-    for (NSString *str in joinModel.tagsArr) {
-        Tags *tag = [[Tags alloc]init];
-        tag.name = str;
-        [arr1 addObject:tag];
-    }
-    
-    Tags *tag1 = [[Tags alloc]init];
-    tag1.name = @"班";
-    tag1.equal = YES;
-    
-    Tags *tag2 = [[Tags alloc]init];
-    tag2.name = @"社";
-    
-    Tags *tag3 = [[Tags alloc]init];
-    tag3.name = @"乡";
-    profile.propetiesCommon = [NSArray arrayWithObjects:tag1,tag2,tag3,nil];
-    profile.tagModels = arr1;
-    [_tagsView setData:profile];*/
-    
+    [_tagsWrapView mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.height.mas_equalTo((height));
+        
+    }];
 }
 
+-(CGFloat)calculatorTagsCommHeightByProfileInfo:(ProfileInfo*)model
+{
+    if (model.tagModels.count > 0)
+    {
+        CGFloat height = 55;
+        for (int i = 0; i < model.tagModels.count; i++)
+        {
+            CGFloat width;
+            Tags * tag = model.tagModels[i];
+            NSDictionary *attributes = @{NSFontAttributeName:[UIFont systemFontOfSize:12]};
+            CGSize textSize = [tag.name boundingRectWithSize:CGSizeMake(150, 14) options:NSStringDrawingTruncatesLastVisibleLine attributes:attributes context:nil].size;
+            width += (10);
+            width += textSize.width + 15;
+            if (width > SCREEN_WIDTH - 117)
+            {
+                height += (20);
+                width = (10) + textSize.width;
+            }
+        }
+        return height;
+    }
+    else
+    {
+        if (model.propetiesCommon.count <= 0) {
+            return 0;
+        }
+        else
+            return 40;
+    }
+}
 
 @end

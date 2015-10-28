@@ -54,7 +54,7 @@
 {
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
         self.selectionStyle = UITableViewCellSelectionStyleNone;
-        self.backgroundColor = KCOLORGREEN_B1;
+        self.backgroundColor = KCOLOR_B1;
         [self initView];
     }
     return self;
@@ -92,7 +92,7 @@
     _remindTitleLabel = [[UILabel alloc]init];
     [self.wrapContentView addSubview:_remindTitleLabel];
     _remindTitleLabel.text = @"恭喜,报名申请通过！！！";
-    _remindTitleLabel.textColor = KCOLORGREEN_B4;
+    _remindTitleLabel.textColor = KCOLOR_B4;
     _remindTitleLabel.font = CONTENT_FONT(15);
     [_remindTitleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.height.mas_equalTo(SCALE_NUM(15));
@@ -128,7 +128,7 @@
     [self.wrapContentView addSubview:_contentTitleLabel];
     _contentTitleLabel.font = CONTENT_FONT(12);
     _contentTitleLabel.text = @"校级活动公告";
-    _contentTitleLabel.textColor = KCOLORGREEN_g1;
+    _contentTitleLabel.textColor = KCOLOR_g1;
     [_contentTitleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.height.mas_equalTo(SCALE_NUM(12));
         make.top.equalTo(self.headImageView);
@@ -139,7 +139,7 @@
     [self.wrapContentView addSubview:_contentNameLabel];
     _contentNameLabel.font = CONTENT_FONT(12);
     _contentNameLabel.text = @"名称：%@";
-    _contentNameLabel.textColor = KCOLORGREEN_B3;
+    _contentNameLabel.textColor = KCOLOR_B3;
     [_contentNameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.height.mas_equalTo(SCALE_NUM(12));
         make.top.equalTo(_contentTitleLabel.mas_bottom).offset(SCALE_NUM(15));
@@ -151,7 +151,7 @@
     [self.wrapContentView addSubview:_activityTimeLabel];
     _activityTimeLabel.font = CONTENT_FONT(12);
     _activityTimeLabel.text = @"活动时间：15/12/12 18:00-20:00";
-    _activityTimeLabel.textColor = KCOLORGREEN_B3;
+    _activityTimeLabel.textColor = KCOLOR_B3;
     [_activityTimeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.height.mas_equalTo(SCALE_NUM(12));
         make.top.equalTo(_contentNameLabel.mas_bottom).offset(SCALE_NUM(15));
@@ -171,11 +171,9 @@
     _tailLabel = [[UILabel alloc]init];
     [self.wrapContentView addSubview:_tailLabel];
     _tailLabel.text = @"看看还有什么人";
-    _tailLabel.textColor = KCOLORGREEN_B3;
+    _tailLabel.textColor = KCOLOR_B3;
     _tailLabel.font = CONTENT_FONT(12);
     [_tailLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-//        make.height.mas_equalTo(SCALE_NUM(12));
-//        make.top.equalTo(_bottomLineView).equalTo(make.bottom.equalTo(_wrapContentView));
         make.top.equalTo(_bottomLineView.mas_bottom);
         make.bottom.equalTo(_wrapContentView);
         make.leading.mas_equalTo(10);
@@ -215,18 +213,18 @@
 
 //点击中间部分cell
 -(void)middleAction:(UIButton*)btn {
-    NSLog(@"this is midele action");
+    YLogD(@"this is midele action");
     NSString *publishID = [NSString stringWithFormat:@"%ld",(long)self.model.activityPublishedId];
-    ActivityDetailViewController *detailVC = [[ActivityDetailViewController alloc]init];
-    detailVC.publishID = publishID;
+    ActivityDetailViewController *detailVC = [[ActivityDetailViewController alloc]initWithPublishID:publishID];
     [self.viewController.navigationController pushViewController:detailVC animated:YES needHiddenBottomBar:YES];
 }
 
 //点击下面部分cell
 -(void)bottomAction:(UIButton*)btn {
-    
-    NSLog(@"this is bottom action");
+    YLogD(@"this is bottom action");
+    NSString *publishID = [NSString stringWithFormat:@"%ld",(long)self.model.activityPublishedId];
     WhoJoinInController *whoJoinIn = [[WhoJoinInController alloc]init];
+    whoJoinIn.publishID = publishID;
     [self.viewController.navigationController pushViewController:whoJoinIn animated:YES needHiddenBottomBar:YES];
 }
 
@@ -258,7 +256,7 @@
 -(void)setData:(NoticeInfo *)model
 {
     _model = model;
-    ProfileInfo *info = model.activityUser;
+    Author *info = model.activityUser;
     [_headImageView setFaceImageWithUrl:info.headPic];
     _contentTitleLabel.text = info.name;
     _contentNameLabel.text = [NSString stringWithFormat:_contentNameLabel.text,model.activityName];

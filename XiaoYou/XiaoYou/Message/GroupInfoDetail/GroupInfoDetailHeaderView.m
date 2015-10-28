@@ -34,7 +34,7 @@ NSString *const kGroupInfoDetailHeaderView = @"GroupInfoDetailHeaderViewId";
         self.backgroundColor = [UIColor whiteColor];
         
         _groupImageView = [[UIImageView alloc] init];//WithFrame:CGRectMake(0, 0, 50, 50)];
-        _groupImageView.backgroundColor = KCOLORGREEN_009688;
+        _groupImageView.backgroundColor = KCOLOR_009688;
         _groupImageView.layer.cornerRadius = 25;
         _groupImageView.clipsToBounds = YES;
         [self addSubview:_groupImageView];

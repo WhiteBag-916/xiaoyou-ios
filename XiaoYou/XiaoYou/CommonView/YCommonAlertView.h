@@ -7,10 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "YCommonDialogView.h"
 
-@interface YCommonAlertView : UIView
+@interface YCommonAlertView : YCommonDialogView
 
-@property (strong, nonatomic) UIView *contentView;
 @property (strong, nonatomic) UIImage *icon;
 @property (strong, nonatomic) NSString *title;
 @property (strong, nonatomic) NSString *message;
@@ -20,12 +20,6 @@
 
 //按钮点击事件
 - (void)clickedButtonHandler:(void (^)(NSInteger index))handler;
-
-//显示
-- (void)show;
-
-//隐藏
-- (void)hide;
 
 // 设置标题字体颜色和大小
 - (void)setTitleColor:(UIColor *)color fontSize:(CGFloat)size;

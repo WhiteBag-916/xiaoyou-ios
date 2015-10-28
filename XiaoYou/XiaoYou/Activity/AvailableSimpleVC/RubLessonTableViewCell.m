@@ -60,7 +60,7 @@ NSString *const kRubLessonTableViewCell = @"RubLessonTableViewCellId";
     }];
     
     UILabel *courseLabel = [YUtils initLabel:CONTENT_FONT(12)
-                                       color:KCOLORGREEN_B5
+                                       color:KCOLOR_B5
                                         text:@"课程名称："
                                    alignment:NSTextAlignmentLeft];
     [self.contentView addSubview:courseLabel];
@@ -72,7 +72,7 @@ NSString *const kRubLessonTableViewCell = @"RubLessonTableViewCellId";
     }];
     
     _courseName = [YUtils initLabel:CONTENT_FONT(12)
-                              color:KCOLORGREEN_B3
+                              color:KCOLOR_B3
                                text:@"大学汉语"
                           alignment:NSTextAlignmentLeft];
     [self.contentView addSubview:_courseName];
@@ -87,7 +87,7 @@ NSString *const kRubLessonTableViewCell = @"RubLessonTableViewCellId";
     }];
     
     UILabel *lecturerLabel = [YUtils initLabel:CONTENT_FONT(12)
-                                       color:KCOLORGREEN_B5
+                                       color:KCOLOR_B5
                                         text:@"授课人："
                                    alignment:NSTextAlignmentLeft];
     [self.contentView addSubview:lecturerLabel];
@@ -99,7 +99,7 @@ NSString *const kRubLessonTableViewCell = @"RubLessonTableViewCellId";
     }];
     
     _lecturerName = [YUtils initLabel:CONTENT_FONT(12)
-                              color:KCOLORGREEN_B3
+                              color:KCOLOR_B3
                                text:@"王中磊"
                           alignment:NSTextAlignmentLeft];
     [self.contentView addSubview:_lecturerName];
@@ -120,7 +120,7 @@ NSString *const kRubLessonTableViewCell = @"RubLessonTableViewCellId";
     }];
     
     UILabel *timeLeftLabel = [YUtils initLabel:CONTENT_FONT(12)
-                                         color:KCOLORGREEN_B5
+                                         color:KCOLOR_B5
                                           text:@"上课时间："
                                      alignment:NSTextAlignmentLeft];
     [self.contentView addSubview:timeLeftLabel];
@@ -132,7 +132,7 @@ NSString *const kRubLessonTableViewCell = @"RubLessonTableViewCellId";
     }];
     
     _timeLabel = [YUtils initLabel:CONTENT_FONT(12)
-                                color:KCOLORGREEN_B3
+                                color:KCOLOR_B3
                                  text:@"今天 09:00-10:30"
                             alignment:NSTextAlignmentLeft];
     [self.contentView addSubview:_timeLabel];
@@ -154,7 +154,7 @@ NSString *const kRubLessonTableViewCell = @"RubLessonTableViewCellId";
     }];
     
     UILabel *locationLeftLabel = [YUtils initLabel:CONTENT_FONT(12)
-                                         color:KCOLORGREEN_B5
+                                         color:KCOLOR_B5
                                           text:@"上课地点："
                                      alignment:NSTextAlignmentLeft];
     [self.contentView addSubview:locationLeftLabel];
@@ -166,7 +166,7 @@ NSString *const kRubLessonTableViewCell = @"RubLessonTableViewCellId";
     }];
     
     _locationLabel = [YUtils initLabel:CONTENT_FONT(12)
-                             color:KCOLORGREEN_B3
+                             color:KCOLOR_B3
                               text:@"5号教学楼 5132室"
                          alignment:NSTextAlignmentLeft];
     [self.contentView addSubview:_locationLabel];
@@ -187,7 +187,7 @@ NSString *const kRubLessonTableViewCell = @"RubLessonTableViewCellId";
     }];
     
     UILabel *departmentsLabel = [YUtils initLabel:CONTENT_FONT(12)
-                                       color:KCOLORGREEN_B5
+                                       color:KCOLOR_B5
                                         text:@"院系："
                                    alignment:NSTextAlignmentLeft];
     [self.contentView addSubview:departmentsLabel];
@@ -199,7 +199,7 @@ NSString *const kRubLessonTableViewCell = @"RubLessonTableViewCellId";
     }];
     
     _departmentsName = [YUtils initLabel:CONTENT_FONT(12)
-                              color:KCOLORGREEN_B3
+                              color:KCOLOR_B3
                                text:@"汉语言文学系"
                           alignment:NSTextAlignmentLeft];
     [self.contentView addSubview:_departmentsName];
@@ -214,9 +214,9 @@ NSString *const kRubLessonTableViewCell = @"RubLessonTableViewCellId";
     _addToCalendar = [UIButton buttonWithType:UIButtonTypeCustom];
     [_addToCalendar setTitle:@"加入日程表" forState:UIControlStateNormal];
     _addToCalendar.titleLabel.font = CONTENT_FONT(12);
-    [_addToCalendar setTitleColor:KCOLORGREEN_g1 forState:UIControlStateNormal];
+    [_addToCalendar setTitleColor:KCOLOR_g1 forState:UIControlStateNormal];
     _addToCalendar.layer.cornerRadius = 4;
-    _addToCalendar.layer.borderColor = KCOLORGREEN_g1.CGColor;
+    _addToCalendar.layer.borderColor = KCOLOR_g1.CGColor;
     _addToCalendar.layer.borderWidth = 1;
     [self.contentView addSubview:_addToCalendar];
     

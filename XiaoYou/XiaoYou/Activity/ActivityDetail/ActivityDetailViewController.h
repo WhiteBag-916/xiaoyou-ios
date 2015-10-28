@@ -11,8 +11,6 @@
 #import "NoticeInfo.h"
 @interface ActivityDetailViewController : YViewController
 
-@property (nonatomic,assign) NSInteger index;
-
-@property (nonatomic,copy) NSString *publishID;
+-(instancetype)initWithPublishID:(NSString*)publishID;
 
 @end

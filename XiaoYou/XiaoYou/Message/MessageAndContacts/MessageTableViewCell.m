@@ -70,7 +70,7 @@ NSString *const kMessageTableViewCell = @"MessageTableViewCellId";
     self.contentView.backgroundColor = [UIColor clearColor];
     //头像
     _headImageView = [[UIImageView alloc] init];
-    _headImageView.backgroundColor = KCOLORGREEN_009688;
+    _headImageView.backgroundColor = KCOLOR_009688;
     _headImageView.layer.cornerRadius = kHeadCornerRadius;
     _headImageView.clipsToBounds = YES;
     [self.contentView addSubview:_headImageView];
@@ -117,7 +117,7 @@ NSString *const kMessageTableViewCell = @"MessageTableViewCellId";
     _badgeNumberLabel.font = CONTENT_FONT(10);
     _badgeNumberLabel.textColor = [UIColor whiteColor];
     _badgeNumberLabel.textAlignment = NSTextAlignmentCenter;
-    _badgeNumberLabel.backgroundColor = KCOLORGREEN_009688;
+    _badgeNumberLabel.backgroundColor = KCOLOR_009688;
     [self.contentView addSubview:_badgeNumberLabel];
     [_badgeNumberLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.bottom.mas_equalTo(-kPaddingDistance);
@@ -167,7 +167,7 @@ NSString *const kMessageTableViewCell = @"MessageTableViewCellId";
             _messageLabel.text = [self subTitleMessageByConversation:_conversation];
             if ([ext[@"group_icon"] isEqualToString:@""])
             {
-                _headImageView.backgroundColor = KCOLORGREEN_009688;
+                _headImageView.backgroundColor = KCOLOR_009688;
                 _defaultLabel.text = [ext[@"group_name"] substringWithRange:NSMakeRange(0, 1)];
                 _defaultLabel.hidden = NO;
             }
@@ -217,7 +217,7 @@ NSString *const kMessageTableViewCell = @"MessageTableViewCellId";
             
             if ([self isClass])
             {
-                _headImageView.backgroundColor = KCOLORGREEN_009688;
+                _headImageView.backgroundColor = KCOLOR_009688;
                 _defaultLabel.text = @"班";
                 _defaultLabel.hidden = NO;
             }
@@ -229,7 +229,7 @@ NSString *const kMessageTableViewCell = @"MessageTableViewCellId";
                 } else if (groupIcon.length > 0) {
                     [_headImageView setFaceImageWithUrl:groupIcon];
                 }else {
-                    _headImageView.backgroundColor = KCOLORGREEN_009688;
+                    _headImageView.backgroundColor = KCOLOR_009688;
                     if (name.length > 0) {
                         _defaultLabel.text = [name substringWithRange:NSMakeRange(0, 1)];
                     } else {

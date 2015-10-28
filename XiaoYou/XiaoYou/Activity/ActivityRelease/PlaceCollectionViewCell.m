@@ -39,7 +39,7 @@ NSString *const kPlaceCollectionViewCell = @"PlaceCollectionViewCellId";
     _textView.backgroundColor = [UIColor clearColor];
     _textView.delegate = self;
     _textView.font = CONTENT_FONT(12);
-    _textView.placeholderColor = KCOLORGREEN_B5;
+    _textView.placeholderColor = KCOLOR_B5;
     [self.backView addSubview:_textView];
     [_textView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.mas_equalTo(SCALE_NUM(80));

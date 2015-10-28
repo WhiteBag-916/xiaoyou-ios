@@ -38,7 +38,7 @@ UITableViewDelegate>
     
     self.title = @"选学校";
     [self showCustomNavigationNextButton];
-    self.view.backgroundColor = KCOLORGREEN_e6ebea;
+    self.view.backgroundColor = KCOLOR_e6ebea;
     
     [self setupUI];
     [self schoolListRequest];
@@ -103,7 +103,7 @@ UITableViewDelegate>
     _tableView.dataSource = self;
     _tableView.delegate = self;
     _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-    _tableView.backgroundColor = KCOLORGREEN_e6ebea;
+    _tableView.backgroundColor = KCOLOR_e6ebea;
     [_tableView registerClass:[ChooseSchoolTableViewCell class] forCellReuseIdentifier:kChooseSchoolTableViewCell];
     [self.view addSubview:_tableView];
     _tableView.hidden = YES;

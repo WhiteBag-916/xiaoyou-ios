@@ -55,8 +55,8 @@ NSString *const KProfileFeedCell = @"KProfileFeedCell";
 - (void)initDateView {
     UIView *dateView = [[UIView alloc] init];
     [self.contentView addSubview:dateView];
-    dateView.backgroundColor = KCOLORGREEN_f2f2f2;
-    dateView.layer.borderColor = [KCOLORGREEN_455A64 CGColor];
+    dateView.backgroundColor = KCOLOR_f2f2f2;
+    dateView.layer.borderColor = [KCOLOR_455A64 CGColor];
     dateView.layer.cornerRadius = 3;
     dateView.layer.borderWidth = 1;
     dateView.clipsToBounds = true;
@@ -68,21 +68,21 @@ NSString *const KProfileFeedCell = @"KProfileFeedCell";
         make.bottom.lessThanOrEqualTo(self.contentView).offset(-KMARGIN);
     }];
     
-    _yearLabel = [YUtils initLabel:CONTENT_FONT(8) color:KCOLORGREEN_455A64 text:@"2015" frame:CGRectZero alignment:NSTextAlignmentCenter];
+    _yearLabel = [YUtils initLabel:CONTENT_FONT(8) color:KCOLOR_455A64 text:@"2015" frame:CGRectZero alignment:NSTextAlignmentCenter];
     [self.contentView addSubview:_yearLabel];
     [_yearLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.right.equalTo(dateView);
         make.top.equalTo(dateView).offset(KDATEMARGIN_TOP);
     }];
     
-    _monthLabel = [YUtils initLabel:CONTENT_FONT(10) color:KCOLORGREEN_455A64 text:@"12" frame:CGRectZero alignment:NSTextAlignmentCenter];
+    _monthLabel = [YUtils initLabel:CONTENT_FONT(10) color:KCOLOR_455A64 text:@"12" frame:CGRectZero alignment:NSTextAlignmentCenter];
     [self.contentView addSubview:_monthLabel];
     [_monthLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.right.equalTo(dateView);
         make.top.equalTo(_yearLabel.mas_bottom).offset(KDATEMIDMARGIN);
     }];
     
-    _dayLabel = [YUtils initLabel:CONTENT_FONT(14) color:KCOLORGREEN_455A64 text:@"31" frame:CGRectZero alignment:NSTextAlignmentCenter];
+    _dayLabel = [YUtils initLabel:CONTENT_FONT(14) color:KCOLOR_455A64 text:@"31" frame:CGRectZero alignment:NSTextAlignmentCenter];
     [self.contentView addSubview:_dayLabel];
     [_dayLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.right.equalTo(dateView);
@@ -105,7 +105,7 @@ NSString *const KProfileFeedCell = @"KProfileFeedCell";
         make.centerY.equalTo(lineView);
         make.height.mas_equalTo(1);
     }];
-    line.backgroundColor = KCOLORGREEN_79909e;
+    line.backgroundColor = KCOLOR_79909e;
     line.transform = CGAffineTransformMakeRotation(-M_PI/8);
 }
 - (void)setData:(FeedInfo *)info {
