@@ -203,7 +203,7 @@
 
 -(void)setData:(NoticeInfo *)model
 {
-    ProfileInfo *info = model.activityUser;
+    Author *info = model.activityUser;
     [_headImageView setFaceImageWithUrl:info.headPic];
     _nameLabel.text = info.name;
     _applyContentLable.text = [NSString stringWithFormat:_applyContentLable.text,model.activityName];

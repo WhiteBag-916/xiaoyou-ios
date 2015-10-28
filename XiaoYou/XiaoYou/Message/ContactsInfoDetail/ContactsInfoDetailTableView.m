@@ -353,6 +353,10 @@
         }
         else
         {
+            if (_model.propetiesCommon.count <= 0)
+            {
+                return 0;
+            }
             return 40;
         }
         

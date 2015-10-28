@@ -12,6 +12,9 @@
 #import "JoinInModelTest.h"
 #import "ActivityManager.h"
 #import "ActivityDetailModel.h"
+#import "ProfileInfo.h"
+#import "Tags.h"
+#import "Author.h"
 
 #define REUSEID_DETAILCELL  @"ActivityDetailCell"
 #define REUSEID_JOINCELL    @"ActivityJoinInCell"
@@ -88,10 +91,17 @@
     }
     else
     {
-        height = 300;
-//        height = [tableView fd_heightForCellWithIdentifier:REUSEID_DETAILCELL cacheByIndexPath:indexPath        configuration:^(ActivityJoinInCell *cell) {
-//            [cell setData:self.activityDetailArray[indexPath.row]];
-//        }];
+        ActivityDetailModel *model = self.activityDetailArray[0];
+        Author *author = model.enrollActivityUserInfos[indexPath.row-1];
+        
+        
+        ProfileInfo *info = [[ProfileInfo alloc]init];
+        info.tagModels = author.tagsCommon;
+        height = [self calculatorTagsCommHeightByProfileInfo:info];
+        height += (109) + (15);
+        if (indexPath.row != 1) {
+            height -= 49;
+        }
 
     }
     return height;
@@ -122,26 +132,31 @@
 }
 
 
-//-(NSArray *)getDataSource {
-//    JoinInModelTest *m1 = [[JoinInModelTest alloc]init];
-//    m1.headImageUrl = @"http://img.qqbody.com/uploads/allimg/120624/091A44245-6.jpg";
-//    m1.nameStr = @"王亚楠";
-//    m1.sexStr = @"女";
-//    m1.tagsArr = @[@"托福GRE",@"考研",@"留学"];
-//    
-//    JoinInModelTest *m2 = [[JoinInModelTest alloc]init];
-//    m2.headImageUrl = @"http://img1.touxiang.cn/uploads/20130925/25-072725_605.jpg";
-//    m2.nameStr = @"李哲";
-//    m2.sexStr = @"男";
-//    m2.tagsArr = @[@"运动",@"创业",@"雅思",@"名企实习"];
-//    
-//    JoinInModelTest *m3 = [[JoinInModelTest alloc]init];
-//    m3.headImageUrl = @"http://img.sj33.cn/uploads/allimg/200801/2008012001210907.jpg";
-//    m3.nameStr = @"王欣欣";
-//    m3.sexStr = @"女";
-//    m3.tagsArr = @[@"外资企业",@"互联网公司",@"雅思",@"考研",@"创业"];
-//    
-//    return [NSArray arrayWithObjects:m1,m2,m3, nil];
-//}
+-(CGFloat)calculatorTagsCommHeightByProfileInfo:(ProfileInfo*)model
+{
+    if (model.tagModels.count > 0)
+    {
+        CGFloat height = 65;
+        for (int i = 0; i < model.tagModels.count; i++)
+        {
+            CGFloat width;
+            Tags * tag = model.tagModels[i];
+            NSDictionary *attributes = @{NSFontAttributeName:[UIFont systemFontOfSize:12]};
+            CGSize textSize = [tag.name boundingRectWithSize:CGSizeMake(150, 14) options:NSStringDrawingTruncatesLastVisibleLine attributes:attributes context:nil].size;
+            width += (10);
+            width += textSize.width + 15;
+            if (width > SCREEN_WIDTH - 117)
+            {
+                height += (20);
+                width = (10) + textSize.width;
+            }
+        }
+        return height;
+    }
+    else
+    {
+        return 40;
+    }
+}
 
 @end
