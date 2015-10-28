@@ -81,7 +81,7 @@
 - (void)loadNewData
 {
     _currentIndex = 0;
-    if (self.resultType != DEFAULT)
+    if (self.resultType == DEFAULT)
         [self sendRequest];
     else
         [self sendRequestBySearchDataByKey:self.searchKey];
@@ -90,7 +90,7 @@
 - (void)loadMoreData
 {
     _currentIndex = self.dataSouceArr.count;
-    if (self.resultType != DEFAULT)
+    if (self.resultType == DEFAULT)
         [self sendRequest];
     else
         [self sendRequestBySearchDataByKey:self.searchKey];
