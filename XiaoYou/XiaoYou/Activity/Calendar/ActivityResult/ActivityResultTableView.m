@@ -23,6 +23,7 @@
 
 @property (nonatomic,assign) RESUTLT_TYPE resultType;
 
+@property (nonatomic,copy) NSString *searchKey;
 @end
 
 @implementation ActivityResultTableView
@@ -83,7 +84,7 @@
     if (self.resultType != DEFAULT)
         [self sendRequest];
     else
-        [self sendRequestBySearchDataByKey:@""];
+        [self sendRequestBySearchDataByKey:self.searchKey];
 }
 
 - (void)loadMoreData
@@ -92,7 +93,7 @@
     if (self.resultType != DEFAULT)
         [self sendRequest];
     else
-        [self sendRequestBySearchDataByKey:@""];
+        [self sendRequestBySearchDataByKey:self.searchKey];
 }
 
 - (void)sendRequest{
@@ -125,7 +126,30 @@
 
 -(void)sendRequestBySearchDataByKey:(NSString *)key
 {
-    
+    _searchKey = key;
+    [[ActivityManager sharedInstance] getCurrentUseAvailableListLimitStart:_currentIndex limitEnd:_currentIndex+KPAGENUM search:key block:^(YActionMessage *message) {
+        if (message.isSuccess) {
+            [self.dataSouceArr removeAllObjects];
+            if ([self isHeaderRefresh]) {
+                [self.dataSouceArr removeAllObjects];
+            }
+            [self.dataSouceArr addObjectsFromArray:message.object];
+            [self hiddenFooter:NO];
+            if ([message.object count] < KPAGENUM) {
+                [self showNoticeNoMoreData];
+            }
+            [self reloadData];
+            _currentIndex += KPAGENUM;
+        } else {
+            [YUtils showTitle:message.desc];
+        }
+        if ([self isHeaderRefresh]) {
+            [self stopLoadNewData];
+        } else
+        {
+            [self stopLoadMoreData];
+        }
+    }];
 }
 
 

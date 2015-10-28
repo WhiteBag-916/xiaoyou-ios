@@ -10,7 +10,7 @@
 
 typedef enum : NSUInteger {
     DEFAULT,
-    SEARCH_TYPE,
+    RESURT_BY_SEARCH_TYPE,
 } RESUTLT_TYPE;
 
 @interface ActivityResultTableView : YTableView
