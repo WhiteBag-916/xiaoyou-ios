@@ -29,8 +29,8 @@ NSString *const kMyTimetableDayCollectionViewCell = @"MyTimetableDayCollectionVi
     if (self = [super initWithFrame:frame]) {
         
         //数字
-        _numLabel = [YUtils initLabel:CONTENT_FONT(12)
-                                color:[UIColor blackColor]
+        _numLabel = [YUtils initLabel:CONTENT_FONT(16)
+                                color:KCOLORGREEN_B4
                                  text:@"1"
                             alignment:NSTextAlignmentCenter];
         [self.contentView addSubview:_numLabel];
