@@ -28,6 +28,9 @@
     // Do any additional setup after loading the view.
     self.view.backgroundColor = [UIColor whiteColor];
     [self showCustomNavigationBackButton];
+    
+    [self showCustomNavigationMoreButton];
+    
     [self detailListView];
     [self setTitle:@"活动详情"];
     [self updateJoinButtonStatus];
@@ -45,6 +48,12 @@
     }
     return self;
 }
+
+
+- (void)onNavigationRightButtonClicked {
+    NSLog(@"this is data...");
+}
+
 
 -(ActivityDetailListView *)detailListView {
     if (!_detailListView) {
