@@ -79,7 +79,7 @@ typedef enum : NSUInteger {
     _dataManager = [ActivityReleaseDataManager shareActivityReleaseDataManager];
     _dataManager.isIdentity = _isIdentity;
     
-    
+    [self removeManagerData];
     
     [self setUpUI];
 }
@@ -89,6 +89,13 @@ typedef enum : NSUInteger {
     [super viewWillAppear:animated];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changeEnabelStateForReleaseBtn:) name:KNotification_Enabel_ReleaseBtn object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changeScrollPosition:) name:KNotification_Activity_Release_ScrollTo object:nil];
+    
+}
+
+- (void)viewDidDisappear:(BOOL)animated
+{
+    [super viewDidDisappear:animated];
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 -(void)removeManagerData
@@ -101,20 +108,10 @@ typedef enum : NSUInteger {
     _dataManager.ActivityDateBeginText = nil;
     _dataManager.ActivityDateEndText = nil;
     _dataManager.ActivityPlaceText = nil;
-    _dataManager.ActivityOrganizer = nil;
-    _dataManager.ActivityOrganizerId = nil;
     _dataManager.ActivityTypeStr = nil;
     _dataManager.ActivityCheckStr = nil;
 }
 
--(void)viewWillDisappear:(BOOL)animated
-{
-    [self removeManagerData];
-    
-    [super viewWillDisappear:animated];
-    
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
-}
 #pragma mark - 改变发布按钮是否可点击状态方法
 -(void)changeEnabelStateForReleaseBtn:(NSNotification *) notification
 {
@@ -552,12 +549,16 @@ typedef enum : NSUInteger {
     NSLog(@"%@",_dataManager.ActivityNameText);
     NSLog(@"%@",_dataManager.ActivityDesciptionText);
     NSLog(@"%@",_dataManager.ActivityDesciptionImage);
+    NSLog(@"%@",_dataManager.ActivityDateBeginApplyText);
     NSLog(@"%@",_dataManager.ActivityDateEndApplyText);
     NSLog(@"%@",_dataManager.ActivityDateBeginText);
     NSLog(@"%@",_dataManager.ActivityDateEndText);
     NSLog(@"%@",_dataManager.ActivityPlaceText);
     NSLog(@"%@",_dataManager.ActivityTypeStr);
     NSLog(@"%@",_dataManager.ActivityCheckStr);
+    NSLog(@"%@",_dataManager.ActivityCheckStatus);
+    NSLog(@"%@",_dataManager.ActivityOrganizer);
+    NSLog(@"%@",_dataManager.ActivityOrganizerId);
     
     if (_dataManager.ActivityDesciptionImage != nil)
     {
@@ -609,9 +610,12 @@ typedef enum : NSUInteger {
     
     [activityModelDic setObject:[self transformDate:_dataManager.ActivityDateEndText] forKey:@"actEndTime"];
     [activityModelDic setObject:[self transformDate:_dataManager.ActivityDateBeginText] forKey:@"actStartTime"];
+    [activityModelDic setObject:_dataManager.ActivityCheckStatus forKey:@"checkStatus"];
     if (_isIdentity)
     {
         [activityModelDic setObject:@"group_activity" forKey:@"activityDirection"];
+        [activityModelDic setObject:_dataManager.ActivityOrganizer forKey:@"activityOrganizer"];
+        [activityModelDic setObject:_dataManager.ActivityOrganizerId forKey:@"activityOrganizerId"];
         if ([_dataManager.ActivityCheckStr isEqualToString:@"需要报名审核"])
         {
             [activityModelDic setObject:@"true" forKey:@"enrollCheck"];

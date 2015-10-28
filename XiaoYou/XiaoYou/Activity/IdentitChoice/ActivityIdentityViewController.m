@@ -26,9 +26,9 @@
 
 @implementation ActivityIdentityViewController
 
--(void)viewWillDisappear:(BOOL)animated
+-(void)viewWillAppear:(BOOL)animated
 {
-    [super viewWillDisappear:animated];
+    [super viewWillAppear:animated];
     
     [self removeManagerData];
 }
@@ -180,6 +180,7 @@
 {
     if (_isIdentity)
     {
+        _dataManager.ActivityCheckStatus = @"need_check";
         if (_dataManager.ActivityOrganizerId == nil || _dataManager.ActivityOrganizer == nil)
         {
             [YUtils showTitle:@"请选择要发布活动的社团"];
@@ -194,6 +195,7 @@
     }
     else
     {
+        _dataManager.ActivityCheckStatus = @"no_check";
         [self dismissViewControllerAnimated:YES completion:^{
             ActivityReleaseController * releaseController = [[ActivityReleaseController alloc] initWithIsIdentity:_isIdentity];
             [_availableViewController.navigationController pushViewController:releaseController animated:YES needHiddenBottomBar:YES];
