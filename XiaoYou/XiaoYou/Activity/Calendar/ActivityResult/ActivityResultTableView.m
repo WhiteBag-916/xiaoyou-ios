@@ -139,7 +139,7 @@
             } else {
                 //如果一条数据也没有，则显示nodata
                 AssociationsSearchViewController *vc = (AssociationsSearchViewController *)self.viewController;
-                if ([[message.object groupList] count] <= 0) {
+                if ([message.object count] <= 0) {
                     [vc hiddenNodata:NO];
                 } else {
                     [vc hiddenNodata:YES];
@@ -153,7 +153,7 @@
                     [self reloadData];
                     _currentIndex += KPAGENUM;
                 }
-            }            
+            }
         } else {
             [YUtils showTitle:message.desc];
         }
