@@ -135,7 +135,6 @@
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
-    [self endEditing:YES];
     
     NSLog(@"%@",NSStringFromCGPoint(self.contentOffset));
     if (self.contentOffset.x < SCALE_NUM(75)) {
