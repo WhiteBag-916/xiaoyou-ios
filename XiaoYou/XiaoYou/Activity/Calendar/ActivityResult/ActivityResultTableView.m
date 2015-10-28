@@ -13,6 +13,7 @@
 #import "ActivityInfoModel.h"
 #import "ActivityImageTextModels.h"
 #import "UITableView+FDTemplateLayoutCell.h"
+#import "AssociationsSearchViewController.h"
 
 #define REUSEID_AVAILABEL_CELL @"AvailableCell"
 #define KPAGENUM 10
@@ -128,17 +129,31 @@
     _searchKey = key;
     [[ActivityManager sharedInstance] getCurrentUseAvailableListLimitStart:_currentIndex limitEnd:_currentIndex+KPAGENUM search:key block:^(YActionMessage *message) {
         if (message.isSuccess) {
-            [self.dataSouceArr removeAllObjects];
-            if ([self isHeaderRefresh]) {
-                [self.dataSouceArr removeAllObjects];
-            }
-            [self.dataSouceArr addObjectsFromArray:message.object];
-            [self hiddenFooter:NO];
-            if ([message.object count] < KPAGENUM) {
-                [self showNoticeNoMoreData];
-            }
-            [self reloadData];
-            _currentIndex += KPAGENUM;
+            if ([self isFooterRefresh]) {
+                [self.dataSouceArr addObjectsFromArray:message.object];
+                if ([message.object count] < KPAGENUM) {
+                    [self showNoticeNoMoreData];
+                }
+                [self reloadData];
+                _currentIndex += KPAGENUM;
+            } else {
+                //如果一条数据也没有，则显示nodata
+                AssociationsSearchViewController *vc = (AssociationsSearchViewController *)self.viewController;
+                if ([[message.object groupList] count] <= 0) {
+                    [vc hiddenNodata:NO];
+                } else {
+                    [vc hiddenNodata:YES];
+                    
+                    [self.dataSouceArr removeAllObjects];
+                    [self.dataSouceArr addObjectsFromArray:message.object];
+                    [self hiddenFooter:NO];
+                    if ([message.object count] < KPAGENUM) {
+                        [self showNoticeNoMoreData];
+                    }
+                    [self reloadData];
+                    _currentIndex += KPAGENUM;
+                }
+            }            
         } else {
             [YUtils showTitle:message.desc];
         }
