@@ -66,7 +66,7 @@ NSString *const kObjActivityUser=@"activityUser";
             self.activityEndTime = [[self objectOrNilForKey:kObjActivityEndTime fromDictionary:dict] doubleValue];
             self.checkStatus = [self objectOrNilForKey:kObjCheckStatus fromDictionary:dict];
             self.activityStartTime = [[self objectOrNilForKey:kObjActivityStartTime fromDictionary:dict] doubleValue];
-            self.activityUser = [ProfileInfo modelObjectWithDictionary:[dict objectForKey:kObjActivityUser]];
+            self.activityUser = [Author modelObjectWithDictionary:[dict objectForKey:kObjActivityUser]];
     }
     
     return self;

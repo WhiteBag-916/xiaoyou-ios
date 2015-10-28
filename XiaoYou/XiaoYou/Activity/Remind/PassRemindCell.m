@@ -217,8 +217,8 @@
 -(void)middleAction:(UIButton*)btn {
     NSLog(@"this is midele action");
     NSString *publishID = [NSString stringWithFormat:@"%ld",(long)self.model.activityPublishedId];
-    ActivityDetailViewController *detailVC = [[ActivityDetailViewController alloc]init];
-    detailVC.publishID = publishID;
+    ActivityDetailViewController *detailVC = [[ActivityDetailViewController alloc]initWithPublishID:publishID];
+    //detailVC.publishID = publishID;
     [self.viewController.navigationController pushViewController:detailVC animated:YES needHiddenBottomBar:YES];
 }
 
@@ -258,7 +258,7 @@
 -(void)setData:(NoticeInfo *)model
 {
     _model = model;
-    ProfileInfo *info = model.activityUser;
+    Author *info = model.activityUser;
     [_headImageView setFaceImageWithUrl:info.headPic];
     _contentTitleLabel.text = info.name;
     _contentNameLabel.text = [NSString stringWithFormat:_contentNameLabel.text,model.activityName];

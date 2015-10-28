@@ -281,8 +281,8 @@
 {
     NoticeInfo *info = self.remindListArray[indexPath.section];
     if (info.activityOwner) {
-        ActivityDetailViewController *detailVC = [[ActivityDetailViewController alloc]init];
-        detailVC.publishID = [NSString stringWithFormat:@"%ld",(long)info.activityPublishedId];
+        NSString *publishID = [NSString stringWithFormat:@"%ld",(long)info.activityPublishedId];
+        ActivityDetailViewController *detailVC = [[ActivityDetailViewController alloc]initWithPublishID:publishID];
         [self.viewController.navigationController pushViewController:detailVC animated:YES needHiddenBottomBar:YES];
     }
     /*ProfilePersonListController *whoJoinIn = [[ProfilePersonListController alloc]init];

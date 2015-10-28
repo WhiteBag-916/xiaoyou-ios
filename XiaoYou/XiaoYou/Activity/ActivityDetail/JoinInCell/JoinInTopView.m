@@ -10,10 +10,11 @@
 #define HEAD_IMAGE_SIZE     SCALE_NUM(45)
 #define NAME_LEADING        SCALE_NUM(14)
 #import "JoinInTopView.h"
+#import "ContactManager.h"
 
 @interface JoinInTopView ()
 
-
+@property (nonatomic,strong) Author *author;
 
 @end
 
@@ -28,6 +29,13 @@
     return self;
 }
 
+-(void)setData:(Author *)author
+{
+    _author = author;
+    [_headImageView setFaceImageWithUrl:author.headPic];
+    _nameLabel.text = author.name;
+    [self updateStatus:author.friendStatus];
+}
 
 -(void)initView
 {
@@ -60,22 +68,53 @@
         make.centerY.equalTo(_nameLabel.mas_centerY);
     }];
     
-    _addFriendImageView = [[UIImageView alloc]init];
+    _addFriendImageView = [UIButton buttonWithType:UIButtonTypeSystem];
     [self addSubview:_addFriendImageView];
-    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(addFriendAction)];
-    _addFriendImageView.userInteractionEnabled = YES;
-    [_addFriendImageView addGestureRecognizer:tap];
     
-    _addFriendImageView.image = [UIImage imageNamed:@"mine-add-friend"];
+    [_addFriendImageView addTarget:self action:@selector(clickAdd) forControlEvents:UIControlEventTouchUpInside];
+    [_addFriendImageView setImage:[[UIImage imageNamed:@"mine-add-friend"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] forState:UIControlStateNormal];
     [_addFriendImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.trailing.mas_equalTo(SCALE_NUM(-12));
         make.top.equalTo(_headImageView.mas_top).offset(SCALE_NUM(2));
     }];
 }
 
-
--(void)addFriendAction {
-    NSLog(@"addFriendAtion click...");
+//更新好友申请状态
+//1 陌生人、2 申请中、3 已是好友
+- (void)updateStatus:(NSString *)status {
+    if ([status isEqualToString:@"1"]) {
+        _addFriendImageView.hidden = false;
+        _addFriendImageView.enabled = true;
+    }
+    if ([status isEqualToString:@"2"]) {
+        _addFriendImageView.hidden = false;
+        _addFriendImageView.enabled = false;
+    }
+    if ([status isEqualToString:@"3"]) {
+        _addFriendImageView.hidden = true;
+    }
+}
+//添加好友
+- (void)clickAdd {
+    //展示提示
+    YCommonAlertView *alert = [[YCommonAlertView alloc] initWithTitle:nil
+                                                              message:[NSString stringWithFormat:@"确定向%@发送好友申请吗？", _author.name]
+                                                         buttonTitles:@"取消",@"确认", nil];
+    [alert clickedButtonHandler:^(NSInteger index) {
+        if (1 == index) {
+            [YUtils showHUDWithTitle:@"发送中"];
+            [[ContactManager sharedInstance] submitFriendApply:_author.uid block:^(YActionMessage *message) {
+                [YUtils hiddenProgressHUD];
+                if (message.isSuccess) {
+                    _author.friendStatus = @"2";
+                    [self updateStatus:_author.friendStatus];
+                }
+                
+                [YUtils showTitle:message.desc];
+            }];
+        }
+    }];
+    [alert show];
 }
 
 @end
