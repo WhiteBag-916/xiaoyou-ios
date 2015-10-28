@@ -294,7 +294,6 @@
     _locationLabel.textColor = KCOLOR_B3;
     _locationLabel.font = CONTENT_FONT(13);
     [_locationLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        //make.height.mas_equalTo(SCALE_NUM(13));
         make.left.equalTo(_staticActivityTimeDes);
         make.centerY.equalTo(_locationImageView.mas_centerY);
     }];

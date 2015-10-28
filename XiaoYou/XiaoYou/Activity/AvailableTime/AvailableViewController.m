@@ -94,6 +94,7 @@
             make.edges.equalTo(self.view);
         }];
     }
+    [_availableListView loadData];
     [_availableListView sendRequest];
     return _availableListView;
 }

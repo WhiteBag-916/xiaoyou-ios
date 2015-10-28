@@ -59,6 +59,9 @@
 }
 
 #pragma mark - 继承者
+- (void)loadData {
+    [self beginLoadNewData];
+}
 - (BOOL)showHeaderRefresh
 {
     return YES;
@@ -86,6 +89,7 @@
 -(void)sendRequest
 {
     [_activityDetailArray removeAllObjects];
+    
     [[ActivityManager sharedInstance] findActivityDetailInfo:_currentIndex limitEnd:_currentIndex + KPAGENUM activityPublishedId:self.publishID getDetail:YES block:^(YActionMessage *message) {
         if (message.isSuccess) {
             if ([self isHeaderRefresh]) {
