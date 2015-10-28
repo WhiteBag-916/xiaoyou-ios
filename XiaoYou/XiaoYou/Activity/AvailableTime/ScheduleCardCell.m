@@ -50,10 +50,12 @@
 {
     _startImageView = [[UIImageView alloc]init];
     [self.contentView addSubview:_startImageView];
-    _startImageView.image = [UIImage imageNamed:@"_bar"];
+    _startImageView.image = [UIImage imageNamed:@"green_bar"];
     [_startImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.mas_equalTo(SCALE_NUM(20));
         make.leading.mas_equalTo(0);
+        make.height.mas_equalTo(SCALE_NUM(12));
+        make.width.mas_equalTo(SCALE_NUM(3));
     }];
     
     _titleLabel = [[UILabel alloc]init];
