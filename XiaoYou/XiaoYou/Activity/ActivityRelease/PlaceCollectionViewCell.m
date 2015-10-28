@@ -60,6 +60,19 @@ NSString *const kPlaceCollectionViewCell = @"PlaceCollectionViewCellId";
 {
     _dataManager.ActivityPlaceText = textView.text;
     [_dataManager isEnableToRelease];
+    
+    if (textView.text.length>100)
+    {
+        if ([self isBlankString:textView.text])
+        {
+            [YUtils showTitle:@"地点不能为空"];
+        }
+        else
+        {
+            [YUtils showTitle:@"地点字数不能大于100字"];
+        }
+        textView.text = [textView.text substringWithRange:NSMakeRange(0, 100)];
+    }
 }
 
 -(void)textViewDidBeginEditing:(UITextView *)textView
@@ -71,24 +84,32 @@ NSString *const kPlaceCollectionViewCell = @"PlaceCollectionViewCellId";
 
 -(BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text
 {
+    if ([text isEqualToString:@"\n"]){ //判断输入的字是否是回车，即按下return
+        //在这里做你响应return键的代码
+        [self endEditing:YES];
+        return NO; //这里返回NO，就代表return键值失效，即页面上按下return，不会出现换行，如果为yes，则输入页面会换行
+    }
+    else{
+        return  YES;
+    }
     
-    if (range.location>=100)
-    {
-        if ([self isBlankString:text])
-        {
-            [YUtils showTitle:@"地点不能为空"];
-            return NO;
-        }
-        else
-        {
-            [YUtils showTitle:@"地点字数不能大于100字"];
-            return NO;
-        }
-    }
-    else
-    {
-        return YES;
-    }
+//    if (range.location>=100)
+//    {
+//        if ([self isBlankString:text])
+//        {
+//            [YUtils showTitle:@"地点不能为空"];
+//            return NO;
+//        }
+//        else
+//        {
+//            [YUtils showTitle:@"地点字数不能大于100字"];
+//            return NO;
+//        }
+//    }
+//    else
+//    {
+//        return YES;
+//    }
 }
 //判断字符串为空和只为空格解决办法
 - (BOOL) isBlankString:(NSString *)string {

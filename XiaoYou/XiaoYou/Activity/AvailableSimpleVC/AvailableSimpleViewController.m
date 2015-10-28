@@ -12,6 +12,11 @@
 #import "StudyRoomDetailTableView.h"
 #import "ActivityChoiceController.h"
 
+typedef enum : NSUInteger {
+    Choice_Type,
+    Question_Type,
+} Navigation_Right_type;
+
 @interface AvailableSimpleViewController ()
 
 @property (nonatomic, assign) AvailableSimpleType type;
@@ -36,6 +41,7 @@
     // Do any additional setup after loading the view.
     
     [self showCustomNavigationBackButton];
+
     
     if (AvailableSimpleTypeRubLesson == _type) {
         self.title = @"你可以蹭的课";
@@ -47,9 +53,10 @@
             make.edges.mas_equalTo(self.view);
         }];
         
-        [self setUpCustomNavgationBar];
     } else if (AvailableSimpleTypeStudyRoom == _type) {
         self.title = @"自习室";
+        
+        [self setUpCustomNavgationBar:Choice_Type];
         
         _studyRoomTableView = [[StudyRoomTableView alloc] init];
         [self.view addSubview:_studyRoomTableView];
@@ -80,6 +87,8 @@
                 break;
         }
         
+        [self setUpCustomNavgationBar:Question_Type];
+        
         _studyRoomDetailTableView = [[StudyRoomDetailTableView alloc] init];
         [self.view addSubview:_studyRoomDetailTableView];
         
@@ -89,24 +98,28 @@
     }
 }
 
--(void)setUpCustomNavgationBar {
+-(void)setUpCustomNavgationBar:(Navigation_Right_type) type
+{
     //right barbutton view
-    UIView * view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 60, KNavigationBarheight)];
+    UIView * view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 30, KNavigationBarheight)];
     
     UIButton * remindBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 25, KNavigationBarheight)];
-    [remindBtn setImage:[UIImage imageNamed:@"have_time_select"] forState:UIControlStateNormal];
-    [remindBtn addTarget:self
-                  action:@selector(filterAction)
-        forControlEvents:UIControlEventTouchUpInside];
+   
+    if (type == Choice_Type)
+    {
+        [remindBtn setImage:[UIImage imageNamed:@"have_time_select"] forState:UIControlStateNormal];
+        [remindBtn addTarget:self
+                      action:@selector(filterAction)
+            forControlEvents:UIControlEventTouchUpInside];
+    }
+    else
+    {
+        [remindBtn setImage:[UIImage imageNamed:@"havetime_icon_prompt"] forState:UIControlStateNormal];
+        [remindBtn addTarget:self
+                      action:@selector(questionAction)
+            forControlEvents:UIControlEventTouchUpInside];
+    }
     [view addSubview:remindBtn];
-    
-    UIButton * scheduleBtn = [[UIButton alloc] initWithFrame:CGRectMake(35, 0, 25, KNavigationBarheight)];
-    [scheduleBtn setImage:[UIImage imageNamed:@"have_time_search"] forState:UIControlStateNormal];
-    [scheduleBtn addTarget:self
-                    action:@selector(searchAction)
-          forControlEvents:UIControlEventTouchUpInside];
-    [view addSubview:scheduleBtn];
-    
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:view];
 }
 
@@ -117,19 +130,10 @@
     [self.navigationController presentViewController:choiceController animated:YES completion:nil];
 }
 
-//搜索Action
-- (void)searchAction {
-    
+- (void)questionAction
+{
+    //h5页面
+    NSLog(@"h5页面");
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

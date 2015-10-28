@@ -730,6 +730,8 @@
 		E455DCE71BCB686E00B78E54 /* ActivityChoiceTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = E455DCE61BCB686E00B78E54 /* ActivityChoiceTableView.m */; };
 		E455DCF01BCB798400B78E54 /* ActivityReleaseAndTypeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E455DCEF1BCB798400B78E54 /* ActivityReleaseAndTypeCell.m */; };
 		E455DCF41BCB8F6D00B78E54 /* ActivityReleaseController.m in Sources */ = {isa = PBXBuildFile; fileRef = E455DCF31BCB8F6D00B78E54 /* ActivityReleaseController.m */; };
+		E459B41B1BE0CB29002B7D41 /* havetime_icon_prompt@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E459B4191BE0CB29002B7D41 /* havetime_icon_prompt@2x.png */; settings = {ASSET_TAGS = (); }; };
+		E459B41C1BE0CB29002B7D41 /* havetime_icon_prompt@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E459B41A1BE0CB29002B7D41 /* havetime_icon_prompt@3x.png */; settings = {ASSET_TAGS = (); }; };
 		E45E964A1BDA4B7500836F4F /* ActivityIdentityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E45E96491BDA4B7500836F4F /* ActivityIdentityViewController.m */; };
 		E45E96531BDA4C4F00836F4F /* ActivityIdentityTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = E45E96521BDA4C4F00836F4F /* ActivityIdentityTableView.m */; };
 		E45E96561BDA4C6D00836F4F /* ActivityIdentityTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E45E96551BDA4C6D00836F4F /* ActivityIdentityTableViewCell.m */; };
@@ -1875,6 +1877,8 @@
 		E455DCEF1BCB798400B78E54 /* ActivityReleaseAndTypeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityReleaseAndTypeCell.m; sourceTree = "<group>"; };
 		E455DCF21BCB8F6D00B78E54 /* ActivityReleaseController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityReleaseController.h; sourceTree = "<group>"; };
 		E455DCF31BCB8F6D00B78E54 /* ActivityReleaseController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityReleaseController.m; sourceTree = "<group>"; };
+		E459B4191BE0CB29002B7D41 /* havetime_icon_prompt@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "havetime_icon_prompt@2x.png"; sourceTree = "<group>"; };
+		E459B41A1BE0CB29002B7D41 /* havetime_icon_prompt@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "havetime_icon_prompt@3x.png"; sourceTree = "<group>"; };
 		E45E96481BDA4B7500836F4F /* ActivityIdentityViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityIdentityViewController.h; sourceTree = "<group>"; };
 		E45E96491BDA4B7500836F4F /* ActivityIdentityViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityIdentityViewController.m; sourceTree = "<group>"; };
 		E45E96511BDA4C4F00836F4F /* ActivityIdentityTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityIdentityTableView.h; sourceTree = "<group>"; };
@@ -2058,6 +2062,8 @@
 				044C314F1BCCAF0000E0D508 /* have_time_select@3x.png */,
 				044C31501BCCAF0000E0D508 /* red_bar@2x.png */,
 				044C31511BCCAF0000E0D508 /* red_bar@3x.png */,
+				E459B4191BE0CB29002B7D41 /* havetime_icon_prompt@2x.png */,
+				E459B41A1BE0CB29002B7D41 /* havetime_icon_prompt@3x.png */,
 			);
 			path = Available;
 			sourceTree = "<group>";
@@ -4391,6 +4397,7 @@
 				650C6C221B886F6500A89AC9 /* mine-add-friend@2x.png in Resources */,
 				04394B471BBBB6620098BB8F /* fast_to_add@2x.png in Resources */,
 				E43E10791BCCFA840018B6D7 /* img_num3@3x.png in Resources */,
+				E459B41B1BE0CB29002B7D41 /* havetime_icon_prompt@2x.png in Resources */,
 				3334ABE31B82C50200FDDCCB /* chatBar_face.png in Resources */,
 				E48E09AB1BD781B10017D395 /* scanf_code_point@2x.png in Resources */,
 				20DD039D1BA2B956005DFC51 /* group_logo@3x.png in Resources */,
@@ -4622,6 +4629,7 @@
 				E43E107D1BCCFA840018B6D7 /* img_num5@3x.png in Resources */,
 				3334AC281B82D7C400FDDCCB /* VoiceSearchFeedback005@2x.png in Resources */,
 				3334ABE41B82C50200FDDCCB /* chatBar_face@2x.png in Resources */,
+				E459B41C1BE0CB29002B7D41 /* havetime_icon_prompt@3x.png in Resources */,
 				20DA1E9A1BCF7B9300E53FA6 /* havetime_icon_time@2x.png in Resources */,
 				334670681B84228000A8628A /* contacts_bottom@3x.png in Resources */,
 				04394B481BBBB6620098BB8F /* fast_to_add@3x.png in Resources */,

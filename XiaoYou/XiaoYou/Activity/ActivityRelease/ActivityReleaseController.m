@@ -560,6 +560,10 @@ typedef enum : NSUInteger {
     NSLog(@"%@",_dataManager.ActivityOrganizer);
     NSLog(@"%@",_dataManager.ActivityOrganizerId);
     
+    _dataManager.ActivityNameText = [self removeSpaceAndNewLine:_dataManager.ActivityNameText];
+    _dataManager.ActivityPlaceText = [self removeSpaceAndNewLine:_dataManager.ActivityPlaceText];
+    _dataManager.ActivityDesciptionText = [self removeSpaceAndNewLine:_dataManager.ActivityDesciptionText];
+    
     if (_dataManager.ActivityDesciptionImage != nil)
     {
         NSString *keyStr = @"activityRelease.png";
@@ -575,9 +579,7 @@ typedef enum : NSUInteger {
     {
         [self sendReleaseRequest:nil];
     }
-    
-    
-    
+
 //    NSDateFormatter * formatter = [[NSDateFormatter alloc] init];
 //    [formatter setDateFormat:@"yyyy年MM月dd日 a HH:mm"];
 //    NSDate * applyDate = [formatter dateFromString:_dataManager.ActivityDateApplyText];
@@ -600,6 +602,20 @@ typedef enum : NSUInteger {
 //    }
     
 }
+
+//去掉字符串开头结尾空格和回车
+
+-(NSString *)removeSpaceAndNewLine:(NSString *) text
+{
+    //去除两端空格
+    NSString *temp = [text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+    
+    //去除两端空格和回车
+    NSString *reutrnText = [temp stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+    
+    return reutrnText;
+}
+
 
 //发布活动请求
 -(void)sendReleaseRequest:(YActionMessage *) message
