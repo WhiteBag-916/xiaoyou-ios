@@ -81,6 +81,23 @@
     {
         _flagImageView.image = [UIImage imageNamed:@"detail_flag_new"];
     }
+    
+    if (model.propetiesCommon.count <= 0)
+    {
+        _connectTag.hidden = YES;
+        [self.tagCollectionView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.top.equalTo(self).offset(kPaddingDistance);
+            make.left.equalTo(_connectTag.mas_left).offset(-kPaddingDistance/2);
+            make.trailing.mas_equalTo(0);
+            //        make.height.mas_equalTo(height);
+            make.bottom.equalTo(self);
+        }];
+    }
+    else
+    {
+        _connectTag.hidden = NO;
+    }
+    
     [_connectTag updateWithTag:model.propetiesCommon];
     _commonTagsArr = [NSMutableArray arrayWithArray:model.tagModels];
     [_tagCollectionView reloadData];
