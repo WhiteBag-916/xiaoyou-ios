@@ -75,6 +75,7 @@
 - (void)loadNewData
 {
     _currentIndex = 0;
+    [_availableListArray removeAllObjects];
     [self sendRequest];
 }
 

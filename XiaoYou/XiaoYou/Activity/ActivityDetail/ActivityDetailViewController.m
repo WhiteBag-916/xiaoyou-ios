@@ -11,6 +11,7 @@
 #import "ActivityManager.h"
 #import "ActivityDetailModel.h"
 #import "YCommonActionSheet.h"
+#import "YNotificationDefine.h"
 
 @interface ActivityDetailViewController ()
 

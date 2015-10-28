@@ -19,6 +19,7 @@ typedef enum : NSUInteger {
 @interface AvailableListView : YTableView
 
 -(void)loadData;
+- (void)loadNewData;
 //
 //-(void)loadNewData;
 
