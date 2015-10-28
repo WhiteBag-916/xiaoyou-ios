@@ -95,6 +95,8 @@ NSString *const kDescriptionCollectionViewCell = @"DescriptionCollectionViewCell
 
 -(void)choicePictrue
 {
+    [self endEditing:YES];
+    
     _deleteBtn.hidden = YES;
     
     NSDictionary * dic = @{@"position":@2};
@@ -222,6 +224,19 @@ NSString *const kDescriptionCollectionViewCell = @"DescriptionCollectionViewCell
 {
     _dataManager.ActivityDesciptionText = textView.text;
     [_dataManager isEnableToRelease];
+    
+    if (textView.text.length>5000)
+    {
+        if ([self isBlankString:textView.text])
+        {
+            [YUtils showTitle:@"描述不能为空"];
+        }
+        else
+        {
+            [YUtils showTitle:@"描述字数不能大于5000字"];
+        }
+        textView.text = [textView.text substringWithRange:NSMakeRange(0, 5000)];
+    }
 }
 
 -(void)textViewDidBeginEditing:(UITextView *)textView
@@ -231,27 +246,27 @@ NSString *const kDescriptionCollectionViewCell = @"DescriptionCollectionViewCell
     
 }
 
--(BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text
-{
-    
-    if (range.location>=5000)
-    {
-        if ([self isBlankString:text])
-        {
-            [YUtils showTitle:@"描述不能为空"];
-            return NO;
-        }
-        else
-        {
-            [YUtils showTitle:@"描述字数不能大于5000字"];
-            return NO;
-        }
-    }
-    else
-    {
-        return YES;
-    }
-}
+//-(BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text
+//{
+//    if (range.location>=5000)
+//    {
+//        if ([self isBlankString:text])
+//        {
+//            [YUtils showTitle:@"描述不能为空"];
+//            return NO;
+//        }
+//        else
+//        {
+//            [YUtils showTitle:@"描述字数不能大于5000字"];
+//            return NO;
+//        }
+//    }
+//    else
+//    {
+//        return YES;
+//    }
+//}
+
 //判断字符串为空和只为空格解决办法
 - (BOOL) isBlankString:(NSString *)string {
     if (string == nil || string == NULL) {

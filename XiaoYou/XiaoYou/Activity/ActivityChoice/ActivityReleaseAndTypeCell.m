@@ -68,12 +68,10 @@ NSString *const kActivityReleaseAndTypeCell = @"ActivityReleaseAndTypeCellId";
     }
     else
     {
-//        if (num == 0)
-//        {
-//            _dataArr = @[@"新校区",@"老校区"];
-//            _releaseAndTypeImageView.image = [UIImage imageNamed:@"havetime_icon_academy"];
-//            _releaseAndTypeLabel.text = @"校区";
-//        }
+
+        _dataArr = @[@"新校区",@"老校区"];
+        _releaseAndTypeImageView.image = [UIImage imageNamed:@"havetime_icon_academy"];
+        _releaseAndTypeLabel.text = @"校区";
         
     }
 

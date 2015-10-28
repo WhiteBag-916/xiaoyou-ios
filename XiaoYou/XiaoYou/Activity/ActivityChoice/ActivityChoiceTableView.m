@@ -47,10 +47,10 @@
         }];
                 
         _typesDic = [[NSMutableDictionary alloc] init];
-        [_typesDic setObject:@"no_class" forKey:@"free"];
-        [_typesDic setObject:@"school_manager" forKey:@"createUserSource"];
-        [_typesDic setObject:@1 forKey:@"datePeriod"];
-        [_typesDic setObject:@"jingji_bisai" forKey:@"types"];
+        [_typesDic setObject:@"" forKey:@""];
+        [_typesDic setObject:@"" forKey:@""];
+        [_typesDic setObject:@"" forKey:@""];
+        [_typesDic setObject:@"" forKey:@""];
     }
     return self;
 }
@@ -158,7 +158,7 @@
     cell.delegate = self;
     cell.myType = _myType;
     [cell setCellType:_dataSourceArr[indexPath.row]];
-        return cell;
+    return cell;
 
 }
 
