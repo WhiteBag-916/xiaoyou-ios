@@ -174,8 +174,6 @@
     _tailLabel.textColor = KCOLORGREEN_B3;
     _tailLabel.font = CONTENT_FONT(12);
     [_tailLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-//        make.height.mas_equalTo(SCALE_NUM(12));
-//        make.top.equalTo(_bottomLineView).equalTo(make.bottom.equalTo(_wrapContentView));
         make.top.equalTo(_bottomLineView.mas_bottom);
         make.bottom.equalTo(_wrapContentView);
         make.leading.mas_equalTo(10);
@@ -215,18 +213,18 @@
 
 //点击中间部分cell
 -(void)middleAction:(UIButton*)btn {
-    NSLog(@"this is midele action");
+    YLogD(@"this is midele action");
     NSString *publishID = [NSString stringWithFormat:@"%ld",(long)self.model.activityPublishedId];
     ActivityDetailViewController *detailVC = [[ActivityDetailViewController alloc]initWithPublishID:publishID];
-    //detailVC.publishID = publishID;
     [self.viewController.navigationController pushViewController:detailVC animated:YES needHiddenBottomBar:YES];
 }
 
 //点击下面部分cell
 -(void)bottomAction:(UIButton*)btn {
-    
-    NSLog(@"this is bottom action");
+    YLogD(@"this is bottom action");
+    NSString *publishID = [NSString stringWithFormat:@"%ld",(long)self.model.activityPublishedId];
     WhoJoinInController *whoJoinIn = [[WhoJoinInController alloc]init];
+    whoJoinIn.publishID = publishID;
     [self.viewController.navigationController pushViewController:whoJoinIn animated:YES needHiddenBottomBar:YES];
 }
 

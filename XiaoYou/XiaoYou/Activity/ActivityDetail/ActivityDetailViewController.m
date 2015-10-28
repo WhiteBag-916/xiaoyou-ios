@@ -8,7 +8,6 @@
 
 #import "ActivityDetailViewController.h"
 #import "ActivityDetailListView.h"
-#import "ActivityModelTest.h"
 #import "ActivityManager.h"
 #import "ActivityDetailModel.h"
 
@@ -19,6 +18,7 @@
 
 @property (nonatomic,copy) NSString *publishID;
 @property (nonatomic,assign) BOOL   isEnroll;
+
 @end
 
 @implementation ActivityDetailViewController
@@ -30,7 +30,7 @@
     [self showCustomNavigationBackButton];
     [self detailListView];
     [self setTitle:@"活动详情"];
-    [self initJoinButton];
+    [self updateJoinButtonStatus];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -62,7 +62,7 @@
             make.leading.mas_equalTo(-1);
             make.trailing.mas_equalTo(1);
             make.bottom.mas_equalTo(1);
-            make.height.mas_equalTo(SCALE_NUM(45));
+            make.height.mas_equalTo(50);
         }];
         
         _detailListView = [[ActivityDetailListView alloc]init];
@@ -81,14 +81,17 @@
 }
 
 
--(void)initJoinButton
+-(void)updateJoinButtonStatus
 {
     [[ActivityManager sharedInstance] findActivityDetailInfo:0 limitEnd:0 activityPublishedId:self.publishID getDetail:YES block:^(YActionMessage *message) {
         if (message.isSuccess) {
             NSMutableArray *arr = [NSMutableArray array];
             [arr addObject:message.object];
             ActivityDetailModel *model = arr[0];
-            _joinInBtn.enabled = !model.enroll;
+            if (model.enroll) {
+                [_joinInBtn setTitle:@"我已参加" forState:UIControlStateNormal];
+                _joinInBtn.enabled = NO;
+            }
         }
     }];
 }
@@ -103,10 +106,27 @@
             _joinInBtn.enabled = NO;
         }
         else {
-            [YUtils showTitle:message.desc];
             _joinInBtn.enabled = NO;
         }
+        [YUtils showTitle:message.desc];
     }];
 }
+
+
+//1.未点击时：我要加入
+//2.点击后：
+//已报名成功（需要报名的活动）：我已参加
+//已参加（不需报名的活动）：我已参加
+//已提交报名申请（需要报名的活动）：正在审核
+//*3.若该用户从日程卡中删除了某活动，再次进入时按钮显示为未点击的状态：我要加入
+//
+//点击按钮弱提示交互：
+//4.需要报名的活动：点击「我要加入」出现toast：报名申请已提交，请等待审核。
+//5.不需要报名的活动：点击「我要加入」出现toast：已成功参加该活动，请到日程卡中查看。
+//6.按钮点击后不可再次点击
+//
+//颜色：
+//未点击时：绿色g1
+//点击后：浅绿色g2
 
 @end

@@ -16,8 +16,6 @@
 #import "ContactManager.h"
 #import "YCommonAlertView.h"
 
-
-
 @interface ActivityJoinInCell ()
 
 @property (nonatomic,assign) CELLTYPE       cellType;
@@ -155,9 +153,9 @@
     }
 
     
-    ProfileInfo *info = [[ProfileInfo alloc]init];
-    info.tagModels = joinModel.tagsCommon;
-    CGFloat height = [self calculatorTagsCommHeightByProfileInfo:info];
+//    ProfileInfo *info = [[ProfileInfo alloc]init];
+//    info.tagModels = joinModel.tagsCommon;
+    CGFloat height = [self calculatorTagsCommHeightByProfileInfo:profile];
     
     [_tagsWrapView mas_updateConstraints:^(MASConstraintMaker *make) {
         make.height.mas_equalTo((height));
@@ -188,7 +186,11 @@
     }
     else
     {
-        return 40;
+        if (model.propetiesCommon.count <= 0) {
+            return 0;
+        }
+        else
+            return 40;
     }
 }
 

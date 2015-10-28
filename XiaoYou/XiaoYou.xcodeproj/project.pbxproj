@@ -76,6 +76,7 @@
 		044DA0551BBA77C900AA321A /* ActivityDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 044DA0431BBA77C900AA321A /* ActivityDetailCell.m */; };
 		044DA0561BBA77C900AA321A /* ActivityDetailListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 044DA0451BBA77C900AA321A /* ActivityDetailListView.m */; };
 		044DA0571BBA77C900AA321A /* ActivityDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 044DA0471BBA77C900AA321A /* ActivityDetailViewController.m */; };
+		0463588B1BE096790055819F /* UIDevice+DeviceType.m in Sources */ = {isa = PBXBuildFile; fileRef = 0463588A1BE096790055819F /* UIDevice+DeviceType.m */; settings = {ASSET_TAGS = (); }; };
 		0475AD891BDA247400763896 /* SearchActivityListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0475AD881BDA247400763896 /* SearchActivityListView.m */; };
 		0476B6291BD0E4EC00FD13DF /* 1havetime_box_calender@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0476B6251BD0E4EC00FD13DF /* 1havetime_box_calender@2x.png */; };
 		0476B62A1BD0E4EC00FD13DF /* 1havetime_box_calender@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0476B6261BD0E4EC00FD13DF /* 1havetime_box_calender@3x.png */; };
@@ -878,6 +879,8 @@
 		044DA0451BBA77C900AA321A /* ActivityDetailListView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityDetailListView.m; sourceTree = "<group>"; };
 		044DA0461BBA77C900AA321A /* ActivityDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityDetailViewController.h; sourceTree = "<group>"; };
 		044DA0471BBA77C900AA321A /* ActivityDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityDetailViewController.m; sourceTree = "<group>"; };
+		046358891BE096790055819F /* UIDevice+DeviceType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIDevice+DeviceType.h"; sourceTree = "<group>"; };
+		0463588A1BE096790055819F /* UIDevice+DeviceType.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIDevice+DeviceType.m"; sourceTree = "<group>"; };
 		0475AD871BDA247400763896 /* SearchActivityListView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchActivityListView.h; sourceTree = "<group>"; };
 		0475AD881BDA247400763896 /* SearchActivityListView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchActivityListView.m; sourceTree = "<group>"; };
 		0476B6251BD0E4EC00FD13DF /* 1havetime_box_calender@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "1havetime_box_calender@2x.png"; sourceTree = "<group>"; };
@@ -3783,6 +3786,8 @@
 				043AC8611BCF338600AB6E09 /* RespectExpandImg.m */,
 				04C08FE21BDBF0F7002F8BAE /* TimeFormatterConvert.h */,
 				04C08FE31BDBF0F7002F8BAE /* TimeFormatterConvert.m */,
+				046358891BE096790055819F /* UIDevice+DeviceType.h */,
+				0463588A1BE096790055819F /* UIDevice+DeviceType.m */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -4805,6 +4810,7 @@
 				E455DCF41BCB8F6D00B78E54 /* ActivityReleaseController.m in Sources */,
 				207F808A1B7099C2005E8F6A /* AppDelegate+Manager.m in Sources */,
 				6592DCD51B806A9B004CD118 /* FriendApplyTableView.m in Sources */,
+				0463588B1BE096790055819F /* UIDevice+DeviceType.m in Sources */,
 				333122551B806EDB00D3D032 /* EMSDImageCache.m in Sources */,
 				3346708B1B84AA3700A8628A /* ChoicePersonTableViewCell.m in Sources */,
 				3346708C1B84AA3700A8628A /* XYChoicePersonViewController.m in Sources */,

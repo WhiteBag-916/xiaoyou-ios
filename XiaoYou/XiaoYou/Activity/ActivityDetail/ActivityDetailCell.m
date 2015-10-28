@@ -12,6 +12,8 @@
 #import "FeedImageGroup.h"
 #import "ActivityImageTextModels.h"
 #import "TimeFormatterConvert.h"
+#import "XYContactsInfoDetailViewController.h"
+#import "XYGroupInfoDetailViewController.h"
 #define REUSEID @"ActivityDetailCell"
 #define HEADIMAGEVIEW_WIDTH         SCALE_NUM(45)
 #define LEADINGOFF_HEADIMAGEVIEW    SCALE_NUM(12)
@@ -44,6 +46,8 @@
 @property (nonatomic,strong) UILabel        *staticActivityEndTimeDes;  //活动结束时间
 @property (nonatomic,strong) UILabel        *activityEndTimeLabel;      //活动结束时间
 
+@property (nonatomic,strong) ActivityDetailModel    *detailModel;
+
 @end
 @implementation ActivityDetailCell
 
@@ -74,6 +78,7 @@
 
 -(void)setData:(ActivityDetailModel *)model
 {
+    _detailModel = model;
     ActivityOrganizer *organizer = model.activityOrganizer;
     ActivityTypeInfo *info = model.activityTypeInfo;
     ActivityPublishedModel *publishModel = model.activityPublishedDto.activityPublishedModel;
@@ -115,6 +120,9 @@
     [self.contentView addSubview:_headImageView];
     _headImageView.layer.cornerRadius = HEADIMAGEVIEW_WIDTH/2.0;
     _headImageView.layer.masksToBounds = YES;
+    _headImageView.userInteractionEnabled = YES;
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(gotoPersonDetail)];
+    [_headImageView addGestureRecognizer:tap];
     _headImageView.image = [UIImage imageNamed:@"default_head"];
     [_headImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.leading.mas_equalTo(SCALE_NUM(12));
@@ -309,6 +317,23 @@
         make.left.equalTo(_locationLabel);
         make.centerY.equalTo(_categotyImageView.mas_centerY);
     }];
+}
+
+- (void)gotoPersonDetail {
+    ActivityOrganizer *organizer = self.detailModel.activityOrganizer;
+    XYContactsInfoDetailViewController *detailVC = [[XYContactsInfoDetailViewController alloc]init];
+    detailVC.uid = organizer.uid;
+    
+    
+    XYGroupInfoDetailViewController *groupVC = [[XYGroupInfoDetailViewController alloc]init];
+    groupVC.gid = organizer.uid;
+    
+    if ([organizer.userType isEqualToString:@"user"]) {
+        [self.viewController.navigationController pushViewController:detailVC animated:YES needHiddenBottomBar:YES];
+    } else
+    {
+        [self.viewController.navigationController pushViewController:groupVC animated:YES needHiddenBottomBar:YES];
+    }
 }
 
 @end

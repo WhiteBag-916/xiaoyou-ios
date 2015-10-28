@@ -11,6 +11,7 @@
 #define NAME_LEADING        SCALE_NUM(14)
 #import "JoinInTopView.h"
 #import "ContactManager.h"
+#import "XYContactsInfoDetailViewController.h"
 
 @interface JoinInTopView ()
 
@@ -43,6 +44,10 @@
     [self addSubview:_headImageView];
     _headImageView.layer.cornerRadius = HEAD_IMAGE_SIZE/2.0;
     _headImageView.clipsToBounds = YES;
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(gotoPersonDetail)];
+    _headImageView.userInteractionEnabled = YES;
+    [_headImageView addGestureRecognizer:tap];
+    
     _headImageView.image = [UIImage imageNamed:@"headImage.jpg"];
     [_headImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.leading.mas_equalTo(HEADIMAGE_LEADING);
@@ -115,6 +120,12 @@
         }
     }];
     [alert show];
+}
+
+- (void)gotoPersonDetail {
+    XYContactsInfoDetailViewController *detailVC = [[XYContactsInfoDetailViewController alloc]init];
+    detailVC.uid = self.author.uid;
+    [self.viewController.navigationController pushViewController:detailVC animated:YES needHiddenBottomBar:YES];
 }
 
 @end

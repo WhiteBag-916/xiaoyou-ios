@@ -112,35 +112,6 @@
             [self stopLoadMoreData];
         }
     }];
-    
-//    [self stopLoadNewData];
-//    NSString *lastID;
-//    if (![self isHeaderRefresh]) {
-//        lastID = [NSString stringWithFormat:@"%g", [[_feedListArray.lastObject feed] feedIdentifier]];
-//    }
-//      [[FeedManager sharedInstance] feedList:lastID size:KPAGENUM queryCode:_filter block:^(YActionMessage *message) {
-    //        if (message.isSuccess) {
-    //            if ([self isHeaderRefresh]) {
-//                    [_feedListArray removeAllObjects];
-    //            }
-    //            [self hiddenFooter:false];
-    //            [_feedListArray addObjectsFromArray:message.object];
-    //            if ([message.object count] < KPAGENUM) {
-    //                [self showNoticeNoMoreData];
-    //            }
-    //            [self reloadData];
-    //
-    //        } else {
-    //            [YUtils showTitle:message.desc];
-    //        }
-    //        if ([self isHeaderRefresh]) {
-    //            [self stopLoadNewData];
-    //        } else {
-    //            [self stopLoadMoreData];
-    //        }
-    //    }];
-
-
 }
 
 #pragma mark 协议方法

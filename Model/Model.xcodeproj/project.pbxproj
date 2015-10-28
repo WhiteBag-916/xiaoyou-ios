@@ -8,9 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		040619DF1BDE174E008E3E4E /* NoticeInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 040619DE1BDE174E008E3E4E /* NoticeInfo.m */; };
-		047145D51BD8E5B4001D75FC /* RemindModelTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 047145D41BD8E5B4001D75FC /* RemindModelTest.m */; };
-		047145D81BD8F03B001D75FC /* JoinInModelTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 047145D71BD8F03B001D75FC /* JoinInModelTest.m */; };
-		049173A51BDCBACE00D204AF /* ActivityModelTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 049173A41BDCBACE00D204AF /* ActivityModelTest.m */; };
 		04AF14521BDDC74400FEE6A4 /* FilterCondition.m in Sources */ = {isa = PBXBuildFile; fileRef = 04AF14511BDDC74400FEE6A4 /* FilterCondition.m */; };
 		04AF14551BDDC7AC00FEE6A4 /* FilterConditionModels.m in Sources */ = {isa = PBXBuildFile; fileRef = 04AF14541BDDC7AC00FEE6A4 /* FilterConditionModels.m */; };
 		20859A991B64C0BC00580ED3 /* ResultCommon.m in Sources */ = {isa = PBXBuildFile; fileRef = 20859A981B64C0BC00580ED3 /* ResultCommon.m */; };
@@ -86,12 +83,6 @@
 /* Begin PBXFileReference section */
 		040619DD1BDE174E008E3E4E /* NoticeInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoticeInfo.h; sourceTree = "<group>"; };
 		040619DE1BDE174E008E3E4E /* NoticeInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoticeInfo.m; sourceTree = "<group>"; };
-		047145D31BD8E5B4001D75FC /* RemindModelTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RemindModelTest.h; sourceTree = "<group>"; };
-		047145D41BD8E5B4001D75FC /* RemindModelTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RemindModelTest.m; sourceTree = "<group>"; };
-		047145D61BD8F03B001D75FC /* JoinInModelTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JoinInModelTest.h; sourceTree = "<group>"; };
-		047145D71BD8F03B001D75FC /* JoinInModelTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JoinInModelTest.m; sourceTree = "<group>"; };
-		049173A31BDCBACE00D204AF /* ActivityModelTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityModelTest.h; sourceTree = "<group>"; };
-		049173A41BDCBACE00D204AF /* ActivityModelTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityModelTest.m; sourceTree = "<group>"; };
 		04AF14501BDDC74400FEE6A4 /* FilterCondition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FilterCondition.h; sourceTree = "<group>"; };
 		04AF14511BDDC74400FEE6A4 /* FilterCondition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FilterCondition.m; sourceTree = "<group>"; };
 		04AF14531BDDC7AC00FEE6A4 /* FilterConditionModels.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FilterConditionModels.h; sourceTree = "<group>"; };
@@ -223,8 +214,6 @@
 				04AF14511BDDC74400FEE6A4 /* FilterCondition.m */,
 				209E08C61BDDCDDD0062758E /* GetFilterConditionsModel.h */,
 				209E08C71BDDCDDD0062758E /* GetFilterConditionsModel.m */,
-				049173A31BDCBACE00D204AF /* ActivityModelTest.h */,
-				049173A41BDCBACE00D204AF /* ActivityModelTest.m */,
 				20DDA4231BDA24300023179A /* ActivityCoverageModels.h */,
 				20DDA4241BDA24300023179A /* ActivityCoverageModels.m */,
 				20DDA4251BDA24300023179A /* ActivityImageTextModels.h */,
@@ -235,10 +224,6 @@
 				20DDA42A1BDA24300023179A /* ActivityPublishedModel.m */,
 				20DF60131BDF6A8000C8383B /* ActivityDetailModel.h */,
 				20DF60141BDF6A8000C8383B /* ActivityDetailModel.m */,
-				047145D61BD8F03B001D75FC /* JoinInModelTest.h */,
-				047145D71BD8F03B001D75FC /* JoinInModelTest.m */,
-				047145D31BD8E5B4001D75FC /* RemindModelTest.h */,
-				047145D41BD8E5B4001D75FC /* RemindModelTest.m */,
 			);
 			path = MainPage;
 			sourceTree = "<group>";
@@ -521,12 +506,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				047145D51BD8E5B4001D75FC /* RemindModelTest.m in Sources */,
 				20DCB9581B8CA60800C758DE /* ApplicantList.m in Sources */,
 				20E0C07F1B88B0CA00EDAED4 /* ClassList.m in Sources */,
 				20E372C21BDDC03B0063BF56 /* ImageUploadModel.m in Sources */,
 				20859A991B64C0BC00580ED3 /* ResultCommon.m in Sources */,
-				049173A51BDCBACE00D204AF /* ActivityModelTest.m in Sources */,
 				20DA8B441B8F5E76007D0CDE /* ReadFeedCount.m in Sources */,
 				333E95DF1B70B7650001059D /* SystemPushInfoListModel.m in Sources */,
 				20E0C06E1B88B0CA00EDAED4 /* Feed.m in Sources */,
@@ -544,7 +527,6 @@
 				209E08C81BDDCDDD0062758E /* GetFilterConditionsModel.m in Sources */,
 				20DDA42E1BDA24300023179A /* ActivityPublishedModel.m in Sources */,
 				04AF14521BDDC74400FEE6A4 /* FilterCondition.m in Sources */,
-				047145D81BD8F03B001D75FC /* JoinInModelTest.m in Sources */,
 				20DA8B1A1B8EBD27007D0CDE /* GroupAllList.m in Sources */,
 				20DD81611B91D22E00ACFD9A /* ForbiddenList.m in Sources */,
 				333E95EA1B70B7AB0001059D /* SchoolDetailModel.m in Sources */,

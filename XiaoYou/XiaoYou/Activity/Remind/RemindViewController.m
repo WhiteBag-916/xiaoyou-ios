@@ -8,8 +8,7 @@
 
 #import "RemindViewController.h"
 #import "RemindListTableView.h"
-//#import "RemindManager.h"
-#import "RemindModelTest.h"
+
 @interface RemindViewController ()
 @property (nonatomic,retain) RemindListTableView *remindList;
 @end
@@ -25,50 +24,6 @@
     [self remindList];
 }
 
-- (void)sendRequest {
-    /*[[RemindManager sharedInstance] groupDetailInfo:KPAGENUM groupId:_groupId block:^(YActionMessage *message) {
-        if (message.isSuccess) {
-            [self hiddenFooter:false];
-            if ([[message.object groupFeeds] count] < KPAGENUM) {
-                [self showNoticeNoMoreData];
-            }
-            
-            _groupModel = [message.object groupModel];
-            if (nil != _associationsDetailTableViewDelegate) {
-                [_associationsDetailTableViewDelegate resetAddButtonType:_groupModel];
-            }
-            
-            [self resetFeedArray:[message.object groupFeeds] needRemoveAll:YES];
-            
-        } else {
-            [YUtils showTitleOn:self title:message.desc];
-        }
-        
-        [self stopLoad];
-    }];*/
-}
-
-
--(NSArray*)getDataSource
-{
-    RemindModelTest *m1 = [[RemindModelTest alloc]init];
-    m1.headImageUrl = @"http://img1.touxiang.cn/uploads/20130925/25-072725_605.jpg";
-    m1.acType = @"社团活动公告";
-    m1.acName = @"爱心领养";
-    
-    RemindModelTest *m2 = [[RemindModelTest alloc]init];
-    m2.headImageUrl = @"http://d.hiphotos.baidu.com/zhidao/wh%3D600%2C800/sign=9030f48cfe039245a1e0e909b7a488fa/e61190ef76c6a7ef9de5aa67fffaaf51f2de66ab.jpg";
-    m2.acType = @"社团活动公告";
-    m2.acName = @"天津老乡会";
-    
-    RemindModelTest *m3 = [[RemindModelTest alloc]init];
-    m3.headImageUrl = @"http://www.toux8.com/uploads/allimg/120703/1_120703155353_5.jpg";
-    m3.acType = @"校级活动公告";
-    m3.acName = @"校级男子足球比赛";
-    return [NSArray arrayWithObjects:m1,m2,m3, nil];
-}
-
-
 -(RemindListTableView *)remindList {
     if (!_remindList) {
         _remindList = [[RemindListTableView alloc]initWithFrame:CGRectZero style:UITableViewStyleGrouped];
@@ -81,7 +36,6 @@
         }];
     }
     [_remindList sendRequest];
-    //[_remindList loadData];
     return _remindList;
 }
 @end

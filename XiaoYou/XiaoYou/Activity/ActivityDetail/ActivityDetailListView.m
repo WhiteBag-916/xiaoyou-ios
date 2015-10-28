@@ -9,19 +9,20 @@
 #import "ActivityDetailListView.h"
 #import "ActivityDetailCell.h"
 #import "ActivityJoinInCell.h"
-#import "JoinInModelTest.h"
 #import "ActivityManager.h"
 #import "ActivityDetailModel.h"
 #import "ProfileInfo.h"
 #import "Tags.h"
 #import "Author.h"
+#import "UIDevice+DeviceType.h"
 
 #define REUSEID_DETAILCELL  @"ActivityDetailCell"
 #define REUSEID_JOINCELL    @"ActivityJoinInCell"
+#define KPAGENUM    10
 @interface ActivityDetailListView ()<UITableViewDataSource,UITableViewDelegate>
 
 @property (nonatomic,strong) NSMutableArray *activityDetailArray;
-
+@property (nonatomic,assign) NSInteger currentIndex;
 @end
 
 @implementation ActivityDetailListView
@@ -33,6 +34,7 @@
         self.dataSource = self;
         [self registerClass:[ActivityDetailCell class] forCellReuseIdentifier:REUSEID_DETAILCELL];
         [self registerClass:[ActivityJoinInCell class] forCellReuseIdentifier:REUSEID_JOINCELL];
+        _currentIndex = 0;
     }
     return self;
 }
@@ -43,6 +45,7 @@
         self.dataSource = self;
         [self registerClass:[ActivityDetailCell class] forCellReuseIdentifier:REUSEID_DETAILCELL];
         [self registerClass:[ActivityJoinInCell class] forCellReuseIdentifier:REUSEID_JOINCELL];
+        _currentIndex = 0;
     }
     return self;
 }
@@ -55,19 +58,90 @@
     return _activityDetailArray;
 }
 
+#pragma mark - 继承者
+- (BOOL)showHeaderRefresh
+{
+    return YES;
+}
+
+- (BOOL)showFooterRefresh
+{
+    return YES;
+}
+
+- (void)loadNewData
+{
+    _currentIndex = 0;
+    [self sendRequest];
+}
+
+- (void)loadMoreData
+{
+    ActivityDetailModel *model = self.activityDetailArray[0];
+    NSArray *enrollArr = model.enrollActivityUserInfos;
+    _currentIndex = enrollArr.count;
+    [self sendRequest];
+}
 
 -(void)sendRequest
 {
     [_activityDetailArray removeAllObjects];
-    [[ActivityManager sharedInstance] findActivityDetailInfo:0 limitEnd:10 activityPublishedId:self.publishID getDetail:YES block:^(YActionMessage *message) {
+    [[ActivityManager sharedInstance] findActivityDetailInfo:_currentIndex limitEnd:_currentIndex + KPAGENUM activityPublishedId:self.publishID getDetail:YES block:^(YActionMessage *message) {
         if (message.isSuccess) {
-            
+            if ([self isHeaderRefresh]) {
+                [self.activityDetailArray removeAllObjects];
+            }
             [self.activityDetailArray addObject:message.object];
+            ActivityDetailModel *model = self.activityDetailArray[0];
+            NSArray *enrollArr = model.enrollActivityUserInfos;
+            [self hiddenFooter:NO];
+            if (1+enrollArr.count < KPAGENUM) {
+                [self showNoticeNoMoreData];
+            }
             [self reloadData];
+            _currentIndex += KPAGENUM;
+        } else {
+            [YUtils showTitle:message.desc];
+        }
+        if ([self isHeaderRefresh]) {
+            [self stopLoadNewData];
+        } else
+        {
+            [self stopLoadMoreData];
         }
     }];
 }
 
+
+//- (void)sendRequestAAA {
+//    [[ActivityManager sharedInstance] getCurrentUseAvailableListLimitStart:_currentIndex limitEnd:_currentIndex+KPAGENUM block:^(YActionMessage *message) {
+//        if (message.isSuccess) {
+//            if ([self isHeaderRefresh]) {
+//                [self.availableListArray removeAllObjects];
+//            }
+//            
+//            NSLog(@"this is message = %@",message);
+//            
+//            [self.availableListArray addObjectsFromArray:message.object];
+//            
+//            [self hiddenFooter:NO];
+//            if ([message.object count] < KPAGENUM) {
+//                [self showNoticeNoMoreData];
+//            }
+//            [self reloadData];
+//            _currentIndex += KPAGENUM;
+//        } else {
+//            [YUtils showTitle:message.desc];
+//        }
+//        
+//        if ([self isHeaderRefresh]) {
+//            [self stopLoadNewData];
+//        } else
+//        {
+//            [self stopLoadMoreData];
+//        }
+//    }];
+//}
 
 #pragma mark -协议方法
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -81,6 +155,7 @@
     return 0;
 }
 
+#pragma mark  Feed部分的控件要考虑复用
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {;
     CGFloat height;
@@ -97,12 +172,20 @@
         
         ProfileInfo *info = [[ProfileInfo alloc]init];
         info.tagModels = author.tagsCommon;
+        info.propetiesCommon = author.propetiesCommon;
         height = [self calculatorTagsCommHeightByProfileInfo:info];
         height += (109) + (15);
         if (indexPath.row != 1) {
             height -= 49;
         }
-
+        
+        
+        if ([[UIDevice getCurrentDeviceModel] containsString:@"Simulator"] && IS_IPHONE_6) {
+            height += 20;
+        }
+        if ([[UIDevice getCurrentDeviceModel] containsString:@"iPhone 6"]) {
+            height += 20;
+        }
     }
     return height;
 }
@@ -155,7 +238,11 @@
     }
     else
     {
-        return 40;
+        if (model.propetiesCommon.count <= 0) {
+            return 0;
+        }
+        else
+            return 40;
     }
 }
 
