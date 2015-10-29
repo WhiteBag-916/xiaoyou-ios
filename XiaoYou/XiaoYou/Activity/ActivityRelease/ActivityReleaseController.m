@@ -570,11 +570,7 @@ typedef enum : NSUInteger {
     NSLog(@"%@",_dataManager.ActivityOrganizer);
     NSLog(@"%@",_dataManager.ActivityOrganizerId);
     
-     [YUtils showHUDWithTitle];
-    
-    _dataManager.ActivityNameText = [self removeSpaceAndNewLine:_dataManager.ActivityNameText];
-    _dataManager.ActivityPlaceText = [self removeSpaceAndNewLine:_dataManager.ActivityPlaceText];
-    _dataManager.ActivityDesciptionText = [self removeSpaceAndNewLine:_dataManager.ActivityDesciptionText];
+    [YUtils showHUDWithTitle];
     
     if (_dataManager.ActivityDesciptionImage != nil)
     {
@@ -632,6 +628,10 @@ typedef enum : NSUInteger {
 //发布活动请求
 -(void)sendReleaseRequest:(YActionMessage *) message
 {
+    _dataManager.ActivityNameText = [self removeSpaceAndNewLine:_dataManager.ActivityNameText];
+    _dataManager.ActivityPlaceText = [self removeSpaceAndNewLine:_dataManager.ActivityPlaceText];
+    _dataManager.ActivityDesciptionText = [self removeSpaceAndNewLine:_dataManager.ActivityDesciptionText];
+    
     NSMutableDictionary *modelDic = [@{} mutableCopy];
     NSMutableDictionary *activityModelDic = [@{} mutableCopy];
     

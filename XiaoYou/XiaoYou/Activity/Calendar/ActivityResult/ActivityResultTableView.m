@@ -16,7 +16,7 @@
 #import "AssociationsSearchViewController.h"
 
 #define REUSEID_AVAILABEL_CELL @"AvailableCell"
-#define KPAGENUM 10
+#define KPAGENUM    6
 
 @interface ActivityResultTableView ()<UITableViewDataSource,UITableViewDelegate>
 
