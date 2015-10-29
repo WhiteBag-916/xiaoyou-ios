@@ -148,6 +148,8 @@ NSString *const kDateAndTimeCollectionViewCell = @"DateAndTimeCollectionViewCell
 #pragma mark - 手势回调方法
 -(void)applayChoiceTime
 {
+    [self.viewController.view endEditing:YES];
+   
     CommonPopView * popView = [[CommonPopView alloc] initWithFrame:[UIScreen mainScreen].bounds
                                          showButton:YES
                                              addSub:_datePicker
@@ -170,6 +172,7 @@ NSString *const kDateAndTimeCollectionViewCell = @"DateAndTimeCollectionViewCell
 
 -(void)beginChoiceTime
 {
+    [self.viewController.view endEditing:YES];
     CommonPopView * popView = [[CommonPopView alloc] initWithFrame:[UIScreen mainScreen].bounds
                                                         showButton:YES
                                                             addSub:_datePicker
@@ -209,6 +212,7 @@ NSString *const kDateAndTimeCollectionViewCell = @"DateAndTimeCollectionViewCell
 
 -(void)endChoiceTime
 {
+    [self.viewController.view endEditing:YES];
     CommonPopView * popView = [[CommonPopView alloc] initWithFrame:[UIScreen mainScreen].bounds
                                                         showButton:YES
                                                             addSub:_datePicker

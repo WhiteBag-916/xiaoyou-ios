@@ -81,6 +81,16 @@ typedef enum : NSUInteger {
     
     [self removeManagerData];
     
+    //设置初始审核值
+    if (_isIdentity)
+    {
+        _dataManager.ActivityCheckStatus = @"need_check";
+    }
+    else
+    {
+        _dataManager.ActivityCheckStatus = @"no_check";
+    }
+    
     [self setUpUI];
 }
 
@@ -560,6 +570,8 @@ typedef enum : NSUInteger {
     NSLog(@"%@",_dataManager.ActivityOrganizer);
     NSLog(@"%@",_dataManager.ActivityOrganizerId);
     
+     [YUtils showHUDWithTitle];
+    
     _dataManager.ActivityNameText = [self removeSpaceAndNewLine:_dataManager.ActivityNameText];
     _dataManager.ActivityPlaceText = [self removeSpaceAndNewLine:_dataManager.ActivityPlaceText];
     _dataManager.ActivityDesciptionText = [self removeSpaceAndNewLine:_dataManager.ActivityDesciptionText];
@@ -620,7 +632,6 @@ typedef enum : NSUInteger {
 //发布活动请求
 -(void)sendReleaseRequest:(YActionMessage *) message
 {
-    [YUtils showHUDWithTitle];
     NSMutableDictionary *modelDic = [@{} mutableCopy];
     NSMutableDictionary *activityModelDic = [@{} mutableCopy];
     
