@@ -86,7 +86,14 @@
     {
         _connectTag.hidden = YES;
         [self.tagCollectionView mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.top.equalTo(self).offset(kPaddingDistance);
+            if (model.tagModels.count <= 0)
+            {
+                make.top.equalTo(self);
+            }
+            else
+            {
+                make.top.equalTo(self).offset(kPaddingDistance/2);
+            }
             make.left.equalTo(_connectTag.mas_left).offset(-kPaddingDistance/2);
             make.trailing.mas_equalTo(0);
             //        make.height.mas_equalTo(height);
