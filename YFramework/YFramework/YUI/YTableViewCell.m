@@ -29,7 +29,7 @@
         //线
         UIView *line = [[UIView alloc] initWithFrame:CGRectMake([self lineX], self.frame.size.height-1, self.frame.size.width, 1)];
         line.tag = KLINE_TAG;
-        line.backgroundColor = [UIColor hexChangeFloat:@"e9e9e9"];
+        line.backgroundColor = [self lineColor];
         [self.contentView addSubview:line];
     }
 }
@@ -37,6 +37,10 @@
 - (BOOL)needLine
 {
     return NO;
+}
+
+- (UIColor *)lineColor {
+    return [UIColor hexChangeFloat:@"e9e9e9"];
 }
 
 - (CGFloat)lineX
