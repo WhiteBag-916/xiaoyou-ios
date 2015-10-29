@@ -334,7 +334,15 @@
         
         if (_model.tagModels.count > 0)
         {
-            CGFloat height = 65;
+            CGFloat height;
+            if (_model.propetiesCommon.count > 0)
+            {
+                height = 65;
+            }
+            else
+            {
+                height = 40;
+            }
             for (int i = 0; i < _model.tagModels.count; i++)
             {
                 CGFloat width;

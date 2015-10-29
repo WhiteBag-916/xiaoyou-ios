@@ -130,7 +130,10 @@
 
 -(void)didSelectRow:(Tags *) tag andType:(NSString *)type
 {
-    [_typesDic setObject:tag.internalBaseClassIdentifier forKey:type];
+    if (tag.internalBaseClassIdentifier != nil)
+    {
+        [_typesDic setObject:tag.internalBaseClassIdentifier forKey:type];
+    }
 }
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
