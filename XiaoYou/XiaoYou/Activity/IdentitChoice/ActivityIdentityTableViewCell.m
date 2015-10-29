@@ -54,12 +54,14 @@ NSString *const kActivityIdentityTableViewCell = @"ActivityIdentityTableViewCell
     if ([dic[@"isChoice"] boolValue])
     {
         _contentLabel.backgroundColor = KCOLOR_g1;
+        _contentLabel.textColor = KCOLOR_W1;
         _contentLabel.layer.borderColor = [UIColor clearColor].CGColor;
         
     }
     else
     {
         _contentLabel.backgroundColor = [UIColor clearColor];
+        _contentLabel.textColor = KCOLOR_B4;
         _contentLabel.layer.borderColor = [UIColor hexChangeFloat:@"465a65"].CGColor;
     }
 }

@@ -301,7 +301,7 @@
             make.centerX.equalTo(_headImg);
             make.centerY.equalTo(item);
         }];
-        icon.image = [UIImage imageNamed:@"mine-toast"];
+        icon.image = [UIImage imageNamed:@"mine－icon－toast"];
         _respectNum = [YUtils initLabel:CONTENT_FONT(12) color:[UIColor blackColor] text:@"敬酒：0" frame:CGRectZero alignment:NSTextAlignmentLeft];
         [item addSubview:_respectNum];
         [_respectNum mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -315,7 +315,7 @@
             make.centerX.equalTo(_headImg);
             make.centerY.equalTo(item);
         }];
-        icon.image = [UIImage imageNamed:@"mine-heart"];
+        icon.image = [UIImage imageNamed:@"mine－icon－cool"];
         _coolNum = [YUtils initLabel:CONTENT_FONT(12) color:[UIColor blackColor] text:@"觉得很酷：0" frame:CGRectZero alignment:NSTextAlignmentLeft];
         [item addSubview:_coolNum];
         [_coolNum mas_makeConstraints:^(MASConstraintMaker *make) {
