@@ -52,7 +52,7 @@
     }
     
     NSString *myUid = [[YShareData defaultData] valueForKey:kShareData_UserID];
-    if ([author.uid isEqualToString:myUid]) {
+    if (![author.uid isEqualToString:myUid]) {
         _isSelfNameLabel.text = @"";
     }
 }
