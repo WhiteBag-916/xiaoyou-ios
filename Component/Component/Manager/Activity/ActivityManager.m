@@ -18,6 +18,7 @@
 #import "FindActivityDetailInfoAction.h"
 #import "CancleActivityAction.h"
 #import "FreeBuildingListAction.h"
+#import "FreeBuildingDetailAction.h"
 
 #define KActivityManagerSyncQueue @"kActivityManagerSyncQueue"
 
@@ -199,6 +200,16 @@ DEF_SINGLETON(ActivityManager);
 - (void)freeBuildingList:(ActionCompleteBlock)block {
     FreeBuildingListAction *action = [[FreeBuildingListAction alloc]init];
 
+    [YAction startAction:action completionBlock:^(YActionMessage *message) {
+        block(message);
+    }];
+}
+
+//获取自习室大楼的自习教室详情
+- (void)freeBuildingDetail:(NSString *)buildName block:(ActionCompleteBlock)block {
+    FreeBuildingDetailAction *action = [[FreeBuildingDetailAction alloc]init];
+    action.buildName = buildName;
+    
     [YAction startAction:action completionBlock:^(YActionMessage *message) {
         block(message);
     }];
