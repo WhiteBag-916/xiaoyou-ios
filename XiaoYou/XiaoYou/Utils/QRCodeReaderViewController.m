@@ -197,7 +197,7 @@
     CGFloat y = SCALE_NUM(30);
     
     _lblTip = [[UILabel alloc] initWithFrame:CGRectMake(0,y + 30 + c_width, mainWidth, 15)];
-    _lblTip.text = @"将二维码放入框内 即可自动扫描";
+    _lblTip.text = @"将二维码/条码图案放在取景框内即可自动扫描";
     _lblTip.textColor = [UIColor whiteColor];
     _lblTip.font = [UIFont systemFontOfSize:13];
     _lblTip.textAlignment = NSTextAlignmentCenter;
@@ -242,7 +242,7 @@
     moreMerchantsLabel.userInteractionEnabled = YES;
     moreMerchantsLabel.textColor = KCOLOR_W1;
     moreMerchantsLabel.font = CONTENT_FONT(12);
-    moreMerchantsLabel.text = @"查看合作商家";
+    moreMerchantsLabel.text = @"这些商家有优惠";
     moreMerchantsLabel.backgroundColor = [UIColor clearColor];
     moreMerchantsLabel.textAlignment = NSTextAlignmentCenter;
     [self.view addSubview:moreMerchantsLabel];

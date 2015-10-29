@@ -733,6 +733,10 @@
 		E455DCE71BCB686E00B78E54 /* ActivityChoiceTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = E455DCE61BCB686E00B78E54 /* ActivityChoiceTableView.m */; };
 		E455DCF01BCB798400B78E54 /* ActivityReleaseAndTypeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E455DCEF1BCB798400B78E54 /* ActivityReleaseAndTypeCell.m */; };
 		E455DCF41BCB8F6D00B78E54 /* ActivityReleaseController.m in Sources */ = {isa = PBXBuildFile; fileRef = E455DCF31BCB8F6D00B78E54 /* ActivityReleaseController.m */; };
+		E45835A61BE2077700150771 /* mine－icon－cool@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E45835A21BE2077700150771 /* mine－icon－cool@2x.png */; settings = {ASSET_TAGS = (); }; };
+		E45835A71BE2077700150771 /* mine－icon－cool@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E45835A31BE2077700150771 /* mine－icon－cool@3x.png */; settings = {ASSET_TAGS = (); }; };
+		E45835A81BE2077700150771 /* mine－icon－toast@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E45835A41BE2077700150771 /* mine－icon－toast@2x.png */; settings = {ASSET_TAGS = (); }; };
+		E45835A91BE2077700150771 /* mine－icon－toast@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E45835A51BE2077700150771 /* mine－icon－toast@3x.png */; settings = {ASSET_TAGS = (); }; };
 		E459B41B1BE0CB29002B7D41 /* havetime_icon_prompt@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E459B4191BE0CB29002B7D41 /* havetime_icon_prompt@2x.png */; };
 		E459B41C1BE0CB29002B7D41 /* havetime_icon_prompt@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E459B41A1BE0CB29002B7D41 /* havetime_icon_prompt@3x.png */; };
 		E459B4231BE0EFDA002B7D41 /* havetime_icon_school@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E459B4211BE0EFDA002B7D41 /* havetime_icon_school@2x.png */; settings = {ASSET_TAGS = (); }; };
@@ -1886,6 +1890,10 @@
 		E455DCEF1BCB798400B78E54 /* ActivityReleaseAndTypeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityReleaseAndTypeCell.m; sourceTree = "<group>"; };
 		E455DCF21BCB8F6D00B78E54 /* ActivityReleaseController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityReleaseController.h; sourceTree = "<group>"; };
 		E455DCF31BCB8F6D00B78E54 /* ActivityReleaseController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityReleaseController.m; sourceTree = "<group>"; };
+		E45835A21BE2077700150771 /* mine－icon－cool@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mine－icon－cool@2x.png"; sourceTree = "<group>"; };
+		E45835A31BE2077700150771 /* mine－icon－cool@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mine－icon－cool@3x.png"; sourceTree = "<group>"; };
+		E45835A41BE2077700150771 /* mine－icon－toast@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mine－icon－toast@2x.png"; sourceTree = "<group>"; };
+		E45835A51BE2077700150771 /* mine－icon－toast@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mine－icon－toast@3x.png"; sourceTree = "<group>"; };
 		E459B4191BE0CB29002B7D41 /* havetime_icon_prompt@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "havetime_icon_prompt@2x.png"; sourceTree = "<group>"; };
 		E459B41A1BE0CB29002B7D41 /* havetime_icon_prompt@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "havetime_icon_prompt@3x.png"; sourceTree = "<group>"; };
 		E459B4211BE0EFDA002B7D41 /* havetime_icon_school@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "havetime_icon_school@2x.png"; sourceTree = "<group>"; };
@@ -3772,6 +3780,10 @@
 		650C6C0B1B886D3200A89AC9 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
+				E45835A21BE2077700150771 /* mine－icon－cool@2x.png */,
+				E45835A31BE2077700150771 /* mine－icon－cool@3x.png */,
+				E45835A41BE2077700150771 /* mine－icon－toast@2x.png */,
+				E45835A51BE2077700150771 /* mine－icon－toast@3x.png */,
 				20D821B01BE0B55C00C5E21C /* class_tab_putup@2x.png */,
 				20D821B11BE0B55C00C5E21C /* class_tab_putup@3x.png */,
 				20D8B1301BE07595003F7911 /* course_icon_week@2x.png */,
@@ -4379,6 +4391,7 @@
 				049480501BB8E51A00C68460 /* schedule_houtian@3x.png in Resources */,
 				043AC86C1BCF7BFC00AB6E09 /* friend_box_serch@2x.png in Resources */,
 				333122CE1B806EDC00D3D032 /* chat_sender_audio_playing_003@2x.png in Resources */,
+				E45835A61BE2077700150771 /* mine－icon－cool@2x.png in Resources */,
 				E43E10701BCCFA840018B6D7 /* icon_info@2x.png in Resources */,
 				20DA3A061BD7754F00B4B1B1 /* build_put_bg@2x.png in Resources */,
 				333122CF1B806EDC00D3D032 /* chat_sender_audio_playing_full.png in Resources */,
@@ -4461,6 +4474,7 @@
 				044C31591BCCAF0000E0D508 /* have_time_search@3x.png in Resources */,
 				3334AC371B82E32100FDDCCB /* chat_receiver_bg@2x.png in Resources */,
 				E46CF87E1BD7765A00FF563B /* detail_toast_new@3x.png in Resources */,
+				E45835A81BE2077700150771 /* mine－icon－toast@2x.png in Resources */,
 				333122BF1B806EDC00D3D032 /* chat_receiver_audio_playing002.png in Resources */,
 				20DF5FF91BDF2B7900C8383B /* mine－icon－course@2x.png in Resources */,
 				20E034051B846398002E4583 /* feed-find-someone-search@3x.png in Resources */,
@@ -4544,6 +4558,7 @@
 				E48E09AC1BD781B10017D395 /* scanf_code_point@3x.png in Resources */,
 				04394B4B1BBBB78B0098BB8F /* fast_add_white@2x.png in Resources */,
 				E43E10811BCCFA840018B6D7 /* line_dot@3x.png in Resources */,
+				E45835A91BE2077700150771 /* mine－icon－toast@3x.png in Resources */,
 				049480481BB8DE1700C68460 /* PhotoBorder@2x.png in Resources */,
 				20DA1A761B89BEF100DEF95C /* register-frame-agree@2x.png in Resources */,
 				044C31581BCCAF0000E0D508 /* have_time_search@2x.png in Resources */,
@@ -4616,6 +4631,7 @@
 				048C49EE1BD4EDB0008E1D88 /* havetime_icon_no@2x.png in Resources */,
 				65024C1D1B833565007DE404 /* feedmore@3x.png in Resources */,
 				20D8B1321BE07595003F7911 /* course_icon_week@2x.png in Resources */,
+				E45835A71BE2077700150771 /* mine－icon－cool@3x.png in Resources */,
 				3334AC0D1B82C89500FDDCCB /* chatBar_colorMore_photo@2x.png in Resources */,
 				65CF638B1B8EE17E00ACBB70 /* tooseemore@3x.png in Resources */,
 				20E942241B833D10009C2DC6 /* toggle-on@2x.png in Resources */,

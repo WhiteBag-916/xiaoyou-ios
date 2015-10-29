@@ -10,4 +10,6 @@
 
 @interface TopView : UIView
 
+- (instancetype)initWithImageCount:(NSInteger) num;
+
 @end

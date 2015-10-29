@@ -21,16 +21,16 @@
 
 @implementation TopView
 
-- (instancetype)init
+- (instancetype)initWithImageCount:(NSInteger) num
 {
     self = [super init];
     if (self) {
-        [self setUpUI];
+        [self setUpUI:num];
     }
     return self;
 }
 
--(void)setUpUI
+-(void)setUpUI:(NSInteger) num
 {
     _scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCALE_NUM(150))];
     _scrollView.userInteractionEnabled = YES;
@@ -38,84 +38,46 @@
     _scrollView.delegate = self;
     _scrollView.showsHorizontalScrollIndicator = NO;
     _scrollView.showsVerticalScrollIndicator = NO;
-    _scrollView.contentSize = CGSizeMake(SCREEN_WIDTH*3, SCALE_NUM(150));
+    _scrollView.contentSize = CGSizeMake(SCREEN_WIDTH*num, SCALE_NUM(150));
     [self addSubview:_scrollView];
     
-    _imageView1 = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCALE_NUM(150))];
-    _imageView2 = [[UIImageView alloc] initWithFrame:CGRectMake(SCREEN_WIDTH, 0, SCREEN_WIDTH, SCALE_NUM(150))];
-    _imageView3 = [[UIImageView alloc] initWithFrame:CGRectMake(SCREEN_WIDTH*2, 0, SCREEN_WIDTH, SCALE_NUM(150))];
-    
-    _imageView1.image = [UIImage imageNamed:@"common_picture_loading_c"];
-    _imageView2.image = [UIImage imageNamed:@"common_picture_loading_c"];
-    _imageView3.image = [UIImage imageNamed:@"common_picture_loading_c"];
-    
-    [_scrollView addSubview:_imageView1];
-    [_scrollView addSubview:_imageView2];
-    [_scrollView addSubview:_imageView3];
+    for (int i = 0; i < num; i++)
+    {
+        UIImageView * imageView = [[UIImageView alloc] initWithFrame:CGRectMake(SCREEN_WIDTH*i, 0, SCREEN_WIDTH, SCALE_NUM(150))];
+        imageView.image = [UIImage imageNamed:@"common_picture_loading_c"];
+        imageView.userInteractionEnabled = YES;
+        [_scrollView addSubview:imageView];
+    }
     
     _pageControl = [[UIPageControl alloc] init];
+    _pageControl.userInteractionEnabled = YES;
     _pageControl.backgroundColor = [UIColor clearColor];
-    _pageControl.numberOfPages = 3;
+    _pageControl.numberOfPages = num;
     _pageControl.currentPage = 0;
     _pageControl.pageIndicatorTintColor = KCOLOR_W1;
     _pageControl.currentPageIndicatorTintColor = KCOLOR_g1;
     [self addSubview:_pageControl];
     [_pageControl mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.equalTo(self);
-        make.bottom.equalTo(_scrollView.mas_bottom).offset(SCALE_NUM(-10));
-        make.width.mas_equalTo(SCALE_NUM(100));
-        make.height.mas_equalTo(SCALE_NUM(10));
+        make.bottom.equalTo(_scrollView.mas_bottom);
+        make.width.mas_equalTo(SCALE_NUM(15*num));
+        make.height.mas_equalTo(36);
     }];
     [_pageControl addTarget:self action:@selector(changePage:) forControlEvents:UIControlEventValueChanged];
 }
 
 - (void)changePage:(UIPageControl *)sender
 {
-    _pageControl.currentPage = sender.currentPage;
-    switch (sender.currentPage)
-    {
-        case 0:
-        {
-            [UIView animateWithDuration:0.2 animations:^{
-                _scrollView.contentOffset = CGPointMake(0, 0);
-            }];
-            break;
-        }
-        case 1:
-        {
-            [UIView animateWithDuration:0.2 animations:^{
-                _scrollView.contentOffset = CGPointMake(SCALE_NUM(SCREEN_WIDTH), 0);
-            }];
-            
-            break;
-        }
-        case 2:
-        {
-            [UIView animateWithDuration:0.2 animations:^{
-                _scrollView.contentOffset = CGPointMake(SCALE_NUM(SCREEN_WIDTH*2), 0);
-            }];
-            
-            break;
-        }
-        default:
-            break;
-    }
+    CGSize viewSize = _scrollView.frame.size;
+    CGRect rect = CGRectMake(sender.currentPage * viewSize.width, 0, viewSize.width, viewSize.height);
+    [_scrollView scrollRectToVisible:rect animated:YES];
 }
 
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
-    if (scrollView.contentOffset.x <= 0)
-    {
-        _pageControl.currentPage = 0;
-    }
-    else if (scrollView.contentOffset.x <= SCALE_NUM(SCREEN_WIDTH))
-    {
-        _pageControl.currentPage = 1;
-    }
-    else
-    {
-        _pageControl.currentPage = 2;
-    }
+    NSInteger currentPage = scrollView.contentOffset.x / SCREEN_WIDTH;
+    _pageControl.currentPage = currentPage;
+   
 }
 
 @end
