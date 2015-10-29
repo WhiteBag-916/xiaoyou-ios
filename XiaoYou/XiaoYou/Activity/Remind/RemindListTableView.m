@@ -87,6 +87,7 @@
 - (void)loadNewData
 {
      _currentIndex = 0;
+    [_remindListArray removeAllObjects];
     [self sendRequest];
 }
 
@@ -119,33 +120,6 @@
             [self stopLoadMoreData];
         }
     }];
-//    [[ActivityManager sharedInstance] getCurrentUseAvailableListLimitStart:_currentIndex limitEnd:_currentIndex+KPAGENUM block:^(YActionMessage *message) {
-//        if (message.isSuccess) {
-//            if ([self isHeaderRefresh]) {
-//                [self.availableListArray removeAllObjects];
-//            }
-//            
-//            NSLog(@"this is message = %@",message);
-//            
-//            [self.availableListArray addObjectsFromArray:message.object];
-//            
-//            [self hiddenFooter:NO];
-//            if ([message.object count] < KPAGENUM) {
-//                [self showNoticeNoMoreData];
-//            }
-//            [self reloadData];
-//            _currentIndex += KPAGENUM;
-//        } else {
-//            [YUtils showTitle:message.desc];
-//        }
-//        
-//        if ([self isHeaderRefresh]) {
-//            [self stopLoadNewData];
-//        } else
-//        {
-//            [self stopLoadMoreData];
-//        }
-//    }];
 }
 
 

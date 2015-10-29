@@ -34,6 +34,11 @@
     return YES;
 }
 
+-(CGFloat)lineX
+{
+    return 20;
+}
+
 
 -(instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {

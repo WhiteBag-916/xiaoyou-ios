@@ -81,12 +81,6 @@
     return YES;
 }
 
--(CGFloat)lineX
-{
-    return 20;
-}
-
-
 -(void)setData:(ActivityDetailModel *)model
 {
     _detailModel = model;
