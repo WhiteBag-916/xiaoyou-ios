@@ -106,7 +106,7 @@ NSString *const kActivityPublishedModelOriginalTextUrl = @"originalTextUrl";
             self.createTime = [[self objectOrNilForKey:kActivityPublishedModelCreateTime fromDictionary:dict] doubleValue];
             self.activityOrganizer = [self objectOrNilForKey:kActivityPublishedModelActivityOrganizer fromDictionary:dict];
             self.address = [self objectOrNilForKey:kActivityPublishedModelAddress fromDictionary:dict];
-        self.originalTextUrl = [self objectOrNilForKey:kActivityPublishedModelOriginalTextUrl fromDictionary:dict];
+            self.originalTextUrl = [self objectOrNilForKey:kActivityPublishedModelOriginalTextUrl fromDictionary:dict];
     }
     
     return self;

@@ -180,7 +180,9 @@
 {
     
     UITableViewCell *cell = nil;
-    NoticeInfo *info = self.remindListArray[indexPath.section];
+    NoticeInfo *info;
+    if (self.remindListArray.count > 0)
+        info = self.remindListArray[indexPath.section];
     if (info.activityOwner) {
         ApplyRemindCell *appCell = [ApplyRemindCell cellWithTableView:tableView];
         [appCell setData:info];
@@ -202,20 +204,14 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NoticeInfo *info = self.remindListArray[indexPath.section];
+    NoticeInfo *info;
+    if (self.remindListArray.count > 0)
+        info = self.remindListArray[indexPath.section];
     if (info.activityOwner) {
         NSString *publishID = [NSString stringWithFormat:@"%ld",(long)info.activityPublishedId];
         ActivityDetailViewController *detailVC = [[ActivityDetailViewController alloc]initWithPublishID:publishID];
         [self.viewController.navigationController pushViewController:detailVC animated:YES needHiddenBottomBar:YES];
     }
-    /*ProfilePersonListController *whoJoinIn = [[ProfilePersonListController alloc]init];
-    [whoJoinIn initWithType:PersonListWhoJoinInThisActivity];
-    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
-    if ([cell isKindOfClass:[PassRemindCell class]]) {
-        PassRemindCell *remindCell = (PassRemindCell*)cell;
-        if (remindCell.cellType == AUDIT_PASSED)
-            [self.viewController.navigationController pushViewController:whoJoinIn animated:YES needHiddenBottomBar:YES];
-    }*/
 }
 
 

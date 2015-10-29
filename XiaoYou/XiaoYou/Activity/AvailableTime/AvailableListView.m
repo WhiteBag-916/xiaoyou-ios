@@ -189,7 +189,9 @@
     } 
     //活动详情
     else if (type == ACTIVITY_DETAIL_CELL) {
-        ActivityInfoModel *model = self.availableListArray[indexPath.row-2];
+        ActivityInfoModel *model;
+        if (self.availableListArray.count > 0)
+            model = self.availableListArray[indexPath.row-2];
         NSString *publishID = [NSString stringWithFormat:@"%ld",(long)model.activityPublishedModel.activityPublishedModelIdentifier];
         
         ActivityDetailViewController *activityDetailVC = [[ActivityDetailViewController alloc]initWithPublishID:publishID];

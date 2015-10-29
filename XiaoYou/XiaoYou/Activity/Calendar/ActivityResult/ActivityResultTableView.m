@@ -14,6 +14,7 @@
 #import "ActivityImageTextModels.h"
 #import "UITableView+FDTemplateLayoutCell.h"
 #import "AssociationsSearchViewController.h"
+#import "ActivityDetailModel.h"
 
 #define REUSEID_AVAILABEL_CELL @"AvailableCell"
 #define KPAGENUM 10
@@ -189,13 +190,15 @@
 {
     UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
      if ([cell isKindOfClass:[AvailableCell class]]) {
-        [self gotoDetailWithCellType];
+         [self gotoDetailWithCellTypeWithIndexPath:indexPath];
     }
 }
 
--(void)gotoDetailWithCellType
+-(void)gotoDetailWithCellTypeWithIndexPath:(NSIndexPath*)indexPath
 {
-    ActivityDetailViewController *activityDetailVC = [[ActivityDetailViewController alloc]init];
+    ActivityInfoModel *infoModel = self.dataSouceArr[indexPath.row];
+    NSString *publishID = [NSString stringWithFormat:@"%ld",(long)infoModel.activityPublishedModel.activityPublishedModelIdentifier];
+    ActivityDetailViewController *activityDetailVC = [[ActivityDetailViewController alloc]initWithPublishID:publishID];
     [self.viewController.navigationController pushViewController:activityDetailVC animated:YES needHiddenBottomBar:YES];
     
 }

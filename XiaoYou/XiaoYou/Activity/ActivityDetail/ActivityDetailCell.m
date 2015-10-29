@@ -15,6 +15,7 @@
 #import "XYContactsInfoDetailViewController.h"
 #import "XYGroupInfoDetailViewController.h"
 #import "ActivityPublishedModel.h"
+#import "YWebViewController.h"
 #define REUSEID @"ActivityDetailCell"
 #define HEADIMAGEVIEW_WIDTH         SCALE_NUM(45)
 #define LEADINGOFF_HEADIMAGEVIEW    SCALE_NUM(12)
@@ -112,12 +113,20 @@
     }
     
     //底部数据的初始化
-    
     _deadLineTimeLabel.text = [TimeFormatterConvert timeConvertToFommtterAvailable:publishModel.enrollEndTime];
     _activityTimeLabel.text = [TimeFormatterConvert timeConvertToFommtterAvailable:publishModel.actStartTime];
     _activityEndTimeLabel.text = [TimeFormatterConvert timeConvertToFommtterAvailable:publishModel.actEndTime];
     _locationLabel.text = publishModel.address;
     _categoryLabel.text = info.name;
+    
+    //跳转活动链接
+    publishModel.originalTextUrl = @"http://www.baidu.com";
+//    if (publishModel.originalTextUrl == nil || [publishModel.originalTextUrl isEmpty]) {
+//        [_jumpLinkButton removeFromSuperview];
+//        [_categotyImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+//            make.bottom.mas_equalTo(SCALE_NUM(-15));
+//        }];
+//    }
 }
 
 
@@ -151,7 +160,7 @@
     
     
     _sepLineView = [[UIView alloc]init];
-    _sepLineView.backgroundColor = KCOLOR_B5;
+    _sepLineView.backgroundColor = KCOLOR_B2;
     [self.contentView addSubview:_sepLineView];
     [_sepLineView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(_headImageView.mas_bottom).offset(SCALE_NUM(12));
@@ -229,7 +238,8 @@
     _staticDeadLineDes.textColor = KCOLOR_B3;
     [_staticDeadLineDes mas_makeConstraints:^(MASConstraintMaker *make) {
         make.height.mas_equalTo(SCALE_NUM(13));
-        make.leading.mas_equalTo(SCALE_NUM(66));
+        //make.leading.mas_equalTo(SCALE_NUM(66));
+        make.left.equalTo(_middleView);
         make.centerY.equalTo(_timeImageView.mas_centerY);
     }];
     
@@ -337,6 +347,7 @@
         make.left.equalTo(_categoryLabel);
         make.height.mas_equalTo(SCALE_NUM(14));
         make.bottom.mas_equalTo(SCALE_NUM(-10));
+        
     }];
 }
 
@@ -347,8 +358,8 @@
 -(void)jumpLinkAction
 {
     ActivityPublishedModel *publishModel = self.detailModel.activityPublishedDto.activityPublishedModel;
-    
-    //[self.viewController.navigationController pushViewController:nil animated:YES needHiddenBottomBar:YES];
+    YWebViewController *webViewVC = [[YWebViewController alloc]initWithUrl:publishModel.originalTextUrl andTitle:publishModel.name canClick:NO];
+    [self.viewController.navigationController pushViewController:webViewVC animated:YES needHiddenBottomBar:YES];
 }
 
 - (void)gotoPersonDetail {
