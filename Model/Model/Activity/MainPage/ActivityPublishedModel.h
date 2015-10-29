@@ -35,6 +35,7 @@
 @property (nonatomic, assign) double createTime;
 @property (nonatomic, strong) NSString *activityOrganizer;
 @property (nonatomic, strong) NSString *address;
+@property (nonatomic, strong) NSString *originalTextUrl;
 
 + (instancetype)modelObjectWithDictionary:(NSDictionary *)dict;
 - (instancetype)initWithDictionary:(NSDictionary *)dict;

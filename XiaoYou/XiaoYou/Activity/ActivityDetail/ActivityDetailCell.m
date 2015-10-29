@@ -14,6 +14,7 @@
 #import "TimeFormatterConvert.h"
 #import "XYContactsInfoDetailViewController.h"
 #import "XYGroupInfoDetailViewController.h"
+#import "ActivityPublishedModel.h"
 #define REUSEID @"ActivityDetailCell"
 #define HEADIMAGEVIEW_WIDTH         SCALE_NUM(45)
 #define LEADINGOFF_HEADIMAGEVIEW    SCALE_NUM(12)
@@ -345,7 +346,9 @@
  */
 -(void)jumpLinkAction
 {
+    ActivityPublishedModel *publishModel = self.detailModel.activityPublishedDto.activityPublishedModel;
     
+    //[self.viewController.navigationController pushViewController:nil animated:YES needHiddenBottomBar:YES];
 }
 
 - (void)gotoPersonDetail {

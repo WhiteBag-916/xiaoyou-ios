@@ -56,10 +56,13 @@
     NSLog(@"this is data...");
     YActionSheetItem *item1 = [YActionSheetItem itemWithTitle:@"我要退出" type:YCommonActionSheetItemTypeCenterCommon block:^(NSInteger checkNum) {
         [self exitActivity];
+        
     }];
     
     YCommonActionSheet *sheet = [[YCommonActionSheet alloc] initWithType:@[item1] title:nil];
     [sheet show];
+    
+    
 }
 
 
@@ -107,7 +110,6 @@
     return _detailListView;
 }
 
-
 -(void)updateJoinButtonStatus
 {
     [[ActivityManager sharedInstance] findActivityDetailInfo:0 limitEnd:0 activityPublishedId:self.publishID getDetail:YES block:^(YActionMessage *message) {
@@ -115,19 +117,19 @@
             NSMutableArray *arr = [NSMutableArray array];
             [arr addObject:message.object];
             ActivityDetailModel *model = arr[0];
-            if ([model.enrollStatus isEqualToString:@"未报名"]) {
+            if ([model.enrollStatus isEqualToString:@"not_enroll"]) {
                 [_joinInBtn setTitle:@"我要加入" forState:UIControlStateNormal];
                 _joinInBtn.enabled = YES;
             }
-            else if ([model.enrollStatus isEqualToString:@"已报名"]) {
+            else if ([model.enrollStatus isEqualToString:@"has_enrolled"]) {
                 [_joinInBtn setTitle:@"已经报名" forState:UIControlStateNormal];
                 _joinInBtn.enabled = NO;
             }
-            else if ([model.enrollStatus isEqualToString:@"报名已过期"]) {
-                [_joinInBtn setTitle:@"报名已过期" forState:UIControlStateNormal];
+            else if ([model.enrollStatus isEqualToString:@"enroll_expired"]) {
+                [_joinInBtn setTitle:@"报名结束" forState:UIControlStateNormal];
                 _joinInBtn.enabled = NO;
             }
-            else if ([model.enrollStatus isEqualToString:@"报名审核中"]) {
+            else if ([model.enrollStatus isEqualToString:@"enroll_auditing"]) {
                 [_joinInBtn setTitle:@"正在审核" forState:UIControlStateNormal];
                 _joinInBtn.enabled = NO;
             }
