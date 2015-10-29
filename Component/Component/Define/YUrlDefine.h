@@ -195,6 +195,8 @@
 //查询活动详情接口
 #define api_activity_findActivityDetailInfo   @"/activity/findActivityDetailInfo"
 #define api_activity_cancleAvtivity         @"/activity/cancelEnroll"
+//获取自习室大楼以及对应的自习教室数量
+#define api_room_freeBuildingList         @"/room/freeBuildingList"
 /**********************************************************
  Url Define: CourseTime
  **********************************************************/

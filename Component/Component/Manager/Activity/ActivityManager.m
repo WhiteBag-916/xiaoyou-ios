@@ -17,6 +17,7 @@
 #import "GetFilterConditionsAction.h"
 #import "FindActivityDetailInfoAction.h"
 #import "CancleActivityAction.h"
+#import "FreeBuildingListAction.h"
 
 #define KActivityManagerSyncQueue @"kActivityManagerSyncQueue"
 
@@ -189,6 +190,15 @@ DEF_SINGLETON(ActivityManager);
 {
     CancleActivityAction *action = [[CancleActivityAction alloc]init];
     action.activityPublishedId = activityID;
+    [YAction startAction:action completionBlock:^(YActionMessage *message) {
+        block(message);
+    }];
+}
+
+//获取自习室大楼以及对应的自习教室数量
+- (void)freeBuildingList:(ActionCompleteBlock)block {
+    FreeBuildingListAction *action = [[FreeBuildingListAction alloc]init];
+
     [YAction startAction:action completionBlock:^(YActionMessage *message) {
         block(message);
     }];

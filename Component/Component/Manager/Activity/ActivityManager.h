@@ -126,4 +126,13 @@ AS_SINGLETON(ActivityManager);
  */
 - (void)cancleActivitySignUpByActivityID:(NSString*)activityID block:(ActionCompleteBlock)block;
 
+/*********************************************************************
+ 函数名称 : freeBuildingList
+ 函数描述 : 获取自习室大楼以及对应的自习教室数量
+ 参数 : N/A
+ 返回值 : FreeBuildingListModel
+ 作者 : XiongChen
+ *********************************************************************/
+- (void)freeBuildingList:(ActionCompleteBlock)block;
+
 @end
