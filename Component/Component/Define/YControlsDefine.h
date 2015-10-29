@@ -28,6 +28,7 @@
 #define KCOLOR_e5e5e5 [UIColor hexChangeFloat:@"e5e5e5"]
 #define KCOLOR_79909e [UIColor hexChangeFloat:@"79909e"]
 #define KCOLOR_e6ebea [UIColor hexChangeFloat:@"e6ebea"]
+#define KCOLOR_BLUE_2da8e1 [UIColor hexChangeFloat:@"2da8e1"]
 
 #define KCOLOR_W1 [UIColor hexChangeFloat:@"FFFFFF"]
 #define KCOLOR_B1 [UIColor hexChangeFloat:@"F9F9F9"]
@@ -37,6 +38,7 @@
 #define KCOLOR_B5 [UIColor hexChangeFloat:@"999999"]
 #define KCOLOR_g1 [UIColor hexChangeFloat:@"009f92"]
 #define KCOLOR_g2 [UIColor hexChangeFloat:@"95d5d0"]
+
 
 #define KCOLORGRAY_B6 [UIColor hexChangeFloat:@"F6F6F6"]
 

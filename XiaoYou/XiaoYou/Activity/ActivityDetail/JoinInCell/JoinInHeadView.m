@@ -13,8 +13,8 @@
 
 @interface JoinInHeadView ()
 
-@property (nonatomic,strong) UIImageView    *pointImageView;
-@property (nonatomic,strong) UILabel        *desLabel;
+@property (nonatomic,strong) UIImageView    *pointImageView;    //提示点
+@property (nonatomic,strong) UILabel        *desLabel;          //描述
 
 @end
 

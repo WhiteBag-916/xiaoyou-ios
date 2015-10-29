@@ -121,7 +121,7 @@
             }
             else if ([model.enrollStatus isEqualToString:@"已报名"]) {
                 [_joinInBtn setTitle:@"已经报名" forState:UIControlStateNormal];
-                _joinInBtn.enabled = YES;
+                _joinInBtn.enabled = NO;
             }
             else if ([model.enrollStatus isEqualToString:@"报名已过期"]) {
                 [_joinInBtn setTitle:@"报名已过期" forState:UIControlStateNormal];
@@ -129,7 +129,7 @@
             }
             else if ([model.enrollStatus isEqualToString:@"报名审核中"]) {
                 [_joinInBtn setTitle:@"正在审核" forState:UIControlStateNormal];
-                _joinInBtn.enabled = YES;
+                _joinInBtn.enabled = NO;
             }
         }
     }];

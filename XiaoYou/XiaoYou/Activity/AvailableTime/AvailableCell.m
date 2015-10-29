@@ -51,7 +51,7 @@
 
 -(BOOL)needLine
 {
-    return NO;
+    return YES;
 }
 
 -(CGFloat)lineX

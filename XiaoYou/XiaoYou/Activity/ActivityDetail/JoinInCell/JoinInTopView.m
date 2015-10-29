@@ -15,13 +15,13 @@
 
 @interface JoinInTopView ()
 
-//@property (nonatomic,strong) UIImageView    *headImageView;         //头像
-//@property (nonatomic,strong) UILabel        *nameLabel;             //姓名
-//@property (nonatomic,strong) UIImageView    *genderImageView;       //性别
-//@property (nonatomic,strong) UIButton       *addFriendImageView;    //添加好友
+@property (nonatomic,strong) UIImageView    *headImageView;         //头像
+@property (nonatomic,strong) UILabel        *nameLabel;             //姓名
+@property (nonatomic,strong) UIImageView    *genderImageView;       //性别
+@property (nonatomic,strong) UIButton       *addFriendImageView;    //添加好友
 @property (nonatomic,strong) UILabel        *isSelfNameLabel;       //是否是自己
 
-@property (nonatomic,strong) Author *author;
+@property (nonatomic,strong) Author         *author;                //数据模型
 
 @end
 
@@ -42,6 +42,13 @@
     [_headImageView setFaceImageWithUrl:author.headPic];
     _nameLabel.text = author.name;
     [self updateStatus:author.friendStatus];
+    
+    if ([author.gender isEqualToString:@"男"]) {
+        _genderImageView.image = [UIImage imageNamed:@"funny_detail_boy"];
+    } else
+    {
+        _genderImageView.image = [UIImage imageNamed:@"funny_detail_girl"];
+    }
 }
 
 -(void)initView
@@ -65,7 +72,7 @@
     _nameLabel = [[UILabel alloc]init];
     [self addSubview:_nameLabel];
     _nameLabel.text = @"刘雨欣";
-    _nameLabel.font = [UIFont systemFontOfSize:SCALE_NUM(14)];
+    _nameLabel.font = CONTENT_FONT(14);
     [_nameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.mas_equalTo(_headImageView.centerY);
         make.left.equalTo(_headImageView.mas_right).offset(NAME_LEADING);
@@ -81,6 +88,12 @@
     
     _isSelfNameLabel = [[UILabel alloc]init];
     [self addSubview:_isSelfNameLabel];
+    _isSelfNameLabel.text = @"";
+    _nameLabel.font = CONTENT_FONT(12);
+    [_isSelfNameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(_genderImageView.mas_right).offset(SCALE_NUM(8));
+        make.top.equalTo(_nameLabel);
+    }];
     
     _addFriendImageView = [UIButton buttonWithType:UIButtonTypeSystem];
     [self addSubview:_addFriendImageView];
@@ -123,7 +136,6 @@
                     _author.friendStatus = @"2";
                     [self updateStatus:_author.friendStatus];
                 }
-                
                 [YUtils showTitle:message.desc];
             }];
         }
@@ -133,7 +145,7 @@
 
 - (void)gotoPersonDetail {
     XYContactsInfoDetailViewController *detailVC = [[XYContactsInfoDetailViewController alloc]init];
-    detailVC.uid = self.author.uid;
+    detailVC.uid = _author.uid;
     [self.viewController.navigationController pushViewController:detailVC animated:YES needHiddenBottomBar:YES];
 }
 
