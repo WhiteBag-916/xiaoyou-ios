@@ -20,7 +20,7 @@
 
 @interface ActivityDetailCell ()
 //@property (nonatomic,strong) ActivityTopView        *topView;
-////@property (nonatomic,strong) FeedImageGroup         *middleView;
+//@property (nonatomic,strong) FeedImageGroup         *middleView;
 //@property (nonatomic,strong) ActivityMiddleView     *bottomView;
 
 #pragma mark 顶部TopView
@@ -34,18 +34,19 @@
 #pragma mark 中间MiddleView
 @property (nonatomic,strong) FeedImageGroup *middleView;
 #pragma mark 底部BottomView
-@property (nonatomic,strong) UIImageView    *timeImageView;     //报名截止时间
-@property (nonatomic,strong) UILabel        *staticDeadLineDes; //截止时间
-@property (nonatomic,strong) UILabel        *deadLineTimeLabel; //截止
-@property (nonatomic,strong) UILabel        *staticActivityTimeDes; //活动时间
-@property (nonatomic,strong) UILabel        *activityTimeLabel;     //活动时间
+@property (nonatomic,strong) UIImageView    *timeImageView;             //报名截止时间
+@property (nonatomic,strong) UILabel        *staticDeadLineDes;         //截止时间
+@property (nonatomic,strong) UILabel        *deadLineTimeLabel;         //截止
+@property (nonatomic,strong) UILabel        *staticActivityTimeDes;     //活动时间
+@property (nonatomic,strong) UILabel        *activityTimeLabel;         //活动时间
 @property (nonatomic,strong) UIImageView    *locationImageView;
 @property (nonatomic,strong) UILabel        *locationLabel;             //地点
 @property (nonatomic,strong) UIImageView    *categotyImageView;         //类别
 @property (nonatomic,strong) UILabel        *categoryLabel;             //类别
 @property (nonatomic,strong) UILabel        *staticActivityEndTimeDes;  //活动结束时间
 @property (nonatomic,strong) UILabel        *activityEndTimeLabel;      //活动结束时间
-
+#pragma mark 查看链接
+@property (nonatomic,strong) UIButton       *jumpLinkButton;            //查看活动链接
 @property (nonatomic,strong) ActivityDetailModel    *detailModel;
 
 @end
@@ -308,7 +309,9 @@
     [_categotyImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(_locationImageView.mas_bottom).offset(SCALE_NUM(15));
         make.centerX.equalTo(_locationImageView);
-        make.bottom.mas_equalTo(SCALE_NUM(-15));
+        make.height.mas_equalTo(SCALE_NUM(17));
+        make.width.mas_equalTo(SCALE_NUM(17));
+        //make.bottom.mas_equalTo(SCALE_NUM(-15));
     }];
     
     _categoryLabel = [[UILabel alloc]init];
@@ -321,6 +324,28 @@
         make.left.equalTo(_locationLabel);
         make.centerY.equalTo(_categotyImageView.mas_centerY);
     }];
+    
+    _jumpLinkButton = [UIButton buttonWithType:UIButtonTypeSystem];
+    [self.contentView addSubview:_jumpLinkButton];
+    [_jumpLinkButton setTitle:@"查看活动链接" forState:UIControlStateNormal];
+    [_jumpLinkButton addTarget:self action:@selector(jumpLinkAction) forControlEvents:UIControlEventTouchUpInside];
+    _jumpLinkButton.titleLabel.font = CONTENT_FONT(12);
+    [_jumpLinkButton setTitleColor:KCOLOR_BLUE_2da8e1 forState:UIControlStateNormal];
+    [_jumpLinkButton mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(_categotyImageView.mas_bottom).offset(SCALE_NUM(10));
+        make.left.equalTo(_categoryLabel);
+        make.height.mas_equalTo(SCALE_NUM(14));
+        make.bottom.mas_equalTo(SCALE_NUM(-10));
+    }];
+}
+
+
+/**
+ *  跳转链接,查看详情
+ */
+-(void)jumpLinkAction
+{
+    
 }
 
 - (void)gotoPersonDetail {
