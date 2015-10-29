@@ -47,7 +47,7 @@
     
     _houseLabel = [[UILabel alloc] init];
     _houseLabel.text = @"必胜客";
-    _houseLabel.font = CONTENT_FONT(12);
+    _houseLabel.font = CONTENT_FONT(SCALE_NUM(12));
     _houseLabel.textColor = KCOLOR_B3;
     _houseLabel.textAlignment = NSTextAlignmentLeft;
     [self addSubview:_houseLabel];
@@ -72,7 +72,7 @@
     
     _phoneLabel = [[UILabel alloc] init];
     _phoneLabel.text = @"022-666 6666";
-    _phoneLabel.font = CONTENT_FONT(12);
+    _phoneLabel.font = CONTENT_FONT(SCALE_NUM(12));
     _phoneLabel.textColor = KCOLOR_B3;
     _phoneLabel.textAlignment = NSTextAlignmentLeft;
     [self addSubview:_phoneLabel];
@@ -96,7 +96,7 @@
     
     _placeLabel = [[UILabel alloc] init];
     _placeLabel.text = @"和平区西湖道风荷园1-4-20";
-    _placeLabel.font = CONTENT_FONT(12);
+    _placeLabel.font = CONTENT_FONT(SCALE_NUM(12));
     _placeLabel.textColor = KCOLOR_B3;
     _placeLabel.textAlignment = NSTextAlignmentLeft;
     [self addSubview:_placeLabel];
@@ -104,6 +104,15 @@
         make.centerY.equalTo(_placeImageView);
         make.left.right.equalTo(_houseLabel);
         make.height.mas_equalTo(SCALE_NUM(12));
+    }];
+    
+    //分割线
+    UIView *bottomLine = [[UIView alloc] init];
+    bottomLine.backgroundColor = KCOLOR_B5;
+    [self addSubview:bottomLine];
+    [bottomLine mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.left.right.bottom.mas_equalTo(0);
+        make.height.mas_equalTo(SCALE_NUM(0.5));
     }];
     
 }

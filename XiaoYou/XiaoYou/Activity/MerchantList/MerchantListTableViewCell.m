@@ -53,7 +53,7 @@ NSString *const kMerchantListTableViewCell = @"MerchantListTableViewCellId";
     _nameLabel.textColor = [UIColor hexChangeFloat:@"333333"];
     [self.contentView addSubview:_nameLabel];
     [_nameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(_headImageView.mas_right).offset(SCALE_NUM(28));
+        make.left.equalTo(_headImageView.mas_right).offset(SCALE_NUM(15));
         make.top.equalTo(_headImageView);
         make.right.equalTo(self.contentView).offset(SCALE_NUM(-15));
         make.height.mas_equalTo(SCALE_NUM(15));

@@ -91,10 +91,18 @@ NSString *const kContactsInfoThirdTableViewCell = @"ContactsInfoThirdTableViewCe
         make.height.mas_equalTo(14);
     }];
     
-    UITapGestureRecognizer * tapGestureRecognizer1 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapCoolMethod)];
-    UITapGestureRecognizer * tapGestureRecognizer2 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapCoolMethod)];
-    [_coolImageView addGestureRecognizer:tapGestureRecognizer1];
-    [_coolLabel addGestureRecognizer:tapGestureRecognizer2];
+    UIButton * coolButton = [[UIButton alloc] init];
+    [backView addSubview:coolButton];
+    coolButton.backgroundColor = [UIColor clearColor];
+    [coolButton mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerX.centerY.equalTo(_coolImageView);
+        make.height.width.mas_equalTo(22);
+    }];
+    [coolButton addTarget:self action:@selector(tapCoolMethod) forControlEvents:UIControlEventTouchUpInside];
+//    UITapGestureRecognizer * tapGestureRecognizer1 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapCoolMethod)];
+//    UITapGestureRecognizer * tapGestureRecognizer2 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapCoolMethod)];
+//    [_coolImageView addGestureRecognizer:tapGestureRecognizer1];
+//    [_coolLabel addGestureRecognizer:tapGestureRecognizer2];
     
     [self.contentView addSubview:backView];
     [backView mas_makeConstraints:^(MASConstraintMaker *make) {

@@ -31,7 +31,7 @@ NSString *const kMerchantDetailTableViewCell = @"MerchantDetailTableViewCellId";
 {
     
     _contentLabel = [[UILabel alloc] init];
-    _contentLabel.backgroundColor = [UIColor orangeColor];
+    _contentLabel.backgroundColor = [UIColor clearColor];
     _contentLabel.font = CONTENT_FONT(SCALE_NUM(12));
     _contentLabel.numberOfLines = 0;
     _contentLabel.textAlignment = NSTextAlignmentCenter;
@@ -48,7 +48,7 @@ NSString *const kMerchantDetailTableViewCell = @"MerchantDetailTableViewCellId";
 {
     if (isHeader)
     {
-        _contentLabel.font = CONTENT_FONT(SCALE_NUM(14));
+        _contentLabel.font = CONTENT_FONT(SCALE_NUM(18));
         _contentLabel.textColor = KCOLOR_g1;
         _contentLabel.text = showStr;
     }

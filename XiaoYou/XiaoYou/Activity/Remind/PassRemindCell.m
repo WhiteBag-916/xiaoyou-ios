@@ -52,7 +52,7 @@
 
 -(BOOL)needLine
 {
-    return YES;
+    return NO;
 }
 
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
@@ -72,7 +72,7 @@
     [self.contentView addSubview:_wrapContentView];
     _wrapContentView.backgroundColor = [UIColor whiteColor];
     _wrapContentView.layer.borderWidth = 1;
-    _wrapContentView.layer.borderColor = KCOLORGRAY_B6.CGColor;
+    _wrapContentView.layer.borderColor = KCOLOR_B2.CGColor;
     [_wrapContentView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self);
         make.bottom.equalTo(self);
@@ -107,7 +107,7 @@
     
     //中间内容部分
     _topLineView = [[UIView alloc]init];
-    _topLineView.backgroundColor = KCOLORGRAY_B6;
+    _topLineView.backgroundColor = KCOLOR_B2;
     [self.wrapContentView addSubview:_topLineView];
     [_topLineView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.leading.mas_equalTo(0);

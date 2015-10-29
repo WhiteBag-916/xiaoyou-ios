@@ -163,8 +163,8 @@
     [_stuNameImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.mas_equalTo(SCALE_NUM(30));
         make.top.mas_equalTo(SCALE_NUM(25));
-        make.width.mas_equalTo(SCALE_NUM(18));
-        make.height.mas_equalTo(SCALE_NUM(24));
+        make.width.mas_equalTo(SCALE_NUM(9));
+        make.height.mas_equalTo(SCALE_NUM(12));
     }];
     
     _stuNameLabel = [[UILabel alloc] init];
@@ -188,8 +188,8 @@
     [_stuNumImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.equalTo(_stuNameImageView);
         make.top.equalTo(_stuNameImageView.mas_bottom).offset(SCALE_NUM(15));
-        make.width.mas_equalTo(SCALE_NUM(24));
-        make.height.mas_equalTo(SCALE_NUM(22));
+        make.width.mas_equalTo(SCALE_NUM(12));
+        make.height.mas_equalTo(SCALE_NUM(11));
     }];
     
     _stuNumLabel = [[UILabel alloc] init];
@@ -213,8 +213,8 @@
     [_toastCountImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.equalTo(_stuNameImageView);
         make.top.equalTo(_stuNumImageView.mas_bottom).offset(SCALE_NUM(15));
-        make.width.mas_equalTo(SCALE_NUM(26));
-        make.height.mas_equalTo(SCALE_NUM(24));
+        make.width.mas_equalTo(SCALE_NUM(13));
+        make.height.mas_equalTo(SCALE_NUM(12));
     }];
     
     _toastCountLabel = [[UILabel alloc] init];

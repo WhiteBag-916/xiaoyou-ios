@@ -12,6 +12,7 @@
 #import "JoinInTopView.h"
 #import "ContactManager.h"
 #import "XYContactsInfoDetailViewController.h"
+#import "YShareData.h"
 
 @interface JoinInTopView ()
 
@@ -48,6 +49,11 @@
     } else
     {
         _genderImageView.image = [UIImage imageNamed:@"funny_detail_girl"];
+    }
+    
+    NSString *myUid = [[YShareData defaultData] valueForKey:kShareData_UserID];
+    if (![author.uid isEqualToString:myUid]) {
+        _isSelfNameLabel.text = @"";
     }
 }
 
@@ -88,8 +94,8 @@
     
     _isSelfNameLabel = [[UILabel alloc]init];
     [self addSubview:_isSelfNameLabel];
-    _isSelfNameLabel.text = @"";
-    _nameLabel.font = CONTENT_FONT(12);
+    _isSelfNameLabel.text = @"自己";
+    _isSelfNameLabel.font = CONTENT_FONT(10);
     [_isSelfNameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(_genderImageView.mas_right).offset(SCALE_NUM(8));
         make.top.equalTo(_nameLabel);

@@ -32,6 +32,7 @@ NSString *const kActivityPublishedModelCheckStatus = @"checkStatus";
 NSString *const kActivityPublishedModelCreateTime = @"createTime";
 NSString *const kActivityPublishedModelActivityOrganizer = @"activityOrganizer";
 NSString *const kActivityPublishedModelAddress = @"address";
+NSString *const kActivityPublishedModelOriginalTextUrl = @"originalTextUrl";
 
 
 @interface ActivityPublishedModel ()
@@ -66,6 +67,7 @@ NSString *const kActivityPublishedModelAddress = @"address";
 @synthesize createTime = _createTime;
 @synthesize activityOrganizer = _activityOrganizer;
 @synthesize address = _address;
+@synthesize originalTextUrl = _originalTextUrl;
 
 
 + (instancetype)modelObjectWithDictionary:(NSDictionary *)dict
@@ -104,7 +106,7 @@ NSString *const kActivityPublishedModelAddress = @"address";
             self.createTime = [[self objectOrNilForKey:kActivityPublishedModelCreateTime fromDictionary:dict] doubleValue];
             self.activityOrganizer = [self objectOrNilForKey:kActivityPublishedModelActivityOrganizer fromDictionary:dict];
             self.address = [self objectOrNilForKey:kActivityPublishedModelAddress fromDictionary:dict];
-
+            self.originalTextUrl = [self objectOrNilForKey:kActivityPublishedModelOriginalTextUrl fromDictionary:dict];
     }
     
     return self;
@@ -138,7 +140,8 @@ NSString *const kActivityPublishedModelAddress = @"address";
     [mutableDict setValue:[NSNumber numberWithDouble:self.createTime] forKey:kActivityPublishedModelCreateTime];
     [mutableDict setValue:self.activityOrganizer forKey:kActivityPublishedModelActivityOrganizer];
     [mutableDict setValue:self.address forKey:kActivityPublishedModelAddress];
-
+    [mutableDict setValue:self.originalTextUrl forKey:kActivityPublishedModelOriginalTextUrl];
+    
     return [NSDictionary dictionaryWithDictionary:mutableDict];
 }
 
@@ -185,6 +188,7 @@ NSString *const kActivityPublishedModelAddress = @"address";
     self.createTime = [aDecoder decodeDoubleForKey:kActivityPublishedModelCreateTime];
     self.activityOrganizer = [aDecoder decodeObjectForKey:kActivityPublishedModelActivityOrganizer];
     self.address = [aDecoder decodeObjectForKey:kActivityPublishedModelAddress];
+    self.originalTextUrl = [aDecoder decodeObjectForKey:kActivityPublishedModelOriginalTextUrl];
     return self;
 }
 
@@ -215,6 +219,7 @@ NSString *const kActivityPublishedModelAddress = @"address";
     [aCoder encodeDouble:_createTime forKey:kActivityPublishedModelCreateTime];
     [aCoder encodeObject:_activityOrganizer forKey:kActivityPublishedModelActivityOrganizer];
     [aCoder encodeObject:_address forKey:kActivityPublishedModelAddress];
+    [aCoder encodeObject:_originalTextUrl forKey:kActivityPublishedModelOriginalTextUrl];
 }
 
 - (id)copyWithZone:(NSZone *)zone
@@ -247,6 +252,7 @@ NSString *const kActivityPublishedModelAddress = @"address";
         copy.createTime = self.createTime;
         copy.activityOrganizer = [self.activityOrganizer copyWithZone:zone];
         copy.address = [self.address copyWithZone:zone];
+        copy.originalTextUrl = [self.originalTextUrl copyWithZone:zone];
     }
     
     return copy;

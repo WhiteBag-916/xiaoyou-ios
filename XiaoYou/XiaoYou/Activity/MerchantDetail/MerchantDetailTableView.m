@@ -38,9 +38,9 @@
 
 -(void)setUpHeaderView
 {
-    UIView * backView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCALE_NUM(282))];
+    UIView * backView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCALE_NUM(300))];
  
-    _topView = [[TopView alloc] init];
+    _topView = [[TopView alloc] initWithImageCount:8];
     _topView.backgroundColor = [UIColor clearColor];
     [backView addSubview:_topView];
     [_topView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -79,7 +79,7 @@
     }
     else
     {
-        [cell setCellInfo:@"商家优惠优惠详情" isHeader:NO];
+        [cell setCellInfo:@"商家优惠优惠详情商家优惠优惠详情商家优惠优惠详情商家优惠优惠详情商家优惠优惠详情商家优惠优惠详情" isHeader:NO];
     }
     
     return cell;

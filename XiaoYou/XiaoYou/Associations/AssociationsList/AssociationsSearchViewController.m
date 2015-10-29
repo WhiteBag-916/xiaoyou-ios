@@ -143,7 +143,8 @@ const NSInteger kSearchTimerDelay = 2.f;
 - (void)searchActivity
 {
     NSString *searchKey = [_searchBar.text lowercaseString];
-    [_searchActivityListView sendRequestBySearchDataByKey:searchKey];
+    if (![searchKey isEmpty])
+        [_searchActivityListView sendRequestBySearchDataByKey:searchKey];
 }
 
 - (void)toSearch {
