@@ -20,7 +20,7 @@
 #define KPAGENUM 10
 
 #define REUSEID_AVAILABEL_CELL @"AvailableCell"
-
+#define REUSEID_SCHEDULE_CELL @"ScheduleCardCell"
 @interface AvailableListView ()<UITableViewDataSource,UITableViewDelegate>
 
 @property (nonatomic,assign) NSInteger currentIndex;
@@ -35,6 +35,7 @@
         self.delegate = self;
         self.dataSource = self;
         [self registerClass:[AvailableCell class] forCellReuseIdentifier:REUSEID_AVAILABEL_CELL];
+        [self registerClass:[ScheduleCardCell class] forCellReuseIdentifier:REUSEID_SCHEDULE_CELL];
         self.separatorStyle = UITableViewCellSelectionStyleNone;
     }
     return self;
@@ -45,6 +46,7 @@
         self.delegate = self;
         self.dataSource = self;
         [self registerClass:[AvailableCell class] forCellReuseIdentifier:REUSEID_AVAILABEL_CELL];
+        [self registerClass:[ScheduleCardCell class] forCellReuseIdentifier:REUSEID_SCHEDULE_CELL];
         self.separatorStyle = UITableViewCellSelectionStyleNone;
         self.currentIndex = 0;
     }
@@ -126,8 +128,14 @@
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     CGFloat height;
-    if (indexPath.row == 0)
-        return SCALE_NUM(140);
+    if (indexPath.row == 0) {
+        height = [tableView fd_heightForCellWithIdentifier:REUSEID_SCHEDULE_CELL cacheByIndexPath:indexPath configuration:^(ScheduleCardCell *cell) {
+            [cell setData:@"aaa"];
+        }];
+        
+        return height;
+        //return SCALE_NUM(140);
+    }
     else if (indexPath.row == 1)
         return SCALE_NUM(85);
     else {
@@ -136,13 +144,13 @@
         }];
         return height;
     }
-    return 1100;
+    return height;
 }
 
 -(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.row == 0) {
-        ScheduleCardCell *cell = [ScheduleCardCell cellWithTableView:tableView];
+        ScheduleCardCell *cell = [tableView dequeueReusableCellWithIdentifier:REUSEID_SCHEDULE_CELL];
         return cell;
     } else if (indexPath.row == 1) {
         StudyRoomCell *cell = [StudyRoomCell cellWithTableView:tableView];

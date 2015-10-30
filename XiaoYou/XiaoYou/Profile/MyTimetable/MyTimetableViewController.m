@@ -108,6 +108,8 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
+    self.navigationController.navigationBarHidden = true;
+    
     [_myTimetableHeadView resetSelectDay:4];
 }
 

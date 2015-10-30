@@ -21,6 +21,8 @@
 }
 
 - (void)layoutSubviews {
+    [super layoutSubviews];
+    
     if ([self needLine]) {
         UIView *oldLine = [self.contentView viewWithTag:KLINE_TAG];
         if (nil != oldLine) {

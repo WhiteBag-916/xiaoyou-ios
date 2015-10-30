@@ -98,9 +98,9 @@
     _tagsWrapView.backgroundColor = RGBACOLOR(246, 247, 249, 1);
     [_tagsWrapView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(_joinTopView.mas_bottom).offset(SCALE_NUM(15));
-        make.leading.mas_equalTo(71);
-        make.trailing.mas_equalTo(-20);
-        make.height.mas_equalTo(100);
+        make.leading.mas_equalTo(SCALE_NUM(71));
+        make.trailing.mas_equalTo(SCALE_NUM(-20));
+        make.bottom.mas_equalTo(SCALE_NUM(-15));
     }];
     
     
@@ -124,18 +124,47 @@
     profile.propetiesCommon = joinModel.propetiesCommon;
     profile.tagModels = joinModel.tagsCommon;
     [_tagsView setData:profile];
-    
-    CGFloat height = [self calculatorTagsCommHeightByProfileInfo:profile];
-    
-    [_tagsWrapView mas_updateConstraints:^(MASConstraintMaker *make) {
-        make.height.mas_equalTo((height));
-        
-    }];
 }
 
 -(CGFloat)calculatorTagsCommHeightByProfileInfo:(ProfileInfo*)model
 {
     if (model.tagModels.count > 0)
+    {
+        CGFloat height;
+        if (model.propetiesCommon.count > 0)
+        {
+            height = 65;
+        }
+        else
+        {
+            height = 40;
+        }
+        for (int i = 0; i < model.tagModels.count; i++)
+        {
+            CGFloat width;
+            Tags * tag = model.tagModels[i];
+            NSDictionary *attributes = @{NSFontAttributeName:[UIFont systemFontOfSize:12]};
+            CGSize textSize = [tag.name boundingRectWithSize:CGSizeMake(150, 14) options:NSStringDrawingTruncatesLastVisibleLine attributes:attributes context:nil].size;
+            width += 10;
+            width += textSize.width + 15;
+            if (width > SCREEN_WIDTH - 117)
+            {
+                height += 20;
+                width = 10 + textSize.width;
+            }
+        }
+        return height;
+    }
+    else
+    {
+        if (model.propetiesCommon.count <= 0)
+        {
+            return 0;
+        }
+        return 30;
+    }
+    
+    /*if (model.tagModels.count > 0)
     {
         CGFloat height = 55;
         for (int i = 0; i < model.tagModels.count; i++)
@@ -161,7 +190,7 @@
         }
         else
             return 40;
-    }
+    }*/
 }
 
 @end

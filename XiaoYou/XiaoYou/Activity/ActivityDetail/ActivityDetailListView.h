@@ -17,4 +17,5 @@
 
 -(void)sendRequest;
 
+-(void)loadNewData;
 @end

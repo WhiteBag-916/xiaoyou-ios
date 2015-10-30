@@ -79,7 +79,6 @@
         make.height.mas_equalTo(SCALE_NUM(12));
         make.top.equalTo(_titleLabel.mas_bottom).offset(SCALE_NUM(20));
         make.left.equalTo(_titleLabel);
-        make.bottom.mas_equalTo(SCALE_NUM(-15));
     }];
 }
 

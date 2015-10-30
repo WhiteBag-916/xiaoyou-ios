@@ -11,6 +11,7 @@
 NSString *const kMyTimetableCurriculumCollectionViewCell = @"MyTimetableCurriculumCollectionViewCellId";
 
 #define K_LABEL_T    SCALE_NUM(5)   //课程上
+#define K_WEEK_T    SCALE_NUM(2)   //课程上
 
 @interface MyTimetableCurriculumCollectionViewCell ()
 
@@ -68,7 +69,7 @@ NSString *const kMyTimetableCurriculumCollectionViewCell = @"MyTimetableCurricul
         [self.contentView addSubview:_weekLabel];
         [_weekLabel mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.right.equalTo(_classroomLabel);
-            make.top.equalTo(_classroomLabel.mas_bottom).offset(K_LABEL_T);
+            make.top.equalTo(_classroomLabel.mas_bottom).offset(K_WEEK_T);
         }];
     }
     
