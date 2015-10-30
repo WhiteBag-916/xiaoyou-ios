@@ -8,9 +8,11 @@
 
 #import "YView.h"
 
+@class CourseTimeListModel;
+
 @interface MyTimetableView : YView
 
 //刷新课程时间
-- (void)refreshCourseTimeList;
+- (void)refreshCourseTimeList:(CourseTimeListModel *)courseTimeListModel;
 
 @end

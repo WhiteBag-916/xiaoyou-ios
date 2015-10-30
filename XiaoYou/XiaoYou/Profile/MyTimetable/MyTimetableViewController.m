@@ -10,6 +10,8 @@
 #import "MyTimetableHeadView.h"
 #import "MyTimetableView.h"
 #import "ChooseWeekView.h"
+#import "CourseTimeListModel.h"
+#import "CurriculumManager.h"
 
 @interface MyTimetableViewController ()
 
@@ -18,6 +20,8 @@
 @property (nonatomic, strong) UILabel *weekLabel;
 @property (nonatomic, strong) MyTimetableHeadView *myTimetableHeadView;
 @property (nonatomic, strong) MyTimetableView *myTimetableView;
+
+@property (nonatomic, strong) CourseTimeListModel *courseTimeListModel;//课时
 
 @property (nonatomic, assign) NSInteger selectWeekNum;  //已选择周
 
@@ -53,6 +57,8 @@
         make.left.bottom.right.equalTo(self.view);
         make.top.equalTo(_myTimetableHeadView.mas_bottom);
     }];
+    
+    [self initData];
 }
 
 - (void)initNavigationTitle {
@@ -103,6 +109,18 @@
         make.left.equalTo(_weekLabel.mas_right).offset(5);
         make.right.equalTo(_buttonView);
     }];
+}
+
+- (void)initData {
+    
+    
+    //获取当前第几周
+    
+    //获取当前周几
+    
+    //获取课时
+    self.courseTimeListModel = [[CurriculumManager sharedInstance] getCourseTime];
+    [_myTimetableView refreshCourseTimeList:self.courseTimeListModel];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
