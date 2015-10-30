@@ -182,7 +182,7 @@
         self.viewIndex = 1;
     } else {
         //self.navigationItem.rightBarButtonItem = nil;
-        [self showCustomNavigationFastButton];
+        //[self showCustomNavigationFastButton];
         self.viewIndex = 2;
         [_profilePersonListTableView loadDataWithQueryCode:@""];
     }

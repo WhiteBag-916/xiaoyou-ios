@@ -26,7 +26,7 @@
 @property(nonatomic,retain) UIImageView *headImageView;     //中间内容
 @property(nonatomic,strong) UILabel     *nameLabel;         //姓名
 @property(nonatomic,strong) ConnectTag  *connectTagView;    //关系词(班社乡)
-@property(nonatomic,strong) UILabel     *applyContentLable;
+@property(nonatomic,strong) UILabel     *applyContentLable; //
 //底部View
 @property(nonatomic,strong) UIView      *bottomLineView;    //底部线
 

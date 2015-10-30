@@ -391,6 +391,10 @@ DEF_SINGLETON(MessageManager);
                 NSString *activityID = ext[@"aaaa"];
                 break;
             }
+            case SCHEDULE_REMIND: //日程提醒
+            {
+                YLogD(@"this is =%@",message);
+            }
             case ADD_COMMENT:
             case ADD_PRAOSE:
             case REPLY_COMMENT:

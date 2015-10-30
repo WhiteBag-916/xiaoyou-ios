@@ -124,10 +124,10 @@
     _timeLabel3.textColor = KCOLOR_B5;
     _timeLabel3.font = CONTENT_FONT(12);
     [_timeLabel3 mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.height.mas_equalTo(SCALE_NUM(12));
-        make.top.equalTo(_timeLabel2.mas_bottom).offset(SCALE_NUM(15));
+        //make.height.mas_equalTo(SCALE_NUM(12));
+        make.top.equalTo(_timeLabel2.mas_bottom).offset(SCALE_NUM(15)).priorityLow();
         make.left.equalTo(_timeLabel2);
-        make.bottom.mas_equalTo(SCALE_NUM(-15));
+        make.bottom.mas_equalTo(SCALE_NUM(-15)).priorityHigh();
     }];
     
     _projectLabel3 = [[UILabel alloc]init];
@@ -136,11 +136,22 @@
     _projectLabel3.font = CONTENT_FONT(12);
     _projectLabel3.textColor = KCOLOR_B5;
     [_projectLabel3 mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.height.mas_equalTo(SCALE_NUM(12));
+        //make.height.mas_equalTo(SCALE_NUM(12));
         make.leading.mas_equalTo(SCALE_NUM(100));
         make.centerY.equalTo(_timeLabel3);
     }];
+}
+
+-(void)setData:(id)aa
+{
+    _timeLabel1.text = @"fdsfds";
+    _projectLabel1.text = @"fdsfds";
     
+    _timeLabel2.text = @"fdsfds";
+    _projectLabel2.text = @"fdsfds";
+    
+    _timeLabel3.text = @"fsdfdsfsd";
+    _projectLabel3.text = @"fdsfds";
 }
 
 @end

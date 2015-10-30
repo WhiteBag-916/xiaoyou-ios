@@ -77,6 +77,7 @@
 - (void)loadNewData
 {
     _currentIndex = 0;
+    [_activityDetailArray removeAllObjects];
     [self sendRequest];
 }
 
@@ -121,36 +122,6 @@
 }
 
 
-//- (void)sendRequestAAA {
-//    [[ActivityManager sharedInstance] getCurrentUseAvailableListLimitStart:_currentIndex limitEnd:_currentIndex+KPAGENUM block:^(YActionMessage *message) {
-//        if (message.isSuccess) {
-//            if ([self isHeaderRefresh]) {
-//                [self.availableListArray removeAllObjects];
-//            }
-//            
-//            NSLog(@"this is message = %@",message);
-//            
-//            [self.availableListArray addObjectsFromArray:message.object];
-//            
-//            [self hiddenFooter:NO];
-//            if ([message.object count] < KPAGENUM) {
-//                [self showNoticeNoMoreData];
-//            }
-//            [self reloadData];
-//            _currentIndex += KPAGENUM;
-//        } else {
-//            [YUtils showTitle:message.desc];
-//        }
-//        
-//        if ([self isHeaderRefresh]) {
-//            [self stopLoadNewData];
-//        } else
-//        {
-//            [self stopLoadMoreData];
-//        }
-//    }];
-//}
-
 #pragma mark -协议方法
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
@@ -182,9 +153,9 @@
         info.tagModels = author.tagsCommon;
         info.propetiesCommon = author.propetiesCommon;
         height = [self calculatorTagsCommHeightByProfileInfo:info];
-        height += (109) + (15);
+        height += (109) + (30);
         if (indexPath.row != 1) {
-            height -= 49;
+            height -= 58;
         }
         
         
@@ -227,30 +198,49 @@
 {
     if (model.tagModels.count > 0)
     {
-        CGFloat height = 65;
+        CGFloat height;
+        BOOL isADD = NO;
+        if (model.propetiesCommon.count > 0)
+        {
+            height = 65;
+        }
+        else
+        {
+            isADD = YES;
+            height = 65;
+        }
         for (int i = 0; i < model.tagModels.count; i++)
         {
             CGFloat width;
             Tags * tag = model.tagModels[i];
             NSDictionary *attributes = @{NSFontAttributeName:[UIFont systemFontOfSize:12]};
             CGSize textSize = [tag.name boundingRectWithSize:CGSizeMake(150, 14) options:NSStringDrawingTruncatesLastVisibleLine attributes:attributes context:nil].size;
-            width += (10);
+            width += 10;
             width += textSize.width + 15;
             if (width > SCREEN_WIDTH - 117)
             {
-                height += (20);
-                width = (10) + textSize.width;
+                height += 20;
+                width = 10 + textSize.width;
+            }
+        }
+        if (isADD) {
+            height -= 20;
+            if ([[UIDevice getCurrentDeviceModel] containsString:@"Simulator"] && IS_IPHONE_4_AND_OLDER) {
+                height -= 15;
+            }
+            if ([[UIDevice getCurrentDeviceModel] containsString:@"iPhone 4"]) {
+                height -= 15;
             }
         }
         return height;
     }
     else
     {
-        if (model.propetiesCommon.count <= 0) {
+        if (model.propetiesCommon.count <= 0)
+        {
             return 0;
         }
-        else
-            return 40;
+        return 40;
     }
 }
 

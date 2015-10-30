@@ -4208,6 +4208,7 @@
 				200E39731B4E818B000B587B /* Frameworks */,
 				200E39741B4E818B000B587B /* Resources */,
 				8D128BB15157CCD9381C2821 /* Copy Pods Resources */,
+				94295EBFFBAB6438C866EA68 /* Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -4771,6 +4772,21 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/../Pods/Target Support Files/Pods-XiaoYou/Pods-XiaoYou-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		94295EBFFBAB6438C866EA68 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/../Pods/Target Support Files/Pods-XiaoYou/Pods-XiaoYou-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		995D5AD7B6B8A02A207C13AE /* Check Pods Manifest.lock */ = {
