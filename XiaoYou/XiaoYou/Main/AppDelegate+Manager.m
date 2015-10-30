@@ -11,6 +11,7 @@
 #import "FeedManager.h"
 #import "ContactManager.h"
 #import "MessageManager.h"
+#import "CurriculumManager.h"
 #import "YCommonShare.h"
 #import "YDirectory+Data.h"
 
@@ -28,6 +29,7 @@
     [FeedManager sharedInstance];
     [MessageManager sharedInstance];
     [ContactManager sharedInstance];
+    [CurriculumManager sharedInstance];
     
     //注册umeng
     [[YCommonShare sharedInstance] registUmengSDK];
