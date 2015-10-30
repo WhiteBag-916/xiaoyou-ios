@@ -128,8 +128,15 @@
 
 -(void)sendRequestBySearchDataByKey:(NSString *)key
 {
+    _currentIndex = 0;
     _searchKey = key;
     [[ActivityManager sharedInstance] getCurrentUseAvailableListLimitStart:_currentIndex limitEnd:_currentIndex+KPAGENUM search:key block:^(YActionMessage *message) {
+        
+        int i = 0;
+        ++i;
+        
+        YLogD(@"this is %@",message);
+        
         if (message.isSuccess) {
             if ([self isFooterRefresh]) {
                 [self.dataSouceArr addObjectsFromArray:message.object];

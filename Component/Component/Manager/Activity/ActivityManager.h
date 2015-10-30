@@ -144,4 +144,49 @@ AS_SINGLETON(ActivityManager);
  *********************************************************************/
 - (void)freeBuildingDetail:(NSString *)buildName block:(ActionCompleteBlock)block;
 
+/*********************************************************************
+ 函数名称 : userSchedulingConditions
+ 函数描述 : 日程提醒条件列表查询
+ 参数 : N/A
+ 返回值 : UserSchedulingListConditionsModel
+ 作者 : XiongChen
+ *********************************************************************/
+- (void)userSchedulingConditions:(ActionCompleteBlock)block;
+
+/*********************************************************************
+ 函数名称 : userSchedulingEdit
+ 函数描述 : 新增或修改日程
+ 参数 : dic：请求参数见 http://wiki.xiaoyou.com/wiki/index.php/%E6%97%A5%E7%A8%8B%E6%8E%A5%E5%8F%A3
+ 返回值 : N/A
+ 作者 : XiongChen
+ *********************************************************************/
+- (void)userSchedulingEdit:(NSDictionary *)dic block:(ActionCompleteBlock)block;
+
+/*********************************************************************
+ 函数名称 : userSchedulingList
+ 函数描述 : 查询日程列表
+ 参数 : startDate：起始时间  endDate:结束时间
+ 返回值 : UserSchedulingInfo
+ 作者 : XiongChen
+ *********************************************************************/
+- (void)userSchedulingList:(NSInteger)startDate endDate:(NSInteger)endDate block:(ActionCompleteBlock)block;
+
+/*********************************************************************
+ 函数名称 : userSchedulingDelete
+ 函数描述 : 删除日程接口
+ 参数 : uid:ID
+ 返回值 : N/A
+ 作者 : XiongChen
+ *********************************************************************/
+- (void)userSchedulingDelete:(NSString *)uid block:(ActionCompleteBlock)block;
+
+/*********************************************************************
+ 函数名称 : userSchedulingDetail
+ 函数描述 : 根据日程id查询
+ 参数 : uid:ID
+ 返回值 : N/A
+ 作者 : XiongChen
+ *********************************************************************/
+- (void)userSchedulingDetail:(NSString *)uid block:(ActionCompleteBlock)block;
+
 @end

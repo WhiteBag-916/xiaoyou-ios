@@ -31,7 +31,7 @@
     self.view.backgroundColor = [UIColor whiteColor];
     [self showCustomNavigationBackButton];
     
-    [self showCustomNavigationMoreButton];
+    [self IsShowCustomNavigationMoreButton:YES];
     
     [self detailListView];
     [self setTitle:@"活动详情"];
@@ -120,18 +120,26 @@
             if ([model.enrollStatus isEqualToString:@"not_enroll"]) {
                 [_joinInBtn setTitle:@"我要加入" forState:UIControlStateNormal];
                 _joinInBtn.enabled = YES;
+                _joinInBtn.backgroundColor = KCOLOR_g1;
+                [self IsShowCustomNavigationMoreButton:NO];
             }
             else if ([model.enrollStatus isEqualToString:@"has_enrolled"]) {
-                [_joinInBtn setTitle:@"已经报名" forState:UIControlStateNormal];
+                [_joinInBtn setTitle:@"我已参加" forState:UIControlStateNormal];
+                _joinInBtn.backgroundColor = KCOLOR_g2;
                 _joinInBtn.enabled = NO;
+                [self IsShowCustomNavigationMoreButton:YES];
             }
             else if ([model.enrollStatus isEqualToString:@"enroll_expired"]) {
                 [_joinInBtn setTitle:@"报名结束" forState:UIControlStateNormal];
                 _joinInBtn.enabled = NO;
+                _joinInBtn.backgroundColor = KCOLOR_g2;
+                [self IsShowCustomNavigationMoreButton:NO];
             }
             else if ([model.enrollStatus isEqualToString:@"enroll_auditing"]) {
                 [_joinInBtn setTitle:@"正在审核" forState:UIControlStateNormal];
                 _joinInBtn.enabled = NO;
+                _joinInBtn.backgroundColor = KCOLOR_g2;
+                [self IsShowCustomNavigationMoreButton:YES];
             }
         }
     }];

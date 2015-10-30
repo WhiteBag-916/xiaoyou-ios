@@ -8,6 +8,6 @@
 
 #import "YHTTPRequestAction.h"
 
-@interface FreeBuildingListAction : YHTTPRequestAction
+@interface FreeBuildingListAction : YHTTPRequestAction<YAction>
 
 @end

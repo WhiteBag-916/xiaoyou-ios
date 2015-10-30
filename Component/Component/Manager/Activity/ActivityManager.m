@@ -19,6 +19,9 @@
 #import "CancleActivityAction.h"
 #import "FreeBuildingListAction.h"
 #import "FreeBuildingDetailAction.h"
+#import "UserSchedulingConditionsAction.h"
+#import "UserSchedulingListAction.h"
+#import "UserSchedulingDetailAction.h"
 
 #define KActivityManagerSyncQueue @"kActivityManagerSyncQueue"
 
@@ -211,6 +214,66 @@ DEF_SINGLETON(ActivityManager);
     action.buildName = buildName;
     
     [YAction startAction:action completionBlock:^(YActionMessage *message) {
+        block(message);
+    }];
+}
+
+//日程提醒条件列表查询
+- (void)userSchedulingConditions:(ActionCompleteBlock)block {
+    UserSchedulingConditionsAction *action = [[UserSchedulingConditionsAction alloc]init];
+    
+    [YAction startAction:action completionBlock:^(YActionMessage *message) {
+        block(message);
+    }];
+}
+
+//新增或修改日程
+- (void)userSchedulingEdit:(NSDictionary *)dic block:(ActionCompleteBlock)block {
+    CommonAction *action = [[CommonAction alloc] init];
+    action.parameter = [YUtils getParameter:dic needUserToken:YES needContent:YES];
+    action.url = [YUtils getUrl:api_userScheduling_edit];
+    
+    [YAction startAction:action completionBlock:^(YActionMessage* message) {
+        
+        //主线程处理界面
+        block(message);
+    }];
+}
+
+//查询日程列表
+- (void)userSchedulingList:(NSInteger)startDate endDate:(NSInteger)endDate block:(ActionCompleteBlock)block {
+    UserSchedulingListAction *action = [[UserSchedulingListAction alloc] init];
+    action.startDate = startDate;
+    action.endDate = endDate;
+    
+    [YAction startAction:action completionBlock:^(YActionMessage* message) {
+        
+        //主线程处理界面
+        block(message);
+    }];
+}
+
+//删除日程接口
+- (void)userSchedulingDelete:(NSString *)uid block:(ActionCompleteBlock)block {
+    CommonAction *action = [[CommonAction alloc] init];
+    action.parameter = [YUtils getParameter:@{@"id":uid} needUserToken:YES needContent:YES];
+    action.url = [YUtils getUrl:api_userScheduling_delete];
+    
+    [YAction startAction:action completionBlock:^(YActionMessage* message) {
+        
+        //主线程处理界面
+        block(message);
+    }];
+}
+
+//根据日程id查询
+- (void)userSchedulingDetail:(NSString *)uid block:(ActionCompleteBlock)block {
+    UserSchedulingDetailAction *action = [[UserSchedulingDetailAction alloc] init];
+    action.uid = uid;
+    
+    [YAction startAction:action completionBlock:^(YActionMessage* message) {
+        
+        //主线程处理界面
         block(message);
     }];
 }

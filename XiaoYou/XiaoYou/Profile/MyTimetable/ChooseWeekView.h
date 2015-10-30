@@ -12,6 +12,6 @@ typedef void(^ChooseWeekBlock)(NSInteger checkNum);
 
 @interface ChooseWeekView : YCommonDialogView
 
-- (id)initWithBlock:(NSInteger)selectNum block:(ChooseWeekBlock)block;
+- (id)initWithBlock:(NSInteger)selectNum weekNum:(NSInteger)weekNum block:(ChooseWeekBlock)block;
 
 @end
