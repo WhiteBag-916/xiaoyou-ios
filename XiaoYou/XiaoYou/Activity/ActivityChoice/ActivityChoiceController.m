@@ -43,6 +43,7 @@
     if (_myType == CLASSROOM_CHOICE_TYPE)
     {
         _activityChoiceTableView.dataSourceArr = _dataSourceArr;
+        _activityChoiceTableView.studyRoomDefautStr = _studyRoomDefautStr;
     }
     [self.view addSubview:_activityChoiceTableView];
     [_activityChoiceTableView mas_makeConstraints:^(MASConstraintMaker *make) {
