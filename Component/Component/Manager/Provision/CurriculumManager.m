@@ -8,6 +8,7 @@
 
 #import "CurriculumManager.h"
 #import "CourseTimeListAction.h"
+#import "FindMyCourseAction.h"
 
 #define KCurriculumManagerSyncQueue @"kCurriculumManagerSyncQueue"
 
@@ -49,6 +50,16 @@ DEF_SINGLETON(CurriculumManager);
 //获取课程学时对应时间
 - (void)courseTimeList:(ActionCompleteBlock)block {
     CourseTimeListAction* action = [[CourseTimeListAction alloc] init];
+    
+    [YAction startAction:action completionBlock:^(YActionMessage* message) {
+        //主线程处理界面
+        block(message);
+    }];
+}
+
+//获取我的课程
+- (void)findMyCourse:(ActionCompleteBlock)block {
+    FindMyCourseAction* action = [[FindMyCourseAction alloc] init];
     
     [YAction startAction:action completionBlock:^(YActionMessage* message) {
         //主线程处理界面

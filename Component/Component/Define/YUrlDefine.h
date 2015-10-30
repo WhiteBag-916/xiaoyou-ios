@@ -204,6 +204,8 @@
  **********************************************************/
 //获取课程学时对应时间
 #define api_courseTime_list   @"/courseTime/list"
+//获取我的课程
+#define api_course_findMyCourse   @"/course/findMyCourse"
 
 #endif
 

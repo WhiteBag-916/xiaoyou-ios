@@ -21,4 +21,13 @@ AS_SINGLETON(CurriculumManager);
  *********************************************************************/
 - (void)courseTimeList:(ActionCompleteBlock)block;
 
+/*********************************************************************
+ 函数名称 : findMyCourse
+ 函数描述 : 获取我的课程
+ 参数 : N/A
+ 返回值 : FindMyCourseModel
+ 作者 : XiongChen
+ *********************************************************************/
+- (void)findMyCourse:(ActionCompleteBlock)block;
+
 @end
