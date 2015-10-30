@@ -21,14 +21,13 @@
 @property (nonatomic,strong) UILabel        *descriptionLabel;//描述
 //中间图片部分
 @property (nonatomic,strong) FeedImageGroup *imageGroupView;   //图片
-//底部部分View
-
+//底部部分View描述
 @property (nonatomic,strong) UILabel        *signUpTimeDes;     //报名截止时间
 @property (nonatomic,strong) UILabel        *activityTimeDes;   //活动开始时间
 @property (nonatomic,strong) UILabel        *activityEndTimeDes;//活动结束时间
 @property (nonatomic,strong) UILabel        *activityLocationDes;//活动地点
 @property (nonatomic,strong) UILabel        *oranizerDes;       //组织者
-
+//底部部分view数据
 @property (nonatomic,strong) UILabel        *signUpTimeLabel;       //报名截止时间
 @property (nonatomic,strong) UILabel        *activityStartTimeLabel;//活动开始时间
 @property (nonatomic,strong) UILabel        *activityEndTimeLabel;  //活动结束时间
@@ -227,9 +226,10 @@
     _oranizerDes.textColor = KCOLOR_B5;
     _oranizerDes.text = @"组织者：";
     [_oranizerDes mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.height.mas_equalTo(SCALE_NUM(12));
+        //make.height.mas_equalTo(SCALE_NUM(12));
         make.top.equalTo(_activityLocationDes.mas_bottom).offset(SCALE_NUM(15));
         make.left.equalTo(_activityLocationDes);
+        make.bottom.mas_equalTo(SCALE_NUM(-15));
     }];
     
     _organizerLabel = [[UILabel alloc]init];
@@ -239,10 +239,9 @@
     _organizerLabel.textColor = KCOLOR_B5;
     _organizerLabel.text = @"话剧社";
     [_organizerLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.height.mas_equalTo(SCALE_NUM(12));
+        //make.height.mas_equalTo(SCALE_NUM(12));
         make.centerY.equalTo(_oranizerDes);
         make.left.equalTo(_activityStartTimeLabel);
-        make.bottom.mas_equalTo(SCALE_NUM(-15));
     }];
 }
 

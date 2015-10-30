@@ -16,6 +16,7 @@
 #import "Author.h"
 #import "UIDevice+DeviceType.h"
 #import "YUtils.h"
+#import "NSString+MyContainString.h"
 
 #define REUSEID_DETAILCELL  @"ActivityDetailCell"
 #define REUSEID_JOINCELL    @"ActivityJoinInCell"
@@ -159,10 +160,10 @@
         }
         
         
-        if ([[UIDevice getCurrentDeviceModel] containsString:@"Simulator"] && IS_IPHONE_6) {
+        if ([[UIDevice getCurrentDeviceModel] myContainsString:@"Simulator"] && IS_IPHONE_6) {
             height += 20;
         }
-        if ([[UIDevice getCurrentDeviceModel] containsString:@"iPhone 6"]) {
+        if ([[UIDevice getCurrentDeviceModel] myContainsString:@"iPhone 6"]) {
             height += 20;
         }
     }
@@ -223,12 +224,13 @@
                 width = 10 + textSize.width;
             }
         }
+#pragma mark 暂时,以后修改为自动布局
         if (isADD) {
             height -= 20;
-            if ([[UIDevice getCurrentDeviceModel] containsString:@"Simulator"] && IS_IPHONE_4_AND_OLDER) {
+            if ([[UIDevice getCurrentDeviceModel] myContainsString:@"Simulator"] && IS_IPHONE_4_AND_OLDER) {
                 height -= 15;
             }
-            if ([[UIDevice getCurrentDeviceModel] containsString:@"iPhone 4"]) {
+            if ([[UIDevice getCurrentDeviceModel] myContainsString:@"iPhone 4"]) {
                 height -= 15;
             }
         }
