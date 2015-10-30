@@ -123,7 +123,6 @@
                 _joinInBtn.backgroundColor = KCOLOR_g1;
                 [self IsShowCustomNavigationMoreButton:NO];
             }
-            
             else if ([model.enrollStatus isEqualToString:@"has_enrolled"]) {
                 [_joinInBtn setTitle:@"我已参加" forState:UIControlStateNormal];
                 _joinInBtn.backgroundColor = KCOLOR_g2;
