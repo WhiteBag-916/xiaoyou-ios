@@ -38,9 +38,8 @@
 
 -(void)setUpUI
 {
-    _activityChoiceTableView = [[ActivityChoiceTableView alloc] init];
+    _activityChoiceTableView = [[ActivityChoiceTableView alloc] initWithType:_myType];
     _activityChoiceTableView.myController = self;
-    _activityChoiceTableView.myType = _myType;
     if (_myType == CLASSROOM_CHOICE_TYPE)
     {
         _activityChoiceTableView.dataSourceArr = _dataSourceArr;

@@ -13,6 +13,7 @@
 
 @property (nonatomic,strong)ActivityChoiceController * myController;
 @property (nonatomic,strong)NSMutableArray * dataSourceArr;
-@property (nonatomic,assign)NSInteger myType;
+
+-(instancetype)initWithType:(CHOICE_TYPE) type;
 
 @end

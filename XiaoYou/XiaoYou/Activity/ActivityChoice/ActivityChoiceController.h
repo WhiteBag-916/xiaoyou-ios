@@ -11,8 +11,8 @@
 #import "AvailableSimpleViewController.h"
 
 typedef enum : NSUInteger {
-    ACTIVITY_CHOICE_TYPE,
-    CLASSROOM_CHOICE_TYPE,
+    ACTIVITY_CHOICE_TYPE = 0,
+    CLASSROOM_CHOICE_TYPE = 1,
 } CHOICE_TYPE;
 
 @interface ActivityChoiceController : YViewController
