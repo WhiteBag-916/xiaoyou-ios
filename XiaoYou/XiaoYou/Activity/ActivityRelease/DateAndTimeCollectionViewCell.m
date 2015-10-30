@@ -253,6 +253,7 @@ NSString *const kDateAndTimeCollectionViewCell = @"DateAndTimeCollectionViewCell
     _datePicker.minimumDate = [NSDate date];
     _datePicker.maximumDate = nil;
     
+ 
 //    NSDateFormatter * formatter = [[NSDateFormatter alloc] init];
 //    [formatter setDateFormat:@"yyyy年MM月dd日 a HH:mm"];
 //    if ([_dataManager.ActivityDateBeginText isEqualToString:@"请选择活动结束时间"] || _dataManager.ActivityDateBeginText == nil)
@@ -314,7 +315,9 @@ NSString *const kDateAndTimeCollectionViewCell = @"DateAndTimeCollectionViewCell
     NSString * showStr = [formatter stringFromDate:_datePicker.date];
     _beginTimeLabel.text = showStr;
     _dataManager.ActivityDateBeginText = showStr;
-    [_dataManager isEnableToRelease];
+    
+    [self isSmallTo15Minites];
+    
 }
 -(void)endChooseDate
 {
@@ -323,7 +326,47 @@ NSString *const kDateAndTimeCollectionViewCell = @"DateAndTimeCollectionViewCell
     NSString * showStr = [formatter stringFromDate:_datePicker.date];
     _endTimeLabel.text = showStr;
     _dataManager.ActivityDateEndText = showStr;
-    [_dataManager isEnableToRelease];
+    
+    [self isSmallTo15Minites];
+}
+
+-(void)isSmallTo15Minites
+{
+    if (![_dataManager.ActivityDateBeginText isEqualToString:@"请选择活动开始时间"] && _dataManager.ActivityDateBeginText != nil &&
+        ![_dataManager.ActivityDateEndText isEqualToString:@"请选择活动开始时间"] && _dataManager.ActivityDateEndText != nil)
+    {
+        NSDateFormatter * formatter = [[NSDateFormatter alloc] init];
+        [formatter setDateFormat:@"yyyy年MM月dd日 a HH:mm"];
+        NSTimeInterval timeBetween1 = [[formatter dateFromString:_dataManager.ActivityDateEndText] timeIntervalSinceDate:[formatter dateFromString:_dataManager.ActivityDateBeginText]];
+        if (timeBetween1 < 900)
+        {
+            NSDictionary * dic = @{@"isEnabel":@NO};
+            [[NSNotificationCenter defaultCenter] postNotificationName:KNotification_Enabel_ReleaseBtn object:dic];
+            [YUtils showTitle:@"活动时长不能小于15分钟" hideAfter:2];
+        }
+        else
+        {
+            if (![_dataManager.ActivityDateBeginText isEqualToString:@"请选择活动开始时间"] && _dataManager.ActivityDateBeginText != nil)
+            {
+                NSDateFormatter * formatter = [[NSDateFormatter alloc] init];
+                [formatter setDateFormat:@"yyyy年MM月dd日 a HH:mm"];
+                NSTimeInterval timeBetween2 = [[formatter dateFromString:_dataManager.ActivityDateBeginText] timeIntervalSinceDate:[NSDate date]];
+                if (timeBetween2 < 0)
+                {
+                    NSDictionary * dic = @{@"isEnabel":@NO};
+                    [[NSNotificationCenter defaultCenter] postNotificationName:KNotification_Enabel_ReleaseBtn object:dic];
+                    [YUtils showTitle:@"活动开始时间要大于当前时间" hideAfter:2];
+                }
+                else
+                {
+                    [_dataManager isEnableToRelease];
+                }
+            }
+            
+        }
+    }
+    
+    
 }
 
 @end

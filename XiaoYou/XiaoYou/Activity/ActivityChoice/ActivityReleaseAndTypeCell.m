@@ -35,41 +35,50 @@ NSString *const kActivityReleaseAndTypeCell = @"ActivityReleaseAndTypeCellId";
     return self;
 }
 
--(void)setCellType:(GetFilterConditionsModel *) model
+-(NSArray *)dataArr
 {
-    _model = model;
+    if (!_dataArr) {
+        _dataArr = [NSArray array];
+    }
+    return _dataArr;
+}
+
+-(void)setCellType:(id) data
+{
+    
     if (_myType == ACTIVITY_CHOICE_TYPE)
     {
+        GetFilterConditionsModel * model = data;
+        _model = model;
         
         if ([model.name isEqualToString:@"空闲"])
         {
-            _dataArr = model.tags;
+            self.dataArr = model.tags;
             _releaseAndTypeImageView.image = [UIImage imageNamed:@"havetime－icon_free"];
             _releaseAndTypeLabel.text = model.name;
         }
         else if ([model.name isEqualToString:@"日期"]) {
-            _dataArr = model.tags;
+            self.dataArr = model.tags;
             _releaseAndTypeImageView.image = [UIImage imageNamed:@"funny_detail_time"];
             _releaseAndTypeLabel.text = model.name;
         }
         else if ([model.name isEqualToString:@"活动创建来源"])
         {
-            _dataArr = model.tags;
+            self.dataArr = model.tags;
             _releaseAndTypeImageView.image = [UIImage imageNamed:@"activity-releaser"];
             _releaseAndTypeLabel.text = model.name;
             
         }
         else
         {
-            _dataArr = model.tags;
+            self.dataArr = model.tags;
             _releaseAndTypeImageView.image = [UIImage imageNamed:@"funny_detail_category"];
             _releaseAndTypeLabel.text = model.name;
         }
     }
     else
     {
-
-        _dataArr = @[@"新校区",@"老校区"];
+        self.dataArr = data;
         _releaseAndTypeImageView.image = [UIImage imageNamed:@"havetime_icon_school"];
         _releaseAndTypeLabel.text = @"校区";
         

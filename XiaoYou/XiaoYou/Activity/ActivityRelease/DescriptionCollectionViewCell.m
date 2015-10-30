@@ -95,7 +95,7 @@ NSString *const kDescriptionCollectionViewCell = @"DescriptionCollectionViewCell
 
 -(void)choicePictrue
 {
-    [self endEditing:YES];
+    [self.viewController.view endEditing:YES];
     
     _deleteBtn.hidden = YES;
     
