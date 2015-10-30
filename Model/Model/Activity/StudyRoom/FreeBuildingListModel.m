@@ -9,6 +9,7 @@
 
 
 NSString *const kFreeBuildingListModelRoomCount = @"roomCount";
+NSString *const kFreeBuildingListModelSchoolArea = @"schoolArea";
 NSString *const kFreeBuildingListModelBuildName = @"buildName";
 
 
@@ -21,6 +22,7 @@ NSString *const kFreeBuildingListModelBuildName = @"buildName";
 @implementation FreeBuildingListModel
 
 @synthesize roomCount = _roomCount;
+@synthesize schoolArea = _schoolArea;
 @synthesize buildName = _buildName;
 
 
@@ -37,6 +39,7 @@ NSString *const kFreeBuildingListModelBuildName = @"buildName";
     // passed into the model class doesn't break the parsing.
     if(self && [dict isKindOfClass:[NSDictionary class]]) {
             self.roomCount = [[self objectOrNilForKey:kFreeBuildingListModelRoomCount fromDictionary:dict] doubleValue];
+            self.schoolArea = [self objectOrNilForKey:kFreeBuildingListModelSchoolArea fromDictionary:dict];
             self.buildName = [self objectOrNilForKey:kFreeBuildingListModelBuildName fromDictionary:dict];
 
     }
@@ -49,6 +52,7 @@ NSString *const kFreeBuildingListModelBuildName = @"buildName";
 {
     NSMutableDictionary *mutableDict = [NSMutableDictionary dictionary];
     [mutableDict setValue:[NSNumber numberWithDouble:self.roomCount] forKey:kFreeBuildingListModelRoomCount];
+    [mutableDict setValue:self.schoolArea forKey:kFreeBuildingListModelSchoolArea];
     [mutableDict setValue:self.buildName forKey:kFreeBuildingListModelBuildName];
 
     return [NSDictionary dictionaryWithDictionary:mutableDict];
@@ -74,6 +78,7 @@ NSString *const kFreeBuildingListModelBuildName = @"buildName";
     self = [super init];
 
     self.roomCount = [aDecoder decodeDoubleForKey:kFreeBuildingListModelRoomCount];
+    self.schoolArea = [aDecoder decodeObjectForKey:kFreeBuildingListModelSchoolArea];
     self.buildName = [aDecoder decodeObjectForKey:kFreeBuildingListModelBuildName];
     return self;
 }
@@ -82,6 +87,7 @@ NSString *const kFreeBuildingListModelBuildName = @"buildName";
 {
 
     [aCoder encodeDouble:_roomCount forKey:kFreeBuildingListModelRoomCount];
+    [aCoder encodeObject:_schoolArea forKey:kFreeBuildingListModelSchoolArea];
     [aCoder encodeObject:_buildName forKey:kFreeBuildingListModelBuildName];
 }
 
@@ -92,6 +98,7 @@ NSString *const kFreeBuildingListModelBuildName = @"buildName";
     if (copy) {
 
         copy.roomCount = self.roomCount;
+        copy.schoolArea = [self.schoolArea copyWithZone:zone];
         copy.buildName = [self.buildName copyWithZone:zone];
     }
     

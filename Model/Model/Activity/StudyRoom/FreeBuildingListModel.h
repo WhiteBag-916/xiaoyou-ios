@@ -12,6 +12,7 @@
 @interface FreeBuildingListModel : YModel <NSCoding, NSCopying>
 
 @property (nonatomic, assign) double roomCount;
+@property (nonatomic, strong) NSString *schoolArea;
 @property (nonatomic, strong) NSString *buildName;
 
 + (instancetype)modelObjectWithDictionary:(NSDictionary *)dict;
