@@ -8,7 +8,7 @@
 
 #import "YHTTPRequestAction.h"
 
-@interface FreeBuildingDetailAction : YHTTPRequestAction
+@interface FreeBuildingDetailAction : YHTTPRequestAction<YAction>
 
 @property (nonatomic, strong) NSString *buildName;
 
