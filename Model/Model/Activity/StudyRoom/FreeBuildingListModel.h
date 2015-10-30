@@ -6,10 +6,10 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "YModel.h"
 
 
-
-@interface FreeBuildingListModel : NSObject <NSCoding, NSCopying>
+@interface FreeBuildingListModel : YModel <NSCoding, NSCopying>
 
 @property (nonatomic, strong) NSArray *filter;
 @property (nonatomic, strong) NSArray *result;
