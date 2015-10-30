@@ -37,7 +37,7 @@ NSString *const kMyTimetableDayCollectionViewCell = @"MyTimetableDayCollectionVi
         
         [_numLabel mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.right.equalTo(self.contentView);
-            make.top.mas_equalTo(K_NUM_T);
+//            make.top.mas_equalTo(K_NUM_T);
         }];
         
         //时间
@@ -48,6 +48,7 @@ NSString *const kMyTimetableDayCollectionViewCell = @"MyTimetableDayCollectionVi
         [self.contentView addSubview:_timeLabel];
         
         [_timeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.top.equalTo(_numLabel.mas_bottom).offset(K_TIME_B);
             make.left.right.equalTo(_numLabel);
             make.bottom.mas_equalTo(-K_TIME_B);
         }];

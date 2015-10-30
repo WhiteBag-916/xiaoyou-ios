@@ -14,6 +14,7 @@
 
 #define K_IMG_LWH           SCALE_NUM(12)   //图标左、宽、高
 #define K_COURSEIMG_T       SCALE_NUM(22)   //课程图标上间距
+#define K_CONTENT_B         SCALE_NUM(15)   //下
 #define K_LECTURERIMG_T     SCALE_NUM(15)   //授课人图标上间距
 #define K_DEPARTMENTSIMG_T  SCALE_NUM(14)   //院系图标上间距
 #define K_LEFTLAB_L         SCALE_NUM(10)   //描述左
@@ -54,7 +55,9 @@
     self.contentView = [[UIView alloc] init];
     [self addSubview:self.contentView];
     [self.contentView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.edges.equalTo(self).insets(UIEdgeInsetsMake(K_BACK_T, K_BACK_LR, K_BACK_B, K_BACK_LR));
+        make.left.mas_equalTo(K_BACK_LR);
+        make.right.mas_equalTo(-K_BACK_LR);
+        make.centerY.equalTo(self);
     }];
     
     UIImageView *backgroundImageView = [[UIImageView alloc] init];
@@ -265,6 +268,7 @@
         make.top.height.equalTo(departmentsImageView);
         make.left.equalTo(_courseName);
         make.right.mas_equalTo(K_NAMELAB_R);
+        make.bottom.mas_equalTo(-K_CONTENT_B);
     }];
 }
 
