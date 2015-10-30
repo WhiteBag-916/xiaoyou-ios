@@ -114,7 +114,7 @@
             [self reloadData];
             _currentIndex += KPAGENUM;
         } else {
-            [YUtils showTitle:message.desc];
+            [YUtils showTitle:message.desc hideAfter:2];
         }
         if ([self isHeaderRefresh]) {
             [self stopLoadNewData];
@@ -157,7 +157,7 @@
                 }
             }
         } else {
-            [YUtils showTitle:message.desc];
+            [YUtils showTitle:message.desc hideAfter:2];
         }
         if ([self isHeaderRefresh]) {
             [self stopLoadNewData];

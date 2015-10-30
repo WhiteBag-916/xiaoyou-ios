@@ -8,38 +8,67 @@
 
 #import "StudyRoomDetailTableView.h"
 #import "StudyRoomDetailTableViewCell.h"
+#import "ActivityManager.h"
 
 @interface StudyRoomDetailTableView ()
 <UITableViewDataSource
 ,UITableViewDelegate>
 
+@property(nonatomic,strong)NSMutableArray * dataSouceArr;
+
 @end
 
 @implementation StudyRoomDetailTableView
 
-- (instancetype)initWithFrame:(CGRect)frame
+- (instancetype)initWithBuildName:(NSString *) name
 {
-    self = [super initWithFrame:frame];
+    self = [super init];
     if (self) {
         self.delegate = self;
         self.dataSource = self;
         self.separatorStyle = UITableViewCellSeparatorStyleNone;
         
+        [self sendRequest:name];
         [self registerClass:[StudyRoomDetailTableViewCell class] forCellReuseIdentifier:kStudyRoomDetailTableViewCell];
     }
     return self;
 }
 
+
+-(NSMutableArray *)dataSouceArr
+{
+    if (!_dataSouceArr) {
+        _dataSouceArr = [NSMutableArray array];
+    }
+    return _dataSouceArr;
+}
+
+
+- (void)sendRequest:(NSString *)name
+{
+    [YUtils showHUDWithTitle];
+    [[ActivityManager sharedInstance] freeBuildingDetail:name block:^(YActionMessage *message) {
+        
+        if (message.isSuccess) {
+            [YUtils hiddenProgressHUD];
+            self.dataSouceArr = message.object;
+            [self reloadData];
+        }
+        
+        
+    }];
+}
+
 #pragma mark - UITableViewDataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 5;
+    return _dataSouceArr.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     StudyRoomDetailTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kStudyRoomDetailTableViewCell];
-    [cell initData:indexPath.row];
+    [cell initData:_dataSouceArr[indexPath.row]];
     return cell;
 }
 
