@@ -6,10 +6,10 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "YModel.h"
 
 
-
-@interface Result : NSObject <NSCoding, NSCopying>
+@interface Result : YModel <NSCoding, NSCopying>
 
 @property (nonatomic, assign) double roomCount;
 @property (nonatomic, strong) NSString *schoolArea;
