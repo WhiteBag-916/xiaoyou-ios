@@ -580,6 +580,9 @@ typedef enum : NSUInteger {
         
         [[ActivityManager sharedInstance] commonImgUpload:@"activity" needSnap:@"true" imagePath:fullPath block:^(YActionMessage *message) {
             NSLog(@"%@",message);
+            
+            [YUtils hiddenProgressHUD];
+            [YUtils showTitle:message.desc hideAfter:2];
             if (message.isSuccess)
             {
                 [self sendReleaseRequest:message];
@@ -687,10 +690,10 @@ typedef enum : NSUInteger {
     
     [[ActivityManager sharedInstance] editActivity:modelDic block:^(YActionMessage *message) {
         NSLog(@"%@",message);
+        [YUtils hiddenProgressHUD];
+        [YUtils showTitle:message.desc hideAfter:2];
         if (message.isSuccess)
         {
-            [YUtils hiddenProgressHUD];
-            [YUtils showTitle:message.desc hideAfter:2];
             if ([[message.object valueForKey:@"code"] integerValue] == 1)
             {
                 [[NSNotificationCenter defaultCenter] postNotificationName:KNotification_Activity_Release_Success object:nil];
