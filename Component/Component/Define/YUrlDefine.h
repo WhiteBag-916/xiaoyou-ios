@@ -199,11 +199,23 @@
 #define api_room_freeBuildingList         @"/room/freeBuildingList"
 //获取自习室大楼的自习教室详情
 #define api_room_freeBuildingDetail         @"/room/freeBuildingDetail"
+//日程提醒条件列表查询
+#define api_userScheduling_getUserSchedulingListConditions         @"/userScheduling/getUserSchedulingListConditions"
+//新增或修改日程
+#define api_userScheduling_edit         @"/userScheduling/edit"
+//查询日程列表
+#define api_userScheduling_list         @"/userScheduling/list"
+//删除日程接口
+#define api_userScheduling_delete         @"/userScheduling/delete"
+//根据日程id查询
+#define api_userScheduling_findById         @"/userScheduling/findById"
 /**********************************************************
  Url Define: CourseTime
  **********************************************************/
 //获取课程学时对应时间
 #define api_courseTime_list   @"/courseTime/list"
+//获取我的课程
+#define api_course_findMyCourse   @"/course/findMyCourse"
 
 #endif
 

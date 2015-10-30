@@ -11,4 +11,6 @@
 
 @interface StudyRoomTableView : YTableView
 
+@property(nonatomic,strong)NSMutableArray * campusDataSouceArr;
+
 @end

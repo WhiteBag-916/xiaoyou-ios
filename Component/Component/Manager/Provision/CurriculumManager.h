@@ -9,8 +9,13 @@
 #import "YManager.h"
 #import "YAction.h"
 
+@class CourseTimeListModel;
+
 @interface CurriculumManager : YManager<YManager>
 AS_SINGLETON(CurriculumManager);
+
+//取课程时间
+- (CourseTimeListModel *)getCourseTime;
 
 /*********************************************************************
  函数名称 : courseTimeList
@@ -20,5 +25,14 @@ AS_SINGLETON(CurriculumManager);
  作者 : XiongChen
  *********************************************************************/
 - (void)courseTimeList:(ActionCompleteBlock)block;
+
+/*********************************************************************
+ 函数名称 : findMyCourse
+ 函数描述 : 获取我的课程
+ 参数 : N/A
+ 返回值 : FindMyCourseModel
+ 作者 : XiongChen
+ *********************************************************************/
+- (void)findMyCourse:(ActionCompleteBlock)block;
 
 @end

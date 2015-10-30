@@ -20,14 +20,17 @@
 @property (nonatomic, strong) UITableView *weekTableView;
 @property (nonatomic, copy) ChooseWeekBlock chooseWeekBlock;
 @property (nonatomic, assign) NSInteger selectNum;
+@property (nonatomic, assign) NSInteger weekNum;
 
 @end
 
 @implementation ChooseWeekView
 
-- (id)initWithBlock:(NSInteger)selectNum block:(ChooseWeekBlock)block {
+- (id)initWithBlock:(NSInteger)selectNum weekNum:(NSInteger)weekNum block:(ChooseWeekBlock)block {
     if (self = [super initWithFrame:[UIScreen mainScreen].bounds]) {
         self.backgroundColor = [UIColor clearColor];
+        
+        _weekNum = weekNum;
         
         self.backgroundView = [[UIView alloc] initWithFrame:self.frame];
         self.backgroundView.backgroundColor = [UIColor blackColor];
@@ -43,7 +46,6 @@
     }
     return self;
 }
-
 
 - (void)initContentView {
     self.contentView = [[UIView alloc] init];
@@ -76,10 +78,21 @@
     }];
 }
 
+- (void)show {
+    [super show];
+    
+    NSInteger showNum = (_selectNum-4<0)?0:_selectNum-4;
+    
+    if (showNum > 0) {
+        //移动到可显示位置
+        [_weekTableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:showNum inSection:0] atScrollPosition:UITableViewScrollPositionNone animated:NO];
+    }
+}
+
 #pragma mark - UITableViewDataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 10;
+    return _weekNum;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath

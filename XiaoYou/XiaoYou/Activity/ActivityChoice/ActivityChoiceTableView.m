@@ -16,7 +16,6 @@
 
 @interface ActivityChoiceTableView ()<UITableViewDataSource,UITableViewDelegate,ActivityReleaseAndTypeCellDelegate>
 
-@property (nonatomic,strong)NSMutableArray * dataSourceArr;
 @property (nonatomic,strong)NSMutableDictionary * typesDic;
 
 @end
@@ -35,16 +34,22 @@
 
         [self registerClass:[ActivityReleaseAndTypeCell class] forCellReuseIdentifier:kActivityReleaseAndTypeCell];
         
-        [[ActivityManager sharedInstance] getFilterConditions:^(YActionMessage *message) {
-//            NSLog(@"%@",message.object);
-            
-            _dataSourceArr = [NSMutableArray arrayWithArray:message.object];
-            if (_dataSourceArr.count > 0)
-            {
-                [_dataSourceArr exchangeObjectAtIndex:0 withObjectAtIndex:3];
-            }
+        if (_myType != CLASSROOM_CHOICE_TYPE) {
+            [[ActivityManager sharedInstance] getFilterConditions:^(YActionMessage *message) {
+                
+                if (message.isSuccess) {
+                    _dataSourceArr = [NSMutableArray arrayWithArray:message.object];
+                    if (_dataSourceArr.count > 0)
+                    {
+                        [_dataSourceArr exchangeObjectAtIndex:0 withObjectAtIndex:3];
+                    }
+                    [self reloadData];
+                }
+            }];
+        }
+        else{
             [self reloadData];
-        }];
+        }
                 
         _typesDic = [[NSMutableDictionary alloc] init];
         [_typesDic setObject:@"" forKey:@""];
@@ -160,7 +165,13 @@
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     cell.delegate = self;
     cell.myType = _myType;
-    [cell setCellType:_dataSourceArr[indexPath.row]];
+    if (_myType == ACTIVITY_CHOICE_TYPE) {
+        [cell setCellType:_dataSourceArr[indexPath.row]];
+    }
+    else
+    {
+        [cell setCellType:_dataSourceArr];
+    }
     return cell;
 
 }

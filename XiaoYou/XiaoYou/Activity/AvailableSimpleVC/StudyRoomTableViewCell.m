@@ -7,6 +7,7 @@
 //
 
 #import "StudyRoomTableViewCell.h"
+#import "Result.h"
 
 NSString *const kStudyRoomTableViewCell = @"StudyRoomTableViewCellId";
 
@@ -65,7 +66,7 @@ NSString *const kStudyRoomTableViewCell = @"StudyRoomTableViewCellId";
     return YES;
 }
 
-- (void)initData:(FreeBuildingListModel *)model
+- (void)initData:(Result *)model
 {
     [_studyRoomNameButton setTitle:model.buildName forState:UIControlStateNormal];
     _studyRoomNumberLabel.text =[NSString stringWithFormat:@"%g个教室空缺",model.roomCount];

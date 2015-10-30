@@ -570,35 +570,28 @@ typedef enum : NSUInteger {
     NSLog(@"%@",_dataManager.ActivityOrganizer);
     NSLog(@"%@",_dataManager.ActivityOrganizerId);
     
-    NSDateFormatter * formatter = [[NSDateFormatter alloc] init];
-    [formatter setDateFormat:@"yyyy年MM月dd日 a HH:mm"];
-    NSTimeInterval timeBetween = [[formatter dateFromString:_dataManager.ActivityDateEndText] timeIntervalSinceDate:[formatter dateFromString:_dataManager.ActivityDateBeginText]];
-    if (timeBetween < 900)
+    
+    [YUtils showHUDWithTitle];
+    
+    if (_dataManager.ActivityDesciptionImage != nil)
     {
-        [YUtils showTitle:@"活动时长不能小于15分钟" hideAfter:2];
+        NSString *keyStr = @"activityRelease.png";
+        NSString *fullPath = [[YDirectory newImgCache] stringByAppendingPathComponent:keyStr];
+        
+        [[ActivityManager sharedInstance] commonImgUpload:@"activity" needSnap:@"true" imagePath:fullPath block:^(YActionMessage *message) {
+            NSLog(@"%@",message);
+            if (message.isSuccess)
+            {
+                [self sendReleaseRequest:message];
+            }
+            
+            
+        }];
     }
     else
     {
-        [YUtils showHUDWithTitle];
-        
-        if (_dataManager.ActivityDesciptionImage != nil)
-        {
-            NSString *keyStr = @"activityRelease.png";
-            NSString *fullPath = [[YDirectory newImgCache] stringByAppendingPathComponent:keyStr];
-            
-            [[ActivityManager sharedInstance] commonImgUpload:@"activity" needSnap:@"true" imagePath:fullPath block:^(YActionMessage *message) {
-                NSLog(@"%@",message);
-                
-                [self sendReleaseRequest:message];
-            }];
-        }
-        else
-        {
-            [self sendReleaseRequest:nil];
-        }
+        [self sendReleaseRequest:nil];
     }
-    
-    
 
 //    NSDateFormatter * formatter = [[NSDateFormatter alloc] init];
 //    [formatter setDateFormat:@"yyyy年MM月dd日 a HH:mm"];
@@ -688,20 +681,23 @@ typedef enum : NSUInteger {
         [arr addObject:@{@"content":@"",@"displayOrder":@1,@"type":@"image"}];
     }
     
-    
     [modelDic setObject:arr forKey:@"activityImageTextModels"];
     [modelDic setObject:activityModelDic forKey:@"activityModel"];
     
     
     [[ActivityManager sharedInstance] editActivity:modelDic block:^(YActionMessage *message) {
         NSLog(@"%@",message);
-        [YUtils hiddenProgressHUD];
-        [YUtils showTitle:message.desc hideAfter:2];
-        if ([[message.object valueForKey:@"code"] integerValue] == 1)
+        if (message.isSuccess)
         {
-            [[NSNotificationCenter defaultCenter] postNotificationName:KNotification_Activity_Release_Success object:nil];
-            [self.navigationController popViewControllerAnimated:YES];
+            [YUtils hiddenProgressHUD];
+            [YUtils showTitle:message.desc hideAfter:2];
+            if ([[message.object valueForKey:@"code"] integerValue] == 1)
+            {
+                [[NSNotificationCenter defaultCenter] postNotificationName:KNotification_Activity_Release_Success object:nil];
+                [self.navigationController popViewControllerAnimated:YES];
+            }
         }
+        
     }];
 }
 

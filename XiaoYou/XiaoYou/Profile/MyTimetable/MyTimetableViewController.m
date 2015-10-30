@@ -10,6 +10,8 @@
 #import "MyTimetableHeadView.h"
 #import "MyTimetableView.h"
 #import "ChooseWeekView.h"
+#import "CourseTimeListModel.h"
+#import "CurriculumManager.h"
 
 @interface MyTimetableViewController ()
 
@@ -18,6 +20,8 @@
 @property (nonatomic, strong) UILabel *weekLabel;
 @property (nonatomic, strong) MyTimetableHeadView *myTimetableHeadView;
 @property (nonatomic, strong) MyTimetableView *myTimetableView;
+
+@property (nonatomic, strong) CourseTimeListModel *courseTimeListModel;//课时
 
 @property (nonatomic, assign) NSInteger selectWeekNum;  //已选择周
 
@@ -53,6 +57,8 @@
         make.left.bottom.right.equalTo(self.view);
         make.top.equalTo(_myTimetableHeadView.mas_bottom);
     }];
+    
+    [self initData];
 }
 
 - (void)initNavigationTitle {
@@ -105,12 +111,27 @@
     }];
 }
 
+- (void)initData {
+    //获取当前周几
+    NSUInteger weekday = [[NSDate date] weekday];
+    [_myTimetableHeadView resetSelectDay:weekday-2];
+    
+    //获取课时
+    self.courseTimeListModel = [[CurriculumManager sharedInstance] getCourseTime];
+    [_myTimetableView refreshCourseTimeList:self.courseTimeListModel];
+    
+    //获取当前第几周
+    //获取时间
+    NSDate *selectWeekDate = [NSDate dateFromString:self.courseTimeListModel.firstTime withFormat:[NSDate dateFormatString]];
+    //根据时间获取距离今天
+    NSUInteger agoDay = [selectWeekDate daysAgo];
+    [self chooseWeek:1+agoDay/7];
+}
+
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
     self.navigationController.navigationBarHidden = true;
-    
-    [_myTimetableHeadView resetSelectDay:4];
 }
 
 - (void)popVC {
@@ -119,7 +140,7 @@
 
 //选择第几周
 - (void)showChooseWeek {
-    ChooseWeekView *chooseWeekView = [[ChooseWeekView alloc] initWithBlock:_selectWeekNum block:^(NSInteger checkNum) {
+    ChooseWeekView *chooseWeekView = [[ChooseWeekView alloc] initWithBlock:_selectWeekNum weekNum:self.courseTimeListModel.maxWeek block:^(NSInteger checkNum) {
         [self chooseWeek:checkNum];
     }];
     

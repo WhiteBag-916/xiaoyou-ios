@@ -127,6 +127,7 @@ typedef enum : NSUInteger {
 - (void)filterAction {
     ActivityChoiceController * choiceController = [[ActivityChoiceController alloc] initWithType:CLASSROOM_CHOICE_TYPE];
     choiceController.classViewController = self;
+    choiceController.dataSourceArr = _studyRoomTableView.campusDataSouceArr;
     [self.navigationController presentViewController:choiceController animated:YES completion:nil];
 }
 

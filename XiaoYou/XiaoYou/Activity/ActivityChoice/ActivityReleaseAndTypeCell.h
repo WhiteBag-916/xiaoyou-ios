@@ -25,6 +25,6 @@ extern NSString *const kActivityReleaseAndTypeCell;
 @property (nonatomic,weak)id<ActivityReleaseAndTypeCellDelegate>delegate;
 @property (nonatomic,assign)NSInteger myType;
 
--(void)setCellType:(GetFilterConditionsModel *) model;
+-(void)setCellType:(id) data;
 
 @end

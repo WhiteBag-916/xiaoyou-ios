@@ -13,6 +13,8 @@
 #import "MyTimetableCurriculumCollectionViewCell.h"
 #import "MGCTimedEventsViewLayout.h"
 #import "CurriculumDetailView.h"
+#import "CourseTimeListModel.h"
+#import "CourseTime.h"
 
 #define K_CURRICULUM_WH            SCALE_NUM(40)  //1节课课程宽高
 #define K_EVENT_L                   SCALE_NUM(39)  //1节课课程宽高
@@ -35,8 +37,7 @@
 
 - (instancetype)init {
     if (self = [super init]) {
-        self.timeArray = [[NSMutableArray alloc] init];
-//        self.timeArray = @[@"8:00", @"8:55", @"10:00", @"10:55", @"12:00", @"12:55", @"14:00", @"14:55", @"16:00", @"16:55", @"18:30", @"19:25", @"20:20", @"21:15"];
+        self.timeArray = [@[@"8:00", @"8:55", @"10:00", @"10:55", @"12:00", @"12:55", @"14:00", @"14:55", @"16:00", @"16:55", @"18:30", @"19:25", @"20:20", @"21:15"] mutableCopy];
         
         //课表时间
         UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc]init];
@@ -76,24 +77,19 @@
         [_eventCollectionView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.edges.equalTo(self).insets(UIEdgeInsetsMake(0, K_CURRICULUM_WH, 0, 0));
         }];
-        
-        [self refreshCourseTimeList];
     }
     
     return self;
 }
 
 //刷新课程时间
-- (void)refreshCourseTimeList {
-    [[CurriculumManager sharedInstance] courseTimeList:^(YActionMessage *message) {
-        if (message.isSuccess && message.object) {
-            [_timeArray removeAllObjects];
-            for(CourseTimeListModel *model in message.object) {
-                [_timeArray addObject:model.startTime];
-            }
-            [_allDayCollectionView reloadData];
-        }
-    }];
+- (void)refreshCourseTimeList:(CourseTimeListModel *)courseTimeListModel {
+    
+    [_timeArray removeAllObjects];
+    for(CourseTime *courseTime in courseTimeListModel.courseTime) {
+        [_timeArray addObject:courseTime.startTime];
+    }
+    [_allDayCollectionView reloadData];
 }
 
 //初始化界面

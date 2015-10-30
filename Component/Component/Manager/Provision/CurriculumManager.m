@@ -8,11 +8,16 @@
 
 #import "CurriculumManager.h"
 #import "CourseTimeListAction.h"
+#import "FindMyCourseAction.h"
+#import "CourseTimeListModel.h"
+#import "FindMyCourseModel.h"
 
 #define KCurriculumManagerSyncQueue @"kCurriculumManagerSyncQueue"
 
 @interface CurriculumManager ()
 
+@property (nonatomic, strong) CourseTimeListModel *courseTimeListModel;
+@property (nonatomic, strong) NSMutableArray *findMyCourseArray;
 
 @end
 
@@ -38,7 +43,12 @@ DEF_SINGLETON(CurriculumManager);
 
 - (void)appDidLogin:(NSDictionary *)loginInfo
 {
-    
+    [self courseTimeList:^(YActionMessage *message) {
+        
+    }];
+    [self findMyCourse:^(YActionMessage *message) {
+        
+    }];
 }
 
 - (void)appDidLogout:(NSDictionary *)logoutInfo
@@ -46,11 +56,36 @@ DEF_SINGLETON(CurriculumManager);
     
 }
 
+//取课程时间
+- (CourseTimeListModel *)getCourseTime {
+    return self.courseTimeListModel;
+}
+
 //获取课程学时对应时间
 - (void)courseTimeList:(ActionCompleteBlock)block {
     CourseTimeListAction* action = [[CourseTimeListAction alloc] init];
     
     [YAction startAction:action completionBlock:^(YActionMessage* message) {
+        
+        if (message.isSuccess) {
+            self.courseTimeListModel = message.object;
+        }
+        
+        //主线程处理界面
+        block(message);
+    }];
+}
+
+//获取我的课程
+- (void)findMyCourse:(ActionCompleteBlock)block {
+    FindMyCourseAction* action = [[FindMyCourseAction alloc] init];
+    
+    [YAction startAction:action completionBlock:^(YActionMessage* message) {
+        
+        if (message.isSuccess) {
+            self.findMyCourseArray = [message.object mutableCopy];
+        }
+        
         //主线程处理界面
         block(message);
     }];

@@ -19,6 +19,7 @@ typedef enum : NSUInteger {
 
 @property(nonatomic,weak)AvailableViewController * activityViewController;
 @property(nonatomic,weak)AvailableSimpleViewController * classViewController;
+@property(nonatomic,strong)NSMutableArray * dataSourceArr;
 
 -(instancetype)initWithType:(CHOICE_TYPE) type;
 

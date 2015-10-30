@@ -13,7 +13,6 @@
 
 @property (nonatomic,strong)ActivityChoiceTableView * activityChoiceTableView;
 
-
 @property (nonatomic,assign)NSInteger myType;
 
 @end
@@ -42,6 +41,10 @@
     _activityChoiceTableView = [[ActivityChoiceTableView alloc] init];
     _activityChoiceTableView.myController = self;
     _activityChoiceTableView.myType = _myType;
+    if (_myType == CLASSROOM_CHOICE_TYPE)
+    {
+        _activityChoiceTableView.dataSourceArr = _dataSourceArr;
+    }
     [self.view addSubview:_activityChoiceTableView];
     [_activityChoiceTableView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.bottom.leading.trailing.mas_equalTo(0);

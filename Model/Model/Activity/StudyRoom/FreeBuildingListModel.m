@@ -1,16 +1,16 @@
 //
 //  FreeBuildingListModel.m
 //
-//  Created by   on 15/10/29
+//  Created by   on 15/10/30
 //  Copyright (c) 2015 __MyCompanyName__. All rights reserved.
 //
 
 #import "FreeBuildingListModel.h"
+#import "Result.h"
 
 
-NSString *const kFreeBuildingListModelRoomCount = @"roomCount";
-NSString *const kFreeBuildingListModelSchoolArea = @"schoolArea";
-NSString *const kFreeBuildingListModelBuildName = @"buildName";
+NSString *const kFreeBuildingListModelFilter = @"filter";
+NSString *const kFreeBuildingListModelResult = @"result";
 
 
 @interface FreeBuildingListModel ()
@@ -21,9 +21,8 @@ NSString *const kFreeBuildingListModelBuildName = @"buildName";
 
 @implementation FreeBuildingListModel
 
-@synthesize roomCount = _roomCount;
-@synthesize schoolArea = _schoolArea;
-@synthesize buildName = _buildName;
+@synthesize filter = _filter;
+@synthesize result = _result;
 
 
 + (instancetype)modelObjectWithDictionary:(NSDictionary *)dict
@@ -38,9 +37,20 @@ NSString *const kFreeBuildingListModelBuildName = @"buildName";
     // This check serves to make sure that a non-NSDictionary object
     // passed into the model class doesn't break the parsing.
     if(self && [dict isKindOfClass:[NSDictionary class]]) {
-            self.roomCount = [[self objectOrNilForKey:kFreeBuildingListModelRoomCount fromDictionary:dict] doubleValue];
-            self.schoolArea = [self objectOrNilForKey:kFreeBuildingListModelSchoolArea fromDictionary:dict];
-            self.buildName = [self objectOrNilForKey:kFreeBuildingListModelBuildName fromDictionary:dict];
+            self.filter = [self objectOrNilForKey:kFreeBuildingListModelFilter fromDictionary:dict];
+    NSObject *receivedResult = [dict objectForKey:kFreeBuildingListModelResult];
+    NSMutableArray *parsedResult = [NSMutableArray array];
+    if ([receivedResult isKindOfClass:[NSArray class]]) {
+        for (NSDictionary *item in (NSArray *)receivedResult) {
+            if ([item isKindOfClass:[NSDictionary class]]) {
+                [parsedResult addObject:[Result modelObjectWithDictionary:item]];
+            }
+       }
+    } else if ([receivedResult isKindOfClass:[NSDictionary class]]) {
+       [parsedResult addObject:[Result modelObjectWithDictionary:(NSDictionary *)receivedResult]];
+    }
+
+    self.result = [NSArray arrayWithArray:parsedResult];
 
     }
     
@@ -51,9 +61,28 @@ NSString *const kFreeBuildingListModelBuildName = @"buildName";
 - (NSDictionary *)dictionaryRepresentation
 {
     NSMutableDictionary *mutableDict = [NSMutableDictionary dictionary];
-    [mutableDict setValue:[NSNumber numberWithDouble:self.roomCount] forKey:kFreeBuildingListModelRoomCount];
-    [mutableDict setValue:self.schoolArea forKey:kFreeBuildingListModelSchoolArea];
-    [mutableDict setValue:self.buildName forKey:kFreeBuildingListModelBuildName];
+    NSMutableArray *tempArrayForFilter = [NSMutableArray array];
+    for (NSObject *subArrayObject in self.filter) {
+        if([subArrayObject respondsToSelector:@selector(dictionaryRepresentation)]) {
+            // This class is a model object
+            [tempArrayForFilter addObject:[subArrayObject performSelector:@selector(dictionaryRepresentation)]];
+        } else {
+            // Generic object
+            [tempArrayForFilter addObject:subArrayObject];
+        }
+    }
+    [mutableDict setValue:[NSArray arrayWithArray:tempArrayForFilter] forKey:kFreeBuildingListModelFilter];
+    NSMutableArray *tempArrayForResult = [NSMutableArray array];
+    for (NSObject *subArrayObject in self.result) {
+        if([subArrayObject respondsToSelector:@selector(dictionaryRepresentation)]) {
+            // This class is a model object
+            [tempArrayForResult addObject:[subArrayObject performSelector:@selector(dictionaryRepresentation)]];
+        } else {
+            // Generic object
+            [tempArrayForResult addObject:subArrayObject];
+        }
+    }
+    [mutableDict setValue:[NSArray arrayWithArray:tempArrayForResult] forKey:kFreeBuildingListModelResult];
 
     return [NSDictionary dictionaryWithDictionary:mutableDict];
 }
@@ -77,18 +106,16 @@ NSString *const kFreeBuildingListModelBuildName = @"buildName";
 {
     self = [super init];
 
-    self.roomCount = [aDecoder decodeDoubleForKey:kFreeBuildingListModelRoomCount];
-    self.schoolArea = [aDecoder decodeObjectForKey:kFreeBuildingListModelSchoolArea];
-    self.buildName = [aDecoder decodeObjectForKey:kFreeBuildingListModelBuildName];
+    self.filter = [aDecoder decodeObjectForKey:kFreeBuildingListModelFilter];
+    self.result = [aDecoder decodeObjectForKey:kFreeBuildingListModelResult];
     return self;
 }
 
 - (void)encodeWithCoder:(NSCoder *)aCoder
 {
 
-    [aCoder encodeDouble:_roomCount forKey:kFreeBuildingListModelRoomCount];
-    [aCoder encodeObject:_schoolArea forKey:kFreeBuildingListModelSchoolArea];
-    [aCoder encodeObject:_buildName forKey:kFreeBuildingListModelBuildName];
+    [aCoder encodeObject:_filter forKey:kFreeBuildingListModelFilter];
+    [aCoder encodeObject:_result forKey:kFreeBuildingListModelResult];
 }
 
 - (id)copyWithZone:(NSZone *)zone
@@ -97,9 +124,8 @@ NSString *const kFreeBuildingListModelBuildName = @"buildName";
     
     if (copy) {
 
-        copy.roomCount = self.roomCount;
-        copy.schoolArea = [self.schoolArea copyWithZone:zone];
-        copy.buildName = [self.buildName copyWithZone:zone];
+        copy.filter = [self.filter copyWithZone:zone];
+        copy.result = [self.result copyWithZone:zone];
     }
     
     return copy;
