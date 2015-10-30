@@ -147,16 +147,33 @@ NSString *const kActivityReleaseAndTypeCell = @"ActivityReleaseAndTypeCellId";
 
 -(NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
 {
-    Tags * tag = _dataArr[row];
-    return tag.name;
+    if (_myType == ACTIVITY_CHOICE_TYPE) {
+        Tags * tag = _dataArr[row];
+        return tag.name;
+    }
+    else
+    {
+        return _dataArr[row];
+    }
+    
 }
 
 -(void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
 {
-    if ([self.delegate respondsToSelector:@selector(didSelectRow:andType:)])
-    {
-        [self.delegate didSelectRow:_dataArr[row] andType:_model.param];
+    if (_myType == ACTIVITY_CHOICE_TYPE) {
+        if ([self.delegate respondsToSelector:@selector(didSelectRow:andType:)])
+        {
+            [self.delegate didSelectRow:_dataArr[row] andType:_model.param];
+        }
     }
+    else
+    {
+        if ([self.delegate respondsToSelector:@selector(didSelectRow:)])
+        {
+            [self.delegate didSelectRow:_dataArr[row]];
+        }
+    }
+    
 }
 
 - (UIView *)pickerView:(UIPickerView *)pickerView viewForRow:(NSInteger)row forComponent:(NSInteger)component reusingView:(UIView *)view{

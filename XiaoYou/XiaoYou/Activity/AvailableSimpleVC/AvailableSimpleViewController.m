@@ -11,6 +11,7 @@
 #import "StudyRoomTableView.h"
 #import "StudyRoomDetailTableView.h"
 #import "ActivityChoiceController.h"
+#import "YNotificationDefine.h"
 
 typedef enum : NSUInteger {
     Choice_Type,
@@ -36,9 +37,16 @@ typedef enum : NSUInteger {
     return self;
 }
 
+-(void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshTableView:) name:KNotification_Study_Room_Filtrate object:nil];
     
     [self showCustomNavigationBackButton];
 
@@ -96,6 +104,11 @@ typedef enum : NSUInteger {
             make.edges.mas_equalTo(self.view);
         }];
     }
+}
+
+-(void)refreshTableView:(NSNotification *) info
+{
+    NSLog(@"%@",info.userInfo);
 }
 
 -(void)setUpCustomNavgationBar:(Navigation_Right_type) type

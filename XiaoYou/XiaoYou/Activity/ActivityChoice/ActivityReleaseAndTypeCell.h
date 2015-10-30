@@ -17,6 +17,7 @@ extern NSString *const kActivityReleaseAndTypeCell;
 @protocol ActivityReleaseAndTypeCellDelegate <NSObject>
 
 -(void)didSelectRow:(Tags *) tag andType:(NSString *) type;
+-(void)didSelectRow:(NSString *) schoolName;
 
 @end
 

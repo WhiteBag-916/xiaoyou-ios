@@ -13,16 +13,18 @@
 #import "ActivityManager.h"
 #import "GetFilterConditionsModel.h"
 #import "Tags.h"
+#import "YNotificationDefine.h"
 
 @interface ActivityChoiceTableView ()<UITableViewDataSource,UITableViewDelegate,ActivityReleaseAndTypeCellDelegate>
 
 @property (nonatomic,strong)NSMutableDictionary * typesDic;
+@property (nonatomic,assign)NSInteger myType;
 
 @end
 
 @implementation ActivityChoiceTableView
 
-- (instancetype)init
+-(instancetype)initWithType:(CHOICE_TYPE) type
 {
     self = [super init];
     if (self) {
@@ -34,7 +36,9 @@
 
         [self registerClass:[ActivityReleaseAndTypeCell class] forCellReuseIdentifier:kActivityReleaseAndTypeCell];
         
-        if (_myType != CLASSROOM_CHOICE_TYPE) {
+        _myType = type;
+        
+        if (_myType == ACTIVITY_CHOICE_TYPE) {
             [[ActivityManager sharedInstance] getFilterConditions:^(YActionMessage *message) {
                 
                 if (message.isSuccess) {
@@ -50,12 +54,16 @@
         else{
             [self reloadData];
         }
-                
-        _typesDic = [[NSMutableDictionary alloc] init];
-        [_typesDic setObject:@"" forKey:@""];
-        [_typesDic setObject:@"" forKey:@""];
-        [_typesDic setObject:@"" forKey:@""];
-        [_typesDic setObject:@"" forKey:@""];
+        
+        if (_myType == ACTIVITY_CHOICE_TYPE)
+        {
+            _typesDic = [[NSMutableDictionary alloc] init];
+            [_typesDic setObject:@"" forKey:@""];
+            [_typesDic setObject:@"" forKey:@""];
+            [_typesDic setObject:@"" forKey:@""];
+            [_typesDic setObject:@"" forKey:@""];
+        }
+        
     }
     return self;
 }
@@ -98,7 +106,7 @@
     }
     else
     {
-        centerLabel.text = @"蹭课筛选";
+        centerLabel.text = @"自习室筛选";
     }
     centerLabel.font = CONTENT_FONT(15);
     [backView addSubview:centerLabel];
@@ -128,6 +136,7 @@
     }
     else
     {
+        [[NSNotificationCenter defaultCenter] postNotificationName:KNotification_Study_Room_Filtrate object:_typesDic];
         [self.myController dismissViewControllerAnimated:YES completion:nil];
     }
     
@@ -139,6 +148,11 @@
     {
         [_typesDic setObject:tag.internalBaseClassIdentifier forKey:type];
     }
+}
+
+-(void)didSelectRow:(NSString *)schoolName
+{
+    [_typesDic setObject:schoolName forKey:@"schoolName"];
 }
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
