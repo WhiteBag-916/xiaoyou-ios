@@ -97,23 +97,23 @@
 
 -(void)extractCampusDataSource:(NSArray *) dataSourceArr
 {
-    NSMutableArray * tempArr = [NSMutableArray array];
-    for (int i = 0; i < dataSourceArr.count; i++)
-    {
-        FreeBuildingListModel * model = dataSourceArr[i];
-        Tags * tag = [[Tags alloc] init];
-        tag.name = model.schoolArea;
-        if (![tempArr containsObject:tag.name]) {
-            [tempArr addObject:tag.name];
-        }
-    }
-    
-    for (int j = 0; j < tempArr.count; j++)
-    {
-        Tags * tag = [[Tags alloc] init];
-        tag.name = tempArr[j];
-        [self.campusDataSouceArr addObject:tag];
-    }
+//    NSMutableArray * tempArr = [NSMutableArray array];
+//    for (int i = 0; i < dataSourceArr.count; i++)
+//    {
+//        FreeBuildingListModel * model = dataSourceArr[i];
+//        Tags * tag = [[Tags alloc] init];
+//        tag.name = model.schoolArea;
+//        if (![tempArr containsObject:tag.name]) {
+//            [tempArr addObject:tag.name];
+//        }
+//    }
+//    
+//    for (int j = 0; j < tempArr.count; j++)
+//    {
+//        Tags * tag = [[Tags alloc] init];
+//        tag.name = tempArr[j];
+//        [self.campusDataSouceArr addObject:tag];
+//    }
 }
 
 #pragma mark - UITableViewDataSource
