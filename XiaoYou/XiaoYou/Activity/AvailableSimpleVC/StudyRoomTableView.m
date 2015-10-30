@@ -19,6 +19,7 @@
 ,UITableViewDelegate>
 
 @property(nonatomic,strong)NSMutableArray * dataSouceArr;
+@property(nonatomic,strong)NSMutableArray * dataSouceArrOriginal;
 
 @end
 
@@ -35,10 +36,35 @@
         [self sendRequest];
         
         [self registerClass:[StudyRoomTableViewCell class] forCellReuseIdentifier:kStudyRoomTableViewCell];
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshTableView:) name:KNotification_Study_Room_Filtrate object:nil];
     }
     return self;
 }
 
+-(void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+-(void)refreshTableView:(NSNotification *) info
+{
+    NSLog(@"%@",info.object);
+    
+    NSArray * tempArr = [NSArray arrayWithArray:self.dataSouceArrOriginal];
+    [self.dataSouceArr removeAllObjects];
+    for (int i = 0 ; i < tempArr.count ; i++)
+    {
+        Result * resultModel = tempArr[i];
+        if ([info.object[@"schoolName"] isEqualToString:resultModel.schoolArea])
+        {
+            [self.dataSouceArr addObject:resultModel];
+        }
+    }
+
+    NSLog(@"%@",self.dataSouceArr);
+    [self reloadData];
+}
 -(NSMutableArray *)dataSouceArr
 {
     if (!_dataSouceArr) {
@@ -89,7 +115,8 @@
         {
             [YUtils hiddenProgressHUD];
             FreeBuildingListModel * model = message.object;
-            self.dataSouceArr = (NSMutableArray *)model.result;
+            self.dataSouceArrOriginal = [NSMutableArray arrayWithArray:model.result];
+            self.dataSouceArr = [NSMutableArray arrayWithArray:model.result];
             [self reloadData];
             
             self.campusDataSouceArr = (NSMutableArray *)model.filter;

@@ -55,14 +55,16 @@
             [self reloadData];
         }
         
+         _typesDic = [[NSMutableDictionary alloc] init];
         if (_myType == ACTIVITY_CHOICE_TYPE)
         {
-            _typesDic = [[NSMutableDictionary alloc] init];
+           
             [_typesDic setObject:@"" forKey:@""];
             [_typesDic setObject:@"" forKey:@""];
             [_typesDic setObject:@"" forKey:@""];
             [_typesDic setObject:@"" forKey:@""];
         }
+        
         
     }
     return self;
@@ -167,6 +169,9 @@
     }
     else
     {
+        if (_myType == CLASSROOM_CHOICE_TYPE && _typesDic.count == 0) {
+            [_typesDic setObject:_studyRoomDefautStr forKey:@"schoolName"];
+        }
         return 1;
     }
 }

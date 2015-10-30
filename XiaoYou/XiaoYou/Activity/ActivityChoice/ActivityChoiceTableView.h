@@ -13,6 +13,7 @@
 
 @property (nonatomic,strong)ActivityChoiceController * myController;
 @property (nonatomic,strong)NSMutableArray * dataSourceArr;
+@property (nonatomic,strong)NSString * studyRoomDefautStr;//自习室默认选中值
 
 -(instancetype)initWithType:(CHOICE_TYPE) type;
 
