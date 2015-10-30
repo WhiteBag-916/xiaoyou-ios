@@ -96,31 +96,11 @@ NSString *const kStudyRoomDetailTableViewCell = @"StudyRoomDetailTableViewCellId
 }
 
 
-- (void)initData:(NSInteger)num {
-    switch (num) {
-        case 0:
-            _studyRoomLabel.text = @"307室";
-            _timeLabel.text = @"无课时间：14:00-16:00";
-            break;
-        case 1:
-            _studyRoomLabel.text = @"2017室";
-            _timeLabel.text = @"无课时间：15:00-18:00";
-            break;
-        case 2:
-            _studyRoomLabel.text = @"1035室";
-            _timeLabel.text = @"无课时间：15:00-16:00";
-            break;
-        case 3:
-            _studyRoomLabel.text = @"2012室";
-            _timeLabel.text = @"无课时间：16:00-17:00";
-            break;
-        case 4:
-            _studyRoomLabel.text = @"405室";
-            _timeLabel.text = @"无课时间：14:00-17:00";
-            break;
-        default:
-            break;
-    }
+- (void)initData:(FreeBuildingDetailModel *)model{
+
+    _studyRoomLabel.text = model.roomName;
+    _timeLabel.text = @"无课时间：14:00-16:00";
+    
 }
 
 @end

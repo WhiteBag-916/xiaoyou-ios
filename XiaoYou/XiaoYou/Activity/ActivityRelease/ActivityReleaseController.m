@@ -202,7 +202,7 @@ typedef enum : NSUInteger {
     //顶部Label
     UILabel * topLabel = [[UILabel alloc] init];
     topLabel.backgroundColor = [UIColor clearColor];
-    topLabel.text = @"有创意的文案会吸引到更多参与者喔";
+    topLabel.text = @"活动发布后不能修改删除，请慎重呦";
     topLabel.textColor = KCOLOR_B5;
     topLabel.font = CONTENT_FONT(12);
     [_scrollView addSubview:topLabel];
@@ -570,23 +570,35 @@ typedef enum : NSUInteger {
     NSLog(@"%@",_dataManager.ActivityOrganizer);
     NSLog(@"%@",_dataManager.ActivityOrganizerId);
     
-    [YUtils showHUDWithTitle];
-    
-    if (_dataManager.ActivityDesciptionImage != nil)
+    NSDateFormatter * formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"yyyy年MM月dd日 a HH:mm"];
+    NSTimeInterval timeBetween = [[formatter dateFromString:_dataManager.ActivityDateEndText] timeIntervalSinceDate:[formatter dateFromString:_dataManager.ActivityDateBeginText]];
+    if (timeBetween < 900)
     {
-        NSString *keyStr = @"activityRelease.png";
-        NSString *fullPath = [[YDirectory newImgCache] stringByAppendingPathComponent:keyStr];
-        
-        [[ActivityManager sharedInstance] commonImgUpload:@"activity" needSnap:@"true" imagePath:fullPath block:^(YActionMessage *message) {
-            NSLog(@"%@",message);
-            
-            [self sendReleaseRequest:message];
-        }];
+        [YUtils showTitle:@"活动时长不能小于15分钟" hideAfter:2];
     }
     else
     {
-        [self sendReleaseRequest:nil];
+        [YUtils showHUDWithTitle];
+        
+        if (_dataManager.ActivityDesciptionImage != nil)
+        {
+            NSString *keyStr = @"activityRelease.png";
+            NSString *fullPath = [[YDirectory newImgCache] stringByAppendingPathComponent:keyStr];
+            
+            [[ActivityManager sharedInstance] commonImgUpload:@"activity" needSnap:@"true" imagePath:fullPath block:^(YActionMessage *message) {
+                NSLog(@"%@",message);
+                
+                [self sendReleaseRequest:message];
+            }];
+        }
+        else
+        {
+            [self sendReleaseRequest:nil];
+        }
     }
+    
+    
 
 //    NSDateFormatter * formatter = [[NSDateFormatter alloc] init];
 //    [formatter setDateFormat:@"yyyy年MM月dd日 a HH:mm"];
@@ -684,7 +696,7 @@ typedef enum : NSUInteger {
     [[ActivityManager sharedInstance] editActivity:modelDic block:^(YActionMessage *message) {
         NSLog(@"%@",message);
         [YUtils hiddenProgressHUD];
-        [YUtils showTitle:message.desc];
+        [YUtils showTitle:message.desc hideAfter:2];
         if ([[message.object valueForKey:@"code"] integerValue] == 1)
         {
             [[NSNotificationCenter defaultCenter] postNotificationName:KNotification_Activity_Release_Success object:nil];

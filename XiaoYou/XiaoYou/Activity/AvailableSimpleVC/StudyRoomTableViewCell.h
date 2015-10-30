@@ -7,11 +7,12 @@
 //
 
 #import "YTableViewCell.h"
+#import "FreeBuildingListModel.h"
 
 extern NSString *const kStudyRoomTableViewCell;
 
 @interface StudyRoomTableViewCell : YTableViewCell
 
-- (void)initData:(NSInteger)num;
+- (void)initData:(FreeBuildingListModel *)model;
 
 @end

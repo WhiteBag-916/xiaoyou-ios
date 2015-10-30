@@ -10,4 +10,6 @@
 
 @interface StudyRoomDetailTableView : YTableView
 
+- (instancetype)initWithBuildName:(NSString *) name;
+
 @end

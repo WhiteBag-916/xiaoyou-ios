@@ -89,7 +89,7 @@ typedef enum : NSUInteger {
         
         [self setUpCustomNavgationBar:Question_Type];
         
-        _studyRoomDetailTableView = [[StudyRoomDetailTableView alloc] init];
+        _studyRoomDetailTableView = [[StudyRoomDetailTableView alloc] initWithBuildName:_buildName];
         [self.view addSubview:_studyRoomDetailTableView];
         
         [_studyRoomDetailTableView mas_makeConstraints:^(MASConstraintMaker *make) {

@@ -16,6 +16,7 @@ typedef NS_ENUM(NSInteger, AvailableSimpleType) {
 
 @interface AvailableSimpleViewController : YViewController
 
+@property(nonatomic,strong)NSString * buildName;
 @property (nonatomic, assign) NSInteger num;//临时
 
 - (id)initWithType:(AvailableSimpleType)type;

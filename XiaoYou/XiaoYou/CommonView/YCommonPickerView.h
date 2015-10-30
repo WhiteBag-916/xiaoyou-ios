@@ -17,7 +17,7 @@ extern NSString *const kPickerViewCalendarRemind;
 
 @interface YCommonPickerView : UIPickerView
 
-- (instancetype)initWithType:(PickerView_Type)type;
+- (instancetype)initWithType:(PickerView_Type)type commonArray:(NSArray *)commonArray;
 
 - (NSDictionary *)getData;
 

@@ -23,15 +23,13 @@ NSString *const kPickerViewCalendarRemind = @"PickerViewCalendarRemindC";
 
 @implementation YCommonPickerView
 
-- (instancetype)initWithType:(PickerView_Type)type
+- (instancetype)initWithType:(PickerView_Type)type commonArray:(NSArray *)commonArray
 {
     if (self = [super initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 160)])
     {
         _viewType = type;
         
-        if (PickerView_CalendarRemind == _viewType) {
-            self.commonArray = [@[@"不设置提醒", @"事件发生时", @"5分钟前", @"15分钟前", @"1小时前", @"2小时前", @"1天前"] mutableCopy];
-        }
+        self.commonArray = [commonArray mutableCopy];
         
         self.delegate = self;
         self.dataSource = self;

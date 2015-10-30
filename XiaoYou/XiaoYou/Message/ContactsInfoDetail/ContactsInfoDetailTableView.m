@@ -73,6 +73,7 @@
 -(void)refreshTableView:(ProfileInfo *) model
 {
     _model = model;
+
     if (_model != nil) {
         self.flagNameArr = [[NSMutableArray alloc]init];
         for (int i = 0; i <_model.tagsCommon.count; i++)

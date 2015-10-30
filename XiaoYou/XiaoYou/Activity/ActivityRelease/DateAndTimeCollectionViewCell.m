@@ -159,8 +159,20 @@ NSString *const kDateAndTimeCollectionViewCell = @"DateAndTimeCollectionViewCell
     [popView comSet:self action:@selector(applayChooseDate) params:nil];
 
     _datePicker.minimumDate = [NSDate date];
-//    _datePicker.minimumDate = nil;
     _datePicker.maximumDate = nil;
+
+//    NSDateFormatter * formatter = [[NSDateFormatter alloc] init];
+//    [formatter setDateFormat:@"yyyy年MM月dd日 a HH:mm"];
+//    if ([_dataManager.ActivityDateEndText isEqualToString:@"请选择活动结束时间"] || _dataManager.ActivityDateEndText == nil)
+//    {
+//        _datePicker.minimumDate = [[NSDate date] dateByAddingTimeInterval:900];
+//        _datePicker.maximumDate = nil;
+//    }
+//    else
+//    {
+//        _datePicker.minimumDate = [[NSDate date] dateByAddingTimeInterval:900];
+//        _datePicker.maximumDate = [formatter dateFromString:_dataManager.ActivityDateEndText];
+//    }
     
     
     NSDictionary * dic = @{@"position":@3};
@@ -180,29 +192,46 @@ NSString *const kDateAndTimeCollectionViewCell = @"DateAndTimeCollectionViewCell
                                                             isRoot:YES
                                                            addSelf:[UIApplication sharedApplication].keyWindow];
     [popView comSet:self action:@selector(heginChooseDate) params:nil];
+    
+    _datePicker.minimumDate = [NSDate date];
+    _datePicker.maximumDate = nil;
+    
+//    NSDateFormatter * formatter = [[NSDateFormatter alloc] init];
+//    [formatter setDateFormat:@"yyyy年MM月dd日 a HH:mm"];
+//    if ([_dataManager.ActivityDateEndText isEqualToString:@"请选择活动结束时间"] || _dataManager.ActivityDateEndText == nil)
+//    {
+//        _datePicker.minimumDate = [[NSDate date] dateByAddingTimeInterval:900];
+//        _datePicker.maximumDate = nil;
+//    }
+//    else
+//    {
+//        _datePicker.minimumDate = [[NSDate date] dateByAddingTimeInterval:900];
+//        _datePicker.maximumDate = [[formatter dateFromString:_dataManager.ActivityDateEndText] dateByAddingTimeInterval:-900];
+//    }
+    
     //重置开始时间
-    NSDateFormatter * formatter = [[NSDateFormatter alloc] init];
-    [formatter setDateFormat:@"yyyy年MM月dd日 a HH:mm"];
-    if ([_dataManager.ActivityDateBeginText isEqualToString:@"请选择活动开始时间"] || _dataManager.ActivityDateBeginText == nil)
-    {
-        if ([_dataManager.ActivityDateEndText isEqualToString:@"请选择活动结束时间"] || _dataManager.ActivityDateEndText == nil)
-        {
-            _datePicker.minimumDate = [NSDate date];
-            _datePicker.maximumDate = nil;
-        }
-        else
-        {
-            _datePicker.minimumDate = [NSDate date];
-//            _datePicker.minimumDate = nil;
-            _datePicker.maximumDate = [formatter dateFromString:_dataManager.ActivityDateEndText];
-        }
-    }
-    else
-    {
-        _datePicker.minimumDate = nil;
-        _datePicker.maximumDate = [formatter dateFromString:_dataManager.ActivityDateEndText];
-        
-    }
+//    NSDateFormatter * formatter = [[NSDateFormatter alloc] init];
+//    [formatter setDateFormat:@"yyyy年MM月dd日 a HH:mm"];
+//    if ([_dataManager.ActivityDateBeginText isEqualToString:@"请选择活动开始时间"] || _dataManager.ActivityDateBeginText == nil)
+//    {
+//        if ([_dataManager.ActivityDateEndText isEqualToString:@"请选择活动结束时间"] || _dataManager.ActivityDateEndText == nil)
+//        {
+//            _datePicker.minimumDate = [NSDate date];
+//            _datePicker.maximumDate = nil;
+//        }
+//        else
+//        {
+//            _datePicker.minimumDate = [NSDate date];
+////            _datePicker.minimumDate = nil;
+//            _datePicker.maximumDate = [formatter dateFromString:_dataManager.ActivityDateEndText];
+//        }
+//    }
+//    else
+//    {
+//        _datePicker.minimumDate = nil;
+//        _datePicker.maximumDate = [formatter dateFromString:_dataManager.ActivityDateEndText];
+//        
+//    }
     
     NSDictionary * dic = @{@"position":@3};
     [[NSNotificationCenter defaultCenter] postNotificationName:KNotification_Activity_Release_ScrollTo object:dic];
@@ -220,29 +249,46 @@ NSString *const kDateAndTimeCollectionViewCell = @"DateAndTimeCollectionViewCell
                                                             isRoot:YES
                                                            addSelf:[UIApplication sharedApplication].keyWindow];
     [popView comSet:self action:@selector(endChooseDate) params:nil];
+    
+    _datePicker.minimumDate = [NSDate date];
+    _datePicker.maximumDate = nil;
+    
+//    NSDateFormatter * formatter = [[NSDateFormatter alloc] init];
+//    [formatter setDateFormat:@"yyyy年MM月dd日 a HH:mm"];
+//    if ([_dataManager.ActivityDateBeginText isEqualToString:@"请选择活动结束时间"] || _dataManager.ActivityDateBeginText == nil)
+//    {
+//        _datePicker.minimumDate = [[NSDate date] dateByAddingTimeInterval:1800];
+//        _datePicker.maximumDate = nil;
+//    }
+//    else
+//    {
+//        _datePicker.minimumDate = [[formatter dateFromString:_dataManager.ActivityDateBeginText] dateByAddingTimeInterval:900];
+//        _datePicker.maximumDate = nil;
+//    }
+    
     //重置结束时间
-    NSDateFormatter * formatter = [[NSDateFormatter alloc] init];
-    [formatter setDateFormat:@"yyyy年MM月dd日 a HH:mm"];
-    if ([_dataManager.ActivityDateBeginText isEqualToString:@"请选择活动开始时间"] || _dataManager.ActivityDateBeginText == nil)
-    {
-        if ([_dataManager.ActivityDateEndText isEqualToString:@"请选择活动结束时间"] || _dataManager.ActivityDateEndText == nil)
-        {
-             _datePicker.minimumDate = [NSDate date];
-             _datePicker.maximumDate = nil;
-        }
-        else
-        {
-            _datePicker.minimumDate = [NSDate date];
-//            _datePicker.minimumDate = nil;
-            _datePicker.maximumDate = [formatter dateFromString:_dataManager.ActivityDateEndText];
-        }
-    }
-    else
-    {
-        _datePicker.maximumDate = nil;
-        _datePicker.minimumDate = [formatter dateFromString:_dataManager.ActivityDateBeginText];
-        
-    }
+//    NSDateFormatter * formatter = [[NSDateFormatter alloc] init];
+//    [formatter setDateFormat:@"yyyy年MM月dd日 a HH:mm"];
+//    if ([_dataManager.ActivityDateBeginText isEqualToString:@"请选择活动开始时间"] || _dataManager.ActivityDateBeginText == nil)
+//    {
+//        if ([_dataManager.ActivityDateEndText isEqualToString:@"请选择活动结束时间"] || _dataManager.ActivityDateEndText == nil)
+//        {
+//             _datePicker.minimumDate = [NSDate date];
+//             _datePicker.maximumDate = nil;
+//        }
+//        else
+//        {
+//            _datePicker.minimumDate = [NSDate date];
+////            _datePicker.minimumDate = nil;
+//            _datePicker.maximumDate = [formatter dateFromString:_dataManager.ActivityDateEndText];
+//        }
+//    }
+//    else
+//    {
+//        _datePicker.maximumDate = nil;
+//        _datePicker.minimumDate = [formatter dateFromString:_dataManager.ActivityDateBeginText];
+//        
+//    }
     NSDictionary * dic = @{@"position":@3};
     [[NSNotificationCenter defaultCenter] postNotificationName:KNotification_Activity_Release_ScrollTo object:dic];
     
