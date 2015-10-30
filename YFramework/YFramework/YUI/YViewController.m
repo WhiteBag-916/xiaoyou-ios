@@ -151,7 +151,15 @@
 
 //导航栏右侧，更多按钮
 - (void)showCustomNavigationMoreButton {
-    [self showNomalNavigationRightButtonWithImage:@"" action:@selector(onNavigationRightButtonClicked) imgName:@"more" frame:CGRectMake(0, 0, 18, 64)];
+    [self IsShowCustomNavigationMoreButton:YES];
+//    NSString *imageName = [NSString stringWithFormat:@"%@",isShow ? @"more" : @""];
+//    [self showNomalNavigationRightButtonWithImage:@"" action:@selector(onNavigationRightButtonClicked) imgName:imageName frame:CGRectMake(0, 0, 18, 64)];
+}
+
+//导航栏右侧，更多按钮
+- (void)IsShowCustomNavigationMoreButton:(BOOL)isShow {
+    NSString *imageName = [NSString stringWithFormat:@"%@",isShow ? @"more" : @""];
+    [self showNomalNavigationRightButtonWithImage:@"" action:@selector(onNavigationRightButtonClicked) imgName:imageName frame:CGRectMake(0, 0, 18, 64)];
 }
 
 //导航栏右侧，确认按钮

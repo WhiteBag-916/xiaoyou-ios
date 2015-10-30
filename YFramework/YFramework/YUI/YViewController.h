@@ -41,6 +41,9 @@
 //导航栏右侧，更多按钮
 - (void)showCustomNavigationMoreButton;
 
+//是否显示更多按钮
+- (void)IsShowCustomNavigationMoreButton:(BOOL)isShow;
+
 //导航栏右侧，确认按钮
 - (void)showCustomNavigationSureButton;
 

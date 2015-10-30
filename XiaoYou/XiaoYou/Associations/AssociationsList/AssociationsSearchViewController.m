@@ -173,7 +173,7 @@ const NSInteger kSearchTimerDelay = 2.f;
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
     //取消定时器
     [YTimer killTimerWithID:_searchTimerID];
-    
+    [_searchBar resignFirstResponder];
     [self toSearch];
 }
 
