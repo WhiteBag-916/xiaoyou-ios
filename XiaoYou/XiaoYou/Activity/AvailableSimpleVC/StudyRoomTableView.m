@@ -12,6 +12,7 @@
 #import "ActivityManager.h"
 #import "FreeBuildingListModel.h"
 #import "Tags.h"
+#import "Result.h"
 
 @interface StudyRoomTableView ()
 <UITableViewDataSource
@@ -87,7 +88,8 @@
         if (message.isSuccess)
         {
             [YUtils hiddenProgressHUD];
-            self.dataSouceArr = message.object;
+            FreeBuildingListModel * model = message.object;
+            self.dataSouceArr = (NSMutableArray *)model.result;
             [self reloadData];
             
             [self extractCampusDataSource:message.object];
@@ -139,7 +141,7 @@
 {
     AvailableSimpleViewController *vc = [[AvailableSimpleViewController alloc] initWithType:AvailableSimpleTypeStudyRoomDetail];
     vc.num = indexPath.row;
-    FreeBuildingListModel * model = _dataSouceArr[indexPath.row];
+    Result * model = _dataSouceArr[indexPath.row];
     vc.buildName = model.buildName;
     [self.viewController.navigationController pushViewController:vc animated:YES needHiddenBottomBar:YES];
     return;
