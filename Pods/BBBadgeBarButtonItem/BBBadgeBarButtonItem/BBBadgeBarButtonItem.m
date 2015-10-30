@@ -78,8 +78,8 @@
     // Using const we make sure the badge doesn't get too smal
     minWidth = (minWidth < minHeight) ? minHeight : expectedLabelSize.width;
     self.badge.frame = CGRectMake(self.badgeOriginX, self.badgeOriginY, minWidth + padding, minHeight + padding);
-    self.badge.layer.masksToBounds = YES;
     self.badge.layer.cornerRadius = (minHeight + padding) / 2;
+    self.badge.layer.masksToBounds = YES;
 }
 
 // Handle the badge changing value
@@ -99,10 +99,10 @@
     self.badge.text = self.badgeValue;
 
     // Animate the size modification if needed
-//    NSTimeInterval duration = animated ? 0.2 : 0;
-//    [UIView animateWithDuration:duration animations:^{
+    //NSTimeInterval duration = animated ? 0.2 : 0;
+    //[UIView animateWithDuration:duration animations:^{
         [self updateBadgeFrame];
-//    }];
+    //}]; // this animation breaks the rounded corners in iOS 9
 }
 
 - (UILabel *)duplicateLabel:(UILabel *)labelToCopy
