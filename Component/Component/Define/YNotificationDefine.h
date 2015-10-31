@@ -43,4 +43,7 @@
 #define KNotification_Activity_Release_Success         @"KNotification_Activity_Release_Success"
 //自习室筛选
 #define KNotification_Study_Room_Filtrate               @"KNotification_Study_Room_Filtrate"
+
+#define KNotification_Remind_Message_Come               @"KNotification_Remind_Message_Come"
+
 #endif

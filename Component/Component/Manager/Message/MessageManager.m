@@ -23,6 +23,7 @@
 #import "ContactManager.h"
 #import "EMTextMessageBody.h"
 #import "SuggestListAction.h"
+#import "AppConfigData.h"
 
 
 #define kMessageManagerSyncQueue @"kMessageManagerSyncQueue"
@@ -374,7 +375,7 @@ DEF_SINGLETON(MessageManager);
                 }];
                 
                 if ([SStr(chatter) isEmpty]) {
-                    chatter = [NSString stringWithFormat:@"%u", [KGROUP_APPLYID integerValue]+_grouArray.count];
+                    chatter = [NSString stringWithFormat:@"%lu", [KGROUP_APPLYID integerValue]+_grouArray.count];
                     [_grouArray addObject:@{@"group_id":ext[@"group_id"], @"chatter": chatter}];
                 }
                 
@@ -385,15 +386,34 @@ DEF_SINGLETON(MessageManager);
                 needRefresh = YES;
                 break;
             }
+//                ACTIVITY_PUSH=12,       //活动推送
+//                ACTIVITY_ENROLL_CHECK_PASS=13,//活动报名审核通过
+//                ACTIVITY_ENROLL_NO_CHECK=14,//活动报名审核未通过
+//                SCHEDULE_REMIND=15,         //用户日程提醒
+//                ACTIVITY_ENROLL=16,         //用户报名活动提醒
+//                ACTIVITY_PUBLISH=17,        //活动发布提醒
+//                ACTIVITY_NOTIFY=18          //活动通知提醒
             case ACTIVITY_PUSH:
             {
                 YLogD(@"活动推送");
                 NSString *activityID = ext[@"aaaa"];
                 break;
             }
+            case ACTIVITY_ENROLL_CHECK_PASS:
+            {
+                
+            }
+            case ACTIVITY_ENROLL_NO_CHECK:
+            {
+                
+            }
             case SCHEDULE_REMIND: //日程提醒
             {
-                YLogD(@"this is =%@",message);
+                //YLogD(@"this is =%@",message);
+                
+                [self showNotificationWithMessage:message];
+                [AppConfigData setHaveRemindMessage:YES];
+                break;
             }
             case ADD_COMMENT:
             case ADD_PRAOSE:
@@ -450,6 +470,14 @@ DEF_SINGLETON(MessageManager);
     
     return needRefresh;
 }
+
+
+-(void)postRemindMassge
+{
+    [[NSNotificationCenter defaultCenter] postNotificationName:KNotification_Remind_Message_Come object:nil userInfo:nil];
+}
+
+
 //接收正常消息
 -(void)didReceiveMessage:(EMMessage *)message
 {

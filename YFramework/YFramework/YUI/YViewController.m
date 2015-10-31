@@ -184,8 +184,9 @@
 }
 
 //导航栏左侧提醒按钮
-- (void)showCustomNavigationRemindButton {
-    [self showNomalNavigationLeftButton:@"" action:@selector(onNavigationLeftButtonClicked) imgName:@"have_time_msg" frame:CGRectMake(0, 0, 16, 16)];
+- (void)showCustomNavigationRemindButton:(BOOL)haveMsg {
+    NSString *imageName = haveMsg ? @"red_bell":@"have_time_msg";
+    [self showNomalNavigationLeftButton:@"" action:@selector(onNavigationLeftButtonClicked) imgName:imageName frame:CGRectMake(0, 0, 16, 16)];
 }
 
 - (void)showNomalNavigationRightButtonWithImage:(NSString *)title action:(SEL)selector imgName:(NSString *)imgName frame:(CGRect)frame {

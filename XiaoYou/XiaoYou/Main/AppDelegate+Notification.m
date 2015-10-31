@@ -22,6 +22,12 @@
     [[EaseMob sharedInstance] application:application didFinishLaunchingWithOptions:launchOptions];
     
     [self setupNotifiers];
+    
+    NSObject *url = [launchOptions objectForKey:UIApplicationLaunchOptionsLocalNotificationKey];
+    
+    if (url) {
+        NSLog(@"this is local notity.....");
+    }
 }
 
 // 注册推送

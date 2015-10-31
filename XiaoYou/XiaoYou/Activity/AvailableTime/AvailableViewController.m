@@ -19,6 +19,8 @@
 #import "ProvisionManager.h"
 #import "ProfileInfo.h"
 #import "Tags.h"
+#import "YNotificationDefine.h"
+
 @interface AvailableViewController ()
 
 @property (nonatomic,strong) AvailableListView *availableListView;
@@ -40,6 +42,7 @@
         [self addGuideView];
     [self setUpCustomNavgationBar];
     [self availableListView];
+    [self addObserverRemindMessage];
 }
 
 -(void)dealloc
@@ -139,8 +142,21 @@
     [view addSubview:scheduleBtn];
     
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:view];
-    [self showCustomNavigationRemindButton];
+    [self showCustomNavigationRemindButton:NO];
 }
+
+#pragma mark 监听是否有消息到来
+
+-(void)addObserverRemindMessage
+{
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(changeStatus) name:KNotification_Remind_Message_Come object:nil];
+}
+
+-(void)changeStatus
+{
+    [self showCustomNavigationRemindButton:YES];
+}
+
 
 //发布Action
 -(void)publishAction {
@@ -179,6 +195,7 @@
     RemindViewController *remindVC = [[RemindViewController alloc]init];
     //[self.navigationController presentViewController:remindVC animated:YES completion:nil];
     [self.navigationController pushViewController:remindVC animated:YES needHiddenBottomBar:YES];
+    [self showCustomNavigationRemindButton:NO];
 }
 
 
@@ -196,5 +213,4 @@
     self.hidesBottomBarWhenPushed = NO;
     
 }
-
 @end
