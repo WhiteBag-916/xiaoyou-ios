@@ -71,7 +71,14 @@ NSString *const kPlaceCollectionViewCell = @"PlaceCollectionViewCellId";
         {
             [YUtils showTitle:@"地点字数不能大于100字"];
         }
-        textView.text = [textView.text substringWithRange:NSMakeRange(0, 100)];
+        if (textView.text.length > 100)
+        {
+            [textView setText:[textView.text substringWithRange:NSMakeRange(0, 100)]];
+        }
+        else
+        {
+            return;
+        }
     }
 }
 

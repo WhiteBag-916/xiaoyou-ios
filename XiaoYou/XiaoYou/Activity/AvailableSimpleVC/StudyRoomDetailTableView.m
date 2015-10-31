@@ -49,12 +49,16 @@
     [YUtils showHUDWithTitle];
     [[ActivityManager sharedInstance] freeBuildingDetail:name block:^(YActionMessage *message) {
         
+        [YUtils hiddenProgressHUD];
         if (message.isSuccess) {
-            [YUtils hiddenProgressHUD];
+            
             self.dataSouceArr = message.object;
             [self reloadData];
         }
-        
+        else
+        {
+            [YUtils showTitle:message.desc hideAfter:2];
+        }
         
     }];
 }

@@ -235,7 +235,14 @@ NSString *const kDescriptionCollectionViewCell = @"DescriptionCollectionViewCell
         {
             [YUtils showTitle:@"描述字数不能大于5000字"];
         }
-        textView.text = [textView.text substringWithRange:NSMakeRange(0, 5000)];
+        if (textView.text.length > 5000)
+        {
+            [textView setText:[textView.text substringWithRange:NSMakeRange(0, 5000)]];
+        }
+        else
+        {
+            return;
+        }
     }
 }
 
