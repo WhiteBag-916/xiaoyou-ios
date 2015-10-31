@@ -79,7 +79,6 @@
 - (void)loadNewData
 {
     _currentIndex = 0;
-    [_availableListArray removeAllObjects];
     [self sendRequest];
 }
 
@@ -95,11 +94,7 @@
             if ([self isHeaderRefresh]) {
                 [self.availableListArray removeAllObjects];
             }
-            
-            NSLog(@"this is message = %@",message);
-            
             [self.availableListArray addObjectsFromArray:message.object];
-            
             [self hiddenFooter:NO];
             if ([message.object count] < KPAGENUM) {
                 [self showNoticeNoMoreData];
@@ -134,7 +129,6 @@
         }];
         
         return height;
-        //return SCALE_NUM(140);
     }
     else if (indexPath.row == 1)
         return SCALE_NUM(85);
