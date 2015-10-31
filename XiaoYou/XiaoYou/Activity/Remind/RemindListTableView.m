@@ -87,7 +87,6 @@
 - (void)loadNewData
 {
      _currentIndex = 0;
-    [_remindListArray removeAllObjects];
     [self sendRequest];
 }
 
@@ -181,8 +180,7 @@
     
     UITableViewCell *cell = nil;
     NoticeInfo *info;
-    if (self.remindListArray.count > 0)
-        info = self.remindListArray[indexPath.section];
+    info = self.remindListArray[indexPath.section];
     if (info.activityOwner) {
         ApplyRemindCell *appCell = [ApplyRemindCell cellWithTableView:tableView];
         [appCell setData:info];
