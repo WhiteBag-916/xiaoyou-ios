@@ -229,10 +229,12 @@ NSString *const kDescriptionCollectionViewCell = @"DescriptionCollectionViewCell
     {
         if ([self isBlankString:textView.text])
         {
+            [self.viewController.view endEditing:YES];
             [YUtils showTitle:@"描述不能为空"];
         }
         else
         {
+            [self.viewController.view endEditing:YES];
             [YUtils showTitle:@"描述字数不能大于5000字"];
         }
         if (textView.text.length > 5000)
