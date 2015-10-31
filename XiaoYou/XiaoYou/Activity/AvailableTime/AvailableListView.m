@@ -158,8 +158,7 @@
     } else
     {
         AvailableCell *cell = [tableView dequeueReusableCellWithIdentifier:REUSEID_AVAILABEL_CELL];
-        if (self.availableListArray.count > 0)
-            [cell setData:self.availableListArray[indexPath.row-2]];
+        [cell setData:self.availableListArray[indexPath.row-2]];
         return cell;
     }
     return nil;
