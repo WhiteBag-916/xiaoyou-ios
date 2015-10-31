@@ -65,13 +65,22 @@ NSString *const kPlaceCollectionViewCell = @"PlaceCollectionViewCellId";
     {
         if ([self isBlankString:textView.text])
         {
+            [self.viewController.view endEditing:YES];
             [YUtils showTitle:@"地点不能为空"];
         }
         else
         {
+            [self.viewController.view endEditing:YES];
             [YUtils showTitle:@"地点字数不能大于100字"];
         }
-        textView.text = [textView.text substringWithRange:NSMakeRange(0, 100)];
+        if (textView.text.length > 100)
+        {
+            [textView setText:[textView.text substringWithRange:NSMakeRange(0, 100)]];
+        }
+        else
+        {
+            return;
+        }
     }
 }
 

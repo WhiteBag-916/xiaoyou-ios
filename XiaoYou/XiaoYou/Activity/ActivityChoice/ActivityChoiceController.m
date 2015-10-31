@@ -38,6 +38,8 @@
 
 -(void)setUpUI
 {
+    self.view.backgroundColor = [UIColor whiteColor];
+    
     _activityChoiceTableView = [[ActivityChoiceTableView alloc] initWithType:_myType];
     _activityChoiceTableView.myController = self;
     if (_myType == CLASSROOM_CHOICE_TYPE)
@@ -47,7 +49,8 @@
     }
     [self.view addSubview:_activityChoiceTableView];
     [_activityChoiceTableView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.bottom.leading.trailing.mas_equalTo(0);
+        make.bottom.leading.trailing.mas_equalTo(0);
+        make.top.mas_equalTo(10);
     }];
 }
 

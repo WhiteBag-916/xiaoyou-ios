@@ -111,15 +111,20 @@
     [YUtils showHUDWithTitle];
     [[ActivityManager sharedInstance] freeBuildingList:^(YActionMessage *message) {
         
+        [YUtils hiddenProgressHUD];
+        
         if (message.isSuccess)
         {
-            [YUtils hiddenProgressHUD];
             FreeBuildingListModel * model = message.object;
             self.dataSouceArrOriginal = [NSMutableArray arrayWithArray:model.result];
             self.dataSouceArr = [NSMutableArray arrayWithArray:model.result];
             [self reloadData];
             
             self.campusDataSouceArr = (NSMutableArray *)model.filter;
+        }
+        else
+        {
+            [YUtils showTitle:message.desc hideAfter:2];
         }
     }];
 }
