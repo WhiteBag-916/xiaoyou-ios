@@ -52,8 +52,7 @@
 
 -(void)receiveNotificationOfReleaseSuccess
 {
-    //[_availableListView loadData];
-    [_availableListView loadNewData];
+    [_availableListView loadData];
 }
 
 - (void)addGuideView {
