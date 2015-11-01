@@ -41,8 +41,7 @@
     if([AppConfigData isUserFirstUseHaveTime])
         [self addGuideView];
     [self setUpCustomNavgationBar];
-    [self availableListView];
-    [self addObserverRemindMessage];
+    [self.availableListView loadData];
 }
 
 -(void)dealloc
@@ -51,11 +50,9 @@
 }
 
 
-
-
 -(void)receiveNotificationOfReleaseSuccess
 {
-    [_availableListView loadData];
+    //[_availableListView loadData];
     [_availableListView loadNewData];
 }
 
@@ -110,8 +107,6 @@
             make.edges.equalTo(self.view);
         }];
     }
-    [_availableListView loadData];
-    [_availableListView sendRequest];
     return _availableListView;
 }
 
@@ -142,19 +137,9 @@
     [view addSubview:scheduleBtn];
     
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:view];
-    [self showCustomNavigationRemindButton:NO];
-}
-
-#pragma mark 监听是否有消息到来
-
--(void)addObserverRemindMessage
-{
-    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(changeStatus) name:KNotification_Remind_Message_Come object:nil];
-}
-
--(void)changeStatus
-{
-    [self showCustomNavigationRemindButton:YES];
+    
+    [self showCustomNavigationRemindButton:[AppConfigData isHaveRemindMessage]];
+    [AppConfigData setHaveRemindMessage:NO];
 }
 
 

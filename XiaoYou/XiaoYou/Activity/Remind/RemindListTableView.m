@@ -179,8 +179,7 @@
 {
     
     UITableViewCell *cell = nil;
-    NoticeInfo *info;
-    info = self.remindListArray[indexPath.section];
+    NoticeInfo *info = self.remindListArray[indexPath.section];
     if (info.activityOwner) {
         ApplyRemindCell *appCell = [ApplyRemindCell cellWithTableView:tableView];
         [appCell setData:info];

@@ -21,7 +21,7 @@
     self.view.backgroundColor = [UIColor whiteColor];
     [self setTitle:@"提醒"];
     [self showCustomNavigationBackButton];
-    [self remindList];
+    [self.remindList loadData];
 }
 
 -(RemindListTableView *)remindList {
@@ -35,8 +35,6 @@
             make.bottom.equalTo(self.view);
         }];
     }
-    [_remindList loadData];
-    [_remindList sendRequest];
     return _remindList;
 }
 @end

@@ -20,10 +20,6 @@ typedef enum : NSUInteger {
 
 -(void)loadData;
 - (void)loadNewData;
-//
-//-(void)loadNewData;
-
-- (void)sendRequest;
 
 @property (nonatomic,strong) NSMutableArray *availableListArray;
 
