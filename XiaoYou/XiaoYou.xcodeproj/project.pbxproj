@@ -83,8 +83,8 @@
 		0476B62A1BD0E4EC00FD13DF /* 1havetime_box_calender@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0476B6261BD0E4EC00FD13DF /* 1havetime_box_calender@3x.png */; };
 		0476B62B1BD0E4EC00FD13DF /* 1havetime_box_classroom@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0476B6271BD0E4EC00FD13DF /* 1havetime_box_classroom@2x.png */; };
 		0476B62C1BD0E4EC00FD13DF /* 1havetime_box_classroom@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0476B6281BD0E4EC00FD13DF /* 1havetime_box_classroom@3x.png */; };
-		0479E4261BE4B68D002815E7 /* red_bell@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0479E4241BE4B68D002815E7 /* red_bell@2x.png */; settings = {ASSET_TAGS = (); }; };
-		0479E4271BE4B68D002815E7 /* red_bell@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0479E4251BE4B68D002815E7 /* red_bell@3x.png */; settings = {ASSET_TAGS = (); }; };
+		0479E4261BE4B68D002815E7 /* red_bell@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0479E4241BE4B68D002815E7 /* red_bell@2x.png */; };
+		0479E4271BE4B68D002815E7 /* red_bell@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0479E4251BE4B68D002815E7 /* red_bell@3x.png */; };
 		048676A01BC803CB009F8C43 /* FastBottomView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0486769F1BC803CB009F8C43 /* FastBottomView.m */; };
 		0487E4391BDF4DA5002396CD /* PassRemindCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0487E4381BDF4DA5002396CD /* PassRemindCell.m */; };
 		048C49EE1BD4EDB0008E1D88 /* havetime_icon_no@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 048C49EC1BD4EDB0008E1D88 /* havetime_icon_no@2x.png */; };
