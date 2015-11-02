@@ -31,6 +31,7 @@ typedef enum : NSUInteger {
     UNFORBIDDEN_ME=9,       //解除对我消息不提醒
     KICKGROUP=10,           //踢出群
     DELETEUSER=11,          //被好友删除
+    
 #pragma mark
     ACTIVITY_PUSH=12,       //活动推送
     ACTIVITY_ENROLL_CHECK_PASS=13,//活动报名审核通过

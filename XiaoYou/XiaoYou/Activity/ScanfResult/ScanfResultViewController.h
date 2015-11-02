@@ -10,4 +10,6 @@
 
 @interface ScanfResultViewController : YViewController
 
+- (instancetype)initWithResult:(NSString *)result;
+
 @end

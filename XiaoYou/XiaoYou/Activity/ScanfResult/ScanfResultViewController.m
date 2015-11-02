@@ -12,10 +12,20 @@
 @interface ScanfResultViewController ()
 
 @property(nonatomic,strong)ScanfResultTableView * scanfResultTableView;
+@property(nonatomic,strong)NSString * resultStr;
 
 @end
 
 @implementation ScanfResultViewController
+
+- (instancetype)initWithResult:(NSString *)result
+{
+    self = [super init];
+    if (self) {
+        _resultStr = result;
+    }
+    return self;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
