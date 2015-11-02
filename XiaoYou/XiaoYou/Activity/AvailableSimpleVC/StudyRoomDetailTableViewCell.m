@@ -15,7 +15,7 @@ NSString *const kStudyRoomDetailTableViewCell = @"StudyRoomDetailTableViewCellId
 #define K_IMG_H             SCALE_NUM(14)   //图标高
 #define K_TEXT_L            SCALE_NUM(6)    //字左
 #define K_ROOM_T            SCALE_NUM(15)   //室上
-#define K_TEXT_H            SCALE_NUM(12)   //字高
+#define K_TEXT_H            SCALE_NUM(14)   //字高
 
 @interface StudyRoomDetailTableViewCell ()
 
