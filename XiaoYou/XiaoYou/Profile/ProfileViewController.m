@@ -512,7 +512,7 @@
 {
 //    [self.navigationController popViewControllerAnimated:true];
 //    [self.navigationController pushViewController:[[GiftViewController alloc] initWithCode:result] animated:true];
-    ScanfResultViewController * resultViewController = [[ScanfResultViewController alloc] init];
+    ScanfResultViewController * resultViewController = [[ScanfResultViewController alloc] initWithResult:result];
     [self.navigationController pushViewController:resultViewController animated:YES needHiddenBottomBar:YES];
 }
 
