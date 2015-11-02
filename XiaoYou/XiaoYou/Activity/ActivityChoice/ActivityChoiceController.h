@@ -19,10 +19,7 @@ typedef enum : NSUInteger {
 
 @property(nonatomic,weak)AvailableViewController * activityViewController;
 @property(nonatomic,weak)AvailableSimpleViewController * classViewController;
-@property(nonatomic,strong)NSMutableArray * dataSourceArr;
-@property (nonatomic,strong)NSString * studyRoomDefautStr;//自习室默认选中值
 
-
--(instancetype)initWithType:(CHOICE_TYPE) type;
+-(instancetype)initWithType:(CHOICE_TYPE) type andDataSource:(NSMutableArray *) dataSource andStudyRoomDefautStr:(NSString *) studyRoomDefautStr;
 
 @end

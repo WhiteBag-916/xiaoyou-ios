@@ -52,16 +52,19 @@
     NSLog(@"%@",info.object);
     
     NSArray * tempArr = [NSArray arrayWithArray:self.dataSouceArrOriginal];
-    [self.dataSouceArr removeAllObjects];
-    for (int i = 0 ; i < tempArr.count ; i++)
+    
+    if (![info.object[@"schoolName"] isEqualToString:@"全部"])
     {
-        Result * resultModel = tempArr[i];
-        if ([info.object[@"schoolName"] isEqualToString:resultModel.schoolArea])
+        [self.dataSouceArr removeAllObjects];
+        for (int i = 0 ; i < tempArr.count ; i++)
         {
-            [self.dataSouceArr addObject:resultModel];
+            Result * resultModel = tempArr[i];
+            if ([info.object[@"schoolName"] isEqualToString:resultModel.schoolArea])
+            {
+                [self.dataSouceArr addObject:resultModel];
+            }
         }
     }
-
     NSLog(@"%@",self.dataSouceArr);
     [self reloadData];
 }

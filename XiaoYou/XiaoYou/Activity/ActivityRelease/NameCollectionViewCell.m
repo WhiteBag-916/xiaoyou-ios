@@ -72,13 +72,13 @@ NSString *const kNameCollectionViewCell = @"NameCollectionViewCellId";
         else
         {
             [self.viewController.view endEditing:YES];
-            [YUtils showTitle:@"名称字数不能大于30字"];
+            
             
         }
-        if (textView.text.length > 30)
+        if (textView.text.length >=30)
         {
+            [YUtils showTitle:@"名称字数不能大于30字"];
             [textView setText:[textView.text substringWithRange:NSMakeRange(0, 30)]];
-            _dataManager.ActivityNameText = textView.text;
         }
         else
         {

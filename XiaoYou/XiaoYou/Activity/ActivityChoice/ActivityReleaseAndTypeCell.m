@@ -163,14 +163,22 @@ NSString *const kActivityReleaseAndTypeCell = @"ActivityReleaseAndTypeCellId";
     if (_myType == ACTIVITY_CHOICE_TYPE) {
         if ([self.delegate respondsToSelector:@selector(didSelectRow:andType:)])
         {
-            [self.delegate didSelectRow:_dataArr[row] andType:_model.param];
+            if (_dataArr.count > 0)
+            {
+                [self.delegate didSelectRow:_dataArr[row] andType:_model.param];
+            }
+            
         }
     }
     else
     {
         if ([self.delegate respondsToSelector:@selector(didSelectRow:)])
         {
-            [self.delegate didSelectRow:_dataArr[row]];
+            if (_dataArr.count > 0)
+            {
+                [self.delegate didSelectRow:_dataArr[row]];
+            }
+            
         }
     }
     
