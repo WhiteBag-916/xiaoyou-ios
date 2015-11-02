@@ -76,6 +76,7 @@ NSString *const kPlaceCollectionViewCell = @"PlaceCollectionViewCellId";
         if (textView.text.length > 100)
         {
             [textView setText:[textView.text substringWithRange:NSMakeRange(0, 100)]];
+            _dataManager.ActivityPlaceText = textView.text;
         }
         else
         {

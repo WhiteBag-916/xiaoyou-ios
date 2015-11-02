@@ -240,6 +240,7 @@ NSString *const kDescriptionCollectionViewCell = @"DescriptionCollectionViewCell
         if (textView.text.length > 5000)
         {
             [textView setText:[textView.text substringWithRange:NSMakeRange(0, 5000)]];
+            _dataManager.ActivityDesciptionText = textView.text;
         }
         else
         {

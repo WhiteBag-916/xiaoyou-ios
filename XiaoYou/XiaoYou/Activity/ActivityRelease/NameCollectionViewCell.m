@@ -78,6 +78,7 @@ NSString *const kNameCollectionViewCell = @"NameCollectionViewCellId";
         if (textView.text.length > 30)
         {
             [textView setText:[textView.text substringWithRange:NSMakeRange(0, 30)]];
+            _dataManager.ActivityNameText = textView.text;
         }
         else
         {
