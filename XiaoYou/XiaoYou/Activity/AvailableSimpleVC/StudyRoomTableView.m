@@ -53,9 +53,13 @@
     
     NSArray * tempArr = [NSArray arrayWithArray:self.dataSouceArrOriginal];
     
-    if (![info.object[@"schoolName"] isEqualToString:@"全部"])
+    [self.dataSouceArr removeAllObjects];
+    if ([info.object[@"schoolName"] isEqualToString:@"全部"])
     {
-        [self.dataSouceArr removeAllObjects];
+        [self.dataSouceArr addObjectsFromArray:self.dataSouceArrOriginal];
+    }
+    else
+    {
         for (int i = 0 ; i < tempArr.count ; i++)
         {
             Result * resultModel = tempArr[i];
