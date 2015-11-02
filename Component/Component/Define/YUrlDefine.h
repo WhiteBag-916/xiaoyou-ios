@@ -180,6 +180,8 @@
 #define api_activity_findActivityTypes   @"/activity/findActivityTypes"
 //当前用户相关的活动列表接口
 #define api_available_list   @"/activity/list"
+//当前用户主界面的活动列表,包含日程和空闲教室的列表
+#define api_avalible_main_page_list   @"/availableTime/list"
 //根据发布后的活动id查询发布后的活动信息
 #define api_available_findByActivityPublishedId   @"/activity/findByActivityPublishedId"
 //活动报名

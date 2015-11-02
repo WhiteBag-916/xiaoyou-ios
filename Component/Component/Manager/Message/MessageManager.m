@@ -321,6 +321,8 @@ DEF_SINGLETON(MessageManager);
     BOOL needReload = NO;
     BOOL needRefresh = NO;
     
+    NSLog(@"ext = %@",ext);
+    
     if ([ext[@"server_flag"] boolValue])
     {
         [[EaseMob sharedInstance].chatManager removeConversationByChatter:message.conversationChatter deleteMessages:YES append2Chat:NO];
@@ -351,7 +353,6 @@ DEF_SINGLETON(MessageManager);
                 
                 break;
             }
-                
             case FRIEND_APPLY: {
                 YLogD(@"好友申请推送");
                 
@@ -388,7 +389,6 @@ DEF_SINGLETON(MessageManager);
             }
             case ACTIVITY_PUSH:
             {
-                NSString *activityID = ext[@"this is a just test..."];
                 break;
             }
             case ACTIVITY_ENROLL_CHECK_PASS:

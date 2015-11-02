@@ -27,7 +27,9 @@
 
 @property (nonatomic,strong) UIView         *promptView;        //提示透明背景
 @property (nonatomic,strong) UIImageView    *guideImageView;    //提示图片
-@property (nonatomic,assign) int            guideIndex;        //当前提示索引
+@property (nonatomic,assign) int            guideIndex;         //当前提示索引
+
+@property (nonatomic,assign) UIButton       *messageNotRead;    //未读消息
 
 @end
 
@@ -55,6 +57,22 @@
     [_availableListView loadData];
 }
 
+
+-(UIButton *)messageNotRead
+{
+    if (!_messageNotRead) {
+        _messageNotRead = [UIButton buttonWithType:UIButtonTypeSystem];
+        [self.view addSubview:_messageNotRead];
+        [_messageNotRead mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.centerX.equalTo(self.view);
+            make.top.mas_equalTo(SCALE_NUM(10));
+            make.width.mas_equalTo(SCALE_NUM(30));
+        }];
+    }
+    return _messageNotRead;
+}
+
+
 - (void)addGuideView {
     
     UIWindow *window = [UIApplication sharedApplication].keyWindow;
@@ -77,11 +95,14 @@
     self.guideIndex = 1;
 }
 
+
+#pragma mark 蒙层引导
+//显示下一个蒙层
 - (void)nextPromptView {
     _guideImageView.image = [UIImage imageNamed:@"1havetime_box_classroom"];
     self.guideIndex = 2;
 }
-
+//第一次显示蒙层
 -(void)dismissGuideView {
     if (self.guideIndex == 1) {
         [self nextPromptView];

@@ -16,6 +16,6 @@
 
 +(ScheduleCardCell*)cellWithTableView:(UITableView*)tableView;
 
--(void)setData:(id)aa;
+-(void)setData:(NSArray*)scheduleArr;
 
 @end

@@ -41,7 +41,7 @@
     
     _desLabel = [[UILabel alloc]init];
     [self addSubview:_desLabel];
-    _desLabel.text = @"来参加此次活动的朋友们:";
+    _desLabel.text = @"报名过此次活动的朋友们:";
     _desLabel.font = [UIFont systemFontOfSize:FONT_SIZE];
     [_desLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(_pointImageView.mas_right).offset(DES_LEADING);

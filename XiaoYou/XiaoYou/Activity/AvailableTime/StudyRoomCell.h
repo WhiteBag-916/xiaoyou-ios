@@ -13,4 +13,6 @@
 
 +(StudyRoomCell*)cellWithTableView:(UITableView*)tableView;
 
+-(void)setData:(id)count;
+
 @end

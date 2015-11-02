@@ -33,7 +33,7 @@
     
     [self IsShowCustomNavigationMoreButton:YES];
     
-    [self detailListView];
+    [self.detailListView loadData];
     [self setTitle:@"活动详情"];
     [self updateJoinButtonStatus];
 }
@@ -61,8 +61,6 @@
     
     YCommonActionSheet *sheet = [[YCommonActionSheet alloc] initWithType:@[item1] title:nil];
     [sheet show];
-    
-    
 }
 
 
@@ -105,8 +103,6 @@
         
     }
     _detailListView.publishID = self.publishID;
-    [_detailListView loadData];
-    [_detailListView sendRequest];
     return _detailListView;
 }
 
@@ -141,6 +137,7 @@
                 _joinInBtn.backgroundColor = KCOLOR_g2;
                 [self IsShowCustomNavigationMoreButton:YES];
             }
+            [_detailListView loadData];
         }
     }];
 }

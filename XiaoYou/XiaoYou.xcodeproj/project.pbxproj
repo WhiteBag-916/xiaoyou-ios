@@ -2153,6 +2153,7 @@
 		044DA0401BBA77C900AA321A /* Activity */ = {
 			isa = PBXGroup;
 			children = (
+				0499B9C51BE7088400202CFD /* Notify */,
 				20DAAA6D1BCD05F5006DF231 /* AvailableSimpleVC */,
 				20DAAA691BCD05F5006DF231 /* Calendar */,
 				E455DCF11BCB8F4700B78E54 /* ActivityRelease */,
@@ -2229,6 +2230,13 @@
 				049480421BB8DE1700C68460 /* PhotoBorder@2x.png */,
 			);
 			path = Test;
+			sourceTree = "<group>";
+		};
+		0499B9C51BE7088400202CFD /* Notify */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Notify;
 			sourceTree = "<group>";
 		};
 		049C55BF1BB3DDF1007565E1 /* Fast */ = {
