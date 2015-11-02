@@ -22,6 +22,7 @@
 #import "UserSchedulingConditionsAction.h"
 #import "UserSchedulingListAction.h"
 #import "UserSchedulingDetailAction.h"
+#import "MainAvailableTimeAction.h"
 
 #define KActivityManagerSyncQueue @"kActivityManagerSyncQueue"
 
@@ -273,6 +274,18 @@ DEF_SINGLETON(ActivityManager);
     
     [YAction startAction:action completionBlock:^(YActionMessage* message) {
         
+        //主线程处理界面
+        block(message);
+    }];
+}
+
+-(void)getCurrentUseMainAvailableListLimitStart:(NSInteger)limitStart limitEnd:(NSInteger)limitEnd block:(ActionCompleteBlock)block
+{
+    MainAvailableTimeAction *action = [[MainAvailableTimeAction alloc] init];
+    action.limitStart = limitStart;
+    action.limitEnd = limitEnd;
+    
+    [YAction startAction:action completionBlock:^(YActionMessage *message) {
         //主线程处理界面
         block(message);
     }];

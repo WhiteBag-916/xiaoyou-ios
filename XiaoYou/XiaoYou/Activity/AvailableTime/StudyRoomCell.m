@@ -82,4 +82,10 @@
     }];
 }
 
+-(void)setData:(id)count
+{
+    NSInteger cnt = [count integerValue];
+    _titleLabel.text = [NSString stringWithFormat:@"%ld个教室没课",cnt];
+}
+
 @end

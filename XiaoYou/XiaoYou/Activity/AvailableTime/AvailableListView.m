@@ -16,6 +16,7 @@
 #import "ActivityDetailViewController.h"
 #import "ActivityManager.h"
 #import "ActivityInfoModel.h"
+#import "AvailableTimeModel.h"
 
 #define KPAGENUM 10
 
@@ -84,20 +85,19 @@
 
 - (void)loadMoreData
 {
-    _currentIndex = self.availableListArray.count;
+    _currentIndex = self.availableListArray.count-2;
     [self sendRequest];
 }
 
 - (void)sendRequest {
-    
-    [[ActivityManager sharedInstance] getCurrentUseAvailableListLimitStart:_currentIndex limitEnd:_currentIndex+KPAGENUM block:^(YActionMessage *message) {
+    [[ActivityManager sharedInstance] getCurrentUseMainAvailableListLimitStart:_currentIndex limitEnd:_currentIndex + KPAGENUM block:^(YActionMessage *message) {
         if (message.isSuccess) {
             if ([self isHeaderRefresh]) {
                 [self.availableListArray removeAllObjects];
             }
-            [self.availableListArray addObjectsFromArray:message.object];
+            [self dealMessage:message];
             [self hiddenFooter:NO];
-            if ([message.object count] < KPAGENUM) {
+            if ([[message.object valueForKey:@"activityList"] count] < KPAGENUM) {
                 [self showNoticeNoMoreData];
             }
             [self reloadData];
@@ -115,10 +115,21 @@
     }];
 }
 
+-(void)dealMessage:(YActionMessage*)message
+{
+    //NSArray *arr = [NSArray arrayWithObject:message.object];
+    AvailableTimeModel *model = message.object;
+    if (_currentIndex == 0) {
+        [self.availableListArray addObject:model.scheduling];
+        [self.availableListArray addObject:@(model.availableBuilding)];
+    }
+    [self.availableListArray addObjectsFromArray:model.activityList];
+}
+
 #pragma mark 协议方法
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return self.availableListArray.count + 2;
+    return self.availableListArray.count;
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -126,16 +137,15 @@
     CGFloat height;
     if (indexPath.row == 0) {
         height = [tableView fd_heightForCellWithIdentifier:REUSEID_SCHEDULE_CELL cacheByIndexPath:indexPath configuration:^(ScheduleCardCell *cell) {
-            [cell setData:@"aaa"];
+            [cell setData:self.availableListArray[indexPath.row]];
         }];
-        
         return height;
     }
     else if (indexPath.row == 1)
         return SCALE_NUM(85);
     else {
         height = [tableView fd_heightForCellWithIdentifier:REUSEID_AVAILABEL_CELL cacheByIndexPath:indexPath configuration:^(AvailableCell *cell) {
-            [cell setData:_availableListArray[indexPath.row-2]];
+            [cell setData:self.availableListArray[indexPath.row]];
         }];
         return height;
     }
@@ -146,14 +156,16 @@
 {
     if (indexPath.row == 0) {
         ScheduleCardCell *cell = [tableView dequeueReusableCellWithIdentifier:REUSEID_SCHEDULE_CELL];
+        [cell setData:self.availableListArray[indexPath.row]];
         return cell;
     } else if (indexPath.row == 1) {
         StudyRoomCell *cell = [StudyRoomCell cellWithTableView:tableView];
+        [cell setData:self.availableListArray[indexPath.row]];
         return cell;
     } else
     {
         AvailableCell *cell = [tableView dequeueReusableCellWithIdentifier:REUSEID_AVAILABEL_CELL];
-        [cell setData:self.availableListArray[indexPath.row-2]];
+        [cell setData:self.availableListArray[indexPath.row]];
         return cell;
     }
     return nil;
@@ -193,7 +205,7 @@
     else if (type == ACTIVITY_DETAIL_CELL) {
         ActivityInfoModel *model;
         if (self.availableListArray.count > 0)
-            model = self.availableListArray[indexPath.row-2];
+            model = self.availableListArray[indexPath.row];
         NSString *publishID = [NSString stringWithFormat:@"%ld",(long)model.activityPublishedModel.activityPublishedModelIdentifier];
         
         ActivityDetailViewController *activityDetailVC = [[ActivityDetailViewController alloc]initWithPublishID:publishID];

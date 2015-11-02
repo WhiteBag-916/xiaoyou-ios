@@ -189,4 +189,13 @@ AS_SINGLETON(ActivityManager);
  *********************************************************************/
 - (void)userSchedulingDetail:(NSString *)uid block:(ActionCompleteBlock)block;
 
+/*********************************************************************
+ 函数名称 :getCurrentUseMainAvailableListLimitStart
+ 函数描述 :有空列表
+ 参数 : uid:ID
+ 返回值 : N/A
+ 作者 : XiongChen
+ *********************************************************************/
+- (void)getCurrentUseMainAvailableListLimitStart:(NSInteger)limitStart limitEnd:(NSInteger)limitEnd block:(ActionCompleteBlock)block;
+
 @end

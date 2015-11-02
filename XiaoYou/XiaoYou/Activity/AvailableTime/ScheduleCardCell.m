@@ -8,6 +8,8 @@
 
 #define REUSEID @"ScheduleCardCell"
 #import "ScheduleCardCell.h"
+#import "Scheduling.h"
+#import "TimeFormatterConvert.h"
 
 @interface ScheduleCardCell ()
 @property (nonatomic,strong) UIImageView    *startImageView;    //提示图片
@@ -92,7 +94,7 @@
     _projectLabel1.font = CONTENT_FONT(12);
     [_projectLabel1 mas_makeConstraints:^(MASConstraintMaker *make) {
         make.height.mas_equalTo(SCALE_NUM(12));
-        make.leading.mas_equalTo(SCALE_NUM(100));
+        make.leading.mas_equalTo(SCALE_NUM(150));
         make.centerY.equalTo(_timeLabel1);
     }];
     
@@ -102,7 +104,7 @@
     _timeLabel2.text = @"8:00-9:00";
     _timeLabel2.font = CONTENT_FONT(12);
     [_timeLabel2 mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.height.mas_equalTo(SCALE_NUM(12));
+        //make.height.mas_equalTo(SCALE_NUM(12));
         make.top.equalTo(_timeLabel1.mas_bottom).offset(SCALE_NUM(15));
         make.left.equalTo(_timeLabel1);
     }];
@@ -113,8 +115,8 @@
     _projectLabel2.textColor = KCOLOR_B5;
     _projectLabel2.font = CONTENT_FONT(12);
     [_projectLabel2 mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.height.mas_equalTo(SCALE_NUM(12));
-        make.leading.mas_equalTo(SCALE_NUM(100));
+        //make.height.mas_equalTo(SCALE_NUM(12));
+        make.left.equalTo(_projectLabel1);
         make.centerY.equalTo(_timeLabel2);
     }];
     
@@ -137,21 +139,42 @@
     _projectLabel3.textColor = KCOLOR_B5;
     [_projectLabel3 mas_makeConstraints:^(MASConstraintMaker *make) {
         //make.height.mas_equalTo(SCALE_NUM(12));
-        make.leading.mas_equalTo(SCALE_NUM(100));
+        make.left.equalTo(_projectLabel2);
         make.centerY.equalTo(_timeLabel3);
     }];
 }
 
--(void)setData:(id)aa
+-(void)setData:(NSArray *)scheduleArr
 {
-    _timeLabel1.text = @"fdsfds";
-    _projectLabel1.text = @"fdsfds";
-    
-    _timeLabel2.text = @"fdsfds";
-    _projectLabel2.text = @"fdsfds";
-    
-    _timeLabel3.text = @"fsdfdsfsd";
-    _projectLabel3.text = @"fdsfds";
+    for (int i = 0; i < scheduleArr.count; i++) {
+        Scheduling *schedule = [scheduleArr objectAtIndex:i];
+        if (i == 0) {
+            _timeLabel1.text = [TimeFormatterConvert timeConvertToFommtterAvailable:schedule.startTime];
+            _projectLabel1.text = schedule.content;
+            _timeLabel2.text    = @"";
+            _projectLabel2.text = @"";
+            _timeLabel3.text    = @"";
+            _projectLabel3.text = @"";
+        } else if (i == 1) {
+            _timeLabel2.text = [TimeFormatterConvert timeConvertToFommtterAvailable:schedule.startTime];
+            _projectLabel2.text = schedule.content;
+            _timeLabel3.text    = @"";
+            _projectLabel3.text = @"";
+        } else if (i == 2) {
+            _timeLabel3.text = [TimeFormatterConvert timeConvertToFommtterAvailable:schedule.startTime];
+            _projectLabel3.text = schedule.content;
+        }
+    }
+    if (scheduleArr.count == 1) {
+        [_timeLabel1 mas_updateConstraints:^(MASConstraintMaker *make) {
+            make.bottom.mas_equalTo(SCALE_NUM(-15));
+        }];
+    }
+    else if (scheduleArr.count == 2) {
+        [_timeLabel2 mas_updateConstraints:^(MASConstraintMaker *make) {
+            make.bottom.mas_equalTo(SCALE_NUM(-15));
+        }];
+    }
 }
 
 @end

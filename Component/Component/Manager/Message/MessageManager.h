@@ -36,8 +36,8 @@ typedef enum : NSUInteger {
     ACTIVITY_PUSH=12,       //活动推送
     ACTIVITY_ENROLL_CHECK_PASS=13,//活动报名审核通过
     ACTIVITY_ENROLL_NO_CHECK=14,//活动报名审核未通过
-    SCHEDULE_REMIND=15,         //用户日程提醒
-    ACTIVITY_ENROLL=16,         //用户报名活动提醒
+    SCHEDULE_REMIND=15,         //用户日程提醒,,,,,,
+    ACTIVITY_ENROLL=16,         //用户报名活动提醒－－－－
     ACTIVITY_PUBLISH=17,        //活动发布提醒
     ACTIVITY_NOTIFY=18          //活动通知提醒
 

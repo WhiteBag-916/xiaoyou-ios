@@ -10,6 +10,7 @@
 		040619DC1BDE11C3008E3E4E /* NoticeAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 040619DB1BDE11C3008E3E4E /* NoticeAction.m */; };
 		0463588E1BE0F5450055819F /* CancleActivityAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 0463588D1BE0F5450055819F /* CancleActivityAction.m */; };
 		04722E261BD8892700F95816 /* AvailableAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 04722E251BD8892700F95816 /* AvailableAction.m */; };
+		0499B9CE1BE70F1C00202CFD /* MainAvailableTimeAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 0499B9CD1BE70F1C00202CFD /* MainAvailableTimeAction.m */; settings = {ASSET_TAGS = (); }; };
 		04A2A0071BCE3969006A35FB /* AppConfigData.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A2A0061BCE3969006A35FB /* AppConfigData.m */; };
 		202F03B91BE359C0006E7706 /* FindMyCourseAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 202F03B81BE359C0006E7706 /* FindMyCourseAction.m */; };
 		202F03C91BE36A27006E7706 /* UserSchedulingConditionsAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 202F03C81BE36A27006E7706 /* UserSchedulingConditionsAction.m */; };
@@ -101,6 +102,8 @@
 		0463588D1BE0F5450055819F /* CancleActivityAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CancleActivityAction.m; sourceTree = "<group>"; };
 		04722E241BD8892700F95816 /* AvailableAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AvailableAction.h; sourceTree = "<group>"; };
 		04722E251BD8892700F95816 /* AvailableAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AvailableAction.m; sourceTree = "<group>"; };
+		0499B9CC1BE70F1C00202CFD /* MainAvailableTimeAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainAvailableTimeAction.h; sourceTree = "<group>"; };
+		0499B9CD1BE70F1C00202CFD /* MainAvailableTimeAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainAvailableTimeAction.m; sourceTree = "<group>"; };
 		04A2A0051BCE3969006A35FB /* AppConfigData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppConfigData.h; sourceTree = "<group>"; };
 		04A2A0061BCE3969006A35FB /* AppConfigData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppConfigData.m; sourceTree = "<group>"; };
 		202F03B71BE359C0006E7706 /* FindMyCourseAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FindMyCourseAction.h; sourceTree = "<group>"; };
@@ -253,6 +256,8 @@
 		04722E231BD8891100F95816 /* Activity */ = {
 			isa = PBXGroup;
 			children = (
+				0499B9CC1BE70F1C00202CFD /* MainAvailableTimeAction.h */,
+				0499B9CD1BE70F1C00202CFD /* MainAvailableTimeAction.m */,
 				04722E241BD8892700F95816 /* AvailableAction.h */,
 				04722E251BD8892700F95816 /* AvailableAction.m */,
 				20DDA3E91BDA1D8D0023179A /* FindActivityTypesAction.h */,
@@ -715,6 +720,7 @@
 				20402A251BE2200A00802DAF /* FreeBuildingDetailAction.m in Sources */,
 				202F03CC1BE36AF0006E7706 /* UserSchedulingListAction.m in Sources */,
 				3339625C1B95575400DD0A6D /* SuggestListAction.m in Sources */,
+				0499B9CE1BE70F1C00202CFD /* MainAvailableTimeAction.m in Sources */,
 				0463588E1BE0F5450055819F /* CancleActivityAction.m in Sources */,
 				20DF60181BDF6B9E00C8383B /* FindActivityDetailInfoAction.m in Sources */,
 				20DA74C01B8C12040002E041 /* FindFriendsAction.m in Sources */,

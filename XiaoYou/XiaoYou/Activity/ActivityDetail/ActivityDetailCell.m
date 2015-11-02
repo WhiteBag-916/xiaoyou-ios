@@ -120,15 +120,13 @@
     _categoryLabel.text = info.name;
     
     //跳转活动链接
-    publishModel.originalTextUrl = @"http://www.baidu.com";
-//    if (publishModel.originalTextUrl == nil || [publishModel.originalTextUrl isEmpty]) {
-//        [_jumpLinkButton removeFromSuperview];
-//        [_categotyImageView mas_makeConstraints:^(MASConstraintMaker *make) {
-//            make.bottom.mas_equalTo(SCALE_NUM(-15));
-//        }];
-//    }
+    if (publishModel.originalTextUrl == nil || [publishModel.originalTextUrl isEmpty]) {
+        [_jumpLinkButton removeFromSuperview];
+        [_categotyImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.bottom.mas_equalTo(SCALE_NUM(-15));
+        }];
+    }
 }
-
 
 
 -(void)initTopViewWithType:(TOPVIEWTYPE)type {
@@ -238,7 +236,6 @@
     _staticDeadLineDes.textColor = KCOLOR_B3;
     [_staticDeadLineDes mas_makeConstraints:^(MASConstraintMaker *make) {
         make.height.mas_equalTo(SCALE_NUM(13));
-        //make.leading.mas_equalTo(SCALE_NUM(66));
         make.left.equalTo(_middleView);
         make.centerY.equalTo(_timeImageView.mas_centerY);
     }];

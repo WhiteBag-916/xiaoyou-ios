@@ -26,6 +26,7 @@
     NSArray *resutl = [YDatabase query:self.databasePath sql:sql, tableName];
     return (resutl.count > 0);
 }
+
 - (void)updateWithDictionary:(NSDictionary *)dic
                     WithName:(NSString *)tableName
                      upWhere:(NSString *)where
