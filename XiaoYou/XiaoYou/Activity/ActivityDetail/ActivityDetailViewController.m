@@ -152,7 +152,6 @@
             _joinInBtn.enabled = NO;
         }
         else {
-            _joinInBtn.enabled = NO;
         }
         [YUtils showTitle:message.desc];
         [self updateJoinButtonStatus];

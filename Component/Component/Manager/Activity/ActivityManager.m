@@ -284,7 +284,7 @@ DEF_SINGLETON(ActivityManager);
     MainAvailableTimeAction *action = [[MainAvailableTimeAction alloc] init];
     action.limitStart = limitStart;
     action.limitEnd = limitEnd;
-    
+    action.isGetScheduling = YES;  //默认设置都请求
     [YAction startAction:action completionBlock:^(YActionMessage *message) {
         //主线程处理界面
         block(message);

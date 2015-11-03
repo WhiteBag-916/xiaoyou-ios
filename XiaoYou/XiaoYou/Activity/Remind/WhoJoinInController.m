@@ -24,9 +24,8 @@
     [self initView];
 }
 
-//[_profilePersonListTableView loadDataWithQueryCode:@""];
-
 -(void)initVC {
+    self.title = @"参与本次活动的人";
     [self showCustomNavigationBackButton];
 }
 

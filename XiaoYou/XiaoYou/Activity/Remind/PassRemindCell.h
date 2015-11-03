@@ -18,7 +18,8 @@ typedef enum : NSUInteger {
     AUDIT_PASSED,       //审核通过
     AUDIT_NOT_PASSED,   //审核未通过
     SUCESSED_JOININ,    //成功参加活动
-    SOMEONE_JOININ      //有人参加你发布的活动
+    SOMEONE_JOININ,     //有人参加你发布的活动
+    NEED_CHECK          //需要审核
 } CELL_TYPE;
 
 @interface PassRemindCell : YTableViewCell

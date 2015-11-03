@@ -156,7 +156,6 @@
     }];
     
     _connectTagView = [[ConnectTag alloc]init];
-    _connectTagView.backgroundColor = [UIColor cyanColor];
     [self.wrapContentView addSubview:_connectTagView];
     [_connectTagView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.equalTo(_headImageView.mas_centerY);
@@ -213,23 +212,7 @@
     _nameLabel.text = info.name;
     _applyContentLable.text = [NSString stringWithFormat:_applyContentLable.text,model.activityName];
     
-    
     [_connectTagView updateWithTag:info.propetiesCommon];
-    
-//    Tags *tag1 = [[Tags alloc]init];
-//    tag1.name = @"班";
-//    Tags *tag2 = [[Tags alloc]init];
-//    tag2.name = @"社";
-//    Tags *tag3 = [[Tags alloc]init];
-//    tag3.name = @"乡";
-//    [_connectTagView updateWithTag:[NSArray arrayWithObjects:tag1,tag2,tag3, nil]];;
-    
-//    [_connectTag updateWithTag:_model.propetiesCommon];
-//    
-//    ProfileInfo *profile = [[ProfileInfo alloc]init];
-//    profile.propetiesCommon = [NSArray arrayWithObjects:tag1,tag2,tag3,nil];
-//    profile.tagModels = [NSArray arrayWithObjects:tag4,tag5,tag6, nil];
-//    [_tagsView setData:profile];
 }
 
 ////添加同意-忽略状态

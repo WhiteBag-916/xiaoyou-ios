@@ -17,7 +17,7 @@
     NSMutableDictionary *dic = [NSMutableDictionary dictionary];
     [dic setObject:@(_limitStart) forKey:@"limitStart"];
     [dic setObject:@(_limitEnd) forKey:@"limitEnd"];
-    //[dic setObject:@(_isGetScheduling) forKey:@"isGetScheduling"];
+    [dic setObject:@(_isGetScheduling) forKey:@"isGetScheduling"];
     NSDictionary *parameter = [YUtils getParameter:dic needUserToken:YES needContent:YES];
     NSString *url = [YUtils getUrl:api_avalible_main_page_list];
     

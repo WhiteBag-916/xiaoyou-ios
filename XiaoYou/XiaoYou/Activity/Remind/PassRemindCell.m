@@ -155,7 +155,7 @@
     _activityTimeLabel = [[UILabel alloc]init];
     [self.wrapContentView addSubview:_activityTimeLabel];
     _activityTimeLabel.font = CONTENT_FONT(12);
-    _activityTimeLabel.text = @"活动时间：15/12/12 18:00-20:00";
+    _activityTimeLabel.text = @"活动开始时间：%@";
     _activityTimeLabel.textColor = KCOLOR_B3;
     [_activityTimeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.height.mas_equalTo(SCALE_NUM(12));
@@ -255,6 +255,8 @@
         _bottomButton.enabled = NO;
     } else if (cellType == SUCESSED_JOININ) {
         self.remindTitleLabel.text = @"你已成功参加活动";
+    } else if (cellType == NEED_CHECK) {
+        self.remindTitleLabel.text = @"您的报名申请已提交,正在审核中";
     }
 }
 
@@ -265,6 +267,7 @@
     [_headImageView setFaceImageWithUrl:info.headPic];
     _contentTitleLabel.text = info.name;
     _contentNameLabel.text = [NSString stringWithFormat:_contentNameLabel.text,model.activityName];
+    //_activityTimeLabel.text = [NSString stringWithFormat:_activityTimeLabel.text,]
 }
 
 @end
