@@ -15,7 +15,7 @@ NSString *const kStudyRoomDetailTableViewCell = @"StudyRoomDetailTableViewCellId
 #define K_IMG_H             SCALE_NUM(14)   //图标高
 #define K_TEXT_L            SCALE_NUM(6)    //字左
 #define K_ROOM_T            SCALE_NUM(15)   //室上
-#define K_TEXT_H            SCALE_NUM(12)   //字高
+#define K_TEXT_H            SCALE_NUM(14)   //字高
 
 @interface StudyRoomDetailTableViewCell ()
 
@@ -65,20 +65,21 @@ NSString *const kStudyRoomDetailTableViewCell = @"StudyRoomDetailTableViewCellId
 //    }];
     
     //3
-    _studyRoomLabel = [YUtils initLabel:CONTENT_FONT(12)
+    _studyRoomLabel = [YUtils initLabel:CONTENT_FONT(SCALE_NUM(12))
                                   color:KCOLOR_B5
                                    text:@"2012室"
                               alignment:NSTextAlignmentLeft];
     [self.contentView addSubview:_studyRoomLabel];
     
     [_studyRoomLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.right.mas_equalTo(K_IMG_L);
+        make.left.mas_equalTo(K_IMG_L);
+        make.right.mas_equalTo(-K_IMG_L);
         make.height.mas_equalTo(K_TEXT_H);
         make.top.mas_equalTo(K_IMG_TW);
     }];
     
     //4
-    _timeLabel = [YUtils initLabel:CONTENT_FONT(12)
+    _timeLabel = [YUtils initLabel:CONTENT_FONT(SCALE_NUM(12))
                                   color:KCOLOR_B5
                                    text:@"无课时间：14:00-16:00"
                               alignment:NSTextAlignmentLeft];
@@ -99,8 +100,26 @@ NSString *const kStudyRoomDetailTableViewCell = @"StudyRoomDetailTableViewCellId
 - (void)initData:(FreeBuildingDetailModel *)model{
 
     _studyRoomLabel.text = model.roomName;
-    _timeLabel.text = @"无课时间：14:00-16:00";
+    _timeLabel.text = [NSString stringWithFormat:@"无课时间：%@",[self getTimeStrFromArr:model]];
     
+}
+
+
+-(NSString *)getTimeStrFromArr:(FreeBuildingDetailModel *) model
+{
+    NSMutableString * returnStr = [[NSMutableString alloc] init];
+    if (model.courseLists.count > 0)
+    {
+        for (int i = 0; i < model.courseLists.count; i++)
+        {
+            [returnStr appendString:model.courseLists[i]];
+            if (i != model.courseLists.count - 1)
+            {
+                [returnStr appendString:@","];
+            }
+        }
+    }
+    return returnStr;
 }
 
 @end

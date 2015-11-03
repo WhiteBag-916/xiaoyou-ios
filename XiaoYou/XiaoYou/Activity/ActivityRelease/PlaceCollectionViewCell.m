@@ -71,11 +71,13 @@ NSString *const kPlaceCollectionViewCell = @"PlaceCollectionViewCellId";
         else
         {
             [self.viewController.view endEditing:YES];
-            [YUtils showTitle:@"地点字数不能大于100字"];
+            
         }
-        if (textView.text.length > 100)
+        if (textView.text.length >= 100)
         {
+            [YUtils showTitle:@"地点字数不能大于100字"];
             [textView setText:[textView.text substringWithRange:NSMakeRange(0, 100)]];
+            _dataManager.ActivityPlaceText = textView.text;
         }
         else
         {

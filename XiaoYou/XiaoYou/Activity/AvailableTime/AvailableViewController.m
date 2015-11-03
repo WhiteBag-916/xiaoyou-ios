@@ -195,7 +195,7 @@
 
 //筛选Action
 -(void)filterAction {
-    ActivityChoiceController *choiceVC = [[ActivityChoiceController alloc]initWithType:ACTIVITY_CHOICE_TYPE];
+    ActivityChoiceController *choiceVC = [[ActivityChoiceController alloc] initWithType:ACTIVITY_CHOICE_TYPE andDataSource:nil andStudyRoomDefautStr:nil];
     choiceVC.activityViewController = self;
     [self.navigationController presentViewController:choiceVC animated:YES completion:nil];
 }

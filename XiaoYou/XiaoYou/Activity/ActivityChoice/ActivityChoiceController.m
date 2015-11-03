@@ -14,17 +14,20 @@
 @property (nonatomic,strong)ActivityChoiceTableView * activityChoiceTableView;
 
 @property (nonatomic,assign)NSInteger myType;
-
+@property(nonatomic,strong)NSMutableArray * dataSourceArr;
+@property (nonatomic,strong)NSString * studyRoomDefautStr;//自习室默认选中值
 @end
 
 @implementation ActivityChoiceController
 
--(instancetype)initWithType:(CHOICE_TYPE) type
+-(instancetype)initWithType:(CHOICE_TYPE) type andDataSource:(NSMutableArray *) dataSource andStudyRoomDefautStr:(NSString *) studyRoomDefautStr
 {
     self = [super init];
     if (self) {
         
         _myType = type;
+        _dataSourceArr = dataSource;
+        _studyRoomDefautStr = studyRoomDefautStr;
     }
     return self;
 }

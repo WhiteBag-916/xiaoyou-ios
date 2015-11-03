@@ -73,7 +73,7 @@
 
 - (void)setData:(ProfileInfo *) model
 {
-    if (model.propetiesCommon.count <=0 && model.tagModels.count <= 0)
+    if (model.propetiesCommon.count <=0 && model.tagsCommon.count <= 0)
     {
         _flagImageView.image = nil;
     }
@@ -86,7 +86,7 @@
     {
         _connectTag.hidden = YES;
         [self.tagCollectionView mas_makeConstraints:^(MASConstraintMaker *make) {
-            if (model.tagModels.count <= 0)
+            if (model.tagsCommon.count <= 0)
             {
                 make.top.equalTo(self);
             }
@@ -106,7 +106,7 @@
     }
     
     [_connectTag updateWithTag:model.propetiesCommon];
-    _commonTagsArr = [NSMutableArray arrayWithArray:model.tagModels];
+    _commonTagsArr = [NSMutableArray arrayWithArray:model.tagsCommon];
     [_tagCollectionView reloadData];
 }
 
@@ -189,7 +189,7 @@
 //定义每个UICollectionView 纵向的间距
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section
 {
-    return 10;
+    return 8;
 }
 
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section

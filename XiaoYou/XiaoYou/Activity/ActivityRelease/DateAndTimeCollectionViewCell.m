@@ -332,11 +332,12 @@ NSString *const kDateAndTimeCollectionViewCell = @"DateAndTimeCollectionViewCell
 
 -(void)isSmallTo15Minites
 {
+    NSDateFormatter * formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"yyyy年MM月dd日 a HH:mm"];
+    
     if (![_dataManager.ActivityDateBeginText isEqualToString:@"请选择活动开始时间"] && _dataManager.ActivityDateBeginText != nil &&
         ![_dataManager.ActivityDateEndText isEqualToString:@"请选择活动开始时间"] && _dataManager.ActivityDateEndText != nil)
     {
-        NSDateFormatter * formatter = [[NSDateFormatter alloc] init];
-        [formatter setDateFormat:@"yyyy年MM月dd日 a HH:mm"];
         NSTimeInterval timeBetween1 = [[formatter dateFromString:_dataManager.ActivityDateEndText] timeIntervalSinceDate:[formatter dateFromString:_dataManager.ActivityDateBeginText]];
         if (timeBetween1 < 900)
         {
@@ -348,8 +349,6 @@ NSString *const kDateAndTimeCollectionViewCell = @"DateAndTimeCollectionViewCell
         {
             if (![_dataManager.ActivityDateBeginText isEqualToString:@"请选择活动开始时间"] && _dataManager.ActivityDateBeginText != nil)
             {
-                NSDateFormatter * formatter = [[NSDateFormatter alloc] init];
-                [formatter setDateFormat:@"yyyy年MM月dd日 a HH:mm"];
                 NSTimeInterval timeBetween2 = [[formatter dateFromString:_dataManager.ActivityDateBeginText] timeIntervalSinceDate:[NSDate date]];
                 if (timeBetween2 < 0)
                 {
