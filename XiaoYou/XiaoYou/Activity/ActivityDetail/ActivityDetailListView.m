@@ -126,7 +126,7 @@
 #pragma mark -协议方法
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    if (self.activityDetailArray.count == 0)
+    if (self.activityDetailArray.count == 0 || self.activityDetailArray[0] == nil)
         return 0;
     else {
         ActivityDetailModel *model = self.activityDetailArray[0];
@@ -146,9 +146,12 @@
     }
     else
     {
-        ActivityDetailModel *model = self.activityDetailArray[0];
+        ActivityDetailModel *model;
+        if (self.activityDetailArray.count > 0)
+            model = self.activityDetailArray[0];
+        else
+            return 0;
         Author *author = model.enrollActivityUserInfos[indexPath.row-1];
-        
         
         ProfileInfo *info = [[ProfileInfo alloc]init];
         info.tagModels = author.tagsCommon;
@@ -187,8 +190,12 @@
         CELLTYPE type = indexPath.row == 1? IS_TOPVIEW : NOT_TOPVIEW;
         cell = [[ActivityJoinInCell alloc]initWithType:type];
         
-        ActivityDetailModel *model = self.activityDetailArray[0];
-        [cell setData:model.enrollActivityUserInfos[indexPath.row-1]];
+        ActivityDetailModel *model = nil;
+        
+        if (self.activityDetailArray.count > 0) {
+            model = self.activityDetailArray[0];
+            [cell setData:model.enrollActivityUserInfos[indexPath.row-1]];
+        }
         return cell;
     }
     return nil;
