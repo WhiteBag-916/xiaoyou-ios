@@ -11,6 +11,8 @@
 		043B45441BE8B23500050B32 /* NotifyInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 043B45431BE8B23500050B32 /* NotifyInfoModel.m */; settings = {ASSET_TAGS = (); }; };
 		0499B9C81BE70D6900202CFD /* Scheduling.m in Sources */ = {isa = PBXBuildFile; fileRef = 0499B9C71BE70D6900202CFD /* Scheduling.m */; settings = {ASSET_TAGS = (); }; };
 		0499B9CB1BE70D8F00202CFD /* AvailableTimeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0499B9CA1BE70D8F00202CFD /* AvailableTimeModel.m */; settings = {ASSET_TAGS = (); }; };
+		0499B9C81BE70D6900202CFD /* Scheduling.m in Sources */ = {isa = PBXBuildFile; fileRef = 0499B9C71BE70D6900202CFD /* Scheduling.m */; };
+		0499B9CB1BE70D8F00202CFD /* AvailableTimeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0499B9CA1BE70D8F00202CFD /* AvailableTimeModel.m */; };
 		04AF14521BDDC74400FEE6A4 /* FilterCondition.m in Sources */ = {isa = PBXBuildFile; fileRef = 04AF14511BDDC74400FEE6A4 /* FilterCondition.m */; };
 		04AF14551BDDC7AC00FEE6A4 /* FilterConditionModels.m in Sources */ = {isa = PBXBuildFile; fileRef = 04AF14541BDDC7AC00FEE6A4 /* FilterConditionModels.m */; };
 		202F03B51BE35983006E7706 /* CourseTeacherlist.m in Sources */ = {isa = PBXBuildFile; fileRef = 202F03B21BE35983006E7706 /* CourseTeacherlist.m */; };
@@ -21,6 +23,7 @@
 		202F03C61BE36A01006E7706 /* UserSchedulingListConditionsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 202F03C41BE36A01006E7706 /* UserSchedulingListConditionsModel.m */; };
 		20402A1C1BE21B5900802DAF /* FreeBuildingListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 20402A1B1BE21B5900802DAF /* FreeBuildingListModel.m */; };
 		20402A221BE21FF300802DAF /* FreeBuildingDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 20402A211BE21FF300802DAF /* FreeBuildingDetailModel.m */; };
+		2040B7641BE8567E003DB0C3 /* FindMyCourseViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2040B7631BE8567E003DB0C3 /* FindMyCourseViewModel.m */; };
 		20859A991B64C0BC00580ED3 /* ResultCommon.m in Sources */ = {isa = PBXBuildFile; fileRef = 20859A981B64C0BC00580ED3 /* ResultCommon.m */; };
 		20859AA31B64CB7E00580ED3 /* LoginResp.m in Sources */ = {isa = PBXBuildFile; fileRef = 20859AA01B64CB7E00580ED3 /* LoginResp.m */; };
 		20859AB31B64E2F600580ED3 /* YModel+ActionMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 20859AB21B64E2F600580ED3 /* YModel+ActionMessage.m */; };
@@ -67,6 +70,10 @@
 		333E95E51B70B78C0001059D /* LastSystemPushInfoListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 333E95E41B70B78C0001059D /* LastSystemPushInfoListModel.m */; };
 		333E95EA1B70B7AB0001059D /* SchoolDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 333E95E71B70B7AB0001059D /* SchoolDetailModel.m */; };
 		333E95EB1B70B7AB0001059D /* SchoolListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 333E95E91B70B7AB0001059D /* SchoolListModel.m */; };
+		E47E598E1BE8E10000AF7F5C /* ShopList.m in Sources */ = {isa = PBXBuildFile; fileRef = E47E59871BE8E10000AF7F5C /* ShopList.m */; };
+		E47E598F1BE8E10000AF7F5C /* SupplierShopDiscounts.m in Sources */ = {isa = PBXBuildFile; fileRef = E47E59891BE8E10000AF7F5C /* SupplierShopDiscounts.m */; };
+		E47E59901BE8E10000AF7F5C /* SupplierShopImages.m in Sources */ = {isa = PBXBuildFile; fileRef = E47E598B1BE8E10000AF7F5C /* SupplierShopImages.m */; };
+		E47E59911BE8E10000AF7F5C /* SupplierShopModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E47E598D1BE8E10000AF7F5C /* SupplierShopModel.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -120,6 +127,8 @@
 		20402A1B1BE21B5900802DAF /* FreeBuildingListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FreeBuildingListModel.m; sourceTree = "<group>"; };
 		20402A201BE21FF300802DAF /* FreeBuildingDetailModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FreeBuildingDetailModel.h; sourceTree = "<group>"; };
 		20402A211BE21FF300802DAF /* FreeBuildingDetailModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FreeBuildingDetailModel.m; sourceTree = "<group>"; };
+		2040B7621BE8554B003DB0C3 /* FindMyCourseViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FindMyCourseViewModel.h; sourceTree = "<group>"; };
+		2040B7631BE8567E003DB0C3 /* FindMyCourseViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FindMyCourseViewModel.m; sourceTree = "<group>"; };
 		20859A971B64C0BC00580ED3 /* ResultCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResultCommon.h; sourceTree = "<group>"; };
 		20859A981B64C0BC00580ED3 /* ResultCommon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResultCommon.m; sourceTree = "<group>"; };
 		20859A9F1B64CB7E00580ED3 /* LoginResp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginResp.h; sourceTree = "<group>"; };
@@ -213,6 +222,14 @@
 		333E95E71B70B7AB0001059D /* SchoolDetailModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SchoolDetailModel.m; sourceTree = "<group>"; };
 		333E95E81B70B7AB0001059D /* SchoolListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SchoolListModel.h; sourceTree = "<group>"; };
 		333E95E91B70B7AB0001059D /* SchoolListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SchoolListModel.m; sourceTree = "<group>"; };
+		E47E59861BE8E10000AF7F5C /* ShopList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShopList.h; sourceTree = "<group>"; };
+		E47E59871BE8E10000AF7F5C /* ShopList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShopList.m; sourceTree = "<group>"; };
+		E47E59881BE8E10000AF7F5C /* SupplierShopDiscounts.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SupplierShopDiscounts.h; sourceTree = "<group>"; };
+		E47E59891BE8E10000AF7F5C /* SupplierShopDiscounts.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SupplierShopDiscounts.m; sourceTree = "<group>"; };
+		E47E598A1BE8E10000AF7F5C /* SupplierShopImages.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SupplierShopImages.h; sourceTree = "<group>"; };
+		E47E598B1BE8E10000AF7F5C /* SupplierShopImages.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SupplierShopImages.m; sourceTree = "<group>"; };
+		E47E598C1BE8E10000AF7F5C /* SupplierShopModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SupplierShopModel.h; sourceTree = "<group>"; };
+		E47E598D1BE8E10000AF7F5C /* SupplierShopModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SupplierShopModel.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -268,6 +285,7 @@
 		04480EB01BC75F1A0082EB87 /* Activity */ = {
 			isa = PBXGroup;
 			children = (
+				E47E59851BE8E10000AF7F5C /* TwoDimensionCode */,
 				202F03C01BE369FB006E7706 /* UserScheduling */,
 				20402A191BE21B4A00802DAF /* StudyRoom */,
 				20DDA41F1BDA24080023179A /* Remind */,
@@ -456,6 +474,8 @@
 			children = (
 				202F03B11BE35983006E7706 /* CourseTeacherlist.h */,
 				202F03B21BE35983006E7706 /* CourseTeacherlist.m */,
+				2040B7621BE8554B003DB0C3 /* FindMyCourseViewModel.h */,
+				2040B7631BE8567E003DB0C3 /* FindMyCourseViewModel.m */,
 				202F03B31BE35983006E7706 /* FindMyCourseModel.h */,
 				202F03B41BE35983006E7706 /* FindMyCourseModel.m */,
 				20DF60211BDF874900C8383B /* CourseTimeListModel.h */,
@@ -487,6 +507,21 @@
 				20E0C06D1B88B0CA00EDAED4 /* FeedInfo.m */,
 			);
 			path = Feed;
+			sourceTree = "<group>";
+		};
+		E47E59851BE8E10000AF7F5C /* TwoDimensionCode */ = {
+			isa = PBXGroup;
+			children = (
+				E47E59861BE8E10000AF7F5C /* ShopList.h */,
+				E47E59871BE8E10000AF7F5C /* ShopList.m */,
+				E47E59881BE8E10000AF7F5C /* SupplierShopDiscounts.h */,
+				E47E59891BE8E10000AF7F5C /* SupplierShopDiscounts.m */,
+				E47E598A1BE8E10000AF7F5C /* SupplierShopImages.h */,
+				E47E598B1BE8E10000AF7F5C /* SupplierShopImages.m */,
+				E47E598C1BE8E10000AF7F5C /* SupplierShopModel.h */,
+				E47E598D1BE8E10000AF7F5C /* SupplierShopModel.m */,
+			);
+			path = TwoDimensionCode;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -580,6 +615,8 @@
 				0499B9C81BE70D6900202CFD /* Scheduling.m in Sources */,
 				20DCB9581B8CA60800C758DE /* ApplicantList.m in Sources */,
 				20E0C07F1B88B0CA00EDAED4 /* ClassList.m in Sources */,
+				E47E598F1BE8E10000AF7F5C /* SupplierShopDiscounts.m in Sources */,
+				E47E598E1BE8E10000AF7F5C /* ShopList.m in Sources */,
 				20E372C21BDDC03B0063BF56 /* ImageUploadModel.m in Sources */,
 				20859A991B64C0BC00580ED3 /* ResultCommon.m in Sources */,
 				20DA8B441B8F5E76007D0CDE /* ReadFeedCount.m in Sources */,
@@ -594,7 +631,9 @@
 				20859AB31B64E2F600580ED3 /* YModel+ActionMessage.m in Sources */,
 				3307BBCC1B9561FD003446F8 /* SuggestListModel.m in Sources */,
 				20DA74BD1B8C0BFA0002E041 /* FriendsCondition.m in Sources */,
+				2040B7641BE8567E003DB0C3 /* FindMyCourseViewModel.m in Sources */,
 				0499B9CB1BE70D8F00202CFD /* AvailableTimeModel.m in Sources */,
+				E47E59901BE8E10000AF7F5C /* SupplierShopImages.m in Sources */,
 				20DF60111BDF677700C8383B /* ActivityTypeInfo.m in Sources */,
 				20859AA31B64CB7E00580ED3 /* LoginResp.m in Sources */,
 				332D32681B71E9B400B69E96 /* PushInfo.m in Sources */,
@@ -628,6 +667,7 @@
 				20E1C6791B89F0A7008BA9D6 /* Comment.m in Sources */,
 				043B45441BE8B23500050B32 /* NotifyInfoModel.m in Sources */,
 				202F03BC1BE35C0F006E7706 /* CourseTime.m in Sources */,
+				E47E59911BE8E10000AF7F5C /* SupplierShopModel.m in Sources */,
 				3307BBCB1B9561FD003446F8 /* SenderListModel.m in Sources */,
 				20E0C06F1B88B0CA00EDAED4 /* FeedInfo.m in Sources */,
 				20C5B0651B8DB55C00B4A8A8 /* GroupDetail.m in Sources */,
