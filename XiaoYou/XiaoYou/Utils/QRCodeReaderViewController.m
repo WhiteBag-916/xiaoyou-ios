@@ -248,8 +248,8 @@
     [self.view addSubview:moreMerchantsLabel];
     [moreMerchantsLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.equalTo(self.view);
-        make.bottom.equalTo(info.mas_top).offset(-30);
-        make.height.mas_equalTo(12);
+        make.bottom.equalTo(info.mas_top).offset(-10);
+        make.height.mas_equalTo(14);
         make.width.mas_equalTo(100);
     }];
     
