@@ -7,6 +7,7 @@
 //
 
 #import "MiddleInfoView.h"
+#import "SupplierShopModel.h"
 
 @interface MiddleInfoView ()
 
@@ -19,14 +20,18 @@
 @property(nonatomic,strong)UIImageView * placeImageView;
 @property(nonatomic,strong)UILabel * placeLabel;
 
+@property(nonatomic,strong)ShopList * model;
+
 @end
 
 @implementation MiddleInfoView
 
-- (instancetype)init
+- (instancetype)initWithModel:(ShopList *) model
 {
     self = [super init];
     if (self) {
+        
+        _model = model;
         [self setUpUI];
     }
     return self;
@@ -46,7 +51,7 @@
     }];
     
     _houseLabel = [[UILabel alloc] init];
-    _houseLabel.text = @"必胜客";
+    _houseLabel.text = _model.supplierShopModel.name;
     _houseLabel.font = CONTENT_FONT(SCALE_NUM(12));
     _houseLabel.textColor = KCOLOR_B3;
     _houseLabel.textAlignment = NSTextAlignmentLeft;
@@ -71,7 +76,7 @@
     }];
     
     _phoneLabel = [[UILabel alloc] init];
-    _phoneLabel.text = @"022-666 6666";
+    _phoneLabel.text = _model.supplierShopModel.telephone;
     _phoneLabel.font = CONTENT_FONT(SCALE_NUM(12));
     _phoneLabel.textColor = KCOLOR_B3;
     _phoneLabel.textAlignment = NSTextAlignmentLeft;
@@ -95,7 +100,7 @@
     }];
     
     _placeLabel = [[UILabel alloc] init];
-    _placeLabel.text = @"和平区西湖道风荷园1-4-20";
+    _placeLabel.text = _model.supplierShopModel.address;
     _placeLabel.font = CONTENT_FONT(SCALE_NUM(12));
     _placeLabel.textColor = KCOLOR_B3;
     _placeLabel.textAlignment = NSTextAlignmentLeft;

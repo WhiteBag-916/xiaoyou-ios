@@ -8,10 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		040619DC1BDE11C3008E3E4E /* NoticeAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 040619DB1BDE11C3008E3E4E /* NoticeAction.m */; };
-		043B45411BE8967200050B32 /* YBaseService.m in Sources */ = {isa = PBXBuildFile; fileRef = 043B45401BE8967200050B32 /* YBaseService.m */; settings = {ASSET_TAGS = (); }; };
+		043B45411BE8967200050B32 /* YBaseService.m in Sources */ = {isa = PBXBuildFile; fileRef = 043B45401BE8967200050B32 /* YBaseService.m */; };
 		0463588E1BE0F5450055819F /* CancleActivityAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 0463588D1BE0F5450055819F /* CancleActivityAction.m */; };
 		04722E261BD8892700F95816 /* AvailableAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 04722E251BD8892700F95816 /* AvailableAction.m */; };
-		0499B9CE1BE70F1C00202CFD /* MainAvailableTimeAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 0499B9CD1BE70F1C00202CFD /* MainAvailableTimeAction.m */; settings = {ASSET_TAGS = (); }; };
+		0499B9CE1BE70F1C00202CFD /* MainAvailableTimeAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 0499B9CD1BE70F1C00202CFD /* MainAvailableTimeAction.m */; };
 		04A2A0071BCE3969006A35FB /* AppConfigData.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A2A0061BCE3969006A35FB /* AppConfigData.m */; };
 		202F03B91BE359C0006E7706 /* FindMyCourseAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 202F03B81BE359C0006E7706 /* FindMyCourseAction.m */; };
 		202F03C91BE36A27006E7706 /* UserSchedulingConditionsAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 202F03C81BE36A27006E7706 /* UserSchedulingConditionsAction.m */; };
@@ -72,6 +72,8 @@
 		20E366411B92F7DC00A22FFE /* RegAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 20E366401B92F7DC00A22FFE /* RegAction.m */; };
 		20E372BF1BDDBFC50063BF56 /* CommonImgUpload.m in Sources */ = {isa = PBXBuildFile; fileRef = 20E372BE1BDDBFC50063BF56 /* CommonImgUpload.m */; };
 		3339625C1B95575400DD0A6D /* SuggestListAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 3339625B1B95575400DD0A6D /* SuggestListAction.m */; };
+		E47E59811BE8D85F00AF7F5C /* ShopListAction.m in Sources */ = {isa = PBXBuildFile; fileRef = E47E59801BE8D85F00AF7F5C /* ShopListAction.m */; };
+		E47E59841BE8DC5700AF7F5C /* CodeManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E47E59831BE8DC5700AF7F5C /* CodeManager.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -235,6 +237,10 @@
 		20E372BE1BDDBFC50063BF56 /* CommonImgUpload.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommonImgUpload.m; sourceTree = "<group>"; };
 		3339625A1B95575400DD0A6D /* SuggestListAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SuggestListAction.h; sourceTree = "<group>"; };
 		3339625B1B95575400DD0A6D /* SuggestListAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SuggestListAction.m; sourceTree = "<group>"; };
+		E47E597F1BE8D85F00AF7F5C /* ShopListAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShopListAction.h; sourceTree = "<group>"; };
+		E47E59801BE8D85F00AF7F5C /* ShopListAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShopListAction.m; sourceTree = "<group>"; };
+		E47E59821BE8DC5700AF7F5C /* CodeManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CodeManager.h; sourceTree = "<group>"; };
+		E47E59831BE8DC5700AF7F5C /* CodeManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CodeManager.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -382,6 +388,8 @@
 			children = (
 				209E08C31BDDC9E20062758E /* NoticeManager.h */,
 				209E08C41BDDC9E20062758E /* NoticeManager.m */,
+				E47E59821BE8DC5700AF7F5C /* CodeManager.h */,
+				E47E59831BE8DC5700AF7F5C /* CodeManager.m */,
 				20DADED61BD0958400FB294F /* ActivityManager.h */,
 				20DADED71BD0958400FB294F /* ActivityManager.m */,
 			);
@@ -438,6 +446,7 @@
 		20DBFD741B4FD3F5009134D0 /* Action */ = {
 			isa = PBXGroup;
 			children = (
+				E47E597D1BE8D7E300AF7F5C /* TwoDimensionCode */,
 				04722E231BD8891100F95816 /* Activity */,
 				04A82D8D1BC7A23200EF87B7 /* Remind */,
 				20DA8B311B8EC4E3007D0CDE /* Utils */,
@@ -501,6 +510,7 @@
 		20DBFD7D1B4FD3F5009134D0 /* Manager */ = {
 			isa = PBXGroup;
 			children = (
+				E47E597E1BE8D80E00AF7F5C /* TwoDimensionCode */,
 				20DADED51BD0956C00FB294F /* Activity */,
 				20E122141B705D3C00F90BD3 /* Feed */,
 				20859A791B64BD4C00580ED3 /* Provision */,
@@ -600,6 +610,22 @@
 			path = Feed;
 			sourceTree = "<group>";
 		};
+		E47E597D1BE8D7E300AF7F5C /* TwoDimensionCode */ = {
+			isa = PBXGroup;
+			children = (
+				E47E597F1BE8D85F00AF7F5C /* ShopListAction.h */,
+				E47E59801BE8D85F00AF7F5C /* ShopListAction.m */,
+			);
+			path = TwoDimensionCode;
+			sourceTree = "<group>";
+		};
+		E47E597E1BE8D80E00AF7F5C /* TwoDimensionCode */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = TwoDimensionCode;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -696,6 +722,7 @@
 				20DBFD861B4FD3F5009134D0 /* YUtils+Component.m in Sources */,
 				20DA1A5A1B89751500DEF95C /* MyCommentPersonsAction.m in Sources */,
 				20DCB9701B8CA60800C758DE /* FindFriendsByTagsAction.m in Sources */,
+				E47E59841BE8DC5700AF7F5C /* CodeManager.m in Sources */,
 				20DA8B341B8EC4F0007D0CDE /* CommonAction.m in Sources */,
 				20DED8721B94208B004B5E7B /* RegNoticeAction.m in Sources */,
 				20DDA4311BDA26050023179A /* FindByActivityPublishedIdAction.m in Sources */,
@@ -709,6 +736,7 @@
 				20DA1A711B89B7DD00DEF95C /* MyFeedAction.m in Sources */,
 				20E1C6691B89E9E6008BA9D6 /* UpdateSelfIntroAction.m in Sources */,
 				20DD81671B91DA1700ACFD9A /* ForbiddenLinkManAction.m in Sources */,
+				E47E59811BE8D85F00AF7F5C /* ShopListAction.m in Sources */,
 				20E122171B705D3C00F90BD3 /* FeedManager.m in Sources */,
 				20C5B0811B8DF3E700B4A8A8 /* GroupListAction.m in Sources */,
 				20DADED81BD0958400FB294F /* ActivityManager.m in Sources */,

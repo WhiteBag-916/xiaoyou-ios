@@ -8,9 +8,10 @@
 
 #import "YCommonDialogView.h"
 #import "ProfileInfo.h"
+#import "LoginResp.h"
 
 @interface CodeEnlargeView : YCommonDialogView
 
--(instancetype)initWithModel:(ProfileInfo *) model;
+-(instancetype)initWithModel1:(ProfileInfo *) model1 andModel2:(LoginResp *)model2;
 
 @end

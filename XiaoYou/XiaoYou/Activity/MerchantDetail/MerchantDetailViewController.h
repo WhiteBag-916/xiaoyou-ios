@@ -7,7 +7,10 @@
 //
 
 #import "YViewController.h"
+#import "ShopList.h"
 
 @interface MerchantDetailViewController : YViewController
+
+- (instancetype)initWithModel:(ShopList *) model;
 
 @end

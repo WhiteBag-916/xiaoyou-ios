@@ -6,10 +6,11 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "YModel.h"
 
 @class SupplierShopModel;
 
-@interface ShopList : NSObject <NSCoding, NSCopying>
+@interface ShopList : YModel <NSCoding, NSCopying>
 
 @property (nonatomic, strong) NSArray *supplierShopImages;
 @property (nonatomic, strong) NSArray *supplierShopDiscounts;

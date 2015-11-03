@@ -11,12 +11,21 @@
 
 @interface MerchantDetailViewController ()
 
-
+@property(nonatomic,strong)ShopList * model;
 @property(nonatomic,strong)MerchantDetailTableView * merchantDetailTableView;
 
 @end
 
 @implementation MerchantDetailViewController
+
+- (instancetype)initWithModel:(ShopList *) model
+{
+    self = [super init];
+    if (self) {
+        _model = model;
+    }
+    return self;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -29,7 +38,7 @@
     self.title = @"必胜客";
     [self showCustomNavigationBackButton];
     
-    _merchantDetailTableView = [[MerchantDetailTableView alloc] init];
+    _merchantDetailTableView = [[MerchantDetailTableView alloc] initWithModel:_model];
     _merchantDetailTableView.backgroundColor = [UIColor clearColor];
     [self.view addSubview:_merchantDetailTableView];
     [_merchantDetailTableView mas_makeConstraints:^(MASConstraintMaker *make) {

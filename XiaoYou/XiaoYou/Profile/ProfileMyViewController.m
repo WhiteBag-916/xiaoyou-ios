@@ -152,7 +152,7 @@
     [back mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.mas_equalTo(SCALE_NUM(10));
         make.width.mas_equalTo(SCALE_NUM(9));
-        make.height.mas_equalTo(SCALE_NUM(11));
+        make.height.mas_equalTo(SCALE_NUM(14));
         make.centerY.equalTo(_headView);
     }];
     
@@ -303,7 +303,8 @@
     NSLog(@"放大二维码");
     
     ProfileInfo *info = [[ProvisionManager sharedInstance] getProfile];
-    _codeEnlargeView = [[CodeEnlargeView alloc] initWithModel:info];
+    LoginResp *resp = [[ProvisionManager sharedInstance] getLoginInfo];
+    _codeEnlargeView = [[CodeEnlargeView alloc] initWithModel1:info andModel2:resp];
     
     [_codeEnlargeView show];
     

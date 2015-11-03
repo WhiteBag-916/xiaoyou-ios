@@ -6,10 +6,9 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "YModel.h"
 
-
-
-@interface SupplierShopModel : NSObject <NSCoding, NSCopying>
+@interface SupplierShopModel : YModel <NSCoding, NSCopying>
 
 @property (nonatomic, assign) double supplierShopModelIdentifier;
 @property (nonatomic, strong) NSString *discount;

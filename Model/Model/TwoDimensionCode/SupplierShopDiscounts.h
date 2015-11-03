@@ -6,10 +6,10 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "YModel.h"
 
 
-
-@interface SupplierShopDiscounts : NSObject <NSCoding, NSCopying>
+@interface SupplierShopDiscounts : YModel <NSCoding, NSCopying>
 
 @property (nonatomic, assign) double displayOrder;
 @property (nonatomic, assign) double supplierShopDiscountsIdentifier;

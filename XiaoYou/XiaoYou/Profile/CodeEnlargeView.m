@@ -7,19 +7,20 @@
 //
 
 #import "CodeEnlargeView.h"
+#import "UIImageView+Ext.h"
 
 @implementation CodeEnlargeView
 
--(instancetype)initWithModel:(ProfileInfo *) model
+-(instancetype)initWithModel1:(ProfileInfo *) model1 andModel2:(LoginResp *)model2
 {
     self = [super initWithFrame:[UIScreen mainScreen].bounds];
     if (self) {
-        [self setUpUI:model];
+        [self setUpUIWithModel1:model1 andModel2:model2];
     }
     return self;
 }
 
--(void)setUpUI:(ProfileInfo *) model
+-(void)setUpUIWithModel1:(ProfileInfo *) model1 andModel2:(LoginResp *) model2
 {
     self.backgroundView = [[UIView alloc] initWithFrame:self.frame];
     self.backgroundView.backgroundColor = [UIColor blackColor];
@@ -44,6 +45,7 @@
     //头像
     UIImageView * headImageView = [[UIImageView alloc] init];
     headImageView.backgroundColor = [UIColor orangeColor];
+    [headImageView setFaceImageWithUrl:model1.headPic];
     [self.contentView addSubview:headImageView];
     [headImageView mas_remakeConstraints:^(MASConstraintMaker *make) {
         make.left.top.mas_equalTo(SCALE_NUM(14));
@@ -52,7 +54,7 @@
     
     //姓名
     UILabel * nameLabel = [[UILabel alloc] init];
-    nameLabel.text = @"师兄";
+    nameLabel.text = model1.userName;
     nameLabel.backgroundColor = [UIColor clearColor];
     nameLabel.font = CONTENT_FONT(SCALE_NUM(12));
     nameLabel.textColor = KCOLOR_B4;
@@ -70,7 +72,7 @@
     facultyLabel.font = CONTENT_FONT(SCALE_NUM(10));
     facultyLabel.textColor = KCOLOR_B5;
     facultyLabel.numberOfLines = 0;
-    facultyLabel.text = @"计算机管理科学与工程机械科学院计算机管理科学与工程机械科学院";
+    facultyLabel.text = model2.college;
     [self.contentView addSubview:facultyLabel];
     [facultyLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(nameLabel.mas_bottom).offset(SCALE_NUM(8));
