@@ -24,6 +24,7 @@
 #import "EMTextMessageBody.h"
 #import "SuggestListAction.h"
 #import "AppConfigData.h"
+#import "NotifyInfoModel.h"
 
 
 #define kMessageManagerSyncQueue @"kMessageManagerSyncQueue"
@@ -387,25 +388,47 @@ DEF_SINGLETON(MessageManager);
                 needRefresh = YES;
                 break;
             }
-            case ACTIVITY_PUSH:
+            case ACTIVITY_PUSH://活动推送 12
             {
+                [self dealMessageWithDict:ext Type:ACTIVITY_PUSH];
+                [self showNotificationWithMessage:message];
                 break;
             }
-            case ACTIVITY_ENROLL_CHECK_PASS:
+            case ACTIVITY_ENROLL_CHECK_PASS://报名审核通过 13
             {
-                
-            }
-            case ACTIVITY_ENROLL_NO_CHECK:
-            {
-                
-            }
-            case SCHEDULE_REMIND: //日程提醒
-            {
-                //YLogD(@"this is =%@",message);
-                
+                [self dealMessageWithDict:ext Type:ACTIVITY_ENROLL_CHECK_PASS];
                 [self showNotificationWithMessage:message];
-                [AppConfigData setHaveRemindMessage:NO];
-                [AppConfigData setHaveRemindMessage:YES];
+                break;
+            }
+            case ACTIVITY_ENROLL_NO_CHECK://报名审核未通过 14
+            {
+                [self dealMessageWithDict:ext Type:ACTIVITY_ENROLL_NO_CHECK];
+                [self showNotificationWithMessage:message];
+                break;
+            }
+            case SCHEDULE_REMIND: //用户日程提醒 15
+            {
+                [self dealMessageWithDict:ext Type:SCHEDULE_REMIND];
+                [self showNotificationWithMessage:message];
+                //[AppConfigData setHaveRemindMessage:YES];
+                break;
+            }
+            case ACTIVITY_ENROLL: //用户报名活动提醒 16
+            {
+                [self dealMessageWithDict:ext Type:ACTIVITY_ENROLL];
+                [self showNotificationWithMessage:message];
+                break;
+            }
+            case ACTIVITY_PUBLISH: //活动发布提醒 17
+            {
+                [self dealMessageWithDict:ext Type:ACTIVITY_PUBLISH];
+                [self showNotificationWithMessage:message];
+                break;
+            }
+            case ACTIVITY_NOTIFY: //活动通知提醒 18
+            {
+                [self dealMessageWithDict:ext Type:ACTIVITY_NOTIFY];
+                [self showNotificationWithMessage:message];
                 break;
             }
             case ADD_COMMENT:
@@ -465,9 +488,45 @@ DEF_SINGLETON(MessageManager);
 }
 
 
--(void)postRemindMassge
+-(void)dealMessageWithDict:(NSDictionary*)dict Type:(PUSH_Message_TYPE)type
 {
-    [[NSNotificationCenter defaultCenter] postNotificationName:KNotification_Remind_Message_Come object:nil userInfo:nil];
+    NotifyInfoModel *notiInfo = [[NotifyInfoModel alloc]init];
+    switch (type)
+    {
+        case ACTIVITY_PUSH:
+        {
+            notiInfo.type = ACTIVITY_RECOMMEND_REMIND;
+            break;
+        }
+        case ACTIVITY_ENROLL_CHECK_PASS:
+        {
+            break;
+        }
+        case ACTIVITY_ENROLL_NO_CHECK:
+        {
+            break;
+        }
+        case SCHEDULE_REMIND:
+        {
+            break;
+        }
+        case ACTIVITY_ENROLL:
+        {
+            break;
+        }
+        case ACTIVITY_PUBLISH:
+        {
+            break;
+        }
+        case ACTIVITY_NOTIFY:
+        {
+            break;
+        }
+        default:
+        {
+            break;
+        }
+    }
 }
 
 

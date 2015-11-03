@@ -32,7 +32,7 @@ typedef enum : NSUInteger {
     KICKGROUP=10,           //踢出群
     DELETEUSER=11,          //被好友删除
     
-#pragma mark
+#pragma mark 活动推送提醒
     ACTIVITY_PUSH=12,               //活动推送
     ACTIVITY_ENROLL_CHECK_PASS=13,  //活动报名审核通过
     ACTIVITY_ENROLL_NO_CHECK=14,    //活动报名审核未通过
@@ -49,7 +49,7 @@ AS_SINGLETON(MessageManager);
 
 - (void)getMessageListData:(ActionCompleteBlock)block;
 //获取发送建议
-- (void)getSuggestList:(ActionCompleteBlock)block;;
+- (void)getSuggestList:(ActionCompleteBlock)block;
 // 统计未读消息数
 -(void)setupUnreadMessageCount;
 

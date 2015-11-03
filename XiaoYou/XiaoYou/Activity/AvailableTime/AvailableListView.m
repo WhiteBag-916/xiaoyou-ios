@@ -158,6 +158,8 @@
     if (indexPath.row == 0) {
         ScheduleCardCell *cell = [tableView dequeueReusableCellWithIdentifier:REUSEID_SCHEDULE_CELL];
         [cell setData:self.availableListArray[indexPath.row]];
+#pragma mark 此处需要数据库相关操作
+        [cell setMessageNotReadIsVisible:YES Text:@"this is aa"];
         return cell;
     } else if (indexPath.row == 1) {
         StudyRoomCell *cell = [StudyRoomCell cellWithTableView:tableView];

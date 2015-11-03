@@ -27,6 +27,7 @@
 		043AC8731BCF7BFC00AB6E09 /* mine_box_yard@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 043AC86B1BCF7BFC00AB6E09 /* mine_box_yard@3x.png */; };
 		043B453A1BE87A2000050B32 /* red_point_bell@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 043B45381BE87A2000050B32 /* red_point_bell@2x.png */; settings = {ASSET_TAGS = (); }; };
 		043B453B1BE87A2000050B32 /* red_point_bell@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 043B45391BE87A2000050B32 /* red_point_bell@3x.png */; settings = {ASSET_TAGS = (); }; };
+		043B45471BE8C08000050B32 /* ScheduleNotifyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 043B45461BE8C08000050B32 /* ScheduleNotifyCell.m */; settings = {ASSET_TAGS = (); }; };
 		044792BD1BB14DF40053412A /* commenTagList.m in Sources */ = {isa = PBXBuildFile; fileRef = 044792BC1BB14DF40053412A /* commenTagList.m */; };
 		0447A39E1BD7602000341684 /* WhoJoinInController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0447A39D1BD7602000341684 /* WhoJoinInController.m */; };
 		0447A3A11BD7637D00341684 /* WhoJoinInListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0447A3A01BD7637D00341684 /* WhoJoinInListView.m */; };
@@ -844,6 +845,8 @@
 		043AC86B1BCF7BFC00AB6E09 /* mine_box_yard@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mine_box_yard@3x.png"; sourceTree = "<group>"; };
 		043B45381BE87A2000050B32 /* red_point_bell@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "red_point_bell@2x.png"; sourceTree = "<group>"; };
 		043B45391BE87A2000050B32 /* red_point_bell@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "red_point_bell@3x.png"; sourceTree = "<group>"; };
+		043B45451BE8C08000050B32 /* ScheduleNotifyCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScheduleNotifyCell.h; sourceTree = "<group>"; };
+		043B45461BE8C08000050B32 /* ScheduleNotifyCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScheduleNotifyCell.m; sourceTree = "<group>"; };
 		044792BB1BB14DF40053412A /* commenTagList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = commenTagList.h; sourceTree = "<group>"; };
 		044792BC1BB14DF40053412A /* commenTagList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = commenTagList.m; sourceTree = "<group>"; };
 		0447A39C1BD7602000341684 /* WhoJoinInController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WhoJoinInController.h; sourceTree = "<group>"; };
@@ -2251,6 +2254,8 @@
 				0499B9D41BE78A4500202CFD /* NotifyViewController.m */,
 				0499B9D61BE78A6100202CFD /* NotifyListView.h */,
 				0499B9D71BE78A6100202CFD /* NotifyListView.m */,
+				043B45451BE8C08000050B32 /* ScheduleNotifyCell.h */,
+				043B45461BE8C08000050B32 /* ScheduleNotifyCell.m */,
 			);
 			path = Notify;
 			sourceTree = "<group>";
@@ -4905,6 +4910,7 @@
 				0447A39E1BD7602000341684 /* WhoJoinInController.m in Sources */,
 				20E1007E1BD495BC009CB7E8 /* EditScheduleViewController.m in Sources */,
 				20BEAF9F1BC913120002A365 /* FastTopView.m in Sources */,
+				043B45471BE8C08000050B32 /* ScheduleNotifyCell.m in Sources */,
 				3331222D1B806EDB00D3D032 /* ConvertToCommonEmoticonsHelper.m in Sources */,
 				65969DC41B86BDE1001DD348 /* MBProgressHUD+Add.m in Sources */,
 				20DAF9D71B873883005B7932 /* ChineseToPinyinResource.m in Sources */,

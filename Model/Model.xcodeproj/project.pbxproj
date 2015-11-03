@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		040619DF1BDE174E008E3E4E /* NoticeInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 040619DE1BDE174E008E3E4E /* NoticeInfo.m */; };
+		043B45441BE8B23500050B32 /* NotifyInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 043B45431BE8B23500050B32 /* NotifyInfoModel.m */; settings = {ASSET_TAGS = (); }; };
 		0499B9C81BE70D6900202CFD /* Scheduling.m in Sources */ = {isa = PBXBuildFile; fileRef = 0499B9C71BE70D6900202CFD /* Scheduling.m */; settings = {ASSET_TAGS = (); }; };
 		0499B9CB1BE70D8F00202CFD /* AvailableTimeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0499B9CA1BE70D8F00202CFD /* AvailableTimeModel.m */; settings = {ASSET_TAGS = (); }; };
 		04AF14521BDDC74400FEE6A4 /* FilterCondition.m in Sources */ = {isa = PBXBuildFile; fileRef = 04AF14511BDDC74400FEE6A4 /* FilterCondition.m */; };
@@ -93,6 +94,8 @@
 /* Begin PBXFileReference section */
 		040619DD1BDE174E008E3E4E /* NoticeInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoticeInfo.h; sourceTree = "<group>"; };
 		040619DE1BDE174E008E3E4E /* NoticeInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoticeInfo.m; sourceTree = "<group>"; };
+		043B45421BE8B23500050B32 /* NotifyInfoModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotifyInfoModel.h; sourceTree = "<group>"; };
+		043B45431BE8B23500050B32 /* NotifyInfoModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotifyInfoModel.m; sourceTree = "<group>"; };
 		0499B9C61BE70D6900202CFD /* Scheduling.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Scheduling.h; sourceTree = "<group>"; };
 		0499B9C71BE70D6900202CFD /* Scheduling.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Scheduling.m; sourceTree = "<group>"; };
 		0499B9C91BE70D8F00202CFD /* AvailableTimeModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AvailableTimeModel.h; sourceTree = "<group>"; };
@@ -442,6 +445,8 @@
 			children = (
 				040619DD1BDE174E008E3E4E /* NoticeInfo.h */,
 				040619DE1BDE174E008E3E4E /* NoticeInfo.m */,
+				043B45421BE8B23500050B32 /* NotifyInfoModel.h */,
+				043B45431BE8B23500050B32 /* NotifyInfoModel.m */,
 			);
 			path = Remind;
 			sourceTree = "<group>";
@@ -621,6 +626,7 @@
 				202F03BF1BE35F75006E7706 /* Result.m in Sources */,
 				20DED86F1B94205B004B5E7B /* EasyModel.m in Sources */,
 				20E1C6791B89F0A7008BA9D6 /* Comment.m in Sources */,
+				043B45441BE8B23500050B32 /* NotifyInfoModel.m in Sources */,
 				202F03BC1BE35C0F006E7706 /* CourseTime.m in Sources */,
 				3307BBCB1B9561FD003446F8 /* SenderListModel.m in Sources */,
 				20E0C06F1B88B0CA00EDAED4 /* FeedInfo.m in Sources */,
