@@ -333,7 +333,7 @@
     else if(indexPath.row == 1)
     {
         
-        if (_model.tagModels.count > 0)
+        if (_model.tagsCommon.count > 0)
         {
             CGFloat height;
             if (_model.propetiesCommon.count > 0)
@@ -344,10 +344,10 @@
             {
                 height = 40;
             }
-            for (int i = 0; i < _model.tagModels.count; i++)
+            for (int i = 0; i < _model.tagsCommon.count; i++)
             {
                 CGFloat width;
-                Tags * tag = _model.tagModels[i];
+                Tags * tag = _model.tagsCommon[i];
                 NSDictionary *attributes = @{NSFontAttributeName:[UIFont systemFontOfSize:12]};
                 CGSize textSize = [tag.name boundingRectWithSize:CGSizeMake(150, 14) options:NSStringDrawingTruncatesLastVisibleLine attributes:attributes context:nil].size;
                 width += 10;

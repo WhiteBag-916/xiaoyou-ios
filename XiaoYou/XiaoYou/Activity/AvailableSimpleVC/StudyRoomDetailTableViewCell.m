@@ -72,7 +72,8 @@ NSString *const kStudyRoomDetailTableViewCell = @"StudyRoomDetailTableViewCellId
     [self.contentView addSubview:_studyRoomLabel];
     
     [_studyRoomLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.right.mas_equalTo(K_IMG_L);
+        make.left.mas_equalTo(K_IMG_L);
+        make.right.mas_equalTo(-K_IMG_L);
         make.height.mas_equalTo(K_TEXT_H);
         make.top.mas_equalTo(K_IMG_TW);
     }];
@@ -99,8 +100,26 @@ NSString *const kStudyRoomDetailTableViewCell = @"StudyRoomDetailTableViewCellId
 - (void)initData:(FreeBuildingDetailModel *)model{
 
     _studyRoomLabel.text = model.roomName;
-    _timeLabel.text = @"无课时间：14:00-16:00";
+    _timeLabel.text = [NSString stringWithFormat:@"无课时间：%@",[self getTimeStrFromArr:model]];
     
+}
+
+
+-(NSString *)getTimeStrFromArr:(FreeBuildingDetailModel *) model
+{
+    NSMutableString * returnStr = [[NSMutableString alloc] init];
+    if (model.courseLists.count > 0)
+    {
+        for (int i = 0; i < model.courseLists.count; i++)
+        {
+            [returnStr appendString:model.courseLists[i]];
+            if (i != model.courseLists.count - 1)
+            {
+                [returnStr appendString:@","];
+            }
+        }
+    }
+    return returnStr;
 }
 
 @end
