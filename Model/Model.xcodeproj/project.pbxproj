@@ -217,7 +217,6 @@
 		333E95E71B70B7AB0001059D /* SchoolDetailModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SchoolDetailModel.m; sourceTree = "<group>"; };
 		333E95E81B70B7AB0001059D /* SchoolListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SchoolListModel.h; sourceTree = "<group>"; };
 		333E95E91B70B7AB0001059D /* SchoolListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SchoolListModel.m; sourceTree = "<group>"; };
-		E47E59701BE8D75800AF7F5C /* DataModels.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataModels.h; sourceTree = "<group>"; };
 		E47E59711BE8D75800AF7F5C /* ShopList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShopList.h; sourceTree = "<group>"; };
 		E47E59721BE8D75800AF7F5C /* ShopList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShopList.m; sourceTree = "<group>"; };
 		E47E59731BE8D75800AF7F5C /* SupplierShopDiscounts.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SupplierShopDiscounts.h; sourceTree = "<group>"; };
@@ -392,7 +391,7 @@
 		20DBFD641B4FA8F0009134D0 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				E47E596F1BE8D75800AF7F5C /* Two-DimensionCode */,
+				E47E596F1BE8D75800AF7F5C /* TwoDimensionCode */,
 				04480EB01BC75F1A0082EB87 /* Activity */,
 				20859AB01B64E2EE00580ED3 /* Utils */,
 				20859A961B64C0BC00580ED3 /* Common */,
@@ -503,10 +502,9 @@
 			path = Feed;
 			sourceTree = "<group>";
 		};
-		E47E596F1BE8D75800AF7F5C /* Two-DimensionCode */ = {
+		E47E596F1BE8D75800AF7F5C /* TwoDimensionCode */ = {
 			isa = PBXGroup;
 			children = (
-				E47E59701BE8D75800AF7F5C /* DataModels.h */,
 				E47E59711BE8D75800AF7F5C /* ShopList.h */,
 				E47E59721BE8D75800AF7F5C /* ShopList.m */,
 				E47E59731BE8D75800AF7F5C /* SupplierShopDiscounts.h */,
@@ -516,6 +514,7 @@
 				E47E59771BE8D75800AF7F5C /* SupplierShopModel.h */,
 				E47E59781BE8D75800AF7F5C /* SupplierShopModel.m */,
 			);
+			name = TwoDimensionCode;
 			path = "Two-DimensionCode";
 			sourceTree = "<group>";
 		};
