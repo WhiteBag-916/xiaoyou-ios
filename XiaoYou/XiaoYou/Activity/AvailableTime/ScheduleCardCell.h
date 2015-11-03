@@ -18,4 +18,6 @@
 
 -(void)setData:(NSArray*)scheduleArr;
 
+-(void)setMessageNotReadIsVisible:(BOOL)isVisible Text:(NSString*)text;
+
 @end

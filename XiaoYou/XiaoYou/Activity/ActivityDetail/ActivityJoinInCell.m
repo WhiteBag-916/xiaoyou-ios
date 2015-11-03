@@ -119,7 +119,7 @@
     
     ProfileInfo *profile = [[ProfileInfo alloc]init];
     profile.propetiesCommon = joinModel.propetiesCommon;
-    profile.tagModels = joinModel.tagsCommon;
+    profile.tagsCommon = joinModel.tagsCommon;
     
     [_tagsView setData:profile];
 }

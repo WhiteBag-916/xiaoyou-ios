@@ -10,8 +10,11 @@
 #import "ScheduleCardCell.h"
 #import "Scheduling.h"
 #import "TimeFormatterConvert.h"
+#import "NotifyViewController.h"
+#import "AvailableViewController.h"
 
 @interface ScheduleCardCell ()
+
 @property (nonatomic,strong) UIImageView    *startImageView;    //提示图片
 @property (nonatomic,strong) UILabel        *titleLabel;        //标题
 @property (nonatomic,strong) UILabel        *timeLabel1;        //第一项时间
@@ -20,6 +23,8 @@
 @property (nonatomic,strong) UILabel        *projectLabel2;     //第二项内容
 @property (nonatomic,strong) UILabel        *timeLabel3;        //第三项时间
 @property (nonatomic,strong) UILabel        *projectLabel3;     //第三项内容
+
+@property (nonatomic,strong) UIButton       *messageNotRead;    //多少条未读消息
 @end
 
 @implementation ScheduleCardCell
@@ -94,8 +99,10 @@
     _projectLabel1.font = CONTENT_FONT(12);
     [_projectLabel1 mas_makeConstraints:^(MASConstraintMaker *make) {
         make.height.mas_equalTo(SCALE_NUM(12));
-        make.leading.mas_equalTo(SCALE_NUM(150));
+        //make.leading.mas_equalTo(SCALE_NUM(150));
+        make.left.equalTo(_timeLabel1.mas_right).offset(SCALE_NUM(10));
         make.centerY.equalTo(_timeLabel1);
+        make.trailing.mas_equalTo(SCALE_NUM(-5));
     }];
     
     _timeLabel2 = [[UILabel alloc]init];
@@ -118,6 +125,7 @@
         //make.height.mas_equalTo(SCALE_NUM(12));
         make.left.equalTo(_projectLabel1);
         make.centerY.equalTo(_timeLabel2);
+        make.right.equalTo(_projectLabel1);
     }];
     
     _timeLabel3 = [[UILabel alloc]init];
@@ -141,27 +149,31 @@
         //make.height.mas_equalTo(SCALE_NUM(12));
         make.left.equalTo(_projectLabel2);
         make.centerY.equalTo(_timeLabel3);
+        make.right.equalTo(_projectLabel2);
     }];
+    
+    //设置未读消息
 }
 
 -(void)setData:(NSArray *)scheduleArr
 {
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(messageNotifyAction:) name:KNotification_Remind_Message_Not_Read object:nil];
     for (int i = 0; i < scheduleArr.count; i++) {
         Scheduling *schedule = [scheduleArr objectAtIndex:i];
         if (i == 0) {
-            _timeLabel1.text = [TimeFormatterConvert timeConvertToFommtterAvailable:schedule.startTime];
+            _timeLabel1.text = [TimeFormatterConvert timeConvertToFommtterScheduleStartTime:schedule.startTime EndTime:schedule.endTime];
             _projectLabel1.text = schedule.content;
             _timeLabel2.text    = @"";
             _projectLabel2.text = @"";
             _timeLabel3.text    = @"";
             _projectLabel3.text = @"";
         } else if (i == 1) {
-            _timeLabel2.text = [TimeFormatterConvert timeConvertToFommtterAvailable:schedule.startTime];
+            _timeLabel2.text = [TimeFormatterConvert timeConvertToFommtterScheduleStartTime:schedule.startTime EndTime:schedule.endTime];
             _projectLabel2.text = schedule.content;
             _timeLabel3.text    = @"";
             _projectLabel3.text = @"";
         } else if (i == 2) {
-            _timeLabel3.text = [TimeFormatterConvert timeConvertToFommtterAvailable:schedule.startTime];
+            _timeLabel3.text = [TimeFormatterConvert timeConvertToFommtterScheduleStartTime:schedule.startTime EndTime:schedule.endTime];
             _projectLabel3.text = schedule.content;
         }
     }
@@ -176,5 +188,40 @@
         }];
     }
 }
+
+//设置消息未读提醒
+-(void)setMessageNotReadIsVisible:(BOOL)isVisible Text:(NSString *)text
+{
+    self.messageNotRead.hidden = !isVisible;
+    [self.messageNotRead setTitle:text forState:UIControlStateNormal];
+}
+
+//消息未读提醒Action
+-(UIButton *)messageNotRead
+{
+    if (!_messageNotRead) {
+        _messageNotRead = [UIButton buttonWithType:UIButtonTypeSystem];
+        [self.contentView addSubview:_messageNotRead];
+        _messageNotRead.backgroundColor = [UIColor blackColor];
+        _messageNotRead.layer.cornerRadius = 5;
+        _messageNotRead.clipsToBounds = YES;
+        _messageNotRead.alpha = 0.7;
+        [_messageNotRead setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        [_messageNotRead addTarget:self action:@selector(messageNotReadAction) forControlEvents:UIControlEventTouchUpInside];
+        [_messageNotRead mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.centerX.equalTo(self.contentView);
+            make.top.mas_equalTo(SCALE_NUM(10));
+        }];
+    }
+    return _messageNotRead;
+}
+
+//消息未读提醒Action
+-(void)messageNotReadAction
+{
+    NotifyViewController *notiVC = [[NotifyViewController alloc]init];
+    [self.viewController.navigationController pushViewController:notiVC animated:YES needHiddenBottomBar:YES];
+}
+
 
 @end
