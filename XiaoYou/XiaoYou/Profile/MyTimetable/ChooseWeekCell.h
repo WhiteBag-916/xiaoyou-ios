@@ -12,6 +12,6 @@ extern NSString *const kChooseWeekCell;
 
 @interface ChooseWeekCell : YTableViewCell
 
-- (void)initData:(NSInteger)num selected:(BOOL)selected;
+- (void)initData:(NSInteger)num selected:(BOOL)selected isNowWeek:(BOOL)isNowWeek;
 
 @end

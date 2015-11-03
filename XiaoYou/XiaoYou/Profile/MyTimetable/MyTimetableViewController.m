@@ -24,6 +24,7 @@
 @property (nonatomic, strong) CourseTimeListModel *courseTimeListModel;//课时
 
 @property (nonatomic, assign) NSInteger selectWeekNum;  //已选择周
+@property (nonatomic, assign) NSInteger nowWeek;        //当前周
 
 @end
 
@@ -125,6 +126,7 @@
     NSDate *selectWeekDate = [NSDate dateFromString:self.courseTimeListModel.firstTime withFormat:[NSDate dateFormatString]];
     //根据时间获取距离今天
     NSUInteger agoDay = [selectWeekDate daysAgo];
+    _nowWeek = 1+agoDay/7;
     [self chooseWeek:1+agoDay/7];
 }
 
@@ -140,7 +142,10 @@
 
 //选择第几周
 - (void)showChooseWeek {
-    ChooseWeekView *chooseWeekView = [[ChooseWeekView alloc] initWithBlock:_selectWeekNum weekNum:self.courseTimeListModel.maxWeek block:^(NSInteger checkNum) {
+    ChooseWeekView *chooseWeekView = [[ChooseWeekView alloc] initWithBlock:_selectWeekNum
+                                                                   weekNum:self.courseTimeListModel.maxWeek
+                                                                   nowWeek:_nowWeek
+                                                                     block:^(NSInteger checkNum) {
         [self chooseWeek:checkNum];
     }];
     
@@ -150,6 +155,15 @@
 - (void)chooseWeek:(NSInteger)num {
     _selectWeekNum = num;
     _weekLabel.text = [NSString stringWithFormat:@"第%ld周", (long)num];
+    
+    [self getDataByWeek];
+}
+
+//根据第几周获取课程数据
+- (void)getDataByWeek {
+    NSArray *array = [NSArray arrayWithArray:[[CurriculumManager sharedInstance] getDataByWeek:_selectWeekNum]];
+    
+    [_myTimetableView refreshEventsData:array];
 }
 
 /*

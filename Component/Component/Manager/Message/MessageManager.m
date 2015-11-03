@@ -322,7 +322,7 @@ DEF_SINGLETON(MessageManager);
     BOOL needReload = NO;
     BOOL needRefresh = NO;
     
-    NSLog(@"ext = %@",ext);
+    YLogI(@"ext = %@",ext);
     
     if ([ext[@"server_flag"] boolValue])
     {

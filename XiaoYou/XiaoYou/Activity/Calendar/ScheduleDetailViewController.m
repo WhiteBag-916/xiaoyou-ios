@@ -8,7 +8,9 @@
 
 #import "ScheduleDetailViewController.h"
 #import "YCommonActionSheet.h"
-#import "EditScheduleViewController.h"
+#import "NewScheduleViewController.h"
+#import "UserSchedulingInfo.h"
+#import "ActivityManager.h"
 
 #define K_IMG_LWH           SCALE_NUM(12)   //图标左、宽、高
 #define K_COURSEIMG_T       SCALE_NUM(22)   //课程图标上间距
@@ -17,7 +19,7 @@
 #define K_LEFTLAB_L         SCALE_NUM(10)   //描述左
 #define K_LEFTLAB_W         SCALE_NUM(70)   //描述宽
 #define K_NAMELAB_L         SCALE_NUM(0)   //名字左
-#define K_NAMELAB_R         SCALE_NUM(-12)   //名字右
+#define K_NAMELAB_R         SCALE_NUM(-15)   //名字右
 #define K_ADD_T             SCALE_NUM(19)   //加日程上
 #define K_ADD_R             SCALE_NUM(9)   //加日程上
 #define K_ADD_H             SCALE_NUM(26)   //加日程高
@@ -32,9 +34,20 @@
 @property (nonatomic, strong) UILabel *locationLabel;       //上课地点
 @property (nonatomic, strong) UILabel *departmentsName;     //院系
 
+
+@property (nonatomic, strong) UserSchedulingInfo *userSchedulingInfo;
+
 @end
 
 @implementation ScheduleDetailViewController
+
+- (id)initWithInfo:(UserSchedulingInfo *)info {
+    if (self = [super init]) {
+        self.userSchedulingInfo = info;
+    }
+    
+    return self;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -42,12 +55,181 @@
     
     self.title = @"日程详情";
     [self showCustomNavigationBackButton];
-    [self showCustomNavigationMoreButton];
     
-    [self initView];
+    [self initData];
 }
 
-- (void)initView {
+- (void)initSchedulingView {
+    [self showCustomNavigationMoreButton];
+    
+    //课程
+    UILabel *courseLabel = [YUtils initLabel:CONTENT_FONT(14)
+                                       color:KCOLOR_B3
+                                        text:@"活动名称："
+                                   alignment:NSTextAlignmentLeft];
+    [self.view addSubview:courseLabel];
+    
+    [courseLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.mas_equalTo(K_IMG_LWH);
+        make.top.mas_equalTo(K_COURSEIMG_T);
+    }];
+    
+    _courseName = [YUtils initLabel:CONTENT_FONT(14)
+                              color:KCOLOR_B4
+                               text:_userSchedulingInfo.content
+                          alignment:NSTextAlignmentLeft];
+    _courseName.numberOfLines = 0;
+    [self.view addSubview:_courseName];
+    
+    [_courseName mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerY.equalTo(courseLabel);
+        make.left.equalTo(courseLabel.mas_centerX);
+        make.right.mas_equalTo(K_NAMELAB_R);
+    }];
+    
+    //line
+    UIView *lineView = [[UIView alloc] init];
+    lineView.backgroundColor = KCOLOR_B2;
+    [self.view addSubview:lineView];
+    [lineView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(_courseName.mas_bottom).offset(K_LECTURERIMG_T);
+        make.left.right.equalTo(_courseName);
+        make.height.mas_equalTo(SCALE_NUM(1));
+    }];
+    
+    //授课人
+    UIImageView *lecturerImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"havetime_icon_time"]];
+    [self.view addSubview:lecturerImageView];
+    
+    [lecturerImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.height.width.mas_equalTo(K_IMG_LWH);
+        make.top.equalTo(lineView.mas_bottom).offset(K_LECTURERIMG_T);
+    }];
+    
+    UILabel *lecturerLabel = [YUtils initLabel:CONTENT_FONT(12)
+                                         color:KCOLOR_B5
+                                          text:@"开始时间："
+                                     alignment:NSTextAlignmentLeft];
+    [self.view addSubview:lecturerLabel];
+    
+    [lecturerLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.height.equalTo(lecturerImageView);
+        make.left.equalTo(courseLabel);
+        make.width.mas_equalTo(K_LEFTLAB_W);
+    }];
+    
+    NSDate *beginTime = [NSDate dateWithTimeIntervalSince1970:_userSchedulingInfo.startTime];
+    NSString *beginText = [NSDate stringFromDate:beginTime withFormat:@"yy/MM/dd HH:mm"];
+    
+    _lecturerName = [YUtils initLabel:CONTENT_FONT(12)
+                                color:KCOLOR_B3
+                                 text:beginText
+                            alignment:NSTextAlignmentLeft];
+    [self.view addSubview:_lecturerName];
+    
+    [_lecturerName mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.height.equalTo(lecturerImageView);
+        make.left.equalTo(lecturerLabel.mas_right).offset(K_NAMELAB_L);
+        make.right.mas_equalTo(K_NAMELAB_R);
+    }];
+    
+    //上课时间
+    UILabel *timeLeftLabel = [YUtils initLabel:CONTENT_FONT(12)
+                                         color:KCOLOR_B5
+                                          text:@"结束时间："
+                                     alignment:NSTextAlignmentLeft];
+    [self.view addSubview:timeLeftLabel];
+    
+    [timeLeftLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(lecturerImageView.mas_bottom).offset(K_LECTURERIMG_T);
+        make.left.height.equalTo(courseLabel);
+        make.width.mas_equalTo(K_LEFTLAB_W);
+    }];
+    
+    NSDate *endTime = [NSDate dateWithTimeIntervalSince1970:_userSchedulingInfo.endTime];
+    NSString *endText = [NSDate stringFromDate:endTime withFormat:@"yy/MM/dd HH:mm"];
+    
+    _timeLabel = [YUtils initLabel:CONTENT_FONT(12)
+                             color:KCOLOR_B3
+                              text:endText
+                         alignment:NSTextAlignmentLeft];
+    [self.view addSubview:_timeLabel];
+    
+    [_timeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.height.equalTo(timeLeftLabel);
+        make.left.equalTo(_lecturerName);
+        make.right.mas_equalTo(K_NAMELAB_R);
+    }];
+    
+    //上课地点
+    UIImageView *locationImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"build_icon_location"]];
+    locationImageView.contentMode = UIViewContentModeCenter;
+    [self.view addSubview:locationImageView];
+    
+    [locationImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.height.width.equalTo(lecturerImageView);
+        make.top.equalTo(timeLeftLabel.mas_bottom).offset(K_DEPARTMENTSIMG_T);
+    }];
+    
+    UILabel *locationLeftLabel = [YUtils initLabel:CONTENT_FONT(12)
+                                             color:KCOLOR_B5
+                                              text:@"日程地点："
+                                         alignment:NSTextAlignmentLeft];
+    [self.view addSubview:locationLeftLabel];
+    
+    [locationLeftLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.height.equalTo(locationImageView);
+        make.left.equalTo(courseLabel);
+        make.width.mas_equalTo(K_LEFTLAB_W);
+    }];
+    
+    _locationLabel = [YUtils initLabel:CONTENT_FONT(12)
+                                 color:KCOLOR_B3
+                                  text:@"5号教学楼 5132室"
+                             alignment:NSTextAlignmentLeft];
+    [self.view addSubview:_locationLabel];
+    
+    [_locationLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.height.equalTo(locationLeftLabel);
+        make.left.equalTo(_lecturerName);
+        make.right.mas_equalTo(K_NAMELAB_R);
+    }];
+    
+    //院系
+    UIImageView *departmentsImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"havetime_icon_remind"]];
+    [self.view addSubview:departmentsImageView];
+    
+    [departmentsImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.height.width.equalTo(lecturerImageView);
+        make.top.equalTo(locationImageView.mas_bottom).offset(K_DEPARTMENTSIMG_T);
+    }];
+    
+    UILabel *departmentsLabel = [YUtils initLabel:CONTENT_FONT(12)
+                                            color:KCOLOR_B5
+                                             text:@"提醒时间："
+                                        alignment:NSTextAlignmentLeft];
+    [self.view addSubview:departmentsLabel];
+    
+    [departmentsLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.height.equalTo(departmentsImageView);
+        make.left.equalTo(courseLabel);
+        make.width.mas_equalTo(K_LEFTLAB_W);
+    }];
+    
+    _departmentsName = [YUtils initLabel:CONTENT_FONT(12)
+                                   color:KCOLOR_B3
+                                    text:[[ActivityManager sharedInstance] remindTextByTime:_userSchedulingInfo.noticeTimePeriod]
+                               alignment:NSTextAlignmentLeft];
+    [self.view addSubview:_departmentsName];
+    
+    [_departmentsName mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.height.equalTo(departmentsImageView);
+        make.left.equalTo(_lecturerName);
+        make.right.mas_equalTo(K_NAMELAB_R);
+    }];
+}
+
+- (void)initCourseView {
     //课程
     UIImageView *courseImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"havetime_icon_classname"]];
     [self.view addSubview:courseImageView];
@@ -215,16 +397,39 @@
     }];
 }
 
+- (void)initData {
+    [YUtils showHUDWithTitle];
+    [[ActivityManager sharedInstance] userSchedulingDetail:[NSString stringWithFormat:@"%g", _userSchedulingInfo.internalBaseClassIdentifier] block:^(YActionMessage *message) {
+        [YUtils hiddenProgressHUD];
+        
+        if (message.isSuccess) {
+            self.userSchedulingInfo = message.object;
+            
+            [self resetData];
+            
+        } else {
+            [YUtils showTitle:message.desc];
+        }
+    }];
+}
+
+- (void)resetData {
+    if ([_userSchedulingInfo.type isEqualToString:@"user_scheduling"]) {
+        [self initSchedulingView];
+    } else if ([_userSchedulingInfo.type isEqualToString:@"course"]) {
+        [self initCourseView];
+    }
+}
 
 - (void)onNavigationRightButtonClicked {
-    YActionSheetItem *item1 = [YActionSheetItem itemWithTitle:@"编辑活动"
+    YActionSheetItem *item1 = [YActionSheetItem itemWithTitle:@"编辑日程"
                                                          type:YCommonActionSheetItemTypeCenterCommon
                                                         block:^(NSInteger checkNum) {
                                                             [self toEdit];
                                                         }];
     
     
-    YActionSheetItem *item2 = [YActionSheetItem itemWithTitle:@"删除活动"
+    YActionSheetItem *item2 = [YActionSheetItem itemWithTitle:@"删除日程"
                                                          type:YCommonActionSheetItemTypeCenterCommon
                                                         block:^(NSInteger checkNum) {
                                                         }];
@@ -247,7 +452,7 @@
 
 //跳转至编辑活动
 - (void)toEdit {
-    EditScheduleViewController *vc = [[EditScheduleViewController alloc] init];
+    NewScheduleViewController *vc = [[NewScheduleViewController alloc] initWithInfo:_userSchedulingInfo];
     [self.navigationController presentViewController:vc animated:YES completion:nil];
 }
 /*

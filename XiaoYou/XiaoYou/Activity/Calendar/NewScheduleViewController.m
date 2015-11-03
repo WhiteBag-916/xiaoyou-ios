@@ -12,6 +12,8 @@
 #import "YKeyBoard.h"
 #import "YCommonPickerView.h"
 #import "CommonPopView.h"
+#import "ActivityManager.h"
+#import "UserSchedulingInfo.h"
 
 #define K_TITLE_H         SCALE_NUM(52)
 #define K_BACK_LR         SCALE_NUM(10)
@@ -41,6 +43,7 @@
 @property (nonatomic, strong) UIView *contentView;
 @property (nonatomic, strong) UIDatePicker *datePicker; //时间选择器
 
+@property (nonatomic, strong) UILabel *centerLabel;
 @property (nonatomic, strong) UIView *nameView;         //日程名称
 @property (nonatomic, strong) UIView *bClassView;       //开始时间
 @property (nonatomic, strong) UIView *fClassView;       //开始时间
@@ -51,9 +54,19 @@
 
 @property (nonatomic, assign) NSInteger chooesTag;      //tag选择
 
+@property (nonatomic, strong) UserSchedulingInfo *userSchedulingInfo;
+
 @end
 
 @implementation NewScheduleViewController
+
+- (id)initWithInfo:(UserSchedulingInfo *)info {
+    if (self = [super init]) {
+        self.userSchedulingInfo = info;
+    }
+    
+    return self;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -63,6 +76,7 @@
     
     [self initTitle];
     [self initView];
+    [self initData];
     
     [YKeyBoard registerKeyBoardShow:self];
     [YKeyBoard registerKeyBoardHide:self];
@@ -106,12 +120,12 @@
     }];
     
     //title
-    UILabel * centerLabel = [[UILabel alloc] init];
-    centerLabel.textAlignment = NSTextAlignmentCenter;
-    centerLabel.text = @"新建日程";
-    centerLabel.font = CONTENT_FONT(15);
-    [_titleView addSubview:centerLabel];
-    [centerLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+    _centerLabel = [[UILabel alloc] init];
+    _centerLabel.textAlignment = NSTextAlignmentCenter;
+    _centerLabel.text = @"新建日程";
+    _centerLabel.font = CONTENT_FONT(15);
+    [_titleView addSubview:_centerLabel];
+    [_centerLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.centerY.equalTo(_titleView);
         make.height.mas_equalTo(SCALE_NUM(20));
         make.width.mas_equalTo(SCALE_NUM(200));
@@ -313,6 +327,42 @@
     [timeLabel addGestureRecognizer:beginTapGesture];
 }
 
+- (void)initData {
+    if (nil != _userSchedulingInfo) {
+        
+        if (_userSchedulingInfo.internalBaseClassIdentifier > 0) {
+            _centerLabel.text = @"编辑日程";
+        }
+        
+        //name
+        YTextField *textField = (YTextField *)[_nameView viewWithTag:K_TAG_NAME];
+        textField.text = _userSchedulingInfo.content;
+        
+        //begintime
+        UILabel *beginTimeLabel = (UILabel *)[_bClassView viewWithTag:K_TAG_BCLASS];
+        NSDate *beginDate = [NSDate dateWithTimeIntervalSince1970:_userSchedulingInfo.startTime/1000];
+        beginTimeLabel.text = [NSDate stringFromDate:beginDate withFormat:@"yyyy年MM月dd日 HH:mm"];
+        beginTimeLabel.textColor = KCOLOR_B4;
+        
+        //endtime
+        UILabel *endTimeLabel = (UILabel *)[_fClassView viewWithTag:K_TAG_FCLASS];
+        NSDate *endDate = [NSDate dateWithTimeIntervalSince1970:_userSchedulingInfo.endTime/1000];
+        endTimeLabel.text = [NSDate stringFromDate:endDate withFormat:@"yyyy年MM月dd日 HH:mm"];
+        endTimeLabel.textColor = KCOLOR_B4;
+        
+        //地点
+        YTextField *locationTextField = (YTextField *)[_locationView viewWithTag:K_TAG_LOCATION];
+        locationTextField.text = _userSchedulingInfo.content;
+        
+        //提醒
+        NSString *remindText = [[ActivityManager sharedInstance] remindTextByTime:_userSchedulingInfo.noticeTimePeriod];
+        [self resetRemindLabel:remindText];
+    } else {
+        self.userSchedulingInfo = [[UserSchedulingInfo alloc] init];
+    }
+}
+
+#pragma mark - control
 -(void)clickBtnForCancel
 {
     [self dismissViewControllerAnimated:YES completion:nil];
@@ -320,12 +370,41 @@
 
 -(void)clickBtnForChoice
 {
+    if (nil == _userSchedulingInfo.content) {
+        [YUtils showTitle:@"名字不能为空"];
+        
+        return;
+    }
+    
+    if (0 == _userSchedulingInfo.startTime) {
+        [YUtils showTitle:@"开始时间不能为空"];
+        
+        return;
+    }
+    
+    if (0 == _userSchedulingInfo.endTime) {
+        [YUtils showTitle:@"结束时间不能为空"];
+        
+        return;
+    }
+    
+    NSDictionary *dic = @{@"content":_userSchedulingInfo.content, @"id":[NSString stringWithFormat:@"%f", _userSchedulingInfo.internalBaseClassIdentifier], @"endTime": [NSString stringWithFormat:@"%f", _userSchedulingInfo.endTime], @"startTime": [NSString stringWithFormat:@"%f", _userSchedulingInfo.startTime]};
+    [YUtils showHUDWithTitle];
+    [[ActivityManager sharedInstance] userSchedulingEdit:dic block:^(YActionMessage *message) {
+        [YUtils hiddenProgressHUD];
+        
+        if (message.isSuccess) {
+            [self dismissViewControllerAnimated:YES completion:nil];
+        } else {
+            [YUtils showTitle:message.desc];
+        }
+    }];
 }
 
 #pragma mark - 按钮
 - (void)pressButton:(UITapGestureRecognizer*)gesture {
     if (nil == _remindPicker) {
-        _remindPicker = [[YCommonPickerView alloc] initWithType:PickerView_CalendarRemind commonArray:@[@"不设置提醒", @"事件发生时", @"5分钟前", @"15分钟前", @"1小时前", @"2小时前", @"1天前"]];
+        _remindPicker = [[YCommonPickerView alloc] initWithType:PickerView_CalendarRemind commonArray:[[ActivityManager sharedInstance] remindArray]];
     }
     
     CommonPopView *popView = [[CommonPopView alloc] initWithFrame:[UIScreen mainScreen].bounds
@@ -333,7 +412,7 @@
                                                            addSub:_remindPicker
                                                             isTop:NO
                                                            isRoot:YES
-                                                          addSelf:self.view];
+                                                          addSelf:[UIApplication sharedApplication].keyWindow];
     [popView comSet:self action:@selector(chooseRemind) params:nil];
     [popView showView];
 }
@@ -342,9 +421,15 @@
     //取值
     NSDictionary *data = [_remindPicker getData];
     NSString *remindText = data[kPickerViewCalendarRemind];
+    [self resetRemindLabel:remindText];
+    
+    _userSchedulingInfo.noticeTimePeriod = [[ActivityManager sharedInstance] timeByRemindText:remindText];
+}
+
+- (void)resetRemindLabel:(NSString *)text {
     UILabel *label = (UILabel *)[_remindView viewWithTag:K_TAG_REMIND];
-    label.text = remindText;
-    if ([remindText isEqualToString:@"不设置提醒"]) {
+    label.text = text;
+    if ([text isEqualToString:@"不设置提醒"]) {
         label.textColor = KCOLOR_B5;
     } else {
         label.textColor = KCOLOR_B4;
@@ -374,17 +459,22 @@
 //选择时间后
 -(void)choiceTime {
     NSDateFormatter * formatter = [[NSDateFormatter alloc] init];
-    [formatter setDateFormat:@"yyyy年MM月dd日 a HH:mm"];
+    [formatter setDateFormat:@"yyyy年MM月dd日 HH:mm"];
     NSString * showStr = [formatter stringFromDate:_datePicker.date];
     //耦合性很高
     if (K_TAG_BCLASS == _chooesTag) {
         UILabel *timeLabel = (UILabel *)[_bClassView viewWithTag:_chooesTag];
         timeLabel.text = showStr;
         timeLabel.textColor = KCOLOR_B4;
+        
+        _userSchedulingInfo.startTime = [_datePicker.date timeIntervalSince1970]*1000;
+        
     } else if (K_TAG_FCLASS == _chooesTag) {
         UILabel *timeLabel = (UILabel *)[_fClassView viewWithTag:_chooesTag];
         timeLabel.text = showStr;
         timeLabel.textColor = KCOLOR_B4;
+        
+        _userSchedulingInfo.endTime = [_datePicker.date timeIntervalSince1970]*1000;
     }
     
 }
@@ -398,7 +488,11 @@
 }
 
 - (void)textFieldValueChanged:(UITextField *)sender{
-    
+    if (K_TAG_NAME == sender.tag) {
+        _userSchedulingInfo.content = sender.text;
+    } else if (K_TAG_LOCATION == sender.tag) {
+        _userSchedulingInfo.content = sender.text;
+    }
 }
 
 #pragma mark - YKeyBoardDlegate

@@ -7,6 +7,8 @@
 //
 
 #import "MyTimetableCurriculumCollectionViewCell.h"
+#import "FindMyCourseViewModel.h"
+#import "YUtils+Component.h"
 
 NSString *const kMyTimetableCurriculumCollectionViewCell = @"MyTimetableCurriculumCollectionViewCellId";
 
@@ -74,6 +76,33 @@ NSString *const kMyTimetableCurriculumCollectionViewCell = @"MyTimetableCurricul
     }
     
     return self;
+}
+
+- (void)initData:(FindMyCourseViewModel *)model {
+    
+    _backView.backgroundColor = [YUtils courseColorByNum:[model.teacherNo integerValue]+[model.courseCode integerValue]];
+    
+    _nameLabel.text = model.courseName;
+    _classroomLabel.text = model.roomName;
+    
+    if (model.beginPhase == model.endPhase) {
+        //1节课
+        _nameLabel.numberOfLines = 1;
+        _classroomLabel.numberOfLines = 1;
+        _weekLabel.hidden = YES;
+    } else {
+        _nameLabel.numberOfLines = 2;
+        _classroomLabel.numberOfLines = 2;
+        //单周
+        NSInteger beginWeek = model.beginWeek;
+        NSInteger week = beginWeek%2;
+        if (0 == week) {
+            _weekLabel.text = @"双周";
+        } else {
+            _weekLabel.text = @"单周";
+        }
+        _weekLabel.hidden = model.evenodd;
+    }
 }
 
 @end

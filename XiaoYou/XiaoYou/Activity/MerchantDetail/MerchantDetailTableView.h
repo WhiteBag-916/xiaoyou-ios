@@ -7,7 +7,10 @@
 //
 
 #import "YTableView.h"
+#import "ShopList.h"
 
 @interface MerchantDetailTableView : YTableView
+
+- (instancetype)initWithModel:(ShopList *) model;
 
 @end

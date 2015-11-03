@@ -1236,16 +1236,16 @@ static const CGFloat kMaxHourSlotHeight = 150.;
 	}
 	
 	// speed depends on day column width
-	NSTimeInterval ti = (self.dayColumnSize.width / 100.) * 0.05;
+//	NSTimeInterval ti = (self.dayColumnSize.width / 100.) * 0.05;
 	
 	if (CGRectContainsPoint(rightScrollRect, point)) {
 		// progressive speed
-		ti /= (point.x - rightScrollRect.origin.x) / 30;
-		self.dragTimer = [NSTimer scheduledTimerWithTimeInterval:ti target:self selector:@selector(dragTimerDidFire:) userInfo:@{@"direction": @(ScrollDirectionLeft)} repeats:YES];
+//		ti /= (point.x - rightScrollRect.origin.x) / 30;
+//		self.dragTimer = [NSTimer scheduledTimerWithTimeInterval:ti target:self selector:@selector(dragTimerDidFire:) userInfo:@{@"direction": @(ScrollDirectionLeft)} repeats:YES];
 	}
 	else if (CGRectContainsPoint(leftScrollRect, point)) {
-		ti /= (CGRectGetMaxX(leftScrollRect) - point.x) / 30;
-		self.dragTimer = [NSTimer scheduledTimerWithTimeInterval:ti target:self selector:@selector(dragTimerDidFire:) userInfo:@{@"direction": @(ScrollDirectionRight)} repeats:YES];
+//		ti /= (CGRectGetMaxX(leftScrollRect) - point.x) / 30;
+//		self.dragTimer = [NSTimer scheduledTimerWithTimeInterval:ti target:self selector:@selector(dragTimerDidFire:) userInfo:@{@"direction": @(ScrollDirectionRight)} repeats:YES];
 	}
 	else if (CGRectContainsPoint(downScrollRect, point)) {
 		self.dragTimer = [NSTimer scheduledTimerWithTimeInterval:0.05 target:self selector:@selector(dragTimerDidFire:) userInfo:@{@"direction": @(ScrollDirectionDown)} repeats:YES];

@@ -10,4 +10,6 @@
 
 @interface MerchantListTableView : YTableView
 
+- (void)sendRequest;
+
 @end

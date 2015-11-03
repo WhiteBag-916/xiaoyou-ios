@@ -7,10 +7,19 @@
 
 #import "WeekViewController.h"
 #import "MGCDateRange.h"
+#import "ActivityManager.h"
+#import "UserSchedulingInfo.h"
+#import "MGCStandardEventView.h"
+#import "ScheduleDetailViewController.h"
+#import "NewScheduleViewController.h"
+
+static NSString* const EventCellReuseIdentifier = @"EventCellReuseIdentifier";
 
 @interface WeekViewController ()
 
 @property (nonatomic, assign) BOOL needShowToday;
+
+@property (nonatomic, strong) NSMutableArray *userSchedulingInfoArray;
 
 @end
 
@@ -34,6 +43,12 @@
 	self.dayPlannerView.dayHeaderHeight = 50;
     
     _needShowToday = YES;
+    self.userSchedulingInfoArray = [@[] mutableCopy];
+    
+    self.dayPlannerView.calendar = self.calendar;
+    [self.dayPlannerView registerClass:MGCStandardEventView.class forEventViewWithReuseIdentifier:EventCellReuseIdentifier];
+    
+    [self initData:nil needLoding:YES needNowWeek:YES needBeforeWeek:YES needAfterWeek:YES];
 }
 
 - (void)initRightBar {
@@ -49,7 +64,12 @@
 }
 
 - (void)newPlanner {
-    [self.dayPlannerView addNewPlanner];
+    [self newScheduleByInfo:nil];
+}
+
+- (void)newScheduleByInfo:(UserSchedulingInfo *)info {
+    NewScheduleViewController *vc = [[NewScheduleViewController alloc] initWithInfo:info];
+    [self.navigationController presentViewController:vc animated:YES completion:nil];
 }
 
 - (void)onNavigationLeftButtonClicked {
@@ -69,42 +89,231 @@
     
 }
 
+//拉取数据,时间，获取前面一个星期，获取后面一个星期
+- (void)initData:(NSDate *)date needLoding:(BOOL)needLoding needNowWeek:(BOOL)needNowWeek needBeforeWeek:(BOOL)needBeforeWeek needAfterWeek:(BOOL)needAfterWeek {
+    NSDate *needDate = date==nil?[NSDate date]:date;
+    //计算这个星期星期
+    NSDate *beginDate = [needDate beginningOfWeek];
+    NSDate *endDate = [needDate endOfWeek];
+    if (needNowWeek) {
+        if (needBeforeWeek) {
+            beginDate = [beginDate beforeStartOfWeek];
+        }
+        if (needAfterWeek) {
+            endDate = [endDate afterEndOfWeek];
+        }
+    } else {
+        if (needBeforeWeek) {
+            beginDate = [beginDate beforeStartOfWeek];
+            endDate = [beginDate endOfWeek];
+        }else if (needAfterWeek) {
+            beginDate = [endDate beginningOfWeek];
+            endDate = [endDate afterEndOfWeek];
+        }
+    }
+    
+    if (needLoding) {
+        [YUtils showHUDWithTitle];
+    }
+    
+    [[ActivityManager sharedInstance] userSchedulingList:[beginDate timeIntervalSince1970]*1000 endDate:[endDate timeIntervalSince1970]*1000 block:^(YActionMessage *message) {
+        [YUtils hiddenProgressHUD];
+        
+        [self addSchedulingArray:message.object];
+    }];
+    
+    //获取提醒时间
+    [[ActivityManager sharedInstance] userSchedulingConditions:^(YActionMessage *message) {
+        
+    }];
+}
+#pragma mark - Properties
+
+- (NSCalendar*)calendar
+{
+    if (_calendar == nil) {
+        _calendar = [NSCalendar currentCalendar];
+    }
+    return _calendar;
+}
+
+//增加数组
+- (void)addSchedulingArray:(NSArray *)array {
+    //去重
+    NSMutableArray *dataArray = [[NSMutableArray alloc] initWithArray:array];
+    
+    [_userSchedulingInfoArray enumerateObjectsUsingBlock:^(UserSchedulingInfo * _Nonnull userSchedulingInfoObj, NSUInteger userSchedulingInfoIdx, BOOL * _Nonnull userSchedulingInfoStop) {
+
+        [dataArray enumerateObjectsUsingBlock:^(UserSchedulingInfo * _Nonnull dataArrayObj, NSUInteger dataArrayIdx, BOOL * _Nonnull dataArrayStop) {
+            if (userSchedulingInfoObj.internalBaseClassIdentifier == dataArrayObj.internalBaseClassIdentifier
+                && [userSchedulingInfoObj.type isEqualToString:dataArrayObj.type]) {
+                [dataArray removeObjectAtIndex:dataArrayIdx];
+                *dataArrayStop = YES;
+            }
+        }];
+        
+    }];
+    
+    [_userSchedulingInfoArray addObjectsFromArray:dataArray];
+    
+    [self.dayPlannerView reloadAllEvents];
+}
+
+//根据时间获取array
+- (NSArray *)eventArrayOfDate:(NSDate *)date {
+    NSMutableArray *eventArray = [@[] mutableCopy];
+    
+    [_userSchedulingInfoArray enumerateObjectsUsingBlock:^(UserSchedulingInfo * _Nonnull userSchedulingInfoObj, NSUInteger userSchedulingInfoIdx, BOOL * _Nonnull userSchedulingInfoStop) {
+        NSDate *eventStartTime = [NSDate dateWithTimeIntervalSince1970:userSchedulingInfoObj.startTime/1000];
+        if ([eventStartTime isSameDay:date timeZone:[NSTimeZone defaultTimeZone]]) {
+            [eventArray addObject:userSchedulingInfoObj];
+        }
+    }];
+    
+    return eventArray;
+}
+
+//根据时间获取model
+- (UserSchedulingInfo *)eventOfDate:(NSInteger)index date:(NSDate *)date {
+    NSArray *eventArray = [self eventArrayOfDate:date];
+    
+    return eventArray[index];
+}
+
+- (UIColor *)colorByType:(NSString *)type {
+    UIColor *color;
+    
+    if ([type isEqualToString:@"user_scheduling"]) {
+        color = [UIColor hexChangeFloat:@"465a65"];
+    } else if ([type isEqualToString:@"course"]) {
+        color = [UIColor hexChangeFloat:@"5297b8"];
+    } else if ([type isEqualToString:@"activity"]) {
+        color = [UIColor hexChangeFloat:@"eca433"];
+    }
+    
+    return color;
+}
+
 #pragma mark - MGCDayPlannerViewController
 - (BOOL)dayPlannerView:(MGCDayPlannerView*)view canCreateNewEventOfType:(MGCEventType)type atDate:(NSDate*)date
 {
     return YES;
-    //星期天不能加事件
-//	NSDateComponents *comps = [self.calendar components:NSWeekdayCalendarUnit fromDate:date];
-//	return comps.weekday != 1;
 }
-//
-//#pragma mark - CalendarControllerNavigation
-//
-//- (void)moveToDate:(NSDate*)date animated:(BOOL)animated
+
+#pragma mark - MGCDayPlannerViewDataSource
+
+- (NSInteger)dayPlannerView:(MGCDayPlannerView*)weekView numberOfEventsOfType:(MGCEventType)type atDate:(NSDate*)date
+{
+    NSInteger count = 0;
+    
+    count = [[self eventArrayOfDate:date] count];
+
+    return count;
+}
+
+- (MGCEventView*)dayPlannerView:(MGCDayPlannerView*)view viewForEventOfType:(MGCEventType)type atIndex:(NSUInteger)index date:(NSDate*)date
+{
+    UserSchedulingInfo *ev = [self eventOfDate:index date:date];
+    
+    MGCStandardEventView *evCell = (MGCStandardEventView*)[view dequeueReusableViewWithIdentifier:EventCellReuseIdentifier forEventOfType:type atIndex:index date:date];
+    evCell.font = [UIFont systemFontOfSize:11];
+    evCell.title = ev.content;
+//    evCell.subtitle = ev.location;
+    evCell.color = [self colorByType:ev.type];//[UIColor colorWithCGColor:ev.calendar.CGColor];
+    evCell.style = MGCStandardEventViewStylePlain|MGCStandardEventViewStyleSubtitle;
+    evCell.style |= (type == MGCAllDayEventType) ?: MGCStandardEventViewStyleBorder;
+    return evCell;
+}
+
+- (BOOL)dayPlannerView:(MGCDayPlannerView*)view shouldStartMovingEventOfType:(MGCEventType)type atIndex:(NSUInteger)index date:(NSDate*)date
+{
+//    UserSchedulingInfo *ev = [self eventOfDate:index date:date];
+//    if ([ev.type isEqualToString:@"user_scheduling"]) {
+//        return YES;
+//    }
+    return NO;
+}
+
+//- (BOOL)dayPlannerView:(MGCDayPlannerView*)view canMoveEventOfType:(MGCEventType)type atIndex:(NSUInteger)index date:(NSDate*)date toType:(MGCEventType)targetType date:(NSDate*)targetDate
 //{
-//	if (!self.dayPlannerView.dateRange || [self.dayPlannerView.dateRange containsDate:date]) {
-//		[self.dayPlannerView scrollToDate:date options:MGCDayPlannerScrollDateTime animated:animated];
-//	}
+//    return NO;
+//}
+
+
+- (MGCDateRange*)dayPlannerView:(MGCDayPlannerView*)view dateRangeForEventOfType:(MGCEventType)type atIndex:(NSUInteger)index date:(NSDate*)date
+{
+    UserSchedulingInfo *ev = [self eventOfDate:index date:date];
+    
+    NSDate *start = [NSDate dateWithTimeIntervalSince1970:ev.startTime/1000];
+    NSDate *end = [NSDate dateWithTimeIntervalSince1970:ev.endTime/1000];
+//    if (type == MGCAllDayEventType) {
+//        end = [self.calendar mgc_nextStartOfDayForDate:end];
+//    }
+    
+    return [MGCDateRange dateRangeWithStart:start end:end];
+}
+
+//- (void)dayPlannerView:(MGCDayPlannerView*)view moveEventOfType:(MGCEventType)type atIndex:(NSUInteger)index date:(NSDate*)date toType:(MGCEventType)targetType date:(NSDate*)targetDate
+//{
+//    UserSchedulingInfo *ev = [self eventOfDate:index date:date];
+//    
+//    if (ev) {
+//        NSDateComponents *duration = [self.calendar components:NSMinuteCalendarUnit fromDate:[NSDate dateWithTimeIntervalSince1970:ev.startTime/1000] toDate:[NSDate dateWithTimeIntervalSince1970:ev.endTime/1000] options:0];
+//        NSDate *end = [self.calendar dateByAddingComponents:duration toDate:targetDate options:0];
+//        
+//        // allDay property has to be set before start and end dates !
+//        ev.startTime = [targetDate timeIntervalSince1970];
+//        ev.endTime = [end timeIntervalSince1970];
+//        
+//        //修改
+//        [self editUserScheduling:ev];
+//    }
 //}
 //
-//- (void)moveToNextPageAnimated:(BOOL)animated
+- (MGCEventView*)dayPlannerView:(MGCDayPlannerView*)view viewForNewEventOfType:(MGCEventType)type atDate:(NSDate*)date
+{
+    //	EKCalendar *defaultCalendar = [self.eventStore defaultCalendarForNewEvents];
+    
+    MGCStandardEventView *evCell = [MGCStandardEventView new];
+    evCell.title = NSLocalizedString(@"New Event", nil);
+    evCell.color = KCOLOR_g1;//[UIColor colorWithCGColor:defaultCalendar.CGColor];
+    return evCell;
+}
+
+- (void)dayPlannerView:(MGCDayPlannerView *)view createNewEventOfType:(MGCEventType)type atDate:(NSDate*)date
+{
+    [self.dayPlannerView endInteraction];
+    
+    UserSchedulingInfo *ev = [UserSchedulingInfo new];
+    ev.startTime = [date timeIntervalSince1970]*1000;
+    //后一个小时
+    NSDateComponents *lastDayComp = [self.calendar components:NSCalendarUnitHour fromDate:date];
+    [lastDayComp setHour:[date getHour]+1];
+    NSDate *lastDayOfWeek= [self.calendar dateFromComponents:lastDayComp];
+    ev.endTime = [lastDayOfWeek timeIntervalSince1970]*1000;
+    
+    [self newScheduleByInfo:ev];
+}
+
+#pragma mark - MGCDayPlannerViewDelegate
+
+- (void)dayPlannerView:(MGCDayPlannerView*)view didSelectEventOfType:(MGCEventType)type atIndex:(NSUInteger)index date:(NSDate*)date
+{
+    UserSchedulingInfo *ev = [self eventOfDate:index date:date];
+    ScheduleDetailViewController *vc = [[ScheduleDetailViewController alloc] initWithInfo:ev];
+    [self.navigationController pushViewController:vc animated:YES];
+}
+
+//- (void)dayPlannerView:(MGCDayPlannerView*)view willDisplayDate:(NSDate*)date
 //{
-//	NSDate *date;
-//	[self.dayPlannerView pageForwardAnimated:animated date:&date];
-//	//NSLog(@"paging forward to %@", date);
+//    //NSLog(@"will display %@", date);
+//    [self loadEventsAtDate:date];
 //}
 //
-//- (void)moveToPreviousPageAnimated:(BOOL)animated
+//- (void)dayPlannerView:(MGCDayPlannerView*)view didEndDisplayingDate:(NSDate*)date
 //{
-//	NSDate *date;
-//	[self.dayPlannerView pageBackwardsAnimated:animated date:&date];
-//	//NSLog(@"paging backwards to %@", date);
-//}
-//
-//- (NSDate*)centerDate
-//{
-//	NSDate *date = [self.dayPlannerView dateAtPoint:self.dayPlannerView.center rounded:NO];
-//	return date;
+//    //NSLog(@"did end displaying %@", date);
+//    [self.daysToLoad removeObject:date];
 //}
 
 @end

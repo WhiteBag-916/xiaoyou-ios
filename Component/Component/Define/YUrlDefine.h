@@ -218,6 +218,7 @@
 #define api_courseTime_list   @"/courseTime/list"
 //获取我的课程
 #define api_course_findMyCourse   @"/course/findMyCourse"
-
+//获取商家列表
+#define api_supplier_shop_findList   @"/supplier/shop/findList"
 #endif
 

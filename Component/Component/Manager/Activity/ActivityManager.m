@@ -23,8 +23,15 @@
 #import "UserSchedulingListAction.h"
 #import "UserSchedulingDetailAction.h"
 #import "MainAvailableTimeAction.h"
+#import "UserSchedulingListConditionsModel.h"
 
 #define KActivityManagerSyncQueue @"kActivityManagerSyncQueue"
+
+@interface ActivityManager ()
+
+@property (nonatomic, strong) NSMutableArray *userSchedulingConditionsArray;//提醒时间列表
+
+@end
 
 @implementation ActivityManager
 
@@ -54,6 +61,39 @@ DEF_SINGLETON(ActivityManager);
 - (void)appDidLogout:(NSDictionary *)logoutInfo
 {
     
+}
+
+//根据时间取日程提醒text
+- (NSString *)remindTextByTime:(NSInteger)time {
+    __block NSString *remindText = @"不设置提醒";
+    
+    [_userSchedulingConditionsArray enumerateObjectsUsingBlock:^(UserSchedulingListConditionsModel * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        if (obj.datePeriod == time) {
+            remindText = obj.notifyShowContent;
+            *stop = YES;
+        }
+    }];
+    
+    return remindText;
+}
+
+//根据text取日程提醒时间
+- (NSInteger)timeByRemindText:(NSString *)remindText {
+    __block NSInteger time = 0;
+    
+    [_userSchedulingConditionsArray enumerateObjectsUsingBlock:^(UserSchedulingListConditionsModel * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        if ([obj.notifyShowContent isEqualToString:remindText]) {
+            time = obj.datePeriod;
+            *stop = YES;
+        }
+    }];
+    
+    return time;
+}
+
+//提醒列表
+- (NSArray *)remindArray {
+    return _userSchedulingConditionsArray;
 }
 
 //获取当前用户活动列表
@@ -224,7 +264,19 @@ DEF_SINGLETON(ActivityManager);
     UserSchedulingConditionsAction *action = [[UserSchedulingConditionsAction alloc]init];
     
     [YAction startAction:action completionBlock:^(YActionMessage *message) {
-        block(message);
+        
+        //子线程处理数据
+        [YQueue dispatchInSyncQueueWithQueueType:KActivityManagerSyncQueue block:^{
+            if (message.isSuccess)
+            {
+                self.userSchedulingConditionsArray = [NSMutableArray arrayWithArray:message.object];
+            }
+            
+            //主线程处理界面
+            [YQueue dispatchInMainQueueWithBlock:^{
+                block(message);
+            }];
+        }];
     }];
 }
 

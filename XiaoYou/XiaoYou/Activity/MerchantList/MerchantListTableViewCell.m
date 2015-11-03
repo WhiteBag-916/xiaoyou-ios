@@ -7,6 +7,7 @@
 //
 
 #import "MerchantListTableViewCell.h"
+#import "SupplierShopModel.h"
 
 NSString *const kMerchantListTableViewCell = @"MerchantListTableViewCellId";
 
@@ -111,6 +112,18 @@ NSString *const kMerchantListTableViewCell = @"MerchantListTableViewCellId";
         make.height.mas_equalTo(SCALE_NUM(10));
     }];
     
+}
+
+-(void)setCellData:(ShopList *) model
+{
+    SupplierShopModel * shopModel = model.supplierShopModel;
+    
+    _nameLabel.text = shopModel.name;
+    _headImageView.image = [UIImage imageNamed:shopModel.shopLogoUrl];
+    _characterLabel.text = shopModel.tags;
+    _placeLabel.text = shopModel.address;
+//    _comboLabel.text =
+//    _scanfLabel.text =
 }
 
 - (BOOL)needLine

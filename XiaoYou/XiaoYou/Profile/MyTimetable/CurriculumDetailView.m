@@ -7,6 +7,8 @@
 //
 
 #import "CurriculumDetailView.h"
+#import "FindMyCourseViewModel.h"
+#import "CurriculumManager.h"
 
 #define K_BACK_LR         SCALE_NUM(15)
 #define K_BACK_T         SCALE_NUM(123)
@@ -248,7 +250,7 @@
     
     UILabel *departmentsLabel = [YUtils initLabel:CONTENT_FONT(12)
                                             color:KCOLOR_B5
-                                             text:@"院系："
+                                             text:@"开课单位："
                                         alignment:NSTextAlignmentLeft];
     [self.contentView addSubview:departmentsLabel];
     
@@ -276,4 +278,14 @@
 {
     self.backgroundView.alpha = 0.7;
 }
+
+- (void)initData:(FindMyCourseViewModel *)model {
+    _courseName.text = model.courseName;
+    _lecturerName.text = model.teacherName;
+    _timeLabel.text = [[CurriculumManager sharedInstance] getCourseTimeByClass:model.beginPhase endTime:model.endPhase];
+    _locationLabel.text = model.roomName;
+    _departmentsName.text = model.departmentName;
+    _weekLabel.text = [[CurriculumManager sharedInstance] weekByCourseTimeID:model];
+}
+
 @end

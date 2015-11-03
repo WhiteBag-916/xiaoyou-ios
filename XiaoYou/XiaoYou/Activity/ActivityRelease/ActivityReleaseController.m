@@ -587,8 +587,6 @@ typedef enum : NSUInteger {
             {
                 [self sendReleaseRequest:message];
             }
-            
-            
         }];
     }
     else

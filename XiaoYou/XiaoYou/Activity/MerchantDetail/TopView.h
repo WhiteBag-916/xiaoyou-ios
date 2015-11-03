@@ -7,9 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ShopList.h"
 
 @interface TopView : UIView
 
-- (instancetype)initWithImageCount:(NSInteger) num;
+- (instancetype)initWithModel:(ShopList *) model;
 
 @end

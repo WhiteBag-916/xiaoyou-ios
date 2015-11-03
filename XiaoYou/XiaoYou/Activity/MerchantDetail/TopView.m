@@ -7,9 +7,12 @@
 //
 
 #import "TopView.h"
+#import "SupplierShopImages.h"
+#import "UIImageView+Ext.h"
 
 @interface TopView ()<UIScrollViewDelegate>
 
+@property(nonatomic,strong)ShopList * model;
 @property(nonatomic,strong)UIScrollView * scrollView;
 @property(nonatomic,strong)UIPageControl * pageControl;
 
@@ -21,30 +24,35 @@
 
 @implementation TopView
 
-- (instancetype)initWithImageCount:(NSInteger) num
+- (instancetype)initWithModel:(ShopList *) model;
 {
     self = [super init];
     if (self) {
-        [self setUpUI:num];
+        _model = model;
+        [self setUpUI];
     }
     return self;
 }
 
--(void)setUpUI:(NSInteger) num
+-(void)setUpUI
 {
-    _scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCALE_NUM(150))];
+    NSInteger imageCount = _model.supplierShopImages.count;
+    _scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_WIDTH*3/4)];
+    NSLog(@"%@",NSStringFromCGSize(_scrollView.frame.size));
     _scrollView.userInteractionEnabled = YES;
     _scrollView.pagingEnabled = YES;
     _scrollView.delegate = self;
+    _scrollView.bounces = NO;
     _scrollView.showsHorizontalScrollIndicator = NO;
     _scrollView.showsVerticalScrollIndicator = NO;
-    _scrollView.contentSize = CGSizeMake(SCREEN_WIDTH*num, SCALE_NUM(150));
+    _scrollView.contentSize = CGSizeMake(SCREEN_WIDTH*imageCount, SCALE_NUM(150));
     [self addSubview:_scrollView];
     
-    for (int i = 0; i < num; i++)
+    for (int i = 0; i < imageCount; i++)
     {
-        UIImageView * imageView = [[UIImageView alloc] initWithFrame:CGRectMake(SCREEN_WIDTH*i, 0, SCREEN_WIDTH, SCALE_NUM(150))];
-        imageView.image = [UIImage imageNamed:@"common_picture_loading_c"];
+        UIImageView * imageView = [[UIImageView alloc] initWithFrame:CGRectMake(SCREEN_WIDTH*i, 0, SCREEN_WIDTH, SCREEN_WIDTH*3/4)];
+        SupplierShopImages * imageModel = _model.supplierShopImages[i];
+        [imageView setFaceImageWithUrl:imageModel.imageUrl];
         imageView.userInteractionEnabled = YES;
         [_scrollView addSubview:imageView];
     }
@@ -52,7 +60,7 @@
     _pageControl = [[UIPageControl alloc] init];
     _pageControl.userInteractionEnabled = YES;
     _pageControl.backgroundColor = [UIColor clearColor];
-    _pageControl.numberOfPages = num;
+    _pageControl.numberOfPages = imageCount;
     _pageControl.currentPage = 0;
     _pageControl.pageIndicatorTintColor = KCOLOR_W1;
     _pageControl.currentPageIndicatorTintColor = KCOLOR_g1;
@@ -60,7 +68,7 @@
     [_pageControl mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.equalTo(self);
         make.bottom.equalTo(_scrollView.mas_bottom);
-        make.width.mas_equalTo(SCALE_NUM(15*num));
+        make.width.mas_equalTo(SCALE_NUM(15*imageCount));
         make.height.mas_equalTo(36);
     }];
     [_pageControl addTarget:self action:@selector(changePage:) forControlEvents:UIControlEventValueChanged];
@@ -75,9 +83,9 @@
 
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
-    NSInteger currentPage = scrollView.contentOffset.x / SCREEN_WIDTH;
+    NSInteger currentPage = (scrollView.contentOffset.x + SCREEN_WIDTH/2)/ SCREEN_WIDTH;
     _pageControl.currentPage = currentPage;
-   
+  
 }
 
 @end

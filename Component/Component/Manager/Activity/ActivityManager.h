@@ -14,6 +14,15 @@
 @interface ActivityManager : YManager<YManager>
 AS_SINGLETON(ActivityManager);
 
+//根据时间取日程提醒text
+- (NSString *)remindTextByTime:(NSInteger)time;
+
+//根据text取日程提醒时间
+- (NSInteger)timeByRemindText:(NSString *)remindText;
+
+//提醒列表
+- (NSArray *)remindArray;
+
 /*********************************************************************
  函数名称 : getCurrentUseAvailableListLimitStart
  函数描述 : 获取当前用户活动列表

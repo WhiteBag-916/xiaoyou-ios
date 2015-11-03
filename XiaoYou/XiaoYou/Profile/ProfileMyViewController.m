@@ -20,6 +20,7 @@
 #import "YCommonAlertView.h"
 #import "YModel+ActionMessage.h"
 #import "ImageUploadModel.h"
+#import "CodeEnlargeView.h"
 
 #define KHEADHEIGHT SCALE_NUM(150)
 
@@ -34,6 +35,7 @@
 @property (nonatomic, strong) UIView *bottomView;
 
 @property (nonatomic, strong) UIImageView *codeView;//二维码
+@property (nonatomic, strong) CodeEnlargeView * codeEnlargeView;
 @property (nonatomic, strong) UIImageView *faceImg;//头像
 @property (nonatomic, strong) UILabel *nameLabel;//姓名
 @property (nonatomic, strong) UILabel *schoolNoLabel;//学号
@@ -117,6 +119,7 @@
 }
 - (void)initTop {
     _headView = [[UIView alloc] init];
+    _headView.userInteractionEnabled = YES;
     [_containerView addSubview:_headView];
     [_headView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.left.right.equalTo(_containerView);
@@ -125,6 +128,7 @@
     _headView.backgroundColor = KCOLOR_455A64;
     
     _faceContainer = [[UIView alloc] init];
+    _faceContainer.userInteractionEnabled = YES;
     [_containerView addSubview:_faceContainer];
     [_faceContainer mas_makeConstraints:^(MASConstraintMaker *make) {
         make.width.height.mas_equalTo(KIMGSIZE);
@@ -148,19 +152,21 @@
     [back mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.mas_equalTo(SCALE_NUM(10));
         make.width.mas_equalTo(SCALE_NUM(9));
-        make.height.mas_equalTo(SCALE_NUM(11));
+        make.height.mas_equalTo(SCALE_NUM(14));
         make.centerY.equalTo(_headView);
     }];
     
-//    _codeView = [[UIImageView alloc] init];
-//    [_headView addSubview:_codeView];
-//    [_codeView mas_makeConstraints:^(MASConstraintMaker *make) {
-//        make.width.height.mas_equalTo(SCALE_NUM(30));
-//        make.bottom.right.equalTo(_headView).offset(-15);
-//    }];
-//    _codeView.backgroundColor = [UIColor redColor];
-//    [_codeView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(openCode)]];
-    
+    _codeView = [[UIImageView alloc] init];
+    _codeView.userInteractionEnabled = YES;
+    _codeView.alpha = 1;
+    _codeView.image = [UIImage imageNamed:@"mine_icon_code"];
+    [self.view addSubview:_codeView];
+    [_codeView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.width.height.mas_equalTo(SCALE_NUM(30));
+        make.bottom.right.equalTo(_headView).offset(-15);
+    }];
+    _codeView.backgroundColor = [UIColor clearColor];
+    [_codeView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(openCode)]];
     
     [_headView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(goBack)]];
 }
@@ -294,12 +300,15 @@
 
 //打开二维码图片
 - (void)openCode {
+    NSLog(@"放大二维码");
+    
+    ProfileInfo *info = [[ProvisionManager sharedInstance] getProfile];
+    LoginResp *resp = [[ProvisionManager sharedInstance] getLoginInfo];
+    _codeEnlargeView = [[CodeEnlargeView alloc] initWithModel1:info andModel2:resp];
+    
+    [_codeEnlargeView show];
     
 }
-
-
-
-
 
 - (void)showAddPicList {
     
