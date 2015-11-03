@@ -12,7 +12,7 @@
 @interface FastViewController ()
 
 @property (nonatomic,retain) FastTopView    *topView;
-@property (nonatomic,retain) BottomView *bottomView;
+@property (nonatomic,retain) BottomView     *bottomView;
 
 @end
 

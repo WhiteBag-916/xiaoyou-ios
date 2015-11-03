@@ -136,7 +136,6 @@
 
 -(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
     UITableViewCell *cell = nil;
     NoticeInfo *info = self.notifyListArray[indexPath.section];
     return cell;
@@ -148,6 +147,7 @@
     if (self.notifyListArray.count > 0)
         info = self.notifyListArray[indexPath.section];
     if (info.activityOwner) {
+        
     }
 }
 

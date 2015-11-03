@@ -53,13 +53,10 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
-
 -(void)receiveNotificationOfReleaseSuccess
 {
     [_availableListView loadData];
 }
-
-
 
 -(UIButton *)messageNotRead
 {
@@ -72,7 +69,6 @@
         _messageNotRead.alpha = 0.7;
         [_messageNotRead setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         [_messageNotRead addTarget:self action:@selector(messageNotReadAction) forControlEvents:UIControlEventTouchUpInside];
-        
         [_messageNotRead mas_makeConstraints:^(MASConstraintMaker *make) {
             make.centerX.equalTo(self.view);
             make.top.mas_equalTo(SCALE_NUM(10));
