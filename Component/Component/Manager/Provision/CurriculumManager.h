@@ -17,6 +17,12 @@ AS_SINGLETON(CurriculumManager);
 //取课程时间
 - (CourseTimeListModel *)getCourseTime;
 
+//根据课时取课程时间
+- (NSString *)getCourseTimeByClass:(NSInteger)beginTime endTime:(NSInteger)endTime;
+
+//根据周取课程数据
+- (NSArray *)getDataByWeek:(NSInteger)weekNum;
+
 /*********************************************************************
  函数名称 : courseTimeList
  函数描述 : 获取课程学时对应时间

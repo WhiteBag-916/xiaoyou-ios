@@ -15,4 +15,7 @@
 //刷新课程时间
 - (void)refreshCourseTimeList:(CourseTimeListModel *)courseTimeListModel;
 
+//刷新课程数据
+- (void)refreshEventsData:(NSArray *)dataArray;
+
 @end

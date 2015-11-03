@@ -15,6 +15,7 @@
 #import "CurriculumDetailView.h"
 #import "CourseTimeListModel.h"
 #import "CourseTime.h"
+#import "FindMyCourseViewModel.h"
 
 #define K_CURRICULUM_WH            SCALE_NUM(40)  //1节课课程宽高
 #define K_EVENT_L                   SCALE_NUM(39)  //1节课课程宽高
@@ -30,6 +31,7 @@
 @property (nonatomic, strong) MGCTimedEventsViewLayout *timedEventsViewLayout;
 
 @property (nonatomic, strong) NSMutableArray *timeArray;
+@property (nonatomic, strong) NSMutableDictionary *eventsDic;
 
 @end
 
@@ -92,9 +94,48 @@
     [_allDayCollectionView reloadData];
 }
 
-//初始化界面
-- (void)setupSubviews {
+//刷新课程数据
+- (void)refreshEventsData:(NSArray *)dataArray {
+    NSArray *eventsArray = [[NSArray alloc] initWithArray:dataArray];
     
+    //初始化课程数据,根据周
+    self.eventsDic = [[NSMutableDictionary alloc] init];
+    
+    for (int i=0; i<7; ++i) {
+        NSMutableArray *modelArray = [[NSMutableArray alloc] init];
+        [eventsArray enumerateObjectsUsingBlock:^(FindMyCourseViewModel *findMyCourseViewModel, NSUInteger idx, BOOL * _Nonnull stop) {
+            if (i == findMyCourseViewModel.week) {
+                [modelArray addObject:findMyCourseViewModel];
+            }
+        }];
+        [self.eventsDic setObject:modelArray forKey:@(i)];
+    }
+    
+    [_eventCollectionView reloadData];
+}
+
+//根据周几取Y
+- (CGFloat)offsetYWithWeekDay:(NSIndexPath*)indexPath {
+    //取数据
+    NSArray *arrayByWeekDay = [_eventsDic objectForKey:@(indexPath.section)];
+    
+    FindMyCourseViewModel *findMyCourseViewModel = arrayByWeekDay[indexPath.row];
+    
+    CGFloat offsetY = (findMyCourseViewModel.beginPhase-1)*K_CURRICULUM_WH;
+    
+    return offsetY;
+}
+
+//根据周几取H
+- (CGFloat)heightWithWeekDay:(NSIndexPath*)indexPath {
+    //取数据
+    NSArray *arrayByWeekDay = [_eventsDic objectForKey:@(indexPath.section)];
+    
+    FindMyCourseViewModel *findMyCourseViewModel = arrayByWeekDay[indexPath.row];
+    
+    CGFloat height = (findMyCourseViewModel.endPhase-findMyCourseViewModel.beginPhase+1)*K_CURRICULUM_WH;
+    
+    return height;
 }
 
 #pragma mark - UICollectionViewDataSource和UICollectionViewDelegate
@@ -113,20 +154,18 @@
     if (collectionView == _allDayCollectionView) {
         return 8;
     } else if (collectionView == _eventCollectionView) {
-        if (0 == section || 1 == section || 6 == section) {
-            return 1;
-        }
+        return [[_eventsDic objectForKey:@(section)] count];
     }
     return 0;
 }
 
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
+    NSInteger row = indexPath.row;
+    NSInteger section = indexPath.section;
+    
     if (collectionView == _allDayCollectionView) {
         MyTimetableDayCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:kMyTimetableDayCollectionViewCell forIndexPath:indexPath];
-        
-        NSInteger row = indexPath.row;
-        NSInteger section = indexPath.section;
         
         NSString *numStr;
         NSString *timeStr;
@@ -141,6 +180,10 @@
     } else if (collectionView == _eventCollectionView) {
         MyTimetableCurriculumCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:kMyTimetableCurriculumCollectionViewCell forIndexPath:indexPath];
         
+        NSArray *arrayByWeekDay = [_eventsDic objectForKey:@(section)];
+        FindMyCourseViewModel *findMyCourseViewModel = arrayByWeekDay[row];
+        [cell initData:findMyCourseViewModel];
+        
         return cell;
     }
     
@@ -149,26 +192,21 @@
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     CurriculumDetailView *curriculumDetailView = [[CurriculumDetailView alloc] init];
+    NSInteger row = indexPath.row;
+    NSInteger section = indexPath.section;
+    NSArray *arrayByWeekDay = [_eventsDic objectForKey:@(section)];
+    FindMyCourseViewModel *findMyCourseViewModel = arrayByWeekDay[row];
+    [curriculumDetailView initData:findMyCourseViewModel];
     [curriculumDetailView show];
 }
 
 #pragma mark - MGCTimedEventsViewLayoutDelegate
 - (CGFloat)collectionView:(UICollectionView*)collectionView layout:(MGCTimedEventsViewLayout*)layout yPosForEventAtIndexPath:(NSIndexPath*)indexPath {
-    if (1 == indexPath.section) {
-        return K_CURRICULUM_WH*8;
-    } else if (6 == indexPath.section) {
-        return K_CURRICULUM_WH*6;
-    }
-    return 0;
+    return [self offsetYWithWeekDay:indexPath];
 }
 
 - (CGFloat)collectionView:(UICollectionView*)collectionView layout:(MGCTimedEventsViewLayout*)layout heightForEventAtIndexPath:(NSIndexPath*)indexPath {
-    if (1 == indexPath.section) {
-        return K_CURRICULUM_WH*3;
-    } else if (6 == indexPath.section) {
-        return K_CURRICULUM_WH*5;
-    }
-    return K_CURRICULUM_WH*2;
+    return [self heightWithWeekDay:indexPath];
 }
 
 #pragma mark - UIScrollViewDelegate
