@@ -104,7 +104,7 @@
     for (int i=0; i<7; ++i) {
         NSMutableArray *modelArray = [[NSMutableArray alloc] init];
         [eventsArray enumerateObjectsUsingBlock:^(FindMyCourseViewModel *findMyCourseViewModel, NSUInteger idx, BOOL * _Nonnull stop) {
-            if (i == findMyCourseViewModel.week) {
+            if (i == findMyCourseViewModel.week-1) {
                 [modelArray addObject:findMyCourseViewModel];
             }
         }];

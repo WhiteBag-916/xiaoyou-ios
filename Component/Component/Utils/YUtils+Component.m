@@ -180,4 +180,13 @@
     
     return [UIColor hexChangeFloat:colorArray[colorNum]];
 }
+
+//提醒时间
++ (NSString *)stringByRemindMin:(NSInteger)min {
+    if (60 == min) {
+        return @"";
+    }
+    return @"事情发生时";
+}
+
 @end

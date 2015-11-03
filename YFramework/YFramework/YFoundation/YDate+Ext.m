@@ -195,34 +195,32 @@
 }
 //返回周日的的开始时间
 - (NSDate *)beginningOfWeek {
-    // largely borrowed from "Date and Time Programming Guide for Cocoa"
-    // we'll use the default calendar and hope for the best
-    
     NSCalendar *calendar = [NSCalendar currentCalendar];
-    NSDate *beginningOfWeek = nil;
-    BOOL ok = [calendar rangeOfUnit:NSCalendarUnitWeekday startDate:&beginningOfWeek
-                           interval:NULL forDate:self];
-    if (ok) {
-        return beginningOfWeek;
+    NSDateComponents *comp = [calendar components:NSCalendarUnitYear|NSCalendarUnitMonth|NSCalendarUnitDay|NSCalendarUnitWeekday
+                                         fromDate:self];
+    
+    // 得到星期几
+    // 1(星期天) 2(星期一) 3(星期二) 4(星期三) 5(星期四) 6(星期五) 7(星期六)
+    NSInteger weekDay = [comp weekday];
+    // 得到几号
+    NSInteger day = [comp day];
+    
+    NSLog(@"weekDay:%ld   day:%ld",weekDay,day);
+    
+    // 计算当前日期和这周的星期一和星期天差的天数
+    long firstDiff;
+    if (weekDay == 1) {
+        firstDiff = 1;
+    }else{
+        firstDiff = [calendar firstWeekday] - weekDay;
     }
     
-    // couldn't calc via range, so try to grab Sunday, assuming gregorian style
-    // Get the weekday component of the current date
-    NSDateComponents *weekdayComponents = [calendar components:NSCalendarUnitWeekday fromDate:self];
+    // 在当前日期(去掉了时分秒)基础上加上差的天数
+    NSDateComponents *firstDayComp = [calendar components:NSCalendarUnitYear|NSCalendarUnitMonth|NSCalendarUnitDay fromDate:self];
+    [firstDayComp setDay:day + firstDiff];
+    NSDate *firstDayOfWeek= [calendar dateFromComponents:firstDayComp];
     
-    /*
-     Create a date components to represent the number of days to subtract from the current date.
-     The weekday value for Sunday in the Gregorian calendar is 1, so subtract 1 from the number of days to subtract from the date in question.  (If today's Sunday, subtract 0 days.)
-     */
-    NSDateComponents *componentsToSubtract = [[NSDateComponents alloc] init];
-    [componentsToSubtract setDay: 0 - ([weekdayComponents weekday] - 1)];
-    beginningOfWeek = nil;
-    beginningOfWeek = [calendar dateByAddingComponents:componentsToSubtract toDate:self options:0];
-    
-    //normalize to midnight, extract the year, month, and day components and create a new date from those components.
-    NSDateComponents *components = [calendar components:(NSCalendarUnitYear | NSCalendarUnitMonth |NSCalendarUnitDay)
-                                               fromDate:beginningOfWeek];
-    return [calendar dateFromComponents:components];
+    return firstDayOfWeek;
 }
 //返回当前天的年月日.
 - (NSDate *)beginningOfDay {
@@ -245,14 +243,90 @@
 //返回当前周的周末
 - (NSDate *)endOfWeek {
     NSCalendar *calendar = [NSCalendar currentCalendar];
-    // Get the weekday component of the current date
-    NSDateComponents *weekdayComponents = [calendar components:NSCalendarUnitWeekday fromDate:self];
-    NSDateComponents *componentsToAdd = [[NSDateComponents alloc] init];
-    // to get the end of week for a particular date, add (7 - weekday) days
-    [componentsToAdd setDay:(7 - [weekdayComponents weekday])];
-    NSDate *endOfWeek = [calendar dateByAddingComponents:componentsToAdd toDate:self options:0];
+    NSDateComponents *comp = [calendar components:NSCalendarUnitYear|NSCalendarUnitMonth|NSCalendarUnitDay|NSCalendarUnitWeekday
+                                         fromDate:self];
     
-    return endOfWeek;
+    // 得到星期几
+    // 1(星期天) 2(星期一) 3(星期二) 4(星期三) 5(星期四) 6(星期五) 7(星期六)
+    NSInteger weekDay = [comp weekday];
+    // 得到几号
+    NSInteger day = [comp day];
+    
+    NSLog(@"weekDay:%ld   day:%ld",weekDay,day);
+    
+    // 计算当前日期和这周的星期一和星期天差的天数
+    long lastDiff;
+    if (weekDay == 1) {
+        lastDiff = 0;
+    }else{
+        lastDiff = 7 - weekDay;
+    }
+    
+    // 在当前日期(去掉了时分秒)基础上加上差的天数
+    NSDateComponents *lastDayComp = [calendar components:NSCalendarUnitYear|NSCalendarUnitMonth|NSCalendarUnitDay fromDate:self];
+    [lastDayComp setDay:day + lastDiff];
+    NSDate *lastDayOfWeek= [calendar dateFromComponents:lastDayComp];
+    
+    return lastDayOfWeek;
+}
+
+//上个星期的第一天
+- (NSDate *)beforeStartOfWeek {
+    NSCalendar *calendar = [NSCalendar currentCalendar];
+    NSDateComponents *comp = [calendar components:NSCalendarUnitYear|NSCalendarUnitMonth|NSCalendarUnitDay|NSCalendarUnitWeekday
+                                         fromDate:self];
+    
+    // 得到星期几
+    // 1(星期天) 2(星期一) 3(星期二) 4(星期三) 5(星期四) 6(星期五) 7(星期六)
+    NSInteger weekDay = [comp weekday];
+    // 得到几号
+    NSInteger day = [comp day];
+    
+    NSLog(@"weekDay:%ld   day:%ld",weekDay,day);
+    
+    // 计算当前日期和这周的星期一和星期天差的天数
+    long firstDiff;
+    if (weekDay == 1) {
+        firstDiff = 1-7-1;
+    }else{
+        firstDiff = [calendar firstWeekday] - weekDay-7-1;
+    }
+    
+    // 在当前日期(去掉了时分秒)基础上加上差的天数
+    NSDateComponents *firstDayComp = [calendar components:NSCalendarUnitYear|NSCalendarUnitMonth|NSCalendarUnitDay fromDate:self];
+    [firstDayComp setDay:day + firstDiff];
+    NSDate *firstDayOfWeek= [calendar dateFromComponents:firstDayComp];
+    
+    return firstDayOfWeek;
+}
+//下个星期的最后天
+- (NSDate *)afterEndOfWeek {
+    NSCalendar *calendar = [NSCalendar currentCalendar];
+    NSDateComponents *comp = [calendar components:NSCalendarUnitYear|NSCalendarUnitMonth|NSCalendarUnitDay|NSCalendarUnitWeekday
+                                         fromDate:self];
+    
+    // 得到星期几
+    // 1(星期天) 2(星期一) 3(星期二) 4(星期三) 5(星期四) 6(星期五) 7(星期六)
+    NSInteger weekDay = [comp weekday];
+    // 得到几号
+    NSInteger day = [comp day];
+    
+    NSLog(@"weekDay:%ld   day:%ld",weekDay,day);
+    
+    // 计算当前日期和这周的星期一和星期天差的天数
+    long lastDiff;
+    if (weekDay == 1) {
+        lastDiff = 0;
+    }else{
+        lastDiff = 14 - weekDay;
+    }
+    
+    // 在当前日期(去掉了时分秒)基础上加上差的天数
+    NSDateComponents *lastDayComp = [calendar components:NSCalendarUnitYear|NSCalendarUnitMonth|NSCalendarUnitDay fromDate:self];
+    [lastDayComp setDay:day + lastDiff];
+    NSDate *lastDayOfWeek= [calendar dateFromComponents:lastDayComp];
+    
+    return lastDayOfWeek;
 }
 
 - (BOOL) isTodayWithTimeZone:(NSTimeZone*)timeZone{

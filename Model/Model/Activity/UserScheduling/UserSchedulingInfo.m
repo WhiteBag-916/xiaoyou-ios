@@ -1,7 +1,7 @@
 //
 //  UserSchedulingInfo.m
 //
-//  Created by   on 15/10/30
+//  Created by   on 15/11/3
 //  Copyright (c) 2015 __MyCompanyName__. All rights reserved.
 //
 
@@ -16,6 +16,7 @@ NSString *const kUserSchedulingInfoUid = @"uid";
 NSString *const kUserSchedulingInfoEndTime = @"endTime";
 NSString *const kUserSchedulingInfoUpdateTime = @"updateTime";
 NSString *const kUserSchedulingInfoNoticeTimePeriod = @"noticeTimePeriod";
+NSString *const kUserSchedulingInfoType = @"type";
 NSString *const kUserSchedulingInfoStartTime = @"startTime";
 NSString *const kUserSchedulingInfoCreateTime = @"createTime";
 
@@ -36,6 +37,7 @@ NSString *const kUserSchedulingInfoCreateTime = @"createTime";
 @synthesize endTime = _endTime;
 @synthesize updateTime = _updateTime;
 @synthesize noticeTimePeriod = _noticeTimePeriod;
+@synthesize type = _type;
 @synthesize startTime = _startTime;
 @synthesize createTime = _createTime;
 
@@ -60,6 +62,7 @@ NSString *const kUserSchedulingInfoCreateTime = @"createTime";
             self.endTime = [[self objectOrNilForKey:kUserSchedulingInfoEndTime fromDictionary:dict] doubleValue];
             self.updateTime = [[self objectOrNilForKey:kUserSchedulingInfoUpdateTime fromDictionary:dict] doubleValue];
             self.noticeTimePeriod = [[self objectOrNilForKey:kUserSchedulingInfoNoticeTimePeriod fromDictionary:dict] doubleValue];
+            self.type = [self objectOrNilForKey:kUserSchedulingInfoType fromDictionary:dict];
             self.startTime = [[self objectOrNilForKey:kUserSchedulingInfoStartTime fromDictionary:dict] doubleValue];
             self.createTime = [[self objectOrNilForKey:kUserSchedulingInfoCreateTime fromDictionary:dict] doubleValue];
 
@@ -80,6 +83,7 @@ NSString *const kUserSchedulingInfoCreateTime = @"createTime";
     [mutableDict setValue:[NSNumber numberWithDouble:self.endTime] forKey:kUserSchedulingInfoEndTime];
     [mutableDict setValue:[NSNumber numberWithDouble:self.updateTime] forKey:kUserSchedulingInfoUpdateTime];
     [mutableDict setValue:[NSNumber numberWithDouble:self.noticeTimePeriod] forKey:kUserSchedulingInfoNoticeTimePeriod];
+    [mutableDict setValue:self.type forKey:kUserSchedulingInfoType];
     [mutableDict setValue:[NSNumber numberWithDouble:self.startTime] forKey:kUserSchedulingInfoStartTime];
     [mutableDict setValue:[NSNumber numberWithDouble:self.createTime] forKey:kUserSchedulingInfoCreateTime];
 
@@ -113,6 +117,7 @@ NSString *const kUserSchedulingInfoCreateTime = @"createTime";
     self.endTime = [aDecoder decodeDoubleForKey:kUserSchedulingInfoEndTime];
     self.updateTime = [aDecoder decodeDoubleForKey:kUserSchedulingInfoUpdateTime];
     self.noticeTimePeriod = [aDecoder decodeDoubleForKey:kUserSchedulingInfoNoticeTimePeriod];
+    self.type = [aDecoder decodeObjectForKey:kUserSchedulingInfoType];
     self.startTime = [aDecoder decodeDoubleForKey:kUserSchedulingInfoStartTime];
     self.createTime = [aDecoder decodeDoubleForKey:kUserSchedulingInfoCreateTime];
     return self;
@@ -129,6 +134,7 @@ NSString *const kUserSchedulingInfoCreateTime = @"createTime";
     [aCoder encodeDouble:_endTime forKey:kUserSchedulingInfoEndTime];
     [aCoder encodeDouble:_updateTime forKey:kUserSchedulingInfoUpdateTime];
     [aCoder encodeDouble:_noticeTimePeriod forKey:kUserSchedulingInfoNoticeTimePeriod];
+    [aCoder encodeObject:_type forKey:kUserSchedulingInfoType];
     [aCoder encodeDouble:_startTime forKey:kUserSchedulingInfoStartTime];
     [aCoder encodeDouble:_createTime forKey:kUserSchedulingInfoCreateTime];
 }
@@ -147,6 +153,7 @@ NSString *const kUserSchedulingInfoCreateTime = @"createTime";
         copy.endTime = self.endTime;
         copy.updateTime = self.updateTime;
         copy.noticeTimePeriod = self.noticeTimePeriod;
+        copy.type = [self.type copyWithZone:zone];
         copy.startTime = self.startTime;
         copy.createTime = self.createTime;
     }

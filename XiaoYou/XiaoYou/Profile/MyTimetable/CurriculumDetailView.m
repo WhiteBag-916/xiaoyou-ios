@@ -285,6 +285,7 @@
     _timeLabel.text = [[CurriculumManager sharedInstance] getCourseTimeByClass:model.beginPhase endTime:model.endPhase];
     _locationLabel.text = model.roomName;
     _departmentsName.text = model.departmentName;
+    _weekLabel.text = [[CurriculumManager sharedInstance] weekByCourseTimeID:model];
 }
 
 @end

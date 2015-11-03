@@ -97,6 +97,26 @@ DEF_SINGLETON(CurriculumManager);
     return allData;
 }
 
+//根据model读取课的上课星期
+- (NSString *)weekByCourseTimeID:(FindMyCourseViewModel *)model {
+    NSString *weekStr = [NSString stringWithFormat:@"%g-%g周", model.beginWeek, model.endWeek];
+    
+    //判断单双周
+    if (!model.evenodd){
+        //单周
+        NSInteger beginWeek = model.beginWeek;
+        //取余
+        NSInteger week = beginWeek%2;
+        if (0 == week) {
+            weekStr = [weekStr stringByAppendingString:@"，双周"];
+        } else {
+            weekStr = [weekStr stringByAppendingString:@"，单周"];
+        }
+    }
+    
+    return weekStr;
+}
+
 //整理课程数据
 - (void)resetCourseArray:(NSArray *)courseArray {
     self.findMyCourseArray = [[NSMutableArray alloc] init];

@@ -8,6 +8,10 @@
 
 #import "YViewController.h"
 
+@class UserSchedulingInfo;
+
 @interface ScheduleDetailViewController : YViewController
+
+- (id)initWithInfo:(UserSchedulingInfo *)info;
 
 @end

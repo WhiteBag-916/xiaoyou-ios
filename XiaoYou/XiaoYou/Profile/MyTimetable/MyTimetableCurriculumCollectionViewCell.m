@@ -93,6 +93,14 @@ NSString *const kMyTimetableCurriculumCollectionViewCell = @"MyTimetableCurricul
     } else {
         _nameLabel.numberOfLines = 2;
         _classroomLabel.numberOfLines = 2;
+        //单周
+        NSInteger beginWeek = model.beginWeek;
+        NSInteger week = beginWeek%2;
+        if (0 == week) {
+            _weekLabel.text = @"双周";
+        } else {
+            _weekLabel.text = @"单周";
+        }
         _weekLabel.hidden = model.evenodd;
     }
 }

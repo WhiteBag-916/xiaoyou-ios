@@ -56,5 +56,7 @@
 //取课程颜色
 + (UIColor *)courseColorByNum:(NSInteger)num;
 
+//提醒时间
++ (NSString *)stringByRemindMin:(NSInteger)min;
 
 @end
