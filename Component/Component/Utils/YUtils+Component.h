@@ -53,4 +53,8 @@
 // 是否能有网络连接
 + (BOOL) IsEnableConnection;
 
+//取课程颜色
++ (UIColor *)courseColorByNum:(NSInteger)num;
+
+
 @end

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		040619DC1BDE11C3008E3E4E /* NoticeAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 040619DB1BDE11C3008E3E4E /* NoticeAction.m */; };
+		043B45411BE8967200050B32 /* YBaseService.m in Sources */ = {isa = PBXBuildFile; fileRef = 043B45401BE8967200050B32 /* YBaseService.m */; settings = {ASSET_TAGS = (); }; };
 		0463588E1BE0F5450055819F /* CancleActivityAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 0463588D1BE0F5450055819F /* CancleActivityAction.m */; };
 		04722E261BD8892700F95816 /* AvailableAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 04722E251BD8892700F95816 /* AvailableAction.m */; };
 		0499B9CE1BE70F1C00202CFD /* MainAvailableTimeAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 0499B9CD1BE70F1C00202CFD /* MainAvailableTimeAction.m */; settings = {ASSET_TAGS = (); }; };
@@ -98,6 +99,8 @@
 /* Begin PBXFileReference section */
 		040619DA1BDE11C3008E3E4E /* NoticeAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoticeAction.h; sourceTree = "<group>"; };
 		040619DB1BDE11C3008E3E4E /* NoticeAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoticeAction.m; sourceTree = "<group>"; };
+		043B453F1BE8967200050B32 /* YBaseService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YBaseService.h; sourceTree = "<group>"; };
+		043B45401BE8967200050B32 /* YBaseService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YBaseService.m; sourceTree = "<group>"; };
 		0463588C1BE0F5450055819F /* CancleActivityAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CancleActivityAction.h; sourceTree = "<group>"; };
 		0463588D1BE0F5450055819F /* CancleActivityAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CancleActivityAction.m; sourceTree = "<group>"; };
 		04722E241BD8892700F95816 /* AvailableAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AvailableAction.h; sourceTree = "<group>"; };
@@ -253,6 +256,31 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		043B453C1BE8960400050B32 /* Dao */ = {
+			isa = PBXGroup;
+			children = (
+				043B453D1BE8963100050B32 /* ActivityNotify */,
+				043B453E1BE8963100050B32 /* Feed */,
+			);
+			path = Dao;
+			sourceTree = "<group>";
+		};
+		043B453D1BE8963100050B32 /* ActivityNotify */ = {
+			isa = PBXGroup;
+			children = (
+				043B453F1BE8967200050B32 /* YBaseService.h */,
+				043B45401BE8967200050B32 /* YBaseService.m */,
+			);
+			path = ActivityNotify;
+			sourceTree = "<group>";
+		};
+		043B453E1BE8963100050B32 /* Feed */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Feed;
+			sourceTree = "<group>";
+		};
 		04722E231BD8891100F95816 /* Activity */ = {
 			isa = PBXGroup;
 			children = (
@@ -338,20 +366,6 @@
 			path = Provision;
 			sourceTree = "<group>";
 		};
-		20859AAC1B64DE3500580ED3 /* Contact */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Contact;
-			sourceTree = "<group>";
-		};
-		20859AAD1B64DE3500580ED3 /* Message */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Message;
-			sourceTree = "<group>";
-		};
 		20DA8B311B8EC4E3007D0CDE /* Utils */ = {
 			isa = PBXGroup;
 			children = (
@@ -411,9 +425,9 @@
 		20DBFD691B4FA8FD009134D0 /* Component */ = {
 			isa = PBXGroup;
 			children = (
+				043B453C1BE8960400050B32 /* Dao */,
 				20DBFD7D1B4FD3F5009134D0 /* Manager */,
 				20DBFD741B4FD3F5009134D0 /* Action */,
-				20DBFD791B4FD3F5009134D0 /* Dao */,
 				20DBFD7A1B4FD3F5009134D0 /* Define */,
 				20DBFD821B4FD3F5009134D0 /* SQL */,
 				20DBFD831B4FD3F5009134D0 /* Utils */,
@@ -469,16 +483,6 @@
 				3339625B1B95575400DD0A6D /* SuggestListAction.m */,
 			);
 			path = Message;
-			sourceTree = "<group>";
-		};
-		20DBFD791B4FD3F5009134D0 /* Dao */ = {
-			isa = PBXGroup;
-			children = (
-				20E1221A1B705D8300F90BD3 /* Feed */,
-				20859AAC1B64DE3500580ED3 /* Contact */,
-				20859AAD1B64DE3500580ED3 /* Message */,
-			);
-			path = Dao;
 			sourceTree = "<group>";
 		};
 		20DBFD7A1B4FD3F5009134D0 /* Define */ = {
@@ -596,13 +600,6 @@
 			path = Feed;
 			sourceTree = "<group>";
 		};
-		20E1221A1B705D8300F90BD3 /* Feed */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Feed;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -705,6 +702,7 @@
 				20402A1F1BE21B8B00802DAF /* FreeBuildingListAction.m in Sources */,
 				20E1C6811B89F2C8008BA9D6 /* FeedListAction.m in Sources */,
 				20DAF9A31B871989005B7932 /* SchoolListAction.m in Sources */,
+				043B45411BE8967200050B32 /* YBaseService.m in Sources */,
 				20DCB9731B8CA60800C758DE /* ApplicantListAction.m in Sources */,
 				20DA1A7E1B89C44D00DEF95C /* MyCoolPersonsAction.m in Sources */,
 				20E0BFEA1B88B0CA00EDAED4 /* TagListAction.m in Sources */,

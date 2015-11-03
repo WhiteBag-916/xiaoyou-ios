@@ -53,7 +53,6 @@
 
 
 - (void)onNavigationRightButtonClicked {
-    NSLog(@"this is data...");
     YActionSheetItem *item1 = [YActionSheetItem itemWithTitle:@"我要退出" type:YCommonActionSheetItemTypeCenterCommon block:^(NSInteger checkNum) {
         [self exitActivity];
         
@@ -66,7 +65,6 @@
 
 -(void)exitActivity
 {
-    YLogD(@"this is activity...");
     [[ActivityManager sharedInstance] cancleActivitySignUpByActivityID:self.publishID block:^(YActionMessage *message) {
         [YUtils showTitle:message.desc];
         [self updateJoinButtonStatus];

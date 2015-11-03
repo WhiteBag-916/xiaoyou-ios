@@ -1,15 +1,17 @@
 //
-//  YBaseService.h
+//  YBaseService.m
+//  XiaoYou
 //
-//  Created by desheng on 15/11/2.
-//  Copyright © 2015年 desheng. All rights reserved.
+//  Created by sheng on 15/11/2.
+//  Copyright © 2015年 xc. All rights reserved.
+//
 
 #import <objc/runtime.h>
 #import "YBaseService.h"
 #import "YModel.h"
 #import "YDatabase.h"
+#import "YDirectory.h"
 
-#define DATABASE_URL    @"aaaaaa"
 
 @interface YBaseService ()
 
@@ -24,7 +26,7 @@
 -(YDatabase *)dataBase
 {
     if (!_dataBase) {
-        _dataBase = [[YDatabase alloc]initWithPath:DATABASE_URL];
+        _dataBase = [[YDatabase alloc]init];
     }
     return _dataBase;
 }
@@ -57,6 +59,8 @@
  */
 - (BOOL)isTableExistsWithTableName:(NSString *)tableName
 {
+    self.dataBase.databasePath = [NSString stringWithFormat:@"%@//%@",[YDirectory documents],tableName];
+    [YDatabase registerDB:self.dataBase.databasePath];
     NSString *sql = @"select name from sqlite_master where type = 'table' and name = ?";
     //判断表是否存在
     
@@ -111,7 +115,6 @@
     //拼接
     [sql appendString:valueString];
     
-    
     //执行插入
     BOOL isSuccessed = [self.dataBase updateWithSql:sql];
     
@@ -123,17 +126,9 @@
  */
 -(NSArray*)queryModel:(NSString*)className
 {
-//    NSString *tableName = NSStringFromClass([model class]);
-//    //保存所有的模型对象
-//    NSMutableArray *dataSources = [NSMutableArray array];
-//    
-//    //获取所有的属性
-//    NSArray *attributes = [self classAttributesFromClassName:tableName];
-    
     NSString *sql = [NSString stringWithFormat:@"select * from %@",className];
     //查询
     return [self.dataBase queryWithSql:sql];
-
 }
 //获取类名
 - (NSString *)classNameFromModel:(YModel *)model
@@ -169,26 +164,15 @@
         objc_property_t property = properties[i];
         //获取属性的名字
         const char *name = property_getName(property);
-        const char *type = property_getAttributes(property);
-        
-        
-        //NSLog(@"%s\n %s",name,type);
-        
         //把属性添加到数组里面
         [attributes addObject:[NSString stringWithUTF8String:name]];
-        
-        
     }
     
     for (int i = 0; i < outCount2; i++) {
         objc_property_t property = properties2[i];
         //获取属性的名字
         const char *name = property_getName(property);
-        const char *type = property_getAttributes(property);
-        
-        
-        NSLog(@"%s\n %s",name,type);
-        
+        //const char *type = property_getAttributes(property);
         //把属性添加到数组里面
         [attributes addObject:[NSString stringWithUTF8String:name]];
     }
@@ -210,11 +194,5 @@
 {
     NSString *tableName = NSStringFromClass([baseModel class]);
     return [self.dataBase updateWithSql:[NSString stringWithFormat:@"update %@ set  %@=?  where idstr=?",tableName,needUpdataStr],updataStr,idstr];
-
 }
-
-
-
-
-
 @end

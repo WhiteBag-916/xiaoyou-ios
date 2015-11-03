@@ -168,7 +168,7 @@
     
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:view];
     
-    [self showCustomNavigationRemindButton:NO];
+    [self showCustomNavigationRemindButton:[AppConfigData isHaveRemindMessage]];
     [AppConfigData setHaveRemindMessage:NO];
 }
 

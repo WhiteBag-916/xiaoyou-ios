@@ -8,6 +8,10 @@
 
 #import "YView.h"
 
+@class FindMyCourseViewModel;
+
 @interface CurriculumDetailView : YCommonDialogView
+
+- (void)initData:(FindMyCourseViewModel *)model;
 
 @end

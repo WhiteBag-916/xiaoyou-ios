@@ -185,7 +185,7 @@
 
 //导航栏左侧提醒按钮
 - (void)showCustomNavigationRemindButton:(BOOL)haveMsg {
-    NSString *imageName = haveMsg ? @"red_bell":@"have_time_msg";
+    NSString *imageName = haveMsg ? @"red_point_bell":@"have_time_msg";
     [self showNomalNavigationLeftButton:@"" action:@selector(onNavigationLeftButtonClicked) imgName:imageName frame:CGRectMake(0, 0, 16, 16)];
 }
 
