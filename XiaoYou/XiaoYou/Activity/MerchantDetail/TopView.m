@@ -32,10 +32,12 @@
 
 -(void)setUpUI:(NSInteger) num
 {
-    _scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCALE_NUM(150))];
+    _scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_WIDTH*3/4)];
+    NSLog(@"%@",NSStringFromCGSize(_scrollView.frame.size));
     _scrollView.userInteractionEnabled = YES;
     _scrollView.pagingEnabled = YES;
     _scrollView.delegate = self;
+    _scrollView.bounces = NO;
     _scrollView.showsHorizontalScrollIndicator = NO;
     _scrollView.showsVerticalScrollIndicator = NO;
     _scrollView.contentSize = CGSizeMake(SCREEN_WIDTH*num, SCALE_NUM(150));
@@ -43,7 +45,7 @@
     
     for (int i = 0; i < num; i++)
     {
-        UIImageView * imageView = [[UIImageView alloc] initWithFrame:CGRectMake(SCREEN_WIDTH*i, 0, SCREEN_WIDTH, SCALE_NUM(150))];
+        UIImageView * imageView = [[UIImageView alloc] initWithFrame:CGRectMake(SCREEN_WIDTH*i, 0, SCREEN_WIDTH, SCREEN_WIDTH*3/4)];
         imageView.image = [UIImage imageNamed:@"common_picture_loading_c"];
         imageView.userInteractionEnabled = YES;
         [_scrollView addSubview:imageView];
@@ -75,9 +77,9 @@
 
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
-    NSInteger currentPage = scrollView.contentOffset.x / SCREEN_WIDTH;
+    NSInteger currentPage = (scrollView.contentOffset.x + SCREEN_WIDTH/2)/ SCREEN_WIDTH;
     _pageControl.currentPage = currentPage;
-   
+  
 }
 
 @end

@@ -38,14 +38,14 @@
 
 -(void)setUpHeaderView
 {
-    UIView * backView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCALE_NUM(300))];
+    UIView * backView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_WIDTH*3/4+SCALE_NUM(132))];
  
     _topView = [[TopView alloc] initWithImageCount:8];
     _topView.backgroundColor = [UIColor clearColor];
     [backView addSubview:_topView];
     [_topView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.right.top.mas_equalTo(0);
-        make.height.mas_equalTo(SCALE_NUM(150));
+        make.height.mas_equalTo(SCREEN_WIDTH*3/4);
     }];
     
     _middleInfoView = [[MiddleInfoView alloc] init];
