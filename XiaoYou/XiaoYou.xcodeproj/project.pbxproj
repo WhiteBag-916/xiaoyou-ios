@@ -25,6 +25,8 @@
 		043AC86D1BCF7BFC00AB6E09 /* friend_box_serch@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 043AC8651BCF7BFC00AB6E09 /* friend_box_serch@3x.png */; };
 		043AC8721BCF7BFC00AB6E09 /* mine_box_yard@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 043AC86A1BCF7BFC00AB6E09 /* mine_box_yard@2x.png */; };
 		043AC8731BCF7BFC00AB6E09 /* mine_box_yard@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 043AC86B1BCF7BFC00AB6E09 /* mine_box_yard@3x.png */; };
+		043B453A1BE87A2000050B32 /* red_point_bell@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 043B45381BE87A2000050B32 /* red_point_bell@2x.png */; settings = {ASSET_TAGS = (); }; };
+		043B453B1BE87A2000050B32 /* red_point_bell@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 043B45391BE87A2000050B32 /* red_point_bell@3x.png */; settings = {ASSET_TAGS = (); }; };
 		044792BD1BB14DF40053412A /* commenTagList.m in Sources */ = {isa = PBXBuildFile; fileRef = 044792BC1BB14DF40053412A /* commenTagList.m */; };
 		0447A39E1BD7602000341684 /* WhoJoinInController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0447A39D1BD7602000341684 /* WhoJoinInController.m */; };
 		0447A3A11BD7637D00341684 /* WhoJoinInListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0447A3A01BD7637D00341684 /* WhoJoinInListView.m */; };
@@ -840,6 +842,8 @@
 		043AC8651BCF7BFC00AB6E09 /* friend_box_serch@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "friend_box_serch@3x.png"; sourceTree = "<group>"; };
 		043AC86A1BCF7BFC00AB6E09 /* mine_box_yard@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mine_box_yard@2x.png"; sourceTree = "<group>"; };
 		043AC86B1BCF7BFC00AB6E09 /* mine_box_yard@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mine_box_yard@3x.png"; sourceTree = "<group>"; };
+		043B45381BE87A2000050B32 /* red_point_bell@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "red_point_bell@2x.png"; sourceTree = "<group>"; };
+		043B45391BE87A2000050B32 /* red_point_bell@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "red_point_bell@3x.png"; sourceTree = "<group>"; };
 		044792BB1BB14DF40053412A /* commenTagList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = commenTagList.h; sourceTree = "<group>"; };
 		044792BC1BB14DF40053412A /* commenTagList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = commenTagList.m; sourceTree = "<group>"; };
 		0447A39C1BD7602000341684 /* WhoJoinInController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WhoJoinInController.h; sourceTree = "<group>"; };
@@ -2052,6 +2056,8 @@
 			isa = PBXGroup;
 			children = (
 				043AC8631BCF7BFC00AB6E09 /* mengcheng */,
+				043B45381BE87A2000050B32 /* red_point_bell@2x.png */,
+				043B45391BE87A2000050B32 /* red_point_bell@3x.png */,
 				0479E4241BE4B68D002815E7 /* red_bell@2x.png */,
 				0479E4251BE4B68D002815E7 /* red_bell@3x.png */,
 				048C49EC1BD4EDB0008E1D88 /* havetime_icon_no@2x.png */,
@@ -4482,6 +4488,7 @@
 				049480451BB8DE1700C68460 /* photo4.jpg in Resources */,
 				20DAAAAF1BCD05F5006DF231 /* havetime_icon_teacher@3x.png in Resources */,
 				20DD79071BA97D72009AD1A9 /* background-start.png in Resources */,
+				043B453A1BE87A2000050B32 /* red_point_bell@2x.png in Resources */,
 				334670791B84337E00A8628A /* friend-requests@3x.png in Resources */,
 				333122D31B806EDC00D3D032 /* back@2x.png in Resources */,
 				E482D5711BD8EA310045F4DB /* common_picture_loading@2x.png in Resources */,
@@ -4753,6 +4760,7 @@
 				20E033E91B842727002E4583 /* UMSCommentInputControlleriPad.xib in Resources */,
 				3334ABF41B82C5D200FDDCCB /* chatBar_more@2x.png in Resources */,
 				333122CA1B806EDC00D3D032 /* chat_sender_audio_playing_001@2x.png in Resources */,
+				043B453B1BE87A2000050B32 /* red_point_bell@3x.png in Resources */,
 				20DAA2B91BCE34DF00420234 /* btn_message_y@2x.png in Resources */,
 				65024C1C1B833565007DE404 /* feedmore@2x.png in Resources */,
 				E45FD8501BCF41EB007619D7 /* activity-releaser@2x.png in Resources */,

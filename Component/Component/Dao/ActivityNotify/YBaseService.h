@@ -1,10 +1,19 @@
 //
 //  YBaseService.h
+//  XiaoYou
 //
-//  Created by desheng on 15/11/2.
-//  Copyright © 2015年 desheng. All rights reserved.
+//  Created by sheng on 15/11/2.
+//  Copyright © 2015年 xc. All rights reserved.
 //
 
+/**
+ *  数据库操作类,此文件功能已经转移到YDatabaseDao里,但是此文件仍有部分接口在用,下一版本重构
+ *
+ *  @liudesheng
+ *  @param strong
+ *
+ *  @return nil
+ */
 #import <Foundation/Foundation.h>
 #import "YModel.h"
 @interface YBaseService : NSObject
