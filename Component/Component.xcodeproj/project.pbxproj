@@ -18,6 +18,7 @@
 		202F03CC1BE36AF0006E7706 /* UserSchedulingListAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 202F03CB1BE36AF0006E7706 /* UserSchedulingListAction.m */; };
 		202F03CF1BE36B73006E7706 /* UserSchedulingDetailAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 202F03CE1BE36B73006E7706 /* UserSchedulingDetailAction.m */; };
 		2030A2C01BE9B0C3003EDDF8 /* CourseDetailAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 2030A2BF1BE9B0C3003EDDF8 /* CourseDetailAction.m */; };
+		2030A2C61BE9DF40003EDDF8 /* UserSchedulingEditAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 2030A2C51BE9DF40003EDDF8 /* UserSchedulingEditAction.m */; };
 		20402A1F1BE21B8B00802DAF /* FreeBuildingListAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 20402A1E1BE21B8B00802DAF /* FreeBuildingListAction.m */; };
 		20402A251BE2200A00802DAF /* FreeBuildingDetailAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 20402A241BE2200A00802DAF /* FreeBuildingDetailAction.m */; };
 		20859A7C1B64BD5B00580ED3 /* ProvisionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 20859A7B1B64BD5B00580ED3 /* ProvisionManager.m */; };
@@ -123,6 +124,8 @@
 		202F03CE1BE36B73006E7706 /* UserSchedulingDetailAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserSchedulingDetailAction.m; sourceTree = "<group>"; };
 		2030A2BE1BE9B0C3003EDDF8 /* CourseDetailAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CourseDetailAction.h; sourceTree = "<group>"; };
 		2030A2BF1BE9B0C3003EDDF8 /* CourseDetailAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CourseDetailAction.m; sourceTree = "<group>"; };
+		2030A2C41BE9DF40003EDDF8 /* UserSchedulingEditAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserSchedulingEditAction.h; sourceTree = "<group>"; };
+		2030A2C51BE9DF40003EDDF8 /* UserSchedulingEditAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserSchedulingEditAction.m; sourceTree = "<group>"; };
 		20402A1D1BE21B8B00802DAF /* FreeBuildingListAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FreeBuildingListAction.h; sourceTree = "<group>"; };
 		20402A1E1BE21B8B00802DAF /* FreeBuildingListAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FreeBuildingListAction.m; sourceTree = "<group>"; };
 		20402A231BE2200A00802DAF /* FreeBuildingDetailAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FreeBuildingDetailAction.h; sourceTree = "<group>"; };
@@ -320,6 +323,8 @@
 				202F03CB1BE36AF0006E7706 /* UserSchedulingListAction.m */,
 				202F03CD1BE36B73006E7706 /* UserSchedulingDetailAction.h */,
 				202F03CE1BE36B73006E7706 /* UserSchedulingDetailAction.m */,
+				2030A2C41BE9DF40003EDDF8 /* UserSchedulingEditAction.h */,
+				2030A2C51BE9DF40003EDDF8 /* UserSchedulingEditAction.m */,
 			);
 			path = Activity;
 			sourceTree = "<group>";
@@ -751,6 +756,7 @@
 				20E122171B705D3C00F90BD3 /* FeedManager.m in Sources */,
 				20C5B0811B8DF3E700B4A8A8 /* GroupListAction.m in Sources */,
 				20DADED81BD0958400FB294F /* ActivityManager.m in Sources */,
+				2030A2C61BE9DF40003EDDF8 /* UserSchedulingEditAction.m in Sources */,
 				20E0C00C1B88B0CA00EDAED4 /* ProfileAction.m in Sources */,
 				20E0BFED1B88B0CA00EDAED4 /* MessageListAction.m in Sources */,
 				20E1C67E1B89F148008BA9D6 /* FeedDetailAction.m in Sources */,

@@ -48,5 +48,7 @@
 
 //未读提醒
 #define KNotification_Remind_Message_Not_Read           @"KNotification_Remind_Message_Not_Read"
+//日程增删
+#define KNotification_Change_Schedule                   @"KNotification_Change_Schedule"
 
 #endif

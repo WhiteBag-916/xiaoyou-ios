@@ -12,6 +12,7 @@
 #import "MGCStandardEventView.h"
 #import "ScheduleDetailViewController.h"
 #import "NewScheduleViewController.h"
+#import "ActivityDetailViewController.h"
 
 static NSString* const EventCellReuseIdentifier = @"EventCellReuseIdentifier";
 
@@ -49,6 +50,7 @@ static NSString* const EventCellReuseIdentifier = @"EventCellReuseIdentifier";
     self.userSchedulingInfoArray = [@[] mutableCopy];
     
     self.dayPlannerView.calendar = self.calendar;
+    self.dayPlannerView.showsAllDayEvents = NO;
     [self.dayPlannerView registerClass:MGCStandardEventView.class forEventViewWithReuseIdentifier:EventCellReuseIdentifier];
     
     [self initData:nil needLoading:YES needNowWeek:YES needBeforeWeek:YES needAfterWeek:YES];
@@ -56,6 +58,12 @@ static NSString* const EventCellReuseIdentifier = @"EventCellReuseIdentifier";
     [[ActivityManager sharedInstance] userSchedulingConditions:^(YActionMessage *message) {
         
     }];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changeSchedule:) name:KNotification_Change_Schedule object:nil];
+}
+
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 - (void)initRightBar {
@@ -152,6 +160,36 @@ static NSString* const EventCellReuseIdentifier = @"EventCellReuseIdentifier";
     return _calendar;
 }
 
+- (void)changeSchedule:(NSNotification *)notification {
+    NSDictionary *dic = [notification userInfo];
+    
+    UserSchedulingInfo *info = dic[@"info"];
+    
+    if ([dic[@"state"] isEqualToString:@"del"]) {
+        //删除
+        [self delScheduling:info.internalBaseClassIdentifier scheduleType:info.type];
+    } else {
+        //添加
+        [self addSchedulingArray:@[info]];
+    }
+}
+
+//删除
+- (void)delScheduling:(NSInteger)internalBaseClassIdentifier scheduleType:(NSString *)scheduleType {
+    [_userSchedulingInfoArray enumerateObjectsUsingBlock:^(UserSchedulingInfo * _Nonnull userSchedulingInfoObj, NSUInteger userSchedulingInfoIdx, BOOL * _Nonnull userSchedulingInfoStop) {
+        
+        if (userSchedulingInfoObj.internalBaseClassIdentifier == internalBaseClassIdentifier
+            && [userSchedulingInfoObj.type isEqualToString:scheduleType]) {
+            
+            [_userSchedulingInfoArray removeObjectAtIndex:userSchedulingInfoIdx];
+            [self.dayPlannerView reloadAllEvents];
+            
+            *userSchedulingInfoStop = YES;
+        }
+        
+    }];
+}
+
 //增加数组
 - (void)addSchedulingArray:(NSArray *)array {
     //去重
@@ -162,7 +200,8 @@ static NSString* const EventCellReuseIdentifier = @"EventCellReuseIdentifier";
         [dataArray enumerateObjectsUsingBlock:^(UserSchedulingInfo * _Nonnull dataArrayObj, NSUInteger dataArrayIdx, BOOL * _Nonnull dataArrayStop) {
             if (userSchedulingInfoObj.internalBaseClassIdentifier == dataArrayObj.internalBaseClassIdentifier
                 && [userSchedulingInfoObj.type isEqualToString:dataArrayObj.type]) {
-                [dataArray removeObjectAtIndex:dataArrayIdx];
+                //删除旧的，加新的
+                [_userSchedulingInfoArray removeObject:userSchedulingInfoObj];
                 *dataArrayStop = YES;
             }
         }];
@@ -231,12 +270,12 @@ static NSString* const EventCellReuseIdentifier = @"EventCellReuseIdentifier";
     UserSchedulingInfo *ev = [self eventOfDate:index date:date];
     
     MGCStandardEventView *evCell = (MGCStandardEventView*)[view dequeueReusableViewWithIdentifier:EventCellReuseIdentifier forEventOfType:type atIndex:index date:date];
-    evCell.font = [UIFont systemFontOfSize:11];
     evCell.title = ev.content;
-//    evCell.subtitle = ev.location;
+//    evCell.subtitle = ev.address;
     evCell.color = [self colorByType:ev.type];//[UIColor colorWithCGColor:ev.calendar.CGColor];
     evCell.style = MGCStandardEventViewStylePlain|MGCStandardEventViewStyleSubtitle;
     evCell.style |= (type == MGCAllDayEventType) ?: MGCStandardEventViewStyleBorder;
+    evCell.font = CONTENT_FONT(12);
     return evCell;
 }
 
@@ -302,10 +341,12 @@ static NSString* const EventCellReuseIdentifier = @"EventCellReuseIdentifier";
     UserSchedulingInfo *ev = [UserSchedulingInfo new];
     ev.startTime = [date timeIntervalSince1970]*1000;
     //后一个小时
-    NSDateComponents *lastDayComp = [self.calendar components:NSCalendarUnitHour fromDate:date];
-    [lastDayComp setHour:[date getHour]+1];
+    NSUInteger unitFlags = NSCalendarUnitYear| NSCalendarUnitMonth | NSCalendarUnitDay |NSCalendarUnitHour |NSCalendarUnitMinute;
+    NSDateComponents *lastDayComp = [self.calendar components:unitFlags fromDate:date];
+    [lastDayComp setHour:1+lastDayComp.hour];
     NSDate *lastDayOfWeek= [self.calendar dateFromComponents:lastDayComp];
     ev.endTime = [lastDayOfWeek timeIntervalSince1970]*1000;
+    ev.noticeTimePeriod = -1;
     
     [self newScheduleByInfo:ev];
 }
@@ -315,8 +356,14 @@ static NSString* const EventCellReuseIdentifier = @"EventCellReuseIdentifier";
 - (void)dayPlannerView:(MGCDayPlannerView*)view didSelectEventOfType:(MGCEventType)type atIndex:(NSUInteger)index date:(NSDate*)date
 {
     UserSchedulingInfo *ev = [self eventOfDate:index date:date];
-    ScheduleDetailViewController *vc = [[ScheduleDetailViewController alloc] initWithInfo:ev];
-    [self.navigationController pushViewController:vc animated:YES];
+    
+    if ([ev.type isEqualToString:@"activity"]) {
+        ActivityDetailViewController *vc = [[ActivityDetailViewController alloc] initWithPublishID:[NSString stringWithFormat:@"%g", ev.internalBaseClassIdentifier]];
+        [self.navigationController pushViewController:vc animated:YES needHiddenBottomBar:YES];
+    } else {
+        ScheduleDetailViewController *vc = [[ScheduleDetailViewController alloc] initWithInfo:ev];
+        [self.navigationController pushViewController:vc animated:YES needHiddenBottomBar:YES];
+    }
 }
 
 - (void)dayPlannerView:(MGCDayPlannerView*)view didEndDisplayingDate:(NSDate*)date {
