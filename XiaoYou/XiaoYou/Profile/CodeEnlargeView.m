@@ -83,7 +83,8 @@
     
     //二维码
     UIImageView * codeImageView = [[UIImageView alloc] init];
-    codeImageView.backgroundColor = [UIColor cyanColor];
+    codeImageView.backgroundColor = [UIColor clearColor];
+    [codeImageView setNormalImageWithUrl:model1.qrCodeUrl];
     [self.contentView addSubview:codeImageView];
     [codeImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(headImageView.mas_bottom).offset(SCALE_NUM(10));
@@ -97,6 +98,7 @@
     remindLabel.font = CONTENT_FONT(SCALE_NUM(10));
     remindLabel.textColor = KCOLOR_B5;
     remindLabel.numberOfLines = 0;
+    remindLabel.textAlignment = NSTextAlignmentCenter;
     remindLabel.text = @"扫扫上面的二维码，我们就是朋友啦!";
     [self.contentView addSubview:remindLabel];
     [remindLabel mas_makeConstraints:^(MASConstraintMaker *make) {

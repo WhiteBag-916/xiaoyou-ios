@@ -50,7 +50,7 @@
 {
     
     
-    _scanfResultTableView = [[ScanfResultTableView alloc] init];
+    _scanfResultTableView = [[ScanfResultTableView alloc] initWithResult:_resultStr];
     [self.view addSubview:_scanfResultTableView];
     [_scanfResultTableView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.left.right.bottom.mas_equalTo(0);

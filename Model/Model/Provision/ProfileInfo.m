@@ -33,6 +33,7 @@ NSString *const kProfileInfoUnreadAlterCount = @"unreadAlterCount";
 NSString *const kProfileInfoSchoolName = @"schoolName";
 NSString *const kProfileInfoFriendStatus = @"friendStatus";
 NSString *const kProfileInfoGender = @"gender";
+NSString *const kProfileInfoQrCodeUrl = @"qrCodeUrl";
 
 @interface ProfileInfo ()
 
@@ -64,6 +65,7 @@ NSString *const kProfileInfoGender = @"gender";
 @synthesize friendStatus = _friendStatus;
 @synthesize gender = _gender;
 //@synthesize name = _name;
+@synthesize qrCodeUrl = _qrCodeUrl;
 
 + (instancetype)modelObjectWithDictionary:(NSDictionary *)dict
 {
@@ -97,6 +99,7 @@ NSString *const kProfileInfoGender = @"gender";
             self.userName = [self objectOrNilForKey:kProfileInfoUserName fromDictionary:dict];
             //self.name = [self objectOrNilForKey:kProfileInfoName fromDictionary:dict];
             self.studentNo = [self objectOrNilForKey:kProfileInfoStudentNo fromDictionary:dict];
+            self.qrCodeUrl = [self objectOrNilForKey:kProfileInfoQrCodeUrl fromDictionary:dict];
             self.praiseCount = [[self objectOrNilForKey:kProfileInfoPraiseCount fromDictionary:dict] doubleValue];
     NSObject *receivedLastFeeds = [dict objectForKey:kProfileInfoLastFeeds];
     NSMutableArray *parsedLastFeeds = [NSMutableArray array];
@@ -200,6 +203,7 @@ NSString *const kProfileInfoGender = @"gender";
     [mutableDict setValue:self.headPic forKey:kProfileInfoHeadPic];
     [mutableDict setValue:self.selfIntro forKey:kProfileInfoSelfIntro];
     [mutableDict setValue:self.userName forKey:kProfileInfoUserName];
+    [mutableDict setValue:self.qrCodeUrl forKey:kProfileInfoQrCodeUrl];
     //[mutableDict setValue:self.name forKey:kProfileInfoName];
     [mutableDict setValue:self.studentNo forKey:kProfileInfoStudentNo];
     [mutableDict setValue:[NSNumber numberWithDouble:self.praiseCount] forKey:kProfileInfoPraiseCount];
@@ -313,7 +317,7 @@ NSString *const kProfileInfoGender = @"gender";
     self.schoolName = [aDecoder decodeObjectForKey:kProfileInfoSchoolName];
     self.friendStatus = [aDecoder decodeObjectForKey:kProfileInfoFriendStatus];
     self.gender = [aDecoder decodeObjectForKey:kProfileInfoGender];
-    
+    self.qrCodeUrl = [aDecoder decodeObjectForKey:kProfileInfoQrCodeUrl];
     return self;
 }
 
@@ -342,6 +346,7 @@ NSString *const kProfileInfoGender = @"gender";
     [aCoder encodeObject:_schoolName forKey:kProfileInfoSchoolName];
     [aCoder encodeObject:_friendStatus forKey:kProfileInfoFriendStatus];
     [aCoder encodeObject:_gender forKey:kProfileInfoGender];
+    [aCoder encodeObject:_qrCodeUrl forKey:kProfileInfoQrCodeUrl];
 }
 
 - (id)copyWithZone:(NSZone *)zone
@@ -372,6 +377,7 @@ NSString *const kProfileInfoGender = @"gender";
         copy.schoolName = [self.schoolName copyWithZone:zone];
         copy.friendStatus = [self.friendStatus copyWithZone:zone];
         copy.gender = [self.gender copyWithZone:zone];
+        copy.qrCodeUrl = [self.qrCodeUrl copyWithZone:zone];
     }
     
     return copy;

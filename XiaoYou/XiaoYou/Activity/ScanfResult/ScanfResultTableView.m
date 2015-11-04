@@ -31,7 +31,7 @@
 
 @implementation ScanfResultTableView
 
-- (instancetype)init
+- (instancetype)initWithResult:(NSString *) result
 {
     self = [super init];
     if (self) {
