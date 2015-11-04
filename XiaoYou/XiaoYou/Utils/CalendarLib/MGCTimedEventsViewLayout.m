@@ -171,7 +171,7 @@
 			groupOffset += covered.frame.origin.x - sectionXPos + kOverlapOffset;
 		}
 		
-		CGFloat totalWidth = (self.dayColumnSize.width - 1.) - groupOffset;
+		CGFloat totalWidth = (self.dayColumnSize.width - (layoutGroup.count-1)*_midOffset) - groupOffset;
 		CGFloat colWidth = totalWidth / layoutGroup.count;
 		
 		CGFloat x = section * self.dayColumnSize.width + groupOffset;
@@ -179,6 +179,7 @@
 		for (MGCEventCellLayoutAttributes* attribs in [layoutGroup reverseObjectEnumerator]) {
 			attribs.frame = CGRectMake(x, attribs.frame.origin.y, colWidth, attribs.frame.size.height);
 			x += colWidth;
+            x += _midOffset;//间距
 		}
 	}
 	

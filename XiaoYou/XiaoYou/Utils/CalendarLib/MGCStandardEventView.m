@@ -156,7 +156,7 @@ static CGFloat kSpace = 2;
 
 - (void)drawRect:(CGRect)rect
 {
-	CGRect drawRect = CGRectInset(rect, kSpace, 0);
+	CGRect drawRect = CGRectInset(rect, kSpace, 5);
 	if (self.style & MGCStandardEventViewStyleBorder) {
 		drawRect.origin.x += kSpace;
 		drawRect.size.width -= kSpace;
