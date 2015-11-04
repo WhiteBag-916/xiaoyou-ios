@@ -23,6 +23,9 @@ AS_SINGLETON(ActivityManager);
 //提醒列表
 - (NSArray *)remindArray;
 
+//提醒文字列表
+- (NSArray *)remindTextArray;
+
 /*********************************************************************
  函数名称 : getCurrentUseAvailableListLimitStart
  函数描述 : 获取当前用户活动列表

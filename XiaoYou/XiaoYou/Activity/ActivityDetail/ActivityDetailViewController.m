@@ -12,6 +12,7 @@
 #import "ActivityDetailModel.h"
 #import "YCommonActionSheet.h"
 #import "YNotificationDefine.h"
+#import "UserSchedulingInfo.h"
 
 @interface ActivityDetailViewController ()
 
@@ -111,17 +112,40 @@
             NSMutableArray *arr = [NSMutableArray array];
             [arr addObject:message.object];
             ActivityDetailModel *model = arr[0];
+            
+            //构造日程
+            UserSchedulingInfo *info = [UserSchedulingInfo new];
+            info.type = @"activity";
+            info.internalBaseClassIdentifier = model.activityPublishedDto.activityPublishedModel.activityPublishedModelIdentifier;
+            info.content = model.activityPublishedDto.activityPublishedModel.name;
+            info.startTime = model.activityPublishedDto.activityPublishedModel.actStartTime;
+            info.endTime = model.activityPublishedDto.activityPublishedModel.actEndTime;
+            
             if ([model.enrollStatus isEqualToString:@"not_enroll"]) {
                 [_joinInBtn setTitle:@"我要加入" forState:UIControlStateNormal];
                 _joinInBtn.enabled = YES;
                 _joinInBtn.backgroundColor = KCOLOR_g1;
                 [self IsShowCustomNavigationMoreButton:NO];
+                
+                //未加入
+                //抛通知告知日程删除
+                NSDictionary *dic = @{@"state":@"del", @"info":info};
+                [[NSNotificationCenter defaultCenter] postNotificationName:KNotification_Change_Schedule
+                                                                    object:nil
+                                                                  userInfo:dic];
             }
             else if ([model.enrollStatus isEqualToString:@"has_enrolled"]) {
                 [_joinInBtn setTitle:@"我已参加" forState:UIControlStateNormal];
                 _joinInBtn.backgroundColor = KCOLOR_g2;
                 _joinInBtn.enabled = NO;
                 [self IsShowCustomNavigationMoreButton:YES];
+                
+                //已加入
+                //抛通知告知日程添加
+                NSDictionary *dic = @{@"state":@"add", @"info":info};
+                [[NSNotificationCenter defaultCenter] postNotificationName:KNotification_Change_Schedule
+                                                                    object:nil
+                                                                  userInfo:dic];
             }
             else if ([model.enrollStatus isEqualToString:@"enroll_expired"]) {
                 [_joinInBtn setTitle:@"报名结束" forState:UIControlStateNormal];

@@ -313,7 +313,7 @@
         make.width.mas_equalTo(K_LEFTLAB_W);
     }];
     
-    NSString *timeText = [NSString stringWithFormat:@"第%g周 %@", _courseDetail.week, [[CurriculumManager sharedInstance] getCourseTimeByClass:_courseDetail.startTime endTime:_courseDetail.endTime]];
+    NSString *timeText = [NSString stringWithFormat:@"第%g周 %g-%g", _courseDetail.week, _courseDetail.startTime, _courseDetail.endTime];
     _timeLabel = [YUtils initLabel:CONTENT_FONT(12)
                              color:KCOLOR_B3
                               text:timeText
@@ -463,7 +463,26 @@
     [alert clickedButtonHandler:^(NSInteger index) {
         [alert hide];
         if (index == 1) {
-            [self.navigationController popViewControllerAnimated:YES];
+            [YUtils showHUDWithTitle];
+            [[ActivityManager sharedInstance] userSchedulingDelete:[NSString stringWithFormat:@"%g", _userSchedulingInfo.internalBaseClassIdentifier] block:^(YActionMessage *message) {
+                
+                [YUtils hiddenProgressHUD];
+                
+                if (message.isSuccess) {
+                    //抛通知告知删除成功
+                    NSDictionary *dic = @{@"state":@"del", @"info":_userSchedulingInfo};
+                    [[NSNotificationCenter defaultCenter] postNotificationName:KNotification_Change_Schedule
+                                                                        object:nil
+                                                                      userInfo:dic];
+                    
+                    [self.navigationController popViewControllerAnimated:YES];
+                } else {
+                    [YUtils showTitle:message.desc];
+                }
+                
+            }];
+            
+            
         }
     }];
     [alert show];
