@@ -54,8 +54,8 @@
     [self addSubview:self.contentView];
     [self.contentView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.mas_equalTo(SCALE_NUM(49));
-        make.centerX.equalTo(self);
-        make.width.mas_equalTo(110);
+        make.right.mas_equalTo(-105);
+        make.left.mas_equalTo(105);
         make.height.mas_equalTo(190);
     }];
     

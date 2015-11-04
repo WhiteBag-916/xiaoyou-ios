@@ -115,7 +115,7 @@ static NSString* const EventCellReuseIdentifier = @"EventCellReuseIdentifier";
             beginDate = [needDate beforeStartOfWeek];
         }
         if (needAfterWeek) {
-            endDate = [needDate afterEndOfWeek];
+            endDate = [needDate endOfMonth];
         }
     } else {
         if (needBeforeWeek) {
@@ -221,6 +221,12 @@ static NSString* const EventCellReuseIdentifier = @"EventCellReuseIdentifier";
         NSDate *eventStartTime = [NSDate dateWithTimeIntervalSince1970:userSchedulingInfoObj.startTime/1000];
         if ([eventStartTime isSameDay:date timeZone:[NSTimeZone defaultTimeZone]]) {
             [eventArray addObject:userSchedulingInfoObj];
+        } else {
+            //时间被包含
+            NSTimeInterval dateTime1970 = [date timeIntervalSince1970]*1000;
+            if (userSchedulingInfoObj.startTime <= dateTime1970 && dateTime1970 <= userSchedulingInfoObj.endTime) {
+                [eventArray addObject:userSchedulingInfoObj];
+            }
         }
     }];
     
