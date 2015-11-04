@@ -513,19 +513,55 @@
 {
 //    [self.navigationController popViewControllerAnimated:true];
 //    [self.navigationController pushViewController:[[GiftViewController alloc] initWithCode:result] animated:true];
-    if ([result containsString:@"supplierShop"])
+    
+    NSMutableArray * arr0 = [NSMutableArray arrayWithArray:[result componentsSeparatedByString:@"&"]];
+    NSMutableDictionary * dic = [NSMutableDictionary dictionary];
+    if ([arr0[0] containsString:@"xiaoyou.com"])
     {
-        NSRange range = [result rangeOfString:@"supplierShop="];
-        NSString * request = [result substringFromIndex:range.location + range.length];
-        ScanfResultViewController * resultViewController = [[ScanfResultViewController alloc] initWithResult:request];
-        [self.navigationController pushViewController:resultViewController animated:YES needHiddenBottomBar:YES];
+        [arr0 removeObject:arr0[0]];
+        for (int i = 0; i < arr0.count; i++)
+        {
+            NSArray * tempArr = [arr0[i] componentsSeparatedByString:@"="];
+            [dic setObject:tempArr[1] forKey:tempArr[0]];
+        }
+        if ([dic[@"scope"] isEqualToString:@"supplierShop"])
+        {
+            ScanfResultViewController * resultViewController = [[ScanfResultViewController alloc] initWithResult:dic[@"key"]];
+            [self.navigationController pushViewController:resultViewController animated:YES needHiddenBottomBar:YES];
+        }
+        else if ([dic[@"scope"] isEqualToString:@"user"])
+        {
+            XYContactsInfoDetailViewController * contactDetailVC = [[XYContactsInfoDetailViewController alloc] init];
+            contactDetailVC.uid = dic[@"key"];
+            [self.navigationController pushViewController:contactDetailVC animated:YES needHiddenBottomBar:YES];
+        }
+        else
+        {
+            return;
+        }
     }
     else
     {
-        XYContactsInfoDetailViewController * contactDetailVC = [[XYContactsInfoDetailViewController alloc] init];
-        contactDetailVC.uid = result;
-        [self.navigationController pushViewController:contactDetailVC animated:YES needHiddenBottomBar:YES];
+        //其他处理
+        [YUtils showTitle:@"二维码不识别" hideAfter:2];
+        [self.navigationController popViewControllerAnimated:YES];
     }
+//    NSRange range = [result rangeOfString:@"?"];
+//    NSString * xiaoyouStr = [result substringToIndex:range.location];
+//    if ([xiaoyouStr isEqualToString:@"http://m.xiaoyou.com/index.html"])
+//    {
+//        NSString * xiaoyouStr = [result substringToIndex:<#(NSUInteger)#>]
+//        NSRange range = [result rangeOfString:@"supplierShop="];
+//        NSString * request = [result substringFromIndex:range.location + range.length];
+//        ScanfResultViewController * resultViewController = [[ScanfResultViewController alloc] initWithResult:request];
+//        [self.navigationController pushViewController:resultViewController animated:YES needHiddenBottomBar:YES];
+//    }
+//    else
+//    {
+//        XYContactsInfoDetailViewController * contactDetailVC = [[XYContactsInfoDetailViewController alloc] init];
+//        contactDetailVC.uid = result;
+//        [self.navigationController pushViewController:contactDetailVC animated:YES needHiddenBottomBar:YES];
+//    }
     
 }
 
