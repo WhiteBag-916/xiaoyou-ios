@@ -193,7 +193,7 @@
     NSString *outputString = [outputFormatter stringFromDate:self];
     return outputString;
 }
-//返回周日的的开始时间
+//返回周日的开始时间
 - (NSDate *)beginningOfWeek {
     NSCalendar *calendar = [NSCalendar currentCalendar];
     NSDateComponents *comp = [calendar components:NSCalendarUnitYear|NSCalendarUnitMonth|NSCalendarUnitDay|NSCalendarUnitWeekday
@@ -287,9 +287,9 @@
     // 计算当前日期和这周的星期一和星期天差的天数
     long firstDiff;
     if (weekDay == 1) {
-        firstDiff = 1-7-1;
+        firstDiff = 1-7;
     }else{
-        firstDiff = [calendar firstWeekday] - weekDay-7-1;
+        firstDiff = [calendar firstWeekday] - weekDay-7;
     }
     
     // 在当前日期(去掉了时分秒)基础上加上差的天数

@@ -20,7 +20,6 @@
 #import "ProfileInfo.h"
 #import "Tags.h"
 #import "YNotificationDefine.h"
-#import "NotifyViewController.h"
 
 @interface AvailableViewController ()
 
@@ -29,8 +28,6 @@
 @property (nonatomic,strong) UIView         *promptView;        //提示透明背景
 @property (nonatomic,strong) UIImageView    *guideImageView;    //提示图片
 @property (nonatomic,assign) int            guideIndex;         //当前提示索引
-
-@property (nonatomic,strong) UIButton       *messageNotRead;    //未读消息
 
 @end
 
@@ -45,8 +42,9 @@
         [self addGuideView];
     [self setUpCustomNavgationBar];
     [self.availableListView loadData];
-    [self.messageNotRead setTitle:@"3条活动消息" forState:UIControlStateNormal];
+    
 }
+
 
 -(void)dealloc
 {
@@ -56,31 +54,6 @@
 -(void)receiveNotificationOfReleaseSuccess
 {
     [_availableListView loadData];
-}
-
--(UIButton *)messageNotRead
-{
-    if (!_messageNotRead) {
-        _messageNotRead = [UIButton buttonWithType:UIButtonTypeSystem];
-        [self.view addSubview:_messageNotRead];
-        _messageNotRead.backgroundColor = [UIColor blackColor];
-        _messageNotRead.layer.cornerRadius = 5;
-        _messageNotRead.clipsToBounds = YES;
-        _messageNotRead.alpha = 0.7;
-        [_messageNotRead setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-        [_messageNotRead addTarget:self action:@selector(messageNotReadAction) forControlEvents:UIControlEventTouchUpInside];
-        [_messageNotRead mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.centerX.equalTo(self.view);
-            make.top.mas_equalTo(SCALE_NUM(10));
-        }];
-    }
-    return _messageNotRead;
-}
-
--(void)messageNotReadAction
-{
-    NotifyViewController *notiVC = [[NotifyViewController alloc]init];
-    [self.navigationController pushViewController:notiVC animated:YES needHiddenBottomBar:YES];
 }
 
 - (void)addGuideView {

@@ -7,11 +7,11 @@
 //
 
 #import "NotifyViewController.h"
-#import "NotifyListTableView.h"
+#import "NotifyListView.h"
 
 @interface NotifyViewController ()
 
-@property (nonatomic,strong) NotifyListTableView *notifyListView;
+@property (nonatomic,strong) NotifyListView *notifyListView;
 
 @end
 
@@ -21,8 +21,8 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.title = @"提醒";
+    self.view.backgroundColor = [UIColor whiteColor];
     [self notifyListView];
-    [self showCustomNavigationBackButton];
     [self showCustomNavigationBackButton];
 }
 
@@ -31,15 +31,15 @@
     // Dispose of any resources that can be recreated.
 }
 
-
--(NotifyListTableView *)notifyListView
-{
+-(NotifyListView *)notifyListView {
     if (!_notifyListView) {
-        _notifyListView = [[NotifyListTableView alloc]init];
-        _notifyListView.backgroundColor = [UIColor lightGrayColor];
+        _notifyListView = [[NotifyListView alloc]initWithFrame:CGRectZero style:UITableViewStyleGrouped];
         [self.view addSubview:_notifyListView];
         [_notifyListView mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.edges.equalTo(self.view);
+            make.top.equalTo(self.view);
+            make.leading.equalTo(self.view);
+            make.trailing.equalTo(self.view);
+            make.bottom.equalTo(self.view);
         }];
     }
     return _notifyListView;

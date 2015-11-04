@@ -46,4 +46,7 @@
 
 #define KNotification_Remind_Message_Come               @"KNotification_Remind_Message_Come"
 
+//未读提醒
+#define KNotification_Remind_Message_Not_Read           @"KNotification_Remind_Message_Not_Read"
+
 #endif

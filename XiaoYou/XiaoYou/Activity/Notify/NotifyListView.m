@@ -8,6 +8,8 @@
 
 #import "NotifyListView.h"
 #import "RemindHeadView.h"
+#import "PassRemindCell.h"
+#import "ScheduleNotifyCell.h"
 
 #define KPAGENUM 10
 
@@ -16,6 +18,7 @@
 
 @property (nonatomic,strong) NSMutableArray *notifyListArray;
 @property (nonatomic,assign) NSInteger currentIndex;
+
 @end
 
 
@@ -27,7 +30,6 @@
         self.dataSource = self;
         self.separatorStyle = UITableViewCellSeparatorStyleNone;
         self.backgroundColor = [UIColor clearColor];
-        self.separatorStyle = UITableViewCellSelectionStyleNone;
     }
     return self;
 }
@@ -43,8 +45,8 @@
     return self;
 }
 
-#pragma mark - 继承者
 
+#pragma mark - 继承者
 - (void)loadData {
     [self beginLoadNewData];
 }
@@ -101,11 +103,19 @@
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     CGFloat cellHeight;
+    if (1) {
+        cellHeight = SCALE_NUM(190);
+    } else {
+        cellHeight = SCALE_NUM(190);
+    }
+    if (indexPath.section == 1)
+        cellHeight = SCALE_NUM(110);
     return cellHeight;
 }
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
+    return 3;
     return self.notifyListArray.count;
 }
 
@@ -123,8 +133,9 @@
 -(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
     RemindHeadView *headView = [RemindHeadView remindHeadViewWithTableView:tableView];
-    NoticeInfo *info = self.notifyListArray[section];
-    [headView setData:info];
+    headView.backgroundColor = [UIColor cyanColor];
+    //NoticeInfo *info = self.notifyListArray[section];
+    //[headView setData:info];
     return headView;
 }
 
@@ -137,18 +148,25 @@
 -(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell = nil;
-    NoticeInfo *info = self.notifyListArray[indexPath.section];
+    if (indexPath.section == 0) {
+        PassRemindCell *cell = [PassRemindCell passRemindCellWithTableView:tableView];
+        [cell setNotifyData:nil];
+        return cell;
+    } else if (indexPath.section == 1) {
+        ScheduleNotifyCell *cell = [ScheduleNotifyCell cellWithTableView:tableView];
+        return cell;
+    } else {
+        PassRemindCell *cell = [PassRemindCell passRemindCellWithTableView:tableView];
+        [cell setNotifyData:nil];
+        return cell;
+    }
+    //cell.backgroundColor = [UIColor redColor];
     return cell;
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NoticeInfo *info;
-    if (self.notifyListArray.count > 0)
-        info = self.notifyListArray[indexPath.section];
-    if (info.activityOwner) {
-        
-    }
+    
 }
 
 

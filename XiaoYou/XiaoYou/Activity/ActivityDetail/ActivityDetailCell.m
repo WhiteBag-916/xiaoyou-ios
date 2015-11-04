@@ -304,18 +304,21 @@
     
     _locationLabel = [[UILabel alloc]init];
     _locationLabel.text = @"大脚超市门口";
+    _locationLabel.numberOfLines = 0;
+    _locationLabel.lineBreakMode = NSLineBreakByWordWrapping;
     [self.contentView addSubview:_locationLabel];
     _locationLabel.textColor = KCOLOR_B3;
     _locationLabel.font = CONTENT_FONT(13);
     [_locationLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(_staticActivityTimeDes);
-        make.centerY.equalTo(_locationImageView.mas_centerY);
+        make.top.equalTo(_locationImageView.mas_top);
+        make.trailing.mas_equalTo(SCALE_NUM(-5));
     }];
     
     _categotyImageView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"funny_detail_category"]];
     [self.contentView addSubview:_categotyImageView];
     [_categotyImageView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(_locationImageView.mas_bottom).offset(SCALE_NUM(15));
+        make.top.equalTo(_locationLabel.mas_bottom).offset(SCALE_NUM(15));
         make.centerX.equalTo(_locationImageView);
         make.height.mas_equalTo(SCALE_NUM(17));
         make.width.mas_equalTo(SCALE_NUM(17));
@@ -344,7 +347,6 @@
         make.left.equalTo(_categoryLabel);
         make.height.mas_equalTo(SCALE_NUM(14));
         make.bottom.mas_equalTo(SCALE_NUM(-10));
-        
     }];
 }
 

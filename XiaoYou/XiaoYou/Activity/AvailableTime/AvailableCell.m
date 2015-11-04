@@ -214,8 +214,9 @@
     _activityLocationLabel.textColor = KCOLOR_B5;
     _activityLocationLabel.text = @"大脚超市门口";
     [_activityLocationLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.centerY.equalTo(_activityLocationDes);
+        make.top.equalTo(_activityLocationDes.mas_top);
         make.left.equalTo(_activityEndTimeLabel);
+        make.trailing.mas_equalTo(SCALE_NUM(-5));
     }];
     
     
@@ -226,7 +227,6 @@
     _oranizerDes.textColor = KCOLOR_B5;
     _oranizerDes.text = @"组织者：";
     [_oranizerDes mas_makeConstraints:^(MASConstraintMaker *make) {
-        //make.height.mas_equalTo(SCALE_NUM(12));
         make.top.equalTo(_activityLocationDes.mas_bottom).offset(SCALE_NUM(15));
         make.left.equalTo(_activityLocationDes);
         make.bottom.mas_equalTo(SCALE_NUM(-15));
@@ -239,7 +239,6 @@
     _organizerLabel.textColor = KCOLOR_B5;
     _organizerLabel.text = @"话剧社";
     [_organizerLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        //make.height.mas_equalTo(SCALE_NUM(12));
         make.centerY.equalTo(_oranizerDes);
         make.left.equalTo(_activityStartTimeLabel);
     }];

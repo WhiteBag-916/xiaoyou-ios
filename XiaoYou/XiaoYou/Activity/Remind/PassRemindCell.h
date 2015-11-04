@@ -10,8 +10,9 @@
  自己申请活动的提醒，包括下面描述的5个状态
  */
 #import <UIKit/UIKit.h>
-#import "NoticeInfo.h"
 #import "YTableViewCell.h"
+#import "NotifyInfoModel.h"
+#import "NoticeInfo.h"
 //提醒的5个状态
 typedef enum : NSUInteger {
     ALREADY_SUBMIT,     //已经提交
@@ -29,5 +30,7 @@ typedef enum : NSUInteger {
 +(PassRemindCell*)passRemindCellWithTableView:(UITableView*)tableView;
 
 -(void)setData:(NoticeInfo*)model;
+
+-(void)setNotifyData:(NotifyInfoModel*)model;
 
 @end

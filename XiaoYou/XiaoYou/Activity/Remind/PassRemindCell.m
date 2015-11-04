@@ -12,6 +12,7 @@
 #import "ProfileInfo.h"
 #import "WhoJoinInController.h"
 #import "ActivityDetailViewController.h"
+#import "TimeFormatterConvert.h"
 
 #define REUSRID             @"PassRemindCell"
 #define CELL_INSET          SCALE_NUM(12)
@@ -101,7 +102,7 @@
     _remindTitleLabel.font = CONTENT_FONT(15);
     [_remindTitleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.height.mas_equalTo(SCALE_NUM(15));
-        make.left.equalTo(self.titleImageView.mas_right).offset(10);
+        make.left.equalTo(self.titleImageView.mas_right).offset(10).priorityLow();
         make.centerY.equalTo(_titleImageView);
     }];
     
@@ -149,7 +150,6 @@
         make.height.mas_equalTo(SCALE_NUM(12));
         make.top.equalTo(_contentTitleLabel.mas_bottom).offset(SCALE_NUM(15));
         make.left.equalTo(self.contentTitleLabel.mas_left);
-        //make.bottom.equalTo(self.headImageView.mas_bottom);
     }];
     
     _activityTimeLabel = [[UILabel alloc]init];
@@ -267,7 +267,20 @@
     [_headImageView setFaceImageWithUrl:info.headPic];
     _contentTitleLabel.text = info.name;
     _contentNameLabel.text = [NSString stringWithFormat:_contentNameLabel.text,model.activityName];
-    //_activityTimeLabel.text = [NSString stringWithFormat:_activityTimeLabel.text,]
+    _activityTimeLabel.text = [NSString stringWithFormat:_activityTimeLabel.text,[TimeFormatterConvert timeConvertToFommtterAvailable:model.activityStartTime]];
+}
+
+-(void)setNotifyData:(NotifyInfoModel *)model
+{
+    _titleImageView.image = nil;
+    [_remindTitleLabel mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.leading.mas_equalTo(SCALE_NUM(5)).priorityHigh();
+    }];
+    _remindTitleLabel.text = @"学院活动通知";
+    _contentTitleLabel.text = @"活动组织者";
+    _contentNameLabel.text = @"活动名称";
+    _activityTimeLabel.text = @"活动开始时间";
+    _tailLabel.text = @"看看都有谁参加了";
 }
 
 @end
