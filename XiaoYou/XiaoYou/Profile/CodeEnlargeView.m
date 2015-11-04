@@ -92,12 +92,13 @@
     }];
     //二维码
     UIImageView * codeImageView = [[UIImageView alloc] init];
+    codeImageView.contentMode = UIViewContentModeScaleAspectFill;
     codeImageView.backgroundColor = [UIColor clearColor];
     [codeImageView setNormalImageWithUrl:model1.qrCodeUrl];
     [codeBackView addSubview:codeImageView];
     [codeImageView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.center.equalTo(codeBackView);
-        make.height.width.mas_equalTo(SCALE_NUM(192));
+        make.left.top.mas_equalTo(SCALE_NUM(4));
+        make.right.bottom.mas_equalTo(SCALE_NUM(-4));
     }];
     
     //提示

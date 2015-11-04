@@ -192,8 +192,11 @@ static NSString* const EventCellReuseIdentifier = @"EventCellReuseIdentifier";
 
 //增加数组
 - (void)addSchedulingArray:(NSArray *)array {
+    if (array.count <= 0) {
+        return;
+    }
     //去重
-    NSMutableArray *dataArray = [[NSMutableArray alloc] initWithArray:array];
+    NSMutableArray *dataArray = [NSMutableArray arrayWithArray:array];
     
     [_userSchedulingInfoArray enumerateObjectsUsingBlock:^(UserSchedulingInfo * _Nonnull userSchedulingInfoObj, NSUInteger userSchedulingInfoIdx, BOOL * _Nonnull userSchedulingInfoStop) {
 
@@ -221,6 +224,12 @@ static NSString* const EventCellReuseIdentifier = @"EventCellReuseIdentifier";
         NSDate *eventStartTime = [NSDate dateWithTimeIntervalSince1970:userSchedulingInfoObj.startTime/1000];
         if ([eventStartTime isSameDay:date timeZone:[NSTimeZone defaultTimeZone]]) {
             [eventArray addObject:userSchedulingInfoObj];
+        } else {
+            //时间被包含
+            NSTimeInterval dateTime1970 = [date timeIntervalSince1970]*1000;
+            if (userSchedulingInfoObj.startTime <= dateTime1970 && dateTime1970 <= userSchedulingInfoObj.endTime) {
+                [eventArray addObject:userSchedulingInfoObj];
+            }
         }
     }];
     

@@ -14,7 +14,8 @@
 #define K_BACK_T         SCALE_NUM(123)
 #define K_BACK_B         SCALE_NUM(260)
 
-#define K_IMG_LWH           SCALE_NUM(12)   //图标左、宽、高
+#define K_IMG_WH           SCALE_NUM(12)   //图标宽、高
+#define K_IMG_L           SCALE_NUM(15)   //图标左
 #define K_COURSEIMG_T       SCALE_NUM(22)   //课程图标上间距
 #define K_CONTENT_B         SCALE_NUM(15)   //下
 #define K_LECTURERIMG_T     SCALE_NUM(15)   //授课人图标上间距
@@ -78,7 +79,8 @@
     [self.contentView addSubview:courseImageView];
     
     [courseImageView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.height.width.mas_equalTo(K_IMG_LWH);
+        make.left.mas_equalTo(K_IMG_L);
+        make.height.width.mas_equalTo(K_IMG_WH);
         make.top.mas_equalTo(K_COURSEIMG_T);
     }];
     
