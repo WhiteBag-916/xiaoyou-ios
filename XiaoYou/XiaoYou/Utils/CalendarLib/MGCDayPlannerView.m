@@ -792,6 +792,7 @@ static const CGFloat kMaxHourSlotHeight = 150.;
 		_timedEventsViewLayout = [MGCTimedEventsViewLayout new];
 		_timedEventsViewLayout.delegate = self;
 		_timedEventsViewLayout.dayColumnSize = self.dayColumnSize;
+        _timedEventsViewLayout.midOffset = 5;
 	}
 	return _timedEventsViewLayout;
 }
