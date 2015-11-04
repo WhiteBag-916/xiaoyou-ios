@@ -32,10 +32,10 @@ NSString *const kScanfResultTableViewCell = @"ScanfResultTableViewCellId";
     
     _contentLabel = [[UILabel alloc] init];
     _contentLabel.backgroundColor = [UIColor clearColor];
-    _contentLabel.font = CONTENT_FONT(SCALE_NUM(12));
+    _contentLabel.font = CONTENT_FONT(SCALE_NUM(14));
     _contentLabel.numberOfLines = 0;
     _contentLabel.textAlignment = NSTextAlignmentCenter;
-    _contentLabel.textColor = KCOLOR_B4;
+    _contentLabel.textColor = KCOLOR_g1;
     [self.contentView addSubview:_contentLabel];
     [_contentLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.right.mas_equalTo(0);
@@ -49,13 +49,13 @@ NSString *const kScanfResultTableViewCell = @"ScanfResultTableViewCellId";
     if (isHeader)
     {
         _contentLabel.font = CONTENT_FONT(SCALE_NUM(16));
-        _contentLabel.textColor = KCOLOR_g1;
+//        _contentLabel.textColor = KCOLOR_g1;
         _contentLabel.text = @"商家优惠详情";
     }
     else
     {
-        _contentLabel.font = CONTENT_FONT(SCALE_NUM(12));
-        _contentLabel.textColor = KCOLOR_B4;
+        _contentLabel.font = CONTENT_FONT(SCALE_NUM(14));
+//        _contentLabel.textColor = KCOLOR_B4;
         _contentLabel.text = model.discountDetail;
     }
 }

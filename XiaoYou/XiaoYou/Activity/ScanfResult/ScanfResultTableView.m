@@ -276,7 +276,7 @@
     //提示Label
     _remindLabel = [[UILabel alloc] init];
     _remindLabel.text = @"敬酒数量越多可获得更加优惠的校友礼劵!";
-    _remindLabel.font = CONTENT_FONT(14);
+    _remindLabel.font = CONTENT_FONT(SCALE_NUM(14));
     _remindLabel.textColor = KCOLOR_g1;
     _remindLabel.textAlignment = NSTextAlignmentCenter;
     _remindLabel.backgroundColor = [UIColor clearColor];

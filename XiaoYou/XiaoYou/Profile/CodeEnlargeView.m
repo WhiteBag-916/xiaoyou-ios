@@ -32,7 +32,7 @@
     [self.backgroundView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hide)]];
     
     self.contentView = [[UIView alloc] init];
-    self.contentView.layer.cornerRadius = 4;
+    self.contentView.layer.cornerRadius = SCALE_NUM(4);
     self.contentView.clipsToBounds = YES;
     self.contentView.backgroundColor = [UIColor whiteColor];
     [self addSubview:self.contentView];
@@ -81,15 +81,23 @@
         make.trailing.mas_equalTo(SCALE_NUM(-14));
     }];
     
+    //二维码背景
+    UIView * codeBackView = [[UIView alloc] init];
+    codeBackView.backgroundColor = KCOLOR_B2;
+    [self.contentView addSubview:codeBackView];
+    [codeBackView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(headImageView.mas_bottom).offset(SCALE_NUM(10));
+        make.left.equalTo(headImageView.mas_left);
+        make.height.width.mas_equalTo(SCALE_NUM(200));
+    }];
     //二维码
     UIImageView * codeImageView = [[UIImageView alloc] init];
     codeImageView.backgroundColor = [UIColor clearColor];
     [codeImageView setNormalImageWithUrl:model1.qrCodeUrl];
-    [self.contentView addSubview:codeImageView];
+    [codeBackView addSubview:codeImageView];
     [codeImageView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(headImageView.mas_bottom).offset(SCALE_NUM(10));
-        make.left.equalTo(headImageView.mas_left);
-        make.height.width.mas_equalTo(SCALE_NUM(200));
+        make.center.equalTo(codeBackView);
+        make.height.width.mas_equalTo(SCALE_NUM(192));
     }];
     
     //提示
@@ -102,7 +110,7 @@
     remindLabel.text = @"扫扫上面的二维码，我们就是朋友啦!";
     [self.contentView addSubview:remindLabel];
     [remindLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(codeImageView.mas_bottom).offset(SCALE_NUM(10));
+        make.top.equalTo(codeBackView.mas_bottom).offset(SCALE_NUM(10));
         make.left.equalTo(headImageView.mas_left);
         make.height.mas_equalTo(SCALE_NUM(11));
         make.trailing.mas_equalTo(SCALE_NUM(-14));
