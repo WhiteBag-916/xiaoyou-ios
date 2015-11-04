@@ -8,6 +8,13 @@
 
 #import "ScanfResultTableView.h"
 #import "ScanfResultTableViewCell.h"
+#import "CodeManager.h"
+#import "ShopList.h"
+#import "SupplierShopModel.h"
+#import "SupplierShopDiscounts.h"
+#import "UIImageView+Ext.h"
+#import "ProvisionManager.h"
+#import "ProfileInfo.h"
 
 @interface ScanfResultTableView ()<UITableViewDataSource,UITableViewDelegate>
 
@@ -27,6 +34,9 @@
 @property(nonatomic,strong)UILabel * toastCountLabel;
 @property(nonatomic,strong)UILabel * remindLabel;
 
+@property(nonatomic,strong)ShopList * model;
+@property(nonatomic,strong)NSMutableArray * dataSourceArr;
+
 @end
 
 @implementation ScanfResultTableView
@@ -41,14 +51,44 @@
         
         [self registerClass:[ScanfResultTableViewCell class] forCellReuseIdentifier:kScanfResultTableViewCell];
         
-        [self setUpHeaderView];
-        [self setUpFooterView];
+        [YUtils showHUDWithTitle];
+        
+        [[CodeManager sharedInstance] getByQRCodeContent:result block:^(YActionMessage *message) {
+            
+            [YUtils hiddenProgressHUD];
+            if (message.isSuccess)
+            {
+                _model = message.object;
+                
+                self.dataSourceArr = (NSMutableArray *)_model.supplierShopDiscounts;
+                
+                [self reloadData];
+                
+                [self setUpHeaderView];
+                [self setUpFooterView];
+            }
+            else
+            {
+                [YUtils showTitle:message.desc hideAfter:2];
+            }
+        }];
+        
     }
     return self;
 }
 
+-(NSMutableArray *)dataSourceArr
+{
+    if (!_dataSourceArr) {
+        _dataSourceArr = [NSMutableArray array];
+    }
+    return _dataSourceArr;
+}
+
 -(void)setUpHeaderView
 {
+    SupplierShopModel * shopModel = _model.supplierShopModel;
+    
     //背景图
     UIImageView * backgroundView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCALE_NUM(170))];
     backgroundView.image = [UIImage imageNamed:@"scanf_head_background"];
@@ -76,7 +116,7 @@
     
     //名字
     _shopNameLabel = [[UILabel alloc] init];
-    _shopNameLabel.text = @"AntiSlim Coffee";
+    _shopNameLabel.text = shopModel.name;
     _shopNameLabel.font = CONTENT_FONT(14);
     _shopNameLabel.textColor = KCOLOR_W1;
     _shopNameLabel.textAlignment = NSTextAlignmentCenter;
@@ -93,7 +133,7 @@
     _headImageView = [[UIImageView alloc] init];
     _headImageView.layer.cornerRadius = 4;
     _headImageView.clipsToBounds = YES;
-    _headImageView.image = [UIImage imageNamed:@"common_picture_loading"];
+    [_headImageView setNormalImageWithUrl:shopModel.shopLogoUrl];
     [backgroundView addSubview:_headImageView];
     [_headImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(_backImageView);
@@ -103,7 +143,7 @@
     
     //电话
     _phoneLabel = [[UILabel alloc] init];
-    _phoneLabel.text = @"Tel：022-6666 6666";
+    _phoneLabel.text = shopModel.telephone;
     _phoneLabel.font = CONTENT_FONT(12);
     _phoneLabel.textColor = KCOLOR_W1;
     _phoneLabel.textAlignment = NSTextAlignmentLeft;
@@ -118,7 +158,7 @@
     
     //位置
     _placeLabel = [[UILabel alloc] init];
-    _placeLabel.text = @"和平区西湖道风荷园1-4-201";
+    _placeLabel.text = shopModel.address;
     _placeLabel.font = CONTENT_FONT(12);
     _placeLabel.textColor = KCOLOR_W1;
     _placeLabel.textAlignment = NSTextAlignmentLeft;
@@ -147,6 +187,8 @@
 {
     UIView * backView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCALE_NUM(170))];
     
+    ProfileInfo *info = [[ProvisionManager sharedInstance] getProfile];
+    
     //分割线
     UIView * bottomView = [[UIView alloc]init];
     bottomView.backgroundColor = KCOLOR_B4;
@@ -168,7 +210,7 @@
     }];
     
     _stuNameLabel = [[UILabel alloc] init];
-    _stuNameLabel.text = @"姓名：校园小助手";
+    _stuNameLabel.text = [NSString stringWithFormat:@"姓名：%@",info.userName];
     _stuNameLabel.font = CONTENT_FONT(12);
     _stuNameLabel.textColor = KCOLOR_B5;
     _stuNameLabel.textAlignment = NSTextAlignmentLeft;
@@ -193,7 +235,7 @@
     }];
     
     _stuNumLabel = [[UILabel alloc] init];
-    _stuNumLabel.text = @"学号：100001";
+    _stuNumLabel.text = [NSString stringWithFormat:@"学号：%@",info.studentNo];
     _stuNumLabel.font = CONTENT_FONT(12);
     _stuNumLabel.textColor = KCOLOR_B5;
     _stuNumLabel.textAlignment = NSTextAlignmentLeft;
@@ -218,7 +260,7 @@
     }];
     
     _toastCountLabel = [[UILabel alloc] init];
-    _toastCountLabel.text = @"敬酒数：121";
+    _toastCountLabel.text = [NSString stringWithFormat:@"敬酒：%g",info.praiseCount];
     _toastCountLabel.font = CONTENT_FONT(12);
     _toastCountLabel.textColor = KCOLOR_B5;
     _toastCountLabel.textAlignment = NSTextAlignmentLeft;
@@ -261,7 +303,7 @@
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 10;
+    return _dataSourceArr.count;
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -269,11 +311,11 @@
     ScanfResultTableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:kScanfResultTableViewCell forIndexPath:indexPath];
     if (indexPath.row == 0)
     {
-        [cell setCellInfo:@"商家优惠详情" isHeader:YES];
+        [cell setCellInfo:nil isHeader:YES];
     }
     else
     {
-        [cell setCellInfo:@"商家优惠优惠详情商家优惠优惠详情商家优惠优惠详情商家优惠优惠详情商家优惠优惠详情商家优惠优惠详情商家优惠优惠详情商家优惠优惠详情" isHeader:NO];
+        [cell setCellInfo:_dataSourceArr[indexPath.row] isHeader:NO];
     }
     
     return cell;
@@ -281,7 +323,13 @@
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return SCALE_NUM(50);
+    if (_dataSourceArr.count == indexPath.row + 1) {
+        return SCALE_NUM(70);
+    }
+    else
+    {
+        return SCALE_NUM(50);
+    }
 }
 
 @end

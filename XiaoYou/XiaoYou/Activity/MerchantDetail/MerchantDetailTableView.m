@@ -100,7 +100,13 @@
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return SCALE_NUM(50);
+    if (_dataSourceArr.count == indexPath.row + 1) {
+        return SCALE_NUM(70);
+    }
+    else
+    {
+        return SCALE_NUM(50);
+    }
 }
 
 @end

@@ -73,6 +73,7 @@
 		20E372BF1BDDBFC50063BF56 /* CommonImgUpload.m in Sources */ = {isa = PBXBuildFile; fileRef = 20E372BE1BDDBFC50063BF56 /* CommonImgUpload.m */; };
 		3339625C1B95575400DD0A6D /* SuggestListAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 3339625B1B95575400DD0A6D /* SuggestListAction.m */; };
 		E4642C7F1BE9AFBC00B3C8B1 /* CodeManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E4642C7E1BE9AFBC00B3C8B1 /* CodeManager.m */; };
+		E4642C821BE9B0F500B3C8B1 /* ShopListDetailAction.m in Sources */ = {isa = PBXBuildFile; fileRef = E4642C811BE9B0F500B3C8B1 /* ShopListDetailAction.m */; };
 		E47E59811BE8D85F00AF7F5C /* ShopListAction.m in Sources */ = {isa = PBXBuildFile; fileRef = E47E59801BE8D85F00AF7F5C /* ShopListAction.m */; };
 /* End PBXBuildFile section */
 
@@ -239,6 +240,8 @@
 		3339625B1B95575400DD0A6D /* SuggestListAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SuggestListAction.m; sourceTree = "<group>"; };
 		E4642C7D1BE9AFBC00B3C8B1 /* CodeManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CodeManager.h; sourceTree = "<group>"; };
 		E4642C7E1BE9AFBC00B3C8B1 /* CodeManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CodeManager.m; sourceTree = "<group>"; };
+		E4642C801BE9B0F500B3C8B1 /* ShopListDetailAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShopListDetailAction.h; sourceTree = "<group>"; };
+		E4642C811BE9B0F500B3C8B1 /* ShopListDetailAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShopListDetailAction.m; sourceTree = "<group>"; };
 		E47E597F1BE8D85F00AF7F5C /* ShopListAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShopListAction.h; sourceTree = "<group>"; };
 		E47E59801BE8D85F00AF7F5C /* ShopListAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShopListAction.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -613,6 +616,8 @@
 			children = (
 				E47E597F1BE8D85F00AF7F5C /* ShopListAction.h */,
 				E47E59801BE8D85F00AF7F5C /* ShopListAction.m */,
+				E4642C801BE9B0F500B3C8B1 /* ShopListDetailAction.h */,
+				E4642C811BE9B0F500B3C8B1 /* ShopListDetailAction.m */,
 			);
 			path = TwoDimensionCode;
 			sourceTree = "<group>";
@@ -716,6 +721,7 @@
 			files = (
 				20C5B0511B8DB03900B4A8A8 /* GetFriendApplyListAction.m in Sources */,
 				20859A851B64BD9000580ED3 /* MessageManager.m in Sources */,
+				E4642C821BE9B0F500B3C8B1 /* ShopListDetailAction.m in Sources */,
 				20859A7C1B64BD5B00580ED3 /* ProvisionManager.m in Sources */,
 				20DF60271BDF878300C8383B /* CourseTimeListAction.m in Sources */,
 				209E08C51BDDC9E20062758E /* NoticeManager.m in Sources */,
