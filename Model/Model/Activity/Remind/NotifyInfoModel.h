@@ -11,15 +11,24 @@
 typedef enum : NSUInteger {
     BEFORE_ACTIVITY_REMIND,     //活动前提醒
     ACTIVITY_RECOMMEND_REMIND   //活动推送
-} MODEL_TYPE;
+} MODEL_TYPE_T;
 
 
 @interface NotifyInfoModel : YModel <NSCoding, NSCopying>
 
-@property (nonatomic,assign) MODEL_TYPE type;
+@property (nonatomic,assign) MODEL_TYPE_T modelType;
 @property (nonatomic,copy) NSString *title;
-@property (nonatomic,copy) NSString *name;
-@property (nonatomic,assign) double beginTime;
-@property (nonatomic,copy) NSString *headPic;
 
+
+@property (nonatomic,copy) NSString *headIcon;
+
+//用户自建日程提醒信息
+@property (nonatomic,assign) NSInteger  type;
+@property (nonatomic,assign) double startTime;
+@property (nonatomic,copy) NSString *idStr;
+@property (nonatomic,copy) NSString *name;
+@property (nonatomic,copy) NSString *em_push_title;
+@property (nonatomic,copy) NSString *organizer;
+
+@property (nonatomic,copy) NSString *isRead;
 @end

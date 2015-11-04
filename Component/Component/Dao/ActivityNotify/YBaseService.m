@@ -12,7 +12,6 @@
 #import "YDatabase.h"
 #import "YDirectory.h"
 
-
 @interface YBaseService ()
 
 @property (nonatomic,strong) YDatabase *dataBase;
@@ -51,6 +50,7 @@
     [sql appendString:@")"];
     
     //执行sql语句
+    self.dataBase.databasePath = [NSString stringWithFormat:@"%@//%@",[YDirectory documents],[self classNameFromModel:model]];
     return [self.dataBase updateWithSql:sql];
 }
 

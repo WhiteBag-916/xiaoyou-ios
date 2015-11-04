@@ -16,7 +16,7 @@
 @interface NotifyListView ()
 <UITableViewDataSource,UITableViewDelegate>
 
-@property (nonatomic,strong) NSMutableArray *notifyListArray;
+
 @property (nonatomic,assign) NSInteger currentIndex;
 
 @end
@@ -45,6 +45,11 @@
     return self;
 }
 
+-(void)setNotifyListArray:(NSMutableArray *)notifyListArray
+{
+    _notifyListArray = notifyListArray;
+    [self reloadData];
+}
 
 #pragma mark - 继承者
 - (void)loadData {
@@ -53,12 +58,12 @@
 
 - (BOOL)showHeaderRefresh
 {
-    return YES;
+    return NO;
 }
 
 - (BOOL)showFooterRefresh
 {
-    return YES;
+    return NO;
 }
 
 - (void)loadNewData
@@ -73,29 +78,9 @@
     [self sendRequest];
 }
 
-- (void)sendRequest {
-    /*[[NoticeManager sharedInstance] getMyNoticeInfoWithLimiteStart:_currentIndex limiteEnd:_currentIndex + KPAGENUM block:^(YActionMessage *message) {
-        if (message.isSuccess) {
-            if ([self isHeaderRefresh]) {
-                [_notifyListArray removeAllObjects];
-            }
-            [self hiddenFooter:NO];
-            [self.notifyListArray addObjectsFromArray:message.object];
-            if ([message.object count] < KPAGENUM) {
-                [self showNoticeNoMoreData];
-            }
-            [self reloadData];
-            _currentIndex += KPAGENUM;
-        } else {
-            [YUtils showTitle:message.desc];
-        }
-        if ([self isHeaderRefresh]) {
-            [self stopLoadNewData];
-        } else
-        {
-            [self stopLoadMoreData];
-        }
-    }];*/
+- (void)sendRequest
+{
+
 }
 
 
@@ -115,7 +100,6 @@
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 3;
     return self.notifyListArray.count;
 }
 
@@ -147,20 +131,63 @@
 
 -(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = nil;
-    if (indexPath.section == 0) {
-        PassRemindCell *cell = [PassRemindCell passRemindCellWithTableView:tableView];
-        [cell setNotifyData:nil];
-        return cell;
-    } else if (indexPath.section == 1) {
-        ScheduleNotifyCell *cell = [ScheduleNotifyCell cellWithTableView:tableView];
-        return cell;
-    } else {
-        PassRemindCell *cell = [PassRemindCell passRemindCellWithTableView:tableView];
-        [cell setNotifyData:nil];
-        return cell;
+    NotifyInfoModel *model = self.notifyListArray[indexPath.section];
+    switch (model.type)
+    {
+        case ACTIVITY_PUSH:// 活动推送
+        {
+            PassRemindCell *cell = [PassRemindCell passRemindCellWithTableView:tableView];
+            [cell setNotifyData:model];
+            return cell;
+            break;
+        }
+        case ACTIVITY_ENROLL_CHECK_PASS: //审核通过
+        {
+            PassRemindCell *cell = [PassRemindCell passRemindCellWithTableView:tableView];
+            [cell setNotifyData:model];
+            return cell;
+            break;
+        }
+        case ACTIVITY_ENROLL_NO_CHECK:
+        {
+            PassRemindCell *cell = [PassRemindCell passRemindCellWithTableView:tableView];
+            [cell setNotifyData:model];
+            break;
+        }
+        case SCHEDULE_REMIND: //用户日程提醒
+        {
+            ScheduleNotifyCell *cell = [ScheduleNotifyCell cellWithTableView:tableView];
+            [cell setData:model];
+            return cell;
+            break;
+        }
+        case ACTIVITY_ENROLL: //用户报名活动提醒
+        {
+            PassRemindCell *cell = [PassRemindCell passRemindCellWithTableView:tableView];
+            [cell setNotifyData:model];
+            break;
+        }
+        case ACTIVITY_PUBLISH:
+        {
+            PassRemindCell *cell = [PassRemindCell passRemindCellWithTableView:tableView];
+            [cell setNotifyData:model];
+            break;
+        }
+        case ACTIVITY_NOTIFY:
+        {
+            PassRemindCell *cell = [PassRemindCell passRemindCellWithTableView:tableView];
+            [cell setNotifyData:model];
+            break;
+        }
+        default:
+        {
+            PassRemindCell *cell = [PassRemindCell passRemindCellWithTableView:tableView];
+            [cell setNotifyData:model];
+            break;
+        }
     }
-    //cell.backgroundColor = [UIColor redColor];
+
+    UITableViewCell *cell = nil;
     return cell;
 }
 

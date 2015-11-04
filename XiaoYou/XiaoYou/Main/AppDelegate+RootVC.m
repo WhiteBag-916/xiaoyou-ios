@@ -17,6 +17,8 @@
 #import "YModel+ActionMessage.h"
 #import "PerfectInformationViewController.h"
 #import "LoginWaitingViewController.h"
+#import "NotifyListViewController.h"
+#import "NotifyViewController.h"
 
 @implementation AppDelegate(RootVC)
 
@@ -99,6 +101,21 @@
 - (void)initPerfectNC {
     UINavigationController * home = [[UINavigationController alloc] initWithRootViewController:[[PerfectInformationViewController alloc] init]];
     self.window.rootViewController = home;
+}
+
+
+//当程序通过本地通知进入程序的时候
+- (void)initNotifyRemindNC {
+    XYTabBarViewController *tabBarVC = [[XYTabBarViewController alloc]init];
+    SlideNavigationController *slideNC = [[SlideNavigationController alloc] initWithRootViewController:tabBarVC];
+    tabBarVC.selectedIndex = 1;
+    slideNC.enableSwipeGesture = NO;
+    slideNC.leftBarButtonItem = [UIBarButtonItem new];
+    self.window.rootViewController = slideNC;
+    
+    UINavigationController * avableVC = tabBarVC.selectedViewController;
+    NotifyViewController *notiVC = [[NotifyViewController alloc]init];
+    [avableVC pushViewController:notiVC animated:YES needHiddenBottomBar:YES];
 }
 
 @end

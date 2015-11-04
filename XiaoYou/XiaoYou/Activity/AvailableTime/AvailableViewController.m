@@ -20,6 +20,8 @@
 #import "ProfileInfo.h"
 #import "Tags.h"
 #import "YNotificationDefine.h"
+#import "YBaseService.h"
+#import "NotifyInfoModel.h"
 
 @interface AvailableViewController ()
 
@@ -44,7 +46,6 @@
     [self.availableListView loadData];
     
 }
-
 
 -(void)dealloc
 {
