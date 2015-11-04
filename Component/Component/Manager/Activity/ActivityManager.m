@@ -24,6 +24,7 @@
 #import "UserSchedulingDetailAction.h"
 #import "MainAvailableTimeAction.h"
 #import "UserSchedulingListConditionsModel.h"
+#import "UserSchedulingEditAction.h"
 
 #define KActivityManagerSyncQueue @"kActivityManagerSyncQueue"
 
@@ -67,12 +68,14 @@ DEF_SINGLETON(ActivityManager);
 - (NSString *)remindTextByTime:(NSInteger)time {
     __block NSString *remindText = @"不设置提醒";
     
-    [_userSchedulingConditionsArray enumerateObjectsUsingBlock:^(UserSchedulingListConditionsModel * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        if (obj.datePeriod == time) {
-            remindText = obj.notifyShowContent;
-            *stop = YES;
-        }
-    }];
+    if (time>=0) {
+        [_userSchedulingConditionsArray enumerateObjectsUsingBlock:^(UserSchedulingListConditionsModel * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            if (obj.datePeriod == time) {
+                remindText = obj.notifyShowContent;
+                *stop = YES;
+            }
+        }];
+    }
     
     return remindText;
 }
@@ -94,6 +97,17 @@ DEF_SINGLETON(ActivityManager);
 //提醒列表
 - (NSArray *)remindArray {
     return _userSchedulingConditionsArray;
+}
+
+//提醒文字列表
+- (NSArray *)remindTextArray {
+    NSMutableArray *array = [@[] mutableCopy];
+    
+    [_userSchedulingConditionsArray enumerateObjectsUsingBlock:^(UserSchedulingListConditionsModel * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        [array addObject:obj.notifyShowContent];
+    }];
+    
+    return array;
 }
 
 //获取当前用户活动列表
@@ -282,9 +296,8 @@ DEF_SINGLETON(ActivityManager);
 
 //新增或修改日程
 - (void)userSchedulingEdit:(NSDictionary *)dic block:(ActionCompleteBlock)block {
-    CommonAction *action = [[CommonAction alloc] init];
-    action.parameter = [YUtils getParameter:dic needUserToken:YES needContent:YES];
-    action.url = [YUtils getUrl:api_userScheduling_edit];
+    UserSchedulingEditAction *action = [[UserSchedulingEditAction alloc] init];
+    action.contentDic = [NSDictionary dictionaryWithDictionary:dic];
     
     [YAction startAction:action completionBlock:^(YActionMessage* message) {
         
@@ -320,7 +333,7 @@ DEF_SINGLETON(ActivityManager);
 }
 
 //根据日程id查询
-- (void)userSchedulingDetail:(NSString *)uid block:(ActionCompleteBlock)block {
+- (void)userSchedulingDetail:(NSInteger)uid block:(ActionCompleteBlock)block {
     UserSchedulingDetailAction *action = [[UserSchedulingDetailAction alloc] init];
     action.uid = uid;
     

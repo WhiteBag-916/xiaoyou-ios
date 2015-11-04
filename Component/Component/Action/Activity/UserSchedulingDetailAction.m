@@ -14,8 +14,8 @@
 
 - (void)execute
 {
-    NSDictionary *parameter = [YUtils getParameter:@{@"id":_uid} needUserToken:YES needContent:YES];
-    NSString *url = [YUtils getUrl:api_userScheduling_list];
+    NSDictionary *parameter = [YUtils getParameter:@{@"id":@(_uid)} needUserToken:YES needContent:YES];
+    NSString *url = [YUtils getUrl:api_userScheduling_findById];
     [self POST:url parameters:parameter completion:^(YHttpRequest *request) {
         YActionMessage *message = [UserSchedulingInfo actionMessageWithHttpRequest:request];
         self.completionBlock(message);

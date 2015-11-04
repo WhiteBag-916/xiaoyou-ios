@@ -235,7 +235,7 @@
         make.bottom.equalTo(self.view);
         make.centerX.equalTo(self.view).offset(-15);
     }];
-    info.image = [UIImage imageNamed:@"scaninfo"];
+    info.image = [UIImage imageNamed:@"mine_picture_words"];
     
     //查看合作商家
     UILabel * moreMerchantsLabel = [[UILabel alloc] init];

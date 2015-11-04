@@ -352,7 +352,7 @@
         
         //地点
         YTextField *locationTextField = (YTextField *)[_locationView viewWithTag:K_TAG_LOCATION];
-        locationTextField.text = _userSchedulingInfo.content;
+        locationTextField.text = _userSchedulingInfo.address;
         
         //提醒
         NSString *remindText = [[ActivityManager sharedInstance] remindTextByTime:_userSchedulingInfo.noticeTimePeriod];
@@ -370,6 +370,8 @@
 
 -(void)clickBtnForChoice
 {
+    [self.view endEditing:YES];
+    
     if (nil == _userSchedulingInfo.content) {
         [YUtils showTitle:@"名字不能为空"];
         
@@ -388,12 +390,27 @@
         return;
     }
     
-    NSDictionary *dic = @{@"content":_userSchedulingInfo.content, @"id":[NSString stringWithFormat:@"%f", _userSchedulingInfo.internalBaseClassIdentifier], @"endTime": [NSString stringWithFormat:@"%f", _userSchedulingInfo.endTime], @"startTime": [NSString stringWithFormat:@"%f", _userSchedulingInfo.startTime]};
+    if (_userSchedulingInfo.endTime/1000 - _userSchedulingInfo.startTime/1000 < 15*60) {
+        [YUtils showTitle:@"结束时间必须大于开始时间15分钟"];
+        
+        return;
+    }
+    
+    NSDictionary *dic = @{@"content":_userSchedulingInfo.content, @"id":[NSString stringWithFormat:@"%g", _userSchedulingInfo.internalBaseClassIdentifier], @"endTime": [NSString stringWithFormat:@"%.f", _userSchedulingInfo.endTime], @"startTime": [NSString stringWithFormat:@"%.f", _userSchedulingInfo.startTime], @"address":_userSchedulingInfo.address, @"noticeTimePeriod":[NSString stringWithFormat:@"%g", _userSchedulingInfo.noticeTimePeriod]};
     [YUtils showHUDWithTitle];
     [[ActivityManager sharedInstance] userSchedulingEdit:dic block:^(YActionMessage *message) {
         [YUtils hiddenProgressHUD];
         
         if (message.isSuccess) {
+            
+            //抛通知告知添加成功
+            UserSchedulingInfo *info = message.object;
+            info.type = @"user_scheduling";
+            NSDictionary *dic = @{@"state":@"add", @"info":info};
+            [[NSNotificationCenter defaultCenter] postNotificationName:KNotification_Change_Schedule
+                                                                object:nil
+                                                              userInfo:dic];
+            
             [self dismissViewControllerAnimated:YES completion:nil];
         } else {
             [YUtils showTitle:message.desc];
@@ -403,8 +420,10 @@
 
 #pragma mark - 按钮
 - (void)pressButton:(UITapGestureRecognizer*)gesture {
+    [self.view endEditing:YES];
+    
     if (nil == _remindPicker) {
-        _remindPicker = [[YCommonPickerView alloc] initWithType:PickerView_CalendarRemind commonArray:[[ActivityManager sharedInstance] remindArray]];
+        _remindPicker = [[YCommonPickerView alloc] initWithType:PickerView_CalendarRemind commonArray:[[ActivityManager sharedInstance] remindTextArray]];
     }
     
     CommonPopView *popView = [[CommonPopView alloc] initWithFrame:[UIScreen mainScreen].bounds
@@ -412,7 +431,7 @@
                                                            addSub:_remindPicker
                                                             isTop:NO
                                                            isRoot:YES
-                                                          addSelf:[UIApplication sharedApplication].keyWindow];
+                                                          addSelf:self.view];    
     [popView comSet:self action:@selector(chooseRemind) params:nil];
     [popView showView];
 }
@@ -439,10 +458,18 @@
 #pragma mark - 选择日期
 - (void)showChoiceTime:(UITapGestureRecognizer*)gesture
 {
+    [self.view endEditing:YES];
+    
     _chooesTag = gesture.view.tag;
     
     if (nil == _datePicker) {
         _datePicker = [[UIDatePicker alloc] initWithFrame:CGRectMake(10, 0, SCREEN_WIDTH-20, 160)];
+    }
+    
+    if (K_TAG_BCLASS == _chooesTag && _userSchedulingInfo.startTime > 0) {
+        _datePicker.date = [NSDate dateWithTimeIntervalSince1970:_userSchedulingInfo.startTime/1000];
+    }else if (K_TAG_FCLASS == _chooesTag && _userSchedulingInfo.endTime > 0) {
+        _datePicker.date = [NSDate dateWithTimeIntervalSince1970:_userSchedulingInfo.endTime/1000];
     }
     
     CommonPopView * popView = [[CommonPopView alloc] initWithFrame:[UIScreen mainScreen].bounds
@@ -461,20 +488,21 @@
     NSDateFormatter * formatter = [[NSDateFormatter alloc] init];
     [formatter setDateFormat:@"yyyy年MM月dd日 HH:mm"];
     NSString * showStr = [formatter stringFromDate:_datePicker.date];
+    NSInteger dateInt = [_datePicker.date timeIntervalSince1970];
     //耦合性很高
     if (K_TAG_BCLASS == _chooesTag) {
         UILabel *timeLabel = (UILabel *)[_bClassView viewWithTag:_chooesTag];
         timeLabel.text = showStr;
         timeLabel.textColor = KCOLOR_B4;
         
-        _userSchedulingInfo.startTime = [_datePicker.date timeIntervalSince1970]*1000;
+        _userSchedulingInfo.startTime = dateInt*1000;
         
     } else if (K_TAG_FCLASS == _chooesTag) {
         UILabel *timeLabel = (UILabel *)[_fClassView viewWithTag:_chooesTag];
         timeLabel.text = showStr;
         timeLabel.textColor = KCOLOR_B4;
         
-        _userSchedulingInfo.endTime = [_datePicker.date timeIntervalSince1970]*1000;
+        _userSchedulingInfo.endTime = dateInt*1000;
     }
     
 }
@@ -491,7 +519,7 @@
     if (K_TAG_NAME == sender.tag) {
         _userSchedulingInfo.content = sender.text;
     } else if (K_TAG_LOCATION == sender.tag) {
-        _userSchedulingInfo.content = sender.text;
+        _userSchedulingInfo.address = sender.text;
     }
 }
 

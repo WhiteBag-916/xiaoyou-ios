@@ -8,6 +8,7 @@
 
 #import "MerchantListTableViewCell.h"
 #import "SupplierShopModel.h"
+#import "SupplierShopDiscounts.h"
 
 NSString *const kMerchantListTableViewCell = @"MerchantListTableViewCellId";
 
@@ -50,7 +51,6 @@ NSString *const kMerchantListTableViewCell = @"MerchantListTableViewCellId";
     _nameLabel = [[UILabel alloc] init];
     _nameLabel.backgroundColor = [UIColor clearColor];
     _nameLabel.font = CONTENT_FONT(15);
-    _nameLabel.text = @"Zoo Coffee";
     _nameLabel.textColor = [UIColor hexChangeFloat:@"333333"];
     [self.contentView addSubview:_nameLabel];
     [_nameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -63,7 +63,6 @@ NSString *const kMerchantListTableViewCell = @"MerchantListTableViewCellId";
     _characterLabel = [[UILabel alloc] init];
     _characterLabel.backgroundColor = [UIColor clearColor];
     _characterLabel.font = CONTENT_FONT(10);
-    _characterLabel.text = @"咖啡  西点  空间大";
     _characterLabel.textColor = [UIColor hexChangeFloat:@"666666"];
     [self.contentView addSubview:_characterLabel];
     [_characterLabel mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -76,7 +75,6 @@ NSString *const kMerchantListTableViewCell = @"MerchantListTableViewCellId";
     _placeLabel = [[UILabel alloc] init];
     _placeLabel.backgroundColor = [UIColor clearColor];
     _placeLabel.font = CONTENT_FONT(10);
-    _placeLabel.text = @"和平区西湖道风荷园1-4-20";
     _placeLabel.textColor = [UIColor hexChangeFloat:@"666666"];
     [self.contentView addSubview:_placeLabel];
     [_placeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -89,7 +87,6 @@ NSString *const kMerchantListTableViewCell = @"MerchantListTableViewCellId";
     _comboLabel = [[UILabel alloc] init];
     _comboLabel.backgroundColor = [UIColor clearColor];
     _comboLabel.font = CONTENT_FONT(10);
-    _comboLabel.text = @"专属优惠套餐";
     _comboLabel.textColor = [UIColor hexChangeFloat:@"666666"];
     [self.contentView addSubview:_comboLabel];
     [_comboLabel mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -102,7 +99,6 @@ NSString *const kMerchantListTableViewCell = @"MerchantListTableViewCellId";
     _scanfLabel = [[UILabel alloc] init];
     _scanfLabel.backgroundColor = [UIColor clearColor];
     _scanfLabel.font = CONTENT_FONT(10);
-    _scanfLabel.text = @"扫码可享美式咖啡第二杯半价";
     _scanfLabel.textColor = [UIColor hexChangeFloat:@"666666"];
     [self.contentView addSubview:_scanfLabel];
     [_scanfLabel mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -119,11 +115,19 @@ NSString *const kMerchantListTableViewCell = @"MerchantListTableViewCellId";
     SupplierShopModel * shopModel = model.supplierShopModel;
     
     _nameLabel.text = shopModel.name;
-    _headImageView.image = [UIImage imageNamed:shopModel.shopLogoUrl];
+    [_headImageView setNormalImageWithUrl:shopModel.shopLogoUrl];
     _characterLabel.text = shopModel.tags;
     _placeLabel.text = shopModel.address;
-//    _comboLabel.text =
-//    _scanfLabel.text =
+    
+    if (model.supplierShopDiscounts.count > 0)
+    {
+         SupplierShopDiscounts * shopDiscount1 = model.supplierShopDiscounts[0];
+         SupplierShopDiscounts * shopDiscount2 = model.supplierShopDiscounts[1];
+        _comboLabel.text = shopDiscount1.discountDetail;
+        _scanfLabel.text = shopDiscount2.discountDetail;
+    }
+   
+    
 }
 
 - (BOOL)needLine

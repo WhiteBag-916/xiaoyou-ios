@@ -13,7 +13,7 @@ NSString *const kRubLessonTableViewCell = @"RubLessonTableViewCellId";
 #define K_IMG_LWH           SCALE_NUM(12)   //图标左、宽、高
 #define K_COURSEIMG_T       SCALE_NUM(22)   //课程图标上间距
 #define K_LECTURERIMG_T     SCALE_NUM(15)   //授课人图标上间距
-#define K_DEPARTMENTSIMG_T  SCALE_NUM(14)   //院系图标上间距
+#define K_DEPARTMENTSIMG_T  SCALE_NUM(14)   //开课单位图标上间距
 #define K_LEFTLAB_L         SCALE_NUM(10)   //描述左
 #define K_LEFTLAB_W         SCALE_NUM(70)   //描述宽
 #define K_NAMELAB_L         SCALE_NUM(0)   //名字左
@@ -30,7 +30,7 @@ NSString *const kRubLessonTableViewCell = @"RubLessonTableViewCellId";
 @property (nonatomic, strong) UILabel *lecturerName;        //授课人
 @property (nonatomic, strong) UILabel *timeLabel;           //上课时间
 @property (nonatomic, strong) UILabel *locationLabel;       //上课地点
-@property (nonatomic, strong) UILabel *departmentsName;     //院系
+@property (nonatomic, strong) UILabel *departmentsName;     //开课单位
 @property (nonatomic, strong) UIButton *addToCalendar;      //加入日程
 
 @end
@@ -177,7 +177,7 @@ NSString *const kRubLessonTableViewCell = @"RubLessonTableViewCellId";
         make.right.mas_equalTo(K_NAMELAB_R);
     }];
     
-    //院系
+    //开课单位
     UIImageView *departmentsImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"havetime_icon_academy"]];
     [self.contentView addSubview:departmentsImageView];
     
@@ -188,7 +188,7 @@ NSString *const kRubLessonTableViewCell = @"RubLessonTableViewCellId";
     
     UILabel *departmentsLabel = [YUtils initLabel:CONTENT_FONT(12)
                                        color:KCOLOR_B5
-                                        text:@"院系："
+                                        text:@"开课单位："
                                    alignment:NSTextAlignmentLeft];
     [self.contentView addSubview:departmentsLabel];
     

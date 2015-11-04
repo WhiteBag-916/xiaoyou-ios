@@ -18,6 +18,8 @@
 		202F03C91BE36A27006E7706 /* UserSchedulingConditionsAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 202F03C81BE36A27006E7706 /* UserSchedulingConditionsAction.m */; };
 		202F03CC1BE36AF0006E7706 /* UserSchedulingListAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 202F03CB1BE36AF0006E7706 /* UserSchedulingListAction.m */; };
 		202F03CF1BE36B73006E7706 /* UserSchedulingDetailAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 202F03CE1BE36B73006E7706 /* UserSchedulingDetailAction.m */; };
+		2030A2C01BE9B0C3003EDDF8 /* CourseDetailAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 2030A2BF1BE9B0C3003EDDF8 /* CourseDetailAction.m */; };
+		2030A2C61BE9DF40003EDDF8 /* UserSchedulingEditAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 2030A2C51BE9DF40003EDDF8 /* UserSchedulingEditAction.m */; };
 		20402A1F1BE21B8B00802DAF /* FreeBuildingListAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 20402A1E1BE21B8B00802DAF /* FreeBuildingListAction.m */; };
 		20402A251BE2200A00802DAF /* FreeBuildingDetailAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 20402A241BE2200A00802DAF /* FreeBuildingDetailAction.m */; };
 		20859A7C1B64BD5B00580ED3 /* ProvisionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 20859A7B1B64BD5B00580ED3 /* ProvisionManager.m */; };
@@ -73,8 +75,9 @@
 		20E366411B92F7DC00A22FFE /* RegAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 20E366401B92F7DC00A22FFE /* RegAction.m */; };
 		20E372BF1BDDBFC50063BF56 /* CommonImgUpload.m in Sources */ = {isa = PBXBuildFile; fileRef = 20E372BE1BDDBFC50063BF56 /* CommonImgUpload.m */; };
 		3339625C1B95575400DD0A6D /* SuggestListAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 3339625B1B95575400DD0A6D /* SuggestListAction.m */; };
+		E4642C7F1BE9AFBC00B3C8B1 /* CodeManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E4642C7E1BE9AFBC00B3C8B1 /* CodeManager.m */; };
+		E4642C821BE9B0F500B3C8B1 /* ShopListDetailAction.m in Sources */ = {isa = PBXBuildFile; fileRef = E4642C811BE9B0F500B3C8B1 /* ShopListDetailAction.m */; };
 		E47E59811BE8D85F00AF7F5C /* ShopListAction.m in Sources */ = {isa = PBXBuildFile; fileRef = E47E59801BE8D85F00AF7F5C /* ShopListAction.m */; };
-		E47E59841BE8DC5700AF7F5C /* CodeManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E47E59831BE8DC5700AF7F5C /* CodeManager.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -122,6 +125,10 @@
 		202F03CB1BE36AF0006E7706 /* UserSchedulingListAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserSchedulingListAction.m; sourceTree = "<group>"; };
 		202F03CD1BE36B73006E7706 /* UserSchedulingDetailAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserSchedulingDetailAction.h; sourceTree = "<group>"; };
 		202F03CE1BE36B73006E7706 /* UserSchedulingDetailAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserSchedulingDetailAction.m; sourceTree = "<group>"; };
+		2030A2BE1BE9B0C3003EDDF8 /* CourseDetailAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CourseDetailAction.h; sourceTree = "<group>"; };
+		2030A2BF1BE9B0C3003EDDF8 /* CourseDetailAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CourseDetailAction.m; sourceTree = "<group>"; };
+		2030A2C41BE9DF40003EDDF8 /* UserSchedulingEditAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserSchedulingEditAction.h; sourceTree = "<group>"; };
+		2030A2C51BE9DF40003EDDF8 /* UserSchedulingEditAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserSchedulingEditAction.m; sourceTree = "<group>"; };
 		20402A1D1BE21B8B00802DAF /* FreeBuildingListAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FreeBuildingListAction.h; sourceTree = "<group>"; };
 		20402A1E1BE21B8B00802DAF /* FreeBuildingListAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FreeBuildingListAction.m; sourceTree = "<group>"; };
 		20402A231BE2200A00802DAF /* FreeBuildingDetailAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FreeBuildingDetailAction.h; sourceTree = "<group>"; };
@@ -240,10 +247,12 @@
 		20E372BE1BDDBFC50063BF56 /* CommonImgUpload.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommonImgUpload.m; sourceTree = "<group>"; };
 		3339625A1B95575400DD0A6D /* SuggestListAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SuggestListAction.h; sourceTree = "<group>"; };
 		3339625B1B95575400DD0A6D /* SuggestListAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SuggestListAction.m; sourceTree = "<group>"; };
+		E4642C7D1BE9AFBC00B3C8B1 /* CodeManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CodeManager.h; sourceTree = "<group>"; };
+		E4642C7E1BE9AFBC00B3C8B1 /* CodeManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CodeManager.m; sourceTree = "<group>"; };
+		E4642C801BE9B0F500B3C8B1 /* ShopListDetailAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShopListDetailAction.h; sourceTree = "<group>"; };
+		E4642C811BE9B0F500B3C8B1 /* ShopListDetailAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShopListDetailAction.m; sourceTree = "<group>"; };
 		E47E597F1BE8D85F00AF7F5C /* ShopListAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShopListAction.h; sourceTree = "<group>"; };
 		E47E59801BE8D85F00AF7F5C /* ShopListAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShopListAction.m; sourceTree = "<group>"; };
-		E47E59821BE8DC5700AF7F5C /* CodeManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CodeManager.h; sourceTree = "<group>"; };
-		E47E59831BE8DC5700AF7F5C /* CodeManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CodeManager.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -319,6 +328,8 @@
 				202F03CB1BE36AF0006E7706 /* UserSchedulingListAction.m */,
 				202F03CD1BE36B73006E7706 /* UserSchedulingDetailAction.h */,
 				202F03CE1BE36B73006E7706 /* UserSchedulingDetailAction.m */,
+				2030A2C41BE9DF40003EDDF8 /* UserSchedulingEditAction.h */,
+				2030A2C51BE9DF40003EDDF8 /* UserSchedulingEditAction.m */,
 			);
 			path = Activity;
 			sourceTree = "<group>";
@@ -393,8 +404,6 @@
 			children = (
 				209E08C31BDDC9E20062758E /* NoticeManager.h */,
 				209E08C41BDDC9E20062758E /* NoticeManager.m */,
-				E47E59821BE8DC5700AF7F5C /* CodeManager.h */,
-				E47E59831BE8DC5700AF7F5C /* CodeManager.m */,
 				20DADED61BD0958400FB294F /* ActivityManager.h */,
 				20DADED71BD0958400FB294F /* ActivityManager.m */,
 			);
@@ -571,6 +580,8 @@
 				20DF60261BDF878300C8383B /* CourseTimeListAction.m */,
 				202F03B71BE359C0006E7706 /* FindMyCourseAction.h */,
 				202F03B81BE359C0006E7706 /* FindMyCourseAction.m */,
+				2030A2BE1BE9B0C3003EDDF8 /* CourseDetailAction.h */,
+				2030A2BF1BE9B0C3003EDDF8 /* CourseDetailAction.m */,
 			);
 			path = Curriculum;
 			sourceTree = "<group>";
@@ -620,6 +631,8 @@
 			children = (
 				E47E597F1BE8D85F00AF7F5C /* ShopListAction.h */,
 				E47E59801BE8D85F00AF7F5C /* ShopListAction.m */,
+				E4642C801BE9B0F500B3C8B1 /* ShopListDetailAction.h */,
+				E4642C811BE9B0F500B3C8B1 /* ShopListDetailAction.m */,
 			);
 			path = TwoDimensionCode;
 			sourceTree = "<group>";
@@ -627,6 +640,8 @@
 		E47E597E1BE8D80E00AF7F5C /* TwoDimensionCode */ = {
 			isa = PBXGroup;
 			children = (
+				E4642C7D1BE9AFBC00B3C8B1 /* CodeManager.h */,
+				E4642C7E1BE9AFBC00B3C8B1 /* CodeManager.m */,
 			);
 			path = TwoDimensionCode;
 			sourceTree = "<group>";
@@ -721,13 +736,14 @@
 			files = (
 				20C5B0511B8DB03900B4A8A8 /* GetFriendApplyListAction.m in Sources */,
 				20859A851B64BD9000580ED3 /* MessageManager.m in Sources */,
+				E4642C821BE9B0F500B3C8B1 /* ShopListDetailAction.m in Sources */,
 				20859A7C1B64BD5B00580ED3 /* ProvisionManager.m in Sources */,
 				20DF60271BDF878300C8383B /* CourseTimeListAction.m in Sources */,
 				209E08C51BDDC9E20062758E /* NoticeManager.m in Sources */,
 				20DBFD861B4FD3F5009134D0 /* YUtils+Component.m in Sources */,
 				20DA1A5A1B89751500DEF95C /* MyCommentPersonsAction.m in Sources */,
 				20DCB9701B8CA60800C758DE /* FindFriendsByTagsAction.m in Sources */,
-				E47E59841BE8DC5700AF7F5C /* CodeManager.m in Sources */,
+				E4642C7F1BE9AFBC00B3C8B1 /* CodeManager.m in Sources */,
 				20DA8B341B8EC4F0007D0CDE /* CommonAction.m in Sources */,
 				20DED8721B94208B004B5E7B /* RegNoticeAction.m in Sources */,
 				20DDA4311BDA26050023179A /* FindByActivityPublishedIdAction.m in Sources */,
@@ -745,6 +761,7 @@
 				20E122171B705D3C00F90BD3 /* FeedManager.m in Sources */,
 				20C5B0811B8DF3E700B4A8A8 /* GroupListAction.m in Sources */,
 				20DADED81BD0958400FB294F /* ActivityManager.m in Sources */,
+				2030A2C61BE9DF40003EDDF8 /* UserSchedulingEditAction.m in Sources */,
 				20E0C00C1B88B0CA00EDAED4 /* ProfileAction.m in Sources */,
 				20E0BFED1B88B0CA00EDAED4 /* MessageListAction.m in Sources */,
 				20E1C67E1B89F148008BA9D6 /* FeedDetailAction.m in Sources */,
@@ -775,6 +792,7 @@
 				20DCB9671B8CA60800C758DE /* ApplyListAction.m in Sources */,
 				202F03C91BE36A27006E7706 /* UserSchedulingConditionsAction.m in Sources */,
 				20DA8B371B8ECBC1007D0CDE /* ReceiveMobileAuthCodeAction.m in Sources */,
+				2030A2C01BE9B0C3003EDDF8 /* CourseDetailAction.m in Sources */,
 				20E372BF1BDDBFC50063BF56 /* CommonImgUpload.m in Sources */,
 				040619DC1BDE11C3008E3E4E /* NoticeAction.m in Sources */,
 				202F03CF1BE36B73006E7706 /* UserSchedulingDetailAction.m in Sources */,

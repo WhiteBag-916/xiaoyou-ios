@@ -85,13 +85,13 @@ NSString *const kMyTimetableCurriculumCollectionViewCell = @"MyTimetableCurricul
     _nameLabel.text = model.courseName;
     _classroomLabel.text = model.roomName;
     
+    _nameLabel.numberOfLines = model.endPhase-model.beginPhase+1;
+    
     if (model.beginPhase == model.endPhase) {
         //1节课
-        _nameLabel.numberOfLines = 1;
         _classroomLabel.numberOfLines = 1;
         _weekLabel.hidden = YES;
     } else {
-        _nameLabel.numberOfLines = 2;
         _classroomLabel.numberOfLines = 2;
         //单周
         NSInteger beginWeek = model.beginWeek;

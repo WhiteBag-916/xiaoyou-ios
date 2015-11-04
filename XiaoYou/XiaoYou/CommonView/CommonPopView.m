@@ -70,7 +70,9 @@
         
         [self.bgView addSubview:view];
         
-        [superView addSubview:self];
+        if (nil != superView) {
+            [superView addSubview:self];
+        }
     }
     return self;
 }

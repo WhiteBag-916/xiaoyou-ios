@@ -45,4 +45,13 @@ AS_SINGLETON(CurriculumManager);
  *********************************************************************/
 - (void)findMyCourse:(ActionCompleteBlock)block;
 
+/*********************************************************************
+ 函数名称 : courseDetail
+ 函数描述 : 获取课程详情
+ 参数 : N/A
+ 返回值 : FindMyCourseModel
+ 作者 : XiongChen
+ *********************************************************************/
+- (void)courseDetail:(NSString *)uid blok:(ActionCompleteBlock)block;
+
 @end

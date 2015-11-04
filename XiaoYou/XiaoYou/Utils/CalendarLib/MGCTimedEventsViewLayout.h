@@ -40,6 +40,7 @@
 @property (nonatomic, weak) id<MGCTimedEventsViewLayoutDelegate> delegate;
 @property (nonatomic) CGSize dayColumnSize;
 @property (nonatomic) CGFloat minimumVisibleHeight;  // if 2 cells overlap, and the height of the uncovered part of the upper cell is less than this value, the column is split
+@property (nonatomic, assign) CGFloat midOffset;//间距
 
 @end
 

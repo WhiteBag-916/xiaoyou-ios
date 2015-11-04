@@ -18,7 +18,7 @@
 #define K_COURSEIMG_T       SCALE_NUM(22)   //课程图标上间距
 #define K_CONTENT_B         SCALE_NUM(15)   //下
 #define K_LECTURERIMG_T     SCALE_NUM(15)   //授课人图标上间距
-#define K_DEPARTMENTSIMG_T  SCALE_NUM(14)   //院系图标上间距
+#define K_DEPARTMENTSIMG_T  SCALE_NUM(14)   //开课单位图标上间距
 #define K_LEFTLAB_L         SCALE_NUM(10)   //描述左
 #define K_LEFTLAB_W         SCALE_NUM(70)   //描述宽
 #define K_NAMELAB_L         SCALE_NUM(0)   //名字左
@@ -32,7 +32,7 @@
 @property (nonatomic, strong) UILabel *timeLabel;           //上课时间
 @property (nonatomic, strong) UILabel *weekLabel;           //周次
 @property (nonatomic, strong) UILabel *locationLabel;       //上课地点
-@property (nonatomic, strong) UILabel *departmentsName;     //院系
+@property (nonatomic, strong) UILabel *departmentsName;     //开课单位
 
 @end
 
@@ -239,7 +239,7 @@
         make.right.mas_equalTo(K_NAMELAB_R);
     }];
     
-    //院系
+    //开课单位
     UIImageView *departmentsImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"havetime_icon_academy"]];
     [self.contentView addSubview:departmentsImageView];
     
