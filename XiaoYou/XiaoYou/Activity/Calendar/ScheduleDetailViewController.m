@@ -59,6 +59,7 @@
     [self showCustomNavigationBackButton];
     
     [self initData];
+    [self initView];
 }
 
 - (void)initSchedulingView {
@@ -74,6 +75,7 @@
     [courseLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.mas_equalTo(K_IMG_LWH);
         make.top.mas_equalTo(K_COURSEIMG_T);
+        make.width.mas_equalTo(K_LEFTLAB_W);
     }];
     
     _courseName = [YUtils initLabel:CONTENT_FONT(14)
@@ -84,8 +86,8 @@
     [self.view addSubview:_courseName];
     
     [_courseName mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.centerY.equalTo(courseLabel);
-        make.left.equalTo(courseLabel.mas_centerX);
+        make.top.equalTo(courseLabel);
+        make.left.equalTo(courseLabel.mas_right);
         make.right.mas_equalTo(K_NAMELAB_R);
     }];
     
@@ -95,7 +97,8 @@
     [self.view addSubview:lineView];
     [lineView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(_courseName.mas_bottom).offset(K_LECTURERIMG_T);
-        make.left.right.equalTo(_courseName);
+        make.left.equalTo(courseLabel);
+        make.right.equalTo(_courseName);
         make.height.mas_equalTo(SCALE_NUM(1));
     }];
     
@@ -116,16 +119,13 @@
     
     [lecturerLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.height.equalTo(lecturerImageView);
-        make.left.equalTo(courseLabel);
+        make.left.equalTo(lecturerImageView.mas_right).offset(K_LEFTLAB_L);
         make.width.mas_equalTo(K_LEFTLAB_W);
     }];
     
-    NSDate *beginTime = [NSDate dateWithTimeIntervalSince1970:_userSchedulingInfo.startTime];
-    NSString *beginText = [NSDate stringFromDate:beginTime withFormat:@"yy/MM/dd HH:mm"];
-    
     _lecturerName = [YUtils initLabel:CONTENT_FONT(12)
                                 color:KCOLOR_B3
-                                 text:beginText
+                                 text:@""
                             alignment:NSTextAlignmentLeft];
     [self.view addSubview:_lecturerName];
     
@@ -144,16 +144,13 @@
     
     [timeLeftLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(lecturerImageView.mas_bottom).offset(K_LECTURERIMG_T);
-        make.left.height.equalTo(courseLabel);
+        make.left.height.equalTo(lecturerLabel);
         make.width.mas_equalTo(K_LEFTLAB_W);
     }];
     
-    NSDate *endTime = [NSDate dateWithTimeIntervalSince1970:_userSchedulingInfo.endTime];
-    NSString *endText = [NSDate stringFromDate:endTime withFormat:@"yy/MM/dd HH:mm"];
-    
     _timeLabel = [YUtils initLabel:CONTENT_FONT(12)
                              color:KCOLOR_B3
-                              text:endText
+                              text:@""
                          alignment:NSTextAlignmentLeft];
     [self.view addSubview:_timeLabel];
     
@@ -181,7 +178,7 @@
     
     [locationLeftLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.height.equalTo(locationImageView);
-        make.left.equalTo(courseLabel);
+        make.left.equalTo(lecturerLabel);
         make.width.mas_equalTo(K_LEFTLAB_W);
     }];
     
@@ -214,7 +211,7 @@
     
     [departmentsLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.height.equalTo(departmentsImageView);
-        make.left.equalTo(courseLabel);
+        make.left.equalTo(lecturerLabel);
         make.width.mas_equalTo(K_LEFTLAB_W);
     }];
     
@@ -229,6 +226,16 @@
         make.left.equalTo(_lecturerName);
         make.right.mas_equalTo(K_NAMELAB_R);
     }];
+}
+
+- (void)resetSchedulingView {
+    _courseName.text = _userSchedulingInfo.content;
+    NSDate *beginTime = [NSDate dateWithTimeIntervalSince1970:_userSchedulingInfo.startTime];
+    _lecturerName.text = [NSDate stringFromDate:beginTime withFormat:@"yy/MM/dd HH:mm"];
+    NSDate *endTime = [NSDate dateWithTimeIntervalSince1970:_userSchedulingInfo.endTime];
+    _timeLabel.text = [NSDate stringFromDate:endTime withFormat:@"yy/MM/dd HH:mm"];
+    _locationLabel.text = _userSchedulingInfo.address;
+    _departmentsName.text = [[ActivityManager sharedInstance] remindTextByTime:_userSchedulingInfo.noticeTimePeriod];
 }
 
 - (void)initCourseView {
@@ -313,10 +320,10 @@
         make.width.mas_equalTo(K_LEFTLAB_W);
     }];
     
-    NSString *timeText = [NSString stringWithFormat:@"第%g周 %g-%g", _courseDetail.week, _courseDetail.startTime, _courseDetail.endTime];
+    
     _timeLabel = [YUtils initLabel:CONTENT_FONT(12)
                              color:KCOLOR_B3
-                              text:timeText
+                              text:@""
                          alignment:NSTextAlignmentLeft];
     [self.view addSubview:_timeLabel];
     
@@ -400,17 +407,33 @@
     }];
 }
 
+- (void)resetCourseView {
+    _courseName.text = _courseDetail.courseName;
+    _lecturerName.text = _courseDetail.teacherName;
+    _timeLabel.text = [NSString stringWithFormat:@"第%g周 %g-%g", _courseDetail.week, _courseDetail.startTime, _courseDetail.endTime];
+    _locationLabel.text = _courseDetail.roomName;
+    _departmentsName.text = _courseDetail.departmentName;
+}
+
+- (void)initView {
+    if ([_userSchedulingInfo.type isEqualToString:@"user_scheduling"]) {
+        [self initSchedulingView];
+    } else if ([_userSchedulingInfo.type isEqualToString:@"course"]) {
+        [self initCourseView];
+    }
+}
+
 - (void)initData {
     [YUtils showHUDWithTitle];
     
     if ([_userSchedulingInfo.type isEqualToString:@"user_scheduling"]) {
-        [[ActivityManager sharedInstance] userSchedulingDetail:[NSString stringWithFormat:@"%g", _userSchedulingInfo.internalBaseClassIdentifier] block:^(YActionMessage *message) {
+        [[ActivityManager sharedInstance] userSchedulingDetail:_userSchedulingInfo.internalBaseClassIdentifier block:^(YActionMessage *message) {
             [YUtils hiddenProgressHUD];
             
             if (message.isSuccess) {
                 self.userSchedulingInfo = message.object;
                 
-                [self resetData];
+                [self resetSchedulingView];
                 
             } else {
                 [YUtils showTitle:message.desc];
@@ -423,20 +446,12 @@
             if (message.isSuccess) {
                 self.courseDetail = message.object;
                 
-                [self resetData];
+                [self resetCourseView];
                 
             } else {
                 [YUtils showTitle:message.desc];
             }
         }];
-    }
-}
-
-- (void)resetData {
-    if ([_userSchedulingInfo.type isEqualToString:@"user_scheduling"]) {
-        [self initSchedulingView];
-    } else if ([_userSchedulingInfo.type isEqualToString:@"course"]) {
-        [self initCourseView];
     }
 }
 
@@ -451,6 +466,7 @@
     YActionSheetItem *item2 = [YActionSheetItem itemWithTitle:@"删除日程"
                                                          type:YCommonActionSheetItemTypeCenterCommon
                                                         block:^(NSInteger checkNum) {
+                                                            [self delSchedule];
                                                         }];
     
     YCommonActionSheet *sheet = [[YCommonActionSheet alloc] initWithType:@[item1, item2] title:nil];
@@ -470,6 +486,7 @@
                 
                 if (message.isSuccess) {
                     //抛通知告知删除成功
+                    _userSchedulingInfo.type = @"user_scheduling";
                     NSDictionary *dic = @{@"state":@"del", @"info":_userSchedulingInfo};
                     [[NSNotificationCenter defaultCenter] postNotificationName:KNotification_Change_Schedule
                                                                         object:nil

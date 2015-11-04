@@ -333,7 +333,7 @@ DEF_SINGLETON(ActivityManager);
 }
 
 //根据日程id查询
-- (void)userSchedulingDetail:(NSString *)uid block:(ActionCompleteBlock)block {
+- (void)userSchedulingDetail:(NSInteger)uid block:(ActionCompleteBlock)block {
     UserSchedulingDetailAction *action = [[UserSchedulingDetailAction alloc] init];
     action.uid = uid;
     

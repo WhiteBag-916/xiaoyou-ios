@@ -10,6 +10,6 @@
 
 @interface UserSchedulingDetailAction : YHTTPRequestAction<YAction>
 
-@property (nonatomic, strong) NSString *uid;
+@property (nonatomic, assign) NSInteger uid;
 
 @end

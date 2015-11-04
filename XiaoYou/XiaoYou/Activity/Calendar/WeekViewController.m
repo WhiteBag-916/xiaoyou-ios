@@ -270,12 +270,12 @@ static NSString* const EventCellReuseIdentifier = @"EventCellReuseIdentifier";
     UserSchedulingInfo *ev = [self eventOfDate:index date:date];
     
     MGCStandardEventView *evCell = (MGCStandardEventView*)[view dequeueReusableViewWithIdentifier:EventCellReuseIdentifier forEventOfType:type atIndex:index date:date];
-    evCell.font = [UIFont systemFontOfSize:11];
     evCell.title = ev.content;
-//    evCell.subtitle = ev.location;
+//    evCell.subtitle = ev.address;
     evCell.color = [self colorByType:ev.type];//[UIColor colorWithCGColor:ev.calendar.CGColor];
     evCell.style = MGCStandardEventViewStylePlain|MGCStandardEventViewStyleSubtitle;
     evCell.style |= (type == MGCAllDayEventType) ?: MGCStandardEventViewStyleBorder;
+    evCell.font = CONTENT_FONT(12);
     return evCell;
 }
 
