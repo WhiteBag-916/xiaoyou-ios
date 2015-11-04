@@ -53,7 +53,6 @@
     [service insertModel:info];
     [service insertModel:info1];
     
-    
     NSLog(@"this is just test....");
 }
 

@@ -107,4 +107,12 @@
         make.top.equalTo(_scheduleNameLabel.mas_bottom).offset(SCALE_NUM(10));
     }];
 }
+
+-(void)setData:(NotifyInfoModel *)model
+{
+    _remindTitleLabel.text = model.em_push_title;
+    _scheduleNameLabel.text = model.name;
+    _beginTimeLable.text = [NSString stringWithFormat:@"%f",model.startTime];
+}
+
 @end

@@ -8,10 +8,15 @@
 
 #import "NotifyViewController.h"
 #import "NotifyListView.h"
+#import "YBaseService.h"
+#import "NotifyInfoModel.h"
+#import "YDatabaseDao.h"
 
 @interface NotifyViewController ()
 
 @property (nonatomic,strong) NotifyListView *notifyListView;
+
+@property (nonatomic,strong) NSArray *notifyDataSource;
 
 @end
 
@@ -41,8 +46,20 @@
             make.trailing.equalTo(self.view);
             make.bottom.equalTo(self.view);
         }];
+        _notifyListView.notifyListArray = self.notifyDataSource;
     }
     return _notifyListView;
+}
+
+
+-(NSArray *)notifyDataSource
+{
+    if (!_notifyDataSource) {
+        NSString *dataBasePath = [NSString stringWithFormat:@"%@//%@",[YDirectory documents],NSStringFromClass([NotifyInfoModel class])];
+        YDatabaseDao *dataBaseDao = [[YDatabaseDao alloc]initWitDatabasePath:dataBasePath];
+        _notifyDataSource = [dataBaseDao queryModel:NSStringFromClass([NotifyInfoModel class])];
+    }
+    return _notifyDataSource;
 }
 
 @end

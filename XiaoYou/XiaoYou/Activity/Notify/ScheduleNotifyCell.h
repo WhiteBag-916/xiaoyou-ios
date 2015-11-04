@@ -7,10 +7,13 @@
 //
 
 #import "YTableViewCell.h"
+#import "NotifyInfoModel.h"
 
 @interface ScheduleNotifyCell : YTableViewCell
 
 
 +(ScheduleNotifyCell*)cellWithTableView:(UITableView*)tableView;
+
+-(void)setData:(NotifyInfoModel*)model;
 
 @end
