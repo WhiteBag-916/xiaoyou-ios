@@ -46,6 +46,13 @@
     [YDatabase update:self.databasePath sql:SQL];
 }
 
+- (void)deleteAllDataWithTableName:(NSString *)tableName
+{
+    NSString *sql = [NSString stringWithFormat:@"delete from %@",tableName];
+    [YDatabase registerDB:self.databasePath];
+    [YDatabase update:self.databasePath sql:sql];
+}
+
 
 //获取类名
 - (NSString *)classNameFromModel:(YModel *)model

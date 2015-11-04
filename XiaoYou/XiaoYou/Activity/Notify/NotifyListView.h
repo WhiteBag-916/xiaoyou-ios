@@ -31,6 +31,6 @@ typedef enum : NSUInteger {
 } MODEL_TYPE;
 @interface NotifyListView : YTableView
 
-@property (nonatomic,strong) NSMutableArray *notifyListArray;
+@property (nonatomic,strong) NSArray *notifyListArray;
 
 @end

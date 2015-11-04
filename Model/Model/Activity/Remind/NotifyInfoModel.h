@@ -25,6 +25,7 @@ typedef enum : NSUInteger {
 //用户自建日程提醒信息
 @property (nonatomic,assign) NSInteger  type;
 @property (nonatomic,assign) double startTime;
+@property (nonatomic,assign) double timestamp;
 @property (nonatomic,copy) NSString *idStr;
 @property (nonatomic,copy) NSString *name;
 @property (nonatomic,copy) NSString *em_push_title;
