@@ -8,6 +8,7 @@
 
 #import "CodeManager.h"
 #import "ShopListAction.h"
+#import "ShopListDetailAction.h"
 
 @implementation CodeManager
 DEF_SINGLETON(CodeManager);
@@ -18,6 +19,16 @@ DEF_SINGLETON(CodeManager);
     ShopListAction *action = [[ShopListAction alloc]init];
     action.limitStart = limitStart;
     action.limitEnd = limitEnd;
+    
+    [YAction startAction:action completionBlock:^(YActionMessage *message) {
+        block(message);
+    }];
+}
+//扫码后商家详情
+- (void)getByQRCodeContent:(NSString *) qrCodeContent block:(ActionCompleteBlock)block
+{
+    ShopListDetailAction *action = [[ShopListDetailAction alloc] init];
+    action.qrCodeContent = qrCodeContent;
     
     [YAction startAction:action completionBlock:^(YActionMessage *message) {
         block(message);

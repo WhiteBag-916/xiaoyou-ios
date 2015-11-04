@@ -48,8 +48,6 @@
 
 -(void)setUpUI
 {
-    
-    
     _scanfResultTableView = [[ScanfResultTableView alloc] initWithResult:_resultStr];
     [self.view addSubview:_scanfResultTableView];
     [_scanfResultTableView mas_makeConstraints:^(MASConstraintMaker *make) {

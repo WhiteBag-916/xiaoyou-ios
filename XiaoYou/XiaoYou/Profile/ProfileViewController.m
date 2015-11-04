@@ -26,6 +26,7 @@
 #import "AppConfigData.h"
 #import "ScanfResultViewController.h"
 #import "MyTimetableViewController.h"
+#import "XYContactsInfoDetailViewController.h"
 
 #define KTOPHEIGHT SCALE_NUM(90)
 #define KHEADIMG_SIZE SCALE_NUM(45)
@@ -512,10 +513,20 @@
 {
 //    [self.navigationController popViewControllerAnimated:true];
 //    [self.navigationController pushViewController:[[GiftViewController alloc] initWithCode:result] animated:true];
-    NSRange range = [result rangeOfString:@"supplierShop="];
-    NSString * str = [result substringFromIndex:range.location + range.length];
-    ScanfResultViewController * resultViewController = [[ScanfResultViewController alloc] initWithResult:result];
-    [self.navigationController pushViewController:resultViewController animated:YES needHiddenBottomBar:YES];
+    if ([result containsString:@"supplierShop"])
+    {
+        NSRange range = [result rangeOfString:@"supplierShop="];
+        NSString * request = [result substringFromIndex:range.location + range.length];
+        ScanfResultViewController * resultViewController = [[ScanfResultViewController alloc] initWithResult:request];
+        [self.navigationController pushViewController:resultViewController animated:YES needHiddenBottomBar:YES];
+    }
+    else
+    {
+        XYContactsInfoDetailViewController * contactDetailVC = [[XYContactsInfoDetailViewController alloc] init];
+        contactDetailVC.uid = result;
+        [self.navigationController pushViewController:contactDetailVC animated:YES needHiddenBottomBar:YES];
+    }
+    
 }
 
 

@@ -40,7 +40,7 @@ NSString *const kMerchantDetailTableViewCell = @"MerchantDetailTableViewCellId";
     [_contentLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.right.mas_equalTo(0);
         make.top.mas_equalTo(SCALE_NUM(5));
-        make.bottom.mas_equalTo(SCALE_NUM(-5));
+        make.height.mas_equalTo(SCALE_NUM(40));
     }];
 }
 

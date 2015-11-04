@@ -149,15 +149,15 @@
     }
     
     //认证
-    UILabel * authenticationLabel = [[UILabel alloc] init];
-    authenticationLabel.text = @"手机号未注册";
-    authenticationLabel.textColor = [UIColor hexChangeFloat:@"999999"];
-    authenticationLabel.font = CONTENT_FONT(10);
-    [backView addSubview:authenticationLabel];
-    [authenticationLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.right.mas_equalTo(-kPaddingDistance);
-        make.centerY.equalTo(_nameLabel);
-    }];
+//    UILabel * authenticationLabel = [[UILabel alloc] init];
+//    authenticationLabel.text = @"手机号未注册";
+//    authenticationLabel.textColor = [UIColor hexChangeFloat:@"999999"];
+//    authenticationLabel.font = CONTENT_FONT(10);
+//    [backView addSubview:authenticationLabel];
+//    [authenticationLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.right.mas_equalTo(-kPaddingDistance);
+//        make.centerY.equalTo(_nameLabel);
+//    }];
     
     
     //院系年级
@@ -327,7 +327,14 @@
 //        {
 //            return 30;
 //        }
-        return 30;
+        if ([_model.selfIntro isEqualToString:@""])
+        {
+            return 0;
+        }
+        else{
+            return 30;
+        }
+        
         
     }
     else if(indexPath.row == 1)
