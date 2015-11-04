@@ -543,6 +543,8 @@
     else
     {
         //其他处理
+        [YUtils showTitle:@"二维码不识别" hideAfter:2];
+        [self.navigationController popViewControllerAnimated:YES];
     }
 //    NSRange range = [result rangeOfString:@"?"];
 //    NSString * xiaoyouStr = [result substringToIndex:range.location];
