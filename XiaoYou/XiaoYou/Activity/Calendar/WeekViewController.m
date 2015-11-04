@@ -115,7 +115,7 @@ static NSString* const EventCellReuseIdentifier = @"EventCellReuseIdentifier";
             beginDate = [needDate beforeStartOfWeek];
         }
         if (needAfterWeek) {
-            endDate = [needDate endOfMonth];
+            endDate = [needDate afterEndOfWeek];
         }
     } else {
         if (needBeforeWeek) {
