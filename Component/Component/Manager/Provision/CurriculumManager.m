@@ -14,6 +14,7 @@
 #import "CourseTeacherlist.h"
 #import "FindMyCourseViewModel.h"
 #import "CourseTime.h"
+#import "CourseDetailAction.h"
 
 #define KCurriculumManagerSyncQueue @"kCurriculumManagerSyncQueue"
 
@@ -162,6 +163,18 @@ DEF_SINGLETON(CurriculumManager);
                 block(message);
             }];
         }];
+    }];
+}
+
+//获取课程详情
+- (void)courseDetail:(NSString *)uid blok:(ActionCompleteBlock)block {
+    CourseDetailAction *action = [[CourseDetailAction alloc] init];
+    action.uid = uid;
+    
+    [YAction startAction:action completionBlock:^(YActionMessage* message) {
+        
+        //主线程处理界面
+        block(message);
     }];
 }
 

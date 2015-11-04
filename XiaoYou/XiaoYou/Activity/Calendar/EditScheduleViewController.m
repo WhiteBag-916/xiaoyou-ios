@@ -29,7 +29,7 @@
 #define K_TAG_BCLASS          80002       //上课时间
 #define K_TAG_FCLASS          80003       //下课时间
 #define K_TAG_LOCATION        80004       //地点
-#define K_TAG_DEPARTMENTS     80005       //院系
+#define K_TAG_DEPARTMENTS     80005       //开课单位
 
 @interface EditScheduleViewController ()
 <UITextFieldDelegate
@@ -45,7 +45,7 @@
 @property (nonatomic, strong) UIView *bClassView;       //上课时间
 @property (nonatomic, strong) UIView *fClassView;       //下课时间
 @property (nonatomic, strong) UIView *locationView;     //地点
-@property (nonatomic, strong) UIView *departmentsView;  //院系
+@property (nonatomic, strong) UIView *departmentsView;  //开课单位
 
 @property (nonatomic, assign) NSInteger chooesTag;      //tag选择
 
@@ -199,7 +199,7 @@
     
     [self initField:@"build_icon_location" labelName:@"上课地点" fieldTag:K_TAG_LOCATION backView:_locationView];
     
-    //院系
+    //开课单位
     _departmentsView = [UIView new];
     [_contentView addSubview:_departmentsView];
     [_departmentsView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -209,7 +209,7 @@
         make.bottom.equalTo(backgroundImageView).offset(-K_CONTENT_B);
     }];
     
-    [self initField:@"havetime_icon_academy" labelName:@"院系" fieldTag:K_TAG_DEPARTMENTS backView:_departmentsView];
+    [self initField:@"havetime_icon_academy" labelName:@"开课单位" fieldTag:K_TAG_DEPARTMENTS backView:_departmentsView];
 }
 
 - (void)initHead:(NSString *)imageName labelName:(NSString *)labelName backView:(UIView *)backView {

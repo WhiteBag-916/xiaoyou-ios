@@ -17,6 +17,7 @@
 		202F03C91BE36A27006E7706 /* UserSchedulingConditionsAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 202F03C81BE36A27006E7706 /* UserSchedulingConditionsAction.m */; };
 		202F03CC1BE36AF0006E7706 /* UserSchedulingListAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 202F03CB1BE36AF0006E7706 /* UserSchedulingListAction.m */; };
 		202F03CF1BE36B73006E7706 /* UserSchedulingDetailAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 202F03CE1BE36B73006E7706 /* UserSchedulingDetailAction.m */; };
+		2030A2C01BE9B0C3003EDDF8 /* CourseDetailAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 2030A2BF1BE9B0C3003EDDF8 /* CourseDetailAction.m */; };
 		20402A1F1BE21B8B00802DAF /* FreeBuildingListAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 20402A1E1BE21B8B00802DAF /* FreeBuildingListAction.m */; };
 		20402A251BE2200A00802DAF /* FreeBuildingDetailAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 20402A241BE2200A00802DAF /* FreeBuildingDetailAction.m */; };
 		20859A7C1B64BD5B00580ED3 /* ProvisionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 20859A7B1B64BD5B00580ED3 /* ProvisionManager.m */; };
@@ -120,6 +121,8 @@
 		202F03CB1BE36AF0006E7706 /* UserSchedulingListAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserSchedulingListAction.m; sourceTree = "<group>"; };
 		202F03CD1BE36B73006E7706 /* UserSchedulingDetailAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserSchedulingDetailAction.h; sourceTree = "<group>"; };
 		202F03CE1BE36B73006E7706 /* UserSchedulingDetailAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserSchedulingDetailAction.m; sourceTree = "<group>"; };
+		2030A2BE1BE9B0C3003EDDF8 /* CourseDetailAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CourseDetailAction.h; sourceTree = "<group>"; };
+		2030A2BF1BE9B0C3003EDDF8 /* CourseDetailAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CourseDetailAction.m; sourceTree = "<group>"; };
 		20402A1D1BE21B8B00802DAF /* FreeBuildingListAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FreeBuildingListAction.h; sourceTree = "<group>"; };
 		20402A1E1BE21B8B00802DAF /* FreeBuildingListAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FreeBuildingListAction.m; sourceTree = "<group>"; };
 		20402A231BE2200A00802DAF /* FreeBuildingDetailAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FreeBuildingDetailAction.h; sourceTree = "<group>"; };
@@ -567,6 +570,8 @@
 				20DF60261BDF878300C8383B /* CourseTimeListAction.m */,
 				202F03B71BE359C0006E7706 /* FindMyCourseAction.h */,
 				202F03B81BE359C0006E7706 /* FindMyCourseAction.m */,
+				2030A2BE1BE9B0C3003EDDF8 /* CourseDetailAction.h */,
+				2030A2BF1BE9B0C3003EDDF8 /* CourseDetailAction.m */,
 			);
 			path = Curriculum;
 			sourceTree = "<group>";
@@ -775,6 +780,7 @@
 				20DCB9671B8CA60800C758DE /* ApplyListAction.m in Sources */,
 				202F03C91BE36A27006E7706 /* UserSchedulingConditionsAction.m in Sources */,
 				20DA8B371B8ECBC1007D0CDE /* ReceiveMobileAuthCodeAction.m in Sources */,
+				2030A2C01BE9B0C3003EDDF8 /* CourseDetailAction.m in Sources */,
 				20E372BF1BDDBFC50063BF56 /* CommonImgUpload.m in Sources */,
 				040619DC1BDE11C3008E3E4E /* NoticeAction.m in Sources */,
 				202F03CF1BE36B73006E7706 /* UserSchedulingDetailAction.m in Sources */,

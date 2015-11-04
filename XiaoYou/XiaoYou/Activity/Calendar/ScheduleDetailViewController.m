@@ -11,11 +11,13 @@
 #import "NewScheduleViewController.h"
 #import "UserSchedulingInfo.h"
 #import "ActivityManager.h"
+#import "CurriculumManager.h"
+#import "CourseDetail.h"
 
 #define K_IMG_LWH           SCALE_NUM(12)   //图标左、宽、高
 #define K_COURSEIMG_T       SCALE_NUM(22)   //课程图标上间距
 #define K_LECTURERIMG_T     SCALE_NUM(15)   //授课人图标上间距
-#define K_DEPARTMENTSIMG_T  SCALE_NUM(14)   //院系图标上间距
+#define K_DEPARTMENTSIMG_T  SCALE_NUM(14)   //开课单位图标上间距
 #define K_LEFTLAB_L         SCALE_NUM(10)   //描述左
 #define K_LEFTLAB_W         SCALE_NUM(70)   //描述宽
 #define K_NAMELAB_L         SCALE_NUM(0)   //名字左
@@ -32,9 +34,9 @@
 @property (nonatomic, strong) UILabel *lecturerName;        //授课人
 @property (nonatomic, strong) UILabel *timeLabel;           //上课时间
 @property (nonatomic, strong) UILabel *locationLabel;       //上课地点
-@property (nonatomic, strong) UILabel *departmentsName;     //院系
+@property (nonatomic, strong) UILabel *departmentsName;     //开课单位
 
-
+@property (nonatomic, strong) CourseDetail *courseDetail;//课程
 @property (nonatomic, strong) UserSchedulingInfo *userSchedulingInfo;
 
 @end
@@ -185,7 +187,7 @@
     
     _locationLabel = [YUtils initLabel:CONTENT_FONT(12)
                                  color:KCOLOR_B3
-                                  text:@"5号教学楼 5132室"
+                                  text:_userSchedulingInfo.address
                              alignment:NSTextAlignmentLeft];
     [self.view addSubview:_locationLabel];
     
@@ -195,7 +197,7 @@
         make.right.mas_equalTo(K_NAMELAB_R);
     }];
     
-    //院系
+    //开课单位
     UIImageView *departmentsImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"havetime_icon_remind"]];
     [self.view addSubview:departmentsImageView];
     
@@ -253,7 +255,7 @@
     
     _courseName = [YUtils initLabel:CONTENT_FONT(12)
                               color:KCOLOR_B3
-                               text:@"大学汉语"
+                               text:_courseDetail.courseName
                           alignment:NSTextAlignmentLeft];
     [self.view addSubview:_courseName];
     
@@ -280,7 +282,7 @@
     
     _lecturerName = [YUtils initLabel:CONTENT_FONT(12)
                                 color:KCOLOR_B3
-                                 text:@"王中磊"
+                                 text:_courseDetail.teacherName
                             alignment:NSTextAlignmentLeft];
     [self.view addSubview:_lecturerName];
     
@@ -311,9 +313,10 @@
         make.width.mas_equalTo(K_LEFTLAB_W);
     }];
     
+    NSString *timeText = [NSString stringWithFormat:@"第%g周 %@", _courseDetail.week, [[CurriculumManager sharedInstance] getCourseTimeByClass:_courseDetail.startTime endTime:_courseDetail.endTime]];
     _timeLabel = [YUtils initLabel:CONTENT_FONT(12)
                              color:KCOLOR_B3
-                              text:@"今天 09:00-10:30"
+                              text:timeText
                          alignment:NSTextAlignmentLeft];
     [self.view addSubview:_timeLabel];
     
@@ -347,7 +350,7 @@
     
     _locationLabel = [YUtils initLabel:CONTENT_FONT(12)
                                  color:KCOLOR_B3
-                                  text:@"5号教学楼 5132室"
+                                  text:_courseDetail.roomName
                              alignment:NSTextAlignmentLeft];
     [self.view addSubview:_locationLabel];
     
@@ -357,7 +360,7 @@
         make.right.mas_equalTo(K_NAMELAB_R);
     }];
     
-    //院系
+    //开课单位
     UIImageView *departmentsImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"havetime_icon_academy"]];
     [self.view addSubview:departmentsImageView];
     
@@ -368,7 +371,7 @@
     
     UILabel *departmentsLabel = [YUtils initLabel:CONTENT_FONT(12)
                                             color:KCOLOR_B5
-                                             text:@"院系："
+                                             text:@"开课单位："
                                         alignment:NSTextAlignmentLeft];
     [self.view addSubview:departmentsLabel];
     
@@ -380,7 +383,7 @@
     
     _departmentsName = [YUtils initLabel:CONTENT_FONT(12)
                                    color:KCOLOR_B3
-                                    text:@"汉语言文学系"
+                                    text:_courseDetail.departmentName
                                alignment:NSTextAlignmentLeft];
     [self.view addSubview:_departmentsName];
     
@@ -399,18 +402,34 @@
 
 - (void)initData {
     [YUtils showHUDWithTitle];
-    [[ActivityManager sharedInstance] userSchedulingDetail:[NSString stringWithFormat:@"%g", _userSchedulingInfo.internalBaseClassIdentifier] block:^(YActionMessage *message) {
-        [YUtils hiddenProgressHUD];
-        
-        if (message.isSuccess) {
-            self.userSchedulingInfo = message.object;
+    
+    if ([_userSchedulingInfo.type isEqualToString:@"user_scheduling"]) {
+        [[ActivityManager sharedInstance] userSchedulingDetail:[NSString stringWithFormat:@"%g", _userSchedulingInfo.internalBaseClassIdentifier] block:^(YActionMessage *message) {
+            [YUtils hiddenProgressHUD];
             
-            [self resetData];
+            if (message.isSuccess) {
+                self.userSchedulingInfo = message.object;
+                
+                [self resetData];
+                
+            } else {
+                [YUtils showTitle:message.desc];
+            }
+        }];
+    } else if ([_userSchedulingInfo.type isEqualToString:@"course"]) {
+        [[CurriculumManager sharedInstance] courseDetail:[NSString stringWithFormat:@"%g", _userSchedulingInfo.internalBaseClassIdentifier] blok:^(YActionMessage *message) {
+            [YUtils hiddenProgressHUD];
             
-        } else {
-            [YUtils showTitle:message.desc];
-        }
-    }];
+            if (message.isSuccess) {
+                self.courseDetail = message.object;
+                
+                [self resetData];
+                
+            } else {
+                [YUtils showTitle:message.desc];
+            }
+        }];
+    }
 }
 
 - (void)resetData {
