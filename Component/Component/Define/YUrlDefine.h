@@ -220,5 +220,8 @@
 #define api_course_findMyCourse   @"/course/findMyCourse"
 //获取商家列表
 #define api_supplier_shop_findList   @"/supplier/shop/findList"
+//获取课程详情
+#define api_course_detail   @"/course/detail"
+
 #endif
 

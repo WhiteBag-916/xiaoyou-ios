@@ -102,7 +102,7 @@
 -(NSArray *)dataSource
 {
     if (!_dataSource) {
-        _dataSource = @[@"学校官方活动提醒我",@"院系官方活动提醒我",@"校友APP发布的好玩的活动一定要提醒我"];
+        _dataSource = @[@"学校官方活动提醒我",@"开课单位官方活动提醒我",@"校友APP发布的好玩的活动一定要提醒我"];
     }
     return _dataSource;
 }

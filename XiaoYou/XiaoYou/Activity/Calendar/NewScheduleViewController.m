@@ -352,7 +352,7 @@
         
         //地点
         YTextField *locationTextField = (YTextField *)[_locationView viewWithTag:K_TAG_LOCATION];
-        locationTextField.text = _userSchedulingInfo.content;
+        locationTextField.text = _userSchedulingInfo.address;
         
         //提醒
         NSString *remindText = [[ActivityManager sharedInstance] remindTextByTime:_userSchedulingInfo.noticeTimePeriod];
@@ -491,7 +491,7 @@
     if (K_TAG_NAME == sender.tag) {
         _userSchedulingInfo.content = sender.text;
     } else if (K_TAG_LOCATION == sender.tag) {
-        _userSchedulingInfo.content = sender.text;
+        _userSchedulingInfo.address = sender.text;
     }
 }
 
