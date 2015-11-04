@@ -20,4 +20,5 @@
 
 - (void)initChooseSchoolNC;
 
+- (void)initNotifyRemindNC;
 @end

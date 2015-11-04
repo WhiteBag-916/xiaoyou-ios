@@ -39,6 +39,7 @@
     return cell;
 }
 
+#pragma mark 协议方法
 -(BOOL)needLine
 {
     return YES;
@@ -157,7 +158,6 @@
 
 -(void)setData:(NSArray *)scheduleArr
 {
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(messageNotifyAction:) name:KNotification_Remind_Message_Not_Read object:nil];
     for (int i = 0; i < scheduleArr.count; i++) {
         Scheduling *schedule = [scheduleArr objectAtIndex:i];
         if (i == 0) {

@@ -17,6 +17,10 @@
 #import "ActivityManager.h"
 #import "ActivityInfoModel.h"
 #import "AvailableTimeModel.h"
+#import "NotifyInfoModel.h"
+#import "YBaseService.h"
+#import "YDatabaseDao.h"
+#import "NSObject+MJKeyValue.h"
 
 #define KPAGENUM 10
 
@@ -159,7 +163,11 @@
         ScheduleCardCell *cell = [tableView dequeueReusableCellWithIdentifier:REUSEID_SCHEDULE_CELL];
         [cell setData:self.availableListArray[indexPath.row]];
 #pragma mark 此处需要数据库相关操作
-        //[cell setMessageNotReadIsVisible:YES Text:@"this is aa"];
+        int count = [self searchMessageNotRead];
+        if (count>0)
+            [cell setMessageNotReadIsVisible:YES Text:[NSString stringWithFormat:@"%d条未读消息",count]];
+        else
+            [cell setMessageNotReadIsVisible:NO Text:@""];
         return cell;
     } else if (indexPath.row == 1) {
         StudyRoomCell *cell = [StudyRoomCell cellWithTableView:tableView];
@@ -172,6 +180,23 @@
         return cell;
     }
     return nil;
+}
+
+#pragma mark 查找未读信息
+-(int)searchMessageNotRead
+{
+    
+    NSString *dataBasePath = [NSString stringWithFormat:@"%@//%@",[YDirectory documents],NSStringFromClass([NotifyInfoModel class])];
+    YDatabaseDao *dataBaseDao = [[YDatabaseDao alloc]initWitDatabasePath:dataBasePath];
+    
+    NSArray *notifyArr = [dataBaseDao queryModel:NSStringFromClass([NotifyInfoModel class])];
+    NSArray *notifyModelArr = [NotifyInfoModel objectArrayWithKeyValuesArray:notifyArr];
+    int count = 0;
+    for (NotifyInfoModel *model in notifyModelArr) {
+        if ([model.isRead isEqualToString:@"NO"])
+            count++;
+    }
+    return count;
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
@@ -215,12 +240,6 @@
         
         [self.viewController.navigationController pushViewController:activityDetailVC animated:YES needHiddenBottomBar:YES];
     }
-    //可以蹭的课
-//    else if (type == SCROUGECOURSE_CELL) {
-//        AvailableSimpleViewController *vc = [[AvailableSimpleViewController alloc] initWithType:AvailableSimpleTypeRubLesson];
-//        [self.viewController.navigationController pushViewController:vc animated:YES needHiddenBottomBar:YES];
-//    }
-    
 }
 
 

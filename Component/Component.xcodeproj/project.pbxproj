@@ -11,6 +11,7 @@
 		043B45411BE8967200050B32 /* YBaseService.m in Sources */ = {isa = PBXBuildFile; fileRef = 043B45401BE8967200050B32 /* YBaseService.m */; };
 		0463588E1BE0F5450055819F /* CancleActivityAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 0463588D1BE0F5450055819F /* CancleActivityAction.m */; };
 		04722E261BD8892700F95816 /* AvailableAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 04722E251BD8892700F95816 /* AvailableAction.m */; };
+		0490A4A81BE9DD2F0053023C /* NotifyRemindDao.m in Sources */ = {isa = PBXBuildFile; fileRef = 0490A4A71BE9DD2F0053023C /* NotifyRemindDao.m */; settings = {ASSET_TAGS = (); }; };
 		0499B9CE1BE70F1C00202CFD /* MainAvailableTimeAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 0499B9CD1BE70F1C00202CFD /* MainAvailableTimeAction.m */; };
 		04A2A0071BCE3969006A35FB /* AppConfigData.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A2A0061BCE3969006A35FB /* AppConfigData.m */; };
 		202F03B91BE359C0006E7706 /* FindMyCourseAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 202F03B81BE359C0006E7706 /* FindMyCourseAction.m */; };
@@ -110,6 +111,8 @@
 		0463588D1BE0F5450055819F /* CancleActivityAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CancleActivityAction.m; sourceTree = "<group>"; };
 		04722E241BD8892700F95816 /* AvailableAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AvailableAction.h; sourceTree = "<group>"; };
 		04722E251BD8892700F95816 /* AvailableAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AvailableAction.m; sourceTree = "<group>"; };
+		0490A4A61BE9DD2F0053023C /* NotifyRemindDao.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotifyRemindDao.h; sourceTree = "<group>"; };
+		0490A4A71BE9DD2F0053023C /* NotifyRemindDao.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotifyRemindDao.m; sourceTree = "<group>"; };
 		0499B9CC1BE70F1C00202CFD /* MainAvailableTimeAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainAvailableTimeAction.h; sourceTree = "<group>"; };
 		0499B9CD1BE70F1C00202CFD /* MainAvailableTimeAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainAvailableTimeAction.m; sourceTree = "<group>"; };
 		04A2A0051BCE3969006A35FB /* AppConfigData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppConfigData.h; sourceTree = "<group>"; };
@@ -285,6 +288,8 @@
 			children = (
 				043B453F1BE8967200050B32 /* YBaseService.h */,
 				043B45401BE8967200050B32 /* YBaseService.m */,
+				0490A4A61BE9DD2F0053023C /* NotifyRemindDao.h */,
+				0490A4A71BE9DD2F0053023C /* NotifyRemindDao.m */,
 			);
 			path = ActivityNotify;
 			sourceTree = "<group>";
@@ -771,6 +776,7 @@
 				04722E261BD8892700F95816 /* AvailableAction.m in Sources */,
 				20DDA3EB1BDA1D8D0023179A /* FindActivityTypesAction.m in Sources */,
 				20E1C6721B89EB9F008BA9D6 /* ReceiveAuthCodeAction.m in Sources */,
+				0490A4A81BE9DD2F0053023C /* NotifyRemindDao.m in Sources */,
 				04A2A0071BCE3969006A35FB /* AppConfigData.m in Sources */,
 				20DA74C31B8C120F0002E041 /* FriendsConditionAction.m in Sources */,
 				20C5B05D1B8DB08900B4A8A8 /* GroupDetailAction.m in Sources */,
