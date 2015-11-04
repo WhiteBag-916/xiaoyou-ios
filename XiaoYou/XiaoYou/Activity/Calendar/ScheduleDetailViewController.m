@@ -60,6 +60,12 @@
     
     [self initData];
     [self initView];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changeScheduleDetail:) name:KNotification_Change_Schedule object:nil];
+}
+
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 - (void)initSchedulingView {
@@ -230,9 +236,9 @@
 
 - (void)resetSchedulingView {
     _courseName.text = _userSchedulingInfo.content;
-    NSDate *beginTime = [NSDate dateWithTimeIntervalSince1970:_userSchedulingInfo.startTime];
+    NSDate *beginTime = [NSDate dateWithTimeIntervalSince1970:_userSchedulingInfo.startTime/1000];
     _lecturerName.text = [NSDate stringFromDate:beginTime withFormat:@"yy/MM/dd HH:mm"];
-    NSDate *endTime = [NSDate dateWithTimeIntervalSince1970:_userSchedulingInfo.endTime];
+    NSDate *endTime = [NSDate dateWithTimeIntervalSince1970:_userSchedulingInfo.endTime/1000];
     _timeLabel.text = [NSDate stringFromDate:endTime withFormat:@"yy/MM/dd HH:mm"];
     _locationLabel.text = _userSchedulingInfo.address;
     _departmentsName.text = [[ActivityManager sharedInstance] remindTextByTime:_userSchedulingInfo.noticeTimePeriod];
@@ -510,6 +516,20 @@
     NewScheduleViewController *vc = [[NewScheduleViewController alloc] initWithInfo:_userSchedulingInfo];
     [self.navigationController presentViewController:vc animated:YES completion:nil];
 }
+
+//更改日程
+- (void)changeScheduleDetail:(NSNotification *)notification {
+    NSDictionary *dic = [notification userInfo];
+    
+    UserSchedulingInfo *info = dic[@"info"];
+    
+    if (info.internalBaseClassIdentifier == _userSchedulingInfo.internalBaseClassIdentifier && [info.type isEqualToString:@"user_scheduling"]) {
+        self.userSchedulingInfo = info;
+        
+        [self resetSchedulingView];
+    }
+}
+
 /*
 #pragma mark - Navigation
 
