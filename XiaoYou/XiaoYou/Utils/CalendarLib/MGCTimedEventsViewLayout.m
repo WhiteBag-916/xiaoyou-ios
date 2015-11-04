@@ -135,11 +135,18 @@
                 //第一个
                 if (attribs1.frame.origin.y < attribs2.frame.origin.y+attribs2.frame.size.height) {
                     [layoutGroup addObject:attribs2];
+                } else {
+                    //没有交集，直接pass
+                    break;
                 }
             } else {
                 MGCEventCellLayoutAttributes *attribs3 = [adjustedAttributes objectAtIndex:j+1];
                 if (attribs3.frame.origin.y < attribs2.frame.origin.y+attribs2.frame.size.height) {
                     [layoutGroup addObject:attribs2];
+                }
+                else {
+                    //没有交集，直接pass
+                    break;
                 }
             }
 //			MGCEventCellLayoutAttributes *attribs2 = [adjustedAttributes objectAtIndex:j];
