@@ -73,8 +73,8 @@
 		20E366411B92F7DC00A22FFE /* RegAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 20E366401B92F7DC00A22FFE /* RegAction.m */; };
 		20E372BF1BDDBFC50063BF56 /* CommonImgUpload.m in Sources */ = {isa = PBXBuildFile; fileRef = 20E372BE1BDDBFC50063BF56 /* CommonImgUpload.m */; };
 		3339625C1B95575400DD0A6D /* SuggestListAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 3339625B1B95575400DD0A6D /* SuggestListAction.m */; };
+		E4642C7F1BE9AFBC00B3C8B1 /* CodeManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E4642C7E1BE9AFBC00B3C8B1 /* CodeManager.m */; };
 		E47E59811BE8D85F00AF7F5C /* ShopListAction.m in Sources */ = {isa = PBXBuildFile; fileRef = E47E59801BE8D85F00AF7F5C /* ShopListAction.m */; };
-		E47E59841BE8DC5700AF7F5C /* CodeManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E47E59831BE8DC5700AF7F5C /* CodeManager.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -240,10 +240,10 @@
 		20E372BE1BDDBFC50063BF56 /* CommonImgUpload.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommonImgUpload.m; sourceTree = "<group>"; };
 		3339625A1B95575400DD0A6D /* SuggestListAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SuggestListAction.h; sourceTree = "<group>"; };
 		3339625B1B95575400DD0A6D /* SuggestListAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SuggestListAction.m; sourceTree = "<group>"; };
+		E4642C7D1BE9AFBC00B3C8B1 /* CodeManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CodeManager.h; sourceTree = "<group>"; };
+		E4642C7E1BE9AFBC00B3C8B1 /* CodeManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CodeManager.m; sourceTree = "<group>"; };
 		E47E597F1BE8D85F00AF7F5C /* ShopListAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShopListAction.h; sourceTree = "<group>"; };
 		E47E59801BE8D85F00AF7F5C /* ShopListAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShopListAction.m; sourceTree = "<group>"; };
-		E47E59821BE8DC5700AF7F5C /* CodeManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CodeManager.h; sourceTree = "<group>"; };
-		E47E59831BE8DC5700AF7F5C /* CodeManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CodeManager.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -391,8 +391,6 @@
 			children = (
 				209E08C31BDDC9E20062758E /* NoticeManager.h */,
 				209E08C41BDDC9E20062758E /* NoticeManager.m */,
-				E47E59821BE8DC5700AF7F5C /* CodeManager.h */,
-				E47E59831BE8DC5700AF7F5C /* CodeManager.m */,
 				20DADED61BD0958400FB294F /* ActivityManager.h */,
 				20DADED71BD0958400FB294F /* ActivityManager.m */,
 			);
@@ -627,6 +625,8 @@
 		E47E597E1BE8D80E00AF7F5C /* TwoDimensionCode */ = {
 			isa = PBXGroup;
 			children = (
+				E4642C7D1BE9AFBC00B3C8B1 /* CodeManager.h */,
+				E4642C7E1BE9AFBC00B3C8B1 /* CodeManager.m */,
 			);
 			path = TwoDimensionCode;
 			sourceTree = "<group>";
@@ -727,7 +727,7 @@
 				20DBFD861B4FD3F5009134D0 /* YUtils+Component.m in Sources */,
 				20DA1A5A1B89751500DEF95C /* MyCommentPersonsAction.m in Sources */,
 				20DCB9701B8CA60800C758DE /* FindFriendsByTagsAction.m in Sources */,
-				E47E59841BE8DC5700AF7F5C /* CodeManager.m in Sources */,
+				E4642C7F1BE9AFBC00B3C8B1 /* CodeManager.m in Sources */,
 				20DA8B341B8EC4F0007D0CDE /* CommonAction.m in Sources */,
 				20DED8721B94208B004B5E7B /* RegNoticeAction.m in Sources */,
 				20DDA4311BDA26050023179A /* FindByActivityPublishedIdAction.m in Sources */,

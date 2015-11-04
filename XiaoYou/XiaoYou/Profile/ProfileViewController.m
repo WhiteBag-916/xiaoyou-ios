@@ -512,6 +512,8 @@
 {
 //    [self.navigationController popViewControllerAnimated:true];
 //    [self.navigationController pushViewController:[[GiftViewController alloc] initWithCode:result] animated:true];
+    NSRange range = [result rangeOfString:@"supplierShop="];
+    NSString * str = [result substringFromIndex:range.location + range.length];
     ScanfResultViewController * resultViewController = [[ScanfResultViewController alloc] initWithResult:result];
     [self.navigationController pushViewController:resultViewController animated:YES needHiddenBottomBar:YES];
 }
