@@ -323,8 +323,7 @@ DEF_SINGLETON(MessageManager);
     NSDictionary *ext = message.ext;
     BOOL needReload = NO;
     BOOL needRefresh = NO;
-    
-    NSLog(@"ext = %@",ext);
+
     
     if ([ext[@"server_flag"] boolValue])
     {
@@ -390,16 +389,10 @@ DEF_SINGLETON(MessageManager);
                 needRefresh = YES;
                 break;
             }
-            case ACTIVITY_PUSH://活动推送 12
-            {
-                [self dealMessageWithDict:ext Type:ACTIVITY_PUSH];
-                [self showNotificationWithMessage:message];
-                break;
-            }
             case ACTIVITY_ENROLL_CHECK_PASS://报名审核通过 13
             {
                 [self dealMessageWithDict:ext Type:ACTIVITY_ENROLL_CHECK_PASS];
-                [self showNotificationWithMessage:message];
+                //[self showNotificationWithMessage:message];
                 break;
             }
             case ACTIVITY_ENROLL_NO_CHECK://报名审核未通过 14
@@ -411,8 +404,6 @@ DEF_SINGLETON(MessageManager);
             case SCHEDULE_REMIND: //用户日程提醒 15
             {
                 [self dealMessageWithDict:ext Type:SCHEDULE_REMIND];
-                //[self showNotificationWithMessage:message];
-                //[AppConfigData setHaveRemindMessage:YES];
                 break;
             }
             case ACTIVITY_ENROLL: //用户报名活动提醒 16
@@ -494,19 +485,10 @@ DEF_SINGLETON(MessageManager);
 {
     NotifyInfoModel *notiInfo = [[NotifyInfoModel alloc]init];
     notiInfo.em_push_title = dict[@"em_apns_ext"][@"em_push_title"];
+    notiInfo.timestamp = [dict[@"timestamp"] doubleValue];
     notiInfo.isRead = @"NO";
     switch (type)
     {
-        case ACTIVITY_PUSH:// 活动推送
-        {
-            notiInfo.headIcon = dict[@"headIcon"];
-            notiInfo.idStr = dict[@"id"];
-            notiInfo.name = dict[@"name"];
-            notiInfo.organizer = dict[@"organizer"];
-            notiInfo.startTime = [dict[@"startTime"] doubleValue];
-            notiInfo.type = [[dict valueForKey:@"type"] integerValue];
-            break;
-        }
         case ACTIVITY_ENROLL_CHECK_PASS: //审核通过
         {
             notiInfo.headIcon = dict[@"headIcon"];
@@ -515,6 +497,8 @@ DEF_SINGLETON(MessageManager);
             notiInfo.organizer = dict[@"organizer"];
             notiInfo.startTime = [dict[@"startTime"] doubleValue];
             notiInfo.type = [[dict valueForKey:@"type"] integerValue];
+            
+            [AppConfigData setHaveRemindMessage:YES];
             break;
         }
         case ACTIVITY_ENROLL_NO_CHECK:
@@ -529,7 +513,7 @@ DEF_SINGLETON(MessageManager);
         }
         case SCHEDULE_REMIND: //用户日程提醒
         {
-            
+            notiInfo.name = dict[@"name"];
             notiInfo.idStr = dict[@"id"];
             notiInfo.startTime = [dict[@"startTime"] doubleValue];
             notiInfo.type = [[dict valueForKey:@"type"] integerValue];

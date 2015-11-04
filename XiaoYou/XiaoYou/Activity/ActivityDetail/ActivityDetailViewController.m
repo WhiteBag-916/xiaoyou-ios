@@ -159,6 +159,12 @@
                 _joinInBtn.backgroundColor = KCOLOR_g2;
                 [self IsShowCustomNavigationMoreButton:YES];
             }
+            else if ([model.enrollStatus isEqualToString:@"self_activity"]) {
+                _joinInBtn.enabled = YES;
+                _joinInBtn.backgroundColor = KCOLOR_g2;
+                [_joinInBtn setTitle:@"我要加入" forState:UIControlStateNormal];
+                [self IsShowCustomNavigationMoreButton:NO];
+            }
             [_detailListView loadData];
         }
     }];

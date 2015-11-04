@@ -331,7 +331,7 @@
     _categoryLabel.text = @"学术类";
     _categoryLabel.textColor = KCOLOR_B3;
     [_categoryLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.height.mas_equalTo(SCALE_NUM(13));
+        make.height.mas_equalTo(SCALE_NUM(15));
         make.left.equalTo(_locationLabel);
         make.centerY.equalTo(_categotyImageView.mas_centerY);
     }];

@@ -115,10 +115,9 @@
     _remindTitleLabel.text = @"有人参加你的活动";
     _remindTitleLabel.font = CONTENT_FONT(15);
     [_remindTitleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.height.mas_equalTo(SCALE_NUM(15));
+        make.height.mas_equalTo(SCALE_NUM(17));
         make.left.equalTo(self.titleImageView.mas_right).offset(10);
-        make.top.equalTo(self.titleImageView);
-        make.height.equalTo(self.titleImageView);
+        make.centerY.equalTo(_titleImageView);
     }];
     
     //中间内容部分，分割线

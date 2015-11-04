@@ -101,7 +101,7 @@
     _remindTitleLabel.textColor = KCOLOR_B4;
     _remindTitleLabel.font = CONTENT_FONT(15);
     [_remindTitleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.height.mas_equalTo(SCALE_NUM(15));
+        make.height.mas_equalTo(SCALE_NUM(17));
         make.left.equalTo(self.titleImageView.mas_right).offset(10).priorityLow();
         make.centerY.equalTo(_titleImageView);
     }];
@@ -272,14 +272,15 @@
 
 -(void)setNotifyData:(NotifyInfoModel *)model
 {
-    _titleImageView.image = nil;
+    [_titleImageView setFaceImageWithUrl:model.headIcon];
     [_remindTitleLabel mas_updateConstraints:^(MASConstraintMaker *make) {
         make.leading.mas_equalTo(SCALE_NUM(5)).priorityHigh();
     }];
-    _remindTitleLabel.text = @"学院活动通知";
-    _contentTitleLabel.text = @"活动组织者";
-    _contentNameLabel.text = @"活动名称";
-    _activityTimeLabel.text = @"活动开始时间";
+    _remindTitleLabel.text = model.em_push_title;
+    _contentTitleLabel.text = model.organizer;
+    _contentNameLabel.text = model.name;
+    _activityTimeLabel.text = [TimeFormatterConvert timeConvertToFommtterAvailable:model.startTime];
+    
     _tailLabel.text = @"看看都有谁参加了";
 }
 

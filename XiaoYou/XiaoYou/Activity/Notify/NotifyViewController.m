@@ -11,6 +11,7 @@
 #import "YBaseService.h"
 #import "NotifyInfoModel.h"
 #import "YDatabaseDao.h"
+#import "NSObject+MJKeyValue.h"
 
 @interface NotifyViewController ()
 
@@ -57,9 +58,24 @@
     if (!_notifyDataSource) {
         NSString *dataBasePath = [NSString stringWithFormat:@"%@//%@",[YDirectory documents],NSStringFromClass([NotifyInfoModel class])];
         YDatabaseDao *dataBaseDao = [[YDatabaseDao alloc]initWitDatabasePath:dataBasePath];
-        _notifyDataSource = [dataBaseDao queryModel:NSStringFromClass([NotifyInfoModel class])];
+        NSString *tableName = NSStringFromClass([NotifyInfoModel class]);
+        NSArray *queryArr = [dataBaseDao queryModel:tableName];
+        _notifyDataSource = [NotifyInfoModel objectArrayWithKeyValuesArray:queryArr];
+        [dataBaseDao deleteAllDataWithTableName:tableName];
+        
+        
+        for (NotifyInfoModel *model in _notifyDataSource) {
+            model.isRead = @"YES";
+            [dataBaseDao insertModel:model];
+        }
     }
     return _notifyDataSource;
+}
+
+-(void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    [[NSNotificationCenter defaultCenter] postNotificationName:KNotification_Activity_Release_Success object:nil];
 }
 
 @end

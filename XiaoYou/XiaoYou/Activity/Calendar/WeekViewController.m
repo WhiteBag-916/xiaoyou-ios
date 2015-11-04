@@ -192,8 +192,11 @@ static NSString* const EventCellReuseIdentifier = @"EventCellReuseIdentifier";
 
 //增加数组
 - (void)addSchedulingArray:(NSArray *)array {
+    if (array.count <= 0) {
+        return;
+    }
     //去重
-    NSMutableArray *dataArray = [[NSMutableArray alloc] initWithArray:array];
+    NSMutableArray *dataArray = [NSMutableArray arrayWithArray:array];
     
     [_userSchedulingInfoArray enumerateObjectsUsingBlock:^(UserSchedulingInfo * _Nonnull userSchedulingInfoObj, NSUInteger userSchedulingInfoIdx, BOOL * _Nonnull userSchedulingInfoStop) {
 
