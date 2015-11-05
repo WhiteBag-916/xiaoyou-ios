@@ -87,7 +87,10 @@
     _timeLabel1.text = @"8:00-9:00";
     _timeLabel1.font = CONTENT_FONT(12);
     _timeLabel1.textColor = KCOLOR_B5;
+    _timeLabel1.numberOfLines = 1;
+    _timeLabel1.lineBreakMode = NSLineBreakByTruncatingTail;
     [_timeLabel1 mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.width.mas_equalTo(SCALE_NUM(205));
         make.height.mas_equalTo(SCALE_NUM(12));
         make.top.equalTo(_titleLabel.mas_bottom).offset(SCALE_NUM(20));
         make.left.equalTo(_titleLabel);
@@ -101,9 +104,9 @@
     [_projectLabel1 mas_makeConstraints:^(MASConstraintMaker *make) {
         make.height.mas_equalTo(SCALE_NUM(12));
         //make.leading.mas_equalTo(SCALE_NUM(150));
-        make.left.equalTo(_timeLabel1.mas_right).offset(SCALE_NUM(10));
+        make.left.equalTo(_timeLabel1.mas_right).offset(SCALE_NUM(5));
         make.centerY.equalTo(_timeLabel1);
-        make.trailing.mas_equalTo(SCALE_NUM(-5));
+        make.trailing.mas_equalTo(SCALE_NUM(-15));
     }];
     
     _timeLabel2 = [[UILabel alloc]init];
@@ -111,8 +114,10 @@
     _timeLabel2.textColor = KCOLOR_B5;
     _timeLabel2.text = @"8:00-9:00";
     _timeLabel2.font = CONTENT_FONT(12);
+    _timeLabel2.numberOfLines = 1;
+    _timeLabel2.lineBreakMode = NSLineBreakByTruncatingTail;
     [_timeLabel2 mas_makeConstraints:^(MASConstraintMaker *make) {
-        //make.height.mas_equalTo(SCALE_NUM(12));
+        make.width.equalTo(_timeLabel1);
         make.top.equalTo(_timeLabel1.mas_bottom).offset(SCALE_NUM(15));
         make.left.equalTo(_timeLabel1);
     }];
@@ -134,8 +139,10 @@
     _timeLabel3.text = @"10:00-12:00";
     _timeLabel3.textColor = KCOLOR_B5;
     _timeLabel3.font = CONTENT_FONT(12);
+    _timeLabel3.numberOfLines = 1;
+    _timeLabel3.lineBreakMode = NSLineBreakByTruncatingTail;
     [_timeLabel3 mas_makeConstraints:^(MASConstraintMaker *make) {
-        //make.height.mas_equalTo(SCALE_NUM(12));
+        make.width.equalTo(_timeLabel2);
         make.top.equalTo(_timeLabel2.mas_bottom).offset(SCALE_NUM(15)).priorityLow();
         make.left.equalTo(_timeLabel2);
         make.bottom.mas_equalTo(SCALE_NUM(-15)).priorityHigh();
@@ -158,23 +165,33 @@
 
 -(void)setData:(NSArray *)scheduleArr
 {
+    
     for (int i = 0; i < scheduleArr.count; i++) {
         Scheduling *schedule = [scheduleArr objectAtIndex:i];
         if (i == 0) {
-            _timeLabel1.text = [TimeFormatterConvert timeConvertToFommtterScheduleStartTime:schedule.startTime EndTime:schedule.endTime];
-            _projectLabel1.text = schedule.content;
+            _timeLabel1.text    = schedule.content;
+            _projectLabel1.text = [TimeFormatterConvert timeConvertToFommtterScheduleStartTime:schedule.startTime EndTime:schedule.endTime];
+            if ([_projectLabel1.text isEqualToString:@"进行中"]) {
+                _projectLabel1.textColor = KCOLOR_g1;
+            }
             _timeLabel2.text    = @"";
             _projectLabel2.text = @"";
             _timeLabel3.text    = @"";
             _projectLabel3.text = @"";
         } else if (i == 1) {
-            _timeLabel2.text = [TimeFormatterConvert timeConvertToFommtterScheduleStartTime:schedule.startTime EndTime:schedule.endTime];
-            _projectLabel2.text = schedule.content;
+            _timeLabel2.text = schedule.content;
+            _projectLabel2.text = [TimeFormatterConvert timeConvertToFommtterScheduleStartTime:schedule.startTime EndTime:schedule.endTime];
+            if ([_projectLabel2.text isEqualToString:@"进行中"]) {
+                _projectLabel2.textColor = KCOLOR_g1;
+            }
             _timeLabel3.text    = @"";
             _projectLabel3.text = @"";
         } else if (i == 2) {
-            _timeLabel3.text = [TimeFormatterConvert timeConvertToFommtterScheduleStartTime:schedule.startTime EndTime:schedule.endTime];
-            _projectLabel3.text = schedule.content;
+            _timeLabel3.text = schedule.content;
+            _projectLabel3.text = [TimeFormatterConvert timeConvertToFommtterScheduleStartTime:schedule.startTime EndTime:schedule.endTime];
+            if ([_projectLabel3.text isEqualToString:@"进行中"]) {
+                _projectLabel3.textColor = KCOLOR_g1;
+            }
         }
     }
     if (scheduleArr.count == 1) {

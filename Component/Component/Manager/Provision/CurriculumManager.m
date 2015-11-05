@@ -50,9 +50,6 @@ DEF_SINGLETON(CurriculumManager);
     [self courseTimeList:^(YActionMessage *message) {
         
     }];
-    [self findMyCourse:^(YActionMessage *message) {
-        
-    }];
 }
 
 - (void)appDidLogout:(NSDictionary *)logoutInfo
@@ -138,12 +135,24 @@ DEF_SINGLETON(CurriculumManager);
     
     [YAction startAction:action completionBlock:^(YActionMessage* message) {
         
-        if (message.isSuccess) {
-            self.courseTimeListModel = message.object;
+        if (0 == self.findMyCourseArray.count) {
+            if (message.isSuccess) {
+                self.courseTimeListModel = message.object;
+                
+                [self findMyCourse:^(YActionMessage *message2) {
+                    //主线程处理界面
+                    block(message2);
+                }];
+            } else {
+                //主线程处理界面
+                block(message);
+            }
+        } else {
+            //主线程处理界面
+            block(message);
         }
         
-        //主线程处理界面
-        block(message);
+        
     }];
 }
 

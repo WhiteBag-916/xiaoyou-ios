@@ -15,7 +15,29 @@
 
 +(NSString *)timeConvertToFommtterScheduleStartTime:(double)startTime EndTime:(double)endTime
 {
-    NSTimeInterval time = (startTime + TIME_OFFSET)/1000;//因为时差问题要加8小时 == 28800 sec
+    NSTimeInterval timeNowInter = [[NSDate date] timeIntervalSince1970];
+    NSTimeInterval timeStartInter = startTime /1000;
+    NSTimeInterval endTimeInter = endTime/1000;
+    
+    NSTimeInterval jiange = 0;
+    if (timeNowInter >= timeStartInter && timeNowInter <= endTimeInter) {
+        return @"进行中";
+    }
+    else if (timeNowInter < startTime) {
+        jiange = startTime - timeNowInter;
+    }
+    if (jiange > 24 * 60 * 60) {
+        jiange = jiange /(24 * 60 * 60)*1.0;
+        return [NSString stringWithFormat:@"还有%d天开始",(int)jiange];
+    } else if (jiange > 60 * 60) {
+        jiange = jiange /(60 * 60)*1.0;
+        return [NSString stringWithFormat:@"还有%dH开始",(int)jiange];
+    } else {
+        jiange = jiange /60.0;
+        return [NSString stringWithFormat:@"还有%dmin开始",(int)jiange];
+    }
+    
+    /*NSTimeInterval time = (startTime + TIME_OFFSET)/1000;//因为时差问题要加8小时 == 28800 sec
     NSDate *detaildate=[NSDate dateWithTimeIntervalSince1970:time];
     //实例化一个NSDateFormatter对象
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
@@ -27,9 +49,9 @@
     NSDate *endDate=[NSDate dateWithTimeIntervalSince1970:endTimeInter];
     NSString *endTimeStr = [dateFormatter stringFromDate:endDate];
     
-    NSString *retTimeStr = [NSString stringWithFormat:@"%@-%@",currentDateStr,endTimeStr];
+    NSString *retTimeStr = [NSString stringWithFormat:@"%@-%@",currentDateStr,endTimeStr];*/
     
-    return retTimeStr;
+    return @"";
 }
 
 //@"2015/10/25 06:00"
