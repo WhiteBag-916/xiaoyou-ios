@@ -35,6 +35,9 @@
 #define kPaddingDistance               10
 #define kLabelHeightDistacnce          16
 #define kBadgeWidthDistance            21
+#define kRemindImageViewWidth          13
+#define kRemindImageViewHeight         15
+#define kRemindImageViewToRight        25
 #define kBottomLineHeight              0.4
 
 
@@ -89,7 +92,7 @@
 {
     _message = model;
     
-    UIView * backView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, kRowHeight)];
+    UIView * backView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, kRowHeight*2)];
     UITapGestureRecognizer * tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapGestureRecognizerAction)];
     [backView addGestureRecognizer:tapGestureRecognizer];
     backView.backgroundColor = [UIColor clearColor];
@@ -149,6 +152,7 @@
     //消息
     _messageLabel = [[UILabel alloc] initWithFrame:CGRectMake(2*kPaddingDistance + kHeadWidthAndHeight, kRowHeight - kLabelHeightDistacnce - kPaddingDistance, SCREEN_WIDTH - kBadgeWidthDistance - kHeadWidthAndHeight - 4*kPaddingDistance, kLabelHeightDistacnce)];
     _messageLabel.font = CONTENT_FONT(12);
+    _messageLabel.textColor = KCOLORWHITE_696969;
     _messageLabel.backgroundColor = [UIColor clearColor];
     if (model)
     {
@@ -168,6 +172,53 @@
     
     
     self.tableHeaderView = backView;
+    
+    
+    UIView * funBackView = [[UIView alloc] initWithFrame:CGRectMake(0, kRowHeight, SCREEN_WIDTH, kRowHeight)];
+    UITapGestureRecognizer * tapFunGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapFunGestureRecognizerAction)];
+    [funBackView addGestureRecognizer:tapFunGestureRecognizer];
+    funBackView.backgroundColor = [UIColor clearColor];
+
+    //头像
+    UIImageView * funHeadImageView = [[UIImageView alloc] initWithFrame:CGRectMake(kPaddingDistance, kPaddingDistance, kHeadWidthAndHeight, kHeadWidthAndHeight)];
+    funHeadImageView.layer.cornerRadius = kHeadCornerRadius;
+    funHeadImageView.clipsToBounds = YES;
+    funHeadImageView.image = [UIImage imageNamed:@"news_icon_beautiful"];
+    funHeadImageView.backgroundColor = [UIColor clearColor];
+    [funBackView addSubview:funHeadImageView];
+
+    //好玩
+//    UILabel * funDefaultLabel = [[UILabel alloc] initWithFrame:CGRectMake(kPaddingDistance, kPaddingDistance, kHeadWidthAndHeight, kHeadWidthAndHeight)];
+//    funDefaultLabel.text = @"好看";
+//    funDefaultLabel.font = CONTENT_FONT(12);
+//    funDefaultLabel.textAlignment = NSTextAlignmentCenter;
+//    funDefaultLabel.textColor = [UIColor whiteColor];
+//    [funBackView addSubview:funDefaultLabel];
+
+    //姓名
+    UILabel * funNameLabel = [[UILabel alloc] initWithFrame:CGRectMake(2*kPaddingDistance + kHeadWidthAndHeight, kPaddingDistance, kNameLabelWidth, kLabelHeightDistacnce)];
+    funNameLabel.font = CONTENT_FONT(14);
+    funNameLabel.text = @"好看";
+    funNameLabel.backgroundColor = [UIColor clearColor];
+    [funBackView addSubview:funNameLabel];
+
+    //标签
+    UILabel * funFlagLabel = [[UILabel alloc] initWithFrame:CGRectMake(2*kPaddingDistance + kHeadWidthAndHeight, kRowHeight - kLabelHeightDistacnce - kPaddingDistance, 15*kPaddingDistance, kLabelHeightDistacnce)];
+    funFlagLabel.font = CONTENT_FONT(12);
+    funFlagLabel.textColor = KCOLORWHITE_696969;
+    funFlagLabel.text = @"你最关心的校园资讯";
+    funFlagLabel.backgroundColor = [UIColor clearColor];
+    [funBackView addSubview:funFlagLabel];
+
+    //底线
+    UIView * funBottomView = [[UIView alloc] initWithFrame:CGRectMake(0, kRowHeight-1, SCREEN_WIDTH, kBottomLineHeight)];
+    funBottomView.backgroundColor = [UIColor grayColor];
+    funBottomView.alpha = 0.6;
+    [funBackView addSubview:funBottomView];
+    
+    [backView addSubview:funBackView];
+    //    [backView addSubview:funBackView];
+    
 //    UIView * backView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, kRowHeight)];
 //    UITapGestureRecognizer * tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapGestureRecognizerAction)];
 //    [backView addGestureRecognizer:tapGestureRecognizer];
@@ -280,6 +331,11 @@
 //        make.width.mas_equalTo(SCREEN_WIDTH);
 //        make.height.mas_equalTo(kRowHeight);
 //    }];
+}
+
+-(void)tapFunGestureRecognizerAction
+{
+    //好看相关节面
 }
 
 #pragma mark - 得到最后消息文字或者类型
