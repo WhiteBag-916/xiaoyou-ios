@@ -11,7 +11,6 @@
 #import "StudyRoomTableView.h"
 #import "StudyRoomDetailTableView.h"
 #import "ActivityChoiceController.h"
-#import "YNotificationDefine.h"
 
 typedef enum : NSUInteger {
     Choice_Type,
@@ -37,16 +36,9 @@ typedef enum : NSUInteger {
     return self;
 }
 
--(void)dealloc
-{
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
-}
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshTableView:) name:KNotification_Study_Room_Filtrate object:nil];
     
     [self showCustomNavigationBackButton];
 
@@ -74,26 +66,27 @@ typedef enum : NSUInteger {
         }];
     }else if (AvailableSimpleTypeStudyRoomDetail == _type) {
         
-        switch (self.num) {
-            case 0:
-                self.title = @"文学部教学楼";
-                break;
-            case 1:
-                self.title = @"中央教学楼";
-                break;
-            case 2:
-                self.title = @"工学部教学楼";
-                break;
-            case 3:
-                self.title = @"理学部教学楼";
-                break;
-            case 4:
-                self.title = @"科研教学楼";
-                break;
-                
-            default:
-                break;
-        }
+        self.title = self.buildName;
+//        switch (self.num) {
+//            case 0:
+//                self.title = @"文学部教学楼";
+//                break;
+//            case 1:
+//                self.title = @"中央教学楼";
+//                break;
+//            case 2:
+//                self.title = @"工学部教学楼";
+//                break;
+//            case 3:
+//                self.title = @"理学部教学楼";
+//                break;
+//            case 4:
+//                self.title = @"科研教学楼";
+//                break;
+//                
+//            default:
+//                break;
+//        }
         
         [self setUpCustomNavgationBar:Question_Type];
         
@@ -106,10 +99,6 @@ typedef enum : NSUInteger {
     }
 }
 
--(void)refreshTableView:(NSNotification *) info
-{
-    NSLog(@"%@",info.userInfo);
-}
 
 -(void)setUpCustomNavgationBar:(Navigation_Right_type) type
 {
@@ -138,10 +127,19 @@ typedef enum : NSUInteger {
 
 //筛选Action
 - (void)filterAction {
-    ActivityChoiceController * choiceController = [[ActivityChoiceController alloc] initWithType:CLASSROOM_CHOICE_TYPE];
-    choiceController.classViewController = self;
-    choiceController.dataSourceArr = _studyRoomTableView.campusDataSouceArr;
-    [self.navigationController presentViewController:choiceController animated:YES completion:nil];
+    if (_studyRoomTableView.campusDataSouceArr.count > 0)
+    {
+        ActivityChoiceController * choiceController = [[ActivityChoiceController alloc] initWithType:CLASSROOM_CHOICE_TYPE andDataSource:_studyRoomTableView.campusDataSouceArr andStudyRoomDefautStr:_studyRoomTableView.campusDataSouceArr[0]];
+        choiceController.classViewController = self;
+        [self.navigationController presentViewController:choiceController animated:YES completion:nil];
+    }
+    else
+    {
+        ActivityChoiceController * choiceController = [[ActivityChoiceController alloc] initWithType:CLASSROOM_CHOICE_TYPE andDataSource:_studyRoomTableView.campusDataSouceArr andStudyRoomDefautStr:nil];
+        choiceController.classViewController = self;
+        [self.navigationController presentViewController:choiceController animated:YES completion:nil];
+    }
+    
 }
 
 - (void)questionAction

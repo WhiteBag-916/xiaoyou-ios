@@ -8,8 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
+@class FindMyCourseViewModel;
+
 extern NSString *const kMyTimetableCurriculumCollectionViewCell;
 
 @interface MyTimetableCurriculumCollectionViewCell : UICollectionViewCell
+
+- (void)initData:(FindMyCourseViewModel *)model;
 
 @end

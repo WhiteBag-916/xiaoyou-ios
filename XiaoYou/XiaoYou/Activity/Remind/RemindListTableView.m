@@ -87,7 +87,6 @@
 - (void)loadNewData
 {
      _currentIndex = 0;
-    [_remindListArray removeAllObjects];
     [self sendRequest];
 }
 
@@ -141,6 +140,10 @@
             cellHeight = SCALE_NUM(145);
         } else if (type == ALREADY_SUBMIT) {
             cellHeight = SCALE_NUM(190);
+        } else if (type == SUCESSED_JOININ) {
+            cellHeight = SCALE_NUM(190);
+        } else if (type == NEED_CHECK) {
+            cellHeight = SCALE_NUM(190);
         }
     }
     return cellHeight;
@@ -180,9 +183,8 @@
 {
     
     UITableViewCell *cell = nil;
-    NoticeInfo *info;
-    if (self.remindListArray.count > 0)
-        info = self.remindListArray[indexPath.section];
+    NoticeInfo *info = self.remindListArray[indexPath.section];
+    
     if (info.activityOwner) {
         ApplyRemindCell *appCell = [ApplyRemindCell cellWithTableView:tableView];
         [appCell setData:info];
@@ -191,11 +193,7 @@
     {
         CELL_TYPE type = [self cellTypeByModelString:info.checkStatus];
         PassRemindCell *remindCell = [PassRemindCell passRemindCellWithTableView:tableView];
-        if (type == AUDIT_PASSED) {
-            remindCell.cellType = AUDIT_PASSED;
-        } else if (type == AUDIT_NOT_PASSED) {
-            remindCell.cellType = AUDIT_NOT_PASSED;
-        }
+        remindCell.cellType = type;
         [remindCell setData:info];
         cell = remindCell;
     }
@@ -217,7 +215,7 @@
 
 -(CELL_TYPE)cellTypeByModelString:(NSString*)modelStr
 {
-    NSDictionary *dict = @{@"check_pass":@(AUDIT_PASSED),@"no_pass":@(AUDIT_NOT_PASSED),@"need_check":@(ALREADY_SUBMIT)};
+    NSDictionary *dict = @{@"check_pass":@(AUDIT_PASSED),@"no_pass":@(AUDIT_NOT_PASSED),@"need_check":@(ALREADY_SUBMIT),@"no_check":@(SUCESSED_JOININ),@"need_check":@(NEED_CHECK)};
     return [dict[modelStr] integerValue];
 }
 

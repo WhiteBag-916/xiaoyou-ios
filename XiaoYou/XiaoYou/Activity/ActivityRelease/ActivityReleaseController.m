@@ -580,39 +580,19 @@ typedef enum : NSUInteger {
         
         [[ActivityManager sharedInstance] commonImgUpload:@"activity" needSnap:@"true" imagePath:fullPath block:^(YActionMessage *message) {
             NSLog(@"%@",message);
+            
+            [YUtils hiddenProgressHUD];
+//            [YUtils showTitle:message.desc hideAfter:2];
             if (message.isSuccess)
             {
                 [self sendReleaseRequest:message];
             }
-            
-            
         }];
     }
     else
     {
         [self sendReleaseRequest:nil];
     }
-
-//    NSDateFormatter * formatter = [[NSDateFormatter alloc] init];
-//    [formatter setDateFormat:@"yyyy年MM月dd日 a HH:mm"];
-//    NSDate * applyDate = [formatter dateFromString:_dataManager.ActivityDateApplyText];
-//    NSDate * endDate = [formatter dateFromString:_dataManager.ActivityDateEndText];
-//    if ([endDate isEqualToDate:[applyDate laterDate:endDate]])
-//    {
-//        _dataManager.ActivityNameText = nil;
-//        _dataManager.ActivityDesciptionText = nil;
-//        _dataManager.ActivityDesciptionImage = nil;
-//        _dataManager.ActivityDateApplyText = nil;
-//        _dataManager.ActivityDateBeginText = nil;
-//        _dataManager.ActivityDateEndText = nil;
-//        _dataManager.ActivityPlaceText = nil;
-//        
-//        [self.navigationController popViewControllerAnimated:YES];
-//    }
-//    else
-//    {
-//        [YUtils showTitle:@"截至时间不能在活动结束时间之后"];
-//    }
     
 }
 
@@ -687,10 +667,10 @@ typedef enum : NSUInteger {
     
     [[ActivityManager sharedInstance] editActivity:modelDic block:^(YActionMessage *message) {
         NSLog(@"%@",message);
+        [YUtils hiddenProgressHUD];
+        [YUtils showTitle:message.desc hideAfter:2];
         if (message.isSuccess)
         {
-            [YUtils hiddenProgressHUD];
-            [YUtils showTitle:message.desc hideAfter:2];
             if ([[message.object valueForKey:@"code"] integerValue] == 1)
             {
                 [[NSNotificationCenter defaultCenter] postNotificationName:KNotification_Activity_Release_Success object:nil];

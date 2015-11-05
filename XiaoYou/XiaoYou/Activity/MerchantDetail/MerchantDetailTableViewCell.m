@@ -32,31 +32,31 @@ NSString *const kMerchantDetailTableViewCell = @"MerchantDetailTableViewCellId";
     
     _contentLabel = [[UILabel alloc] init];
     _contentLabel.backgroundColor = [UIColor clearColor];
-    _contentLabel.font = CONTENT_FONT(SCALE_NUM(12));
+    _contentLabel.font = CONTENT_FONT(SCALE_NUM(14));
     _contentLabel.numberOfLines = 0;
     _contentLabel.textAlignment = NSTextAlignmentCenter;
-    _contentLabel.textColor = KCOLOR_B4;
+    _contentLabel.textColor = KCOLOR_g1;
     [self.contentView addSubview:_contentLabel];
     [_contentLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.right.mas_equalTo(0);
         make.top.mas_equalTo(SCALE_NUM(5));
-        make.bottom.mas_equalTo(SCALE_NUM(-5));
+        make.height.mas_equalTo(SCALE_NUM(40));
     }];
 }
 
--(void)setCellInfo:(NSString *) showStr isHeader:(BOOL) isHeader
+-(void)setCellInfo:(SupplierShopDiscounts *) model isHeader:(BOOL) isHeader
 {
     if (isHeader)
     {
         _contentLabel.font = CONTENT_FONT(SCALE_NUM(18));
         _contentLabel.textColor = KCOLOR_g1;
-        _contentLabel.text = showStr;
+        _contentLabel.text = @"商家优惠详情";
     }
     else
     {
-        _contentLabel.font = CONTENT_FONT(SCALE_NUM(12));
+        _contentLabel.font = CONTENT_FONT(SCALE_NUM(14));
         _contentLabel.textColor = KCOLOR_B4;
-        _contentLabel.text = showStr;
+        _contentLabel.text = model.discountDetail;
     }
 }
 

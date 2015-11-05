@@ -10,21 +10,26 @@
 #import "TopView.h"
 #import "MiddleInfoView.h"
 #import "MerchantDetailTableViewCell.h"
+#import "SupplierShopDiscounts.h"
 
 @interface MerchantDetailTableView ()<UITableViewDataSource,UITableViewDelegate>
 
 @property(nonatomic,strong)TopView * topView;
 @property(nonatomic,strong)MiddleInfoView * middleInfoView;
+@property(nonatomic,strong)ShopList * model;
+@property(nonatomic,strong)NSMutableArray * dataSourceArr;
 
 @end
 
 @implementation MerchantDetailTableView
 
-- (instancetype)init
+- (instancetype)initWithModel:(ShopList *) model
 {
     self = [super init];
     if (self) {
         
+        _model = model;
+        self.dataSourceArr = (NSMutableArray *)_model.supplierShopDiscounts;
         self.delegate = self;
         self.dataSource = self;
         self.separatorStyle = UITableViewCellSeparatorStyleNone;
@@ -36,19 +41,27 @@
     return self;
 }
 
+-(NSMutableArray *)dataSourceArr
+{
+    if (!_dataSourceArr) {
+        _dataSourceArr = [NSMutableArray array];
+    }
+    return _dataSourceArr;
+}
+
 -(void)setUpHeaderView
 {
-    UIView * backView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCALE_NUM(300))];
+    UIView * backView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_WIDTH*3/4+SCALE_NUM(132))];
  
-    _topView = [[TopView alloc] initWithImageCount:8];
+    _topView = [[TopView alloc] initWithModel:_model];
     _topView.backgroundColor = [UIColor clearColor];
     [backView addSubview:_topView];
     [_topView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.right.top.mas_equalTo(0);
-        make.height.mas_equalTo(SCALE_NUM(150));
+        make.height.mas_equalTo(SCREEN_WIDTH*3/4);
     }];
     
-    _middleInfoView = [[MiddleInfoView alloc] init];
+    _middleInfoView = [[MiddleInfoView alloc] initWithModel:_model];
     _middleInfoView.backgroundColor = [UIColor clearColor];
     [backView addSubview:_middleInfoView];
     [_middleInfoView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -67,7 +80,7 @@
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 10;
+    return _dataSourceArr.count;
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -75,11 +88,11 @@
     MerchantDetailTableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:kMerchantDetailTableViewCell forIndexPath:indexPath];
     if (indexPath.row == 0)
     {
-        [cell setCellInfo:@"商家优惠详情" isHeader:YES];
+        [cell setCellInfo:nil isHeader:YES];
     }
     else
     {
-        [cell setCellInfo:@"商家优惠优惠详情商家优惠优惠详情商家优惠优惠详情商家优惠优惠详情商家优惠优惠详情商家优惠优惠详情" isHeader:NO];
+        [cell setCellInfo:_dataSourceArr[indexPath.row] isHeader:NO];
     }
     
     return cell;
@@ -87,7 +100,13 @@
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return SCALE_NUM(50);
+    if (_dataSourceArr.count == indexPath.row + 1) {
+        return SCALE_NUM(70);
+    }
+    else
+    {
+        return SCALE_NUM(50);
+    }
 }
 
 @end

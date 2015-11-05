@@ -10,9 +10,13 @@
 #import "AppDelegate+Notification.h"
 #import "YLog.h"
 #import "EaseMob.h"
+#import "XYTabBarViewController.h"
+
+#import "AppDelegate+RootVC.h"
 
 @implementation AppDelegate (Notification)
 
+//程序在未启动的时候，如果用户点击通知，notification会通过didFinishLaunchingWithOptions传递
 - (void)initNotification:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     [self registerRemoteNotification];
@@ -22,6 +26,13 @@
     [[EaseMob sharedInstance] application:application didFinishLaunchingWithOptions:launchOptions];
     
     [self setupNotifiers];
+    
+    //处理程序启动时的后台推送
+    NSDictionary *notifyInfo = [launchOptions objectForKey:UIApplicationLaunchOptionsRemoteNotificationKey];
+    
+    if (notifyInfo) {
+        NSLog(@"this is local notity.....");
+    }
 }
 
 // 注册推送
@@ -61,10 +72,10 @@
     NSLog(@"error -- %@",error);
 }
 
+//程序正在后台运行，如果用户点击通知,会走这个方法,如果不点通知，就不会走这个方法
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo
 {
     YLogI(@"didReceiveRemoteNotification : %@", userInfo);
-    
     [[UIApplication sharedApplication] setApplicationIconBadgeNumber:1];
     [[UIApplication sharedApplication] setApplicationIconBadgeNumber:0];
     
@@ -79,6 +90,16 @@
 //                                          cancelButtonTitle:NSLocalizedString(@"ok", @"OK")
 //                                          otherButtonTitles:nil];
 //    [alert show];
+}
+
+//从后台进入前台的时候,会通过此方法
+-(void)application:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)notification
+{
+    NSLog(@"this is notiy....");
+    
+    [self initNotifyRemindNC];
+    //XYTabBarViewController *tabBarVC = self.window.rootViewController;
+    //tabBarVC.selectedViewController = [tabBarVC.viewControllers objectAtIndex:1];
 }
 
 

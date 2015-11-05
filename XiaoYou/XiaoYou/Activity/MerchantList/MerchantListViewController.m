@@ -23,6 +23,13 @@
     [self setUpUI];
 }
 
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    [_merchantListTableView sendRequest];
+}
+
 -(void)setUpUI
 {
     [self showCustomNavigationBackButton];

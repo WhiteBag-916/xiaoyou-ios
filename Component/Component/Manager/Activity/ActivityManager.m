@@ -22,8 +22,17 @@
 #import "UserSchedulingConditionsAction.h"
 #import "UserSchedulingListAction.h"
 #import "UserSchedulingDetailAction.h"
+#import "MainAvailableTimeAction.h"
+#import "UserSchedulingListConditionsModel.h"
+#import "UserSchedulingEditAction.h"
 
 #define KActivityManagerSyncQueue @"kActivityManagerSyncQueue"
+
+@interface ActivityManager ()
+
+@property (nonatomic, strong) NSMutableArray *userSchedulingConditionsArray;//提醒时间列表
+
+@end
 
 @implementation ActivityManager
 
@@ -53,6 +62,52 @@ DEF_SINGLETON(ActivityManager);
 - (void)appDidLogout:(NSDictionary *)logoutInfo
 {
     
+}
+
+//根据时间取日程提醒text
+- (NSString *)remindTextByTime:(NSInteger)time {
+    __block NSString *remindText = @"不设置提醒";
+    
+    if (time>=0) {
+        [_userSchedulingConditionsArray enumerateObjectsUsingBlock:^(UserSchedulingListConditionsModel * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            if (obj.datePeriod == time) {
+                remindText = obj.notifyShowContent;
+                *stop = YES;
+            }
+        }];
+    }
+    
+    return remindText;
+}
+
+//根据text取日程提醒时间
+- (NSInteger)timeByRemindText:(NSString *)remindText {
+    __block NSInteger time = 0;
+    
+    [_userSchedulingConditionsArray enumerateObjectsUsingBlock:^(UserSchedulingListConditionsModel * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        if ([obj.notifyShowContent isEqualToString:remindText]) {
+            time = obj.datePeriod;
+            *stop = YES;
+        }
+    }];
+    
+    return time;
+}
+
+//提醒列表
+- (NSArray *)remindArray {
+    return _userSchedulingConditionsArray;
+}
+
+//提醒文字列表
+- (NSArray *)remindTextArray {
+    NSMutableArray *array = [@[] mutableCopy];
+    
+    [_userSchedulingConditionsArray enumerateObjectsUsingBlock:^(UserSchedulingListConditionsModel * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        [array addObject:obj.notifyShowContent];
+    }];
+    
+    return array;
 }
 
 //获取当前用户活动列表
@@ -223,15 +278,26 @@ DEF_SINGLETON(ActivityManager);
     UserSchedulingConditionsAction *action = [[UserSchedulingConditionsAction alloc]init];
     
     [YAction startAction:action completionBlock:^(YActionMessage *message) {
-        block(message);
+        
+        //子线程处理数据
+        [YQueue dispatchInSyncQueueWithQueueType:KActivityManagerSyncQueue block:^{
+            if (message.isSuccess)
+            {
+                self.userSchedulingConditionsArray = [NSMutableArray arrayWithArray:message.object];
+            }
+            
+            //主线程处理界面
+            [YQueue dispatchInMainQueueWithBlock:^{
+                block(message);
+            }];
+        }];
     }];
 }
 
 //新增或修改日程
 - (void)userSchedulingEdit:(NSDictionary *)dic block:(ActionCompleteBlock)block {
-    CommonAction *action = [[CommonAction alloc] init];
-    action.parameter = [YUtils getParameter:dic needUserToken:YES needContent:YES];
-    action.url = [YUtils getUrl:api_userScheduling_edit];
+    UserSchedulingEditAction *action = [[UserSchedulingEditAction alloc] init];
+    action.contentDic = [NSDictionary dictionaryWithDictionary:dic];
     
     [YAction startAction:action completionBlock:^(YActionMessage* message) {
         
@@ -267,12 +333,24 @@ DEF_SINGLETON(ActivityManager);
 }
 
 //根据日程id查询
-- (void)userSchedulingDetail:(NSString *)uid block:(ActionCompleteBlock)block {
+- (void)userSchedulingDetail:(NSInteger)uid block:(ActionCompleteBlock)block {
     UserSchedulingDetailAction *action = [[UserSchedulingDetailAction alloc] init];
     action.uid = uid;
     
     [YAction startAction:action completionBlock:^(YActionMessage* message) {
         
+        //主线程处理界面
+        block(message);
+    }];
+}
+
+-(void)getCurrentUseMainAvailableListLimitStart:(NSInteger)limitStart limitEnd:(NSInteger)limitEnd block:(ActionCompleteBlock)block
+{
+    MainAvailableTimeAction *action = [[MainAvailableTimeAction alloc] init];
+    action.limitStart = limitStart;
+    action.limitEnd = limitEnd;
+    action.isGetScheduling = YES;  //默认设置都请求
+    [YAction startAction:action completionBlock:^(YActionMessage *message) {
         //主线程处理界面
         block(message);
     }];

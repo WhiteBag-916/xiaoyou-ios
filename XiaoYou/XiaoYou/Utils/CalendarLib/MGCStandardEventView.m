@@ -94,7 +94,7 @@ static CGFloat kSpace = 2;
 	//style.lineBreakMode = NSLineBreakByTruncatingMiddle;
 	[as addAttribute:NSParagraphStyleAttributeName value:style range:NSMakeRange(0, as.length)];
 	
-	UIColor *color = self.selected ? [UIColor whiteColor] : self.color;
+    UIColor *color = [UIColor whiteColor];// self.selected ? [UIColor whiteColor] : self.color;
 	[as addAttribute:NSForegroundColorAttributeName value:color range:NSMakeRange(0, as.length)];
 	
 	self.attrString = as;
@@ -123,14 +123,15 @@ static CGFloat kSpace = 2;
 
 - (void)resetColors
 {
-	self.leftBorderView.backgroundColor = self.color;
+	self.leftBorderView.backgroundColor = [UIColor clearColor];
+    self.backgroundColor = [self.color colorWithAlphaComponent:.7];
 	
-	if (self.selected)
-		self.backgroundColor = self.selected ? self.color : [self.color colorWithAlphaComponent:.3];
-	else if (self.style & MGCStandardEventViewStylePlain)
-		self.backgroundColor = [self.color colorWithAlphaComponent:.3];
-	else
-		self.backgroundColor = [UIColor clearColor];
+//	if (self.selected)
+//		self.backgroundColor = self.selected ? self.color : [self.color colorWithAlphaComponent:.7];
+//	else if (self.style & MGCStandardEventViewStylePlain)
+//		self.backgroundColor = [self.color colorWithAlphaComponent:.7];
+//	else
+//		self.backgroundColor = [UIColor clearColor];
 	
 	[self setNeedsDisplay];
 }
@@ -155,7 +156,7 @@ static CGFloat kSpace = 2;
 
 - (void)drawRect:(CGRect)rect
 {
-	CGRect drawRect = CGRectInset(rect, kSpace, 0);
+	CGRect drawRect = CGRectInset(rect, kSpace, 5);
 	if (self.style & MGCStandardEventViewStyleBorder) {
 		drawRect.origin.x += kSpace;
 		drawRect.size.width -= kSpace;

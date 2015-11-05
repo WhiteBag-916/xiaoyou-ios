@@ -7,11 +7,12 @@
 //
 
 #import "YTableViewCell.h"
+#import "SupplierShopDiscounts.h"
 
 extern NSString *const kMerchantDetailTableViewCell;
 
 @interface MerchantDetailTableViewCell : YTableViewCell
 
--(void)setCellInfo:(NSString *) showStr isHeader:(BOOL) isHeader;
+-(void)setCellInfo:(SupplierShopDiscounts *) model isHeader:(BOOL) isHeader;
 
 @end

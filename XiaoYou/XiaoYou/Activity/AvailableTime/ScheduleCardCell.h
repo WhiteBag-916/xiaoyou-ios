@@ -16,6 +16,8 @@
 
 +(ScheduleCardCell*)cellWithTableView:(UITableView*)tableView;
 
--(void)setData:(id)aa;
+-(void)setData:(NSArray*)scheduleArr;
+
+-(void)setMessageNotReadIsVisible:(BOOL)isVisible Text:(NSString*)text;
 
 @end

@@ -10,6 +10,7 @@
 #define HAVETIME_USE_KEY   @"isFirstUseHaveTime"
 #define FEED_USE_KEY       @"isFirstUseFeed"
 #define READCODE_USE_KEY   @"isFirstUseReadCode"
+#define HAVE_REMIND_MESSAGE @"isHaveRemindMessage"
 @implementation AppConfigData
 
 
@@ -53,4 +54,34 @@
     }
     return NO;
 }
+
++(BOOL)isHaveRemindMessage
+{
+    NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
+    NSString *value = [userDefault objectForKey:HAVE_REMIND_MESSAGE];
+    
+    //第一次使用
+    if(!value) {
+        [userDefault setValue:@"NO" forKey:HAVE_REMIND_MESSAGE];
+        return YES;
+    } else if ([value isEqualToString:@"YES"]) {
+        return YES;
+    } else if ([value isEqualToString:@"NO"]) {
+        return NO;
+    }
+    return NO;
+}
+
++(void)setHaveRemindMessage:(BOOL)haveMessage
+{
+    NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
+    if (haveMessage) {
+        [userDefault setValue:@"YES" forKey:HAVE_REMIND_MESSAGE];
+    }
+    else
+    {
+        [userDefault setValue:@"NO" forKey:HAVE_REMIND_MESSAGE];
+    }
+}
+
 @end

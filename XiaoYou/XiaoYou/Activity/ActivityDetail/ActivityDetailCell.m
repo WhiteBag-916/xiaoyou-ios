@@ -120,15 +120,13 @@
     _categoryLabel.text = info.name;
     
     //跳转活动链接
-    publishModel.originalTextUrl = @"http://www.baidu.com";
-//    if (publishModel.originalTextUrl == nil || [publishModel.originalTextUrl isEmpty]) {
-//        [_jumpLinkButton removeFromSuperview];
-//        [_categotyImageView mas_makeConstraints:^(MASConstraintMaker *make) {
-//            make.bottom.mas_equalTo(SCALE_NUM(-15));
-//        }];
-//    }
+    if (publishModel.originalTextUrl == nil || [publishModel.originalTextUrl isEmpty]) {
+        [_jumpLinkButton removeFromSuperview];
+        [_categotyImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.bottom.mas_equalTo(SCALE_NUM(-15));
+        }];
+    }
 }
-
 
 
 -(void)initTopViewWithType:(TOPVIEWTYPE)type {
@@ -238,7 +236,6 @@
     _staticDeadLineDes.textColor = KCOLOR_B3;
     [_staticDeadLineDes mas_makeConstraints:^(MASConstraintMaker *make) {
         make.height.mas_equalTo(SCALE_NUM(13));
-        //make.leading.mas_equalTo(SCALE_NUM(66));
         make.left.equalTo(_middleView);
         make.centerY.equalTo(_timeImageView.mas_centerY);
     }];
@@ -307,18 +304,21 @@
     
     _locationLabel = [[UILabel alloc]init];
     _locationLabel.text = @"大脚超市门口";
+    _locationLabel.numberOfLines = 0;
+    _locationLabel.lineBreakMode = NSLineBreakByWordWrapping;
     [self.contentView addSubview:_locationLabel];
     _locationLabel.textColor = KCOLOR_B3;
     _locationLabel.font = CONTENT_FONT(13);
     [_locationLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(_staticActivityTimeDes);
-        make.centerY.equalTo(_locationImageView.mas_centerY);
+        make.top.equalTo(_locationImageView.mas_top);
+        make.trailing.mas_equalTo(SCALE_NUM(-5));
     }];
     
     _categotyImageView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"funny_detail_category"]];
     [self.contentView addSubview:_categotyImageView];
     [_categotyImageView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(_locationImageView.mas_bottom).offset(SCALE_NUM(15));
+        make.top.equalTo(_locationLabel.mas_bottom).offset(SCALE_NUM(15));
         make.centerX.equalTo(_locationImageView);
         make.height.mas_equalTo(SCALE_NUM(17));
         make.width.mas_equalTo(SCALE_NUM(17));
@@ -331,7 +331,7 @@
     _categoryLabel.text = @"学术类";
     _categoryLabel.textColor = KCOLOR_B3;
     [_categoryLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.height.mas_equalTo(SCALE_NUM(13));
+        make.height.mas_equalTo(SCALE_NUM(15));
         make.left.equalTo(_locationLabel);
         make.centerY.equalTo(_categotyImageView.mas_centerY);
     }];
@@ -347,7 +347,6 @@
         make.left.equalTo(_categoryLabel);
         make.height.mas_equalTo(SCALE_NUM(14));
         make.bottom.mas_equalTo(SCALE_NUM(-10));
-        
     }];
 }
 

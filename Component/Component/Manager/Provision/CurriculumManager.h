@@ -10,12 +10,22 @@
 #import "YAction.h"
 
 @class CourseTimeListModel;
+@class FindMyCourseViewModel;
 
 @interface CurriculumManager : YManager<YManager>
 AS_SINGLETON(CurriculumManager);
 
 //取课程时间
 - (CourseTimeListModel *)getCourseTime;
+
+//根据课时取课程时间
+- (NSString *)getCourseTimeByClass:(NSInteger)beginTime endTime:(NSInteger)endTime;
+
+//根据周取课程数据
+- (NSArray *)getDataByWeek:(NSInteger)weekNum;
+
+//根据model读取课的上课星期
+- (NSString *)weekByCourseTimeID:(FindMyCourseViewModel *)model;
 
 /*********************************************************************
  函数名称 : courseTimeList
@@ -34,5 +44,14 @@ AS_SINGLETON(CurriculumManager);
  作者 : XiongChen
  *********************************************************************/
 - (void)findMyCourse:(ActionCompleteBlock)block;
+
+/*********************************************************************
+ 函数名称 : courseDetail
+ 函数描述 : 获取课程详情
+ 参数 : N/A
+ 返回值 : FindMyCourseModel
+ 作者 : XiongChen
+ *********************************************************************/
+- (void)courseDetail:(NSString *)uid blok:(ActionCompleteBlock)block;
 
 @end

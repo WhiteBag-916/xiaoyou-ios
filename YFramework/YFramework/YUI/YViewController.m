@@ -112,12 +112,24 @@
 #pragma mark - 左导航栏
 - (void)showCustomNavigationBackButton
 {
-    [self showNomalNavigationLeftButton:@"" action:@selector(onNavigationLeftButtonClicked) imgName:@"common_back" frame:CGRectMake(0, 0, 9, 14)];
+    [self showNomalNavigationLeftButton:@"" action:@selector(onNavigationLeftButtonClicked) imgName:@"common_back" frame:CGRectMake(0, 0, 29, 34) inset:UIEdgeInsetsMake(10, 5, 10, 15)];
 }
 
 //导航栏左侧显示取消按钮
 - (void)showCustomNavigationCancelButton {
-    [self showNomalNavigationLeftButton:@"" action:@selector(onNavigationLeftButtonClicked) imgName:@"complete-cancel" frame:CGRectMake(0, 0, 16, 16)];
+    [self showNomalNavigationLeftButton:@"" action:@selector(onNavigationLeftButtonClicked) imgName:@"complete-cancel" frame:CGRectMake(0, 0, 26, 26) inset:UIEdgeInsetsMake(5, 5, 5, 5)];
+}
+
+- (void)showNomalNavigationLeftButton:(NSString *)title action:(SEL)selector imgName:(NSString *)imgName frame:(CGRect)frame inset:(UIEdgeInsets)inset {
+    [self showNomalNavigationLeftButton:title action:selector imgName:imgName frame:frame];
+    if (nil != imgName)
+    {
+        _navigationLeftButton.imageEdgeInsets = inset;
+    }
+    else
+    {
+        _navigationLeftButton.titleEdgeInsets = inset;
+    }
 }
 
 - (void)showNomalNavigationLeftButton:(NSString *)title action:(SEL)selector imgName:(NSString *)imgName frame:(CGRect)frame
@@ -152,11 +164,9 @@
 //导航栏右侧，更多按钮
 - (void)showCustomNavigationMoreButton {
     [self IsShowCustomNavigationMoreButton:YES];
-//    NSString *imageName = [NSString stringWithFormat:@"%@",isShow ? @"more" : @""];
-//    [self showNomalNavigationRightButtonWithImage:@"" action:@selector(onNavigationRightButtonClicked) imgName:imageName frame:CGRectMake(0, 0, 18, 64)];
 }
 
-//导航栏右侧，更多按钮
+//导航栏右侧,是否显示更多按钮
 - (void)IsShowCustomNavigationMoreButton:(BOOL)isShow {
     NSString *imageName = [NSString stringWithFormat:@"%@",isShow ? @"more" : @""];
     [self showNomalNavigationRightButtonWithImage:@"" action:@selector(onNavigationRightButtonClicked) imgName:imageName frame:CGRectMake(0, 0, 18, 64)];
@@ -186,8 +196,9 @@
 }
 
 //导航栏左侧提醒按钮
-- (void)showCustomNavigationRemindButton {
-    [self showNomalNavigationLeftButton:@"" action:@selector(onNavigationLeftButtonClicked) imgName:@"have_time_msg" frame:CGRectMake(0, 0, 16, 16)];
+- (void)showCustomNavigationRemindButton:(BOOL)haveMsg {
+    NSString *imageName = haveMsg ? @"red_point_bell":@"have_time_msg";
+    [self showNomalNavigationLeftButton:@"" action:@selector(onNavigationLeftButtonClicked) imgName:imageName frame:CGRectMake(0, 0, 16, 16)];
 }
 
 - (void)showNomalNavigationRightButtonWithImage:(NSString *)title action:(SEL)selector imgName:(NSString *)imgName frame:(CGRect)frame {

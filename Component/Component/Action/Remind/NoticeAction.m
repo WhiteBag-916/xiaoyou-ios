@@ -20,7 +20,10 @@
     NSDictionary *parameter = [YUtils getParameter:dic needUserToken:YES needContent:YES];
     NSString *url = [YUtils getUrl:api_remind_list];
     
+    
     [self POST:url parameters:parameter completion:^(YHttpRequest *request) {
+        NSLog(@"this is parameter....==%@",parameter);
+        
         YActionMessage *message = [NoticeInfo actionMessageWithHttpRequest:request];
         self.completionBlock(message);
     }];

@@ -12,6 +12,8 @@
 #import "ProfileInfo.h"
 #import "WhoJoinInController.h"
 #import "ActivityDetailViewController.h"
+#import "TimeFormatterConvert.h"
+#import "NotifyInfoModel.h"
 
 #define REUSRID             @"PassRemindCell"
 #define CELL_INSET          SCALE_NUM(12)
@@ -35,6 +37,8 @@
 
 
 @property(nonatomic,strong) NoticeInfo  *model;             //提醒model
+
+@property(nonatomic,strong) NotifyInfoModel *notifyModel;
 @end
 
 
@@ -100,8 +104,8 @@
     _remindTitleLabel.textColor = KCOLOR_B4;
     _remindTitleLabel.font = CONTENT_FONT(15);
     [_remindTitleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.height.mas_equalTo(SCALE_NUM(15));
-        make.left.equalTo(self.titleImageView.mas_right).offset(10);
+        make.height.mas_equalTo(SCALE_NUM(17));
+        make.left.equalTo(self.titleImageView.mas_right).offset(10).priorityLow();
         make.centerY.equalTo(_titleImageView);
     }];
     
@@ -149,16 +153,15 @@
         make.height.mas_equalTo(SCALE_NUM(12));
         make.top.equalTo(_contentTitleLabel.mas_bottom).offset(SCALE_NUM(15));
         make.left.equalTo(self.contentTitleLabel.mas_left);
-        //make.bottom.equalTo(self.headImageView.mas_bottom);
     }];
     
     _activityTimeLabel = [[UILabel alloc]init];
     [self.wrapContentView addSubview:_activityTimeLabel];
     _activityTimeLabel.font = CONTENT_FONT(12);
-    _activityTimeLabel.text = @"活动时间：15/12/12 18:00-20:00";
+    _activityTimeLabel.text = @"活动开始时间：%@";
     _activityTimeLabel.textColor = KCOLOR_B3;
     [_activityTimeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.height.mas_equalTo(SCALE_NUM(12));
+        make.height.mas_equalTo(SCALE_NUM(14));
         make.top.equalTo(_contentNameLabel.mas_bottom).offset(SCALE_NUM(15));
         make.left.equalTo(_contentNameLabel);
     }];
@@ -219,7 +222,13 @@
 //点击中间部分cell
 -(void)middleAction:(UIButton*)btn {
     YLogD(@"this is midele action");
-    NSString *publishID = [NSString stringWithFormat:@"%ld",(long)self.model.activityPublishedId];
+    NSString *publishID;
+    if (_notifyModel) {
+        publishID = self.notifyModel.idStr;
+    }
+    else {
+        publishID = [NSString stringWithFormat:@"%ld",(long)self.model.activityPublishedId];
+    }
     ActivityDetailViewController *detailVC = [[ActivityDetailViewController alloc]initWithPublishID:publishID];
     [self.viewController.navigationController pushViewController:detailVC animated:YES needHiddenBottomBar:YES];
 }
@@ -227,7 +236,14 @@
 //点击下面部分cell
 -(void)bottomAction:(UIButton*)btn {
     YLogD(@"this is bottom action");
-    NSString *publishID = [NSString stringWithFormat:@"%ld",(long)self.model.activityPublishedId];
+    NSString *publishID;
+    if (_notifyModel) {
+        publishID = self.notifyModel.idStr;
+    }
+    else {
+        publishID = [NSString stringWithFormat:@"%ld",(long)self.model.activityPublishedId];
+    }
+    //NSString *publishID = [NSString stringWithFormat:@"%ld",(long)self.model.activityPublishedId];
     WhoJoinInController *whoJoinIn = [[WhoJoinInController alloc]init];
     whoJoinIn.publishID = publishID;
     [self.viewController.navigationController pushViewController:whoJoinIn animated:YES needHiddenBottomBar:YES];
@@ -255,6 +271,8 @@
         _bottomButton.enabled = NO;
     } else if (cellType == SUCESSED_JOININ) {
         self.remindTitleLabel.text = @"你已成功参加活动";
+    } else if (cellType == NEED_CHECK) {
+        self.remindTitleLabel.text = @"您的报名申请已提交,正在审核中";
     }
 }
 
@@ -263,8 +281,31 @@
     _model = model;
     Author *info = model.activityUser;
     [_headImageView setFaceImageWithUrl:info.headPic];
-    _contentTitleLabel.text = info.name;
+    if (_cellType == SUCESSED_JOININ) {
+        _contentTitleLabel.text = model.activityOrganizer;
+    }
+    else {
+        _contentTitleLabel.text = info.name;
+    }
     _contentNameLabel.text = [NSString stringWithFormat:_contentNameLabel.text,model.activityName];
+    _activityTimeLabel.text = [NSString stringWithFormat:_activityTimeLabel.text,[TimeFormatterConvert timeConvertToFommtterAvailable:model.activityStartTime]];
+}
+
+-(void)setNotifyData:(NotifyInfoModel *)model
+{
+    _notifyModel = model;
+    _titleImageView.image = nil;
+    [_headImageView setFaceImageWithUrl:model.headIcon];
+    [_remindTitleLabel mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.leading.mas_equalTo(SCALE_NUM(5)).priorityHigh();
+    }];
+    _remindTitleLabel.text = model.em_push_title;
+    _contentTitleLabel.text = model.organizer;
+    _contentNameLabel.text = [NSString stringWithFormat:@"名称：%@",model.name];
+    
+    _activityTimeLabel.text = [NSString stringWithFormat:@"活动开始时间：%@",[TimeFormatterConvert timeConvertToFommtterAvailable:model.startTime]];
+    
+    _tailLabel.text = @"看看都有谁参加了";
 }
 
 @end

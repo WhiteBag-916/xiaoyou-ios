@@ -21,11 +21,8 @@
 @property (nonatomic,assign) CELLTYPE       cellType;
 @property (nonatomic,strong) JoinInHeadView *joinInHeadView;
 @property (nonatomic,strong) JoinInTopView  *joinTopView;
-
 @property (nonatomic,strong) TagsCommonView *tagsView;
-
 @property (nonatomic,strong) UIView         *tagsWrapView;
-
 @property (nonatomic,strong) Author         *author;
 
 @end
@@ -122,7 +119,8 @@
     
     ProfileInfo *profile = [[ProfileInfo alloc]init];
     profile.propetiesCommon = joinModel.propetiesCommon;
-    profile.tagModels = joinModel.tagsCommon;
+    profile.tagsCommon = joinModel.tagsCommon;
+    
     [_tagsView setData:profile];
 }
 

@@ -19,6 +19,7 @@
 @property (nonatomic, strong) NSString *selfIntro;
 @property (nonatomic, strong) NSString *userName;
 //@property (nonatomic, strong) NSString *name;
+@property (nonatomic, strong) NSString *qrCodeUrl;
 @property (nonatomic, strong) NSString *studentNo;
 @property (nonatomic, assign) double praiseCount;
 @property (nonatomic, strong) NSArray *lastFeeds;

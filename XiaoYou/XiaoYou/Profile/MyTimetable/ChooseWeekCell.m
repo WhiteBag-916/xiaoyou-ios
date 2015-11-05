@@ -41,8 +41,11 @@ NSString *const kChooseWeekCell = @"ChooseWeekCellId";
     }];
 }
 
-- (void)initData:(NSInteger)num selected:(BOOL)selected {
+- (void)initData:(NSInteger)num selected:(BOOL)selected isNowWeek:(BOOL)isNowWeek {
     _weekLabel.text = [NSString stringWithFormat:@"第%ld周", (long)num];
+    if (isNowWeek) {
+        _weekLabel.text = [_weekLabel.text stringByAppendingString:@"(本周)"];
+    }
     if (selected) {
         _weekLabel.backgroundColor = KCOLOR_g1;
         _weekLabel.textColor = KCOLOR_W1;

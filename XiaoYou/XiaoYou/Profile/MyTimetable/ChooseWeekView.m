@@ -21,16 +21,18 @@
 @property (nonatomic, copy) ChooseWeekBlock chooseWeekBlock;
 @property (nonatomic, assign) NSInteger selectNum;
 @property (nonatomic, assign) NSInteger weekNum;
+@property (nonatomic, assign) NSInteger nowWeek;
 
 @end
 
 @implementation ChooseWeekView
 
-- (id)initWithBlock:(NSInteger)selectNum weekNum:(NSInteger)weekNum block:(ChooseWeekBlock)block {
+- (id)initWithBlock:(NSInteger)selectNum weekNum:(NSInteger)weekNum nowWeek:(NSInteger)nowWeek block:(ChooseWeekBlock)block {
     if (self = [super initWithFrame:[UIScreen mainScreen].bounds]) {
         self.backgroundColor = [UIColor clearColor];
         
         _weekNum = weekNum;
+        _nowWeek = nowWeek;
         
         self.backgroundView = [[UIView alloc] initWithFrame:self.frame];
         self.backgroundView.backgroundColor = [UIColor blackColor];
@@ -52,8 +54,8 @@
     [self addSubview:self.contentView];
     [self.contentView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.mas_equalTo(SCALE_NUM(49));
-        make.centerX.equalTo(self);
-        make.width.mas_equalTo(110);
+        make.right.mas_equalTo(-105);
+        make.left.mas_equalTo(105);
         make.height.mas_equalTo(190);
     }];
     
@@ -101,7 +103,7 @@
     
     NSInteger row = indexPath.row;
     
-    [cell initData:row+1 selected:(row+1 == _selectNum)];
+    [cell initData:row+1 selected:(row+1 == _selectNum) isNowWeek:(row+1 == _nowWeek)];
     
     return cell;
 }

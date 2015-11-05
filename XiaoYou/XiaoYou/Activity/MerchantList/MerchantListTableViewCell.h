@@ -7,9 +7,12 @@
 //
 
 #import "YTableViewCell.h"
+#import "ShopList.h"
 
 extern NSString *const kMerchantListTableViewCell;
 
 @interface MerchantListTableViewCell : YTableViewCell
+
+-(void)setCellData:(ShopList *) model;
 
 @end

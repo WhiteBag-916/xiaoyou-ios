@@ -10,4 +10,6 @@
 
 @interface ScanfResultTableView : YTableView
 
+- (instancetype)initWithResult:(NSString *) result;
+
 @end

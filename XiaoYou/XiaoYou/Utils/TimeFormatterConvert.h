@@ -10,6 +10,8 @@
 
 @interface TimeFormatterConvert : NSObject
 
++(NSString*)timeConvertToFommtterScheduleStartTime:(double)startTime EndTime:(double)endTime;
+
 +(NSString*)timeConvertToFommtterAvailable:(double)timestampStr;
 
 +(NSString*)timeConvertToFommtterNotice:(double)timestamp;

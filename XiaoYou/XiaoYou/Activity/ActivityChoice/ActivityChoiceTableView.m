@@ -31,12 +31,12 @@
         self.delegate = self;
         self.dataSource = self;
         self.separatorStyle = UITableViewCellSeparatorStyleNone;
-        
-        [self setUpHeaderView];
 
         [self registerClass:[ActivityReleaseAndTypeCell class] forCellReuseIdentifier:kActivityReleaseAndTypeCell];
         
         _myType = type;
+        
+        [self setUpHeaderView];
         
         if (_myType == ACTIVITY_CHOICE_TYPE) {
             [[ActivityManager sharedInstance] getFilterConditions:^(YActionMessage *message) {
@@ -55,14 +55,16 @@
             [self reloadData];
         }
         
+         _typesDic = [[NSMutableDictionary alloc] init];
         if (_myType == ACTIVITY_CHOICE_TYPE)
         {
-            _typesDic = [[NSMutableDictionary alloc] init];
+           
             [_typesDic setObject:@"" forKey:@""];
             [_typesDic setObject:@"" forKey:@""];
             [_typesDic setObject:@"" forKey:@""];
             [_typesDic setObject:@"" forKey:@""];
         }
+        
         
     }
     return self;
@@ -106,14 +108,14 @@
     }
     else
     {
-        centerLabel.text = @"自习室筛选";
+        centerLabel.text = @"按校区筛选";
     }
     centerLabel.font = CONTENT_FONT(15);
     [backView addSubview:centerLabel];
     [centerLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.centerY.equalTo(backView);
         make.height.mas_equalTo(SCALE_NUM(20));
-        make.width.mas_equalTo(SCALE_NUM(80));
+        make.width.mas_equalTo(SCALE_NUM(140));
     }];
     
     self.tableHeaderView = backView;
@@ -167,6 +169,13 @@
     }
     else
     {
+        if (_myType == CLASSROOM_CHOICE_TYPE && _typesDic.count == 0) {
+            if (_studyRoomDefautStr != nil)
+            {
+                [_typesDic setObject:_studyRoomDefautStr forKey:@"schoolName"];
+            }
+            
+        }
         return 1;
     }
 }

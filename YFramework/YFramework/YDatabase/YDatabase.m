@@ -151,7 +151,6 @@ static NSMutableDictionary *dbs;
     va_list *pArgs = &args;
     BOOL result = [YDatabase update:self.databasePath sql:sql args:*pArgs];
     va_end(args);
-
     return result;
 }
 

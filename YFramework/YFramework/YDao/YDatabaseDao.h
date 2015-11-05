@@ -7,6 +7,7 @@
 //
 
 #import "YObject.h"
+#import "YModel.h"
 
 /**
  *  @author Abc
@@ -47,5 +48,27 @@
 - (void)updateWithDictionary:(NSDictionary *)dic
                     WithName:(NSString *)tableName
                      upWhere:(NSString *)where;
+
+/**
+ *  清空表中所有数据
+ *
+ *  @param tableName 表名
+ */
+- (void)deleteAllDataWithTableName:(NSString *)tableName;
+
+/**
+ *  插入一个模型
+ *
+ *  @return 查看是否成功
+ */
+-(BOOL)insertModel:(YModel*)model;
+
+
+/**
+ *  查询其模型
+ *
+ *  @return 其模型表中总模型
+ */
+-(NSArray*)queryModel:(NSString*)className;
 
 @end

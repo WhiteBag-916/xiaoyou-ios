@@ -36,11 +36,19 @@
 
 #define KNotification_Refresh_FeedList                  @"KNotification_Refresh_FeedList"
 //发布活动
-#define KNotification_Enabel_ReleaseBtn                  @"KNotification_Enabel_ReleaseBtn"
+#define KNotification_Enabel_ReleaseBtn                 @"KNotification_Enabel_ReleaseBtn"
 
 #define KNotification_Activity_Release_ScrollTo         @"KNotification_Activity_Release_ScrollTo"
 //发布活动成功通知刷界面
-#define KNotification_Activity_Release_Success         @"KNotification_Activity_Release_Success"
+#define KNotification_Activity_Release_Success          @"KNotification_Activity_Release_Success"
 //自习室筛选
 #define KNotification_Study_Room_Filtrate               @"KNotification_Study_Room_Filtrate"
+
+#define KNotification_Remind_Message_Come               @"KNotification_Remind_Message_Come"
+
+//未读提醒
+#define KNotification_Remind_Message_Not_Read           @"KNotification_Remind_Message_Not_Read"
+//日程增删
+#define KNotification_Change_Schedule                   @"KNotification_Change_Schedule"
+
 #endif

@@ -7,16 +7,19 @@
 //
 
 #import "CurriculumDetailView.h"
+#import "FindMyCourseViewModel.h"
+#import "CurriculumManager.h"
 
 #define K_BACK_LR         SCALE_NUM(15)
 #define K_BACK_T         SCALE_NUM(123)
 #define K_BACK_B         SCALE_NUM(260)
 
-#define K_IMG_LWH           SCALE_NUM(12)   //图标左、宽、高
+#define K_IMG_WH           SCALE_NUM(12)   //图标宽、高
+#define K_IMG_L           SCALE_NUM(15)   //图标左
 #define K_COURSEIMG_T       SCALE_NUM(22)   //课程图标上间距
 #define K_CONTENT_B         SCALE_NUM(15)   //下
 #define K_LECTURERIMG_T     SCALE_NUM(15)   //授课人图标上间距
-#define K_DEPARTMENTSIMG_T  SCALE_NUM(14)   //院系图标上间距
+#define K_DEPARTMENTSIMG_T  SCALE_NUM(14)   //开课单位图标上间距
 #define K_LEFTLAB_L         SCALE_NUM(10)   //描述左
 #define K_LEFTLAB_W         SCALE_NUM(70)   //描述宽
 #define K_NAMELAB_L         SCALE_NUM(0)   //名字左
@@ -30,7 +33,7 @@
 @property (nonatomic, strong) UILabel *timeLabel;           //上课时间
 @property (nonatomic, strong) UILabel *weekLabel;           //周次
 @property (nonatomic, strong) UILabel *locationLabel;       //上课地点
-@property (nonatomic, strong) UILabel *departmentsName;     //院系
+@property (nonatomic, strong) UILabel *departmentsName;     //开课单位
 
 @end
 
@@ -76,7 +79,8 @@
     [self.contentView addSubview:courseImageView];
     
     [courseImageView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.height.width.mas_equalTo(K_IMG_LWH);
+        make.left.mas_equalTo(K_IMG_L);
+        make.height.width.mas_equalTo(K_IMG_WH);
         make.top.mas_equalTo(K_COURSEIMG_T);
     }];
     
@@ -237,7 +241,7 @@
         make.right.mas_equalTo(K_NAMELAB_R);
     }];
     
-    //院系
+    //开课单位
     UIImageView *departmentsImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"havetime_icon_academy"]];
     [self.contentView addSubview:departmentsImageView];
     
@@ -248,7 +252,7 @@
     
     UILabel *departmentsLabel = [YUtils initLabel:CONTENT_FONT(12)
                                             color:KCOLOR_B5
-                                             text:@"院系："
+                                             text:@"开课单位："
                                         alignment:NSTextAlignmentLeft];
     [self.contentView addSubview:departmentsLabel];
     
@@ -276,4 +280,14 @@
 {
     self.backgroundView.alpha = 0.7;
 }
+
+- (void)initData:(FindMyCourseViewModel *)model {
+    _courseName.text = model.courseName;
+    _lecturerName.text = model.teacherName;
+    _timeLabel.text = [[CurriculumManager sharedInstance] getCourseTimeByClass:model.beginPhase endTime:model.endPhase];
+    _locationLabel.text = model.roomName;
+    _departmentsName.text = model.departmentName;
+    _weekLabel.text = [[CurriculumManager sharedInstance] weekByCourseTimeID:model];
+}
+
 @end

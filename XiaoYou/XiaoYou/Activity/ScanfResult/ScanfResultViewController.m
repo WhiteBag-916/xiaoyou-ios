@@ -12,10 +12,20 @@
 @interface ScanfResultViewController ()
 
 @property(nonatomic,strong)ScanfResultTableView * scanfResultTableView;
+@property(nonatomic,strong)NSString * resultStr;
 
 @end
 
 @implementation ScanfResultViewController
+
+- (instancetype)initWithResult:(NSString *)result
+{
+    self = [super init];
+    if (self) {
+        _resultStr = result;
+    }
+    return self;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -24,11 +34,21 @@
     
 }
 
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    self.navigationController.navigationBar.hidden = YES;
+}
+
+-(void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    self.navigationController.navigationBar.hidden = NO;
+}
+
 -(void)setUpUI
 {
-    self.navigationController.navigationBar.hidden = YES;
-    
-    _scanfResultTableView = [[ScanfResultTableView alloc] init];
+    _scanfResultTableView = [[ScanfResultTableView alloc] initWithResult:_resultStr];
     [self.view addSubview:_scanfResultTableView];
     [_scanfResultTableView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.left.right.bottom.mas_equalTo(0);

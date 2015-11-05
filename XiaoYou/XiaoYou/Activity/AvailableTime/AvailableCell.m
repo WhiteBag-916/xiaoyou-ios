@@ -21,14 +21,13 @@
 @property (nonatomic,strong) UILabel        *descriptionLabel;//描述
 //中间图片部分
 @property (nonatomic,strong) FeedImageGroup *imageGroupView;   //图片
-//底部部分View
-
+//底部部分View描述
 @property (nonatomic,strong) UILabel        *signUpTimeDes;     //报名截止时间
 @property (nonatomic,strong) UILabel        *activityTimeDes;   //活动开始时间
 @property (nonatomic,strong) UILabel        *activityEndTimeDes;//活动结束时间
 @property (nonatomic,strong) UILabel        *activityLocationDes;//活动地点
 @property (nonatomic,strong) UILabel        *oranizerDes;       //组织者
-
+//底部部分view数据
 @property (nonatomic,strong) UILabel        *signUpTimeLabel;       //报名截止时间
 @property (nonatomic,strong) UILabel        *activityStartTimeLabel;//活动开始时间
 @property (nonatomic,strong) UILabel        *activityEndTimeLabel;  //活动结束时间
@@ -134,9 +133,9 @@
     _signUpTimeDes.numberOfLines = 1;
     _signUpTimeDes.textColor = KCOLOR_B5;
     [_signUpTimeDes mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.height.mas_equalTo(SCALE_NUM(14));
         make.top.equalTo(_imageGroupView.mas_bottom).offset(SCALE_NUM(15));
         make.left.equalTo(_imageGroupView);
-        make.height.mas_equalTo(SCALE_NUM(12));
     }];
     
     _signUpTimeLabel = [[UILabel alloc]init];
@@ -145,10 +144,16 @@
     _signUpTimeLabel.font = CONTENT_FONT(12);
     _signUpTimeLabel.textColor = KCOLOR_B5;
     [_signUpTimeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.height.mas_equalTo(SCALE_NUM(12));
+        make.height.mas_equalTo(SCALE_NUM(14));
         make.centerY.equalTo(_signUpTimeDes);
-        make.left.equalTo(_signUpTimeDes.mas_right).offset(SCALE_NUM(15));
+        make.left.equalTo(_signUpTimeDes.mas_right).offset(SCALE_NUM(15)).priorityHigh();
     }];
+    
+    if (IS_IOS7) {
+        [_signUpTimeLabel mas_updateConstraints:^(MASConstraintMaker *make) {
+            make.leading.mas_equalTo(SCALE_NUM(130)).priorityHigh();
+        }];
+    }
     
     
     _activityTimeDes = [[UILabel alloc]init];
@@ -159,7 +164,7 @@
     [_activityTimeDes mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(_signUpTimeDes.mas_bottom).offset(SCALE_NUM(15));
         make.left.equalTo(_signUpTimeDes);
-        make.height.mas_equalTo(SCALE_NUM(12));
+        make.height.mas_equalTo(SCALE_NUM(14));
     }];
     
     _activityStartTimeLabel = [[UILabel alloc]init];
@@ -168,12 +173,10 @@
     _activityStartTimeLabel.textColor = KCOLOR_B5;
     _activityStartTimeLabel.text = @"2015/10/05 06:00";
     [_activityStartTimeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.height.mas_equalTo(SCALE_NUM(12));
+        make.height.mas_equalTo(SCALE_NUM(14));
         make.centerY.equalTo(_activityTimeDes);
         make.left.equalTo(_signUpTimeLabel);
     }];
-    
-
     
     _activityEndTimeDes = [[UILabel alloc]init];
     [self.contentView addSubview:_activityEndTimeDes];
@@ -181,7 +184,7 @@
     _activityEndTimeDes.textColor = KCOLOR_B5;
     _activityEndTimeDes.text = @"活动结束时间：";
     [_activityEndTimeDes mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.height.mas_equalTo(SCALE_NUM(12));
+        make.height.mas_equalTo(SCALE_NUM(14));
         make.top.equalTo(_activityTimeDes.mas_bottom).offset(SCALE_NUM(15));
         make.left.equalTo(_activityTimeDes);
     }];
@@ -192,11 +195,10 @@
     _activityEndTimeLabel.textColor = KCOLOR_B5;
     _activityEndTimeLabel.text = @"2015/10/25 06:00";
     [_activityEndTimeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.height.mas_equalTo(SCALE_NUM(12));
+        make.height.mas_equalTo(SCALE_NUM(14));
         make.centerY.equalTo(_activityEndTimeDes);
         make.left.equalTo(_activityStartTimeLabel);
     }];
-    
     
     _activityLocationDes = [[UILabel alloc]init];
     [self.contentView addSubview:_activityLocationDes];
@@ -204,7 +206,7 @@
     _activityLocationDes.textColor = KCOLOR_B5;
     _activityLocationDes.text = @"活动地点：";
     [_activityLocationDes mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.height.mas_equalTo(SCALE_NUM(12));
+        make.height.mas_equalTo(SCALE_NUM(14));
         make.top.equalTo(_activityEndTimeDes.mas_bottom).offset(SCALE_NUM(15));
         make.left.equalTo(_activityEndTimeDes);
     }];
@@ -215,10 +217,11 @@
     _activityLocationLabel.textColor = KCOLOR_B5;
     _activityLocationLabel.text = @"大脚超市门口";
     [_activityLocationLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.centerY.equalTo(_activityLocationDes);
+        make.height.mas_equalTo(SCALE_NUM(14));
+        make.top.equalTo(_activityLocationDes.mas_top);
         make.left.equalTo(_activityEndTimeLabel);
+        make.trailing.mas_equalTo(SCALE_NUM(-5));
     }];
-    
     
     _oranizerDes = [[UILabel alloc]init];
     [self.contentView addSubview:_oranizerDes];
@@ -227,9 +230,10 @@
     _oranizerDes.textColor = KCOLOR_B5;
     _oranizerDes.text = @"组织者：";
     [_oranizerDes mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.height.mas_equalTo(SCALE_NUM(12));
+        make.height.mas_equalTo(SCALE_NUM(14));
         make.top.equalTo(_activityLocationDes.mas_bottom).offset(SCALE_NUM(15));
         make.left.equalTo(_activityLocationDes);
+        make.bottom.mas_equalTo(SCALE_NUM(-15));
     }];
     
     _organizerLabel = [[UILabel alloc]init];
@@ -239,10 +243,8 @@
     _organizerLabel.textColor = KCOLOR_B5;
     _organizerLabel.text = @"话剧社";
     [_organizerLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.height.mas_equalTo(SCALE_NUM(12));
         make.centerY.equalTo(_oranizerDes);
         make.left.equalTo(_activityStartTimeLabel);
-        make.bottom.mas_equalTo(SCALE_NUM(-15));
     }];
 }
 
@@ -251,14 +253,13 @@
 {
     ActivityPublishedModel  *publishModel   = model.activityPublishedModel;
     NSArray *imageTextModels =  model.activityImageTextModels;
-    //NSArray *coverageModels =   model.activityCoverageModels;
     
     BOOL isNotHaveImage = YES;
     _titleLabel.text        = publishModel.name;//标题
     //图文混排
     for (ActivityImageTextModels *imageText in imageTextModels) {
         if ([imageText.type isEqualToString:@"text"]) {
-            _descriptionLabel.text = imageText.content;
+            [_descriptionLabel setText:imageText.content lineSpacing:SCALE_NUM(10.f)];
         }
         else if ([imageText.type isEqualToString:@"image"]) {
             if (![imageText.content isEmpty]) {

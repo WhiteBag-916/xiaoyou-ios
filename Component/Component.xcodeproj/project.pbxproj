@@ -8,13 +8,18 @@
 
 /* Begin PBXBuildFile section */
 		040619DC1BDE11C3008E3E4E /* NoticeAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 040619DB1BDE11C3008E3E4E /* NoticeAction.m */; };
+		043B45411BE8967200050B32 /* YBaseService.m in Sources */ = {isa = PBXBuildFile; fileRef = 043B45401BE8967200050B32 /* YBaseService.m */; };
 		0463588E1BE0F5450055819F /* CancleActivityAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 0463588D1BE0F5450055819F /* CancleActivityAction.m */; };
 		04722E261BD8892700F95816 /* AvailableAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 04722E251BD8892700F95816 /* AvailableAction.m */; };
+		0490A4A81BE9DD2F0053023C /* NotifyRemindDao.m in Sources */ = {isa = PBXBuildFile; fileRef = 0490A4A71BE9DD2F0053023C /* NotifyRemindDao.m */; settings = {ASSET_TAGS = (); }; };
+		0499B9CE1BE70F1C00202CFD /* MainAvailableTimeAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 0499B9CD1BE70F1C00202CFD /* MainAvailableTimeAction.m */; };
 		04A2A0071BCE3969006A35FB /* AppConfigData.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A2A0061BCE3969006A35FB /* AppConfigData.m */; };
 		202F03B91BE359C0006E7706 /* FindMyCourseAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 202F03B81BE359C0006E7706 /* FindMyCourseAction.m */; };
 		202F03C91BE36A27006E7706 /* UserSchedulingConditionsAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 202F03C81BE36A27006E7706 /* UserSchedulingConditionsAction.m */; };
 		202F03CC1BE36AF0006E7706 /* UserSchedulingListAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 202F03CB1BE36AF0006E7706 /* UserSchedulingListAction.m */; };
 		202F03CF1BE36B73006E7706 /* UserSchedulingDetailAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 202F03CE1BE36B73006E7706 /* UserSchedulingDetailAction.m */; };
+		2030A2C01BE9B0C3003EDDF8 /* CourseDetailAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 2030A2BF1BE9B0C3003EDDF8 /* CourseDetailAction.m */; };
+		2030A2C61BE9DF40003EDDF8 /* UserSchedulingEditAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 2030A2C51BE9DF40003EDDF8 /* UserSchedulingEditAction.m */; };
 		20402A1F1BE21B8B00802DAF /* FreeBuildingListAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 20402A1E1BE21B8B00802DAF /* FreeBuildingListAction.m */; };
 		20402A251BE2200A00802DAF /* FreeBuildingDetailAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 20402A241BE2200A00802DAF /* FreeBuildingDetailAction.m */; };
 		20859A7C1B64BD5B00580ED3 /* ProvisionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 20859A7B1B64BD5B00580ED3 /* ProvisionManager.m */; };
@@ -70,6 +75,9 @@
 		20E366411B92F7DC00A22FFE /* RegAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 20E366401B92F7DC00A22FFE /* RegAction.m */; };
 		20E372BF1BDDBFC50063BF56 /* CommonImgUpload.m in Sources */ = {isa = PBXBuildFile; fileRef = 20E372BE1BDDBFC50063BF56 /* CommonImgUpload.m */; };
 		3339625C1B95575400DD0A6D /* SuggestListAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 3339625B1B95575400DD0A6D /* SuggestListAction.m */; };
+		E4642C7F1BE9AFBC00B3C8B1 /* CodeManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E4642C7E1BE9AFBC00B3C8B1 /* CodeManager.m */; };
+		E4642C821BE9B0F500B3C8B1 /* ShopListDetailAction.m in Sources */ = {isa = PBXBuildFile; fileRef = E4642C811BE9B0F500B3C8B1 /* ShopListDetailAction.m */; };
+		E47E59811BE8D85F00AF7F5C /* ShopListAction.m in Sources */ = {isa = PBXBuildFile; fileRef = E47E59801BE8D85F00AF7F5C /* ShopListAction.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -97,10 +105,16 @@
 /* Begin PBXFileReference section */
 		040619DA1BDE11C3008E3E4E /* NoticeAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoticeAction.h; sourceTree = "<group>"; };
 		040619DB1BDE11C3008E3E4E /* NoticeAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoticeAction.m; sourceTree = "<group>"; };
+		043B453F1BE8967200050B32 /* YBaseService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YBaseService.h; sourceTree = "<group>"; };
+		043B45401BE8967200050B32 /* YBaseService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YBaseService.m; sourceTree = "<group>"; };
 		0463588C1BE0F5450055819F /* CancleActivityAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CancleActivityAction.h; sourceTree = "<group>"; };
 		0463588D1BE0F5450055819F /* CancleActivityAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CancleActivityAction.m; sourceTree = "<group>"; };
 		04722E241BD8892700F95816 /* AvailableAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AvailableAction.h; sourceTree = "<group>"; };
 		04722E251BD8892700F95816 /* AvailableAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AvailableAction.m; sourceTree = "<group>"; };
+		0490A4A61BE9DD2F0053023C /* NotifyRemindDao.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotifyRemindDao.h; sourceTree = "<group>"; };
+		0490A4A71BE9DD2F0053023C /* NotifyRemindDao.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotifyRemindDao.m; sourceTree = "<group>"; };
+		0499B9CC1BE70F1C00202CFD /* MainAvailableTimeAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainAvailableTimeAction.h; sourceTree = "<group>"; };
+		0499B9CD1BE70F1C00202CFD /* MainAvailableTimeAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainAvailableTimeAction.m; sourceTree = "<group>"; };
 		04A2A0051BCE3969006A35FB /* AppConfigData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppConfigData.h; sourceTree = "<group>"; };
 		04A2A0061BCE3969006A35FB /* AppConfigData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppConfigData.m; sourceTree = "<group>"; };
 		202F03B71BE359C0006E7706 /* FindMyCourseAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FindMyCourseAction.h; sourceTree = "<group>"; };
@@ -111,6 +125,10 @@
 		202F03CB1BE36AF0006E7706 /* UserSchedulingListAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserSchedulingListAction.m; sourceTree = "<group>"; };
 		202F03CD1BE36B73006E7706 /* UserSchedulingDetailAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserSchedulingDetailAction.h; sourceTree = "<group>"; };
 		202F03CE1BE36B73006E7706 /* UserSchedulingDetailAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserSchedulingDetailAction.m; sourceTree = "<group>"; };
+		2030A2BE1BE9B0C3003EDDF8 /* CourseDetailAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CourseDetailAction.h; sourceTree = "<group>"; };
+		2030A2BF1BE9B0C3003EDDF8 /* CourseDetailAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CourseDetailAction.m; sourceTree = "<group>"; };
+		2030A2C41BE9DF40003EDDF8 /* UserSchedulingEditAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserSchedulingEditAction.h; sourceTree = "<group>"; };
+		2030A2C51BE9DF40003EDDF8 /* UserSchedulingEditAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserSchedulingEditAction.m; sourceTree = "<group>"; };
 		20402A1D1BE21B8B00802DAF /* FreeBuildingListAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FreeBuildingListAction.h; sourceTree = "<group>"; };
 		20402A1E1BE21B8B00802DAF /* FreeBuildingListAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FreeBuildingListAction.m; sourceTree = "<group>"; };
 		20402A231BE2200A00802DAF /* FreeBuildingDetailAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FreeBuildingDetailAction.h; sourceTree = "<group>"; };
@@ -229,6 +247,12 @@
 		20E372BE1BDDBFC50063BF56 /* CommonImgUpload.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommonImgUpload.m; sourceTree = "<group>"; };
 		3339625A1B95575400DD0A6D /* SuggestListAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SuggestListAction.h; sourceTree = "<group>"; };
 		3339625B1B95575400DD0A6D /* SuggestListAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SuggestListAction.m; sourceTree = "<group>"; };
+		E4642C7D1BE9AFBC00B3C8B1 /* CodeManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CodeManager.h; sourceTree = "<group>"; };
+		E4642C7E1BE9AFBC00B3C8B1 /* CodeManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CodeManager.m; sourceTree = "<group>"; };
+		E4642C801BE9B0F500B3C8B1 /* ShopListDetailAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShopListDetailAction.h; sourceTree = "<group>"; };
+		E4642C811BE9B0F500B3C8B1 /* ShopListDetailAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShopListDetailAction.m; sourceTree = "<group>"; };
+		E47E597F1BE8D85F00AF7F5C /* ShopListAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShopListAction.h; sourceTree = "<group>"; };
+		E47E59801BE8D85F00AF7F5C /* ShopListAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShopListAction.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -250,9 +274,38 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		043B453C1BE8960400050B32 /* Dao */ = {
+			isa = PBXGroup;
+			children = (
+				043B453D1BE8963100050B32 /* ActivityNotify */,
+				043B453E1BE8963100050B32 /* Feed */,
+			);
+			path = Dao;
+			sourceTree = "<group>";
+		};
+		043B453D1BE8963100050B32 /* ActivityNotify */ = {
+			isa = PBXGroup;
+			children = (
+				043B453F1BE8967200050B32 /* YBaseService.h */,
+				043B45401BE8967200050B32 /* YBaseService.m */,
+				0490A4A61BE9DD2F0053023C /* NotifyRemindDao.h */,
+				0490A4A71BE9DD2F0053023C /* NotifyRemindDao.m */,
+			);
+			path = ActivityNotify;
+			sourceTree = "<group>";
+		};
+		043B453E1BE8963100050B32 /* Feed */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Feed;
+			sourceTree = "<group>";
+		};
 		04722E231BD8891100F95816 /* Activity */ = {
 			isa = PBXGroup;
 			children = (
+				0499B9CC1BE70F1C00202CFD /* MainAvailableTimeAction.h */,
+				0499B9CD1BE70F1C00202CFD /* MainAvailableTimeAction.m */,
 				04722E241BD8892700F95816 /* AvailableAction.h */,
 				04722E251BD8892700F95816 /* AvailableAction.m */,
 				20DDA3E91BDA1D8D0023179A /* FindActivityTypesAction.h */,
@@ -275,6 +328,8 @@
 				202F03CB1BE36AF0006E7706 /* UserSchedulingListAction.m */,
 				202F03CD1BE36B73006E7706 /* UserSchedulingDetailAction.h */,
 				202F03CE1BE36B73006E7706 /* UserSchedulingDetailAction.m */,
+				2030A2C41BE9DF40003EDDF8 /* UserSchedulingEditAction.h */,
+				2030A2C51BE9DF40003EDDF8 /* UserSchedulingEditAction.m */,
 			);
 			path = Activity;
 			sourceTree = "<group>";
@@ -331,20 +386,6 @@
 				20DED8711B94208B004B5E7B /* RegNoticeAction.m */,
 			);
 			path = Provision;
-			sourceTree = "<group>";
-		};
-		20859AAC1B64DE3500580ED3 /* Contact */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Contact;
-			sourceTree = "<group>";
-		};
-		20859AAD1B64DE3500580ED3 /* Message */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Message;
 			sourceTree = "<group>";
 		};
 		20DA8B311B8EC4E3007D0CDE /* Utils */ = {
@@ -406,9 +447,9 @@
 		20DBFD691B4FA8FD009134D0 /* Component */ = {
 			isa = PBXGroup;
 			children = (
+				043B453C1BE8960400050B32 /* Dao */,
 				20DBFD7D1B4FD3F5009134D0 /* Manager */,
 				20DBFD741B4FD3F5009134D0 /* Action */,
-				20DBFD791B4FD3F5009134D0 /* Dao */,
 				20DBFD7A1B4FD3F5009134D0 /* Define */,
 				20DBFD821B4FD3F5009134D0 /* SQL */,
 				20DBFD831B4FD3F5009134D0 /* Utils */,
@@ -419,6 +460,7 @@
 		20DBFD741B4FD3F5009134D0 /* Action */ = {
 			isa = PBXGroup;
 			children = (
+				E47E597D1BE8D7E300AF7F5C /* TwoDimensionCode */,
 				04722E231BD8891100F95816 /* Activity */,
 				04A82D8D1BC7A23200EF87B7 /* Remind */,
 				20DA8B311B8EC4E3007D0CDE /* Utils */,
@@ -466,16 +508,6 @@
 			path = Message;
 			sourceTree = "<group>";
 		};
-		20DBFD791B4FD3F5009134D0 /* Dao */ = {
-			isa = PBXGroup;
-			children = (
-				20E1221A1B705D8300F90BD3 /* Feed */,
-				20859AAC1B64DE3500580ED3 /* Contact */,
-				20859AAD1B64DE3500580ED3 /* Message */,
-			);
-			path = Dao;
-			sourceTree = "<group>";
-		};
 		20DBFD7A1B4FD3F5009134D0 /* Define */ = {
 			isa = PBXGroup;
 			children = (
@@ -492,6 +524,7 @@
 		20DBFD7D1B4FD3F5009134D0 /* Manager */ = {
 			isa = PBXGroup;
 			children = (
+				E47E597E1BE8D80E00AF7F5C /* TwoDimensionCode */,
 				20DADED51BD0956C00FB294F /* Activity */,
 				20E122141B705D3C00F90BD3 /* Feed */,
 				20859A791B64BD4C00580ED3 /* Provision */,
@@ -547,6 +580,8 @@
 				20DF60261BDF878300C8383B /* CourseTimeListAction.m */,
 				202F03B71BE359C0006E7706 /* FindMyCourseAction.h */,
 				202F03B81BE359C0006E7706 /* FindMyCourseAction.m */,
+				2030A2BE1BE9B0C3003EDDF8 /* CourseDetailAction.h */,
+				2030A2BF1BE9B0C3003EDDF8 /* CourseDetailAction.m */,
 			);
 			path = Curriculum;
 			sourceTree = "<group>";
@@ -591,11 +626,24 @@
 			path = Feed;
 			sourceTree = "<group>";
 		};
-		20E1221A1B705D8300F90BD3 /* Feed */ = {
+		E47E597D1BE8D7E300AF7F5C /* TwoDimensionCode */ = {
 			isa = PBXGroup;
 			children = (
+				E47E597F1BE8D85F00AF7F5C /* ShopListAction.h */,
+				E47E59801BE8D85F00AF7F5C /* ShopListAction.m */,
+				E4642C801BE9B0F500B3C8B1 /* ShopListDetailAction.h */,
+				E4642C811BE9B0F500B3C8B1 /* ShopListDetailAction.m */,
 			);
-			path = Feed;
+			path = TwoDimensionCode;
+			sourceTree = "<group>";
+		};
+		E47E597E1BE8D80E00AF7F5C /* TwoDimensionCode */ = {
+			isa = PBXGroup;
+			children = (
+				E4642C7D1BE9AFBC00B3C8B1 /* CodeManager.h */,
+				E4642C7E1BE9AFBC00B3C8B1 /* CodeManager.m */,
+			);
+			path = TwoDimensionCode;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -688,33 +736,39 @@
 			files = (
 				20C5B0511B8DB03900B4A8A8 /* GetFriendApplyListAction.m in Sources */,
 				20859A851B64BD9000580ED3 /* MessageManager.m in Sources */,
+				E4642C821BE9B0F500B3C8B1 /* ShopListDetailAction.m in Sources */,
 				20859A7C1B64BD5B00580ED3 /* ProvisionManager.m in Sources */,
 				20DF60271BDF878300C8383B /* CourseTimeListAction.m in Sources */,
 				209E08C51BDDC9E20062758E /* NoticeManager.m in Sources */,
 				20DBFD861B4FD3F5009134D0 /* YUtils+Component.m in Sources */,
 				20DA1A5A1B89751500DEF95C /* MyCommentPersonsAction.m in Sources */,
 				20DCB9701B8CA60800C758DE /* FindFriendsByTagsAction.m in Sources */,
+				E4642C7F1BE9AFBC00B3C8B1 /* CodeManager.m in Sources */,
 				20DA8B341B8EC4F0007D0CDE /* CommonAction.m in Sources */,
 				20DED8721B94208B004B5E7B /* RegNoticeAction.m in Sources */,
 				20DDA4311BDA26050023179A /* FindByActivityPublishedIdAction.m in Sources */,
 				20402A1F1BE21B8B00802DAF /* FreeBuildingListAction.m in Sources */,
 				20E1C6811B89F2C8008BA9D6 /* FeedListAction.m in Sources */,
 				20DAF9A31B871989005B7932 /* SchoolListAction.m in Sources */,
+				043B45411BE8967200050B32 /* YBaseService.m in Sources */,
 				20DCB9731B8CA60800C758DE /* ApplicantListAction.m in Sources */,
 				20DA1A7E1B89C44D00DEF95C /* MyCoolPersonsAction.m in Sources */,
 				20E0BFEA1B88B0CA00EDAED4 /* TagListAction.m in Sources */,
 				20DA1A711B89B7DD00DEF95C /* MyFeedAction.m in Sources */,
 				20E1C6691B89E9E6008BA9D6 /* UpdateSelfIntroAction.m in Sources */,
 				20DD81671B91DA1700ACFD9A /* ForbiddenLinkManAction.m in Sources */,
+				E47E59811BE8D85F00AF7F5C /* ShopListAction.m in Sources */,
 				20E122171B705D3C00F90BD3 /* FeedManager.m in Sources */,
 				20C5B0811B8DF3E700B4A8A8 /* GroupListAction.m in Sources */,
 				20DADED81BD0958400FB294F /* ActivityManager.m in Sources */,
+				2030A2C61BE9DF40003EDDF8 /* UserSchedulingEditAction.m in Sources */,
 				20E0C00C1B88B0CA00EDAED4 /* ProfileAction.m in Sources */,
 				20E0BFED1B88B0CA00EDAED4 /* MessageListAction.m in Sources */,
 				20E1C67E1B89F148008BA9D6 /* FeedDetailAction.m in Sources */,
 				20402A251BE2200A00802DAF /* FreeBuildingDetailAction.m in Sources */,
 				202F03CC1BE36AF0006E7706 /* UserSchedulingListAction.m in Sources */,
 				3339625C1B95575400DD0A6D /* SuggestListAction.m in Sources */,
+				0499B9CE1BE70F1C00202CFD /* MainAvailableTimeAction.m in Sources */,
 				0463588E1BE0F5450055819F /* CancleActivityAction.m in Sources */,
 				20DF60181BDF6B9E00C8383B /* FindActivityDetailInfoAction.m in Sources */,
 				20DA74C01B8C12040002E041 /* FindFriendsAction.m in Sources */,
@@ -722,6 +776,7 @@
 				04722E261BD8892700F95816 /* AvailableAction.m in Sources */,
 				20DDA3EB1BDA1D8D0023179A /* FindActivityTypesAction.m in Sources */,
 				20E1C6721B89EB9F008BA9D6 /* ReceiveAuthCodeAction.m in Sources */,
+				0490A4A81BE9DD2F0053023C /* NotifyRemindDao.m in Sources */,
 				04A2A0071BCE3969006A35FB /* AppConfigData.m in Sources */,
 				20DA74C31B8C120F0002E041 /* FriendsConditionAction.m in Sources */,
 				20C5B05D1B8DB08900B4A8A8 /* GroupDetailAction.m in Sources */,
@@ -737,6 +792,7 @@
 				20DCB9671B8CA60800C758DE /* ApplyListAction.m in Sources */,
 				202F03C91BE36A27006E7706 /* UserSchedulingConditionsAction.m in Sources */,
 				20DA8B371B8ECBC1007D0CDE /* ReceiveMobileAuthCodeAction.m in Sources */,
+				2030A2C01BE9B0C3003EDDF8 /* CourseDetailAction.m in Sources */,
 				20E372BF1BDDBFC50063BF56 /* CommonImgUpload.m in Sources */,
 				040619DC1BDE11C3008E3E4E /* NoticeAction.m in Sources */,
 				202F03CF1BE36B73006E7706 /* UserSchedulingDetailAction.m in Sources */,

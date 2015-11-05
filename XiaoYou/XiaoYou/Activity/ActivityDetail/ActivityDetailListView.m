@@ -16,6 +16,7 @@
 #import "Author.h"
 #import "UIDevice+DeviceType.h"
 #import "YUtils.h"
+#import "NSString+MyContainString.h"
 
 #define REUSEID_DETAILCELL  @"ActivityDetailCell"
 #define REUSEID_JOINCELL    @"ActivityJoinInCell"
@@ -62,7 +63,7 @@
 
 #pragma mark - 继承者
 - (void)loadData {
-    //[self beginLoadNewData];
+    [self beginLoadNewData];
 }
 - (BOOL)showHeaderRefresh
 {
@@ -125,7 +126,7 @@
 #pragma mark -协议方法
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    if (self.activityDetailArray.count == 0)
+    if (self.activityDetailArray.count == 0 || self.activityDetailArray[0] == nil)
         return 0;
     else {
         ActivityDetailModel *model = self.activityDetailArray[0];
@@ -145,9 +146,12 @@
     }
     else
     {
-        ActivityDetailModel *model = self.activityDetailArray[0];
+        ActivityDetailModel *model;
+        if (self.activityDetailArray.count > 0)
+            model = self.activityDetailArray[0];
+        else
+            return 0;
         Author *author = model.enrollActivityUserInfos[indexPath.row-1];
-        
         
         ProfileInfo *info = [[ProfileInfo alloc]init];
         info.tagModels = author.tagsCommon;
@@ -159,10 +163,10 @@
         }
         
         
-        if ([[UIDevice getCurrentDeviceModel] containsString:@"Simulator"] && IS_IPHONE_6) {
+        if ([[UIDevice getCurrentDeviceModel] myContainsString:@"Simulator"] && IS_IPHONE_6) {
             height += 20;
         }
-        if ([[UIDevice getCurrentDeviceModel] containsString:@"iPhone 6"]) {
+        if ([[UIDevice getCurrentDeviceModel] myContainsString:@"iPhone 6"]) {
             height += 20;
         }
     }
@@ -186,8 +190,12 @@
         CELLTYPE type = indexPath.row == 1? IS_TOPVIEW : NOT_TOPVIEW;
         cell = [[ActivityJoinInCell alloc]initWithType:type];
         
-        ActivityDetailModel *model = self.activityDetailArray[0];
-        [cell setData:model.enrollActivityUserInfos[indexPath.row-1]];
+        ActivityDetailModel *model = nil;
+        
+        if (self.activityDetailArray.count > 0) {
+            model = self.activityDetailArray[0];
+            [cell setData:model.enrollActivityUserInfos[indexPath.row-1]];
+        }
         return cell;
     }
     return nil;
@@ -223,12 +231,13 @@
                 width = 10 + textSize.width;
             }
         }
+#pragma mark 暂时,以后修改为自动布局
         if (isADD) {
             height -= 20;
-            if ([[UIDevice getCurrentDeviceModel] containsString:@"Simulator"] && IS_IPHONE_4_AND_OLDER) {
+            if ([[UIDevice getCurrentDeviceModel] myContainsString:@"Simulator"] && IS_IPHONE_4_AND_OLDER) {
                 height -= 15;
             }
-            if ([[UIDevice getCurrentDeviceModel] containsString:@"iPhone 4"]) {
+            if ([[UIDevice getCurrentDeviceModel] myContainsString:@"iPhone 4"]) {
                 height -= 15;
             }
         }

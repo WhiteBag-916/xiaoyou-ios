@@ -26,7 +26,7 @@
         
         self.backgroundColor = KCOLOR_455A64;
         
-        NSArray *dayArr = @[@"一", @"二", @"三", @"四", @"五", @"六", @"日"];
+        NSArray *dayArr = @[@"周一", @"周二", @"周三", @"周四", @"周五", @"周六", @"周日"];
         
         UILabel *mas_Label = nil;
         

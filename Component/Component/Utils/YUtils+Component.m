@@ -34,7 +34,17 @@
 
 + getParameter:(NSDictionary *)parameters
 {
-    NSMutableDictionary *dic = [@{kYHttpRequestPostData : [self dictionaryToJson:parameters], kYHttpRequestHeader : @{@"Content-type":@"application/json"}} mutableCopy];
+    NSMutableDictionary *dic = [@{kYHttpRequestPostData : [self dictionaryToJson:parameters]} mutableCopy];
+    
+    NSMutableDictionary *headerDic = [@{@"Content-type":@"application/json"} mutableCopy];
+    if (nil != [YShareData defaultData][kShareData_Token]) {
+        [headerDic setObject:[self dictionaryToJson:@{@"schoolCode": [YShareData defaultData][kShareData_SchoolCode],
+                                                      @"studentNo": [YShareData defaultData][kShareData_StudentNo],
+                                                      @"token": [YShareData defaultData][kShareData_Token]}]
+                      forKey:@"userToken"];
+    }
+    
+    [dic setObject:headerDic forKey:kYHttpRequestHeader];
     
     return dic;
 }
@@ -161,4 +171,22 @@
     
     return YES;
 }
+
+//取课程颜色
++ (UIColor *)courseColorByNum:(NSInteger)num {
+    NSArray *colorArray = @[@"fef1dc", @"f8d7ce", @"e4f2f7", @"e5f5f4"];
+    
+    NSInteger colorNum = num%colorArray.count;
+    
+    return [UIColor hexChangeFloat:colorArray[colorNum]];
+}
+
+//提醒时间
++ (NSString *)stringByRemindMin:(NSInteger)min {
+    if (60 == min) {
+        return @"";
+    }
+    return @"事情发生时";
+}
+
 @end

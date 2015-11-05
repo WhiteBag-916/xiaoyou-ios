@@ -16,6 +16,11 @@
 #import "ActivityDetailViewController.h"
 #import "ActivityManager.h"
 #import "ActivityInfoModel.h"
+#import "AvailableTimeModel.h"
+#import "NotifyInfoModel.h"
+#import "YBaseService.h"
+#import "YDatabaseDao.h"
+#import "NSObject+MJKeyValue.h"
 
 #define KPAGENUM 10
 
@@ -79,29 +84,25 @@
 - (void)loadNewData
 {
     _currentIndex = 0;
-    [_availableListArray removeAllObjects];
     [self sendRequest];
 }
 
 - (void)loadMoreData
 {
-    _currentIndex = self.availableListArray.count;
+    _currentIndex = self.availableListArray.count-2;
     [self sendRequest];
 }
 
 - (void)sendRequest {
-    [[ActivityManager sharedInstance] getCurrentUseAvailableListLimitStart:_currentIndex limitEnd:_currentIndex+KPAGENUM block:^(YActionMessage *message) {
+    
+    [[ActivityManager sharedInstance] getCurrentUseMainAvailableListLimitStart:_currentIndex limitEnd:_currentIndex + KPAGENUM block:^(YActionMessage *message) {
         if (message.isSuccess) {
             if ([self isHeaderRefresh]) {
                 [self.availableListArray removeAllObjects];
             }
-            
-            NSLog(@"this is message = %@",message);
-            
-            [self.availableListArray addObjectsFromArray:message.object];
-            
+            [self dealMessage:message];
             [self hiddenFooter:NO];
-            if ([message.object count] < KPAGENUM) {
+            if ([[message.object valueForKey:@"activityList"] count] < KPAGENUM) {
                 [self showNoticeNoMoreData];
             }
             [self reloadData];
@@ -119,10 +120,21 @@
     }];
 }
 
+-(void)dealMessage:(YActionMessage*)message
+{
+    //NSArray *arr = [NSArray arrayWithObject:message.object];
+    AvailableTimeModel *model = message.object;
+    if (_currentIndex == 0) {
+        [self.availableListArray addObject:model.scheduling];
+        [self.availableListArray addObject:@(model.availableBuilding)];
+    }
+    [self.availableListArray addObjectsFromArray:model.activityList];
+}
+
 #pragma mark 协议方法
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return self.availableListArray.count + 2;
+    return self.availableListArray.count;
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -130,17 +142,15 @@
     CGFloat height;
     if (indexPath.row == 0) {
         height = [tableView fd_heightForCellWithIdentifier:REUSEID_SCHEDULE_CELL cacheByIndexPath:indexPath configuration:^(ScheduleCardCell *cell) {
-            [cell setData:@"aaa"];
+            [cell setData:self.availableListArray[indexPath.row]];
         }];
-        
         return height;
-        //return SCALE_NUM(140);
     }
     else if (indexPath.row == 1)
         return SCALE_NUM(85);
     else {
         height = [tableView fd_heightForCellWithIdentifier:REUSEID_AVAILABEL_CELL cacheByIndexPath:indexPath configuration:^(AvailableCell *cell) {
-            [cell setData:_availableListArray[indexPath.row-2]];
+            [cell setData:self.availableListArray[indexPath.row]];
         }];
         return height;
     }
@@ -151,18 +161,42 @@
 {
     if (indexPath.row == 0) {
         ScheduleCardCell *cell = [tableView dequeueReusableCellWithIdentifier:REUSEID_SCHEDULE_CELL];
+        [cell setData:self.availableListArray[indexPath.row]];
+#pragma mark 此处需要数据库相关操作
+        int count = [self searchMessageNotRead];
+        if (count>0)
+            [cell setMessageNotReadIsVisible:YES Text:[NSString stringWithFormat:@"%d条未读消息",count]];
+        else
+            [cell setMessageNotReadIsVisible:NO Text:@""];
         return cell;
     } else if (indexPath.row == 1) {
         StudyRoomCell *cell = [StudyRoomCell cellWithTableView:tableView];
+        [cell setData:self.availableListArray[indexPath.row]];
         return cell;
     } else
     {
         AvailableCell *cell = [tableView dequeueReusableCellWithIdentifier:REUSEID_AVAILABEL_CELL];
-        if (self.availableListArray.count > 0)
-            [cell setData:self.availableListArray[indexPath.row-2]];
+        [cell setData:self.availableListArray[indexPath.row]];
         return cell;
     }
     return nil;
+}
+
+#pragma mark 查找未读信息
+-(int)searchMessageNotRead
+{
+    
+    NSString *dataBasePath = [NSString stringWithFormat:@"%@//%@",[YDirectory documents],NSStringFromClass([NotifyInfoModel class])];
+    YDatabaseDao *dataBaseDao = [[YDatabaseDao alloc]initWitDatabasePath:dataBasePath];
+    
+    NSArray *notifyArr = [dataBaseDao queryModel:NSStringFromClass([NotifyInfoModel class])];
+    NSArray *notifyModelArr = [NotifyInfoModel objectArrayWithKeyValuesArray:notifyArr];
+    int count = 0;
+    for (NotifyInfoModel *model in notifyModelArr) {
+        if ([model.isRead isEqualToString:@"NO"])
+            count++;
+    }
+    return count;
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
@@ -199,19 +233,13 @@
     else if (type == ACTIVITY_DETAIL_CELL) {
         ActivityInfoModel *model;
         if (self.availableListArray.count > 0)
-            model = self.availableListArray[indexPath.row-2];
+            model = self.availableListArray[indexPath.row];
         NSString *publishID = [NSString stringWithFormat:@"%ld",(long)model.activityPublishedModel.activityPublishedModelIdentifier];
         
         ActivityDetailViewController *activityDetailVC = [[ActivityDetailViewController alloc]initWithPublishID:publishID];
         
         [self.viewController.navigationController pushViewController:activityDetailVC animated:YES needHiddenBottomBar:YES];
     }
-    //可以蹭的课
-//    else if (type == SCROUGECOURSE_CELL) {
-//        AvailableSimpleViewController *vc = [[AvailableSimpleViewController alloc] initWithType:AvailableSimpleTypeRubLesson];
-//        [self.viewController.navigationController pushViewController:vc animated:YES needHiddenBottomBar:YES];
-//    }
-    
 }
 
 

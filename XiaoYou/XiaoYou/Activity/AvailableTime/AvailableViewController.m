@@ -19,13 +19,17 @@
 #import "ProvisionManager.h"
 #import "ProfileInfo.h"
 #import "Tags.h"
+#import "YNotificationDefine.h"
+#import "YBaseService.h"
+#import "NotifyInfoModel.h"
+
 @interface AvailableViewController ()
 
 @property (nonatomic,strong) AvailableListView *availableListView;
 
 @property (nonatomic,strong) UIView         *promptView;        //提示透明背景
 @property (nonatomic,strong) UIImageView    *guideImageView;    //提示图片
-@property (nonatomic,assign) int            guideIndex;        //当前提示索引
+@property (nonatomic,assign) int            guideIndex;         //当前提示索引
 
 @end
 
@@ -39,7 +43,8 @@
     if([AppConfigData isUserFirstUseHaveTime])
         [self addGuideView];
     [self setUpCustomNavgationBar];
-    [self availableListView];
+    [self.availableListView loadData];
+    
 }
 
 -(void)dealloc
@@ -47,13 +52,14 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
-
-
-
 -(void)receiveNotificationOfReleaseSuccess
 {
     [_availableListView loadData];
-    [_availableListView loadNewData];
+}
+
+-(void)receiveNotificationOfRemindMessage
+{
+    [self showCustomNavigationRemindButton:YES];
 }
 
 - (void)addGuideView {
@@ -78,11 +84,14 @@
     self.guideIndex = 1;
 }
 
+
+#pragma mark 蒙层引导
+//显示下一个蒙层
 - (void)nextPromptView {
     _guideImageView.image = [UIImage imageNamed:@"1havetime_box_classroom"];
     self.guideIndex = 2;
 }
-
+//第一次显示蒙层
 -(void)dismissGuideView {
     if (self.guideIndex == 1) {
         [self nextPromptView];
@@ -107,8 +116,6 @@
             make.edges.equalTo(self.view);
         }];
     }
-    [_availableListView loadData];
-    [_availableListView sendRequest];
     return _availableListView;
 }
 
@@ -139,8 +146,11 @@
     [view addSubview:scheduleBtn];
     
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:view];
-    [self showCustomNavigationRemindButton];
+    
+    [self showCustomNavigationRemindButton:[AppConfigData isHaveRemindMessage]];
+    [AppConfigData setHaveRemindMessage:NO];
 }
+
 
 //发布Action
 -(void)publishAction {
@@ -160,7 +170,7 @@
 
 //筛选Action
 -(void)filterAction {
-    ActivityChoiceController *choiceVC = [[ActivityChoiceController alloc]initWithType:ACTIVITY_CHOICE_TYPE];
+    ActivityChoiceController *choiceVC = [[ActivityChoiceController alloc] initWithType:ACTIVITY_CHOICE_TYPE andDataSource:nil andStudyRoomDefautStr:nil];
     choiceVC.activityViewController = self;
     [self.navigationController presentViewController:choiceVC animated:YES completion:nil];
 }
@@ -179,6 +189,7 @@
     RemindViewController *remindVC = [[RemindViewController alloc]init];
     //[self.navigationController presentViewController:remindVC animated:YES completion:nil];
     [self.navigationController pushViewController:remindVC animated:YES needHiddenBottomBar:YES];
+    [self showCustomNavigationRemindButton:NO];
 }
 
 
@@ -186,8 +197,9 @@
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    [[NSNotificationCenter defaultCenter]removeObserver:self];
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(receiveNotificationOfReleaseSuccess) name:KNotification_Activity_Release_Success object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(receiveNotificationOfRemindMessage) name:KNotification_Remind_Message_Come object:nil];
 }
 
 -(void)viewWillDisappear:(BOOL)animated
@@ -196,5 +208,4 @@
     self.hidesBottomBarWhenPushed = NO;
     
 }
-
 @end

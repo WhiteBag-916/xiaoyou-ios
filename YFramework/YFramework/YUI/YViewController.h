@@ -59,7 +59,7 @@
 - (void)showCustomNavigationFastButton;
 
 //导航栏左侧,提醒按钮
-- (void)showCustomNavigationRemindButton;
+- (void)showCustomNavigationRemindButton:(BOOL)haveMsg;
 
 - (void)showEditMode;
 

@@ -11,12 +11,21 @@
 
 @interface MerchantDetailViewController ()
 
-
+@property(nonatomic,strong)ShopList * model;
 @property(nonatomic,strong)MerchantDetailTableView * merchantDetailTableView;
 
 @end
 
 @implementation MerchantDetailViewController
+
+- (instancetype)initWithModel:(ShopList *) model
+{
+    self = [super init];
+    if (self) {
+        _model = model;
+    }
+    return self;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -29,7 +38,7 @@
     self.title = @"必胜客";
     [self showCustomNavigationBackButton];
     
-    _merchantDetailTableView = [[MerchantDetailTableView alloc] init];
+    _merchantDetailTableView = [[MerchantDetailTableView alloc] initWithModel:_model];
     _merchantDetailTableView.backgroundColor = [UIColor clearColor];
     [self.view addSubview:_merchantDetailTableView];
     [_merchantDetailTableView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -43,15 +52,5 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

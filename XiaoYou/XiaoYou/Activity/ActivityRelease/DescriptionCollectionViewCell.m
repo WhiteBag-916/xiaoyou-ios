@@ -229,13 +229,24 @@ NSString *const kDescriptionCollectionViewCell = @"DescriptionCollectionViewCell
     {
         if ([self isBlankString:textView.text])
         {
+            [self.viewController.view endEditing:YES];
             [YUtils showTitle:@"描述不能为空"];
         }
         else
         {
-            [YUtils showTitle:@"描述字数不能大于5000字"];
+            [self.viewController.view endEditing:YES];
+            
         }
-        textView.text = [textView.text substringWithRange:NSMakeRange(0, 5000)];
+        if (textView.text.length >= 5000)
+        {
+            [YUtils showTitle:@"描述字数不能大于5000字"];
+            [textView setText:[textView.text substringWithRange:NSMakeRange(0, 5000)]];
+            _dataManager.ActivityDesciptionText = textView.text;
+        }
+        else
+        {
+            return;
+        }
     }
 }
 

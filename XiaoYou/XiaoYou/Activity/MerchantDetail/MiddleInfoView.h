@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ShopList.h"
 
 @interface MiddleInfoView : UIView
+
+- (instancetype)initWithModel:(ShopList *) model;
 
 @end
