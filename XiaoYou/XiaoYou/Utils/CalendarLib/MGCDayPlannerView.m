@@ -2132,6 +2132,10 @@ static const CGFloat kMaxHourSlotHeight = 150.;
 #pragma mark - CalendarDayHeaderDelegate
 - (void)moveToDate:(NSDate *)date {
     [self scrollToDate:date options:MGCDayPlannerScrollDate animated:YES];
+    if ([self.delegate respondsToSelector:@selector(dayPlannerView:didEndDisplayingDate:)])
+    {
+        [self.delegate dayPlannerView:self didEndDisplayingDate:date];
+    }
 }
 
 @end

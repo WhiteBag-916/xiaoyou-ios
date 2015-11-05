@@ -135,16 +135,16 @@ static NSString* const EventCellReuseIdentifier = @"EventCellReuseIdentifier";
             _userSchedulingListEndDate = endDate;
         }
         
-        [self updateListDate:needLoading];
+        [self updateListDate:needLoading beginDate:beginDate endDate:endDate];
     }
 }
 
-- (void)updateListDate:(BOOL)needLoading {
+- (void)updateListDate:(BOOL)needLoading beginDate:(NSDate *)beginDate endDate:(NSDate *)endDate {
     if (needLoading) {
         [YUtils showHUDWithTitle];
     }
     
-    [[ActivityManager sharedInstance] userSchedulingList:[_userSchedulingListBeginDate timeIntervalSince1970]*1000 endDate:[_userSchedulingListEndDate timeIntervalSince1970]*1000 block:^(YActionMessage *message) {
+    [[ActivityManager sharedInstance] userSchedulingList:[beginDate timeIntervalSince1970]*1000 endDate:[endDate timeIntervalSince1970]*1000 block:^(YActionMessage *message) {
         [YUtils hiddenProgressHUD];
         
         [self addSchedulingArray:message.object];
@@ -176,6 +176,7 @@ static NSString* const EventCellReuseIdentifier = @"EventCellReuseIdentifier";
 
 //删除
 - (void)delScheduling:(NSInteger)internalBaseClassIdentifier scheduleType:(NSString *)scheduleType {
+    
     [_userSchedulingInfoArray enumerateObjectsUsingBlock:^(UserSchedulingInfo * _Nonnull userSchedulingInfoObj, NSUInteger userSchedulingInfoIdx, BOOL * _Nonnull userSchedulingInfoStop) {
         
         if (userSchedulingInfoObj.internalBaseClassIdentifier == internalBaseClassIdentifier
@@ -198,18 +199,20 @@ static NSString* const EventCellReuseIdentifier = @"EventCellReuseIdentifier";
     //去重
     NSMutableArray *dataArray = [NSMutableArray arrayWithArray:array];
     
-    [_userSchedulingInfoArray enumerateObjectsUsingBlock:^(UserSchedulingInfo * _Nonnull userSchedulingInfoObj, NSUInteger userSchedulingInfoIdx, BOOL * _Nonnull userSchedulingInfoStop) {
-
-        [dataArray enumerateObjectsUsingBlock:^(UserSchedulingInfo * _Nonnull dataArrayObj, NSUInteger dataArrayIdx, BOOL * _Nonnull dataArrayStop) {
+    for (int i=0; i<_userSchedulingInfoArray.count; ++i) {
+        UserSchedulingInfo *userSchedulingInfoObj = _userSchedulingInfoArray[i];
+        
+        for (int j=0; j<dataArray.count; ++j) {
+            UserSchedulingInfo *dataArrayObj = dataArray[j];
             if (userSchedulingInfoObj.internalBaseClassIdentifier == dataArrayObj.internalBaseClassIdentifier
                 && [userSchedulingInfoObj.type isEqualToString:dataArrayObj.type]) {
                 //删除旧的，加新的
-                [_userSchedulingInfoArray removeObject:userSchedulingInfoObj];
-                *dataArrayStop = YES;
+                [_userSchedulingInfoArray removeObjectAtIndex:i];
+                --i;
+                break;
             }
-        }];
-        
-    }];
+        }
+    }
     
     [_userSchedulingInfoArray addObjectsFromArray:dataArray];
     
@@ -375,7 +378,8 @@ static NSString* const EventCellReuseIdentifier = @"EventCellReuseIdentifier";
     }
 }
 
-- (void)dayPlannerView:(MGCDayPlannerView*)view didEndDisplayingDate:(NSDate*)date {
+- (void)dayPlannerView:(MGCDayPlannerView*)view didEndDisplayingDate:(NSDate*)date
+{
     if ([date beginningOfWeek] <= _userSchedulingListBeginDate) {
         //取上个星期的
         [self initData:date needLoading:NO needNowWeek:NO needBeforeWeek:YES needAfterWeek:NO];

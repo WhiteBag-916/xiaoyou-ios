@@ -113,12 +113,32 @@
 }
 
 - (void)initData {
+    //获取课时
+    self.courseTimeListModel = [[CurriculumManager sharedInstance] getCourseTime];
+    if (nil == self.courseTimeListModel) {
+        //如果没请求下来，再次请求
+        [YUtils showHUDWithTitle];
+        [[CurriculumManager sharedInstance] courseTimeList:^(YActionMessage *message) {
+            [YUtils hiddenProgressHUD];
+            if (message.isSuccess) {
+                //获取课时
+                self.courseTimeListModel = [[CurriculumManager sharedInstance] getCourseTime];
+                [self resetData];
+            } else {
+                [YUtils showTitle:message.desc];
+            }
+        }];
+    } else {
+        [self resetData];
+    }
+}
+
+- (void)resetData {
     //获取当前周几
     NSUInteger weekday = [[NSDate date] weekday];
     [_myTimetableHeadView resetSelectDay:weekday-2];
     
     //获取课时
-    self.courseTimeListModel = [[CurriculumManager sharedInstance] getCourseTime];
     [_myTimetableView refreshCourseTimeList:self.courseTimeListModel];
     
     //获取当前第几周
@@ -142,14 +162,16 @@
 
 //选择第几周
 - (void)showChooseWeek {
-    ChooseWeekView *chooseWeekView = [[ChooseWeekView alloc] initWithBlock:_selectWeekNum
-                                                                   weekNum:self.courseTimeListModel.maxWeek
-                                                                   nowWeek:_nowWeek
-                                                                     block:^(NSInteger checkNum) {
-        [self chooseWeek:checkNum];
-    }];
-    
-    [chooseWeekView show];
+    if (nil != self.courseTimeListModel) {
+        ChooseWeekView *chooseWeekView = [[ChooseWeekView alloc] initWithBlock:_selectWeekNum
+                                                                       weekNum:self.courseTimeListModel.maxWeek
+                                                                       nowWeek:_nowWeek
+                                                                         block:^(NSInteger checkNum) {
+                                                                             [self chooseWeek:checkNum];
+                                                                         }];
+        
+        [chooseWeekView show];
+    }
 }
 
 - (void)chooseWeek:(NSInteger)num {
