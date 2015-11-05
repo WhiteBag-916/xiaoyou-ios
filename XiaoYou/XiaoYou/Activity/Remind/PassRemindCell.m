@@ -265,7 +265,12 @@
     _model = model;
     Author *info = model.activityUser;
     [_headImageView setFaceImageWithUrl:info.headPic];
-    _contentTitleLabel.text = info.name;
+    if (_cellType == SUCESSED_JOININ) {
+        _contentTitleLabel.text = model.activityOrganizer;
+    }
+    else {
+        _contentTitleLabel.text = info.name;
+    }
     _contentNameLabel.text = [NSString stringWithFormat:_contentNameLabel.text,model.activityName];
     _activityTimeLabel.text = [NSString stringWithFormat:_activityTimeLabel.text,[TimeFormatterConvert timeConvertToFommtterAvailable:model.activityStartTime]];
 }

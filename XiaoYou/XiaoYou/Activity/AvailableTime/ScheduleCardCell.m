@@ -158,22 +158,23 @@
 
 -(void)setData:(NSArray *)scheduleArr
 {
+    //[TimeFormatterConvert timeConvertToFommtterScheduleStartTime:schedule.startTime EndTime:schedule.endTime]
     for (int i = 0; i < scheduleArr.count; i++) {
         Scheduling *schedule = [scheduleArr objectAtIndex:i];
         if (i == 0) {
-            _timeLabel1.text = [TimeFormatterConvert timeConvertToFommtterScheduleStartTime:schedule.startTime EndTime:schedule.endTime];
+            _timeLabel1.text    = schedule.content;
             _projectLabel1.text = schedule.content;
             _timeLabel2.text    = @"";
             _projectLabel2.text = @"";
             _timeLabel3.text    = @"";
             _projectLabel3.text = @"";
         } else if (i == 1) {
-            _timeLabel2.text = [TimeFormatterConvert timeConvertToFommtterScheduleStartTime:schedule.startTime EndTime:schedule.endTime];
+            _timeLabel2.text = schedule.content;
             _projectLabel2.text = schedule.content;
             _timeLabel3.text    = @"";
             _projectLabel3.text = @"";
         } else if (i == 2) {
-            _timeLabel3.text = [TimeFormatterConvert timeConvertToFommtterScheduleStartTime:schedule.startTime EndTime:schedule.endTime];
+            _timeLabel3.text = schedule.content;
             _projectLabel3.text = schedule.content;
         }
     }
