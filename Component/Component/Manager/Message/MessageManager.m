@@ -406,7 +406,7 @@ DEF_SINGLETON(MessageManager);
                 [self dealMessageWithDict:ext Type:SCHEDULE_REMIND];
                 break;
             }
-            case ACTIVITY_ENROLL: //用户报名活动提醒 16
+            case ACTIVITY_ENROLL: //用户报名活动提醒(有人参加你的活动) 16
             {
                 [self dealMessageWithDict:ext Type:ACTIVITY_ENROLL];
                 //[self showNotificationWithMessage:message];
@@ -503,7 +503,7 @@ DEF_SINGLETON(MessageManager);
             [dataBaseDao insertModel:notiInfo];
             break;
         }
-        case ACTIVITY_ENROLL_NO_CHECK:  //审核未通过
+        case ACTIVITY_ENROLL_NO_CHECK:  //审核未通过 //铃铛
         {
             notiInfo.headIcon = dict[@"headIcon"];
             notiInfo.idStr = dict[@"id"];
