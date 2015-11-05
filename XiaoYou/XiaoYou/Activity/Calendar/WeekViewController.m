@@ -183,7 +183,7 @@ static NSString* const EventCellReuseIdentifier = @"EventCellReuseIdentifier";
             && [userSchedulingInfoObj.type isEqualToString:scheduleType]) {
             
             [_userSchedulingInfoArray removeObjectAtIndex:userSchedulingInfoIdx];
-            [self.dayPlannerView reloadAllEvents];
+            [self.dayPlannerView reloadEventsAtDate:self.dayPlannerView.visibleDays.start];
             
             *userSchedulingInfoStop = YES;
         }
@@ -216,7 +216,7 @@ static NSString* const EventCellReuseIdentifier = @"EventCellReuseIdentifier";
     
     [_userSchedulingInfoArray addObjectsFromArray:dataArray];
     
-    [self.dayPlannerView reloadAllEvents];
+    [self.dayPlannerView reloadEventsAtDate:self.dayPlannerView.visibleDays.start];
 }
 
 //根据时间获取array
