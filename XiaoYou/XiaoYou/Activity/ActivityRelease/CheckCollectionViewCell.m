@@ -119,12 +119,12 @@ NSString *const kCheckCollectionViewCell = @"CheckCollectionViewCellId";
     contentLabel.backgroundColor = [UIColor clearColor];
     contentLabel.numberOfLines = 0;
     contentLabel.lineBreakMode = NSLineBreakByClipping;
-    [contentLabel setText:@"若活动发起人希望限制活动参加人数，请选择 ⌈需要报名审核⌋ ，然后使用社团账号，登录活动发布后台，对活动报名的同学进行 ⌈通过⌋ 或 ⌈拒绝⌋ 操作。\n若选择 ⌈不需要报名审核⌋ ，则视为该活动所有人都可以参与。\n" lineSpacing:3];
+    [contentLabel setText:@"若活动发起人希望限制活动参加人数，请选择 [需要报名审核]，然后使用社团账号，登录活动发布后台，对活动报名的同学进行 [通过] 或 [拒绝] 操作。\n若选择 [不需要报名审核]，则视为该活动所有人都可以参与。\n" lineSpacing:3];
     contentLabel.textColor = KCOLOR_B5;
     [self.contentView addSubview:contentLabel];
     [contentLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(pointView);
-        make.top.equalTo(aboutLabel.mas_bottom);
+        make.top.equalTo(aboutLabel.mas_bottom).offset(SCALE_NUM(2));
         make.bottom.mas_equalTo(SCALE_NUM(0));
         make.right.mas_equalTo(SCALE_NUM(-10));
     }];

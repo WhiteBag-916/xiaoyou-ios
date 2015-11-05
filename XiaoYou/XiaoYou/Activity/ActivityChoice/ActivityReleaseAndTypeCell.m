@@ -127,7 +127,15 @@ NSString *const kActivityReleaseAndTypeCell = @"ActivityReleaseAndTypeCellId";
 
 - (BOOL)needLine
 {
-    return YES;
+    if (_myType == ACTIVITY_CHOICE_TYPE)
+    {
+        return YES;
+    }
+    else
+    {
+        return NO;
+    }
+    
 }
 
 -(NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView
