@@ -112,12 +112,24 @@
 #pragma mark - 左导航栏
 - (void)showCustomNavigationBackButton
 {
-    [self showNomalNavigationLeftButton:@"" action:@selector(onNavigationLeftButtonClicked) imgName:@"common_back" frame:CGRectMake(0, 0, 9, 14)];
+    [self showNomalNavigationLeftButton:@"" action:@selector(onNavigationLeftButtonClicked) imgName:@"common_back" frame:CGRectMake(0, 0, 29, 34) inset:UIEdgeInsetsMake(10, 5, 10, 15)];
 }
 
 //导航栏左侧显示取消按钮
 - (void)showCustomNavigationCancelButton {
-    [self showNomalNavigationLeftButton:@"" action:@selector(onNavigationLeftButtonClicked) imgName:@"complete-cancel" frame:CGRectMake(0, 0, 16, 16)];
+    [self showNomalNavigationLeftButton:@"" action:@selector(onNavigationLeftButtonClicked) imgName:@"complete-cancel" frame:CGRectMake(0, 0, 26, 26) inset:UIEdgeInsetsMake(5, 5, 5, 5)];
+}
+
+- (void)showNomalNavigationLeftButton:(NSString *)title action:(SEL)selector imgName:(NSString *)imgName frame:(CGRect)frame inset:(UIEdgeInsets)inset {
+    [self showNomalNavigationLeftButton:title action:selector imgName:imgName frame:frame];
+    if (nil != imgName)
+    {
+        _navigationLeftButton.imageEdgeInsets = inset;
+    }
+    else
+    {
+        _navigationLeftButton.titleEdgeInsets = inset;
+    }
 }
 
 - (void)showNomalNavigationLeftButton:(NSString *)title action:(SEL)selector imgName:(NSString *)imgName frame:(CGRect)frame
