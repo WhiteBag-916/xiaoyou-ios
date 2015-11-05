@@ -183,7 +183,7 @@ static NSString* const EventCellReuseIdentifier = @"EventCellReuseIdentifier";
             && [userSchedulingInfoObj.type isEqualToString:scheduleType]) {
             
             [_userSchedulingInfoArray removeObjectAtIndex:userSchedulingInfoIdx];
-            [self.dayPlannerView reloadEventsAtDate:self.dayPlannerView.visibleDays.start];
+            [self.dayPlannerView reloadAllEvents];
             
             *userSchedulingInfoStop = YES;
         }
@@ -216,7 +216,7 @@ static NSString* const EventCellReuseIdentifier = @"EventCellReuseIdentifier";
     
     [_userSchedulingInfoArray addObjectsFromArray:dataArray];
     
-    [self.dayPlannerView reloadEventsAtDate:self.dayPlannerView.visibleDays.start];
+    [self.dayPlannerView reloadAllEvents];
 }
 
 //根据时间获取array
@@ -283,7 +283,7 @@ static NSString* const EventCellReuseIdentifier = @"EventCellReuseIdentifier";
     
     MGCStandardEventView *evCell = (MGCStandardEventView*)[view dequeueReusableViewWithIdentifier:EventCellReuseIdentifier forEventOfType:type atIndex:index date:date];
     evCell.title = ev.content;
-    evCell.subtitle = ev.address;
+//    evCell.subtitle = ev.address;
     evCell.color = [self colorByType:ev.type];//[UIColor colorWithCGColor:ev.calendar.CGColor];
     evCell.style = MGCStandardEventViewStylePlain|MGCStandardEventViewStyleSubtitle;
     evCell.style |= (type == MGCAllDayEventType) ?: MGCStandardEventViewStyleBorder;
