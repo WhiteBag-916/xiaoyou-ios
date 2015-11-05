@@ -57,6 +57,11 @@
     [_availableListView loadData];
 }
 
+-(void)receiveNotificationOfRemindMessage
+{
+    [self showCustomNavigationRemindButton:YES];
+}
+
 - (void)addGuideView {
     
     UIWindow *window = [UIApplication sharedApplication].keyWindow;
@@ -194,6 +199,7 @@
     [super viewWillAppear:animated];
     [[NSNotificationCenter defaultCenter] removeObserver:self];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(receiveNotificationOfReleaseSuccess) name:KNotification_Activity_Release_Success object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(receiveNotificationOfRemindMessage) name:KNotification_Remind_Message_Come object:nil];
 }
 
 -(void)viewWillDisappear:(BOOL)animated

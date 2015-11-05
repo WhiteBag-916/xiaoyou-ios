@@ -139,6 +139,9 @@
 
 -(BOOL)insertModel:(YModel*)model
 {
+    if (![self tableExistsWithName:NSStringFromClass([model class])]) {
+        return NO;
+    }
     //获取表名
     NSString *tableName = NSStringFromClass([model class]);
     
@@ -190,6 +193,9 @@
  */
 -(NSArray*)queryModel:(NSString*)className
 {
+    if (![self tableExistsWithName:className]) {
+        return nil;
+    }
     NSString *sql = [NSString stringWithFormat:@"select * from %@",className];
     //查询
     [YDatabase registerDB:self.databasePath];
