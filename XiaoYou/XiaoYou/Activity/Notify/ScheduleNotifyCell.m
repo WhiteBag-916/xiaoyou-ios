@@ -7,6 +7,7 @@
 //
 
 #import "ScheduleNotifyCell.h"
+#import "TimeFormatterConvert.h"
 
 #define REUSRID             @"ScheduleNotifyCell"
 #define CELL_INSET          SCALE_NUM(12)
@@ -112,7 +113,7 @@
 {
     _remindTitleLabel.text = model.em_push_title;
     _scheduleNameLabel.text = model.name;
-    _beginTimeLable.text = [NSString stringWithFormat:@"%f",model.startTime];
+    _beginTimeLable.text = [NSString stringWithFormat:@"活动开始时间：%@",[TimeFormatterConvert timeConvertToFommtterNotice:model.startTime]];
 }
 
 @end

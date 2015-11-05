@@ -79,6 +79,10 @@
 		044DA0551BBA77C900AA321A /* ActivityDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 044DA0431BBA77C900AA321A /* ActivityDetailCell.m */; };
 		044DA0561BBA77C900AA321A /* ActivityDetailListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 044DA0451BBA77C900AA321A /* ActivityDetailListView.m */; };
 		044DA0571BBA77C900AA321A /* ActivityDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 044DA0471BBA77C900AA321A /* ActivityDetailViewController.m */; };
+		04571DB11BEB191F00BAD2A6 /* no_data_schedule@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 04571DAF1BEB191F00BAD2A6 /* no_data_schedule@2x.png */; settings = {ASSET_TAGS = (); }; };
+		04571DB21BEB191F00BAD2A6 /* no_data_schedule@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 04571DB01BEB191F00BAD2A6 /* no_data_schedule@3x.png */; settings = {ASSET_TAGS = (); }; };
+		04571DB51BEB1D7200BAD2A6 /* no_someone_signup@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 04571DB31BEB1D7200BAD2A6 /* no_someone_signup@2x.png */; settings = {ASSET_TAGS = (); }; };
+		04571DB61BEB1D7200BAD2A6 /* no_someone_signup@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 04571DB41BEB1D7200BAD2A6 /* no_someone_signup@3x.png */; settings = {ASSET_TAGS = (); }; };
 		0461A3DD1BE38D0800F00E72 /* NSString+MyContainString.m in Sources */ = {isa = PBXBuildFile; fileRef = 0461A3DC1BE38D0800F00E72 /* NSString+MyContainString.m */; };
 		0463588B1BE096790055819F /* UIDevice+DeviceType.m in Sources */ = {isa = PBXBuildFile; fileRef = 0463588A1BE096790055819F /* UIDevice+DeviceType.m */; };
 		0475AD891BDA247400763896 /* SearchActivityListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0475AD881BDA247400763896 /* SearchActivityListView.m */; };
@@ -915,6 +919,10 @@
 		044DA0451BBA77C900AA321A /* ActivityDetailListView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityDetailListView.m; sourceTree = "<group>"; };
 		044DA0461BBA77C900AA321A /* ActivityDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityDetailViewController.h; sourceTree = "<group>"; };
 		044DA0471BBA77C900AA321A /* ActivityDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityDetailViewController.m; sourceTree = "<group>"; };
+		04571DAF1BEB191F00BAD2A6 /* no_data_schedule@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "no_data_schedule@2x.png"; sourceTree = "<group>"; };
+		04571DB01BEB191F00BAD2A6 /* no_data_schedule@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "no_data_schedule@3x.png"; sourceTree = "<group>"; };
+		04571DB31BEB1D7200BAD2A6 /* no_someone_signup@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "no_someone_signup@2x.png"; sourceTree = "<group>"; };
+		04571DB41BEB1D7200BAD2A6 /* no_someone_signup@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "no_someone_signup@3x.png"; sourceTree = "<group>"; };
 		0461A3DB1BE38D0800F00E72 /* NSString+MyContainString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+MyContainString.h"; sourceTree = "<group>"; };
 		0461A3DC1BE38D0800F00E72 /* NSString+MyContainString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+MyContainString.m"; sourceTree = "<group>"; };
 		046358891BE096790055819F /* UIDevice+DeviceType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIDevice+DeviceType.h"; sourceTree = "<group>"; };
@@ -2070,6 +2078,10 @@
 			isa = PBXGroup;
 			children = (
 				043AC8631BCF7BFC00AB6E09 /* mengcheng */,
+				04571DAF1BEB191F00BAD2A6 /* no_data_schedule@2x.png */,
+				04571DB01BEB191F00BAD2A6 /* no_data_schedule@3x.png */,
+				04571DB31BEB1D7200BAD2A6 /* no_someone_signup@2x.png */,
+				04571DB41BEB1D7200BAD2A6 /* no_someone_signup@3x.png */,
 				043B45381BE87A2000050B32 /* red_point_bell@2x.png */,
 				043B45391BE87A2000050B32 /* red_point_bell@3x.png */,
 				0479E4241BE4B68D002815E7 /* red_bell@2x.png */,
@@ -4356,6 +4368,7 @@
 				20DA3A211BD7939B00B4B1B1 /* build_icon_name@2x.png in Resources */,
 				E43E106E1BCCFA840018B6D7 /* circle_green@2x.png in Resources */,
 				654379B31B8DB223007B15CA /* icon@3x.png in Resources */,
+				04571DB61BEB1D7200BAD2A6 /* no_someone_signup@3x.png in Resources */,
 				E48E09AD1BD781B10017D395 /* scanf_code_schoolCode@2x.png in Resources */,
 				E482D5721BD8EA310045F4DB /* common_picture_loading@3x.png in Resources */,
 				20DAAAAE1BCD05F5006DF231 /* havetime_icon_teacher@2x.png in Resources */,
@@ -4502,6 +4515,7 @@
 				65CBE1671BC013B300C28D57 /* gift_id@3x.png in Resources */,
 				20DAAAAA1BCD05F5006DF231 /* havetime_icon_academy@2x.png in Resources */,
 				20DA1A771B89BEF100DEF95C /* register-frame-agree@3x.png in Resources */,
+				04571DB51BEB1D7200BAD2A6 /* no_someone_signup@2x.png in Resources */,
 				20E0BFFC1B88B0CA00EDAED4 /* register-photo-upload-boundary@3x.png in Resources */,
 				E48E09A61BD781B10017D395 /* scanf_code_person@3x.png in Resources */,
 				20DAE1581B882D0500607996 /* register-photo-upload@2x.png in Resources */,
@@ -4688,6 +4702,7 @@
 				E482D57A1BD8F4E00045F4DB /* scanf_stu_num@2x.png in Resources */,
 				20DAAAAB1BCD05F5006DF231 /* havetime_icon_academy@3x.png in Resources */,
 				334670641B841F2800A8628A /* new-remind-number@2x.png in Resources */,
+				04571DB11BEB191F00BAD2A6 /* no_data_schedule@2x.png in Resources */,
 				E48E09A21BD781B10017D395 /* scanf_code_circle@3x.png in Resources */,
 				6563415C1BC1133C00E10025 /* gift_home@2x.png in Resources */,
 				044DA00F1BBA598C00AA321A /* funny_detail_boy@3x.png in Resources */,
@@ -4806,6 +4821,7 @@
 				333122CC1B806EDC00D3D032 /* chat_sender_audio_playing_002@2x.png in Resources */,
 				33F83A8D1B8B2B6D00FF5483 /* mine-heart-red@3x.png in Resources */,
 				E48E09AA1BD781B10017D395 /* scanf_code_place@3x.png in Resources */,
+				04571DB21BEB191F00BAD2A6 /* no_data_schedule@3x.png in Resources */,
 				E48E09A11BD781B10017D395 /* scanf_code_circle@2x.png in Resources */,
 				3346706D1B8426D400A8628A /* delete-member@3x.png in Resources */,
 				65CF63841B8EA2B500ACBB70 /* camera@3x.png in Resources */,

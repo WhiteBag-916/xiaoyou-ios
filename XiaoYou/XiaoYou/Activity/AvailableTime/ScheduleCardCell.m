@@ -23,6 +23,7 @@
 @property (nonatomic,strong) UILabel        *projectLabel2;     //第二项内容
 @property (nonatomic,strong) UILabel        *timeLabel3;        //第三项时间
 @property (nonatomic,strong) UILabel        *projectLabel3;     //第三项内容
+@property (nonatomic,strong) UIImageView    *notHaveSchedule;   //没有日程
 
 @property (nonatomic,strong) UIButton       *messageNotRead;    //多少条未读消息
 @end
@@ -160,12 +161,18 @@
         make.right.equalTo(_projectLabel2);
     }];
     
-    //设置未读消息
+    _notHaveSchedule = [[UIImageView alloc]init];
+    [self.contentView addSubview:_notHaveSchedule];
+    _notHaveSchedule.hidden = YES;
+    _notHaveSchedule.image = [UIImage imageNamed:@"no_data_schedule"];
+    [_notHaveSchedule mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(_timeLabel1);
+        make.bottom.equalTo(_timeLabel2.mas_top).offset(SCALE_NUM(-5));
+    }];
 }
 
 -(void)setData:(NSArray *)scheduleArr
 {
-    
     for (int i = 0; i < scheduleArr.count; i++) {
         Scheduling *schedule = [scheduleArr objectAtIndex:i];
         if (i == 0) {
@@ -193,6 +200,15 @@
                 _projectLabel3.textColor = KCOLOR_g1;
             }
         }
+    }
+    if (scheduleArr.count == 0) {
+        _timeLabel1.text = @"";
+        _projectLabel1.text = @"";
+        _timeLabel2.text = @"";
+        _projectLabel2.text = @"";
+        _timeLabel3.text = @"";
+        _projectLabel3.text = @"";
+        _notHaveSchedule.hidden = NO;
     }
     if (scheduleArr.count == 1) {
         [_timeLabel1 mas_updateConstraints:^(MASConstraintMaker *make) {

@@ -19,12 +19,12 @@
     NSTimeInterval timeStartInter = startTime /1000;
     NSTimeInterval endTimeInter = endTime/1000;
     
-    NSTimeInterval jiange = 0;
+    NSTimeInterval jiange = timeStartInter - timeNowInter;
     if (timeNowInter >= timeStartInter && timeNowInter <= endTimeInter) {
         return @"进行中";
     }
-    else if (timeNowInter < startTime) {
-        jiange = startTime - timeNowInter;
+    else if (timeNowInter < timeStartInter) {
+        jiange = timeStartInter - timeNowInter;
     }
     if (jiange > 24 * 60 * 60) {
         jiange = jiange /(24 * 60 * 60)*1.0;
@@ -36,21 +36,6 @@
         jiange = jiange /60.0;
         return [NSString stringWithFormat:@"还有%dmin开始",(int)jiange];
     }
-    
-    /*NSTimeInterval time = (startTime + TIME_OFFSET)/1000;//因为时差问题要加8小时 == 28800 sec
-    NSDate *detaildate=[NSDate dateWithTimeIntervalSince1970:time];
-    //实例化一个NSDateFormatter对象
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    //设定时间格式,这里可以设置成自己需要的格式
-    [dateFormatter setDateFormat:@"MM月dd日 HH:mm"];
-    NSString *currentDateStr = [dateFormatter stringFromDate: detaildate];
-    
-    NSTimeInterval endTimeInter = (endTime + TIME_OFFSET)/1000;//因为时差问题要加8
-    NSDate *endDate=[NSDate dateWithTimeIntervalSince1970:endTimeInter];
-    NSString *endTimeStr = [dateFormatter stringFromDate:endDate];
-    
-    NSString *retTimeStr = [NSString stringWithFormat:@"%@-%@",currentDateStr,endTimeStr];*/
-    
     return @"";
 }
 
