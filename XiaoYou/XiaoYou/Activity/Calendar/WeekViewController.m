@@ -283,7 +283,7 @@ static NSString* const EventCellReuseIdentifier = @"EventCellReuseIdentifier";
     
     MGCStandardEventView *evCell = (MGCStandardEventView*)[view dequeueReusableViewWithIdentifier:EventCellReuseIdentifier forEventOfType:type atIndex:index date:date];
     evCell.title = ev.content;
-//    evCell.subtitle = ev.address;
+    evCell.subtitle = ev.address;
     evCell.color = [self colorByType:ev.type];//[UIColor colorWithCGColor:ev.calendar.CGColor];
     evCell.style = MGCStandardEventViewStylePlain|MGCStandardEventViewStyleSubtitle;
     evCell.style |= (type == MGCAllDayEventType) ?: MGCStandardEventViewStyleBorder;
