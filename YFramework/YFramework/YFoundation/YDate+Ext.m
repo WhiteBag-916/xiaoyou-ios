@@ -316,7 +316,7 @@
     // 计算当前日期和这周的星期一和星期天差的天数
     long lastDiff;
     if (weekDay == 1) {
-        lastDiff = 0;
+        lastDiff = 14-1;
     }else{
         lastDiff = 14 - weekDay;
     }
