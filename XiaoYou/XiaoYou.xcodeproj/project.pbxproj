@@ -796,6 +796,8 @@
 		E482D57C1BD8F4E00045F4DB /* scanf_stu_toast@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E482D5761BD8F4E00045F4DB /* scanf_stu_toast@2x.png */; };
 		E482D57D1BD8F4E00045F4DB /* scanf_stu_name@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E482D5771BD8F4E00045F4DB /* scanf_stu_name@3x.png */; };
 		E482D57E1BD8F4E00045F4DB /* scanf_stu_name@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E482D5781BD8F4E00045F4DB /* scanf_stu_name@2x.png */; };
+		E4866A9F1BEB114F0040FA2A /* news_icon_beautiful@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E4866A9D1BEB114F0040FA2A /* news_icon_beautiful@2x.png */; };
+		E4866AA01BEB114F0040FA2A /* news_icon_beautiful@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E4866A9E1BEB114F0040FA2A /* news_icon_beautiful@3x.png */; };
 		E48E09A11BD781B10017D395 /* scanf_code_circle@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E48E09931BD781B10017D395 /* scanf_code_circle@2x.png */; };
 		E48E09A21BD781B10017D395 /* scanf_code_circle@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E48E09941BD781B10017D395 /* scanf_code_circle@3x.png */; };
 		E48E09A31BD781B10017D395 /* scanf_code_house@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E48E09951BD781B10017D395 /* scanf_code_house@2x.png */; };
@@ -1991,6 +1993,8 @@
 		E482D5761BD8F4E00045F4DB /* scanf_stu_toast@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "scanf_stu_toast@2x.png"; sourceTree = "<group>"; };
 		E482D5771BD8F4E00045F4DB /* scanf_stu_name@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "scanf_stu_name@3x.png"; sourceTree = "<group>"; };
 		E482D5781BD8F4E00045F4DB /* scanf_stu_name@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "scanf_stu_name@2x.png"; sourceTree = "<group>"; };
+		E4866A9D1BEB114F0040FA2A /* news_icon_beautiful@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "news_icon_beautiful@2x.png"; sourceTree = "<group>"; };
+		E4866A9E1BEB114F0040FA2A /* news_icon_beautiful@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "news_icon_beautiful@3x.png"; sourceTree = "<group>"; };
 		E48E09931BD781B10017D395 /* scanf_code_circle@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "scanf_code_circle@2x.png"; sourceTree = "<group>"; };
 		E48E09941BD781B10017D395 /* scanf_code_circle@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "scanf_code_circle@3x.png"; sourceTree = "<group>"; };
 		E48E09951BD781B10017D395 /* scanf_code_house@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "scanf_code_house@2x.png"; sourceTree = "<group>"; };
@@ -2161,6 +2165,8 @@
 		044DA0121BBA5B2200AA321A /* RightBarItem */ = {
 			isa = PBXGroup;
 			children = (
+				E4866A9D1BEB114F0040FA2A /* news_icon_beautiful@2x.png */,
+				E4866A9E1BEB114F0040FA2A /* news_icon_beautiful@3x.png */,
 				E45FD84E1BCF41EB007619D7 /* activity-releaser@2x.png */,
 				E45FD84F1BCF41EB007619D7 /* activity-releaser@3x.png */,
 				044DA0131BBA5B2200AA321A /* bar_bell@2x.png */,
@@ -4383,6 +4389,7 @@
 				3334AC361B82E32100FDDCCB /* chat_receiver_bg.png in Resources */,
 				20D821AB1BE0ADF700C5E21C /* havetime_icon_remind@2x.png in Resources */,
 				20E18DB91B808E42005B75EE /* common_search@3x.png in Resources */,
+				E4866AA01BEB114F0040FA2A /* news_icon_beautiful@3x.png in Resources */,
 				3334AC3A1B82E32700FDDCCB /* chat_sender_bg.png in Resources */,
 				334670751B842DC900A8628A /* group_add@3x.png in Resources */,
 				3334ABEE1B82C58600FDDCCB /* chatBar_keyboardSelected@2x.png in Resources */,
@@ -4686,6 +4693,7 @@
 				044C315C1BCCAF0000E0D508 /* red_bar@2x.png in Resources */,
 				20DAA2BA1BCE34DF00420234 /* btn_message_y@3x.png in Resources */,
 				650C6C131B886D8200A89AC9 /* mine-heart@3x.png in Resources */,
+				E4866A9F1BEB114F0040FA2A /* news_icon_beautiful@2x.png in Resources */,
 				E482D57C1BD8F4E00045F4DB /* scanf_stu_toast@2x.png in Resources */,
 				049480341BB8D76C00C68460 /* tick@2x.png in Resources */,
 				20E033EE1B842727002E4583 /* UMSShareListController.xib in Resources */,

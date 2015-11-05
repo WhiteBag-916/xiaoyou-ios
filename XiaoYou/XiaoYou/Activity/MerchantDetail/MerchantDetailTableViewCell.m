@@ -49,13 +49,13 @@ NSString *const kMerchantDetailTableViewCell = @"MerchantDetailTableViewCellId";
     if (isHeader)
     {
         _contentLabel.font = CONTENT_FONT(SCALE_NUM(18));
-//        _contentLabel.textColor = KCOLOR_g1;
+        _contentLabel.textColor = KCOLOR_g1;
         _contentLabel.text = @"商家优惠详情";
     }
     else
     {
         _contentLabel.font = CONTENT_FONT(SCALE_NUM(14));
-//        _contentLabel.textColor = KCOLOR_B4;
+        _contentLabel.textColor = KCOLOR_B4;
         _contentLabel.text = model.discountDetail;
     }
 }
