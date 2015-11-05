@@ -483,6 +483,8 @@ DEF_SINGLETON(MessageManager);
 
 -(void)dealMessageWithDict:(NSDictionary*)dict Type:(PUSH_Message_TYPE)type
 {
+    NSString *dataBasePath = [NSString stringWithFormat:@"%@//%@",[YDirectory documents],NSStringFromClass([NotifyInfoModel class])];
+    YDatabaseDao *dataBaseDao = [[YDatabaseDao alloc]initWitDatabasePath:dataBasePath];
     NotifyInfoModel *notiInfo = [[NotifyInfoModel alloc]init];
     notiInfo.em_push_title = dict[@"em_apns_ext"][@"em_push_title"];
     notiInfo.timestamp = [dict[@"timestamp"] doubleValue];
@@ -498,10 +500,10 @@ DEF_SINGLETON(MessageManager);
             notiInfo.organizer = dict[@"organizer"];
             notiInfo.startTime = [dict[@"startTime"] doubleValue];
             notiInfo.type = [[dict valueForKey:@"type"] integerValue];
-            [AppConfigData setHaveRemindMessage:YES];
+            [dataBaseDao insertModel:notiInfo];
             break;
         }
-        case ACTIVITY_ENROLL_NO_CHECK:
+        case ACTIVITY_ENROLL_NO_CHECK:  //审核未通过
         {
             notiInfo.headIcon = dict[@"headIcon"];
             notiInfo.idStr = dict[@"id"];
@@ -518,6 +520,7 @@ DEF_SINGLETON(MessageManager);
             notiInfo.idStr = dict[@"id"];
             notiInfo.startTime = [dict[@"startTime"] doubleValue];
             notiInfo.type = [[dict valueForKey:@"type"] integerValue];
+            [dataBaseDao insertModel:notiInfo];
             break;
         }
         case ACTIVITY_ENROLL: //用户报名活动提醒
@@ -529,6 +532,7 @@ DEF_SINGLETON(MessageManager);
             notiInfo.startTime = [dict[@"startTime"] doubleValue];
             notiInfo.type = [[dict valueForKey:@"type"] integerValue];
             [AppConfigData setHaveRemindMessage:YES];
+            [dataBaseDao insertModel:notiInfo];
             break;
         }
         case ACTIVITY_PUBLISH:
@@ -539,6 +543,7 @@ DEF_SINGLETON(MessageManager);
             notiInfo.organizer = dict[@"organizer"];
             notiInfo.startTime = [dict[@"startTime"] doubleValue];
             [AppConfigData setHaveRemindMessage:YES];
+            [dataBaseDao insertModel:notiInfo];
             break;
         }
         case ACTIVITY_NOTIFY:
@@ -549,6 +554,7 @@ DEF_SINGLETON(MessageManager);
             notiInfo.organizer = dict[@"organizer"];
             notiInfo.startTime = [dict[@"startTime"] doubleValue];
             notiInfo.type = [[dict valueForKey:@"type"] integerValue];
+            [dataBaseDao insertModel:notiInfo];
             break;
         }
         default:
@@ -556,9 +562,6 @@ DEF_SINGLETON(MessageManager);
             break;
         }
     }
-    NSString *dataBasePath = [NSString stringWithFormat:@"%@//%@",[YDirectory documents],NSStringFromClass([NotifyInfoModel class])];
-    YDatabaseDao *dataBaseDao = [[YDatabaseDao alloc]initWitDatabasePath:dataBasePath];
-    [dataBaseDao insertModel:notiInfo];
 }
 
 

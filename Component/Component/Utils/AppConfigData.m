@@ -64,6 +64,10 @@
     if(!value) {
         [userDefault setValue:@"NO" forKey:HAVE_REMIND_MESSAGE];
         return YES;
+    } else if ([value isEqualToString:@"YES"]) {
+        return YES;
+    } else if ([value isEqualToString:@"NO"]) {
+        return NO;
     }
     return NO;
 }
@@ -76,7 +80,7 @@
     }
     else
     {
-        [userDefault removeObjectForKey:HAVE_REMIND_MESSAGE];
+        [userDefault setValue:@"NO" forKey:HAVE_REMIND_MESSAGE];
     }
 }
 

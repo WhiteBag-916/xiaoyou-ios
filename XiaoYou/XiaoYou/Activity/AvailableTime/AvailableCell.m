@@ -259,7 +259,7 @@
     //图文混排
     for (ActivityImageTextModels *imageText in imageTextModels) {
         if ([imageText.type isEqualToString:@"text"]) {
-            _descriptionLabel.text = imageText.content;
+            [_descriptionLabel setText:imageText.content lineSpacing:SCALE_NUM(10.f)];
         }
         else if ([imageText.type isEqualToString:@"image"]) {
             if (![imageText.content isEmpty]) {
