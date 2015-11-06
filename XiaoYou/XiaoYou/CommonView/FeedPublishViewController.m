@@ -83,6 +83,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(tokenFail) name:kNotification_Server_Token_Fail object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showAddPicList) name:KNotification_Present_TakePhoto object:nil];
     
     // Do any additional setup after loading the view.
@@ -524,6 +525,10 @@
 }
 - (void)dealloc {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+- (void)tokenFail {
+    [self.picker dismissViewControllerAnimated:NO completion:nil];
+    [self.navigationController dismissViewControllerAnimated:NO completion:nil];
 }
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];

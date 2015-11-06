@@ -44,6 +44,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(tokenFail) name:kNotification_Server_Token_Fail object:nil];
     
     [self initController];
     [self initView];
@@ -180,7 +181,9 @@
 - (void)dealloc {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
-
+- (void)tokenFail {
+    [self.navigationController dismissViewControllerAnimated:NO completion:nil];
+}
 - (void)onNavigationLeftButtonClicked {
     [self.navigationController dismissViewControllerAnimated:YES completion:nil];
 }
