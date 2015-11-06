@@ -512,6 +512,7 @@ DEF_SINGLETON(MessageManager);
             notiInfo.startTime = [dict[@"startTime"] doubleValue];
             notiInfo.type = [[dict valueForKey:@"type"] integerValue];
             [AppConfigData setHaveRemindMessage:YES];
+            [[NSNotificationCenter defaultCenter] postNotificationName:KNotification_Remind_Message_Come object:nil];
             break;
         }
         case SCHEDULE_REMIND: //用户日程提醒
@@ -533,6 +534,7 @@ DEF_SINGLETON(MessageManager);
             notiInfo.type = [[dict valueForKey:@"type"] integerValue];
             [AppConfigData setHaveRemindMessage:YES];
             [dataBaseDao insertModel:notiInfo];
+            [[NSNotificationCenter defaultCenter] postNotificationName:KNotification_Remind_Message_Come object:nil];
             break;
         }
         case ACTIVITY_PUBLISH:

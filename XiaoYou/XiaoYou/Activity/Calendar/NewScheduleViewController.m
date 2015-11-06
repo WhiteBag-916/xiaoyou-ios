@@ -359,6 +359,7 @@
         [self resetRemindLabel:remindText];
     } else {
         self.userSchedulingInfo = [[UserSchedulingInfo alloc] init];
+        self.userSchedulingInfo.noticeTimePeriod = -1;
     }
 }
 
@@ -396,7 +397,7 @@
         return;
     }
     
-    NSDictionary *dic = @{@"content":_userSchedulingInfo.content, @"id":[NSString stringWithFormat:@"%g", _userSchedulingInfo.internalBaseClassIdentifier], @"endTime": [NSString stringWithFormat:@"%.f", _userSchedulingInfo.endTime], @"startTime": [NSString stringWithFormat:@"%.f", _userSchedulingInfo.startTime], @"address":_userSchedulingInfo.address, @"noticeTimePeriod":[NSString stringWithFormat:@"%g", _userSchedulingInfo.noticeTimePeriod]};
+    NSDictionary *dic = @{@"content":_userSchedulingInfo.content, @"id":[NSString stringWithFormat:@"%g", _userSchedulingInfo.internalBaseClassIdentifier], @"endTime": [NSString stringWithFormat:@"%.f", _userSchedulingInfo.endTime], @"startTime": [NSString stringWithFormat:@"%.f", _userSchedulingInfo.startTime], @"address":SStr(_userSchedulingInfo.address), @"noticeTimePeriod":[NSString stringWithFormat:@"%g", _userSchedulingInfo.noticeTimePeriod]};
     [YUtils showHUDWithTitle];
     [[ActivityManager sharedInstance] userSchedulingEdit:dic block:^(YActionMessage *message) {
         [YUtils hiddenProgressHUD];

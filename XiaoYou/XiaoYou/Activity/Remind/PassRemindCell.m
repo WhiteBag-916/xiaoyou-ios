@@ -13,6 +13,7 @@
 #import "WhoJoinInController.h"
 #import "ActivityDetailViewController.h"
 #import "TimeFormatterConvert.h"
+#import "NotifyInfoModel.h"
 
 #define REUSRID             @"PassRemindCell"
 #define CELL_INSET          SCALE_NUM(12)
@@ -36,6 +37,8 @@
 
 
 @property(nonatomic,strong) NoticeInfo  *model;             //提醒model
+
+@property(nonatomic,strong) NotifyInfoModel *notifyModel;
 @end
 
 
@@ -158,7 +161,7 @@
     _activityTimeLabel.text = @"活动开始时间：%@";
     _activityTimeLabel.textColor = KCOLOR_B3;
     [_activityTimeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.height.mas_equalTo(SCALE_NUM(12));
+        make.height.mas_equalTo(SCALE_NUM(14));
         make.top.equalTo(_contentNameLabel.mas_bottom).offset(SCALE_NUM(15));
         make.left.equalTo(_contentNameLabel);
     }];
@@ -219,7 +222,13 @@
 //点击中间部分cell
 -(void)middleAction:(UIButton*)btn {
     YLogD(@"this is midele action");
-    NSString *publishID = [NSString stringWithFormat:@"%ld",(long)self.model.activityPublishedId];
+    NSString *publishID;
+    if (_notifyModel) {
+        publishID = self.notifyModel.idStr;
+    }
+    else {
+        publishID = [NSString stringWithFormat:@"%ld",(long)self.model.activityPublishedId];
+    }
     ActivityDetailViewController *detailVC = [[ActivityDetailViewController alloc]initWithPublishID:publishID];
     [self.viewController.navigationController pushViewController:detailVC animated:YES needHiddenBottomBar:YES];
 }
@@ -227,7 +236,14 @@
 //点击下面部分cell
 -(void)bottomAction:(UIButton*)btn {
     YLogD(@"this is bottom action");
-    NSString *publishID = [NSString stringWithFormat:@"%ld",(long)self.model.activityPublishedId];
+    NSString *publishID;
+    if (_notifyModel) {
+        publishID = self.notifyModel.idStr;
+    }
+    else {
+        publishID = [NSString stringWithFormat:@"%ld",(long)self.model.activityPublishedId];
+    }
+    //NSString *publishID = [NSString stringWithFormat:@"%ld",(long)self.model.activityPublishedId];
     WhoJoinInController *whoJoinIn = [[WhoJoinInController alloc]init];
     whoJoinIn.publishID = publishID;
     [self.viewController.navigationController pushViewController:whoJoinIn animated:YES needHiddenBottomBar:YES];
@@ -277,14 +293,17 @@
 
 -(void)setNotifyData:(NotifyInfoModel *)model
 {
-    [_titleImageView setFaceImageWithUrl:model.headIcon];
+    _notifyModel = model;
+    _titleImageView.image = nil;
+    [_headImageView setFaceImageWithUrl:model.headIcon];
     [_remindTitleLabel mas_updateConstraints:^(MASConstraintMaker *make) {
         make.leading.mas_equalTo(SCALE_NUM(5)).priorityHigh();
     }];
     _remindTitleLabel.text = model.em_push_title;
     _contentTitleLabel.text = model.organizer;
-    _contentNameLabel.text = model.name;
-    _activityTimeLabel.text = [TimeFormatterConvert timeConvertToFommtterAvailable:model.startTime];
+    _contentNameLabel.text = [NSString stringWithFormat:@"名称：%@",model.name];
+    
+    _activityTimeLabel.text = [NSString stringWithFormat:@"活动开始时间：%@",[TimeFormatterConvert timeConvertToFommtterAvailable:model.startTime]];
     
     _tailLabel.text = @"看看都有谁参加了";
 }
