@@ -11,6 +11,7 @@
 #import "StudyRoomTableView.h"
 #import "StudyRoomDetailTableView.h"
 #import "ActivityChoiceController.h"
+#import "YWebViewController.h"
 
 typedef enum : NSUInteger {
     Choice_Type,
@@ -146,6 +147,8 @@ typedef enum : NSUInteger {
 {
     //h5页面
     NSLog(@"h5页面");
+    YWebViewController * webView = [[YWebViewController alloc] initWithUrl:@"http://tips.xiaoyou.com/studyRoom/empty.html" andTitle:@"关于自习室" canClick:NO];
+    [self.navigationController pushViewController:webView animated:YES];
 }
 
 @end
