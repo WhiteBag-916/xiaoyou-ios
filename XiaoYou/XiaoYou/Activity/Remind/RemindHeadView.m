@@ -50,4 +50,9 @@
     _timeLabel.text = [TimeFormatterConvert timeConvertToFommtterNoticeHead:model.enrollTime];
 }
 
+-(void)setNotifyData:(NotifyInfoModel *)model
+{
+    _timeLabel.text = [TimeFormatterConvert timeConvertToFommtterNoticeHead:model.timestamp];
+}
+
 @end

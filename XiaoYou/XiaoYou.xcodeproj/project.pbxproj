@@ -83,6 +83,8 @@
 		04571DB21BEB191F00BAD2A6 /* no_data_schedule@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 04571DB01BEB191F00BAD2A6 /* no_data_schedule@3x.png */; settings = {ASSET_TAGS = (); }; };
 		04571DB51BEB1D7200BAD2A6 /* no_someone_signup@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 04571DB31BEB1D7200BAD2A6 /* no_someone_signup@2x.png */; settings = {ASSET_TAGS = (); }; };
 		04571DB61BEB1D7200BAD2A6 /* no_someone_signup@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 04571DB41BEB1D7200BAD2A6 /* no_someone_signup@3x.png */; settings = {ASSET_TAGS = (); }; };
+		04571DB91BEB2E6200BAD2A6 /* havetime－picture－notice@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 04571DB71BEB2E6200BAD2A6 /* havetime－picture－notice@2x.png */; settings = {ASSET_TAGS = (); }; };
+		04571DBA1BEB2E6200BAD2A6 /* havetime－picture－notice@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 04571DB81BEB2E6200BAD2A6 /* havetime－picture－notice@3x.png */; settings = {ASSET_TAGS = (); }; };
 		0461A3DD1BE38D0800F00E72 /* NSString+MyContainString.m in Sources */ = {isa = PBXBuildFile; fileRef = 0461A3DC1BE38D0800F00E72 /* NSString+MyContainString.m */; };
 		0463588B1BE096790055819F /* UIDevice+DeviceType.m in Sources */ = {isa = PBXBuildFile; fileRef = 0463588A1BE096790055819F /* UIDevice+DeviceType.m */; };
 		0475AD891BDA247400763896 /* SearchActivityListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0475AD881BDA247400763896 /* SearchActivityListView.m */; };
@@ -925,6 +927,8 @@
 		04571DB01BEB191F00BAD2A6 /* no_data_schedule@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "no_data_schedule@3x.png"; sourceTree = "<group>"; };
 		04571DB31BEB1D7200BAD2A6 /* no_someone_signup@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "no_someone_signup@2x.png"; sourceTree = "<group>"; };
 		04571DB41BEB1D7200BAD2A6 /* no_someone_signup@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "no_someone_signup@3x.png"; sourceTree = "<group>"; };
+		04571DB71BEB2E6200BAD2A6 /* havetime－picture－notice@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "havetime－picture－notice@2x.png"; sourceTree = "<group>"; };
+		04571DB81BEB2E6200BAD2A6 /* havetime－picture－notice@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "havetime－picture－notice@3x.png"; sourceTree = "<group>"; };
 		0461A3DB1BE38D0800F00E72 /* NSString+MyContainString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+MyContainString.h"; sourceTree = "<group>"; };
 		0461A3DC1BE38D0800F00E72 /* NSString+MyContainString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+MyContainString.m"; sourceTree = "<group>"; };
 		046358891BE096790055819F /* UIDevice+DeviceType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIDevice+DeviceType.h"; sourceTree = "<group>"; };
@@ -2082,6 +2086,8 @@
 			isa = PBXGroup;
 			children = (
 				043AC8631BCF7BFC00AB6E09 /* mengcheng */,
+				04571DB71BEB2E6200BAD2A6 /* havetime－picture－notice@2x.png */,
+				04571DB81BEB2E6200BAD2A6 /* havetime－picture－notice@3x.png */,
 				04571DAF1BEB191F00BAD2A6 /* no_data_schedule@2x.png */,
 				04571DB01BEB191F00BAD2A6 /* no_data_schedule@3x.png */,
 				04571DB31BEB1D7200BAD2A6 /* no_someone_signup@2x.png */,
@@ -4386,6 +4392,7 @@
 				049480361BB8D76C00C68460 /* schedule_green@2x.png in Resources */,
 				E459B4241BE0EFDA002B7D41 /* havetime_icon_school@3x.png in Resources */,
 				044C31541BCCAF0000E0D508 /* have_time_msg@2x.png in Resources */,
+				04571DB91BEB2E6200BAD2A6 /* havetime－picture－notice@2x.png in Resources */,
 				3334AC361B82E32100FDDCCB /* chat_receiver_bg.png in Resources */,
 				20D821AB1BE0ADF700C5E21C /* havetime_icon_remind@2x.png in Resources */,
 				20E18DB91B808E42005B75EE /* common_search@3x.png in Resources */,
@@ -4825,6 +4832,7 @@
 				20DA3A251BD7ABCC00B4B1B1 /* havetime_icon_add@2x.png in Resources */,
 				65CF63881B8EA35800ACBB70 /* cupgreen@3x.png in Resources */,
 				E48E09A31BD781B10017D395 /* scanf_code_house@2x.png in Resources */,
+				04571DBA1BEB2E6200BAD2A6 /* havetime－picture－notice@3x.png in Resources */,
 				044DA02E1BBA699600AA321A /* setup_other@2x.png in Resources */,
 				333122CC1B806EDC00D3D032 /* chat_sender_audio_playing_002@2x.png in Resources */,
 				33F83A8D1B8B2B6D00FF5483 /* mine-heart-red@3x.png in Resources */,

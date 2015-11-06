@@ -70,7 +70,6 @@
         make.width.mas_equalTo(SCALE_NUM(3));
     }];
     
-    
     _titleLabel = [[UILabel alloc]init];
     [self.contentView addSubview:_titleLabel];
     _titleLabel.text = @"大型历史音乐剧《和平使者——抗战中的宋庆龄》奋斗史";
@@ -98,7 +97,7 @@
     [_typeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.height.mas_equalTo(SCALE_NUM(15));
         make.trailing.mas_equalTo(SCALE_NUM(-15));
-        make.top.equalTo(_startImageView).offset(SCALE_NUM(-5));
+        make.top.equalTo(_startImageView).offset(SCALE_NUM(-3));
     }];
     
     _descriptionLabel = [[UILabel alloc]init];

@@ -203,7 +203,6 @@
     //[self addBottomSelectView];
 }
 
-
 -(void)setData:(NoticeInfo *)model
 {
     Author *info = model.activityUser;
@@ -214,84 +213,16 @@
     [_connectTagView updateWithTag:info.propetiesCommon];
 }
 
-////添加同意-忽略状态
-//-(void)addStatusButton
-//{
-//    _statusButton = [UIButton buttonWithType:UIButtonTypeSystem];
-//    [self.wrapContentView addSubview:_statusButton];
-//    _statusButton.titleLabel.font = CONTENT_FONT(12);
-//    _statusButton.titleLabel.textColor = KCOLOR_B5;
-//    [_statusButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-//    [_statusButton setTitle:@"已同意" forState:UIControlStateNormal];
-//    _statusButton.enabled = NO;
-//    [_statusButton mas_makeConstraints:^(MASConstraintMaker *make) {
-//        make.top.equalTo(_bottomLineView.mas_bottom);
-//        make.leading.equalTo(_wrapContentView);
-//        make.trailing.equalTo(_wrapContentView);
-//        make.bottom.equalTo(_wrapContentView.mas_bottom);
-//    }];
-//}
-//
-////添加底部同意/选择按钮
-//-(void)addBottomSelectView
-//{
-//    _bottomSelectView = [[UIView alloc]init];
-//    [self.wrapContentView addSubview:_bottomSelectView];
-//    [_bottomSelectView mas_makeConstraints:^(MASConstraintMaker *make) {
-//        make.top.equalTo(_bottomLineView.mas_bottom);
-//        make.leading.equalTo(_wrapContentView);
-//        make.trailing.equalTo(_wrapContentView);
-//        make.bottom.equalTo(_wrapContentView);
-//    }];
-//    
-//    _middleLineView = [[UIView alloc]init];
-//    [self.bottomSelectView addSubview:_middleLineView];
-//    _middleLineView.backgroundColor = KCOLORGRAY_B6;
-//    [_middleLineView mas_makeConstraints:^(MASConstraintMaker *make) {
-//        make.centerX.equalTo(_bottomSelectView.mas_centerX);
-//        make.top.equalTo(_bottomSelectView).offset(SCALE_NUM(8));
-//        make.bottom.equalTo(_bottomSelectView).offset(SCALE_NUM(-8));
-//        make.width.mas_equalTo(1);
-//    }];
-//    
-//    _agreeButton = [UIButton buttonWithType:UIButtonTypeSystem];
-//    [self.bottomSelectView addSubview:_agreeButton];
-//    _agreeButton.titleLabel.font = CONTENT_FONT(12);
-//    _agreeButton.titleLabel.textColor = KCOLOR_B4;
-//    [_agreeButton addTarget:self action:@selector(agreeAction) forControlEvents:UIControlEventTouchUpInside];
-//    [_agreeButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-//    [_agreeButton setTitle:@"同意" forState:UIControlStateNormal];
-//    [_agreeButton mas_makeConstraints:^(MASConstraintMaker *make) {
-//        make.leading.equalTo(_bottomSelectView);
-//        make.top.equalTo(_bottomSelectView);
-//        make.bottom.equalTo(_bottomSelectView);
-//        make.right.equalTo(_middleLineView.mas_left);
-//    }];
-//    
-//    _ignoreButton = [UIButton buttonWithType:UIButtonTypeSystem];
-//    [self.bottomSelectView addSubview:_ignoreButton];
-//    _ignoreButton.titleLabel.textColor = KCOLOR_B4;
-//    _ignoreButton.titleLabel.font = CONTENT_FONT(12);
-//    [_ignoreButton addTarget:self action:@selector(ignoreAction) forControlEvents:UIControlEventTouchUpInside];
-//    [_ignoreButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-//    [_ignoreButton setTitle:@"忽略" forState:UIControlStateNormal];
-//    [_ignoreButton mas_makeConstraints:^(MASConstraintMaker *make) {
-//        make.left.equalTo(_middleLineView.mas_right);
-//        make.top.equalTo(_bottomSelectView);
-//        make.trailing.equalTo(_bottomSelectView);
-//        make.bottom.equalTo(_bottomSelectView);
-//    }];
-//    
-//}
-//
-//
-//-(void)agreeAction {
-//    NSLog(@"agree it");
-//}
-//
-//-(void)ignoreAction {
-//    NSLog(@"ignore it");
-//}
-
+-(void)setNotifyData:(NotifyInfoModel *)model
+{
+    _titleImageView.image = nil;
+    [_remindTitleLabel mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.leading.mas_equalTo(SCALE_NUM(5)).priorityHigh();
+    }];
+    _remindTitleLabel.text = model.em_push_title;
+    [_headImageView setFaceImageWithUrl:model.headIcon];
+    _nameLabel.text = model.organizer;
+    _applyContentLable.text = [NSString stringWithFormat:_applyContentLable.text,model.name];
+}
 
 @end

@@ -25,6 +25,7 @@
 @property (nonatomic,strong) UIView         *tagsWrapView;
 @property (nonatomic,strong) Author         *author;
 
+@property (nonatomic,strong) UIImageView    *noSomeOneJoinImageView;   //没有人参加提示
 @end
 
 @implementation ActivityJoinInCell
@@ -110,10 +111,30 @@
         make.bottom.mas_equalTo(SCALE_NUM(0));
     }];
     _tagsView.backgroundColor = RGBACOLOR(246, 247, 249, 1);
+    
+    _noSomeOneJoinImageView = [[UIImageView alloc]init];
+    [self.contentView addSubview:_noSomeOneJoinImageView];
+    _noSomeOneJoinImageView.hidden = YES;
+    _noSomeOneJoinImageView.image = [[UIImage imageNamed:@"no_someone_signup"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    [_noSomeOneJoinImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(_joinInHeadView.mas_bottom);
+        make.centerX.equalTo(self.contentView);
+        make.height.mas_equalTo(SCALE_NUM(0));
+    }];
 }
 
 -(void)setData:(Author *)joinModel
 {
+    //没有人参加
+    if (joinModel.uid == nil && joinModel.studentNo == nil) {
+        _joinTopView.hidden = YES;
+        _tagsWrapView.hidden = YES;
+        _noSomeOneJoinImageView.hidden = NO;
+        [_noSomeOneJoinImageView mas_updateConstraints:^(MASConstraintMaker *make) {
+            make.height.mas_equalTo(SCALE_NUM(100));
+        }];
+        return;
+    }
     _author = joinModel;
     [_joinTopView setData:joinModel];
     

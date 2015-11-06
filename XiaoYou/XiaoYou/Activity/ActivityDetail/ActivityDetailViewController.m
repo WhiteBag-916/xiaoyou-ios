@@ -32,11 +32,11 @@
     self.view.backgroundColor = [UIColor whiteColor];
     [self showCustomNavigationBackButton];
     
-    [self IsShowCustomNavigationMoreButton:YES];
+    [self IsShowCustomNavigationMoreButton:NO];
     
     [self.detailListView loadData];
     [self setTitle:@"活动详情"];
-    [self updateJoinButtonStatus];
+    //[self updateJoinButtonStatus];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -67,8 +67,10 @@
 -(void)exitActivity
 {
     [[ActivityManager sharedInstance] cancleActivitySignUpByActivityID:self.publishID block:^(YActionMessage *message) {
+        if (message.isSuccess) {
+            [self updateJoinButtonStatus];
+        }
         [YUtils showTitle:message.desc];
-        [self updateJoinButtonStatus];
     }];
 }
 
@@ -162,7 +164,7 @@
             else if ([model.enrollStatus isEqualToString:@"self_activity"]) {
                 _joinInBtn.enabled = YES;
                 _joinInBtn.backgroundColor = KCOLOR_g2;
-                [_joinInBtn setTitle:@"我要加入" forState:UIControlStateNormal];
+                [_joinInBtn setTitle:@"我已参加" forState:UIControlStateNormal];
                 [self IsShowCustomNavigationMoreButton:NO];
             }
             [_detailListView loadData];
@@ -178,11 +180,12 @@
         [YUtils hiddenProgressHUD];
         if (message.isSuccess) {
             _joinInBtn.enabled = NO;
+            [self updateJoinButtonStatus];
         }
         else {
         }
         [YUtils showTitle:message.desc];
-        [self updateJoinButtonStatus];
+        
     }];
 }
 
