@@ -9,7 +9,7 @@
 #import "MiddleInfoView.h"
 #import "SupplierShopModel.h"
 
-@interface MiddleInfoView ()
+@interface MiddleInfoView ()<UIAlertViewDelegate>
 
 @property(nonatomic,strong)UIImageView * houseImageView;
 @property(nonatomic,strong)UILabel * houseLabel;
@@ -78,7 +78,7 @@
     _phoneLabel = [[UILabel alloc] init];
     _phoneLabel.text = _model.supplierShopModel.telephone;
     _phoneLabel.font = CONTENT_FONT(SCALE_NUM(12));
-    _phoneLabel.textColor = KCOLOR_B3;
+    _phoneLabel.textColor = KCOLOR_g1;
     _phoneLabel.textAlignment = NSTextAlignmentLeft;
     [self addSubview:_phoneLabel];
     [_phoneLabel mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -86,6 +86,15 @@
         make.left.right.equalTo(_houseLabel);
         make.height.mas_equalTo(SCALE_NUM(12));
     }];
+    
+    UIButton * phoneButton = [[UIButton alloc] init];
+    phoneButton.backgroundColor = [UIColor clearColor];
+    [self addSubview:phoneButton];
+    [phoneButton mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.right.equalTo(_phoneLabel);
+        make.left.top.bottom.equalTo(_phoneImageView);
+    }];
+    [phoneButton addTarget:self action:@selector(callPhoneNum) forControlEvents:UIControlEventTouchUpInside];
     
     //位置
     _placeImageView = [[UIImageView alloc] init];
@@ -120,6 +129,25 @@
         make.height.mas_equalTo(SCALE_NUM(0.5));
     }];
     
+}
+
+-(void)callPhoneNum
+{
+    UIAlertView * alertView = [[UIAlertView alloc] initWithTitle:nil message:_phoneLabel.text delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"拨打", nil];
+    [alertView show];
+}
+
+-(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (buttonIndex == 1)
+    {
+        NSString * phoneStr = [NSString stringWithFormat:@"tel://%@",_phoneLabel.text];
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:phoneStr]];
+    }
+    else
+    {
+        return;
+    }
 }
 
 @end

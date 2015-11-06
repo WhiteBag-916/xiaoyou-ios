@@ -166,7 +166,15 @@
         make.bottom.right.equalTo(_headView).offset(-15);
     }];
     _codeView.backgroundColor = [UIColor clearColor];
-    [_codeView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(openCode)]];
+    
+    UIButton * codeButton = [[UIButton alloc] init];
+    codeButton.backgroundColor = [UIColor clearColor];
+    [self.view addSubview:codeButton];
+    [codeButton mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.width.height.mas_equalTo(SCALE_NUM(50));
+        make.center.equalTo(_codeView);
+    }];
+    [codeButton addTarget:self action:@selector(openCode) forControlEvents:UIControlEventTouchUpInside];
     
     [_headView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(goBack)]];
 }

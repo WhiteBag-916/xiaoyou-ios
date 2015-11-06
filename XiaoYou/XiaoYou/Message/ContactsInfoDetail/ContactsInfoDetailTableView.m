@@ -265,6 +265,7 @@
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
+    
 //    ContactsInfoDetailTableViewCell * cell = [self dequeueReusableCellWithIdentifier:kContactsInfoDetailTableViewCell forIndexPath:indexPath];
 //    
 //    NSString * indexStr = [NSString stringWithFormat:@"%d",indexPath.row];
@@ -313,8 +314,10 @@
     
 }
 
+
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    
     if (indexPath.row == 0)
     {
 //        NSDictionary *attributes = @{NSFontAttributeName:[UIFont systemFontOfSize:12]};
@@ -339,7 +342,10 @@
     }
     else if(indexPath.row == 1)
     {
-        
+//        CGFloat height = [tableView fd_heightForCellWithIdentifier:kContactsInfoSecondTableViewCell cacheByIndexPath:indexPath configuration:^(ContactsInfoSecondTableViewCell *cell) {
+//            [cell setCellInfo:_model];
+//        }];
+//        return height;
         if (_model.tagsCommon.count > 0)
         {
             CGFloat height;
@@ -351,6 +357,7 @@
             {
                 height = 40;
             }
+            
             for (int i = 0; i < _model.tagsCommon.count; i++)
             {
                 CGFloat width;
@@ -359,13 +366,15 @@
                 CGSize textSize = [tag.name boundingRectWithSize:CGSizeMake(150, 14) options:NSStringDrawingTruncatesLastVisibleLine attributes:attributes context:nil].size;
                 width += 10;
                 width += textSize.width + 15;
-                if (width > SCREEN_WIDTH - 117)
+                CGFloat  limitWidth = SCREEN_WIDTH - 105;
+                if (width > limitWidth)
                 {
                     height += 20;
                     width = 10 + textSize.width;
                 }
             }
             return height;
+         
         }
         else
         {
@@ -375,7 +384,7 @@
             }
             return 40;
         }
-        
+
 //        if (_model.tagModels.count <= 4)
 //        {
 //            return 60;
@@ -401,7 +410,10 @@
     {
         return 103;
     }
+    
 }
+
+
 
 -(void)didSelectCool
 {
