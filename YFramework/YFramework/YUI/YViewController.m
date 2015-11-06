@@ -153,6 +153,7 @@
     [_navigationLeftButton addTarget:self action:selector forControlEvents:UIControlEventTouchUpInside];
     UIBarButtonItem *btnNavLeftItem = [[UIBarButtonItem alloc] initWithCustomView:_navigationLeftButton];
     self.navigationItem.leftBarButtonItem = btnNavLeftItem;
+    
 }
 
 #pragma mark - 右导航栏
@@ -198,6 +199,7 @@
 //导航栏左侧提醒按钮
 - (void)showCustomNavigationRemindButton:(BOOL)haveMsg {
     NSString *imageName = haveMsg ? @"red_point_bell":@"have_time_msg";
+    [self showNomalNavigationLeftButton:@"" action:@selector(onNavigationLeftButtonClicked) imgName:@"" frame:CGRectMake(0, 0, 20, 20)];
     [self showNomalNavigationLeftButton:@"" action:@selector(onNavigationLeftButtonClicked) imgName:imageName frame:CGRectMake(0, 0, 20, 20)];
 }
 

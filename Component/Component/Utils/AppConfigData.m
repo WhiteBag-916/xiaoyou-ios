@@ -63,7 +63,7 @@
     //第一次使用
     if(!value) {
         [userDefault setValue:@"NO" forKey:HAVE_REMIND_MESSAGE];
-        return YES;
+        return NO;
     } else if ([value isEqualToString:@"YES"]) {
         return YES;
     } else if ([value isEqualToString:@"NO"]) {

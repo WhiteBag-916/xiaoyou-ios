@@ -165,7 +165,7 @@
 #pragma mark 此处需要数据库相关操作
         int count = [self searchMessageNotRead];
         if (count>0)
-            [cell setMessageNotReadIsVisible:YES Text:[NSString stringWithFormat:@"%d条未读消息",count]];
+            [cell setMessageNotReadIsVisible:YES Text:[NSString stringWithFormat:@"%d条新消息 >",count]];
         else
             [cell setMessageNotReadIsVisible:NO Text:@""];
         return cell;

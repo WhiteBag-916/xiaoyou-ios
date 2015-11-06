@@ -30,15 +30,25 @@
 
 @implementation ActivityJoinInCell
 
--(instancetype)initWithType:(CELLTYPE)type
+//-(instancetype)initWithType:(CELLTYPE)type
+//{
+//    if (self = [super init]) {
+//        [self initViewWithType];
+//        [self setCellType:type];
+//        self.selectionStyle = UITableViewCellSelectionStyleNone;
+//    }
+//    return self;
+//}
+
+-(instancetype)init
 {
     if (self = [super init]) {
-        [self initViewWithType];
-        [self setCellType:type];
         self.selectionStyle = UITableViewCellSelectionStyleNone;
+        [self initViewWithType];
     }
     return self;
 }
+
 
 -(BOOL)needLine
 {
@@ -55,15 +65,15 @@
 //}
 
 
--(void)setCellType:(CELLTYPE)cellType
+-(void)setType:(CELLTYPE)type
 {
-    if (cellType == IS_TOPVIEW) {
+    if (type == IS_TOPVIEW) {
         [_joinInHeadView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.height.mas_equalTo(SCALE_NUM(49)).priorityHigh();
         }];
         [_joinInHeadView updateConstraints];
     }
-    else if (cellType == NOT_TOPVIEW) {
+    else if (type == NOT_TOPVIEW) {
         [_joinInHeadView clearContent];
     }
 }
@@ -97,8 +107,8 @@
     [_tagsWrapView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(_joinTopView.mas_bottom).offset(SCALE_NUM(0));
         make.leading.mas_equalTo(SCALE_NUM(71));
-        make.trailing.mas_equalTo(SCALE_NUM(-20));
-        make.bottom.mas_equalTo(SCALE_NUM(-15));
+        make.trailing.mas_equalTo(SCALE_NUM(-12));
+        make.bottom.mas_equalTo(SCALE_NUM(-12));
     }];
     
     
@@ -135,6 +145,12 @@
         }];
         return;
     }
+    if (joinModel.propetiesCommon.count == 0 && joinModel.tagsCommon.count == 0) {
+        self.tagsWrapView.hidden = YES;
+    } else
+    {
+        self.tagsWrapView.hidden = NO;
+    }
     _author = joinModel;
     [_joinTopView setData:joinModel];
     
@@ -143,73 +159,6 @@
     profile.tagsCommon = joinModel.tagsCommon;
     
     [_tagsView setData:profile];
-}
-
--(CGFloat)calculatorTagsCommHeightByProfileInfo:(ProfileInfo*)model
-{
-    if (model.tagModels.count > 0)
-    {
-        CGFloat height;
-        if (model.propetiesCommon.count > 0)
-        {
-            height = 65;
-        }
-        else
-        {
-            height = 40;
-        }
-        for (int i = 0; i < model.tagModels.count; i++)
-        {
-            CGFloat width;
-            Tags * tag = model.tagModels[i];
-            NSDictionary *attributes = @{NSFontAttributeName:[UIFont systemFontOfSize:12]};
-            CGSize textSize = [tag.name boundingRectWithSize:CGSizeMake(150, 14) options:NSStringDrawingTruncatesLastVisibleLine attributes:attributes context:nil].size;
-            width += 10;
-            width += textSize.width + 15;
-            if (width > SCREEN_WIDTH - 117)
-            {
-                height += 20;
-                width = 10 + textSize.width;
-            }
-        }
-        return height;
-    }
-    else
-    {
-        if (model.propetiesCommon.count <= 0)
-        {
-            return 0;
-        }
-        return 30;
-    }
-    
-    /*if (model.tagModels.count > 0)
-    {
-        CGFloat height = 55;
-        for (int i = 0; i < model.tagModels.count; i++)
-        {
-            CGFloat width;
-            Tags * tag = model.tagModels[i];
-            NSDictionary *attributes = @{NSFontAttributeName:[UIFont systemFontOfSize:12]};
-            CGSize textSize = [tag.name boundingRectWithSize:CGSizeMake(150, 14) options:NSStringDrawingTruncatesLastVisibleLine attributes:attributes context:nil].size;
-            width += (10);
-            width += textSize.width + 15;
-            if (width > SCREEN_WIDTH - 117)
-            {
-                height += (20);
-                width = (10) + textSize.width;
-            }
-        }
-        return height;
-    }
-    else
-    {
-        if (model.propetiesCommon.count <= 0) {
-            return 0;
-        }
-        else
-            return 40;
-    }*/
 }
 
 @end

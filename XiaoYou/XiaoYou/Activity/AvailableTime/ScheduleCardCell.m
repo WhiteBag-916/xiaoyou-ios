@@ -234,7 +234,7 @@
     if (!_messageNotRead) {
         _messageNotRead = [UIButton buttonWithType:UIButtonTypeSystem];
         [self.contentView addSubview:_messageNotRead];
-        _messageNotRead.backgroundColor = [UIColor blackColor];
+        _messageNotRead.backgroundColor = KCOLOR_B4;
         _messageNotRead.layer.cornerRadius = 5;
         _messageNotRead.clipsToBounds = YES;
         _messageNotRead.alpha = 0.7;
@@ -243,6 +243,7 @@
         [_messageNotRead mas_makeConstraints:^(MASConstraintMaker *make) {
             make.centerX.equalTo(self.contentView);
             make.top.mas_equalTo(SCALE_NUM(10));
+            make.height.mas_equalTo(SCALE_NUM(22));
         }];
     }
     return _messageNotRead;

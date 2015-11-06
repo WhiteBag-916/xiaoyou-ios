@@ -161,23 +161,17 @@
         Author *author = model.enrollActivityUserInfos[indexPath.row-1];
         if (author.studentNo == nil && author.uid == nil)
             return SCALE_NUM(160);
-        
+        if (author.tagsCommon.count == 0 && author.propetiesCommon.count == 0) {
+            return SCALE_NUM(90);
+        }
         
         ProfileInfo *info = [[ProfileInfo alloc]init];
-        info.tagModels = author.tagsCommon;
+        info.tagsCommon = author.tagsCommon;
         info.propetiesCommon = author.propetiesCommon;
         height = [self calculatorTagsCommHeightByProfileInfo:info];
-        height += (109) + (30);
+        height += (SCALE_NUM(49)) + (SCALE_NUM(60));
         if (indexPath.row != 1) {
-            height -= 58;
-        }
-        
-        
-        if ([[UIDevice getCurrentDeviceModel] myContainsString:@"Simulator"] && IS_IPHONE_6) {
-            height += 20;
-        }
-        if ([[UIDevice getCurrentDeviceModel] myContainsString:@"iPhone 6"]) {
-            height += 20;
+            height -= SCALE_NUM(49);
         }
     }
     return height;
@@ -198,13 +192,14 @@
 #pragma mark 此处以后要考虑复用
         //cell = [tableView dequeueReusableCellWithIdentifier:REUSEID_JOINCELL];
         CELLTYPE type = indexPath.row == 1? IS_TOPVIEW : NOT_TOPVIEW;
-        cell = [[ActivityJoinInCell alloc]initWithType:type];
+        cell = [[ActivityJoinInCell alloc]init];
         
         ActivityDetailModel *model = nil;
         
         if (self.activityDetailArray.count > 0) {
             model = self.activityDetailArray[0];
             [cell setData:model.enrollActivityUserInfos[indexPath.row-1]];
+            cell.type = type;
         }
         return cell;
     }
@@ -214,42 +209,40 @@
 
 -(CGFloat)calculatorTagsCommHeightByProfileInfo:(ProfileInfo*)model
 {
-    if (model.tagModels.count > 0)
+//    Author * author = _personListArray[indexPath.row];
+//    ProfileInfo * model = [[ProfileInfo alloc] init];
+//    model.propetiesCommon = author.propetiesCommon;
+//    model.tagsCommon = author.tagsCommon;
+    
+    if (model.tagsCommon.count > 0)
     {
         CGFloat height;
-        BOOL isADD = NO;
         if (model.propetiesCommon.count > 0)
         {
-            height = 65;
+            height = SCALE_NUM(65);
         }
         else
         {
-            isADD = YES;
-            height = 65;
+            height = SCALE_NUM(40);
         }
-        for (int i = 0; i < model.tagModels.count; i++)
+        
+        for (int i = 0; i < model.tagsCommon.count; i++)
         {
             CGFloat width;
-            Tags * tag = model.tagModels[i];
-            NSDictionary *attributes = @{NSFontAttributeName:[UIFont systemFontOfSize:12]};
-            CGSize textSize = [tag.name boundingRectWithSize:CGSizeMake(150, 14) options:NSStringDrawingTruncatesLastVisibleLine attributes:attributes context:nil].size;
-            width += 10;
-            width += textSize.width + 15;
-            if (width > SCREEN_WIDTH - 117)
+            Tags * tag = model.tagsCommon[i];
+            NSDictionary *attributes = @{NSFontAttributeName:[UIFont systemFontOfSize:SCALE_NUM(10)]};
+            CGSize textSize = [tag.name boundingRectWithSize:CGSizeMake(SCALE_NUM(300), 14) options:NSStringDrawingTruncatesLastVisibleLine attributes:attributes context:nil].size;
+            
+            width += SCALE_NUM(10);
+            width += textSize.width + SCALE_NUM(15);
+            
+            CGFloat  limitWidth = SCREEN_WIDTH - SCALE_NUM(115);
+            if (width > limitWidth)
             {
-                height += 20;
-                width = 10 + textSize.width;
+                height += SCALE_NUM(20);
+                width = textSize.width + SCALE_NUM(15);
             }
-        }
-#pragma mark 暂时,以后修改为自动布局
-        if (isADD) {
-            height -= 20;
-            if ([[UIDevice getCurrentDeviceModel] myContainsString:@"Simulator"] && IS_IPHONE_4_AND_OLDER) {
-                height -= 15;
-            }
-            if ([[UIDevice getCurrentDeviceModel] myContainsString:@"iPhone 4"]) {
-                height -= 15;
-            }
+            
         }
         return height;
     }
@@ -259,7 +252,7 @@
         {
             return 0;
         }
-        return 40;
+        return SCALE_NUM(40);
     }
 }
 

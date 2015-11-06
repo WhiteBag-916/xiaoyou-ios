@@ -44,7 +44,6 @@
         [self addGuideView];
     [self setUpCustomNavgationBar];
     [self.availableListView loadData];
-    
 }
 
 -(void)dealloc
@@ -59,13 +58,7 @@
 
 -(void)receiveNotificationOfRemindMessage
 {
-    //[self showCustomNavigationRemindButton:YES];
-    
-    UIButton *navigationLeftButton = [UIButton buttonWithType:UIButtonTypeSystem];
-    [navigationLeftButton setImage:[UIImage imageNamed:@"red_point_bell"] forState:UIControlStateNormal];
-    [navigationLeftButton addTarget:self action:@selector(onNavigationLeftButtonClicked) forControlEvents:UIControlEventTouchUpInside];
-    UIBarButtonItem *btnNavLeftItem = [[UIBarButtonItem alloc] initWithCustomView:navigationLeftButton];
-    self.navigationItem.leftBarButtonItem = btnNavLeftItem;
+    [self showCustomNavigationRemindButton:YES];
 }
 
 - (void)addGuideView {

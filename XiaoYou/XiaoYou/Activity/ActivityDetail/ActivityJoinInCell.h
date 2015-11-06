@@ -17,8 +17,10 @@ typedef enum : NSUInteger {
 
 @interface ActivityJoinInCell : YTableViewCell
 
--(instancetype)initWithType:(CELLTYPE)type;
+//-(instancetype)initWithType:(CELLTYPE)type;
 
 -(void)setData:(Author*)joinModel;
+
+@property (nonatomic,assign) CELLTYPE type;
 
 @end
