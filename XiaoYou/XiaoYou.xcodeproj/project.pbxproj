@@ -79,10 +79,10 @@
 		044DA0551BBA77C900AA321A /* ActivityDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 044DA0431BBA77C900AA321A /* ActivityDetailCell.m */; };
 		044DA0561BBA77C900AA321A /* ActivityDetailListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 044DA0451BBA77C900AA321A /* ActivityDetailListView.m */; };
 		044DA0571BBA77C900AA321A /* ActivityDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 044DA0471BBA77C900AA321A /* ActivityDetailViewController.m */; };
-		04571DB11BEB191F00BAD2A6 /* no_data_schedule@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 04571DAF1BEB191F00BAD2A6 /* no_data_schedule@2x.png */; settings = {ASSET_TAGS = (); }; };
-		04571DB21BEB191F00BAD2A6 /* no_data_schedule@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 04571DB01BEB191F00BAD2A6 /* no_data_schedule@3x.png */; settings = {ASSET_TAGS = (); }; };
-		04571DB51BEB1D7200BAD2A6 /* no_someone_signup@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 04571DB31BEB1D7200BAD2A6 /* no_someone_signup@2x.png */; settings = {ASSET_TAGS = (); }; };
-		04571DB61BEB1D7200BAD2A6 /* no_someone_signup@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 04571DB41BEB1D7200BAD2A6 /* no_someone_signup@3x.png */; settings = {ASSET_TAGS = (); }; };
+		04571DB11BEB191F00BAD2A6 /* no_data_schedule@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 04571DAF1BEB191F00BAD2A6 /* no_data_schedule@2x.png */; };
+		04571DB21BEB191F00BAD2A6 /* no_data_schedule@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 04571DB01BEB191F00BAD2A6 /* no_data_schedule@3x.png */; };
+		04571DB51BEB1D7200BAD2A6 /* no_someone_signup@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 04571DB31BEB1D7200BAD2A6 /* no_someone_signup@2x.png */; };
+		04571DB61BEB1D7200BAD2A6 /* no_someone_signup@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 04571DB41BEB1D7200BAD2A6 /* no_someone_signup@3x.png */; };
 		0461A3DD1BE38D0800F00E72 /* NSString+MyContainString.m in Sources */ = {isa = PBXBuildFile; fileRef = 0461A3DC1BE38D0800F00E72 /* NSString+MyContainString.m */; };
 		0463588B1BE096790055819F /* UIDevice+DeviceType.m in Sources */ = {isa = PBXBuildFile; fileRef = 0463588A1BE096790055819F /* UIDevice+DeviceType.m */; };
 		0475AD891BDA247400763896 /* SearchActivityListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0475AD881BDA247400763896 /* SearchActivityListView.m */; };
@@ -137,6 +137,7 @@
 		200E39961B4E818B000B587B /* XiaoYouTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 200E39951B4E818B000B587B /* XiaoYouTests.m */; };
 		202BD76D1BD4E12800461577 /* build_icon_location@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 202BD76B1BD4E12800461577 /* build_icon_location@2x.png */; };
 		202BD76E1BD4E12800461577 /* build_icon_location@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 202BD76C1BD4E12800461577 /* build_icon_location@3x.png */; };
+		202CC8AC1BEC6EC400BD4692 /* DDMenuController.m in Sources */ = {isa = PBXBuildFile; fileRef = 202CC8AB1BEC6EC400BD4692 /* DDMenuController.m */; };
 		2076A2F71B81B8F1001FFBAC /* NotifyListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2076A2F61B81B8F1001FFBAC /* NotifyListViewController.m */; };
 		2076A3001B81C590001FFBAC /* YCommonActionSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = 2076A2FD1B81C590001FFBAC /* YCommonActionSheet.m */; };
 		2076A3011B81C590001FFBAC /* YCommonAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2076A2FF1B81C590001FFBAC /* YCommonAlertView.m */; };
@@ -1003,6 +1004,8 @@
 		200E39DE1B4E867D000B587B /* libXFramework.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libXFramework.a; path = "../XFramework/build/Debug-iphoneos/libXFramework.a"; sourceTree = "<group>"; };
 		202BD76B1BD4E12800461577 /* build_icon_location@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "build_icon_location@2x.png"; sourceTree = "<group>"; };
 		202BD76C1BD4E12800461577 /* build_icon_location@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "build_icon_location@3x.png"; sourceTree = "<group>"; };
+		202CC8AA1BEC6EC400BD4692 /* DDMenuController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDMenuController.h; sourceTree = "<group>"; };
+		202CC8AB1BEC6EC400BD4692 /* DDMenuController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDMenuController.m; sourceTree = "<group>"; };
 		2076A2F51B81B8F1001FFBAC /* NotifyListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotifyListViewController.h; sourceTree = "<group>"; };
 		2076A2F61B81B8F1001FFBAC /* NotifyListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotifyListViewController.m; sourceTree = "<group>"; };
 		2076A2FC1B81C590001FFBAC /* YCommonActionSheet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YCommonActionSheet.h; sourceTree = "<group>"; };
@@ -2440,6 +2443,15 @@
 				77B574BED9D4FF3F4BFAA9FE /* libPods-XiaoYou.a */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		202CC8A91BEC6EC400BD4692 /* DDMenu */ = {
+			isa = PBXGroup;
+			children = (
+				202CC8AA1BEC6EC400BD4692 /* DDMenuController.h */,
+				202CC8AB1BEC6EC400BD4692 /* DDMenuController.m */,
+			);
+			path = DDMenu;
 			sourceTree = "<group>";
 		};
 		2076A2F41B81B8F1001FFBAC /* NotifyList */ = {
@@ -3904,6 +3916,7 @@
 		653CB2E81B806BFD006ECBB2 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				202CC8A91BEC6EC400BD4692 /* DDMenu */,
 				20DA16B81BC7C51200A61B37 /* CalendarLib */,
 				656A4CF51BBF9E1500BDB725 /* QRCodeReaderViewController */,
 				20DAF9C71B873883005B7932 /* pinyin */,
@@ -5178,6 +5191,7 @@
 				20DA170B1BC7C51200A61B37 /* MGCYearCalendarMonthHeaderView.m in Sources */,
 				E482D5641BD8CAB30045F4DB /* ScanfResultViewController.m in Sources */,
 				044C31631BCCE79200E0D508 /* StudyRoomCell.m in Sources */,
+				202CC8AC1BEC6EC400BD4692 /* DDMenuController.m in Sources */,
 				65BCF1E11B818441003457F4 /* FeedDetailViewController.m in Sources */,
 				20E100811BD495D8009CB7E8 /* ScheduleDetailViewController.m in Sources */,
 				049FF1C11BC91777000645C8 /* RemindListTableView.m in Sources */,

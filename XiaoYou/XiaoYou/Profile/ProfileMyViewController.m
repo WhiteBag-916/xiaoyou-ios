@@ -61,7 +61,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(tokenFail) name:kNotification_Server_Token_Fail object:nil];
     
     self.view.backgroundColor = KCOLORWHITE;
     [self initView];
@@ -74,9 +73,7 @@
 - (void)dealloc {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
-- (void)tokenFail {
-    [self.picker dismissViewControllerAnimated:NO completion:nil];
-}
+
 - (void)loadData {
     ProfileInfo *info = [[ProvisionManager sharedInstance] getProfile];
     [_faceImg setFaceImageWithUrl:info.headPic];

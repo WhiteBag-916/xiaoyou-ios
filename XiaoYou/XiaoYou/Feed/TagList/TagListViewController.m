@@ -9,7 +9,6 @@
 #import "TagListViewController.h"
 #import "YUtils+Component.h"
 #import "TagListTableView.h"
-#import "SlideNavigationController.h"
 #import "YNotificationDefine.h"
 
 #define KNOTIFYCOUNTHEIGHT 25
@@ -209,22 +208,16 @@
 //跳转社团
 - (void)toAssociationsList {
     [[NSNotificationCenter defaultCenter] postNotificationName:kNotification_Push_AssociationsList object:nil];
-    [[SlideNavigationController sharedInstance] closeMenuWithCompletion:^{
-    }];
 }
 
 //跳转找人
 - (void)toSearchPerson {
     [[NSNotificationCenter defaultCenter] postNotificationName:kNotification_Push_SearchPerson object:nil];
-    [[SlideNavigationController sharedInstance] closeMenuWithCompletion:^{
-    }];
 }
 
 //跳转到新提醒
 - (void)toNotifyView {
     [[NSNotificationCenter defaultCenter] postNotificationName:kNotification_Push_Notify object:nil];
-    [[SlideNavigationController sharedInstance] closeMenuWithCompletion:^{
-    }];
 }
 
 @end

@@ -32,7 +32,6 @@ NSString *const filterIsSelected = @"filterIsSelected";
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(tokenFail) name:kNotification_Server_Token_Fail object:nil];
     
     self.title = @"筛选条件";
     [self showCustomNavigationCancelButton];
@@ -52,10 +51,6 @@ NSString *const filterIsSelected = @"filterIsSelected";
 
 - (void)dealloc {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
-}
-
-- (void)tokenFail {
-    [self.navigationController dismissViewControllerAnimated:NO completion:nil];
 }
 
 - (void)onNavigationLeftButtonClicked {

@@ -7,7 +7,6 @@
 //
 
 #import "FeedListViewController.h"
-#import "SlideNavigationController.h"
 #import "CommonSwitchView.h"
 #import "TagListViewController.h"
 #import "FeedListTableView.h"
@@ -25,14 +24,16 @@
 //测试用
 #import "FastViewController.h"
 #import "AppConfigData.h"
+#import "DDMenuController.h"
 
-@interface FeedListViewController ()<SlideNavigationControllerDelegate>
+@interface FeedListViewController ()<DDMenuControllerDelegate>
 
 @property (strong, nonatomic) CommonSwitchView          *commonSwitchView;      //切换
 @property (strong, nonatomic) TagListViewController     *tagListVC;             //侧拉
 @property (strong, nonatomic) FeedListTableView         *feedListTableView;     //feed列表
 @property (strong, nonatomic) BBBadgeBarButtonItem      *menuButton;            //菜单按钮
 @property (nonatomic, strong) ProfilePersonListTableView *profilePersonListTableView;  //人
+@property (nonatomic, weak) DDMenuController          *menu;
 
 @property (nonatomic, assign) NSInteger viewIndex;
 
@@ -60,9 +61,6 @@
 {
     [super viewWillAppear:animated];
     self.navigationController.navigationBarHidden = false;
-    [SlideNavigationController sharedInstance].enableSwipeGesture = YES;
-    [SlideNavigationController sharedInstance].enableShadow = false;
-    [SlideNavigationController sharedInstance].portraitSlideOffset = SCREEN_WIDTH * 0.3;
     [self initNotification];
 }
 - (void)viewDidAppear:(BOOL)animated {
@@ -86,7 +84,6 @@
     self.hidesBottomBarWhenPushed = NO;
     
     [super viewWillDisappear:animated];
-    [SlideNavigationController sharedInstance].enableSwipeGesture = NO;
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
@@ -106,12 +103,6 @@
 - (void)initView
 {
     self.hidesBottomBarWhenPushed = NO;
-    //侧拉
-    if (nil == _tagListVC)
-    {
-        _tagListVC = [[TagListViewController alloc] init];
-        [SlideNavigationController sharedInstance].leftMenu = _tagListVC;
-    }
     
     //switch
     _commonSwitchView = [[CommonSwitchView alloc] initWithFrame:CGRectMake(0, 0, SCALE_NUM(119), SCALE_NUM(24)) textArray:@[@"事", @"人"]];
@@ -148,6 +139,18 @@
     _menuButton.badgeFont = CONTENT_FONT(10);
     _menuButton.badgeMinSize = 5;
     self.navigationItem.leftBarButtonItem = _menuButton;
+    
+    if (nil == _menu) {
+        _menu = (DDMenuController *)[[[[UIApplication sharedApplication] delegate] window] rootViewController];
+        _menu.delegate = self;
+        [_feedListTableView addGestureRecognizer:_menu.pan];
+    }
+    //侧拉
+    if (nil == _tagListVC)
+    {
+        _tagListVC = [[TagListViewController alloc] init];
+        _menu.leftViewController = _tagListVC;
+    }
 }
 
 - (void)initNotification {
@@ -158,19 +161,15 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(toFeedFilter:) name:kNotification_Push_FeedFilter object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(checkUnreadAlterCount) name:KNotification_Update_UnreadAlterCount object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshData) name:KNotification_Refresh_FeedList object:nil];
-    
-    //侧拉通知
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(openTagListVC:) name:SlideNavigationControllerDidReveal object:nil];
 }
 
 - (void)changeMenu {
-    [[SlideNavigationController sharedInstance] toggleLeftMenu];
+    [_menu showLeftController:YES];
 }
 
-- (void)openTagListVC:(NSNotification *)notification {
-    if ([[notification userInfo][@"menu"] isEqualToString:@"left"]) {
-        [_tagListVC refreshData];
-    }
+#pragma mark - DDMenuControllerDelegate
+- (void)menuController:(DDMenuController*)controller willShowViewController:(UIViewController*)controller2 {
+    [_tagListVC refreshData];
 }
 
 //改变switch
@@ -194,25 +193,30 @@
 }
 
 - (void)toAssociationsList {
+    [_menu showRootController:YES];
     AssociationsListViewController *associationsListViewController = [[AssociationsListViewController alloc] init];
     [self.navigationController pushViewController:associationsListViewController animated:YES needHiddenBottomBar:YES];
 }
 
 - (void)toSearchPerson {
+    [_menu showRootController:YES];
     SearchPersonViewController *searchPersonViewController = [[SearchPersonViewController alloc] init];
     [self.navigationController pushViewController:searchPersonViewController animated:YES needHiddenBottomBar:YES];
 }
 
 - (void)toNotifyView {
+    [_menu showRootController:YES];
     NotifyListViewController *notifyListViewController = [[NotifyListViewController alloc] init];
     [self.navigationController pushViewController:notifyListViewController animated:YES needHiddenBottomBar:YES];
 }
 
 - (void)toAddTag {
+    [_menu showRootController:YES];
     UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:[[ProfileTagViewController alloc] initWithMyTags:[[ProvisionManager sharedInstance] profileTags] type:ProfileTagTypePerson]];
     [self.navigationController presentViewController:navigationController animated:YES completion:nil];
 }
 - (void)toFeedFilter:(NSNotification *)notification {
+    [_menu showRootController:YES];
     [self.navigationController pushViewController:[[FeedFilterViewController alloc] initWithFilter:[notification userInfo][@"filter"] name:[notification userInfo][@"name"]] animated:true needHiddenBottomBar:YES];
 }
 - (void)onNavigationRightButtonClicked {

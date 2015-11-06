@@ -51,6 +51,8 @@ UITableViewDelegate>
     [self searchSchoolByKey:YES];
     
     [self resetRightButton];
+    
+    [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationSlide];
 }
 
 #pragma mark - private
