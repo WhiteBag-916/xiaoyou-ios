@@ -134,10 +134,6 @@
 }
 
 - (void)resetData {
-    //获取当前周几
-    NSUInteger weekday = [[NSDate date] weekday];
-    [_myTimetableHeadView resetSelectDay:weekday-2];
-    
     //获取课时
     [_myTimetableView refreshCourseTimeList:self.courseTimeListModel];
     
@@ -179,6 +175,10 @@
     _weekLabel.text = [NSString stringWithFormat:@"第%ld周", (long)num];
     
     [self getDataByWeek];
+    
+    //获取当前周几
+    NSUInteger weekday = [[NSDate date] weekday];
+    [_myTimetableHeadView resetSelectDay:weekday-2 showNowDay:_selectWeekNum==_nowWeek];
 }
 
 //根据第几周获取课程数据
