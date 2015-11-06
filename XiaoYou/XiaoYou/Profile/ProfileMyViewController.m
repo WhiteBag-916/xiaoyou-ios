@@ -177,16 +177,16 @@
     
     //[_headView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(goBack)]];
     
-//    _exitButton = [UIButton buttonWithType:UIButtonTypeSystem];
-//    [_headView addSubview:_exitButton];
-//    _exitButton.backgroundColor = [UIColor clearColor];
-//    [_exitButton addTarget:self action:@selector(goBack) forControlEvents:UIControlEventTouchUpInside];
-//    [_exitButton mas_makeConstraints:^(MASConstraintMaker *make) {
-//        make.top.mas_equalTo(0);
-//        make.bottom.mas_equalTo(0);
-//        make.leading.mas_equalTo(0);
-//        make.width.mas_equalTo(SCALE_NUM(120));
-//    }];
+    _exitButton = [UIButton buttonWithType:UIButtonTypeSystem];
+    [_headView addSubview:_exitButton];
+    _exitButton.backgroundColor = [UIColor clearColor];
+    [_exitButton addTarget:self action:@selector(goBack) forControlEvents:UIControlEventTouchUpInside];
+    [_exitButton mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.mas_equalTo(0);
+        make.bottom.mas_equalTo(0);
+        make.leading.mas_equalTo(0);
+        make.width.mas_equalTo(SCALE_NUM(120));
+    }];
 }
 - (void)initMiddle {
     _middelView = [[UIView alloc] init];

@@ -14,6 +14,9 @@
 #import "FeedManager.h"
 #import "ActivityManager.h"
 #import "ActivityDetailModel.h"
+#import "ProfileInfo.h"
+#import "Author.h"
+#import "Tags.h"
 
 #define KPAGENUM 15
 
@@ -161,7 +164,8 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    ProfilePersonListTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kProfilePersonListTableViewCell];
+//    ProfilePersonListTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kProfilePersonListTableViewCell];
+    ProfilePersonListTableViewCell *cell = [[ProfilePersonListTableViewCell alloc] init];
     BOOL showGender = (ProfilePersonListTypeFind == _type);
     [cell setData:_personListArray[indexPath.row] needShowGender:showGender];
     return cell;
@@ -171,6 +175,55 @@
     if (ProfilePersonListTypeFind == _type) {
         return KFIND_CELLHEIGHT;
     }
-    return KCELLHEIGHT;
+//    return KCELLHEIGHT;
+    else
+    {
+        Author * author = _personListArray[indexPath.row];
+        ProfileInfo * model = [[ProfileInfo alloc] init];
+        model.propetiesCommon = author.propetiesCommon;
+        model.tagsCommon = author.tagsCommon;
+        
+        if (model.tagsCommon.count > 0)
+        {
+            CGFloat height;
+            if (model.propetiesCommon.count > 0)
+            {
+                height = SCALE_NUM(120);
+            }
+            else
+            {
+                height = SCALE_NUM(95);
+            }
+            
+            for (int i = 0; i < model.tagsCommon.count; i++)
+            {
+                CGFloat width;
+                Tags * tag = model.tagsCommon[i];
+                NSDictionary *attributes = @{NSFontAttributeName:[UIFont systemFontOfSize:SCALE_NUM(10)]};
+                CGSize textSize = [tag.name boundingRectWithSize:CGSizeMake(SCALE_NUM(300), 14) options:NSStringDrawingTruncatesLastVisibleLine attributes:attributes context:nil].size;
+                
+                width += SCALE_NUM(10);
+                width += textSize.width + SCALE_NUM(15);
+                
+                CGFloat  limitWidth = SCREEN_WIDTH - SCALE_NUM(115);
+                if (width > limitWidth)
+                {
+                    height += SCALE_NUM(20);
+                    width = textSize.width + SCALE_NUM(15);
+                }
+                
+            }
+            return height;
+        }
+        else
+        {
+            if (model.propetiesCommon.count <= 0)
+            {
+                return 0;
+            }
+            return SCALE_NUM(95);
+        }
+    }
+    
 }
 @end

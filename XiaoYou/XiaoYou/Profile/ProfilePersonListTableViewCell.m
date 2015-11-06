@@ -14,6 +14,9 @@
 #import "FeedTag.h"
 #import "Author.h"
 #import "ContactManager.h"
+#import "TagsCommonView.h"
+#import "ProfileInfo.h"
+
 NSString *const kProfilePersonListTableViewCell = @"kProfilePersonListTableViewCell";
 
 
@@ -41,6 +44,8 @@ NSString *const kProfilePersonListTableViewCell = @"kProfilePersonListTableViewC
 
 @property (nonatomic, strong) Author *myAuthor;//缓存人信息
 
+@property (nonatomic, strong) TagsCommonView * tagsCommonView;
+
 @end
 
 @implementation ProfilePersonListTableViewCell
@@ -65,12 +70,12 @@ NSString *const kProfilePersonListTableViewCell = @"kProfilePersonListTableViewC
             make.height.mas_equalTo(12);
         }];
         
-        _connect = [[ConnectTag alloc] init];
-        [self.contentView addSubview:_connect];
-        [_connect mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.left.equalTo(_userName.mas_right).offset(KCONNECTMARGIN);
-            make.centerY.equalTo(_userName);
-        }];
+//        _connect = [[ConnectTag alloc] init];
+//        [self.contentView addSubview:_connect];
+//        [_connect mas_makeConstraints:^(MASConstraintMaker *make) {
+//            make.left.equalTo(_userName.mas_right).offset(KCONNECTMARGIN);
+//            make.centerY.equalTo(_userName);
+//        }];
         
         _genderLabel = [YUtils initLabel:CONTENT_FONT(12) color:[UIColor blackColor] text:@"女" frame:CGRectZero alignment:NSTextAlignmentLeft];
         [self.contentView addSubview:_genderLabel];
@@ -80,25 +85,46 @@ NSString *const kProfilePersonListTableViewCell = @"kProfilePersonListTableViewC
             make.right.equalTo(self.contentView).offset(-KTAGMARGIN_RIGHT);
         }];
         
-        _tagView = [[FeedTag alloc] init];
-        [self.contentView addSubview:_tagView];
-        [_tagView mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.left.equalTo(_userName);
-            make.top.equalTo(_genderLabel.mas_bottom).offset(KTAGMARGIN_TOP).priorityLow();
-            make.right.equalTo(self.contentView).offset(-KTAGMARGIN_RIGHT);
+//        _tagView = [[FeedTag alloc] init];
+//        [self.contentView addSubview:_tagView];
+//        [_tagView mas_makeConstraints:^(MASConstraintMaker *make) {
+//            make.left.equalTo(_userName);
+//            make.top.equalTo(_genderLabel.mas_bottom).offset(KTAGMARGIN_TOP).priorityLow();
+//            make.right.equalTo(self.contentView).offset(-KTAGMARGIN_RIGHT);
+//        }];
+//        [_tagView.tagContent mas_makeConstraints:^(MASConstraintMaker *make) {
+//            make.left.equalTo(_tagView.tagIcon.mas_right).offset(KTAGTEXTMARGIN);
+//        }];
+//        _tagView.tagContent.lineSpace = -7;
+//        _tagView.tagContent.maxLines = 2;
+//        self.clipsToBounds = true;
+        
+        UIView * backView = [[UIView alloc] init];
+        backView.backgroundColor = [UIColor hexChangeFloat:@"F9F9F9"];
+        [self.contentView addSubview:backView];
+        [backView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.top.equalTo(_face.mas_bottom);
+            make.left.equalTo(_userName.mas_left);
+            make.trailing.mas_equalTo(SCALE_NUM(-12));
+            make.bottom.mas_equalTo(SCALE_NUM(-12));
         }];
-        [_tagView.tagContent mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.left.equalTo(_tagView.tagIcon.mas_right).offset(KTAGTEXTMARGIN);
+        
+        _tagsCommonView = [[TagsCommonView alloc] init];
+        _tagsCommonView.backgroundColor = [UIColor hexChangeFloat:@"F9F9F9"];
+        [backView addSubview:_tagsCommonView];
+        [_tagsCommonView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.top.bottom.right.mas_equalTo(0);
+            make.left.mas_equalTo(SCALE_NUM(12));
         }];
-        _tagView.tagContent.lineSpace = -7;
-        _tagView.tagContent.maxLines = 2;
-        self.clipsToBounds = true;
+        
+        
         
         _addFriend = [[UIButton alloc] init];
         [self.contentView addSubview:_addFriend];
         [_addFriend mas_makeConstraints:^(MASConstraintMaker *make) {
             make.width.height.mas_equalTo(KADDFRIENDWIDTH);
-            make.centerY.equalTo(self.contentView);
+//            make.centerY.equalTo(self.contentView);
+            make.top.equalTo(_face);
             make.right.equalTo(self.contentView).offset(-KFACEMARGIN);
         }];
         _addFriend.layer.cornerRadius = KADDFRIENDWIDTH/2;
@@ -118,8 +144,13 @@ NSString *const kProfilePersonListTableViewCell = @"kProfilePersonListTableViewC
     _myAuthor = author;
     [_face setData:author.uid imageUrl:author.headPic];
     _userName.text = author.name;
-    [_tagView setData:author.tagsCommon];
-    [_connect updateWithTag:author.propetiesCommon];
+//    [_tagView setData:author.tagsCommon];
+//    [_connect updateWithTag:author.propetiesCommon];
+    
+    ProfileInfo * model = [[ProfileInfo alloc] init];
+    model.propetiesCommon = author.propetiesCommon;
+    model.tagsCommon = author.tagsCommon;
+    [_tagsCommonView setData:model];
     
     _genderLabel.text = author.gender;
     _genderLabel.hidden = !needShowGender;
