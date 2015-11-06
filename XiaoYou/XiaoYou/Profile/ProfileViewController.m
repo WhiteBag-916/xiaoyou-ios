@@ -27,6 +27,7 @@
 #import "ScanfResultViewController.h"
 #import "MyTimetableViewController.h"
 #import "XYContactsInfoDetailViewController.h"
+#import "NSString+MyContainString.h"
 
 #define KTOPHEIGHT SCALE_NUM(90)
 #define KHEADIMG_SIZE SCALE_NUM(45)
@@ -516,7 +517,7 @@
     
     NSMutableArray * arr0 = [NSMutableArray arrayWithArray:[result componentsSeparatedByString:@"&"]];
     NSMutableDictionary * dic = [NSMutableDictionary dictionary];
-    if ([arr0[0] containsString:@"xiaoyou.com"])
+    if ([arr0[0] myContainsString:@"xiaoyou.com"])
     {
         [arr0 removeObject:arr0[0]];
         for (int i = 0; i < arr0.count; i++)
