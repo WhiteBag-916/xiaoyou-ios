@@ -416,7 +416,11 @@
 - (void)resetCourseView {
     _courseName.text = _courseDetail.courseName;
     _lecturerName.text = _courseDetail.teacherName;
-    _timeLabel.text = [NSString stringWithFormat:@"第%g周 %g-%g", _courseDetail.week, _courseDetail.startTime, _courseDetail.endTime];
+    NSDate *startDate = [NSDate dateWithTimeIntervalSince1970:_courseDetail.startTime/1000];
+    NSString *startStr = [startDate stringWithFormat:@"HH:mm"];
+    NSDate *endDate = [NSDate dateWithTimeIntervalSince1970:_courseDetail.endTime/1000];
+    NSString *endStr = [endDate stringWithFormat:@"HH:mm"];
+    _timeLabel.text = [NSString stringWithFormat:@"第%g周 %@-%@", _courseDetail.week, startStr, endStr];
     _locationLabel.text = _courseDetail.roomName;
     _departmentsName.text = _courseDetail.departmentName;
 }

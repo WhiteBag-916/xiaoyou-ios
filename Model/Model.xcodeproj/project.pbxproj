@@ -13,6 +13,8 @@
 		0499B9CB1BE70D8F00202CFD /* AvailableTimeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0499B9CA1BE70D8F00202CFD /* AvailableTimeModel.m */; };
 		04AF14521BDDC74400FEE6A4 /* FilterCondition.m in Sources */ = {isa = PBXBuildFile; fileRef = 04AF14511BDDC74400FEE6A4 /* FilterCondition.m */; };
 		04AF14551BDDC7AC00FEE6A4 /* FilterConditionModels.m in Sources */ = {isa = PBXBuildFile; fileRef = 04AF14541BDDC7AC00FEE6A4 /* FilterConditionModels.m */; };
+		202CC8B11BECA03500BD4692 /* InterestModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 202CC8AE1BECA03500BD4692 /* InterestModel.m */; };
+		202CC8B21BECA03500BD4692 /* NewsList.m in Sources */ = {isa = PBXBuildFile; fileRef = 202CC8B01BECA03500BD4692 /* NewsList.m */; };
 		202F03B51BE35983006E7706 /* CourseTeacherlist.m in Sources */ = {isa = PBXBuildFile; fileRef = 202F03B21BE35983006E7706 /* CourseTeacherlist.m */; };
 		202F03B61BE35983006E7706 /* FindMyCourseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 202F03B41BE35983006E7706 /* FindMyCourseModel.m */; };
 		202F03BC1BE35C0F006E7706 /* CourseTime.m in Sources */ = {isa = PBXBuildFile; fileRef = 202F03BB1BE35C0F006E7706 /* CourseTime.m */; };
@@ -110,6 +112,10 @@
 		04AF14511BDDC74400FEE6A4 /* FilterCondition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FilterCondition.m; sourceTree = "<group>"; };
 		04AF14531BDDC7AC00FEE6A4 /* FilterConditionModels.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FilterConditionModels.h; sourceTree = "<group>"; };
 		04AF14541BDDC7AC00FEE6A4 /* FilterConditionModels.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FilterConditionModels.m; sourceTree = "<group>"; };
+		202CC8AD1BECA03500BD4692 /* InterestModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InterestModel.h; sourceTree = "<group>"; };
+		202CC8AE1BECA03500BD4692 /* InterestModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InterestModel.m; sourceTree = "<group>"; };
+		202CC8AF1BECA03500BD4692 /* NewsList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsList.h; sourceTree = "<group>"; };
+		202CC8B01BECA03500BD4692 /* NewsList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsList.m; sourceTree = "<group>"; };
 		202F03B11BE35983006E7706 /* CourseTeacherlist.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CourseTeacherlist.h; sourceTree = "<group>"; };
 		202F03B21BE35983006E7706 /* CourseTeacherlist.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CourseTeacherlist.m; sourceTree = "<group>"; };
 		202F03B31BE35983006E7706 /* FindMyCourseModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FindMyCourseModel.h; sourceTree = "<group>"; };
@@ -451,6 +457,10 @@
 		20DBFD671B4FA8F0009134D0 /* Message */ = {
 			isa = PBXGroup;
 			children = (
+				202CC8AD1BECA03500BD4692 /* InterestModel.h */,
+				202CC8AE1BECA03500BD4692 /* InterestModel.m */,
+				202CC8AF1BECA03500BD4692 /* NewsList.h */,
+				202CC8B01BECA03500BD4692 /* NewsList.m */,
 				3307BBC71B9561FD003446F8 /* SenderListModel.h */,
 				3307BBC81B9561FD003446F8 /* SenderListModel.m */,
 				3307BBC91B9561FD003446F8 /* SuggestListModel.h */,
@@ -622,6 +632,7 @@
 				E47E598E1BE8E10000AF7F5C /* ShopList.m in Sources */,
 				20E372C21BDDC03B0063BF56 /* ImageUploadModel.m in Sources */,
 				20859A991B64C0BC00580ED3 /* ResultCommon.m in Sources */,
+				202CC8B21BECA03500BD4692 /* NewsList.m in Sources */,
 				20DA8B441B8F5E76007D0CDE /* ReadFeedCount.m in Sources */,
 				333E95DF1B70B7650001059D /* SystemPushInfoListModel.m in Sources */,
 				20E0C06E1B88B0CA00EDAED4 /* Feed.m in Sources */,
@@ -640,6 +651,7 @@
 				20DF60111BDF677700C8383B /* ActivityTypeInfo.m in Sources */,
 				20859AA31B64CB7E00580ED3 /* LoginResp.m in Sources */,
 				332D32681B71E9B400B69E96 /* PushInfo.m in Sources */,
+				202CC8B11BECA03500BD4692 /* InterestModel.m in Sources */,
 				20DF60231BDF874900C8383B /* CourseTimeListModel.m in Sources */,
 				209E08C81BDDCDDD0062758E /* GetFilterConditionsModel.m in Sources */,
 				20DDA42E1BDA24300023179A /* ActivityPublishedModel.m in Sources */,

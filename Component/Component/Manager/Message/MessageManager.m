@@ -735,4 +735,9 @@ DEF_SINGLETON(MessageManager);
     [[UIApplication sharedApplication] scheduleLocalNotification:notification];
 }
 
+//好看接口列表查询
+- (void)interestList:(NSInteger)publishDay maxSize:(NSInteger)maxSize block:(ForbiddenGroupBlock)block {
+    
+}
+
 @end
