@@ -16,6 +16,7 @@
 #import "XYGroupInfoDetailViewController.h"
 #import "ActivityPublishedModel.h"
 #import "YWebViewController.h"
+#import "ProfileMyViewController.h"
 #define REUSEID @"ActivityDetailCell"
 #define HEADIMAGEVIEW_WIDTH         SCALE_NUM(45)
 #define LEADINGOFF_HEADIMAGEVIEW    SCALE_NUM(12)
@@ -371,7 +372,12 @@
     groupVC.gid = organizer.uid;
     
     if ([organizer.userType isEqualToString:@"user"]) {
-        [self.viewController.navigationController pushViewController:detailVC animated:YES needHiddenBottomBar:YES];
+        if ([organizer.uid isEqualToString:[[YShareData defaultData] valueForKey:kShareData_UserID]]) {
+            ProfileMyViewController *myVC = [[ProfileMyViewController alloc]init];
+            [self.viewController.navigationController pushViewController:myVC animated:YES needHiddenBottomBar:YES];
+        } else {
+            [self.viewController.navigationController pushViewController:detailVC animated:YES needHiddenBottomBar:YES];
+        }
     } else
     {
         [self.viewController.navigationController pushViewController:groupVC animated:YES needHiddenBottomBar:YES];

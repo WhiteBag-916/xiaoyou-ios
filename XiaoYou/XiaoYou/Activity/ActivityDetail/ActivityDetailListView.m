@@ -96,8 +96,8 @@
     
     [YUtils showHUDWithTitle:@"正在加载..."];
     [[ActivityManager sharedInstance] findActivityDetailInfo:_currentIndex limitEnd:_currentIndex + KPAGENUM activityPublishedId:self.publishID getDetail:YES block:^(YActionMessage *message) {
+        [YUtils hiddenProgressHUD];
         if (message.isSuccess) {
-            [YUtils hiddenProgressHUD];
             if ([self isHeaderRefresh]) {
                 [self.activityDetailArray removeAllObjects];
             }
@@ -130,6 +130,13 @@
         return 0;
     else {
         ActivityDetailModel *model = self.activityDetailArray[0];
+        if (model.enrollActivityUserInfos.count == 0) {
+            //当没有数据的时候,插入一条数据
+            Author *author = [[Author alloc]init];
+            author.studentNo = nil;
+            author.uid = nil;
+            model.enrollActivityUserInfos = @[author];
+        }
         return 1 + model.enrollActivityUserInfos.count ;
     }
     return 0;
@@ -152,6 +159,9 @@
         else
             return 0;
         Author *author = model.enrollActivityUserInfos[indexPath.row-1];
+        if (author.studentNo == nil && author.uid == nil)
+            return SCALE_NUM(160);
+        
         
         ProfileInfo *info = [[ProfileInfo alloc]init];
         info.tagModels = author.tagsCommon;

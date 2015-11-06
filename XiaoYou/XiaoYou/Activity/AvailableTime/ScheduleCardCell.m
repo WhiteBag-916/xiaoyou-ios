@@ -101,10 +101,9 @@
     [self.contentView addSubview:_projectLabel1];
     _projectLabel1.textColor = KCOLOR_B5;
     _projectLabel1.text = @"英语口语练习";
-    _projectLabel1.font = CONTENT_FONT(12);
+    _projectLabel1.font = CONTENT_FONT(10);
     [_projectLabel1 mas_makeConstraints:^(MASConstraintMaker *make) {
         make.height.mas_equalTo(SCALE_NUM(12));
-        //make.leading.mas_equalTo(SCALE_NUM(150));
         make.left.equalTo(_timeLabel1.mas_right).offset(SCALE_NUM(5));
         make.centerY.equalTo(_timeLabel1);
         make.trailing.mas_equalTo(SCALE_NUM(-15));
@@ -127,7 +126,7 @@
     [self.contentView addSubview:_projectLabel2];
     _projectLabel2.text = @"XX社团集体大会";
     _projectLabel2.textColor = KCOLOR_B5;
-    _projectLabel2.font = CONTENT_FONT(12);
+    _projectLabel2.font = CONTENT_FONT(10);
     [_projectLabel2 mas_makeConstraints:^(MASConstraintMaker *make) {
         //make.height.mas_equalTo(SCALE_NUM(12));
         make.left.equalTo(_projectLabel1);
@@ -152,7 +151,7 @@
     _projectLabel3 = [[UILabel alloc]init];
     [self.contentView addSubview:_projectLabel3];
     _projectLabel3.text = @"读书社名人讲座";
-    _projectLabel3.font = CONTENT_FONT(12);
+    _projectLabel3.font = CONTENT_FONT(10);
     _projectLabel3.textColor = KCOLOR_B5;
     [_projectLabel3 mas_makeConstraints:^(MASConstraintMaker *make) {
         //make.height.mas_equalTo(SCALE_NUM(12));

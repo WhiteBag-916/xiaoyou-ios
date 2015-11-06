@@ -10,6 +10,7 @@
 #import "RemindHeadView.h"
 #import "PassRemindCell.h"
 #import "ScheduleNotifyCell.h"
+#import "ApplyRemindCell.h"
 
 #define KPAGENUM 10
 
@@ -93,11 +94,6 @@
     NotifyInfoModel *model = self.notifyListArray[indexPath.section];
     switch (model.type)
     {
-        case ACTIVITY_PUSH:// 活动推送
-        {
-            cellHeight =  SCALE_NUM(190);
-            break;
-        }
         case ACTIVITY_ENROLL_CHECK_PASS: //审核通过
         {
             cellHeight = SCALE_NUM(190);
@@ -115,7 +111,7 @@
         }
         case ACTIVITY_ENROLL: //用户报名活动提醒
         {
-            cellHeight = SCALE_NUM(190);
+            cellHeight = SCALE_NUM(120);
             break;
         }
         case ACTIVITY_PUBLISH:
@@ -156,9 +152,8 @@
 -(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
     RemindHeadView *headView = [RemindHeadView remindHeadViewWithTableView:tableView];
-    headView.backgroundColor = [UIColor cyanColor];
-    //NoticeInfo *info = self.notifyListArray[section];
-    //[headView setData:info];
+    NotifyInfoModel *model = self.notifyListArray[section];
+    [headView setNotifyData:model];
     return headView;
 }
 
@@ -173,13 +168,6 @@
     NotifyInfoModel *model = self.notifyListArray[indexPath.section];
     switch (model.type)
     {
-        case ACTIVITY_PUSH:// 活动推送
-        {
-            PassRemindCell *cell = [PassRemindCell passRemindCellWithTableView:tableView];
-            [cell setNotifyData:model];
-            return cell;
-            break;
-        }
         case ACTIVITY_ENROLL_CHECK_PASS: //审核通过
         {
             PassRemindCell *cell = [PassRemindCell passRemindCellWithTableView:tableView];
@@ -187,14 +175,14 @@
             return cell;
             break;
         }
-        case ACTIVITY_ENROLL_NO_CHECK:
+        case ACTIVITY_ENROLL_NO_CHECK:  //活动报名审核未通过
         {
             PassRemindCell *cell = [PassRemindCell passRemindCellWithTableView:tableView];
             [cell setNotifyData:model];
             return cell;
             break;
         }
-        case SCHEDULE_REMIND: //用户日程提醒
+        case SCHEDULE_REMIND: //用户自建日程提醒
         {
             ScheduleNotifyCell *cell = [ScheduleNotifyCell cellWithTableView:tableView];
             [cell setData:model];
@@ -203,19 +191,19 @@
         }
         case ACTIVITY_ENROLL: //用户报名活动提醒
         {
-            PassRemindCell *cell = [PassRemindCell passRemindCellWithTableView:tableView];
+            ApplyRemindCell *cell = [ApplyRemindCell cellWithTableView:tableView];
             [cell setNotifyData:model];
             return cell;
             break;
         }
-        case ACTIVITY_PUBLISH:
+        case ACTIVITY_PUBLISH:  //
         {
             PassRemindCell *cell = [PassRemindCell passRemindCellWithTableView:tableView];
             [cell setNotifyData:model];
             return cell;
             break;
         }
-        case ACTIVITY_NOTIFY:
+        case ACTIVITY_NOTIFY:   //活动通知
         {
             PassRemindCell *cell = [PassRemindCell passRemindCellWithTableView:tableView];
             [cell setNotifyData:model];
@@ -224,9 +212,6 @@
         }
         default:
         {
-            PassRemindCell *cell = [PassRemindCell passRemindCellWithTableView:tableView];
-            [cell setNotifyData:model];
-            return cell;
             break;
         }
     }

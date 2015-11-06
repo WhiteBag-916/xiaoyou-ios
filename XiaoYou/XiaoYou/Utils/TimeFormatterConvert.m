@@ -69,15 +69,16 @@
 {
     NSDate *date = [NSDate date];
     NSTimeInterval nowDateTime = date.timeIntervalSince1970 + TIME_OFFSET;
-    NSTimeInterval time = (timestamp + TIME_OFFSET)/1000;//因为时差问题要加8小时 == 28800 sec
+    //传递过来时间
+    NSTimeInterval time = (timestamp + TIME_OFFSET)/1000;
     NSDate *detaildate=[NSDate dateWithTimeIntervalSince1970:time];
     //实例化一个NSDateFormatter对象
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     //设定时间格式,这里可以设置成自己需要的格式
     
-    if (nowDateTime - time < 24 * 60 * 60) {
+    if ([[self compareDate:detaildate] isEqualToString:@"今天"]) {
         [dateFormatter setDateFormat:@"今天 HH:mm"];
-    } else if (nowDateTime - time < 2 * 24 * 60 * 60) {
+    } else if ([[self compareDate:detaildate] isEqualToString:@"昨天"]) {
         [dateFormatter setDateFormat:@"昨天 HH:mm"];
     } else
     {
@@ -85,5 +86,35 @@
     }
     NSString *currentDateStr = [dateFormatter stringFromDate: detaildate];
     return currentDateStr;
+}
+
++(NSString *)compareDate:(NSDate *)date{
+    NSTimeInterval secondsPerDay = 24 * 60 * 60;
+    NSDate *today = [[NSDate alloc] init];
+    NSDate *tomorrow, *yesterday;
+    tomorrow = [today dateByAddingTimeInterval: secondsPerDay];
+    yesterday = [today dateByAddingTimeInterval: -secondsPerDay];
+    
+    // 10 first characters of description is the calendar date:
+    NSString * todayString = [[today description] substringToIndex:10];
+    NSString * yesterdayString = [[yesterday description] substringToIndex:10];
+    NSString * tomorrowString = [[tomorrow description] substringToIndex:10];
+    
+    NSString * dateString = [[date description] substringToIndex:10];
+    
+    if ([dateString isEqualToString:todayString])
+    {
+        return @"今天";
+    } else if ([dateString isEqualToString:yesterdayString])
+    {
+        return @"昨天";
+    }else if ([dateString isEqualToString:tomorrowString])
+    {
+        return @"明天";
+    }
+    else
+    {
+        return dateString;
+    }
 }
 @end

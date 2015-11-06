@@ -141,7 +141,8 @@
     [_contentTitleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.height.mas_equalTo(SCALE_NUM(12));
         make.top.equalTo(self.headImageView);
-        make.left.equalTo(self.headImageView.mas_right).offset(10);
+        make.left.equalTo(self.headImageView.mas_right).offset(SCALE_NUM(10));
+        make.trailing.mas_equalTo(SCALE_NUM(-5));
     }];
     
     _contentNameLabel = [[UILabel alloc]init];
@@ -153,6 +154,7 @@
         make.height.mas_equalTo(SCALE_NUM(12));
         make.top.equalTo(_contentTitleLabel.mas_bottom).offset(SCALE_NUM(15));
         make.left.equalTo(self.contentTitleLabel.mas_left);
+        make.trailing.mas_equalTo(SCALE_NUM(-5));
     }];
     
     _activityTimeLabel = [[UILabel alloc]init];

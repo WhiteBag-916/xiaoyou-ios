@@ -16,6 +16,7 @@
 #import <UIKit/UIKit.h>
 #import "NoticeInfo.h"
 #import "YTableViewCell.h"
+#import "NotifyInfoModel.h"
 typedef enum : NSUInteger {
     WAIT_SELECT,        //等待选择
     AGREED,             //同意
@@ -29,5 +30,7 @@ typedef enum : NSUInteger {
 @property (nonatomic,assign) APPLY_CELL_TYPE cellType;
 
 -(void)setData:(NoticeInfo*)model;
+
+-(void)setNotifyData:(NotifyInfoModel*)model;
 
 @end

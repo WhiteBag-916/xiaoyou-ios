@@ -21,13 +21,12 @@ typedef enum : NSUInteger {
     DELETEUSER=11,          //被好友删除
     
 #pragma mark 活动推送提醒
-    ACTIVITY_PUSH=12,               //活动推送
-    ACTIVITY_ENROLL_CHECK_PASS=13,  //活动报名审核通过
-    ACTIVITY_ENROLL_NO_CHECK=14,    //活动报名审核未通过
+    ACTIVITY_ENROLL_CHECK_PASS=13,  //我的活动报名审核通过
+    ACTIVITY_ENROLL_NO_CHECK=14,    //我的活动报名审核未通过
     SCHEDULE_REMIND=15,             //用户自建日程提醒----
-    ACTIVITY_ENROLL=16,             //用户报名活动提醒----
-    ACTIVITY_PUBLISH=17,            //活动发布提醒,,,
-    ACTIVITY_NOTIFY=18              //活动通知提醒
+    ACTIVITY_ENROLL=16,             //用户报名你的活动提醒----
+    ACTIVITY_PUBLISH=17,            //活动发布提醒(别人发布的活动)
+    ACTIVITY_NOTIFY=18              //活动通知提醒(1，12)
 } MODEL_TYPE;
 @interface NotifyListView : YTableView
 

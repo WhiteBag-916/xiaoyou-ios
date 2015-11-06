@@ -28,7 +28,9 @@
 @interface RemindListTableView ()
 <UITableViewDataSource,UITableViewDelegate>
 
-@property (nonatomic,assign) NSInteger currentIndex;
+@property (nonatomic,assign) NSInteger      currentIndex;
+
+@property (nonatomic,strong) UIImageView    *noDataImageView;//没有数据时的提示
 
 @end
 @implementation RemindListTableView
@@ -56,6 +58,16 @@
         [self registerClass:[PassRemindCell class] forCellReuseIdentifier:REMINDVIEWCELL];
         self.separatorStyle = UITableViewCellSelectionStyleNone;
         _currentIndex = 0;
+        
+        
+        _noDataImageView = [[UIImageView alloc]init];
+        [self addSubview:_noDataImageView];
+        _noDataImageView.hidden = YES;
+        _noDataImageView.image = [UIImage imageNamed:@"havetime－picture－notice"];
+        [_noDataImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.centerX.equalTo(self);
+            make.centerY.equalTo(self);
+        }];
     }
     return self;
 }
@@ -117,6 +129,15 @@
         } else
         {
             [self stopLoadMoreData];
+        }
+        if ([self.remindListArray count] == 0) {
+            self.noDataImageView.hidden = NO;
+            [self hiddenHeader:YES];
+            [self hiddenFooter:YES];
+        } else {
+            self.noDataImageView.hidden = YES;
+            [self hiddenHeader:NO];
+            [self hiddenFooter:NO];
         }
     }];
 }
