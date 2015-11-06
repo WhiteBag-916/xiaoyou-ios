@@ -555,6 +555,7 @@ typedef enum : NSUInteger {
 
 -(void)clickReleaseBtn
 {
+    [YUtils showHUDWithTitle];
     NSLog(@"发布");
     NSLog(@"%@",_dataManager.ActivityNameText);
     NSLog(@"%@",_dataManager.ActivityDesciptionText);
@@ -571,7 +572,7 @@ typedef enum : NSUInteger {
     NSLog(@"%@",_dataManager.ActivityOrganizerId);
     
     
-    [YUtils showHUDWithTitle];
+    
     
     if (_dataManager.ActivityDesciptionImage != nil)
     {
@@ -586,6 +587,10 @@ typedef enum : NSUInteger {
             if (message.isSuccess)
             {
                 [self sendReleaseRequest:message];
+            }
+            else
+            {
+                [YUtils showTitle:message.desc hideAfter:2];
             }
         }];
     }

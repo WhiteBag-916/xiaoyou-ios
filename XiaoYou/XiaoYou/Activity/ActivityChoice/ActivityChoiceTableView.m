@@ -83,7 +83,7 @@
     [dissMissBtn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.equalTo(backView);
         make.leading.mas_equalTo(SCALE_NUM(12));
-        make.height.width.mas_equalTo(SCALE_NUM(30));
+        make.height.width.mas_equalTo(SCALE_NUM(44));
     }];
     
     //对号
@@ -95,8 +95,8 @@
     [finishBtn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.equalTo(backView);
         make.trailing.mas_equalTo(SCALE_NUM(-12));
-        make.width.mas_equalTo(SCALE_NUM(30));
-        make.height.mas_equalTo(SCALE_NUM(24));
+        make.width.mas_equalTo(SCALE_NUM(44));
+        make.height.mas_equalTo(SCALE_NUM(44));
     }];
     //筛选
     UILabel * centerLabel = [[UILabel alloc] init];

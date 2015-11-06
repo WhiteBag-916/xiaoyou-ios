@@ -16,7 +16,7 @@
 #import "ProvisionManager.h"
 #import "ProfileInfo.h"
 
-@interface ScanfResultTableView ()<UITableViewDataSource,UITableViewDelegate>
+@interface ScanfResultTableView ()<UITableViewDataSource,UITableViewDelegate,UIAlertViewDelegate>
 
 @property(nonatomic,strong)UIImageView * backImageView;
 @property(nonatomic,strong)UILabel * shopNameLabel;
@@ -145,7 +145,7 @@
     _phoneLabel = [[UILabel alloc] init];
     _phoneLabel.text = shopModel.telephone;
     _phoneLabel.font = CONTENT_FONT(12);
-    _phoneLabel.textColor = KCOLOR_W1;
+    _phoneLabel.textColor = KCOLOR_g1;
     _phoneLabel.textAlignment = NSTextAlignmentLeft;
     _phoneLabel.backgroundColor = [UIColor clearColor];
     [backgroundView addSubview:_phoneLabel];
@@ -155,6 +155,16 @@
         make.right.equalTo(backgroundView).offset(SCALE_NUM(15));
         make.height.mas_equalTo(12);
     }];
+    
+    UIButton * phoneButton = [[UIButton alloc] init];
+    phoneButton.backgroundColor = [UIColor clearColor];
+    [backgroundView addSubview:phoneButton];
+    [phoneButton mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.right.equalTo(_phoneLabel);
+        make.bottom.equalTo(_phoneLabel).offset(SCALE_NUM(10));
+        make.top.equalTo(_phoneLabel).offset(SCALE_NUM(-10));
+    }];
+    [phoneButton addTarget:self action:@selector(callPhoneNum) forControlEvents:UIControlEventTouchUpInside];
     
     //位置
     _placeLabel = [[UILabel alloc] init];
@@ -329,6 +339,25 @@
     else
     {
         return SCALE_NUM(50);
+    }
+}
+
+-(void)callPhoneNum
+{
+    UIAlertView * alertView = [[UIAlertView alloc] initWithTitle:nil message:_phoneLabel.text delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"拨打", nil];
+    [alertView show];
+}
+
+-(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (buttonIndex == 1)
+    {
+        NSString * phoneStr = [NSString stringWithFormat:@"tel://%@",_phoneLabel.text];
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:phoneStr]];
+    }
+    else
+    {
+        return;
     }
 }
 

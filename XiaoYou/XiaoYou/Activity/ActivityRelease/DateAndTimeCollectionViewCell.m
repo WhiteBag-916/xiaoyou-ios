@@ -304,6 +304,7 @@ NSString *const kDateAndTimeCollectionViewCell = @"DateAndTimeCollectionViewCell
     NSString * showStr = [formatter stringFromDate:_datePicker.date];
     NSString * BeginApplyStr = [formatter stringFromDate:[NSDate dateWithTimeInterval:-300 sinceDate:_datePicker.date]];
     _applayTimeLabel.text = showStr;
+    _applayTimeLabel.textColor = KCOLOR_B4;
     _dataManager.ActivityDateEndApplyText = showStr;
     _dataManager.ActivityDateBeginApplyText = BeginApplyStr;
     [_dataManager isEnableToRelease];
@@ -314,6 +315,7 @@ NSString *const kDateAndTimeCollectionViewCell = @"DateAndTimeCollectionViewCell
     [formatter setDateFormat:@"yyyy年MM月dd日 a HH:mm"];
     NSString * showStr = [formatter stringFromDate:_datePicker.date];
     _beginTimeLabel.text = showStr;
+    _beginTimeLabel.textColor = KCOLOR_B4;
     _dataManager.ActivityDateBeginText = showStr;
     
     [self isSmallTo15Minites];
@@ -325,6 +327,7 @@ NSString *const kDateAndTimeCollectionViewCell = @"DateAndTimeCollectionViewCell
     [formatter setDateFormat:@"yyyy年MM月dd日 a HH:mm"];
     NSString * showStr = [formatter stringFromDate:_datePicker.date];
     _endTimeLabel.text = showStr;
+    _endTimeLabel.textColor = KCOLOR_B4;
     _dataManager.ActivityDateEndText = showStr;
     
     [self isSmallTo15Minites];

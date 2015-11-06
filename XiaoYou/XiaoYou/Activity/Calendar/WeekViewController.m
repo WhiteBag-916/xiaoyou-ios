@@ -380,10 +380,33 @@ static NSString* const EventCellReuseIdentifier = @"EventCellReuseIdentifier";
 
 - (void)dayPlannerView:(MGCDayPlannerView*)view didEndDisplayingDate:(NSDate*)date
 {
-    if ([date beginningOfWeek] <= _userSchedulingListBeginDate) {
+//    NSDate *beginDate = [date beginningOfWeek];
+//    NSDate *endDate = [date endOfWeek];
+//    NSTimeInterval beginTime = [beginDate timeIntervalSince1970];
+//    NSTimeInterval endTime = [endDate timeIntervalSince1970];
+//    NSTimeInterval nowBeginTime = [_userSchedulingListBeginDate timeIntervalSince1970];
+//    NSTimeInterval nowEndTime = [_userSchedulingListEndDate timeIntervalSince1970];
+//    if (beginTime <= nowBeginTime) {
+//        //取上个星期的
+//        [self initData:date needLoading:NO needNowWeek:NO needBeforeWeek:YES needAfterWeek:NO];
+//    } else if (endTime >= nowEndTime) {
+//        //取下个星期的
+//        [self initData:date needLoading:NO needNowWeek:NO needBeforeWeek:NO needAfterWeek:YES];
+//    }
+}
+
+- (void)dayPlannerView:(MGCDayPlannerView*)view willDisplayDate:(NSDate*)date
+{
+    NSDate *beginDate = [date beginningOfWeek];
+    NSDate *endDate = [date endOfWeek];
+    NSTimeInterval beginTime = [beginDate timeIntervalSince1970];
+    NSTimeInterval endTime = [endDate timeIntervalSince1970];
+    NSTimeInterval nowBeginTime = [_userSchedulingListBeginDate timeIntervalSince1970];
+    NSTimeInterval nowEndTime = [_userSchedulingListEndDate timeIntervalSince1970];
+    if (beginTime <= nowBeginTime) {
         //取上个星期的
         [self initData:date needLoading:NO needNowWeek:NO needBeforeWeek:YES needAfterWeek:NO];
-    } else if ([date endOfWeek] >= _userSchedulingListEndDate) {
+    } else if (endTime >= nowEndTime) {
         //取下个星期的
         [self initData:date needLoading:NO needNowWeek:NO needBeforeWeek:NO needAfterWeek:YES];
     }
