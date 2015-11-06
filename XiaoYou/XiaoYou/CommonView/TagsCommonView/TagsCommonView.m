@@ -114,6 +114,7 @@
     if (!_tagCollectionView) {
         _tagCollectionView.backgroundColor = [UIColor clearColor];
         MyFlowLayout *layout = [[MyFlowLayout alloc]init];
+//        UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc]init];
         layout.minimumInteritemSpacing = 10;
         _tagCollectionView = [[UICollectionView alloc]initWithFrame:CGRectZero collectionViewLayout:layout];
         [self addSubview:_tagCollectionView];
@@ -165,7 +166,7 @@
 {
     Tags * tag = _commonTagsArr[indexPath.row];
     NSDictionary *attributes = @{NSFontAttributeName:[UIFont systemFontOfSize:10]};
-    CGSize textSize = [tag.name boundingRectWithSize:CGSizeMake(100, 20) options:NSStringDrawingTruncatesLastVisibleLine attributes:attributes context:nil].size;
+    CGSize textSize = [tag.name boundingRectWithSize:CGSizeMake(300, 20) options:NSStringDrawingTruncatesLastVisibleLine attributes:attributes context:nil].size;
     return CGSizeMake(textSize.width+15, 14);
 }
 //定义每个UICollectionView 的间距（返回UIEdgeInsets：上、左、下、右）
@@ -194,7 +195,7 @@
 
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section
 {
-    return 6;
+    return 5;
 }
 
 
