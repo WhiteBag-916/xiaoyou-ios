@@ -9,6 +9,7 @@
 #import "TagListTableView.h"
 #import "YUtils+Component.h"
 #import "TagListTableViewCell.h"
+#import "SlideNavigationController.h"
 #import "ProfileInfo.h"
 #import "ProvisionManager.h"
 #import "Tags.h"
@@ -88,10 +89,14 @@
 //跳转到搜索结果
 - (void)toFeedFilter:(NSString *)filter name:(NSString *)name {
     [[NSNotificationCenter defaultCenter] postNotificationName:kNotification_Push_FeedFilter object:nil userInfo:@{@"filter":filter, @"name":name}];
+    [[SlideNavigationController sharedInstance] closeMenuWithCompletion:^{
+    }];
 }
 
 //跳转到添加标签
 - (void)toAddTag {
     [[NSNotificationCenter defaultCenter] postNotificationName:kNotification_Push_AddTag object:nil];
+    [[SlideNavigationController sharedInstance] closeMenuWithCompletion:^{
+    }];
 }
 @end

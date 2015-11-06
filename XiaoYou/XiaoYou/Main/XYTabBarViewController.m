@@ -7,6 +7,7 @@
 //
 
 #import "XYTabBarViewController.h"
+#import "SlideNavigationController.h"
 #import "ProfileViewController.h"
 #import "FeedListViewController.h"
 #import "XYMessageAndContactsViewController.h"
@@ -22,7 +23,7 @@
 #define kTag_TabBar_Profile kTag_TabBar_Base + 3
 
 @interface XYTabBarViewController ()
-<IChatManagerDelegate>
+<SlideNavigationControllerDelegate,IChatManagerDelegate>
 
 @property(nonatomic,strong)XYMessageAndContactsViewController *messageVC;
 @property(nonatomic,strong)UINavigationController *messageViewCotroller;
@@ -150,6 +151,11 @@
         xv.uid = userId;
         [controller pushViewController:xv animated:true needHiddenBottomBar:YES];
     }
+}
+#pragma mark - SlideNavigationControllerDelegate
+- (BOOL)slideNavigationControllerShouldDisplayLeftMenu
+{
+    return YES;
 }
 
 

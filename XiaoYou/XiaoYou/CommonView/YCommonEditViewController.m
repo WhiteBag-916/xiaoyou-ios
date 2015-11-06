@@ -35,6 +35,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(tokenFail) name:kNotification_Server_Token_Fail object:nil];
     
     [self initController];
     [self initView];
@@ -101,6 +102,9 @@
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
     [self showOrignMode];
+}
+- (void)tokenFail {
+    [self.navigationController dismissViewControllerAnimated:NO completion:nil];
 }
 - (void)onNavigationRightButtonClicked {
     [self.view endEditing:true];

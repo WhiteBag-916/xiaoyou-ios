@@ -9,6 +9,7 @@
 #import "AppDelegate+RootVC.h"
 #import "ChooseSchoolViewController.h"
 #import "XYTabBarViewController.h"
+#import "SlideNavigationController.h"
 #import "LoginViewController.h"
 #import "ProvisionManager.h"
 #import "YManagerCenter.h"
@@ -18,8 +19,6 @@
 #import "LoginWaitingViewController.h"
 #import "NotifyListViewController.h"
 #import "NotifyViewController.h"
-#import "DDMenuController.h"
-#import "TagListViewController.h"
 
 @implementation AppDelegate(RootVC)
 
@@ -93,9 +92,10 @@
 
 - (void)initTabBarNC
 {
-    self.tabBar = [[XYTabBarViewController alloc]init];
-    DDMenuController *menuController = [[DDMenuController alloc] initWithRootViewController:self.tabBar];
-    self.window.rootViewController = menuController;
+    SlideNavigationController *slideNC = [[SlideNavigationController alloc] initWithRootViewController:[[XYTabBarViewController alloc]init]];
+    slideNC.enableSwipeGesture = NO;
+    slideNC.leftBarButtonItem = [UIBarButtonItem new];
+    self.window.rootViewController = slideNC;
 }
 
 - (void)initPerfectNC {
@@ -106,12 +106,14 @@
 
 //当程序通过本地通知进入程序的时候
 - (void)initNotifyRemindNC {
-    self.tabBar = [[XYTabBarViewController alloc]init];
-    self.tabBar.selectedIndex = 1;
-    DDMenuController *menuController = [[DDMenuController alloc] initWithRootViewController:self.tabBar];
-    self.window.rootViewController = menuController;
+    XYTabBarViewController *tabBarVC = [[XYTabBarViewController alloc]init];
+    SlideNavigationController *slideNC = [[SlideNavigationController alloc] initWithRootViewController:tabBarVC];
+    tabBarVC.selectedIndex = 1;
+    slideNC.enableSwipeGesture = NO;
+    slideNC.leftBarButtonItem = [UIBarButtonItem new];
+    self.window.rootViewController = slideNC;
     
-    UINavigationController * avableVC = self.tabBar.selectedViewController;
+    UINavigationController * avableVC = tabBarVC.selectedViewController;
     NotifyViewController *notiVC = [[NotifyViewController alloc]init];
     [avableVC pushViewController:notiVC animated:YES needHiddenBottomBar:YES];
 }
