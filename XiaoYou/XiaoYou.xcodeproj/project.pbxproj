@@ -85,6 +85,10 @@
 		04571DB61BEB1D7200BAD2A6 /* no_someone_signup@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 04571DB41BEB1D7200BAD2A6 /* no_someone_signup@3x.png */; };
 		04571DB91BEB2E6200BAD2A6 /* havetime－picture－notice@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 04571DB71BEB2E6200BAD2A6 /* havetime－picture－notice@2x.png */; };
 		04571DBA1BEB2E6200BAD2A6 /* havetime－picture－notice@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 04571DB81BEB2E6200BAD2A6 /* havetime－picture－notice@3x.png */; };
+		04571DB11BEB191F00BAD2A6 /* no_data_schedule@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 04571DAF1BEB191F00BAD2A6 /* no_data_schedule@2x.png */; settings = {ASSET_TAGS = (); }; };
+		04571DB21BEB191F00BAD2A6 /* no_data_schedule@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 04571DB01BEB191F00BAD2A6 /* no_data_schedule@3x.png */; settings = {ASSET_TAGS = (); }; };
+		04571DB51BEB1D7200BAD2A6 /* no_someone_signup@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 04571DB31BEB1D7200BAD2A6 /* no_someone_signup@2x.png */; settings = {ASSET_TAGS = (); }; };
+		04571DB61BEB1D7200BAD2A6 /* no_someone_signup@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 04571DB41BEB1D7200BAD2A6 /* no_someone_signup@3x.png */; settings = {ASSET_TAGS = (); }; };
 		0461A3DD1BE38D0800F00E72 /* NSString+MyContainString.m in Sources */ = {isa = PBXBuildFile; fileRef = 0461A3DC1BE38D0800F00E72 /* NSString+MyContainString.m */; };
 		0463588B1BE096790055819F /* UIDevice+DeviceType.m in Sources */ = {isa = PBXBuildFile; fileRef = 0463588A1BE096790055819F /* UIDevice+DeviceType.m */; };
 		0473DC4C1BECAE2800CE041D /* add-friend-no@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0473DC4A1BECAE2800CE041D /* add-friend-no@2x.png */; settings = {ASSET_TAGS = (); }; };
@@ -5207,6 +5211,7 @@
 				20DA170B1BC7C51200A61B37 /* MGCYearCalendarMonthHeaderView.m in Sources */,
 				E482D5641BD8CAB30045F4DB /* ScanfResultViewController.m in Sources */,
 				044C31631BCCE79200E0D508 /* StudyRoomCell.m in Sources */,
+
 				E4889B7C1BECADAC0048A161 /* DDMenuController.m in Sources */,
 				65BCF1E11B818441003457F4 /* FeedDetailViewController.m in Sources */,
 				20E100811BD495D8009CB7E8 /* ScheduleDetailViewController.m in Sources */,
