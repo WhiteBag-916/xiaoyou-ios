@@ -10,7 +10,7 @@
 
 #define KInterestCell @"KInterestCell"
 
-@interface InterestModel : NSObject
+@interface InterestCellModel : NSObject
 @property (strong ,nonatomic) NSString *picture;
 @property (strong, nonatomic) NSString *title;
 @property (strong, nonatomic) NSString *source;
@@ -21,6 +21,6 @@
 
 @interface InterestTableViewCell : YTableViewCell
 
-- (void)setData:(InterestModel *)model;
+- (void)setData:(InterestCellModel *)model;
 
 @end
