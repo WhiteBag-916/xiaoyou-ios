@@ -246,7 +246,7 @@
     }
     
     _indexLabel.center = CGPointMake(self.bounds.size.width * 0.5, 35);
-    _saveButton.frame = CGRectMake(30, self.bounds.size.height - 70, 80, 55);
+    _saveButton.frame = CGRectMake(self.bounds.size.width - 80, self.bounds.size.height - 70, 60, 50);
 }
 
 - (void)show
