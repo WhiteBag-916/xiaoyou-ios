@@ -47,7 +47,9 @@
 @property (nonatomic, strong) NSString *headImagePath;//头像路径
 @property (nonatomic, strong) UIImagePickerController *picker;
 
-@property (nonatomic, assign) BOOL isHeadImageUploadEnd;//头像是否上传完成
+@property (nonatomic, assign) BOOL isHeadImageUploadEnd;//头像是否上传完成 add by sheng
+
+@property (nonatomic, assign) UIButton  *exitButton;
 @end
 
 @implementation ProfileMyViewController
@@ -176,7 +178,18 @@
     }];
     [codeButton addTarget:self action:@selector(openCode) forControlEvents:UIControlEventTouchUpInside];
     
-    [_headView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(goBack)]];
+    //[_headView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(goBack)]];
+    
+    _exitButton = [UIButton buttonWithType:UIButtonTypeSystem];
+    [_headView addSubview:_exitButton];
+    _exitButton.backgroundColor = [UIColor clearColor];
+    [_exitButton addTarget:self action:@selector(goBack) forControlEvents:UIControlEventTouchUpInside];
+    [_exitButton mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.mas_equalTo(0);
+        make.bottom.mas_equalTo(0);
+        make.leading.mas_equalTo(0);
+        make.width.mas_equalTo(SCALE_NUM(120));
+    }];
 }
 - (void)initMiddle {
     _middelView = [[UIView alloc] init];

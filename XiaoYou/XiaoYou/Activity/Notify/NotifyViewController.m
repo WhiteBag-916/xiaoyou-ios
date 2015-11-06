@@ -60,14 +60,16 @@
         YDatabaseDao *dataBaseDao = [[YDatabaseDao alloc]initWitDatabasePath:dataBasePath];
         NSString *tableName = NSStringFromClass([NotifyInfoModel class]);
         NSArray *queryArr = [dataBaseDao queryModel:tableName];
+        
+        
         _notifyDataSource = [NotifyInfoModel objectArrayWithKeyValuesArray:queryArr];
         [dataBaseDao deleteAllDataWithTableName:tableName];
         
-        
-        for (NotifyInfoModel *model in _notifyDataSource) {
-            model.isRead = @"YES";
-            [dataBaseDao insertModel:model];
-        }
+        //如果需要保存历史纪录的话,打开下面代码
+//        for (NotifyInfoModel *model in _notifyDataSource) {
+//            model.isRead = @"YES";
+//            [dataBaseDao insertModel:model];
+//        }
     }
     return _notifyDataSource;
 }

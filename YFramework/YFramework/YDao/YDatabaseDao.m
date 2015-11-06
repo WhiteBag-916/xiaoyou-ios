@@ -139,9 +139,6 @@
 
 -(BOOL)insertModel:(YModel*)model
 {
-    if (![self tableExistsWithName:NSStringFromClass([model class])]) {
-        return NO;
-    }
     //获取表名
     NSString *tableName = NSStringFromClass([model class]);
     
@@ -196,7 +193,7 @@
     if (![self tableExistsWithName:className]) {
         return nil;
     }
-    NSString *sql = [NSString stringWithFormat:@"select * from %@",className];
+    NSString *sql = [NSString stringWithFormat:@"select * from %@ order by id desc",className];
     //查询
     [YDatabase registerDB:self.databasePath];
     return [YDatabase query:self.databasePath sql:sql];
