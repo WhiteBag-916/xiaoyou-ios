@@ -87,6 +87,8 @@
 		04571DBA1BEB2E6200BAD2A6 /* havetime－picture－notice@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 04571DB81BEB2E6200BAD2A6 /* havetime－picture－notice@3x.png */; settings = {ASSET_TAGS = (); }; };
 		0461A3DD1BE38D0800F00E72 /* NSString+MyContainString.m in Sources */ = {isa = PBXBuildFile; fileRef = 0461A3DC1BE38D0800F00E72 /* NSString+MyContainString.m */; };
 		0463588B1BE096790055819F /* UIDevice+DeviceType.m in Sources */ = {isa = PBXBuildFile; fileRef = 0463588A1BE096790055819F /* UIDevice+DeviceType.m */; };
+		0473DC4C1BECAE2800CE041D /* add-friend-no@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0473DC4A1BECAE2800CE041D /* add-friend-no@2x.png */; settings = {ASSET_TAGS = (); }; };
+		0473DC4D1BECAE2800CE041D /* add-friend-no3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0473DC4B1BECAE2800CE041D /* add-friend-no3x.png */; settings = {ASSET_TAGS = (); }; };
 		0475AD891BDA247400763896 /* SearchActivityListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0475AD881BDA247400763896 /* SearchActivityListView.m */; };
 		0476B6291BD0E4EC00FD13DF /* 1havetime_box_calender@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0476B6251BD0E4EC00FD13DF /* 1havetime_box_calender@2x.png */; };
 		0476B62A1BD0E4EC00FD13DF /* 1havetime_box_calender@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0476B6261BD0E4EC00FD13DF /* 1havetime_box_calender@3x.png */; };
@@ -933,6 +935,8 @@
 		0461A3DC1BE38D0800F00E72 /* NSString+MyContainString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+MyContainString.m"; sourceTree = "<group>"; };
 		046358891BE096790055819F /* UIDevice+DeviceType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIDevice+DeviceType.h"; sourceTree = "<group>"; };
 		0463588A1BE096790055819F /* UIDevice+DeviceType.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIDevice+DeviceType.m"; sourceTree = "<group>"; };
+		0473DC4A1BECAE2800CE041D /* add-friend-no@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "add-friend-no@2x.png"; path = "mengcheng/add-friend-no@2x.png"; sourceTree = "<group>"; };
+		0473DC4B1BECAE2800CE041D /* add-friend-no3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "add-friend-no3x.png"; path = "mengcheng/add-friend-no3x.png"; sourceTree = "<group>"; };
 		0475AD871BDA247400763896 /* SearchActivityListView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchActivityListView.h; sourceTree = "<group>"; };
 		0475AD881BDA247400763896 /* SearchActivityListView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchActivityListView.m; sourceTree = "<group>"; };
 		0476B6251BD0E4EC00FD13DF /* 1havetime_box_calender@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "1havetime_box_calender@2x.png"; sourceTree = "<group>"; };
@@ -2088,6 +2092,8 @@
 				043AC8631BCF7BFC00AB6E09 /* mengcheng */,
 				04571DB71BEB2E6200BAD2A6 /* havetime－picture－notice@2x.png */,
 				04571DB81BEB2E6200BAD2A6 /* havetime－picture－notice@3x.png */,
+				0473DC4A1BECAE2800CE041D /* add-friend-no@2x.png */,
+				0473DC4B1BECAE2800CE041D /* add-friend-no3x.png */,
 				04571DAF1BEB191F00BAD2A6 /* no_data_schedule@2x.png */,
 				04571DB01BEB191F00BAD2A6 /* no_data_schedule@3x.png */,
 				04571DB31BEB1D7200BAD2A6 /* no_someone_signup@2x.png */,
@@ -4667,6 +4673,7 @@
 				20DA39F91BD76DE300B4B1B1 /* build_btn_cancel@3x.png in Resources */,
 				20DA3A071BD7754F00B4B1B1 /* build_put_bg@3x.png in Resources */,
 				044DA02C1BBA699600AA321A /* setup_mystore@2x.png in Resources */,
+				0473DC4C1BECAE2800CE041D /* add-friend-no@2x.png in Resources */,
 				3335C3651B8178E8007DEFD4 /* chatFire_audioPlaying1.png in Resources */,
 				20E942221B833D10009C2DC6 /* toggle-off@2x.png in Resources */,
 				E43E106F1BCCFA840018B6D7 /* circle_green@3x.png in Resources */,
@@ -4798,6 +4805,7 @@
 				041E3EBD1BAFFA0800454487 /* CTAssetsPickerChecked~iOS6.png in Resources */,
 				E47C6A5C1BD4C95E0058DCAA /* havetime－icon_free@2x.png in Resources */,
 				3334AC1F1B82D7C400FDDCCB /* VoiceSearchFeedback001.png in Resources */,
+				0473DC4D1BECAE2800CE041D /* add-friend-no3x.png in Resources */,
 				049480471BB8DE1700C68460 /* PhotoBorder.png in Resources */,
 				20E18DC11B808E42005B75EE /* message_tab_green@3x.png in Resources */,
 				3348CB6A1B87236200F97FAF /* send-click@2x.png in Resources */,

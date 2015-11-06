@@ -95,7 +95,7 @@
     [self.contentView addSubview:_tagsWrapView];
     _tagsWrapView.backgroundColor = RGBACOLOR(246, 247, 249, 1);
     [_tagsWrapView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(_joinTopView.mas_bottom).offset(SCALE_NUM(15));
+        make.top.equalTo(_joinTopView.mas_bottom).offset(SCALE_NUM(0));
         make.leading.mas_equalTo(SCALE_NUM(71));
         make.trailing.mas_equalTo(SCALE_NUM(-20));
         make.bottom.mas_equalTo(SCALE_NUM(-15));

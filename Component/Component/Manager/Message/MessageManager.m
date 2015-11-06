@@ -532,6 +532,7 @@ DEF_SINGLETON(MessageManager);
             notiInfo.organizer = dict[@"organizer"];
             notiInfo.startTime = [dict[@"startTime"] doubleValue];
             notiInfo.type = [[dict valueForKey:@"type"] integerValue];
+            //notiInfo.propetiesCommon = [dict valueForKey:@""];
             [AppConfigData setHaveRemindMessage:YES];
             [dataBaseDao insertModel:notiInfo];
             [[NSNotificationCenter defaultCenter] postNotificationName:KNotification_Remind_Message_Come object:nil];

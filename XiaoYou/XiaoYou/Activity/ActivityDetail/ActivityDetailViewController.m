@@ -153,7 +153,7 @@
                 [_joinInBtn setTitle:@"报名结束" forState:UIControlStateNormal];
                 _joinInBtn.enabled = NO;
                 _joinInBtn.backgroundColor = KCOLOR_g2;
-                [self IsShowCustomNavigationMoreButton:NO];
+                [self IsShowCustomNavigationMoreButton:YES];
             }
             else if ([model.enrollStatus isEqualToString:@"enroll_auditing"]) {
                 [_joinInBtn setTitle:@"正在审核" forState:UIControlStateNormal];

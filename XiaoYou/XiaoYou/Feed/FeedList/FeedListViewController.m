@@ -64,6 +64,8 @@
     [SlideNavigationController sharedInstance].enableShadow = false;
     [SlideNavigationController sharedInstance].portraitSlideOffset = SCREEN_WIDTH * 0.3;
     [self initNotification];
+    //刷新数据
+    [self refreshData];
 }
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
@@ -157,7 +159,7 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(toAddTag) name:kNotification_Push_AddTag object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(toFeedFilter:) name:kNotification_Push_FeedFilter object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(checkUnreadAlterCount) name:KNotification_Update_UnreadAlterCount object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshData) name:KNotification_Refresh_FeedList object:nil];
+    //[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshData) name:KNotification_Refresh_FeedList object:nil];
     
     //侧拉通知
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(openTagListVC:) name:SlideNavigationControllerDidReveal object:nil];
@@ -181,7 +183,7 @@
         [self showCustomNavigationPublishButton];
         self.viewIndex = 1;
     } else {
-        //self.navigationItem.rightBarButtonItem = nil;
+        self.navigationItem.rightBarButtonItem = nil;
         //[self showCustomNavigationFastButton];
         self.viewIndex = 2;
         [_profilePersonListTableView loadDataWithQueryCode:@""];

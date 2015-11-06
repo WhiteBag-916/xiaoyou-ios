@@ -32,4 +32,5 @@ typedef enum : NSUInteger {
 @property (nonatomic,copy) NSString *organizer;
 
 @property (nonatomic,copy) NSString *isRead;
+//@property (nonatomic,strong) NSArray *propetiesCommon;
 @end

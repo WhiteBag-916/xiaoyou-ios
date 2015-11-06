@@ -34,7 +34,7 @@
             make.left.right.top.equalTo(self);
         }];
         
-        _contentLabel = [YUtils initLabel:CONTENT_FONT(10) color:[UIColor blackColor] text:@"" frame:CGRectZero alignment:NSTextAlignmentLeft];
+        _contentLabel = [YUtils initLabel:CONTENT_FONT(12) color:[UIColor blackColor] text:@"" frame:CGRectZero alignment:NSTextAlignmentLeft];
         [self addSubview:_contentLabel];
         _contentLabel.numberOfLines = 0;
         [_contentLabel mas_makeConstraints:^(MASConstraintMaker *make) {

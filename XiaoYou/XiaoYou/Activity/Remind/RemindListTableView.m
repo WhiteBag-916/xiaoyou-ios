@@ -44,8 +44,27 @@
         [self registerClass:[PassRemindCell class] forCellReuseIdentifier:REMINDVIEWCELL];
         self.separatorStyle = UITableViewCellSelectionStyleNone;
         _currentIndex = 0;
+        //控件的创建初始化必须写在init方法中,不能写在initWithFrame方法中,不然在IOS7及以下会崩溃
+        
     }
     return self;
+}
+
+-(UIImageView *)noDataImageView
+{
+    if (!_noDataImageView) {
+        _noDataImageView = [[UIImageView alloc]init];
+        [self addSubview:_noDataImageView];
+        _noDataImageView.hidden = YES;
+        _noDataImageView.image = [UIImage imageNamed:@"havetime－picture－notice"];
+        [_noDataImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.width.mas_equalTo(SCALE_NUM(203));
+            make.height.mas_equalTo(SCALE_NUM(164));
+            make.centerX.equalTo(self);
+            make.centerY.equalTo(self);
+        }];
+    }
+    return _noDataImageView;
 }
 
 -(instancetype)initWithFrame:(CGRect)frame style:(UITableViewStyle)style {
@@ -58,16 +77,6 @@
         [self registerClass:[PassRemindCell class] forCellReuseIdentifier:REMINDVIEWCELL];
         self.separatorStyle = UITableViewCellSelectionStyleNone;
         _currentIndex = 0;
-        
-        
-        _noDataImageView = [[UIImageView alloc]init];
-        [self addSubview:_noDataImageView];
-        _noDataImageView.hidden = YES;
-        _noDataImageView.image = [UIImage imageNamed:@"havetime－picture－notice"];
-        [_noDataImageView mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.centerX.equalTo(self);
-            make.centerY.equalTo(self);
-        }];
     }
     return self;
 }
@@ -202,7 +211,6 @@
 
 -(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
     UITableViewCell *cell = nil;
     NoticeInfo *info = self.remindListArray[indexPath.section];
     

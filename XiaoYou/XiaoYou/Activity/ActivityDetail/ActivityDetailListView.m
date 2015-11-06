@@ -93,8 +93,8 @@
 -(void)sendRequest
 {
     [_activityDetailArray removeAllObjects];
-    
-    [YUtils showHUDWithTitle:@"正在加载..."];
+    if (![self isHeaderRefresh])
+        [YUtils showHUDWithTitle:@"正在加载..."];
     [[ActivityManager sharedInstance] findActivityDetailInfo:_currentIndex limitEnd:_currentIndex + KPAGENUM activityPublishedId:self.publishID getDetail:YES block:^(YActionMessage *message) {
         [YUtils hiddenProgressHUD];
         if (message.isSuccess) {

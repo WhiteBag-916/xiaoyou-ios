@@ -49,7 +49,7 @@
 
 @property (nonatomic, assign) BOOL isHeadImageUploadEnd;//头像是否上传完成 add by sheng
 
-@property (nonatomic, assign) UIButton  *exitButton;
+@property (nonatomic, strong) UIButton  *exitButton;
 @end
 
 @implementation ProfileMyViewController
@@ -129,6 +129,17 @@
     }];
     _headView.backgroundColor = KCOLOR_455A64;
     
+    _exitButton = [[UIButton alloc] init];
+    [_headView addSubview:_exitButton];
+    _exitButton.backgroundColor = [UIColor clearColor];
+    [_exitButton addTarget:self action:@selector(goBack) forControlEvents:UIControlEventTouchUpInside];
+    [_exitButton mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.mas_equalTo(0);
+        make.leading.mas_equalTo(0);
+        make.bottom.mas_equalTo(0);
+        make.width.mas_equalTo(SCALE_NUM(120));
+    }];
+    
     _faceContainer = [[UIView alloc] init];
     _faceContainer.userInteractionEnabled = YES;
     [_containerView addSubview:_faceContainer];
@@ -179,17 +190,6 @@
     [codeButton addTarget:self action:@selector(openCode) forControlEvents:UIControlEventTouchUpInside];
     
     //[_headView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(goBack)]];
-    
-    _exitButton = [UIButton buttonWithType:UIButtonTypeSystem];
-    [_headView addSubview:_exitButton];
-    _exitButton.backgroundColor = [UIColor clearColor];
-    [_exitButton addTarget:self action:@selector(goBack) forControlEvents:UIControlEventTouchUpInside];
-    [_exitButton mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.mas_equalTo(0);
-        make.bottom.mas_equalTo(0);
-        make.leading.mas_equalTo(0);
-        make.width.mas_equalTo(SCALE_NUM(120));
-    }];
 }
 - (void)initMiddle {
     _middelView = [[UIView alloc] init];

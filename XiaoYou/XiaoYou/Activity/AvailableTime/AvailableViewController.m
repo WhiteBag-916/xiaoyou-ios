@@ -59,7 +59,13 @@
 
 -(void)receiveNotificationOfRemindMessage
 {
-    [self showCustomNavigationRemindButton:YES];
+    //[self showCustomNavigationRemindButton:YES];
+    
+    UIButton *navigationLeftButton = [UIButton buttonWithType:UIButtonTypeSystem];
+    [navigationLeftButton setImage:[UIImage imageNamed:@"red_point_bell"] forState:UIControlStateNormal];
+    [navigationLeftButton addTarget:self action:@selector(onNavigationLeftButtonClicked) forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem *btnNavLeftItem = [[UIBarButtonItem alloc] initWithCustomView:navigationLeftButton];
+    self.navigationItem.leftBarButtonItem = btnNavLeftItem;
 }
 
 - (void)addGuideView {
@@ -124,21 +130,21 @@
     //right barbutton view
     UIView * view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 95, KNavigationBarheight)];
     
-    UIButton *setupButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 25, KNavigationBarheight)];
+    UIButton *setupButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 50, KNavigationBarheight)];
     [setupButton setImage:[UIImage imageNamed:@"have_time_publish"] forState:UIControlStateNormal];
     [setupButton addTarget:self
                     action:@selector(publishAction)
           forControlEvents:UIControlEventTouchUpInside];
     [view addSubview:setupButton];
     
-    UIButton * remindBtn = [[UIButton alloc] initWithFrame:CGRectMake(35, 0, 25, KNavigationBarheight)];
+    UIButton * remindBtn = [[UIButton alloc] initWithFrame:CGRectMake(35, 0, 50, KNavigationBarheight)];
     [remindBtn setImage:[UIImage imageNamed:@"have_time_select"] forState:UIControlStateNormal];
     [remindBtn addTarget:self
                   action:@selector(filterAction)
         forControlEvents:UIControlEventTouchUpInside];
     [view addSubview:remindBtn];
     
-    UIButton * scheduleBtn = [[UIButton alloc] initWithFrame:CGRectMake(70, 0, 25, KNavigationBarheight)];
+    UIButton * scheduleBtn = [[UIButton alloc] initWithFrame:CGRectMake(70, 0, 50, KNavigationBarheight)];
     [scheduleBtn setImage:[UIImage imageNamed:@"have_time_search"] forState:UIControlStateNormal];
     [scheduleBtn addTarget:self
                     action:@selector(searchAction)

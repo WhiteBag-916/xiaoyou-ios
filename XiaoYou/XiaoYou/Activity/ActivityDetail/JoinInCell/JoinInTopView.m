@@ -109,6 +109,7 @@
     [_addFriendImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.trailing.mas_equalTo(SCALE_NUM(-12));
         make.top.equalTo(_headImageView.mas_top).offset(SCALE_NUM(2));
+        make.bottom.equalTo(_isSelfNameLabel);
     }];
 }
 
@@ -122,6 +123,7 @@
     if ([status isEqualToString:@"2"]) {
         _addFriendImageView.hidden = false;
         _addFriendImageView.enabled = false;
+        [_addFriendImageView setImage:[[UIImage imageNamed:@"add-friend-no"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] forState:UIControlStateNormal];
     }
     if ([status isEqualToString:@"3"]) {
         _addFriendImageView.hidden = true;
