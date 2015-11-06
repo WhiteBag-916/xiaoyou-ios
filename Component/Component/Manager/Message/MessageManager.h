@@ -68,6 +68,6 @@ AS_SINGLETON(MessageManager);
  返回值 : N/A
  作者 : XiongChen
  *********************************************************************/
-- (void)interestList:(NSInteger)publishDay maxSize:(NSInteger)maxSize block:(ForbiddenGroupBlock)block;
+- (void)interestList:(NSInteger)publishDay maxSize:(NSInteger)maxSize block:(ActionCompleteBlock)block;
 
 @end

@@ -65,7 +65,19 @@
         return [dateFormatter stringFromDate:self];
 	}
 }
-
+- (NSString *)formatForInterest {
+    NSTimeInterval timeInterval = -[self timeIntervalSinceNow];
+    if (timeInterval < 60) {
+        return NSLocalizedString(@"1分钟内", @"");
+    } else if (timeInterval < 3600) {
+        return [NSString stringWithFormat:NSLocalizedString(@"%.f分钟前", @""), timeInterval / 60];
+    } else if (timeInterval < 86400) {
+        return [NSString stringWithFormat:NSLocalizedString(@"%.f小时前", @""), timeInterval / 3600];
+    } else {
+        NSDateFormatter *dateFormatter = [NSDateFormatter dateFormatterWithFormat:NSLocalizedString(@"MM月dd日", @"")];
+        return [dateFormatter stringFromDate:self];
+    }
+}
 /*标准时间日期描述*/
 -(NSString *)formattedTime{
     NSDateFormatter* formatter = [[NSDateFormatter alloc]init];
