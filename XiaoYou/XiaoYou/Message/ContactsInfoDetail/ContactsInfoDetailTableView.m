@@ -362,16 +362,19 @@
             {
                 CGFloat width;
                 Tags * tag = _model.tagsCommon[i];
-                NSDictionary *attributes = @{NSFontAttributeName:[UIFont systemFontOfSize:12]};
-                CGSize textSize = [tag.name boundingRectWithSize:CGSizeMake(150, 14) options:NSStringDrawingTruncatesLastVisibleLine attributes:attributes context:nil].size;
+                NSDictionary *attributes = @{NSFontAttributeName:[UIFont systemFontOfSize:10]};
+                CGSize textSize = [tag.name boundingRectWithSize:CGSizeMake(300, 14) options:NSStringDrawingTruncatesLastVisibleLine attributes:attributes context:nil].size;
+                
                 width += 10;
                 width += textSize.width + 15;
-                CGFloat  limitWidth = SCREEN_WIDTH - 105;
+                
+                CGFloat  limitWidth = SCREEN_WIDTH - 115;
                 if (width > limitWidth)
                 {
                     height += 20;
-                    width = 10 + textSize.width;
+                    width = textSize.width + 15;
                 }
+            
             }
             return height;
          

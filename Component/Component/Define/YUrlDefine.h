@@ -167,6 +167,8 @@
 #define api_contacts_list  @"/user/v2/listLinkMan"
 //发送建议
 #define api_suggest_list  @"/suggest/list?flag=groupManager"
+//好看接口列表查询
+#define api_news_list  @"/news/list"
 
 
 /**********************************************************

@@ -11,9 +11,10 @@
 		043B45411BE8967200050B32 /* YBaseService.m in Sources */ = {isa = PBXBuildFile; fileRef = 043B45401BE8967200050B32 /* YBaseService.m */; };
 		0463588E1BE0F5450055819F /* CancleActivityAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 0463588D1BE0F5450055819F /* CancleActivityAction.m */; };
 		04722E261BD8892700F95816 /* AvailableAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 04722E251BD8892700F95816 /* AvailableAction.m */; };
-		0490A4A81BE9DD2F0053023C /* NotifyRemindDao.m in Sources */ = {isa = PBXBuildFile; fileRef = 0490A4A71BE9DD2F0053023C /* NotifyRemindDao.m */; settings = {ASSET_TAGS = (); }; };
+		0490A4A81BE9DD2F0053023C /* NotifyRemindDao.m in Sources */ = {isa = PBXBuildFile; fileRef = 0490A4A71BE9DD2F0053023C /* NotifyRemindDao.m */; };
 		0499B9CE1BE70F1C00202CFD /* MainAvailableTimeAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 0499B9CD1BE70F1C00202CFD /* MainAvailableTimeAction.m */; };
 		04A2A0071BCE3969006A35FB /* AppConfigData.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A2A0061BCE3969006A35FB /* AppConfigData.m */; };
+		202CC8B51BECA0C800BD4692 /* InterestListAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 202CC8B41BECA0C800BD4692 /* InterestListAction.m */; };
 		202F03B91BE359C0006E7706 /* FindMyCourseAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 202F03B81BE359C0006E7706 /* FindMyCourseAction.m */; };
 		202F03C91BE36A27006E7706 /* UserSchedulingConditionsAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 202F03C81BE36A27006E7706 /* UserSchedulingConditionsAction.m */; };
 		202F03CC1BE36AF0006E7706 /* UserSchedulingListAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 202F03CB1BE36AF0006E7706 /* UserSchedulingListAction.m */; };
@@ -117,6 +118,8 @@
 		0499B9CD1BE70F1C00202CFD /* MainAvailableTimeAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainAvailableTimeAction.m; sourceTree = "<group>"; };
 		04A2A0051BCE3969006A35FB /* AppConfigData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppConfigData.h; sourceTree = "<group>"; };
 		04A2A0061BCE3969006A35FB /* AppConfigData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppConfigData.m; sourceTree = "<group>"; };
+		202CC8B31BECA0C800BD4692 /* InterestListAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InterestListAction.h; sourceTree = "<group>"; };
+		202CC8B41BECA0C800BD4692 /* InterestListAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InterestListAction.m; sourceTree = "<group>"; };
 		202F03B71BE359C0006E7706 /* FindMyCourseAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FindMyCourseAction.h; sourceTree = "<group>"; };
 		202F03B81BE359C0006E7706 /* FindMyCourseAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FindMyCourseAction.m; sourceTree = "<group>"; };
 		202F03C71BE36A27006E7706 /* UserSchedulingConditionsAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserSchedulingConditionsAction.h; sourceTree = "<group>"; };
@@ -504,6 +507,8 @@
 				20E0BFEC1B88B0CA00EDAED4 /* MessageListAction.m */,
 				3339625A1B95575400DD0A6D /* SuggestListAction.h */,
 				3339625B1B95575400DD0A6D /* SuggestListAction.m */,
+				202CC8B31BECA0C800BD4692 /* InterestListAction.h */,
+				202CC8B41BECA0C800BD4692 /* InterestListAction.m */,
 			);
 			path = Message;
 			sourceTree = "<group>";
@@ -784,6 +789,7 @@
 				202F03B91BE359C0006E7706 /* FindMyCourseAction.m in Sources */,
 				20DA8B3D1B8EE6C5007D0CDE /* ListCommentAction.m in Sources */,
 				20DA8B3A1B8ED078007D0CDE /* ListPraisePeoplesAction.m in Sources */,
+				202CC8B51BECA0C800BD4692 /* InterestListAction.m in Sources */,
 				20E366411B92F7DC00A22FFE /* RegAction.m in Sources */,
 				20DF601E1BDF866900C8383B /* CurriculumManager.m in Sources */,
 				20DD81641B91D24900ACFD9A /* ForbiddenMeListAction.m in Sources */,

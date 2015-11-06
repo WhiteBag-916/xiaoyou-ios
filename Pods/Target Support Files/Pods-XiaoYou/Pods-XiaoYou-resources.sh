@@ -62,16 +62,12 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_resource "MJRefresh/MJRefresh/MJRefresh.bundle"
   install_resource "UzysAssetsPickerController/UzysAssetsPickerController/Library/UzysAssetsPickerController.xib"
   install_resource "UzysAssetsPickerController/UzysAssetsPickerController/Library/UzysAssetPickerController.bundle"
-  install_resource "iOS-Slide-Menu/SlideMenu/Source/Assets/menu-button.png"
-  install_resource "iOS-Slide-Menu/SlideMenu/Source/Assets/menu-button@2x.png"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_resource "EaseMobSDK/EaseMobSDK/resources/EaseMob.bundle"
   install_resource "MJRefresh/MJRefresh/MJRefresh.bundle"
   install_resource "UzysAssetsPickerController/UzysAssetsPickerController/Library/UzysAssetsPickerController.xib"
   install_resource "UzysAssetsPickerController/UzysAssetsPickerController/Library/UzysAssetPickerController.bundle"
-  install_resource "iOS-Slide-Menu/SlideMenu/Source/Assets/menu-button.png"
-  install_resource "iOS-Slide-Menu/SlideMenu/Source/Assets/menu-button@2x.png"
 fi
 
 mkdir -p "${CONFIGURATION_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}"

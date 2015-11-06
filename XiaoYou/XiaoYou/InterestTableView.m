@@ -71,7 +71,7 @@
     NSMutableArray *array = [NSMutableArray array];
     for (int i = 0; i < 3; i ++) {
         NSMutableArray *data = [NSMutableArray array];
-        InterestModel *model = [[InterestModel alloc] init];
+        InterestCellModel *model = [[InterestCellModel alloc] init];
         model.picture = @"";
         model.time = [NSDate dateWithTimeIntervalSinceNow:-100000 * i];
         model.title = @"校园资讯";
@@ -118,7 +118,7 @@
     } else {
         cell = [self dequeueReusableCellWithIdentifier:KInterestSeperatorCell];
         if (indexPath.row == 0) {
-            [(InterestSeperatorCell *)cell updateState:[_formatter stringFromDate:[(InterestModel *) _dataArray[indexPath.section][indexPath.row/2] time]]];
+            [(InterestSeperatorCell *)cell updateState:[_formatter stringFromDate:[(InterestCellModel *) _dataArray[indexPath.section][indexPath.row/2] time]]];
         } else {
             [(InterestSeperatorCell *)cell updateState:@""];
         }

@@ -8,7 +8,7 @@
 
 #import "InterestTableViewCell.h"
 #import "NSDate+Category.h"
-@implementation InterestModel
+@implementation InterestCellModel
 @end
 
 @interface InterestTableViewCell()
@@ -67,7 +67,7 @@
     }
     return self;
 }
-- (void)setData:(InterestModel *)model {
+- (void)setData:(InterestCellModel *)model {
     [_picture setNormalImageWithUrl:model.picture];
     _title.text = model.title;
     _source.text = model.source;

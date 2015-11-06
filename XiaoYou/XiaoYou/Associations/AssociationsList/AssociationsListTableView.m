@@ -172,7 +172,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     AssociationsListTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kAssociationsListTableViewCell];
-    [cell resetData:_associationsListArray[indexPath.row]];
+    [cell resetData:_associationsListArray[indexPath.row] isDetail:NO];
     return cell;
 }
 

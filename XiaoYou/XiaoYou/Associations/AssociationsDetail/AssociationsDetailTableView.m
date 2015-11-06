@@ -149,7 +149,7 @@
     if (AssociationsDetailTableViewTitleSection == section) {
         AssociationsListTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kAssociationsListTableViewCell];
         
-        [cell resetData:_groupModel];
+        [cell resetData:_groupModel isDetail:YES];
         
         return cell;
     } else if (AssociationsDetailTableViewLikeSection == section) {
@@ -189,7 +189,7 @@
     if (AssociationsDetailTableViewTitleSection == section) {
         //计算高度
         CGFloat height = [tableView fd_heightForCellWithIdentifier:kAssociationsListTableViewCell cacheByIndexPath:indexPath configuration:^(AssociationsListTableViewCell *cell) {
-            [cell resetData:_groupModel];
+            [cell resetData:_groupModel isDetail:YES];
         }];
         return height;
     } else if (AssociationsDetailTableViewLikeSection == section) {

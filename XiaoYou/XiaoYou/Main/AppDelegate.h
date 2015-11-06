@@ -8,9 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
+@class XYTabBarViewController;
+@class DDMenuController;
+
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
+@property (nonatomic, strong) XYTabBarViewController *tabBar;
+@property (nonatomic, strong) DDMenuController *menuController;
 
 
 @end

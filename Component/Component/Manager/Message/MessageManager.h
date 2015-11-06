@@ -61,4 +61,13 @@ AS_SINGLETON(MessageManager);
 //判断是否已屏蔽
 - (BOOL)isForbiddenGroupByThirdCode:(NSString *)thirdCode;
 
+/*********************************************************************
+ 函数名称 :interestList
+ 函数描述 :好看接口列表查询
+ 参数 : publishDay:查询起始日期(yyyyMMdd) maxSize:查询数量(不传默认最多10天)
+ 返回值 : N/A
+ 作者 : XiongChen
+ *********************************************************************/
+- (void)interestList:(NSInteger)publishDay maxSize:(NSInteger)maxSize block:(ForbiddenGroupBlock)block;
+
 @end
