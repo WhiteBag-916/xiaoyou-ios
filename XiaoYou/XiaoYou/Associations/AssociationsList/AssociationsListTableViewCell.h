@@ -14,6 +14,6 @@ extern NSString *const kAssociationsListTableViewCell;
 
 @interface AssociationsListTableViewCell : YTableViewCell
 
-- (void)resetData:(GroupModel *)model;
+- (void)resetData:(GroupModel *)model isDetail:(BOOL)isDetail;
 
 @end

@@ -184,7 +184,7 @@ NSString *const kAssociationsListTableViewCell = @"AssociationsListTableViewCell
     }
 }
 
-- (void)resetData:(GroupModel *)model {
+- (void)resetData:(GroupModel *)model isDetail:(BOOL)isDetail {
     [_headImageView setNormalImageWithUrl:model.groupIcon];
     if (model.groupIcon.length > 0) {
         _defaultLabel.hidden = YES;
@@ -202,6 +202,7 @@ NSString *const kAssociationsListTableViewCell = @"AssociationsListTableViewCell
     } else {
         _keywordsLabel.text = @"";
     }
+    _keywordsLabel.numberOfLines = isDetail?0:1;
     _tagImageView.hidden = (model.keyWords.length <= 0);
     _typeLabel.text = model.category;
     NSInteger starNum = [model.star integerValue];
