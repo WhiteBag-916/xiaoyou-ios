@@ -22,6 +22,8 @@
 @property (nonatomic,copy) NSString *publishID;
 @property (nonatomic,assign) BOOL   isEnroll;
 
+@property (nonatomic,assign) BOOL isShowMore;
+
 @end
 
 @implementation ActivityDetailViewController
@@ -33,10 +35,11 @@
     [self showCustomNavigationBackButton];
     
     [self IsShowCustomNavigationMoreButton:NO];
+    _isShowMore = NO;
     
     [self.detailListView loadData];
     [self setTitle:@"活动详情"];
-    //[self updateJoinButtonStatus];
+    [self updateJoinButtonStatus];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -54,6 +57,9 @@
 
 
 - (void)onNavigationRightButtonClicked {
+    if (!_isShowMore) {
+        return;
+    }
     YActionSheetItem *item1 = [YActionSheetItem itemWithTitle:@"我要退出" type:YCommonActionSheetItemTypeCenterCommon block:^(NSInteger checkNum) {
         [self exitActivity];
         
@@ -128,7 +134,7 @@
                 _joinInBtn.enabled = YES;
                 _joinInBtn.backgroundColor = KCOLOR_g1;
                 [self IsShowCustomNavigationMoreButton:NO];
-                
+                _isShowMore = NO;
                 //未加入
                 //抛通知告知日程删除
                 NSDictionary *dic = @{@"state":@"del", @"info":info};
@@ -141,7 +147,7 @@
                 _joinInBtn.backgroundColor = KCOLOR_g2;
                 _joinInBtn.enabled = NO;
                 [self IsShowCustomNavigationMoreButton:YES];
-                
+                _isShowMore = YES;
                 //已加入
                 //抛通知告知日程添加
                 NSDictionary *dic = @{@"state":@"add", @"info":info};
@@ -154,18 +160,21 @@
                 _joinInBtn.enabled = NO;
                 _joinInBtn.backgroundColor = KCOLOR_g2;
                 [self IsShowCustomNavigationMoreButton:YES];
+                 _isShowMore = YES;
             }
             else if ([model.enrollStatus isEqualToString:@"enroll_auditing"]) {
                 [_joinInBtn setTitle:@"正在审核" forState:UIControlStateNormal];
                 _joinInBtn.enabled = NO;
                 _joinInBtn.backgroundColor = KCOLOR_g2;
                 [self IsShowCustomNavigationMoreButton:YES];
+                 _isShowMore = YES;
             }
             else if ([model.enrollStatus isEqualToString:@"self_activity"]) {
                 _joinInBtn.enabled = YES;
                 _joinInBtn.backgroundColor = KCOLOR_g2;
                 [_joinInBtn setTitle:@"我已参加" forState:UIControlStateNormal];
                 [self IsShowCustomNavigationMoreButton:NO];
+                 _isShowMore = NO;
             }
             [_detailListView loadData];
         }
@@ -179,7 +188,6 @@
     [[ActivityManager sharedInstance] enrollActivity:self.publishID block:^(YActionMessage *message) {
         [YUtils hiddenProgressHUD];
         if (message.isSuccess) {
-            _joinInBtn.enabled = NO;
             [self updateJoinButtonStatus];
         }
         else {
@@ -187,6 +195,15 @@
         [YUtils showTitle:message.desc];
         
     }];
+}
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    UIImageView *view = (UIImageView*)[_detailListView viewWithTag:998899];
+    if (view) {
+        view.hidden = YES;
+    }
 }
 
 @end
