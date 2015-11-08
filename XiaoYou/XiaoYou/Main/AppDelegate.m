@@ -29,7 +29,6 @@
     [self initNotification:application didFinishLaunchingWithOptions:launchOptions];
     
     [self initRootVC];
-//    self.window.rootViewController = [[UINavigationController alloc] initWithRootViewController:[[InterestViewController alloc] init]];
     return YES;
 }
 
