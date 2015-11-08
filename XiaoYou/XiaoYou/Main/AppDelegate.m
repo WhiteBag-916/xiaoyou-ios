@@ -14,6 +14,7 @@
 #import "InterestViewController.h"
 #import "UserSchedulingInfo.h"
 #import "YBaseService.h"
+#import "AppConfigData.h"
 
 @interface AppDelegate ()
 
@@ -30,6 +31,8 @@
     
     [self initRootVC];
 //    self.window.rootViewController = [[UINavigationController alloc] initWithRootViewController:[[InterestViewController alloc] init]];
+    
+    [AppConfigData setHaveRemindMessage:NO];
     return YES;
 }
 
