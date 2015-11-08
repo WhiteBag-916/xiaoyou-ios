@@ -18,6 +18,7 @@
 #import "YSystemDefine.h"
 #import "ContactManager.h"
 #import "LinkManList.h"
+#import "InterestViewController.h"
 
 #define kRowHeight                     68
 #define kHeadWidthAndHeight            40
@@ -326,8 +327,9 @@
 -(void)tapFunGestureRecognizerAction
 {
     //好玩列表页
-    //ActivityViewController *funnyVC = [[ActivityViewController alloc]init];
-    //[self.myController.navigationController pushViewController:funnyVC animated:YES needHiddenBottomBar:YES];
+//    NSLog(@"aaaaaa")
+//    InterestViewController *funnyVC = [[InterestViewController alloc]init];
+//    [self.myController.navigationController pushViewController:funnyVC animated:YES needHiddenBottomBar:YES];
 }
 
 #pragma mark - 将拿到的数据源转化成自己需要的数据格式

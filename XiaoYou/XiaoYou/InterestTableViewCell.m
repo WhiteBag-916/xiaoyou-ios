@@ -8,6 +8,7 @@
 
 #import "InterestTableViewCell.h"
 #import "NSDate+Category.h"
+#import "InterestViewController.h"
 @implementation InterestCellModel
 @end
 
@@ -73,4 +74,6 @@
     _source.text = model.source;
     _timeLabel.text = [model.time timeIntervalDescription];
 }
+
+
 @end
