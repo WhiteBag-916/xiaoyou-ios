@@ -18,6 +18,7 @@
 #define K_IMG_L           SCALE_NUM(15)   //图标左
 #define K_COURSEIMG_T       SCALE_NUM(22)   //课程图标上间距
 #define K_CONTENT_B         SCALE_NUM(15)   //下
+#define K_COURSEIMG_H       SCALE_NUM(14)   //文字高
 #define K_LECTURERIMG_T     SCALE_NUM(15)   //授课人图标上间距
 #define K_DEPARTMENTSIMG_T  SCALE_NUM(14)   //开课单位图标上间距
 #define K_LEFTLAB_L         SCALE_NUM(10)   //描述左
@@ -91,7 +92,7 @@
     [self.contentView addSubview:courseLabel];
     
     [courseLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.height.equalTo(courseImageView);
+        make.centerY.equalTo(courseImageView);
         make.left.equalTo(courseImageView.mas_right).offset(K_LEFTLAB_L);
         make.width.mas_equalTo(K_LEFTLAB_W);
     }];
@@ -103,7 +104,7 @@
     [self.contentView addSubview:_courseName];
     
     [_courseName mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.height.equalTo(courseImageView);
+        make.centerY.equalTo(courseImageView);
         make.left.equalTo(courseLabel.mas_right).offset(K_NAMELAB_L);
         make.right.mas_equalTo(K_NAMELAB_R);
     }];
@@ -124,7 +125,7 @@
     [self.contentView addSubview:lecturerLabel];
     
     [lecturerLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.height.equalTo(lecturerImageView);
+        make.centerY.equalTo(lecturerImageView);
         make.left.equalTo(courseLabel);
         make.width.mas_equalTo(K_LEFTLAB_W);
     }];
@@ -136,7 +137,7 @@
     [self.contentView addSubview:_lecturerName];
     
     [_lecturerName mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.height.equalTo(lecturerImageView);
+        make.centerY.equalTo(lecturerImageView);
         make.left.equalTo(_courseName);
         make.right.mas_equalTo(K_NAMELAB_R);
     }];
@@ -157,7 +158,7 @@
     [self.contentView addSubview:timeLeftLabel];
     
     [timeLeftLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.height.equalTo(timeImageView);
+        make.centerY.equalTo(timeImageView);
         make.left.equalTo(courseLabel);
         make.width.mas_equalTo(K_LEFTLAB_W);
     }];
@@ -169,7 +170,7 @@
     [self.contentView addSubview:_timeLabel];
     
     [_timeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.height.equalTo(timeLeftLabel);
+        make.centerY.equalTo(timeLeftLabel);
         make.left.equalTo(_courseName);
         make.right.mas_equalTo(K_NAMELAB_R);
     }];
@@ -190,7 +191,7 @@
     [self.contentView addSubview:weekLeftLabel];
     
     [weekLeftLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.height.equalTo(weekImageView);
+        make.centerY.equalTo(weekImageView);
         make.left.equalTo(courseLabel);
         make.width.mas_equalTo(K_LEFTLAB_W);
     }];
@@ -202,7 +203,7 @@
     [self.contentView addSubview:_weekLabel];
     
     [_weekLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.height.equalTo(weekLeftLabel);
+        make.centerY.equalTo(weekLeftLabel);
         make.left.equalTo(_courseName);
         make.right.mas_equalTo(K_NAMELAB_R);
     }];
@@ -224,7 +225,7 @@
     [self.contentView addSubview:locationLeftLabel];
     
     [locationLeftLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.height.equalTo(locationImageView);
+        make.centerY.equalTo(locationImageView);
         make.left.equalTo(courseLabel);
         make.width.mas_equalTo(K_LEFTLAB_W);
     }];
@@ -236,7 +237,7 @@
     [self.contentView addSubview:_locationLabel];
     
     [_locationLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.height.equalTo(locationLeftLabel);
+        make.centerY.equalTo(locationLeftLabel);
         make.left.equalTo(_courseName);
         make.right.mas_equalTo(K_NAMELAB_R);
     }];
@@ -257,7 +258,7 @@
     [self.contentView addSubview:departmentsLabel];
     
     [departmentsLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.height.equalTo(departmentsImageView);
+        make.centerY.equalTo(departmentsImageView);
         make.left.equalTo(courseLabel);
         make.width.mas_equalTo(K_LEFTLAB_W);
     }];
@@ -269,7 +270,7 @@
     [self.contentView addSubview:_departmentsName];
     
     [_departmentsName mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.height.equalTo(departmentsImageView);
+        make.centerY.equalTo(departmentsImageView);
         make.left.equalTo(_courseName);
         make.right.mas_equalTo(K_NAMELAB_R);
         make.bottom.mas_equalTo(-K_CONTENT_B);

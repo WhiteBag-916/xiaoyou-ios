@@ -178,7 +178,13 @@
     
     //获取当前周几
     NSUInteger weekday = [[NSDate date] weekday];
-    [_myTimetableHeadView resetSelectDay:weekday-2 showNowDay:_selectWeekNum==_nowWeek];
+    if (1 == weekday) {
+        //周日
+        weekday = 6;
+    } else {
+        weekday = weekday-2;
+    }
+    [_myTimetableHeadView resetSelectDay:weekday showNowDay:_selectWeekNum==_nowWeek];
 }
 
 //根据第几周获取课程数据

@@ -66,7 +66,7 @@ NSString *const kRubLessonTableViewCell = @"RubLessonTableViewCellId";
     [self.contentView addSubview:courseLabel];
     
     [courseLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.height.equalTo(courseImageView);
+        make.centerY.equalTo(courseImageView);
         make.left.equalTo(courseImageView.mas_right).offset(K_LEFTLAB_L);
         make.width.mas_equalTo(K_LEFTLAB_W);
     }];
@@ -93,7 +93,7 @@ NSString *const kRubLessonTableViewCell = @"RubLessonTableViewCellId";
     [self.contentView addSubview:lecturerLabel];
     
     [lecturerLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.height.equalTo(lecturerImageView);
+        make.centerY.equalTo(lecturerImageView);
         make.left.equalTo(courseLabel);
         make.width.mas_equalTo(K_LEFTLAB_W);
     }];
@@ -105,7 +105,7 @@ NSString *const kRubLessonTableViewCell = @"RubLessonTableViewCellId";
     [self.contentView addSubview:_lecturerName];
     
     [_lecturerName mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.height.equalTo(lecturerImageView);
+        make.centerY.equalTo(lecturerImageView);
         make.left.equalTo(lecturerLabel.mas_right).offset(K_NAMELAB_L);
         make.right.mas_equalTo(K_NAMELAB_R);
     }];
@@ -126,7 +126,7 @@ NSString *const kRubLessonTableViewCell = @"RubLessonTableViewCellId";
     [self.contentView addSubview:timeLeftLabel];
     
     [timeLeftLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.height.equalTo(timeImageView);
+        make.centerY.equalTo(timeImageView);
         make.left.equalTo(courseLabel);
         make.width.mas_equalTo(K_LEFTLAB_W);
     }];
@@ -138,7 +138,7 @@ NSString *const kRubLessonTableViewCell = @"RubLessonTableViewCellId";
     [self.contentView addSubview:_timeLabel];
     
     [_timeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.height.equalTo(timeLeftLabel);
+        make.centerY.equalTo(timeLeftLabel);
         make.left.equalTo(_lecturerName);
         make.right.mas_equalTo(K_NAMELAB_R);
     }];
@@ -160,7 +160,7 @@ NSString *const kRubLessonTableViewCell = @"RubLessonTableViewCellId";
     [self.contentView addSubview:locationLeftLabel];
     
     [locationLeftLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.height.equalTo(locationImageView);
+        make.centerY.equalTo(locationImageView);
         make.left.equalTo(courseLabel);
         make.width.mas_equalTo(K_LEFTLAB_W);
     }];
@@ -172,7 +172,7 @@ NSString *const kRubLessonTableViewCell = @"RubLessonTableViewCellId";
     [self.contentView addSubview:_locationLabel];
     
     [_locationLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.height.equalTo(locationLeftLabel);
+        make.centerY.equalTo(locationLeftLabel);
         make.left.equalTo(_lecturerName);
         make.right.mas_equalTo(K_NAMELAB_R);
     }];
@@ -193,7 +193,7 @@ NSString *const kRubLessonTableViewCell = @"RubLessonTableViewCellId";
     [self.contentView addSubview:departmentsLabel];
     
     [departmentsLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.height.equalTo(departmentsImageView);
+        make.centerY.equalTo(departmentsImageView);
         make.left.equalTo(courseLabel);
         make.width.mas_equalTo(K_LEFTLAB_W);
     }];
@@ -205,7 +205,7 @@ NSString *const kRubLessonTableViewCell = @"RubLessonTableViewCellId";
     [self.contentView addSubview:_departmentsName];
     
     [_departmentsName mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.height.equalTo(departmentsImageView);
+        make.centerY.equalTo(departmentsImageView);
         make.left.equalTo(_lecturerName);
         make.right.mas_equalTo(K_NAMELAB_R);
     }];
@@ -228,7 +228,7 @@ NSString *const kRubLessonTableViewCell = @"RubLessonTableViewCellId";
     }];
     
     [_courseName mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.height.equalTo(courseImageView);
+        make.centerY.equalTo(courseImageView);
         make.left.equalTo(_lecturerName);
         make.right.equalTo(_addToCalendar.mas_left).offset(K_NAMELAB_R);
     }];
