@@ -50,62 +50,62 @@ NSString *const kMerchantListTableViewCell = @"MerchantListTableViewCellId";
     
     _nameLabel = [[UILabel alloc] init];
     _nameLabel.backgroundColor = [UIColor clearColor];
-    _nameLabel.font = CONTENT_FONT(15);
+    _nameLabel.font = CONTENT_FONT(SCALE_NUM(14));
     _nameLabel.textColor = [UIColor hexChangeFloat:@"333333"];
     [self.contentView addSubview:_nameLabel];
     [_nameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(_headImageView.mas_right).offset(SCALE_NUM(15));
         make.top.equalTo(_headImageView);
         make.right.equalTo(self.contentView).offset(SCALE_NUM(-15));
-        make.height.mas_equalTo(SCALE_NUM(15));
+        make.height.mas_equalTo(SCALE_NUM(14));
     }];
     
     _characterLabel = [[UILabel alloc] init];
     _characterLabel.backgroundColor = [UIColor clearColor];
-    _characterLabel.font = CONTENT_FONT(10);
+    _characterLabel.font = CONTENT_FONT(SCALE_NUM(11));
     _characterLabel.textColor = [UIColor hexChangeFloat:@"666666"];
     [self.contentView addSubview:_characterLabel];
     [_characterLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(_nameLabel);
         make.top.equalTo(_nameLabel.mas_bottom).offset(12);
         make.right.equalTo(self.contentView).offset(SCALE_NUM(-15));
-        make.height.mas_equalTo(SCALE_NUM(10));
+        make.height.mas_equalTo(SCALE_NUM(11));
     }];
     
     _placeLabel = [[UILabel alloc] init];
     _placeLabel.backgroundColor = [UIColor clearColor];
-    _placeLabel.font = CONTENT_FONT(10);
+    _placeLabel.font = CONTENT_FONT(SCALE_NUM(11));
     _placeLabel.textColor = [UIColor hexChangeFloat:@"666666"];
     [self.contentView addSubview:_placeLabel];
     [_placeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(_characterLabel);
         make.top.equalTo(_characterLabel.mas_bottom).offset(12);
         make.right.equalTo(self.contentView).offset(SCALE_NUM(-15));
-        make.height.mas_equalTo(SCALE_NUM(10));
+        make.height.mas_equalTo(SCALE_NUM(11));
     }];
     
     _comboLabel = [[UILabel alloc] init];
     _comboLabel.backgroundColor = [UIColor clearColor];
-    _comboLabel.font = CONTENT_FONT(10);
+    _comboLabel.font = CONTENT_FONT(SCALE_NUM(11));
     _comboLabel.textColor = [UIColor hexChangeFloat:@"666666"];
     [self.contentView addSubview:_comboLabel];
     [_comboLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(_characterLabel);
         make.top.equalTo(_placeLabel.mas_bottom).offset(12);
         make.right.equalTo(self.contentView).offset(SCALE_NUM(-15));
-        make.height.mas_equalTo(SCALE_NUM(10));
+        make.height.mas_equalTo(SCALE_NUM(11));
     }];
     
     _scanfLabel = [[UILabel alloc] init];
     _scanfLabel.backgroundColor = [UIColor clearColor];
-    _scanfLabel.font = CONTENT_FONT(10);
+    _scanfLabel.font = CONTENT_FONT(SCALE_NUM(11));
     _scanfLabel.textColor = [UIColor hexChangeFloat:@"666666"];
     [self.contentView addSubview:_scanfLabel];
     [_scanfLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(_characterLabel);
         make.top.equalTo(_comboLabel.mas_bottom).offset(12);
         make.right.equalTo(self.contentView).offset(SCALE_NUM(-15));
-        make.height.mas_equalTo(SCALE_NUM(10));
+        make.height.mas_equalTo(SCALE_NUM(11));
     }];
     
 }

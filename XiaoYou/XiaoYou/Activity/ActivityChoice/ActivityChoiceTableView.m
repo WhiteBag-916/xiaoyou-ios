@@ -43,10 +43,6 @@
                 
                 if (message.isSuccess) {
                     _dataSourceArr = [NSMutableArray arrayWithArray:message.object];
-                    if (_dataSourceArr.count > 0)
-                    {
-                        [_dataSourceArr exchangeObjectAtIndex:0 withObjectAtIndex:3];
-                    }
                     [self reloadData];
                 }
             }];
@@ -165,7 +161,7 @@
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     if (_myType == ACTIVITY_CHOICE_TYPE) {
-        return 4;
+        return _dataSourceArr.count;
     }
     else
     {

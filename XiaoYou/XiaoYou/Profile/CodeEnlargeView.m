@@ -44,7 +44,7 @@
     
     //头像
     UIImageView * headImageView = [[UIImageView alloc] init];
-    headImageView.backgroundColor = [UIColor orangeColor];
+    headImageView.backgroundColor = [UIColor clearColor];
     [headImageView setFaceImageWithUrl:model1.headPic];
     [self.contentView addSubview:headImageView];
     [headImageView mas_remakeConstraints:^(MASConstraintMaker *make) {
