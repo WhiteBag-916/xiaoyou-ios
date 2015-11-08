@@ -371,8 +371,6 @@
 
 -(void)clickBtnForChoice
 {
-    [self.view endEditing:YES];
-    
     if (nil == _userSchedulingInfo.content) {
         [YUtils showTitle:@"名字不能为空"];
         
