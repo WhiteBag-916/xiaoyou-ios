@@ -164,7 +164,7 @@
         make.height.mas_equalTo(K_CONTENT_H);
     }];
     
-    [self initField:@"havetime_icon_teacher" labelName:@"授课人" fieldTag:K_TAG_LECTURER backView:_lecturerView];
+    [self initField:@"havetime_icon_teacher" labelName:@"授课教师" fieldTag:K_TAG_LECTURER backView:_lecturerView];
     
     //上课时间
     _bClassView = [UIView new];

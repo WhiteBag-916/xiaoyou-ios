@@ -88,7 +88,7 @@ NSString *const kRubLessonTableViewCell = @"RubLessonTableViewCellId";
     
     UILabel *lecturerLabel = [YUtils initLabel:CONTENT_FONT(12)
                                        color:KCOLOR_B5
-                                        text:@"授课人："
+                                        text:@"授课教师："
                                    alignment:NSTextAlignmentLeft];
     [self.contentView addSubview:lecturerLabel];
     
