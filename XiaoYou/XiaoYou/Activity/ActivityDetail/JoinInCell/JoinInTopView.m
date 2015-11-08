@@ -92,8 +92,8 @@
     [_genderImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(_nameLabel.mas_right).offset(SCALE_NUM(10));
         make.centerY.equalTo(_nameLabel.mas_centerY);
-        make.height.mas_equalTo(SCALE_NUM(10));
-        make.width.mas_equalTo(SCALE_NUM(10));
+        make.height.mas_equalTo(SCALE_NUM(14));
+        make.width.mas_equalTo(SCALE_NUM(14));
     }];
     
     _isSelfNameLabel = [[UILabel alloc]init];

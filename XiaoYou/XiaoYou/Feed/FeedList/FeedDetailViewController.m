@@ -95,6 +95,11 @@
 }
 //回复处理
 - (void)didSendText:(NSString *)text {
+    //如果为空字符串，不处理
+    if ([[text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]] length] == 0) {
+        [YUtils showTitle:@"输入不能为空" hideAfter:1];
+        return;
+    }
     text = [ConvertToCommonEmoticonsHelper convertToCommonEmoticons:text];
     if (_replyId.length == 0) {//回复feed
         [[FeedManager sharedInstance] addComment:_feedId content:text block:^(YActionMessage *message) {
