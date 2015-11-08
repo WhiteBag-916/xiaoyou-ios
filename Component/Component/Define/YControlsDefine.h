@@ -12,7 +12,7 @@
 #import "YUtils+Macros.h"
 #import "YColor+Ext.h"
 
-#define CONTENT_FONT(font) [UIFont systemFontOfSize:SCALE_NUM_4_7(font)]
+#define CONTENT_FONT(font) [UIFont systemFontOfSize:SCALE_NUM(font)]
 
 #define SCALE_NUM(number)   number * SCREEN_WIDTH / 320
 

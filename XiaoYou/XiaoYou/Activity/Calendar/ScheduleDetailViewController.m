@@ -56,7 +56,6 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    self.title = @"日程详情";
     [self showCustomNavigationBackButton];
     
     [self initData];
@@ -428,8 +427,10 @@
 
 - (void)initView {
     if ([_userSchedulingInfo.type isEqualToString:@"user_scheduling"]) {
+        self.title = @"日程详情";
         [self initSchedulingView];
     } else if ([_userSchedulingInfo.type isEqualToString:@"course"]) {
+        self.title = @"课程详情";
         [self initCourseView];
     }
 }
