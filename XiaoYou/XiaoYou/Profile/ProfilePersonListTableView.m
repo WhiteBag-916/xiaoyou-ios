@@ -172,12 +172,12 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (ProfilePersonListTypeFind == _type) {
-        return KFIND_CELLHEIGHT;
-    }
-//    return KCELLHEIGHT;
-    else
-    {
+//    if (ProfilePersonListTypeFind == _type) {
+//        return KFIND_CELLHEIGHT;
+//    }
+////    return KCELLHEIGHT;
+//    else
+//    {
         Author * author = _personListArray[indexPath.row];
         ProfileInfo * model = [[ProfileInfo alloc] init];
         model.propetiesCommon = author.propetiesCommon;
@@ -219,11 +219,19 @@
         {
             if (model.propetiesCommon.count <= 0)
             {
-                return 0;
+                if (ProfilePersonListTypeFind == _type)
+                {
+                    return SCALE_NUM(65);
+                }
+                else
+                {
+                    return 0;
+                }
+                
             }
             return SCALE_NUM(95);
         }
-    }
+//    }
     
 }
 @end

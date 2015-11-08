@@ -58,7 +58,7 @@ NSString *const kNameCollectionViewCell = @"NameCollectionViewCellId";
 
 - (void)textViewDidChange:(UITextView *)textView
 {
-    _dataManager.ActivityNameText = textView.text;
+     _dataManager.ActivityNameText = textView.text;
     [_dataManager isEnableToRelease];
 
     if (textView.text.length>30)
@@ -79,6 +79,7 @@ NSString *const kNameCollectionViewCell = @"NameCollectionViewCellId";
         {
             [YUtils showTitle:@"名称字数不能大于30字"];
             [textView setText:[textView.text substringWithRange:NSMakeRange(0, 30)]];
+             _dataManager.ActivityNameText = textView.text;
         }
         else
         {
