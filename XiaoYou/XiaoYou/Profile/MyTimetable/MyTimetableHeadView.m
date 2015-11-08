@@ -9,7 +9,7 @@
 #import "MyTimetableHeadView.h"
 
 #define K_LABEL_TAG          600000
-#define K_LABEL_T            SCALE_NUM(5)
+#define K_LABEL_T            SCALE_NUM(4)
 #define K_LABEL_L            SCALE_NUM(40)
 #define K_LABEL_WH            SCALE_NUM(30)
 #define K_NOW_B            SCALE_NUM(-1)
@@ -83,20 +83,18 @@
 //        label.textColor = KCOLOR_B4;
 //        label.backgroundColor = [UIColor whiteColor];
 //    }
-    if (selectDay >= 0) {
-        //选中
-        if (showNowDay) {
-            UILabel *label = (UILabel *)[self viewWithTag:K_LABEL_TAG+selectDay];
-            [_nowDay mas_remakeConstraints:^(MASConstraintMaker *make) {
-                make.bottom.mas_equalTo(K_NOW_B);
-                make.centerX.equalTo(label);
-            }];
-            
-            _selectDay = selectDay;
-        }
+    //选中
+    if (showNowDay) {
+        UILabel *label = (UILabel *)[self viewWithTag:K_LABEL_TAG+selectDay];
+        [_nowDay mas_remakeConstraints:^(MASConstraintMaker *make) {
+            make.bottom.mas_equalTo(K_NOW_B);
+            make.centerX.equalTo(label);
+        }];
         
-        _nowDay.hidden = !showNowDay;
+        _selectDay = selectDay;
     }
+    
+    _nowDay.hidden = !showNowDay;
 }
 
 //选择天
