@@ -13,6 +13,8 @@ extern NSString *const KSYSTEM_MESSAGEID;
 extern NSString *const KFRIEND_APPLYID;
 extern NSString *const KGROUP_APPLYID;
 
+static NSString *kServerType = @"ServerType";
+
 //USER_SCHEDULING(15, "用户日程提醒"),
 //ACTIVITY_ENROLL_CHECK_PASS(13, "活动报名审核提醒通过"),
 //ACTIVITY_ENROLL_NO_CHECK(14, "活动报名审核提醒未通过"),

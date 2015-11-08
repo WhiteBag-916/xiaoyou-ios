@@ -11,7 +11,7 @@
 #import "YLog.h"
 #import "EaseMob.h"
 #import "XYTabBarViewController.h"
-
+#import "MessageManager.h"
 #import "AppDelegate+RootVC.h"
 
 @implementation AppDelegate (Notification)
@@ -95,8 +95,10 @@
 //从后台进入前台的时候,会通过此方法
 -(void)application:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)notification
 {
-    
-    [self initNotifyRemindNC];
+    NSDictionary *dic = notification.userInfo;
+    NSInteger type = [[dic valueForKey:kServerType] integerValue];
+    if (type >= ACTIVITY_ENROLL_CHECK_PASS && type <= ACTIVITY_NOTIFY)
+        [self initNotifyRemindNC];
 }
 
 

@@ -731,6 +731,7 @@ DEF_SINGLETON(MessageManager);
     NSMutableDictionary *userInfo = [NSMutableDictionary dictionary];
     [userInfo setObject:[NSNumber numberWithInt:message.messageType] forKey:kMessageType];
     [userInfo setObject:message.conversationChatter forKey:kConversationChatter];
+    [userInfo setObject:SStr(message.ext[@"type"]) forKey:kServerType];
     notification.userInfo = userInfo;
     
     //发送通知
