@@ -522,16 +522,16 @@
         {
             [YUtils showTitle:@"日程名称不能大于30字"];
             [sender setText:[sender.text substringWithRange:NSMakeRange(0, 30)]];
-            _userSchedulingInfo.content = sender.text;
         }
+        _userSchedulingInfo.content = sender.text;
         
     } else if (K_TAG_LOCATION == sender.tag) {
         if (sender.text.length >= 100)
         {
             [YUtils showTitle:@"地点不能大于100字"];
             [sender setText:[sender.text substringWithRange:NSMakeRange(0, 100)]];
-            _userSchedulingInfo.address = sender.text;
         }
+        _userSchedulingInfo.address = sender.text;
     }
 }
 
