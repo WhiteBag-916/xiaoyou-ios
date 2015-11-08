@@ -18,7 +18,6 @@
 #import "YSystemDefine.h"
 #import "ContactManager.h"
 #import "LinkManList.h"
-#import "InterestViewController.h"
 
 #define kRowHeight                     68
 #define kHeadWidthAndHeight            40
@@ -146,7 +145,7 @@
     //班
     UILabel * classDefaultLabel = [[UILabel alloc] initWithFrame:CGRectMake(kPaddingDistance, kPaddingDistance, kClassLabelWidthAndHeight, kClassLabelWidthAndHeight)];
     classDefaultLabel.text = @"班";
-    classDefaultLabel.font = CONTENT_FONT(12);
+    classDefaultLabel.font = CONTENT_FONT(14);
     classDefaultLabel.textAlignment = NSTextAlignmentCenter;
     classDefaultLabel.textColor = [UIColor whiteColor];
     [classBackView addSubview:classDefaultLabel];

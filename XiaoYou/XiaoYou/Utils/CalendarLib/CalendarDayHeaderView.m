@@ -500,51 +500,12 @@
     
 }
 
-- (void) _movePagesToIndex:(NSInteger)nowPage animated:(BOOL)animated{
+- (void) _movePagesToIndex:(NSDate *)currentDay animated:(BOOL)animated{
     
-//    UIScrollView *needsUpdating = nil;
-//    NSInteger updateIndex = 1;
-    if(nowPage<1){
-        self.currentDay =  [NSDate dateWithTimeInterval:-24*60*60 sinceDate:self.currentDay];
-//        UIScrollView *sv = [self.pages lastObject];
-//        [self.pages insertObject:sv atIndex:0];
-//        [self.pages removeLastObject];
-//        needsUpdating = sv;
-//        updateIndex = 0;
-    }else if(nowPage>1){
-        self.currentDay =  [NSDate dateWithTimeInterval:24*60*60 sinceDate:self.currentDay];
-//        UIScrollView *sv = self.pages[0];
-//        [self.pages addObject:sv];
-//        [self.pages removeObjectAtIndex:0];
-//        needsUpdating = sv;
-//        updateIndex = 2;
-    }
-//
-//    self.currentDay = calendar;
-//
-//    NSDateComponents *info = [self.currentDay dateComponentsWithTimeZone:self.calendar.timeZone];
-//    info.day += nowPage < 1 ? -1 : 1;
-//    [self _timelineWithScrollView:needsUpdating].date = [NSDate dateWithDateComponents:info];
+    self.indexOfCurrentDay = [currentDay timeIntervalSince1970]-[self.currentDay timeIntervalSince1970] > 0 ? self.indexOfCurrentDay+1 : self.indexOfCurrentDay-1;
+    
+    self.currentDay = currentDay;
     [self _updateDateLabel];
-//
-//    
-//    NSInteger i = 0;
-//    for(UIScrollView *sv in self.pages){
-//        CGRect r = sv.frame;
-//        r.origin.x = HORIZONTAL_PAD + CGRectGetWidth(self.horizontalScrollView.frame) * i;
-//        sv.frame = r;
-//        i++;
-//    }
-//    
-//    self.horizontalScrollView.contentOffset = CGPointMake(CGRectGetWidth(self.horizontalScrollView.frame), 0);
-//    needsUpdating.contentOffset = CGPointZero;
-//    [self _refreshDataWithPageAtIndex:updateIndex];
-//    
-//    if(self.delegate && [self.delegate respondsToSelector:@selector(calendarDayTimelineView:didMoveToDate:)])
-//        [self.delegate calendarDayTimelineView:self didMoveToDate:self.currentDay];
-    
-    self.indexOfCurrentDay = nowPage > 1 ? self.indexOfCurrentDay+1 : self.indexOfCurrentDay-1;
-    
     
     if(self.indexOfCurrentDay < 0 || self.indexOfCurrentDay > 6){
         self.userInteractionEnabled = NO;

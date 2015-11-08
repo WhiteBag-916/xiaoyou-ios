@@ -338,9 +338,8 @@
 
 -(void)tapFunGestureRecognizerAction
 {
-    InterestViewController *funnyVC = [[InterestViewController alloc]init];
-    [self.myController.navigationController pushViewController:funnyVC animated:YES needHiddenBottomBar:YES];
     //好看相关节面
+    [_myController.navigationController pushViewController:[[InterestViewController alloc] init] animated:true];
 }
 
 #pragma mark - 得到最后消息文字或者类型

@@ -1314,7 +1314,11 @@ static const CGFloat kMaxHourSlotHeight = 150.;
     NSDateComponents *comps = [[NSDateComponents alloc] init];
     [comps setMinute:-60];
     NSDate *date = [self.calendar dateByAddingComponents:comps toDate:currentDate  options:0];
-    [self scrollToDate:date options:MGCDayPlannerScrollTime animated:YES];
+    [self scrollToDate:date options:MGCDayPlannerScrollTime animated:animated];
+}
+
+- (void)moveHeadDateToIndex:(NSDate *)currentDay animated:(BOOL)animated {
+    [_calendarDayHeaderView _movePagesToIndex:currentDay animated:animated];
 }
 
 #pragma mark - Reloading content
@@ -1979,13 +1983,6 @@ static const CGFloat kMaxHourSlotHeight = 150.;
 	
 	if (!animated || CGPointEqualToPoint(offset, prevOffset)) {
 		[self scrollViewDidEndScrolling:self.timedEventsView];
-        
-        if (offset.x > prevOffset.x) {
-            [self.calendarDayHeaderView _movePagesToIndex:2 animated:YES];
-        }
-        else if (offset.x < prevOffset.x) {
-            [self.calendarDayHeaderView _movePagesToIndex:1 animated:YES];
-        }
 	}
 }
 
@@ -2082,16 +2079,12 @@ static const CGFloat kMaxHourSlotHeight = 150.;
 				NSDate *date = [self nextDateForPagingAfterDate:self.visibleDays.start];
 				NSInteger section = [self dayOffsetFromDate:date];
 				xOffset = [self xOffsetFromDayOffset:section];
-                
-                [self.calendarDayHeaderView _movePagesToIndex:2 animated:YES];
 			}
 			// scroll to previous page
 			else {
 				NSDate *date = [self prevDateForPagingBeforeDate:self.firstVisibleDate];
 				NSInteger section = [self dayOffsetFromDate:date];
 				xOffset = [self xOffsetFromDayOffset:section];
-                
-                [self.calendarDayHeaderView _movePagesToIndex:0 animated:YES];
 			}
 		}
 		

@@ -52,7 +52,7 @@ NSString *const kStudyRoomTableViewCell = @"StudyRoomTableViewCellId";
     
     _studyRoomNumberLabel = [YUtils initLabel:CONTENT_FONT(12)
                                         color:KCOLOR_B5
-                                         text:@"11个教室空缺"
+                                         text:@"11个教室没课"
                                     alignment:NSTextAlignmentCenter];
     [self.contentView addSubview:_studyRoomNumberLabel];
     
@@ -69,7 +69,7 @@ NSString *const kStudyRoomTableViewCell = @"StudyRoomTableViewCellId";
 - (void)initData:(Result *)model
 {
     [_studyRoomNameButton setTitle:model.buildName forState:UIControlStateNormal];
-    _studyRoomNumberLabel.text =[NSString stringWithFormat:@"%g个教室空缺",model.roomCount];
+    _studyRoomNumberLabel.text =[NSString stringWithFormat:@"%g个教室没课",model.roomCount];
     
 }
 

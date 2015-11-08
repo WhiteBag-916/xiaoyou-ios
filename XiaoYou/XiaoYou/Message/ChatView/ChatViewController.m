@@ -195,7 +195,6 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(exitGroup) name:@"ExitGroup" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(insertCallMessage:) name:@"insertCallMessage" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(applicationDidEnterBackground) name:@"applicationDidEnterBackground" object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(tokenFail) name:kNotification_Server_Token_Fail object:nil];
     
     _messageQueue = dispatch_queue_create("easemob.com", NULL);
     _isScrollToBottom = YES;
@@ -272,20 +271,21 @@
     }else {
         self.title = _conversation.latestMessageFromOthers.ext[@"userName"];
     }
-    _headImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 40, 40)];
-    _headImageView.layer.cornerRadius = 20;
+    _headImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 33, 33)];
+    _headImageView.layer.cornerRadius = 16.5;
     _headImageView.clipsToBounds = YES;
     _headImageView.userInteractionEnabled = YES;
     NSString *url = _studentDic[@"icon"];
     
     //头像
-    UIButton *detailButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 60, 44)];
+    UIButton *detailButton = [[UIButton alloc] initWithFrame:_headImageView.bounds];
+    detailButton.backgroundColor = [UIColor redColor];
     if (url.length > 0) {
         [_headImageView setFaceImageWithUrl:url];
     } else {
         if (eMessageTypeGroupChat == _conversationType) {
             [detailButton setBackgroundColor:KCOLOR_009688];
-            [detailButton setTitleEdgeInsets:UIEdgeInsetsMake(0, 0, 4, 20)];
+//            [detailButton setTitleEdgeInsets:UIEdgeInsetsMake(0, 0, 6, 25)];
             if ([_studentDic[@"linkType"] doubleValue] == 1)
             {
                 [detailButton setTitle:@"班" forState:UIControlStateNormal];
@@ -343,10 +343,6 @@
         _isScrollToBottom = YES;
     }
     self.isInvisible = NO;
-}
-
-- (void)tokenFail {
-    [self.imagePicker dismissViewControllerAnimated:NO completion:nil];
 }
 
 -(void)viewWillLayoutSubviews

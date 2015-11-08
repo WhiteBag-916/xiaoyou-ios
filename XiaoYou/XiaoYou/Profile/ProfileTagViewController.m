@@ -44,14 +44,18 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(tokenFail) name:kNotification_Server_Token_Fail object:nil];
     
     [self initController];
     [self initView];
 }
 - (void)initController {
     [self showCustomNavigationCancelButton];
-    self.title = @"定义你的标签";
+    if (ProfileTagTypeAssociations == _type) {
+        self.title = @"选社团分类";
+    } else if (ProfileTagTypePerson == _type) {
+        self.title = @"定义你的标签";
+    }
+    
     self.view.backgroundColor = [UIColor whiteColor];
 }
 - (void)initView {
@@ -181,9 +185,7 @@
 - (void)dealloc {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
-- (void)tokenFail {
-    [self.navigationController dismissViewControllerAnimated:NO completion:nil];
-}
+
 - (void)onNavigationLeftButtonClicked {
     [self.navigationController dismissViewControllerAnimated:YES completion:nil];
 }
