@@ -106,8 +106,8 @@ typedef enum : NSUInteger {
     //right barbutton view
     UIView * view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 30, KNavigationBarheight)];
     
-    UIButton * remindBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 25, KNavigationBarheight)];
-   
+    UIButton * remindBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 30, KNavigationBarheight)];
+    remindBtn.backgroundColor = [UIColor clearColor];
     if (type == Choice_Type)
     {
         [remindBtn setImage:[UIImage imageNamed:@"have_time_select"] forState:UIControlStateNormal];
