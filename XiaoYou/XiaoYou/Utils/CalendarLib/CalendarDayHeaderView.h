@@ -25,6 +25,6 @@
 - (void)resetData:(NSDate *)currentDay;
 
 //外面滚动
-- (void) _movePagesToIndex:(NSInteger)nowPage animated:(BOOL)animated;
+- (void) _movePagesToIndex:(NSDate *)currentDay animated:(BOOL)animated;
 
 @end
