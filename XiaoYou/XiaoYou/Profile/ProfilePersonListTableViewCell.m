@@ -40,7 +40,7 @@ NSString *const kProfilePersonListTableViewCell = @"kProfilePersonListTableViewC
 @property (nonatomic, strong) ConnectTag *connect;//人脉关系
 @property (nonatomic, strong) FeedTag *tagView;//兴趣标签
 @property (nonatomic, strong) UIButton *addFriend;//添加好友按钮
-@property (nonatomic, strong) UILabel *genderLabel;//性别
+@property (nonatomic, strong) UIImageView * sexImageView;//性别
 
 @property (nonatomic, strong) Author *myAuthor;//缓存人信息
 
@@ -67,7 +67,18 @@ NSString *const kProfilePersonListTableViewCell = @"kProfilePersonListTableViewC
         [_userName mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.equalTo(_face.mas_right).offset(KTAGMARGIN);
             make.centerY.equalTo(_face);
-            make.height.mas_equalTo(12);
+            make.height.mas_equalTo(SCALE_NUM(12));
+        }];
+        
+        //性别
+        _sexImageView = [[UIImageView alloc] init];
+        _sexImageView.backgroundColor = [UIColor clearColor];
+        [self.contentView addSubview:_sexImageView];
+        [_sexImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.equalTo(_userName.mas_right).offset(SCALE_NUM(12));
+            make.centerY.equalTo(_userName);
+            make.height.width.mas_equalTo(SCALE_NUM(14));
+            
         }];
         
 //        _connect = [[ConnectTag alloc] init];
@@ -77,13 +88,13 @@ NSString *const kProfilePersonListTableViewCell = @"kProfilePersonListTableViewC
 //            make.centerY.equalTo(_userName);
 //        }];
         
-        _genderLabel = [YUtils initLabel:CONTENT_FONT(12) color:[UIColor blackColor] text:@"女" frame:CGRectZero alignment:NSTextAlignmentLeft];
-        [self.contentView addSubview:_genderLabel];
-        [_genderLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.left.equalTo(_userName);
-            make.top.equalTo(_userName.mas_bottom).offset(KTAGMARGIN_TOP);
-            make.right.equalTo(self.contentView).offset(-KTAGMARGIN_RIGHT);
-        }];
+//        _genderLabel = [YUtils initLabel:CONTENT_FONT(12) color:[UIColor blackColor] text:@"女" frame:CGRectZero alignment:NSTextAlignmentLeft];
+//        [self.contentView addSubview:_genderLabel];
+//        [_genderLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+//            make.left.equalTo(_userName);
+//            make.top.equalTo(_userName.mas_bottom).offset(KTAGMARGIN_TOP);
+//            make.right.equalTo(self.contentView).offset(-KTAGMARGIN_RIGHT);
+//        }];
         
 //        _tagView = [[FeedTag alloc] init];
 //        [self.contentView addSubview:_tagView];
@@ -152,17 +163,27 @@ NSString *const kProfilePersonListTableViewCell = @"kProfilePersonListTableViewC
     model.tagsCommon = author.tagsCommon;
     [_tagsCommonView setData:model];
     
-    _genderLabel.text = author.gender;
-    _genderLabel.hidden = !needShowGender;
-    if (needShowGender) {
-        [_tagView mas_updateConstraints:^(MASConstraintMaker *make) {
-            make.top.equalTo(_genderLabel.mas_bottom).offset(KTAGMARGIN_TOP);
-        }];
-    } else  {
-        [_tagView mas_updateConstraints:^(MASConstraintMaker *make) {
-            make.top.equalTo(_userName.mas_bottom).offset(KTAGMARGIN_TOP);
-        }];
+//    _genderLabel.text = author.gender;
+//    _genderLabel.hidden = !needShowGender;
+//    if (needShowGender) {
+//        [_tagView mas_updateConstraints:^(MASConstraintMaker *make) {
+//            make.top.equalTo(_genderLabel.mas_bottom).offset(KTAGMARGIN_TOP);
+//        }];
+//    } else  {
+//        [_tagView mas_updateConstraints:^(MASConstraintMaker *make) {
+//            make.top.equalTo(_userName.mas_bottom).offset(KTAGMARGIN_TOP);
+//        }];
+//    }
+    
+    if ([_myAuthor.gender isEqualToString:@"男"])
+    {
+        _sexImageView.image = [UIImage imageNamed:@"funny_detail_boy"];
     }
+    else if ([_myAuthor.gender isEqualToString:@"女"])
+    {
+        _sexImageView.image = [UIImage imageNamed:@"funny_detail_girl"];
+    }
+    
     [self updateStatus:author.friendStatus];
 }
 //更新好友申请状态
