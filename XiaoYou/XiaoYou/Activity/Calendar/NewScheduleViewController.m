@@ -518,9 +518,18 @@
 
 - (void)textFieldValueChanged:(UITextField *)sender{
     if (K_TAG_NAME == sender.tag) {
-        _userSchedulingInfo.content = sender.text;
+        if (sender.text.length >= 30)
+        {
+            [sender setText:[sender.text substringWithRange:NSMakeRange(0, 30)]];
+            _userSchedulingInfo.content = sender.text;
+        }
+        
     } else if (K_TAG_LOCATION == sender.tag) {
-        _userSchedulingInfo.address = sender.text;
+        if (sender.text.length >= 100)
+        {
+            [sender setText:[sender.text substringWithRange:NSMakeRange(0, 100)]];
+            _userSchedulingInfo.address = sender.text;
+        }
     }
 }
 
