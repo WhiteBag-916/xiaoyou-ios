@@ -13,7 +13,7 @@
 #import "YTimer.h"
 #import "YCommonNoDataView.h"
 
-const NSInteger kSearchTimerDelay = 2.f;
+const NSInteger kSearchTimerDelay = 1.f;
 
 @interface AssociationsSearchViewController ()
 <UISearchBarDelegate>
