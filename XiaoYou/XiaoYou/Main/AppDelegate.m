@@ -10,8 +10,6 @@
 #import "AppDelegate+Manager.h"
 #import "AppDelegate+RootVC.h"
 #import "AppDelegate+Notification.h"
-
-#import "InterestViewController.h"
 #import "UserSchedulingInfo.h"
 #import "YBaseService.h"
 #import "AppConfigData.h"
@@ -30,9 +28,9 @@
     [self initNotification:application didFinishLaunchingWithOptions:launchOptions];
     
     [self initRootVC];
-//    self.window.rootViewController = [[UINavigationController alloc] initWithRootViewController:[[InterestViewController alloc] init]];
     
     [AppConfigData setHaveRemindMessage:NO];
+
     return YES;
 }
 

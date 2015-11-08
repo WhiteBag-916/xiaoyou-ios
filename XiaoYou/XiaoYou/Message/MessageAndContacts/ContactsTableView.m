@@ -18,7 +18,6 @@
 #import "YSystemDefine.h"
 #import "ContactManager.h"
 #import "LinkManList.h"
-#import "InterestViewController.h"
 
 #define kRowHeight                     68
 #define kHeadWidthAndHeight            40
