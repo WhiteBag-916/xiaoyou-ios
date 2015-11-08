@@ -21,6 +21,7 @@
 #define K_LEFTLAB_L         SCALE_NUM(10)   //描述左
 #define K_LEFTLAB_W         SCALE_NUM(70)   //描述宽
 #define K_NAMELAB_L         SCALE_NUM(0)   //名字左
+#define K_NAMELAB_W         SCALE_NUM(80)   //名字左
 #define K_NAMELAB_R         SCALE_NUM(-15)   //名字右
 #define K_ADD_T             SCALE_NUM(19)   //加日程上
 #define K_ADD_R             SCALE_NUM(9)   //加日程上
@@ -81,7 +82,7 @@
     [courseLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.mas_equalTo(K_IMG_LWH);
         make.top.mas_equalTo(K_COURSEIMG_T);
-        make.width.mas_equalTo(K_LEFTLAB_W);
+        make.width.mas_equalTo(K_NAMELAB_W);
     }];
     
     _courseName = [YUtils initLabel:CONTENT_FONT(14)

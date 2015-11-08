@@ -145,7 +145,7 @@
         make.width.equalTo(_timeLabel2);
         make.top.equalTo(_timeLabel2.mas_bottom).offset(SCALE_NUM(15)).priorityLow();
         make.left.equalTo(_timeLabel2);
-        make.bottom.mas_equalTo(SCALE_NUM(-15)).priorityHigh();
+        make.bottom.mas_equalTo(SCALE_NUM(-15));
     }];
     
     _projectLabel3 = [[UILabel alloc]init];
@@ -166,7 +166,7 @@
     _notHaveSchedule.image = [UIImage imageNamed:@"no_data_schedule"];
     [_notHaveSchedule mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(_timeLabel1);
-        make.bottom.equalTo(_timeLabel2.mas_top).offset(SCALE_NUM(-5));
+        make.bottom.equalTo(_timeLabel2.mas_top).offset(SCALE_NUM(-5)).priorityLow();
     }];
 }
 
@@ -209,15 +209,27 @@
         _projectLabel3.text = @"";
         _notHaveSchedule.hidden = NO;
     }
-    if (scheduleArr.count == 1) {
-        [_timeLabel1 mas_updateConstraints:^(MASConstraintMaker *make) {
-            make.bottom.mas_equalTo(SCALE_NUM(-15));
-        }];
-    }
-    else if (scheduleArr.count == 2) {
-        [_timeLabel2 mas_updateConstraints:^(MASConstraintMaker *make) {
-            make.bottom.mas_equalTo(SCALE_NUM(-15));
-        }];
+//    if (scheduleArr.count == 1) {
+//        [_timeLabel1 mas_updateConstraints:^(MASConstraintMaker *make) {
+//            make.bottom.mas_equalTo(SCALE_NUM(-15));
+//        }];
+//    }
+//    else if (scheduleArr.count == 2) {
+//        [_timeLabel3 mas_updateConstraints:^(MASConstraintMaker *make) {
+//            make.bottom.mas_equalTo(SCALE_NUM(0));
+//            make.height.mas_equalTo(SCALE_NUM(1));
+//        }];
+//    } else if (scheduleArr.count == 3) {
+//        [_timeLabel3 mas_updateConstraints:^(MASConstraintMaker *make) {
+//            make.bottom.mas_equalTo(SCALE_NUM(-15));
+//        }];
+//    }
+    
+    if (scheduleArr.count != 0) {
+        _notHaveSchedule.image = nil;
+    } else
+    {
+        _notHaveSchedule.image = [UIImage imageNamed:@"no_data_schedule"];
     }
 }
 

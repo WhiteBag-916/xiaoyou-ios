@@ -1730,7 +1730,7 @@ static const CGFloat kMaxHourSlotHeight = 150.;
 	NSTimeInterval ti = [eventRange.end timeIntervalSinceDate:eventRange.start];
 	CGFloat	height = (ti / 3600.) * self.hourSlotHeight;
 	
-	return roundf(height);
+	return MAX(30, roundf(height));
 }
 
 #pragma mark - AllDayEventsViewLayoutDelegate

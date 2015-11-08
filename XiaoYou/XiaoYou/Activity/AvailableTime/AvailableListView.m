@@ -141,9 +141,21 @@
 {
     CGFloat height;
     if (indexPath.row == 0) {
-        height = [tableView fd_heightForCellWithIdentifier:REUSEID_SCHEDULE_CELL cacheByIndexPath:indexPath configuration:^(ScheduleCardCell *cell) {
-            [cell setData:self.availableListArray[indexPath.row]];
-        }];
+//        height = [tableView fd_heightForCellWithIdentifier:REUSEID_SCHEDULE_CELL cacheByIndexPath:indexPath configuration:^(ScheduleCardCell *cell) {
+//            [cell setData:self.availableListArray[indexPath.row]];
+//        }];
+        NSUInteger count = [self.availableListArray[indexPath.row] count];
+        if (count == 0) {
+            height = SCALE_NUM(100);
+        }
+        else if (count == 1) {
+            height = SCALE_NUM(80);
+        } else if (count == 2) {
+            height = SCALE_NUM(112);
+        } else
+        {
+            height = SCALE_NUM(140);
+        }
         return height;
     }
     else if (indexPath.row == 1)
