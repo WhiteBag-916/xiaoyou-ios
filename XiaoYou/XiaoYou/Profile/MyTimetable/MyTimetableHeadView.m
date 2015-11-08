@@ -83,19 +83,20 @@
 //        label.textColor = KCOLOR_B4;
 //        label.backgroundColor = [UIColor whiteColor];
 //    }
-    
-    //选中
-    if (showNowDay) {
-        UILabel *label = (UILabel *)[self viewWithTag:K_LABEL_TAG+selectDay];
-        [_nowDay mas_remakeConstraints:^(MASConstraintMaker *make) {
-            make.bottom.mas_equalTo(K_NOW_B);
-            make.centerX.equalTo(label);
-        }];
+    if (selectDay >= 0) {
+        //选中
+        if (showNowDay) {
+            UILabel *label = (UILabel *)[self viewWithTag:K_LABEL_TAG+selectDay];
+            [_nowDay mas_remakeConstraints:^(MASConstraintMaker *make) {
+                make.bottom.mas_equalTo(K_NOW_B);
+                make.centerX.equalTo(label);
+            }];
+            
+            _selectDay = selectDay;
+        }
         
-        _selectDay = selectDay;
+        _nowDay.hidden = !showNowDay;
     }
-    
-    _nowDay.hidden = !showNowDay;
 }
 
 //选择天
