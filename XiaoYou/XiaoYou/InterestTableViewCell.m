@@ -8,9 +8,7 @@
 
 #import "InterestTableViewCell.h"
 #import "NSDate+Category.h"
-#import "InterestViewController.h"
-@implementation InterestCellModel
-@end
+#import "NewsList.h"
 
 @interface InterestTableViewCell()
 @property (strong ,nonatomic) UIImageView *picture;
@@ -31,7 +29,6 @@
             make.right.equalTo(self.contentView).offset(-12);
             make.height.equalTo(_picture.mas_width).multipliedBy(0.3547);
         }];
-        _picture.backgroundColor = [UIColor redColor];
         _picture.clipsToBounds = true;
         _picture.layer.cornerRadius = 4;
         
@@ -68,11 +65,11 @@
     }
     return self;
 }
-- (void)setData:(InterestCellModel *)model {
-    [_picture setNormalImageWithUrl:model.picture];
+- (void)setData:(NewsList *)model {
+    [_picture setNormalImageWithUrl:model.coverImg];
     _title.text = model.title;
     _source.text = model.source;
-    _timeLabel.text = [model.time timeIntervalDescription];
+    _timeLabel.text = [[NSDate dateWithTimeIntervalSince1970:(NSInteger)model.publishTime/1000] formatForInterest];
 }
 
 

@@ -27,9 +27,8 @@
 
 #import "DDMenuController.h"
 
-
 #define kMenuFullWidth CGRectGetWidth([UIScreen mainScreen].bounds)
-#define kMenuDisplayedWidth (kMenuFullWidth - 94.0f)
+#define kMenuDisplayedWidth (kMenuFullWidth - SCALE_NUM(94.0f))
 #define kMenuOverlayWidth (CGRectGetWidth([UIScreen mainScreen].bounds) - kMenuDisplayedWidth)
 #define kMenuBounceOffset 10.0f
 #define kMenuBounceDuration .3f
