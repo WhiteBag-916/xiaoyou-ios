@@ -527,7 +527,7 @@ typedef enum : NSUInteger {
     }];
     
     UILabel * remindLabel = [[UILabel alloc] init];
-    remindLabel.text = @"兹事体大, 别选错啦";
+    remindLabel.text = @"兹事体大, 别写错啦";
     remindLabel.textColor = KCOLOR_g1;
     remindLabel.font = CONTENT_FONT(12);
     [backgroundView addSubview:remindLabel];
