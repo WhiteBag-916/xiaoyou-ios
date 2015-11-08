@@ -135,7 +135,6 @@
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
-    
     NSLog(@"%@",NSStringFromCGPoint(self.contentOffset));
     if (self.contentOffset.x < SCALE_NUM(75)) {
         [self.myController setPointHighlight:POINT1];

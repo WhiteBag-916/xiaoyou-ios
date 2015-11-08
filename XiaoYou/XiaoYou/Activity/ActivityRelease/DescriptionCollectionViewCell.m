@@ -250,11 +250,11 @@ NSString *const kDescriptionCollectionViewCell = @"DescriptionCollectionViewCell
     }
 }
 
--(void)textViewDidBeginEditing:(UITextView *)textView
+-(BOOL)textViewShouldBeginEditing:(UITextView *)textView
 {
     NSDictionary * dic = @{@"position":@2};
     [[NSNotificationCenter defaultCenter] postNotificationName:KNotification_Activity_Release_ScrollTo object:dic];
-    
+    return YES;
 }
 
 //-(BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text

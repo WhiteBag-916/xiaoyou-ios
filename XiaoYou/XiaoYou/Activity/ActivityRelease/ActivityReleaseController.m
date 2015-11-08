@@ -12,6 +12,7 @@
 #import "ActivityManager.h"
 #import "YDirectory+Data.h"
 #import "ActivityInfoModel.h"
+#import "YKeyBoard.h"
 
 typedef enum : NSUInteger {
     POSITION1 = 1,
@@ -22,7 +23,7 @@ typedef enum : NSUInteger {
     POSITION6 = 6,
 } MyPositionNum;
 
-@interface ActivityReleaseController ()
+@interface ActivityReleaseController ()<UIScrollViewDelegate>
 
 @property (nonatomic,strong) ActivityReleaseCollectionView * releaseCollectionView;
 
@@ -56,6 +57,8 @@ typedef enum : NSUInteger {
 //是否为社长
 @property (nonatomic,assign) BOOL isIdentity;
 
+@property (nonatomic,assign) BOOL isKeyBoardShow;
+
 //数据Manager
 @property (nonatomic,strong) ActivityReleaseDataManager * dataManager;
 
@@ -69,6 +72,7 @@ typedef enum : NSUInteger {
     self = [super init];
     if (self) {
         _isIdentity = isIdentity;
+        _isKeyBoardShow = NO;
     }
     return self;
 }
@@ -100,6 +104,27 @@ typedef enum : NSUInteger {
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changeEnabelStateForReleaseBtn:) name:KNotification_Enabel_ReleaseBtn object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changeScrollPosition:) name:KNotification_Activity_Release_ScrollTo object:nil];
     
+    [YKeyBoard registerKeyBoardWithTarget:self];
+}
+
+-(void)keyboardWillShowNotification:(NSNotification *)note{
+    // get keyboard size and loctaion
+    CGRect keyboardBounds;
+    [[note.userInfo valueForKey:UIKeyboardFrameEndUserInfoKey] getValue: &keyboardBounds];
+    
+    // Need to translate the bounds to account for rotation.
+    NSInteger scrollHeight = self.view.height-keyboardBounds.size.height;
+    
+//    [_scrollView mas_updateConstraints:^(MASConstraintMaker *make) {
+//        make.height.mas_equalTo(scrollHeight);
+//    }];
+    
+    _scrollView.height = scrollHeight;
+}
+
+- (void)keyboardWillHideNotification:(NSNotification *)note {
+    _scrollView.height = self.view.bounds.size.height - SCALE_NUM(46);
+    _scrollView.contentOffset = CGPointMake(0, 0);
 }
 
 - (void)viewDidDisappear:(BOOL)animated
@@ -142,36 +167,37 @@ typedef enum : NSUInteger {
 
 -(void)changeScrollPosition:(NSNotification *) notification
 {
-    switch ([notification.object[@"position"] integerValue])
+    NSInteger positionNum = [notification.object[@"position"] integerValue];
+    switch (positionNum)
     {
         case POSITION1:
             NSLog(@"1");
-            [self clickeLabelButton:_btn1];
+            [self showkeyword:_btn1];
             [self setPointHighlight:1];
             break;
         case POSITION2:
             NSLog(@"2");
-            [self clickeLabelButton:_btn2];
+            [self showkeyword:_btn2];
             [self setPointHighlight:2];
             break;
         case POSITION3:
             NSLog(@"3");
-            [self clickeLabelButton:_btn3];
+            [self showkeyword:_btn3];
             [self setPointHighlight:3];
             break;
         case POSITION4:
             NSLog(@"4");
-            [self clickeLabelButton:_btn4];
+            [self showkeyword:_btn4];
             [self setPointHighlight:4];
             break;
         case POSITION5:
             NSLog(@"5");
-            [self clickeLabelButton:_btn5];
+            [self showkeyword:_btn5];
             [self setPointHighlight:5];
             break;
         case POSITION6:
             NSLog(@"6");
-            [self clickeLabelButton:_btn6];
+            [self showkeyword:_btn6];
             [self setPointHighlight:6];
             break;
             
@@ -184,6 +210,7 @@ typedef enum : NSUInteger {
 -(void)viewDidLayoutSubviews{
     [super viewDidLayoutSubviews];
     _scrollView.frame = CGRectMake(0, 0, SCREEN_WIDTH, self.view.bounds.size.height - SCALE_NUM(46));
+    _scrollView.delegate = self;
     _scrollView.contentSize = CGSizeMake(SCREEN_WIDTH, SCALE_NUM(460));
     
 }
@@ -556,23 +583,6 @@ typedef enum : NSUInteger {
 -(void)clickReleaseBtn
 {
     [YUtils showHUDWithTitle];
-    NSLog(@"发布");
-    NSLog(@"%@",_dataManager.ActivityNameText);
-    NSLog(@"%@",_dataManager.ActivityDesciptionText);
-    NSLog(@"%@",_dataManager.ActivityDesciptionImage);
-    NSLog(@"%@",_dataManager.ActivityDateBeginApplyText);
-    NSLog(@"%@",_dataManager.ActivityDateEndApplyText);
-    NSLog(@"%@",_dataManager.ActivityDateBeginText);
-    NSLog(@"%@",_dataManager.ActivityDateEndText);
-    NSLog(@"%@",_dataManager.ActivityPlaceText);
-    NSLog(@"%@",_dataManager.ActivityTypeStr);
-    NSLog(@"%@",_dataManager.ActivityCheckStr);
-    NSLog(@"%@",_dataManager.ActivityCheckStatus);
-    NSLog(@"%@",_dataManager.ActivityOrganizer);
-    NSLog(@"%@",_dataManager.ActivityOrganizerId);
-    
-    
-    
     
     if (_dataManager.ActivityDesciptionImage != nil)
     {
@@ -801,6 +811,87 @@ typedef enum : NSUInteger {
     }
 }
 
+-(void)showkeyword:(UIButton *) btn {
+    switch (btn.tag) {
+        case 100000001:
+        {
+            [UIView animateWithDuration:0.2 animations:^{
+                _releaseCollectionView.contentOffset = CGPointMake(0, 0);
+            } completion:^(BOOL finished) {
+                //键盘弹起
+                [UIView animateWithDuration:0.2 animations:^{
+                    CGFloat offY = SCALE_NUM(110);
+                    _scrollView.contentOffset = CGPointMake(0, offY);
+                }];
+                
+            }];
+            break;
+        }
+        case 100000002:
+        {
+            [UIView animateWithDuration:0.2 animations:^{
+                //                _releaseCollectionView.contentOffset = CGPointMake(SCALE_NUM(186), 0);
+                _releaseCollectionView.contentOffset = CGPointMake(SCALE_NUM(230), 0);
+            } completion:^(BOOL finished) {
+                //键盘弹起
+                [UIView animateWithDuration:0.2 animations:^{
+                    CGFloat offY = SCALE_NUM(162);
+                    _scrollView.contentOffset = CGPointMake(0, offY);
+                }];
+                
+            }];
+            break;
+        }
+        case 100000003:
+        {
+            [UIView animateWithDuration:0.2 animations:^{
+                //                _releaseCollectionView.contentOffset = CGPointMake(SCALE_NUM(418), 0);
+                _releaseCollectionView.contentOffset = CGPointMake(SCALE_NUM(460), 0);
+            } completion:nil];
+            break;
+        }
+        case 100000004:
+        {
+            [UIView animateWithDuration:0.2 animations:^{
+                //                _releaseCollectionView.contentOffset = CGPointMake(SCALE_NUM(646), 0);
+                _releaseCollectionView.contentOffset = CGPointMake(SCALE_NUM(690), 0);
+            } completion:^(BOOL finished) {
+                //键盘弹起
+                [UIView animateWithDuration:0.2 animations:^{
+                    CGFloat offY = SCALE_NUM(110);
+                    _scrollView.contentOffset = CGPointMake(0, offY);
+                }];
+            }];
+            break;
+        }
+        case 100000005:
+        {
+            [UIView animateWithDuration:0.2 animations:^{
+                if (_isIdentity)
+                {
+                    _releaseCollectionView.contentOffset = CGPointMake(SCALE_NUM(920), 0);
+                }
+                else{
+                    _releaseCollectionView.contentOffset = CGPointMake(SCALE_NUM(830), 0);
+                }
+                
+            } completion:nil];
+            break;
+        }
+        case 100000006:
+        {
+            [UIView animateWithDuration:0.2 animations:^{
+                _releaseCollectionView.contentOffset = CGPointMake(SCALE_NUM(1060), 0);
+                //                _releaseCollectionView.contentOffset = CGPointMake(SCALE_NUM(920), 0);
+            } completion:nil];
+            break;
+        }
+            
+        default:
+            break;
+    }
+}
+
 -(void)clickeLabelButton:(UIButton *) btn
 {
     switch (btn.tag) {
@@ -862,6 +953,11 @@ typedef enum : NSUInteger {
             break;
     }
     
+}
+
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
+{
+    [self.view endEditing:YES];
 }
 
 - (void)didReceiveMemoryWarning {

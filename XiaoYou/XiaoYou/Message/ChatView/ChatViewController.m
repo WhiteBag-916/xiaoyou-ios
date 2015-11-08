@@ -279,7 +279,7 @@
     
     //头像
     UIButton *detailButton = [[UIButton alloc] initWithFrame:_headImageView.bounds];
-    detailButton.backgroundColor = [UIColor redColor];
+    detailButton.backgroundColor = [UIColor clearColor];
     if (url.length > 0) {
         [_headImageView setFaceImageWithUrl:url];
     } else {
