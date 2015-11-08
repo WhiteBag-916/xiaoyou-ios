@@ -199,7 +199,7 @@
     _feedCountLabel.backgroundColor = [UIColor clearColor];
     _feedCountLabel.textColor = [UIColor whiteColor];
     _feedCountLabel.textAlignment = NSTextAlignmentCenter;
-    _feedCountLabel.text = @"观点";
+    _feedCountLabel.text = @"动态";
     _feedCountLabel.font = CONTENT_FONT(15);
     [backView addSubview:_feedCountLabel];
     [_feedCountLabel mas_makeConstraints:^(MASConstraintMaker *make) {

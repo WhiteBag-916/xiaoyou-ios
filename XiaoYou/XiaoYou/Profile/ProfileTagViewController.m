@@ -50,7 +50,12 @@
 }
 - (void)initController {
     [self showCustomNavigationCancelButton];
-    self.title = @"定义你的标签";
+    if (ProfileTagTypeAssociations == _type) {
+        self.title = @"选社团分类";
+    } else if (ProfileTagTypePerson == _type) {
+        self.title = @"定义你的标签";
+    }
+    
     self.view.backgroundColor = [UIColor whiteColor];
 }
 - (void)initView {

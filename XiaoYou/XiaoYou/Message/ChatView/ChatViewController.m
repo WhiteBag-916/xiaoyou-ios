@@ -271,20 +271,21 @@
     }else {
         self.title = _conversation.latestMessageFromOthers.ext[@"userName"];
     }
-    _headImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 40, 40)];
-    _headImageView.layer.cornerRadius = 20;
+    _headImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 33, 33)];
+    _headImageView.layer.cornerRadius = 16.5;
     _headImageView.clipsToBounds = YES;
     _headImageView.userInteractionEnabled = YES;
     NSString *url = _studentDic[@"icon"];
     
     //头像
-    UIButton *detailButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 60, 44)];
+    UIButton *detailButton = [[UIButton alloc] initWithFrame:_headImageView.bounds];
+    detailButton.backgroundColor = [UIColor redColor];
     if (url.length > 0) {
         [_headImageView setFaceImageWithUrl:url];
     } else {
         if (eMessageTypeGroupChat == _conversationType) {
             [detailButton setBackgroundColor:KCOLOR_009688];
-            [detailButton setTitleEdgeInsets:UIEdgeInsetsMake(0, 0, 4, 20)];
+//            [detailButton setTitleEdgeInsets:UIEdgeInsetsMake(0, 0, 6, 25)];
             if ([_studentDic[@"linkType"] doubleValue] == 1)
             {
                 [detailButton setTitle:@"班" forState:UIControlStateNormal];
