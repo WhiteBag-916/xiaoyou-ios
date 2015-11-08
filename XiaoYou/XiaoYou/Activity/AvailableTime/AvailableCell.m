@@ -107,7 +107,7 @@
     _descriptionLabel.font = CONTENT_FONT(12);
     _descriptionLabel.textColor = KCOLOR_B5;
     
-    NSString *desTextString = @"活动简介：本剧讲述了在日寇荼毒神州大地的悲壮年代，宋庆龄从中华民族的大局利益出发，积极投身抗日救亡的运动中。 从1932年1月，侵华日军突袭上海，第一次“淞沪抗战“爆发，宋庆龄亲赴前线慰问十九路军官兵；到促使“西安事变”和平解决，全国上下团结抗日局面的形成；再到香港组建“保卫中国同盟”募集物资支援抗战，参加广州火炬大游行；最后为巩固抗日统一战线，宋氏三姐妹赴重庆视察，并向世界发表广播演讲为主线。充分展示了宋庆龄在国家动荡之时，在民族危难之际，所体现出伟大的爱国主义、民主主义精神！塑造了一个“柔肩担道义、正气盈天地”的伟大女性。";
+    NSString *desTextString = @"活动简介：fdsfdsfds";
     
     [_descriptionLabel setText:desTextString lineSpacing:SCALE_NUM(10.f)];
     
@@ -258,6 +258,7 @@
     //图文混排
     for (ActivityImageTextModels *imageText in imageTextModels) {
         if ([imageText.type isEqualToString:@"text"]) {
+            _descriptionLabel.text = [NSString stringWithFormat:@"%@%@",@"描述:",_descriptionLabel.text];
             [_descriptionLabel setText:imageText.content lineSpacing:SCALE_NUM(10.f)];
         }
         else if ([imageText.type isEqualToString:@"image"]) {

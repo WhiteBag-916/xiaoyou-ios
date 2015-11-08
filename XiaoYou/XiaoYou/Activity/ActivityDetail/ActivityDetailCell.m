@@ -322,8 +322,8 @@
     [_categotyImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(_locationLabel.mas_bottom).offset(SCALE_NUM(15));
         make.centerX.equalTo(_locationImageView);
-        make.height.mas_equalTo(SCALE_NUM(17));
-        make.width.mas_equalTo(SCALE_NUM(17));
+        //make.height.mas_equalTo(SCALE_NUM(17));
+        //make.width.mas_equalTo(SCALE_NUM(17));
         //make.bottom.mas_equalTo(SCALE_NUM(-15));
     }];
     

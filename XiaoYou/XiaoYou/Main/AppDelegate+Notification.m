@@ -95,11 +95,8 @@
 //从后台进入前台的时候,会通过此方法
 -(void)application:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)notification
 {
-    NSLog(@"this is notiy....");
     
     [self initNotifyRemindNC];
-    //XYTabBarViewController *tabBarVC = self.window.rootViewController;
-    //tabBarVC.selectedViewController = [tabBarVC.viewControllers objectAtIndex:1];
 }
 
 
