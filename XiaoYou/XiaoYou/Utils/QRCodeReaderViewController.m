@@ -197,7 +197,7 @@
     CGFloat y = SCALE_NUM(30);
     
     _lblTip = [[UILabel alloc] initWithFrame:CGRectMake(0,y + 30 + c_width, mainWidth, 15)];
-    _lblTip.text = @"将二维码/条码图案放在取景框内即可自动扫描";
+    _lblTip.text = @"将二维码图案放在取景框内即可自动扫描";
     _lblTip.textColor = [UIColor whiteColor];
     _lblTip.font = [UIFont systemFontOfSize:13];
     _lblTip.textAlignment = NSTextAlignmentCenter;
