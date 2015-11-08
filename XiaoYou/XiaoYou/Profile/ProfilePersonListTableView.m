@@ -167,6 +167,7 @@
 //    ProfilePersonListTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kProfilePersonListTableViewCell];
     ProfilePersonListTableViewCell *cell = [[ProfilePersonListTableViewCell alloc] init];
     BOOL showGender = (ProfilePersonListTypeFind == _type);
+    
     [cell setData:_personListArray[indexPath.row] needShowGender:showGender];
     return cell;
 }
