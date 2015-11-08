@@ -391,8 +391,8 @@
         return;
     }
     
-    if (_userSchedulingInfo.endTime/1000 - _userSchedulingInfo.startTime/1000 < 15*60) {
-        [YUtils showTitle:@"结束时间必须大于开始时间15分钟"];
+    if (_userSchedulingInfo.endTime - _userSchedulingInfo.startTime < 0) {
+        [YUtils showTitle:@"结束时间必须晚于开始时间"];
         
         return;
     }

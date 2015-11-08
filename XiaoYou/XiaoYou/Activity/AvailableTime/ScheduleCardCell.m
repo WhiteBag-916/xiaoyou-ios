@@ -218,6 +218,14 @@
         [_timeLabel2 mas_updateConstraints:^(MASConstraintMaker *make) {
             make.bottom.mas_equalTo(SCALE_NUM(-15));
         }];
+    } else if (scheduleArr.count == 3) {
+        [_timeLabel3 mas_updateConstraints:^(MASConstraintMaker *make) {
+            make.bottom.mas_equalTo(SCALE_NUM(-15));
+        }];
+    }
+    
+    if (scheduleArr.count != 0) {
+        _notHaveSchedule.image = nil;
     }
 }
 

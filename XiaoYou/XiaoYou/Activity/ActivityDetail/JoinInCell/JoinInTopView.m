@@ -13,6 +13,8 @@
 #import "ContactManager.h"
 #import "XYContactsInfoDetailViewController.h"
 #import "YShareData.h"
+#import "ProfileViewController.h"
+#import "ProfileMyViewController.h"
 
 @interface JoinInTopView ()
 
@@ -159,7 +161,35 @@
 - (void)gotoPersonDetail {
     XYContactsInfoDetailViewController *detailVC = [[XYContactsInfoDetailViewController alloc]init];
     detailVC.uid = _author.uid;
-    [self.viewController.navigationController pushViewController:detailVC animated:YES needHiddenBottomBar:YES];
+    
+    ProfileMyViewController *myVC = [[ProfileMyViewController alloc]init];
+    
+    if ([_author.uid isEqualToString:[[YShareData defaultData] valueForKey:kShareData_UserID]]) {
+        [self.viewController.navigationController pushViewController:myVC animated:YES needHiddenBottomBar:YES];
+    }
+    else {
+        [self.viewController.navigationController pushViewController:detailVC animated:YES needHiddenBottomBar:YES];
+    }
+    
+    
+//    ActivityOrganizer *organizer = self.detailModel.activityOrganizer;
+//    XYContactsInfoDetailViewController *detailVC = [[XYContactsInfoDetailViewController alloc]init];
+//    detailVC.uid = organizer.uid;
+//    
+//    
+//    
+//    if ([organizer.userType isEqualToString:@"user"]) {
+//        if ([organizer.uid isEqualToString:[[YShareData defaultData] valueForKey:kShareData_UserID]]) {
+//            //ProfileViewController
+//            ProfileViewController *myVC = [[ProfileViewController alloc]init];
+//            [self.viewController.navigationController pushViewController:myVC animated:YES needHiddenBottomBar:YES];
+//        } else {
+//            [self.viewController.navigationController pushViewController:detailVC animated:YES needHiddenBottomBar:YES];
+//        }
+//    } else
+//    {
+//        [self.viewController.navigationController pushViewController:groupVC animated:YES needHiddenBottomBar:YES];
+//    }
 }
 
 @end

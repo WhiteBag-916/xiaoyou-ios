@@ -26,6 +26,7 @@
 #import "XYGroupApplyViewController.h"
 #import "YUtils+Component.h"
 #import "EMConversation.h"
+#import "InterestViewController.h"
 
 #define kRowHeight                     68
 #define kHeadWidthAndHeight            40
@@ -217,12 +218,14 @@
     [funBackView addSubview:funBottomView];
     
     [backView addSubview:funBackView];
+    
+    
     //    [backView addSubview:funBackView];
     
 //    UIView * backView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, kRowHeight)];
-//    UITapGestureRecognizer * tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapGestureRecognizerAction)];
-//    [backView addGestureRecognizer:tapGestureRecognizer];
-//    backView.backgroundColor = [UIColor clearColor];
+    UITapGestureRecognizer * tapGestureRecognizer1 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapFunGestureRecognizerAction)];
+    [backView addGestureRecognizer:tapGestureRecognizer1];
+    backView.backgroundColor = [UIColor clearColor];
 //    //头像
 //    _headImageView = [[UIImageView alloc] init];
 //    _headImageView.layer.cornerRadius = kHeadCornerRadius;
@@ -335,6 +338,8 @@
 
 -(void)tapFunGestureRecognizerAction
 {
+    InterestViewController *funnyVC = [[InterestViewController alloc]init];
+    [self.myController.navigationController pushViewController:funnyVC animated:YES needHiddenBottomBar:YES];
     //好看相关节面
 }
 

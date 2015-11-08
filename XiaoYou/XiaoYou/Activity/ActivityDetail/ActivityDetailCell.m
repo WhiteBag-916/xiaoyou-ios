@@ -17,6 +17,7 @@
 #import "ActivityPublishedModel.h"
 #import "YWebViewController.h"
 #import "ProfileMyViewController.h"
+#import "ProfileViewController.h"
 #define REUSEID @"ActivityDetailCell"
 #define HEADIMAGEVIEW_WIDTH         SCALE_NUM(45)
 #define LEADINGOFF_HEADIMAGEVIEW    SCALE_NUM(12)
@@ -373,7 +374,8 @@
     
     if ([organizer.userType isEqualToString:@"user"]) {
         if ([organizer.uid isEqualToString:[[YShareData defaultData] valueForKey:kShareData_UserID]]) {
-            ProfileMyViewController *myVC = [[ProfileMyViewController alloc]init];
+            //ProfileViewController
+            ProfileViewController *myVC = [[ProfileViewController alloc]init];
             [self.viewController.navigationController pushViewController:myVC animated:YES needHiddenBottomBar:YES];
         } else {
             [self.viewController.navigationController pushViewController:detailVC animated:YES needHiddenBottomBar:YES];
