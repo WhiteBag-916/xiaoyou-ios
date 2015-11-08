@@ -107,10 +107,8 @@
 
 - (NSArray*)adjustLayoutForOverlappingCells:(NSArray*)attributes inSection:(NSUInteger)section
 {
-    if (attributes.count < 2) {
-        return attributes;
-    }
-    
+	const CGFloat kOverlapOffset = 4.;
+	
 	// sort layout attributes by frame y-position
 	NSArray *adjustedAttributes = [attributes sortedArrayUsingComparator:^NSComparisonResult(MGCEventCellLayoutAttributes *att1, MGCEventCellLayoutAttributes *att2) {
 		if (att1.frame.origin.y > att2.frame.origin.y) {
@@ -120,82 +118,70 @@
 			 return NSOrderedAscending;
 		}
 		return NSOrderedSame;
-    }];
-    
-    //算最大交集
-    NSMutableArray *allArray = [[NSMutableArray alloc] init];
-    NSInteger startNum = 1;
-    while (1) {
-        NSMutableArray *array = [[NSMutableArray alloc] init];
-        MGCEventCellLayoutAttributes *attribs = [adjustedAttributes objectAtIndex:startNum-1];
-        [array addObject:attribs];
-        CGRect maxRect = attribs.frame;
-        for (NSInteger i = startNum; i < adjustedAttributes.count; i++) {
-            MGCEventCellLayoutAttributes *attribs2 = [adjustedAttributes objectAtIndex:i];
-            if (CGRectIntersectsRect(maxRect, attribs2.frame)) {
-                [array addObject:attribs2];
-                CGFloat maxY = attribs2.frame.origin.y+attribs2.frame.size.height;
-                if (maxY > maxRect.origin.x+maxRect.size.height) {
-                    maxRect = CGRectMake(maxRect.origin.x, maxRect.origin.y, maxRect.size.width, maxY);
+	}];
+	
+	
+	for (NSUInteger i = 0; i < adjustedAttributes.count; i++) {
+		MGCEventCellLayoutAttributes *attribs1 = [adjustedAttributes objectAtIndex:i];
+		
+		NSMutableArray *layoutGroup = [NSMutableArray array];
+		MGCEventCellLayoutAttributes *covered = nil;
+		[layoutGroup addObject:attribs1];
+		
+		// iterate previous frames (i.e with highest or equal y-pos)
+		for (NSInteger j = i - 1; j >= 0; j--) {
+            MGCEventCellLayoutAttributes *attribs2 = [adjustedAttributes objectAtIndex:j];
+            if (j == i-1) {
+                //第一个
+                if (attribs1.frame.origin.y < attribs2.frame.origin.y+attribs2.frame.size.height) {
+                    [layoutGroup addObject:attribs2];
+                } else {
+                    //没有交集，直接pass
+                    break;
+                }
+            } else {
+                MGCEventCellLayoutAttributes *attribs3 = [adjustedAttributes objectAtIndex:j+1];
+                if (attribs3.frame.origin.y < attribs2.frame.origin.y+attribs2.frame.size.height) {
+                    [layoutGroup addObject:attribs2];
+                }
+                else {
+                    //没有交集，直接pass
+                    break;
                 }
             }
-        }
-        [allArray addObject:array];
-        
-        startNum += array.count;
-        
-        if (startNum-1 == adjustedAttributes.count) {
-            break;
-        }
-    }
-    
-    //排列
-    for (NSMutableArray *array in allArray) {
-        if (array.count == 1) {
-            continue;
-        }
-        //按列分数组
-        NSMutableArray *layoutGroup = [[NSMutableArray alloc] init];
-        while (1) {
-            NSMutableArray *numArray = [[NSMutableArray alloc] init];
-            MGCEventCellLayoutAttributes *attribs1 = [array objectAtIndex:0];
-            [numArray addObject:array[0]];
-            [array removeObjectAtIndex:0];
-            CGFloat maxY = attribs1.frame.origin.y+attribs1.frame.size.height;
-            //如果Y轴没有交集
-            for (NSInteger i = 0; i<array.count; ++i) {
-                MGCEventCellLayoutAttributes *attribs2 = [array objectAtIndex:i];
-                
-                if (maxY < attribs2.frame.origin.y) {
-                    [numArray addObject:attribs2];
-                    maxY = attribs2.frame.origin.y+attribs2.frame.size.height;
-                    [array removeObjectAtIndex:i];
-                    --i;
-                }
-            }
-            
-            [layoutGroup addObject:numArray];
-            if (0 == array.count) {
-                break;
-            }
-        }
-        
-        //计算X Width
-        CGFloat totalWidth = self.dayColumnSize.width - (layoutGroup.count-1)*_midOffset;
-        
-        //以组的数据计算最大宽度
-        CGFloat colWidth = totalWidth / layoutGroup.count;
-        
-        CGFloat x = section * self.dayColumnSize.width;
-        
-        for (NSArray *array in layoutGroup) {
-            for (MGCEventCellLayoutAttributes* attribs in array) {
-                attribs.frame = CGRectMake(x, attribs.frame.origin.y, colWidth, attribs.frame.size.height);
-            }
-            x += colWidth;
+//			MGCEventCellLayoutAttributes *attribs2 = [adjustedAttributes objectAtIndex:j];
+//			if (CGRectIntersectsRect(attribs1.frame, attribs2.frame)) {
+//				CGFloat visibleHeight = fabs(attribs1.frame.origin.y - attribs2.frame.origin.y);
+//				
+//				if (visibleHeight > self.minimumVisibleHeight) {
+//					covered = attribs2;
+//					covered.visibleHeight = visibleHeight;
+//					break;
+//				}
+//				else {
+//					[layoutGroup addObject:attribs2];
+//				}
+//			}
+		}
+		
+		// now, distribute elements in layout group
+		CGFloat groupOffset = 0;
+		if (covered) {
+			CGFloat sectionXPos = section * self.dayColumnSize.width;
+			groupOffset += covered.frame.origin.x - sectionXPos + kOverlapOffset;
+		}
+		
+		CGFloat totalWidth = (self.dayColumnSize.width - (layoutGroup.count-1)*_midOffset) - groupOffset;
+		CGFloat colWidth = totalWidth / layoutGroup.count;
+		
+		CGFloat x = section * self.dayColumnSize.width + groupOffset;
+		
+		for (MGCEventCellLayoutAttributes* attribs in [layoutGroup reverseObjectEnumerator]) {
+			attribs.frame = CGRectMake(x, attribs.frame.origin.y, colWidth, attribs.frame.size.height);
+			x += colWidth;
             x += _midOffset;//间距
-        }
-    }
+		}
+	}
 	
 	return adjustedAttributes;
 }
