@@ -114,7 +114,7 @@
     [_addFriendImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.trailing.mas_equalTo(SCALE_NUM(-12));
         make.top.equalTo(_headImageView.mas_top).offset(SCALE_NUM(2));
-        make.bottom.equalTo(_isSelfNameLabel);
+        //make.bottom.equalTo(_isSelfNameLabel);
         make.height.mas_equalTo(SCALE_NUM(25));
         make.width.mas_equalTo(SCALE_NUM(25));
     }];

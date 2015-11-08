@@ -65,7 +65,7 @@
     [SlideNavigationController sharedInstance].portraitSlideOffset = SCREEN_WIDTH * 0.3;
     [self initNotification];
     //刷新数据
-    [self refreshData];
+    //[self refreshData];
 }
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
