@@ -12,9 +12,6 @@
 #import "YWebViewController.h"
 #import "NSDate+Category.h"
 #import "FeedManager.h"
-#import "Message/MessageManager.h"
-#import "InterestModel.h"
-#import "NewsList.h"
 
 #define KPAGENUM 8
 
@@ -33,7 +30,7 @@
         self.dataSource = self;
         [self registerClass:[InterestTableViewCell class] forCellReuseIdentifier:KInterestCell];
         [self registerClass:[InterestSeperatorCell class] forCellReuseIdentifier:KInterestSeperatorCell];
-        [self beginLoadNewData];
+        [self beginLoadMoreData];
         _dataArray = [NSMutableArray array];
         _formatter = [NSDateFormatter new];
         _formatter.dateFormat = @"MM月dd日";
@@ -69,48 +66,59 @@
     if ([self isHeaderRefresh]) {
         lastDate = [[NSDate date] dayDescription];
     } else {
-        lastDate = [self getYesterdayFrom:(NSInteger)[(NewsList *)[[[_dataArray lastObject] newsList] lastObject]publishTime]/1000];
+        
     }
-    [[MessageManager sharedInstance] interestList:[lastDate integerValue] maxSize:KPAGENUM block:^(YActionMessage *message) {
-        if (message.isSuccess) {
-            if ([self isHeaderRefresh]) {
-                [_dataArray removeAllObjects];
-            }
-            [self hiddenFooter:false];
-            if (message.object != nil) {
-                [_dataArray addObjectsFromArray:message.object];
-            }
-            if ([message.object count] < KPAGENUM) {
-                [self showNoticeNoMoreData];
-            }
-            [self reloadData];
-            
-        } else {
-            [YUtils showTitle:message.desc];
-        }
-        if ([self isHeaderRefresh]) {
-            [self stopLoadNewData];
-        } else {
-            [self stopLoadMoreData];
-        }
-    }];
+    NSMutableArray *array = [NSMutableArray array];
+    for (int i = 0; i < 3; i ++) {
+        NSMutableArray *data = [NSMutableArray array];
+        InterestCellModel *model = [[InterestCellModel alloc] init];
+        model.picture = @"";
+        model.time = [NSDate dateWithTimeIntervalSinceNow:-100000 * i];
+        model.title = @"校园资讯";
+        model.source = @"来源";
+        model.url = @"https://www.baidu.com";
+        [data addObject:model];
+        [array addObject:data];
+    }
+    YActionMessage *message = [[YActionMessage alloc] initWithType:@"" errorCode:0 desc:@"" object:array];
+    [self dealWithMessage:message];
 }
-
+- (void)dealWithMessage:(YActionMessage *)message {
+    if (message.isSuccess) {
+        if ([self isHeaderRefresh]) {
+            [_dataArray removeAllObjects];
+        }
+        [self hiddenFooter:false];
+        [_dataArray addObjectsFromArray:message.object];
+        if ([message.object count] == 0) {
+            [self showNoticeNoMoreData];
+        }
+        [self reloadData];
+        
+    } else {
+        [YUtils showTitle:message.desc];
+    }
+    if ([self isHeaderRefresh]) {
+        [self stopLoadNewData];
+    } else {
+        [self stopLoadMoreData];
+    }
+}
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return _dataArray.count;
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [[(InterestModel *)_dataArray[section] newsList] count] * 2;
+    return [_dataArray[section] count] * 2;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell;
     if (indexPath.row % 2 == 1) {
         cell = [self dequeueReusableCellWithIdentifier:KInterestCell];
-        [(InterestTableViewCell *)cell setData:[(InterestModel *)_dataArray[indexPath.section] newsList][indexPath.row/2]];
+        [(InterestTableViewCell *)cell setData:_dataArray[indexPath.section][indexPath.row/2]];
     } else {
         cell = [self dequeueReusableCellWithIdentifier:KInterestSeperatorCell];
         if (indexPath.row == 0) {
-            [(InterestSeperatorCell *)cell updateState:[_formatter stringFromDate:[NSDate dateWithTimeIntervalSince1970:(NSInteger)[(NewsList *) [(InterestModel *)_dataArray[indexPath.section] newsList][indexPath.row/2] publishTime]/1000]]];
+            [(InterestSeperatorCell *)cell updateState:[_formatter stringFromDate:[(InterestCellModel *) _dataArray[indexPath.section][indexPath.row/2] time]]];
         } else {
             [(InterestSeperatorCell *)cell updateState:@""];
         }
@@ -125,13 +133,8 @@
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.row % 2 == 1) {
-        NewsList *item = (NewsList *) [(InterestModel *)_dataArray[indexPath.section] newsList][indexPath.row/2];
-        YWebViewController *web = [[YWebViewController alloc] initWithUrl:item.link andTitle:item.source canClick:true];
+        YWebViewController *web = [[YWebViewController alloc] initWithUrl:@"https://www.baidu.com" andTitle:@"百度" canClick:true];
         [_parent.navigationController pushViewController:web animated:true];
     }
-}
-- (NSString *)getYesterdayFrom:(NSInteger)time {
-    return [[NSDate dateWithTimeIntervalSince1970:(time-24*60*60)] dayDescription];
-    
 }
 @end

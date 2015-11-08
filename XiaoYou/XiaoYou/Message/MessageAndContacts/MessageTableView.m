@@ -26,7 +26,6 @@
 #import "XYGroupApplyViewController.h"
 #import "YUtils+Component.h"
 #import "EMConversation.h"
-#import "InterestViewController.h"
 
 #define kRowHeight                     68
 #define kHeadWidthAndHeight            40
@@ -337,7 +336,6 @@
 -(void)tapFunGestureRecognizerAction
 {
     //好看相关节面
-    [_myController.navigationController pushViewController:[[InterestViewController alloc] init] animated:true];
 }
 
 #pragma mark - 得到最后消息文字或者类型

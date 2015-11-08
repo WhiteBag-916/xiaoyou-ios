@@ -27,7 +27,6 @@
 #import "NotifyInfoModel.h"
 #import "YBaseService.h"
 #import "YDatabaseDao.h"
-#import "InterestListAction.h"
 
 
 #define kMessageManagerSyncQueue @"kMessageManagerSyncQueue"
@@ -738,24 +737,8 @@ DEF_SINGLETON(MessageManager);
 }
 
 //好看接口列表查询
-- (void)interestList:(NSInteger)publishDay maxSize:(NSInteger)maxSize block:(ActionCompleteBlock)block {
-    InterestListAction * action = [[InterestListAction alloc] init];
-    action.publishDay = publishDay;
-    action.maxSize = maxSize;
-    [YAction startAction:action completionBlock:^(YActionMessage* message) {
-        //子线程处理数据
-        [YQueue dispatchInSyncQueueWithQueueType:kMessageManagerSyncQueue block:^{
-            if (message.isSuccess)
-            {
-                
-            }
-            
-            //主线程处理界面
-            [YQueue dispatchInMainQueueWithBlock:^{
-                block(message);
-            }];
-        }];
-    }];
+- (void)interestList:(NSInteger)publishDay maxSize:(NSInteger)maxSize block:(ForbiddenGroupBlock)block {
+    
 }
 
 @end
