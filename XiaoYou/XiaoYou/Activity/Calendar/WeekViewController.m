@@ -93,17 +93,6 @@ static NSString* const EventCellReuseIdentifier = @"EventCellReuseIdentifier";
     [self.navigationController popViewControllerAnimated:YES];
 }
 
-- (void)viewDidAppear:(BOOL)animated {
-    [super viewDidAppear:animated];
-    
-    if (_needShowToday) {
-        [self.dayPlannerView scrollToToday:YES];
-        
-        _needShowToday = NO;
-    }
-    
-}
-
 //拉取数据,时间，获取前面一个星期，获取后面一个星期
 - (void)initData:(NSDate *)date needLoading:(BOOL)needLoading needNowWeek:(BOOL)needNowWeek needBeforeWeek:(BOOL)needBeforeWeek needAfterWeek:(BOOL)needAfterWeek {
     NSDate *needDate = date==nil?[NSDate date]:date;
@@ -217,6 +206,12 @@ static NSString* const EventCellReuseIdentifier = @"EventCellReuseIdentifier";
     [_userSchedulingInfoArray addObjectsFromArray:dataArray];
     
     [self.dayPlannerView reloadAllEvents];
+    
+    if (_needShowToday) {
+        [self.dayPlannerView scrollToToday:YES];
+        
+        _needShowToday = NO;
+    }
 }
 
 //根据时间获取array
@@ -224,8 +219,11 @@ static NSString* const EventCellReuseIdentifier = @"EventCellReuseIdentifier";
     NSMutableArray *eventArray = [@[] mutableCopy];
     
     [_userSchedulingInfoArray enumerateObjectsUsingBlock:^(UserSchedulingInfo * _Nonnull userSchedulingInfoObj, NSUInteger userSchedulingInfoIdx, BOOL * _Nonnull userSchedulingInfoStop) {
-        NSDate *eventStartTime = [NSDate dateWithTimeIntervalSince1970:userSchedulingInfoObj.startTime/1000];
-        if ([eventStartTime isSameDay:date timeZone:[NSTimeZone defaultTimeZone]]) {
+        //算时间是同一天
+        NSTimeInterval nowTime = [date timeIntervalSince1970];
+        NSTimeInterval starTime = userSchedulingInfoObj.startTime/1000;
+        NSTimeInterval timeDiffer = starTime - nowTime;
+        if (timeDiffer > 0 && timeDiffer < 60*60*24) {
             [eventArray addObject:userSchedulingInfoObj];
         } else {
             //时间被包含
@@ -380,36 +378,21 @@ static NSString* const EventCellReuseIdentifier = @"EventCellReuseIdentifier";
 
 - (void)dayPlannerView:(MGCDayPlannerView*)view didEndDisplayingDate:(NSDate*)date
 {
-//    NSDate *beginDate = [date beginningOfWeek];
-//    NSDate *endDate = [date endOfWeek];
-//    NSTimeInterval beginTime = [beginDate timeIntervalSince1970];
-//    NSTimeInterval endTime = [endDate timeIntervalSince1970];
-//    NSTimeInterval nowBeginTime = [_userSchedulingListBeginDate timeIntervalSince1970];
-//    NSTimeInterval nowEndTime = [_userSchedulingListEndDate timeIntervalSince1970];
-//    if (beginTime <= nowBeginTime) {
-//        //取上个星期的
-//        [self initData:date needLoading:NO needNowWeek:NO needBeforeWeek:YES needAfterWeek:NO];
-//    } else if (endTime >= nowEndTime) {
-//        //取下个星期的
-//        [self initData:date needLoading:NO needNowWeek:NO needBeforeWeek:NO needAfterWeek:YES];
-//    }
-}
-
-- (void)dayPlannerView:(MGCDayPlannerView*)view willDisplayDate:(NSDate*)date
-{
-    NSDate *beginDate = [date beginningOfWeek];
-    NSDate *endDate = [date endOfWeek];
+    NSDate *beginDate = [self.dayPlannerView.visibleDays.start beginningOfWeek];
+    NSDate *endDate = [self.dayPlannerView.visibleDays.start endOfWeek];
     NSTimeInterval beginTime = [beginDate timeIntervalSince1970];
     NSTimeInterval endTime = [endDate timeIntervalSince1970];
     NSTimeInterval nowBeginTime = [_userSchedulingListBeginDate timeIntervalSince1970];
     NSTimeInterval nowEndTime = [_userSchedulingListEndDate timeIntervalSince1970];
     if (beginTime <= nowBeginTime) {
         //取上个星期的
-        [self initData:date needLoading:NO needNowWeek:NO needBeforeWeek:YES needAfterWeek:NO];
+        [self initData:self.dayPlannerView.visibleDays.start needLoading:NO needNowWeek:NO needBeforeWeek:YES needAfterWeek:NO];
     } else if (endTime >= nowEndTime) {
         //取下个星期的
-        [self initData:date needLoading:NO needNowWeek:NO needBeforeWeek:NO needAfterWeek:YES];
+        [self initData:self.dayPlannerView.visibleDays.start needLoading:NO needNowWeek:NO needBeforeWeek:NO needAfterWeek:YES];
     }
+    
+    [self.dayPlannerView moveHeadDateToIndex:self.dayPlannerView.visibleDays.start animated:YES];
 }
 
 @end

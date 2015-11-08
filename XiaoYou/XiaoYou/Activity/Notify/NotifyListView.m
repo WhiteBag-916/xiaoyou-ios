@@ -11,6 +11,8 @@
 #import "PassRemindCell.h"
 #import "ScheduleNotifyCell.h"
 #import "ApplyRemindCell.h"
+#import "ScheduleDetailViewController.h"
+#import "UserSchedulingInfo.h"
 
 #define KPAGENUM 10
 
@@ -220,7 +222,46 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
+    NotifyInfoModel *model = self.notifyListArray[indexPath.section];
+    switch (model.type)
+    {
+        case ACTIVITY_ENROLL_CHECK_PASS: //审核通过
+        {
+            break;
+        }
+        case ACTIVITY_ENROLL_NO_CHECK:  //活动报名审核未通过
+        {
+            
+            break;
+        }
+        case SCHEDULE_REMIND: //用户自建日程提醒
+        {
+            UserSchedulingInfo *info = [[UserSchedulingInfo alloc]init];
+            info.internalBaseClassIdentifier = [model.idStr doubleValue];
+            info.type = @"user_scheduling";
+            ScheduleDetailViewController *ScheduleVC = [[ScheduleDetailViewController alloc]initWithInfo:info];
+            [self.viewController.navigationController pushViewController:ScheduleVC animated:YES needHiddenBottomBar:YES];
+            break;
+        }
+        case ACTIVITY_ENROLL: //用户报名活动提醒
+        {
+            
+            break;
+        }
+        case ACTIVITY_PUBLISH:  //
+        {
+           
+            break;
+        }
+        case ACTIVITY_NOTIFY:   //活动通知
+        {
+            break;
+        }
+        default:
+        {
+            break;
+        }
+    }
 }
 
 

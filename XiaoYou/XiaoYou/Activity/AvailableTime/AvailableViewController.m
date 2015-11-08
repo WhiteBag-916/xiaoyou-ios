@@ -121,30 +121,28 @@
 
 -(void)setUpCustomNavgationBar {
     //right barbutton view
-    UIView * view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 95, KNavigationBarheight)];
-    
-    UIButton *setupButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 50, KNavigationBarheight)];
-    [setupButton setImage:[UIImage imageNamed:@"have_time_publish"] forState:UIControlStateNormal];
+    UIButton *setupButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 22, KNavigationBarheight)];
+    [setupButton setImage:[UIImage imageNamed:@"have_time_search"] forState:UIControlStateNormal];
     [setupButton addTarget:self
-                    action:@selector(publishAction)
+                    action:@selector(searchAction)
           forControlEvents:UIControlEventTouchUpInside];
-    [view addSubview:setupButton];
+    UIBarButtonItem *setupButtonItem = [[UIBarButtonItem alloc] initWithCustomView:setupButton];
     
-    UIButton * remindBtn = [[UIButton alloc] initWithFrame:CGRectMake(35, 0, 50, KNavigationBarheight)];
+    UIButton * remindBtn = [[UIButton alloc] initWithFrame:CGRectMake(22, 0, 22, KNavigationBarheight)];
     [remindBtn setImage:[UIImage imageNamed:@"have_time_select"] forState:UIControlStateNormal];
     [remindBtn addTarget:self
                   action:@selector(filterAction)
         forControlEvents:UIControlEventTouchUpInside];
-    [view addSubview:remindBtn];
+    UIBarButtonItem *remindButtonItem = [[UIBarButtonItem alloc] initWithCustomView:remindBtn];
     
-    UIButton * scheduleBtn = [[UIButton alloc] initWithFrame:CGRectMake(70, 0, 50, KNavigationBarheight)];
-    [scheduleBtn setImage:[UIImage imageNamed:@"have_time_search"] forState:UIControlStateNormal];
+    UIButton * scheduleBtn = [[UIButton alloc] initWithFrame:CGRectMake(44, 0, 22, KNavigationBarheight)];
+    [scheduleBtn setImage:[UIImage imageNamed:@"have_time_publish"] forState:UIControlStateNormal];
     [scheduleBtn addTarget:self
-                    action:@selector(searchAction)
+                    action:@selector(publishAction)
           forControlEvents:UIControlEventTouchUpInside];
-    [view addSubview:scheduleBtn];
+    UIBarButtonItem *scheduleButtonItem = [[UIBarButtonItem alloc] initWithCustomView:scheduleBtn];
     
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:view];
+    self.navigationItem.rightBarButtonItems = @[setupButtonItem, remindButtonItem, scheduleButtonItem];
     
     [self showCustomNavigationRemindButton:[AppConfigData isHaveRemindMessage]];
     [AppConfigData setHaveRemindMessage:NO];

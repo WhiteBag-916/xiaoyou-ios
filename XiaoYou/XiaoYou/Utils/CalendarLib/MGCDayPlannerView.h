@@ -423,6 +423,11 @@ typedef enum : NSUInteger {
  */
 - (void)scrollToToday:(BOOL)animated;
 
+/*!
+	@abstract	滚动到天数
+ */
+- (void)moveHeadDateToIndex:(NSDate *)currentDay animated:(BOOL)animated;
+
 @end
 
 

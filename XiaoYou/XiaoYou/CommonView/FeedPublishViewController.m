@@ -104,7 +104,7 @@
     [scroll addSubview:_contentView];
     [_contentView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.equalTo(scroll);
-        //make.width.equalTo(scroll);
+        make.width.equalTo(scroll);
     }];
     [self initGroupView];
     [self initTextView];
