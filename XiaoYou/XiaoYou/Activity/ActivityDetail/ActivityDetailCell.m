@@ -374,8 +374,7 @@
     
     if ([organizer.userType isEqualToString:@"user"]) {
         if ([organizer.uid isEqualToString:[[YShareData defaultData] valueForKey:kShareData_UserID]]) {
-            //ProfileViewController
-            ProfileViewController *myVC = [[ProfileViewController alloc]init];
+            ProfileMyViewController *myVC = [[ProfileMyViewController alloc]init];
             [self.viewController.navigationController pushViewController:myVC animated:YES needHiddenBottomBar:YES];
         } else {
             [self.viewController.navigationController pushViewController:detailVC animated:YES needHiddenBottomBar:YES];
@@ -385,5 +384,4 @@
         [self.viewController.navigationController pushViewController:groupVC animated:YES needHiddenBottomBar:YES];
     }
 }
-
 @end

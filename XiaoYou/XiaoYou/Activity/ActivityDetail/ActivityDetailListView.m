@@ -23,8 +23,8 @@
 #define KPAGENUM    10
 @interface ActivityDetailListView ()<UITableViewDataSource,UITableViewDelegate>
 
-@property (nonatomic,strong) NSMutableArray *activityDetailArray;
 @property (nonatomic,assign) NSInteger currentIndex;
+
 @end
 
 @implementation ActivityDetailListView
@@ -161,6 +161,9 @@
         Author *author = model.enrollActivityUserInfos[indexPath.row-1];
         if (author.studentNo == nil && author.uid == nil)
             return SCALE_NUM(160);
+        if (author.tagsCommon.count == 0 && author.propetiesCommon.count == 0 && indexPath.row == 1) {
+            return SCALE_NUM(120);
+        }
         if (author.tagsCommon.count == 0 && author.propetiesCommon.count == 0) {
             return SCALE_NUM(90);
         }

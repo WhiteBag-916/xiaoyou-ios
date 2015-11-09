@@ -13,6 +13,9 @@
 
 @property (nonatomic,copy) NSString *publishID;
 
+//数据源
+@property (nonatomic,strong) NSMutableArray *activityDetailArray;
+
 -(void)loadData;
 
 -(void)sendRequest;
