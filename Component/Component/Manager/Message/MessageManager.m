@@ -220,6 +220,13 @@ DEF_SINGLETON(MessageManager);
                 
                 break;
             }
+            case GOOD_LOOK: //好看 19
+            {
+                NSDictionary * dic = @{@"message":cmdMessage};
+                [[NSNotificationCenter defaultCenter] postNotificationName:KNotification_GoodLook_Message object:nil userInfo:dic];
+                
+                break;
+            }
             default:
             {
                 
@@ -410,14 +417,7 @@ DEF_SINGLETON(MessageManager);
                 [[ProvisionManager sharedInstance] addUnreadAlterCount:[ext[@"count"] integerValue]];
                 break;
             }
-            case GOOD_LOOK: //好看 19
-            {
-                NSDictionary * dic = @{@"message":message};
-                [[NSNotificationCenter defaultCenter] postNotificationName:KNotification_GoodLook_Message object:nil userInfo:dic];
-                
-                break;
-            }
-                
+
             default:
             {
                 
