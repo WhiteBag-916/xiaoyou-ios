@@ -467,6 +467,7 @@ DEF_SINGLETON(MessageManager);
     notiInfo.timestamp = [dict[@"timestamp"] doubleValue];
     notiInfo.isRead = @"NO";
     notiInfo.type = [[dict valueForKey:@"type"] integerValue];
+    notiInfo.uid = [[YShareData defaultData] valueForKey:[[YShareData defaultData] valueForKey:kShareData_UserID]];
     switch (notiInfo.type)
     {
         case ACTIVITY_ENROLL_CHECK_PASS: //审核通过
