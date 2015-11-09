@@ -185,6 +185,13 @@
 }
 - (void)textViewDidChange:(UITextView *)textView
 {
+    if (_maxEnterNum > 0 && textView.text.length >= _maxEnterNum) {
+        if (_maxEnterText.length > 0) {
+            [YUtils showTitle:_maxEnterText];
+        }
+        
+        [textView setText:[textView.text substringWithRange:NSMakeRange(0, _maxEnterNum)]];
+    }
     [self willShowInputTextViewToHeight:[self getTextViewContentH:textView]];
 }
 

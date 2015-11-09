@@ -49,6 +49,16 @@
 @property (strong, nonatomic) UIButton *faceButton;
 
 /**
+ *  最大输入限制
+ */
+@property (nonatomic, assign) NSInteger maxEnterNum;
+/**
+ *  最大输入提示
+ */
+@property (nonatomic, strong) NSString *maxEnterText;
+
+
+/**
  *  操作栏背景图片
  */
 @property (strong, nonatomic) UIImage *toolbarBackgroundImage;
