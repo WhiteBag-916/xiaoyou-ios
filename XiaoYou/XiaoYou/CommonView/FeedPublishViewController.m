@@ -575,23 +575,23 @@
 //        _isUpLoadEnd = NO;
     }
     
-    WS(weakSelf);
-    [[FeedManager sharedInstance] uploadFeedImage:[pathArray componentsJoinedByString:@","] block:^(YActionMessage *message) {
-        //_isUpLoadEnd = YES;
-        if (message.isSuccess) {
-            weakSelf.picArray = [NSMutableArray arrayWithArray:[(ImageUploadModel *)message.object images]];
-            //_isUpLoadEnd = YES;
-        } else {
-            
-            [weakSelf.picArray addObject:@""];
-        }
-//        if (weakSelf.picArray.count == [weakSelf.imgGroup getImgCount]) {
-            [weakSelf uploadFeed];
-//        }
-    }];
-    
     if ([_imgGroup getImgCount] == 0) {
         [self uploadFeed];
+    } else {
+        WS(weakSelf);
+        [[FeedManager sharedInstance] uploadFeedImage:[pathArray componentsJoinedByString:@","] block:^(YActionMessage *message) {
+            //_isUpLoadEnd = YES;
+            if (message.isSuccess) {
+                weakSelf.picArray = [NSMutableArray arrayWithArray:[(ImageUploadModel *)message.object images]];
+                //_isUpLoadEnd = YES;
+            } else {
+                
+                [weakSelf.picArray addObject:@""];
+            }
+            //        if (weakSelf.picArray.count == [weakSelf.imgGroup getImgCount]) {
+            [weakSelf uploadFeed];
+            //        }
+        }];
     }
 }
 
