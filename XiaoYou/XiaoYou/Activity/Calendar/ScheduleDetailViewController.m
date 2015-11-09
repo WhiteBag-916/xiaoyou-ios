@@ -421,7 +421,8 @@
     NSString *startStr = [startDate stringWithFormat:@"HH:mm"];
     NSDate *endDate = [NSDate dateWithTimeIntervalSince1970:_courseDetail.endTime/1000];
     NSString *endStr = [endDate stringWithFormat:@"HH:mm"];
-    _timeLabel.text = [NSString stringWithFormat:@"第%g周 %@-%@", _courseDetail.week, startStr, endStr];
+    NSString *dateStr = [[NSDate dateWithTimeIntervalSince1970:_userSchedulingInfo.startTime/1000] stringWithFormat:@"MM月dd日"];
+    _timeLabel.text = [NSString stringWithFormat:@"%@ %@-%@", dateStr, startStr, endStr];
     _locationLabel.text = _courseDetail.roomName;
     _departmentsName.text = _courseDetail.departmentName;
 }
