@@ -68,6 +68,7 @@
     {
         self.delegate = self;
         self.dataSource = self;
+        [self setUpHeaderView];
         [self registerClass:[MessageTableViewCell class] forCellReuseIdentifier:kMessageTableViewCell];
     }
     
@@ -87,15 +88,14 @@
 #pragma mark - 刷新界面
 -(void)refreshTableView:(NSMutableArray *) dataSouceArr AndHeaderModel:(EMMessage *) model
 {
-    [self setUpHeaderView:model];
+    _message = model;
+    [self reloadTableViewData];
     self.messageDataSource = [NSMutableArray arrayWithArray:dataSouceArr];
     [self reloadData];
 }
 
--(void)setUpHeaderView:(EMMessage *) model
+-(void)setUpHeaderView
 {
-    _message = model;
-    
     UIView * backView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, kRowHeight*2)];
     UITapGestureRecognizer * tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapGestureRecognizerAction)];
     [backView addGestureRecognizer:tapGestureRecognizer];
@@ -122,34 +122,12 @@
     _badgeNumberLabel.backgroundColor = KCOLOR_009688;
     [backView addSubview:_badgeNumberLabel];
     
-    //未读数
-    NSUInteger unreadCount = model.conversation.unreadMessagesCount;
-    if (unreadCount > 99) {
-        _badgeNumberLabel.hidden = NO;
-        _badgeNumberLabel.text = @"99+";
-    }
-    else if(unreadCount > 0)
-    {
-        _badgeNumberLabel.hidden = NO;
-        _badgeNumberLabel.text = [NSString stringWithFormat:@"%lu", (unsigned long)unreadCount];
-    }
-    else
-    {
-        _badgeNumberLabel.hidden = YES;
-    }
+    
     //时间
     _timeLabel = [[UILabel alloc] initWithFrame:CGRectMake(SCREEN_WIDTH - kPaddingDistance - kTimeLabelWidth, kPaddingDistance, kTimeLabelWidth, kLabelHeightDistacnce)];
     _timeLabel.font = CONTENT_FONT(9);
     _timeLabel.textAlignment = NSTextAlignmentRight;
     _timeLabel.backgroundColor = [UIColor clearColor];
-    if (model)
-    {
-        _timeLabel.text = [self lastMessageTimeByConversation:model];
-    }
-    else
-    {
-        _timeLabel.text = @"";
-    }
     
     [backView addSubview:_timeLabel];
 
@@ -158,14 +136,7 @@
     _messageLabel.font = CONTENT_FONT(12);
     _messageLabel.textColor = KCOLORWHITE_696969;
     _messageLabel.backgroundColor = [UIColor clearColor];
-    if (model)
-    {
-        _messageLabel.text = [self subTitleMessageByConversation:model];
-    }
-    else
-    {
-        _messageLabel.text = @"暂时没有系统消息";
-    }
+    
     
     [backView addSubview:_messageLabel];
     
@@ -211,25 +182,6 @@
     _goodLookTimeLabel.textAlignment = NSTextAlignmentRight;
     _goodLookTimeLabel.backgroundColor = [UIColor clearColor];
     [funBackView addSubview:_goodLookTimeLabel];
-
-    NSDictionary * ext = [[NSUserDefaults standardUserDefaults] objectForKey:@"GoodLookMessage"];
-    if (nil != ext)
-    {
-        if ([ext[@"unreadGoodLook"] boolValue]) {
-            _goodLookHeadImageView.image = [UIImage imageNamed:@"goodlook_see_y"];
-        } else {
-            _goodLookHeadImageView.image = [UIImage imageNamed:@"goodlook_see"];
-        }
-        
-        _goodLookLabel.text = ext[@"em_apns_ext"][@"em_push_title"];
-        _goodLookTimeLabel.text = [YUtils distanceTimeToday:[NSDate dateWithTimeIntervalSince1970:[ext[@"timestamp"] integerValue]/1000]];
-    }
-    else
-    {
-        _goodLookHeadImageView.image = [UIImage imageNamed:@"goodlook_see"];
-        _goodLookLabel.text = @"你最关心的校园资讯";
-        _goodLookTimeLabel.text = @"";
-    }
     
     //底线
     UIView * funBottomView = [[UIView alloc] initWithFrame:CGRectMake(0, kRowHeight-1, SCREEN_WIDTH, kBottomLineHeight)];
@@ -358,6 +310,62 @@
 //        make.width.mas_equalTo(SCREEN_WIDTH);
 //        make.height.mas_equalTo(kRowHeight);
 //    }];
+}
+
+-(void)reloadTableViewData
+{
+    //未读数
+    NSUInteger unreadCount = _message.conversation.unreadMessagesCount;
+    if (unreadCount > 99) {
+        _badgeNumberLabel.hidden = NO;
+        _badgeNumberLabel.text = @"99+";
+    }
+    else if(unreadCount > 0)
+    {
+        _badgeNumberLabel.hidden = NO;
+        _badgeNumberLabel.text = [NSString stringWithFormat:@"%lu", (unsigned long)unreadCount];
+    }
+    else
+    {
+        _badgeNumberLabel.hidden = YES;
+    }
+    
+    if (_message)
+    {
+        _timeLabel.text = [self lastMessageTimeByConversation:_message];
+    }
+    else
+    {
+        _timeLabel.text = @"";
+    }
+    
+    if (_message)
+    {
+        _messageLabel.text = [self subTitleMessageByConversation:_message];
+    }
+    else
+    {
+        _messageLabel.text = @"暂时没有系统消息";
+    }
+    
+    NSDictionary * ext = [[NSUserDefaults standardUserDefaults] objectForKey:@"GoodLookMessage"];
+    if (nil != ext)
+    {
+        if ([ext[@"unreadGoodLook"] boolValue]) {
+            _goodLookHeadImageView.image = [UIImage imageNamed:@"goodlook_see_y"];
+        } else {
+            _goodLookHeadImageView.image = [UIImage imageNamed:@"goodlook_see"];
+        }
+        
+        _goodLookLabel.text = ext[@"em_apns_ext"][@"em_push_title"];
+        _goodLookTimeLabel.text = [YUtils distanceTimeToday:[NSDate dateWithTimeIntervalSince1970:[ext[@"timestamp"] integerValue]/1000]];
+    }
+    else
+    {
+        _goodLookHeadImageView.image = [UIImage imageNamed:@"goodlook_see"];
+        _goodLookLabel.text = @"你最关心的校园资讯";
+        _goodLookTimeLabel.text = @"";
+    }
 }
 
 -(void)tapFunGestureRecognizerAction
