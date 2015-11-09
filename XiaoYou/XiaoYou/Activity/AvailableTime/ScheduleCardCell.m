@@ -236,7 +236,8 @@
 //设置消息未读提醒
 -(void)setMessageNotReadIsVisible:(BOOL)isVisible Text:(NSString *)text
 {
-    self.messageNotRead.hidden = !isVisible;
+    self.messageNotRead.hidden = NO;
+    //self.messageNotRead.hidden = !isVisible;
     [self.messageNotRead setTitle:text forState:UIControlStateNormal];
 }
 

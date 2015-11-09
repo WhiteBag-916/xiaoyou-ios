@@ -188,8 +188,11 @@
 
 -(void)addMySelfToList
 {
+    if (_detailListView.isContainsMe) {
+        return;
+    }
     NSMutableArray *indexPaths = [NSMutableArray array];
-    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:2 inSection:0];
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:1 inSection:0];
     [indexPaths addObject:indexPath];
     
     ActivityDetailModel *detailModel = _detailListView.activityDetailArray[0];
@@ -202,33 +205,15 @@
     author.friendStatus = @"3";
     author.name = proInfo.userName;
     NSMutableArray *newEnroll = [NSMutableArray arrayWithArray:enrollArr];
-    [newEnroll insertObject:author atIndex:1];
+    [newEnroll insertObject:author atIndex:0];
     detailModel.enrollActivityUserInfos = newEnroll;
     
     [_detailListView beginUpdates];
     [_detailListView insertRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationNone];
     [_detailListView endUpdates];
+    [_detailListView reloadData];
 }
 
-/*
- ActivityDetailModel *model = self.activityDetailArray[0];
- NSArray *enrollArr = model.enrollActivityUserInfos;
- _currentIndex = enrollArr.count;
- [self sendRequest];
- */
-
-//-(IBAction)addRows:(id)sender{
-//    NSMutableArray *indexPaths = [[NSMutableArray alloc] init];
-//    for (int i=0; i<3; i++) {
-//        NSString *s = [[NSString alloc] initWithFormat:@”hello %d”,i];
-//        [datas addObject:s];
-//        NSIndexPath *indexPath = [NSIndexPath indexPathForRow:i inSection:0];
-//        [indexPaths addObject: indexPath];
-//    }
-//    [self.tableView beginUpdates];
-//    [self.tableView insertRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewScrollPositionNone];
-//    [self.tableView endUpdates];
-//}
 
 //参加某个活动的事件
 - (void)joinInAction {
