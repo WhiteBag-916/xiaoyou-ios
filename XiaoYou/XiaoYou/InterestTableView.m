@@ -67,7 +67,7 @@
 
     NSString *lastDate;
     if ([self isHeaderRefresh]) {
-        lastDate = [[NSDate date] dayDescription];
+        lastDate = @"0";//[[NSDate date] dayDescription];
     } else {
         lastDate = [self getYesterdayFrom:(NSInteger)[(NewsList *)[[[_dataArray lastObject] newsList] lastObject]publishTime]/1000];
     }
