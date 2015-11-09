@@ -433,6 +433,14 @@ DEF_SINGLETON(MessageManager);
                 [[ProvisionManager sharedInstance] addUnreadAlterCount:[ext[@"count"] integerValue]];
                 break;
             }
+            case GOOD_LOOK: //好看 19
+            {
+                NSDictionary * dic = @{@"message":message};
+                [[NSNotificationCenter defaultCenter] postNotificationName:KNotification_GoodLook_Message object:nil userInfo:dic];
+                
+                break;
+            }
+                
             default:
             {
                 
@@ -569,6 +577,17 @@ DEF_SINGLETON(MessageManager);
 
 
 //接收正常消息
+
+//Printing description of ext:
+//{
+//    "em_apns_ext" =     {
+//        "em_push_title" = 123;
+//    };
+//    "server_flag" = 1;
+//    timestamp = 1447059083802;
+//    type = 19;
+//}
+
 -(void)didReceiveMessage:(EMMessage *)message
 {
     YLogD(@"%@", message.ext);

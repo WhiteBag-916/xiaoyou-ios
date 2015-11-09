@@ -37,7 +37,8 @@
 #define KNotification_Refresh_FeedList                  @"KNotification_Refresh_FeedList"
 //发布活动
 #define KNotification_Enabel_ReleaseBtn                 @"KNotification_Enabel_ReleaseBtn"
-
+//好看
+#define KNotification_GoodLook_Message                 @"KNotification_GoodLook_Message"
 
 #define KNotification_Activity_Release_ScrollTo         @"KNotification_Activity_Release_ScrollTo"
 //发布活动成功通知刷界面
