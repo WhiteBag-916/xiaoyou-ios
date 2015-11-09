@@ -34,6 +34,7 @@
         _labelLine.image = [UIImage imageNamed:@"news_tag_time"];
         
         _timeLabel = [[UILabel alloc] init];
+        _timeLabel.textColor = KCOLOR_B3;
         [self addSubview:_timeLabel];
         [_timeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
             make.center.equalTo(self);
