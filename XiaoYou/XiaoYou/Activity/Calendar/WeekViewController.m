@@ -391,8 +391,6 @@ static NSString* const EventCellReuseIdentifier = @"EventCellReuseIdentifier";
         //取下个星期的
         [self initData:self.dayPlannerView.visibleDays.start needLoading:NO needNowWeek:NO needBeforeWeek:NO needAfterWeek:YES];
     }
-    
-    [self.dayPlannerView moveHeadDateToIndex:self.dayPlannerView.visibleDays.start animated:YES];
 }
 
 @end

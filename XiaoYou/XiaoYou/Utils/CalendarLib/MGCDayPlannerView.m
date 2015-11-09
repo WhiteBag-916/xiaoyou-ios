@@ -1506,8 +1506,7 @@ static const CGFloat kMaxHourSlotHeight = 150.;
     if (!self.calendarDayHeaderView.superview) {
         [self addSubview:self.calendarDayHeaderView];
         
-        NSDate *date = [self dateFromDayOffset:0];
-        [self.calendarDayHeaderView resetData:date];
+        [self.calendarDayHeaderView resetData:self.startDate];
     }
 }
 
@@ -2113,6 +2112,10 @@ static const CGFloat kMaxHourSlotHeight = 150.;
 	//NSLog(@"scrollViewDidEndDecelerating");
 
 	[self scrollViewDidEndScrolling:scrollView];
+    
+    //移动head
+    NSDate *date = [self dateFromDayOffset:scrollView.contentOffset.x/self.dayColumnSize.width];
+    [self moveHeadDateToIndex:date animated:YES];
 }
 
 - (void)scrollViewDidEndScrollingAnimation:(UIScrollView*)scrollView

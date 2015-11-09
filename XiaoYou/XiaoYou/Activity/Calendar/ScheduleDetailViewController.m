@@ -192,10 +192,11 @@
                                  color:KCOLOR_B3
                                   text:_userSchedulingInfo.address
                              alignment:NSTextAlignmentLeft];
+    _locationLabel.numberOfLines = 0;
     [self.view addSubview:_locationLabel];
     
     [_locationLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.centerY.equalTo(locationLeftLabel);
+        make.top.equalTo(locationLeftLabel);
         make.left.equalTo(_lecturerName);
         make.right.mas_equalTo(K_NAMELAB_R);
     }];
@@ -206,7 +207,7 @@
     
     [departmentsImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.height.width.equalTo(lecturerImageView);
-        make.top.equalTo(locationImageView.mas_bottom).offset(K_DEPARTMENTSIMG_T);
+        make.top.equalTo(_locationLabel.mas_bottom).offset(K_DEPARTMENTSIMG_T);
     }];
     
     UILabel *departmentsLabel = [YUtils initLabel:CONTENT_FONT(12)
@@ -420,7 +421,8 @@
     NSString *startStr = [startDate stringWithFormat:@"HH:mm"];
     NSDate *endDate = [NSDate dateWithTimeIntervalSince1970:_courseDetail.endTime/1000];
     NSString *endStr = [endDate stringWithFormat:@"HH:mm"];
-    _timeLabel.text = [NSString stringWithFormat:@"第%g周 %@-%@", _courseDetail.week, startStr, endStr];
+    NSString *dateStr = [[NSDate dateWithTimeIntervalSince1970:_userSchedulingInfo.startTime/1000] stringWithFormat:@"MM月dd日"];
+    _timeLabel.text = [NSString stringWithFormat:@"%@ %@-%@", dateStr, startStr, endStr];
     _locationLabel.text = _courseDetail.roomName;
     _departmentsName.text = _courseDetail.departmentName;
 }
