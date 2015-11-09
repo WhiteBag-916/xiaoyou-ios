@@ -27,7 +27,7 @@
     
     [self showCustomNavigationBackButton];
     [self initRightBar];
-    self.title = @"社团总汇";
+    self.title = @"社团/学生组织";
     self.hidesBottomBarWhenPushed = NO;
     //tableview
     _associationsListTableView = [[AssociationsListTableView alloc] init];

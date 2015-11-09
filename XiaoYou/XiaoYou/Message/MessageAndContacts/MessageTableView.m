@@ -351,20 +351,23 @@
     NSDictionary * ext = [[NSUserDefaults standardUserDefaults] objectForKey:@"GoodLookMessage"];
     if (nil != ext)
     {
+        _goodLookTimeLabel.hidden = NO;
         if ([ext[@"unreadGoodLook"] boolValue]) {
             _goodLookHeadImageView.image = [UIImage imageNamed:@"goodlook_see_y"];
+            _goodLookLabel.text = ext[@"em_apns_ext"][@"em_push_title"];
+            _goodLookTimeLabel.text = [YUtils distanceTimeToday:[NSDate dateWithTimeIntervalSince1970:[ext[@"timestamp"] integerValue]/1000]];
         } else {
             _goodLookHeadImageView.image = [UIImage imageNamed:@"goodlook_see"];
+            _goodLookHeadImageView.image = [UIImage imageNamed:@"goodlook_see"];
+            _goodLookLabel.text = @"你最关心的校园资讯";
+            _goodLookTimeLabel.hidden = YES;
         }
-        
-        _goodLookLabel.text = ext[@"em_apns_ext"][@"em_push_title"];
-        _goodLookTimeLabel.text = [YUtils distanceTimeToday:[NSDate dateWithTimeIntervalSince1970:[ext[@"timestamp"] integerValue]/1000]];
     }
     else
     {
         _goodLookHeadImageView.image = [UIImage imageNamed:@"goodlook_see"];
         _goodLookLabel.text = @"你最关心的校园资讯";
-        _goodLookTimeLabel.text = @"";
+        _goodLookTimeLabel.hidden = YES;
     }
 }
 
@@ -384,6 +387,7 @@
     NSMutableDictionary * ext = [NSMutableDictionary dictionaryWithDictionary:message.ext];
     if (nil != ext)
     {
+        _goodLookTimeLabel.hidden = NO;
         _goodLookHeadImageView.image = [UIImage imageNamed:@"goodlook_see_y"];
         _goodLookLabel.text = ext[@"em_apns_ext"][@"em_push_title"];
         _goodLookTimeLabel.text = [YUtils distanceTimeToday:[NSDate dateWithTimeIntervalSince1970:message.timestamp/1000]];

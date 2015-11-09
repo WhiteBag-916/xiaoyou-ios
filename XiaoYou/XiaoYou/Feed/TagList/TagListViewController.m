@@ -167,7 +167,7 @@
     }];
     icon.image = [UIImage imageNamed:@"society"];
     
-    UILabel *hint = [YUtils initLabel:CONTENT_FONT(14) color:KCOLORWHITE text:@"社团总汇（一键加入）" frame:CGRectZero alignment:NSTextAlignmentLeft];
+    UILabel *hint = [YUtils initLabel:CONTENT_FONT(14) color:KCOLORWHITE text:@"社团/学生组织" frame:CGRectZero alignment:NSTextAlignmentLeft];
     [_bottomView addSubview:hint];
     [hint mas_makeConstraints:^(MASConstraintMaker *make) {
         make.right.equalTo(_bottomView);
