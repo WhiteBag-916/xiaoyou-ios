@@ -133,7 +133,7 @@
     else {
         ActivityDetailModel *model = self.activityDetailArray[0];
         if (model.enrollActivityUserInfos.count == 0) {
-            //当没有数据的时候,插入一条数据
+            //当没有数据的时候,插入一条空数据
             Author *author = [[Author alloc]init];
             author.studentNo = nil;
             author.uid = nil;
@@ -146,7 +146,7 @@
 
 #pragma mark  Feed部分的控件要考虑复用
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-{;
+{
     CGFloat height;
     if (indexPath.row == 0) {
         height = [tableView fd_heightForCellWithIdentifier:REUSEID_DETAILCELL cacheByIndexPath:indexPath        configuration:^(ActivityDetailCell *cell) {

@@ -103,6 +103,7 @@
     _remindTitleLabel.text = @"恭喜,报名申请通过！！！";
     _remindTitleLabel.textColor = KCOLOR_B4;
     _remindTitleLabel.font = CONTENT_FONT(15);
+    [_remindTitleLabel sizeToFit];
     [_remindTitleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.height.mas_equalTo(SCALE_NUM(17));
         make.left.equalTo(self.titleImageView.mas_right).offset(10).priorityLow();
@@ -302,8 +303,10 @@
     _notifyModel = model;
     _titleImageView.image = nil;
     [_headImageView setFaceImageWithUrl:model.headIcon];
+    _remindTitleLabel.font = CONTENT_FONT(12);
     [_remindTitleLabel mas_updateConstraints:^(MASConstraintMaker *make) {
         make.leading.mas_equalTo(SCALE_NUM(5)).priorityHigh();
+        make.trailing.mas_equalTo(SCALE_NUM(-3));
     }];
     _remindTitleLabel.text = model.em_push_title;
     _contentTitleLabel.text = model.organizer;

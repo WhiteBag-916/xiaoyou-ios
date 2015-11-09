@@ -17,7 +17,7 @@
 
 @property (nonatomic,strong) NotifyListView *notifyListView;
 
-@property (nonatomic,strong) NSArray *notifyDataSource;
+@property (nonatomic,strong) NSMutableArray *notifyDataSource;
 
 @end
 
@@ -63,13 +63,29 @@
         
         
         _notifyDataSource = [NotifyInfoModel objectArrayWithKeyValuesArray:queryArr];
-        [dataBaseDao deleteAllDataWithTableName:tableName];
+        //[dataBaseDao deleteAllDataWithTableName:tableName];
         
         //如果需要保存历史纪录的话,打开下面代码
 //        for (NotifyInfoModel *model in _notifyDataSource) {
 //            model.isRead = @"YES";
 //            [dataBaseDao insertModel:model];
 //        }
+        
+        
+        //去除重复元素
+        for (int i = 0; i < _notifyDataSource.count; i++) {
+            NotifyInfoModel *m1 = _notifyDataSource[i];
+            
+            NotifyInfoModel *m2;
+            if (i+1 < _notifyDataSource.count)
+                m2 = _notifyDataSource[i+1];
+            if (m2 != nil) {
+                if (m1.type == m2.type && [m1.idStr isEqualToString:m2.idStr]) {
+                    [_notifyDataSource removeObject:m1];
+                }
+            }
+        }
+        
     }
     return _notifyDataSource;
 }

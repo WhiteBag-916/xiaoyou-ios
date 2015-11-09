@@ -208,8 +208,9 @@
     Author *info = model.activityUser;
     [_headImageView setFaceImageWithUrl:info.headPic];
     _nameLabel.text = info.name;
-    _applyContentLable.text = [NSString stringWithFormat:_applyContentLable.text,model.activityName];
+    //_applyContentLable.text = [NSString stringWithFormat:_applyContentLable.text,model.activityName];
     
+    [_applyContentLable setText:[NSString stringWithFormat:_applyContentLable.text,model.activityName] lineSpacing:5.0];
     [_connectTagView updateWithTag:info.propetiesCommon];
 }
 

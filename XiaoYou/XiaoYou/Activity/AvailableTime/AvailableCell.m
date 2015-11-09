@@ -107,7 +107,7 @@
     _descriptionLabel.font = CONTENT_FONT(12);
     _descriptionLabel.textColor = KCOLOR_B5;
     
-    NSString *desTextString = @"活动简介：fdsfdsfds";
+    NSString *desTextString = @"描述：";
     
     [_descriptionLabel setText:desTextString lineSpacing:SCALE_NUM(10.f)];
     
@@ -254,12 +254,13 @@
     NSArray *imageTextModels =  model.activityImageTextModels;
     
     BOOL isNotHaveImage = YES;
-    _titleLabel.text        = publishModel.name;//标题
+    //_titleLabel.text        = publishModel.name;//标题
+    [_titleLabel setText:publishModel.name lineSpacing:5];
     //图文混排
     for (ActivityImageTextModels *imageText in imageTextModels) {
         if ([imageText.type isEqualToString:@"text"]) {
-            _descriptionLabel.text = [NSString stringWithFormat:@"%@%@",@"描述:",_descriptionLabel.text];
-            [_descriptionLabel setText:imageText.content lineSpacing:SCALE_NUM(10.f)];
+            NSString *desContent = [NSString stringWithFormat:@"%@%@",@"描述:",imageText.content];
+            [_descriptionLabel setText:desContent lineSpacing:SCALE_NUM(5)];
         }
         else if ([imageText.type isEqualToString:@"image"]) {
             if (![imageText.content isEmpty]) {
