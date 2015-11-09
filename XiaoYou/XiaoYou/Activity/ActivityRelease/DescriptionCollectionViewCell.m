@@ -99,7 +99,7 @@ NSString *const kDescriptionCollectionViewCell = @"DescriptionCollectionViewCell
     
     _deleteBtn.hidden = YES;
     
-    NSDictionary * dic = @{@"position":@2};
+    NSDictionary * dic = @{@"position":@2,@"picImage":@YES};
     [[NSNotificationCenter defaultCenter] postNotificationName:KNotification_Activity_Release_ScrollTo object:dic];
     
     

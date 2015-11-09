@@ -168,6 +168,7 @@ typedef enum : NSUInteger {
 -(void)changeScrollPosition:(NSNotification *) notification
 {
     NSInteger positionNum = [notification.object[@"position"] integerValue];
+    BOOL isPicImage = [notification.object[@"picImage"] boolValue];
     switch (positionNum)
     {
         case POSITION1:
@@ -177,7 +178,9 @@ typedef enum : NSUInteger {
             break;
         case POSITION2:
             NSLog(@"2");
-            [self showkeyword:_btn2];
+            if (!isPicImage) {
+                [self showkeyword:_btn2];
+            }
             [self setPointHighlight:2];
             break;
         case POSITION3:
