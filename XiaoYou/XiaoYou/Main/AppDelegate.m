@@ -63,7 +63,7 @@
                 
                 if (type == 13 || type == 16)
                     [self initNotifyRemindListNC];
-                else
+                else if (type >=13 && type <= 19)
                     [self initNotifyRemindNC];
             }
 
