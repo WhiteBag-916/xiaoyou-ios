@@ -479,6 +479,9 @@ DEF_SINGLETON(MessageManager);
     notiInfo.type = [[dict valueForKey:@"type"] integerValue];
     notiInfo.uid = [[YShareData defaultData] valueForKey:kShareData_UserID];
     
+    if (notiInfo.em_push_title == nil) {
+        notiInfo.em_push_title = dict[@"contentTxt"];
+    }
     
     
     switch (notiInfo.type)
