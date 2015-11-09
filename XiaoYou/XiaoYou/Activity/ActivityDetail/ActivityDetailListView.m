@@ -130,19 +130,15 @@
 #pragma mark -协议方法
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return self.activityDetailArray.count;
-    if (self.activityDetailArray.count == 0 || self.activityDetailArray[0] == nil)
-        return 0;
+    if (self.activityDetailArray.count == 1) {
+        Author *author = [[Author alloc]init];
+        author.studentNo = nil;
+        author.uid = nil;
+        [self.activityDetailArray addObject:author];
+        return self.activityDetailArray.count;
+    }
     else {
-        ActivityDetailModel *model = self.activityDetailArray[0];
-        if (model.enrollActivityUserInfos.count == 0) {
-            //当没有数据的时候,插入一条空数据
-            Author *author = [[Author alloc]init];
-            author.studentNo = nil;
-            author.uid = nil;
-            model.enrollActivityUserInfos = @[author];
-        }
-        return 1 + model.enrollActivityUserInfos.count ;
+        return self.activityDetailArray.count;
     }
     return 0;
 }
