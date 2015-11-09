@@ -112,15 +112,16 @@
     }
     
 	// sort layout attributes by frame y-position
-	NSArray *adjustedAttributes = [attributes sortedArrayUsingComparator:^NSComparisonResult(MGCEventCellLayoutAttributes *att1, MGCEventCellLayoutAttributes *att2) {
-		if (att1.frame.origin.y > att2.frame.origin.y) {
-			 return NSOrderedDescending;
-		}
-		else if (att1.frame.origin.y < att2.frame.origin.y) {
-			 return NSOrderedAscending;
-		}
-		return NSOrderedSame;
-    }];
+    NSArray *adjustedAttributes = [NSArray arrayWithArray:attributes];
+//	NSArray *adjustedAttributes = [attributes sortedArrayUsingComparator:^NSComparisonResult(MGCEventCellLayoutAttributes *att1, MGCEventCellLayoutAttributes *att2) {
+//		if (att1.frame.origin.y > att2.frame.origin.y) {
+//			 return NSOrderedDescending;
+//		}
+//		else if (att1.frame.origin.y < att2.frame.origin.y) {
+//			 return NSOrderedAscending;
+//		}
+//		return NSOrderedSame;
+//    }];
     
     //算最大交集
     NSMutableArray *allArray = [[NSMutableArray alloc] init];
