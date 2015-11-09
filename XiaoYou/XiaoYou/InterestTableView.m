@@ -121,7 +121,9 @@
     if (indexPath.row % 2 == 0) {
         return 42;
     }
-    return [tableView fd_heightForCellWithIdentifier:KInterestCell cacheByIndexPath:indexPath configuration:nil];
+    return [tableView fd_heightForCellWithIdentifier:KInterestCell cacheByIndexPath:indexPath configuration:^(id cell) {
+        [(InterestTableViewCell *)cell setData:[(InterestModel *)_dataArray[indexPath.section] newsList][indexPath.row/2]];
+    }];
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.row % 2 == 1) {

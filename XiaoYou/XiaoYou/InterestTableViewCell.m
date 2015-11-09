@@ -33,9 +33,10 @@
         _picture.layer.cornerRadius = 4;
         
         _title = [YUtils initLabel:CONTENT_FONT(15) color:[UIColor blackColor] text:@"你最关心的校园资讯" alignment:NSTextAlignmentLeft];
+        _title.numberOfLines = 0;
         [self.contentView addSubview:_title];
         [_title mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.left.equalTo(_picture);
+            make.left.right.equalTo(_picture);
             make.top.equalTo(_picture.mas_bottom).offset(15);
         }];
         
@@ -50,6 +51,7 @@
         tint.image = [UIImage imageNamed:@"news_icon_location"];
         
         _source = [YUtils initLabel:CONTENT_FONT(12) color:[UIColor hexChangeFloat:@"b5b5b5"] text:@"今日头条" alignment:NSTextAlignmentLeft];
+        _source.numberOfLines = 0;
         [self.contentView addSubview:_source];
         [_source mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.equalTo(tint.mas_right).offset(7);
