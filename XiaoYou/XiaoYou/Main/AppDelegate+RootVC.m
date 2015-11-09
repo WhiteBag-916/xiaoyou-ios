@@ -20,6 +20,7 @@
 #import "NotifyViewController.h"
 #import "DDMenuController.h"
 #import "TagListViewController.h"
+#import "RemindViewController.h"
 
 @implementation AppDelegate(RootVC)
 
@@ -111,6 +112,17 @@
         
         UINavigationController * avableVC = self.tabBar.selectedViewController;
         NotifyViewController *notiVC = [[NotifyViewController alloc]init];
+        [avableVC pushViewController:notiVC animated:YES needHiddenBottomBar:YES];
+    }
+}
+
+
+- (void)initNotifyRemindListNC {
+    if (nil != self.tabBar) {
+        self.tabBar.selectedIndex = 1;
+        
+        UINavigationController * avableVC = self.tabBar.selectedViewController;
+        RemindViewController *notiVC = [[RemindViewController alloc]init];
         [avableVC pushViewController:notiVC animated:YES needHiddenBottomBar:YES];
     }
 }

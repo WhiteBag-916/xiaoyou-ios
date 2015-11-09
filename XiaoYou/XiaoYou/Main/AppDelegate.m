@@ -57,16 +57,17 @@
         if (dataDictExt != nil) {
             [[MessageManager sharedInstance] dealMessageWithDict:dataDictExt];
             
-            [self initNotifyRemindNC];
-        }
-        
-        
-        
-//        notiInfo.headIcon = dict[@"headIcon"];
-//        notiInfo.idStr = dict[@"id"];
-//        notiInfo.name = dict[@"name"];
-//        notiInfo.organizer = dict[@"organizer"];
+            
+            if (userInfo[@"e"][@"type"] != nil) {
+                NSInteger type = [userInfo[@"e"][@"type"] integerValue];
+                
+                if (type == 13 || type == 16)
+                    [self initNotifyRemindListNC];
+                else
+                    [self initNotifyRemindNC];
+            }
 
+        }
     }
     return YES;
 }

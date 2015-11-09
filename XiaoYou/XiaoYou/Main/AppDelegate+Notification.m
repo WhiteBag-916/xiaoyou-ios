@@ -76,10 +76,10 @@
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo
 {
     
-    NSString *message = [userInfo description];
-    UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"提示" message:message delegate:self cancelButtonTitle:@"aa" otherButtonTitles:@"bb", nil];
-    
-    [alert show];
+//    NSString *message = [userInfo description];
+//    UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"提示" message:message delegate:self cancelButtonTitle:@"aa" otherButtonTitles:@"bb", nil];
+//    
+//    [alert show];
     
     YLogI(@"didReceiveRemoteNotification : %@", userInfo);
     [[UIApplication sharedApplication] setApplicationIconBadgeNumber:1];
@@ -103,8 +103,14 @@
 {
     NSDictionary *dic = notification.userInfo;
     NSInteger type = [[dic valueForKey:kServerType] integerValue];
-    if (type >= ACTIVITY_ENROLL_CHECK_PASS && type <= ACTIVITY_NOTIFY)
-        [self initNotifyRemindNC];
+    if (type >= ACTIVITY_ENROLL_CHECK_PASS && type <= ACTIVITY_NOTIFY) {
+     
+        if (type == 13 || type == 16)
+            [self initNotifyRemindListNC];
+        else
+            [self initNotifyRemindNC];
+        //[self initNotifyRemindNC];
+    }
 }
 
 
