@@ -9,7 +9,6 @@
 #import "YViewController.h"
 #import "YFoundation.h"
 #import "MobClick.h"
-#import "UINavigationController+FDFullscreenPopGesture.h"
 
 @interface YViewController ()<UIGestureRecognizerDelegate>
 

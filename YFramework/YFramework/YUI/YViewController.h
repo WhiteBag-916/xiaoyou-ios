@@ -10,6 +10,7 @@
 #import "YFoundation.h"
 #import "YNavigationController.h"
 #import "Masonry.h"
+#import "UINavigationController+FDFullscreenPopGesture.h"
 
 /**
  *  @author Abc

@@ -354,6 +354,7 @@
 {
     [super viewWillDisappear:animated];
     
+    
     [_chatToolBar.inputTextView resignFirstResponder];
     
     // 设置当前conversation的所有message为已读
@@ -1315,6 +1316,7 @@
  */
 - (void)didStartRecordingVoiceAction:(UIView *)recordView
 {
+    self.fd_interactivePopDisabled = YES;
     self.view.userInteractionEnabled = NO;
     self.navigationController.navigationBar.userInteractionEnabled = NO;
     if ([self canRecord]) {
@@ -1351,6 +1353,7 @@
  */
 - (void)didFinishRecoingVoiceAction:(UIView *)recordView
 {
+    self.fd_interactivePopDisabled = NO;
     self.view.userInteractionEnabled = YES;
     self.navigationController.navigationBar.userInteractionEnabled = YES;
     __weak typeof(self) weakSelf = self;
