@@ -195,9 +195,10 @@ static NSString* const EventCellReuseIdentifier = @"EventCellReuseIdentifier";
             UserSchedulingInfo *dataArrayObj = dataArray[j];
             if (userSchedulingInfoObj.internalBaseClassIdentifier == dataArrayObj.internalBaseClassIdentifier
                 && [userSchedulingInfoObj.type isEqualToString:dataArrayObj.type]) {
-                //删除旧的，加新的
-                [_userSchedulingInfoArray removeObjectAtIndex:i];
-                --i;
+                //替换旧的，不加入
+                userSchedulingInfoObj = dataArrayObj;
+                [dataArray removeObjectAtIndex:j];
+                --j;
                 break;
             }
         }
