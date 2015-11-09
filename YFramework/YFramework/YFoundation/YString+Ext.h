@@ -29,6 +29,9 @@
 //判断是否为空
 - (BOOL)isEmpty;
 
+//判断是否是emoji
+- (BOOL)stringContainsEmoji;
+
 //自定义文本大小
 - (CGSize)customTextSize:(UIFont *)font size:(CGSize)inputSize;
 
