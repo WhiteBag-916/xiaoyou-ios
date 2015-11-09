@@ -1317,10 +1317,6 @@ static const CGFloat kMaxHourSlotHeight = 150.;
     [self scrollToDate:date options:MGCDayPlannerScrollTime animated:animated];
 }
 
-- (void)moveHeadDateToIndex:(NSDate *)currentDay animated:(BOOL)animated {
-    [_calendarDayHeaderView _movePagesToIndex:currentDay animated:animated];
-}
-
 #pragma mark - Reloading content
 
 // this is called whenever we recenter the views during scrolling
@@ -2115,7 +2111,7 @@ static const CGFloat kMaxHourSlotHeight = 150.;
     
     //移动head
     NSDate *date = [self dateFromDayOffset:scrollView.contentOffset.x/self.dayColumnSize.width];
-    [self moveHeadDateToIndex:date animated:YES];
+    [_calendarDayHeaderView resetData:date];
 }
 
 - (void)scrollViewDidEndScrollingAnimation:(UIScrollView*)scrollView

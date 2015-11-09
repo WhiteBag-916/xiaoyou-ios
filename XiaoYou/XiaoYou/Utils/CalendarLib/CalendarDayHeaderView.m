@@ -500,47 +500,6 @@
     
 }
 
-- (void) _movePagesToIndex:(NSDate *)currentDay animated:(BOOL)animated{
-    
-    if ([currentDay timeIntervalSince1970] == [self.currentDay timeIntervalSince1970]) {
-        //时间相同
-        return;
-    }
-    NSInteger offTime = ([currentDay timeIntervalSince1970]-[self.currentDay timeIntervalSince1970])/(60*60*24);
-    self.indexOfCurrentDay =  offTime> 0 ? self.indexOfCurrentDay+offTime : self.indexOfCurrentDay-offTime;
-    
-    self.currentDay = currentDay;
-    [self _updateDateLabel];
-    
-    if(self.indexOfCurrentDay < 0 || self.indexOfCurrentDay > 6){
-        self.userInteractionEnabled = NO;
-        
-        NSInteger day = self.indexOfCurrentDay < 0 ? 6 : 0;
-        
-        
-        [UIView animateWithDuration:0.3 animations:^{
-            self.daysScrollView.contentOffset = self.indexOfCurrentDay > 6 ? CGPointMake(CGRectGetWidth(self.daysScrollView.frame)*2, 0) : CGPointZero;
-        }completion:^(BOOL finished){
-            [self _resetWeekdayOrderByMoving:self.indexOfCurrentDay > 0];
-            self.userInteractionEnabled = YES;
-            self.indexOfCurrentDay = day;
-        }];
-        
-    }
-    
-    
-    
-    [UIView transitionWithView:self.daysScrollView.subviews.firstObject duration:0.3 options:UIViewAnimationOptionTransitionCrossDissolve animations:^{
-        [self _updateSelectedWeekdayAtIndex:self.indexOfCurrentDay+7];
-    }completion:nil];
-    
-    
-    
-    
-//    [self _scrollToTopEvent:animated];
-    
-}
-
 - (void)resetData:(NSDate *)currentDay{
     
     if (![self.currentDay isEqual:currentDay]) {
