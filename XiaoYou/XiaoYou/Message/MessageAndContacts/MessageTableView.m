@@ -172,7 +172,7 @@
     [backView addSubview:bottomView];
     
     
-    self.tableHeaderView = backView;
+//    self.tableHeaderView = backView;
     
     
     UIView * funBackView = [[UIView alloc] initWithFrame:CGRectMake(0, kRowHeight, SCREEN_WIDTH, kRowHeight)];
@@ -224,8 +224,11 @@
     
 //    UIView * backView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, kRowHeight)];
     UITapGestureRecognizer * tapGestureRecognizer1 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapFunGestureRecognizerAction)];
-    [backView addGestureRecognizer:tapGestureRecognizer1];
-    backView.backgroundColor = [UIColor clearColor];
+    [funBackView addGestureRecognizer:tapGestureRecognizer1];
+    funBackView.backgroundColor = [UIColor clearColor];
+    
+    self.tableHeaderView = backView;
+    
 //    //头像
 //    _headImageView = [[UIImageView alloc] init];
 //    _headImageView.layer.cornerRadius = kHeadCornerRadius;
