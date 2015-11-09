@@ -513,6 +513,36 @@
     return YES;
 }
 
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range
+replacementString:(NSString *)string
+{
+    NSInteger fieldLen = [textField.text length];
+    NSInteger rangeLen = range.length;
+    NSInteger strLen = string.length;
+    if (![string isEqualToString:@"\n"])
+    {
+        if (K_TAG_NAME == textField.tag)
+        {
+            //name
+            if (fieldLen - rangeLen + strLen > 30)
+            {
+                [YUtils showTitle:@"日程名称不能大于30字"];
+                return NO;
+            }
+        }
+        else if (K_TAG_LOCATION == textField.tag)
+        {
+            //地点
+            if (fieldLen - rangeLen + strLen > 100)
+            {
+                [YUtils showTitle:@"地点不能大于100字"];
+                return NO;
+            }
+        }
+    }
+    return YES;
+}
+
 - (void)textFieldValueChanged:(UITextField *)sender{
     if (K_TAG_NAME == sender.tag) {
         if (sender.text.length >= 30)

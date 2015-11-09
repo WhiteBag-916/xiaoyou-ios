@@ -55,6 +55,25 @@ NSString *const kNameCollectionViewCell = @"NameCollectionViewCellId";
 }
 
 #pragma mark - UITextViewDelegate
+- (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text
+{
+    NSInteger fieldLen = [textView.text length];
+    NSInteger rangeLen = range.length;
+    NSInteger strLen = text.length;
+    if (![text isEqualToString:@"\n"])
+    {
+        if (fieldLen - rangeLen + strLen > 30)
+        {
+            [YUtils showTitle:@"名称字数不能大于30字"];
+            return NO;
+        }
+    } else {
+        //在这里做你响应return键的代码
+        [self endEditing:YES];
+        return NO; //这里返回NO，就代表return键值失效，即页面上按下return，不会出现换行，如果为yes，则输入页面会换行
+    }
+    return YES;
+}
 
 - (void)textViewDidChange:(UITextView *)textView
 {
@@ -94,37 +113,6 @@ NSString *const kNameCollectionViewCell = @"NameCollectionViewCellId";
     NSDictionary * dic = @{@"position":@1};
     [[NSNotificationCenter defaultCenter] postNotificationName:KNotification_Activity_Release_ScrollTo object:dic];
     return YES;
-}
-
--(BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text
-{
-    if ([text isEqualToString:@"\n"]){ //判断输入的字是否是回车，即按下return
-        //在这里做你响应return键的代码
-        [self endEditing:YES];
-        return NO; //这里返回NO，就代表return键值失效，即页面上按下return，不会出现换行，如果为yes，则输入页面会换行
-    }
-    else{
-        return  YES;
-    }
-
-    
-//    if (range.location>=3)
-//    {
-//        if ([self isBlankString:text])
-//        {
-//            [YUtils showTitle:@"名称不能为空"];
-//            return NO;
-//        }
-//        else
-//        {
-//            [YUtils showTitle:@"名称字数不能大于30字"];
-//            return NO;
-//        }
-//    }
-//    else
-//    {
-//        return YES;
-//    }
 }
 //判断字符串为空和只为空格解决办法
 - (BOOL) isBlankString:(NSString *)string {

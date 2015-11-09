@@ -172,6 +172,9 @@
 
 - (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text
 {
+    NSInteger fieldLen = [textView.text length];
+    NSInteger rangeLen = range.length;
+    NSInteger strLen = text.length;
     if ([text isEqualToString:@"\n"]) {
         if ([self.delegate respondsToSelector:@selector(didSendText:)]) {
             [self.delegate didSendText:textView.text];
@@ -180,9 +183,18 @@
         }
         
         return NO;
+    }else {
+        if (_maxEnterNum > 0 && fieldLen - rangeLen + strLen > _maxEnterNum)
+        {
+            if (_maxEnterText.length > 0) {
+                [YUtils showTitle:_maxEnterText];
+            }
+            return NO;
+        }
     }
     return YES;
 }
+
 - (void)textViewDidChange:(UITextView *)textView
 {
     if (_maxEnterNum > 0 && textView.text.length >= _maxEnterNum) {

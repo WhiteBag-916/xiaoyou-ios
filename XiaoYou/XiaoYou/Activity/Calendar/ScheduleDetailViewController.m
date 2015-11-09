@@ -37,6 +37,9 @@
 @property (nonatomic, strong) UILabel *locationLabel;       //上课地点
 @property (nonatomic, strong) UILabel *departmentsName;     //开课单位
 
+@property (nonatomic, strong) UIImageView *departmentsImageView;
+@property (nonatomic, strong) UILabel *locationLeftLabel;
+
 @property (nonatomic, strong) CourseDetail *courseDetail;//课程
 @property (nonatomic, strong) UserSchedulingInfo *userSchedulingInfo;
 
@@ -176,13 +179,13 @@
         make.top.equalTo(timeLeftLabel.mas_bottom).offset(K_DEPARTMENTSIMG_T);
     }];
     
-    UILabel *locationLeftLabel = [YUtils initLabel:CONTENT_FONT(12)
+    _locationLeftLabel = [YUtils initLabel:CONTENT_FONT(12)
                                              color:KCOLOR_B5
                                               text:@"日程地点："
                                          alignment:NSTextAlignmentLeft];
-    [self.view addSubview:locationLeftLabel];
+    [self.view addSubview:_locationLeftLabel];
     
-    [locationLeftLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+    [_locationLeftLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.equalTo(locationImageView);
         make.left.equalTo(lecturerLabel);
         make.width.mas_equalTo(K_LEFTLAB_W);
@@ -196,18 +199,18 @@
     [self.view addSubview:_locationLabel];
     
     [_locationLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(locationLeftLabel);
+        make.top.equalTo(_locationLeftLabel);
         make.left.equalTo(_lecturerName);
         make.right.mas_equalTo(K_NAMELAB_R);
     }];
     
     //开课单位
-    UIImageView *departmentsImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"havetime_icon_remind"]];
-    [self.view addSubview:departmentsImageView];
+    _departmentsImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"havetime_icon_remind"]];
+    [self.view addSubview:_departmentsImageView];
     
-    [departmentsImageView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.height.width.equalTo(lecturerImageView);
-        make.top.equalTo(locationLeftLabel.mas_bottom).offset(K_DEPARTMENTSIMG_T);
+    [_departmentsImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.height.width.equalTo(locationImageView);
+        make.top.equalTo(_locationLabel.mas_bottom).offset(K_DEPARTMENTSIMG_T);
     }];
     
     UILabel *departmentsLabel = [YUtils initLabel:CONTENT_FONT(12)
@@ -217,7 +220,7 @@
     [self.view addSubview:departmentsLabel];
     
     [departmentsLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.centerY.equalTo(departmentsImageView);
+        make.centerY.equalTo(_departmentsImageView);
         make.left.equalTo(lecturerLabel);
         make.width.mas_equalTo(K_LEFTLAB_W);
     }];
@@ -229,7 +232,7 @@
     [self.view addSubview:_departmentsName];
     
     [_departmentsName mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.centerY.equalTo(departmentsImageView);
+        make.centerY.equalTo(_departmentsImageView);
         make.left.equalTo(_lecturerName);
         make.right.mas_equalTo(K_NAMELAB_R);
     }];
@@ -241,6 +244,11 @@
     _lecturerName.text = [NSDate stringFromDate:beginTime withFormat:@"yy/MM/dd HH:mm"];
     NSDate *endTime = [NSDate dateWithTimeIntervalSince1970:_userSchedulingInfo.endTime/1000];
     _timeLabel.text = [NSDate stringFromDate:endTime withFormat:@"yy/MM/dd HH:mm"];
+    if (_userSchedulingInfo.address.length <= 0) {
+        [_departmentsImageView mas_updateConstraints:^(MASConstraintMaker *make) {
+            make.top.equalTo(_locationLeftLabel.mas_bottom).offset(K_DEPARTMENTSIMG_T);;
+        }];
+    }
     _locationLabel.text = _userSchedulingInfo.address;
     _departmentsName.text = [[ActivityManager sharedInstance] remindTextByTime:_userSchedulingInfo.noticeTimePeriod];
 }
@@ -350,13 +358,13 @@
         make.top.equalTo(timeImageView.mas_bottom).offset(K_DEPARTMENTSIMG_T);
     }];
     
-    UILabel *locationLeftLabel = [YUtils initLabel:CONTENT_FONT(12)
+    _locationLeftLabel = [YUtils initLabel:CONTENT_FONT(12)
                                              color:KCOLOR_B5
                                               text:@"上课地点："
                                          alignment:NSTextAlignmentLeft];
-    [self.view addSubview:locationLeftLabel];
+    [self.view addSubview:_locationLeftLabel];
     
-    [locationLeftLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+    [_locationLeftLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.equalTo(locationImageView);
         make.left.equalTo(courseLabel);
         make.width.mas_equalTo(K_LEFTLAB_W);
@@ -369,16 +377,16 @@
     [self.view addSubview:_locationLabel];
     
     [_locationLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.centerY.equalTo(locationLeftLabel);
+        make.centerY.equalTo(_locationLeftLabel);
         make.left.equalTo(_lecturerName);
         make.right.mas_equalTo(K_NAMELAB_R);
     }];
     
     //开课单位
-    UIImageView *departmentsImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"havetime_icon_academy"]];
-    [self.view addSubview:departmentsImageView];
+    _departmentsImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"havetime_icon_academy"]];
+    [self.view addSubview:_departmentsImageView];
     
-    [departmentsImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+    [_departmentsImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.height.width.equalTo(courseImageView);
         make.top.equalTo(locationImageView.mas_bottom).offset(K_DEPARTMENTSIMG_T);
     }];
@@ -390,7 +398,7 @@
     [self.view addSubview:departmentsLabel];
     
     [departmentsLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.centerY.equalTo(departmentsImageView);
+        make.centerY.equalTo(_departmentsImageView);
         make.left.equalTo(courseLabel);
         make.width.mas_equalTo(K_LEFTLAB_W);
     }];
@@ -402,7 +410,7 @@
     [self.view addSubview:_departmentsName];
     
     [_departmentsName mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.centerY.equalTo(departmentsImageView);
+        make.centerY.equalTo(_departmentsImageView);
         make.left.equalTo(_lecturerName);
         make.right.mas_equalTo(K_NAMELAB_R);
     }];

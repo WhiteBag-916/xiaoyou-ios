@@ -642,4 +642,30 @@
     return imageStr;
 }
 
+#pragma mark - UITextViewDelegate
+- (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text
+{
+    NSInteger fieldLen = [textView.text length];
+    NSInteger rangeLen = range.length;
+    NSInteger strLen = text.length;
+    if (![text isEqualToString:@"\n"])
+    {
+        if (fieldLen - rangeLen + strLen > 200)
+        {
+            [YUtils showTitle:@"描述字数不能大于200字"];
+            return NO;
+        }
+    }
+    return YES;
+}
+
+- (void)textViewDidChange:(UITextView *)textView
+{
+    if (textView.text.length>5000)
+    {
+        [YUtils showTitle:@"描述字数不能大于5000字"];
+        [textView setText:[textView.text substringWithRange:NSMakeRange(0, 5000)]];
+    }
+}
+
 @end

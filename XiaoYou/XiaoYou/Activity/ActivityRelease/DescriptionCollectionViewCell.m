@@ -219,6 +219,21 @@ NSString *const kDescriptionCollectionViewCell = @"DescriptionCollectionViewCell
 }
 
 #pragma mark - UITextViewDelegate
+- (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text
+{
+    NSInteger fieldLen = [textView.text length];
+    NSInteger rangeLen = range.length;
+    NSInteger strLen = text.length;
+    if (![text isEqualToString:@"\n"])
+    {
+        if (fieldLen - rangeLen + strLen > 5000)
+        {
+            [YUtils showTitle:@"描述字数不能大于5000字"];
+            return NO;
+        }
+    }
+    return YES;
+}
 
 - (void)textViewDidChange:(UITextView *)textView
 {
