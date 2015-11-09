@@ -550,7 +550,7 @@ DEF_SINGLETON(MessageManager);
             [dataBaseDao insertModel:notiInfo];
             break;
         }
-        case ACTIVITY_NOTIFY:                       //活动快要开始
+        case ACTIVITY_NOTIFY:                       //活动通知提醒,活动快要开始
         {
             notiInfo.headIcon = dict[@"headIcon"];
             notiInfo.idStr = dict[@"id"];

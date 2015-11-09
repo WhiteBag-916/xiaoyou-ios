@@ -282,7 +282,11 @@
 {
     _model = model;
     Author *info = model.activityUser;
-    [_headImageView setFaceImageWithUrl:info.headPic];
+    
+    if (![model.activityOrganizerHeadPic isEmpty])
+        [_headImageView setFaceImageWithUrl:model.activityOrganizerHeadPic];
+    else
+        _headImageView.image = [UIImage imageNamed:@"default_head"];
     if (_cellType == SUCESSED_JOININ) {
         _contentTitleLabel.text = model.activityOrganizer;
     }

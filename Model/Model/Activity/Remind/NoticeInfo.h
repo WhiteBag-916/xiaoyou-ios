@@ -15,6 +15,7 @@
 @property (nonatomic, assign) double enrollTime;
 @property (nonatomic, strong) NSString *userName;
 @property (nonatomic, strong) NSString *activityOrganizer;
+@property (nonatomic, strong) NSString *activityOrganizerHeadPic;
 @property (nonatomic, assign) BOOL activityOwner;
 @property (nonatomic, assign) double activityPublishedId;
 @property (nonatomic, strong) NSString *activityName;

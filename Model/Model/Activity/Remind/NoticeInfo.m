@@ -21,6 +21,7 @@ NSString *const kObjActivityEndTime = @"activityEndTime";
 NSString *const kObjCheckStatus = @"checkStatus";
 NSString *const kObjActivityStartTime = @"activityStartTime";
 NSString *const kObjActivityUser=@"activityUser";
+NSString *const kObjActivityOrganizerHeadPic=@"activityOrganizerHeadPic";
 
 @interface NoticeInfo ()
 
@@ -42,6 +43,7 @@ NSString *const kObjActivityUser=@"activityUser";
 @synthesize checkStatus = _checkStatus;
 @synthesize activityStartTime = _activityStartTime;
 @synthesize activityUser = _activityUser;
+@synthesize activityOrganizerHeadPic = _activityOrganizerHeadPic;
 
 + (instancetype)modelObjectWithDictionary:(NSDictionary *)dict
 {
@@ -60,6 +62,7 @@ NSString *const kObjActivityUser=@"activityUser";
             self.enrollTime = [[self objectOrNilForKey:kObjEnrollTime fromDictionary:dict] doubleValue];
             self.userName = [self objectOrNilForKey:kObjUserName fromDictionary:dict];
             self.activityOrganizer = [self objectOrNilForKey:kObjActivityOrganizer fromDictionary:dict];
+            self.activityOrganizerHeadPic = [self objectOrNilForKey:kObjActivityOrganizerHeadPic fromDictionary:dict];
             self.activityOwner = [[self objectOrNilForKey:kObjActivityOwner fromDictionary:dict] boolValue];
             self.activityPublishedId = [[self objectOrNilForKey:kObjActivityPublishedId fromDictionary:dict] doubleValue];
             self.activityName = [self objectOrNilForKey:kObjActivityName fromDictionary:dict];
@@ -88,6 +91,7 @@ NSString *const kObjActivityUser=@"activityUser";
     [mutableDict setValue:self.checkStatus forKey:kObjCheckStatus];
     [mutableDict setValue:[NSNumber numberWithDouble:self.activityStartTime] forKey:kObjActivityStartTime];
     [mutableDict setValue:self.activityUser forKey:kObjActivityUser];
+    [mutableDict setValue:self.activityOrganizerHeadPic forKey:kObjActivityOrganizerHeadPic];
     return [NSDictionary dictionaryWithDictionary:mutableDict];
 }
 
@@ -122,6 +126,7 @@ NSString *const kObjActivityUser=@"activityUser";
     self.checkStatus = [aDecoder decodeObjectForKey:kObjCheckStatus];
     self.activityStartTime = [aDecoder decodeDoubleForKey:kObjActivityStartTime];
     self.activityUser = [aDecoder decodeObjectForKey:kObjActivityUser];
+    self.activityOrganizerHeadPic = [aDecoder decodeObjectForKey:kObjActivityOrganizerHeadPic];
     return self;
 }
 
@@ -140,6 +145,7 @@ NSString *const kObjActivityUser=@"activityUser";
     [aCoder encodeObject:_checkStatus forKey:kObjCheckStatus];
     [aCoder encodeDouble:_activityStartTime forKey:kObjActivityStartTime];
     [aCoder encodeObject:_activityUser forKey:kObjActivityUser];
+    [aCoder encodeObject:_activityOrganizerHeadPic forKey:kObjActivityOrganizerHeadPic];
 }
 
 - (id)copyWithZone:(NSZone *)zone
@@ -160,6 +166,7 @@ NSString *const kObjActivityUser=@"activityUser";
         copy.checkStatus = [self.checkStatus copyWithZone:zone];
         copy.activityStartTime = self.activityStartTime;
         copy.activityUser = self.activityUser;
+        copy.activityOrganizerHeadPic = self.activityOrganizerHeadPic;
     }
     
     return copy;
