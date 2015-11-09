@@ -13,6 +13,7 @@
 #import "UserSchedulingInfo.h"
 #import "YBaseService.h"
 #import "AppConfigData.h"
+#import "MessageManager.h"
 
 @interface AppDelegate ()
 
@@ -30,20 +31,17 @@
     [self initRootVC];
     
     [AppConfigData setHaveRemindMessage:NO];
-    
-    NSDictionary*userInfo = [launchOptions objectForKey:UIApplicationLaunchOptionsRemoteNotificationKey];
-    if(userInfo)
+    NSDictionary *userInfo = [launchOptions objectForKey:UIApplicationLaunchOptionsRemoteNotificationKey];
+    if(nil != userInfo && nil != userInfo[@"e"])
     {
-        NSString *message = [userInfo description];
-        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"提示" message:message delegate:self cancelButtonTitle:@"aa" otherButtonTitles:@"bb", nil];
-        
-        [alert show];
-        
-        [self initNotifyRemindNC];
-        UILocalNotification *localNoti = [[UILocalNotification alloc]init];
-        localNoti.userInfo = userInfo;
-        //[self application:[UIApplication sharedApplication] didReceiveRemoteNotification:userInfo];
-        [self application:[UIApplication sharedApplication] didReceiveLocalNotification:localNoti];
+        NSDictionary *dic = userInfo[@"e"];
+        NSMutableDictionary *dataDictExt = [NSMutableDictionary dictionaryWithDictionary:dic[@"obj"]];
+        [dataDictExt setObject:userInfo[@"e"][@"type"] forKey:@"type"];
+        [dataDictExt setObject:userInfo[@"e"][@"timestamp"] forKey:@"timestamp"];
+        if (dataDictExt != nil) {
+            [[MessageManager sharedInstance] dealMessageWithDict:dataDictExt];
+            [self initNotifyRemindNC];
+        }
     }
 
     return YES;

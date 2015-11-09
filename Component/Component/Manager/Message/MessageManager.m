@@ -460,6 +460,8 @@ DEF_SINGLETON(MessageManager);
 
 -(void)dealMessageWithDict:(NSDictionary*)dict
 {
+    
+    
     NSString *dataBasePath = [NSString stringWithFormat:@"%@//%@",[YDirectory documents],NSStringFromClass([NotifyInfoModel class])];
     YDatabaseDao *dataBaseDao = [[YDatabaseDao alloc]initWitDatabasePath:dataBasePath];
     NotifyInfoModel *notiInfo = [[NotifyInfoModel alloc]init];
@@ -467,7 +469,10 @@ DEF_SINGLETON(MessageManager);
     notiInfo.timestamp = [dict[@"timestamp"] doubleValue];
     notiInfo.isRead = @"NO";
     notiInfo.type = [[dict valueForKey:@"type"] integerValue];
-    notiInfo.uid = [[YShareData defaultData] valueForKey:[[YShareData defaultData] valueForKey:kShareData_UserID]];
+    notiInfo.uid = [[YShareData defaultData] valueForKey:kShareData_UserID];
+    
+    
+    
     switch (notiInfo.type)
     {
         case ACTIVITY_ENROLL_CHECK_PASS: //审核通过

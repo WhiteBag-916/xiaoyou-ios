@@ -72,4 +72,7 @@ AS_SINGLETON(MessageManager);
  *********************************************************************/
 - (void)interestList:(NSInteger)publishDay maxSize:(NSInteger)maxSize block:(ActionCompleteBlock)block;
 
+//处理消息
+-(void)dealMessageWithDict:(NSDictionary*)dict;
+
 @end
