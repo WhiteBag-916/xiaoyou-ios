@@ -9,11 +9,11 @@
 #import "MyTimetableHeadView.h"
 
 #define K_LABEL_TAG          600000
-#define K_LABEL_T            SCALE_NUM(4)
+#define K_LABEL_T            SCALE_NUM(0)
 #define K_LABEL_L            SCALE_NUM(45)
 #define K_MID_LABEL_L            SCALE_NUM(10)
 #define K_LABEL_WH            SCALE_NUM(30)
-#define K_NOW_B            SCALE_NUM(-1)
+#define K_NOW_B            SCALE_NUM(-5)
 
 @interface MyTimetableHeadView ()
 
