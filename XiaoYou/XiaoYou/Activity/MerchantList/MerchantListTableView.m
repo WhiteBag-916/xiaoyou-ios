@@ -130,7 +130,7 @@
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return SCALE_NUM(135);
+    return SCALE_NUM(130);
 }
 
 @end

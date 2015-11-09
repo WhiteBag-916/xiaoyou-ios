@@ -45,7 +45,7 @@ NSString *const kMerchantListTableViewCell = @"MerchantListTableViewCellId";
     [_headImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.mas_equalTo(SCALE_NUM(15));
         make.left.mas_equalTo(SCALE_NUM(15));
-        make.width.height.mas_equalTo(SCALE_NUM(105));
+        make.width.height.mas_equalTo(SCALE_NUM(50));
     }];
     
     _nameLabel = [[UILabel alloc] init];
@@ -62,8 +62,8 @@ NSString *const kMerchantListTableViewCell = @"MerchantListTableViewCellId";
     
     _characterLabel = [[UILabel alloc] init];
     _characterLabel.backgroundColor = [UIColor clearColor];
-    _characterLabel.font = CONTENT_FONT(SCALE_NUM(11));
-    _characterLabel.textColor = [UIColor hexChangeFloat:@"666666"];
+    _characterLabel.font = CONTENT_FONT(SCALE_NUM(10));
+    _characterLabel.textColor = KCOLOR_B5;
     [self.contentView addSubview:_characterLabel];
     [_characterLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(_nameLabel);
@@ -79,7 +79,7 @@ NSString *const kMerchantListTableViewCell = @"MerchantListTableViewCellId";
     [self.contentView addSubview:_placeLabel];
     [_placeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(_characterLabel);
-        make.top.equalTo(_characterLabel.mas_bottom).offset(12);
+        make.top.equalTo(_characterLabel.mas_bottom).offset(15);
         make.right.equalTo(self.contentView).offset(SCALE_NUM(-15));
         make.height.mas_equalTo(SCALE_NUM(11));
     }];
