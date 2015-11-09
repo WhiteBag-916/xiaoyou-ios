@@ -20,7 +20,7 @@
 
 #define REUSEID_DETAILCELL  @"ActivityDetailCell"
 #define REUSEID_JOINCELL    @"ActivityJoinInCell"
-#define KPAGENUM    10
+#define KPAGENUM    5
 @interface ActivityDetailListView ()<UITableViewDataSource,UITableViewDelegate>
 
 @property (nonatomic,assign) NSInteger currentIndex;
@@ -86,15 +86,15 @@
 
 - (void)loadMoreData
 {
-    ActivityDetailModel *model = self.activityDetailArray[0];
-    NSArray *enrollArr = model.enrollActivityUserInfos;
-    _currentIndex = enrollArr.count;
+//    ActivityDetailModel *model = self.activityDetailArray[0];
+//    NSArray *enrollArr = model.enrollActivityUserInfos;
+//    _currentIndex = enrollArr.count;
+    _currentIndex = self.activityDetailArray.count - 1;
     [self sendRequest];
 }
 
 -(void)sendRequest
 {
-    [_activityDetailArray removeAllObjects];
     if (![self isHeaderRefresh])
         [YUtils showHUDWithTitle:@"正在加载..."];
     [[ActivityManager sharedInstance] findActivityDetailInfo:_currentIndex limitEnd:_currentIndex + KPAGENUM activityPublishedId:self.publishID getDetail:YES block:^(YActionMessage *message) {
@@ -103,11 +103,13 @@
             if ([self isHeaderRefresh]) {
                 [self.activityDetailArray removeAllObjects];
             }
-            [self.activityDetailArray addObject:message.object];
-            ActivityDetailModel *model = self.activityDetailArray[0];
-            NSArray *enrollArr = model.enrollActivityUserInfos;
+            if (_currentIndex == 0) {
+                [self.activityDetailArray addObject:message.object];
+            }
+            NSArray *newData = [message.object valueForKey:@"enrollActivityUserInfos"];
+            [self.activityDetailArray addObjectsFromArray:newData];
             [self hiddenFooter:NO];
-            if (1+enrollArr.count < KPAGENUM) {
+            if ([newData count] < KPAGENUM) {
                 [self showNoticeNoMoreData];
             }
             [self reloadData];
@@ -128,6 +130,7 @@
 #pragma mark -协议方法
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
+    return self.activityDetailArray.count;
     if (self.activityDetailArray.count == 0 || self.activityDetailArray[0] == nil)
         return 0;
     else {
@@ -160,7 +163,7 @@
             model = self.activityDetailArray[0];
         else
             return 0;
-        Author *author = model.enrollActivityUserInfos[indexPath.row-1];
+        Author *author = self.activityDetailArray[indexPath.row];
         if (author.studentNo == nil && author.uid == nil)
             return SCALE_NUM(160);
         if (author.tagsCommon.count == 0 && author.propetiesCommon.count == 0 && indexPath.row == 1) {
@@ -199,11 +202,8 @@
         CELLTYPE type = indexPath.row == 1? IS_TOPVIEW : NOT_TOPVIEW;
         cell = [[ActivityJoinInCell alloc]init];
         
-        ActivityDetailModel *model = nil;
-        
         if (self.activityDetailArray.count > 0) {
-            model = self.activityDetailArray[0];
-            Author *author = model.enrollActivityUserInfos[indexPath.row-1];
+            Author *author = self.activityDetailArray[indexPath.row];
             [cell setData:author];
             cell.type = type;
             
@@ -220,11 +220,6 @@
 
 -(CGFloat)calculatorTagsCommHeightByProfileInfo:(ProfileInfo*)model
 {
-//    Author * author = _personListArray[indexPath.row];
-//    ProfileInfo * model = [[ProfileInfo alloc] init];
-//    model.propetiesCommon = author.propetiesCommon;
-//    model.tagsCommon = author.tagsCommon;
-    
     if (model.tagsCommon.count > 0)
     {
         CGFloat height;

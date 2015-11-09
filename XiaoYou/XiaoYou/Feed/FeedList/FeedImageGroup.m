@@ -35,7 +35,7 @@
 - (id)init {
     self = [super init];
     if (self) {
-        _imgSize = SCALE_NUM(70);
+        _imgSize = SCALE_NUM(76);
         _smallImgs = [NSMutableArray array];
         [self initImgs];
     }
