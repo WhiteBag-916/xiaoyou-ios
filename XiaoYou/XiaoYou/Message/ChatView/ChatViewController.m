@@ -551,6 +551,7 @@
         _imagePicker = [[UIImagePickerController alloc] init];
         _imagePicker.modalPresentationStyle= UIModalPresentationOverFullScreen;
         _imagePicker.delegate = self;
+        _imagePicker.allowsEditing = YES;
     }
     
     return _imagePicker;
