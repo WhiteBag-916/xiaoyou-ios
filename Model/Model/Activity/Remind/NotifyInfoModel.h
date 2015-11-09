@@ -23,6 +23,7 @@ typedef enum : NSUInteger {
 @property (nonatomic,copy) NSString *headIcon;
 
 //用户自建日程提醒信息
+@property (nonatomic,assign) NSString   *uid;
 @property (nonatomic,assign) NSInteger  type;
 @property (nonatomic,assign) double startTime;
 @property (nonatomic,assign) double timestamp;

@@ -15,7 +15,7 @@
  **********************************************************/
 /** https接口*/
 #if 0
-#define api_server_base_url @"http://release.xiaoyou.com/mobile"
+#define api_server_base_url @"http://v3.xiaoyou.com/mobile"
 #define UMENG_APPKEY @"55cda497e0f55ad43d00204c"
 #define hx_AppKey            @"jiankun#xiaoyou"
 #define hx_AppCertificate           @"xiaoyou_producation"

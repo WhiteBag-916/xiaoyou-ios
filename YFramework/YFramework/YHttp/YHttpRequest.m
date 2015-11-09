@@ -39,6 +39,7 @@ static NSMutableArray *Requests = nil;
             case YHttpRequestTypeGetData:
                 request = [ASIHTTPRequest requestWithURL:url];
                 request.absTimeOutSeconds = defaultHttpTimeOutSeconds;
+                request.timeOutSeconds = defaultHttpTimeOutSeconds;
                 break;
             case YHttpRequestTypePostData:
                 if ([parameters[kYHttpRequestPostData] isKindOfClass:[NSDictionary class]])
@@ -63,11 +64,13 @@ static NSMutableArray *Requests = nil;
                     }
                 }
                 request.absTimeOutSeconds = defaultHttpTimeOutSeconds;
+                request.timeOutSeconds = defaultHttpTimeOutSeconds;
                 break;
 
             case YHttpRequestTypeDownloadFile:
                 request = [ASIHTTPRequest requestWithURL:url];
                 request.absTimeOutSeconds = defaultUpDownLoadHttpTimeOutSeconds;
+                request.timeOutSeconds = defaultUpDownLoadHttpTimeOutSeconds;
                 [request setDownloadDestinationPath:parameters[kYHttpRequestDownloadDestinationPath]];
                 break;
 
@@ -75,6 +78,7 @@ static NSMutableArray *Requests = nil;
             case YHttpRequestTypeUploadFile:
                 request = [ASIFormDataRequest requestWithURL:url];
                 request.absTimeOutSeconds = defaultUpDownLoadHttpTimeOutSeconds;
+                request.timeOutSeconds = defaultUpDownLoadHttpTimeOutSeconds;
                 if ([parameters[kYHttpRequestPostData] isKindOfClass:[NSDictionary class]])
                 {
                     NSDictionary *paramDic = parameters[kYHttpRequestPostData];

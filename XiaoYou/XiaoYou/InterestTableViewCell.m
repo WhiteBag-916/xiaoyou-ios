@@ -24,10 +24,10 @@
         _picture = [[UIImageView alloc] init];
         [self.contentView addSubview:_picture];
         [_picture mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.top.equalTo(self.contentView);
-            make.left.mas_equalTo(12);
-            make.right.equalTo(self.contentView).offset(-12);
-            make.height.equalTo(_picture.mas_width).multipliedBy(0.3547);
+            make.top.mas_equalTo(10);
+            make.width.mas_equalTo(SCALE_NUM(296));
+            make.height.mas_equalTo(SCALE_NUM(178));
+            make.centerX.equalTo(self.contentView);
         }];
         _picture.clipsToBounds = true;
         _picture.layer.cornerRadius = 4;
@@ -46,7 +46,7 @@
             make.left.equalTo(_title);
             make.height.width.mas_equalTo(12);
             make.top.equalTo(_title.mas_bottom).offset(10);
-            make.bottom.equalTo(self.contentView);
+            make.bottom.mas_equalTo(-10);
         }];
         tint.image = [UIImage imageNamed:@"news_icon_location"];
         
@@ -58,7 +58,7 @@
             make.top.bottom.equalTo(tint);
         }];
         
-        _timeLabel = [YUtils initLabel:CONTENT_FONT(12) color:[UIColor hexChangeFloat:@"b5b5b5"] text:@"3小时前" alignment:NSTextAlignmentRight];
+        _timeLabel = [YUtils initLabel:CONTENT_FONT(10) color:[UIColor hexChangeFloat:@"b5b5b5"] text:@"3小时前" alignment:NSTextAlignmentRight];
         [self.contentView addSubview:_timeLabel];
         [_timeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
             make.right.equalTo(_picture);

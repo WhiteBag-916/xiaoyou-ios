@@ -56,6 +56,14 @@
     NSString *myUid = [[YShareData defaultData] valueForKey:kShareData_UserID];
     if (![author.uid isEqualToString:myUid]) {
         _isSelfNameLabel.text = @"";
+    } else
+    {
+        _genderImageView.image = nil;
+        _isSelfNameLabel.font = CONTENT_FONT(10);
+        _isSelfNameLabel.textColor = KCOLOR_B5;
+        [_isSelfNameLabel mas_updateConstraints:^(MASConstraintMaker *make) {
+            make.left.equalTo(_genderImageView.mas_left).offset(SCALE_NUM(0)).priorityHigh();
+        }];
     }
 }
 
@@ -101,7 +109,7 @@
     _isSelfNameLabel.text = @"自己";
     _isSelfNameLabel.font = CONTENT_FONT(10);
     [_isSelfNameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(_genderImageView.mas_right).offset(SCALE_NUM(8));
+        make.left.equalTo(_genderImageView.mas_right).offset(SCALE_NUM(8)).priorityLow();
         make.top.equalTo(_genderImageView);
         make.height.mas_equalTo(SCALE_NUM(12));
     }];

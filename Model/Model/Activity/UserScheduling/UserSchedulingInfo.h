@@ -17,10 +17,10 @@
 @property (nonatomic, strong) NSString *uid;
 @property (nonatomic, strong) NSString *type;
 @property (nonatomic, strong) NSString *address;
-@property (nonatomic, assign) double endTime;
+@property (nonatomic, assign) int64_t endTime;
 @property (nonatomic, assign) double noticeTimePeriod;
 @property (nonatomic, assign) double createTime;
-@property (nonatomic, assign) double startTime;
+@property (nonatomic, assign) int64_t startTime;
 @property (nonatomic, strong) NSString *status;
 @property (nonatomic, strong) NSString *content;
 

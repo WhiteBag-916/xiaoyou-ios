@@ -476,7 +476,7 @@
         NSString *keyStr = [NSString stringWithFormat:@"feed%d.png", [_imgGroup getImgCount]];
         
         //写入文件
-        NSData *imageData = UIImageJPEGRepresentation(image, 0.5);
+        NSData *imageData = UIImageJPEGRepresentation(image, 0.1);
         NSString *fullPath = [[YDirectory newImgCache] stringByAppendingPathComponent:keyStr];
         
         //保存到沙盒
@@ -547,7 +547,7 @@
 
 //上传图片没有同步
 - (void)uploadPic {
-    _isUpLoadEnd = NO;
+    //_isUpLoadEnd = NO;
     
     [_picArray removeAllObjects];
     [YUtils showHUDWithTitle:@"正在上传"];
@@ -576,15 +576,17 @@
     
     WS(weakSelf);
     [[FeedManager sharedInstance] uploadFeedImage:[pathArray componentsJoinedByString:@","] block:^(YActionMessage *message) {
+        //_isUpLoadEnd = YES;
         if (message.isSuccess) {
             weakSelf.picArray = [NSMutableArray arrayWithArray:[(ImageUploadModel *)message.object images]];
-            _isUpLoadEnd = YES;
+            //_isUpLoadEnd = YES;
         } else {
+            
             [weakSelf.picArray addObject:@""];
         }
-        if (weakSelf.picArray.count == [weakSelf.imgGroup getImgCount]) {
+//        if (weakSelf.picArray.count == [weakSelf.imgGroup getImgCount]) {
             [weakSelf uploadFeed];
-        }
+//        }
     }];
     
     if ([_imgGroup getImgCount] == 0) {
@@ -618,6 +620,7 @@
                 });
             } else {
                 [YUtils showTitle:message.desc];
+                //_isUpLoadEnd = YES;
             }
         }];
         
