@@ -9,7 +9,7 @@
 #import "CourseTeacherlist.h"
 
 
-NSString *const kFindMyCourseModelDepartmentName = @"departmentName";
+NSString *const kFindMyCourseModelDepartmentName = @"instituteName";
 NSString *const kFindMyCourseModelSchoolCode = @"schoolCode";
 NSString *const kFindMyCourseModelCourseTeacherlist = @"courseTeacherlist";
 NSString *const kFindMyCourseModelCourseYear = @"courseYear";
