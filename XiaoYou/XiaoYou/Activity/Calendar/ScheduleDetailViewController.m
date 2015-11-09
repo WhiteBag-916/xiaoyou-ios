@@ -74,7 +74,7 @@
     //课程
     UILabel *courseLabel = [YUtils initLabel:CONTENT_FONT(14)
                                        color:KCOLOR_B3
-                                        text:@"活动名称："
+                                        text:@"日程名称："
                                    alignment:NSTextAlignmentLeft];
     [self.view addSubview:courseLabel];
     

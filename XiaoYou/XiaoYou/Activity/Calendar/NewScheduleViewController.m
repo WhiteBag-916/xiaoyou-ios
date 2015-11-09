@@ -395,7 +395,7 @@
         return;
     }
     
-    NSDictionary *dic = @{@"content":_userSchedulingInfo.content, @"id":[NSString stringWithFormat:@"%g", _userSchedulingInfo.internalBaseClassIdentifier], @"endTime": [NSString stringWithFormat:@"%.f", _userSchedulingInfo.endTime], @"startTime": [NSString stringWithFormat:@"%.f", _userSchedulingInfo.startTime], @"address":SStr(_userSchedulingInfo.address), @"noticeTimePeriod":[NSString stringWithFormat:@"%g", _userSchedulingInfo.noticeTimePeriod]};
+    NSDictionary *dic = @{@"content":_userSchedulingInfo.content, @"id":[NSString stringWithFormat:@"%g", _userSchedulingInfo.internalBaseClassIdentifier], @"endTime": [NSString stringWithFormat:@"%lld", _userSchedulingInfo.endTime], @"startTime": [NSString stringWithFormat:@"%lld", _userSchedulingInfo.startTime], @"address":SStr(_userSchedulingInfo.address), @"noticeTimePeriod":[NSString stringWithFormat:@"%g", _userSchedulingInfo.noticeTimePeriod]};
     [YUtils showHUDWithTitle];
     [[ActivityManager sharedInstance] userSchedulingEdit:dic block:^(YActionMessage *message) {
         [YUtils hiddenProgressHUD];
@@ -487,23 +487,22 @@
     NSDateFormatter * formatter = [[NSDateFormatter alloc] init];
     [formatter setDateFormat:@"yyyy年MM月dd日 HH:mm"];
     NSString * showStr = [formatter stringFromDate:_datePicker.date];
-    NSInteger dateInt = [_datePicker.date timeIntervalSince1970];
+    int64_t dateInt = [_datePicker.date timeIntervalSince1970]*1000;
     //耦合性很高
     if (K_TAG_BCLASS == _chooesTag) {
         UILabel *timeLabel = (UILabel *)[_bClassView viewWithTag:_chooesTag];
         timeLabel.text = showStr;
         timeLabel.textColor = KCOLOR_B4;
         
-        _userSchedulingInfo.startTime = dateInt*1000;
+        _userSchedulingInfo.startTime = dateInt;
         
     } else if (K_TAG_FCLASS == _chooesTag) {
         UILabel *timeLabel = (UILabel *)[_fClassView viewWithTag:_chooesTag];
         timeLabel.text = showStr;
         timeLabel.textColor = KCOLOR_B4;
         
-        _userSchedulingInfo.endTime = dateInt*1000;
+        _userSchedulingInfo.endTime = dateInt;
     }
-    
 }
 
 #pragma mark - UITextFieldDelegate  键盘
