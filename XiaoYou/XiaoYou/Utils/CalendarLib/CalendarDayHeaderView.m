@@ -502,6 +502,10 @@
 
 - (void) _movePagesToIndex:(NSDate *)currentDay animated:(BOOL)animated{
     
+    if ([currentDay timeIntervalSince1970] == [self.currentDay timeIntervalSince1970]) {
+        //时间相同
+        return;
+    }
     self.indexOfCurrentDay = [currentDay timeIntervalSince1970]-[self.currentDay timeIntervalSince1970] > 0 ? self.indexOfCurrentDay+1 : self.indexOfCurrentDay-1;
     
     self.currentDay = currentDay;
