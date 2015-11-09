@@ -75,6 +75,8 @@
     _chatToolBar = [[DXMessageToolBar alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height - [DXMessageToolBar defaultHeight], self.view.frame.size.width, KBOTTOMHEIGHT)];
     _chatToolBar.autoresizingMask = UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleRightMargin;
     _chatToolBar.delegate = self;
+    _chatToolBar.maxEnterNum = 400;
+    _chatToolBar.maxEnterText = @"评论不能超过400字";
     [self.view addSubview:_chatToolBar];
     _chatToolBar.moreButton.hidden = true;
     _chatToolBar.styleChangeButton.hidden = true;
