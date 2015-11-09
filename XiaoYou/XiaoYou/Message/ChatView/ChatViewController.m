@@ -14,7 +14,7 @@
 #import <AVFoundation/AVFoundation.h>
 #import <MediaPlayer/MediaPlayer.h>
 #import <MobileCoreServices/MobileCoreServices.h>
-
+#import "UzysAssetsPickerController.h"
 #import "SRRefreshView.h"
 #import "DXChatBarMoreView.h"
 #import "DXRecordView.h"
@@ -49,7 +49,7 @@
 #define KPageCount 20
 #define KHintAdjustY    50
 
-@interface ChatViewController ()<UITableViewDataSource, UITableViewDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate, SRRefreshDelegate, IChatManagerDelegate, DXChatBarMoreViewDelegate, DXMessageToolBarDelegate, LocationViewDelegate, EMCDDeviceManagerDelegate,EMCallManagerDelegate>
+@interface ChatViewController ()<UITableViewDataSource, UITableViewDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate, SRRefreshDelegate, IChatManagerDelegate, DXChatBarMoreViewDelegate, DXMessageToolBarDelegate, LocationViewDelegate, EMCDDeviceManagerDelegate,EMCallManagerDelegate,UzysAssetsPickerControllerDelegate>
 {
     UIMenuController *_menuController;
     UIMenuItem *_copyMenuItem;
@@ -1181,9 +1181,16 @@
     [self keyBoardHidden];
     
     // 弹出照片选择
-    self.imagePicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
-    self.imagePicker.mediaTypes = @[(NSString *)kUTTypeImage];
-    [self presentViewController:self.imagePicker animated:YES completion:NULL];
+//    self.imagePicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+//    self.imagePicker.mediaTypes = @[(NSString *)kUTTypeImage];
+//    [self presentViewController:self.imagePicker animated:YES completion:NULL];
+    
+    UzysAssetsPickerController *picker = [[UzysAssetsPickerController alloc] init];
+    picker.assetsFilter = [ALAssetsFilter allPhotos];
+    picker.maximumNumberOfSelectionVideo = 0;
+    picker.maximumNumberOfSelectionPhoto = 1;
+    picker.delegate = self;
+    [self presentViewController:picker animated:YES completion:nil];
     self.isInvisible = YES;
 }
 
@@ -1209,7 +1216,6 @@
                 UIImagePickerController *picker = [[UIImagePickerController alloc] init];
                 [picker setSourceType:UIImagePickerControllerSourceTypeCamera];
                 picker.delegate = self;
-                [picker setAllowsEditing:YES];
                 [self presentViewController:picker animated:YES completion:nil];
             }
         }];
@@ -1221,11 +1227,24 @@
         UIImagePickerController *picker = [[UIImagePickerController alloc] init];
         [picker setSourceType:UIImagePickerControllerSourceTypeCamera];
         picker.delegate = self;
-        [picker setAllowsEditing:YES];
         [self presentViewController:picker animated:YES completion:nil];
     }
     
 #endif
+}
+
+#pragma mark - Assets Picker Delegate
+-(void)uzysAssetsPickerController:(UzysAssetsPickerController *)picker didFinishPickingAssets:(NSArray *)assets
+{
+    if (assets.count > 0) {
+        ALAsset *representation = assets[0];
+        UIImage *img = [UIImage imageWithCGImage:representation.defaultRepresentation.fullResolutionImage
+                                           scale:representation.defaultRepresentation.scale
+                                     orientation:(UIImageOrientation)representation.defaultRepresentation.orientation];
+        
+        [self sendImageMessage:img];
+        self.isInvisible = NO;
+    }
 }
 
 - (void)moreViewLocationAction:(DXChatBarMoreView *)moreView
