@@ -31,7 +31,7 @@
         return [NSString stringWithFormat:@"还有%d天开始",(int)jiange];
     } else if (jiange > 60 * 60) {
         jiange = jiange /(60 * 60)*1.0;
-        return [NSString stringWithFormat:@"还有%dH开始",(int)jiange];
+        return [NSString stringWithFormat:@"还有%dh开始",(int)jiange];
     } else {
         jiange = jiange /60.0;
         return [NSString stringWithFormat:@"还有%dmin开始",(int)jiange];

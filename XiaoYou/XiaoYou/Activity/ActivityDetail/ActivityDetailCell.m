@@ -94,8 +94,10 @@
     ActivityPublishedModel *publishModel = model.activityPublishedDto.activityPublishedModel;
     
     [_headImageView setFaceImageWithUrl:organizer.headPic];
+    
     _titleLabel.text = organizer.name;
-    _nameLabel.text = publishModel.name;
+    //_nameLabel.text = publishModel.name;
+    [_nameLabel setText:publishModel.name lineSpacing:5.0f];
     NSArray *imageTextModels = model.activityPublishedDto.activityImageTextModels;
     //图片内容是否为空
     BOOL notHaveImage = YES;
@@ -107,7 +109,8 @@
                 notHaveImage = NO;
             }
         } else if ([imageText.type isEqualToString:@"text"]) {
-            _descriptionLabel.text = imageText.content;
+            //_descriptionLabel.text = imageText.content;
+            [_descriptionLabel setText:imageText.content lineSpacing:5.0];
         }
     }
     if (notHaveImage) {
@@ -118,7 +121,8 @@
     _deadLineTimeLabel.text = [TimeFormatterConvert timeConvertToFommtterAvailable:publishModel.enrollEndTime];
     _activityTimeLabel.text = [TimeFormatterConvert timeConvertToFommtterAvailable:publishModel.actStartTime];
     _activityEndTimeLabel.text = [TimeFormatterConvert timeConvertToFommtterAvailable:publishModel.actEndTime];
-    _locationLabel.text = publishModel.address;
+    //_locationLabel.text = publishModel.address;
+    [_locationLabel setText:publishModel.address lineSpacing:5.0];
     _categoryLabel.text = info.name;
     
     //跳转活动链接
