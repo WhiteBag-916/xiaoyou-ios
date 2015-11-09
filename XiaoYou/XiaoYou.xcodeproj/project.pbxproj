@@ -711,6 +711,10 @@
 		65F82F841B85E74A00FF6E2D /* FeedPublishViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 65F82F831B85E74A00FF6E2D /* FeedPublishViewController.m */; };
 		65FC7EB21BCE122500B3AA7C /* YWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 65FC7EB11BCE122500B3AA7C /* YWebViewController.m */; };
 		E416053E1BCF7FA400C6C4A5 /* ActivityReleaseDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E416053D1BCF7FA400C6C4A5 /* ActivityReleaseDataManager.m */; };
+		E41CD7E51BF0AAFC00796EBF /* goodlook_see_y@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E41CD7E11BF0AAFC00796EBF /* goodlook_see_y@2x.png */; };
+		E41CD7E61BF0AAFC00796EBF /* goodlook_see_y@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E41CD7E21BF0AAFC00796EBF /* goodlook_see_y@3x.png */; };
+		E41CD7E71BF0AAFC00796EBF /* goodlook_see@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E41CD7E31BF0AAFC00796EBF /* goodlook_see@2x.png */; };
+		E41CD7E81BF0AAFC00796EBF /* goodlook_see@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E41CD7E41BF0AAFC00796EBF /* goodlook_see@3x.png */; };
 		E426A5661BCD0D620064A415 /* PlaceCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E426A5651BCD0D620064A415 /* PlaceCollectionViewCell.m */; };
 		E43E10041BCC9CA90018B6D7 /* ActivityReleaseCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = E43E10031BCC9CA90018B6D7 /* ActivityReleaseCollectionView.m */; };
 		E43E10071BCC9CE50018B6D7 /* NameCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E43E10061BCC9CE50018B6D7 /* NameCollectionViewCell.m */; };
@@ -1884,6 +1888,10 @@
 		E1D8A55CC0081FB2C8604F21 /* Pods-XiaoYou.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XiaoYou.release.xcconfig"; path = "../Pods/Target Support Files/Pods-XiaoYou/Pods-XiaoYou.release.xcconfig"; sourceTree = "<group>"; };
 		E416053C1BCF7FA400C6C4A5 /* ActivityReleaseDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityReleaseDataManager.h; sourceTree = "<group>"; };
 		E416053D1BCF7FA400C6C4A5 /* ActivityReleaseDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityReleaseDataManager.m; sourceTree = "<group>"; };
+		E41CD7E11BF0AAFC00796EBF /* goodlook_see_y@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "goodlook_see_y@2x.png"; sourceTree = "<group>"; };
+		E41CD7E21BF0AAFC00796EBF /* goodlook_see_y@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "goodlook_see_y@3x.png"; sourceTree = "<group>"; };
+		E41CD7E31BF0AAFC00796EBF /* goodlook_see@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "goodlook_see@2x.png"; sourceTree = "<group>"; };
+		E41CD7E41BF0AAFC00796EBF /* goodlook_see@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "goodlook_see@3x.png"; sourceTree = "<group>"; };
 		E426A5641BCD0D620064A415 /* PlaceCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlaceCollectionViewCell.h; sourceTree = "<group>"; };
 		E426A5651BCD0D620064A415 /* PlaceCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlaceCollectionViewCell.m; sourceTree = "<group>"; };
 		E43E10021BCC9CA90018B6D7 /* ActivityReleaseCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityReleaseCollectionView.h; sourceTree = "<group>"; };
@@ -3825,6 +3833,10 @@
 		334670611B841F1E00A8628A /* message */ = {
 			isa = PBXGroup;
 			children = (
+				E41CD7E11BF0AAFC00796EBF /* goodlook_see_y@2x.png */,
+				E41CD7E21BF0AAFC00796EBF /* goodlook_see_y@3x.png */,
+				E41CD7E31BF0AAFC00796EBF /* goodlook_see@2x.png */,
+				E41CD7E41BF0AAFC00796EBF /* goodlook_see@3x.png */,
 				334670621B841F2800A8628A /* new-remind-number@2x.png */,
 				334670631B841F2800A8628A /* new-remind-number@3x.png */,
 				334670761B84337E00A8628A /* friend-requests@2x.png */,
@@ -4511,6 +4523,7 @@
 				20E942361B833D10009C2DC6 /* sheet_delete@2x.png in Resources */,
 				3335C36A1B8178E8007DEFD4 /* chatFire_audioPlaying3@2x.png in Resources */,
 				20E0BFFB1B88B0CA00EDAED4 /* register-photo-upload-boundary@2x.png in Resources */,
+				E41CD7E71BF0AAFC00796EBF /* goodlook_see@2x.png in Resources */,
 				20DAA2BD1BCE34DF00420234 /* btn_mine_y@2x.png in Resources */,
 				3334AC0C1B82C89500FDDCCB /* chatBar_colorMore_cameraSelected@2x.png in Resources */,
 				20E034031B846398002E4583 /* feed-find-someone-search-grey@3x.png in Resources */,
@@ -4530,6 +4543,7 @@
 				044DA01B1BBA5B2200AA321A /* bar_bell@2x.png in Resources */,
 				333122C81B806EDC00D3D032 /* chat_sender_audio_playing_000@2x.png in Resources */,
 				333122C21B806EDC00D3D032 /* chat_receiver_audio_playing003@2x.png in Resources */,
+				E41CD7E61BF0AAFC00796EBF /* goodlook_see_y@3x.png in Resources */,
 				20E942191B833D10009C2DC6 /* wechat@3x.png in Resources */,
 				20E9424C1B833D10009C2DC6 /* complete-grey@2x.png in Resources */,
 				650C6C221B886F6500A89AC9 /* mine-add-friend@2x.png in Resources */,
@@ -4611,6 +4625,7 @@
 				3334AC431B8316F000FDDCCB /* chat_voice_bg@2x.png in Resources */,
 				333122D41B806EDC00D3D032 /* delete@2x.png in Resources */,
 				20DAAAAC1BCD05F5006DF231 /* havetime_icon_classname@2x.png in Resources */,
+				E41CD7E81BF0AAFC00796EBF /* goodlook_see@3x.png in Resources */,
 				049480381BB8D76C00C68460 /* schedule_location@2x.png in Resources */,
 				333122901B806EDC00D3D032 /* faceDelete.png in Resources */,
 				3334ABE51B82C50200FDDCCB /* chatBar_faceSelected.png in Resources */,
@@ -4801,6 +4816,7 @@
 				3335C3671B8178E8007DEFD4 /* chatFire_audioPlaying2.png in Resources */,
 				3334ABF31B82C5D200FDDCCB /* chatBar_more.png in Resources */,
 				3334ABED1B82C58600FDDCCB /* chatBar_keyboardSelected.png in Resources */,
+				E41CD7E51BF0AAFC00796EBF /* goodlook_see_y@2x.png in Resources */,
 				20E942181B833D10009C2DC6 /* wechat@2x.png in Resources */,
 				0447A3B41BD7910C00341684 /* headImage.jpg in Resources */,
 				3348CB531B87207600F97FAF /* chatBar_recordBg.png in Resources */,

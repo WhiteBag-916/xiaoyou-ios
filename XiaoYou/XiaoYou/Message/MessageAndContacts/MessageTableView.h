@@ -15,4 +15,6 @@
 
 -(void)refreshTableView:(NSMutableArray *) dataSouceArr AndHeaderModel:(EMMessage *) model;
 
+-(void)refreshGoodLook:(EMMessage *) message;
+
 @end

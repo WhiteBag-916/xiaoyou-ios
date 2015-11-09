@@ -108,7 +108,7 @@
     remindLabel.textColor = KCOLOR_B5;
     remindLabel.numberOfLines = 0;
     remindLabel.textAlignment = NSTextAlignmentCenter;
-    remindLabel.text = @"扫扫上面的二维码，我们就是朋友啦!";
+    remindLabel.text = @"扫二维码，加我为好友!";
     [self.contentView addSubview:remindLabel];
     [remindLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(codeBackView.mas_bottom).offset(SCALE_NUM(10));

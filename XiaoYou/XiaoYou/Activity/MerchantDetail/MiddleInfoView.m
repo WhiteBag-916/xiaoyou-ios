@@ -45,10 +45,10 @@
     _houseImageView.image = [UIImage imageNamed:@"scanf_code_house"];
     [self addSubview:_houseImageView];
     [_houseImageView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.mas_equalTo(SCALE_NUM(20));
+        make.top.mas_equalTo(SCALE_NUM(24));
         make.left.mas_equalTo(SCALE_NUM(12));
-        make.width.mas_equalTo(SCALE_NUM(25));
-        make.height.mas_equalTo(SCALE_NUM(23));
+        make.width.mas_equalTo(SCALE_NUM(11));
+        make.height.mas_equalTo(SCALE_NUM(11));
     }];
     
     _houseLabel = [[UILabel alloc] init];
@@ -71,9 +71,9 @@
     [self addSubview:_phoneImageView];
     [_phoneImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.equalTo(_houseImageView);
-        make.top.equalTo(_houseImageView.mas_bottom).offset(SCALE_NUM(12));
-        make.width.mas_equalTo(SCALE_NUM(20));
-        make.height.mas_equalTo(SCALE_NUM(21));
+        make.top.equalTo(_houseImageView.mas_bottom).offset(SCALE_NUM(24));
+        make.width.mas_equalTo(SCALE_NUM(10));
+        make.height.mas_equalTo(SCALE_NUM(12));
     }];
     
     _phoneLabel = [[UILabel alloc] init];
@@ -104,9 +104,9 @@
     [self addSubview:_placeImageView];
     [_placeImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.equalTo(_houseImageView);
-        make.top.equalTo(_phoneImageView.mas_bottom).offset(SCALE_NUM(12));
-        make.width.mas_equalTo(SCALE_NUM(18));
-        make.height.mas_equalTo(SCALE_NUM(24));
+        make.top.equalTo(_phoneImageView.mas_bottom).offset(SCALE_NUM(24));
+        make.width.mas_equalTo(SCALE_NUM(9));
+        make.height.mas_equalTo(SCALE_NUM(12));
     }];
     
     _placeLabel = [[UILabel alloc] init];

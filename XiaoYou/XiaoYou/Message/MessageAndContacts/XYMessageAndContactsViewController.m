@@ -39,6 +39,7 @@
 {
     [super viewWillAppear:animated];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshMeesageRes:) name:kNotification_Refresh_Message object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshGoodLook:) name:KNotification_GoodLook_Message object:nil];
     [self refreshDataSource];
     [[MessageManager sharedInstance] setupUnreadMessageCount];
 }
@@ -89,6 +90,16 @@
 }
 
 #pragma mark - 刷新消息
+
+-(void)refreshGoodLook:(NSNotification *)notification
+{
+    EMMessage * message = notification.userInfo[@"message"];
+    if (message) {
+        [_messageTableView refreshGoodLook:message];
+    }
+    
+}
+
 - (void)refreshMeesageRes:(NSNotification *)notification {
     EMError *error = [notification userInfo][kNotification_Request_Error];
     if (nil == error) {
