@@ -220,7 +220,7 @@
         {
             if (model.propetiesCommon.count <= 0)
             {
-                if (ProfilePersonListTypeFind == _type)
+                if (ProfilePersonListTypeFind == _type || ProfilePersonListTypeNoticePerson == _type)
                 {
                     return SCALE_NUM(65);
                 }
