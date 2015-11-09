@@ -241,7 +241,7 @@
     UILabel * moreMerchantsLabel = [[UILabel alloc] init];
     moreMerchantsLabel.userInteractionEnabled = YES;
     moreMerchantsLabel.textColor = KCOLOR_W1;
-    moreMerchantsLabel.font = CONTENT_FONT(12);
+    moreMerchantsLabel.font = CONTENT_FONT(SCALE_NUM(12));
     moreMerchantsLabel.text = @"这些商家有优惠";
     moreMerchantsLabel.backgroundColor = [UIColor clearColor];
     moreMerchantsLabel.textAlignment = NSTextAlignmentCenter;
@@ -249,8 +249,8 @@
     [moreMerchantsLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.equalTo(self.view);
         make.bottom.equalTo(info.mas_top).offset(-10);
-        make.height.mas_equalTo(14);
-        make.width.mas_equalTo(SCALE_NUM(120));
+        make.height.mas_equalTo(SCALE_NUM(14));
+//        make.width.mas_equalTo(SCALE_NUM(120));
     }];
     
     UITapGestureRecognizer * tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(clickMoreMerchants)];
@@ -264,7 +264,7 @@
         make.centerY.equalTo(moreMerchantsLabel);
         make.height.mas_equalTo(12);
         make.width.mas_equalTo(8);
-        make.left.equalTo(moreMerchantsLabel.mas_right);
+        make.left.equalTo(moreMerchantsLabel.mas_right).offset(5 );
     }];
     flagImageView.image = [UIImage imageNamed:@"mine-particulars"];
 }
