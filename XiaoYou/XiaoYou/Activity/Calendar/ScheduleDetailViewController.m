@@ -192,10 +192,11 @@
                                  color:KCOLOR_B3
                                   text:_userSchedulingInfo.address
                              alignment:NSTextAlignmentLeft];
+    _locationLabel.numberOfLines = 0;
     [self.view addSubview:_locationLabel];
     
     [_locationLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.centerY.equalTo(locationLeftLabel);
+        make.top.equalTo(locationLeftLabel);
         make.left.equalTo(_lecturerName);
         make.right.mas_equalTo(K_NAMELAB_R);
     }];
@@ -206,7 +207,7 @@
     
     [departmentsImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.height.width.equalTo(lecturerImageView);
-        make.top.equalTo(locationImageView.mas_bottom).offset(K_DEPARTMENTSIMG_T);
+        make.top.equalTo(_locationLabel.mas_bottom).offset(K_DEPARTMENTSIMG_T);
     }];
     
     UILabel *departmentsLabel = [YUtils initLabel:CONTENT_FONT(12)
