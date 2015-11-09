@@ -13,6 +13,7 @@
 #import "UserSchedulingInfo.h"
 #import "YBaseService.h"
 #import "AppConfigData.h"
+#import "MessageManager.h"
 
 @interface AppDelegate ()
 
@@ -30,22 +31,43 @@
     [self initRootVC];
     
     [AppConfigData setHaveRemindMessage:NO];
-    
-    NSDictionary*userInfo = [launchOptions objectForKey:UIApplicationLaunchOptionsRemoteNotificationKey];
-    if(userInfo)
+    NSDictionary *userInfo = [launchOptions objectForKey:UIApplicationLaunchOptionsRemoteNotificationKey];
+    if(nil != userInfo && nil != userInfo[@"e"])
     {
-        NSString *message = [userInfo description];
-        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"提示" message:message delegate:self cancelButtonTitle:@"aa" otherButtonTitles:@"bb", nil];
         
-        [alert show];
+        NSDictionary *dic = userInfo[@"e"];
+        NSMutableDictionary *dataDictExt = [NSMutableDictionary dictionaryWithDictionary:dic[@"obj"]];
         
-        [self initNotifyRemindNC];
-        UILocalNotification *localNoti = [[UILocalNotification alloc]init];
-        localNoti.userInfo = userInfo;
-        //[self application:[UIApplication sharedApplication] didReceiveRemoteNotification:userInfo];
-        [self application:[UIApplication sharedApplication] didReceiveLocalNotification:localNoti];
-    }
+        if (userInfo[@"e"][@"type"] != nil )
+            [dataDictExt setObject:userInfo[@"e"][@"type"] forKey:@"type"];
+        if (userInfo[@"e"][@"timestamp"] != nil )
+            [dataDictExt setObject:userInfo[@"e"][@"timestamp"] forKey:@"timestamp"];
+        
+        if (userInfo[@"e"][@"headIcon"] != nil)
+            [dataDictExt setObject:userInfo[@"e"][@"headIcon"] forKey:@"headIcon"];
+        if (userInfo[@"e"][@"id"] != nil)
+            [dataDictExt setObject:userInfo[@"e"][@"id"] forKey:@"id"];
+        if (userInfo[@"e"][@"name"] != nil)
+            [dataDictExt setObject:userInfo[@"e"][@"name"] forKey:@"name"];
+        if (userInfo[@"e"][@"organizer"] != nil)
+            [dataDictExt setObject:userInfo[@"e"][@"organizer"] forKey:@"organizer"];
+        
+        if (userInfo[@"aps"][@"alert"] != nil)
+            [dataDictExt setObject:userInfo[@"aps"][@"alert"] forKey:@"contentTxt"];
+        if (dataDictExt != nil) {
+            [[MessageManager sharedInstance] dealMessageWithDict:dataDictExt];
+            
+            [self initNotifyRemindNC];
+        }
+        
+        
+        
+//        notiInfo.headIcon = dict[@"headIcon"];
+//        notiInfo.idStr = dict[@"id"];
+//        notiInfo.name = dict[@"name"];
+//        notiInfo.organizer = dict[@"organizer"];
 
+    }
     return YES;
 }
 

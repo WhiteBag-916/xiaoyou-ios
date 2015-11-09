@@ -106,14 +106,13 @@
 
 //当程序通过本地通知进入程序的时候
 - (void)initNotifyRemindNC {
-    self.tabBar = [[XYTabBarViewController alloc]init];
-    self.tabBar.selectedIndex = 1;
-    DDMenuController *menuController = [[DDMenuController alloc] initWithRootViewController:self.tabBar];
-    self.window.rootViewController = menuController;
-    
-    UINavigationController * avableVC = self.tabBar.selectedViewController;
-    NotifyViewController *notiVC = [[NotifyViewController alloc]init];
-    [avableVC pushViewController:notiVC animated:YES needHiddenBottomBar:YES];
+    if (nil != self.tabBar) {
+        self.tabBar.selectedIndex = 1;
+        
+        UINavigationController * avableVC = self.tabBar.selectedViewController;
+        NotifyViewController *notiVC = [[NotifyViewController alloc]init];
+        [avableVC pushViewController:notiVC animated:YES needHiddenBottomBar:YES];
+    }
 }
 
 @end

@@ -207,7 +207,7 @@
     
     [departmentsImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.height.width.equalTo(lecturerImageView);
-        make.top.equalTo(_locationLabel.mas_bottom).offset(K_DEPARTMENTSIMG_T);
+        make.top.equalTo(locationLeftLabel.mas_bottom).offset(K_DEPARTMENTSIMG_T);
     }];
     
     UILabel *departmentsLabel = [YUtils initLabel:CONTENT_FONT(12)

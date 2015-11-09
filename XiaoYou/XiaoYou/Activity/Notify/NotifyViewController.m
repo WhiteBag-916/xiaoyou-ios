@@ -66,7 +66,7 @@
         [dataBaseDao deleteAllDataWithTableName:tableName];
         
         for (NotifyInfoModel *model in _notifyDataSource) {
-            NSString *uid = [[YShareData defaultData] valueForKey:[[YShareData defaultData] valueForKey:kShareData_UserID]];
+            NSString *uid = [[YShareData defaultData] valueForKey:kShareData_UserID];
             if (![model.uid isEqualToString:uid]) {
                 [_notifyDataSource removeObject:model];
             }
