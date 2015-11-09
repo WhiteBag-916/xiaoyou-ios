@@ -63,7 +63,7 @@
         
         
         _notifyDataSource = [NotifyInfoModel objectArrayWithKeyValuesArray:queryArr];
-        //[dataBaseDao deleteAllDataWithTableName:tableName];
+        [dataBaseDao deleteAllDataWithTableName:tableName];
         
         //如果需要保存历史纪录的话,打开下面代码
 //        for (NotifyInfoModel *model in _notifyDataSource) {
