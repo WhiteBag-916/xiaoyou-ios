@@ -24,7 +24,7 @@
         _picture = [[UIImageView alloc] init];
         [self.contentView addSubview:_picture];
         [_picture mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.top.equalTo(self.contentView);
+            make.top.mas_equalTo(10);
             make.width.mas_equalTo(SCALE_NUM(296));
             make.height.mas_equalTo(SCALE_NUM(178));
             make.centerX.equalTo(self.contentView);
