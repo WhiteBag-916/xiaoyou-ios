@@ -10,7 +10,8 @@
 
 #define K_LABEL_TAG          600000
 #define K_LABEL_T            SCALE_NUM(4)
-#define K_LABEL_L            SCALE_NUM(40)
+#define K_LABEL_L            SCALE_NUM(45)
+#define K_MID_LABEL_L            SCALE_NUM(10)
 #define K_LABEL_WH            SCALE_NUM(30)
 #define K_NOW_B            SCALE_NUM(-1)
 
@@ -50,7 +51,7 @@
                     //第一个
                     make.left.mas_equalTo(K_LABEL_L);
                 } else {
-                    make.left.equalTo(mas_Label.mas_left).offset(K_LABEL_L);
+                    make.left.equalTo(mas_Label.mas_right).offset(K_MID_LABEL_L);
                 }
                 make.width.height.mas_equalTo(K_LABEL_WH);
                 make.top.mas_equalTo(K_LABEL_T);
