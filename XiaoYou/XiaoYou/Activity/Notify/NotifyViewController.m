@@ -63,7 +63,15 @@
         
         
         _notifyDataSource = [NotifyInfoModel objectArrayWithKeyValuesArray:queryArr];
-        //[dataBaseDao deleteAllDataWithTableName:tableName];
+        [dataBaseDao deleteAllDataWithTableName:tableName];
+        
+        for (NotifyInfoModel *model in _notifyDataSource) {
+            NSString *uid = [[YShareData defaultData] valueForKey:[[YShareData defaultData] valueForKey:kShareData_UserID]];
+            if (![model.uid isEqualToString:uid]) {
+                [_notifyDataSource removeObject:model];
+            }
+        }
+        
         
         //如果需要保存历史纪录的话,打开下面代码
 //        for (NotifyInfoModel *model in _notifyDataSource) {

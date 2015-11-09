@@ -30,16 +30,6 @@
 
 @implementation ActivityJoinInCell
 
-//-(instancetype)initWithType:(CELLTYPE)type
-//{
-//    if (self = [super init]) {
-//        [self initViewWithType];
-//        [self setCellType:type];
-//        self.selectionStyle = UITableViewCellSelectionStyleNone;
-//    }
-//    return self;
-//}
-
 -(instancetype)init
 {
     if (self = [super init]) {
@@ -54,15 +44,6 @@
 {
     return YES;
 }
-
-//-(instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
-//{
-//    if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
-//        self.selectionStyle = UITableViewCellSelectionStyleNone;
-//            [self initViewWithType];
-//    }
-//    return self;
-//}
 
 
 -(void)setType:(CELLTYPE)type
@@ -145,6 +126,7 @@
         }];
         return;
     }
+    
     if (joinModel.propetiesCommon.count == 0 && joinModel.tagsCommon.count == 0) {
         self.tagsWrapView.hidden = YES;
     } else
