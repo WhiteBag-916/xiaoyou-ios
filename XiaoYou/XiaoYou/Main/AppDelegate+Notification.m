@@ -75,6 +75,12 @@
 //程序正在后台运行，如果用户点击通知,会走这个方法,如果不点通知，就不会走这个方法
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo
 {
+    
+    NSString *message = [userInfo description];
+    UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"提示" message:message delegate:self cancelButtonTitle:@"aa" otherButtonTitles:@"bb", nil];
+    
+    [alert show];
+    
     YLogI(@"didReceiveRemoteNotification : %@", userInfo);
     [[UIApplication sharedApplication] setApplicationIconBadgeNumber:1];
     [[UIApplication sharedApplication] setApplicationIconBadgeNumber:0];

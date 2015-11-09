@@ -191,12 +191,19 @@
     if (_detailListView.isContainsMe) {
         return;
     }
+    BOOL firsetEmpty = NO;
     NSMutableArray *indexPaths = [NSMutableArray array];
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:1 inSection:0];
     [indexPaths addObject:indexPath];
     
     ActivityDetailModel *detailModel = _detailListView.activityDetailArray[0];
     NSArray *enrollArr = detailModel.enrollActivityUserInfos;
+    if (enrollArr.count > 0) {
+        Author *tmp = enrollArr[0];
+        if (tmp.uid == nil) {
+            firsetEmpty = YES;
+        }
+    }
     ProfileInfo *proInfo = [[ProvisionManager sharedInstance]getProfile];
     Author *author = [[Author alloc]init];
     author.headPic = proInfo.headPic;
@@ -204,13 +211,16 @@
     author.gender = proInfo.gender;
     author.friendStatus = @"3";
     author.name = proInfo.userName;
+    if (firsetEmpty) {
+        enrollArr = @[];
+    }
     NSMutableArray *newEnroll = [NSMutableArray arrayWithArray:enrollArr];
     [newEnroll insertObject:author atIndex:0];
     detailModel.enrollActivityUserInfos = newEnroll;
     
-    [_detailListView beginUpdates];
-    [_detailListView insertRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationNone];
-    [_detailListView endUpdates];
+    //[_detailListView beginUpdates];
+    //[_detailListView insertRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationNone];
+    //[_detailListView endUpdates];
     [_detailListView reloadData];
 }
 

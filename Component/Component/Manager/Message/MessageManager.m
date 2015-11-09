@@ -325,7 +325,6 @@ DEF_SINGLETON(MessageManager);
     BOOL needReload = NO;
     BOOL needRefresh = NO;
 
-    
     if ([ext[@"server_flag"] boolValue])
     {
         [[EaseMob sharedInstance].chatManager removeConversationByChatter:message.conversationChatter deleteMessages:YES append2Chat:NO];
@@ -535,7 +534,7 @@ DEF_SINGLETON(MessageManager);
             notiInfo.type = [[dict valueForKey:@"type"] integerValue];
             //notiInfo.propetiesCommon = [dict valueForKey:@""];
             [AppConfigData setHaveRemindMessage:YES];
-            [dataBaseDao insertModel:notiInfo];
+            //[dataBaseDao insertModel:notiInfo];
             [[NSNotificationCenter defaultCenter] postNotificationName:KNotification_Remind_Message_Come object:nil];
             break;
         }
@@ -547,7 +546,7 @@ DEF_SINGLETON(MessageManager);
             notiInfo.organizer = dict[@"organizer"];
             notiInfo.startTime = [dict[@"startTime"] doubleValue];
             [AppConfigData setHaveRemindMessage:YES];
-            [dataBaseDao insertModel:notiInfo];
+            //[dataBaseDao insertModel:notiInfo];
             break;
         }
         case ACTIVITY_NOTIFY:                       //活动通知提醒,活动快要开始
