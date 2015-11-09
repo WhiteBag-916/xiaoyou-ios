@@ -310,7 +310,7 @@ DEF_SINGLETON(MessageManager);
     //子线程处理数据
     [YQueue dispatchInSyncQueueWithQueueType:kMessageManagerSyncQueue block:^{
         [messageArray enumerateObjectsUsingBlock:^(EMMessage *obj, NSUInteger idx, BOOL *stop) {
-            [self resetMessage:obj];
+            [self resetMessage:obj needSaveDBWhithRemind:NO];
         }];
         
         //主线程处理界面
@@ -320,7 +320,7 @@ DEF_SINGLETON(MessageManager);
     }];
 }
 
-- (BOOL)resetMessage:(EMMessage *)message {
+- (BOOL)resetMessage:(EMMessage *)message needSaveDBWhithRemind:(BOOL)needSave {
     NSDictionary *ext = message.ext;
     BOOL needReload = NO;
     BOOL needRefresh = NO;
@@ -390,38 +390,15 @@ DEF_SINGLETON(MessageManager);
                 break;
             }
             case ACTIVITY_ENROLL_CHECK_PASS://报名审核通过 13
-            {
-                [self dealMessageWithDict:ext Type:ACTIVITY_ENROLL_CHECK_PASS];
-                //[self showNotificationWithMessage:message];
-                break;
-            }
             case ACTIVITY_ENROLL_NO_CHECK://报名审核未通过 14
-            {
-                [self dealMessageWithDict:ext Type:ACTIVITY_ENROLL_NO_CHECK];
-                //[self showNotificationWithMessage:message];
-                break;
-            }
             case SCHEDULE_REMIND: //用户日程提醒 15
-            {
-                [self dealMessageWithDict:ext Type:SCHEDULE_REMIND];
-                break;
-            }
             case ACTIVITY_ENROLL: //用户报名活动提醒(有人参加你的活动) 16
-            {
-                [self dealMessageWithDict:ext Type:ACTIVITY_ENROLL];
-                //[self showNotificationWithMessage:message];
-                break;
-            }
             case ACTIVITY_PUBLISH: //活动发布提醒 17
-            {
-                [self dealMessageWithDict:ext Type:ACTIVITY_PUBLISH];
-                //[self showNotificationWithMessage:message];
-                break;
-            }
             case ACTIVITY_NOTIFY: //活动通知提醒 18
             {
-                [self dealMessageWithDict:ext Type:ACTIVITY_NOTIFY];
-                //[self showNotificationWithMessage:message];
+                if (needSave) {
+                    [self dealMessageWithDict:ext];
+                }
                 break;
             }
             case ADD_COMMENT:
@@ -481,7 +458,7 @@ DEF_SINGLETON(MessageManager);
 }
 
 
--(void)dealMessageWithDict:(NSDictionary*)dict Type:(PUSH_Message_TYPE)type
+-(void)dealMessageWithDict:(NSDictionary*)dict
 {
     NSString *dataBasePath = [NSString stringWithFormat:@"%@//%@",[YDirectory documents],NSStringFromClass([NotifyInfoModel class])];
     YDatabaseDao *dataBaseDao = [[YDatabaseDao alloc]initWitDatabasePath:dataBasePath];
@@ -490,7 +467,7 @@ DEF_SINGLETON(MessageManager);
     notiInfo.timestamp = [dict[@"timestamp"] doubleValue];
     notiInfo.isRead = @"NO";
     notiInfo.type = [[dict valueForKey:@"type"] integerValue];
-    switch (type)
+    switch (notiInfo.type)
     {
         case ACTIVITY_ENROLL_CHECK_PASS: //审核通过
         {
@@ -576,7 +553,7 @@ DEF_SINGLETON(MessageManager);
     
     //子线程处理数据
     [YQueue dispatchInSyncQueueWithQueueType:kMessageManagerSyncQueue block:^{
-        BOOL needRefresh = [self resetMessage:message];
+        BOOL needRefresh = [self resetMessage:message needSaveDBWhithRemind:YES];
         
         //主线程处理界面
         [YQueue dispatchInMainQueueWithBlock:^{
