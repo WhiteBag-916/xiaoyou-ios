@@ -199,7 +199,7 @@
     [self.view addSubview:_locationLabel];
     
     [_locationLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(_locationLeftLabel);
+        make.top.equalTo(locationImageView);
         make.left.equalTo(_lecturerName);
         make.right.mas_equalTo(K_NAMELAB_R);
     }];
