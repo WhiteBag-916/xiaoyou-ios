@@ -1247,6 +1247,10 @@
     }
 }
 
+- (void)uzysAssetsPickerControllerDidExceedMaximumNumberOfSelection:(UzysAssetsPickerController *)picker {
+    [YUtils showTitle:@"只能选1张照片发送"];
+}
+
 - (void)moreViewLocationAction:(DXChatBarMoreView *)moreView
 {
     // 隐藏键盘

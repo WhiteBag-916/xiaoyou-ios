@@ -372,8 +372,9 @@
     }];
 }
 
-
-
+- (void)uzysAssetsPickerControllerDidExceedMaximumNumberOfSelection:(UzysAssetsPickerController *)picker {
+    [YUtils showTitle:@"动态最多发布9张图片"];
+}
 
 - (void)snapImage
 {
