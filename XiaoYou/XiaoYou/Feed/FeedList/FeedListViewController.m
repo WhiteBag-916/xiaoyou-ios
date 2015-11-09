@@ -146,7 +146,6 @@
         _menu = (DDMenuController *)[[[[UIApplication sharedApplication] delegate] window] rootViewController];
         _menu.delegate = self;
         [_feedListTableView addGestureRecognizer:_menu.pan];
-        [_profilePersonListTableView addGestureRecognizer:_menu.pan];
     }
     //侧拉
     if (nil == _tagListVC)
@@ -186,11 +185,15 @@
     if (type == CommonSwitchTypeFir) {
         [self showCustomNavigationPublishButton];
         self.viewIndex = 1;
+        
+        [_feedListTableView addGestureRecognizer:_menu.pan];
     } else {
         self.navigationItem.rightBarButtonItem = nil;
         //[self showCustomNavigationFastButton];
         self.viewIndex = 2;
         [_profilePersonListTableView loadDataWithQueryCode:@""];
+        
+        [_profilePersonListTableView addGestureRecognizer:_menu.pan];
     }
 }
 
