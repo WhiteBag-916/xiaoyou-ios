@@ -506,7 +506,8 @@
         //时间相同
         return;
     }
-    self.indexOfCurrentDay = [currentDay timeIntervalSince1970]-[self.currentDay timeIntervalSince1970] > 0 ? self.indexOfCurrentDay+1 : self.indexOfCurrentDay-1;
+    NSInteger offTime = ([currentDay timeIntervalSince1970]-[self.currentDay timeIntervalSince1970])/(60*60*24);
+    self.indexOfCurrentDay =  offTime> 0 ? self.indexOfCurrentDay+offTime : self.indexOfCurrentDay-offTime;
     
     self.currentDay = currentDay;
     [self _updateDateLabel];

@@ -146,6 +146,7 @@
         _menu = (DDMenuController *)[[[[UIApplication sharedApplication] delegate] window] rootViewController];
         _menu.delegate = self;
         [_feedListTableView addGestureRecognizer:_menu.pan];
+        [_profilePersonListTableView addGestureRecognizer:_menu.pan];
     }
     //侧拉
     if (nil == _tagListVC)
