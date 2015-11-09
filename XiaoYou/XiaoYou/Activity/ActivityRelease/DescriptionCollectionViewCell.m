@@ -219,6 +219,20 @@ NSString *const kDescriptionCollectionViewCell = @"DescriptionCollectionViewCell
 }
 
 #pragma mark - UITextViewDelegate
+- (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text
+{
+    NSInteger fieldLen = [textView.text length];
+    NSInteger rangeLen = range.length;
+    NSInteger strLen = text.length;
+    if (![text isEqualToString:@"\n"])
+    {
+        if (fieldLen - rangeLen + strLen > 5000)
+        {
+            return NO;
+        }
+    }
+    return YES;
+}
 
 - (void)textViewDidChange:(UITextView *)textView
 {

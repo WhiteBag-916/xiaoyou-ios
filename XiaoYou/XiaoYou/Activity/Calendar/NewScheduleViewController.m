@@ -513,6 +513,34 @@
     return YES;
 }
 
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range
+replacementString:(NSString *)string
+{
+    NSInteger fieldLen = [textField.text length];
+    NSInteger rangeLen = range.length;
+    NSInteger strLen = string.length;
+    if (![string isEqualToString:@"\n"])
+    {
+        if (K_TAG_NAME == textField.tag)
+        {
+            //name
+            if (fieldLen - rangeLen + strLen > 30)
+            {
+                return NO;
+            }
+        }
+        else if (K_TAG_LOCATION == textField.tag)
+        {
+            //地点
+            if (fieldLen - rangeLen + strLen > 100)
+            {
+                return NO;
+            }
+        }
+    }
+    return YES;
+}
+
 - (void)textFieldValueChanged:(UITextField *)sender{
     if (K_TAG_NAME == sender.tag) {
         if (sender.text.length >= 30)
