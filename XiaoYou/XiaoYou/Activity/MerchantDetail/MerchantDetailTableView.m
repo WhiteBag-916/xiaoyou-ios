@@ -80,7 +80,7 @@
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return _dataSourceArr.count;
+    return _dataSourceArr.count + 1;
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -92,7 +92,7 @@
     }
     else
     {
-        [cell setCellInfo:_dataSourceArr[indexPath.row] isHeader:NO];
+        [cell setCellInfo:_dataSourceArr[indexPath.row -1] isHeader:NO];
     }
     
     return cell;
@@ -100,7 +100,7 @@
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (_dataSourceArr.count == indexPath.row + 1) {
+    if (_dataSourceArr.count == indexPath.row) {
         return SCALE_NUM(70);
     }
     else

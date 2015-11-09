@@ -86,9 +86,10 @@
         [self addGuideView];
 }
 - (void)initMyView {
+    //头改为不滚动
+    [self initTop];
     
     [self initScroll];
-    [self initTop];
     [self initMiddle];
     [self initBottom];
     [self prepareLoadData];
@@ -167,7 +168,8 @@
     [self.view addSubview:scroll];
     scroll.showsVerticalScrollIndicator = false;
     [scroll mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.edges.equalTo(self.view);
+        make.top.equalTo(_topView.mas_bottom);
+        make.left.bottom.right.equalTo(self.view);
     }];
     _containerView = [[UIView alloc] init];
     [scroll addSubview:_containerView];
@@ -178,9 +180,9 @@
 }
 - (void)initTop {
     _topView = [[UIView alloc] init];
-    [_containerView addSubview:_topView];
+    [self.view addSubview:_topView];
     [_topView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.right.top.equalTo(_containerView);
+        make.left.right.top.equalTo(self.view);
         make.height.mas_equalTo(KTOPHEIGHT);
     }];
     _topView.backgroundColor = KCOLOR_455A64;
@@ -236,7 +238,7 @@
     [_containerView addSubview:_middleView];
     [_middleView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.right.equalTo(_topView);
-        make.top.equalTo(_topView.mas_bottom);
+        make.top.equalTo(_containerView);
     }];
     UIView *item1 = [self whiteItem:0];
     [item1 mas_makeConstraints:^(MASConstraintMaker *make) {

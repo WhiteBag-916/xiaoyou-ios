@@ -45,7 +45,8 @@
     _houseImageView.image = [UIImage imageNamed:@"scanf_code_house"];
     [self addSubview:_houseImageView];
     [_houseImageView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.left.mas_equalTo(SCALE_NUM(20));
+        make.top.mas_equalTo(SCALE_NUM(20));
+        make.left.mas_equalTo(SCALE_NUM(12));
         make.width.mas_equalTo(SCALE_NUM(25));
         make.height.mas_equalTo(SCALE_NUM(23));
     }];
@@ -58,7 +59,7 @@
     [self addSubview:_houseLabel];
     [_houseLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.equalTo(_houseImageView);
-        make.left.equalTo(_houseImageView.mas_right).offset(SCALE_NUM(15));
+        make.left.equalTo(_houseImageView.mas_right).offset(SCALE_NUM(12));
         make.trailing.mas_equalTo(SCALE_NUM(-15));
         make.height.mas_equalTo(SCALE_NUM(12));
     }];
@@ -112,12 +113,15 @@
     _placeLabel.text = _model.supplierShopModel.address;
     _placeLabel.font = CONTENT_FONT(SCALE_NUM(12));
     _placeLabel.textColor = KCOLOR_B3;
+    _placeLabel.backgroundColor = [UIColor clearColor];
     _placeLabel.textAlignment = NSTextAlignmentLeft;
+    _placeLabel.numberOfLines = 0;
+    
     [self addSubview:_placeLabel];
     [_placeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.equalTo(_placeImageView);
         make.left.right.equalTo(_houseLabel);
-        make.height.mas_equalTo(SCALE_NUM(12));
+        make.height.mas_equalTo(SCALE_NUM(40));
     }];
     
     //分割线

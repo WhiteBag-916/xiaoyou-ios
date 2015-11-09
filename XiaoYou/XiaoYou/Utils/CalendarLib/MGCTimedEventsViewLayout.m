@@ -112,6 +112,7 @@
     }
     
 	// sort layout attributes by frame y-position
+//    NSArray *adjustedAttributes = [NSArray arrayWithArray:attributes];
 	NSArray *adjustedAttributes = [attributes sortedArrayUsingComparator:^NSComparisonResult(MGCEventCellLayoutAttributes *att1, MGCEventCellLayoutAttributes *att2) {
 		if (att1.frame.origin.y > att2.frame.origin.y) {
 			 return NSOrderedDescending;

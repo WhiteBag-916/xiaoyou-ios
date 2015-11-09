@@ -250,7 +250,7 @@
         make.centerX.equalTo(self.view);
         make.bottom.equalTo(info.mas_top).offset(-10);
         make.height.mas_equalTo(14);
-        make.width.mas_equalTo(100);
+        make.width.mas_equalTo(SCALE_NUM(120));
     }];
     
     UITapGestureRecognizer * tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(clickMoreMerchants)];

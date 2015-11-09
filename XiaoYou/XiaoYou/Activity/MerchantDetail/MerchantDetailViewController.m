@@ -8,6 +8,7 @@
 
 #import "MerchantDetailViewController.h"
 #import "MerchantDetailTableView.h"
+#import "SupplierShopModel.h"
 
 @interface MerchantDetailViewController ()
 
@@ -34,8 +35,8 @@
 
 -(void)setUpUI
 {
-    
-    self.title = @"必胜客";
+    SupplierShopModel * model = _model.supplierShopModel;
+    self.title = model.name;
     [self showCustomNavigationBackButton];
     
     _merchantDetailTableView = [[MerchantDetailTableView alloc] initWithModel:_model];
