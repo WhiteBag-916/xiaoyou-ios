@@ -179,6 +179,9 @@
             _projectLabel1.text = [TimeFormatterConvert timeConvertToFommtterScheduleStartTime:schedule.startTime EndTime:schedule.endTime];
             if ([_projectLabel1.text isEqualToString:@"进行中"]) {
                 _projectLabel1.textColor = KCOLOR_g1;
+            } else
+            {
+                _projectLabel1.textColor = KCOLOR_B5;
             }
             _timeLabel2.text    = @"";
             _projectLabel2.text = @"";
@@ -189,6 +192,9 @@
             _projectLabel2.text = [TimeFormatterConvert timeConvertToFommtterScheduleStartTime:schedule.startTime EndTime:schedule.endTime];
             if ([_projectLabel2.text isEqualToString:@"进行中"]) {
                 _projectLabel2.textColor = KCOLOR_g1;
+            } else
+            {
+                _projectLabel2.textColor = KCOLOR_B5;
             }
             _timeLabel3.text    = @"";
             _projectLabel3.text = @"";
@@ -197,6 +203,8 @@
             _projectLabel3.text = [TimeFormatterConvert timeConvertToFommtterScheduleStartTime:schedule.startTime EndTime:schedule.endTime];
             if ([_projectLabel3.text isEqualToString:@"进行中"]) {
                 _projectLabel3.textColor = KCOLOR_g1;
+            } else {
+                _projectLabel3.textColor = KCOLOR_B5;
             }
         }
     }

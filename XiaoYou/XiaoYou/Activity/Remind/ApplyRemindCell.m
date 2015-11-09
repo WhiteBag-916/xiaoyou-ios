@@ -88,10 +88,10 @@
     _wrapContentView.layer.borderWidth = 1;
     _wrapContentView.layer.borderColor = KCOLOR_B2.CGColor;
     [_wrapContentView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self);
-        make.bottom.equalTo(self);
-        make.left.equalTo(self.mas_left).offset(CELL_INSET);
-        make.right.equalTo(self.mas_right).offset(-CELL_INSET);
+        make.top.equalTo(self.contentView);
+        make.bottom.equalTo(self.contentView);
+        make.left.equalTo(self.contentView.mas_left).offset(CELL_INSET);
+        make.right.equalTo(self.contentView.mas_right).offset(-CELL_INSET);
     }];
     
     _wrapContentView.layer.cornerRadius = 5;
@@ -104,7 +104,7 @@
     [self.wrapContentView addSubview:_titleImageView];
     [_titleImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.leading.mas_equalTo(10);
-        make.top.equalTo(self).offset(18);
+        make.top.equalTo(self.wrapContentView).offset(18);
         make.width.mas_equalTo(SCALE_NUM(14));
         make.height.mas_equalTo(SCALE_NUM(13));
     }];
@@ -172,16 +172,16 @@
     
     _applyContentLable = [[UILabel alloc]init];
     [self.wrapContentView addSubview:_applyContentLable];
-    _applyContentLable.numberOfLines = 0;
-    _applyContentLable.lineBreakMode = NSLineBreakByWordWrapping;
+    _applyContentLable.numberOfLines = 1;
+//    _applyContentLable.lineBreakMode = NSLineBreakByTruncatingTail;
     _applyContentLable.text = @"参加了你的%@活动!";
     _applyContentLable.textColor = KCOLOR_B3;
     _applyContentLable.font = CONTENT_FONT(12);
     [_applyContentLable mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(_headImageView.mas_bottom).offset(SCALE_NUM(21));
         make.left.equalTo(_headImageView);
-        make.trailing.mas_equalTo(0);
-        
+        make.trailing.mas_equalTo(SCALE_NUM(-10));
+        make.bottom.mas_equalTo(SCALE_NUM(-15));
     }];
     
 //    _bottomLineView = [[UIView alloc]init];
@@ -208,10 +208,11 @@
     Author *info = model.activityUser;
     [_headImageView setFaceImageWithUrl:info.headPic];
     _nameLabel.text = info.name;
-    //_applyContentLable.text = [NSString stringWithFormat:_applyContentLable.text,model.activityName];
+    _applyContentLable.text = [NSString stringWithFormat:_applyContentLable.text,model.activityName];
     
     [_applyContentLable setText:[NSString stringWithFormat:_applyContentLable.text,model.activityName] lineSpacing:5.0];
     [_connectTagView updateWithTag:info.propetiesCommon];
+
 }
 
 -(void)setNotifyData:(NotifyInfoModel *)model

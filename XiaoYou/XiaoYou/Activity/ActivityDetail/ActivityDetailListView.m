@@ -80,15 +80,12 @@
 - (void)loadNewData
 {
     _currentIndex = 0;
-    [_activityDetailArray removeAllObjects];
+    //[_activityDetailArray removeAllObjects];
     [self sendRequest];
 }
 
 - (void)loadMoreData
 {
-//    ActivityDetailModel *model = self.activityDetailArray[0];
-//    NSArray *enrollArr = model.enrollActivityUserInfos;
-//    _currentIndex = enrollArr.count;
     _currentIndex = self.activityDetailArray.count - 1;
     [self sendRequest];
 }

@@ -24,6 +24,7 @@
 #define REMIND_CELL_HEIGHT  SCALE_NUM(180)
 #define KPAGENUM        10
 #define ImageTAG        998899
+#define APPLYREUSEID    @"ApplyRemindCell"
 
 @interface RemindListTableView ()
 <UITableViewDataSource,UITableViewDelegate>
@@ -44,7 +45,7 @@
         [self registerClass:[PassRemindCell class] forCellReuseIdentifier:REMINDVIEWCELL];
         self.separatorStyle = UITableViewCellSelectionStyleNone;
         _currentIndex = 0;
-        //控件的创建初始化必须写在init方法中,不能写在initWithFrame方法中,不然在IOS7及以下会崩溃
+        [self registerClass:[ApplyRemindCell class] forCellReuseIdentifier:APPLYREUSEID];
         
     }
     return self;
@@ -78,6 +79,7 @@
         [self registerClass:[PassRemindCell class] forCellReuseIdentifier:REMINDVIEWCELL];
         self.separatorStyle = UITableViewCellSelectionStyleNone;
         _currentIndex = 0;
+        [self registerClass:[ApplyRemindCell class] forCellReuseIdentifier:APPLYREUSEID];
     }
     return self;
 }
@@ -161,7 +163,10 @@
     
     //有人参加你的活动
     if (info.activityOwner) {
-        cellHeight = SCALE_NUM(160);
+        //cellHeight = SCALE_NUM(160);
+        cellHeight = [tableView fd_heightForCellWithIdentifier:APPLYREUSEID cacheByIndexPath:indexPath configuration:^(ApplyRemindCell *cell) {
+            [cell setData:info];
+        }];
     } else  //参加别人的活动
     {
         CELL_TYPE type = [self cellTypeByModelString:info.checkStatus];
@@ -216,7 +221,7 @@
     NoticeInfo *info = self.remindListArray[indexPath.section];
     
     if (info.activityOwner) {
-        ApplyRemindCell *appCell = [ApplyRemindCell cellWithTableView:tableView];
+        ApplyRemindCell *appCell = [tableView dequeueReusableCellWithIdentifier:APPLYREUSEID];
         [appCell setData:info];
         cell = appCell;
     } else  //参加别人的活动

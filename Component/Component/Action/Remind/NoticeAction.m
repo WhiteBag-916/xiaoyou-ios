@@ -22,8 +22,6 @@
     
     
     [self POST:url parameters:parameter completion:^(YHttpRequest *request) {
-        NSLog(@"this is parameter....==%@",parameter);
-        
         YActionMessage *message = [NoticeInfo actionMessageWithHttpRequest:request];
         self.completionBlock(message);
     }];

@@ -31,6 +31,7 @@
 @property (nonatomic,strong) UIImageView    *guideImageView;    //提示图片
 @property (nonatomic,assign) int            guideIndex;         //当前提示索引
 
+@property (nonatomic,strong) UIButton       *leftNavBar;
 @end
 
 @implementation AvailableViewController
@@ -44,6 +45,9 @@
         [self addGuideView];
     [self setUpCustomNavgationBar];
     [self.availableListView loadData];
+    
+    [self setMyLeftNavBar];
+    
 }
 
 -(void)dealloc
@@ -56,9 +60,28 @@
     [_availableListView loadData];
 }
 
+
+-(void)setMyLeftNavBar
+{
+    _leftNavBar = [UIButton buttonWithType:UIButtonTypeCustom];
+    _leftNavBar.frame = CGRectMake(0, 0, 30, 30);
+    [_leftNavBar setImage:[[UIImage imageNamed:@"have_time_msg"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] forState:UIControlStateNormal];
+    [_leftNavBar setImage:[[UIImage imageNamed:@"have_time_msg"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] forState:UIControlStateHighlighted];
+    UIBarButtonItem *btnNavLeftItem = [[UIBarButtonItem alloc] initWithCustomView:_leftNavBar];
+    [_leftNavBar addTarget:self action:@selector(onNavigationLeftButtonClicked) forControlEvents:UIControlEventTouchUpInside];
+    self.navigationItem.leftBarButtonItem = btnNavLeftItem;
+}
+
+
+//收到推送消息 铃铛变红 have_time_msg
 -(void)receiveNotificationOfRemindMessage
 {
-    [self showCustomNavigationRemindButton:YES];
+    [_leftNavBar setImage:[[UIImage imageNamed:@"red_point_bell"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] forState:UIControlStateNormal];
+    [_leftNavBar setImage:[[UIImage imageNamed:@"red_point_bell"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] forState:UIControlStateHighlighted];
+    //[self showCustomNavigationRemindButton:YES];
+    
+//    UIBarButtonItem *item = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"red_point_bell"] style:UIBarButtonItemStylePlain target:self action:@selector(onNavigationLeftButtonClicked)];
+//    self.navigationItem.leftBarButtonItem = item;
 }
 
 - (void)addGuideView {
@@ -144,9 +167,11 @@
     
     self.navigationItem.rightBarButtonItems = @[setupButtonItem, remindButtonItem, scheduleButtonItem];
     
-    [self showCustomNavigationRemindButton:[AppConfigData isHaveRemindMessage]];
-    [AppConfigData setHaveRemindMessage:NO];
+    //[self showCustomNavigationRemindButton:[AppConfigData isHaveRemindMessage]];
+    //[AppConfigData setHaveRemindMessage:NO];
+    
 }
+
 
 
 //发布Action
@@ -180,13 +205,17 @@
 }
 
 
-#pragma mark 协议方法
+#pragma mark 协议方法,铃铛变灰
 -(void)onNavigationLeftButtonClicked
 {
     RemindViewController *remindVC = [[RemindViewController alloc]init];
     //[self.navigationController presentViewController:remindVC animated:YES completion:nil];
     [self.navigationController pushViewController:remindVC animated:YES needHiddenBottomBar:YES];
-    [self showCustomNavigationRemindButton:NO];
+    
+    
+    //[self showCustomNavigationRemindButton:NO];
+    [_leftNavBar setImage:[[UIImage imageNamed:@"have_time_msg"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] forState:UIControlStateNormal];
+    [_leftNavBar setImage:[[UIImage imageNamed:@"have_time_msg"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] forState:UIControlStateHighlighted];
 }
 
 
