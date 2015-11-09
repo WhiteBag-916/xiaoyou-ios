@@ -34,16 +34,40 @@
     NSDictionary *userInfo = [launchOptions objectForKey:UIApplicationLaunchOptionsRemoteNotificationKey];
     if(nil != userInfo && nil != userInfo[@"e"])
     {
+        
         NSDictionary *dic = userInfo[@"e"];
         NSMutableDictionary *dataDictExt = [NSMutableDictionary dictionaryWithDictionary:dic[@"obj"]];
-        [dataDictExt setObject:userInfo[@"e"][@"type"] forKey:@"type"];
-        [dataDictExt setObject:userInfo[@"e"][@"timestamp"] forKey:@"timestamp"];
+        
+        if (userInfo[@"e"][@"type"] != nil )
+            [dataDictExt setObject:userInfo[@"e"][@"type"] forKey:@"type"];
+        if (userInfo[@"e"][@"timestamp"] != nil )
+            [dataDictExt setObject:userInfo[@"e"][@"timestamp"] forKey:@"timestamp"];
+        
+        if (userInfo[@"e"][@"headIcon"] != nil)
+            [dataDictExt setObject:userInfo[@"e"][@"headIcon"] forKey:@"headIcon"];
+        if (userInfo[@"e"][@"id"] != nil)
+            [dataDictExt setObject:userInfo[@"e"][@"id"] forKey:@"id"];
+        if (userInfo[@"e"][@"name"] != nil)
+            [dataDictExt setObject:userInfo[@"e"][@"name"] forKey:@"name"];
+        if (userInfo[@"e"][@"organizer"] != nil)
+            [dataDictExt setObject:userInfo[@"e"][@"organizer"] forKey:@"organizer"];
+        
+        if (userInfo[@"aps"][@"alert"] != nil)
+            [dataDictExt setObject:userInfo[@"aps"][@"alert"] forKey:@"contentTxt"];
         if (dataDictExt != nil) {
             [[MessageManager sharedInstance] dealMessageWithDict:dataDictExt];
+            
             [self initNotifyRemindNC];
         }
-    }
+        
+        
+        
+//        notiInfo.headIcon = dict[@"headIcon"];
+//        notiInfo.idStr = dict[@"id"];
+//        notiInfo.name = dict[@"name"];
+//        notiInfo.organizer = dict[@"organizer"];
 
+    }
     return YES;
 }
 
