@@ -82,7 +82,7 @@
     
     NSMutableArray *labels = [NSMutableArray arrayWithCapacity:7];
     for(NSInteger i=0;i<7;i++){
-        TKDateLabel *label = [[TKDateLabel alloc] initWithFrame:CGRectMake(minX+(DAY_LABEL_WIDTH+per)*i, 16, DAY_LABEL_WIDTH, DAY_LABEL_WIDTH)];
+        TKDateLabel *label = [[TKDateLabel alloc] initWithFrame:CGRectMake(minX+(DAY_LABEL_WIDTH+per)*i, 23, DAY_LABEL_WIDTH, DAY_LABEL_WIDTH)];
         label.weekend = i % 6 == 0;
         //label.backgroundColor = [UIColor redColor];
         [self addSubview:label];
@@ -139,7 +139,7 @@
     NSInteger minX = per / 2;
     
     for(NSString *str in daySymbols){
-        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(minX + cnt*(DAY_LABEL_WIDTH+per) , 0, DAY_LABEL_WIDTH, 20)];
+        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(minX + cnt*(DAY_LABEL_WIDTH+per) , 5, DAY_LABEL_WIDTH, 20)];
         label.font = [UIFont systemFontOfSize:10];
         label.text = str;
         label.textColor = cnt == 0 || cnt == 6 ? KCOLOR_B5 : [UIColor blackColor];
@@ -519,7 +519,7 @@
 - (UILabel *) monthYearLabel{
     if(_monthYearLabel) return _monthYearLabel;
     
-    _monthYearLabel = [[UILabel alloc] initWithFrame:CGRectInset(CGRectMake(0, self.height - 24 - 6, self.width, 24), 40, 0)];
+    _monthYearLabel = [[UILabel alloc] initWithFrame:CGRectInset(CGRectMake(0, self.height - 24 - 6, self.width, 20), 40, 0)];
     _monthYearLabel.backgroundColor = [UIColor greenColor];
     _monthYearLabel.textAlignment = NSTextAlignmentCenter;
     _monthYearLabel.backgroundColor = [UIColor clearColor];
