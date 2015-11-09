@@ -526,6 +526,7 @@ replacementString:(NSString *)string
             //name
             if (fieldLen - rangeLen + strLen > 30)
             {
+                [YUtils showTitle:@"日程名称不能大于30字"];
                 return NO;
             }
         }
@@ -534,6 +535,7 @@ replacementString:(NSString *)string
             //地点
             if (fieldLen - rangeLen + strLen > 100)
             {
+                [YUtils showTitle:@"地点不能大于100字"];
                 return NO;
             }
         }

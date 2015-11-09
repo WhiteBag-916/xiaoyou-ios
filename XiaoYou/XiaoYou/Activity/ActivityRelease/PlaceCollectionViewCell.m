@@ -64,6 +64,7 @@ NSString *const kPlaceCollectionViewCell = @"PlaceCollectionViewCellId";
     {
         if (fieldLen - rangeLen + strLen > 100)
         {
+            [YUtils showTitle:@"地点字数不能大于100字"];
             return NO;
         }
     } else {

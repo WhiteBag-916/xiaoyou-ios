@@ -228,6 +228,7 @@ NSString *const kDescriptionCollectionViewCell = @"DescriptionCollectionViewCell
     {
         if (fieldLen - rangeLen + strLen > 5000)
         {
+            [YUtils showTitle:@"描述字数不能大于5000字"];
             return NO;
         }
     }

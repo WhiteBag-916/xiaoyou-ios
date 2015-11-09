@@ -186,6 +186,9 @@
     }else {
         if (_maxEnterNum > 0 && fieldLen - rangeLen + strLen > _maxEnterNum)
         {
+            if (_maxEnterText.length > 0) {
+                [YUtils showTitle:_maxEnterText];
+            }
             return NO;
         }
     }

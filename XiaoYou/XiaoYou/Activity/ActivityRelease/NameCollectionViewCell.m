@@ -64,6 +64,7 @@ NSString *const kNameCollectionViewCell = @"NameCollectionViewCellId";
     {
         if (fieldLen - rangeLen + strLen > 30)
         {
+            [YUtils showTitle:@"名称字数不能大于30字"];
             return NO;
         }
     } else {
