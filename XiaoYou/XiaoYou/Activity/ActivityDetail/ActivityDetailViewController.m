@@ -13,7 +13,8 @@
 #import "YCommonActionSheet.h"
 #import "YNotificationDefine.h"
 #import "UserSchedulingInfo.h"
-
+#import "ProvisionManager.h"
+#import "ProfileInfo.h"
 @interface ActivityDetailViewController ()
 
 @property (nonatomic,strong) ActivityDetailListView *detailListView;
@@ -70,10 +71,13 @@
 }
 
 
+//退出活动
 -(void)exitActivity
 {
     [[ActivityManager sharedInstance] cancleActivitySignUpByActivityID:self.publishID block:^(YActionMessage *message) {
         if (message.isSuccess) {
+            
+            //更新状态
             [self updateJoinButtonStatus];
         }
         [YUtils showTitle:message.desc];
@@ -176,9 +180,38 @@
                 [self IsShowCustomNavigationMoreButton:NO];
                  _isShowMore = NO;
             }
-            [_detailListView loadData];
+            //[_detailListView loadData];
         }
     }];
+}
+
+
+-(void)addMySelfToList
+{
+    if (_detailListView.isContainsMe) {
+        return;
+    }
+    NSMutableArray *indexPaths = [NSMutableArray array];
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:1 inSection:0];
+    [indexPaths addObject:indexPath];
+    
+    ActivityDetailModel *detailModel = _detailListView.activityDetailArray[0];
+    NSArray *enrollArr = detailModel.enrollActivityUserInfos;
+    ProfileInfo *proInfo = [[ProvisionManager sharedInstance]getProfile];
+    Author *author = [[Author alloc]init];
+    author.headPic = proInfo.headPic;
+    author.uid = proInfo.uid;
+    author.gender = proInfo.gender;
+    author.friendStatus = @"3";
+    author.name = proInfo.userName;
+    NSMutableArray *newEnroll = [NSMutableArray arrayWithArray:enrollArr];
+    [newEnroll insertObject:author atIndex:0];
+    detailModel.enrollActivityUserInfos = newEnroll;
+    
+    [_detailListView beginUpdates];
+    [_detailListView insertRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationNone];
+    [_detailListView endUpdates];
+    [_detailListView reloadData];
 }
 
 
@@ -188,6 +221,7 @@
     [[ActivityManager sharedInstance] enrollActivity:self.publishID block:^(YActionMessage *message) {
         [YUtils hiddenProgressHUD];
         if (message.isSuccess) {
+            [self addMySelfToList];
             [self updateJoinButtonStatus];
         }
         else {

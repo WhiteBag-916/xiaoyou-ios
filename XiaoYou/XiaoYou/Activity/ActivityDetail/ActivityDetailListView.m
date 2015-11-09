@@ -23,8 +23,8 @@
 #define KPAGENUM    10
 @interface ActivityDetailListView ()<UITableViewDataSource,UITableViewDelegate>
 
-@property (nonatomic,strong) NSMutableArray *activityDetailArray;
 @property (nonatomic,assign) NSInteger currentIndex;
+
 @end
 
 @implementation ActivityDetailListView
@@ -37,6 +37,7 @@
         [self registerClass:[ActivityDetailCell class] forCellReuseIdentifier:REUSEID_DETAILCELL];
         [self registerClass:[ActivityJoinInCell class] forCellReuseIdentifier:REUSEID_JOINCELL];
         _currentIndex = 0;
+        self.isContainsMe = NO;
     }
     return self;
 }
@@ -49,6 +50,7 @@
         [self registerClass:[ActivityDetailCell class] forCellReuseIdentifier:REUSEID_DETAILCELL];
         [self registerClass:[ActivityJoinInCell class] forCellReuseIdentifier:REUSEID_JOINCELL];
         _currentIndex = 0;
+        self.isContainsMe = NO;
     }
     return self;
 }
@@ -161,6 +163,9 @@
         Author *author = model.enrollActivityUserInfos[indexPath.row-1];
         if (author.studentNo == nil && author.uid == nil)
             return SCALE_NUM(160);
+        if (author.tagsCommon.count == 0 && author.propetiesCommon.count == 0 && indexPath.row == 1) {
+            return SCALE_NUM(120);
+        }
         if (author.tagsCommon.count == 0 && author.propetiesCommon.count == 0) {
             return SCALE_NUM(90);
         }
@@ -189,7 +194,7 @@
     else
     {
         ActivityJoinInCell *cell;
-#pragma mark 此处以后要考虑复用
+#pragma mark 此处以后要考虑复用,首先标签控件需要复用
         //cell = [tableView dequeueReusableCellWithIdentifier:REUSEID_JOINCELL];
         CELLTYPE type = indexPath.row == 1? IS_TOPVIEW : NOT_TOPVIEW;
         cell = [[ActivityJoinInCell alloc]init];
@@ -198,8 +203,14 @@
         
         if (self.activityDetailArray.count > 0) {
             model = self.activityDetailArray[0];
-            [cell setData:model.enrollActivityUserInfos[indexPath.row-1]];
+            Author *author = model.enrollActivityUserInfos[indexPath.row-1];
+            [cell setData:author];
             cell.type = type;
+            
+            //判断自己是否已经加入
+            if ([author.uid isEqualToString:[[YShareData defaultData] valueForKey:kShareData_UserID]]) {
+                self.isContainsMe = YES;
+            }
         }
         return cell;
     }

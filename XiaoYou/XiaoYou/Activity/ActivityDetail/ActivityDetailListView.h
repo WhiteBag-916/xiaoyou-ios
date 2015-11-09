@@ -13,6 +13,11 @@
 
 @property (nonatomic,copy) NSString *publishID;
 
+//数据源
+@property (nonatomic,strong) NSMutableArray *activityDetailArray;
+
+@property (nonatomic,assign) BOOL isContainsMe;
+
 -(void)loadData;
 
 -(void)sendRequest;

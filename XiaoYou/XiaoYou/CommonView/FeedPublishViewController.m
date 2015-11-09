@@ -347,7 +347,7 @@
     UzysAssetsPickerController *picker = [[UzysAssetsPickerController alloc] init];
     picker.assetsFilter = [ALAssetsFilter allPhotos];
     picker.maximumNumberOfSelectionVideo = 0;
-    picker.maximumNumberOfSelectionPhoto = 9;
+    picker.maximumNumberOfSelectionPhoto = 9 - [self.imgGroup getImgCount];
     picker.delegate = self;
     [self presentViewController:picker animated:YES completion:NULL];
 }

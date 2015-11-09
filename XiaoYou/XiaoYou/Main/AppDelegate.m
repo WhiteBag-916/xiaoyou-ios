@@ -30,6 +30,21 @@
     [self initRootVC];
     
     [AppConfigData setHaveRemindMessage:NO];
+    
+    NSDictionary*userInfo = [launchOptions objectForKey:UIApplicationLaunchOptionsRemoteNotificationKey];
+    if(userInfo)
+    {
+        NSString *message = [userInfo description];
+        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"提示" message:message delegate:self cancelButtonTitle:@"aa" otherButtonTitles:@"bb", nil];
+        
+        [alert show];
+        
+        [self initNotifyRemindNC];
+        UILocalNotification *localNoti = [[UILocalNotification alloc]init];
+        localNoti.userInfo = userInfo;
+        //[self application:[UIApplication sharedApplication] didReceiveRemoteNotification:userInfo];
+        [self application:[UIApplication sharedApplication] didReceiveLocalNotification:localNoti];
+    }
 
     return YES;
 }
