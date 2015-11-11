@@ -241,7 +241,7 @@
     [self initHead:imageName labelName:labelName backView:backView];
     
     //fieldBg
-    UIImageView *fieldBgImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@""]];
+    UIImageView *fieldBgImageView = [[UIImageView alloc] init];
     [fieldBgImageView setImage:[[UIImage imageNamed:@"build_put_bg"] resizableImageWithCapInsets:UIEdgeInsetsMake(5, 5, 5, 5) resizingMode:UIImageResizingModeStretch]];
     [backView addSubview:fieldBgImageView];
     [fieldBgImageView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -268,7 +268,7 @@
     [self initHead:imageName labelName:labelName backView:backView];
     
     //timeBg
-    UIImageView *fieldBgImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@""]];
+    UIImageView *fieldBgImageView = [[UIImageView alloc] init];
     [fieldBgImageView setImage:[[UIImage imageNamed:@"build_put_bg"] resizableImageWithCapInsets:UIEdgeInsetsMake(5, 5, 5, 5) resizingMode:UIImageResizingModeStretch]];
     [backView addSubview:fieldBgImageView];
     [fieldBgImageView mas_makeConstraints:^(MASConstraintMaker *make) {

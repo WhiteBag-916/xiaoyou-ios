@@ -158,7 +158,7 @@
     [backgroundImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.equalTo(_contentView).insets(UIEdgeInsetsMake(0, K_BACK_LR, K_BACK_B, K_BACK_LR));
     }];
-    
+
     //日程名称
     _nameView = [UIView new];
     [_contentView addSubview:_nameView];
@@ -170,7 +170,7 @@
     }];
     
     [self initField:@"build_icon_name" labelName:@"日程名称" fieldTag:K_TAG_NAME backView:_nameView];
-    
+
     //上课时间
     _bClassView = [UIView new];
     [_contentView addSubview:_bClassView];
@@ -246,7 +246,7 @@
     [self initHead:imageName labelName:labelName backView:backView];
     
     //fieldBg
-    UIImageView *fieldBgImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@""]];
+    UIImageView *fieldBgImageView = [[UIImageView alloc] init];
     [fieldBgImageView setImage:[[UIImage imageNamed:@"build_put_bg"] resizableImageWithCapInsets:UIEdgeInsetsMake(5, 5, 5, 5) resizingMode:UIImageResizingModeStretch]];
     [backView addSubview:fieldBgImageView];
     [fieldBgImageView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -273,7 +273,7 @@
     [self initHead:imageName labelName:labelName backView:backView];
     
     //timeBg
-    UIImageView *fieldBgImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@""]];
+    UIImageView *fieldBgImageView = [[UIImageView alloc] init];
     [fieldBgImageView setImage:[[UIImage imageNamed:@"build_put_bg"] resizableImageWithCapInsets:UIEdgeInsetsMake(5, 5, 5, 5) resizingMode:UIImageResizingModeStretch]];
     [backView addSubview:fieldBgImageView];
     [fieldBgImageView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -303,7 +303,7 @@
     [self initHead:imageName labelName:labelName backView:backView];
     
     //fieldBg
-    UIImageView *fieldBgImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@""]];
+    UIImageView *fieldBgImageView = [[UIImageView alloc] init];
     [fieldBgImageView setImage:[[UIImage imageNamed:@"build_put_bg"] resizableImageWithCapInsets:UIEdgeInsetsMake(5, 5, 5, 5) resizingMode:UIImageResizingModeStretch]];
     [backView addSubview:fieldBgImageView];
     [fieldBgImageView mas_makeConstraints:^(MASConstraintMaker *make) {
