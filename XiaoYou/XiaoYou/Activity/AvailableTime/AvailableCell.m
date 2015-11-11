@@ -48,6 +48,7 @@
     return self;
 }
 
+#pragma mark 协议
 -(BOOL)needLine
 {
     return YES;
@@ -58,6 +59,7 @@
     return 20;
 }
 
+//初始化相关控件
 -(void)initView
 {
     _startImageView = [[UIImageView alloc]init];
@@ -254,7 +256,6 @@
     NSArray *imageTextModels =  model.activityImageTextModels;
     
     BOOL isNotHaveImage = YES;
-    //_titleLabel.text        = publishModel.name;//标题
     [_titleLabel setText:publishModel.name lineSpacing:5];
     //图文混排
     for (ActivityImageTextModels *imageText in imageTextModels) {

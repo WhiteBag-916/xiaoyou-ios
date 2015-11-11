@@ -66,6 +66,7 @@
             make.centerY.equalTo(self);
         }];
     }
+    return nil;
     return _noDataImageView;
 }
 

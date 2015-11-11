@@ -28,8 +28,9 @@
 #define REUSEID_SCHEDULE_CELL @"ScheduleCardCell"
 @interface AvailableListView ()<UITableViewDataSource,UITableViewDelegate>
 
-@property (nonatomic,assign) NSInteger currentIndex;
+@property (nonatomic,assign) NSInteger currentIndex;            //分页用
 
+@property (nonatomic,strong) ScheduleCardCell *scheduleCardCell;//日程
 @end
 
 @implementation AvailableListView
@@ -83,17 +84,23 @@
 
 - (void)loadNewData
 {
-    _currentIndex = 0;
+    //_currentIndex = 0;
     [self sendRequest];
 }
 
 - (void)loadMoreData
 {
-    _currentIndex = self.availableListArray.count-2;
+    //_currentIndex = self.availableListArray.count-2;
     [self sendRequest];
 }
 
 - (void)sendRequest {
+    
+    if ([self isHeaderRefresh]) {
+        _currentIndex = 0;
+    } else {
+        _currentIndex = self.availableListArray.count - 2;
+    }
     
     [[ActivityManager sharedInstance] getCurrentUseMainAvailableListLimitStart:_currentIndex limitEnd:_currentIndex + KPAGENUM block:^(YActionMessage *message) {
         if (message.isSuccess) {
@@ -102,7 +109,8 @@
             }
             [self dealMessage:message];
             [self hiddenFooter:NO];
-            if ([[message.object valueForKey:@"activityList"] count] < KPAGENUM) {
+            NSUInteger requestCount = [[message.object valueForKey:@"activityList"] count];
+            if (requestCount < KPAGENUM) {
                 [self showNoticeNoMoreData];
             }
             [self reloadData];
@@ -120,12 +128,14 @@
     }];
 }
 
+#pragma handle message reviced
 -(void)dealMessage:(YActionMessage*)message
 {
-    //NSArray *arr = [NSArray arrayWithObject:message.object];
     AvailableTimeModel *model = message.object;
     if (_currentIndex == 0) {
+        //日程
         [self.availableListArray addObject:model.scheduling];
+        //空闲教室
         [self.availableListArray addObject:@(model.availableBuilding)];
     }
     [self.availableListArray addObjectsFromArray:model.activityList];
@@ -172,15 +182,14 @@
 -(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.row == 0) {
-        ScheduleCardCell *cell = [tableView dequeueReusableCellWithIdentifier:REUSEID_SCHEDULE_CELL];
-        [cell setData:self.availableListArray[indexPath.row]];
-#pragma mark 此处需要数据库相关操作
-        int count = [self searchMessageNotRead];
+        _scheduleCardCell = [tableView dequeueReusableCellWithIdentifier:REUSEID_SCHEDULE_CELL];
+        [_scheduleCardCell setData:self.availableListArray[indexPath.row]];
+        NSUInteger count = [self searchMessageNotRead];
         if (count>0)
-            [cell setMessageNotReadIsVisible:YES Text:[NSString stringWithFormat:@"%d条新消息 >",count]];
+            [_scheduleCardCell setMessageNotReadIsVisible:YES Text:[NSString stringWithFormat:@"%lu条新消息 >",(unsigned long)count]];
         else
-            [cell setMessageNotReadIsVisible:NO Text:@""];
-        return cell;
+            [_scheduleCardCell setMessageNotReadIsVisible:NO Text:@""];
+        return _scheduleCardCell;
     } else if (indexPath.row == 1) {
         StudyRoomCell *cell = [StudyRoomCell cellWithTableView:tableView];
         [cell setData:self.availableListArray[indexPath.row]];
@@ -195,20 +204,19 @@
 }
 
 #pragma mark 查找未读信息
--(int)searchMessageNotRead
+-(NSUInteger)searchMessageNotRead
 {
-    
     NSString *dataBasePath = [NSString stringWithFormat:@"%@//%@",[YDirectory documents],NSStringFromClass([NotifyInfoModel class])];
     YDatabaseDao *dataBaseDao = [[YDatabaseDao alloc]initWitDatabasePath:dataBasePath];
-    
     NSArray *notifyArr = [dataBaseDao queryModel:NSStringFromClass([NotifyInfoModel class])];
-    NSArray *notifyModelArr = [NotifyInfoModel objectArrayWithKeyValuesArray:notifyArr];
-    int count = 0;
-    for (NotifyInfoModel *model in notifyModelArr) {
-        if ([model.isRead isEqualToString:@"NO"])
-            count++;
-    }
-    return count;
+#pragma mark 如果要保存历史消息,需要修改如下代码
+//    NSArray *notifyModelArr = [NotifyInfoModel objectArrayWithKeyValuesArray:notifyArr];
+//    int count = 0;
+//    for (NotifyInfoModel *model in notifyModelArr) {
+//        if ([model.isRead isEqualToString:@"NO"])
+//            count++;
+//    }
+    return notifyArr.count;
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
@@ -225,6 +233,9 @@
     }
     else if ([cell isKindOfClass:[AvailableCell class]]) {
         [self gotoDetailWithCellType:ACTIVITY_DETAIL_CELL indexPath:indexPath];
+    } else
+    {
+        YLogE(@"not exist this cell");
     }
 }
 
@@ -247,9 +258,7 @@
         if (self.availableListArray.count > 0)
             model = self.availableListArray[indexPath.row];
         NSString *publishID = [NSString stringWithFormat:@"%ld",(long)model.activityPublishedModel.activityPublishedModelIdentifier];
-        
         ActivityDetailViewController *activityDetailVC = [[ActivityDetailViewController alloc]initWithPublishID:publishID];
-        
         [self.viewController.navigationController pushViewController:activityDetailVC animated:YES needHiddenBottomBar:YES];
     }
 }

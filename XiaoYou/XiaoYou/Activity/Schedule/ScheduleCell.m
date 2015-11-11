@@ -45,7 +45,7 @@
     //容器视图
     _wrapContentView = [[UIView alloc]init];
     [self.contentView addSubview:_wrapContentView];
-    _wrapContentView.backgroundColor = [UIColor whiteColor];//[UIColor colorWithRed:254.0/255 green:1 blue:1 alpha:0];
+    _wrapContentView.backgroundColor = [UIColor whiteColor];
     _wrapContentView.layer.borderWidth = 1;
     _wrapContentView.layer.borderColor = [UIColor colorWithRed:204/255.0 green:204/255.0 blue:204/255.0 alpha:1].CGColor;
     [_wrapContentView mas_makeConstraints:^(MASConstraintMaker *make) {
