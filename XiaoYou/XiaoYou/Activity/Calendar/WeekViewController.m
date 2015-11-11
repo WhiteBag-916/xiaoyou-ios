@@ -84,7 +84,7 @@ static NSString* const EventCellReuseIdentifier = @"EventCellReuseIdentifier";
 
 - (void)newScheduleByInfo:(UserSchedulingInfo *)info {
     NewScheduleViewController *vc = [[NewScheduleViewController alloc] initWithInfo:info];
-    [self.navigationController presentViewController:vc animated:YES completion:nil];
+    [self.view.window.rootViewController presentViewController:vc animated:YES completion:nil];
 }
 
 - (void)onNavigationLeftButtonClicked {
@@ -195,8 +195,9 @@ static NSString* const EventCellReuseIdentifier = @"EventCellReuseIdentifier";
             UserSchedulingInfo *dataArrayObj = dataArray[j];
             if (userSchedulingInfoObj.internalBaseClassIdentifier == dataArrayObj.internalBaseClassIdentifier
                 && [userSchedulingInfoObj.type isEqualToString:dataArrayObj.type]) {
-                //替换旧的，不加入
-                userSchedulingInfoObj = dataArrayObj;
+                //插入旧的，不加入
+                [_userSchedulingInfoArray removeObjectAtIndex:i];
+                [_userSchedulingInfoArray insertObject:dataArrayObj atIndex:i];
                 [dataArray removeObjectAtIndex:j];
                 --j;
                 break;

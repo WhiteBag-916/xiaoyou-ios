@@ -530,7 +530,7 @@
 //跳转至编辑活动
 - (void)toEdit {
     NewScheduleViewController *vc = [[NewScheduleViewController alloc] initWithInfo:_userSchedulingInfo];
-    [self.navigationController presentViewController:vc animated:YES completion:nil];
+    [self.view.window.rootViewController presentViewController:vc animated:YES completion:nil];
 }
 
 //更改日程

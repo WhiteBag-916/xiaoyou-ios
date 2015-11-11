@@ -186,7 +186,7 @@
 -(void)filterAction {
     ActivityChoiceController *choiceVC = [[ActivityChoiceController alloc] initWithType:ACTIVITY_CHOICE_TYPE andDataSource:nil andStudyRoomDefautStr:nil];
     choiceVC.activityViewController = self;
-    [self.navigationController presentViewController:choiceVC animated:YES completion:nil];
+    [self.view.window.rootViewController presentViewController:choiceVC animated:YES completion:nil];
 }
 
 //搜索🔍
@@ -201,7 +201,7 @@
 -(void)onNavigationLeftButtonClicked
 {
     RemindViewController *remindVC = [[RemindViewController alloc]init];
-    //[self.navigationController presentViewController:remindVC animated:YES completion:nil];
+    //[self.view.window.rootViewController presentViewController:remindVC animated:YES completion:nil];
     [self.navigationController pushViewController:remindVC animated:YES needHiddenBottomBar:YES];
     
     
