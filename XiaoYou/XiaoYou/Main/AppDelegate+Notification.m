@@ -13,6 +13,7 @@
 #import "XYTabBarViewController.h"
 #import "MessageManager.h"
 #import "AppDelegate+RootVC.h"
+#import "AppConfigData.h"
 
 @implementation AppDelegate (Notification)
 
@@ -27,11 +28,49 @@
     
     [self setupNotifiers];
     
-    //处理程序启动时的后台推送
-    NSDictionary *notifyInfo = [launchOptions objectForKey:UIApplicationLaunchOptionsRemoteNotificationKey];
-    
-    if (notifyInfo) {
-        NSLog(@"this is local notity.....");
+    //处理程序进程杀死后,收到活动提醒日程等通知
+    [self dealMessageWithctivityAndRemindWithLaunchOpthins:launchOptions];
+}
+
+
+-(void)dealMessageWithctivityAndRemindWithLaunchOpthins:(NSDictionary *)launchOptions
+{
+    [AppConfigData setHaveRemindMessage:NO];
+    NSDictionary *userInfo = [launchOptions objectForKey:UIApplicationLaunchOptionsRemoteNotificationKey];
+    if(nil != userInfo && nil != userInfo[@"e"])
+    {
+        
+        NSDictionary *dic = userInfo[@"e"];
+        NSMutableDictionary *dataDictExt = [NSMutableDictionary dictionaryWithDictionary:dic[@"obj"]];
+        
+        if (userInfo[@"e"][@"type"] != nil )
+            [dataDictExt setObject:userInfo[@"e"][@"type"] forKey:@"type"];
+        if (userInfo[@"e"][@"timestamp"] != nil )
+            [dataDictExt setObject:userInfo[@"e"][@"timestamp"] forKey:@"timestamp"];
+        
+        if (userInfo[@"e"][@"headIcon"] != nil)
+            [dataDictExt setObject:userInfo[@"e"][@"headIcon"] forKey:@"headIcon"];
+        if (userInfo[@"e"][@"id"] != nil)
+            [dataDictExt setObject:userInfo[@"e"][@"id"] forKey:@"id"];
+        if (userInfo[@"e"][@"name"] != nil)
+            [dataDictExt setObject:userInfo[@"e"][@"name"] forKey:@"name"];
+        if (userInfo[@"e"][@"organizer"] != nil)
+            [dataDictExt setObject:userInfo[@"e"][@"organizer"] forKey:@"organizer"];
+        
+        if (userInfo[@"aps"][@"alert"] != nil)
+            [dataDictExt setObject:userInfo[@"aps"][@"alert"] forKey:@"contentTxt"];
+        if (dataDictExt != nil) {
+            [[MessageManager sharedInstance] dealMessageWithDict:dataDictExt];
+            
+            if (userInfo[@"e"][@"type"] != nil) {
+                NSInteger type = [userInfo[@"e"][@"type"] integerValue];
+                
+                if (type == ACTIVITY_ENROLL_CHECK_PASS || type == ACTIVITY_ENROLL)
+                    [self initNotifyRemindListNC];
+                else if (type >=ACTIVITY_ENROLL_CHECK_PASS && type <= ACTIVITY_NOTIFY)
+                    [self initNotifyRemindNC];
+            }
+        }
     }
 }
 

@@ -183,24 +183,6 @@
         make.trailing.mas_equalTo(SCALE_NUM(-10));
         make.bottom.mas_equalTo(SCALE_NUM(-15));
     }];
-    
-//    _bottomLineView = [[UIView alloc]init];
-//    [self.wrapContentView addSubview:_bottomLineView];
-//    
-//    _bottomLineView.backgroundColor = KCOLORGRAY_B6;
-//    [_bottomLineView mas_makeConstraints:^(MASConstraintMaker *make) {
-//        make.leading.equalTo(_wrapContentView);
-//        make.trailing.equalTo(_wrapContentView);
-//        make.height.mas_equalTo(1);
-//        make.bottom.equalTo(_wrapContentView.mas_bottom).offset(SCALE_NUM(-44));
-//    }];
-    
-//    [_applyContentLable mas_updateConstraints:^(MASConstraintMaker *make) {
-//        make.bottom.equalTo(_bottomLineView.mas_top).offset(SCALE_NUM(-10));
-//    }];
-    
-    //[self addStatusButton];
-    //[self addBottomSelectView];
 }
 
 -(void)setData:(NoticeInfo *)model

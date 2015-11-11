@@ -162,12 +162,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-//    [tableView deselectRowAtIndexPath:indexPath animated:YES];
-//    
-//    GroupModel *model = _associationsListArray[indexPath.row];
-//    
-//    AssociationsDetailViewController *associationsDetailViewController = [[AssociationsDetailViewController alloc] initWithId:[NSString stringWithFormat:@"%g", model.internalBaseClassIdentifier] name:model.groupName];
-//    [_superVC.navigationController pushViewController:associationsDetailViewController animated:YES needHiddenBottomBar:YES];
+    
 }
 
 @end
