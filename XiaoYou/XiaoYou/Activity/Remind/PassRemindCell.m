@@ -238,7 +238,6 @@
 
 //点击下面部分cell
 -(void)bottomAction:(UIButton*)btn {
-    YLogD(@"this is bottom action");
     NSString *publishID;
     if (_notifyModel) {
         publishID = self.notifyModel.idStr;

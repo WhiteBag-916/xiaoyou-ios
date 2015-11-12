@@ -132,13 +132,13 @@ typedef enum : NSUInteger {
     {
         ActivityChoiceController * choiceController = [[ActivityChoiceController alloc] initWithType:CLASSROOM_CHOICE_TYPE andDataSource:_studyRoomTableView.campusDataSouceArr andStudyRoomDefautStr:_studyRoomTableView.campusDataSouceArr[0]];
         choiceController.classViewController = self;
-        [self.navigationController presentViewController:choiceController animated:YES completion:nil];
+        [self.view.window.rootViewController presentViewController:choiceController animated:YES completion:nil];
     }
     else
     {
         ActivityChoiceController * choiceController = [[ActivityChoiceController alloc] initWithType:CLASSROOM_CHOICE_TYPE andDataSource:_studyRoomTableView.campusDataSouceArr andStudyRoomDefautStr:nil];
         choiceController.classViewController = self;
-        [self.navigationController presentViewController:choiceController animated:YES completion:nil];
+        [self.view.window.rootViewController presentViewController:choiceController animated:YES completion:nil];
     }
     
 }

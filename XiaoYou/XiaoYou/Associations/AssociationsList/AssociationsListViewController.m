@@ -72,7 +72,7 @@
     }];
     UINavigationController *navigationController =
     [[UINavigationController alloc] initWithRootViewController:profileTagViewController];
-    [self.navigationController presentViewController:navigationController animated:YES completion:nil];
+    [self.view.window.rootViewController presentViewController:navigationController animated:YES completion:nil];
 }
 
 //搜索

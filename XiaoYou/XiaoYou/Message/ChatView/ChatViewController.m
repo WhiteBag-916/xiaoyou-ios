@@ -1244,8 +1244,13 @@
                                      orientation:(UIImageOrientation)representation.defaultRepresentation.orientation];
         
         [self sendImageMessage:img];
-        self.isInvisible = NO;
     }
+    
+    self.isInvisible = NO;
+}
+
+- (void)uzysAssetsPickerControllerDidCancel:(UzysAssetsPickerController *)picker {
+    self.isInvisible = NO;
 }
 
 - (void)uzysAssetsPickerControllerDidExceedMaximumNumberOfSelection:(UzysAssetsPickerController *)picker {

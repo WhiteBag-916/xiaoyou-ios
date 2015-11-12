@@ -448,7 +448,7 @@
     picker.delegate = self;
     picker.allowsEditing = NO;
     picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
-    [self.navigationController presentViewController:picker animated:YES completion:nil];
+    [self.view.window.rootViewController presentViewController:picker animated:YES completion:nil];
 }
 
 #pragma mark - UIImagePickerControllerDelegate

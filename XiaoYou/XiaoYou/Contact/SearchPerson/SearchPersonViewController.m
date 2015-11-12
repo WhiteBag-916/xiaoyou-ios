@@ -117,7 +117,7 @@
     searchFilterViewController.isSelectArray = [NSArray arrayWithArray:_chooseFiterArray];
     UINavigationController *navigationController =
     [[UINavigationController alloc] initWithRootViewController:searchFilterViewController];
-    [self.navigationController presentViewController:navigationController animated:YES completion:nil];
+    [self.view.window.rootViewController presentViewController:navigationController animated:YES completion:nil];
 }
 
 //重置右上角按钮是否可点

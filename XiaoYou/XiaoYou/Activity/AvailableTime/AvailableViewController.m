@@ -31,7 +31,7 @@
 @property (nonatomic,strong) UIImageView    *guideImageView;    //提示图片
 @property (nonatomic,assign) int            guideIndex;         //当前提示索引
 
-@property (nonatomic,strong) UIButton       *leftNavBar;
+@property (nonatomic,strong) UIButton       *leftNavBar;        //左边导航条
 @end
 
 @implementation AvailableViewController
@@ -78,29 +78,21 @@
 {
     [_leftNavBar setImage:[[UIImage imageNamed:@"red_point_bell"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] forState:UIControlStateNormal];
     [_leftNavBar setImage:[[UIImage imageNamed:@"red_point_bell"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] forState:UIControlStateHighlighted];
-    //[self showCustomNavigationRemindButton:YES];
-    
-//    UIBarButtonItem *item = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"red_point_bell"] style:UIBarButtonItemStylePlain target:self action:@selector(onNavigationLeftButtonClicked)];
-//    self.navigationItem.leftBarButtonItem = item;
 }
 
 - (void)addGuideView {
-    
     UIWindow *window = [UIApplication sharedApplication].keyWindow;
-    
     NSString *imageName = @"1havetime_box_calender";
     UIImage *image = [[UIImage imageNamed:imageName]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     _guideImageView = [[UIImageView alloc] initWithImage:image];
     _guideImageView.alpha = 1;
     [window addSubview:_guideImageView];
     
-    
     [_guideImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.equalTo(window);
     }];
     
     _guideImageView.userInteractionEnabled = YES;
-    
     UITapGestureRecognizer *tap1 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissGuideView)];
     [_guideImageView addGestureRecognizer:tap1];
     self.guideIndex = 1;
@@ -194,7 +186,7 @@
 -(void)filterAction {
     ActivityChoiceController *choiceVC = [[ActivityChoiceController alloc] initWithType:ACTIVITY_CHOICE_TYPE andDataSource:nil andStudyRoomDefautStr:nil];
     choiceVC.activityViewController = self;
-    [self.navigationController presentViewController:choiceVC animated:YES completion:nil];
+    [self.view.window.rootViewController presentViewController:choiceVC animated:YES completion:nil];
 }
 
 //搜索🔍
@@ -209,7 +201,7 @@
 -(void)onNavigationLeftButtonClicked
 {
     RemindViewController *remindVC = [[RemindViewController alloc]init];
-    //[self.navigationController presentViewController:remindVC animated:YES completion:nil];
+    //[self.view.window.rootViewController presentViewController:remindVC animated:YES completion:nil];
     [self.navigationController pushViewController:remindVC animated:YES needHiddenBottomBar:YES];
     
     
