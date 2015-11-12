@@ -2722,9 +2722,9 @@
 		20DC87F81B5F683F0019DC7F /* CommonView */ = {
 			isa = PBXGroup;
 			children = (
+				20DAAA711BCD05F5006DF231 /* TagsCommonView */,
 				65FC7EB01BCE122500B3AA7C /* YWebViewController.h */,
 				65FC7EB11BCE122500B3AA7C /* YWebViewController.m */,
-				20DAAA711BCD05F5006DF231 /* TagsCommonView */,
 				2076A2FC1B81C590001FFBAC /* YCommonActionSheet.h */,
 				2076A2FD1B81C590001FFBAC /* YCommonActionSheet.m */,
 				2076A2FE1B81C590001FFBAC /* YCommonAlertView.h */,

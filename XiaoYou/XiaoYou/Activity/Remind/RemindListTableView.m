@@ -30,7 +30,6 @@
 <UITableViewDataSource,UITableViewDelegate>
 
 @property (nonatomic,assign) NSInteger      currentIndex;    //索引
-@property (nonatomic,strong) UIImageView    *noDataImageView;//没有数据时的提示
 
 @end
 @implementation RemindListTableView
@@ -62,24 +61,6 @@
         _currentIndex = 0;
     }
     return self;
-}
-
--(UIImageView *)noDataImageView
-{
-    if (!_noDataImageView) {
-        _noDataImageView = [[UIImageView alloc]init];
-        _noDataImageView.tag = ImageTAG;
-        [self addSubview:_noDataImageView];
-        _noDataImageView.hidden = YES;
-        _noDataImageView.image = [UIImage imageNamed:@"havetime－picture－notice"];
-        [_noDataImageView mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.width.mas_equalTo(SCALE_NUM(203));
-            make.height.mas_equalTo(SCALE_NUM(164));
-            make.centerX.equalTo(self);
-            make.centerY.equalTo(self);
-        }];
-    }
-    return _noDataImageView;
 }
 
 -(NSMutableArray *)remindListArray
@@ -115,6 +96,12 @@
     [self sendRequest];
 }
 
+//无图时展示图片的属性
+-(NSString *)noDataImageViewAttribute
+{
+    return @"havetime－picture－notice";
+}
+
 - (void)sendRequest {
     _currentIndex = [self isHeaderRefresh] ? 0 : self.remindListArray.count;
     [[NoticeManager sharedInstance] getMyNoticeInfoWithLimiteStart:_currentIndex limiteEnd:_currentIndex + KPAGENUM block:^(YActionMessage *message) {
@@ -140,13 +127,9 @@
             [self stopLoadMoreData];
         }
         if ([self.remindListArray count] == 0) {
-            self.noDataImageView.hidden = NO;
-            [self hiddenHeader:YES];
-            [self hiddenFooter:YES];
+            [self showNoDataImageView:YES];
         } else {
-            self.noDataImageView.hidden = YES;
-            [self hiddenHeader:NO];
-            [self hiddenFooter:NO];
+            [self showNoDataImageView:NO];
         }
     }];
 }

@@ -30,4 +30,7 @@
 
 - (BOOL)isHeaderRefresh;
 - (BOOL)isFooterRefresh;
+
+- (NSString*)noDataImageViewAttribute;
+- (void)showNoDataImageView:(BOOL)isShow;
 @end

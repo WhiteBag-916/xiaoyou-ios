@@ -10,6 +10,12 @@
 #import "MJRefresh.h"
 #import "YVIew+Ext.h"
 
+@interface YTableView ()
+
+@property (nonatomic,strong) UIImageView    *noDataImageView;
+
+@end
+
 @implementation YTableView
 
 //-(instancetype)initWithFrame:(CGRect)frame style:(UITableViewStyle)style {
@@ -59,6 +65,47 @@
     }
     
     return self;
+}
+
+//无图图片
+-(UIImageView *)noDataImageView
+{
+    if (!_noDataImageView) {
+        _noDataImageView = [[UIImageView alloc]init];
+        [self addSubview:_noDataImageView];
+        _noDataImageView.hidden = YES;
+        NSString *imageName;
+        if ((imageName = [self noDataImageViewAttribute]))
+        {
+            UIImage *image = [UIImage imageNamed:imageName];
+            CGSize imageSize = image.size;
+            CGFloat imageWidth = imageSize.width;
+            CGFloat imageHeight = imageSize.height;
+            self.noDataImageView.image = image;
+            CGFloat screenWidth = [UIScreen mainScreen].bounds.size.width;
+            CGFloat screenHeight= [UIScreen mainScreen].bounds.size.height - 64;
+            self.noDataImageView.frame = CGRectMake(screenWidth/2 - imageWidth/2, screenHeight/2 - imageHeight/2, imageWidth, imageHeight);
+        }
+
+    }
+    return _noDataImageView;
+}
+
+-(void)showNoDataImageView:(BOOL)isShow
+{
+    //没有数据,展示无图图片
+    if (isShow) {
+        self.noDataImageView.hidden = NO;
+        self.scrollEnabled = NO;
+        [self hiddenHeader:YES];
+        [self hiddenFooter:YES];
+    } else //有数据，不展示无图图片
+    {
+        self.noDataImageView.hidden = YES;
+        self.scrollEnabled = YES;
+        [self hiddenHeader:NO];
+        [self hiddenFooter:NO];
+    }
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
@@ -156,6 +203,12 @@
 }
 - (BOOL)isFooterRefresh {
     return self.footer.isRefreshing;
+}
+
+//tableView没有数据的时候展示空图片
+- (NSArray*)noDataImageViewAttribute
+{
+    return nil;
 }
 /*
 // Only override drawRect: if you perform custom drawing.
