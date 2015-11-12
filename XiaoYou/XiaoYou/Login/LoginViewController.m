@@ -167,7 +167,7 @@
     CNTextController *textController = [[CNTextController alloc] init];
     textController.textType = TextTermsOfAgreementType;
     UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:textController];
-    [self.navigationController presentViewController:navigationController animated:YES completion:nil];
+    [self.view.window.rootViewController presentViewController:navigationController animated:YES completion:nil];
 }
 
 //选择协议条款

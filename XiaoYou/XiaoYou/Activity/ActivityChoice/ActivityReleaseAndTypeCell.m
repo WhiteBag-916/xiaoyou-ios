@@ -62,7 +62,7 @@ NSString *const kActivityReleaseAndTypeCell = @"ActivityReleaseAndTypeCellId";
             _releaseAndTypeImageView.image = [UIImage imageNamed:@"funny_detail_time"];
             _releaseAndTypeLabel.text = model.name;
         }
-        else if ([model.name isEqualToString:@"活动创建来源"])
+        else if ([model.name isEqualToString:@"发布者"])
         {
             self.dataArr = model.tags;
             _releaseAndTypeImageView.image = [UIImage imageNamed:@"activity-releaser"];

@@ -1327,7 +1327,7 @@
     if ([self canRecord]) {
         DXRecordView *tmpView = (DXRecordView *)recordView;
         tmpView.center = self.view.center;
-        [self.view addSubview:tmpView];
+        [self.view addSubview:tmpView];                 
         [self.view bringSubviewToFront:recordView];
         int x = arc4random() % 100000;
         NSTimeInterval time = [[NSDate date] timeIntervalSince1970];

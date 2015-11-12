@@ -69,7 +69,7 @@
     _needRefresh = true;//发布界面回来时需要刷新
     UINavigationController *navigationController =
     [[UINavigationController alloc] initWithRootViewController:[[FeedPublishViewController alloc] init]];
-    [self.navigationController presentViewController:navigationController animated:YES completion:nil];
+    [self.view.window.rootViewController presentViewController:navigationController animated:YES completion:nil];
     
 }
 - (void)goToDetail:(NSString *)feedId {

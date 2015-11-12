@@ -131,7 +131,7 @@ static NSString* const EventCellReuseIdentifier = @"EventCellReuseIdentifier";
 	
 	UINavigationController* nc = [[UINavigationController alloc] initWithRootViewController:self.eventController];
 //	nc.delegate = self;
-	[self.navigationController presentViewController:nc animated:YES completion:nil];
+	[self.view.window.rootViewController presentViewController:nc animated:YES completion:nil];
 //	self.eventPopover = [[UIPopoverController alloc]initWithContentViewController:nc];
 //	self.eventPopover.delegate = self;
 //	
@@ -147,7 +147,7 @@ static NSString* const EventCellReuseIdentifier = @"EventCellReuseIdentifier";
 	self.eventEditController.editViewDelegate = self; // called only when event is deleted
 	self.eventEditController.modalInPopover = YES;
     
-    [self.navigationController presentViewController:self.eventEditController animated:YES completion:nil];
+    [self.view.window.rootViewController presentViewController:self.eventEditController animated:YES completion:nil];
 	
 //	self.eventPopover = [[UIPopoverController alloc]initWithContentViewController:eventController];
 //	self.eventPopover.delegate = self;

@@ -223,7 +223,7 @@
 - (void)toAddTag {
     [_menu showRootController:YES];
     UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:[[ProfileTagViewController alloc] initWithMyTags:[[ProvisionManager sharedInstance] profileTags] type:ProfileTagTypePerson]];
-    [self.navigationController presentViewController:navigationController animated:YES completion:nil];
+    [self.view.window.rootViewController presentViewController:navigationController animated:YES completion:nil];
 }
 - (void)toFeedFilter:(NSNotification *)notification {
     [_menu showRootController:YES];
@@ -234,7 +234,7 @@
         _needRefresh = true;
         UINavigationController *navigationController =
         [[UINavigationController alloc] initWithRootViewController:[[FeedPublishViewController alloc] init]];
-        [self.navigationController presentViewController:navigationController animated:YES completion:nil];
+        [self.view.window.rootViewController presentViewController:navigationController animated:YES completion:nil];
     } else if (self.viewIndex == 2) {
         FastViewController *fastViewController = [[FastViewController alloc]init];
         [self.navigationController pushViewController:fastViewController animated:YES needHiddenBottomBar:YES];
