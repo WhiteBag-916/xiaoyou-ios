@@ -7,7 +7,7 @@
 //
 
 /**
- 自己申请活动的提醒，包括下面描述的5个状态
+ 自己申请活动的提醒，包括下面描述的3个状态
  */
 #import <UIKit/UIKit.h>
 #import "YTableViewCell.h"
@@ -15,10 +15,9 @@
 #import "NoticeInfo.h"
 //提醒的5个状态
 typedef enum : NSUInteger {
-    ALREADY_SUBMIT,     //已经提交
     AUDIT_PASSED,       //审核通过
     AUDIT_NOT_PASSED,   //审核未通过
-    SUCESSED_JOININ,    //成功参加活动
+    NOT_NEED_CHECK,     //不需要审核
     SOMEONE_JOININ,     //有人参加你发布的活动
     NEED_CHECK          //需要审核
 } CELL_TYPE;
@@ -29,8 +28,8 @@ typedef enum : NSUInteger {
 
 +(PassRemindCell*)passRemindCellWithTableView:(UITableView*)tableView;
 
--(void)setData:(NoticeInfo*)model;
+-(void)setData:(id)model;
 
--(void)setNotifyData:(NotifyInfoModel*)model;
+//-(void)setNotifyData:(NotifyInfoModel*)model;
 
 @end

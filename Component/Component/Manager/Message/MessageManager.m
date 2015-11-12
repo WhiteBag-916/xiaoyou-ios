@@ -468,8 +468,6 @@ DEF_SINGLETON(MessageManager);
 
 -(void)dealMessageWithDict:(NSDictionary*)dict
 {
-    
-    
     NSString *dataBasePath = [NSString stringWithFormat:@"%@//%@",[YDirectory documents],NSStringFromClass([NotifyInfoModel class])];
     YDatabaseDao *dataBaseDao = [[YDatabaseDao alloc]initWitDatabasePath:dataBasePath];
     NotifyInfoModel *notiInfo = [[NotifyInfoModel alloc]init];
@@ -477,6 +475,11 @@ DEF_SINGLETON(MessageManager);
     notiInfo.timestamp = [dict[@"timestamp"] doubleValue];
     notiInfo.isRead = @"NO";
     notiInfo.type = [[dict valueForKey:@"type"] integerValue];
+    notiInfo.idStr = dict[@"id"];
+    notiInfo.name = dict[@"name"];
+    notiInfo.startTime = [dict[@"startTime"] doubleValue];
+    notiInfo.headIcon = dict[@"headIcon"];
+    notiInfo.organizer = dict[@"organizer"];
     notiInfo.uid = [[YShareData defaultData] valueForKey:kShareData_UserID];
     
     if (notiInfo.em_push_title == nil) {
@@ -488,69 +491,33 @@ DEF_SINGLETON(MessageManager);
     {
         case ACTIVITY_ENROLL_CHECK_PASS: //审核通过
         {
-            notiInfo.headIcon = dict[@"headIcon"];
-            notiInfo.idStr = dict[@"id"];
-            notiInfo.name = dict[@"name"];
-            notiInfo.organizer = dict[@"organizer"];
-            notiInfo.startTime = [dict[@"startTime"] doubleValue];
-            notiInfo.type = [[dict valueForKey:@"type"] integerValue];
             [dataBaseDao insertModel:notiInfo];
             break;
         }
         case ACTIVITY_ENROLL_NO_CHECK:  //审核未通过 //铃铛
         {
-            notiInfo.headIcon = dict[@"headIcon"];
-            notiInfo.idStr = dict[@"id"];
-            notiInfo.name = dict[@"name"];
-            notiInfo.organizer = dict[@"organizer"];
-            notiInfo.startTime = [dict[@"startTime"] doubleValue];
-            notiInfo.type = [[dict valueForKey:@"type"] integerValue];
             [AppConfigData setHaveRemindMessage:YES];
             [[NSNotificationCenter defaultCenter] postNotificationName:KNotification_Remind_Message_Come object:nil];
             break;
         }
         case SCHEDULE_REMIND: //用户日程提醒
         {
-            notiInfo.name = dict[@"name"];
-            notiInfo.idStr = dict[@"id"];
-            notiInfo.startTime = [dict[@"startTime"] doubleValue];
-            notiInfo.type = [[dict valueForKey:@"type"] integerValue];
             [dataBaseDao insertModel:notiInfo];
             break;
         }
         case ACTIVITY_ENROLL: //用户报名活动提醒
         {
-            notiInfo.headIcon = dict[@"headIcon"];
-            notiInfo.idStr = dict[@"id"];
-            notiInfo.name = dict[@"name"];
-            notiInfo.organizer = dict[@"organizer"];
-            notiInfo.startTime = [dict[@"startTime"] doubleValue];
-            notiInfo.type = [[dict valueForKey:@"type"] integerValue];
-            //notiInfo.propetiesCommon = [dict valueForKey:@""];
             [AppConfigData setHaveRemindMessage:YES];
-            //[dataBaseDao insertModel:notiInfo];
             [[NSNotificationCenter defaultCenter] postNotificationName:KNotification_Remind_Message_Come object:nil];
             break;
         }
-        case ACTIVITY_PUBLISH:
+        case ACTIVITY_PUBLISH://活动通知提醒
         {
-            notiInfo.headIcon = dict[@"headIcon"];
-            notiInfo.idStr = dict[@"id"];
-            notiInfo.name = dict[@"name"];
-            notiInfo.organizer = dict[@"organizer"];
-            notiInfo.startTime = [dict[@"startTime"] doubleValue];
             [AppConfigData setHaveRemindMessage:YES];
-            //[dataBaseDao insertModel:notiInfo];
             break;
         }
-        case ACTIVITY_NOTIFY:                       //活动通知提醒,活动快要开始
+        case ACTIVITY_NOTIFY: //活动通知提醒,活动快要开始
         {
-            notiInfo.headIcon = dict[@"headIcon"];
-            notiInfo.idStr = dict[@"id"];
-            notiInfo.name = dict[@"name"];
-            notiInfo.organizer = dict[@"organizer"];
-            notiInfo.startTime = [dict[@"startTime"] doubleValue];
-            notiInfo.type = [[dict valueForKey:@"type"] integerValue];
             [dataBaseDao insertModel:notiInfo];
             break;
         }
@@ -563,16 +530,6 @@ DEF_SINGLETON(MessageManager);
 
 
 //接收正常消息
-
-//Printing description of ext:
-//{
-//    "em_apns_ext" =     {
-//        "em_push_title" = 123;
-//    };
-//    "server_flag" = 1;
-//    timestamp = 1447059083802;
-//    type = 19;
-//}
 
 -(void)didReceiveMessage:(EMMessage *)message
 {

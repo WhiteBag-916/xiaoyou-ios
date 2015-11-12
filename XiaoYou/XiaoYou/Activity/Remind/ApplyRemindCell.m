@@ -147,7 +147,6 @@
     _nameLabel = [[UILabel alloc]init];
     [self.wrapContentView addSubview:_nameLabel];
     _nameLabel.font = CONTENT_FONT(12);
-    _nameLabel.text = @"李颖";
     _nameLabel.textColor = KCOLOR_g1;
     [_nameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(_headImageView.mas_right).offset(SCALE_NUM(10));
@@ -161,14 +160,6 @@
         make.trailing.mas_equalTo(SCALE_NUM(-10));
         //make.height.mas_equalTo(SCALE_NUM(20));
     }];
-    
-    Tags *tag1 = [[Tags alloc]init];
-    tag1.name = @"班";
-    Tags *tag2 = [[Tags alloc]init];
-    tag2.name = @"社";
-    Tags *tag3 = [[Tags alloc]init];
-    tag3.name = @"乡";
-    [_connectTagView updateWithTag:[NSArray arrayWithObjects:tag1,tag2,tag3, nil]];;
     
     _applyContentLable = [[UILabel alloc]init];
     [self.wrapContentView addSubview:_applyContentLable];
@@ -185,7 +176,18 @@
     }];
 }
 
--(void)setData:(NoticeInfo *)model
+-(void)setData:(id)model
+{
+    if ([model isKindOfClass:[NoticeInfo class]]) {
+        [self setNoticeInfoData:model];
+    } else if ([model isKindOfClass:[NotifyInfoModel class]]) {
+        [self setNotifyData:model];
+    }
+
+}
+
+//提醒相关数据
+-(void)setNoticeInfoData:(NoticeInfo *)model
 {
     Author *info = model.activityUser;
     [_headImageView setFaceImageWithUrl:info.headPic];
@@ -194,9 +196,9 @@
     
     [_applyContentLable setText:[NSString stringWithFormat:_applyContentLable.text,model.activityName] lineSpacing:5.0];
     [_connectTagView updateWithTag:info.propetiesCommon];
-
 }
 
+//推送信息数据
 -(void)setNotifyData:(NotifyInfoModel *)model
 {
     _titleImageView.image = nil;

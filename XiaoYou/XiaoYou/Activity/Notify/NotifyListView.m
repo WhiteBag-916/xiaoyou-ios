@@ -173,14 +173,14 @@
         case ACTIVITY_ENROLL_CHECK_PASS: //审核通过
         {
             PassRemindCell *cell = [PassRemindCell passRemindCellWithTableView:tableView];
-            [cell setNotifyData:model];
+            [cell setData:model];
             return cell;
             break;
         }
         case ACTIVITY_ENROLL_NO_CHECK:  //活动报名审核未通过
         {
             PassRemindCell *cell = [PassRemindCell passRemindCellWithTableView:tableView];
-            [cell setNotifyData:model];
+            [cell setData:model];
             return cell;
             break;
         }
@@ -194,21 +194,21 @@
         case ACTIVITY_ENROLL: //用户报名活动提醒
         {
             ApplyRemindCell *cell = [ApplyRemindCell cellWithTableView:tableView];
-            [cell setNotifyData:model];
+            [cell setData:model];
             return cell;
             break;
         }
         case ACTIVITY_PUBLISH:  //
         {
             PassRemindCell *cell = [PassRemindCell passRemindCellWithTableView:tableView];
-            [cell setNotifyData:model];
+            [cell setData:model];
             return cell;
             break;
         }
         case ACTIVITY_NOTIFY:   //活动通知
         {
             PassRemindCell *cell = [PassRemindCell passRemindCellWithTableView:tableView];
-            [cell setNotifyData:model];
+            [cell setData:model];
             return cell;
             break;
         }

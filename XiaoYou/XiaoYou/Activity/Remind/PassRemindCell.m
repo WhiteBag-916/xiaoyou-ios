@@ -78,10 +78,10 @@
     _wrapContentView.layer.borderWidth = 1;
     _wrapContentView.layer.borderColor = KCOLOR_B2.CGColor;
     [_wrapContentView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self);
-        make.bottom.equalTo(self);
-        make.left.equalTo(self.mas_left).offset(CELL_INSET);
-        make.right.equalTo(self.mas_right).offset(-CELL_INSET);
+        make.top.equalTo(self.contentView);
+        make.bottom.equalTo(self.contentView);
+        make.left.equalTo(self.contentView.mas_left).offset(CELL_INSET);
+        make.right.equalTo(self.contentView.mas_right).offset(-CELL_INSET);
     }];
     
     _wrapContentView.layer.cornerRadius = 5;
@@ -93,7 +93,7 @@
     [self.wrapContentView addSubview:_titleImageView];
     [_titleImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.leading.mas_equalTo(10);
-        make.top.equalTo(self).offset(18);
+        make.top.equalTo(self.wrapContentView).offset(18);
         make.width.mas_equalTo(SCALE_NUM(14));
         make.height.mas_equalTo(SCALE_NUM(13));
     }];
@@ -245,7 +245,6 @@
     else {
         publishID = [NSString stringWithFormat:@"%ld",(long)self.model.activityPublishedId];
     }
-    //NSString *publishID = [NSString stringWithFormat:@"%ld",(long)self.model.activityPublishedId];
     WhoJoinInController *whoJoinIn = [[WhoJoinInController alloc]init];
     whoJoinIn.publishID = publishID;
     [self.viewController.navigationController pushViewController:whoJoinIn animated:YES needHiddenBottomBar:YES];
@@ -255,10 +254,10 @@
 -(void)setCellType:(CELL_TYPE)cellType
 {
     _cellType = cellType;
-    if(cellType == ALREADY_SUBMIT) {
-        self.remindTitleLabel.text = @"报名申请已提交,请等待审核结果";
+    if(cellType == NEED_CHECK) {
+        self.remindTitleLabel.text = @"您的报名申请已提交,正在审核中";
     } else if (cellType == AUDIT_PASSED) {
-        //do nothing
+        self.remindTitleLabel.text = @"恭喜,报名申请通过！！！";
     } else if (cellType == AUDIT_NOT_PASSED) {
         _titleImageView.image = [[UIImage imageNamed:@"havetime_icon_no"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
         [_titleImageView mas_updateConstraints:^(MASConstraintMaker *make) {
@@ -271,14 +270,21 @@
         _tailLabel.text = @"";
         _tailImageView.image = nil;
         _bottomButton.enabled = NO;
-    } else if (cellType == SUCESSED_JOININ) {
+    } else if (cellType == NOT_NEED_CHECK) {
         self.remindTitleLabel.text = @"你已成功参加活动";
-    } else if (cellType == NEED_CHECK) {
-        self.remindTitleLabel.text = @"您的报名申请已提交,正在审核中";
     }
 }
 
--(void)setData:(NoticeInfo *)model
+-(void)setData:(id)model
+{
+    if ([model isKindOfClass:[NoticeInfo class]]) {
+        [self setNoticeInfoData:model];
+    } else if ([model isKindOfClass:[NotifyInfoModel class]]) {
+        [self setNotifyModel:model];
+    }
+}
+
+-(void)setNoticeInfoData:(NoticeInfo *)model
 {
     _model = model;
     Author *info = model.activityUser;
@@ -287,7 +293,7 @@
         [_headImageView setFaceImageWithUrl:model.activityOrganizerHeadPic];
     else
         _headImageView.image = [UIImage imageNamed:@"default_head"];
-    if (_cellType == SUCESSED_JOININ) {
+    if (_cellType == NOT_NEED_CHECK) {
         _contentTitleLabel.text = model.activityOrganizer;
     }
     else {

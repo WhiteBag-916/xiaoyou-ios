@@ -10,6 +10,8 @@
 
 @interface NSString (MyContainString)
 
+//-(BOOL)containsString:(NSString *)str;
+
 -(BOOL)myContainsString:(NSString*)other;
 
 @end

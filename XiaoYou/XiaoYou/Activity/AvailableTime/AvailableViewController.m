@@ -105,7 +105,7 @@
     _guideImageView.image = [UIImage imageNamed:@"1havetime_box_classroom"];
     self.guideIndex = 2;
 }
-//第一次显示蒙层
+//显示第一次显示蒙层
 -(void)dismissGuideView {
     if (self.guideIndex == 1) {
         [self nextPromptView];

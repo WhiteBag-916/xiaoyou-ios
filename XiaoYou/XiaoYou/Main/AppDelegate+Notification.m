@@ -32,14 +32,12 @@
     [self dealMessageWithctivityAndRemindWithLaunchOpthins:launchOptions];
 }
 
-
 -(void)dealMessageWithctivityAndRemindWithLaunchOpthins:(NSDictionary *)launchOptions
 {
     [AppConfigData setHaveRemindMessage:NO];
     NSDictionary *userInfo = [launchOptions objectForKey:UIApplicationLaunchOptionsRemoteNotificationKey];
     if(nil != userInfo && nil != userInfo[@"e"])
     {
-        
         NSDictionary *dic = userInfo[@"e"];
         NSMutableDictionary *dataDictExt = [NSMutableDictionary dictionaryWithDictionary:dic[@"obj"]];
         

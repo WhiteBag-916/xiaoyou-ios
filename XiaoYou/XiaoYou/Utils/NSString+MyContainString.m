@@ -10,6 +10,12 @@
 
 @implementation NSString (MyContainString)
 
+//-(BOOL)containsString:(NSString *)str
+//{
+//    return [self myContainsString:str];
+//}
+
+
 -(BOOL)myContainsString:(NSString*)other {
     NSRange range = [self rangeOfString:other];
     return range.length != 0;

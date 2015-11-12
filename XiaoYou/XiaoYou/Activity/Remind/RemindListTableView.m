@@ -29,8 +29,7 @@
 @interface RemindListTableView ()
 <UITableViewDataSource,UITableViewDelegate>
 
-@property (nonatomic,assign) NSInteger      currentIndex;
-
+@property (nonatomic,assign) NSInteger      currentIndex;    //索引
 @property (nonatomic,strong) UIImageView    *noDataImageView;//没有数据时的提示
 
 @end
@@ -42,32 +41,12 @@
         self.dataSource = self;
         self.separatorStyle = UITableViewCellSeparatorStyleNone;
         self.backgroundColor = [UIColor clearColor];
-        [self registerClass:[PassRemindCell class] forCellReuseIdentifier:REMINDVIEWCELL];
         self.separatorStyle = UITableViewCellSelectionStyleNone;
-        _currentIndex = 0;
+        [self registerClass:[PassRemindCell class] forCellReuseIdentifier:REMINDVIEWCELL];
         [self registerClass:[ApplyRemindCell class] forCellReuseIdentifier:APPLYREUSEID];
-        
+        _currentIndex = 0;
     }
     return self;
-}
-
--(UIImageView *)noDataImageView
-{
-    if (!_noDataImageView) {
-        _noDataImageView = [[UIImageView alloc]init];
-        _noDataImageView.tag = ImageTAG;
-        [self.superview addSubview:_noDataImageView];
-        _noDataImageView.hidden = YES;
-        _noDataImageView.image = [UIImage imageNamed:@"havetime－picture－notice"];
-        [_noDataImageView mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.width.mas_equalTo(SCALE_NUM(203));
-            make.height.mas_equalTo(SCALE_NUM(164));
-            make.centerX.equalTo(self);
-            make.centerY.equalTo(self);
-        }];
-    }
-    return nil;
-    return _noDataImageView;
 }
 
 -(instancetype)initWithFrame:(CGRect)frame style:(UITableViewStyle)style {
@@ -77,12 +56,30 @@
         self.separatorStyle = UITableViewCellSeparatorStyleNone;
         self.tableHeaderView.height = HEADCELL_HEIGHT;
         self.backgroundColor = KCOLOR_B1;
-        [self registerClass:[PassRemindCell class] forCellReuseIdentifier:REMINDVIEWCELL];
         self.separatorStyle = UITableViewCellSelectionStyleNone;
-        _currentIndex = 0;
+        [self registerClass:[PassRemindCell class] forCellReuseIdentifier:REMINDVIEWCELL];
         [self registerClass:[ApplyRemindCell class] forCellReuseIdentifier:APPLYREUSEID];
+        _currentIndex = 0;
     }
     return self;
+}
+
+-(UIImageView *)noDataImageView
+{
+    if (!_noDataImageView) {
+        _noDataImageView = [[UIImageView alloc]init];
+        _noDataImageView.tag = ImageTAG;
+        [self addSubview:_noDataImageView];
+        _noDataImageView.hidden = YES;
+        _noDataImageView.image = [UIImage imageNamed:@"havetime－picture－notice"];
+        [_noDataImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.width.mas_equalTo(SCALE_NUM(203));
+            make.height.mas_equalTo(SCALE_NUM(164));
+            make.centerX.equalTo(self);
+            make.centerY.equalTo(self);
+        }];
+    }
+    return _noDataImageView;
 }
 
 -(NSMutableArray *)remindListArray
@@ -94,7 +91,6 @@
 }
 
 #pragma mark - 继承者
-
 - (void)loadData {
     [self beginLoadNewData];
 }
@@ -111,17 +107,16 @@
 
 - (void)loadNewData
 {
-     _currentIndex = 0;
     [self sendRequest];
 }
 
 - (void)loadMoreData
 {
-    _currentIndex = self.remindListArray.count;
     [self sendRequest];
 }
 
 - (void)sendRequest {
+    _currentIndex = [self isHeaderRefresh] ? 0 : self.remindListArray.count;
     [[NoticeManager sharedInstance] getMyNoticeInfoWithLimiteStart:_currentIndex limiteEnd:_currentIndex + KPAGENUM block:^(YActionMessage *message) {
         if (message.isSuccess) {
             if ([self isHeaderRefresh]) {
@@ -132,6 +127,7 @@
             if ([message.object count] < KPAGENUM) {
                 [self showNoticeNoMoreData];
             }
+            [_remindListArray removeAllObjects];
             [self reloadData];
             _currentIndex += KPAGENUM;
         } else {
@@ -164,22 +160,16 @@
     
     //有人参加你的活动
     if (info.activityOwner) {
-        //cellHeight = SCALE_NUM(160);
         cellHeight = [tableView fd_heightForCellWithIdentifier:APPLYREUSEID cacheByIndexPath:indexPath configuration:^(ApplyRemindCell *cell) {
             [cell setData:info];
         }];
     } else  //参加别人的活动
     {
         CELL_TYPE type = [self cellTypeByModelString:info.checkStatus];
-        if (type == AUDIT_PASSED) {
-            cellHeight = SCALE_NUM(190);
-        } else if (type == AUDIT_NOT_PASSED) {
+        if (type == AUDIT_NOT_PASSED) {
             cellHeight = SCALE_NUM(145);
-        } else if (type == ALREADY_SUBMIT) {
-            cellHeight = SCALE_NUM(190);
-        } else if (type == SUCESSED_JOININ) {
-            cellHeight = SCALE_NUM(190);
-        } else if (type == NEED_CHECK) {
+        } else
+        {
             cellHeight = SCALE_NUM(190);
         }
     }
@@ -198,7 +188,7 @@
 
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
-    return 33;
+    return SCALE_NUM(33);
 }
 
 //返回header
@@ -251,7 +241,7 @@
 
 -(CELL_TYPE)cellTypeByModelString:(NSString*)modelStr
 {
-    NSDictionary *dict = @{@"check_pass":@(AUDIT_PASSED),@"no_pass":@(AUDIT_NOT_PASSED),@"need_check":@(ALREADY_SUBMIT),@"no_check":@(SUCESSED_JOININ),@"need_check":@(NEED_CHECK)};
+    NSDictionary *dict = @{@"check_pass":@(AUDIT_PASSED),@"no_pass":@(AUDIT_NOT_PASSED),@"no_check":@(NOT_NEED_CHECK),@"need_check":@(NEED_CHECK)};
     return [dict[modelStr] integerValue];
 }
 

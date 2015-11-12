@@ -19,7 +19,6 @@ typedef enum : NSUInteger {
 @interface AvailableListView : YTableView
 
 -(void)loadData;
-//- (void)loadNewData;
 
 @property (nonatomic,strong) NSMutableArray *availableListArray;
 

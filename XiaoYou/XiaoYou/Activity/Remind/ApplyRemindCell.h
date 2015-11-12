@@ -29,8 +29,6 @@ typedef enum : NSUInteger {
 
 @property (nonatomic,assign) APPLY_CELL_TYPE cellType;
 
--(void)setData:(NoticeInfo*)model;
-
--(void)setNotifyData:(NotifyInfoModel*)model;
+-(void)setData:(id)model;
 
 @end

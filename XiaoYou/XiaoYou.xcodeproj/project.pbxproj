@@ -132,8 +132,6 @@
 		049FF1C31BC91778000645C8 /* ScheduleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 049FF1B51BC91777000645C8 /* ScheduleCell.m */; };
 		049FF1C41BC91778000645C8 /* ScheduleListTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 049FF1B71BC91777000645C8 /* ScheduleListTableView.m */; };
 		049FF1C51BC91778000645C8 /* ScheduleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 049FF1B91BC91777000645C8 /* ScheduleViewController.m */; };
-		049FF1C61BC91778000645C8 /* ConvenienceTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 049FF1BC1BC91777000645C8 /* ConvenienceTableViewController.m */; };
-		049FF1C71BC91778000645C8 /* SetupTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 049FF1BE1BC91777000645C8 /* SetupTableViewController.m */; };
 		04C08FE41BDBF0F7002F8BAE /* TimeFormatterConvert.m in Sources */ = {isa = PBXBuildFile; fileRef = 04C08FE31BDBF0F7002F8BAE /* TimeFormatterConvert.m */; };
 		04D500681BBA94AA00C1B438 /* ActivityJoinInCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04D500671BBA94AA00C1B438 /* ActivityJoinInCell.m */; };
 		200E397C1B4E818B000B587B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 200E397B1B4E818B000B587B /* main.m */; };
@@ -998,10 +996,6 @@
 		049FF1B71BC91777000645C8 /* ScheduleListTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScheduleListTableView.m; sourceTree = "<group>"; };
 		049FF1B81BC91777000645C8 /* ScheduleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScheduleViewController.h; sourceTree = "<group>"; };
 		049FF1B91BC91777000645C8 /* ScheduleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScheduleViewController.m; sourceTree = "<group>"; };
-		049FF1BB1BC91777000645C8 /* ConvenienceTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConvenienceTableViewController.h; sourceTree = "<group>"; };
-		049FF1BC1BC91777000645C8 /* ConvenienceTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConvenienceTableViewController.m; sourceTree = "<group>"; };
-		049FF1BD1BC91777000645C8 /* SetupTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SetupTableViewController.h; sourceTree = "<group>"; };
-		049FF1BE1BC91777000645C8 /* SetupTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SetupTableViewController.m; sourceTree = "<group>"; };
 		04C08FE21BDBF0F7002F8BAE /* TimeFormatterConvert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimeFormatterConvert.h; sourceTree = "<group>"; };
 		04C08FE31BDBF0F7002F8BAE /* TimeFormatterConvert.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimeFormatterConvert.m; sourceTree = "<group>"; };
 		04D500661BBA94AA00C1B438 /* ActivityJoinInCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityJoinInCell.h; sourceTree = "<group>"; };
@@ -2232,7 +2226,6 @@
 				E482D5611BD8CA850045F4DB /* ScanfResult */,
 				049FF1AA1BC91777000645C8 /* Remind */,
 				049FF1B31BC91777000645C8 /* Schedule */,
-				049FF1BA1BC91777000645C8 /* Setup */,
 				20E3EF901BC9064C00B3D27E /* AvailableTime */,
 				044DA0411BBA77C900AA321A /* ActivityDetail */,
 			);
@@ -2359,17 +2352,6 @@
 				049FF1B91BC91777000645C8 /* ScheduleViewController.m */,
 			);
 			path = Schedule;
-			sourceTree = "<group>";
-		};
-		049FF1BA1BC91777000645C8 /* Setup */ = {
-			isa = PBXGroup;
-			children = (
-				049FF1BB1BC91777000645C8 /* ConvenienceTableViewController.h */,
-				049FF1BC1BC91777000645C8 /* ConvenienceTableViewController.m */,
-				049FF1BD1BC91777000645C8 /* SetupTableViewController.h */,
-				049FF1BE1BC91777000645C8 /* SetupTableViewController.m */,
-			);
-			path = Setup;
 			sourceTree = "<group>";
 		};
 		200E396D1B4E818B000B587B = {
@@ -4955,7 +4937,6 @@
 				333122641B806EDB00D3D032 /* UIView+EMWebCacheOperation.m in Sources */,
 				20DAAA791BCD05F5006DF231 /* TagCollectionCell.m in Sources */,
 				3331224F1B806EDB00D3D032 /* MWPhoto.m in Sources */,
-				049FF1C71BC91778000645C8 /* SetupTableViewController.m in Sources */,
 				20D821A81BE0A97800C5E21C /* YCommonPickerView.m in Sources */,
 				653CB2EE1B806BFD006ECBB2 /* ChineseString.m in Sources */,
 				6592DCD61B806A9B004CD118 /* FriendApplyTableViewCell.m in Sources */,
@@ -5152,7 +5133,6 @@
 				3331223A1B806EDB00D3D032 /* EMChatTimeCell.m in Sources */,
 				20DA170F1BC7C51200A61B37 /* OSCache.m in Sources */,
 				65F55AA11B899EBC00ED4348 /* UIImageView+Ext.m in Sources */,
-				049FF1C61BC91778000645C8 /* ConvenienceTableViewController.m in Sources */,
 				333122591B806EDB00D3D032 /* EMSDWebImageDownloaderOperation.m in Sources */,
 				333122631B806EDB00D3D032 /* UIImageView+EMWebCache.m in Sources */,
 				333122421B806EDB00D3D032 /* EMCDDeviceManager+Media.m in Sources */,

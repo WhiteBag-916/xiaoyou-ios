@@ -654,7 +654,6 @@ typedef enum : NSUInteger {
         {
             [activityModelDic setObject:@"false" forKey:@"enrollCheck"];
         }
-        
     }
     else
     {
