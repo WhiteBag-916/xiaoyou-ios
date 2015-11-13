@@ -31,6 +31,8 @@
 - (BOOL)isHeaderRefresh;
 - (BOOL)isFooterRefresh;
 
+//图片的属性
 - (NSString*)noDataImageViewAttribute;
+//是否展示无数据图片
 - (void)showNoDataImageView:(BOOL)isShow;
 @end
