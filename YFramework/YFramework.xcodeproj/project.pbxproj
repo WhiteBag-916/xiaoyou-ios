@@ -85,13 +85,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		2817D9961ADA188400FDB4F6 /* CopyFiles */ = {
+		2817D9961ADA188400FDB4F6 /* Copy Files */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "include/$(PRODUCT_NAME)";
 			dstSubfolderSpec = 16;
 			files = (
 			);
+			name = "Copy Files";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
@@ -105,7 +106,6 @@
 		045F09251AF1CE2E00804EC7 /* YTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YTextView.m; sourceTree = "<group>"; };
 		203CC4B21BF589CE00691CC9 /* AGImagePickerController+Helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AGImagePickerController+Helper.h"; sourceTree = "<group>"; };
 		203CC4B31BF589CE00691CC9 /* AGImagePickerController+Helper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AGImagePickerController+Helper.m"; sourceTree = "<group>"; };
-		203CC4B41BF589CE00691CC9 /* AGImagePickerController.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = AGImagePickerController.bundle; sourceTree = "<group>"; };
 		203CC4B51BF589CE00691CC9 /* AGImagePickerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AGImagePickerController.h; sourceTree = "<group>"; };
 		203CC4B61BF589CE00691CC9 /* AGImagePickerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AGImagePickerController.m; sourceTree = "<group>"; };
 		203CC4B71BF589CE00691CC9 /* AGImagePickerControllerDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AGImagePickerControllerDefines.h; sourceTree = "<group>"; };
@@ -268,7 +268,6 @@
 			children = (
 				203CC4B21BF589CE00691CC9 /* AGImagePickerController+Helper.h */,
 				203CC4B31BF589CE00691CC9 /* AGImagePickerController+Helper.m */,
-				203CC4B41BF589CE00691CC9 /* AGImagePickerController.bundle */,
 				203CC4B51BF589CE00691CC9 /* AGImagePickerController.h */,
 				203CC4B61BF589CE00691CC9 /* AGImagePickerController.m */,
 				203CC4B71BF589CE00691CC9 /* AGImagePickerControllerDefines.h */,
@@ -546,7 +545,7 @@
 			buildPhases = (
 				2817D9941ADA188400FDB4F6 /* Sources */,
 				2817D9951ADA188400FDB4F6 /* Frameworks */,
-				2817D9961ADA188400FDB4F6 /* CopyFiles */,
+				2817D9961ADA188400FDB4F6 /* Copy Files */,
 			);
 			buildRules = (
 			);

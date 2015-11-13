@@ -87,6 +87,7 @@
 		04571DBA1BEB2E6200BAD2A6 /* havetime－picture－notice@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 04571DB81BEB2E6200BAD2A6 /* havetime－picture－notice@3x.png */; };
 		0461A3DD1BE38D0800F00E72 /* NSString+MyContainString.m in Sources */ = {isa = PBXBuildFile; fileRef = 0461A3DC1BE38D0800F00E72 /* NSString+MyContainString.m */; };
 		0463588B1BE096790055819F /* UIDevice+DeviceType.m in Sources */ = {isa = PBXBuildFile; fileRef = 0463588A1BE096790055819F /* UIDevice+DeviceType.m */; };
+		046C633C1BF5A56A0056A4AA /* AGImagePickerController.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 046C633B1BF5A56A0056A4AA /* AGImagePickerController.bundle */; };
 		0473DC4C1BECAE2800CE041D /* add-friend-no@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0473DC4A1BECAE2800CE041D /* add-friend-no@2x.png */; };
 		0473DC4D1BECAE2800CE041D /* add-friend-no3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0473DC4B1BECAE2800CE041D /* add-friend-no3x.png */; };
 		0475AD891BDA247400763896 /* SearchActivityListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0475AD881BDA247400763896 /* SearchActivityListView.m */; };
@@ -938,6 +939,7 @@
 		0461A3DC1BE38D0800F00E72 /* NSString+MyContainString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+MyContainString.m"; sourceTree = "<group>"; };
 		046358891BE096790055819F /* UIDevice+DeviceType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIDevice+DeviceType.h"; sourceTree = "<group>"; };
 		0463588A1BE096790055819F /* UIDevice+DeviceType.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIDevice+DeviceType.m"; sourceTree = "<group>"; };
+		046C633B1BF5A56A0056A4AA /* AGImagePickerController.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = AGImagePickerController.bundle; sourceTree = "<group>"; };
 		0473DC4A1BECAE2800CE041D /* add-friend-no@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "add-friend-no@2x.png"; path = "mengcheng/add-friend-no@2x.png"; sourceTree = "<group>"; };
 		0473DC4B1BECAE2800CE041D /* add-friend-no3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "add-friend-no3x.png"; path = "mengcheng/add-friend-no3x.png"; sourceTree = "<group>"; };
 		0475AD871BDA247400763896 /* SearchActivityListView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchActivityListView.h; sourceTree = "<group>"; };
@@ -2682,6 +2684,7 @@
 				20DD11591B8D698900767E62 /* ServiceTerms.html */,
 				20DAF9A41B871D31005B7932 /* SchollList.txt */,
 				04394B4D1BBBCA5C0098BB8F /* description.rtf */,
+				046C633B1BF5A56A0056A4AA /* AGImagePickerController.bundle */,
 				20DAA29E1BCE34DF00420234 /* tabbar */,
 				044C31451BCCAF0000E0D508 /* Available */,
 				044DA0231BBA699600AA321A /* Setup */,
@@ -4594,6 +4597,7 @@
 				20E0BFFA1B88B0CA00EDAED4 /* register-label-chosen-boundary@3x.png in Resources */,
 				044DA0071BBA314300AA321A /* funny_location@3x.png in Resources */,
 				044C31551BCCAF0000E0D508 /* have_time_msg@3x.png in Resources */,
+				046C633C1BF5A56A0056A4AA /* AGImagePickerController.bundle in Resources */,
 				20E18DC91B808E42005B75EE /* menu-remind@3x.png in Resources */,
 				20DF60001BDF2E2A00C8383B /* icon_arrow@3x.png in Resources */,
 				044DA02F1BBA699600AA321A /* setup_other@3x.png in Resources */,
