@@ -44,8 +44,6 @@
 
 @interface FeedPublishViewController()<UIImagePickerControllerDelegate, UITextViewDelegate/*,UzysAssetsPickerControllerDelegate*/>
 
-@property (nonatomic, strong) AGImagePickerController   *imagePickerVC;
-
 //布局用的view
 @property (nonatomic, strong) UIView *groupView;
 @property (nonatomic, strong) UIView *contentView;
@@ -64,12 +62,14 @@
 @property (nonatomic, strong) CommonSwitchView *switchView;//切换个人与社团
 @property (nonatomic, assign) BOOL isGroup;//是否选中社团名义
 
+@property (nonatomic, strong) AGImagePickerController   *imagePickerVC;
+
 @property (nonatomic, strong) NSMutableArray *picArray;
 
-@property (nonatomic, strong) UIImagePickerController *picker;
+//@property (nonatomic, strong) UIImagePickerController *picker;
 
 @property (nonatomic, assign) BOOL isPhotoSaveEnd;//上传图片时的同步操作
-@property (nonatomic, assign) BOOL isUpLoadEnd; //图片是否上传成功时的同步操作
+//@property (nonatomic, assign) BOOL isUpLoadEnd; //图片是否上传成功时的同步操作
 
 
 
@@ -403,7 +403,6 @@
 //    [self presentViewController:picker animated:YES completion:NULL];
     
     //使用新的AGI库
-    
     // Show saved photos on top
     self.imagePickerVC.shouldShowSavedPhotosOnTop = NO;
     self.imagePickerVC.shouldChangeStatusBarStyle = YES;
