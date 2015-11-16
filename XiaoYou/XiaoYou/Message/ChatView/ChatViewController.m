@@ -45,11 +45,13 @@
 #import "UIImageView+Ext.h"
 #import "ClassList.h"
 #import "YUtils+Component.h"
+#import "AGImagePickerController.h"
+#import "AGIPCToolbarItem.h"
 
 #define KPageCount 20
 #define KHintAdjustY    50
 
-@interface ChatViewController ()<UITableViewDataSource, UITableViewDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate, SRRefreshDelegate, IChatManagerDelegate, DXChatBarMoreViewDelegate, DXMessageToolBarDelegate, LocationViewDelegate, EMCDDeviceManagerDelegate,EMCallManagerDelegate,UzysAssetsPickerControllerDelegate>
+@interface ChatViewController ()<UITableViewDataSource, UITableViewDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate, SRRefreshDelegate, IChatManagerDelegate, DXChatBarMoreViewDelegate, DXMessageToolBarDelegate, LocationViewDelegate, EMCDDeviceManagerDelegate,EMCallManagerDelegate>
 {
     UIMenuController *_menuController;
     UIMenuItem *_copyMenuItem;
@@ -72,7 +74,7 @@
 @property (strong, nonatomic) SRRefreshView *slimeView;
 @property (strong, nonatomic) UITableView *tableView;
 
-@property (strong, nonatomic) UIImagePickerController *imagePicker;
+//@property (strong, nonatomic) UIImagePickerController *imagePicker;
 
 @property (strong, nonatomic) MessageReadManager *messageReadManager;//message阅读的管理者
 @property (strong, nonatomic) EMConversation *conversation;//会话管理者
@@ -86,6 +88,10 @@
 @property (nonatomic) BOOL isRobot;
 
 @property (nonatomic, strong) UIImageView *headImageView;
+
+@property (nonatomic, strong) AGImagePickerController   *imagePickerVC;
+
+@property (nonatomic, strong) NSMutableArray *picArray;
 
 @end
 
@@ -391,9 +397,13 @@
         }];
     }
     
-    if (_imagePicker)
+//    if (_imagePicker)
+//    {
+//        [_imagePicker dismissViewControllerAnimated:NO completion:nil];
+//    }
+    if (_imagePickerVC)
     {
-        [_imagePicker dismissViewControllerAnimated:NO completion:nil];
+        [_imagePickerVC dismissViewControllerAnimated:NO completion:nil];
     }
 }
 
@@ -546,17 +556,17 @@
     return _chatToolBar;
 }
 
-- (UIImagePickerController *)imagePicker
-{
-    if (_imagePicker == nil) {
-        _imagePicker = [[UIImagePickerController alloc] init];
-        _imagePicker.modalPresentationStyle= UIModalPresentationOverFullScreen;
-        _imagePicker.delegate = self;
-        _imagePicker.allowsEditing = YES;
-    }
-    
-    return _imagePicker;
-}
+//- (UIImagePickerController *)imagePicker
+//{
+//    if (_imagePicker == nil) {
+//        _imagePicker = [[UIImagePickerController alloc] init];
+//        _imagePicker.modalPresentationStyle= UIModalPresentationOverFullScreen;
+//        _imagePicker.delegate = self;
+//        _imagePicker.allowsEditing = YES;
+//    }
+//    
+//    return _imagePicker;
+//}
 
 - (MessageReadManager *)messageReadManager
 {
@@ -1159,19 +1169,58 @@
 
 #pragma mark - IChatManagerDelegate 登录状态变化
 
-- (void)didLoginFromOtherDevice
+//- (void)didLoginFromOtherDevice
+//{
+//    if ([self.imagePicker.mediaTypes count] > 0 && [[self.imagePicker.mediaTypes objectAtIndex:0] isEqualToString:(NSString *)kUTTypeMovie]) {
+//        [self.imagePicker stopVideoCapture];
+//    }
+//}
+//
+//- (void)didRemovedFromServer
+//{
+//    if ([self.imagePicker.mediaTypes count] > 0 && [[self.imagePicker.mediaTypes objectAtIndex:0] isEqualToString:(NSString *)kUTTypeMovie]) {
+//        [self.imagePicker stopVideoCapture];
+//    }
+//}
+
+-(AGImagePickerController *)imagePickerVC
 {
-    if ([self.imagePicker.mediaTypes count] > 0 && [[self.imagePicker.mediaTypes objectAtIndex:0] isEqualToString:(NSString *)kUTTypeMovie]) {
-        [self.imagePicker stopVideoCapture];
+    if (!_imagePickerVC) {
+         __block ChatViewController *blockSelf = self;
+        _picArray = [NSMutableArray array];
+        _imagePickerVC = [AGImagePickerController sharedInstance:self];
+        _imagePickerVC.didFailBlock = ^(NSError *error) {
+            if (error == nil) {
+                [blockSelf.picArray removeAllObjects];
+                [blockSelf dismissViewControllerAnimated:YES completion:nil];
+            } else {
+                double delayInSeconds = 0.5;
+                dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
+                dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+                    [blockSelf dismissViewControllerAnimated:YES completion:nil];
+                });
+            }
+            [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault animated:YES];
+        };
+
+        _imagePickerVC.didFinishBlock = ^(NSArray *info) {
+             [blockSelf dismissViewControllerAnimated:YES completion:nil];
+            [blockSelf.picArray setArray:info];
+            //上传图片
+            [info enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+                ALAsset *representation = obj;
+                UIImage *img = [UIImage imageWithCGImage:representation.defaultRepresentation.fullResolutionImage
+                                                   scale:representation.defaultRepresentation.scale
+                                             orientation:(UIImageOrientation)representation.defaultRepresentation.orientation];
+                [blockSelf sendImageMessage:img];
+            }];
+            
+            [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault animated:YES];
+        };
     }
+    return _imagePickerVC;
 }
 
-- (void)didRemovedFromServer
-{
-    if ([self.imagePicker.mediaTypes count] > 0 && [[self.imagePicker.mediaTypes objectAtIndex:0] isEqualToString:(NSString *)kUTTypeMovie]) {
-        [self.imagePicker stopVideoCapture];
-    }
-}
 
 #pragma mark - EMChatBarMoreViewDelegate
 
@@ -1186,13 +1235,35 @@
 //    self.imagePicker.mediaTypes = @[(NSString *)kUTTypeImage];
 //    [self presentViewController:self.imagePicker animated:YES completion:NULL];
     
-    UzysAssetsPickerController *picker = [[UzysAssetsPickerController alloc] init];
-    picker.assetsFilter = [ALAssetsFilter allPhotos];
-    picker.maximumNumberOfSelectionVideo = 0;
-    picker.maximumNumberOfSelectionPhoto = 1;
-    picker.delegate = self;
-    [self presentViewController:picker animated:YES completion:nil];
-    self.isInvisible = YES;
+    
+    self.imagePickerVC.shouldShowSavedPhotosOnTop = NO;
+    self.imagePickerVC.shouldChangeStatusBarStyle = YES;
+    self.imagePickerVC.selection = self.picArray;
+    self.imagePickerVC.maximumNumberOfPhotosToBeSelected = 9;
+    
+    // Custom toolbar items
+//    AGIPCToolbarItem *selectAll = [[AGIPCToolbarItem alloc] initWithBarButtonItem:[[UIBarButtonItem alloc] initWithTitle:@"选择全部" style:UIBarButtonItemStyleBordered target:nil action:nil] andSelectionBlock:^BOOL(NSUInteger index, ALAsset *asset) {
+//        return YES;
+//    }];
+//    AGIPCToolbarItem *flexible = [[AGIPCToolbarItem alloc] initWithBarButtonItem:[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil] andSelectionBlock:nil];
+//    AGIPCToolbarItem *selectOdd = [[AGIPCToolbarItem alloc] initWithBarButtonItem:[[UIBarButtonItem alloc] initWithTitle:@"选择奇数" style:UIBarButtonItemStyleBordered target:nil action:nil] andSelectionBlock:^BOOL(NSUInteger index, ALAsset *asset) {
+//        return !(index % 2);
+//    }];
+//    AGIPCToolbarItem *deselectAll = [[AGIPCToolbarItem alloc] initWithBarButtonItem:[[UIBarButtonItem alloc] initWithTitle:@"全部反选" style:UIBarButtonItemStyleBordered target:nil action:nil] andSelectionBlock:^BOOL(NSUInteger index, ALAsset *asset) {
+//        return NO;
+//    }];
+//    self.imagePickerVC.toolbarItemsForManagingTheSelection = @[selectAll, flexible, selectOdd, flexible, deselectAll];
+    
+    [self presentViewController:self.imagePickerVC animated:YES completion:nil];
+    [self.imagePickerVC showFirstAssetsController];
+    
+//    UzysAssetsPickerController *picker = [[UzysAssetsPickerController alloc] init];
+//    picker.assetsFilter = [ALAssetsFilter allPhotos];
+//    picker.maximumNumberOfSelectionVideo = 0;
+//    picker.maximumNumberOfSelectionPhoto = 1;
+//    picker.delegate = self;
+//    [self presentViewController:picker animated:YES completion:nil];
+//    self.isInvisible = YES;
 }
 
 - (void)moreViewTakePicAction:(DXChatBarMoreView *)moreView
@@ -1235,27 +1306,27 @@
 }
 
 #pragma mark - Assets Picker Delegate
--(void)uzysAssetsPickerController:(UzysAssetsPickerController *)picker didFinishPickingAssets:(NSArray *)assets
-{
-    if (assets.count > 0) {
-        ALAsset *representation = assets[0];
-        UIImage *img = [UIImage imageWithCGImage:representation.defaultRepresentation.fullResolutionImage
-                                           scale:representation.defaultRepresentation.scale
-                                     orientation:(UIImageOrientation)representation.defaultRepresentation.orientation];
-        
-        [self sendImageMessage:img];
-    }
-    
-    self.isInvisible = NO;
-}
+//-(void)uzysAssetsPickerController:(UzysAssetsPickerController *)picker didFinishPickingAssets:(NSArray *)assets
+//{
+//    if (assets.count > 0) {
+//        ALAsset *representation = assets[0];
+//        UIImage *img = [UIImage imageWithCGImage:representation.defaultRepresentation.fullResolutionImage
+//                                           scale:representation.defaultRepresentation.scale
+//                                     orientation:(UIImageOrientation)representation.defaultRepresentation.orientation];
+//        
+//        [self sendImageMessage:img];
+//    }
+//    
+//    self.isInvisible = NO;
+//}
 
-- (void)uzysAssetsPickerControllerDidCancel:(UzysAssetsPickerController *)picker {
-    self.isInvisible = NO;
-}
-
-- (void)uzysAssetsPickerControllerDidExceedMaximumNumberOfSelection:(UzysAssetsPickerController *)picker {
-    [YUtils showTitle:@"只能选1张照片发送"];
-}
+//- (void)uzysAssetsPickerControllerDidCancel:(UzysAssetsPickerController *)picker {
+//    self.isInvisible = NO;
+//}
+//
+//- (void)uzysAssetsPickerControllerDidExceedMaximumNumberOfSelection:(UzysAssetsPickerController *)picker {
+//    [YUtils showTitle:@"只能选1张照片发送"];
+//}
 
 - (void)moreViewLocationAction:(DXChatBarMoreView *)moreView
 {
@@ -1883,7 +1954,8 @@
 
 - (void)hideImagePicker
 {
-    [self.imagePicker dismissViewControllerAnimated:YES completion:nil];
+    //[self.imagePicker dismissViewControllerAnimated:YES completion:nil];
+    [self.imagePickerVC dismissViewControllerAnimated:YES completion:nil];
     self.isInvisible = NO;
 }
 

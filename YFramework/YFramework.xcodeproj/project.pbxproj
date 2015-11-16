@@ -7,14 +7,26 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		041E3EB31BAFF50A00454487 /* CTAssetsPickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 041E3EB21BAFF50A00454487 /* CTAssetsPickerController.m */; settings = {ASSET_TAGS = (); }; };
-		041E3EB61BAFF54000454487 /* NSDate+TimeInterval.m in Sources */ = {isa = PBXBuildFile; fileRef = 041E3EB51BAFF54000454487 /* NSDate+TimeInterval.m */; settings = {ASSET_TAGS = (); }; };
+		041E3EB31BAFF50A00454487 /* CTAssetsPickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 041E3EB21BAFF50A00454487 /* CTAssetsPickerController.m */; };
+		041E3EB61BAFF54000454487 /* NSDate+TimeInterval.m in Sources */ = {isa = PBXBuildFile; fileRef = 041E3EB51BAFF54000454487 /* NSDate+TimeInterval.m */; };
 		045F09261AF1CE2E00804EC7 /* YTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 045F09251AF1CE2E00804EC7 /* YTextView.m */; };
+		203CC4CC1BF589CE00691CC9 /* AGImagePickerController+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 203CC4B31BF589CE00691CC9 /* AGImagePickerController+Helper.m */; };
+		203CC4CD1BF589CE00691CC9 /* AGImagePickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 203CC4B61BF589CE00691CC9 /* AGImagePickerController.m */; };
+		203CC4CE1BF589CE00691CC9 /* AGImagePreviewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 203CC4B91BF589CE00691CC9 /* AGImagePreviewController.m */; };
+		203CC4CF1BF589CE00691CC9 /* AGIPCAlbumsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 203CC4BB1BF589CE00691CC9 /* AGIPCAlbumsController.m */; };
+		203CC4D01BF589CE00691CC9 /* AGIPCAssetsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 203CC4BD1BF589CE00691CC9 /* AGIPCAssetsController.m */; };
+		203CC4D11BF589CE00691CC9 /* AGIPCGridCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 203CC4BF1BF589CE00691CC9 /* AGIPCGridCell.m */; };
+		203CC4D21BF589CE00691CC9 /* AGIPCGridItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 203CC4C11BF589CE00691CC9 /* AGIPCGridItem.m */; };
+		203CC4D31BF589CE00691CC9 /* AGIPCPreviewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 203CC4C31BF589CE00691CC9 /* AGIPCPreviewController.m */; };
+		203CC4D41BF589CE00691CC9 /* AGIPCToolbarItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 203CC4C51BF589CE00691CC9 /* AGIPCToolbarItem.m */; };
+		203CC4D51BF589CE00691CC9 /* AGPreviewScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 203CC4C71BF589CE00691CC9 /* AGPreviewScrollView.m */; };
+		203CC4D61BF589CE00691CC9 /* ALAsset+AGIPC.m in Sources */ = {isa = PBXBuildFile; fileRef = 203CC4C91BF589CE00691CC9 /* ALAsset+AGIPC.m */; };
+		203CC4D71BF589CE00691CC9 /* UIButton+AGIPC.m in Sources */ = {isa = PBXBuildFile; fileRef = 203CC4CB1BF589CE00691CC9 /* UIButton+AGIPC.m */; };
 		20AEFE521B40FBA600975B84 /* NSDictionary+CLLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 20AEFE511B40FBA600975B84 /* NSDictionary+CLLocation.m */; };
 		20DAF9671B870A3B005B7932 /* YTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 20DAF9661B870A3B005B7932 /* YTableViewCell.m */; };
 		20DD4B281B73039B007C352C /* YTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 20DD4B271B73039B007C352C /* YTableView.m */; };
 		20E033F91B845706002E4583 /* YTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 20E033F81B845706002E4583 /* YTextField.m */; };
-		20E239A21BD63A8A0040D799 /* YLabel+Ext.m in Sources */ = {isa = PBXBuildFile; fileRef = 20E239A11BD63A8A0040D799 /* YLabel+Ext.m */; settings = {ASSET_TAGS = (); }; };
+		20E239A21BD63A8A0040D799 /* YLabel+Ext.m in Sources */ = {isa = PBXBuildFile; fileRef = 20E239A11BD63A8A0040D799 /* YLabel+Ext.m */; };
 		2803C92C1AE3BA60002303B6 /* YManagerCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 2803C92B1AE3BA60002303B6 /* YManagerCenter.m */; };
 		2803C9301AE3BD42002303B6 /* YUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 2803C92E1AE3BD42002303B6 /* YUtils.m */; };
 		2803C9331AE406E5002303B6 /* YModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2803C9321AE406E5002303B6 /* YModel.m */; };
@@ -73,13 +85,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		2817D9961ADA188400FDB4F6 /* CopyFiles */ = {
+		2817D9961ADA188400FDB4F6 /* Copy Files */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "include/$(PRODUCT_NAME)";
 			dstSubfolderSpec = 16;
 			files = (
 			);
+			name = "Copy Files";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
@@ -91,6 +104,31 @@
 		041E3EB51BAFF54000454487 /* NSDate+TimeInterval.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+TimeInterval.m"; sourceTree = "<group>"; };
 		045F09241AF1CE2E00804EC7 /* YTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YTextView.h; sourceTree = "<group>"; };
 		045F09251AF1CE2E00804EC7 /* YTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YTextView.m; sourceTree = "<group>"; };
+		203CC4B21BF589CE00691CC9 /* AGImagePickerController+Helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AGImagePickerController+Helper.h"; sourceTree = "<group>"; };
+		203CC4B31BF589CE00691CC9 /* AGImagePickerController+Helper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AGImagePickerController+Helper.m"; sourceTree = "<group>"; };
+		203CC4B51BF589CE00691CC9 /* AGImagePickerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AGImagePickerController.h; sourceTree = "<group>"; };
+		203CC4B61BF589CE00691CC9 /* AGImagePickerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AGImagePickerController.m; sourceTree = "<group>"; };
+		203CC4B71BF589CE00691CC9 /* AGImagePickerControllerDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AGImagePickerControllerDefines.h; sourceTree = "<group>"; };
+		203CC4B81BF589CE00691CC9 /* AGImagePreviewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AGImagePreviewController.h; sourceTree = "<group>"; };
+		203CC4B91BF589CE00691CC9 /* AGImagePreviewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AGImagePreviewController.m; sourceTree = "<group>"; };
+		203CC4BA1BF589CE00691CC9 /* AGIPCAlbumsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AGIPCAlbumsController.h; sourceTree = "<group>"; };
+		203CC4BB1BF589CE00691CC9 /* AGIPCAlbumsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AGIPCAlbumsController.m; sourceTree = "<group>"; };
+		203CC4BC1BF589CE00691CC9 /* AGIPCAssetsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AGIPCAssetsController.h; sourceTree = "<group>"; };
+		203CC4BD1BF589CE00691CC9 /* AGIPCAssetsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AGIPCAssetsController.m; sourceTree = "<group>"; };
+		203CC4BE1BF589CE00691CC9 /* AGIPCGridCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AGIPCGridCell.h; sourceTree = "<group>"; };
+		203CC4BF1BF589CE00691CC9 /* AGIPCGridCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AGIPCGridCell.m; sourceTree = "<group>"; };
+		203CC4C01BF589CE00691CC9 /* AGIPCGridItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AGIPCGridItem.h; sourceTree = "<group>"; };
+		203CC4C11BF589CE00691CC9 /* AGIPCGridItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AGIPCGridItem.m; sourceTree = "<group>"; };
+		203CC4C21BF589CE00691CC9 /* AGIPCPreviewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AGIPCPreviewController.h; sourceTree = "<group>"; };
+		203CC4C31BF589CE00691CC9 /* AGIPCPreviewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AGIPCPreviewController.m; sourceTree = "<group>"; };
+		203CC4C41BF589CE00691CC9 /* AGIPCToolbarItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AGIPCToolbarItem.h; sourceTree = "<group>"; };
+		203CC4C51BF589CE00691CC9 /* AGIPCToolbarItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AGIPCToolbarItem.m; sourceTree = "<group>"; };
+		203CC4C61BF589CE00691CC9 /* AGPreviewScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AGPreviewScrollView.h; sourceTree = "<group>"; };
+		203CC4C71BF589CE00691CC9 /* AGPreviewScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AGPreviewScrollView.m; sourceTree = "<group>"; };
+		203CC4C81BF589CE00691CC9 /* ALAsset+AGIPC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ALAsset+AGIPC.h"; sourceTree = "<group>"; };
+		203CC4C91BF589CE00691CC9 /* ALAsset+AGIPC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ALAsset+AGIPC.m"; sourceTree = "<group>"; };
+		203CC4CA1BF589CE00691CC9 /* UIButton+AGIPC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+AGIPC.h"; sourceTree = "<group>"; };
+		203CC4CB1BF589CE00691CC9 /* UIButton+AGIPC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+AGIPC.m"; sourceTree = "<group>"; };
 		20AEFE501B40FBA600975B84 /* NSDictionary+CLLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+CLLocation.h"; sourceTree = "<group>"; };
 		20AEFE511B40FBA600975B84 /* NSDictionary+CLLocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+CLLocation.m"; sourceTree = "<group>"; };
 		20DAF9651B870A3B005B7932 /* YTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YTableViewCell.h; sourceTree = "<group>"; };
@@ -225,6 +263,38 @@
 			path = CTAssetsPicker;
 			sourceTree = "<group>";
 		};
+		203CC4B11BF589CE00691CC9 /* AGImagePickerController */ = {
+			isa = PBXGroup;
+			children = (
+				203CC4B21BF589CE00691CC9 /* AGImagePickerController+Helper.h */,
+				203CC4B31BF589CE00691CC9 /* AGImagePickerController+Helper.m */,
+				203CC4B51BF589CE00691CC9 /* AGImagePickerController.h */,
+				203CC4B61BF589CE00691CC9 /* AGImagePickerController.m */,
+				203CC4B71BF589CE00691CC9 /* AGImagePickerControllerDefines.h */,
+				203CC4B81BF589CE00691CC9 /* AGImagePreviewController.h */,
+				203CC4B91BF589CE00691CC9 /* AGImagePreviewController.m */,
+				203CC4BA1BF589CE00691CC9 /* AGIPCAlbumsController.h */,
+				203CC4BB1BF589CE00691CC9 /* AGIPCAlbumsController.m */,
+				203CC4BC1BF589CE00691CC9 /* AGIPCAssetsController.h */,
+				203CC4BD1BF589CE00691CC9 /* AGIPCAssetsController.m */,
+				203CC4BE1BF589CE00691CC9 /* AGIPCGridCell.h */,
+				203CC4BF1BF589CE00691CC9 /* AGIPCGridCell.m */,
+				203CC4C01BF589CE00691CC9 /* AGIPCGridItem.h */,
+				203CC4C11BF589CE00691CC9 /* AGIPCGridItem.m */,
+				203CC4C21BF589CE00691CC9 /* AGIPCPreviewController.h */,
+				203CC4C31BF589CE00691CC9 /* AGIPCPreviewController.m */,
+				203CC4C41BF589CE00691CC9 /* AGIPCToolbarItem.h */,
+				203CC4C51BF589CE00691CC9 /* AGIPCToolbarItem.m */,
+				203CC4C61BF589CE00691CC9 /* AGPreviewScrollView.h */,
+				203CC4C71BF589CE00691CC9 /* AGPreviewScrollView.m */,
+				203CC4C81BF589CE00691CC9 /* ALAsset+AGIPC.h */,
+				203CC4C91BF589CE00691CC9 /* ALAsset+AGIPC.m */,
+				203CC4CA1BF589CE00691CC9 /* UIButton+AGIPC.h */,
+				203CC4CB1BF589CE00691CC9 /* UIButton+AGIPC.m */,
+			);
+			path = AGImagePickerController;
+			sourceTree = "<group>";
+		};
 		2817D98F1ADA188400FDB4F6 = {
 			isa = PBXGroup;
 			children = (
@@ -279,6 +349,7 @@
 		2817D9B81ADA1EA500FDB4F6 /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
+				203CC4B11BF589CE00691CC9 /* AGImagePickerController */,
 				041E3EB01BAFF50A00454487 /* CTAssetsPicker */,
 				331473A11BA7E5DF0006F72D /* PPLabel */,
 				65F82F851B8601EB00FF6E2D /* SKTagView */,
@@ -474,7 +545,7 @@
 			buildPhases = (
 				2817D9941ADA188400FDB4F6 /* Sources */,
 				2817D9951ADA188400FDB4F6 /* Frameworks */,
-				2817D9961ADA188400FDB4F6 /* CopyFiles */,
+				2817D9961ADA188400FDB4F6 /* Copy Files */,
 			);
 			buildRules = (
 			);
@@ -560,6 +631,7 @@
 				2803C92C1AE3BA60002303B6 /* YManagerCenter.m in Sources */,
 				49DB52CC1B3D81A900B0D1EB /* NSArray+Additions.m in Sources */,
 				492FDE3A1B45152C0085C770 /* YDevice.m in Sources */,
+				203CC4D71BF589CE00691CC9 /* UIButton+AGIPC.m in Sources */,
 				20DAF9671B870A3B005B7932 /* YTableViewCell.m in Sources */,
 				2873DBDA1AE02BDD00F5FD3E /* YManager.m in Sources */,
 				28CBB0E61ADAFAF400D69527 /* YHttpRequest.m in Sources */,
@@ -569,6 +641,7 @@
 				20E239A21BD63A8A0040D799 /* YLabel+Ext.m in Sources */,
 				2873DBD01ADFF66E00F5FD3E /* YFMDatabaseQueue.m in Sources */,
 				2862E35F1AE03AAE00AD0257 /* YObject.m in Sources */,
+				203CC4CC1BF589CE00691CC9 /* AGImagePickerController+Helper.m in Sources */,
 				2848A13B1ADED603007E2682 /* YLog.m in Sources */,
 				28CBB0DC1ADAE3C300D69527 /* YQueue.m in Sources */,
 				2873DBD61AE00E7800F5FD3E /* YFMDatabase.m in Sources */,
@@ -576,11 +649,14 @@
 				20DD4B281B73039B007C352C /* YTableView.m in Sources */,
 				2803C9331AE406E5002303B6 /* YModel.m in Sources */,
 				65F82F8D1B8601EB00FF6E2D /* SKTagButton.m in Sources */,
+				203CC4D61BF589CE00691CC9 /* ALAsset+AGIPC.m in Sources */,
 				2862E3701AE0480300AD0257 /* YHTTPRequestAction.m in Sources */,
 				20AEFE521B40FBA600975B84 /* NSDictionary+CLLocation.m in Sources */,
 				2862E3741AE04C7700AD0257 /* YDatabaseDao.m in Sources */,
+				203CC4D41BF589CE00691CC9 /* AGIPCToolbarItem.m in Sources */,
 				2803C9301AE3BD42002303B6 /* YUtils.m in Sources */,
 				65F82F8E1B8601EB00FF6E2D /* SKTagView.m in Sources */,
+				203CC4D01BF589CE00691CC9 /* AGIPCAssetsController.m in Sources */,
 				654602221B7F8C1D0039F622 /* SDPhotoBrowser.m in Sources */,
 				57CFE0DA1AE7A3AF00D4C4E9 /* YImage+Ext.m in Sources */,
 				57C6053F1AE8C45900A92A54 /* YString+Ext.m in Sources */,
@@ -588,13 +664,19 @@
 				971758891B132D7D00CCEEE4 /* YTextField+Ext.m in Sources */,
 				041E3EB61BAFF54000454487 /* NSDate+TimeInterval.m in Sources */,
 				28A1EBFD1AE2015700F7F93B /* YDirectory.m in Sources */,
+				203CC4D31BF589CE00691CC9 /* AGIPCPreviewController.m in Sources */,
 				20E033F91B845706002E4583 /* YTextField.m in Sources */,
 				2848A13E1ADED633007E2682 /* YTimer.m in Sources */,
+				203CC4D11BF589CE00691CC9 /* AGIPCGridCell.m in Sources */,
 				28A1EBEB1AE1EF1500F7F93B /* YView.m in Sources */,
 				65F82F8C1B8601EB00FF6E2D /* SKTag.m in Sources */,
+				203CC4CE1BF589CE00691CC9 /* AGImagePreviewController.m in Sources */,
 				57CFE0F61AE7B13400D4C4E9 /* YColor+Ext.m in Sources */,
 				57CFE0F91AE7B14600D4C4E9 /* YDate+Ext.m in Sources */,
+				203CC4D21BF589CE00691CC9 /* AGIPCGridItem.m in Sources */,
 				57EF11D31AF713C3009F49DD /* YShareData.m in Sources */,
+				203CC4D51BF589CE00691CC9 /* AGPreviewScrollView.m in Sources */,
+				203CC4CD1BF589CE00691CC9 /* AGImagePickerController.m in Sources */,
 				654602201B7F8C1D0039F622 /* SDBrowserImageView.m in Sources */,
 				041E3EB31BAFF50A00454487 /* CTAssetsPickerController.m in Sources */,
 				2873DBCD1ADFF5A900F5FD3E /* YDatabase.m in Sources */,
@@ -603,6 +685,7 @@
 				2862E4201AE0FA5900AD0257 /* YActionMessage.m in Sources */,
 				28DB2C891B2BD553000FB76B /* YNavigationController.m in Sources */,
 				57CFE0D41AE7A25A00D4C4E9 /* YVIew+Ext.m in Sources */,
+				203CC4CF1BF589CE00691CC9 /* AGIPCAlbumsController.m in Sources */,
 				045F09261AF1CE2E00804EC7 /* YTextView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

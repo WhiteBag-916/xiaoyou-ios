@@ -7,7 +7,7 @@
 //
 
 /**
- *  别人申请的Cell，包括同意、忽略，以及同意，忽略选项
+ *  别人申请的Cell，包括同意、忽略选项
  *
  *  @param ApplyRemindCell nil
  *

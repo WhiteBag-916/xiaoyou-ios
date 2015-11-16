@@ -67,7 +67,7 @@
     return self;
 }
 
-//无图图片
+//创建无图图片
 -(UIImageView *)noDataImageView
 {
     if (!_noDataImageView) {
@@ -90,6 +90,7 @@
     }
     return _noDataImageView;
 }
+
 
 -(void)showNoDataImageView:(BOOL)isShow
 {

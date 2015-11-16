@@ -96,7 +96,7 @@
     [self sendRequest];
 }
 
-//无图时展示图片的属性
+//返回无数据时候的图片
 -(NSString *)noDataImageViewAttribute
 {
     return @"havetime－picture－notice";

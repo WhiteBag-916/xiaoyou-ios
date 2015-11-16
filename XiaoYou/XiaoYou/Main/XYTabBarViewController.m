@@ -134,13 +134,16 @@
 - (void)dealloc {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
+
 - (void)openProfile:(NSNotification *)notification {
     [self dealProfileOpen:[notification userInfo][@"uid"]];
 }
+
 - (void)openPraise:(NSNotification *)notification {
     UINavigationController *controller = (UINavigationController *)self.selectedViewController;
     [controller pushViewController:[[ProfilePersonListController alloc] initWithType:PersonListFeedRespect feedId:[notification userInfo][@"feedId"]] animated:true];
 }
+
 - (void)dealProfileOpen:(NSString *)userId {
     UINavigationController *controller = (UINavigationController *)self.selectedViewController;
     if (userId.length == 0) {

@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		041DF0631BC4D90300C6F324 /* DataConvert.m in Sources */ = {isa = PBXBuildFile; fileRef = 041DF0621BC4D90300C6F324 /* DataConvert.m */; };
 		041E3EB91BAFF9FE00454487 /* CTAssetsPickerChecked.png in Resources */ = {isa = PBXBuildFile; fileRef = 041E3EB71BAFF9FE00454487 /* CTAssetsPickerChecked.png */; };
 		041E3EBA1BAFF9FE00454487 /* CTAssetsPickerChecked@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 041E3EB81BAFF9FE00454487 /* CTAssetsPickerChecked@2x.png */; };
 		041E3EBD1BAFFA0800454487 /* CTAssetsPickerChecked~iOS6.png in Resources */ = {isa = PBXBuildFile; fileRef = 041E3EBB1BAFFA0800454487 /* CTAssetsPickerChecked~iOS6.png */; };
@@ -87,6 +86,7 @@
 		04571DBA1BEB2E6200BAD2A6 /* havetime－picture－notice@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 04571DB81BEB2E6200BAD2A6 /* havetime－picture－notice@3x.png */; };
 		0461A3DD1BE38D0800F00E72 /* NSString+MyContainString.m in Sources */ = {isa = PBXBuildFile; fileRef = 0461A3DC1BE38D0800F00E72 /* NSString+MyContainString.m */; };
 		0463588B1BE096790055819F /* UIDevice+DeviceType.m in Sources */ = {isa = PBXBuildFile; fileRef = 0463588A1BE096790055819F /* UIDevice+DeviceType.m */; };
+		046C633C1BF5A56A0056A4AA /* AGImagePickerController.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 046C633B1BF5A56A0056A4AA /* AGImagePickerController.bundle */; };
 		0473DC4C1BECAE2800CE041D /* add-friend-no@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0473DC4A1BECAE2800CE041D /* add-friend-no@2x.png */; };
 		0473DC4D1BECAE2800CE041D /* add-friend-no3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0473DC4B1BECAE2800CE041D /* add-friend-no3x.png */; };
 		0475AD891BDA247400763896 /* SearchActivityListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0475AD881BDA247400763896 /* SearchActivityListView.m */; };
@@ -147,6 +147,7 @@
 		207F808D1B709A1E005E8F6A /* AppDelegate+Notification.m in Sources */ = {isa = PBXBuildFile; fileRef = 207F808C1B709A1E005E8F6A /* AppDelegate+Notification.m */; };
 		209C4C731B8C662900B584DF /* AssociationsDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 209C4C721B8C662900B584DF /* AssociationsDetailViewController.m */; };
 		209C4C791B8C688000B584DF /* AssociationsDetailTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 209C4C781B8C688000B584DF /* AssociationsDetailTableView.m */; };
+		20B699CF1BF98A95005D5974 /* haokan_bottom_line.png in Resources */ = {isa = PBXBuildFile; fileRef = 20B699CE1BF98A95005D5974 /* haokan_bottom_line.png */; };
 		20BEAF9F1BC913120002A365 /* FastTopView.m in Sources */ = {isa = PBXBuildFile; fileRef = 20BEAF9D1BC913120002A365 /* FastTopView.m */; };
 		20C5B07B1B8DE58700B4A8A8 /* AssociationsSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20C5B07A1B8DE58700B4A8A8 /* AssociationsSearchViewController.m */; };
 		20D821A01BE0976700C5E21C /* YCommonDialogView.m in Sources */ = {isa = PBXBuildFile; fileRef = 20D8219F1BE0976700C5E21C /* YCommonDialogView.m */; };
@@ -838,8 +839,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		041DF0611BC4D90300C6F324 /* DataConvert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataConvert.h; sourceTree = "<group>"; };
-		041DF0621BC4D90300C6F324 /* DataConvert.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataConvert.m; sourceTree = "<group>"; };
 		041E3EB71BAFF9FE00454487 /* CTAssetsPickerChecked.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CTAssetsPickerChecked.png; sourceTree = "<group>"; };
 		041E3EB81BAFF9FE00454487 /* CTAssetsPickerChecked@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "CTAssetsPickerChecked@2x.png"; sourceTree = "<group>"; };
 		041E3EBB1BAFFA0800454487 /* CTAssetsPickerChecked~iOS6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "CTAssetsPickerChecked~iOS6.png"; sourceTree = "<group>"; };
@@ -938,6 +937,7 @@
 		0461A3DC1BE38D0800F00E72 /* NSString+MyContainString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+MyContainString.m"; sourceTree = "<group>"; };
 		046358891BE096790055819F /* UIDevice+DeviceType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIDevice+DeviceType.h"; sourceTree = "<group>"; };
 		0463588A1BE096790055819F /* UIDevice+DeviceType.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIDevice+DeviceType.m"; sourceTree = "<group>"; };
+		046C633B1BF5A56A0056A4AA /* AGImagePickerController.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = AGImagePickerController.bundle; sourceTree = "<group>"; };
 		0473DC4A1BECAE2800CE041D /* add-friend-no@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "add-friend-no@2x.png"; path = "mengcheng/add-friend-no@2x.png"; sourceTree = "<group>"; };
 		0473DC4B1BECAE2800CE041D /* add-friend-no3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "add-friend-no3x.png"; path = "mengcheng/add-friend-no3x.png"; sourceTree = "<group>"; };
 		0475AD871BDA247400763896 /* SearchActivityListView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchActivityListView.h; sourceTree = "<group>"; };
@@ -1026,6 +1026,7 @@
 		209C4C721B8C662900B584DF /* AssociationsDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AssociationsDetailViewController.m; sourceTree = "<group>"; };
 		209C4C771B8C688000B584DF /* AssociationsDetailTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AssociationsDetailTableView.h; sourceTree = "<group>"; };
 		209C4C781B8C688000B584DF /* AssociationsDetailTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AssociationsDetailTableView.m; sourceTree = "<group>"; };
+		20B699CE1BF98A95005D5974 /* haokan_bottom_line.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = haokan_bottom_line.png; sourceTree = "<group>"; };
 		20BEAF9D1BC913120002A365 /* FastTopView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FastTopView.m; sourceTree = "<group>"; };
 		20BEAF9E1BC913120002A365 /* FastTopView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FastTopView.h; sourceTree = "<group>"; };
 		20C5B0791B8DE58700B4A8A8 /* AssociationsSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AssociationsSearchViewController.h; sourceTree = "<group>"; };
@@ -2682,6 +2683,7 @@
 				20DD11591B8D698900767E62 /* ServiceTerms.html */,
 				20DAF9A41B871D31005B7932 /* SchollList.txt */,
 				04394B4D1BBBCA5C0098BB8F /* description.rtf */,
+				046C633B1BF5A56A0056A4AA /* AGImagePickerController.bundle */,
 				20DAA29E1BCE34DF00420234 /* tabbar */,
 				044C31451BCCAF0000E0D508 /* Available */,
 				044DA0231BBA699600AA321A /* Setup */,
@@ -3815,6 +3817,7 @@
 		334670611B841F1E00A8628A /* message */ = {
 			isa = PBXGroup;
 			children = (
+				20B699CE1BF98A95005D5974 /* haokan_bottom_line.png */,
 				E41CD7E11BF0AAFC00796EBF /* goodlook_see_y@2x.png */,
 				E41CD7E21BF0AAFC00796EBF /* goodlook_see_y@3x.png */,
 				E41CD7E31BF0AAFC00796EBF /* goodlook_see@2x.png */,
@@ -3930,8 +3933,6 @@
 				65F55AA01B899EBC00ED4348 /* UIImageView+Ext.m */,
 				654379AD1B8D8680007B15CA /* UIScrollView+UITouchEvent.h */,
 				654379AE1B8D8680007B15CA /* UIScrollView+UITouchEvent.m */,
-				041DF0611BC4D90300C6F324 /* DataConvert.h */,
-				041DF0621BC4D90300C6F324 /* DataConvert.m */,
 				043AC8601BCF338600AB6E09 /* RespectExpandImg.h */,
 				043AC8611BCF338600AB6E09 /* RespectExpandImg.m */,
 				04C08FE21BDBF0F7002F8BAE /* TimeFormatterConvert.h */,
@@ -4594,6 +4595,7 @@
 				20E0BFFA1B88B0CA00EDAED4 /* register-label-chosen-boundary@3x.png in Resources */,
 				044DA0071BBA314300AA321A /* funny_location@3x.png in Resources */,
 				044C31551BCCAF0000E0D508 /* have_time_msg@3x.png in Resources */,
+				046C633C1BF5A56A0056A4AA /* AGImagePickerController.bundle in Resources */,
 				20E18DC91B808E42005B75EE /* menu-remind@3x.png in Resources */,
 				20DF60001BDF2E2A00C8383B /* icon_arrow@3x.png in Resources */,
 				044DA02F1BBA699600AA321A /* setup_other@3x.png in Resources */,
@@ -4740,6 +4742,7 @@
 				044DA00F1BBA598C00AA321A /* funny_detail_boy@3x.png in Resources */,
 				20E034041B846398002E4583 /* feed-find-someone-search@2x.png in Resources */,
 				048C49EE1BD4EDB0008E1D88 /* havetime_icon_no@2x.png in Resources */,
+				20B699CF1BF98A95005D5974 /* haokan_bottom_line.png in Resources */,
 				65024C1D1B833565007DE404 /* feedmore@3x.png in Resources */,
 				20D8B1321BE07595003F7911 /* course_icon_week@2x.png in Resources */,
 				E45835A71BE2077700150771 /* mine－icon－cool@3x.png in Resources */,
@@ -4986,7 +4989,6 @@
 				65969DC41B86BDE1001DD348 /* MBProgressHUD+Add.m in Sources */,
 				20DAF9D71B873883005B7932 /* ChineseToPinyinResource.m in Sources */,
 				333122831B806EDC00D3D032 /* UIViewController+DismissKeyboard.m in Sources */,
-				041DF0631BC4D90300C6F324 /* DataConvert.m in Sources */,
 				333122841B806EDC00D3D032 /* UIViewController+HUD.m in Sources */,
 				333122821B806EDC00D3D032 /* UIResponder+Router.m in Sources */,
 				333122781B806EDB00D3D032 /* TTGlobalUICommon.m in Sources */,

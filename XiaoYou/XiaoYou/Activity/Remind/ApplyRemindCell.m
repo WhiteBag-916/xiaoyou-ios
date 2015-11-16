@@ -183,7 +183,6 @@
     } else if ([model isKindOfClass:[NotifyInfoModel class]]) {
         [self setNotifyData:model];
     }
-
 }
 
 //提醒相关数据
