@@ -15,8 +15,11 @@
 
 #import "AGImagePickerController.h"
 #import "AGIPCGridItem.h"
+#import "YViewController.h"
+#import "Masonry.h"
 
-@interface AGIPCAssetsController : UITableViewController<UITableViewDataSource, UITableViewDelegate, AGIPCGridItemDelegate>
+
+@interface AGIPCAssetsController : YViewController<UITableViewDataSource, UITableViewDelegate, AGIPCGridItemDelegate>
 
 @property (strong) ALAssetsGroup *assetsGroup;
 @property (ag_weak, readonly) NSArray *selectedAssets;

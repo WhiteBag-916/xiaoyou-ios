@@ -99,6 +99,7 @@
         bgView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"AGImagePickerController.bundle/AGIPC-Bar-bg"]];
         bgView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleTopMargin;
         _bottomBgView = bgView;
+        //_bottomBgView.alpha = 0.5;
     }
     _bottomBgView.frame = CGRectMake(0, self.view.frame.size.height-44, self.view.frame.size.width, 44);
     [self.view addSubview:_bottomBgView];
