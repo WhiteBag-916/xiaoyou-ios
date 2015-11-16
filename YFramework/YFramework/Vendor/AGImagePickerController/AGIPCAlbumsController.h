@@ -11,10 +11,10 @@
 
 #import <UIKit/UIKit.h>
 #import <AssetsLibrary/AssetsLibrary.h>
-
+#import "YViewController.h"
 #import "AGImagePickerController.h"
 
-@interface AGIPCAlbumsController : UITableViewController<UITableViewDataSource, UITableViewDelegate>
+@interface AGIPCAlbumsController : YViewController<UITableViewDataSource, UITableViewDelegate>
 
 @property (ag_weak, readonly) NSMutableArray *assetsGroups;
 // change strong to weak, springox(20140422)

@@ -32,6 +32,8 @@
 
 @property (nonatomic, strong) NSMutableArray *assets;
 
+@property (nonatomic, strong) UITableView   *tableView;
+
 @end
 
 @interface AGIPCAssetsController (Private)
@@ -126,7 +128,7 @@
 
 - (id)initWithImagePickerController:(AGImagePickerController *)imagePickerController andAssetsGroup:(ALAssetsGroup *)assetsGroup
 {
-    self = [super initWithStyle:UITableViewStylePlain];
+    //self = [super initWithStyle:UITableViewStylePlain];
     if (self)
     {
         self.assetsGroup = assetsGroup;
@@ -137,7 +139,7 @@
         
         self.title = NSLocalizedStringWithDefaultValue(@"AGIPC.Loading", nil, [NSBundle mainBundle], @"Loading...", nil);
         self.title = [self.assetsGroup valueForProperty:ALAssetsGroupPropertyName];
-        
+        //self.title = @"test";
         // Setup toolbar items
         [self setupToolbarItems];
         
@@ -222,9 +224,29 @@
 
 #pragma mark - View Lifecycle
 
+
+-(UITableView *)tableView
+{
+    if (!_tableView) {
+        _tableView = [[UITableView alloc]initWithFrame:CGRectZero style:UITableViewStylePlain];
+        [self.view addSubview:_tableView];
+        _tableView.delegate = self;
+        _tableView.dataSource = self;
+        [_tableView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.edges.equalTo(self.view);
+        }];
+    }
+    return _tableView;
+}
+
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    [self tableView];
+    [self showCustomNavigationBackButton];
+    [self showCustomNavigationSureButton];
     
     // Fullscreen
     if (self.imagePickerController.shouldChangeStatusBarStyle) {
@@ -238,7 +260,7 @@
     // Navigation Bar Items
     UIBarButtonItem *doneButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(doneAction:)];
     doneButtonItem.enabled = NO;
-    self.navigationItem.rightBarButtonItem = doneButtonItem;
+    //self.navigationItem.rightBarButtonItem = doneButtonItem;
     
     lastOrientation = self.interfaceOrientation;
     
@@ -386,6 +408,12 @@
     }
 }
 
+
+- (void)onNavigationRightButtonClicked
+{
+    [self doneAction:nil];
+}
+
 - (void)doneAction:(id)sender
 {
     [self.imagePickerController performSelector:@selector(didFinishPickingAssets:) withObject:self.selectedAssets];
@@ -426,6 +454,7 @@
     }
 }
 
+#pragma mark  图片被选中时的操作
 - (void)changeSelectionInformation
 {
     self.navigationItem.rightBarButtonItem.enabled = ([AGIPCGridItem numberOfSelections] > 0);
@@ -437,9 +466,9 @@
             // Display supports up to select several photos at the same time, springox(20131220)
             NSInteger maxNumber = _imagePickerController.maximumNumberOfPhotosToBeSelected;
             if (0 < maxNumber) {
-                self.navigationController.navigationBar.topItem.prompt = [NSString stringWithFormat:@"(%d/%d)", [AGIPCGridItem numberOfSelections], maxNumber];
+                //self.navigationController.navigationBar.topItem.prompt = [NSString stringWithFormat:@"(%d/%d)", [AGIPCGridItem numberOfSelections], maxNumber];
             } else {
-                self.navigationController.navigationBar.topItem.prompt = [NSString stringWithFormat:@"(%d/%d)", [AGIPCGridItem numberOfSelections], self.assets.count];
+                //self.navigationController.navigationBar.topItem.prompt = [NSString stringWithFormat:@"(%d/%d)", [AGIPCGridItem numberOfSelections], self.assets.count];
             }
         }
     }

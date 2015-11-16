@@ -21,6 +21,8 @@
     __ag_weak AGImagePickerController *_imagePickerController;
 }
 
+@property (nonatomic, strong) UITableView *tableView;
+
 @end
 
 @interface AGIPCAlbumsController ()
@@ -54,7 +56,7 @@
 
 - (id)initWithImagePickerController:(AGImagePickerController *)imagePickerController
 {
-    self = [super initWithStyle:UITableViewStylePlain];
+    //self = [super initWithStyle:UITableViewStylePlain];
     if (self)
     {
         self.imagePickerController = imagePickerController;
@@ -87,12 +89,32 @@
     [self unregisterFromNotifications];
 }
 
+
+-(UITableView *)tableView
+{
+    if (!_tableView) {
+        _tableView = [[UITableView alloc]initWithFrame:CGRectZero style:UITableViewStylePlain];
+        _tableView.delegate = self;
+        _tableView.dataSource = self;
+        [self.view addSubview:_tableView];
+        [_tableView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.top.mas_equalTo(5);
+            make.leading.mas_equalTo(0);
+            make.right.mas_equalTo(0);
+            make.bottom.mas_equalTo(0);
+        }];
+    }
+    return _tableView;
+}
+
+
 #pragma mark - View lifecycle
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
+    [self tableView];
+    [self showCustomNavigationBackButton];
     // Fullscreen
     if (self.imagePickerController.shouldChangeStatusBarStyle) {
         self.wantsFullScreenLayout = YES;
@@ -101,7 +123,7 @@
     
     // Navigation Bar Items
     UIBarButtonItem *cancelButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(cancelAction:)];
-	self.navigationItem.leftBarButtonItem = cancelButton;
+	//self.navigationItem.leftBarButtonItem = cancelButton;
     
     // avoid deadlock on ios5, delay to handle in viewDidLoad, springox(20140612)
     if ([[[UIDevice currentDevice] systemVersion] floatValue] < 6.f) {
@@ -314,6 +336,12 @@
     if ([self.imagePickerController respondsToSelector:@selector(didCancelPickingAssets)]) {
         [self.imagePickerController performSelector:@selector(didCancelPickingAssets)];
     }
+}
+
+
+- (void)onNavigationLeftButtonClicked
+{
+    [self cancelAction:nil];
 }
 
 #pragma mark - Notifications
