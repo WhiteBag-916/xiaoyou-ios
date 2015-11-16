@@ -163,9 +163,18 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-//    ProfilePersonListTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kProfilePersonListTableViewCell];
-    ProfilePersonListTableViewCell *cell = [[ProfilePersonListTableViewCell alloc] init];
+    ProfilePersonListTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kProfilePersonListTableViewCell];
+//    ProfilePersonListTableViewCell *cell = [[ProfilePersonListTableViewCell alloc] init];
     BOOL showGender = (ProfilePersonListTypeFind == _type);
+    
+    // 判断为空进行初始化  --（当拉动页面显示超过主页面内容的时候就会重用之前的cell，而不会再次初始化）
+    
+    
+    [cell removeFromSuperview];
+//        while ([cell.contentView.subviews lastObject] != nil) {
+//            [(UIView *)[cell.contentView.subviews lastObject] removeFromSuperview];
+//        }
+    
     
     [cell setData:_personListArray[indexPath.row] needShowGender:showGender];
     return cell;

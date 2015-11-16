@@ -40,9 +40,9 @@ typedef NS_ENUM(NSInteger, ProfilePersonListType) {
      */
     ProfilePersonListTypeFeedPerson,        //人脉里的人
     /**
-     *  add by 刘德胜, 15-10-28            //提醒里面的人
+     *  add by 刘德胜, 15-10-28
      */
-    ProfilePersonListTypeNoticePerson
+    ProfilePersonListTypeNoticePerson       //提醒里面的人
 };
 
 @interface ProfilePersonListTableView : YTableView

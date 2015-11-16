@@ -229,8 +229,8 @@
         {
             CGFloat width;
             Tags * tag = model.tagsCommon[i];
-            NSDictionary *attributes = @{NSFontAttributeName:[UIFont systemFontOfSize:SCALE_NUM(10)]};
-            CGSize textSize = [tag.name boundingRectWithSize:CGSizeMake(SCALE_NUM(300), 14) options:NSStringDrawingTruncatesLastVisibleLine attributes:attributes context:nil].size;
+            NSDictionary *attributes = @{NSFontAttributeName:CONTENT_FONT(10)};
+            CGSize textSize = [tag.name boundingRectWithSize:CGSizeMake(SCALE_NUM(300), SCALE_NUM(14)) options:NSStringDrawingTruncatesLastVisibleLine attributes:attributes context:nil].size;
             
             width += SCALE_NUM(10);
             width += textSize.width + SCALE_NUM(15);

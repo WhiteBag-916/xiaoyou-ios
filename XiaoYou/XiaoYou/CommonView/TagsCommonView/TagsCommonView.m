@@ -13,9 +13,9 @@
 #import "MyFlowLayout.h"
 
 #define REUSECELL @"taglistcell"
-#define kFlagImageViewWidth            11
-#define kFlagImageViewHeight           14
-#define kPaddingDistance               10
+#define kFlagImageViewWidth            SCALE_NUM(11)
+#define kFlagImageViewHeight           SCALE_NUM(14)
+#define kPaddingDistance               SCALE_NUM(10)
 
 @interface TagsCommonView ()<UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout>
 
@@ -43,6 +43,7 @@
 -(void)setUpUI
 {
     self.backgroundColor = [UIColor clearColor];
+    
     _flagImageView = [[UIImageView alloc]init];
     [self addSubview:_flagImageView];
     [_flagImageView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -59,7 +60,7 @@
         make.top.equalTo(self).offset(kPaddingDistance);
     }];
     [self.tagCollectionView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(_connectTag.mas_bottom).offset(5);
+        make.top.equalTo(_connectTag.mas_bottom).offset(SCALE_NUM(5));
         make.left.equalTo(_connectTag.mas_left).offset(-kPaddingDistance/2);
         make.trailing.mas_equalTo(0);
 //        make.height.mas_equalTo(height);
@@ -115,7 +116,7 @@
         _tagCollectionView.backgroundColor = [UIColor clearColor];
         MyFlowLayout *layout = [[MyFlowLayout alloc]init];
 //        UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc]init];
-        layout.minimumInteritemSpacing = 10;
+        layout.minimumInteritemSpacing = SCALE_NUM(10);
         _tagCollectionView = [[UICollectionView alloc]initWithFrame:CGRectZero collectionViewLayout:layout];
         [self addSubview:_tagCollectionView];
         _tagCollectionView.scrollEnabled = NO;
@@ -166,14 +167,14 @@
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     Tags * tag = _commonTagsArr[indexPath.row];
-    NSDictionary *attributes = @{NSFontAttributeName:[UIFont systemFontOfSize:10]};
-    CGSize textSize = [tag.name boundingRectWithSize:CGSizeMake(300, 20) options:NSStringDrawingTruncatesLastVisibleLine attributes:attributes context:nil].size;
-    return CGSizeMake(textSize.width+15, 14);
+    NSDictionary *attributes = @{NSFontAttributeName:CONTENT_FONT(10)};
+    CGSize textSize = [tag.name boundingRectWithSize:CGSizeMake(SCALE_NUM(300), SCALE_NUM(20)) options:NSStringDrawingTruncatesLastVisibleLine attributes:attributes context:nil].size;
+    return CGSizeMake(SCALE_NUM(textSize.width+15), SCALE_NUM(14));
 }
 //定义每个UICollectionView 的间距（返回UIEdgeInsets：上、左、下、右）
 -(UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section
 {
-    return UIEdgeInsetsMake(5, 5, 5, 5);
+    return UIEdgeInsetsMake(SCALE_NUM(5), SCALE_NUM(5), SCALE_NUM(5), SCALE_NUM(5));
 }
 #pragma mark --UICollectionViewDelegate
 //UICollectionView被选中时调用的方法
@@ -191,12 +192,12 @@
 //定义每个UICollectionView 纵向的间距
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section
 {
-    return 8;
+    return SCALE_NUM(8);
 }
 
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section
 {
-    return 5;
+    return SCALE_NUM(5);
 }
 
 

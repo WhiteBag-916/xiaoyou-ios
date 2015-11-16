@@ -215,10 +215,10 @@
 }
 
 - (void)respect {
-    if (_isAuthor) {
-        [YUtils showTitle:@"不能给自己敬酒"];
-        return;
-    }
+//    if (_isAuthor) {
+//        [YUtils showTitle:@"不能给自己敬酒"];
+//        return;
+//    }
     if ([_myInfo isKindOfClass:[Feed class]]) {
         Feed *fd = _myInfo;
         [[FeedManager sharedInstance] addPraise:[NSString stringWithFormat:@"%d", (int)fd.feedIdentifier] block:^(YActionMessage *message) {

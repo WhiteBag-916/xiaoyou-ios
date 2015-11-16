@@ -7,7 +7,6 @@
 //
 
 #import "PassRemindCell.h"
-#import "DataConvert.h"
 #import "UIImageView+WebCache.h"
 #import "ProfileInfo.h"
 #import "WhoJoinInController.h"

@@ -10,10 +10,10 @@
 
 @implementation NSString (MyContainString)
 
-//-(BOOL)containsString:(NSString *)str
-//{
-//    return [self myContainsString:str];
-//}
+-(BOOL)containsString:(NSString *)str
+{
+    return [self myContainsString:str];
+}
 
 
 -(BOOL)myContainsString:(NSString*)other {
