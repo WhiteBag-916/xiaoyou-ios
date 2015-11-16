@@ -815,6 +815,7 @@
 		E48E09B11BD7B9880017D395 /* CheckCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E48E09B01BD7B9880017D395 /* CheckCollectionViewCell.m */; };
 		E48E09B41BD7BBCA0017D395 /* img_num6@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E48E09B21BD7BBCA0017D395 /* img_num6@2x.png */; };
 		E48E09B51BD7BBCA0017D395 /* img_num6@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E48E09B31BD7BBCA0017D395 /* img_num6@3x.png */; };
+		E49823E01BF9ADD100E275B1 /* AppDelegate+Update.m in Sources */ = {isa = PBXBuildFile; fileRef = E49823DF1BF9ADD100E275B1 /* AppDelegate+Update.m */; };
 		E4BE2DAA1BC7989300124F22 /* ContactsInfoFirstTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E4BE2DA91BC7989300124F22 /* ContactsInfoFirstTableViewCell.m */; };
 		E4BE2DAD1BC798A600124F22 /* ContactsInfoSecondTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E4BE2DAC1BC798A600124F22 /* ContactsInfoSecondTableViewCell.m */; };
 		E4BE2DB01BC798B500124F22 /* ContactsInfoThirdTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E4BE2DAF1BC798B500124F22 /* ContactsInfoThirdTableViewCell.m */; };
@@ -2011,6 +2012,8 @@
 		E48E09B01BD7B9880017D395 /* CheckCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckCollectionViewCell.m; sourceTree = "<group>"; };
 		E48E09B21BD7BBCA0017D395 /* img_num6@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "img_num6@2x.png"; sourceTree = "<group>"; };
 		E48E09B31BD7BBCA0017D395 /* img_num6@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "img_num6@3x.png"; sourceTree = "<group>"; };
+		E49823DE1BF9ADD100E275B1 /* AppDelegate+Update.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AppDelegate+Update.h"; sourceTree = "<group>"; };
+		E49823DF1BF9ADD100E275B1 /* AppDelegate+Update.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AppDelegate+Update.m"; sourceTree = "<group>"; };
 		E4BE2DA81BC7989300124F22 /* ContactsInfoFirstTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactsInfoFirstTableViewCell.h; sourceTree = "<group>"; };
 		E4BE2DA91BC7989300124F22 /* ContactsInfoFirstTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactsInfoFirstTableViewCell.m; sourceTree = "<group>"; };
 		E4BE2DAB1BC798A600124F22 /* ContactsInfoSecondTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactsInfoSecondTableViewCell.h; sourceTree = "<group>"; };
@@ -2624,6 +2627,8 @@
 				207F80861B7098E3005E8F6A /* AppDelegate+RootVC.m */,
 				207F808B1B709A1E005E8F6A /* AppDelegate+Notification.h */,
 				207F808C1B709A1E005E8F6A /* AppDelegate+Notification.m */,
+				E49823DE1BF9ADD100E275B1 /* AppDelegate+Update.h */,
+				E49823DF1BF9ADD100E275B1 /* AppDelegate+Update.m */,
 				20E122111B705C2100F90BD3 /* XYTabBarViewController.h */,
 				20E122121B705C2100F90BD3 /* XYTabBarViewController.m */,
 			);
@@ -5075,6 +5080,7 @@
 				E4BE2DAA1BC7989300124F22 /* ContactsInfoFirstTableViewCell.m in Sources */,
 				65A703CB1B8C467C0094D8A2 /* FeedFilterViewController.m in Sources */,
 				E455DCF01BCB798400B78E54 /* ActivityReleaseAndTypeCell.m in Sources */,
+				E49823E01BF9ADD100E275B1 /* AppDelegate+Update.m in Sources */,
 				333122501B806EDB00D3D032 /* MWPhotoBrowser.m in Sources */,
 				333122761B806EDB00D3D032 /* SRSlimeView.m in Sources */,
 				20DA16F91BC7C51200A61B37 /* MGCEventCell.m in Sources */,

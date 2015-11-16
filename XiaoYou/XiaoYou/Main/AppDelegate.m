@@ -14,6 +14,7 @@
 #import "YBaseService.h"
 #import "AppConfigData.h"
 #import "MessageManager.h"
+#import "AppDelegate+Update.h"
 
 @interface AppDelegate ()
 
@@ -29,6 +30,8 @@
     [self initNotification:application didFinishLaunchingWithOptions:launchOptions];
     
     [self initRootVC];
+    
+//    [self isNeedToUpDate];
     
     return YES;
 }
