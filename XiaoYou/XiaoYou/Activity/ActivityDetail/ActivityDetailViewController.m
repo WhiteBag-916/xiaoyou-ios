@@ -40,7 +40,7 @@
     self.view.backgroundColor = [UIColor whiteColor];
     [self showCustomNavigationBackButton];
     
-    [self IsShowCustomNavigationMoreButton:NO];
+    [self showCustomNavigationMoreButton];
     _isShowOutInMore = NO;
     
     [self.detailListView loadData];
@@ -63,6 +63,9 @@
 
 
 - (void)onNavigationRightButtonClicked {
+    if (nil == _activityDetailModel) {
+        return;
+    }
     NSMutableArray *moreArray = [[NSMutableArray alloc] init];
     
     NSArray *imageTextModels = _activityDetailModel.activityPublishedDto.activityImageTextModels;
@@ -81,7 +84,7 @@
     [moreArray addObject:item1];
     
     if (_isShowOutInMore) {
-        YActionSheetItem *item2 = [YActionSheetItem itemWithTitle:@"我要退出" type:YCommonActionSheetItemTypeCenterCommon block:^(NSInteger checkNum) {
+        YActionSheetItem *item2 = [YActionSheetItem itemWithTitle:@"我要退出" type:YCommonActionSheetItemTypeCommon block:^(NSInteger checkNum) {
             [self exitActivity];
             
         }];
@@ -159,7 +162,6 @@
                 [_joinInBtn setTitle:@"我要加入" forState:UIControlStateNormal];
                 _joinInBtn.enabled = YES;
                 _joinInBtn.backgroundColor = KCOLOR_g1;
-                [self IsShowCustomNavigationMoreButton:NO];
                 _isShowOutInMore = NO;
                 //未加入
                 //抛通知告知日程删除
@@ -172,7 +174,6 @@
                 [_joinInBtn setTitle:@"我已参加" forState:UIControlStateNormal];
                 _joinInBtn.backgroundColor = KCOLOR_g2;
                 _joinInBtn.enabled = NO;
-                [self IsShowCustomNavigationMoreButton:YES];
                 _isShowOutInMore = YES;
                 //已加入
                 //抛通知告知日程添加
@@ -185,21 +186,18 @@
                 [_joinInBtn setTitle:@"报名结束" forState:UIControlStateNormal];
                 _joinInBtn.enabled = NO;
                 _joinInBtn.backgroundColor = KCOLOR_g2;
-                [self IsShowCustomNavigationMoreButton:YES];
                  _isShowOutInMore = YES;
             }
             else if ([model.enrollStatus isEqualToString:@"enroll_auditing"]) {
                 [_joinInBtn setTitle:@"正在审核" forState:UIControlStateNormal];
                 _joinInBtn.enabled = NO;
                 _joinInBtn.backgroundColor = KCOLOR_g2;
-                [self IsShowCustomNavigationMoreButton:YES];
                  _isShowOutInMore = YES;
             }
             else if ([model.enrollStatus isEqualToString:@"self_activity"]) {
                 _joinInBtn.enabled = YES;
                 _joinInBtn.backgroundColor = KCOLOR_g2;
                 [_joinInBtn setTitle:@"我已参加" forState:UIControlStateNormal];
-                [self IsShowCustomNavigationMoreButton:NO];
                  _isShowOutInMore = NO;
             }
             //[_detailListView loadData];
