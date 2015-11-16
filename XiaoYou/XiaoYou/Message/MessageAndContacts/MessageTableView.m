@@ -30,7 +30,7 @@
 
 #define kRowHeight                     68
 #define kHeadWidthAndHeight            40
-#define kNameLabelWidth                80
+#define kNameLabelWidth                200
 #define kTimeLabelWidth                60
 #define kHeadCornerRadius              20
 #define kPaddingDistance               10
@@ -168,7 +168,7 @@
     [funBackView addSubview:funNameLabel];
 
     //标签
-    _goodLookLabel = [[UILabel alloc] initWithFrame:CGRectMake(2*kPaddingDistance + kHeadWidthAndHeight, kRowHeight - kLabelHeightDistacnce - kPaddingDistance, 15*kPaddingDistance, kLabelHeightDistacnce)];
+    _goodLookLabel = [[UILabel alloc] initWithFrame:CGRectMake(2*kPaddingDistance + kHeadWidthAndHeight, kRowHeight - kLabelHeightDistacnce - kPaddingDistance, kNameLabelWidth, kLabelHeightDistacnce)];
     _goodLookLabel.font = CONTENT_FONT(12);
     _goodLookLabel.textColor = KCOLORWHITE_696969;
     _goodLookLabel.text = @"你最关心的校园资讯";
@@ -354,20 +354,28 @@
         _goodLookTimeLabel.hidden = NO;
         if ([ext[@"unreadGoodLook"] boolValue]) {
             _goodLookHeadImageView.image = [UIImage imageNamed:@"goodlook_see_y"];
-            _goodLookLabel.text = ext[@"em_apns_ext"][@"em_push_title"];
-            _goodLookTimeLabel.text = [YUtils distanceTimeToday:[NSDate dateWithTimeIntervalSince1970:[ext[@"timestamp"] integerValue]/1000]];
+            
         } else {
             _goodLookHeadImageView.image = [UIImage imageNamed:@"goodlook_see"];
-            _goodLookHeadImageView.image = [UIImage imageNamed:@"goodlook_see"];
+            
+        }
+        if (nil != ext[@"em_apns_ext"][@"em_push_title"]) {
+            _goodLookLabel.text = ext[@"em_apns_ext"][@"em_push_title"];
+        } else {
             _goodLookLabel.text = @"你最关心的校园资讯";
+        }
+        
+        if (nil != ext[@"timestamp"]) {
+            _goodLookTimeLabel.text = [YUtils distanceTimeToday:[NSDate dateWithTimeIntervalSince1970:[ext[@"timestamp"] integerValue]/1000]];
+        } else {
             _goodLookTimeLabel.hidden = YES;
         }
     }
     else
     {
         _goodLookHeadImageView.image = [UIImage imageNamed:@"goodlook_see"];
-        _goodLookLabel.text = @"你最关心的校园资讯";
         _goodLookTimeLabel.hidden = YES;
+        _goodLookLabel.text = @"你最关心的校园资讯";
     }
 }
 
