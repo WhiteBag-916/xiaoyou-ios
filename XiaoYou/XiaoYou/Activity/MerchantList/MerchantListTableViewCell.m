@@ -119,15 +119,23 @@ NSString *const kMerchantListTableViewCell = @"MerchantListTableViewCellId";
     _characterLabel.text = shopModel.tags;
     _placeLabel.text = shopModel.address;
     
-    if (model.supplierShopDiscounts.count > 0)
+    if (model.supplierShopDiscounts.count > 1)
     {
-         SupplierShopDiscounts * shopDiscount1 = model.supplierShopDiscounts[0];
-         SupplierShopDiscounts * shopDiscount2 = model.supplierShopDiscounts[1];
+        SupplierShopDiscounts * shopDiscount1 = model.supplierShopDiscounts[0];
         _comboLabel.text = shopDiscount1.discountDetail;
+        SupplierShopDiscounts * shopDiscount2 = model.supplierShopDiscounts[1];
         _scanfLabel.text = shopDiscount2.discountDetail;
     }
+    else if(model.supplierShopDiscounts.count > 0)
+    {
+        SupplierShopDiscounts * shopDiscount1 = model.supplierShopDiscounts[0];
+        _comboLabel.text = shopDiscount1.discountDetail;
+    }
+    else
+    {
+        return;
+    }
    
-    
 }
 
 - (BOOL)needLine
