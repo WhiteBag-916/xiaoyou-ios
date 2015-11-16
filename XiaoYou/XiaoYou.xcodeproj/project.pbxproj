@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		041DF0631BC4D90300C6F324 /* DataConvert.m in Sources */ = {isa = PBXBuildFile; fileRef = 041DF0621BC4D90300C6F324 /* DataConvert.m */; };
 		041E3EB91BAFF9FE00454487 /* CTAssetsPickerChecked.png in Resources */ = {isa = PBXBuildFile; fileRef = 041E3EB71BAFF9FE00454487 /* CTAssetsPickerChecked.png */; };
 		041E3EBA1BAFF9FE00454487 /* CTAssetsPickerChecked@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 041E3EB81BAFF9FE00454487 /* CTAssetsPickerChecked@2x.png */; };
 		041E3EBD1BAFFA0800454487 /* CTAssetsPickerChecked~iOS6.png in Resources */ = {isa = PBXBuildFile; fileRef = 041E3EBB1BAFFA0800454487 /* CTAssetsPickerChecked~iOS6.png */; };
@@ -839,8 +838,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		041DF0611BC4D90300C6F324 /* DataConvert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataConvert.h; sourceTree = "<group>"; };
-		041DF0621BC4D90300C6F324 /* DataConvert.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataConvert.m; sourceTree = "<group>"; };
 		041E3EB71BAFF9FE00454487 /* CTAssetsPickerChecked.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CTAssetsPickerChecked.png; sourceTree = "<group>"; };
 		041E3EB81BAFF9FE00454487 /* CTAssetsPickerChecked@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "CTAssetsPickerChecked@2x.png"; sourceTree = "<group>"; };
 		041E3EBB1BAFFA0800454487 /* CTAssetsPickerChecked~iOS6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "CTAssetsPickerChecked~iOS6.png"; sourceTree = "<group>"; };
@@ -3933,8 +3930,6 @@
 				65F55AA01B899EBC00ED4348 /* UIImageView+Ext.m */,
 				654379AD1B8D8680007B15CA /* UIScrollView+UITouchEvent.h */,
 				654379AE1B8D8680007B15CA /* UIScrollView+UITouchEvent.m */,
-				041DF0611BC4D90300C6F324 /* DataConvert.h */,
-				041DF0621BC4D90300C6F324 /* DataConvert.m */,
 				043AC8601BCF338600AB6E09 /* RespectExpandImg.h */,
 				043AC8611BCF338600AB6E09 /* RespectExpandImg.m */,
 				04C08FE21BDBF0F7002F8BAE /* TimeFormatterConvert.h */,
@@ -4990,7 +4985,6 @@
 				65969DC41B86BDE1001DD348 /* MBProgressHUD+Add.m in Sources */,
 				20DAF9D71B873883005B7932 /* ChineseToPinyinResource.m in Sources */,
 				333122831B806EDC00D3D032 /* UIViewController+DismissKeyboard.m in Sources */,
-				041DF0631BC4D90300C6F324 /* DataConvert.m in Sources */,
 				333122841B806EDC00D3D032 /* UIViewController+HUD.m in Sources */,
 				333122821B806EDC00D3D032 /* UIResponder+Router.m in Sources */,
 				333122781B806EDB00D3D032 /* TTGlobalUICommon.m in Sources */,

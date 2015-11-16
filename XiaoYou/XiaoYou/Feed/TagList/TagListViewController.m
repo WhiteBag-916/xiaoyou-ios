@@ -45,9 +45,11 @@
                                                  name:kNotification_Profile_GetProfile
                                                object:nil];
 }
+
 - (void)dealloc {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
+
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [self refreshData];

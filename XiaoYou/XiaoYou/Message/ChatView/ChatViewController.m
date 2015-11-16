@@ -1237,7 +1237,7 @@
     
     self.imagePickerVC.shouldShowSavedPhotosOnTop = NO;
     self.imagePickerVC.shouldChangeStatusBarStyle = YES;
-//    self.imagePickerVC.selection = self.picArray;
+    self.imagePickerVC.selection = self.picArray;
     self.imagePickerVC.maximumNumberOfPhotosToBeSelected = 9;
     
     // Custom toolbar items
