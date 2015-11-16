@@ -146,7 +146,7 @@
             NSMutableArray *arr = [NSMutableArray array];
             [arr addObject:message.object];
             ActivityDetailModel *model = arr[0];
-            
+            _activityDetailModel = model;
             //构造日程
             UserSchedulingInfo *info = [UserSchedulingInfo new];
             info.type = @"activity";
