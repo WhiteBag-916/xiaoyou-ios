@@ -10,20 +10,18 @@
 
 @interface InterestSeperatorCell()
 @property (strong, nonatomic) UIImageView *labelLine;
-@property (strong, nonatomic) UIView *line;
+@property (strong, nonatomic) UIImageView *line;
 @property (strong, nonatomic) UILabel *timeLabel;
 @end
 
 @implementation InterestSeperatorCell
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
-        _line = [[UIView alloc] init];
+        _line = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"haokan_bottom_line"]];
         [self addSubview:_line];
         [_line mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.right.centerY.equalTo(self);
-            make.height.mas_equalTo(0.5);
         }];
-        _line.backgroundColor = [UIColor hexChangeFloat:@"b3b3b3"];
         
         _labelLine = [[UIImageView alloc] init];
         [self addSubview:_labelLine];

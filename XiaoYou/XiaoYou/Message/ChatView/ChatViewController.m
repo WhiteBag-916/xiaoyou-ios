@@ -1202,7 +1202,9 @@
             }
             [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault animated:YES];
         };
+
         _imagePickerVC.didFinishBlock = ^(NSArray *info) {
+             [blockSelf dismissViewControllerAnimated:YES completion:nil];
             [blockSelf.picArray setArray:info];
             //上传图片
             
@@ -1216,7 +1218,6 @@
                 }];
             });
             
-            [blockSelf dismissViewControllerAnimated:YES completion:nil];
             [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault animated:YES];
         };
     }

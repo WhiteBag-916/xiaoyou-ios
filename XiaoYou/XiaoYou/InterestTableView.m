@@ -75,6 +75,13 @@
         if (message.isSuccess) {
             if ([self isHeaderRefresh]) {
                 [_dataArray removeAllObjects];
+                
+                //更新消息列表的数据
+                if ([message.object count] > 0) {
+                    NewsList *model = [(InterestModel *)message.object[0] newsList][0];
+                    [self updateMessageList:model];
+                }
+                
             }
             [self hiddenFooter:false];
             if (message.object != nil) {
@@ -94,6 +101,20 @@
             [self stopLoadMoreData];
         }
     }];
+}
+
+- (void)updateMessageList:(NewsList *)model {
+    NSMutableDictionary * ext = [NSMutableDictionary dictionaryWithDictionary:[[NSUserDefaults standardUserDefaults] objectForKey:@"GoodLookMessage"]];
+    NSMutableDictionary *pushExt;
+    if (nil != ext[@"em_apns_ext"]) {
+        pushExt = [NSMutableDictionary dictionaryWithDictionary:ext[@"em_apns_ext"]];
+        pushExt[@"em_push_title"] = model.title;
+    } else {
+        pushExt = [@{@"em_push_title":model.title} mutableCopy];
+    }
+    [ext setObject:pushExt forKey:@"em_apns_ext"];
+    [ext setObject:[NSNumber numberWithDouble:model.publishTime] forKey:@"timestamp"];
+    [[NSUserDefaults standardUserDefaults] setObject:ext forKey:@"GoodLookMessage"];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -119,7 +140,10 @@
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.row % 2 == 0) {
-        return 52;
+        if (indexPath.row == 0) {
+            return 60;
+        }
+        return 40;
     }
     return [tableView fd_heightForCellWithIdentifier:KInterestCell cacheByIndexPath:indexPath configuration:^(id cell) {
         [(InterestTableViewCell *)cell setData:[(InterestModel *)_dataArray[indexPath.section] newsList][indexPath.row/2]];
