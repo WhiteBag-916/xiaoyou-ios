@@ -66,7 +66,7 @@
 }
 
 - (void)initImgs {
-    
+    _hasSaveBtn = true;
     _contentView = [[UIView alloc] init];
     [self addSubview:_contentView];
     _contentView.clipsToBounds = true;
@@ -252,6 +252,8 @@
     browser.currentImageIndex = index;
     
     browser.delegate = self;
+    
+    browser.hasSaveBtn = _hasSaveBtn;
     
     [browser show];
 }

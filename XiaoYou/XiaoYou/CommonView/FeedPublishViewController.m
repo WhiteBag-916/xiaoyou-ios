@@ -231,6 +231,7 @@
 
 - (void)initImgView {
     _imgGroup = [[FeedImageGroup alloc] initWithCamera];
+    _imgGroup.hasSaveBtn = false;
     [_contentView addSubview:_imgGroup];
     [_imgGroup mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.mas_equalTo(KIMGGROUPMARGIN_LEFT);
