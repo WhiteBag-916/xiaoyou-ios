@@ -323,9 +323,9 @@
                                                         }];
     YCommonActionSheet *sheet;
     if (_isAuthor) {
-        sheet = [[YCommonActionSheet alloc] initWithType:@[item1, item2, item3] title:nil];
+        sheet = [[YCommonActionSheet alloc] initWithType:@[item1, item2, item3] haveShareButton:YES];
     } else {
-        sheet = [[YCommonActionSheet alloc] initWithType:@[item1, item2] title:nil];
+        sheet = [[YCommonActionSheet alloc] initWithType:@[item1, item2] haveShareButton:YES];
     }
     [sheet show];
 }

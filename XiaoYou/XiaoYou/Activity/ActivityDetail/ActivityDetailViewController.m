@@ -91,7 +91,7 @@
         [moreArray addObject:item2];
     }
     
-    YCommonActionSheet *sheet = [[YCommonActionSheet alloc] initWithType:moreArray title:nil];
+    YCommonActionSheet *sheet = [[YCommonActionSheet alloc] initWithType:moreArray haveShareButton:YES];
     [sheet show];
 }
 

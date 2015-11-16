@@ -65,7 +65,7 @@
                                                                 [YCommonReport report];
                                                             }];
         
-        YCommonActionSheet *sheet = [[YCommonActionSheet alloc] initWithType:@[item1, item2] title:nil];
+        YCommonActionSheet *sheet = [[YCommonActionSheet alloc] initWithType:@[item1, item2] haveShareButton:YES];
         [sheet show];
     }
 }
