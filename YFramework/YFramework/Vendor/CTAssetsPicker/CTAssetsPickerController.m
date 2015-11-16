@@ -521,7 +521,7 @@
 - (void)setupButtons
 {
     self.navigationItem.rightBarButtonItem =
-    [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Done", nil)
+    [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"完成", nil)
                                      style:UIBarButtonItemStylePlain
                                     target:self
                                     action:@selector(finishPickingAssets:)];

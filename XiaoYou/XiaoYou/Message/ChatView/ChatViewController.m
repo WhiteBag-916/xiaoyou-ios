@@ -1205,13 +1205,16 @@
         _imagePickerVC.didFinishBlock = ^(NSArray *info) {
             [blockSelf.picArray setArray:info];
             //上传图片
-            [info enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-                ALAsset *representation = obj;
-                UIImage *img = [UIImage imageWithCGImage:representation.defaultRepresentation.fullResolutionImage
-                                                   scale:representation.defaultRepresentation.scale
-                                             orientation:(UIImageOrientation)representation.defaultRepresentation.orientation];
-                [blockSelf sendImageMessage:img];
-            }];
+            
+            dispatch_async(dispatch_get_global_queue(0, 0), ^{
+                [info enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+                    ALAsset *representation = obj;
+                    UIImage *img = [UIImage imageWithCGImage:representation.defaultRepresentation.fullResolutionImage
+                                                       scale:representation.defaultRepresentation.scale
+                                                 orientation:(UIImageOrientation)representation.defaultRepresentation.orientation];
+                    [blockSelf sendImageMessage:img];
+                }];
+            });
             
             [blockSelf dismissViewControllerAnimated:YES completion:nil];
             [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault animated:YES];
