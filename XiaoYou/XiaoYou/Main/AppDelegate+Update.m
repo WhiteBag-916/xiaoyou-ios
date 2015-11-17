@@ -53,9 +53,10 @@
             }
             else
             {
-                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"更新" message:@"此版本为最新版本" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
-                alert.tag = 10001;
-                [alert show];
+//                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"更新" message:@"此版本为最新版本" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+//                alert.tag = 10001;
+//                [alert show];
+                return;
             }
         }
     }
