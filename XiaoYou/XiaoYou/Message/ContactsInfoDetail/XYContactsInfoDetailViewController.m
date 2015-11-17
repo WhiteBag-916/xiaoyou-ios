@@ -174,13 +174,13 @@
     
     if ([[ContactManager sharedInstance] isFriendRelationShip:_uid])
     {
-        YCommonActionSheet *sheet = [[YCommonActionSheet alloc] initWithType:@[item1, item2, item3, item4] title:nil];
+        YCommonActionSheet *sheet = [[YCommonActionSheet alloc] initWithType:@[item1, item2, item3, item4] haveShareButton:YES];
         [sheet show];
     }
     else
     {
         
-        YCommonActionSheet *sheet = [[YCommonActionSheet alloc] initWithType:@[item1, item4] title:nil];
+        YCommonActionSheet *sheet = [[YCommonActionSheet alloc] initWithType:@[item1, item4] haveShareButton:YES];
         [sheet show];
     }
     

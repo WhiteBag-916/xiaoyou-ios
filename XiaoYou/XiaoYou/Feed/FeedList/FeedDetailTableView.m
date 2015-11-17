@@ -201,7 +201,7 @@
                                                             [self deleteFeed];
                                                         }];
     
-    YCommonActionSheet *sheet = [[YCommonActionSheet alloc] initWithType:[_feedInfo.author.uid isEqualToString:[[ProvisionManager sharedInstance] getUserId]]?@[item1, item3]:@[item1, item2] title:nil];
+    YCommonActionSheet *sheet = [[YCommonActionSheet alloc] initWithType:[_feedInfo.author.uid isEqualToString:[[ProvisionManager sharedInstance] getUserId]]?@[item1, item3]:@[item1, item2] haveShareButton:YES];
     [sheet show];
 }
 - (void)deleteFeed {

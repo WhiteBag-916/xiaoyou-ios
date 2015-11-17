@@ -15,6 +15,9 @@
 #import "UserSchedulingInfo.h"
 #import "ProvisionManager.h"
 #import "ProfileInfo.h"
+#import "ActivityImageTextModels.h"
+#import "ActivityOrganizer.h"
+
 @interface ActivityDetailViewController ()
 
 @property (nonatomic,strong) ActivityDetailListView *detailListView;
@@ -23,7 +26,9 @@
 @property (nonatomic,copy) NSString *publishID;
 @property (nonatomic,assign) BOOL   isEnroll;
 
-@property (nonatomic,assign) BOOL isShowMore;
+@property (nonatomic,assign) BOOL isShowOutInMore;
+
+@property (nonatomic, strong) ActivityDetailModel *activityDetailModel;
 
 @end
 
@@ -35,8 +40,8 @@
     self.view.backgroundColor = [UIColor whiteColor];
     [self showCustomNavigationBackButton];
     
-    [self IsShowCustomNavigationMoreButton:NO];
-    _isShowMore = NO;
+    [self showCustomNavigationMoreButton];
+    _isShowOutInMore = NO;
     
     [self.detailListView loadData];
     [self setTitle:@"活动详情"];
@@ -58,15 +63,35 @@
 
 
 - (void)onNavigationRightButtonClicked {
-    if (!_isShowMore) {
+    if (nil == _activityDetailModel) {
         return;
     }
-    YActionSheetItem *item1 = [YActionSheetItem itemWithTitle:@"我要退出" type:YCommonActionSheetItemTypeCenterCommon block:^(NSInteger checkNum) {
-        [self exitActivity];
-        
-    }];
+    NSMutableArray *moreArray = [[NSMutableArray alloc] init];
     
-    YCommonActionSheet *sheet = [[YCommonActionSheet alloc] initWithType:@[item1] title:nil];
+    NSArray *imageTextModels = _activityDetailModel.activityPublishedDto.activityImageTextModels;
+    //内容
+    NSString *content;
+    for (ActivityImageTextModels *imageText in imageTextModels) {
+        
+        if ([imageText.type isEqualToString:@"text"]) {
+            content = imageText.content;
+            
+            break;
+        }
+    }
+    
+    YActionSheetItem *item1 = [YActionSheetItem itemWithType:YCommonActionSheetItemTypeShareActivity title:@"分享活动至" extraData:@{@"name":_activityDetailModel.activityPublishedDto.activityPublishedModel.name, @"content":content, @"pic":_activityDetailModel.activityOrganizer.headPic,@"activityId":[NSString stringWithFormat:@"%g", _activityDetailModel.activityPublishedDto.activityPublishedModel.activityPublishedModelIdentifier]}];
+    [moreArray addObject:item1];
+    
+    if (_isShowOutInMore) {
+        YActionSheetItem *item2 = [YActionSheetItem itemWithTitle:@"我要退出" type:YCommonActionSheetItemTypeCommon block:^(NSInteger checkNum) {
+            [self exitActivity];
+            
+        }];
+        [moreArray addObject:item2];
+    }
+    
+    YCommonActionSheet *sheet = [[YCommonActionSheet alloc] initWithType:moreArray haveShareButton:YES];
     [sheet show];
 }
 
@@ -124,7 +149,7 @@
             NSMutableArray *arr = [NSMutableArray array];
             [arr addObject:message.object];
             ActivityDetailModel *model = arr[0];
-            
+            _activityDetailModel = model;
             //构造日程
             UserSchedulingInfo *info = [UserSchedulingInfo new];
             info.type = @"activity";
@@ -137,8 +162,7 @@
                 [_joinInBtn setTitle:@"我要加入" forState:UIControlStateNormal];
                 _joinInBtn.enabled = YES;
                 _joinInBtn.backgroundColor = KCOLOR_g1;
-                [self IsShowCustomNavigationMoreButton:NO];
-                _isShowMore = NO;
+                _isShowOutInMore = NO;
                 //未加入
                 //抛通知告知日程删除
                 NSDictionary *dic = @{@"state":@"del", @"info":info};
@@ -150,8 +174,7 @@
                 [_joinInBtn setTitle:@"我已参加" forState:UIControlStateNormal];
                 _joinInBtn.backgroundColor = KCOLOR_g2;
                 _joinInBtn.enabled = NO;
-                [self IsShowCustomNavigationMoreButton:YES];
-                _isShowMore = YES;
+                _isShowOutInMore = YES;
                 //已加入
                 //抛通知告知日程添加
                 NSDictionary *dic = @{@"state":@"add", @"info":info};
@@ -163,22 +186,19 @@
                 [_joinInBtn setTitle:@"报名结束" forState:UIControlStateNormal];
                 _joinInBtn.enabled = NO;
                 _joinInBtn.backgroundColor = KCOLOR_g2;
-                [self IsShowCustomNavigationMoreButton:YES];
-                 _isShowMore = YES;
+                 _isShowOutInMore = YES;
             }
             else if ([model.enrollStatus isEqualToString:@"enroll_auditing"]) {
                 [_joinInBtn setTitle:@"正在审核" forState:UIControlStateNormal];
                 _joinInBtn.enabled = NO;
                 _joinInBtn.backgroundColor = KCOLOR_g2;
-                [self IsShowCustomNavigationMoreButton:YES];
-                 _isShowMore = YES;
+                 _isShowOutInMore = YES;
             }
             else if ([model.enrollStatus isEqualToString:@"self_activity"]) {
                 _joinInBtn.enabled = YES;
                 _joinInBtn.backgroundColor = KCOLOR_g2;
                 [_joinInBtn setTitle:@"我已参加" forState:UIControlStateNormal];
-                [self IsShowCustomNavigationMoreButton:NO];
-                 _isShowMore = NO;
+                 _isShowOutInMore = NO;
             }
             //[_detailListView loadData];
         }

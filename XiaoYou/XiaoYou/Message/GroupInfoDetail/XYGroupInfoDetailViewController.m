@@ -137,7 +137,7 @@ NSString *const kXYGroupInfoDetailViewController = @"XYGroupInfoDetailViewContro
     {
         YActionSheetItem *item1 = [YActionSheetItem itemWithType:YCommonActionSheetItemTypeShareOrganization title:@"分享社团名片至" extraData:_shareData];
         
-        YCommonActionSheet *sheet = [[YCommonActionSheet alloc] initWithType:@[item1, item2, item3] title:nil];
+        YCommonActionSheet *sheet = [[YCommonActionSheet alloc] initWithType:@[item1, item2, item3] haveShareButton:YES];
         [sheet show];
     }
     

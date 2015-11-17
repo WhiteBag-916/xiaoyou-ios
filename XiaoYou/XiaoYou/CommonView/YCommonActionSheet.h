@@ -16,11 +16,14 @@ typedef NS_ENUM(NSInteger, YCommonActionItemSheetType) {
     YCommonActionSheetItemTypeSwitch,
     YCommonActionSheetItemTypeCenterCommon,
     YCommonActionSheetItemTypeReport,
+    YCommonActionSheetItemTypeShareActivity,
 };
 
 typedef NS_ENUM(NSInteger, YShareType) {
     YShareTypeToWechatSession=100,   //微信好友
     YShareTypeToWechatTimeline,     //微信朋友圈
+    YShareTypeToQQ,     //QQ
+    YShareTypeToQZone,     //QQ空圈
 };
 
 typedef void(^ActionSheetItemBlock)(NSInteger checkNum);
@@ -46,6 +49,8 @@ typedef void(^ActionSheetItemBlock)(NSInteger checkNum);
 @end
 
 @interface YCommonActionSheet : YView
+- (instancetype)initWithType:(NSArray *)items;
 - (instancetype)initWithType:(NSArray *)items title:(NSString *)title;
+- (instancetype)initWithType:(NSArray *)items haveShareButton:(BOOL)haveShareButton;
 - (void)show;
 @end
