@@ -171,14 +171,15 @@
     _placeLabel.text = shopModel.address;
     _placeLabel.font = CONTENT_FONT(12);
     _placeLabel.textColor = KCOLOR_W1;
+    _placeLabel.numberOfLines = 0;
     _placeLabel.textAlignment = NSTextAlignmentLeft;
     _placeLabel.backgroundColor = [UIColor clearColor];
     [backgroundView addSubview:_placeLabel];
     [_placeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(_headImageView.mas_right).offset(SCALE_NUM(12));
-        make.bottom.equalTo(_headImageView.mas_bottom).offset(SCALE_NUM(-16));
-        make.right.equalTo(backgroundView).offset(SCALE_NUM(15));
-        make.height.mas_equalTo(12);
+        make.bottom.equalTo(_headImageView.mas_bottom).offset(SCALE_NUM(-10));
+        make.right.equalTo(backgroundView).offset(SCALE_NUM(-15));
+        make.height.mas_equalTo(35);
     }];
     
     //分割线
