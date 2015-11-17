@@ -17,6 +17,7 @@ typedef NS_ENUM(NSInteger, YCommonActionItemSheetType) {
     YCommonActionSheetItemTypeCenterCommon,
     YCommonActionSheetItemTypeReport,
     YCommonActionSheetItemTypeShareActivity,
+    YCommonActionSheetItemTypeShareOrganizationFeed,
 };
 
 typedef NS_ENUM(NSInteger, YShareType) {

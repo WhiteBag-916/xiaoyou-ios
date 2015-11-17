@@ -71,16 +71,19 @@
     NSArray *imageTextModels = _activityDetailModel.activityPublishedDto.activityImageTextModels;
     //内容
     NSString *content;
+    NSString *pic = @"favicon.ico";
     for (ActivityImageTextModels *imageText in imageTextModels) {
         
         if ([imageText.type isEqualToString:@"text"]) {
             content = imageText.content;
-            
-            break;
+        }
+        
+        if ([imageText.type isEqualToString:@"image"]) {
+            pic = imageText.content;
         }
     }
     
-    YActionSheetItem *item1 = [YActionSheetItem itemWithType:YCommonActionSheetItemTypeShareActivity title:@"分享活动至" extraData:@{@"name":_activityDetailModel.activityPublishedDto.activityPublishedModel.name, @"content":content, @"pic":_activityDetailModel.activityOrganizer.headPic,@"activityId":[NSString stringWithFormat:@"%g", _activityDetailModel.activityPublishedDto.activityPublishedModel.activityPublishedModelIdentifier]}];
+    YActionSheetItem *item1 = [YActionSheetItem itemWithType:YCommonActionSheetItemTypeShareActivity title:@"分享活动至" extraData:@{@"name":_activityDetailModel.activityPublishedDto.activityPublishedModel.name, @"content":content, @"pic":pic,@"activityId":[NSString stringWithFormat:@"%g", _activityDetailModel.activityPublishedDto.activityPublishedModel.activityPublishedModelIdentifier]}];
     [moreArray addObject:item1];
     
     if (_isShowOutInMore) {

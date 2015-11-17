@@ -39,7 +39,7 @@
         [YUtils hiddenProgressHUD];
         if (message.isSuccess) {
             ProfileInfo * model = message.object;
-            _shareData = @{model.uid:@"userId", @"name":model.userName, @"pic":model.headPic, @"school":model.schoolName};
+            _shareData = @{@"userId": model.uid, @"name":model.userName, @"pic":(model.headPic.length>0)?model.headPic:@"favicon.ico", @"school":model.schoolName};
             [_contactsInfoDetailTableView refreshTableView:model];
             
             _uid = model.uid;
