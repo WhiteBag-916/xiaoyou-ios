@@ -22,6 +22,7 @@
 #import "YCommonReport.h"
 #import "FeedListViewController.h"
 #import "ProfilePublishViewController.h"
+#import "GroupModel.h"
 
 #define KPAGENUM 10
 
@@ -69,10 +70,18 @@
 
 - (void)dealData:(FeedInfo *)info {
     _feedInfo = info;
-    NSString *tag = (_feedInfo.tags.count == 0?@"校友观点":[_feedInfo.tags[0] name]);
     NSString *content = (_feedInfo.feed.content.length == 0?@"":_feedInfo.feed.content);
-    NSString *img = _feedInfo.feed.img.length > 0?[_feedInfo.feed.img componentsSeparatedByString:@","][0]:@"";
-    _shareData = [NSMutableDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"%d", (int)_feedInfo.feed.feedIdentifier], @"feedId", tag,@"tag",content,@"content",img, @"pic", nil];
+    
+    if (_feedInfo.groupModels.count > 0) {
+        GroupModel *groupModel = _feedInfo.groupModels[0];
+        NSString *img = _feedInfo.feed.img.length > 0?[_feedInfo.feed.img componentsSeparatedByString:@","][0]:groupModel.groupIcon;
+        img = (img.length>0)?img:@"favicon.ico";
+        _shareData = [NSMutableDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"%d", (int)_feedInfo.feed.feedIdentifier], @"feedId", groupModel.groupName,@"name",content,@"content",img, @"pic", nil];
+    } else {
+        NSString *tag = (_feedInfo.tags.count == 0?@"校友观点":[_feedInfo.tags[0] name]);
+        NSString *img = _feedInfo.feed.img.length > 0?[_feedInfo.feed.img componentsSeparatedByString:@","][0]:@"favicon.ico";
+        _shareData = [NSMutableDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"%d", (int)_feedInfo.feed.feedIdentifier], @"feedId", tag,@"tag",content,@"content",img, @"pic", nil];
+    }
     
     _commentListArray = [NSMutableArray arrayWithArray:info.commentListItems];
     if (_commentListArray.count < KPAGENUM) {
@@ -186,8 +195,8 @@
     [self.parent openInputWithId:item.author.uid name:item.author.name];
 }
 - (void)openTool {
-    
-    YActionSheetItem *item1 = [YActionSheetItem itemWithType:YCommonActionSheetItemTypeShareFeed title:@"分享这条动态至" extraData:_shareData];
+    YCommonActionItemSheetType type = (_feedInfo.groupModels.count > 0)?YCommonActionSheetItemTypeShareOrganizationFeed:YCommonActionSheetItemTypeShareFeed;
+    YActionSheetItem *item1 = [YActionSheetItem itemWithType:type title:@"分享这条动态至" extraData:_shareData];
     
     
     YActionSheetItem *item2 = [YActionSheetItem itemWithTitle:@"举报"

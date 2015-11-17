@@ -21,7 +21,7 @@
 #import "ProfileInfo.h"
 #import "YCommonReport.h"
 #import "RespectExpandImg.h"
-
+#import "GroupModel.h"
 
 #define KBOTTOMHEIGHT SCALE_NUM(25)                 //社团和feed列表中bottom的高度
 #define KSHAREWIDTH SCALE_NUM(25)                   //分享按钮点击区域的大小
@@ -48,6 +48,7 @@
 @property (nonatomic, strong)            FeedInfo *info;
 @property (nonatomic, strong)            NSMutableDictionary *shareData;
 @property (nonatomic, assign)            BOOL isAuthor;
+@property (nonatomic, assign)            BOOL isOrganization;//是否是社团
 @end
 
 @implementation FeedCellBottomView
@@ -152,12 +153,22 @@
     NSString *authorId;
     if (_type == FeedListType || _type == FeedOrganizationType) {
         FeedInfo *data = inData;
-        NSString *tag = (data.tags.count == 0?@"校友观点":[data.tags[0] name]);
         _myInfo = data.feed;
-        NSString *content = (data.feed.content.length == 0?@"":data.feed.content);
-        NSString *img = data.feed.img.length > 0?[data.feed.img componentsSeparatedByString:@","][0]:@"";
         _info = data;
-        _shareData = [NSMutableDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"%d", (int)data.feed.feedIdentifier], @"feedId", tag,@"tag",content,@"content",img, @"pic", nil];
+        NSString *content = (data.feed.content.length == 0?@"":data.feed.content);
+        if (data.groupModels.count > 0) {
+            GroupModel *groupModel = data.groupModels[0];
+            NSString *img = data.feed.img.length > 0?[data.feed.img componentsSeparatedByString:@","][0]:groupModel.groupIcon;
+            img = (img.length>0)?img:@"favicon.ico";
+            _shareData = [NSMutableDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"%d", (int)data.feed.feedIdentifier], @"feedId", groupModel.groupName,@"name",content,@"content",img, @"pic", nil];
+            _isOrganization = YES;
+        } else {
+            NSString *tag = (data.tags.count == 0?@"校友观点":[data.tags[0] name]);
+            NSString *img = data.feed.img.length > 0?[data.feed.img componentsSeparatedByString:@","][0]:@"favicon.ico";
+            _shareData = [NSMutableDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"%d", (int)data.feed.feedIdentifier], @"feedId", tag,@"tag",content,@"content",img, @"pic", nil];
+            _isOrganization = NO;
+        }
+        
         _respectNum.text = [NSString stringWithFormat:@"%d", (int)data.feed.praiseCount];
         _commentNum.text = [NSString stringWithFormat:@"%d", (int)data.feed.commentCount];
         authorId = data.author.uid;
@@ -308,7 +319,8 @@
 }
 
 - (void)openShare {
-    YActionSheetItem *item1 = [YActionSheetItem itemWithType:YCommonActionSheetItemTypeShareFeed title:@"分享这条动态至" extraData:_shareData];
+    YCommonActionItemSheetType type = _isOrganization?YCommonActionSheetItemTypeShareOrganizationFeed:YCommonActionSheetItemTypeShareFeed;
+    YActionSheetItem *item1 = [YActionSheetItem itemWithType:type title:@"分享这条动态至" extraData:_shareData];
     
     
     YActionSheetItem *item2 = [YActionSheetItem itemWithTitle:@"举报"
