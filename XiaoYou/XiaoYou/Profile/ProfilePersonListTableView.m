@@ -164,83 +164,65 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     ProfilePersonListTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kProfilePersonListTableViewCell];
-//    ProfilePersonListTableViewCell *cell = [[ProfilePersonListTableViewCell alloc] init];
     BOOL showGender = (ProfilePersonListTypeFind == _type);
-    
-    // 判断为空进行初始化  --（当拉动页面显示超过主页面内容的时候就会重用之前的cell，而不会再次初始化）
-    
-    
-    [cell removeFromSuperview];
-//        while ([cell.contentView.subviews lastObject] != nil) {
-//            [(UIView *)[cell.contentView.subviews lastObject] removeFromSuperview];
-//        }
-    
-    
     [cell setData:_personListArray[indexPath.row] needShowGender:showGender];
     return cell;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-//    if (ProfilePersonListTypeFind == _type) {
-//        return KFIND_CELLHEIGHT;
-//    }
-////    return KCELLHEIGHT;
-//    else
-//    {
-        Author * author = _personListArray[indexPath.row];
-        ProfileInfo * model = [[ProfileInfo alloc] init];
-        model.propetiesCommon = author.propetiesCommon;
-        model.tagsCommon = author.tagsCommon;
-        
-        if (model.tagsCommon.count > 0)
+    Author * author = _personListArray[indexPath.row];
+    ProfileInfo * model = [[ProfileInfo alloc] init];
+    model.propetiesCommon = author.propetiesCommon;
+    model.tagsCommon = author.tagsCommon;
+    
+    if (model.tagsCommon.count > 0)
+    {
+        CGFloat height;
+        if (model.propetiesCommon.count > 0)
         {
-            CGFloat height;
-            if (model.propetiesCommon.count > 0)
-            {
-                height = SCALE_NUM(120);
-            }
-            else
-            {
-                height = SCALE_NUM(95);
-            }
-            
-            for (int i = 0; i < model.tagsCommon.count; i++)
-            {
-                CGFloat width;
-                Tags * tag = model.tagsCommon[i];
-                NSDictionary *attributes = @{NSFontAttributeName:[UIFont systemFontOfSize:SCALE_NUM(10)]};
-                CGSize textSize = [tag.name boundingRectWithSize:CGSizeMake(SCALE_NUM(300), 14) options:NSStringDrawingTruncatesLastVisibleLine attributes:attributes context:nil].size;
-                
-                width += SCALE_NUM(10);
-                width += textSize.width + SCALE_NUM(15);
-                
-                CGFloat  limitWidth = SCREEN_WIDTH - SCALE_NUM(115);
-                if (width > limitWidth)
-                {
-                    height += SCALE_NUM(20);
-                    width = textSize.width + SCALE_NUM(15);
-                }
-                
-            }
-            return height;
+            height = SCALE_NUM(120);
         }
         else
         {
-            if (model.propetiesCommon.count <= 0)
-            {
-                if (ProfilePersonListTypeFind == _type || ProfilePersonListTypeNoticePerson == _type)
-                {
-                    return SCALE_NUM(65);
-                }
-                else
-                {
-                    return 0;
-                }
-                
-            }
-            return SCALE_NUM(95);
+            height = SCALE_NUM(95);
         }
-//    }
+        
+        for (int i = 0; i < model.tagsCommon.count; i++)
+        {
+            CGFloat width;
+            Tags * tag = model.tagsCommon[i];
+            NSDictionary *attributes = @{NSFontAttributeName:[UIFont systemFontOfSize:SCALE_NUM(10)]};
+            CGSize textSize = [tag.name boundingRectWithSize:CGSizeMake(SCALE_NUM(300), SCALE_NUM(14)) options:NSStringDrawingTruncatesLastVisibleLine attributes:attributes context:nil].size;
+            
+            width += SCALE_NUM(10);
+            width += SCALE_NUM(textSize.width + 15);
+            
+            CGFloat  limitWidth = SCALE_NUM(SCREEN_WIDTH - 115);
+            if (width > limitWidth)
+            {
+                height += SCALE_NUM(20);
+                width = SCALE_NUM(textSize.width + 15);
+            }
+            
+        }
+        return height;
+    }
+    else
+    {
+        if (model.propetiesCommon.count <= 0)
+        {
+            if (ProfilePersonListTypeFind == _type || ProfilePersonListTypeNoticePerson == _type)
+            {
+                return SCALE_NUM(65);
+            }
+            else
+            {
+                return 0;
+            }
+            
+        }
+        return SCALE_NUM(95);
+    }
     
 }
 @end

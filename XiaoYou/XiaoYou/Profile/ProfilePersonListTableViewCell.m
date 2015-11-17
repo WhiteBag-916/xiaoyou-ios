@@ -46,6 +46,8 @@ NSString *const kProfilePersonListTableViewCell = @"kProfilePersonListTableViewC
 
 @property (nonatomic, strong) TagsCommonView * tagsCommonView;
 
+@property (nonatomic, strong) UIView * backView;
+
 @end
 
 @implementation ProfilePersonListTableViewCell
@@ -110,10 +112,10 @@ NSString *const kProfilePersonListTableViewCell = @"kProfilePersonListTableViewC
 //        _tagView.tagContent.maxLines = 2;
 //        self.clipsToBounds = true;
         
-        UIView * backView = [[UIView alloc] init];
-        backView.backgroundColor = [UIColor hexChangeFloat:@"F9F9F9"];
-        [self.contentView addSubview:backView];
-        [backView mas_makeConstraints:^(MASConstraintMaker *make) {
+        _backView = [[UIView alloc] init];
+        _backView.backgroundColor = [UIColor hexChangeFloat:@"F9F9F9"];
+        [self.contentView addSubview:_backView];
+        [_backView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.top.equalTo(_face.mas_bottom);
             make.left.equalTo(_userName.mas_left);
             make.trailing.mas_equalTo(SCALE_NUM(-12));
@@ -122,7 +124,7 @@ NSString *const kProfilePersonListTableViewCell = @"kProfilePersonListTableViewC
         
         _tagsCommonView = [[TagsCommonView alloc] init];
         _tagsCommonView.backgroundColor = [UIColor hexChangeFloat:@"F9F9F9"];
-        [backView addSubview:_tagsCommonView];
+        [_backView addSubview:_tagsCommonView];
         [_tagsCommonView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.top.bottom.right.mas_equalTo(0);
             make.left.mas_equalTo(SCALE_NUM(12));
@@ -151,7 +153,29 @@ NSString *const kProfilePersonListTableViewCell = @"kProfilePersonListTableViewC
     return YES;
 }
 
+
+//-(TagsCommonView *)tagsCommonView
+//{
+//    if (!_tagsCommonView) {
+//        _tagsCommonView = [[TagsCommonView alloc] init];
+//        _tagsCommonView.backgroundColor = [UIColor hexChangeFloat:@"F9F9F9"];
+//        [_backView addSubview:_tagsCommonView];
+//        [_tagsCommonView mas_makeConstraints:^(MASConstraintMaker *make) {
+//            make.top.bottom.right.mas_equalTo(0);
+//            make.left.mas_equalTo(SCALE_NUM(12));
+//        }];
+//    }
+//    return _tagsCommonView;
+//}
+
+
 - (void)setData:(Author *)author needShowGender:(BOOL)needShowGender {
+    
+//    [_tagsCommonView removeFromSuperview];
+//    _tagsCommonView = nil;
+//    
+//    [self tagsCommonView];
+    
     _myAuthor = author;
     [_face setData:author.uid imageUrl:author.headPic];
     _userName.text = author.name;
