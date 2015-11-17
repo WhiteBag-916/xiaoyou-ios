@@ -26,7 +26,6 @@
 		043B453A1BE87A2000050B32 /* red_point_bell@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 043B45381BE87A2000050B32 /* red_point_bell@2x.png */; };
 		043B453B1BE87A2000050B32 /* red_point_bell@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 043B45391BE87A2000050B32 /* red_point_bell@3x.png */; };
 		043B45471BE8C08000050B32 /* ScheduleNotifyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 043B45461BE8C08000050B32 /* ScheduleNotifyCell.m */; };
-		044792BD1BB14DF40053412A /* commenTagList.m in Sources */ = {isa = PBXBuildFile; fileRef = 044792BC1BB14DF40053412A /* commenTagList.m */; };
 		0447A39E1BD7602000341684 /* WhoJoinInController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0447A39D1BD7602000341684 /* WhoJoinInController.m */; };
 		0447A3A11BD7637D00341684 /* WhoJoinInListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0447A3A01BD7637D00341684 /* WhoJoinInListView.m */; };
 		044C313E1BCC903D00E0D508 /* AvailableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 044C313D1BCC903D00E0D508 /* AvailableCell.m */; };
@@ -876,8 +875,6 @@
 		043B45391BE87A2000050B32 /* red_point_bell@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "red_point_bell@3x.png"; sourceTree = "<group>"; };
 		043B45451BE8C08000050B32 /* ScheduleNotifyCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScheduleNotifyCell.h; sourceTree = "<group>"; };
 		043B45461BE8C08000050B32 /* ScheduleNotifyCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScheduleNotifyCell.m; sourceTree = "<group>"; };
-		044792BB1BB14DF40053412A /* commenTagList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = commenTagList.h; sourceTree = "<group>"; };
-		044792BC1BB14DF40053412A /* commenTagList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = commenTagList.m; sourceTree = "<group>"; };
 		0447A39C1BD7602000341684 /* WhoJoinInController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WhoJoinInController.h; sourceTree = "<group>"; };
 		0447A39D1BD7602000341684 /* WhoJoinInController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WhoJoinInController.m; sourceTree = "<group>"; };
 		0447A39F1BD7637D00341684 /* WhoJoinInListView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WhoJoinInListView.h; sourceTree = "<group>"; };
@@ -2873,8 +2870,6 @@
 				65A703CD1B8C4EE70094D8A2 /* YFlatSwitchView.m */,
 				65CF638D1B8F0E4A00ACBB70 /* YCommonReport.h */,
 				65CF638E1B8F0E4A00ACBB70 /* YCommonReport.m */,
-				044792BB1BB14DF40053412A /* commenTagList.h */,
-				044792BC1BB14DF40053412A /* commenTagList.m */,
 				656341531BC1061500E10025 /* YStripeView.h */,
 				656341541BC1061500E10025 /* YStripeView.m */,
 				20D821A61BE0A97800C5E21C /* YCommonPickerView.h */,
@@ -5142,7 +5137,6 @@
 				6592DCDB1B806A9B004CD118 /* ContactsTableView.m in Sources */,
 				20DAE14D1B8821DD00607996 /* PerfectInformationViewController.m in Sources */,
 				333122521B806EDB00D3D032 /* MWTapDetectingView.m in Sources */,
-				044792BD1BB14DF40053412A /* commenTagList.m in Sources */,
 				042AADCC1BCB8BA00056C09F /* ApplyRemindCell.m in Sources */,
 				653199DE1B80B41C00405B72 /* ConnectTag.m in Sources */,
 				20DA17021BC7C51200A61B37 /* MGCMonthPlannerViewController.m in Sources */,

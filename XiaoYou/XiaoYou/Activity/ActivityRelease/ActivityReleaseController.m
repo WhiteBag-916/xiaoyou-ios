@@ -596,7 +596,6 @@ typedef enum : NSUInteger {
             NSLog(@"%@",message);
             
             [YUtils hiddenProgressHUD];
-//            [YUtils showTitle:message.desc hideAfter:2];
             if (message.isSuccess)
             {
                 [self sendReleaseRequest:message];

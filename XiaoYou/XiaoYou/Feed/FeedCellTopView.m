@@ -92,7 +92,6 @@
                 make.bottom.equalTo(_contactHeadImageView);
             }];
         }
-
     }
     return self;
 }
