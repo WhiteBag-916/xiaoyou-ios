@@ -6,6 +6,9 @@
 //  Copyright © 2015年 xc. All rights reserved.
 //
 
+/*
+ 各个地方需要展示时间的函数，统一处理
+ */
 #import <Foundation/Foundation.h>
 
 @interface TimeFormatterConvert : NSObject

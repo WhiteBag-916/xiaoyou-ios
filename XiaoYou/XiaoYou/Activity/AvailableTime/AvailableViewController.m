@@ -204,8 +204,6 @@
     //[self.view.window.rootViewController presentViewController:remindVC animated:YES completion:nil];
     [self.navigationController pushViewController:remindVC animated:YES needHiddenBottomBar:YES];
     
-    
-    //[self showCustomNavigationRemindButton:NO];
     [_leftNavBar setImage:[[UIImage imageNamed:@"have_time_msg"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] forState:UIControlStateNormal];
     [_leftNavBar setImage:[[UIImage imageNamed:@"have_time_msg"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] forState:UIControlStateHighlighted];
 }

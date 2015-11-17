@@ -389,73 +389,18 @@
 
 - (void)pickImage
 {
-    /*self.picker = [[UIImagePickerController alloc] init];
-    [self.picker setSourceType:UIImagePickerControllerSourceTypePhotoLibrary];
-    [self.picker setDelegate:self];
-    [self presentViewController:self.picker animated:YES completion:nil];*/
-    
-//    if (!self.picArray)
-//        self.picArray = [[NSMutableArray alloc] init];
-//    UzysAssetsPickerController *picker = [[UzysAssetsPickerController alloc] init];
-//    picker.assetsFilter = [ALAssetsFilter allPhotos];
-//    picker.maximumNumberOfSelectionVideo = 0;
-//    picker.maximumNumberOfSelectionPhoto = 9 - [self.imgGroup getImgCount];
-//    picker.delegate = self;
-//    [self presentViewController:picker animated:YES completion:NULL];
-    
     //使用新的AGI库
-    // Show saved photos on top
     self.imagePickerVC.shouldShowSavedPhotosOnTop = NO;
     self.imagePickerVC.shouldChangeStatusBarStyle = YES;
     self.imagePickerVC.selection = self.picArray;
     self.imagePickerVC.maximumNumberOfPhotosToBeSelected = 9 - self.picArray.count;
-    
-    // Custom toolbar items
-//    AGIPCToolbarItem *selectAll = [[AGIPCToolbarItem alloc] initWithBarButtonItem:[[UIBarButtonItem alloc] initWithTitle:@"选择全部" style:UIBarButtonItemStyleBordered target:nil action:nil] andSelectionBlock:^BOOL(NSUInteger index, ALAsset *asset) {
-//        return YES;
-//    }];
-//    AGIPCToolbarItem *flexible = [[AGIPCToolbarItem alloc] initWithBarButtonItem:[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil] andSelectionBlock:nil];
-//    AGIPCToolbarItem *selectOdd = [[AGIPCToolbarItem alloc] initWithBarButtonItem:[[UIBarButtonItem alloc] initWithTitle:@"选择之前" style:UIBarButtonItemStyleBordered target:nil action:nil] andSelectionBlock:^BOOL(NSUInteger index, ALAsset *asset) {
-//        return !(index % 2);
-//    }];
-//    AGIPCToolbarItem *deselectAll = [[AGIPCToolbarItem alloc] initWithBarButtonItem:[[UIBarButtonItem alloc] initWithTitle:@"全部反选" style:UIBarButtonItemStyleBordered target:nil action:nil] andSelectionBlock:^BOOL(NSUInteger index, ALAsset *asset) {
-//        return NO;
-//    }];
-//    self.imagePickerVC.toolbarItemsForManagingTheSelection = @[selectAll, flexible, selectOdd, flexible, deselectAll];
     
     [self presentViewController:self.imagePickerVC animated:YES completion:nil];
     
     // Show first assets list, modified by springox(20140503)
     [self.imagePickerVC showFirstAssetsController];
     
-    //// Show assets list with name, added by springox(20150719)
-    //[self.imagePickerVC showAssetsControllerWithName:@"Camera Roll"];
-    
 }
-
-
-#pragma mark - Assets Picker Delegate
-//-(void)uzysAssetsPickerController:(UzysAssetsPickerController *)picker didFinishPickingAssets:(NSArray *)assets
-//{
-//    [assets enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-//        ALAsset *representation = obj;
-//        UIImage *img = [UIImage imageWithCGImage:representation.defaultRepresentation.fullResolutionImage
-//                                               scale:representation.defaultRepresentation.scale
-//                                         orientation:(UIImageOrientation)representation.defaultRepresentation.orientation];
-//        
-//        //上传图片超过9张的时候会出现错误
-//        self.isPhotoSaveEnd = NO;
-//        [self savePic:img];
-//        //每次选择一张  避免多线程上传图片的时候图片模糊
-//        while (!self.isPhotoSaveEnd) {
-//            [[NSRunLoop mainRunLoop] runMode:NSDefaultRunLoopMode beforeDate:[NSDate distantFuture]];
-//        }
-//    }];
-//}
-
-//- (void)uzysAssetsPickerControllerDidExceedMaximumNumberOfSelection:(UzysAssetsPickerController *)picker {
-//    [YUtils showTitle:@"动态最多发布9张图片"];
-//}
 
 - (void)snapImage
 {

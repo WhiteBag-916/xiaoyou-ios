@@ -147,7 +147,7 @@
 
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
-    return 33;
+    return SCALE_NUM(33);
 }
 
 //返回header

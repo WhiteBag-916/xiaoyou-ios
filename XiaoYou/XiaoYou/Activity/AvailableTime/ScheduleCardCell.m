@@ -217,22 +217,6 @@
         _projectLabel3.text = @"";
         _notHaveSchedule.hidden = NO;
     }
-//    if (scheduleArr.count == 1) {
-//        [_timeLabel1 mas_updateConstraints:^(MASConstraintMaker *make) {
-//            make.bottom.mas_equalTo(SCALE_NUM(-15));
-//        }];
-//    }
-//    else if (scheduleArr.count == 2) {
-//        [_timeLabel3 mas_updateConstraints:^(MASConstraintMaker *make) {
-//            make.bottom.mas_equalTo(SCALE_NUM(0));
-//            make.height.mas_equalTo(SCALE_NUM(1));
-//        }];
-//    } else if (scheduleArr.count == 3) {
-//        [_timeLabel3 mas_updateConstraints:^(MASConstraintMaker *make) {
-//            make.bottom.mas_equalTo(SCALE_NUM(-15));
-//        }];
-//    }
-    
     if (scheduleArr.count != 0) {
         _notHaveSchedule.image = nil;
     } else

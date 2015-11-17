@@ -84,13 +84,11 @@
 
 - (void)loadNewData
 {
-    //_currentIndex = 0;
     [self sendRequest];
 }
 
 - (void)loadMoreData
 {
-    //_currentIndex = self.availableListArray.count-2;
     [self sendRequest];
 }
 

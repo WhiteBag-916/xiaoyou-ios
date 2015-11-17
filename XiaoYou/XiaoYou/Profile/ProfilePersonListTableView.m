@@ -17,6 +17,7 @@
 #import "ProfileInfo.h"
 #import "Author.h"
 #import "Tags.h"
+#import "UIDevice+DeviceType.h"
 
 #define KPAGENUM 15
 
@@ -135,7 +136,6 @@
         else
             [_personListArray addObjectsFromArray:message.object];
         
-        
         if (ProfilePersonListTypeNoticePerson != _type) {
             dataLen = [message.object count];
         }
@@ -189,7 +189,7 @@
         
         for (int i = 0; i < model.tagsCommon.count; i++)
         {
-            CGFloat width;
+            CGFloat width = 0;
             Tags * tag = model.tagsCommon[i];
             NSDictionary *attributes = @{NSFontAttributeName:[UIFont systemFontOfSize:SCALE_NUM(10)]};
             CGSize textSize = [tag.name boundingRectWithSize:CGSizeMake(SCALE_NUM(300), SCALE_NUM(14)) options:NSStringDrawingTruncatesLastVisibleLine attributes:attributes context:nil].size;
@@ -204,6 +204,9 @@
                 width = SCALE_NUM(textSize.width + 15);
             }
             
+        }
+        if ([[UIDevice getCurrentDeviceModel] containsString:@"iPhone 4"]) {
+            height -= 20;
         }
         return height;
     }

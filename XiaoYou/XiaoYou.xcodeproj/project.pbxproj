@@ -120,9 +120,6 @@
 		049FF1C01BC91777000645C8 /* RemindHeadView.m in Sources */ = {isa = PBXBuildFile; fileRef = 049FF1AE1BC91777000645C8 /* RemindHeadView.m */; };
 		049FF1C11BC91777000645C8 /* RemindListTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 049FF1B01BC91777000645C8 /* RemindListTableView.m */; };
 		049FF1C21BC91777000645C8 /* RemindViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 049FF1B21BC91777000645C8 /* RemindViewController.m */; };
-		049FF1C31BC91778000645C8 /* ScheduleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 049FF1B51BC91777000645C8 /* ScheduleCell.m */; };
-		049FF1C41BC91778000645C8 /* ScheduleListTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 049FF1B71BC91777000645C8 /* ScheduleListTableView.m */; };
-		049FF1C51BC91778000645C8 /* ScheduleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 049FF1B91BC91777000645C8 /* ScheduleViewController.m */; };
 		04C08FE41BDBF0F7002F8BAE /* TimeFormatterConvert.m in Sources */ = {isa = PBXBuildFile; fileRef = 04C08FE31BDBF0F7002F8BAE /* TimeFormatterConvert.m */; };
 		04D500681BBA94AA00C1B438 /* ActivityJoinInCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04D500671BBA94AA00C1B438 /* ActivityJoinInCell.m */; };
 		200E397C1B4E818B000B587B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 200E397B1B4E818B000B587B /* main.m */; };
@@ -976,12 +973,6 @@
 		049FF1B01BC91777000645C8 /* RemindListTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RemindListTableView.m; sourceTree = "<group>"; };
 		049FF1B11BC91777000645C8 /* RemindViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RemindViewController.h; sourceTree = "<group>"; };
 		049FF1B21BC91777000645C8 /* RemindViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RemindViewController.m; sourceTree = "<group>"; };
-		049FF1B41BC91777000645C8 /* ScheduleCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScheduleCell.h; sourceTree = "<group>"; };
-		049FF1B51BC91777000645C8 /* ScheduleCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScheduleCell.m; sourceTree = "<group>"; };
-		049FF1B61BC91777000645C8 /* ScheduleListTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScheduleListTableView.h; sourceTree = "<group>"; };
-		049FF1B71BC91777000645C8 /* ScheduleListTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScheduleListTableView.m; sourceTree = "<group>"; };
-		049FF1B81BC91777000645C8 /* ScheduleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScheduleViewController.h; sourceTree = "<group>"; };
-		049FF1B91BC91777000645C8 /* ScheduleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScheduleViewController.m; sourceTree = "<group>"; };
 		04C08FE21BDBF0F7002F8BAE /* TimeFormatterConvert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimeFormatterConvert.h; sourceTree = "<group>"; };
 		04C08FE31BDBF0F7002F8BAE /* TimeFormatterConvert.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimeFormatterConvert.m; sourceTree = "<group>"; };
 		04D500661BBA94AA00C1B438 /* ActivityJoinInCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityJoinInCell.h; sourceTree = "<group>"; };
@@ -2218,7 +2209,6 @@
 				E46CF8661BD752F300FF563B /* MerchantDetail */,
 				E482D5611BD8CA850045F4DB /* ScanfResult */,
 				049FF1AA1BC91777000645C8 /* Remind */,
-				049FF1B31BC91777000645C8 /* Schedule */,
 				20E3EF901BC9064C00B3D27E /* AvailableTime */,
 				044DA0411BBA77C900AA321A /* ActivityDetail */,
 			);
@@ -2318,19 +2308,6 @@
 				0447A3A01BD7637D00341684 /* WhoJoinInListView.m */,
 			);
 			path = Remind;
-			sourceTree = "<group>";
-		};
-		049FF1B31BC91777000645C8 /* Schedule */ = {
-			isa = PBXGroup;
-			children = (
-				049FF1B41BC91777000645C8 /* ScheduleCell.h */,
-				049FF1B51BC91777000645C8 /* ScheduleCell.m */,
-				049FF1B61BC91777000645C8 /* ScheduleListTableView.h */,
-				049FF1B71BC91777000645C8 /* ScheduleListTableView.m */,
-				049FF1B81BC91777000645C8 /* ScheduleViewController.h */,
-				049FF1B91BC91777000645C8 /* ScheduleViewController.m */,
-			);
-			path = Schedule;
 			sourceTree = "<group>";
 		};
 		200E396D1B4E818B000B587B = {
@@ -4968,7 +4945,6 @@
 				333122841B806EDC00D3D032 /* UIViewController+HUD.m in Sources */,
 				333122821B806EDC00D3D032 /* UIResponder+Router.m in Sources */,
 				333122781B806EDB00D3D032 /* TTGlobalUICommon.m in Sources */,
-				049FF1C41BC91778000645C8 /* ScheduleListTableView.m in Sources */,
 				20D8B12F1BE06F62003F7911 /* CurriculumDetailView.m in Sources */,
 				20DA16F41BC7C51200A61B37 /* MGCDateRange.m in Sources */,
 				3331225D1B806EDB00D3D032 /* NSData+EMImageContentType.m in Sources */,
@@ -5190,7 +5166,6 @@
 				65969DE21B877896001DD348 /* ProfileFeedCell.m in Sources */,
 				65A847051B81CA1900933815 /* FeedCellBottomView.m in Sources */,
 				20DA17001BC7C51200A61B37 /* MGCMonthPlannerEKViewController.m in Sources */,
-				049FF1C51BC91778000645C8 /* ScheduleViewController.m in Sources */,
 				20E122211B705ED200F90BD3 /* FeedListViewController.m in Sources */,
 				20DD115D1B8D699C00767E62 /* CNTextController.m in Sources */,
 				3346708A1B84AA3700A8628A /* ChoicePersonTableView.m in Sources */,
@@ -5205,7 +5180,6 @@
 				3331222A1B806EDB00D3D032 /* ChatSendHelper.m in Sources */,
 				209C4C731B8C662900B584DF /* AssociationsDetailViewController.m in Sources */,
 				20E034091B8471E5002E4583 /* SearchFilterTableViewCell.m in Sources */,
-				049FF1C31BC91778000645C8 /* ScheduleCell.m in Sources */,
 				3331226D1B806EDB00D3D032 /* PSTCollectionViewUpdateItem.m in Sources */,
 				333122561B806EDB00D3D032 /* EMSDWebImageCompat.m in Sources */,
 				20DAAA9C1BCD05F5006DF231 /* RubLessonTableViewCell.m in Sources */,

@@ -514,12 +514,10 @@
 
 - (void)reader:(QRCodeReaderViewController *)reader didScanResult:(NSString *)result
 {
-//    [self.navigationController popViewControllerAnimated:true];
-//    [self.navigationController pushViewController:[[GiftViewController alloc] initWithCode:result] animated:true];
     
     NSMutableArray * arr0 = [NSMutableArray arrayWithArray:[result componentsSeparatedByString:@"&"]];
     NSMutableDictionary * dic = [NSMutableDictionary dictionary];
-    if ([arr0[0] myContainsString:@"xiaoyou.com"])
+    if ([arr0[0] containsString:@"xiaoyou.com"])
     {
         [arr0 removeObject:arr0[0]];
         for (int i = 0; i < arr0.count; i++)
