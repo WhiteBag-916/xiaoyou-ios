@@ -14,7 +14,7 @@ typedef NS_ENUM(NSInteger, YCommonShareDetailType) {
     /**
      *  @author 李思良, 15-08-20
      *
-     *  @brief  分享feed，需要提供tag键（feed一个标签），content键（分享内容），pic键（发布者头像url string）
+     *  @brief  分享feed，需要提供tag键（feed一个标签），content键（分享内容），pic键（feed图，没有则校友logo）
      */
     YCommonShareDetailTypeFeed,
     /**
@@ -32,9 +32,15 @@ typedef NS_ENUM(NSInteger, YCommonShareDetailType) {
     /**
      *  @author 熊宸, 15-11-16
      *
-     *  @brief  活动社团，需要提供name键（活动名称），content键（活动简介），pic键（活动头像url string）
+     *  @brief  分享活动社团，需要提供name键（活动名称），content键（活动简介），pic键（活动头像url string）
      */
     YCommonShareDetailTypeActivity,
+    /**
+     *  @author 熊宸, 15-11-17
+     *
+     *  @brief  分享社团feed，需要提供name键（社团名称），content键（feed内容），pic键（feed图，没有则社团logo，没有则校友logo）
+     */
+    YCommonShareDetailTypeAssociationFeed,
 };
 
 @interface YCommonShare : NSObject

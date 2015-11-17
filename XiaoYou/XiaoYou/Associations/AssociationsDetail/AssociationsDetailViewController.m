@@ -56,7 +56,8 @@
 //需要调用之前设定好_shareData，参考XYGroupInfoDetailViewController
 - (void)onNavigationRightButtonClicked {
     if (nil != _groupModel) {
-        YActionSheetItem *item1 = [YActionSheetItem itemWithType:YCommonActionSheetItemTypeShareOrganization title:@"分享社团名片至" extraData:@{@"name":_groupModel.groupName, @"content":_groupModel.internalBaseClassDescription, @"pic":_groupModel.groupIcon,@"groupId":[NSString stringWithFormat:@"%g", _groupModel.internalBaseClassIdentifier]}];
+        
+        YActionSheetItem *item1 = [YActionSheetItem itemWithType:YCommonActionSheetItemTypeShareOrganization title:@"分享社团名片至" extraData:@{@"name":_groupModel.groupName, @"content":_groupModel.internalBaseClassDescription, @"pic":(_groupModel.groupIcon.length>0)?_groupModel.groupIcon:@"favicon.ico",@"groupId":[NSString stringWithFormat:@"%g", _groupModel.internalBaseClassIdentifier]}];
         
         
         YActionSheetItem *item2 = [YActionSheetItem itemWithTitle:@"举报"

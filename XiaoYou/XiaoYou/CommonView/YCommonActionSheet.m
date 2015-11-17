@@ -78,7 +78,7 @@ static const NSUInteger kYActionSheetShareHeight = 128;
     _item = item;
     if (YCommonActionSheetItemTypeCommon == item.type) {
         [self initCommon];
-    } else if (YCommonActionSheetItemTypeShareFeed == item.type || YCommonActionSheetItemTypeSharePerson == item.type || YCommonActionSheetItemTypeShareOrganization == item.type || YCommonActionSheetItemTypeShareActivity == item.type) {
+    } else if (YCommonActionSheetItemTypeShareFeed == item.type || YCommonActionSheetItemTypeSharePerson == item.type || YCommonActionSheetItemTypeShareOrganization == item.type || YCommonActionSheetItemTypeShareActivity == item.type || YCommonActionSheetItemTypeShareOrganizationFeed == item.type) {
         [self initShare];
     } else if (YCommonActionSheetItemTypeSwitch == item.type) {
         [self initSwitch];
@@ -230,6 +230,9 @@ static const NSUInteger kYActionSheetShareHeight = 128;
     }
     if (YCommonActionSheetItemTypeShareActivity == _item.type) {
         [[YCommonShare sharedInstance] shareForViewControllerWithType:YCommonShareDetailTypeActivity dataModel:_item.extraData shareType:sender.tag];
+    }
+    if (YCommonActionSheetItemTypeShareOrganizationFeed == _item.type) {
+        [[YCommonShare sharedInstance] shareForViewControllerWithType:YCommonShareDetailTypeAssociationFeed dataModel:_item.extraData shareType:sender.tag];
     }
 }
 

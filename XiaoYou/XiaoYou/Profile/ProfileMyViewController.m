@@ -374,6 +374,10 @@
 {
     self.isHeadImageUploadEnd = NO;
     self.picker = [[UIImagePickerController alloc] init];
+    [self.picker.navigationBar setTintColor:[UIColor whiteColor]];
+    [[UINavigationBar appearance] setBackgroundImage:[UIImage imageWithColor:[UIColor hexChangeFloat:@"455964"] size:CGSizeMake(SCREEN_WIDTH, 64)] forBarPosition:UIBarPositionAny barMetrics:UIBarMetricsDefault];
+    [[UINavigationBar appearance] setTitleTextAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:17],
+                                                           NSForegroundColorAttributeName:[UIColor whiteColor]}];
     [self.picker setSourceType:UIImagePickerControllerSourceTypePhotoLibrary];
     [self.picker setDelegate:self];
     [self.picker setAllowsEditing:YES];
