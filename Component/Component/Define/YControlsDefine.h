@@ -16,6 +16,7 @@
 
 #define SCALE_NUM(number)   number * SCREEN_WIDTH / 320
 
+
 #define SCALE_NUM_4_7(number)   number * 375 / 320
 
 #define KCOLOR_455A64 [UIColor hexChangeFloat:@"455A64"]

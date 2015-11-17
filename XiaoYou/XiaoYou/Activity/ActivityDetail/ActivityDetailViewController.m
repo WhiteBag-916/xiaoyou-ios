@@ -139,6 +139,7 @@
     return _detailListView;
 }
 
+//更新按钮状态
 -(void)updateJoinButtonStatus
 {
     [[ActivityManager sharedInstance] findActivityDetailInfo:0 limitEnd:0 activityPublishedId:self.publishID getDetail:YES block:^(YActionMessage *message) {
@@ -208,6 +209,7 @@
 }
 
 
+//添加自己到参加的人列表
 -(void)addMySelfToList
 {
     if (_detailListView.isContainsMe) {

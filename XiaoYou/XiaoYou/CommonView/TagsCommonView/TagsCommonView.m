@@ -59,21 +59,29 @@
         make.left.equalTo(_flagImageView.mas_right).offset(kPaddingDistance);
         make.top.equalTo(self).offset(kPaddingDistance);
     }];
-    [self.tagCollectionView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(_connectTag.mas_bottom).offset(SCALE_NUM(5));
-        make.left.equalTo(_connectTag.mas_left).offset(-kPaddingDistance/2);
-        make.trailing.mas_equalTo(0);
-//        make.height.mas_equalTo(height);
-        make.bottom.equalTo(self);
-    }];
+//    [self.tagCollectionView mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.top.equalTo(_connectTag.mas_bottom).offset(SCALE_NUM(5));
+//        make.left.equalTo(_connectTag.mas_left).offset(-kPaddingDistance/2);
+//        make.trailing.mas_equalTo(0);
+////        make.height.mas_equalTo(height);
+//        make.bottom.equalTo(self);
+//    }];
+    
+    [self tagCollectionView];
+    
     _tagCollectionView.backgroundColor = [UIColor clearColor];
     
     [_connectTag updateWithTag:_model.propetiesCommon];
     
 }
 
+
 - (void)setData:(ProfileInfo *) model
 {
+    [_tagCollectionView removeFromSuperview];
+    _tagCollectionView = nil;
+    [self tagCollectionView];
+    
     if (model.propetiesCommon.count <=0 && model.tagsCommon.count <= 0)
     {
         _flagImageView.image = nil;
@@ -109,6 +117,7 @@
     [_connectTag updateWithTag:model.propetiesCommon];
     _commonTagsArr = [NSMutableArray arrayWithArray:model.tagsCommon];
     [_tagCollectionView reloadData];
+    
 }
 
 -(UICollectionView *)tagCollectionView {
@@ -123,7 +132,15 @@
         _tagCollectionView.dataSource = self;
         _tagCollectionView.delegate = self;
         _tagCollectionView.backgroundColor = [UIColor colorWithRed:246.0/255 green:247.0/255 blue:249.0/255 alpha:0];
-        [_tagCollectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:REUSECELL];
+        [_tagCollectionView registerClass:[TagCollectionCell class] forCellWithReuseIdentifier:REUSECELL];
+        
+        [_tagCollectionView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.top.equalTo(_connectTag.mas_bottom).offset(SCALE_NUM(5));
+            make.left.equalTo(_connectTag.mas_left).offset(-kPaddingDistance/2);
+            make.trailing.mas_equalTo(0);
+            //        make.height.mas_equalTo(height);
+            make.bottom.equalTo(self);
+        }];
     }
     return _tagCollectionView;
 }
