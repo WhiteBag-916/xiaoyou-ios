@@ -14,9 +14,9 @@
 #import "MessageManager.h"
 
 static const NSUInteger kYActionSheetButtonHeight = 50;
-static const NSUInteger kYActionSheetTitleHeight = 37;
+static const NSUInteger kYActionSheetTitleHeight = 41;
 static const NSUInteger kYActionSheetCancelHeight = 49;
-
+static const NSUInteger kYActionSheetShareHeight = 128;
 
 @interface YActionSheetItem()
 @property (nonatomic,copy) NSString *title;
@@ -104,16 +104,35 @@ static const NSUInteger kYActionSheetCancelHeight = 49;
 
 - (void)initShare {
     //1
-    UILabel *label = [self addLabel:_item.title];
+    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 2, self.width, 46-2*2)];
+    label.text = _item.title;
+    label.textColor = KCOLORWHITE;
+    label.textAlignment = NSTextAlignmentCenter;
+    label.font = CONTENT_FONT(14);
     [self addSubview:label];
     
+    CGFloat offX = 30;
+    CGFloat width = 55;
+    CGFloat midX = (self.width-width*4-30*2)/3;
+    
     //2
-    UIButton *button = [self addButton:YShareTypeToWechatSession frame:CGRectMake(self.width-90, 0, 37, self.height) image:@"wechat" title:@""];
+    UIButton *button = [self addShareButton:YShareTypeToWechatSession frame:CGRectMake(offX, 46, width, 68) image:@"wexin_icon" title:@"微信好友"];
     [self addSubview:button];
+    offX += width+midX;
     
     //3
-    UIButton *button2 = [self addButton:YShareTypeToWechatTimeline frame:CGRectMake(self.width-46, 0, 37, self.height) image:@"wechat_friends" title:@""];
+    UIButton *button2 = [self addShareButton:YShareTypeToWechatTimeline frame:CGRectMake(offX, 46, width, 68) image:@"friend_icon" title:@"朋友圈"];
     [self addSubview:button2];
+    offX += width+midX;
+    
+    //3
+    UIButton *button3 = [self addShareButton:YShareTypeToQQ frame:CGRectMake(offX, 46, width, 68) image:@"qq_icon" title:@"QQ好友"];
+    [self addSubview:button3];
+    offX += width+midX;
+    
+    //4
+    UIButton *button4 = [self addShareButton:YShareTypeToQZone frame:CGRectMake(offX, 46, width, 68) image:@"zone_icon" title:@"QQ空间"];
+    [self addSubview:button4];
 }
 
 - (void)initSwitch {
@@ -154,6 +173,22 @@ static const NSUInteger kYActionSheetCancelHeight = 49;
     label.textColor = KCOLORWHITE;
     label.font = CONTENT_FONT(12);
     return label;
+}
+
+- (UIButton *)addShareButton:(NSInteger)tag frame:(CGRect)frame image:(NSString *)imageName title:(NSString *)title {
+    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+    button.frame = frame;
+    [button setImage:[UIImage imageNamed:imageName] forState:UIControlStateNormal];
+    [button setImage:[UIImage imageNamed:imageName] forState:UIControlStateHighlighted];
+    [button setTitle:title forState:UIControlStateNormal];
+    [button setTitleColor:KCOLORWHITE forState:UIControlStateNormal];
+    button.titleLabel.font = CONTENT_FONT(12);
+    [button setImageEdgeInsets:UIEdgeInsetsMake(0, 0, 22, 0)];
+    [button setTitleEdgeInsets:UIEdgeInsetsMake(56, -frame.size.width, 0, 0)];
+    
+    button.tag = tag;
+    [button addTarget:self action:@selector(actionClicked:) forControlEvents:UIControlEventTouchUpInside];
+    return button;
 }
 
 - (UIButton *)addButton:(NSInteger)tag frame:(CGRect)frame image:(NSString *)imageName title:(NSString *)title {
@@ -250,6 +285,48 @@ static const NSUInteger kYActionSheetCancelHeight = 49;
 
 @implementation YCommonActionSheet
 
+- (instancetype)initWithType:(NSArray *)items {
+    if (self = [super initWithFrame:[[UIScreen mainScreen] bounds]]) {
+        self.backgroundColor = [UIColor clearColor];
+        _backgroundView = [[UIView alloc] initWithFrame:self.frame];
+        _backgroundView.backgroundColor = [UIColor blackColor];
+        _backgroundView.alpha = 0;
+        [self addSubview:_backgroundView];
+        
+        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismiss)];
+        tap.numberOfTapsRequired = 1;
+        [self addGestureRecognizer:tap];
+        CGFloat sheetViewBackgroundViewHeight = items.count * kYActionSheetButtonHeight + kYActionSheetCancelHeight;
+        
+        _sheetViewBackgroundView = [[UIView alloc] initWithFrame:CGRectMake(0, self.height, self.width, sheetViewBackgroundViewHeight)];
+        _sheetViewBackgroundView.backgroundColor = KCOLOR_455A64;
+        
+        for (int i = 0; i < items.count; i++) {
+            YActionSheetItem *item = items[i];
+            YActionSheetView *actionView = [[YActionSheetView alloc] initWithFrame:CGRectMake(0, kYActionSheetButtonHeight * i, self.width, kYActionSheetButtonHeight)];
+            actionView.item = item;
+            WS(weakSelf);
+            actionView.clickedBlock = ^{
+                [weakSelf dismiss];
+            };
+            
+            [_sheetViewBackgroundView addSubview:actionView];
+            UIView *lineView = [[UIView alloc] initWithFrame:CGRectMake(0, kYActionSheetButtonHeight - 1, self.width, 1)];
+            lineView.backgroundColor = KCOLOR_B5;
+            [actionView addSubview:lineView];
+        }
+        
+        UIButton *cancelButton = [[UIButton alloc] initWithFrame:CGRectMake(0, sheetViewBackgroundViewHeight - kYActionSheetCancelHeight, self.width, kYActionSheetCancelHeight)];
+        [cancelButton addTarget:self action:@selector(dismiss) forControlEvents:UIControlEventTouchUpInside];
+        [cancelButton setImage:[UIImage imageNamed:@"sheet_delete"] forState:UIControlStateNormal];
+        [cancelButton setImage:[UIImage imageNamed:@"sheet_delete"] forState:UIControlStateHighlighted];
+        [_sheetViewBackgroundView addSubview:cancelButton];
+        [self addSubview:_sheetViewBackgroundView];
+        
+    }
+    return self;
+}
+
 - (instancetype)initWithType:(NSArray *)items title:(NSString *)title {
     
     if (self = [super initWithFrame:[[UIScreen mainScreen] bounds]]) {
@@ -267,21 +344,16 @@ static const NSUInteger kYActionSheetCancelHeight = 49;
         _sheetViewBackgroundView = [[UIView alloc] initWithFrame:CGRectMake(0, self.height, self.width, sheetViewBackgroundViewHeight)];
         _sheetViewBackgroundView.backgroundColor = KCOLOR_455A64;
         
-        CGFloat height = 0;
+        CGFloat height = 2;
         
         if (title.length > 0) {
-            UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, height, self.width, kYActionSheetTitleHeight)];
+            UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, height, self.width, kYActionSheetTitleHeight-height*2)];
             titleLabel.text = title;
-            titleLabel.textColor = [UIColor hexChangeFloat:@"acacac"];
+            titleLabel.textColor = KCOLOR_W1;
             titleLabel.textAlignment = NSTextAlignmentCenter;
-            titleLabel.font = CONTENT_FONT(13);
+            titleLabel.font = CONTENT_FONT(14);
             
             [_sheetViewBackgroundView addSubview:titleLabel];
-            
-            UIView *lineView = [[UIView alloc] initWithFrame:CGRectMake(0, kYActionSheetButtonHeight - 1, self.width, 1)];
-            lineView.backgroundColor = [UIColor whiteColor];
-            
-            [_sheetViewBackgroundView addSubview:lineView];
             
             height += kYActionSheetTitleHeight;
         }
@@ -298,7 +370,7 @@ static const NSUInteger kYActionSheetCancelHeight = 49;
             [_sheetViewBackgroundView addSubview:actionView];
 //            if (i < items.count - 1) {
                 UIView *lineView = [[UIView alloc] initWithFrame:CGRectMake(0, kYActionSheetButtonHeight - 1, self.width, 1)];
-                lineView.backgroundColor = [UIColor whiteColor];
+                lineView.backgroundColor = KCOLOR_B5;
                 [actionView addSubview:lineView];
 //            }
         }
@@ -314,6 +386,54 @@ static const NSUInteger kYActionSheetCancelHeight = 49;
     return self;
 }
 
+- (instancetype)initWithType:(NSArray *)items haveShareButton:(BOOL)haveShareButton {
+    if (self = [super initWithFrame:[[UIScreen mainScreen] bounds]]) {
+        self.backgroundColor = [UIColor clearColor];
+        _backgroundView = [[UIView alloc] initWithFrame:self.frame];
+        _backgroundView.backgroundColor = [UIColor blackColor];
+        _backgroundView.alpha = 0;
+        [self addSubview:_backgroundView];
+        
+        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismiss)];
+        tap.numberOfTapsRequired = 1;
+        [self addGestureRecognizer:tap];
+        CGFloat sheetViewBackgroundViewHeight = (haveShareButton?(items.count-1) * kYActionSheetButtonHeight + kYActionSheetShareHeight:items.count * kYActionSheetButtonHeight) + kYActionSheetCancelHeight;
+        
+        _sheetViewBackgroundView = [[UIView alloc] initWithFrame:CGRectMake(0, self.height, self.width, sheetViewBackgroundViewHeight)];
+        _sheetViewBackgroundView.backgroundColor = KCOLOR_455A64;
+        
+        CGFloat height = 0;
+        
+        for (int i = 0; i < items.count; i++) {
+            BOOL isShareItem = (0==i && haveShareButton);
+            NSInteger itemHeight = isShareItem?kYActionSheetShareHeight:kYActionSheetButtonHeight;
+            YActionSheetItem *item = items[i];
+            YActionSheetView *actionView = [[YActionSheetView alloc] initWithFrame:CGRectMake(0,height, self.width, itemHeight)];
+            actionView.item = item;
+            WS(weakSelf);
+            actionView.clickedBlock = ^{
+                [weakSelf dismiss];
+            };
+            
+            [_sheetViewBackgroundView addSubview:actionView];
+
+            UIView *lineView = [[UIView alloc] initWithFrame:CGRectMake(0, itemHeight - 1, self.width, 1)];
+            lineView.backgroundColor = KCOLOR_B5;
+            [actionView addSubview:lineView];
+            
+            height+=itemHeight;
+        }
+        
+        UIButton *cancelButton = [[UIButton alloc] initWithFrame:CGRectMake(0, sheetViewBackgroundViewHeight - kYActionSheetCancelHeight, self.width, kYActionSheetCancelHeight)];
+        [cancelButton addTarget:self action:@selector(dismiss) forControlEvents:UIControlEventTouchUpInside];
+        [cancelButton setImage:[UIImage imageNamed:@"sheet_delete"] forState:UIControlStateNormal];
+        [cancelButton setImage:[UIImage imageNamed:@"sheet_delete"] forState:UIControlStateHighlighted];
+        [_sheetViewBackgroundView addSubview:cancelButton];
+        [self addSubview:_sheetViewBackgroundView];
+        
+    }
+    return self;
+}
 
 - (void)show
 {
