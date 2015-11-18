@@ -212,7 +212,7 @@
         CGSize textSize = [tag.name boundingRectWithSize:CGSizeMake(SCALE_NUM(300), SCALE_NUM(15)) options:NSStringDrawingTruncatesLastVisibleLine attributes:attributes context:nil].size;
         //文本宽度 ＋ 前置空白行 ＋ 标签间距
         width += textSize.width + SCALE_NUM(15) + SCALE_NUM(5);
-        CGFloat  limitWidth = SCREEN_WIDTH - SCALE_NUM(123);//SCREEN_WIDTH - SCALE_NUM(115);
+        CGFloat  limitWidth = SCREEN_WIDTH - SCALE_NUM(124);//SCREEN_WIDTH - SCALE_NUM(115);
         if (width > limitWidth)
         {
             height += SCALE_NUM(20);
@@ -221,50 +221,4 @@
     }
     return height;
 }
-
-
-//-(CGFloat)calculatorTagsCommHeightByProfileInfo:(ProfileInfo*)model
-//{
-//    
-//    if (model.tagsCommon.count > 0)
-//    {
-//        CGFloat height;
-//        if (model.propetiesCommon.count > 0)
-//        {
-//            height = SCALE_NUM(70);
-//        }
-//        else
-//        {
-//            height = SCALE_NUM(45);
-//        }
-//        
-//        for (int i = 0; i < model.tagsCommon.count; i++)
-//        {
-//            CGFloat width;
-//            Tags * tag = model.tagsCommon[i];
-//            NSDictionary *attributes = @{NSFontAttributeName:CONTENT_FONT(10)};
-//            CGSize textSize = [tag.name boundingRectWithSize:CGSizeMake(SCALE_NUM(300), SCALE_NUM(14)) options:NSStringDrawingTruncatesLastVisibleLine attributes:attributes context:nil].size;
-//            
-//            width += SCALE_NUM(5);
-//            width += SCALE_NUM(textSize.width + 15);
-//            
-//            CGFloat  limitWidth = SCREEN_WIDTH - SCALE_NUM(115);
-//            if (width > limitWidth)
-//            {
-//                height += SCALE_NUM(20);
-//                width = SCALE_NUM(textSize.width + 15);
-//            }
-//        }
-//        return height;
-//    }
-//    else
-//    {
-//        if (model.propetiesCommon.count <= 0)
-//        {
-//            return 0;
-//        }
-//        return SCALE_NUM(45);
-//    }
-//}
-
 @end
