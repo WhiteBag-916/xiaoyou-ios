@@ -73,36 +73,22 @@
     _tagCollectionView = nil;
     [self tagCollectionView];
     
-    if (model.propetiesCommon.count <=0 && model.tagsCommon.count <= 0)
-    {
-        _flagImageView.image = nil;
-    }
-    else
-    {
-        _flagImageView.image = [UIImage imageNamed:@"detail_flag_new"];
-    }
+    NSUInteger propetiesCount = model.propetiesCommon.count;
+    NSUInteger tagsCount = model.tagsCommon.count;
     
-    if (model.propetiesCommon.count <= 0)
+    BOOL noData = (propetiesCount == 0) && (tagsCount == 0);
+    _flagImageView.image = noData ? nil : [UIImage imageNamed:@"detail_flag_new"];
+    
+    _connectTag.hidden = (propetiesCount == 0);
+    if (propetiesCount == 0)
     {
-        _connectTag.hidden = YES;
         [self.tagCollectionView mas_makeConstraints:^(MASConstraintMaker *make) {
-            if (model.tagsCommon.count <= 0)
-            {
-                make.top.equalTo(self);
-            }
-            else
-            {
-                make.top.equalTo(self).offset(kPaddingDistance/2);
-            }
+            int offset = tagsCount == 0 ? 0 : (kPaddingDistance / 2);
+            make.top.equalTo(self).offset(offset);
             make.left.equalTo(_connectTag.mas_left).offset(-kPaddingDistance/2);
             make.trailing.mas_equalTo(0);
-            //        make.height.mas_equalTo(height);
             make.bottom.equalTo(self);
         }];
-    }
-    else
-    {
-        _connectTag.hidden = NO;
     }
     
     [_connectTag updateWithTag:model.propetiesCommon];
