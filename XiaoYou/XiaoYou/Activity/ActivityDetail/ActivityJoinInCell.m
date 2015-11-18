@@ -126,34 +126,28 @@
 
 -(void)setData:(Author *)joinModel
 {
+    _author = joinModel;
+    
+    BOOL noData = (joinModel.uid == nil && joinModel.studentNo == nil);
+    BOOL noTags = (joinModel.propetiesCommon.count == 0 && joinModel.tagsCommon.count == 0);
     //没有人参加
-    _noSomeOneJoinImageView.hidden = YES;
-    _joinTopView.hidden = NO;
-    if (joinModel.uid == nil && joinModel.studentNo == nil) {
-        _joinTopView.hidden = YES;
-        _tagsWrapView.hidden = YES;
-        _noSomeOneJoinImageView.hidden = NO;
+    _noSomeOneJoinImageView.hidden = !noData;
+    _joinTopView.hidden = noData;
+    _tagsWrapView.hidden = noData;
+    _tagsWrapView.hidden = noTags;
+    //处理没有数据的情况
+    if (noData) {
         [_noSomeOneJoinImageView mas_updateConstraints:^(MASConstraintMaker *make) {
             make.height.mas_equalTo(SCALE_NUM(100));
         }];
         return;
     }
     
-    if (joinModel.propetiesCommon.count == 0 && joinModel.tagsCommon.count == 0) {
-        self.tagsWrapView.hidden = YES;
-    } else
-    {
-        self.tagsWrapView.hidden = NO;
-    }
-    _author = joinModel;
     [_joinTopView setData:joinModel];
-    //[self bringSubviewToFront:_joinTopView];
-    
-    ProfileInfo *profile = [[ProfileInfo alloc]init];
-    profile.propetiesCommon = joinModel.propetiesCommon;
-    profile.tagsCommon = joinModel.tagsCommon;
-    
-    [_tagsView setData:profile];
+    //如果有tag，更新标签
+    if (!noTags) {
+        [_tagsView setData:joinModel];
+    }
 }
 
 @end

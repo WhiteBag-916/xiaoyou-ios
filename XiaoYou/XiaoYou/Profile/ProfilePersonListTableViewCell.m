@@ -182,10 +182,10 @@ NSString *const kProfilePersonListTableViewCell = @"kProfilePersonListTableViewC
 //    [_tagView setData:author.tagsCommon];
 //    [_connect updateWithTag:author.propetiesCommon];
     
-    ProfileInfo * model = [[ProfileInfo alloc] init];
-    model.propetiesCommon = author.propetiesCommon;
-    model.tagsCommon = author.tagsCommon;
-    [_tagsCommonView setData:model];
+//    ProfileInfo * model = [[ProfileInfo alloc] init];
+//    model.propetiesCommon = author.propetiesCommon;
+//    model.tagsCommon = author.tagsCommon;
+    [_tagsCommonView setData:author];
     
 //    _genderLabel.text = author.gender;
 //    _genderLabel.hidden = !needShowGender;

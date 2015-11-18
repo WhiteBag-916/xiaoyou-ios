@@ -11,6 +11,7 @@
 #import "Tags.h"
 #import "TagCollectionCell.h"
 #import "MyFlowLayout.h"
+#import "Author.h"
 
 #define REUSECELL @"taglistcell"
 #define kFlagImageViewWidth            SCALE_NUM(11)
@@ -66,14 +67,23 @@
 }
 
 
-- (void)setData:(ProfileInfo *) model
+- (void)setData:(id) model
 {
     [_tagCollectionView removeFromSuperview];
     _tagCollectionView = nil;
     [self tagCollectionView];
     
-    NSUInteger propetiesCount = model.propetiesCommon.count;
-    NSUInteger tagsCount = model.tagsCommon.count;
+    
+    if ([model isKindOfClass:[ProfileInfo class]]) {
+        _model = model;
+    } else if ([model isKindOfClass:[Author class]]) {
+        Author *author = model;
+        _model.tagsCommon = author.tagsCommon;
+        _model.propetiesCommon = author.propetiesCommon;
+    }
+    
+    NSUInteger propetiesCount = _model.propetiesCommon.count;
+    NSUInteger tagsCount = _model.tagsCommon.count;
     
     BOOL noData = (propetiesCount == 0) && (tagsCount == 0);
     _flagImageView.image = noData ? nil : [UIImage imageNamed:@"detail_flag_new"];
@@ -90,8 +100,8 @@
         }];
     }
     
-    [_connectTag updateWithTag:model.propetiesCommon];
-    _commonTagsArr = [NSMutableArray arrayWithArray:model.tagsCommon];
+    [_connectTag updateWithTag:_model.propetiesCommon];
+    _commonTagsArr = [NSMutableArray arrayWithArray:_model.tagsCommon];
     [_tagCollectionView reloadData];
     
 }
