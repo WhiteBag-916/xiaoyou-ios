@@ -34,7 +34,7 @@
     // Do any additional setup after loading the view.
     
     [self setUpUI];
-    
+        
     [YUtils showHUDWithTitle];
     [[ContactManager sharedInstance] getUserDetailInfo:_uid hxId:_hxId block:^(YActionMessage *message) {
         [YUtils hiddenProgressHUD];
@@ -79,7 +79,7 @@
     [_bottomButton addTarget:self action:@selector(clickBottomButton) forControlEvents:UIControlEventTouchUpInside];
     if (_isFriendRelationShip)
     {
-        _studentDic = [[[ContactManager sharedInstance] getFriendInfo:_uid] dictionaryRepresentation];
+        _studentDic = (NSMutableDictionary *)[[[ContactManager sharedInstance] getFriendInfo:_uid] dictionaryRepresentation];
         [_bottomButton setTitle:@"聊聊呗" forState:UIControlStateNormal];
         
         [self showCustomNavigationMoreButton];
@@ -90,6 +90,16 @@
 //        ProfileInfo * info = [[ProvisionManager sharedInstance] getProfile];
 //        if ([info.studentNo isEqualToString:@"123456"])
 //        {
+//            [[ContactManager sharedInstance] getUserDetailInfo:_uid hxId:nil block:^(YActionMessage *message) {
+//                if (message.isSuccess) {
+//                    ProfileInfo * targatInfo = message.object;
+//                    [_studentDic setObject:targatInfo.userName forKey:@"name"];
+//                    [_studentDic setObject:targatInfo.headPic forKey:@"icon"];
+//                    [_studentDic setObject:@"2" forKey:@"linkType"];
+//                    [_studentDic setObject:[NSString stringWithFormat:@"%@_%@",targatInfo.schoolCode,targatInfo.studentNo] forKey:@"thirdCode"];
+//                }
+//                
+//            }];
 //            [_bottomButton setTitle:@"聊聊呗" forState:UIControlStateNormal];
 //        }
 //        else
@@ -147,10 +157,13 @@
         if ([self.navigationController.viewControllers[self.navigationController.viewControllers.count-2] isKindOfClass:[ChatViewController class]]) {
             [self.navigationController popViewControllerAnimated:YES];
         } else {
-            ChatViewController * chatVC = [[ChatViewController alloc] initWithChatter:_studentDic[@"thirdCode"] isGroup:NO];
-            chatVC.isSystemMessage = NO;
-            chatVC.studentDic = [_studentDic mutableCopy];
-            [self.navigationController pushViewController:chatVC animated:YES needHiddenBottomBar:YES];
+            if (_studentDic)
+            {
+                ChatViewController * chatVC = [[ChatViewController alloc] initWithChatter:_studentDic[@"thirdCode"] isGroup:NO];
+                chatVC.isSystemMessage = NO;
+                chatVC.studentDic = [_studentDic mutableCopy];
+                [self.navigationController pushViewController:chatVC animated:YES needHiddenBottomBar:YES];
+            }
         }
     }
 }
