@@ -13,6 +13,7 @@
 #import "UIImageView+EMWebCache.h"
 #import "EMChatImageBubbleView.h"
 #import "SDPhotoBrowser.h"
+#import "UIImageView+Ext.h"
 
 NSString *const kRouterEventImageBubbleTapEventName = @"kRouterEventImageBubbleTapEventName";
 
@@ -107,7 +108,8 @@ NSString *const kRouterEventImageBubbleTapEventName = @"kRouterEventImageBubbleT
         }
         else
         {
-            _showImage = _model.image;
+             NSData * data = [NSData dataWithContentsOfURL:self.model.imageRemoteURL];
+            _showImage = [UIImage imageWithData:data];
         }
     }
     SDPhotoBrowser *browser = [[SDPhotoBrowser alloc] init];
