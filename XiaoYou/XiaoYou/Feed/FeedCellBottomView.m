@@ -33,7 +33,7 @@
 #define KHEADWIDTH SCALE_NUM(34)                    //头像宽度
 #define KHEADMARGIN SCALE_NUM(15)                   //头像间距
 
-#define KRESPECTDETAILHEIGHT SCALE_NUM(44)          //敬酒detail中整体高度
+#define KRESPECTDETAILHEIGHT SCALE_NUM(54)          //敬酒detail中整体高度
 #define KRESPECTWIDTH SCALE_NUM(44)                 //敬酒图标大小
 
 @interface FeedCellBottomView()
@@ -107,7 +107,7 @@
             [self addSubview:_respectImg];
             [_respectImg mas_makeConstraints:^(MASConstraintMaker *make) {
                 make.right.equalTo(_respectNum);
-                make.left.equalTo(_respectNum).offset(-KBUTTONTEXTMARGIN-KRESPECTWIDTH + SCALE_NUM(14));
+                make.left.equalTo(_respectNum).offset(-KBUTTONTEXTMARGIN-KRESPECTWIDTH + SCALE_NUM(16));
                 make.top.bottom.equalTo(self);
             }];
             _respectImg.contentMode = UIViewContentModeCenter;
@@ -135,7 +135,7 @@
             [self addSubview:_respectNum];
             [_respectNum mas_makeConstraints:^(MASConstraintMaker *make) {
                 make.centerX.equalTo(_respectImg);
-                make.bottom.equalTo(_respectImg).offset(-KRESPECTLABELMARGIN_BOTTOM);
+                make.bottom.equalTo(_respectImg).offset(-KRESPECTLABELMARGIN_BOTTOM - SCALE_NUM(6));
             }];
             if (type == FeedDetailType) {
                 _personList = [[UIView alloc] init];
