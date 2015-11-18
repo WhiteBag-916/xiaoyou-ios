@@ -16,7 +16,7 @@
 #import "YCommonAlertView.h"
 #import "ProvisionManager.h"
 
-#define kNavigationgRightWidthAndHeight         40
+#define kNavigationgRightWidthAndHeight         SCALE_NUM(40)
 
 @interface XYContactsInfoDetailViewController ()
 

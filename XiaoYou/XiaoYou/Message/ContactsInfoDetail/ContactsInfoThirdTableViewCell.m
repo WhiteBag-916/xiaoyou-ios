@@ -48,10 +48,10 @@ NSString *const kContactsInfoThirdTableViewCell = @"ContactsInfoThirdTableViewCe
     _toastImageView.image = [UIImage imageNamed:@"detail_toast_new"];
     [backView addSubview:_toastImageView];
     [_toastImageView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.mas_equalTo(10);
-        make.left.mas_equalTo(12);
-        make.width.mas_equalTo(14);
-        make.height.mas_equalTo(13);
+        make.top.mas_equalTo(SCALE_NUM(10));
+        make.left.mas_equalTo(SCALE_NUM(12));
+        make.width.mas_equalTo(SCALE_NUM(14));
+        make.height.mas_equalTo(SCALE_NUM(13));
     }];
     
     _toastLabel = [[UILabel alloc] init];
@@ -61,9 +61,9 @@ NSString *const kContactsInfoThirdTableViewCell = @"ContactsInfoThirdTableViewCe
     [backView addSubview:_toastLabel];
     [_toastLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.equalTo(_toastImageView);
-        make.left.equalTo(_toastImageView.mas_right).offset(13);
-        make.right.mas_equalTo(-12);
-        make.height.mas_equalTo(14);
+        make.left.equalTo(_toastImageView.mas_right).offset(SCALE_NUM(13));
+        make.right.mas_equalTo(SCALE_NUM(-12));
+        make.height.mas_equalTo(SCALE_NUM(14));
     }];
     
     //点赞
@@ -73,9 +73,9 @@ NSString *const kContactsInfoThirdTableViewCell = @"ContactsInfoThirdTableViewCe
     _coolImageView.image = [UIImage imageNamed:@"detail_cool_new"];
     [_coolImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(_toastImageView.mas_bottom).offset(17);
-        make.left.mas_equalTo(12);
-        make.width.mas_equalTo(14);
-        make.height.mas_equalTo(13);
+        make.left.mas_equalTo(SCALE_NUM(12));
+        make.width.mas_equalTo(SCALE_NUM(14));
+        make.height.mas_equalTo(SCALE_NUM(13));
     }];
     
     _coolLabel = [[UILabel alloc] init];
@@ -87,8 +87,8 @@ NSString *const kContactsInfoThirdTableViewCell = @"ContactsInfoThirdTableViewCe
     [_coolLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.equalTo(_coolImageView);
         make.left.equalTo(_coolImageView.mas_right).offset(13);
-        make.right.mas_equalTo(-12);
-        make.height.mas_equalTo(14);
+        make.right.mas_equalTo(SCALE_NUM(-12));
+        make.height.mas_equalTo(SCALE_NUM(14));
     }];
     
     UIButton * coolButton = [[UIButton alloc] init];
@@ -96,20 +96,16 @@ NSString *const kContactsInfoThirdTableViewCell = @"ContactsInfoThirdTableViewCe
     coolButton.backgroundColor = [UIColor clearColor];
     [coolButton mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.centerY.equalTo(_coolImageView);
-        make.height.width.mas_equalTo(22);
+        make.height.width.mas_equalTo(SCALE_NUM(22));
     }];
     [coolButton addTarget:self action:@selector(tapCoolMethod) forControlEvents:UIControlEventTouchUpInside];
-//    UITapGestureRecognizer * tapGestureRecognizer1 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapCoolMethod)];
-//    UITapGestureRecognizer * tapGestureRecognizer2 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapCoolMethod)];
-//    [_coolImageView addGestureRecognizer:tapGestureRecognizer1];
-//    [_coolLabel addGestureRecognizer:tapGestureRecognizer2];
     
     [self.contentView addSubview:backView];
     [backView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.right.mas_equalTo(-12);
-        make.left.mas_equalTo(70);
-        make.top.mas_equalTo(16);
-        make.bottom.mas_equalTo(-16);
+        make.right.mas_equalTo(SCALE_NUM(-12));
+        make.left.mas_equalTo(SCALE_NUM(70));
+        make.top.mas_equalTo(SCALE_NUM(16));
+        make.bottom.mas_equalTo(SCALE_NUM(-16));
     }];
 }
 - (void)tapCoolMethod
