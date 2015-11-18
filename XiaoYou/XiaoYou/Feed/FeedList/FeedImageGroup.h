@@ -8,9 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
+
 @interface FeedImageGroup : UIView
 
 @property   (assign,    nonatomic)  BOOL hasSaveBtn;
+
+@property   (assign,    nonatomic)  BOOL hasDeleteBtn;
 /**
  *  @author 李思良, 15-09-01
  *

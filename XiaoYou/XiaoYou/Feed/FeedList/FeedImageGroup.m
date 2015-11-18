@@ -28,6 +28,9 @@
 
 @property (nonatomic, strong) UIImageView *singleImg;
 
+@property (nonatomic, assign) int currentIndex;
+
+@property (nonatomic, strong) SDPhotoBrowser *browser;
 @end
 
 @implementation FeedImageGroup
@@ -38,9 +41,11 @@
         _imgSize = SCALE_NUM(77);
         _smallImgs = [NSMutableArray array];
         [self initImgs];
+        _currentIndex = 0;
     }
     return self;
 }
+
 - (id)initWithCamera {
     self = [super init];
     if (self) {
@@ -67,6 +72,7 @@
 
 - (void)initImgs {
     _hasSaveBtn = true;
+    _hasDeleteBtn = false;
     _contentView = [[UIView alloc] init];
     [self addSubview:_contentView];
     _contentView.clipsToBounds = true;
@@ -170,7 +176,7 @@
     }
     [_contentView mas_remakeConstraints:^(MASConstraintMaker *make) {
         make.edges.equalTo(self);
-        make.height.mas_equalTo(KIMGSIZE).priorityLow();;
+        make.height.mas_equalTo(KIMGSIZE).priorityLow();
     }];
 }
 - (void)addPhoto:(UIImage *)image {
@@ -243,37 +249,71 @@
     if (index < 0 || index >= _smallImgs.count) {
         return;
     }
-    SDPhotoBrowser *browser = [[SDPhotoBrowser alloc] init];
+    _browser = [[SDPhotoBrowser alloc] init];
     
-    browser.sourceImagesContainerView = _contentView;
+    _browser.sourceImagesContainerView = _contentView;
     
-    browser.imageCount = _smallImgs.count;
+    _browser.imageCount = _smallImgs.count;
     
-    browser.currentImageIndex = index;
+    _browser.currentImageIndex = index;
     
-    browser.delegate = self;
+    _browser.delegate = self;
     
-    browser.hasSaveBtn = _hasSaveBtn;
+    _browser.hasSaveBtn = _hasSaveBtn;
+    _browser.hasDeleteBtn = _hasDeleteBtn;
     
-    [browser show];
+    [_browser show];
 }
 - (int)getImgCount {
     return (int)_smallImgs.count;
 }
+
 #pragma SDPhotoBrowser
 - (UIImage *)photoBrowser:(SDPhotoBrowser *)browser placeholderImageForIndex:(NSInteger)index {
+    _currentIndex = browser.currentImageIndex;
     UIImage *image = [(UIImageView *)[_contentView viewWithTag:KIMGTAG+index] image];
     return image;
 }
 - (NSURL *)photoBrowser:(SDPhotoBrowser *)browser highQualityImageURLForIndex:(NSInteger)index {
+    _currentIndex = browser.currentImageIndex;
     if (_bigImgs.count == _smallImgs.count) {
         return [NSURL URLWithString:[NSString stringWithFormat:@"%@%@",api_icon_base_url, _bigImgs[index]]];
     }
     return nil;
 }
+//删除某张照片
+-(void)deleteImageWithCurrentIndex:(int)currentIndex
+{
+    [self.smallImgs removeObjectAtIndex:_currentIndex];
+    [self.bigImgs removeObjectAtIndex:_currentIndex];
+    [self updateAll];
+    [_browser removeFromSuperview];
+    _browser = nil;
+    
+    //图片被删除完，或者删除的最后一张
+    if (self.smallImgs.count == 0) return;
+    if (self.smallImgs.count < currentIndex +1)
+        self.currentIndex = self.currentIndex - 1;
+    
+    _browser = [[SDPhotoBrowser alloc] init];
+    
+    _browser.sourceImagesContainerView = _contentView;
+    
+    _browser.imageCount = _smallImgs.count;
+    
+    _browser.currentImageIndex = _currentIndex;
+    
+    _browser.delegate = self;
+    
+    _browser.hasSaveBtn = _hasSaveBtn;
+    _browser.hasDeleteBtn = _hasDeleteBtn;
+    [_browser show];
+}
+
 //打开拍照功能
 - (void)openPhoto {
     [[NSNotificationCenter defaultCenter] postNotificationName:KNotification_Present_TakePhoto object:nil];
 }
+
 
 @end

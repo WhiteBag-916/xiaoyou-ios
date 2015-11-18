@@ -52,5 +52,7 @@
 #define KNotification_Remind_Message_Not_Read           @"KNotification_Remind_Message_Not_Read"
 //日程增删
 #define KNotification_Change_Schedule                   @"KNotification_Change_Schedule"
+//删除图片
+#define KNotification_Delete_Image                      @"KNotification_Delete_Image"
 
 #endif

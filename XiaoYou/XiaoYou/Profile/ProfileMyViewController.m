@@ -475,6 +475,7 @@
                                                          self.isHeadImageUploadEnd = YES;
                                                      } else {
                                                          [YUtils showTitle:message.desc];
+                                                         self.isHeadImageUploadEnd = YES;
                                                      }
                                                  }];
 }

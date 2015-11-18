@@ -191,22 +191,19 @@
         {
             CGFloat width = 0;
             Tags * tag = model.tagsCommon[i];
-            NSDictionary *attributes = @{NSFontAttributeName:[UIFont systemFontOfSize:SCALE_NUM(10)]};
+            NSDictionary *attributes = @{NSFontAttributeName:CONTENT_FONT(10)};
             CGSize textSize = [tag.name boundingRectWithSize:CGSizeMake(SCALE_NUM(300), SCALE_NUM(14)) options:NSStringDrawingTruncatesLastVisibleLine attributes:attributes context:nil].size;
             
             width += SCALE_NUM(10);
-            width += SCALE_NUM(textSize.width + 15);
+            width += textSize.width + SCALE_NUM(15);
             
-            CGFloat  limitWidth = SCALE_NUM(SCREEN_WIDTH - 115);
+            CGFloat  limitWidth =  SCREEN_WIDTH - SCALE_NUM(115);
             if (width > limitWidth)
             {
                 height += SCALE_NUM(20);
-                width = SCALE_NUM(textSize.width + 15);
+                width = textSize.width + SCALE_NUM(15);
             }
             
-        }
-        if ([[UIDevice getCurrentDeviceModel] containsString:@"iPhone 4"]) {
-            height -= 20;
         }
         return height;
     }
