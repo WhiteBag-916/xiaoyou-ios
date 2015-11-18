@@ -13,10 +13,10 @@
 #import "YNotificationDefine.h"
 #import "Author.h"
 
-#define kHeadImageViewHeight            50
-#define kHeadImageViewToTop             3
-#define kNameLabelToHeadImage           5
-#define kDeleteButtonHeightAndWodth     17
+#define kHeadImageViewHeight            SCALE_NUM(50)
+#define kHeadImageViewToTop             SCALE_NUM(3)
+#define kNameLabelToHeadImage           SCALE_NUM(5)
+#define kDeleteButtonHeightAndWodth     SCALE_NUM(17)
 
 NSString *const kGroupInfoCollectionViewCell = @"GroupInfoCollectionViewCellId";
 

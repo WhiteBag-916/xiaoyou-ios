@@ -20,8 +20,8 @@
 #import "ContactManager.h"
 
 
-#define kPaddingDistance                10
-#define kHeaderViewHeight               100
+#define kPaddingDistance                SCALE_NUM(10)
+#define kHeaderViewHeight               SCALE_NUM(100)
 
 @interface GroupInfoDetailCollectionView ()<UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout,GroupInfoCollectionViewCellDelegate>
 
@@ -188,7 +188,7 @@
 
 -(CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section
 {
-    return 5;
+    return SCALE_NUM(5);
 }
 
 -(UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section
@@ -199,7 +199,7 @@
 
 -(CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section
 {
-    return 20;
+    return SCALE_NUM(20);
 }
 
 -(CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section

@@ -103,7 +103,7 @@
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 174;
+    return SCALE_NUM(174);
 }
 
 -(NSArray *)getDataSource

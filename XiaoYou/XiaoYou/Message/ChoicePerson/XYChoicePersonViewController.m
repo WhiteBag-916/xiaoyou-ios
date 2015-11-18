@@ -17,9 +17,9 @@
 #import "XYGroupApplyViewController.h"
 #import "Author.h"
 
-#define kButtonItemHeightAndWidth           44
-#define kCancleButtonItemWidth              55
-#define kRightButtonWidth                   85
+#define kButtonItemHeightAndWidth           SCALE_NUM(44)
+#define kCancleButtonItemWidth              SCALE_NUM(55)
+#define kRightButtonWidth                   SCALE_NUM(85)
 
 @interface XYChoicePersonViewController ()
 
