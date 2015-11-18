@@ -240,7 +240,7 @@
     //判断是否为好友,输入框置灰
 //    if (![self isChatGroup])
     {
-        //小助手
+        //小助手100000
 //        ProfileInfo * info = [[ProvisionManager sharedInstance] getProfile];
 //        if (nil == _studentDic && ![info.studentNo isEqualToString:@"123456"])
 //        {
@@ -915,22 +915,8 @@
                     self.isScrollToBottom = NO;
                     if (image)
                     {
-                     //[self.messageReadManager showBrowserWithImages:@[image]];
+                     [self.messageReadManager showBrowserWithImages:@[image]];
 
-                        _showImage = image;
-                        SDPhotoBrowser *browser = [[SDPhotoBrowser alloc] init];
-                        
-                        browser.sourceImagesContainerView = self.view;
-                        
-                        browser.imageCount = 1;
-                        
-                        browser.currentImageIndex = 0;
-                        
-                        browser.delegate = self;
-                        
-                        browser.hasSaveBtn = YES;
-                        
-                        [browser show];
                     }
                     else
                     {
@@ -989,11 +975,6 @@
             } onQueue:nil];
         }
     }
-}
-
-#pragma SDPhotoBrowser
-- (UIImage *)photoBrowser:(SDPhotoBrowser *)browser placeholderImageForIndex:(NSInteger)index {
-    return _showImage;
 }
 
 

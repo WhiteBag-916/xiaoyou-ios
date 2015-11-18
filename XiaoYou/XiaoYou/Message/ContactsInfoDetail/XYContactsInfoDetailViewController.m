@@ -86,7 +86,7 @@
     }
     else
     {
-        //小助手
+        //小助手100000
 //        ProfileInfo * info = [[ProvisionManager sharedInstance] getProfile];
 //        if ([info.studentNo isEqualToString:@"123456"])
 //        {
@@ -119,7 +119,8 @@
 #pragma mark - 点击bottomButton事件
 -(void)clickBottomButton
 {
-     [_bottomButton setTitle:@"添加好友" forState:UIControlStateNormal];
+//     [_bottomButton setTitle:@"添加好友" forState:UIControlStateNormal];
+    //小助手100000
 //    ProfileInfo * info = [[ProvisionManager sharedInstance] getProfile];
 //    if (!_isFriendRelationShip && ![info.studentNo isEqualToString:@"123456"]) {
      if (!_isFriendRelationShip) {
