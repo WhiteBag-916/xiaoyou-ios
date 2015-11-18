@@ -36,6 +36,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self showCustomNavigationBackButton];
+    [self IsShowCustomNavigationMoreButton:NO];
     [self initWebView];
     [self initProgress];
 }
