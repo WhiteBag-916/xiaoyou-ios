@@ -14,7 +14,7 @@
 
 - (void)execute
 {
-    NSDictionary *parameter = [YUtils getParameter:@{@"version":kBundle_Short_Version, @"appPlatform":@"1"}];
+    NSDictionary *parameter = [YUtils getParameter:@{@"version":kBundle_Short_Version, @"appPlatform":@"2"}];
     NSString *url = [YUtils getUrl:api_version_checkLastVersion];
     [self POST:url parameters:parameter completion:^(YHttpRequest *request) {
         YActionMessage *message = [CheckLastVersionModel actionMessageWithHttpRequest:request];
