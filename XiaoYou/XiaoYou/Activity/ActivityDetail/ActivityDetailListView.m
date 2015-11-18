@@ -17,6 +17,7 @@
 #import "UIDevice+DeviceType.h"
 #import "YUtils.h"
 #import "NSString+MyContainString.h"
+#import "TagsCommonView.h"
 
 #define REUSEID_DETAILCELL  @"ActivityDetailCell"
 #define REUSEID_JOINCELL    @"ActivityJoinInCell"
@@ -79,19 +80,19 @@
 
 - (void)loadNewData
 {
-    _currentIndex = 0;
-    //[_activityDetailArray removeAllObjects];
+    //_currentIndex = 0;
     [self sendRequest];
 }
 
 - (void)loadMoreData
 {
-    _currentIndex = self.activityDetailArray.count - 1;
+    //_currentIndex = self.activityDetailArray.count - 1;
     [self sendRequest];
 }
 
 -(void)sendRequest
 {
+    _currentIndex = [self isHeaderRefresh] ? 0 : self.activityDetailArray.count - 1;
     if (![self isHeaderRefresh])
         [YUtils showHUDWithTitle:@"正在加载..."];
     [[ActivityManager sharedInstance] findActivityDetailInfo:_currentIndex limitEnd:_currentIndex + KPAGENUM activityPublishedId:self.publishID getDetail:YES block:^(YActionMessage *message) {
@@ -165,11 +166,7 @@
         if (author.tagsCommon.count == 0 && author.propetiesCommon.count == 0) {
             return SCALE_NUM(90);
         }
-        
-        ProfileInfo *info = [[ProfileInfo alloc]init];
-        info.tagsCommon = author.tagsCommon;
-        info.propetiesCommon = author.propetiesCommon;
-        height = [self calculatorTagsCommHeightByProfileInfo:info];
+        height = [TagsCommonView calculatorHeightByTagsCommon:author.tagsCommon propetiesCommon:author.propetiesCommon];
         height += (SCALE_NUM(49)) + (SCALE_NUM(60));
         if (indexPath.row != 1) {
             height -= SCALE_NUM(49);
@@ -190,10 +187,10 @@
     else
     {
         ActivityJoinInCell *cell;
-#pragma mark 此处以后要考虑复用,首先标签控件需要复用
-        //cell = [tableView dequeueReusableCellWithIdentifier:REUSEID_JOINCELL];
+        cell = [tableView dequeueReusableCellWithIdentifier:REUSEID_JOINCELL];
+        
         CELLTYPE type = indexPath.row == 1? IS_TOPVIEW : NOT_TOPVIEW;
-        cell = [[ActivityJoinInCell alloc]init];
+        //cell = [[ActivityJoinInCell alloc]init];
         
         if (self.activityDetailArray.count > 0) {
             Author *author = self.activityDetailArray[indexPath.row];
@@ -208,51 +205,6 @@
         return cell;
     }
     return nil;
-}
-
-
--(CGFloat)calculatorTagsCommHeightByProfileInfo:(ProfileInfo*)model
-{
-    if (model.tagsCommon.count > 0)
-    {
-        CGFloat height;
-        if (model.propetiesCommon.count > 0)
-        {
-            height = SCALE_NUM(65);
-        }
-        else
-        {
-            height = SCALE_NUM(40);
-        }
-        
-        for (int i = 0; i < model.tagsCommon.count; i++)
-        {
-            CGFloat width;
-            Tags * tag = model.tagsCommon[i];
-            NSDictionary *attributes = @{NSFontAttributeName:CONTENT_FONT(10)};
-            CGSize textSize = [tag.name boundingRectWithSize:CGSizeMake(SCALE_NUM(300), SCALE_NUM(14)) options:NSStringDrawingTruncatesLastVisibleLine attributes:attributes context:nil].size;
-            
-            width += SCALE_NUM(10);
-            width += textSize.width + SCALE_NUM(15);
-            
-            CGFloat  limitWidth = SCREEN_WIDTH - SCALE_NUM(115);
-            if (width > limitWidth)
-            {
-                height += SCALE_NUM(20);
-                width = textSize.width + SCALE_NUM(15);
-            }
-            
-        }
-        return height;
-    }
-    else
-    {
-        if (model.propetiesCommon.count <= 0)
-        {
-            return 0;
-        }
-        return SCALE_NUM(40);
-    }
 }
 
 @end

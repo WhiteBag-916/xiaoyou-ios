@@ -18,7 +18,7 @@
 #import "YWebViewController.h"
 #import "ProfileMyViewController.h"
 #import "ProfileViewController.h"
-#define REUSEID @"ActivityDetailCell"
+
 #define HEADIMAGEVIEW_WIDTH         SCALE_NUM(45)
 #define LEADINGOFF_HEADIMAGEVIEW    SCALE_NUM(12)
 
