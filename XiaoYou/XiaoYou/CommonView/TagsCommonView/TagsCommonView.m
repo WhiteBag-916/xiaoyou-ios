@@ -61,7 +61,6 @@
     }];
     //这行创建和设置背景颜色
     self.tagCollectionView.backgroundColor = [UIColor clearColor];
-    
     [_connectTag updateWithTag:_model.propetiesCommon];
     
 }
@@ -114,7 +113,6 @@
             make.top.equalTo(_connectTag.mas_bottom).offset(SCALE_NUM(5));
             make.left.equalTo(_connectTag.mas_left).offset(-kPaddingDistance/2);
             make.trailing.mas_equalTo(0);
-            //        make.height.mas_equalTo(height);
             make.bottom.equalTo(self);
         }];
     }
