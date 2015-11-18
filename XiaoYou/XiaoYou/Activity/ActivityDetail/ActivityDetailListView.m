@@ -133,12 +133,8 @@
         author.studentNo = nil;
         author.uid = nil;
         [self.activityDetailArray addObject:author];
-        return self.activityDetailArray.count;
     }
-    else {
-        return self.activityDetailArray.count;
-    }
-    return 0;
+    return self.activityDetailArray.count;
 }
 
 #pragma mark  Feed部分的控件要考虑复用
@@ -190,7 +186,6 @@
         cell = [tableView dequeueReusableCellWithIdentifier:REUSEID_JOINCELL];
         
         CELLTYPE type = indexPath.row == 1? IS_TOPVIEW : NOT_TOPVIEW;
-        //cell = [[ActivityJoinInCell alloc]init];
         
         if (self.activityDetailArray.count > 0) {
             Author *author = self.activityDetailArray[indexPath.row];

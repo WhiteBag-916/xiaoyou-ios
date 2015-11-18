@@ -209,14 +209,14 @@
     for (int i = 0; i < tagsCount; i++)
     {
         Tags * tag = tagsCommon[i];
-        CGSize textSize = [tag.name boundingRectWithSize:CGSizeMake(SCALE_NUM(300), SCALE_NUM(14)) options:NSStringDrawingTruncatesLastVisibleLine attributes:attributes context:nil].size;
+        CGSize textSize = [tag.name boundingRectWithSize:CGSizeMake(SCALE_NUM(300), SCALE_NUM(15)) options:NSStringDrawingTruncatesLastVisibleLine attributes:attributes context:nil].size;
         //文本宽度 ＋ 前置空白行 ＋ 标签间距
-        width += SCALE_NUM(textSize.width + 15 + 5);
-        CGFloat  limitWidth = SCREEN_WIDTH - SCALE_NUM(115);
+        width += textSize.width + SCALE_NUM(15) + SCALE_NUM(5);
+        CGFloat  limitWidth = SCREEN_WIDTH - SCALE_NUM(123);//SCREEN_WIDTH - SCALE_NUM(115);
         if (width > limitWidth)
         {
             height += SCALE_NUM(20);
-            width = SCALE_NUM(textSize.width + 15);
+            width = textSize.width + SCALE_NUM(15);
         }
     }
     return height;

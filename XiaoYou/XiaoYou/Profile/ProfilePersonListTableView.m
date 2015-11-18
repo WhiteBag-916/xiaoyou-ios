@@ -46,6 +46,7 @@
     }
     return self;
 }
+
 #pragma mark - 继承者
 - (BOOL)showHeaderRefresh
 {
@@ -158,6 +159,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return _personListArray.count;
 }
+
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 1;
 }
