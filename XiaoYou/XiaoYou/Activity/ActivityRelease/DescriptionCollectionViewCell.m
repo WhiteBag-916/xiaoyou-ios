@@ -157,6 +157,8 @@ NSString *const kDescriptionCollectionViewCell = @"DescriptionCollectionViewCell
     [[UINavigationBar appearance] setBackgroundImage:[UIImage imageWithColor:[UIColor hexChangeFloat:@"455964"] size:CGSizeMake(SCREEN_WIDTH, 64)] forBarPosition:UIBarPositionAny barMetrics:UIBarMetricsDefault];
     [[UINavigationBar appearance] setTitleTextAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:17],
                                                           NSForegroundColorAttributeName:[UIColor whiteColor]}];
+    [UINavigationBar appearance].barStyle = UIBarStyleDefault;
+    
     [picker setSourceType:UIImagePickerControllerSourceTypePhotoLibrary];
     [picker setDelegate:self];
     [picker setAllowsEditing:YES];

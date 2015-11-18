@@ -47,7 +47,7 @@
             if (![lastVersion isEqualToString:currentVersion]) {
                 NSString * itunesUrl = [releaseInfo objectForKey:@"trackViewUrl"];
                 [[NSUserDefaults standardUserDefaults] setObject:itunesUrl forKey:@"trackViewUrl"];
-                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"更新" message:@"有新的版本更新，是否前往更新？" delegate:self cancelButtonTitle:@"关闭" otherButtonTitles:@"更新", nil];
+                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"更新" message:@"有新的版本更新，是否前往更新？\n男性不更新娶不到媳妇，女性不更新找不到男票\n当然如果你是中性可以选择不更新" delegate:self cancelButtonTitle:@"关闭" otherButtonTitles:@"更新", nil];
                 alert.tag = 10000;
                 [alert show];
             }

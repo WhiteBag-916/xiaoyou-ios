@@ -14,6 +14,7 @@
 #import "ChatViewController.h"
 #import "YCommonReport.h"
 #import "YCommonAlertView.h"
+#import "ProvisionManager.h"
 
 #define kNavigationgRightWidthAndHeight         40
 
@@ -85,7 +86,18 @@
     }
     else
     {
-        [_bottomButton setTitle:@"添加好友" forState:UIControlStateNormal];
+        //小助手100000
+//        ProfileInfo * info = [[ProvisionManager sharedInstance] getProfile];
+//        if ([info.studentNo isEqualToString:@"123456"])
+//        {
+//            [_bottomButton setTitle:@"聊聊呗" forState:UIControlStateNormal];
+//        }
+//        else
+//        {
+//            [_bottomButton setTitle:@"添加好友" forState:UIControlStateNormal];
+//        }
+         [_bottomButton setTitle:@"添加好友" forState:UIControlStateNormal];
+        
     }
     
     [_bottomButton mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -107,7 +119,11 @@
 #pragma mark - 点击bottomButton事件
 -(void)clickBottomButton
 {
-    if (!_isFriendRelationShip) {
+//     [_bottomButton setTitle:@"添加好友" forState:UIControlStateNormal];
+    //小助手100000
+//    ProfileInfo * info = [[ProvisionManager sharedInstance] getProfile];
+//    if (!_isFriendRelationShip && ![info.studentNo isEqualToString:@"123456"]) {
+     if (!_isFriendRelationShip) {
         //展示提示
         YCommonAlertView *alert = [[YCommonAlertView alloc] initWithTitle:nil
                                                                   message:[NSString stringWithFormat:@"确定向%@发送好友申请吗？", _shareData[@"name"]]
