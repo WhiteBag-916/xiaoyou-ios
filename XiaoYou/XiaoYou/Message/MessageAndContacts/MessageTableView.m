@@ -28,18 +28,18 @@
 #import "EMConversation.h"
 #import "InterestViewController.h"
 
-#define kRowHeight                     68
-#define kHeadWidthAndHeight            40
-#define kNameLabelWidth                200
-#define kTimeLabelWidth                60
-#define kHeadCornerRadius              20
-#define kPaddingDistance               10
-#define kLabelHeightDistacnce          16
-#define kBadgeWidthDistance            21
-#define kRemindImageViewWidth          13
-#define kRemindImageViewHeight         15
-#define kRemindImageViewToRight        25
-#define kBottomLineHeight              0.4
+#define kRowHeight                     SCALE_NUM(68)
+#define kHeadWidthAndHeight            SCALE_NUM(40)
+#define kNameLabelWidth                SCALE_NUM(200)
+#define kTimeLabelWidth                SCALE_NUM(60)
+#define kHeadCornerRadius              SCALE_NUM(20)
+#define kPaddingDistance               SCALE_NUM(10)
+#define kLabelHeightDistacnce          SCALE_NUM(16)
+#define kBadgeWidthDistance            SCALE_NUM(21)
+#define kRemindImageViewWidth          SCALE_NUM(13)
+#define kRemindImageViewHeight         SCALE_NUM(15)
+#define kRemindImageViewToRight        SCALE_NUM(25)
+#define kBottomLineHeight              SCALE_NUM(0.4)
 
 
 
@@ -184,7 +184,7 @@
     [funBackView addSubview:_goodLookTimeLabel];
     
     //底线
-    UIView * funBottomView = [[UIView alloc] initWithFrame:CGRectMake(0, kRowHeight-1, SCREEN_WIDTH, kBottomLineHeight)];
+    UIView * funBottomView = [[UIView alloc] initWithFrame:CGRectMake(0, kRowHeight-SCALE_NUM(1), SCREEN_WIDTH, kBottomLineHeight)];
     funBottomView.backgroundColor = [UIColor grayColor];
     funBottomView.alpha = 0.6;
     [funBackView addSubview:funBottomView];

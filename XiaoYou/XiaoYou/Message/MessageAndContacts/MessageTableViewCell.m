@@ -20,16 +20,16 @@
 #import "YUtils+Component.h"
 #import "LinkManList.h"
 
-#define kHeadWidthAndHeight            40
-#define kNameLabelWidth                80
-#define kTimeLabelWidth                80
-#define kHeadCornerRadius              20
-#define kPaddingDistance               10
-#define kLabelHeightDistacnce          16
-#define kBadgeWidthDistance            28
-#define kClassLabelDistance            5
-#define kClassLabelWidthAndHeight      30
-#define kBottomLineHeight              0.4
+#define kHeadWidthAndHeight            SCALE_NUM(40)
+#define kNameLabelWidth                SCALE_NUM(80)
+#define kTimeLabelWidth                SCALE_NUM(80)
+#define kHeadCornerRadius              SCALE_NUM(20)
+#define kPaddingDistance               SCALE_NUM(10)
+#define kLabelHeightDistacnce          SCALE_NUM(16)
+#define kBadgeWidthDistance            SCALE_NUM(28)
+#define kClassLabelDistance            SCALE_NUM(5)
+#define kClassLabelWidthAndHeight      SCALE_NUM(30)
+#define kBottomLineHeight              SCALE_NUM(0.4)
 
 
 typedef enum : NSUInteger {
@@ -353,7 +353,7 @@ NSString *const kMessageTableViewCell = @"MessageTableViewCellId";
     NSInteger ret = 0;
     ret = conversation.unreadMessagesCount;
     
-    NSString * count = [NSString stringWithFormat:@"%d",ret];
+    NSString * count = [NSString stringWithFormat:@"%ld",ret];
     
     return  count;
 }

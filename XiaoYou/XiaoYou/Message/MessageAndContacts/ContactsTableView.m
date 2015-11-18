@@ -19,18 +19,18 @@
 #import "ContactManager.h"
 #import "LinkManList.h"
 
-#define kRowHeight                     68
-#define kHeadWidthAndHeight            40
-#define kNameLabelWidth                200
-#define kHeadCornerRadius              20
-#define kPaddingDistance               10
-#define kLabelHeightDistacnce          14
-#define kClassLabelDistance            5
-#define kClassLabelWidthAndHeight      40
-#define kRemindImageViewWidth          13
-#define kRemindImageViewHeight         15
-#define kRemindImageViewToRight        25
-#define kBottomLineHeight              0.4
+#define kRowHeight                     SCALE_NUM(68)
+#define kHeadWidthAndHeight            SCALE_NUM(40)
+#define kNameLabelWidth                SCALE_NUM(200)
+#define kHeadCornerRadius              SCALE_NUM(20)
+#define kPaddingDistance               SCALE_NUM(10)
+#define kLabelHeightDistacnce          SCALE_NUM(14)
+#define kClassLabelDistance            SCALE_NUM(5)
+#define kClassLabelWidthAndHeight      SCALE_NUM(40)
+#define kRemindImageViewWidth          SCALE_NUM(13)
+#define kRemindImageViewHeight         SCALE_NUM(15)
+#define kRemindImageViewToRight        SCALE_NUM(25)
+#define kBottomLineHeight              SCALE_NUM(0.4)
 
 
 @interface ContactsTableView ()<UITableViewDataSource,UITableViewDelegate>
@@ -172,7 +172,7 @@
     [classBackView addSubview:classFlagLabel];
     
     //底线
-    UIView * classBottomView = [[UIView alloc] initWithFrame:CGRectMake(0, kRowHeight-1, SCREEN_WIDTH, kBottomLineHeight)];
+    UIView * classBottomView = [[UIView alloc] initWithFrame:CGRectMake(0, kRowHeight-SCALE_NUM(1), SCREEN_WIDTH, kBottomLineHeight)];
     classBottomView.backgroundColor = [UIColor grayColor];
     classBottomView.alpha = 0.6;
     [classBackView addSubview:classBottomView];
@@ -449,7 +449,7 @@
     
     if ([cell.studentDic[@"linkType"] doubleValue] == 0) {
         XYContactsInfoDetailViewController * contactsInfoDetailVC = [[XYContactsInfoDetailViewController alloc] init];
-        contactsInfoDetailVC.studentDic = cell.studentDic;
+        contactsInfoDetailVC.studentDic = (NSMutableDictionary *)cell.studentDic;
         contactsInfoDetailVC.uid = cell.studentDic[@"uid"];
         [self.myController.navigationController pushViewController:contactsInfoDetailVC animated:YES needHiddenBottomBar:YES];
     }
