@@ -18,6 +18,7 @@
 #import "Author.h"
 #import "Tags.h"
 #import "UIDevice+DeviceType.h"
+#import "TagsCommonView.h"
 
 #define KPAGENUM 15
 
@@ -171,61 +172,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     Author * author = _personListArray[indexPath.row];
-    ProfileInfo * model = [[ProfileInfo alloc] init];
-    model.propetiesCommon = author.propetiesCommon;
-    model.tagsCommon = author.tagsCommon;
-    
-    if (model.tagsCommon.count > 0)
-    {
-        CGFloat height;
-        if (model.propetiesCommon.count > 0)
-        {
-            height = SCALE_NUM(120);
-        }
-        else
-        {
-            height = SCALE_NUM(95);
-        }
-        
-        for (int i = 0; i < model.tagsCommon.count; i++)
-        {
-            CGFloat width = 0;
-            Tags * tag = model.tagsCommon[i];
-            NSDictionary *attributes = @{NSFontAttributeName:[UIFont systemFontOfSize:SCALE_NUM(10)]};
-            CGSize textSize = [tag.name boundingRectWithSize:CGSizeMake(SCALE_NUM(300), SCALE_NUM(14)) options:NSStringDrawingTruncatesLastVisibleLine attributes:attributes context:nil].size;
-            
-            width += SCALE_NUM(10);
-            width += SCALE_NUM(textSize.width + 15);
-            
-            CGFloat  limitWidth = SCALE_NUM(SCREEN_WIDTH - 115);
-            if (width > limitWidth)
-            {
-                height += SCALE_NUM(20);
-                width = SCALE_NUM(textSize.width + 15);
-            }
-            
-        }
-        if ([[UIDevice getCurrentDeviceModel] containsString:@"iPhone 4"]) {
-            height -= 20;
-        }
-        return height;
-    }
-    else
-    {
-        if (model.propetiesCommon.count <= 0)
-        {
-            if (ProfilePersonListTypeFind == _type || ProfilePersonListTypeNoticePerson == _type)
-            {
-                return SCALE_NUM(65);
-            }
-            else
-            {
-                return 0;
-            }
-            
-        }
-        return SCALE_NUM(95);
-    }
-    
+    CGFloat height = [TagsCommonView calculatorHeightByTagsCommon:author.tagsCommon propetiesCommon:author.propetiesCommon];
+    return height += SCALE_NUM(53);
 }
 @end

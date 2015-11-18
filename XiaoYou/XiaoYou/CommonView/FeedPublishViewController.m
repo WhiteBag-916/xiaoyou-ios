@@ -240,6 +240,7 @@
 - (void)initImgView {
     _imgGroup = [[FeedImageGroup alloc] initWithCamera];
     _imgGroup.hasSaveBtn = false;
+    _imgGroup.hasDeleteBtn = true;
     [_contentView addSubview:_imgGroup];
     [_imgGroup mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.mas_equalTo(KIMGGROUPMARGIN_LEFT);
@@ -265,7 +266,6 @@
         make.height.mas_equalTo(1);
     }];
     line.backgroundColor = [UIColor blackColor];
-    
     UILabel *info = [[UILabel alloc] init];
     [_bottomView addSubview:info];
     [info mas_makeConstraints:^(MASConstraintMaker *make) {

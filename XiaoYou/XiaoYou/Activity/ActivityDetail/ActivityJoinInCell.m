@@ -34,7 +34,15 @@
 {
     if (self = [super init]) {
         self.selectionStyle = UITableViewCellSelectionStyleNone;
-        [self initViewWithType];
+        [self initView];
+    }
+    return self;
+}
+
+-(instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
+{
+    if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
+        [self initView];
     }
     return self;
 }
@@ -55,13 +63,16 @@
         [_joinInHeadView updateConstraints];
     }
     else if (type == NOT_TOPVIEW) {
+        [_joinInHeadView mas_updateConstraints:^(MASConstraintMaker *make) {
+            make.height.mas_equalTo(0);
+        }];
         [_joinInHeadView clearContent];
     }
 }
 
 
 //初始化控件
--(void)initViewWithType
+-(void)initView
 {
     _joinInHeadView = [[JoinInHeadView alloc]init];
     [self.contentView addSubview:_joinInHeadView];

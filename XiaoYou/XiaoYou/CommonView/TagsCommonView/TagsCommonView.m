@@ -59,17 +59,8 @@
         make.left.equalTo(_flagImageView.mas_right).offset(kPaddingDistance);
         make.top.equalTo(self).offset(kPaddingDistance);
     }];
-//    [self.tagCollectionView mas_makeConstraints:^(MASConstraintMaker *make) {
-//        make.top.equalTo(_connectTag.mas_bottom).offset(SCALE_NUM(5));
-//        make.left.equalTo(_connectTag.mas_left).offset(-kPaddingDistance/2);
-//        make.trailing.mas_equalTo(0);
-////        make.height.mas_equalTo(height);
-//        make.bottom.equalTo(self);
-//    }];
-    
-    [self tagCollectionView];
-    
-    _tagCollectionView.backgroundColor = [UIColor clearColor];
+    //这行创建和设置背景颜色
+    self.tagCollectionView.backgroundColor = [UIColor clearColor];
     
     [_connectTag updateWithTag:_model.propetiesCommon];
     
@@ -124,7 +115,6 @@
     if (!_tagCollectionView) {
         _tagCollectionView.backgroundColor = [UIColor clearColor];
         MyFlowLayout *layout = [[MyFlowLayout alloc]init];
-//        UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc]init];
         layout.minimumInteritemSpacing = SCALE_NUM(10);
         _tagCollectionView = [[UICollectionView alloc]initWithFrame:CGRectZero collectionViewLayout:layout];
         [self addSubview:_tagCollectionView];
@@ -160,20 +150,7 @@
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     Tags * tag = _commonTagsArr[indexPath.row];
-    
     TagCollectionCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:REUSECELL forIndexPath:indexPath];
-    /*
-    // 判断为空进行初始化  --（当拉动页面显示超过主页面内容的时候就会重用之前的cell，而不会再次初始化）
-    if (cell == nil) {
-        cell = [[TagCollectionCell alloc] init];
-    }
-    else//当页面拉动的时候 当cell存在并且最后一个存在 把它进行删除就出来一个独特的cell我们在进行数据配置即可避免
-    {
-        while ([cell.contentView.subviews lastObject] != nil) {
-            [(UIView *)[cell.contentView.subviews lastObject] removeFromSuperview];
-        }
-    }
-    */
     [cell setCellInfo:tag];
     return cell;
 }
@@ -186,7 +163,7 @@
     Tags * tag = _commonTagsArr[indexPath.row];
     NSDictionary *attributes = @{NSFontAttributeName:CONTENT_FONT(10)};
     CGSize textSize = [tag.name boundingRectWithSize:CGSizeMake(SCALE_NUM(300), SCALE_NUM(20)) options:NSStringDrawingTruncatesLastVisibleLine attributes:attributes context:nil].size;
-    return CGSizeMake(SCALE_NUM(textSize.width+15), SCALE_NUM(14));
+    return CGSizeMake(SCALE_NUM(textSize.width+15), SCALE_NUM(15));
 }
 //定义每个UICollectionView 的间距（返回UIEdgeInsets：上、左、下、右）
 -(UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section
@@ -217,5 +194,77 @@
     return SCALE_NUM(5);
 }
 
+
++ (CGFloat)calculatorHeightByTagsCommon:(NSArray<Tags*> *)tagsCommon propetiesCommon:(NSArray<Tags*> *)propetiesCommon
+{
+    CGFloat height,width = 0.0;
+    NSInteger tagsCount = tagsCommon.count;
+    NSInteger propetiesCount = propetiesCommon.count;
+    //1.没有任何标签 2.只有关系标签
+    if (tagsCount == 0 && propetiesCount == 0) return 0;
+    if (tagsCount == 0 && propetiesCount > 0) return SCALE_NUM(45);
+    height = propetiesCount == 0 ? SCALE_NUM(45) : SCALE_NUM(70);
+    
+    NSDictionary *attributes = @{NSFontAttributeName:CONTENT_FONT(10)};
+    for (int i = 0; i < tagsCount; i++)
+    {
+        Tags * tag = tagsCommon[i];
+        CGSize textSize = [tag.name boundingRectWithSize:CGSizeMake(SCALE_NUM(300), SCALE_NUM(14)) options:NSStringDrawingTruncatesLastVisibleLine attributes:attributes context:nil].size;
+        //文本宽度 ＋ 前置空白行 ＋ 标签间距
+        width += SCALE_NUM(textSize.width + 15 + 5);
+        CGFloat  limitWidth = SCREEN_WIDTH - SCALE_NUM(115);
+        if (width > limitWidth)
+        {
+            height += SCALE_NUM(20);
+            width = SCALE_NUM(textSize.width + 15);
+        }
+    }
+    return height;
+}
+
+
+//-(CGFloat)calculatorTagsCommHeightByProfileInfo:(ProfileInfo*)model
+//{
+//    
+//    if (model.tagsCommon.count > 0)
+//    {
+//        CGFloat height;
+//        if (model.propetiesCommon.count > 0)
+//        {
+//            height = SCALE_NUM(70);
+//        }
+//        else
+//        {
+//            height = SCALE_NUM(45);
+//        }
+//        
+//        for (int i = 0; i < model.tagsCommon.count; i++)
+//        {
+//            CGFloat width;
+//            Tags * tag = model.tagsCommon[i];
+//            NSDictionary *attributes = @{NSFontAttributeName:CONTENT_FONT(10)};
+//            CGSize textSize = [tag.name boundingRectWithSize:CGSizeMake(SCALE_NUM(300), SCALE_NUM(14)) options:NSStringDrawingTruncatesLastVisibleLine attributes:attributes context:nil].size;
+//            
+//            width += SCALE_NUM(5);
+//            width += SCALE_NUM(textSize.width + 15);
+//            
+//            CGFloat  limitWidth = SCREEN_WIDTH - SCALE_NUM(115);
+//            if (width > limitWidth)
+//            {
+//                height += SCALE_NUM(20);
+//                width = SCALE_NUM(textSize.width + 15);
+//            }
+//        }
+//        return height;
+//    }
+//    else
+//    {
+//        if (model.propetiesCommon.count <= 0)
+//        {
+//            return 0;
+//        }
+//        return SCALE_NUM(45);
+//    }
+//}
 
 @end
