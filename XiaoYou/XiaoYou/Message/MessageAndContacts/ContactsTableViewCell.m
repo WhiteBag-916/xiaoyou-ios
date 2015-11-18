@@ -114,8 +114,8 @@ NSString *const kContactsTableViewCell = @"ContactsTableViewCell";
     }];
     _tagContent.maxLines = 1;
     _tagContent.clipsToBounds = true;
-    _tagContent.insets = SCALE_NUM(21);
-    _tagContent.lineSpace = SCALE_NUM(-5);
+    _tagContent.insets = 21;
+    _tagContent.lineSpace = -5;
     _tagContent.singleLine = false;
     _tagContent.preferredMaxLayoutWidth = SCALE_NUM(240);
     

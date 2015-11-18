@@ -18,18 +18,18 @@
 #import "XYSendMessageViewController.h"
 #import "YFaceImageView.h"
 
-#define kHeadCornerRadius              22.5
-#define kPaddingDistance               12
-#define kHeadImageWidthAndHeight       45
-#define kNameWidth                     100
-#define kNameHeight                    20
-#define kDetailButtonHeight            14
-#define kSexHeightAndWidth             20
-#define kInfoLabelToNameLabel          20
-#define kFlagImageViewWidth            11
-#define kFlagImageViewHeight           14
-#define kFlagImageViewToHead           30
-#define kFlagLabelToHead               23
+#define kHeadCornerRadius              SCALE_NUM(22.5)
+#define kPaddingDistance               SCALE_NUM(12)
+#define kHeadImageWidthAndHeight       SCALE_NUM(45)
+#define kNameWidth                     SCALE_NUM(100)
+#define kNameHeight                    SCALE_NUM(20)
+#define kDetailButtonHeight            SCALE_NUM(14)
+#define kSexHeightAndWidth             SCALE_NUM(20)
+#define kInfoLabelToNameLabel          SCALE_NUM(20)
+#define kFlagImageViewWidth            SCALE_NUM(11)
+#define kFlagImageViewHeight           SCALE_NUM(14)
+#define kFlagImageViewToHead           SCALE_NUM(30)
+#define kFlagLabelToHead               SCALE_NUM(23)
 
 
 NSString *const kGroupApplyTableViewCell = @"GroupApplyTableViewCellId";
@@ -134,11 +134,11 @@ NSString *const kGroupApplyTableViewCell = @"GroupApplyTableViewCellId";
         make.top.equalTo(_headImageView.mas_bottom).offset(kFlagLabelToHead);
         make.left.equalTo(_nameLabel.mas_left);
         make.right.equalTo(self.contentView.mas_right).offset(-kPaddingDistance);
-        make.bottom.equalTo(self.contentView.mas_bottom).offset(-50);
+        make.bottom.equalTo(self.contentView.mas_bottom).offset(SCALE_NUM(-50));
     }];
     _tagContent.maxLines = 2;
-    _tagContent.insets = 21;
-    _tagContent.lineSpace = -8;
+    _tagContent.insets = SCALE_NUM(21);
+    _tagContent.lineSpace = SCALE_NUM(-5);
     _tagContent.singleLine = false;
     _tagContent.preferredMaxLayoutWidth = SCALE_NUM(250);
     
