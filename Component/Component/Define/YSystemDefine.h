@@ -18,7 +18,7 @@
 #define isScreen5_5Inch ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(1242, 2208), [[UIScreen mainScreen] currentMode].size) : NO)
 
 #define system_Version [[[UIDevice currentDevice] systemVersion] floatValue]
-#define kBundle_Short_Version [[[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"] floatValue]
+#define kBundle_Short_Version [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"]
 
 static const NSInteger kLayoutPriorityDefaultVeryHigh = 999;
 

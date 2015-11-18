@@ -33,6 +33,7 @@
 #import "RegAction.h"
 #import "RegNoticeAction.h"
 #import "Tags.h"
+#import "CheckLastVersionAction.h"
 
 #define kProvisionManagerSyncQueue @"kProvisionManagerSyncQueue"
 
@@ -516,6 +517,16 @@ DEF_SINGLETON(ProvisionManager);
     CommonAction* action = [[CommonAction alloc] init];
     action.parameter = [YUtils getParameter:@{@"authCode" : authCode, @"studentNo":[YShareData defaultData][kShareData_StudentNo], @"schoolCode":[YShareData defaultData][kShareData_SchoolCode], @"password":password}];
     action.url = [YUtils getUrl:api_login_resetPwd];
+    
+    [YAction startAction:action completionBlock:^(YActionMessage* message) {
+        //主线程处理界面
+        block(message);
+    }];
+}
+
+//查询最新版本接口
+- (void)checkLastVersion:(ActionCompleteBlock)block {    
+    CheckLastVersionAction* action = [[CheckLastVersionAction alloc] init];
     
     [YAction startAction:action completionBlock:^(YActionMessage* message) {
         //主线程处理界面
