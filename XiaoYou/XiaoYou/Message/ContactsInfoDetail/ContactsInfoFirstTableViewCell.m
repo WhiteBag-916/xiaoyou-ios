@@ -42,8 +42,8 @@ NSString *const kContactsInfoFirstTableViewCell = @"ContactsInfoFirstTableViewCe
     [self.contentView addSubview:_statesLabel];
     [_statesLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.bottom.equalTo(self.contentView);
-        make.right.mas_equalTo(-12);
-        make.left.mas_equalTo(70);
+        make.right.mas_equalTo(SCALE_NUM(-12));
+        make.left.mas_equalTo(SCALE_NUM(70));
     }];
 }
 

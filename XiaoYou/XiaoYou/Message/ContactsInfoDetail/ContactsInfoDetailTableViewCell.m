@@ -9,11 +9,11 @@
 #import "ContactsInfoDetailTableViewCell.h"
 #import "SDPhotoBrowser.h"
 
-#define kFlagImageDistanceToLeft            22
-#define kLabelDistanceToRight               22
-#define kFlagImageWidthAndHeight            20
-#define kFlagImageDistanceToLabel           25
-#define kLabelHeight                        20
+#define kFlagImageDistanceToLeft            SCALE_NUM(22)
+#define kLabelDistanceToRight               SCALE_NUM(22)
+#define kFlagImageWidthAndHeight            SCALE_NUM(20)
+#define kFlagImageDistanceToLabel           SCALE_NUM(25)
+#define kLabelHeight                        SCALE_NUM(20)
 
 NSString *const kContactsInfoDetailTableViewCell = @"ContactsInfoDetailTableViewCellId";
 
@@ -64,7 +64,7 @@ NSString *const kContactsInfoDetailTableViewCell = @"ContactsInfoDetailTableView
     [self.contentView addSubview:_line];
     [_line mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.bottom.right.equalTo(self.contentView);
-        make.height.mas_equalTo(1);
+        make.height.mas_equalTo(SCALE_NUM(1));
     }];
     _line.backgroundColor = KCOLOR_e6ebea;
 }
