@@ -10,8 +10,6 @@
 #import "ASIHTTPRequest.h"
 #import "ProvisionManager.h"
 
-#define APP_URL @"http://itunes.apple.com/lookup?id=1024046567"
-
 @interface AppDelegate ()<UIAlertViewDelegate>
 
 @end
