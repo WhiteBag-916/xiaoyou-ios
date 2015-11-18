@@ -20,14 +20,7 @@
 
 -(void)isNeedToUpDate
 {
-//    self.checkLastVersionModel = [[CheckLastVersionModel alloc] init];
-//    self.checkLastVersionModel.version = @"3.1";
-//    self.checkLastVersionModel.about = @"请更新";
-//    self.checkLastVersionModel.appPath = @"http://www.baidu.com";
-//    self.checkLastVersionModel.compulsoryRenewal = YES;
-    
-//    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:[NSString stringWithFormat:@"%@ 版本更新",self.checkLastVersionModel.version] message:self.checkLastVersionModel.about delegate:self cancelButtonTitle:@"稍后更新" otherButtonTitles:@"现在更新", nil];
-//    [alert show];
+
     [[ProvisionManager sharedInstance] checkLastVersion:^(YActionMessage *message) {
         if (message.isSuccess)
         {
