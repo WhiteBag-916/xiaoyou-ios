@@ -57,10 +57,9 @@
 -(void)setType:(CELLTYPE)type
 {
     if (type == IS_TOPVIEW) {
-        [_joinInHeadView mas_makeConstraints:^(MASConstraintMaker *make) {
+        [_joinInHeadView mas_updateConstraints:^(MASConstraintMaker *make) {
             make.height.mas_equalTo(SCALE_NUM(49)).priorityHigh();
         }];
-        [_joinInHeadView updateConstraints];
     }
     else if (type == NOT_TOPVIEW) {
         [_joinInHeadView mas_updateConstraints:^(MASConstraintMaker *make) {
@@ -128,6 +127,8 @@
 -(void)setData:(Author *)joinModel
 {
     //没有人参加
+    _noSomeOneJoinImageView.hidden = YES;
+    _joinTopView.hidden = NO;
     if (joinModel.uid == nil && joinModel.studentNo == nil) {
         _joinTopView.hidden = YES;
         _tagsWrapView.hidden = YES;
@@ -146,6 +147,7 @@
     }
     _author = joinModel;
     [_joinTopView setData:joinModel];
+    //[self bringSubviewToFront:_joinTopView];
     
     ProfileInfo *profile = [[ProfileInfo alloc]init];
     profile.propetiesCommon = joinModel.propetiesCommon;

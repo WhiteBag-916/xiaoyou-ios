@@ -114,7 +114,6 @@
             if ([message.object count] < KPAGENUM) {
                 [self showNoticeNoMoreData];
             }
-            [_remindListArray removeAllObjects];
             [self reloadData];
             _currentIndex += KPAGENUM;
         } else {
