@@ -42,4 +42,7 @@
  *
  */
 - (int)getImgCount;
+
+//打开相机
+- (void)openPhoto;
 @end

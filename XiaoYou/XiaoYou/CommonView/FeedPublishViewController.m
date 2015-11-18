@@ -451,42 +451,19 @@
         [AVCaptureDevice requestAccessForMediaType:AVMediaTypeVideo completionHandler:^(BOOL granted) {
             if(granted){//点击允许访问时调用
                 //用户明确许可与否，媒体需要捕获，但用户尚未授予或拒绝许可。
-                //                self.picker = [[UIImagePickerController alloc] init];
-                //                [self.picker setSourceType:UIImagePickerControllerSourceTypeCamera];
-                //                self.picker.delegate = self;
-                //                [self.picker setAllowsEditing:YES];
-                //                [self presentViewController:self.picker animated:YES completion:nil];
-                //UzysAssetsPickerController *picker = [[UzysAssetsPickerController alloc] init];
-                
-                //[picker takePhoto];
-//                UzysAssetsPickerController *picker = [[UzysAssetsPickerController alloc] init];
-//                picker.assetsFilter = [ALAssetsFilter allPhotos];
-//                picker.maximumNumberOfSelectionVideo = 0;
-//                picker.maximumNumberOfSelectionPhoto = 9;
-//                picker.delegate = self;
-                
-//                [self presentViewController:picker animated:YES completion:^{
-//                    [picker takePhoto];
-//                }];
-                
+                UIImagePickerController *picker = [[UIImagePickerController alloc] init];
+                [picker setSourceType:UIImagePickerControllerSourceTypeCamera];
+                picker.delegate = self;
+                [self presentViewController:picker animated:YES completion:nil];
             } else {
                 
             }
         }];
     }else{
-        //        self.picker = [[UIImagePickerController alloc] init];
-        //        [self.picker setSourceType:UIImagePickerControllerSourceTypeCamera];
-        //        self.picker.delegate = self;
-        //        [self presentViewController:self.picker animated:YES completion:nil];
-//        UzysAssetsPickerController *picker = [[UzysAssetsPickerController alloc] init];
-//        picker.assetsFilter = [ALAssetsFilter allPhotos];
-//        picker.maximumNumberOfSelectionVideo = 0;
-//        picker.maximumNumberOfSelectionPhoto = 9;
-//        picker.delegate = self;
-//        
-//        [self presentViewController:picker animated:YES completion:^{
-//            [picker takePhoto];
-//        }];
+        UIImagePickerController *picker = [[UIImagePickerController alloc] init];
+        [picker setSourceType:UIImagePickerControllerSourceTypeCamera];
+        picker.delegate = self;
+        [self presentViewController:picker animated:YES completion:nil];
     }
     //照片选择
 }
@@ -694,5 +671,21 @@
         [textView setText:[textView.text substringWithRange:NSMakeRange(0, 5000)]];
     }
 }
+
+
+#pragma mark - 拍照的协议方法
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
+{
+    UIImage *orgImage = info[UIImagePickerControllerOriginalImage];
+    [picker dismissViewControllerAnimated:YES completion:^{
+        [self savePic:orgImage];
+    }];
+}
+
+- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
+{
+    [picker dismissViewControllerAnimated:YES completion:nil];
+}
+
 
 @end

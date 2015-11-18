@@ -65,7 +65,7 @@
         _notifyDataSource = [NotifyInfoModel objectArrayWithKeyValuesArray:queryArr];
         [dataBaseDao deleteAllDataWithTableName:tableName];
         
-        //移除不属于自己的信息
+        //移除不属于自己的信息，避免换账号登录显示别人的提醒信息
         for (NotifyInfoModel *model in _notifyDataSource) {
             NSString *uid = [[YShareData defaultData] valueForKey:kShareData_UserID];
             if (![model.uid isEqualToString:uid]) {
