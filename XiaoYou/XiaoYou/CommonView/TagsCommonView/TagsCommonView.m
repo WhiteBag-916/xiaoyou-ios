@@ -67,6 +67,7 @@
 }
 
 
+
 - (void)setData:(id) model
 {
     [_tagCollectionView removeFromSuperview];
@@ -78,6 +79,7 @@
         _model = model;
     } else if ([model isKindOfClass:[Author class]]) {
         Author *author = model;
+        _model = [[ProfileInfo alloc]init];
         _model.tagsCommon = author.tagsCommon;
         _model.propetiesCommon = author.propetiesCommon;
     }

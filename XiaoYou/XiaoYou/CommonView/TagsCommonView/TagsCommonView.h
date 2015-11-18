@@ -15,9 +15,6 @@
 
 - (void)setData:(id) model;
 
-//通过标签直接设置
-//- (void)setDataWithTagsCommon:(NSArray<Tags*> *)tagsCommon propetiesCommon:(NSArray<Tags*> *)propetiesCommon;
-
 //根据标签计算控件高度的方法
 + (CGFloat)calculatorHeightByTagsCommon:(NSArray<Tags*> *)tagsCommon propetiesCommon:(NSArray<Tags*> *)propetiesCommon;
 
