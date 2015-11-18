@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CheckLastVersionModel.h"
 
 @class XYTabBarViewController;
 @class DDMenuController;
@@ -17,6 +18,7 @@
 @property (nonatomic, strong) XYTabBarViewController *tabBar;
 @property (nonatomic, strong) DDMenuController *menuController;
 
+@property (nonatomic,strong) CheckLastVersionModel * checkLastVersionModel;
 
 @end
 
