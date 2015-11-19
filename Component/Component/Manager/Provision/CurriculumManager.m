@@ -54,7 +54,7 @@ DEF_SINGLETON(CurriculumManager);
 
 - (void)appDidLogout:(NSDictionary *)logoutInfo
 {
-    
+    [self.findMyCourseArray removeAllObjects];
 }
 
 //取课程时间
