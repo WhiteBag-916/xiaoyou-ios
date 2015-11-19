@@ -147,7 +147,7 @@
     
     //提示
     UILabel * remindLabel = [[UILabel alloc] init];
-    remindLabel.font = CONTENT_FONT(12);
+    remindLabel.font = CONTENT_FONT(SCALE_NUM(12));
     remindLabel.textColor = KCOLOR_B5;
     remindLabel.numberOfLines = 0;
     [remindLabel setText:@"提示：以社团身份发布活动需经过审核。若您的活动限制报名人数，请登录后台查看所有报名同学，并进行通过和拒绝操作。" lineSpacing:10];
