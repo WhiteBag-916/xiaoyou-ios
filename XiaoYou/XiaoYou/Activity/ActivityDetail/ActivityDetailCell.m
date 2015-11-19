@@ -108,7 +108,6 @@
                 notHaveImage = NO;
             }
         } else if ([imageText.type isEqualToString:@"text"]) {
-            //_descriptionLabel.text = imageText.content;
             [_descriptionLabel setText:imageText.content lineSpacing:5.0];
         }
     }
