@@ -279,10 +279,11 @@
     if ([model isKindOfClass:[NoticeInfo class]]) {
         [self setNoticeInfoData:model];
     } else if ([model isKindOfClass:[NotifyInfoModel class]]) {
-        [self setNotifyModel:model];
+        [self setNotifyInfoModelData:model];
     }
 }
 
+//列表请求数据使用
 -(void)setNoticeInfoData:(NoticeInfo *)model
 {
     _model = model;
@@ -302,7 +303,8 @@
     _activityTimeLabel.text = [NSString stringWithFormat:_activityTimeLabel.text,[TimeFormatterConvert timeConvertToFommtterAvailable:model.activityStartTime]];
 }
 
--(void)setNotifyData:(NotifyInfoModel *)model
+//推送通知使用
+-(void)setNotifyInfoModelData:(NotifyInfoModel *)model
 {
     _notifyModel = model;
     _titleImageView.image = nil;

@@ -1,4 +1,4 @@
-//
+
 //  MessageManager.m
 //  Component
 //
@@ -489,7 +489,7 @@ DEF_SINGLETON(MessageManager);
     
     switch (notiInfo.type)
     {
-        case ACTIVITY_ENROLL_CHECK_PASS: //审核通过
+        case ACTIVITY_ENROLL_CHECK_PASS: //报名审核通过
         {
             [dataBaseDao insertModel:notiInfo];
             break;

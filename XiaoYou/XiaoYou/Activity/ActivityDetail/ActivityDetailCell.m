@@ -96,7 +96,6 @@
     [_headImageView setFaceImageWithUrl:organizer.headPic];
     
     _titleLabel.text = organizer.name;
-    //_nameLabel.text = publishModel.name;
     [_nameLabel setText:publishModel.name lineSpacing:5.0f];
     NSArray *imageTextModels = model.activityPublishedDto.activityImageTextModels;
     //图片内容是否为空
@@ -326,9 +325,6 @@
     [_categotyImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(_locationLabel.mas_bottom).offset(SCALE_NUM(15));
         make.centerX.equalTo(_locationImageView);
-        //make.height.mas_equalTo(SCALE_NUM(17));
-        //make.width.mas_equalTo(SCALE_NUM(17));
-        //make.bottom.mas_equalTo(SCALE_NUM(-15));
     }];
     
     _categoryLabel = [[UILabel alloc]init];

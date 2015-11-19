@@ -22,7 +22,7 @@
 #import "ProvisionManager.h"
 #import "FeedFilterViewController.h"
 //测试用
-#import "FastViewController.h"
+//#import "FastViewController.h"
 #import "AppConfigData.h"
 #import "DDMenuController.h"
 
@@ -236,8 +236,8 @@
         [[UINavigationController alloc] initWithRootViewController:[[FeedPublishViewController alloc] init]];
         [self.view.window.rootViewController presentViewController:navigationController animated:YES completion:nil];
     } else if (self.viewIndex == 2) {
-        FastViewController *fastViewController = [[FastViewController alloc]init];
-        [self.navigationController pushViewController:fastViewController animated:YES needHiddenBottomBar:YES];
+        //FastViewController *fastViewController = [[FastViewController alloc]init];
+        //[self.navigationController pushViewController:fastViewController animated:YES needHiddenBottomBar:YES];
     }
 }
 

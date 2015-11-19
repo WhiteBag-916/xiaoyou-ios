@@ -66,11 +66,14 @@
         [dataBaseDao deleteAllDataWithTableName:tableName];
         
         //移除不属于自己的信息，避免换账号登录显示别人的提醒信息
+        NSString *uid = [[YShareData defaultData] valueForKey:kShareData_UserID];
+        if (uid != nil)
+        {
         for (NotifyInfoModel *model in _notifyDataSource) {
-            NSString *uid = [[YShareData defaultData] valueForKey:kShareData_UserID];
             if (![model.uid isEqualToString:uid]) {
                 [_notifyDataSource removeObject:model];
             }
+        }
         }
         //如果需要保存历史纪录的话,打开下面代码
 //        for (NotifyInfoModel *model in _notifyDataSource) {

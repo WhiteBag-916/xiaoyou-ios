@@ -293,6 +293,7 @@
     [_browser removeFromSuperview];
     _browser = nil;
     
+    //如果需要在删除图片之后，自动预览下一张，打开下面代码
     //图片被删除完，或者删除的最后一张
 //    if (self.smallImgs.count == 0) return;
 //    if (self.smallImgs.count < currentIndex +1)

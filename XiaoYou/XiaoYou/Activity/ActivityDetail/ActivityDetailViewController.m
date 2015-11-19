@@ -217,9 +217,6 @@
         return;
     }
     BOOL firsetEmpty = NO;
-//    NSMutableArray *indexPaths = [NSMutableArray array];
-//    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:1 inSection:0];
-//    [indexPaths addObject:indexPath];
     
     if (_detailListView.activityDetailArray.count == 2) {
         Author *tmp = _detailListView.activityDetailArray[1];
