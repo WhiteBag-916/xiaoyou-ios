@@ -148,10 +148,10 @@
     CGRect checkmarkRect = AGIPC_CHECKMARK_RECT;
     
     return CGRectMake(
-                      frame.size.width - checkmarkRect.size.width - checkmarkRect.origin.x,
-                      frame.size.height - checkmarkRect.size.height - checkmarkRect.origin.y,
-                      checkmarkRect.size.width,
-                      checkmarkRect.size.height
+                      frame.size.width - checkmarkRect.size.width - checkmarkRect.origin.x - 5,
+                      frame.size.height - checkmarkRect.size.height - checkmarkRect.origin.y - 5,
+                      checkmarkRect.size.width + 10,
+                      checkmarkRect.size.height + 10
                       );
 }
 

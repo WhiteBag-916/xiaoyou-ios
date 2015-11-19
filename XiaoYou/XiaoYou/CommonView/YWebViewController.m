@@ -80,6 +80,7 @@
     _progressProxy.webViewProxyDelegate = self;
     _progressProxy.progressDelegate = self;
     _webView.userInteractionEnabled = _canClick;
+    _webView.scalesPageToFit = YES;
 }
 
 - (void)initProgress {
