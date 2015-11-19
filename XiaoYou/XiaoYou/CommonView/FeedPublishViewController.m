@@ -393,7 +393,7 @@
     self.imagePickerVC.shouldShowSavedPhotosOnTop = NO;
     self.imagePickerVC.shouldChangeStatusBarStyle = YES;
     self.imagePickerVC.selection = self.picArray;
-    self.imagePickerVC.maximumNumberOfPhotosToBeSelected = 9 - self.picArray.count;
+    self.imagePickerVC.maximumNumberOfPhotosToBeSelected = 9 - [self.imgGroup getImgCount];
     
     [self presentViewController:self.imagePickerVC animated:YES completion:nil];
     

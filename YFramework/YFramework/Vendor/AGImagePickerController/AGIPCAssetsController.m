@@ -459,16 +459,29 @@
 {
     self.navigationItem.rightBarButtonItem.enabled = ([AGIPCGridItem numberOfSelections] > 0);
     
+    if ([AGIPCGridItem numberOfSelections] == 0) {
+         self.title = @"Camera Roll";
+    }
+    
     if (self.imagePickerController.shouldDisplaySelectionInformation) {
         if (0 == [AGIPCGridItem numberOfSelections] ) {
             self.navigationController.navigationBar.topItem.prompt = nil;
         } else {
             // Display supports up to select several photos at the same time, springox(20131220)
             NSInteger maxNumber = _imagePickerController.maximumNumberOfPhotosToBeSelected;
+            UILabel *promptLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, 44, 44)];
+            promptLabel.textColor = [UIColor whiteColor];
             if (0 < maxNumber) {
-                //self.navigationController.navigationBar.topItem.prompt = [NSString stringWithFormat:@"(%d/%d)", [AGIPCGridItem numberOfSelections], maxNumber];
+                //self.navigationController.navigationBar.topItem.prompt = [NSString stringWithFormat:@"(%lu/%ld)", (unsigned long)[AGIPCGridItem numberOfSelections], (long)maxNumber];
+                promptLabel.text = [NSString stringWithFormat:@"(%lu/%ld)", (unsigned long)[AGIPCGridItem numberOfSelections], (long)maxNumber];
+                self.title  = promptLabel.text;
+                //self.navigationController.navigationBar.topItem.titleView = promptLabel;
             } else {
-                //self.navigationController.navigationBar.topItem.prompt = [NSString stringWithFormat:@"(%d/%d)", [AGIPCGridItem numberOfSelections], self.assets.count];
+                //self.navigationController.navigationBar.topItem.prompt = [NSString stringWithFormat:@"(%lu/%lu)", (unsigned long)[AGIPCGridItem numberOfSelections], (unsigned long)self.assets.count];
+                
+                promptLabel.text = [NSString stringWithFormat:@"(%lu/%ld)", (unsigned long)[AGIPCGridItem numberOfSelections], (long)maxNumber];
+                self.title = promptLabel.text;
+                //self.navigationController.navigationBar.topItem.titleView = promptLabel;
             }
         }
     }

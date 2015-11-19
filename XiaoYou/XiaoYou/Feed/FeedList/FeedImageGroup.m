@@ -291,23 +291,23 @@
     _browser = nil;
     
     //图片被删除完，或者删除的最后一张
-    if (self.smallImgs.count == 0) return;
-    if (self.smallImgs.count < currentIndex +1)
-        self.currentIndex = self.currentIndex - 1;
-    
-    _browser = [[SDPhotoBrowser alloc] init];
-    
-    _browser.sourceImagesContainerView = _contentView;
-    
-    _browser.imageCount = _smallImgs.count;
-    
-    _browser.currentImageIndex = _currentIndex;
-    
-    _browser.delegate = self;
-    
-    _browser.hasSaveBtn = _hasSaveBtn;
-    _browser.hasDeleteBtn = _hasDeleteBtn;
-    [_browser show];
+//    if (self.smallImgs.count == 0) return;
+//    if (self.smallImgs.count < currentIndex +1)
+//        self.currentIndex = self.currentIndex - 1;
+//    
+//    _browser = [[SDPhotoBrowser alloc] init];
+//    
+//    _browser.sourceImagesContainerView = _contentView;
+//    
+//    _browser.imageCount = _smallImgs.count;
+//    
+//    _browser.currentImageIndex = _currentIndex;
+//    
+//    _browser.delegate = self;
+//    
+//    _browser.hasSaveBtn = _hasSaveBtn;
+//    _browser.hasDeleteBtn = _hasDeleteBtn;
+//    [_browser show];
 }
 
 //打开拍照功能
