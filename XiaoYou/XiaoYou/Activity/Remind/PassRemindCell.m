@@ -257,6 +257,17 @@
         self.remindTitleLabel.text = @"您的报名申请已提交,正在审核中";
     } else if (cellType == AUDIT_PASSED) {
         self.remindTitleLabel.text = @"恭喜,报名申请通过！！！";
+        _titleImageView.image = [[UIImage imageNamed:@"tick"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+        _bottomLineView.hidden = NO;
+        _tailLabel.text = @"看看还有什么人";
+        
+        [_titleImageView mas_updateConstraints:^(MASConstraintMaker *make) {
+            make.leading.mas_equalTo(10);
+            make.top.equalTo(self.wrapContentView).offset(18);
+            make.width.mas_equalTo(SCALE_NUM(14));
+            make.height.mas_equalTo(SCALE_NUM(13));
+        }];
+        
     } else if (cellType == AUDIT_NOT_PASSED) {
         _titleImageView.image = [[UIImage imageNamed:@"havetime_icon_no"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
         [_titleImageView mas_updateConstraints:^(MASConstraintMaker *make) {
@@ -293,12 +304,21 @@
         [_headImageView setFaceImageWithUrl:model.activityOrganizerHeadPic];
     else
         _headImageView.image = [UIImage imageNamed:@"default_head"];
-    if (_cellType == NOT_NEED_CHECK) {
-        _contentTitleLabel.text = model.activityOrganizer;
-    }
-    else {
+//    if (_cellType == NOT_NEED_CHECK) {
+//        _contentTitleLabel.text = model.activityOrganizer;
+//    }
+//    else {
+//        _contentTitleLabel.text = info.name;
+//    }
+    
+    if (model.activityOwner) {
         _contentTitleLabel.text = info.name;
     }
+    else
+    {
+        _contentTitleLabel.text = model.activityOrganizer;
+    }
+    
     _contentNameLabel.text = [NSString stringWithFormat:_contentNameLabel.text,model.activityName];
     _activityTimeLabel.text = [NSString stringWithFormat:_activityTimeLabel.text,[TimeFormatterConvert timeConvertToFommtterAvailable:model.activityStartTime]];
 }

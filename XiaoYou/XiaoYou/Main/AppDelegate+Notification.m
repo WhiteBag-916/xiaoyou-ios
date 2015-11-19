@@ -63,7 +63,7 @@
             if (userInfo[@"e"][@"type"] != nil) {
                 NSInteger type = [userInfo[@"e"][@"type"] integerValue];
                 
-                if (type == ACTIVITY_ENROLL_CHECK_PASS || type == ACTIVITY_ENROLL)
+                if (type == ACTIVITY_ENROLL_CHECK_PASS || type == ACTIVITY_ENROLL || type == ACTIVITY_ENROLL_NO_CHECK)
                     [self initNotifyRemindListNC];
                 else if (type >=ACTIVITY_ENROLL_CHECK_PASS && type <= ACTIVITY_NOTIFY)
                     [self initNotifyRemindNC];
@@ -142,11 +142,10 @@
     NSInteger type = [[dic valueForKey:kServerType] integerValue];
     if (type >= ACTIVITY_ENROLL_CHECK_PASS && type <= ACTIVITY_NOTIFY) {
      
-        if (type == 13 || type == 16)
+        if (type == 13 || type == 16 || type == ACTIVITY_ENROLL_NO_CHECK)
             [self initNotifyRemindListNC];
         else if (type >=13 && type <= 19)
             [self initNotifyRemindNC];
-        //[self initNotifyRemindNC];
     }
 }
 
