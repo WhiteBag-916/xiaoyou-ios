@@ -831,6 +831,8 @@
 		E48E09B11BD7B9880017D395 /* CheckCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E48E09B01BD7B9880017D395 /* CheckCollectionViewCell.m */; };
 		E48E09B41BD7BBCA0017D395 /* img_num6@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E48E09B21BD7BBCA0017D395 /* img_num6@2x.png */; };
 		E48E09B51BD7BBCA0017D395 /* img_num6@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E48E09B31BD7BBCA0017D395 /* img_num6@3x.png */; };
+		E490484E1BFD9EC8009A33DB /* havetime_tag_cutoff@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E490484C1BFD9EC8009A33DB /* havetime_tag_cutoff@2x.png */; };
+		E490484F1BFD9EC8009A33DB /* havetime_tag_cutoff@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E490484D1BFD9EC8009A33DB /* havetime_tag_cutoff@3x.png */; };
 		E49823E01BF9ADD100E275B1 /* AppDelegate+Update.m in Sources */ = {isa = PBXBuildFile; fileRef = E49823DF1BF9ADD100E275B1 /* AppDelegate+Update.m */; };
 		E4BE2DAA1BC7989300124F22 /* ContactsInfoFirstTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E4BE2DA91BC7989300124F22 /* ContactsInfoFirstTableViewCell.m */; };
 		E4BE2DAD1BC798A600124F22 /* ContactsInfoSecondTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E4BE2DAC1BC798A600124F22 /* ContactsInfoSecondTableViewCell.m */; };
@@ -2042,6 +2044,8 @@
 		E48E09B01BD7B9880017D395 /* CheckCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckCollectionViewCell.m; sourceTree = "<group>"; };
 		E48E09B21BD7BBCA0017D395 /* img_num6@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "img_num6@2x.png"; sourceTree = "<group>"; };
 		E48E09B31BD7BBCA0017D395 /* img_num6@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "img_num6@3x.png"; sourceTree = "<group>"; };
+		E490484C1BFD9EC8009A33DB /* havetime_tag_cutoff@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "havetime_tag_cutoff@2x.png"; sourceTree = "<group>"; };
+		E490484D1BFD9EC8009A33DB /* havetime_tag_cutoff@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "havetime_tag_cutoff@3x.png"; sourceTree = "<group>"; };
 		E49823DE1BF9ADD100E275B1 /* AppDelegate+Update.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AppDelegate+Update.h"; sourceTree = "<group>"; };
 		E49823DF1BF9ADD100E275B1 /* AppDelegate+Update.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AppDelegate+Update.m"; sourceTree = "<group>"; };
 		E4BE2DA81BC7989300124F22 /* ContactsInfoFirstTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactsInfoFirstTableViewCell.h; sourceTree = "<group>"; };
@@ -4135,6 +4139,8 @@
 		E43E104D1BCCFA830018B6D7 /* ActivityRelease */ = {
 			isa = PBXGroup;
 			children = (
+				E490484C1BFD9EC8009A33DB /* havetime_tag_cutoff@2x.png */,
+				E490484D1BFD9EC8009A33DB /* havetime_tag_cutoff@3x.png */,
 				E47C6A5A1BD4C95E0058DCAA /* havetime－icon_free@2x.png */,
 				E47C6A5B1BD4C95E0058DCAA /* havetime－icon_free@3x.png */,
 				E43E104E1BCCFA830018B6D7 /* btn_add@2x.png */,
@@ -4654,6 +4660,7 @@
 				20DD79051BA97D72009AD1A9 /* background-start-6p.png in Resources */,
 				204256311BFACE75002C2C9B /* UMSocialLocalizable.strings in Resources */,
 				65CF638C1B8EE17E00ACBB70 /* toseemore@2x.png in Resources */,
+				E490484E1BFD9EC8009A33DB /* havetime_tag_cutoff@2x.png in Resources */,
 				334670691B84228000A8628A /* contacts_bottom@2x.png in Resources */,
 				0494806E1BB94FF900C68460 /* too_see_more_arrow@2x.png in Resources */,
 				043AC8731BCF7BFC00AB6E09 /* mine_box_yard@3x.png in Resources */,
@@ -4863,6 +4870,7 @@
 				202BD76E1BD4E12800461577 /* build_icon_location@3x.png in Resources */,
 				204256361BFACE75002C2C9B /* UMShareEditViewController.xib in Resources */,
 				044DA0061BBA314300AA321A /* funny_location@2x.png in Resources */,
+				E490484F1BFD9EC8009A33DB /* havetime_tag_cutoff@3x.png in Resources */,
 				65CBE1691BC013B300C28D57 /* gift_respect@3x.png in Resources */,
 				3334AC0E1B82C89500FDDCCB /* chatBar_colorMore_photoSelected@2x.png in Resources */,
 				33F83A8C1B8B2B6D00FF5483 /* mine-heart-red@2x.png in Resources */,
