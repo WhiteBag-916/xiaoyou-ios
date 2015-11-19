@@ -31,7 +31,7 @@
     
     [self initRootVC];
     
-//    [self isNeedToUpDate];
+    [self isNeedToUpDate];
     
     return YES;
 }

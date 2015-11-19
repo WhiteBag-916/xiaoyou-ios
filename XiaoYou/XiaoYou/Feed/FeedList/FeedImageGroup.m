@@ -245,6 +245,9 @@
 }
 //放大图片
 - (void)choosePic:(UITapGestureRecognizer *)tap {
+    //隐藏键盘
+    [self.viewController.view endEditing:YES];
+    
     int index = (int)tap.view.tag - KIMGTAG;
     if (index < 0 || index >= _smallImgs.count) {
         return;

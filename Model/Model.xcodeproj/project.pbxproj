@@ -25,6 +25,7 @@
 		20402A1C1BE21B5900802DAF /* FreeBuildingListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 20402A1B1BE21B5900802DAF /* FreeBuildingListModel.m */; };
 		20402A221BE21FF300802DAF /* FreeBuildingDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 20402A211BE21FF300802DAF /* FreeBuildingDetailModel.m */; };
 		2040B7641BE8567E003DB0C3 /* FindMyCourseViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2040B7631BE8567E003DB0C3 /* FindMyCourseViewModel.m */; };
+		204DDAE01BFC869000D67569 /* CheckLastVersionModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 204DDADF1BFC869000D67569 /* CheckLastVersionModel.m */; };
 		20859A991B64C0BC00580ED3 /* ResultCommon.m in Sources */ = {isa = PBXBuildFile; fileRef = 20859A981B64C0BC00580ED3 /* ResultCommon.m */; };
 		20859AA31B64CB7E00580ED3 /* LoginResp.m in Sources */ = {isa = PBXBuildFile; fileRef = 20859AA01B64CB7E00580ED3 /* LoginResp.m */; };
 		20859AB31B64E2F600580ED3 /* YModel+ActionMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 20859AB21B64E2F600580ED3 /* YModel+ActionMessage.m */; };
@@ -136,6 +137,8 @@
 		20402A211BE21FF300802DAF /* FreeBuildingDetailModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FreeBuildingDetailModel.m; sourceTree = "<group>"; };
 		2040B7621BE8554B003DB0C3 /* FindMyCourseViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FindMyCourseViewModel.h; sourceTree = "<group>"; };
 		2040B7631BE8567E003DB0C3 /* FindMyCourseViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FindMyCourseViewModel.m; sourceTree = "<group>"; };
+		204DDADE1BFC869000D67569 /* CheckLastVersionModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheckLastVersionModel.h; sourceTree = "<group>"; };
+		204DDADF1BFC869000D67569 /* CheckLastVersionModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckLastVersionModel.m; sourceTree = "<group>"; };
 		20859A971B64C0BC00580ED3 /* ResultCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResultCommon.h; sourceTree = "<group>"; };
 		20859A981B64C0BC00580ED3 /* ResultCommon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResultCommon.m; sourceTree = "<group>"; };
 		20859A9F1B64CB7E00580ED3 /* LoginResp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginResp.h; sourceTree = "<group>"; };
@@ -354,6 +357,8 @@
 				333E95E91B70B7AB0001059D /* SchoolListModel.m */,
 				20E0C0731B88B0CA00EDAED4 /* ProfileInfo.h */,
 				20E0C0741B88B0CA00EDAED4 /* ProfileInfo.m */,
+				204DDADE1BFC869000D67569 /* CheckLastVersionModel.h */,
+				204DDADF1BFC869000D67569 /* CheckLastVersionModel.m */,
 			);
 			path = Provision;
 			sourceTree = "<group>";
@@ -660,6 +665,7 @@
 				20DD81611B91D22E00ACFD9A /* ForbiddenList.m in Sources */,
 				333E95EA1B70B7AB0001059D /* SchoolDetailModel.m in Sources */,
 				2030A2C31BE9B374003EDDF8 /* CourseDetail.m in Sources */,
+				204DDAE01BFC869000D67569 /* CheckLastVersionModel.m in Sources */,
 				333E95D61B70B7250001059D /* LinkManModel.m in Sources */,
 				20DA1A601B8995A000DEF95C /* ProvinceCode.m in Sources */,
 				040619DF1BDE174E008E3E4E /* NoticeInfo.m in Sources */,
