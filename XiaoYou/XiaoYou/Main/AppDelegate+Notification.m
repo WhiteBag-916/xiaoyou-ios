@@ -14,7 +14,6 @@
 #import "MessageManager.h"
 #import "AppDelegate+RootVC.h"
 #import "AppConfigData.h"
-#import "AppDelegate+Update.h"
 
 @implementation AppDelegate (Notification)
 
@@ -230,7 +229,6 @@
 
 - (void)appDidBecomeActiveNotif:(NSNotification*)notif
 {
-    [self isNeedToUpDate];
     [[EaseMob sharedInstance] applicationDidBecomeActive:notif.object];
 }
 
