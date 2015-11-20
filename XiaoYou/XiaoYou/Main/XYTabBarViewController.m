@@ -15,6 +15,7 @@
 #import "YCommonEditViewController.h"
 #import "ProfilePersonListController.h"
 #import "AvailableViewController.h"
+#import "YWebViewController.h"
 
 #define kTag_TabBar_Base 0
 #define kTag_TabBar_Message kTag_TabBar_Base + 1
@@ -52,6 +53,8 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(setupUnreadMessageCount:) name:KNotification_Message_unread object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(openPraise:) name:KNotification_Open_PraiseDetail object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(setupUnreadAlterCount) name:KNotification_Update_UnreadAlterCount object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(setupUnreadAlterCount) name:KNotification_Update_UnreadAlterCount object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(openBrowser:) name:KNotification_OpenBrowser object:nil];
     
     _messageVC = [[XYMessageAndContactsViewController alloc] init];
     FeedListViewController *feedVC = [[FeedListViewController alloc] init];
@@ -97,6 +100,13 @@
     
     self.tabBar.tintColor = KCOLOR_g1;
     self.viewControllers = @[_messageViewCotroller, _availableViewController, _feedListViewCotroller, profileViewCotroller];
+}
+
+- (void)openBrowser:(NSNotification *)notification {
+    NSString *url = [notification userInfo][@"url"];
+    NSString *title = [notification userInfo][@"title"];
+    UINavigationController *controller = (UINavigationController *)self.selectedViewController;
+    [controller pushViewController:[[YWebViewController alloc] initWithUrl:url andTitle:title canClick:true] animated:true];
 }
 
 //feed提醒未读数

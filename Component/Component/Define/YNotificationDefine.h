@@ -53,4 +53,7 @@
 //日程增删
 #define KNotification_Change_Schedule                   @"KNotification_Change_Schedule"
 
+//打开浏览器
+#define KNotification_OpenBrowser                       @"KNotification_OpenBrowser"
+
 #endif
