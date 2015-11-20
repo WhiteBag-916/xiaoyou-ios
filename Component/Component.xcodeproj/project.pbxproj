@@ -23,6 +23,7 @@
 		2030A2C61BE9DF40003EDDF8 /* UserSchedulingEditAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 2030A2C51BE9DF40003EDDF8 /* UserSchedulingEditAction.m */; };
 		20402A1F1BE21B8B00802DAF /* FreeBuildingListAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 20402A1E1BE21B8B00802DAF /* FreeBuildingListAction.m */; };
 		20402A251BE2200A00802DAF /* FreeBuildingDetailAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 20402A241BE2200A00802DAF /* FreeBuildingDetailAction.m */; };
+		204DDAE31BFC871000D67569 /* CheckLastVersionAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 204DDAE21BFC871000D67569 /* CheckLastVersionAction.m */; };
 		20859A7C1B64BD5B00580ED3 /* ProvisionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 20859A7B1B64BD5B00580ED3 /* ProvisionManager.m */; };
 		20859A821B64BD8500580ED3 /* ContactManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 20859A811B64BD8500580ED3 /* ContactManager.m */; };
 		20859A851B64BD9000580ED3 /* MessageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 20859A841B64BD9000580ED3 /* MessageManager.m */; };
@@ -136,6 +137,8 @@
 		20402A1E1BE21B8B00802DAF /* FreeBuildingListAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FreeBuildingListAction.m; sourceTree = "<group>"; };
 		20402A231BE2200A00802DAF /* FreeBuildingDetailAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FreeBuildingDetailAction.h; sourceTree = "<group>"; };
 		20402A241BE2200A00802DAF /* FreeBuildingDetailAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FreeBuildingDetailAction.m; sourceTree = "<group>"; };
+		204DDAE11BFC871000D67569 /* CheckLastVersionAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheckLastVersionAction.h; sourceTree = "<group>"; };
+		204DDAE21BFC871000D67569 /* CheckLastVersionAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckLastVersionAction.m; sourceTree = "<group>"; };
 		20859A7A1B64BD5B00580ED3 /* ProvisionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProvisionManager.h; sourceTree = "<group>"; };
 		20859A7B1B64BD5B00580ED3 /* ProvisionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProvisionManager.m; sourceTree = "<group>"; };
 		20859A801B64BD8500580ED3 /* ContactManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactManager.h; sourceTree = "<group>"; };
@@ -281,7 +284,6 @@
 			isa = PBXGroup;
 			children = (
 				043B453D1BE8963100050B32 /* ActivityNotify */,
-				043B453E1BE8963100050B32 /* Feed */,
 			);
 			path = Dao;
 			sourceTree = "<group>";
@@ -295,13 +297,6 @@
 				0490A4A71BE9DD2F0053023C /* NotifyRemindDao.m */,
 			);
 			path = ActivityNotify;
-			sourceTree = "<group>";
-		};
-		043B453E1BE8963100050B32 /* Feed */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Feed;
 			sourceTree = "<group>";
 		};
 		04722E231BD8891100F95816 /* Activity */ = {
@@ -387,6 +382,8 @@
 				20E366401B92F7DC00A22FFE /* RegAction.m */,
 				20DED8701B94208B004B5E7B /* RegNoticeAction.h */,
 				20DED8711B94208B004B5E7B /* RegNoticeAction.m */,
+				204DDAE11BFC871000D67569 /* CheckLastVersionAction.h */,
+				204DDAE21BFC871000D67569 /* CheckLastVersionAction.m */,
 			);
 			path = Provision;
 			sourceTree = "<group>";
@@ -740,6 +737,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				20C5B0511B8DB03900B4A8A8 /* GetFriendApplyListAction.m in Sources */,
+				204DDAE31BFC871000D67569 /* CheckLastVersionAction.m in Sources */,
 				20859A851B64BD9000580ED3 /* MessageManager.m in Sources */,
 				E4642C821BE9B0F500B3C8B1 /* ShopListDetailAction.m in Sources */,
 				20859A7C1B64BD5B00580ED3 /* ProvisionManager.m in Sources */,

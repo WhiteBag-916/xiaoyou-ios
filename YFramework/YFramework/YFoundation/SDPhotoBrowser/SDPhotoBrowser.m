@@ -10,7 +10,7 @@
 #import "UIImageView+WebCache.h"
 #import "SDBrowserImageView.h"
 
- 
+#define KNotification_Delete_Image                      @"KNotification_Delete_Image"
 //  ============在这里方便配置样式相关设置===========
 
 //                      ||
@@ -29,6 +29,7 @@
     BOOL _hasShowedFistView;
     UILabel *_indexLabel;
     UIButton *_saveButton;
+    UIButton *_deleteButton;
     UIActivityIndicatorView *_indicatorView;
 }
 
@@ -82,6 +83,28 @@
         _saveButton = saveButton;
         [self addSubview:saveButton];
     }
+    
+    if (_hasDeleteBtn) {
+        UIButton *saveButton = [[UIButton alloc] init];
+        [saveButton setTitle:@"删除" forState:UIControlStateNormal];
+        [saveButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        saveButton.backgroundColor = [UIColor colorWithRed:0.1f green:0.1f blue:0.1f alpha:0.90f];
+        saveButton.layer.cornerRadius = 5;
+        saveButton.clipsToBounds = YES;
+        [saveButton addTarget:self action:@selector(deleteImage) forControlEvents:UIControlEventTouchUpInside];
+        _saveButton = saveButton;
+        [self addSubview:saveButton];
+    }
+}
+
+
+- (void)deleteImage
+{
+    if ([self.delegate respondsToSelector:@selector(deleteImageWithCurrentIndex:)]) {
+        [self.delegate deleteImageWithCurrentIndex:_currentImageIndex];
+    }
+    //NSLog(@"333333333");
+    //[[NSNotificationCenter defaultCenter] postNotificationName:KNotification_Delete_Image object:nil];
 }
 
 - (void)saveImage

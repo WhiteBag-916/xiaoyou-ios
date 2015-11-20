@@ -61,7 +61,7 @@ NSString *const kProfilePersonListTableViewCell = @"kProfilePersonListTableViewC
             make.top.left.mas_equalTo(KFACEMARGIN);
             make.width.height.mas_equalTo(KFACEIMGSIZE);
         }];
-        _face.layer.cornerRadius = KFACEIMGSIZE/2;
+        _face.layer.cornerRadius = KFACEIMGSIZE/2.0;
         _face.clipsToBounds = true;
         
         _userName = [YUtils initLabel:CONTENT_FONT(12) color:[UIColor blackColor] text:@"小小" frame:CGRectZero alignment:NSTextAlignmentLeft];
@@ -131,7 +131,6 @@ NSString *const kProfilePersonListTableViewCell = @"kProfilePersonListTableViewC
         }];
         
         
-        
         _addFriend = [[UIButton alloc] init];
         [self.contentView addSubview:_addFriend];
         [_addFriend mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -154,38 +153,14 @@ NSString *const kProfilePersonListTableViewCell = @"kProfilePersonListTableViewC
 }
 
 
-//-(TagsCommonView *)tagsCommonView
-//{
-//    if (!_tagsCommonView) {
-//        _tagsCommonView = [[TagsCommonView alloc] init];
-//        _tagsCommonView.backgroundColor = [UIColor hexChangeFloat:@"F9F9F9"];
-//        [_backView addSubview:_tagsCommonView];
-//        [_tagsCommonView mas_makeConstraints:^(MASConstraintMaker *make) {
-//            make.top.bottom.right.mas_equalTo(0);
-//            make.left.mas_equalTo(SCALE_NUM(12));
-//        }];
-//    }
-//    return _tagsCommonView;
-//}
-
-
 - (void)setData:(Author *)author needShowGender:(BOOL)needShowGender {
-    
-//    [_tagsCommonView removeFromSuperview];
-//    _tagsCommonView = nil;
-//    
-//    [self tagsCommonView];
     
     _myAuthor = author;
     [_face setData:author.uid imageUrl:author.headPic];
     _userName.text = author.name;
-//    [_tagView setData:author.tagsCommon];
-//    [_connect updateWithTag:author.propetiesCommon];
+
     
-    ProfileInfo * model = [[ProfileInfo alloc] init];
-    model.propetiesCommon = author.propetiesCommon;
-    model.tagsCommon = author.tagsCommon;
-    [_tagsCommonView setData:model];
+    [_tagsCommonView setData:author];
     
 //    _genderLabel.text = author.gender;
 //    _genderLabel.hidden = !needShowGender;

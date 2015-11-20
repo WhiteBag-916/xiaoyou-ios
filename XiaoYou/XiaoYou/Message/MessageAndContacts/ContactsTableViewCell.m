@@ -17,19 +17,19 @@
 #import "ProfileInfo.h"
 #import "SKTagView.h"
 
-#define kHeadWidthAndHeight            40
-#define kNameLabelWidth                120
-#define kHeadCornerRadius              20
-#define kFlagImageViewWidth            11
-#define kFlagImageViewHeight           14
-#define kPaddingDistance               10
-#define kLabelHeightDistacnce          14
-#define kClassLabelDistance            5
-#define kClassLabelWidthAndHeight      30
-#define kRemindImageViewWidth          13
-#define kRemindImageViewHeight         15
-#define kBottomLineHeight              0.4
-#define kFlagLabelToHead               14
+#define kHeadWidthAndHeight            SCALE_NUM(40)
+#define kNameLabelWidth                SCALE_NUM(120)
+#define kHeadCornerRadius              SCALE_NUM(20)
+#define kFlagImageViewWidth            SCALE_NUM(11)
+#define kFlagImageViewHeight           SCALE_NUM(14)
+#define kPaddingDistance               SCALE_NUM(10)
+#define kLabelHeightDistacnce          SCALE_NUM(14)
+#define kClassLabelDistance            SCALE_NUM(5)
+#define kClassLabelWidthAndHeight      SCALE_NUM(30)
+#define kRemindImageViewWidth          SCALE_NUM(13)
+#define kRemindImageViewHeight         SCALE_NUM(15)
+#define kBottomLineHeight              SCALE_NUM(0.4)
+#define kFlagLabelToHead               SCALE_NUM(14)
 
 
 NSString *const kContactsTableViewCell = @"ContactsTableViewCell";
@@ -107,10 +107,12 @@ NSString *const kContactsTableViewCell = @"ContactsTableViewCell";
     _tagContent.backgroundColor = [UIColor clearColor];
     [self.contentView addSubview:_tagContent];
     [_tagContent mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(_nameLabel.mas_bottom).offset(kFlagLabelToHead);
+//        make.top.equalTo(_nameLabel.mas_bottom).offset(kFlagLabelToHead);
+        make.centerY.equalTo(_flagImageView);
         make.left.equalTo(_flagImageView.mas_right).offset(kPaddingDistance);
         make.right.equalTo(self.contentView.mas_right).offset(-3*kPaddingDistance);
-        make.bottom.equalTo(self.contentView.mas_bottom).offset(-kPaddingDistance);
+//        make.bottom.equalTo(self.contentView.mas_bottom).offset(-kPaddingDistance);
+        make.height.mas_equalTo(SCALE_NUM(20));
     }];
     _tagContent.maxLines = 1;
     _tagContent.clipsToBounds = true;

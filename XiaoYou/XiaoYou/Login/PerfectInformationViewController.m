@@ -45,6 +45,13 @@
     [self initListTag];
 }
 
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [[UIApplication sharedApplication] setStatusBarHidden:NO];
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
+}
+
 - (void)initView {
     UIScrollView *scrollView = [UIScrollView new];
     scrollView.backgroundColor = KCOLOR_e6ebea;
@@ -252,6 +259,7 @@
     [[UINavigationBar appearance] setBackgroundImage:[UIImage imageWithColor:[UIColor hexChangeFloat:@"455964"] size:CGSizeMake(SCREEN_WIDTH, 64)] forBarPosition:UIBarPositionAny barMetrics:UIBarMetricsDefault];
     [[UINavigationBar appearance] setTitleTextAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:17],
                                                            NSForegroundColorAttributeName:[UIColor whiteColor]}];
+    [UINavigationBar appearance].barStyle = UIStatusBarStyleDefault;
     [picker setSourceType:UIImagePickerControllerSourceTypePhotoLibrary];
     [picker setDelegate:self];
     [picker setAllowsEditing:YES];

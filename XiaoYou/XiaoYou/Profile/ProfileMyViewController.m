@@ -69,9 +69,15 @@
 }
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+    
     self.navigationController.navigationBarHidden = true;
+    
+    [[UIApplication sharedApplication] setStatusBarHidden:NO];
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
+    
     [self loadData];
 }
+
 - (void)dealloc {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
@@ -375,9 +381,11 @@
     self.isHeadImageUploadEnd = NO;
     self.picker = [[UIImagePickerController alloc] init];
     [self.picker.navigationBar setTintColor:[UIColor whiteColor]];
+    
     [[UINavigationBar appearance] setBackgroundImage:[UIImage imageWithColor:[UIColor hexChangeFloat:@"455964"] size:CGSizeMake(SCREEN_WIDTH, 64)] forBarPosition:UIBarPositionAny barMetrics:UIBarMetricsDefault];
     [[UINavigationBar appearance] setTitleTextAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:17],
                                                            NSForegroundColorAttributeName:[UIColor whiteColor]}];
+    [UINavigationBar appearance].barStyle = UIBarStyleDefault;
     [self.picker setSourceType:UIImagePickerControllerSourceTypePhotoLibrary];
     [self.picker setDelegate:self];
     [self.picker setAllowsEditing:YES];
@@ -475,6 +483,7 @@
                                                          self.isHeadImageUploadEnd = YES;
                                                      } else {
                                                          [YUtils showTitle:message.desc];
+                                                         self.isHeadImageUploadEnd = YES;
                                                      }
                                                  }];
 }

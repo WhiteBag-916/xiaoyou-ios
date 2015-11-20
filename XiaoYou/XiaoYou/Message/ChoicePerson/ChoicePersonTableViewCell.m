@@ -9,11 +9,11 @@
 #import "ChoicePersonTableViewCell.h"
 #import "LinkManList.h"
 
-#define kHeadCornerRadius              22.5
-#define kPaddingDistance               12
-#define kHeadImageWidthAndHeight       45
-#define kNameWidth                     200
-#define kNameHeight                    20
+#define kHeadCornerRadius              SCALE_NUM(22.5)
+#define kPaddingDistance               SCALE_NUM(12)
+#define kHeadImageWidthAndHeight       SCALE_NUM(45)
+#define kNameWidth                     SCALE_NUM(200)
+#define kNameHeight                    SCALE_NUM(20)
 
 NSString *const kChoicePersonTableViewCell = @"ChoicePersonTableViewCellId";
 

@@ -8,11 +8,14 @@
 
 #import <UIKit/UIKit.h>
 #import "ProfileInfo.h"
-
+@class Tags;
 @interface TagsCommonView : UIView
 
 @property(nonatomic,strong)ProfileInfo * model;
 
-- (void)setData:(ProfileInfo *) model;
+- (void)setData:(id) model;
+
+//根据标签计算控件高度的方法
++ (CGFloat)calculatorHeightByTagsCommon:(NSArray<Tags*> *)tagsCommon propetiesCommon:(NSArray<Tags*> *)propetiesCommon;
 
 @end

@@ -21,6 +21,9 @@
 
 - (NSURL *)photoBrowser:(SDPhotoBrowser *)browser highQualityImageURLForIndex:(NSInteger)index;
 
+//删除某张图片
+- (void)deleteImageWithCurrentIndex:(int)currentIndex;
+
 @end
 
 
@@ -30,6 +33,7 @@
 @property (nonatomic, assign) int currentImageIndex;
 @property (nonatomic, assign) NSInteger imageCount;
 @property (nonatomic, assign) BOOL hasSaveBtn;
+@property (nonatomic, assign) BOOL hasDeleteBtn;
 @property (nonatomic, weak) id<SDPhotoBrowserDelegate> delegate;
 
 - (void)show;

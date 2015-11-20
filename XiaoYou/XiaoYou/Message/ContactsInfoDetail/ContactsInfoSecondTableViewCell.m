@@ -41,9 +41,9 @@ NSString *const kContactsInfoSecondTableViewCell = @"ContactsInfoSecondTableView
     [self.contentView addSubview:backView];
     [backView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.bottom.equalTo(self.contentView);
-        make.right.mas_equalTo(-12);
-        make.left.mas_equalTo(70);
-        make.top.mas_equalTo(6);
+        make.right.mas_equalTo(SCALE_NUM(-12));
+        make.left.mas_equalTo(SCALE_NUM(70));
+        make.top.mas_equalTo(SCALE_NUM(6));
     }];
     
     _tagsCommonView = [[TagsCommonView alloc] init];
@@ -51,7 +51,7 @@ NSString *const kContactsInfoSecondTableViewCell = @"ContactsInfoSecondTableView
     [backView addSubview:_tagsCommonView];
     [_tagsCommonView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.bottom.right.mas_equalTo(0);
-        make.left.mas_equalTo(12);
+        make.left.mas_equalTo(SCALE_NUM(12));
     }];
 }
 

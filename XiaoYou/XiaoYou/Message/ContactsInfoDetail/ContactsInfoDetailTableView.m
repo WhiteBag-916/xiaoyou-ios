@@ -22,15 +22,16 @@
 #import "SDPhotoBrowser.h"
 #import "Author.h"
 #import "FeedInfo.h"
+#import "TagsCommonView.h"
 
-#define kHeaderViewHeight              60
-#define kHeadWidthAndHeight            46
-#define kNameLabelWidth                80
-#define kHeadCornerRadius              23
-#define kPaddingDistance               12
-#define kLabelHeightDistacnce          14
-#define kFlagImageViewWidth            9
-#define kFlagImageViewHeight           13
+#define kHeaderViewHeight              SCALE_NUM(60)
+#define kHeadWidthAndHeight            SCALE_NUM(46)
+#define kNameLabelWidth                SCALE_NUM(80)
+#define kHeadCornerRadius              SCALE_NUM(23)
+#define kPaddingDistance               SCALE_NUM(12)
+#define kLabelHeightDistacnce          SCALE_NUM(14)
+#define kFlagImageViewWidth            SCALE_NUM(9)
+#define kFlagImageViewHeight           SCALE_NUM(13)
 
 
 @interface ContactsInfoDetailTableView ()<UITableViewDataSource,UITableViewDelegate,SDPhotoBrowserDelegate,ContactsInfoThirdTableViewCellDelegate>
@@ -125,7 +126,7 @@
     [_nameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(_headImageView.mas_top);
         make.left.equalTo(_headImageView.mas_right).offset(kPaddingDistance);
-        make.width.mas_equalTo(textSize.width+20);
+        make.width.mas_equalTo(SCALE_NUM(textSize.width+20));
         make.height.mas_equalTo(kLabelHeightDistacnce);
     }];
     
@@ -136,7 +137,7 @@
     [sexImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(_nameLabel.mas_right);
         make.centerY.equalTo(_nameLabel);
-        make.height.width.mas_equalTo(14);
+        make.height.width.mas_equalTo(SCALE_NUM(14));
         
     }];
     if ([_model.gender isEqualToString:@"男"])
@@ -264,33 +265,6 @@
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
-    
-//    ContactsInfoDetailTableViewCell * cell = [self dequeueReusableCellWithIdentifier:kContactsInfoDetailTableViewCell forIndexPath:indexPath];
-//    
-//    NSString * indexStr = [NSString stringWithFormat:@"%d",indexPath.row];
-//    
-//    if (indexPath.row == 0)
-//    {
-//        NSDictionary * dic = @{@"content":[NSString stringWithFormat:@"%g人向%@撰写的内容敬酒",_model.praiseCount,_model.userName],@"index":indexStr};
-//        [cell setCellInfo:dic hiddenLine:YES];
-//        return cell;
-//    }
-//    else if (indexPath.row == 1)
-//    {
-//        NSDictionary * dic = @{@"content":[NSString stringWithFormat:@"%g人觉得%@很酷",_model.coolCount,_model.userName],@"index":indexStr, @"isCool":@(_model.isCool)};
-//        [cell setCellInfo:dic hiddenLine:YES];
-//        return cell;
-//    }
-//    else
-//    {
-//        Tags * tag = _model.tagsCommon[indexPath.row - 2];
-//        NSDictionary * dic = @{@"content":self.flagNameArr[indexPath.row - 2],@"index":indexStr,@"equal":@(tag.equal)};
-//        [cell setCellInfo:dic hiddenLine:YES];
-//        return cell;
-//    }
-    
-    
         if (indexPath.row == 0)
         {
             ContactsInfoFirstTableViewCell * cell = [self dequeueReusableCellWithIdentifier:kContactsInfoFirstTableViewCell forIndexPath:indexPath];
@@ -320,98 +294,22 @@
     
     if (indexPath.row == 0)
     {
-//        NSDictionary *attributes = @{NSFontAttributeName:[UIFont systemFontOfSize:12]};
-//        CGSize textSize = [_model.selfIntro boundingRectWithSize:CGSizeMake(SCREEN_WIDTH - 82, 14) options:NSStringDrawingTruncatesLastVisibleLine attributes:attributes context:nil].size;
-//        if (textSize.width > SCREEN_WIDTH - 82)
-//        {
-//            return 60;
-//        }
-//        else
-//        {
-//            return 30;
-//        }
         if ([_model.selfIntro isEqualToString:@""])
         {
             return 0;
         }
         else{
-            return 30;
+            return SCALE_NUM(30);
         }
-        
-        
     }
     else if(indexPath.row == 1)
     {
-//        CGFloat height = [tableView fd_heightForCellWithIdentifier:kContactsInfoSecondTableViewCell cacheByIndexPath:indexPath configuration:^(ContactsInfoSecondTableViewCell *cell) {
-//            [cell setCellInfo:_model];
-//        }];
-//        return height;
-        if (_model.tagsCommon.count > 0)
-        {
-            CGFloat height;
-            if (_model.propetiesCommon.count > 0)
-            {
-                height = 65;
-            }
-            else
-            {
-                height = 40;
-            }
-            
-            for (int i = 0; i < _model.tagsCommon.count; i++)
-            {
-                CGFloat width;
-                Tags * tag = _model.tagsCommon[i];
-                NSDictionary *attributes = @{NSFontAttributeName:[UIFont systemFontOfSize:10]};
-                CGSize textSize = [tag.name boundingRectWithSize:CGSizeMake(300, 14) options:NSStringDrawingTruncatesLastVisibleLine attributes:attributes context:nil].size;
-                
-                width += 10;
-                width += textSize.width + 15;
-                
-                CGFloat  limitWidth = SCREEN_WIDTH - 115;
-                if (width > limitWidth)
-                {
-                    height += 20;
-                    width = textSize.width + 15;
-                }
-            
-            }
-            return height;
-         
-        }
-        else
-        {
-            if (_model.propetiesCommon.count <= 0)
-            {
-                return 0;
-            }
-            return 40;
-        }
-
-//        if (_model.tagModels.count <= 4)
-//        {
-//            return 60;
-//        }
-//        else if (_model.tagModels.count <= 8)
-//        {
-//            return 80;
-//        }
-//        else if (_model.tagModels.count <= 12)
-//        {
-//            return 100;
-//        }
-//        else if (_model.tagModels.count <= 16)
-//        {
-//            return 120;
-//        }
-//        else
-//        {
-//            return 140;
-//        }
+        CGFloat height = [TagsCommonView calculatorHeightByTagsCommon:_model.tagsCommon propetiesCommon:_model.propetiesCommon];
+        return height;
     }
     else
     {
-        return 103;
+        return SCALE_NUM(95);
     }
     
 }

@@ -37,8 +37,6 @@ static const CGFloat kBrowserImageViewWidth = 320;
         pinch.delegate = self;
         [self addGestureRecognizer:pinch];
         
-
-    
     }
     return self;
 }
@@ -74,7 +72,8 @@ static const CGFloat kBrowserImageViewWidth = 320;
 
         CGFloat imageViewH = self.bounds.size.width * (imageSize.height / imageSize.width);
 
-        _scrollImageView.bounds = CGRectMake(0, 0, kBrowserImageViewWidth, imageViewH);
+        //mod by sheng,解决图片被压缩的问题
+        _scrollImageView.bounds = CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, imageViewH);
         _scrollImageView.center = CGPointMake(_scroll.frame.size.width * 0.5, _scrollImageView.frame.size.height * 0.5);
         _scroll.contentSize = CGSizeMake(0, _scrollImageView.bounds.size.height);
         

@@ -36,6 +36,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self showCustomNavigationBackButton];
+    [self IsShowCustomNavigationMoreButton:NO];
     [self initWebView];
     [self initProgress];
 }
@@ -79,6 +80,7 @@
     _progressProxy.webViewProxyDelegate = self;
     _progressProxy.progressDelegate = self;
     _webView.userInteractionEnabled = _canClick;
+    _webView.scalesPageToFit = YES;
 }
 
 - (void)initProgress {

@@ -9,10 +9,10 @@
 #import "GroupInfoDetailHeaderView.h"
 #import "GroupModel.h"
 
-#define kTopPaddingDistance        25
-#define kPaddingDistance           20
-#define kNameLabelHeight           20
-#define kImageViewWidthAndHeight   50
+#define kTopPaddingDistance        SCALE_NUM(25)
+#define kPaddingDistance           SCALE_NUM(20)
+#define kNameLabelHeight           SCALE_NUM(20)
+#define kImageViewWidthAndHeight   SCALE_NUM(50)
 
 
 NSString *const kGroupInfoDetailHeaderView = @"GroupInfoDetailHeaderViewId";
@@ -35,7 +35,7 @@ NSString *const kGroupInfoDetailHeaderView = @"GroupInfoDetailHeaderViewId";
         
         _groupImageView = [[UIImageView alloc] init];//WithFrame:CGRectMake(0, 0, 50, 50)];
         _groupImageView.backgroundColor = KCOLOR_009688;
-        _groupImageView.layer.cornerRadius = 25;
+        _groupImageView.layer.cornerRadius = SCALE_NUM(25);
         _groupImageView.clipsToBounds = YES;
         [self addSubview:_groupImageView];
         [_groupImageView mas_makeConstraints:^(MASConstraintMaker *make) {

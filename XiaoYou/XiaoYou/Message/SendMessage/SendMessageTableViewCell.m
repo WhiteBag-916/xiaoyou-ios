@@ -8,7 +8,7 @@
 
 #import "SendMessageTableViewCell.h"
 
-#define kCellLineHeight             1
+#define kCellLineHeight             SCALE_NUM(1)
 
 NSString *const kSendMessageTableViewCell = @"SendMessageTableViewCellId";
 

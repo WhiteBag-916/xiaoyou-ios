@@ -18,7 +18,7 @@
 #import "YWebViewController.h"
 #import "ProfileMyViewController.h"
 #import "ProfileViewController.h"
-#define REUSEID @"ActivityDetailCell"
+
 #define HEADIMAGEVIEW_WIDTH         SCALE_NUM(45)
 #define LEADINGOFF_HEADIMAGEVIEW    SCALE_NUM(12)
 
@@ -96,7 +96,6 @@
     [_headImageView setFaceImageWithUrl:organizer.headPic];
     
     _titleLabel.text = organizer.name;
-    //_nameLabel.text = publishModel.name;
     [_nameLabel setText:publishModel.name lineSpacing:5.0f];
     NSArray *imageTextModels = model.activityPublishedDto.activityImageTextModels;
     //图片内容是否为空
@@ -109,7 +108,6 @@
                 notHaveImage = NO;
             }
         } else if ([imageText.type isEqualToString:@"text"]) {
-            //_descriptionLabel.text = imageText.content;
             [_descriptionLabel setText:imageText.content lineSpacing:5.0];
         }
     }
@@ -326,9 +324,6 @@
     [_categotyImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(_locationLabel.mas_bottom).offset(SCALE_NUM(15));
         make.centerX.equalTo(_locationImageView);
-        //make.height.mas_equalTo(SCALE_NUM(17));
-        //make.width.mas_equalTo(SCALE_NUM(17));
-        //make.bottom.mas_equalTo(SCALE_NUM(-15));
     }];
     
     _categoryLabel = [[UILabel alloc]init];

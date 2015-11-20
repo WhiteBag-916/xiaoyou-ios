@@ -14,8 +14,9 @@
 #import "ChatViewController.h"
 #import "YCommonReport.h"
 #import "YCommonAlertView.h"
+#import "ProvisionManager.h"
 
-#define kNavigationgRightWidthAndHeight         40
+#define kNavigationgRightWidthAndHeight         SCALE_NUM(40)
 
 @interface XYContactsInfoDetailViewController ()
 
@@ -33,7 +34,7 @@
     // Do any additional setup after loading the view.
     
     [self setUpUI];
-    
+        
     [YUtils showHUDWithTitle];
     [[ContactManager sharedInstance] getUserDetailInfo:_uid hxId:_hxId block:^(YActionMessage *message) {
         [YUtils hiddenProgressHUD];
@@ -78,14 +79,35 @@
     [_bottomButton addTarget:self action:@selector(clickBottomButton) forControlEvents:UIControlEventTouchUpInside];
     if (_isFriendRelationShip)
     {
-        _studentDic = [[[ContactManager sharedInstance] getFriendInfo:_uid] dictionaryRepresentation];
+        _studentDic = (NSMutableDictionary *)[[[ContactManager sharedInstance] getFriendInfo:_uid] dictionaryRepresentation];
         [_bottomButton setTitle:@"聊聊呗" forState:UIControlStateNormal];
         
         [self showCustomNavigationMoreButton];
     }
     else
     {
-        [_bottomButton setTitle:@"添加好友" forState:UIControlStateNormal];
+        //小助手100000
+//        ProfileInfo * info = [[ProvisionManager sharedInstance] getProfile];
+//        if ([info.studentNo isEqualToString:@"123456"])
+//        {
+//            [[ContactManager sharedInstance] getUserDetailInfo:_uid hxId:nil block:^(YActionMessage *message) {
+//                if (message.isSuccess) {
+//                    ProfileInfo * targatInfo = message.object;
+//                    [_studentDic setObject:targatInfo.userName forKey:@"name"];
+//                    [_studentDic setObject:targatInfo.headPic forKey:@"icon"];
+//                    [_studentDic setObject:@"2" forKey:@"linkType"];
+//                    [_studentDic setObject:[NSString stringWithFormat:@"%@_%@",targatInfo.schoolCode,targatInfo.studentNo] forKey:@"thirdCode"];
+//                }
+//                
+//            }];
+//            [_bottomButton setTitle:@"聊聊呗" forState:UIControlStateNormal];
+//        }
+//        else
+//        {
+//            [_bottomButton setTitle:@"添加好友" forState:UIControlStateNormal];
+//        }
+         [_bottomButton setTitle:@"添加好友" forState:UIControlStateNormal];
+        
     }
     
     [_bottomButton mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -107,7 +129,11 @@
 #pragma mark - 点击bottomButton事件
 -(void)clickBottomButton
 {
-    if (!_isFriendRelationShip) {
+//     [_bottomButton setTitle:@"添加好友" forState:UIControlStateNormal];
+    //小助手100000
+//    ProfileInfo * info = [[ProvisionManager sharedInstance] getProfile];
+//    if (!_isFriendRelationShip && ![info.studentNo isEqualToString:@"123456"]) {
+     if (!_isFriendRelationShip) {
         //展示提示
         YCommonAlertView *alert = [[YCommonAlertView alloc] initWithTitle:nil
                                                                   message:[NSString stringWithFormat:@"确定向%@发送好友申请吗？", _shareData[@"name"]]
@@ -131,10 +157,13 @@
         if ([self.navigationController.viewControllers[self.navigationController.viewControllers.count-2] isKindOfClass:[ChatViewController class]]) {
             [self.navigationController popViewControllerAnimated:YES];
         } else {
-            ChatViewController * chatVC = [[ChatViewController alloc] initWithChatter:_studentDic[@"thirdCode"] isGroup:NO];
-            chatVC.isSystemMessage = NO;
-            chatVC.studentDic = [_studentDic mutableCopy];
-            [self.navigationController pushViewController:chatVC animated:YES needHiddenBottomBar:YES];
+            if (_studentDic)
+            {
+                ChatViewController * chatVC = [[ChatViewController alloc] initWithChatter:_studentDic[@"thirdCode"] isGroup:NO];
+                chatVC.isSystemMessage = NO;
+                chatVC.studentDic = [_studentDic mutableCopy];
+                [self.navigationController pushViewController:chatVC animated:YES needHiddenBottomBar:YES];
+            }
         }
     }
 }

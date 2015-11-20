@@ -12,10 +12,15 @@
 
 #import "UIImageView+EMWebCache.h"
 #import "EMChatImageBubbleView.h"
+#import "SDPhotoBrowser.h"
+#import "UIImageView+Ext.h"
 
 NSString *const kRouterEventImageBubbleTapEventName = @"kRouterEventImageBubbleTapEventName";
 
-@interface EMChatImageBubbleView ()
+@interface EMChatImageBubbleView ()<SDPhotoBrowserDelegate>
+
+//放大图片
+@property (nonatomic,strong) UIImage * showImage;
 
 @end
 
@@ -73,7 +78,6 @@ NSString *const kRouterEventImageBubbleTapEventName = @"kRouterEventImageBubbleT
 - (void)setModel:(MessageModel *)model
 {
     [super setModel:model];
-    
     UIImage *image = _model.isSender ? _model.image : _model.thumbnailImage;
     if (!image) {
         image = _model.image;
@@ -91,8 +95,36 @@ NSString *const kRouterEventImageBubbleTapEventName = @"kRouterEventImageBubbleT
 
 -(void)bubbleViewPressed:(id)sender
 {
-    [self routerEventWithName:kRouterEventImageBubbleTapEventName
-                     userInfo:@{KMESSAGEKEY:self.model}];
+//    [self routerEventWithName:kRouterEventImageBubbleTapEventName
+//                     userInfo:@{KMESSAGEKEY:self.model}];
+
+    NSString *localPath = _model.message == nil ? _model.localPath : [[_model.message.messageBodies firstObject] localPath];
+    if (localPath && localPath.length > 0) {
+        UIImage *image = [UIImage imageWithContentsOfFile:localPath];
+        if (image)
+        {
+            _showImage = image;
+            
+        }
+        else
+        {
+             NSData * data = [NSData dataWithContentsOfURL:self.model.imageRemoteURL];
+            _showImage = [UIImage imageWithData:data];
+        }
+    }
+    SDPhotoBrowser *browser = [[SDPhotoBrowser alloc] init];
+    
+    browser.sourceImagesContainerView = self;
+    
+    browser.imageCount = 1;
+    
+    browser.currentImageIndex = 0;
+    
+    browser.delegate = self;
+    
+    browser.hasSaveBtn = YES;
+    
+    [browser show];
 }
 
 
@@ -112,6 +144,11 @@ NSString *const kRouterEventImageBubbleTapEventName = @"kRouterEventImageBubbleT
         retSize.height = MAX_SIZE;
     }
     return 2 * BUBBLE_VIEW_PADDING + retSize.height;
+}
+
+#pragma SDPhotoBrowser
+- (UIImage *)photoBrowser:(SDPhotoBrowser *)browser placeholderImageForIndex:(NSInteger)index {
+    return _showImage;
 }
 
 @end

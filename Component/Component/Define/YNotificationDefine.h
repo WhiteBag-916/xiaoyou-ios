@@ -46,12 +46,15 @@
 //自习室筛选
 #define KNotification_Study_Room_Filtrate               @"KNotification_Study_Room_Filtrate"
 
+//消息到来提醒
 #define KNotification_Remind_Message_Come               @"KNotification_Remind_Message_Come"
 
 //未读提醒
 #define KNotification_Remind_Message_Not_Read           @"KNotification_Remind_Message_Not_Read"
 //日程增删
 #define KNotification_Change_Schedule                   @"KNotification_Change_Schedule"
+//删除图片
+#define KNotification_Delete_Image                      @"KNotification_Delete_Image"
 
 //打开浏览器
 #define KNotification_OpenBrowser                       @"KNotification_OpenBrowser"

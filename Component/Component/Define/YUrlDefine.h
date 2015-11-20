@@ -67,6 +67,8 @@
 #define api_login_ReceiveAuthCode  @"/user/v2/receiveAuthCode"
 //重置密码
 #define api_login_resetPwd  @"/user/v2/resetPwd"
+//版本更新
+#define api_version_checkLastVersion @"/version/checkLastVersion"
 
 /**********************************************************
  Url Define: FeedManager

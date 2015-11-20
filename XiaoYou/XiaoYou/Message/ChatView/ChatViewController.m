@@ -47,11 +47,12 @@
 #import "YUtils+Component.h"
 #import "AGImagePickerController.h"
 #import "AGIPCToolbarItem.h"
+#import "SDPhotoBrowser.h"
 
 #define KPageCount 20
 #define KHintAdjustY    50
 
-@interface ChatViewController ()<UITableViewDataSource, UITableViewDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate, SRRefreshDelegate, IChatManagerDelegate, DXChatBarMoreViewDelegate, DXMessageToolBarDelegate, LocationViewDelegate, EMCDDeviceManagerDelegate,EMCallManagerDelegate>
+@interface ChatViewController ()<UITableViewDataSource, UITableViewDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate, SRRefreshDelegate, IChatManagerDelegate, DXChatBarMoreViewDelegate, DXMessageToolBarDelegate, LocationViewDelegate, EMCDDeviceManagerDelegate,EMCallManagerDelegate,SDPhotoBrowserDelegate>
 {
     UIMenuController *_menuController;
     UIMenuItem *_copyMenuItem;
@@ -92,6 +93,9 @@
 @property (nonatomic, strong) AGImagePickerController   *imagePickerVC;
 
 @property (nonatomic, strong) NSMutableArray *picArray;
+
+//放大图片
+@property (nonatomic,strong) UIImage * showImage;
 
 @end
 
@@ -236,6 +240,16 @@
     //判断是否为好友,输入框置灰
 //    if (![self isChatGroup])
     {
+        //小助手100000
+//        ProfileInfo * info = [[ProvisionManager sharedInstance] getProfile];
+//        if (nil == _studentDic && ![info.studentNo isEqualToString:@"123456"])
+//        {
+//            UIView * blackView = [[UIView alloc] initWithFrame:_chatToolBar.bounds];
+//            blackView.backgroundColor = [UIColor blackColor];
+//            blackView.alpha = 0.5;
+//            [_chatToolBar addSubview:blackView];
+//        }
+        
         if (nil == _studentDic)
         {
             UIView * blackView = [[UIView alloc] initWithFrame:_chatToolBar.bounds];
@@ -901,7 +915,8 @@
                     self.isScrollToBottom = NO;
                     if (image)
                     {
-                        [self.messageReadManager showBrowserWithImages:@[image]];
+                     [self.messageReadManager showBrowserWithImages:@[image]];
+
                     }
                     else
                     {
@@ -961,6 +976,7 @@
         }
     }
 }
+
 
 #pragma mark - IChatManagerDelegate
 

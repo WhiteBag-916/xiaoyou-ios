@@ -110,17 +110,7 @@
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-    UIViewController *vc;
-    for (UIView* next = [self superview]; next; next = next.superview) {
-        UIResponder *nextResponder = [next nextResponder];
-        if ([nextResponder isKindOfClass:[UIViewController class]]) {
-            vc = (UIViewController *)nextResponder;
-            break;
-        }
-    }
-    if (nil != vc) {
-        [vc.view endEditing:YES];
-    }
+    [self.viewController.view endEditing:YES];
     
     [self endEditing:YES];
 }

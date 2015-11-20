@@ -73,5 +73,13 @@ AS_SINGLETON(ProvisionManager);
 - (void)regNotice:(ActionCompleteBlock)block;
 //重置密码
 - (void)resetPwd:(NSString *)authCode password:(NSString *)password block:(ActionCompleteBlock)block;
+/*********************************************************************
+ 函数名称 : checkLastVersion
+ 函数描述 : 查询最新版本接口
+ 参数 : N/A
+ 返回值 : CheckLastVersionModel
+ 作者 : XiongChen
+ *********************************************************************/
+- (void)checkLastVersion:(ActionCompleteBlock)block;
 
 @end

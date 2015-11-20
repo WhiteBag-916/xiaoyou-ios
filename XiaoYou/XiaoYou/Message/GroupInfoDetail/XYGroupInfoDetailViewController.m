@@ -21,9 +21,9 @@
 #import "ClassList.h"
 #import "YUtils+HUD.h"
 
-#define kNavigationgLeftWidth                   9
-#define kNavigationgLeftHeight                  14
-#define kNavigationgRightWidthAndHeight         40
+#define kNavigationgLeftWidth                   SCALE_NUM(9)
+#define kNavigationgLeftHeight                  SCALE_NUM(14)
+#define kNavigationgRightWidthAndHeight         SCALE_NUM(40)
 
 NSString *const kXYGroupInfoDetailViewController = @"XYGroupInfoDetailViewControllerId";
 
@@ -81,7 +81,7 @@ NSString *const kXYGroupInfoDetailViewController = @"XYGroupInfoDetailViewContro
     
     UICollectionViewFlowLayout * flowLayout = [[UICollectionViewFlowLayout alloc] init];
     flowLayout.scrollDirection = UICollectionViewScrollDirectionVertical;
-    flowLayout.itemSize = CGSizeMake(70, 70);
+    flowLayout.itemSize = CGSizeMake(SCALE_NUM(70), SCALE_NUM(70));
     _groupInfoDetailCollectionView = [[GroupInfoDetailCollectionView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT-KTabBarheight-KNavigationBarheight) collectionViewLayout:flowLayout];
     _groupInfoDetailCollectionView.myController = self;
     [self.view addSubview:_groupInfoDetailCollectionView];

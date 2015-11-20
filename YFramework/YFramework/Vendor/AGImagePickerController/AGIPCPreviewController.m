@@ -122,6 +122,7 @@
         //middleBtn.autoresizingMask = UIViewAutoresizingFlexibleWidth;
         middleBtn.backgroundColor = [UIColor clearColor];
         [middleBtn setTitle:@"Zoom" forState:UIControlStateNormal];
+        middleBtn.hidden = YES;
         [middleBtn addTarget:self action:@selector(didPressBottomMiddleButtonAction:) forControlEvents:UIControlEventTouchUpInside];
         _bottomMiddleBtn = middleBtn;
     }

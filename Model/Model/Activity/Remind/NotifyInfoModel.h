@@ -34,4 +34,7 @@ typedef enum : NSUInteger {
 
 @property (nonatomic,copy) NSString *isRead;
 //@property (nonatomic,strong) NSArray *propetiesCommon;
+
+-(instancetype)initWithDictionary:(NSDictionary*)dict;
+
 @end

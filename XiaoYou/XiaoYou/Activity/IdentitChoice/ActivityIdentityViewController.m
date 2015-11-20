@@ -133,38 +133,47 @@
     [self.view addSubview:_personalButton];
     [self.view addSubview:_groupButton];
     [_personalButton mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.leading.mas_equalTo(SCALE_NUM(50));
+        make.left.mas_equalTo(SCALE_NUM(40));
+        make.right.mas_equalTo(SCALE_NUM(-40));
         make.top.equalTo(backView.mas_bottom).offset(SCALE_NUM(30));
         make.height.mas_equalTo(SCALE_NUM(30));
-        make.width.mas_equalTo(SCALE_NUM(87));
     }];
     [_groupButton mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.trailing.mas_equalTo(SCALE_NUM(-50));
-        make.top.equalTo(_personalButton);
+        make.left.mas_equalTo(SCALE_NUM(40));
+        make.right.mas_equalTo(SCALE_NUM(-40));
+        make.top.equalTo(_personalButton.mas_bottom).offset(SCALE_NUM(10));
         make.height.mas_equalTo(SCALE_NUM(30));
-        make.width.mas_equalTo(SCALE_NUM(87));
     }];
     
     //提示
     UILabel * remindLabel = [[UILabel alloc] init];
-    remindLabel.font = CONTENT_FONT(12);
+    remindLabel.font = CONTENT_FONT(SCALE_NUM(12));
     remindLabel.textColor = KCOLOR_B5;
     remindLabel.numberOfLines = 0;
     [remindLabel setText:@"提示：以社团身份发布活动需经过审核。若您的活动限制报名人数，请登录后台查看所有报名同学，并进行通过和拒绝操作。" lineSpacing:10];
     remindLabel.backgroundColor = [UIColor clearColor];
     [self.view addSubview:remindLabel];
     [remindLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(_personalButton.mas_left).offset(SCALE_NUM(-10));
-        make.right.equalTo(_groupButton.mas_right).offset(SCALE_NUM(10));
-        make.top.equalTo(_personalButton.mas_bottom).offset(SCALE_NUM(20));
+        make.left.equalTo(_personalButton.mas_left);
+        make.right.equalTo(_groupButton.mas_right);
+        make.top.equalTo(_groupButton.mas_bottom).offset(SCALE_NUM(20));
         make.height.mas_equalTo(SCALE_NUM(100));
+    }];
+    
+    UIImageView * middleImageView = [[UIImageView alloc] init];
+    middleImageView.image = [UIImage imageNamed:@"havetime_tag_cutoff"];
+    [self.view addSubview:middleImageView];
+    [middleImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.right.equalTo(_personalButton);
+        make.height.mas_equalTo(SCALE_NUM(12));
+        make.top.equalTo(remindLabel.mas_bottom).offset(SCALE_NUM(10));
     }];
     
     _activityIdentityTableView = [[ActivityIdentityTableView alloc] init];
     _activityIdentityTableView.backgroundColor = [UIColor clearColor];
     [self.view addSubview:_activityIdentityTableView];
     [_activityIdentityTableView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(remindLabel.mas_bottom).offset(SCALE_NUM(10));
+        make.top.equalTo(middleImageView.mas_bottom).offset(SCALE_NUM(10));
         make.left.right.bottom.mas_equalTo(0);
     }];
     

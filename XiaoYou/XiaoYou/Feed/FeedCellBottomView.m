@@ -26,7 +26,6 @@
 #define KBOTTOMHEIGHT SCALE_NUM(25)                 //社团和feed列表中bottom的高度
 #define KSHAREWIDTH SCALE_NUM(25)                   //分享按钮点击区域的大小
 #define KCOMMENTWIDTH SCALE_NUM(15)                 //评论图标大小
-#define KRESPECTWIDTH SCALE_NUM(16)                 //敬酒图标大小
 #define KBUTTONTEXTMARGIN SCALE_NUM(2)              //图标和文字间距
 
 #define KRESPECTLABELMARGIN_BOTTOM SCALE_NUM(0)     //敬酒文字与下边间距
@@ -34,7 +33,8 @@
 #define KHEADWIDTH SCALE_NUM(34)                    //头像宽度
 #define KHEADMARGIN SCALE_NUM(15)                   //头像间距
 
-#define KRESPECTDETAILHEIGHT SCALE_NUM(30)          //敬酒detail中整体高度
+#define KRESPECTDETAILHEIGHT SCALE_NUM(54)          //敬酒detail中整体高度
+#define KRESPECTWIDTH SCALE_NUM(44)                 //敬酒图标大小
 
 @interface FeedCellBottomView()
 
@@ -107,10 +107,10 @@
             [self addSubview:_respectImg];
             [_respectImg mas_makeConstraints:^(MASConstraintMaker *make) {
                 make.right.equalTo(_respectNum);
-                make.left.equalTo(_respectNum).offset(-KBUTTONTEXTMARGIN-KRESPECTWIDTH);
+                make.left.equalTo(_respectNum).offset(-KBUTTONTEXTMARGIN-KRESPECTWIDTH + SCALE_NUM(16));
                 make.top.bottom.equalTo(self);
             }];
-            _respectImg.contentMode = UIViewContentModeLeft;
+            _respectImg.contentMode = UIViewContentModeCenter;
             _respectImg.image = [UIImage imageNamed:@"cup"];
             _respectImg.userInteractionEnabled = true;
             [_respectImg addGestureRecognizer:tap];
@@ -126,7 +126,7 @@
                 make.height.mas_equalTo(KRESPECTDETAILHEIGHT);
                 make.width.mas_equalTo(KRESPECTWIDTH);
             }];
-            _respectImg.contentMode = UIViewContentModeTop;
+            _respectImg.contentMode = UIViewContentModeCenter;
             _respectImg.image = [UIImage imageNamed:@"cup"];
             _respectImg.userInteractionEnabled = true;
             [_respectImg addGestureRecognizer:tap];
@@ -135,7 +135,7 @@
             [self addSubview:_respectNum];
             [_respectNum mas_makeConstraints:^(MASConstraintMaker *make) {
                 make.centerX.equalTo(_respectImg);
-                make.bottom.equalTo(_respectImg).offset(-KRESPECTLABELMARGIN_BOTTOM);
+                make.bottom.equalTo(_respectImg).offset(-KRESPECTLABELMARGIN_BOTTOM - SCALE_NUM(6));
             }];
             if (type == FeedDetailType) {
                 _personList = [[UIView alloc] init];
