@@ -485,13 +485,13 @@ DEF_SINGLETON(MessageManager);
 //    if (notiInfo.em_push_title == nil) {
 //        notiInfo.em_push_title = dict[@"contentTxt"];
 //    }
-    NSArray *infoTypeList = @[@((int)ACTIVITY_ENROLL_CHECK_PASS),   //报名审核通过
-                              @((int)SCHEDULE_REMIND),              //用户日程提醒
-                              @((int)ACTIVITY_PUBLISH),             //活动通知提醒
-                              @((int)ACTIVITY_NOTIFY)];             //活动通知提醒,活动快要开始
+    NSArray *infoTypeList = @[@((int)ACTIVITY_ENROLL_CHECK_PASS),   //报名审核通过(审核通过)
+                              @((int)SCHEDULE_REMIND),              //用户日程提醒(自建日程)
+                              @((int)ACTIVITY_PUBLISH),             //活动通知提醒(学院，学校，辅导员)
+                              @((int)ACTIVITY_NOTIFY)];             //活动通知提醒(活动快要开始)
     NSArray *infoTypeBell = @[
-                              @((int)ACTIVITY_ENROLL_NO_CHECK),     //审核未通过
-                              @((int)ACTIVITY_ENROLL)];             //用户报名活动提醒
+                              @((int)ACTIVITY_ENROLL_NO_CHECK),     //审核未通过  (报名未通过)
+                              @((int)ACTIVITY_ENROLL)];             //用户报名活动提醒(有人报名我发布的活动)
     
     [YObject isElement:@((int)notiInfo.type) InArray:infoTypeList sucessed:^{
         [dataBaseDao insertModel:notiInfo];
