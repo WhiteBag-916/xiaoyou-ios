@@ -513,7 +513,7 @@ DEF_SINGLETON(MessageManager);
         }
         case ACTIVITY_PUBLISH://活动通知提醒
         {
-            [AppConfigData setHaveRemindMessage:YES];
+            [dataBaseDao insertModel:notiInfo];
             break;
         }
         case ACTIVITY_NOTIFY: //活动通知提醒,活动快要开始
