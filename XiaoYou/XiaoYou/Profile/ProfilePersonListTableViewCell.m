@@ -61,7 +61,7 @@ NSString *const kProfilePersonListTableViewCell = @"kProfilePersonListTableViewC
             make.top.left.mas_equalTo(KFACEMARGIN);
             make.width.height.mas_equalTo(KFACEIMGSIZE);
         }];
-        _face.layer.cornerRadius = KFACEIMGSIZE/2;
+        _face.layer.cornerRadius = KFACEIMGSIZE/2.0;
         _face.clipsToBounds = true;
         
         _userName = [YUtils initLabel:CONTENT_FONT(12) color:[UIColor blackColor] text:@"小小" frame:CGRectZero alignment:NSTextAlignmentLeft];

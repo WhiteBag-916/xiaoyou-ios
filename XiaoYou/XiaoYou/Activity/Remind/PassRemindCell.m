@@ -253,8 +253,20 @@
 -(void)setCellType:(CELL_TYPE)cellType
 {
     _cellType = cellType;
+    _bottomButton.enabled = YES;
     if(cellType == NEED_CHECK) {
         self.remindTitleLabel.text = @"您的报名申请已提交,正在审核中";
+        _titleImageView.image = [[UIImage imageNamed:@"tick"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+        _bottomLineView.hidden = NO;
+        _tailLabel.text = @"看看还有什么人";
+        [_titleImageView mas_updateConstraints:^(MASConstraintMaker *make) {
+            make.leading.mas_equalTo(10);
+            make.top.equalTo(self.wrapContentView).offset(18);
+            make.width.mas_equalTo(SCALE_NUM(14));
+            make.height.mas_equalTo(SCALE_NUM(13));
+        }];
+        
+        
     } else if (cellType == AUDIT_PASSED) {
         self.remindTitleLabel.text = @"恭喜,报名申请通过！！！";
         _titleImageView.image = [[UIImage imageNamed:@"tick"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
@@ -282,6 +294,16 @@
         _bottomButton.enabled = NO;
     } else if (cellType == NOT_NEED_CHECK) {
         self.remindTitleLabel.text = @"你已成功参加活动";
+        _titleImageView.image = [[UIImage imageNamed:@"tick"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+        _bottomLineView.hidden = NO;
+        _tailLabel.text = @"看看还有什么人";
+        
+        [_titleImageView mas_updateConstraints:^(MASConstraintMaker *make) {
+            make.leading.mas_equalTo(10);
+            make.top.equalTo(self.wrapContentView).offset(18);
+            make.width.mas_equalTo(SCALE_NUM(14));
+            make.height.mas_equalTo(SCALE_NUM(13));
+        }];
     }
 }
 
