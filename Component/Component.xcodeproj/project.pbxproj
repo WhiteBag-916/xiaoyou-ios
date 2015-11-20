@@ -284,7 +284,6 @@
 			isa = PBXGroup;
 			children = (
 				043B453D1BE8963100050B32 /* ActivityNotify */,
-				043B453E1BE8963100050B32 /* Feed */,
 			);
 			path = Dao;
 			sourceTree = "<group>";
@@ -298,13 +297,6 @@
 				0490A4A71BE9DD2F0053023C /* NotifyRemindDao.m */,
 			);
 			path = ActivityNotify;
-			sourceTree = "<group>";
-		};
-		043B453E1BE8963100050B32 /* Feed */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Feed;
 			sourceTree = "<group>";
 		};
 		04722E231BD8891100F95816 /* Activity */ = {
