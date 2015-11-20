@@ -470,23 +470,21 @@ DEF_SINGLETON(MessageManager);
 {
     NSString *dataBasePath = [NSString stringWithFormat:@"%@//%@",[YDirectory documents],NSStringFromClass([NotifyInfoModel class])];
     YDatabaseDao *dataBaseDao = [[YDatabaseDao alloc]initWitDatabasePath:dataBasePath];
-    NotifyInfoModel *notiInfo = [[NotifyInfoModel alloc]init];
-    notiInfo.em_push_title = dict[@"em_apns_ext"][@"em_push_title"];
-    notiInfo.timestamp = [dict[@"timestamp"] doubleValue];
-    notiInfo.isRead = @"NO";
-    notiInfo.type = [[dict valueForKey:@"type"] integerValue];
-    notiInfo.idStr = dict[@"id"];
-    notiInfo.name = dict[@"name"];
-    notiInfo.startTime = [dict[@"startTime"] doubleValue];
-    notiInfo.headIcon = dict[@"headIcon"];
-    notiInfo.organizer = dict[@"organizer"];
-    notiInfo.uid = [[YShareData defaultData] valueForKey:kShareData_UserID];
-    
-    if (notiInfo.em_push_title == nil) {
-        notiInfo.em_push_title = dict[@"contentTxt"];
-    }
-    
-    
+    NotifyInfoModel *notiInfo = [[NotifyInfoModel alloc]initWithDictionary:dict];
+//    notiInfo.em_push_title = dict[@"em_apns_ext"][@"em_push_title"];
+//    notiInfo.timestamp = [dict[@"timestamp"] doubleValue];
+//    notiInfo.isRead = @"NO";
+//    notiInfo.type = [[dict valueForKey:@"type"] integerValue];
+//    notiInfo.idStr = dict[@"id"];
+//    notiInfo.name = dict[@"name"];
+//    notiInfo.startTime = [dict[@"startTime"] doubleValue];
+//    notiInfo.headIcon = dict[@"headIcon"];
+//    notiInfo.organizer = dict[@"organizer"];
+//    notiInfo.uid = [[YShareData defaultData] valueForKey:kShareData_UserID];
+//    
+//    if (notiInfo.em_push_title == nil) {
+//        notiInfo.em_push_title = dict[@"contentTxt"];
+//    }
     NSArray *infoTypeList = @[@((int)ACTIVITY_ENROLL_CHECK_PASS),   //报名审核通过
                               @((int)SCHEDULE_REMIND),              //用户日程提醒
                               @((int)ACTIVITY_PUBLISH),             //活动通知提醒
