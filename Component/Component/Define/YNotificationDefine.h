@@ -46,6 +46,7 @@
 //自习室筛选
 #define KNotification_Study_Room_Filtrate               @"KNotification_Study_Room_Filtrate"
 
+//消息到来提醒
 #define KNotification_Remind_Message_Come               @"KNotification_Remind_Message_Come"
 
 //未读提醒
