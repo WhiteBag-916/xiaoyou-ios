@@ -30,6 +30,4 @@ typedef enum : NSUInteger {
 
 -(void)setData:(id)model;
 
-//-(void)setNotifyData:(NotifyInfoModel*)model;
-
 @end

@@ -46,10 +46,28 @@
     return self;
 }
 
+
+-(id)initWithImageSize:(CGFloat)size {
+    self = [super init];
+    if (self) {
+        _imgSize = size;
+        _smallImgs = [NSMutableArray array];
+        [self initImgs];
+        _currentIndex = 0;
+    }
+    return self;
+}
+
+-(void)setSize:(CGFloat)size
+{
+    _imgSize = size;
+    [self updateAll];
+}
+
 - (id)initWithCamera {
     self = [super init];
     if (self) {
-        _imgSize = SCALE_NUM(75);
+        _imgSize = SCALE_NUM(77);
         _smallImgs = [NSMutableArray array];
         _camera = [[UIImageView alloc] init];
         
@@ -263,6 +281,7 @@
     _browser.delegate = self;
     
     _browser.hasSaveBtn = _hasSaveBtn;
+    
     _browser.hasDeleteBtn = _hasDeleteBtn;
     
     [_browser show];

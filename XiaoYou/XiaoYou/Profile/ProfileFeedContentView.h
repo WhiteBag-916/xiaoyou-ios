@@ -41,6 +41,10 @@ typedef NS_ENUM(int, ProfileFeedType) {
 
 - (id)initWithType:(int)type;
 
+- (id)initWithImageSize:(CGFloat)size type:(int)type;
+
 - (void)setData:(FeedInfo *)info;
+
+
 
 @end

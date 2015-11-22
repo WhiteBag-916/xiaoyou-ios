@@ -14,10 +14,8 @@
 {
     NSSet *arrSets = [NSSet setWithArray:array];
     if ([arrSets containsObject:element]) {
-        YLogD(@"包含111");
         successedBlock != nil ? successedBlock() : 0;
     } else {
-        YLogD(@"不包含222");
         failedBlock != nil ? failedBlock() : 0;
     }
 }

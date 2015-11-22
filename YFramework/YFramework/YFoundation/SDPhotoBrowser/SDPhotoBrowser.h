@@ -34,6 +34,7 @@
 @property (nonatomic, assign) NSInteger imageCount;
 @property (nonatomic, assign) BOOL hasSaveBtn;
 @property (nonatomic, assign) BOOL hasDeleteBtn;
+@property (nonatomic, assign) BOOL isHiddenIndex;
 @property (nonatomic, weak) id<SDPhotoBrowserDelegate> delegate;
 
 - (void)show;

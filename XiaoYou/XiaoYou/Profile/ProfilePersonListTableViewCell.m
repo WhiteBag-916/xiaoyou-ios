@@ -160,19 +160,12 @@ NSString *const kProfilePersonListTableViewCell = @"kProfilePersonListTableViewC
     _userName.text = author.name;
 
     
-    [_tagsCommonView setData:author];
-    
-//    _genderLabel.text = author.gender;
-//    _genderLabel.hidden = !needShowGender;
-//    if (needShowGender) {
-//        [_tagView mas_updateConstraints:^(MASConstraintMaker *make) {
-//            make.top.equalTo(_genderLabel.mas_bottom).offset(KTAGMARGIN_TOP);
-//        }];
-//    } else  {
-//        [_tagView mas_updateConstraints:^(MASConstraintMaker *make) {
-//            make.top.equalTo(_userName.mas_bottom).offset(KTAGMARGIN_TOP);
-//        }];
-//    }
+    if (author.tagsCommon.count == 0 && author.propetiesCommon.count == 0)
+        _tagsCommonView.hidden= YES;
+    else {
+        [_tagsCommonView setData:author];
+        _tagsCommonView.hidden = NO;
+    }
     
     if ([_myAuthor.gender isEqualToString:@"男"])
     {

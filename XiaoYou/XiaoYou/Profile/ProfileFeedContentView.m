@@ -25,6 +25,40 @@
 
 @implementation ProfileFeedContentView
 
+-(id)initWithImageSize:(CGFloat)size type:(int)type
+{
+    if (self = [super init]) {
+        _tagView = [[FeedTag alloc] init];
+        [self addSubview:_tagView];
+        [_tagView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.right.top.equalTo(self);
+        }];
+        
+        _contentLabel = [YUtils initLabel:CONTENT_FONT(12) color:[UIColor blackColor] text:@"" frame:CGRectZero alignment:NSTextAlignmentLeft];
+        [self addSubview:_contentLabel];
+        _contentLabel.numberOfLines = 0;
+        [_contentLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.right.equalTo(_tagView.tagContent);
+            make.top.equalTo(_tagView.mas_bottom).offset(KCONTENTMARGIN_TOP);
+        }];
+        
+        //这里限制image大小至少50
+        size = size > 50 ? size : SCALE_NUM(77);
+        _imgGroup = [[FeedImageGroup alloc] initWithImageSize:size];
+        
+        [self addSubview:_imgGroup];
+        [_imgGroup mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.right.equalTo(_contentLabel);
+            make.top.equalTo(_contentLabel.mas_bottom).offset(KIMGMARGIN_TOP);
+        }];
+        [self mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.bottom.equalTo(_imgGroup);
+        }];
+        [self updateLayoutWithType:type];
+    }
+    return self;
+}
+
 - (id)init {
     self = [super init];
     if (self) {
@@ -41,6 +75,7 @@
             make.right.equalTo(_tagView.tagContent);
             make.top.equalTo(_tagView.mas_bottom).offset(KCONTENTMARGIN_TOP);
         }];
+        
         _imgGroup = [[FeedImageGroup alloc] init];
         [self addSubview:_imgGroup];
         [_imgGroup mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -53,27 +88,48 @@
     }
     return self;
 }
+
 - (id)initWithType:(int)type {
     self = [self init];
     if (self) {
         _type = type;
-        if (_type != ProfileFeedMy) {
-            [_contentLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-                make.left.equalTo(_tagView.tagContent);
-            }];
-        } else {
-            [_contentLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-                make.left.equalTo(_tagView);
-            }];
-        }
-        if (_type != ProfileFeedOthers) {
-            [_tagView.tagContent mas_makeConstraints:^(MASConstraintMaker *make) {
-                make.left.equalTo(_tagView.tagIcon.mas_right).offset(KTAGTEXTMARGIN);
-            }];
-        }
+//        if (_type != ProfileFeedMy) {
+//            [_contentLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+//                make.left.equalTo(_tagView.tagContent);
+//            }];
+//        } else {
+//            [_contentLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+//                make.left.equalTo(_tagView);
+//            }];
+//        }
+//        if (_type != ProfileFeedOthers) {
+//            [_tagView.tagContent mas_makeConstraints:^(MASConstraintMaker *make) {
+//                make.left.equalTo(_tagView.tagIcon.mas_right).offset(KTAGTEXTMARGIN);
+//            }];
+//        }
+        [self updateLayoutWithType:type];
     }
     return self;
 }
+
+-(void)updateLayoutWithType:(int)type
+{
+    if (_type != ProfileFeedMy) {
+        [_contentLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.equalTo(_tagView.tagContent);
+        }];
+    } else {
+        [_contentLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.equalTo(_tagView);
+        }];
+    }
+    if (_type != ProfileFeedOthers) {
+        [_tagView.tagContent mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.equalTo(_tagView.tagIcon.mas_right).offset(KTAGTEXTMARGIN);
+        }];
+    }
+}
+
 - (void)setData:(FeedInfo *)info {
     if (info == nil) {
         [_tagView setData:nil];

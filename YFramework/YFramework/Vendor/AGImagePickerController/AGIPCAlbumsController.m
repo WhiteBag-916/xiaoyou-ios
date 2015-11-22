@@ -119,7 +119,7 @@
     if (self.imagePickerController.shouldChangeStatusBarStyle) {
         self.wantsFullScreenLayout = YES;
     }
-    self.title = NSLocalizedStringWithDefaultValue(@"AGIPC.Albums", nil, [NSBundle mainBundle], @"Albums", nil);
+    self.title = NSLocalizedStringWithDefaultValue(@"AGIPC.Albums", nil, [NSBundle mainBundle], @"相册列表", nil);
     
     // Navigation Bar Items
     UIBarButtonItem *cancelButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(cancelAction:)];
@@ -305,7 +305,7 @@
                 
                 dispatch_async(dispatch_get_main_queue(), ^{
                     @synchronized(self) {
-                        NSLog(@"Load assets group list finished. Items %@", self.assetsGroups);
+                        //NSLog(@"Load assets group list finished. Items %@", self.assetsGroups);
                         [self reloadData];
                         _isLoadingAssetsGroups = NO;
                     }

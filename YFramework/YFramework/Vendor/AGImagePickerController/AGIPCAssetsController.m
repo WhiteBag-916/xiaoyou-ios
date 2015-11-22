@@ -141,6 +141,7 @@
         self.title = [self.assetsGroup valueForProperty:ALAssetsGroupPropertyName];
         //self.title = @"test";
         // Setup toolbar items
+        self.title = @"相册";
         [self setupToolbarItems];
         
         // Start loading the assets
@@ -352,7 +353,9 @@
     // add by springox(20150720)
     [AGIPCGridItem performSelector:@selector(resetNumberOfSelections)];
     
-    [self.assets removeAllObjects];
+     //[self.assets removeAllObjects];
+    self.assets = nil;
+    self.assets = [[NSMutableArray alloc] init];
     
     __ag_weak AGIPCAssetsController *weakSelf = self;
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
@@ -460,7 +463,7 @@
     self.navigationItem.rightBarButtonItem.enabled = ([AGIPCGridItem numberOfSelections] > 0);
     
     if ([AGIPCGridItem numberOfSelections] == 0) {
-         self.title = @"Camera Roll";
+         self.title = @"相册";
     }
     
     if (self.imagePickerController.shouldDisplaySelectionInformation) {

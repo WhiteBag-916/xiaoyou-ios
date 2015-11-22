@@ -69,6 +69,7 @@
     indexLabel.clipsToBounds = YES;
     indexLabel.text = [NSString stringWithFormat:@"1/%ld", (long)self.imageCount];
     _indexLabel = indexLabel;
+    _indexLabel.hidden = _isHiddenIndex;
     [self addSubview:indexLabel];
     
     // 2.保存按钮
@@ -103,8 +104,6 @@
     if ([self.delegate respondsToSelector:@selector(deleteImageWithCurrentIndex:)]) {
         [self.delegate deleteImageWithCurrentIndex:_currentImageIndex];
     }
-    //NSLog(@"333333333");
-    //[[NSNotificationCenter defaultCenter] postNotificationName:KNotification_Delete_Image object:nil];
 }
 
 - (void)saveImage
@@ -141,6 +140,7 @@
         label.text = SDPhotoBrowserSaveImageFailText;
     }   else {
         label.text = SDPhotoBrowserSaveImageSuccessText;
+        NSLog(@"成功......");
     }
     [label performSelector:@selector(removeFromSuperview) withObject:nil afterDelay:1.0];
 }
@@ -358,6 +358,11 @@
     [self setupImageOfImageViewForIndex:index];
 }
 
+-(void)setIsHiddenIndex:(BOOL)isHiddenIndex
+{
+    _isHiddenIndex = isHiddenIndex;
+    _indexLabel.hidden = isHiddenIndex;
+}
 
 
 @end
