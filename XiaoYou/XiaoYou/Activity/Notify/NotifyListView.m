@@ -13,15 +13,19 @@
 #import "ApplyRemindCell.h"
 #import "ScheduleDetailViewController.h"
 #import "UserSchedulingInfo.h"
-
+#import "YObject+Ext.h"
 #define KPAGENUM 10
 
 @interface NotifyListView ()
 <UITableViewDataSource,UITableViewDelegate>
 
-
 @property (nonatomic,assign) NSInteger currentIndex;
 
+@property (nonatomic,strong) NSArray *passList;
+
+@property (nonatomic,strong) NSArray *applyList;
+
+@property (nonatomic,strong) NSArray *scheduleList;
 @end
 
 
@@ -44,6 +48,13 @@
         self.separatorStyle = UITableViewCellSeparatorStyleNone;
         self.backgroundColor = KCOLOR_B1;
         self.separatorStyle = UITableViewCellSelectionStyleNone;
+        
+        _passList       = @[@((int)ACTIVITY_ENROLL_CHECK_PASS),   //审核通过
+                            @((int)ACTIVITY_ENROLL_NO_CHECK),     //未通过
+                            @((int)ACTIVITY_PUBLISH),             //活动发布(校院社)
+                            @((int)ACTIVITY_NOTIFY)];             //活动快要开始提醒
+        _applyList      = @[@((int)ACTIVITY_ENROLL)];             //用户报名提醒
+        _scheduleList   = @[@((int)SCHEDULE_REMIND)];             //日程提醒
     }
     return self;
 }
@@ -90,48 +101,59 @@
 #pragma mark 协议方法
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    CGFloat cellHeight;
-    if (indexPath.section == 1)
-        cellHeight = SCALE_NUM(110);
+    __block CGFloat cellHeight = 0;
+    
     NotifyInfoModel *model = self.notifyListArray[indexPath.section];
-    switch (model.type)
-    {
-        case ACTIVITY_ENROLL_CHECK_PASS: //审核通过
-        {
-            cellHeight = SCALE_NUM(190);
-            break;
-        }
-        case ACTIVITY_ENROLL_NO_CHECK:
-        {
-            cellHeight = SCALE_NUM(190);
-            break;
-        }
-        case SCHEDULE_REMIND: //用户日程提醒
-        {
-            cellHeight = SCALE_NUM(110);
-            break;
-        }
-        case ACTIVITY_ENROLL: //用户报名活动提醒
-        {
-            cellHeight = SCALE_NUM(120);
-            break;
-        }
-        case ACTIVITY_PUBLISH:
-        {
-            cellHeight = SCALE_NUM(190);
-            break;
-        }
-        case ACTIVITY_NOTIFY:
-        {
-            cellHeight = SCALE_NUM(190);
-            break;
-        }
-        default:
-        {
-            cellHeight = 0;
-            break;
-        }
-    }
+    
+    [YObject isElement:@((int)(model.type)) InArray:self.passList sucessed:^{
+        cellHeight = SCALE_NUM(190);
+    } failed:nil];
+    
+    [YObject isElement:@((int)(model.type)) InArray:self.applyList sucessed:^{
+        cellHeight = SCALE_NUM(120);;
+    } failed:nil];
+    
+    [YObject isElement:@((int)(model.type)) InArray:self.scheduleList sucessed:^{
+        cellHeight = SCALE_NUM(110);
+    } failed:nil];
+//    switch (model.type)
+//    {
+//        case ACTIVITY_ENROLL_CHECK_PASS: //审核通过
+//        {
+//            cellHeight = SCALE_NUM(190);
+//            break;
+//        }
+//        case ACTIVITY_ENROLL_NO_CHECK:
+//        {
+//            cellHeight = SCALE_NUM(190);
+//            break;
+//        }
+//        case SCHEDULE_REMIND: //用户日程提醒
+//        {
+//            cellHeight = SCALE_NUM(110);
+//            break;
+//        }
+//        case ACTIVITY_ENROLL: //用户报名活动提醒
+//        {
+//            cellHeight = SCALE_NUM(120);
+//            break;
+//        }
+//        case ACTIVITY_PUBLISH:
+//        {
+//            cellHeight = SCALE_NUM(190);
+//            break;
+//        }
+//        case ACTIVITY_NOTIFY:
+//        {
+//            cellHeight = SCALE_NUM(190);
+//            break;
+//        }
+//        default:
+//        {
+//            cellHeight = 0;
+//            break;
+//        }
+//    }
     return cellHeight;
 }
 
@@ -168,56 +190,24 @@
 -(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NotifyInfoModel *model = self.notifyListArray[indexPath.section];
-    switch (model.type)
-    {
-        case ACTIVITY_ENROLL_CHECK_PASS: //审核通过
-        {
-            PassRemindCell *cell = [PassRemindCell passRemindCellWithTableView:tableView];
-            [cell setData:model];
-            return cell;
-            break;
-        }
-        case ACTIVITY_ENROLL_NO_CHECK:  //活动报名审核未通过
-        {
-            PassRemindCell *cell = [PassRemindCell passRemindCellWithTableView:tableView];
-            [cell setData:model];
-            return cell;
-            break;
-        }
-        case SCHEDULE_REMIND: //用户自建日程提醒
-        {
-            ScheduleNotifyCell *cell = [ScheduleNotifyCell cellWithTableView:tableView];
-            [cell setData:model];
-            return cell;
-            break;
-        }
-        case ACTIVITY_ENROLL: //用户报名活动提醒
-        {
-            ApplyRemindCell *cell = [ApplyRemindCell cellWithTableView:tableView];
-            [cell setData:model];
-            return cell;
-            break;
-        }
-        case ACTIVITY_PUBLISH:  //
-        {
-            PassRemindCell *cell = [PassRemindCell passRemindCellWithTableView:tableView];
-            [cell setData:model];
-            return cell;
-            break;
-        }
-        case ACTIVITY_NOTIFY:   //活动通知
-        {
-            PassRemindCell *cell = [PassRemindCell passRemindCellWithTableView:tableView];
-            [cell setData:model];
-            return cell;
-            break;
-        }
-        default:
-        {
-            break;
-        }
-    }
-    return nil;
+    
+    __block YTableViewCell *cell = nil;
+    
+    [YObject isElement:@((int)(model.type)) InArray:self.passList sucessed:^{
+        cell = [PassRemindCell passRemindCellWithTableView:tableView];
+    } failed:nil];
+    
+    [YObject isElement:@((int)(model.type)) InArray:self.applyList sucessed:^{
+        cell = [ApplyRemindCell cellWithTableView:tableView];
+    } failed:nil];
+    
+    [YObject isElement:@((int)(model.type)) InArray:self.scheduleList sucessed:^{
+        cell = [ScheduleNotifyCell cellWithTableView:tableView];
+    } failed:nil];
+    
+    [cell performSelector:@selector(setData:) withObject:model];
+    
+    return cell;
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
@@ -231,7 +221,6 @@
         }
         case ACTIVITY_ENROLL_NO_CHECK:  //活动报名审核未通过
         {
-            
             break;
         }
         case SCHEDULE_REMIND: //用户自建日程提醒
@@ -245,12 +234,10 @@
         }
         case ACTIVITY_ENROLL: //用户报名活动提醒
         {
-            
             break;
         }
         case ACTIVITY_PUBLISH:  //
         {
-           
             break;
         }
         case ACTIVITY_NOTIFY:   //活动通知

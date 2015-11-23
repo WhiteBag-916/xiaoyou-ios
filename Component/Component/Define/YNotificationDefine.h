@@ -46,8 +46,11 @@
 //自习室筛选
 #define KNotification_Study_Room_Filtrate               @"KNotification_Study_Room_Filtrate"
 
-//消息到来提醒
+//消息到来提醒,铃铛变红
 #define KNotification_Remind_Message_Come               @"KNotification_Remind_Message_Come"
+
+//推送过来提醒,列表数字更新
+#define KNotification_Push_Notify_Message_Come          @"KNotification_Push_Notify_Message_Come"
 
 //未读提醒
 #define KNotification_Remind_Message_Not_Read           @"KNotification_Remind_Message_Not_Read"
