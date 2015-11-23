@@ -7,6 +7,7 @@
 //
 
 #import "ContactsInfoFirstTableViewCell.h"
+#import "ConvertToCommonEmoticonsHelper.h"
 
 NSString *const kContactsInfoFirstTableViewCell = @"ContactsInfoFirstTableViewCellId";
 
@@ -55,7 +56,7 @@ NSString *const kContactsInfoFirstTableViewCell = @"ContactsInfoFirstTableViewCe
 
 -(void)setCellInfo:(ProfileInfo *) model
 {
-    _statesLabel.text = model.selfIntro;
+    _statesLabel.text = [ConvertToCommonEmoticonsHelper convertToSystemEmoticons:model.selfIntro];
 }
 
 @end
