@@ -20,6 +20,8 @@ typedef enum : NSUInteger {
 
 -(void)loadData;
 
+-(void)reloadNotifyMessageWithTableView;
+
 @property (nonatomic,strong) NSMutableArray *availableListArray;
 
 @end

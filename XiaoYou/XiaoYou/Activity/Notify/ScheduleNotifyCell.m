@@ -79,7 +79,7 @@
     
     _remindTitleLabel = [[UILabel alloc]init];
     [self.wrapContentView addSubview:_remindTitleLabel];
-    _remindTitleLabel.text = @"距离自建日程开始还有1小时";
+    _remindTitleLabel.text = @"";
     _remindTitleLabel.textColor = KCOLOR_B4;
     _remindTitleLabel.font = CONTENT_FONT(15);
     [_remindTitleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -91,7 +91,7 @@
     _scheduleNameLabel = [[UILabel alloc]init];
     [self.wrapContentView addSubview:_scheduleNameLabel];
     _scheduleNameLabel.font = CONTENT_FONT(12);
-    _scheduleNameLabel.text =  @"日程名称：吃葡萄不吐葡萄皮";
+    _scheduleNameLabel.text =  @"";
     _scheduleNameLabel.textColor = KCOLOR_B3;
     [_scheduleNameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(_remindTitleLabel);
@@ -101,7 +101,7 @@
     _beginTimeLable = [[UILabel alloc]init];
     [self.wrapContentView addSubview:_beginTimeLable];
     _beginTimeLable.font = CONTENT_FONT(12);
-    _beginTimeLable.text = @"开始时间：15/12/12 18:00";
+    _beginTimeLable.text = @"";
     _beginTimeLable.textColor = KCOLOR_B3;
     [_beginTimeLable mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(_scheduleNameLabel);

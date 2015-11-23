@@ -73,12 +73,7 @@
 }
 
 
-//收到推送消息 铃铛变红 have_time_msg
--(void)receiveNotificationOfRemindMessage
-{
-    [_leftNavBar setImage:[[UIImage imageNamed:@"red_point_bell"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] forState:UIControlStateNormal];
-    [_leftNavBar setImage:[[UIImage imageNamed:@"red_point_bell"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] forState:UIControlStateHighlighted];
-}
+
 
 - (void)addGuideView {
     UIWindow *window = [UIApplication sharedApplication].keyWindow;
@@ -216,6 +211,20 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(receiveNotificationOfReleaseSuccess) name:KNotification_Activity_Release_Success object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(receiveNotificationOfRemindMessage) name:KNotification_Remind_Message_Come object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(receiveNotificationOfRemindPushNotify) name:KNotification_Push_Notify_Message_Come object:nil];
+}
+
+//收到推送消息 铃铛变红 have_time_msg
+-(void)receiveNotificationOfRemindMessage
+{
+    [_leftNavBar setImage:[[UIImage imageNamed:@"red_point_bell"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] forState:UIControlStateNormal];
+    [_leftNavBar setImage:[[UIImage imageNamed:@"red_point_bell"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] forState:UIControlStateHighlighted];
+}
+
+//刷新第一个cell,只能在主线程更新UI
+-(void)receiveNotificationOfRemindPushNotify
+{
+    [self.availableListView performSelectorOnMainThread:@selector(reloadNotifyMessageWithTableView) withObject:nil waitUntilDone:NO];
 }
 
 -(void)viewWillDisappear:(BOOL)animated
