@@ -492,7 +492,7 @@
 
 - (CGFloat)getTextViewContentH:(UITextView *)textView
 {
-    if (self.version >= 7.0)
+    if (self.version >= 8.0)
     {
         return ceilf([textView sizeThatFits:textView.frame.size].height);
     } else {
