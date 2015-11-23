@@ -363,7 +363,14 @@
 
 - (void)didChangeLibrary:(NSNotification *)notification
 {
-    [self loadAssetsGroups];
+    if ([notification userInfo]) {
+        NSSet *updatedAssetGroup = [[notification userInfo] objectForKey:ALAssetLibraryUpdatedAssetGroupsKey];
+        NSSet *deletedAssetGroup = [[notification userInfo] objectForKey:ALAssetLibraryDeletedAssetGroupsKey];
+        NSSet *insertedAssetGroup = [[notification userInfo] objectForKey:ALAssetLibraryInsertedAssetGroupsKey];
+        if (nil != updatedAssetGroup || nil != deletedAssetGroup || nil != insertedAssetGroup) {
+            [self loadAssetsGroups];
+        }
+    }
 }
 
 @end

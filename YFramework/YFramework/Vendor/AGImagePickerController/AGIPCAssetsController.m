@@ -571,9 +571,16 @@
 
 - (void)didChangeLibrary:(NSNotification *)notification
 {
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.8 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [self loadAssets];
-    });
+//    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.8 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+//        [self loadAssets];
+//    });
+    if ([notification userInfo]) {
+        NSSet *insertedURLs = [[notification userInfo] objectForKey:ALAssetLibraryUpdatedAssetsKey];
+        if (nil != insertedURLs) {
+            [self loadAssets];
+        }
+    }
+    
 }
 
 - (void)didChangeToolbarItemsForManagingTheSelection:(NSNotification *)notification
