@@ -21,9 +21,9 @@
 #define KTAGMARGIN_TOP SCALE_NUM(15)
 
 
-@interface FeedCellMiddleView()
+@interface FeedCellMiddleView() <UITextViewDelegate>
 
-@property (nonatomic, strong, readwrite) UILabel *contentLabel;                //内容
+@property (nonatomic, strong, readwrite) UITextView *contentLabel;                //内容
 @property (nonatomic, strong, readwrite) FeedImageGroup *imgGroup;             //图片
 
 @end
@@ -32,12 +32,15 @@
 - (id)initWithType:(int)type {
     self = [super init];
     if (self) {
-        _contentLabel = [YUtils initLabel:CONTENT_FONT(12)
-                                    color:[UIColor blackColor]
-                                     text:@""
-                                    frame:CGRectZero
-                                alignment:NSTextAlignmentLeft];
-        _contentLabel.numberOfLines = 0;
+        _contentLabel = [[UITextView alloc] init];
+        _contentLabel.textColor = [UIColor blackColor];
+        _contentLabel.editable = false;
+        _contentLabel.dataDetectorTypes = UIDataDetectorTypeLink;
+        _contentLabel.scrollEnabled = false;
+        _contentLabel.font = CONTENT_FONT(12);
+        _contentLabel.textContainer.lineFragmentPadding = 0;
+        _contentLabel.textContainerInset = UIEdgeInsetsZero;
+        _contentLabel.delegate = self;
         [self addSubview:_contentLabel];
         [_contentLabel mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.right.top.equalTo(self);
@@ -78,5 +81,10 @@
             _contentLabel.text = [NSString stringWithFormat:@"回复%@:%@",data.replyUser.name, _contentLabel.text];
         }
     }
+}
+
+- (BOOL)textView:(UITextView *)textView shouldInteractWithURL:(NSURL *)URL inRange:(NSRange)characterRange {
+    [[NSNotificationCenter defaultCenter] postNotificationName:KNotification_OpenBrowser object:nil userInfo:@{@"url":[URL absoluteString], @"title":@""}];
+    return false;
 }
 @end

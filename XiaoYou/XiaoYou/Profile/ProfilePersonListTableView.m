@@ -175,14 +175,11 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     Author * author = _personListArray[indexPath.row];
-    if (author.tagsCommon.count<=0 && author.propetiesCommon.count<=0)
-    {
-        return SCALE_NUM(65);
+
+    CGFloat height = [TagsCommonView calculatorHeightByTagsCommon:author.tagsCommon propetiesCommon:author.propetiesCommon];
+    if (height == 0) {
+        height += SCALE_NUM(15);
     }
-    else
-    {
-        CGFloat height = [TagsCommonView calculatorHeightByTagsCommon:author.tagsCommon propetiesCommon:author.propetiesCommon];
-        return height += SCALE_NUM(53);
-    }
+    return height += SCALE_NUM(53);
 }
 @end

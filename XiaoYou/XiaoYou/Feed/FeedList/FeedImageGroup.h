@@ -14,6 +14,17 @@
 @property   (assign,    nonatomic)  BOOL hasSaveBtn;
 
 @property   (assign,    nonatomic)  BOOL hasDeleteBtn;
+
+
+/**
+ *  @author desheng, 15-11-22
+ *
+ *  @brief 需要定制图片大小使用这个
+ *
+ */
+
+-(id)initWithImageSize:(CGFloat)size;
+
 /**
  *  @author 李思良, 15-09-01
  *
@@ -45,4 +56,5 @@
 
 //打开相机
 - (void)openPhoto;
+
 @end

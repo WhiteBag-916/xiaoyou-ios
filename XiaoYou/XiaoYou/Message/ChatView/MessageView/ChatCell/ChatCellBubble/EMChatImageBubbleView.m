@@ -114,6 +114,8 @@ NSString *const kRouterEventImageBubbleTapEventName = @"kRouterEventImageBubbleT
     }
     SDPhotoBrowser *browser = [[SDPhotoBrowser alloc] init];
     
+    browser.isHiddenIndex = YES;
+    
     browser.sourceImagesContainerView = self;
     
     browser.imageCount = 1;

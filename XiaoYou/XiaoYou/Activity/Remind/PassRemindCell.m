@@ -223,7 +223,6 @@
 
 //点击中间部分cell
 -(void)middleAction:(UIButton*)btn {
-    YLogD(@"this is midele action");
     NSString *publishID;
     if (_notifyModel) {
         publishID = self.notifyModel.idStr;
@@ -265,7 +264,6 @@
             make.width.mas_equalTo(SCALE_NUM(14));
             make.height.mas_equalTo(SCALE_NUM(13));
         }];
-        
         
     } else if (cellType == AUDIT_PASSED) {
         self.remindTitleLabel.text = @"恭喜,报名申请通过！！！";
@@ -326,12 +324,6 @@
         [_headImageView setFaceImageWithUrl:model.activityOrganizerHeadPic];
     else
         _headImageView.image = [UIImage imageNamed:@"default_head"];
-//    if (_cellType == NOT_NEED_CHECK) {
-//        _contentTitleLabel.text = model.activityOrganizer;
-//    }
-//    else {
-//        _contentTitleLabel.text = info.name;
-//    }
     
     if (model.activityOwner) {
         _contentTitleLabel.text = info.name;

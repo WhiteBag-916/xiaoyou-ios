@@ -372,7 +372,6 @@
                                                    scale:representation.defaultRepresentation.scale
                                              orientation:(UIImageOrientation)representation.defaultRepresentation.orientation];
     
-            //上传图片超过9张的时候会出现错误
             blockSelf.isPhotoSaveEnd = NO;
             [blockSelf savePic:img];
             //每次选择一张  避免多线程上传图片的时候图片模糊

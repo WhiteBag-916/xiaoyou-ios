@@ -56,4 +56,7 @@
 //删除图片
 #define KNotification_Delete_Image                      @"KNotification_Delete_Image"
 
+//打开浏览器
+#define KNotification_OpenBrowser                       @"KNotification_OpenBrowser"
+
 #endif
