@@ -123,6 +123,7 @@
 		04C08FE41BDBF0F7002F8BAE /* TimeFormatterConvert.m in Sources */ = {isa = PBXBuildFile; fileRef = 04C08FE31BDBF0F7002F8BAE /* TimeFormatterConvert.m */; };
 		04D500681BBA94AA00C1B438 /* ActivityJoinInCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04D500671BBA94AA00C1B438 /* ActivityJoinInCell.m */; };
 		04E26F471BFED56400A38236 /* YObject+Ext.m in Sources */ = {isa = PBXBuildFile; fileRef = 04E26F461BFED56400A38236 /* YObject+Ext.m */; };
+		04F7DF8E1C02F7D100771BEF /* UIImage+Extn.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F7DF8D1C02F7D100771BEF /* UIImage+Extn.m */; };
 		200E397C1B4E818B000B587B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 200E397B1B4E818B000B587B /* main.m */; };
 		200E39871B4E818B000B587B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 200E39861B4E818B000B587B /* Images.xcassets */; };
 		200E39961B4E818B000B587B /* XiaoYouTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 200E39951B4E818B000B587B /* XiaoYouTests.m */; };
@@ -998,6 +999,8 @@
 		04D500671BBA94AA00C1B438 /* ActivityJoinInCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityJoinInCell.m; sourceTree = "<group>"; };
 		04E26F451BFED56400A38236 /* YObject+Ext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "YObject+Ext.h"; sourceTree = "<group>"; };
 		04E26F461BFED56400A38236 /* YObject+Ext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "YObject+Ext.m"; sourceTree = "<group>"; };
+		04F7DF8C1C02F7D100771BEF /* UIImage+Extn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Extn.h"; sourceTree = "<group>"; };
+		04F7DF8D1C02F7D100771BEF /* UIImage+Extn.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Extn.m"; sourceTree = "<group>"; };
 		200E39761B4E818B000B587B /* XiaoYou.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = XiaoYou.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		200E397A1B4E818B000B587B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		200E397B1B4E818B000B587B /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -3978,6 +3981,8 @@
 				0461A3DC1BE38D0800F00E72 /* NSString+MyContainString.m */,
 				04E26F451BFED56400A38236 /* YObject+Ext.h */,
 				04E26F461BFED56400A38236 /* YObject+Ext.m */,
+				04F7DF8C1C02F7D100771BEF /* UIImage+Extn.h */,
+				04F7DF8D1C02F7D100771BEF /* UIImage+Extn.m */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -5241,6 +5246,7 @@
 				656A4CFE1BBF9E1E00BDB725 /* QRCodeReaderView.m in Sources */,
 				E45E98F61BD0D1910012F9DA /* ActivityResultViewController.m in Sources */,
 				20DF5FF41BDF293800C8383B /* MyTimetableViewController.m in Sources */,
+				04F7DF8E1C02F7D100771BEF /* UIImage+Extn.m in Sources */,
 				E482D55C1BD8B93A0045F4DB /* MerchantDetailTableViewCell.m in Sources */,
 				049FF1C21BC91777000645C8 /* RemindViewController.m in Sources */,
 				333122801B806EDC00D3D032 /* NSDateFormatter+Category.m in Sources */,

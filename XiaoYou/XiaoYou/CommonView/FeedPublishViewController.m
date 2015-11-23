@@ -24,7 +24,7 @@
 #import "ImageUploadModel.h"
 #import "Feed.h"
 #import "YModel+ActionMessage.h"
-//#import "UzysAssetsPickerController.h"
+#import "UIImage+Extn.h"
 #import "AGImagePickerController.h"
 #import "AGImagePreviewController.h"
 #import "AGIPCToolbarItem.h"
@@ -366,25 +366,36 @@
     self.imagePickerVC.didFinishBlock = ^(NSArray *info) {
         [blockSelf.picArray setArray:info];
         //上传图片
+        
+        [YUtils showHUDWithTitle:@""];
         [info enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
             ALAsset *representation = obj;
             UIImage *img = [UIImage imageWithCGImage:representation.defaultRepresentation.fullResolutionImage
                                                    scale:representation.defaultRepresentation.scale
                                              orientation:(UIImageOrientation)representation.defaultRepresentation.orientation];
-    
+            
             blockSelf.isPhotoSaveEnd = NO;
             [blockSelf savePic:img];
-            //每次选择一张  避免多线程上传图片的时候图片模糊
+            
+            //每次选择一张  避免多线程保存图片的时候图片模糊
             while (!blockSelf.isPhotoSaveEnd) {
                 [[NSRunLoop mainRunLoop] runMode:NSDefaultRunLoopMode beforeDate:[NSDate distantFuture]];
             }
         }];
         
+        [YUtils hiddenProgressHUD];
         [blockSelf dismissViewControllerAnimated:YES completion:nil];
         [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault animated:YES];
     };
 }
 
+-(void)beginSaveImg {
+    [YUtils showHUDWithTitle:@""];
+}
+
+-(void)endSaveImg {
+    [YUtils hiddenProgressHUD];
+}
 
 - (void)pickImage
 {
@@ -479,7 +490,14 @@
         NSString *keyStr = [NSString stringWithFormat:@"feed%d.png", [_imgGroup getImgCount]];
         
         //写入文件
-        NSData *imageData = UIImageJPEGRepresentation(image, 0.1);
+        NSData *imageData = nil;
+        
+        if (IS_IOS7) {
+            imageData = UIImageJPEGRepresentation([image scaleToSize:CGSizeMake(2000, 2000)], 0.1);
+        } else {
+            imageData = UIImageJPEGRepresentation(image, 0.1);
+        }
+        
         NSString *fullPath = [[YDirectory newImgCache] stringByAppendingPathComponent:keyStr];
         
         //保存到沙盒
@@ -569,12 +587,6 @@
 //                [weakSelf uploadFeed];
 //            }
 //        }];
-//        
-//        //解决图片顺序问题
-//        while (!self.isUpLoadEnd) {
-//            [[NSRunLoop mainRunLoop] runMode:NSDefaultRunLoopMode beforeDate:[NSDate distantFuture]];
-//        }
-//        _isUpLoadEnd = NO;
     }
     
     if ([_imgGroup getImgCount] == 0) {
@@ -623,7 +635,6 @@
                 });
             } else {
                 [YUtils showTitle:message.desc];
-                //_isUpLoadEnd = YES;
             }
         }];
         
@@ -685,6 +696,5 @@
 {
     [picker dismissViewControllerAnimated:YES completion:nil];
 }
-
 
 @end
