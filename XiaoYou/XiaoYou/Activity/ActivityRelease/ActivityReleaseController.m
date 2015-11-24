@@ -683,7 +683,7 @@ typedef enum : NSUInteger {
     [modelDic setObject:arr forKey:@"activityImageTextModels"];
     [modelDic setObject:activityModelDic forKey:@"activityModel"];
     
-    
+    NSLog(@"%@",modelDic);
     [[ActivityManager sharedInstance] editActivity:modelDic block:^(YActionMessage *message) {
         NSLog(@"%@",message);
         [YUtils hiddenProgressHUD];
@@ -723,7 +723,7 @@ typedef enum : NSUInteger {
 }
 
 -(void)setPointHighlight:(NSInteger) pointNum
-{
+{ 
     switch (pointNum) {
         case POINT1:
             _point1View.backgroundColor = KCOLOR_g1;
