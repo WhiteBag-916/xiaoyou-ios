@@ -49,7 +49,6 @@
 @property (nonatomic, strong) UIView *contentView;
 @property (nonatomic, strong) UIView *bottomView;
 
-
 @property (nonatomic, strong) YTextView *textView;//feed内容
 @property (nonatomic, strong) FeedImageGroup *imgGroup;//feed图片
 @property (nonatomic, strong) SKTagView *tagView;//兴趣标签
@@ -66,12 +65,7 @@
 
 @property (nonatomic, strong) NSMutableArray *picArray;
 
-//@property (nonatomic, strong) UIImagePickerController *picker;
-
 @property (nonatomic, assign) BOOL isPhotoSaveEnd;//上传图片时的同步操作
-//@property (nonatomic, assign) BOOL isUpLoadEnd; //图片是否上传成功时的同步操作
-
-
 
 @end
 
