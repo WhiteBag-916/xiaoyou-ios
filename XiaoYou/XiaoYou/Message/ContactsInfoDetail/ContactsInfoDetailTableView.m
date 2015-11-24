@@ -29,7 +29,7 @@
 #define kNameLabelWidth                SCALE_NUM(80)
 #define kHeadCornerRadius              SCALE_NUM(23)
 #define kPaddingDistance               SCALE_NUM(12)
-#define kLabelHeightDistacnce          SCALE_NUM(14)
+#define kLabelHeightDistacnce          SCALE_NUM(16)
 #define kFlagImageViewWidth            SCALE_NUM(9)
 #define kFlagImageViewHeight           SCALE_NUM(13)
 
