@@ -163,11 +163,7 @@
     
     //院系年级
     UILabel * classLabel = [[UILabel alloc] init];
-    if (_model.lastFeeds.count > 0)
-    {
-        FeedInfo * feedInfo = _model.lastFeeds[0];
-        classLabel.text = feedInfo.author.faculty;
-    }
+    classLabel.text = [NSString stringWithFormat:@"%@|%@",_model.faculty,_model.grad];
     classLabel.font = CONTENT_FONT(12);
     classLabel.textColor = [UIColor hexChangeFloat:@"999999"];
     [backView addSubview:classLabel];
