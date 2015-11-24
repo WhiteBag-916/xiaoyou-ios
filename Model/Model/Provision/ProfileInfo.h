@@ -36,6 +36,8 @@
 @property (nonatomic, strong) NSString *schoolName;
 @property (nonatomic, strong) NSString *friendStatus;
 @property (nonatomic, strong) NSString *gender;
+@property (nonatomic, strong) NSString *faculty;
+@property (nonatomic, strong) NSString *college;
 
 + (instancetype)modelObjectWithDictionary:(NSDictionary *)dict;
 - (instancetype)initWithDictionary:(NSDictionary *)dict;
