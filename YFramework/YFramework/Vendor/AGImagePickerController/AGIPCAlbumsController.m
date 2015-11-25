@@ -188,18 +188,18 @@
 
 - (void)pushFirstAssetsController
 {
-    @synchronized(self) {
-        if (0 < self.assetsGroups.count) {
-            NSString *pName = [[self.assetsGroups firstObject] valueForProperty:ALAssetsGroupPropertyName];
-            [self pushAssetsControllerWithName:pName];
-        } else {
-            static int tryCount;
-            if (tryCount < 3) {
-                [self performSelector:@selector(pushFirstAssetsController) withObject:nil afterDelay:0.2];
-                ++tryCount;
-            }
-        }
-    }
+//    @synchronized(self) {
+//        if (0 < self.assetsGroups.count) {
+//            NSString *pName = [[self.assetsGroups firstObject] valueForProperty:ALAssetsGroupPropertyName];
+//            [self pushAssetsControllerWithName:pName];
+//        } else {
+//            static int tryCount;
+//            if (tryCount < 3) {
+//                [self performSelector:@selector(pushFirstAssetsController) withObject:nil afterDelay:0.2];
+//                ++tryCount;
+//            }
+//        }
+//    }
 }
 
 #pragma mark - UITableViewDataSource Methods
