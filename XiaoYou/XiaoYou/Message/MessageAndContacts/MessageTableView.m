@@ -390,20 +390,6 @@
     [[NSUserDefaults standardUserDefaults] setObject:ext forKey:@"GoodLookMessage"];
 }
 
--(void)refreshGoodLook:(EMMessage *) message
-{
-    NSMutableDictionary * ext = [NSMutableDictionary dictionaryWithDictionary:message.ext];
-    if (nil != ext)
-    {
-        _goodLookTimeLabel.hidden = NO;
-        _goodLookHeadImageView.image = [UIImage imageNamed:@"goodlook_see_y"];
-        _goodLookLabel.text = ext[@"em_apns_ext"][@"em_push_title"];
-        _goodLookTimeLabel.text = [YUtils distanceTimeToday:[NSDate dateWithTimeIntervalSince1970:message.timestamp/1000]];
-        [ext setObject:@YES forKey:@"unreadGoodLook"];
-        [[NSUserDefaults standardUserDefaults] setObject:ext forKey:@"GoodLookMessage"];
-    }
-}
-
 #pragma mark - 得到最后消息文字或者类型
 -(NSString *)subTitleMessageByConversation:(EMMessage *)model
 {
