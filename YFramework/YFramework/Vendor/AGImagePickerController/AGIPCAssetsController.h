@@ -26,6 +26,8 @@
 // change strong to weak, springox(20140422)
 @property (ag_weak) AGImagePickerController *imagePickerController;
 
+@property (nonatomic, copy) NSString *apcTitle;
+
 - (id)initWithImagePickerController:(AGImagePickerController *)imagePickerController andAssetsGroup:(ALAssetsGroup *)assetsGroup;
 
 @end

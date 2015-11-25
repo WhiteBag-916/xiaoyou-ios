@@ -139,11 +139,11 @@
         
         self.imagePickerController = imagePickerController;
         
-        self.title = NSLocalizedStringWithDefaultValue(@"AGIPC.Loading", nil, [NSBundle mainBundle], @"Loading...", nil);
+        //self.title = NSLocalizedStringWithDefaultValue(@"AGIPC.Loading", nil, [NSBundle mainBundle], @"Loading...", nil);
         self.title = [self.assetsGroup valueForProperty:ALAssetsGroupPropertyName];
         //self.title = @"test";
         // Setup toolbar items
-        self.title = @"相册";
+        //self.title = @"相册";
         [self setupToolbarItems];
         
         // Start loading the assets
@@ -486,7 +486,8 @@
     self.navigationItem.rightBarButtonItem.enabled = ([AGIPCGridItem numberOfSelections] > 0);
     
     if ([AGIPCGridItem numberOfSelections] == 0) {
-         self.title = @"相册";
+         //self.title = @"相册";
+        self.title = [self.assetsGroup valueForProperty:ALAssetsGroupPropertyName];
     }
     
     if (self.imagePickerController.shouldDisplaySelectionInformation) {

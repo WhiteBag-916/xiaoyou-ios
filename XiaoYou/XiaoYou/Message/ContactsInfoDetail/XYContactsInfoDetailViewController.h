@@ -10,9 +10,9 @@
 
 @interface XYContactsInfoDetailViewController : YViewController
 
-@property (nonatomic,strong)NSMutableDictionary * studentDic;
+@property (nonatomic, strong) NSMutableDictionary * studentDic;
 
-@property (nonatomic,strong)NSString * uid;
+@property (nonatomic, strong) NSString * uid;
 
 @property (nonatomic, strong) NSString *hxId;
 

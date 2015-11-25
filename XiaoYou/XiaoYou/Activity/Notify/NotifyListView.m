@@ -62,7 +62,6 @@
 -(void)setNotifyListArray:(NSArray *)notifyListArray
 {
     _notifyListArray = notifyListArray;
-    //[self reloadData];
 }
 
 #pragma mark - 继承者

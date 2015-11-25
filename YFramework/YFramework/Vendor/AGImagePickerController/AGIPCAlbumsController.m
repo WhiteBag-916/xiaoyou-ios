@@ -188,18 +188,18 @@
 
 - (void)pushFirstAssetsController
 {
-//    @synchronized(self) {
-//        if (0 < self.assetsGroups.count) {
-//            NSString *pName = [[self.assetsGroups firstObject] valueForProperty:ALAssetsGroupPropertyName];
-//            [self pushAssetsControllerWithName:pName];
-//        } else {
-//            static int tryCount;
-//            if (tryCount < 3) {
-//                [self performSelector:@selector(pushFirstAssetsController) withObject:nil afterDelay:0.2];
-//                ++tryCount;
-//            }
-//        }
-//    }
+    @synchronized(self) {
+        if (0 < self.assetsGroups.count) {
+            NSString *pName = [[self.assetsGroups firstObject] valueForProperty:ALAssetsGroupPropertyName];
+            [self pushAssetsControllerWithName:pName];
+        } else {
+            static int tryCount;
+            if (tryCount < 3) {
+                [self performSelector:@selector(pushFirstAssetsController) withObject:nil afterDelay:0.2];
+                ++tryCount;
+            }
+        }
+    }
 }
 
 #pragma mark - UITableViewDataSource Methods
@@ -207,7 +207,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     return self.assetsGroups.count;
-    self.title = NSLocalizedStringWithDefaultValue(@"AGIPC.Loading", nil, [NSBundle mainBundle], @"Loading...", nil);
+    //self.title = NSLocalizedStringWithDefaultValue(@"AGIPC.Loading", nil, [NSBundle mainBundle], @"Loading...", nil);
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath

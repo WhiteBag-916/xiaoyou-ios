@@ -111,6 +111,7 @@
 
 -(void)setData:(NotifyInfoModel *)model
 {
+    
     _remindTitleLabel.text = model.em_push_title;
     _scheduleNameLabel.text = model.name;
     _beginTimeLable.text = [NSString stringWithFormat:@"活动开始时间：%@",[TimeFormatterConvert timeConvertToFommtterNotice:model.startTime]];
