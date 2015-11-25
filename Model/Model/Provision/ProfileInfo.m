@@ -34,6 +34,9 @@ NSString *const kProfileInfoSchoolName = @"schoolName";
 NSString *const kProfileInfoFriendStatus = @"friendStatus";
 NSString *const kProfileInfoGender = @"gender";
 NSString *const kProfileInfoQrCodeUrl = @"qrCodeUrl";
+NSString *const kProfileInfoFaculty = @"faculty";
+NSString *const kProfileInfoCollege = @"college";
+NSString *const kProfileInfoGrad = @"grad";
 
 @interface ProfileInfo ()
 
@@ -66,6 +69,9 @@ NSString *const kProfileInfoQrCodeUrl = @"qrCodeUrl";
 @synthesize gender = _gender;
 //@synthesize name = _name;
 @synthesize qrCodeUrl = _qrCodeUrl;
+@synthesize faculty = _faculty;
+@synthesize college = _college;
+@synthesize grad = _grad;
 
 + (instancetype)modelObjectWithDictionary:(NSDictionary *)dict
 {
@@ -179,6 +185,9 @@ NSString *const kProfileInfoQrCodeUrl = @"qrCodeUrl";
     self.schoolName = [self objectOrNilForKey:kProfileInfoSchoolName fromDictionary:dict];
     self.friendStatus = [self objectOrNilForKey:kProfileInfoFriendStatus fromDictionary:dict];
     self.gender = [self objectOrNilForKey:kProfileInfoGender fromDictionary:dict];
+    self.faculty = [self objectOrNilForKey:kProfileInfoFaculty fromDictionary:dict];
+    self.college = [self objectOrNilForKey:kProfileInfoCollege fromDictionary:dict];
+    self.grad = [self objectOrNilForKey:kProfileInfoGrad fromDictionary:dict];
     
     return self;
     
@@ -272,6 +281,9 @@ NSString *const kProfileInfoQrCodeUrl = @"qrCodeUrl";
     [mutableDict setValue:self.schoolName forKey:kProfileInfoSchoolName];
     [mutableDict setValue:self.friendStatus forKey:kProfileInfoFriendStatus];
     [mutableDict setValue:self.gender forKey:kProfileInfoGender];
+    [mutableDict setValue:self.faculty forKey:kProfileInfoFaculty];
+    [mutableDict setValue:self.college forKey:kProfileInfoCollege];
+    [mutableDict setValue:self.grad forKey:kProfileInfoGrad];
 
     return [NSDictionary dictionaryWithDictionary:mutableDict];
 }
@@ -318,6 +330,10 @@ NSString *const kProfileInfoQrCodeUrl = @"qrCodeUrl";
     self.friendStatus = [aDecoder decodeObjectForKey:kProfileInfoFriendStatus];
     self.gender = [aDecoder decodeObjectForKey:kProfileInfoGender];
     self.qrCodeUrl = [aDecoder decodeObjectForKey:kProfileInfoQrCodeUrl];
+    self.faculty = [aDecoder decodeObjectForKey:kProfileInfoFaculty];
+    self.college = [aDecoder decodeObjectForKey:kProfileInfoCollege];
+    self.grad = [aDecoder decodeObjectForKey:kProfileInfoGrad];
+    
     return self;
 }
 
@@ -347,6 +363,9 @@ NSString *const kProfileInfoQrCodeUrl = @"qrCodeUrl";
     [aCoder encodeObject:_friendStatus forKey:kProfileInfoFriendStatus];
     [aCoder encodeObject:_gender forKey:kProfileInfoGender];
     [aCoder encodeObject:_qrCodeUrl forKey:kProfileInfoQrCodeUrl];
+    [aCoder encodeObject:_faculty forKey:kProfileInfoFaculty];
+    [aCoder encodeObject:_college forKey:kProfileInfoCollege];
+    [aCoder encodeObject:_grad forKey:kProfileInfoGrad];
 }
 
 - (id)copyWithZone:(NSZone *)zone
@@ -378,6 +397,9 @@ NSString *const kProfileInfoQrCodeUrl = @"qrCodeUrl";
         copy.friendStatus = [self.friendStatus copyWithZone:zone];
         copy.gender = [self.gender copyWithZone:zone];
         copy.qrCodeUrl = [self.qrCodeUrl copyWithZone:zone];
+        copy.faculty = [self.faculty copyWithZone:zone];
+        copy.college = [self.college copyWithZone:zone];
+        copy.grad = [self.grad copyWithZone:zone];
     }
     
     return copy;

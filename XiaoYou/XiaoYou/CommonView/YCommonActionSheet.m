@@ -76,14 +76,12 @@ static const NSUInteger kYActionSheetShareHeight = 128;
 - (void)setItem:(YActionSheetItem *)item
 {
     _item = item;
-    if (YCommonActionSheetItemTypeCommon == item.type) {
-        [self initCommon];
+    if (YCommonActionSheetItemTypeCommon == item.type || YCommonActionSheetItemTypeCenterCommon == item.type) {
+        [self initCenterCommon];
     } else if (YCommonActionSheetItemTypeShareFeed == item.type || YCommonActionSheetItemTypeSharePerson == item.type || YCommonActionSheetItemTypeShareOrganization == item.type || YCommonActionSheetItemTypeShareActivity == item.type || YCommonActionSheetItemTypeShareOrganizationFeed == item.type) {
         [self initShare];
     } else if (YCommonActionSheetItemTypeSwitch == item.type) {
         [self initSwitch];
-    } else if (YCommonActionSheetItemTypeCenterCommon == item.type) {
-        [self initCenterCommon];
     }
 }
 
