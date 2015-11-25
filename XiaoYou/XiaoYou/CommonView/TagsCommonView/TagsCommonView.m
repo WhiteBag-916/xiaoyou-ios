@@ -209,8 +209,7 @@
         CGSize textSize = [tag.name boundingRectWithSize:CGSizeMake(SCALE_NUM(300), SCALE_NUM(15)) options:NSStringDrawingTruncatesLastVisibleLine attributes:attributes context:nil].size;
         //文本宽度 ＋ 前置空白行 ＋ 标签间距
         width += textSize.width + SCALE_NUM(15) + SCALE_NUM(5);
-        if (width > limitWidth)
-        {
+        if (width > limitWidth) {
             height += SCALE_NUM(20);
             width = textSize.width + SCALE_NUM(15);
         }

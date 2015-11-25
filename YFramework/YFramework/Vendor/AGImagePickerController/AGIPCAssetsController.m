@@ -34,6 +34,8 @@
 
 @property (nonatomic, strong) UITableView   *tableView;
 
+@property (nonatomic, strong) NSMutableArray *preSelectArray;
+
 @end
 
 @interface AGIPCAssetsController (Private)
@@ -354,6 +356,22 @@
     [AGIPCGridItem performSelector:@selector(resetNumberOfSelections)];
     
      //[self.assets removeAllObjects];
+    
+    
+    //纪录之前选中的索引
+    _preSelectArray = nil;
+    _preSelectArray = [NSMutableArray array];
+    int count = 0;
+    for (int i = 0; i < self.assets.count;i++) {
+        AGIPCGridItem *item = self.assets[i];
+        if (item.selected) {
+            ++count;
+            [_preSelectArray addObject:[NSNumber numberWithInt:i]];
+        }
+        if (count == 9) break;
+    }
+    
+    //清空选中
     self.assets = nil;
     self.assets = [[NSMutableArray alloc] init];
     
@@ -361,7 +379,6 @@
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
         
         __strong AGIPCAssetsController *strongSelf = weakSelf;
-        
         @autoreleasepool {
             [strongSelf.assetsGroup enumerateAssetsUsingBlock:^(ALAsset *result, NSUInteger index, BOOL *stop) {
                 
@@ -381,7 +398,6 @@
                 // Descending photos, springox(20131225)
                 [strongSelf.assets addObject:gridItem];
                 //[strongSelf.assets insertObject:gridItem atIndex:0];
-
             }];
         }
         
@@ -407,7 +423,14 @@
     NSInteger totalRows = [self.tableView numberOfRowsInSection:0];
     //Prevents crash if totalRows = 0 (when the album is empty).
     if (totalRows > 0) {
-        [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:totalRows-1 inSection:0] atScrollPosition:UITableViewScrollPositionBottom animated:NO];
+        //[self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:totalRows-1 inSection:0] atScrollPosition:UITableViewScrollPositionBottom animated:NO];
+    }
+    
+    
+    //将之前选中的重新选中
+    for (NSNumber *num in _preSelectArray) {
+        AGIPCGridItem *item = self.assets[[num intValue]];
+        item.selected = YES;
     }
 }
 

@@ -123,8 +123,6 @@
 
 - (void)image:(UIImage *)image didFinishSavingWithError:(NSError *)error contextInfo:(void *)contextInfo;
 {
-    [_indicatorView removeFromSuperview];
-    
     UILabel *label = [[UILabel alloc] init];
     label.textColor = [UIColor whiteColor];
     label.backgroundColor = [UIColor colorWithRed:0.1f green:0.1f blue:0.1f alpha:0.90f];
@@ -140,9 +138,9 @@
         label.text = SDPhotoBrowserSaveImageFailText;
     }   else {
         label.text = SDPhotoBrowserSaveImageSuccessText;
-        NSLog(@"成功......");
     }
     [label performSelector:@selector(removeFromSuperview) withObject:nil afterDelay:1.0];
+    [_indicatorView performSelector:@selector(removeFromSuperview) withObject:nil afterDelay:0.6];
 }
 
 - (void)setupScrollView

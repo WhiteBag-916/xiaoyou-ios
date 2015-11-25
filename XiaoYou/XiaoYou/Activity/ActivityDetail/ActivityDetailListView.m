@@ -157,7 +157,7 @@
         if (author.studentNo == nil && author.uid == nil)
             return SCALE_NUM(160);
         if (author.tagsCommon.count == 0 && author.propetiesCommon.count == 0 && indexPath.row == 1) {
-            return SCALE_NUM(120);
+            return SCALE_NUM(140);
         }
         if (author.tagsCommon.count == 0 && author.propetiesCommon.count == 0) {
             return SCALE_NUM(90);

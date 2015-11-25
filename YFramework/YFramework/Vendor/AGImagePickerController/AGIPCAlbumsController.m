@@ -195,7 +195,7 @@
         } else {
             static int tryCount;
             if (tryCount < 3) {
-                [self performSelector:@selector(pushFirstAssetsController) withObject:nil afterDelay:0.8];
+                [self performSelector:@selector(pushFirstAssetsController) withObject:nil afterDelay:0.2];
                 ++tryCount;
             }
         }
@@ -219,13 +219,16 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CellIdentifier];
     }
     
+    if (self.assetsGroups.count <= 0)
+        return cell;
     ALAssetsGroup *group = (self.assetsGroups)[indexPath.row];
     [group setAssetsFilter:[ALAssetsFilter allPhotos]];
     NSUInteger numberOfAssets = group.numberOfAssets;
     
     cell.textLabel.text = [NSString stringWithFormat:@"%@", [group valueForProperty:ALAssetsGroupPropertyName]];
-    cell.detailTextLabel.text = [NSString stringWithFormat:@"%d", numberOfAssets];
-    [cell.imageView setImage:[UIImage imageWithCGImage:[(ALAssetsGroup *)self.assetsGroups[indexPath.row] posterImage]]];
+    cell.detailTextLabel.text = [NSString stringWithFormat:@"%lu", (unsigned long)numberOfAssets];
+    if (self.assetsGroups.count > 0)
+        [cell.imageView setImage:[UIImage imageWithCGImage:[(ALAssetsGroup *)self.assetsGroups[indexPath.row] posterImage]]];
 	[cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
     
     return cell;
@@ -255,7 +258,8 @@
         wasLoading = _isLoadingAssetsGroups;
         if (!_isLoadingAssetsGroups) {
             _isLoadingAssetsGroups = YES;
-            [self.assetsGroups removeAllObjects];
+            //[self.assetsGroups removeAllObjects];
+            _assetsGroups = nil;
         }
     }
     

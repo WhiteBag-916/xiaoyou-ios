@@ -28,6 +28,7 @@
 #import "AGImagePickerController.h"
 #import "AGImagePreviewController.h"
 #import "AGIPCToolbarItem.h"
+#import "UIDevice+DeviceType.h"
 
 #define KTEXTVIEWMARGIN_LEFT SCALE_NUM(5)
 #define KTEXTVIEWMARGIN_TOP SCALE_NUM(15)
@@ -486,7 +487,8 @@
         //写入文件
         NSData *imageData = nil;
         
-        if (IS_IOS7) {
+        //如果是iOS7
+        if (IS_IOS7 && [[UIDevice getCurrentDeviceModel] containsString:@"iPhone 4"]) {
             imageData = UIImageJPEGRepresentation([image scaleToSize:CGSizeMake(2000, 2000)], 0.1);
         } else {
             imageData = UIImageJPEGRepresentation(image, 0.1);
