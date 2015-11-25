@@ -12,7 +12,6 @@
 #import "JoinInHeadView.h"
 #import "JoinInTopView.h"
 #import "Tags.h"
-#import "UIImageView+WebCache.h"
 #import "ContactManager.h"
 #import "YCommonAlertView.h"
 

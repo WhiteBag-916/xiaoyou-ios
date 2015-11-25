@@ -12,18 +12,27 @@
 
 - (void)setFaceImageWithUrl:(NSString *)url {
     url = [url stringByReplacingOccurrencesOfString:@" " withString:@"%20"];
-    [self sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@", api_icon_base_url, url]] placeholderImage:[UIImage imageNamed:@"default_head"]];
+    [self sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@", api_icon_base_url, url]] placeholderImage:[UIImage imageNamed:@"common_head_loading"]];
     
 }
 
+//增加默认图
 - (void)setNormalImageWithUrl:(NSString *)url {
     url = [url stringByReplacingOccurrencesOfString:@" " withString:@"%20"];
     self.userInteractionEnabled = false;
-    [self sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@", api_icon_base_url, url]] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+//    [self sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@", api_icon_base_url, url]] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+//        if (image != nil) {
+//            self.userInteractionEnabled = true;
+//        }
+//    }];
+    
+    [self sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@", api_icon_base_url, url]] placeholderImage:[UIImage imageNamed:@"common_picture_loading"] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
         if (image != nil) {
             self.userInteractionEnabled = true;
         }
     }];
+    
+    
 }
 
 #pragma mark 编码解码函数，暂时未测试

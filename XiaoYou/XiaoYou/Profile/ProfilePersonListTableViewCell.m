@@ -10,7 +10,6 @@
 #import "YFaceImageView.h"
 #import "YUtils+Component.h"
 #import "ConnectTag.h"
-#import "UIImageView+WebCache.h"
 #import "FeedTag.h"
 #import "Author.h"
 #import "ContactManager.h"

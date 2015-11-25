@@ -8,7 +8,6 @@
 
 #import <AVFoundation/AVFoundation.h>
 #import "ProfileMyViewController.h"
-#import "UIImageView+WebCache.h"
 #import "ProfileChangePwdViewController.h"
 #import "ProfilePhoneChangeViewController.h"
 #import "ProvisionManager.h"

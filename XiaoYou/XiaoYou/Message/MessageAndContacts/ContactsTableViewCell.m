@@ -9,7 +9,6 @@
 #import "ContactsTableViewCell.h"
 #import "Masonry.h"
 #import "YSystemDefine.h"
-#import "UIImageView+WebCache.h"
 #import "YUrlDefine.h"
 #import "ConnectTag.h"
 #import "Tags.h"

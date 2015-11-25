@@ -11,7 +11,6 @@
 #import "YSystemDefine.h"
 #import "RobotManager.h"
 #import "ConvertToCommonEmoticonsHelper.h"
-#import "UIImageView+WebCache.h"
 #import "NSDate+Category.h"
 #import "ContactManager.h"
 #import "LinkManList.h"
