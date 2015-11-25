@@ -78,7 +78,7 @@ NSString *const kNotifyListTableViewCell = @"NotifyListTableViewCellId";
 }
 
 - (void)initData:(AlertList *)alertList {
-    [_face setData:alertList.userId imageUrl:alertList.hedPic];
+    [_face setData:alertList.userId imageUrl:alertList.headPic];
     _contentLabel.text = alertList.content;
     _timeLabel.text = [YUtils distanceTimeToday:[NSDate dateWithTimeIntervalSince1970:alertList.createTime/1000]];
 }
