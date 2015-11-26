@@ -423,15 +423,15 @@
     NSInteger totalRows = [self.tableView numberOfRowsInSection:0];
     //Prevents crash if totalRows = 0 (when the album is empty).
     if (totalRows > 0) {
-        //[self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:totalRows-1 inSection:0] atScrollPosition:UITableViewScrollPositionBottom animated:NO];
+        [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:totalRows-1 inSection:0] atScrollPosition:UITableViewScrollPositionBottom animated:NO];
     }
     
     
     //将之前选中的重新选中
-    for (NSNumber *num in _preSelectArray) {
-        AGIPCGridItem *item = self.assets[[num intValue]];
-        item.selected = YES;
-    }
+//    for (NSNumber *num in _preSelectArray) {
+//        AGIPCGridItem *item = self.assets[[num intValue]];
+//        item.selected = YES;
+//    }
 }
 
 

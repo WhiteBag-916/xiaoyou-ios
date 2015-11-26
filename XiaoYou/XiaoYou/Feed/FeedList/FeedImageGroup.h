@@ -57,4 +57,8 @@
 //打开相机
 - (void)openPhoto;
 
+- (void)addPhotoPath:(NSString*)path;
+
+- (NSMutableArray *)smallImgs;
+
 @end

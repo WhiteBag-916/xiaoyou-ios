@@ -20,4 +20,7 @@
 +(NSString*)timeConvertToFommtterNotice:(double)timestamp;
 
 +(NSString*)timeConvertToFommtterNoticeHead:(double)timestamp;
+
++(NSString*)getTimeStamp;
+
 @end
