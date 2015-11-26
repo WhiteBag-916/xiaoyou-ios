@@ -10,7 +10,6 @@
 #import "YFaceImageView.h"
 #import "YUtils+Component.h"
 #import "ConnectTag.h"
-#import "UIImageView+WebCache.h"
 #import "FeedTag.h"
 #import "Author.h"
 #import "ContactManager.h"
@@ -69,7 +68,7 @@ NSString *const kProfilePersonListTableViewCell = @"kProfilePersonListTableViewC
         [_userName mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.equalTo(_face.mas_right).offset(KTAGMARGIN);
             make.centerY.equalTo(_face);
-            make.height.mas_equalTo(SCALE_NUM(12));
+            make.height.mas_equalTo(SCALE_NUM(14));
         }];
         
         //性别

@@ -195,7 +195,7 @@
         } else {
             static int tryCount;
             if (tryCount < 3) {
-                [self performSelector:@selector(pushFirstAssetsController) withObject:nil afterDelay:0.8];
+                [self performSelector:@selector(pushFirstAssetsController) withObject:nil afterDelay:0.2];
                 ++tryCount;
             }
         }
@@ -207,7 +207,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     return self.assetsGroups.count;
-    self.title = NSLocalizedStringWithDefaultValue(@"AGIPC.Loading", nil, [NSBundle mainBundle], @"Loading...", nil);
+    //self.title = NSLocalizedStringWithDefaultValue(@"AGIPC.Loading", nil, [NSBundle mainBundle], @"Loading...", nil);
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -219,13 +219,16 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CellIdentifier];
     }
     
+    if (self.assetsGroups.count <= 0)
+        return cell;
     ALAssetsGroup *group = (self.assetsGroups)[indexPath.row];
     [group setAssetsFilter:[ALAssetsFilter allPhotos]];
     NSUInteger numberOfAssets = group.numberOfAssets;
     
     cell.textLabel.text = [NSString stringWithFormat:@"%@", [group valueForProperty:ALAssetsGroupPropertyName]];
-    cell.detailTextLabel.text = [NSString stringWithFormat:@"%d", numberOfAssets];
-    [cell.imageView setImage:[UIImage imageWithCGImage:[(ALAssetsGroup *)self.assetsGroups[indexPath.row] posterImage]]];
+    cell.detailTextLabel.text = [NSString stringWithFormat:@"%lu", (unsigned long)numberOfAssets];
+    if (self.assetsGroups.count > 0)
+        [cell.imageView setImage:[UIImage imageWithCGImage:[(ALAssetsGroup *)self.assetsGroups[indexPath.row] posterImage]]];
 	[cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
     
     return cell;
@@ -255,7 +258,8 @@
         wasLoading = _isLoadingAssetsGroups;
         if (!_isLoadingAssetsGroups) {
             _isLoadingAssetsGroups = YES;
-            [self.assetsGroups removeAllObjects];
+            //[self.assetsGroups removeAllObjects];
+            _assetsGroups = nil;
         }
     }
     
@@ -363,7 +367,14 @@
 
 - (void)didChangeLibrary:(NSNotification *)notification
 {
-    [self loadAssetsGroups];
+    if ([notification userInfo]) {
+        NSSet *updatedAssetGroup = [[notification userInfo] objectForKey:ALAssetLibraryUpdatedAssetGroupsKey];
+        NSSet *deletedAssetGroup = [[notification userInfo] objectForKey:ALAssetLibraryDeletedAssetGroupsKey];
+        NSSet *insertedAssetGroup = [[notification userInfo] objectForKey:ALAssetLibraryInsertedAssetGroupsKey];
+        if (nil != updatedAssetGroup || nil != deletedAssetGroup || nil != insertedAssetGroup) {
+            [self loadAssetsGroups];
+        }
+    }
 }
 
 @end

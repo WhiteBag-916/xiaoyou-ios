@@ -299,8 +299,16 @@
 - (void)regNotice {
     [[ProvisionManager sharedInstance] regNotice:^(YActionMessage *message) {
         if (message.isSuccess) {
-            [_protocolImageView sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@", api_icon_base_url, [message.object noticeUrl]]] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
-                if (nil == error && nil != image) {
+//            [_protocolImageView sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@", api_icon_base_url, [message.object noticeUrl]]] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+//                if (nil == error && nil != image) {
+//                    [self pressInitialPassword];
+//                }
+//            }];
+            
+            //[_protocolImageView setNormalImageWithUrl:[message.object noticeUrl]];
+            
+            [_protocolImageView sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@", api_icon_base_url, [message.object noticeUrl]]] placeholderImage:[UIImage imageNamed:@"common_picture_loading"] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+                if (image != nil) {
                     [self pressInitialPassword];
                 }
             }];

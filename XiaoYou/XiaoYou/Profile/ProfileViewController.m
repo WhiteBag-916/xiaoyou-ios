@@ -13,7 +13,6 @@
 #import "ProfilePublishViewController.h"
 #import "ProfileMyViewController.h"
 #import "YCommonEditViewController.h"
-#import "UIImageView+WebCache.h"
 #import "ProfileInfo.h"
 #import "YUtils+HUD.h"
 #import "YActionMessage.h"

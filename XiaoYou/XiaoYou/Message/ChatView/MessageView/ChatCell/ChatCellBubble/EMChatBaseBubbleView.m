@@ -51,17 +51,18 @@ NSString *const kRouterEventChatCellBubbleTapEventName = @"kRouterEventChatCellB
     
     BOOL isReceiver = !_model.isSender;
     NSString *imageName = isReceiver ? BUBBLE_LEFT_IMAGE_NAME : BUBBLE_RIGHT_IMAGE_NAME;
-    NSInteger leftCapWidth = isReceiver?BUBBLE_LEFT_LEFT_CAP_WIDTH:BUBBLE_RIGHT_LEFT_CAP_WIDTH;
-    NSInteger topCapHeight =  isReceiver?BUBBLE_LEFT_TOP_CAP_HEIGHT:BUBBLE_RIGHT_TOP_CAP_HEIGHT;
-    self.backImageView.image = [[UIImage imageNamed:imageName] stretchableImageWithLeftCapWidth:leftCapWidth topCapHeight:topCapHeight];
-    self.backImageView.image = [[UIImage imageNamed:imageName] resizableImageWithCapInsets:UIEdgeInsetsMake(20, 24, 30, 24) resizingMode:UIImageResizingModeStretch];;
+//    NSInteger leftCapWidth = isReceiver?BUBBLE_LEFT_LEFT_CAP_WIDTH:BUBBLE_RIGHT_LEFT_CAP_WIDTH;
+//    NSInteger topCapHeight =  isReceiver?BUBBLE_LEFT_TOP_CAP_HEIGHT:BUBBLE_RIGHT_TOP_CAP_HEIGHT;
+//    self.backImageView.image = [[UIImage imageNamed:imageName] stretchableImageWithLeftCapWidth:leftCapWidth topCapHeight:topCapHeight];
+    UIEdgeInsets insets = isReceiver?UIEdgeInsetsMake(28, 38, 28, 28):UIEdgeInsetsMake(30, 30, 38, 28);
+    self.backImageView.image = [[UIImage imageNamed:imageName] resizableImageWithCapInsets:insets resizingMode:UIImageResizingModeStretch];;
 }
 
 #pragma mark - public
 
 + (CGFloat)heightForBubbleWithObject:(MessageModel *)object
 {
-    return 30;
+    return 40;
 }
 
 - (void)bubbleViewPressed:(id)sender

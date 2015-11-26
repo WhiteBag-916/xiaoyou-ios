@@ -31,6 +31,7 @@
 @property (nonatomic,assign) NSInteger currentIndex;            //分页用
 
 @property (nonatomic,strong) ScheduleCardCell *scheduleCardCell;//日程
+
 @end
 
 @implementation AvailableListView
@@ -149,9 +150,6 @@
 {
     CGFloat height;
     if (indexPath.row == 0) {
-//        height = [tableView fd_heightForCellWithIdentifier:REUSEID_SCHEDULE_CELL cacheByIndexPath:indexPath configuration:^(ScheduleCardCell *cell) {
-//            [cell setData:self.availableListArray[indexPath.row]];
-//        }];
         NSUInteger count = [self.availableListArray[indexPath.row] count];
         if (count == 0) {
             height = SCALE_NUM(100);
@@ -164,6 +162,12 @@
         {
             height = SCALE_NUM(140);
         }
+        
+        NSUInteger msgCount = [self searchMessageNotRead];
+        
+        if (msgCount > 0)
+            height += 30;
+        
         return height;
     }
     else if (indexPath.row == 1)

@@ -69,17 +69,12 @@
         NSString *uid = [[YShareData defaultData] valueForKey:kShareData_UserID];
         if (uid != nil)
         {
-        for (NotifyInfoModel *model in _notifyDataSource) {
-            if (![model.uid isEqualToString:uid]) {
-                [_notifyDataSource removeObject:model];
+            for (NotifyInfoModel *model in _notifyDataSource) {
+                if (![model.uid isEqualToString:uid]) {
+                    [_notifyDataSource removeObject:model];
+                }
             }
         }
-        }
-        //如果需要保存历史纪录的话,打开下面代码
-//        for (NotifyInfoModel *model in _notifyDataSource) {
-//            model.isRead = @"YES";
-//            [dataBaseDao insertModel:model];
-//        }
         
     }
     return _notifyDataSource;

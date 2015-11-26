@@ -7,7 +7,6 @@
 //
 
 #import "YFaceImageView.h"
-#import "UIImageView+WebCache.h"
 #import "ProvisionManager.h"
 #import "ProfileInfo.h"
 

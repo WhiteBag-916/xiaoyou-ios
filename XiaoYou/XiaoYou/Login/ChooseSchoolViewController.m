@@ -11,7 +11,6 @@
 #import "AppDelegate+RootVC.h"
 #import "SchoolListModel.h"
 #import "PinYinForObjc.h"
-#import "UIImageView+WebCache.h"
 #import "YTextField.h"
 #import "YTableView.h"
 #import "YTableViewCell.h"

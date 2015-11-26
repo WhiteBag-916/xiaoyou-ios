@@ -8,7 +8,6 @@
 
 #import "FeedImageGroup.h"
 #import "Masonry.h"
-#import "UIImageView+WebCache.h"
 #import "YUtils+Component.h"
 #import "SDPhotoBrowser/SDPhotoBrowser.h"
 

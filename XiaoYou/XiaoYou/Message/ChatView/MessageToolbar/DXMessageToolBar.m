@@ -316,14 +316,14 @@
     allButtonWidth += CGRectGetWidth(self.moreButton.frame) + kHorizontalPadding * 2.5;
     
     //表情
-    self.faceButton = [[UIButton alloc] initWithFrame:CGRectMake(CGRectGetMinX(self.moreButton.frame) - kInputTextViewMinHeight - kHorizontalPadding, kVerticalPadding, kInputTextViewMinHeight, kInputTextViewMinHeight)];
+    self.faceButton = [[UIButton alloc] initWithFrame:CGRectMake(CGRectGetMinX(self.moreButton.frame) - kInputTextViewMinHeight, kVerticalPadding, kInputTextViewMinHeight, kInputTextViewMinHeight)];
     self.faceButton.autoresizingMask = UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleLeftMargin;
     [self.faceButton setImage:[UIImage imageNamed:@"chatBar_face"] forState:UIControlStateNormal];
     [self.faceButton setImage:[UIImage imageNamed:@"chatBar_faceSelected"] forState:UIControlStateHighlighted];
     [self.faceButton setImage:[UIImage imageNamed:@"chatBar_keyboard"] forState:UIControlStateSelected];
     [self.faceButton addTarget:self action:@selector(buttonAction:) forControlEvents:UIControlEventTouchUpInside];
     self.faceButton.tag = 1;
-    allButtonWidth += CGRectGetWidth(self.faceButton.frame) + kHorizontalPadding * 1.5;
+    allButtonWidth += CGRectGetWidth(self.faceButton.frame);
     
     
     // 输入框的高度和宽度
@@ -371,12 +371,12 @@
     if (!self.faceView) {
         self.faceView = [[DXFaceView alloc] initWithFrame:CGRectMake(0, (kVerticalPadding * 2 + kInputTextViewMinHeight), self.frame.size.width, 200)];
         [(DXFaceView *)self.faceView setDelegate:self];
-        self.faceView.backgroundColor = [UIColor lightGrayColor];
+        self.faceView.backgroundColor = [UIColor hexChangeFloat:@"eceff0"];
         self.faceView.autoresizingMask = UIViewAutoresizingFlexibleTopMargin;
     }
     
     if (!self.recordView) {
-        self.recordView = [[DXRecordView alloc] initWithFrame:CGRectMake(90, 130, 160, 160)];
+        self.recordView = [[DXRecordView alloc] initWithFrame:CGRectMake(90, 130, 100, 100)];
     }
     
     [self.toolbarView addSubview:self.styleChangeButton];
@@ -492,7 +492,7 @@
 
 - (CGFloat)getTextViewContentH:(UITextView *)textView
 {
-    if (self.version >= 7.0)
+    if (self.version >= 8.0)
     {
         return ceilf([textView sizeThatFits:textView.frame.size].height);
     } else {

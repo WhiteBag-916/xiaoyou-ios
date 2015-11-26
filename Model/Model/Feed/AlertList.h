@@ -18,7 +18,7 @@
 @property (nonatomic, assign) double affectId;
 @property (nonatomic, assign) double createTime;
 @property (nonatomic, assign) double lastReadTime;
-@property (nonatomic, strong) NSString *hedPic;
+@property (nonatomic, strong) NSString *headPic;
 
 + (instancetype)modelObjectWithDictionary:(NSDictionary *)dict;
 - (instancetype)initWithDictionary:(NSDictionary *)dict;

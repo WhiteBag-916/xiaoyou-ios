@@ -38,16 +38,23 @@
 //        bgView.clipsToBounds = YES;
 //        bgView.alpha = 0.6;
         UIImageView * bgImageView = [[UIImageView alloc] initWithFrame:self.bounds];
-        bgImageView.layer.cornerRadius = 80;
-        bgImageView.layer.masksToBounds = YES;
-        bgImageView.clipsToBounds = YES;
-        bgImageView.alpha = 0.8;
+//        bgImageView.layer.cornerRadius = 80;
+//        bgImageView.layer.masksToBounds = YES;
+//        bgImageView.clipsToBounds = YES;
+//        bgImageView.alpha = 0.8;
         bgImageView.image = [UIImage imageNamed:@"chat_voice_bg"];
         [self addSubview:bgImageView];
         
-        _recordAnimationView = [[UIImageView alloc] initWithFrame:CGRectMake(65, 47, 30, 66)];
-        _recordAnimationView.image = [UIImage imageNamed:@"VoiceSearchFeedback000"];
+        _recordAnimationView = [[UIImageView alloc] initWithFrame:CGRectMake((bgImageView.width-34)/2, 22, 34, 10)];
+        NSMutableArray *imageArr = [NSMutableArray array];
+        for (int i=1;i<=9;++i) {
+            NSString *imageStr = [NSString stringWithFormat:@"sound_%d", i];
+            [imageArr addObject:[UIImage imageNamed:imageStr]];
+        }
+//        _recordAnimationView.image = [UIImage imageNamed:@"VoiceSearchFeedback000"];
+        _recordAnimationView.animationImages = [NSArray arrayWithArray:imageArr];
         [self addSubview:_recordAnimationView];
+        
         
 //        _textLabel = [[UILabel alloc] initWithFrame:CGRectMake(5,
 //                                                               self.bounds.size.height - 30,
@@ -73,22 +80,24 @@
     // 需要根据声音大小切换recordView动画
 //    _textLabel.text = NSLocalizedString(@"上滑取消发送", @"Fingers up slide, cancel sending");
 //    _textLabel.backgroundColor = [UIColor clearColor];
-    _timer = [NSTimer scheduledTimerWithTimeInterval:0.05
-                                              target:self
-                                            selector:@selector(setVoiceImage)
-                                            userInfo:nil
-                                             repeats:YES];
-    
+//    _timer = [NSTimer scheduledTimerWithTimeInterval:0.05
+//                                              target:self
+//                                            selector:@selector(setVoiceImage)
+//                                            userInfo:nil
+//                                             repeats:YES];
+    [_recordAnimationView startAnimating];
 }
 // 手指在录音按钮内部时离开
 -(void)recordButtonTouchUpInside
 {
     [_timer invalidate];
+    [_recordAnimationView stopAnimating];
 }
 // 手指在录音按钮外部时离开
 -(void)recordButtonTouchUpOutside
 {
     [_timer invalidate];
+    [_recordAnimationView stopAnimating];
 }
 // 手指移动到录音按钮内部
 -(void)recordButtonDragInside

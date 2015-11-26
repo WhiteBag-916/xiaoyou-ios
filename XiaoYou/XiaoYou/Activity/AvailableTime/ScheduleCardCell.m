@@ -230,6 +230,15 @@
 {
     self.messageNotRead.hidden = !isVisible;
     [self.messageNotRead setTitle:text forState:UIControlStateNormal];
+    if (isVisible) {
+        [_startImageView mas_updateConstraints:^(MASConstraintMaker *make) {
+            make.top.mas_equalTo(SCALE_NUM(50));
+        }];
+    } else {
+        [_startImageView mas_updateConstraints:^(MASConstraintMaker *make) {
+            make.top.mas_equalTo(SCALE_NUM(20));
+        }];
+    }
 }
 
 //消息未读提醒Action
@@ -242,15 +251,18 @@
         _messageNotRead.layer.cornerRadius = 5;
         _messageNotRead.clipsToBounds = YES;
         _messageNotRead.alpha = 0.7;
+        _messageNotRead.hidden = YES;
         [_messageNotRead setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         [_messageNotRead addTarget:self action:@selector(messageNotReadAction) forControlEvents:UIControlEventTouchUpInside];
         [_messageNotRead mas_makeConstraints:^(MASConstraintMaker *make) {
             make.centerX.equalTo(self.contentView);
             make.top.mas_equalTo(SCALE_NUM(10));
-            make.height.mas_equalTo(SCALE_NUM(22));
+            make.height.mas_equalTo(SCALE_NUM(24));
         }];
+        
     }
     return _messageNotRead;
+    
 }
 
 //消息未读提醒Action

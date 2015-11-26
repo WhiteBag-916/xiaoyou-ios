@@ -8,7 +8,6 @@
 
 #import "AssociationsListTableViewCell.h"
 #import "YUtils+Component.h"
-#import "UIImageView+WebCache.h"
 #import "GroupModel.h"
 #import "UIImageView+Ext.h"
 

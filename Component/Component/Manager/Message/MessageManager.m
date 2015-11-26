@@ -222,8 +222,14 @@ DEF_SINGLETON(MessageManager);
             }
             case GOOD_LOOK: //好看 19
             {
-                NSDictionary * dic = @{@"message":cmdMessage};
-                [[NSNotificationCenter defaultCenter] postNotificationName:KNotification_GoodLook_Message object:nil userInfo:dic];
+                NSMutableDictionary * ext = [NSMutableDictionary dictionaryWithDictionary:cmdMessage.ext];
+                if (nil != ext)
+                {
+                    [ext setObject:@YES forKey:@"unreadGoodLook"];
+                    [[NSUserDefaults standardUserDefaults] setObject:ext forKey:@"GoodLookMessage"];
+                }
+                
+                needRefresh = YES;
                 
                 break;
             }

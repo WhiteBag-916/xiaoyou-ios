@@ -16,13 +16,13 @@ NSString *const kRubLessonTableViewCell = @"RubLessonTableViewCellId";
 #define K_DEPARTMENTSIMG_T  SCALE_NUM(14)   //开课单位图标上间距
 #define K_LEFTLAB_L         SCALE_NUM(10)   //描述左
 #define K_LEFTLAB_W         SCALE_NUM(70)   //描述宽
-#define K_NAMELAB_L         SCALE_NUM(0)   //名字左
+#define K_NAMELAB_L         SCALE_NUM(0)    //名字左
 #define K_NAMELAB_R         SCALE_NUM(-12)   //名字右
 #define K_ADD_T             SCALE_NUM(19)   //加日程上
-#define K_ADD_R             SCALE_NUM(9)   //加日程上
+#define K_ADD_R             SCALE_NUM(9)    //加日程上
 #define K_ADD_H             SCALE_NUM(26)   //加日程高
 #define K_ADD_W             SCALE_NUM(70)   //加日程宽
-#define K_LOCATION_IMG_W    SCALE_NUM(9)   //地点图宽
+#define K_LOCATION_IMG_W    SCALE_NUM(9)    //地点图宽
 
 @interface RubLessonTableViewCell ()
 

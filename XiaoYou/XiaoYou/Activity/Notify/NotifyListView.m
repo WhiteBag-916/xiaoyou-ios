@@ -62,7 +62,6 @@
 -(void)setNotifyListArray:(NSArray *)notifyListArray
 {
     _notifyListArray = notifyListArray;
-    //[self reloadData];
 }
 
 #pragma mark - 继承者
@@ -116,44 +115,6 @@
     [YObject isElement:@((int)(model.type)) InArray:self.scheduleList sucessed:^{
         cellHeight = SCALE_NUM(110);
     } failed:nil];
-//    switch (model.type)
-//    {
-//        case ACTIVITY_ENROLL_CHECK_PASS: //审核通过
-//        {
-//            cellHeight = SCALE_NUM(190);
-//            break;
-//        }
-//        case ACTIVITY_ENROLL_NO_CHECK:
-//        {
-//            cellHeight = SCALE_NUM(190);
-//            break;
-//        }
-//        case SCHEDULE_REMIND: //用户日程提醒
-//        {
-//            cellHeight = SCALE_NUM(110);
-//            break;
-//        }
-//        case ACTIVITY_ENROLL: //用户报名活动提醒
-//        {
-//            cellHeight = SCALE_NUM(120);
-//            break;
-//        }
-//        case ACTIVITY_PUBLISH:
-//        {
-//            cellHeight = SCALE_NUM(190);
-//            break;
-//        }
-//        case ACTIVITY_NOTIFY:
-//        {
-//            cellHeight = SCALE_NUM(190);
-//            break;
-//        }
-//        default:
-//        {
-//            cellHeight = 0;
-//            break;
-//        }
-//    }
     return cellHeight;
 }
 

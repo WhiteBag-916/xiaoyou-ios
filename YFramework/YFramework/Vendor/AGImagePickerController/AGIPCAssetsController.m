@@ -34,6 +34,8 @@
 
 @property (nonatomic, strong) UITableView   *tableView;
 
+@property (nonatomic, strong) NSMutableArray *preSelectArray;
+
 @end
 
 @interface AGIPCAssetsController (Private)
@@ -137,11 +139,11 @@
         
         self.imagePickerController = imagePickerController;
         
-        self.title = NSLocalizedStringWithDefaultValue(@"AGIPC.Loading", nil, [NSBundle mainBundle], @"Loading...", nil);
+        //self.title = NSLocalizedStringWithDefaultValue(@"AGIPC.Loading", nil, [NSBundle mainBundle], @"Loading...", nil);
         self.title = [self.assetsGroup valueForProperty:ALAssetsGroupPropertyName];
         //self.title = @"test";
         // Setup toolbar items
-        self.title = @"相册";
+        //self.title = @"相册";
         [self setupToolbarItems];
         
         // Start loading the assets
@@ -354,6 +356,22 @@
     [AGIPCGridItem performSelector:@selector(resetNumberOfSelections)];
     
      //[self.assets removeAllObjects];
+    
+    
+    //纪录之前选中的索引
+    _preSelectArray = nil;
+    _preSelectArray = [NSMutableArray array];
+    int count = 0;
+    for (int i = 0; i < self.assets.count;i++) {
+        AGIPCGridItem *item = self.assets[i];
+        if (item.selected) {
+            ++count;
+            [_preSelectArray addObject:[NSNumber numberWithInt:i]];
+        }
+        if (count == 9) break;
+    }
+    
+    //清空选中
     self.assets = nil;
     self.assets = [[NSMutableArray alloc] init];
     
@@ -361,7 +379,6 @@
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
         
         __strong AGIPCAssetsController *strongSelf = weakSelf;
-        
         @autoreleasepool {
             [strongSelf.assetsGroup enumerateAssetsUsingBlock:^(ALAsset *result, NSUInteger index, BOOL *stop) {
                 
@@ -381,7 +398,6 @@
                 // Descending photos, springox(20131225)
                 [strongSelf.assets addObject:gridItem];
                 //[strongSelf.assets insertObject:gridItem atIndex:0];
-
             }];
         }
         
@@ -407,7 +423,14 @@
     NSInteger totalRows = [self.tableView numberOfRowsInSection:0];
     //Prevents crash if totalRows = 0 (when the album is empty).
     if (totalRows > 0) {
-        [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:totalRows-1 inSection:0] atScrollPosition:UITableViewScrollPositionBottom animated:NO];
+        //[self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:totalRows-1 inSection:0] atScrollPosition:UITableViewScrollPositionBottom animated:NO];
+    }
+    
+    
+    //将之前选中的重新选中
+    for (NSNumber *num in _preSelectArray) {
+        AGIPCGridItem *item = self.assets[[num intValue]];
+        item.selected = YES;
     }
 }
 
@@ -463,7 +486,8 @@
     self.navigationItem.rightBarButtonItem.enabled = ([AGIPCGridItem numberOfSelections] > 0);
     
     if ([AGIPCGridItem numberOfSelections] == 0) {
-         self.title = @"相册";
+         //self.title = @"相册";
+        self.title = [self.assetsGroup valueForProperty:ALAssetsGroupPropertyName];
     }
     
     if (self.imagePickerController.shouldDisplaySelectionInformation) {
@@ -571,9 +595,16 @@
 
 - (void)didChangeLibrary:(NSNotification *)notification
 {
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.8 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [self loadAssets];
-    });
+//    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.8 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+//        [self loadAssets];
+//    });
+    if ([notification userInfo]) {
+        NSSet *insertedURLs = [[notification userInfo] objectForKey:ALAssetLibraryUpdatedAssetsKey];
+        if (nil != insertedURLs) {
+            [self loadAssets];
+        }
+    }
+    
 }
 
 - (void)didChangeToolbarItemsForManagingTheSelection:(NSNotification *)notification

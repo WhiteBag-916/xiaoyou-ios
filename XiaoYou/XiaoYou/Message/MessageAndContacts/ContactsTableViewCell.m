@@ -9,7 +9,6 @@
 #import "ContactsTableViewCell.h"
 #import "Masonry.h"
 #import "YSystemDefine.h"
-#import "UIImageView+WebCache.h"
 #import "YUrlDefine.h"
 #import "ConnectTag.h"
 #import "Tags.h"
@@ -23,7 +22,7 @@
 #define kFlagImageViewWidth            SCALE_NUM(11)
 #define kFlagImageViewHeight           SCALE_NUM(14)
 #define kPaddingDistance               SCALE_NUM(10)
-#define kLabelHeightDistacnce          SCALE_NUM(14)
+#define kLabelHeightDistacnce          SCALE_NUM(16)
 #define kClassLabelDistance            SCALE_NUM(5)
 #define kClassLabelWidthAndHeight      SCALE_NUM(30)
 #define kRemindImageViewWidth          SCALE_NUM(13)

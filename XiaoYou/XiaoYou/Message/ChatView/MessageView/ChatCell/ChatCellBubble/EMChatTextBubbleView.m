@@ -299,6 +299,9 @@ NSString *const kRouterEventTextURLTapEventName = @"kRouterEventTextURLTapEventN
             }
         }
     }
+    
+    //隐藏键盘
+    [self.viewController.view endEditing:YES];
 }
 
 +(CGFloat)heightForBubbleWithObject:(MessageModel *)object

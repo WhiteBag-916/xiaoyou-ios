@@ -24,10 +24,11 @@
 #import "ImageUploadModel.h"
 #import "Feed.h"
 #import "YModel+ActionMessage.h"
-//#import "UzysAssetsPickerController.h"
+#import "UIImage+Extn.h"
 #import "AGImagePickerController.h"
 #import "AGImagePreviewController.h"
 #import "AGIPCToolbarItem.h"
+#import "UIDevice+DeviceType.h"
 
 #define KTEXTVIEWMARGIN_LEFT SCALE_NUM(5)
 #define KTEXTVIEWMARGIN_TOP SCALE_NUM(15)
@@ -49,7 +50,6 @@
 @property (nonatomic, strong) UIView *contentView;
 @property (nonatomic, strong) UIView *bottomView;
 
-
 @property (nonatomic, strong) YTextView *textView;//feed内容
 @property (nonatomic, strong) FeedImageGroup *imgGroup;//feed图片
 @property (nonatomic, strong) SKTagView *tagView;//兴趣标签
@@ -66,12 +66,7 @@
 
 @property (nonatomic, strong) NSMutableArray *picArray;
 
-//@property (nonatomic, strong) UIImagePickerController *picker;
-
 @property (nonatomic, assign) BOOL isPhotoSaveEnd;//上传图片时的同步操作
-//@property (nonatomic, assign) BOOL isUpLoadEnd; //图片是否上传成功时的同步操作
-
-
 
 @end
 
@@ -366,25 +361,36 @@
     self.imagePickerVC.didFinishBlock = ^(NSArray *info) {
         [blockSelf.picArray setArray:info];
         //上传图片
+        
+        [YUtils showHUDWithTitle:@""];
         [info enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
             ALAsset *representation = obj;
             UIImage *img = [UIImage imageWithCGImage:representation.defaultRepresentation.fullResolutionImage
                                                    scale:representation.defaultRepresentation.scale
                                              orientation:(UIImageOrientation)representation.defaultRepresentation.orientation];
-    
+            
             blockSelf.isPhotoSaveEnd = NO;
             [blockSelf savePic:img];
-            //每次选择一张  避免多线程上传图片的时候图片模糊
+            
+            //每次选择一张  避免多线程保存图片的时候图片模糊
             while (!blockSelf.isPhotoSaveEnd) {
                 [[NSRunLoop mainRunLoop] runMode:NSDefaultRunLoopMode beforeDate:[NSDate distantFuture]];
             }
         }];
         
+        [YUtils hiddenProgressHUD];
         [blockSelf dismissViewControllerAnimated:YES completion:nil];
         [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault animated:YES];
     };
 }
 
+-(void)beginSaveImg {
+    [YUtils showHUDWithTitle:@""];
+}
+
+-(void)endSaveImg {
+    [YUtils hiddenProgressHUD];
+}
 
 - (void)pickImage
 {
@@ -479,7 +485,15 @@
         NSString *keyStr = [NSString stringWithFormat:@"feed%d.png", [_imgGroup getImgCount]];
         
         //写入文件
-        NSData *imageData = UIImageJPEGRepresentation(image, 0.1);
+        NSData *imageData = nil;
+        
+        //如果是iOS7
+        if (IS_IOS7 && [[UIDevice getCurrentDeviceModel] containsString:@"iPhone 4"]) {
+            imageData = UIImageJPEGRepresentation([image scaleToSize:CGSizeMake(2000, 2000)], 0.1);
+        } else {
+            imageData = UIImageJPEGRepresentation(image, 0.1);
+        }
+        
         NSString *fullPath = [[YDirectory newImgCache] stringByAppendingPathComponent:keyStr];
         
         //保存到沙盒
@@ -523,6 +537,8 @@
 }
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+
+    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@""] forBarMetrics:UIBarMetricsDefault];
     [self showEditMode];
 }
 - (void)dealloc {
@@ -569,12 +585,6 @@
 //                [weakSelf uploadFeed];
 //            }
 //        }];
-//        
-//        //解决图片顺序问题
-//        while (!self.isUpLoadEnd) {
-//            [[NSRunLoop mainRunLoop] runMode:NSDefaultRunLoopMode beforeDate:[NSDate distantFuture]];
-//        }
-//        _isUpLoadEnd = NO;
     }
     
     if ([_imgGroup getImgCount] == 0) {
@@ -623,7 +633,6 @@
                 });
             } else {
                 [YUtils showTitle:message.desc];
-                //_isUpLoadEnd = YES;
             }
         }];
         
@@ -685,6 +694,5 @@
 {
     [picker dismissViewControllerAnimated:YES completion:nil];
 }
-
 
 @end

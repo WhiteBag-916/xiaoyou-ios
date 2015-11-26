@@ -15,7 +15,7 @@ NSString *const kAlertListId = @"id";
 NSString *const kAlertListAffectId = @"affectId";
 NSString *const kAlertListCreateTime = @"createTime";
 NSString *const kAlertListLastReadTime = @"lastReadTime";
-NSString *const kAlertListHedPic = @"hedPic";
+NSString *const kAlertListHeadPic = @"headPic";
 
 @interface AlertList ()
 
@@ -32,7 +32,7 @@ NSString *const kAlertListHedPic = @"hedPic";
 @synthesize affectId = _affectId;
 @synthesize createTime = _createTime;
 @synthesize lastReadTime = _lastReadTime;
-@synthesize hedPic = _hedPic;
+@synthesize headPic = _headPic;
 
 + (instancetype)modelObjectWithDictionary:(NSDictionary *)dict
 {
@@ -53,7 +53,7 @@ NSString *const kAlertListHedPic = @"hedPic";
             self.affectId = [[self objectOrNilForKey:kAlertListAffectId fromDictionary:dict] doubleValue];
             self.createTime = [[self objectOrNilForKey:kAlertListCreateTime fromDictionary:dict] doubleValue];
             self.lastReadTime = [[self objectOrNilForKey:kAlertListLastReadTime fromDictionary:dict] doubleValue];
-        self.hedPic = [self objectOrNilForKey:kAlertListHedPic fromDictionary:dict];
+        self.headPic = [self objectOrNilForKey:kAlertListHeadPic fromDictionary:dict];
 
     }
     
@@ -71,7 +71,7 @@ NSString *const kAlertListHedPic = @"hedPic";
     [mutableDict setValue:[NSNumber numberWithDouble:self.affectId] forKey:kAlertListAffectId];
     [mutableDict setValue:[NSNumber numberWithDouble:self.createTime] forKey:kAlertListCreateTime];
     [mutableDict setValue:[NSNumber numberWithDouble:self.lastReadTime] forKey:kAlertListLastReadTime];
-    [mutableDict setValue:self.hedPic forKey:kAlertListHedPic];
+    [mutableDict setValue:self.headPic forKey:kAlertListHeadPic];
 
     return [NSDictionary dictionaryWithDictionary:mutableDict];
 }
@@ -102,7 +102,7 @@ NSString *const kAlertListHedPic = @"hedPic";
     self.affectId = [aDecoder decodeDoubleForKey:kAlertListAffectId];
     self.createTime = [aDecoder decodeDoubleForKey:kAlertListCreateTime];
     self.lastReadTime = [aDecoder decodeDoubleForKey:kAlertListLastReadTime];
-    self.hedPic = [aDecoder decodeObjectForKey:kAlertListHedPic];
+    self.headPic = [aDecoder decodeObjectForKey:kAlertListHeadPic];
     
     return self;
 }
@@ -117,7 +117,7 @@ NSString *const kAlertListHedPic = @"hedPic";
     [aCoder encodeDouble:_affectId forKey:kAlertListAffectId];
     [aCoder encodeDouble:_createTime forKey:kAlertListCreateTime];
     [aCoder encodeDouble:_lastReadTime forKey:kAlertListLastReadTime];
-    [aCoder encodeObject:_hedPic forKey:kAlertListHedPic];
+    [aCoder encodeObject:_headPic forKey:kAlertListHeadPic];
 }
 
 - (id)copyWithZone:(NSZone *)zone
@@ -133,7 +133,7 @@ NSString *const kAlertListHedPic = @"hedPic";
         copy.affectId = self.affectId;
         copy.createTime = self.createTime;
         copy.lastReadTime = self.lastReadTime;
-        copy.hedPic = [self.hedPic copyWithZone:zone];
+        copy.headPic = [self.headPic copyWithZone:zone];
     }
     
     return copy;
