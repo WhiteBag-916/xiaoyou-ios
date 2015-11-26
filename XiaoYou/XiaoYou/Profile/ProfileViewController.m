@@ -147,12 +147,12 @@
     }
     if (info.lastFeeds.count == 0) {
         _feedHintLabel.text = @"你没有任何观点";
-        [_feed setData:nil];
+//        [_feed setData:nil];
     } else {
         _feedHintLabel.text = @"查看全部";
-        [_feed setData:info.lastFeeds[0]];
+//        [_feed setData:info.lastFeeds[0]];
     }
-    
+    [_feed setData:nil];
 }
 //每次出现时刷新数据
 - (void)viewWillAppear:(BOOL)animated {
