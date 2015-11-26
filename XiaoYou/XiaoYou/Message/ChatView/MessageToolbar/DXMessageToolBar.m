@@ -371,7 +371,7 @@
     if (!self.faceView) {
         self.faceView = [[DXFaceView alloc] initWithFrame:CGRectMake(0, (kVerticalPadding * 2 + kInputTextViewMinHeight), self.frame.size.width, 200)];
         [(DXFaceView *)self.faceView setDelegate:self];
-        self.faceView.backgroundColor = [UIColor lightGrayColor];
+        self.faceView.backgroundColor = [UIColor hexChangeFloat:@"eceff0"];
         self.faceView.autoresizingMask = UIViewAutoresizingFlexibleTopMargin;
     }
     
