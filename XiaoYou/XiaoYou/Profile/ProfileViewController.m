@@ -304,7 +304,7 @@
             make.centerX.equalTo(_headImg);
             make.centerY.equalTo(item);
         }];
-        icon.image = [UIImage imageNamed:@"mine－icon－toast"];
+        icon.image = [UIImage imageNamed:@"cup"];
         _respectNum = [YUtils initLabel:CONTENT_FONT(12) color:[UIColor blackColor] text:@"敬酒：0" frame:CGRectZero alignment:NSTextAlignmentLeft];
         [item addSubview:_respectNum];
         [_respectNum mas_makeConstraints:^(MASConstraintMaker *make) {
