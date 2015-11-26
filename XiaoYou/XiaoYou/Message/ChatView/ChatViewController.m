@@ -222,9 +222,6 @@
         [(DXChatBarMoreView *)self.chatToolBar.moreView setDelegate:self];
     }
     
-    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(keyBoardHidden)];
-    [self.view addGestureRecognizer:tap];
-    
     //通过会话管理者获取已收发消息
     long long timestamp = [[NSDate date] timeIntervalSince1970] * 1000 + 1;
     [self loadMoreMessagesFrom:timestamp count:KPageCount append:NO];
@@ -549,6 +546,9 @@
         UILongPressGestureRecognizer *lpgr = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(handleLongPress:)];
         lpgr.minimumPressDuration = .5;
         [_tableView addGestureRecognizer:lpgr];
+        
+        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(keyBoardHidden)];
+        [_tableView addGestureRecognizer:tap];
     }
     
     return _tableView;
@@ -678,6 +678,11 @@
     if (_slimeView) {
         [_slimeView scrollViewDidEndDraging];
     }
+}
+
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
+    // 隐藏键盘
+    [self keyBoardHidden];
 }
 
 #pragma mark - slimeRefresh delegate
@@ -1797,7 +1802,8 @@
 
 - (void)showRoomContact:(id)sender
 {
-    [self.view endEditing:YES];
+    // 隐藏键盘
+    [self keyBoardHidden];
     if (nil == _studentDic) {
         [YUtils showTitle:@"您已不在此社团群聊中"];
     } else {
