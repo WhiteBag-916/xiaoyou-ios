@@ -13,6 +13,7 @@
 @interface FriendApplyTableView : YTableView
 
 @property (nonatomic, weak) YViewController *superVC;
+@property (nonatomic, strong) NSString *chatter;
 
 -(NSArray *)getDataSource;
 

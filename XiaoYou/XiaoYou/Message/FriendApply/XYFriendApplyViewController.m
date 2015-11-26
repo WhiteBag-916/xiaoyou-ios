@@ -46,6 +46,7 @@
     
     _friendApplyTableView = [[FriendApplyTableView alloc] init];
     _friendApplyTableView.superVC = self;
+    _friendApplyTableView.chatter = _chatter;
     _friendApplyTableView.backgroundColor = [UIColor clearColor];
     [self.view addSubview:_friendApplyTableView];
     
@@ -59,10 +60,6 @@
 
 #pragma mark - 导航左侧
 - (void)onNavigationLeftButtonClicked {
-    if (0 == [_friendApplyTableView getDataSource].count && ![_friendApplyTableView isHeaderRefresh]) {
-        [[EaseMob sharedInstance].chatManager removeConversationByChatter:_chatter deleteMessages:YES append2Chat:NO];
-    }
-    
     [self.navigationController popViewControllerAnimated:YES];
 }
 
