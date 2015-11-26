@@ -230,6 +230,7 @@
 {
     self.messageNotRead.hidden = !isVisible;
     [self.messageNotRead setTitle:text forState:UIControlStateNormal];
+    
     if (isVisible) {
         [_startImageView mas_updateConstraints:^(MASConstraintMaker *make) {
             make.top.mas_equalTo(SCALE_NUM(50));
@@ -258,6 +259,7 @@
             make.centerX.equalTo(self.contentView);
             make.top.mas_equalTo(SCALE_NUM(10));
             make.height.mas_equalTo(SCALE_NUM(24));
+            make.width.mas_equalTo(SCALE_NUM(85));
         }];
         
     }

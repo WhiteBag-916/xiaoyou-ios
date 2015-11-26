@@ -94,8 +94,8 @@
 - (void)showEditMode {
     self.navigationController.navigationBar.barTintColor = [UIColor whiteColor];
     _lbTitle.textColor = [UIColor blackColor];
-    [self showNomalNavigationLeftButton:@"" action:@selector(onNavigationLeftButtonClicked) imgName:@"mine-cancel" frame:CGRectMake(0, 0, 15, 15)];
-    [self showNomalNavigationRightButtonWithImage:@"" action:@selector(onNavigationRightButtonClicked) imgName:@"mine-complete-grey" frame:CGRectMake(0, 0, 20, 15)];
+    [self showNomalNavigationLeftButton:@"" imgName:@"mine-cancel" frame:CGRectMake(0, 0, 15, 15)];
+    [self showNomalNavigationRightButtonWithImage:@"" imgName:@"mine-complete-grey" frame:CGRectMake(0, 0, 20, 15)];
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault animated:true];
 }
 - (void)onNavigationLeftButtonClicked
@@ -111,16 +111,16 @@
 #pragma mark - 左导航栏
 - (void)showCustomNavigationBackButton
 {
-    [self showNomalNavigationLeftButton:@"" action:@selector(onNavigationLeftButtonClicked) imgName:@"common_back" frame:CGRectMake(0, 0, 29, 34) inset:UIEdgeInsetsMake(10, 5, 10, 15)];
+    [self showNomalNavigationLeftButton:@"" imgName:@"common_back" frame:CGRectMake(0, 0, 29, 34) inset:UIEdgeInsetsMake(10, 5, 10, 15)];
 }
 
 //导航栏左侧显示取消按钮
 - (void)showCustomNavigationCancelButton {
-    [self showNomalNavigationLeftButton:@"" action:@selector(onNavigationLeftButtonClicked) imgName:@"complete-cancel" frame:CGRectMake(0, 0, 26, 26) inset:UIEdgeInsetsMake(5, 5, 5, 5)];
+    [self showNomalNavigationLeftButton:@"" imgName:@"complete-cancel" frame:CGRectMake(0, 0, 26, 26) inset:UIEdgeInsetsMake(5, 5, 5, 5)];
 }
 
-- (void)showNomalNavigationLeftButton:(NSString *)title action:(SEL)selector imgName:(NSString *)imgName frame:(CGRect)frame inset:(UIEdgeInsets)inset {
-    [self showNomalNavigationLeftButton:title action:selector imgName:imgName frame:frame];
+- (void)showNomalNavigationLeftButton:(NSString *)title imgName:(NSString *)imgName frame:(CGRect)frame inset:(UIEdgeInsets)inset {
+    [self showNomalNavigationLeftButton:title imgName:imgName frame:frame];
     if (nil != imgName)
     {
         _navigationLeftButton.imageEdgeInsets = inset;
@@ -131,7 +131,7 @@
     }
 }
 
-- (void)showNomalNavigationLeftButton:(NSString *)title action:(SEL)selector imgName:(NSString *)imgName frame:(CGRect)frame
+- (void)showNomalNavigationLeftButton:(NSString *)title imgName:(NSString *)imgName frame:(CGRect)frame
 {
     //right barbutton view
     _navigationLeftButton = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -149,7 +149,7 @@
         _navigationLeftButton.titleLabel.font = [UIFont fontWithName:@"Helvetica" size:15.0f];
         [_navigationLeftButton sizeToFit];
     }
-    [_navigationLeftButton addTarget:self action:selector forControlEvents:UIControlEventTouchUpInside];
+    [_navigationLeftButton addTarget:self action:@selector(onNavigationLeftButtonClicked) forControlEvents:UIControlEventTouchUpInside];
     UIBarButtonItem *btnNavLeftItem = [[UIBarButtonItem alloc] initWithCustomView:_navigationLeftButton];
     self.navigationItem.leftBarButtonItem = btnNavLeftItem;
     
@@ -158,7 +158,7 @@
 #pragma mark - 右导航栏
 //导航栏右侧，搜索按钮
 - (void)showCustomNavigationSearchButton {
-    [self showNomalNavigationRightButtonWithImage:@"" action:@selector(onNavigationRightButtonClicked) imgName:@"feed-find-someone-search" frame:CGRectMake(0, 0, 42, 64)];
+    [self showNomalNavigationRightButtonWithImage:@"" imgName:@"feed-find-someone-search" frame:CGRectMake(0, 0, 42, 64)];
 }
 
 //导航栏右侧，更多按钮
@@ -169,40 +169,40 @@
 //导航栏右侧,是否显示更多按钮
 - (void)IsShowCustomNavigationMoreButton:(BOOL)isShow {
     NSString *imageName = [NSString stringWithFormat:@"%@",isShow ? @"more" : @""];
-    [self showNomalNavigationRightButtonWithImage:@"" action:@selector(onNavigationRightButtonClicked) imgName:imageName frame:CGRectMake(0, 0, 18, 64)];
+    [self showNomalNavigationRightButtonWithImage:@"" imgName:imageName frame:CGRectMake(0, 0, 18, 64)];
 }
 
 //导航栏右侧，确认按钮
 - (void)showCustomNavigationSureButton {
-    [self showNomalNavigationRightButtonWithImage:@"" action:@selector(onNavigationRightButtonClicked) imgName:@"complete" frame:CGRectMake(0, 0, 20, 15)];
+    [self showNomalNavigationRightButtonWithImage:@"" imgName:@"complete" frame:CGRectMake(0, 0, 20, 15)];
 }
 //导航栏右侧，发布按钮
 - (void)showCustomNavigationPublishButton {
-    [self showNomalNavigationRightButtonWithImage:@"" action:@selector(onNavigationRightButtonClicked) imgName:@"mine-publisher" frame:CGRectMake(0, 0, 18, 64)];
+    [self showNomalNavigationRightButtonWithImage:@"" imgName:@"mine-publisher" frame:CGRectMake(0, 0, 18, 64)];
 }
 
 //导航栏右侧，Fast按钮
 - (void)showCustomNavigationFastButton {
-    [self showNomalNavigationRightButtonWithImage:@"" action:@selector(onNavigationRightButtonClicked) imgName:@"fast_add_white" frame:CGRectMake(0, 0, 20, 20)];
+    [self showNomalNavigationRightButtonWithImage:@"" imgName:@"fast_add_white" frame:CGRectMake(0, 0, 20, 20)];
 }
 
 //导航栏右侧下一步按钮
 - (void)showCustomNavigationNextButton {
-    [self showNomalNavigationRightButtonWithImage:@"下一步" action:@selector(onNavigationRightButtonClicked) imgName:nil frame:CGRectMake(0, 0, 20, 15)];
+    [self showNomalNavigationRightButtonWithImage:@"下一步" imgName:nil frame:CGRectMake(0, 0, 20, 15)];
 }
 
 - (void)showCustomNavigationConfirmButton {
-    [self showNomalNavigationRightButtonWithImage:@"确定" action:@selector(onNavigationRightButtonClicked) imgName:nil frame:CGRectMake(0, 0, 20, 15)];
+    [self showNomalNavigationRightButtonWithImage:@"确定" imgName:nil frame:CGRectMake(0, 0, 20, 15)];
 }
 
 //导航栏左侧提醒按钮
 - (void)showCustomNavigationRemindButton:(BOOL)haveMsg {
     NSString *imageName = haveMsg ? @"red_point_bell":@"have_time_msg";
     self.navigationItem.leftBarButtonItem = nil;
-    [self showNomalNavigationLeftButton:@"" action:@selector(onNavigationLeftButtonClicked) imgName:imageName frame:CGRectMake(0, 0, 20, 20)];
+    [self showNomalNavigationLeftButton:@"" imgName:imageName frame:CGRectMake(0, 0, 20, 20)];
 }
 
-- (void)showNomalNavigationRightButtonWithImage:(NSString *)title action:(SEL)selector imgName:(NSString *)imgName frame:(CGRect)frame {
+- (void)showNomalNavigationRightButtonWithImage:(NSString *)title imgName:(NSString *)imgName frame:(CGRect)frame {
     //right barbutton view
     _navigationRightButton = [UIButton buttonWithType:UIButtonTypeCustom];
     _navigationRightButton.frame = frame;
@@ -220,7 +220,7 @@
         [_navigationRightButton sizeToFit];
     }
 
-    [_navigationRightButton addTarget:self action:selector forControlEvents:UIControlEventTouchUpInside];
+    [_navigationRightButton addTarget:self action:@selector(onNavigationRightButtonClicked) forControlEvents:UIControlEventTouchUpInside];
     UIBarButtonItem *btnNavRightItem = [[UIBarButtonItem alloc] initWithCustomView:_navigationRightButton];
     self.navigationItem.rightBarButtonItem = btnNavRightItem;
 }

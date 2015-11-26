@@ -10,7 +10,6 @@
 #import "UIImageView+WebCache.h"
 #import "SDBrowserImageView.h"
 
-#define KNotification_Delete_Image                      @"KNotification_Delete_Image"
 //  ============在这里方便配置样式相关设置===========
 
 //                      ||

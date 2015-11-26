@@ -29,6 +29,7 @@
 #import "AGImagePreviewController.h"
 #import "AGIPCToolbarItem.h"
 #import "UIDevice+DeviceType.h"
+#import "TimeFormatterConvert.h"
 
 #define KTEXTVIEWMARGIN_LEFT SCALE_NUM(5)
 #define KTEXTVIEWMARGIN_TOP SCALE_NUM(15)
@@ -66,6 +67,8 @@
 
 @property (nonatomic, strong) NSMutableArray *picArray;
 
+@property (nonatomic, strong) NSMutableArray *picPathArray;
+
 @property (nonatomic, assign) BOOL isPhotoSaveEnd;//上传图片时的同步操作
 
 @end
@@ -86,10 +89,17 @@
     [super viewDidLoad];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showAddPicList) name:KNotification_Present_TakePhoto object:nil];
-    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(deleteImageAtIndex:) name:KNotification_Delete_Image object:nil];
     // Do any additional setup after loading the view.
     [self initView];
 }
+
+-(void)deleteImageAtIndex:(NSNotification*)noti
+{
+    NSNumber *iNum = noti.object;
+    [self.picPathArray removeObjectAtIndex:[iNum intValue]];
+}
+
 - (void)initView {
     self.title = @"说两句";
     [self showCustomNavigationCancelButton];
@@ -342,6 +352,7 @@
 - (void)initPickImageView
 {
     _picArray = [[NSMutableArray alloc] init];
+    _picPathArray = [NSMutableArray array];
     __block FeedPublishViewController *blockSelf = self;
     _imagePickerVC = [AGImagePickerController sharedInstance:self];
     self.imagePickerVC.didFailBlock = ^(NSError *error) {
@@ -482,8 +493,8 @@
     
     dispatch_async(dispatch_get_global_queue(0, 0), ^{
         
-        NSString *keyStr = [NSString stringWithFormat:@"feed%d.png", [_imgGroup getImgCount]];
-        
+        //NSString *keyStr = [NSString stringWithFormat:@"feed%d.png", [_imgGroup getImgCount]];
+        NSString *keyStr = [NSString stringWithFormat:@"%@%d.png", [TimeFormatterConvert getTimeStamp],[_imgGroup getImgCount]];
         //写入文件
         NSData *imageData = nil;
         
@@ -501,7 +512,8 @@
         
         //界面
         dispatch_async(dispatch_get_main_queue(), ^{
-            [self updateImage];
+            //[self updateImage];
+            [self updateImageWithImgName:keyStr];
             
             //上传图片同步
             self.isPhotoSaveEnd = YES;
@@ -513,11 +525,13 @@
 
 #pragma mark 优化 add完成之后刷新UI
 //更新图片
-- (void)updateImage {
-    NSString *path = [YDirectory newImgCache:[NSString stringWithFormat:@"feed%d.png", [_imgGroup getImgCount]]];
+- (void)updateImageWithImgName:(NSString*)name {
+    //NSString *path = [YDirectory newImgCache:[NSString stringWithFormat:@"feed%d.png", [_imgGroup getImgCount]]];
+    NSString *path = [YDirectory newImgCache:[NSString stringWithFormat:@"%@", name]];
     if ([YDirectory isExistsPath:path])
     {
         [_imgGroup addPhoto:[UIImage imageWithContentsOfFile:path]];
+        [self.picPathArray addObject:path];
     }
 }
 
@@ -564,45 +578,29 @@
 }
 
 
-//上传图片没有同步
 - (void)uploadPic {
-    //_isUpLoadEnd = NO;
     
-    [_picArray removeAllObjects];
+    //[_picArray removeAllObjects];
     [YUtils showHUDWithTitle:@"正在上传"];
-    NSMutableArray *pathArray = [[NSMutableArray alloc] init];
-    for (int i = 0; i < [_imgGroup getImgCount]; i++) {
-        [pathArray addObject:[YDirectory newImgCache:[NSString stringWithFormat:@"feed%d.png", i]]];
-//        WS(weakSelf);
-//        [[FeedManager sharedInstance] uploadFeedImage:[YDirectory newImgCache:[NSString stringWithFormat:@"feed%d.png", i]] block:^(YActionMessage *message) {
-//            if (message.isSuccess) {
-//                [weakSelf.picArray addObject:[(UploadImage *)message.object url]];
-//                _isUpLoadEnd = YES;
-//            } else {
-//                [weakSelf.picArray addObject:@""];
-//            }
-//            if (weakSelf.picArray.count == [weakSelf.imgGroup getImgCount]) {
-//                [weakSelf uploadFeed];
-//            }
-//        }];
-    }
+//    NSMutableArray *pathArray = [[NSMutableArray alloc] init];
+//    for (int i = 0; i < [_imgGroup getImgCount]; i++) {
+//        
+//        [pathArray addObject:[YDirectory newImgCache:[NSString stringWithFormat:@"feed%d.png", i]]];
+//        
+//    }
     
     if ([_imgGroup getImgCount] == 0) {
         [self uploadFeed];
     } else {
         WS(weakSelf);
-        [[FeedManager sharedInstance] uploadFeedImage:[pathArray componentsJoinedByString:@","] block:^(YActionMessage *message) {
-            //_isUpLoadEnd = YES;
+        [[FeedManager sharedInstance] uploadFeedImage:[self.picPathArray componentsJoinedByString:@","] block:^(YActionMessage *message) {
             if (message.isSuccess) {
                 weakSelf.picArray = [NSMutableArray arrayWithArray:[(ImageUploadModel *)message.object images]];
-                //_isUpLoadEnd = YES;
             } else {
                 
                 [weakSelf.picArray addObject:@""];
             }
-            //        if (weakSelf.picArray.count == [weakSelf.imgGroup getImgCount]) {
             [weakSelf uploadFeed];
-            //        }
         }];
     }
 }
@@ -638,6 +636,7 @@
         
     }
 }
+
 //获取添加的图片的路径
 - (NSString *)getImageStr {
     NSMutableString *imageStr = [@"" mutableCopy];

@@ -330,6 +330,7 @@
     CGFloat width = CGRectGetWidth(self.bounds) - (allButtonWidth ? allButtonWidth : (textViewLeftMargin * 2));
     // 初始化输入框
     self.inputTextView = [[XHMessageTextView  alloc] initWithFrame:CGRectMake(textViewLeftMargin, kVerticalPadding, width, kInputTextViewMinHeight)];
+    self.inputTextView.layoutManager.allowsNonContiguousLayout = NO;
     self.inputTextView.autoresizingMask = UIViewAutoresizingFlexibleHeight;
 //    self.inputTextView.contentMode = UIViewContentModeCenter;
     _inputTextView.scrollEnabled = YES;
@@ -479,14 +480,13 @@
         rect.size.height += changeHeight;
         self.toolbarView.frame = rect;
         
-        if (self.version < 7.0) {
-            [self.inputTextView setContentOffset:CGPointMake(0.0f, (self.inputTextView.contentSize.height - self.inputTextView.frame.size.height) / 2) animated:YES];
-        }
         _previousTextViewContentHeight = toHeight;
         
         if (_delegate && [_delegate respondsToSelector:@selector(didChangeFrameToHeight:)]) {
             [_delegate didChangeFrameToHeight:self.frame.size.height];
         }
+        
+        [self.inputTextView setContentOffset:CGPointMake(0.0f, self.inputTextView.contentSize.height - self.inputTextView.frame.size.height) animated:NO];
     }
 }
 

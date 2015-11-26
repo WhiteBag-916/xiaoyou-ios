@@ -59,7 +59,7 @@
             }];
             _contactHeadImageView.layer.cornerRadius = KHEADIMGWIDTH / 2;
             _contactHeadImageView.clipsToBounds = true;
-            _contactHeadImageView.backgroundColor = [UIColor redColor];
+//            _contactHeadImageView.backgroundColor = [UIColor redColor];
             
             _genderLabel = [[UILabel alloc]init];
             

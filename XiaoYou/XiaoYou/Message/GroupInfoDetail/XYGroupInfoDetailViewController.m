@@ -42,6 +42,8 @@ NSString *const kXYGroupInfoDetailViewController = @"XYGroupInfoDetailViewContro
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.title = @"详情";
+    [self showCustomNavigationBackButton];
+    [self showCustomNavigationMoreButton];
     
     [self setUpUI];
     
@@ -68,17 +70,6 @@ NSString *const kXYGroupInfoDetailViewController = @"XYGroupInfoDetailViewContro
 
 -(void)setUpUI
 {
-    UIButton *backButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, kNavigationgLeftWidth, kNavigationgLeftHeight)];
-    [backButton setImage:[UIImage imageNamed:@"common_back"] forState:UIControlStateNormal];
-    [backButton addTarget:self action:@selector(back) forControlEvents:UIControlEventTouchUpInside];
-    UIBarButtonItem *backItem = [[UIBarButtonItem alloc] initWithCustomView:backButton];
-    [self.navigationItem setLeftBarButtonItem:backItem];
-    
-    UIButton *shareButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, kNavigationgRightWidthAndHeight, kNavigationgRightWidthAndHeight)];
-    [shareButton setImage:[UIImage imageNamed:@"more"] forState:UIControlStateNormal];
-    [shareButton addTarget:self action:@selector(showShareActionSheet) forControlEvents:UIControlEventTouchUpInside];
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:shareButton];
-    
     UICollectionViewFlowLayout * flowLayout = [[UICollectionViewFlowLayout alloc] init];
     flowLayout.scrollDirection = UICollectionViewScrollDirectionVertical;
     flowLayout.itemSize = CGSizeMake(SCALE_NUM(70), SCALE_NUM(70));
@@ -111,10 +102,8 @@ NSString *const kXYGroupInfoDetailViewController = @"XYGroupInfoDetailViewContro
     }
 }
 #pragma mark - 分享ActionSheet
--(void)showShareActionSheet
+-(void)onNavigationRightButtonClicked
 {
-    LinkManModel * model = [[ContactManager sharedInstance] getContactsListData];
-    ClassList * classModel = model.classList[0];
     
     YActionSheetItem *item2 = [YActionSheetItem itemWithTitle:@"消息不提醒"
                                                          type:YCommonActionSheetItemTypeSwitch
@@ -128,7 +117,9 @@ NSString *const kXYGroupInfoDetailViewController = @"XYGroupInfoDetailViewContro
                                                         block:^(NSInteger checkNum) {
                                                             [YCommonReport report];
                                                         }];
-    if ([[NSString stringWithFormat:@"%g", _model.groupModel.internalBaseClassIdentifier] isEqualToString:classModel.gid]) {
+    
+    LinkManModel * model = [[ContactManager sharedInstance] getContactsListData];
+    if (model.classList.count > 0 && [[NSString stringWithFormat:@"%g", _model.groupModel.internalBaseClassIdentifier] isEqualToString:[model.classList[0] gid]]) {
         
         YCommonActionSheet *sheet = [[YCommonActionSheet alloc] initWithType:@[item2, item3] title:nil];
         [sheet show];
@@ -141,12 +132,6 @@ NSString *const kXYGroupInfoDetailViewController = @"XYGroupInfoDetailViewContro
         [sheet show];
     }
     
-}
-
-#pragma mark - 导航返回按钮点击事件
--(void)back
-{
-    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void)didReceiveMemoryWarning {

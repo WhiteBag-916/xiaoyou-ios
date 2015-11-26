@@ -65,6 +65,8 @@
             if (0 == [_dataSourceArr count]) {
                 [self hiddenFooter:NO];
                 [self showNoticeNoMoreData];
+                
+                [[EaseMob sharedInstance].chatManager removeConversationByChatter:_chatter deleteMessages:YES append2Chat:NO];
             }
         } else {
             [YUtils showTitleOn:self title:message.desc];

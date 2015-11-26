@@ -10,6 +10,7 @@
 #import "Masonry.h"
 #import "YUtils+Component.h"
 #import "SDPhotoBrowser/SDPhotoBrowser.h"
+#import "YDirectory+Data.h"
 
 #define KIMGTAG 10000
 #define KIMGSIZE SCALE_NUM(200)
@@ -30,6 +31,9 @@
 @property (nonatomic, assign) int currentIndex;
 
 @property (nonatomic, strong) SDPhotoBrowser *browser;
+
+@property (nonatomic, copy)   NSMutableArray *pathArray;
+
 @end
 
 @implementation FeedImageGroup
@@ -41,6 +45,8 @@
         _smallImgs = [NSMutableArray array];
         [self initImgs];
         _currentIndex = 0;
+        
+        _pathArray = [NSMutableArray array];
     }
     return self;
 }
@@ -53,14 +59,15 @@
         _smallImgs = [NSMutableArray array];
         [self initImgs];
         _currentIndex = 0;
+        
+        _pathArray = [NSMutableArray array];
     }
     return self;
 }
 
--(void)setSize:(CGFloat)size
+-(NSMutableArray *)smallImgs
 {
-    _imgSize = size;
-    [self updateAll];
+    return _smallImgs;
 }
 
 - (id)initWithCamera {
@@ -200,6 +207,11 @@
     [_smallImgs addObject:image];
     [self updateAll];
 }
+
+- (void)addPhotoPath:(NSString*)path {
+    [_pathArray addObject:path];
+}
+
 //普通图片处理
 - (void)normalForImages:(NSArray *)urls {
     UIImageView *img = (UIImageView *)[_contentView subviews][0];
@@ -250,15 +262,16 @@
     
 }
 //长按删除图片
+//取消长按删除
 - (void)longPress:(UILongPressGestureRecognizer *)press {
-    if (press.state == UIGestureRecognizerStateBegan) {
-        int index = (int)press.view.tag - KIMGTAG;
-        if (index < 0 || index >= _smallImgs.count) {
-            return;
-        }
-        [_smallImgs removeObjectAtIndex:index];
-        [self updateAll];
-    }
+//    if (press.state == UIGestureRecognizerStateBegan) {
+//        int index = (int)press.view.tag - KIMGTAG;
+//        if (index < 0 || index >= _smallImgs.count) {
+//            return;
+//        }
+//        [_smallImgs removeObjectAtIndex:index];
+//        [self updateAll];
+//    }
 }
 //放大图片
 - (void)choosePic:(UITapGestureRecognizer *)tap {
@@ -305,12 +318,15 @@
 //删除某张照片
 -(void)deleteImageWithCurrentIndex:(int)currentIndex
 {
+    NSLog(@"this is current idnex = %d",currentIndex);
     [self.smallImgs removeObjectAtIndex:_currentIndex];
-    [self.bigImgs removeObjectAtIndex:_currentIndex];
+    //[self.bigImgs removeObjectAtIndex:_currentIndex];
     [self updateAll];
     [_browser removeFromSuperview];
     _browser = nil;
-    
+    [[NSNotificationCenter defaultCenter] postNotificationName:KNotification_Delete_Image object:[NSNumber numberWithInt:currentIndex]];
+//    NSString *path = [YDirectory newImgCache:[NSString stringWithFormat:@"feed%d.png", currentIndex]];
+//    [[NSFileManager defaultManager] removeItemAtPath:path error:nil];
     //如果需要在删除图片之后，自动预览下一张，打开下面代码
     //图片被删除完，或者删除的最后一张
 //    if (self.smallImgs.count == 0) return;
