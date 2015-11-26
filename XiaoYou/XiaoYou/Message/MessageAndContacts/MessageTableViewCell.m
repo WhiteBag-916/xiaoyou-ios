@@ -159,7 +159,7 @@ NSString *const kMessageTableViewCell = @"MessageTableViewCellId";
         if (FRIEND_APPLY == [ext[@"type"] integerValue]) {
             _nameLabel.text = @"好友申请";
             _messageLabel.text = [self subTitleMessageByConversation:_conversation];
-            _headImageView.image = [UIImage imageNamed:@"friend-requests"];
+            _headImageView.image = [UIImage imageNamed:@"news_icon_application"];
             _headImageView.layer.cornerRadius = 0;
         } else if (GROUP_APPLY == [ext[@"type"] integerValue]) {
             _nameLabel.text = [NSString stringWithFormat:@"[%@]社员加入申请",ext[@"group_name"]];
