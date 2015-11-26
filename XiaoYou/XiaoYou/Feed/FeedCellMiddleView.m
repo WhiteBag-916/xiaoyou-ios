@@ -35,7 +35,7 @@
         _contentLabel = [[UITextView alloc] init];
         _contentLabel.textColor = [UIColor blackColor];
         _contentLabel.editable = false;
-        _contentLabel.dataDetectorTypes = UIDataDetectorTypeLink;
+//        _contentLabel.dataDetectorTypes = UIDataDetectorTypeLink;
         _contentLabel.scrollEnabled = false;
         _contentLabel.font = CONTENT_FONT(12);
         _contentLabel.textContainer.lineFragmentPadding = 0;
