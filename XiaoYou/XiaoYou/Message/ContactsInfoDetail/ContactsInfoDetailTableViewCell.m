@@ -73,7 +73,7 @@ NSString *const kContactsInfoDetailTableViewCell = @"ContactsInfoDetailTableView
 {
     if ([dic[@"index"] integerValue] == 0)
     {
-        _flagImageView.image = [UIImage imageNamed:@"toast_cup"];
+        _flagImageView.image = [UIImage imageNamed:@"cup"];
     }
     if ([dic[@"index"] integerValue] == 1) {
         if ([dic[@"isCool"] boolValue]) {

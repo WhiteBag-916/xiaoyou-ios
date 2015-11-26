@@ -581,8 +581,6 @@
 		3334AC431B8316F000FDDCCB /* chat_voice_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3334AC411B8316F000FDDCCB /* chat_voice_bg@2x.png */; };
 		3334AC461B831B2200FDDCCB /* ContactsInfoDetailTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3334AC451B831B2200FDDCCB /* ContactsInfoDetailTableView.m */; };
 		3334AC491B831DE500FDDCCB /* ContactsInfoDetailTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3334AC481B831DE500FDDCCB /* ContactsInfoDetailTableViewCell.m */; };
-		3334AC4D1B8331A100FDDCCB /* toast_cup@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3334AC4B1B8331A100FDDCCB /* toast_cup@2x.png */; };
-		3334AC4E1B8331A100FDDCCB /* toast_cup@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3334AC4C1B8331A100FDDCCB /* toast_cup@3x.png */; };
 		3335C3631B8178E8007DEFD4 /* chatFire_audioPlaying0.png in Resources */ = {isa = PBXBuildFile; fileRef = 3335C3331B8178E8007DEFD4 /* chatFire_audioPlaying0.png */; };
 		3335C3641B8178E8007DEFD4 /* chatFire_audioPlaying0@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3335C3341B8178E8007DEFD4 /* chatFire_audioPlaying0@2x.png */; };
 		3335C3651B8178E8007DEFD4 /* chatFire_audioPlaying1.png in Resources */ = {isa = PBXBuildFile; fileRef = 3335C3351B8178E8007DEFD4 /* chatFire_audioPlaying1.png */; };
@@ -1699,8 +1697,6 @@
 		3334AC451B831B2200FDDCCB /* ContactsInfoDetailTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactsInfoDetailTableView.m; sourceTree = "<group>"; };
 		3334AC471B831DE500FDDCCB /* ContactsInfoDetailTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactsInfoDetailTableViewCell.h; sourceTree = "<group>"; };
 		3334AC481B831DE500FDDCCB /* ContactsInfoDetailTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactsInfoDetailTableViewCell.m; sourceTree = "<group>"; };
-		3334AC4B1B8331A100FDDCCB /* toast_cup@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "toast_cup@2x.png"; sourceTree = "<group>"; };
-		3334AC4C1B8331A100FDDCCB /* toast_cup@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "toast_cup@3x.png"; sourceTree = "<group>"; };
 		3335C3331B8178E8007DEFD4 /* chatFire_audioPlaying0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = chatFire_audioPlaying0.png; sourceTree = "<group>"; };
 		3335C3341B8178E8007DEFD4 /* chatFire_audioPlaying0@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "chatFire_audioPlaying0@2x.png"; sourceTree = "<group>"; };
 		3335C3351B8178E8007DEFD4 /* chatFire_audioPlaying1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = chatFire_audioPlaying1.png; sourceTree = "<group>"; };
@@ -3834,8 +3830,6 @@
 				20E033FF1B846398002E4583 /* feed-find-someone-search-grey@3x.png */,
 				20E034001B846398002E4583 /* feed-find-someone-search@2x.png */,
 				20E034011B846398002E4583 /* feed-find-someone-search@3x.png */,
-				3334AC4B1B8331A100FDDCCB /* toast_cup@2x.png */,
-				3334AC4C1B8331A100FDDCCB /* toast_cup@3x.png */,
 				334670661B84228000A8628A /* contacts_bottom@3x.png */,
 				334670671B84228000A8628A /* contacts_bottom@2x.png */,
 				3346706A1B8426D400A8628A /* delete-member@2x.png */,
@@ -4578,7 +4572,6 @@
 				20E18DB81B808E42005B75EE /* common_search@2x.png in Resources */,
 				044D9FFE1BBA314300AA321A /* funny_detail_category@2x.png in Resources */,
 				333122931B806EDC00D3D032 /* messageSendFail@2x.png in Resources */,
-				3334AC4E1B8331A100FDDCCB /* toast_cup@3x.png in Resources */,
 				650C6C1E1B886E5B00A89AC9 /* mine-concern-particulars@2x.png in Resources */,
 				20E942231B833D10009C2DC6 /* toggle-off@3x.png in Resources */,
 				20699A661C06BC6600EC4625 /* chatBar_more@2x.png in Resources */,
@@ -4857,7 +4850,6 @@
 				334670701B842B5A00A8628A /* group_default_head@2x.png in Resources */,
 				046320DF1C05A35000C67191 /* common_picture_loading_l@2x.png in Resources */,
 				E48E09AE1BD781B10017D395 /* scanf_code_schoolCode@3x.png in Resources */,
-				3334AC4D1B8331A100FDDCCB /* toast_cup@2x.png in Resources */,
 				E46CF87D1BD7765A00FF563B /* detail_toast_new@2x.png in Resources */,
 				3348CB6B1B87236200F97FAF /* send-click@3x.png in Resources */,
 				20DAA2B31BCE34DF00420234 /* btn_friends_n@2x.png in Resources */,
