@@ -1421,7 +1421,7 @@
     self.navigationController.navigationBar.userInteractionEnabled = NO;
     if ([self canRecord]) {
         DXRecordView *tmpView = (DXRecordView *)recordView;
-        tmpView.center = self.view.center;
+        tmpView.center = _tableView.center;
         [self.view addSubview:tmpView];                 
         [self.view bringSubviewToFront:recordView];
         int x = arc4random() % 100000;
