@@ -479,14 +479,13 @@
         rect.size.height += changeHeight;
         self.toolbarView.frame = rect;
         
-        if (self.version < 7.0) {
-            [self.inputTextView setContentOffset:CGPointMake(0.0f, (self.inputTextView.contentSize.height - self.inputTextView.frame.size.height) / 2) animated:YES];
-        }
         _previousTextViewContentHeight = toHeight;
         
         if (_delegate && [_delegate respondsToSelector:@selector(didChangeFrameToHeight:)]) {
             [_delegate didChangeFrameToHeight:self.frame.size.height];
         }
+        
+        [self.inputTextView setContentOffset:CGPointMake(0.0f, self.inputTextView.contentSize.height - self.inputTextView.frame.size.height) animated:NO];
     }
 }
 
