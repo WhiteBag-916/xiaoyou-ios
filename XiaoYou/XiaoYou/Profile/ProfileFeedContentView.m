@@ -15,11 +15,11 @@
 #define KTAGTEXTMARGIN SCALE_NUM(10)
 #define KCONTENTMARGIN_TOP SCALE_NUM(20)
 #define KIMGMARGIN_TOP SCALE_NUM(10)
-@interface ProfileFeedContentView()
+@interface ProfileFeedContentView()<UITextViewDelegate>
 
 @property (nonatomic, strong, readwrite) FeedTag *tagView;
 @property (nonatomic, strong, readwrite) FeedImageGroup *imgGroup;
-@property (nonatomic, strong, readwrite) UILabel *contentLabel;
+@property (nonatomic, strong, readwrite) UITextView *contentLabel;
 @property (nonatomic, assign) int type;
 @end
 
@@ -34,9 +34,16 @@
             make.left.right.top.equalTo(self);
         }];
         
-        _contentLabel = [YUtils initLabel:CONTENT_FONT(12) color:[UIColor blackColor] text:@"" frame:CGRectZero alignment:NSTextAlignmentLeft];
+        _contentLabel = [[UITextView alloc] init];
+        _contentLabel.textColor = [UIColor blackColor];
+        _contentLabel.editable = false;
+        _contentLabel.dataDetectorTypes = UIDataDetectorTypeLink;
+        _contentLabel.scrollEnabled = false;
+        _contentLabel.font = CONTENT_FONT(12);
+        _contentLabel.textContainer.lineFragmentPadding = 0;
+        _contentLabel.textContainerInset = UIEdgeInsetsZero;
+        _contentLabel.delegate = self;
         [self addSubview:_contentLabel];
-        _contentLabel.numberOfLines = 0;
         [_contentLabel mas_makeConstraints:^(MASConstraintMaker *make) {
             make.right.equalTo(_tagView.tagContent);
             make.top.equalTo(_tagView.mas_bottom).offset(KCONTENTMARGIN_TOP);
@@ -68,9 +75,16 @@
             make.left.right.top.equalTo(self);
         }];
         
-        _contentLabel = [YUtils initLabel:CONTENT_FONT(12) color:[UIColor blackColor] text:@"" frame:CGRectZero alignment:NSTextAlignmentLeft];
+        _contentLabel = [[UITextView alloc] init];
+        _contentLabel.textColor = [UIColor blackColor];
+        _contentLabel.editable = false;
+        _contentLabel.dataDetectorTypes = UIDataDetectorTypeLink;
+        _contentLabel.scrollEnabled = false;
+        _contentLabel.font = CONTENT_FONT(12);
+        _contentLabel.textContainer.lineFragmentPadding = 0;
+        _contentLabel.textContainerInset = UIEdgeInsetsZero;
+        _contentLabel.delegate = self;
         [self addSubview:_contentLabel];
-        _contentLabel.numberOfLines = 0;
         [_contentLabel mas_makeConstraints:^(MASConstraintMaker *make) {
             make.right.equalTo(_tagView.tagContent);
             make.top.equalTo(_tagView.mas_bottom).offset(KCONTENTMARGIN_TOP);
@@ -131,13 +145,13 @@
 }
 
 - (void)setData:(FeedInfo *)info {
+    _contentLabel.text = nil;
     if (info == nil) {
         [_tagView setData:nil];
         [_imgGroup updateWithImgs:nil bigPics:nil];
-        _contentLabel.text = nil;
     } else {
         [_tagView setData:info.tags];
-        _contentLabel.text = info.feed.content;
+        _contentLabel.text = [@"\u200B" stringByAppendingString:info.feed.content];
         if (info.feed.img.length == 0) {
             [_imgGroup updateWithImgs:nil bigPics:nil];
         } else {
@@ -146,5 +160,9 @@
     }
 }
 
+- (BOOL)textView:(UITextView *)textView shouldInteractWithURL:(NSURL *)URL inRange:(NSRange)characterRange {
+    [[NSNotificationCenter defaultCenter] postNotificationName:KNotification_OpenBrowser object:nil userInfo:@{@"url":[URL absoluteString], @"title":@""}];
+    return false;
+}
 
 @end

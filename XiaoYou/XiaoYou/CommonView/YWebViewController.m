@@ -119,6 +119,10 @@
 }
 - (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error {
     [_progressView setProgress:1 animated:true];
+    if([error code] == NSURLErrorCancelled) {
+        return;
+    }
+    
     UIView *infoView = [[UIView alloc] initWithFrame:self.view.bounds];
     [self.view addSubview:infoView];
     infoView.backgroundColor = [UIColor whiteColor];

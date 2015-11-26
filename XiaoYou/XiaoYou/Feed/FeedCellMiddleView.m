@@ -65,9 +65,10 @@
 }
 
 - (void)setData:(id)inData {
+    _contentLabel.text = nil;
     if ([inData isKindOfClass:[FeedInfo class]]) {
         FeedInfo *data = inData;
-        _contentLabel.text = [ConvertToCommonEmoticonsHelper convertToSystemEmoticons:data.feed.content];
+        _contentLabel.text =  [@"\u200B" stringByAppendingString:[ConvertToCommonEmoticonsHelper convertToSystemEmoticons:data.feed.content]];
         if (data.feed.img.length == 0) {
             [_imgGroup updateWithImgs:nil bigPics:nil];
         } else {
@@ -76,7 +77,7 @@
     }
     if ([inData isKindOfClass:[CommentListItems class]]) {
         CommentListItems *data = inData;
-        _contentLabel.text = [ConvertToCommonEmoticonsHelper convertToSystemEmoticons:data.comment.content];
+        _contentLabel.text = [@"\u200B" stringByAppendingString:[ConvertToCommonEmoticonsHelper convertToSystemEmoticons:data.comment.content]];
         if (data.replyUser.name.length != 0) {
             _contentLabel.text = [NSString stringWithFormat:@"回复%@:%@",data.replyUser.name, _contentLabel.text];
         }
