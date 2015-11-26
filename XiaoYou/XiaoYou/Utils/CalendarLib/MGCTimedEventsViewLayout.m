@@ -136,7 +136,7 @@
             if (CGRectIntersectsRect(maxRect, attribs2.frame)) {
                 [array addObject:attribs2];
                 CGFloat maxY = attribs2.frame.origin.y+attribs2.frame.size.height;
-                if (maxY > maxRect.origin.x+maxRect.size.height) {
+                if (maxY > maxRect.origin.y+maxRect.size.height) {
                     maxRect = CGRectMake(maxRect.origin.x, maxRect.origin.y, maxRect.size.width, maxY);
                 }
             }
