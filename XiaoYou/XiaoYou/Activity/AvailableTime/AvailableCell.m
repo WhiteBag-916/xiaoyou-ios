@@ -120,6 +120,7 @@
     [self.contentView addSubview:_descriptionLabel];
     _descriptionLabel.editable = NO;
     _descriptionLabel.scrollEnabled = false;
+    _descriptionLabel.textColor = KCOLOR_B5;
     _descriptionLabel.font = CONTENT_FONT(12);
     //_descriptionLabel.dataDetectorTypes = UIDataDetectorTypeLink;
     _descriptionLabel.textContainer.lineFragmentPadding = 0;
@@ -288,10 +289,12 @@
             paragraphStyle.lineSpacing = SCALE_NUM(10);// 字体的行间距
             
             NSDictionary *attributes = @{
+                                         NSForegroundColorAttributeName:KCOLOR_B5,
                                          NSFontAttributeName:CONTENT_FONT(12),
                                          NSParagraphStyleAttributeName:paragraphStyle
                                          };
             _descriptionLabel.attributedText = [[NSAttributedString alloc] initWithString:desContent attributes:attributes];
+            
         }
         else if ([imageText.type isEqualToString:@"image"]) {
             if (![imageText.content isEmpty]) {

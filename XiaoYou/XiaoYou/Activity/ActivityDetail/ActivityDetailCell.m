@@ -108,6 +108,7 @@
             NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
             paragraphStyle.lineSpacing = SCALE_NUM(10);// 字体的行间距
             NSDictionary *attributes = @{
+                                         NSForegroundColorAttributeName:KCOLOR_B3,
                                          NSFontAttributeName:CONTENT_FONT(12),
                                          NSParagraphStyleAttributeName:paragraphStyle
                                          };
@@ -216,7 +217,6 @@
     _descriptionLabel.textContainer.lineFragmentPadding = 0;
     _descriptionLabel.textContainerInset = UIEdgeInsetsZero;
     _descriptionLabel.delegate = self;
-    _descriptionLabel.textColor = KCOLOR_B3;
 //    if (type == DETAIL_INFO) {
 //        _descriptionLabel.numberOfLines = 0;
 //        _descriptionLabel.lineBreakMode = NSLineBreakByWordWrapping;
