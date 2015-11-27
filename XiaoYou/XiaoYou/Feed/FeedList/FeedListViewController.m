@@ -186,12 +186,20 @@
         [self showCustomNavigationPublishButton];
         self.viewIndex = 1;
         
+        //修改置顶冲突
+        _feedListTableView.scrollsToTop = YES;
+        _profilePersonListTableView.scrollsToTop = NO;
+        
         [_feedListTableView addGestureRecognizer:_menu.pan];
     } else {
         self.navigationItem.rightBarButtonItem = nil;
         //[self showCustomNavigationFastButton];
         self.viewIndex = 2;
         [_profilePersonListTableView loadDataWithQueryCode:@""];
+        
+        //修改置顶冲突
+        _feedListTableView.scrollsToTop = NO;
+        _profilePersonListTableView.scrollsToTop = YES;
         
         [_profilePersonListTableView addGestureRecognizer:_menu.pan];
     }
