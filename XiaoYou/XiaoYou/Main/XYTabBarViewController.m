@@ -106,7 +106,7 @@
     NSString *url = [notification userInfo][@"url"];
     NSString *title = [notification userInfo][@"title"];
     UINavigationController *controller = (UINavigationController *)self.selectedViewController;
-    [controller pushViewController:[[YWebViewController alloc] initWithUrl:url andTitle:title canClick:true] animated:true];
+    [controller pushViewController:[[YWebViewController alloc] initWithUrl:url andTitle:title canClick:true] animated:true needHiddenBottomBar:YES];
 }
 
 //feed提醒未读数

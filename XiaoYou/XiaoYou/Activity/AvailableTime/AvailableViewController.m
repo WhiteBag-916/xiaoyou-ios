@@ -229,8 +229,9 @@
 
 -(void)viewWillDisappear:(BOOL)animated
 {
+    self.hidesBottomBarWhenPushed = NO;
     [super viewWillDisappear:animated];
-    //self.hidesBottomBarWhenPushed = NO;
+    
     
 }
 @end
