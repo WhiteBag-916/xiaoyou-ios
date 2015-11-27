@@ -444,7 +444,7 @@
 -(void)jumpLinkAction
 {
     ActivityPublishedModel *publishModel = self.detailModel.activityPublishedDto.activityPublishedModel;
-    YWebViewController *webViewVC = [[YWebViewController alloc]initWithUrl:publishModel.originalTextUrl andTitle:publishModel.name canClick:NO];
+    YWebViewController *webViewVC = [[YWebViewController alloc]initWithUrl:publishModel.originalTextUrl andTitle:publishModel.name canClick:YES];
     [self.viewController.navigationController pushViewController:webViewVC animated:YES needHiddenBottomBar:YES];
 }
 
