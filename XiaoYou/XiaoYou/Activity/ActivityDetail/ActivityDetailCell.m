@@ -23,9 +23,6 @@
 #define LEADINGOFF_HEADIMAGEVIEW    SCALE_NUM(12)
 
 @interface ActivityDetailCell ()<UITextViewDelegate>
-//@property (nonatomic,strong) ActivityTopView        *topView;
-//@property (nonatomic,strong) FeedImageGroup         *middleView;
-//@property (nonatomic,strong) ActivityMiddleView     *bottomView;
 
 #pragma mark 顶部TopView
 @property (nonatomic,strong) UIImageView    *headImageView; //公告图
@@ -108,9 +105,6 @@
                 notHaveImage = NO;
             }
         } else if ([imageText.type isEqualToString:@"text"]) {
-            //[_descriptionLabel setText:imageText.content lineSpacing:5.0];
-            
-            
             NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
             paragraphStyle.lineSpacing = SCALE_NUM(10);// 字体的行间距
             NSDictionary *attributes = @{
@@ -129,7 +123,6 @@
     _deadLineTimeLabel.text = [TimeFormatterConvert timeConvertToFommtterAvailable:publishModel.enrollEndTime];
     _activityTimeLabel.text = [TimeFormatterConvert timeConvertToFommtterAvailable:publishModel.actStartTime];
     _activityEndTimeLabel.text = [TimeFormatterConvert timeConvertToFommtterAvailable:publishModel.actEndTime];
-    //_locationLabel.text = publishModel.address;
     [_locationLabel setText:publishModel.address lineSpacing:5.0];
     _categoryLabel.text = info.name;
     
@@ -219,7 +212,7 @@
     _descriptionLabel.editable = NO;
     _descriptionLabel.scrollEnabled = false;
     _descriptionLabel.font = CONTENT_FONT(13);
-    _descriptionLabel.dataDetectorTypes = UIDataDetectorTypeLink;
+    //_descriptionLabel.dataDetectorTypes = UIDataDetectorTypeLink;
     _descriptionLabel.textContainer.lineFragmentPadding = 0;
     _descriptionLabel.textContainerInset = UIEdgeInsetsZero;
     _descriptionLabel.delegate = self;
