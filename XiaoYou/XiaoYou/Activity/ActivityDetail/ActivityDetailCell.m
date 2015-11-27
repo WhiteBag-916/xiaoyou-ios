@@ -22,7 +22,7 @@
 #define HEADIMAGEVIEW_WIDTH         SCALE_NUM(45)
 #define LEADINGOFF_HEADIMAGEVIEW    SCALE_NUM(12)
 
-@interface ActivityDetailCell ()
+@interface ActivityDetailCell ()<UITextViewDelegate>
 //@property (nonatomic,strong) ActivityTopView        *topView;
 //@property (nonatomic,strong) FeedImageGroup         *middleView;
 //@property (nonatomic,strong) ActivityMiddleView     *bottomView;
@@ -34,7 +34,7 @@
 @property (nonatomic,strong) UILabel        *titleLabel;    //标题(校级活动公告)
 @property (nonatomic,strong) UILabel        *staticNameLabel;//静态name
 @property (nonatomic,strong) UILabel        *staticDesLabel; //简介
-@property (nonatomic,strong) UILabel        *descriptionLabel;//描述,只显示一行;
+@property (nonatomic,strong) UITextView     *descriptionLabel;//描述,只显示一行;
 #pragma mark 中间MiddleView
 @property (nonatomic,strong) FeedImageGroup *middleView;
 #pragma mark 底部BottomView
@@ -108,7 +108,17 @@
                 notHaveImage = NO;
             }
         } else if ([imageText.type isEqualToString:@"text"]) {
-            [_descriptionLabel setText:imageText.content lineSpacing:5.0];
+            //[_descriptionLabel setText:imageText.content lineSpacing:5.0];
+            
+            
+            NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
+            paragraphStyle.lineSpacing = SCALE_NUM(10);// 字体的行间距
+            NSDictionary *attributes = @{
+                                         NSFontAttributeName:CONTENT_FONT(12),
+                                         NSParagraphStyleAttributeName:paragraphStyle
+                                         };
+            _descriptionLabel.attributedText = [[NSAttributedString alloc] initWithString:imageText.content attributes:attributes];
+            
         }
     }
     if (notHaveImage) {
@@ -202,19 +212,28 @@
         make.left.equalTo(_staticNameLabel);
     }];
     
-    _descriptionLabel = [[UILabel alloc]init];
+    
+    
+    _descriptionLabel = [[UITextView alloc]init];
+    [self.contentView addSubview:_descriptionLabel];
+    _descriptionLabel.editable = NO;
+    _descriptionLabel.scrollEnabled = false;
     _descriptionLabel.font = CONTENT_FONT(13);
+    _descriptionLabel.dataDetectorTypes = UIDataDetectorTypeLink;
+    _descriptionLabel.textContainer.lineFragmentPadding = 0;
+    _descriptionLabel.textContainerInset = UIEdgeInsetsZero;
+    _descriptionLabel.delegate = self;
     _descriptionLabel.textColor = KCOLOR_B3;
-    if (type == DETAIL_INFO) {
-        _descriptionLabel.numberOfLines = 0;
-        _descriptionLabel.lineBreakMode = NSLineBreakByWordWrapping;
-    } else {
-        _descriptionLabel.numberOfLines = 1;
-        _descriptionLabel.lineBreakMode = NSLineBreakByTruncatingTail;
-    }
+//    if (type == DETAIL_INFO) {
+//        _descriptionLabel.numberOfLines = 0;
+//        _descriptionLabel.lineBreakMode = NSLineBreakByWordWrapping;
+//    } else {
+//        _descriptionLabel.numberOfLines = 1;
+//        _descriptionLabel.lineBreakMode = NSLineBreakByTruncatingTail;
+//    }
     [self.contentView addSubview:_descriptionLabel];
     NSString *textString = @"";
-    [_descriptionLabel setText:textString lineSpacing:10.f];
+    //[_descriptionLabel setText:textString lineSpacing:10.f];
     
     [_descriptionLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(_nameLabel);

@@ -6,6 +6,20 @@
 	objectVersion = 46;
 	objects = {
 
+/* Begin PBXAggregateTarget section */
+		0402881C1C075A72008EFEB4 /* OCLint */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 0402881F1C075A72008EFEB4 /* Build configuration list for PBXAggregateTarget "OCLint" */;
+			buildPhases = (
+				040288201C075AB6008EFEB4 /* ShellScript */,
+			);
+			dependencies = (
+			);
+			name = OCLint;
+			productName = OCLint;
+		};
+/* End PBXAggregateTarget section */
+
 /* Begin PBXBuildFile section */
 		041E3EB91BAFF9FE00454487 /* CTAssetsPickerChecked.png in Resources */ = {isa = PBXBuildFile; fileRef = 041E3EB71BAFF9FE00454487 /* CTAssetsPickerChecked.png */; };
 		041E3EBA1BAFF9FE00454487 /* CTAssetsPickerChecked@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 041E3EB81BAFF9FE00454487 /* CTAssetsPickerChecked@2x.png */; };
@@ -4411,6 +4425,9 @@
 				LastUpgradeCheck = 0630;
 				ORGANIZATIONNAME = xc;
 				TargetAttributes = {
+					0402881C1C075A72008EFEB4 = {
+						CreatedOnToolsVersion = 7.1;
+					};
 					200E39751B4E818B000B587B = {
 						CreatedOnToolsVersion = 6.3.1;
 						DevelopmentTeam = AVJ7F5B5B9;
@@ -4445,6 +4462,7 @@
 			targets = (
 				200E39751B4E818B000B587B /* XiaoYou */,
 				200E398E1B4E818B000B587B /* XiaoYouTests */,
+				0402881C1C075A72008EFEB4 /* OCLint */,
 			);
 		};
 /* End PBXProject section */
@@ -4965,6 +4983,19 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		040288201C075AB6008EFEB4 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 12;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "#import path\nexport PATH=${PATH}:/usr/local/bin\n#import what we have in bash_profile\nsource ~/.bash_profile\n#check for oclint\nhash oclint &> /dev/null\nif [ $? -eq 1 ]; then\necho >&2 \"oclint not found, analyzing stopped\"\nexit 1\nfi\n\nhash xctool &> /dev/null\nif [ $? -eq 1 ]; then\necho >&2 \"xctool not found, analyzing stopped\"\nexit 1\nfi\n\ncd ${SRCROOT}\nxcodebuild -workspace XiaoYou.xcworkspace -scheme XiaoYou clean\nxcodebuild -workspace XiaoYou.xcworkspace -scheme XiaoYou -reporter json-compilation-database:compile_commands.json build\noclint-json-compilation-database \\\n-e Pods \\\n-- -rc=LONG_LINE=100 \\\n-rc=NCSS_METHOD=60 \\\n-rc=MINIMUM_CASES_IN_SWITCH=1 \\\n| sed 's/\\(.*\\.\\m\\{1,2\\}:[0-9]*:[0-9]*:\\)/\\1 warning:/'";
+		};
 		8D128BB15157CCD9381C2821 /* Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -5375,6 +5406,20 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		0402881D1C075A72008EFEB4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		0402881E1C075A72008EFEB4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 		200E39971B4E818B000B587B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -5591,6 +5636,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		0402881F1C075A72008EFEB4 /* Build configuration list for PBXAggregateTarget "OCLint" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0402881D1C075A72008EFEB4 /* Debug */,
+				0402881E1C075A72008EFEB4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		200E39711B4E818B000B587B /* Build configuration list for PBXProject "XiaoYou" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

@@ -13,12 +13,12 @@
 #import "TimeFormatterConvert.h"
 
 #define REUSEID @"AvailableCell"
-@interface AvailableCell ()
+@interface AvailableCell ()<UITextViewDelegate>
 
 @property (nonatomic,strong) UIImageView    *startImageView; //开始图
 @property (nonatomic,strong) UILabel        *titleLabel;    //标题
 @property (nonatomic,strong) UILabel        *typeLabel;     //类型
-@property (nonatomic,strong) UILabel        *descriptionLabel;//描述
+@property (nonatomic,strong) UITextView     *descriptionLabel;//描述
 //中间图片部分
 @property (nonatomic,strong) FeedImageGroup *imageGroupView;   //图片
 //底部部分View描述
@@ -102,16 +102,36 @@
         make.top.equalTo(_startImageView).offset(SCALE_NUM(-3));
     }];
     
-    _descriptionLabel = [[UILabel alloc]init];
+//    _contentLabel = [[UITextView alloc] init];
+//    _contentLabel.textColor = [UIColor blackColor];
+//    _contentLabel.editable = false;
+//    //        _contentLabel.dataDetectorTypes = UIDataDetectorTypeLink;
+//    _contentLabel.scrollEnabled = false;
+//    _contentLabel.font = CONTENT_FONT(12);
+//    _contentLabel.textContainer.lineFragmentPadding = 0;
+//    _contentLabel.textContainerInset = UIEdgeInsetsZero;
+//    _contentLabel.delegate = self;
+//    [self addSubview:_contentLabel];
+//    [_contentLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.left.right.top.equalTo(self);
+//    }];
+    
+    _descriptionLabel = [[UITextView alloc]init];
     [self.contentView addSubview:_descriptionLabel];
-    _descriptionLabel.numberOfLines = 3;
-    _descriptionLabel.lineBreakMode = NSLineBreakByTruncatingTail;
+    _descriptionLabel.editable = NO;
+    _descriptionLabel.scrollEnabled = false;
     _descriptionLabel.font = CONTENT_FONT(12);
-    _descriptionLabel.textColor = KCOLOR_B5;
+    _descriptionLabel.dataDetectorTypes = UIDataDetectorTypeLink;
+    _descriptionLabel.textContainer.lineFragmentPadding = 0;
+    _descriptionLabel.textContainerInset = UIEdgeInsetsZero;
+    _descriptionLabel.delegate = self;
+    
+    //_descriptionLabel.lineBreakMode = NSLineBreakByTruncatingTail;
+    //_descriptionLabel.font = CONTENT_FONT(12);
+    //_descriptionLabel.textColor = KCOLOR_B5;
     
     NSString *desTextString = @"描述：";
-    
-    [_descriptionLabel setText:desTextString lineSpacing:SCALE_NUM(10.f)];
+    //[_descriptionLabel setText:desTextString lineSpacing:SCALE_NUM(10.f)];
     
     [_descriptionLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(_titleLabel.mas_bottom).offset(SCALE_NUM(18));
@@ -261,7 +281,17 @@
     for (ActivityImageTextModels *imageText in imageTextModels) {
         if ([imageText.type isEqualToString:@"text"]) {
             NSString *desContent = [NSString stringWithFormat:@"%@%@",@"描述:",imageText.content];
-            [_descriptionLabel setText:desContent lineSpacing:SCALE_NUM(5)];
+            //[_descriptionLabel setText:desContent lineSpacing:SCALE_NUM(5)];
+            
+            
+            NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
+            paragraphStyle.lineSpacing = SCALE_NUM(10);// 字体的行间距
+            
+            NSDictionary *attributes = @{
+                                         NSFontAttributeName:CONTENT_FONT(12),
+                                         NSParagraphStyleAttributeName:paragraphStyle
+                                         };
+            _descriptionLabel.attributedText = [[NSAttributedString alloc] initWithString:desContent attributes:attributes];
         }
         else if ([imageText.type isEqualToString:@"image"]) {
             if (![imageText.content isEmpty]) {
