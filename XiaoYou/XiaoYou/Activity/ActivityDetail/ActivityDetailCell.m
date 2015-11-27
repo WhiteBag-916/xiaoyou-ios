@@ -100,7 +100,7 @@
     paragraphStyle.lineSpacing = SCALE_NUM(5);// 字体的行间距
 
     NSDictionary *attributes = @{
-                                 //NSForegroundColorAttributeName:KCOLOR_B5,
+                                 NSForegroundColorAttributeName:KCOLOR_B4,
                                  NSFontAttributeName:CONTENT_FONT(13),
                                  NSParagraphStyleAttributeName:paragraphStyle
                                  };
@@ -122,7 +122,7 @@
             NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
             paragraphStyle.lineSpacing = SCALE_NUM(10);// 字体的行间距
             NSDictionary *attributes = @{
-                                         //NSForegroundColorAttributeName:KCOLOR_B5,
+                                         NSForegroundColorAttributeName:KCOLOR_B4,
                                          NSFontAttributeName:CONTENT_FONT(12),
                                          NSParagraphStyleAttributeName:paragraphStyle
                                          };
@@ -138,7 +138,23 @@
     _deadLineTimeLabel.text = [TimeFormatterConvert timeConvertToFommtterAvailable:publishModel.enrollEndTime];
     _activityTimeLabel.text = [TimeFormatterConvert timeConvertToFommtterAvailable:publishModel.actStartTime];
     _activityEndTimeLabel.text = [TimeFormatterConvert timeConvertToFommtterAvailable:publishModel.actEndTime];
+    
+    
+    
     //[_locationLabel setText:publishModel.address lineSpacing:5.0];
+    
+    
+    NSMutableParagraphStyle *paragraphStyle1 = [[NSMutableParagraphStyle alloc] init];
+    paragraphStyle1.lineSpacing = SCALE_NUM(5.0);// 字体的行间距
+    NSDictionary *attributes1 = @{
+                                 NSForegroundColorAttributeName:KCOLOR_B4,
+                                 NSFontAttributeName:CONTENT_FONT(12),
+                                 NSParagraphStyleAttributeName:paragraphStyle
+                                 };
+    _locationLabel.attributedText = [[NSAttributedString alloc] initWithString:publishModel.address attributes:attributes1];
+    
+    
+    
     _categoryLabel.text = info.name;
     
     //跳转活动链接

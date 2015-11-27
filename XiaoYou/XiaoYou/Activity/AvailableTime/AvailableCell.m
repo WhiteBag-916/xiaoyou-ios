@@ -283,7 +283,7 @@
     _activityLocationLabel.textColor = KCOLOR_B5;
     _activityLocationLabel.text = @"大脚超市门口";
     [_activityLocationLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        //make.height.mas_equalTo(SCALE_NUM(14));
+        make.height.mas_equalTo(SCALE_NUM(16));
         make.top.equalTo(_activityLocationDes.mas_top);
         make.left.equalTo(_activityEndTimeLabel);
         make.trailing.mas_equalTo(SCALE_NUM(-5));
