@@ -19,11 +19,13 @@
 #define UMENG_APPKEY @"55cda497e0f55ad43d00204c"
 #define hx_AppKey            @"jiankun#xiaoyou"
 #define hx_AppCertificate           @"xiaoyou_producation"
+#define share_url @"http://share.xiaoyou.com"
 #else
 #define api_server_base_url @"http://beta.xiaoyou.com:9081/mobile"
 #define UMENG_APPKEY @"55cda7c3e0f55a0de40018c7"
 #define hx_AppKey            @"jiankun#xiaoyoubeta"
 #define hx_AppCertificate           @"xiaoyou_development_beta"
+#define share_url @"http://sharebeta.xiaoyou.com"
 #endif
 
 /** 获取图像接口*/
