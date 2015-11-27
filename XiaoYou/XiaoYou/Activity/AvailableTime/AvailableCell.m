@@ -12,27 +12,28 @@
 #import "ActivityCoverageModels.h"
 #import "TimeFormatterConvert.h"
 
+
 #define REUSEID @"AvailableCell"
 @interface AvailableCell ()<UITextViewDelegate>
 
 @property (nonatomic,strong) UIImageView    *startImageView; //开始图
-@property (nonatomic,strong) UILabel        *titleLabel;    //标题
+@property (nonatomic,strong) UITextView        *titleLabel;    //标题
 @property (nonatomic,strong) UILabel        *typeLabel;     //类型
-@property (nonatomic,strong) UITextView     *descriptionLabel;//描述
+@property (nonatomic,strong) UILabel        *descriptionLabel;//描述
 //中间图片部分
 @property (nonatomic,strong) FeedImageGroup *imageGroupView;   //图片
 //底部部分View描述
-@property (nonatomic,strong) UILabel        *signUpTimeDes;     //报名截止时间
-@property (nonatomic,strong) UILabel        *activityTimeDes;   //活动开始时间
-@property (nonatomic,strong) UILabel        *activityEndTimeDes;//活动结束时间
-@property (nonatomic,strong) UILabel        *activityLocationDes;//活动地点
-@property (nonatomic,strong) UILabel        *oranizerDes;       //组织者
+@property (nonatomic,strong) UITextView        *signUpTimeDes;     //报名截止时间
+@property (nonatomic,strong) UITextView        *activityTimeDes;   //活动开始时间
+@property (nonatomic,strong) UITextView        *activityEndTimeDes;//活动结束时间
+@property (nonatomic,strong) UITextView        *activityLocationDes;//活动地点
+@property (nonatomic,strong) UITextView        *oranizerDes;       //组织者
 //底部部分view数据
-@property (nonatomic,strong) UILabel        *signUpTimeLabel;       //报名截止时间
-@property (nonatomic,strong) UILabel        *activityStartTimeLabel;//活动开始时间
-@property (nonatomic,strong) UILabel        *activityEndTimeLabel;  //活动结束时间
-@property (nonatomic,strong) UILabel        *activityLocationLabel; //活动地点
-@property (nonatomic,strong) UILabel        *organizerLabel;        //组织者
+@property (nonatomic,strong) UITextView        *signUpTimeLabel;       //报名截止时间
+@property (nonatomic,strong) UITextView        *activityStartTimeLabel;//活动开始时间
+@property (nonatomic,strong) UITextView        *activityEndTimeLabel;  //活动结束时间
+@property (nonatomic,strong) UITextView        *activityLocationLabel; //活动地点
+@property (nonatomic,strong) UITextView        *organizerLabel;        //组织者
 
 @end
 
@@ -72,10 +73,14 @@
         make.width.mas_equalTo(SCALE_NUM(3));
     }];
     
-    _titleLabel = [[UILabel alloc]init];
+    _titleLabel = [[UITextView alloc]init];
+    _titleLabel.editable = NO;
+    _titleLabel.scrollEnabled = false;
+    _titleLabel.textContainer.lineFragmentPadding = 0;
+    _titleLabel.textContainerInset = UIEdgeInsetsZero;
     [self.contentView addSubview:_titleLabel];
     _titleLabel.text = @"大型历史音乐剧《和平使者——抗战中的宋庆龄》奋斗史";
-    _titleLabel.numberOfLines = 0;
+    //_titleLabel.numberOfLines = 0;
     _titleLabel.textColor = KCOLOR_B4;
     _titleLabel.font = CONTENT_FONT(15);
     [_titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -116,24 +121,23 @@
 //        make.left.right.top.equalTo(self);
 //    }];
     
-    _descriptionLabel = [[UITextView alloc]init];
+    _descriptionLabel = [[UILabel alloc]init];
     [self.contentView addSubview:_descriptionLabel];
-    _descriptionLabel.editable = NO;
-    _descriptionLabel.scrollEnabled = false;
-    _descriptionLabel.textColor = KCOLOR_B5;
+//    _descriptionLabel.editable = NO;
+//    _descriptionLabel.scrollEnabled = false;
+//    _descriptionLabel.textContainer.lineFragmentPadding = 0;
+//    _descriptionLabel.textContainerInset = UIEdgeInsetsZero;
+//    _descriptionLabel.textColor = KCOLOR_B5;
+//    _descriptionLabel.font = CONTENT_FONT(12);
+//    _descriptionLabel.dataDetectorTypes = UIDataDetectorTypeLink;
+//    
+//    _descriptionLabel.delegate = self;
+    _descriptionLabel.lineBreakMode = NSLineBreakByTruncatingTail;
     _descriptionLabel.font = CONTENT_FONT(12);
-    _descriptionLabel.dataDetectorTypes = UIDataDetectorTypeLink;
-    _descriptionLabel.textContainer.lineFragmentPadding = 0;
-    _descriptionLabel.textContainerInset = UIEdgeInsetsZero;
-    _descriptionLabel.delegate = self;
-    
-    //_descriptionLabel.lineBreakMode = NSLineBreakByTruncatingTail;
-    //_descriptionLabel.font = CONTENT_FONT(12);
-    //_descriptionLabel.textColor = KCOLOR_B5;
+    _descriptionLabel.textColor = KCOLOR_B5;
+    _descriptionLabel.numberOfLines = 3;
     
     NSString *desTextString = @"描述：";
-    //[_descriptionLabel setText:desTextString lineSpacing:SCALE_NUM(10.f)];
-    
     [_descriptionLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(_titleLabel.mas_bottom).offset(SCALE_NUM(18));
         make.left.equalTo(_titleLabel);
@@ -148,11 +152,16 @@
         make.right.equalTo(_descriptionLabel.mas_right);
     }];
     
-    _signUpTimeDes = [[UILabel alloc]init];
+    _signUpTimeDes = [[UITextView alloc]init];
+    _signUpTimeDes.userInteractionEnabled = NO;
+    _signUpTimeDes.editable = NO;
+    _signUpTimeDes.scrollEnabled = false;
+    _signUpTimeDes.textContainer.lineFragmentPadding = 0;
+    _signUpTimeDes.textContainerInset = UIEdgeInsetsZero;
     [self.contentView addSubview:_signUpTimeDes];
     _signUpTimeDes.text = @"报名截止时间：";
     _signUpTimeDes.font = CONTENT_FONT(12);
-    _signUpTimeDes.numberOfLines = 1;
+    //_signUpTimeDes.numberOfLines = 1;
     _signUpTimeDes.textColor = KCOLOR_B5;
     [_signUpTimeDes mas_makeConstraints:^(MASConstraintMaker *make) {
         make.height.mas_equalTo(SCALE_NUM(14));
@@ -160,7 +169,12 @@
         make.left.equalTo(_imageGroupView);
     }];
     
-    _signUpTimeLabel = [[UILabel alloc]init];
+    _signUpTimeLabel = [[UITextView alloc]init];
+    _signUpTimeLabel.userInteractionEnabled = NO;
+    _signUpTimeLabel.editable = NO;
+    _signUpTimeLabel.scrollEnabled = false;
+    _signUpTimeLabel.textContainer.lineFragmentPadding = 0;
+    _signUpTimeLabel.textContainerInset = UIEdgeInsetsZero;
     [self.contentView addSubview:_signUpTimeLabel];
     _signUpTimeLabel.text = @"2015/10/25 06:00";
     _signUpTimeLabel.font = CONTENT_FONT(12);
@@ -178,7 +192,12 @@
     }
     
     
-    _activityTimeDes = [[UILabel alloc]init];
+    _activityTimeDes = [[UITextView alloc]init];
+    _activityTimeDes.userInteractionEnabled = NO;
+    _activityTimeDes.editable = NO;
+    _activityTimeDes.scrollEnabled = false;
+    _activityTimeDes.textContainer.lineFragmentPadding = 0;
+    _activityTimeDes.textContainerInset = UIEdgeInsetsZero;
     [self.contentView addSubview:_activityTimeDes];
     _activityTimeDes.font = CONTENT_FONT(12);
     _activityTimeDes.textColor = KCOLOR_B5;
@@ -189,7 +208,12 @@
         make.height.mas_equalTo(SCALE_NUM(14));
     }];
     
-    _activityStartTimeLabel = [[UILabel alloc]init];
+    _activityStartTimeLabel = [[UITextView alloc]init];
+    _activityStartTimeLabel.userInteractionEnabled = NO;
+    _activityStartTimeLabel.editable = NO;
+    _activityStartTimeLabel.scrollEnabled = false;
+    _activityStartTimeLabel.textContainer.lineFragmentPadding = 0;
+    _activityStartTimeLabel.textContainerInset = UIEdgeInsetsZero;
     [self.contentView addSubview:_activityStartTimeLabel];
     _activityStartTimeLabel.font = CONTENT_FONT(12);
     _activityStartTimeLabel.textColor = KCOLOR_B5;
@@ -200,7 +224,12 @@
         make.left.equalTo(_signUpTimeLabel);
     }];
     
-    _activityEndTimeDes = [[UILabel alloc]init];
+    _activityEndTimeDes = [[UITextView alloc]init];
+    _activityEndTimeDes.userInteractionEnabled = NO;
+    _activityEndTimeDes.editable = NO;
+    _activityEndTimeDes.scrollEnabled = false;
+    _activityEndTimeDes.textContainer.lineFragmentPadding = 0;
+    _activityEndTimeDes.textContainerInset = UIEdgeInsetsZero;
     [self.contentView addSubview:_activityEndTimeDes];
     _activityEndTimeDes.font = CONTENT_FONT(12);
     _activityEndTimeDes.textColor = KCOLOR_B5;
@@ -211,7 +240,12 @@
         make.left.equalTo(_activityTimeDes);
     }];
     
-    _activityEndTimeLabel = [[UILabel alloc]init];
+    _activityEndTimeLabel = [[UITextView alloc]init];
+    _activityEndTimeLabel.userInteractionEnabled = NO;
+    _activityEndTimeLabel.editable = NO;
+    _activityEndTimeLabel.scrollEnabled = false;
+    _activityEndTimeLabel.textContainer.lineFragmentPadding = 0;
+    _activityEndTimeLabel.textContainerInset = UIEdgeInsetsZero;
     [self.contentView addSubview:_activityEndTimeLabel];
     _activityEndTimeLabel.font = CONTENT_FONT(12);
     _activityEndTimeLabel.textColor = KCOLOR_B5;
@@ -222,7 +256,12 @@
         make.left.equalTo(_activityStartTimeLabel);
     }];
     
-    _activityLocationDes = [[UILabel alloc]init];
+    _activityLocationDes = [[UITextView alloc]init];
+    _activityLocationDes.userInteractionEnabled = NO;
+    _activityLocationDes.editable = NO;
+    _activityLocationDes.scrollEnabled = false;
+    _activityLocationDes.textContainer.lineFragmentPadding = 0;
+    _activityLocationDes.textContainerInset = UIEdgeInsetsZero;
     [self.contentView addSubview:_activityLocationDes];
     _activityLocationDes.font = CONTENT_FONT(12);
     _activityLocationDes.textColor = KCOLOR_B5;
@@ -233,7 +272,12 @@
         make.left.equalTo(_activityEndTimeDes);
     }];
     
-    _activityLocationLabel = [[UILabel alloc]init];
+    _activityLocationLabel = [[UITextView alloc]init];
+    _activityLocationLabel.userInteractionEnabled = NO;
+    _activityLocationLabel.editable = NO;
+    _activityLocationLabel.scrollEnabled = false;
+    _activityLocationLabel.textContainer.lineFragmentPadding = 0;
+    _activityLocationLabel.textContainerInset = UIEdgeInsetsZero;
     [self.contentView addSubview:_activityLocationLabel];
     _activityLocationLabel.font = CONTENT_FONT(12);
     _activityLocationLabel.textColor = KCOLOR_B5;
@@ -245,9 +289,14 @@
         make.trailing.mas_equalTo(SCALE_NUM(-5));
     }];
     
-    _oranizerDes = [[UILabel alloc]init];
+    _oranizerDes = [[UITextView alloc]init];
+    _oranizerDes.userInteractionEnabled = NO;
+    _oranizerDes.editable = NO;
+    _oranizerDes.scrollEnabled = false;
+    _oranizerDes.textContainer.lineFragmentPadding = 0;
+    _oranizerDes.textContainerInset = UIEdgeInsetsZero;
     [self.contentView addSubview:_oranizerDes];
-    _oranizerDes.numberOfLines = 1;
+    //_oranizerDes.numberOfLines = 1;
     _oranizerDes.font = CONTENT_FONT(12);
     _oranizerDes.textColor = KCOLOR_B5;
     _oranizerDes.text = @"组织者：";
@@ -258,9 +307,14 @@
         make.bottom.mas_equalTo(SCALE_NUM(-15));
     }];
     
-    _organizerLabel = [[UILabel alloc]init];
+    _organizerLabel = [[UITextView alloc]init];
+    _organizerLabel.userInteractionEnabled = NO;
+    _organizerLabel.editable = NO;
+    _organizerLabel.scrollEnabled = false;
+    _organizerLabel.textContainer.lineFragmentPadding = 0;
+    _organizerLabel.textContainerInset = UIEdgeInsetsZero;
     [self.contentView addSubview:_organizerLabel];
-    _organizerLabel.numberOfLines = 1;
+    //_organizerLabel.numberOfLines = 1;
     _organizerLabel.font = CONTENT_FONT(12);
     _organizerLabel.textColor = KCOLOR_B5;
     _organizerLabel.text = @"话剧社";
@@ -277,23 +331,50 @@
     NSArray *imageTextModels =  model.activityImageTextModels;
     
     BOOL isNotHaveImage = YES;
-    [_titleLabel setText:publishModel.name lineSpacing:5];
+    //[_titleLabel setText:publishModel.name lineSpacing:5];
+    
+    
+    
+    NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
+    paragraphStyle.lineSpacing = SCALE_NUM(5);// 字体的行间距
+
+    NSDictionary *attributes = @{
+                                 NSForegroundColorAttributeName:KCOLOR_B4,
+                                 NSFontAttributeName:CONTENT_FONT(15),
+                                 NSParagraphStyleAttributeName:paragraphStyle
+                                 };
+    _titleLabel.attributedText = [[NSAttributedString alloc] initWithString:publishModel.name attributes:attributes];
+    
+    
+    
     //图文混排
     for (ActivityImageTextModels *imageText in imageTextModels) {
         if ([imageText.type isEqualToString:@"text"]) {
             NSString *desContent = [NSString stringWithFormat:@"%@%@",@"描述:",imageText.content];
-            //[_descriptionLabel setText:desContent lineSpacing:SCALE_NUM(5)];
+                [_descriptionLabel setText:desContent lineSpacing:SCALE_NUM(5)];
             
             
-            NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
-            paragraphStyle.lineSpacing = SCALE_NUM(10);// 字体的行间距
-            
-            NSDictionary *attributes = @{
-                                         NSForegroundColorAttributeName:KCOLOR_B5,
-                                         NSFontAttributeName:CONTENT_FONT(12),
-                                         NSParagraphStyleAttributeName:paragraphStyle
-                                         };
-            _descriptionLabel.attributedText = [[NSAttributedString alloc] initWithString:desContent attributes:attributes];
+//            NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
+//            paragraphStyle.lineSpacing = SCALE_NUM(10);// 字体的行间距
+//            
+//            NSDictionary *attributes = @{
+//                                         NSForegroundColorAttributeName:KCOLOR_B5,
+//                                         NSFontAttributeName:CONTENT_FONT(12),
+//                                         NSParagraphStyleAttributeName:paragraphStyle
+//                                         };
+//            _descriptionLabel.text = @"aaaa";
+//            _descriptionLabel.attributedText = [[NSAttributedString alloc] initWithString:desContent attributes:attributes];
+//            
+//            //单行高度
+//            CGFloat singleHeight = [self getTextHeight:@"line"];
+//            CGFloat allHeight = [self getTextHeight:desContent];
+//            CGFloat limiteThereHeight = 3 * singleHeight + SCALE_NUM(10) * 2 + SCALE_NUM(10);
+//            
+//            if (allHeight > limiteThereHeight) {
+//                [_descriptionLabel mas_updateConstraints:^(MASConstraintMaker *make) {
+//                    make.height.mas_equalTo(limiteThereHeight);
+//                }];
+//            }
             
         }
         else if ([imageText.type isEqualToString:@"image"]) {
@@ -319,5 +400,39 @@
     [[NSNotificationCenter defaultCenter] postNotificationName:KNotification_OpenBrowser object:nil userInfo:@{@"url":[URL absoluteString], @"title":@""}];
     return false;
 }
+
+
+-(CGFloat)getTextHeight:(NSString*)text
+{
+    NSDictionary *attributes = @{NSFontAttributeName:CONTENT_FONT(12)};
+    CGFloat screenWidth = [UIScreen mainScreen].bounds.size.width;
+    CGSize textSize = [text boundingRectWithSize:CGSizeMake(screenWidth - SCALE_NUM(27), 9999) options:NSStringDrawingUsesLineFragmentOrigin|NSStringDrawingUsesFontLeading attributes:attributes context:nil].size;
+    return textSize.height;
+}
+
+
+- (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range
+ replacementText:(NSString *)text {
+    //内容（滚动视图）高度大于一定数值时
+    if (textView.contentSize.height > 60)
+    {
+        //删除最后一行的第一个字符，以便减少一行。
+        textView.text = [textView.text substringToIndex:[textView.text length]-1];
+        return NO;
+    }
+    return YES;
+    
+}
+
+
+-(void)textViewDidChange:(UITextView *)textView
+{
+    if (textView.contentSize.height > 60)
+    {
+        //删除最后一行的第一个字符，以便减少一行。
+        textView.text = [textView.text substringToIndex:[textView.text length]-1];
+    }
+}
+
 
 @end

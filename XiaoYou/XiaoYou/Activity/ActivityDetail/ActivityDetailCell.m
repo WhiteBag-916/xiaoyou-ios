@@ -27,25 +27,25 @@
 #pragma mark 顶部TopView
 @property (nonatomic,strong) UIImageView    *headImageView; //公告图
 @property (nonatomic,strong) UIView         *sepLineView;   //分割线
-@property (nonatomic,strong) UILabel        *nameLabel;     //名称
-@property (nonatomic,strong) UILabel        *titleLabel;    //标题(校级活动公告)
+@property (nonatomic,strong) UITextView        *nameLabel;     //名称
+@property (nonatomic,strong) UITextView        *titleLabel;    //标题(校级活动公告)
 @property (nonatomic,strong) UILabel        *staticNameLabel;//静态name
 @property (nonatomic,strong) UILabel        *staticDesLabel; //简介
 @property (nonatomic,strong) UITextView     *descriptionLabel;//描述,只显示一行;
 #pragma mark 中间MiddleView
 @property (nonatomic,strong) FeedImageGroup *middleView;
 #pragma mark 底部BottomView
-@property (nonatomic,strong) UIImageView    *timeImageView;             //报名截止时间
-@property (nonatomic,strong) UILabel        *staticDeadLineDes;         //截止时间
-@property (nonatomic,strong) UILabel        *deadLineTimeLabel;         //截止
-@property (nonatomic,strong) UILabel        *staticActivityTimeDes;     //活动时间
-@property (nonatomic,strong) UILabel        *activityTimeLabel;         //活动时间
-@property (nonatomic,strong) UIImageView    *locationImageView;
-@property (nonatomic,strong) UILabel        *locationLabel;             //地点
-@property (nonatomic,strong) UIImageView    *categotyImageView;         //类别
-@property (nonatomic,strong) UILabel        *categoryLabel;             //类别
-@property (nonatomic,strong) UILabel        *staticActivityEndTimeDes;  //活动结束时间
-@property (nonatomic,strong) UILabel        *activityEndTimeLabel;      //活动结束时间
+@property (nonatomic,strong) UIImageView        *timeImageView;             //报名截止时间
+@property (nonatomic,strong) UITextView        *staticDeadLineDes;         //截止时间
+@property (nonatomic,strong) UITextView        *deadLineTimeLabel;         //截止
+@property (nonatomic,strong) UITextView        *staticActivityTimeDes;     //活动时间
+@property (nonatomic,strong) UITextView        *activityTimeLabel;         //活动时间
+@property (nonatomic,strong) UIImageView        *locationImageView;
+@property (nonatomic,strong) UITextView        *locationLabel;             //地点
+@property (nonatomic,strong) UIImageView        *categotyImageView;         //类别
+@property (nonatomic,strong) UITextView        *categoryLabel;             //类别
+@property (nonatomic,strong) UITextView        *staticActivityEndTimeDes;  //活动结束时间
+@property (nonatomic,strong) UITextView        *activityEndTimeLabel;      //活动结束时间
 #pragma mark 查看链接
 @property (nonatomic,strong) UIButton       *jumpLinkButton;            //查看活动链接
 @property (nonatomic,strong) ActivityDetailModel    *detailModel;
@@ -93,7 +93,21 @@
     [_headImageView setFaceImageWithUrl:organizer.headPic];
     
     _titleLabel.text = organizer.name;
-    [_nameLabel setText:publishModel.name lineSpacing:5.0f];
+    //[_nameLabel setText:publishModel.name lineSpacing:5.0f];
+    
+    
+    NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
+    paragraphStyle.lineSpacing = SCALE_NUM(5);// 字体的行间距
+
+    NSDictionary *attributes = @{
+                                 //NSForegroundColorAttributeName:KCOLOR_B5,
+                                 NSFontAttributeName:CONTENT_FONT(13),
+                                 NSParagraphStyleAttributeName:paragraphStyle
+                                 };
+    _nameLabel.attributedText = [[NSAttributedString alloc] initWithString:publishModel.name attributes:attributes];
+    
+    
+    
     NSArray *imageTextModels = model.activityPublishedDto.activityImageTextModels;
     //图片内容是否为空
     BOOL notHaveImage = YES;
@@ -124,7 +138,7 @@
     _deadLineTimeLabel.text = [TimeFormatterConvert timeConvertToFommtterAvailable:publishModel.enrollEndTime];
     _activityTimeLabel.text = [TimeFormatterConvert timeConvertToFommtterAvailable:publishModel.actStartTime];
     _activityEndTimeLabel.text = [TimeFormatterConvert timeConvertToFommtterAvailable:publishModel.actEndTime];
-    [_locationLabel setText:publishModel.address lineSpacing:5.0];
+    //[_locationLabel setText:publishModel.address lineSpacing:5.0];
     _categoryLabel.text = info.name;
     
     //跳转活动链接
@@ -153,9 +167,15 @@
         make.height.mas_equalTo(HEADIMAGEVIEW_WIDTH);
     }];
     
-    _titleLabel = [[UILabel alloc]init];
+    _titleLabel = [[UITextView alloc]init];
     _titleLabel.text = @"校级活动公告";
     [self.contentView addSubview:_titleLabel];
+    
+    _titleLabel.editable = NO;
+    _titleLabel.scrollEnabled = false;
+    _titleLabel.textContainer.lineFragmentPadding = 0;
+    _titleLabel.textContainerInset = UIEdgeInsetsZero;
+    
     _titleLabel.font = CONTENT_FONT(15);
     _titleLabel.textColor = KCOLOR_B4;
     [_titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -185,10 +205,16 @@
         make.leading.mas_equalTo(SCALE_NUM(22));
     }];
     
-    _nameLabel = [[UILabel alloc]init];
+    _nameLabel = [[UITextView alloc]init];
     [self.contentView addSubview:_nameLabel];
     _nameLabel.font = CONTENT_FONT(13);
-    _nameLabel.numberOfLines = 0;
+    //_nameLabel.numberOfLines = 0;
+    _nameLabel.editable = NO;
+    _nameLabel.scrollEnabled = false;
+    _nameLabel.font = CONTENT_FONT(13);
+    _nameLabel.dataDetectorTypes = UIDataDetectorTypeLink;
+    _nameLabel.textContainer.lineFragmentPadding = 0;
+    _nameLabel.textContainerInset = UIEdgeInsetsZero;
     _nameLabel.text = @"大型历史音乐剧《和平使者——抗战中的宋庆龄》";
     [_nameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(_titleLabel);
@@ -245,7 +271,11 @@
         make.top.equalTo(_middleView.mas_bottom).offset(SCALE_NUM(10));
     }];
     
-    _staticDeadLineDes = [[UILabel alloc]init];
+    _staticDeadLineDes = [[UITextView alloc]init];
+    _staticDeadLineDes.editable = NO;
+    _staticDeadLineDes.scrollEnabled = false;
+    _staticDeadLineDes.textContainer.lineFragmentPadding = 0;
+    _staticDeadLineDes.textContainerInset = UIEdgeInsetsZero;
     [self.contentView addSubview:_staticDeadLineDes];
     _staticDeadLineDes.font = CONTENT_FONT(13);
     _staticDeadLineDes.text = @"报名截止时间";
@@ -256,7 +286,11 @@
         make.centerY.equalTo(_timeImageView.mas_centerY);
     }];
     
-    _deadLineTimeLabel = [[UILabel alloc]init];
+    _deadLineTimeLabel = [[UITextView alloc]init];
+    _deadLineTimeLabel.editable = NO;
+    _deadLineTimeLabel.scrollEnabled = false;
+    _deadLineTimeLabel.textContainer.lineFragmentPadding = 0;
+    _deadLineTimeLabel.textContainerInset = UIEdgeInsetsZero;
     [self.contentView addSubview:_deadLineTimeLabel];
     _deadLineTimeLabel.textColor = KCOLOR_B3;
     _deadLineTimeLabel.font = CONTENT_FONT(13);
@@ -267,7 +301,11 @@
         make.centerY.equalTo(_staticDeadLineDes.mas_centerY);
     }];
     
-    _staticActivityTimeDes = [[UILabel alloc]init];
+    _staticActivityTimeDes = [[UITextView alloc]init];
+    _staticActivityTimeDes.editable = NO;
+    _staticActivityTimeDes.scrollEnabled = false;
+    _staticActivityTimeDes.textContainer.lineFragmentPadding = 0;
+    _staticActivityTimeDes.textContainerInset = UIEdgeInsetsZero;
     [self.contentView addSubview:_staticActivityTimeDes];
     _staticActivityTimeDes.textColor = KCOLOR_B3;
     _staticActivityTimeDes.font = CONTENT_FONT(13);
@@ -278,7 +316,11 @@
         make.left.equalTo(_staticDeadLineDes);
     }];
     
-    _activityTimeLabel = [[UILabel alloc]init];
+    _activityTimeLabel = [[UITextView alloc]init];
+    _activityTimeLabel.editable = NO;
+    _activityTimeLabel.scrollEnabled = false;
+    _activityTimeLabel.textContainer.lineFragmentPadding = 0;
+    _activityTimeLabel.textContainerInset = UIEdgeInsetsZero;
     [self.contentView addSubview:_activityTimeLabel];
     _activityTimeLabel.textColor = KCOLOR_B3;
     _activityTimeLabel.font = CONTENT_FONT(13);
@@ -289,7 +331,11 @@
         make.left.equalTo(_deadLineTimeLabel);
     }];
     
-    _staticActivityEndTimeDes = [[UILabel alloc]init];
+    _staticActivityEndTimeDes = [[UITextView alloc]init];
+    _staticActivityEndTimeDes.editable = NO;
+    _staticActivityEndTimeDes.scrollEnabled = false;
+    _staticActivityEndTimeDes.textContainer.lineFragmentPadding = 0;
+    _staticActivityEndTimeDes.textContainerInset = UIEdgeInsetsZero;
     [self.contentView addSubview:_staticActivityEndTimeDes];
     _staticActivityEndTimeDes.font = CONTENT_FONT(13);
     _staticActivityEndTimeDes.textColor = KCOLOR_B3;
@@ -300,7 +346,11 @@
         make.left.equalTo(_staticActivityTimeDes);
     }];
     
-    _activityEndTimeLabel = [[UILabel alloc]init];
+    _activityEndTimeLabel = [[UITextView alloc]init];
+    _activityEndTimeLabel.editable = NO;
+    _activityEndTimeLabel.scrollEnabled = false;
+    _activityEndTimeLabel.textContainer.lineFragmentPadding = 0;
+    _activityEndTimeLabel.textContainerInset = UIEdgeInsetsZero;
     [self.contentView addSubview:_activityEndTimeLabel];
     _activityEndTimeLabel.textColor = KCOLOR_B3;
     _activityEndTimeLabel.font = CONTENT_FONT(13);
@@ -318,10 +368,14 @@
         make.centerX.equalTo(_timeImageView.mas_centerX);
     }];
     
-    _locationLabel = [[UILabel alloc]init];
+    _locationLabel = [[UITextView alloc]init];
+    _locationLabel.editable = NO;
+    _locationLabel.scrollEnabled = false;
+    _locationLabel.textContainer.lineFragmentPadding = 0;
+    _locationLabel.textContainerInset = UIEdgeInsetsZero;
     _locationLabel.text = @"大脚超市门口";
-    _locationLabel.numberOfLines = 0;
-    _locationLabel.lineBreakMode = NSLineBreakByWordWrapping;
+    //_locationLabel.numberOfLines = 0;
+    //_locationLabel.lineBreakMode = NSLineBreakByWordWrapping;
     [self.contentView addSubview:_locationLabel];
     _locationLabel.textColor = KCOLOR_B3;
     _locationLabel.font = CONTENT_FONT(13);
@@ -338,7 +392,11 @@
         make.centerX.equalTo(_locationImageView);
     }];
     
-    _categoryLabel = [[UILabel alloc]init];
+    _categoryLabel = [[UITextView alloc]init];
+    _categoryLabel.editable = NO;
+    _categoryLabel.scrollEnabled = false;
+    _categoryLabel.textContainer.lineFragmentPadding = 0;
+    _categoryLabel.textContainerInset = UIEdgeInsetsZero;
     [self.contentView addSubview:_categoryLabel];
     _categoryLabel.font = CONTENT_FONT(13);
     _categoryLabel.text = @"学术类";
