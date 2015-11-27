@@ -122,7 +122,7 @@
     _descriptionLabel.scrollEnabled = false;
     _descriptionLabel.textColor = KCOLOR_B5;
     _descriptionLabel.font = CONTENT_FONT(12);
-    //_descriptionLabel.dataDetectorTypes = UIDataDetectorTypeLink;
+    _descriptionLabel.dataDetectorTypes = UIDataDetectorTypeLink;
     _descriptionLabel.textContainer.lineFragmentPadding = 0;
     _descriptionLabel.textContainerInset = UIEdgeInsetsZero;
     _descriptionLabel.delegate = self;
@@ -312,6 +312,12 @@
     _activityEndTimeLabel.text = [TimeFormatterConvert timeConvertToFommtterAvailable:publishModel.actEndTime];
     _activityLocationLabel.text = publishModel.address;
     _organizerLabel.text = publishModel.activityOrganizer;
+}
+
+
+- (BOOL)textView:(UITextView *)textView shouldInteractWithURL:(NSURL *)URL inRange:(NSRange)characterRange {
+    [[NSNotificationCenter defaultCenter] postNotificationName:KNotification_OpenBrowser object:nil userInfo:@{@"url":[URL absoluteString], @"title":@""}];
+    return false;
 }
 
 @end

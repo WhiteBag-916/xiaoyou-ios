@@ -213,7 +213,7 @@
     _descriptionLabel.editable = NO;
     _descriptionLabel.scrollEnabled = false;
     _descriptionLabel.font = CONTENT_FONT(13);
-    //_descriptionLabel.dataDetectorTypes = UIDataDetectorTypeLink;
+    _descriptionLabel.dataDetectorTypes = UIDataDetectorTypeLink;
     _descriptionLabel.textContainer.lineFragmentPadding = 0;
     _descriptionLabel.textContainerInset = UIEdgeInsetsZero;
     _descriptionLabel.delegate = self;
@@ -395,4 +395,10 @@
         [self.viewController.navigationController pushViewController:groupVC animated:YES needHiddenBottomBar:YES];
     }
 }
+
+- (BOOL)textView:(UITextView *)textView shouldInteractWithURL:(NSURL *)URL inRange:(NSRange)characterRange {
+    [[NSNotificationCenter defaultCenter] postNotificationName:KNotification_OpenBrowser object:nil userInfo:@{@"url":[URL absoluteString], @"title":@""}];
+    return false;
+}
+
 @end
