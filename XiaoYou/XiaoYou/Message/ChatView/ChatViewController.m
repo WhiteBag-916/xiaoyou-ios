@@ -1221,7 +1221,6 @@
                     [blockSelf dismissViewControllerAnimated:YES completion:nil];
                 });
             }
-            [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault animated:YES];
         };
 
         _imagePickerVC.didFinishBlock = ^(NSArray *info) {
@@ -1238,8 +1237,6 @@
                     [blockSelf sendImageMessage:img];
                 }];
             });
-            
-            [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault animated:YES];
         };
     }
     return _imagePickerVC;
