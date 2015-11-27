@@ -122,7 +122,7 @@
             NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
             paragraphStyle.lineSpacing = SCALE_NUM(10);// 字体的行间距
             NSDictionary *attributes = @{
-                                         NSForegroundColorAttributeName:KCOLOR_B3,
+                                         //NSForegroundColorAttributeName:KCOLOR_B5,
                                          NSFontAttributeName:CONTENT_FONT(12),
                                          NSParagraphStyleAttributeName:paragraphStyle
                                          };
@@ -179,7 +179,7 @@
     _titleLabel.font = CONTENT_FONT(15);
     _titleLabel.textColor = KCOLOR_B4;
     [_titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.height.mas_equalTo(SCALE_NUM(15));
+        //make.height.mas_equalTo(SCALE_NUM(15));
         make.left.equalTo(_headImageView.mas_right).offset(SCALE_NUM(12));
         make.centerY.equalTo(_headImageView.mas_centerY);
     }];
@@ -200,7 +200,7 @@
     _staticNameLabel.font = CONTENT_FONT(13);
     _staticNameLabel.text = @"名称:";
     [_staticNameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.height.mas_equalTo(SCALE_NUM(16));
+        //make.height.mas_equalTo(SCALE_NUM(16));
         make.top.equalTo(_sepLineView.mas_bottom).offset(SCALE_NUM(15));
         make.leading.mas_equalTo(SCALE_NUM(22));
     }];
@@ -227,7 +227,7 @@
     _staticDesLabel.font = CONTENT_FONT(13);
     _staticDesLabel.text = @"简介:";
     [_staticDesLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.height.mas_equalTo(SCALE_NUM(13));
+        //make.height.mas_equalTo(SCALE_NUM(13));
         make.top.equalTo(_nameLabel.mas_bottom).offset(SCALE_NUM(15));
         make.left.equalTo(_staticNameLabel);
     }];
@@ -281,7 +281,7 @@
     _staticDeadLineDes.text = @"报名截止时间";
     _staticDeadLineDes.textColor = KCOLOR_B3;
     [_staticDeadLineDes mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.height.mas_equalTo(SCALE_NUM(13));
+        //make.height.mas_equalTo(SCALE_NUM(13));
         make.left.equalTo(_middleView);
         make.centerY.equalTo(_timeImageView.mas_centerY);
     }];
@@ -296,7 +296,7 @@
     _deadLineTimeLabel.font = CONTENT_FONT(13);
     _deadLineTimeLabel.text = @"15/10/25 06:00";
     [_deadLineTimeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.height.mas_equalTo(SCALE_NUM(13));
+        //make.height.mas_equalTo(SCALE_NUM(13));
         make.left.equalTo(_staticDeadLineDes.mas_right).offset(SCALE_NUM(10));
         make.centerY.equalTo(_staticDeadLineDes.mas_centerY);
     }];
@@ -311,7 +311,7 @@
     _staticActivityTimeDes.font = CONTENT_FONT(13);
     _staticActivityTimeDes.text = @"活动开始时间";
     [_staticActivityTimeDes mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.height.mas_equalTo(SCALE_NUM(13));
+        //make.height.mas_equalTo(SCALE_NUM(13));
         make.top.equalTo(_deadLineTimeLabel.mas_bottom).offset(SCALE_NUM(15));
         make.left.equalTo(_staticDeadLineDes);
     }];
@@ -326,7 +326,7 @@
     _activityTimeLabel.font = CONTENT_FONT(13);
     _activityTimeLabel.text = @"15/10/05 06:00";
     [_activityTimeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.height.mas_equalTo(SCALE_NUM(13));
+        //make.height.mas_equalTo(SCALE_NUM(13));
         make.top.equalTo(_staticActivityTimeDes);
         make.left.equalTo(_deadLineTimeLabel);
     }];
@@ -341,7 +341,7 @@
     _staticActivityEndTimeDes.textColor = KCOLOR_B3;
     _staticActivityEndTimeDes.text = @"活动结束时间";
     [_staticActivityEndTimeDes mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.height.mas_equalTo(SCALE_NUM(13));
+        //make.height.mas_equalTo(SCALE_NUM(13));
         make.top.equalTo(_staticActivityTimeDes.mas_bottom).offset(SCALE_NUM(15));
         make.left.equalTo(_staticActivityTimeDes);
     }];
@@ -356,7 +356,7 @@
     _activityEndTimeLabel.font = CONTENT_FONT(13);
     _activityEndTimeLabel.text = @"15/10/25 06:00";
     [_activityEndTimeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.height.mas_equalTo(SCALE_NUM(13));
+        //make.height.mas_equalTo(SCALE_NUM(13));
         make.left.equalTo(_staticActivityEndTimeDes.mas_right).offset(SCALE_NUM(10));
         make.centerY.equalTo(_staticActivityEndTimeDes.mas_centerY);
     }];
@@ -402,7 +402,7 @@
     _categoryLabel.text = @"学术类";
     _categoryLabel.textColor = KCOLOR_B3;
     [_categoryLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.height.mas_equalTo(SCALE_NUM(15));
+        //make.height.mas_equalTo(SCALE_NUM(15));
         make.left.equalTo(_locationLabel);
         make.centerY.equalTo(_categotyImageView.mas_centerY);
     }];
@@ -416,7 +416,7 @@
     [_jumpLinkButton mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(_categotyImageView.mas_bottom).offset(SCALE_NUM(10));
         make.left.equalTo(_categoryLabel);
-        make.height.mas_equalTo(SCALE_NUM(14));
+        //make.height.mas_equalTo(SCALE_NUM(14));
         make.bottom.mas_equalTo(SCALE_NUM(-10));
     }];
 }

@@ -102,7 +102,7 @@
     _typeLabel.text = @"  活动  ";
     _typeLabel.font = CONTENT_FONT(10);
     [_typeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.height.mas_equalTo(SCALE_NUM(15));
+        //make.height.mas_equalTo(SCALE_NUM(15));
         make.trailing.mas_equalTo(SCALE_NUM(-15));
         make.top.equalTo(_startImageView).offset(SCALE_NUM(-3));
     }];
@@ -164,7 +164,7 @@
     //_signUpTimeDes.numberOfLines = 1;
     _signUpTimeDes.textColor = KCOLOR_B5;
     [_signUpTimeDes mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.height.mas_equalTo(SCALE_NUM(14));
+        //make.height.mas_equalTo(SCALE_NUM(14));
         make.top.equalTo(_imageGroupView.mas_bottom).offset(SCALE_NUM(15));
         make.left.equalTo(_imageGroupView);
     }];
@@ -180,7 +180,7 @@
     _signUpTimeLabel.font = CONTENT_FONT(12);
     _signUpTimeLabel.textColor = KCOLOR_B5;
     [_signUpTimeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.height.mas_equalTo(SCALE_NUM(14));
+        //make.height.mas_equalTo(SCALE_NUM(14));
         make.centerY.equalTo(_signUpTimeDes);
         make.left.equalTo(_signUpTimeDes.mas_right).offset(SCALE_NUM(15)).priorityHigh();
     }];
@@ -205,7 +205,7 @@
     [_activityTimeDes mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(_signUpTimeDes.mas_bottom).offset(SCALE_NUM(15));
         make.left.equalTo(_signUpTimeDes);
-        make.height.mas_equalTo(SCALE_NUM(14));
+        //make.height.mas_equalTo(SCALE_NUM(14));
     }];
     
     _activityStartTimeLabel = [[UITextView alloc]init];
@@ -219,7 +219,7 @@
     _activityStartTimeLabel.textColor = KCOLOR_B5;
     _activityStartTimeLabel.text = @"2015/10/05 06:00";
     [_activityStartTimeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.height.mas_equalTo(SCALE_NUM(14));
+        //make.height.mas_equalTo(SCALE_NUM(14));
         make.centerY.equalTo(_activityTimeDes);
         make.left.equalTo(_signUpTimeLabel);
     }];
@@ -235,7 +235,7 @@
     _activityEndTimeDes.textColor = KCOLOR_B5;
     _activityEndTimeDes.text = @"活动结束时间：";
     [_activityEndTimeDes mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.height.mas_equalTo(SCALE_NUM(14));
+        //make.height.mas_equalTo(SCALE_NUM(14));
         make.top.equalTo(_activityTimeDes.mas_bottom).offset(SCALE_NUM(15));
         make.left.equalTo(_activityTimeDes);
     }];
@@ -251,7 +251,7 @@
     _activityEndTimeLabel.textColor = KCOLOR_B5;
     _activityEndTimeLabel.text = @"2015/10/25 06:00";
     [_activityEndTimeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.height.mas_equalTo(SCALE_NUM(14));
+        //make.height.mas_equalTo(SCALE_NUM(14));
         make.centerY.equalTo(_activityEndTimeDes);
         make.left.equalTo(_activityStartTimeLabel);
     }];
@@ -267,7 +267,7 @@
     _activityLocationDes.textColor = KCOLOR_B5;
     _activityLocationDes.text = @"活动地点：";
     [_activityLocationDes mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.height.mas_equalTo(SCALE_NUM(14));
+        //make.height.mas_equalTo(SCALE_NUM(14));
         make.top.equalTo(_activityEndTimeDes.mas_bottom).offset(SCALE_NUM(15));
         make.left.equalTo(_activityEndTimeDes);
     }];
@@ -283,7 +283,7 @@
     _activityLocationLabel.textColor = KCOLOR_B5;
     _activityLocationLabel.text = @"大脚超市门口";
     [_activityLocationLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.height.mas_equalTo(SCALE_NUM(14));
+        //make.height.mas_equalTo(SCALE_NUM(14));
         make.top.equalTo(_activityLocationDes.mas_top);
         make.left.equalTo(_activityEndTimeLabel);
         make.trailing.mas_equalTo(SCALE_NUM(-5));
@@ -301,7 +301,7 @@
     _oranizerDes.textColor = KCOLOR_B5;
     _oranizerDes.text = @"组织者：";
     [_oranizerDes mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.height.mas_equalTo(SCALE_NUM(14));
+        //make.height.mas_equalTo(SCALE_NUM(14));
         make.top.equalTo(_activityLocationDes.mas_bottom).offset(SCALE_NUM(15));
         make.left.equalTo(_activityLocationDes);
         make.bottom.mas_equalTo(SCALE_NUM(-15));
