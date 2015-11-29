@@ -131,8 +131,6 @@ CGFloat const UI_PLACEHOLDER_TEXT_CHANGED_ANIMATION_DURATION = 0.25;
                                      NSUnderlineColorAttributeName: [UIColor lightGrayColor],
                                      NSUnderlineStyleAttributeName: @(NSUnderlinePatternSolid)};
     self.linkTextAttributes  = linkAttributes;
-    [self handleLink:attributedText];
-    
 }
 
 

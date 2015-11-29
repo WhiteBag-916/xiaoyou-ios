@@ -325,6 +325,7 @@
     [_browser removeFromSuperview];
     _browser = nil;
     [[NSNotificationCenter defaultCenter] postNotificationName:KNotification_Delete_Image object:[NSNumber numberWithInt:currentIndex]];
+    [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationNone];
 //    NSString *path = [YDirectory newImgCache:[NSString stringWithFormat:@"feed%d.png", currentIndex]];
 //    [[NSFileManager defaultManager] removeItemAtPath:path error:nil];
     //如果需要在删除图片之后，自动预览下一张，打开下面代码
