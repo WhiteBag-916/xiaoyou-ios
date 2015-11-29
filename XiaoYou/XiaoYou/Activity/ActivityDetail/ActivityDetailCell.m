@@ -129,7 +129,8 @@
                                          NSFontAttributeName:CONTENT_FONT(12),
                                          NSParagraphStyleAttributeName:paragraphStyle,
                                          };
-            NSDictionary *linkAttributes = @{NSForegroundColorAttributeName: [UIColor colorWithRed:106 green:140 blue:179 alpha:1],
+            //R106 G140 B179 A100
+            NSDictionary *linkAttributes = @{NSForegroundColorAttributeName: RGBACOLOR(106, 140,179, 1),
                                              NSUnderlineColorAttributeName: [UIColor lightGrayColor],
                                              NSUnderlineStyleAttributeName: @(NSUnderlinePatternSolid)};
 
@@ -137,6 +138,8 @@
             
             [attributedString addAttributes:attributes range:NSMakeRange(0, attributedString.length)];
             [_descriptionLabel setCustomAttributedText:attributedString];
+            
+            //_descriptionLabel.linkTextAttributes = linkAttributes;
         }
     }
     if (notHaveImage) {
