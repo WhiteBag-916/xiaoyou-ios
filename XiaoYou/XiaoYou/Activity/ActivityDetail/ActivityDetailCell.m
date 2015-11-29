@@ -126,10 +126,23 @@
             NSDictionary *attributes = @{
                                          NSForegroundColorAttributeName:KCOLOR_B4,
                                          NSFontAttributeName:CONTENT_FONT(12),
-                                         NSParagraphStyleAttributeName:paragraphStyle
+                                         NSParagraphStyleAttributeName:paragraphStyle,
                                          };
-            _descriptionLabel.attributedText = [[NSAttributedString alloc] initWithString:[self handleLink:imageText.content] attributes:attributes];
-            _contentStr = imageText.content;
+            //R106 G140 B179 A100
+            NSDictionary *linkAttributes = @{NSForegroundColorAttributeName: RGBACOLOR(106, 140, 179, 1),
+                                             NSUnderlineColorAttributeName: [UIColor lightGrayColor],
+                                             NSUnderlineStyleAttributeName: @(NSUnderlinePatternSolid)};
+            
+            
+            NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithString:imageText.content];
+            
+            [attributedString addAttributes:attributes range:NSMakeRange(0, attributedString.length)];
+            //针对ios9系统优化
+            if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 9.0) {
+                attributedString = [self handleLink:attributedString];
+            }
+            _descriptionLabel.attributedText = attributedString;
+            _descriptionLabel.linkTextAttributes = linkAttributes;
         }
     }
     if (notHaveImage) {
@@ -168,6 +181,28 @@
     }
 }
 
+- (NSMutableAttributedString*)handleLink:(NSMutableAttributedString*)contentAttrString
+{
+    NSMutableAttributedString *ret = [[NSMutableAttributedString alloc]initWithAttributedString:contentAttrString];
+    NSString *string = [contentAttrString string];
+    NSError *error;
+    NSString *regulaStr = @"((http[s]{0,1}|ftp)://[a-zA-Z0-9\\.\\-]+\\.([a-zA-Z]{2,4})(:\\d+)?(/[a-zA-Z0-9\\.\\-~!@#$%^&*+?:_/=<>]*)?)|(www.[a-zA-Z0-9\\.\\-]+\\.([a-zA-Z]{2,4})(:\\d+)?(/[a-zA-Z0-9\\.\\-~!@#$%^&*+?:_/=<>]*)?)";
+    NSRegularExpression *regex =[NSRegularExpression regularExpressionWithPattern:regulaStr options:NSRegularExpressionCaseInsensitive error:&error];
+    
+    NSArray *arrayOfAllMatches = [regex matchesInString:string options:0 range:NSMakeRange(0, [string length])];
+    
+    for(NSTextCheckingResult *match in arrayOfAllMatches)
+    {
+        NSString* substringForMatch = [string substringWithRange:match.range];
+        NSRange range = [string rangeOfString:substringForMatch];
+        [ret removeAttribute:NSFontAttributeName range:range];
+        [ret removeAttribute:NSParagraphStyleAttributeName range:range];
+        [ret removeAttribute:NSLinkAttributeName range:range];
+        [ret addAttribute:NSLinkAttributeName value:substringForMatch range:range];
+        //unsigned long pos = range.location + range.length;
+    }
+    return ret;
+}
 
 
 
@@ -482,27 +517,5 @@
     [[NSNotificationCenter defaultCenter] postNotificationName:KNotification_OpenBrowser object:nil userInfo:@{@"url":[URL absoluteString], @"title":@""}];
     return false;
 }
-
-- (NSString*)handleLink:(NSString*)string
-{
-    NSMutableString *ret = [[NSMutableString alloc]initWithString:string];
-    NSError *error;
-    NSString *regulaStr = @"\\bhttps?://[a-zA-Z0-9\\-.]+(?::(\\d+))?(?:(?:/[a-zA-Z0-9\\-._?,'+\\&%$=~*!():@\\\\]*)+)?";
-    NSRegularExpression *regex =[NSRegularExpression regularExpressionWithPattern:regulaStr options:NSRegularExpressionCaseInsensitive error:&error];
-    
-    NSArray *arrayOfAllMatches = [regex matchesInString:string options:0 range:NSMakeRange(0, [string length])];
-    
-    for(NSTextCheckingResult *match in arrayOfAllMatches)
-    {
-        NSString* substringForMatch = [string substringWithRange:match.range];
-        //NSLog(@"substringForMatch");
-        NSRange range = [string rangeOfString:substringForMatch];
-        unsigned long pos = range.location + range.length;
-        [ret insertString:@" " atIndex:pos];
-    }
-    return ret;
-}
-
-
 
 @end
