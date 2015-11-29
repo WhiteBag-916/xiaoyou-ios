@@ -4,6 +4,11 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>OCLint.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>23</integer>
+		</dict>
 		<key>XiaoYou.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
@@ -12,6 +17,11 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>0402881C1C075A72008EFEB4</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>200E39751B4E818B000B587B</key>
 		<dict>
 			<key>primary</key>
