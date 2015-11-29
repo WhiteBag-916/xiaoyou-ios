@@ -129,13 +129,13 @@
                                          NSFontAttributeName:CONTENT_FONT(12),
                                          NSParagraphStyleAttributeName:paragraphStyle,
                                          };
-            
-            
-            
+            NSDictionary *linkAttributes = @{NSForegroundColorAttributeName: [UIColor colorWithRed:106 green:140 blue:179 alpha:1],
+                                             NSUnderlineColorAttributeName: [UIColor lightGrayColor],
+                                             NSUnderlineStyleAttributeName: @(NSUnderlinePatternSolid)};
+
             NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithString:imageText.content];
             
             [attributedString addAttributes:attributes range:NSMakeRange(0, attributedString.length)];
-            //针对ios9系统优化
             [_descriptionLabel setCustomAttributedText:attributedString];
         }
     }

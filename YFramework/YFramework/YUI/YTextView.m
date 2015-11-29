@@ -127,11 +127,12 @@ CGFloat const UI_PLACEHOLDER_TEXT_CHANGED_ANIMATION_DURATION = 0.25;
     self.attributedText = attributedText;
     
     //R106 G140 B179 A100
-    NSDictionary *linkAttributes = @{NSForegroundColorAttributeName: [UIColor colorWithRed:106 green:140 blue:179 alpha:1],
+    NSDictionary *linkAttributes = @{NSForegroundColorAttributeName: [UIColor colorWithRed:106 green:140 blue:179 alpha:0],
                                      NSUnderlineColorAttributeName: [UIColor lightGrayColor],
                                      NSUnderlineStyleAttributeName: @(NSUnderlinePatternSolid)};
+    //self.linkTextAttributes  = linkAttributes;
     [self handleLink:attributedText];
-    self.linkTextAttributes  = linkAttributes;
+    
 }
 
 
