@@ -121,9 +121,9 @@ CGFloat const UI_PLACEHOLDER_TEXT_CHANGED_ANIMATION_DURATION = 0.25;
 
 -(void)setCustomAttributedText:(NSAttributedString *)attributedText
 {
-    if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 9.0) {
-        attributedText = [self handleLink:attributedText];
-    }
+    //if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 9.0) {
+    attributedText = [self handleLink:attributedText];
+    //}
     self.attributedText = attributedText;
     
     //R106 G140 B179 A100
