@@ -483,18 +483,6 @@
     return false;
 }
 
-//- (void) setSelectedRange:(NSRange) range WithTextFiled:(UITextView*)textFiled
-//{
-//    UITextPosition* beginning = textFiled.beginningOfDocument;
-//    
-//    UITextPosition* startPosition = [textFiled positionFromPosition:beginning offset:range.location];
-//    UITextPosition* endPosition = [textFiled positionFromPosition:beginning offset:range.location + range.length];
-//    UITextRange* selectionRange = [textFiled textRangeFromPosition:startPosition toPosition:endPosition];
-//    
-//    [textFiled setSelectedTextRange:selectionRange];
-//}
-
-
 - (NSString*)handleLink:(NSString*)string
 {
     NSMutableString *ret = [[NSMutableString alloc]initWithString:string];
@@ -510,10 +498,8 @@
         //NSLog(@"substringForMatch");
         NSRange range = [string rangeOfString:substringForMatch];
         unsigned long pos = range.location + range.length;
-        [ret insertString:@"   " atIndex:pos];
-        //[ret insertString:@"   " atIndex:range.location];
+        [ret insertString:@" " atIndex:pos];
     }
-    //return string;
     return ret;
 }
 
