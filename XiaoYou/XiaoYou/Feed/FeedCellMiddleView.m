@@ -12,6 +12,7 @@
 #import "Feed.h"
 #import "FeedInfo.h"
 #import "Comment.h"
+#import "YTextView.h"
 #import "CommentListItems.h"
 #import "Author.h"
 #import "ConvertToCommonEmoticonsHelper.h"
@@ -23,7 +24,7 @@
 
 @interface FeedCellMiddleView() <UITextViewDelegate>
 
-@property (nonatomic, strong, readwrite) UITextView *contentLabel;                //内容
+@property (nonatomic, strong, readwrite) YTextView *contentLabel;                //内容
 @property (nonatomic, strong, readwrite) FeedImageGroup *imgGroup;             //图片
 
 @end
@@ -32,10 +33,9 @@
 - (id)initWithType:(int)type {
     self = [super init];
     if (self) {
-        _contentLabel = [[UITextView alloc] init];
+        _contentLabel = [[YTextView alloc] init];
         _contentLabel.textColor = [UIColor blackColor];
         _contentLabel.editable = false;
-        _contentLabel.dataDetectorTypes = UIDataDetectorTypeLink;
         _contentLabel.scrollEnabled = false;
         _contentLabel.tintColor = RGBACOLOR(106, 140, 179, 1);
         _contentLabel.font = CONTENT_FONT(12);
@@ -67,9 +67,18 @@
 
 - (void)setData:(id)inData {
     _contentLabel.text = nil;
+    NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
+    paragraphStyle.lineSpacing = SCALE_NUM(10);// 字体的行间距
+    NSDictionary *attributes = @{
+                                 NSForegroundColorAttributeName:KCOLOR_B4,
+                                 NSFontAttributeName:CONTENT_FONT(12),
+                                 NSParagraphStyleAttributeName:paragraphStyle,
+                                 };
     if ([inData isKindOfClass:[FeedInfo class]]) {
         FeedInfo *data = inData;
-        _contentLabel.text =  [@"\u200B" stringByAppendingString:[ConvertToCommonEmoticonsHelper convertToSystemEmoticons:data.feed.content]];
+        NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithString:[ConvertToCommonEmoticonsHelper convertToSystemEmoticons:data.feed.content]];
+        [attributedString addAttributes:attributes range:NSMakeRange(0, attributedString.length)];
+        [_contentLabel setCustomAttributedText:attributedString];
         if (data.feed.img.length == 0) {
             [_imgGroup updateWithImgs:nil bigPics:nil];
         } else {
@@ -78,7 +87,9 @@
     }
     if ([inData isKindOfClass:[CommentListItems class]]) {
         CommentListItems *data = inData;
-        _contentLabel.text = [@"\u200B" stringByAppendingString:[ConvertToCommonEmoticonsHelper convertToSystemEmoticons:data.comment.content]];
+        NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithString:[ConvertToCommonEmoticonsHelper convertToSystemEmoticons:data.comment.content]];
+        [attributedString addAttributes:attributes range:NSMakeRange(0, attributedString.length)];
+        [_contentLabel setCustomAttributedText:attributedString];
         if (data.replyUser.name.length != 0) {
             _contentLabel.text = [NSString stringWithFormat:@"回复%@:%@",data.replyUser.name, _contentLabel.text];
         }

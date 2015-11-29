@@ -9,9 +9,10 @@
 #import <UIKit/UIKit.h>
 @class FeedImageGroup;
 @class FeedInfo;
+@class YTextView;
 @interface FeedCellMiddleView : UIView
 
-@property (nonatomic, strong, readonly) UITextView *contentLabel;                //内容
+@property (nonatomic, strong, readonly) YTextView *contentLabel;                //内容
 @property (nonatomic, strong, readonly) FeedImageGroup *imgGroup;             //图片
 
 - (id)initWithType:(int)type;
