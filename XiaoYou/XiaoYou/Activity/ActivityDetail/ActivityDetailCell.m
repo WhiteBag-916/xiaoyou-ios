@@ -18,6 +18,7 @@
 #import "YWebViewController.h"
 #import "ProfileMyViewController.h"
 #import "ProfileViewController.h"
+#import "YTextView.h"
 
 #define HEADIMAGEVIEW_WIDTH         SCALE_NUM(45)
 #define LEADINGOFF_HEADIMAGEVIEW    SCALE_NUM(12)
@@ -31,7 +32,7 @@
 @property (nonatomic,strong) UITextView        *titleLabel;    //标题(校级活动公告)
 @property (nonatomic,strong) UILabel        *staticNameLabel;//静态name
 @property (nonatomic,strong) UILabel        *staticDesLabel; //简介
-@property (nonatomic,strong) UITextView     *descriptionLabel;//描述,只显示一行;
+@property (nonatomic,strong) YTextView     *descriptionLabel;//描述,只显示一行;
 #pragma mark 中间MiddleView
 @property (nonatomic,strong) FeedImageGroup *middleView;
 #pragma mark 底部BottomView
@@ -138,10 +139,11 @@
             
             [attributedString addAttributes:attributes range:NSMakeRange(0, attributedString.length)];
             //针对ios9系统优化
-            if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 9.0) {
-                attributedString = [self handleLink:attributedString];
-            }
-            _descriptionLabel.attributedText = attributedString;
+//            if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 9.0) {
+//                attributedString = [self handleLink:attributedString];
+//            }
+//            _descriptionLabel.attributedText = attributedString;
+            [_descriptionLabel setCustomAttributedText:attributedString];
             _descriptionLabel.linkTextAttributes = linkAttributes;
         }
     }
@@ -181,28 +183,25 @@
     }
 }
 
-- (NSMutableAttributedString*)handleLink:(NSMutableAttributedString*)contentAttrString
-{
-    NSMutableAttributedString *ret = [[NSMutableAttributedString alloc]initWithAttributedString:contentAttrString];
-    NSString *string = [contentAttrString string];
-    NSError *error;
-    NSString *regulaStr = @"((http[s]{0,1}|ftp)://[a-zA-Z0-9\\.\\-]+\\.([a-zA-Z]{2,4})(:\\d+)?(/[a-zA-Z0-9\\.\\-~!@#$%^&*+?:_/=<>]*)?)|(www.[a-zA-Z0-9\\.\\-]+\\.([a-zA-Z]{2,4})(:\\d+)?(/[a-zA-Z0-9\\.\\-~!@#$%^&*+?:_/=<>]*)?)";
-    NSRegularExpression *regex =[NSRegularExpression regularExpressionWithPattern:regulaStr options:NSRegularExpressionCaseInsensitive error:&error];
-    
-    NSArray *arrayOfAllMatches = [regex matchesInString:string options:0 range:NSMakeRange(0, [string length])];
-    
-    for(NSTextCheckingResult *match in arrayOfAllMatches)
-    {
-        NSString* substringForMatch = [string substringWithRange:match.range];
-        NSRange range = [string rangeOfString:substringForMatch];
-        [ret removeAttribute:NSFontAttributeName range:range];
-        [ret removeAttribute:NSParagraphStyleAttributeName range:range];
-        [ret removeAttribute:NSLinkAttributeName range:range];
-        [ret addAttribute:NSLinkAttributeName value:substringForMatch range:range];
-        //unsigned long pos = range.location + range.length;
-    }
-    return ret;
-}
+//- (NSMutableAttributedString*)handleLink:(NSMutableAttributedString*)contentAttrString
+//{
+//    NSMutableAttributedString *ret = [[NSMutableAttributedString alloc]initWithAttributedString:contentAttrString];
+//    NSString *string = [contentAttrString string];
+//    NSError *error;
+//    NSString *regulaStr = @"((http[s]{0,1}|ftp)://[a-zA-Z0-9\\.\\-]+\\.([a-zA-Z]{2,4})(:\\d+)?(/[a-zA-Z0-9\\.\\-~!@#$%^&*+?:_/=<>]*)?)|(www.[a-zA-Z0-9\\.\\-]+\\.([a-zA-Z]{2,4})(:\\d+)?(/[a-zA-Z0-9\\.\\-~!@#$%^&*+?:_/=<>]*)?)";
+//    NSRegularExpression *regex =[NSRegularExpression regularExpressionWithPattern:regulaStr options:NSRegularExpressionCaseInsensitive error:&error];
+//    NSArray *arrayOfAllMatches = [regex matchesInString:string options:0 range:NSMakeRange(0, [string length])];
+//    for(NSTextCheckingResult *match in arrayOfAllMatches)
+//    {
+//        NSString* substringForMatch = [string substringWithRange:match.range];
+//        NSRange range = [string rangeOfString:substringForMatch];
+//        [ret removeAttribute:NSFontAttributeName range:range];
+//        [ret removeAttribute:NSParagraphStyleAttributeName range:range];
+//        [ret removeAttribute:NSLinkAttributeName range:range];
+//        [ret addAttribute:NSLinkAttributeName value:substringForMatch range:range];
+//    }
+//    return ret;
+//}
 
 
 
@@ -289,7 +288,7 @@
     
     
     
-    _descriptionLabel = [[UITextView alloc]init];
+    _descriptionLabel = [[YTextView alloc]init];
     [self.contentView addSubview:_descriptionLabel];
     _descriptionLabel.editable = NO;
     _descriptionLabel.selectable = YES;
@@ -475,8 +474,6 @@
         //make.height.mas_equalTo(SCALE_NUM(14));
         make.bottom.mas_equalTo(SCALE_NUM(-10));
     }];
-    
-    _descriptionLabel.selectedRange = NSMakeRange(0, 10);
 }
 
 

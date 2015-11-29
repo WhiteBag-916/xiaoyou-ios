@@ -16,4 +16,6 @@
 
 -(void)textChanged:(NSNotification*)notification;
 
+-(void)setCustomAttributedText:(NSAttributedString *)attributedText;
+
 @end
