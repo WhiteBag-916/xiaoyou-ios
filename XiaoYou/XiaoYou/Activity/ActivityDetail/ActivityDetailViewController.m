@@ -204,7 +204,7 @@
                 [_joinInBtn setTitle:@"我已参加" forState:UIControlStateNormal];
                  _isShowOutInMore = NO;
             }
-            //[_detailListView loadData];
+            [_detailListView reloadData];
         }
     }];
 }

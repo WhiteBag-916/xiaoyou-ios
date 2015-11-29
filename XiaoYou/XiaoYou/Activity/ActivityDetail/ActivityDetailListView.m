@@ -159,6 +159,7 @@
         if (author.tagsCommon.count == 0 && author.propetiesCommon.count == 0 && indexPath.row == 1) {
             return SCALE_NUM(140);
         }
+        
         if (author.tagsCommon.count == 0 && author.propetiesCommon.count == 0) {
             return SCALE_NUM(90);
         }
@@ -189,8 +190,7 @@
         
         if (self.activityDetailArray.count > 0) {
             Author *author = self.activityDetailArray[indexPath.row];
-            [cell setData:author];
-            cell.type = type;
+            [cell setData:author WithType:type];
             
             //判断自己是否已经加入
             if ([author.uid isEqualToString:[[YShareData defaultData] valueForKey:kShareData_UserID]]) {

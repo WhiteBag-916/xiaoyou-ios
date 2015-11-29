@@ -59,6 +59,7 @@
     } else
     {
         _genderImageView.image = nil;
+        _isSelfNameLabel.text = @"自己";
         _isSelfNameLabel.font = CONTENT_FONT(10);
         _isSelfNameLabel.textColor = KCOLOR_B5;
         [_isSelfNameLabel mas_updateConstraints:^(MASConstraintMaker *make) {

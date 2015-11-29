@@ -50,6 +50,8 @@
 @property (nonatomic,strong) UIButton       *jumpLinkButton;            //查看活动链接
 @property (nonatomic,strong) ActivityDetailModel    *detailModel;
 
+@property (nonatomic,copy) NSString *contentStr;
+
 @end
 @implementation ActivityDetailCell
 
@@ -126,8 +128,8 @@
                                          NSFontAttributeName:CONTENT_FONT(12),
                                          NSParagraphStyleAttributeName:paragraphStyle
                                          };
-            _descriptionLabel.attributedText = [[NSAttributedString alloc] initWithString:imageText.content attributes:attributes];
-            
+            _descriptionLabel.attributedText = [[NSAttributedString alloc] initWithString:[self handleLink:imageText.content] attributes:attributes];
+            _contentStr = imageText.content;
         }
     }
     if (notHaveImage) {
@@ -165,6 +167,8 @@
         }];
     }
 }
+
+
 
 
 -(void)initTopViewWithType:(TOPVIEWTYPE)type {
@@ -253,6 +257,7 @@
     _descriptionLabel = [[UITextView alloc]init];
     [self.contentView addSubview:_descriptionLabel];
     _descriptionLabel.editable = NO;
+    _descriptionLabel.selectable = YES;
     _descriptionLabel.scrollEnabled = false;
     _descriptionLabel.font = CONTENT_FONT(13);
     _descriptionLabel.dataDetectorTypes = UIDataDetectorTypeLink;
@@ -435,6 +440,8 @@
         //make.height.mas_equalTo(SCALE_NUM(14));
         make.bottom.mas_equalTo(SCALE_NUM(-10));
     }];
+    
+    _descriptionLabel.selectedRange = NSMakeRange(0, 10);
 }
 
 
@@ -471,8 +478,45 @@
 }
 
 - (BOOL)textView:(UITextView *)textView shouldInteractWithURL:(NSURL *)URL inRange:(NSRange)characterRange {
+    
     [[NSNotificationCenter defaultCenter] postNotificationName:KNotification_OpenBrowser object:nil userInfo:@{@"url":[URL absoluteString], @"title":@""}];
     return false;
 }
+
+//- (void) setSelectedRange:(NSRange) range WithTextFiled:(UITextView*)textFiled
+//{
+//    UITextPosition* beginning = textFiled.beginningOfDocument;
+//    
+//    UITextPosition* startPosition = [textFiled positionFromPosition:beginning offset:range.location];
+//    UITextPosition* endPosition = [textFiled positionFromPosition:beginning offset:range.location + range.length];
+//    UITextRange* selectionRange = [textFiled textRangeFromPosition:startPosition toPosition:endPosition];
+//    
+//    [textFiled setSelectedTextRange:selectionRange];
+//}
+
+
+- (NSString*)handleLink:(NSString*)string
+{
+    NSMutableString *ret = [[NSMutableString alloc]initWithString:string];
+    NSError *error;
+    NSString *regulaStr = @"\\bhttps?://[a-zA-Z0-9\\-.]+(?::(\\d+))?(?:(?:/[a-zA-Z0-9\\-._?,'+\\&%$=~*!():@\\\\]*)+)?";
+    NSRegularExpression *regex =[NSRegularExpression regularExpressionWithPattern:regulaStr options:NSRegularExpressionCaseInsensitive error:&error];
+    
+    NSArray *arrayOfAllMatches = [regex matchesInString:string options:0 range:NSMakeRange(0, [string length])];
+    
+    for(NSTextCheckingResult *match in arrayOfAllMatches)
+    {
+        NSString* substringForMatch = [string substringWithRange:match.range];
+        //NSLog(@"substringForMatch");
+        NSRange range = [string rangeOfString:substringForMatch];
+        unsigned long pos = range.location + range.length;
+        [ret insertString:@"   " atIndex:pos];
+        //[ret insertString:@"   " atIndex:range.location];
+    }
+    //return string;
+    return ret;
+}
+
+
 
 @end

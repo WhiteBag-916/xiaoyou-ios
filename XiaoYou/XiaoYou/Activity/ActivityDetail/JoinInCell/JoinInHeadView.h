@@ -12,4 +12,6 @@
 
 -(void)clearContent;
 
+-(void)setContent;
+
 @end

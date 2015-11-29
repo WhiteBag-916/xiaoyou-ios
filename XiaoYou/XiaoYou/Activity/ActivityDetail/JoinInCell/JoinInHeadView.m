@@ -56,4 +56,10 @@
     _desLabel.text = @"";
 }
 
+-(void)setContent
+{
+    _pointImageView.image = [UIImage imageNamed:@"funny_detail_circle"];
+    _desLabel.text = @"报名过此次活动的朋友们:";
+}
+
 @end

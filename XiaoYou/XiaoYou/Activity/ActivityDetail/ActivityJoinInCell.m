@@ -53,20 +53,7 @@
 }
 
 
--(void)setType:(CELLTYPE)type
-{
-    if (type == IS_TOPVIEW) {
-        [_joinInHeadView mas_updateConstraints:^(MASConstraintMaker *make) {
-            make.height.mas_equalTo(SCALE_NUM(49)).priorityHigh();
-        }];
-    }
-    else if (type == NOT_TOPVIEW) {
-        [_joinInHeadView mas_updateConstraints:^(MASConstraintMaker *make) {
-            make.height.mas_equalTo(0);
-        }];
-        [_joinInHeadView clearContent];
-    }
-}
+
 
 
 //初始化控件
@@ -78,8 +65,8 @@
         make.top.mas_equalTo(0);
         make.leading.mas_equalTo(0);
         make.trailing.mas_equalTo(0);
-        make.width.mas_equalTo(0).priorityLow();
-        make.height.mas_equalTo(0).priorityLow();
+        make.height.mas_equalTo(0).priorityHigh();
+        make.height.mas_equalTo(SCALE_NUM(49)).priorityLow();
     }];
     
     _joinTopView = [[JoinInTopView alloc]init];
@@ -123,16 +110,16 @@
     }];
 }
 
--(void)setData:(Author *)joinModel
+-(void)setData:(Author *)joinModel WithType:(CELLTYPE)type
 {
     _author = joinModel;
+    [self setType:type];
     
     BOOL noData = (joinModel.uid == nil && joinModel.studentNo == nil);
     BOOL noTags = (joinModel.propetiesCommon.count == 0 && joinModel.tagsCommon.count == 0);
     //没有人参加
     _noSomeOneJoinImageView.hidden = !noData;
     _joinTopView.hidden = noData;
-    _tagsWrapView.hidden = noData;
     _tagsWrapView.hidden = noTags;
     //处理没有数据的情况
     if (noData) {
@@ -146,6 +133,25 @@
     //如果有tag，更新标签
     if (!noTags) {
         [_tagsView setData:joinModel];
+    }
+}
+
+
+-(void)setType:(CELLTYPE)type
+{
+    if (type == IS_TOPVIEW) {
+        [_joinInHeadView setContent];
+        [_joinInHeadView mas_updateConstraints:^(MASConstraintMaker *make) {
+            make.height.mas_equalTo(SCALE_NUM(49)).priorityHigh();
+            make.height.mas_equalTo(SCALE_NUM(0)).priorityLow();
+        }];
+    }
+    else if (type == NOT_TOPVIEW) {
+        [_joinInHeadView mas_updateConstraints:^(MASConstraintMaker *make) {
+            make.height.mas_equalTo(0).priorityHigh();
+            make.height.mas_equalTo(SCALE_NUM(49)).priorityLow();
+        }];
+        [_joinInHeadView clearContent];
     }
 }
 
