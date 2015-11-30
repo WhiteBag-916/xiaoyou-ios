@@ -39,6 +39,7 @@
     NSInteger imageCount = _model.supplierShopImages.count;
     _scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_WIDTH*3/4)];
     NSLog(@"%@",NSStringFromCGSize(_scrollView.frame.size));
+    _scrollView.backgroundColor = [UIColor clearColor];
     _scrollView.userInteractionEnabled = YES;
     _scrollView.pagingEnabled = YES;
     _scrollView.delegate = self;
@@ -48,14 +49,25 @@
     _scrollView.contentSize = CGSizeMake(SCREEN_WIDTH*imageCount, SCALE_NUM(150));
     [self addSubview:_scrollView];
     
-    for (int i = 0; i < imageCount; i++)
+    if (imageCount > 0)
     {
-        UIImageView * imageView = [[UIImageView alloc] initWithFrame:CGRectMake(SCREEN_WIDTH*i, 0, SCREEN_WIDTH, SCREEN_WIDTH*3/4)];
-        SupplierShopImages * imageModel = _model.supplierShopImages[i];
-        [imageView setFaceImageWithUrl:imageModel.imageUrl];
+        for (int i = 0; i < imageCount; i++)
+        {
+            UIImageView * imageView = [[UIImageView alloc] initWithFrame:CGRectMake(SCREEN_WIDTH*i, 0, SCREEN_WIDTH, SCREEN_WIDTH*3/4)];
+            SupplierShopImages * imageModel = _model.supplierShopImages[i];
+            [imageView setFaceImageWithUrl:imageModel.imageUrl];
+            imageView.userInteractionEnabled = YES;
+            [_scrollView addSubview:imageView];
+        }
+    }
+    else
+    {
+        UIImageView * imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_WIDTH*3/4)];
+        imageView.image = [UIImage imageNamed:@"common_picture_loading_b"];
         imageView.userInteractionEnabled = YES;
         [_scrollView addSubview:imageView];
     }
+    
     
     _pageControl = [[UIPageControl alloc] init];
     _pageControl.userInteractionEnabled = YES;
