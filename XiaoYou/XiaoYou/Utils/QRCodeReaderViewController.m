@@ -250,7 +250,7 @@
         make.centerX.equalTo(self.view);
         make.bottom.equalTo(info.mas_top).offset(SCALE_NUM(-8));
         make.height.mas_equalTo(SCALE_NUM(20));
-//        make.width.mas_equalTo(SCALE_NUM(120));
+        make.width.mas_equalTo(SCREEN_WIDTH);
     }];
     
     UITapGestureRecognizer * tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(clickMoreMerchants)];
@@ -264,7 +264,7 @@
         make.centerY.equalTo(moreMerchantsLabel);
         make.height.mas_equalTo(12);
         make.width.mas_equalTo(8);
-        make.left.equalTo(moreMerchantsLabel.mas_right).offset(5 );
+        make.left.equalTo(moreMerchantsLabel.mas_right).offset(SCALE_NUM(-105));
     }];
     flagImageView.image = [UIImage imageNamed:@"mine-particulars"];
 }
@@ -274,8 +274,7 @@
 {
     MerchantListViewController * merchantListViewController = [[MerchantListViewController alloc] init];
     [self.navigationController pushViewController:merchantListViewController animated:YES];
-//    ScanfResultViewController * resultViewController = [[ScanfResultViewController alloc] init];
-//    [self.navigationController pushViewController:resultViewController animated:YES needHiddenBottomBar:YES];
+
 }
 
 
