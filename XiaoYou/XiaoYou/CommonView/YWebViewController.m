@@ -56,19 +56,6 @@
 
 - (void)initWebView {
     
-//    UIScrollView *scroll = [[UIScrollView alloc] init];
-//    [self.view addSubview:scroll];
-//    [scroll mas_makeConstraints:^(MASConstraintMaker *make) {
-//        make.edges.equalTo(self.view);
-//    }];
-//    
-//    
-//    _contentView = [[UIView alloc] init];
-//    [scroll addSubview:_contentView];
-//    [_contentView mas_makeConstraints:^(MASConstraintMaker *make) {
-//        make.edges.equalTo(scroll);
-//        make.width.equalTo(scroll);
-//    }];
     _webView = [[UIWebView alloc] init];
     [self.view addSubview:_webView];
     [_webView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -80,6 +67,7 @@
     _progressProxy.webViewProxyDelegate = self;
     _progressProxy.progressDelegate = self;
     _webView.userInteractionEnabled = true;
+    _webView.scalesPageToFit = true;
 }
 
 - (void)initProgress {
