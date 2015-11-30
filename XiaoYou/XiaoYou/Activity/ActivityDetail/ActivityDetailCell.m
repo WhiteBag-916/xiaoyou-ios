@@ -222,7 +222,6 @@
     _titleLabel.font = CONTENT_FONT(15);
     _titleLabel.textColor = KCOLOR_B4;
     [_titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        //make.height.mas_equalTo(SCALE_NUM(15));
         make.left.equalTo(_headImageView.mas_right).offset(SCALE_NUM(12));
         make.centerY.equalTo(_headImageView.mas_centerY);
     }];
@@ -278,7 +277,7 @@
     [self.contentView addSubview:_descriptionLabel];
     _descriptionLabel.editable = NO;
     _descriptionLabel.selectable = YES;
-    _descriptionLabel.scrollEnabled = false;
+    _descriptionLabel.scrollEnabled = NO;
     _descriptionLabel.font = CONTENT_FONT(13);
     _descriptionLabel.textContainer.lineFragmentPadding = 0;
     _descriptionLabel.textContainerInset = UIEdgeInsetsZero;
@@ -298,6 +297,7 @@
         make.left.equalTo(_nameLabel);
         make.trailing.mas_equalTo(SCALE_NUM(-12));
         make.top.equalTo(_nameLabel.mas_bottom).offset(SCALE_NUM(14));
+        
     }];
 }
 
