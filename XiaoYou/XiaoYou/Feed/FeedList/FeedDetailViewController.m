@@ -48,6 +48,7 @@
     self.title = @"详情";
     [self showCustomNavigationMoreButton];
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(keyBoardHidden)];
+    tap.delegate = self;
     [self.feedDetailTable addGestureRecognizer:tap];
     
 }
