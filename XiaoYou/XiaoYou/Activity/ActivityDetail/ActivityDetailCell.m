@@ -243,7 +243,6 @@
     _staticNameLabel.font = CONTENT_FONT(13);
     _staticNameLabel.text = @"名称:";
     [_staticNameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        //make.height.mas_equalTo(SCALE_NUM(16));
         make.top.equalTo(_sepLineView.mas_bottom).offset(SCALE_NUM(15));
         make.leading.mas_equalTo(SCALE_NUM(22));
     }];
