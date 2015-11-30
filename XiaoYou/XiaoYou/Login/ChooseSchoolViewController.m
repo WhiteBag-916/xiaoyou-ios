@@ -328,7 +328,7 @@ UITableViewDelegate>
     [self updateLogo:school.schoolLogoPath];
     //    _tableView.hidden = YES;
     self.navigationItem.rightBarButtonItem.enabled = YES;
-    
+    [MobClick event:@"event1"];
     //刷新列表
     [self searchSchoolByKey:YES];
 }

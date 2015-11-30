@@ -27,7 +27,6 @@
     if (self = [super init]) {
         _url = url;
         if (![[_url substringWithRange:NSMakeRange(1, 1)] isEqualToString:@"t"]) {
-            
             _url = [@"http://" stringByAppendingString:_url];
         }
         self.title = title;
@@ -74,16 +73,14 @@
     [_contentView addSubview:_webView];
     [_webView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.equalTo(_contentView);
-        if (_canClick) {
-            make.height.equalTo(self.view);
-        }
+        make.height.equalTo(self.view);
     }];
     _progressProxy = [[NJKWebViewProgress alloc] init];
     _webView.delegate = _progressProxy;
     _webView.backgroundColor = [UIColor whiteColor];
     _progressProxy.webViewProxyDelegate = self;
     _progressProxy.progressDelegate = self;
-    _webView.userInteractionEnabled = _canClick;
+    _webView.userInteractionEnabled = true;
     _webView.scalesPageToFit = YES;
 }
 
@@ -114,12 +111,12 @@
 -(void)webViewProgress:(NJKWebViewProgress *)webViewProgress updateProgress:(float)progress
 {
     [_progressView setProgress:progress animated:YES];
-    if (!_canClick && progress == 1.0) {
-        CGFloat height = [[_webView stringByEvaluatingJavaScriptFromString:@"document.body.clientHeight"] floatValue];
-        [_webView mas_updateConstraints:^(MASConstraintMaker *make) {
-            make.height.mas_equalTo(height);
-        }];
-    }
+//    if (!_canClick && progress == 1.0) {
+//        CGFloat height = [[_webView stringByEvaluatingJavaScriptFromString:@"document.body.clientHeight"] floatValue];
+//        [_webView mas_updateConstraints:^(MASConstraintMaker *make) {
+//            make.height.mas_equalTo(height);
+//        }];
+//    }
 }
 - (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error {
     [_progressView setProgress:1 animated:true];
