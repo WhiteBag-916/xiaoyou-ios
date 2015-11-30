@@ -26,6 +26,10 @@
 - (id)initWithUrl:(NSString *)url andTitle:(NSString *)title canClick:(BOOL)canClick {
     if (self = [super init]) {
         _url = url;
+        if (![[_url substringWithRange:NSMakeRange(1, 1)] isEqualToString:@"t"]) {
+            
+            _url = [@"http://" stringByAppendingString:_url];
+        }
         self.title = title;
         _canClick = canClick;
         self.hidesBottomBarWhenPushed = true;
