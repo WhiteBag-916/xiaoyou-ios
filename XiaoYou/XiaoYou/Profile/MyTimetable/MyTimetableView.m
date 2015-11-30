@@ -211,7 +211,11 @@
 
 #pragma mark - UIScrollViewDelegate
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-    _allDayCollectionView.contentOffset = scrollView.contentOffset;
+    if (scrollView == _allDayCollectionView) {
+        _eventCollectionView.contentOffset = scrollView.contentOffset;
+    } else if (scrollView == _eventCollectionView) {
+        _allDayCollectionView.contentOffset = scrollView.contentOffset;
+    }
 }
 
 /*

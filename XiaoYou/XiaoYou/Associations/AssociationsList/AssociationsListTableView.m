@@ -99,37 +99,34 @@
         cnt = 0;
     }
     [[FeedManager sharedInstance] groupList:cnt limitEnd:cnt + KPAGENUM name:_searchStr queryCode:_filterStr block:^(YActionMessage *message) {
-        if (nil != _searchStr) {
-            if ([_searchStr isEqualToString:[message.object searchKey]]) {
+        if (message.isSuccess) {
+            if (nil != _searchStr) {
                 [self searchMessage:message];
+            } else {
+                [self dealMessage:message];
             }
         } else {
-            [self dealMessage:message];
+            [YUtils showTitleOn:self title:message.desc];
         }
+        
+        [self stopLoad];
     }];
 }
 
 - (void)dealMessage:(YActionMessage *)message {
-    if (message.isSuccess) {
-        [self hiddenFooter:NO];
-        if ([self isHeaderRefresh]) {
-            [_associationsListArray removeAllObjects];
-        }
-        [_associationsListArray addObjectsFromArray:[message.object groupList]];
-        if ([[message.object groupList] count] < KPAGENUM) {
-            [self showNoticeNoMoreData];
-        }
-        [self reloadData];
-        
-    } else {
-        [YUtils showTitleOn:self title:message.desc];
+    [self hiddenFooter:NO];
+    if ([self isHeaderRefresh]) {
+        [_associationsListArray removeAllObjects];
     }
-    
-    [self stopLoad];
+    [_associationsListArray addObjectsFromArray:[message.object groupList]];
+    if ([[message.object groupList] count] < KPAGENUM) {
+        [self showNoticeNoMoreData];
+    }
+    [self reloadData];
 }
 
 - (void)searchMessage:(YActionMessage *)message {
-    if (message.isSuccess && [_searchStr isEqualToString:[message.object searchKey]]) {
+    if ([_searchStr isEqualToString:[message.object searchKey]]) {
         
         if ([self isFooterRefresh]) {
             [_associationsListArray addObjectsFromArray:[message.object groupList]];
@@ -156,11 +153,7 @@
             }
         }
         
-    } else {
-        [YUtils showTitle:message.desc];
     }
-    
-    [self stopLoad];
 }
 
 #pragma mark - UITableViewDataSource
