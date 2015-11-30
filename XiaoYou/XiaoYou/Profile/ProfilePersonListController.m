@@ -64,6 +64,7 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     self.navigationController.navigationBarHidden = false;
+    self.fd_interactivePopDisabled = YES;
 }
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];

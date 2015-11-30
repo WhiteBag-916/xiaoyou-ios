@@ -98,6 +98,7 @@
 {
     [super viewWillAppear:animated];
     self.navigationController.navigationBarHidden = false;
+    self.fd_interactivePopDisabled = YES;
     [self startScanning];
 }
 
