@@ -56,24 +56,23 @@
 
 - (void)initWebView {
     
-    UIScrollView *scroll = [[UIScrollView alloc] init];
-    [self.view addSubview:scroll];
-    [scroll mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.edges.equalTo(self.view);
-    }];
-    
-    
-    _contentView = [[UIView alloc] init];
-    [scroll addSubview:_contentView];
-    [_contentView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.edges.equalTo(scroll);
-        make.width.equalTo(scroll);
-    }];
+//    UIScrollView *scroll = [[UIScrollView alloc] init];
+//    [self.view addSubview:scroll];
+//    [scroll mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.edges.equalTo(self.view);
+//    }];
+//    
+//    
+//    _contentView = [[UIView alloc] init];
+//    [scroll addSubview:_contentView];
+//    [_contentView mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.edges.equalTo(scroll);
+//        make.width.equalTo(scroll);
+//    }];
     _webView = [[UIWebView alloc] init];
-    [_contentView addSubview:_webView];
+    [self.view addSubview:_webView];
     [_webView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.edges.equalTo(_contentView);
-        make.height.equalTo(self.view);
+        make.edges.equalTo(self.view);
     }];
     _progressProxy = [[NJKWebViewProgress alloc] init];
     _webView.delegate = _progressProxy;
@@ -81,7 +80,6 @@
     _progressProxy.webViewProxyDelegate = self;
     _progressProxy.progressDelegate = self;
     _webView.userInteractionEnabled = true;
-    _webView.scalesPageToFit = YES;
 }
 
 - (void)initProgress {
