@@ -69,7 +69,7 @@
 - (void)setData:(id)inData {
     _contentLabel.text = nil;
     NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
-    paragraphStyle.lineSpacing = SCALE_NUM(10);// 字体的行间距
+    paragraphStyle.lineSpacing = SCALE_NUM(5);// 字体的行间距
     NSDictionary *attributes = @{
                                  NSForegroundColorAttributeName:KCOLOR_B4,
                                  NSFontAttributeName:CONTENT_FONT(12),

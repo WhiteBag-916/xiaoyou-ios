@@ -154,16 +154,4 @@ CGFloat const UI_PLACEHOLDER_TEXT_CHANGED_ANIMATION_DURATION = 0.25;
     return ret;
 }
 
-//-(void)setPlaceholder:(NSString *)placeholder lineSpacing:(CGFloat)lineSpacing
-//{
-//    NSMutableAttributedString *attStr = [[NSMutableAttributedString alloc]initWithString:placeholder];
-//    NSMutableParagraphStyle *style = [[NSMutableParagraphStyle alloc]init];
-//    [style setLineSpacing:lineSpacing];
-//    [style setLineBreakMode:NSLineBreakByTruncatingTail];
-//    //根据给定长度与style设置attStr式样
-//    [attStr addAttribute:NSParagraphStyleAttributeName value:style range:NSMakeRange(0, placeholder.length)];
-//    //Label获取attStr式样
-//    self.attributedText = attStr;
-//}
-
 @end

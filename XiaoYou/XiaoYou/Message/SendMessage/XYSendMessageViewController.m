@@ -117,6 +117,7 @@
 
 -(void)keyBoardHidden
 {
+    NSLog(@"this is data......");
     [self.chatToolBar endEditing:YES];
 }
 

@@ -16,7 +16,7 @@
 
 #define KBOTTOMHEIGHT [DXMessageToolBar defaultHeight]
 @interface FeedDetailViewController()
-<DXMessageToolBarDelegate, UIGestureRecognizerDelegate, UITextViewDelegate>
+<DXMessageToolBarDelegate, UITextViewDelegate>
 
 @property (nonatomic, strong) NSString *feedId;
 @property (nonatomic, strong) FeedDetailTableView *feedDetailTable;
@@ -48,8 +48,7 @@
     self.title = @"详情";
     [self showCustomNavigationMoreButton];
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(keyBoardHidden)];
-    tap.delegate = self;
-    [self.view addGestureRecognizer:tap];
+    [self.feedDetailTable addGestureRecognizer:tap];
     
 }
 
@@ -153,4 +152,5 @@
 - (void)didChangeFrameToHeight:(CGFloat)toHeight {
     
 }
+
 @end
