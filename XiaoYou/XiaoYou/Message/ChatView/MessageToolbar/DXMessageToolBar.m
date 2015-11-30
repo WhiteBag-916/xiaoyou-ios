@@ -693,6 +693,14 @@
     }
 }
 
+/**
+ *  是否正在输入状态
+ */
+- (BOOL)isEditing
+{
+    return [_inputTextView isFirstResponder] || _isShowButtomView;
+}
+
 + (CGFloat)defaultHeight
 {
     return kVerticalPadding * 2 + kInputTextViewMinHeight;

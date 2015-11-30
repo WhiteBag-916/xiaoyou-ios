@@ -114,6 +114,11 @@
  */
 - (void)cancelTouchRecord;
 
+/**
+ *  是否正在输入状态
+ */
+- (BOOL)isEditing;
+
 @end
 
 @protocol DXMessageToolBarDelegate <NSObject>
