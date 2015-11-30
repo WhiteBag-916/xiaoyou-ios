@@ -104,7 +104,13 @@
     _needRefresh = true;
     UINavigationController *navigationController =
     [[UINavigationController alloc] initWithRootViewController:[[FeedPublishViewController alloc] init]];
-    [self.view.window.rootViewController presentViewController:navigationController animated:YES completion:nil];
+    [self.view.window.rootViewController presentViewController:navigationController animated:YES completion:^{
+    }];
+}
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
 }
 
 @end

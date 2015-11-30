@@ -390,7 +390,9 @@
         }];
         
         [YUtils hiddenProgressHUD];
-        [blockSelf dismissViewControllerAnimated:YES completion:nil];
+        [blockSelf dismissViewControllerAnimated:YES completion:^{
+            
+        }];
         [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault animated:YES];
     };
 }

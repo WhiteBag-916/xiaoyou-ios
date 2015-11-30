@@ -36,6 +36,7 @@
         _contentLabel = [[YTextView alloc] init];
         _contentLabel.textColor = [UIColor blackColor];
         _contentLabel.editable = false;
+        //_contentLabel.dataDetectorTypes = UIDataDetectorTypeLink;
         _contentLabel.scrollEnabled = false;
         _contentLabel.tintColor = RGBACOLOR(106, 140, 179, 1);
         _contentLabel.font = CONTENT_FONT(12);
