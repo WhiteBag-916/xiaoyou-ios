@@ -19,6 +19,7 @@
 #import "ProfileMyViewController.h"
 #import "ProfileViewController.h"
 #import "YTextView.h"
+#import "ActivityDetailListView.h"
 
 #define HEADIMAGEVIEW_WIDTH         SCALE_NUM(45)
 #define LEADINGOFF_HEADIMAGEVIEW    SCALE_NUM(12)
@@ -498,6 +499,12 @@
     
     [[NSNotificationCenter defaultCenter] postNotificationName:KNotification_OpenBrowser object:nil userInfo:@{@"url":[URL absoluteString], @"title":@""}];
     return false;
+}
+
+//改变选中状态
+- (void)textViewDidChangeSelection:(UITextView *)textView
+{
+    
 }
 
 @end

@@ -154,4 +154,35 @@ CGFloat const UI_PLACEHOLDER_TEXT_CHANGED_ANIMATION_DURATION = 0.25;
     return ret;
 }
 
+
+/* 选中文字后是否能够呼出菜单 */
+- (BOOL)canBecameFirstResponder {
+    return YES;
+}
+
+/* 选中文字后的菜单响应的选项 */
+- (BOOL)canPerformAction:(SEL)action withSender:(id)sender {
+    if (action == @selector(copy:)) { // 菜单不能响应copy项
+        return YES;
+    }
+    else if (action == @selector(selectAll:)) { // 菜单不能响应select all项
+        return YES;
+    }
+    else if (action == @selector(paste:)) {
+        return NO;
+    }
+    else if (action == @selector(cut:)) {
+        return NO;
+    }
+    else if (action == @selector(select:)) {
+        return NO;
+    }
+    else if (action == @selector(delete:)) {
+        return NO;
+    }
+    
+    // 事实上一个return NO就可以将系统的所有菜单项全部关闭了
+    return NO;
+}
+
 @end
