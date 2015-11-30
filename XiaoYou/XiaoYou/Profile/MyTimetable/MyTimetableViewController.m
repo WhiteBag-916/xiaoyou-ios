@@ -150,6 +150,7 @@
     [super viewWillAppear:animated];
     
     self.navigationController.navigationBarHidden = true;
+    self.fd_interactivePopDisabled = YES;
 }
 
 - (void)popVC {
