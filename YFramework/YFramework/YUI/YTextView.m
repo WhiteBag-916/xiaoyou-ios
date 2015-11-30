@@ -139,16 +139,16 @@ CGFloat const UI_PLACEHOLDER_TEXT_CHANGED_ANIMATION_DURATION = 0.25;
     NSMutableAttributedString *ret = [[NSMutableAttributedString alloc]initWithAttributedString:contentAttrString];
     NSString *string = [contentAttrString string];
     NSError *error;
-    NSString *regulaStr = @"((http[s]{0,1}|ftp)://[a-zA-Z0-9\\.\\-]+\\.([a-zA-Z]{2,4})(:\\d+)?(/[a-zA-Z0-9\\.\\-~!@#$%^&*+?:_/=<>]*)?)|(www.[a-zA-Z0-9\\.\\-]+\\.([a-zA-Z]{2,4})(:\\d+)?(/[a-zA-Z0-9\\.\\-~!@#$%^&*+?:_/=<>]*)?)";
+    NSString *regulaStr = @"((http[s]{0,1}|ftp)://[a-zA-Z0-9\\.\\-]+\\.([a-zA-Z]{2,4})(:\\d+)?(/[a-zA-Z0-9\\.\\-~!@#$%^&*+?:_/=<>]*)?)";
     NSRegularExpression *regex =[NSRegularExpression regularExpressionWithPattern:regulaStr options:NSRegularExpressionCaseInsensitive error:&error];
     NSArray *arrayOfAllMatches = [regex matchesInString:string options:0 range:NSMakeRange(0, [string length])];
     for(NSTextCheckingResult *match in arrayOfAllMatches)
     {
         NSString* substringForMatch = [string substringWithRange:match.range];
         NSRange range = [string rangeOfString:substringForMatch];
-        [ret removeAttribute:NSFontAttributeName range:range];
-        [ret removeAttribute:NSParagraphStyleAttributeName range:range];
-        [ret removeAttribute:NSLinkAttributeName range:range];
+//        	[ret removeAttribute:NSFontAttributeName range:range];
+//        [ret removeAttribute:NSParagraphStyleAttributeName range:range];
+//        [ret removeAttribute:NSLinkAttributeName range:range];
         [ret addAttribute:NSLinkAttributeName value:substringForMatch range:range];
     }
     return ret;

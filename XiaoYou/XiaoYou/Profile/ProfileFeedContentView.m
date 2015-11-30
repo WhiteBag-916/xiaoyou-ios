@@ -11,6 +11,8 @@
 #import "FeedImageGroup.h"
 #import "FeedInfo.h"
 #import "Feed.h"
+#import "YTextView.h"
+#import "ConvertToCommonEmoticonsHelper.h"
 
 #define KTAGTEXTMARGIN SCALE_NUM(10)
 #define KCONTENTMARGIN_TOP SCALE_NUM(20)
@@ -19,7 +21,7 @@
 
 @property (nonatomic, strong, readwrite) FeedTag *tagView;
 @property (nonatomic, strong, readwrite) FeedImageGroup *imgGroup;
-@property (nonatomic, strong, readwrite) UITextView *contentLabel;
+@property (nonatomic, strong, readwrite) YTextView *contentLabel;
 @property (nonatomic, assign) int type;
 @end
 
@@ -34,7 +36,7 @@
             make.left.right.top.equalTo(self);
         }];
         
-        _contentLabel = [[UITextView alloc] init];
+        _contentLabel = [[YTextView alloc] init];
         _contentLabel.textColor = [UIColor blackColor];
         _contentLabel.editable = false;
 //        _contentLabel.dataDetectorTypes = UIDataDetectorTypeLink;
@@ -75,7 +77,7 @@
             make.left.right.top.equalTo(self);
         }];
         
-        _contentLabel = [[UITextView alloc] init];
+        _contentLabel = [[YTextView alloc] init];
         _contentLabel.textColor = [UIColor blackColor];
         _contentLabel.editable = false;
 //        _contentLabel.dataDetectorTypes = UIDataDetectorTypeLink;
@@ -145,13 +147,22 @@
 }
 
 - (void)setData:(FeedInfo *)info {
+    NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
+    paragraphStyle.lineSpacing = SCALE_NUM(10);// 字体的行间距
+    NSDictionary *attributes = @{
+                                 NSForegroundColorAttributeName:KCOLOR_B4,
+                                 NSFontAttributeName:CONTENT_FONT(12),
+                                 NSParagraphStyleAttributeName:paragraphStyle,
+                                 };
     _contentLabel.text = nil;
     if (info == nil) {
         [_tagView setData:nil];
         [_imgGroup updateWithImgs:nil bigPics:nil];
     } else {
         [_tagView setData:info.tags];
-        _contentLabel.text = [@"\u200B" stringByAppendingString:info.feed.content];
+        NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithString:[ConvertToCommonEmoticonsHelper convertToSystemEmoticons:info.feed.content]];
+        [attributedString addAttributes:attributes range:NSMakeRange(0, attributedString.length)];
+        [_contentLabel setCustomAttributedText:attributedString];
         if (info.feed.img.length == 0) {
             [_imgGroup updateWithImgs:nil bigPics:nil];
         } else {

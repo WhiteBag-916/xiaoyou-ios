@@ -10,6 +10,7 @@
 @class FeedInfo;
 @class FeedTag;
 @class FeedImageGroup;
+@class YTextView;
 
 typedef NS_ENUM(int, ProfileFeedType) {
     /**
@@ -36,7 +37,7 @@ typedef NS_ENUM(int, ProfileFeedType) {
 
 @property (nonatomic, strong, readonly) FeedTag *tagView;//feed的标签
 @property (nonatomic, strong, readonly) FeedImageGroup *imgGroup;//feed的图片
-@property (nonatomic, strong, readonly) UITextView *contentLabel;//feed的内容
+@property (nonatomic, strong, readonly) YTextView *contentLabel;//feed的内容
 
 
 - (id)initWithType:(int)type;

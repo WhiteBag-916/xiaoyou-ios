@@ -275,15 +275,12 @@
         make.left.equalTo(_staticNameLabel);
     }];
     
-    
-    
     _descriptionLabel = [[YTextView alloc]init];
     [self.contentView addSubview:_descriptionLabel];
     _descriptionLabel.editable = NO;
     _descriptionLabel.selectable = YES;
     _descriptionLabel.scrollEnabled = false;
     _descriptionLabel.font = CONTENT_FONT(13);
-    _descriptionLabel.dataDetectorTypes = UIDataDetectorTypeLink;
     _descriptionLabel.textContainer.lineFragmentPadding = 0;
     _descriptionLabel.textContainerInset = UIEdgeInsetsZero;
     _descriptionLabel.delegate = self;

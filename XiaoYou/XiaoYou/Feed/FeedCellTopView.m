@@ -78,14 +78,14 @@
             [self addSubview:_timeLabel];
             [_timeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
                 make.left.equalTo(_contactNameLabel.mas_right).offset(KTIMEMARGIN_LEFT);
-                make.top.equalTo(_contactNameLabel);
+                make.bottom.equalTo(_contactNameLabel);
             }];
             
             _tagList = [[ConnectTag alloc] init];
             [self addSubview:_tagList];
             [_tagList mas_makeConstraints:^(MASConstraintMaker *make) {
                 make.right.equalTo(self);
-                make.top.equalTo(_contactNameLabel);
+                make.bottom.equalTo(_contactNameLabel);
             }];
             
             [self mas_makeConstraints:^(MASConstraintMaker *make) {
