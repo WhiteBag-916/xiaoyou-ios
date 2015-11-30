@@ -92,7 +92,7 @@
         make.top.equalTo(_pwdField.mas_bottom).offset(2);
     }];
     
-    UILabel *info = [YUtils initLabel:CONTENT_FONT(10) color:[UIColor blackColor] text:@"请设置6位以上包含大小写英文／数字的密码" frame:CGRectZero alignment:NSTextAlignmentLeft];
+    UILabel *info = [YUtils initLabel:CONTENT_FONT(10) color:[UIColor blackColor] text:@"请设置不少于6位的密码" frame:CGRectZero alignment:NSTextAlignmentLeft];
     [self.view addSubview:info];
     [info mas_makeConstraints:^(MASConstraintMaker *make) {
         make.right.equalTo(_forget);
