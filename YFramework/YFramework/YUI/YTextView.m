@@ -180,10 +180,12 @@ CGFloat const UI_PLACEHOLDER_TEXT_CHANGED_ANIMATION_DURATION = 0.25;
         return YES;
     }
     else if (action == @selector(selectAll:)) { // 菜单不能响应select all项
+        if (0 == self.text.length)
+            return NO;
         return YES;
     }
     else if (action == @selector(paste:)) {
-        if (_type == DISANBLE_PASTE)
+        if (self.editable == NO)
             return NO;
         return YES;
     }
