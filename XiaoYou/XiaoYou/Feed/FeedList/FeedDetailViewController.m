@@ -143,7 +143,7 @@
     [_chatToolBar.inputTextView becomeFirstResponder];
 }
 - (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer {
-    if ([self.chatToolBar.inputTextView isFirstResponder]) {
+    if ([self.chatToolBar isEditing]) {
         return true;
     }
     return false;
