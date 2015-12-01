@@ -80,8 +80,6 @@ NSString *const kCheckCollectionViewCell = @"CheckCollectionViewCellId";
         make.top.mas_equalTo(SCALE_NUM(120));
         make.centerX.equalTo(self.contentView);
         make.height.mas_equalTo(SCALE_NUM(28));
-//        make.left.equalTo(_needCheckLabel.mas_right).offset(SCALE_NUM(-12));
-//        make.width.mas_equalTo(SCALE_NUM((self.contentView.width - 30)/2));
         make.width.mas_equalTo(SCALE_NUM(110));
     }];
     

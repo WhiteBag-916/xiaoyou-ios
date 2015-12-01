@@ -66,9 +66,4 @@ NSString *const kActivityIdentityTableViewCell = @"ActivityIdentityTableViewCell
     }
 }
 
-//-(BOOL)needLine
-//{
-//    return YES;
-//}
-
 @end

@@ -117,7 +117,7 @@
    
 }
 
-// 得到最后消息文字或者类型
+#pragma mark -  得到最后消息文字或者类型
 -(NSString *)subTitleMessageByConversation:(EMMessage *)model
 {
     NSString *ret = @"";

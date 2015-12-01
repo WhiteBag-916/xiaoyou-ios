@@ -179,12 +179,12 @@
     
 }
 
-//错号
+#pragma mark - back
 -(void)clickBtnForCancel
 {
     [self dismissViewControllerAnimated:YES completion:nil];
 }
-//对号
+#pragma mark - 对号
 -(void)clickBtnForChoice
 {
     if (_isIdentity)
@@ -212,7 +212,7 @@
     }
     
 }
-//个人
+#pragma mark - 个人
 -(void)clickPersonalButton
 {
     _personalButton.backgroundColor = KCOLOR_g1;
@@ -226,7 +226,7 @@
     _isIdentity = NO;
     _activityIdentityTableView.hidden = YES;
 }
-//社团
+#pragma mark - 社团
 -(void)clickGroupButton
 {
     _groupButton.backgroundColor = KCOLOR_g1;

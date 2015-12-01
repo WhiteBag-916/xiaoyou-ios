@@ -39,7 +39,6 @@
             [self transformData:message.object];
             
         }];
-//        _dataSouceArr = [[NSMutableArray alloc] initWithArray:@[[NSMutableDictionary dictionaryWithDictionary:@{@"type":@"竞技·比赛",@"isChoice":@NO}],[NSMutableDictionary dictionaryWithDictionary:@{@"type":@"讲座·培训",@"isChoice":@NO}],[NSMutableDictionary dictionaryWithDictionary:@{@"type":@"实习·招聘",@"isChoice":@NO}],[NSMutableDictionary dictionaryWithDictionary:@{@"type":@"运动·户外",@"isChoice":@NO}],[NSMutableDictionary dictionaryWithDictionary:@{@"type":@"义工·支教",@"isChoice":@NO}],[NSMutableDictionary dictionaryWithDictionary:@{@"type":@"社交·沙龙",@"isChoice":@NO}],[NSMutableDictionary dictionaryWithDictionary:@{@"type":@"演出·晚会",@"isChoice":@NO}],[NSMutableDictionary dictionaryWithDictionary:@{@"type":@"综合·其他",@"isChoice":@YES}]]];
         
         _dataManager = [ActivityReleaseDataManager shareActivityReleaseDataManager];
         
@@ -87,23 +86,6 @@
     return cell;
     
 }
-
-//-(CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section
-//{
-//    return 10;
-//}
-
-
-//-(UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section
-//{
-//    UIEdgeInsets insets = UIEdgeInsetsMake(0, 0, -5, 0);
-//    return insets;
-//}
-
-//-(CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section
-//{
-//    return 10;
-//}
 
 -(CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
