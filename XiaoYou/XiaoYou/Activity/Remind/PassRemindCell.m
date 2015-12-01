@@ -332,8 +332,8 @@
         _contentTitleLabel.text = model.activityOrganizer;
     }
     
-    _contentNameLabel.text = [NSString stringWithFormat:_contentNameLabel.text,model.activityName];
-    _activityTimeLabel.text = [NSString stringWithFormat:_activityTimeLabel.text,[TimeFormatterConvert timeConvertToFommtterAvailable:model.activityStartTime]];
+    _contentNameLabel.text = [NSString stringWithFormat:@"名称：%@",model.activityName];
+    _activityTimeLabel.text = [NSString stringWithFormat:@"活动开始时间：%@",[TimeFormatterConvert timeConvertToFommtterAvailable:model.activityStartTime]];
 }
 
 //推送通知使用

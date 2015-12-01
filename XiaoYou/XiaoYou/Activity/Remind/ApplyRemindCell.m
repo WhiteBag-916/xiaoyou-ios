@@ -191,9 +191,9 @@
     Author *info = model.activityUser;
     [_headImageView setFaceImageWithUrl:info.headPic];
     _nameLabel.text = info.name;
-    _applyContentLable.text = [NSString stringWithFormat:_applyContentLable.text,model.activityName];
+    _applyContentLable.text = [NSString stringWithFormat:@"参加了你的%@活动!",model.activityName];
     
-    [_applyContentLable setText:[NSString stringWithFormat:_applyContentLable.text,model.activityName] lineSpacing:5.0];
+    [_applyContentLable setText:[NSString stringWithFormat:@"参加了你的%@活动!",model.activityName] lineSpacing:5.0];
     [_connectTagView updateWithTag:info.propetiesCommon];
 }
 
@@ -207,7 +207,7 @@
     _remindTitleLabel.text = model.em_push_title;
     [_headImageView setFaceImageWithUrl:model.headIcon];
     _nameLabel.text = model.organizer;
-    _applyContentLable.text = [NSString stringWithFormat:_applyContentLable.text,model.name];
+    _applyContentLable.text = [NSString stringWithFormat:@"参加了你的%@活动!",model.name];
 }
 
 @end
