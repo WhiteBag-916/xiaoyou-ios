@@ -33,7 +33,6 @@
                 [self refreshTableView:model.suggest];
             }
         }];
-//        _dataSouceArr = @[@"自我介绍一下呗",@"请发送简历至",@"面试通知",@"你的兴趣爱好",@"你喜欢男生还是女生",@"你是单身吗",@"你可以向我问个问题"];
         self.separatorStyle = UITableViewCellSelectionStyleNone;
         [self registerClass:[SendMessageTableViewCell class] forCellReuseIdentifier:kSendMessageTableViewCell];
     }
