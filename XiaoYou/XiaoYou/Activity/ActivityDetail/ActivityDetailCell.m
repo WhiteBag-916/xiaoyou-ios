@@ -275,8 +275,9 @@
     }];
     
     _descriptionLabel = [[YTextView alloc]init];
+    _descriptionLabel.type = DISANBLE_PASTE;
     [self.contentView addSubview:_descriptionLabel];
-    _descriptionLabel.editable = NO;
+    _descriptionLabel.editable = false;
     _descriptionLabel.selectable = YES;
     _descriptionLabel.scrollEnabled = NO;
     _descriptionLabel.font = CONTENT_FONT(13);
@@ -501,10 +502,6 @@
     return false;
 }
 
-//改变选中状态
-- (void)textViewDidChangeSelection:(UITextView *)textView
-{
-    
-}
+
 
 @end
