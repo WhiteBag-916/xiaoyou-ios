@@ -143,23 +143,6 @@
     
     ret = [[NSMutableArray alloc] initWithArray:sorte];
     
-//    //置顶 
-//    __block NSInteger index = -1;
-//    [ret enumerateObjectsUsingBlock:^(EMConversation *conversation, NSUInteger idx, BOOL *stop) {
-//        if ([conversation.chatter isEqualToString:KSYSTEM_MESSAGEID])
-//        {
-//            index = idx;
-//            *stop = YES;
-//        }
-//    }];
-//    
-//    if (index >= 0) {
-//        EMConversation *conversation = [ret objectAtIndex:index];
-//        [ret removeObjectAtIndex:index];
-//        [ret insertObject:conversation atIndex:0];
-//    }
-    
-    
     return ret;
 }
 
@@ -170,7 +153,6 @@
 #pragma mark - setUpUI方法
 -(void)setUpUI
 {
-    //switch
     _commonSwitchView = [[CommonSwitchView alloc] initWithFrame:CGRectMake(0, 0, SCALE_NUM(119), SCALE_NUM(24)) textArray:@[@"聊天", @"好友"]];
     [_commonSwitchView changedType:^(CommonSwitchType type) {
         [self changeSwitchView:type];
@@ -196,7 +178,6 @@
 }
 
 #pragma mark - NavigationBar点击方法
-//改变switch
 - (void)changeSwitchView:(CommonSwitchType)type;
 {
     if (type == CommonSwitchTypeFir)
