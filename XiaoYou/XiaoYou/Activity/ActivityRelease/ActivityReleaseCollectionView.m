@@ -108,23 +108,6 @@
     
 }
 
-//-(CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section
-//{
-//    return 10;
-//}
-
-
-//-(UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section
-//{
-//    UIEdgeInsets insets = UIEdgeInsetsMake(0, 10, 0, 10);
-//    return insets;
-//}
-
-//-(CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section
-//{
-//    return 10;
-//}
-
 -(CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     CGSize size = {SCALE_NUM(230),SCALE_NUM(300)};
@@ -132,7 +115,6 @@
 }
 
 #pragma mark - UIScrollViewDelegate
-
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
     NSLog(@"%@",NSStringFromCGPoint(self.contentOffset));

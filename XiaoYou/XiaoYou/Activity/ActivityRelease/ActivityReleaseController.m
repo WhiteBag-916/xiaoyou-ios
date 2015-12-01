@@ -57,8 +57,6 @@ typedef enum : NSUInteger {
 //是否为社长
 @property (nonatomic,assign) BOOL isIdentity;
 
-@property (nonatomic,assign) BOOL isKeyBoardShow;
-
 //数据Manager
 @property (nonatomic,strong) ActivityReleaseDataManager * dataManager;
 
@@ -72,7 +70,6 @@ typedef enum : NSUInteger {
     self = [super init];
     if (self) {
         _isIdentity = isIdentity;
-        _isKeyBoardShow = NO;
     }
     return self;
 }
@@ -586,6 +583,7 @@ typedef enum : NSUInteger {
     
 }
 
+#pragma mark - 点击发布按钮
 -(void)clickReleaseBtn
 {
     [YUtils showHUDWithTitle];
@@ -616,8 +614,7 @@ typedef enum : NSUInteger {
     
 }
 
-//去掉字符串开头结尾空格和回车
-
+#pragma mark - 去掉字符串开头结尾空格和回车
 -(NSString *)removeSpaceAndNewLine:(NSString *) text
 {
     //去除两端空格
@@ -630,7 +627,7 @@ typedef enum : NSUInteger {
 }
 
 
-//发布活动请求
+#pragma mark - 发布活动请求
 -(void)sendReleaseRequest:(YActionMessage *) message
 {
     _dataManager.ActivityNameText = [self removeSpaceAndNewLine:_dataManager.ActivityNameText];
@@ -700,7 +697,7 @@ typedef enum : NSUInteger {
     }];
 }
 
-//转换成标准时间
+#pragma mark - 转换成标准时间
 -(NSString *)transformDate:(NSString *) date
 {
     NSDateFormatter * formatter = [[NSDateFormatter alloc] init];
@@ -711,7 +708,7 @@ typedef enum : NSUInteger {
     
     return dateStr;
 }
-//获取当前标准时间
+#pragma mark - 获取当前标准时间
 -(NSString *)getNowDate
 {
     NSDate * now = [NSDate date];

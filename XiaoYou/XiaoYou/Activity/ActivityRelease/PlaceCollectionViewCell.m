@@ -112,7 +112,7 @@ NSString *const kPlaceCollectionViewCell = @"PlaceCollectionViewCellId";
     return YES;
 }
 
-//判断字符串为空和只为空格解决办法
+#pragma mark - 判断字符串为空和只为空格解决办法
 - (BOOL) isBlankString:(NSString *)string {
     if (string == nil || string == NULL) {
         return YES;
