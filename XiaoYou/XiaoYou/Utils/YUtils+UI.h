@@ -93,8 +93,8 @@ extern NSInteger const kLoginCommonTextFieldTag;
                    pageIndicatorTintColor:(UIColor *)pageIndicatorTintColor
             currentPageIndicatorTintColor:(UIColor *)currentPageIndicatorTintColor;
 /*********************************************************************
- 函数名称 : initPageControl
- 函数描述 : 构造PageControl
+ 函数名称 : initLabel
+ 函数描述 : 构造Label
  参数 : 你懂的
  返回值 : 你懂的
  作者 : 尹先森
