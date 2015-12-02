@@ -198,7 +198,6 @@
     _nameLabel = [[UITextView alloc]init];
     [self.contentView addSubview:_nameLabel];
     _nameLabel.font = CONTENT_FONT(13);
-    //_nameLabel.numberOfLines = 0;
     _nameLabel.editable = NO;
     _nameLabel.scrollEnabled = false;
     _nameLabel.font = CONTENT_FONT(13);
@@ -367,19 +366,25 @@
     if ([organizer.userType isEqualToString:@"user"]) {
         if ([organizer.uid isEqualToString:[[YShareData defaultData] valueForKey:kShareData_UserID]]) {
             ProfileMyViewController *myVC = [[ProfileMyViewController alloc]init];
-            [self.viewController.navigationController pushViewController:myVC animated:YES needHiddenBottomBar:YES];
+            [self.viewController.navigationController pushViewController:myVC animated:YES
+                                                     needHiddenBottomBar:YES];
         } else {
-            [self.viewController.navigationController pushViewController:detailVC animated:YES needHiddenBottomBar:YES];
+            [self.viewController.navigationController pushViewController:detailVC animated:YES
+                                                     needHiddenBottomBar:YES];
         }
     } else
     {
-        [self.viewController.navigationController pushViewController:groupVC animated:YES needHiddenBottomBar:YES];
+        [self.viewController.navigationController pushViewController:groupVC animated:YES
+                                                 needHiddenBottomBar:YES];
     }
 }
 
-- (BOOL)textView:(UITextView *)textView shouldInteractWithURL:(NSURL *)URL inRange:(NSRange)characterRange {
+- (BOOL)textView:(UITextView *)textView shouldInteractWithURL:(NSURL *)URL
+         inRange:(NSRange)characterRange {
     
-    [[NSNotificationCenter defaultCenter] postNotificationName:KNotification_OpenBrowser object:nil userInfo:@{@"url":[URL absoluteString], @"title":@""}];
+    [[NSNotificationCenter defaultCenter] postNotificationName:KNotification_OpenBrowser object:nil
+                                                      userInfo:@{@"url":[URL absoluteString],
+                                                                 @"title":@""}];
     return false;
 }
 
