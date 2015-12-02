@@ -29,7 +29,10 @@
         }
         CGFloat offX = startOffX;
         for (UICollectionViewLayoutAttributes *attr in [array reverseObjectEnumerator]) {
-            attr.frame = CGRectMake(offX, CGRectGetMinY(attr.frame), CGRectGetWidth(attr.frame), CGRectGetHeight(attr.frame));
+            attr.frame = CGRectMake(offX,
+                                    CGRectGetMinY(attr.frame),
+                                    CGRectGetWidth(attr.frame),
+                                    CGRectGetHeight(attr.frame));
             
             offX=CGRectGetMaxX(attr.frame);
             offX+=maximumSpacing;

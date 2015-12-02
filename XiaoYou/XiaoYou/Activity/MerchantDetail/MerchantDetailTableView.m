@@ -12,7 +12,8 @@
 #import "MerchantDetailTableViewCell.h"
 #import "SupplierShopDiscounts.h"
 
-@interface MerchantDetailTableView ()<UITableViewDataSource,UITableViewDelegate>
+@interface MerchantDetailTableView ()
+<UITableViewDataSource,UITableViewDelegate>
 
 @property(nonatomic,strong)TopView * topView;
 @property(nonatomic,strong)MiddleInfoView * middleInfoView;
@@ -53,7 +54,10 @@
 -(void)setUpHeaderView
 {
     UIView * backView = [[UIView alloc]
-                         initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_WIDTH*3/4+SCALE_NUM(132))];
+                         initWithFrame:CGRectMake(0,
+                                                  0,
+                                                  SCREEN_WIDTH,
+                                                  SCREEN_WIDTH*3/4+SCALE_NUM(132))];
  
     self.topView = [[TopView alloc] initWithModel:_model];
     _topView.backgroundColor = [UIColor clearColor];
@@ -87,7 +91,9 @@
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    MerchantDetailTableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:kMerchantDetailTableViewCell forIndexPath:indexPath];
+    MerchantDetailTableViewCell * cell = [tableView
+                                          dequeueReusableCellWithIdentifier:kMerchantDetailTableViewCell
+                                          forIndexPath:indexPath];
     if (indexPath.row == 0)
     {
         [cell setCellInfo:nil isHeader:YES];

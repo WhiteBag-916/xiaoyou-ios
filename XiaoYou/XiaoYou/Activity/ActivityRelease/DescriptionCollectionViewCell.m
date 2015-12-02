@@ -43,27 +43,33 @@ NSString *const kDescriptionCollectionViewCell = @"DescriptionCollectionViewCell
 -(void)changUI
 {
     //图片
-    _picImageView = [[UIImageView alloc] init];
+    self.picImageView = [YUtils initImageViewWithBackgroundColor:[UIColor clearColor]
+                                                    cornerRadius:4
+                                                   clipsToBounds:YES
+                                                           image:[UIImage imageNamed:@"camera"]];
     _picImageView.userInteractionEnabled = YES;
-    _picImageView.layer.cornerRadius = 4;
-    _picImageView.clipsToBounds = YES;
-    _picImageView.image = [UIImage imageNamed:@"camera"];
     [self.backView addSubview:_picImageView];
     [_picImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.mas_equalTo(SCALE_NUM(85));
         make.left.equalTo(self.numImageView.mas_left);
         make.height.width.mas_equalTo(SCALE_NUM(72));
     }];
-    UITapGestureRecognizer * tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(choicePictrue)];
+    UITapGestureRecognizer * tapGestureRecognizer = [[UITapGestureRecognizer alloc]
+                                                     initWithTarget:self
+                                                     action:@selector(choicePictrue)];
     [_picImageView addGestureRecognizer:tapGestureRecognizer];
     
-    UILongPressGestureRecognizer * longPressGestureRecognizer = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(deleteBtnShow)];
+    UILongPressGestureRecognizer * longPressGestureRecognizer = [[UILongPressGestureRecognizer alloc]
+                                                                 initWithTarget:self
+                                                                 action:@selector(deleteBtnShow)];
     [_picImageView addGestureRecognizer:longPressGestureRecognizer];
     
     //删除
     _deleteBtn = [[UIButton alloc] init];
     [_deleteBtn setImage:[UIImage imageNamed:@"btn_delete"] forState:UIControlStateNormal];
-    [_deleteBtn addTarget:self action:@selector(deleteImage) forControlEvents:UIControlEventTouchUpInside];
+    [_deleteBtn addTarget:self
+                   action:@selector(deleteImage)
+         forControlEvents:UIControlEventTouchUpInside];
     [self.backView addSubview:_deleteBtn];
     [_deleteBtn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.mas_equalTo(SCALE_NUM(73));
@@ -101,7 +107,9 @@ NSString *const kDescriptionCollectionViewCell = @"DescriptionCollectionViewCell
     _deleteBtn.hidden = YES;
     
     NSDictionary * dic = @{@"position":@2,@"picImage":@YES};
-    [[NSNotificationCenter defaultCenter] postNotificationName:KNotification_Activity_Release_ScrollTo object:dic];
+    [[NSNotificationCenter defaultCenter]
+     postNotificationName:KNotification_Activity_Release_ScrollTo
+     object:dic];
     
     
     YActionSheetItem *item1 = [YActionSheetItem itemWithTitle:@"拍照"
@@ -155,7 +163,11 @@ NSString *const kDescriptionCollectionViewCell = @"DescriptionCollectionViewCell
 {
     UIImagePickerController *picker = [[UIImagePickerController alloc] init];
     [picker.navigationBar setTintColor:[UIColor whiteColor]];
-    [[UINavigationBar appearance] setBackgroundImage:[UIImage imageWithColor:[UIColor hexChangeFloat:@"455964"] size:CGSizeMake(SCREEN_WIDTH, 64)] forBarPosition:UIBarPositionAny barMetrics:UIBarMetricsDefault];
+    [[UINavigationBar appearance] setBackgroundImage:[UIImage imageWithColor:[UIColor
+                                                              hexChangeFloat:@"455964"]
+                                                                        size:CGSizeMake(SCREEN_WIDTH, 64)]
+                                      forBarPosition:UIBarPositionAny
+                                          barMetrics:UIBarMetricsDefault];
     [[UINavigationBar appearance] setTitleTextAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:17],
                                                           NSForegroundColorAttributeName:[UIColor whiteColor]}];
     [UINavigationBar appearance].barStyle = UIBarStyleDefault;
@@ -275,7 +287,9 @@ NSString *const kDescriptionCollectionViewCell = @"DescriptionCollectionViewCell
 -(BOOL)textViewShouldBeginEditing:(UITextView *)textView
 {
     NSDictionary * dic = @{@"position":@2};
-    [[NSNotificationCenter defaultCenter] postNotificationName:KNotification_Activity_Release_ScrollTo object:dic];
+    [[NSNotificationCenter defaultCenter]
+     postNotificationName:KNotification_Activity_Release_ScrollTo
+     object:dic];
     return YES;
 }
 
