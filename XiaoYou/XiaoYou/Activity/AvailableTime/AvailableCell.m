@@ -17,7 +17,7 @@
 @interface AvailableCell ()<UITextViewDelegate>
 
 @property (nonatomic,strong) UIImageView    *startImageView; //开始图
-@property (nonatomic,strong) UITextView        *titleLabel;    //标题
+@property (nonatomic,strong) UITextView     *titleLabel;    //标题
 @property (nonatomic,strong) UILabel        *typeLabel;     //类型
 @property (nonatomic,strong) UILabel        *descriptionLabel;//描述
 //中间图片部分
@@ -63,9 +63,8 @@
 //初始化相关控件
 -(void)initView
 {
-    _startImageView = [[UIImageView alloc]init];
+    _startImageView = [YUtils initImageViewWithImageName:@"green_bar"];
     [self.contentView addSubview:_startImageView];
-    _startImageView.image = [UIImage imageNamed:@"green_bar"];
     [_startImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.leading.mas_equalTo(SCALE_NUM(0));
         make.top.mas_equalTo(SCALE_NUM(20));
@@ -90,15 +89,11 @@
         make.top.equalTo(_startImageView).offset(SCALE_NUM(-5));
     }];
     
-    
-    _typeLabel = [[UILabel alloc]init];
+    _typeLabel = [YUtils initLabel:CONTENT_FONT(10) color:[UIColor whiteColor] text:@"  活动  "];
     [self.contentView addSubview:_typeLabel];
-    [_typeLabel setTextColor:[UIColor whiteColor]];
     _typeLabel.layer.cornerRadius = 3;
     _typeLabel.clipsToBounds = YES;
     _typeLabel.backgroundColor = RGBACOLOR(180, 50, 80, 1);
-    _typeLabel.text = @"  活动  ";
-    _typeLabel.font = CONTENT_FONT(10);
     [_typeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         //make.height.mas_equalTo(SCALE_NUM(15));
         make.trailing.mas_equalTo(SCALE_NUM(-15));
@@ -162,7 +157,6 @@
             make.leading.mas_equalTo(SCALE_NUM(130)).priorityHigh();
         }];
     }
-    
     
     _activityTimeDes = [[UITextView alloc]init];
     _activityTimeDes.userInteractionEnabled = NO;
@@ -312,30 +306,6 @@
         if ([imageText.type isEqualToString:@"text"]) {
             NSString *desContent = [NSString stringWithFormat:@"%@%@",@"描述:",imageText.content];
                 [_descriptionLabel setText:desContent lineSpacing:SCALE_NUM(5)];
-            
-            
-//            NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
-//            paragraphStyle.lineSpacing = SCALE_NUM(10);// 字体的行间距
-//            
-//            NSDictionary *attributes = @{
-//                                         NSForegroundColorAttributeName:KCOLOR_B5,
-//                                         NSFontAttributeName:CONTENT_FONT(12),
-//                                         NSParagraphStyleAttributeName:paragraphStyle
-//                                         };
-//            _descriptionLabel.text = @"aaaa";
-//            _descriptionLabel.attributedText = [[NSAttributedString alloc] initWithString:desContent attributes:attributes];
-//            
-//            //单行高度
-//            CGFloat singleHeight = [self getTextHeight:@"line"];
-//            CGFloat allHeight = [self getTextHeight:desContent];
-//            CGFloat limiteThereHeight = 3 * singleHeight + SCALE_NUM(10) * 2 + SCALE_NUM(10);
-//            
-//            if (allHeight > limiteThereHeight) {
-//                [_descriptionLabel mas_updateConstraints:^(MASConstraintMaker *make) {
-//                    make.height.mas_equalTo(limiteThereHeight);
-//                }];
-//            }
-            
         }
         else if ([imageText.type isEqualToString:@"image"]) {
             if (![imageText.content isEmpty]) {
@@ -348,8 +318,10 @@
         [_imageGroupView updateWithImgs:nil bigPics:nil];
     }
     
-    _signUpTimeLabel.text = [TimeFormatterConvert timeConvertToFommtterAvailable:publishModel.enrollEndTime];
-    _activityStartTimeLabel.text = [TimeFormatterConvert timeConvertToFommtterAvailable:publishModel.actStartTime];
+    _signUpTimeLabel.text = [TimeFormatterConvert timeConvertToFommtterAvailable:
+                             publishModel.enrollEndTime];
+    _activityStartTimeLabel.text = [TimeFormatterConvert timeConvertToFommtterAvailable:
+                                    publishModel.actStartTime];
     _activityEndTimeLabel.text = [TimeFormatterConvert
                                   timeConvertToFommtterAvailable:publishModel.actEndTime];
     _activityLocationLabel.text = publishModel.address;

@@ -80,7 +80,7 @@ NSInteger const kLoginCommonTextFieldTag = 1999;
 //
 +(UILabel *)initLabel:(UIFont *)font color:(UIColor *)color text:(NSString *)text
 {
-    UILabel *label = [[UILabel alloc] initWithFrame:frame];
+    UILabel *label = [[UILabel alloc] init];
     label.font = font;
     label.textColor = color;
     label.text = text;
@@ -93,7 +93,6 @@ NSInteger const kLoginCommonTextFieldTag = 1999;
                                       cornerRadius:(CGFloat)cornerRadius
 {
     UIView *wrapContentView = [[UIView alloc]init];
-    [superView addSubview:wrapContentView];
     wrapContentView.backgroundColor = backGroudColor;
     wrapContentView.layer.borderWidth = boardWidth;
     wrapContentView.layer.borderColor = borderColor.CGColor;

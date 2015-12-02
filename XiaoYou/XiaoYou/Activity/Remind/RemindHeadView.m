@@ -36,10 +36,8 @@
 }
 
 -(void)initView {
-    _timeLabel = [[UILabel alloc]init];
+    _timeLabel = [YUtils initLabel:CONTENT_FONT(11) color:KCOLOR_B5 text:@""];
     [self.contentView addSubview:_timeLabel];
-    _timeLabel.font = [UIFont systemFontOfSize:11];
-    _timeLabel.textColor = KCOLOR_B5;
     [_timeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.equalTo(self.mas_centerX);
         make.centerY.equalTo(self.mas_centerY);
