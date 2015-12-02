@@ -93,25 +93,11 @@
     ActivityOrganizer *organizer = model.activityOrganizer;
     ActivityTypeInfo *info = model.activityTypeInfo;
     ActivityPublishedModel *publishModel = model.activityPublishedDto.activityPublishedModel;
-    
     [_headImageView setFaceImageWithUrl:organizer.headPic];
-    
     _titleLabel.text = organizer.name;
-    //[_nameLabel setText:publishModel.name lineSpacing:5.0f];
     
-    
-    NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
-    paragraphStyle.lineSpacing = SCALE_NUM(5);// 字体的行间距
-
-    NSDictionary *attributes = @{
-                                 NSForegroundColorAttributeName:KCOLOR_B4,
-                                 NSFontAttributeName:CONTENT_FONT(13),
-                                 NSParagraphStyleAttributeName:paragraphStyle
-                                 };
-    _nameLabel.attributedText = [[NSAttributedString alloc] initWithString:publishModel.name
-                                                                attributes:attributes];
-    
-    
+    [YUtils setTextViewDataWithTextView:_nameLabel text:publishModel.name
+                                   Font:CONTENT_FONT(13) textColor:KCOLOR_B4 linespaing:5];
     
     NSArray *imageTextModels = model.activityPublishedDto.activityImageTextModels;
     //图片内容是否为空
@@ -152,22 +138,8 @@
     _activityEndTimeLabel.text = [TimeFormatterConvert
                                   timeConvertToFommtterAvailable:publishModel.actEndTime];
     
-    
-    
-    //[_locationLabel setText:publishModel.address lineSpacing:5.0];
-    
-    
-    NSMutableParagraphStyle *paragraphStyle1 = [[NSMutableParagraphStyle alloc] init];
-    paragraphStyle1.lineSpacing = SCALE_NUM(5.0);// 字体的行间距
-    NSDictionary *attributes1 = @{
-                                 NSForegroundColorAttributeName:KCOLOR_B4,
-                                 NSFontAttributeName:CONTENT_FONT(12),
-                                 NSParagraphStyleAttributeName:paragraphStyle
-                                 };
-    _locationLabel.attributedText = [[NSAttributedString alloc] initWithString:publishModel.address
-                                                                    attributes:attributes1];
-    
-    
+    [YUtils setTextViewDataWithTextView:_locationLabel text:publishModel.address
+                                   Font:CONTENT_FONT(12) textColor:KCOLOR_B4 linespaing:5];
     
     _categoryLabel.text = info.name;
     

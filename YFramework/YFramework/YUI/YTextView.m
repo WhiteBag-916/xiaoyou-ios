@@ -141,7 +141,8 @@ CGFloat const UI_PLACEHOLDER_TEXT_CHANGED_ANIMATION_DURATION = 0.25;
     self.attributedText = attributedText;
     
     //R106 G140 B179 A100
-    NSDictionary *linkAttributes = @{NSForegroundColorAttributeName: [UIColor colorWithRed:(106)/255.0 green:(140)/255.0 blue:(179)/255.0 alpha:(1)],
+    NSDictionary *linkAttributes = @{NSForegroundColorAttributeName:
+                                         [UIColor colorWithRed:(106)/255.0 green:(140)/255.0 blue:(179)/255.0 alpha:(1)],
                                      NSUnderlineColorAttributeName: [UIColor lightGrayColor],
                                      NSUnderlineStyleAttributeName: @(NSUnderlinePatternSolid)};
     self.linkTextAttributes  = linkAttributes;
@@ -150,12 +151,16 @@ CGFloat const UI_PLACEHOLDER_TEXT_CHANGED_ANIMATION_DURATION = 0.25;
 
 - (NSMutableAttributedString*)handleLink:(NSAttributedString*)contentAttrString
 {
-    NSMutableAttributedString *ret = [[NSMutableAttributedString alloc]initWithAttributedString:contentAttrString];
+    NSMutableAttributedString *ret = [[NSMutableAttributedString alloc]
+                                      initWithAttributedString:contentAttrString];
     NSString *string = [contentAttrString string];
     NSError *error;
     NSString *regulaStr = @"((http[s]{0,1}|ftp)://[a-zA-Z0-9\\.\\-]+\\.([a-zA-Z]{2,4})(:\\d+)?(/[a-zA-Z0-9\\.\\-~!@#$%^&*+?:_/=<>]*)?)|(www.[a-zA-Z0-9\\.\\-]+\\.([a-zA-Z]{2,4})(:\\d+)?(/[a-zA-Z0-9\\.\\-~!@#$%^&*+?:_/=<>]*)?)";
-    NSRegularExpression *regex =[NSRegularExpression regularExpressionWithPattern:regulaStr options:NSRegularExpressionCaseInsensitive error:&error];
-    NSArray *arrayOfAllMatches = [regex matchesInString:string options:0 range:NSMakeRange(0, [string length])];
+    NSRegularExpression *regex =[NSRegularExpression
+                                 regularExpressionWithPattern:regulaStr
+                                 options:NSRegularExpressionCaseInsensitive error:&error];
+    NSArray *arrayOfAllMatches = [regex matchesInString:string options:0
+                                                  range:NSMakeRange(0, [string length])];
     for(NSTextCheckingResult *match in arrayOfAllMatches)
     {
         NSString* substringForMatch = [string substringWithRange:match.range];

@@ -225,4 +225,19 @@ NSInteger const kLoginCommonTextFieldTag = 1999;
     return imageView;
 }
 
++ (void)setTextViewDataWithTextView:(UITextView *)textView text:(NSString *)text
+                               Font:(UIFont *)font textColor:(UIColor *)textColor
+                         linespaing:(CGFloat)lineSpace
+{
+    NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
+    paragraphStyle.lineSpacing = lineSpace;// 字体的行间距
+    
+    NSDictionary *attributes = @{
+                                 NSForegroundColorAttributeName:textColor,
+                                 NSFontAttributeName:font,
+                                 NSParagraphStyleAttributeName:paragraphStyle
+                                 };
+    textView.attributedText = [[NSAttributedString alloc]
+                                  initWithString:text attributes:attributes];
+}
 @end

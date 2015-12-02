@@ -119,4 +119,7 @@ extern NSInteger const kLoginCommonTextFieldTag;
 
 + (UITextView *)initDisplayTextViewWithFont:(UIFont*)font
                                   textColor:(UIColor*)color;
+
++ (void)setTextViewDataWithTextView:(UITextView*)textView text:(NSString*)text Font:(UIFont*)font
+                          textColor:(UIColor*)textColor linespaing:(CGFloat)lineSpace;
 @end
