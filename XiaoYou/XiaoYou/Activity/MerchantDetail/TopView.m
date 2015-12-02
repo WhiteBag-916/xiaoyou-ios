@@ -75,7 +75,6 @@
         imageView.userInteractionEnabled = YES;
         [_scrollView addSubview:imageView];
     }
-
     self.pageControl = [YUtils initPageControlWithBackgroundColor:[UIColor clearColor]
                                            userInteractionEnabled:YES
                                                     numberOfPages:imageCount

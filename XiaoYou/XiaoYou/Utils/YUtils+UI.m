@@ -192,5 +192,37 @@ NSInteger const kLoginCommonTextFieldTag = 1999;
     textView.textColor = color;
     return textView;
 }
+/////////////////////////////////////////////////////////////////////////////////////////////////
+
++ (UILabel *)initLabelWithBackgroundColor:(UIColor *)color
+                                     font:(UIFont *)font
+                            numberOfLines:(NSInteger)numberOfLines
+                            textAlignment:(NSTextAlignment)textAlignment
+                                textColor:(UIColor *)textColor
+                                     text:(NSString *)text;
+{
+    UILabel *label = [[UILabel alloc] init];
+    label.font = font;
+    label.textColor = textColor;
+    label.backgroundColor = color;
+    label.textAlignment = textAlignment;
+    label.numberOfLines = numberOfLines;
+    label.text = text;
+    return label;
+}
+/////////////////////////////////////////////////////////////////////////////////////////////////
+
++ (UIImageView *)initImageViewWithBackgroundColor:(UIColor *)color
+                                     cornerRadius:(NSInteger)cornerRadius
+                                    clipsToBounds:(BOOL)clipsToBounds
+                                            image:(UIImage *)image
+{
+    UIImageView *imageView = [[UIImageView alloc] init];
+    imageView.image = image;
+    imageView.backgroundColor = color;
+    imageView.layer.cornerRadius = cornerRadius;
+    imageView.clipsToBounds = clipsToBounds;
+    return imageView;
+}
 
 @end

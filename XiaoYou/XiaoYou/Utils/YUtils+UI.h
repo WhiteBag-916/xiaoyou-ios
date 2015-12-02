@@ -92,6 +92,30 @@ extern NSInteger const kLoginCommonTextFieldTag;
                               currentPage:(NSInteger)currentPage
                    pageIndicatorTintColor:(UIColor *)pageIndicatorTintColor
             currentPageIndicatorTintColor:(UIColor *)currentPageIndicatorTintColor;
+/*********************************************************************
+ 函数名称 : initLabel
+ 函数描述 : 构造Label
+ 参数 : 你懂的
+ 返回值 : 你懂的
+ 作者 : 尹先森
+ *********************************************************************/
++ (UILabel *)initLabelWithBackgroundColor:(UIColor *)color
+                                     font:(UIFont *)font
+                            numberOfLines:(NSInteger)numberOfLines
+                            textAlignment:(NSTextAlignment)textAlignment
+                                textColor:(UIColor *)textColor
+                                     text:(NSString *)text;
+/*********************************************************************
+ 函数名称 : initLabel
+ 函数描述 : 构造Label
+ 参数 : 你懂的
+ 返回值 : 你懂的
+ 作者 : 尹先森
+ *********************************************************************/
++ (UIImageView *)initImageViewWithBackgroundColor:(UIColor *)color
+                                     cornerRadius:(NSInteger)cornerRadius
+                            clipsToBounds:(BOOL)clipsToBounds
+                            image:(UIImage *)image;
 
 + (UITextView *)initDisplayTextViewWithFont:(UIFont*)font
                                   textColor:(UIColor*)color;
