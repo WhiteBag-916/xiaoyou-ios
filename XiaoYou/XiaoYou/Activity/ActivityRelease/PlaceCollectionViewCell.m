@@ -35,7 +35,6 @@ NSString *const kPlaceCollectionViewCell = @"PlaceCollectionViewCellId";
 -(void)changUI
 {
     //输入部分
-    [YUtils init]
     self.textView = [[YTextView alloc] init];
     _textView.backgroundColor = [UIColor clearColor];
     _textView.delegate = self;
