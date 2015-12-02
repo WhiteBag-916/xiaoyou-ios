@@ -105,6 +105,17 @@ extern NSInteger const kLoginCommonTextFieldTag;
                             textAlignment:(NSTextAlignment)textAlignment
                                 textColor:(UIColor *)textColor
                                      text:(NSString *)text;
+/*********************************************************************
+ 函数名称 : initLabel
+ 函数描述 : 构造Label
+ 参数 : 你懂的
+ 返回值 : 你懂的
+ 作者 : 尹先森
+ *********************************************************************/
++ (UIImageView *)initImageViewWithBackgroundColor:(UIColor *)color
+                                     cornerRadius:(NSInteger)cornerRadius
+                            clipsToBounds:(BOOL)clipsToBounds
+                            image:(UIImage *)image;
 
 + (UITextView *)initDisplayTextViewWithFont:(UIFont*)font
                                   textColor:(UIColor*)color;
