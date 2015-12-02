@@ -18,7 +18,8 @@
 #define kFlagImageViewHeight           SCALE_NUM(14)
 #define kPaddingDistance               SCALE_NUM(10)
 
-@interface TagsCommonView ()<UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout>
+@interface TagsCommonView ()
+<UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout>
 
 @property (nonatomic,strong) UIImageView    *flagImageView;//🚩图
 @property (nonatomic,strong) UICollectionView *tagCollectionView;
@@ -118,7 +119,10 @@
         _tagCollectionView.scrollEnabled = NO;
         _tagCollectionView.dataSource = self;
         _tagCollectionView.delegate = self;
-        _tagCollectionView.backgroundColor = [UIColor colorWithRed:246.0/255 green:247.0/255 blue:249.0/255 alpha:0];
+        _tagCollectionView.backgroundColor = [UIColor colorWithRed:246.0/255
+                                                             green:247.0/255
+                                                              blue:249.0/255
+                                                             alpha:0];
         [_tagCollectionView registerClass:[TagCollectionCell class] forCellWithReuseIdentifier:REUSECELL];
         
         [_tagCollectionView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -146,7 +150,8 @@
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     Tags * tag = _commonTagsArr[indexPath.row];
-    TagCollectionCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:REUSECELL forIndexPath:indexPath];
+    TagCollectionCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:REUSECELL
+                                                                        forIndexPath:indexPath];
     [cell setCellInfo:tag];
     return cell;
 }
@@ -158,7 +163,10 @@
 {
     Tags * tag = _commonTagsArr[indexPath.row];
     NSDictionary *attributes = @{NSFontAttributeName:CONTENT_FONT(10)};
-    CGSize textSize = [tag.name boundingRectWithSize:CGSizeMake(SCALE_NUM(300), SCALE_NUM(20)) options:NSStringDrawingTruncatesLastVisibleLine attributes:attributes context:nil].size;
+    CGSize textSize = [tag.name boundingRectWithSize:CGSizeMake(SCALE_NUM(300), SCALE_NUM(20))
+                                             options:NSStringDrawingTruncatesLastVisibleLine
+                                          attributes:attributes
+                                             context:nil].size;
     return CGSizeMake(SCALE_NUM(textSize.width+15), SCALE_NUM(15));
 }
 //定义每个UICollectionView 的间距（返回UIEdgeInsets：上、左、下、右）
@@ -167,10 +175,6 @@
     return UIEdgeInsetsMake(SCALE_NUM(5), SCALE_NUM(5), SCALE_NUM(5), SCALE_NUM(5));
 }
 #pragma mark --UICollectionViewDelegate
-//UICollectionView被选中时调用的方法
--(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
-{
-}
 //返回这个UICollectionView是否可以被选择
 -(BOOL)collectionView:(UICollectionView *)collectionView shouldSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -206,7 +210,10 @@
     for (int i = 0; i < tagsCount; i++)
     {
         Tags * tag = tagsCommon[i];
-        CGSize textSize = [tag.name boundingRectWithSize:CGSizeMake(SCALE_NUM(300), SCALE_NUM(15)) options:NSStringDrawingTruncatesLastVisibleLine attributes:attributes context:nil].size;
+        CGSize textSize = [tag.name boundingRectWithSize:CGSizeMake(SCALE_NUM(300), SCALE_NUM(15))
+                                                 options:NSStringDrawingTruncatesLastVisibleLine
+                                              attributes:attributes
+                                                 context:nil].size;
         //文本宽度 ＋ 前置空白行 ＋ 标签间距
         width += textSize.width + SCALE_NUM(15) + SCALE_NUM(5);
         if (width > limitWidth) {

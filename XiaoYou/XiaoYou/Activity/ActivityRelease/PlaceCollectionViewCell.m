@@ -35,7 +35,7 @@ NSString *const kPlaceCollectionViewCell = @"PlaceCollectionViewCellId";
 -(void)changUI
 {
     //输入部分
-    _textView = [[YTextView alloc] init];
+    self.textView = [[YTextView alloc] init];
     _textView.backgroundColor = [UIColor clearColor];
     _textView.delegate = self;
     _textView.font = CONTENT_FONT(12);
@@ -50,7 +50,7 @@ NSString *const kPlaceCollectionViewCell = @"PlaceCollectionViewCellId";
     //设置每个cell的不同部分
     self.numImageView.image = [UIImage imageNamed:@"img_num4"];
     self.typeLabel.text = @"地点";
-    _textView.placeholder = @"在这里填写您的活动地点。\n例如：\n增城宁西茶园基地";
+    self.textView.placeholder = @"在这里填写您的活动地点。\n例如：\n增城宁西茶园基地";
     
 }
 
@@ -108,7 +108,8 @@ NSString *const kPlaceCollectionViewCell = @"PlaceCollectionViewCellId";
 -(BOOL)textViewShouldBeginEditing:(UITextView *)textView
 {
     NSDictionary * dic = @{@"position":@4};
-    [[NSNotificationCenter defaultCenter] postNotificationName:KNotification_Activity_Release_ScrollTo object:dic];
+    [[NSNotificationCenter defaultCenter]
+     postNotificationName:KNotification_Activity_Release_ScrollTo object:dic];
     return YES;
 }
 
@@ -120,7 +121,8 @@ NSString *const kPlaceCollectionViewCell = @"PlaceCollectionViewCellId";
     if ([string isKindOfClass:[NSNull class]]) {
         return YES;
     }
-    if ([[string stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]] length]==0) {
+    if ([[string stringByTrimmingCharactersInSet:
+          [NSCharacterSet whitespaceCharacterSet]] length]==0) {
         return YES;
     }
     return NO;

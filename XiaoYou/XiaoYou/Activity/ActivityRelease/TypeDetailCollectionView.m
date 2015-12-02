@@ -12,7 +12,8 @@
 #import "ActivityManager.h"
 #import "Tags.h"
 
-@interface TypeDetailCollectionView ()<UICollectionViewDataSource,UICollectionViewDelegate>
+@interface TypeDetailCollectionView ()
+<UICollectionViewDataSource,UICollectionViewDelegate>
 
 @property(nonatomic,strong)NSMutableArray * dataSouceArr;
 
@@ -25,13 +26,13 @@
 
 - (instancetype)initWithFrame:(CGRect)frame collectionViewLayout:(UICollectionViewLayout *)layout
 {
-    self = [super initWithFrame:frame collectionViewLayout:layout];
-    if (self) {
+    if (self = [super initWithFrame:frame collectionViewLayout:layout]) {
         self.delegate = self;
         self.dataSource = self;
         self.scrollEnabled = YES;
         self.pagingEnabled = NO;
-        [self registerClass:[TypeDetailCollectionViewCell class] forCellWithReuseIdentifier:kTypeDetailCollectionViewCell];
+        [self registerClass:[TypeDetailCollectionViewCell class]
+ forCellWithReuseIdentifier:kTypeDetailCollectionViewCell];
         
         _dataSouceArr = [[NSMutableArray alloc] init];
         [[ActivityManager sharedInstance] findActivityTypes:^(YActionMessage *message) {
@@ -52,7 +53,8 @@
     for (int i = 0; i < temepArr.count; i++)
     {
         Tags * tag = temepArr[i];
-        NSMutableDictionary * dic = [[NSMutableDictionary alloc] initWithDictionary:[tag dictionaryRepresentation]];
+        NSMutableDictionary * dic = [[NSMutableDictionary alloc]
+                                     initWithDictionary:[tag dictionaryRepresentation]];
         if (i == temepArr.count - 1)
         {
             [dic setObject:@YES forKey:@"isChoice"];
@@ -81,7 +83,9 @@
 
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    TypeDetailCollectionViewCell * cell = [collectionView dequeueReusableCellWithReuseIdentifier:kTypeDetailCollectionViewCell forIndexPath:indexPath];
+    TypeDetailCollectionViewCell * cell = [collectionView
+                                           dequeueReusableCellWithReuseIdentifier:kTypeDetailCollectionViewCell
+                                           forIndexPath:indexPath];
     [cell setCellInfo:_dataSouceArr[indexPath.row]];
     return cell;
     
@@ -96,7 +100,9 @@
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
     NSDictionary * dic = @{@"position":@5};
-    [[NSNotificationCenter defaultCenter] postNotificationName:KNotification_Activity_Release_ScrollTo object:dic];
+    [[NSNotificationCenter defaultCenter]
+     postNotificationName:KNotification_Activity_Release_ScrollTo
+     object:dic];
     
     //判断是否被选中
     if (![_dataSouceArr[indexPath.row][@"isChoice"] boolValue])
@@ -130,7 +136,7 @@
     {
         if ([_dataSouceArr[indexPath.row][@"isChoice"] boolValue] == YES) {
 
-            _typeStr = _dataSouceArr[indexPath.row][@"code"];
+            self.typeStr = _dataSouceArr[indexPath.row][@"code"];
             
         }
         

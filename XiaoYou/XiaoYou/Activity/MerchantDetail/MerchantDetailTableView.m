@@ -36,7 +36,8 @@
         
         [self setUpHeaderView];
         
-        [self registerClass:[MerchantDetailTableViewCell class] forCellReuseIdentifier:kMerchantDetailTableViewCell];
+        [self registerClass:[MerchantDetailTableViewCell class]
+     forCellReuseIdentifier:kMerchantDetailTableViewCell];
     }
     return self;
 }
@@ -51,9 +52,10 @@
 
 -(void)setUpHeaderView
 {
-    UIView * backView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_WIDTH*3/4+SCALE_NUM(132))];
+    UIView * backView = [[UIView alloc]
+                         initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_WIDTH*3/4+SCALE_NUM(132))];
  
-    _topView = [[TopView alloc] initWithModel:_model];
+    self.topView = [[TopView alloc] initWithModel:_model];
     _topView.backgroundColor = [UIColor clearColor];
     [backView addSubview:_topView];
     [_topView mas_makeConstraints:^(MASConstraintMaker *make) {

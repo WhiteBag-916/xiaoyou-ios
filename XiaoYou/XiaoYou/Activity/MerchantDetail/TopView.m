@@ -37,7 +37,8 @@
 -(void)setUpUI
 {
     NSInteger imageCount = _model.supplierShopImages.count;
-    _scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_WIDTH*3/4)];
+    self.scrollView = [[UIScrollView alloc]
+                       initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_WIDTH*3/4)];
     NSLog(@"%@",NSStringFromCGSize(_scrollView.frame.size));
     _scrollView.backgroundColor = [UIColor clearColor];
     _scrollView.userInteractionEnabled = YES;
@@ -53,7 +54,11 @@
     {
         for (int i = 0; i < imageCount; i++)
         {
-            UIImageView * imageView = [[UIImageView alloc] initWithFrame:CGRectMake(SCREEN_WIDTH*i, 0, SCREEN_WIDTH, SCREEN_WIDTH*3/4)];
+            UIImageView * imageView = [[UIImageView alloc]
+                                       initWithFrame:CGRectMake(SCREEN_WIDTH*i,
+                                                                0,
+                                                                SCREEN_WIDTH,
+                                                                SCREEN_WIDTH*3/4)];
             SupplierShopImages * imageModel = _model.supplierShopImages[i];
             [imageView setFaceImageWithUrl:imageModel.imageUrl];
             imageView.userInteractionEnabled = YES;
@@ -62,14 +67,17 @@
     }
     else
     {
-        UIImageView * imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_WIDTH*3/4)];
+        UIImageView * imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0,
+                                                                                0,
+                                                                                SCREEN_WIDTH,
+                                                                                SCREEN_WIDTH*3/4)];
         imageView.image = [UIImage imageNamed:@"common_picture_loading_b"];
         imageView.userInteractionEnabled = YES;
         [_scrollView addSubview:imageView];
     }
     
     
-    _pageControl = [[UIPageControl alloc] init];
+    self.pageControl = [[UIPageControl alloc] init];
     _pageControl.userInteractionEnabled = YES;
     _pageControl.backgroundColor = [UIColor clearColor];
     _pageControl.numberOfPages = imageCount;
@@ -83,7 +91,8 @@
         make.width.mas_equalTo(SCALE_NUM(15*imageCount));
         make.height.mas_equalTo(36);
     }];
-    [_pageControl addTarget:self action:@selector(changePage:) forControlEvents:UIControlEventValueChanged];
+    [_pageControl addTarget:self action:@selector(changePage:)
+           forControlEvents:UIControlEventValueChanged];
 }
 
 - (void)changePage:(UIPageControl *)sender

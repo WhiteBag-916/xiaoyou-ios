@@ -55,12 +55,12 @@
     
     [self setUpUI];
     
-    _dataManager = [ActivityReleaseDataManager shareActivityReleaseDataManager];
+    self.dataManager = [ActivityReleaseDataManager shareActivityReleaseDataManager];
 
     _isIdentity = YES;
 }
 
--(void)setUpUI
+- (void)setUpUI
 {
     [self showCustomNavigationBackButton];
     self.title = @"选择活动发布身份";
@@ -83,7 +83,8 @@
     UIButton * finishBtn = [[UIButton alloc] init];
     finishBtn.backgroundColor = [UIColor clearColor];
     [finishBtn setImage:[UIImage imageNamed:@"complete"] forState:UIControlStateNormal];
-    [finishBtn addTarget:self action:@selector(clickBtnForChoice) forControlEvents:UIControlEventTouchUpInside];
+    [finishBtn addTarget:self action:@selector(clickBtnForChoice)
+        forControlEvents:UIControlEventTouchUpInside];
     [backView addSubview:finishBtn];
     [finishBtn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.equalTo(dissMissBtn);
@@ -128,7 +129,8 @@
     [_groupButton setTitle:@"社团" forState:UIControlStateNormal];
     [_groupButton  setTitleColor:KCOLOR_W1 forState:UIControlStateNormal];
     _groupButton.titleLabel.font = CONTENT_FONT(15);
-    [_groupButton addTarget:self action:@selector(clickGroupButton) forControlEvents:UIControlEventTouchUpInside];
+    [_groupButton addTarget:self action:@selector(clickGroupButton)
+           forControlEvents:UIControlEventTouchUpInside];
     
     [self.view addSubview:_personalButton];
     [self.view addSubview:_groupButton];
@@ -169,7 +171,7 @@
         make.top.equalTo(remindLabel.mas_bottom).offset(SCALE_NUM(10));
     }];
     
-    _activityIdentityTableView = [[ActivityIdentityTableView alloc] init];
+    self.activityIdentityTableView = [[ActivityIdentityTableView alloc] init];
     _activityIdentityTableView.backgroundColor = [UIColor clearColor];
     [self.view addSubview:_activityIdentityTableView];
     [_activityIdentityTableView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -198,7 +200,8 @@
         {
             [self dismissViewControllerAnimated:YES completion:^{
                 ActivityReleaseController * releaseController = [[ActivityReleaseController alloc] initWithIsIdentity:_isIdentity];
-                [_availableViewController.navigationController pushViewController:releaseController animated:YES needHiddenBottomBar:YES];
+                [_availableViewController.navigationController
+                 pushViewController:releaseController animated:YES needHiddenBottomBar:YES];
             }];
         }
     }
@@ -206,8 +209,9 @@
     {
         _dataManager.ActivityCheckStatus = @"no_check";
         [self dismissViewControllerAnimated:YES completion:^{
-            ActivityReleaseController * releaseController = [[ActivityReleaseController alloc] initWithIsIdentity:_isIdentity];
-            [_availableViewController.navigationController pushViewController:releaseController animated:YES needHiddenBottomBar:YES];
+            ActivityReleaseController * releaseController =[[ActivityReleaseController alloc] initWithIsIdentity:_isIdentity];
+            [_availableViewController.navigationController
+             pushViewController:releaseController animated:YES needHiddenBottomBar:YES];
         }];
     }
     
@@ -223,7 +227,7 @@
     _personalButton.layer.borderWidth = 0;
     _groupButton.layer.borderWidth = 1;
     
-    _isIdentity = NO;
+    self.isIdentity = NO;
     _activityIdentityTableView.hidden = YES;
 }
 #pragma mark - 社团
@@ -236,7 +240,7 @@
     
     _groupButton.layer.borderWidth = 0;
     _personalButton.layer.borderWidth = 1;
-    _isIdentity = YES;
+    self.isIdentity = YES;
     _activityIdentityTableView.hidden = NO;
 }
 

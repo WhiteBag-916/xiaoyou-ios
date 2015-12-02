@@ -15,7 +15,8 @@
 #import "Tags.h"
 #import "YNotificationDefine.h"
 
-@interface ActivityChoiceTableView ()<UITableViewDataSource,UITableViewDelegate,ActivityReleaseAndTypeCellDelegate>
+@interface ActivityChoiceTableView ()
+<UITableViewDataSource,UITableViewDelegate,ActivityReleaseAndTypeCellDelegate>
 
 @property (nonatomic,strong)NSMutableDictionary * typesDic;
 @property (nonatomic,assign)NSInteger myType;
@@ -32,7 +33,8 @@
         self.dataSource = self;
         self.separatorStyle = UITableViewCellSeparatorStyleNone;
 
-        [self registerClass:[ActivityReleaseAndTypeCell class] forCellReuseIdentifier:kActivityReleaseAndTypeCell];
+        [self registerClass:[ActivityReleaseAndTypeCell class]
+     forCellReuseIdentifier:kActivityReleaseAndTypeCell];
         
         _myType = type;
         
@@ -51,7 +53,7 @@
             [self reloadData];
         }
         
-         _typesDic = [[NSMutableDictionary alloc] init];
+         self.typesDic = [[NSMutableDictionary alloc] init];
         if (_myType == ACTIVITY_CHOICE_TYPE)
         {
            
@@ -74,7 +76,8 @@
     UIButton * dissMissBtn = [[UIButton alloc] init];
     dissMissBtn.backgroundColor = [UIColor clearColor];
     [dissMissBtn setImage:[UIImage imageNamed:@"mine-cancel"] forState:UIControlStateNormal];
-    [dissMissBtn addTarget:self action:@selector(clickBtnForCancel) forControlEvents:UIControlEventTouchUpInside];
+    [dissMissBtn addTarget:self action:@selector(clickBtnForCancel)
+          forControlEvents:UIControlEventTouchUpInside];
     [backView addSubview:dissMissBtn];
     [dissMissBtn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.equalTo(backView);
@@ -86,7 +89,8 @@
     UIButton * finishBtn = [[UIButton alloc] init];
     finishBtn.backgroundColor = [UIColor clearColor];
     [finishBtn setImage:[UIImage imageNamed:@"mine-complete-grey"] forState:UIControlStateNormal];
-    [finishBtn addTarget:self action:@selector(clickBtnForChoice) forControlEvents:UIControlEventTouchUpInside];
+    [finishBtn addTarget:self action:@selector(clickBtnForChoice)
+        forControlEvents:UIControlEventTouchUpInside];
     [backView addSubview:finishBtn];
     [finishBtn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.equalTo(backView);
@@ -129,12 +133,14 @@
         [self.myController dismissViewControllerAnimated:YES completion:^{
             ActivityResultViewController * resultViewController = [[ActivityResultViewController alloc] init];
             resultViewController.requestDic = _typesDic;
-            [self.myController.activityViewController.navigationController pushViewController:resultViewController animated:YES needHiddenBottomBar:YES];
+            [self.myController.activityViewController.navigationController
+             pushViewController:resultViewController animated:YES needHiddenBottomBar:YES];
         }];
     }
     else
     {
-        [[NSNotificationCenter defaultCenter] postNotificationName:KNotification_Study_Room_Filtrate object:_typesDic];
+        [[NSNotificationCenter defaultCenter] postNotificationName:KNotification_Study_Room_Filtrate
+                                                            object:_typesDic];
         [self.myController dismissViewControllerAnimated:YES completion:nil];
     }
     

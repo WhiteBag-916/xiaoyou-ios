@@ -35,7 +35,7 @@ NSString *const kDateAndTimeCollectionViewCell = @"DateAndTimeCollectionViewCell
     return self;
 }
 
--(void)changUI
+- (void)changUI
 {
     //设置每个cell的不同部分
     self.numImageView.image = [UIImage imageNamed:@"img_num3"];

@@ -25,7 +25,7 @@
     return manager;
 }
 
--(void)isEnableToRelease
+- (void)isEnableToRelease
 {
     NSDateFormatter * formatter = [[NSDateFormatter alloc] init];
     [formatter setDateFormat:@"yyyy年MM月dd日 a HH:mm"];

@@ -23,7 +23,7 @@
     return self;
 }
 
--(void)setUpUI
+- (void)setUpUI
 {
     //背景View
     self.backView = [[UIView alloc] init];

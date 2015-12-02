@@ -29,7 +29,8 @@
     [self.backgroundView mas_remakeConstraints:^(MASConstraintMaker *make) {
         make.top.left.bottom.right.mas_equalTo(0);
     }];
-    [self.backgroundView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hide)]];
+    [self.backgroundView addGestureRecognizer:[[UITapGestureRecognizer alloc]
+                                               initWithTarget:self action:@selector(hide)]];
     
     self.contentView = [[UIView alloc] init];
     self.contentView.layer.cornerRadius = SCALE_NUM(4);

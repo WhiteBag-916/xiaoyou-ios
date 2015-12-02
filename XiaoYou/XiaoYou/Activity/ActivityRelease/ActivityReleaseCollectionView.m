@@ -14,7 +14,8 @@
 #import "TypeCollectionViewCell.h"
 #import "CheckCollectionViewCell.h"
 
-@interface ActivityReleaseCollectionView ()<UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout,UIScrollViewDelegate>
+@interface ActivityReleaseCollectionView ()
+<UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout,UIScrollViewDelegate>
 
 //是否为社长
 @property (nonatomic,assign) BOOL isIdentity;
@@ -23,7 +24,8 @@
 
 @implementation ActivityReleaseCollectionView
 
-- (instancetype)initWithFrame:(CGRect)frame collectionViewLayout:(UICollectionViewLayout *)layout andIsIdentity:(BOOL) isIdentity
+- (instancetype)initWithFrame:(CGRect)frame collectionViewLayout:(UICollectionViewLayout *)layout
+                andIsIdentity:(BOOL) isIdentity
 {
     self = [super initWithFrame:frame collectionViewLayout:layout];
     if (self) {

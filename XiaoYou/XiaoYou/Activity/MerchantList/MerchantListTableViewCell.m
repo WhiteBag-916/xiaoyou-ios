@@ -37,7 +37,7 @@ NSString *const kMerchantListTableViewCell = @"MerchantListTableViewCellId";
 
 -(void)setUpUI
 {
-    _headImageView = [[UIImageView alloc] init];
+    self.headImageView = [[UIImageView alloc] init];
     _headImageView.backgroundColor = [UIColor orangeColor];
     _headImageView.layer.cornerRadius = 4;
     _headImageView.clipsToBounds = YES;
@@ -48,7 +48,7 @@ NSString *const kMerchantListTableViewCell = @"MerchantListTableViewCellId";
         make.width.height.mas_equalTo(SCALE_NUM(50));
     }];
     
-    _nameLabel = [[UILabel alloc] init];
+    self.nameLabel = [[UILabel alloc] init];
     _nameLabel.backgroundColor = [UIColor clearColor];
     _nameLabel.font = CONTENT_FONT(SCALE_NUM(14));
     _nameLabel.textColor = [UIColor hexChangeFloat:@"333333"];
@@ -60,7 +60,7 @@ NSString *const kMerchantListTableViewCell = @"MerchantListTableViewCellId";
         make.height.mas_equalTo(SCALE_NUM(14));
     }];
     
-    _characterLabel = [[UILabel alloc] init];
+    self.characterLabel = [[UILabel alloc] init];
     _characterLabel.backgroundColor = [UIColor clearColor];
     _characterLabel.font = CONTENT_FONT(SCALE_NUM(10));
     _characterLabel.textColor = KCOLOR_B5;
@@ -72,7 +72,7 @@ NSString *const kMerchantListTableViewCell = @"MerchantListTableViewCellId";
         make.height.mas_equalTo(SCALE_NUM(11));
     }];
     
-    _placeLabel = [[UILabel alloc] init];
+    self.placeLabel = [[UILabel alloc] init];
     _placeLabel.backgroundColor = [UIColor clearColor];
     _placeLabel.font = CONTENT_FONT(SCALE_NUM(11));
     _placeLabel.textColor = [UIColor hexChangeFloat:@"666666"];
@@ -84,7 +84,7 @@ NSString *const kMerchantListTableViewCell = @"MerchantListTableViewCellId";
         make.height.mas_equalTo(SCALE_NUM(11));
     }];
     
-    _comboLabel = [[UILabel alloc] init];
+    self.comboLabel = [[UILabel alloc] init];
     _comboLabel.backgroundColor = [UIColor clearColor];
     _comboLabel.font = CONTENT_FONT(SCALE_NUM(11));
     _comboLabel.textColor = [UIColor hexChangeFloat:@"666666"];
@@ -96,7 +96,7 @@ NSString *const kMerchantListTableViewCell = @"MerchantListTableViewCellId";
         make.height.mas_equalTo(SCALE_NUM(11));
     }];
     
-    _scanfLabel = [[UILabel alloc] init];
+    self.scanfLabel = [[UILabel alloc] init];
     _scanfLabel.backgroundColor = [UIColor clearColor];
     _scanfLabel.font = CONTENT_FONT(SCALE_NUM(11));
     _scanfLabel.textColor = [UIColor hexChangeFloat:@"666666"];

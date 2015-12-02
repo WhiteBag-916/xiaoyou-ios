@@ -111,7 +111,8 @@ NSString *const kNameCollectionViewCell = @"NameCollectionViewCellId";
 -(BOOL)textViewShouldBeginEditing:(UITextView *)textView
 {
     NSDictionary * dic = @{@"position":@1};
-    [[NSNotificationCenter defaultCenter] postNotificationName:KNotification_Activity_Release_ScrollTo object:dic];
+    [[NSNotificationCenter defaultCenter]
+     postNotificationName:KNotification_Activity_Release_ScrollTo object:dic];
     return YES;
 }
 #pragma mark - 判断字符串为空和只为空格解决办法
@@ -122,7 +123,8 @@ NSString *const kNameCollectionViewCell = @"NameCollectionViewCellId";
     if ([string isKindOfClass:[NSNull class]]) {
         return YES;
     }
-    if ([[string stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]] length]==0) {
+    if ([[string stringByTrimmingCharactersInSet:
+          [NSCharacterSet whitespaceCharacterSet]] length]==0) {
         return YES;
     }
     return NO;

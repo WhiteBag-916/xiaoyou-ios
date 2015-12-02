@@ -95,7 +95,8 @@
         make.right.equalTo(_phoneLabel);
         make.left.top.bottom.equalTo(_phoneImageView);
     }];
-    [phoneButton addTarget:self action:@selector(callPhoneNum) forControlEvents:UIControlEventTouchUpInside];
+    [phoneButton addTarget:self action:@selector(callPhoneNum)
+          forControlEvents:UIControlEventTouchUpInside];
     
     //位置
     _placeImageView = [[UIImageView alloc] init];
@@ -137,7 +138,11 @@
 
 -(void)callPhoneNum
 {
-    UIAlertView * alertView = [[UIAlertView alloc] initWithTitle:nil message:_phoneLabel.text delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"拨打", nil];
+    UIAlertView * alertView = [[UIAlertView alloc]
+                               initWithTitle:nil
+                               message:_phoneLabel.text delegate:self
+                               cancelButtonTitle:@"取消"
+                               otherButtonTitles:@"拨打", nil];
     [alertView show];
 }
 
