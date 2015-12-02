@@ -72,14 +72,8 @@
         make.width.mas_equalTo(SCALE_NUM(3));
     }];
     
-    _titleLabel = [[UITextView alloc]init];
-    _titleLabel.editable = NO;
-    _titleLabel.scrollEnabled = false;
-    _titleLabel.textContainer.lineFragmentPadding = 0;
-    _titleLabel.textContainerInset = UIEdgeInsetsZero;
+    _titleLabel = [YUtils initDisplayTextViewWithFont:CONTENT_FONT(12) textColor:KCOLOR_B4];
     [self.contentView addSubview:_titleLabel];
-    _titleLabel.textColor = KCOLOR_B4;
-    _titleLabel.font = CONTENT_FONT(15);
     [_titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.leading.mas_equalTo(SCALE_NUM(15));
         if (IS_IPHONE_6)
@@ -95,19 +89,14 @@
     _typeLabel.clipsToBounds = YES;
     _typeLabel.backgroundColor = RGBACOLOR(180, 50, 80, 1);
     [_typeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        //make.height.mas_equalTo(SCALE_NUM(15));
         make.trailing.mas_equalTo(SCALE_NUM(-15));
         make.top.equalTo(_startImageView).offset(SCALE_NUM(-3));
     }];
     
-    _descriptionLabel = [[UILabel alloc]init];
+    _descriptionLabel = [YUtils initLabel:CONTENT_FONT(12) color:KCOLOR_B5 text:@""];
     [self.contentView addSubview:_descriptionLabel];
-    
     _descriptionLabel.lineBreakMode = NSLineBreakByTruncatingTail;
-    _descriptionLabel.font = CONTENT_FONT(12);
-    _descriptionLabel.textColor = KCOLOR_B5;
     _descriptionLabel.numberOfLines = 3;
-    
     [_descriptionLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(_titleLabel.mas_bottom).offset(SCALE_NUM(18));
         make.left.equalTo(_titleLabel);
@@ -122,21 +111,16 @@
         make.right.equalTo(_descriptionLabel.mas_right);
     }];
     
-    _signUpTimeDes = [[UITextView alloc]init];
-    _signUpTimeDes.userInteractionEnabled = NO;
-    _signUpTimeDes.editable = NO;
-    _signUpTimeDes.scrollEnabled = false;
-    _signUpTimeDes.textContainer.lineFragmentPadding = 0;
-    _signUpTimeDes.textContainerInset = UIEdgeInsetsZero;
+    
+    _signUpTimeDes = [YUtils initDisplayTextViewWithFont:CONTENT_FONT(12) textColor:KCOLOR_B5];
     [self.contentView addSubview:_signUpTimeDes];
     _signUpTimeDes.text = @"报名截止时间：";
-    _signUpTimeDes.font = CONTENT_FONT(12);
-    _signUpTimeDes.textColor = KCOLOR_B5;
     [_signUpTimeDes mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(_imageGroupView.mas_bottom).offset(SCALE_NUM(15));
         make.left.equalTo(_imageGroupView);
     }];
     
+    _signUpTimeLabel = [YUtils ]
     _signUpTimeLabel = [[UITextView alloc]init];
     _signUpTimeLabel.userInteractionEnabled = NO;
     _signUpTimeLabel.editable = NO;

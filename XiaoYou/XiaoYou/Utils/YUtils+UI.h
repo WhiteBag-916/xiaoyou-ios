@@ -73,4 +73,7 @@ extern NSInteger const kLoginCommonTextFieldTag;
              showsVerticalScrollIndicator:(BOOL)showV
                               contentSize:(CGSize)size
                             pagingEnabled:(BOOL)pagingEnabled;
+
++ (UITextView *)initDisplayTextViewWithFont:(UIFont*)font
+                                  textColor:(UIColor*)color;
 @end

@@ -158,4 +158,20 @@ NSInteger const kLoginCommonTextFieldTag = 1999;
     return scrollView;
 }
 
+//展示用的TextView,不可编辑
++ (UITextView *)initDisplayTextViewWithFont:(UIFont*)font
+                                  textColor:(UIColor*)color
+{
+    
+    UITextView *textView = [[UITextView alloc]init];
+    textView.userInteractionEnabled = NO;
+    textView.editable = NO;
+    textView.scrollEnabled = false;
+    textView.textContainer.lineFragmentPadding = 0;
+    textView.textContainerInset = UIEdgeInsetsZero;
+    textView.font = font;
+    textView.textColor = color;
+    return textView;
+}
+
 @end
