@@ -93,4 +93,6 @@ extern NSInteger const kLoginCommonTextFieldTag;
                    pageIndicatorTintColor:(UIColor *)pageIndicatorTintColor
             currentPageIndicatorTintColor:(UIColor *)currentPageIndicatorTintColor;
 
++ (UITextView *)initDisplayTextViewWithFont:(UIFont*)font
+                                  textColor:(UIColor*)color;
 @end
