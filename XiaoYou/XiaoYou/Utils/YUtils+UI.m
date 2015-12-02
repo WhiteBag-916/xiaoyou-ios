@@ -193,4 +193,21 @@ NSInteger const kLoginCommonTextFieldTag = 1999;
     return textView;
 }
 
++ (UILabel *)initLabelWithBackgroundColor:(UIColor *)color
+                                     font:(UIFont *)font
+                            numberOfLines:(NSInteger)numberOfLines
+                            textAlignment:(NSTextAlignment)textAlignment
+                                textColor:(UIColor *)textColor
+                                     text:(NSString *)text;
+{
+    UILabel *label = [[UILabel alloc] init];
+    label.font = font;
+    label.textColor = textColor;
+    label.backgroundColor = color;
+    label.textAlignment = textAlignment;
+    label.numberOfLines = numberOfLines;
+    label.text = text;
+    return label;
+}
+
 @end

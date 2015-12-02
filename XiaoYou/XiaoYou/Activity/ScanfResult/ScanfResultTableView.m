@@ -16,7 +16,8 @@
 #import "ProvisionManager.h"
 #import "ProfileInfo.h"
 
-@interface ScanfResultTableView ()<UITableViewDataSource,UITableViewDelegate,UIAlertViewDelegate>
+@interface ScanfResultTableView ()
+<UITableViewDataSource,UITableViewDelegate,UIAlertViewDelegate>
 
 @property(nonatomic,strong)UIImageView * backImageView;
 @property(nonatomic,strong)UILabel * shopNameLabel;
@@ -54,7 +55,8 @@
         
         [YUtils showHUDWithTitle];
         
-        [[CodeManager sharedInstance] getByQRCodeContent:result block:^(YActionMessage *message) {
+        [[CodeManager sharedInstance] getByQRCodeContent:result
+                                                   block:^(YActionMessage *message) {
             
             [YUtils hiddenProgressHUD];
             if (message.isSuccess)
@@ -114,7 +116,9 @@
         make.centerX.centerY.equalTo(_backImageView);
         make.width.height.mas_equalTo(30);
     }];
-    [backButton addTarget:self action:@selector(popToSuperController) forControlEvents:UIControlEventTouchUpInside];
+    [backButton addTarget:self
+                   action:@selector(popToSuperController)
+         forControlEvents:UIControlEventTouchUpInside];
     
     //名字
     self.shopNameLabel = [[UILabel alloc] init];
@@ -166,7 +170,9 @@
         make.bottom.equalTo(_phoneLabel).offset(SCALE_NUM(10));
         make.top.equalTo(_phoneLabel).offset(SCALE_NUM(-10));
     }];
-    [phoneButton addTarget:self action:@selector(callPhoneNum) forControlEvents:UIControlEventTouchUpInside];
+    [phoneButton addTarget:self
+                    action:@selector(callPhoneNum)
+          forControlEvents:UIControlEventTouchUpInside];
     
     //位置
     self.placeLabel = [[UILabel alloc] init];
@@ -198,7 +204,8 @@
 
 -(void)setUpFooterView
 {
-    UIView * backView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCALE_NUM(170))];
+    UIView * backView = [[UIView alloc] initWithFrame:
+                         CGRectMake(0, 0, SCREEN_WIDTH, SCALE_NUM(170))];
     
     ProfileInfo *info = [[ProvisionManager sharedInstance] getProfile];
     

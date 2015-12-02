@@ -37,7 +37,8 @@
     self = [super init];
     if (self) {
         [self setUpUI];
-        [_tagCollectionView registerClass:[TagCollectionCell class] forCellWithReuseIdentifier:REUSECELL];
+        [_tagCollectionView registerClass:[TagCollectionCell class]
+               forCellWithReuseIdentifier:REUSECELL];
     }
     return self;
 }
@@ -114,7 +115,8 @@
         _tagCollectionView.backgroundColor = [UIColor clearColor];
         MyFlowLayout *layout = [[MyFlowLayout alloc]init];
         layout.minimumInteritemSpacing = SCALE_NUM(10);
-        _tagCollectionView = [[UICollectionView alloc]initWithFrame:CGRectZero collectionViewLayout:layout];
+        _tagCollectionView = [[UICollectionView alloc]initWithFrame:CGRectZero
+                                               collectionViewLayout:layout];
         [self addSubview:_tagCollectionView];
         _tagCollectionView.scrollEnabled = NO;
         _tagCollectionView.dataSource = self;
@@ -123,7 +125,8 @@
                                                              green:247.0/255
                                                               blue:249.0/255
                                                              alpha:0];
-        [_tagCollectionView registerClass:[TagCollectionCell class] forCellWithReuseIdentifier:REUSECELL];
+        [_tagCollectionView registerClass:[TagCollectionCell class]
+               forCellWithReuseIdentifier:REUSECELL];
         
         [_tagCollectionView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.top.equalTo(_connectTag.mas_bottom).offset(SCALE_NUM(5));
@@ -150,8 +153,9 @@
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     Tags * tag = _commonTagsArr[indexPath.row];
-    TagCollectionCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:REUSECELL
-                                                                        forIndexPath:indexPath];
+    TagCollectionCell *cell = [collectionView
+                               dequeueReusableCellWithReuseIdentifier:REUSECELL
+                               forIndexPath:indexPath];
     [cell setCellInfo:tag];
     return cell;
 }

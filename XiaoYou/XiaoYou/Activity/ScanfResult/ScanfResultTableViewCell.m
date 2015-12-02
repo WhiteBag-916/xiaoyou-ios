@@ -7,6 +7,7 @@
 //
 
 #import "ScanfResultTableViewCell.h"
+#import "YUtils+UI.h"
 
 NSString *const kScanfResultTableViewCell = @"ScanfResultTableViewCellId";
 
@@ -29,13 +30,13 @@ NSString *const kScanfResultTableViewCell = @"ScanfResultTableViewCellId";
 
 -(void)setUpUI
 {
-    
-    self.contentLabel = [[UILabel alloc] init];
-    _contentLabel.backgroundColor = [UIColor clearColor];
-    _contentLabel.font = CONTENT_FONT(12);
-    _contentLabel.numberOfLines = 0;
-    _contentLabel.textAlignment = NSTextAlignmentCenter;
-    _contentLabel.textColor = KCOLOR_g1;
+
+    self.contentLabel = [YUtils initLabelWithBackgroundColor:[UIColor clearColor]
+                                                        font:CONTENT_FONT(12)
+                                               numberOfLines:0
+                                               textAlignment:NSTextAlignmentCenter
+                                                   textColor:KCOLOR_g1
+                                                        text:@""];
     [self.contentView addSubview:_contentLabel];
     [_contentLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.right.mas_equalTo(0);
