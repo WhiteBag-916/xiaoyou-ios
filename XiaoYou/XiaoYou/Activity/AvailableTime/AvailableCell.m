@@ -160,39 +160,23 @@
     _activityEndTimeLabel = [YUtils initDisplayTextViewWithFont:CONTENT_FONT(12)
                                                       textColor:KCOLOR_B5];
     [self.contentView addSubview:_activityEndTimeLabel];
-    _activityEndTimeLabel.font = CONTENT_FONT(12);
-    _activityEndTimeLabel.textColor = KCOLOR_B5;
-    _activityEndTimeLabel.text = @"2015/10/25 06:00";
     [_activityEndTimeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.equalTo(_activityEndTimeDes);
         make.left.equalTo(_activityStartTimeLabel);
     }];
     
-    _activityLocationDes = [[UITextView alloc]init];
-    _activityLocationDes.userInteractionEnabled = NO;
-    _activityLocationDes.editable = NO;
-    _activityLocationDes.scrollEnabled = false;
-    _activityLocationDes.textContainer.lineFragmentPadding = 0;
-    _activityLocationDes.textContainerInset = UIEdgeInsetsZero;
+    _activityLocationDes = [YUtils initDisplayTextViewWithFont:CONTENT_FONT(12)
+                                                     textColor:KCOLOR_B5];
     [self.contentView addSubview:_activityLocationDes];
-    _activityLocationDes.font = CONTENT_FONT(12);
-    _activityLocationDes.textColor = KCOLOR_B5;
     _activityLocationDes.text = @"活动地点：";
     [_activityLocationDes mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(_activityEndTimeDes.mas_bottom).offset(SCALE_NUM(15));
         make.left.equalTo(_activityEndTimeDes);
     }];
     
-    _activityLocationLabel = [[UITextView alloc]init];
-    _activityLocationLabel.userInteractionEnabled = NO;
-    _activityLocationLabel.editable = NO;
-    _activityLocationLabel.scrollEnabled = false;
-    _activityLocationLabel.textContainer.lineFragmentPadding = 0;
-    _activityLocationLabel.textContainerInset = UIEdgeInsetsZero;
+    _activityLocationLabel = [YUtils initDisplayTextViewWithFont:CONTENT_FONT(12)
+                                                       textColor:KCOLOR_B5];
     [self.contentView addSubview:_activityLocationLabel];
-    _activityLocationLabel.font = CONTENT_FONT(12);
-    _activityLocationLabel.textColor = KCOLOR_B5;
-    _activityLocationLabel.text = @"大脚超市门口";
     [_activityLocationLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.height.mas_equalTo(SCALE_NUM(16));
         make.top.equalTo(_activityLocationDes.mas_top);
@@ -200,15 +184,8 @@
         make.trailing.mas_equalTo(SCALE_NUM(-5));
     }];
     
-    _oranizerDes = [[UITextView alloc]init];
-    _oranizerDes.userInteractionEnabled = NO;
-    _oranizerDes.editable = NO;
-    _oranizerDes.scrollEnabled = false;
-    _oranizerDes.textContainer.lineFragmentPadding = 0;
-    _oranizerDes.textContainerInset = UIEdgeInsetsZero;
+    _oranizerDes = [YUtils initDisplayTextViewWithFont:CONTENT_FONT(12) textColor:KCOLOR_B5];
     [self.contentView addSubview:_oranizerDes];
-    _oranizerDes.font = CONTENT_FONT(12);
-    _oranizerDes.textColor = KCOLOR_B5;
     _oranizerDes.text = @"组织者：";
     [_oranizerDes mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(_activityLocationDes.mas_bottom).offset(SCALE_NUM(15));
@@ -216,15 +193,8 @@
         make.bottom.mas_equalTo(SCALE_NUM(-15));
     }];
     
-    _organizerLabel = [[UITextView alloc]init];
-    _organizerLabel.userInteractionEnabled = NO;
-    _organizerLabel.editable = NO;
-    _organizerLabel.scrollEnabled = false;
-    _organizerLabel.textContainer.lineFragmentPadding = 0;
-    _organizerLabel.textContainerInset = UIEdgeInsetsZero;
+    _organizerLabel = [YUtils initDisplayTextViewWithFont:CONTENT_FONT(12) textColor:KCOLOR_B5];
     [self.contentView addSubview:_organizerLabel];
-    _organizerLabel.font = CONTENT_FONT(12);
-    _organizerLabel.textColor = KCOLOR_B5;
     [_organizerLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.equalTo(_oranizerDes);
         make.left.equalTo(_activityStartTimeLabel);
@@ -291,7 +261,9 @@
 {
     NSDictionary *attributes = @{NSFontAttributeName:CONTENT_FONT(12)};
     CGFloat screenWidth = [UIScreen mainScreen].bounds.size.width;
-    CGSize textSize = [text boundingRectWithSize:CGSizeMake(screenWidth - SCALE_NUM(27), 9999) options:NSStringDrawingUsesLineFragmentOrigin|NSStringDrawingUsesFontLeading attributes:attributes context:nil].size;
+    CGSize textSize = [text boundingRectWithSize:CGSizeMake(screenWidth - SCALE_NUM(27), 9999)
+                                         options:NSStringDrawingUsesLineFragmentOrigin|NSStringDrawingUsesFontLeading
+                                      attributes:attributes context:nil].size;
     return textSize.height;
 }
 
@@ -306,7 +278,6 @@
         return NO;
     }
     return YES;
-    
 }
 
 

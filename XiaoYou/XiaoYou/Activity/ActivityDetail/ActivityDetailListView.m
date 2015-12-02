@@ -142,7 +142,9 @@
 {
     CGFloat height;
     if (indexPath.row == 0) {
-        height = [tableView fd_heightForCellWithIdentifier:REUSEID_DETAILCELL cacheByIndexPath:indexPath        configuration:^(ActivityDetailCell *cell) {
+        height = [tableView fd_heightForCellWithIdentifier:REUSEID_DETAILCELL
+                                          cacheByIndexPath:indexPath
+                                             configuration:^(ActivityDetailCell *cell) {
                 [cell setData:self.activityDetailArray[indexPath.row]];
         }];
     }
@@ -156,14 +158,16 @@
         Author *author = self.activityDetailArray[indexPath.row];
         if (author.studentNo == nil && author.uid == nil)
             return SCALE_NUM(160);
-        if (author.tagsCommon.count == 0 && author.propetiesCommon.count == 0 && indexPath.row == 1) {
+        if (author.tagsCommon.count == 0 && author.propetiesCommon.count == 0
+            && indexPath.row == 1) {
             return SCALE_NUM(140);
         }
         
         if (author.tagsCommon.count == 0 && author.propetiesCommon.count == 0) {
             return SCALE_NUM(90);
         }
-        height = [TagsCommonView calculatorHeightByTagsCommon:author.tagsCommon propetiesCommon:author.propetiesCommon];
+        height = [TagsCommonView calculatorHeightByTagsCommon:author.tagsCommon
+                                              propetiesCommon:author.propetiesCommon];
         height += (SCALE_NUM(49)) + (SCALE_NUM(60));
         if (indexPath.row != 1) {
             height -= SCALE_NUM(49);
@@ -193,7 +197,8 @@
             [cell setData:author WithType:type];
             
             //判断自己是否已经加入
-            if ([author.uid isEqualToString:[[YShareData defaultData] valueForKey:kShareData_UserID]]) {
+            if ([author.uid isEqualToString:[[YShareData defaultData]
+                                             valueForKey:kShareData_UserID]]) {
                 self.isContainsMe = YES;
             }
         }

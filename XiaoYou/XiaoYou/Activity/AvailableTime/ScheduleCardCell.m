@@ -63,9 +63,8 @@
 
 -(void)initView
 {
-    _startImageView = [[UIImageView alloc]init];
+    _startImageView = [YUtils initImageViewWithImageName:@"green_bar"];
     [self.contentView addSubview:_startImageView];
-    _startImageView.image = [UIImage imageNamed:@"green_bar"];
     [_startImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.mas_equalTo(SCALE_NUM(20));
         make.leading.mas_equalTo(0);
@@ -123,23 +122,16 @@
         make.left.equalTo(_timeLabel1);
     }];
     
-    _projectLabel2 = [[UILabel alloc]init];
+    _projectLabel2 = [YUtils initLabel:CONTENT_FONT(10) color:KCOLOR_B5 text:@""];
     [self.contentView addSubview:_projectLabel2];
-    _projectLabel2.text = @"XX社团集体大会";
-    _projectLabel2.textColor = KCOLOR_B5;
-    _projectLabel2.font = CONTENT_FONT(10);
     [_projectLabel2 mas_makeConstraints:^(MASConstraintMaker *make) {
-        //make.height.mas_equalTo(SCALE_NUM(12));
         make.left.equalTo(_projectLabel1);
         make.centerY.equalTo(_timeLabel2);
         make.right.equalTo(_projectLabel1);
     }];
     
-    _timeLabel3 = [[UILabel alloc]init];
+    _timeLabel3 = [YUtils initLabel:CONTENT_FONT(12) color:KCOLOR_B5 text:@""];
     [self.contentView addSubview:_timeLabel3];
-    _timeLabel3.text = @"10:00-12:00";
-    _timeLabel3.textColor = KCOLOR_B5;
-    _timeLabel3.font = CONTENT_FONT(12);
     _timeLabel3.numberOfLines = 1;
     _timeLabel3.lineBreakMode = NSLineBreakByTruncatingTail;
     [_timeLabel3 mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -149,22 +141,17 @@
         make.bottom.mas_equalTo(SCALE_NUM(-15));
     }];
     
-    _projectLabel3 = [[UILabel alloc]init];
+    _projectLabel3 = [YUtils initLabel:CONTENT_FONT(10) color:KCOLOR_B5 text:@""];
     [self.contentView addSubview:_projectLabel3];
-    _projectLabel3.text = @"读书社名人讲座";
-    _projectLabel3.font = CONTENT_FONT(10);
-    _projectLabel3.textColor = KCOLOR_B5;
     [_projectLabel3 mas_makeConstraints:^(MASConstraintMaker *make) {
-        //make.height.mas_equalTo(SCALE_NUM(12));
         make.left.equalTo(_projectLabel2);
         make.centerY.equalTo(_timeLabel3);
         make.right.equalTo(_projectLabel2);
     }];
     
-    _notHaveSchedule = [[UIImageView alloc]init];
-    [self.contentView addSubview:_notHaveSchedule];
+    _notHaveSchedule = [YUtils initImageViewWithImageName:@"no_data_schedule"];
     _notHaveSchedule.hidden = YES;
-    _notHaveSchedule.image = [UIImage imageNamed:@"no_data_schedule"];
+    [self.contentView addSubview:_notHaveSchedule];
     [_notHaveSchedule mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(_timeLabel1);
         make.bottom.equalTo(_timeLabel2.mas_top).offset(SCALE_NUM(-5)).priorityLow();

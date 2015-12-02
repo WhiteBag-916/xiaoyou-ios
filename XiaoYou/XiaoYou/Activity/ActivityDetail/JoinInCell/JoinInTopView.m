@@ -70,16 +70,12 @@
 
 -(void)initView
 {
-    _headImageView = [[UIImageView alloc]init];
+    _headImageView = [YUtils initImageViewWithImageName:@"headImage.jpg" cornerRadius:HEAD_IMAGE_SIZE/2.0];
     [self addSubview:_headImageView];
-    _headImageView.layer.cornerRadius = HEAD_IMAGE_SIZE/2.0;
-    _headImageView.clipsToBounds = YES;
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]
                                    initWithTarget:self action:@selector(gotoPersonDetail)];
     _headImageView.userInteractionEnabled = YES;
     [_headImageView addGestureRecognizer:tap];
-    
-    _headImageView.image = [UIImage imageNamed:@"headImage.jpg"];
     [_headImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.leading.mas_equalTo(HEADIMAGE_LEADING);
         make.top.mas_equalTo(HEADIMAGE_LEADING);
@@ -87,18 +83,15 @@
         make.height.mas_equalTo(HEAD_IMAGE_SIZE);
     }];
     
-    _nameLabel = [[UILabel alloc]init];
+    _nameLabel = [YUtils initLabel:CONTENT_FONT(14) color:nil text:@""];
     [self addSubview:_nameLabel];
-    _nameLabel.text = @"刘雨欣";
-    _nameLabel.font = CONTENT_FONT(14);
     [_nameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.mas_equalTo(_headImageView.centerY);
         make.left.equalTo(_headImageView.mas_right).offset(NAME_LEADING);
     }];
-     
-    _genderImageView = [[UIImageView alloc]init];
+    
+    _genderImageView = [YUtils initImageViewWithImageName:@"funny_detail_boy"];
     [self addSubview:_genderImageView];
-    _genderImageView.image = [UIImage imageNamed:@"funny_detail_boy"];
     [_genderImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(_nameLabel.mas_right).offset(SCALE_NUM(10));
         make.centerY.equalTo(_nameLabel.mas_centerY);
@@ -106,10 +99,8 @@
         make.width.mas_equalTo(SCALE_NUM(14));
     }];
     
-    _isSelfNameLabel = [[UILabel alloc]init];
+    _isSelfNameLabel = [YUtils initLabel:CONTENT_FONT(10) color:nil text:@"自己"];
     [self addSubview:_isSelfNameLabel];
-    _isSelfNameLabel.text = @"自己";
-    _isSelfNameLabel.font = CONTENT_FONT(10);
     [_isSelfNameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(_genderImageView.mas_right).offset(SCALE_NUM(8)).priorityLow();
         make.top.equalTo(_genderImageView);
@@ -118,13 +109,11 @@
     
     _addFriendImageView = [UIButton buttonWithType:UIButtonTypeSystem];
     [self addSubview:_addFriendImageView];
-    
     [_addFriendImageView addTarget:self action:@selector(clickAdd) forControlEvents:UIControlEventTouchUpInside];
     [_addFriendImageView setImage:[[UIImage imageNamed:@"mine-add-friend"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] forState:UIControlStateNormal];
     [_addFriendImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.trailing.mas_equalTo(SCALE_NUM(-12));
         make.top.equalTo(_headImageView.mas_top).offset(SCALE_NUM(2));
-        //make.bottom.equalTo(_isSelfNameLabel);
         make.height.mas_equalTo(SCALE_NUM(25));
         make.width.mas_equalTo(SCALE_NUM(25));
     }];

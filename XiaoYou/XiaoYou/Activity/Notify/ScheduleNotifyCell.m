@@ -52,19 +52,17 @@
 {
     //容器视图
     _wrapContentView = [[UIView alloc]init];
+    _wrapContentView = [YUtils initWrapContentViewWithBackGroundColor:[UIColor whiteColor]
+                                                          borderWidth:1
+                                                          borderColor:KCOLOR_B2
+                                                         cornerRadius:5];
     [self.contentView addSubview:_wrapContentView];
-    _wrapContentView.backgroundColor = [UIColor whiteColor];
-    _wrapContentView.layer.borderWidth = 1;
-    _wrapContentView.layer.borderColor = KCOLOR_B2.CGColor;
     [_wrapContentView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self);
         make.bottom.equalTo(self);
         make.left.equalTo(self.mas_left).offset(CELL_INSET);
         make.right.equalTo(self.mas_right).offset(-CELL_INSET);
     }];
-    
-    _wrapContentView.layer.cornerRadius = 5;
-    _wrapContentView.clipsToBounds = YES;
     
     //中间内容部分
     _topLineView = [[UIView alloc]init];
@@ -77,32 +75,23 @@
         make.height.mas_equalTo(1);
     }];
     
-    _remindTitleLabel = [[UILabel alloc]init];
+    _remindTitleLabel = [YUtils initLabel:CONTENT_FONT(15) color:KCOLOR_B4 text:@""];
     [self.wrapContentView addSubview:_remindTitleLabel];
-    _remindTitleLabel.text = @"";
-    _remindTitleLabel.textColor = KCOLOR_B4;
-    _remindTitleLabel.font = CONTENT_FONT(15);
     [_remindTitleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.leading.mas_equalTo(SCALE_NUM(5));
         make.top.equalTo(_wrapContentView);
         make.bottom.equalTo(_topLineView);
     }];
     
-    _scheduleNameLabel = [[UILabel alloc]init];
+    _scheduleNameLabel = [YUtils initLabel:CONTENT_FONT(12) color:KCOLOR_B3 text:@""];
     [self.wrapContentView addSubview:_scheduleNameLabel];
-    _scheduleNameLabel.font = CONTENT_FONT(12);
-    _scheduleNameLabel.text =  @"";
-    _scheduleNameLabel.textColor = KCOLOR_B3;
     [_scheduleNameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(_remindTitleLabel);
         make.top.equalTo(_topLineView).offset(SCALE_NUM(10));
     }];
     
-    _beginTimeLable = [[UILabel alloc]init];
+    _beginTimeLable = [YUtils initLabel:CONTENT_FONT(12) color:KCOLOR_B3 text:@""];
     [self.wrapContentView addSubview:_beginTimeLable];
-    _beginTimeLable.font = CONTENT_FONT(12);
-    _beginTimeLable.text = @"";
-    _beginTimeLable.textColor = KCOLOR_B3;
     [_beginTimeLable mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(_scheduleNameLabel);
         make.top.equalTo(_scheduleNameLabel.mas_bottom).offset(SCALE_NUM(10));
@@ -111,10 +100,10 @@
 
 -(void)setData:(NotifyInfoModel *)model
 {
-    
     _remindTitleLabel.text = model.em_push_title;
     _scheduleNameLabel.text = model.name;
-    _beginTimeLable.text = [NSString stringWithFormat:@"活动开始时间：%@",[TimeFormatterConvert timeConvertToFommtterNotice:model.startTime]];
+    _beginTimeLable.text = [NSString stringWithFormat:@"活动开始时间：%@",
+                            [TimeFormatterConvert timeConvertToFommtterNotice:model.startTime]];
 }
 
 @end

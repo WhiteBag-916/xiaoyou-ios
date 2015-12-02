@@ -196,7 +196,6 @@
 -(void)onNavigationLeftButtonClicked
 {
     RemindViewController *remindVC = [[RemindViewController alloc]init];
-    //[self.view.window.rootViewController presentViewController:remindVC animated:YES completion:nil];
     [self.navigationController pushViewController:remindVC animated:YES needHiddenBottomBar:YES];
     
     [_leftNavBar setImage:[[UIImage imageNamed:@"have_time_msg"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] forState:UIControlStateNormal];
