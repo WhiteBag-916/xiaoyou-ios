@@ -30,7 +30,7 @@ NSString *const kDateAndTimeCollectionViewCell = @"DateAndTimeCollectionViewCell
     self = [super initWithFrame:frame];
     if (self) {
         [self changUI];
-        _dataManager = [ActivityReleaseDataManager shareActivityReleaseDataManager];
+        self.dataManager = [ActivityReleaseDataManager shareActivityReleaseDataManager];
     }
     return self;
 }
@@ -250,14 +250,18 @@ NSString *const kDateAndTimeCollectionViewCell = @"DateAndTimeCollectionViewCell
     NSDateFormatter * formatter = [[NSDateFormatter alloc] init];
     [formatter setDateFormat:@"yyyy年MM月dd日 a HH:mm"];
     
-    if (![_dataManager.ActivityDateBeginText isEqualToString:@"请选择活动开始时间"] && _dataManager.ActivityDateBeginText != nil &&
-        ![_dataManager.ActivityDateEndText isEqualToString:@"请选择活动开始时间"] && _dataManager.ActivityDateEndText != nil)
+    if (![_dataManager.ActivityDateBeginText isEqualToString:@"请选择活动开始时间"] &&
+        _dataManager.ActivityDateBeginText != nil &&
+        ![_dataManager.ActivityDateEndText isEqualToString:@"请选择活动开始时间"] &&
+        _dataManager.ActivityDateEndText != nil)
     {
         NSTimeInterval timeBetween1 = [[formatter dateFromString:_dataManager.ActivityDateEndText] timeIntervalSinceDate:[formatter dateFromString:_dataManager.ActivityDateBeginText]];
         if (timeBetween1 < 900)
         {
             NSDictionary * dic = @{@"isEnabel":@NO};
-            [[NSNotificationCenter defaultCenter] postNotificationName:KNotification_Enabel_ReleaseBtn object:dic];
+            [[NSNotificationCenter defaultCenter]
+             postNotificationName:KNotification_Enabel_ReleaseBtn
+             object:dic];
             [YUtils showTitle:@"活动时长不能小于15分钟" hideAfter:2];
         }
         else
@@ -268,7 +272,9 @@ NSString *const kDateAndTimeCollectionViewCell = @"DateAndTimeCollectionViewCell
                 if (timeBetween2 < 0)
                 {
                     NSDictionary * dic = @{@"isEnabel":@NO};
-                    [[NSNotificationCenter defaultCenter] postNotificationName:KNotification_Enabel_ReleaseBtn object:dic];
+                    [[NSNotificationCenter defaultCenter]
+                     postNotificationName:KNotification_Enabel_ReleaseBtn
+                     object:dic];
                     [YUtils showTitle:@"活动开始时间要大于当前时间" hideAfter:2];
                 }
                 else

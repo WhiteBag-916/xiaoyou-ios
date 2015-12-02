@@ -12,7 +12,8 @@
 
 NSString *const kNameCollectionViewCell = @"NameCollectionViewCellId";
 
-@interface NameCollectionViewCell ()<UITextViewDelegate>
+@interface NameCollectionViewCell ()
+<UITextViewDelegate>
 
 @property(nonatomic,strong)YTextView * textView;
 

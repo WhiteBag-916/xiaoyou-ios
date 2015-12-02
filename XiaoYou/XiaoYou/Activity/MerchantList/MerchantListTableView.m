@@ -13,7 +13,8 @@
 
 #define KPAGENUM    6
 
-@interface MerchantListTableView ()<UITableViewDataSource,UITableViewDelegate>
+@interface MerchantListTableView ()
+<UITableViewDataSource,UITableViewDelegate>
 
 @property(nonatomic,strong)NSMutableArray * dataSourceArr;
 @property (nonatomic,assign) NSInteger currentIndex;
@@ -123,7 +124,8 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    MerchantDetailViewController * merchantDetailViewController = [[MerchantDetailViewController alloc] initWithModel:_dataSourceArr[indexPath.row]];
+    MerchantDetailViewController * merchantDetailViewController =
+    [[MerchantDetailViewController alloc] initWithModel:_dataSourceArr[indexPath.row]];
     [self.viewController.navigationController
      pushViewController:merchantDetailViewController animated:YES];
 }

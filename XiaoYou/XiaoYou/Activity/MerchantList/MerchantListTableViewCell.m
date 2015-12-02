@@ -37,10 +37,10 @@ NSString *const kMerchantListTableViewCell = @"MerchantListTableViewCellId";
 
 -(void)setUpUI
 {
-    self.headImageView = [[UIImageView alloc] init];
-    _headImageView.backgroundColor = [UIColor orangeColor];
-    _headImageView.layer.cornerRadius = 4;
-    _headImageView.clipsToBounds = YES;
+    self.headImageView = [YUtils initImageViewWithBackgroundColor:[UIColor clearColor]
+                                                     cornerRadius:4
+                                                    clipsToBounds:YES
+                                                            image:nil];
     [self.contentView addSubview:_headImageView];
     [_headImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.mas_equalTo(SCALE_NUM(15));

@@ -9,7 +9,8 @@
 #import "MiddleInfoView.h"
 #import "SupplierShopModel.h"
 
-@interface MiddleInfoView ()<UIAlertViewDelegate>
+@interface MiddleInfoView ()
+<UIAlertViewDelegate>
 
 @property(nonatomic,strong)UIImageView * houseImageView;
 @property(nonatomic,strong)UILabel * houseLabel;
@@ -40,9 +41,7 @@
 -(void)setUpUI
 {
     //房子
-    _houseImageView = [[UIImageView alloc] init];
-    _houseImageView.backgroundColor = [UIColor clearColor];
-    _houseImageView.image = [UIImage imageNamed:@"scanf_code_house"];
+    self.houseImageView = [YUtils initImageViewWithImageName:@"scanf_code_house"];
     [self addSubview:_houseImageView];
     [_houseImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.mas_equalTo(SCALE_NUM(24));
@@ -51,11 +50,12 @@
         make.height.mas_equalTo(SCALE_NUM(11));
     }];
     
-    _houseLabel = [[UILabel alloc] init];
-    _houseLabel.text = _model.supplierShopModel.name;
-    _houseLabel.font = CONTENT_FONT(SCALE_NUM(12));
-    _houseLabel.textColor = KCOLOR_B3;
-    _houseLabel.textAlignment = NSTextAlignmentLeft;
+    _houseLabel = [YUtils initLabelWithBackgroundColor:[UIColor clearColor]
+                                                  font:CONTENT_FONT(SCALE_NUM(12))
+                                         numberOfLines:1
+                                         textAlignment:NSTextAlignmentLeft
+                                             textColor:KCOLOR_B3
+                                                  text:_model.supplierShopModel.name];
     [self addSubview:_houseLabel];
     [_houseLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.equalTo(_houseImageView);
@@ -65,7 +65,7 @@
     }];
     
     //电话
-    _phoneImageView = [[UIImageView alloc] init];
+    _phoneImageView = [YUtils initImageViewWithImageName:@"scanf_code_phone"];
     _phoneImageView.backgroundColor = [UIColor clearColor];
     _phoneImageView.image = [UIImage imageNamed:@"scanf_code_phone"];
     [self addSubview:_phoneImageView];
@@ -76,7 +76,12 @@
         make.height.mas_equalTo(SCALE_NUM(12));
     }];
     
-    _phoneLabel = [[UILabel alloc] init];
+    _phoneLabel = [YUtils initLabelWithBackgroundColor:[UIColor clearColor]
+                                                  font:CONTENT_FONT(SCALE_NUM(12))
+                                         numberOfLines:1
+                                         textAlignment:NSTextAlignmentLeft
+                                             textColor:KCOLOR_g1
+                                                  text:_model.supplierShopModel.telephone];
     _phoneLabel.text = _model.supplierShopModel.telephone;
     _phoneLabel.font = CONTENT_FONT(SCALE_NUM(12));
     _phoneLabel.textColor = KCOLOR_g1;
@@ -88,19 +93,14 @@
         make.height.mas_equalTo(SCALE_NUM(12));
     }];
     
-    UIButton * phoneButton = [[UIButton alloc] init];
-    phoneButton.backgroundColor = [UIColor clearColor];
+    UIButton * phoneButton = [YUtils initButtonWithBackgroundColor:[UIColor clearColor] target:self action:@selector(callPhoneNum)];
     [self addSubview:phoneButton];
     [phoneButton mas_makeConstraints:^(MASConstraintMaker *make) {
         make.right.equalTo(_phoneLabel);
         make.left.top.bottom.equalTo(_phoneImageView);
     }];
-    [phoneButton addTarget:self action:@selector(callPhoneNum)
-          forControlEvents:UIControlEventTouchUpInside];
-    
     //位置
-    _placeImageView = [[UIImageView alloc] init];
-    _placeImageView.backgroundColor = [UIColor clearColor];
+    _placeImageView = [YUtils initImageViewWithImageName:@"scanf_code_place"];
     _placeImageView.image = [UIImage imageNamed:@"scanf_code_place"];
     [self addSubview:_placeImageView];
     [_placeImageView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -110,14 +110,12 @@
         make.height.mas_equalTo(SCALE_NUM(12));
     }];
     
-    _placeLabel = [[UILabel alloc] init];
-    _placeLabel.text = _model.supplierShopModel.address;
-    _placeLabel.font = CONTENT_FONT(SCALE_NUM(12));
-    _placeLabel.textColor = KCOLOR_B3;
-    _placeLabel.backgroundColor = [UIColor clearColor];
-    _placeLabel.textAlignment = NSTextAlignmentLeft;
-    _placeLabel.numberOfLines = 0;
-    
+    _placeLabel = [YUtils initLabelWithBackgroundColor:[UIColor clearColor]
+                                                  font:CONTENT_FONT(SCALE_NUM(12))
+                                         numberOfLines:0
+                                         textAlignment:NSTextAlignmentLeft
+                                             textColor:KCOLOR_B3
+                                                  text:_model.supplierShopModel.address];
     [self addSubview:_placeLabel];
     [_placeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.equalTo(_placeImageView);
