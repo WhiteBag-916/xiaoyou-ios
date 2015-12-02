@@ -120,17 +120,8 @@
         make.left.equalTo(_imageGroupView);
     }];
     
-    _signUpTimeLabel = [YUtils ]
-    _signUpTimeLabel = [[UITextView alloc]init];
-    _signUpTimeLabel.userInteractionEnabled = NO;
-    _signUpTimeLabel.editable = NO;
-    _signUpTimeLabel.scrollEnabled = false;
-    _signUpTimeLabel.textContainer.lineFragmentPadding = 0;
-    _signUpTimeLabel.textContainerInset = UIEdgeInsetsZero;
+    _signUpTimeLabel = [YUtils initDisplayTextViewWithFont:CONTENT_FONT(12) textColor:KCOLOR_B5];
     [self.contentView addSubview:_signUpTimeLabel];
-    _signUpTimeLabel.text = @"2015/10/25 06:00";
-    _signUpTimeLabel.font = CONTENT_FONT(12);
-    _signUpTimeLabel.textColor = KCOLOR_B5;
     [_signUpTimeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.equalTo(_signUpTimeDes);
         make.left.equalTo(_signUpTimeDes.mas_right).offset(SCALE_NUM(15)).priorityHigh();
@@ -142,27 +133,16 @@
         }];
     }
     
-    _activityTimeDes = [[UITextView alloc]init];
-    _activityTimeDes.userInteractionEnabled = NO;
-    _activityTimeDes.editable = NO;
-    _activityTimeDes.scrollEnabled = false;
-    _activityTimeDes.textContainer.lineFragmentPadding = 0;
-    _activityTimeDes.textContainerInset = UIEdgeInsetsZero;
+    _activityTimeDes = [YUtils initDisplayTextViewWithFont:CONTENT_FONT(12) textColor:KCOLOR_B5];
     [self.contentView addSubview:_activityTimeDes];
-    _activityTimeDes.font = CONTENT_FONT(12);
-    _activityTimeDes.textColor = KCOLOR_B5;
     _activityTimeDes.text = @"活动开始时间：";
     [_activityTimeDes mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(_signUpTimeDes.mas_bottom).offset(SCALE_NUM(15));
         make.left.equalTo(_signUpTimeDes);
     }];
-    
-    _activityStartTimeLabel = [[UITextView alloc]init];
-    _activityStartTimeLabel.userInteractionEnabled = NO;
-    _activityStartTimeLabel.editable = NO;
-    _activityStartTimeLabel.scrollEnabled = false;
-    _activityStartTimeLabel.textContainer.lineFragmentPadding = 0;
-    _activityStartTimeLabel.textContainerInset = UIEdgeInsetsZero;
+    
+    _activityStartTimeLabel = [YUtils initDisplayTextViewWithFont:CONTENT_FONT(12)
+                                                        textColor:KCOLOR_B5];
     [self.contentView addSubview:_activityStartTimeLabel];
     _activityStartTimeLabel.font = CONTENT_FONT(12);
     _activityStartTimeLabel.textColor = KCOLOR_B5;
