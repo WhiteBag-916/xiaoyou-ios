@@ -25,7 +25,9 @@
 
 +(RemindHeadView *)remindHeadViewWithTableView:(UITableView *)tableView
 {
-    UITableViewHeaderFooterView *remindHeadView = [tableView dequeueReusableHeaderFooterViewWithIdentifier:REUSERID];
+    UITableViewHeaderFooterView *remindHeadView = [tableView
+                                                   dequeueReusableHeaderFooterViewWithIdentifier:
+                                                   REUSERID];
     if (!remindHeadView) {
         remindHeadView = [[RemindHeadView alloc]initWithReuseIdentifier:REUSERID];
     }
@@ -42,7 +44,6 @@
         make.centerX.equalTo(self.mas_centerX);
         make.centerY.equalTo(self.mas_centerY);
     }];
-    _timeLabel.text = @"今天 18:22";
 }
 
 -(void)setData:(NoticeInfo *)model

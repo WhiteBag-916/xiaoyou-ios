@@ -62,7 +62,7 @@
 {
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
         self.selectionStyle = UITableViewCellSelectionStyleNone;
-        [self initTopViewWithType:DETAIL_INFO];
+        [self initTopViewWithType];
         [self initMiddleView];
         [self initBottomView];
     }
@@ -176,35 +176,14 @@
     }
 }
 
-//- (NSMutableAttributedString*)handleLink:(NSMutableAttributedString*)contentAttrString
-//{
-//    NSMutableAttributedString *ret = [[NSMutableAttributedString alloc]initWithAttributedString:contentAttrString];
-//    NSString *string = [contentAttrString string];
-//    NSError *error;
-//    NSString *regulaStr = @"((http[s]{0,1}|ftp)://[a-zA-Z0-9\\.\\-]+\\.([a-zA-Z]{2,4})(:\\d+)?(/[a-zA-Z0-9\\.\\-~!@#$%^&*+?:_/=<>]*)?)|(www.[a-zA-Z0-9\\.\\-]+\\.([a-zA-Z]{2,4})(:\\d+)?(/[a-zA-Z0-9\\.\\-~!@#$%^&*+?:_/=<>]*)?)";
-//    NSRegularExpression *regex =[NSRegularExpression regularExpressionWithPattern:regulaStr options:NSRegularExpressionCaseInsensitive error:&error];
-//    NSArray *arrayOfAllMatches = [regex matchesInString:string options:0 range:NSMakeRange(0, [string length])];
-//    for(NSTextCheckingResult *match in arrayOfAllMatches)
-//    {
-//        NSString* substringForMatch = [string substringWithRange:match.range];
-//        NSRange range = [string rangeOfString:substringForMatch];
-//        [ret removeAttribute:NSFontAttributeName range:range];
-//        [ret removeAttribute:NSParagraphStyleAttributeName range:range];
-//        [ret removeAttribute:NSLinkAttributeName range:range];
-//        [ret addAttribute:NSLinkAttributeName value:substringForMatch range:range];
-//    }
-//    return ret;
-//}
-
-
-
--(void)initTopViewWithType:(TOPVIEWTYPE)type {
+-(void)initTopViewWithType {
     _headImageView = [[UIImageView alloc]init];
     [self.contentView addSubview:_headImageView];
     _headImageView.layer.cornerRadius = HEADIMAGEVIEW_WIDTH/2.0;
     _headImageView.layer.masksToBounds = YES;
     _headImageView.userInteractionEnabled = YES;
-    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(gotoPersonDetail)];
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]
+                                   initWithTarget:self action:@selector(gotoPersonDetail)];
     [_headImageView addGestureRecognizer:tap];
     _headImageView.image = [UIImage imageNamed:@"default_head"];
     [_headImageView mas_makeConstraints:^(MASConstraintMaker *make) {

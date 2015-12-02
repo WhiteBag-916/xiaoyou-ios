@@ -26,7 +26,8 @@
 
 -(RemindListTableView *)remindList {
     if (!_remindList) {
-        _remindList = [[RemindListTableView alloc]initWithFrame:CGRectZero style:UITableViewStyleGrouped];
+        _remindList = [[RemindListTableView alloc]initWithFrame:CGRectZero
+                                                          style:UITableViewStyleGrouped];
         [self.view addSubview:_remindList];
         [_remindList mas_makeConstraints:^(MASConstraintMaker *make) {
             make.top.equalTo(self.view);

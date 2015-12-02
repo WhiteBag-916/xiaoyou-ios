@@ -74,7 +74,8 @@
                 make.centerY.equalTo(_contactHeadImageView);
             }];
             
-            _timeLabel = [YUtils initLabel:CONTENT_FONT(11) color:KCOLORWHITE_696969 text:@"刚刚" frame:CGRectZero alignment:NSTextAlignmentLeft];
+            _timeLabel = [YUtils initLabel:CONTENT_FONT(11) color:KCOLORWHITE_696969
+                                      text:@"刚刚" frame:CGRectZero alignment:NSTextAlignmentLeft];
             [self addSubview:_timeLabel];
             [_timeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
                 make.left.equalTo(_contactNameLabel.mas_right).offset(KTIMEMARGIN_LEFT);
@@ -101,14 +102,16 @@
         FeedInfo *data = inData;
         [_contactHeadImageView setData:data.author.uid imageUrl:data.author.headPic];
         _contactNameLabel.text = data.author.name;
-        _timeLabel.text = [YUtils distanceTimeToday:[NSDate dateWithTimeIntervalSince1970:data.feed.createTime/1000]];
+        _timeLabel.text = [YUtils distanceTimeToday:
+                           [NSDate dateWithTimeIntervalSince1970:data.feed.createTime/1000]];
         [_tagList updateWithTag:data.author.propetiesCommon];
     }
     if ([inData isKindOfClass:[CommentListItems class]]) {
         CommentListItems *data = inData;
         [_contactHeadImageView setData:data.author.uid imageUrl:data.author.headPic];
         _contactNameLabel.text = data.author.name;
-        _timeLabel.text = [YUtils distanceTimeToday:[NSDate dateWithTimeIntervalSince1970:data.comment.createTime/1000]];
+        _timeLabel.text = [YUtils distanceTimeToday:
+                           [NSDate dateWithTimeIntervalSince1970:data.comment.createTime/1000]];
         [_tagList updateWithTag:data.author.propetiesCommon];
     }
 }

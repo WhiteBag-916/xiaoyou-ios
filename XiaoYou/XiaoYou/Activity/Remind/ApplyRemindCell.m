@@ -11,6 +11,7 @@
 #import "Tags.h"
 #import "UIImageView+Ext.h"
 #import "ProfileInfo.h"
+#import "YUtils+UI.h"
 
 #define CELL_INSET          SCALE_NUM(12)
 #define TOP_CELL_HEIGHT     SCALE_NUM(44)
@@ -45,7 +46,8 @@
 {
     ApplyRemindCell *cell = [tableView dequeueReusableCellWithIdentifier:REUSERID];
     if (!cell) {
-        cell = [[ApplyRemindCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:REUSERID];
+        cell = [[ApplyRemindCell alloc]initWithStyle:UITableViewCellStyleDefault
+                                     reuseIdentifier:REUSERID];
     }
     return cell;
 }
@@ -158,14 +160,11 @@
     [_connectTagView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.equalTo(_headImageView.mas_centerY);
         make.trailing.mas_equalTo(SCALE_NUM(-10));
-        //make.height.mas_equalTo(SCALE_NUM(20));
     }];
     
     _applyContentLable = [[UILabel alloc]init];
     [self.wrapContentView addSubview:_applyContentLable];
     _applyContentLable.numberOfLines = 1;
-//    _applyContentLable.lineBreakMode = NSLineBreakByTruncatingTail;
-    _applyContentLable.text = @"参加了你的%@活动!";
     _applyContentLable.textColor = KCOLOR_B3;
     _applyContentLable.font = CONTENT_FONT(12);
     [_applyContentLable mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -191,9 +190,11 @@
     Author *info = model.activityUser;
     [_headImageView setFaceImageWithUrl:info.headPic];
     _nameLabel.text = info.name;
-    _applyContentLable.text = [NSString stringWithFormat:@"参加了你的%@活动!",model.activityName];
+    _applyContentLable.text = [NSString
+                               stringWithFormat:@"参加了你的%@活动!",model.activityName];
     
-    [_applyContentLable setText:[NSString stringWithFormat:@"参加了你的%@活动!",model.activityName] lineSpacing:5.0];
+    [_applyContentLable setText:[NSString stringWithFormat:@"参加了你的%@活动!",model.activityName]
+                    lineSpacing:5.0];
     [_connectTagView updateWithTag:info.propetiesCommon];
 }
 

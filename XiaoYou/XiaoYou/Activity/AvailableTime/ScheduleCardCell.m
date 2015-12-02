@@ -35,7 +35,8 @@
 {
     ScheduleCardCell *cell = [tableView dequeueReusableCellWithIdentifier:REUSEID];
     if (!cell) {
-        cell = [[ScheduleCardCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:REUSEID];
+        cell = [[ScheduleCardCell alloc]initWithStyle:UITableViewCellStyleDefault
+                                      reuseIdentifier:REUSEID];
     }
     return cell;
 }
@@ -176,7 +177,9 @@
         Scheduling *schedule = [scheduleArr objectAtIndex:i];
         if (i == 0) {
             _timeLabel1.text    = schedule.content;
-            _projectLabel1.text = [TimeFormatterConvert timeConvertToFommtterScheduleStartTime:schedule.startTime EndTime:schedule.endTime];
+            _projectLabel1.text = [TimeFormatterConvert
+                                   timeConvertToFommtterScheduleStartTime:schedule.startTime
+                                   EndTime:schedule.endTime];
             if ([_projectLabel1.text isEqualToString:@"进行中"]) {
                 _projectLabel1.textColor = KCOLOR_g1;
             } else
@@ -189,7 +192,9 @@
             _projectLabel3.text = @"";
         } else if (i == 1) {
             _timeLabel2.text = schedule.content;
-            _projectLabel2.text = [TimeFormatterConvert timeConvertToFommtterScheduleStartTime:schedule.startTime EndTime:schedule.endTime];
+            _projectLabel2.text = [TimeFormatterConvert
+                                   timeConvertToFommtterScheduleStartTime:schedule.startTime
+                                   EndTime:schedule.endTime];
             if ([_projectLabel2.text isEqualToString:@"进行中"]) {
                 _projectLabel2.textColor = KCOLOR_g1;
             } else
@@ -200,7 +205,9 @@
             _projectLabel3.text = @"";
         } else if (i == 2) {
             _timeLabel3.text = schedule.content;
-            _projectLabel3.text = [TimeFormatterConvert timeConvertToFommtterScheduleStartTime:schedule.startTime EndTime:schedule.endTime];
+            _projectLabel3.text = [TimeFormatterConvert
+                                   timeConvertToFommtterScheduleStartTime:schedule.startTime
+                                   EndTime:schedule.endTime];
             if ([_projectLabel3.text isEqualToString:@"进行中"]) {
                 _projectLabel3.textColor = KCOLOR_g1;
             } else {
@@ -217,12 +224,8 @@
         _projectLabel3.text = @"";
         _notHaveSchedule.hidden = NO;
     }
-    if (scheduleArr.count != 0) {
-        _notHaveSchedule.image = nil;
-    } else
-    {
-        _notHaveSchedule.image = [UIImage imageNamed:@"no_data_schedule"];
-    }
+    
+    _notHaveSchedule.image = scheduleArr.count == 0 ? [UIImage imageNamed:@"no_data_schedule"]:nil;
 }
 
 //设置消息未读提醒

@@ -39,7 +39,8 @@
 
 -(NotifyListView *)notifyListView {
     if (!_notifyListView) {
-        _notifyListView = [[NotifyListView alloc]initWithFrame:CGRectZero style:UITableViewStyleGrouped];
+        _notifyListView = [[NotifyListView alloc]initWithFrame:CGRectZero
+                                                         style:UITableViewStyleGrouped];
         [self.view addSubview:_notifyListView];
         [_notifyListView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.top.equalTo(self.view);

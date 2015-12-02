@@ -190,7 +190,8 @@
             info.internalBaseClassIdentifier = [model.idStr doubleValue];
             info.type = @"user_scheduling";
             ScheduleDetailViewController *ScheduleVC = [[ScheduleDetailViewController alloc]initWithInfo:info];
-            [self.viewController.navigationController pushViewController:ScheduleVC animated:YES needHiddenBottomBar:YES];
+            [self.viewController.navigationController pushViewController:ScheduleVC animated:YES
+                                                     needHiddenBottomBar:YES];
             break;
         }
         case ACTIVITY_ENROLL: //用户报名活动提醒

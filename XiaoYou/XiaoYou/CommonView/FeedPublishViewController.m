@@ -105,7 +105,8 @@
     [self showCustomNavigationCancelButton];
     [self showCustomNavigationSureButton];
     
-    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self.view action:@selector(endEditing:)];
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]
+                                   initWithTarget:self.view action:@selector(endEditing:)];
     [self.view addGestureRecognizer:tap];
     UIScrollView *scroll = [[UIScrollView alloc] init];
     [self.view addSubview:scroll];

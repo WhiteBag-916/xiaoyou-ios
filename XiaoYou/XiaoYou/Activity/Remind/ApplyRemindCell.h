@@ -18,6 +18,7 @@
 #import "YTableViewCell.h"
 #import "NotifyInfoModel.h"
 typedef enum : NSUInteger {
+    NON_DEFAULT,        //默认值
     WAIT_SELECT,        //等待选择
     AGREED,             //同意
     IGNORED,            //忽略

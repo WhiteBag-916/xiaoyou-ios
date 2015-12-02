@@ -104,7 +104,9 @@
 
 - (void)sendRequest {
     _currentIndex = [self isHeaderRefresh] ? 0 : self.remindListArray.count;
-    [[NoticeManager sharedInstance] getMyNoticeInfoWithLimiteStart:_currentIndex limiteEnd:_currentIndex + KPAGENUM block:^(YActionMessage *message) {
+    [[NoticeManager sharedInstance] getMyNoticeInfoWithLimiteStart:_currentIndex
+                                                         limiteEnd:_currentIndex + KPAGENUM
+                                                             block:^(YActionMessage *message) {
         if (message.isSuccess) {
             if ([self isHeaderRefresh]) {
                 [_remindListArray removeAllObjects];
@@ -142,7 +144,9 @@
     
     //有人参加你的活动
     if (info.activityOwner) {
-        cellHeight = [tableView fd_heightForCellWithIdentifier:APPLYREUSEID cacheByIndexPath:indexPath configuration:^(ApplyRemindCell *cell) {
+        cellHeight = [tableView fd_heightForCellWithIdentifier:APPLYREUSEID
+                                              cacheByIndexPath:indexPath
+                                                 configuration:^(ApplyRemindCell *cell) {
             [cell setData:info];
         }];
     } else  //参加别人的活动
@@ -215,15 +219,18 @@
         info = self.remindListArray[indexPath.section];
     if (info.activityOwner) {
         NSString *publishID = [NSString stringWithFormat:@"%ld",(long)info.activityPublishedId];
-        ActivityDetailViewController *detailVC = [[ActivityDetailViewController alloc]initWithPublishID:publishID];
-        [self.viewController.navigationController pushViewController:detailVC animated:YES needHiddenBottomBar:YES];
+        ActivityDetailViewController *detailVC = [[ActivityDetailViewController alloc]
+                                                  initWithPublishID:publishID];
+        [self.viewController.navigationController pushViewController:detailVC animated:YES
+                                                 needHiddenBottomBar:YES];
     }
 }
 
 
 -(CELL_TYPE)cellTypeByModelString:(NSString*)modelStr
 {
-    NSDictionary *dict = @{@"check_pass":@(AUDIT_PASSED),@"no_pass":@(AUDIT_NOT_PASSED),@"no_check":@(NOT_NEED_CHECK),@"need_check":@(NEED_CHECK)};
+    NSDictionary *dict = @{@"check_pass":@(AUDIT_PASSED),@"no_pass":@(AUDIT_NOT_PASSED),@"no_check":
+                               @(NOT_NEED_CHECK),@"need_check":@(NEED_CHECK)};
     return [dict[modelStr] integerValue];
 }
 

@@ -74,7 +74,8 @@
     [self addSubview:_headImageView];
     _headImageView.layer.cornerRadius = HEAD_IMAGE_SIZE/2.0;
     _headImageView.clipsToBounds = YES;
-    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(gotoPersonDetail)];
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]
+                                   initWithTarget:self action:@selector(gotoPersonDetail)];
     _headImageView.userInteractionEnabled = YES;
     [_headImageView addGestureRecognizer:tap];
     
@@ -148,14 +149,16 @@
 //添加好友
 - (void)clickAdd {
     //展示提示
-    YCommonAlertView *alert = [[YCommonAlertView alloc] initWithTitle:nil
-                                                              message:[NSString stringWithFormat:@"确定向%@发送好友申请吗？", _author.name]
+    YCommonAlertView *alert = [[YCommonAlertView alloc]
+                               initWithTitle:nil message:
+                               [NSString stringWithFormat:@"确定向%@发送好友申请吗？", _author.name]
                                                          buttonTitles:@"取消",@"确认", nil];
     [alert clickedButtonHandler:^(NSInteger index) {
         if (1 == index) {
             [YUtils showHUDWithTitle:@"发送中"];
-            [[ContactManager sharedInstance] submitFriendApply:_author.uid block:^(YActionMessage *message) {
-                [YUtils hiddenProgressHUD];
+            [[ContactManager sharedInstance]
+             submitFriendApply:_author.uid block:^(YActionMessage *message) {
+                 [YUtils hiddenProgressHUD];
                 if (message.isSuccess) {
                     _author.friendStatus = @"2";
                     [self updateStatus:_author.friendStatus];
@@ -174,31 +177,13 @@
     ProfileMyViewController *myVC = [[ProfileMyViewController alloc]init];
     
     if ([_author.uid isEqualToString:[[YShareData defaultData] valueForKey:kShareData_UserID]]) {
-        [self.viewController.navigationController pushViewController:myVC animated:YES needHiddenBottomBar:YES];
+        [self.viewController.navigationController pushViewController:myVC animated:YES
+                                                 needHiddenBottomBar:YES];
     }
     else {
-        [self.viewController.navigationController pushViewController:detailVC animated:YES needHiddenBottomBar:YES];
+        [self.viewController.navigationController pushViewController:detailVC animated:YES
+                                                 needHiddenBottomBar:YES];
     }
-    
-    
-//    ActivityOrganizer *organizer = self.detailModel.activityOrganizer;
-//    XYContactsInfoDetailViewController *detailVC = [[XYContactsInfoDetailViewController alloc]init];
-//    detailVC.uid = organizer.uid;
-//    
-//    
-//    
-//    if ([organizer.userType isEqualToString:@"user"]) {
-//        if ([organizer.uid isEqualToString:[[YShareData defaultData] valueForKey:kShareData_UserID]]) {
-//            //ProfileViewController
-//            ProfileViewController *myVC = [[ProfileViewController alloc]init];
-//            [self.viewController.navigationController pushViewController:myVC animated:YES needHiddenBottomBar:YES];
-//        } else {
-//            [self.viewController.navigationController pushViewController:detailVC animated:YES needHiddenBottomBar:YES];
-//        }
-//    } else
-//    {
-//        [self.viewController.navigationController pushViewController:groupVC animated:YES needHiddenBottomBar:YES];
-//    }
 }
 
 @end

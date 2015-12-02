@@ -30,7 +30,8 @@
 }
 
 -(void)initView {
-    _profileListView = [[ProfilePersonListTableView alloc]initWIthType:ProfilePersonListTypeNoticePerson];
+    _profileListView = [[ProfilePersonListTableView alloc]
+                        initWIthType:ProfilePersonListTypeNoticePerson];
     _profileListView.publishID = self.publishID;
     _profileListView.backgroundColor = KCOLORWHITE;
     [self.view addSubview:_profileListView];

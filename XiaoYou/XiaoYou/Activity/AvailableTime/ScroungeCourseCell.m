@@ -24,7 +24,8 @@
 {
     ScroungeCourseCell *cell = [tableView dequeueReusableCellWithIdentifier:REUSEID];
     if (!cell) {
-        cell = [[ScroungeCourseCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:REUSEID];
+        cell = [[ScroungeCourseCell alloc]initWithStyle:UITableViewCellStyleDefault
+                                        reuseIdentifier:REUSEID];
     }
     return cell;
 }
@@ -63,7 +64,7 @@
     
     _titleLabel = [[UILabel alloc]init];
     [self.contentView addSubview:_titleLabel];
-    _titleLabel.text = @"你可以蹭的课";
+    _titleLabel.text = @"";
     _titleLabel.textColor = KCOLOR_B4;
     _titleLabel.font = CONTENT_FONT(15);
     [_titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -76,7 +77,7 @@
     [self.contentView addSubview:_desLabel];
     _desLabel.font = CONTENT_FONT(12);
     _desLabel.textColor = KCOLOR_B5;
-    _desLabel.text = @"刘涛老师带你对饭店是非得失";
+    _desLabel.text = @"";
     [_desLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.height.mas_equalTo(SCALE_NUM(12));
         make.top.equalTo(_titleLabel.mas_bottom).offset(SCALE_NUM(20));

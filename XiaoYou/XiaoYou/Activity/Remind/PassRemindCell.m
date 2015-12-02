@@ -199,7 +199,8 @@
     _middleButton = [UIButton buttonWithType:UIButtonTypeSystem];
     [self.wrapContentView addSubview:_middleButton];
     _middleButton.backgroundColor = [UIColor clearColor];
-    [_middleButton addTarget:self action:@selector(middleAction:) forControlEvents:UIControlEventTouchUpInside];
+    [_middleButton addTarget:self action:@selector(middleAction:)
+            forControlEvents:UIControlEventTouchUpInside];
     [_middleButton mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(_topLineView.mas_bottom);
         make.leading.mas_equalTo(0);
@@ -210,7 +211,8 @@
     _bottomButton = [UIButton buttonWithType:UIButtonTypeSystem];
     [self.wrapContentView addSubview:_bottomButton];
     _bottomButton.backgroundColor = [UIColor clearColor];
-    [_bottomButton addTarget:self action:@selector(bottomAction:) forControlEvents:UIControlEventTouchUpInside];
+    [_bottomButton addTarget:self action:@selector(bottomAction)
+            forControlEvents:UIControlEventTouchUpInside];
     [_bottomButton mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(_bottomLineView);
         make.leading.mas_equalTo(0);
@@ -230,11 +232,12 @@
         publishID = [NSString stringWithFormat:@"%ld",(long)self.model.activityPublishedId];
     }
     ActivityDetailViewController *detailVC = [[ActivityDetailViewController alloc]initWithPublishID:publishID];
-    [self.viewController.navigationController pushViewController:detailVC animated:YES needHiddenBottomBar:YES];
+    [self.viewController.navigationController pushViewController:detailVC animated:YES
+                                             needHiddenBottomBar:YES];
 }
 
 //点击下面部分cell
--(void)bottomAction:(UIButton*)btn {
+-(void)bottomAction {
     NSString *publishID;
     if (_notifyModel) {
         publishID = self.notifyModel.idStr;
@@ -244,7 +247,8 @@
     }
     WhoJoinInController *whoJoinIn = [[WhoJoinInController alloc]init];
     whoJoinIn.publishID = publishID;
-    [self.viewController.navigationController pushViewController:whoJoinIn animated:YES needHiddenBottomBar:YES];
+    [self.viewController.navigationController pushViewController:whoJoinIn animated:YES
+                                             needHiddenBottomBar:YES];
 }
 
 #pragma waring 此处需要添加图片
@@ -254,7 +258,8 @@
     _bottomButton.enabled = YES;
     if(cellType == NEED_CHECK) {
         self.remindTitleLabel.text = @"您的报名申请已提交,正在审核中";
-        _titleImageView.image = [[UIImage imageNamed:@"tick"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+        _titleImageView.image = [[UIImage imageNamed:@"tick"]
+                                 imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
         _bottomLineView.hidden = NO;
         _tailLabel.text = @"看看还有什么人";
         [_titleImageView mas_updateConstraints:^(MASConstraintMaker *make) {
@@ -266,7 +271,8 @@
         
     } else if (cellType == AUDIT_PASSED) {
         self.remindTitleLabel.text = @"恭喜,报名申请通过！！！";
-        _titleImageView.image = [[UIImage imageNamed:@"tick"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+        _titleImageView.image = [[UIImage imageNamed:@"tick"]
+                                 imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
         _bottomLineView.hidden = NO;
         _tailLabel.text = @"看看还有什么人";
         
@@ -291,7 +297,8 @@
         _bottomButton.enabled = NO;
     } else if (cellType == NOT_NEED_CHECK) {
         self.remindTitleLabel.text = @"你已成功参加活动";
-        _titleImageView.image = [[UIImage imageNamed:@"tick"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+        _titleImageView.image = [[UIImage imageNamed:@"tick"]
+                                 imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
         _bottomLineView.hidden = NO;
         _tailLabel.text = @"看看还有什么人";
         
