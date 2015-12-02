@@ -76,4 +76,47 @@ NSInteger const kLoginCommonTextFieldTag = 1999;
     return imageView;
 }
 
+
+//
++(UILabel *)initLabel:(UIFont *)font color:(UIColor *)color text:(NSString *)text
+{
+    UILabel *label = [[UILabel alloc] initWithFrame:frame];
+    label.font = font;
+    label.textColor = color;
+    label.text = text;
+    return label;
+}
+
++(UIView *)initWrapContentViewWithBackGroundColor:(UIColor *)color
+                                      borderWidth:(CGFloat)boardWidth
+                                      borderColor:(UIColor *)borderColor
+                                      cornerRadius:(CGFloat)cornerRadius
+{
+    UIView *wrapContentView = [[UIView alloc]init];
+    [superView addSubview:wrapContentView];
+    wrapContentView.backgroundColor = backGroudColor;
+    wrapContentView.layer.borderWidth = boardWidth;
+    wrapContentView.layer.borderColor = borderColor.CGColor;
+    wrapContentView.layer.cornerRadius = cornerRadius;
+    wrapContentView.clipsToBounds = YES;
+    return wrapContentView;
+}
+
++(UIImageView *)initImageViewWithImageName:(NSString *)imagName
+{
+    UIImageView *imageView = [[UIImageView alloc]init];
+    if (imagName != nil && imagName.length != 0)
+        imageView.image = [UIImage imageNamed:imagName];
+    return imageView;
+}
+
++(UIImageView *)initImageViewWithImageName:(NSString *)imagName cornerRadius:(CGFloat)cornerRadius
+{
+    UIImageView *imageView = [[UIImageView alloc]init];
+    if (imagName != nil && imagName.length != 0)
+        imageView.image = [UIImage imageNamed:imagName];
+    imageView.layer.cornerRadius = cornerRadius;
+    imageView.clipsToBounds = YES;
+    return imageView;
+}
 @end

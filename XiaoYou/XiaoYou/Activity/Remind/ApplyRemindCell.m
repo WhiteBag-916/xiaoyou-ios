@@ -84,11 +84,10 @@
 -(void)initView
 {
     //容器视图
-    _wrapContentView = [[UIView alloc]init];
+    _wrapContentView = [YUtils initWrapContentViewWithBackGroundColor:
+                        [UIColor whiteColor] borderWidth:1 borderColor:KCOLOR_B2
+                                                         cornerRadius:5];
     [self.contentView addSubview:_wrapContentView];
-    _wrapContentView.backgroundColor = [UIColor whiteColor];
-    _wrapContentView.layer.borderWidth = 1;
-    _wrapContentView.layer.borderColor = KCOLOR_B2.CGColor;
     [_wrapContentView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.contentView);
         make.bottom.equalTo(self.contentView);
@@ -96,13 +95,9 @@
         make.right.equalTo(self.contentView.mas_right).offset(-CELL_INSET);
     }];
     
-    _wrapContentView.layer.cornerRadius = 5;
-    _wrapContentView.clipsToBounds = YES;
-    
     //上面部分View
     //1.对号图片
-    _titleImageView = [[UIImageView alloc]init];
-    _titleImageView.image = [UIImage imageNamed:@"tick"];
+    _titleImageView = [YUtils initImageViewWithImageName:@"tick"];
     [self.wrapContentView addSubview:_titleImageView];
     [_titleImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.leading.mas_equalTo(10);
@@ -112,10 +107,8 @@
     }];
     
     //2.提醒标题
-    _remindTitleLabel = [[UILabel alloc]init];
+    _remindTitleLabel = [YUtils initLabel:CONTENT_FONT(15) color:nil text:@"有人参加你的活动"];
     [self.wrapContentView addSubview:_remindTitleLabel];
-    _remindTitleLabel.text = @"有人参加你的活动";
-    _remindTitleLabel.font = CONTENT_FONT(15);
     [_remindTitleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.height.mas_equalTo(SCALE_NUM(17));
         make.left.equalTo(self.titleImageView.mas_right).offset(10).priorityLow();
@@ -134,22 +127,17 @@
     }];
     
     //1.头像
-    _headImageView = [[UIImageView alloc]init];
+    _headImageView = [YUtils initImageViewWithImageName:@"" cornerRadius:(SCALE_NUM(45)/2.0)];
     [self.wrapContentView addSubview:_headImageView];
-    _headImageView.image = [UIImage imageNamed:@"headImage.jpg"];
     [_headImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.topLineView).offset(15);
         make.leading.mas_equalTo(10);
         make.width.mas_equalTo(SCALE_NUM(45));
         make.height.mas_equalTo(SCALE_NUM(45));
     }];
-    _headImageView.layer.cornerRadius = (SCALE_NUM(45)/2.0);
-    _headImageView.clipsToBounds = YES;
     
-    _nameLabel = [[UILabel alloc]init];
+    _nameLabel = [YUtils initLabel:CONTENT_FONT(12) color:KCOLOR_g1 text:@""];
     [self.wrapContentView addSubview:_nameLabel];
-    _nameLabel.font = CONTENT_FONT(12);
-    _nameLabel.textColor = KCOLOR_g1;
     [_nameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(_headImageView.mas_right).offset(SCALE_NUM(10));
         make.centerY.equalTo(_headImageView.mas_centerY);
@@ -162,11 +150,9 @@
         make.trailing.mas_equalTo(SCALE_NUM(-10));
     }];
     
-    _applyContentLable = [[UILabel alloc]init];
-    [self.wrapContentView addSubview:_applyContentLable];
+    _applyContentLable = [YUtils initLabel:CONTENT_FONT(12) color:KCOLOR_B3 text:@""];
     _applyContentLable.numberOfLines = 1;
-    _applyContentLable.textColor = KCOLOR_B3;
-    _applyContentLable.font = CONTENT_FONT(12);
+    [self.wrapContentView addSubview:_applyContentLable];
     [_applyContentLable mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(_headImageView.mas_bottom).offset(SCALE_NUM(21));
         make.left.equalTo(_headImageView);
