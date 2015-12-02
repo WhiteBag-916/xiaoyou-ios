@@ -59,6 +59,9 @@ extern NSInteger const kLoginCommonTextFieldTag;
 
 + (UIImageView *)initImageViewWithImageName:(NSString*)imagName;
 
-+(UIImageView *)initImageViewWithImageName:(NSString *)imagName cornerRadius:(CGFloat)cornerRadius;
++ (UIImageView *)initImageViewWithImageName:(NSString *)imagName cornerRadius:(CGFloat)cornerRadius;
+
++ (UIButton *)initButtonWithBackgroundColor:(UIColor*)backgroudColor
+                                    target:(id)target action:(SEL)selector;
 
 @end

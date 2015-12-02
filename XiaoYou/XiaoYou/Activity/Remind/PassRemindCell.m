@@ -160,30 +160,24 @@
         make.height.mas_equalTo(1);
     }];
     
-    _tailLabel = [[UILabel alloc]init];
+    _tailLabel = [YUtils initLabel:CONTENT_FONT(12) color:KCOLOR_B3 text:@"看看还有什么人"];
     [self.wrapContentView addSubview:_tailLabel];
-    _tailLabel.text = @"看看还有什么人";
-    _tailLabel.textColor = KCOLOR_B3;
-    _tailLabel.font = CONTENT_FONT(12);
     [_tailLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(_bottomLineView.mas_bottom);
         make.bottom.equalTo(_wrapContentView);
         make.leading.mas_equalTo(10);
     }];
     
-    _tailImageView = [[UIImageView alloc]init];
+    _tailImageView = [YUtils initImageViewWithImageName:@"mine-concern-particulars"];
     [self.wrapContentView addSubview:_tailImageView];
-    _tailImageView.image = [UIImage imageNamed:@"mine-concern-particulars"];
     [_tailImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.equalTo(self.tailLabel.mas_centerY);
         make.trailing.mas_equalTo(-10);
     }];
     
-    _middleButton = [UIButton buttonWithType:UIButtonTypeSystem];
+    _middleButton = [YUtils initButtonWithBackgroundColor:[UIColor clearColor]
+                                                   target:self action:@selector(middleAction:)];
     [self.wrapContentView addSubview:_middleButton];
-    _middleButton.backgroundColor = [UIColor clearColor];
-    [_middleButton addTarget:self action:@selector(middleAction:)
-            forControlEvents:UIControlEventTouchUpInside];
     [_middleButton mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(_topLineView.mas_bottom);
         make.leading.mas_equalTo(0);

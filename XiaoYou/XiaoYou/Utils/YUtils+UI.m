@@ -102,6 +102,9 @@ NSInteger const kLoginCommonTextFieldTag = 1999;
     return wrapContentView;
 }
 
+
+////////////////////////////////////////////////////////////////////////////////////////////////
+//UIImageView的创建方法
 +(UIImageView *)initImageViewWithImageName:(NSString *)imagName
 {
     UIImageView *imageView = [[UIImageView alloc]init];
@@ -118,5 +121,15 @@ NSInteger const kLoginCommonTextFieldTag = 1999;
     imageView.layer.cornerRadius = cornerRadius;
     imageView.clipsToBounds = YES;
     return imageView;
+}
+/////////////////////////////////////////////////////////////////////////////////////////////////
+
++(UIButton *)initButtonWithBackgroundColor:(UIColor*)backgroudColor
+                         target:(id)target action:(SEL)selector
+{
+    UIButton *btn = [UIButton buttonWithType:UIButtonTypeSystem];
+    btn.backgroundColor = backgroudColor;
+    [btn addTarget:target action:selector forControlEvents:UIControlEventTouchUpInside];
+    return btn;
 }
 @end
