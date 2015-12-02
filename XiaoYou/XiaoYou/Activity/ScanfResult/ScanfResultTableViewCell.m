@@ -30,7 +30,7 @@ NSString *const kScanfResultTableViewCell = @"ScanfResultTableViewCellId";
 -(void)setUpUI
 {
     
-    _contentLabel = [[UILabel alloc] init];
+    self.contentLabel = [[UILabel alloc] init];
     _contentLabel.backgroundColor = [UIColor clearColor];
     _contentLabel.font = CONTENT_FONT(12);
     _contentLabel.numberOfLines = 0;

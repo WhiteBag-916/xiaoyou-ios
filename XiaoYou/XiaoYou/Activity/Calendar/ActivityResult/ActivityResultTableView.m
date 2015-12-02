@@ -82,7 +82,7 @@
 
 - (void)loadNewData
 {
-    _currentIndex = 0;
+    self.currentIndex = 0;
     if (self.resultType == DEFAULT)
         [self sendRequest];
     else
@@ -99,7 +99,8 @@
 }
 
 - (void)sendRequest{
-    [[ActivityManager sharedInstance] getCurrentUseAvailableListLimitStart:_currentIndex limitEnd:_currentIndex+KPAGENUM dic:_requestDic block:^(YActionMessage *message) {
+    [[ActivityManager sharedInstance] getCurrentUseAvailableListLimitStart:_currentIndex
+                                                                  limitEnd:_currentIndex+KPAGENUM dic:_requestDic block:^(YActionMessage *message) {
         if (message.isSuccess) {
             if ([self isHeaderRefresh]) {
                 [self.dataSouceArr removeAllObjects];
@@ -128,8 +129,8 @@
 
 -(void)sendRequestBySearchDataByKey:(NSString *)key
 {
-    _currentIndex = 0;
-    _searchKey = key;
+    self.currentIndex = 0;
+    self.searchKey = key;
     [[ActivityManager sharedInstance] getCurrentUseAvailableListLimitStart:_currentIndex limitEnd:_currentIndex+KPAGENUM search:key block:^(YActionMessage *message) {
         
         int i = 0;
@@ -188,7 +189,8 @@
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    AvailableCell * cell = [tableView dequeueReusableCellWithIdentifier:REUSEID_AVAILABEL_CELL forIndexPath:indexPath];
+    AvailableCell * cell = [tableView dequeueReusableCellWithIdentifier:REUSEID_AVAILABEL_CELL
+                                                           forIndexPath:indexPath];
     [cell setData:_dataSouceArr[indexPath.row]];
     return cell;
 }
@@ -206,7 +208,8 @@
     ActivityInfoModel *infoModel = self.dataSouceArr[indexPath.row];
     NSString *publishID = [NSString stringWithFormat:@"%ld",(long)infoModel.activityPublishedModel.activityPublishedModelIdentifier];
     ActivityDetailViewController *activityDetailVC = [[ActivityDetailViewController alloc]initWithPublishID:publishID];
-    [self.viewController.navigationController pushViewController:activityDetailVC animated:YES needHiddenBottomBar:YES];
+    [self.viewController.navigationController pushViewController:activityDetailVC
+                                                        animated:YES needHiddenBottomBar:YES];
     
 }
 
@@ -215,7 +218,8 @@
     
     CGFloat height;
     
-    height = [tableView fd_heightForCellWithIdentifier:REUSEID_AVAILABEL_CELL cacheByIndexPath:indexPath configuration:^(AvailableCell *cell) {
+    height = [tableView fd_heightForCellWithIdentifier:REUSEID_AVAILABEL_CELL
+                                      cacheByIndexPath:indexPath configuration:^(AvailableCell *cell) {
         [cell setData:_dataSouceArr[indexPath.row]];
     }];
     return height;

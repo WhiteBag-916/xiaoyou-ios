@@ -34,7 +34,7 @@ NSString *const kCheckCollectionViewCell = @"CheckCollectionViewCellId";
     return self;
 }
 
--(void)changUI
+- (void)changUI
 {
     self.numImageView.image = [UIImage imageNamed:@"img_num6"];
     self.typeLabel.text = @"报名审核（限社团）";
@@ -83,7 +83,8 @@ NSString *const kCheckCollectionViewCell = @"CheckCollectionViewCellId";
         make.width.mas_equalTo(SCALE_NUM(110));
     }];
     
-    UITapGestureRecognizer * tap2 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapNotNeedCheck)];
+    UITapGestureRecognizer * tap2 = [[UITapGestureRecognizer alloc]
+                                     initWithTarget:self action:@selector(tapNotNeedCheck)];
     [_notNeedCheckLabel addGestureRecognizer:tap2];
     
     //point
@@ -141,7 +142,8 @@ NSString *const kCheckCollectionViewCell = @"CheckCollectionViewCellId";
     _dataManager.ActivityCheckStr = @"需要报名审核";
     
     NSDictionary * dic = @{@"position":@6};
-    [[NSNotificationCenter defaultCenter] postNotificationName:KNotification_Activity_Release_ScrollTo object:dic];
+    [[NSNotificationCenter defaultCenter]
+     postNotificationName:KNotification_Activity_Release_ScrollTo object:dic];
 }
 
 -(void)tapNotNeedCheck
@@ -158,7 +160,8 @@ NSString *const kCheckCollectionViewCell = @"CheckCollectionViewCellId";
     _dataManager.ActivityCheckStr = @"不需要报名审核";
     
     NSDictionary * dic = @{@"position":@6};
-    [[NSNotificationCenter defaultCenter] postNotificationName:KNotification_Activity_Release_ScrollTo object:dic];
+    [[NSNotificationCenter defaultCenter]
+     postNotificationName:KNotification_Activity_Release_ScrollTo object:dic];
 }
 
 

@@ -57,7 +57,8 @@
 
 -(void)setUpHeaderView
 {
-    UITableViewHeaderFooterView * headerView = [[UITableViewHeaderFooterView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCALE_NUM(40))];
+    UITableViewHeaderFooterView * headerView = [[UITableViewHeaderFooterView alloc]
+                                                initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCALE_NUM(40))];
 //    UILabel * remindLabel = [[UILabel alloc] init];
     UILabel * remindLabel = [[UILabel alloc] initWithFrame:CGRectMake(SCALE_NUM(40), SCALE_NUM(5), SCREEN_WIDTH - SCALE_NUM(80), SCALE_NUM(30))];
     remindLabel.font = CONTENT_FONT(SCALE_NUM(12));

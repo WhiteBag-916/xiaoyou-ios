@@ -29,7 +29,8 @@
         self.delegate = self;
         self.dataSource = self;
         self.separatorStyle =  UITableViewCellSeparatorStyleNone;
-        [self registerClass:[MerchantListTableViewCell class] forCellReuseIdentifier:kMerchantListTableViewCell];
+        [self registerClass:[MerchantListTableViewCell class]
+     forCellReuseIdentifier:kMerchantListTableViewCell];
         
     }
     return self;
@@ -72,7 +73,9 @@
 
 - (void)sendRequest{
     
-    [[CodeManager sharedInstance] getShopListLimitStart:_currentIndex limitEnd:_currentIndex+KPAGENUM block:^(YActionMessage *message) {
+    [[CodeManager sharedInstance] getShopListLimitStart:_currentIndex
+                                               limitEnd:_currentIndex+KPAGENUM
+                                                  block:^(YActionMessage *message) {
         if (message.isSuccess) {
             if ([self isHeaderRefresh]) {
                 [self.dataSourceArr removeAllObjects];
@@ -111,7 +114,9 @@
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    MerchantListTableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:kMerchantListTableViewCell forIndexPath:indexPath];
+    MerchantListTableViewCell * cell = [tableView
+                                        dequeueReusableCellWithIdentifier:kMerchantListTableViewCell
+                                        forIndexPath:indexPath];
     [cell setCellData:_dataSourceArr[indexPath.row]];
     return cell;
 }
@@ -119,7 +124,8 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     MerchantDetailViewController * merchantDetailViewController = [[MerchantDetailViewController alloc] initWithModel:_dataSourceArr[indexPath.row]];
-    [self.viewController.navigationController pushViewController:merchantDetailViewController animated:YES];
+    [self.viewController.navigationController
+     pushViewController:merchantDetailViewController animated:YES];
 }
 
 -(void)gotoDetailWithCellType

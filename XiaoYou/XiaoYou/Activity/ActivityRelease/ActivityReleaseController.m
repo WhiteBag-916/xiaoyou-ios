@@ -247,7 +247,7 @@ typedef enum : NSUInteger {
     layout.minimumInteritemSpacing = 0;
     layout.minimumLineSpacing = 0;
     layout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
-    _releaseCollectionView = [[ActivityReleaseCollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:layout andIsIdentity:_isIdentity];
+    self.releaseCollectionView = [[ActivityReleaseCollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:layout andIsIdentity:_isIdentity];
     _releaseCollectionView.backgroundColor = [UIColor clearColor];
     _releaseCollectionView.myController = self;
     [_scrollView addSubview:_releaseCollectionView];
@@ -285,7 +285,7 @@ typedef enum : NSUInteger {
         }
         make.height.mas_equalTo(2);
     }];
-    _typeLabel1 = [[UILabel alloc]init];
+    self.typeLabel1 = [[UILabel alloc]init];
     _typeLabel1.text = @"名称";
     _typeLabel1.textAlignment = NSTextAlignmentCenter;
     _typeLabel1.textColor = KCOLOR_g1;
@@ -297,7 +297,7 @@ typedef enum : NSUInteger {
         make.width.mas_equalTo(SCALE_NUM(30));
         make.height.mas_equalTo(SCALE_NUM(12));
     }];
-    _btn1 = [[UIButton alloc] init];
+    self.btn1 = [[UIButton alloc] init];
     _btn1.tag = 100000001;
     _btn1.backgroundColor = [UIColor clearColor];
     [_scrollView addSubview:_btn1];
@@ -305,10 +305,11 @@ typedef enum : NSUInteger {
         make.top.equalTo(_point1View);
         make.right.bottom.left.equalTo(_typeLabel1);
     }];
-    [_btn1 addTarget:self action:@selector(clickeLabelButton:) forControlEvents:UIControlEventTouchUpInside];
+    [_btn1 addTarget:self action:@selector(clickeLabelButton:)
+    forControlEvents:UIControlEventTouchUpInside];
     
     //Point2
-    _point2View = [[UIImageView alloc] init];
+    self.point2View = [[UIImageView alloc] init];
     _point2View.backgroundColor = KCOLOR_B5;
     _point2View.layer.cornerRadius = SCALE_NUM(4);
     _point2View.clipsToBounds = YES;
@@ -334,7 +335,7 @@ typedef enum : NSUInteger {
         }
         make.height.mas_equalTo(2);
     }];
-    _typeLabel2 = [[UILabel alloc]init];
+    self.typeLabel2 = [[UILabel alloc]init];
     _typeLabel2.text = @"描述";
     _typeLabel2.textAlignment = NSTextAlignmentCenter;
     _typeLabel2.textColor = KCOLOR_B3;
@@ -346,7 +347,7 @@ typedef enum : NSUInteger {
         make.width.mas_equalTo(SCALE_NUM(30));
         make.height.mas_equalTo(SCALE_NUM(12));
     }];
-    _btn2 = [[UIButton alloc] init];
+    self.btn2 = [[UIButton alloc] init];
     _btn2.tag = 100000002;
     _btn2.backgroundColor = [UIColor clearColor];
     [_scrollView addSubview:_btn2];
@@ -354,10 +355,11 @@ typedef enum : NSUInteger {
         make.top.equalTo(_point2View);
         make.right.bottom.left.equalTo(_typeLabel2);
     }];
-    [_btn2 addTarget:self action:@selector(clickeLabelButton:) forControlEvents:UIControlEventTouchUpInside];
+    [_btn2 addTarget:self action:@selector(clickeLabelButton:)
+    forControlEvents:UIControlEventTouchUpInside];
     
     //Point3
-    _point3View = [[UIImageView alloc] init];
+    self.point3View = [[UIImageView alloc] init];
     _point3View.backgroundColor = KCOLOR_B5;
     _point3View.layer.cornerRadius = SCALE_NUM(4);
     _point3View.clipsToBounds = YES;
@@ -383,7 +385,7 @@ typedef enum : NSUInteger {
         }
         make.height.mas_equalTo(2);
     }];
-    _typeLabel3 = [[UILabel alloc]init];
+    self.typeLabel3 = [[UILabel alloc]init];
     _typeLabel3.text = @"时间";
     _typeLabel3.textAlignment = NSTextAlignmentCenter;
     _typeLabel3.textColor = KCOLOR_B3;
@@ -395,7 +397,7 @@ typedef enum : NSUInteger {
         make.width.mas_equalTo(SCALE_NUM(30));
         make.height.mas_equalTo(SCALE_NUM(12));
     }];
-    _btn3 = [[UIButton alloc] init];
+    self.btn3 = [[UIButton alloc] init];
     _btn3.tag = 100000003;
     _btn3.backgroundColor = [UIColor clearColor];
     [_scrollView addSubview:_btn3];
@@ -403,7 +405,8 @@ typedef enum : NSUInteger {
         make.top.equalTo(_point3View);
         make.right.bottom.left.equalTo(_typeLabel3);
     }];
-    [_btn3 addTarget:self action:@selector(clickeLabelButton:) forControlEvents:UIControlEventTouchUpInside];
+    [_btn3 addTarget:self action:@selector(clickeLabelButton:)
+    forControlEvents:UIControlEventTouchUpInside];
     //Point4
     _point4View = [[UIImageView alloc] init];
     _point4View.backgroundColor = KCOLOR_B5;
@@ -443,7 +446,7 @@ typedef enum : NSUInteger {
         make.width.mas_equalTo(SCALE_NUM(30));
         make.height.mas_equalTo(SCALE_NUM(12));
     }];
-    _btn4 = [[UIButton alloc] init];
+    self.btn4 = [[UIButton alloc] init];
     _btn4.tag = 100000004;
     _btn4.backgroundColor = [UIColor clearColor];
     [_scrollView addSubview:_btn4];
@@ -451,9 +454,10 @@ typedef enum : NSUInteger {
         make.top.equalTo(_point4View);
         make.right.bottom.left.equalTo(_typeLabel4);
     }];
-    [_btn4 addTarget:self action:@selector(clickeLabelButton:) forControlEvents:UIControlEventTouchUpInside];
+    [_btn4 addTarget:self action:@selector(clickeLabelButton:)
+    forControlEvents:UIControlEventTouchUpInside];
     //Point5
-    _point5View = [[UIImageView alloc] init];
+    self.point5View = [[UIImageView alloc] init];
     _point5View.backgroundColor = KCOLOR_B5;
     _point5View.layer.cornerRadius = SCALE_NUM(4);
     _point5View.clipsToBounds = YES;
@@ -464,7 +468,7 @@ typedef enum : NSUInteger {
         make.width.height.mas_equalTo(8);
     }];
 
-    _typeLabel5 = [[UILabel alloc]init];
+    self.typeLabel5 = [[UILabel alloc]init];
     _typeLabel5.text = @"类型";
     _typeLabel5.textAlignment = NSTextAlignmentCenter;
     _typeLabel5.textColor = KCOLOR_B3;
@@ -476,7 +480,7 @@ typedef enum : NSUInteger {
         make.width.mas_equalTo(SCALE_NUM(30));
         make.height.mas_equalTo(SCALE_NUM(12));
     }];
-    _btn5 = [[UIButton alloc] init];
+    self.btn5 = [[UIButton alloc] init];
     _btn5.tag = 100000005;
     _btn5.backgroundColor = [UIColor clearColor];
     [_scrollView addSubview:_btn5];
@@ -484,7 +488,8 @@ typedef enum : NSUInteger {
         make.top.equalTo(_point5View);
         make.right.bottom.left.equalTo(_typeLabel5);
     }];
-    [_btn5 addTarget:self action:@selector(clickeLabelButton:) forControlEvents:UIControlEventTouchUpInside];
+    [_btn5 addTarget:self action:@selector(clickeLabelButton:)
+    forControlEvents:UIControlEventTouchUpInside];
     
     //Point6
     if (_isIdentity)
@@ -499,7 +504,7 @@ typedef enum : NSUInteger {
             make.height.mas_equalTo(2);
         }];
         
-        _point6View = [[UIImageView alloc] init];
+        self.point6View = [[UIImageView alloc] init];
         _point6View.backgroundColor = KCOLOR_B5;
         _point6View.layer.cornerRadius = SCALE_NUM(4);
         _point6View.clipsToBounds = YES;
@@ -509,7 +514,7 @@ typedef enum : NSUInteger {
             make.top.equalTo(_releaseCollectionView.mas_bottom).offset(SCALE_NUM(20));
             make.width.height.mas_equalTo(8);
         }];
-        _typeLabel6 = [[UILabel alloc]init];
+        self.typeLabel6 = [[UILabel alloc]init];
         _typeLabel6.text = @"审核";
         _typeLabel6.textAlignment = NSTextAlignmentCenter;
         _typeLabel6.textColor = KCOLOR_B3;
@@ -521,7 +526,7 @@ typedef enum : NSUInteger {
             make.width.mas_equalTo(SCALE_NUM(30));
             make.height.mas_equalTo(SCALE_NUM(12));
         }];
-        _btn6 = [[UIButton alloc] init];
+        self.btn6 = [[UIButton alloc] init];
         _btn6.tag = 100000006;
         _btn6.backgroundColor = [UIColor clearColor];
         [_scrollView addSubview:_btn6];
@@ -529,7 +534,8 @@ typedef enum : NSUInteger {
             make.top.equalTo(_point5View);
             make.right.bottom.left.equalTo(_typeLabel6);
         }];
-        [_btn6 addTarget:self action:@selector(clickeLabelButton:) forControlEvents:UIControlEventTouchUpInside];
+        [_btn6 addTarget:self action:@selector(clickeLabelButton:)
+        forControlEvents:UIControlEventTouchUpInside];
     }
     
     
@@ -570,7 +576,7 @@ typedef enum : NSUInteger {
     
     
     //发布按钮
-    _releaseButton = [[UIButton alloc] init];
+    self.releaseButton = [[UIButton alloc] init];
     _releaseButton.hidden = NO;
     _releaseButton.backgroundColor = KCOLOR_B5;
     [_releaseButton setTitle:@"发布" forState:UIControlStateNormal];
@@ -593,7 +599,8 @@ typedef enum : NSUInteger {
         NSString *keyStr = @"activityRelease.png";
         NSString *fullPath = [[YDirectory newImgCache] stringByAppendingPathComponent:keyStr];
         
-        [[ActivityManager sharedInstance] commonImgUpload:@"activity" needSnap:@"true" imagePath:fullPath block:^(YActionMessage *message) {
+        [[ActivityManager sharedInstance] commonImgUpload:@"activity" needSnap:@"true"
+                                                imagePath:fullPath block:^(YActionMessage *message) {
             NSLog(@"%@",message);
             
             [YUtils hiddenProgressHUD];
@@ -689,7 +696,8 @@ typedef enum : NSUInteger {
         {
             if ([[message.object valueForKey:@"code"] integerValue] == 1)
             {
-                [[NSNotificationCenter defaultCenter] postNotificationName:KNotification_Activity_Release_Success object:nil];
+                [[NSNotificationCenter defaultCenter]
+                 postNotificationName:KNotification_Activity_Release_Success object:nil];
                 [self.navigationController popViewControllerAnimated:YES];
             }
         }
@@ -831,7 +839,7 @@ typedef enum : NSUInteger {
         case 100000002:
         {
             [UIView animateWithDuration:0.2 animations:^{
-                //                _releaseCollectionView.contentOffset = CGPointMake(SCALE_NUM(186), 0);
+                //_releaseCollectionView.contentOffset = CGPointMake(SCALE_NUM(186), 0);
                 _releaseCollectionView.contentOffset = CGPointMake(SCALE_NUM(230), 0);
             } completion:^(BOOL finished) {
                 //键盘弹起
@@ -846,7 +854,7 @@ typedef enum : NSUInteger {
         case 100000003:
         {
             [UIView animateWithDuration:0.2 animations:^{
-                //                _releaseCollectionView.contentOffset = CGPointMake(SCALE_NUM(418), 0);
+                //_releaseCollectionView.contentOffset = CGPointMake(SCALE_NUM(418), 0);
                 _releaseCollectionView.contentOffset = CGPointMake(SCALE_NUM(460), 0);
             } completion:nil];
             break;
@@ -854,7 +862,7 @@ typedef enum : NSUInteger {
         case 100000004:
         {
             [UIView animateWithDuration:0.2 animations:^{
-                //                _releaseCollectionView.contentOffset = CGPointMake(SCALE_NUM(646), 0);
+                //_releaseCollectionView.contentOffset = CGPointMake(SCALE_NUM(646), 0);
                 _releaseCollectionView.contentOffset = CGPointMake(SCALE_NUM(690), 0);
             } completion:^(BOOL finished) {
                 //键盘弹起
@@ -883,7 +891,7 @@ typedef enum : NSUInteger {
         {
             [UIView animateWithDuration:0.2 animations:^{
                 _releaseCollectionView.contentOffset = CGPointMake(SCALE_NUM(1060), 0);
-                //                _releaseCollectionView.contentOffset = CGPointMake(SCALE_NUM(920), 0);
+                //_releaseCollectionView.contentOffset = CGPointMake(SCALE_NUM(920), 0);
             } completion:nil];
             break;
         }
@@ -945,7 +953,7 @@ typedef enum : NSUInteger {
         {
             [UIView animateWithDuration:0.2 animations:^{
                 _releaseCollectionView.contentOffset = CGPointMake(SCALE_NUM(1060), 0);
-                //                _releaseCollectionView.contentOffset = CGPointMake(SCALE_NUM(920), 0);
+                //_releaseCollectionView.contentOffset = CGPointMake(SCALE_NUM(920), 0);
             } completion:nil];
             break;
         }

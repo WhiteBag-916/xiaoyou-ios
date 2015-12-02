@@ -30,7 +30,7 @@ NSString *const kTypeDetailCollectionViewCell = @"TypeDetailCollectionViewCellId
 -(void)setUpUI
 {
     self.backgroundColor = [UIColor clearColor];
-    _typeLabel = [[UILabel alloc] init];
+    self.typeLabel = [[UILabel alloc] init];
     _typeLabel.layer.borderColor = KCOLOR_B2.CGColor;
     _typeLabel.layer.borderWidth = 1;
     _typeLabel.layer.cornerRadius = 4;

@@ -38,7 +38,7 @@ NSString *const kActivityReleaseAndTypeCell = @"ActivityReleaseAndTypeCellId";
 -(NSArray *)dataArr
 {
     if (!_dataArr) {
-        _dataArr = [NSArray array];
+        self.dataArr = [NSArray array];
     }
     return _dataArr;
 }
@@ -127,15 +127,7 @@ NSString *const kActivityReleaseAndTypeCell = @"ActivityReleaseAndTypeCellId";
 
 - (BOOL)needLine
 {
-    if (_myType == ACTIVITY_CHOICE_TYPE)
-    {
-        return YES;
-    }
-    else
-    {
-        return NO;
-    }
-    
+    return _myType == ACTIVITY_CHOICE_TYPE;
 }
 
 -(NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView

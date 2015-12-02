@@ -17,7 +17,8 @@
 
 NSString *const kDescriptionCollectionViewCell = @"DescriptionCollectionViewCellId";
 
-@interface DescriptionCollectionViewCell ()<UIImagePickerControllerDelegate,UINavigationControllerDelegate,UITextViewDelegate>
+@interface DescriptionCollectionViewCell ()
+<UIImagePickerControllerDelegate,UINavigationControllerDelegate,UITextViewDelegate>
 
 @property (nonatomic,strong) UIImagePickerController * imagePicker;
 @property (nonatomic,strong) UIImageView * picImageView;
