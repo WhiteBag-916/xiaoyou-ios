@@ -26,7 +26,7 @@
 -(void)setUpUI
 {
     //背景View
-    _backView = [[UIView alloc] init];
+    self.backView = [[UIView alloc] init];
     _backView.layer.cornerRadius = 4;
     _backView.clipsToBounds = YES;
     _backView.backgroundColor = KCOLOR_B1;
@@ -57,7 +57,7 @@
         make.height.mas_equalTo(SCALE_NUM(10));
     }];
     //数字
-    _numImageView = [[UIImageView alloc] init];
+    self.numImageView = [[UIImageView alloc] init];
     [_backView addSubview:_numImageView];
     [_numImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.mas_equalTo(SCALE_NUM(12));
@@ -65,7 +65,7 @@
         make.height.width.mas_equalTo(SCALE_NUM(34));
     }];
     //类型名称
-    _typeLabel = [[UILabel alloc] init];
+    self.typeLabel = [[UILabel alloc] init];
     _typeLabel.textColor = KCOLOR_g1;
     _typeLabel.font = CONTENT_FONT(17);
     _typeLabel.backgroundColor = [UIColor clearColor];
