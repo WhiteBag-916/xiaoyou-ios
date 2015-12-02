@@ -49,4 +49,19 @@ extern NSInteger const kLoginCommonTextFieldTag;
  *********************************************************************/
 + (UIImageView *)initImageView:(UIImage *)image frame:(CGRect)frame;
 
+
++ (UILabel *)initLabel:(UIFont *)font color:(UIColor *)color text:(NSString *)text;
+
++ (UIView *)initWrapContentViewWithBackGroundColor:(UIColor*)color
+                                       borderWidth:(CGFloat)boardWidth
+                                       borderColor:(UIColor*)borderColor
+                                      cornerRadius:(CGFloat)cornerRadius;
+
++ (UIImageView *)initImageViewWithImageName:(NSString*)imagName;
+
++ (UIImageView *)initImageViewWithImageName:(NSString *)imagName cornerRadius:(CGFloat)cornerRadius;
+
++ (UIButton *)initButtonWithBackgroundColor:(UIColor*)backgroudColor
+                                    target:(id)target action:(SEL)selector;
+
 @end

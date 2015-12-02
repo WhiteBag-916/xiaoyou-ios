@@ -33,6 +33,10 @@
     return self;
 }
 
+-(instancetype)initWithCoder:(NSCoder *)aDecoder
+{
+    return self;
+}
 
 
 //notiInfo.em_push_title = dict[@"em_apns_ext"][@"em_push_title"];

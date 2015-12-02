@@ -12,6 +12,7 @@
 #import "ActivityDetailViewController.h"
 #import "TimeFormatterConvert.h"
 #import "NotifyInfoModel.h"
+#import "YUtils+UI.h"
 
 #define REUSRID             @"PassRemindCell"
 #define CELL_INSET          SCALE_NUM(12)
@@ -70,11 +71,10 @@
 -(void)initView
 {
     //容器视图
-    _wrapContentView = [[UIView alloc]init];
+    _wrapContentView = [YUtils initWrapContentViewWithBackGroundColor:[UIColor whiteColor]
+                                                          borderWidth:1 borderColor:KCOLOR_B2
+                                                         cornerRadius:5];
     [self.contentView addSubview:_wrapContentView];
-    _wrapContentView.backgroundColor = [UIColor whiteColor];
-    _wrapContentView.layer.borderWidth = 1;
-    _wrapContentView.layer.borderColor = KCOLOR_B2.CGColor;
     [_wrapContentView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.contentView);
         make.bottom.equalTo(self.contentView);
@@ -82,12 +82,8 @@
         make.right.equalTo(self.contentView.mas_right).offset(-CELL_INSET);
     }];
     
-    _wrapContentView.layer.cornerRadius = 5;
-    _wrapContentView.clipsToBounds = YES;
-    
     //上面部分View
-    _titleImageView = [[UIImageView alloc]init];
-    _titleImageView.image = [UIImage imageNamed:@"tick"];
+    _titleImageView = [YUtils initImageViewWithImageName:@"tick"];
     [self.wrapContentView addSubview:_titleImageView];
     [_titleImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.leading.mas_equalTo(10);
@@ -97,11 +93,10 @@
     }];
     
     _remindTitleLabel = [[UILabel alloc]init];
-    [self.wrapContentView addSubview:_remindTitleLabel];
-    _remindTitleLabel.text = @"恭喜,报名申请通过！！！";
-    _remindTitleLabel.textColor = KCOLOR_B4;
-    _remindTitleLabel.font = CONTENT_FONT(15);
+    _remindTitleLabel = [YUtils initLabel:CONTENT_FONT(15) color:KCOLOR_B4
+                                     text:@"恭喜,报名申请通过！！！"];
     [_remindTitleLabel sizeToFit];
+    [self.wrapContentView addSubview:_remindTitleLabel];
     [_remindTitleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.height.mas_equalTo(SCALE_NUM(17));
         make.left.equalTo(self.titleImageView.mas_right).offset(10).priorityLow();
@@ -119,24 +114,18 @@
         make.height.mas_equalTo(1);
     }];
     
-    _headImageView = [[UIImageView alloc]init];
+    _headImageView = [YUtils initImageViewWithImageName:@"headImage.jpg"
+                                           cornerRadius:SCALE_NUM(45)/2.0];
     [self.wrapContentView addSubview:_headImageView];
-    _headImageView.image = [UIImage imageNamed:@"headImage.jpg"];
-    
     [_headImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.topLineView).offset(15);
         make.leading.mas_equalTo(10);
         make.width.mas_equalTo(SCALE_NUM(45));
         make.height.mas_equalTo(SCALE_NUM(45));
     }];
-    _headImageView.layer.cornerRadius = SCALE_NUM(45)/2.0;
-    _headImageView.layer.masksToBounds = YES;
     
-    _contentTitleLabel = [[UILabel alloc]init];
+    _contentTitleLabel = [YUtils initLabel:CONTENT_FONT(12) color:KCOLOR_g1 text:@"校级活动公告"];
     [self.wrapContentView addSubview:_contentTitleLabel];
-    _contentTitleLabel.font = CONTENT_FONT(12);
-    _contentTitleLabel.text = @"校级活动公告";
-    _contentTitleLabel.textColor = KCOLOR_g1;
     [_contentTitleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.height.mas_equalTo(SCALE_NUM(12));
         make.top.equalTo(self.headImageView);
@@ -144,11 +133,8 @@
         make.trailing.mas_equalTo(SCALE_NUM(-5));
     }];
     
-    _contentNameLabel = [[UILabel alloc]init];
+    _contentNameLabel = [YUtils initLabel:CONTENT_FONT(12) color:KCOLOR_B3 text:@""];
     [self.wrapContentView addSubview:_contentNameLabel];
-    _contentNameLabel.font = CONTENT_FONT(12);
-    _contentNameLabel.text = @"名称：%@";
-    _contentNameLabel.textColor = KCOLOR_B3;
     [_contentNameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.height.mas_equalTo(SCALE_NUM(12));
         make.top.equalTo(_contentTitleLabel.mas_bottom).offset(SCALE_NUM(15));
@@ -156,11 +142,8 @@
         make.trailing.mas_equalTo(SCALE_NUM(-5));
     }];
     
-    _activityTimeLabel = [[UILabel alloc]init];
+    _activityTimeLabel = [YUtils initLabel:CONTENT_FONT(12) color:KCOLOR_B3 text:@""];
     [self.wrapContentView addSubview:_activityTimeLabel];
-    _activityTimeLabel.font = CONTENT_FONT(12);
-    _activityTimeLabel.text = @"活动开始时间：%@";
-    _activityTimeLabel.textColor = KCOLOR_B3;
     [_activityTimeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.height.mas_equalTo(SCALE_NUM(14));
         make.top.equalTo(_contentNameLabel.mas_bottom).offset(SCALE_NUM(15));
@@ -177,30 +160,24 @@
         make.height.mas_equalTo(1);
     }];
     
-    _tailLabel = [[UILabel alloc]init];
+    _tailLabel = [YUtils initLabel:CONTENT_FONT(12) color:KCOLOR_B3 text:@"看看还有什么人"];
     [self.wrapContentView addSubview:_tailLabel];
-    _tailLabel.text = @"看看还有什么人";
-    _tailLabel.textColor = KCOLOR_B3;
-    _tailLabel.font = CONTENT_FONT(12);
     [_tailLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(_bottomLineView.mas_bottom);
         make.bottom.equalTo(_wrapContentView);
         make.leading.mas_equalTo(10);
     }];
     
-    _tailImageView = [[UIImageView alloc]init];
+    _tailImageView = [YUtils initImageViewWithImageName:@"mine-concern-particulars"];
     [self.wrapContentView addSubview:_tailImageView];
-    _tailImageView.image = [UIImage imageNamed:@"mine-concern-particulars"];
     [_tailImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.equalTo(self.tailLabel.mas_centerY);
         make.trailing.mas_equalTo(-10);
     }];
     
-    _middleButton = [UIButton buttonWithType:UIButtonTypeSystem];
+    _middleButton = [YUtils initButtonWithBackgroundColor:[UIColor clearColor]
+                                                   target:self action:@selector(middleAction:)];
     [self.wrapContentView addSubview:_middleButton];
-    _middleButton.backgroundColor = [UIColor clearColor];
-    [_middleButton addTarget:self action:@selector(middleAction:)
-            forControlEvents:UIControlEventTouchUpInside];
     [_middleButton mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(_topLineView.mas_bottom);
         make.leading.mas_equalTo(0);

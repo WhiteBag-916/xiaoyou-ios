@@ -2308,6 +2308,13 @@
 			path = loadingPic;
 			sourceTree = "<group>";
 		};
+		0484B1551C0EC93700A670F8 /* UIShortCreat */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = UIShortCreat;
+			sourceTree = "<group>";
+		};
 		0494802A1BB8D76C00C68460 /* Remind */ = {
 			isa = PBXGroup;
 			children = (
@@ -3971,6 +3978,7 @@
 		653CB2E81B806BFD006ECBB2 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				0484B1551C0EC93700A670F8 /* UIShortCreat */,
 				204255FC1BFACE75002C2C9B /* UMengSDK */,
 				E4889B791BECADAC0048A161 /* DDMenu */,
 				20DA16B81BC7C51200A61B37 /* CalendarLib */,
