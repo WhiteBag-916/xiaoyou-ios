@@ -185,11 +185,9 @@
         make.bottom.equalTo(_bottomLineView);
     }];
     
-    _bottomButton = [UIButton buttonWithType:UIButtonTypeSystem];
+    _bottomButton = [YUtils initButtonWithBackgroundColor:[UIColor clearColor]
+                                                   target:self action:@selector(bottomAction)];
     [self.wrapContentView addSubview:_bottomButton];
-    _bottomButton.backgroundColor = [UIColor clearColor];
-    [_bottomButton addTarget:self action:@selector(bottomAction)
-            forControlEvents:UIControlEventTouchUpInside];
     [_bottomButton mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(_bottomLineView);
         make.leading.mas_equalTo(0);
@@ -308,16 +306,12 @@
     else
         _headImageView.image = [UIImage imageNamed:@"default_head"];
     
-    if (model.activityOwner) {
-        _contentTitleLabel.text = info.name;
-    }
-    else
-    {
-        _contentTitleLabel.text = model.activityOrganizer;
-    }
+    _contentTitleLabel.text = model.activityOwner ? info.name : model.activityOrganizer;
     
     _contentNameLabel.text = [NSString stringWithFormat:@"名称：%@",model.activityName];
-    _activityTimeLabel.text = [NSString stringWithFormat:@"活动开始时间：%@",[TimeFormatterConvert timeConvertToFommtterAvailable:model.activityStartTime]];
+    _activityTimeLabel.text = [NSString
+                               stringWithFormat:@"活动开始时间：%@",[TimeFormatterConvert
+                                                                       timeConvertToFommtterAvailable:model.activityStartTime]];
 }
 
 //推送通知使用
@@ -335,7 +329,8 @@
     _contentTitleLabel.text = model.organizer;
     _contentNameLabel.text = [NSString stringWithFormat:@"名称：%@",model.name];
     
-    _activityTimeLabel.text = [NSString stringWithFormat:@"活动开始时间：%@",[TimeFormatterConvert timeConvertToFommtterAvailable:model.startTime]];
+    _activityTimeLabel.text = [NSString stringWithFormat:@"活动开始时间：%@",
+                               [TimeFormatterConvert timeConvertToFommtterAvailable:model.startTime]];
     
     _tailLabel.text = @"看看都有谁参加了";
 }
