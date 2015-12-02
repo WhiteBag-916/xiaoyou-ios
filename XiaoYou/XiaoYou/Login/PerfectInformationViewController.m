@@ -70,8 +70,12 @@
     
     //headButton
     _headButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [_headButton setImage:[UIImage imageNamed:@"register-photo-upload"] forState:UIControlStateNormal];
-    [_headButton addTarget:self action:@selector(showAddPicList) forControlEvents:UIControlEventTouchUpInside];
+    [_headButton setImage:[UIImage
+                           imageNamed:@"register-photo-upload"]
+                 forState:UIControlStateNormal];
+    [_headButton addTarget:self
+                    action:@selector(showAddPicList)
+          forControlEvents:UIControlEventTouchUpInside];
     [_contentView addSubview:_headButton];
     [_headButton mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.equalTo(_contentView);
@@ -80,7 +84,9 @@
     }];
     
     //labelView
-    UIImageView *upHeadImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"register-photo-upload-boundary"]];
+    UIImageView *upHeadImageView = [[UIImageView alloc]
+                                    initWithImage:[UIImage
+                                                   imageNamed:@"register-photo-upload-boundary"]];
     [_contentView addSubview:upHeadImageView];
     [upHeadImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.equalTo(_contentView);
@@ -89,7 +95,9 @@
         make.height.mas_equalTo(SCALE_NUM(12));
     }];
     
-    UIImageView *tagImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"register-label-chosen-boundary"]];
+    UIImageView *tagImageView = [[UIImageView alloc]
+                                 initWithImage:[UIImage
+                                                imageNamed:@"register-label-chosen-boundary"]];
     [_contentView addSubview:tagImageView];
     [tagImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.equalTo(_contentView);
@@ -217,7 +225,8 @@
         if (message.isSuccess) {
             //更新缓存标签
             NSMutableArray *tagArray = [@[] mutableCopy];
-            [_tagsArray enumerateObjectsUsingBlock:^(NSDictionary *obj, NSUInteger idx, BOOL *stop) {
+            [_tagsArray enumerateObjectsUsingBlock:^(NSDictionary *obj
+                                                     , NSUInteger idx, BOOL *stop) {
                 if ([obj[tagIsSelected] boolValue]) {
                     [tagArray addObject:obj[tagObj]];
                 }
@@ -256,9 +265,14 @@
 {
     UIImagePickerController *picker = [[UIImagePickerController alloc] init];
     [picker.navigationBar setTintColor:[UIColor whiteColor]];
-    [[UINavigationBar appearance] setBackgroundImage:[UIImage imageWithColor:[UIColor hexChangeFloat:@"455964"] size:CGSizeMake(SCREEN_WIDTH, 64)] forBarPosition:UIBarPositionAny barMetrics:UIBarMetricsDefault];
-    [[UINavigationBar appearance] setTitleTextAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:17],
-                                                           NSForegroundColorAttributeName:[UIColor whiteColor]}];
+    [[UINavigationBar appearance] setBackgroundImage:[UIImage
+                                                      imageWithColor:[UIColor hexChangeFloat:@"455964"]
+                                                      size:CGSizeMake(SCREEN_WIDTH, 64)]
+                                      forBarPosition:UIBarPositionAny
+                                          barMetrics:UIBarMetricsDefault];
+    [[UINavigationBar appearance]
+     setTitleTextAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:17]
+                                                           , NSForegroundColorAttributeName:[UIColor whiteColor]}];
     [UINavigationBar appearance].barStyle = UIStatusBarStyleDefault;
     [picker setSourceType:UIImagePickerControllerSourceTypePhotoLibrary];
     [picker setDelegate:self];
@@ -269,7 +283,8 @@
 - (void)snapImage
 {
 #if !(TARGET_IPHONE_SIMULATOR)//真机执行的代码
-    AVAuthorizationStatus authStatus = [AVCaptureDevice authorizationStatusForMediaType:AVMediaTypeVideo];
+    AVAuthorizationStatus authStatus = [AVCaptureDevice
+                                        authorizationStatusForMediaType:AVMediaTypeVideo];
     if (authStatus == AVAuthorizationStatusRestricted ||authStatus ==AVAuthorizationStatusDenied){
         YCommonAlertView *alert = [[YCommonAlertView alloc] initWithTitle:nil
                                                                   message:@"您可以在 设置—>隐私—>相机中授权相机功能"
@@ -277,7 +292,8 @@
         [alert show];
     }else if(authStatus == AVAuthorizationStatusNotDetermined){
         // Explicit user permission is required for media capture, but the user has not yet granted or denied such permission.
-        [AVCaptureDevice requestAccessForMediaType:AVMediaTypeVideo completionHandler:^(BOOL granted) {
+        [AVCaptureDevice requestAccessForMediaType:AVMediaTypeVideo
+                                 completionHandler:^(BOOL granted) {
             if(granted){//点击允许访问时调用
                 //用户明确许可与否，媒体需要捕获，但用户尚未授予或拒绝许可。
                 UIImagePickerController *picker = [[UIImagePickerController alloc] init];
@@ -316,7 +332,7 @@
         [imageData writeToFile:fullPath atomically:NO];
         
         //路径添加至缓存
-        _headImagePath = keyStr;
+        self.headImagePath = keyStr;
         
         //界面
         dispatch_async(dispatch_get_main_queue(), ^{
@@ -336,7 +352,8 @@
         if ([YDirectory isExistsPath:path])
         {
             //存在
-            [_headButton setImage:[UIImage imageWithContentsOfFile:path] forState:UIControlStateNormal];
+            [_headButton setImage:[UIImage imageWithContentsOfFile:path]
+                         forState:UIControlStateNormal];
             _headButton.layer.cornerRadius = 10;
             _headButton.layer.masksToBounds = YES;
         }
@@ -350,15 +367,5 @@
     UIImage *getImage = info[@"UIImagePickerControllerEditedImage"];
     [self savePic:getImage];
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

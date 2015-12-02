@@ -30,7 +30,8 @@
         self.delegate = self;
         self.dataSource = self;
         _filter = @"";
-        [self registerClass:[FeedListTableViewCell class] forCellReuseIdentifier:kFeedListTableViewCell];
+        [self registerClass:[FeedListTableViewCell class]
+     forCellReuseIdentifier:kFeedListTableViewCell];
         self.tableFooterView = [[UIView alloc] init];
         _feedListArray = [NSMutableArray array];
         self.fd_debugLogEnabled = false;
@@ -47,7 +48,8 @@
         _filter = filter;
         self.delegate = self;
         self.dataSource = self;
-        [self registerClass:[FeedListTableViewCell class] forCellReuseIdentifier:kFeedListTableViewCell];
+        [self registerClass:[FeedListTableViewCell class]
+     forCellReuseIdentifier:kFeedListTableViewCell];
         self.tableFooterView = [[UIView alloc] init];
         _feedListArray = [NSMutableArray array];
         self.fd_debugLogEnabled = false;
@@ -82,9 +84,13 @@
     //mod by xiongchen
     NSString *lastID;
     if (![self isHeaderRefresh]) {
-        lastID = [NSString stringWithFormat:@"%g", [[_feedListArray.lastObject feed] feedIdentifier]];
+        lastID = [NSString stringWithFormat:@"%g"
+                  , [[_feedListArray.lastObject feed] feedIdentifier]];
     }
-    [[FeedManager sharedInstance] feedList:lastID size:KPAGENUM queryCode:_filter block:^(YActionMessage *message) {
+    [[FeedManager sharedInstance] feedList:lastID
+                                      size:KPAGENUM
+                                 queryCode:_filter
+                                     block:^(YActionMessage *message) {
         if (message.isSuccess) {
             if ([self isHeaderRefresh]) {
                 [_feedListArray removeAllObjects];
@@ -121,7 +127,8 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    FeedListTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kFeedListTableViewCell];
+    FeedListTableViewCell *cell = [tableView
+                                   dequeueReusableCellWithIdentifier:kFeedListTableViewCell];
     [cell setData:_feedListArray[indexPath.row]];
     
     return cell;
@@ -130,7 +137,9 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     //计算高度
-    CGFloat height = [tableView fd_heightForCellWithIdentifier:kFeedListTableViewCell cacheByIndexPath:indexPath configuration:^(FeedListTableViewCell *cell) {
+    CGFloat height = [tableView fd_heightForCellWithIdentifier:kFeedListTableViewCell
+                                              cacheByIndexPath:indexPath
+                                                 configuration:^(FeedListTableViewCell *cell) {
         [cell setData:_feedListArray[indexPath.row]];
     }];
     return height;
@@ -139,7 +148,8 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    [_parent goToDetail:[NSString stringWithFormat:@"%d", (int)[(FeedInfo *)_feedListArray[indexPath.row] feed].feedIdentifier]];
+    [_parent goToDetail:[NSString stringWithFormat:@"%d"
+                         , (int)[(FeedInfo *)_feedListArray[indexPath.row] feed].feedIdentifier]];
 }
 
 

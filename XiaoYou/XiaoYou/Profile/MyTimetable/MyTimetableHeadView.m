@@ -43,7 +43,6 @@
             label.textColor = KCOLORWHITE;
             label.userInteractionEnabled = YES;
             label.font = CONTENT_FONT(13);
-//            [label addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(chooseDay:)]];
             [self addSubview:label];
             
             [label mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -92,7 +91,7 @@
             make.centerX.equalTo(label);
         }];
         
-        _selectDay = selectDay;
+        self.selectDay = selectDay;
     }
     
     _nowDay.hidden = !showNowDay;

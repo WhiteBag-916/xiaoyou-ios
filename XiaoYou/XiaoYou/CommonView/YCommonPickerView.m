@@ -117,16 +117,20 @@ NSString *const kPickerViewCalendarRemind = @"PickerViewCalendarRemindC";
 
 
 #pragma mark UIPickerViewDelegate
-- (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
-{
+//- (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
+//{
 //    if (0 == component && (PageView_City == _viewType || PageView_CaseRole == _viewType)) {
 //        [self reloadArr:row inComponent:component];
 //    }
-}
+//}
 
-- (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
+- (NSString *)pickerView:(UIPickerView *)pickerView
+             titleForRow:(NSInteger)row
+            forComponent:(NSInteger)component
 {
-//    if (PageView_City == _viewType || PageView_DateYM == _viewType || PageView_CaseRole == _viewType)
+//    if (PageView_City == _viewType
+//    || PageView_DateYM == _viewType
+//    || PageView_CaseRole == _viewType)
 //    {
 //        if (0 == component) {
 //            return self.leftArr[row];

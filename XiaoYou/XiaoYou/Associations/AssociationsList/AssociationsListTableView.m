@@ -38,7 +38,8 @@
         
         _associationsListArray = [NSMutableArray array];
         
-        [self registerClass:[AssociationsListTableViewCell class] forCellReuseIdentifier:kAssociationsListTableViewCell];
+        [self registerClass:[AssociationsListTableViewCell class]
+     forCellReuseIdentifier:kAssociationsListTableViewCell];
     }
     return self;
 }
@@ -98,9 +99,13 @@
     if ([self isHeaderRefresh]) {
         cnt = 0;
     }
-    [[FeedManager sharedInstance] groupList:cnt limitEnd:cnt + KPAGENUM name:_searchStr queryCode:_filterStr block:^(YActionMessage *message) {
+    [[FeedManager sharedInstance] groupList:cnt
+                                   limitEnd:cnt + KPAGENUM
+                                       name:_searchStr
+                                  queryCode:_filterStr
+                                      block:^(YActionMessage *message) {
         if (message.isSuccess) {
-            if (nil != _searchStr) {
+            if (_searchStr != nil) {
                 [self searchMessage:message];
             } else {
                 [self dealMessage:message];
@@ -137,7 +142,8 @@
             [self reloadData];
         } else {
             //如果一条数据也没有，则显示nodata
-            AssociationsSearchViewController *vc = (AssociationsSearchViewController *)self.viewController;
+            AssociationsSearchViewController *vc
+            = (AssociationsSearchViewController *)self.viewController;
             if ([[message.object groupList] count] <= 0) {
                 [vc hiddenNodata:NO];
             } else {
@@ -164,7 +170,8 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    AssociationsListTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kAssociationsListTableViewCell];
+    AssociationsListTableViewCell *cell = [tableView
+                                           dequeueReusableCellWithIdentifier:kAssociationsListTableViewCell];
     [cell resetData:_associationsListArray[indexPath.row] isDetail:NO];
     return cell;
 }
@@ -181,8 +188,13 @@
     
     GroupModel *model = _associationsListArray[indexPath.row];
     
-    AssociationsDetailViewController *associationsDetailViewController = [[AssociationsDetailViewController alloc] initWithId:[NSString stringWithFormat:@"%g", model.internalBaseClassIdentifier] name:model.groupName];
-    [_superVC.navigationController pushViewController:associationsDetailViewController animated:YES needHiddenBottomBar:YES];
+    AssociationsDetailViewController *associationsDetailViewController
+    = [[AssociationsDetailViewController alloc] initWithId:[NSString stringWithFormat:@"%g"
+                                                            , model.internalBaseClassIdentifier]
+                                                      name:model.groupName];
+    [_superVC.navigationController pushViewController:associationsDetailViewController
+                                             animated:YES
+                                  needHiddenBottomBar:YES];
 }
 
 @end

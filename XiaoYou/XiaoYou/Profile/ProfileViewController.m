@@ -44,7 +44,8 @@
 
 @interface ProfileViewController () <QRCodeReaderDelegate>
 
-@property (nonatomic, strong) UIView *containerView;//scroll的一级view，所有其他view放在其中
+//scroll的一级view，所有其他view放在其中
+@property (nonatomic, strong) UIView *containerView;
 
 @property (nonatomic, strong) UIImageView *headImg;//头像
 @property (nonatomic, strong) UILabel *userName;//姓名

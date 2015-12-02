@@ -91,7 +91,7 @@ NSString *const kAssociationsListTableViewCell = @"AssociationsListTableViewCell
     //3
     _nameLabel = [YUtils initLabel:CONTENT_FONT(14)
                              color:KCOLOR_455A64
-                              text:@"网球社网球社网球社网球社网球社网球社网球社网球社网球社网球社网球社网球社"
+                              text:@"网球社"
                              frame:CGRectZero
                          alignment:NSTextAlignmentLeft];
     [self.contentView addSubview:_nameLabel];
@@ -126,7 +126,7 @@ NSString *const kAssociationsListTableViewCell = @"AssociationsListTableViewCell
     //5
     _typeLabel = [YUtils initLabel:CONTENT_FONT(10)
                              color:[UIColor blackColor]
-                              text:@"体育体育体育体育体育体育体育体育体育体育体育体育体育体育体育体育"
+                              text:@"体育体育体育体育体育体育体育"
                              frame:CGRectZero
                          alignment:NSTextAlignmentLeft];
     [self.contentView addSubview:_typeLabel];
@@ -166,7 +166,8 @@ NSString *const kAssociationsListTableViewCell = @"AssociationsListTableViewCell
     }];
     
     for (int i = 0; i < 5; ++i) {
-        UIImageView *starImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"common_star"]];
+        UIImageView *starImageView = [[UIImageView alloc]
+                                      initWithImage:[UIImage imageNamed:@"common_star"]];
         starImageView.hidden = YES;
         [_starView addSubview:starImageView];
         

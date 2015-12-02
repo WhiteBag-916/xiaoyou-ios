@@ -77,7 +77,10 @@ NSString *const kMyTimetableDayCollectionViewCell = @"MyTimetableDayCollectionVi
     return self;
 }
 
-- (void)initData:(NSString *)numText timeText:(NSString *)timeText showRightLine:(BOOL)showRightLine showBottomLine:(BOOL)showBottomLine {
+- (void)initData:(NSString *)numText
+        timeText:(NSString *)timeText
+   showRightLine:(BOOL)showRightLine
+  showBottomLine:(BOOL)showBottomLine {
     if (nil != numText) {
         _numLabel.text = numText;
         _numLabel.hidden = NO;

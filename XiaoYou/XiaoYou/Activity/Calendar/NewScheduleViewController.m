@@ -85,13 +85,15 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
-    [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationSlide];
+    [[UIApplication sharedApplication] setStatusBarHidden:YES
+                                            withAnimation:UIStatusBarAnimationSlide];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
     
-    [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationSlide];
+    [[UIApplication sharedApplication] setStatusBarHidden:NO
+                                            withAnimation:UIStatusBarAnimationSlide];
 }
 
 - (void)initTitle {
@@ -99,7 +101,9 @@
     //错号
     UIButton * dissMissBtn = [[UIButton alloc] init];
     [dissMissBtn setImage:[UIImage imageNamed:@"build_btn_cancel"] forState:UIControlStateNormal];
-    [dissMissBtn addTarget:self action:@selector(clickBtnForCancel) forControlEvents:UIControlEventTouchUpInside];
+    [dissMissBtn addTarget:self
+                    action:@selector(clickBtnForCancel)
+          forControlEvents:UIControlEventTouchUpInside];
     [_titleView addSubview:dissMissBtn];
     [dissMissBtn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.equalTo(_titleView);
@@ -110,7 +114,9 @@
     //对号
     UIButton * finishBtn = [[UIButton alloc] init];
     [finishBtn setImage:[UIImage imageNamed:@"build_btn_finish"] forState:UIControlStateNormal];
-    [finishBtn addTarget:self action:@selector(clickBtnForChoice) forControlEvents:UIControlEventTouchUpInside];
+    [finishBtn addTarget:self
+                  action:@selector(clickBtnForChoice)
+        forControlEvents:UIControlEventTouchUpInside];
     [_titleView addSubview:finishBtn];
     [finishBtn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.equalTo(_titleView);
@@ -153,10 +159,13 @@
     
     //背景图
     UIImageView *backgroundImageView = [[UIImageView alloc] init];
-    backgroundImageView.image = [[UIImage imageNamed:@"build_background"] resizableImageWithCapInsets:UIEdgeInsetsMake(10, 6, 6, 6) resizingMode:UIImageResizingModeStretch];
+    backgroundImageView.image = [[UIImage imageNamed:@"build_background"]
+                                 resizableImageWithCapInsets:UIEdgeInsetsMake(10, 6, 6, 6)
+                                 resizingMode:UIImageResizingModeStretch];
     [_contentView addSubview:backgroundImageView];
     [backgroundImageView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.edges.equalTo(_contentView).insets(UIEdgeInsetsMake(0, K_BACK_LR, K_BACK_B, K_BACK_LR));
+        make.edges.equalTo(_contentView)
+        .insets(UIEdgeInsetsMake(0, K_BACK_LR, K_BACK_B, K_BACK_LR));
     }];
 
     //日程名称
@@ -169,7 +178,10 @@
         make.height.mas_equalTo(K_CONTENT_H);
     }];
     
-    [self initField:@"build_icon_name" labelName:@"日程名称" fieldTag:K_TAG_NAME backView:_nameView];
+    [self initField:@"build_icon_name"
+          labelName:@"日程名称"
+           fieldTag:K_TAG_NAME
+           backView:_nameView];
 
     //上课时间
     _bClassView = [UIView new];
@@ -180,7 +192,10 @@
         make.height.mas_equalTo(K_CONTENT_H);
     }];
     
-    [self initTime:@"build_icon_start" labelName:@"开始时间" timeTag:K_TAG_BCLASS backView:_bClassView];
+    [self initTime:@"build_icon_start"
+         labelName:@"开始时间"
+           timeTag:K_TAG_BCLASS
+          backView:_bClassView];
     
     //下课时间
     _fClassView = [UIView new];
@@ -191,7 +206,10 @@
         make.height.mas_equalTo(K_CONTENT_H);
     }];
     
-    [self initTime:@"build_icon_stop" labelName:@"结束时间" timeTag:K_TAG_FCLASS backView:_fClassView];
+    [self initTime:@"build_icon_stop"
+         labelName:@"结束时间"
+           timeTag:K_TAG_FCLASS
+          backView:_fClassView];
     
     //上课地点
     _locationView = [UIView new];
@@ -202,7 +220,10 @@
         make.height.mas_equalTo(K_CONTENT_H);
     }];
     
-    [self initField:@"build_icon_location" labelName:@"活动地点" fieldTag:K_TAG_LOCATION backView:_locationView];
+    [self initField:@"build_icon_location"
+          labelName:@"活动地点"
+           fieldTag:K_TAG_LOCATION
+           backView:_locationView];
     
     //提醒
     _remindView = [UIView new];
@@ -214,12 +235,16 @@
         make.bottom.equalTo(backgroundImageView).offset(-K_CONTENT_B);
     }];
     
-    [self initButton:@"havetime_icon_remind" labelName:@"提醒" buttonTag:K_TAG_REMIND backView:_remindView buttonText:@"不设置提醒"];
+    [self initButton:@"havetime_icon_remind"
+           labelName:@"提醒"
+           buttonTag:K_TAG_REMIND
+            backView:_remindView buttonText:@"不设置提醒"];
 }
 
 - (void)initHead:(NSString *)imageName labelName:(NSString *)labelName backView:(UIView *)backView {
     //image
-    UIImageView *courseImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:imageName]];
+    UIImageView *courseImageView = [[UIImageView alloc]
+                                    initWithImage:[UIImage imageNamed:imageName]];
     courseImageView.contentMode = UIViewContentModeTopLeft;
     [backView addSubview:courseImageView];
     
@@ -241,13 +266,19 @@
     }];
 }
 
-- (void)initField:(NSString *)imageName labelName:(NSString *)labelName fieldTag:(NSInteger)fieldTag backView:(UIView *)backView {
+- (void)initField:(NSString *)imageName
+        labelName:(NSString *)labelName
+         fieldTag:(NSInteger)fieldTag
+         backView:(UIView *)backView
+{
     
     [self initHead:imageName labelName:labelName backView:backView];
     
     //fieldBg
     UIImageView *fieldBgImageView = [[UIImageView alloc] init];
-    [fieldBgImageView setImage:[[UIImage imageNamed:@"build_put_bg"] resizableImageWithCapInsets:UIEdgeInsetsMake(5, 5, 5, 5) resizingMode:UIImageResizingModeStretch]];
+    [fieldBgImageView setImage:[[UIImage imageNamed:@"build_put_bg"]
+                                resizableImageWithCapInsets:UIEdgeInsetsMake(5, 5, 5, 5)
+                                resizingMode:UIImageResizingModeStretch]];
     [backView addSubview:fieldBgImageView];
     [fieldBgImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.right.bottom.equalTo(backView);
@@ -256,7 +287,8 @@
     
     //field
     YTextField *textField = [[YTextField alloc] init];
-    [textField placeHolderColor:[NSString stringWithFormat:@"请输入%@", labelName] fontColor:KCOLOR_B5];
+    [textField placeHolderColor:[NSString stringWithFormat:@"请输入%@", labelName]
+                      fontColor:KCOLOR_B5];
     textField.font = CONTENT_FONT(12);
     textField.textColor = KCOLOR_B4;
     textField.delegate = self;
@@ -264,17 +296,24 @@
     [textField registerChanged:self action:@selector(textFieldValueChanged:)];
     [backView addSubview:textField];
     [textField mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.edges.equalTo(fieldBgImageView).insets(UIEdgeInsetsMake(0, K_CONTENT_LR, 0, K_CONTENT_LR));
+        make.edges.equalTo(fieldBgImageView)
+        .insets(UIEdgeInsetsMake(0, K_CONTENT_LR, 0, K_CONTENT_LR));
     }];
 }
 
-- (void)initTime:(NSString *)imageName labelName:(NSString *)labelName timeTag:(NSInteger)timeTag backView:(UIView *)backView {
+- (void)initTime:(NSString *)imageName
+       labelName:(NSString *)labelName
+         timeTag:(NSInteger)timeTag
+        backView:(UIView *)backView
+{
     
     [self initHead:imageName labelName:labelName backView:backView];
     
     //timeBg
     UIImageView *fieldBgImageView = [[UIImageView alloc] init];
-    [fieldBgImageView setImage:[[UIImage imageNamed:@"build_put_bg"] resizableImageWithCapInsets:UIEdgeInsetsMake(5, 5, 5, 5) resizingMode:UIImageResizingModeStretch]];
+    [fieldBgImageView setImage:[[UIImage imageNamed:@"build_put_bg"]
+                                resizableImageWithCapInsets:UIEdgeInsetsMake(5, 5, 5, 5)
+                                resizingMode:UIImageResizingModeStretch]];
     [backView addSubview:fieldBgImageView];
     [fieldBgImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.right.bottom.equalTo(backView);
@@ -290,21 +329,31 @@
     timeLabel.userInteractionEnabled = YES;
     [backView addSubview:timeLabel];
     [timeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.edges.equalTo(fieldBgImageView).insets(UIEdgeInsetsMake(0, K_CONTENT_LR, 0, K_CONTENT_LR));
+        make.edges.equalTo(fieldBgImageView)
+        .insets(UIEdgeInsetsMake(0, K_CONTENT_LR, 0, K_CONTENT_LR));
     }];
     
-    UITapGestureRecognizer *beginTapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showChoiceTime:)];
+    UITapGestureRecognizer *beginTapGesture = [[UITapGestureRecognizer alloc]
+                                               initWithTarget:self
+                                               action:@selector(showChoiceTime:)];
     [timeLabel addGestureRecognizer:beginTapGesture];
 }
 
 
-- (void)initButton:(NSString *)imageName labelName:(NSString *)labelName buttonTag:(NSInteger)buttonTag backView:(UIView *)backView buttonText:(NSString *)buttonText {
+- (void)initButton:(NSString *)imageName
+         labelName:(NSString *)labelName
+         buttonTag:(NSInteger)buttonTag
+          backView:(UIView *)backView
+        buttonText:(NSString *)buttonText
+{
     
     [self initHead:imageName labelName:labelName backView:backView];
     
     //fieldBg
     UIImageView *fieldBgImageView = [[UIImageView alloc] init];
-    [fieldBgImageView setImage:[[UIImage imageNamed:@"build_put_bg"] resizableImageWithCapInsets:UIEdgeInsetsMake(5, 5, 5, 5) resizingMode:UIImageResizingModeStretch]];
+    [fieldBgImageView setImage:[[UIImage imageNamed:@"build_put_bg"]
+                                resizableImageWithCapInsets:UIEdgeInsetsMake(5, 5, 5, 5)
+                                resizingMode:UIImageResizingModeStretch]];
     [backView addSubview:fieldBgImageView];
     [fieldBgImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.right.bottom.equalTo(backView);
@@ -320,10 +369,13 @@
     timeLabel.userInteractionEnabled = YES;
     [backView addSubview:timeLabel];
     [timeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.edges.equalTo(fieldBgImageView).insets(UIEdgeInsetsMake(0, K_CONTENT_LR, 0, K_CONTENT_LR));
+        make.edges.equalTo(fieldBgImageView)
+        .insets(UIEdgeInsetsMake(0, K_CONTENT_LR, 0, K_CONTENT_LR));
     }];
     
-    UITapGestureRecognizer *beginTapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(pressButton:)];
+    UITapGestureRecognizer *beginTapGesture = [[UITapGestureRecognizer alloc]
+                                               initWithTarget:self
+                                               action:@selector(pressButton)];
     [timeLabel addGestureRecognizer:beginTapGesture];
 }
 
@@ -341,7 +393,8 @@
         //begintime
         UILabel *beginTimeLabel = (UILabel *)[_bClassView viewWithTag:K_TAG_BCLASS];
         NSDate *beginDate = [NSDate dateWithTimeIntervalSince1970:_userSchedulingInfo.startTime/1000];
-        beginTimeLabel.text = [NSDate stringFromDate:beginDate withFormat:@"yyyy年MM月dd日 HH:mm"];
+        beginTimeLabel.text = [NSDate stringFromDate:beginDate
+                                          withFormat:@"yyyy年MM月dd日 HH:mm"];
         beginTimeLabel.textColor = KCOLOR_B4;
         
         //endtime
@@ -355,7 +408,8 @@
         locationTextField.text = _userSchedulingInfo.address;
         
         //提醒
-        NSString *remindText = [[ActivityManager sharedInstance] remindTextByTime:_userSchedulingInfo.noticeTimePeriod];
+        NSString *remindText = [[ActivityManager sharedInstance]
+                                remindTextByTime:_userSchedulingInfo.noticeTimePeriod];
         [self resetRemindLabel:remindText];
     } else {
         self.userSchedulingInfo = [[UserSchedulingInfo alloc] init];
@@ -395,7 +449,16 @@
         return;
     }
     
-    NSDictionary *dic = @{@"content":_userSchedulingInfo.content, @"id":[NSString stringWithFormat:@"%g", _userSchedulingInfo.internalBaseClassIdentifier], @"endTime": [NSString stringWithFormat:@"%lld", _userSchedulingInfo.endTime], @"startTime": [NSString stringWithFormat:@"%lld", _userSchedulingInfo.startTime], @"address":SStr(_userSchedulingInfo.address), @"noticeTimePeriod":[NSString stringWithFormat:@"%g", _userSchedulingInfo.noticeTimePeriod]};
+    NSDictionary *dic = @{@"content":_userSchedulingInfo.content
+                          , @"id":[NSString stringWithFormat:@"%g"
+                                   , _userSchedulingInfo.internalBaseClassIdentifier]
+                          , @"endTime": [NSString stringWithFormat:@"%lld"
+                                         , _userSchedulingInfo.endTime]
+                          , @"startTime": [NSString stringWithFormat:@"%lld"
+                                           , _userSchedulingInfo.startTime]
+                          , @"address":SStr(_userSchedulingInfo.address)
+                          , @"noticeTimePeriod":[NSString stringWithFormat:@"%g"
+                                                 , _userSchedulingInfo.noticeTimePeriod]};
     [YUtils showHUDWithTitle];
     [[ActivityManager sharedInstance] userSchedulingEdit:dic block:^(YActionMessage *message) {
         [YUtils hiddenProgressHUD];
@@ -418,11 +481,14 @@
 }
 
 #pragma mark - 按钮
-- (void)pressButton:(UITapGestureRecognizer*)gesture {
+- (void)pressButton
+{
     [self.view endEditing:YES];
     
     if (nil == _remindPicker) {
-        _remindPicker = [[YCommonPickerView alloc] initWithType:PickerView_CalendarRemind commonArray:[[ActivityManager sharedInstance] remindTextArray]];
+        self.remindPicker = [[YCommonPickerView alloc] initWithType:PickerView_CalendarRemind
+                                                        commonArray:[[ActivityManager sharedInstance]
+                                                                     remindTextArray]];
     }
     
     CommonPopView *popView = [[CommonPopView alloc] initWithFrame:[UIScreen mainScreen].bounds
@@ -441,7 +507,8 @@
     NSString *remindText = data[kPickerViewCalendarRemind];
     [self resetRemindLabel:remindText];
     
-    _userSchedulingInfo.noticeTimePeriod = [[ActivityManager sharedInstance] timeByRemindText:remindText];
+    _userSchedulingInfo.noticeTimePeriod = [[ActivityManager sharedInstance]
+                                            timeByRemindText:remindText];
 }
 
 - (void)resetRemindLabel:(NSString *)text {
@@ -459,14 +526,16 @@
 {
     [self.view endEditing:YES];
     
-    _chooesTag = gesture.view.tag;
+    self.chooesTag = gesture.view.tag;
     
     if (nil == _datePicker) {
-        _datePicker = [[UIDatePicker alloc] initWithFrame:CGRectMake(10, 0, SCREEN_WIDTH-20, 160)];
+        self.datePicker = [[UIDatePicker alloc]
+                           initWithFrame:CGRectMake(10, 0, SCREEN_WIDTH-20, 160)];
     }
     
     if (K_TAG_BCLASS == _chooesTag && _userSchedulingInfo.startTime > 0) {
-        _datePicker.date = [NSDate dateWithTimeIntervalSince1970:_userSchedulingInfo.startTime/1000];
+        _datePicker.date = [NSDate
+                            dateWithTimeIntervalSince1970:_userSchedulingInfo.startTime/1000];
     }else if (K_TAG_FCLASS == _chooesTag && _userSchedulingInfo.endTime > 0) {
         _datePicker.date = [NSDate dateWithTimeIntervalSince1970:_userSchedulingInfo.endTime/1000];
     }
@@ -580,7 +649,8 @@ replacementString:(NSString *)string
     [UIView setAnimationCurve:[curve intValue]];
     
     [_contentScrollView mas_remakeConstraints:^(MASConstraintMaker *make) {
-        make.edges.equalTo(self.view).insets(UIEdgeInsetsMake(_titleView.bottomY, 0, keyboardBounds.size.height, 0));
+        make.edges.equalTo(self.view)
+        .insets(UIEdgeInsetsMake(_titleView.bottomY, 0, keyboardBounds.size.height, 0));
     }];
     
     [_contentScrollView layoutIfNeeded];
@@ -612,15 +682,5 @@ replacementString:(NSString *)string
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
     [self.view endEditing:YES];
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

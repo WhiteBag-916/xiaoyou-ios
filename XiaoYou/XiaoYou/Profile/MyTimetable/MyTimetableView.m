@@ -39,16 +39,20 @@
 
 - (instancetype)init {
     if (self = [super init]) {
-        self.timeArray = [@[@"8:00", @"8:55", @"10:00", @"10:55", @"12:00", @"12:55", @"14:00", @"14:55", @"16:00", @"16:55", @"18:30", @"19:25", @"20:20", @"21:15"] mutableCopy];
+        self.timeArray = [@[@"8:00", @"8:55", @"10:00", @"10:55", @"12:00"
+                            , @"12:55", @"14:00", @"14:55", @"16:00", @"16:55"
+                            , @"18:30", @"19:25", @"20:20", @"21:15"] mutableCopy];
         
         //课表时间
         UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc]init];
         layout.minimumLineSpacing = 0;
         layout.minimumInteritemSpacing = 0;
         layout.itemSize = CGSizeMake(K_CURRICULUM_WH, K_CURRICULUM_WH);
-        _allDayCollectionView = [[UICollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:layout];
+        _allDayCollectionView = [[UICollectionView alloc] initWithFrame:CGRectZero
+                                                   collectionViewLayout:layout];
         _allDayCollectionView.backgroundColor = KCOLORWHITE;
-        [_allDayCollectionView registerClass:[MyTimetableDayCollectionViewCell class] forCellWithReuseIdentifier:kMyTimetableDayCollectionViewCell];
+        [_allDayCollectionView registerClass:[MyTimetableDayCollectionViewCell class]
+                  forCellWithReuseIdentifier:kMyTimetableDayCollectionViewCell];
         _allDayCollectionView.delegate = self;
         _allDayCollectionView.dataSource = self;
         _allDayCollectionView.allowsSelection = NO;
@@ -63,7 +67,8 @@
         _timedEventsViewLayout.delegate = self;
         _timedEventsViewLayout.dayColumnSize = CGSizeMake(K_CURRICULUM_WH, K_CURRICULUM_WH*14);
         
-        _eventCollectionView = [[UICollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:_timedEventsViewLayout];
+        _eventCollectionView = [[UICollectionView alloc] initWithFrame:CGRectZero
+                                                  collectionViewLayout:_timedEventsViewLayout];
         _eventCollectionView.backgroundColor = [UIColor clearColor];
         _eventCollectionView.dataSource = self;
         _eventCollectionView.delegate = self;
@@ -74,7 +79,8 @@
         _eventCollectionView.directionalLockEnabled = YES;
         _eventCollectionView.bounces = NO;
         
-        [_eventCollectionView registerClass:[MyTimetableCurriculumCollectionViewCell class] forCellWithReuseIdentifier:kMyTimetableCurriculumCollectionViewCell];
+        [_eventCollectionView registerClass:[MyTimetableCurriculumCollectionViewCell class]
+                 forCellWithReuseIdentifier:kMyTimetableCurriculumCollectionViewCell];
         [self addSubview:_eventCollectionView];
         [_eventCollectionView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.edges.equalTo(self).insets(UIEdgeInsetsMake(0, K_CURRICULUM_WH, 0, 0));
@@ -103,7 +109,8 @@
     
     for (int i=0; i<7; ++i) {
         NSMutableArray *modelArray = [[NSMutableArray alloc] init];
-        [eventsArray enumerateObjectsUsingBlock:^(FindMyCourseViewModel *findMyCourseViewModel, NSUInteger idx, BOOL * _Nonnull stop) {
+        [eventsArray enumerateObjectsUsingBlock:^(FindMyCourseViewModel *findMyCourseViewModel
+                                                  , NSUInteger idx, BOOL * _Nonnull stop) {
             if (i == findMyCourseViewModel.week-1) {
                 [modelArray addObject:findMyCourseViewModel];
             }
@@ -149,7 +156,8 @@
     return 0;
 }
 
--(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
+-(NSInteger)collectionView:(UICollectionView *)collectionView
+    numberOfItemsInSection:(NSInteger)section
 {
     if (collectionView == _allDayCollectionView) {
         return 8;
@@ -159,13 +167,16 @@
     return 0;
 }
 
--(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
+-(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView
+                 cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     NSInteger row = indexPath.row;
     NSInteger section = indexPath.section;
     
     if (collectionView == _allDayCollectionView) {
-        MyTimetableDayCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:kMyTimetableDayCollectionViewCell forIndexPath:indexPath];
+        MyTimetableDayCollectionViewCell *cell = [collectionView
+                                                  dequeueReusableCellWithReuseIdentifier:kMyTimetableDayCollectionViewCell
+                                                  forIndexPath:indexPath];
         
         NSString *numStr;
         NSString *timeStr;
@@ -174,11 +185,16 @@
             timeStr = _timeArray[section];
         }
         
-        [cell initData:numStr timeText:timeStr showRightLine:(row==7) showBottomLine:(section==_timeArray.count-1)];
+        [cell initData:numStr
+              timeText:timeStr
+         showRightLine:(row==7)
+        showBottomLine:(section==_timeArray.count-1)];
         
         return cell;
     } else if (collectionView == _eventCollectionView) {
-        MyTimetableCurriculumCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:kMyTimetableCurriculumCollectionViewCell forIndexPath:indexPath];
+        MyTimetableCurriculumCollectionViewCell *cell = [collectionView
+                                                         dequeueReusableCellWithReuseIdentifier:kMyTimetableCurriculumCollectionViewCell
+                                                         forIndexPath:indexPath];
         
         NSArray *arrayByWeekDay = [_eventsDic objectForKey:@(section)];
         FindMyCourseViewModel *findMyCourseViewModel = arrayByWeekDay[row];
@@ -190,7 +206,8 @@
     return nil;
 }
 
-- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+- (void)collectionView:(UICollectionView *)collectionView
+didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     CurriculumDetailView *curriculumDetailView = [[CurriculumDetailView alloc] init];
     NSInteger row = indexPath.row;
     NSInteger section = indexPath.section;
@@ -201,11 +218,15 @@
 }
 
 #pragma mark - MGCTimedEventsViewLayoutDelegate
-- (CGFloat)collectionView:(UICollectionView*)collectionView layout:(MGCTimedEventsViewLayout*)layout yPosForEventAtIndexPath:(NSIndexPath*)indexPath {
+- (CGFloat)collectionView:(UICollectionView*)collectionView
+                   layout:(MGCTimedEventsViewLayout*)layout
+  yPosForEventAtIndexPath:(NSIndexPath*)indexPath {
     return [self offsetYWithWeekDay:indexPath];
 }
 
-- (CGFloat)collectionView:(UICollectionView*)collectionView layout:(MGCTimedEventsViewLayout*)layout heightForEventAtIndexPath:(NSIndexPath*)indexPath {
+- (CGFloat)collectionView:(UICollectionView*)collectionView
+                   layout:(MGCTimedEventsViewLayout*)layout
+heightForEventAtIndexPath:(NSIndexPath*)indexPath {
     return [self heightWithWeekDay:indexPath];
 }
 

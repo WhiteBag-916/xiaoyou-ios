@@ -36,7 +36,8 @@
         
         self.notifyListArray = [NSMutableArray array];
         
-        [self registerClass:[NotifyListTableViewCell class] forCellReuseIdentifier:kNotifyListTableViewCell];
+        [self registerClass:[NotifyListTableViewCell class]
+     forCellReuseIdentifier:kNotifyListTableViewCell];
     }
     return self;
 }
@@ -85,7 +86,8 @@
     //mod by xiongchen
     NSString *lastID;
     if (![self isHeaderRefresh]) {
-        lastID = [NSString stringWithFormat:@"%g", [_notifyListArray.lastObject internalBaseClassIdentifier]];
+        lastID = [NSString stringWithFormat:@"%g"
+                  , [_notifyListArray.lastObject internalBaseClassIdentifier]];
     }
     [[FeedManager sharedInstance] alertList:lastID size:KPAGENUM block:^(YActionMessage *message) {
         if (message.isSuccess) {
@@ -131,9 +133,11 @@
     return _notifyListArray.count;
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+- (UITableViewCell *)tableView:(UITableView *)tableView
+         cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NotifyListTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kNotifyListTableViewCell];
+    NotifyListTableViewCell *cell = [tableView
+                                     dequeueReusableCellWithIdentifier:kNotifyListTableViewCell];
     
     [cell initData:_notifyListArray[indexPath.row]];
     
@@ -141,15 +145,22 @@
 }
 
 #pragma mark - UITableViewDelegate
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+- (CGFloat)tableView:(UITableView *)tableView
+heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     return SCALE_NUM(51);
 }
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+- (void)tableView:(UITableView *)tableView
+didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    FeedDetailViewController *feedDetailViewController = [[FeedDetailViewController alloc] initWithFeedId:[NSString stringWithFormat:@"%g", [_notifyListArray[indexPath.row] affectId]]];
-    [_superVC.navigationController pushViewController:feedDetailViewController animated:YES needHiddenBottomBar:YES];
+    FeedDetailViewController *feedDetailViewController = [[FeedDetailViewController alloc]
+                                                          initWithFeedId:[NSString stringWithFormat:@"%g"
+                                                                          , [_notifyListArray[indexPath.row]
+                                                                             affectId]]];
+    [_superVC.navigationController pushViewController:feedDetailViewController
+                                             animated:YES
+                                  needHiddenBottomBar:YES];
     
     //清除当前界面存在这个feedid的数据
     [self delArrayByAffectId:[_notifyListArray[indexPath.row] affectId]];

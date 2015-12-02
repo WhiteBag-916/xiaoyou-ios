@@ -69,13 +69,15 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
-    [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationSlide];
+    [[UIApplication sharedApplication] setStatusBarHidden:YES
+                                            withAnimation:UIStatusBarAnimationSlide];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
     
-    [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationSlide];
+    [[UIApplication sharedApplication] setStatusBarHidden:NO
+                                            withAnimation:UIStatusBarAnimationSlide];
 }
 
 - (void)initTitle {
@@ -83,7 +85,9 @@
     //错号
     UIButton * dissMissBtn = [[UIButton alloc] init];
     [dissMissBtn setImage:[UIImage imageNamed:@"build_btn_cancel"] forState:UIControlStateNormal];
-    [dissMissBtn addTarget:self action:@selector(clickBtnForCancel) forControlEvents:UIControlEventTouchUpInside];
+    [dissMissBtn addTarget:self
+                    action:@selector(clickBtnForCancel)
+          forControlEvents:UIControlEventTouchUpInside];
     [_titleView addSubview:dissMissBtn];
     [dissMissBtn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.equalTo(_titleView);
@@ -94,7 +98,9 @@
     //对号
     UIButton * finishBtn = [[UIButton alloc] init];
     [finishBtn setImage:[UIImage imageNamed:@"build_btn_finish"] forState:UIControlStateNormal];
-    [finishBtn addTarget:self action:@selector(clickBtnForChoice) forControlEvents:UIControlEventTouchUpInside];
+    [finishBtn addTarget:self
+                  action:@selector(clickBtnForChoice)
+        forControlEvents:UIControlEventTouchUpInside];
     [_titleView addSubview:finishBtn];
     [finishBtn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.equalTo(_titleView);
@@ -137,10 +143,13 @@
     
     //背景图
     UIImageView *backgroundImageView = [[UIImageView alloc] init];
-    backgroundImageView.image = [[UIImage imageNamed:@"build_background"] resizableImageWithCapInsets:UIEdgeInsetsMake(10, 6, 6, 6) resizingMode:UIImageResizingModeStretch];
+    backgroundImageView.image = [[UIImage imageNamed:@"build_background"]
+                                 resizableImageWithCapInsets:UIEdgeInsetsMake(10, 6, 6, 6)
+                                 resizingMode:UIImageResizingModeStretch];
     [_contentView addSubview:backgroundImageView];
     [backgroundImageView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.edges.equalTo(_contentView).insets(UIEdgeInsetsMake(0, K_BACK_LR, K_BACK_B, K_BACK_LR));
+        make.edges.equalTo(_contentView)
+        .insets(UIEdgeInsetsMake(0, K_BACK_LR, K_BACK_B, K_BACK_LR));
     }];
     
     //课程名称
@@ -153,7 +162,10 @@
         make.height.mas_equalTo(K_CONTENT_H);
     }];
     
-    [self initField:@"havetime_icon_classname" labelName:@"课程名称" fieldTag:K_TAG_NAME backView:_nameView];
+    [self initField:@"havetime_icon_classname"
+          labelName:@"课程名称"
+           fieldTag:K_TAG_NAME
+           backView:_nameView];
     
     //授课人
     _lecturerView = [UIView new];
@@ -164,7 +176,10 @@
         make.height.mas_equalTo(K_CONTENT_H);
     }];
     
-    [self initField:@"havetime_icon_teacher" labelName:@"授课教师" fieldTag:K_TAG_LECTURER backView:_lecturerView];
+    [self initField:@"havetime_icon_teacher"
+          labelName:@"授课教师"
+           fieldTag:K_TAG_LECTURER
+           backView:_lecturerView];
     
     //上课时间
     _bClassView = [UIView new];
@@ -175,7 +190,10 @@
         make.height.mas_equalTo(K_CONTENT_H);
     }];
     
-    [self initTime:@"build_icon_start" labelName:@"上课时间" timeTag:K_TAG_BCLASS backView:_bClassView];
+    [self initTime:@"build_icon_start"
+         labelName:@"上课时间"
+           timeTag:K_TAG_BCLASS
+          backView:_bClassView];
     
     //下课时间
     _fClassView = [UIView new];
@@ -186,7 +204,10 @@
         make.height.mas_equalTo(K_CONTENT_H);
     }];
     
-    [self initTime:@"build_icon_stop" labelName:@"下课时间" timeTag:K_TAG_FCLASS backView:_fClassView];
+    [self initTime:@"build_icon_stop"
+         labelName:@"下课时间"
+           timeTag:K_TAG_FCLASS
+          backView:_fClassView];
     
     //上课地点
     _locationView = [UIView new];
@@ -197,7 +218,10 @@
         make.height.mas_equalTo(K_CONTENT_H);
     }];
     
-    [self initField:@"build_icon_location" labelName:@"上课地点" fieldTag:K_TAG_LOCATION backView:_locationView];
+    [self initField:@"build_icon_location"
+          labelName:@"上课地点"
+           fieldTag:K_TAG_LOCATION
+           backView:_locationView];
     
     //开课单位
     _departmentsView = [UIView new];
@@ -209,12 +233,16 @@
         make.bottom.equalTo(backgroundImageView).offset(-K_CONTENT_B);
     }];
     
-    [self initField:@"havetime_icon_academy" labelName:@"开课单位" fieldTag:K_TAG_DEPARTMENTS backView:_departmentsView];
+    [self initField:@"havetime_icon_academy"
+          labelName:@"开课单位"
+           fieldTag:K_TAG_DEPARTMENTS
+           backView:_departmentsView];
 }
 
 - (void)initHead:(NSString *)imageName labelName:(NSString *)labelName backView:(UIView *)backView {
     //image
-    UIImageView *courseImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:imageName]];
+    UIImageView *courseImageView = [[UIImageView alloc]
+                                    initWithImage:[UIImage imageNamed:imageName]];
     courseImageView.contentMode = UIViewContentModeTopLeft;
     [backView addSubview:courseImageView];
     
@@ -236,13 +264,18 @@
     }];
 }
 
-- (void)initField:(NSString *)imageName labelName:(NSString *)labelName fieldTag:(NSInteger)fieldTag backView:(UIView *)backView {
+- (void)initField:(NSString *)imageName
+        labelName:(NSString *)labelName
+         fieldTag:(NSInteger)fieldTag
+         backView:(UIView *)backView {
     
     [self initHead:imageName labelName:labelName backView:backView];
     
     //fieldBg
     UIImageView *fieldBgImageView = [[UIImageView alloc] init];
-    [fieldBgImageView setImage:[[UIImage imageNamed:@"build_put_bg"] resizableImageWithCapInsets:UIEdgeInsetsMake(5, 5, 5, 5) resizingMode:UIImageResizingModeStretch]];
+    [fieldBgImageView setImage:[[UIImage imageNamed:@"build_put_bg"]
+                                resizableImageWithCapInsets:UIEdgeInsetsMake(5, 5, 5, 5)
+                                resizingMode:UIImageResizingModeStretch]];
     [backView addSubview:fieldBgImageView];
     [fieldBgImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.right.bottom.equalTo(backView);
@@ -251,7 +284,8 @@
     
     //field
     YTextField *textField = [[YTextField alloc] init];
-    [textField placeHolderColor:[NSString stringWithFormat:@"请输入%@", labelName] fontColor:KCOLOR_B5];
+    [textField placeHolderColor:[NSString stringWithFormat:@"请输入%@", labelName]
+                      fontColor:KCOLOR_B5];
     textField.font = CONTENT_FONT(12);
     textField.textColor = KCOLOR_B4;
     textField.delegate = self;
@@ -259,17 +293,23 @@
     [textField registerChanged:self action:@selector(textFieldValueChanged:)];
     [backView addSubview:textField];
     [textField mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.edges.equalTo(fieldBgImageView).insets(UIEdgeInsetsMake(0, K_CONTENT_LR, 0, K_CONTENT_LR));
+        make.edges.equalTo(fieldBgImageView)
+        .insets(UIEdgeInsetsMake(0, K_CONTENT_LR, 0, K_CONTENT_LR));
     }];
 }
 
-- (void)initTime:(NSString *)imageName labelName:(NSString *)labelName timeTag:(NSInteger)timeTag backView:(UIView *)backView {
+- (void)initTime:(NSString *)imageName
+       labelName:(NSString *)labelName
+         timeTag:(NSInteger)timeTag
+        backView:(UIView *)backView {
     
     [self initHead:imageName labelName:labelName backView:backView];
     
     //timeBg
     UIImageView *fieldBgImageView = [[UIImageView alloc] init];
-    [fieldBgImageView setImage:[[UIImage imageNamed:@"build_put_bg"] resizableImageWithCapInsets:UIEdgeInsetsMake(5, 5, 5, 5) resizingMode:UIImageResizingModeStretch]];
+    [fieldBgImageView setImage:[[UIImage imageNamed:@"build_put_bg"]
+                                resizableImageWithCapInsets:UIEdgeInsetsMake(5, 5, 5, 5)
+                                resizingMode:UIImageResizingModeStretch]];
     [backView addSubview:fieldBgImageView];
     [fieldBgImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.right.bottom.equalTo(backView);
@@ -285,10 +325,13 @@
     timeLabel.userInteractionEnabled = YES;
     [backView addSubview:timeLabel];
     [timeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.edges.equalTo(fieldBgImageView).insets(UIEdgeInsetsMake(0, K_CONTENT_LR, 0, K_CONTENT_LR));
+        make.edges.equalTo(fieldBgImageView)
+        .insets(UIEdgeInsetsMake(0, K_CONTENT_LR, 0, K_CONTENT_LR));
     }];
     
-    UITapGestureRecognizer *beginTapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showChoiceTime:)];
+    UITapGestureRecognizer *beginTapGesture
+    = [[UITapGestureRecognizer alloc] initWithTarget:self
+                                              action:@selector(showChoiceTime:)];
     [timeLabel addGestureRecognizer:beginTapGesture];
 }
 
@@ -304,10 +347,10 @@
 #pragma mark - 选择日期
 - (void)showChoiceTime:(UITapGestureRecognizer*)gesture
 {
-    _chooesTag = gesture.view.tag;
+    self.chooesTag = gesture.view.tag;
     
     if (nil == _datePicker) {
-        _datePicker = [[UIDatePicker alloc] initWithFrame:CGRectMake(10, 0, SCREEN_WIDTH-20, 160)];
+        self.datePicker = [[UIDatePicker alloc] initWithFrame:CGRectMake(10, 0, SCREEN_WIDTH-20, 160)];
     }
     
     CommonPopView * popView = [[CommonPopView alloc] initWithFrame:[UIScreen mainScreen].bounds
@@ -347,10 +390,6 @@
     return YES;
 }
 
-- (void)textFieldValueChanged:(UITextField *)sender{
-
-}
-
 #pragma mark - YKeyBoardDlegate
 - (void)keyboardWillShowNotification:(NSNotification *)note {
     // get keyboard size and loctaion
@@ -369,7 +408,8 @@
     [UIView setAnimationCurve:[curve intValue]];
     
     [_contentScrollView mas_remakeConstraints:^(MASConstraintMaker *make) {
-        make.edges.equalTo(self.view).insets(UIEdgeInsetsMake(_titleView.bottomY, 0, keyboardBounds.size.height, 0));
+        make.edges.equalTo(self.view)
+        .insets(UIEdgeInsetsMake(_titleView.bottomY, 0, keyboardBounds.size.height, 0));
     }];
     
     [_contentScrollView layoutIfNeeded];
@@ -401,16 +441,5 @@
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
     [self.view endEditing:YES];
 }
-
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

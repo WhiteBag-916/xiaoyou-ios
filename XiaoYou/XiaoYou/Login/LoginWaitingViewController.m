@@ -49,11 +49,14 @@
 - (void)toLogin {
     //用userDefaults里的值登录
     NSString *studentNo = [[NSUserDefaults standardUserDefaults] objectForKey:kShareData_StudentNo];
-    NSString *loginPassword = [[NSUserDefaults standardUserDefaults] objectForKey:kShareData_LoginPassword];
-    [YShareData defaultData][kShareData_SchoolCode] = [[NSUserDefaults standardUserDefaults] objectForKey:kShareData_SchoolCode];
+    NSString *loginPassword = [[NSUserDefaults standardUserDefaults]
+                               objectForKey:kShareData_LoginPassword];
+    [YShareData defaultData][kShareData_SchoolCode] = [[NSUserDefaults standardUserDefaults]
+                                                       objectForKey:kShareData_SchoolCode];
     
     if (nil == studentNo || nil == loginPassword) {
-        [[NSNotificationCenter defaultCenter] postNotificationName:kNotification_Server_Token_Fail object:@{@"des":@"您的账号已在别的地方登录"}];
+        [[NSNotificationCenter defaultCenter] postNotificationName:kNotification_Server_Token_Fail
+                                                            object:@{@"des":@"您的账号已在别的地方登录"}];
     } else {
         [YUtils showHUDWithTitle:@""];
         [[ProvisionManager sharedInstance] goLogin:studentNo

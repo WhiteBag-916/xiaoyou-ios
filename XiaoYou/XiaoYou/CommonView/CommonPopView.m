@@ -22,8 +22,7 @@
                        isRoot:(BOOL)addRoot
                       addSelf:(UIView *)superView
 {
-    self = [super initWithFrame:frame];
-    if (self) {
+    if (self = [super initWithFrame:frame];) {
         self.isTop = top;
         self.isAddRootWindow = addRoot;
         
@@ -41,7 +40,8 @@
             bgHeight += BUTTON_TB*2+BUTTON_H;
         }
         
-        CGRect begainFrame = self.isTop ? CGRectMake(0, 0-bgHeight, self.width, bgHeight) : CGRectMake(0, self.bottomY, self.width, bgHeight);
+        CGRect begainFrame = self.isTop ? CGRectMake(0, 0-bgHeight, self.width, bgHeight)
+        : CGRectMake(0, self.bottomY, self.width, bgHeight);
         self.bgView = [[UIView alloc] initWithFrame:begainFrame];
         self.bgView.backgroundColor = [UIColor whiteColor];
         [self.grayView addSubview:self.bgView];
@@ -50,14 +50,17 @@
         {
             //view上加入按钮
             UIButton *backCancel = [self setButton:0];
-            [backCancel addTarget:self action:@selector(clickCancel) forControlEvents:UIControlEventTouchDown];
+            [backCancel addTarget:self action:@selector(clickCancel)
+                 forControlEvents:UIControlEventTouchDown];
             [self.bgView addSubview:backCancel];
             UIButton *btnOk = [self setButton:1];
-            [btnOk addTarget:self action:@selector(clickOk) forControlEvents:UIControlEventTouchDown];
+            [btnOk addTarget:self action:@selector(clickOk)
+            forControlEvents:UIControlEventTouchDown];
             [self.bgView addSubview:btnOk];
             
             //线
-            UIView *line = [[UIView alloc] initWithFrame:CGRectMake(0, BUTTON_TB*2+BUTTON_H, self.frame.size.width, 1)];
+            UIView *line = [[UIView alloc] initWithFrame:
+                            CGRectMake(0, BUTTON_TB*2+BUTTON_H, self.frame.size.width, 1)];
             line.backgroundColor = [UIColor hexChangeFloat:@"e9e9e9"];
             [self.bgView addSubview:line];
             
@@ -137,7 +140,8 @@
 - (void)clickCancel
 {
     [UIView animateWithDuration:0.25 animations:^{
-        CGRect endFrame = self.isTop ? CGRectMake(0, 0, self.width, 0) : CGRectMake(0, self.height-5, self.width, 0);
+        CGRect endFrame = self.isTop ? CGRectMake(0, 0, self.width, 0)
+        : CGRectMake(0, self.height-5, self.width, 0);
         self.bgView.frame = endFrame;
         self.alpha = 0;
     } completion:^(BOOL finished) {
@@ -147,7 +151,11 @@
 
 - (void)clickOk
 {
-    [NSTimer scheduledTimerWithTimeInterval:0.1 target:self.delegate selector:self.comAction userInfo:self.params repeats:NO];
+    [NSTimer scheduledTimerWithTimeInterval:0.1
+                                     target:self.delegate
+                                   selector:self.comAction
+                                   userInfo:self.params
+                                    repeats:NO];
     [self clickCancel];
 }
 
