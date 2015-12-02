@@ -87,7 +87,7 @@ NSInteger const kLoginCommonTextFieldTag = 1999;
     return label;
 }
 
-+(UIView *)initWrapContentViewWithBackGroundColor:(UIColor *)color
++(UIView *)initWrapContentViewWithBackGroundColor:(UIColor *)backGroudColor
                                       borderWidth:(CGFloat)boardWidth
                                       borderColor:(UIColor *)borderColor
                                       cornerRadius:(CGFloat)cornerRadius
