@@ -145,9 +145,12 @@
     }
     
     //底部数据的初始化
-    _deadLineTimeLabel.text = [TimeFormatterConvert timeConvertToFommtterAvailable:publishModel.enrollEndTime];
-    _activityTimeLabel.text = [TimeFormatterConvert timeConvertToFommtterAvailable:publishModel.actStartTime];
-    _activityEndTimeLabel.text = [TimeFormatterConvert timeConvertToFommtterAvailable:publishModel.actEndTime];
+    _deadLineTimeLabel.text = [TimeFormatterConvert
+                               timeConvertToFommtterAvailable:publishModel.enrollEndTime];
+    _activityTimeLabel.text = [TimeFormatterConvert
+                               timeConvertToFommtterAvailable:publishModel.actStartTime];
+    _activityEndTimeLabel.text = [TimeFormatterConvert
+                                  timeConvertToFommtterAvailable:publishModel.actEndTime];
     
     
     
@@ -161,7 +164,8 @@
                                  NSFontAttributeName:CONTENT_FONT(12),
                                  NSParagraphStyleAttributeName:paragraphStyle
                                  };
-    _locationLabel.attributedText = [[NSAttributedString alloc] initWithString:publishModel.address attributes:attributes1];
+    _locationLabel.attributedText = [[NSAttributedString alloc] initWithString:publishModel.address
+                                                                    attributes:attributes1];
     
     
     
@@ -177,15 +181,13 @@
 }
 
 -(void)initTopViewWithType {
-    _headImageView = [[UIImageView alloc]init];
+    _headImageView = [YUtils initImageViewWithImageName:@"default_head"
+                                           cornerRadius:HEADIMAGEVIEW_WIDTH/2.0];
     [self.contentView addSubview:_headImageView];
-    _headImageView.layer.cornerRadius = HEADIMAGEVIEW_WIDTH/2.0;
-    _headImageView.layer.masksToBounds = YES;
     _headImageView.userInteractionEnabled = YES;
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]
                                    initWithTarget:self action:@selector(gotoPersonDetail)];
     [_headImageView addGestureRecognizer:tap];
-    _headImageView.image = [UIImage imageNamed:@"default_head"];
     [_headImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.leading.mas_equalTo(SCALE_NUM(12));
         make.top.mas_equalTo(SCALE_NUM(12));
@@ -193,22 +195,14 @@
         make.height.mas_equalTo(HEADIMAGEVIEW_WIDTH);
     }];
     
-    _titleLabel = [[UITextView alloc]init];
+    _titleLabel = [YUtils initDisplayTextViewWithFont:CONTENT_FONT(15)
+                                            textColor:KCOLOR_B4];
     _titleLabel.text = @"校级活动公告";
     [self.contentView addSubview:_titleLabel];
-    
-    _titleLabel.editable = NO;
-    _titleLabel.scrollEnabled = false;
-    _titleLabel.textContainer.lineFragmentPadding = 0;
-    _titleLabel.textContainerInset = UIEdgeInsetsZero;
-    
-    _titleLabel.font = CONTENT_FONT(15);
-    _titleLabel.textColor = KCOLOR_B4;
     [_titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(_headImageView.mas_right).offset(SCALE_NUM(12));
         make.centerY.equalTo(_headImageView.mas_centerY);
     }];
-    
     
     _sepLineView = [[UIView alloc]init];
     _sepLineView.backgroundColor = KCOLOR_B2;
@@ -246,12 +240,9 @@
         make.trailing.mas_equalTo(SCALE_NUM(-12));
     }];
     
-    _staticDesLabel = [[UILabel alloc]init];
+    _staticDesLabel = [YUtils initLabel:CONTENT_FONT(13) color:nil text:@"简介:"];
     [self.contentView addSubview:_staticDesLabel];
-    _staticDesLabel.font = CONTENT_FONT(13);
-    _staticDesLabel.text = @"简介:";
     [_staticDesLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        //make.height.mas_equalTo(SCALE_NUM(13));
         make.top.equalTo(_nameLabel.mas_bottom).offset(SCALE_NUM(15));
         make.left.equalTo(_staticNameLabel);
     }];
@@ -266,16 +257,7 @@
     _descriptionLabel.textContainer.lineFragmentPadding = 0;
     _descriptionLabel.textContainerInset = UIEdgeInsetsZero;
     _descriptionLabel.delegate = self;
-//    if (type == DETAIL_INFO) {
-//        _descriptionLabel.numberOfLines = 0;
-//        _descriptionLabel.lineBreakMode = NSLineBreakByWordWrapping;
-//    } else {
-//        _descriptionLabel.numberOfLines = 1;
-//        _descriptionLabel.lineBreakMode = NSLineBreakByTruncatingTail;
-//    }
     [self.contentView addSubview:_descriptionLabel];
-    NSString *textString = @"";
-    //[_descriptionLabel setText:textString lineSpacing:10.f];
     
     [_descriptionLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(_nameLabel);
@@ -287,129 +269,81 @@
 
 
 -(void)initBottomView {
-    _timeImageView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"schedule_time"]];
+    _timeImageView = [YUtils initImageViewWithImageName:@"schedule_time"];
     [self.contentView addSubview:_timeImageView];
-    
     [_timeImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.leading.mas_equalTo(SCALE_NUM(31));
         make.top.equalTo(_middleView.mas_bottom).offset(SCALE_NUM(10));
     }];
     
-    _staticDeadLineDes = [[UITextView alloc]init];
-    _staticDeadLineDes.editable = NO;
-    _staticDeadLineDes.scrollEnabled = false;
-    _staticDeadLineDes.textContainer.lineFragmentPadding = 0;
-    _staticDeadLineDes.textContainerInset = UIEdgeInsetsZero;
+    _staticDeadLineDes = [YUtils initDisplayTextViewWithFont:CONTENT_FONT(13)
+                                                   textColor:KCOLOR_B3];
     [self.contentView addSubview:_staticDeadLineDes];
-    _staticDeadLineDes.font = CONTENT_FONT(13);
     _staticDeadLineDes.text = @"报名截止时间";
-    _staticDeadLineDes.textColor = KCOLOR_B3;
     [_staticDeadLineDes mas_makeConstraints:^(MASConstraintMaker *make) {
-        //make.height.mas_equalTo(SCALE_NUM(13));
         make.left.equalTo(_middleView);
         make.centerY.equalTo(_timeImageView.mas_centerY);
     }];
     
-    _deadLineTimeLabel = [[UITextView alloc]init];
-    _deadLineTimeLabel.editable = NO;
-    _deadLineTimeLabel.scrollEnabled = false;
-    _deadLineTimeLabel.textContainer.lineFragmentPadding = 0;
-    _deadLineTimeLabel.textContainerInset = UIEdgeInsetsZero;
+    _deadLineTimeLabel = [YUtils initDisplayTextViewWithFont:CONTENT_FONT(13)
+                                                   textColor:KCOLOR_B3];
     [self.contentView addSubview:_deadLineTimeLabel];
-    _deadLineTimeLabel.textColor = KCOLOR_B3;
-    _deadLineTimeLabel.font = CONTENT_FONT(13);
-    _deadLineTimeLabel.text = @"15/10/25 06:00";
     [_deadLineTimeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        //make.height.mas_equalTo(SCALE_NUM(13));
         make.left.equalTo(_staticDeadLineDes.mas_right).offset(SCALE_NUM(10));
         make.centerY.equalTo(_staticDeadLineDes.mas_centerY);
     }];
     
-    _staticActivityTimeDes = [[UITextView alloc]init];
-    _staticActivityTimeDes.editable = NO;
-    _staticActivityTimeDes.scrollEnabled = false;
-    _staticActivityTimeDes.textContainer.lineFragmentPadding = 0;
-    _staticActivityTimeDes.textContainerInset = UIEdgeInsetsZero;
+    _staticActivityTimeDes = [YUtils initDisplayTextViewWithFont:CONTENT_FONT(13)
+                                                       textColor:KCOLOR_B3];
     [self.contentView addSubview:_staticActivityTimeDes];
-    _staticActivityTimeDes.textColor = KCOLOR_B3;
-    _staticActivityTimeDes.font = CONTENT_FONT(13);
     _staticActivityTimeDes.text = @"活动开始时间";
     [_staticActivityTimeDes mas_makeConstraints:^(MASConstraintMaker *make) {
-        //make.height.mas_equalTo(SCALE_NUM(13));
         make.top.equalTo(_deadLineTimeLabel.mas_bottom).offset(SCALE_NUM(15));
         make.left.equalTo(_staticDeadLineDes);
     }];
     
-    _activityTimeLabel = [[UITextView alloc]init];
-    _activityTimeLabel.editable = NO;
-    _activityTimeLabel.scrollEnabled = false;
-    _activityTimeLabel.textContainer.lineFragmentPadding = 0;
-    _activityTimeLabel.textContainerInset = UIEdgeInsetsZero;
+    _activityTimeLabel = [YUtils initDisplayTextViewWithFont:CONTENT_FONT(13)
+                                                   textColor:KCOLOR_B3];
     [self.contentView addSubview:_activityTimeLabel];
-    _activityTimeLabel.textColor = KCOLOR_B3;
-    _activityTimeLabel.font = CONTENT_FONT(13);
-    _activityTimeLabel.text = @"15/10/05 06:00";
     [_activityTimeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        //make.height.mas_equalTo(SCALE_NUM(13));
         make.top.equalTo(_staticActivityTimeDes);
         make.left.equalTo(_deadLineTimeLabel);
     }];
     
-    _staticActivityEndTimeDes = [[UITextView alloc]init];
-    _staticActivityEndTimeDes.editable = NO;
-    _staticActivityEndTimeDes.scrollEnabled = false;
-    _staticActivityEndTimeDes.textContainer.lineFragmentPadding = 0;
-    _staticActivityEndTimeDes.textContainerInset = UIEdgeInsetsZero;
+    _staticActivityEndTimeDes = [YUtils initDisplayTextViewWithFont:CONTENT_FONT(13)
+                                                          textColor:KCOLOR_B3];
     [self.contentView addSubview:_staticActivityEndTimeDes];
-    _staticActivityEndTimeDes.font = CONTENT_FONT(13);
-    _staticActivityEndTimeDes.textColor = KCOLOR_B3;
     _staticActivityEndTimeDes.text = @"活动结束时间";
     [_staticActivityEndTimeDes mas_makeConstraints:^(MASConstraintMaker *make) {
-        //make.height.mas_equalTo(SCALE_NUM(13));
         make.top.equalTo(_staticActivityTimeDes.mas_bottom).offset(SCALE_NUM(15));
         make.left.equalTo(_staticActivityTimeDes);
     }];
     
-    _activityEndTimeLabel = [[UITextView alloc]init];
-    _activityEndTimeLabel.editable = NO;
-    _activityEndTimeLabel.scrollEnabled = false;
-    _activityEndTimeLabel.textContainer.lineFragmentPadding = 0;
-    _activityEndTimeLabel.textContainerInset = UIEdgeInsetsZero;
+    _activityEndTimeLabel = [YUtils initDisplayTextViewWithFont:CONTENT_FONT(13)
+                                                      textColor:KCOLOR_B3];
     [self.contentView addSubview:_activityEndTimeLabel];
-    _activityEndTimeLabel.textColor = KCOLOR_B3;
-    _activityEndTimeLabel.font = CONTENT_FONT(13);
-    _activityEndTimeLabel.text = @"15/10/25 06:00";
     [_activityEndTimeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        //make.height.mas_equalTo(SCALE_NUM(13));
         make.left.equalTo(_staticActivityEndTimeDes.mas_right).offset(SCALE_NUM(10));
         make.centerY.equalTo(_staticActivityEndTimeDes.mas_centerY);
     }];
     
-    _locationImageView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"schedule_location"]];
+    _locationImageView = [YUtils initImageViewWithImageName:@"schedule_location"];
     [self.contentView addSubview:_locationImageView];
     [_locationImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(_staticActivityEndTimeDes.mas_bottom).offset(SCALE_NUM(16));
         make.centerX.equalTo(_timeImageView.mas_centerX);
     }];
     
-    _locationLabel = [[UITextView alloc]init];
-    _locationLabel.editable = NO;
-    _locationLabel.scrollEnabled = false;
-    _locationLabel.textContainer.lineFragmentPadding = 0;
-    _locationLabel.textContainerInset = UIEdgeInsetsZero;
-    _locationLabel.text = @"大脚超市门口";
-    //_locationLabel.numberOfLines = 0;
-    //_locationLabel.lineBreakMode = NSLineBreakByWordWrapping;
+    _locationLabel = [YUtils initDisplayTextViewWithFont:CONTENT_FONT(13)
+                                               textColor:KCOLOR_B3];
     [self.contentView addSubview:_locationLabel];
-    _locationLabel.textColor = KCOLOR_B3;
-    _locationLabel.font = CONTENT_FONT(13);
     [_locationLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(_staticActivityTimeDes);
         make.top.equalTo(_locationImageView.mas_top);
         make.trailing.mas_equalTo(SCALE_NUM(-5));
     }];
     
-    _categotyImageView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"funny_detail_category"]];
+    _categotyImageView = [YUtils initImageViewWithImageName:@"funny_detail_category"];
     [self.contentView addSubview:_categotyImageView];
     [_categotyImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(_locationLabel.mas_bottom).offset(SCALE_NUM(15));
@@ -417,30 +351,23 @@
     }];
     
     _categoryLabel = [[UITextView alloc]init];
-    _categoryLabel.editable = NO;
-    _categoryLabel.scrollEnabled = false;
-    _categoryLabel.textContainer.lineFragmentPadding = 0;
-    _categoryLabel.textContainerInset = UIEdgeInsetsZero;
+    _categoryLabel = [YUtils initDisplayTextViewWithFont:CONTENT_FONT(13)
+                                               textColor:KCOLOR_B3];
     [self.contentView addSubview:_categoryLabel];
-    _categoryLabel.font = CONTENT_FONT(13);
-    _categoryLabel.text = @"学术类";
-    _categoryLabel.textColor = KCOLOR_B3;
     [_categoryLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        //make.height.mas_equalTo(SCALE_NUM(15));
         make.left.equalTo(_locationLabel);
         make.centerY.equalTo(_categotyImageView.mas_centerY);
     }];
     
-    _jumpLinkButton = [UIButton buttonWithType:UIButtonTypeSystem];
+    _jumpLinkButton = [YUtils initButtonWithBackgroundColor:nil target:self
+                                                     action:@selector(jumpLinkAction)];
     [self.contentView addSubview:_jumpLinkButton];
     [_jumpLinkButton setTitle:@"查看活动链接" forState:UIControlStateNormal];
-    [_jumpLinkButton addTarget:self action:@selector(jumpLinkAction) forControlEvents:UIControlEventTouchUpInside];
     _jumpLinkButton.titleLabel.font = CONTENT_FONT(12);
     [_jumpLinkButton setTitleColor:KCOLOR_BLUE_2da8e1 forState:UIControlStateNormal];
     [_jumpLinkButton mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(_categotyImageView.mas_bottom).offset(SCALE_NUM(10));
         make.left.equalTo(_categoryLabel);
-        //make.height.mas_equalTo(SCALE_NUM(14));
         make.bottom.mas_equalTo(SCALE_NUM(-10));
     }];
 }

@@ -83,7 +83,9 @@
         }
     }
     
-    YActionSheetItem *item1 = [YActionSheetItem itemWithType:YCommonActionSheetItemTypeShareActivity title:@"分享活动至" extraData:@{@"name":_activityDetailModel.activityPublishedDto.activityPublishedModel.name, @"content":content, @"pic":pic,@"activityId":[NSString stringWithFormat:@"%g", _activityDetailModel.activityPublishedDto.activityPublishedModel.activityPublishedModelIdentifier]}];
+    YActionSheetItem *item1 = [YActionSheetItem itemWithType:YCommonActionSheetItemTypeShareActivity
+                                                       title:@"分享活动至"
+                                                   extraData:@{@"name":_activityDetailModel.activityPublishedDto.activityPublishedModel.name, @"content":content, @"pic":pic,@"activityId":[NSString stringWithFormat:@"%g", _activityDetailModel.activityPublishedDto.activityPublishedModel.activityPublishedModelIdentifier]}];
     [moreArray addObject:item1];
     
     if (_isShowOutInMore) {
@@ -94,7 +96,8 @@
         [moreArray addObject:item2];
     }
     
-    YCommonActionSheet *sheet = [[YCommonActionSheet alloc] initWithType:moreArray haveShareButton:YES];
+    YCommonActionSheet *sheet = [[YCommonActionSheet alloc] initWithType:moreArray
+                                                         haveShareButton:YES];
     [sheet show];
 }
 
@@ -102,7 +105,8 @@
 //退出活动
 -(void)exitActivity
 {
-    [[ActivityManager sharedInstance] cancleActivitySignUpByActivityID:self.publishID block:^(YActionMessage *message) {
+    [[ActivityManager sharedInstance] cancleActivitySignUpByActivityID:self.publishID
+                                                                 block:^(YActionMessage *message) {
         if (message.isSuccess) {
             
             //更新状态
@@ -117,7 +121,8 @@
     if (!_detailListView) {
         _joinInBtn = [UIButton buttonWithType:UIButtonTypeSystem];
         [self.view addSubview:_joinInBtn];
-        [_joinInBtn addTarget:self action:@selector(joinInAction) forControlEvents:UIControlEventTouchUpInside];
+        [_joinInBtn addTarget:self action:@selector(joinInAction)
+             forControlEvents:UIControlEventTouchUpInside];
         _joinInBtn.layer.borderWidth = 0.6;
         [_joinInBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
         _joinInBtn.layer.borderColor = KCOLORGRAY.CGColor;
