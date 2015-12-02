@@ -149,18 +149,6 @@
         sexImageView.image = [UIImage imageNamed:@"funny_detail_girl"];
     }
     
-    //认证
-//    UILabel * authenticationLabel = [[UILabel alloc] init];
-//    authenticationLabel.text = @"手机号未注册";
-//    authenticationLabel.textColor = [UIColor hexChangeFloat:@"999999"];
-//    authenticationLabel.font = CONTENT_FONT(10);
-//    [backView addSubview:authenticationLabel];
-//    [authenticationLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-//        make.right.mas_equalTo(-kPaddingDistance);
-//        make.centerY.equalTo(_nameLabel);
-//    }];
-    
-    
     //院系年级
     UILabel * classLabel = [[UILabel alloc] init];
     classLabel.text = [NSString stringWithFormat:@"%@ | %@",_model.faculty,_model.grad];
@@ -269,8 +257,7 @@
         }
         else if (indexPath.row == 1)
         {
-            ContactsInfoSecondTableViewCell * cell = [[ContactsInfoSecondTableViewCell alloc] init];
-//            ContactsInfoSecondTableViewCell * cell = [self dequeueReusableCellWithIdentifier:kContactsInfoSecondTableViewCell forIndexPath:indexPath];
+            ContactsInfoSecondTableViewCell * cell = [self dequeueReusableCellWithIdentifier:kContactsInfoSecondTableViewCell forIndexPath:indexPath];
             [cell setCellInfo:_model];
             return cell;
         }

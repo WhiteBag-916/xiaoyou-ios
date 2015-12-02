@@ -108,7 +108,8 @@
                                  NSFontAttributeName:CONTENT_FONT(13),
                                  NSParagraphStyleAttributeName:paragraphStyle
                                  };
-    _nameLabel.attributedText = [[NSAttributedString alloc] initWithString:publishModel.name attributes:attributes];
+    _nameLabel.attributedText = [[NSAttributedString alloc] initWithString:publishModel.name
+                                                                attributes:attributes];
     
     
     
@@ -131,9 +132,11 @@
                                          NSParagraphStyleAttributeName:paragraphStyle,
                                          };
             
-            NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithString:imageText.content];
+            NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc]
+                                                           initWithString:imageText.content];
             
-            [attributedString addAttributes:attributes range:NSMakeRange(0, attributedString.length)];
+            [attributedString addAttributes:attributes
+                                      range:NSMakeRange(0, attributedString.length)];
             [_descriptionLabel setCustomAttributedText:attributedString];
         }
     }

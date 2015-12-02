@@ -17,7 +17,7 @@
 
 NSString *const kContactsInfoDetailTableViewCell = @"ContactsInfoDetailTableViewCellId";
 
-@interface ContactsInfoDetailTableViewCell ()<SDPhotoBrowserDelegate>
+@interface ContactsInfoDetailTableViewCell ()
 
 @property (nonatomic,strong)UIImageView * flagImageView;
 @property (nonatomic,strong)UILabel * contentLabel;

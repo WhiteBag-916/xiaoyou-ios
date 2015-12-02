@@ -79,7 +79,7 @@
     _titleLabel.textContainer.lineFragmentPadding = 0;
     _titleLabel.textContainerInset = UIEdgeInsetsZero;
     [self.contentView addSubview:_titleLabel];
-    _titleLabel.text = @"大型历史音乐剧《和平使者——抗战中的宋庆龄》奋斗史";
+    _titleLabel.text = @"";
     //_titleLabel.numberOfLines = 0;
     _titleLabel.textColor = KCOLOR_B4;
     _titleLabel.font = CONTENT_FONT(15);
@@ -137,7 +137,6 @@
     _descriptionLabel.textColor = KCOLOR_B5;
     _descriptionLabel.numberOfLines = 3;
     
-    NSString *desTextString = @"描述：";
     [_descriptionLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(_titleLabel.mas_bottom).offset(SCALE_NUM(18));
         make.left.equalTo(_titleLabel);

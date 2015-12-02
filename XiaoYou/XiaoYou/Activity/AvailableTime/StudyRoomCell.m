@@ -23,7 +23,8 @@
 {
     StudyRoomCell *cell = [tableView dequeueReusableCellWithIdentifier:REUSEID];
     if (!cell) {
-        cell = [[StudyRoomCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:REUSEID];
+        cell = [[StudyRoomCell alloc]initWithStyle:UITableViewCellStyleDefault
+                                   reuseIdentifier:REUSEID];
     }
     return cell;
 }
@@ -85,7 +86,7 @@
 -(void)setData:(id)count
 {
     NSInteger cnt = [count integerValue];
-    _titleLabel.text = [NSString stringWithFormat:@"%ld个教室没课",cnt];
+    _titleLabel.text = [NSString stringWithFormat:@"%ld个教室没课",(long)cnt];
 }
 
 @end

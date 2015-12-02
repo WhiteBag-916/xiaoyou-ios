@@ -160,9 +160,6 @@ CGFloat const UI_PLACEHOLDER_TEXT_CHANGED_ANIMATION_DURATION = 0.25;
     {
         NSString* substringForMatch = [string substringWithRange:match.range];
         NSRange range = [string rangeOfString:substringForMatch];
-//        	[ret removeAttribute:NSFontAttributeName range:range];
-//        [ret removeAttribute:NSParagraphStyleAttributeName range:range];
-//        [ret removeAttribute:NSLinkAttributeName range:range];
         [ret addAttribute:NSLinkAttributeName value:substringForMatch range:range];
     }
     return ret;
@@ -176,7 +173,7 @@ CGFloat const UI_PLACEHOLDER_TEXT_CHANGED_ANIMATION_DURATION = 0.25;
 
 /* 选中文字后的菜单响应的选项 */
 - (BOOL)canPerformAction:(SEL)action withSender:(id)sender {
-    if (action == @selector(copy:)) { // 菜单不能响应copy项
+    if (action == @selector(copy:)) { // 菜单能响应copy项
         return YES;
     }
     else if (action == @selector(selectAll:)) { // 菜单不能响应select all项
@@ -185,21 +182,9 @@ CGFloat const UI_PLACEHOLDER_TEXT_CHANGED_ANIMATION_DURATION = 0.25;
         return YES;
     }
     else if (action == @selector(paste:)) {
-        if (self.editable == NO)
-            return NO;
-        return YES;
-    }
-    else if (action == @selector(cut:)) {
-        return NO;
-    }
-    else if (action == @selector(select:)) {
-        return NO;
-    }
-    else if (action == @selector(delete:)) {
-        return NO;
+        return self.editable;
     }
     
-    // 事实上一个return NO就可以将系统的所有菜单项全部关闭了
     return NO;
 }
 

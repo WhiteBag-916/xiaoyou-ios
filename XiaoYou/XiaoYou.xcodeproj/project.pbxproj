@@ -7,16 +7,16 @@
 	objects = {
 
 /* Begin PBXAggregateTarget section */
-		0402881C1C075A72008EFEB4 /* OCLint */ = {
+		04A9067C1C0DD2180089E7BC /* Oclint */ = {
 			isa = PBXAggregateTarget;
-			buildConfigurationList = 0402881F1C075A72008EFEB4 /* Build configuration list for PBXAggregateTarget "OCLint" */;
+			buildConfigurationList = 04A9067D1C0DD2180089E7BC /* Build configuration list for PBXAggregateTarget "Oclint" */;
 			buildPhases = (
-				040288201C075AB6008EFEB4 /* ShellScript */,
+				04A906801C0DD2320089E7BC /* ShellScript */,
 			);
 			dependencies = (
 			);
-			name = OCLint;
-			productName = OCLint;
+			name = Oclint;
+			productName = Oclint;
 		};
 /* End PBXAggregateTarget section */
 
@@ -42,7 +42,6 @@
 		043B453B1BE87A2000050B32 /* red_point_bell@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 043B45391BE87A2000050B32 /* red_point_bell@3x.png */; };
 		043B45471BE8C08000050B32 /* ScheduleNotifyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 043B45461BE8C08000050B32 /* ScheduleNotifyCell.m */; };
 		0447A39E1BD7602000341684 /* WhoJoinInController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0447A39D1BD7602000341684 /* WhoJoinInController.m */; };
-		0447A3A11BD7637D00341684 /* WhoJoinInListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0447A3A01BD7637D00341684 /* WhoJoinInListView.m */; };
 		044C313E1BCC903D00E0D508 /* AvailableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 044C313D1BCC903D00E0D508 /* AvailableCell.m */; };
 		044C31411BCCA94300E0D508 /* AvailableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 044C31401BCCA94300E0D508 /* AvailableViewController.m */; };
 		044C31441BCCA95F00E0D508 /* AvailableListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 044C31431BCCA95F00E0D508 /* AvailableListView.m */; };
@@ -894,8 +893,6 @@
 		043B45461BE8C08000050B32 /* ScheduleNotifyCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScheduleNotifyCell.m; sourceTree = "<group>"; };
 		0447A39C1BD7602000341684 /* WhoJoinInController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WhoJoinInController.h; sourceTree = "<group>"; };
 		0447A39D1BD7602000341684 /* WhoJoinInController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WhoJoinInController.m; sourceTree = "<group>"; };
-		0447A39F1BD7637D00341684 /* WhoJoinInListView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WhoJoinInListView.h; sourceTree = "<group>"; };
-		0447A3A01BD7637D00341684 /* WhoJoinInListView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WhoJoinInListView.m; sourceTree = "<group>"; };
 		044C313C1BCC903D00E0D508 /* AvailableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AvailableCell.h; sourceTree = "<group>"; };
 		044C313D1BCC903D00E0D508 /* AvailableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AvailableCell.m; sourceTree = "<group>"; };
 		044C313F1BCCA94300E0D508 /* AvailableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AvailableViewController.h; sourceTree = "<group>"; };
@@ -2387,8 +2384,6 @@
 				049FF1B21BC91777000645C8 /* RemindViewController.m */,
 				0447A39C1BD7602000341684 /* WhoJoinInController.h */,
 				0447A39D1BD7602000341684 /* WhoJoinInController.m */,
-				0447A39F1BD7637D00341684 /* WhoJoinInListView.h */,
-				0447A3A01BD7637D00341684 /* WhoJoinInListView.m */,
 			);
 			path = Remind;
 			sourceTree = "<group>";
@@ -4412,12 +4407,11 @@
 				LastUpgradeCheck = 0710;
 				ORGANIZATIONNAME = xc;
 				TargetAttributes = {
-					0402881C1C075A72008EFEB4 = {
+					04A9067C1C0DD2180089E7BC = {
 						CreatedOnToolsVersion = 7.1;
 					};
 					200E39751B4E818B000B587B = {
 						CreatedOnToolsVersion = 6.3.1;
-						DevelopmentTeam = AVJ7F5B5B9;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 0;
@@ -4449,7 +4443,7 @@
 			targets = (
 				200E39751B4E818B000B587B /* XiaoYou */,
 				200E398E1B4E818B000B587B /* XiaoYouTests */,
-				0402881C1C075A72008EFEB4 /* OCLint */,
+				04A9067C1C0DD2180089E7BC /* Oclint */,
 			);
 		};
 /* End PBXProject section */
@@ -4965,9 +4959,9 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		040288201C075AB6008EFEB4 /* ShellScript */ = {
+		04A906801C0DD2320089E7BC /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 12;
+			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
@@ -4976,7 +4970,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "#import path\nexport PATH=${PATH}:/usr/local/bin\n#import what we have in bash_profile\nsource ~/.bash_profile\n#check for oclint\nhash oclint &> /dev/null\nif [ $? -eq 1 ]; then\necho >&2 \"oclint not found, analyzing stopped\"\nexit 1\nfi\n\nhash xctool &> /dev/null\nif [ $? -eq 1 ]; then\necho >&2 \"xctool not found, analyzing stopped\"\nexit 1\nfi\n\ncd /Users/sheng/Documents/xiaoyou_ios\nxcodebuild -workspace XiaoYou.xcworkspace -scheme XiaoYou clean\nxcodebuild -workspace XiaoYou.xcworkspace -scheme XiaoYou -reporter json-compilation-database:compile_commands.json build\noclint-json-compilation-database \\\n-e Pods \\\n-- -rc=LONG_LINE=100 \\\n-rc=NCSS_METHOD=60 \\\n-rc=MINIMUM_CASES_IN_SWITCH=1 \\\n| sed 's/\\(.*\\.\\m\\{1,2\\}:[0-9]*:[0-9]*:\\)/\\1 warning:/'";
+			shellScript = "#import path\nexport PATH=${PATH}:/usr/local/bin\n#import what we have in bash_profile\nsource ~/.bash_profile\n#check for oclint\nhash oclint &> /dev/null\nif [ $? -eq 1 ]; then\necho >&2 \"oclint not found, analyzing stopped\"\nexit 1\nfi\n\nhash xctool &> /dev/null\nif [ $? -eq 1 ]; then\necho >&2 \"xctool not found, analyzing stopped\"\nexit 1\nfi\necho  ${SRCROOT}\ncd /Users/sheng/Documents/xiaoyou_ios\nxctool -workspace XiaoYou.xcworkspace -scheme XiaoYou clean\nxctool -workspace XiaoYou.xcworkspace -scheme XiaoYou -reporter json-compilation-database:compile_commands.json b uild\noclint-json-compilation-database \\\n-e Pods \\\n-- -rc=LONG_LINE=100 \\\n-rc=NCSS_METHOD=60 \\\n-rc=MINIMUM_CASES_IN_SWITCH=1 \\\n| sed 's/\\(.*\\.\\m\\{1,2\\}:[0-9]*:[0-9]*:\\)/\\1 warning:/'";
 		};
 		8D128BB15157CCD9381C2821 /* Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -5272,7 +5266,6 @@
 				3331226E1B806EDB00D3D032 /* PSTGridLayoutInfo.m in Sources */,
 				20DC5CD01B7B4FA00059B6E6 /* FeedListTableViewCell.m in Sources */,
 				20DA16FF1BC7C51200A61B37 /* MGCMonthPlannerBackgroundView.m in Sources */,
-				0447A3A11BD7637D00341684 /* WhoJoinInListView.m in Sources */,
 				E45005D81BCE333B00933AB9 /* TypeDetailCollectionViewCell.m in Sources */,
 				3334AC461B831B2200FDDCCB /* ContactsInfoDetailTableView.m in Sources */,
 				E43E10101BCC9D8D0018B6D7 /* TypeCollectionViewCell.m in Sources */,
@@ -5388,14 +5381,14 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		0402881D1C075A72008EFEB4 /* Debug */ = {
+		04A9067E1C0DD2180089E7BC /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
 		};
-		0402881E1C075A72008EFEB4 /* Release */ = {
+		04A9067F1C0DD2180089E7BC /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -5623,11 +5616,11 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		0402881F1C075A72008EFEB4 /* Build configuration list for PBXAggregateTarget "OCLint" */ = {
+		04A9067D1C0DD2180089E7BC /* Build configuration list for PBXAggregateTarget "Oclint" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				0402881D1C075A72008EFEB4 /* Debug */,
-				0402881E1C075A72008EFEB4 /* Release */,
+				04A9067E1C0DD2180089E7BC /* Debug */,
+				04A9067F1C0DD2180089E7BC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
