@@ -261,7 +261,9 @@
 {
     NSDictionary *attributes = @{NSFontAttributeName:CONTENT_FONT(12)};
     CGFloat screenWidth = [UIScreen mainScreen].bounds.size.width;
-    CGSize textSize = [text boundingRectWithSize:CGSizeMake(screenWidth - SCALE_NUM(27), 9999) options:NSStringDrawingUsesLineFragmentOrigin|NSStringDrawingUsesFontLeading attributes:attributes context:nil].size;
+    CGSize textSize = [text boundingRectWithSize:CGSizeMake(screenWidth - SCALE_NUM(27), 9999)
+                                         options:NSStringDrawingUsesLineFragmentOrigin|NSStringDrawingUsesFontLeading
+                                      attributes:attributes context:nil].size;
     return textSize.height;
 }
 
@@ -276,7 +278,6 @@
         return NO;
     }
     return YES;
-    
 }
 
 

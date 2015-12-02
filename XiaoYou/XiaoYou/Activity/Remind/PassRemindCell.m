@@ -206,7 +206,8 @@
     else {
         publishID = [NSString stringWithFormat:@"%ld",(long)self.model.activityPublishedId];
     }
-    ActivityDetailViewController *detailVC = [[ActivityDetailViewController alloc]initWithPublishID:publishID];
+    ActivityDetailViewController *detailVC = [[ActivityDetailViewController alloc]
+                                              initWithPublishID:publishID];
     [self.viewController.navigationController pushViewController:detailVC animated:YES
                                              needHiddenBottomBar:YES];
 }
@@ -259,7 +260,8 @@
         }];
         
     } else if (cellType == AUDIT_NOT_PASSED) {
-        _titleImageView.image = [[UIImage imageNamed:@"havetime_icon_no"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+        _titleImageView.image = [[UIImage imageNamed:@"havetime_icon_no"]
+                                 imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
         [_titleImageView mas_updateConstraints:^(MASConstraintMaker *make) {
             make.top.equalTo(self).offset(SCALE_NUM(16));
             make.height.mas_equalTo(SCALE_NUM(14));
