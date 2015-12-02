@@ -140,38 +140,25 @@
         make.top.equalTo(_signUpTimeDes.mas_bottom).offset(SCALE_NUM(15));
         make.left.equalTo(_signUpTimeDes);
     }];
-    
+    
     _activityStartTimeLabel = [YUtils initDisplayTextViewWithFont:CONTENT_FONT(12)
                                                         textColor:KCOLOR_B5];
     [self.contentView addSubview:_activityStartTimeLabel];
-    _activityStartTimeLabel.font = CONTENT_FONT(12);
-    _activityStartTimeLabel.textColor = KCOLOR_B5;
     [_activityStartTimeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.equalTo(_activityTimeDes);
         make.left.equalTo(_signUpTimeLabel);
     }];
     
-    _activityEndTimeDes = [[UITextView alloc]init];
-    _activityEndTimeDes.userInteractionEnabled = NO;
-    _activityEndTimeDes.editable = NO;
-    _activityEndTimeDes.scrollEnabled = false;
-    _activityEndTimeDes.textContainer.lineFragmentPadding = 0;
-    _activityEndTimeDes.textContainerInset = UIEdgeInsetsZero;
+    _activityEndTimeDes = [YUtils initDisplayTextViewWithFont:CONTENT_FONT(12) textColor:KCOLOR_B5];
     [self.contentView addSubview:_activityEndTimeDes];
-    _activityEndTimeDes.font = CONTENT_FONT(12);
-    _activityEndTimeDes.textColor = KCOLOR_B5;
     _activityEndTimeDes.text = @"活动结束时间：";
     [_activityEndTimeDes mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(_activityTimeDes.mas_bottom).offset(SCALE_NUM(15));
         make.left.equalTo(_activityTimeDes);
     }];
     
-    _activityEndTimeLabel = [[UITextView alloc]init];
-    _activityEndTimeLabel.userInteractionEnabled = NO;
-    _activityEndTimeLabel.editable = NO;
-    _activityEndTimeLabel.scrollEnabled = false;
-    _activityEndTimeLabel.textContainer.lineFragmentPadding = 0;
-    _activityEndTimeLabel.textContainerInset = UIEdgeInsetsZero;
+    _activityEndTimeLabel = [YUtils initDisplayTextViewWithFont:CONTENT_FONT(12)
+                                                      textColor:KCOLOR_B5];
     [self.contentView addSubview:_activityEndTimeLabel];
     _activityEndTimeLabel.font = CONTENT_FONT(12);
     _activityEndTimeLabel.textColor = KCOLOR_B5;
