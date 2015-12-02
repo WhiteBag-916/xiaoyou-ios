@@ -132,4 +132,31 @@ NSInteger const kLoginCommonTextFieldTag = 1999;
     [btn addTarget:target action:selector forControlEvents:UIControlEventTouchUpInside];
     return btn;
 }
+/////////////////////////////////////////////////////////////////////////////////////////////////
+
++ (UIScrollView *)initScrollViewWithFrame:(CGRect)frame
+                          backgroundColor:(UIColor *)color
+                   userInteractionEnabled:(BOOL)enabel
+                                 delegate:(id)delegate
+                                  bounces:(BOOL)bounces
+           showsHorizontalScrollIndicator:(BOOL)showH
+             showsVerticalScrollIndicator:(BOOL)showV
+                              contentSize:(CGSize)size
+                            pagingEnabled:(BOOL)pagingEnabled
+{
+    UIScrollView *scrollView = [[UIScrollView alloc] init];
+    scrollView.frame                            = frame;
+    scrollView.backgroundColor                  = color;
+    scrollView.userInteractionEnabled           = enabel;
+    scrollView.pagingEnabled                    = YES;
+    scrollView.delegate                         = delegate;
+    scrollView.bounces                          = bounces;
+    scrollView.showsHorizontalScrollIndicator   = showH;
+    scrollView.showsVerticalScrollIndicator     = showV;
+    scrollView.contentSize                      = size;
+    scrollView.pagingEnabled                    = pagingEnabled;
+    
+    return scrollView;
+}
+
 @end

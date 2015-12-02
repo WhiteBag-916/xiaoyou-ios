@@ -64,4 +64,13 @@ extern NSInteger const kLoginCommonTextFieldTag;
 + (UIButton *)initButtonWithBackgroundColor:(UIColor*)backgroudColor
                                     target:(id)target action:(SEL)selector;
 
++ (UIScrollView *)initScrollViewWithFrame:(CGRect)frame
+                          backgroundColor:(UIColor *)color
+                   userInteractionEnabled:(BOOL)enabel
+                                 delegate:(id)delegate
+                                  bounces:(BOOL)bounces
+           showsHorizontalScrollIndicator:(BOOL)showH
+             showsVerticalScrollIndicator:(BOOL)showV
+                              contentSize:(CGSize)size
+                            pagingEnabled:(BOOL)pagingEnabled;
 @end

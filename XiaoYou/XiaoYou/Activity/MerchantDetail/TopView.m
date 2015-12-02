@@ -9,6 +9,7 @@
 #import "TopView.h"
 #import "SupplierShopImages.h"
 #import "UIImageView+Ext.h"
+#import "YUtils+UI.h"
 
 @interface TopView ()<UIScrollViewDelegate>
 
@@ -37,17 +38,7 @@
 -(void)setUpUI
 {
     NSInteger imageCount = _model.supplierShopImages.count;
-    self.scrollView = [[UIScrollView alloc]
-                       initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_WIDTH*3/4)];
-    NSLog(@"%@",NSStringFromCGSize(_scrollView.frame.size));
-    _scrollView.backgroundColor = [UIColor clearColor];
-    _scrollView.userInteractionEnabled = YES;
-    _scrollView.pagingEnabled = YES;
-    _scrollView.delegate = self;
-    _scrollView.bounces = NO;
-    _scrollView.showsHorizontalScrollIndicator = NO;
-    _scrollView.showsVerticalScrollIndicator = NO;
-    _scrollView.contentSize = CGSizeMake(SCREEN_WIDTH*imageCount, SCALE_NUM(150));
+    [YUtils initScrollViewWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_WIDTH*3/4) backgroundColor:[UIColor clearColor] userInteractionEnabled:YES delegate:self bounces:NO showsHorizontalScrollIndicator:NO showsVerticalScrollIndicator:NO contentSize:CGSizeMake(SCREEN_WIDTH*imageCount, SCALE_NUM(150)) pagingEnabled:YES];
     [self addSubview:_scrollView];
     
     if (imageCount > 0)
