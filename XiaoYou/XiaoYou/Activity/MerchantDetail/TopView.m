@@ -38,7 +38,16 @@
 -(void)setUpUI
 {
     NSInteger imageCount = _model.supplierShopImages.count;
-    [YUtils initScrollViewWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_WIDTH*3/4) backgroundColor:[UIColor clearColor] userInteractionEnabled:YES delegate:self bounces:NO showsHorizontalScrollIndicator:NO showsVerticalScrollIndicator:NO contentSize:CGSizeMake(SCREEN_WIDTH*imageCount, SCALE_NUM(150)) pagingEnabled:YES];
+    self.scrollView = [YUtils
+                       initScrollViewWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_WIDTH*3/4)
+                       backgroundColor:[UIColor clearColor]
+                       userInteractionEnabled:YES
+                       delegate:self
+                       bounces:NO
+                       showsHorizontalScrollIndicator:NO
+                       showsVerticalScrollIndicator:NO
+                       contentSize:CGSizeMake(SCREEN_WIDTH*imageCount, SCALE_NUM(150))
+                       pagingEnabled:YES];
     [self addSubview:_scrollView];
     
     if (imageCount > 0)
@@ -66,15 +75,13 @@
         imageView.userInteractionEnabled = YES;
         [_scrollView addSubview:imageView];
     }
-    
-    
-    self.pageControl = [[UIPageControl alloc] init];
-    _pageControl.userInteractionEnabled = YES;
-    _pageControl.backgroundColor = [UIColor clearColor];
-    _pageControl.numberOfPages = imageCount;
-    _pageControl.currentPage = 0;
-    _pageControl.pageIndicatorTintColor = KCOLOR_W1;
-    _pageControl.currentPageIndicatorTintColor = KCOLOR_g1;
+
+    self.pageControl = [YUtils initPageControlWithBackgroundColor:[UIColor clearColor]
+                                           userInteractionEnabled:YES
+                                                    numberOfPages:imageCount
+                                                      currentPage:0
+                                           pageIndicatorTintColor:KCOLOR_W1
+                                    currentPageIndicatorTintColor:KCOLOR_g1];
     [self addSubview:_pageControl];
     [_pageControl mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.equalTo(self);

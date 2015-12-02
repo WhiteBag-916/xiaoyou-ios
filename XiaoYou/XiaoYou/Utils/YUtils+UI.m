@@ -157,6 +157,25 @@ NSInteger const kLoginCommonTextFieldTag = 1999;
     
     return scrollView;
 }
+/////////////////////////////////////////////////////////////////////////////////////////////////
+
++ (UIPageControl *)initPageControlWithBackgroundColor:(UIColor *)color
+                               userInteractionEnabled:(BOOL)enabel
+                                        numberOfPages:(NSInteger)numberOfPages
+                                          currentPage:(NSInteger)currentPage
+                               pageIndicatorTintColor:(UIColor *)pageIndicatorTintColor
+                        currentPageIndicatorTintColor:(UIColor *)currentPageIndicatorTintColor
+{
+    UIPageControl * pageControl = [[UIPageControl alloc] init];
+    pageControl.userInteractionEnabled = enabel;
+    pageControl.backgroundColor = color;
+    pageControl.numberOfPages = numberOfPages;
+    pageControl.currentPage = currentPage;
+    pageControl.pageIndicatorTintColor = pageIndicatorTintColor;
+    pageControl.currentPageIndicatorTintColor = currentPageIndicatorTintColor;
+    
+    return pageControl;
+}
 
 //展示用的TextView,不可编辑
 + (UITextView *)initDisplayTextViewWithFont:(UIFont*)font

@@ -63,7 +63,13 @@ extern NSInteger const kLoginCommonTextFieldTag;
 
 + (UIButton *)initButtonWithBackgroundColor:(UIColor*)backgroudColor
                                     target:(id)target action:(SEL)selector;
-
+/*********************************************************************
+ 函数名称 : initScrollView
+ 函数描述 : 构造ScrollView
+ 参数 : 你懂的
+ 返回值 : 你懂的
+ 作者 : 尹先森
+ *********************************************************************/
 + (UIScrollView *)initScrollViewWithFrame:(CGRect)frame
                           backgroundColor:(UIColor *)color
                    userInteractionEnabled:(BOOL)enabel
@@ -73,6 +79,19 @@ extern NSInteger const kLoginCommonTextFieldTag;
              showsVerticalScrollIndicator:(BOOL)showV
                               contentSize:(CGSize)size
                             pagingEnabled:(BOOL)pagingEnabled;
+/*********************************************************************
+ 函数名称 : initPageControl
+ 函数描述 : 构造PageControl
+ 参数 : 你懂的
+ 返回值 : 你懂的
+ 作者 : 尹先森
+ *********************************************************************/
++ (UIPageControl *)initPageControlWithBackgroundColor:(UIColor *)color
+                   userInteractionEnabled:(BOOL)enabel
+                            numberOfPages:(NSInteger)numberOfPages
+                              currentPage:(NSInteger)currentPage
+                   pageIndicatorTintColor:(UIColor *)pageIndicatorTintColor
+            currentPageIndicatorTintColor:(UIColor *)currentPageIndicatorTintColor;
 
 + (UITextView *)initDisplayTextViewWithFont:(UIFont*)font
                                   textColor:(UIColor*)color;
