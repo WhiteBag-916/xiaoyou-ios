@@ -208,10 +208,8 @@
     NSArray *imageTextModels =  model.activityImageTextModels;
     
     BOOL isNotHaveImage = YES;
-    
     [YUtils setTextViewDataWithTextView:_titleLabel text:publishModel.name Font:CONTENT_FONT(15)
                               textColor:KCOLOR_B4 linespaing:SCALE_NUM(5)];
-    
     
     //图文混排
     for (ActivityImageTextModels *imageText in imageTextModels) {

@@ -9,6 +9,11 @@
 			<key>orderHint</key>
 			<integer>23</integer>
 		</dict>
+		<key>Oclint.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>23</integer>
+		</dict>
 		<key>XiaoYou.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
@@ -18,6 +23,11 @@
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
 		<key>0402881C1C075A72008EFEB4</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>04A9067C1C0DD2180089E7BC</key>
 		<dict>
 			<key>primary</key>
 			<true/>

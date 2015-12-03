@@ -185,6 +185,7 @@ NSInteger const kLoginCommonTextFieldTag = 1999;
     UITextView *textView = [[UITextView alloc]init];
     textView.userInteractionEnabled = NO;
     textView.editable = NO;
+    textView.selectable = YES;
     textView.scrollEnabled = false;
     textView.textContainer.lineFragmentPadding = 0;
     textView.textContainerInset = UIEdgeInsetsZero;

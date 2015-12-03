@@ -39,11 +39,19 @@
     }];
     
     _desLabel = [YUtils initLabel:CONTENT_FONT(FONT_SIZE) color:nil text:@"报名过此次活动的朋友们:"];
-    _desLabel = [[UILabel alloc]init];
     [_desLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(_pointImageView.mas_right).offset(DES_LEADING);
         make.centerY.equalTo(_pointImageView.mas_centerY);
     }];
+}
+
+
+- (void)setContentVisible:(BOOL)isVisible
+{
+    NSString *imageName = isVisible ? @"funny_detail_circle" : @"";
+    NSString *desText   = isVisible ? @"报名过此次活动的朋友们:" : @"";
+    _pointImageView.image = [UIImage imageNamed:imageName];
+    _desLabel.text = desText;
 }
 
 //清空内容;

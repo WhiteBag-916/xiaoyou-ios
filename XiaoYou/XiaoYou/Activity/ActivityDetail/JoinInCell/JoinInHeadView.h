@@ -10,6 +10,9 @@
 
 @interface JoinInHeadView : YView
 
+//设置内容是否显示
+- (void)setContentVisible:(BOOL)isVisible;
+
 -(void)clearContent;
 
 -(void)setContent;
