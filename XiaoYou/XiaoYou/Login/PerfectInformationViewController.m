@@ -265,13 +265,15 @@
 {
     UIImagePickerController *picker = [[UIImagePickerController alloc] init];
     [picker.navigationBar setTintColor:[UIColor whiteColor]];
-    [[UINavigationBar appearance] setBackgroundImage:[UIImage
+    [[UINavigationBar appearance]
+     setBackgroundImage:[UIImage
                                                       imageWithColor:[UIColor hexChangeFloat:@"455964"]
                                                       size:CGSizeMake(SCREEN_WIDTH, 64)]
                                       forBarPosition:UIBarPositionAny
                                           barMetrics:UIBarMetricsDefault];
     [[UINavigationBar appearance]
-     setTitleTextAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:17]
+     setTitleTextAttributes
+     :@{NSFontAttributeName:[UIFont systemFontOfSize:17]
                                                            , NSForegroundColorAttributeName:[UIColor whiteColor]}];
     [UINavigationBar appearance].barStyle = UIStatusBarStyleDefault;
     [picker setSourceType:UIImagePickerControllerSourceTypePhotoLibrary];
@@ -286,12 +288,12 @@
     AVAuthorizationStatus authStatus = [AVCaptureDevice
                                         authorizationStatusForMediaType:AVMediaTypeVideo];
     if (authStatus == AVAuthorizationStatusRestricted ||authStatus ==AVAuthorizationStatusDenied){
-        YCommonAlertView *alert = [[YCommonAlertView alloc] initWithTitle:nil
-                                                                  message:@"您可以在 设置—>隐私—>相机中授权相机功能"
-                                                             buttonTitles:@"确认", nil];
+        YCommonAlertView *alert = [[YCommonAlertView alloc]
+                                   initWithTitle:nil
+                                   message:@"您可以在 设置—>隐私—>相机中授权相机功能"
+                                   buttonTitles:@"确认", nil];
         [alert show];
     }else if(authStatus == AVAuthorizationStatusNotDetermined){
-        // Explicit user permission is required for media capture, but the user has not yet granted or denied such permission.
         [AVCaptureDevice requestAccessForMediaType:AVMediaTypeVideo
                                  completionHandler:^(BOOL granted) {
             if(granted){//点击允许访问时调用
@@ -361,7 +363,8 @@
 }
 
 #pragma mark - UIImagePickerControllerDelegate
--(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
+-(void)imagePickerController:(UIImagePickerController *)picker
+didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
     [picker dismissViewControllerAnimated:YES completion:nil];
     UIImage *getImage = info[@"UIImagePickerControllerEditedImage"];

@@ -58,7 +58,11 @@ NSString *const kXYGroupInfoDetailViewController = @"XYGroupInfoDetailViewContro
         if (message.object) {
             _model = message.object;
             [_groupInfoDetailCollectionView refreshTableView:message.object];
-             _shareData = @{@"name":_model.groupModel.groupName,@"content":_model.groupModel.internalBaseClassDescription,@"pic":_model.groupModel.groupIcon,@"groupId":[NSString stringWithFormat:@"%g", _model.groupModel.internalBaseClassIdentifier]};
+             _shareData = @{@"name":_model.groupModel.groupName,
+                            @"content":_model.groupModel.internalBaseClassDescription,
+                            @"pic":_model.groupModel.groupIcon,
+                            @"groupId":[NSString stringWithFormat:@"%g",
+                                        _model.groupModel.internalBaseClassIdentifier]};
         }
     }];
 }
@@ -73,15 +77,20 @@ NSString *const kXYGroupInfoDetailViewController = @"XYGroupInfoDetailViewContro
     UICollectionViewFlowLayout * flowLayout = [[UICollectionViewFlowLayout alloc] init];
     flowLayout.scrollDirection = UICollectionViewScrollDirectionVertical;
     flowLayout.itemSize = CGSizeMake(SCALE_NUM(70), SCALE_NUM(70));
-    _groupInfoDetailCollectionView = [[GroupInfoDetailCollectionView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT-KTabBarheight-KNavigationBarheight) collectionViewLayout:flowLayout];
+    _groupInfoDetailCollectionView =
+    [[GroupInfoDetailCollectionView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH,
+                                                                    SCREEN_HEIGHT-KTabBarheight-KNavigationBarheight)
+                                    collectionViewLayout:flowLayout];
     _groupInfoDetailCollectionView.myController = self;
     [self.view addSubview:_groupInfoDetailCollectionView];
     
     _bottomButton = [[UIButton alloc] init];
-    [_bottomButton setBackgroundImage:[UIImage imageNamed:@"contacts_bottom"] forState:UIControlStateNormal];
+    [_bottomButton setBackgroundImage:[UIImage imageNamed:@"contacts_bottom"]
+                             forState:UIControlStateNormal];
     [_bottomButton setTitle:@"进入群聊" forState:UIControlStateNormal];
     [_bottomButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    [_bottomButton addTarget:self action:@selector(clickBottomButton) forControlEvents:UIControlEventTouchUpInside];
+    [_bottomButton addTarget:self action:@selector(clickBottomButton)
+            forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:_bottomButton];
     [_bottomButton mas_makeConstraints:^(MASConstraintMaker *make) {
         make.bottom.left.right.mas_equalTo(0);
@@ -93,10 +102,12 @@ NSString *const kXYGroupInfoDetailViewController = @"XYGroupInfoDetailViewContro
 -(void)clickBottomButton
 {
     [MobClick event:@"event24"];
-    if ([self.navigationController.viewControllers[self.navigationController.viewControllers.count-2] isKindOfClass:[ChatViewController class]]) {
+    if ([self.navigationController.viewControllers[self.navigationController.viewControllers.count-2]
+         isKindOfClass:[ChatViewController class]]) {
         [self.navigationController popViewControllerAnimated:YES];
     } else {
-        ChatViewController * chatVC = [[ChatViewController alloc] initWithChatter:_studentDic[@"thirdCode"] isGroup:YES];
+        ChatViewController * chatVC =
+        [[ChatViewController alloc] initWithChatter:_studentDic[@"thirdCode"] isGroup:YES];
         chatVC.isSystemMessage = NO;
         chatVC.studentDic = [_studentDic mutableCopy];
         [self.navigationController pushViewController:chatVC animated:YES needHiddenBottomBar:YES];
@@ -128,9 +139,12 @@ NSString *const kXYGroupInfoDetailViewController = @"XYGroupInfoDetailViewContro
     }
     else
     {
-        YActionSheetItem *item1 = [YActionSheetItem itemWithType:YCommonActionSheetItemTypeShareOrganization title:@"分享社团名片至" extraData:_shareData];
+        YActionSheetItem *item1 =
+        [YActionSheetItem itemWithType:YCommonActionSheetItemTypeShareOrganization
+                                 title:@"分享社团名片至" extraData:_shareData];
         
-        YCommonActionSheet *sheet = [[YCommonActionSheet alloc] initWithType:@[item1, item2, item3] haveShareButton:YES];
+        YCommonActionSheet *sheet = [[YCommonActionSheet alloc] initWithType:@[item1, item2, item3]
+                                                             haveShareButton:YES];
         [sheet show];
     }
     

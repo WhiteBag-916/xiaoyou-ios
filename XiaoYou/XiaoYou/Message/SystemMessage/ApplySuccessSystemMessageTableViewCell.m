@@ -71,7 +71,10 @@ NSString *const kApplySuccessSystemMessageTableViewCell = @"ApplySuccessSystemMe
     }];
     //默认气泡
     _backImageView = [[UIImageView alloc] init];
-    _backImageView.image = [[UIImage imageNamed:@"chat_receiver_bg"] resizableImageWithCapInsets:UIEdgeInsetsMake(20, 24, 30, 24) resizingMode:UIImageResizingModeStretch];;
+    _backImageView.image =
+    [[UIImage imageNamed:@"chat_receiver_bg"] resizableImageWithCapInsets:UIEdgeInsetsMake(20, 24,
+                                                                                           30, 24)
+                                                             resizingMode:UIImageResizingModeStretch];;
     [self.contentView addSubview:_backImageView];
     [_backImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.mas_equalTo(3*kPaddingDistance);
@@ -86,8 +89,11 @@ NSString *const kApplySuccessSystemMessageTableViewCell = @"ApplySuccessSystemMe
     _chatButton.clipsToBounds = YES;
     _chatButton.titleLabel.font = CONTENT_FONT(12);
     _chatButton.tintColor = [UIColor whiteColor];
-    [_chatButton setBackgroundImage:[UIImage imageNamed:@"contacts_bottom"] forState:UIControlStateNormal];
-    [_chatButton addTarget:self action:@selector(tapChatButton) forControlEvents:UIControlEventTouchUpInside];
+    [_chatButton setBackgroundImage:[UIImage imageNamed:@"contacts_bottom"]
+                           forState:UIControlStateNormal];
+    [_chatButton addTarget:self
+                    action:@selector(tapChatButton)
+          forControlEvents:UIControlEventTouchUpInside];
     [self.contentView addSubview:_chatButton];
     [_chatButton mas_makeConstraints:^(MASConstraintMaker *make) {
         make.bottom.mas_equalTo(-kPaddingDistance);

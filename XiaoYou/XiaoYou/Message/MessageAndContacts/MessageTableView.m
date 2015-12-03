@@ -43,7 +43,8 @@
 
 
 
-@interface MessageTableView ()<UITableViewDataSource,UITableViewDelegate>
+@interface MessageTableView ()
+<UITableViewDataSource,UITableViewDelegate>
 
 @property (nonatomic,strong) NSMutableArray *messageDataSource;
 
@@ -69,7 +70,8 @@
         self.delegate = self;
         self.dataSource = self;
         [self setUpHeaderView];
-        [self registerClass:[MessageTableViewCell class] forCellReuseIdentifier:kMessageTableViewCell];
+        [self registerClass:[MessageTableViewCell class]
+     forCellReuseIdentifier:kMessageTableViewCell];
     }
     
     return self;
@@ -97,25 +99,35 @@
 -(void)setUpHeaderView
 {
     UIView * backView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, kRowHeight*2)];
-    UITapGestureRecognizer * tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapGestureRecognizerAction)];
+    UITapGestureRecognizer * tapGestureRecognizer =
+    [[UITapGestureRecognizer alloc] initWithTarget:self
+                                            action:@selector(tapGestureRecognizerAction)];
     [backView addGestureRecognizer:tapGestureRecognizer];
     backView.backgroundColor = [UIColor clearColor];
     //头像
-    _headImageView = [[UIImageView alloc] initWithFrame:CGRectMake(kPaddingDistance, kPaddingDistance, kHeadWidthAndHeight, kHeadWidthAndHeight)];
+    _headImageView =
+    [[UIImageView alloc] initWithFrame:CGRectMake(kPaddingDistance, kPaddingDistance,
+                                                  kHeadWidthAndHeight, kHeadWidthAndHeight)];
     _headImageView.layer.cornerRadius = kHeadCornerRadius;
     _headImageView.clipsToBounds = YES;
     [_headImageView setNormalImageWithUrl:[YShareData defaultData][kShareData_SchoolIcon]];
     [backView addSubview:_headImageView];
     
     //姓名
-    _nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(2*kPaddingDistance+kHeadWidthAndHeight, kPaddingDistance, 15*kPaddingDistance, kLabelHeightDistacnce)];
+    _nameLabel =
+    [[UILabel alloc] initWithFrame:CGRectMake(2*kPaddingDistance+kHeadWidthAndHeight,
+                                              kPaddingDistance, 15*kPaddingDistance,
+                                              kLabelHeightDistacnce)];
     _nameLabel.text = @"系统消息";
     _nameLabel.font = CONTENT_FONT(14);
     _nameLabel.backgroundColor = [UIColor clearColor];
     [backView addSubview:_nameLabel];
     
     //消息数
-    _badgeNumberLabel = [[UILabel alloc] initWithFrame:CGRectMake(SCREEN_WIDTH - kPaddingDistance - kBadgeWidthDistance, kRowHeight - kLabelHeightDistacnce - kPaddingDistance, kBadgeWidthDistance, kLabelHeightDistacnce)];
+    _badgeNumberLabel =
+    [[UILabel alloc] initWithFrame:CGRectMake(SCREEN_WIDTH - kPaddingDistance - kBadgeWidthDistance,
+                                              kRowHeight - kLabelHeightDistacnce - kPaddingDistance,
+                                              kBadgeWidthDistance, kLabelHeightDistacnce)];
     _badgeNumberLabel.font = CONTENT_FONT(10);
     _badgeNumberLabel.textAlignment = NSTextAlignmentCenter;
     _badgeNumberLabel.textColor = [UIColor whiteColor];
@@ -124,7 +136,10 @@
     
     
     //时间
-    _timeLabel = [[UILabel alloc] initWithFrame:CGRectMake(SCREEN_WIDTH - kPaddingDistance - kTimeLabelWidth, kPaddingDistance, kTimeLabelWidth, kLabelHeightDistacnce)];
+    _timeLabel =
+    [[UILabel alloc] initWithFrame:CGRectMake(SCREEN_WIDTH - kPaddingDistance - kTimeLabelWidth,
+                                              kPaddingDistance, kTimeLabelWidth,
+                                              kLabelHeightDistacnce)];
     _timeLabel.font = CONTENT_FONT(9);
     _timeLabel.textAlignment = NSTextAlignmentRight;
     _timeLabel.backgroundColor = [UIColor clearColor];
@@ -132,7 +147,10 @@
     [backView addSubview:_timeLabel];
 
     //消息
-    _messageLabel = [[UILabel alloc] initWithFrame:CGRectMake(2*kPaddingDistance + kHeadWidthAndHeight, kRowHeight - kLabelHeightDistacnce - kPaddingDistance, SCREEN_WIDTH - kBadgeWidthDistance - kHeadWidthAndHeight - 4*kPaddingDistance, kLabelHeightDistacnce)];
+    _messageLabel =
+    [[UILabel alloc] initWithFrame:CGRectMake(2*kPaddingDistance + kHeadWidthAndHeight,
+                                              kRowHeight - kLabelHeightDistacnce - kPaddingDistance,
+                                              SCREEN_WIDTH - kBadgeWidthDistance - kHeadWidthAndHeight - 4*kPaddingDistance, kLabelHeightDistacnce)];
     _messageLabel.font = CONTENT_FONT(12);
     _messageLabel.textColor = KCOLORWHITE_696969;
     _messageLabel.backgroundColor = [UIColor clearColor];
@@ -140,7 +158,8 @@
     
     [backView addSubview:_messageLabel];
     
-    UIView * bottomView = [[UIView alloc] initWithFrame:CGRectMake(0, kRowHeight-1, SCREEN_WIDTH, kBottomLineHeight)];
+    UIView * bottomView =
+    [[UIView alloc] initWithFrame:CGRectMake(0, kRowHeight-1, SCREEN_WIDTH, kBottomLineHeight)];
     bottomView.backgroundColor = [UIColor grayColor];
     bottomView.alpha = 0.6;
     [backView addSubview:bottomView];
@@ -149,26 +168,37 @@
 //    self.tableHeaderView = backView;
     
     
-    UIView * funBackView = [[UIView alloc] initWithFrame:CGRectMake(0, kRowHeight, SCREEN_WIDTH, kRowHeight)];
-    UITapGestureRecognizer * tapFunGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapFunGestureRecognizerAction)];
+    UIView * funBackView =
+    [[UIView alloc] initWithFrame:CGRectMake(0, kRowHeight, SCREEN_WIDTH, kRowHeight)];
+    UITapGestureRecognizer * tapFunGestureRecognizer =
+    [[UITapGestureRecognizer alloc] initWithTarget:self
+                                            action:@selector(tapFunGestureRecognizerAction)];
     [funBackView addGestureRecognizer:tapFunGestureRecognizer];
     funBackView.backgroundColor = [UIColor clearColor];
 
     //头像
-    _goodLookHeadImageView = [[UIImageView alloc] initWithFrame:CGRectMake(kPaddingDistance, kPaddingDistance, kHeadWidthAndHeight, kHeadWidthAndHeight)];
+    _goodLookHeadImageView =
+    [[UIImageView alloc] initWithFrame:CGRectMake(kPaddingDistance, kPaddingDistance,
+                                                  kHeadWidthAndHeight, kHeadWidthAndHeight)];
     
     _goodLookHeadImageView.backgroundColor = [UIColor clearColor];
     [funBackView addSubview:_goodLookHeadImageView];
 
     //姓名
-    UILabel * funNameLabel = [[UILabel alloc] initWithFrame:CGRectMake(2*kPaddingDistance + kHeadWidthAndHeight, kPaddingDistance, kNameLabelWidth, kLabelHeightDistacnce)];
+    UILabel * funNameLabel =
+    [[UILabel alloc] initWithFrame:CGRectMake(2*kPaddingDistance + kHeadWidthAndHeight,
+                                              kPaddingDistance, kNameLabelWidth,
+                                              kLabelHeightDistacnce)];
     funNameLabel.font = CONTENT_FONT(14);
     funNameLabel.text = @"好看";
     funNameLabel.backgroundColor = [UIColor clearColor];
     [funBackView addSubview:funNameLabel];
 
     //标签
-    _goodLookLabel = [[UILabel alloc] initWithFrame:CGRectMake(2*kPaddingDistance + kHeadWidthAndHeight, kRowHeight - kLabelHeightDistacnce - kPaddingDistance, kNameLabelWidth, kLabelHeightDistacnce)];
+    _goodLookLabel =
+    [[UILabel alloc] initWithFrame:CGRectMake(2*kPaddingDistance + kHeadWidthAndHeight,
+                                              kRowHeight - kLabelHeightDistacnce - kPaddingDistance,
+                                              kNameLabelWidth, kLabelHeightDistacnce)];
     _goodLookLabel.font = CONTENT_FONT(12);
     _goodLookLabel.textColor = KCOLORWHITE_696969;
     _goodLookLabel.text = @"你最关心的校园资讯";
@@ -177,14 +207,19 @@
 
     
     //time
-    _goodLookTimeLabel = [[UILabel alloc] initWithFrame:CGRectMake(SCREEN_WIDTH - kPaddingDistance - kTimeLabelWidth, kPaddingDistance, kTimeLabelWidth, kLabelHeightDistacnce)];
+    _goodLookTimeLabel =
+    [[UILabel alloc] initWithFrame:CGRectMake(SCREEN_WIDTH - kPaddingDistance - kTimeLabelWidth,
+                                              kPaddingDistance, kTimeLabelWidth,
+                                              kLabelHeightDistacnce)];
     _goodLookTimeLabel.font = CONTENT_FONT(9);
     _goodLookTimeLabel.textAlignment = NSTextAlignmentRight;
     _goodLookTimeLabel.backgroundColor = [UIColor clearColor];
     [funBackView addSubview:_goodLookTimeLabel];
     
     //底线
-    UIView * funBottomView = [[UIView alloc] initWithFrame:CGRectMake(0, kRowHeight-SCALE_NUM(1), SCREEN_WIDTH, kBottomLineHeight)];
+    UIView * funBottomView =
+    [[UIView alloc] initWithFrame:CGRectMake(0, kRowHeight-SCALE_NUM(1), SCREEN_WIDTH,
+                                             kBottomLineHeight)];
     funBottomView.backgroundColor = [UIColor grayColor];
     funBottomView.alpha = 0.6;
     [funBackView addSubview:funBottomView];
@@ -195,7 +230,9 @@
     //    [backView addSubview:funBackView];
     
 //    UIView * backView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, kRowHeight)];
-    UITapGestureRecognizer * tapGestureRecognizer1 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapFunGestureRecognizerAction)];
+    UITapGestureRecognizer * tapGestureRecognizer1 =
+    [[UITapGestureRecognizer alloc] initWithTarget:self
+                                            action:@selector(tapFunGestureRecognizerAction)];
     [funBackView addGestureRecognizer:tapGestureRecognizer1];
     funBackView.backgroundColor = [UIColor clearColor];
     
@@ -366,7 +403,9 @@
         }
         
         if (nil != ext[@"timestamp"]) {
-            _goodLookTimeLabel.text = [YUtils distanceTimeToday:[NSDate dateWithTimeIntervalSince1970:[ext[@"timestamp"] integerValue]/1000]];
+            _goodLookTimeLabel.text =
+            [YUtils distanceTimeToday:[NSDate dateWithTimeIntervalSince1970:[ext[@"timestamp"]
+                                                                             integerValue]/1000]];
         } else {
             _goodLookTimeLabel.hidden = YES;
         }
@@ -383,10 +422,13 @@
 {
     [MobClick event:@"event12"];
     //好看相关节面
-    [_myController.navigationController pushViewController:[[InterestViewController alloc] init] animated:true];
+    [_myController.navigationController
+     pushViewController:[[InterestViewController alloc] init] animated:true];
     
     //修改缓存
-    NSMutableDictionary * ext = [NSMutableDictionary dictionaryWithDictionary:[[NSUserDefaults standardUserDefaults] objectForKey:@"GoodLookMessage"]];
+    NSMutableDictionary * ext =
+    [NSMutableDictionary dictionaryWithDictionary:[[NSUserDefaults standardUserDefaults]
+                                                   objectForKey:@"GoodLookMessage"]];
     [ext setObject:@NO forKey:@"unreadGoodLook"];
     [[NSUserDefaults standardUserDefaults] setObject:ext forKey:@"GoodLookMessage"];
 }
@@ -404,8 +446,9 @@
             } break;
             case eMessageBodyType_Text:{
                 // 表情映射。
-                NSString *didReceiveText = [ConvertToCommonEmoticonsHelper
-                                            convertToSystemEmoticons:((EMTextMessageBody *)messageBody).text];
+                NSString *didReceiveText =
+                [ConvertToCommonEmoticonsHelper
+                 convertToSystemEmoticons:((EMTextMessageBody *)messageBody).text];
                 if ([[RobotManager sharedInstance] isRobotMenuMessage:lastMessage]) {
                     ret = [[RobotManager sharedInstance] getRobotMenuMessageDigest:lastMessage];
                 } else {
@@ -441,8 +484,10 @@
     }
     
     [[MessageManager sharedInstance] setupUnreadMessageCount];
-    XYSystemMessageViewController * systemMessageViewController = [[XYSystemMessageViewController alloc] init];
-    [self.myController.navigationController pushViewController:systemMessageViewController animated:YES needHiddenBottomBar:YES];
+    XYSystemMessageViewController * systemMessageViewController =
+    [[XYSystemMessageViewController alloc] init];
+    [self.myController.navigationController pushViewController:systemMessageViewController
+                                                      animated:YES needHiddenBottomBar:YES];
 }
 
 #pragma mark - 得到最后消息时间
@@ -507,7 +552,8 @@
         //删除前清空该回话未读数
         [converation markAllMessagesAsRead:YES];
         [[MessageManager sharedInstance] setupUnreadMessageCount];
-        [[EaseMob sharedInstance].chatManager removeConversationByChatter:converation.chatter deleteMessages:YES append2Chat:NO];
+        [[EaseMob sharedInstance].chatManager removeConversationByChatter:converation.chatter
+                                                           deleteMessages:YES append2Chat:NO];
         [_messageDataSource removeObjectAtIndex:indexPath.row];
         [self deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
     }
@@ -521,15 +567,23 @@
     if ([ext[@"server_flag"] boolValue]) {
         //非聊天消息
         if (FRIEND_APPLY == [ext[@"type"] integerValue]) {
-            [_myController.navigationController pushViewController:[[XYFriendApplyViewController alloc] initWithChatter:converation.chatter] animated:YES needHiddenBottomBar:YES];
+            [_myController.navigationController
+             pushViewController:[[XYFriendApplyViewController alloc]
+                                 initWithChatter:converation.chatter] animated:YES
+             needHiddenBottomBar:YES];
         } else if (GROUP_APPLY == [ext[@"type"] integerValue]) {
-            [_myController.navigationController pushViewController:[[XYGroupApplyViewController alloc] initWithGroupId:[NSString stringWithFormat:@"%d", [ext[@"group_id"] intValue]] chatter:converation.chatter] animated:YES needHiddenBottomBar:YES];
+            [_myController.navigationController pushViewController:
+             [[XYGroupApplyViewController alloc]
+              initWithGroupId:[NSString stringWithFormat:@"%d", [ext[@"group_id"] intValue]]
+              chatter:converation.chatter] animated:YES needHiddenBottomBar:YES];
         }
         [converation markAllMessagesAsRead:YES];
     } else {
         MessageTableViewCell * cell = (MessageTableViewCell *)[self cellForRowAtIndexPath:indexPath];
         self.myController.hidesBottomBarWhenPushed = YES;
-        ChatViewController * chatVC = [[ChatViewController alloc] initWithChatter:cell.conversation.chatter isGroup:converation.conversationType];
+        ChatViewController * chatVC = [[ChatViewController alloc]
+                                       initWithChatter:cell.conversation.chatter
+                                       isGroup:converation.conversationType];
         chatVC.isSystemMessage = NO;
         chatVC.studentDic = [cell.studentDic  mutableCopy];
         [self.myController.navigationController pushViewController:chatVC animated:YES];

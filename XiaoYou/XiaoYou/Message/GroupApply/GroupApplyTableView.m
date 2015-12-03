@@ -10,7 +10,8 @@
 #import "GroupApplyTableViewCell.h"
 #import "ContactManager.h"
 
-@interface GroupApplyTableView ()<UITableViewDataSource,UITableViewDelegate>
+@interface GroupApplyTableView ()
+<UITableViewDataSource,UITableViewDelegate>
 
 @property (nonatomic, strong) NSString *groupId;
 @property (nonatomic, strong) NSMutableArray *groupApplyArray;
@@ -30,7 +31,8 @@
         _groupId = groupId;
         _groupApplyArray = [NSMutableArray array];
         
-        [self registerClass:[GroupApplyTableViewCell class] forCellReuseIdentifier:kGroupApplyTableViewCell];
+        [self registerClass:[GroupApplyTableViewCell class]
+     forCellReuseIdentifier:kGroupApplyTableViewCell];
     }
     return self;
 }
@@ -93,7 +95,8 @@
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
-    GroupApplyTableViewCell * cell = [self dequeueReusableCellWithIdentifier:kGroupApplyTableViewCell forIndexPath:indexPath];
+    GroupApplyTableViewCell * cell =
+    [self dequeueReusableCellWithIdentifier:kGroupApplyTableViewCell forIndexPath:indexPath];
     cell.superVC = self.superVC;
     [cell setCellInfo:_groupApplyArray[indexPath.row]];
     

@@ -30,6 +30,7 @@
                                            cornerRadius:4
                                           clipsToBounds:YES
                                                   alpha:0.8];
+    _backView.backgroundColor = KCOLOR_B1;
     _backView.layer.borderWidth = 1;
     _backView.layer.borderColor = KCOLOR_B2.CGColor;
     [self.contentView addSubview:_backView];

@@ -23,7 +23,8 @@ typedef enum : NSUInteger {
     POSITION6 = 6,
 } MyPositionNum;
 
-@interface ActivityReleaseController ()<UIScrollViewDelegate>
+@interface ActivityReleaseController ()
+<UIScrollViewDelegate>
 
 @property (nonatomic,strong) ActivityReleaseCollectionView * releaseCollectionView;
 
@@ -98,8 +99,14 @@ typedef enum : NSUInteger {
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changeEnabelStateForReleaseBtn:) name:KNotification_Enabel_ReleaseBtn object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changeScrollPosition:) name:KNotification_Activity_Release_ScrollTo object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(changeEnabelStateForReleaseBtn:)
+                                                 name:KNotification_Enabel_ReleaseBtn
+                                               object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(changeScrollPosition:)
+                                                 name:KNotification_Activity_Release_ScrollTo
+                                               object:nil];
     
     [[UIApplication sharedApplication] setStatusBarHidden:NO];
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
@@ -154,13 +161,17 @@ typedef enum : NSUInteger {
     {
         _releaseButton.enabled = YES;
         _releaseButton.backgroundColor = KCOLOR_g1;
-        [_releaseButton addTarget:self action:@selector(clickReleaseBtn) forControlEvents:UIControlEventTouchUpInside];
+        [_releaseButton addTarget:self
+                           action:@selector(clickReleaseBtn)
+                 forControlEvents:UIControlEventTouchUpInside];
     }
     else
     {
         _releaseButton.enabled = NO;
         _releaseButton.backgroundColor = KCOLOR_B5;
-        [_releaseButton removeTarget:self action:@selector(clickReleaseBtn) forControlEvents:UIControlEventTouchUpInside];
+        [_releaseButton removeTarget:self
+                              action:@selector(clickReleaseBtn)
+                    forControlEvents:UIControlEventTouchUpInside];
     }
     
 }
@@ -212,7 +223,10 @@ typedef enum : NSUInteger {
 
 -(void)viewDidLayoutSubviews{
     [super viewDidLayoutSubviews];
-    _scrollView.frame = CGRectMake(0, 0, SCREEN_WIDTH, self.view.bounds.size.height - SCALE_NUM(46));
+    _scrollView.frame = CGRectMake(0,
+                                   0,
+                                   SCREEN_WIDTH,
+                                   self.view.bounds.size.height - SCALE_NUM(46));
     _scrollView.delegate = self;
     _scrollView.contentSize = CGSizeMake(SCREEN_WIDTH, SCALE_NUM(460));
     
@@ -223,7 +237,10 @@ typedef enum : NSUInteger {
     [self showCustomNavigationBackButton];
     self.title = @"发布活动";
     
-    _scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, self.view.bounds.size.height - SCALE_NUM(46))];
+    _scrollView = [[UIScrollView alloc]
+                   initWithFrame:CGRectMake(0, 0,
+                                            SCREEN_WIDTH,
+                                            self.view.bounds.size.height - SCALE_NUM(46))];
     _scrollView.backgroundColor = [UIColor clearColor];
     _scrollView.scrollEnabled = YES;
     [self.view addSubview:_scrollView];
@@ -247,7 +264,10 @@ typedef enum : NSUInteger {
     layout.minimumInteritemSpacing = 0;
     layout.minimumLineSpacing = 0;
     layout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
-    self.releaseCollectionView = [[ActivityReleaseCollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:layout andIsIdentity:_isIdentity];
+    self.releaseCollectionView = [[ActivityReleaseCollectionView alloc]
+                                  initWithFrame:CGRectZero
+                                  collectionViewLayout:layout
+                                  andIsIdentity:_isIdentity];
     _releaseCollectionView.backgroundColor = [UIColor clearColor];
     _releaseCollectionView.myController = self;
     [_scrollView addSubview:_releaseCollectionView];
@@ -628,7 +648,8 @@ typedef enum : NSUInteger {
     NSString *temp = [text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
     
     //去除两端空格和回车
-    NSString *reutrnText = [temp stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+    NSString *reutrnText =
+    [temp stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
     
     return reutrnText;
 }
@@ -639,19 +660,24 @@ typedef enum : NSUInteger {
 {
     _dataManager.ActivityNameText = [self removeSpaceAndNewLine:_dataManager.ActivityNameText];
     _dataManager.ActivityPlaceText = [self removeSpaceAndNewLine:_dataManager.ActivityPlaceText];
-    _dataManager.ActivityDesciptionText = [self removeSpaceAndNewLine:_dataManager.ActivityDesciptionText];
+    _dataManager.ActivityDesciptionText =
+    [self removeSpaceAndNewLine:_dataManager.ActivityDesciptionText];
     
     NSMutableDictionary *modelDic = [@{} mutableCopy];
     NSMutableDictionary *activityModelDic = [@{} mutableCopy];
     
-    [activityModelDic setObject:[self transformDate:_dataManager.ActivityDateEndText] forKey:@"actEndTime"];
-    [activityModelDic setObject:[self transformDate:_dataManager.ActivityDateBeginText] forKey:@"actStartTime"];
+    [activityModelDic setObject:[self transformDate:_dataManager.ActivityDateEndText]
+                         forKey:@"actEndTime"];
+    [activityModelDic setObject:[self transformDate:_dataManager.ActivityDateBeginText]
+                         forKey:@"actStartTime"];
     [activityModelDic setObject:_dataManager.ActivityCheckStatus forKey:@"checkStatus"];
     if (_isIdentity)
     {
         [activityModelDic setObject:@"group_activity" forKey:@"activityDirection"];
-        [activityModelDic setObject:_dataManager.ActivityOrganizer forKey:@"activityOrganizer"];
-        [activityModelDic setObject:_dataManager.ActivityOrganizerId forKey:@"activityOrganizerId"];
+        [activityModelDic setObject:_dataManager.ActivityOrganizer
+                             forKey:@"activityOrganizer"];
+        [activityModelDic setObject:_dataManager.ActivityOrganizerId
+                             forKey:@"activityOrganizerId"];
         if ([_dataManager.ActivityCheckStr isEqualToString:@"需要报名审核"])
         {
             [activityModelDic setObject:@"true" forKey:@"enrollCheck"];
@@ -668,16 +694,20 @@ typedef enum : NSUInteger {
     }
     [activityModelDic setObject:_dataManager.ActivityPlaceText forKey:@"address"];
     [activityModelDic setObject:@"true" forKey:@"enroll"];
-    [activityModelDic setObject:[self transformDate:_dataManager.ActivityDateEndApplyText] forKey:@"enrollEndTime"];
-    [activityModelDic setObject:[self transformDate:_dataManager.ActivityDateBeginApplyText] forKey:@"enrollStartTime"];
+    [activityModelDic setObject:[self transformDate:_dataManager.ActivityDateEndApplyText]
+                         forKey:@"enrollEndTime"];
+    [activityModelDic setObject:[self transformDate:_dataManager.ActivityDateBeginApplyText]
+                         forKey:@"enrollStartTime"];
     [activityModelDic setObject:_dataManager.ActivityNameText forKey:@"name"];
     [activityModelDic setObject:_dataManager.ActivityTypeStr forKey:@"type"];
     
     NSMutableArray * arr = [[NSMutableArray alloc] init];
-    [arr addObject:@{@"content":_dataManager.ActivityDesciptionText,@"displayOrder":@2,@"type":@"text"}];
+    [arr addObject:@{@"content":_dataManager.ActivityDesciptionText,
+                     @"displayOrder":@2,@"type":@"text"}];
     if (message != nil)
     {
-        [arr addObject:@{@"content":[message.object valueForKey:@"images"][0],@"displayOrder":@1,@"type":@"image"}];
+        [arr addObject:@{@"content":[message.object valueForKey:@"images"][0],
+                         @"displayOrder":@1,@"type":@"image"}];
     }
     else
     {

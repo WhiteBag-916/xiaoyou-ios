@@ -49,8 +49,10 @@ NSString *const kLastSystemPushInfoListModelCount = @"count";
 - (NSDictionary *)dictionaryRepresentation
 {
     NSMutableDictionary *mutableDict = [NSMutableDictionary dictionary];
-    [mutableDict setValue:[self.pushInfo dictionaryRepresentation] forKey:kLastSystemPushInfoListModelPushInfo];
-    [mutableDict setValue:[NSNumber numberWithDouble:self.count] forKey:kLastSystemPushInfoListModelCount];
+    [mutableDict setValue:[self.pushInfo dictionaryRepresentation]
+                   forKey:kLastSystemPushInfoListModelPushInfo];
+    [mutableDict setValue:[NSNumber numberWithDouble:self.count]
+                   forKey:kLastSystemPushInfoListModelCount];
 
     return [NSDictionary dictionaryWithDictionary:mutableDict];
 }

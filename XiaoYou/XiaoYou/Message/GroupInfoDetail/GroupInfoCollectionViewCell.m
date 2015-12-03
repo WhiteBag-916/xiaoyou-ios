@@ -53,13 +53,17 @@ NSString *const kGroupInfoCollectionViewCell = @"GroupInfoCollectionViewCellId";
         make.height.width.mas_equalTo(kHeadImageViewHeight);
     }];
     
-    _longPressGestureRecognizer = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longPress:)];
+    _longPressGestureRecognizer =
+    [[UILongPressGestureRecognizer alloc] initWithTarget:self
+                                                  action:@selector(longPress:)];
     _longPressGestureRecognizer.minimumPressDuration = .5;
     [_headImageView addGestureRecognizer:_longPressGestureRecognizer];
     
     _deleteButton = [[UIButton alloc] init];
-    [_deleteButton setBackgroundImage:[UIImage imageNamed:@"delete-member"] forState:UIControlStateNormal];
-    [_deleteButton addTarget:self action:@selector(clickdeleteButton) forControlEvents:UIControlEventTouchUpInside];
+    [_deleteButton setBackgroundImage:[UIImage imageNamed:@"delete-member"]
+                             forState:UIControlStateNormal];
+    [_deleteButton addTarget:self action:@selector(clickdeleteButton)
+            forControlEvents:UIControlEventTouchUpInside];
     [self.contentView addSubview:_deleteButton];
     [_deleteButton mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.left.mas_equalTo(0);
@@ -96,7 +100,8 @@ NSString *const kGroupInfoCollectionViewCell = @"GroupInfoCollectionViewCellId";
         }
         else
         {
-            [_headImageView setFaceImageWithUrl:[groupDic[@"model"] dictionaryRepresentation][@"headPic"]];
+            [_headImageView setFaceImageWithUrl:
+             [groupDic[@"model"] dictionaryRepresentation][@"headPic"]];
             _nameLabel.text = [groupDic[@"model"] dictionaryRepresentation][@"name"];
         }
     }

@@ -78,13 +78,9 @@ NSInteger const kLoginCommonTextFieldTag = 1999;
 
 
 //
-+(UILabel *)initLabel:(UIFont *)font color:(UIColor *)color text:(NSString *)text
-{
-    UILabel *label = [[UILabel alloc] init];
-    label.font = font;
-    label.textColor = color;
-    label.text = text;
-    return label;
++(UILabel *)initLabel:(UIFont *)font color:(UIColor *)color text:(NSString *)text {
+
+    return [self initLabel:font color:color text:text alignment:NSTextAlignmentLeft];
 }
 
 +(UIView *)initWrapContentViewWithBackGroundColor:(UIColor *)backGroudColor
@@ -238,7 +234,7 @@ NSInteger const kLoginCommonTextFieldTag = 1999;
 + (UIView *)initViewWithBackgroundColor:(UIColor *)color
                            cornerRadius:(NSInteger)cornerRadius
                           clipsToBounds:(BOOL)clipsToBounds
-                                  alpha:(NSInteger)alpha
+                                  alpha:(double)alpha
 {
     UIView * view           = [[UIView alloc] init];
     view.backgroundColor    = color;

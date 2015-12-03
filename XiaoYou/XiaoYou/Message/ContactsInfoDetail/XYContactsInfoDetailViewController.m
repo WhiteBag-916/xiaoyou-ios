@@ -36,11 +36,14 @@
     [self setUpUI];
         
     [YUtils showHUDWithTitle];
-    [[ContactManager sharedInstance] getUserDetailInfo:_uid hxId:_hxId block:^(YActionMessage *message) {
+    [[ContactManager sharedInstance] getUserDetailInfo:_uid hxId:_hxId
+                                                 block:^(YActionMessage *message) {
         [YUtils hiddenProgressHUD];
         if (message.isSuccess) {
             ProfileInfo * model = message.object;
-            _shareData = @{@"userId": model.uid, @"name":model.userName, @"pic":(model.headPic.length>0)?model.headPic:@"favicon.ico", @"school":model.schoolName};
+            _shareData = @{@"userId": model.uid, @"name":model.userName,
+                           @"pic":(model.headPic.length>0)?model.headPic:@"favicon.ico",
+                           @"school":model.schoolName};
             [_contactsInfoDetailTableView refreshTableView:model];
             
             _uid = model.uid;
@@ -74,12 +77,15 @@
     [_bottomButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [self.view addSubview:_bottomButton];
     _bottomButton.enabled = NO;
-    [_bottomButton setBackgroundImage:[UIImage imageNamed:@"contacts_bottom"] forState:UIControlStateNormal];
+    [_bottomButton setBackgroundImage:[UIImage imageNamed:@"contacts_bottom"]
+                             forState:UIControlStateNormal];
     _isFriendRelationShip = [[ContactManager sharedInstance] isFriendRelationShip:_uid];
-    [_bottomButton addTarget:self action:@selector(clickBottomButton) forControlEvents:UIControlEventTouchUpInside];
+    [_bottomButton addTarget:self action:@selector(clickBottomButton)
+            forControlEvents:UIControlEventTouchUpInside];
     if (_isFriendRelationShip)
     {
-        _studentDic = (NSMutableDictionary *)[[[ContactManager sharedInstance] getFriendInfo:_uid] dictionaryRepresentation];
+        _studentDic = (NSMutableDictionary *)[[[ContactManager sharedInstance]
+                                               getFriendInfo:_uid] dictionaryRepresentation];
         [_bottomButton setTitle:@"聊聊呗" forState:UIControlStateNormal];
         
         [self showCustomNavigationMoreButton];
@@ -135,14 +141,16 @@
 //    if (!_isFriendRelationShip && ![info.studentNo isEqualToString:@"123456"]) {
      if (!_isFriendRelationShip) {
         //展示提示
-        YCommonAlertView *alert = [[YCommonAlertView alloc] initWithTitle:nil
-                                                                  message:[NSString stringWithFormat:@"确定向%@发送好友申请吗？", _shareData[@"name"]]
+        YCommonAlertView *alert =
+         [[YCommonAlertView alloc] initWithTitle:nil message:
+          [NSString stringWithFormat:@"确定向%@发送好友申请吗？", _shareData[@"name"]]
                                                              buttonTitles:@"取消",@"确认", nil];
         [alert clickedButtonHandler:^(NSInteger index) {
             if (1 == index) {
                 //添加好友
                 [YUtils showHUDWithTitle:@"发送中"];
-                [[ContactManager sharedInstance] submitFriendApply:_uid block:^(YActionMessage *message) {
+                [[ContactManager sharedInstance] submitFriendApply:_uid
+                                                             block:^(YActionMessage *message) {
                     [YUtils hiddenProgressHUD];
                     if (message.isSuccess) {
                         [self updateStatus:@"2"];
@@ -159,10 +167,12 @@
         } else {
             if (_studentDic)
             {
-                ChatViewController * chatVC = [[ChatViewController alloc] initWithChatter:_studentDic[@"thirdCode"] isGroup:NO];
+                ChatViewController * chatVC =
+                [[ChatViewController alloc] initWithChatter:_studentDic[@"thirdCode"] isGroup:NO];
                 chatVC.isSystemMessage = NO;
                 chatVC.studentDic = [_studentDic mutableCopy];
-                [self.navigationController pushViewController:chatVC animated:YES needHiddenBottomBar:YES];
+                [self.navigationController pushViewController:chatVC
+                                                     animated:YES needHiddenBottomBar:YES];
             }
         }
     }
@@ -176,7 +186,8 @@
         return;
     }
     [MobClick event:@"29"];
-    YActionSheetItem *item1 = [YActionSheetItem itemWithType:YCommonActionSheetItemTypeSharePerson title:@"分享该人名片至" extraData:_shareData];
+    YActionSheetItem *item1 = [YActionSheetItem itemWithType:YCommonActionSheetItemTypeSharePerson
+                                                       title:@"分享该人名片至" extraData:_shareData];
     
     YActionSheetItem *item2 = [YActionSheetItem itemWithTitle:@"消息不提醒"
                                                          type:YCommonActionSheetItemTypeSwitch
@@ -187,7 +198,8 @@
     YActionSheetItem *item3 = [YActionSheetItem itemWithTitle:@"解除好友关系"
                                                          type:YCommonActionSheetItemTypeCommon
                                                         block:^(NSInteger checkNum) {
-                                                           YCommonAlertView * alertView = [[YCommonAlertView alloc] initWithTitle:nil message:@"确定解除好友关系？" buttonTitles:@"取消",@"确定", nil];
+                                                           YCommonAlertView * alertView =
+                                                            [[YCommonAlertView alloc] initWithTitle:nil message:@"确定解除好友关系？" buttonTitles:@"取消",@"确定", nil];
                                                             [alertView clickedButtonHandler:^(NSInteger index) {
                                                                 if (index == 1) {
                                                                     [self deleteFriends];
@@ -204,13 +216,16 @@
     
     if ([[ContactManager sharedInstance] isFriendRelationShip:_uid])
     {
-        YCommonActionSheet *sheet = [[YCommonActionSheet alloc] initWithType:@[item1, item2, item3, item4] haveShareButton:YES];
+        YCommonActionSheet *sheet = [[YCommonActionSheet alloc] initWithType:@[item1, item2,
+                                                                               item3, item4]
+                                                             haveShareButton:YES];
         [sheet show];
     }
     else
     {
         
-        YCommonActionSheet *sheet = [[YCommonActionSheet alloc] initWithType:@[item1, item4] haveShareButton:YES];
+        YCommonActionSheet *sheet = [[YCommonActionSheet alloc] initWithType:@[item1, item4]
+                                                             haveShareButton:YES];
         [sheet show];
     }
     

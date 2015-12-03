@@ -111,7 +111,7 @@
         [self loadData:[[ProvisionManager sharedInstance] getProfile]];
     } else {
         _loadingView.hidden = false;
-        _hud = [YUtils showHUDAddedTo:self.view title:@"正在加载" animated:true];
+        self.hud = [YUtils showHUDAddedTo:self.view title:@"正在加载" animated:true];
     }
     [[ProvisionManager sharedInstance] getProfileInfo:^(YActionMessage *message) {
         [_hud removeFromSuperview];
@@ -130,9 +130,12 @@
     _schoolNo.text = info.studentNo;
     _respectNum.text = [NSString stringWithFormat:@"敬酒：%d", (int)info.praiseCount];
     _coolNum.text = [NSString stringWithFormat:@"觉得很酷：%d", (int)info.coolCount];
-    _attitudeLabel.text = (info.selfIntro.length == 0? @"你是一个没有态度的人":[ConvertToCommonEmoticonsHelper convertToSystemEmoticons:info.selfIntro]);
-    _userId = info.uid;
-    _tagModels = info.tagModels;
+    _attitudeLabel.text = (info.selfIntro.length == 0
+                           ? @"你是一个没有态度的人"
+                           :[ConvertToCommonEmoticonsHelper
+                             convertToSystemEmoticons:info.selfIntro]);
+    self.userId = info.uid;
+    self.tagModels = info.tagModels;
     if (_tagModels.count == 0) {
         _tagLabel.text = @"你没有任何关注";
         _tagLabel.textColor = [UIColor blackColor];
@@ -186,7 +189,9 @@
         make.height.mas_equalTo(KTOPHEIGHT);
     }];
     _topView.backgroundColor = KCOLOR_455A64;
-    [_topView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(openProfile)]];
+    [_topView addGestureRecognizer:[[UITapGestureRecognizer alloc]
+                                    initWithTarget:self
+                                    action:@selector(openProfile)]];
     
     UIView *infoView = [[UIView alloc] init];
     [_topView addSubview:infoView];
@@ -214,14 +219,22 @@
         make.centerY.equalTo(_headImg);
     }];
     
-    _userName = [YUtils initLabel:CONTENT_FONT(15) color:KCOLORWHITE text:@"用户名" frame:CGRectZero alignment:NSTextAlignmentLeft];
+    _userName = [YUtils initLabel:CONTENT_FONT(15)
+                            color:KCOLORWHITE
+                             text:@"用户名"
+                            frame:CGRectZero
+                        alignment:NSTextAlignmentLeft];
     [titleView addSubview:_userName];
     [_userName mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.top.equalTo(titleView);
         make.right.lessThanOrEqualTo(titleView);
     }];
     
-    _schoolNo = [YUtils initLabel:CONTENT_FONT(10) color:KCOLORWHITE text:@"学号" frame:CGRectZero alignment:NSTextAlignmentLeft];
+    _schoolNo = [YUtils initLabel:CONTENT_FONT(10)
+                            color:KCOLORWHITE
+                             text:@"学号"
+                            frame:CGRectZero
+                        alignment:NSTextAlignmentLeft];
     [titleView addSubview:_schoolNo];
     [_schoolNo mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(_userName.mas_bottom).offset(KSCHOOLNOMARGIN_TOP);
@@ -299,28 +312,40 @@
     [item addSubview:icon];
     [self rightArray:1 inView:item];
     if (index == 0) {
-        [item addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(openRespect)]];
+        [item addGestureRecognizer:[[UITapGestureRecognizer alloc]
+                                    initWithTarget:self
+                                    action:@selector(openRespect)]];
         [icon mas_makeConstraints:^(MASConstraintMaker *make) {
             make.width.height.mas_equalTo(SCALE_NUM(17));
             make.centerX.equalTo(_headImg);
             make.centerY.equalTo(item);
         }];
         icon.image = [UIImage imageNamed:@"cup"];
-        _respectNum = [YUtils initLabel:CONTENT_FONT(12) color:[UIColor blackColor] text:@"敬酒：0" frame:CGRectZero alignment:NSTextAlignmentLeft];
+        _respectNum = [YUtils initLabel:CONTENT_FONT(12)
+                                  color:[UIColor blackColor]
+                                   text:@"敬酒：0"
+                                  frame:CGRectZero
+                              alignment:NSTextAlignmentLeft];
         [item addSubview:_respectNum];
         [_respectNum mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.equalTo(_userName);
             make.top.bottom.right.equalTo(item);
         }];
     } else if (index == 1) {
-        [item addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(openCool)]];
+        [item addGestureRecognizer:[[UITapGestureRecognizer alloc]
+                                    initWithTarget:self
+                                    action:@selector(openCool)]];
         [icon mas_makeConstraints:^(MASConstraintMaker *make) {
             make.width.height.mas_equalTo(SCALE_NUM(17));
             make.centerX.equalTo(_headImg);
             make.centerY.equalTo(item);
         }];
         icon.image = [UIImage imageNamed:@"mine－icon－cool"];
-        _coolNum = [YUtils initLabel:CONTENT_FONT(12) color:[UIColor blackColor] text:@"觉得很酷：0" frame:CGRectZero alignment:NSTextAlignmentLeft];
+        _coolNum = [YUtils initLabel:CONTENT_FONT(12)
+                               color:[UIColor blackColor]
+                                text:@"觉得很酷：0"
+                               frame:CGRectZero
+                           alignment:NSTextAlignmentLeft];
         [item addSubview:_coolNum];
         [_coolNum mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.equalTo(_userName);
@@ -328,28 +353,40 @@
         }];
         
     } else if (2 == index) {
-        [item addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(scanAction)]];
+        [item addGestureRecognizer:[[UITapGestureRecognizer alloc]
+                                    initWithTarget:self
+                                    action:@selector(scanAction)]];
         [icon mas_makeConstraints:^(MASConstraintMaker *make) {
             make.width.height.mas_equalTo(SCALE_NUM(17));
             make.centerX.equalTo(_headImg);
             make.centerY.equalTo(item);
         }];
         icon.image = [UIImage imageNamed:@"mine－icon－yard"];
-        UILabel *hint = [YUtils initLabel:CONTENT_FONT(12) color:[UIColor blackColor] text:@"扫一扫加好友or享受校友特权" frame:CGRectZero alignment:NSTextAlignmentLeft];
+        UILabel *hint = [YUtils initLabel:CONTENT_FONT(12)
+                                    color:[UIColor blackColor]
+                                     text:@"扫一扫加好友or享受校友特权"
+                                    frame:CGRectZero
+                                alignment:NSTextAlignmentLeft];
         [item addSubview:hint];
         [hint mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.equalTo(_userName);
             make.top.bottom.right.equalTo(item);
         }];
     } else if (3 == index) {
-        [item addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(timetableAction)]];
+        [item addGestureRecognizer:[[UITapGestureRecognizer alloc]
+                                    initWithTarget:self
+                                    action:@selector(timetableAction)]];
         [icon mas_makeConstraints:^(MASConstraintMaker *make) {
             make.width.height.mas_equalTo(SCALE_NUM(17));
             make.centerX.equalTo(_headImg);
             make.centerY.equalTo(item);
         }];
         icon.image = [UIImage imageNamed:@"mine－icon－course"];
-        UILabel *hint = [YUtils initLabel:CONTENT_FONT(12) color:[UIColor blackColor] text:@"我的课程表" frame:CGRectZero alignment:NSTextAlignmentLeft];
+        UILabel *hint = [YUtils initLabel:CONTENT_FONT(12)
+                                    color:[UIColor blackColor]
+                                     text:@"我的课程表"
+                                    frame:CGRectZero
+                                alignment:NSTextAlignmentLeft];
         [item addSubview:hint];
         [hint mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.equalTo(_userName);
@@ -364,7 +401,11 @@
     UIView *item = [[UIView alloc] init];
     [_bottomView addSubview:item];
     NSArray *names = @[@"态度", @"关注", @"动态"];
-    UILabel *icon = [YUtils initLabel:CONTENT_FONT(10) color:KCOLORWHITE text:names[index] frame:CGRectZero alignment:NSTextAlignmentCenter];
+    UILabel *icon = [YUtils initLabel:CONTENT_FONT(10)
+                                color:KCOLORWHITE
+                                 text:names[index]
+                                frame:CGRectZero
+                            alignment:NSTextAlignmentCenter];
     icon.backgroundColor = KCOLOR_009688;
     icon.layer.cornerRadius = KBOTTOMLABELSIZE/2;
     icon.clipsToBounds = true;
@@ -376,7 +417,11 @@
         make.bottom.lessThanOrEqualTo(item);
     }];
     if (index == 0) {
-        _attitudeLabel = [YUtils initLabel:CONTENT_FONT(12) color:[UIColor blackColor] text:@"态度" frame:CGRectZero alignment:NSTextAlignmentLeft];
+        _attitudeLabel = [YUtils initLabel:CONTENT_FONT(12)
+                                     color:[UIColor blackColor]
+                                      text:@"态度"
+                                     frame:CGRectZero
+                                 alignment:NSTextAlignmentLeft];
         _attitudeLabel.numberOfLines = 0;
         [item addSubview:_attitudeLabel];
         [_attitudeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -386,27 +431,43 @@
             make.centerY.equalTo(icon).priorityLow();
             make.bottom.lessThanOrEqualTo(item);
         }];
-        [item addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(openAttitude)]];
+        [item addGestureRecognizer:[[UITapGestureRecognizer alloc]
+                                    initWithTarget:self
+                                    action:@selector(openAttitude)]];
     }
     if (index == 1) {
-        _tagLabel = [YUtils initLabel:CONTENT_FONT(12) color:KCOLOR_009688 text:@"标签" frame:CGRectZero alignment:NSTextAlignmentLeft];
+        _tagLabel = [YUtils initLabel:CONTENT_FONT(12)
+                                color:KCOLOR_009688
+                                 text:@"标签"
+                                frame:CGRectZero
+                            alignment:NSTextAlignmentLeft];
         [item addSubview:_tagLabel];
         [_tagLabel mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.equalTo(_userName);
             make.centerY.equalTo(icon);
         }];
-        _tagCountLabel = [YUtils initLabel:CONTENT_FONT(12) color:[UIColor blackColor] text:@"" frame:CGRectZero alignment:NSTextAlignmentLeft];
+        _tagCountLabel = [YUtils initLabel:CONTENT_FONT(12)
+                                     color:[UIColor blackColor]
+                                      text:@""
+                                     frame:CGRectZero
+                                 alignment:NSTextAlignmentLeft];
         [item addSubview:_tagCountLabel];
         [_tagCountLabel mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.equalTo(_tagLabel.mas_right).offset(5);
             make.centerY.equalTo(_tagLabel);
         }];
-        [item addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(openTagList)]];
+        [item addGestureRecognizer:[[UITapGestureRecognizer alloc]
+                                    initWithTarget:self
+                                    action:@selector(openTagList)]];
         [self rightArray:2 inView:item];
     }
-    if (index == 2) {
+    if (2 == index) {
         
-        _feedHintLabel = [YUtils initLabel:CONTENT_FONT(12) color:[UIColor blackColor] text:@"查看全部" frame:CGRectZero alignment:NSTextAlignmentLeft];
+        _feedHintLabel = [YUtils initLabel:CONTENT_FONT(12)
+                                     color:[UIColor blackColor]
+                                      text:@"查看全部"
+                                     frame:CGRectZero
+                                 alignment:NSTextAlignmentLeft];
         [item addSubview:_feedHintLabel];
         [_feedHintLabel mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.right.equalTo(_attitudeLabel);
@@ -424,7 +485,7 @@
         right.image = [UIImage imageNamed:@"mine-concern-particulars"];
         right.contentMode = UIViewContentModeRight;
         
-        _feed = [[ProfileFeedContentView alloc] initWithType:ProfileFeedMy];
+        self.feed = [[ProfileFeedContentView alloc] initWithType:ProfileFeedMy];
         _feed.userInteractionEnabled = false;
         [item addSubview:_feed];
         [_feed mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -433,7 +494,9 @@
             make.top.equalTo(_feedHintLabel.mas_bottom).offset(KFEEDMARGIN_TOP);
             make.bottom.lessThanOrEqualTo(item);
         }];
-        [item addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(openFeed)]];
+        [item addGestureRecognizer:[[UITapGestureRecognizer alloc]
+                                    initWithTarget:self
+                                    action:@selector(openFeed)]];
     }
     
     return item;
@@ -467,8 +530,13 @@
 //选择标签
 - (void)openTagList {
     UINavigationController *navigationController =
-    [[UINavigationController alloc] initWithRootViewController:[[ProfileTagViewController alloc] initWithMyTags:_tagModels type:ProfileTagTypePerson]];
-    [self.view.window.rootViewController presentViewController:navigationController animated:YES completion:nil];
+    [[UINavigationController alloc]
+     initWithRootViewController:[[ProfileTagViewController alloc]
+                                 initWithMyTags:_tagModels
+                                 type:ProfileTagTypePerson]];
+    [self.view.window.rootViewController presentViewController:navigationController
+                                                      animated:YES
+                                                    completion:nil];
 }
 //编辑态度
 - (void)openAttitude {
@@ -478,19 +546,28 @@
 }
 //查看敬酒人
 - (void)openRespect {
-    [self.navigationController pushViewController:[[ProfilePersonListController alloc] initWithType:ProfilePersonListTypeRespect] animated:true];
+    [self.navigationController
+     pushViewController:[[ProfilePersonListController alloc]
+                         initWithType:ProfilePersonListTypeRespect]
+     animated:true];
 }
 //查看点赞人
 - (void)openCool {
-    [self.navigationController pushViewController:[[ProfilePersonListController alloc] initWithType:ProfilePersonListTypeCool] animated:true];
+    [self.navigationController pushViewController:[[ProfilePersonListController alloc]
+                                                   initWithType:ProfilePersonListTypeCool]
+                                         animated:true];
 }
 //查看feed列表
 - (void)openFeed {
-    [self.navigationController pushViewController:[[ProfilePublishViewController alloc] initWithUserId:@"" name:@""] animated:true];
+    [self.navigationController pushViewController:[[ProfilePublishViewController alloc]
+                                                   initWithUserId:@""
+                                                   name:@""]
+                                         animated:true];
 }
 //查看个人详细信息
 - (void)openProfile {
-    [self.navigationController pushViewController:[[ProfileMyViewController alloc] init] animated:true];
+    [self.navigationController pushViewController:[[ProfileMyViewController alloc] init]
+                                         animated:true];
 }
 
 //扫码
@@ -506,7 +583,8 @@
 
 //我的课程表
 - (void)timetableAction {
-    MyTimetableViewController *myTimetableViewController = [[MyTimetableViewController alloc] init];
+    MyTimetableViewController *myTimetableViewController
+    = [[MyTimetableViewController alloc] init];
     [self.navigationController pushViewController:myTimetableViewController animated:YES];
 }
 
@@ -515,7 +593,8 @@
 - (void)reader:(QRCodeReaderViewController *)reader didScanResult:(NSString *)result
 {
     
-    NSMutableArray * arr0 = [NSMutableArray arrayWithArray:[result componentsSeparatedByString:@"&"]];
+    NSMutableArray * arr0 = [NSMutableArray
+                             arrayWithArray:[result componentsSeparatedByString:@"&"]];
     NSMutableDictionary * dic = [NSMutableDictionary dictionary];
     if ([arr0[0] containsString:@"xiaoyou.com"])
     {
@@ -523,18 +602,25 @@
         for (int i = 0; i < arr0.count; i++)
         {
             NSArray * tempArr = [arr0[i] componentsSeparatedByString:@"="];
-            [dic setObject:tempArr[1] forKey:tempArr[0]];
+            [dic setObject:tempArr[1]
+                    forKey:tempArr[0]];
         }
         if ([dic[@"scope"] isEqualToString:@"supplierShop"])
         {
-            ScanfResultViewController * resultViewController = [[ScanfResultViewController alloc] initWithResult:dic[@"key"]];
-            [self.navigationController pushViewController:resultViewController animated:YES needHiddenBottomBar:YES];
+            ScanfResultViewController * resultViewController = [[ScanfResultViewController alloc]
+                                                                initWithResult:dic[@"key"]];
+            [self.navigationController pushViewController:resultViewController
+                                                 animated:YES
+                                      needHiddenBottomBar:YES];
         }
         else if ([dic[@"scope"] isEqualToString:@"user"])
         {
-            XYContactsInfoDetailViewController * contactDetailVC = [[XYContactsInfoDetailViewController alloc] init];
+            XYContactsInfoDetailViewController * contactDetailVC
+            = [[XYContactsInfoDetailViewController alloc] init];
             contactDetailVC.uid = dic[@"key"];
-            [self.navigationController pushViewController:contactDetailVC animated:YES needHiddenBottomBar:YES];
+            [self.navigationController pushViewController:contactDetailVC
+                                                 animated:YES
+                                      needHiddenBottomBar:YES];
         }
         else
         {
@@ -547,22 +633,6 @@
         [YUtils showTitle:@"二维码不识别" hideAfter:2];
         [self.navigationController popViewControllerAnimated:YES];
     }
-//    NSRange range = [result rangeOfString:@"?"];
-//    NSString * xiaoyouStr = [result substringToIndex:range.location];
-//    if ([xiaoyouStr isEqualToString:@"http://m.xiaoyou.com/index.html"])
-//    {
-//        NSString * xiaoyouStr = [result substringToIndex:<#(NSUInteger)#>]
-//        NSRange range = [result rangeOfString:@"supplierShop="];
-//        NSString * request = [result substringFromIndex:range.location + range.length];
-//        ScanfResultViewController * resultViewController = [[ScanfResultViewController alloc] initWithResult:request];
-//        [self.navigationController pushViewController:resultViewController animated:YES needHiddenBottomBar:YES];
-//    }
-//    else
-//    {
-//        XYContactsInfoDetailViewController * contactDetailVC = [[XYContactsInfoDetailViewController alloc] init];
-//        contactDetailVC.uid = result;
-//        [self.navigationController pushViewController:contactDetailVC animated:YES needHiddenBottomBar:YES];
-//    }
     
 }
 
@@ -576,7 +646,7 @@
  */
 - (void)addGuideView {
     
-    _promptView = [[UIView alloc]init];
+    self.promptView = [[UIView alloc]init];
     _promptView.backgroundColor = [UIColor blackColor];
     _promptView.alpha = 0.6;
     UIWindow *window = [UIApplication sharedApplication].keyWindow;
@@ -587,8 +657,9 @@
     }];
     
     NSString *imageName = @"mine_box_yard";
-    UIImage *image = [[UIImage imageNamed:imageName]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
-    _guideImageView = [[UIImageView alloc] initWithImage:image];
+    UIImage *image = [[UIImage imageNamed:imageName]
+                      imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    self.guideImageView = [[UIImageView alloc] initWithImage:image];
     [window addSubview:_guideImageView];
     
     [_guideImageView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -598,10 +669,12 @@
     
     
     _guideImageView.userInteractionEnabled = YES;
-    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissGuideView)];
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self
+                                                                          action:@selector(dismissGuideView)];
     [_promptView addGestureRecognizer:tap];
     
-    UITapGestureRecognizer *tap1 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissGuideView)];
+    UITapGestureRecognizer *tap1 = [[UITapGestureRecognizer alloc] initWithTarget:self
+                                                                           action:@selector(dismissGuideView)];
     [_guideImageView addGestureRecognizer:tap1];
 }
 

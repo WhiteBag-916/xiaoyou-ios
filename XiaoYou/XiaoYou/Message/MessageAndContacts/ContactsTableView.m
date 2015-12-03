@@ -33,7 +33,8 @@
 #define kBottomLineHeight              SCALE_NUM(0.4)
 
 
-@interface ContactsTableView ()<UITableViewDataSource,UITableViewDelegate>
+@interface ContactsTableView ()
+<UITableViewDataSource,UITableViewDelegate>
 
 @property (strong, nonatomic)  UIImageView *headImageView;
 @property (strong, nonatomic)  UILabel *nameLabel;
@@ -69,7 +70,8 @@
         
         self.delegate = self;
         self.dataSource = self;
-        [self registerClass:[ContactsTableViewCell class] forCellReuseIdentifier:kContactsTableViewCell];
+        [self registerClass:[ContactsTableViewCell class]
+     forCellReuseIdentifier:kContactsTableViewCell];
     }
     
     return self;
@@ -113,7 +115,8 @@
     //索引数组
     self.indexTitleArr = [[NSMutableArray alloc] init];
     //数据源
-    self.contactsDataSource = [NSMutableArray arrayWithArray:[self transformDataSouceArr:_originalContactsDataSource]];
+    self.contactsDataSource =
+    [NSMutableArray arrayWithArray:[self transformDataSouceArr:_originalContactsDataSource]];
     if (model.classList.count > 0)
     {
         [self setUpHeaderView:model.classList];
@@ -130,20 +133,28 @@
     }
     UIView * backView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, kRowHeight)];
     
-    UIView * classBackView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, kRowHeight)];
-    UITapGestureRecognizer * tapClassGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapClassGestureRecognizerAction)];
+    UIView * classBackView =
+    [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, kRowHeight)];
+    UITapGestureRecognizer * tapClassGestureRecognizer =
+    [[UITapGestureRecognizer alloc] initWithTarget:self
+                                            action:@selector(tapClassGestureRecognizerAction)];
     [classBackView addGestureRecognizer:tapClassGestureRecognizer];
     classBackView.backgroundColor = [UIColor clearColor];
     
     //头像
-    UIImageView * classHeadImageView = [[UIImageView alloc] initWithFrame:CGRectMake(kPaddingDistance, kPaddingDistance, kHeadWidthAndHeight, kHeadWidthAndHeight)];
+    UIImageView * classHeadImageView =
+    [[UIImageView alloc] initWithFrame:CGRectMake(kPaddingDistance, kPaddingDistance,
+                                                  kHeadWidthAndHeight, kHeadWidthAndHeight)];
     classHeadImageView.layer.cornerRadius = kHeadCornerRadius;
     classHeadImageView.clipsToBounds = YES;
     classHeadImageView.backgroundColor = KCOLOR_009688;
     [classBackView addSubview:classHeadImageView];
 
     //班
-    UILabel * classDefaultLabel = [[UILabel alloc] initWithFrame:CGRectMake(kPaddingDistance, kPaddingDistance, kClassLabelWidthAndHeight, kClassLabelWidthAndHeight)];
+    UILabel * classDefaultLabel =
+    [[UILabel alloc] initWithFrame:CGRectMake(kPaddingDistance, kPaddingDistance,
+                                              kClassLabelWidthAndHeight,
+                                              kClassLabelWidthAndHeight)];
     classDefaultLabel.text = @"班";
     classDefaultLabel.font = CONTENT_FONT(14);
     classDefaultLabel.textAlignment = NSTextAlignmentCenter;
@@ -151,20 +162,29 @@
     [classBackView addSubview:classDefaultLabel];
     
     //提醒
-    UIImageView * classRemindImageView = [[UIImageView alloc] initWithFrame:CGRectMake(SCREEN_WIDTH - kRemindImageViewToRight - kRemindImageViewWidth, kRowHeight - kPaddingDistance - kRemindImageViewHeight, kRemindImageViewWidth, kRemindImageViewHeight)];
+    UIImageView * classRemindImageView =
+    [[UIImageView alloc] initWithFrame:CGRectMake(SCREEN_WIDTH-kRemindImageViewToRight-kRemindImageViewWidth,
+                                                  kRowHeight-kPaddingDistance-kRemindImageViewHeight,
+                                                  kRemindImageViewWidth, kRemindImageViewHeight)];
     classRemindImageView.image = [UIImage imageNamed:@"chat_remindnot"];
     [classBackView addSubview:classRemindImageView];
     classRemindImageView.hidden = [_headDataSourceDic[@"isRemind"] isEqualToString:@"y"];
     
     //姓名
-    UILabel * classNameLabel = [[UILabel alloc] initWithFrame:CGRectMake(2*kPaddingDistance + kHeadWidthAndHeight, kPaddingDistance, kNameLabelWidth, kLabelHeightDistacnce)];
+    UILabel * classNameLabel =
+    [[UILabel alloc] initWithFrame:CGRectMake(2*kPaddingDistance + kHeadWidthAndHeight,
+                                              kPaddingDistance, kNameLabelWidth,
+                                              kLabelHeightDistacnce)];
     classNameLabel.font = CONTENT_FONT(14);
     classNameLabel.text = _headDataSourceDic[@"name"];
     classNameLabel.backgroundColor = [UIColor clearColor];
     [classBackView addSubview:classNameLabel];
 
     //标签
-    UILabel * classFlagLabel = [[UILabel alloc] initWithFrame:CGRectMake(2*kPaddingDistance + kHeadWidthAndHeight, kRowHeight - kLabelHeightDistacnce - kPaddingDistance, 15*kPaddingDistance, kLabelHeightDistacnce)];
+    UILabel * classFlagLabel =
+    [[UILabel alloc] initWithFrame:CGRectMake(2*kPaddingDistance + kHeadWidthAndHeight,
+                                              kRowHeight - kLabelHeightDistacnce - kPaddingDistance,
+                                              15*kPaddingDistance, kLabelHeightDistacnce)];
     classFlagLabel.font = CONTENT_FONT(10);
     classFlagLabel.textColor = KCOLORWHITE_696969;
     classFlagLabel.text = @"班级群聊";
@@ -172,7 +192,9 @@
     [classBackView addSubview:classFlagLabel];
     
     //底线
-    UIView * classBottomView = [[UIView alloc] initWithFrame:CGRectMake(0, kRowHeight-SCALE_NUM(1), SCREEN_WIDTH, kBottomLineHeight)];
+    UIView * classBottomView =
+    [[UIView alloc] initWithFrame:CGRectMake(0, kRowHeight-SCALE_NUM(1),
+                                             SCREEN_WIDTH, kBottomLineHeight)];
     classBottomView.backgroundColor = [UIColor grayColor];
     classBottomView.alpha = 0.6;
     [classBackView addSubview:classBottomView];
@@ -318,18 +340,15 @@
 -(void)tapClassGestureRecognizerAction
 {
     [MobClick event:@"event20"];
-    XYGroupInfoDetailViewController * groupInfoDetailViewController = [[XYGroupInfoDetailViewController alloc] init];
+
+    XYGroupInfoDetailViewController * groupInfoDetailViewController =
+    [[XYGroupInfoDetailViewController alloc] init];
     groupInfoDetailViewController.studentDic = _headDataSourceDic;
     groupInfoDetailViewController.isClass = YES;
     groupInfoDetailViewController.gid = _headDataSourceDic[@"gid"];
-    [self.myController.navigationController pushViewController:groupInfoDetailViewController animated:YES needHiddenBottomBar:YES];
-}
--(void)tapFunGestureRecognizerAction
-{
-    //好玩列表页
-//    NSLog(@"aaaaaa")
-//    InterestViewController *funnyVC = [[InterestViewController alloc]init];
-//    [self.myController.navigationController pushViewController:funnyVC animated:YES needHiddenBottomBar:YES];
+    [self.myController.navigationController pushViewController:groupInfoDetailViewController
+                                                      animated:YES
+                                           needHiddenBottomBar:YES];
 }
 
 #pragma mark - 将拿到的数据源转化成自己需要的数据格式
@@ -347,7 +366,8 @@
     //取出所有模型，将数据拆分成section（firstIndexTitleArr）数组和sectionRows(transitonArr)数组
     [sortDataSouceArr enumerateObjectsUsingBlock:^(id  model, NSUInteger idx1, BOOL *stop2) {
         
-        char temp =  pinyinFirstLetter([[model dictionaryRepresentation][@"name"] characterAtIndex:0]);
+        char temp =
+        pinyinFirstLetter([[model dictionaryRepresentation][@"name"] characterAtIndex:0]);
         
         NSString * firstStr = [NSString stringWithFormat:@"%c",temp].uppercaseString;
         
@@ -382,7 +402,7 @@
         
     }];
     
-    //将section（firstIndexTitleArr）数组和sectionRows(transitonArr)数组合并成一个数组（finishdataSouceArr）
+//将section（firstIndexTitleArr）数组和sectionRows(transitonArr)数组合并成一个数组（finishdataSouceArr）
     NSMutableArray *resultDataSouceArr = [[NSMutableArray alloc] init];
     
     [self.indexTitleArr enumerateObjectsUsingBlock:^(NSString * obj, NSUInteger idx, BOOL *stop2) {
@@ -449,18 +469,22 @@
     
     
     if ([cell.studentDic[@"linkType"] doubleValue] == 0) {
-        XYContactsInfoDetailViewController * contactsInfoDetailVC = [[XYContactsInfoDetailViewController alloc] init];
+        XYContactsInfoDetailViewController * contactsInfoDetailVC =
+        [[XYContactsInfoDetailViewController alloc] init];
         contactsInfoDetailVC.studentDic = (NSMutableDictionary *)cell.studentDic;
         contactsInfoDetailVC.uid = cell.studentDic[@"uid"];
-        [self.myController.navigationController pushViewController:contactsInfoDetailVC animated:YES needHiddenBottomBar:YES];
+        [self.myController.navigationController pushViewController:contactsInfoDetailVC
+                                                          animated:YES needHiddenBottomBar:YES];
     }
     else
     {
-        XYGroupInfoDetailViewController * groupInfoDetailViewController = [[XYGroupInfoDetailViewController alloc] init];
+        XYGroupInfoDetailViewController * groupInfoDetailViewController =
+        [[XYGroupInfoDetailViewController alloc] init];
         groupInfoDetailViewController.studentDic = cell.studentDic;
         groupInfoDetailViewController.gid = cell.studentDic[@"gid"];
         groupInfoDetailViewController.isClass = NO;
-        [self.myController.navigationController pushViewController:groupInfoDetailViewController animated:YES needHiddenBottomBar:YES];
+        [self.myController.navigationController pushViewController:groupInfoDetailViewController
+                                                          animated:YES needHiddenBottomBar:YES];
     }
     
 }

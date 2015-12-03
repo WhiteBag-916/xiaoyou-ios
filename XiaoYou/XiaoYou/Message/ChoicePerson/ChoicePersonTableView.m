@@ -12,7 +12,8 @@
 #import "LinkManList.h"
 #import "Author.h"
 
-@interface ChoicePersonTableView ()<UITableViewDataSource,UITableViewDelegate>
+@interface ChoicePersonTableView ()
+<UITableViewDataSource,UITableViewDelegate>
 
 @end
 
@@ -25,7 +26,8 @@
         self.dataSource = self;
         self.delegate = self;
         
-        [self registerClass:[ChoicePersonTableViewCell class] forCellReuseIdentifier:kChoicePersonTableViewCell];
+        [self registerClass:[ChoicePersonTableViewCell class]
+     forCellReuseIdentifier:kChoicePersonTableViewCell];
         _dataSouceArr = [[NSMutableArray alloc] init];
     }
     return self;
@@ -75,7 +77,9 @@
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
-    ChoicePersonTableViewCell * cell = [self dequeueReusableCellWithIdentifier:kChoicePersonTableViewCell forIndexPath:indexPath];
+    ChoicePersonTableViewCell * cell =
+    [self dequeueReusableCellWithIdentifier:kChoicePersonTableViewCell
+                               forIndexPath:indexPath];
     [cell setCellInfo:_dataSouceArr[indexPath.row]];
     
     return cell;

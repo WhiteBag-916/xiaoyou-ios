@@ -70,7 +70,8 @@ NSString *const kDateAndTimeCollectionViewCell = @"DateAndTimeCollectionViewCell
         make.height.mas_equalTo(SCALE_NUM(40));
     }];
     
-    UITapGestureRecognizer * applayTapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(applayChoiceTime)];
+    UITapGestureRecognizer * applayTapGesture =
+    [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(applayChoiceTime)];
     [_applayTimeLabel addGestureRecognizer:applayTapGesture];
     
     //活动时间
@@ -103,7 +104,8 @@ NSString *const kDateAndTimeCollectionViewCell = @"DateAndTimeCollectionViewCell
         make.height.mas_equalTo(SCALE_NUM(40));
     }];
     
-    UITapGestureRecognizer * beginTapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(beginChoiceTime)];
+    UITapGestureRecognizer * beginTapGesture =
+    [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(beginChoiceTime)];
     [_beginTimeLabel addGestureRecognizer:beginTapGesture];
     
     //至Label
@@ -137,7 +139,8 @@ NSString *const kDateAndTimeCollectionViewCell = @"DateAndTimeCollectionViewCell
         make.height.mas_equalTo(SCALE_NUM(40));
     }];
     
-    UITapGestureRecognizer * endTapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(endChoiceTime)];
+    UITapGestureRecognizer * endTapGesture =
+    [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(endChoiceTime)];
     [_endTimeLabel addGestureRecognizer:endTapGesture];
     
     //日期选择
@@ -162,7 +165,8 @@ NSString *const kDateAndTimeCollectionViewCell = @"DateAndTimeCollectionViewCell
     _datePicker.maximumDate = nil;
     
     NSDictionary * dic = @{@"position":@3};
-    [[NSNotificationCenter defaultCenter] postNotificationName:KNotification_Activity_Release_ScrollTo object:dic];
+    [[NSNotificationCenter defaultCenter]
+     postNotificationName:KNotification_Activity_Release_ScrollTo object:dic];
 
     
     [popView showView];
@@ -183,7 +187,8 @@ NSString *const kDateAndTimeCollectionViewCell = @"DateAndTimeCollectionViewCell
     _datePicker.maximumDate = nil;
     
     NSDictionary * dic = @{@"position":@3};
-    [[NSNotificationCenter defaultCenter] postNotificationName:KNotification_Activity_Release_ScrollTo object:dic];
+    [[NSNotificationCenter defaultCenter]
+     postNotificationName:KNotification_Activity_Release_ScrollTo object:dic];
     
     [popView showView];
 }
@@ -203,7 +208,8 @@ NSString *const kDateAndTimeCollectionViewCell = @"DateAndTimeCollectionViewCell
     _datePicker.maximumDate = nil;
     
     NSDictionary * dic = @{@"position":@3};
-    [[NSNotificationCenter defaultCenter] postNotificationName:KNotification_Activity_Release_ScrollTo object:dic];
+    [[NSNotificationCenter defaultCenter]
+     postNotificationName:KNotification_Activity_Release_ScrollTo object:dic];
     
     [popView showView];
 }
@@ -214,7 +220,8 @@ NSString *const kDateAndTimeCollectionViewCell = @"DateAndTimeCollectionViewCell
     NSDateFormatter * formatter = [[NSDateFormatter alloc] init];
     [formatter setDateFormat:@"yyyy年MM月dd日 a HH:mm"];
     NSString * showStr = [formatter stringFromDate:_datePicker.date];
-    NSString * BeginApplyStr = [formatter stringFromDate:[NSDate dateWithTimeInterval:-300 sinceDate:_datePicker.date]];
+    NSString * BeginApplyStr = [formatter stringFromDate:[NSDate dateWithTimeInterval:-300
+                                                                            sinceDate:_datePicker.date]];
     _applayTimeLabel.text = showStr;
     _applayTimeLabel.textColor = KCOLOR_B4;
     _dataManager.ActivityDateEndApplyText = showStr;
@@ -255,7 +262,9 @@ NSString *const kDateAndTimeCollectionViewCell = @"DateAndTimeCollectionViewCell
         ![_dataManager.ActivityDateEndText isEqualToString:@"请选择活动开始时间"] &&
         _dataManager.ActivityDateEndText != nil)
     {
-        NSTimeInterval timeBetween1 = [[formatter dateFromString:_dataManager.ActivityDateEndText] timeIntervalSinceDate:[formatter dateFromString:_dataManager.ActivityDateBeginText]];
+        NSTimeInterval timeBetween1 =
+        [[formatter dateFromString:_dataManager.ActivityDateEndText]
+         timeIntervalSinceDate:[formatter dateFromString:_dataManager.ActivityDateBeginText]];
         if (timeBetween1 < 900)
         {
             NSDictionary * dic = @{@"isEnabel":@NO};
@@ -266,9 +275,12 @@ NSString *const kDateAndTimeCollectionViewCell = @"DateAndTimeCollectionViewCell
         }
         else
         {
-            if (![_dataManager.ActivityDateBeginText isEqualToString:@"请选择活动开始时间"] && _dataManager.ActivityDateBeginText != nil)
+            if (![_dataManager.ActivityDateBeginText isEqualToString:@"请选择活动开始时间"] &&
+                _dataManager.ActivityDateBeginText != nil)
             {
-                NSTimeInterval timeBetween2 = [[formatter dateFromString:_dataManager.ActivityDateBeginText] timeIntervalSinceDate:[NSDate date]];
+                NSTimeInterval timeBetween2 =
+                [[formatter dateFromString:_dataManager.ActivityDateBeginText]
+                 timeIntervalSinceDate:[NSDate date]];
                 if (timeBetween2 < 0)
                 {
                     NSDictionary * dic = @{@"isEnabel":@NO};

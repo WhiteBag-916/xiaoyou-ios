@@ -186,7 +186,9 @@
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
 
-    ActivityReleaseAndTypeCell * cell = [self dequeueReusableCellWithIdentifier:kActivityReleaseAndTypeCell forIndexPath:indexPath];
+    ActivityReleaseAndTypeCell * cell =
+    [self dequeueReusableCellWithIdentifier:kActivityReleaseAndTypeCell
+                                         forIndexPath:indexPath];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     cell.delegate = self;
     cell.myType = _myType;

@@ -61,7 +61,8 @@
 
 - (void)onNavigationLeftButtonClicked {
     if (0 == [_groupApplyTableView getData].count && ![_groupApplyTableView isHeaderRefresh]) {
-        [[EaseMob sharedInstance].chatManager removeConversationByChatter:_chatter deleteMessages:YES append2Chat:NO];
+        [[EaseMob sharedInstance].chatManager removeConversationByChatter:_chatter
+                                                           deleteMessages:YES append2Chat:NO];
     }
     
     [self.navigationController popViewControllerAnimated:YES];
@@ -92,7 +93,8 @@
 
 - (void)removeAllData {
     NSMutableArray * idArr = [NSMutableArray array];
-    [[_groupApplyTableView getData] enumerateObjectsUsingBlock:^(ApplicantList * obj, NSUInteger idx, BOOL *stop) {
+    [[_groupApplyTableView getData]
+     enumerateObjectsUsingBlock:^(ApplicantList * obj, NSUInteger idx, BOOL *stop) {
         [idArr addObject:@(obj.applyId)];
         
     }];
@@ -112,10 +114,12 @@
         [authorArray addObject:[obj author]];
     }];
     
-    XYChoicePersonViewController * choicePersonViewController = [[XYChoicePersonViewController alloc] init];
+    XYChoicePersonViewController * choicePersonViewController =
+    [[XYChoicePersonViewController alloc] init];
     choicePersonViewController.authorArr = [NSArray arrayWithArray:authorArray];
     choicePersonViewController.groupId = _groupId;
-    [self.navigationController pushViewController:choicePersonViewController animated:YES needHiddenBottomBar:YES];
+    [self.navigationController pushViewController:choicePersonViewController
+                                         animated:YES needHiddenBottomBar:YES];
 }
 
 

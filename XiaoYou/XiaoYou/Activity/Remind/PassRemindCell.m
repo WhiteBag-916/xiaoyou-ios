@@ -173,7 +173,7 @@
     }];
     
     _middleButton = [YUtils initButtonWithBackgroundColor:[UIColor clearColor]
-                                                   target:self action:@selector(middleAction:)];
+                                                   target:self action:@selector(middleAction)];
     [self.wrapContentView addSubview:_middleButton];
     [_middleButton mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(_topLineView.mas_bottom);
@@ -195,7 +195,7 @@
 
 
 //点击中间部分cell
--(void)middleAction:(UIButton*)btn {
+-(void)middleAction {
     NSString *publishID;
     if (_notifyModel) {
         publishID = self.notifyModel.idStr;

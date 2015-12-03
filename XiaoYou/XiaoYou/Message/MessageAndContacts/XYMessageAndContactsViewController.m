@@ -22,7 +22,8 @@
 #import "ContactManager.h"
 #import "YModel+ActionMessage.h"
 
-@interface XYMessageAndContactsViewController ()<IChatManagerDelegate>
+@interface XYMessageAndContactsViewController ()
+<IChatManagerDelegate>
 @property (strong, nonatomic) UIView * navigationView;
 @property (strong, nonatomic) UIButton *chatButton;
 @property (strong, nonatomic) UIButton *contactsButton;
@@ -38,7 +39,9 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshMeesageRes:) name:kNotification_Refresh_Message object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(refreshMeesageRes:)
+                                                 name:kNotification_Refresh_Message object:nil];
     [self refreshDataSource];
     [[MessageManager sharedInstance] setupUnreadMessageCount];
 }
@@ -66,7 +69,8 @@
         YLogD(@"%@",message);
         if (message.isSuccess) {
             
-            [weakSelf.contactsTableView refreshTableView:[[ContactManager sharedInstance] getContactsListData]];
+            [weakSelf.contactsTableView refreshTableView:
+             [[ContactManager sharedInstance] getContactsListData]];
         }
     }];
 }
@@ -76,7 +80,8 @@
     NSArray *conversations = [[EaseMob sharedInstance].chatManager conversations];
     NSMutableArray *needRemoveConversations = [@[] mutableCopy];
     for (EMConversation *conversation in conversations) {
-        if (!conversation.latestMessage || (conversation.conversationType == eConversationTypeChatRoom)) {
+        if (!conversation.latestMessage ||
+            (conversation.conversationType == eConversationTypeChatRoom)) {
             [needRemoveConversations addObject:conversation.chatter];
         }
     }
@@ -100,7 +105,8 @@
                 [YUtils showTitle:@"无网络连接"];
                 break;
             default:
-                [[NSNotificationCenter defaultCenter] postNotificationName:kNotification_Server_Token_Fail object:@{@"des":@"登录失败"}];
+                [[NSNotificationCenter defaultCenter]
+                 postNotificationName:kNotification_Server_Token_Fail object:@{@"des":@"登录失败"}];
                 break;
         }
     }
@@ -119,7 +125,8 @@
 - (NSMutableArray *)loadDataSource
 {
     NSMutableArray *ret = nil;
-    NSMutableArray *conversations = [[NSMutableArray alloc] initWithArray:[[EaseMob sharedInstance].chatManager conversations]];
+    NSMutableArray *conversations = [[NSMutableArray alloc] initWithArray:
+                                     [[EaseMob sharedInstance].chatManager conversations]];
     
     for (EMConversation *conversation in conversations) {
         if ([conversation.chatter isEqualToString:KSYSTEM_MESSAGEID])
@@ -153,7 +160,9 @@
 #pragma mark - setUpUI方法
 -(void)setUpUI
 {
-    _commonSwitchView = [[CommonSwitchView alloc] initWithFrame:CGRectMake(0, 0, SCALE_NUM(119), SCALE_NUM(24)) textArray:@[@"聊天", @"好友"]];
+    _commonSwitchView =
+    [[CommonSwitchView alloc] initWithFrame:CGRectMake(0, 0, SCALE_NUM(119),
+                                                       SCALE_NUM(24)) textArray:@[@"聊天", @"好友"]];
     [_commonSwitchView changedType:^(CommonSwitchType type) {
         [self changeSwitchView:type];
     }];

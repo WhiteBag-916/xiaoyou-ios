@@ -39,7 +39,8 @@
         if ([conversation.chatter isEqualToString:KSYSTEM_MESSAGEID])
         {
             //将系统消息倒序
-            NSMutableArray * tempArr  = (NSMutableArray *)[[[conversation loadAllMessages] reverseObjectEnumerator] allObjects];
+            NSMutableArray * tempArr  =
+            (NSMutableArray *)[[[conversation loadAllMessages] reverseObjectEnumerator] allObjects];
             _dataSource = [[NSMutableArray alloc] initWithArray:tempArr];
             
         }

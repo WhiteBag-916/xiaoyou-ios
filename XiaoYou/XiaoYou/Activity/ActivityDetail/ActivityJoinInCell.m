@@ -99,7 +99,8 @@
     _noSomeOneJoinImageView = [[UIImageView alloc]init];
     [self.contentView addSubview:_noSomeOneJoinImageView];
     _noSomeOneJoinImageView.hidden = YES;
-    _noSomeOneJoinImageView.image = [[UIImage imageNamed:@"no_someone_signup"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    _noSomeOneJoinImageView.image = [[UIImage imageNamed:@"no_someone_signup"]
+                                     imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     [_noSomeOneJoinImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(_joinInHeadView.mas_bottom);
         make.centerX.equalTo(self.contentView);
@@ -137,7 +138,6 @@
 -(void)setType:(CELLTYPE)type
 {
     if (type == IS_TOPVIEW) {
-        [_joinInHeadView setContent];
         [_joinInHeadView mas_updateConstraints:^(MASConstraintMaker *make) {
             make.height.mas_equalTo(SCALE_NUM(49)).priorityHigh();
             make.height.mas_equalTo(SCALE_NUM(0)).priorityLow();
@@ -148,8 +148,8 @@
             make.height.mas_equalTo(0).priorityHigh();
             make.height.mas_equalTo(SCALE_NUM(49)).priorityLow();
         }];
-        [_joinInHeadView clearContent];
     }
+    [_joinInHeadView setContentVisible:(type == IS_TOPVIEW)];
 }
 
 @end

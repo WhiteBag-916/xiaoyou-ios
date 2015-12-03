@@ -52,7 +52,6 @@ NSString *const kAssociationsListTableViewCell = @"AssociationsListTableViewCell
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier])
     {
         [self initView];
-        
         self.contentView.backgroundColor = KCOLORWHITE;
     }
     

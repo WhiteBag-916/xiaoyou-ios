@@ -54,7 +54,10 @@
     [super viewWillAppear:animated];
     [self refreshData];
     _notifyCount.text = [[YShareData defaultData][kShareData_UnreadAlterCount] stringValue];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(checkUnreadAlterCount) name:KNotification_Update_UnreadAlterCount object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(checkUnreadAlterCount)
+                                                 name:KNotification_Update_UnreadAlterCount
+                                               object:nil];
 }
 
 
@@ -88,7 +91,11 @@
     line.backgroundColor = KCOLORWHITE_b8b7b7;
     
     
-    _notifyCount = [YUtils initLabel:CONTENT_FONT(12) color:[UIColor whiteColor] text:@"99" frame:CGRectZero alignment:NSTextAlignmentCenter];
+    _notifyCount = [YUtils initLabel:CONTENT_FONT(12)
+                               color:[UIColor whiteColor]
+                                text:@"99"
+                               frame:CGRectZero
+                           alignment:NSTextAlignmentCenter];
     [_notifyView addSubview:_notifyCount];
     [_notifyCount mas_makeConstraints:^(MASConstraintMaker *make) {
         make.bottom.equalTo(_notifyView).offset(-KNOTIFYCOUNTMARGIN_DOWN);
@@ -99,7 +106,11 @@
     _notifyCount.layer.cornerRadius = 3;
     _notifyCount.clipsToBounds = true;
     
-    UILabel *infoLabel = [YUtils initLabel:CONTENT_FONT(14) color:[UIColor whiteColor] text:@"人脉新提醒" frame:CGRectZero alignment:NSTextAlignmentLeft];
+    UILabel *infoLabel = [YUtils initLabel:CONTENT_FONT(14)
+                                     color:[UIColor whiteColor]
+                                      text:@"人脉新提醒"
+                                     frame:CGRectZero
+                                 alignment:NSTextAlignmentLeft];
     [_notifyView addSubview:infoLabel];
     [infoLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(_notifyCount.mas_right).offset(KNOTIFYCOUNTMARGIN_RIGHT);
@@ -111,7 +122,11 @@
 }
 
 - (void)initSearchBtn {
-    _searchLabel = [YUtils initLabel:CONTENT_FONT(12) color:KCOLORWHITE_b8b7b7 text:@"在这儿可以找到所有人" frame:CGRectZero alignment:NSTextAlignmentCenter];
+    _searchLabel = [YUtils initLabel:CONTENT_FONT(12)
+                               color:KCOLORWHITE_b8b7b7
+                                text:@"在这儿可以找到所有人"
+                               frame:CGRectZero
+                           alignment:NSTextAlignmentCenter];
     [self.view addSubview:_searchLabel];
     [_searchLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.right.equalTo(_notifyView);
@@ -169,7 +184,11 @@
     }];
     icon.image = [UIImage imageNamed:@"society"];
     
-    UILabel *hint = [YUtils initLabel:CONTENT_FONT(14) color:KCOLORWHITE text:@"社团/学生组织" frame:CGRectZero alignment:NSTextAlignmentLeft];
+    UILabel *hint = [YUtils initLabel:CONTENT_FONT(14)
+                                color:KCOLORWHITE
+                                 text:@"社团/学生组织"
+                                frame:CGRectZero
+                            alignment:NSTextAlignmentLeft];
     [_bottomView addSubview:hint];
     [hint mas_makeConstraints:^(MASConstraintMaker *make) {
         make.right.equalTo(_bottomView);
@@ -197,7 +216,8 @@
 }
 - (void)addTap:(UIView *)view action:(SEL)selector {
     //增加点击跳转
-    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:selector];
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self
+                                                                          action:selector];
     view.userInteractionEnabled = YES;
     [view addGestureRecognizer:tap];
 }
@@ -209,17 +229,20 @@
 
 //跳转社团
 - (void)toAssociationsList {
-    [[NSNotificationCenter defaultCenter] postNotificationName:kNotification_Push_AssociationsList object:nil];
+    [[NSNotificationCenter defaultCenter] postNotificationName:kNotification_Push_AssociationsList
+                                                        object:nil];
 }
 
 //跳转找人
 - (void)toSearchPerson {
-    [[NSNotificationCenter defaultCenter] postNotificationName:kNotification_Push_SearchPerson object:nil];
+    [[NSNotificationCenter defaultCenter] postNotificationName:kNotification_Push_SearchPerson
+                                                        object:nil];
 }
 
 //跳转到新提醒
 - (void)toNotifyView {
-    [[NSNotificationCenter defaultCenter] postNotificationName:kNotification_Push_Notify object:nil];
+    [[NSNotificationCenter defaultCenter] postNotificationName:kNotification_Push_Notify
+                                                        object:nil];
 }
 
 @end

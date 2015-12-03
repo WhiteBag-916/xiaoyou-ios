@@ -119,7 +119,8 @@
 - (void)pressAddButton {
     if ([_groupModel.groupStatus isEqualToString:@"3"]) {
         //进入群聊
-        ChatViewController *chatViewController = [[ChatViewController alloc] initWithChatter:_groupModel.thirdId
+        ChatViewController *chatViewController = [[ChatViewController alloc]
+                                                  initWithChatter:_groupModel.thirdId
                                                                                      isGroup:YES];
         chatViewController.studentDic = [@{@"name":_groupModel.groupName
                                            , @"icon":_groupModel.groupIcon

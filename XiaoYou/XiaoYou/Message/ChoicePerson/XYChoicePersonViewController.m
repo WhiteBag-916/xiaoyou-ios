@@ -62,18 +62,27 @@
     [self showCustomNavigationCancelButton];
     
     
-    UIView * rightView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kRightButtonWidth, kButtonItemHeightAndWidth)];
+    UIView * rightView =
+    [[UIView alloc] initWithFrame:CGRectMake(0, 0, kRightButtonWidth, kButtonItemHeightAndWidth)];
     
-    UIButton * cancelButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, kCancleButtonItemWidth, kButtonItemHeightAndWidth)];
+    UIButton * cancelButton =
+    [[UIButton alloc] initWithFrame:CGRectMake(0, 0,
+                                               kCancleButtonItemWidth, kButtonItemHeightAndWidth)];
     cancelButton.backgroundColor = [UIColor clearColor];
     [cancelButton setTitle:@"全不选" forState:UIControlStateNormal];
     cancelButton.titleLabel.font = CONTENT_FONT(14);
-    [cancelButton addTarget:self action:@selector(cancelChoice) forControlEvents:UIControlEventTouchUpInside];
+    [cancelButton addTarget:self action:@selector(cancelChoice)
+           forControlEvents:UIControlEventTouchUpInside];
     
-    UIButton * choiceButton = [[UIButton alloc] initWithFrame:CGRectMake(kCancleButtonItemWidth, 0, kButtonItemHeightAndWidth, kButtonItemHeightAndWidth)];
+    UIButton * choiceButton =
+    [[UIButton alloc] initWithFrame:CGRectMake(kCancleButtonItemWidth, 0,
+                                               kButtonItemHeightAndWidth,
+                                               kButtonItemHeightAndWidth)];
     choiceButton.backgroundColor = [UIColor clearColor];
-    [choiceButton setImage:[UIImage imageNamed:@"complete"] forState:UIControlStateNormal];
-    [choiceButton addTarget:self action:@selector(finishChoice) forControlEvents:UIControlEventTouchUpInside];
+    [choiceButton setImage:[UIImage imageNamed:@"complete"]
+                  forState:UIControlStateNormal];
+    [choiceButton addTarget:self action:@selector(finishChoice)
+           forControlEvents:UIControlEventTouchUpInside];
 
     [rightView addSubview:choiceButton];
     [rightView addSubview:cancelButton];
@@ -126,7 +135,8 @@
             NSString * uids = [uidArr componentsJoinedByString:@","];
             //走接口
             [YUtils showHUDWithTitle];
-            [[ContactManager sharedInstance] addGroupUser:_groupId addUserIds:uids block:^(YActionMessage *message) {
+            [[ContactManager sharedInstance] addGroupUser:_groupId addUserIds:uids
+                                                    block:^(YActionMessage *message) {
                 [YUtils hiddenProgressHUD];
                 if (message.isSuccess)
                 {
@@ -140,7 +150,8 @@
         }
         else
         {
-            XYSendMessageViewController * sendMessageViewController = [[XYSendMessageViewController alloc] init];
+            XYSendMessageViewController * sendMessageViewController =
+            [[XYSendMessageViewController alloc] init];
             sendMessageViewController.sendPersonsArr = sendPersonsArr;
             sendMessageViewController.groupId = _groupId;
             [self.navigationController pushViewController:sendMessageViewController animated:YES];
