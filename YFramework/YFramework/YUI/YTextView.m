@@ -132,6 +132,23 @@ CGFloat const UI_PLACEHOLDER_TEXT_CHANGED_ANIMATION_DURATION = 0.25;
 
 
 
+-(void)setTextViewDataWithText:(NSString *)text font:(UIFont *)font textColor:(UIColor *)color
+                     lineSpace:(CGFloat)lineSpace
+{
+    NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
+    paragraphStyle.lineSpacing = lineSpace;// 字体的行间距
+    NSDictionary *attributes = @{
+                                 NSForegroundColorAttributeName:color,
+                                 NSFontAttributeName:font,
+                                 NSParagraphStyleAttributeName:paragraphStyle,
+                                 };
+    NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc]
+                                                   initWithString:text];
+    [attributedString addAttributes:attributes
+                              range:NSMakeRange(0, attributedString.length)];
+    [self setCustomAttributedText:attributedString];
+}
+
 
 -(void)setCustomAttributedText:(NSAttributedString *)attributedText
 {

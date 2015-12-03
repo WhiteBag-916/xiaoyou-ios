@@ -31,7 +31,8 @@
 {
     ScheduleNotifyCell *cell = [tableView dequeueReusableCellWithIdentifier:REUSRID];
     if (!cell) {
-        cell = [[ScheduleNotifyCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:REUSRID];
+        cell = [[ScheduleNotifyCell alloc]initWithStyle:UITableViewCellStyleDefault
+                                        reuseIdentifier:REUSRID];
     }
     return cell;
 }

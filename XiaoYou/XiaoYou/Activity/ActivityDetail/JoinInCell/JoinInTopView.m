@@ -129,7 +129,9 @@
     if ([status isEqualToString:@"2"]) {
         _addFriendImageView.hidden = false;
         _addFriendImageView.enabled = false;
-        [_addFriendImageView setImage:[[UIImage imageNamed:@"add-friend-no"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] forState:UIControlStateNormal];
+        [_addFriendImageView setImage:[[UIImage imageNamed:@"add-friend-no"]
+                                       imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]
+                             forState:UIControlStateNormal];
     }
     if ([status isEqualToString:@"3"]) {
         _addFriendImageView.hidden = true;
