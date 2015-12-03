@@ -26,13 +26,12 @@
 - (void)setUpUI
 {
     //背景View
-    self.backView = [[UIView alloc] init];
-    _backView.layer.cornerRadius = 4;
-    _backView.clipsToBounds = YES;
-    _backView.backgroundColor = KCOLOR_B1;
+    self.backView = [YUtils initViewWithBackgroundColor:KCOLOR_B1
+                                           cornerRadius:4
+                                          clipsToBounds:YES
+                                                  alpha:0.8];
     _backView.layer.borderWidth = 1;
     _backView.layer.borderColor = KCOLOR_B2.CGColor;
-    _backView.alpha = 0.8;
     [self.contentView addSubview:_backView];
     [_backView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.bottom.mas_equalTo(0);
@@ -40,16 +39,14 @@
         make.right.mas_equalTo(SCALE_NUM(-5));
     }];
     //顶部绿色长条
-    UIImageView * topImageView = [[UIImageView alloc] init];
-    topImageView.image = [UIImage imageNamed:@"img_top"];
+    UIImageView * topImageView = [YUtils initImageViewWithImageName:@"img_top"];
     [_backView addSubview:topImageView];
     [topImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.left.right.mas_equalTo(0);
         make.height.mas_equalTo(SCALE_NUM(6));
     }];
     //中部虚线
-    UIImageView * lineImageView = [[UIImageView alloc] init];
-    lineImageView.image = [UIImage imageNamed:@"img_line"];
+    UIImageView * lineImageView = [YUtils initImageViewWithImageName:@"img_line"];
     [_backView addSubview:lineImageView];
     [lineImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(topImageView.mas_bottom).offset(SCALE_NUM(63));
@@ -65,10 +62,7 @@
         make.height.width.mas_equalTo(SCALE_NUM(34));
     }];
     //类型名称
-    self.typeLabel = [[UILabel alloc] init];
-    _typeLabel.textColor = KCOLOR_g1;
-    _typeLabel.font = CONTENT_FONT(17);
-    _typeLabel.backgroundColor = [UIColor clearColor];
+    self.typeLabel = [YUtils initLabel:CONTENT_FONT(17) color:KCOLOR_g1 text:@""];
     [_backView addSubview:_typeLabel];
     [_typeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(_numImageView.mas_right);

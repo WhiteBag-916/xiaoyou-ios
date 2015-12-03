@@ -119,6 +119,19 @@ extern NSInteger const kLoginCommonTextFieldTag;
                             clipsToBounds:(BOOL)clipsToBounds
                             image:(UIImage *)image;
 
+/*********************************************************************
+ 函数名称 : initView
+ 函数描述 : 构造View
+ 参数 : 你懂的
+ 返回值 : 你懂的
+ 作者 : 尹先森
+ *********************************************************************/
++ (UIView *)initViewWithBackgroundColor:(UIColor *)color
+                                     cornerRadius:(NSInteger)cornerRadius
+                                    clipsToBounds:(BOOL)clipsToBounds
+                                  alpha:(NSInteger)alpha;
+
+
 + (UITextView *)initDisplayTextViewWithFont:(UIFont*)font
                                   textColor:(UIColor*)color;
 
