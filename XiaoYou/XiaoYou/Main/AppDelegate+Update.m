@@ -24,7 +24,11 @@
         {
             self.checkLastVersionModel = message.object;
             
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:[NSString stringWithFormat:@"%@ 版本更新",self.checkLastVersionModel.version] message:self.checkLastVersionModel.about delegate:self cancelButtonTitle:@"稍后更新" otherButtonTitles:@"现在更新", nil];
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:[NSString stringWithFormat:@"%@ 版本更新",self.checkLastVersionModel.version]
+                                                            message:self.checkLastVersionModel.about
+                                                           delegate:self
+                                                  cancelButtonTitle:@"稍后更新"
+                                                  otherButtonTitles:@"现在更新", nil];
             [alert show];
             
         }

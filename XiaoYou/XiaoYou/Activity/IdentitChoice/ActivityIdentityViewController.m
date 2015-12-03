@@ -71,7 +71,9 @@
     UIButton * dissMissBtn = [[UIButton alloc] init];
     dissMissBtn.backgroundColor = [UIColor clearColor];
     [dissMissBtn setImage:[UIImage imageNamed:@"complete-cancel"] forState:UIControlStateNormal];
-    [dissMissBtn addTarget:self action:@selector(clickBtnForCancel) forControlEvents:UIControlEventTouchUpInside];
+    [dissMissBtn addTarget:self
+                    action:@selector(clickBtnForCancel)
+          forControlEvents:UIControlEventTouchUpInside];
     [backView addSubview:dissMissBtn];
     [dissMissBtn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.bottom.mas_equalTo(SCALE_NUM(-4));
@@ -118,7 +120,9 @@
     [_personalButton  setTitleColor:KCOLOR_B4 forState:UIControlStateNormal];
     _personalButton.tintColor = KCOLOR_B4;
     _personalButton.titleLabel.font = CONTENT_FONT(15);
-    [_personalButton addTarget:self action:@selector(clickPersonalButton) forControlEvents:UIControlEventTouchUpInside];
+    [_personalButton addTarget:self
+                        action:@selector(clickPersonalButton)
+              forControlEvents:UIControlEventTouchUpInside];
 
     //社团
     _groupButton = [[UIButton alloc] init];
@@ -199,7 +203,8 @@
         else
         {
             [self dismissViewControllerAnimated:YES completion:^{
-                ActivityReleaseController * releaseController = [[ActivityReleaseController alloc] initWithIsIdentity:_isIdentity];
+                ActivityReleaseController * releaseController = [[ActivityReleaseController alloc]
+                                                                 initWithIsIdentity:_isIdentity];
                 [_availableViewController.navigationController
                  pushViewController:releaseController animated:YES needHiddenBottomBar:YES];
             }];
@@ -209,7 +214,8 @@
     {
         _dataManager.ActivityCheckStatus = @"no_check";
         [self dismissViewControllerAnimated:YES completion:^{
-            ActivityReleaseController * releaseController =[[ActivityReleaseController alloc] initWithIsIdentity:_isIdentity];
+            ActivityReleaseController * releaseController =[[ActivityReleaseController alloc]
+                                                            initWithIsIdentity:_isIdentity];
             [_availableViewController.navigationController
              pushViewController:releaseController animated:YES needHiddenBottomBar:YES];
         }];

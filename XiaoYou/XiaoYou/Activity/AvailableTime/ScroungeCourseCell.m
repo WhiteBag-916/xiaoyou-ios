@@ -61,7 +61,6 @@
         make.width.mas_equalTo(SCALE_NUM(3));
     }];
     
-    _titleLabel = [[UILabel alloc]init];
     _titleLabel = [YUtils initLabel:CONTENT_FONT(15) color:KCOLOR_B4 text:@""];
     [self.contentView addSubview:_titleLabel];
     [_titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {

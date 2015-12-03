@@ -30,11 +30,12 @@ NSString *const kActivityIdentityTableViewCell = @"ActivityIdentityTableViewCell
 
 -(void)setUpUI
 {
-    _contentLabel = [[UILabel alloc] init];
-    _contentLabel.backgroundColor = [UIColor clearColor];
-    _contentLabel.font = CONTENT_FONT(SCALE_NUM(12));
-    _contentLabel.textColor = KCOLOR_B4;
-    _contentLabel.textAlignment = NSTextAlignmentCenter;
+    self.contentLabel = [YUtils initLabelWithBackgroundColor:[UIColor clearColor]
+                                                        font:CONTENT_FONT(SCALE_NUM(12))
+                                               numberOfLines:1
+                                               textAlignment:NSTextAlignmentCenter
+                                                   textColor:KCOLOR_B4
+                                                        text:@""];
     _contentLabel.layer.borderColor = [UIColor hexChangeFloat:@"465a65"].CGColor;
     _contentLabel.layer.borderWidth = 1;
     _contentLabel.layer.cornerRadius = 2;

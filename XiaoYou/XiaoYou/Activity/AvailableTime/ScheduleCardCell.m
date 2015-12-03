@@ -72,22 +72,16 @@
         make.width.mas_equalTo(SCALE_NUM(3));
     }];
     
-    _titleLabel = [[UILabel alloc]init];
+    _titleLabel = [YUtils initLabel:CONTENT_FONT(15) color:KCOLOR_B4 text:@"日程卡"];
     [self.contentView addSubview:_titleLabel];
-    _titleLabel.font = CONTENT_FONT(15);
-    _titleLabel.text = @"日程卡";
-    _titleLabel.textColor = KCOLOR_B4;
     [_titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.height.mas_equalTo(SCALE_NUM(15));
         make.leading.mas_equalTo(SCALE_NUM(15));
         make.centerY.equalTo(_startImageView.mas_centerY);
     }];
     
-    _timeLabel1 = [[UILabel alloc]init];
+    _timeLabel1 = [YUtils initLabel:CONTENT_FONT(12) color:KCOLOR_B5 text:@""];
     [self.contentView addSubview:_timeLabel1];
-    _timeLabel1.text = @"8:00-9:00";
-    _timeLabel1.font = CONTENT_FONT(12);
-    _timeLabel1.textColor = KCOLOR_B5;
     _timeLabel1.numberOfLines = 1;
     _timeLabel1.lineBreakMode = NSLineBreakByTruncatingTail;
     [_timeLabel1 mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -97,11 +91,8 @@
         make.left.equalTo(_titleLabel);
     }];
     
-    _projectLabel1 = [[UILabel alloc]init];
+    _projectLabel1 = [YUtils initLabel:CONTENT_FONT(10) color:KCOLOR_B5 text:@""];
     [self.contentView addSubview:_projectLabel1];
-    _projectLabel1.textColor = KCOLOR_B5;
-    _projectLabel1.text = @"英语口语练习";
-    _projectLabel1.font = CONTENT_FONT(10);
     [_projectLabel1 mas_makeConstraints:^(MASConstraintMaker *make) {
         make.height.mas_equalTo(SCALE_NUM(12));
         make.left.equalTo(_timeLabel1.mas_right).offset(SCALE_NUM(5));
@@ -109,11 +100,8 @@
         make.trailing.mas_equalTo(SCALE_NUM(-15));
     }];
     
-    _timeLabel2 = [[UILabel alloc]init];
+    _timeLabel2 = [YUtils initLabel:CONTENT_FONT(12) color:KCOLOR_B5 text:@""];
     [self.contentView addSubview:_timeLabel2];
-    _timeLabel2.textColor = KCOLOR_B5;
-    _timeLabel2.text = @"8:00-9:00";
-    _timeLabel2.font = CONTENT_FONT(12);
     _timeLabel2.numberOfLines = 1;
     _timeLabel2.lineBreakMode = NSLineBreakByTruncatingTail;
     [_timeLabel2 mas_makeConstraints:^(MASConstraintMaker *make) {

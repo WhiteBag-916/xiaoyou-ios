@@ -91,9 +91,9 @@
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    MerchantDetailTableViewCell * cell = [tableView
-                                          dequeueReusableCellWithIdentifier:kMerchantDetailTableViewCell
-                                          forIndexPath:indexPath];
+    MerchantDetailTableViewCell * cell =
+    [tableView dequeueReusableCellWithIdentifier:kMerchantDetailTableViewCell
+                                    forIndexPath:indexPath];
     if (indexPath.row == 0)
     {
         [cell setCellInfo:nil isHeader:YES];

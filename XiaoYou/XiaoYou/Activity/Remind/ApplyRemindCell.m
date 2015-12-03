@@ -107,7 +107,8 @@
     }];
     
     //2.提醒标题
-    _remindTitleLabel = [YUtils initLabel:CONTENT_FONT(15) color:nil text:@"有人参加你的活动"];
+    _remindTitleLabel = [YUtils initLabel:CONTENT_FONT(15) color:nil
+                                     text:@"有人参加你的活动"];
     [self.wrapContentView addSubview:_remindTitleLabel];
     [_remindTitleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.height.mas_equalTo(SCALE_NUM(17));
@@ -116,8 +117,7 @@
     }];
     
     //中间内容部分，分割线
-    _topLineView = [[UIView alloc]init];
-    _topLineView.backgroundColor = KCOLOR_B2;
+    _topLineView = [YUtils initLineViewWithbackgroundColor:KCOLOR_B2];
     [self.wrapContentView addSubview:_topLineView];
     [_topLineView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.leading.mas_equalTo(0);
@@ -179,8 +179,9 @@
     _applyContentLable.text = [NSString
                                stringWithFormat:@"参加了你的%@活动!",model.activityName];
     
-    [_applyContentLable setText:[NSString stringWithFormat:@"参加了你的%@活动!",model.activityName]
-                    lineSpacing:5.0];
+    [_applyContentLable setText:[NSString
+                                 stringWithFormat:@"参加了你的%@活动!",model.activityName]
+                                lineSpacing:5.0];
     [_connectTagView updateWithTag:info.propetiesCommon];
 }
 

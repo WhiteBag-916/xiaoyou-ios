@@ -15,7 +15,10 @@
 #import "CheckCollectionViewCell.h"
 
 @interface ActivityReleaseCollectionView ()
-<UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout,UIScrollViewDelegate>
+<UICollectionViewDataSource,
+UICollectionViewDelegate,
+UICollectionViewDelegateFlowLayout,
+UIScrollViewDelegate>
 
 //是否为社长
 @property (nonatomic,assign) BOOL isIdentity;
@@ -39,14 +42,20 @@
         self.showsHorizontalScrollIndicator = NO;
         self.showsVerticalScrollIndicator = NO;
         
-        [self registerClass:[NameCollectionViewCell class] forCellWithReuseIdentifier:kNameCollectionViewCell];
-        [self registerClass:[DescriptionCollectionViewCell class] forCellWithReuseIdentifier:kDescriptionCollectionViewCell];
-        [self registerClass:[DateAndTimeCollectionViewCell class] forCellWithReuseIdentifier:kDateAndTimeCollectionViewCell];
-        [self registerClass:[TypeCollectionViewCell class] forCellWithReuseIdentifier:kTypeCollectionViewCell
+        [self registerClass:[NameCollectionViewCell class]
+ forCellWithReuseIdentifier:kNameCollectionViewCell];
+        [self registerClass:[DescriptionCollectionViewCell class]
+ forCellWithReuseIdentifier:kDescriptionCollectionViewCell];
+        [self registerClass:[DateAndTimeCollectionViewCell class]
+ forCellWithReuseIdentifier:kDateAndTimeCollectionViewCell];
+        [self registerClass:[TypeCollectionViewCell class]
+ forCellWithReuseIdentifier:kTypeCollectionViewCell
          ];
-        [self registerClass:[PlaceCollectionViewCell class] forCellWithReuseIdentifier:kPlaceCollectionViewCell
+        [self registerClass:[PlaceCollectionViewCell class]
+ forCellWithReuseIdentifier:kPlaceCollectionViewCell
          ];
-        [self registerClass:[CheckCollectionViewCell class] forCellWithReuseIdentifier:kCheckCollectionViewCell
+        [self registerClass:[CheckCollectionViewCell class]
+ forCellWithReuseIdentifier:kCheckCollectionViewCell
          ];
         
     }
@@ -77,24 +86,32 @@
 {
     if (indexPath.row == 0)
     {
-        NameCollectionViewCell * cell = (NameCollectionViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:kNameCollectionViewCell forIndexPath:indexPath];
+        NameCollectionViewCell * cell =
+        (NameCollectionViewCell *)[collectionView
+                                   dequeueReusableCellWithReuseIdentifier:kNameCollectionViewCell
+                                   forIndexPath:indexPath];
         cell.myCollectionView = self;
         return cell;
     }
     else if (indexPath.row == 1)
     {
-        DescriptionCollectionViewCell * cell = (DescriptionCollectionViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:kDescriptionCollectionViewCell forIndexPath:indexPath];
+        DescriptionCollectionViewCell * cell =
+        (DescriptionCollectionViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:kDescriptionCollectionViewCell forIndexPath:indexPath];
         cell.myController = self.myController;
         return cell;
     }
     else if (indexPath.row == 2)
     {
-        DateAndTimeCollectionViewCell * cell = (DateAndTimeCollectionViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:kDateAndTimeCollectionViewCell forIndexPath:indexPath];
+        DateAndTimeCollectionViewCell * cell =
+        (DateAndTimeCollectionViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:kDateAndTimeCollectionViewCell forIndexPath:indexPath];
         return cell;
     }
     else if (indexPath.row == 3)
     {
-        PlaceCollectionViewCell * cell = (PlaceCollectionViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:kPlaceCollectionViewCell forIndexPath:indexPath];
+        PlaceCollectionViewCell * cell =
+        (PlaceCollectionViewCell *)[collectionView
+                                    dequeueReusableCellWithReuseIdentifier:kPlaceCollectionViewCell
+                                    forIndexPath:indexPath];
         return cell;
     }
     else if (indexPath.row == 4)
@@ -104,7 +121,10 @@
     }
     else
     {
-        CheckCollectionViewCell * cell = (CheckCollectionViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:kCheckCollectionViewCell forIndexPath:indexPath];
+        CheckCollectionViewCell * cell =
+        (CheckCollectionViewCell *)[collectionView
+                                    dequeueReusableCellWithReuseIdentifier:kCheckCollectionViewCell
+                                    forIndexPath:indexPath];
         return cell;
     }
     

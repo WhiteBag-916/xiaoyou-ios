@@ -153,7 +153,9 @@
 //更新按钮状态
 -(void)updateJoinButtonStatus
 {
-    [[ActivityManager sharedInstance] findActivityDetailInfo:0 limitEnd:0 activityPublishedId:self.publishID getDetail:YES block:^(YActionMessage *message) {
+    [[ActivityManager sharedInstance] findActivityDetailInfo:0 limitEnd:0
+                                         activityPublishedId:self.publishID
+                                                   getDetail:YES block:^(YActionMessage *message) {
         if (message.isSuccess) {
             NSMutableArray *arr = [NSMutableArray array];
             [arr addObject:message.object];
@@ -249,7 +251,8 @@
 //参加某个活动的事件
 - (void)joinInAction {
     [YUtils showHUDWithTitle:@"报名中"];
-    [[ActivityManager sharedInstance] enrollActivity:self.publishID block:^(YActionMessage *message) {
+    [[ActivityManager sharedInstance] enrollActivity:self.publishID
+                                               block:^(YActionMessage *message) {
         [YUtils hiddenProgressHUD];
         if (message.isSuccess) {
             [self addMySelfToList];

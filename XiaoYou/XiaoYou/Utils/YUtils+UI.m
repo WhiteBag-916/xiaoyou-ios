@@ -185,6 +185,7 @@ NSInteger const kLoginCommonTextFieldTag = 1999;
     UITextView *textView = [[UITextView alloc]init];
     textView.userInteractionEnabled = NO;
     textView.editable = NO;
+    textView.selectable = YES;
     textView.scrollEnabled = false;
     textView.textContainer.lineFragmentPadding = 0;
     textView.textContainerInset = UIEdgeInsetsZero;
@@ -210,6 +211,14 @@ NSInteger const kLoginCommonTextFieldTag = 1999;
     label.text            = text;
     return label;
 }
+
++ (UIView *)initLineViewWithbackgroundColor:(UIColor *)color
+{
+    UIView *lineView = [[UIView alloc]init];
+    lineView.backgroundColor = color;
+    return lineView;
+}
+
 /////////////////////////////////////////////////////////////////////////////////////////////////
 
 + (UIImageView *)initImageViewWithBackgroundColor:(UIColor *)color
@@ -229,7 +238,7 @@ NSInteger const kLoginCommonTextFieldTag = 1999;
 + (UIView *)initViewWithBackgroundColor:(UIColor *)color
                            cornerRadius:(NSInteger)cornerRadius
                           clipsToBounds:(BOOL)clipsToBounds
-                                  alpha:(NSInteger)alpha
+                                  alpha:(double)alpha
 {
     UIView * view           = [[UIView alloc] init];
     view.backgroundColor    = color;

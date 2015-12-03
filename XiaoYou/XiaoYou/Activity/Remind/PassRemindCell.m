@@ -92,7 +92,6 @@
         make.height.mas_equalTo(SCALE_NUM(13));
     }];
     
-    _remindTitleLabel = [[UILabel alloc]init];
     _remindTitleLabel = [YUtils initLabel:CONTENT_FONT(15) color:KCOLOR_B4
                                      text:@"恭喜,报名申请通过！！！"];
     [_remindTitleLabel sizeToFit];
@@ -104,8 +103,7 @@
     }];
     
     //中间内容部分
-    _topLineView = [[UIView alloc]init];
-    _topLineView.backgroundColor = KCOLOR_B2;
+    _topLineView = [YUtils initLineViewWithbackgroundColor:KCOLOR_B2];
     [self.wrapContentView addSubview:_topLineView];
     [_topLineView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.leading.mas_equalTo(0);
@@ -150,9 +148,8 @@
         make.left.equalTo(_contentNameLabel);
     }];
     
-    _bottomLineView = [[UIView alloc]init];
+    _bottomLineView = [YUtils initLineViewWithbackgroundColor:KCOLORGRAY_B6];
     [self.wrapContentView addSubview:_bottomLineView];
-    _bottomLineView.backgroundColor = KCOLORGRAY_B6;
     [_bottomLineView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(_activityTimeLabel.mas_bottom).offset(SCALE_NUM(15));
         make.leading.mas_equalTo(0);
@@ -176,7 +173,7 @@
     }];
     
     _middleButton = [YUtils initButtonWithBackgroundColor:[UIColor clearColor]
-                                                   target:self action:@selector(middleAction:)];
+                                                   target:self action:@selector(middleAction)];
     [self.wrapContentView addSubview:_middleButton];
     [_middleButton mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(_topLineView.mas_bottom);
@@ -198,7 +195,7 @@
 
 
 //点击中间部分cell
--(void)middleAction:(UIButton*)btn {
+-(void)middleAction {
     NSString *publishID;
     if (_notifyModel) {
         publishID = self.notifyModel.idStr;
