@@ -67,7 +67,6 @@
     //电话
     _phoneImageView = [YUtils initImageViewWithImageName:@"scanf_code_phone"];
     _phoneImageView.backgroundColor = [UIColor clearColor];
-    _phoneImageView.image = [UIImage imageNamed:@"scanf_code_phone"];
     [self addSubview:_phoneImageView];
     [_phoneImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.equalTo(_houseImageView);
@@ -82,10 +81,6 @@
                                          textAlignment:NSTextAlignmentLeft
                                              textColor:KCOLOR_g1
                                                   text:_model.supplierShopModel.telephone];
-    _phoneLabel.text = _model.supplierShopModel.telephone;
-    _phoneLabel.font = CONTENT_FONT(SCALE_NUM(12));
-    _phoneLabel.textColor = KCOLOR_g1;
-    _phoneLabel.textAlignment = NSTextAlignmentLeft;
     [self addSubview:_phoneLabel];
     [_phoneLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.equalTo(_phoneImageView);
@@ -103,7 +98,6 @@
     }];
     //位置
     _placeImageView = [YUtils initImageViewWithImageName:@"scanf_code_place"];
-    _placeImageView.image = [UIImage imageNamed:@"scanf_code_place"];
     [self addSubview:_placeImageView];
     [_placeImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.equalTo(_houseImageView);
