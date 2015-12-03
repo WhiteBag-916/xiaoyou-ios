@@ -51,7 +51,6 @@
 -(void)initView
 {
     //容器视图
-    _wrapContentView = [[UIView alloc]init];
     _wrapContentView = [YUtils initWrapContentViewWithBackGroundColor:[UIColor whiteColor]
                                                           borderWidth:1
                                                           borderColor:KCOLOR_B2
@@ -65,8 +64,7 @@
     }];
     
     //中间内容部分
-    _topLineView = [[UIView alloc]init];
-    _topLineView.backgroundColor = KCOLOR_B2;
+    _topLineView = [YUtils initLineViewWithbackgroundColor:KCOLOR_B2];
     [self.wrapContentView addSubview:_topLineView];
     [_topLineView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.leading.mas_equalTo(0);

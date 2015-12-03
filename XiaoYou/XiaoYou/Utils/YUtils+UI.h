@@ -63,6 +63,8 @@ extern NSInteger const kLoginCommonTextFieldTag;
 
 + (UIButton *)initButtonWithBackgroundColor:(UIColor*)backgroudColor
                                     target:(id)target action:(SEL)selector;
+
++ (UIView *)initLineViewWithbackgroundColor:(UIColor *)color;
 /*********************************************************************
  函数名称 : initScrollView
  函数描述 : 构造ScrollView

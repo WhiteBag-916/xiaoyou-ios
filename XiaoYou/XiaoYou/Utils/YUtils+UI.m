@@ -210,6 +210,14 @@ NSInteger const kLoginCommonTextFieldTag = 1999;
     label.text = text;
     return label;
 }
+
++ (UIView *)initLineViewWithbackgroundColor:(UIColor *)color
+{
+    UIView *lineView = [[UIView alloc]init];
+    lineView.backgroundColor = color;
+    return lineView;
+}
+
 /////////////////////////////////////////////////////////////////////////////////////////////////
 
 + (UIImageView *)initImageViewWithBackgroundColor:(UIColor *)color
