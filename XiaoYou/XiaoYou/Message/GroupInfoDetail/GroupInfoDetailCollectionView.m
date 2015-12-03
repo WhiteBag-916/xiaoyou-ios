@@ -138,6 +138,7 @@
 
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
+    [MobClick event:@"event23"];
     GroupInfoCollectionViewCell * cell = (GroupInfoCollectionViewCell *)[self cellForItemAtIndexPath:indexPath];
     if (indexPath.row < _dataSourceArr.count)
     {

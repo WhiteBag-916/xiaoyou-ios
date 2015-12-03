@@ -141,6 +141,7 @@
 
 //首次登录
 - (void)pressFirstLogin {
+    [MobClick event:@"event4"];
     [self.navigationController pushViewController:[[ProfilePhoneChangeViewController alloc]
                                                    initWithType:ProfilePhoneChangeTypeRegister
                                                    hasPhone:NO]
@@ -153,7 +154,7 @@
         [YUtils showTitle:@"您还没有输入学号"];
         return;
     }
-    
+    [MobClick event:@"event3"];
     [self.view endEditing:YES];
     
     //展示提示
@@ -162,6 +163,7 @@
                                                          buttonTitles:@"取消",@"确认", nil];
     [alert clickedButtonHandler:^(NSInteger index) {
         if (1 == index) {
+            [MobClick event:@"event7"];
             [YUtils showHUDWithTitle];
             [[ProvisionManager sharedInstance] forgotPasswordReq:_accountTextField.text
                                                            block:^(YActionMessage *message) {
@@ -180,6 +182,8 @@
                 
                 [YUtils showTitle:message.desc];
             }];
+        } else {
+            [MobClick event:@"event8"];
         }
     }];
     [alert show];

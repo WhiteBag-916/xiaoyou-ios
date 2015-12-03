@@ -258,8 +258,10 @@ static const NSUInteger kYActionSheetShareHeight = 128;
                 [self updateSwitchButton];
                 
                 if (_item.isOpen) {
+                    [MobClick event:@"event26"];
                     [YUtils showTitle:@"屏蔽成功"];
                 } else {
+                    [MobClick event:@"event25"];
                     [YUtils showTitle:@"取消屏蔽成功"];
                 }
             }
@@ -455,6 +457,7 @@ static const NSUInteger kYActionSheetShareHeight = 128;
 //        _backgroundView.alpha = 0;
         _sheetViewBackgroundView.originY = self.height;
     } completion:^(BOOL finished) {
+        [MobClick event:@"event28"];
         [self removeFromSuperview];
         [[UIApplication sharedApplication] endIgnoringInteractionEvents];
     }];
