@@ -153,6 +153,7 @@
     UIBarButtonItem *btnNavLeftItem = [[UIBarButtonItem alloc] initWithCustomView:_navigationLeftButton];
     self.navigationItem.leftBarButtonItem = btnNavLeftItem;
     
+    
 }
 
 #pragma mark - 右导航栏
