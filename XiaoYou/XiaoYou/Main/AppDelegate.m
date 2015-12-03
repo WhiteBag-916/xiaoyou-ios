@@ -23,7 +23,8 @@
 @implementation AppDelegate
 
 
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {    
+- (BOOL)application:(UIApplication *)application
+didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
     [self initManager];
     
@@ -38,7 +39,10 @@
 
 
 #pragma mark 从其他应用跳转到此APP,需要在plist设置url sheme,然后分割url参数跳转到对应界面
--(BOOL)application:(UIApplication *)application openURL:(nonnull NSURL *)url sourceApplication:(nullable NSString *)sourceApplication annotation:(nonnull id)annotation
+-(BOOL)application:(UIApplication *)application
+           openURL:(nonnull NSURL *)url
+ sourceApplication:(nullable NSString *)sourceApplication
+        annotation:(nonnull id)annotation
 {
     YLogD(@"this is %@",url);
     return YES;

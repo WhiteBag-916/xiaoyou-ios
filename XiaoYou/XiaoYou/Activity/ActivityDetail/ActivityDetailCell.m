@@ -110,20 +110,8 @@
                 notHaveImage = NO;
             }
         } else if ([imageText.type isEqualToString:@"text"]) {
-            NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
-            paragraphStyle.lineSpacing = SCALE_NUM(10);// 字体的行间距
-            NSDictionary *attributes = @{
-                                         NSForegroundColorAttributeName:KCOLOR_B4,
-                                         NSFontAttributeName:CONTENT_FONT(12),
-                                         NSParagraphStyleAttributeName:paragraphStyle,
-                                         };
-            
-            NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc]
-                                                           initWithString:imageText.content];
-            
-            [attributedString addAttributes:attributes
-                                      range:NSMakeRange(0, attributedString.length)];
-            [_descriptionLabel setCustomAttributedText:attributedString];
+            [_descriptionLabel setTextViewDataWithText:imageText.content font:CONTENT_FONT(12)
+                                             textColor:KCOLOR_B4 lineSpace:SCALE_NUM(10)];
         }
     }
     if (notHaveImage) {

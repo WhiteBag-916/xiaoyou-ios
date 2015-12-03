@@ -239,9 +239,12 @@
 }
 
 
-- (BOOL)textView:(UITextView *)textView shouldInteractWithURL:(NSURL *)URL inRange:(NSRange)characterRange {
+- (BOOL)textView:(UITextView *)textView shouldInteractWithURL:(NSURL *)URL
+         inRange:(NSRange)characterRange {
     [[NSNotificationCenter defaultCenter] postNotificationName:KNotification_OpenBrowser
-                                                        object:nil userInfo:@{@"url":[URL absoluteString], @"title":@""}];
+                                                        object:nil
+                                                      userInfo:@{@"url":[URL absoluteString],
+                                                                 @"title":@""}];
     return false;
 }
 

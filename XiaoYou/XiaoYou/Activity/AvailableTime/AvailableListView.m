@@ -94,14 +94,11 @@
 }
 
 - (void)sendRequest {
+    _currentIndex = [self isHeaderRefresh] ? 0 : self.availableListArray.count - 2;
     
-    if ([self isHeaderRefresh]) {
-        _currentIndex = 0;
-    } else {
-        _currentIndex = self.availableListArray.count - 2;
-    }
-    
-    [[ActivityManager sharedInstance] getCurrentUseMainAvailableListLimitStart:_currentIndex limitEnd:_currentIndex + KPAGENUM block:^(YActionMessage *message) {
+    [[ActivityManager sharedInstance] getCurrentUseMainAvailableListLimitStart:_currentIndex
+                                                                      limitEnd:_currentIndex + KPAGENUM
+                                                                         block:^(YActionMessage *message) {
         if (message.isSuccess) {
             if ([self isHeaderRefresh]) {
                 [self.availableListArray removeAllObjects];
@@ -173,7 +170,9 @@
     else if (indexPath.row == 1)
         return SCALE_NUM(85);
     else {
-        height = [tableView fd_heightForCellWithIdentifier:REUSEID_AVAILABEL_CELL cacheByIndexPath:indexPath configuration:^(AvailableCell *cell) {
+        height = [tableView fd_heightForCellWithIdentifier:REUSEID_AVAILABEL_CELL
+                                          cacheByIndexPath:indexPath
+                                             configuration:^(AvailableCell *cell) {
             [cell setData:self.availableListArray[indexPath.row]];
         }];
         return height;
@@ -188,7 +187,8 @@
         [_scheduleCardCell setData:self.availableListArray[indexPath.row]];
         NSUInteger count = [self searchMessageNotRead];
         if (count>0)
-            [_scheduleCardCell setMessageNotReadIsVisible:YES Text:[NSString stringWithFormat:@"%lu条新消息 >",(unsigned long)count]];
+            [_scheduleCardCell setMessageNotReadIsVisible:YES
+                                                     Text:[NSString stringWithFormat:@"%lu条新消息 >",(unsigned long)count]];
         else
             [_scheduleCardCell setMessageNotReadIsVisible:NO Text:@""];
         return _scheduleCardCell;
@@ -208,7 +208,8 @@
 #pragma mark 查找未读信息
 -(NSUInteger)searchMessageNotRead
 {
-    NSString *dataBasePath = [NSString stringWithFormat:@"%@//%@",[YDirectory documents],NSStringFromClass([NotifyInfoModel class])];
+    NSString *dataBasePath = [NSString stringWithFormat:@"%@//%@",[YDirectory documents],
+                              NSStringFromClass([NotifyInfoModel class])];
     YDatabaseDao *dataBaseDao = [[YDatabaseDao alloc]initWitDatabasePath:dataBasePath];
     NSArray *notifyArr = [dataBaseDao queryModel:NSStringFromClass([NotifyInfoModel class])];
 #pragma mark 如果要保存历史消息,需要修改如下代码
@@ -223,7 +224,8 @@
 
 -(void)reloadNotifyMessageWithTableView {
     NSIndexPath *indexPath=[NSIndexPath indexPathForRow:0 inSection:0];
-    [self reloadRowsAtIndexPaths:[NSArray arrayWithObjects:indexPath,nil] withRowAnimation:UITableViewRowAnimationNone];
+    [self reloadRowsAtIndexPaths:[NSArray arrayWithObjects:indexPath,nil]
+                withRowAnimation:UITableViewRowAnimationNone];
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
@@ -252,12 +254,14 @@
     //日程
     if (type == SCHEDULECARD_CELL) {
         WeekViewController *vc = [[WeekViewController alloc] init];
-        [self.viewController.navigationController pushViewController:vc animated:YES needHiddenBottomBar:YES];
+        [self.viewController.navigationController pushViewController:vc animated:YES
+                                                 needHiddenBottomBar:YES];
     }
     //空闲教室
     else if (type == STUDYROOM_CELL) {
         AvailableSimpleViewController *vc = [[AvailableSimpleViewController alloc] initWithType:AvailableSimpleTypeStudyRoom];
-        [self.viewController.navigationController pushViewController:vc animated:YES needHiddenBottomBar:YES];
+        [self.viewController.navigationController pushViewController:vc animated:YES
+                                                 needHiddenBottomBar:YES];
     } 
     //活动详情
     else if (type == ACTIVITY_DETAIL_CELL) {
@@ -265,8 +269,10 @@
         if (self.availableListArray.count > 0)
             model = self.availableListArray[indexPath.row];
         NSString *publishID = [NSString stringWithFormat:@"%ld",(long)model.activityPublishedModel.activityPublishedModelIdentifier];
-        ActivityDetailViewController *activityDetailVC = [[ActivityDetailViewController alloc]initWithPublishID:publishID];
-        [self.viewController.navigationController pushViewController:activityDetailVC animated:YES needHiddenBottomBar:YES];
+        ActivityDetailViewController *activityDetailVC = [[ActivityDetailViewController alloc]
+                                                          initWithPublishID:publishID];
+        [self.viewController.navigationController pushViewController:activityDetailVC animated:YES
+                                                 needHiddenBottomBar:YES];
     }
 }
 

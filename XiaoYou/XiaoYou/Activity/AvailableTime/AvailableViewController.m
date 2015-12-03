@@ -65,10 +65,15 @@
 {
     _leftNavBar = [UIButton buttonWithType:UIButtonTypeCustom];
     _leftNavBar.frame = CGRectMake(0, 0, 30, 30);
-    [_leftNavBar setImage:[[UIImage imageNamed:@"have_time_msg"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] forState:UIControlStateNormal];
-    [_leftNavBar setImage:[[UIImage imageNamed:@"have_time_msg"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] forState:UIControlStateHighlighted];
+    [_leftNavBar setImage:[[UIImage imageNamed:@"have_time_msg"]
+                           imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]
+                 forState:UIControlStateNormal];
+    [_leftNavBar setImage:[[UIImage imageNamed:@"have_time_msg"]
+                           imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]
+                 forState:UIControlStateHighlighted];
     UIBarButtonItem *btnNavLeftItem = [[UIBarButtonItem alloc] initWithCustomView:_leftNavBar];
-    [_leftNavBar addTarget:self action:@selector(onNavigationLeftButtonClicked) forControlEvents:UIControlEventTouchUpInside];
+    [_leftNavBar addTarget:self action:@selector(onNavigationLeftButtonClicked)
+          forControlEvents:UIControlEventTouchUpInside];
     self.navigationItem.leftBarButtonItem = btnNavLeftItem;
 }
 
@@ -78,7 +83,8 @@
 - (void)addGuideView {
     UIWindow *window = [UIApplication sharedApplication].keyWindow;
     NSString *imageName = @"1havetime_box_calender";
-    UIImage *image = [[UIImage imageNamed:imageName]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    UIImage *image = [[UIImage imageNamed:imageName]
+                      imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     _guideImageView = [[UIImageView alloc] initWithImage:image];
     _guideImageView.alpha = 1;
     [window addSubview:_guideImageView];
@@ -88,7 +94,8 @@
     }];
     
     _guideImageView.userInteractionEnabled = YES;
-    UITapGestureRecognizer *tap1 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissGuideView)];
+    UITapGestureRecognizer *tap1 = [[UITapGestureRecognizer alloc]
+                                    initWithTarget:self action:@selector(dismissGuideView)];
     [_guideImageView addGestureRecognizer:tap1];
     self.guideIndex = 1;
 }
@@ -131,21 +138,24 @@
 
 -(void)setUpCustomNavgationBar {
     //right barbutton view
-    UIButton *setupButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 22, KNavigationBarheight)];
+    UIButton *setupButton = [[UIButton alloc]
+                             initWithFrame:CGRectMake(0, 0, 22, KNavigationBarheight)];
     [setupButton setImage:[UIImage imageNamed:@"have_time_search"] forState:UIControlStateNormal];
     [setupButton addTarget:self
                     action:@selector(searchAction)
           forControlEvents:UIControlEventTouchUpInside];
     UIBarButtonItem *setupButtonItem = [[UIBarButtonItem alloc] initWithCustomView:setupButton];
     
-    UIButton * remindBtn = [[UIButton alloc] initWithFrame:CGRectMake(22, 0, 22, KNavigationBarheight)];
+    UIButton * remindBtn = [[UIButton alloc]
+                            initWithFrame:CGRectMake(22, 0, 22, KNavigationBarheight)];
     [remindBtn setImage:[UIImage imageNamed:@"have_time_select"] forState:UIControlStateNormal];
     [remindBtn addTarget:self
                   action:@selector(filterAction)
         forControlEvents:UIControlEventTouchUpInside];
     UIBarButtonItem *remindButtonItem = [[UIBarButtonItem alloc] initWithCustomView:remindBtn];
     
-    UIButton * scheduleBtn = [[UIButton alloc] initWithFrame:CGRectMake(44, 0, 22, KNavigationBarheight)];
+    UIButton * scheduleBtn = [[UIButton alloc]
+                              initWithFrame:CGRectMake(44, 0, 22, KNavigationBarheight)];
     [scheduleBtn setImage:[UIImage imageNamed:@"have_time_publish"] forState:UIControlStateNormal];
     [scheduleBtn addTarget:self
                     action:@selector(publishAction)
@@ -179,7 +189,9 @@
 
 //筛选Action
 -(void)filterAction {
-    ActivityChoiceController *choiceVC = [[ActivityChoiceController alloc] initWithType:ACTIVITY_CHOICE_TYPE andDataSource:nil andStudyRoomDefautStr:nil];
+    ActivityChoiceController *choiceVC = [[ActivityChoiceController alloc]
+                                          initWithType:ACTIVITY_CHOICE_TYPE
+                                          andDataSource:nil andStudyRoomDefautStr:nil];
     choiceVC.activityViewController = self;
     [self.view.window.rootViewController presentViewController:choiceVC animated:YES completion:nil];
 }
@@ -198,8 +210,12 @@
     RemindViewController *remindVC = [[RemindViewController alloc]init];
     [self.navigationController pushViewController:remindVC animated:YES needHiddenBottomBar:YES];
     
-    [_leftNavBar setImage:[[UIImage imageNamed:@"have_time_msg"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] forState:UIControlStateNormal];
-    [_leftNavBar setImage:[[UIImage imageNamed:@"have_time_msg"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] forState:UIControlStateHighlighted];
+    [_leftNavBar setImage:[[UIImage imageNamed:@"have_time_msg"]
+                           imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]
+                 forState:UIControlStateNormal];
+    [_leftNavBar setImage:[[UIImage imageNamed:@"have_time_msg"]
+                           imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]
+                 forState:UIControlStateHighlighted];
 }
 
 
@@ -208,22 +224,35 @@
 {
     [super viewWillAppear:animated];
     [[NSNotificationCenter defaultCenter] removeObserver:self];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(receiveNotificationOfReleaseSuccess) name:KNotification_Activity_Release_Success object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(receiveNotificationOfRemindMessage) name:KNotification_Remind_Message_Come object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(receiveNotificationOfRemindPushNotify) name:KNotification_Push_Notify_Message_Come object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(receiveNotificationOfReleaseSuccess)
+                                                 name:KNotification_Activity_Release_Success
+                                               object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(receiveNotificationOfRemindMessage)
+                                                 name:KNotification_Remind_Message_Come
+                                               object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(receiveNotificationOfRemindPushNotify)
+                                                 name:KNotification_Push_Notify_Message_Come
+                                               object:nil];
 }
 
 //收到推送消息 铃铛变红 have_time_msg
 -(void)receiveNotificationOfRemindMessage
 {
     [_leftNavBar setImage:[[UIImage imageNamed:@"red_point_bell"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] forState:UIControlStateNormal];
-    [_leftNavBar setImage:[[UIImage imageNamed:@"red_point_bell"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] forState:UIControlStateHighlighted];
+    [_leftNavBar setImage:[[UIImage imageNamed:@"red_point_bell"]
+                           imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]
+                 forState:UIControlStateHighlighted];
 }
 
 //刷新第一个cell,只能在主线程更新UI
 -(void)receiveNotificationOfRemindPushNotify
 {
-    [self.availableListView performSelectorOnMainThread:@selector(reloadNotifyMessageWithTableView) withObject:nil waitUntilDone:NO];
+    [self.availableListView performSelectorOnMainThread:@selector(reloadNotifyMessageWithTableView)
+                                             withObject:nil
+                                          waitUntilDone:NO];
 }
 
 -(void)viewWillDisappear:(BOOL)animated

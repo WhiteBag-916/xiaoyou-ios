@@ -22,6 +22,9 @@ typedef enum : NSUInteger {
 
 -(void)textChanged:(NSNotification*)notification;
 
+-(void)setTextViewDataWithText:(NSString *)text font:(UIFont *)font textColor:(UIColor *)color
+                     lineSpace:(CGFloat)lineSpace;
+
 -(void)setCustomAttributedText:(NSAttributedString *)attributedText;
 
 -(instancetype)initWithTextViewType:(TEXTVIEWTYPE)type;

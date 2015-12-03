@@ -109,10 +109,10 @@
     
     for (int i=0; i<7; ++i) {
         NSMutableArray *modelArray = [[NSMutableArray alloc] init];
-        [eventsArray enumerateObjectsUsingBlock:^(FindMyCourseViewModel *findMyCourseViewModel
+        [eventsArray enumerateObjectsUsingBlock:^(FindMyCourseViewModel *findMyCourseModel
                                                   , NSUInteger idx, BOOL * _Nonnull stop) {
-            if (i == findMyCourseViewModel.week-1) {
-                [modelArray addObject:findMyCourseViewModel];
+            if (i == findMyCourseModel.week-1) {
+                [modelArray addObject:findMyCourseModel];
             }
         }];
         [self.eventsDic setObject:modelArray forKey:@(i)];
@@ -126,9 +126,9 @@
     //取数据
     NSArray *arrayByWeekDay = [_eventsDic objectForKey:@(indexPath.section)];
     
-    FindMyCourseViewModel *findMyCourseViewModel = arrayByWeekDay[indexPath.row];
+    FindMyCourseViewModel *findMyCourseModel = arrayByWeekDay[indexPath.row];
     
-    CGFloat offsetY = (findMyCourseViewModel.beginPhase-1)*K_CURRICULUM_WH;
+    CGFloat offsetY = (findMyCourseModel.beginPhase-1)*K_CURRICULUM_WH;
     
     return offsetY;
 }
@@ -138,9 +138,10 @@
     //取数据
     NSArray *arrayByWeekDay = [_eventsDic objectForKey:@(indexPath.section)];
     
-    FindMyCourseViewModel *findMyCourseViewModel = arrayByWeekDay[indexPath.row];
+    FindMyCourseViewModel *findMyCourseModel = arrayByWeekDay[indexPath.row];
     
-    CGFloat height = (findMyCourseViewModel.endPhase-findMyCourseViewModel.beginPhase+1)*K_CURRICULUM_WH;
+    CGFloat height
+    = (findMyCourseModel.endPhase-findMyCourseModel.beginPhase+1)*K_CURRICULUM_WH;
     
     return height;
 }
@@ -175,7 +176,8 @@
     
     if (collectionView == _allDayCollectionView) {
         MyTimetableDayCollectionViewCell *cell = [collectionView
-                                                  dequeueReusableCellWithReuseIdentifier:kMyTimetableDayCollectionViewCell
+                                                  dequeueReusableCellWithReuseIdentifier
+                                                  :kMyTimetableDayCollectionViewCell
                                                   forIndexPath:indexPath];
         
         NSString *numStr;
@@ -193,12 +195,13 @@
         return cell;
     } else if (collectionView == _eventCollectionView) {
         MyTimetableCurriculumCollectionViewCell *cell = [collectionView
-                                                         dequeueReusableCellWithReuseIdentifier:kMyTimetableCurriculumCollectionViewCell
+                                                         dequeueReusableCellWithReuseIdentifier
+                                                         :kMyTimetableCurriculumCollectionViewCell
                                                          forIndexPath:indexPath];
         
         NSArray *arrayByWeekDay = [_eventsDic objectForKey:@(section)];
-        FindMyCourseViewModel *findMyCourseViewModel = arrayByWeekDay[row];
-        [cell initData:findMyCourseViewModel];
+        FindMyCourseViewModel *findMyCourseModel = arrayByWeekDay[row];
+        [cell initData:findMyCourseModel];
         
         return cell;
     }
@@ -212,8 +215,8 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     NSInteger row = indexPath.row;
     NSInteger section = indexPath.section;
     NSArray *arrayByWeekDay = [_eventsDic objectForKey:@(section)];
-    FindMyCourseViewModel *findMyCourseViewModel = arrayByWeekDay[row];
-    [curriculumDetailView initData:findMyCourseViewModel];
+    FindMyCourseViewModel *findMyCourseModel = arrayByWeekDay[row];
+    [curriculumDetailView initData:findMyCourseModel];
     [curriculumDetailView show];
 }
 

@@ -99,7 +99,8 @@
     _noSomeOneJoinImageView = [[UIImageView alloc]init];
     [self.contentView addSubview:_noSomeOneJoinImageView];
     _noSomeOneJoinImageView.hidden = YES;
-    _noSomeOneJoinImageView.image = [[UIImage imageNamed:@"no_someone_signup"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    _noSomeOneJoinImageView.image = [[UIImage imageNamed:@"no_someone_signup"]
+                                     imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     [_noSomeOneJoinImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(_joinInHeadView.mas_bottom);
         make.centerX.equalTo(self.contentView);
