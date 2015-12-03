@@ -34,7 +34,9 @@
 #define kFlagImageViewHeight           SCALE_NUM(13)
 
 
-@interface ContactsInfoDetailTableView ()<UITableViewDataSource,UITableViewDelegate,SDPhotoBrowserDelegate,ContactsInfoThirdTableViewCellDelegate>
+@interface ContactsInfoDetailTableView ()
+<UITableViewDataSource,UITableViewDelegate,
+SDPhotoBrowserDelegate,ContactsInfoThirdTableViewCellDelegate>
 
 @property (nonatomic, strong) UIView *faceContainer;
 @property (strong, nonatomic)  UIImageView *headImageView;
@@ -63,9 +65,12 @@
         self.dataSource = self;
         self.separatorStyle = NO;
         
-        [self registerClass:[ContactsInfoFirstTableViewCell class] forCellReuseIdentifier:kContactsInfoFirstTableViewCell];
-        [self registerClass:[ContactsInfoSecondTableViewCell class] forCellReuseIdentifier:kContactsInfoSecondTableViewCell];
-        [self registerClass:[ContactsInfoThirdTableViewCell class] forCellReuseIdentifier:kContactsInfoThirdTableViewCell];
+        [self registerClass:[ContactsInfoFirstTableViewCell class]
+     forCellReuseIdentifier:kContactsInfoFirstTableViewCell];
+        [self registerClass:[ContactsInfoSecondTableViewCell class]
+     forCellReuseIdentifier:kContactsInfoSecondTableViewCell];
+        [self registerClass:[ContactsInfoThirdTableViewCell class]
+     forCellReuseIdentifier:kContactsInfoThirdTableViewCell];
     }
     return self;
 }
@@ -89,9 +94,12 @@
 
 -(void)setUpHeaderView
 {
-    UIView * backView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, kHeaderViewHeight)];
+    UIView * backView = [[UIView alloc] initWithFrame:CGRectMake(0, 0,
+                                                                 SCREEN_WIDTH, kHeaderViewHeight)];
     backView.backgroundColor = [UIColor clearColor];
-    UITapGestureRecognizer * gestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(clickedHeadImageVIew)];
+    UITapGestureRecognizer * gestureRecognizer =
+    [[UITapGestureRecognizer alloc] initWithTarget:self
+                                            action:@selector(clickedHeadImageVIew)];
     //放大头像
     _faceContainer = [[UIView alloc] init];
     _faceContainer.backgroundColor = [UIColor clearColor];
@@ -167,7 +175,8 @@
 
 -(void)setUpFooterView
 {
-    UIView * backView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, kHeaderViewHeight)];
+    UIView * backView = [[UIView alloc] initWithFrame:CGRectMake(0, 0,
+                                                                 SCREEN_WIDTH, kHeaderViewHeight)];
     backView.backgroundColor = [UIColor clearColor];
     //头像
     _feedBackView = [[UIImageView alloc] init];
@@ -218,7 +227,9 @@
         make.height.mas_equalTo(kFlagImageViewHeight);
     }];
     
-    UITapGestureRecognizer * tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapFooterView)];
+    UITapGestureRecognizer * tapGestureRecognizer =
+    [[UITapGestureRecognizer alloc] initWithTarget:self
+                                            action:@selector(tapFooterView)];
     [backView addGestureRecognizer:tapGestureRecognizer];
     
     self.tableFooterView = backView;
@@ -226,8 +237,12 @@
 
 -(void)tapFooterView
 {
-    ProfilePublishViewController * profilePublish = [[ProfilePublishViewController alloc] initWithUserId:_model.uid name:_model.userName];
-    [self.myController.navigationController pushViewController:profilePublish animated:YES needHiddenBottomBar:YES];
+    ProfilePublishViewController * profilePublish =
+    [[ProfilePublishViewController alloc] initWithUserId:_model.uid
+                                                    name:_model.userName];
+    [self.myController.navigationController pushViewController:profilePublish
+                                                      animated:YES
+                                           needHiddenBottomBar:YES];
     
 }
 
@@ -251,19 +266,25 @@
 {
         if (indexPath.row == 0)
         {
-            ContactsInfoFirstTableViewCell * cell = [self dequeueReusableCellWithIdentifier:kContactsInfoFirstTableViewCell forIndexPath:indexPath];
+            ContactsInfoFirstTableViewCell * cell =
+            [self dequeueReusableCellWithIdentifier:kContactsInfoFirstTableViewCell
+                                       forIndexPath:indexPath];
             [cell setCellInfo:_model];
             return cell;
         }
         else if (indexPath.row == 1)
         {
-            ContactsInfoSecondTableViewCell * cell = [self dequeueReusableCellWithIdentifier:kContactsInfoSecondTableViewCell forIndexPath:indexPath];
+            ContactsInfoSecondTableViewCell * cell =
+            [self dequeueReusableCellWithIdentifier:kContactsInfoSecondTableViewCell
+                                       forIndexPath:indexPath];
             [cell setCellInfo:_model];
             return cell;
         }
         else
         {
-            ContactsInfoThirdTableViewCell * cell = [self dequeueReusableCellWithIdentifier:kContactsInfoThirdTableViewCell forIndexPath:indexPath];
+            ContactsInfoThirdTableViewCell * cell =
+            [self dequeueReusableCellWithIdentifier:kContactsInfoThirdTableViewCell
+                                       forIndexPath:indexPath];
             cell.myDelegate = self;
             [cell setCellInfo:_model];
             return cell;
@@ -287,7 +308,8 @@
     }
     else if(indexPath.row == 1)
     {
-        CGFloat height = [TagsCommonView calculatorHeightByTagsCommon:_model.tagsCommon propetiesCommon:_model.propetiesCommon];
+        CGFloat height = [TagsCommonView calculatorHeightByTagsCommon:_model.tagsCommon
+                                                      propetiesCommon:_model.propetiesCommon];
         return height;
     }
     else

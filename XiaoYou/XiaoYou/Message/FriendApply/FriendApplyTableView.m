@@ -11,7 +11,8 @@
 #import "ContactManager.h"
 #import "MessageManager.h"
 
-@interface FriendApplyTableView ()<UITableViewDataSource,UITableViewDelegate>
+@interface FriendApplyTableView ()
+<UITableViewDataSource,UITableViewDelegate>
 
 @property(nonatomic,strong)NSMutableArray * dataSourceArr;
 
@@ -29,7 +30,8 @@
         
         _dataSourceArr = [NSMutableArray array];
         
-        [self registerClass:[FriendApplyTableViewCell class] forCellReuseIdentifier:kFriendApplyTableViewCell];
+        [self registerClass:[FriendApplyTableViewCell class]
+     forCellReuseIdentifier:kFriendApplyTableViewCell];
     }
     return self;
 }
@@ -66,7 +68,9 @@
                 [self hiddenFooter:NO];
                 [self showNoticeNoMoreData];
                 
-                [[EaseMob sharedInstance].chatManager removeConversationByChatter:_chatter deleteMessages:YES append2Chat:NO];
+                [[EaseMob sharedInstance].chatManager removeConversationByChatter:_chatter
+                                                                   deleteMessages:YES
+                                                                      append2Chat:NO];
             }
         } else {
             [YUtils showTitleOn:self title:message.desc];
@@ -93,7 +97,8 @@
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    FriendApplyTableViewCell * cell = [self dequeueReusableCellWithIdentifier:kFriendApplyTableViewCell forIndexPath:indexPath];
+    FriendApplyTableViewCell * cell =
+    [self dequeueReusableCellWithIdentifier:kFriendApplyTableViewCell forIndexPath:indexPath];
     
     cell.superVC = self.superVC;
     [cell setCellInfo:_dataSourceArr[indexPath.row]];

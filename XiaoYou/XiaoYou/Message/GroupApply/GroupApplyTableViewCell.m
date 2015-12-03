@@ -148,7 +148,8 @@ NSString *const kGroupApplyTableViewCell = @"GroupApplyTableViewCellId";
     _afterDealButton.tag = BIG_BUTTON;
     _afterDealButton.backgroundColor = KCOLOR_009688;
     [_afterDealButton setTitle:@"聊聊呗" forState:UIControlStateNormal];
-    [_afterDealButton addTarget:self action:@selector(clickDealButton:) forControlEvents:UIControlEventTouchUpInside];
+    [_afterDealButton addTarget:self action:@selector(clickDealButton:)
+               forControlEvents:UIControlEventTouchUpInside];
     [self.contentView addSubview:_afterDealButton];
     [_afterDealButton mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.mas_equalTo(kPaddingDistance);
@@ -164,7 +165,8 @@ NSString *const kGroupApplyTableViewCell = @"GroupApplyTableViewCellId";
     _refuseButton.tag = REFUSE_BUTTON;
     _refuseButton.backgroundColor = [UIColor hexChangeFloat:@"76a5ad"];
     [_refuseButton setTitle:@"拒绝" forState:UIControlStateNormal];
-    [_refuseButton addTarget:self action:@selector(clickDealButton:) forControlEvents:UIControlEventTouchUpInside];
+    [_refuseButton addTarget:self action:@selector(clickDealButton:)
+            forControlEvents:UIControlEventTouchUpInside];
     [self.contentView addSubview:_refuseButton];
     [_refuseButton mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.mas_equalTo(kPaddingDistance);
@@ -178,7 +180,8 @@ NSString *const kGroupApplyTableViewCell = @"GroupApplyTableViewCellId";
     _passButton.tag = PASS_BUTTON;
     _passButton.backgroundColor = KCOLOR_009688;
     [_passButton setTitle:@"通过" forState:UIControlStateNormal];
-    [_passButton addTarget:self action:@selector(clickDealButton:) forControlEvents:UIControlEventTouchUpInside];
+    [_passButton addTarget:self action:@selector(clickDealButton:)
+          forControlEvents:UIControlEventTouchUpInside];
     [self.contentView addSubview:_passButton];
     [_passButton mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.equalTo(self.contentView.mas_centerX);
@@ -192,7 +195,8 @@ NSString *const kGroupApplyTableViewCell = @"GroupApplyTableViewCellId";
     _sendButton.tag = SEND_BUTTON;
     _sendButton.backgroundColor = [UIColor hexChangeFloat:@"84ccc9"];
     [_sendButton setTitle:@"发信" forState:UIControlStateNormal];
-    [_sendButton addTarget:self action:@selector(clickDealButton:) forControlEvents:UIControlEventTouchUpInside];
+    [_sendButton addTarget:self action:@selector(clickDealButton:)
+          forControlEvents:UIControlEventTouchUpInside];
     [self.contentView addSubview:_sendButton];
     [_sendButton mas_makeConstraints:^(MASConstraintMaker *make) {
         make.right.mas_equalTo(-kPaddingDistance);
@@ -238,7 +242,9 @@ NSString *const kGroupApplyTableViewCell = @"GroupApplyTableViewCellId";
         }
         [self setIsRelated:hasRelate];
     }
-    _infoLabel.text = [NSString stringWithFormat:@"%@   %@",applicantList.author.college,applicantList.author.faculty];
+    _infoLabel.text = [NSString stringWithFormat:@"%@   %@",
+                       applicantList.author.college,
+                       applicantList.author.faculty];
 
 }
 
@@ -286,7 +292,8 @@ NSString *const kGroupApplyTableViewCell = @"GroupApplyTableViewCellId";
         }
         case REFUSE_BUTTON:
         {
-            [[ContactManager sharedInstance] rejectApply:_applicantList.applyId block:^(YActionMessage *message) {
+            [[ContactManager sharedInstance] rejectApply:_applicantList.applyId
+                                                   block:^(YActionMessage *message) {
                 if (message.isSuccess) {
                     _applicantList.status = 2;
                     [self updateButtonShow];
@@ -299,7 +306,8 @@ NSString *const kGroupApplyTableViewCell = @"GroupApplyTableViewCellId";
         }
         case PASS_BUTTON:
         {
-            [[ContactManager sharedInstance] agreeApply:_applicantList.applyId block:^(YActionMessage *message) {
+            [[ContactManager sharedInstance] agreeApply:_applicantList.applyId
+                                                  block:^(YActionMessage *message) {
                 if (message.isSuccess) {
                     _applicantList.status = 1;
                     [self updateButtonShow];
@@ -325,10 +333,12 @@ NSString *const kGroupApplyTableViewCell = @"GroupApplyTableViewCellId";
 {
     NSString * groupThirdId = [NSString stringWithFormat:@"%g",_applicantList.groupId];
     ClassList * model =  [[ContactManager sharedInstance] getClassByThirdCode:groupThirdId];
-    ChatViewController * chatVC = [[ChatViewController alloc] initWithChatter:model.thirdCode isGroup:YES];
+    ChatViewController * chatVC = [[ChatViewController alloc] initWithChatter:model.thirdCode
+                                                                      isGroup:YES];
     chatVC.isSystemMessage = NO;
     chatVC.studentDic = (NSMutableDictionary *)[model dictionaryRepresentation];
-    [self.superVC.navigationController pushViewController:chatVC animated:YES needHiddenBottomBar:YES];
+    [self.superVC.navigationController pushViewController:chatVC animated:YES
+                                      needHiddenBottomBar:YES];
     
 }
 
@@ -336,10 +346,12 @@ NSString *const kGroupApplyTableViewCell = @"GroupApplyTableViewCellId";
 
 - (void)goToCollectiveMessage
 {
-    XYSendMessageViewController * sendMessageViewController = [[XYSendMessageViewController alloc] init];
+    XYSendMessageViewController * sendMessageViewController =
+    [[XYSendMessageViewController alloc] init];
     sendMessageViewController.sendPersonsArr = [@[_applicantList.author] mutableCopy];
     sendMessageViewController.groupId = [NSString stringWithFormat:@"%g",_applicantList.groupId];
-    [self.superVC.navigationController pushViewController:sendMessageViewController animated:YES needHiddenBottomBar:YES];
+    [self.superVC.navigationController pushViewController:sendMessageViewController
+                                                 animated:YES needHiddenBottomBar:YES];
 }
 #pragma mark - 判断标签
 

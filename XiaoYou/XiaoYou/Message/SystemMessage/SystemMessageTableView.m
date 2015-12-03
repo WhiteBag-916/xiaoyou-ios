@@ -17,7 +17,8 @@
 #import "ContactManager.h"
 #import "PPLabel.h"
 
-@interface SystemMessageTableView ()<UITableViewDataSource,UITableViewDelegate,ApplySuccessSystemMessageTableViewCellDelegat>
+@interface SystemMessageTableView ()
+<UITableViewDataSource,UITableViewDelegate,ApplySuccessSystemMessageTableViewCellDelegat>
 
 @property(nonatomic,strong)NSMutableArray * dataSouceArr;
 
@@ -34,8 +35,10 @@
         //cell的分割线
         self.separatorStyle = NO;
 
-        [self registerClass:[NormalSystemMessageTableViewCell class] forCellReuseIdentifier:kNormalSystemMessageTableViewCell];
-        [self registerClass:[ApplySuccessSystemMessageTableViewCell class] forCellReuseIdentifier:kApplySuccessSystemMessageTableViewCell];
+        [self registerClass:[NormalSystemMessageTableViewCell class]
+     forCellReuseIdentifier:kNormalSystemMessageTableViewCell];
+        [self registerClass:[ApplySuccessSystemMessageTableViewCell class]
+     forCellReuseIdentifier:kApplySuccessSystemMessageTableViewCell];
     }
     return self;
 }
@@ -63,7 +66,9 @@
     
     if ([[message.ext[@"sub_type"] stringValue] isEqualToString:@"1"])
     {
-        NormalSystemMessageTableViewCell * cell = [self dequeueReusableCellWithIdentifier:kNormalSystemMessageTableViewCell forIndexPath:indexPath];
+        NormalSystemMessageTableViewCell * cell =
+        [self dequeueReusableCellWithIdentifier:kNormalSystemMessageTableViewCell
+                                   forIndexPath:indexPath];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         [cell setCellInfo:_dataSouceArr[indexPath.row]];
         
@@ -161,10 +166,12 @@
 {
     ClassList * model =  [[ContactManager sharedInstance] getClassByThirdCode:groupDic[@"group_id"]];
     if (nil != model) {
-        ChatViewController * chatVC = [[ChatViewController alloc] initWithChatter:groupDic[@"third_code"] isGroup:YES];
+        ChatViewController * chatVC =
+        [[ChatViewController alloc] initWithChatter:groupDic[@"third_code"] isGroup:YES];
         chatVC.isSystemMessage = NO;
         chatVC.studentDic = [[model dictionaryRepresentation] mutableCopy];
-        [self.myController.navigationController pushViewController:chatVC animated:YES needHiddenBottomBar:YES];
+        [self.myController.navigationController pushViewController:chatVC
+                                                          animated:YES needHiddenBottomBar:YES];
     } else {
         [YUtils showTitle:@"您已不在此社团群聊中"];
     }

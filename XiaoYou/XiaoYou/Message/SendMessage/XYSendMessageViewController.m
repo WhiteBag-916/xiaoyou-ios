@@ -22,7 +22,8 @@
 #define kLabelHeight                    SCALE_NUM(20)
 #define kTableViewHeight                SCALE_NUM(290)
 
-@interface XYSendMessageViewController ()<SendMessageTableViewDelegate,DXMessageToolBarDelegate>
+@interface XYSendMessageViewController ()
+<SendMessageTableViewDelegate,DXMessageToolBarDelegate>
 
 @property(nonatomic,strong)SendMessageTableView * sendMessageTableView;
 
@@ -60,7 +61,8 @@
     _sendPersonLabel = [[UILabel alloc] init];
     _sendPersonLabel.backgroundColor = [UIColor clearColor];
     Author * model = _sendPersonsArr[0];
-    _sendPersonLabel.text = [NSString stringWithFormat:@"%@等%ld人",model.name,_sendPersonsArr.count];
+    _sendPersonLabel.text = [NSString stringWithFormat:@"%@等%ld人",model.name,
+                             _sendPersonsArr.count];
     _sendPersonLabel.font = CONTENT_FONT(13);
     [backView addSubview:_sendPersonLabel];
     [_sendPersonLabel mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -89,7 +91,7 @@
     [_sendMessageTableView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.mas_equalTo(backView.mas_bottom);
         make.left.right.mas_equalTo(0);
-        make.height.mas_equalTo(SCREEN_HEIGHT - KBOTTOMHEIGHT - kBackViewHeight - KNavigationBarheight);
+        make.height.mas_equalTo(SCREEN_HEIGHT-KBOTTOMHEIGHT-kBackViewHeight-KNavigationBarheight);
     }];
     
 }
@@ -97,7 +99,8 @@
 #pragma mark - 初始化输入框
 
 - (void)initToolBar {
-    _chatToolBar = [[DXMessageToolBar alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height - [DXMessageToolBar defaultHeight], self.view.frame.size.width, KBOTTOMHEIGHT)];
+    _chatToolBar =
+    [[DXMessageToolBar alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height - [DXMessageToolBar defaultHeight], self.view.frame.size.width, KBOTTOMHEIGHT)];
     _chatToolBar.autoresizingMask = UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleRightMargin;
     _chatToolBar.delegate = self;
     [self.view addSubview:_chatToolBar];
@@ -143,7 +146,9 @@
         }
     }
     
-    NSDictionary *ext = @{@"headImage":[[ProvisionManager sharedInstance] getLoginInfo].icon,@"userName":[[ProvisionManager sharedInstance] getLoginInfo].studentName,@"em_apns_ext":@{@"em_push_title":[NSString stringWithFormat:@"%@社社长[%@]发来一条消息", groupName,[[ProvisionManager sharedInstance] getLoginInfo].studentName]}};
+    NSDictionary *ext = @{@"headImage":[[ProvisionManager sharedInstance] getLoginInfo].icon,
+                          @"userName":[[ProvisionManager sharedInstance] getLoginInfo].studentName,
+                          @"em_apns_ext":@{@"em_push_title":[NSString stringWithFormat:@"%@社社长[%@]发来一条消息", groupName,[[ProvisionManager sharedInstance] getLoginInfo].studentName]}};
      
     
     if (_isRobot) {
@@ -152,12 +157,15 @@
     for (int i = 0 ; i < _sendPersonsArr.count; i++)
     {
         Author * model = _sendPersonsArr[i];
-        EMMessage *tempMessage = [ChatSendHelper sendTextMessageWithString:textMessage
-                                                                toUsername:[NSString stringWithFormat:@"%@_%@",model.schoolCode,model.studentNo]
-                                                               messageType:eMessageTypeChat
-                                                         requireEncryption:NO
-                                                                       ext:ext];
-        EMConversation *conversation = [[EaseMob sharedInstance].chatManager conversationForChatter:tempMessage.conversationChatter conversationType:eConversationTypeChat];
+        EMMessage *tempMessage =
+        [ChatSendHelper sendTextMessageWithString:textMessage
+                                       toUsername:[NSString stringWithFormat:@"%@_%@",model.schoolCode,model.studentNo]
+                                      messageType:eMessageTypeChat
+                                requireEncryption:NO
+                                              ext:ext];
+        EMConversation *conversation =
+        [[EaseMob sharedInstance].chatManager conversationForChatter:tempMessage.conversationChatter
+                                                    conversationType:eConversationTypeChat];
         [conversation removeMessage:tempMessage];
     }
     [YUtils showTitle:@"发送成功"];

@@ -79,7 +79,8 @@
 - (void)removeAllData {
     
     NSMutableArray * idArr = [NSMutableArray array];
-    [[_friendApplyTableView getDataSource] enumerateObjectsUsingBlock:^(ApplicantList * obj, NSUInteger idx, BOOL *stop) {
+    [[_friendApplyTableView getDataSource]
+     enumerateObjectsUsingBlock:^(ApplicantList * obj, NSUInteger idx, BOOL *stop) {
         [idArr addObject:@(obj.applyId)];
         
     }];

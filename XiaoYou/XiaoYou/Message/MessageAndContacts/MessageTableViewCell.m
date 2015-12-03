@@ -309,7 +309,8 @@ NSString *const kMessageTableViewCell = @"MessageTableViewCellId";
             } break;
             case eMessageBodyType_Text:{
                 // 表情映射。
-                NSString *didReceiveText = [ConvertToCommonEmoticonsHelper
+                NSString *didReceiveText =
+                [ConvertToCommonEmoticonsHelper
                                             convertToSystemEmoticons:((EMTextMessageBody *)messageBody).text];
                 if ([[RobotManager sharedInstance] isRobotMenuMessage:lastMessage]) {
                     ret = [[RobotManager sharedInstance] getRobotMenuMessageDigest:lastMessage];

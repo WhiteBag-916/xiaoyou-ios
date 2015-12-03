@@ -11,7 +11,8 @@
 #import "MessageManager.h"
 #import "SuggestListModel.h"
 
-@interface SendMessageTableView ()<UITableViewDataSource,UITableViewDelegate>
+@interface SendMessageTableView ()
+<UITableViewDataSource,UITableViewDelegate>
 
 @property(nonatomic,strong)NSArray * dataSouceArr;
 
@@ -34,7 +35,8 @@
             }
         }];
         self.separatorStyle = UITableViewCellSelectionStyleNone;
-        [self registerClass:[SendMessageTableViewCell class] forCellReuseIdentifier:kSendMessageTableViewCell];
+        [self registerClass:[SendMessageTableViewCell class]
+     forCellReuseIdentifier:kSendMessageTableViewCell];
     }
     return self;
 }
@@ -62,7 +64,8 @@
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
-    SendMessageTableViewCell * cell = [self dequeueReusableCellWithIdentifier:kSendMessageTableViewCell forIndexPath:indexPath];
+    SendMessageTableViewCell * cell =
+    [self dequeueReusableCellWithIdentifier:kSendMessageTableViewCell forIndexPath:indexPath];
     cell.selectionStyle = UITableViewCellSelectionStyleDefault;
     [cell setCellInfo:_dataSouceArr[indexPath.row]];
     

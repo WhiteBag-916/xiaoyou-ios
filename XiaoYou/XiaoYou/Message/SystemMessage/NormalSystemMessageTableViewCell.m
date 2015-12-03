@@ -53,7 +53,9 @@ NSString *const kNormalSystemMessageTableViewCell = @"NormalSystemMessageTableVi
     }];
     
     _backImageView = [[UIImageView alloc] init];
-    _backImageView.image = [[UIImage imageNamed:@"chat_receiver_bg"] resizableImageWithCapInsets:UIEdgeInsetsMake(20, 24, 30, 24) resizingMode:UIImageResizingModeStretch];;
+    _backImageView.image = [[UIImage imageNamed:@"chat_receiver_bg"]
+                            resizableImageWithCapInsets:UIEdgeInsetsMake(20, 24, 30, 24)
+                            resizingMode:UIImageResizingModeStretch];;
     _backImageView.userInteractionEnabled = YES;
     [self.contentView addSubview:_backImageView];
     [_backImageView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -82,9 +84,11 @@ NSString *const kNormalSystemMessageTableViewCell = @"NormalSystemMessageTableVi
     _contentLabel.text = [self subTitleMessageByConversation:message];
     [_headImageView setNormalImageWithUrl:[YShareData defaultData][kShareData_SchoolIcon]];
     NSError *error = NULL;
-    NSDataDetector *detector = [NSDataDetector dataDetectorWithTypes:NSTextCheckingTypeLink error:&error];
+    NSDataDetector *detector =
+    [NSDataDetector dataDetectorWithTypes:NSTextCheckingTypeLink error:&error];
     
-    self.matches = [detector matchesInString:_contentLabel.text options:0 range:NSMakeRange(0, _contentLabel.text.length)];
+    self.matches = [detector matchesInString:_contentLabel.text
+                                     options:0 range:NSMakeRange(0, _contentLabel.text.length)];
     
     [self highlightLinksWithIndex:NSNotFound];
 }
@@ -181,13 +185,17 @@ NSString *const kNormalSystemMessageTableViewCell = @"NormalSystemMessageTableVi
             NSRange matchRange = [match range];
             
             if ([self isIndex:index inRange:matchRange]) {
-                [attributedString addAttribute:NSForegroundColorAttributeName value:[UIColor grayColor] range:matchRange];
+                [attributedString addAttribute:NSForegroundColorAttributeName
+                                         value:[UIColor grayColor] range:matchRange];
             }
             else {
-                [attributedString addAttribute:NSForegroundColorAttributeName value:[UIColor blueColor] range:matchRange];
+                [attributedString addAttribute:NSForegroundColorAttributeName
+                                         value:[UIColor blueColor] range:matchRange];
             }
             
-            [attributedString addAttribute:NSUnderlineStyleAttributeName value:[NSNumber numberWithInteger:NSUnderlineStyleSingle] range:matchRange];
+            [attributedString addAttribute:NSUnderlineStyleAttributeName
+                                     value:[NSNumber numberWithInteger:NSUnderlineStyleSingle]
+                                     range:matchRange];
         }
     }
     

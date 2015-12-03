@@ -23,7 +23,9 @@
 #define kPaddingDistance                SCALE_NUM(10)
 #define kHeaderViewHeight               SCALE_NUM(100)
 
-@interface GroupInfoDetailCollectionView ()<UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout,GroupInfoCollectionViewCellDelegate>
+@interface GroupInfoDetailCollectionView ()
+<UICollectionViewDataSource,UICollectionViewDelegate,
+UICollectionViewDelegateFlowLayout,GroupInfoCollectionViewCellDelegate>
 
 @property (nonatomic,strong)GroupModel * headerModel;
 @property (nonatomic,strong)GroupInfoDetailHeaderView * headView;
@@ -42,8 +44,11 @@
         self.dataSource = self;
         self.backgroundColor = [UIColor clearColor];
         
-        [self registerClass:[GroupInfoCollectionViewCell class] forCellWithReuseIdentifier:kGroupInfoCollectionViewCell];   
-        [self registerClass:[GroupInfoDetailHeaderView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:kGroupInfoDetailHeaderView];
+        [self registerClass:[GroupInfoCollectionViewCell class]
+ forCellWithReuseIdentifier:kGroupInfoCollectionViewCell];
+        [self registerClass:[GroupInfoDetailHeaderView class]
+ forSupplementaryViewOfKind:UICollectionElementKindSectionHeader
+        withReuseIdentifier:kGroupInfoDetailHeaderView];
         _dataSourceArr = [[NSMutableArray alloc] init];
         
         _isShowDel = NO;
@@ -98,7 +103,8 @@
         for (int i = 0; i < groupArr.count; i++)
         {
             Tags * tag = groupArr[i];
-            if ([[@(_headerModel.internalBaseClassIdentifier) stringValue] isEqualToString: tag.internalBaseClassIdentifier])
+            if ([[@(_headerModel.internalBaseClassIdentifier) stringValue]
+                 isEqualToString: tag.internalBaseClassIdentifier])
             {
                 return _dataSourceArr.count + 1;
             }
@@ -138,7 +144,8 @@
 
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    GroupInfoCollectionViewCell * cell = (GroupInfoCollectionViewCell *)[self cellForItemAtIndexPath:indexPath];
+    GroupInfoCollectionViewCell * cell =
+    (GroupInfoCollectionViewCell *)[self cellForItemAtIndexPath:indexPath];
     if (indexPath.row < _dataSourceArr.count)
     {
         if ([[_dataSourceArr[indexPath.row] objectForKey:@"isDelete"] boolValue])
@@ -147,16 +154,20 @@
         }
         else
         {
-            if ([[_dataSourceArr[indexPath.row][@"model"] uid] isEqualToString:[YShareData defaultData][kShareData_UserID]])
+            if ([[_dataSourceArr[indexPath.row][@"model"] uid]
+                 isEqualToString:[YShareData defaultData][kShareData_UserID]])
             {
                 return;
             }
             else
             {
-                XYContactsInfoDetailViewController * contactsInfoDetailVC = [[XYContactsInfoDetailViewController alloc] init];
+                XYContactsInfoDetailViewController * contactsInfoDetailVC =
+                [[XYContactsInfoDetailViewController alloc] init];
                 contactsInfoDetailVC.studentDic = (NSMutableDictionary *)cell.modelDic;
                 contactsInfoDetailVC.uid = [_dataSourceArr[indexPath.row][@"model"] uid];
-                [self.myController.navigationController pushViewController:contactsInfoDetailVC animated:YES needHiddenBottomBar:YES];
+                [self.myController.navigationController pushViewController:contactsInfoDetailVC
+                                                                  animated:YES
+                                                       needHiddenBottomBar:YES];
             }
             
         }
@@ -165,10 +176,12 @@
     else
     {
 
-        XYChoicePersonViewController * choicePersonViewController = [[XYChoicePersonViewController alloc] init];
+        XYChoicePersonViewController * choicePersonViewController =
+        [[XYChoicePersonViewController alloc] init];
         choicePersonViewController.superType = kXYGroupInfoDetailViewController;
         choicePersonViewController.groupId = self.myController.gid;
-        [self.myController.navigationController pushViewController:choicePersonViewController animated:YES needHiddenBottomBar:YES];
+        [self.myController.navigationController pushViewController:choicePersonViewController
+                                                          animated:YES needHiddenBottomBar:YES];
     
         
     }
@@ -193,7 +206,8 @@
 
 -(UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section
 {
-    UIEdgeInsets insets = UIEdgeInsetsMake(kPaddingDistance, kPaddingDistance, kPaddingDistance, kPaddingDistance);
+    UIEdgeInsets insets = UIEdgeInsetsMake(kPaddingDistance, kPaddingDistance,
+                                           kPaddingDistance, kPaddingDistance);
     return insets;
 }
 
@@ -211,7 +225,10 @@
 
 - (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath
 {
-    _headView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:kGroupInfoDetailHeaderView forIndexPath:indexPath];
+    _headView =
+    [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader
+                                       withReuseIdentifier:kGroupInfoDetailHeaderView
+                                              forIndexPath:indexPath];
     [_headView setHeaderViewInfo:_headerModel andIsClass:self.myController.isClass];
     return _headView;
 }
@@ -225,13 +242,17 @@
         for (int i = 0; i < groupArr.count; i++)
         {
             Tags * tag = groupArr[i];
-            if ([[@(_headerModel.internalBaseClassIdentifier) stringValue] isEqualToString: tag.internalBaseClassIdentifier])
+            if ([[@(_headerModel.internalBaseClassIdentifier) stringValue]
+                 isEqualToString: tag.internalBaseClassIdentifier])
             {
                 [_dataSourceArr enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
                     if ([[obj[@"model"] uid] isEqualToString:uid])
                     {
                         [_dataSourceArr removeObjectAtIndex:idx];
-                        [[ContactManager sharedInstance] deleteGroupUser:[NSString stringWithFormat:@"%g",_headerModel.internalBaseClassIdentifier] deleteUserIds:uid block:^(YActionMessage *message) {
+                        [[ContactManager sharedInstance] deleteGroupUser:
+                         [NSString stringWithFormat:@"%g",_headerModel.internalBaseClassIdentifier]
+                                                           deleteUserIds:uid
+                                                                   block:^(YActionMessage *message) {
                             
                         }];
                         *stop = YES;
@@ -256,7 +277,8 @@
             for (int i = 0; i < groupArr.count; i++)
             {
                 Tags * tag = groupArr[i];
-                if ([[@(_headerModel.internalBaseClassIdentifier) stringValue] isEqualToString: tag.internalBaseClassIdentifier])
+                if ([[@(_headerModel.internalBaseClassIdentifier) stringValue]
+                     isEqualToString: tag.internalBaseClassIdentifier])
                 {
                     [self showDel:YES];
                 }

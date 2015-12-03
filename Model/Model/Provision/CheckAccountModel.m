@@ -40,10 +40,14 @@ NSString *const kCheckAccountModelAccountCheckFlg = @"account_check_flg";
     // This check serves to make sure that a non-NSDictionary object
     // passed into the model class doesn't break the parsing.
     if(self && [dict isKindOfClass:[NSDictionary class]]) {
-            self.mobileBindMessage = [self objectOrNilForKey:kCheckAccountModelMobileBindMessage fromDictionary:dict];
-            self.mobileBindFlg = [[self objectOrNilForKey:kCheckAccountModelMobileBindFlg fromDictionary:dict] boolValue];
-            self.accountCheckMessage = [self objectOrNilForKey:kCheckAccountModelAccountCheckMessage fromDictionary:dict];
-            self.accountCheckFlg = [[self objectOrNilForKey:kCheckAccountModelAccountCheckFlg fromDictionary:dict] boolValue];
+            self.mobileBindMessage = [self objectOrNilForKey:kCheckAccountModelMobileBindMessage
+                                              fromDictionary:dict];
+            self.mobileBindFlg = [[self objectOrNilForKey:kCheckAccountModelMobileBindFlg
+                                           fromDictionary:dict] boolValue];
+            self.accountCheckMessage = [self objectOrNilForKey:kCheckAccountModelAccountCheckMessage
+                                                fromDictionary:dict];
+            self.accountCheckFlg = [[self objectOrNilForKey:kCheckAccountModelAccountCheckFlg
+                                             fromDictionary:dict] boolValue];
 
     }
     
@@ -54,10 +58,13 @@ NSString *const kCheckAccountModelAccountCheckFlg = @"account_check_flg";
 - (NSDictionary *)dictionaryRepresentation
 {
     NSMutableDictionary *mutableDict = [NSMutableDictionary dictionary];
-    [mutableDict setValue:self.mobileBindMessage forKey:kCheckAccountModelMobileBindMessage];
-    [mutableDict setValue:[NSNumber numberWithBool:self.mobileBindFlg] forKey:kCheckAccountModelMobileBindFlg];
+    [mutableDict setValue:self.mobileBindMessage
+                   forKey:kCheckAccountModelMobileBindMessage];
+    [mutableDict setValue:[NSNumber numberWithBool:self.mobileBindFlg]
+                   forKey:kCheckAccountModelMobileBindFlg];
     [mutableDict setValue:self.accountCheckMessage forKey:kCheckAccountModelAccountCheckMessage];
-    [mutableDict setValue:[NSNumber numberWithBool:self.accountCheckFlg] forKey:kCheckAccountModelAccountCheckFlg];
+    [mutableDict setValue:[NSNumber numberWithBool:self.accountCheckFlg]
+                   forKey:kCheckAccountModelAccountCheckFlg];
 
     return [NSDictionary dictionaryWithDictionary:mutableDict];
 }

@@ -204,7 +204,8 @@ NSString *const kContactsTableViewCell = @"ContactsTableViewCell";
     NSMutableArray * propetiesCommonArr = [[NSMutableArray alloc] init];
     for (int i = 0; i < propetiesArr.count; i++)
     {
-        [propetiesCommonArr addObject:[[Tags alloc]initWithDictionary:modelDic[@"propetiesCommon"][i]]];
+        [propetiesCommonArr
+         addObject:[[Tags alloc]initWithDictionary:modelDic[@"propetiesCommon"][i]]];
     }
     [_connectTag updateWithTag:propetiesCommonArr];
     

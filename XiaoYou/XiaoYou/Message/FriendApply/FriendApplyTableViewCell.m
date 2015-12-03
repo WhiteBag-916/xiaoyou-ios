@@ -166,7 +166,8 @@ typedef enum : NSUInteger {
     _afterDealButton.tag = BIG_BUTTON;
     _afterDealButton.backgroundColor = KCOLOR_009688;
     [_afterDealButton setTitle:@"聊聊呗" forState:UIControlStateNormal];
-    [_afterDealButton addTarget:self action:@selector(clickDealButton:) forControlEvents:UIControlEventTouchUpInside];
+    [_afterDealButton addTarget:self action:@selector(clickDealButton:)
+               forControlEvents:UIControlEventTouchUpInside];
     [self.contentView addSubview:_afterDealButton];
     [_afterDealButton mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.mas_equalTo(kPaddingDistance);
@@ -182,7 +183,8 @@ typedef enum : NSUInteger {
     _ignoreButton.tag = IGNORE_BUTTON;
     _ignoreButton.backgroundColor = [UIColor hexChangeFloat:@"76a5ad"];
     [_ignoreButton setTitle:@"忽略" forState:UIControlStateNormal];
-    [_ignoreButton addTarget:self action:@selector(clickDealButton:) forControlEvents:UIControlEventTouchUpInside];
+    [_ignoreButton addTarget:self action:@selector(clickDealButton:)
+            forControlEvents:UIControlEventTouchUpInside];
     [self.contentView addSubview:_ignoreButton];
     [_ignoreButton mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.mas_equalTo(kPaddingDistance);
@@ -196,7 +198,8 @@ typedef enum : NSUInteger {
     _confirmButton.tag = OK_BUTTON;
     _confirmButton.backgroundColor = KCOLOR_009688;
     [_confirmButton setTitle:@"好啊" forState:UIControlStateNormal];
-    [_confirmButton addTarget:self action:@selector(clickDealButton:) forControlEvents:UIControlEventTouchUpInside];
+    [_confirmButton addTarget:self action:@selector(clickDealButton:)
+             forControlEvents:UIControlEventTouchUpInside];
     [self.contentView addSubview:_confirmButton];
     [_confirmButton mas_makeConstraints:^(MASConstraintMaker *make) {
         make.right.mas_equalTo(-kPaddingDistance);
@@ -245,7 +248,8 @@ typedef enum : NSUInteger {
     }
     [_connectTag updateWithTag:_applicantList.author.propetiesCommon];
     
-    _infoLabel.text = [NSString stringWithFormat:@"%@   %@",model.author.college,model.author.faculty];
+    _infoLabel.text =
+    [NSString stringWithFormat:@"%@   %@",model.author.college,model.author.faculty];
 }
 
 #pragma mark - 更新buttonshow
@@ -295,7 +299,9 @@ typedef enum : NSUInteger {
         }
         case IGNORE_BUTTON:
         {
-            [[ContactManager sharedInstance] ignoreFriendApply:[NSString stringWithFormat:@"%g",_applicantList.applyId] block:^(YActionMessage *message) {
+            [[ContactManager sharedInstance] ignoreFriendApply:[NSString stringWithFormat:@"%g",
+                                                                _applicantList.applyId]
+                                                         block:^(YActionMessage *message) {
                 if (message.isSuccess) {
                     _applicantList.status = 3;
                     [self refreshContactsList];
@@ -308,17 +314,23 @@ typedef enum : NSUInteger {
         }
         case OK_BUTTON:
         {
-            [[ContactManager sharedInstance] agreeFriendApply:_applicantList.applyId block:^(YActionMessage *message) {
+            [[ContactManager sharedInstance] agreeFriendApply:_applicantList.applyId
+                                                        block:^(YActionMessage *message) {
                 if (message.isSuccess) {
                     _applicantList.status = 1;
                     [self updateButtonShow];
                     //给对方发消息
-                    EMMessage *tempMessage = [ChatSendHelper sendTextMessageWithString:@"我通过你的好友请求啦，聊聊呗"
-                                                                            toUsername:[NSString stringWithFormat:@"%@_%@",_applicantList.author.schoolCode,_applicantList.author.studentNo]
-                                                                           messageType:eMessageTypeChat
-                                                                     requireEncryption:NO
-                                                                                   ext:[self addAlertBody:nil]];
-                    [[EaseMob sharedInstance].chatManager removeConversationByChatter:tempMessage.conversationChatter deleteMessages:YES append2Chat:NO];
+                    EMMessage *tempMessage =
+                    [ChatSendHelper sendTextMessageWithString:@"我通过你的好友请求啦，聊聊呗"
+                                                   toUsername:[NSString stringWithFormat:@"%@_%@",
+                                                               _applicantList.author.schoolCode,
+                                                               _applicantList.author.studentNo]
+                                                  messageType:eMessageTypeChat
+                                            requireEncryption:NO
+                                                          ext:[self addAlertBody:nil]];
+                    [[EaseMob sharedInstance].chatManager
+                     removeConversationByChatter:tempMessage.conversationChatter
+                     deleteMessages:YES append2Chat:NO];
 
                 } else {
                     [YUtils showTitle:message.desc];
@@ -336,10 +348,16 @@ typedef enum : NSUInteger {
 #pragma mark - 跳转至聊天
 
 - (void)toChat {
-    ChatViewController * chatVC = [[ChatViewController alloc] initWithChatter:[NSString stringWithFormat:@"%@_%@",_applicantList.author.schoolCode,_applicantList.author.studentNo] isGroup:NO];
+    ChatViewController * chatVC =
+    [[ChatViewController alloc] initWithChatter:[NSString stringWithFormat:@"%@_%@",
+                                                 _applicantList.author.schoolCode,
+                                                 _applicantList.author.studentNo] isGroup:NO];
     chatVC.isSystemMessage = NO;
-    chatVC.studentDic = [@{@"name":_applicantList.author.name, @"icon":_applicantList.author.headPic, @"uid":_applicantList.author.uid} mutableCopy];
-    [self.superVC.navigationController pushViewController:chatVC animated:YES needHiddenBottomBar:YES];
+    chatVC.studentDic = [@{@"name":_applicantList.author.name,
+                           @"icon":_applicantList.author.headPic,
+                           @"uid":_applicantList.author.uid} mutableCopy];
+    [self.superVC.navigationController pushViewController:chatVC
+                                                 animated:YES needHiddenBottomBar:YES];
 }
 
 - (void)setIsRelated:(BOOL)isRelated {
@@ -358,9 +376,12 @@ typedef enum : NSUInteger {
 #pragma mark - 获取扩展消息
 - (NSDictionary *)addAlertBody:(NSDictionary *)ext {
     NSMutableDictionary *extDic = [[NSMutableDictionary alloc] initWithDictionary:ext];
-    [extDic setObject:[[ProvisionManager sharedInstance] getLoginInfo].icon forKey:@"headImage"];
-    [extDic setObject:[[ProvisionManager sharedInstance] getLoginInfo].studentName forKey:@"userName"];
-        [extDic setObject:@{@"em_push_title":[NSString stringWithFormat:@"%@给你发来一条新消息", [[ProvisionManager sharedInstance] getLoginInfo].studentName]} forKey:@"em_apns_ext"];
+    [extDic setObject:[[ProvisionManager sharedInstance] getLoginInfo].icon
+               forKey:@"headImage"];
+    [extDic setObject:[[ProvisionManager sharedInstance] getLoginInfo].studentName
+               forKey:@"userName"];
+        [extDic setObject:@{@"em_push_title":[NSString stringWithFormat:@"%@给你发来一条新消息",
+                                              [[ProvisionManager sharedInstance] getLoginInfo].studentName]} forKey:@"em_apns_ext"];
     
     return extDic;
 }
