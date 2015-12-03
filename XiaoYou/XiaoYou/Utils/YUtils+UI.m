@@ -166,12 +166,12 @@ NSInteger const kLoginCommonTextFieldTag = 1999;
                                pageIndicatorTintColor:(UIColor *)pageIndicatorTintColor
                         currentPageIndicatorTintColor:(UIColor *)currentPageIndicatorTintColor
 {
-    UIPageControl * pageControl = [[UIPageControl alloc] init];
-    pageControl.userInteractionEnabled = enabel;
-    pageControl.backgroundColor = color;
-    pageControl.numberOfPages = numberOfPages;
-    pageControl.currentPage = currentPage;
-    pageControl.pageIndicatorTintColor = pageIndicatorTintColor;
+    UIPageControl * pageControl               = [[UIPageControl alloc] init];
+    pageControl.userInteractionEnabled        = enabel;
+    pageControl.backgroundColor               = color;
+    pageControl.numberOfPages                 = numberOfPages;
+    pageControl.currentPage                   = currentPage;
+    pageControl.pageIndicatorTintColor        = pageIndicatorTintColor;
     pageControl.currentPageIndicatorTintColor = currentPageIndicatorTintColor;
     
     return pageControl;
@@ -201,13 +201,13 @@ NSInteger const kLoginCommonTextFieldTag = 1999;
                                 textColor:(UIColor *)textColor
                                      text:(NSString *)text;
 {
-    UILabel *label = [[UILabel alloc] init];
-    label.font = font;
-    label.textColor = textColor;
+    UILabel *label        = [[UILabel alloc] init];
+    label.font            = font;
+    label.textColor       = textColor;
     label.backgroundColor = color;
-    label.textAlignment = textAlignment;
-    label.numberOfLines = numberOfLines;
-    label.text = text;
+    label.textAlignment   = textAlignment;
+    label.numberOfLines   = numberOfLines;
+    label.text            = text;
     return label;
 }
 /////////////////////////////////////////////////////////////////////////////////////////////////
@@ -217,12 +217,27 @@ NSInteger const kLoginCommonTextFieldTag = 1999;
                                     clipsToBounds:(BOOL)clipsToBounds
                                             image:(UIImage *)image
 {
-    UIImageView *imageView = [[UIImageView alloc] init];
-    imageView.image = image;
-    imageView.backgroundColor = color;
+    UIImageView *imageView       = [[UIImageView alloc] init];
+    imageView.image              = image;
+    imageView.backgroundColor    = color;
     imageView.layer.cornerRadius = cornerRadius;
-    imageView.clipsToBounds = clipsToBounds;
+    imageView.clipsToBounds      = clipsToBounds;
     return imageView;
+}
+/////////////////////////////////////////////////////////////////////////////////////////////////
+
++ (UIView *)initViewWithBackgroundColor:(UIColor *)color
+                           cornerRadius:(NSInteger)cornerRadius
+                          clipsToBounds:(BOOL)clipsToBounds
+                                  alpha:(NSInteger)alpha
+{
+    UIView * view           = [[UIView alloc] init];
+    view.backgroundColor    = color;
+    view.layer.cornerRadius = cornerRadius;
+    view.clipsToBounds      = clipsToBounds;
+    view.alpha              = alpha;
+    
+    return view;
 }
 
 + (void)setTextViewDataWithTextView:(UITextView *)textView text:(NSString *)text
