@@ -23,7 +23,8 @@ NSString *const kStudyRoomTableViewCell = @"StudyRoomTableViewCellId";
 
 @implementation StudyRoomTableViewCell
 
-- (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
+- (instancetype)initWithStyle:(UITableViewCellStyle)style
+              reuseIdentifier:(NSString *)reuseIdentifier
 {
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier])
     {
@@ -38,7 +39,8 @@ NSString *const kStudyRoomTableViewCell = @"StudyRoomTableViewCellId";
 - (void)initView {
     _studyRoomNameButton = [UIButton buttonWithType:UIButtonTypeCustom];
     _studyRoomNameButton.userInteractionEnabled = NO;
-    [_studyRoomNameButton setImage:[UIImage imageNamed:@"common_icon_classroom"] forState:UIControlStateNormal];
+    [_studyRoomNameButton setImage:[UIImage imageNamed:@"common_icon_classroom"]
+                          forState:UIControlStateNormal];
     [_studyRoomNameButton setTitle:@"教学2楼" forState:UIControlStateNormal];
     [_studyRoomNameButton setTitleColor:KCOLOR_B4 forState:UIControlStateNormal];
     _studyRoomNameButton.titleLabel.font = CONTENT_FONT(15);

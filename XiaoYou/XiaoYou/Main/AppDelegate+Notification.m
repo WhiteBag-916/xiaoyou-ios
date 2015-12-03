@@ -17,8 +17,10 @@
 
 @implementation AppDelegate (Notification)
 
-//程序在未启动的时候，如果用户点击通知，notification会通过didFinishLaunchingWithOptions传递
-- (void)initNotification:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
+//程序在未启动的时候，如果用户点击通知
+//notification会通过didFinishLaunchingWithOptions传递
+- (void)initNotification:(UIApplication *)application
+didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     [self registerRemoteNotification];
     
@@ -35,11 +37,13 @@
 -(void)dealMessageWithctivityAndRemindWithLaunchOpthins:(NSDictionary *)launchOptions
 {
     [AppConfigData setHaveRemindMessage:NO];
-    NSDictionary *userInfo = [launchOptions objectForKey:UIApplicationLaunchOptionsRemoteNotificationKey];
+    NSDictionary *userInfo = [launchOptions
+                              objectForKey:UIApplicationLaunchOptionsRemoteNotificationKey];
     if(nil != userInfo && nil != userInfo[@"e"])
     {
         NSDictionary *dic = userInfo[@"e"];
-        NSMutableDictionary *dataDictExt = [NSMutableDictionary dictionaryWithDictionary:dic[@"obj"]];
+        NSMutableDictionary *dataDictExt = [NSMutableDictionary
+                                            dictionaryWithDictionary:dic[@"obj"]];
         
         if (userInfo[@"e"][@"type"] != nil )
             [dataDictExt setObject:userInfo[@"e"][@"type"] forKey:@"type"];
@@ -63,7 +67,9 @@
             if (userInfo[@"e"][@"type"] != nil) {
                 NSInteger type = [userInfo[@"e"][@"type"] integerValue];
                 
-                if (type == ACTIVITY_ENROLL_CHECK_PASS || type == ACTIVITY_ENROLL || type == ACTIVITY_ENROLL_NO_CHECK)
+                if (type == ACTIVITY_ENROLL_CHECK_PASS
+                    || type == ACTIVITY_ENROLL
+                    || type == ACTIVITY_ENROLL_NO_CHECK)
                     [self initNotifyRemindListNC];
                 else if (type >=ACTIVITY_ENROLL_CHECK_PASS && type <= ACTIVITY_NOTIFY)
                     [self initNotifyRemindNC];
@@ -79,8 +85,11 @@
     
     if([application respondsToSelector:@selector(registerUserNotificationSettings:)])
     {
-        UIUserNotificationType notificationTypes = UIUserNotificationTypeBadge | UIUserNotificationTypeSound | UIUserNotificationTypeAlert;
-        UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:notificationTypes categories:nil];
+        UIUserNotificationType notificationTypes = UIUserNotificationTypeBadge
+        | UIUserNotificationTypeSound | UIUserNotificationTypeAlert;
+        UIUserNotificationSettings *settings = [UIUserNotificationSettings
+                                                settingsForTypes:notificationTypes
+                                                categories:nil];
         [application registerUserNotificationSettings:settings];
     }
     
@@ -99,44 +108,34 @@
 
 #pragma mark - notification
 // 将得到的deviceToken传给SDK
-- (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken{
-    [[EaseMob sharedInstance] application:application didRegisterForRemoteNotificationsWithDeviceToken:deviceToken];
+- (void)application:(UIApplication *)application
+didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken{
+    [[EaseMob sharedInstance] application:application
+didRegisterForRemoteNotificationsWithDeviceToken:deviceToken];
 }
 
 // 注册deviceToken失败
-- (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error{
-    [[EaseMob sharedInstance] application:application didFailToRegisterForRemoteNotificationsWithError:error];
+- (void)application:(UIApplication *)application
+didFailToRegisterForRemoteNotificationsWithError:(NSError *)error{
+    [[EaseMob sharedInstance] application:application
+didFailToRegisterForRemoteNotificationsWithError:error];
     NSLog(@"error -- %@",error);
 }
 
-//程序正在后台运行，如果用户点击通知,会走这个方法,如果不点通知，就不会走这个方法
-- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo
+//程序正在后台运行，如果用户点击通知,会走这个方法
+//如果不点通知，就不会走这个方法
+- (void)application:(UIApplication *)application
+didReceiveRemoteNotification:(NSDictionary *)userInfo
 {
-    
-//    NSString *message = [userInfo description];
-//    UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"提示" message:message delegate:self cancelButtonTitle:@"aa" otherButtonTitles:@"bb", nil];
-//    
-//    [alert show];
     
     YLogI(@"didReceiveRemoteNotification : %@", userInfo);
     [[UIApplication sharedApplication] setApplicationIconBadgeNumber:1];
     [[UIApplication sharedApplication] setApplicationIconBadgeNumber:0];
-    
-//    NSError *parseError = nil;
-//    NSData  *jsonData = [NSJSONSerialization dataWithJSONObject:userInfo
-//                                                        options:NSJSONWritingPrettyPrinted error:&parseError];
-//    NSString *str =  [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
-//    
-//    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"apns.content", @"Apns content")
-//                                                    message:str
-//                                                   delegate:nil
-//                                          cancelButtonTitle:NSLocalizedString(@"ok", @"OK")
-//                                          otherButtonTitles:nil];
-//    [alert show];
 }
 
 //从后台进入前台的时候,会通过此方法
--(void)application:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)notification
+-(void)application:(UIApplication *)application
+didReceiveLocalNotification:(UILocalNotification *)notification
 {
     NSDictionary *dic = notification.userInfo;
     NSInteger type = [[dic valueForKey:kServerType] integerValue];

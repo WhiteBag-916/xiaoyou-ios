@@ -27,7 +27,8 @@ NSString *const kStudyRoomDetailTableViewCell = @"StudyRoomDetailTableViewCellId
 
 @implementation StudyRoomDetailTableViewCell
 
-- (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
+- (instancetype)initWithStyle:(UITableViewCellStyle)style
+              reuseIdentifier:(NSString *)reuseIdentifier
 {
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier])
     {
@@ -41,7 +42,8 @@ NSString *const kStudyRoomDetailTableViewCell = @"StudyRoomDetailTableViewCellId
 
 - (void)initView {
 //    //1
-//    UIImageView *studyImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"common_icon_classroom"]];
+//    UIImageView *studyImageView = [[UIImageView alloc]
+//initWithImage:[UIImage imageNamed:@"common_icon_classroom"]];
 //    [self.contentView addSubview:studyImageView];
 //    
 //    [studyImageView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -100,7 +102,8 @@ NSString *const kStudyRoomDetailTableViewCell = @"StudyRoomDetailTableViewCellId
 - (void)initData:(FreeBuildingDetailModel *)model{
 
     _studyRoomLabel.text = model.roomName;
-    _timeLabel.text = [NSString stringWithFormat:@"无课时间：%@",[self getTimeStrFromArr:model]];
+    _timeLabel.text = [NSString stringWithFormat:@"无课时间：%@"
+                       ,[self getTimeStrFromArr:model]];
     
 }
 

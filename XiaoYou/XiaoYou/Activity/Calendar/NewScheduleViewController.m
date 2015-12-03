@@ -392,7 +392,8 @@
         
         //begintime
         UILabel *beginTimeLabel = (UILabel *)[_bClassView viewWithTag:K_TAG_BCLASS];
-        NSDate *beginDate = [NSDate dateWithTimeIntervalSince1970:_userSchedulingInfo.startTime/1000];
+        NSDate *beginDate = [NSDate
+                             dateWithTimeIntervalSince1970:_userSchedulingInfo.startTime/1000];
         beginTimeLabel.text = [NSDate stringFromDate:beginDate
                                           withFormat:@"yyyy年MM月dd日 HH:mm"];
         beginTimeLabel.textColor = KCOLOR_B4;
@@ -487,7 +488,8 @@
     
     if (nil == _remindPicker) {
         self.remindPicker = [[YCommonPickerView alloc] initWithType:PickerView_CalendarRemind
-                                                        commonArray:[[ActivityManager sharedInstance]
+                                                        commonArray:[[ActivityManager
+                                                                      sharedInstance]
                                                                      remindTextArray]];
     }
     
@@ -545,7 +547,8 @@
                                                             addSub:_datePicker
                                                              isTop:NO
                                                             isRoot:YES
-                                                           addSelf:[UIApplication sharedApplication].keyWindow];
+                                                           addSelf:[UIApplication
+                                                                    sharedApplication].keyWindow];
     [popView comSet:self action:@selector(choiceTime) params:nil];
     [popView showView];
     

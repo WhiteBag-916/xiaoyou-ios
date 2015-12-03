@@ -22,7 +22,7 @@
                        isRoot:(BOOL)addRoot
                       addSelf:(UIView *)superView
 {
-    if (self = [super initWithFrame:frame];) {
+    if (self = [super initWithFrame:frame]) {
         self.isTop = top;
         self.isAddRootWindow = addRoot;
         

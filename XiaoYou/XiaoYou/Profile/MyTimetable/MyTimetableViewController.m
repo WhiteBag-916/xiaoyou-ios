@@ -106,8 +106,8 @@
         make.left.top.bottom.equalTo(_buttonView);
     }];
     
-    UIImageView *putImageView = [[UIImageView alloc] i
-                                 nitWithImage:[UIImage imageNamed:@"icon_arrow"]];
+    UIImageView *putImageView = [[UIImageView alloc]
+                                 initWithImage:[UIImage imageNamed:@"icon_arrow"]];
     [_buttonView addSubview:putImageView];
     [putImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.equalTo(_weekLabel);

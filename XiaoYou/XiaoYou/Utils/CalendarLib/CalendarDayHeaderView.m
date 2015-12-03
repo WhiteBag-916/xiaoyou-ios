@@ -439,7 +439,7 @@
 #pragma mark UIScrollViewDelegate
 - (NSInteger) _currentScrolledWeek{
     CGFloat width = CGRectGetWidth(self.daysScrollView.frame);
-    CGFloat offX = self.daysScrollView.contentOffset.x + (w/2.0f);
+    CGFloat offX = self.daysScrollView.contentOffset.x + (width/2.0f);
     return offX / width;
 }
 - (void) _checkForAdvancingWeek{

@@ -35,9 +35,13 @@
         
         [self sendRequest];
         
-        [self registerClass:[StudyRoomTableViewCell class] forCellReuseIdentifier:kStudyRoomTableViewCell];
+        [self registerClass:[StudyRoomTableViewCell class]
+     forCellReuseIdentifier:kStudyRoomTableViewCell];
         
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshTableView:) name:KNotification_Study_Room_Filtrate object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                                                 selector:@selector(refreshTableView:)
+                                                     name:KNotification_Study_Room_Filtrate
+                                                   object:nil];
     }
     return self;
 }
@@ -143,9 +147,11 @@
     return _dataSouceArr.count;
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+- (UITableViewCell *)tableView:(UITableView *)tableView
+         cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    StudyRoomTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kStudyRoomTableViewCell];
+    StudyRoomTableViewCell *cell = [tableView
+                                    dequeueReusableCellWithIdentifier:kStudyRoomTableViewCell];
     [cell initData:_dataSouceArr[indexPath.row]];
     return cell;
 }
@@ -158,11 +164,14 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    AvailableSimpleViewController *vc = [[AvailableSimpleViewController alloc] initWithType:AvailableSimpleTypeStudyRoomDetail];
+    AvailableSimpleViewController *vc = [[AvailableSimpleViewController alloc]
+                                         initWithType:AvailableSimpleTypeStudyRoomDetail];
     vc.num = indexPath.row;
     Result * model = _dataSouceArr[indexPath.row];
     vc.buildName = model.buildName;
-    [self.viewController.navigationController pushViewController:vc animated:YES needHiddenBottomBar:YES];
+    [self.viewController.navigationController pushViewController:vc
+                                                        animated:YES
+                                             needHiddenBottomBar:YES];
     return;
 }
 @end
