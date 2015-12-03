@@ -253,7 +253,7 @@
 		20E372BE1BDDBFC50063BF56 /* CommonImgUpload.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommonImgUpload.m; sourceTree = "<group>"; };
 		3339625A1B95575400DD0A6D /* SuggestListAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SuggestListAction.h; sourceTree = "<group>"; };
 		3339625B1B95575400DD0A6D /* SuggestListAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SuggestListAction.m; sourceTree = "<group>"; };
-		65DEBC6B1C0E87500097F942 /* YAnalysis.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YAnalysis.h; sourceTree = "<group>"; };
+		65DEBC6B1C0E87500097F942 /* YAnalysisDefine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YAnalysisDefine.h; sourceTree = "<group>"; };
 		E4642C7D1BE9AFBC00B3C8B1 /* CodeManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CodeManager.h; sourceTree = "<group>"; };
 		E4642C7E1BE9AFBC00B3C8B1 /* CodeManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CodeManager.m; sourceTree = "<group>"; };
 		E4642C801BE9B0F500B3C8B1 /* ShopListDetailAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShopListDetailAction.h; sourceTree = "<group>"; };
@@ -520,7 +520,7 @@
 				20DD4B2B1B7338D8007C352C /* YDefine.h */,
 				20DD4B2C1B73390C007C352C /* YControlsDefine.h */,
 				20E18D5E1B807F4F005B75EE /* YNotificationDefine.h */,
-				65DEBC6B1C0E87500097F942 /* YAnalysis.h */,
+				65DEBC6B1C0E87500097F942 /* YAnalysisDefine.h */,
 			);
 			path = Define;
 			sourceTree = "<group>";
