@@ -63,7 +63,7 @@ NSString *const kActivityReleaseAndTypeCell = @"ActivityReleaseAndTypeCellId";
             _releaseAndTypeImageView.image = [UIImage imageNamed:@"funny_detail_time"];
             _releaseAndTypeLabel.text = model.name;
         }
-        else if ([model.name isEqualToString:@"发布者"])
+        else if ([model.name isEqualToString:@"活动来源"])
         {
             self.dataArr = model.tags;
             _releaseAndTypeImageView.image = [UIImage imageNamed:@"activity-releaser"];
@@ -92,7 +92,7 @@ NSString *const kActivityReleaseAndTypeCell = @"ActivityReleaseAndTypeCellId";
 {
     
     //图
-    _releaseAndTypeImageView = [[UIImageView alloc] init];
+    self.releaseAndTypeImageView = [[UIImageView alloc] init];
     _releaseAndTypeImageView.backgroundColor = [UIColor clearColor];
     [self.contentView addSubview:_releaseAndTypeImageView];
     [_releaseAndTypeImageView mas_makeConstraints:^(MASConstraintMaker *make) {
