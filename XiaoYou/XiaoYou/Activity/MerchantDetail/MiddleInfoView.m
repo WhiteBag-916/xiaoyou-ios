@@ -93,7 +93,9 @@
         make.height.mas_equalTo(SCALE_NUM(12));
     }];
     
-    UIButton * phoneButton = [YUtils initButtonWithBackgroundColor:[UIColor clearColor] target:self action:@selector(callPhoneNum)];
+    UIButton * phoneButton = [YUtils initButtonWithBackgroundColor:[UIColor clearColor]
+                                                            target:self
+                                                            action:@selector(callPhoneNum)];
     [self addSubview:phoneButton];
     [phoneButton mas_makeConstraints:^(MASConstraintMaker *make) {
         make.right.equalTo(_phoneLabel);

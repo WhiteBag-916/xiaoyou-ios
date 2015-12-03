@@ -98,7 +98,9 @@ NSString *const kContactsInfoThirdTableViewCell = @"ContactsInfoThirdTableViewCe
         make.centerX.centerY.equalTo(_coolImageView);
         make.height.width.mas_equalTo(SCALE_NUM(22));
     }];
-    [coolButton addTarget:self action:@selector(tapCoolMethod) forControlEvents:UIControlEventTouchUpInside];
+    [coolButton addTarget:self
+                   action:@selector(tapCoolMethod)
+         forControlEvents:UIControlEventTouchUpInside];
     
     [self.contentView addSubview:backView];
     [backView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -118,7 +120,8 @@ NSString *const kContactsInfoThirdTableViewCell = @"ContactsInfoThirdTableViewCe
 
 -(void)setCellInfo:(ProfileInfo *) model
 {
-    _toastLabel.text = [NSString stringWithFormat:@"%g人向%@撰写的内容敬酒",model.praiseCount,model.userName];
+    _toastLabel.text =
+    [NSString stringWithFormat:@"%g人向%@撰写的内容敬酒",model.praiseCount,model.userName];
     
     _coolLabel.text = [NSString stringWithFormat:@"%g人觉得%@很酷",model.coolCount,model.userName];
     if (model.isCool) {

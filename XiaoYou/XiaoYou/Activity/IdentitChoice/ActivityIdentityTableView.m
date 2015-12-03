@@ -13,7 +13,8 @@
 #import "Tags.h"
 #import "ActivityReleaseDataManager.h"
 
-@interface ActivityIdentityTableView ()<UITableViewDataSource,UITableViewDelegate>
+@interface ActivityIdentityTableView ()
+<UITableViewDataSource,UITableViewDelegate>
 
 @property (nonatomic,strong) NSMutableArray * dataSouceArr;
 @property(nonatomic,strong)ActivityReleaseDataManager * dataManager;
@@ -31,7 +32,8 @@
         self.scrollEnabled = NO;
         self.separatorStyle = UITableViewCellSeparatorStyleNone;
         
-        [self registerClass:[ActivityIdentityTableViewCell class] forCellReuseIdentifier:kActivityIdentityTableViewCell];
+        [self registerClass:[ActivityIdentityTableViewCell class]
+     forCellReuseIdentifier:kActivityIdentityTableViewCell];
         [self setUpHeaderView];
         
         _dataManager = [ActivityReleaseDataManager shareActivityReleaseDataManager];
@@ -43,7 +45,8 @@
             for (int i = 0; i < groupArr.count; i++)
             {
                 Tags * tag = groupArr[i];
-                NSMutableDictionary * dic = [[NSMutableDictionary alloc] initWithDictionary:[tag dictionaryRepresentation]];
+                NSMutableDictionary * dic = [[NSMutableDictionary alloc]
+                                             initWithDictionary:[tag dictionaryRepresentation]];
                 
                 [dic setObject:@NO forKey:@"isChoice"];
                 
@@ -58,9 +61,15 @@
 -(void)setUpHeaderView
 {
     UITableViewHeaderFooterView * headerView = [[UITableViewHeaderFooterView alloc]
-                                                initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCALE_NUM(40))];
+                                                initWithFrame:CGRectMake(0,
+                                                                         0,
+                                                                         SCREEN_WIDTH,
+                                                                         SCALE_NUM(40))];
 //    UILabel * remindLabel = [[UILabel alloc] init];
-    UILabel * remindLabel = [[UILabel alloc] initWithFrame:CGRectMake(SCALE_NUM(40), SCALE_NUM(5), SCREEN_WIDTH - SCALE_NUM(80), SCALE_NUM(30))];
+    UILabel * remindLabel = [[UILabel alloc] initWithFrame:CGRectMake(SCALE_NUM(40),
+                                                                      SCALE_NUM(5),
+                                                                      SCREEN_WIDTH - SCALE_NUM(80),
+                                                                      SCALE_NUM(30))];
     remindLabel.font = CONTENT_FONT(SCALE_NUM(12));
     remindLabel.textColor = KCOLOR_g1;
     remindLabel.textAlignment = NSTextAlignmentLeft;
@@ -73,7 +82,10 @@
 //        make.bottom.mas_equalTo(SCALE_NUM(-5));
 //    }];
     
-//    UIView *line = [[UIView alloc] initWithFrame:CGRectMake(0, self.frame.size.height-1, self.frame.size.width, 1)];
+//    UIView *line = [[UIView alloc] initWithFrame:CGRectMake(0,
+//                                                            self.frame.size.height-1,
+//                                                            self.frame.size.width,
+//                                                            1)];
 //    line.backgroundColor = [UIColor hexChangeFloat:@"e9e9e9"];
 //    [backView addSubview:line];
     
@@ -92,7 +104,9 @@
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    ActivityIdentityTableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:kActivityIdentityTableViewCell forIndexPath:indexPath];
+    ActivityIdentityTableViewCell * cell =
+    [tableView dequeueReusableCellWithIdentifier:kActivityIdentityTableViewCell
+                                    forIndexPath:indexPath];
     [cell setCellInfo:_dataSouceArr[indexPath.row]];
     return cell;
 }

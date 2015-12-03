@@ -10,7 +10,8 @@
 
 NSString *const kActivityReleaseAndTypeCell = @"ActivityReleaseAndTypeCellId";
 
-@interface ActivityReleaseAndTypeCell ()<UIPickerViewDataSource,UIPickerViewDelegate>
+@interface ActivityReleaseAndTypeCell ()
+<UIPickerViewDataSource,UIPickerViewDelegate>
 
 @property (nonatomic,strong) UIImageView * releaseAndTypeImageView;
 @property (nonatomic,strong) UILabel * releaseAndTypeLabel;

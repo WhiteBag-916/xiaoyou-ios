@@ -19,7 +19,8 @@
 #define REUSEID_AVAILABEL_CELL @"AvailableCell"
 #define KPAGENUM    6
 
-@interface ActivityResultTableView ()<UITableViewDataSource,UITableViewDelegate>
+@interface ActivityResultTableView ()
+<UITableViewDataSource,UITableViewDelegate>
 
 @property (nonatomic,assign) NSInteger currentIndex;
 
@@ -100,7 +101,9 @@
 
 - (void)sendRequest{
     [[ActivityManager sharedInstance] getCurrentUseAvailableListLimitStart:_currentIndex
-                                                                  limitEnd:_currentIndex+KPAGENUM dic:_requestDic block:^(YActionMessage *message) {
+                                                                  limitEnd:_currentIndex+KPAGENUM
+                                                                       dic:_requestDic
+                                                                     block:^(YActionMessage *message) {
         if (message.isSuccess) {
             if ([self isHeaderRefresh]) {
                 [self.dataSouceArr removeAllObjects];
@@ -131,7 +134,10 @@
 {
     self.currentIndex = 0;
     self.searchKey = key;
-    [[ActivityManager sharedInstance] getCurrentUseAvailableListLimitStart:_currentIndex limitEnd:_currentIndex+KPAGENUM search:key block:^(YActionMessage *message) {
+    [[ActivityManager sharedInstance] getCurrentUseAvailableListLimitStart:_currentIndex
+                                                                  limitEnd:_currentIndex+KPAGENUM
+                                                                    search:key
+                                                                     block:^(YActionMessage *message) {
         
         int i = 0;
         ++i;
@@ -148,7 +154,8 @@
                 _currentIndex += KPAGENUM;
             } else {
                 //如果一条数据也没有，则显示nodata
-                AssociationsSearchViewController *vc = (AssociationsSearchViewController *)self.viewController;
+                AssociationsSearchViewController *vc =
+                (AssociationsSearchViewController *)self.viewController;
                 if ([message.object count] <= 0) {
                     [vc hiddenNodata:NO];
                 } else {
@@ -207,7 +214,8 @@
 {
     ActivityInfoModel *infoModel = self.dataSouceArr[indexPath.row];
     NSString *publishID = [NSString stringWithFormat:@"%ld",(long)infoModel.activityPublishedModel.activityPublishedModelIdentifier];
-    ActivityDetailViewController *activityDetailVC = [[ActivityDetailViewController alloc]initWithPublishID:publishID];
+    ActivityDetailViewController *activityDetailVC = [[ActivityDetailViewController alloc]
+                                                      initWithPublishID:publishID];
     [self.viewController.navigationController pushViewController:activityDetailVC
                                                         animated:YES needHiddenBottomBar:YES];
     
@@ -219,7 +227,8 @@
     CGFloat height;
     
     height = [tableView fd_heightForCellWithIdentifier:REUSEID_AVAILABEL_CELL
-                                      cacheByIndexPath:indexPath configuration:^(AvailableCell *cell) {
+                                      cacheByIndexPath:indexPath
+                                         configuration:^(AvailableCell *cell) {
         [cell setData:_dataSouceArr[indexPath.row]];
     }];
     return height;

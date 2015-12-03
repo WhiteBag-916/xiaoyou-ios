@@ -237,7 +237,7 @@ NSInteger const kLoginCommonTextFieldTag = 1999;
 + (UIView *)initViewWithBackgroundColor:(UIColor *)color
                            cornerRadius:(NSInteger)cornerRadius
                           clipsToBounds:(BOOL)clipsToBounds
-                                  alpha:(NSInteger)alpha
+                                  alpha:(double)alpha
 {
     UIView * view           = [[UIView alloc] init];
     view.backgroundColor    = color;

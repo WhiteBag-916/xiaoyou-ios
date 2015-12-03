@@ -129,7 +129,7 @@ extern NSInteger const kLoginCommonTextFieldTag;
 + (UIView *)initViewWithBackgroundColor:(UIColor *)color
                                      cornerRadius:(NSInteger)cornerRadius
                                     clipsToBounds:(BOOL)clipsToBounds
-                                  alpha:(NSInteger)alpha;
+                                  alpha:(double)alpha;
 
 
 + (UITextView *)initDisplayTextViewWithFont:(UIFont*)font
