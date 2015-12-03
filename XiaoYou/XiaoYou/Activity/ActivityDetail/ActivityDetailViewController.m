@@ -153,7 +153,9 @@
 //更新按钮状态
 -(void)updateJoinButtonStatus
 {
-    [[ActivityManager sharedInstance] findActivityDetailInfo:0 limitEnd:0 activityPublishedId:self.publishID getDetail:YES block:^(YActionMessage *message) {
+    [[ActivityManager sharedInstance] findActivityDetailInfo:0 limitEnd:0
+                                         activityPublishedId:self.publishID
+                                                   getDetail:YES block:^(YActionMessage *message) {
         if (message.isSuccess) {
             NSMutableArray *arr = [NSMutableArray array];
             [arr addObject:message.object];
