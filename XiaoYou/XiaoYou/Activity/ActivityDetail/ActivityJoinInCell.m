@@ -138,7 +138,6 @@
 -(void)setType:(CELLTYPE)type
 {
     if (type == IS_TOPVIEW) {
-        [_joinInHeadView setContent];
         [_joinInHeadView mas_updateConstraints:^(MASConstraintMaker *make) {
             make.height.mas_equalTo(SCALE_NUM(49)).priorityHigh();
             make.height.mas_equalTo(SCALE_NUM(0)).priorityLow();
@@ -149,8 +148,8 @@
             make.height.mas_equalTo(0).priorityHigh();
             make.height.mas_equalTo(SCALE_NUM(49)).priorityLow();
         }];
-        [_joinInHeadView clearContent];
     }
+    [_joinInHeadView setContentVisible:(type == IS_TOPVIEW)];
 }
 
 @end
