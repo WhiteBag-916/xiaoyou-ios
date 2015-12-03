@@ -80,7 +80,8 @@ NSString *const kMyTimetableCurriculumCollectionViewCell = @"MyTimetableCurricul
 
 - (void)initData:(FindMyCourseViewModel *)model {
     
-    _backView.backgroundColor = [YUtils courseColorByNum:[model.teacherNo integerValue]+[model.courseCode integerValue]];
+    _backView.backgroundColor = [YUtils courseColorByNum:[model.teacherNo integerValue]
+                                 +[model.courseCode integerValue]];
     
     _nameLabel.text = model.courseName;
     _classroomLabel.text = model.roomName;

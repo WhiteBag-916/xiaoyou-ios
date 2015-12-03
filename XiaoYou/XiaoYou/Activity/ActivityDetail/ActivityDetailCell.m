@@ -93,25 +93,11 @@
     ActivityOrganizer *organizer = model.activityOrganizer;
     ActivityTypeInfo *info = model.activityTypeInfo;
     ActivityPublishedModel *publishModel = model.activityPublishedDto.activityPublishedModel;
-    
     [_headImageView setFaceImageWithUrl:organizer.headPic];
-    
     _titleLabel.text = organizer.name;
-    //[_nameLabel setText:publishModel.name lineSpacing:5.0f];
     
-    
-    NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
-    paragraphStyle.lineSpacing = SCALE_NUM(5);// 字体的行间距
-
-    NSDictionary *attributes = @{
-                                 NSForegroundColorAttributeName:KCOLOR_B4,
-                                 NSFontAttributeName:CONTENT_FONT(13),
-                                 NSParagraphStyleAttributeName:paragraphStyle
-                                 };
-    _nameLabel.attributedText = [[NSAttributedString alloc] initWithString:publishModel.name
-                                                                attributes:attributes];
-    
-    
+    [YUtils setTextViewDataWithTextView:_nameLabel text:publishModel.name
+                                   Font:CONTENT_FONT(13) textColor:KCOLOR_B4 linespaing:5];
     
     NSArray *imageTextModels = model.activityPublishedDto.activityImageTextModels;
     //图片内容是否为空
@@ -152,22 +138,8 @@
     _activityEndTimeLabel.text = [TimeFormatterConvert
                                   timeConvertToFommtterAvailable:publishModel.actEndTime];
     
-    
-    
-    //[_locationLabel setText:publishModel.address lineSpacing:5.0];
-    
-    
-    NSMutableParagraphStyle *paragraphStyle1 = [[NSMutableParagraphStyle alloc] init];
-    paragraphStyle1.lineSpacing = SCALE_NUM(5.0);// 字体的行间距
-    NSDictionary *attributes1 = @{
-                                 NSForegroundColorAttributeName:KCOLOR_B4,
-                                 NSFontAttributeName:CONTENT_FONT(12),
-                                 NSParagraphStyleAttributeName:paragraphStyle
-                                 };
-    _locationLabel.attributedText = [[NSAttributedString alloc] initWithString:publishModel.address
-                                                                    attributes:attributes1];
-    
-    
+    [YUtils setTextViewDataWithTextView:_locationLabel text:publishModel.address
+                                   Font:CONTENT_FONT(12) textColor:KCOLOR_B4 linespaing:5];
     
     _categoryLabel.text = info.name;
     
@@ -204,8 +176,7 @@
         make.centerY.equalTo(_headImageView.mas_centerY);
     }];
     
-    _sepLineView = [[UIView alloc]init];
-    _sepLineView.backgroundColor = KCOLOR_B2;
+    _sepLineView = [YUtils initLineViewWithbackgroundColor:KCOLOR_B2];
     [self.contentView addSubview:_sepLineView];
     [_sepLineView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(_headImageView.mas_bottom).offset(SCALE_NUM(12));
@@ -214,26 +185,16 @@
         make.height.mas_equalTo(SCALE_NUM(1));
     }];
     
-    _staticNameLabel = [[UILabel alloc]init];
+    _staticNameLabel = [YUtils initLabel:CONTENT_FONT(13) color:nil text:@"名称:"];
     [self.contentView addSubview:_staticNameLabel];
-    _staticNameLabel.font = CONTENT_FONT(13);
-    _staticNameLabel.text = @"名称:";
     [_staticNameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(_sepLineView.mas_bottom).offset(SCALE_NUM(15));
         make.leading.mas_equalTo(SCALE_NUM(22));
     }];
     
-    _nameLabel = [[UITextView alloc]init];
+    _nameLabel = [YUtils initDisplayTextViewWithFont:CONTENT_FONT(13) textColor:nil];
     [self.contentView addSubview:_nameLabel];
-    _nameLabel.font = CONTENT_FONT(13);
-    //_nameLabel.numberOfLines = 0;
-    _nameLabel.editable = NO;
-    _nameLabel.scrollEnabled = false;
-    _nameLabel.font = CONTENT_FONT(13);
     _nameLabel.dataDetectorTypes = UIDataDetectorTypeLink;
-    _nameLabel.textContainer.lineFragmentPadding = 0;
-    _nameLabel.textContainerInset = UIEdgeInsetsZero;
-    _nameLabel.text = @"大型历史音乐剧《和平使者——抗战中的宋庆龄》";
     [_nameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(_titleLabel);
         make.top.equalTo(_sepLineView.mas_bottom).offset(SCALE_NUM(14));
@@ -247,23 +208,13 @@
         make.left.equalTo(_staticNameLabel);
     }];
     
-    _descriptionLabel = [[YTextView alloc]init];
-    _descriptionLabel.type = DISANBLE_PASTE;
+    _descriptionLabel = [YUtils initDisplayTextViewWithFont:CONTENT_FONT(13) textColor:nil];
     [self.contentView addSubview:_descriptionLabel];
-    _descriptionLabel.editable = false;
-    _descriptionLabel.selectable = YES;
-    _descriptionLabel.scrollEnabled = NO;
-    _descriptionLabel.font = CONTENT_FONT(13);
-    _descriptionLabel.textContainer.lineFragmentPadding = 0;
-    _descriptionLabel.textContainerInset = UIEdgeInsetsZero;
     _descriptionLabel.delegate = self;
-    [self.contentView addSubview:_descriptionLabel];
-    
     [_descriptionLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(_nameLabel);
         make.trailing.mas_equalTo(SCALE_NUM(-12));
         make.top.equalTo(_nameLabel.mas_bottom).offset(SCALE_NUM(14));
-        
     }];
 }
 
@@ -350,7 +301,6 @@
         make.centerX.equalTo(_locationImageView);
     }];
     
-    _categoryLabel = [[UITextView alloc]init];
     _categoryLabel = [YUtils initDisplayTextViewWithFont:CONTENT_FONT(13)
                                                textColor:KCOLOR_B3];
     [self.contentView addSubview:_categoryLabel];
@@ -379,8 +329,11 @@
 -(void)jumpLinkAction
 {
     ActivityPublishedModel *publishModel = self.detailModel.activityPublishedDto.activityPublishedModel;
-    YWebViewController *webViewVC = [[YWebViewController alloc]initWithUrl:publishModel.originalTextUrl andTitle:publishModel.name canClick:YES];
-    [self.viewController.navigationController pushViewController:webViewVC animated:YES needHiddenBottomBar:YES];
+    YWebViewController *webViewVC = [[YWebViewController alloc]
+                                     initWithUrl:publishModel.originalTextUrl
+                                     andTitle:publishModel.name canClick:YES];
+    [self.viewController.navigationController pushViewController:webViewVC animated:YES
+                                             needHiddenBottomBar:YES];
 }
 
 - (void)gotoPersonDetail {
@@ -395,19 +348,25 @@
     if ([organizer.userType isEqualToString:@"user"]) {
         if ([organizer.uid isEqualToString:[[YShareData defaultData] valueForKey:kShareData_UserID]]) {
             ProfileMyViewController *myVC = [[ProfileMyViewController alloc]init];
-            [self.viewController.navigationController pushViewController:myVC animated:YES needHiddenBottomBar:YES];
+            [self.viewController.navigationController pushViewController:myVC animated:YES
+                                                     needHiddenBottomBar:YES];
         } else {
-            [self.viewController.navigationController pushViewController:detailVC animated:YES needHiddenBottomBar:YES];
+            [self.viewController.navigationController pushViewController:detailVC animated:YES
+                                                     needHiddenBottomBar:YES];
         }
     } else
     {
-        [self.viewController.navigationController pushViewController:groupVC animated:YES needHiddenBottomBar:YES];
+        [self.viewController.navigationController pushViewController:groupVC animated:YES
+                                                 needHiddenBottomBar:YES];
     }
 }
 
-- (BOOL)textView:(UITextView *)textView shouldInteractWithURL:(NSURL *)URL inRange:(NSRange)characterRange {
+- (BOOL)textView:(UITextView *)textView shouldInteractWithURL:(NSURL *)URL
+         inRange:(NSRange)characterRange {
     
-    [[NSNotificationCenter defaultCenter] postNotificationName:KNotification_OpenBrowser object:nil userInfo:@{@"url":[URL absoluteString], @"title":@""}];
+    [[NSNotificationCenter defaultCenter] postNotificationName:KNotification_OpenBrowser object:nil
+                                                      userInfo:@{@"url":[URL absoluteString],
+                                                                 @"title":@""}];
     return false;
 }
 

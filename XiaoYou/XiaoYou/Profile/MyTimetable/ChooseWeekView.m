@@ -27,7 +27,10 @@
 
 @implementation ChooseWeekView
 
-- (id)initWithBlock:(NSInteger)selectNum weekNum:(NSInteger)weekNum nowWeek:(NSInteger)nowWeek block:(ChooseWeekBlock)block {
+- (id)initWithBlock:(NSInteger)selectNum
+            weekNum:(NSInteger)weekNum
+            nowWeek:(NSInteger)nowWeek
+              block:(ChooseWeekBlock)block {
     if (self = [super initWithFrame:[UIScreen mainScreen].bounds]) {
         self.backgroundColor = [UIColor clearColor];
         
@@ -38,7 +41,9 @@
         self.backgroundView.backgroundColor = [UIColor blackColor];
         [self addSubview:self.backgroundView];
         
-        [self.backgroundView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hide)]];
+        [self.backgroundView addGestureRecognizer:[[UITapGestureRecognizer alloc]
+                                                   initWithTarget:self
+                                                   action:@selector(hide)]];
         
         [self initContentView];
         
@@ -59,7 +64,8 @@
         make.height.mas_equalTo(190);
     }];
     
-    UIImageView *backgroundImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"class_tab_putup"]];
+    UIImageView *backgroundImageView = [[UIImageView alloc]
+                                        initWithImage:[UIImage imageNamed:@"class_tab_putup"]];
     [self.contentView addSubview:backgroundImageView];
     [backgroundImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.equalTo(self.contentView);
@@ -87,7 +93,8 @@
     
     if (showNum > 0) {
         //移动到可显示位置
-        [_weekTableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:showNum inSection:0] atScrollPosition:UITableViewScrollPositionNone animated:NO];
+        [_weekTableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:showNum inSection:0]
+                              atScrollPosition:UITableViewScrollPositionNone animated:NO];
     }
 }
 

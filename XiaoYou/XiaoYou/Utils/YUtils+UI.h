@@ -63,6 +63,8 @@ extern NSInteger const kLoginCommonTextFieldTag;
 
 + (UIButton *)initButtonWithBackgroundColor:(UIColor*)backgroudColor
                                     target:(id)target action:(SEL)selector;
+
++ (UIView *)initLineViewWithbackgroundColor:(UIColor *)color;
 /*********************************************************************
  函数名称 : initScrollView
  函数描述 : 构造ScrollView
@@ -117,6 +119,22 @@ extern NSInteger const kLoginCommonTextFieldTag;
                             clipsToBounds:(BOOL)clipsToBounds
                             image:(UIImage *)image;
 
+/*********************************************************************
+ 函数名称 : initView
+ 函数描述 : 构造View
+ 参数 : 你懂的
+ 返回值 : 你懂的
+ 作者 : 尹先森
+ *********************************************************************/
++ (UIView *)initViewWithBackgroundColor:(UIColor *)color
+                                     cornerRadius:(NSInteger)cornerRadius
+                                    clipsToBounds:(BOOL)clipsToBounds
+                                  alpha:(NSInteger)alpha;
+
+
 + (UITextView *)initDisplayTextViewWithFont:(UIFont*)font
                                   textColor:(UIColor*)color;
+
++ (void)setTextViewDataWithTextView:(UITextView*)textView text:(NSString*)text Font:(UIFont*)font
+                          textColor:(UIColor*)textColor linespaing:(CGFloat)lineSpace;
 @end

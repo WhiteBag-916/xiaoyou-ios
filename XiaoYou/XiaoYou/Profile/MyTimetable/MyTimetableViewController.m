@@ -44,7 +44,7 @@
     
     [self initNavigationTitle];
     
-    _myTimetableHeadView = [[MyTimetableHeadView alloc] init];
+    self.myTimetableHeadView = [[MyTimetableHeadView alloc] init];
     [self.view addSubview:_myTimetableHeadView];
     [_myTimetableHeadView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.right.equalTo(_titleView);
@@ -52,7 +52,7 @@
         make.height.mas_equalTo(SCALE_NUM(40));
     }];
     
-    _myTimetableView = [[MyTimetableView alloc] init];
+    self.myTimetableView = [[MyTimetableView alloc] init];
     [self.view addSubview:_myTimetableView];
     [_myTimetableView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.bottom.right.equalTo(self.view);
@@ -75,7 +75,8 @@
     [leftButton setImage:[UIImage imageNamed:@"common_back"] forState:UIControlStateNormal];
     [leftButton setImage:[UIImage imageNamed:@"common_back"] forState:UIControlStateHighlighted];
     [leftButton setImageEdgeInsets:UIEdgeInsetsMake(13, 15, 13, 15)];
-    [leftButton addTarget:self action:@selector(popVC) forControlEvents:UIControlEventTouchUpInside];
+    [leftButton addTarget:self action:@selector(popVC)
+         forControlEvents:UIControlEventTouchUpInside];
     [_titleView addSubview:leftButton];
     [leftButton mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.bottom.equalTo(_titleView);
@@ -86,7 +87,9 @@
     //下拉
     _buttonView = [UIView new];
     _buttonView.userInteractionEnabled = YES;
-    [_buttonView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showChooseWeek)]];
+    [_buttonView addGestureRecognizer:[[UITapGestureRecognizer alloc]
+                                       initWithTarget:self
+                                       action:@selector(showChooseWeek)]];
     [_titleView addSubview:_buttonView];
     [_buttonView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.bottom.equalTo(_titleView);
@@ -103,7 +106,8 @@
         make.left.top.bottom.equalTo(_buttonView);
     }];
     
-    UIImageView *putImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"icon_arrow"]];
+    UIImageView *putImageView = [[UIImageView alloc]
+                                 initWithImage:[UIImage imageNamed:@"icon_arrow"]];
     [_buttonView addSubview:putImageView];
     [putImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.equalTo(_weekLabel);
@@ -139,10 +143,11 @@
     
     //获取当前第几周
     //获取时间
-    NSDate *selectWeekDate = [NSDate dateFromString:self.courseTimeListModel.firstTime withFormat:[NSDate dateFormatString]];
+    NSDate *selectWeekDate = [NSDate dateFromString:self.courseTimeListModel.firstTime
+                                         withFormat:[NSDate dateFormatString]];
     //根据时间获取距离今天
     NSUInteger agoDay = [selectWeekDate daysAgo];
-    _nowWeek = 1+agoDay/7;
+    self.nowWeek = 1+agoDay/7;
     [self chooseWeek:1+agoDay/7];
 }
 
@@ -161,6 +166,7 @@
 - (void)showChooseWeek {
     if (nil != self.courseTimeListModel) {
         ChooseWeekView *chooseWeekView = [[ChooseWeekView alloc] initWithBlock:_selectWeekNum
+                                          
                                                                        weekNum:self.courseTimeListModel.maxWeek
                                                                        nowWeek:_nowWeek
                                                                          block:^(NSInteger checkNum) {
@@ -172,7 +178,7 @@
 }
 
 - (void)chooseWeek:(NSInteger)num {
-    _selectWeekNum = num;
+    self.selectWeekNum = num;
     _weekLabel.text = [NSString stringWithFormat:@"第%ld周", (long)num];
     
     [self getDataByWeek];
@@ -190,19 +196,10 @@
 
 //根据第几周获取课程数据
 - (void)getDataByWeek {
-    NSArray *array = [NSArray arrayWithArray:[[CurriculumManager sharedInstance] getDataByWeek:_selectWeekNum]];
+    NSArray *array = [NSArray arrayWithArray:[[CurriculumManager sharedInstance]
+                                              getDataByWeek:_selectWeekNum]];
     
     [_myTimetableView refreshEventsData:array];
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

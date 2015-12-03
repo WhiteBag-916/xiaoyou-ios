@@ -24,8 +24,10 @@ UITableViewDelegate>
 @property (nonatomic, strong) YTextField *schoolTextField;
 @property (nonatomic, strong) YTableView *tableView;
 @property (nonatomic, strong) UIImageView *schoolLogoImageView;
-@property (nonatomic, strong) NSMutableArray *schoolSearchList;//服务器获取数据后才进行的搜索
-@property (nonatomic, strong) NSArray *schoolListBySeaver;//服务器的联系人列表，用于存储学校信息
+//服务器获取数据后才进行的搜索
+@property (nonatomic, strong) NSMutableArray *schoolSearchList;
+//服务器的联系人列表，用于存储学校信息
+@property (nonatomic, strong) NSArray *schoolListBySeaver;
 
 @end
 
@@ -51,7 +53,8 @@ UITableViewDelegate>
     
     [self resetRightButton];
     
-    [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationSlide];
+    [[UIApplication sharedApplication] setStatusBarHidden:NO
+                                            withAnimation:UIStatusBarAnimationSlide];
 }
 
 #pragma mark - private
@@ -105,7 +108,8 @@ UITableViewDelegate>
     _tableView.delegate = self;
     _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     _tableView.backgroundColor = KCOLOR_e6ebea;
-    [_tableView registerClass:[ChooseSchoolTableViewCell class] forCellReuseIdentifier:kChooseSchoolTableViewCell];
+    [_tableView registerClass:[ChooseSchoolTableViewCell class]
+       forCellReuseIdentifier:kChooseSchoolTableViewCell];
     [self.view addSubview:_tableView];
     _tableView.hidden = YES;
     [_tableView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -123,7 +127,7 @@ UITableViewDelegate>
 }
 
 //根据服务器的学校列表，更新总列表
-- (void)updateSchoolListArray:(NSArray *)schoolArray
+- (void)updateSchoolListArray
 {
     [self searchSchoolByKey:YES];
     [self checkTextChangeLogoImage];
@@ -143,17 +147,20 @@ UITableViewDelegate>
     
     if (searchKey.length > 0)
     {
-        [_schoolListBySeaver enumerateObjectsUsingBlock:^(SchoolListModel *model, NSUInteger idx, BOOL *stop) {
+        [_schoolListBySeaver
+         enumerateObjectsUsingBlock:^(SchoolListModel *model, NSUInteger idx, BOOL *stop) {
             NSRange range = [model.schoolName rangeOfString:searchKey];
-            if (range.location != NSNotFound)
+            if (NSNotFound != range.location)
             {
                 //汉字
                 [_schoolSearchList addObject:model];
             }
             else if (!isAllCheck)
             {
-                NSString *tempPinYinStr = [PinYinForObjc chineseConvertToPinYin:model.schoolName];
-                NSRange titleResult=[tempPinYinStr rangeOfString:searchKey options:NSCaseInsensitiveSearch];
+                NSString *tempPinYinStr = [PinYinForObjc
+                                           chineseConvertToPinYin:model.schoolName];
+                NSRange titleResult=[tempPinYinStr rangeOfString:searchKey
+                                                         options:NSCaseInsensitiveSearch];
                 if (titleResult.location != NSNotFound)
                 {
                     //全拼
@@ -162,8 +169,10 @@ UITableViewDelegate>
                 else
                 {
                     //首字母
-                    NSString *tempPinYinHeadStr = [PinYinForObjc chineseConvertToPinYinHead:model.schoolName];
-                    NSRange titleHeadResult=[tempPinYinHeadStr rangeOfString:searchKey options:NSCaseInsensitiveSearch];
+                    NSString *tempPinYinHeadStr = [PinYinForObjc
+                                                   chineseConvertToPinYinHead:model.schoolName];
+                    NSRange titleHeadResult=[tempPinYinHeadStr rangeOfString:searchKey
+                                                                     options:NSCaseInsensitiveSearch];
                     if (titleHeadResult.location != NSNotFound)
                     {
                         [_schoolSearchList addObject:model];
@@ -189,7 +198,8 @@ UITableViewDelegate>
     
     __block NSString *logoImageStr;
     //相同
-    [_schoolListBySeaver enumerateObjectsUsingBlock:^(SchoolListModel *schoolModel, NSUInteger idx, BOOL *stop) {
+    [_schoolListBySeaver
+     enumerateObjectsUsingBlock:^(SchoolListModel *schoolModel, NSUInteger idx, BOOL *stop) {
         if ([searchText isEqualToString:schoolModel.schoolName])
         {
             logoImageStr = schoolModel.schoolLogoPath;
@@ -224,11 +234,12 @@ UITableViewDelegate>
 #pragma mark - API
 //获取学校列表
 - (void)schoolListRequest{
-    [[ProvisionManager sharedInstance] schoolListReq:_schoolTextField.text block:^(YActionMessage *message) {
+    [[ProvisionManager sharedInstance] schoolListReq:_schoolTextField.text
+                                               block:^(YActionMessage *message) {
         if (message.isSuccess) {
             self.schoolListBySeaver = [NSArray arrayWithArray:message.object];
             
-            [self updateSchoolListArray:message.object];
+            [self updateSchoolListArray];
             
             _tableView.hidden = NO;
         } else {
@@ -241,14 +252,16 @@ UITableViewDelegate>
 - (void)checkSchoolRequest
 {
     [YUtils showHUDWithTitle];
-    [[ProvisionManager sharedInstance] schoolListReq:_schoolTextField.text block:^(YActionMessage *message) {
+    [[ProvisionManager sharedInstance] schoolListReq:_schoolTextField.text
+                                               block:^(YActionMessage *message) {
         
         [YUtils hiddenProgressHUD];
         
         if (message.isSuccess) {
             //选取学校
             __block SchoolListModel *schoolModel=nil;
-            [message.object enumerateObjectsUsingBlock:^(SchoolListModel *model, NSUInteger idx, BOOL *stop) {
+            [message.object
+             enumerateObjectsUsingBlock:^(SchoolListModel *model, NSUInteger idx, BOOL *stop) {
                 if ([_schoolTextField.text isEqualToString:model.schoolName])
                 {
                     schoolModel = model;
@@ -273,7 +286,8 @@ UITableViewDelegate>
     
     //选取学校
     __block SchoolListModel *schoolModel=nil;
-    [self.schoolListBySeaver enumerateObjectsUsingBlock:^(SchoolListModel *model, NSUInteger idx, BOOL *stop) {
+    [self.schoolListBySeaver
+     enumerateObjectsUsingBlock:^(SchoolListModel *model, NSUInteger idx, BOOL *stop) {
         if ([_schoolTextField.text isEqualToString:model.schoolName])
         {
             schoolModel = model;

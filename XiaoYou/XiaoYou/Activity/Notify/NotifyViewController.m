@@ -57,7 +57,8 @@
 -(NSArray *)notifyDataSource
 {
     if (!_notifyDataSource) {
-        NSString *dataBasePath = [NSString stringWithFormat:@"%@//%@",[YDirectory documents],NSStringFromClass([NotifyInfoModel class])];
+        NSString *dataBasePath = [NSString stringWithFormat:@"%@//%@",
+                                  [YDirectory documents],NSStringFromClass([NotifyInfoModel class])];
         YDatabaseDao *dataBaseDao = [[YDatabaseDao alloc]initWitDatabasePath:dataBasePath];
         NSString *tableName = NSStringFromClass([NotifyInfoModel class]);
         NSArray *queryArr = [dataBaseDao queryModel:tableName];
@@ -84,7 +85,8 @@
 -(void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
-    [[NSNotificationCenter defaultCenter] postNotificationName:KNotification_Activity_Release_Success object:nil];
+    [[NSNotificationCenter defaultCenter]
+     postNotificationName:KNotification_Activity_Release_Success object:nil];
 }
 
 @end

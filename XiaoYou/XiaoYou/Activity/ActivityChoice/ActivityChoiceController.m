@@ -20,7 +20,9 @@
 
 @implementation ActivityChoiceController
 
-- (instancetype)initWithType:(CHOICE_TYPE) type andDataSource:(NSMutableArray *) dataSource andStudyRoomDefautStr:(NSString *) studyRoomDefautStr
+- (instancetype)initWithType:(CHOICE_TYPE) type
+               andDataSource:(NSMutableArray *) dataSource
+       andStudyRoomDefautStr:(NSString *) studyRoomDefautStr
 {
     self = [super init];
     if (self) {

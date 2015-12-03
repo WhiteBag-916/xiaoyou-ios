@@ -208,19 +208,8 @@
     NSArray *imageTextModels =  model.activityImageTextModels;
     
     BOOL isNotHaveImage = YES;
-    
-    NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
-    paragraphStyle.lineSpacing = SCALE_NUM(5);// 字体的行间距
-
-    NSDictionary *attributes = @{
-                                 NSForegroundColorAttributeName:KCOLOR_B4,
-                                 NSFontAttributeName:CONTENT_FONT(15),
-                                 NSParagraphStyleAttributeName:paragraphStyle
-                                 };
-    _titleLabel.attributedText = [[NSAttributedString alloc]
-                                  initWithString:publishModel.name attributes:attributes];
-    
-    
+    [YUtils setTextViewDataWithTextView:_titleLabel text:publishModel.name Font:CONTENT_FONT(15)
+                              textColor:KCOLOR_B4 linespaing:SCALE_NUM(5)];
     
     //图文混排
     for (ActivityImageTextModels *imageText in imageTextModels) {
@@ -257,15 +246,15 @@
 }
 
 
--(CGFloat)getTextHeight:(NSString*)text
-{
-    NSDictionary *attributes = @{NSFontAttributeName:CONTENT_FONT(12)};
-    CGFloat screenWidth = [UIScreen mainScreen].bounds.size.width;
-    CGSize textSize = [text boundingRectWithSize:CGSizeMake(screenWidth - SCALE_NUM(27), 9999)
-                                         options:NSStringDrawingUsesLineFragmentOrigin|NSStringDrawingUsesFontLeading
-                                      attributes:attributes context:nil].size;
-    return textSize.height;
-}
+//-(CGFloat)getTextHeight:(NSString*)text
+//{
+//    NSDictionary *attributes = @{NSFontAttributeName:CONTENT_FONT(12)};
+//    CGFloat screenWidth = [UIScreen mainScreen].bounds.size.width;
+//    CGSize textSize = [text boundingRectWithSize:CGSizeMake(screenWidth - SCALE_NUM(27), 9999)
+//                                         options:NSStringDrawingUsesLineFragmentOrigin|NSStringDrawingUsesFontLeading
+//                                      attributes:attributes context:nil].size;
+//    return textSize.height;
+//}
 
 
 - (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range

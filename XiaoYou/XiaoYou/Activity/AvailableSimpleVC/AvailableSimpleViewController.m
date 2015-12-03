@@ -47,7 +47,7 @@ typedef enum : NSUInteger {
     if (AvailableSimpleTypeRubLesson == _type) {
         self.title = @"你可以蹭的课";
         
-        _rubLessonTableView = [[RubLessonTableView alloc] init];
+        self.rubLessonTableView = [[RubLessonTableView alloc] init];
         [self.view addSubview:_rubLessonTableView];
         
         [_rubLessonTableView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -59,7 +59,7 @@ typedef enum : NSUInteger {
         
         [self setUpCustomNavgationBar:Choice_Type];
         
-        _studyRoomTableView = [[StudyRoomTableView alloc] init];
+        self.studyRoomTableView = [[StudyRoomTableView alloc] init];
         [self.view addSubview:_studyRoomTableView];
         
         [_studyRoomTableView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -91,7 +91,7 @@ typedef enum : NSUInteger {
         
         [self setUpCustomNavgationBar:Question_Type];
         
-        _studyRoomDetailTableView = [[StudyRoomDetailTableView alloc] initWithBuildName:_buildName];
+        self.studyRoomDetailTableView = [[StudyRoomDetailTableView alloc] initWithBuildName:_buildName];
         [self.view addSubview:_studyRoomDetailTableView];
         
         [_studyRoomDetailTableView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -106,7 +106,8 @@ typedef enum : NSUInteger {
     //right barbutton view
     UIView * view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 30, KNavigationBarheight)];
     
-    UIButton * remindBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 30, KNavigationBarheight)];
+    UIButton * remindBtn = [[UIButton alloc] initWithFrame:
+                            CGRectMake(0, 0, 30, KNavigationBarheight)];
     remindBtn.backgroundColor = [UIColor clearColor];
     if (type == Choice_Type)
     {
@@ -117,7 +118,8 @@ typedef enum : NSUInteger {
     }
     else
     {
-        [remindBtn setImage:[UIImage imageNamed:@"havetime_icon_prompt"] forState:UIControlStateNormal];
+        [remindBtn setImage:[UIImage imageNamed:@"havetime_icon_prompt"]
+                   forState:UIControlStateNormal];
         [remindBtn addTarget:self
                       action:@selector(questionAction)
             forControlEvents:UIControlEventTouchUpInside];
@@ -130,15 +132,25 @@ typedef enum : NSUInteger {
 - (void)filterAction {
     if (_studyRoomTableView.campusDataSouceArr.count > 0)
     {
-        ActivityChoiceController * choiceController = [[ActivityChoiceController alloc] initWithType:CLASSROOM_CHOICE_TYPE andDataSource:_studyRoomTableView.campusDataSouceArr andStudyRoomDefautStr:_studyRoomTableView.campusDataSouceArr[0]];
+        ActivityChoiceController * choiceController
+        = [[ActivityChoiceController alloc] initWithType:CLASSROOM_CHOICE_TYPE
+                                           andDataSource:_studyRoomTableView.campusDataSouceArr
+                                   andStudyRoomDefautStr:_studyRoomTableView.campusDataSouceArr[0]];
         choiceController.classViewController = self;
-        [self.view.window.rootViewController presentViewController:choiceController animated:YES completion:nil];
+        [self.view.window.rootViewController presentViewController:choiceController
+                                                          animated:YES
+                                                        completion:nil];
     }
     else
     {
-        ActivityChoiceController * choiceController = [[ActivityChoiceController alloc] initWithType:CLASSROOM_CHOICE_TYPE andDataSource:_studyRoomTableView.campusDataSouceArr andStudyRoomDefautStr:nil];
+        ActivityChoiceController * choiceController
+        = [[ActivityChoiceController alloc] initWithType:CLASSROOM_CHOICE_TYPE
+                                           andDataSource:_studyRoomTableView.campusDataSouceArr
+                                   andStudyRoomDefautStr:nil];
         choiceController.classViewController = self;
-        [self.view.window.rootViewController presentViewController:choiceController animated:YES completion:nil];
+        [self.view.window.rootViewController presentViewController:choiceController
+                                                          animated:YES
+                                                        completion:nil];
     }
     
 }
@@ -147,7 +159,10 @@ typedef enum : NSUInteger {
 {
     //h5页面
     NSLog(@"h5页面");
-    YWebViewController * webView = [[YWebViewController alloc] initWithUrl:@"http://tips.xiaoyou.com/studyRoom/empty.html" andTitle:@"关于自习室" canClick:NO];
+    YWebViewController * webView
+    = [[YWebViewController alloc] initWithUrl:@"http://tips.xiaoyou.com/studyRoom/empty.html"
+                                     andTitle:@"关于自习室"
+                                     canClick:NO];
     [self.navigationController pushViewController:webView animated:YES];
 }
 

@@ -66,7 +66,9 @@ const NSInteger kSearchTimerDelay = 1.f;
     UIButton *cancelButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [cancelButton setTitle:@"取消" forState:UIControlStateNormal];
     [cancelButton setTitleColor:KCOLORWHITE forState:UIControlStateNormal];
-    [cancelButton addTarget:self action:@selector(pressCancelButton) forControlEvents:UIControlEventTouchUpInside];
+    [cancelButton addTarget:self
+                     action:@selector(pressCancelButton)
+           forControlEvents:UIControlEventTouchUpInside];
     [headView addSubview:cancelButton];
     [cancelButton mas_makeConstraints:^(MASConstraintMaker *make) {
         make.right.equalTo(headView).offset(SCALE_NUM(-10));
@@ -164,7 +166,9 @@ const NSInteger kSearchTimerDelay = 1.f;
         [YTimer killTimerWithID:_searchTimerID];
         
         //重新开始
-        _searchTimerID = [YTimer scheduledTimerWithTimeInterval:kSearchTimerDelay repeats:NO block:^{
+        _searchTimerID = [YTimer scheduledTimerWithTimeInterval:kSearchTimerDelay
+                                                        repeats:NO
+                                                          block:^{
             [self toSearch];
         }];
     }

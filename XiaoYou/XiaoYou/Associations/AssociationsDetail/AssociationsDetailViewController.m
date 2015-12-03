@@ -44,7 +44,10 @@
     [self showCustomNavigationBackButton];
     [self showCustomNavigationMoreButton];
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshData) name:KNotification_Refresh_FeedList object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(refreshData)
+                                                 name:KNotification_Refresh_FeedList
+                                               object:nil];
     
     [self initView];
 }
@@ -57,7 +60,16 @@
 - (void)onNavigationRightButtonClicked {
     if (nil != _groupModel) {
         
-        YActionSheetItem *item1 = [YActionSheetItem itemWithType:YCommonActionSheetItemTypeShareOrganization title:@"分享社团名片至" extraData:@{@"name":_groupModel.groupName, @"content":_groupModel.internalBaseClassDescription, @"pic":(_groupModel.groupIcon.length>0)?_groupModel.groupIcon:@"favicon.ico",@"groupId":[NSString stringWithFormat:@"%g", _groupModel.internalBaseClassIdentifier]}];
+        YActionSheetItem *item1 = [YActionSheetItem itemWithType:YCommonActionSheetItemTypeShareOrganization
+                                                           title:@"分享社团名片至"
+                                                       extraData:@{@"name":_groupModel.groupName
+                                                                   , @"content":_groupModel.internalBaseClassDescription
+                                                                   , @"pic":(_groupModel.groupIcon.length>0)
+                                                                   ?_groupModel.groupIcon
+                                                                   :@"favicon.ico"
+                                                                   ,@"groupId":[NSString stringWithFormat:@"%g"
+                                                                                
+                                                                                , _groupModel.internalBaseClassIdentifier]}];
         
         
         YActionSheetItem *item2 = [YActionSheetItem itemWithTitle:@"举报"
@@ -66,7 +78,8 @@
                                                                 [YCommonReport report];
                                                             }];
         
-        YCommonActionSheet *sheet = [[YCommonActionSheet alloc] initWithType:@[item1, item2] haveShareButton:YES];
+        YCommonActionSheet *sheet = [[YCommonActionSheet alloc] initWithType:@[item1, item2]
+                                                             haveShareButton:YES];
         [sheet show];
     }
 }
@@ -74,10 +87,13 @@
 - (void)initView {
     //button
     _addButton =[UIButton buttonWithType:UIButtonTypeCustom];
-    [_addButton setTitle:[NSString stringWithFormat:@"一键申请加入%@", _name] forState:UIControlStateNormal];
+    [_addButton setTitle:[NSString stringWithFormat:@"一键申请加入%@", _name]
+                forState:UIControlStateNormal];
     [_addButton setTitleColor:KCOLORWHITE forState:UIControlStateNormal];
-    [_addButton setBackgroundImage:[UIImage imageNamed:@"contacts_bottom"] forState:UIControlStateNormal];
-    [_addButton addTarget:self action:@selector(pressAddButton) forControlEvents:UIControlEventTouchUpInside];
+    [_addButton setBackgroundImage:[UIImage imageNamed:@"contacts_bottom"]
+                          forState:UIControlStateNormal];
+    [_addButton addTarget:self action:@selector(pressAddButton)
+         forControlEvents:UIControlEventTouchUpInside];
     [self addButtonEnabled:NO];
     [self.view addSubview:_addButton];
     
@@ -103,8 +119,12 @@
 - (void)pressAddButton {
     if ([_groupModel.groupStatus isEqualToString:@"3"]) {
         //进入群聊
-        ChatViewController *chatViewController = [[ChatViewController alloc] initWithChatter:_groupModel.thirdId isGroup:YES];
-        chatViewController.studentDic = [@{@"name":_groupModel.groupName, @"icon":_groupModel.groupIcon,@"gid":[NSString stringWithFormat:@"%g", _groupModel.internalBaseClassIdentifier]} mutableCopy];
+        ChatViewController *chatViewController = [[ChatViewController alloc] initWithChatter:_groupModel.thirdId
+                                                                                     isGroup:YES];
+        chatViewController.studentDic = [@{@"name":_groupModel.groupName
+                                           , @"icon":_groupModel.groupIcon
+                                           ,@"gid":[NSString stringWithFormat:@"%g"
+                                                    , _groupModel.internalBaseClassIdentifier]} mutableCopy];
         [self.navigationController pushViewController:chatViewController animated:YES];
     } else {
         [YUtils showHUDWithTitle];
@@ -127,7 +147,7 @@
 
 #pragma mark - AssociationsDetailTableViewDelegate
 - (void)resetAddButtonType:(GroupModel *)model {
-    _groupModel = model;
+    self.groupModel = model;
     //1 未入社、2 申请中、3 已加入
     if ([_groupModel.groupStatus isEqualToString:@"1"]) {
         [self addButtonEnabled:YES];
@@ -139,15 +159,5 @@
         [_addButton setTitle:@"进入群聊" forState:UIControlStateNormal];
     }
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

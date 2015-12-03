@@ -30,7 +30,7 @@
     self.title = @"社团/学生组织";
     self.hidesBottomBarWhenPushed = NO;
     //tableview
-    _associationsListTableView = [[AssociationsListTableView alloc] init];
+    self.associationsListTableView = [[AssociationsListTableView alloc] init];
     _associationsListTableView.superVC = self;
     [self.view addSubview:_associationsListTableView];
     
@@ -45,15 +45,19 @@
     //right barbutton view
     UIView * view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 60, KNavigationBarheight)];
     
-    UIButton *filterButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 25, KNavigationBarheight)];
-    [filterButton setImage:[UIImage imageNamed:@"common_filter"] forState:UIControlStateNormal];
-    [filterButton setImage:[UIImage imageNamed:@"common_filter"] forState:UIControlStateHighlighted];
+    UIButton *filterButton = [[UIButton alloc] initWithFrame:
+                              CGRectMake(0, 0, 25, KNavigationBarheight)];
+    [filterButton setImage:[UIImage imageNamed:@"common_filter"]
+                  forState:UIControlStateNormal];
+    [filterButton setImage:[UIImage imageNamed:@"common_filter"]
+                  forState:UIControlStateHighlighted];
     [filterButton addTarget:self
                   action:@selector(filterBtnAction)
         forControlEvents:UIControlEventTouchUpInside];
     [view addSubview:filterButton];
     
-    UIButton * searchBtn = [[UIButton alloc] initWithFrame:CGRectMake(35, 0, 25, KNavigationBarheight)];
+    UIButton * searchBtn = [[UIButton alloc] initWithFrame:
+                            CGRectMake(35, 0, 25, KNavigationBarheight)];
     [searchBtn setImage:[UIImage imageNamed:@"common_search"] forState:UIControlStateNormal];
     [searchBtn setImage:[UIImage imageNamed:@"common_search"] forState:UIControlStateHighlighted];
     [searchBtn addTarget:self
@@ -66,34 +70,31 @@
 
 //筛选按钮
 - (void)filterBtnAction {
-    ProfileTagViewController *profileTagViewController = [[ProfileTagViewController alloc] initWithMyTags:_filterArray type:ProfileTagTypeAssociations];
+    ProfileTagViewController *profileTagViewController = [[ProfileTagViewController alloc]
+                                                          initWithMyTags:_filterArray
+                                                                    type:ProfileTagTypeAssociations];
     [profileTagViewController endSelected:^(NSString *filterStr) {
         [_associationsListTableView resetArrayByFilter:filterStr];
     }];
     UINavigationController *navigationController =
     [[UINavigationController alloc] initWithRootViewController:profileTagViewController];
-    [self.view.window.rootViewController presentViewController:navigationController animated:YES completion:nil];
+    [self.view.window.rootViewController presentViewController:navigationController
+                                                      animated:YES
+                                                    completion:nil];
 }
 
 //搜索
 - (void)searchAction {
     NSArray *array = [_associationsListTableView tableViewData];
 //    if (array.count > 0) {
-        AssociationsSearchViewController *associationsSearchViewController = [[AssociationsSearchViewController alloc] initWithArray:array];
-        [self.navigationController pushViewController:associationsSearchViewController animated:YES needHiddenBottomBar:YES];
+        AssociationsSearchViewController *associationsSearchViewController
+    = [[AssociationsSearchViewController alloc] initWithArray:array];
+        [self.navigationController pushViewController:associationsSearchViewController
+                                             animated:YES
+                                  needHiddenBottomBar:YES];
 //    } else {
 //        [YUtils showTitle:@"还未获取到社团哟"];
 //    }
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

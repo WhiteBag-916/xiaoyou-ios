@@ -28,29 +28,46 @@
     if (self = [super initWithFrame:frame])
     {
         //背景
-        UIImageView *bgImageView = [YUtils initImageView:[UIImage imageNamed:@"message_tab_background"] frame:self.bounds];
+        UIImageView *bgImageView = [YUtils
+                                    initImageView:[UIImage imageNamed:@"message_tab_background"]
+                                            frame:self.bounds];
         [self addSubview:bgImageView];
         
         //红色背景
-        _redBgImageView = [YUtils initImageView:[UIImage imageNamed:@"message_tab_green"] frame:CGRectMake(0, 0, frame.size.width/2, frame.size.height)];
+        _redBgImageView = [YUtils initImageView:[UIImage imageNamed:@"message_tab_green"]
+                                          frame:CGRectMake(0, 0, frame.size.width/2, frame.size.height)];
         [self addSubview:_redBgImageView];
         
         //label
-        _messageLabel = [YUtils initLabel:CONTENT_FONT(frame.size.height/2) color:[UIColor whiteColor] text:[textArray objectAtIndex:CommonSwitchTypeFir] frame:CGRectMake(0, 0, frame.size.width/2, frame.size.height) alignment:NSTextAlignmentCenter];
+        _messageLabel = [YUtils initLabel:CONTENT_FONT(frame.size.height/2)
+                                    color:[UIColor whiteColor]
+                                     text:[textArray objectAtIndex:CommonSwitchTypeFir]
+                                    frame:CGRectMake(0, 0, frame.size.width/2, frame.size.height)
+                                alignment:NSTextAlignmentCenter];
         [self addSubview:_messageLabel];
         
-        _notificationLabel = [YUtils initLabel:CONTENT_FONT(frame.size.height/2) color:KCOLOR_009688 text:[textArray objectAtIndex:CommonSwitchTypeSec] frame:CGRectMake(frame.size.width/2, 0, frame.size.width/2, frame.size.height) alignment:NSTextAlignmentCenter];
+        _notificationLabel = [YUtils initLabel:CONTENT_FONT(frame.size.height/2)
+                                         color:KCOLOR_009688
+                                          text:[textArray objectAtIndex:CommonSwitchTypeSec]
+                                         frame:CGRectMake(frame.size.width/2, 0
+                                                          , frame.size.width/2, frame.size.height)
+                                     alignment:NSTextAlignmentCenter];
         [self addSubview:_notificationLabel];
         
         //button
         _leftButton = [UIButton buttonWithType:UIButtonTypeCustom];
         _leftButton.frame = CGRectMake(0, 0, frame.size.width/2, frame.size.height);
-        [_leftButton addTarget:self action:@selector(pressLeftButton) forControlEvents:UIControlEventTouchUpInside];
+        [_leftButton addTarget:self
+                        action:@selector(pressLeftButton)
+              forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:_leftButton];
         
         _rightButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        _rightButton.frame = CGRectMake(frame.size.width/2, 0, frame.size.width/2, frame.size.height);
-        [_rightButton addTarget:self action:@selector(pressRightButton) forControlEvents:UIControlEventTouchUpInside];
+        _rightButton.frame = CGRectMake(frame.size.width/2, 0
+                                        , frame.size.width/2, frame.size.height);
+        [_rightButton addTarget:self
+                         action:@selector(pressRightButton)
+               forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:_rightButton];
         
         _switchType = CommonSwitchTypeFir;
@@ -61,7 +78,7 @@
 
 - (void)changedType:(ChangeCommonSwitchType)type
 {
-    _changeTypeBlock = type;
+    self.changeTypeBlock = type;
 }
 
 - (void)pressLeftButton {

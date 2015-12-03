@@ -48,7 +48,9 @@
         self.backgroundView.backgroundColor = [UIColor blackColor];
         [self addSubview:self.backgroundView];
         
-        [self.backgroundView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hide)]];
+        [self.backgroundView addGestureRecognizer:[[UITapGestureRecognizer alloc]
+                                                   initWithTarget:self
+                                                   action:@selector(hide)]];
         
         [self initContentView];
     }
@@ -65,7 +67,9 @@
     }];
     
     UIImageView *backgroundImageView = [[UIImageView alloc] init];
-    backgroundImageView.image = [[UIImage imageNamed:@"build_background"] resizableImageWithCapInsets:UIEdgeInsetsMake(9, 5, 6, 5) resizingMode:UIImageResizingModeStretch];
+    backgroundImageView.image = [[UIImage imageNamed:@"build_background"]
+                                 resizableImageWithCapInsets:UIEdgeInsetsMake(9, 5, 6, 5)
+                                 resizingMode:UIImageResizingModeStretch];
     [self.contentView addSubview:backgroundImageView];
     [backgroundImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.equalTo(self.contentView);
@@ -76,7 +80,8 @@
 
 - (void)initMidView {
     //课程
-    UIImageView *courseImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"havetime_icon_classname"]];
+    UIImageView *courseImageView = [[UIImageView alloc]
+                                    initWithImage:[UIImage imageNamed:@"havetime_icon_classname"]];
     [self.contentView addSubview:courseImageView];
     
     [courseImageView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -110,7 +115,8 @@
     }];
     
     //授课人
-    UIImageView *lecturerImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"havetime_icon_teacher"]];
+    UIImageView *lecturerImageView = [[UIImageView alloc]
+                                      initWithImage:[UIImage imageNamed:@"havetime_icon_teacher"]];
     [self.contentView addSubview:lecturerImageView];
     
     [lecturerImageView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -143,7 +149,8 @@
     }];
     
     //上课时间
-    UIImageView *timeImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"havetime_icon_time"]];
+    UIImageView *timeImageView = [[UIImageView alloc]
+                                  initWithImage:[UIImage imageNamed:@"havetime_icon_time"]];
     [self.contentView addSubview:timeImageView];
     
     [timeImageView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -176,7 +183,8 @@
     }];
     
     //周次
-    UIImageView *weekImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"course_icon_week"]];
+    UIImageView *weekImageView = [[UIImageView alloc]
+                                  initWithImage:[UIImage imageNamed:@"course_icon_week"]];
     [self.contentView addSubview:weekImageView];
     
     [weekImageView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -209,7 +217,8 @@
     }];
     
     //上课地点
-    UIImageView *locationImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"build_icon_location"]];
+    UIImageView *locationImageView = [[UIImageView alloc]
+                                      initWithImage:[UIImage imageNamed:@"build_icon_location"]];
     locationImageView.contentMode = UIViewContentModeCenter;
     [self.contentView addSubview:locationImageView];
     
@@ -243,7 +252,8 @@
     }];
     
     //开课单位
-    UIImageView *departmentsImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"havetime_icon_academy"]];
+    UIImageView *departmentsImageView = [[UIImageView alloc]
+                                         initWithImage:[UIImage imageNamed:@"havetime_icon_academy"]];
     [self.contentView addSubview:departmentsImageView];
     
     [departmentsImageView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -285,7 +295,8 @@
 - (void)initData:(FindMyCourseViewModel *)model {
     _courseName.text = model.courseName;
     _lecturerName.text = model.teacherName;
-    _timeLabel.text = [[CurriculumManager sharedInstance] getCourseTimeByClass:model.beginPhase endTime:model.endPhase];
+    _timeLabel.text = [[CurriculumManager sharedInstance] getCourseTimeByClass:model.beginPhase
+                                                                       endTime:model.endPhase];
     _locationLabel.text = model.roomName;
     _departmentsName.text = model.departmentName;
     _weekLabel.text = [[CurriculumManager sharedInstance] weekByCourseTimeID:model];

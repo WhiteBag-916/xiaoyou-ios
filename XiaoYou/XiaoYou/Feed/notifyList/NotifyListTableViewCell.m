@@ -29,8 +29,11 @@ NSString *const kNotifyListTableViewCell = @"NotifyListTableViewCellId";
 
 @implementation NotifyListTableViewCell
 
-- (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
-    if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
+- (instancetype)initWithStyle:(UITableViewCellStyle)style
+              reuseIdentifier:(NSString *)reuseIdentifier
+{
+    if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier])
+    {
         
         //头像
         _face = [[YFaceImageView alloc] init];
@@ -58,7 +61,7 @@ NSString *const kNotifyListTableViewCell = @"NotifyListTableViewCellId";
         //content
         _contentLabel = [YUtils initLabel:CONTENT_FONT(12)
                                     color:KCOLOR_455A64
-                                     text:@"评论评论评论评论评论评论评论评论评论评论评论评论评论评论评论"
+                                     text:@"评论评论评论评论评论评论评论评论"
                                     frame:CGRectZero
                                 alignment:NSTextAlignmentLeft];
         [self.contentView addSubview:_contentLabel];
@@ -80,7 +83,9 @@ NSString *const kNotifyListTableViewCell = @"NotifyListTableViewCellId";
 - (void)initData:(AlertList *)alertList {
     [_face setData:alertList.userId imageUrl:alertList.headPic];
     _contentLabel.text = alertList.content;
-    _timeLabel.text = [YUtils distanceTimeToday:[NSDate dateWithTimeIntervalSince1970:alertList.createTime/1000]];
+    _timeLabel.text = [YUtils
+                       distanceTimeToday:[NSDate
+                                          dateWithTimeIntervalSince1970:alertList.createTime/1000]];
 }
 
 /*

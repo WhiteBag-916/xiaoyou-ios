@@ -166,12 +166,12 @@ NSInteger const kLoginCommonTextFieldTag = 1999;
                                pageIndicatorTintColor:(UIColor *)pageIndicatorTintColor
                         currentPageIndicatorTintColor:(UIColor *)currentPageIndicatorTintColor
 {
-    UIPageControl * pageControl = [[UIPageControl alloc] init];
-    pageControl.userInteractionEnabled = enabel;
-    pageControl.backgroundColor = color;
-    pageControl.numberOfPages = numberOfPages;
-    pageControl.currentPage = currentPage;
-    pageControl.pageIndicatorTintColor = pageIndicatorTintColor;
+    UIPageControl * pageControl               = [[UIPageControl alloc] init];
+    pageControl.userInteractionEnabled        = enabel;
+    pageControl.backgroundColor               = color;
+    pageControl.numberOfPages                 = numberOfPages;
+    pageControl.currentPage                   = currentPage;
+    pageControl.pageIndicatorTintColor        = pageIndicatorTintColor;
     pageControl.currentPageIndicatorTintColor = currentPageIndicatorTintColor;
     
     return pageControl;
@@ -185,6 +185,7 @@ NSInteger const kLoginCommonTextFieldTag = 1999;
     UITextView *textView = [[UITextView alloc]init];
     textView.userInteractionEnabled = NO;
     textView.editable = NO;
+    textView.selectable = YES;
     textView.scrollEnabled = false;
     textView.textContainer.lineFragmentPadding = 0;
     textView.textContainerInset = UIEdgeInsetsZero;
@@ -201,15 +202,23 @@ NSInteger const kLoginCommonTextFieldTag = 1999;
                                 textColor:(UIColor *)textColor
                                      text:(NSString *)text;
 {
-    UILabel *label = [[UILabel alloc] init];
-    label.font = font;
-    label.textColor = textColor;
+    UILabel *label        = [[UILabel alloc] init];
+    label.font            = font;
+    label.textColor       = textColor;
     label.backgroundColor = color;
-    label.textAlignment = textAlignment;
-    label.numberOfLines = numberOfLines;
-    label.text = text;
+    label.textAlignment   = textAlignment;
+    label.numberOfLines   = numberOfLines;
+    label.text            = text;
     return label;
 }
+
++ (UIView *)initLineViewWithbackgroundColor:(UIColor *)color
+{
+    UIView *lineView = [[UIView alloc]init];
+    lineView.backgroundColor = color;
+    return lineView;
+}
+
 /////////////////////////////////////////////////////////////////////////////////////////////////
 
 + (UIImageView *)initImageViewWithBackgroundColor:(UIColor *)color
@@ -217,12 +226,42 @@ NSInteger const kLoginCommonTextFieldTag = 1999;
                                     clipsToBounds:(BOOL)clipsToBounds
                                             image:(UIImage *)image
 {
-    UIImageView *imageView = [[UIImageView alloc] init];
-    imageView.image = image;
-    imageView.backgroundColor = color;
+    UIImageView *imageView       = [[UIImageView alloc] init];
+    imageView.image              = image;
+    imageView.backgroundColor    = color;
     imageView.layer.cornerRadius = cornerRadius;
-    imageView.clipsToBounds = clipsToBounds;
+    imageView.clipsToBounds      = clipsToBounds;
     return imageView;
 }
+/////////////////////////////////////////////////////////////////////////////////////////////////
 
++ (UIView *)initViewWithBackgroundColor:(UIColor *)color
+                           cornerRadius:(NSInteger)cornerRadius
+                          clipsToBounds:(BOOL)clipsToBounds
+                                  alpha:(NSInteger)alpha
+{
+    UIView * view           = [[UIView alloc] init];
+    view.backgroundColor    = color;
+    view.layer.cornerRadius = cornerRadius;
+    view.clipsToBounds      = clipsToBounds;
+    view.alpha              = alpha;
+    
+    return view;
+}
+
++ (void)setTextViewDataWithTextView:(UITextView *)textView text:(NSString *)text
+                               Font:(UIFont *)font textColor:(UIColor *)textColor
+                         linespaing:(CGFloat)lineSpace
+{
+    NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
+    paragraphStyle.lineSpacing = lineSpace;// 字体的行间距
+    
+    NSDictionary *attributes = @{
+                                 NSForegroundColorAttributeName:textColor,
+                                 NSFontAttributeName:font,
+                                 NSParagraphStyleAttributeName:paragraphStyle
+                                 };
+    textView.attributedText = [[NSAttributedString alloc]
+                                  initWithString:text attributes:attributes];
+}
 @end

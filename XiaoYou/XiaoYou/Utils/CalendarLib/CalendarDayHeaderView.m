@@ -82,7 +82,9 @@
     
     NSMutableArray *labels = [NSMutableArray arrayWithCapacity:7];
     for(NSInteger i=0;i<7;i++){
-        TKDateLabel *label = [[TKDateLabel alloc] initWithFrame:CGRectMake(minX+(DAY_LABEL_WIDTH+per)*i, 23, DAY_LABEL_WIDTH, DAY_LABEL_WIDTH)];
+        TKDateLabel *label = [[TKDateLabel alloc] initWithFrame:
+                              CGRectMake(minX+(DAY_LABEL_WIDTH+per)*i, 23
+                                         , DAY_LABEL_WIDTH, DAY_LABEL_WIDTH)];
         label.weekend = i % 6 == 0;
         //label.backgroundColor = [UIColor redColor];
         [self addSubview:label];
@@ -130,7 +132,7 @@
 //星期
 - (void)initHeadView {
     NSInteger cnt = 0;
-    NSArray *daySymbols = @[@"日", @"一", @"二", @"三", @"四", @"五", @"六"];//[[NSCalendar currentCalendar] shortWeekdaySymbols];
+    NSArray *daySymbols = @[@"日", @"一", @"二", @"三", @"四", @"五", @"六"];
     CGFloat wid = CGRectGetWidth(self.frame);
     wid -= 8;
     
@@ -139,7 +141,9 @@
     NSInteger minX = per / 2;
     
     for(NSString *str in daySymbols){
-        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(minX + cnt*(DAY_LABEL_WIDTH+per) , 5, DAY_LABEL_WIDTH, 20)];
+        UILabel *label = [[UILabel alloc] initWithFrame:
+                          CGRectMake(minX + cnt*(DAY_LABEL_WIDTH+per)
+                                     , 5, DAY_LABEL_WIDTH, 20)];
         label.font = [UIFont systemFontOfSize:10];
         label.text = str;
         label.textColor = cnt == 0 || cnt == 6 ? KCOLOR_B5 : [UIColor blackColor];
@@ -158,7 +162,9 @@
     
     [self addSubview:self.daysScrollView];
 
-    UIView *dayContainerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.daysScrollView.width*3, CGRectGetHeight(self.daysScrollView.frame))];
+    UIView *dayContainerView = [[UIView alloc] initWithFrame:
+                                CGRectMake(0, 0, self.daysScrollView.width*3
+                                           , CGRectGetHeight(self.daysScrollView.frame))];
     [self.daysScrollView addSubview:dayContainerView];
     
     CGRect weekFrame = self.daysScrollView.frame;
@@ -169,7 +175,9 @@
         TKWeekdaysView *weekdayView = [[TKWeekdaysView alloc] initWithFrame:weekFrame];
         for(UILabel *label in weekdayView.weekdayLabels){
             label.userInteractionEnabled = YES;
-            [label addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(didTapWeekdayLabel:)]];
+            [label addGestureRecognizer:
+             [[UITapGestureRecognizer alloc] initWithTarget:self
+                                                     action:@selector(didTapWeekdayLabel:)]];
         }
         [dayContainerView addSubview:weekdayView];
         [weekdayView bringSubviewToFront:dayContainerView];
@@ -197,86 +205,11 @@
     if (self.delegate) {
         [self.delegate moveToDate:theNewDate];
     }
-    
-//    [self _timelineAtIndex:pageToUpdate].date = theNewDate;
-//    [self _refreshDataWithPageAtIndex:pageToUpdate];
-//
-//    
-//    [UIView animateWithDuration:animated ? 0.3 : 0 animations:^{
-//        
-//        self.horizontalScrollView.contentOffset = CGPointMake(CGRectGetWidth(self.horizontalScrollView.frame) * pageToUpdate, 0);
-//        
-//    }completion:^(BOOL finished){
-//        
-//        
-//        UIScrollView *needsUpdating = nil;
-//        NSInteger updateIndex = 1;
-//        
-//        if(pageToUpdate<1){
-//            UIScrollView *sv = [self.pages lastObject];
-//            [self.pages insertObject:sv atIndex:0];
-//            [self.pages removeLastObject];
-//            needsUpdating = sv;
-//            updateIndex = 0;
-//        }else if(pageToUpdate>1){
-//            UIScrollView *sv = self.pages[0];
-//            [self.pages addObject:sv];
-//            [self.pages removeObjectAtIndex:0];
-//            needsUpdating = sv;
-//            updateIndex = 2;
-//        }
-//        
-//        self.currentDay = theNewDate;
-//        [self _updateDateLabel];
-//        
-//        NSDateComponents *info = [self.currentDay dateComponentsWithTimeZone:self.calendar.timeZone];
-//        info.day += pageToUpdate < 1 ? -1 : 1;
-//        [self _timelineWithScrollView:needsUpdating].date = [NSDate dateWithDateComponents:info];
-//        
-//        
-//        NSInteger i = 0;
-//        for(UIScrollView *sv in self.pages){
-//            CGRect r = sv.frame;
-//            r.origin.x = HORIZONTAL_PAD + CGRectGetWidth(self.horizontalScrollView.frame) * i;
-//            sv.frame = r;
-//            i++;
-//        }
-//        self.horizontalScrollView.contentOffset = CGPointMake(CGRectGetWidth(self.horizontalScrollView.frame), 0);
-//        
-//        NSArray *allLabels = [self _allDayLabels];
-//        [self _timelineAtIndex:0].date = [allLabels[self.indexOfCurrentDay+7-1] date];
-//        [self _timelineAtIndex:2].date = [allLabels[self.indexOfCurrentDay+7+1] date];
-//        ((UIScrollView*)self.pages[0]).contentOffset = CGPointZero;
-//        ((UIScrollView*)self.pages[2]).contentOffset = CGPointZero;
-//        [self _refreshDataWithPageAtIndex:0];
-//        [self _refreshDataWithPageAtIndex:2];
-//        
-//        needsUpdating.contentOffset = CGPointZero;
-//        [self _refreshDataWithPageAtIndex:updateIndex];
-//        
-//        
-//        if(self.delegate && [self.delegate respondsToSelector:@selector(calendarDayTimelineView:didMoveToDate:)])
-//            [self.delegate calendarDayTimelineView:self didMoveToDate:self.currentDay];
-//        
-//        [self _scrollToTopEvent:YES];
-//        
-//        
-//        if(self.delegate && [self.delegate respondsToSelector:@selector(calendarDayTimelineView:didMoveToDate:)])
-//            [self.delegate calendarDayTimelineView:self didMoveToDate:self.currentDay];
-//        
-//
-        [self resetData:theNewDate];
-//        [UIView transitionWithView:self.daysScrollView.subviews.firstObject duration:0.3 options:UIViewAnimationOptionTransitionCrossDissolve animations:^{
-            [self _updateSelectedWeekdayAtIndex:self.indexOfCurrentDay+7];
-//        }completion:nil];
-//
-//        [self _scrollToTopEvent:animated];
-        self.userInteractionEnabled = YES;
-//
-//        
-//    }];
-    
-    
+
+    [self resetData:theNewDate];
+
+    self.userInteractionEnabled = YES;
+
     
 }
 - (void)_resetWeekdayOrderByMoving:(BOOL)forwards{
@@ -289,12 +222,16 @@
         TKWeekdaysView *currentWeekView = self.weekdayPages[1];
         TKDateLabel *currentPageLabel  = currentWeekView.weekdayLabels.lastObject;
         
-        NSDateComponents *mutedCom = [self.calendar components:NSCalendarUnitDay | NSCalendarUnitMonth | NSCalendarUnitYear | NSCalendarUnitEra fromDate:currentPageLabel.date];
+        NSDateComponents *mutedCom = [self.calendar components:NSCalendarUnitDay
+                                      | NSCalendarUnitMonth | NSCalendarUnitYear | NSCalendarUnitEra
+                                                      fromDate:currentPageLabel.date];
         mutedCom.day++;
         for(TKDateLabel *label in weekView.weekdayLabels){
             
             NSDate *aDate = [self.calendar dateFromComponents:mutedCom];
-            mutedCom = [self.calendar components:NSCalendarUnitDay | NSCalendarUnitMonth | NSCalendarUnitYear | NSCalendarUnitEra fromDate:aDate];
+            mutedCom = [self.calendar components:NSCalendarUnitDay | NSCalendarUnitMonth
+                        | NSCalendarUnitYear | NSCalendarUnitEra
+                                        fromDate:aDate];
             label.text = [NSString stringWithFormat:@"%@",@(mutedCom.day)];
             label.date = aDate;
             label.today = [aDate isTodayWithTimeZone:self.calendar.timeZone];
@@ -311,12 +248,17 @@
         TKWeekdaysView *currentWeekView = self.weekdayPages[1];
         TKDateLabel *currentPageLabel  = currentWeekView.weekdayLabels.firstObject;
         
-        NSDateComponents *mutedCom = [self.calendar components:NSCalendarUnitDay | NSCalendarUnitMonth | NSCalendarUnitYear | NSCalendarUnitEra fromDate:currentPageLabel.date];
+        NSDateComponents *mutedCom = [self.calendar components:NSCalendarUnitDay
+                                      | NSCalendarUnitMonth | NSCalendarUnitYear
+                                      | NSCalendarUnitEra
+                                                      fromDate:currentPageLabel.date];
         mutedCom.day --;
         for(TKDateLabel *label in weekView.weekdayLabels.reverseObjectEnumerator){
             
             NSDate *aDate = [self.calendar dateFromComponents:mutedCom];
-            mutedCom = [self.calendar components:NSCalendarUnitDay | NSCalendarUnitMonth | NSCalendarUnitYear | NSCalendarUnitEra fromDate:aDate];
+            mutedCom = [self.calendar components:NSCalendarUnitDay | NSCalendarUnitMonth
+                        | NSCalendarUnitYear | NSCalendarUnitEra
+                                        fromDate:aDate];
             label.text = [NSString stringWithFormat:@"%@",@(mutedCom.day)];
             label.date = aDate;
             label.today = [aDate isTodayWithTimeZone:self.calendar.timeZone];
@@ -329,12 +271,12 @@
     }
     
     
-    NSInteger i = 0;
+    NSInteger index = 0;
     for(TKWeekdaysView *sv in self.weekdayPages){
-        CGRect r = sv.frame;
-        r.origin.x = CGRectGetWidth(self.daysScrollView.frame) * i;
-        sv.frame = r;
-        i++;
+        CGRect rect = sv.frame;
+        rect.origin.x = CGRectGetWidth(self.daysScrollView.frame) * index;
+        sv.frame = rect;
+        index++;
     }
     self.daysScrollView.contentOffset = CGPointMake(CGRectGetWidth(self.daysScrollView.frame), 0);
     
@@ -344,10 +286,10 @@
     NSArray *allLabel = [self _allDayLabels];
     
     NSInteger index = allLabelsIndex;
-    NSInteger i=0;
+    NSInteger weekday=0;
     for(TKDateLabel *label in allLabel){
-        label.selected = i == index;
-        i++;
+        label.selected = weekday == index;
+        weekday++;
     }
     
     
@@ -376,87 +318,33 @@
         [self.delegate moveToDate:theNewDate];
     }
     
-    [UIView transitionWithView:self.daysScrollView.subviews.firstObject duration:0.3 options:UIViewAnimationOptionTransitionCrossDissolve animations:^{
+    [UIView transitionWithView:self.daysScrollView.subviews.firstObject
+                      duration:0.3
+                       options:UIViewAnimationOptionTransitionCrossDissolve
+                    animations:^{
         [self _updateSelectedWeekdayAtIndex:indexOfSelectedLabel];
     }completion:nil];
-//
-//    [UIView animateWithDuration:0.3 delay:0 options:UIViewAnimationOptionBeginFromCurrentState animations:^{
-//        self.horizontalScrollView.contentOffset = CGPointMake(CGRectGetWidth(self.horizontalScrollView.frame) * pageToUpdate, 0);
-//    }completion:^(BOOL finished){
-//        
-//        
-//        UIScrollView *needsUpdating = nil;
-//        NSInteger updateIndex = 1;
-//        
-//        if(pageToUpdate<1){
-//            UIScrollView *sv = [self.pages lastObject];
-//            [self.pages insertObject:sv atIndex:0];
-//            [self.pages removeLastObject];
-//            needsUpdating = sv;
-//            updateIndex = 0;
-//        }else if(pageToUpdate>1){
-//            UIScrollView *sv = self.pages[0];
-//            [self.pages addObject:sv];
-//            [self.pages removeObjectAtIndex:0];
-//            needsUpdating = sv;
-//            updateIndex = 2;
-//        }
-//        
-//        self.currentDay = theNewDate;
-//        [self _updateDateLabel];
-//        
-//        NSDateComponents *info = [self.currentDay dateComponentsWithTimeZone:self.calendar.timeZone];
-//        info.day += pageToUpdate < 1 ? -1 : 1;
-//        [self _timelineWithScrollView:needsUpdating].date = [NSDate dateWithDateComponents:info];
-//        
-//        
-//        NSInteger i = 0;
-//        for(UIScrollView *sv in self.pages){
-//            CGRect r = sv.frame;
-//            r.origin.x = HORIZONTAL_PAD + CGRectGetWidth(self.horizontalScrollView.frame) * i;
-//            sv.frame = r;
-//            i++;
-//        }
-//        self.horizontalScrollView.contentOffset = CGPointMake(CGRectGetWidth(self.horizontalScrollView.frame), 0);
-//        
-//        
-//        [self _timelineAtIndex:0].date = [allLabels[indexOfSelectedLabel-1] date];
-//        [self _timelineAtIndex:2].date = [allLabels[indexOfSelectedLabel+1] date];
-//        ((UIScrollView*)self.pages[0]).contentOffset = CGPointZero;
-//        ((UIScrollView*)self.pages[2]).contentOffset = CGPointZero;
-//        [self _refreshDataWithPageAtIndex:0];
-//        [self _refreshDataWithPageAtIndex:2];
-//        
-//        needsUpdating.contentOffset = CGPointZero;
-//        [self _refreshDataWithPageAtIndex:updateIndex];
-//        
-//        
-//        if(self.delegate && [self.delegate respondsToSelector:@selector(calendarDayTimelineView:didMoveToDate:)])
-//            [self.delegate calendarDayTimelineView:self didMoveToDate:self.currentDay];
-//        
-//        [self _scrollToTopEvent:YES];
-//        
-        self.userInteractionEnabled = YES;
-        self.indexOfCurrentDay = indexOfSelectedLabel - 7;
-        [self resetData:theNewDate];
-//
-//        if(self.delegate && [self.delegate respondsToSelector:@selector(calendarDayTimelineView:didMoveToDate:)])
-//            [self.delegate calendarDayTimelineView:self didMoveToDate:self.currentDay];
-//    }];
-    
-    
-    
-    
+
+    self.userInteractionEnabled = YES;
+    self.indexOfCurrentDay = indexOfSelectedLabel - 7;
+    [self resetData:theNewDate];
     
 }
 - (void) _setupDaysView{
     
     NSArray *labels =  [self _allDayLabels];
-    NSDateComponents *comp = [self.calendar components:NSCalendarUnitDay | NSCalendarUnitMonth | NSCalendarUnitYear | NSCalendarUnitEra | NSCalendarUnitWeekday fromDate:self.currentDay];
-    NSDateComponents *mutedCom = [self.calendar components:NSCalendarUnitDay | NSCalendarUnitMonth | NSCalendarUnitYear | NSCalendarUnitEra fromDate:self.currentDay];
+    NSDateComponents *comp = [self.calendar components:NSCalendarUnitDay | NSCalendarUnitMonth | NSCalendarUnitYear
+                              | NSCalendarUnitEra | NSCalendarUnitWeekday
+                                              fromDate:self.currentDay];
+    NSDateComponents *mutedCom = [self.calendar components:NSCalendarUnitDay
+                                  | NSCalendarUnitMonth | NSCalendarUnitYear
+                                  | NSCalendarUnitEra
+                                                  fromDate:self.currentDay];
     for(NSInteger cnt= comp.weekday + 6;cnt>=0;cnt--){
         NSDate *aDate = [self.calendar dateFromComponents:mutedCom];
-        mutedCom = [self.calendar components:NSCalendarUnitDay | NSCalendarUnitMonth | NSCalendarUnitYear | NSCalendarUnitEra fromDate:aDate];
+        mutedCom = [self.calendar components:NSCalendarUnitDay | NSCalendarUnitMonth
+                    | NSCalendarUnitYear | NSCalendarUnitEra
+                                    fromDate:aDate];
         TKDateLabel *label = labels[cnt];
         label.text = [NSString stringWithFormat:@"%@",@(mutedCom.day)];
         label.date = aDate;
@@ -465,12 +353,16 @@
         mutedCom.day --;
     }
     
-    mutedCom = [self.calendar components:NSCalendarUnitDay | NSCalendarUnitMonth | NSCalendarUnitYear | NSCalendarUnitEra fromDate:self.currentDay];
+    mutedCom = [self.calendar components:NSCalendarUnitDay | NSCalendarUnitMonth
+                | NSCalendarUnitYear | NSCalendarUnitEra
+                                fromDate:self.currentDay];
     
     for(NSInteger cnt= comp.weekday + 6;cnt<labels.count;cnt++){
         
         NSDate *aDate = [self.calendar dateFromComponents:mutedCom];
-        mutedCom = [self.calendar components:NSCalendarUnitDay | NSCalendarUnitMonth | NSCalendarUnitYear | NSCalendarUnitEra fromDate:aDate];
+        mutedCom = [self.calendar components:NSCalendarUnitDay | NSCalendarUnitMonth
+                    | NSCalendarUnitYear | NSCalendarUnitEra
+                                    fromDate:aDate];
         TKDateLabel *label = labels[cnt];
         label.text = [NSString stringWithFormat:@"%@",@(mutedCom.day)];
         label.date = aDate;
@@ -519,7 +411,8 @@
 - (UILabel *) monthYearLabel{
     if(_monthYearLabel) return _monthYearLabel;
     
-    _monthYearLabel = [[UILabel alloc] initWithFrame:CGRectInset(CGRectMake(0, self.height - 24 - 6, self.width, 20), 40, 0)];
+    _monthYearLabel = [[UILabel alloc] initWithFrame:
+                       CGRectInset(CGRectMake(0, self.height - 24 - 6 ,self.width, 20), 40, 0)];
     _monthYearLabel.backgroundColor = [UIColor greenColor];
     _monthYearLabel.textAlignment = NSTextAlignmentCenter;
     _monthYearLabel.backgroundColor = [UIColor clearColor];
@@ -531,7 +424,9 @@
 
 - (UIScrollView*) daysScrollView{
     if(_daysScrollView) return _daysScrollView;
-    _daysScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.frame), CGRectGetMinY(self.monthYearLabel.frame))];
+    _daysScrollView = [[UIScrollView alloc] initWithFrame:
+                       CGRectMake(0, 0, CGRectGetWidth(self.frame),
+                                  CGRectGetMinY(self.monthYearLabel.frame))];
 //    _daysScrollView.backgroundColor = [UIColor redColor];
     _daysScrollView.pagingEnabled = YES;
     _daysScrollView.delegate = self;
@@ -543,9 +438,9 @@
 
 #pragma mark UIScrollViewDelegate
 - (NSInteger) _currentScrolledWeek{
-    CGFloat w = CGRectGetWidth(self.daysScrollView.frame);
-    CGFloat x = self.daysScrollView.contentOffset.x + (w/2.0f);
-    return x / w;
+    CGFloat width = CGRectGetWidth(self.daysScrollView.frame);
+    CGFloat offX = self.daysScrollView.contentOffset.x + (width/2.0f);
+    return offX / width;
 }
 - (void) _checkForAdvancingWeek{
     NSInteger page = [self _currentScrolledWeek];

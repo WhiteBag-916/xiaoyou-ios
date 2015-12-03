@@ -37,7 +37,7 @@
     [self showCustomNavigationNextButton];
     self.view.backgroundColor = KCOLOR_e6ebea;
     
-    _isCheckButton = YES;
+    self.isCheckButton = YES;
     
     [self initView];
     
@@ -80,36 +80,14 @@
     _passwordTextField.secureTextEntry = YES;
     _passwordTextField.placeholder = @"密码";
     
-//    //protocolCheckButton
-//    _protocolCheckButton = [UIButton buttonWithType:UIButtonTypeCustom];
-//    [_protocolCheckButton setImage:[UIImage imageNamed:@"register-frame-agree"] forState:UIControlStateNormal];
-//    [_protocolCheckButton addTarget:self action:@selector(checkButton) forControlEvents:UIControlEventTouchUpInside];
-//    [self.view addSubview:_protocolCheckButton];
-//    [_protocolCheckButton mas_makeConstraints:^(MASConstraintMaker *make) {
-//        make.left.equalTo(self.view);
-//        make.top.equalTo(_passwordTextField.mas_bottom);
-//        make.height.mas_equalTo(SCALE_NUM(35));
-//        make.width.mas_equalTo(SCALE_NUM(36));
-//    }];
-//    
-//    //显示协议条款
-//    _showProtocalButton = [UIButton buttonWithType:UIButtonTypeCustom];
-//    [_showProtocalButton setTitle:@"同意用户条款" forState:UIControlStateNormal];
-//    _showProtocalButton.titleLabel.font = CONTENT_FONT(12);
-//    [_showProtocalButton setTitleColor:KCOLOR_009688 forState:UIControlStateNormal];
-//    [_showProtocalButton addTarget:self action:@selector(pressShowProtocalButton) forControlEvents:UIControlEventTouchUpInside];
-//    [self.view addSubview:_showProtocalButton];
-//    [_showProtocalButton mas_makeConstraints:^(MASConstraintMaker *make) {
-//        make.left.equalTo(_protocolCheckButton.mas_right);
-//        make.top.height.equalTo(_protocolCheckButton);
-//    }];
-    
     //忘记密码
     UIButton *forgotPassword = [UIButton buttonWithType:UIButtonTypeCustom];
     [forgotPassword setTitle:@"忘记密码？" forState:UIControlStateNormal];
     [forgotPassword setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     forgotPassword.titleLabel.font = CONTENT_FONT(12);
-    [forgotPassword addTarget:self action:@selector(pressForgotPassword) forControlEvents:UIControlEventTouchUpInside];
+    [forgotPassword addTarget:self
+                       action:@selector(pressForgotPassword)
+             forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:forgotPassword];
     [forgotPassword mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.view);
@@ -123,7 +101,9 @@
     [firstLogin setTitle:@"首次登录>" forState:UIControlStateNormal];
     [firstLogin setTitleColor:KCOLOR_009688 forState:UIControlStateNormal];
     firstLogin.titleLabel.font = CONTENT_FONT(12);
-    [firstLogin addTarget:self action:@selector(pressFirstLogin) forControlEvents:UIControlEventTouchUpInside];
+    [firstLogin addTarget:self
+                   action:@selector(pressFirstLogin)
+         forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:firstLogin];
     [firstLogin mas_makeConstraints:^(MASConstraintMaker *make) {
         make.right.equalTo(self.view);
@@ -131,53 +111,29 @@
         make.height.mas_equalTo(SCALE_NUM(35));
         make.width.mas_equalTo(SCALE_NUM(87));
     }];
-    
-    //初始密码
-//    UIButton *initialPassword = [UIButton buttonWithType:UIButtonTypeCustom];
-//    [initialPassword setTitle:@"初始密码范例" forState:UIControlStateNormal];
-//    [initialPassword setTitleColor:KCOLOR_009688 forState:UIControlStateNormal];
-//    initialPassword.titleLabel.font = CONTENT_FONT(12);
-//    initialPassword.layer.borderWidth = .5;
-//    initialPassword.layer.cornerRadius = 3;
-//    initialPassword.layer.borderColor = KCOLOR_009688.CGColor;
-//    [initialPassword addTarget:self action:@selector(pressInitialPassword) forControlEvents:UIControlEventTouchUpInside];
-//    [self.view addSubview:initialPassword];
-//    [initialPassword mas_makeConstraints:^(MASConstraintMaker *make) {
-//        make.centerX.equalTo(self.view);
-//        make.bottom.mas_equalTo(SCALE_NUM(-113));
-//        make.height.mas_equalTo(SCALE_NUM(36));
-//        make.width.mas_equalTo(SCALE_NUM(118));
-//    }];
-    
-    //蒙层
-//    _protocolImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"login_tip"]];
-//    _protocolImageView.hidden = YES;
-//    [[[[UIApplication sharedApplication] delegate] window] addSubview:_protocolImageView];
-//    [_protocolImageView mas_makeConstraints:^(MASConstraintMaker *make) {
-//        make.edges.equalTo([[[UIApplication sharedApplication] delegate] window]);
-//    }];
-//    
-//    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dissmissProtocol)];
-//    _protocolImageView.userInteractionEnabled = YES;
-//    [_protocolImageView addGestureRecognizer:tap];
 }
 
 //弹出协议条款
 - (void)pressShowProtocalButton {
     CNTextController *textController = [[CNTextController alloc] init];
     textController.textType = TextTermsOfAgreementType;
-    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:textController];
-    [self.view.window.rootViewController presentViewController:navigationController animated:YES completion:nil];
+    UINavigationController *navigationController = [[UINavigationController alloc]
+                                                    initWithRootViewController:textController];
+    [self.view.window.rootViewController presentViewController:navigationController
+                                                      animated:YES
+                                                    completion:nil];
 }
 
 //选择协议条款
 - (void)checkButton {
-    _isCheckButton = !_isCheckButton;
+    self.isCheckButton = !self.isCheckButton;
     
     if (_isCheckButton) {
-        [_protocolCheckButton setImage:[UIImage imageNamed:@"register-frame-agree"] forState:UIControlStateNormal];
+        [_protocolCheckButton setImage:[UIImage imageNamed:@"register-frame-agree"]
+                              forState:UIControlStateNormal];
     } else {
-        [_protocolCheckButton setImage:[UIImage imageNamed:@"register-frame"] forState:UIControlStateNormal];
+        [_protocolCheckButton setImage:[UIImage imageNamed:@"register-frame"]
+                              forState:UIControlStateNormal];
     }
     
     [self resetRightButton];
@@ -185,7 +141,10 @@
 
 //首次登录
 - (void)pressFirstLogin {
-    [self.navigationController pushViewController:[[ProfilePhoneChangeViewController alloc] initWithType:ProfilePhoneChangeTypeRegister hasPhone:NO] animated:YES];
+    [self.navigationController pushViewController:[[ProfilePhoneChangeViewController alloc]
+                                                   initWithType:ProfilePhoneChangeTypeRegister
+                                                   hasPhone:NO]
+                                         animated:YES];
 }
 
 //忘记密码
@@ -204,13 +163,16 @@
     [alert clickedButtonHandler:^(NSInteger index) {
         if (1 == index) {
             [YUtils showHUDWithTitle];
-            [[ProvisionManager sharedInstance] forgotPasswordReq:_accountTextField.text block:^(YActionMessage *message) {
+            [[ProvisionManager sharedInstance] forgotPasswordReq:_accountTextField.text
+                                                           block:^(YActionMessage *message) {
                 [YUtils hiddenProgressHUD];
                 
                 if (message.isSuccess) {
                     [YShareData defaultData][kShareData_StudentNo] = _accountTextField.text;
                     
-                    [self.navigationController pushViewController:[[ProfileChangePwdViewController alloc] initWithType:ProfileChangePwdTypeForget needLogin:YES] animated:true];
+                    [self.navigationController pushViewController:[[ProfileChangePwdViewController alloc] initWithType:ProfileChangePwdTypeForget
+                                                                                                             needLogin:YES]
+                                                         animated:true];
                 }else if (999+kYYServerErrorBase == message.errorCode) {
                     //提示默认密码
                     [self pressInitialPassword:YES];
@@ -227,7 +189,8 @@
 - (void)pressInitialPassword:(BOOL)needDissmiss {
     [self pressInitialPassword];
     if (needDissmiss) {
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.5 * NSEC_PER_SEC))
+                       , dispatch_get_main_queue(), ^{
             [self dissmissProtocol];
         });
     }
@@ -269,7 +232,9 @@
 {
     [YUtils showHUDWithTitle];
     //login
-    [[ProvisionManager sharedInstance] goLogin:_accountTextField.text password:_passwordTextField.text block:^(YActionMessage *message) {
+    [[ProvisionManager sharedInstance] goLogin:_accountTextField.text
+                                      password:_passwordTextField.text
+                                         block:^(YActionMessage *message) {
         [YUtils hiddenProgressHUD];
         if (message.isSuccess) {
             //成功
