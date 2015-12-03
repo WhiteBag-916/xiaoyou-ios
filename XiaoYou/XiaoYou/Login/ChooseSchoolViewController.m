@@ -308,6 +308,7 @@ UITableViewDelegate>
 //跳转
 - (void)pushToNext:(SchoolListModel *)schoolModel
 {
+    [MobClick event:@"event2"];
     [YShareData defaultData][kShareData_SchoolCode] = schoolModel.schoolCode;
     [YShareData defaultData][kShareData_SchoolName] = schoolModel.schoolName;
     

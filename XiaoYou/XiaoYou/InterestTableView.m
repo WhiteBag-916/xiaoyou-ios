@@ -151,6 +151,7 @@
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.row % 2 == 1) {
+        [MobClick event:@"event17"];
         NewsList *item = (NewsList *) [(InterestModel *)_dataArray[indexPath.section] newsList][indexPath.row/2];
         YWebViewController *web = [[YWebViewController alloc] initWithUrl:item.link andTitle:item.title canClick:false];
         [_parent.navigationController pushViewController:web animated:true];

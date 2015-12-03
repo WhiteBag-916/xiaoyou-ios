@@ -164,6 +164,7 @@
 
 -(void)turnToGroupChat:(NSDictionary *) groupDic
 {
+    [MobClick event:@"event18"];
     ClassList * model =  [[ContactManager sharedInstance] getClassByThirdCode:groupDic[@"group_id"]];
     if (nil != model) {
         ChatViewController * chatVC =

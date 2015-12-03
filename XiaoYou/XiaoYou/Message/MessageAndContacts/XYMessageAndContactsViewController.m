@@ -191,6 +191,7 @@
 {
     if (type == CommonSwitchTypeFir)
     {
+        [MobClick event:@"event9"];
         _messageTableView.hidden = NO;
         _contactsTableView.hidden = YES;
         [_messageTableView reloadData];
@@ -198,6 +199,7 @@
     }
     else
     {
+        [MobClick event:@"event10"];
         _contactsTableView.hidden = NO;
         _messageTableView.hidden = YES;
         [_contactsTableView refreshTableView:[[ContactManager sharedInstance] getContactsListData]];

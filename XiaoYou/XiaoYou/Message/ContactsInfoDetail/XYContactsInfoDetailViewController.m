@@ -185,6 +185,7 @@
         [YUtils showTitle:@"无网络连接"];
         return;
     }
+    [MobClick event:@"29"];
     YActionSheetItem *item1 = [YActionSheetItem itemWithType:YCommonActionSheetItemTypeSharePerson
                                                        title:@"分享该人名片至" extraData:_shareData];
     

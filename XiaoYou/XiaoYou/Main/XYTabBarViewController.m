@@ -23,12 +23,13 @@
 #define kTag_TabBar_Profile kTag_TabBar_Base + 3
 
 @interface XYTabBarViewController ()
-<IChatManagerDelegate>
+<IChatManagerDelegate, UITabBarControllerDelegate>
 
 @property(nonatomic,strong)XYMessageAndContactsViewController *messageVC;
 @property(nonatomic,strong)UINavigationController *messageViewCotroller;
 @property (nonatomic, strong) UINavigationController *feedListViewCotroller;
 @property (nonatomic, strong) UINavigationController *availableViewController;
+@property (nonatomic, strong) UINavigationController *profileViewCotroller;
 
 @end
 
@@ -49,6 +50,8 @@
 
 - (void)initControllers
 {
+    self.delegate = self;
+    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(openProfile:) name:KNotification_Open_Profile object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(setupUnreadMessageCount:) name:KNotification_Message_unread object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(openPraise:) name:KNotification_Open_PraiseDetail object:nil];
@@ -63,7 +66,7 @@
     _messageViewCotroller = [[UINavigationController alloc] initWithRootViewController:_messageVC];
     _availableViewController = [[UINavigationController alloc] initWithRootViewController:[[AvailableViewController alloc] init]];
     _feedListViewCotroller = [[UINavigationController alloc] initWithRootViewController:feedVC];
-    UINavigationController *profileViewCotroller = [[UINavigationController alloc] initWithRootViewController:profileVC];
+    _profileViewCotroller = [[UINavigationController alloc] initWithRootViewController:profileVC];
     
     //消息
     UITabBarItem *messageItem = [[UITabBarItem alloc] initWithTitle:@"消息"
@@ -96,10 +99,10 @@
                                                            tag:kTag_TabBar_Profile];
     profileItem.selectedImage = [[UIImage imageNamed:@"btn_mine_y"]
                             imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
-    profileViewCotroller.tabBarItem = profileItem;
+    _profileViewCotroller.tabBarItem = profileItem;
     
     self.tabBar.tintColor = KCOLOR_g1;
-    self.viewControllers = @[_messageViewCotroller, _availableViewController, _feedListViewCotroller, profileViewCotroller];
+    self.viewControllers = @[_messageViewCotroller, _availableViewController, _feedListViewCotroller, _profileViewCotroller];
 }
 
 - (void)openBrowser:(NSNotification *)notification {
@@ -165,5 +168,19 @@
     }
 }
 
+- (void)tabBarController:(UITabBarController *)tabBarController didSelectViewController:(UIViewController *)viewController {
+    if (viewController == _messageViewCotroller) {
+        [MobClick event:@"event13"];
+    }
+    if (viewController == _availableViewController) {
+        [MobClick event:@"event14"];
+    }
+    if (viewController == _feedListViewCotroller) {
+        [MobClick event:@"event15"];
+    }
+    if (viewController == _profileViewCotroller) {
+        [MobClick event:@"event16"];
+    }
+}
 
 @end

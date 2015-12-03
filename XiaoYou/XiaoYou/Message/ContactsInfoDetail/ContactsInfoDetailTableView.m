@@ -237,6 +237,7 @@ SDPhotoBrowserDelegate,ContactsInfoThirdTableViewCellDelegate>
 
 -(void)tapFooterView
 {
+    [MobClick event:@"32"];
     ProfilePublishViewController * profilePublish =
     [[ProfilePublishViewController alloc] initWithUserId:_model.uid
                                                     name:_model.userName];
@@ -323,6 +324,7 @@ SDPhotoBrowserDelegate,ContactsInfoThirdTableViewCellDelegate>
 
 -(void)didSelectCool
 {
+    [MobClick event:@"event31"];
     [YUtils showHUDWithTitle];
     [[ContactManager sharedInstance] praise:_model.uid block:^(YActionMessage *message) {
         [YUtils hiddenProgressHUD];

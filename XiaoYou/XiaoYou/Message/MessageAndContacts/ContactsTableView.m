@@ -339,6 +339,8 @@
 #pragma mark - headView 点击事件
 -(void)tapClassGestureRecognizerAction
 {
+    [MobClick event:@"event20"];
+
     XYGroupInfoDetailViewController * groupInfoDetailViewController =
     [[XYGroupInfoDetailViewController alloc] init];
     groupInfoDetailViewController.studentDic = _headDataSourceDic;
@@ -461,7 +463,7 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
- 
+    [MobClick event:@"event21"];
     NSLog(@"this is row = %li",(long)indexPath.section);
     ContactsTableViewCell * cell = (ContactsTableViewCell *)[self cellForRowAtIndexPath:indexPath];
     

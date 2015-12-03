@@ -101,6 +101,7 @@ NSString *const kXYGroupInfoDetailViewController = @"XYGroupInfoDetailViewContro
 #pragma mark - 点击底部button事件
 -(void)clickBottomButton
 {
+    [MobClick event:@"event24"];
     if ([self.navigationController.viewControllers[self.navigationController.viewControllers.count-2]
          isKindOfClass:[ChatViewController class]]) {
         [self.navigationController popViewControllerAnimated:YES];
@@ -115,7 +116,7 @@ NSString *const kXYGroupInfoDetailViewController = @"XYGroupInfoDetailViewContro
 #pragma mark - 分享ActionSheet
 -(void)onNavigationRightButtonClicked
 {
-    
+    [MobClick event:@"event22"];
     YActionSheetItem *item2 = [YActionSheetItem itemWithTitle:@"消息不提醒"
                                                          type:YCommonActionSheetItemTypeSwitch
                                                       isGroup:YES
@@ -126,6 +127,7 @@ NSString *const kXYGroupInfoDetailViewController = @"XYGroupInfoDetailViewContro
     YActionSheetItem *item3 = [YActionSheetItem itemWithTitle:@"举报"
                                                          type:YCommonActionSheetItemTypeCommon
                                                         block:^(NSInteger checkNum) {
+                                                            [MobClick event:@"event27"];
                                                             [YCommonReport report];
                                                         }];
     
