@@ -444,5 +444,16 @@
     return [NSDate timestampFormatString];
 }
 
+#pragma mark - 转换成标准时间
++(NSString *)transformDate:(NSString *) date
+{
+    NSDateFormatter * formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"yyyy年MM月dd日 a HH:mm"];
+    NSDate * tempDate = [formatter dateFromString:date];
+    [formatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+    NSString * dateStr = [formatter stringFromDate:tempDate];
+    
+    return dateStr;
+}
 
 @end
