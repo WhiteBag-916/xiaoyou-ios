@@ -131,6 +131,22 @@ extern NSInteger const kLoginCommonTextFieldTag;
                                     clipsToBounds:(BOOL)clipsToBounds
                                   alpha:(double)alpha;
 
+/*********************************************************************
+ 函数名称 :initButton
+ 函数描述 :构造Button
+ 参数 : 你懂的
+ 返回值 : 你懂的
+ 作者 : 尹先森
+ *********************************************************************/
++ (UIButton *)initButtonWithBackgroundColor:(UIColor *)color
+                                      title:(NSString *)title
+                              clipsToBounds:(BOOL)clipsToBounds
+                               cornerRadius:(double)cornerRadius
+                                       font:(UIFont *)font
+                                  tintColor:(UIColor *)tintColor
+                                      image:(UIImage *)image
+                                     target:(id)target
+                                     action:(SEL)selector;
 
 + (UITextView *)initDisplayTextViewWithFont:(UIFont*)font
                                   textColor:(UIColor*)color;

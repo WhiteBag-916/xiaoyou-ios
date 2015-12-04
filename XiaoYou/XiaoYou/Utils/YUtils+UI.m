@@ -278,4 +278,28 @@ NSInteger const kLoginCommonTextFieldTag = 1999;
     textView.attributedText = [[NSAttributedString alloc]
                                   initWithString:text attributes:attributes];
 }
+
++ (UIButton *)initButtonWithBackgroundColor:(UIColor *)color
+                                      title:(NSString *)title
+                              clipsToBounds:(BOOL)clipsToBounds
+                               cornerRadius:(double)cornerRadius
+                                       font:(UIFont *)font
+                                  tintColor:(UIColor *)tintColor
+                                      image:(UIImage *)image
+                                     target:(id)target
+                                     action:(SEL)selector
+{
+    UIButton * button           = [[UIButton alloc] init];
+    button.backgroundColor      = color;
+    [button setTitle:title forState:UIControlStateNormal];
+    button.layer.cornerRadius   = cornerRadius;
+    button.clipsToBounds        = YES;
+    button.titleLabel.font      = font;
+    button.tintColor            = tintColor;
+    [button setBackgroundImage:image
+                           forState:UIControlStateNormal];
+    [button addTarget:target action:selector forControlEvents:UIControlEventTouchUpInside];
+    return button;
+}
+
 @end
