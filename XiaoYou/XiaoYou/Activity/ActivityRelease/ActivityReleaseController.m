@@ -13,6 +13,7 @@
 #import "YDirectory+Data.h"
 #import "ActivityInfoModel.h"
 #import "YKeyBoard.h"
+#import "YDate+Ext.h"
 
 typedef enum : NSUInteger {
     POSITION1 = 1,
@@ -290,14 +291,7 @@ typedef enum : NSUInteger {
     [line1 mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(_point1View.mas_right);
         make.centerY.equalTo(_point1View);
-        if (_isIdentity)
-        {
-            make.width.mas_equalTo((SCREEN_WIDTH - 78)/5);
-        }
-        else
-        {
-            make.width.mas_equalTo((SCREEN_WIDTH - 70)/4);
-        }
+        (_isIdentity)?make.width.mas_equalTo((SCREEN_WIDTH - 78)/5):make.width.mas_equalTo((SCREEN_WIDTH - 70)/4);
         make.height.mas_equalTo(2);
     }];
     self.typeLabel1 = [YUtils initLabelWithBackgroundColor:[UIColor clearColor]
@@ -339,14 +333,7 @@ typedef enum : NSUInteger {
     [line2 mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(_point2View.mas_right);
         make.centerY.equalTo(_point2View);
-        if (_isIdentity)
-        {
-            make.width.mas_equalTo((SCREEN_WIDTH - 78)/5);
-        }
-        else
-        {
-            make.width.mas_equalTo((SCREEN_WIDTH - 70)/4);
-        }
+        (_isIdentity)?make.width.mas_equalTo((SCREEN_WIDTH - 78)/5):make.width.mas_equalTo((SCREEN_WIDTH - 70)/4);
         make.height.mas_equalTo(2);
     }];
     self.typeLabel2 = [YUtils initLabelWithBackgroundColor:[UIColor clearColor]
@@ -388,14 +375,7 @@ typedef enum : NSUInteger {
     [line3 mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(_point3View.mas_right);
         make.centerY.equalTo(_point3View);
-        if (_isIdentity)
-        {
-            make.width.mas_equalTo((SCREEN_WIDTH - 78)/5);
-        }
-        else
-        {
-            make.width.mas_equalTo((SCREEN_WIDTH - 70)/4);
-        }
+        (_isIdentity)?make.width.mas_equalTo((SCREEN_WIDTH - 78)/5):make.width.mas_equalTo((SCREEN_WIDTH - 70)/4);
         make.height.mas_equalTo(2);
     }];
     self.typeLabel3 = [YUtils initLabelWithBackgroundColor:[UIColor clearColor]
@@ -437,14 +417,7 @@ typedef enum : NSUInteger {
     [line4 mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(_point4View.mas_right);
         make.centerY.equalTo(_point4View);
-        if (_isIdentity)
-        {
-            make.width.mas_equalTo((SCREEN_WIDTH - 78)/5);
-        }
-        else
-        {
-            make.width.mas_equalTo((SCREEN_WIDTH - 70)/4);
-        }
+        (_isIdentity)?make.width.mas_equalTo((SCREEN_WIDTH - 78)/5):make.width.mas_equalTo((SCREEN_WIDTH - 70)/4);
         make.height.mas_equalTo(2);
     }];
     _typeLabel4 = [YUtils initLabelWithBackgroundColor:[UIColor clearColor]
@@ -657,9 +630,9 @@ typedef enum : NSUInteger {
     NSMutableDictionary *modelDic = [@{} mutableCopy];
     NSMutableDictionary *activityModelDic = [@{} mutableCopy];
     
-    [activityModelDic setObject:[self transformDate:_dataManager.ActivityDateEndText]
+    [activityModelDic setObject:[NSDate transformDate:_dataManager.ActivityDateEndText]
                          forKey:@"actEndTime"];
-    [activityModelDic setObject:[self transformDate:_dataManager.ActivityDateBeginText]
+    [activityModelDic setObject:[NSDate transformDate:_dataManager.ActivityDateBeginText]
                          forKey:@"actStartTime"];
     [activityModelDic setObject:_dataManager.ActivityCheckStatus forKey:@"checkStatus"];
     if (_isIdentity)
@@ -685,9 +658,9 @@ typedef enum : NSUInteger {
     }
     [activityModelDic setObject:_dataManager.ActivityPlaceText forKey:@"address"];
     [activityModelDic setObject:@"true" forKey:@"enroll"];
-    [activityModelDic setObject:[self transformDate:_dataManager.ActivityDateEndApplyText]
+    [activityModelDic setObject:[NSDate transformDate:_dataManager.ActivityDateEndApplyText]
                          forKey:@"enrollEndTime"];
-    [activityModelDic setObject:[self transformDate:_dataManager.ActivityDateBeginApplyText]
+    [activityModelDic setObject:[NSDate transformDate:_dataManager.ActivityDateBeginApplyText]
                          forKey:@"enrollStartTime"];
     [activityModelDic setObject:_dataManager.ActivityNameText forKey:@"name"];
     [activityModelDic setObject:_dataManager.ActivityTypeStr forKey:@"type"];
@@ -726,31 +699,10 @@ typedef enum : NSUInteger {
     }];
 }
 
-#pragma mark - 转换成标准时间
--(NSString *)transformDate:(NSString *) date
-{
-    NSDateFormatter * formatter = [[NSDateFormatter alloc] init];
-    [formatter setDateFormat:@"yyyy年MM月dd日 a HH:mm"];
-    NSDate * tempDate = [formatter dateFromString:date];
-    [formatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
-    NSString * dateStr = [formatter stringFromDate:tempDate];
-    
-    return dateStr;
-}
-#pragma mark - 获取当前标准时间
--(NSString *)getNowDate
-{
-    NSDate * now = [NSDate date];
-    NSDateFormatter * formatter = [[NSDateFormatter alloc] init];
-    [formatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
-    NSString * dateStr = [formatter stringFromDate:now];
-    
-    return dateStr;
-}
-
 -(void)setPointHighlight:(NSInteger) pointNum
 {
     [self resetDefaltPoint];
+    
     switch (pointNum) {
         case POINT1:
             _point1View.backgroundColor = KCOLOR_g1;

@@ -213,11 +213,7 @@
 }
 
 - (void)resetRightButton {
-    if ([_accountTextField.text isEmpty]) {
-        self.navigationItem.rightBarButtonItem.enabled = NO;
-    }else{
-        self.navigationItem.rightBarButtonItem.enabled = YES;
-    }
+    self.navigationItem.rightBarButtonItem.enabled = ![_accountTextField.text isEmpty];
 }
 
 //下一步
