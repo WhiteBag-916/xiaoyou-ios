@@ -47,7 +47,6 @@
         self.dataSource = self;
         self.separatorStyle = UITableViewCellSeparatorStyleNone;
         self.backgroundColor = KCOLOR_B1;
-        self.separatorStyle = UITableViewCellSelectionStyleNone;
         
         _passList       = @[@((int)ACTIVITY_ENROLL_CHECK_PASS),   //审核通过
                             @((int)ACTIVITY_ENROLL_NO_CHECK),     //未通过

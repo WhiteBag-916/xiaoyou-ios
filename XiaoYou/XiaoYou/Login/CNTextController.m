@@ -60,7 +60,8 @@
 //        NSString *path = [[NSBundle mainBundle] pathForResource:@"ServiceTerms" ofType:@"html"];
 //        NSData *data = [NSData dataWithContentsOfFile:path];
 //        [_textWebView loadData:data MIMEType:@"text/html" textEncodingName:@"utf-8" baseURL:nil];
-        [_textWebView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://licene.xiaoyou.com/clause.html"]]];
+        [_textWebView loadRequest:[NSURLRequest requestWithURL:
+                                   [NSURL URLWithString:@"http://licene.xiaoyou.com/clause.html"]]];
     }
     else
     {
