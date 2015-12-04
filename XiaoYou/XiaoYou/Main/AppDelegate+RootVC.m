@@ -26,9 +26,11 @@
 
 - (void)initRootVC
 {
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(initChooseSchoolNC) name:kNotification_Profile_Logout object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(initChooseSchoolNC)
+                                                 name:kNotification_Profile_Logout object:nil];
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(tokenFail:) name:kNotification_Server_Token_Fail object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(tokenFail:)
+                                                 name:kNotification_Server_Token_Fail object:nil];
     
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
     
@@ -76,31 +78,36 @@
 
 - (void)initLoginWaitingNC
 {
-    UINavigationController * home = [[UINavigationController alloc] initWithRootViewController:[[LoginWaitingViewController alloc] init]];
+    UINavigationController * home = [[UINavigationController alloc]
+                                     initWithRootViewController:[[LoginWaitingViewController alloc] init]];
     self.window.rootViewController = home;
 }
 
 - (void)initChooseSchoolNC
 {
-    UINavigationController * home = [[UINavigationController alloc] initWithRootViewController:[[ChooseSchoolViewController alloc] init]];
+    UINavigationController * home = [[UINavigationController alloc]
+                                     initWithRootViewController:[[ChooseSchoolViewController alloc] init]];
     self.window.rootViewController = home;
 }
 
 - (void)initLoginNC
 {
-    UINavigationController * home = [[UINavigationController alloc] initWithRootViewController:[[LoginViewController alloc] init]];
+    UINavigationController * home = [[UINavigationController alloc]
+                                     initWithRootViewController:[[LoginViewController alloc] init]];
     self.window.rootViewController = home;
 }
 
 - (void)initTabBarNC
 {
     self.tabBar = [[XYTabBarViewController alloc]init];
-    DDMenuController *menuController = [[DDMenuController alloc] initWithRootViewController:self.tabBar];
+    DDMenuController *menuController = [[DDMenuController alloc]
+                                        initWithRootViewController:self.tabBar];
     self.window.rootViewController = menuController;
 }
 
 - (void)initPerfectNC {
-    UINavigationController * home = [[UINavigationController alloc] initWithRootViewController:[[PerfectInformationViewController alloc] init]];
+    UINavigationController * home = [[UINavigationController alloc]
+                                     initWithRootViewController:[[PerfectInformationViewController alloc] init]];
     self.window.rootViewController = home;
 }
 
