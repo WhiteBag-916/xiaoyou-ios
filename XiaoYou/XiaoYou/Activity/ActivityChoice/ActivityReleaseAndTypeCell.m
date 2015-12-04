@@ -51,30 +51,27 @@ NSString *const kActivityReleaseAndTypeCell = @"ActivityReleaseAndTypeCellId";
     {
         GetFilterConditionsModel * model = data;
         _model = model;
-        
+        _releaseAndTypeLabel.text = model.name;
         if ([model.name isEqualToString:@"空闲"])
         {
             self.dataArr = model.tags;
             _releaseAndTypeImageView.image = [UIImage imageNamed:@"havetime－icon_free"];
-            _releaseAndTypeLabel.text = model.name;
+            
         }
         else if ([model.name isEqualToString:@"日期"]) {
             self.dataArr = model.tags;
             _releaseAndTypeImageView.image = [UIImage imageNamed:@"funny_detail_time"];
-            _releaseAndTypeLabel.text = model.name;
         }
         else if ([model.name isEqualToString:@"活动来源"])
         {
             self.dataArr = model.tags;
             _releaseAndTypeImageView.image = [UIImage imageNamed:@"activity-releaser"];
-            _releaseAndTypeLabel.text = model.name;
             
         }
         else
         {
             self.dataArr = model.tags;
             _releaseAndTypeImageView.image = [UIImage imageNamed:@"funny_detail_category"];
-            _releaseAndTypeLabel.text = model.name;
         }
     }
     else
