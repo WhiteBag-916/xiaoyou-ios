@@ -369,13 +369,14 @@ static NSString* const EventCellReuseIdentifier = @"EventCellReuseIdentifier";
 {
     UserSchedulingInfo *ev = [self eventOfDate:index date:date];
     
+    YViewController *vc;
     if ([ev.type isEqualToString:@"activity"]) {
-        ActivityDetailViewController *vc = [[ActivityDetailViewController alloc] initWithPublishID:[NSString stringWithFormat:@"%g", ev.internalBaseClassIdentifier]];
-        [self.navigationController pushViewController:vc animated:YES needHiddenBottomBar:YES];
+        vc = [[ActivityDetailViewController alloc] initWithPublishID:[NSString stringWithFormat:@"%g", ev.internalBaseClassIdentifier]];
     } else {
-        ScheduleDetailViewController *vc = [[ScheduleDetailViewController alloc] initWithInfo:ev];
-        [self.navigationController pushViewController:vc animated:YES needHiddenBottomBar:YES];
+        vc = [[ScheduleDetailViewController alloc] initWithInfo:ev];
     }
+    
+    [self.navigationController pushViewController:vc animated:YES needHiddenBottomBar:YES];
 }
 
 - (void)dayPlannerView:(MGCDayPlannerView*)view didEndDisplayingDate:(NSDate*)date
