@@ -134,6 +134,7 @@ UITableViewDelegate>
 }
 
 //筛选  参数：完全匹配
+
 - (void)searchSchoolByKey:(BOOL)isAllCheck
 {
     NSString *searchKey = [_schoolTextField.text lowercaseString];
@@ -230,6 +231,7 @@ UITableViewDelegate>
         }];
     }
 }
+
 
 #pragma mark - API
 //获取学校列表

@@ -172,8 +172,11 @@
                 if (message.isSuccess) {
                     [YShareData defaultData][kShareData_StudentNo] = _accountTextField.text;
                     
-                    [self.navigationController pushViewController:[[ProfileChangePwdViewController alloc] initWithType:ProfileChangePwdTypeForget
-                                                                                                             needLogin:YES]
+                    [self.navigationController
+                     pushViewController:[[ProfileChangePwdViewController alloc]
+                                         initWithType:ProfileChangePwdTypeForget
+                                         
+                                         needLogin:YES]
                                                          animated:true];
                 }else if (999+kYYServerErrorBase == message.errorCode) {
                     //提示默认密码
