@@ -313,7 +313,7 @@
 - (void)pressLogin {
     [YUtils showHUDWithTitle];
     //reg
-    [MobClick event:@"event6"];
+    [YAnalysis trackEvent:@"登录_登录_首次登录" withPara:nil];
     [[ProvisionManager sharedInstance] reg:_accountTextField.text password:_codeField.text mobilePhone:_phoneField.text block:^(YActionMessage *message) {
         [YUtils hiddenProgressHUD];
         if (message.isSuccess) {
@@ -407,7 +407,7 @@
     [self changeWait:true];
     [self startCal];
     if (_type == ProfilePhoneChangeTypeRegister) {
-        [MobClick event:@"event5"];
+        [YAnalysis trackEvent:@"获取初始密码_登录" withPara:nil];
     }
     [[ProvisionManager sharedInstance] receiveAuthCode:_phoneField.text needUserToken:(_type != ProfilePhoneChangeTypeRegister) block:^(YActionMessage *message) {
         if (!message.isSuccess) {

@@ -308,7 +308,7 @@ UITableViewDelegate>
 //跳转
 - (void)pushToNext:(SchoolListModel *)schoolModel
 {
-    [MobClick event:@"event2"];
+    [YAnalysis trackEvent:@"下一步_登录" withPara:@{@"学校":schoolModel.schoolName}];
     [YShareData defaultData][kShareData_SchoolCode] = schoolModel.schoolCode;
     [YShareData defaultData][kShareData_SchoolName] = schoolModel.schoolName;
     
@@ -343,7 +343,6 @@ UITableViewDelegate>
     [self updateLogo:school.schoolLogoPath];
     //    _tableView.hidden = YES;
     self.navigationItem.rightBarButtonItem.enabled = YES;
-    [MobClick event:@"event1"];
     //刷新列表
     [self searchSchoolByKey:YES];
 }

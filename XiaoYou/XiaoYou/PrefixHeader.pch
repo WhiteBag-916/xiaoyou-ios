@@ -23,8 +23,9 @@
 #import "UIViewController+HUD.h"
 #import "UIViewController+DismissKeyboard.h"
 #import "NSString+Valid.h"
-#import "MobClick.h"
+#import "YAnalysis.h"
 #import "EaseMob.h"
+#import "MobClick.h"
 
 #import "Masonry.h"
 #import "YDefine.h"

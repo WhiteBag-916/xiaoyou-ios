@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '733B36E8C3725BF36F7C0449'
+               BlueprintIdentifier = '046D27454BBB4EA28A95F710'
                BlueprintName = 'KLCircleViewController'
                ReferencedContainer = 'container:Pods.xcodeproj'
                BuildableName = 'libKLCircleViewController.a'>

@@ -164,9 +164,9 @@
 
 -(void)turnToGroupChat:(NSDictionary *) groupDic
 {
-    [MobClick event:@"event18"];
     ClassList * model =  [[ContactManager sharedInstance] getClassByThirdCode:groupDic[@"group_id"]];
     if (nil != model) {
+        [YAnalysis trackEvent:@"进入群聊_消息" withPara:@{@"社团名":groupDic[@"group_name"]}];
         ChatViewController * chatVC =
         [[ChatViewController alloc] initWithChatter:groupDic[@"third_code"] isGroup:YES];
         chatVC.isSystemMessage = NO;

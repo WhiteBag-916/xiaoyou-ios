@@ -420,7 +420,7 @@
 
 -(void)tapFunGestureRecognizerAction
 {
-    [MobClick event:@"event12"];
+    [YAnalysis trackEvent:@"好看" withPara:nil];
     //好看相关节面
     [_myController.navigationController
      pushViewController:[[InterestViewController alloc] init] animated:true];
@@ -474,7 +474,7 @@
 #pragma mark - headerView点击事件
 -(void)tapGestureRecognizerAction
 {
-    [MobClick event:@"event11"];
+    [YAnalysis trackEvent:@"系统消息" withPara:nil];
     NSArray *conversations = [[EaseMob sharedInstance].chatManager conversations];
     for (EMConversation *conversation in conversations) {
         if ([conversation.chatter isEqualToString:KSYSTEM_MESSAGEID])

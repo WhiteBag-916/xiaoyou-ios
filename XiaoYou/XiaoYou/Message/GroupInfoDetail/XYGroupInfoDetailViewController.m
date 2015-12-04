@@ -116,7 +116,7 @@ NSString *const kXYGroupInfoDetailViewController = @"XYGroupInfoDetailViewContro
 #pragma mark - 分享ActionSheet
 -(void)onNavigationRightButtonClicked
 {
-    [MobClick event:@"event22"];
+    [YAnalysis trackEvent:@"更多操作_班级群聊_详情" withPara:nil];
     YActionSheetItem *item2 = [YActionSheetItem itemWithTitle:@"消息不提醒"
                                                          type:YCommonActionSheetItemTypeSwitch
                                                       isGroup:YES

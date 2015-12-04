@@ -144,7 +144,6 @@ UICollectionViewDelegateFlowLayout,GroupInfoCollectionViewCellDelegate>
 
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    [MobClick event:@"event23"];
     GroupInfoCollectionViewCell * cell =
     (GroupInfoCollectionViewCell *)[self cellForItemAtIndexPath:indexPath];
     if (indexPath.row < _dataSourceArr.count)
@@ -162,6 +161,7 @@ UICollectionViewDelegateFlowLayout,GroupInfoCollectionViewCellDelegate>
             }
             else
             {
+                [YAnalysis trackEvent:@"好友_班级群聊_详情" withPara:nil];
                 XYContactsInfoDetailViewController * contactsInfoDetailVC =
                 [[XYContactsInfoDetailViewController alloc] init];
                 contactsInfoDetailVC.studentDic = (NSMutableDictionary *)cell.modelDic;

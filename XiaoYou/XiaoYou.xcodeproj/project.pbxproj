@@ -661,6 +661,7 @@
 		650C6C2F1B88777400A89AC9 /* mine-complete-grey@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 650C6C2D1B88777400A89AC9 /* mine-complete-grey@3x.png */; };
 		6518A2481B80429300AEB79D /* TagListTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6518A2471B80429300AEB79D /* TagListTableView.m */; };
 		6518A24B1B80583600AEB79D /* TagListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6518A24A1B80583600AEB79D /* TagListTableViewCell.m */; };
+		652498AF1C11A4E1001F7FE1 /* YAnalysis.m in Sources */ = {isa = PBXBuildFile; fileRef = 652498AE1C11A4E1001F7FE1 /* YAnalysis.m */; };
 		653199DE1B80B41C00405B72 /* ConnectTag.m in Sources */ = {isa = PBXBuildFile; fileRef = 653199DD1B80B41C00405B72 /* ConnectTag.m */; };
 		653CB2EE1B806BFD006ECBB2 /* ChineseString.m in Sources */ = {isa = PBXBuildFile; fileRef = 653CB2EB1B806BFD006ECBB2 /* ChineseString.m */; };
 		653CB2EF1B806BFD006ECBB2 /* pinyin.c in Sources */ = {isa = PBXBuildFile; fileRef = 653CB2EC1B806BFD006ECBB2 /* pinyin.c */; };
@@ -1791,6 +1792,8 @@
 		6518A2471B80429300AEB79D /* TagListTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TagListTableView.m; sourceTree = "<group>"; };
 		6518A2491B80583600AEB79D /* TagListTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TagListTableViewCell.h; sourceTree = "<group>"; };
 		6518A24A1B80583600AEB79D /* TagListTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TagListTableViewCell.m; sourceTree = "<group>"; };
+		652498AD1C11A4E1001F7FE1 /* YAnalysis.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YAnalysis.h; sourceTree = "<group>"; };
+		652498AE1C11A4E1001F7FE1 /* YAnalysis.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YAnalysis.m; sourceTree = "<group>"; };
 		653199DC1B80B41C00405B72 /* ConnectTag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConnectTag.h; sourceTree = "<group>"; };
 		653199DD1B80B41C00405B72 /* ConnectTag.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConnectTag.m; sourceTree = "<group>"; };
 		653CB2EA1B806BFD006ECBB2 /* ChineseString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChineseString.h; sourceTree = "<group>"; };
@@ -1917,7 +1920,7 @@
 		65F55AA01B899EBC00ED4348 /* UIImageView+Ext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+Ext.m"; sourceTree = "<group>"; };
 		65F82F821B85E74A00FF6E2D /* FeedPublishViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FeedPublishViewController.h; path = XiaoYou/CommonView/FeedPublishViewController.h; sourceTree = SOURCE_ROOT; };
 		65F82F831B85E74A00FF6E2D /* FeedPublishViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FeedPublishViewController.m; path = XiaoYou/CommonView/FeedPublishViewController.m; sourceTree = SOURCE_ROOT; };
-		65FC7EB01BCE122500B3AA7C /* YWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YWebViewController.h; sourceTree = "<group>"; };
+		65FC7EB01BCE122500B3AA7C /* YWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YWebViewController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		65FC7EB11BCE122500B3AA7C /* YWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YWebViewController.m; sourceTree = "<group>"; };
 		77B574BED9D4FF3F4BFAA9FE /* libPods-XiaoYou.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-XiaoYou.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1D8A55CC0081FB2C8604F21 /* Pods-XiaoYou.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XiaoYou.release.xcconfig"; path = "../Pods/Target Support Files/Pods-XiaoYou/Pods-XiaoYou.release.xcconfig"; sourceTree = "<group>"; };
@@ -4008,6 +4011,8 @@
 				04E26F461BFED56400A38236 /* YObject+Ext.m */,
 				04F7DF8C1C02F7D100771BEF /* UIImage+Extn.h */,
 				04F7DF8D1C02F7D100771BEF /* UIImage+Extn.m */,
+				652498AD1C11A4E1001F7FE1 /* YAnalysis.h */,
+				652498AE1C11A4E1001F7FE1 /* YAnalysis.m */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -4973,7 +4978,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "#import path\nexport PATH=${PATH}:/usr/local/bin\n#import what we have in bash_profile\nsource ~/.bash_profile\n#check for oclint\nhash oclint &> /dev/null\nif [ $? -eq 1 ]; then\necho >&2 \"oclint not found, analyzing stopped\"\nexit 1\nfi\n\nhash xctool &> /dev/null\nif [ $? -eq 1 ]; then\necho >&2 \"xctool not found, analyzing stopped\"\nexit 1\nfi\n\ncd ${SRCROOT}\n\nxctool -workspace XiaoYou.xcworkspace -scheme XiaoYou clean\nxctool -workspace XiaoYou.xcworkspace -scheme XiaoYou -reporter json-compilation-database:compile_commands.json build\n\noclint-json-compilation-database\n-e Pods         \\\n-e Component    \\\n-e Model        \\\n-e YFramework   \\\n-- -rc=LONG_LINE=100 \\\n-rc=NCSS_METHOD=60 \\\n-rc=MINIMUM_CASES_IN_SWITCH=1 \\\n| sed 's/\\(.*\\.\\m\\{1,2\\}:[0-9]*:[0-9]*:\\)/\\1 warning:/'\n\n#oclint-json-compilation-database \\\n#-e Pods \\\n#-- -rc=LONG_LINE=100 \\\n#-rc=NCSS_METHOD=60 \\\n#-rc=MINIMUM_CASES_IN_SWITCH=1 \\\n#| sed 's/\\(.*\\.\\m\\{1,2\\}:[0-9]*:[0-9]*:\\)/\\1 warning:/'";
+			shellScript = "#import path\nexport PATH=${PATH}:/usr/local/bin\n#import what we have in bash_profile\nsource ~/.bash_profile\n#check for oclint\nhash oclint &> /dev/null\nif [ $? -eq 1 ]; then\necho >&2 \"oclint not found, analyzing stopped\"\nexit 1\nfi\n\nhash xctool &> /dev/null\nif [ $? -eq 1 ]; then\necho >&2 \"xctool not found, analyzing stopped\"\nexit 1\nfi\n\ncd ${SRCROOT}\n\nxctool -workspace XiaoYou.xcworkspace -scheme XiaoYou clean\nxctool -workspace XiaoYou.xcworkspace -scheme XiaoYou -reporter json-compilation-database:compile_commands.json build\n\noclint-json-compilation-database \\\n-e Pods \\\n-- -rc=LONG_LINE=100 \\\n-rc=NCSS_METHOD=60 \\\n-rc=MINIMUM_CASES_IN_SWITCH=1 \\\n| sed 's/\\(.*\\.\\m\\{1,2\\}:[0-9]*:[0-9]*:\\)/\\1 warning:/'";
 		};
 		8D128BB15157CCD9381C2821 /* Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -5116,6 +5121,7 @@
 				333122481B806EDB00D3D032 /* Emoji.m in Sources */,
 				E482D56A1BD8CB020045F4DB /* ScanfResultTableViewCell.m in Sources */,
 				E43E10041BCC9CA90018B6D7 /* ActivityReleaseCollectionView.m in Sources */,
+				652498AF1C11A4E1001F7FE1 /* YAnalysis.m in Sources */,
 				20DA16FA1BC7C51200A61B37 /* MGCEventCellLayoutAttributes.m in Sources */,
 				20DAAAA31BCD05F5006DF231 /* ActivityBaseCollectionViewCell.m in Sources */,
 				20E033F61B8427AF002E4583 /* YCommonShare.m in Sources */,
@@ -5494,6 +5500,11 @@
 					"$(PROJECT_DIR)/XiaoYou/Utils/UMengSDK/UMSocial_Sdk_Extra_Frameworks/TencentOpenAPI",
 				);
 				GCC_PREFIX_HEADER = "$(SRCROOT)/XiaoYou/PrefixHeader.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"COCOAPODS=1",
+					"ZHUGE_NO_ADID=1",
+				);
 				HEADER_SEARCH_PATHS = (
 					"\"$(SDKROOT)/usr/include/libxml2\"",
 					"$(inherited)",
@@ -5554,6 +5565,11 @@
 					"$(PROJECT_DIR)/XiaoYou/Utils/UMengSDK/UMSocial_Sdk_Extra_Frameworks/TencentOpenAPI",
 				);
 				GCC_PREFIX_HEADER = "$(SRCROOT)/XiaoYou/PrefixHeader.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"COCOAPODS=1",
+					"ZHUGE_NO_ADID=1",
+				);
 				INFOPLIST_FILE = XiaoYou/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

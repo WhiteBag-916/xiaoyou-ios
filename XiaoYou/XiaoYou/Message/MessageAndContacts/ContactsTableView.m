@@ -339,7 +339,7 @@
 #pragma mark - headView 点击事件
 -(void)tapClassGestureRecognizerAction
 {
-    [MobClick event:@"event20"];
+    [YAnalysis trackEvent:@"班级群聊_消息_好友" withPara:nil];
 
     XYGroupInfoDetailViewController * groupInfoDetailViewController =
     [[XYGroupInfoDetailViewController alloc] init];
@@ -463,7 +463,7 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    [MobClick event:@"event21"];
+    [YAnalysis trackEvent:@"好友_消息_好友" withPara:nil];
     NSLog(@"this is row = %li",(long)indexPath.section);
     ContactsTableViewCell * cell = (ContactsTableViewCell *)[self cellForRowAtIndexPath:indexPath];
     

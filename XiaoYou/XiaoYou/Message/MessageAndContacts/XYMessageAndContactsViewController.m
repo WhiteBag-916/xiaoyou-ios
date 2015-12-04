@@ -191,7 +191,7 @@
 {
     if (type == CommonSwitchTypeFir)
     {
-        [MobClick event:@"event9"];
+        [YAnalysis trackEvent:@"聊天_消息" withPara:nil];
         _messageTableView.hidden = NO;
         _contactsTableView.hidden = YES;
         [_messageTableView reloadData];
@@ -199,7 +199,7 @@
     }
     else
     {
-        [MobClick event:@"event10"];
+        [YAnalysis trackEvent:@"好友_消息" withPara:nil];
         _contactsTableView.hidden = NO;
         _messageTableView.hidden = YES;
         [_contactsTableView refreshTableView:[[ContactManager sharedInstance] getContactsListData]];
