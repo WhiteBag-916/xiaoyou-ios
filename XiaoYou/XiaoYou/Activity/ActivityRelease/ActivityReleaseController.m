@@ -56,6 +56,9 @@ typedef enum : NSUInteger {
 @property (nonatomic,strong) UIButton * btn5;
 @property (nonatomic,strong) UIButton * btn6;
 
+@property (nonatomic,strong) NSArray *pointViewArr;
+@property (nonatomic,strong) NSArray *typeLabelArr;
+
 //是否为社长
 @property (nonatomic,assign) BOOL isIdentity;
 
@@ -521,6 +524,11 @@ typedef enum : NSUInteger {
             make.right.bottom.left.equalTo(_typeLabel6);
         }];
     }
+    else
+    {
+        _point6View = _point5View;
+        _typeLabel6 = _typeLabel5;
+    }
     
     //这咕噜你好好想想
     UIView * backgroundView = [YUtils initViewWithBackgroundColor:KCOLOR_B2
@@ -570,6 +578,11 @@ typedef enum : NSUInteger {
         make.left.right.bottom.mas_equalTo(0);
         make.height.mas_equalTo(SCALE_NUM(46));
     }];
+    
+
+    _pointViewArr = @[_point1View,_point2View,_point3View,_point4View,_point5View,_point6View];
+    _typeLabelArr = @[_typeLabel1,_typeLabel2,_typeLabel3,_typeLabel4,_typeLabel5,_typeLabel6];
+
     
 }
 
@@ -703,34 +716,10 @@ typedef enum : NSUInteger {
 {
     [self resetDefaltPoint];
     
-    switch (pointNum) {
-        case POINT1:
-            _point1View.backgroundColor = KCOLOR_g1;
-            _typeLabel1.textColor = KCOLOR_g1;
-            break;
-        case POINT2:
-            _point2View.backgroundColor = KCOLOR_g1;
-            _typeLabel2.textColor = KCOLOR_g1;
-            break;
-        case POINT3:
-            _point3View.backgroundColor = KCOLOR_g1;
-            _typeLabel3.textColor = KCOLOR_g1;
-            break;
-        case POINT4:
-            _point4View.backgroundColor = KCOLOR_g1;
-            _typeLabel4.textColor = KCOLOR_g1;
-            break;
-        case POINT5:
-            _point5View.backgroundColor = KCOLOR_g1;
-            _typeLabel5.textColor = KCOLOR_g1;
-            break;
-        case POINT6:
-            _point6View.backgroundColor = KCOLOR_g1;
-            _typeLabel6.textColor = KCOLOR_g1;
-            break;
-            
-        default:
-            break;
+    if (pointNum < 6)
+    {
+        ((UIView *)_pointViewArr[pointNum-1]).backgroundColor = KCOLOR_g1;
+        ((UILabel *)_typeLabelArr[pointNum-1]).textColor = KCOLOR_g1;
     }
 }
 
