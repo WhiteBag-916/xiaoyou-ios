@@ -29,7 +29,8 @@ typedef int YTimerID;
  *
  *  @return 定时器的id,通过该id可以关闭指定定时器.
  */
-+ (YTimerID)scheduledTimerWithTimeInterval:(NSTimeInterval)inTimeInterval repeats:(BOOL)yesOrNo block:(void (^)())inBlock;
++ (YTimerID)scheduledTimerWithTimeInterval:(NSTimeInterval)inTimeInterval repeats:(BOOL)yesOrNo
+                                     block:(void (^)())inBlock;
 
 /**
  *  @author Abc

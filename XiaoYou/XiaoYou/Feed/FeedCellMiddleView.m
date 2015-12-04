@@ -34,7 +34,6 @@
     self = [super init];
     if (self) {
         _contentLabel = [[YTextView alloc] init];
-        _contentLabel.type = DISANBLE_PASTE;
         _contentLabel.textColor = [UIColor blackColor];
         _contentLabel.editable = false;
         //_contentLabel.dataDetectorTypes = UIDataDetectorTypeLink;

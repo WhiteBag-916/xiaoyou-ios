@@ -30,8 +30,8 @@
 @property (nonatomic,strong) UIView         *promptView;        //提示透明背景
 @property (nonatomic,strong) UIImageView    *guideImageView;    //提示图片
 @property (nonatomic,assign) int            guideIndex;         //当前提示索引
-
 @property (nonatomic,strong) UIButton       *leftNavBar;        //左边导航条
+
 @end
 
 @implementation AvailableViewController
@@ -41,8 +41,10 @@
     // Do any additional setup after loading the view.
     
     self.title = @"有空";
-    if([AppConfigData isUserFirstUseHaveTime])
+    if([AppConfigData isUserFirstUseHaveTime]) {
         [self addGuideView];
+    }
+    
     [self setUpCustomNavgationBar];
     [self.availableListView loadData];
     
@@ -76,9 +78,6 @@
           forControlEvents:UIControlEventTouchUpInside];
     self.navigationItem.leftBarButtonItem = btnNavLeftItem;
 }
-
-
-
 
 - (void)addGuideView {
     UIWindow *window = [UIApplication sharedApplication].keyWindow;

@@ -62,7 +62,7 @@
 {
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
         self.selectionStyle = UITableViewCellSelectionStyleNone;
-        [self initTopViewWithType];
+        [self initTopView];
         [self initMiddleView];
         [self initBottomView];
     }
@@ -140,7 +140,7 @@
     }
 }
 
--(void)initTopViewWithType {
+-(void)initTopView {
     _headImageView = [YUtils initImageViewWithImageName:@"default_head"
                                            cornerRadius:HEADIMAGEVIEW_WIDTH/2.0];
     [self.contentView addSubview:_headImageView];
@@ -196,9 +196,9 @@
         make.left.equalTo(_staticNameLabel);
     }];
     
-    _descriptionLabel = [YUtils initDisplayTextViewWithFont:CONTENT_FONT(13) textColor:nil];
-    [self.contentView addSubview:_descriptionLabel];
+    _descriptionLabel = [YUtils initLinkDisplayTextViewWithFont:CONTENT_FONT(13) textColor:nil];
     _descriptionLabel.delegate = self;
+    [self.contentView addSubview:_descriptionLabel];
     [_descriptionLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(_nameLabel);
         make.trailing.mas_equalTo(SCALE_NUM(-12));
@@ -358,6 +358,11 @@
     return false;
 }
 
+- (void)textViewDidChangeSelection:(UITextView *)textView
+{
+    NSRange range = NSMakeRange(textView.selectedRange.location, textView.selectedRange.length + 30);
+    [textView scrollRangeToVisible:range];
+}
 
 
 @end

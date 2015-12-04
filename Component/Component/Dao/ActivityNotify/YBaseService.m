@@ -36,7 +36,8 @@
  */
 - (BOOL)isCreateTableSuccessWithModel:(YModel *)model
 {
-    NSMutableString *sql = [NSMutableString stringWithFormat:@"create table if not exists %@ (id integer primary key autoincrement",[self classNameFromModel:model]];
+    NSMutableString *sql = [NSMutableString stringWithFormat:@"create table if not exists %@\
+                            (id integer primary key autoincrement",[self classNameFromModel:model]];
     
     //获取所有的属性
     NSArray *attributes = [self classAttributesFromClassName:[self classNameFromModel:model]];

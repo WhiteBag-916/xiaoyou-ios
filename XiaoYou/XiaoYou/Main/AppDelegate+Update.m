@@ -18,13 +18,14 @@
 
 -(void)isNeedToUpDate
 {
-
     [[ProvisionManager sharedInstance] checkLastVersion:^(YActionMessage *message) {
         if (message.isSuccess)
         {
             self.checkLastVersionModel = message.object;
             
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:[NSString stringWithFormat:@"%@ 版本更新",self.checkLastVersionModel.version]
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:
+                                  [NSString stringWithFormat:@"%@ 版本更新",
+                                   self.checkLastVersionModel.version]
                                                             message:self.checkLastVersionModel.about
                                                            delegate:self
                                                   cancelButtonTitle:@"稍后更新"

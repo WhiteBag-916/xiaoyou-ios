@@ -10,7 +10,7 @@
 #import "YFoundation.h"
 
 extern NSInteger const kLoginCommonTextFieldTag;
-
+@class YTextView;
 @interface YUtils(UI)
 
 /*********************************************************************
@@ -134,6 +134,9 @@ extern NSInteger const kLoginCommonTextFieldTag;
 
 + (UITextView *)initDisplayTextViewWithFont:(UIFont*)font
                                   textColor:(UIColor*)color;
+
++ (YTextView *)initLinkDisplayTextViewWithFont:(UIFont*)font
+                                     textColor:(UIColor*)color;
 
 + (void)setTextViewDataWithTextView:(UITextView*)textView text:(NSString*)text Font:(UIFont*)font
                           textColor:(UIColor*)textColor linespaing:(CGFloat)lineSpace;
