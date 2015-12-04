@@ -268,10 +268,6 @@
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    UIImageView *view = (UIImageView*)[_detailListView viewWithTag:998899];
-    if (view) {
-        view.hidden = YES;
-    }
 }
 
 @end

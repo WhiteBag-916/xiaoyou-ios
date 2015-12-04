@@ -153,11 +153,6 @@
     }
     else
     {
-        ActivityDetailModel *model;
-        if (self.activityDetailArray.count > 0)
-            model = self.activityDetailArray[0];
-        else
-            return 0;
         Author *author = self.activityDetailArray[indexPath.row];
         if (author.studentNo == nil && author.uid == nil)
             return SCALE_NUM(160);

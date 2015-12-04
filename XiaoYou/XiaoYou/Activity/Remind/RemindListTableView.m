@@ -23,7 +23,6 @@
 #define HEADCELL_HEIGHT SCALE_NUM(33)
 #define REMIND_CELL_HEIGHT  SCALE_NUM(180)
 #define KPAGENUM        10
-#define ImageTAG        998899
 #define APPLYREUSEID    @"ApplyRemindCell"
 
 @interface RemindListTableView ()
