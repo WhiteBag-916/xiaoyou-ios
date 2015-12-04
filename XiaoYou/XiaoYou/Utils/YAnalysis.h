@@ -43,4 +43,37 @@
  *  @param data 用户信息
  */
 + (void)collectUserInfo:(ProfileInfo *)data;
+
+/**
+ *  @author 李思良, 15-12-04
+ *
+ *  @brief 根据用户详情的sharedata获取需要的布点数据
+ *
+ *  @param dic 用户详情页的sharedata
+ *
+ *  @return 布点时用的数据
+ */
++ (NSDictionary *)getDataFromShareInProfile:(NSDictionary *)dic;
+
+/**
+ *  @author 李思良, 15-12-04
+ *
+ *  @brief 根据feed里的sharedata获取需要的布点数据
+ *
+ *  @param dic feed里的shareData
+ *
+ *  @return 布点时用的数据
+ */
++ (NSDictionary *)getDataFromShareInFeed:(NSDictionary *)dic;
+
+/**
+ *  @author 李思良, 15-12-04
+ *
+ *  @brief 根据profileinfo传递数据到诸葛
+ *
+ *  @param profile 用户profile
+ *
+ *  @return 布点时用的数据
+ */
++ (NSDictionary *)getDataFromProfileInfo:(ProfileInfo *)profile;
 @end

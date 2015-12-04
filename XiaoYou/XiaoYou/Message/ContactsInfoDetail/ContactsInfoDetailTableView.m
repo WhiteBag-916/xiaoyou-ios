@@ -240,7 +240,7 @@ SDPhotoBrowserDelegate,ContactsInfoThirdTableViewCellDelegate>
 
 -(void)tapFooterView
 {
-    [MobClick event:@"32"];
+    [YAnalysis trackEvent:@"动态_人的详情" withPara:nil];
     ProfilePublishViewController * profilePublish =
     [[ProfilePublishViewController alloc] initWithUserId:_model.uid
                                                     name:_model.userName];
@@ -327,7 +327,7 @@ SDPhotoBrowserDelegate,ContactsInfoThirdTableViewCellDelegate>
 
 -(void)didSelectCool
 {
-    [MobClick event:@"event31"];
+    [YAnalysis trackEvent:@"很酷_人的详情" withPara:[YAnalysis getDataFromProfileInfo:_model]];
     [YUtils showHUDWithTitle];
     [[ContactManager sharedInstance] praise:_model.uid block:^(YActionMessage *message) {
         [YUtils hiddenProgressHUD];
