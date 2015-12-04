@@ -52,19 +52,32 @@
 {
     self.delegate = self;
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(openProfile:) name:KNotification_Open_Profile object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(setupUnreadMessageCount:) name:KNotification_Message_unread object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(openPraise:) name:KNotification_Open_PraiseDetail object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(setupUnreadAlterCount) name:KNotification_Update_UnreadAlterCount object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(setupUnreadAlterCount) name:KNotification_Update_UnreadAlterCount object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(openBrowser:) name:KNotification_OpenBrowser object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(openProfile:)
+                                                 name:KNotification_Open_Profile object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(setupUnreadMessageCount:)
+                                                 name:KNotification_Message_unread object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(openPraise:)
+                                                 name:KNotification_Open_PraiseDetail object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(setupUnreadAlterCount)
+                                                 name:KNotification_Update_UnreadAlterCount object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(setupUnreadAlterCount)
+                                                 name:KNotification_Update_UnreadAlterCount object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(openBrowser:)
+                                                 name:KNotification_OpenBrowser object:nil];
     
     _messageVC = [[XYMessageAndContactsViewController alloc] init];
     FeedListViewController *feedVC = [[FeedListViewController alloc] init];
     ProfileViewController *profileVC = [[ProfileViewController alloc] init];
     
     _messageViewCotroller = [[UINavigationController alloc] initWithRootViewController:_messageVC];
-    _availableViewController = [[UINavigationController alloc] initWithRootViewController:[[AvailableViewController alloc] init]];
+    _availableViewController = [[UINavigationController alloc]
+                                initWithRootViewController:[[AvailableViewController alloc] init]];
     _feedListViewCotroller = [[UINavigationController alloc] initWithRootViewController:feedVC];
     _profileViewCotroller = [[UINavigationController alloc] initWithRootViewController:profileVC];
     

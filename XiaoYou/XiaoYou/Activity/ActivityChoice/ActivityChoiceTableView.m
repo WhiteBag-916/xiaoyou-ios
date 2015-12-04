@@ -56,11 +56,7 @@
          self.typesDic = [[NSMutableDictionary alloc] init];
         if (_myType == ACTIVITY_CHOICE_TYPE)
         {
-           
-            [_typesDic setObject:@"" forKey:@""];
-            [_typesDic setObject:@"" forKey:@""];
-            [_typesDic setObject:@"" forKey:@""];
-            [_typesDic setObject:@"" forKey:@""];
+            [_typesDic removeAllObjects];
         }
         
         

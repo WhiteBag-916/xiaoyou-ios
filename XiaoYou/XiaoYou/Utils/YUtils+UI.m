@@ -8,6 +8,7 @@
 
 #import "YUtils+UI.h"
 #import "YTextField.h"
+#import "YTextView.h"
 
 NSInteger const kLoginCommonTextFieldTag = 1999;
 
@@ -19,7 +20,8 @@ NSInteger const kLoginCommonTextFieldTag = 1999;
     schoolView.backgroundColor = KCOLORWHITE;
     
     //logo
-    UIImageView *schoolLogoImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:leftImage]];
+    UIImageView *schoolLogoImageView = [[UIImageView alloc]
+                                        initWithImage:[UIImage imageNamed:leftImage]];
     [schoolView addSubview:schoolLogoImageView];
     [schoolLogoImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.mas_equalTo(SCALE_NUM(12));
@@ -179,7 +181,23 @@ NSInteger const kLoginCommonTextFieldTag = 1999;
 {
     
     UITextView *textView = [[UITextView alloc]init];
-    textView.userInteractionEnabled = NO;
+    //textView.userInteractionEnabled = NO;
+    textView.editable = NO;
+    textView.selectable = YES;
+    textView.scrollEnabled = false;
+    textView.textContainer.lineFragmentPadding = 0;
+    textView.textContainerInset = UIEdgeInsetsZero;
+    textView.font = font;
+    textView.textColor = color;
+    return textView;
+}
+
++ (YTextView *)initLinkDisplayTextViewWithFont:(UIFont*)font
+                                  textColor:(UIColor*)color
+{
+    
+    YTextView *textView = [[YTextView alloc]init];
+    //textView.userInteractionEnabled = NO;
     textView.editable = NO;
     textView.selectable = YES;
     textView.scrollEnabled = false;
@@ -260,4 +278,28 @@ NSInteger const kLoginCommonTextFieldTag = 1999;
     textView.attributedText = [[NSAttributedString alloc]
                                   initWithString:text attributes:attributes];
 }
+
++ (UIButton *)initButtonWithBackgroundColor:(UIColor *)color
+                                      title:(NSString *)title
+                              clipsToBounds:(BOOL)clipsToBounds
+                               cornerRadius:(double)cornerRadius
+                                       font:(UIFont *)font
+                                  tintColor:(UIColor *)tintColor
+                                      image:(UIImage *)image
+                                     target:(id)target
+                                     action:(SEL)selector
+{
+    UIButton * button           = [[UIButton alloc] init];
+    button.backgroundColor      = color;
+    [button setTitle:title forState:UIControlStateNormal];
+    button.layer.cornerRadius   = cornerRadius;
+    button.clipsToBounds        = YES;
+    button.titleLabel.font      = font;
+    button.tintColor            = tintColor;
+    [button setBackgroundImage:image
+                           forState:UIControlStateNormal];
+    [button addTarget:target action:selector forControlEvents:UIControlEventTouchUpInside];
+    return button;
+}
+
 @end

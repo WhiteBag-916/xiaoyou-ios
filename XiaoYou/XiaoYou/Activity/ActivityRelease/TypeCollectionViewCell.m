@@ -37,11 +37,12 @@ NSString *const kTypeCollectionViewCell = @"TypeCollectionViewCellId";
     self.typeLabel.text = @"类型";
     
     //顶部提示文字
-    UILabel * topLabel = [[UILabel alloc] init];
-    topLabel.backgroundColor = [UIColor clearColor];
-    topLabel.font = CONTENT_FONT(12);
-    topLabel.textColor = KCOLOR_B3;
-    topLabel.text = @"在这里选择活动类型:";
+    UILabel * topLabel = [YUtils initLabelWithBackgroundColor:[UIColor clearColor]
+                                                         font:CONTENT_FONT(12)
+                                                numberOfLines:1
+                                                textAlignment:NSTextAlignmentLeft
+                                                    textColor:KCOLOR_B3
+                                                         text:@"在这里选择活动类型:"];
     [self.backView addSubview:topLabel];
     [topLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.mas_equalTo(SCALE_NUM(80));

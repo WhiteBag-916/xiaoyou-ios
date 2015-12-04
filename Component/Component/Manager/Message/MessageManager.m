@@ -495,46 +495,6 @@ DEF_SINGLETON(MessageManager);
         [AppConfigData setHaveRemindMessage:YES];
         [[NSNotificationCenter defaultCenter] postNotificationName:KNotification_Remind_Message_Come object:nil];;
     } failed:nil];
-    
-//    switch (notiInfo.type)
-//    {
-//        case ACTIVITY_ENROLL_CHECK_PASS: //报名审核通过
-//        {
-//            [dataBaseDao insertModel:notiInfo];
-//            break;
-//        }
-//        case ACTIVITY_ENROLL_NO_CHECK:  //审核未通过 //铃铛
-//        {
-//            [AppConfigData setHaveRemindMessage:YES];
-//            [[NSNotificationCenter defaultCenter] postNotificationName:KNotification_Remind_Message_Come object:nil];
-//            break;
-//        }
-//        case SCHEDULE_REMIND: //用户日程提醒
-//        {
-//            [dataBaseDao insertModel:notiInfo];
-//            break;
-//        }
-//        case ACTIVITY_ENROLL: //用户报名活动提醒
-//        {
-//            [AppConfigData setHaveRemindMessage:YES];
-//            [[NSNotificationCenter defaultCenter] postNotificationName:KNotification_Remind_Message_Come object:nil];
-//            break;
-//        }
-//        case ACTIVITY_PUBLISH://活动通知提醒
-//        {
-//            [dataBaseDao insertModel:notiInfo];
-//            break;
-//        }
-//        case ACTIVITY_NOTIFY: //活动通知提醒,活动快要开始
-//        {
-//            [dataBaseDao insertModel:notiInfo];
-//            break;
-//        }
-//        default:
-//        {
-//            break;
-//        }
-//    }
 }
 
 

@@ -44,7 +44,7 @@ NSString *const kGroupInfoCollectionViewCell = @"GroupInfoCollectionViewCellId";
 
 -(void)setUpUI
 {
-    _headImageView = [[UIImageView alloc] init];
+    self.headImageView = [[UIImageView alloc] init];
     _headImageView.userInteractionEnabled = YES;
     [self.contentView addSubview:_headImageView];
     [_headImageView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -53,13 +53,13 @@ NSString *const kGroupInfoCollectionViewCell = @"GroupInfoCollectionViewCellId";
         make.height.width.mas_equalTo(kHeadImageViewHeight);
     }];
     
-    _longPressGestureRecognizer =
+    self.longPressGestureRecognizer =
     [[UILongPressGestureRecognizer alloc] initWithTarget:self
                                                   action:@selector(longPress:)];
     _longPressGestureRecognizer.minimumPressDuration = .5;
     [_headImageView addGestureRecognizer:_longPressGestureRecognizer];
     
-    _deleteButton = [[UIButton alloc] init];
+    self.deleteButton = [[UIButton alloc] init];
     [_deleteButton setBackgroundImage:[UIImage imageNamed:@"delete-member"]
                              forState:UIControlStateNormal];
     [_deleteButton addTarget:self action:@selector(clickdeleteButton)
@@ -71,7 +71,7 @@ NSString *const kGroupInfoCollectionViewCell = @"GroupInfoCollectionViewCellId";
     }];
     _deleteButton.hidden = YES;
     
-    _nameLabel = [[UILabel alloc] init];
+    self.nameLabel = [[UILabel alloc] init];
     _nameLabel.font = CONTENT_FONT(12);
     _nameLabel.textAlignment = NSTextAlignmentCenter;
     _nameLabel.backgroundColor = [UIColor clearColor];

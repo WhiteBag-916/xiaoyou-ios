@@ -172,8 +172,11 @@
                 if (message.isSuccess) {
                     [YShareData defaultData][kShareData_StudentNo] = _accountTextField.text;
                     
-                    [self.navigationController pushViewController:[[ProfileChangePwdViewController alloc] initWithType:ProfileChangePwdTypeForget
-                                                                                                             needLogin:YES]
+                    [self.navigationController
+                     pushViewController:[[ProfileChangePwdViewController alloc]
+                                         initWithType:ProfileChangePwdTypeForget
+                                         
+                                         needLogin:YES]
                                                          animated:true];
                 }else if (999+kYYServerErrorBase == message.errorCode) {
                     //提示默认密码
@@ -210,11 +213,7 @@
 }
 
 - (void)resetRightButton {
-    if ([_accountTextField.text isEmpty]) {
-        self.navigationItem.rightBarButtonItem.enabled = NO;
-    }else{
-        self.navigationItem.rightBarButtonItem.enabled = YES;
-    }
+    self.navigationItem.rightBarButtonItem.enabled = ![_accountTextField.text isEmpty];
 }
 
 //下一步

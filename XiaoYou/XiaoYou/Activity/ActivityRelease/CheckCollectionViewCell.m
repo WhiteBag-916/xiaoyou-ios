@@ -40,30 +40,30 @@ NSString *const kCheckCollectionViewCell = @"CheckCollectionViewCellId";
     self.typeLabel.text = @"报名审核（限社团）";
     
     //需要报名审核
-    _needCheckLabel = [[UILabel alloc] init];
+    self.needCheckLabel = [YUtils initLabelWithBackgroundColor:[UIColor clearColor]
+                                                          font:CONTENT_FONT(12)
+                                                 numberOfLines:1
+                                                 textAlignment:NSTextAlignmentCenter
+                                                     textColor:KCOLOR_B3
+                                                          text:@"需要报名审核"];
     _needCheckLabel.userInteractionEnabled = YES;
     _needCheckLabel.layer.borderColor = KCOLOR_B2.CGColor;
     _needCheckLabel.layer.borderWidth = 1;
     _needCheckLabel.layer.cornerRadius = SCALE_NUM(4);
     _needCheckLabel.clipsToBounds = YES;
-    _needCheckLabel.text = @"需要报名审核";
-    _needCheckLabel.textColor = KCOLOR_B3;
-    _needCheckLabel.textAlignment = NSTextAlignmentCenter;
-    _needCheckLabel.backgroundColor = [UIColor clearColor];
-    _needCheckLabel.font = CONTENT_FONT(12);
     [self.contentView addSubview:_needCheckLabel];
     //不需要报名审核
-    _notNeedCheckLabel = [[UILabel alloc] init];
+    _notNeedCheckLabel = [YUtils initLabelWithBackgroundColor:KCOLOR_g1
+                                                         font:CONTENT_FONT(12)
+                                                numberOfLines:1
+                                                textAlignment:NSTextAlignmentCenter
+                                                    textColor:KCOLOR_W1
+                                                         text:@"不需要报名审核"];
     _notNeedCheckLabel.userInteractionEnabled = YES;
     _notNeedCheckLabel.layer.borderColor = [UIColor clearColor].CGColor;
     _notNeedCheckLabel.layer.borderWidth = 1;
     _notNeedCheckLabel.layer.cornerRadius = SCALE_NUM(4);
     _notNeedCheckLabel.clipsToBounds = YES;
-    _notNeedCheckLabel.text = @"不需要报名审核";
-    _notNeedCheckLabel.textColor = KCOLOR_W1;
-    _notNeedCheckLabel.textAlignment = NSTextAlignmentCenter;
-    _notNeedCheckLabel.backgroundColor = KCOLOR_g1;
-    _notNeedCheckLabel.font = CONTENT_FONT(12);
     [self.contentView addSubview:_notNeedCheckLabel];
     
     [_needCheckLabel mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -88,10 +88,10 @@ NSString *const kCheckCollectionViewCell = @"CheckCollectionViewCellId";
     [_notNeedCheckLabel addGestureRecognizer:tap2];
     
     //point
-    UIView * pointView = [[UIView alloc] init];
-    pointView.backgroundColor = KCOLOR_B5;
-    pointView.clipsToBounds = YES;
-    pointView.layer.cornerRadius = SCALE_NUM(4);
+    UIView * pointView = [YUtils initViewWithBackgroundColor:KCOLOR_B5
+                                                cornerRadius:SCALE_NUM(4)
+                                               clipsToBounds:YES
+                                                       alpha:1];
     [self.contentView addSubview:pointView];
     [pointView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.mas_equalTo(SCALE_NUM(10));
@@ -99,11 +99,12 @@ NSString *const kCheckCollectionViewCell = @"CheckCollectionViewCellId";
         make.width.height.mas_equalTo(SCALE_NUM(8));
     }];
     //关于报名审核
-    UILabel * aboutLabel = [[UILabel alloc] init];
-    aboutLabel.font = CONTENT_FONT(11);
-    aboutLabel.text = @"关于报名审核";
-    aboutLabel.textColor = KCOLOR_B5;
-    aboutLabel.backgroundColor = [UIColor clearColor];
+    UILabel * aboutLabel = [YUtils initLabelWithBackgroundColor:[UIColor clearColor]
+                                                           font:CONTENT_FONT(11)
+                                                  numberOfLines:1
+                                                  textAlignment:NSTextAlignmentLeft
+                                                      textColor:KCOLOR_B5
+                                                           text:@"关于报名审核"];
     [self.contentView addSubview:aboutLabel];
     [aboutLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(pointView.mas_right).offset(SCALE_NUM(5));
@@ -112,13 +113,14 @@ NSString *const kCheckCollectionViewCell = @"CheckCollectionViewCellId";
         make.trailing.mas_equalTo(SCALE_NUM(-12));
     }];
     //内容
-    UILabel * contentLabel = [[UILabel alloc] init];
-    contentLabel.font = CONTENT_FONT(11);
-    contentLabel.backgroundColor = [UIColor clearColor];
-    contentLabel.numberOfLines = 0;
+    UILabel * contentLabel = [YUtils initLabelWithBackgroundColor:[UIColor clearColor]
+                                                             font:CONTENT_FONT(11)
+                                                    numberOfLines:0
+                                                    textAlignment:NSTextAlignmentLeft
+                                                        textColor:KCOLOR_B5
+                                                             text:@""];
     contentLabel.lineBreakMode = NSLineBreakByClipping;
     [contentLabel setText:@"若活动发起人希望限制活动参加人数，请选择 [需要报名审核]，然后使用社团账号，登录活动发布后台，对活动报名的同学进行 [通过] 或 [拒绝] 操作。\n若选择 [不需要报名审核]，则视为该活动所有人都可以参与。\n" lineSpacing:3];
-    contentLabel.textColor = KCOLOR_B5;
     [self.contentView addSubview:contentLabel];
     [contentLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(pointView);

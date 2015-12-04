@@ -119,11 +119,7 @@ UITableViewDelegate>
 }
 
 - (void)resetRightButton {
-    if ([_schoolTextField.text isEmpty]) {
-        self.navigationItem.rightBarButtonItem.enabled = NO;
-    }else{
-        self.navigationItem.rightBarButtonItem.enabled = YES;
-    }
+    self.navigationItem.rightBarButtonItem.enabled = ![_schoolTextField.text isEmpty];
 }
 
 //根据服务器的学校列表，更新总列表
@@ -134,6 +130,7 @@ UITableViewDelegate>
 }
 
 //筛选  参数：完全匹配
+
 - (void)searchSchoolByKey:(BOOL)isAllCheck
 {
     NSString *searchKey = [_schoolTextField.text lowercaseString];
@@ -145,46 +142,43 @@ UITableViewDelegate>
     
     [_schoolSearchList removeAllObjects];
     
-    if (searchKey.length > 0)
-    {
+    if (0 == searchKey.length) {
+        [_schoolSearchList addObjectsFromArray:_schoolListBySeaver];
+    } else {
         [_schoolListBySeaver
          enumerateObjectsUsingBlock:^(SchoolListModel *model, NSUInteger idx, BOOL *stop) {
-            NSRange range = [model.schoolName rangeOfString:searchKey];
-            if (NSNotFound != range.location)
-            {
-                //汉字
-                [_schoolSearchList addObject:model];
-            }
-            else if (!isAllCheck)
-            {
-                NSString *tempPinYinStr = [PinYinForObjc
-                                           chineseConvertToPinYin:model.schoolName];
-                NSRange titleResult=[tempPinYinStr rangeOfString:searchKey
-                                                         options:NSCaseInsensitiveSearch];
-                if (titleResult.location != NSNotFound)
-                {
-                    //全拼
-                    [_schoolSearchList addObject:model];
-                }
-                else
-                {
-                    //首字母
-                    NSString *tempPinYinHeadStr = [PinYinForObjc
-                                                   chineseConvertToPinYinHead:model.schoolName];
-                    NSRange titleHeadResult=[tempPinYinHeadStr rangeOfString:searchKey
-                                                                     options:NSCaseInsensitiveSearch];
-                    if (titleHeadResult.location != NSNotFound)
-                    {
-                        [_schoolSearchList addObject:model];
-                    }
-                }
-                
-            }
-        }];
-    }
-    else
-    {
-        [_schoolSearchList addObjectsFromArray:_schoolListBySeaver];
+             NSRange range = [model.schoolName rangeOfString:searchKey];
+             if (NSNotFound != range.location)
+             {
+                 //汉字
+                 [_schoolSearchList addObject:model];
+             }
+             else if (!isAllCheck)
+             {
+                 NSString *tempPinYinStr = [PinYinForObjc
+                                            chineseConvertToPinYin:model.schoolName];
+                 NSRange titleResult=[tempPinYinStr rangeOfString:searchKey
+                                                          options:NSCaseInsensitiveSearch];
+                 if (titleResult.location != NSNotFound)
+                 {
+                     //全拼
+                     [_schoolSearchList addObject:model];
+                 }
+                 else
+                 {
+                     //首字母
+                     NSString *tempPinYinHeadStr = [PinYinForObjc
+                                                    chineseConvertToPinYinHead:model.schoolName];
+                     NSRange titleHeadResult=[tempPinYinHeadStr rangeOfString:searchKey
+                                                                      options:NSCaseInsensitiveSearch];
+                     if (titleHeadResult.location != NSNotFound)
+                     {
+                         [_schoolSearchList addObject:model];
+                     }
+                 }
+                 
+             }
+         }];
     }
     
     [_tableView reloadData];
@@ -230,6 +224,7 @@ UITableViewDelegate>
         }];
     }
 }
+
 
 #pragma mark - API
 //获取学校列表

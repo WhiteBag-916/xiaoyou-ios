@@ -307,7 +307,8 @@ DEF_SINGLETON(ActivityManager);
 }
 
 //查询日程列表
-- (void)userSchedulingList:(NSInteger)startDate endDate:(NSInteger)endDate block:(ActionCompleteBlock)block {
+- (void)userSchedulingList:(NSInteger)startDate endDate:(NSInteger)endDate
+                     block:(ActionCompleteBlock)block {
     UserSchedulingListAction *action = [[UserSchedulingListAction alloc] init];
     action.startDate = startDate;
     action.endDate = endDate;
@@ -344,7 +345,8 @@ DEF_SINGLETON(ActivityManager);
     }];
 }
 
--(void)getCurrentUseMainAvailableListLimitStart:(NSInteger)limitStart limitEnd:(NSInteger)limitEnd block:(ActionCompleteBlock)block
+-(void)getCurrentUseMainAvailableListLimitStart:(NSInteger)limitStart
+                                       limitEnd:(NSInteger)limitEnd block:(ActionCompleteBlock)block
 {
     MainAvailableTimeAction *action = [[MainAvailableTimeAction alloc] init];
     action.limitStart = limitStart;

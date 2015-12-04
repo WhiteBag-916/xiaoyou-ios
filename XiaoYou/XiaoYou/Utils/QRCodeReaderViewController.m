@@ -63,7 +63,7 @@
 {
     NSString * wavPath = [[NSBundle mainBundle] pathForResource:@"beep" ofType:@"wav"];
     NSData* data = [[NSData alloc] initWithContentsOfFile:wavPath];
-    _beepPlayer = [[AVAudioPlayer alloc] initWithData:data error:nil];
+    self.beepPlayer = [[AVAudioPlayer alloc] initWithData:data error:nil];
     self.hidesBottomBarWhenPushed = YES;
     return [self initWithCancelButtonTitle:NSLocalizedString(@"Cancel", @"Cancel")];
 }

@@ -31,19 +31,6 @@ CGFloat const UI_PLACEHOLDER_TEXT_CHANGED_ANIMATION_DURATION = 0.25;
 }
 
 
--(instancetype)initWithTextViewType:(TEXTVIEWTYPE)type
-{
-    if (self = [super init]) {
-        _type = type;
-    }
-    return self;
-}
-
--(void)setType:(TEXTVIEWTYPE)type
-{
-    _type = type;
-}
-
 - (void)awakeFromNib
 {
     [super awakeFromNib];
@@ -136,7 +123,7 @@ CGFloat const UI_PLACEHOLDER_TEXT_CHANGED_ANIMATION_DURATION = 0.25;
                      lineSpace:(CGFloat)lineSpace
 {
     NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
-    paragraphStyle.lineSpacing = lineSpace;// 字体的行间距
+    paragraphStyle.lineSpacing = lineSpace;
     NSDictionary *attributes = @{
                                  NSForegroundColorAttributeName:color,
                                  NSFontAttributeName:font,
@@ -198,12 +185,14 @@ CGFloat const UI_PLACEHOLDER_TEXT_CHANGED_ANIMATION_DURATION = 0.25;
     if (action == @selector(copy:)) { // 菜单能响应copy项
         return YES;
     }
-    else if (action == @selector(selectAll:)) { // 菜单不能响应select all项
+    
+    if (action == @selector(selectAll:)) { // 菜单不能响应select all项
         if (0 == self.text.length && self.attributedText.length == 0)
             return NO;
         return YES;
     }
-    else if (action == @selector(paste:)) {
+    
+    if (action == @selector(paste:)) {
         return self.editable;
     }
     

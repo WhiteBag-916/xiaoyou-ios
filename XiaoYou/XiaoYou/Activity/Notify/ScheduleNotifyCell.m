@@ -26,7 +26,6 @@
 
 @implementation ScheduleNotifyCell
 
-
 +(ScheduleNotifyCell *)cellWithTableView:(UITableView *)tableView
 {
     ScheduleNotifyCell *cell = [tableView dequeueReusableCellWithIdentifier:REUSRID];

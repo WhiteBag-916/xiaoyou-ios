@@ -140,7 +140,7 @@
     return self.activityDetailArray.count;
 }
 
-#pragma mark  Feed部分的控件要考虑复用
+
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     CGFloat height;
@@ -148,16 +148,11 @@
         height = [tableView fd_heightForCellWithIdentifier:REUSEID_DETAILCELL
                                           cacheByIndexPath:indexPath
                                              configuration:^(ActivityDetailCell *cell) {
-                [cell setData:self.activityDetailArray[indexPath.row]];
+                                [cell setData:self.activityDetailArray[indexPath.row]];
         }];
     }
     else
     {
-        ActivityDetailModel *model;
-        if (self.activityDetailArray.count > 0)
-            model = self.activityDetailArray[0];
-        else
-            return 0;
         Author *author = self.activityDetailArray[indexPath.row];
         if (author.studentNo == nil && author.uid == nil)
             return SCALE_NUM(160);

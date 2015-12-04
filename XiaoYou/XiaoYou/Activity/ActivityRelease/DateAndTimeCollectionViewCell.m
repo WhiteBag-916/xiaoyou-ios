@@ -42,11 +42,12 @@ NSString *const kDateAndTimeCollectionViewCell = @"DateAndTimeCollectionViewCell
     self.typeLabel.text = @"时间";
     
     //报名时间
-    UILabel * applyLabel = [[UILabel alloc] init];
-    applyLabel.backgroundColor = [UIColor clearColor];
-    applyLabel.font = CONTENT_FONT(12);
-    applyLabel.textColor = KCOLOR_B3;
-    applyLabel.text = @"报名截止时间";
+    UILabel * applyLabel = [YUtils initLabelWithBackgroundColor:[UIColor clearColor]
+                                                           font:CONTENT_FONT(12)
+                                                  numberOfLines:1
+                                                  textAlignment:NSTextAlignmentLeft
+                                                      textColor:KCOLOR_B3
+                                                           text:@"报名截止时间"];
     [self.backView addSubview:applyLabel];
     [applyLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.mas_equalTo(SCALE_NUM(80));
@@ -55,13 +56,13 @@ NSString *const kDateAndTimeCollectionViewCell = @"DateAndTimeCollectionViewCell
         make.width.mas_equalTo(SCALE_NUM(140));
     }];
     
-    _applayTimeLabel = [[UILabel alloc] init];
+    _applayTimeLabel = [YUtils initLabelWithBackgroundColor:[UIColor whiteColor]
+                                                       font:CONTENT_FONT(12)
+                                              numberOfLines:1
+                                              textAlignment:NSTextAlignmentCenter
+                                                  textColor:KCOLOR_B5
+                                                       text:@"请选择活动报名时间"];
     _applayTimeLabel.userInteractionEnabled = YES;
-    _applayTimeLabel.backgroundColor = [UIColor whiteColor];
-    _applayTimeLabel.font = CONTENT_FONT(12);
-    _applayTimeLabel.text = @"请选择活动报名时间";
-    _applayTimeLabel.textAlignment = NSTextAlignmentCenter;
-    _applayTimeLabel.textColor = KCOLOR_B5;
     [self.backView addSubview:_applayTimeLabel];
     [_applayTimeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(applyLabel.mas_bottom).offset(SCALE_NUM(10));
@@ -75,11 +76,12 @@ NSString *const kDateAndTimeCollectionViewCell = @"DateAndTimeCollectionViewCell
     [_applayTimeLabel addGestureRecognizer:applayTapGesture];
     
     //活动时间
-    UILabel * activityLabel = [[UILabel alloc] init];
-    activityLabel.backgroundColor = [UIColor clearColor];
-    activityLabel.font = CONTENT_FONT(12);
-    activityLabel.textColor = KCOLOR_B3;
-    activityLabel.text = @"活动时间";
+    UILabel * activityLabel = [YUtils initLabelWithBackgroundColor:[UIColor clearColor]
+                                                              font:CONTENT_FONT(12)
+                                                     numberOfLines:1
+                                                     textAlignment:NSTextAlignmentLeft
+                                                         textColor:KCOLOR_B3
+                                                              text:@"活动时间"];
     [self.backView addSubview:activityLabel];
     [activityLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(_applayTimeLabel.mas_bottom).offset(SCALE_NUM(10));
@@ -89,13 +91,13 @@ NSString *const kDateAndTimeCollectionViewCell = @"DateAndTimeCollectionViewCell
     }];
     
     //开始活动时间
-    _beginTimeLabel = [[UILabel alloc] init];
+    _beginTimeLabel = [YUtils initLabelWithBackgroundColor:[UIColor whiteColor]
+                                                      font:CONTENT_FONT(12)
+                                             numberOfLines:1
+                                             textAlignment:NSTextAlignmentCenter
+                                                 textColor:KCOLOR_B5
+                                                      text:@"请选择活动开始时间"];
     _beginTimeLabel.userInteractionEnabled = YES;
-    _beginTimeLabel.backgroundColor = [UIColor whiteColor];
-    _beginTimeLabel.font = CONTENT_FONT(12);
-    _beginTimeLabel.text = @"请选择活动开始时间";
-    _beginTimeLabel.textAlignment = NSTextAlignmentCenter;
-    _beginTimeLabel.textColor = KCOLOR_B5;
     [self.backView addSubview:_beginTimeLabel];
     [_beginTimeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(activityLabel.mas_bottom).offset(SCALE_NUM(10));
@@ -109,12 +111,12 @@ NSString *const kDateAndTimeCollectionViewCell = @"DateAndTimeCollectionViewCell
     [_beginTimeLabel addGestureRecognizer:beginTapGesture];
     
     //至Label
-    UILabel * toLabel =[[UILabel alloc] init];
-    toLabel.backgroundColor = [UIColor clearColor];
-    toLabel.textAlignment = NSTextAlignmentCenter;
-    toLabel.font = CONTENT_FONT(12);
-    toLabel.textColor = KCOLOR_B3;
-    toLabel.text = @"至";
+    UILabel * toLabel =[YUtils initLabelWithBackgroundColor:[UIColor clearColor]
+                                                       font:CONTENT_FONT(12)
+                                              numberOfLines:1
+                                              textAlignment:NSTextAlignmentCenter
+                                                  textColor:KCOLOR_B3
+                                                       text:@"至"];
     [self.backView addSubview:toLabel];
     [toLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(_beginTimeLabel.mas_bottom).offset(SCALE_NUM(10));
@@ -124,13 +126,13 @@ NSString *const kDateAndTimeCollectionViewCell = @"DateAndTimeCollectionViewCell
     }];
     
     //结束活动时间
-    _endTimeLabel = [[UILabel alloc] init];
+    _endTimeLabel = [YUtils initLabelWithBackgroundColor:[UIColor whiteColor]
+                                                    font:CONTENT_FONT(12)
+                                           numberOfLines:1
+                                           textAlignment:NSTextAlignmentCenter
+                                               textColor:KCOLOR_B5
+                                                    text:@"请选择活动结束时间"];
     _endTimeLabel.userInteractionEnabled = YES;
-    _endTimeLabel.backgroundColor = [UIColor whiteColor];
-    _endTimeLabel.font = CONTENT_FONT(12);
-    _endTimeLabel.text = @"请选择活动结束时间";
-    _endTimeLabel.textAlignment = NSTextAlignmentCenter;
-    _endTimeLabel.textColor = KCOLOR_B5;
     [self.backView addSubview:_endTimeLabel];
     [_endTimeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(toLabel.mas_bottom).offset(SCALE_NUM(10));
@@ -219,7 +221,7 @@ NSString *const kDateAndTimeCollectionViewCell = @"DateAndTimeCollectionViewCell
 {
     NSDateFormatter * formatter = [[NSDateFormatter alloc] init];
     [formatter setDateFormat:@"yyyy年MM月dd日 a HH:mm"];
-    NSString * showStr = [formatter stringFromDate:_datePicker.date];
+    NSString * showStr = [self getShowDateStr];
     NSString * BeginApplyStr = [formatter stringFromDate:[NSDate dateWithTimeInterval:-300
                                                                             sinceDate:_datePicker.date]];
     _applayTimeLabel.text = showStr;
@@ -230,9 +232,7 @@ NSString *const kDateAndTimeCollectionViewCell = @"DateAndTimeCollectionViewCell
 }
 -(void)heginChooseDate
 {
-    NSDateFormatter * formatter = [[NSDateFormatter alloc] init];
-    [formatter setDateFormat:@"yyyy年MM月dd日 a HH:mm"];
-    NSString * showStr = [formatter stringFromDate:_datePicker.date];
+    NSString * showStr = [self getShowDateStr];
     _beginTimeLabel.text = showStr;
     _beginTimeLabel.textColor = KCOLOR_B4;
     _dataManager.ActivityDateBeginText = showStr;
@@ -242,14 +242,21 @@ NSString *const kDateAndTimeCollectionViewCell = @"DateAndTimeCollectionViewCell
 }
 -(void)endChooseDate
 {
-    NSDateFormatter * formatter = [[NSDateFormatter alloc] init];
-    [formatter setDateFormat:@"yyyy年MM月dd日 a HH:mm"];
-    NSString * showStr = [formatter stringFromDate:_datePicker.date];
+    NSString * showStr = [self getShowDateStr];
     _endTimeLabel.text = showStr;
     _endTimeLabel.textColor = KCOLOR_B4;
     _dataManager.ActivityDateEndText = showStr;
     
     [self isSmallTo15Minites];
+}
+
+-(NSString *)getShowDateStr
+{
+    NSDateFormatter * formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"yyyy年MM月dd日 a HH:mm"];
+    NSString * showStr = [formatter stringFromDate:_datePicker.date];
+    
+    return showStr;
 }
 
 -(void)isSmallTo15Minites

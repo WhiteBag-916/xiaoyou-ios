@@ -47,11 +47,10 @@ NSString *const kChoicePersonTableViewCell = @"ChoicePersonTableViewCellId";
     }];
     
     //头像
-    _headImageView = [[UIImageView alloc] init];
-    _headImageView.backgroundColor = [UIColor clearColor];
-    _headImageView.layer.cornerRadius = kHeadCornerRadius;
-    _headImageView.clipsToBounds = YES;
-    _headImageView.image = [UIImage imageNamed:@"default_head"];
+    self.headImageView = [YUtils initImageViewWithBackgroundColor:[UIColor clearColor]
+                                                     cornerRadius:kHeadCornerRadius
+                                                    clipsToBounds:YES
+                                                            image:[UIImage imageNamed:@"default_head"]];
     [_backView addSubview:_headImageView];
     [_headImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.top.mas_equalTo(kPaddingDistance);

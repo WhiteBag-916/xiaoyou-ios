@@ -27,8 +27,5 @@ typedef enum : NSUInteger {
 
 -(void)setCustomAttributedText:(NSAttributedString *)attributedText;
 
--(instancetype)initWithTextViewType:(TEXTVIEWTYPE)type;
-
-@property (nonatomic, assign) TEXTVIEWTYPE type;
 
 @end
