@@ -33,7 +33,7 @@ NSString *const kGroupInfoDetailHeaderView = @"GroupInfoDetailHeaderViewId";
     if (self) {
         self.backgroundColor = [UIColor whiteColor];
         
-        _groupImageView = [[UIImageView alloc] init];//WithFrame:CGRectMake(0, 0, 50, 50)];
+        self.groupImageView = [[UIImageView alloc] init];//WithFrame:CGRectMake(0, 0, 50, 50)];
         _groupImageView.backgroundColor = KCOLOR_009688;
         _groupImageView.layer.cornerRadius = SCALE_NUM(25);
         _groupImageView.clipsToBounds = YES;
@@ -44,7 +44,7 @@ NSString *const kGroupInfoDetailHeaderView = @"GroupInfoDetailHeaderViewId";
             make.width.height.mas_equalTo(kImageViewWidthAndHeight);
         }];
         
-        _grouoHeadLabel = [[UILabel alloc] init];
+        self.grouoHeadLabel = [[UILabel alloc] init];
         _grouoHeadLabel.textColor = [UIColor whiteColor];
         _grouoHeadLabel.textAlignment = NSTextAlignmentCenter;
         _grouoHeadLabel.font = CONTENT_FONT(20);
@@ -56,7 +56,7 @@ NSString *const kGroupInfoDetailHeaderView = @"GroupInfoDetailHeaderViewId";
             make.width.height.mas_equalTo(kImageViewWidthAndHeight);
         }];
         
-        _groupNameLabel = [[UILabel alloc] init];
+        self.groupNameLabel = [[UILabel alloc] init];
         _groupNameLabel.font = CONTENT_FONT(14);
         _groupNameLabel.backgroundColor = [UIColor clearColor];
         [self addSubview:_groupNameLabel];

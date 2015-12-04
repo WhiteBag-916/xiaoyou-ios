@@ -39,8 +39,7 @@ NSString *const kContactsInfoDetailTableViewCell = @"ContactsInfoDetailTableView
 
 -(void)setUpUI
 {
-    _flagImageView = [[UIImageView alloc] init];
-    _flagImageView.backgroundColor = [UIColor clearColor];
+    self.flagImageView = [[UIImageView alloc] init];
     [self.contentView addSubview:_flagImageView];
     [_flagImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.mas_equalTo(kFlagImageDistanceToLeft);
@@ -49,9 +48,8 @@ NSString *const kContactsInfoDetailTableViewCell = @"ContactsInfoDetailTableView
         
     }];
     
-    _contentLabel = [[UILabel alloc] init];
+    self.contentLabel = [[UILabel alloc] init];
     _contentLabel.font = CONTENT_FONT(12);
-    _contentLabel.backgroundColor = [UIColor clearColor];
     [self.contentView addSubview:_contentLabel];
     [_contentLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(_flagImageView.mas_right).offset(kFlagImageDistanceToLabel);
@@ -60,7 +58,7 @@ NSString *const kContactsInfoDetailTableViewCell = @"ContactsInfoDetailTableView
         make.height.mas_equalTo(kLabelHeight);
     }];
     
-    _line = [[UIView alloc] init];
+    self.line = [[UIView alloc] init];
     [self.contentView addSubview:_line];
     [_line mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.bottom.right.equalTo(self.contentView);

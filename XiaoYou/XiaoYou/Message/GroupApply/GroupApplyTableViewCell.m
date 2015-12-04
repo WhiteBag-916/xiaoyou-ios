@@ -69,7 +69,7 @@ NSString *const kGroupApplyTableViewCell = @"GroupApplyTableViewCellId";
 -(void)setUpUI
 {
     //头像
-    _headImageView = [[YFaceImageView alloc] init];
+    self.headImageView = [[YFaceImageView alloc] init];
     _headImageView.backgroundColor = [UIColor clearColor];
     _headImageView.layer.cornerRadius = kHeadCornerRadius;
     _headImageView.clipsToBounds = YES;
@@ -81,7 +81,7 @@ NSString *const kGroupApplyTableViewCell = @"GroupApplyTableViewCellId";
     }];
     
     //昵称
-    _nameLabel = [[UILabel alloc] init];
+    self.nameLabel = [[UILabel alloc] init];
     _nameLabel.font = CONTENT_FONT(14);
     _nameLabel.backgroundColor = [UIColor whiteColor];
     _nameLabel.text = @"斯提尔伯格";
@@ -94,7 +94,7 @@ NSString *const kGroupApplyTableViewCell = @"GroupApplyTableViewCellId";
     }];
     
     //性别
-    _sexLabel = [[UILabel alloc] init];
+    self.sexLabel = [[UILabel alloc] init];
     _sexLabel.font = CONTENT_FONT(14);
     _sexLabel.backgroundColor = [UIColor whiteColor];
     [self.contentView addSubview:_sexLabel];
@@ -105,7 +105,7 @@ NSString *const kGroupApplyTableViewCell = @"GroupApplyTableViewCellId";
     }];
     
     //院系信息
-    _infoLabel = [[UILabel alloc] init];
+    self.infoLabel = [[UILabel alloc] init];
     _infoLabel.font = CONTENT_FONT(12);
     _infoLabel.backgroundColor = [UIColor whiteColor];
     [self.contentView addSubview:_infoLabel];
@@ -117,7 +117,7 @@ NSString *const kGroupApplyTableViewCell = @"GroupApplyTableViewCellId";
     }];
     
     //自选标签
-    _flagImageView = [[UIImageView alloc] init];
+    self.flagImageView = [[UIImageView alloc] init];
     [self.contentView addSubview:_flagImageView];
     [_flagImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.equalTo(_headImageView.mas_centerX);
@@ -128,7 +128,7 @@ NSString *const kGroupApplyTableViewCell = @"GroupApplyTableViewCellId";
     
     [self setIsRelated:YES];
     
-    _tagContent = [[SKTagView alloc] init];
+    self.tagContent = [[SKTagView alloc] init];
     [self addSubview:_tagContent];
     [_tagContent mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(_headImageView.mas_bottom).offset(kFlagLabelToHead);
@@ -143,7 +143,7 @@ NSString *const kGroupApplyTableViewCell = @"GroupApplyTableViewCellId";
     _tagContent.preferredMaxLayoutWidth = SCALE_NUM(250);
     
     //大Button
-    _afterDealButton = [[UIButton alloc] init];
+    self.afterDealButton = [[UIButton alloc] init];
     _afterDealButton.titleLabel.font = CONTENT_FONT(14);
     _afterDealButton.tag = BIG_BUTTON;
     _afterDealButton.backgroundColor = KCOLOR_009688;
@@ -160,7 +160,7 @@ NSString *const kGroupApplyTableViewCell = @"GroupApplyTableViewCellId";
     _afterDealButton.hidden = YES;
     
     //拒绝
-    _refuseButton = [[UIButton alloc] init];
+    self.refuseButton = [[UIButton alloc] init];
     _refuseButton.titleLabel.font = CONTENT_FONT(14);
     _refuseButton.tag = REFUSE_BUTTON;
     _refuseButton.backgroundColor = [UIColor hexChangeFloat:@"76a5ad"];
@@ -175,7 +175,7 @@ NSString *const kGroupApplyTableViewCell = @"GroupApplyTableViewCellId";
         make.bottom.mas_equalTo(-kPaddingDistance);
     }];
     //通过
-    _passButton = [[UIButton alloc] init];
+    self.passButton = [[UIButton alloc] init];
     _passButton.titleLabel.font = CONTENT_FONT(14);
     _passButton.tag = PASS_BUTTON;
     _passButton.backgroundColor = KCOLOR_009688;
@@ -190,7 +190,7 @@ NSString *const kGroupApplyTableViewCell = @"GroupApplyTableViewCellId";
         make.bottom.mas_equalTo(-kPaddingDistance);
     }];
     //发信
-    _sendButton = [[UIButton alloc] init];
+    self.sendButton = [[UIButton alloc] init];
     _sendButton.titleLabel.font = CONTENT_FONT(14);
     _sendButton.tag = SEND_BUTTON;
     _sendButton.backgroundColor = [UIColor hexChangeFloat:@"84ccc9"];

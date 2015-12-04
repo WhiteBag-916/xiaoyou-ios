@@ -61,17 +61,17 @@ NSString *const kContactsTableViewCell = @"ContactsTableViewCell";
     self.contentView.backgroundColor = [UIColor clearColor];
     
     //头像
-    _headImageView = [[UIImageView alloc] init];
-    _headImageView.layer.cornerRadius = kHeadCornerRadius;
-    _headImageView.clipsToBounds = YES;
-    _headImageView.backgroundColor = [UIColor clearColor];
+    self.headImageView = [YUtils initImageViewWithBackgroundColor:[UIColor clearColor]
+                                                 cornerRadius:kHeadCornerRadius
+                                                clipsToBounds:YES
+                                                        image:nil];
     [self.contentView addSubview:_headImageView];
     [_headImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.left.mas_equalTo(kPaddingDistance);
         make.width.height.mas_equalTo(kHeadWidthAndHeight);
     }];
     //班
-    _defaultLabel = [[UILabel alloc] init];
+    self.defaultLabel = [[UILabel alloc] init];
     _defaultLabel.textAlignment = NSTextAlignmentCenter;
     _defaultLabel.textColor = [UIColor whiteColor];
     [self.contentView addSubview:_defaultLabel];
@@ -81,7 +81,7 @@ NSString *const kContactsTableViewCell = @"ContactsTableViewCell";
         make.width.height.mas_equalTo(kClassLabelWidthAndHeight);
     }];
     //姓名
-    _nameLabel = [[UILabel alloc] init];
+    self.nameLabel = [[UILabel alloc] init];
     _nameLabel.font = CONTENT_FONT(14);
     _nameLabel.backgroundColor = [UIColor clearColor];
     [self.contentView addSubview:_nameLabel];
@@ -92,8 +92,7 @@ NSString *const kContactsTableViewCell = @"ContactsTableViewCell";
         make.height.mas_equalTo(kLabelHeightDistacnce);
     }];
     //标签图
-    _flagImageView = [[UIImageView alloc] init];
-    _flagImageView.backgroundColor = [UIColor clearColor];
+    self.flagImageView = [[UIImageView alloc] init];
     [self.contentView addSubview:_flagImageView];
     [_flagImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.bottom.mas_equalTo(-kPaddingDistance);
@@ -102,8 +101,7 @@ NSString *const kContactsTableViewCell = @"ContactsTableViewCell";
         make.height.mas_equalTo(kFlagImageViewHeight);
     }];
     //
-    _tagContent = [[SKTagView alloc] init];
-    _tagContent.backgroundColor = [UIColor clearColor];
+    self.tagContent = [[SKTagView alloc] init];
     [self.contentView addSubview:_tagContent];
     [_tagContent mas_makeConstraints:^(MASConstraintMaker *make) {
 //        make.top.equalTo(_nameLabel.mas_bottom).offset(kFlagLabelToHead);
@@ -121,8 +119,7 @@ NSString *const kContactsTableViewCell = @"ContactsTableViewCell";
     _tagContent.preferredMaxLayoutWidth = SCALE_NUM(240);
     
     //提醒
-    _remindImageView = [[UIImageView alloc] init];
-    _remindImageView.image = [UIImage imageNamed:@"chat_remindnot"];
+    self.remindImageView = [YUtils initImageViewWithImageName:@"chat_remindnot"];
     [self.contentView addSubview:_remindImageView];
     [_remindImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.bottom.mas_equalTo(-kPaddingDistance);
@@ -131,7 +128,7 @@ NSString *const kContactsTableViewCell = @"ContactsTableViewCell";
         make.width.mas_equalTo(kRemindImageViewWidth);
     }];
     
-    _connectTag = [[ConnectTag alloc] init];
+    self.connectTag = [[ConnectTag alloc] init];
     [self.contentView addSubview:_connectTag];
     [_connectTag mas_makeConstraints:^(MASConstraintMaker *make) {
         make.right.equalTo(self.contentView).offset(-kPaddingDistance);

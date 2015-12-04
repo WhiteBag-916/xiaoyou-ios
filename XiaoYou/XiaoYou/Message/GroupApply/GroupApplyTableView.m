@@ -29,7 +29,7 @@
         self.separatorStyle = UITableViewCellSeparatorStyleNone;
         
         _groupId = groupId;
-        _groupApplyArray = [NSMutableArray array];
+        self.groupApplyArray = [NSMutableArray array];
         
         [self registerClass:[GroupApplyTableViewCell class]
      forCellReuseIdentifier:kGroupApplyTableViewCell];
@@ -39,7 +39,7 @@
 #pragma mark - 刷新界面
 -(void)refreshTableView:(NSArray *) dataSouceArr
 {
-    _groupApplyArray = [NSMutableArray arrayWithArray:dataSouceArr];
+    self.groupApplyArray = [NSMutableArray arrayWithArray:dataSouceArr];
     [self reloadData];
 }
 

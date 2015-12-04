@@ -101,7 +101,7 @@ SDPhotoBrowserDelegate,ContactsInfoThirdTableViewCellDelegate>
     [[UITapGestureRecognizer alloc] initWithTarget:self
                                             action:@selector(clickedHeadImageVIew)];
     //放大头像
-    _faceContainer = [[UIView alloc] init];
+    self.faceContainer = [[UIView alloc] init];
     _faceContainer.backgroundColor = [UIColor clearColor];
     [backView addSubview:_faceContainer];
     [_faceContainer mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -110,12 +110,12 @@ SDPhotoBrowserDelegate,ContactsInfoThirdTableViewCellDelegate>
         make.width.height.mas_equalTo(kHeadWidthAndHeight);
     }];
     //头像
-    _headImageView = [[UIImageView alloc] init];
+    self.headImageView = [YUtils initImageViewWithBackgroundColor:[UIColor clearColor]
+                                                     cornerRadius:kHeadCornerRadius
+                                                    clipsToBounds:YES
+                                                            image:nil];
     _headImageView.userInteractionEnabled = YES;
     [_headImageView addGestureRecognizer:gestureRecognizer];
-    _headImageView.layer.cornerRadius = kHeadCornerRadius;
-    _headImageView.clipsToBounds = YES;
-    _headImageView.backgroundColor = [UIColor clearColor];
     [_headImageView setFaceImageWithUrl:_model.headPic];
     [_faceContainer addSubview:_headImageView];
     [_headImageView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -123,11 +123,13 @@ SDPhotoBrowserDelegate,ContactsInfoThirdTableViewCellDelegate>
     }];
     
     //姓名
-    _nameLabel = [[UILabel alloc] init];
-    _nameLabel.font = CONTENT_FONT(14);
-    _nameLabel.textColor = [UIColor hexChangeFloat:@"333333"];
-    _nameLabel.text = _model.userName;
-    _nameLabel.backgroundColor = [UIColor clearColor];
+    self.nameLabel = [YUtils initLabelWithBackgroundColor:[UIColor clearColor]
+                                                     font:CONTENT_FONT(14)
+                                            numberOfLines:1
+                                            textAlignment:NSTextAlignmentLeft
+                                                textColor:[UIColor
+                                                           hexChangeFloat:@"333333"]
+                                                     text:_model.userName];
     NSDictionary *attributes = @{NSFontAttributeName:[UIFont systemFontOfSize:14]};
     CGSize textSize = [_model.userName boundingRectWithSize:CGSizeMake(150, 14) options:NSStringDrawingTruncatesLastVisibleLine attributes:attributes context:nil].size;
     [backView addSubview:_nameLabel];
@@ -140,7 +142,6 @@ SDPhotoBrowserDelegate,ContactsInfoThirdTableViewCellDelegate>
     
     //性别
     UIImageView * sexImageView = [[UIImageView alloc] init];
-    sexImageView.backgroundColor = [UIColor clearColor];
     [backView addSubview:sexImageView];
     [sexImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(_nameLabel.mas_right);
@@ -158,10 +159,13 @@ SDPhotoBrowserDelegate,ContactsInfoThirdTableViewCellDelegate>
     }
     
     //院系年级
-    UILabel * classLabel = [[UILabel alloc] init];
-    classLabel.text = [NSString stringWithFormat:@"%@ | %@",_model.faculty,_model.grad];
-    classLabel.font = CONTENT_FONT(12);
-    classLabel.textColor = [UIColor hexChangeFloat:@"999999"];
+    UILabel * classLabel = [YUtils initLabelWithBackgroundColor:[UIColor clearColor]
+                                                           font:CONTENT_FONT(12)
+                                                  numberOfLines:1
+                                                  textAlignment:NSTextAlignmentLeft
+                                                      textColor:[UIColor
+                                                                 hexChangeFloat:@"999999"]
+                                                           text:[NSString stringWithFormat:@"%@ | %@",_model.faculty,_model.grad]];
     [backView addSubview:classLabel];
     [classLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.bottom.equalTo(_headImageView.mas_bottom);
@@ -179,7 +183,7 @@ SDPhotoBrowserDelegate,ContactsInfoThirdTableViewCellDelegate>
                                                                  SCREEN_WIDTH, kHeaderViewHeight)];
     backView.backgroundColor = [UIColor clearColor];
     //头像
-    _feedBackView = [[UIImageView alloc] init];
+    self.feedBackView = [[UIImageView alloc] init];
     _feedBackView.layer.cornerRadius = kHeadCornerRadius;
     _feedBackView.clipsToBounds = YES;
     _feedBackView.backgroundColor = KCOLOR_009688;
@@ -189,12 +193,12 @@ SDPhotoBrowserDelegate,ContactsInfoThirdTableViewCellDelegate>
         make.centerY.equalTo(backView);
         make.width.height.mas_equalTo(kHeadWidthAndHeight);
     }];
-    _feedCountLabel = [[UILabel alloc] init];
-    _feedCountLabel.backgroundColor = [UIColor clearColor];
-    _feedCountLabel.textColor = [UIColor whiteColor];
-    _feedCountLabel.textAlignment = NSTextAlignmentCenter;
-    _feedCountLabel.text = @"动态";
-    _feedCountLabel.font = CONTENT_FONT(15);
+    _feedCountLabel = [YUtils initLabelWithBackgroundColor:[UIColor clearColor]
+                                                      font:CONTENT_FONT(15)
+                                             numberOfLines:1
+                                             textAlignment:NSTextAlignmentCenter
+                                                 textColor:[UIColor whiteColor]
+                                                      text:@"动态"];;
     [backView addSubview:_feedCountLabel];
     [_feedCountLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.mas_equalTo(kPaddingDistance);
@@ -203,11 +207,12 @@ SDPhotoBrowserDelegate,ContactsInfoThirdTableViewCellDelegate>
     }];
     
     //姓名
-    _feedLabel = [[UILabel alloc] init];
-    _feedLabel.font = CONTENT_FONT(14);
-    _feedLabel.textColor = [UIColor hexChangeFloat:@"666666"];
-    _feedLabel.text = [NSString stringWithFormat:@"共%g条",_model.feedCount];
-    _feedLabel.backgroundColor = [UIColor clearColor];
+    self.feedLabel = [YUtils initLabelWithBackgroundColor:[UIColor clearColor]
+                                                 font:CONTENT_FONT(14)
+                                        numberOfLines:1
+                                        textAlignment:NSTextAlignmentLeft
+                                            textColor:[UIColor hexChangeFloat:@"666666"]
+                                                 text:[NSString stringWithFormat:@"共%g条",_model.feedCount]];
     [backView addSubview:_feedLabel];
     [_feedLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.equalTo(_feedBackView);
@@ -216,9 +221,7 @@ SDPhotoBrowserDelegate,ContactsInfoThirdTableViewCellDelegate>
         make.height.mas_equalTo(kLabelHeightDistacnce);
     }];
     
-    _flagImageView = [[UIImageView alloc] init];
-    _flagImageView.backgroundColor = [UIColor clearColor];
-    _flagImageView.image = [UIImage imageNamed:@"mine-concern-particulars"];
+    self.flagImageView = [YUtils initImageViewWithImageName:@"mine-concern-particulars"];
     [backView addSubview:_flagImageView];
     [_flagImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.equalTo(_feedBackView);

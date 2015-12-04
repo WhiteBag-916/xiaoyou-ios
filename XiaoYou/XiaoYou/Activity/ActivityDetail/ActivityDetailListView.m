@@ -153,7 +153,7 @@
     }
     else
     {
-        ActivityDetailModel *model;
+        ActivityDetailModel *model = [[ActivityDetailModel alloc] init];
         if (self.activityDetailArray.count > 0)
             model = self.activityDetailArray[0];
         else

@@ -28,7 +28,7 @@
         self.delegate = self;
         self.separatorStyle = UITableViewCellSeparatorStyleNone;
         
-        _dataSourceArr = [NSMutableArray array];
+        self.dataSourceArr = [NSMutableArray array];
         
         [self registerClass:[FriendApplyTableViewCell class]
      forCellReuseIdentifier:kFriendApplyTableViewCell];
