@@ -76,7 +76,7 @@ typedef enum : NSUInteger {
 -(void)setUpUI
 {
     //头像
-    _headImageView = [[YFaceImageView alloc] init];
+    self.headImageView = [[YFaceImageView alloc] init];
     _headImageView.backgroundColor = [UIColor clearColor];
     _headImageView.layer.cornerRadius = kHeadCornerRadius;
     _headImageView.clipsToBounds = YES;
@@ -88,7 +88,7 @@ typedef enum : NSUInteger {
     }];
     
     //昵称
-    _nameLabel = [[UILabel alloc] init];
+    self.nameLabel = [[UILabel alloc] init];
     _nameLabel.font = CONTENT_FONT(14);
     _nameLabel.backgroundColor = [UIColor whiteColor];
     [self.contentView addSubview:_nameLabel];
@@ -100,7 +100,7 @@ typedef enum : NSUInteger {
     }];
     
     //性别
-    _sexLabel = [[UILabel alloc] init];
+    self.sexLabel = [[UILabel alloc] init];
     _sexLabel.font = CONTENT_FONT(14);
     _sexLabel.backgroundColor = [UIColor whiteColor];
     [self.contentView addSubview:_sexLabel];
@@ -112,7 +112,7 @@ typedef enum : NSUInteger {
     
     
     //标签
-    _connectTag = [[ConnectTag alloc] init];
+    self.connectTag = [[ConnectTag alloc] init];
     [self.contentView addSubview:_connectTag];
     [_connectTag mas_makeConstraints:^(MASConstraintMaker *make) {
         make.right.mas_equalTo(-kPaddingDistance);
@@ -122,7 +122,7 @@ typedef enum : NSUInteger {
     }];
     
     //院系信息
-    _infoLabel = [[UILabel alloc] init];
+    self.infoLabel = [[UILabel alloc] init];
     _infoLabel.font = CONTENT_FONT(12);
     _infoLabel.text = @"计算机与控制工程学院     15级";
     _infoLabel.backgroundColor = [UIColor whiteColor];
@@ -135,8 +135,7 @@ typedef enum : NSUInteger {
     }];
     
     //自选标签
-    _flagImageView = [[UIImageView alloc] init];
-    _flagImageView.image = [UIImage imageNamed:@"tag-green"];
+    self.flagImageView = [YUtils initImageViewWithImageName:@"tag-green"];
     [self.contentView addSubview:_flagImageView];
     [_flagImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.equalTo(_headImageView.mas_centerX);
@@ -145,7 +144,7 @@ typedef enum : NSUInteger {
         make.height.mas_equalTo(kFlagImageViewHeight);
     }];
     
-    _tagContent = [[SKTagView alloc] init];
+    self.tagContent = [[SKTagView alloc] init];
     [self addSubview:_tagContent];
     [_tagContent mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(_headImageView.mas_bottom).offset(kFlagLabelToHead);
@@ -161,7 +160,7 @@ typedef enum : NSUInteger {
     _tagContent.preferredMaxLayoutWidth = SCALE_NUM(240);
     
     //大Button
-    _afterDealButton = [[UIButton alloc] init];
+    self.afterDealButton = [[UIButton alloc] init];
     _afterDealButton.titleLabel.font = CONTENT_FONT(14);
     _afterDealButton.tag = BIG_BUTTON;
     _afterDealButton.backgroundColor = KCOLOR_009688;
@@ -178,7 +177,7 @@ typedef enum : NSUInteger {
     _afterDealButton.hidden = YES;
     
     //忽略
-    _ignoreButton = [[UIButton alloc] init];
+    self.ignoreButton = [[UIButton alloc] init];
     _ignoreButton.titleLabel.font = CONTENT_FONT(14);
     _ignoreButton.tag = IGNORE_BUTTON;
     _ignoreButton.backgroundColor = [UIColor hexChangeFloat:@"76a5ad"];
@@ -193,7 +192,7 @@ typedef enum : NSUInteger {
         make.bottom.mas_equalTo(-kPaddingDistance);
     }];
     //好啊
-    _confirmButton = [[UIButton alloc] init];
+    self.confirmButton = [[UIButton alloc] init];
     _confirmButton.titleLabel.font = CONTENT_FONT(14);
     _confirmButton.tag = OK_BUTTON;
     _confirmButton.backgroundColor = KCOLOR_009688;
