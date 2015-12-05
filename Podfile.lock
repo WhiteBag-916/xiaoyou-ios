@@ -48,6 +48,9 @@ PODS:
   - UITableView+FDTemplateLayoutCell (1.4.beta)
   - UMengAnalytics-NO-IDFA (3.6.5)
   - UzysAssetsPickerController (0.9.9)
+  - Zhugeio (2.0.3):
+    - Zhugeio/Zhugeio (= 2.0.3)
+  - Zhugeio/Zhugeio (2.0.3)
 
 DEPENDENCIES:
   - ASIHTTPRequest (~> 1.8.2)
@@ -67,6 +70,7 @@ DEPENDENCIES:
   - UITableView+FDTemplateLayoutCell (~> 1.4.beta)
   - UMengAnalytics-NO-IDFA (~> 3.6.5)
   - UzysAssetsPickerController (~> 0.9.9)
+  - Zhugeio
 
 SPEC CHECKSUMS:
   ASIHTTPRequest: ec013992946676b7978dcbde6396d57312d21db4
@@ -88,5 +92,6 @@ SPEC CHECKSUMS:
   UITableView+FDTemplateLayoutCell: 9d20bf0518f3c01e42ae614243b97f1161063d27
   UMengAnalytics-NO-IDFA: 279e28990a08efb56cff1821d2954bb00aa6975a
   UzysAssetsPickerController: 47c27bd96955467925f3d4d80b1e2e8aaeff766d
+  Zhugeio: 75f6799029f30c537c4cfd1afea9c1d5a28b2c26
 
 COCOAPODS: 0.39.0

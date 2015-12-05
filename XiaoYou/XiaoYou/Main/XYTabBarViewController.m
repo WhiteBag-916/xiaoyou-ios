@@ -183,16 +183,16 @@
 
 - (void)tabBarController:(UITabBarController *)tabBarController didSelectViewController:(UIViewController *)viewController {
     if (viewController == _messageViewCotroller) {
-        [MobClick event:@"event13"];
+        [YAnalysis trackEvent:@"消息" withPara:nil];
     }
     if (viewController == _availableViewController) {
-        [MobClick event:@"event14"];
+        [YAnalysis trackEvent:@"有空" withPara:nil];
     }
     if (viewController == _feedListViewCotroller) {
-        [MobClick event:@"event15"];
+        [YAnalysis trackEvent:@"校友圈" withPara:nil];
     }
     if (viewController == _profileViewCotroller) {
-        [MobClick event:@"event16"];
+        [YAnalysis trackEvent:@"我的" withPara:nil];
     }
 }
 

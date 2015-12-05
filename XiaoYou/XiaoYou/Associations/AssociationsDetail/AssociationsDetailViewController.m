@@ -75,7 +75,8 @@
         YActionSheetItem *item2 = [YActionSheetItem itemWithTitle:@"举报"
                                                              type:YCommonActionSheetItemTypeCommon
                                                             block:^(NSInteger checkNum) {
-                                                                [YCommonReport report];
+                                                                [YCommonReport reportWithType:@"举报_社团详情_更多操作"
+                                                                                      andData:@{@"社团":_name}];
                                                             }];
         
         YCommonActionSheet *sheet = [[YCommonActionSheet alloc] initWithType:@[item1, item2]

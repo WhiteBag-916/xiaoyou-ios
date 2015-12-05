@@ -14,10 +14,10 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '0415A522DC76783692B5DD29'
-               BlueprintName = 'iOS-Slide-Menu'
+               BlueprintIdentifier = '5DA32D90884D03BF3EF296B1'
+               BlueprintName = 'Zhugeio'
                ReferencedContainer = 'container:Pods.xcodeproj'
-               BuildableName = 'libiOS-Slide-Menu.a'>
+               BuildableName = 'libZhugeio.a'>
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>

@@ -248,6 +248,7 @@
 //消息未读提醒Action
 -(void)messageNotReadAction
 {
+    [YAnalysis trackEvent:@"新消息_有空" withPara:nil];
     NotifyViewController *notiVC = [[NotifyViewController alloc]init];
     [self.viewController.navigationController pushViewController:notiVC animated:YES needHiddenBottomBar:YES];
 }

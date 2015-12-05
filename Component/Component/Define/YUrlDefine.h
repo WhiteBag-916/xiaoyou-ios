@@ -20,12 +20,14 @@
 #define hx_AppKey            @"jiankun#xiaoyou"
 #define hx_AppCertificate           @"xiaoyou_producation"
 #define share_url @"http://share.xiaoyou.com"
+#define ZHUGE_APPKEY @"d7674395f994401d9aba9b74d99fa8c8"
 #else
 #define api_server_base_url @"http://beta.xiaoyou.com:9081/mobile"
 #define UMENG_APPKEY @"55cda7c3e0f55a0de40018c7"
 #define hx_AppKey            @"jiankun#xiaoyoubeta"
 #define hx_AppCertificate           @"xiaoyou_development_beta"
 #define share_url @"http://sharebeta.xiaoyou.com"
+#define ZHUGE_APPKEY @"5536067a02c14de1bbc3f68bbc2ac41f"
 #endif
 
 /** 获取图像接口*/

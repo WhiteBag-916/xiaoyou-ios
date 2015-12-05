@@ -101,7 +101,7 @@ NSString *const kXYGroupInfoDetailViewController = @"XYGroupInfoDetailViewContro
 #pragma mark - 点击底部button事件
 -(void)clickBottomButton
 {
-    [MobClick event:@"event24"];
+    [YAnalysis trackEvent:@"进入群聊_班级群聊_详情" withPara:@{@"班级名":_model.groupModel.groupName}];
     if ([self.navigationController.viewControllers[self.navigationController.viewControllers.count-2]
          isKindOfClass:[ChatViewController class]]) {
         [self.navigationController popViewControllerAnimated:YES];
@@ -116,7 +116,7 @@ NSString *const kXYGroupInfoDetailViewController = @"XYGroupInfoDetailViewContro
 #pragma mark - 分享ActionSheet
 -(void)onNavigationRightButtonClicked
 {
-    [MobClick event:@"event22"];
+    [YAnalysis trackEvent:@"更多操作_班级群聊_详情" withPara:nil];
     YActionSheetItem *item2 = [YActionSheetItem itemWithTitle:@"消息不提醒"
                                                          type:YCommonActionSheetItemTypeSwitch
                                                       isGroup:YES
@@ -127,8 +127,9 @@ NSString *const kXYGroupInfoDetailViewController = @"XYGroupInfoDetailViewContro
     YActionSheetItem *item3 = [YActionSheetItem itemWithTitle:@"举报"
                                                          type:YCommonActionSheetItemTypeCommon
                                                         block:^(NSInteger checkNum) {
-                                                            [MobClick event:@"event27"];
-                                                            [YCommonReport report];
+                                                            [YCommonReport reportWithType:@"举报_班级群聊_详情_更多操作"
+                                                                                  andData:@{@"班级名":_model.groupModel.groupName}];
+                                                            
                                                         }];
     
     LinkManModel * model = [[ContactManager sharedInstance] getContactsListData];
