@@ -211,7 +211,7 @@
 
 //点击下面部分cell
 -(void)bottomAction {
-    
+    [YAnalysis trackEvent:@"其他参加活动的人_有空_提醒" withPara:nil];
     NSString *publishID;
     if (_notifyModel) {
         publishID = self.notifyModel.idStr;
