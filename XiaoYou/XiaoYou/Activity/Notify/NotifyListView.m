@@ -177,12 +177,12 @@
     {
         case ACTIVITY_ENROLL_CHECK_PASS: //审核通过
         {
-            [YAnalysis trackEvent:@"提醒_有空_提醒" withPara:@{@"类型":@"审核通过"}];
+            
             break;
         }
         case ACTIVITY_ENROLL_NO_CHECK:  //活动报名审核未通过
         {
-            [YAnalysis trackEvent:@"提醒_有空_提醒" withPara:@{@"类型":@"活动报名审核未通过"}];
+            
             break;
         }
         case SCHEDULE_REMIND: //用户自建日程提醒
@@ -198,17 +198,17 @@
         }
         case ACTIVITY_ENROLL: //用户报名活动提醒
         {
-            [YAnalysis trackEvent:@"提醒_有空_提醒" withPara:@{@"类型":@"用户报名活动提醒"}];
+            
             break;
         }
         case ACTIVITY_PUBLISH:  //
         {
-            [YAnalysis trackEvent:@"提醒_有空_提醒" withPara:@{@"类型":@"活动发布提醒(别人发布的活动)"}];
+            
             break;
         }
         case ACTIVITY_NOTIFY:   //活动通知
         {
-            [YAnalysis trackEvent:@"提醒_有空_提醒" withPara:@{@"类型":@"活动通知"}];
+            
             break;
         }
         default:
