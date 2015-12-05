@@ -24,6 +24,7 @@
 //删除某张图片
 - (void)deleteImageWithCurrentIndex:(int)currentIndex;
 
+
 @end
 
 

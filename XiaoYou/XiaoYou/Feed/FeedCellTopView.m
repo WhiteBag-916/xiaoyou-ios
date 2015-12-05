@@ -28,6 +28,7 @@
 
 
 @interface FeedCellTopView()
+<YFaceImageViewDelegate>
 
 @property (nonatomic, strong, readwrite) YFaceImageView *contactHeadImageView;    //头像
 @property (nonatomic, strong, readwrite) UILabel *contactNameLabel;            //名字
@@ -47,6 +48,7 @@
             }];
         } else {
             _contactHeadImageView = [[YFaceImageView alloc] init];
+            _contactHeadImageView.delegate = self;
             [self addSubview:_contactHeadImageView];
             [_contactHeadImageView mas_makeConstraints:^(MASConstraintMaker *make) {
                 if (type == FeedCommentType) {
@@ -115,4 +117,7 @@
     }
 }
 
+- (void)didClick {
+    [YAnalysis trackEvent:@"用户头像_校友圈" withPara:nil];
+}
 @end

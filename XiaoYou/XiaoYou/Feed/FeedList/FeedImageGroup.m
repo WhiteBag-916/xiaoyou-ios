@@ -9,7 +9,7 @@
 #import "FeedImageGroup.h"
 #import "Masonry.h"
 #import "YUtils+Component.h"
-#import "SDPhotoBrowser/SDPhotoBrowser.h"
+#import "SDPhotoBrowser.h"
 #import "YDirectory+Data.h"
 
 #define KIMGTAG 10000

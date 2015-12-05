@@ -49,6 +49,7 @@
 @property (nonatomic, strong)            NSMutableDictionary *shareData;
 @property (nonatomic, assign)            BOOL isAuthor;
 @property (nonatomic, assign)            BOOL isOrganization;//是否是社团
+
 @end
 
 @implementation FeedCellBottomView
@@ -230,6 +231,9 @@
 //        [YUtils showTitle:@"不能给自己敬酒"];
 //        return;
 //    }
+    if (_type == FeedOrganizationType || _type == FeedListType) {
+        [YAnalysis trackEvent:@"敬酒_校友圈" withPara:[YAnalysis getDataFromShareInFeed:_shareData]];
+    }
     if ([_myInfo isKindOfClass:[Feed class]]) {
         Feed *fd = _myInfo;
         [[FeedManager sharedInstance] addPraise:[NSString stringWithFormat:@"%d", (int)fd.feedIdentifier] block:^(YActionMessage *message) {

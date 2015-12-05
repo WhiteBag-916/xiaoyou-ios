@@ -661,6 +661,9 @@
 		650C6C2F1B88777400A89AC9 /* mine-complete-grey@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 650C6C2D1B88777400A89AC9 /* mine-complete-grey@3x.png */; };
 		6518A2481B80429300AEB79D /* TagListTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6518A2471B80429300AEB79D /* TagListTableView.m */; };
 		6518A24B1B80583600AEB79D /* TagListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6518A24A1B80583600AEB79D /* TagListTableViewCell.m */; };
+		651C64651C13014900A856A2 /* SDBrowserImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 651C645F1C13014900A856A2 /* SDBrowserImageView.m */; };
+		651C64661C13014900A856A2 /* SDPhotoBrowser.m in Sources */ = {isa = PBXBuildFile; fileRef = 651C64611C13014900A856A2 /* SDPhotoBrowser.m */; };
+		651C64671C13014900A856A2 /* SDWaitingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 651C64641C13014900A856A2 /* SDWaitingView.m */; };
 		652498AF1C11A4E1001F7FE1 /* YAnalysis.m in Sources */ = {isa = PBXBuildFile; fileRef = 652498AE1C11A4E1001F7FE1 /* YAnalysis.m */; };
 		653199DE1B80B41C00405B72 /* ConnectTag.m in Sources */ = {isa = PBXBuildFile; fileRef = 653199DD1B80B41C00405B72 /* ConnectTag.m */; };
 		653CB2EE1B806BFD006ECBB2 /* ChineseString.m in Sources */ = {isa = PBXBuildFile; fileRef = 653CB2EB1B806BFD006ECBB2 /* ChineseString.m */; };
@@ -1792,6 +1795,13 @@
 		6518A2471B80429300AEB79D /* TagListTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TagListTableView.m; sourceTree = "<group>"; };
 		6518A2491B80583600AEB79D /* TagListTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TagListTableViewCell.h; sourceTree = "<group>"; };
 		6518A24A1B80583600AEB79D /* TagListTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TagListTableViewCell.m; sourceTree = "<group>"; };
+		651C645E1C13014900A856A2 /* SDBrowserImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDBrowserImageView.h; sourceTree = "<group>"; };
+		651C645F1C13014900A856A2 /* SDBrowserImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDBrowserImageView.m; sourceTree = "<group>"; };
+		651C64601C13014900A856A2 /* SDPhotoBrowser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDPhotoBrowser.h; sourceTree = "<group>"; };
+		651C64611C13014900A856A2 /* SDPhotoBrowser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDPhotoBrowser.m; sourceTree = "<group>"; };
+		651C64621C13014900A856A2 /* SDPhotoBrowserConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDPhotoBrowserConfig.h; sourceTree = "<group>"; };
+		651C64631C13014900A856A2 /* SDWaitingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDWaitingView.h; sourceTree = "<group>"; };
+		651C64641C13014900A856A2 /* SDWaitingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDWaitingView.m; sourceTree = "<group>"; };
 		652498AD1C11A4E1001F7FE1 /* YAnalysis.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YAnalysis.h; sourceTree = "<group>"; };
 		652498AE1C11A4E1001F7FE1 /* YAnalysis.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YAnalysis.m; sourceTree = "<group>"; };
 		653199DC1B80B41C00405B72 /* ConnectTag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConnectTag.h; sourceTree = "<group>"; };
@@ -3978,9 +3988,24 @@
 			path = Profile;
 			sourceTree = "<group>";
 		};
+		651C645D1C13013500A856A2 /* SDPhotoBrowser */ = {
+			isa = PBXGroup;
+			children = (
+				651C645E1C13014900A856A2 /* SDBrowserImageView.h */,
+				651C645F1C13014900A856A2 /* SDBrowserImageView.m */,
+				651C64601C13014900A856A2 /* SDPhotoBrowser.h */,
+				651C64611C13014900A856A2 /* SDPhotoBrowser.m */,
+				651C64621C13014900A856A2 /* SDPhotoBrowserConfig.h */,
+				651C64631C13014900A856A2 /* SDWaitingView.h */,
+				651C64641C13014900A856A2 /* SDWaitingView.m */,
+			);
+			name = SDPhotoBrowser;
+			sourceTree = "<group>";
+		};
 		653CB2E81B806BFD006ECBB2 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				651C645D1C13013500A856A2 /* SDPhotoBrowser */,
 				0484B1551C0EC93700A670F8 /* UIShortCreat */,
 				204255FC1BFACE75002C2C9B /* UMengSDK */,
 				E4889B791BECADAC0048A161 /* DDMenu */,
@@ -5092,6 +5117,7 @@
 				65969DC41B86BDE1001DD348 /* MBProgressHUD+Add.m in Sources */,
 				20DAF9D71B873883005B7932 /* ChineseToPinyinResource.m in Sources */,
 				333122831B806EDC00D3D032 /* UIViewController+DismissKeyboard.m in Sources */,
+				651C64661C13014900A856A2 /* SDPhotoBrowser.m in Sources */,
 				333122841B806EDC00D3D032 /* UIViewController+HUD.m in Sources */,
 				333122821B806EDC00D3D032 /* UIResponder+Router.m in Sources */,
 				333122781B806EDB00D3D032 /* TTGlobalUICommon.m in Sources */,
@@ -5136,6 +5162,7 @@
 				3346708C1B84AA3700A8628A /* XYChoicePersonViewController.m in Sources */,
 				333122511B806EDB00D3D032 /* MWTapDetectingImageView.m in Sources */,
 				65A846FF1B81C9C300933815 /* FeedCellTopView.m in Sources */,
+				651C64671C13014900A856A2 /* SDWaitingView.m in Sources */,
 				044C31661BCCF09F00E0D508 /* ScroungeCourseCell.m in Sources */,
 				33380DA81B85DBAB008B51EB /* ApplySuccessSystemMessageTableViewCell.m in Sources */,
 				33380DA51B85DB89008B51EB /* NormalSystemMessageTableViewCell.m in Sources */,
@@ -5344,6 +5371,7 @@
 				650C6C031B88529600A89AC9 /* ProfileChangePwdViewController.m in Sources */,
 				3331223F1B806EDB00D3D032 /* MessageReadManager.m in Sources */,
 				3331227F1B806EDC00D3D032 /* NSDate+Category.m in Sources */,
+				651C64651C13014900A856A2 /* SDBrowserImageView.m in Sources */,
 				3331222E1B806EDB00D3D032 /* LocationViewController.m in Sources */,
 				048676A01BC803CB009F8C43 /* FastBottomView.m in Sources */,
 				3331222F1B806EDB00D3D032 /* DXMessageToolBar.m in Sources */,

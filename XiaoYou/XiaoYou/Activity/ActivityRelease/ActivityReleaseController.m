@@ -695,6 +695,7 @@ typedef enum : NSUInteger {
     [modelDic setObject:activityModelDic forKey:@"activityModel"];
     
     NSLog(@"%@",modelDic);
+    [YAnalysis trackEvent:@"发布_发布活动" withPara:@{@"类型":_dataManager.ActivityTypeStr}];
     [[ActivityManager sharedInstance] editActivity:modelDic block:^(YActionMessage *message) {
         NSLog(@"%@",message);
         [YUtils hiddenProgressHUD];
@@ -825,6 +826,7 @@ typedef enum : NSUInteger {
     switch (btn.tag) {
         case 100000001:
         {
+            [YAnalysis trackEvent:@"名称_发布活动" withPara:nil];
             [UIView animateWithDuration:0.2 animations:^{
                 _releaseCollectionView.contentOffset = CGPointMake(0, 0);
             } completion:nil];
@@ -832,6 +834,7 @@ typedef enum : NSUInteger {
         }
         case 100000002:
         {
+            [YAnalysis trackEvent:@"描述_发布活动" withPara:nil];
             [UIView animateWithDuration:0.2 animations:^{
 //                _releaseCollectionView.contentOffset = CGPointMake(SCALE_NUM(186), 0);
                 _releaseCollectionView.contentOffset = CGPointMake(SCALE_NUM(230), 0);
@@ -840,6 +843,7 @@ typedef enum : NSUInteger {
         }
         case 100000003:
         {
+            [YAnalysis trackEvent:@"时间_发布活动" withPara:nil];
             [UIView animateWithDuration:0.2 animations:^{
 //                _releaseCollectionView.contentOffset = CGPointMake(SCALE_NUM(418), 0);
                 _releaseCollectionView.contentOffset = CGPointMake(SCALE_NUM(460), 0);
@@ -848,6 +852,7 @@ typedef enum : NSUInteger {
         }
         case 100000004:
         {
+            [YAnalysis trackEvent:@"地点_发布活动" withPara:nil];
             [UIView animateWithDuration:0.2 animations:^{
 //                _releaseCollectionView.contentOffset = CGPointMake(SCALE_NUM(646), 0);
                 _releaseCollectionView.contentOffset = CGPointMake(SCALE_NUM(690), 0);
@@ -856,6 +861,7 @@ typedef enum : NSUInteger {
         }
         case 100000005:
         {
+            [YAnalysis trackEvent:@"类型_发布活动" withPara:nil];
             [UIView animateWithDuration:0.2 animations:^{
                 if (_isIdentity)
                 {

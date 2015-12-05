@@ -148,6 +148,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    [YAnalysis trackEvent:@"评论_校友圈" withPara:nil];
     [_parent goToDetail:[NSString stringWithFormat:@"%d"
                          , (int)[(FeedInfo *)_feedListArray[indexPath.row] feed].feedIdentifier]];
 }

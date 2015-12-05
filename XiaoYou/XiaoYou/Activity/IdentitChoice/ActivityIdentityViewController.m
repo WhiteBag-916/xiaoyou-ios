@@ -188,11 +188,13 @@
 #pragma mark - back
 -(void)clickBtnForCancel
 {
+    [YAnalysis trackEvent:@"关闭_活动发布者身份" withPara:nil];
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 #pragma mark - 对号
 -(void)clickBtnForChoice
 {
+    [YAnalysis trackEvent:@"确定_活动发布者身份" withPara:nil];
     if (_isIdentity)
     {
         _dataManager.ActivityCheckStatus = @"need_check";
