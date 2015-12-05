@@ -169,6 +169,7 @@
     vc.num = indexPath.row;
     Result * model = _dataSouceArr[indexPath.row];
     vc.buildName = model.buildName;
+    [YAnalysis trackEvent:@"教学楼_自习室" withPara:@{@"学校":model.schoolArea, @"教学楼":model.buildName}];
     [self.viewController.navigationController pushViewController:vc
                                                         animated:YES
                                              needHiddenBottomBar:YES];

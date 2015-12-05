@@ -126,6 +126,7 @@ const NSInteger kSearchTimerDelay = 1.f;
 }
 
 - (void)pressCancelButton {
+    [YAnalysis trackEvent:@"取消_活动搜索" withPara:nil];
     [self.navigationController popViewControllerAnimated:YES];
 }
 
