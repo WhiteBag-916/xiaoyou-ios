@@ -275,6 +275,11 @@
 }
 //放大图片
 - (void)choosePic:(UITapGestureRecognizer *)tap {
+    
+    if ([self.delegate respondsToSelector:@selector(didOpenPhoto)]) {
+        [self.delegate didOpenPhoto];
+    }
+    
     //隐藏键盘
     [self.viewController.view endEditing:YES];
     

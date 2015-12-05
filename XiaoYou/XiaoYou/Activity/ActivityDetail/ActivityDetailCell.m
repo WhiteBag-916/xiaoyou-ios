@@ -24,7 +24,7 @@
 #define HEADIMAGEVIEW_WIDTH         SCALE_NUM(45)
 #define LEADINGOFF_HEADIMAGEVIEW    SCALE_NUM(12)
 
-@interface ActivityDetailCell ()<UITextViewDelegate>
+@interface ActivityDetailCell ()<UITextViewDelegate, FeedImageGroupDelegate>
 
 #pragma mark 顶部TopView
 @property (nonatomic,strong) UIImageView    *headImageView; //公告图
@@ -72,6 +72,7 @@
 
 -(void)initMiddleView {
     _middleView = [[FeedImageGroup alloc]init];
+    _middleView.delegate = self;
     [self.contentView addSubview:_middleView];
     
     [_middleView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -79,6 +80,10 @@
         make.left.equalTo(_descriptionLabel.mas_left);
         make.right.equalTo(_descriptionLabel);
     }];
+}
+
+- (void)didOpenPhoto {
+    [YAnalysis trackEvent:@"活动图片_活动详情" withPara:@{@"名称":_nameLabel.text}];
 }
 
 #pragma mark 重载

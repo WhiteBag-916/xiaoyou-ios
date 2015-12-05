@@ -211,6 +211,7 @@
 
 //点击下面部分cell
 -(void)bottomAction {
+    
     NSString *publishID;
     if (_notifyModel) {
         publishID = self.notifyModel.idStr;

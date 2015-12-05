@@ -8,6 +8,17 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol FeedImageGroupDelegate <NSObject>
+
+@optional
+/**
+ *  @author 李思良, 15-12-05
+ *
+ *  @brief 通知查看照片的事件
+ */
+- (void)didOpenPhoto;
+
+@end
 
 @interface FeedImageGroup : UIView
 
@@ -15,7 +26,7 @@
 
 @property   (assign,    nonatomic)  BOOL hasDeleteBtn;
 
-
+@property   (weak,      nonatomic)  id<FeedImageGroupDelegate> delegate;
 /**
  *  @author desheng, 15-11-22
  *
