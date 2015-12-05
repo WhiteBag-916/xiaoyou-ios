@@ -44,8 +44,9 @@
         [self registerClass:[PassRemindCell class] forCellReuseIdentifier:REMINDVIEWCELL];
         [self registerClass:[ApplyRemindCell class] forCellReuseIdentifier:APPLYREUSEID];
         _currentIndex = 0;
-        _cellTypeDict = @{@"check_pass":@(AUDIT_PASSED),@"no_pass":@(AUDIT_NOT_PASSED),@"no_check":
-                                                   @(NOT_NEED_CHECK),@"need_check":@(NEED_CHECK)};
+        NSDictionary *tmpDict = @{@"check_pass":@(AUDIT_PASSED),@"no_pass":@(AUDIT_NOT_PASSED),@"no_check":
+                                      @(NOT_NEED_CHECK),@"need_check":@(NEED_CHECK)};
+        _cellTypeDict = [NSDictionary dictionaryWithDictionary:tmpDict];
     }
     return self;
 }
@@ -60,8 +61,9 @@
         [self registerClass:[PassRemindCell class] forCellReuseIdentifier:REMINDVIEWCELL];
         [self registerClass:[ApplyRemindCell class] forCellReuseIdentifier:APPLYREUSEID];
         _currentIndex = 0;
-        _cellTypeDict = @{@"check_pass":@(AUDIT_PASSED),@"no_pass":@(AUDIT_NOT_PASSED),@"no_check":
+        NSDictionary *tmpDict = @{@"check_pass":@(AUDIT_PASSED),@"no_pass":@(AUDIT_NOT_PASSED),@"no_check":
                               @(NOT_NEED_CHECK),@"need_check":@(NEED_CHECK)};
+        _cellTypeDict = [NSDictionary dictionaryWithDictionary:tmpDict];
     }
     return self;
 }
@@ -154,7 +156,9 @@
         }];
     } else  //参加别人的活动
     {
-        CELL_TYPE type = [_cellTypeDict[info.checkStatus] integerValue];
+        NSDictionary *tmpDict = @{@"check_pass":@(AUDIT_PASSED),@"no_pass":@(AUDIT_NOT_PASSED),@"no_check":
+                                      @(NOT_NEED_CHECK),@"need_check":@(NEED_CHECK)};
+        CELL_TYPE type = [tmpDict[info.checkStatus] integerValue];
         if (type == AUDIT_NOT_PASSED) {
             cellHeight = SCALE_NUM(145);
         } else
@@ -206,7 +210,9 @@
         cell = appCell;
     } else  //参加别人的活动
     {
-        CELL_TYPE type = [_cellTypeDict[info.checkStatus] integerValue];
+        NSDictionary *tmpDict = @{@"check_pass":@(AUDIT_PASSED),@"no_pass":@(AUDIT_NOT_PASSED),@"no_check":
+                                      @(NOT_NEED_CHECK),@"need_check":@(NEED_CHECK)};
+        CELL_TYPE type = [tmpDict[info.checkStatus] integerValue];
         PassRemindCell *remindCell = [PassRemindCell passRemindCellWithTableView:tableView];
         remindCell.cellType = type;
         [remindCell setData:info];
