@@ -187,7 +187,7 @@
         }
         case SCHEDULE_REMIND: //用户自建日程提醒
         {
-            [YAnalysis trackEvent:@"提醒_有空_提醒" withPara:@{@"类型":@"用户自建日程提醒"}];
+            //[YAnalysis trackEvent:@"提醒_有空_提醒" withPara:@{@"类型":@"用户自建日程提醒"}];
             UserSchedulingInfo *info = [[UserSchedulingInfo alloc]init];
             info.internalBaseClassIdentifier = [model.idStr doubleValue];
             info.type = @"user_scheduling";
