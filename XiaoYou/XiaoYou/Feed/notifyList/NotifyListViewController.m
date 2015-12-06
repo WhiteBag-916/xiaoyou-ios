@@ -43,9 +43,11 @@
 }
 
 - (void)onNavigationRightButtonClicked {
+    [YAnalysis trackEvent:@"更多操作_人脉新提醒" withPara:nil];
     YActionSheetItem *item1 = [YActionSheetItem itemWithTitle:@"清空所有提醒"
                                                          type:YCommonActionSheetItemTypeCenterCommon
                                                         block:^(NSInteger checkNum) {
+                                                            [YAnalysis trackEvent:@"清空列表_人脉新提醒_更多操作" withPara:nil];
                                                             [_notifyListTableView readAll];
                                                         }];
     

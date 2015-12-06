@@ -59,7 +59,7 @@
 //需要调用之前设定好_shareData，参考XYGroupInfoDetailViewController
 - (void)onNavigationRightButtonClicked {
     if (nil != _groupModel) {
-        
+        [YAnalysis trackEvent:@"更多操作_社团详情" withPara:nil];
         YActionSheetItem *item1 = [YActionSheetItem itemWithType:YCommonActionSheetItemTypeShareOrganization
                                                            title:@"分享社团名片至"
                                                        extraData:@{@"name":_groupModel.groupName
@@ -129,6 +129,7 @@
                                                     , _groupModel.internalBaseClassIdentifier]} mutableCopy];
         [self.navigationController pushViewController:chatViewController animated:YES];
     } else {
+        [YAnalysis trackEvent:@"一键申请加入_社团详情" withPara:@{@"名称":_name}];
         [YUtils showHUDWithTitle];
         //申请入社
         [[ContactManager sharedInstance] submitApply:_uid block:^(YActionMessage *message) {
