@@ -86,6 +86,7 @@ NSString *const kCommonObj = @"obj";
                                                             object:aObject];
     //
     //
+    //
     YLogI(@"Message:%@", message);
     return message;
 }
