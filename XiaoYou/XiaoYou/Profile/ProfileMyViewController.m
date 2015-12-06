@@ -324,7 +324,7 @@
 //打开二维码图片
 - (void)openCode {
     NSLog(@"放大二维码");
-    
+    [YAnalysis trackEvent:@"我的二维码" withPara:nil];
     ProfileInfo *info = [[ProvisionManager sharedInstance] getProfile];
     LoginResp *resp = [[ProvisionManager sharedInstance] getLoginInfo];
     _codeEnlargeView = [[CodeEnlargeView alloc] initWithModel1:info andModel2:resp];
@@ -334,20 +334,23 @@
 }
 
 - (void)showAddPicList {
-    
+    [YAnalysis trackEvent:@"我的头像" withPara:nil];
     YActionSheetItem *item = [YActionSheetItem itemWithTitle:@"查看大图"
                                                          type:YCommonActionSheetItemTypeCenterCommon
                                                         block:^(NSInteger checkNum) {
+                                                            [YAnalysis trackEvent:@"查看大图_我的_头像" withPara:nil];
                                                             [self choosePic];
                                                         }];
     YActionSheetItem *item1 = [YActionSheetItem itemWithTitle:@"拍照"
                                                          type:YCommonActionSheetItemTypeCenterCommon
                                                         block:^(NSInteger checkNum) {
+                                                            [YAnalysis trackEvent:@"拍照_我的_头像" withPara:nil];
                                                             [self snapImage];
                                                         }];
     YActionSheetItem *item2 = [YActionSheetItem itemWithTitle:@"从相册中选择"
                                                          type:YCommonActionSheetItemTypeCenterCommon
                                                         block:^(NSInteger checkNum) {
+                                                            [YAnalysis trackEvent:@"从相册中选择_我的_头像" withPara:nil];
                                                             [self pickImage];
                                                         }];
     
@@ -500,10 +503,12 @@
 }
 //更改手机号
 - (void)changePhone {
+    [YAnalysis trackEvent:@"修改绑定手机" withPara:nil];
     [self.navigationController pushViewController:[[ProfilePhoneChangeViewController alloc] initWithType:ProfilePhoneChangeTypeMod hasPhone:true] animated:true];
 }
 //更改密码
 - (void)changePwd {
+    [YAnalysis trackEvent:@"修改密码" withPara:nil];
     UILabel *label = _bottomView.subviews[0];
     if (label.enabled) {
         [self.navigationController pushViewController:[[ProfileChangePwdViewController alloc] initWithType:ProfileChangePwdTypeMod needLogin:NO] animated:true];
@@ -514,9 +519,11 @@
 
 //登出
 - (void)logOut {
+    [YAnalysis trackEvent:@"退出登录" withPara:nil];
     YCommonAlertView *alert = [[YCommonAlertView alloc] initWithTitle:@"提示" message:@"是否退出" buttonTitles:@"取消",@"确认", nil];
     [alert clickedButtonHandler:^(NSInteger index) {
         if (index == 1) {
+            [YAnalysis trackEvent:@"确定_退出登录" withPara:nil];
             [alert hide];
             [[ProvisionManager sharedInstance] logout];
         } else {

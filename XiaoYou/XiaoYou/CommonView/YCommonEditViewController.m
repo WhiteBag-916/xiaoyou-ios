@@ -105,6 +105,7 @@
 - (void)onNavigationRightButtonClicked {
     [self.view endEditing:true];
     if (_type == YCommonEditAttitude) {
+        [YAnalysis trackEvent:@"确定_我的态度" withPara:nil];
         MBProgressHUD *hud = [YUtils showHUDAddedTo:self.view title:@"正在保存"];
         [[ProvisionManager sharedInstance] UpdateSelfIntro:[ConvertToCommonEmoticonsHelper convertToCommonEmoticons:_textView.text] block:^(YActionMessage *message) {
             [hud removeFromSuperview];
@@ -117,6 +118,9 @@
     }
 }
 - (void)onNavigationLeftButtonClicked {
+    if (YCommonEditAttitude == _type) {
+        [YAnalysis trackEvent:@"关闭_我的态度" withPara:nil];
+    }
     [self.view endEditing:true];
     [self.navigationController dismissViewControllerAnimated:YES completion:nil];
 }

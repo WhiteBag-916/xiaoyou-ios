@@ -529,6 +529,7 @@
 
 //选择标签
 - (void)openTagList {
+    [YAnalysis trackEvent:@"我的关注" withPara:nil];
     UINavigationController *navigationController =
     [[UINavigationController alloc]
      initWithRootViewController:[[ProfileTagViewController alloc]
@@ -540,12 +541,14 @@
 }
 //编辑态度
 - (void)openAttitude {
+    [YAnalysis trackEvent:@"我的态度" withPara:nil];
     UINavigationController *navigationController =
     [[UINavigationController alloc] initWithRootViewController:[[YCommonEditViewController alloc] initWithType:YCommonEditAttitude preText:_attitudeLabel.text]];
     [self.view.window.rootViewController presentViewController:navigationController animated:YES completion:nil];
 }
 //查看敬酒人
 - (void)openRespect {
+    [YAnalysis trackEvent:@"我的敬酒" withPara:nil];
     [self.navigationController
      pushViewController:[[ProfilePersonListController alloc]
                          initWithType:ProfilePersonListTypeRespect]
@@ -553,12 +556,14 @@
 }
 //查看点赞人
 - (void)openCool {
+    [YAnalysis trackEvent:@"我的很酷" withPara:nil];
     [self.navigationController pushViewController:[[ProfilePersonListController alloc]
                                                    initWithType:ProfilePersonListTypeCool]
                                          animated:true];
 }
 //查看feed列表
 - (void)openFeed {
+    [YAnalysis trackEvent:@"我的动态" withPara:nil];
     [self.navigationController pushViewController:[[ProfilePublishViewController alloc]
                                                    initWithUserId:@""
                                                    name:@""]
@@ -566,6 +571,7 @@
 }
 //查看个人详细信息
 - (void)openProfile {
+    [YAnalysis trackEvent:@"我的信息" withPara:nil];
     [self.navigationController pushViewController:[[ProfileMyViewController alloc] init]
                                          animated:true];
 }
@@ -573,6 +579,7 @@
 //扫码
 - (void)scanAction
 {
+    [YAnalysis trackEvent:@"扫一扫" withPara:nil];
     QRCodeReaderViewController *reader = [QRCodeReaderViewController new];
     reader.modalPresentationStyle = UIModalPresentationFormSheet;
     reader.delegate = self;
@@ -583,6 +590,7 @@
 
 //我的课程表
 - (void)timetableAction {
+    [YAnalysis trackEvent:@"课程表" withPara:nil];
     MyTimetableViewController *myTimetableViewController
     = [[MyTimetableViewController alloc] init];
     [self.navigationController pushViewController:myTimetableViewController animated:YES];

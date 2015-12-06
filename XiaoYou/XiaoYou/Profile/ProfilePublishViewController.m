@@ -67,6 +67,7 @@
     }
 }
 - (void)onNavigationRightButtonClicked {
+    [YAnalysis trackEvent:@"发FEED_我的FEED" withPara:nil];
     _needRefresh = true;//发布界面回来时需要刷新
     UINavigationController *navigationController =
     [[UINavigationController alloc] initWithRootViewController:[[FeedPublishViewController alloc] init]];

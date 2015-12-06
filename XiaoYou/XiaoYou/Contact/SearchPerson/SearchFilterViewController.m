@@ -54,10 +54,12 @@ NSString *const filterIsSelected = @"filterIsSelected";
 }
 
 - (void)onNavigationLeftButtonClicked {
+    [YAnalysis trackEvent:@"关闭_找人_筛选" withPara:nil];
     [self.navigationController dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void)onNavigationRightButtonClicked {
+    [YAnalysis trackEvent:@"确定_找人_筛选" withPara:nil];
     NSMutableArray *selectArray = [@[] mutableCopy];
     
     //重新排序

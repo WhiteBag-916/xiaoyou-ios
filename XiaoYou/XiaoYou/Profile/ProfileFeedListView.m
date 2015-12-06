@@ -109,6 +109,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     //前往feed详情
+    [YAnalysis trackEvent:@"FEED_我的FEED" withPara:nil];
     [_parent goToDetail:[NSString stringWithFormat:@"%d", (int)[(FeedInfo *)_feedArray[indexPath.row] feed].feedIdentifier]];
 }
 @end

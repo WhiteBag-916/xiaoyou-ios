@@ -96,6 +96,7 @@
     [_chatToolBar endEditing:YES];
 }
 - (void)onNavigationRightButtonClicked {
+    [YAnalysis trackEvent:@"更多操作_FEED详情" withPara:nil];
     [_feedDetailTable openTool];
 }
 //回复处理
@@ -105,6 +106,7 @@
         [YUtils showTitle:@"输入不能为空" hideAfter:1];
         return;
     }
+    [YAnalysis trackEvent:@"评论_FEED详情" withPara:nil];
     text = [ConvertToCommonEmoticonsHelper convertToCommonEmoticons:text];
     if (_replyId.length == 0) {//回复feed
         [[FeedManager sharedInstance] addComment:_feedId content:text block:^(YActionMessage *message) {

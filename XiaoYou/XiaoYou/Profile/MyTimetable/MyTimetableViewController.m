@@ -165,6 +165,7 @@
 //选择第几周
 - (void)showChooseWeek {
     if (nil != self.courseTimeListModel) {
+        [YAnalysis trackEvent:@"选择周次_我的课程表" withPara:nil];
         ChooseWeekView *chooseWeekView = [[ChooseWeekView alloc] initWithBlock:_selectWeekNum
                                           
                                                                        weekNum:self.courseTimeListModel.maxWeek
