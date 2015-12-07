@@ -130,6 +130,7 @@ DEF_SINGLETON(ProvisionManager);
     //存文件
     NSString *cachePath = [[YDirectory fileCache] stringByAppendingString:NSStringFromClass([LoginResp class])];
     //
+    //
     [_loginResp writeToFile:cachePath];
 }
 
