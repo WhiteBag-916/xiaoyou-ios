@@ -139,6 +139,7 @@ DEF_SINGLETON(ProvisionManager);
      *  @author xiongchen, 15-12-07
      *
      */
+    //
     self.profileInfo = [ProfileInfo instanceWithFile:cachePath];
 }
 
