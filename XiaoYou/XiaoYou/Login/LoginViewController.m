@@ -141,7 +141,7 @@
 
 //首次登录
 - (void)pressFirstLogin {
-    [MobClick event:@"event4"];
+    [YAnalysis trackEvent:@"首次登录_登录" withPara:nil];
     [self.navigationController pushViewController:[[ProfilePhoneChangeViewController alloc]
                                                    initWithType:ProfilePhoneChangeTypeRegister
                                                    hasPhone:NO]
@@ -154,7 +154,7 @@
         [YUtils showTitle:@"您还没有输入学号"];
         return;
     }
-    [MobClick event:@"event3"];
+    [YAnalysis trackEvent:@"忘记密码_登录" withPara:nil];
     [self.view endEditing:YES];
     
     //展示提示
@@ -163,7 +163,7 @@
                                                          buttonTitles:@"取消",@"确认", nil];
     [alert clickedButtonHandler:^(NSInteger index) {
         if (1 == index) {
-            [MobClick event:@"event7"];
+            [YAnalysis trackEvent:@"确认_重置密码弹窗" withPara:nil];
             [YUtils showHUDWithTitle];
             [[ProvisionManager sharedInstance] forgotPasswordReq:_accountTextField.text
                                                            block:^(YActionMessage *message) {
@@ -172,8 +172,11 @@
                 if (message.isSuccess) {
                     [YShareData defaultData][kShareData_StudentNo] = _accountTextField.text;
                     
-                    [self.navigationController pushViewController:[[ProfileChangePwdViewController alloc] initWithType:ProfileChangePwdTypeForget
-                                                                                                             needLogin:YES]
+                    [self.navigationController
+                     pushViewController:[[ProfileChangePwdViewController alloc]
+                                         initWithType:ProfileChangePwdTypeForget
+                                         
+                                         needLogin:YES]
                                                          animated:true];
                 }else if (999+kYYServerErrorBase == message.errorCode) {
                     //提示默认密码
@@ -183,7 +186,7 @@
                 [YUtils showTitle:message.desc];
             }];
         } else {
-            [MobClick event:@"event8"];
+            [YAnalysis trackEvent:@"取消_重置密码弹窗" withPara:nil];
         }
     }];
     [alert show];
@@ -240,6 +243,7 @@
             //成功
             //是否需要完善资料
             LoginResp *loginResp = (LoginResp *)message.object;
+            [YAnalysis collectUserInfo:message.object];
             if (loginResp.firstLogin) {
                 [kAppDelegateAccessor initPerfectNC];
             } else {

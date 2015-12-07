@@ -421,6 +421,7 @@
 #pragma mark - control
 -(void)clickBtnForCancel
 {
+    [YAnalysis trackEvent:@"关闭_新建日程" withPara:nil];
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
@@ -460,6 +461,7 @@
                           , @"address":SStr(_userSchedulingInfo.address)
                           , @"noticeTimePeriod":[NSString stringWithFormat:@"%g"
                                                  , _userSchedulingInfo.noticeTimePeriod]};
+    [YAnalysis trackEvent:@"确定_新建日程" withPara:dic];
     [YUtils showHUDWithTitle];
     [[ActivityManager sharedInstance] userSchedulingEdit:dic block:^(YActionMessage *message) {
         [YUtils hiddenProgressHUD];

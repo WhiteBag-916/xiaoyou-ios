@@ -79,6 +79,7 @@ static NSString* const EventCellReuseIdentifier = @"EventCellReuseIdentifier";
 }
 
 - (void)newPlanner {
+    [YAnalysis trackEvent:@"新建日程_我的日程卡" withPara:nil];
     [self newScheduleByInfo:nil];
 }
 

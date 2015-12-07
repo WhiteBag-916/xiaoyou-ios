@@ -108,6 +108,7 @@
 //筛选
 - (void)pressFilterButton
 {
+    [YAnalysis trackEvent:@"筛选条件_找人" withPara:nil];
     SearchFilterViewController *searchFilterViewController = [[SearchFilterViewController alloc] init];
     [searchFilterViewController endSelected:^(NSArray *select) {
         self.chooseFiterArray = [NSArray arrayWithArray:select];

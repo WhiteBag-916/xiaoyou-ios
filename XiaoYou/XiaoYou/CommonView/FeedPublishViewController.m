@@ -540,6 +540,7 @@
 
 
 - (void)onNavigationLeftButtonClicked {
+    [YAnalysis trackEvent:@"关闭_发FEED" withPara:nil];
     [self.navigationController dismissViewControllerAnimated:YES completion:nil];
 }
 - (void)onNavigationRightButtonClicked {
@@ -625,6 +626,9 @@
             feed.type = @"IMAGE";
         }
         WS(weakSelf);
+        [YAnalysis trackEvent:@"确定_发FEED" withPara:@{@"发布类型":feed.type,
+                                                       @"发布身份":(_isGroup?tag.name:@"个人"),
+                                                       @"标签":[self getTagSelected]}];
         [[FeedManager sharedInstance] sendFeed:feed tagIds:_isGroup?@"":[self getTagSelected] block:^(YActionMessage *message) {
             [YUtils hiddenProgressHUD];
             if (message.isSuccess) {

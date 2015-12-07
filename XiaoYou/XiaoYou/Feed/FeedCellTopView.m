@@ -28,12 +28,14 @@
 
 
 @interface FeedCellTopView()
+<YFaceImageViewDelegate>
 
 @property (nonatomic, strong, readwrite) YFaceImageView *contactHeadImageView;    //头像
 @property (nonatomic, strong, readwrite) UILabel *contactNameLabel;            //名字
 @property (nonatomic, strong, readwrite) UILabel *timeLabel;                   //时间
 @property (nonatomic, strong, readwrite) ConnectTag *tagList;                  //人脉标签
 @property (nonatomic, strong, readwrite) UILabel *genderLabel;
+@property (nonatomic, assign)            FeedCellType type;
 @end
 
 @implementation FeedCellTopView
@@ -41,12 +43,14 @@
 - (id)initWithType:(int)type {
     self = [super init];
     if (self) {
+        _type = type;
         if (type == FeedOrganizationType) {
             [self mas_makeConstraints:^(MASConstraintMaker *make) {
                 make.height.mas_equalTo(KEMPTYHEIGHT);
             }];
         } else {
             _contactHeadImageView = [[YFaceImageView alloc] init];
+            _contactHeadImageView.delegate = self;
             [self addSubview:_contactHeadImageView];
             [_contactHeadImageView mas_makeConstraints:^(MASConstraintMaker *make) {
                 if (type == FeedCommentType) {
@@ -115,4 +119,21 @@
     }
 }
 
+- (void)didClick {
+    switch (_type) {
+        case FeedListType:
+        {
+            [YAnalysis trackEvent:@"用户头像_校友圈" withPara:nil];
+        }
+        break;
+        case FeedDetailType:
+        case FeedCommentType:
+        {
+            [YAnalysis trackEvent:@"用户头像_FEED详情" withPara:nil];
+        }
+        break;
+        default:
+            break;
+    }
+}
 @end

@@ -85,7 +85,6 @@
         make.bottom.mas_equalTo(SCALE_NUM(-12));
     }];
     
-    
     _tagsView = [[TagsCommonView alloc]init];
     [_tagsWrapView addSubview:_tagsView];
     [_tagsView mas_makeConstraints:^(MASConstraintMaker *make) {

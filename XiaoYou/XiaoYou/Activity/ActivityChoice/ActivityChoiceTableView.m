@@ -56,11 +56,7 @@
          self.typesDic = [[NSMutableDictionary alloc] init];
         if (_myType == ACTIVITY_CHOICE_TYPE)
         {
-           
-            [_typesDic setObject:@"" forKey:@""];
-            [_typesDic setObject:@"" forKey:@""];
-            [_typesDic setObject:@"" forKey:@""];
-            [_typesDic setObject:@"" forKey:@""];
+            [_typesDic removeAllObjects];
         }
         
         
@@ -123,6 +119,11 @@
 
 -(void)clickBtnForCancel
 {
+    if (_myType == ACTIVITY_CHOICE_TYPE) {
+        [YAnalysis trackEvent:@"关闭_活动筛选" withPara:nil];
+    } else {
+        [YAnalysis trackEvent:@"关闭_自习室_筛选" withPara:nil];
+    }
     [self.myController dismissViewControllerAnimated:YES completion:nil];
 }
 
@@ -130,6 +131,7 @@
 {
     if (_myType == ACTIVITY_CHOICE_TYPE)
     {
+        [YAnalysis trackEvent:@"确定_活动筛选" withPara:_typesDic];
         [self.myController dismissViewControllerAnimated:YES completion:^{
             ActivityResultViewController * resultViewController = [[ActivityResultViewController alloc] init];
             resultViewController.requestDic = _typesDic;
@@ -139,6 +141,7 @@
     }
     else
     {
+        [YAnalysis trackEvent:@"确定_自习室_筛选" withPara:@{@"条件":_typesDic[@"schoolName"]}];
         [[NSNotificationCenter defaultCenter] postNotificationName:KNotification_Study_Room_Filtrate
                                                             object:_typesDic];
         [self.myController dismissViewControllerAnimated:YES completion:nil];

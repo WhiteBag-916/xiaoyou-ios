@@ -273,6 +273,7 @@
 
 -(void)clickMoreMerchants
 {
+    [YAnalysis trackEvent:@"查看合作商家" withPara:nil];
     MerchantListViewController * merchantListViewController = [[MerchantListViewController alloc] init];
     [self.navigationController pushViewController:merchantListViewController animated:YES];
 

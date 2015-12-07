@@ -9,5 +9,5 @@
 #import <Foundation/Foundation.h>
 
 @interface YCommonReport : NSObject
-+ (void)report;
++ (void)reportWithType:(NSString *)type andData:(NSDictionary *)data;
 @end

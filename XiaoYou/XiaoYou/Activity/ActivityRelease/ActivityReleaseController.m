@@ -13,6 +13,7 @@
 #import "YDirectory+Data.h"
 #import "ActivityInfoModel.h"
 #import "YKeyBoard.h"
+#import "YDate+Ext.h"
 
 typedef enum : NSUInteger {
     POSITION1 = 1,
@@ -54,6 +55,9 @@ typedef enum : NSUInteger {
 @property (nonatomic,strong) UIButton * btn4;
 @property (nonatomic,strong) UIButton * btn5;
 @property (nonatomic,strong) UIButton * btn6;
+
+@property (nonatomic,strong) NSArray *pointViewArr;
+@property (nonatomic,strong) NSArray *typeLabelArr;
 
 //是否为社长
 @property (nonatomic,assign) BOOL isIdentity;
@@ -290,14 +294,7 @@ typedef enum : NSUInteger {
     [line1 mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(_point1View.mas_right);
         make.centerY.equalTo(_point1View);
-        if (_isIdentity)
-        {
-            make.width.mas_equalTo((SCREEN_WIDTH - 78)/5);
-        }
-        else
-        {
-            make.width.mas_equalTo((SCREEN_WIDTH - 70)/4);
-        }
+        (_isIdentity)?make.width.mas_equalTo((SCREEN_WIDTH - 78)/5):make.width.mas_equalTo((SCREEN_WIDTH - 70)/4);
         make.height.mas_equalTo(2);
     }];
     self.typeLabel1 = [YUtils initLabelWithBackgroundColor:[UIColor clearColor]
@@ -339,14 +336,7 @@ typedef enum : NSUInteger {
     [line2 mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(_point2View.mas_right);
         make.centerY.equalTo(_point2View);
-        if (_isIdentity)
-        {
-            make.width.mas_equalTo((SCREEN_WIDTH - 78)/5);
-        }
-        else
-        {
-            make.width.mas_equalTo((SCREEN_WIDTH - 70)/4);
-        }
+        (_isIdentity)?make.width.mas_equalTo((SCREEN_WIDTH - 78)/5):make.width.mas_equalTo((SCREEN_WIDTH - 70)/4);
         make.height.mas_equalTo(2);
     }];
     self.typeLabel2 = [YUtils initLabelWithBackgroundColor:[UIColor clearColor]
@@ -388,14 +378,7 @@ typedef enum : NSUInteger {
     [line3 mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(_point3View.mas_right);
         make.centerY.equalTo(_point3View);
-        if (_isIdentity)
-        {
-            make.width.mas_equalTo((SCREEN_WIDTH - 78)/5);
-        }
-        else
-        {
-            make.width.mas_equalTo((SCREEN_WIDTH - 70)/4);
-        }
+        (_isIdentity)?make.width.mas_equalTo((SCREEN_WIDTH - 78)/5):make.width.mas_equalTo((SCREEN_WIDTH - 70)/4);
         make.height.mas_equalTo(2);
     }];
     self.typeLabel3 = [YUtils initLabelWithBackgroundColor:[UIColor clearColor]
@@ -437,14 +420,7 @@ typedef enum : NSUInteger {
     [line4 mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(_point4View.mas_right);
         make.centerY.equalTo(_point4View);
-        if (_isIdentity)
-        {
-            make.width.mas_equalTo((SCREEN_WIDTH - 78)/5);
-        }
-        else
-        {
-            make.width.mas_equalTo((SCREEN_WIDTH - 70)/4);
-        }
+        (_isIdentity)?make.width.mas_equalTo((SCREEN_WIDTH - 78)/5):make.width.mas_equalTo((SCREEN_WIDTH - 70)/4);
         make.height.mas_equalTo(2);
     }];
     _typeLabel4 = [YUtils initLabelWithBackgroundColor:[UIColor clearColor]
@@ -548,6 +524,11 @@ typedef enum : NSUInteger {
             make.right.bottom.left.equalTo(_typeLabel6);
         }];
     }
+    else
+    {
+        _point6View = _point5View;
+        _typeLabel6 = _typeLabel5;
+    }
     
     //这咕噜你好好想想
     UIView * backgroundView = [YUtils initViewWithBackgroundColor:KCOLOR_B2
@@ -597,6 +578,11 @@ typedef enum : NSUInteger {
         make.left.right.bottom.mas_equalTo(0);
         make.height.mas_equalTo(SCALE_NUM(46));
     }];
+    
+
+    _pointViewArr = @[_point1View,_point2View,_point3View,_point4View,_point5View,_point6View];
+    _typeLabelArr = @[_typeLabel1,_typeLabel2,_typeLabel3,_typeLabel4,_typeLabel5,_typeLabel6];
+
     
 }
 
@@ -657,9 +643,9 @@ typedef enum : NSUInteger {
     NSMutableDictionary *modelDic = [@{} mutableCopy];
     NSMutableDictionary *activityModelDic = [@{} mutableCopy];
     
-    [activityModelDic setObject:[self transformDate:_dataManager.ActivityDateEndText]
+    [activityModelDic setObject:[NSDate transformDate:_dataManager.ActivityDateEndText]
                          forKey:@"actEndTime"];
-    [activityModelDic setObject:[self transformDate:_dataManager.ActivityDateBeginText]
+    [activityModelDic setObject:[NSDate transformDate:_dataManager.ActivityDateBeginText]
                          forKey:@"actStartTime"];
     [activityModelDic setObject:_dataManager.ActivityCheckStatus forKey:@"checkStatus"];
     if (_isIdentity)
@@ -685,9 +671,9 @@ typedef enum : NSUInteger {
     }
     [activityModelDic setObject:_dataManager.ActivityPlaceText forKey:@"address"];
     [activityModelDic setObject:@"true" forKey:@"enroll"];
-    [activityModelDic setObject:[self transformDate:_dataManager.ActivityDateEndApplyText]
+    [activityModelDic setObject:[NSDate transformDate:_dataManager.ActivityDateEndApplyText]
                          forKey:@"enrollEndTime"];
-    [activityModelDic setObject:[self transformDate:_dataManager.ActivityDateBeginApplyText]
+    [activityModelDic setObject:[NSDate transformDate:_dataManager.ActivityDateBeginApplyText]
                          forKey:@"enrollStartTime"];
     [activityModelDic setObject:_dataManager.ActivityNameText forKey:@"name"];
     [activityModelDic setObject:_dataManager.ActivityTypeStr forKey:@"type"];
@@ -709,6 +695,7 @@ typedef enum : NSUInteger {
     [modelDic setObject:activityModelDic forKey:@"activityModel"];
     
     NSLog(@"%@",modelDic);
+    [YAnalysis trackEvent:@"发布_发布活动" withPara:@{@"类型":_dataManager.ActivityTypeStr}];
     [[ActivityManager sharedInstance] editActivity:modelDic block:^(YActionMessage *message) {
         NSLog(@"%@",message);
         [YUtils hiddenProgressHUD];
@@ -726,59 +713,14 @@ typedef enum : NSUInteger {
     }];
 }
 
-#pragma mark - 转换成标准时间
--(NSString *)transformDate:(NSString *) date
-{
-    NSDateFormatter * formatter = [[NSDateFormatter alloc] init];
-    [formatter setDateFormat:@"yyyy年MM月dd日 a HH:mm"];
-    NSDate * tempDate = [formatter dateFromString:date];
-    [formatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
-    NSString * dateStr = [formatter stringFromDate:tempDate];
-    
-    return dateStr;
-}
-#pragma mark - 获取当前标准时间
--(NSString *)getNowDate
-{
-    NSDate * now = [NSDate date];
-    NSDateFormatter * formatter = [[NSDateFormatter alloc] init];
-    [formatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
-    NSString * dateStr = [formatter stringFromDate:now];
-    
-    return dateStr;
-}
-
 -(void)setPointHighlight:(NSInteger) pointNum
 {
     [self resetDefaltPoint];
-    switch (pointNum) {
-        case POINT1:
-            _point1View.backgroundColor = KCOLOR_g1;
-            _typeLabel1.textColor = KCOLOR_g1;
-            break;
-        case POINT2:
-            _point2View.backgroundColor = KCOLOR_g1;
-            _typeLabel2.textColor = KCOLOR_g1;
-            break;
-        case POINT3:
-            _point3View.backgroundColor = KCOLOR_g1;
-            _typeLabel3.textColor = KCOLOR_g1;
-            break;
-        case POINT4:
-            _point4View.backgroundColor = KCOLOR_g1;
-            _typeLabel4.textColor = KCOLOR_g1;
-            break;
-        case POINT5:
-            _point5View.backgroundColor = KCOLOR_g1;
-            _typeLabel5.textColor = KCOLOR_g1;
-            break;
-        case POINT6:
-            _point6View.backgroundColor = KCOLOR_g1;
-            _typeLabel6.textColor = KCOLOR_g1;
-            break;
-            
-        default:
-            break;
+    
+    if (pointNum < 6)
+    {
+        ((UIView *)_pointViewArr[pointNum-1]).backgroundColor = KCOLOR_g1;
+        ((UILabel *)_typeLabelArr[pointNum-1]).textColor = KCOLOR_g1;
     }
 }
 
@@ -884,6 +826,7 @@ typedef enum : NSUInteger {
     switch (btn.tag) {
         case 100000001:
         {
+            [YAnalysis trackEvent:@"名称_发布活动" withPara:nil];
             [UIView animateWithDuration:0.2 animations:^{
                 _releaseCollectionView.contentOffset = CGPointMake(0, 0);
             } completion:nil];
@@ -891,6 +834,7 @@ typedef enum : NSUInteger {
         }
         case 100000002:
         {
+            [YAnalysis trackEvent:@"描述_发布活动" withPara:nil];
             [UIView animateWithDuration:0.2 animations:^{
 //                _releaseCollectionView.contentOffset = CGPointMake(SCALE_NUM(186), 0);
                 _releaseCollectionView.contentOffset = CGPointMake(SCALE_NUM(230), 0);
@@ -899,6 +843,7 @@ typedef enum : NSUInteger {
         }
         case 100000003:
         {
+            [YAnalysis trackEvent:@"时间_发布活动" withPara:nil];
             [UIView animateWithDuration:0.2 animations:^{
 //                _releaseCollectionView.contentOffset = CGPointMake(SCALE_NUM(418), 0);
                 _releaseCollectionView.contentOffset = CGPointMake(SCALE_NUM(460), 0);
@@ -907,6 +852,7 @@ typedef enum : NSUInteger {
         }
         case 100000004:
         {
+            [YAnalysis trackEvent:@"地点_发布活动" withPara:nil];
             [UIView animateWithDuration:0.2 animations:^{
 //                _releaseCollectionView.contentOffset = CGPointMake(SCALE_NUM(646), 0);
                 _releaseCollectionView.contentOffset = CGPointMake(SCALE_NUM(690), 0);
@@ -915,6 +861,7 @@ typedef enum : NSUInteger {
         }
         case 100000005:
         {
+            [YAnalysis trackEvent:@"类型_发布活动" withPara:nil];
             [UIView animateWithDuration:0.2 animations:^{
                 if (_isIdentity)
                 {

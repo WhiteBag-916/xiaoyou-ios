@@ -37,6 +37,9 @@
 
 - (void)didClick {
     if (_userId.length != 0) {
+        if ([self.delegate respondsToSelector:@selector(didClick)]) {
+            [self.delegate didClick];
+        }
         NSString *selfId = [[[ProvisionManager sharedInstance] getProfile] uid];
         if ([selfId isEqualToString:_userId]) {
             [[NSNotificationCenter defaultCenter] postNotificationName:KNotification_Open_Profile object:nil userInfo:@{@"uid":@""}];

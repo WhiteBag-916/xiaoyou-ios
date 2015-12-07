@@ -213,6 +213,7 @@
 -(void)gotoDetailWithCellTypeWithIndexPath:(NSIndexPath*)indexPath
 {
     ActivityInfoModel *infoModel = self.dataSouceArr[indexPath.row];
+    [YAnalysis trackEvent:@"活动_活动筛选_筛选结果" withPara:@{@"名称":infoModel.activityPublishedModel.name}];
     NSString *publishID = [NSString stringWithFormat:@"%ld",(long)infoModel.activityPublishedModel.activityPublishedModelIdentifier];
     ActivityDetailViewController *activityDetailVC = [[ActivityDetailViewController alloc]
                                                       initWithPublishID:publishID];

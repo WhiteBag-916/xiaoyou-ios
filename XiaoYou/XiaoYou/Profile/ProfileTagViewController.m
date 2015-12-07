@@ -187,6 +187,11 @@
 }
 
 - (void)onNavigationLeftButtonClicked {
+    if (ProfileTagTypeAssociations == _type) {
+        [YAnalysis trackEvent:@"关闭_筛选_社团汇总" withPara:nil];
+    } else {
+        [YAnalysis trackEvent:@"关闭_我的_定义标签" withPara:nil];
+    }
     [self.navigationController dismissViewControllerAnimated:YES completion:nil];
 }
 - (void)onNavigationRightButtonClicked {
@@ -203,6 +208,7 @@
             }
         }];
         _block(tagStr);
+        [YAnalysis trackEvent:@"确定_筛选_社团汇总" withPara:@{@"条件":tagStr}];
         [self.navigationController dismissViewControllerAnimated:YES completion:nil];
     } else if (ProfileTagTypePerson == _type) {
         NSMutableString *tagStr = [@"" mutableCopy];
@@ -216,6 +222,7 @@
             }
         }];
         [self uploadTagList:tagStr];
+        [YAnalysis trackEvent:@"确定_我的_定义标签" withPara:@{@"条件":tagStr}];
     }
 }
 - (void)uploadTagList:(NSString *)tagStr {

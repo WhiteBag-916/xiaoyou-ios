@@ -73,5 +73,6 @@
 + (NSString *)timeFormatString;
 + (NSString *)timestampFormatString;
 + (NSString *)dbFormatString;
-
+//转换成标准时间
++ (NSString *)transformDate:(NSString *) date;
 @end

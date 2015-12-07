@@ -188,6 +188,8 @@
     
     GroupModel *model = _associationsListArray[indexPath.row];
     
+    [YAnalysis trackEvent:@"社团头像_社团汇总" withPara:@{@"名称":model.groupName}];
+    
     AssociationsDetailViewController *associationsDetailViewController
     = [[AssociationsDetailViewController alloc] initWithId:[NSString stringWithFormat:@"%g"
                                                             , model.internalBaseClassIdentifier]

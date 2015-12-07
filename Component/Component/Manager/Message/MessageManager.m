@@ -29,6 +29,7 @@
 #import "YDatabaseDao.h"
 #import "InterestListAction.h"
 #import "YObject+Ext.h"
+#import "YAnalysis.h"
 
 #define kMessageManagerSyncQueue @"kMessageManagerSyncQueue"
 //两次提示的默认间隔
@@ -486,55 +487,30 @@ DEF_SINGLETON(MessageManager);
                               @((int)ACTIVITY_ENROLL_NO_CHECK),     //审核未通过  (报名未通过)
                               @((int)ACTIVITY_ENROLL)];             //用户报名活动提醒(有人报名我发布的活动)
     
+    PUSH_Message_TYPE type = notiInfo.type;
     [YObject isElement:@((int)notiInfo.type) InArray:infoTypeList sucessed:^{
         [dataBaseDao insertModel:notiInfo];
         [[NSNotificationCenter defaultCenter] postNotificationName:KNotification_Push_Notify_Message_Come object:nil];
+        if (type == ACTIVITY_ENROLL_CHECK_PASS) {
+             [YAnalysis trackEvent:@"提醒_有空_提醒" withPara:@{@"类型":@"报名审核通过提醒"}];
+        } else if (type == SCHEDULE_REMIND) {
+            [YAnalysis trackEvent:@"提醒_有空_提醒" withPara:@{@"类型":@"自建日程提醒"}];
+        } else if (type == ACTIVITY_PUBLISH) {
+            [YAnalysis trackEvent:@"提醒_有空_提醒" withPara:@{@"类型":@"活动发布提醒"}];
+        } else if (type == ACTIVITY_NOTIFY) {
+            [YAnalysis trackEvent:@"提醒_有空_提醒" withPara:@{@"类型":@"活动通知提醒"}];
+        }
     } failed:nil];
     
     [YObject isElement:@((int)notiInfo.type) InArray:infoTypeBell sucessed:^{
         [AppConfigData setHaveRemindMessage:YES];
         [[NSNotificationCenter defaultCenter] postNotificationName:KNotification_Remind_Message_Come object:nil];;
+        if (type == ACTIVITY_ENROLL_NO_CHECK) {
+            [YAnalysis trackEvent:@"提醒_有空_提醒" withPara:@{@"类型":@"报名审核未通过提醒"}];
+        } else if (type == ACTIVITY_ENROLL) {
+            [YAnalysis trackEvent:@"提醒_有空_提醒" withPara:@{@"类型":@"用户报名活动提醒"}];
+        }
     } failed:nil];
-    
-//    switch (notiInfo.type)
-//    {
-//        case ACTIVITY_ENROLL_CHECK_PASS: //报名审核通过
-//        {
-//            [dataBaseDao insertModel:notiInfo];
-//            break;
-//        }
-//        case ACTIVITY_ENROLL_NO_CHECK:  //审核未通过 //铃铛
-//        {
-//            [AppConfigData setHaveRemindMessage:YES];
-//            [[NSNotificationCenter defaultCenter] postNotificationName:KNotification_Remind_Message_Come object:nil];
-//            break;
-//        }
-//        case SCHEDULE_REMIND: //用户日程提醒
-//        {
-//            [dataBaseDao insertModel:notiInfo];
-//            break;
-//        }
-//        case ACTIVITY_ENROLL: //用户报名活动提醒
-//        {
-//            [AppConfigData setHaveRemindMessage:YES];
-//            [[NSNotificationCenter defaultCenter] postNotificationName:KNotification_Remind_Message_Come object:nil];
-//            break;
-//        }
-//        case ACTIVITY_PUBLISH://活动通知提醒
-//        {
-//            [dataBaseDao insertModel:notiInfo];
-//            break;
-//        }
-//        case ACTIVITY_NOTIFY: //活动通知提醒,活动快要开始
-//        {
-//            [dataBaseDao insertModel:notiInfo];
-//            break;
-//        }
-//        default:
-//        {
-//            break;
-//        }
-//    }
 }
 
 

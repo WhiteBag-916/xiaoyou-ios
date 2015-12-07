@@ -229,18 +229,21 @@
 
 //跳转社团
 - (void)toAssociationsList {
+    [YAnalysis trackEvent:@"社团汇总_侧边栏" withPara:nil];
     [[NSNotificationCenter defaultCenter] postNotificationName:kNotification_Push_AssociationsList
                                                         object:nil];
 }
 
 //跳转找人
 - (void)toSearchPerson {
+    [YAnalysis trackEvent:@"搜索用户_侧边栏" withPara:nil];
     [[NSNotificationCenter defaultCenter] postNotificationName:kNotification_Push_SearchPerson
                                                         object:nil];
 }
 
 //跳转到新提醒
 - (void)toNotifyView {
+    [YAnalysis trackEvent:@"人脉新提醒" withPara:nil];
     [[NSNotificationCenter defaultCenter] postNotificationName:kNotification_Push_Notify
                                                         object:nil];
 }

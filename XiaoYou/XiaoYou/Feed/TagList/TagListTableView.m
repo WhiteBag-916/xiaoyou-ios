@@ -87,11 +87,13 @@
 }
 //跳转到搜索结果
 - (void)toFeedFilter:(NSString *)filter name:(NSString *)name {
+    [YAnalysis trackEvent:@"标签点击_侧边栏" withPara:@{@"名称":name}];
     [[NSNotificationCenter defaultCenter] postNotificationName:kNotification_Push_FeedFilter object:nil userInfo:@{@"filter":filter, @"name":name}];
 }
 
 //跳转到添加标签
 - (void)toAddTag {
+    [YAnalysis trackEvent:@"添加标签_侧边栏" withPara:nil];
     [[NSNotificationCenter defaultCenter] postNotificationName:kNotification_Push_AddTag object:nil];
 }
 @end

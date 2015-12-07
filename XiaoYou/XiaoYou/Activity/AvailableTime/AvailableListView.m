@@ -232,9 +232,11 @@
 {
     UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
     if ([cell isKindOfClass:[ScheduleCardCell class]]) {
+        [YAnalysis trackEvent:@"你的日程卡" withPara:nil];
         [self gotoDetailWithCellType:SCHEDULECARD_CELL indexPath:indexPath];
     }
     else if ([cell isKindOfClass:[StudyRoomCell class]]) {
+        [YAnalysis trackEvent:@"自习室" withPara:nil];
         [self gotoDetailWithCellType:STUDYROOM_CELL indexPath:indexPath];
     }
     else if ([cell isKindOfClass:[ScroungeCourseCell class]]) {
@@ -262,13 +264,14 @@
         AvailableSimpleViewController *vc = [[AvailableSimpleViewController alloc] initWithType:AvailableSimpleTypeStudyRoom];
         [self.viewController.navigationController pushViewController:vc animated:YES
                                                  needHiddenBottomBar:YES];
-    } 
+    }
     //活动详情
     else if (type == ACTIVITY_DETAIL_CELL) {
         ActivityInfoModel *model;
         if (self.availableListArray.count > 0)
             model = self.availableListArray[indexPath.row];
         NSString *publishID = [NSString stringWithFormat:@"%ld",(long)model.activityPublishedModel.activityPublishedModelIdentifier];
+        [YAnalysis trackEvent:@"活动" withPara:@{@"名称":model.activityPublishedModel.name}];
         ActivityDetailViewController *activityDetailVC = [[ActivityDetailViewController alloc]
                                                           initWithPublishID:publishID];
         [self.viewController.navigationController pushViewController:activityDetailVC animated:YES

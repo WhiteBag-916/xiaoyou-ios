@@ -49,6 +49,7 @@
 @property (nonatomic, strong)            NSMutableDictionary *shareData;
 @property (nonatomic, assign)            BOOL isAuthor;
 @property (nonatomic, assign)            BOOL isOrganization;//是否是社团
+
 @end
 
 @implementation FeedCellBottomView
@@ -165,7 +166,7 @@
         } else {
             NSString *tag = (data.tags.count == 0?@"校友观点":[data.tags[0] name]);
             NSString *img = data.feed.img.length > 0?[data.feed.img componentsSeparatedByString:@","][0]:@"favicon.ico";
-            _shareData = [NSMutableDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"%d", (int)data.feed.feedIdentifier], @"feedId", tag,@"tag",content,@"content",img, @"pic", nil];
+            _shareData = [NSMutableDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"%d", (int)data.feed.feedIdentifier], @"feedId", tag,@"tag",content,@"content",img, @"pic", data.author.studentNo, @"studentNo", data.author.schoolCode, @"schoolCode", data.author.gender, @"gender", data.author.name, @"name", nil];
             _isOrganization = NO;
         }
         
@@ -230,6 +231,9 @@
 //        [YUtils showTitle:@"不能给自己敬酒"];
 //        return;
 //    }
+    if (_type == FeedOrganizationType || _type == FeedListType) {
+        [YAnalysis trackEvent:@"敬酒_校友圈" withPara:[YAnalysis getDataFromShareInFeed:_shareData]];
+    }
     if ([_myInfo isKindOfClass:[Feed class]]) {
         Feed *fd = _myInfo;
         [[FeedManager sharedInstance] addPraise:[NSString stringWithFormat:@"%d", (int)fd.feedIdentifier] block:^(YActionMessage *message) {
@@ -326,7 +330,8 @@
     YActionSheetItem *item2 = [YActionSheetItem itemWithTitle:@"举报"
                                                          type:YCommonActionSheetItemTypeCommon
                                                         block:^(NSInteger checkNum) {
-                                                            [YCommonReport report];
+                                                            [YCommonReport reportWithType:@"举报_FEED详情_更多操作"
+                                                                                  andData:[YAnalysis getDataFromShareInFeed:_shareData]];
                                                         }];
     YActionSheetItem *item3 = [YActionSheetItem itemWithTitle:@"删除"
                                                          type:YCommonActionSheetItemTypeCommon

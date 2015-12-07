@@ -33,6 +33,7 @@ NSString *const kProfilePersonListTableViewCell = @"kProfilePersonListTableViewC
 
 #define KADDFRIENDWIDTH SCALE_NUM(28)
 @interface ProfilePersonListTableViewCell()
+<YFaceImageViewDelegate>
 
 @property (nonatomic, strong) YFaceImageView *face;//头像
 @property (nonatomic, strong) UILabel *userName;//姓名
@@ -46,6 +47,7 @@ NSString *const kProfilePersonListTableViewCell = @"kProfilePersonListTableViewC
 @property (nonatomic, strong) TagsCommonView * tagsCommonView;
 
 @property (nonatomic, strong) UIView * backView;
+@property (nonatomic, assign) ProfilePersonListType type;
 
 @end
 
@@ -55,6 +57,7 @@ NSString *const kProfilePersonListTableViewCell = @"kProfilePersonListTableViewC
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
         _face = [[YFaceImageView alloc] init];
+        _face.delegate = self;
         [self.contentView addSubview:_face];
         [_face mas_makeConstraints:^(MASConstraintMaker *make) {
             make.top.left.mas_equalTo(KFACEMARGIN);
@@ -152,8 +155,9 @@ NSString *const kProfilePersonListTableViewCell = @"kProfilePersonListTableViewC
 }
 
 
-- (void)setData:(Author *)author needShowGender:(BOOL)needShowGender {
+- (void)setData:(Author *)author needShowGender:(BOOL)needShowGender andType:(ProfilePersonListType)type {
     
+    _type = type;
     _myAuthor = author;
     [_face setData:author.uid imageUrl:author.headPic];
     _userName.text = author.name;
@@ -194,11 +198,13 @@ NSString *const kProfilePersonListTableViewCell = @"kProfilePersonListTableViewC
 //添加好友
 - (void)clickAdd {
     //展示提示
+    [YAnalysis trackEvent:@"加好友_人" withPara:nil];
     YCommonAlertView *alert = [[YCommonAlertView alloc] initWithTitle:nil
                                                               message:[NSString stringWithFormat:@"确定向%@发送好友申请吗？", _userName.text]
                                                          buttonTitles:@"取消",@"确认", nil];
     [alert clickedButtonHandler:^(NSInteger index) {
         if (1 == index) {
+            [YAnalysis trackEvent:@"确定_人_加好友弹窗" withPara:nil];
             [YUtils showHUDWithTitle:@"发送中"];
             [[ContactManager sharedInstance] submitFriendApply:_face.userId block:^(YActionMessage *message) {
                 [YUtils hiddenProgressHUD];
@@ -209,9 +215,35 @@ NSString *const kProfilePersonListTableViewCell = @"kProfilePersonListTableViewC
                 
                 [YUtils showTitle:message.desc];
             }];
+        } else {
+            [YAnalysis trackEvent:@"取消_人_加好友弹窗" withPara:nil];
         }
     }];
     [alert show];
 }
-
+- (void)didClick
+{
+    switch (_type) {
+        case ProfilePersonListTypeRespect:
+            [YAnalysis trackEvent:@"用户头像_我的敬酒" withPara:nil];
+            break;
+        case ProfilePersonListTypeCool:
+            [YAnalysis trackEvent:@"用户头像_我的很酷" withPara:nil];
+            break;
+        case PersonPersonListTypeFeedRespect:
+            [YAnalysis trackEvent:@"用户头像_敬酒人列表_feed详情" withPara:nil];
+            break;
+        case ProfilePersonListTypeFind:
+            [YAnalysis trackEvent:@"用户头像_找人" withPara:nil];
+            break;
+        case ProfilePersonListTypeFeedPerson:
+            [YAnalysis trackEvent:@"用户头像_人" withPara:nil];
+            break;
+        case ProfilePersonListTypeNoticePerson:
+            [YAnalysis trackEvent:@"用户头像_提醒" withPara:nil];
+            break;
+        default:
+            break;
+    }
+}
 @end

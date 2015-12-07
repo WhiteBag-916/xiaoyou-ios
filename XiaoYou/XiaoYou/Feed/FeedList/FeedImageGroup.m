@@ -9,7 +9,7 @@
 #import "FeedImageGroup.h"
 #import "Masonry.h"
 #import "YUtils+Component.h"
-#import "SDPhotoBrowser/SDPhotoBrowser.h"
+#import "SDPhotoBrowser.h"
 #import "YDirectory+Data.h"
 
 #define KIMGTAG 10000
@@ -275,6 +275,11 @@
 }
 //放大图片
 - (void)choosePic:(UITapGestureRecognizer *)tap {
+    
+    if ([self.delegate respondsToSelector:@selector(didOpenPhoto)]) {
+        [self.delegate didOpenPhoto];
+    }
+    
     //隐藏键盘
     [self.viewController.view endEditing:YES];
     
@@ -324,7 +329,8 @@
     [self updateAll];
     [_browser removeFromSuperview];
     _browser = nil;
-    [[NSNotificationCenter defaultCenter] postNotificationName:KNotification_Delete_Image object:[NSNumber numberWithInt:currentIndex]];
+    [[NSNotificationCenter defaultCenter] postNotificationName:KNotification_Delete_Image
+                                                        object:[NSNumber numberWithInt:currentIndex]];
     [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationNone];
 //    NSString *path = [YDirectory newImgCache:[NSString stringWithFormat:@"feed%d.png", currentIndex]];
 //    [[NSFileManager defaultManager] removeItemAtPath:path error:nil];

@@ -232,6 +232,7 @@
     
     if (AssociationsDetailTableViewLikeSection == section) {
         if (1 == row) {
+            [YAnalysis trackEvent:@"很酷_社团详情" withPara:@{@"名称":_groupModel.groupName}];
             [YUtils showHUDWithTitle];
             [[FeedManager sharedInstance] addGroupPraise:_groupId block:^(YActionMessage *message) {
                 if (message.isSuccess) {
@@ -248,6 +249,7 @@
             }];
         }
     } else if (AssociationsDetailTableViewFeedSection == section) {
+        [YAnalysis trackEvent:@"动态_社团详情" withPara:@{@"名称":_groupModel.groupName}];
         FeedDetailViewController *feedDetailViewController = [[FeedDetailViewController alloc]
                                                               initWithFeedId:[NSString stringWithFormat:@"%g"
                                                                                                                , [[_feedListArray[indexPath.row] feed] feedIdentifier]]];

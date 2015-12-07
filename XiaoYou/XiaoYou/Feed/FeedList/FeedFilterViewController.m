@@ -68,10 +68,12 @@
         _profilePersonListTableView.hidden = (index != 1);
         
         if (![_profilePersonListTableView isHidden]) {
+            [YAnalysis trackEvent:@"人_校友圈" withPara:nil];
             [_profilePersonListTableView loadDataWithQueryCode:_filter];
             self.navigationItem.rightBarButtonItem = nil;
             //[self showCustomNavigationPublishButton];
         } else {
+            [YAnalysis trackEvent:@"事_校友圈" withPara:nil];
             [self showCustomNavigationPublishButton];
         }
     }];
@@ -102,6 +104,7 @@
 }
 - (void)onNavigationRightButtonClicked {
     _needRefresh = true;
+    [YAnalysis trackEvent:@"发FEED_校友圈" withPara:nil];
     UINavigationController *navigationController =
     [[UINavigationController alloc] initWithRootViewController:[[FeedPublishViewController alloc] init]];
     [self.view.window.rootViewController presentViewController:navigationController animated:YES completion:^{

@@ -140,12 +140,14 @@
 //添加好友
 - (void)clickAdd {
     //展示提示
+    [YAnalysis trackEvent:@"加好友_活动详情" withPara:nil];
     YCommonAlertView *alert = [[YCommonAlertView alloc]
                                initWithTitle:nil message:
                                [NSString stringWithFormat:@"确定向%@发送好友申请吗？", _author.name]
                                                          buttonTitles:@"取消",@"确认", nil];
     [alert clickedButtonHandler:^(NSInteger index) {
         if (1 == index) {
+            [YAnalysis trackEvent:@"确定_人_加好友弹窗" withPara:nil];
             [YUtils showHUDWithTitle:@"发送中"];
             [[ContactManager sharedInstance]
              submitFriendApply:_author.uid block:^(YActionMessage *message) {
@@ -156,12 +158,15 @@
                 }
                 [YUtils showTitle:message.desc];
             }];
+        } else {
+            [YAnalysis trackEvent:@"取消_人_加好友弹窗" withPara:nil];
         }
     }];
     [alert show];
 }
 
 - (void)gotoPersonDetail {
+    [YAnalysis trackEvent:@"参加活动的用户_活动详情" withPara:nil];
     XYContactsInfoDetailViewController *detailVC = [[XYContactsInfoDetailViewController alloc]init];
     detailVC.uid = _author.uid;
     

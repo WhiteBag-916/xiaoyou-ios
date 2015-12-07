@@ -30,6 +30,7 @@
 
 @property (nonatomic,assign) NSInteger      currentIndex;    //索引
 
+@property (nonatomic,assign) NSDictionary   *cellTypeDict;   //字典类型索引
 @end
 @implementation RemindListTableView
 
@@ -43,6 +44,9 @@
         [self registerClass:[PassRemindCell class] forCellReuseIdentifier:REMINDVIEWCELL];
         [self registerClass:[ApplyRemindCell class] forCellReuseIdentifier:APPLYREUSEID];
         _currentIndex = 0;
+        NSDictionary *tmpDict = @{@"check_pass":@(AUDIT_PASSED),@"no_pass":@(AUDIT_NOT_PASSED),@"no_check":
+                                      @(NOT_NEED_CHECK),@"need_check":@(NEED_CHECK)};
+        _cellTypeDict = [NSDictionary dictionaryWithDictionary:tmpDict];
     }
     return self;
 }
@@ -54,10 +58,12 @@
         self.separatorStyle = UITableViewCellSeparatorStyleNone;
         self.tableHeaderView.height = HEADCELL_HEIGHT;
         self.backgroundColor = KCOLOR_B1;
-        self.separatorStyle = UITableViewCellSelectionStyleNone;
         [self registerClass:[PassRemindCell class] forCellReuseIdentifier:REMINDVIEWCELL];
         [self registerClass:[ApplyRemindCell class] forCellReuseIdentifier:APPLYREUSEID];
         _currentIndex = 0;
+        NSDictionary *tmpDict = @{@"check_pass":@(AUDIT_PASSED),@"no_pass":@(AUDIT_NOT_PASSED),@"no_check":
+                              @(NOT_NEED_CHECK),@"need_check":@(NEED_CHECK)};
+        _cellTypeDict = [NSDictionary dictionaryWithDictionary:tmpDict];
     }
     return self;
 }
@@ -150,7 +156,9 @@
         }];
     } else  //参加别人的活动
     {
-        CELL_TYPE type = [self cellTypeByModelString:info.checkStatus];
+        NSDictionary *tmpDict = @{@"check_pass":@(AUDIT_PASSED),@"no_pass":@(AUDIT_NOT_PASSED),@"no_check":
+                                      @(NOT_NEED_CHECK),@"need_check":@(NEED_CHECK)};
+        CELL_TYPE type = [tmpDict[info.checkStatus] integerValue];
         if (type == AUDIT_NOT_PASSED) {
             cellHeight = SCALE_NUM(145);
         } else
@@ -202,7 +210,9 @@
         cell = appCell;
     } else  //参加别人的活动
     {
-        CELL_TYPE type = [self cellTypeByModelString:info.checkStatus];
+        NSDictionary *tmpDict = @{@"check_pass":@(AUDIT_PASSED),@"no_pass":@(AUDIT_NOT_PASSED),@"no_check":
+                                      @(NOT_NEED_CHECK),@"need_check":@(NEED_CHECK)};
+        CELL_TYPE type = [tmpDict[info.checkStatus] integerValue];
         PassRemindCell *remindCell = [PassRemindCell passRemindCellWithTableView:tableView];
         remindCell.cellType = type;
         [remindCell setData:info];
@@ -223,14 +233,6 @@
         [self.viewController.navigationController pushViewController:detailVC animated:YES
                                                  needHiddenBottomBar:YES];
     }
-}
-
-
--(CELL_TYPE)cellTypeByModelString:(NSString*)modelStr
-{
-    NSDictionary *dict = @{@"check_pass":@(AUDIT_PASSED),@"no_pass":@(AUDIT_NOT_PASSED),@"no_check":
-                               @(NOT_NEED_CHECK),@"need_check":@(NEED_CHECK)};
-    return [dict[modelStr] integerValue];
 }
 
 @end
