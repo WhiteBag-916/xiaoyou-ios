@@ -167,6 +167,11 @@
     //侧拉通知
 //    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(openTagListVC:) name:SlideNavigationControllerDidReveal object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshData) name:KNotification_Refresh_FeedList object:nil];
+    //tab单击事件
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(refreshData)
+                                                 name:kNotification_Double_Click_tab
+                                               object:nil];
 }
 
 - (void)changeMenu {
