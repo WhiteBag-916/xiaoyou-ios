@@ -15,12 +15,6 @@ extern NSString *const KGROUP_APPLYID;
 
 static NSString *kServerType = @"ServerType";
 
-//USER_SCHEDULING(15, "用户日程提醒"),
-//ACTIVITY_ENROLL_CHECK_PASS(13, "活动报名审核提醒通过"),
-//ACTIVITY_ENROLL_NO_CHECK(14, "活动报名审核提醒未通过"),
-//ACTIVITY_ENROLL(16, "用户报名活动提醒"),
-//ACTIVITY_PUBLISH(17, "活动发布提醒"),
-//ACTIVITY_NOTIFY(18, "活动通知提醒");
 typedef enum : NSUInteger {
     SYSTEM_MESSAGE = 1,     //系统消息
     FRIEND_APPLY=2,         //好友申请
@@ -37,10 +31,10 @@ typedef enum : NSUInteger {
 #pragma mark 活动推送提醒
     ACTIVITY_ENROLL_CHECK_PASS=13,  //活动报名审核通过
     ACTIVITY_ENROLL_NO_CHECK=14,    //活动报名审核未通过 铃铛
-    SCHEDULE_REMIND=15,             //用户自建日程提醒----
-    ACTIVITY_ENROLL=16,             //用户报名活动提醒----
+    SCHEDULE_REMIND=15,             //用户自建日程提醒
+    ACTIVITY_ENROLL=16,             //用户报名活动提醒
     ACTIVITY_PUBLISH=17,            //活动发布提醒()
-    ACTIVITY_NOTIFY=18,          //活动通知提醒()
+    ACTIVITY_NOTIFY=18,             //活动通知提醒()
     GOOD_LOOK=19                    //好看
 } PUSH_Message_TYPE;
 

@@ -21,4 +21,5 @@ pod 'Masonry', '~> 0.6.3'
 pod 'UITableView+FDTemplateLayoutCell', '~> 1.4.beta'
 pod 'UzysAssetsPickerController', '~> 0.9.9'
 pod 'NJKWebViewProgress', '~> 0.2.3'
+pod 'Zhugeio'
 end

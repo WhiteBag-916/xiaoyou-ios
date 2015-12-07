@@ -34,6 +34,7 @@
 #import "RegNoticeAction.h"
 #import "Tags.h"
 #import "CheckLastVersionAction.h"
+#import "YAnalysis.h"
 
 #define kProvisionManagerSyncQueue @"kProvisionManagerSyncQueue"
 
@@ -140,7 +141,7 @@ DEF_SINGLETON(ProvisionManager);
 
 - (void)setProfileInfo:(ProfileInfo *)profileInfo {
     _profileInfo = profileInfo;
-    
+    [YAnalysis collectUserInfo:profileInfo];
     [YShareData defaultData][kShareData_UserID] = _profileInfo.uid;
 }
 

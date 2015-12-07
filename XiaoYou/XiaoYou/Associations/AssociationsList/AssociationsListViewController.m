@@ -70,6 +70,7 @@
 
 //筛选按钮
 - (void)filterBtnAction {
+    [YAnalysis trackEvent:@"筛选_社团汇总" withPara:nil];
     ProfileTagViewController *profileTagViewController = [[ProfileTagViewController alloc]
                                                           initWithMyTags:_filterArray
                                                                     type:ProfileTagTypeAssociations];
@@ -85,6 +86,7 @@
 
 //搜索
 - (void)searchAction {
+    [YAnalysis trackEvent:@"搜索_社团汇总" withPara:nil];
     NSArray *array = [_associationsListTableView tableViewData];
 //    if (array.count > 0) {
         AssociationsSearchViewController *associationsSearchViewController

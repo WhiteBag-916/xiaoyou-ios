@@ -18,8 +18,8 @@ NSString *const kMerchantListTableViewCell = @"MerchantListTableViewCellId";
 @property(nonatomic,strong)UILabel * nameLabel;
 @property(nonatomic,strong)UILabel * characterLabel;//特点
 @property(nonatomic,strong)UILabel * placeLabel;
-@property(nonatomic,strong)UILabel * comboLabel;//专属优惠套餐
-@property(nonatomic,strong)UILabel * scanfLabel;//第二杯半价
+@property(nonatomic,strong)UILabel * comboLabel;    //专属优惠套餐
+@property(nonatomic,strong)UILabel * scanfLabel;    //第二杯半价
 
 @end
 

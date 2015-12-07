@@ -129,6 +129,7 @@
                                                          buttonTitles:@"取消",@"确认", nil];
     [alert clickedButtonHandler:^(NSInteger index) {
         if (index == 1) {
+            [YAnalysis trackEvent:@"忘记密码_修改密码" withPara:nil];
             [alert hide];
             [YUtils showHUDWithTitle];
             [[ProvisionManager sharedInstance] forgotPasswordReq:[[ProvisionManager sharedInstance] getLoginInfo].studentNo block:^(YActionMessage *message) {
@@ -194,6 +195,7 @@
         return;
     }
     if (ProfileChangePwdTypeMod == _type) {
+        [YAnalysis trackEvent:@"确定_修改密码" withPara:nil];
         MBProgressHUD *hud = [YUtils showHUDWithTitle:@"正在修改"];
         [[ProvisionManager sharedInstance] ModifyPassword:_pwdField.text oldPassWord:_currentPwdField.text block:^(YActionMessage *message) {
             [hud removeFromSuperview];

@@ -144,6 +144,7 @@
 {
     if (buttonIndex == 1)
     {
+        [YAnalysis trackEvent:@"商家电话" withPara:nil];
         NSString * phoneStr = [NSString stringWithFormat:@"tel://%@",_phoneLabel.text];
         [[UIApplication sharedApplication] openURL:[NSURL URLWithString:phoneStr]];
     }

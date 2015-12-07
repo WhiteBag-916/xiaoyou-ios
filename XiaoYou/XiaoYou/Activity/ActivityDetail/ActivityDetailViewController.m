@@ -250,6 +250,7 @@
 
 //参加某个活动的事件
 - (void)joinInAction {
+    [YAnalysis trackEvent:@"我要加入_活动详情" withPara:nil];
     [YUtils showHUDWithTitle:@"报名中"];
     [[ActivityManager sharedInstance] enrollActivity:self.publishID
                                                block:^(YActionMessage *message) {

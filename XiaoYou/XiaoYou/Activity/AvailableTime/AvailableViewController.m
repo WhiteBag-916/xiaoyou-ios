@@ -172,6 +172,7 @@
 
 //发布Action
 -(void)publishAction {
+    [YAnalysis trackEvent:@"发布活动" withPara:nil];
     NSArray * groupArr =[[ProvisionManager sharedInstance] getProfile].managerGroups;
     if (groupArr.count > 0)
     {
@@ -188,6 +189,7 @@
 
 //筛选Action
 -(void)filterAction {
+    [YAnalysis trackEvent:@"筛选活动" withPara:nil];
     ActivityChoiceController *choiceVC = [[ActivityChoiceController alloc]
                                           initWithType:ACTIVITY_CHOICE_TYPE
                                           andDataSource:nil andStudyRoomDefautStr:nil];
@@ -197,6 +199,7 @@
 
 //搜索🔍
 -(void)searchAction {
+    [YAnalysis trackEvent:@"查找活动" withPara:nil];
     AssociationsSearchViewController *searchVC = [[AssociationsSearchViewController alloc]init];
     searchVC.searchType = ACTIVITY_TYPE;
     [self.navigationController pushViewController:searchVC animated:YES needHiddenBottomBar:YES];
@@ -206,6 +209,7 @@
 #pragma mark 协议方法,铃铛变灰
 -(void)onNavigationLeftButtonClicked
 {
+    [YAnalysis trackEvent:@"铃铛提醒" withPara:nil];
     RemindViewController *remindVC = [[RemindViewController alloc]init];
     [self.navigationController pushViewController:remindVC animated:YES needHiddenBottomBar:YES];
     

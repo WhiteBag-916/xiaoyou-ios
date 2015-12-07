@@ -62,12 +62,14 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_resource "MJRefresh/MJRefresh/MJRefresh.bundle"
   install_resource "UzysAssetsPickerController/UzysAssetsPickerController/Library/UzysAssetsPickerController.xib"
   install_resource "UzysAssetsPickerController/UzysAssetsPickerController/Library/UzysAssetPickerController.bundle"
+  install_resource "Zhugeio/Zhuge/snapshot_config.json"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_resource "EaseMobSDK/EaseMobSDK/resources/EaseMob.bundle"
   install_resource "MJRefresh/MJRefresh/MJRefresh.bundle"
   install_resource "UzysAssetsPickerController/UzysAssetsPickerController/Library/UzysAssetsPickerController.xib"
   install_resource "UzysAssetsPickerController/UzysAssetsPickerController/Library/UzysAssetPickerController.bundle"
+  install_resource "Zhugeio/Zhuge/snapshot_config.json"
 fi
 
 mkdir -p "${CONFIGURATION_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}"

@@ -130,6 +130,7 @@ typedef enum : NSUInteger {
 
 //筛选Action
 - (void)filterAction {
+    [YAnalysis trackEvent:@"自习室筛选_自习室" withPara:nil];
     if (_studyRoomTableView.campusDataSouceArr.count > 0)
     {
         ActivityChoiceController * choiceController
@@ -158,6 +159,7 @@ typedef enum : NSUInteger {
 - (void)questionAction
 {
     //h5页面
+    [YAnalysis trackEvent:@"HELP_自习室_某教学楼" withPara:nil];
     NSLog(@"h5页面");
     YWebViewController * webView
     = [[YWebViewController alloc] initWithUrl:@"http://tips.xiaoyou.com/studyRoom/empty.html"

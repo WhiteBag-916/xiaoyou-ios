@@ -170,6 +170,7 @@
 }
 
 - (void)changeMenu {
+    [YAnalysis trackEvent:@"侧边抽屉_校友圈" withPara:nil];
     [_menu showLeftController:YES];
 }
 
@@ -183,6 +184,7 @@
 {
     _profilePersonListTableView.hidden = (type == CommonSwitchTypeFir);
     if (type == CommonSwitchTypeFir) {
+        [YAnalysis trackEvent:@"事_校友圈" withPara:nil];
         [self showCustomNavigationPublishButton];
         self.viewIndex = 1;
         
@@ -192,6 +194,7 @@
         
         [_feedListTableView addGestureRecognizer:_menu.pan];
     } else {
+        [YAnalysis trackEvent:@"人_校友圈" withPara:nil];
         self.navigationItem.rightBarButtonItem = nil;
         //[self showCustomNavigationFastButton];
         self.viewIndex = 2;
@@ -240,6 +243,7 @@
 - (void)onNavigationRightButtonClicked {
     if (self.viewIndex == 1) {
         _needRefresh = true;
+        [YAnalysis trackEvent:@"发FEED_校友圈" withPara:nil];
         UINavigationController *navigationController =
         [[UINavigationController alloc] initWithRootViewController:[[FeedPublishViewController alloc] init]];
         [self.view.window.rootViewController presentViewController:navigationController animated:YES completion:nil];

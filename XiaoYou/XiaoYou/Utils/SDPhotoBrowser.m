@@ -10,6 +10,7 @@
 #import "UIImageView+WebCache.h"
 #import "SDBrowserImageView.h"
 
+
 //  ============在这里方便配置样式相关设置===========
 
 //                      ||
@@ -107,6 +108,7 @@
 
 - (void)saveImage
 {
+    [YAnalysis trackEvent:@"保存_查看大图" withPara:nil];
     int index = _scrollView.contentOffset.x / _scrollView.bounds.size.width;
     UIImageView *currentImageView = _scrollView.subviews[index];
     

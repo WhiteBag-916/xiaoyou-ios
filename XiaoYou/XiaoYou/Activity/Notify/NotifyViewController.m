@@ -43,10 +43,7 @@
                                                          style:UITableViewStyleGrouped];
         [self.view addSubview:_notifyListView];
         [_notifyListView mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.top.equalTo(self.view);
-            make.leading.equalTo(self.view);
-            make.trailing.equalTo(self.view);
-            make.bottom.equalTo(self.view);
+            make.edges.equalTo(self.view);
         }];
         _notifyListView.notifyListArray = self.notifyDataSource;
     }

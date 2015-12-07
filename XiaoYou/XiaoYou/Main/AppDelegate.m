@@ -26,6 +26,8 @@
 - (BOOL)application:(UIApplication *)application
 didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
+    [YAnalysis configAnalysis:launchOptions];
+    
     [self initManager];
     
     [self initNotification:application didFinishLaunchingWithOptions:launchOptions];

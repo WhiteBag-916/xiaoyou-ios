@@ -242,7 +242,11 @@ static const NSUInteger kYActionSheetShareHeight = 128;
             [YUtils hiddenProgressHUD];
             if (message.isSuccess) {
                 _item.isOpen = !_item.isOpen;
-                
+                if (_item.isOpen) {
+                    [YAnalysis trackEvent:@"消息提示_人的详情_更多操作" withPara:nil];
+                } else {
+                    [YAnalysis trackEvent:@"消息不提示_人的详情_更多操作" withPara:nil];
+                }
                 [self updateSwitchButton];
             }
             
@@ -258,10 +262,10 @@ static const NSUInteger kYActionSheetShareHeight = 128;
                 [self updateSwitchButton];
                 
                 if (_item.isOpen) {
-                    [MobClick event:@"event26"];
+                    [YAnalysis trackEvent:@"消息不提示_班级群聊_详情_更多操作" withPara:nil];
                     [YUtils showTitle:@"屏蔽成功"];
                 } else {
-                    [MobClick event:@"event25"];
+                    [YAnalysis trackEvent:@"消息提示_班级群聊_详情_更多操作" withPara:nil];
                     [YUtils showTitle:@"取消屏蔽成功"];
                 }
             }
@@ -320,7 +324,7 @@ static const NSUInteger kYActionSheetShareHeight = 128;
         }
         
         UIButton *cancelButton = [[UIButton alloc] initWithFrame:CGRectMake(0, sheetViewBackgroundViewHeight - kYActionSheetCancelHeight, self.width, kYActionSheetCancelHeight)];
-        [cancelButton addTarget:self action:@selector(dismiss) forControlEvents:UIControlEventTouchUpInside];
+        [cancelButton addTarget:self action:@selector(close) forControlEvents:UIControlEventTouchUpInside];
         [cancelButton setImage:[UIImage imageNamed:@"sheet_delete"] forState:UIControlStateNormal];
         [cancelButton setImage:[UIImage imageNamed:@"sheet_delete"] forState:UIControlStateHighlighted];
         [_sheetViewBackgroundView addSubview:cancelButton];
@@ -379,7 +383,7 @@ static const NSUInteger kYActionSheetShareHeight = 128;
         }
         
         UIButton *cancelButton = [[UIButton alloc] initWithFrame:CGRectMake(0, sheetViewBackgroundViewHeight - kYActionSheetCancelHeight, self.width, kYActionSheetCancelHeight)];
-        [cancelButton addTarget:self action:@selector(dismiss) forControlEvents:UIControlEventTouchUpInside];
+        [cancelButton addTarget:self action:@selector(close) forControlEvents:UIControlEventTouchUpInside];
         [cancelButton setImage:[UIImage imageNamed:@"sheet_delete"] forState:UIControlStateNormal];
         [cancelButton setImage:[UIImage imageNamed:@"sheet_delete"] forState:UIControlStateHighlighted];
         [_sheetViewBackgroundView addSubview:cancelButton];
@@ -428,7 +432,7 @@ static const NSUInteger kYActionSheetShareHeight = 128;
         }
         
         UIButton *cancelButton = [[UIButton alloc] initWithFrame:CGRectMake(0, sheetViewBackgroundViewHeight - kYActionSheetCancelHeight, self.width, kYActionSheetCancelHeight)];
-        [cancelButton addTarget:self action:@selector(dismiss) forControlEvents:UIControlEventTouchUpInside];
+        [cancelButton addTarget:self action:@selector(close) forControlEvents:UIControlEventTouchUpInside];
         [cancelButton setImage:[UIImage imageNamed:@"sheet_delete"] forState:UIControlStateNormal];
         [cancelButton setImage:[UIImage imageNamed:@"sheet_delete"] forState:UIControlStateHighlighted];
         [_sheetViewBackgroundView addSubview:cancelButton];
@@ -449,7 +453,10 @@ static const NSUInteger kYActionSheetShareHeight = 128;
         [[UIApplication sharedApplication] endIgnoringInteractionEvents];
     }];
 }
-
+- (void)close {
+    [YAnalysis trackEvent:@"关闭_更多操作" withPara:nil];
+    [self dismiss];
+}
 - (void)dismiss
 {
     [[UIApplication sharedApplication] beginIgnoringInteractionEvents];
@@ -457,7 +464,6 @@ static const NSUInteger kYActionSheetShareHeight = 128;
 //        _backgroundView.alpha = 0;
         _sheetViewBackgroundView.originY = self.height;
     } completion:^(BOOL finished) {
-        [MobClick event:@"event28"];
         [self removeFromSuperview];
         [[UIApplication sharedApplication] endIgnoringInteractionEvents];
     }];

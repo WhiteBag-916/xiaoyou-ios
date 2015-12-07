@@ -94,7 +94,7 @@
     [_searchCondition enumerateObjectsUsingBlock:^(FriendsCondition *obj, NSUInteger idx, BOOL *stop) {
         [conditionDic setObject:obj.value forKey:obj.pramsName];
     }];
-    
+    [YAnalysis trackEvent:@"搜索_找人" withPara:conditionDic];
     [_profilePersonListTableView loadDataWithFind:conditionDic];
 }
 
