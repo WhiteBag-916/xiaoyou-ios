@@ -29,27 +29,27 @@
 #pragma mark 顶部TopView
 @property (nonatomic,strong) UIImageView    *headImageView; //公告图
 @property (nonatomic,strong) UIView         *sepLineView;   //分割线
-@property (nonatomic,strong) UITextView        *nameLabel;     //名称
-@property (nonatomic,strong) UITextView        *titleLabel;    //标题(校级活动公告)
+@property (nonatomic,strong) UITextView     *nameLabel;     //名称
+@property (nonatomic,strong) UITextView     *titleLabel;    //标题(校级活动公告)
 @property (nonatomic,strong) UILabel        *staticNameLabel;//静态name
 @property (nonatomic,strong) UILabel        *staticDesLabel; //简介
-@property (nonatomic,strong) YTextView     *descriptionLabel;//描述,只显示一行;
+@property (nonatomic,strong) YTextView      *descriptionLabel;//描述,只显示一行;
 #pragma mark 中间MiddleView
 @property (nonatomic,strong) FeedImageGroup *middleView;
 #pragma mark 底部BottomView
-@property (nonatomic,strong) UIImageView        *timeImageView;             //报名截止时间
-@property (nonatomic,strong) UITextView        *staticDeadLineDes;         //截止时间
-@property (nonatomic,strong) UITextView        *deadLineTimeLabel;         //截止
-@property (nonatomic,strong) UITextView        *staticActivityTimeDes;     //活动时间
-@property (nonatomic,strong) UITextView        *activityTimeLabel;         //活动时间
-@property (nonatomic,strong) UIImageView        *locationImageView;
-@property (nonatomic,strong) UITextView        *locationLabel;             //地点
-@property (nonatomic,strong) UIImageView        *categotyImageView;         //类别
-@property (nonatomic,strong) UITextView        *categoryLabel;             //类别
-@property (nonatomic,strong) UITextView        *staticActivityEndTimeDes;  //活动结束时间
-@property (nonatomic,strong) UITextView        *activityEndTimeLabel;      //活动结束时间
+@property (nonatomic,strong) UIImageView    *timeImageView;             //报名截止时间
+@property (nonatomic,strong) UITextView     *staticDeadLineDes;         //截止时间
+@property (nonatomic,strong) UITextView     *deadLineTimeLabel;         //截止
+@property (nonatomic,strong) UITextView     *staticActivityTimeDes;     //活动时间
+@property (nonatomic,strong) UITextView     *activityTimeLabel;         //活动时间
+@property (nonatomic,strong) UIImageView    *locationImageView;
+@property (nonatomic,strong) UITextView     *locationLabel;             //地点
+@property (nonatomic,strong) UIImageView    *categotyImageView;         //类别
+@property (nonatomic,strong) UITextView     *categoryLabel;             //类别
+@property (nonatomic,strong) UITextView     *staticActivityEndTimeDes;  //活动结束时间
+@property (nonatomic,strong) UITextView     *activityEndTimeLabel;      //活动结束时间
 #pragma mark 查看链接
-@property (nonatomic,strong) UIButton       *jumpLinkButton;            //查看活动链接
+@property (nonatomic,strong) UIButton               *jumpLinkButton;            //查看活动链接
 @property (nonatomic,strong) ActivityDetailModel    *detailModel;
 
 @property (nonatomic,copy) NSString *contentStr;
