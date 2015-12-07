@@ -135,7 +135,10 @@ DEF_SINGLETON(ProvisionManager);
 //初始化个人数据,自动登录
 - (void)initProfileData{
     NSString *cachePath = [[YDirectory fileCache] stringByAppendingString:NSStringFromClass([ProfileInfo class])];
-    //
+    /**
+     *  @author xiongchen, 15-12-07
+     *
+     */
     self.profileInfo = [ProfileInfo instanceWithFile:cachePath];
 }
 
