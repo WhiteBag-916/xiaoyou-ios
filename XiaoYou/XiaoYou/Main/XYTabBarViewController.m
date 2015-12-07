@@ -17,10 +17,11 @@
 #import "AvailableViewController.h"
 #import "YWebViewController.h"
 
-#define kTag_TabBar_Base 0
+#define kTag_TabBar_Base -1
 #define kTag_TabBar_Message kTag_TabBar_Base + 1
-#define kTag_TabBar_FeedList kTag_TabBar_Base + 2
-#define kTag_TabBar_Profile kTag_TabBar_Base + 3
+#define kTag_TabBar_Activity kTag_TabBar_Base + 2
+#define kTag_TabBar_FeedList kTag_TabBar_Base + 3
+#define kTag_TabBar_Profile kTag_TabBar_Base + 4
 
 @interface XYTabBarViewController ()
 <IChatManagerDelegate, UITabBarControllerDelegate>
@@ -30,6 +31,8 @@
 @property (nonatomic, strong) UINavigationController *feedListViewCotroller;
 @property (nonatomic, strong) UINavigationController *availableViewController;
 @property (nonatomic, strong) UINavigationController *profileViewCotroller;
+
+@property (nonatomic, assign) NSInteger selectIndex;//选中
 
 @end
 
@@ -92,7 +95,7 @@
     //有空
     UITabBarItem *availableItem = [[UITabBarItem alloc] initWithTitle:@"有空"
                                                               image:[UIImage imageNamed:@"btn_free_n"]
-                                                                tag:kTag_TabBar_Message];
+                                                                tag:kTag_TabBar_Activity];
     availableItem.selectedImage = [[UIImage imageNamed:@"btn_free_y"]
                                  imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     _availableViewController.tabBarItem = availableItem;
@@ -193,6 +196,14 @@
     }
     if (viewController == _profileViewCotroller) {
         [YAnalysis trackEvent:@"我的" withPara:nil];
+    }
+}
+
+- (void)tabBar:(UITabBar *)tabBar didSelectItem:(UITabBarItem *)item
+{
+    if (self.selectedIndex == item.tag)
+    {
+        [[NSNotificationCenter defaultCenter] postNotificationName:kNotification_Double_Click_tab object:nil];
     }
 }
 
