@@ -240,7 +240,7 @@ SDPhotoBrowserDelegate,ContactsInfoThirdTableViewCellDelegate>
 
 -(void)tapFooterView
 {
-    [YAnalysis trackEvent:@"动态_人的详情" withPara:nil];
+    [YAnalysis trackEvent:@"动态_人的详情" withPara:[YAnalysis getDataFromProfileInfo:_model]];
     ProfilePublishViewController * profilePublish =
     [[ProfilePublishViewController alloc] initWithUserId:_model.uid
                                                     name:_model.userName];

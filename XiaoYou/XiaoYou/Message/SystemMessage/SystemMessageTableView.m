@@ -166,7 +166,7 @@
 {
     ClassList * model =  [[ContactManager sharedInstance] getClassByThirdCode:groupDic[@"group_id"]];
     if (nil != model) {
-        [YAnalysis trackEvent:@"进入群聊_消息" withPara:@{@"社团名":groupDic[@"group_name"]}];
+        [YAnalysis trackEvent:@"进入群聊_消息" withPara:@{@"名称":model.name, @"学校":model.schoolCode}];
         ChatViewController * chatVC =
         [[ChatViewController alloc] initWithChatter:groupDic[@"third_code"] isGroup:YES];
         chatVC.isSystemMessage = NO;

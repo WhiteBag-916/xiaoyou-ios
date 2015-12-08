@@ -147,7 +147,7 @@
                                                          buttonTitles:@"取消",@"确认", nil];
     [alert clickedButtonHandler:^(NSInteger index) {
         if (1 == index) {
-            [YAnalysis trackEvent:@"确定_人_加好友弹窗" withPara:nil];
+            [YAnalysis trackEvent:@"确定_加好友_活动详情" withPara:nil];
             [YUtils showHUDWithTitle:@"发送中"];
             [[ContactManager sharedInstance]
              submitFriendApply:_author.uid block:^(YActionMessage *message) {
@@ -159,7 +159,7 @@
                 [YUtils showTitle:message.desc];
             }];
         } else {
-            [YAnalysis trackEvent:@"取消_人_加好友弹窗" withPara:nil];
+            [YAnalysis trackEvent:@"取消_加好友_活动详情" withPara:nil];
         }
     }];
     [alert show];

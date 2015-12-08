@@ -43,7 +43,7 @@
             ProfileInfo * model = message.object;
             _shareData = @{@"userId": model.uid, @"name":model.userName,
                            @"pic":(model.headPic.length>0)?model.headPic:@"favicon.ico",
-                           @"school":model.schoolName,
+                           @"schoolCode":model.schoolCode,
                            @"department":model.faculty,
                            @"gender":model.gender,
                            @"grad":model.grad,
@@ -145,6 +145,7 @@
 //    if (!_isFriendRelationShip && ![info.studentNo isEqualToString:@"123456"]) {
      if (!_isFriendRelationShip) {
         //展示提示
+        [YAnalysis trackEvent:@"添加好友_人的详情" withPara:[YAnalysis getDataFromShareInProfile:_shareData]];
         YCommonAlertView *alert =
          [[YCommonAlertView alloc] initWithTitle:nil message:
           [NSString stringWithFormat:@"确定向%@发送好友申请吗？", _shareData[@"name"]]
@@ -152,7 +153,7 @@
         [alert clickedButtonHandler:^(NSInteger index) {
             if (1 == index) {
                 //添加好友
-                [YAnalysis trackEvent:@"添加好友_人的详情" withPara:[YAnalysis getDataFromShareInProfile:_shareData]];
+                [YAnalysis trackEvent:@"确定_添加好友_人的详情" withPara:[YAnalysis getDataFromShareInProfile:_shareData]];
                 [YUtils showHUDWithTitle:@"发送中"];
                 [[ContactManager sharedInstance] submitFriendApply:_uid
                                                              block:^(YActionMessage *message) {
@@ -163,6 +164,8 @@
                     
                     [YUtils showTitle:message.desc];
                 }];
+            } else {
+                [YAnalysis trackEvent:@"取消_添加好友_人的详情" withPara:[YAnalysis getDataFromShareInProfile:_shareData]];
             }
         }];
         [alert show];
@@ -204,11 +207,19 @@
     YActionSheetItem *item3 = [YActionSheetItem itemWithTitle:@"解除好友关系"
                                                          type:YCommonActionSheetItemTypeCommon
                                                         block:^(NSInteger checkNum) {
+                                                            [YAnalysis trackEvent:@"解除好友关系_人的详情_更多操作"
+                                                                         withPara:nil];
                                                            YCommonAlertView * alertView =
                                                             [[YCommonAlertView alloc] initWithTitle:nil message:@"确定解除好友关系？" buttonTitles:@"取消",@"确定", nil];
                                                             [alertView clickedButtonHandler:^(NSInteger index) {
                                                                 if (index == 1) {
+                                                                    [YAnalysis trackEvent:@"确定_解除好友关系_人的详情_更多操作"
+                                                                                 withPara:
+                                                                     [YAnalysis getDataFromShareInProfile:_shareData]];
                                                                     [self deleteFriends];
+                                                                } else {
+                                                                    [YAnalysis trackEvent:@"关闭_解除好友关系_人的详情_更多操作"
+                                                                                 withPara:nil];
                                                                 }
                                                            
                                                             }];
@@ -240,7 +251,6 @@
 #pragma mark - 删除好友事件
 - (void)deleteFriends
 {
-    [YAnalysis trackEvent:@"解除好友关系_人的详情_更多操作" withPara:nil];
     [YUtils showHUDWithTitle];
     [[ContactManager sharedInstance] delLinkMan:_studentDic[@"uid"] block:^(YActionMessage *message) {
         [YUtils hiddenProgressHUD];

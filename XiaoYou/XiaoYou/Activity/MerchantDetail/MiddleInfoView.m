@@ -132,6 +132,7 @@
 
 -(void)callPhoneNum
 {
+    [YAnalysis trackEvent:@"商家电话" withPara:nil];
     UIAlertView * alertView = [[UIAlertView alloc]
                                initWithTitle:nil
                                message:_phoneLabel.text delegate:self
@@ -144,12 +145,13 @@
 {
     if (buttonIndex == 1)
     {
-        [YAnalysis trackEvent:@"商家电话" withPara:nil];
+        [YAnalysis trackEvent:@"确定_商家电话" withPara:@{@"商家":_model.supplierShopModel.name}];
         NSString * phoneStr = [NSString stringWithFormat:@"tel://%@",_phoneLabel.text];
         [[UIApplication sharedApplication] openURL:[NSURL URLWithString:phoneStr]];
     }
     else
     {
+        [YAnalysis trackEvent:@"取消_商家电话" withPara:nil];
         return;
     }
 }

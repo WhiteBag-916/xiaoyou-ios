@@ -59,6 +59,7 @@ NSString *const kXYGroupInfoDetailViewController = @"XYGroupInfoDetailViewContro
             _model = message.object;
             [_groupInfoDetailCollectionView refreshTableView:message.object];
              _shareData = @{@"name":_model.groupModel.groupName,
+                            @"schoolCode":_model.groupModel.schoolCode,
                             @"content":_model.groupModel.internalBaseClassDescription,
                             @"pic":_model.groupModel.groupIcon,
                             @"groupId":[NSString stringWithFormat:@"%g",
@@ -101,7 +102,7 @@ NSString *const kXYGroupInfoDetailViewController = @"XYGroupInfoDetailViewContro
 #pragma mark - 点击底部button事件
 -(void)clickBottomButton
 {
-    [YAnalysis trackEvent:@"进入群聊_班级群聊_详情" withPara:@{@"班级名":_model.groupModel.groupName}];
+    [YAnalysis trackEvent:@"进入群聊_班级群聊_详情" withPara:@{@"班级名":_model.groupModel.groupName, @"学校":_model.groupModel.schoolCode}];
     if ([self.navigationController.viewControllers[self.navigationController.viewControllers.count-2]
          isKindOfClass:[ChatViewController class]]) {
         [self.navigationController popViewControllerAnimated:YES];
@@ -128,7 +129,8 @@ NSString *const kXYGroupInfoDetailViewController = @"XYGroupInfoDetailViewContro
                                                          type:YCommonActionSheetItemTypeCommon
                                                         block:^(NSInteger checkNum) {
                                                             [YCommonReport reportWithType:@"举报_班级群聊_详情_更多操作"
-                                                                                  andData:@{@"班级名":_model.groupModel.groupName}];
+                                                                                  andData:@{@"班级名":_model.groupModel.groupName,
+                                                                                            @"学校":_model.groupModel.schoolCode}];
                                                             
                                                         }];
     

@@ -62,7 +62,8 @@
         [YAnalysis trackEvent:@"更多操作_社团详情" withPara:nil];
         YActionSheetItem *item1 = [YActionSheetItem itemWithType:YCommonActionSheetItemTypeShareOrganization
                                                            title:@"分享社团名片至"
-                                                       extraData:@{@"name":_groupModel.groupName
+                                                       extraData:@{@"name":_groupModel.groupName,
+                                                                   @"schoolCode":_groupModel.schoolCode
                                                                    , @"content":_groupModel.internalBaseClassDescription
                                                                    , @"pic":(_groupModel.groupIcon.length>0)
                                                                    ?_groupModel.groupIcon
@@ -76,7 +77,8 @@
                                                              type:YCommonActionSheetItemTypeCommon
                                                             block:^(NSInteger checkNum) {
                                                                 [YCommonReport reportWithType:@"举报_社团详情_更多操作"
-                                                                                      andData:@{@"社团":_name}];
+                                                                                      andData:@{@"社团":_name,
+                                                                                                @"学校":_groupModel.schoolCode}];
                                                             }];
         
         YCommonActionSheet *sheet = [[YCommonActionSheet alloc] initWithType:@[item1, item2]
@@ -129,7 +131,7 @@
                                                     , _groupModel.internalBaseClassIdentifier]} mutableCopy];
         [self.navigationController pushViewController:chatViewController animated:YES];
     } else {
-        [YAnalysis trackEvent:@"一键申请加入_社团详情" withPara:@{@"名称":_name}];
+        [YAnalysis trackEvent:@"一键申请加入_社团详情" withPara:@{@"名称":_name, @"学校":_groupModel.schoolCode}];
         [YUtils showHUDWithTitle];
         //申请入社
         [[ContactManager sharedInstance] submitApply:_uid block:^(YActionMessage *message) {

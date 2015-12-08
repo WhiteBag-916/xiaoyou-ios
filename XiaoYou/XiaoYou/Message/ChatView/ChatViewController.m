@@ -1247,6 +1247,7 @@
 
 - (void)moreViewPhotoAction:(DXChatBarMoreView *)moreView
 {
+    [YAnalysis trackEvent:@"上传图片_私聊" withPara:nil];
     [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:YES] forKey:@"isShowPicker"];
     // 隐藏键盘
     [self keyBoardHidden];
@@ -1289,6 +1290,7 @@
 
 - (void)moreViewTakePicAction:(DXChatBarMoreView *)moreView
 {
+    [YAnalysis trackEvent:@"拍照_私聊" withPara:nil];
     [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:YES] forKey:@"isShowPicker"];
     [self keyBoardHidden];
 

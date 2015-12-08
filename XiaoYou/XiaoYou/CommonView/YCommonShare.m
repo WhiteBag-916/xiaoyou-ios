@@ -100,13 +100,15 @@
                     [UMSocialData defaultData].extConfig.wechatSessionData.url = [NSString stringWithFormat:@"%@/person/detailInfo?id=%@", share_url, obj[@"userId"]];
                     break;
                 case YCommonShareDetailTypeAssociation:
-                    [YAnalysis trackEvent:@"分享至微信_社团详情_更多操作" withPara:@{@"社团":obj[@"name"]}];
+                    [YAnalysis trackEvent:@"分享至微信_社团详情_更多操作" withPara:@{@"社团":obj[@"name"],
+                                                                        @"学校":obj[@"schoolCode"]}];
                     [UMSocialData defaultData].extConfig.wechatSessionData.title = @"小伙伴介绍给你一个社团，快去看看";
                     [UMSocialData defaultData].extConfig.wechatSessionData.shareText = obj[@"name"];
                     urlResource = [[UMSocialUrlResource alloc] initWithSnsResourceType:UMSocialUrlResourceTypeImage url:[NSString stringWithFormat:@"%@%@", api_icon_base_url, obj[@"pic"]]];
                     [UMSocialData defaultData].extConfig.wechatSessionData.url = [NSString stringWithFormat:@"%@/group/detailInfo?id=%@", share_url, obj[@"groupId"]];
                     break;
                 case YCommonShareDetailTypeActivity:
+                    [YAnalysis trackEvent:@"分享至微信_活动详情_更多操作" withPara:@{@"活动":obj[@"name"]}];
                     [UMSocialData defaultData].extConfig.wechatSessionData.title = [NSString stringWithFormat:@"快来参加：%@", obj[@"name"]];
                     [UMSocialData defaultData].extConfig.wechatSessionData.shareText = obj[@"content"];
                     urlResource = [[UMSocialUrlResource alloc] initWithSnsResourceType:UMSocialUrlResourceTypeImage url:[NSString stringWithFormat:@"%@%@", api_icon_base_url, obj[@"pic"]]];
@@ -153,13 +155,15 @@
                     [UMSocialData defaultData].extConfig.wechatTimelineData.url = [NSString stringWithFormat:@"%@/person/detailInfo?id=%@", share_url, obj[@"userId"]];
                     break;
                 case YCommonShareDetailTypeAssociation:
-                    [YAnalysis trackEvent:@"分享至朋友圈_社团详情_更多操作" withPara:@{@"社团":obj[@"name"]}];
+                    [YAnalysis trackEvent:@"分享至朋友圈_社团详情_更多操作" withPara:@{@"社团":obj[@"name"],
+                                                                         @"学校":obj[@"schoolCode"]}];
                     [UMSocialData defaultData].extConfig.wechatTimelineData.title = @"小伙伴介绍给你一个社团，快去看看";
                     [UMSocialData defaultData].extConfig.wechatTimelineData.shareText = obj[@"name"];
                     urlResource = [[UMSocialUrlResource alloc] initWithSnsResourceType:UMSocialUrlResourceTypeImage url:[NSString stringWithFormat:@"%@%@", api_icon_base_url, obj[@"pic"]]];
                     [UMSocialData defaultData].extConfig.wechatTimelineData.url = [NSString stringWithFormat:@"%@/group/detailInfo?id=%@", share_url, obj[@"groupId"]];
                     break;
                 case YCommonShareDetailTypeActivity:
+                    [YAnalysis trackEvent:@"分享至朋友圈_活动详情_更多操作" withPara:@{@"活动":obj[@"name"]}];
                     [UMSocialData defaultData].extConfig.wechatTimelineData.title = [NSString stringWithFormat:@"快来参加：%@", obj[@"name"]];
                     [UMSocialData defaultData].extConfig.wechatTimelineData.shareText = obj[@"content"];
                     urlResource = [[UMSocialUrlResource alloc] initWithSnsResourceType:UMSocialUrlResourceTypeImage url:[NSString stringWithFormat:@"%@%@", api_icon_base_url, obj[@"pic"]]];
@@ -205,13 +209,15 @@
                     [UMSocialData defaultData].extConfig.qqData.url = [NSString stringWithFormat:@"%@/person/detailInfo?id=%@", share_url, obj[@"userId"]];
                     break;
                 case YCommonShareDetailTypeAssociation:
-                    [YAnalysis trackEvent:@"分享至QQ_社团详情_更多操作" withPara:@{@"社团":obj[@"name"]}];
+                    [YAnalysis trackEvent:@"分享至QQ_社团详情_更多操作" withPara:@{@"社团":obj[@"name"],
+                                                                        @"学校":obj[@"schoolCode"]}];
                     [UMSocialData defaultData].extConfig.qqData.title = @"小伙伴介绍给你一个社团，快去看看";
                     [UMSocialData defaultData].extConfig.qqData.shareText = obj[@"name"];
                     urlResource = [[UMSocialUrlResource alloc] initWithSnsResourceType:UMSocialUrlResourceTypeImage url:[NSString stringWithFormat:@"%@%@", api_icon_base_url, obj[@"pic"]]];
                     [UMSocialData defaultData].extConfig.qqData.url = [NSString stringWithFormat:@"%@/group/detailInfo?id=%@", share_url, obj[@"groupId"]];
                     break;
                 case YCommonShareDetailTypeActivity:
+                    [YAnalysis trackEvent:@"分享至QQ_活动详情_更多操作" withPara:@{@"活动":obj[@"name"]}];
                     [UMSocialData defaultData].extConfig.qqData.title = [NSString stringWithFormat:@"快来参加：%@", obj[@"name"]];
                     [UMSocialData defaultData].extConfig.qqData.shareText = obj[@"content"];
                     urlResource = [[UMSocialUrlResource alloc] initWithSnsResourceType:UMSocialUrlResourceTypeImage url:[NSString stringWithFormat:@"%@%@", api_icon_base_url, obj[@"pic"]]];
@@ -260,13 +266,15 @@
                     [UMSocialData defaultData].extConfig.qzoneData.url = [NSString stringWithFormat:@"%@/person/detailInfo?id=%@", share_url, obj[@"userId"]];
                     break;
                 case YCommonShareDetailTypeAssociation:
-                    [YAnalysis trackEvent:@"分享至QQ空间_社团详情_更多操作" withPara:@{@"社团":obj[@"name"]}];
+                    [YAnalysis trackEvent:@"分享至QQ空间_社团详情_更多操作" withPara:@{@"社团":obj[@"name"],
+                                                                          @"学校":obj[@"schoolCode"]}];
                     [UMSocialData defaultData].extConfig.qzoneData.title = @"小伙伴介绍给你一个社团，快去看看";
                     [UMSocialData defaultData].extConfig.qzoneData.shareText = obj[@"name"];
                     urlResource = [[UMSocialUrlResource alloc] initWithSnsResourceType:UMSocialUrlResourceTypeImage url:[NSString stringWithFormat:@"%@%@", api_icon_base_url, obj[@"pic"]]];
                     [UMSocialData defaultData].extConfig.qzoneData.url = [NSString stringWithFormat:@"%@/group/detailInfo?id=%@", share_url, obj[@"groupId"]];
                     break;
                 case YCommonShareDetailTypeActivity:
+                    [YAnalysis trackEvent:@"分享至QQ空间_活动详情_更多操作" withPara:@{@"活动":obj[@"name"]}];
                     [UMSocialData defaultData].extConfig.qzoneData.title = [NSString stringWithFormat:@"快来参加：%@", obj[@"name"]];
                     [UMSocialData defaultData].extConfig.qzoneData.shareText = obj[@"content"];
                     urlResource = [[UMSocialUrlResource alloc] initWithSnsResourceType:UMSocialUrlResourceTypeImage url:[NSString stringWithFormat:@"%@%@", api_icon_base_url, obj[@"pic"]]];

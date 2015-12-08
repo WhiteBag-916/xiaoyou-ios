@@ -38,7 +38,7 @@
 {
     return @{@"学号":dic[@"studentNo"],
 //             @"名字":dic[@"name"],
-             @"学校":dic[@"school"],
+             @"学校":dic[@"schoolCode"],
 //             @"学院":dic[@"department"],
 //             @"年级":dic[@"grad"],
 //             @"性别":dic[@"gender"]
@@ -50,11 +50,11 @@
     if ([dic valueForKey:@"studentNo"] != nil) {
         return @{@"学号":dic[@"studentNo"],
 //                 @"名字":dic[@"name"],
-                 @"学校code":dic[@"schoolCode"],
+                 @"学校":dic[@"schoolCode"],
 //                 @"性别":dic[@"gender"]
                  };
     } else {
-        return @{@"社团":dic[@"name"]};
+        return @{@"社团":dic[@"name"], @"学校":dic[@"schoolCode"]};
     }
 }
 

@@ -512,6 +512,7 @@
         case 0://切换状态
         {
             if (button.selected) {
+                [YAnalysis trackEvent:@"语音_私聊" withPara:nil];
                 self.faceButton.selected = NO;
                 self.moreButton.selected = NO;
                 //录音状态下，不显示底部扩展页面
@@ -542,6 +543,7 @@
         case 1://表情
         {
             if (button.selected) {
+                [YAnalysis trackEvent:@"表情_私聊" withPara:nil];
                 self.moreButton.selected = NO;
                 //如果选择表情并且处于录音状态，切换成文字输入状态，但是不显示键盘
                 if (self.styleChangeButton.selected) {

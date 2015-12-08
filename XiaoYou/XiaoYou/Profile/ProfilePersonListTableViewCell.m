@@ -198,7 +198,28 @@ NSString *const kProfilePersonListTableViewCell = @"kProfilePersonListTableViewC
 //添加好友
 - (void)clickAdd {
     //展示提示
-    [YAnalysis trackEvent:@"加好友_人" withPara:nil];
+    switch (_type) {
+        case ProfilePersonListTypeRespect:
+            [YAnalysis trackEvent:@"加好友_我的敬酒" withPara:nil];
+            break;
+        case ProfilePersonListTypeCool:
+            [YAnalysis trackEvent:@"加好友_我的很酷" withPara:nil];
+            break;
+        case PersonPersonListTypeFeedRespect:
+            [YAnalysis trackEvent:@"加好友_敬酒人列表_feed详情" withPara:nil];
+            break;
+        case ProfilePersonListTypeFind:
+            [YAnalysis trackEvent:@"加好友_找人" withPara:nil];
+            break;
+        case ProfilePersonListTypeFeedPerson:
+            [YAnalysis trackEvent:@"加好友_人" withPara:nil];
+            break;
+        case ProfilePersonListTypeNoticePerson:
+            [YAnalysis trackEvent:@"加好友_提醒" withPara:nil];
+            break;
+        default:
+            break;
+    }
     YCommonAlertView *alert = [[YCommonAlertView alloc] initWithTitle:nil
                                                               message:[NSString stringWithFormat:@"确定向%@发送好友申请吗？", _userName.text]
                                                          buttonTitles:@"取消",@"确认", nil];

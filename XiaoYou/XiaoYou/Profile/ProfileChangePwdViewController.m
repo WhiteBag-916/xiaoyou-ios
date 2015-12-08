@@ -124,12 +124,13 @@
     return field;
 }
 - (void)forgetPwd {
+    [YAnalysis trackEvent:@"忘记密码_修改密码" withPara:nil];
     YCommonAlertView *alert = [[YCommonAlertView alloc] initWithTitle:nil
                                                               message:@"我们将发送验证码至你绑定的手机号上"
                                                          buttonTitles:@"取消",@"确认", nil];
     [alert clickedButtonHandler:^(NSInteger index) {
         if (index == 1) {
-            [YAnalysis trackEvent:@"忘记密码_修改密码" withPara:nil];
+            [YAnalysis trackEvent:@"确定_忘记密码_修改密码" withPara:nil];
             [alert hide];
             [YUtils showHUDWithTitle];
             [[ProvisionManager sharedInstance] forgotPasswordReq:[[ProvisionManager sharedInstance] getLoginInfo].studentNo block:^(YActionMessage *message) {
@@ -140,6 +141,7 @@
                 [YUtils showTitle:message.desc];
             }];
         } else {
+            [YAnalysis trackEvent:@"取消_忘记密码_修改密码" withPara:nil];
             [alert hide];
         }
     }];
