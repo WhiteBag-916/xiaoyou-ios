@@ -76,11 +76,11 @@
         GroupModel *groupModel = _feedInfo.groupModels[0];
         NSString *img = _feedInfo.feed.img.length > 0?[_feedInfo.feed.img componentsSeparatedByString:@","][0]:groupModel.groupIcon;
         img = (img.length>0)?img:@"favicon.ico";
-        _shareData = [NSMutableDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"%d", (int)_feedInfo.feed.feedIdentifier], @"feedId", groupModel.groupName,@"name",content,@"content",img, @"pic", nil];
+        _shareData = [NSMutableDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"%d", (int)_feedInfo.feed.feedIdentifier], @"feedId", groupModel.groupName,@"name",content,@"content",img, @"pic", groupModel.schoolCode,@"schoolCode", nil];
     } else {
         NSString *tag = (_feedInfo.tags.count == 0?@"校友观点":[_feedInfo.tags[0] name]);
         NSString *img = _feedInfo.feed.img.length > 0?[_feedInfo.feed.img componentsSeparatedByString:@","][0]:@"favicon.ico";
-        _shareData = [NSMutableDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"%d", (int)_feedInfo.feed.feedIdentifier], @"feedId", tag,@"tag",content,@"content",img, @"pic", nil];
+         _shareData = [NSMutableDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"%d", (int)_feedInfo.feed.feedIdentifier], @"feedId", tag,@"tag",content,@"content",img, @"pic", _feedInfo.author.studentNo, @"studentNo", _feedInfo.author.schoolCode, @"schoolCode", _feedInfo.author.gender, @"gender", _feedInfo.author.name, @"name", nil];
     }
     
     _commentListArray = [NSMutableArray arrayWithArray:info.commentListItems];

@@ -232,14 +232,14 @@
         _messageNotRead.alpha = 0.7;
         _messageNotRead.hidden = YES;
         [_messageNotRead setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-        [_messageNotRead addTarget:self action:@selector(messageNotReadAction) forControlEvents:UIControlEventTouchUpInside];
+        [_messageNotRead addTarget:self action:@selector(messageNotReadAction)
+                  forControlEvents:UIControlEventTouchUpInside];
         [_messageNotRead mas_makeConstraints:^(MASConstraintMaker *make) {
             make.centerX.equalTo(self.contentView);
             make.top.mas_equalTo(SCALE_NUM(10));
             make.height.mas_equalTo(SCALE_NUM(24));
             make.width.mas_equalTo(SCALE_NUM(85));
         }];
-        
     }
     return _messageNotRead;
     
@@ -250,7 +250,8 @@
 {
     [YAnalysis trackEvent:@"新消息_有空" withPara:nil];
     NotifyViewController *notiVC = [[NotifyViewController alloc]init];
-    [self.viewController.navigationController pushViewController:notiVC animated:YES needHiddenBottomBar:YES];
+    [self.viewController.navigationController pushViewController:notiVC animated:YES
+                                             needHiddenBottomBar:YES];
 }
 
 

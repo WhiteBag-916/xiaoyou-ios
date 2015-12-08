@@ -160,8 +160,9 @@
         if (data.groupModels.count > 0) {
             GroupModel *groupModel = data.groupModels[0];
             NSString *img = data.feed.img.length > 0?[data.feed.img componentsSeparatedByString:@","][0]:groupModel.groupIcon;
+            
             img = (img.length>0)?img:@"favicon.ico";
-            _shareData = [NSMutableDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"%d", (int)data.feed.feedIdentifier], @"feedId", groupModel.groupName,@"name",content,@"content",img, @"pic", nil];
+            _shareData = [NSMutableDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"%d", (int)data.feed.feedIdentifier], @"feedId", groupModel.groupName,@"name",content,@"content",img, @"pic", groupModel.schoolCode, @"schoolCode",  nil];
             _isOrganization = YES;
         } else {
             NSString *tag = (data.tags.count == 0?@"校友观点":[data.tags[0] name]);

@@ -32,7 +32,9 @@ NSString *const kCommonObj = @"obj";
             
             if (kYActionMessage_Server_Token_Fail == code) {
                 //Token失效
-                [[NSNotificationCenter defaultCenter] postNotificationName:kNotification_Server_Token_Fail object:@{@"des":errorDescription}];
+                [[NSNotificationCenter defaultCenter]
+                 postNotificationName:kNotification_Server_Token_Fail
+                 object:@{@"des":errorDescription}];
             }
             
             if (!(code == kYActionMessage_Server_Success))
@@ -45,7 +47,9 @@ NSString *const kCommonObj = @"obj";
                 //取出obj
                 if (self != [ResultCommon class])
                 {
-                    NSDictionary *dataDic = [NSJSONSerialization JSONObjectWithData:request.responseData options:kNilOptions error:nil];
+                    NSDictionary *dataDic = [NSJSONSerialization
+                                             JSONObjectWithData:request.responseData
+                                             options:kNilOptions error:nil];
                     NSDictionary *dataDicByKey = [self objectOrNilForKey:kCommonObj fromDictionary:dataDic];
                     if (nil != dataDicByKey) {
                         if ([dataDicByKey isKindOfClass:[NSArray class]])
