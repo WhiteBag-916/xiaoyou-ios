@@ -10,6 +10,8 @@
 #import "ActivityReleaseController.h"
 #import "ActivityIdentityTableView.h"
 #import "ActivityReleaseDataManager.h"
+#import "ProvisionManager.h"
+#import "ProfileInfo.h"
 
 @interface ActivityIdentityViewController ()
 
@@ -194,7 +196,7 @@
 #pragma mark - 对号
 -(void)clickBtnForChoice
 {
-    [YAnalysis trackEvent:@"确定_活动发布者身份" withPara:nil];
+    
     if (_isIdentity)
     {
         _dataManager.ActivityCheckStatus = @"need_check";
@@ -204,6 +206,8 @@
         }
         else
         {
+            [YAnalysis trackEvent:@"确定_活动发布者身份" withPara:@{@"type":@"社团",
+                                                           @"name":_dataManager.ActivityOrganizerId}];
             [self dismissViewControllerAnimated:YES completion:^{
                 ActivityReleaseController * releaseController = [[ActivityReleaseController alloc]
                                                                  initWithIsIdentity:_isIdentity];
@@ -214,6 +218,10 @@
     }
     else
     {
+        ProfileInfo *model = [[ProvisionManager sharedInstance] getProfile];
+        [YAnalysis trackEvent:@"确定_活动发布者身份" withPara:@{@"type":@"个人",
+                                                           @"name":model.studentNo}];
+        
         _dataManager.ActivityCheckStatus = @"no_check";
         [self dismissViewControllerAnimated:YES completion:^{
             ActivityReleaseController * releaseController =[[ActivityReleaseController alloc]

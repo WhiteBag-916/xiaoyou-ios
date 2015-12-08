@@ -133,6 +133,7 @@
                 [_dataSouceArr[indexPath.row] setObject:@YES forKey:@"isChoice"];
                 _dataManager.ActivityOrganizer = _dataSouceArr[indexPath.row][@"name"];
                 _dataManager.ActivityOrganizerId = _dataSouceArr[indexPath.row][@"code"];
+                
             }
         }
         else
