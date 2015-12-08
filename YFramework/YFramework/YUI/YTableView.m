@@ -166,7 +166,7 @@
 //显示无更多数据
 - (void)showNoticeNoMoreData
 {
-    [self.footer noticeNoMoreData];
+    [self.footer endRefreshingWithNoMoreData];
 }
 
 #pragma mark - 继承者
