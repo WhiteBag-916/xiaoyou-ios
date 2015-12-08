@@ -66,6 +66,7 @@
     if (nil == _activityDetailModel) {
         return;
     }
+    [YAnalysis trackEvent:@"活动详情_更多操作" withPara:nil];
     NSMutableArray *moreArray = [[NSMutableArray alloc] init];
     
     NSArray *imageTextModels = _activityDetailModel.activityPublishedDto.activityImageTextModels;
@@ -82,7 +83,6 @@
             pic = imageText.content;
         }
     }
-    
     YActionSheetItem *item1 = [YActionSheetItem itemWithType:YCommonActionSheetItemTypeShareActivity
                                                        title:@"分享活动至"
                                                    extraData:@{@"name":_activityDetailModel.activityPublishedDto.activityPublishedModel.name, @"content":content, @"pic":pic,@"activityId":[NSString stringWithFormat:@"%g", _activityDetailModel.activityPublishedDto.activityPublishedModel.activityPublishedModelIdentifier]}];

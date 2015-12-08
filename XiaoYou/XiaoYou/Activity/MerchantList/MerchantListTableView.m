@@ -124,7 +124,7 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    [YAnalysis trackEvent:@"查看合作商家" withPara:nil];
+    [YAnalysis trackEvent:@"商家" withPara:nil];
     MerchantDetailViewController * merchantDetailViewController =
     [[MerchantDetailViewController alloc] initWithModel:_dataSourceArr[indexPath.row]];
     [self.viewController.navigationController

@@ -324,6 +324,7 @@
 }
 
 - (void)openShare {
+    [YAnalysis trackEvent:@"校友圈_更多操作" withPara:nil];
     YCommonActionItemSheetType type = _isOrganization?YCommonActionSheetItemTypeShareOrganizationFeed:YCommonActionSheetItemTypeShareFeed;
     YActionSheetItem *item1 = [YActionSheetItem itemWithType:type title:@"分享这条动态至" extraData:_shareData];
     
@@ -331,7 +332,7 @@
     YActionSheetItem *item2 = [YActionSheetItem itemWithTitle:@"举报"
                                                          type:YCommonActionSheetItemTypeCommon
                                                         block:^(NSInteger checkNum) {
-                                                            [YCommonReport reportWithType:@"举报_FEED详情_更多操作"
+                                                            [YCommonReport reportWithType:@"举报_校友圈_更多操作"
                                                                                   andData:[YAnalysis getDataFromShareInFeed:_shareData]];
                                                         }];
     YActionSheetItem *item3 = [YActionSheetItem itemWithTitle:@"删除"

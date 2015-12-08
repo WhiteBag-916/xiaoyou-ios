@@ -232,7 +232,7 @@
     
     if (AssociationsDetailTableViewLikeSection == section) {
         if (1 == row) {
-            [YAnalysis trackEvent:@"很酷_社团详情" withPara:@{@"名称":_groupModel.groupName}];
+            [YAnalysis trackEvent:@"很酷_社团详情" withPara:@{@"名称":_groupModel.groupName, @"学校":_groupModel.schoolCode}];
             [YUtils showHUDWithTitle];
             [[FeedManager sharedInstance] addGroupPraise:_groupId block:^(YActionMessage *message) {
                 if (message.isSuccess) {
@@ -249,7 +249,7 @@
             }];
         }
     } else if (AssociationsDetailTableViewFeedSection == section) {
-        [YAnalysis trackEvent:@"动态_社团详情" withPara:@{@"名称":_groupModel.groupName}];
+        [YAnalysis trackEvent:@"动态_社团详情" withPara:@{@"名称":_groupModel.groupName, @"学校":_groupModel.schoolCode}];
         FeedDetailViewController *feedDetailViewController = [[FeedDetailViewController alloc]
                                                               initWithFeedId:[NSString stringWithFormat:@"%g"
                                                                                                                , [[_feedListArray[indexPath.row] feed] feedIdentifier]]];

@@ -527,6 +527,7 @@
             [alert hide];
             [[ProvisionManager sharedInstance] logout];
         } else {
+            [YAnalysis trackEvent:@"取消_退出登录" withPara:nil];
             [alert hide];
         }
     }];
