@@ -81,11 +81,10 @@ typedef enum : NSUInteger {
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-        
-    _dataManager = [ActivityReleaseDataManager shareActivityReleaseDataManager];
-    _dataManager.isIdentity = _isIdentity;
     
     [self removeManagerData];
+    _dataManager = [ActivityReleaseDataManager shareActivityReleaseDataManager];
+    _dataManager.isIdentity = _isIdentity;
     
     //设置初始审核值
     _dataManager.ActivityCheckStatus = _isIdentity?@"need_check":@"no_check";
@@ -139,16 +138,7 @@ typedef enum : NSUInteger {
 
 -(void)removeManagerData
 {
-    _dataManager.ActivityNameText = nil;
-    _dataManager.ActivityDesciptionText = nil;
-    _dataManager.ActivityDesciptionImage = nil;
-    _dataManager.ActivityDateEndApplyText = nil;
-    _dataManager.ActivityDateBeginApplyText = nil;
-    _dataManager.ActivityDateBeginText = nil;
-    _dataManager.ActivityDateEndText = nil;
-    _dataManager.ActivityPlaceText = nil;
-    _dataManager.ActivityTypeStr = nil;
-    _dataManager.ActivityCheckStr = nil;
+    _dataManager = nil;
 }
 
 #pragma mark - 改变发布按钮是否可点击状态方法
