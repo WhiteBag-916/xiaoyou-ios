@@ -347,7 +347,7 @@
             [self.viewController.navigationController pushViewController:detailVC animated:YES
                                                      needHiddenBottomBar:YES];
         }
-    } else
+    } else if([organizer.userType isEqualToString:@"group_user"])
     {
         [self.viewController.navigationController pushViewController:groupVC animated:YES
                                                  needHiddenBottomBar:YES];

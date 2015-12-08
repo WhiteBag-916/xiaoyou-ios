@@ -137,6 +137,7 @@
         _addFriendImageView.hidden = true;
     }
 }
+
 //添加好友
 - (void)clickAdd {
     //展示提示
@@ -172,6 +173,7 @@
     
     ProfileMyViewController *myVC = [[ProfileMyViewController alloc]init];
     
+    //
     if ([_author.uid isEqualToString:[[YShareData defaultData] valueForKey:kShareData_UserID]]) {
         [self.viewController.navigationController pushViewController:myVC animated:YES
                                                  needHiddenBottomBar:YES];

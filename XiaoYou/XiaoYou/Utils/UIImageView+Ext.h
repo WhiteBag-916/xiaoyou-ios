@@ -15,4 +15,6 @@
 
 - (void)setNormalImageWithUrl:(NSString *)url;
 
+- (void)setImageWithUrlWithoutPlaceholder:(NSString *)url;
+
 @end

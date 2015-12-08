@@ -118,8 +118,8 @@
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     BOOL endEditWhenScroll = [self shoudEndEditWhenScroll];
     if (endEditWhenScroll) {
-        [self.viewController.view endEditing:endEditWhenScroll];
-        [self endEditing:endEditWhenScroll];
+        [self.viewController.view endEditing:YES];
+        [self endEditing:YES];
     }
 }
 
