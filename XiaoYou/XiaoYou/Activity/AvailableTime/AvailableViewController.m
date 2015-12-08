@@ -239,6 +239,11 @@
                                              selector:@selector(receiveNotificationOfRemindPushNotify)
                                                  name:KNotification_Push_Notify_Message_Come
                                                object:nil];
+    //tab单击事件
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(receiveNotificationOfReleaseSuccess)
+                                                 name:kNotification_Double_Click_tab
+                                               object:nil];
 }
 
 //收到推送消息 铃铛变红 have_time_msg

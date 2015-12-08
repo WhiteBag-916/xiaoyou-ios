@@ -63,12 +63,16 @@
 
 //搜索
 - (void)resetArrayBySearch:(NSString *)searchStr {
-    _searchStr = searchStr;
-    if (_searchStr.length > 0) {
-        [self sendRequest];
-    } else {
-        [_associationsListArray removeAllObjects];
-        [self reloadData];
+    if (![_searchStr isEqualToString:searchStr]) {
+        //不同则进行搜索
+        _searchStr = searchStr;
+        
+        if (_searchStr.length > 0) {
+            [self sendRequest:0];
+        } else {
+            [_associationsListArray removeAllObjects];
+            [self reloadData];
+        }
     }
 }
 
@@ -87,15 +91,15 @@
 }
 - (void)loadNewData
 {
-    [self sendRequest];
+    [self sendRequest:-1];
 }
 
 - (void)loadMoreData
 {
-    [self sendRequest];
+    [self sendRequest:-1];
 }
-- (void)sendRequest {
-    NSInteger cnt = _associationsListArray.count;
+- (void)sendRequest:(NSInteger)count {
+    NSInteger cnt = (count>=0)?count:_associationsListArray.count;
     if ([self isHeaderRefresh]) {
         cnt = 0;
     }

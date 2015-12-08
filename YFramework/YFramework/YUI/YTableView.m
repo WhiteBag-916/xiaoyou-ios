@@ -14,6 +14,7 @@
 
 @property (nonatomic,strong) UIImageView    *noDataImageView;
 
+@property (nonatomic,assign) BOOL           shoudEndEditWhenScroll;
 @end
 
 @implementation YTableView
@@ -109,10 +110,17 @@
     }
 }
 
+- (BOOL)shouldEndEditingWhenScroll
+{
+    return YES;
+}
+
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-    [self.viewController.view endEditing:YES];
-    
-    [self endEditing:YES];
+    BOOL endEditWhenScroll = [self shoudEndEditWhenScroll];
+    if (endEditWhenScroll) {
+        [self.viewController.view endEditing:endEditWhenScroll];
+        [self endEditing:endEditWhenScroll];
+    }
 }
 
 //拉取新数据
@@ -166,7 +174,7 @@
 //显示无更多数据
 - (void)showNoticeNoMoreData
 {
-    [self.footer noticeNoMoreData];
+    [self.footer endRefreshingWithNoMoreData];
 }
 
 #pragma mark - 继承者

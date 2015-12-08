@@ -16,24 +16,24 @@
 #define REUSEID @"AvailableCell"
 @interface AvailableCell ()<UITextViewDelegate>
 
-@property (nonatomic,strong) UIImageView    *startImageView; //开始图
-@property (nonatomic,strong) UITextView     *titleLabel;    //标题
-@property (nonatomic,strong) UILabel        *typeLabel;     //类型
-@property (nonatomic,strong) UILabel        *descriptionLabel;//描述
+@property (nonatomic,strong) UIImageView    *startImageView;    //开始图
+@property (nonatomic,strong) UITextView     *titleLabel;        //标题
+@property (nonatomic,strong) UILabel        *typeLabel;         //类型
+@property (nonatomic,strong) UILabel        *descriptionLabel;  //描述
 //中间图片部分
-@property (nonatomic,strong) FeedImageGroup *imageGroupView;   //图片
+@property (nonatomic,strong) FeedImageGroup *imageGroupView;    //图片
 //底部部分View描述
-@property (nonatomic,strong) UITextView        *signUpTimeDes;     //报名截止时间
-@property (nonatomic,strong) UITextView        *activityTimeDes;   //活动开始时间
-@property (nonatomic,strong) UITextView        *activityEndTimeDes;//活动结束时间
-@property (nonatomic,strong) UITextView        *activityLocationDes;//活动地点
-@property (nonatomic,strong) UITextView        *oranizerDes;       //组织者
+@property (nonatomic,strong) UITextView     *signUpTimeDes;     //报名截止时间
+@property (nonatomic,strong) UITextView     *activityTimeDes;   //活动开始时间
+@property (nonatomic,strong) UITextView     *activityEndTimeDes;//活动结束时间
+@property (nonatomic,strong) UITextView     *activityLocationDes;//活动地点
+@property (nonatomic,strong) UITextView     *oranizerDes;       //组织者
 //底部部分view数据
-@property (nonatomic,strong) UITextView        *signUpTimeLabel;       //报名截止时间
-@property (nonatomic,strong) UITextView        *activityStartTimeLabel;//活动开始时间
-@property (nonatomic,strong) UITextView        *activityEndTimeLabel;  //活动结束时间
-@property (nonatomic,strong) UITextView        *activityLocationLabel; //活动地点
-@property (nonatomic,strong) UITextView        *organizerLabel;        //组织者
+@property (nonatomic,strong) UITextView     *signUpTimeLabel;       //报名截止时间
+@property (nonatomic,strong) UITextView     *activityStartTimeLabel;//活动开始时间
+@property (nonatomic,strong) UITextView     *activityEndTimeLabel;  //活动结束时间
+@property (nonatomic,strong) UITextView     *activityLocationLabel; //活动地点
+@property (nonatomic,strong) UITextView     *organizerLabel;        //组织者
 
 @end
 

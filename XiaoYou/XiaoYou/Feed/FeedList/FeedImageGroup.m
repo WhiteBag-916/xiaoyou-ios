@@ -329,7 +329,8 @@
     [self updateAll];
     [_browser removeFromSuperview];
     _browser = nil;
-    [[NSNotificationCenter defaultCenter] postNotificationName:KNotification_Delete_Image object:[NSNumber numberWithInt:currentIndex]];
+    [[NSNotificationCenter defaultCenter] postNotificationName:KNotification_Delete_Image
+                                                        object:[NSNumber numberWithInt:currentIndex]];
     [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationNone];
 //    NSString *path = [YDirectory newImgCache:[NSString stringWithFormat:@"feed%d.png", currentIndex]];
 //    [[NSFileManager defaultManager] removeItemAtPath:path error:nil];

@@ -88,14 +88,7 @@ typedef enum : NSUInteger {
     [self removeManagerData];
     
     //设置初始审核值
-    if (_isIdentity)
-    {
-        _dataManager.ActivityCheckStatus = @"need_check";
-    }
-    else
-    {
-        _dataManager.ActivityCheckStatus = @"no_check";
-    }
+    _dataManager.ActivityCheckStatus = _isIdentity?@"need_check":@"no_check";
     
     [self setUpUI];
 }

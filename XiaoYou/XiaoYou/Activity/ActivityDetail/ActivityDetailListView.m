@@ -80,14 +80,17 @@
 
 - (void)loadNewData
 {
-    //_currentIndex = 0;
     [self sendRequest];
 }
 
 - (void)loadMoreData
 {
-    //_currentIndex = self.activityDetailArray.count - 1;
     [self sendRequest];
+}
+
+-(BOOL)shouldEndEditingWhenScroll
+{
+    return NO;
 }
 
 -(void)sendRequest

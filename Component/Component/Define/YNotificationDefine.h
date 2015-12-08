@@ -60,4 +60,7 @@
 //打开浏览器
 #define KNotification_OpenBrowser                       @"KNotification_OpenBrowser"
 
+//单击tabbar刷新
+#define kNotification_Double_Click_tab                  @"kNotification_Double_Click_tab"
+
 #endif

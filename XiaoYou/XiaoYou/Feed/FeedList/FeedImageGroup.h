@@ -70,6 +70,4 @@
 
 - (void)addPhotoPath:(NSString*)path;
 
-- (NSMutableArray *)smallImgs;
-
 @end

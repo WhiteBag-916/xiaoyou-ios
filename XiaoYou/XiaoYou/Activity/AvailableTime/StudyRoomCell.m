@@ -36,7 +36,7 @@
 
 -(CGFloat)lineX
 {
-    return 20;
+    return SCALE_NUM(20);
 }
 
 -(instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
