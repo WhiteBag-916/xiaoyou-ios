@@ -35,4 +35,7 @@
 - (NSString*)noDataImageViewAttribute;
 //是否展示无数据图片
 - (void)showNoDataImageView:(BOOL)isShow;
+
+//滚动的时候是否停止编辑
+- (BOOL)shouldEndEditingWhenScroll;
 @end

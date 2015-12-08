@@ -14,7 +14,7 @@
  Url Define: Common
  **********************************************************/
 /** https接口*/
-#if 1
+#if 0
 #define api_server_base_url @"http://v3.xiaoyou.com/mobile"
 #define UMENG_APPKEY @"55cda497e0f55ad43d00204c"
 #define hx_AppKey            @"jiankun#xiaoyou"

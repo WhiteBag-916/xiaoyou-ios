@@ -88,6 +88,11 @@
     [self sendRequest];
 }
 
+-(BOOL)shouldEndEditingWhenScroll
+{
+    return NO;
+}
+
 -(void)sendRequest
 {
     _currentIndex = [self isHeaderRefresh] ? 0 : self.activityDetailArray.count - 1;
