@@ -33,6 +33,7 @@ NSString *const kAssociationsListTableViewCell = @"AssociationsListTableViewCell
 @interface AssociationsListTableViewCell ()
 
 @property (nonatomic, strong) UIImageView   *headImageView;     //头像
+@property (nonatomic, strong) UILabel       *defaultLabel;      //默认文字
 @property (nonatomic, strong) UILabel       *nameLabel;         //名字
 @property (nonatomic, strong) UIView        *starView;          //星级
 @property (nonatomic, strong) UIImageView   *hotImageView;      //hot
@@ -64,6 +65,16 @@ NSString *const kAssociationsListTableViewCell = @"AssociationsListTableViewCell
     [_headImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.top.mas_equalTo(K_HEADIMG_LT);
         make.width.height.mas_equalTo(K_HEADIMG_WH);
+    }];
+    
+    //班
+    _defaultLabel = [[UILabel alloc] init];
+    _defaultLabel.textAlignment = NSTextAlignmentCenter;
+    _defaultLabel.textColor = KCOLOR_g1;
+    _defaultLabel.backgroundColor = KCOLOR_B2;
+    [_headImageView addSubview:_defaultLabel];
+    [_defaultLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.equalTo(_headImageView);
     }];
     
     //2
@@ -174,7 +185,13 @@ NSString *const kAssociationsListTableViewCell = @"AssociationsListTableViewCell
 }
 
 - (void)resetData:(GroupModel *)model isDetail:(BOOL)isDetail {
-    [_headImageView setNormalImageWithUrl:model.groupIcon];
+    [_headImageView setImageWithUrlWithoutPlaceholder:model.groupIcon];
+    if (model.groupIcon.length > 0) {
+        _defaultLabel.hidden = YES;
+    } else {
+        _defaultLabel.hidden = NO;
+        _defaultLabel.text = [model.groupName substringWithRange:NSMakeRange(0, 1)];
+    }
     
     _nameLabel.text = model.groupName;
     _hotImageView.hidden = !model.hot;
