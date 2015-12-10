@@ -69,7 +69,13 @@
 
 @property (nonatomic, strong) NSMutableArray *picPathArray;
 
-@property (nonatomic, assign) BOOL isPhotoSaveEnd;//上传图片时的同步操作
+@property (nonatomic, assign) NSInteger lastTextLen;//编辑之前的文字长度
+
+@property (nonatomic, assign) NSInteger newTextLen; //编辑之后的文字长度
+
+@property (nonatomic, assign) BOOL isPhotoSaveEnd;  //上传图片时的同步操作
+
+@property (nonatomic, strong)   NSString  *inputChar; //新输入的字符
 
 @end
 
@@ -558,6 +564,8 @@
 
     [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@""] forBarMetrics:UIBarMetricsDefault];
     [self showEditMode];
+    //进入输入状态
+    [_textView becomeFirstResponder];
 }
 - (void)dealloc {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
@@ -674,15 +682,28 @@
             return NO;
         }
     }
+    _inputChar = text;
     return YES;
 }
 
+
+
 - (void)textViewDidChange:(UITextView *)textView
 {
-    if (textView.text.length>5000)
-    {
+    if (textView.text.length>5000) {
         [YUtils showTitle:@"描述字数不能大于5000字"];
         [textView setText:[textView.text substringWithRange:NSMakeRange(0, 5000)]];
+    }
+    
+    //
+    if ([_inputChar isEqualToString:@"#"])
+    {
+        [self presentViewController:self.imagePickerVC animated:YES completion:nil];
+    }
+    
+    if ([_inputChar isEqualToString:@"@"])
+    {
+        
     }
 }
 
@@ -702,3 +723,4 @@
 }
 
 @end
+
