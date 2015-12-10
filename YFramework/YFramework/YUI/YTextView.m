@@ -139,17 +139,19 @@ CGFloat const UI_PLACEHOLDER_TEXT_CHANGED_ANIMATION_DURATION = 0.25;
 
 -(void)setCustomAttributedText:(NSAttributedString *)attributedText
 {
+    NSDictionary *linkAttributes = @{NSForegroundColorAttributeName:
+                                         [UIColor colorWithRed:(106)/255.0 green:(140)/255.0 blue:(179)/255.0 alpha:(1)],
+                                     NSUnderlineColorAttributeName: [UIColor lightGrayColor],
+                                     NSUnderlineStyleAttributeName: @(NSUnderlinePatternSolid)};
+    self.linkTextAttributes  = linkAttributes;
+    
+    
     //if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 9.0) {
     attributedText = [self handleLink:attributedText];
     //}
     self.attributedText = attributedText;
     
     //R106 G140 B179 A100
-    NSDictionary *linkAttributes = @{NSForegroundColorAttributeName:
-                                         [UIColor colorWithRed:(106)/255.0 green:(140)/255.0 blue:(179)/255.0 alpha:(1)],
-                                     NSUnderlineColorAttributeName: [UIColor lightGrayColor],
-                                     NSUnderlineStyleAttributeName: @(NSUnderlinePatternSolid)};
-    self.linkTextAttributes  = linkAttributes;
 }
 
 
