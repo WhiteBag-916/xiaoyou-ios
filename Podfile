@@ -4,6 +4,7 @@ xcodeproj 'XiaoYou/XiaoYou.xcodeproj'
 
 target :XiaoYou do
 platform :ios, '7.0'
+pod 'YYText', '~> 0.9.9'
 pod 'FDFullscreenPopGesture','~>1.1'
 pod 'MBProgressHUD+BWMExtension','~>1.0.0'
 pod 'BBBadgeBarButtonItem','~>1.2'
