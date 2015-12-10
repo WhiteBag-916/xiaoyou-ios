@@ -30,7 +30,7 @@
 
 + (void)collectUserInfo:(ProfileInfo *)data
 {
-    [[Zhuge sharedInstance] identify:data.studentNo
+    [[Zhuge sharedInstance] identify:data.uid
                           properties:[YAnalysis getDataFromProfileInfo:data]];
 }
 
