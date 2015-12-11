@@ -36,6 +36,10 @@
 
 + (NSDictionary *)getDataFromShareInProfile:(NSDictionary *)dic
 {
+    if (dic == nil)
+    {
+        return nil;
+    }
     return @{@"学号":dic[@"studentNo"],
 //             @"名字":dic[@"name"],
              @"学校":dic[@"schoolCode"],
@@ -47,6 +51,9 @@
 
 + (NSDictionary *)getDataFromShareInFeed:(NSDictionary *)dic
 {
+    if (dic == nil) {
+        return nil;
+    }
     if ([dic valueForKey:@"studentNo"] != nil) {
         return @{@"学号":dic[@"studentNo"],
 //                 @"名字":dic[@"name"],

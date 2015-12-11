@@ -29,6 +29,7 @@
 		042AADC31BCB493D0056C09F /* JoinInTopView.m in Sources */ = {isa = PBXBuildFile; fileRef = 042AADC21BCB493D0056C09F /* JoinInTopView.m */; };
 		042AADC61BCB4AC40056C09F /* JoinInHeadView.m in Sources */ = {isa = PBXBuildFile; fileRef = 042AADC51BCB4AC40056C09F /* JoinInHeadView.m */; };
 		042AADCC1BCB8BA00056C09F /* ApplyRemindCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 042AADCB1BCB8BA00056C09F /* ApplyRemindCell.m */; };
+		04342D231C1AF1E0007B9079 /* ActivityDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04342D221C1AF1E0007B9079 /* ActivityDetailViewController.m */; };
 		04394B471BBBB6620098BB8F /* fast_to_add@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 04394B451BBBB6620098BB8F /* fast_to_add@2x.png */; };
 		04394B481BBBB6620098BB8F /* fast_to_add@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 04394B461BBBB6620098BB8F /* fast_to_add@3x.png */; };
 		04394B4B1BBBB78B0098BB8F /* fast_add_white@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 04394B491BBBB78B0098BB8F /* fast_add_white@2x.png */; };
@@ -88,7 +89,6 @@
 		044DA02F1BBA699600AA321A /* setup_other@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 044DA0291BBA699600AA321A /* setup_other@3x.png */; };
 		044DA0551BBA77C900AA321A /* ActivityDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 044DA0431BBA77C900AA321A /* ActivityDetailCell.m */; };
 		044DA0561BBA77C900AA321A /* ActivityDetailListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 044DA0451BBA77C900AA321A /* ActivityDetailListView.m */; };
-		044DA0571BBA77C900AA321A /* ActivityDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 044DA0471BBA77C900AA321A /* ActivityDetailViewController.m */; };
 		04571DB11BEB191F00BAD2A6 /* no_data_schedule@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 04571DAF1BEB191F00BAD2A6 /* no_data_schedule@2x.png */; };
 		04571DB21BEB191F00BAD2A6 /* no_data_schedule@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 04571DB01BEB191F00BAD2A6 /* no_data_schedule@3x.png */; };
 		04571DB51BEB1D7200BAD2A6 /* no_someone_signup@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 04571DB31BEB1D7200BAD2A6 /* no_someone_signup@2x.png */; };
@@ -880,6 +880,7 @@
 		042AADC51BCB4AC40056C09F /* JoinInHeadView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JoinInHeadView.m; sourceTree = "<group>"; };
 		042AADCA1BCB8BA00056C09F /* ApplyRemindCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ApplyRemindCell.h; sourceTree = "<group>"; };
 		042AADCB1BCB8BA00056C09F /* ApplyRemindCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ApplyRemindCell.m; sourceTree = "<group>"; };
+		04342D221C1AF1E0007B9079 /* ActivityDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityDetailViewController.m; sourceTree = "<group>"; };
 		04394B451BBBB6620098BB8F /* fast_to_add@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "fast_to_add@2x.png"; sourceTree = "<group>"; };
 		04394B461BBBB6620098BB8F /* fast_to_add@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "fast_to_add@3x.png"; sourceTree = "<group>"; };
 		04394B491BBBB78B0098BB8F /* fast_add_white@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "fast_add_white@2x.png"; sourceTree = "<group>"; };
@@ -951,7 +952,6 @@
 		044DA0441BBA77C900AA321A /* ActivityDetailListView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityDetailListView.h; sourceTree = "<group>"; };
 		044DA0451BBA77C900AA321A /* ActivityDetailListView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityDetailListView.m; sourceTree = "<group>"; };
 		044DA0461BBA77C900AA321A /* ActivityDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityDetailViewController.h; sourceTree = "<group>"; };
-		044DA0471BBA77C900AA321A /* ActivityDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityDetailViewController.m; sourceTree = "<group>"; };
 		04571DAF1BEB191F00BAD2A6 /* no_data_schedule@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "no_data_schedule@2x.png"; sourceTree = "<group>"; };
 		04571DB01BEB191F00BAD2A6 /* no_data_schedule@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "no_data_schedule@3x.png"; sourceTree = "<group>"; };
 		04571DB31BEB1D7200BAD2A6 /* no_someone_signup@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "no_someone_signup@2x.png"; sourceTree = "<group>"; };
@@ -2295,7 +2295,7 @@
 				044DA0441BBA77C900AA321A /* ActivityDetailListView.h */,
 				044DA0451BBA77C900AA321A /* ActivityDetailListView.m */,
 				044DA0461BBA77C900AA321A /* ActivityDetailViewController.h */,
-				044DA0471BBA77C900AA321A /* ActivityDetailViewController.m */,
+				04342D221C1AF1E0007B9079 /* ActivityDetailViewController.m */,
 				04D500661BBA94AA00C1B438 /* ActivityJoinInCell.h */,
 				04D500671BBA94AA00C1B438 /* ActivityJoinInCell.m */,
 			);
@@ -5097,6 +5097,7 @@
 				33380D9F1B85DAC5008B51EB /* XYSystemMessageViewController.m in Sources */,
 				333122811B806EDC00D3D032 /* NSString+Valid.m in Sources */,
 				333122441B806EDB00D3D032 /* EMCDDeviceManager+ProximitySensor.m in Sources */,
+				04342D231C1AF1E0007B9079 /* ActivityDetailViewController.m in Sources */,
 				20DAF9DD1B873883005B7932 /* PinyinHelper.m in Sources */,
 				337C90C01BA1340100D9CEAC /* GroupTag.m in Sources */,
 				044C31601BCCD7E000E0D508 /* ScheduleCardCell.m in Sources */,
@@ -5166,7 +5167,6 @@
 				044C31661BCCF09F00E0D508 /* ScroungeCourseCell.m in Sources */,
 				33380DA81B85DBAB008B51EB /* ApplySuccessSystemMessageTableViewCell.m in Sources */,
 				33380DA51B85DB89008B51EB /* NormalSystemMessageTableViewCell.m in Sources */,
-				044DA0571BBA77C900AA321A /* ActivityDetailViewController.m in Sources */,
 				20DA17051BC7C51200A61B37 /* MGCMonthPlannerWeekView.m in Sources */,
 				656341551BC1061500E10025 /* YStripeView.m in Sources */,
 				E455DCE41BCB683C00B78E54 /* ActivityChoiceController.m in Sources */,
