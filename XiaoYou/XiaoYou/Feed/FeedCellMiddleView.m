@@ -99,8 +99,7 @@
                                      lineSpace:SCALE_NUM(5)];
         if (data.replyUser.name.length != 0) {
             //_contentLabel.text = [NSString stringWithFormat:@"回复%@:%@",data.replyUser.name, _contentLabel.text];
-            [_contentLabel setTextViewDataWithText:[NSString stringWithFormat:@"回复%@:%@",data.replyUser.name, _contentLabel.text]
-                                              font:CONTENT_FONT(12) textColor:[UIColor blackColor]
+            [_contentLabel setTextViewDataWithText:[NSString stringWithFormat:@"回复%@:%@",data.replyUser.name, _contentLabel.text] font:CONTENT_FONT(12) textColor:[UIColor blackColor]
                                          lineSpace:SCALE_NUM(5)];
         }
     }
