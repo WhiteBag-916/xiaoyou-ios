@@ -82,8 +82,8 @@ typedef enum : NSUInteger {
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self removeManagerData];
     _dataManager = [ActivityReleaseDataManager shareActivityReleaseDataManager];
+    [self removeManagerData];
     _dataManager.isIdentity = _isIdentity;
     
     //设置初始审核值
@@ -138,7 +138,13 @@ typedef enum : NSUInteger {
 
 -(void)removeManagerData
 {
-    _dataManager = nil;
+    _dataManager.ActivityNameText = nil;
+    _dataManager.ActivityDesciptionText = nil;
+    _dataManager.ActivityDateBeginApplyText = nil;
+    _dataManager.ActivityDateBeginText = nil;
+    _dataManager.ActivityDateEndText = nil;
+    _dataManager.ActivityPlaceText = nil;
+    _dataManager.ActivityTypeStr = nil;
 }
 
 #pragma mark - 改变发布按钮是否可点击状态方法
@@ -583,7 +589,7 @@ typedef enum : NSUInteger {
                                                 imagePath:fullPath block:^(YActionMessage *message) {
             NSLog(@"%@",message);
             
-            [YUtils hiddenProgressHUD];
+//            [YUtils hiddenProgressHUD];
             if (message.isSuccess)
             {
                 [self sendReleaseRequest:message];

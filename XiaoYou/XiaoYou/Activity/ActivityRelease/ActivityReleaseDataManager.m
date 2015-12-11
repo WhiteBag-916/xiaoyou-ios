@@ -32,7 +32,7 @@
     
     if (![self.ActivityDateBeginText isEqualToString:@"请选择活动开始时间"] &&
         self.ActivityDateBeginText != nil &&
-        ![self.ActivityDateEndText isEqualToString:@"请选择活动开始时间"] &&
+        ![self.ActivityDateEndText isEqualToString:@"请选择活动结束时间"] &&
         self.ActivityDateEndText != nil)
     {
         NSTimeInterval timeBetween1 =
