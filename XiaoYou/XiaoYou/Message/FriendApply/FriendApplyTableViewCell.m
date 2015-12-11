@@ -216,9 +216,8 @@ typedef enum : NSUInteger {
 -(void)setCellInfo:(ApplicantList *) model
 {
     //重用cell时重设的属性
-    [self updateButtonShow];
-    
     _applicantList = model;
+    [self updateButtonShow];
     
     [_headImageView setFaceImageWithUrl:_applicantList.author.headPic];
     [_headImageView setData:_applicantList.author.uid imageUrl:_applicantList.author.headPic];
@@ -304,7 +303,6 @@ typedef enum : NSUInteger {
                 if (message.isSuccess) {
                     _applicantList.status = 3;
                     [self refreshContactsList];
-                    [self updateButtonShow];
                 } else {
                     [YUtils showTitle:message.desc];
                 }
@@ -317,7 +315,6 @@ typedef enum : NSUInteger {
                                                         block:^(YActionMessage *message) {
                 if (message.isSuccess) {
                     _applicantList.status = 1;
-                    [self updateButtonShow];
                     //给对方发消息
                     EMMessage *tempMessage =
                     [ChatSendHelper sendTextMessageWithString:@"我通过你的好友请求啦，聊聊呗"

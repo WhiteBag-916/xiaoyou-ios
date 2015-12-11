@@ -48,6 +48,7 @@
 #import "AGImagePickerController.h"
 #import "AGIPCToolbarItem.h"
 #import "SDPhotoBrowser.h"
+#import "ContactManager.h"
 
 #define KPageCount 20
 #define KHintAdjustY    50
@@ -235,19 +236,10 @@
     }
     
     //判断是否为好友,输入框置灰
-//    if (![self isChatGroup])
+    if (![self isChatGroup])
     {
-        //小助手100000
-//        ProfileInfo * info = [[ProvisionManager sharedInstance] getProfile];
-//        if (nil == _studentDic && ![info.studentNo isEqualToString:@"123456"])
-//        {
-//            UIView * blackView = [[UIView alloc] initWithFrame:_chatToolBar.bounds];
-//            blackView.backgroundColor = [UIColor blackColor];
-//            blackView.alpha = 0.5;
-//            [_chatToolBar addSubview:blackView];
-//        }
-        
-        if (nil == _studentDic)
+        if (nil == _studentDic ||
+            ![[ContactManager sharedInstance] isFriendRelationShip:_studentDic[@"uid"]])
         {
             UIView * blackView = [[UIView alloc] initWithFrame:_chatToolBar.bounds];
             blackView.backgroundColor = [UIColor blackColor];

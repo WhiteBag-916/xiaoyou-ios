@@ -42,7 +42,6 @@
 {
     self.title = @"好友申请";
     [self showCustomNavigationBackButton];
-    [self showCustomNavigationMoreButton];
     
     _friendApplyTableView = [[FriendApplyTableView alloc] init];
     _friendApplyTableView.superVC = self;
@@ -63,32 +62,6 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 
-#pragma mark - 导航右侧
-- (void)onNavigationRightButtonClicked
-{
-    YActionSheetItem *item1 = [YActionSheetItem itemWithTitle:@"清空好友申请列表"
-                                                         type:YCommonActionSheetItemTypeCenterCommon
-                                                        block:^(NSInteger checkNum) {
-                                                            [self removeAllData];
-                                                        }];
-    YCommonActionSheet *sheet = [[YCommonActionSheet alloc] initWithType:@[item1] title:nil];
-    [sheet show];
-}
-
-#pragma mark - 清空数据
-- (void)removeAllData {
-    
-    NSMutableArray * idArr = [NSMutableArray array];
-    [[_friendApplyTableView getDataSource]
-     enumerateObjectsUsingBlock:^(ApplicantList * obj, NSUInteger idx, BOOL *stop) {
-        [idArr addObject:@(obj.applyId)];
-        
-    }];
-    NSString * ids = [idArr componentsJoinedByString:@","];
-    [[ContactManager sharedInstance] ignoreFriendApply:ids block:^(YActionMessage *message) {
-        [_friendApplyTableView refreshTableView:[NSArray array]];;
-    }];
-}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

@@ -13,9 +13,16 @@
 
 extern NSString *const kFriendApplyTableViewCell;
 
+@protocol FriendApplyTableViewCellDelegate <NSObject>
+
+-(void)didSelectButton:(double) num applyId:(double) applyId;
+
+@end
+
 @interface FriendApplyTableViewCell : YTableViewCell
 
 @property (nonatomic, weak) YViewController *superVC;
+@property (nonatomic, weak) id<FriendApplyTableViewCellDelegate>delegate;
 
 -(void)setCellInfo:(ApplicantList *) model;
 

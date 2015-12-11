@@ -141,7 +141,9 @@
     }
     else
     {
-        [YAnalysis trackEvent:@"确定_自习室_筛选" withPara:@{@"条件":_typesDic[@"schoolName"]}];
+        if (_typesDic[@"schoolName"]) {
+            [YAnalysis trackEvent:@"确定_自习室_筛选" withPara:@{@"条件":_typesDic[@"schoolName"]}];
+        }
         [[NSNotificationCenter defaultCenter] postNotificationName:KNotification_Study_Room_Filtrate
                                                             object:_typesDic];
         [self.myController dismissViewControllerAnimated:YES completion:nil];

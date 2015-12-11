@@ -76,7 +76,9 @@ UICollectionViewDelegateFlowLayout,GroupInfoCollectionViewCellDelegate>
 -(void)refreshTableView:(GroupDetail *) model
 {
     [_dataSourceArr removeAllObjects];
-    _headerModel = model.groupModel;
+    if (model.groupModel) {
+        _headerModel = model.groupModel;
+    }
     NSMutableArray * tempDataSourceArr = [[NSMutableArray alloc] initWithArray:model.groupMemebers];
     for (int i = 0; i < tempDataSourceArr.count; i++)
     {

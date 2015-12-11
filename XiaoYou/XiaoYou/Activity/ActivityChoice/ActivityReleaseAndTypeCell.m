@@ -65,7 +65,7 @@ NSString *const kActivityReleaseAndTypeCell = @"ActivityReleaseAndTypeCellId";
         else if ([model.name isEqualToString:@"活动来源"])
         {
             self.dataArr = model.tags;
-            _releaseAndTypeImageView.image = [UIImage imageNamed:@"activity-releaser"];
+            _releaseAndTypeImageView.image = [UIImage imageNamed:@"havetime_icon_from"];
             
         }
         else
