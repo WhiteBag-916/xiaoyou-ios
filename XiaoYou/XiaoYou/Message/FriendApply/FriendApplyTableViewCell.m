@@ -303,6 +303,10 @@ typedef enum : NSUInteger {
                                                          block:^(YActionMessage *message) {
                 if (message.isSuccess) {
                     _applicantList.status = 3;
+                    if ([self.delegate respondsToSelector:@selector(didSelectButton:applyId:)])
+                    {
+                        [self.delegate didSelectButton:3 applyId:_applicantList.applyId];
+                    }
                     [self refreshContactsList];
                     [self updateButtonShow];
                 } else {
@@ -317,6 +321,10 @@ typedef enum : NSUInteger {
                                                         block:^(YActionMessage *message) {
                 if (message.isSuccess) {
                     _applicantList.status = 1;
+                    if ([self.delegate respondsToSelector:@selector(didSelectButton:applyId:)])
+                    {
+                        [self.delegate didSelectButton:1 applyId:_applicantList.applyId];
+                    }
                     [self updateButtonShow];
                     //给对方发消息
                     EMMessage *tempMessage =

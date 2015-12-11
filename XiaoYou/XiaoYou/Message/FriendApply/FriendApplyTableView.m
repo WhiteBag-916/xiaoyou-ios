@@ -12,7 +12,7 @@
 #import "MessageManager.h"
 
 @interface FriendApplyTableView ()
-<UITableViewDataSource,UITableViewDelegate>
+<UITableViewDataSource,UITableViewDelegate,FriendApplyTableViewCellDelegate>
 
 @property(nonatomic,strong)NSMutableArray * dataSourceArr;
 
@@ -99,7 +99,7 @@
 {
     FriendApplyTableViewCell * cell =
     [self dequeueReusableCellWithIdentifier:kFriendApplyTableViewCell forIndexPath:indexPath];
-    
+    cell.delegate = self;
     cell.superVC = self.superVC;
     [cell setCellInfo:_dataSourceArr[indexPath.row]];
     
@@ -118,5 +118,17 @@
     return _dataSourceArr;
 }
 
+-(void)didSelectButton:(double)num applyId:(double)applyId
+{
+    for (int i = 0; i < _dataSourceArr.count; i++)
+    {
+        ApplicantList *model = _dataSourceArr[i];
+        if (((ApplicantList *)_dataSourceArr[i]).applyId == applyId)
+        {
+            model.status = num;
+            [self reloadData];
+        }
+    }
+}
 
 @end

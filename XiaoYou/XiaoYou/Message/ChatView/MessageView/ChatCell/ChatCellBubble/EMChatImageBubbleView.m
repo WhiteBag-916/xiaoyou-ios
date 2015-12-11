@@ -97,7 +97,7 @@ NSString *const kRouterEventImageBubbleTapEventName = @"kRouterEventImageBubbleT
 {
 //    [self routerEventWithName:kRouterEventImageBubbleTapEventName
 //                     userInfo:@{KMESSAGEKEY:self.model}];
-
+    [self.viewController.view endEditing:YES];
     NSString *localPath = _model.message == nil ? _model.localPath : [[_model.message.messageBodies firstObject] localPath];
     if (localPath && localPath.length > 0) {
         UIImage *image = [UIImage imageWithContentsOfFile:localPath];
