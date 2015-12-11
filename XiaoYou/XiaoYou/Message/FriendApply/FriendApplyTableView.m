@@ -80,14 +80,6 @@
     }];
 }
 
-#pragma mark - 刷新界面
-
--(void)refreshTableView:(NSArray *) dataSouceArr
-{
-    _dataSourceArr = (NSMutableArray *)dataSouceArr;
-    [self reloadData];
-}
-
 #pragma mark - UITableViewDelegate和UITableViewDataSouce
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -118,17 +110,17 @@
     return _dataSourceArr;
 }
 
--(void)didSelectButton:(double)num applyId:(double)applyId
-{
-    for (int i = 0; i < _dataSourceArr.count; i++)
-    {
-        ApplicantList *model = _dataSourceArr[i];
-        if (((ApplicantList *)_dataSourceArr[i]).applyId == applyId)
-        {
-            model.status = num;
-            [self reloadData];
-        }
-    }
-}
+//-(void)didSelectButton:(double)num applyId:(double)applyId
+//{
+//    for (int i = 0; i < _dataSourceArr.count; i++)
+//    {
+//        ApplicantList *model = _dataSourceArr[i];
+//        if (((ApplicantList *)_dataSourceArr[i]).applyId == applyId)
+//        {
+//            model.status = num;
+//            [self reloadData];
+//        }
+//    }
+//}
 
 @end

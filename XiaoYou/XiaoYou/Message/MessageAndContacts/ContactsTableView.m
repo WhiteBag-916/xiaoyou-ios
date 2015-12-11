@@ -407,7 +407,12 @@
 
 -(NSArray *)sectionIndexTitlesForTableView:(UITableView *)tableView
 {
-   
+    if ([self.indexTitleArr containsObject:@"#"])
+    {
+        [self.indexTitleArr removeObject:@"#"];
+        [self.indexTitleArr addObject:@"#"];
+        return self.indexTitleArr;
+    }
     return self.indexTitleArr;
     
 }

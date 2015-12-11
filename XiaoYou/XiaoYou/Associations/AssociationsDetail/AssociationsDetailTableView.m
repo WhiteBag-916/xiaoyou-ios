@@ -79,17 +79,20 @@
                                           groupId:_groupId
                                             block:^(YActionMessage *message) {
         if (message.isSuccess) {
+            
             [self hiddenFooter:false];
             if ([[message.object groupFeeds] count] < KPAGENUM) {
                 [self showNoticeNoMoreData];
             }
             
             self.groupModel = [message.object groupModel];
-            if (nil != _associationsDetailTableViewDelegate) {
+            if (nil != _associationsDetailTableViewDelegate
+                && nil != self.superview) {
                 [_associationsDetailTableViewDelegate resetAddButtonType:_groupModel];
             }
             
             [self resetFeedArray:[message.object groupFeeds] needRemoveAll:YES];
+            
             
         } else {
             [YUtils showTitleOn:self title:message.desc];

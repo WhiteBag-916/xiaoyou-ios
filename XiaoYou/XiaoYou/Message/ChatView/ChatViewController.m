@@ -48,6 +48,7 @@
 #import "AGImagePickerController.h"
 #import "AGIPCToolbarItem.h"
 #import "SDPhotoBrowser.h"
+#import "ContactManager.h"
 
 #define KPageCount 20
 #define KHintAdjustY    50
@@ -247,7 +248,8 @@
 //            [_chatToolBar addSubview:blackView];
 //        }
         
-        if (nil == _studentDic)
+        if (nil == _studentDic ||
+            ![[ContactManager sharedInstance] isFriendRelationShip:_studentDic[@"uid"]])
         {
             UIView * blackView = [[UIView alloc] initWithFrame:_chatToolBar.bounds];
             blackView.backgroundColor = [UIColor blackColor];
