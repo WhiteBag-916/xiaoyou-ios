@@ -243,7 +243,6 @@
             //成功
             //是否需要完善资料
             LoginResp *loginResp = (LoginResp *)message.object;
-            [YAnalysis collectUserInfo:message.object];
             if (loginResp.firstLogin) {
                 [kAppDelegateAccessor initPerfectNC];
             } else {
