@@ -55,7 +55,7 @@ NSString *const kXYGroupInfoDetailViewController = @"XYGroupInfoDetailViewContro
     [super viewWillAppear:animated];
     [[ContactManager sharedInstance] groupDetail:_gid block:^(YActionMessage *message) {
         [YUtils hiddenProgressHUD];
-        if (message.object) {
+        if (message.isSuccess) {
             _model = message.object;
             [_groupInfoDetailCollectionView refreshTableView:message.object];
              _shareData = @{@"name":_model.groupModel.groupName,
@@ -124,14 +124,16 @@ NSString *const kXYGroupInfoDetailViewController = @"XYGroupInfoDetailViewContro
                                                          open:[[MessageManager sharedInstance] isForbiddenGroupByThirdCode:_studentDic[@"thirdCode"]]
                                                     extraData:@{@"thirdCode":_studentDic[@"thirdCode"]}];
     
-    
+
     YActionSheetItem *item3 = [YActionSheetItem itemWithTitle:@"举报"
                                                          type:YCommonActionSheetItemTypeCommon
                                                         block:^(NSInteger checkNum) {
-                                                            [YCommonReport reportWithType:@"举报_班级群聊_详情_更多操作"
-                                                                                  andData:@{@"班级名":_model.groupModel.groupName,
-                                                                                            @"学校":_model.groupModel.schoolCode}];
-                                                            
+                                                            //添加if 解决无网络情况下举报崩溃
+                                                            if (_model) {
+                                                                [YCommonReport reportWithType:@"举报_班级群聊_详情_更多操作"
+                                                                                      andData:@{@"班级名":_model.groupModel.groupName,
+                                                                                                @"学校":_model.groupModel.schoolCode}];
+                                                            }
                                                         }];
     
     LinkManModel * model = [[ContactManager sharedInstance] getContactsListData];

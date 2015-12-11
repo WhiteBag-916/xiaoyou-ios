@@ -12,7 +12,9 @@
 @implementation YCommonReport
 + (void)reportWithType:(NSString *)type andData:(NSDictionary *)data {
     [YAnalysis trackEvent:type withPara:data];
-    YCommonAlertView *alert = [[YCommonAlertView alloc] initWithTitle:nil message:@"是否确认举报？" buttonTitles:@"取消", @"确认",nil];
+    YCommonAlertView *alert = [[YCommonAlertView alloc] initWithTitle:nil
+                                                              message:@"是否确认举报？"
+                                                         buttonTitles:@"取消", @"确认",nil];
     [alert clickedButtonHandler:^(NSInteger index) {
         [alert hide];
         if (index == 1) {
