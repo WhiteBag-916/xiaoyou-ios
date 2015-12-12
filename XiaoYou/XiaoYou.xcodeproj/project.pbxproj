@@ -26,6 +26,7 @@
 		041E3EBA1BAFF9FE00454487 /* CTAssetsPickerChecked@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 041E3EB81BAFF9FE00454487 /* CTAssetsPickerChecked@2x.png */; };
 		041E3EBD1BAFFA0800454487 /* CTAssetsPickerChecked~iOS6.png in Resources */ = {isa = PBXBuildFile; fileRef = 041E3EBB1BAFFA0800454487 /* CTAssetsPickerChecked~iOS6.png */; };
 		041E3EBE1BAFFA0800454487 /* CTAssetsPickerChecked~iOS6@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 041E3EBC1BAFFA0800454487 /* CTAssetsPickerChecked~iOS6@2x.png */; };
+		041FE73C1C1C7D4E002F81B9 /* NSNull+InternalNullExtention.m in Sources */ = {isa = PBXBuildFile; fileRef = 041FE73B1C1C7D4E002F81B9 /* NSNull+InternalNullExtention.m */; };
 		042AADC31BCB493D0056C09F /* JoinInTopView.m in Sources */ = {isa = PBXBuildFile; fileRef = 042AADC21BCB493D0056C09F /* JoinInTopView.m */; };
 		042AADC61BCB4AC40056C09F /* JoinInHeadView.m in Sources */ = {isa = PBXBuildFile; fileRef = 042AADC51BCB4AC40056C09F /* JoinInHeadView.m */; };
 		042AADCC1BCB8BA00056C09F /* ApplyRemindCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 042AADCB1BCB8BA00056C09F /* ApplyRemindCell.m */; };
@@ -876,6 +877,8 @@
 		041E3EB81BAFF9FE00454487 /* CTAssetsPickerChecked@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "CTAssetsPickerChecked@2x.png"; sourceTree = "<group>"; };
 		041E3EBB1BAFFA0800454487 /* CTAssetsPickerChecked~iOS6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "CTAssetsPickerChecked~iOS6.png"; sourceTree = "<group>"; };
 		041E3EBC1BAFFA0800454487 /* CTAssetsPickerChecked~iOS6@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "CTAssetsPickerChecked~iOS6@2x.png"; sourceTree = "<group>"; };
+		041FE73A1C1C7D4E002F81B9 /* NSNull+InternalNullExtention.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSNull+InternalNullExtention.h"; sourceTree = "<group>"; };
+		041FE73B1C1C7D4E002F81B9 /* NSNull+InternalNullExtention.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSNull+InternalNullExtention.m"; sourceTree = "<group>"; };
 		042AADC11BCB493D0056C09F /* JoinInTopView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JoinInTopView.h; sourceTree = "<group>"; };
 		042AADC21BCB493D0056C09F /* JoinInTopView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JoinInTopView.m; sourceTree = "<group>"; };
 		042AADC41BCB4AC40056C09F /* JoinInHeadView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JoinInHeadView.h; sourceTree = "<group>"; };
@@ -4036,6 +4039,8 @@
 				04C08FE31BDBF0F7002F8BAE /* TimeFormatterConvert.m */,
 				046358891BE096790055819F /* UIDevice+DeviceType.h */,
 				0463588A1BE096790055819F /* UIDevice+DeviceType.m */,
+				041FE73A1C1C7D4E002F81B9 /* NSNull+InternalNullExtention.h */,
+				041FE73B1C1C7D4E002F81B9 /* NSNull+InternalNullExtention.m */,
 				0461A3DB1BE38D0800F00E72 /* NSString+MyContainString.h */,
 				0461A3DC1BE38D0800F00E72 /* NSString+MyContainString.m */,
 				04E26F451BFED56400A38236 /* YObject+Ext.h */,
@@ -5236,6 +5241,7 @@
 				650C6C061B8860FF00A89AC9 /* YCommonEditViewController.m in Sources */,
 				20D821A31BE098FE00C5E21C /* ChooseWeekView.m in Sources */,
 				044DA0551BBA77C900AA321A /* ActivityDetailCell.m in Sources */,
+				041FE73C1C1C7D4E002F81B9 /* NSNull+InternalNullExtention.m in Sources */,
 				333122681B806EDB00D3D032 /* PSTCollectionViewController.m in Sources */,
 				E48E09B11BD7B9880017D395 /* CheckCollectionViewCell.m in Sources */,
 				339549831B81BD6700F9ECB1 /* XYGroupInfoDetailViewController.m in Sources */,
