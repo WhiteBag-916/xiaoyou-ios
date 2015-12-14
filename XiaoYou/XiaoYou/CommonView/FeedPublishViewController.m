@@ -8,7 +8,6 @@
 
 #import <AVFoundation/AVFoundation.h>
 #import "FeedPublishViewController.h"
-#import "YTextView.h"
 #import "FeedImageGroup.h"
 #import "SKTagView.h"
 #import "YCommonActionSheet.h"
@@ -30,6 +29,7 @@
 #import "AGIPCToolbarItem.h"
 #import "UIDevice+DeviceType.h"
 #import "TimeFormatterConvert.h"
+#import "YYText.h"
 
 #define KTEXTVIEWMARGIN_LEFT SCALE_NUM(5)
 #define KTEXTVIEWMARGIN_TOP SCALE_NUM(15)
@@ -44,14 +44,15 @@
 #define tagObj @"tagObj"
 #define tagIsSelected @"tagIsSelected"
 
-@interface FeedPublishViewController()<UIImagePickerControllerDelegate, UITextViewDelegate/*,UzysAssetsPickerControllerDelegate*/>
+@interface FeedPublishViewController()<UIImagePickerControllerDelegate, UITextViewDelegate,
+YYTextViewDelegate>
 
 //布局用的view
 @property (nonatomic, strong) UIView *groupView;
 @property (nonatomic, strong) UIView *contentView;
 @property (nonatomic, strong) UIView *bottomView;
 
-@property (nonatomic, strong) YTextView *textView;//feed内容
+@property (nonatomic, strong) YYTextView *textView;//feed内容
 @property (nonatomic, strong) FeedImageGroup *imgGroup;//feed图片
 @property (nonatomic, strong) SKTagView *tagView;//兴趣标签
 @property (nonatomic, strong) SKTagView *groupTag;//社团标签
@@ -75,7 +76,7 @@
 
 @property (nonatomic, assign) BOOL isPhotoSaveEnd;  //上传图片时的同步操作
 
-@property (nonatomic, strong)   NSString  *inputChar; //新输入的字符
+@property (nonatomic, strong) NSString  *inputChar; //新输入的字符
 
 @end
 
@@ -111,9 +112,10 @@
     [self showCustomNavigationCancelButton];
     [self showCustomNavigationSureButton];
     
+    //不明白为什么添加这个手势，注释掉这个手势之后貌似没有影响
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]
                                    initWithTarget:self.view action:@selector(endEditing:)];
-    [self.view addGestureRecognizer:tap];
+    //[self.view addGestureRecognizer:tap];
     UIScrollView *scroll = [[UIScrollView alloc] init];
     [self.view addSubview:scroll];
     [scroll mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -229,7 +231,7 @@
     }
 }
 - (void)initTextView {
-    _textView = [[YTextView alloc] init];
+    _textView = [YYTextView new];
     [_contentView addSubview:_textView];
     [_textView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(_groupView);
@@ -244,10 +246,18 @@
         make.height.mas_equalTo(KTEXTVIEWHEIGHT);
     }];
     _textView.delegate = self;
-    _textView.placeholder = @"和你的校友分享...";
-    _textView.placeholderColor = KCOLORWHITE_b8b7b7;
+    _textView.textParser = [YYTextTopicAndAtBindingParser new];
+    _textView.textContainerInset = UIEdgeInsetsMake(10, 10, 10, 10);
+//    if ([UIDevice currentDevice].systemVersion.floatValue > 7) {
+        //_textView.keyboardDismissMode = UIScrollViewKeyboardDismissModeInteractive;
+//    }
+    _textView.placeholderText = @"和你的校友分享...";
+    _textView.placeholderTextColor = KCOLORWHITE_b8b7b7;
     _textView.font = CONTENT_FONT(12);
+    
+    [_textView becomeFirstResponder];
 }
+
 
 - (void)initImgView {
     _imgGroup = [[FeedImageGroup alloc] initWithCamera];
@@ -669,7 +679,7 @@
 }
 
 #pragma mark - UITextViewDelegate
-- (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text
+- (BOOL)textView:(YYTextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text
 {
     NSInteger fieldLen = [textView.text length];
     NSInteger rangeLen = range.length;
@@ -687,8 +697,7 @@
 }
 
 
-
-- (void)textViewDidChange:(UITextView *)textView
+- (void)textViewDidChange:(YYTextView *)textView
 {
     if (textView.text.length>5000) {
         [YUtils showTitle:@"描述字数不能大于5000字"];
@@ -707,7 +716,6 @@
     }
 }
 
-
 #pragma mark - 拍照的协议方法
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
@@ -724,3 +732,72 @@
 
 @end
 
+
+
+
+
+#define TOPIC_IN_WEIBO_EXPRESSION @"(#[^#]+#)|(@[\u4e00-\u9fa5a-zA-Z0-9_-]+[ ,\\n])"  //话题#([^#]+?)#   //+[ ,\\n]
+
+
+@implementation YYTextTopicAndAtBindingParser
+
+- (instancetype)init {
+    self = [super init];
+    NSString *pattern = @"[-_a-zA-Z@\\.]+[;]";
+    pattern = @"@[\u4e00-\u9fa5a-zA-Z0-9_-]+[ ]";
+    self.regex = [[NSRegularExpression alloc] initWithPattern:pattern options:kNilOptions error:nil];
+    return self;
+}
+
+
+
+
+/**
+ *  @author sheng
+ *
+ *  解析输入的文本
+ *
+ *  @param text  文本内容
+ *  @param range 内容
+ *
+ *  @return 是否设置文字绑定
+ *
+ *  @since 3.3
+ */
+- (BOOL)parseText:(NSMutableAttributedString *)text selectedRange:(NSRangePointer)range {
+    __block BOOL changed = NO;
+    text.yy_font = [UIFont systemFontOfSize:17];
+    
+    //避免删除整个TextView重新输入的时候默认字体颜色改变
+    if (text.length == 1) {
+        text.yy_color = [UIColor blackColor];
+    }
+    
+    [_regex enumerateMatchesInString:text.string options:NSMatchingWithoutAnchoringBounds
+                               range:text.yy_rangeOfAll
+                          usingBlock:^(NSTextCheckingResult *result, NSMatchingFlags flags, BOOL *stop) {
+        
+        if (!result) return;
+        NSRange range = result.range;
+        if (range.location == NSNotFound || range.length < 1) return;
+        if ([text attribute:YYTextBindingAttributeName atIndex:range.location effectiveRange:NULL])
+        {
+            NSRange range1 = NSMakeRange(range.location + range.length, 1);
+            //避免设置完bind颜色之后 随后的非bind字符串颜色也跟着改变
+            if (range.location + range.length <text.length &&![text attribute:YYTextBindingAttributeName atIndex:range1.location effectiveRange:NULL])
+                [text yy_setColor:[UIColor blackColor] range:range1];
+            return;
+        }
+        
+        NSRange bindlingRange = NSMakeRange(range.location, range.length);
+        YYTextBinding *binding = [YYTextBinding bindingWithDeleteConfirm:YES];
+        
+        [text yy_setTextBinding:binding range:bindlingRange]; // Text binding
+        [text yy_setColor:[UIColor colorWithRed:0.000 green:0.519 blue:1.000 alpha:1.000] range:bindlingRange];
+        
+        changed = YES;
+    }];
+    return changed;
+}
+
+@end

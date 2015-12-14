@@ -7,7 +7,12 @@
 //
 
 #import "YViewController.h"
+#import "YYTextParser.h"
 
 @interface FeedPublishViewController : YViewController
 
+@end
+
+@interface YYTextTopicAndAtBindingParser :NSObject <YYTextParser>
+@property (nonatomic, strong) NSRegularExpression *regex;
 @end
