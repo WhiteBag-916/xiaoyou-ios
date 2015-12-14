@@ -25,6 +25,7 @@
     return manager;
 }
 
+
 - (void)isEnableToRelease
 {
     NSDateFormatter * formatter = [[NSDateFormatter alloc] init];
