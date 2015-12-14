@@ -121,7 +121,6 @@
     self.viewControllers = @[_messageViewCotroller, _availableViewController, _feedListViewCotroller, _profileViewCotroller];
 }
 
-
 - (void)openBrowser:(NSNotification *)notification {
     NSString *url = [notification userInfo][@"url"];
     NSString *title = [notification userInfo][@"title"];
